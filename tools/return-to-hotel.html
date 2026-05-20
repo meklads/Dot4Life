@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light" data-lang="en">
+<head>
+  <script>
+    (function(){
+      var t=localStorage.getItem('dfl-theme')||'light';
+      var l=localStorage.getItem('dfl-lang')||'en';
+      var h=document.documentElement;
+      h.setAttribute('data-theme',t);
+      h.setAttribute('data-lang',l);
+      h.setAttribute('lang',l);
+      h.setAttribute('dir',l==='ar'?'rtl':'ltr');
+    })();
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Return to Hotel — Save your hotel location and find your way back anywhere in the world. Free GPS tool for GCC travelers. Works offline." />
+  <link rel="canonical" href="https://dotforlife.com/tools/return-to-hotel" />
+  <meta property="og:title" content="Return to Hotel — DOTFORLIFE | العودة إلى الفندق" />
+  <meta property="og:description" content="Save your hotel location and navigate back — anywhere in the world. Works offline. Free for GCC travelers." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dotforlife.com/tools/return-to-hotel" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <title>Return to Hotel — DOTFORLIFE | العودة إلى الفندق</title>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "@id": "https://dotforlife.com/tools/return-to-hotel",
+  "name": "Return to Hotel — DOTFORLIFE",
+  "url": "https://dotforlife.com/tools/return-to-hotel",
+  "description": "GPS-based hotel location saver for travelers. Save your hotel on arrival, find your way back from anywhere.",
+  "applicationCategory": "TravelApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Almarai:wght@300;400;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Almarai:wght@300;400;700;800&display=swap" /></noscript>
+  <style>
+    :root {
+      --accent: #0097A7; --accent-l: #00BCD4; --accent-d: #00757F;
+      --accent-soft: rgba(0,151,167,.09);
+      --gold: #F59E0B; --gold-d: #D97706; --gold-soft: rgba(245,158,11,.10);
+      --success: #22C55E; --success-soft: rgba(34,197,94,.1);
+      --danger: #EF4444; --danger-soft: rgba(239,68,68,.1);
+      --blue:#0066CC; --cyan:#06B6D4; --teal:#14B8A6;
+      --dark:#0F172A; --slate:#1E293B;
+      --border-l:#DDE0E4; --pill-bg:#F5F6F7; --muted:#9CA3AF;
+      --card-bg:#FFFFFF; --body-bg:#F5F6F7; --text:#343B42; --text-2:#6B7280;
+      --shadow-md:0 2px 10px rgba(0,0,0,.08);
+      --shadow-lg:0 6px 24px rgba(0,0,0,.10);
+      --r-lg:16px; --r-xl:20px; --r-2xl:24px;
+    }
+    [data-theme="dark"] {
+      --card-bg:#1E293B; --body-bg:#0F172A; --text:#F1F5F9; --text-2:#94A3B8;
+      --border-l:#334155; --pill-bg:#263548;
+    }
+    [data-lang="ar"] { font-family:'Almarai',sans-serif; direction:rtl; text-align:right; }
+    [data-lang="ar"] .en { display:none; }
+    [data-lang="en"] .ar { display:none; }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Inter',system-ui,sans-serif;background:var(--body-bg);color:var(--text);line-height:1.6;transition:background .3s,color .3s;overflow-x:hidden;}
+    a{color:inherit;text-decoration:none;}
+    .container{max-width:960px;margin:0 auto;padding:0 20px;}
+
+    /* NAVBAR */
+    .navbar{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-l);}
+    .navbar.scrolled{box-shadow:0 2px 16px rgba(0,0,0,.07);}
+    [data-theme="dark"] .navbar{background:rgba(15,23,42,.95);border-bottom-color:rgba(51,65,85,.6);}
+    .navbar-inner{display:flex;align-items:center;justify-content:space-between;height:64px;}
+    .logo{font-size:1.2rem;font-weight:800;letter-spacing:-.02em;display:flex;align-items:center;gap:2px;}
+    .logo span:nth-child(1){color:var(--text);}
+    .logo span:nth-child(2){color:var(--cyan);}
+    .logo span:nth-child(3){color:var(--teal);}
+    .breadcrumb{display:flex;align-items:center;gap:6px;font-size:.82rem;color:var(--muted);}
+    .breadcrumb a{color:var(--muted);transition:color .2s;}
+    .breadcrumb a:hover{color:var(--accent);}
+    .breadcrumb-sep{opacity:.4;}
+    .breadcrumb-current{color:var(--accent);font-weight:600;}
+    .nav-actions{display:flex;align-items:center;gap:8px;}
+    .lang-toggle,.theme-btn{padding:6px 12px;border-radius:999px;background:var(--pill-bg);border:1px solid var(--border-l);color:var(--text-2);font-size:.82rem;font-weight:600;cursor:pointer;font-family:inherit;transition:all .2s;}
+    .lang-toggle:hover,.theme-btn:hover{border-color:var(--accent);color:var(--accent);}
+    .theme-btn{padding:6px 10px;}
+
+    /* PAGE HEADER */
+    .page-header{padding:48px 0 32px;text-align:center;position:relative;overflow:hidden;}
+    .page-header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 50% 0%,rgba(0,151,167,.08),transparent 65%);}
+    .page-header-inner{position:relative;z-index:1;}
+    .page-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:999px;background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.3);color:var(--gold);font-size:.75rem;font-weight:700;letter-spacing:.06em;margin-bottom:16px;}
+    .page-title{font-size:clamp(1.8rem,5vw,2.8rem);font-weight:900;letter-spacing:-.03em;margin-bottom:12px;line-height:1.1;}
+    .page-title-en .accent{background:linear-gradient(135deg,var(--accent),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    .page-sub{font-size:1rem;color:var(--text-2);max-width:520px;margin:0 auto 8px;}
+    .page-meta{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:16px;}
+    .page-meta-chip{display:inline-flex;align-items:center;gap:5px;padding:4px 12px;border-radius:999px;background:var(--pill-bg);border:1px solid var(--border-l);font-size:.76rem;font-weight:500;color:var(--text-2);}
+
+    /* MAIN TOOL CARD */
+    .tool-main{margin:0 0 32px;background:var(--card-bg);border-radius:var(--r-2xl);border:1px solid var(--border-l);overflow:hidden;box-shadow:var(--shadow-lg);}
+
+    /* STATUS BANNER */
+    .status-banner{
+      padding:20px 28px;
+      display:flex;align-items:center;gap:14px;
+      background:linear-gradient(135deg,var(--dark) 0%,var(--slate) 100%);
+      position:relative;overflow:hidden;
+    }
+    .status-banner::before{content:'';position:absolute;right:-40px;top:-40px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(0,151,167,.18) 0%,transparent 70%);pointer-events:none;}
+    .status-dot{
+      width:14px;height:14px;border-radius:50%;
+      background:var(--muted);
+      flex-shrink:0;
+      transition:background .4s;
+      box-shadow:0 0 0 4px rgba(156,163,175,.15);
+    }
+    .status-dot.active{background:var(--success);box-shadow:0 0 0 4px rgba(34,197,94,.2);animation:pulse 2s infinite;}
+    .status-dot.warning{background:var(--gold);box-shadow:0 0 0 4px rgba(245,158,11,.2);}
+    @keyframes pulse{0%,100%{box-shadow:0 0 0 4px rgba(34,197,94,.2);}50%{box-shadow:0 0 0 8px rgba(34,197,94,.08);}}
+    .status-text{font-size:.9rem;font-weight:600;color:rgba(255,255,255,.9);flex:1;}
+    .status-sub{font-size:.75rem;color:rgba(255,255,255,.45);}
+
+    /* TOOL BODY */
+    .tool-body{padding:28px;}
+
+    /* SAVE SECTION */
+    .save-section{
+      background:linear-gradient(135deg,rgba(0,151,167,.06),rgba(245,158,11,.04));
+      border:2px dashed rgba(0,151,167,.25);
+      border-radius:var(--r-xl);
+      padding:32px;
+      text-align:center;
+      margin-bottom:24px;
+      transition:all .3s;
+    }
+    .save-section.has-hotel{
+      background:linear-gradient(135deg,rgba(34,197,94,.06),rgba(0,151,167,.04));
+      border:2px solid rgba(34,197,94,.3);
+    }
+    .save-icon{font-size:3.5rem;margin-bottom:12px;display:block;}
+    .save-title{font-size:1.2rem;font-weight:800;margin-bottom:8px;}
+    .save-sub{font-size:.87rem;color:var(--text-2);margin-bottom:24px;max-width:400px;margin-left:auto;margin-right:auto;}
+    .btn-save{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:16px 36px;border-radius:999px;
+      background:linear-gradient(135deg,var(--accent),var(--accent-d));
+      color:#fff;font-weight:700;font-size:1rem;
+      cursor:pointer;border:none;font-family:inherit;
+      box-shadow:0 4px 20px rgba(0,151,167,.4);
+      transition:all .2s;
+    }
+    .btn-save:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(0,151,167,.5);}
+    .btn-save:disabled{opacity:.5;cursor:not-allowed;transform:none;}
+    .btn-save-gold{
+      background:linear-gradient(135deg,var(--gold),var(--gold-d));
+      box-shadow:0 4px 20px rgba(245,158,11,.4);
+    }
+    .btn-save-gold:hover{box-shadow:0 6px 28px rgba(245,158,11,.5);}
+
+    /* HOTEL INFO CARD (after save) */
+    .hotel-info-card{
+      background:var(--body-bg);border-radius:var(--r-xl);border:1px solid var(--border-l);
+      padding:20px;margin-top:20px;display:none;
+    }
+    .hotel-info-card.visible{display:block;}
+    .hotel-info-row{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+    .hotel-info-icon{font-size:1.4rem;width:44px;height:44px;border-radius:var(--r-lg);background:var(--success-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .hotel-info-label{font-size:.75rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.04em;}
+    .hotel-info-val{font-size:.92rem;font-weight:700;color:var(--text);}
+    .hotel-coords{font-size:.78rem;color:var(--muted);font-family:monospace;}
+    .hotel-time{font-size:.78rem;color:var(--muted);}
+
+    /* DISTANCE CARD */
+    .distance-card{
+      background:linear-gradient(135deg,var(--dark),var(--slate));
+      border-radius:var(--r-xl);
+      padding:28px;
+      text-align:center;
+      margin-bottom:24px;
+      display:none;
+      position:relative;overflow:hidden;
+    }
+    .distance-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 30%,rgba(0,151,167,.15) 0%,transparent 60%);}
+    .distance-card.visible{display:block;}
+    .distance-num{font-size:4rem;font-weight:900;color:var(--gold);line-height:1;position:relative;}
+    .distance-unit{font-size:1.2rem;font-weight:600;color:rgba(255,255,255,.6);position:relative;}
+    .distance-label{font-size:.85rem;color:rgba(255,255,255,.45);margin-top:4px;position:relative;}
+    .distance-direction{font-size:.9rem;font-weight:600;color:rgba(255,255,255,.75);margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.08);position:relative;}
+    .compass-arrow{display:inline-block;font-size:1.4rem;margin-right:6px;transition:transform .5s;}
+    [data-lang="ar"] .compass-arrow{margin-right:0;margin-left:6px;}
+
+    /* ACTION BUTTONS */
+    .action-btns{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px;}
+    .action-btn{
+      display:flex;align-items:center;justify-content:center;gap:8px;
+      padding:14px 20px;border-radius:var(--r-lg);
+      font-weight:700;font-size:.9rem;cursor:pointer;
+      border:1.5px solid var(--border-l);
+      background:var(--card-bg);color:var(--text);
+      transition:all .2s;font-family:inherit;
+    }
+    .action-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft);}
+    .action-btn-primary{background:var(--accent);color:#fff;border-color:var(--accent);}
+    .action-btn-primary:hover{background:var(--accent-d);border-color:var(--accent-d);color:#fff;}
+    .action-btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold-d));color:#fff;border:none;}
+    .action-btn-gold:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(245,158,11,.4);}
+    .action-btn-danger{border-color:rgba(239,68,68,.3);color:var(--danger);}
+    .action-btn-danger:hover{background:var(--danger-soft);border-color:var(--danger);}
+    .action-btn:disabled{opacity:.4;cursor:not-allowed;transform:none !important;}
+
+    /* NAME INPUT */
+    .name-field{display:flex;gap:10px;margin-bottom:20px;}
+    .name-input{
+      flex:1;padding:12px 16px;border-radius:var(--r-lg);
+      border:1.5px solid var(--border-l);background:var(--body-bg);
+      color:var(--text);font-size:.9rem;font-family:inherit;
+      outline:none;transition:border-color .2s;
+    }
+    .name-input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(0,151,167,.1);}
+    [data-theme="dark"] .name-input{background:var(--dark);}
+
+    /* TIPS */
+    .tips-strip{background:var(--accent-soft);border-radius:var(--r-xl);padding:20px;border:1px solid rgba(0,151,167,.15);margin-bottom:24px;}
+    .tips-strip-title{font-size:.82rem;font-weight:700;color:var(--accent);margin-bottom:10px;}
+    .tip-item{display:flex;align-items:flex-start;gap:8px;font-size:.82rem;color:var(--text-2);margin-bottom:6px;}
+    .tip-item:last-child{margin-bottom:0;}
+    .tip-bullet{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:6px;}
+
+    /* MULTI-HOTEL SAVED LIST */
+    .saved-list{margin-top:24px;}
+    .saved-list-title{font-size:.85rem;font-weight:700;color:var(--text-2);margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;}
+    .saved-list-clear{font-size:.78rem;color:var(--danger);cursor:pointer;font-weight:600;}
+    .saved-list-clear:hover{text-decoration:underline;}
+    .saved-item{background:var(--body-bg);border-radius:var(--r-lg);border:1px solid var(--border-l);padding:14px 16px;margin-bottom:10px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all .2s;}
+    .saved-item:hover{border-color:var(--accent);box-shadow:0 2px 10px rgba(0,151,167,.1);}
+    .saved-item-icon{font-size:1.3rem;flex-shrink:0;}
+    .saved-item-name{font-size:.9rem;font-weight:700;flex:1;}
+    .saved-item-date{font-size:.74rem;color:var(--muted);}
+    .saved-item-dist{font-size:.82rem;font-weight:700;color:var(--accent);}
+    .saved-item-del{font-size:.9rem;color:var(--muted);cursor:pointer;padding:4px;transition:color .2s;}
+    .saved-item-del:hover{color:var(--danger);}
+
+    /* STEP GUIDE */
+    .step-guide{padding:32px 0;margin-top:32px;}
+    .step-guide-title{font-size:1.2rem;font-weight:800;margin-bottom:24px;text-align:center;}
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+    .step{background:var(--card-bg);border-radius:var(--r-xl);padding:24px;border:1px solid var(--border-l);text-align:center;}
+    .step-num{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-d));color:#fff;font-size:.9rem;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;}
+    .step-icon{font-size:2rem;margin-bottom:8px;}
+    .step-name{font-size:.92rem;font-weight:700;margin-bottom:6px;}
+    .step-desc{font-size:.82rem;color:var(--text-2);line-height:1.5;}
+
+    /* FOOTER */
+    .footer-strip{padding:20px 0;border-top:1px solid var(--border-l);text-align:center;color:var(--muted);font-size:.82rem;margin-top:32px;}
+    .footer-strip a{color:var(--accent);}
+
+    /* ERROR/LOADING STATES */
+    .state-msg{
+      padding:16px;border-radius:var(--r-lg);text-align:center;
+      font-size:.88rem;margin-bottom:16px;display:none;
+    }
+    .state-msg.visible{display:block;}
+    .state-error{background:var(--danger-soft);border:1px solid rgba(239,68,68,.2);color:var(--danger);}
+    .state-success{background:var(--success-soft);border:1px solid rgba(34,197,94,.2);color:#16a34a;}
+    .state-loading{background:var(--accent-soft);border:1px solid rgba(0,151,167,.2);color:var(--accent);}
+    [data-theme="dark"] .state-success{color:var(--success);}
+
+    @media(max-width:640px){
+      .action-btns{grid-template-columns:1fr;}
+      .steps{grid-template-columns:1fr;}
+      .breadcrumb{display:none;}
+      .page-title{font-size:1.8rem;}
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <div class="navbar-inner">
+        <a href="../index.html" class="logo">
+          <span>DOT</span><span>FOR</span><span>LIFE</span>
+        </a>
+        <div class="breadcrumb">
+          <a href="../index.html"><span class="en">Home</span><span class="ar">الرئيسية</span></a>
+          <span class="breadcrumb-sep">›</span>
+          <a href="../travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a>
+          <span class="breadcrumb-sep">›</span>
+          <span class="breadcrumb-current"><span class="en">Return to Hotel</span><span class="ar">العودة للفندق</span></span>
+        </div>
+        <div class="nav-actions">
+          <button class="lang-toggle" id="langBtn">عربي / EN</button>
+          <button class="theme-btn" id="themeBtn">🌙</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="container">
+      <div class="page-header-inner">
+        <div class="page-badge">⭐ <span class="en">GOLD TOOL · أداة ذهبية</span><span class="ar">أداة ذهبية مميزة</span></div>
+        <h1 class="page-title">
+          <span class="en page-title-en">Return to <span class="accent">Hotel</span></span>
+          <span class="ar">العودة إلى <span style="background:linear-gradient(135deg,#0097A7,#F59E0B);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">الفندق</span></span>
+        </h1>
+        <p class="page-sub">
+          <span class="en">Save your hotel location on arrival. Find your way back from anywhere — with live GPS distance. No internet required.</span>
+          <span class="ar">احفظ موقع فندقك عند الوصول. اعرف طريق العودة من أي مكان — بمسافة GPS حية. لا إنترنت مطلوب.</span>
+        </p>
+        <div class="page-meta">
+          <span class="page-meta-chip">🌍 <span class="en">Works worldwide</span><span class="ar">يعمل عالمياً</span></span>
+          <span class="page-meta-chip">📶 <span class="en">Works offline</span><span class="ar">يعمل بدون إنترنت</span></span>
+          <span class="page-meta-chip">🔒 <span class="en">Privacy first</span><span class="ar">خصوصية كاملة</span></span>
+          <span class="page-meta-chip">🆓 <span class="en">Free forever</span><span class="ar">مجاني دائماً</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN TOOL -->
+  <div class="container">
+    <!-- Status messages -->
+    <div class="state-msg state-error" id="stateError"></div>
+    <div class="state-msg state-success" id="stateSuccess"></div>
+    <div class="state-msg state-loading" id="stateLoading">
+      <span class="en">📍 Getting your location…</span>
+      <span class="ar">📍 جاري تحديد موقعك…</span>
+    </div>
+
+    <div class="tool-main">
+      <!-- Status banner -->
+      <div class="status-banner" id="statusBanner">
+        <div class="status-dot" id="statusDot"></div>
+        <div>
+          <div class="status-text" id="statusText">
+            <span class="en">No hotel saved yet</span>
+            <span class="ar">لم يتم حفظ أي فندق بعد</span>
+          </div>
+          <div class="status-sub" id="statusSub">
+            <span class="en">Save your hotel location when you arrive</span>
+            <span class="ar">احفظ موقع فندقك عند الوصول</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tool-body">
+        <!-- DISTANCE DISPLAY (shown when hotel saved) -->
+        <div class="distance-card" id="distanceCard">
+          <div class="distance-num" id="distanceNum">—</div>
+          <div class="distance-unit" id="distanceUnit">km</div>
+          <div class="distance-label">
+            <span class="en">from your current location</span>
+            <span class="ar">من موقعك الحالي</span>
+          </div>
+          <div class="distance-direction" id="distanceDirection">
+            <span class="compass-arrow" id="compassArrow">🧭</span>
+            <span id="directionText"><span class="en">Calculating direction…</span><span class="ar">جاري حساب الاتجاه…</span></span>
+          </div>
+        </div>
+
+        <!-- Action buttons (shown when hotel saved) -->
+        <div class="action-btns" id="actionBtns" style="display:none;">
+          <button class="action-btn action-btn-gold" id="btnNavigate">
+            🗺️ <span class="en">Navigate to Hotel</span><span class="ar">التنقل إلى الفندق</span>
+          </button>
+          <button class="action-btn action-btn-primary" id="btnUpdate">
+            🔄 <span class="en">Update My Location</span><span class="ar">تحديث موقعي</span>
+          </button>
+          <button class="action-btn" id="btnShare">
+            📤 <span class="en">Share Hotel Location</span><span class="ar">مشاركة موقع الفندق</span>
+          </button>
+          <button class="action-btn action-btn-danger" id="btnClear">
+            🗑️ <span class="en">Clear Hotel</span><span class="ar">مسح الفندق</span>
+          </button>
+        </div>
+
+        <!-- Hotel info (shown when saved) -->
+        <div class="hotel-info-card" id="hotelInfoCard">
+          <div class="hotel-info-row">
+            <div class="hotel-info-icon">🏨</div>
+            <div>
+              <div class="hotel-info-label"><span class="en">Hotel Name</span><span class="ar">اسم الفندق</span></div>
+              <div class="hotel-info-val" id="hotelNameDisplay">—</div>
+            </div>
+          </div>
+          <div class="hotel-info-row">
+            <div class="hotel-info-icon">📍</div>
+            <div>
+              <div class="hotel-info-label"><span class="en">Saved Coordinates</span><span class="ar">الإحداثيات المحفوظة</span></div>
+              <div class="hotel-coords" id="hotelCoordsDisplay">—</div>
+              <div class="hotel-time" id="hotelTimeDisplay">—</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SAVE SECTION (shown when no hotel) -->
+        <div class="save-section" id="saveSection">
+          <span class="save-icon">🏨</span>
+          <div class="save-title">
+            <span class="en">Save Your Hotel Location</span>
+            <span class="ar">احفظ موقع فندقك</span>
+          </div>
+          <div class="save-sub">
+            <span class="en">Tap the button below when you're at your hotel. We'll save your GPS coordinates so you can find your way back anytime.</span>
+            <span class="ar">اضغط الزر أدناه وأنت في فندقك. سنحفظ إحداثياتك بالـ GPS حتى تتمكن من العودة في أي وقت.</span>
+          </div>
+
+          <!-- Optional hotel name -->
+          <div class="name-field">
+            <input type="text" class="name-input" id="hotelNameInput"
+              placeholder="Hotel name (optional) / اسم الفندق (اختياري)"
+              maxlength="60" />
+          </div>
+
+          <button class="btn-save btn-save-gold" id="btnSave">
+            📍 <span class="en">Save Hotel Location</span><span class="ar">احفظ موقع الفندق</span>
+          </button>
+        </div>
+
+        <!-- TIPS -->
+        <div class="tips-strip">
+          <div class="tips-strip-title">
+            <span class="en">💡 Pro Tips</span>
+            <span class="ar">💡 نصائح للاستخدام</span>
+          </div>
+          <div class="tip-item">
+            <div class="tip-bullet"></div>
+            <span class="en">Save your hotel immediately upon arrival — before you leave to explore.</span>
+            <span class="ar">احفظ موقع فندقك فور الوصول — قبل الخروج للاستكشاف.</span>
+          </div>
+          <div class="tip-item">
+            <div class="tip-bullet"></div>
+            <span class="en">The tool works offline — your distance is calculated from your device GPS, no internet required.</span>
+            <span class="ar">الأداة تعمل بدون إنترنت — تُحسب المسافة من GPS جهازك مباشرة.</span>
+          </div>
+          <div class="tip-item">
+            <div class="tip-bullet"></div>
+            <span class="en">Press "Navigate" to open your phone's maps app with direct turn-by-turn directions to your hotel.</span>
+            <span class="ar">اضغط "التنقل" لفتح تطبيق الخرائط بتوجيهات لحظية إلى فندقك مباشرة.</span>
+          </div>
+          <div class="tip-item">
+            <div class="tip-bullet"></div>
+            <span class="en">You can save multiple hotels (different trips) and switch between them below.</span>
+            <span class="ar">يمكنك حفظ فنادق متعددة (رحلات مختلفة) والتبديل بينها أدناه.</span>
+          </div>
+        </div>
+
+        <!-- SAVED HOTELS LIST -->
+        <div class="saved-list" id="savedList" style="display:none;">
+          <div class="saved-list-title">
+            <span><span class="en">Saved Hotels</span><span class="ar">الفنادق المحفوظة</span></span>
+            <span class="saved-list-clear" id="btnClearAll">
+              <span class="en">Clear all</span><span class="ar">مسح الكل</span>
+            </span>
+          </div>
+          <div id="savedListItems"></div>
+        </div>
+
+      </div><!-- /tool-body -->
+    </div><!-- /tool-main -->
+
+    <!-- HOW IT WORKS -->
+    <div class="step-guide">
+      <div class="step-guide-title">
+        <span class="en">How It Works</span>
+        <span class="ar">كيف تعمل الأداة</span>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-icon">🏨</div>
+          <div class="step-name"><span class="en">Arrive at Hotel</span><span class="ar">الوصول للفندق</span></div>
+          <div class="step-desc"><span class="en">Open this page when you're at your hotel. Type the hotel name if you want.</span><span class="ar">افتح هذه الصفحة وأنت في الفندق. يمكنك كتابة اسمه إن أردت.</span></div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-icon">📍</div>
+          <div class="step-name"><span class="en">Save Location</span><span class="ar">حفظ الموقع</span></div>
+          <div class="step-desc"><span class="en">Tap "Save Hotel Location." GPS coordinates are saved to your device — no internet, no cloud.</span><span class="ar">اضغط "احفظ موقع الفندق". تُحفظ الإحداثيات على جهازك — بلا إنترنت، بلا سحابة.</span></div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-icon">🗺️</div>
+          <div class="step-name"><span class="en">Navigate Back</span><span class="ar">العودة للفندق</span></div>
+          <div class="step-desc"><span class="en">Whenever you're ready to return, open the page — see distance in real time and tap Navigate.</span><span class="ar">عندما تريد العودة، افتح الصفحة — شاهد المسافة لحظياً واضغط التنقل.</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /container -->
+
+<!-- Related Tools Section -->
+<style>
+.rt-hotel-section{background:#f0fdfa;padding:2.5rem 0 2rem;border-top:2px solid #ccfbf1;margin-top:2rem;}
+.rt-hotel-heading{font-size:clamp(1rem,2.5vw,1.3rem);font-weight:800;margin:0 0 1.25rem;color:#0F172A;letter-spacing:-.01em;}
+.rt-hotel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+@media(max-width:640px){.rt-hotel-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:360px){.rt-hotel-grid{grid-template-columns:1fr;}}
+.rt-hotel-card{display:flex;flex-direction:column;gap:.3rem;padding:1rem 1.1rem;border-radius:14px;background:#fff;border:1.5px solid #99f6e4;text-decoration:none;transition:transform .22s cubic-bezier(.22,1,.36,1),box-shadow .22s,border-color .22s;}
+.rt-hotel-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,151,167,.12);border-color:#0097A7;}
+.rt-hotel-card-icon{font-size:1.5rem;line-height:1;}
+.rt-hotel-card-name{font-size:.86rem;font-weight:700;color:#0F172A;line-height:1.25;}
+.rt-hotel-card-desc{font-size:.74rem;color:#64748B;line-height:1.4;}
+.rt-hotel-card-arrow{margin-top:auto;padding-top:.45rem;font-size:.74rem;font-weight:700;color:#0097A7;}
+[data-lang="ar"] .rt-hotel-card-arrow{text-align:right;}
+</style>
+<section class="rt-hotel-section" aria-label="Related Tools">
+  <div class="container">
+    <h2 class="rt-hotel-heading"><span class="en">🔗 More Useful Tools</span><span class="ar">🔗 أدوات مفيدة أخرى</span></h2>
+    <div class="rt-hotel-grid">
+      <a class="rt-hotel-card" href="password-generator.html">
+        <span class="rt-hotel-card-icon">🔐</span>
+        <span class="rt-hotel-card-name"><span class="en">Password Generator</span><span class="ar">مولّد كلمات المرور</span></span>
+        <span class="rt-hotel-card-desc"><span class="en">Create secure passwords for your travel accounts</span><span class="ar">أنشئ كلمات مرور آمنة لحسابات سفرك</span></span>
+        <span class="rt-hotel-card-arrow"><span class="en">Try it →</span><span class="ar">← جرّبها</span></span>
+      </a>
+      <a class="rt-hotel-card" href="water-calculator.html">
+        <span class="rt-hotel-card-icon">💧</span>
+        <span class="rt-hotel-card-name"><span class="en">Water Calculator</span><span class="ar">حاسبة الماء</span></span>
+        <span class="rt-hotel-card-desc"><span class="en">Stay hydrated — especially important while travelling</span><span class="ar">حافظ على ترطيبك خلال رحلتك</span></span>
+        <span class="rt-hotel-card-arrow"><span class="en">Try it →</span><span class="ar">← جرّبها</span></span>
+      </a>
+      <a class="rt-hotel-card" href="age-calculator.html">
+        <span class="rt-hotel-card-icon">🎂</span>
+        <span class="rt-hotel-card-name"><span class="en">Age Calculator</span><span class="ar">حاسبة العمر</span></span>
+        <span class="rt-hotel-card-desc"><span class="en">Exact age in years, months &amp; days — useful for visa forms</span><span class="ar">عمرك الدقيق — مفيد لطلبات التأشيرة</span></span>
+        <span class="rt-hotel-card-arrow"><span class="en">Try it →</span><span class="ar">← جرّبها</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+  <footer class="footer-strip">
+    <div class="container">
+      <p>
+        <span class="en">© 2026 <a href="../index.html">DOTFORLIFE</a> · Return to Hotel · <a href="../travel.html">More Travel Tools</a> · <a href="../privacy.html">Privacy</a></span>
+        <span class="ar">© 2026 <a href="../index.html">DOTFORLIFE</a> · العودة للفندق · <a href="../travel.html">المزيد من أدوات السفر</a> · <a href="../privacy.html">الخصوصية</a></span>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    /* ── THEME & LANGUAGE ── */
+    const html    = document.documentElement;
+    const themeBtn = document.getElementById('themeBtn');
+    const langBtn  = document.getElementById('langBtn');
+    themeBtn.addEventListener('click', () => {
+      const d = html.getAttribute('data-theme') === 'dark';
+      html.setAttribute('data-theme', d ? 'light' : 'dark');
+      themeBtn.textContent = d ? '🌙' : '☀️';
+      localStorage.setItem('dfl-theme', d ? 'light' : 'dark');
+    });
+    if (html.getAttribute('data-theme') === 'dark') themeBtn.textContent = '☀️';
+    langBtn.addEventListener('click', () => {
+      const ar = html.getAttribute('data-lang') === 'ar';
+      const nl = ar ? 'en' : 'ar';
+      html.setAttribute('data-lang', nl);
+      html.setAttribute('lang', nl);
+      html.setAttribute('dir', nl === 'ar' ? 'rtl' : 'ltr');
+      localStorage.setItem('dfl-lang', nl);
+    });
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', scrollY > 10); }, { passive: true });
+
+    /* ── STATE ── */
+    const STORAGE_KEY = 'dfl_hotel_v2';
+    let hotels        = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+    let activeHotel   = null;
+    let watchId       = null;
+    let userLat       = null;
+    let userLng       = null;
+
+    /* ── ELEMENTS ── */
+    const stateError      = document.getElementById('stateError');
+    const stateSuccess    = document.getElementById('stateSuccess');
+    const stateLoading    = document.getElementById('stateLoading');
+    const statusDot       = document.getElementById('statusDot');
+    const statusText      = document.getElementById('statusText');
+    const statusSub       = document.getElementById('statusSub');
+    const distanceCard    = document.getElementById('distanceCard');
+    const distanceNum     = document.getElementById('distanceNum');
+    const distanceUnit    = document.getElementById('distanceUnit');
+    const distanceDir     = document.getElementById('distanceDirection');
+    const directionText   = document.getElementById('directionText');
+    const compassArrow    = document.getElementById('compassArrow');
+    const actionBtns      = document.getElementById('actionBtns');
+    const hotelInfoCard   = document.getElementById('hotelInfoCard');
+    const hotelNameDisplay= document.getElementById('hotelNameDisplay');
+    const hotelCoordsDisp = document.getElementById('hotelCoordsDisplay');
+    const hotelTimeDisp   = document.getElementById('hotelTimeDisplay');
+    const saveSection     = document.getElementById('saveSection');
+    const hotelNameInput  = document.getElementById('hotelNameInput');
+    const btnSave         = document.getElementById('btnSave');
+    const btnNavigate     = document.getElementById('btnNavigate');
+    const btnUpdate       = document.getElementById('btnUpdate');
+    const btnShare        = document.getElementById('btnShare');
+    const btnClear        = document.getElementById('btnClear');
+    const savedList       = document.getElementById('savedList');
+    const savedListItems  = document.getElementById('savedListItems');
+    const btnClearAll     = document.getElementById('btnClearAll');
+
+    /* ── HELPERS ── */
+    function showState(type, msg) {
+      [stateError, stateSuccess, stateLoading].forEach(el => {
+        el.classList.remove('visible');
+        el.textContent = '';
+      });
+      if (!type || !msg) return;
+      const el = type === 'error' ? stateError : type === 'success' ? stateSuccess : stateLoading;
+      el.textContent = msg;
+      el.classList.add('visible');
+      if (type !== 'loading') setTimeout(() => { el.classList.remove('visible'); el.textContent = ''; }, 4000);
+    }
+
+    function haversine(lat1, lng1, lat2, lng2) {
+      const R = 6371;
+      const dLat = (lat2 - lat1) * Math.PI / 180;
+      const dLng = (lng2 - lng1) * Math.PI / 180;
+      const a = Math.sin(dLat/2)**2 + Math.cos(lat1*Math.PI/180) * Math.cos(lat2*Math.PI/180) * Math.sin(dLng/2)**2;
+      return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    }
+
+    function bearing(lat1, lng1, lat2, lng2) {
+      const dLng = (lng2 - lng1) * Math.PI / 180;
+      const y = Math.sin(dLng) * Math.cos(lat2 * Math.PI / 180);
+      const x = Math.cos(lat1 * Math.PI / 180) * Math.sin(lat2 * Math.PI / 180)
+              - Math.sin(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * Math.cos(dLng);
+      const deg = (Math.atan2(y, x) * 180 / Math.PI + 360) % 360;
+      return deg;
+    }
+
+    function degToCompass(deg) {
+      const dirs = ['N','NE','E','SE','S','SW','W','NW'];
+      const arDirs = ['شمال','شمال شرق','شرق','جنوب شرق','جنوب','جنوب غرب','غرب','شمال غرب'];
+      const i = Math.round(deg / 45) % 8;
+      const isAr = html.getAttribute('data-lang') === 'ar';
+      return isAr ? arDirs[i] : dirs[i];
+    }
+
+    function formatCoords(lat, lng) {
+      return `${lat.toFixed(6)}°, ${lng.toFixed(6)}°`;
+    }
+
+    function formatTime(ts) {
+      return new Date(ts).toLocaleString();
+    }
+
+    function updateDistance() {
+      if (!activeHotel || userLat === null) return;
+      const dist = haversine(userLat, userLng, activeHotel.lat, activeHotel.lng);
+      const isAr = html.getAttribute('data-lang') === 'ar';
+      if (dist < 1) {
+        distanceNum.textContent = Math.round(dist * 1000);
+        distanceUnit.textContent = isAr ? 'متر' : 'm';
+      } else {
+        distanceNum.textContent = dist.toFixed(2);
+        distanceUnit.textContent = isAr ? 'كم' : 'km';
+      }
+      const bear = bearing(userLat, userLng, activeHotel.lat, activeHotel.lng);
+      const compassDir = degToCompass(bear);
+      compassArrow.style.transform = `rotate(${bear}deg)`;
+      directionText.innerHTML = isAr
+        ? `اتجاه <strong>${compassDir}</strong>`
+        : `Heading <strong>${compassDir}</strong> (${Math.round(bear)}°)`;
+    }
+
+    function saveState() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(hotels));
+    }
+
+    function renderUI() {
+      // Find most recent hotel
+      activeHotel = hotels.length > 0 ? hotels[hotels.length - 1] : null;
+
+      if (activeHotel) {
+        // Has hotel
+        saveSection.style.display = 'none';
+        distanceCard.classList.add('visible');
+        actionBtns.style.display = 'grid';
+        hotelInfoCard.classList.add('visible');
+
+        const isAr = html.getAttribute('data-lang') === 'ar';
+        statusDot.classList.add('active');
+        statusDot.classList.remove('warning');
+        statusText.innerHTML = `<span class="en">Hotel saved ✓ — ${activeHotel.name || 'Unnamed Hotel'}</span><span class="ar">فندق محفوظ ✓ — ${activeHotel.name || 'فندق بلا اسم'}</span>`;
+        statusSub.innerHTML = `<span class="en">Live distance updating…</span><span class="ar">المسافة تتحدث لحظياً…</span>`;
+
+        hotelNameDisplay.textContent = activeHotel.name || (isAr ? 'فندق بلا اسم' : 'Unnamed Hotel');
+        hotelCoordsDisp.textContent = formatCoords(activeHotel.lat, activeHotel.lng);
+        hotelTimeDisp.textContent = (isAr ? 'حُفظ: ' : 'Saved: ') + formatTime(activeHotel.savedAt);
+
+        updateDistance();
+        startWatching();
+      } else {
+        // No hotel
+        saveSection.style.display = 'block';
+        distanceCard.classList.remove('visible');
+        actionBtns.style.display = 'none';
+        hotelInfoCard.classList.remove('visible');
+        statusDot.classList.remove('active', 'warning');
+        statusText.innerHTML = `<span class="en">No hotel saved yet</span><span class="ar">لم يتم حفظ أي فندق بعد</span>`;
+        statusSub.innerHTML = `<span class="en">Save your hotel location when you arrive</span><span class="ar">احفظ موقع فندقك عند الوصول</span>`;
+        stopWatching();
+      }
+
+      // Saved list
+      if (hotels.length > 0) {
+        savedList.style.display = 'block';
+        savedListItems.innerHTML = '';
+        [...hotels].reverse().forEach((h, i) => {
+          const realIdx = hotels.length - 1 - i;
+          const el = document.createElement('div');
+          el.className = 'saved-item';
+          const dist = (userLat !== null) ? haversine(userLat, userLng, h.lat, h.lng) : null;
+          const distStr = dist !== null ? (dist < 1 ? `${Math.round(dist*1000)}m` : `${dist.toFixed(1)}km`) : '';
+          el.innerHTML = `
+            <span class="saved-item-icon">${realIdx === hotels.length - 1 ? '🟢' : '🏨'}</span>
+            <div style="flex:1;">
+              <div class="saved-item-name">${h.name || (html.getAttribute('data-lang')==='ar' ? 'فندق بلا اسم' : 'Unnamed Hotel')}</div>
+              <div class="saved-item-date">${formatTime(h.savedAt)}</div>
+            </div>
+            ${distStr ? `<span class="saved-item-dist">${distStr}</span>` : ''}
+            <span class="saved-item-del" data-idx="${realIdx}" title="Delete">✕</span>
+          `;
+          el.querySelector('.saved-item-del').addEventListener('click', (e) => {
+            e.stopPropagation();
+            hotels.splice(+e.target.dataset.idx, 1);
+            saveState();
+            renderUI();
+          });
+          el.addEventListener('click', (e) => {
+            if (e.target.classList.contains('saved-item-del')) return;
+            // Set as active (move to end)
+            const hotel = hotels.splice(realIdx, 1)[0];
+            hotels.push(hotel);
+            saveState();
+            renderUI();
+          });
+          savedListItems.appendChild(el);
+        });
+      } else {
+        savedList.style.display = 'none';
+      }
+    }
+
+    function startWatching() {
+      if (!navigator.geolocation) return;
+      if (watchId !== null) return;
+      watchId = navigator.geolocation.watchPosition(
+        (pos) => {
+          userLat = pos.coords.latitude;
+          userLng = pos.coords.longitude;
+          updateDistance();
+          renderUI();
+        },
+        (err) => {
+          console.warn('GPS watch error:', err.message);
+        },
+        { enableHighAccuracy: true, maximumAge: 10000 }
+      );
+    }
+
+    function stopWatching() {
+      if (watchId !== null) {
+        navigator.geolocation.clearWatch(watchId);
+        watchId = null;
+      }
+    }
+
+    /* ── SAVE HOTEL ── */
+    btnSave.addEventListener('click', () => {
+      if (!navigator.geolocation) {
+        showState('error', html.getAttribute('data-lang')==='ar'
+          ? '⚠️ المتصفح لا يدعم خدمة الموقع.'
+          : '⚠️ Geolocation is not supported by your browser.');
+        return;
+      }
+      btnSave.disabled = true;
+      showState('loading', '');
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          const hotel = {
+            id: Date.now(),
+            name: hotelNameInput.value.trim() || '',
+            lat: pos.coords.latitude,
+            lng: pos.coords.longitude,
+            accuracy: pos.coords.accuracy,
+            savedAt: Date.now()
+          };
+          hotels.push(hotel);
+          saveState();
+          hotelNameInput.value = '';
+          showState('success', html.getAttribute('data-lang')==='ar'
+            ? '✅ تم حفظ موقع الفندق بنجاح!'
+            : '✅ Hotel location saved successfully!');
+          renderUI();
+          btnSave.disabled = false;
+        },
+        (err) => {
+          btnSave.disabled = false;
+          showState('', '');
+          let msg;
+          const isAr = html.getAttribute('data-lang') === 'ar';
+          if (err.code === 1) msg = isAr ? '❌ تم رفض الإذن. يرجى السماح بالوصول إلى الموقع في إعدادات المتصفح.' : '❌ Location permission denied. Please allow location access in browser settings.';
+          else if (err.code === 2) msg = isAr ? '❌ تعذّر تحديد الموقع. تأكد من تفعيل GPS.' : '❌ Location unavailable. Make sure GPS is enabled.';
+          else msg = isAr ? '❌ انتهت مهلة طلب الموقع. حاول مجدداً.' : '❌ Location request timed out. Please try again.';
+          showState('error', msg);
+        },
+        { enableHighAccuracy: true, timeout: 15000, maximumAge: 5000 }
+      );
+    });
+
+    /* ── UPDATE LOCATION ── */
+    btnUpdate.addEventListener('click', () => {
+      if (!navigator.geolocation) return;
+      showState('loading', '');
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          userLat = pos.coords.latitude;
+          userLng = pos.coords.longitude;
+          updateDistance();
+          showState('success', html.getAttribute('data-lang')==='ar' ? '✅ تم تحديث موقعك.' : '✅ Location updated.');
+        },
+        () => { showState('error', html.getAttribute('data-lang')==='ar' ? '❌ تعذّر تحديث الموقع.' : '❌ Could not update location.'); },
+        { enableHighAccuracy: true, timeout: 12000 }
+      );
+    });
+
+    /* ── NAVIGATE ── */
+    btnNavigate.addEventListener('click', () => {
+      if (!activeHotel) return;
+      const lat = activeHotel.lat;
+      const lng = activeHotel.lng;
+      const name = encodeURIComponent(activeHotel.name || 'My Hotel');
+      // Try platform-native maps (iOS Maps / Google Maps / fallback)
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+      if (isIOS) {
+        window.open(`maps://maps.apple.com/?daddr=${lat},${lng}&q=${name}`, '_blank');
+      } else {
+        window.open(`https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}&travelmode=walking`, '_blank');
+      }
+    });
+
+    /* ── SHARE ── */
+    btnShare.addEventListener('click', async () => {
+      if (!activeHotel) return;
+      const isAr = html.getAttribute('data-lang') === 'ar';
+      const name = activeHotel.name || (isAr ? 'فندقي' : 'My Hotel');
+      const mapsUrl = `https://www.google.com/maps?q=${activeHotel.lat},${activeHotel.lng}`;
+      const shareText = isAr
+        ? `📍 موقع فندقي: ${name}\n${mapsUrl}`
+        : `📍 My hotel location: ${name}\n${mapsUrl}`;
+      if (navigator.share) {
+        try {
+          await navigator.share({ title: name, text: shareText, url: mapsUrl });
+        } catch(e) { /* user cancelled */ }
+      } else {
+        try {
+          await navigator.clipboard.writeText(shareText);
+          showState('success', isAr ? '✅ تم نسخ الرابط!' : '✅ Link copied to clipboard!');
+        } catch(e) {
+          showState('error', isAr ? '❌ تعذّر النسخ.' : '❌ Could not copy.');
+        }
+      }
+    });
+
+    /* ── CLEAR ACTIVE HOTEL ── */
+    btnClear.addEventListener('click', () => {
+      if (!activeHotel) return;
+      const isAr = html.getAttribute('data-lang') === 'ar';
+      if (confirm(isAr ? 'هل تريد مسح بيانات الفندق المحفوظ؟' : 'Clear the saved hotel location?')) {
+        hotels = hotels.filter(h => h.id !== activeHotel.id);
+        saveState();
+        renderUI();
+      }
+    });
+
+    /* ── CLEAR ALL ── */
+    btnClearAll.addEventListener('click', () => {
+      const isAr = html.getAttribute('data-lang') === 'ar';
+      if (confirm(isAr ? 'هل تريد مسح جميع الفنادق المحفوظة؟' : 'Clear all saved hotels?')) {
+        hotels = [];
+        saveState();
+        renderUI();
+      }
+    });
+
+    /* ── LANGUAGE CHANGE — re-render ── */
+    langBtn.addEventListener('click', () => { setTimeout(renderUI, 100); });
+
+    /* ── INIT ── */
+    renderUI();
+
+    // Start watching if hotel exists
+    if (hotels.length > 0) {
+      startWatching();
+    }
+
+    // Initial one-shot position to show distance immediately
+    if (hotels.length > 0 && navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (pos) => { userLat = pos.coords.latitude; userLng = pos.coords.longitude; updateDistance(); },
+        () => {},
+        { maximumAge: 30000 }
+      );
+    }
+  </script>
+<script>
+// Scroll Progress Bar
+(function(){var b=document.createElement("div");b.style.cssText="position:fixed;top:0;left:0;width:0%;height:3px;background:linear-gradient(90deg,#0066CC,#06B6D4);z-index:9999;transition:width .1s linear;pointer-events:none;";document.body.appendChild(b);window.addEventListener("scroll",function(){var d=document.documentElement.scrollHeight-window.innerHeight;b.style.width=(d>0?Math.min(100,(window.scrollY/d)*100):0)+"%";},{passive:true});})();</script>
+
+<!-- Back to Category Floating Button -->
+<style>
+.back-cat-fab{position:fixed;bottom:1.5rem;right:1.5rem;z-index:890;display:inline-flex;align-items:center;gap:.4rem;padding:.6rem 1.15rem .6rem .9rem;border-radius:50px;background:#0097A7;color:#fff;font-size:.78rem;font-weight:700;letter-spacing:.01em;text-decoration:none;box-shadow:0 4px 18px rgba(0,0,0,.22);opacity:0;transform:translateY(10px) scale(.96);transition:opacity .28s cubic-bezier(.22,1,.36,1),transform .28s cubic-bezier(.22,1,.36,1);pointer-events:none;white-space:nowrap;}
+.back-cat-fab.fab-visible{opacity:1;transform:translateY(0) scale(1);pointer-events:auto;}
+.back-cat-fab:hover{filter:brightness(1.13);transform:translateY(-1px) scale(1.02);}
+.back-cat-fab .fab-arrow{font-size:.9rem;opacity:.85;}
+[data-lang="ar"] .back-cat-fab{right:auto;left:1.5rem;flex-direction:row-reverse;padding:.6rem .9rem .6rem 1.15rem;}
+</style>
+<a class="back-cat-fab" id="backCatFab" href="../travel.html" aria-label="Back to Travel">
+  <span class="fab-arrow">←</span>
+  <span class="en">Travel</span>
+  <span class="ar">السفر</span>
+</a>
+<script>
+(function(){
+  var fab=document.getElementById('backCatFab');
+  if(!fab)return;
+  var shown=false;
+  function check(){
+    var should=window.scrollY>260;
+    if(should!==shown){shown=should;fab.classList.toggle('fab-visible',shown);}
+  }
+  window.addEventListener('scroll',check,{passive:true});
+  check();
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light" data-lang="en">
+<head>
+  <script>
+    (function(){
+      var t=localStorage.getItem('dfl-theme')||'light';
+      var l=localStorage.getItem('dfl-lang')||'en';
+      var h=document.documentElement;
+      h.setAttribute('data-theme',t);
+      h.setAttribute('data-lang',l);
+      h.setAttribute('lang',l);
+      h.setAttribute('dir',l==='ar'?'rtl':'ltr');
+    })();
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Travel tools for GCC residents — trip budget calculator, packing checklist, return to hotel locator, currency converter. Free bilingual Arabic & English travel planning." />
+  <link rel="canonical" href="https://dotforlife.com/travel" />
+  <link rel="alternate" hreflang="ar-SA" href="https://dotforlife.com/travel" />
+  <link rel="alternate" hreflang="en" href="https://dotforlife.com/travel" />
+  <link rel="alternate" hreflang="x-default" href="https://dotforlife.com/travel" />
+  <meta property="og:title" content="Travel Tools — DOTFORLIFE | أدوات السفر" />
+  <meta property="og:description" content="Smart travel planning tools for GCC travelers — budget, packing, hotel finder, and more." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dotforlife.com/travel" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <title>Travel Tools — DOTFORLIFE | أدوات السفر</title>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": "https://dotforlife.com/travel#page",
+      "name": "Travel Tools — DOTFORLIFE",
+      "url": "https://dotforlife.com/travel",
+      "description": "Smart travel planning tools for GCC travelers.",
+      "isPartOf": { "@id": "https://dotforlife.com" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://dotforlife.com" },
+        { "@type": "ListItem", "position": 2, "name": "Travel", "item": "https://dotforlife.com/travel" }
+      ]
+    }
+  ]
+}
+</script>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Almarai:wght@300;400;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Almarai:wght@300;400;700;800&display=swap" /></noscript>
+  <style>
+    :root {
+      --accent: #0097A7; --accent-l: #00BCD4; --accent-d: #00757F;
+      --accent-glow: rgba(0,151,167,.18); --accent-soft: rgba(0,151,167,.08);
+      --gold: #F59E0B; --gold-soft: rgba(245,158,11,.10);
+      --blue:#0066CC; --cyan:#06B6D4; --teal:#14B8A6;
+      --dark:#0F172A; --slate:#1E293B;
+      --border-l:#DDE0E4; --pill-bg:#F5F6F7; --muted:#9CA3AF;
+      --card-bg:#FFFFFF; --body-bg:#F5F6F7; --text:#343B42; --text-2:#6B7280;
+      --shadow-md:0 2px 10px rgba(0,0,0,.08);
+      --shadow-lg:0 6px 24px rgba(0,0,0,.10);
+      --shadow-xl:0 12px 40px rgba(0,0,0,.12);
+      --r-lg:16px; --r-xl:20px; --r-2xl:24px;
+    }
+    [data-theme="dark"] {
+      --card-bg:#1E293B; --body-bg:#0F172A; --text:#F1F5F9; --text-2:#94A3B8;
+      --border-l:#334155; --pill-bg:#263548;
+    }
+    [data-lang="ar"] { font-family:'Almarai',sans-serif; direction:rtl; text-align:right; }
+    [data-lang="ar"] .en { display:none; } [data-lang="en"] .ar { display:none; }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Inter',system-ui,sans-serif;background:var(--body-bg);color:var(--text);line-height:1.6;transition:background .3s,color .3s;overflow-x:hidden;}
+    a{color:inherit;text-decoration:none;}
+    .container{max-width:1280px;margin:0 auto;padding:0 24px;}
+    .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1);}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+    .tool-icon-wrap{transition:transform .3s cubic-bezier(.22,1,.36,1);}
+    .tool-card:hover .tool-icon-wrap{transform:scale(1.1) rotate(-3deg);}
+    .tool-card:nth-child(1){transition-delay:.04s;}.tool-card:nth-child(2){transition-delay:.1s;}.tool-card:nth-child(3){transition-delay:.16s;}.tool-card:nth-child(4){transition-delay:.22s;}.tool-card:nth-child(5){transition-delay:.28s;}.tool-card:nth-child(6){transition-delay:.34s;}
+
+    /* NAVBAR */
+    .navbar{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.94);backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid var(--border-l);}
+    .navbar.scrolled{box-shadow:0 2px 16px rgba(0,0,0,.07);}
+    [data-theme="dark"] .navbar{background:rgba(15,23,42,.94);border-bottom-color:rgba(51,65,85,.6);}
+    .navbar-inner{display:flex;align-items:center;justify-content:space-between;height:68px;}
+    .logo{font-size:1.3rem;font-weight:800;letter-spacing:-.02em;display:flex;align-items:center;gap:2px;}
+    .logo span:nth-child(1){color:var(--text);}
+    .logo span:nth-child(2){color:var(--cyan);}
+    .logo span:nth-child(3){color:var(--teal);}
+    .nav-links{display:flex;align-items:center;gap:4px;list-style:none;}
+    .nav-links a{padding:6px 14px;border-radius:999px;font-size:.85rem;font-weight:500;color:var(--text-2);transition:all .2s;white-space:nowrap;}
+    .nav-links a:hover{color:var(--text);background:var(--pill-bg);}
+    .nav-links a.active{color:var(--accent);font-weight:700;}
+    .nav-actions{display:flex;align-items:center;gap:10px;}
+    .lang-toggle,.theme-btn{padding:7px 14px;border-radius:999px;background:var(--pill-bg);border:1px solid var(--border-l);color:var(--text-2);font-size:.85rem;font-weight:600;cursor:pointer;font-family:inherit;transition:all .2s;}
+    .lang-toggle:hover,.theme-btn:hover{border-color:var(--accent);color:var(--accent);}
+    .theme-btn{padding:7px 12px;}
+    @media(max-width:768px){.nav-links{display:none;}}
+
+    /* HERO */
+    .cat-hero{padding:72px 0 56px;position:relative;overflow:hidden;}
+    .hero-bg-travel{
+      position:absolute;inset:0;
+      background:
+        radial-gradient(ellipse 75% 65% at 85% 35%, rgba(0,151,167,.13), transparent 65%),
+        radial-gradient(ellipse 50% 50% at 5% 80%, rgba(245,158,11,.07), transparent 55%);
+    }
+    .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(51,65,85,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(51,65,85,.06) 1px,transparent 1px);background-size:60px 60px;}
+    .cat-hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+    .cat-hero-label{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:999px;background:rgba(0,151,167,.1);border:1px solid rgba(0,151,167,.28);color:var(--accent-l);font-size:.8rem;font-weight:600;letter-spacing:.05em;margin-bottom:20px;}
+    .cat-hero-title{font-size:clamp(2.2rem,4.5vw,3.5rem);font-weight:900;letter-spacing:-.035em;line-height:1.1;margin-bottom:20px;}
+    .hero-accent{background:linear-gradient(135deg,var(--accent),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    .cat-hero-sub{font-size:1.05rem;color:var(--text-2);line-height:1.7;max-width:480px;margin-bottom:36px;}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 26px;border-radius:999px;font-weight:700;font-size:.95rem;cursor:pointer;border:none;transition:all .2s;font-family:inherit;}
+    .btn-accent{background:var(--accent);color:#fff;box-shadow:0 4px 16px rgba(0,151,167,.4);}
+    .btn-accent:hover{background:var(--accent-d);transform:translateY(-1px);}
+    .btn-ghost{background:transparent;color:var(--text-2);border:1.5px solid var(--border-l);}
+    .btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
+    .btn-gold{background:linear-gradient(135deg,#F59E0B,#D97706);color:#fff;box-shadow:0 4px 16px rgba(245,158,11,.4);}
+    .btn-gold:hover{transform:translateY(-1px);box-shadow:0 6px 22px rgba(245,158,11,.5);}
+    .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;}
+
+    /* Destination cards visual */
+    .hero-visual-travel{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+    .dest-card{border-radius:var(--r-xl);padding:20px 18px;position:relative;overflow:hidden;min-height:110px;display:flex;flex-direction:column;justify-content:flex-end;cursor:default;transition:transform .35s,box-shadow .35s;}
+    .dest-card:hover{transform:translateY(-4px) scale(1.01);box-shadow:0 20px 48px rgba(0,0,0,.28);}
+    .dest-card img.dest-bg-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 6s ease;z-index:0;}
+    .dest-card:hover img.dest-bg-img{transform:scale(1.08);}
+    .dest-card-bg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0;}
+    .dest-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.78) 0%,rgba(0,0,0,.15) 60%,transparent 100%);z-index:1;}
+    .dest-card-large{grid-column:1/-1;min-height:120px;}
+    .dest-city{font-size:1.05rem;font-weight:800;color:#fff;position:relative;z-index:2;text-shadow:0 1px 6px rgba(0,0,0,.5);}
+    .dest-tag{font-size:.68rem;font-weight:600;color:rgba(255,255,255,.80);position:relative;z-index:2;margin-top:2px;}
+    .dest-price{font-size:.82rem;font-weight:700;color:var(--gold);position:relative;z-index:2;margin-top:3px;text-shadow:0 1px 4px rgba(0,0,0,.4);}
+
+    /* FEATURED — RETURN TO HOTEL (GOLD) */
+    .featured-gold{
+      background:linear-gradient(135deg,#07101f 0%,#0d1c35 100%);
+      border-radius:var(--r-2xl);
+      padding:48px;
+      display:grid;
+      grid-template-columns:1.2fr 1fr;
+      gap:48px;
+      align-items:center;
+      margin-bottom:32px;
+      position:relative;
+      overflow:hidden;
+    }
+    .featured-gold::before{
+      content:'';position:absolute;
+      top:-100px;right:-80px;
+      width:400px;height:400px;border-radius:50%;
+      background:radial-gradient(circle,rgba(0,151,167,.18) 0%,transparent 70%);
+      pointer-events:none;
+    }
+    .featured-gold::after{
+      content:'';position:absolute;
+      bottom:-60px;left:-60px;
+      width:280px;height:280px;border-radius:50%;
+      background:radial-gradient(circle,rgba(245,158,11,.10) 0%,transparent 70%);
+      pointer-events:none;
+    }
+    .fg-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:999px;background:rgba(245,158,11,.15);border:1px solid rgba(245,158,11,.35);color:var(--gold);font-size:.72rem;font-weight:700;letter-spacing:.06em;margin-bottom:16px;}
+    .fg-label{font-size:.72rem;font-weight:700;letter-spacing:.1em;color:rgba(0,188,212,.7);text-transform:uppercase;margin-bottom:12px;}
+    .fg-title{font-size:2rem;font-weight:900;letter-spacing:-.025em;color:#fff;margin-bottom:16px;line-height:1.15;}
+    .fg-title .gold-text{background:linear-gradient(135deg,#F59E0B,#FCD34D);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    .fg-desc{font-size:.95rem;color:rgba(255,255,255,.65);line-height:1.7;margin-bottom:28px;}
+    .fg-features{display:flex;flex-direction:column;gap:10px;margin-bottom:28px;}
+    .fg-feature{display:flex;align-items:center;gap:10px;font-size:.88rem;color:rgba(255,255,255,.8);}
+    .fg-feature-icon{width:28px;height:28px;border-radius:8px;background:rgba(0,151,167,.2);display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;}
+    .fg-visual{position:relative;z-index:1;}
+    .hotel-mockup{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--r-2xl);padding:24px;backdrop-filter:blur(12px);}
+    .hotel-mockup-header{display:flex;align-items:center;gap:12px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.08);}
+    .hotel-mockup-dot{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--gold));display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+    .hotel-mockup-name{font-size:.95rem;font-weight:700;color:#fff;}
+    .hotel-mockup-addr{font-size:.75rem;color:rgba(255,255,255,.5);}
+    .hotel-mockup-distance{font-size:1.8rem;font-weight:900;color:var(--gold);text-align:center;margin:8px 0 4px;}
+    .hotel-mockup-dsub{font-size:.75rem;color:rgba(255,255,255,.5);text-align:center;margin-bottom:16px;}
+    .hotel-mockup-bar{height:8px;border-radius:4px;background:rgba(255,255,255,.08);overflow:hidden;margin-bottom:16px;}
+    .hotel-mockup-progress{height:100%;width:72%;background:linear-gradient(90deg,var(--accent),var(--gold));border-radius:4px;}
+    .hotel-mockup-btn{width:100%;padding:12px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-d));color:#fff;font-weight:700;font-size:.9rem;text-align:center;cursor:pointer;}
+
+    /* TOOLS SECTION */
+    .tools-section{padding:80px 0;}
+    .section-label{font-size:.75rem;font-weight:700;letter-spacing:.08em;color:var(--accent);text-transform:uppercase;margin-bottom:12px;display:block;}
+    .tools-header{margin-bottom:48px;}
+    .tools-header h2{font-size:1.8rem;font-weight:800;letter-spacing:-.02em;margin-bottom:8px;}
+    .tools-header p{color:var(--text-2);font-size:.95rem;}
+    .tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+    .tool-card{background:var(--card-bg);border-radius:var(--r-2xl);padding:28px;border:1px solid var(--border-l);transition:all .3s;display:flex;flex-direction:column;}
+    .tool-card:hover{transform:translateY(-4px);box-shadow:0 8px 28px rgba(0,151,167,.1);border-color:rgba(0,151,167,.28);}
+    .tool-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px;}
+    .tool-icon-wrap{width:54px;height:54px;border-radius:var(--r-lg);display:flex;align-items:center;justify-content:center;font-size:1.6rem;background:var(--accent-soft);flex-shrink:0;}
+    .tool-badge{font-size:.7rem;font-weight:700;padding:3px 10px;border-radius:999px;border:1px solid rgba(0,151,167,.3);color:var(--accent);background:var(--accent-soft);}
+    .tool-badge-gold{border-color:rgba(245,158,11,.4);color:var(--gold);background:var(--gold-soft);}
+    .tool-name{font-size:1.05rem;font-weight:700;margin-bottom:8px;}
+    .tool-desc{font-size:.87rem;color:var(--text-2);line-height:1.6;margin-bottom:20px;flex:1;}
+    .tool-footer{display:flex;align-items:center;justify-content:space-between;margin-top:auto;}
+    .tool-usage{font-size:.76rem;color:var(--muted);}
+    .tool-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:999px;font-size:.84rem;font-weight:600;background:var(--accent);color:#fff;transition:all .2s;}
+    .tool-cta:hover{background:var(--accent-d);}
+
+    /* GCC DESTINATIONS */
+    .destinations-section{padding:64px 0;background:var(--card-bg);border-top:1px solid var(--border-l);border-bottom:1px solid var(--border-l);}
+    .dest-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:40px;}
+    .city-card{border-radius:var(--r-2xl);overflow:hidden;position:relative;min-height:200px;display:flex;align-items:flex-end;cursor:pointer;transition:transform .3s;}
+    .city-card:hover{transform:scale(1.02);}
+    .city-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:5rem;}
+    .city-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.82) 0%,rgba(0,0,0,.2) 55%,transparent 100%);}
+    .city-info{position:relative;z-index:1;padding:20px 16px;}
+    .city-name{font-size:1.2rem;font-weight:800;color:#fff;margin-bottom:4px;}
+    .city-country{font-size:.78rem;color:rgba(255,255,255,.65);}
+    .city-avg{font-size:.8rem;font-weight:600;color:var(--gold);margin-top:6px;}
+
+    /* TRAVEL TIPS */
+    .tips-section{padding:64px 0;}
+    .tips-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px;}
+    .tip-card{background:var(--card-bg);border-radius:var(--r-xl);padding:28px;border:1px solid var(--border-l);display:flex;gap:16px;align-items:flex-start;transition:all .3s;}
+    .tip-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,151,167,.08);}
+    .tip-icon{width:48px;height:48px;border-radius:var(--r-lg);background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;}
+    .tip-title{font-size:.95rem;font-weight:700;margin-bottom:6px;}
+    .tip-desc{font-size:.84rem;color:var(--text-2);line-height:1.55;}
+
+    /* Ad zone */
+    .ad-zone{min-height:90px;background:var(--card-bg);border:1px dashed var(--border-l);border-radius:var(--r-lg);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.8rem;margin:32px 0;}
+    .footer-strip{padding:24px 0;border-top:1px solid var(--border-l);text-align:center;color:var(--muted);font-size:.85rem;}
+    .footer-strip a{color:var(--accent);}
+
+    /* RESPONSIVE */
+    @media(max-width:900px){
+      .cat-hero-inner{grid-template-columns:1fr;}
+      .hero-visual-travel{display:none;}
+      .featured-gold{grid-template-columns:1fr;padding:32px 24px;}
+      .fg-visual{display:none;}
+      .tools-grid{grid-template-columns:repeat(2,1fr);}
+      .dest-grid{grid-template-columns:repeat(2,1fr);}
+      .tips-grid{grid-template-columns:1fr;}
+    }
+    @media(max-width:640px){.tools-grid{grid-template-columns:1fr;}.dest-grid{grid-template-columns:1fr 1fr;}}
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <div class="navbar-inner">
+        <a href="index.html" class="logo" aria-label="DOTFORLIFE Home">
+          <span>DOT</span><span>FOR</span><span>LIFE</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
+          <li><a href="fitness.html"><span class="en">Fitness</span><span class="ar">اللياقة</span></a></li>
+          <li><a href="real-estate.html"><span class="en">Real Estate</span><span class="ar">العقارات</span></a></li>
+          <li><a href="islamic.html"><span class="en">Islamic</span><span class="ar">إسلامي</span></a></li>
+          <li><a href="travel.html" class="active"><span class="en">Travel</span><span class="ar">السفر</span></a></li>
+          <li><a href="life-tools.html"><span class="en">Life Tools</span><span class="ar">أدوات الحياة</span></a></li>
+        </ul>
+        <div class="nav-actions">
+          <button class="lang-toggle" id="langBtn" aria-label="Toggle language">عربي / EN</button>
+          <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode">🌙</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="cat-hero" aria-labelledby="cat-title">
+    <div class="hero-bg-travel"></div>
+    <div class="hero-grid"></div>
+    <div class="container">
+      <div class="cat-hero-inner">
+        <!-- Left -->
+        <div>
+          <div class="cat-hero-label">
+            <span>✈️</span>
+            <span class="en">Travel Tools • أدوات السفر</span>
+            <span class="ar">أدوات السفر الذكية</span>
+          </div>
+          <h1 class="cat-hero-title" id="cat-title">
+            <span class="en">Every trip,<br><span class="hero-accent">properly planned.</span></span>
+            <span class="ar">كل رحلة،<br><span class="hero-accent">مخططة بإتقان.</span></span>
+          </h1>
+          <p class="cat-hero-sub">
+            <span class="en">Know your real trip cost before you book. Pack without forgetting anything. Navigate a foreign city without panic. Travel the way confident people do — prepared for every moment.</span>
+            <span class="ar">اعرف تكلفة رحلتك الحقيقية قبل الحجز. اعبّئ حقيبتك دون نسيان شيء. تنقّل في مدينة أجنبية بثقة. سافر كما يسافر الواثقون — مستعداً لكل لحظة.</span>
+          </p>
+          <div class="hero-ctas">
+            <a href="#gold-tool" class="btn btn-gold">
+              <span class="en">🏨 Return to Hotel</span>
+              <span class="ar">🏨 العودة للفندق</span>
+            </a>
+            <a href="#tools" class="btn btn-ghost">
+              <span class="en">All Travel Tools</span>
+              <span class="ar">جميع أدوات السفر</span>
+            </a>
+          </div>
+        </div>
+        <!-- Right: destination cards with real photos -->
+        <div class="hero-visual-travel">
+          <div class="dest-card">
+            <img class="dest-bg-img" src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=500&q=70&auto=format&fit=crop" alt="Dubai skyline" width="500" height="330" loading="lazy" decoding="async">
+            <div class="dest-card-overlay"></div>
+            <div class="dest-city"><span class="en">🇦🇪 Dubai</span><span class="ar">🇦🇪 دبي</span></div>
+            <div class="dest-tag"><span class="en">2,847 km away</span><span class="ar">2,847 كم</span></div>
+          </div>
+          <div class="dest-card">
+            <img class="dest-bg-img" src="https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=500&q=70&auto=format&fit=crop" alt="Istanbul skyline" width="500" height="330" loading="lazy" decoding="async">
+            <div class="dest-card-overlay"></div>
+            <div class="dest-city"><span class="en">🇹🇷 Istanbul</span><span class="ar">🇹🇷 إسطنبول</span></div>
+            <div class="dest-tag"><span class="en">3,200 km away</span><span class="ar">3,200 كم</span></div>
+          </div>
+          <div class="dest-card">
+            <img class="dest-bg-img" src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=500&q=70&auto=format&fit=crop" alt="London cityscape" width="500" height="330" loading="lazy" decoding="async">
+            <div class="dest-card-overlay"></div>
+            <div class="dest-city"><span class="en">🇬🇧 London</span><span class="ar">🇬🇧 لندن</span></div>
+            <div class="dest-tag"><span class="en">6,300 km away</span><span class="ar">6,300 كم</span></div>
+          </div>
+          <div class="dest-card">
+            <img class="dest-bg-img" src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=500&q=70&auto=format&fit=crop" alt="Tokyo at night" width="500" height="330" loading="lazy" decoding="async">
+            <div class="dest-card-overlay"></div>
+            <div class="dest-city"><span class="en">🇯🇵 Tokyo</span><span class="ar">🇯🇵 طوكيو</span></div>
+            <div class="dest-tag"><span class="en">8,900 km away</span><span class="ar">8,900 كم</span></div>
+          </div>
+          <div class="dest-card dest-card-large" style="background:linear-gradient(135deg,#0F172A,#1E3A5F);">
+            <div class="dest-card-overlay" style="background:linear-gradient(to top,rgba(0,0,0,.6) 0%,transparent 70%);"></div>
+            <div class="dest-city" style="font-size:1.2rem;">
+              <span class="en">✈️ Plan your next trip with DOTFORLIFE tools</span>
+              <span class="ar">✈️ خطّط رحلتك القادمة بأدوات DOTFORLIFE</span>
+            </div>
+            <div class="dest-tag"><span class="en">Budget · Packing · Hotel · Currency</span><span class="ar">الميزانية · التعبئة · الفندق · العملة</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+#qjs-strip a{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;font-size:.82rem;font-weight:600;white-space:nowrap;text-decoration:none;transition:border-color .2s,color .2s,background .2s,transform .2s cubic-bezier(.22,1,.36,1);flex-shrink:0;}
+#qjs-strip a:hover{border-color:#0097A7 !important;color:#0097A7 !important;background:rgba(0,151,167,.08) !important;transform:translateY(-2px);}
+#qjs-strip a:active{transform:translateY(0) scale(.97);}
+.life-intro-bridge{padding:clamp(48px,7vw,80px) 0;background:var(--surface-2);}
+.lib-inner{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,64px);align-items:start;}
+.lib-eyebrow{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#0097A7;margin-bottom:12px;display:block;}
+.lib-headline{font-size:clamp(1.6rem,3vw,2.3rem);font-weight:900;letter-spacing:-.03em;line-height:1.15;margin-bottom:20px;color:var(--text-1);}
+.lib-body{font-size:1rem;line-height:1.75;color:var(--text-2);margin:0;}
+.lib-pillars{display:flex;flex-direction:column;gap:20px;padding-top:8px;}
+.lib-pillar{display:grid;grid-template-columns:40px 1fr;grid-template-rows:auto auto;column-gap:14px;row-gap:2px;align-items:start;}
+.lib-pillar-icon{grid-row:1/3;font-size:1.5rem;line-height:1;padding-top:2px;}
+.lib-pillar strong{font-size:.92rem;font-weight:700;color:var(--text-1);display:block;}
+.lib-pillar span{font-size:.82rem;color:var(--text-2);}
+@media(max-width:768px){.lib-inner{grid-template-columns:1fr;}.lib-pillars{padding-top:0;}}
+</style>
+<!-- QUICK JUMP STRIP -->
+  <div id="qjs-strip" style="padding:16px 0;border-bottom:1px solid var(--border-l);background:var(--card-bg);">
+    <div class="container">
+      <div style="display:flex;align-items:center;gap:10px;overflow-x:auto;scrollbar-width:none;padding:0 4px;-webkit-overflow-scrolling:touch;">
+        <span style="font-size:.72rem;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;white-space:nowrap;flex-shrink:0;padding-right:6px;border-right:1px solid var(--border-l);">⚡ Jump to / انتقل</span>
+        <a style="display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;border:1.5px solid rgba(245,158,11,.4);background:rgba(245,158,11,.08);color:#92400e;font-size:.82rem;font-weight:600;white-space:nowrap;text-decoration:none;transition:all .2s;flex-shrink:0;" href="tools/return-to-hotel.html">🏨 <span class="en">Return to Hotel</span><span class="ar">العودة للفندق</span></a>
+        <a style="display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;border:1.5px solid var(--border-l);background:var(--body-bg);color:var(--text-2);font-size:.82rem;font-weight:600;white-space:nowrap;text-decoration:none;transition:all .2s;flex-shrink:0;" href="travel.html#destinations">✈️ <span class="en">Destinations</span><span class="ar">الوجهات</span></a>
+        <a style="display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;border:1.5px solid var(--border-l);background:var(--body-bg);color:var(--text-2);font-size:.82rem;font-weight:600;white-space:nowrap;text-decoration:none;transition:all .2s;flex-shrink:0;" href="travel.html#tools">🗺️ <span class="en">Travel Tools</span><span class="ar">أدوات السفر</span></a>
+        <a style="display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;border:1.5px solid var(--border-l);background:var(--body-bg);color:var(--text-2);font-size:.82rem;font-weight:600;white-space:nowrap;text-decoration:none;transition:all .2s;flex-shrink:0;" href="travel.html#tools">🧳 <span class="en">Packing Checklist</span><span class="ar">قائمة الحزم</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container"><div class="ad-zone"><span>Advertisement</span></div></div>
+
+<!-- LIFESTYLE INTRO BRIDGE -->
+<section class="life-intro-bridge" aria-label="Travel context">
+  <div class="container">
+    <div class="lib-inner reveal">
+      <div class="lib-text">
+        <p class="lib-eyebrow"><span class="en">For the GCC traveller</span><span class="ar">للمسافر الخليجي</span></p>
+        <h2 class="lib-headline">
+          <span class="en">The gap between a good trip<br>and a great one is preparation.</span>
+          <span class="ar">الفرق بين رحلة جيدة<br>ورحلة رائعة هو التحضير.</span>
+        </h2>
+        <p class="lib-body en">GCC residents travel more than almost anyone else in the world — and often more spontaneously. But spontaneous doesn't have to mean unprepared. Know your true budget before you land. Pack exactly what you need for the climate you're entering. And if you ever get disoriented in a foreign city, know how to get back to your hotel without a panic. That's what these tools are for.</p>
+        <p class="lib-body ar">يسافر سكان الخليج أكثر من أي مكان آخر تقريباً — وكثيراً ما يسافرون بشكل عفوي. لكن العفوية لا تعني عدم الاستعداد. اعرف ميزانيتك الحقيقية قبل الوصول. اعبّئ حقيبتك بدقة حسب المناخ. وإن أُصبت بالتوهان في مدينة أجنبية، اعرف كيف تعود لفندقك دون ذعر. هذا هو ما صُمِّمت هذه الأدوات من أجله.</p>
+      </div>
+      <div class="lib-pillars">
+        <div class="lib-pillar">
+          <span class="lib-pillar-icon">💰</span>
+          <strong class="en">Multi-currency budget tools</strong>
+          <strong class="ar">أدوات ميزانية متعددة العملات</strong>
+          <span class="en">SAR, AED, USD — realistic cost planning</span>
+          <span class="ar">ريال، درهم، دولار — تخطيط واقعي للتكاليف</span>
+        </div>
+        <div class="lib-pillar">
+          <span class="lib-pillar-icon">🧳</span>
+          <strong class="en">Climate-intelligent packing</strong>
+          <strong class="ar">حزم ذكي حسب المناخ</strong>
+          <span class="en">Destination-specific checklists</span>
+          <span class="ar">قوائم مخصصة لكل وجهة</span>
+        </div>
+        <div class="lib-pillar">
+          <span class="lib-pillar-icon">🗺️</span>
+          <strong class="en">Emergency travel tools</strong>
+          <strong class="ar">أدوات السفر الطارئة</strong>
+          <span class="en">Find your hotel when lost abroad</span>
+          <span class="ar">ابحث عن فندقك عند التوهان في الخارج</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- GOLD FEATURED: RETURN TO HOTEL -->
+  <section style="padding:80px 0;" id="gold-tool">
+    <div class="container">
+      <div class="tools-header reveal" style="margin-bottom:32px;">
+        <span class="section-label" style="color:var(--gold);">
+          <span class="en">🌟 GOLD OPPORTUNITY · أداة ذهبية</span>
+          <span class="ar">🌟 الأداة الذهبية المميزة</span>
+        </span>
+        <h2><span class="en">Featured: Return to Hotel</span><span class="ar">مميز: العودة للفندق</span></h2>
+        <p><span class="en">The travel tool every GCC tourist abroad needs — find your hotel instantly when you're lost.</span><span class="ar">أداة السفر التي يحتاجها كل سائح خليجي في الخارج — ابحث عن فندقك فوراً عند التوه.</span></p>
+      </div>
+
+      <div class="featured-gold reveal">
+        <div style="position:relative;z-index:1;">
+          <div class="fg-badge">⭐ <span class="en">GOLD TOOL · أداة ذهبية</span><span class="ar">أداة ذهبية مميزة</span></div>
+          <div class="fg-label"><span class="en">THE TRAVEL PROBLEM SOLVER · حلّال مشكلة السفر</span></div>
+          <h2 class="fg-title">
+            <span class="en">Return to <span class="gold-text">Hotel</span><br>— Never Get Lost Again</span>
+            <span class="ar">العودة إلى <span class="gold-text">الفندق</span><br>— لن تضيع بعد الآن</span>
+          </h2>
+          <p class="fg-desc">
+            <span class="en">You're exploring a foreign city, your Arabic maps app isn't working in English street names, and you can't remember the hotel name. One tap — and this tool saves your hotel location, shows you exactly how far you are, and guides you back. No language barrier. No registration.</span>
+            <span class="ar">أنت تستكشف مدينة أجنبية، تطبيق الخرائط العربي لا يعمل بأسماء الشوارع الإنجليزية، ولا تتذكر اسم الفندق. لمسة واحدة — تحفظ هذه الأداة موقع فندقك وتُظهر لك البعد الدقيق وتعيدك إليه. بلا حاجز لغوي. بلا تسجيل.</span>
+          </p>
+          <div class="fg-features">
+            <div class="fg-feature">
+              <div class="fg-feature-icon">📍</div>
+              <span><span class="en">Save hotel location with one tap on arrival</span><span class="ar">حفظ موقع الفندق بلمسة واحدة عند الوصول</span></span>
+            </div>
+            <div class="fg-feature">
+              <div class="fg-feature-icon">🧭</div>
+              <span><span class="en">Live GPS distance from hotel — always updated</span><span class="ar">المسافة الحية بالـ GPS من الفندق — تتحدث دائماً</span></span>
+            </div>
+            <div class="fg-feature">
+              <div class="fg-feature-icon">🗺️</div>
+              <span><span class="en">Open in Maps / navigate directly</span><span class="ar">فتح في الخرائط / التنقل مباشرة</span></span>
+            </div>
+            <div class="fg-feature">
+              <div class="fg-feature-icon">🌐</div>
+              <span><span class="en">Works offline — no internet needed to find distance</span><span class="ar">يعمل بدون إنترنت — لا حاجة للشبكة لمعرفة المسافة</span></span>
+            </div>
+            <div class="fg-feature">
+              <div class="fg-feature-icon">🔒</div>
+              <span><span class="en">Data stays on your device — zero cloud storage</span><span class="ar">البيانات تبقى على جهازك — بدون تخزين سحابي</span></span>
+            </div>
+          </div>
+          <div class="hero-ctas">
+            <a href="tools/return-to-hotel.html" class="btn btn-gold">
+              <span class="en">Open Return to Hotel →</span>
+              <span class="ar">فتح أداة العودة للفندق →</span>
+            </a>
+            <a href="#tools" class="btn" style="background:rgba(255,255,255,.1);color:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.15);">
+              <span class="en">More Travel Tools</span>
+              <span class="ar">المزيد من أدوات السفر</span>
+            </a>
+          </div>
+        </div>
+        <div class="fg-visual">
+          <!-- Hotel mockup UI -->
+          <div class="hotel-mockup">
+            <div class="hotel-mockup-header">
+              <div class="hotel-mockup-dot">🏨</div>
+              <div>
+                <div class="hotel-mockup-name"><span class="en">My Hotel Saved ✓</span><span class="ar">فندقي محفوظ ✓</span></div>
+                <div class="hotel-mockup-addr"><span class="en">Paris, France · 48°52'N 2°21'E</span><span class="ar">باريس، فرنسا · 48°52'N 2°21'E</span></div>
+              </div>
+            </div>
+            <div class="hotel-mockup-distance">1.4 km</div>
+            <div class="hotel-mockup-dsub"><span class="en">from your current location</span><span class="ar">من موقعك الحالي</span></div>
+            <div class="hotel-mockup-bar"><div class="hotel-mockup-progress"></div></div>
+            <div style="display:flex;justify-content:space-between;font-size:.7rem;color:rgba(255,255,255,.4);margin-bottom:16px;">
+              <span><span class="en">You are here</span><span class="ar">أنت هنا</span></span>
+              <span><span class="en">Hotel</span><span class="ar">الفندق</span></span>
+            </div>
+            <div class="hotel-mockup-btn"><span class="en">🗺️ Navigate to Hotel</span><span class="ar">🗺️ التنقل إلى الفندق</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OTHER TRAVEL TOOLS -->
+  <section class="tools-section" id="tools" style="padding-top:0;">
+    <div class="container">
+      <div class="tools-header reveal">
+        <span class="section-label"><span class="en">ALL TRAVEL TOOLS · جميع أدوات السفر</span><span class="ar">جميع أدوات السفر</span></span>
+        <h2><span class="en">Smart Tools for Every Trip</span><span class="ar">أدوات ذكية لكل رحلة</span></h2>
+        <p><span class="en">From planning to arrival — everything a GCC traveler needs in one place.</span><span class="ar">من التخطيط حتى الوصول — كل ما يحتاجه المسافر الخليجي في مكان واحد.</span></p>
+      </div>
+      <div class="tools-grid">
+
+        <!-- Budget Calculator -->
+        <a href="tools/travel-budget.html" class="tool-card reveal" style="text-decoration:none;color:inherit;">
+          <div class="tool-top">
+            <div class="tool-icon-wrap">💰</div>
+            <span class="tool-badge"><span class="en">PLAN</span><span class="ar">تخطيط</span></span>
+          </div>
+          <div class="tool-name"><span class="en">Trip Budget Calculator</span><span class="ar">حاسبة ميزانية الرحلة</span></div>
+          <div class="tool-desc">
+            <span class="en">Plan your complete travel budget: flights, hotel, food, activities, and shopping. Get daily allowance breakdown with currency conversion for 50+ destinations.</span>
+            <span class="ar">خطّط ميزانية سفرك الكاملة: الطيران، الفندق، الطعام، الأنشطة، والتسوق. احصل على توزيع المصروف اليومي مع تحويل العملة لأكثر من 50 وجهة.</span>
+          </div>
+          <div class="tool-footer">
+            <span class="tool-usage"><span class="en">50+ currencies</span><span class="ar">50+ عملة</span></span>
+            <span class="tool-cta"><span class="en">Budget →</span><span class="ar">الميزانية →</span></span>
+          </div>
+        </a>
+
+        <!-- Packing Checklist -->
+        <a href="tools/packing-checklist.html" class="tool-card reveal" style="text-decoration:none;color:inherit;">
+          <div class="tool-top">
+            <div class="tool-icon-wrap">🧳</div>
+            <span class="tool-badge"><span class="en">PACK</span><span class="ar">تعبئة</span></span>
+          </div>
+          <div class="tool-name"><span class="en">Smart Packing Checklist</span><span class="ar">قائمة التعبئة الذكية</span></div>
+          <div class="tool-desc">
+            <span class="en">Personalized packing lists based on destination climate, trip length, and activity type. Includes GCC-specific items and Hajj/Umrah packing guide.</span>
+            <span class="ar">قوائم تعبئة مخصصة بناءً على مناخ الوجهة ومدة الرحلة ونوع النشاط. تشمل عناصر خاصة بالخليج ودليل تعبئة الحج والعمرة.</span>
+          </div>
+          <div class="tool-footer">
+            <span class="tool-usage"><span class="en">Personalized lists</span><span class="ar">قوائم مخصصة</span></span>
+            <span class="tool-cta"><span class="en">Pack →</span><span class="ar">عبّئ →</span></span>
+          </div>
+        </a>
+
+        <!-- Return to Hotel -->
+        <a href="tools/return-to-hotel.html" class="tool-card reveal" style="text-decoration:none;color:inherit;border-color:rgba(245,158,11,.35);">
+          <div class="tool-top">
+            <div class="tool-icon-wrap" style="background:rgba(245,158,11,.12);">🏨</div>
+            <span class="tool-badge tool-badge-gold"><span class="en">⭐ GOLD</span><span class="ar">⭐ ذهبية</span></span>
+          </div>
+          <div class="tool-name"><span class="en">Return to Hotel</span><span class="ar">العودة إلى الفندق</span></div>
+          <div class="tool-desc">
+            <span class="en">Lost in a foreign city? Save your hotel location on arrival and find your way back anytime — with live GPS distance and direct navigation.</span>
+            <span class="ar">تهت في مدينة أجنبية؟ احفظ موقع فندقك عند الوصول وعد إليه في أي وقت — بمسافة GPS حية وتنقل مباشر.</span>
+          </div>
+          <div class="tool-footer">
+            <span class="tool-usage"><span class="en">📍 GPS • Works offline</span><span class="ar">📍 GPS • يعمل بدون إنترنت</span></span>
+            <span class="tool-cta" style="background:linear-gradient(135deg,#F59E0B,#D97706);"><span class="en">Open →</span><span class="ar">فتح →</span></span>
+          </div>
+        </a>
+
+        <!-- Currency Converter -->
+        <a href="tools/currency-converter.html" class="tool-card reveal" style="text-decoration:none;color:inherit;">
+          <div class="tool-top">
+            <div class="tool-icon-wrap">💱</div>
+            <span class="tool-badge"><span class="en">LIVE</span><span class="ar">مباشر</span></span>
+          </div>
+          <div class="tool-name"><span class="en">Currency Converter</span><span class="ar">محول العملات</span></div>
+          <div class="tool-desc">
+            <span class="en">Live exchange rates for all GCC currencies (SAR, AED, KWD, BHD, OMR, QAR) against 150+ world currencies. Travel budget mode included.</span>
+            <span class="ar">أسعار الصرف الحية لجميع عملات الخليج (ريال، درهم، دينار كويتي، بحريني، ريال عماني، قطري) مقابل أكثر من 150 عملة عالمية.</span>
+          </div>
+          <div class="tool-footer">
+            <span class="tool-usage"><span class="en">150+ currencies</span><span class="ar">150+ عملة</span></span>
+            <span class="tool-cta"><span class="en">Convert →</span><span class="ar">حوّل →</span></span>
+          </div>
+        </a>
+
+        <!-- Flight Search Tips -->
+        <a href="tools/flight-tips.html" class="tool-card reveal" style="text-decoration:none;color:inherit;">
+          <div class="tool-top">
+            <div class="tool-icon-wrap">✈️</div>
+            <span class="tool-badge"><span class="en">GUIDE</span><span class="ar">دليل</span></span>
+          </div>
+          <div class="tool-name"><span class="en">Best Time to Fly</span><span class="ar">أفضل وقت للسفر</span></div>
+          <div class="tool-desc">
+            <span class="en">Find the cheapest months and days to fly from GCC airports. Seasonal price analysis for 30+ popular routes from Riyadh, Dubai, and Kuwait.</span>
+            <span class="ar">اعرف أرخص الأشهر والأيام للسفر من مطارات الخليج. تحليل موسمي للأسعار لأكثر من 30 مسار شائع من الرياض ودبي والكويت.</span>
+          </div>
+          <div class="tool-footer">
+            <span class="tool-usage"><span class="en">30+ routes</span><span class="ar">30+ مسار</span></span>
+            <span class="tool-cta"><span class="en">Explore →</span><span class="ar">استكشف →</span></span>
+          </div>
+        </a>
+
+        <!-- Travel Insurance Guide -->
+        <a href="guides/travel-insurance.html" class="tool-card reveal" style="text-decoration:none;color:inherit;">
+          <div class="tool-top">
+            <div class="tool-icon-wrap">🛡️</div>
+            <span class="tool-badge"><span class="en">GUIDE</span><span class="ar">دليل</span></span>
+          </div>
+          <div class="tool-name"><span class="en">Travel Insurance Guide</span><span class="ar">دليل تأمين السفر</span></div>
+          <div class="tool-desc">
+            <span class="en">Do GCC residents need travel insurance? Coverage guide with comparisons of the top providers accepted in Europe, Asia, and the Americas.</span>
+            <span class="ar">هل يحتاج مواطنو الخليج لتأمين السفر؟ دليل التغطية مع مقارنة أفضل مزودي الخدمة المقبولة في أوروبا وآسيا والأمريكتين.</span>
+          </div>
+          <div class="tool-footer">
+            <span class="tool-usage"><span class="en">GCC guide</span><span class="ar">دليل الخليج</span></span>
+            <span class="tool-cta"><span class="en">Read →</span><span class="ar">اقرأ →</span></span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- GCC FAVORITE DESTINATIONS -->
+  <section class="destinations-section">
+    <div class="container">
+      <div style="margin-bottom:8px;">
+        <span class="section-label"><span class="en">GCC FAVORITES · وجهات الخليج المفضلة</span><span class="ar">وجهات الخليج المفضلة</span></span>
+        <h2 style="font-size:1.8rem;font-weight:800;letter-spacing:-.02em;">
+          <span class="en">Popular Destinations from GCC</span>
+          <span class="ar">الوجهات الشائعة من دول الخليج</span>
+        </h2>
+      </div>
+      <div class="dest-grid">
+        <div class="city-card reveal">
+          <div class="city-bg">🇹🇷</div>
+          <div class="city-overlay"></div>
+          <div class="city-info">
+            <div class="city-name"><span class="en">Istanbul</span><span class="ar">إسطنبول</span></div>
+            <div class="city-country"><span class="en">Turkey</span><span class="ar">تركيا</span></div>
+            <div class="city-avg"><span class="en">Avg. 2,800 SAR/5 days</span><span class="ar">متوسط 2,800 ريال/5 أيام</span></div>
+          </div>
+        </div>
+        <div class="city-card reveal">
+          <div class="city-bg">🇬🇧</div>
+          <div class="city-overlay"></div>
+          <div class="city-info">
+            <div class="city-name"><span class="en">London</span><span class="ar">لندن</span></div>
+            <div class="city-country"><span class="en">United Kingdom</span><span class="ar">المملكة المتحدة</span></div>
+            <div class="city-avg"><span class="en">Avg. 8,500 SAR/7 days</span><span class="ar">متوسط 8,500 ريال/7 أيام</span></div>
+          </div>
+        </div>
+        <div class="city-card reveal">
+          <div class="city-bg">🇲🇾</div>
+          <div class="city-overlay"></div>
+          <div class="city-info">
+            <div class="city-name"><span class="en">Kuala Lumpur</span><span class="ar">كوالالمبور</span></div>
+            <div class="city-country"><span class="en">Malaysia</span><span class="ar">ماليزيا</span></div>
+            <div class="city-avg"><span class="en">Avg. 3,200 SAR/7 days</span><span class="ar">متوسط 3,200 ريال/7 أيام</span></div>
+          </div>
+        </div>
+        <div class="city-card reveal">
+          <div class="city-bg">🇯🇵</div>
+          <div class="city-overlay"></div>
+          <div class="city-info">
+            <div class="city-name"><span class="en">Tokyo</span><span class="ar">طوكيو</span></div>
+            <div class="city-country"><span class="en">Japan</span><span class="ar">اليابان</span></div>
+            <div class="city-avg"><span class="en">Avg. 7,000 SAR/7 days</span><span class="ar">متوسط 7,000 ريال/7 أيام</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRAVEL TIPS -->
+  <section class="tips-section">
+    <div class="container">
+      <div style="margin-bottom:8px;">
+        <span class="section-label"><span class="en">SMART TIPS · نصائح ذكية</span><span class="ar">نصائح ذكية للمسافر الخليجي</span></span>
+        <h2 style="font-size:1.8rem;font-weight:800;letter-spacing:-.02em;">
+          <span class="en">GCC Traveler Tips</span><span class="ar">نصائح للمسافر الخليجي</span>
+        </h2>
+      </div>
+      <div class="tips-grid">
+        <div class="tip-card reveal">
+          <div class="tip-icon">📱</div>
+          <div>
+            <div class="tip-title"><span class="en">Save Hotel Before You Explore</span><span class="ar">احفظ الفندق قبل الاستكشاف</span></div>
+            <div class="tip-desc"><span class="en">Use Return to Hotel on arrival before you leave. It takes 5 seconds and saves hours of confusion in foreign streets.</span><span class="ar">استخدم أداة العودة للفندق عند الوصول قبل المغادرة. تستغرق 5 ثوانٍ وتوفر ساعات من الضياع في الشوارع الأجنبية.</span></div>
+          </div>
+        </div>
+        <div class="tip-card reveal">
+          <div class="tip-icon">💳</div>
+          <div>
+            <div class="tip-title"><span class="en">Notify Your Bank Before Travel</span><span class="ar">أبلغ بنكك قبل السفر</span></div>
+            <div class="tip-desc"><span class="en">Most GCC banks freeze cards for "unusual activity" abroad. Set a travel notification to avoid being stranded without access to your funds.</span><span class="ar">معظم بنوك الخليج تجمّد البطاقات بسبب "نشاط غير معتاد" في الخارج. اضبط إشعار السفر لتجنب الانقطاع عن أموالك.</span></div>
+          </div>
+        </div>
+        <div class="tip-card reveal">
+          <div class="tip-icon">🌐</div>
+          <div>
+            <div class="tip-title"><span class="en">Get a Local SIM or eSIM</span><span class="ar">احصل على شريحة محلية أو eSIM</span></div>
+            <div class="tip-desc"><span class="en">Roaming from GCC carriers is expensive. A local SIM or eSIM for your destination saves 60-80% on data costs and keeps you connected.</span><span class="ar">التجوال من شركات الخليج مكلف. الشريحة المحلية أو eSIM للوجهة توفر 60-80٪ من تكاليف البيانات وتبقيك متصلاً.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><div class="ad-zone"><span>Advertisement</span></div></div>
+
+  <footer class="footer-strip">
+    <div class="container">
+      <p>
+        <span class="en">© 2025 <a href="index.html">DOTFORLIFE</a> · Free Travel Tools for GCC · Bilingual Arabic & English · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></span>
+        <span class="ar">© 2025 <a href="index.html">DOTFORLIFE</a> · أدوات السفر المجانية للخليج · ثنائية اللغة · <a href="privacy.html">الخصوصية</a> · <a href="terms.html">الشروط</a></span>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const themeBtn = document.getElementById('themeBtn');
+    const langBtn  = document.getElementById('langBtn');
+    const html     = document.documentElement;
+    themeBtn.addEventListener('click', () => {
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      themeBtn.textContent = isDark ? '🌙' : '☀️';
+      localStorage.setItem('dfl-theme', isDark ? 'light' : 'dark');
+    });
+    if (html.getAttribute('data-theme') === 'dark') themeBtn.textContent = '☀️';
+    langBtn.addEventListener('click', () => {
+      const isAr = html.getAttribute('data-lang') === 'ar';
+      const newLang = isAr ? 'en' : 'ar';
+      html.setAttribute('data-lang', newLang);
+      html.setAttribute('lang', newLang);
+      html.setAttribute('dir', newLang === 'ar' ? 'rtl' : 'ltr');
+      localStorage.setItem('dfl-lang', newLang);
+    });
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 10); }, { passive: true });
+    const reveals = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    reveals.forEach(r => obs.observe(r));
+  </script>
+<script>
+// Scroll Progress Bar
+(function(){var b=document.createElement("div");b.style.cssText="position:fixed;top:0;left:0;width:0%;height:3px;background:linear-gradient(90deg,#0066CC,#06B6D4);z-index:9999;transition:width .1s linear;pointer-events:none;";document.body.appendChild(b);window.addEventListener("scroll",function(){var d=document.documentElement.scrollHeight-window.innerHeight;b.style.width=(d>0?Math.min(100,(window.scrollY/d)*100):0)+"%";},{passive:true});})();</script>
+</body>
+</html>

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-lang="en" dir="ltr">
+<head>
+<script>(function(){var t=localStorage.getItem('dfl-theme')||'light';var l=localStorage.getItem('dfl-lang')||'en';var h=document.documentElement;h.setAttribute('data-theme',t);h.setAttribute('data-lang',l);h.setAttribute('lang',l);h.setAttribute('dir',l==='ar'?'rtl':'ltr');})()</script>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<title>Ramadan Calorie Calculator 2025 — Suhoor & Iftar Nutrition | DotForLife</title>
+<meta name="description" content="Calculate your daily calorie needs during Ramadan fasting. Suhoor and Iftar meal breakdown, fasting TDEE, hydration targets. Bilingual Arabic & English. Free."/>
+<link rel="canonical" href="https://dotforlife.com/tools/ramadan-calorie-calculator"/>
+<meta property="og:title" content="Ramadan Calorie Calculator — Suhoor & Iftar Nutrition | DotForLife"/>
+<meta property="og:description" content="Smart calorie planner for Ramadan fasting. Know exactly how much to eat at Suhoor and Iftar to maintain your health and weight goals."/>
+<meta property="og:image" content="https://dotforlife.com/og/islamic.jpg"/>
+<meta property="og:type" content="website"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta http-equiv="x-dns-prefetch-control" content="on"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Almarai:wght@400;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Almarai:wght@400;700;800&display=swap"/></noscript>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Ramadan Calorie Calculator","alternateName":"حاسبة سعرات رمضان","url":"https://dotforlife.com/tools/ramadan-calorie-calculator","applicationCategory":"HealthApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"inLanguage":["en","ar"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://dotforlife.com"},{"@type":"ListItem","position":2,"name":"Islamic","item":"https://dotforlife.com/islamic"},{"@type":"ListItem","position":3,"name":"Ramadan Calorie Calculator","item":"https://dotforlife.com/tools/ramadan-calorie-calculator"}]}]}</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#F5F0FF;--bg2:#FFFFFF;--card:#FFFFFF;--border:#DDD6FE;--border-l:#C4B5FD;
+  --text:#0F172A;--text2:#475569;--muted:#94A3B8;
+  --accent:#1B7A4E;--accent-d:#155E3B;--accent-soft:rgba(27,122,78,.08);--accent-glow:rgba(27,122,78,.18);
+  --moon:#7C3AED;--gold:#D97706;
+  --r:14px;--shadow:0 4px 20px rgba(27,122,78,.10);
+}
+[data-theme="dark"]{
+  --bg:#0D1117;--bg2:#111827;--card:#1A2332;--border:#1E3A2F;--border-l:#166534;
+  --text:#F0FDF4;--text2:#94A3B8;--muted:#64748B;
+  --accent:#22C55E;--accent-d:#16A34A;--accent-soft:rgba(34,197,94,.08);--accent-glow:rgba(34,197,94,.18);
+  --moon:#A78BFA;--gold:#FBBF24;
+  --shadow:0 4px 20px rgba(0,0,0,.35);
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Inter','Almarai',system-ui,sans-serif;line-height:1.6;min-height:100vh;}
+[data-lang="ar"] body{font-family:'Almarai','Inter',system-ui,sans-serif;}
+.en,[data-lang="en"] .ar{display:none;}
+[data-lang="en"] .en{display:initial;}
+[data-lang="ar"] .en{display:none;}
+[data-lang="ar"] .ar{display:initial;}
+
+/* NAV */
+.topbar{background:var(--bg2);border-bottom:1px solid var(--border);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+.topbar-brand{font-weight:800;font-size:1.1rem;text-decoration:none;color:var(--text);letter-spacing:-.02em;}
+.topbar-brand span{color:var(--accent);}
+.ctrl-btn{padding:6px 14px;border-radius:999px;border:1.5px solid var(--border-l);background:transparent;color:var(--text2);font-size:.8rem;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s;display:flex;align-items:center;gap:6px;}
+.ctrl-btn:hover{border-color:var(--accent);color:var(--accent);}
+.topbar-actions{display:flex;gap:8px;}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#1B3A4B 0%,#1B7A4E 50%,#0D4732 100%);color:#fff;padding:3rem 20px 2.5rem;text-align:center;position:relative;overflow:hidden;}
+.hero::after{content:'☪';position:absolute;right:-20px;top:-20px;font-size:10rem;opacity:.04;pointer-events:none;}
+.hero-breadcrumb{margin-bottom:1rem;font-size:.78rem;opacity:.7;}
+.hero-breadcrumb a{color:#fff;text-decoration:none;}
+.hero-emoji{font-size:3rem;margin-bottom:.5rem;display:block;}
+.hero-title{font-size:clamp(1.5rem,4vw,2.1rem);font-weight:800;margin-bottom:.5rem;letter-spacing:-.02em;}
+.hero-sub{font-size:clamp(.88rem,2vw,1rem);opacity:.85;max-width:540px;margin:0 auto 1rem;}
+.hero-badges{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;}
+.h-badge{padding:4px 12px;border-radius:999px;background:rgba(255,255,255,.12);font-size:.75rem;font-weight:600;color:#fff;}
+
+/* CONTAINER */
+.container{max-width:720px;margin:0 auto;padding:0 20px;}
+
+/* FORM */
+.calc-card{background:var(--card);border:1.5px solid var(--border);border-radius:var(--r);padding:1.75rem;margin:2rem auto;box-shadow:var(--shadow);}
+.calc-card-title{font-size:1.05rem;font-weight:800;margin-bottom:1.5rem;color:var(--text);border-bottom:1px solid var(--border);padding-bottom:.75rem;}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+@media(max-width:520px){.form-grid{grid-template-columns:1fr;}}
+.form-group{display:flex;flex-direction:column;gap:.4rem;}
+.form-group.full{grid-column:1/-1;}
+.form-label{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);}
+.form-input,.form-select{padding:.65rem .9rem;border:1.5px solid var(--border-l);border-radius:9px;background:var(--bg);color:var(--text);font-family:inherit;font-size:.92rem;transition:border-color .2s;width:100%;}
+.form-input:focus,.form-select:focus{outline:none;border-color:var(--accent);}
+.form-select{cursor:pointer;}
+
+/* GOAL TOGGLE */
+.goal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.65rem;}
+.goal-btn{padding:.65rem .5rem;border-radius:10px;border:2px solid var(--border);background:var(--bg);cursor:pointer;text-align:center;font-family:inherit;transition:all .2s;font-size:.82rem;font-weight:700;color:var(--text);}
+.goal-btn:hover{border-color:var(--accent);background:var(--accent-soft);}
+.goal-btn.active{border-color:var(--accent);background:var(--accent-soft);box-shadow:0 0 0 3px var(--accent-glow);}
+.goal-btn .gb-icon{font-size:1.3rem;display:block;margin-bottom:.2rem;}
+
+.calc-btn{width:100%;padding:.9rem;border-radius:10px;border:none;background:var(--accent);color:#fff;font-size:1rem;font-weight:800;cursor:pointer;font-family:inherit;transition:background .2s,transform .15s;margin-top:1rem;}
+.calc-btn:hover{background:var(--accent-d);transform:translateY(-1px);}
+
+/* RESULTS */
+.results{display:none;margin-bottom:2rem;}
+.results.show{display:block;}
+.res-section-title{font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:1.5rem 0 .75rem;}
+
+/* KPI row */
+.kpi-row{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-bottom:1rem;}
+@media(max-width:480px){.kpi-row{grid-template-columns:1fr 1fr;}}
+.kpi-box{background:var(--card);border:1.5px solid var(--border);border-radius:var(--r);padding:1rem .9rem;text-align:center;}
+.kpi-val{font-size:1.6rem;font-weight:800;color:var(--accent);line-height:1;}
+.kpi-unit{font-size:.7rem;color:var(--muted);margin-top:.1rem;}
+.kpi-label{font-size:.75rem;color:var(--text2);margin-top:.3rem;font-weight:600;}
+
+/* Meal cards */
+.meal-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+@media(max-width:520px){.meal-cards{grid-template-columns:1fr;}}
+.meal-card{border-radius:var(--r);padding:1.25rem;border:2px solid;}
+.meal-suhoor{border-color:#7C3AED;background:linear-gradient(135deg,rgba(124,58,237,.06),rgba(124,58,237,.02));}
+.meal-iftar{border-color:#D97706;background:linear-gradient(135deg,rgba(217,119,6,.06),rgba(217,119,6,.02));}
+.meal-card-icon{font-size:1.8rem;display:block;margin-bottom:.4rem;}
+.meal-card-title{font-size:.95rem;font-weight:800;color:var(--text);margin-bottom:.5rem;}
+.meal-card-cal{font-size:1.5rem;font-weight:800;margin-bottom:.25rem;}
+.meal-suhoor .meal-card-cal{color:#7C3AED;}
+[data-theme="dark"] .meal-suhoor .meal-card-cal{color:#A78BFA;}
+.meal-iftar .meal-card-cal{color:#D97706;}
+[data-theme="dark"] .meal-iftar .meal-card-cal{color:#FBBF24;}
+.meal-card-sub{font-size:.78rem;color:var(--text2);}
+.meal-tips{margin-top:.75rem;padding:.65rem;background:rgba(0,0,0,.03);border-radius:8px;}
+[data-theme="dark"] .meal-tips{background:rgba(255,255,255,.04);}
+.meal-tip{font-size:.75rem;color:var(--text2);display:flex;align-items:flex-start;gap:.4rem;margin-bottom:.3rem;}
+.meal-tip:last-child{margin-bottom:0;}
+
+/* Hydration */
+.hydration-bar-wrap{background:var(--border);border-radius:999px;height:10px;overflow:hidden;margin:.5rem 0;}
+.hydration-bar{height:100%;background:linear-gradient(90deg,#0097A7,#22D3EE);border-radius:999px;transition:width .6s cubic-bezier(.22,1,.36,1);}
+.water-glasses{display:flex;gap:4px;flex-wrap:wrap;margin-top:.5rem;}
+.wg{font-size:1.2rem;opacity:.25;transition:opacity .3s;}
+.wg.filled{opacity:1;}
+
+/* Tips */
+.tip-list{display:flex;flex-direction:column;gap:.65rem;}
+.tip-item{display:flex;gap:.75rem;align-items:flex-start;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:.75rem 1rem;}
+.tip-icon{font-size:1.2rem;flex-shrink:0;margin-top:.05rem;}
+.tip-text{font-size:.82rem;color:var(--text2);line-height:1.5;}
+
+/* DISCLAIMER */
+.disclaimer{background:var(--accent-soft);border:1px solid var(--border-l);border-radius:10px;padding:.85rem 1rem;font-size:.76rem;color:var(--text2);margin:1.5rem auto;max-width:720px;}
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <a class="topbar-brand" href="../index.html">dot<span>.</span>life</a>
+  <div class="topbar-actions">
+    <button class="ctrl-btn" id="themeBtn">🌙</button>
+    <button class="ctrl-btn" id="langBtn"><span class="en">عربي</span><span class="ar">English</span></button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-breadcrumb">
+    <a href="../index.html"><span class="en">Home</span><span class="ar">الرئيسية</span></a> ›
+    <a href="../islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a> ›
+    <span class="en">Ramadan Calories</span><span class="ar">سعرات رمضان</span>
+  </div>
+  <span class="hero-emoji">🌙</span>
+  <h1 class="hero-title"><span class="en">Ramadan Calorie Calculator</span><span class="ar">حاسبة السعرات الحرارية في رمضان</span></h1>
+  <p class="hero-sub">
+    <span class="en">Personalised Suhoor & Iftar calorie targets based on your body, activity level, and Ramadan goals.</span>
+    <span class="ar">أهداف سعرات السحور والإفطار المخصّصة بناءً على جسمك ومستوى نشاطك وأهداف رمضانك.</span>
+  </p>
+  <div class="hero-badges">
+    <span class="h-badge">🌙 <span class="en">Fasting-Adapted</span><span class="ar">محسوب للصيام</span></span>
+    <span class="h-badge">⚗️ <span class="en">Mifflin-St Jeor</span></span>
+    <span class="h-badge">🌍 <span class="en">GCC Climate</span><span class="ar">مناخ الخليج</span></span>
+  </div>
+</header>
+
+<div class="container">
+
+<div class="calc-card">
+  <div class="calc-card-title">🌙 <span class="en">Your Ramadan Profile</span><span class="ar">ملفك في رمضان</span></div>
+
+  <div class="form-grid">
+    <div class="form-group">
+      <label class="form-label"><span class="en">Age</span><span class="ar">العمر</span></label>
+      <input class="form-input" type="number" id="age" min="14" max="90" value="30" placeholder="30"/>
+    </div>
+    <div class="form-group">
+      <label class="form-label"><span class="en">Gender</span><span class="ar">الجنس</span></label>
+      <select class="form-select" id="gender">
+        <option value="male"><span class="en">Male</span></option>
+        <option value="female"><span class="en">Female</span></option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label"><span class="en">Weight (kg)</span><span class="ar">الوزن (كجم)</span></label>
+      <input class="form-input" type="number" id="weight" min="30" max="250" value="75" placeholder="75"/>
+    </div>
+    <div class="form-group">
+      <label class="form-label"><span class="en">Height (cm)</span><span class="ar">الطول (سم)</span></label>
+      <input class="form-input" type="number" id="height" min="100" max="230" value="170" placeholder="170"/>
+    </div>
+    <div class="form-group full">
+      <label class="form-label"><span class="en">Activity Level During Ramadan</span><span class="ar">مستوى النشاط في رمضان</span></label>
+      <select class="form-select" id="activity">
+        <option value="1.2"><span class="en">Sedentary (desk job, little movement)</span></option>
+        <option value="1.375" selected><span class="en">Light (short walks, light household tasks)</span></option>
+        <option value="1.55"><span class="en">Moderate (daily exercise after Iftar)</span></option>
+        <option value="1.725"><span class="en">Active (Tarawih + daily workout)</span></option>
+      </select>
+    </div>
+    <div class="form-group full">
+      <label class="form-label"><span class="en">Ramadan Goal</span><span class="ar">هدف رمضان</span></label>
+      <div class="goal-grid">
+        <button class="goal-btn" data-goal="lose"><span class="gb-icon">⬇️</span><span class="en">Lose Weight</span><span class="ar">خسارة وزن</span></button>
+        <button class="goal-btn active" data-goal="maintain"><span class="gb-icon">⚖️</span><span class="en">Maintain Weight</span><span class="ar">ثبات الوزن</span></button>
+        <button class="goal-btn" data-goal="gain"><span class="gb-icon">💪</span><span class="en">Maintain Muscle</span><span class="ar">الحفاظ على العضلات</span></button>
+      </div>
+    </div>
+  </div>
+
+  <button class="calc-btn" id="calcBtn">
+    <span class="en">🌙 Calculate My Ramadan Nutrition</span>
+    <span class="ar">🌙 احسب تغذيتي في رمضان</span>
+  </button>
+</div>
+
+<!-- RESULTS -->
+<div class="results" id="results">
+
+  <div class="res-section-title"><span class="en">📊 Your Daily Calorie Summary</span><span class="ar">📊 ملخص سعراتك اليومية</span></div>
+  <div class="kpi-row">
+    <div class="kpi-box">
+      <div class="kpi-val" id="r-tdee">—</div>
+      <div class="kpi-unit">kcal/<span class="en">day</span><span class="ar">يوم</span></div>
+      <div class="kpi-label"><span class="en">Ramadan TDEE</span><span class="ar">السعرات اليومية</span></div>
+    </div>
+    <div class="kpi-box">
+      <div class="kpi-val" id="r-target">—</div>
+      <div class="kpi-unit">kcal/<span class="en">day</span><span class="ar">يوم</span></div>
+      <div class="kpi-label"><span class="en">Target Intake</span><span class="ar">الاستهلاك المستهدف</span></div>
+    </div>
+    <div class="kpi-box">
+      <div class="kpi-val" id="r-water">—</div>
+      <div class="kpi-unit">L</div>
+      <div class="kpi-label"><span class="en">Water (Iftar–Suhoor)</span><span class="ar">الماء (إفطار–سحور)</span></div>
+    </div>
+  </div>
+
+  <div class="res-section-title"><span class="en">🍽️ Meal Breakdown</span><span class="ar">🍽️ توزيع الوجبات</span></div>
+  <div class="meal-cards">
+    <div class="meal-card meal-suhoor">
+      <span class="meal-card-icon">🌅</span>
+      <div class="meal-card-title"><span class="en">Suhoor (Pre-dawn)</span><span class="ar">السحور (قبل الفجر)</span></div>
+      <div class="meal-card-cal" id="r-suhoor">—</div>
+      <div class="meal-card-sub en">kcal · ~35% of daily target</div>
+      <div class="meal-card-sub ar">سعرة · ~٣٥٪ من هدفك اليومي</div>
+      <div class="meal-tips">
+        <div class="meal-tip">🥣 <span class="en">Slow-release carbs: oats, whole grain bread</span><span class="ar">كربوهيدرات بطيئة: شوفان، خبز أسمر</span></div>
+        <div class="meal-tip">🥚 <span class="en">Protein: eggs, labneh, cheese</span><span class="ar">بروتين: بيض، لبنة، جبن</span></div>
+        <div class="meal-tip">🍌 <span class="en">Fruit for natural sugars & fibre</span><span class="ar">فاكهة للسكر الطبيعي والألياف</span></div>
+        <div class="meal-tip">💧 <span class="en">2–3 glasses of water before Fajr</span><span class="ar">٢-٣ أكواب ماء قبل الفجر</span></div>
+      </div>
+    </div>
+    <div class="meal-card meal-iftar">
+      <span class="meal-card-icon">🌙</span>
+      <div class="meal-card-title"><span class="en">Iftar (Sunset meal)</span><span class="ar">الإفطار (وجبة الغروب)</span></div>
+      <div class="meal-card-cal" id="r-iftar">—</div>
+      <div class="meal-card-sub en">kcal · ~65% of daily target</div>
+      <div class="meal-card-sub ar">سعرة · ~٦٥٪ من هدفك اليومي</div>
+      <div class="meal-tips">
+        <div class="meal-tip">🌴 <span class="en">Break fast with 3 dates + water (Sunnah)</span><span class="ar">أفطر على ٣ تمرات + ماء (سنّة)</span></div>
+        <div class="meal-tip">🍲 <span class="en">Soup first — prevents overeating</span><span class="ar">الحساء أولاً — يمنع الإفراط في الأكل</span></div>
+        <div class="meal-tip">🥗 <span class="en">Balanced plate: protein + veg + complex carbs</span><span class="ar">طبق متوازن: بروتين + خضار + كربوهيدرات</span></div>
+        <div class="meal-tip">⏰ <span class="en">Eat slowly — your stomach is smaller after fasting</span><span class="ar">كُل ببطء — معدتك أصغر بعد الصيام</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="res-section-title"><span class="en">💧 Hydration Plan (Iftar to Suhoor)</span><span class="ar">💧 خطة الترطيب (من الإفطار إلى السحور)</span></div>
+  <div class="calc-card" style="padding:1.25rem;">
+    <div id="waterGlassesLabel" style="font-size:.85rem;color:var(--text2);margin-bottom:.5rem;"></div>
+    <div class="water-glasses" id="waterGlasses"></div>
+    <div class="hydration-bar-wrap"><div class="hydration-bar" id="waterBar" style="width:0%"></div></div>
+    <p style="font-size:.75rem;color:var(--muted);margin-top:.5rem;"><span class="en">Spread across the non-fasting window — Iftar, evening, Tarawih, Suhoor.</span><span class="ar">وزّعها على نافذة الإفراط — الإفطار والمساء والتراويح والسحور.</span></p>
+  </div>
+
+  <div class="res-section-title"><span class="en">✨ Ramadan Nutrition Tips</span><span class="ar">✨ نصائح التغذية في رمضان</span></div>
+  <div class="tip-list">
+    <div class="tip-item"><span class="tip-icon">🚫</span><p class="tip-text"><span class="en"><strong>Avoid fried foods</strong> at Iftar — they cause energy crashes and increase thirst during the next day's fast.</span><span class="ar"><strong>تجنّب الأطعمة المقلية</strong> عند الإفطار — فهي تسبب انهيار الطاقة وتزيد العطش في صيام اليوم التالي.</span></p></div>
+    <div class="tip-item"><span class="tip-icon">🌙</span><p class="tip-text"><span class="en"><strong>Don't skip Suhoor.</strong> It is the most important meal — it sustains your energy and protects muscle mass throughout the fast.</span><span class="ar"><strong>لا تتخطَ السحور.</strong> إنه أهم وجبة — يحافظ على طاقتك ويحمي كتلتك العضلية طوال الصيام.</span></p></div>
+    <div class="tip-item"><span class="tip-icon">☕</span><p class="tip-text"><span class="en"><strong>Limit caffeine</strong> at Suhoor — coffee and tea are diuretics that increase water loss during your fast.</span><span class="ar"><strong>قلّل الكافيين</strong> في السحور — القهوة والشاي مدرّات للبول تزيد فقدان الماء أثناء صيامك.</span></p></div>
+    <div class="tip-item"><span class="tip-icon">🏃</span><p class="tip-text"><span class="en"><strong>Exercise timing:</strong> light exercise before Iftar (fat burning) or 2–3 hours after Iftar (performance training) works best during Ramadan.</span><span class="ar"><strong>توقيت التمرين:</strong> التمرين الخفيف قبل الإفطار (حرق الدهون) أو ٢-٣ ساعات بعد الإفطار (تدريب الأداء) يعمل بشكل أفضل في رمضان.</span></p></div>
+    <div class="tip-item"><span class="tip-icon">🌡️</span><p class="tip-text"><span class="en"><strong>GCC heat increases water loss</strong> even indoors. Prioritise hydration in the Iftar–Suhoor window — aim for the calculated target above.</span><span class="ar"><strong>حرارة الخليج تزيد فقدان الماء</strong> حتى في الداخل. أعطِ الأولوية للترطيب في نافذة الإفطار–السحور — استهدف الرقم المحسوب أعلاه.</span></p></div>
+  </div>
+
+</div><!-- /results -->
+
+<div class="disclaimer container">
+  ⚠️ <span class="en"><strong>For informational purposes only.</strong> This calculator uses established formulas (Mifflin-St Jeor BMR). Consult a doctor before making dietary changes, especially if you have diabetes, hypertension, or other conditions affected by fasting.</span>
+  <span class="ar"><strong>لأغراض معلوماتية فقط.</strong> تستخدم هذه الحاسبة معادلات راسخة (ميفلين-سانت جور). استشر طبيبك قبل إجراء تغييرات غذائية، خاصة إذا كنت مصاباً بالسكري أو ضغط الدم أو حالات أخرى تتأثر بالصيام.</span>
+</div>
+
+</div><!-- /container -->
+
+<!-- Back to Category FAB -->
+<style>
+.back-cat-fab{position:fixed;bottom:1.5rem;right:1.5rem;z-index:890;display:inline-flex;align-items:center;gap:.4rem;padding:.6rem 1.15rem .6rem .9rem;border-radius:50px;background:#1B7A4E;color:#fff;font-size:.78rem;font-weight:700;text-decoration:none;box-shadow:0 4px 18px rgba(0,0,0,.22);opacity:0;transform:translateY(10px) scale(.96);transition:opacity .28s cubic-bezier(.22,1,.36,1),transform .28s cubic-bezier(.22,1,.36,1);pointer-events:none;white-space:nowrap;}
+.back-cat-fab.fab-visible{opacity:1;transform:translateY(0) scale(1);pointer-events:auto;}
+.back-cat-fab:hover{filter:brightness(1.12);transform:translateY(-1px) scale(1.02);}
+[data-lang="ar"] .back-cat-fab{right:auto;left:1.5rem;flex-direction:row-reverse;}
+</style>
+<a class="back-cat-fab" id="backCatFab" href="../islamic.html">
+  <span>←</span>
+  <span class="en">Islamic</span>
+  <span class="ar">الإسلامية</span>
+</a>
+
+<script>
+let currentGoal = 'maintain';
+
+// Goal buttons
+document.querySelectorAll('.goal-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.goal-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentGoal = btn.dataset.goal;
+  });
+});
+
+function calculate() {
+  const age = parseFloat(document.getElementById('age').value) || 30;
+  const gender = document.getElementById('gender').value;
+  const weight = parseFloat(document.getElementById('weight').value) || 75;
+  const height = parseFloat(document.getElementById('height').value) || 170;
+  const activity = parseFloat(document.getElementById('activity').value) || 1.375;
+
+  // Mifflin-St Jeor BMR
+  let bmr;
+  if(gender === 'male') bmr = 10*weight + 6.25*height - 5*age + 5;
+  else bmr = 10*weight + 6.25*height - 5*age - 161;
+
+  // Fasting reduces TDEE by ~15–20% (circadian rhythm adjustment)
+  const fastingFactor = 0.87;
+  const tdee = Math.round(bmr * activity * fastingFactor);
+
+  let target;
+  if(currentGoal === 'lose') target = Math.round(tdee * 0.82);
+  else if(currentGoal === 'gain') target = Math.round(tdee * 1.05);
+  else target = tdee;
+
+  const suhoor = Math.round(target * 0.35);
+  const iftar  = Math.round(target * 0.65);
+
+  // Water: base 35ml/kg + 300ml for GCC heat, split over ~8h window
+  const water = Math.round((weight * 35 + 300) / 100) / 10;
+  const glasses = Math.round(water / 0.25);
+
+  // Animate KPIs
+  animateKPI('r-tdee', tdee);
+  animateKPI('r-target', target);
+  document.getElementById('r-water').textContent = water.toFixed(1);
+  animateKPI('r-suhoor', suhoor, ' kcal');
+  animateKPI('r-iftar', iftar, ' kcal');
+
+  // Water glasses
+  const wgWrap = document.getElementById('waterGlasses');
+  wgWrap.innerHTML = '';
+  for(let i=0;i<glasses;i++){
+    const sp = document.createElement('span');
+    sp.className='wg';
+    sp.textContent='🥛';
+    wgWrap.appendChild(sp);
+    setTimeout(()=>sp.classList.add('filled'),(i*60)+200);
+  }
+  document.getElementById('waterBar').style.width='100%';
+  const isAr = document.documentElement.getAttribute('data-lang')==='ar';
+  document.getElementById('waterGlassesLabel').innerHTML = isAr
+    ? `<span class="ar">اشرب <strong>${glasses} كوب</strong> (${water.toFixed(1)} لتر) من الإفطار إلى السحور</span>`
+    : `<span class="en">Drink <strong>${glasses} glasses</strong> (${water.toFixed(1)}L) between Iftar and Suhoor</span>`;
+
+  const res = document.getElementById('results');
+  res.classList.add('show');
+  res.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function animateKPI(id, target, suffix='') {
+  const el = document.getElementById(id);
+  const dur=700;const start=performance.now();
+  (function step(now){
+    const p=Math.min((now-start)/dur,1);
+    const ease=1-Math.pow(1-p,3);
+    el.textContent=Math.round(target*ease)+(suffix||'');
+    if(p<1)requestAnimationFrame(step);else el.textContent=target+(suffix||'');
+  })(start);
+}
+
+document.getElementById('calcBtn').addEventListener('click', calculate);
+
+// THEME + LANG
+document.getElementById('themeBtn').addEventListener('click', ()=>{
+  const h=document.documentElement;const dark=h.getAttribute('data-theme')!=='dark';
+  h.setAttribute('data-theme',dark?'dark':'light');localStorage.setItem('dfl-theme',dark?'dark':'light');
+  document.getElementById('themeBtn').textContent=dark?'☀️':'🌙';
+});
+(function(){const t=localStorage.getItem('dfl-theme')||'light';document.getElementById('themeBtn').textContent=t==='dark'?'☀️':'🌙';})();
+document.getElementById('langBtn').addEventListener('click',()=>{
+  const h=document.documentElement;const cur=h.getAttribute('data-lang')||'en';const next=cur==='en'?'ar':'en';
+  h.setAttribute('data-lang',next);h.setAttribute('lang',next);h.setAttribute('dir',next==='ar'?'rtl':'ltr');
+  localStorage.setItem('dfl-lang',next);
+});
+
+// FAB
+(function(){var fab=document.getElementById('backCatFab');if(!fab)return;window.addEventListener('scroll',function(){fab.classList.toggle('fab-visible',window.scrollY>280);},{passive:true});})();
+
+// Scroll Progress
+(function(){var b=document.createElement('div');b.style.cssText='position:fixed;top:0;left:0;width:0%;height:3px;background:linear-gradient(90deg,#1B7A4E,#22C55E);z-index:9999;transition:width .1s linear;pointer-events:none;';document.body.appendChild(b);window.addEventListener('scroll',function(){var d=document.documentElement.scrollHeight-window.innerHeight;b.style.width=(d>0?Math.min(100,(window.scrollY/d)*100):0)+'%';},{passive:true});})();
+</script>
+</body>
+</html>
