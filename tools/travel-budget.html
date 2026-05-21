@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light" data-lang="en">
+<head>
+  <script>
+    (function(){
+      var t=localStorage.getItem('dfl-theme')||'light';
+      var l=localStorage.getItem('dfl-lang')||'en';
+      var h=document.documentElement;
+      h.setAttribute('data-theme',t);
+      h.setAttribute('data-lang',l);
+      h.setAttribute('lang',l);
+      h.setAttribute('dir',l==='ar'?'rtl':'ltr');
+    })();
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Travel Budget Calculator — Plan your trip costs in SAR, USD, or AED. Flights, hotel, food, activities, transport, and shopping. Free bilingual tool for GCC travelers." />
+  <link rel="canonical" href="https://dotforlife.com/tools/travel-budget" />
+  <meta property="og:title" content="Travel Budget Calculator — DOTFORLIFE | حاسبة ميزانية السفر" />
+  <meta property="og:description" content="Plan your trip budget in SAR, USD, or AED. Per-person or group totals, daily breakdown, 6 expense categories." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dotforlife.com/tools/travel-budget" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <title>Travel Budget Calculator — DOTFORLIFE | حاسبة ميزانية السفر</title>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "@id": "https://dotforlife.com/tools/travel-budget",
+  "name": "Travel Budget Calculator — DOTFORLIFE",
+  "url": "https://dotforlife.com/tools/travel-budget",
+  "description": "Plan your trip costs in SAR, USD, or AED with category breakdowns. Bilingual AR/EN travel budget planner for GCC travelers.",
+  "applicationCategory": "TravelApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Almarai:wght@300;400;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Almarai:wght@300;400;700;800&display=swap" /></noscript>
+  <style>
+    :root {
+      --accent: #0097A7; --accent-l: #00BCD4; --accent-d: #00757F;
+      --accent-soft: rgba(0,151,167,.09);
+      --gold: #F59E0B; --gold-d: #D97706; --gold-soft: rgba(245,158,11,.10);
+      --success: #22C55E; --success-soft: rgba(34,197,94,.1);
+      --danger: #EF4444; --danger-soft: rgba(239,68,68,.1);
+      --blue:#0066CC; --cyan:#06B6D4; --teal:#14B8A6;
+      --dark:#0F172A; --slate:#1E293B;
+      --border-l:#DDE0E4; --pill-bg:#F5F6F7; --muted:#9CA3AF;
+      --card-bg:#FFFFFF; --body-bg:#F5F6F7; --text:#343B42; --text-2:#6B7280;
+      --shadow-md:0 2px 10px rgba(0,0,0,.08);
+      --shadow-lg:0 6px 24px rgba(0,0,0,.10);
+      --r-lg:16px; --r-xl:20px; --r-2xl:24px;
+    }
+    [data-theme="dark"] {
+      --card-bg:#1E293B; --body-bg:#0F172A; --text:#F1F5F9; --text-2:#94A3B8;
+      --border-l:#334155; --pill-bg:#263548;
+    }
+    [data-lang="ar"] { font-family:'Almarai',sans-serif; direction:rtl; text-align:right; }
+    [data-lang="ar"] .en { display:none; }
+    [data-lang="en"] .ar { display:none; }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Inter',system-ui,sans-serif;background:var(--body-bg);color:var(--text);line-height:1.6;transition:background .3s,color .3s;overflow-x:hidden;}
+    a{color:inherit;text-decoration:none;}
+    .container{max-width:980px;margin:0 auto;padding:0 20px;}
+
+    /* ── NAVBAR ── */
+    .navbar{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-l);}
+    .navbar.scrolled{box-shadow:0 2px 16px rgba(0,0,0,.07);}
+    [data-theme="dark"] .navbar{background:rgba(15,23,42,.95);border-bottom-color:rgba(51,65,85,.6);}
+    .navbar-inner{display:flex;align-items:center;justify-content:space-between;height:64px;}
+    .logo{font-size:1.2rem;font-weight:800;letter-spacing:-.02em;display:flex;align-items:center;gap:2px;}
+    .logo span:nth-child(1){color:var(--text);}
+    .logo span:nth-child(2){color:var(--cyan);}
+    .logo span:nth-child(3){color:var(--teal);}
+    .breadcrumb{display:flex;align-items:center;gap:6px;font-size:.82rem;color:var(--muted);}
+    .breadcrumb a{color:var(--muted);transition:color .2s;}
+    .breadcrumb a:hover{color:var(--accent);}
+    .breadcrumb-sep{opacity:.4;}
+    .breadcrumb-current{color:var(--accent);font-weight:600;}
+    .nav-actions{display:flex;align-items:center;gap:8px;}
+    .lang-toggle,.theme-btn{padding:6px 12px;border-radius:999px;background:var(--pill-bg);border:1px solid var(--border-l);color:var(--text-2);font-size:.82rem;font-weight:600;cursor:pointer;font-family:inherit;transition:all .2s;}
+    .lang-toggle:hover,.theme-btn:hover{border-color:var(--accent);color:var(--accent);}
+    .theme-btn{padding:6px 10px;}
+
+    /* ── PAGE HEADER ── */
+    .page-header{padding:48px 0 32px;text-align:center;position:relative;overflow:hidden;}
+    .page-header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 50% 0%,rgba(0,151,167,.08),transparent 65%);}
+    .page-header-inner{position:relative;z-index:1;}
+    .page-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:999px;background:rgba(0,151,167,.1);border:1px solid rgba(0,151,167,.25);color:var(--accent);font-size:.75rem;font-weight:700;letter-spacing:.06em;margin-bottom:16px;}
+    .page-title{font-size:clamp(1.8rem,5vw,2.8rem);font-weight:900;letter-spacing:-.03em;margin-bottom:12px;line-height:1.1;}
+    .page-sub{font-size:1rem;color:var(--text-2);max-width:540px;margin:0 auto 8px;}
+    .page-meta{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:16px;}
+    .page-meta-chip{display:inline-flex;align-items:center;gap:5px;padding:4px 12px;border-radius:999px;background:var(--pill-bg);border:1px solid var(--border-l);font-size:.76rem;font-weight:500;color:var(--text-2);}
+
+    /* ── CURRENCY + MODE BAR ── */
+    .config-bar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:24px;}
+    .seg-group{display:flex;gap:4px;background:var(--pill-bg);border:1px solid var(--border-l);border-radius:999px;padding:4px;}
+    .seg-btn{padding:7px 18px;border-radius:999px;border:none;background:transparent;color:var(--text-2);font-weight:600;font-size:.82rem;cursor:pointer;font-family:inherit;transition:all .2s;}
+    .seg-btn.active{background:var(--card-bg);color:var(--accent);box-shadow:0 1px 6px rgba(0,0,0,.1);}
+    [data-theme="dark"] .seg-btn.active{background:#334155;}
+    .config-label{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;}
+
+    /* ── MAIN GRID ── */
+    .calc-grid{display:grid;grid-template-columns:1fr 380px;gap:20px;align-items:start;}
+    @media(max-width:860px){.calc-grid{grid-template-columns:1fr;}}
+
+    /* ── CARD ── */
+    .card{background:var(--card-bg);border-radius:var(--r-2xl);border:1px solid var(--border-l);overflow:hidden;box-shadow:var(--shadow-lg);}
+    .card-header{padding:20px 24px 16px;border-bottom:1px solid var(--border-l);}
+    .card-title{font-size:1rem;font-weight:800;color:var(--text);display:flex;align-items:center;gap:8px;}
+    .card-title-icon{font-size:1.2rem;}
+    .card-body{padding:20px 24px;}
+
+    /* ── TRIP INFO ── */
+    .trip-fields{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:8px;}
+    @media(max-width:540px){.trip-fields{grid-template-columns:1fr;}}
+    .field-wrap{display:flex;flex-direction:column;gap:6px;}
+    .field-label{font-size:.78rem;font-weight:700;color:var(--text-2);text-transform:uppercase;letter-spacing:.04em;}
+    .field-input{
+      padding:12px 14px;border-radius:var(--r-lg);
+      border:1.5px solid var(--border-l);background:var(--body-bg);
+      color:var(--text);font-size:.95rem;font-family:inherit;font-weight:600;
+      transition:border-color .2s;outline:none;
+    }
+    .field-input:focus{border-color:var(--accent);}
+    [data-theme="dark"] .field-input{background:#263548;}
+
+    /* ── CATEGORY ROWS ── */
+    .cat-row{
+      display:grid;grid-template-columns:36px 1fr auto;
+      align-items:center;gap:12px;
+      padding:14px 0;
+      border-bottom:1px solid var(--border-l);
+    }
+    .cat-row:last-child{border-bottom:none;}
+    .cat-icon{font-size:1.4rem;text-align:center;}
+    .cat-meta{}
+    .cat-name{font-size:.9rem;font-weight:700;color:var(--text);line-height:1.2;}
+    .cat-hint{font-size:.74rem;color:var(--muted);}
+    .cat-input-wrap{display:flex;align-items:center;gap:6px;}
+    .cat-sym{font-size:.82rem;font-weight:700;color:var(--muted);min-width:20px;text-align:center;}
+    .cat-input{
+      width:110px;padding:10px 12px;border-radius:var(--r-lg);
+      border:1.5px solid var(--border-l);background:var(--body-bg);
+      color:var(--text);font-size:.9rem;font-family:inherit;font-weight:700;
+      text-align:center;transition:border-color .2s;outline:none;
+    }
+    .cat-input:focus{border-color:var(--accent);}
+    [data-theme="dark"] .cat-input{background:#263548;}
+
+    /* ── RESULTS PANEL ── */
+    .results-panel{}
+
+    /* Total hero */
+    .total-hero{
+      background:linear-gradient(135deg,var(--dark) 0%,var(--slate) 100%);
+      border-radius:var(--r-2xl) var(--r-2xl) 0 0;
+      padding:28px;text-align:center;
+      position:relative;overflow:hidden;
+    }
+    .total-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 25% 35%,rgba(0,151,167,.18) 0%,transparent 55%),radial-gradient(circle at 75% 70%,rgba(245,158,11,.10) 0%,transparent 50%);}
+    .total-label{font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.45);position:relative;margin-bottom:6px;}
+    .total-amount{font-size:clamp(2.2rem,6vw,3.2rem);font-weight:900;letter-spacing:-.03em;color:#fff;position:relative;line-height:1;}
+    .total-currency{font-size:1rem;font-weight:600;color:rgba(255,255,255,.5);position:relative;}
+    .total-sub{font-size:.8rem;color:rgba(255,255,255,.4);position:relative;margin-top:8px;}
+    .total-per-day{font-size:.9rem;font-weight:700;color:var(--gold);position:relative;margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,.08);}
+
+    /* Breakdown bars */
+    .breakdown-body{padding:20px 24px;}
+    .breakdown-title{font-size:.75rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px;}
+    .bar-row{display:flex;flex-direction:column;gap:5px;margin-bottom:14px;}
+    .bar-row:last-child{margin-bottom:0;}
+    .bar-meta{display:flex;align-items:center;justify-content:space-between;}
+    .bar-name{font-size:.82rem;font-weight:600;color:var(--text);display:flex;align-items:center;gap:6px;}
+    .bar-name-icon{font-size:.9rem;}
+    .bar-amount{font-size:.82rem;font-weight:700;color:var(--text);}
+    .bar-pct{font-size:.72rem;color:var(--muted);}
+    .bar-track{height:7px;border-radius:999px;background:var(--border-l);overflow:hidden;}
+    .bar-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--accent),var(--accent-l));transition:width .5s cubic-bezier(.22,1,.36,1);}
+
+    /* Per person */
+    .per-person-box{
+      margin:0 24px 20px;
+      padding:16px;
+      background:var(--accent-soft);
+      border-radius:var(--r-lg);
+      border:1px solid rgba(0,151,167,.2);
+      display:flex;align-items:center;gap:14px;
+    }
+    .pp-icon{font-size:1.8rem;}
+    .pp-label{font-size:.75rem;color:var(--text-2);font-weight:600;text-transform:uppercase;letter-spacing:.04em;}
+    .pp-amount{font-size:1.3rem;font-weight:900;color:var(--accent);letter-spacing:-.02em;}
+
+    /* Daily breakdown table */
+    .daily-section{padding:0 24px 20px;}
+    .daily-title{font-size:.75rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px;}
+    .daily-table{width:100%;border-collapse:collapse;}
+    .daily-table th{font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;padding:6px 8px;text-align:left;}
+    [data-lang="ar"] .daily-table th{text-align:right;}
+    .daily-table td{font-size:.85rem;padding:9px 8px;border-top:1px solid var(--border-l);font-weight:500;color:var(--text);}
+    .daily-table tr:first-child td{border-top:none;}
+    .daily-table td:last-child,.daily-table th:last-child{text-align:right;}
+    [data-lang="ar"] .daily-table td:last-child,[data-lang="ar"] .daily-table th:last-child{text-align:left;}
+    .daily-table .total-row td{font-weight:800;color:var(--accent);border-top:2px solid var(--border-l);}
+
+    /* Budget rating */
+    .budget-rating{margin:0 24px 24px;padding:14px 16px;border-radius:var(--r-lg);border:1px solid var(--border-l);display:flex;align-items:center;gap:12px;}
+    .rating-icon{font-size:1.6rem;flex-shrink:0;}
+    .rating-label{font-size:.8rem;font-weight:700;color:var(--text);}
+    .rating-sub{font-size:.74rem;color:var(--muted);}
+
+    /* CTA */
+    .results-cta{padding:0 24px 24px;}
+    .btn-reset{
+      display:flex;align-items:center;justify-content:center;gap:8px;
+      width:100%;padding:13px;border-radius:var(--r-lg);
+      background:transparent;border:1.5px solid var(--border-l);
+      color:var(--text-2);font-weight:700;font-size:.88rem;
+      cursor:pointer;font-family:inherit;transition:all .2s;
+    }
+    .btn-reset:hover{border-color:var(--accent);color:var(--accent);}
+
+    /* Empty state */
+    .empty-state{text-align:center;padding:40px 20px;}
+    .empty-icon{font-size:3rem;margin-bottom:12px;display:block;opacity:.4;}
+    .empty-text{font-size:.88rem;color:var(--muted);}
+
+    /* ── AD ZONE ── */
+    .ad-zone{background:var(--pill-bg);border:1px dashed var(--border-l);border-radius:var(--r-xl);padding:24px;text-align:center;color:var(--muted);font-size:.8rem;margin:20px 0;}
+    .ad-zone span{display:block;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;opacity:.6;}
+
+    /* ── TIPS SECTION ── */
+    .tips-section{margin:24px 0 40px;}
+    .tips-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+    @media(max-width:700px){.tips-grid{grid-template-columns:1fr;}}
+    .tip-card{background:var(--card-bg);border:1px solid var(--border-l);border-radius:var(--r-xl);padding:20px;box-shadow:var(--shadow-md);}
+    .tip-icon{font-size:1.6rem;margin-bottom:10px;display:block;}
+    .tip-title{font-size:.88rem;font-weight:800;color:var(--text);margin-bottom:6px;}
+    .tip-body{font-size:.8rem;color:var(--text-2);line-height:1.6;}
+
+    /* ── FOOTER ── */
+    .site-footer{border-top:1px solid var(--border-l);padding:32px 0;text-align:center;color:var(--muted);font-size:.8rem;}
+    .site-footer a{color:var(--accent);}
+
+    /* ── MISC ── */
+    @media(max-width:480px){.config-bar{flex-direction:column;align-items:flex-start;}}
+    .currency-symbol{display:inline-block;}
+  </style>
+</head>
+<body>
+
+<!-- ── NAVBAR ── -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <div class="navbar-inner">
+      <div style="display:flex;align-items:center;gap:20px;">
+        <a href="/" class="logo">
+          <span>DOT</span><span>FOR</span><span>LIFE</span>
+        </a>
+        <nav class="breadcrumb" aria-label="breadcrumb">
+          <a href="/travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a>
+          <span class="breadcrumb-sep">›</span>
+          <span class="breadcrumb-current"><span class="en">Travel Budget</span><span class="ar">ميزانية السفر</span></span>
+        </nav>
+      </div>
+      <div class="nav-actions">
+        <button class="lang-toggle" onclick="toggleLang()" aria-label="Switch language">
+          <span class="en">العربية</span><span class="ar">English</span>
+        </button>
+        <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme" id="themeBtn">☀️</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ── PAGE HEADER ── -->
+<section class="page-header">
+  <div class="container">
+    <div class="page-header-inner">
+      <div class="page-badge">
+        <span>✈️</span>
+        <span class="en">TRAVEL TOOLS</span>
+        <span class="ar">أدوات السفر</span>
+      </div>
+      <h1 class="page-title">
+        <span class="en">Travel Budget Calculator</span>
+        <span class="ar">حاسبة ميزانية السفر</span>
+      </h1>
+      <p class="page-sub">
+        <span class="en">Plan every dirham and riyal before you fly. Know your total, your daily spend, and what each category costs.</span>
+        <span class="ar">خطّط لكل ريال ودرهم قبل السفر. اعرف إجمالي ميزانيتك والإنفاق اليومي لكل فئة.</span>
+      </p>
+      <div class="page-meta">
+        <span class="page-meta-chip">🆓 <span class="en">Free</span><span class="ar">مجاني</span></span>
+        <span class="page-meta-chip">🌐 <span class="en">SAR · USD · AED</span><span class="ar">ريال · دولار · درهم</span></span>
+        <span class="page-meta-chip">👥 <span class="en">Per Person or Group</span><span class="ar">فرد أو مجموعة</span></span>
+        <span class="page-meta-chip">📊 <span class="en">Daily Breakdown</span><span class="ar">تفصيل يومي</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MAIN CALCULATOR ── -->
+<div class="container" style="padding-bottom:8px;">
+
+  <!-- Config bar -->
+  <div class="config-bar">
+    <!-- Currency -->
+    <div>
+      <div class="config-label"><span class="en">Currency</span><span class="ar">العملة</span></div>
+      <div class="seg-group" id="currencyGroup">
+        <button class="seg-btn active" data-currency="SAR" onclick="setCurrency('SAR',this)">SAR ﷼</button>
+        <button class="seg-btn" data-currency="USD" onclick="setCurrency('USD',this)">USD $</button>
+        <button class="seg-btn" data-currency="AED" onclick="setCurrency('AED',this)">AED د.إ</button>
+      </div>
+    </div>
+    <!-- Mode -->
+    <div>
+      <div class="config-label"><span class="en">Budget Mode</span><span class="ar">نمط الميزانية</span></div>
+      <div class="seg-group" id="modeGroup">
+        <button class="seg-btn active" data-mode="group" onclick="setMode('group',this)">
+          <span class="en">👥 Group Total</span><span class="ar">👥 إجمالي المجموعة</span>
+        </button>
+        <button class="seg-btn" data-mode="person" onclick="setMode('person',this)">
+          <span class="en">👤 Per Person</span><span class="ar">👤 للشخص الواحد</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Calculator grid -->
+  <div class="calc-grid">
+
+    <!-- LEFT: Inputs -->
+    <div>
+      <!-- Trip Info -->
+      <div class="card" style="margin-bottom:16px;">
+        <div class="card-header">
+          <div class="card-title">
+            <span class="card-title-icon">🗓️</span>
+            <span class="en">Trip Details</span>
+            <span class="ar">تفاصيل الرحلة</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="trip-fields">
+            <div class="field-wrap">
+              <label class="field-label" for="tripDays">
+                <span class="en">Number of Days</span>
+                <span class="ar">عدد الأيام</span>
+              </label>
+              <input class="field-input" type="number" id="tripDays" min="1" max="365" value="7" oninput="calculate()" />
+            </div>
+            <div class="field-wrap">
+              <label class="field-label" for="numPersons">
+                <span class="en">Number of People</span>
+                <span class="ar">عدد المسافرين</span>
+              </label>
+              <input class="field-input" type="number" id="numPersons" min="1" max="50" value="2" oninput="calculate()" />
+            </div>
+            <div class="field-wrap">
+              <label class="field-label" for="destination">
+                <span class="en">Destination (optional)</span>
+                <span class="ar">الوجهة (اختياري)</span>
+              </label>
+              <input class="field-input" type="text" id="destination" placeholder="e.g. Istanbul" oninput="updateDestination(this.value)" />
+            </div>
+            <div class="field-wrap">
+              <label class="field-label" for="contingency">
+                <span class="en">Contingency %</span>
+                <span class="ar">احتياطي %</span>
+              </label>
+              <input class="field-input" type="number" id="contingency" min="0" max="50" value="10" oninput="calculate()" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Categories -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <span class="card-title-icon">💰</span>
+            <span class="en">Expense Categories</span>
+            <span class="ar">فئات الإنفاق</span>
+          </div>
+        </div>
+        <div class="card-body" style="padding-top:8px;padding-bottom:8px;">
+
+          <!-- Flights -->
+          <div class="cat-row">
+            <div class="cat-icon">✈️</div>
+            <div class="cat-meta">
+              <div class="cat-name"><span class="en">Flights</span><span class="ar">تذاكر الطيران</span></div>
+              <div class="cat-hint"><span class="en">Round-trip total</span><span class="ar">إجمالي ذهاب وإياب</span></div>
+            </div>
+            <div class="cat-input-wrap">
+              <span class="cat-sym" id="sym-flights">﷼</span>
+              <input class="cat-input" type="number" id="cat-flights" min="0" value="2000" oninput="calculate()" placeholder="0" />
+            </div>
+          </div>
+
+          <!-- Hotel -->
+          <div class="cat-row">
+            <div class="cat-icon">🏨</div>
+            <div class="cat-meta">
+              <div class="cat-name"><span class="en">Hotel / Accommodation</span><span class="ar">فندق / إقامة</span></div>
+              <div class="cat-hint"><span class="en">Per night, total nights auto-calculated</span><span class="ar">السعر لليلة الواحدة، يُحسب التلقائياً</span></div>
+            </div>
+            <div class="cat-input-wrap">
+              <span class="cat-sym" id="sym-hotel">﷼</span>
+              <input class="cat-input" type="number" id="cat-hotel" min="0" value="500" oninput="calculate()" placeholder="0" />
+            </div>
+          </div>
+
+          <!-- Food -->
+          <div class="cat-row">
+            <div class="cat-icon">🍽️</div>
+            <div class="cat-meta">
+              <div class="cat-name"><span class="en">Food & Dining</span><span class="ar">طعام ومطاعم</span></div>
+              <div class="cat-hint"><span class="en">Per day, per person</span><span class="ar">يومياً، للشخص الواحد</span></div>
+            </div>
+            <div class="cat-input-wrap">
+              <span class="cat-sym" id="sym-food">﷼</span>
+              <input class="cat-input" type="number" id="cat-food" min="0" value="150" oninput="calculate()" placeholder="0" />
+            </div>
+          </div>
+
+          <!-- Activities -->
+          <div class="cat-row">
+            <div class="cat-icon">🎯</div>
+            <div class="cat-meta">
+              <div class="cat-name"><span class="en">Activities & Experiences</span><span class="ar">أنشطة وتجارب</span></div>
+              <div class="cat-hint"><span class="en">Per day, total group</span><span class="ar">يومياً، إجمالي المجموعة</span></div>
+            </div>
+            <div class="cat-input-wrap">
+              <span class="cat-sym" id="sym-activities">﷼</span>
+              <input class="cat-input" type="number" id="cat-activities" min="0" value="200" oninput="calculate()" placeholder="0" />
+            </div>
+          </div>
+
+          <!-- Transport -->
+          <div class="cat-row">
+            <div class="cat-icon">🚕</div>
+            <div class="cat-meta">
+              <div class="cat-name"><span class="en">Local Transport</span><span class="ar">المواصلات المحلية</span></div>
+              <div class="cat-hint"><span class="en">Per day, total group (taxis, metro, car)</span><span class="ar">يومياً للمجموعة (تاكسي، مترو، سيارة)</span></div>
+            </div>
+            <div class="cat-input-wrap">
+              <span class="cat-sym" id="sym-transport">﷼</span>
+              <input class="cat-input" type="number" id="cat-transport" min="0" value="100" oninput="calculate()" placeholder="0" />
+            </div>
+          </div>
+
+          <!-- Shopping -->
+          <div class="cat-row">
+            <div class="cat-icon">🛍️</div>
+            <div class="cat-meta">
+              <div class="cat-name"><span class="en">Shopping & Souvenirs</span><span class="ar">تسوق وهدايا</span></div>
+              <div class="cat-hint"><span class="en">Total trip, per person</span><span class="ar">إجمالي الرحلة للشخص</span></div>
+            </div>
+            <div class="cat-input-wrap">
+              <span class="cat-sym" id="sym-shopping">﷼</span>
+              <input class="cat-input" type="number" id="cat-shopping" min="0" value="500" oninput="calculate()" placeholder="0" />
+            </div>
+          </div>
+
+          <!-- Misc -->
+          <div class="cat-row">
+            <div class="cat-icon">🔧</div>
+            <div class="cat-meta">
+              <div class="cat-name"><span class="en">Visa / Insurance / Misc</span><span class="ar">تأشيرة / تأمين / أخرى</span></div>
+              <div class="cat-hint"><span class="en">Total trip, per person</span><span class="ar">إجمالي الرحلة للشخص</span></div>
+            </div>
+            <div class="cat-input-wrap">
+              <span class="cat-sym" id="sym-misc">﷼</span>
+              <input class="cat-input" type="number" id="cat-misc" min="0" value="200" oninput="calculate()" placeholder="0" />
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Results -->
+    <div class="results-panel card" id="resultsPanel">
+
+      <!-- Total hero -->
+      <div class="total-hero">
+        <div class="total-label">
+          <span class="en">ESTIMATED TOTAL BUDGET</span>
+          <span class="ar">إجمالي الميزانية التقديرية</span>
+        </div>
+        <div class="total-amount" id="totalAmount">—</div>
+        <div class="total-currency" id="totalCurrencyLabel">SAR ﷼</div>
+        <div class="total-sub" id="totalSub">
+          <span class="en">includes contingency</span>
+          <span class="ar">يشمل الاحتياطي</span>
+        </div>
+        <div class="total-per-day" id="totalPerDay"></div>
+      </div>
+
+      <!-- Per person box (group mode) -->
+      <div class="per-person-box" id="perPersonBox" style="display:none;margin-top:20px;">
+        <div class="pp-icon">👤</div>
+        <div>
+          <div class="pp-label"><span class="en">Per Person</span><span class="ar">للشخص الواحد</span></div>
+          <div class="pp-amount" id="perPersonAmount">—</div>
+        </div>
+      </div>
+
+      <!-- Breakdown bars -->
+      <div class="breakdown-body">
+        <div class="breakdown-title">
+          <span class="en">Spending Breakdown</span>
+          <span class="ar">توزيع الإنفاق</span>
+        </div>
+        <div id="breakdownBars">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+
+      <!-- Budget rating -->
+      <div class="budget-rating" id="budgetRating">
+        <div class="rating-icon" id="ratingIcon">🧳</div>
+        <div>
+          <div class="rating-label" id="ratingLabel"></div>
+          <div class="rating-sub" id="ratingSub"></div>
+        </div>
+      </div>
+
+      <!-- Daily breakdown -->
+      <div class="daily-section">
+        <div class="daily-title">
+          <span class="en">Daily Breakdown</span>
+          <span class="ar">تفصيل يومي</span>
+        </div>
+        <table class="daily-table">
+          <thead>
+            <tr>
+              <th><span class="en">Category</span><span class="ar">الفئة</span></th>
+              <th><span class="en">/Day</span><span class="ar">/يوم</span></th>
+            </tr>
+          </thead>
+          <tbody id="dailyTableBody">
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Reset -->
+      <div class="results-cta">
+        <button class="btn-reset" onclick="resetAll()">
+          🔄 <span class="en">Reset All</span><span class="ar">إعادة تعيين</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Ad zone -->
+  <div class="ad-zone">
+    <span><span class="en">ADVERTISEMENT</span><span class="ar">إعلان</span></span>
+    <span class="en">Book your next trip with the best GCC travel deals</span>
+    <span class="ar">احجز رحلتك القادمة بأفضل عروض السفر في الخليج</span>
+  </div>
+
+</div>
+
+<!-- ── TIPS SECTION ── -->
+<div class="container">
+  <div class="tips-section">
+    <div class="tips-grid">
+      <div class="tip-card">
+        <span class="tip-icon">💡</span>
+        <div class="tip-title"><span class="en">Always add a buffer</span><span class="ar">أضف دائماً احتياطياً</span></div>
+        <p class="tip-body">
+          <span class="en">Unexpected costs come up on every trip — a missed flight, a last-minute activity, or a medical expense. A 10–15% contingency fund gives you peace of mind.</span>
+          <span class="ar">التكاليف غير المتوقعة تظهر في كل رحلة — رحلة فائتة، نشاط طارئ، أو مصاريف طبية. احتياطي بنسبة 10–15% يمنحك طمأنينة.</span>
+        </p>
+      </div>
+      <div class="tip-card">
+        <span class="tip-icon">💳</span>
+        <div class="tip-title"><span class="en">Use the right card abroad</span><span class="ar">استخدم البطاقة الصحيحة في الخارج</span></div>
+        <p class="tip-body">
+          <span class="en">Avoid foreign transaction fees. Many GCC banks offer zero-fee cards for international travel — check before you fly to save 2–3% on every purchase.</span>
+          <span class="ar">تجنب رسوم العمليات الخارجية. بنوك خليجية كثيرة توفر بطاقات بدون رسوم دولية — تحقق قبل السفر لتوفير 2–3% من كل عملية شراء.</span>
+        </p>
+      </div>
+      <div class="tip-card">
+        <span class="tip-icon">🍽️</span>
+        <div class="tip-title"><span class="en">Food is the easiest saving</span><span class="ar">الطعام أسهل مكان للتوفير</span></div>
+        <p class="tip-body">
+          <span class="en">Eating one meal a day at a local restaurant rather than a tourist spot can cut your food budget by 30–40% without sacrificing the experience.</span>
+          <span class="ar">تناول وجبة واحدة يومياً في مطعم محلي بدلاً من السياحي يوفر 30–40% من ميزانية الطعام دون التأثير على التجربة.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer class="site-footer">
+  <div class="container">
+    <p>
+      <a href="/"><span class="en">DOTFORLIFE</span><span class="ar">دوت فور لايف</span></a>
+      · <span class="en">Tools for the GCC life</span><span class="ar">أدوات للحياة في الخليج</span>
+      · <a href="/privacy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a>
+    </p>
+  </div>
+</footer>
+
+<script>
+// ── STATE ──
+let currency = 'SAR';
+let budgetMode = 'group'; // 'group' or 'person'
+
+const currencySymbols = { SAR: '﷼', USD: '$', AED: 'د.إ' };
+const currencyLabels  = { SAR: 'SAR ﷼', USD: 'USD $', AED: 'AED د.إ' };
+
+// category configs
+const CATS = [
+  { id:'flights',    icon:'✈️',  enName:'Flights',                arName:'تذاكر الطيران',     type:'flat',    perPerson:false },
+  { id:'hotel',      icon:'🏨',  enName:'Hotel',                  arName:'فندق / إقامة',      type:'perNight',perPerson:false },
+  { id:'food',       icon:'🍽️', enName:'Food & Dining',          arName:'طعام ومطاعم',       type:'perDayPP',perPerson:true  },
+  { id:'activities', icon:'🎯',  enName:'Activities',             arName:'أنشطة وتجارب',      type:'perDay',  perPerson:false },
+  { id:'transport',  icon:'🚕',  enName:'Local Transport',        arName:'مواصلات محلية',     type:'perDay',  perPerson:false },
+  { id:'shopping',   icon:'🛍️', enName:'Shopping',               arName:'تسوق وهدايا',       type:'flatPP',  perPerson:true  },
+  { id:'misc',       icon:'🔧',  enName:'Visa / Insurance / Misc',arName:'تأشيرة / تأمين / أخرى', type:'flatPP', perPerson:true },
+];
+
+function getCatTotal(catId, days, persons) {
+  const val = parseFloat(document.getElementById('cat-'+catId).value) || 0;
+  const cat = CATS.find(c => c.id === catId);
+  if (!cat) return 0;
+  switch(cat.type) {
+    case 'flat':      return val;                  // e.g. flights: total
+    case 'perNight':  return val * days;           // hotel: per night × days
+    case 'perDayPP':  return val * days * persons; // food: per day per person × days × persons
+    case 'perDay':    return val * days;           // activities, transport: per day group
+    case 'flatPP':    return val * persons;        // shopping, misc: per person flat
+    default:          return val;
+  }
+}
+
+function getDailyRate(catId, days, persons) {
+  const total = getCatTotal(catId, days, persons);
+  return total / Math.max(days, 1);
+}
+
+function fmt(n) {
+  if (isNaN(n) || n === null) return '—';
+  return n.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+}
+
+function calculate() {
+  const days    = Math.max(parseInt(document.getElementById('tripDays').value) || 1, 1);
+  const persons = Math.max(parseInt(document.getElementById('numPersons').value) || 1, 1);
+  const contingencyPct = Math.max(parseFloat(document.getElementById('contingency').value) || 0, 0) / 100;
+
+  // Calculate each category
+  let catTotals = {};
+  let subtotal = 0;
+  CATS.forEach(cat => {
+    const t = getCatTotal(cat.id, days, persons);
+    catTotals[cat.id] = t;
+    subtotal += t;
+  });
+
+  const contingencyAmt = subtotal * contingencyPct;
+  const grandTotal = subtotal + contingencyAmt;
+  const perDay = grandTotal / Math.max(days, 1);
+  const perPerson = grandTotal / Math.max(persons, 1);
+  const sym = currencySymbols[currency];
+
+  // Update total
+  document.getElementById('totalAmount').textContent = sym + ' ' + fmt(grandTotal);
+  document.getElementById('totalCurrencyLabel').textContent = currencyLabels[currency];
+  document.getElementById('totalPerDay').textContent = sym + ' ' + fmt(perDay) + ' / day';
+
+  // Per person box (group mode)
+  const ppBox = document.getElementById('perPersonBox');
+  if (budgetMode === 'group' && persons > 1) {
+    ppBox.style.display = 'flex';
+    document.getElementById('perPersonAmount').textContent = sym + ' ' + fmt(perPerson);
+  } else {
+    ppBox.style.display = 'none';
+  }
+
+  // Breakdown bars
+  const barsEl = document.getElementById('breakdownBars');
+  barsEl.innerHTML = '';
+  const lang = document.documentElement.getAttribute('data-lang') || 'en';
+
+  CATS.forEach(cat => {
+    const amt = catTotals[cat.id];
+    const pct = grandTotal > 0 ? Math.round((amt / grandTotal) * 100) : 0;
+    if (amt === 0) return;
+    const name = lang === 'ar' ? cat.arName : cat.enName;
+    barsEl.innerHTML += `
+      <div class="bar-row">
+        <div class="bar-meta">
+          <div class="bar-name"><span class="bar-name-icon">${cat.icon}</span> ${name}</div>
+          <div style="text-align:right;">
+            <div class="bar-amount">${sym} ${fmt(amt)}</div>
+            <div class="bar-pct">${pct}%</div>
+          </div>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:${pct}%"></div></div>
+      </div>
+    `;
+  });
+
+  // Contingency row
+  if (contingencyAmt > 0) {
+    const pct = grandTotal > 0 ? Math.round((contingencyAmt / grandTotal) * 100) : 0;
+    const name = lang === 'ar' ? 'احتياطي' : 'Contingency';
+    barsEl.innerHTML += `
+      <div class="bar-row">
+        <div class="bar-meta">
+          <div class="bar-name"><span class="bar-name-icon">🛡️</span> ${name} (${Math.round(contingencyPct*100)}%)</div>
+          <div style="text-align:right;">
+            <div class="bar-amount">${sym} ${fmt(contingencyAmt)}</div>
+            <div class="bar-pct">${pct}%</div>
+          </div>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:${pct}%;background:linear-gradient(90deg,var(--gold),var(--gold-d))"></div></div>
+      </div>
+    `;
+  }
+
+  // Daily breakdown table
+  const tbody = document.getElementById('dailyTableBody');
+  tbody.innerHTML = '';
+  let dailyTotal = 0;
+  CATS.forEach(cat => {
+    const dailyAmt = getDailyRate(cat.id, days, persons);
+    if (catTotals[cat.id] === 0) return;
+    dailyTotal += dailyAmt;
+    const name = lang === 'ar' ? cat.arName : cat.enName;
+    tbody.innerHTML += `
+      <tr>
+        <td>${cat.icon} ${name}</td>
+        <td>${sym} ${fmt(dailyAmt)}</td>
+      </tr>
+    `;
+  });
+  if (contingencyAmt > 0) {
+    const dailyContingency = contingencyAmt / days;
+    dailyTotal += dailyContingency;
+    const name = lang === 'ar' ? 'احتياطي' : 'Contingency';
+    tbody.innerHTML += `<tr><td>🛡️ ${name}</td><td>${sym} ${fmt(dailyContingency)}</td></tr>`;
+  }
+  tbody.innerHTML += `
+    <tr class="total-row">
+      <td>${lang === 'ar' ? 'الإجمالي / يوم' : 'Total / Day'}</td>
+      <td>${sym} ${fmt(dailyTotal)}</td>
+    </tr>
+  `;
+
+  // Budget rating
+  updateRating(perDay, lang);
+}
+
+function updateRating(perDay, lang) {
+  const ratingEl = document.getElementById('budgetRating');
+  const iconEl   = document.getElementById('ratingIcon');
+  const labelEl  = document.getElementById('ratingLabel');
+  const subEl    = document.getElementById('ratingSub');
+
+  // Convert perDay to USD for universal comparison
+  const rates = { SAR: 0.267, USD: 1, AED: 0.272 };
+  const perDayUSD = perDay * (rates[currency] || 1);
+
+  let icon, label, sub, color;
+  if (perDayUSD < 80) {
+    icon = '🎒'; label = lang === 'ar' ? 'ميزانية بجيتباكر' : 'Backpacker Budget';
+    sub  = lang === 'ar' ? 'رحلة اقتصادية جداً، تأكد من خياراتك الأساسية.' : 'Very lean trip — double-check accommodation and food options.';
+    color = 'rgba(34,197,94,.1)';
+  } else if (perDayUSD < 200) {
+    icon = '✈️'; label = lang === 'ar' ? 'ميزانية اقتصادية' : 'Economy Budget';
+    sub  = lang === 'ar' ? 'ميزانية معقولة لرحلة مريحة.' : 'Solid budget for a comfortable trip.';
+    color = 'rgba(0,151,167,.1)';
+  } else if (perDayUSD < 500) {
+    icon = '🏨'; label = lang === 'ar' ? 'ميزانية مريحة' : 'Comfortable Budget';
+    sub  = lang === 'ar' ? 'ميزانية جيدة تتيح الاستمتاع بتجارب متنوعة.' : 'Good budget allowing quality experiences.';
+    color = 'rgba(99,102,241,.1)';
+  } else {
+    icon = '💎'; label = lang === 'ar' ? 'ميزانية فاخرة' : 'Luxury Budget';
+    sub  = lang === 'ar' ? 'ميزانية تتيح لك أرقى الفنادق والتجارب.' : 'Premium budget for top hotels and experiences.';
+    color = 'rgba(245,158,11,.1)';
+  }
+
+  ratingEl.style.background = color;
+  iconEl.textContent  = icon;
+  labelEl.textContent = label;
+  subEl.textContent   = sub;
+}
+
+// ── CURRENCY ──
+function setCurrency(c, btn) {
+  currency = c;
+  document.querySelectorAll('#currencyGroup .seg-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  // update all symbols
+  const sym = currencySymbols[c];
+  CATS.forEach(cat => {
+    const el = document.getElementById('sym-'+cat.id);
+    if (el) el.textContent = sym;
+  });
+  calculate();
+}
+
+// ── MODE ──
+function setMode(m, btn) {
+  budgetMode = m;
+  document.querySelectorAll('#modeGroup .seg-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  calculate();
+}
+
+// ── RESET ──
+function resetAll() {
+  document.getElementById('tripDays').value    = 7;
+  document.getElementById('numPersons').value  = 2;
+  document.getElementById('contingency').value = 10;
+  document.getElementById('destination').value = '';
+  document.getElementById('cat-flights').value    = 2000;
+  document.getElementById('cat-hotel').value      = 500;
+  document.getElementById('cat-food').value       = 150;
+  document.getElementById('cat-activities').value = 200;
+  document.getElementById('cat-transport').value  = 100;
+  document.getElementById('cat-shopping').value   = 500;
+  document.getElementById('cat-misc').value       = 200;
+  calculate();
+}
+
+// ── DESTINATION ──
+function updateDestination(val) {
+  // just cosmetic — no calc logic needed
+}
+
+// ── LANG ──
+function toggleLang() {
+  const h = document.documentElement;
+  const current = h.getAttribute('data-lang') || 'en';
+  const next = current === 'en' ? 'ar' : 'en';
+  h.setAttribute('data-lang', next);
+  h.setAttribute('lang', next);
+  h.setAttribute('dir', next === 'ar' ? 'rtl' : 'ltr');
+  localStorage.setItem('dfl-lang', next);
+  calculate();
+}
+
+// ── THEME ──
+function toggleTheme() {
+  const h = document.documentElement;
+  const current = h.getAttribute('data-theme') || 'light';
+  const next = current === 'light' ? 'dark' : 'light';
+  h.setAttribute('data-theme', next);
+  localStorage.setItem('dfl-theme', next);
+  document.getElementById('themeBtn').textContent = next === 'dark' ? '🌙' : '☀️';
+}
+
+// ── NAVBAR SCROLL ──
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 10);
+});
+
+// ── INIT ──
+(function init() {
+  const theme = localStorage.getItem('dfl-theme') || 'light';
+  document.getElementById('themeBtn').textContent = theme === 'dark' ? '🌙' : '☀️';
+  calculate();
+})();
+</script>
+</body>
+</html>
