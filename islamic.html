@@ -261,7 +261,27 @@
         grid-template-columns:1fr !important;
       }
     }
-  </style>
+  
+/* ═══ NEWSLETTER SECTION ════════════════════════════════ */
+.nl-section{padding:clamp(48px,7vw,72px) 0;background:linear-gradient(135deg,#0a1628 0%,#0f2744 60%,#0a1f2e 100%);position:relative;overflow:hidden;}
+.nl-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 70% at 80% 50%,rgba(6,182,212,.12),transparent),radial-gradient(ellipse 40% 60% at 10% 80%,rgba(0,102,204,.10),transparent);pointer-events:none;}
+.nl-inner{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px);align-items:center;position:relative;z-index:1;}
+@media(max-width:700px){.nl-inner{grid-template-columns:1fr;gap:20px;}}
+.nl-eyebrow{display:flex;align-items:center;gap:8px;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(6,182,212,.8);margin-bottom:12px;}
+.nl-dot{width:6px;height:6px;border-radius:50%;background:#06B6D4;animation:nlPulse 2s infinite;}
+@keyframes nlPulse{0%,100%{box-shadow:0 0 0 0 rgba(6,182,212,.4);}50%{box-shadow:0 0 0 6px rgba(6,182,212,0);}}
+.nl-title{font-size:clamp(1.2rem,2.5vw,1.7rem);font-weight:900;letter-spacing:-.03em;line-height:1.25;color:#fff;margin-bottom:10px;}
+.nl-sub{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.7;}
+.nl-input-row{display:flex;gap:8px;margin-bottom:10px;}
+@media(max-width:400px){.nl-input-row{flex-direction:column;}}
+.nl-input{flex:1;padding:13px 16px;border-radius:10px;border:1.5px solid rgba(255,255,255,.15);background:rgba(255,255,255,.08);color:#fff;font-size:.9rem;font-family:inherit;outline:none;transition:border-color .2s;}
+.nl-input::placeholder{color:rgba(255,255,255,.35);}
+.nl-input:focus{border-color:rgba(6,182,212,.6);}
+.nl-btn{padding:13px 20px;border-radius:10px;background:linear-gradient(135deg,#0066CC,#06B6D4);color:#fff;font-weight:700;font-size:.88rem;border:none;cursor:pointer;font-family:inherit;white-space:nowrap;transition:opacity .2s;}
+.nl-btn:hover{opacity:.9;}
+.nl-success{padding:10px 14px;background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.3);border-radius:8px;font-size:.83rem;color:#4ade80;display:flex;align-items:center;gap:6px;}
+.nl-trust{font-size:.72rem;color:rgba(255,255,255,.35);display:flex;align-items:center;gap:5px;margin-top:8px;}
+</style>
 </head>
 <body>
   <!-- NAVBAR -->
@@ -904,5 +924,47 @@
 <script>
 // Scroll Progress Bar
 (function(){var b=document.createElement("div");b.style.cssText="position:fixed;top:0;left:0;width:0%;height:3px;background:linear-gradient(90deg,#0066CC,#06B6D4);z-index:9999;transition:width .1s linear;pointer-events:none;";document.body.appendChild(b);window.addEventListener("scroll",function(){var d=document.documentElement.scrollHeight-window.innerHeight;b.style.width=(d>0?Math.min(100,(window.scrollY/d)*100):0)+"%";},{passive:true});})();</script>
+<!-- ═══ NEWSLETTER ══════════════════════════════════ -->
+<section class="nl-section" aria-label="Newsletter signup">
+  <div class="container">
+    <div class="nl-inner">
+      <div>
+        <div class="nl-eyebrow"><span class="nl-dot"></span><span class="en">Stay updated</span><span class="ar">ابقَ على اطلاع</span></div>
+        <h2 class="nl-title">
+          <span class="en">New tools &amp; GCC life guides — free monthly.</span>
+          <span class="ar">أدوات جديدة وأدلة خليجية — مجاناً كل شهر.</span>
+        </h2>
+        <p class="nl-sub">
+          <span class="en">No spam. Unsubscribe anytime.</span>
+          <span class="ar">بدون إزعاج. إلغاء في أي وقت.</span>
+        </p>
+      </div>
+      <div>
+        <form class="nl-form"
+          action="https://dotforlife.us1.list-manage.com/subscribe/post?u=XXXXXXXX&amp;id=XXXXXXXX"
+          method="post" target="_blank" novalidate>
+          <div class="nl-input-row">
+            <input type="email" name="EMAIL" class="nl-input" required placeholder="your@email.com" />
+            <button type="submit" class="nl-btn"><span class="en">Subscribe →</span><span class="ar">اشترك ←</span></button>
+          </div>
+          <div style="position:absolute;left:-5000px;" aria-hidden="true"><input type="text" name="b_XXXXXXXX_XXXXXXXX" tabindex="-1" value=""></div>
+          <div class="nl-success" style="display:none;">✅ <span class="en">Subscribed! Welcome.</span><span class="ar">تم الاشتراك!</span></div>
+        </form>
+        <div class="nl-trust">🔒 <span class="en">No data sold · Privacy protected</span><span class="ar">خصوصية محمية · لا نبيع بياناتك</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+// Newsletter form handler
+document.querySelectorAll('.nl-form').forEach(function(form){
+  form.addEventListener('submit',function(){
+    var s=form.querySelector('.nl-success');
+    var r=form.querySelector('.nl-input-row');
+    if(s&&r){setTimeout(function(){s.style.display='flex';r.style.display='none';localStorage.setItem('dfl_nl_subscribed','1');},500);}
+  });
+});
+</script>
 </body>
 </html>

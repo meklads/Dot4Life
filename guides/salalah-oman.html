@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light" data-lang="en">
+<head>
+  <script>
+    (function(){
+      var t=localStorage.getItem('dfl-theme')||'light';
+      var l=localStorage.getItem('dfl-lang')||'en';
+      var h=document.documentElement;
+      h.setAttribute('data-theme',t);h.setAttribute('data-lang',l);
+      h.setAttribute('lang',l);h.setAttribute('dir',l==='ar'?'rtl':'ltr');
+    })();
+  </script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta name="description" content="Salalah & Oman travel guide — Khareef season, Wadi Darbat, Mughsail Beach, Muscat highlights, frankincense, and practical tips for GCC travelers."/>
+  <link rel="canonical" href="https://dotforlife.com/guides/salalah-oman"/>
+  <meta property="og:title" content="Salalah & Oman Guide — DOTFORLIFE | دليل صلالة وعُمان"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://dotforlife.com/guides/salalah-oman"/>
+  <title>Salalah & Oman Guide — DOTFORLIFE | دليل صلالة وسلطنة عُمان</title>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Almarai:wght@300;400;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Almarai:wght@300;400;700;800&display=swap"/></noscript>
+  <style>
+    :root{
+      --accent:#00796B;--accent-l:#009688;--accent-d:#00574E;
+      --accent-soft:rgba(0,121,107,.09);--accent-glow:rgba(0,121,107,.20);
+      --gold:#D4AF37;--gold-soft:rgba(212,175,55,.10);
+      --khareef:#4CAF50;--khareef-soft:rgba(76,175,80,.10);
+      --border-l:#C8E6C9;--muted:#9CA3AF;
+      --card-bg:#FFFFFF;--body-bg:#F0F7F4;--text:#1A2E2A;--text-2:#6B7280;
+      --nav-bg:#FFFFFF;--shadow:0 2px 12px rgba(0,0,0,.07);
+      --r:14px;--transition:all .25s cubic-bezier(.4,0,.2,1);
+    }
+    [data-theme="dark"]{
+      --card-bg:#0F1E1C;--body-bg:#081512;--text:#D4EDE8;--text-2:#7AA89E;
+      --border-l:#1A3330;--nav-bg:#0F1E1C;--shadow:0 2px 16px rgba(0,0,0,.4);
+      --accent-soft:rgba(0,121,107,.18);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',sans-serif;background:var(--body-bg);color:var(--text);line-height:1.6;font-size:15px}
+    [data-lang="ar"] *{font-family:'Almarai',sans-serif}
+    [data-lang="ar"] .en{display:none}
+    [data-lang="en"] .ar{display:none}
+
+    .nav{position:sticky;top:0;z-index:100;background:var(--nav-bg);border-bottom:1px solid var(--border-l);box-shadow:var(--shadow);padding:0 20px;height:58px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}
+    .nav-brand .logo{width:34px;height:34px;border-radius:10px;background:var(--accent);display:grid;place-items:center;font-size:18px}
+    .nav-brand .brand-name{font-weight:700;font-size:15px;letter-spacing:-.3px}
+    .nav-brand .brand-name span{color:var(--accent)}
+    .nav-actions{display:flex;align-items:center;gap:8px}
+    .nav-btn,.back-btn{border:1px solid var(--border-l);background:var(--card-bg);color:var(--text);border-radius:8px;padding:6px 12px;font-size:13px;font-weight:500;cursor:pointer;transition:var(--transition);display:flex;align-items:center;gap:5px;text-decoration:none}
+    .nav-btn:hover,.back-btn:hover{border-color:var(--accent);color:var(--accent)}
+
+    /* HERO */
+    .hero{position:relative;overflow:hidden;padding:0;background:#081512}
+    .hero-bg{background:linear-gradient(160deg,#00352E 0%,#005248 35%,#006B5A 65%,#009688 100%);padding:60px 20px 50px;text-align:center;position:relative}
+    .hero-bg::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Ccircle cx='20' cy='20' r='15' fill='rgba(255,255,255,.04)'/%3E%3Ccircle cx='80' cy='70' r='25' fill='rgba(255,255,255,.03)'/%3E%3C/svg%3E") repeat}
+    .khareef-banner{background:linear-gradient(90deg,#2E7D32,#388E3C,#43A047);color:#fff;text-align:center;padding:10px 20px;font-size:13px;font-weight:600;letter-spacing:.3px;display:flex;justify-content:center;align-items:center;gap:8px}
+    .hero-icon{font-size:56px;margin-bottom:16px;line-height:1;position:relative;z-index:1}
+    .hero h1{font-size:clamp(22px,5vw,38px);font-weight:800;margin-bottom:10px;letter-spacing:-.5px;color:#fff;position:relative;z-index:1}
+    .hero .subtitle{font-size:clamp(14px,2.5vw,17px);opacity:.88;max-width:580px;margin:0 auto 24px;color:#fff;position:relative;z-index:1}
+    .hero-badges{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;position:relative;z-index:1}
+    .hero-badge{background:rgba(255,255,255,.18);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.25);border-radius:20px;padding:6px 14px;font-size:13px;font-weight:500;color:#fff}
+
+    /* JUMP NAV */
+    .jump-strip{background:var(--card-bg);border-bottom:1px solid var(--border-l);padding:0 20px;overflow-x:auto;scrollbar-width:none;display:flex;gap:4px}
+    .jump-strip::-webkit-scrollbar{display:none}
+    .jump-link{white-space:nowrap;padding:13px 14px;font-size:13px;font-weight:500;color:var(--text-2);text-decoration:none;border-bottom:2px solid transparent;transition:var(--transition)}
+    .jump-link:hover,.jump-link.active{color:var(--accent);border-bottom-color:var(--accent)}
+
+    /* MAIN */
+    .main{max-width:920px;margin:0 auto;padding:32px 16px 60px}
+    .section{margin-bottom:52px}
+    .section-head{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+    .section-head .s-icon{width:44px;height:44px;border-radius:12px;background:var(--accent-soft);border:1px solid rgba(0,121,107,.2);display:grid;place-items:center;font-size:22px;flex-shrink:0}
+    .section-head h2{font-size:clamp(17px,3vw,22px);font-weight:700;letter-spacing:-.3px}
+    .section-head p{font-size:13px;color:var(--text-2);margin-top:2px}
+
+    /* KHAREEF FEATURE BOX */
+    .khareef-feature{background:linear-gradient(135deg,#1B5E20,#2E7D32,#388E3C);border-radius:20px;padding:32px 28px;color:#fff;margin-bottom:28px;position:relative;overflow:hidden}
+    .khareef-feature::before{content:'🌧️';position:absolute;right:-10px;top:-10px;font-size:120px;opacity:.12}
+    [data-lang="ar"] .khareef-feature::before{right:auto;left:-10px}
+    .khareef-feature h3{font-size:clamp(18px,3vw,24px);font-weight:800;margin-bottom:8px}
+    .khareef-feature p{font-size:14px;opacity:.9;line-height:1.7;max-width:560px;margin-bottom:16px}
+    .khareef-pills{display:flex;flex-wrap:wrap;gap:8px}
+    .khareef-pill{background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.3);border-radius:20px;padding:5px 13px;font-size:12px;font-weight:500}
+
+    /* DESTINATION GRID */
+    .dest-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(265px,1fr));gap:18px}
+    .dest-card{background:var(--card-bg);border:1px solid var(--border-l);border-radius:var(--r);overflow:hidden;transition:var(--transition)}
+    .dest-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,121,107,.12)}
+    .dest-card-img{height:130px;display:flex;align-items:center;justify-content:center;font-size:56px;position:relative}
+    .dest-card-img.wadi{background:linear-gradient(135deg,#1B5E20,#66BB6A)}
+    .dest-card-img.mughsail{background:linear-gradient(135deg,#006064,#00ACC1)}
+    .dest-card-img.frankincense{background:linear-gradient(135deg,#5D4037,#A1887F)}
+    .dest-card-img.jobspark{background:linear-gradient(135deg,#37474F,#78909C)}
+    .dest-card-img.muscat{background:linear-gradient(135deg,#1A237E,#3949AB)}
+    .dest-card-img.mutrah{background:linear-gradient(135deg,#4A148C,#7B1FA2)}
+    .dest-card-img.wahiba{background:linear-gradient(135deg,#BF360C,#FF7043)}
+    .dest-card-img.nizwa{background:linear-gradient(135deg,#33691E,#8BC34A)}
+    .dest-card-badge{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.45);backdrop-filter:blur(6px);color:#fff;border-radius:10px;padding:3px 8px;font-size:11px;font-weight:600}
+    [data-lang="ar"] .dest-card-badge{right:auto;left:8px}
+    .dest-card-body{padding:16px}
+    .dest-card-body h3{font-size:15px;font-weight:700;margin-bottom:5px}
+    .dest-card-body .region{font-size:12px;color:var(--accent);font-weight:600;margin-bottom:6px}
+    .dest-card-body p{font-size:13px;color:var(--text-2);line-height:1.6;margin-bottom:10px}
+    .dest-meta{display:flex;gap:6px;flex-wrap:wrap}
+    .meta-pill{background:var(--accent-soft);border:1px solid rgba(0,121,107,.15);border-radius:10px;padding:3px 8px;font-size:11px;color:var(--text-2)}
+
+    /* CALENDAR TIMELINE */
+    .calendar-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:4px;margin-top:12px}
+    .month-cell{border-radius:6px;padding:10px 4px;text-align:center;font-size:10px;font-weight:700;transition:var(--transition)}
+    .month-cell .m-name{margin-bottom:3px;font-size:9px;text-transform:uppercase;color:var(--text-2)}
+    .month-cell.peak{background:#1B5E20;color:#fff}
+    .month-cell.good{background:#A5D6A7;color:#1B5E20}
+    .month-cell.ok{background:#FFECB3;color:#7B5800}
+    .month-cell.hot{background:#FFCCBC;color:#BF360C}
+    .calendar-legend{display:flex;gap:16px;margin-top:10px;flex-wrap:wrap}
+    .legend-item{display:flex;align-items:center;gap:6px;font-size:12px}
+    .legend-dot{width:12px;height:12px;border-radius:3px}
+
+    /* TIPS */
+    .tips-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+    .tip-card{background:var(--card-bg);border:1px solid var(--border-l);border-radius:var(--r);padding:16px 18px;display:flex;gap:12px;align-items:flex-start}
+    .tip-card:hover{border-color:var(--accent-soft);box-shadow:var(--shadow)}
+    .tip-card .t-icon{font-size:22px;flex-shrink:0}
+    .tip-card h3{font-size:14px;font-weight:700;margin-bottom:3px}
+    .tip-card p{font-size:12px;color:var(--text-2);line-height:1.6}
+
+    /* COMPARE BOXES */
+    .compare{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+    .compare-box{background:var(--card-bg);border:1px solid var(--border-l);border-radius:var(--r);padding:20px}
+    .compare-box h3{font-size:15px;font-weight:700;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+    .compare-box p{font-size:13px;color:var(--text-2);margin-bottom:12px}
+    .compare-list{list-style:none;padding:0}
+    .compare-list li{display:flex;align-items:flex-start;gap:8px;font-size:13px;padding:5px 0;border-bottom:1px solid var(--border-l)}
+    .compare-list li:last-child{border-bottom:none}
+    .compare-list li::before{content:'✓';color:var(--accent);font-weight:700;flex-shrink:0;margin-top:1px}
+
+    /* INFO BOX */
+    .info-box{background:var(--accent-soft);border:1px solid rgba(0,121,107,.2);border-radius:var(--r);padding:16px 20px;margin:16px 0;font-size:13px;color:var(--text);line-height:1.7}
+    .info-box strong{color:var(--accent)}
+
+    /* GOLD BOX */
+    .gold-box{background:linear-gradient(135deg,var(--gold-soft),var(--accent-soft));border:1px solid var(--gold);border-radius:var(--r);padding:20px;margin:24px 0;display:flex;gap:14px;align-items:flex-start}
+    .gold-box .gb-icon{font-size:28px;flex-shrink:0}
+    .gold-box h3{font-size:15px;font-weight:700;margin-bottom:5px;color:var(--accent)}
+    .gold-box p{font-size:13px;color:var(--text-2);line-height:1.6}
+
+    /* DIVIDER */
+    .divider{border:none;border-top:1px solid var(--border-l);margin:40px 0}
+
+    /* FOOTER */
+    .footer{background:var(--card-bg);border-top:1px solid var(--border-l);padding:24px 20px;text-align:center;color:var(--text-2);font-size:13px}
+    .footer a{color:var(--accent);text-decoration:none}
+
+    @media(max-width:600px){
+      .hero-bg{padding:40px 16px 36px}
+      .main{padding:20px 12px 40px}
+      .dest-grid,.tips-grid,.compare{grid-template-columns:1fr}
+      .calendar-grid{grid-template-columns:repeat(6,1fr)}
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-brand" href="../index.html">
+    <div class="logo">🌿</div>
+    <div class="brand-name">DOT<span>4</span>LIFE</div>
+  </a>
+  <div class="nav-actions">
+    <a class="back-btn" href="../travel.html">
+      <span class="en">← Travel</span><span class="ar">← السفر</span>
+    </a>
+    <button class="nav-btn" onclick="toggleLang()">
+      <span class="en">العربية</span><span class="ar">English</span>
+    </button>
+    <button class="nav-btn" onclick="toggleTheme()"><span id="theme-icon">🌙</span></button>
+  </div>
+</nav>
+
+<!-- KHAREEF BANNER -->
+<div class="khareef-banner">
+  🌧️ <span class="en">Khareef Season 2025: June 21 – September 21 — Salalah's Magical Green Season</span>
+  <span class="ar">موسم الخريف 2025: 21 يونيو – 21 سبتمبر — موسم صلالة الأخضر الساحر</span>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hero-icon">🌊</div>
+    <h1>
+      <span class="en">Salalah & Oman — Arabia's Green Secret</span>
+      <span class="ar">صلالة وسلطنة عُمان — السر الأخضر لأرض العرب</span>
+    </h1>
+    <p class="subtitle">
+      <span class="en">From Salalah's misty Khareef monsoon to Muscat's grand architecture, Oman is the most underrated gem in the Arabian Peninsula.</span>
+      <span class="ar">من خريف صلالة الضبابي إلى عمارة مسقط الرائعة، سلطنة عُمان هي الجوهرة الأكثر إهمالاً في شبه الجزيرة العربية.</span>
+    </p>
+    <div class="hero-badges">
+      <span class="hero-badge">🌧️ <span class="en">Khareef Monsoon</span><span class="ar">موسم الخريف</span></span>
+      <span class="hero-badge">🌊 <span class="en">Mughsail Beach</span><span class="ar">شاطئ مغسيل</span></span>
+      <span class="hero-badge">🌿 <span class="en">Wadi Darbat</span><span class="ar">وادي دربات</span></span>
+      <span class="hero-badge">🏺 <span class="en">Frankincense</span><span class="ar">البخور واللبان</span></span>
+      <span class="hero-badge">🏯 <span class="en">Muscat</span><span class="ar">مسقط</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- JUMP NAV -->
+<div class="jump-strip">
+  <a href="#khareef" class="jump-link"><span class="en">Khareef Season</span><span class="ar">موسم الخريف</span></a>
+  <a href="#salalah" class="jump-link"><span class="en">Salalah Sites</span><span class="ar">مواقع صلالة</span></a>
+  <a href="#muscat" class="jump-link"><span class="en">Muscat</span><span class="ar">مسقط</span></a>
+  <a href="#calendar" class="jump-link"><span class="en">When to Visit</span><span class="ar">متى تزور</span></a>
+  <a href="#tips" class="jump-link"><span class="en">Travel Tips</span><span class="ar">نصائح السفر</span></a>
+</div>
+
+<main class="main">
+
+  <!-- KHAREEF -->
+  <section class="section" id="khareef">
+    <div class="section-head">
+      <div class="s-icon">🌧️</div>
+      <div>
+        <h2><span class="en">The Khareef — Arabia's Only Monsoon</span><span class="ar">الخريف — الرياح الموسمية الوحيدة في الجزيرة العربية</span></h2>
+        <p><span class="en">June 21 – September 21 every year — a phenomenon that makes Salalah completely unique</span><span class="ar">من 21 يونيو إلى 21 سبتمبر كل عام — ظاهرة تجعل صلالة فريدة من نوعها</span></p>
+      </div>
+    </div>
+
+    <div class="khareef-feature">
+      <h3>
+        <span class="en">🌿 What is the Khareef?</span>
+        <span class="ar">🌿 ما هو موسم الخريف؟</span>
+      </h3>
+      <p>
+        <span class="en">Every summer, the Indian Ocean monsoon sweeps over the Dhofar mountains in southern Oman, transforming the desert into a lush green landscape of waterfalls, lakes, and mist-covered mountains. Temperatures drop to a magical 18–24°C while the rest of the Gulf bakes above 45°C. Over 3 million visitors flock to Salalah during this season.</span>
+        <span class="ar">كل صيف، تجتاح الرياح الموسمية للمحيط الهندي جبال ظفار في جنوب سلطنة عُمان، لتحوّل الصحراء إلى مشهد أخضر خصيب من الشلالات والبحيرات والجبال الضبابية. تنخفض درجات الحرارة إلى 18–24 درجة مئوية بينما يصل بقية الخليج إلى أعلى من 45 درجة. أكثر من 3 ملايين زائر يتوافدون على صلالة خلال هذا الموسم.</span>
+      </p>
+      <div class="khareef-pills">
+        <span class="khareef-pill">🌡️ 18–24°C</span>
+        <span class="khareef-pill">🌧️ <span class="en">Misty Rain</span><span class="ar">مطر وضباب</span></span>
+        <span class="khareef-pill">🌿 <span class="en">Lush Green</span><span class="ar">خضرة غناء</span></span>
+        <span class="khareef-pill">💧 <span class="en">Waterfalls Active</span><span class="ar">شلالات نشطة</span></span>
+        <span class="khareef-pill">🐄 <span class="en">Grazing Cattle</span><span class="ar">قطعان الماشية</span></span>
+        <span class="khareef-pill">📅 <span class="en">Jun 21 – Sep 21</span><span class="ar">21 يونيو – 21 سبتمبر</span></span>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <strong><span class="en">📌 Important:</span><span class="ar">📌 تنبيه:</span></strong>
+      <span class="en"> Book hotels <strong>3–4 months in advance</strong> for Khareef peak (late July and August). Prices triple during peak weeks. The end of Khareef (mid-September) has fewer crowds with landscapes still green — a smart choice.</span>
+      <span class="ar"> احجز الفنادق <strong>قبل 3–4 أشهر</strong> لذروة الخريف (أواخر يوليو وأغسطس). الأسعار تتضاعف ثلاث مرات في أسابيع الذروة. نهاية الخريف (منتصف سبتمبر) أقل ازدحاماً والمناظر لا تزال خضراء — خيار ذكي.</span>
+    </div>
+  </section>
+
+  <hr class="divider"/>
+
+  <!-- SALALAH SITES -->
+  <section class="section" id="salalah">
+    <div class="section-head">
+      <div class="s-icon">📍</div>
+      <div>
+        <h2><span class="en">Top Sites in Salalah</span><span class="ar">أبرز مواقع صلالة</span></h2>
+        <p><span class="en">Nature, history, beaches, and the ancient frankincense trail</span><span class="ar">طبيعة وتاريخ وشواطئ ودرب اللبان العريق</span></p>
+      </div>
+    </div>
+    <div class="dest-grid">
+      <div class="dest-card">
+        <div class="dest-card-img wadi">🌊
+          <div class="dest-card-badge"><span class="en">⭐ Must See</span><span class="ar">⭐ لا تفوّته</span></div>
+        </div>
+        <div class="dest-card-body">
+          <div class="region">📍 <span class="en">30 km east of Salalah</span><span class="ar">30 كم شرق صلالة</span></div>
+          <h3><span class="en">Wadi Darbat</span><span class="ar">وادي دربات</span></h3>
+          <p><span class="en">The crown jewel of Khareef. A deep green valley with a stunning lake, roaring waterfall (Khareef only), lush plateaus with grazing camels, and pink flamingos. The drive through the wadi is spectacular. Arrive at sunrise for cloud-covered mountains.</span><span class="ar">جوهرة الخريف. وادٍ أخضر عميق بحيرة مذهلة وشلال صاخب (خلال الخريف فقط) وهضاب خصيبة بالجمال الراعية وطيور الفلامنغو الوردية. المسير خلال الوادي رائع. أتِ عند الشروق لترى الجبال مغطاة بالغيوم.</span></p>
+          <div class="dest-meta">
+            <span class="meta-pill">🌊 <span class="en">Lake & Waterfall</span><span class="ar">بحيرة وشلال</span></span>
+            <span class="meta-pill">🦩 <span class="en">Flamingos</span><span class="ar">فلامنغو</span></span>
+          </div>
+        </div>
+      </div>
+      <div class="dest-card">
+        <div class="dest-card-img mughsail">🌊
+          <div class="dest-card-badge"><span class="en">🌊 Blowholes</span><span class="ar">🌊 نافورات طبيعية</span></div>
+        </div>
+        <div class="dest-card-body">
+          <div class="region">📍 <span class="en">38 km west of Salalah</span><span class="ar">38 كم غرب صلالة</span></div>
+          <h3><span class="en">Mughsail Beach & Blowholes</span><span class="ar">شاطئ مغسيل والنوافير الصخرية</span></h3>
+          <p><span class="en">One of the most dramatic coastlines in Arabia — white sand beach with towering limestone cliffs. The natural blowholes shoot jets of water 8–10 meters high. During Khareef, thick mist rolls off the sea creating an ethereal atmosphere. Swimming is dangerous — admire from above.</span><span class="ar">من أجمل سواحل الجزيرة العربية — شاطئ رمال بيضاء بجروف حجر جيري شاهقة. النوافير الطبيعية تقذف الماء 8–10 أمتار. في الخريف، الضباب الكثيف يخلق أجواء أثيرية. السباحة خطيرة — أعجب بها من الأعلى.</span></p>
+          <div class="dest-meta">
+            <span class="meta-pill">💨 <span class="en">Blowholes</span><span class="ar">نوافير صخرية</span></span>
+            <span class="meta-pill">🏖️ <span class="en">White Sand</span><span class="ar">رمال بيضاء</span></span>
+          </div>
+        </div>
+      </div>
+      <div class="dest-card">
+        <div class="dest-card-img frankincense">🌿
+          <div class="dest-card-badge">UNESCO</div>
+        </div>
+        <div class="dest-card-body">
+          <div class="region">📍 <span class="en">Wadi Dawkah & Al-Baleed</span><span class="ar">وادي دوكة ومتحف البليد</span></div>
+          <h3><span class="en">Frankincense Trail (UNESCO)</span><span class="ar">طريق اللبان (يونسكو)</span></h3>
+          <p><span class="en">The ancient Land of Frankincense — UNESCO World Heritage Site. Wadi Dawkah has the world's only protected frankincense tree forest. Al-Baleed Archaeological Park has the ruins of the ancient port city that traded frankincense globally 2,000 years ago.</span><span class="ar">أرض اللبان العريقة — تراث يونسكو. وادي دوكة يضم الغابة المحمية الوحيدة في العالم لأشجار اللبان. متحف البليد الأثري أطلال مدينة الميناء القديمة التي أدارت تجارة اللبان عالمياً قبل 2000 سنة.</span></p>
+          <div class="dest-meta">
+            <span class="meta-pill">🏛️ UNESCO</span>
+            <span class="meta-pill">🌿 <span class="en">Frankincense Trees</span><span class="ar">أشجار اللبان</span></span>
+          </div>
+        </div>
+      </div>
+      <div class="dest-card">
+        <div class="dest-card-img jobspark">⛰️</div>
+        <div class="dest-card-body">
+          <div class="region">📍 <span class="en">Dhofar Mountains</span><span class="ar">جبال ظفار</span></div>
+          <h3><span class="en">Jebel Samhan & Plateau Drives</span><span class="ar">جبل سمحان وطرق الهضبة</span></h3>
+          <p><span class="en">The highest peak in Dhofar at 2,106m. During Khareef, the mountain plateau is shrouded in mist and carpeted in green — more Scotland than Arabia. Arabian leopards (critically endangered) still roam these mountains. Stargazing outside Khareef is extraordinary.</span><span class="ar">أعلى قمة في ظفار بارتفاع 2106م. في الخريف، هضبة الجبل مغمورة بالضباب ومكسوة بالخضرة — أشبه باسكتلندا من الجزيرة العربية. النمر العربي (مهدد بالانقراض) لا يزال يتجول في هذه الجبال.</span></p>
+          <div class="dest-meta">
+            <span class="meta-pill">⛰️ 2,106m</span>
+            <span class="meta-pill">🌫️ <span class="en">Misty plateau</span><span class="ar">هضبة ضبابية</span></span>
+          </div>
+        </div>
+      </div>
+      <div class="dest-card">
+        <div class="dest-card-img wadi" style="background:linear-gradient(135deg,#1565C0,#42A5F5)">🐬</div>
+        <div class="dest-card-body">
+          <div class="region">📍 <span class="en">Mirbat, 70km east of Salalah</span><span class="ar">ميربط، 70 كم شرق صلالة</span></div>
+          <h3><span class="en">Mirbat & Dolphin Watching</span><span class="ar">ميربط ومشاهدة الدلافين</span></h3>
+          <p><span class="en">Historic fishing village with a beautiful corniche and Portuguese fort. Boat trips from Mirbat offer guaranteed dolphin sightings — pods of hundreds of spinner dolphins. Diving and whale watching available Sep–May. The old town is photogenic.</span><span class="ar">قرية صيد تاريخية بكورنيش جميل وقلعة برتغالية. رحلات قوارب من ميربط تضمن مشاهدة الدلافين — أسراب بمئات الدلافين الدوّارة. الغوص ومشاهدة الحيتان متاحة سبتمبر–مايو.</span></p>
+          <div class="dest-meta">
+            <span class="meta-pill">🐬 <span class="en">Dolphin pods</span><span class="ar">أسراب دلافين</span></span>
+            <span class="meta-pill">🤿 <span class="en">Diving</span><span class="ar">غوص</span></span>
+          </div>
+        </div>
+      </div>
+      <div class="dest-card">
+        <div class="dest-card-img wahiba" style="background:linear-gradient(135deg,#6D4C41,#D7CCC8)">🐪</div>
+        <div class="dest-card-body">
+          <div class="region">📍 <span class="en">Salalah City</span><span class="ar">مدينة صلالة</span></div>
+          <h3><span class="en">Haffa House Market & City</span><span class="ar">سوق حافة ومدينة صلالة</span></h3>
+          <p><span class="en">Salalah's famous frankincense and traditional market. Buy raw frankincense, Omani silver jewelry, rose water, and dried limes (loomi). The city has a beautiful corniche, banana plantations, and the tomb of the Prophet Ayoub (Job). Relaxed Dhofari culture.</span><span class="ar">سوق اللبان التقليدي الشهير في صلالة. اشترِ اللبان الخام والمجوهرات الفضية والماء الوردي والليمون المجفف (اللومي). كورنيش جميل ومزارع موز وضريح النبي أيوب. ثقافة ظفارية هادئة.</span></p>
+          <div class="dest-meta">
+            <span class="meta-pill">🌿 <span class="en">Frankincense Market</span><span class="ar">سوق اللبان</span></span>
+            <span class="meta-pill">🛍️ <span class="en">Omani Crafts</span><span class="ar">حرف عُمانية</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider"/>
+
+  <!-- MUSCAT -->
+  <section class="section" id="muscat">
+    <div class="section-head">
+      <div class="s-icon">🏯</div>
+      <div>
+        <h2><span class="en">Muscat — The Capital Worth Visiting</span><span class="ar">مسقط — العاصمة التي تستحق الزيارة</span></h2>
+        <p><span class="en">Combine Salalah with Muscat for a complete Omani experience</span><span class="ar">اجمع صلالة مع مسقط لتجربة عُمانية متكاملة</span></p>
+      </div>
+    </div>
+    <div class="dest-grid">
+      <div class="dest-card">
+        <div class="dest-card-img muscat">🕌
+          <div class="dest-card-badge"><span class="en">🌟 Iconic</span><span class="ar">🌟 رمزي</span></div>
+        </div>
+        <div class="dest-card-body">
+          <div class="region">📍 <span class="en">Al Khuwair, Muscat</span><span class="ar">الخوير، مسقط</span></div>
+          <h3><span class="en">Sultan Qaboos Grand Mosque</span><span class="ar">مسجد السلطان قابوس الأكبر</span></h3>
+          <p><span class="en">One of the most beautiful mosques in the world — 20,000 worshippers capacity. The main prayer hall has the world's second-largest hand-woven carpet (4,343 m²). Open to non-Muslim visitors Sat–Thu, 8am–11am. Dress modestly.</span><span class="ar">أحد أجمل المساجد في العالم — يستوعب 20,000 مصلٍّ. قاعة الصلاة الرئيسية تضم ثاني أكبر سجادة منسوجة يدوياً في العالم (4343 م²). مفتوح لغير المسلمين السبت–الخميس 8ص–11ص.</span></p>
+          <div class="dest-meta">
+            <span class="meta-pill">🕌 <span class="en">World-class Mosque</span><span class="ar">مسجد عالمي</span></span>
+          </div>
+        </div>
+      </div>
+      <div class="dest-card">
+        <div class="dest-card-img mutrah">🛒</div>
+        <div class="dest-card-body">
+          <div class="region">📍 <span class="en">Mutrah, Old Muscat</span><span class="ar">مطرح، مسقط القديمة</span></div>
+          <h3><span class="en">Mutrah Souq & Corniche</span><span class="ar">سوق مطرح وكورنيشه</span></h3>
+          <p><span class="en">One of the oldest markets in Arabia. Winding covered lanes of spices, silver, frankincense, pashminas, and Omani khanjar daggers. The corniche at sunset with dhow boats is iconic. The old Portuguese forts frame the bay.</span><span class="ar">أحد أعرق أسواق الجزيرة العربية. أزقة مسقوفة متشعبة من البهارات والفضة واللبان والباشمينا وخناجر عُمانية. الكورنيش عند الغروب مع قوارب الشراع (الدوّ) مشهد لا يُنسى.</span></p>
+          <div class="dest-meta">
+            <span class="meta-pill">🛒 <span class="en">Ancient Market</span><span class="ar">سوق عريق</span></span>
+            <span class="meta-pill">🌅 <span class="en">Sunset Views</span><span class="ar">مناظر الغروب</span></span>
+          </div>
+        </div>
+      </div>
+      <div class="dest-card">
+        <div class="dest-card-img wahiba">🏜️</div>
+        <div class="dest-card-body">
+          <div class="region">📍 <span class="en">Central Oman, 2h from Muscat</span><span class="ar">وسط عُمان، 2 ساعة من مسقط</span></div>
+          <h3><span class="en">Wahiba Sands Desert</span><span class="ar">رمال الوهيبة (الشرقية)</span></h3>
+          <p><span class="en">Oman's famous red sand dunes stretching 180 km. Accessible from Muscat in 2 hours. Stay overnight at traditional Bedouin camps — camel rides, dune bashing, and a sky full of stars. Combine with the Wadi Bani Khalid oasis.</span><span class="ar">الكثبان الحمراء الشهيرة في عُمان تمتد 180 كم. يصلها من مسقط في ساعتين. أبِت في مخيمات بدوية تقليدية — ركوب الجمال وتزلج الرمال وسماء مليئة بالنجوم. اجمعها مع واحة وادي بني خالد.</span></p>
+          <div class="dest-meta">
+            <span class="meta-pill">🐪 <span class="en">Camel Rides</span><span class="ar">ركوب الجمال</span></span>
+            <span class="meta-pill">🌙 <span class="en">Stargazing</span><span class="ar">رصد النجوم</span></span>
+          </div>
+        </div>
+      </div>
+      <div class="dest-card">
+        <div class="dest-card-img nizwa">🏰</div>
+        <div class="dest-card-body">
+          <div class="region">📍 <span class="en">Nizwa, 1.5h from Muscat</span><span class="ar">نزوى، 1.5 ساعة من مسقط</span></div>
+          <h3><span class="en">Nizwa — City of History</span><span class="ar">نزوى — مدينة التاريخ</span></h3>
+          <p><span class="en">Oman's ancient capital — magnificent circular Nizwa Fort, the famous Friday goat market (7–9am only), traditional souq, and access to Jabal Akhdar (Green Mountain) and its rose farms. The drive through Wadi Ghul (Oman's Grand Canyon) is extraordinary.</span><span class="ar">عاصمة عُمان القديمة — قلعة نزوى الدائرية الرائعة وسوق الجمعة للماعز (7–9 صباحاً فقط) والسوق التقليدي وجبل الأخضر ومزارع الورد. المسير عبر وادي غول (غراند كانيون عُمان) استثنائي.</span></p>
+          <div class="dest-meta">
+            <span class="meta-pill">🏰 <span class="en">Ancient Fort</span><span class="ar">قلعة تاريخية</span></span>
+            <span class="meta-pill">🌹 <span class="en">Jabal Akhdar</span><span class="ar">جبل الأخضر</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider"/>
+
+  <!-- CALENDAR -->
+  <section class="section" id="calendar">
+    <div class="section-head">
+      <div class="s-icon">📅</div>
+      <div>
+        <h2><span class="en">When to Visit Salalah</span><span class="ar">متى تزور صلالة؟</span></h2>
+        <p><span class="en">Month-by-month guide for planning your trip</span><span class="ar">دليل شهري لتخطيط رحلتك</span></p>
+      </div>
+    </div>
+    <div class="calendar-grid" id="cal-grid"></div>
+    <div class="calendar-legend">
+      <div class="legend-item"><div class="legend-dot" style="background:#1B5E20"></div><span class="en">Peak Khareef</span><span class="ar">ذروة الخريف</span></div>
+      <div class="legend-item"><div class="legend-dot" style="background:#A5D6A7"></div><span class="en">Early/Late Khareef</span><span class="ar">بداية/نهاية الخريف</span></div>
+      <div class="legend-item"><div class="legend-dot" style="background:#FFECB3"></div><span class="en">Good — mild weather</span><span class="ar">جيد — طقس لطيف</span></div>
+      <div class="legend-item"><div class="legend-dot" style="background:#FFCCBC"></div><span class="en">Hot & dry</span><span class="ar">حار وجاف</span></div>
+    </div>
+
+    <div class="compare" style="margin-top:24px">
+      <div class="compare-box">
+        <h3>🌧️ <span class="en">Visit During Khareef (Jun–Sep)</span><span class="ar">زُر في الخريف (يونيو–سبتمبر)</span></h3>
+        <p><span class="en">If you want:</span><span class="ar">إذا أردت:</span></p>
+        <ul class="compare-list">
+          <li><span class="en">Lush green mountains & waterfalls</span><span class="ar">جبال خضراء وشلالات</span></li>
+          <li><span class="en">Cool temperatures 18–24°C</span><span class="ar">درجات حرارة 18–24°C</span></li>
+          <li><span class="en">The unique Khareef atmosphere</span><span class="ar">أجواء الخريف الفريدة</span></li>
+          <li><span class="en">Wadi Darbat lake & waterfall active</span><span class="ar">بحيرة وادي دربات والشلال نشطان</span></li>
+        </ul>
+      </div>
+      <div class="compare-box">
+        <h3>☀️ <span class="en">Visit Outside Khareef (Oct–May)</span><span class="ar">زُر خارج الخريف (أكتوبر–مايو)</span></h3>
+        <p><span class="en">If you want:</span><span class="ar">إذا أردت:</span></p>
+        <ul class="compare-list">
+          <li><span class="en">Swimming & clear beach days</span><span class="ar">سباحة وشواطئ صافية</span></li>
+          <li><span class="en">Dolphin & whale watching (Sep–May)</span><span class="ar">مشاهدة الدلافين والحيتان</span></li>
+          <li><span class="en">Lower hotel prices & fewer crowds</span><span class="ar">أسعار أقل وازدحام أقل</span></li>
+          <li><span class="en">Diving around Mirbat & Hallaniyat</span><span class="ar">غوص حول ميربط والحلانيات</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider"/>
+
+  <!-- TIPS -->
+  <section class="section" id="tips">
+    <div class="section-head">
+      <div class="s-icon">💡</div>
+      <div>
+        <h2><span class="en">Practical Travel Tips for Oman</span><span class="ar">نصائح عملية للسفر إلى سلطنة عُمان</span></h2>
+        <p><span class="en">Make your Omani journey smooth and unforgettable</span><span class="ar">اجعل رحلتك العُمانية سلسة لا تُنسى</span></p>
+      </div>
+    </div>
+    <div class="tips-grid">
+      <div class="tip-card"><div class="t-icon">🆓</div><div><h3><span class="en">GCC Citizens — Easy Entry</span><span class="ar">مواطنو الخليج — دخول سهل</span></h3><p><span class="en">GCC nationals enter Oman with national ID only — no visa, no hassle. Flights from Riyadh, Dubai, Kuwait, and Bahrain are 1.5–2 hours.</span><span class="ar">مواطنو الخليج يدخلون عُمان بالهوية الوطنية فقط. رحلات من الرياض ودبي والكويت والبحرين 1.5–2 ساعة.</span></p></div></div>
+      <div class="tip-card"><div class="t-icon">🚗</div><div><h3><span class="en">Rent a 4WD for Salalah</span><span class="ar">استأجر دفعاً رباعياً في صلالة</span></h3><p><span class="en">The best sites around Salalah (Wadi Darbat, Ain Razat, Jabal Samhan) require an SUV or 4WD, especially during Khareef when tracks are wet and muddy.</span><span class="ar">أفضل مواقع صلالة (وادي دربات وعين رزات وجبل سمحان) تتطلب SUV أو دفعاً رباعياً، خاصة في الخريف حين تكون المسالك رطبة وطينية.</span></p></div></div>
+      <div class="tip-card"><div class="t-icon">💰</div><div><h3><span class="en">Currency: Omani Rial (OMR)</span><span class="ar">العملة: الريال العُماني</span></h3><p><span class="en">1 OMR ≈ 9.7 SAR / 2.6 USD — the third most valuable currency in the world. Cards accepted in most places. ATMs available everywhere. Change before leaving the airport for taxi drivers.</span><span class="ar">1 ريال عُماني ≈ 9.7 ريال سعودي / 2.6 دولار — ثالث أغلى عملة في العالم. البطاقات مقبولة في معظم الأماكن. صرّف بعض الريالات في المطار لسائقي التاكسي.</span></p></div></div>
+      <div class="tip-card"><div class="t-icon">📱</div><div><h3><span class="en">Omantel / Ooredoo SIM</span><span class="ar">شريحة عُمانتل / أوريدو</span></h3><p><span class="en">Buy a local SIM at Muscat or Salalah airport. ~5 OMR for 10GB. Coverage is excellent across Muscat and Salalah. Remote areas like Wahiba have limited signal.</span><span class="ar">اشترِ شريحة محلية في مطار مسقط أو صلالة. ~5 ريال لـ 10 جيجا. التغطية ممتازة في مسقط وصلالة. المناطق النائية كالوهيبة إشارة محدودة.</span></p></div></div>
+      <div class="tip-card"><div class="t-icon">🕌</div><div><h3><span class="en">Oman is Conservative but Welcoming</span><span class="ar">عُمان محافظة لكن مضيافة</span></h3><p><span class="en">Omanis are famously hospitable. Dress modestly in public areas and remove shoes at homes and mosques. Alcohol is available only in licensed hotels. Photography of people requires consent.</span><span class="ar">العُمانيون مشهورون بكرم الضيافة. ارتدِ ملابس محتشمة في الأماكن العامة وانزع حذاءك في المنازل والمساجد. الكحول في الفنادق المرخصة فقط.</span></p></div></div>
+      <div class="tip-card"><div class="t-icon">🌊</div><div><h3><span class="en">Salalah Beach Safety</span><span class="ar">سلامة شواطئ صلالة</span></h3><p><span class="en">During Khareef, ocean currents are extremely dangerous. Never swim at Mughsail or Al-Haffa beach during Khareef. Swimming is safe Oct–May at Salalah's beaches. Always check local warnings.</span><span class="ar">في الخريف، التيارات البحرية خطيرة للغاية. لا تسبح في شاطئ مغسيل أو الحفة خلال الخريف. السباحة آمنة أكتوبر–مايو. تحقق دائماً من التحذيرات المحلية.</span></p></div></div>
+    </div>
+
+    <div class="gold-box">
+      <span class="gb-icon">🌿</span>
+      <div>
+        <h3><span class="en">Oman — The Kindest Country in Arabia</span><span class="ar">عُمان — أكثر بلدان العرب حنواً</span></h3>
+        <p><span class="en">Travellers consistently rank Oman as the friendliest country in the Arab world. The Omani people have a gentleness and genuine warmth that makes every visit memorable. Slow down, accept the tea they offer, and let the pace of Oman change you.</span><span class="ar">يصنّف المسافرون عُمان باستمرار كأودّ بلد في العالم العربي. الشعب العُماني يتمتع برقة ودفء حقيقي يجعل كل زيارة لا تُنسى. أبطئ من خطاك، اقبل الشاي المقدَّم لك، ودع إيقاع عُمان يُغيّرك.</span></p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>
+    <span class="en">DOTFORLIFE — Discover Salalah & Oman | <a href="../travel.html">← Back to Travel Guides</a></span>
+    <span class="ar">DOT4LIFE — اكتشف صلالة وعُمان | <a href="../travel.html">← العودة لأدلة السفر</a></span>
+  </p>
+</footer>
+
+<script>
+  var months=[
+    {en:'Jan',ar:'يناير',type:'ok'},
+    {en:'Feb',ar:'فبراير',type:'ok'},
+    {en:'Mar',ar:'مارس',type:'ok'},
+    {en:'Apr',ar:'أبريل',type:'hot'},
+    {en:'May',ar:'مايو',type:'hot'},
+    {en:'Jun',ar:'يونيو',type:'good'},
+    {en:'Jul',ar:'يوليو',type:'peak'},
+    {en:'Aug',ar:'أغسطس',type:'peak'},
+    {en:'Sep',ar:'سبتمبر',type:'good'},
+    {en:'Oct',ar:'أكتوبر',type:'ok'},
+    {en:'Nov',ar:'نوفمبر',type:'ok'},
+    {en:'Dec',ar:'ديسمبر',type:'ok'}
+  ];
+  var labels={peak:{en:'Peak Khareef',ar:'ذروة الخريف'},good:{en:'Khareef',ar:'خريف'},ok:{en:'Good',ar:'جيد'},hot:{en:'Hot',ar:'حار'}};
+  var grid=document.getElementById('cal-grid');
+  months.forEach(function(m){
+    var el=document.createElement('div');
+    el.className='month-cell '+m.type;
+    var l=document.documentElement.getAttribute('data-lang')||'en';
+    el.innerHTML='<div class="m-name">'+m[l]+'</div>'+labels[m.type][l];
+    grid.appendChild(el);
+  });
+
+  function toggleTheme(){
+    var h=document.documentElement;
+    var t=h.getAttribute('data-theme')==='dark'?'light':'dark';
+    h.setAttribute('data-theme',t);localStorage.setItem('dfl-theme',t);
+    document.getElementById('theme-icon').textContent=t==='dark'?'☀️':'🌙';
+  }
+  function toggleLang(){
+    var h=document.documentElement;
+    var l=h.getAttribute('data-lang')==='ar'?'en':'ar';
+    h.setAttribute('data-lang',l);h.setAttribute('lang',l);
+    h.setAttribute('dir',l==='ar'?'rtl':'ltr');
+    localStorage.setItem('dfl-lang',l);
+    // re-render calendar
+    grid.innerHTML='';
+    months.forEach(function(m){
+      var el=document.createElement('div');
+      el.className='month-cell '+m.type;
+      el.innerHTML='<div class="m-name">'+m[l]+'</div>'+labels[m.type][l];
+      grid.appendChild(el);
+    });
+  }
+  (function(){
+    document.getElementById('theme-icon').textContent=
+      document.documentElement.getAttribute('data-theme')==='dark'?'☀️':'🌙';
+  })();
+  var sections=document.querySelectorAll('section[id]');
+  var links=document.querySelectorAll('.jump-link');
+  window.addEventListener('scroll',function(){
+    var y=window.scrollY+80;
+    sections.forEach(function(s){
+      if(y>=s.offsetTop&&y<s.offsetTop+s.offsetHeight){
+        links.forEach(function(l){l.classList.remove('active')});
+        var a=document.querySelector('.jump-link[href="#'+s.id+'"]');
+        if(a)a.classList.add('active');
+      }
+    });
+  });
+</script>
+</body>
+</html>

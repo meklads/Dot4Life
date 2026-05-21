@@ -2542,6 +2542,50 @@
 
 /* body::before gradient overlay removed — was creating faint vertical lines at viewport edges */
 
+/* ═══ NEWSLETTER SECTION ════════════════════════════════════════════════════ */
+.nl-section{padding:clamp(56px,8vw,88px) 0;background:linear-gradient(135deg,#0a1628 0%,#0f2744 60%,#0a1f2e 100%);position:relative;overflow:hidden;}
+.nl-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 70% at 80% 50%,rgba(6,182,212,.12),transparent),radial-gradient(ellipse 40% 60% at 10% 80%,rgba(0,102,204,.10),transparent);pointer-events:none;}
+.nl-inner{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,64px);align-items:center;position:relative;z-index:1;}
+@media(max-width:760px){.nl-inner{grid-template-columns:1fr;gap:28px;}}
+.nl-eyebrow{display:flex;align-items:center;gap:8px;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(6,182,212,.8);margin-bottom:14px;}
+.nl-dot{width:6px;height:6px;border-radius:50%;background:#06B6D4;animation:nlPulse 2s infinite;}
+@keyframes nlPulse{0%,100%{box-shadow:0 0 0 0 rgba(6,182,212,.4);}50%{box-shadow:0 0 0 6px rgba(6,182,212,0);}}
+.nl-title{font-size:clamp(1.4rem,3vw,2rem);font-weight:900;letter-spacing:-.03em;line-height:1.2;color:#fff;margin-bottom:12px;}
+.nl-sub{font-size:.88rem;color:rgba(255,255,255,.5);line-height:1.7;}
+.nl-form-wrap{}
+.nl-input-row{display:flex;gap:10px;margin-bottom:12px;}
+@media(max-width:480px){.nl-input-row{flex-direction:column;}}
+.nl-input{flex:1;padding:14px 18px;border-radius:12px;border:1.5px solid rgba(255,255,255,.15);background:rgba(255,255,255,.08);color:#fff;font-size:.95rem;font-family:inherit;outline:none;transition:border-color .2s,background .2s;}
+.nl-input::placeholder{color:rgba(255,255,255,.35);}
+.nl-input:focus{border-color:rgba(6,182,212,.6);background:rgba(255,255,255,.12);}
+.nl-btn{padding:14px 24px;border-radius:12px;background:linear-gradient(135deg,#0066CC,#06B6D4);color:#fff;font-weight:700;font-size:.9rem;border:none;cursor:pointer;font-family:inherit;white-space:nowrap;transition:opacity .2s,transform .2s cubic-bezier(.22,1,.36,1);}
+.nl-btn:hover{opacity:.92;transform:translateY(-1px);}
+.nl-success{padding:12px 16px;background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.3);border-radius:10px;font-size:.85rem;color:#4ade80;display:flex;align-items:center;gap:8px;}
+.nl-error{padding:12px 16px;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);border-radius:10px;font-size:.85rem;color:#f87171;}
+.nl-trust{font-size:.73rem;color:rgba(255,255,255,.35);display:flex;align-items:center;gap:6px;margin-top:10px;}
+
+/* ═══ NEWSLETTER POPUP ══════════════════════════════════════════════════════ */
+#nl-popup{position:fixed;bottom:24px;right:24px;z-index:9000;width:340px;max-width:calc(100vw - 32px);background:var(--card-bg);border-radius:20px;box-shadow:0 24px 64px rgba(0,0,0,.22),0 0 0 1px rgba(0,0,0,.06);overflow:hidden;transform:translateY(120%);opacity:0;transition:transform .4s cubic-bezier(.22,1,.36,1),opacity .3s;pointer-events:none;}
+[data-lang="ar"] #nl-popup{right:auto;left:24px;}
+#nl-popup.visible{transform:translateY(0);opacity:1;pointer-events:auto;}
+.nlp-header{background:linear-gradient(135deg,#0a1628,#0f2744);padding:20px 20px 16px;position:relative;}
+.nlp-close{position:absolute;top:12px;right:12px;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.1);border:none;color:rgba(255,255,255,.6);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;line-height:1;}
+[data-lang="ar"] .nlp-close{right:auto;left:12px;}
+.nlp-close:hover{background:rgba(255,255,255,.2);}
+.nlp-icon{font-size:2rem;display:block;margin-bottom:8px;}
+.nlp-title{font-size:1rem;font-weight:800;color:#fff;line-height:1.3;margin-bottom:4px;}
+.nlp-sub{font-size:.78rem;color:rgba(255,255,255,.5);line-height:1.5;}
+.nlp-body{padding:16px 20px 20px;}
+.nlp-form .nl-input-row{flex-direction:column;gap:8px;margin-bottom:8px;}
+.nlp-form .nl-input{background:var(--body-bg);border-color:var(--border-l);color:var(--text);font-size:.88rem;}
+.nlp-form .nl-input::placeholder{color:var(--muted);}
+.nlp-form .nl-input:focus{border-color:var(--accent,#0066CC);}
+.nlp-form .nl-btn{width:100%;padding:12px;border-radius:10px;font-size:.88rem;}
+.nlp-trust{text-align:center;font-size:.7rem;color:var(--muted);margin-top:8px;}
+.nlp-skip{display:block;text-align:center;font-size:.72rem;color:var(--muted);margin-top:10px;cursor:pointer;text-decoration:underline;background:none;border:none;font-family:inherit;width:100%;}
+.nlp-skip:hover{color:var(--text);}
+[data-theme="dark"] .nlp-form .nl-input{background:#263548;}
+
 /* Premium footer upgrades */
 .eco-footer { border-top: 2px solid var(--border-l); }
 
@@ -4993,6 +5037,63 @@ window.dflTrack=function(event,params){
     </div>
   </div>
 </section>
+<!-- ═══ NEWSLETTER SECTION ════════════════════════════════════════════════════ -->
+<section class="nl-section" id="newsletter" aria-label="Newsletter signup">
+  <div class="container">
+    <div class="nl-inner">
+      <div class="nl-content">
+        <div class="nl-eyebrow">
+          <span class="nl-dot"></span>
+          <span class="en">Stay in the loop</span>
+          <span class="ar">ابقَ على اطلاع</span>
+        </div>
+        <h2 class="nl-title">
+          <span class="en">New tools, guides & GCC life tips — straight to your inbox.</span>
+          <span class="ar">أدوات جديدة وأدلة ونصائح لحياة الخليج — مباشرةً إلى بريدك.</span>
+        </h2>
+        <p class="nl-sub">
+          <span class="en">No spam. One email per month. Unsubscribe anytime.</span>
+          <span class="ar">بدون إزعاج. رسالة واحدة شهرياً. إلغاء الاشتراك في أي وقت.</span>
+        </p>
+      </div>
+      <div class="nl-form-wrap">
+        <!-- MAILCHIMP FORM — Replace action URL with your Mailchimp form action -->
+        <form class="nl-form" id="nl-form-main"
+          action="https://dotforlife.us1.list-manage.com/subscribe/post?u=XXXXXXXX&amp;id=XXXXXXXX"
+          method="post" target="_blank" novalidate>
+          <div class="nl-input-row">
+            <input type="email" name="EMAIL" class="nl-input" required
+              placeholder="your@email.com"
+              aria-label="Email address" />
+            <button type="submit" class="nl-btn">
+              <span class="en">Subscribe →</span>
+              <span class="ar">اشترك ←</span>
+            </button>
+          </div>
+          <!-- Mailchimp anti-bot field (do not remove) -->
+          <div style="position:absolute;left:-5000px;" aria-hidden="true">
+            <input type="text" name="b_XXXXXXXX_XXXXXXXX" tabindex="-1" value="">
+          </div>
+          <div class="nl-success" id="nl-success-main" style="display:none;">
+            <span>✅ </span>
+            <span class="en">You're subscribed! Welcome to the DOTFORLIFE community.</span>
+            <span class="ar">تم الاشتراك! مرحباً بك في مجتمع DOTFORLIFE.</span>
+          </div>
+          <div class="nl-error" id="nl-error-main" style="display:none;">
+            <span class="en">Something went wrong. Please try again.</span>
+            <span class="ar">حدث خطأ. يرجى المحاولة مجدداً.</span>
+          </div>
+        </form>
+        <div class="nl-trust">
+          <span>🔒</span>
+          <span class="en">Privacy protected · No data sold · GCC residents only</span>
+          <span class="ar">خصوصية محمية · لا نبيع بياناتك · لسكان الخليج فقط</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══ ECOSYSTEM FOOTER ═════════════════════════════════════════════════════ -->
 <footer class="eco-footer" role="contentinfo">
   <div class="container">
@@ -5788,6 +5889,102 @@ document.querySelectorAll('.faq-q').forEach(function(btn){
   } else {
     setTimeout(animateCounters, 800);
   }
+})();
+
+// ── Newsletter Popup ──────────────────────────────────────────
+(function(){
+  // Don't show if already subscribed or dismissed recently
+  const STORAGE_KEY = 'dfl_nl_dismissed';
+  const dismissed = localStorage.getItem(STORAGE_KEY);
+  if (dismissed && (Date.now() - parseInt(dismissed)) < 7 * 24 * 60 * 60 * 1000) return;
+  if (localStorage.getItem('dfl_nl_subscribed')) return;
+
+  // Inject popup HTML
+  const lang = document.documentElement.getAttribute('data-lang') || 'en';
+  const popup = document.createElement('div');
+  popup.id = 'nl-popup';
+  popup.setAttribute('role','dialog');
+  popup.setAttribute('aria-modal','true');
+  popup.innerHTML = `
+    <div class="nlp-header">
+      <button class="nlp-close" id="nlp-close" aria-label="Close">✕</button>
+      <span class="nlp-icon">📬</span>
+      <div class="nlp-title">
+        <span class="en">One email a month. Worth it.</span>
+        <span class="ar">رسالة واحدة شهرياً. تستحق القراءة.</span>
+      </div>
+      <div class="nlp-sub">
+        <span class="en">New tools, GCC life guides, and Ramadan/Hajj prep — delivered free.</span>
+        <span class="ar">أدوات جديدة وأدلة خليجية ونصائح رمضان والحج — مجاناً.</span>
+      </div>
+    </div>
+    <div class="nlp-body">
+      <form class="nlp-form nl-form" id="nl-form-popup"
+        action="https://dotforlife.us1.list-manage.com/subscribe/post?u=XXXXXXXX&id=XXXXXXXX"
+        method="post" target="_blank" novalidate>
+        <div class="nl-input-row">
+          <input type="email" name="EMAIL" class="nl-input" required
+            placeholder="your@email.com" aria-label="Email address" />
+          <button type="submit" class="nl-btn">
+            <span class="en">Subscribe</span>
+            <span class="ar">اشترك</span>
+          </button>
+        </div>
+        <div style="position:absolute;left:-5000px;" aria-hidden="true">
+          <input type="text" name="b_XXXXXXXX_XXXXXXXX" tabindex="-1" value="">
+        </div>
+        <div class="nl-success" id="nl-success-popup" style="display:none;">
+          ✅ <span class="en">Subscribed! Welcome.</span><span class="ar">تم الاشتراك! مرحباً.</span>
+        </div>
+      </form>
+      <div class="nlp-trust">🔒 <span class="en">No spam · Unsubscribe anytime</span><span class="ar">بدون إزعاج · إلغاء في أي وقت</span></div>
+      <button class="nlp-skip" id="nlp-skip">
+        <span class="en">No thanks</span><span class="ar">لا شكراً</span>
+      </button>
+    </div>
+  `;
+  document.body.appendChild(popup);
+
+  function closePopup(permanent) {
+    popup.classList.remove('visible');
+    if (permanent) localStorage.setItem(STORAGE_KEY, Date.now().toString());
+  }
+
+  document.getElementById('nlp-close').addEventListener('click', () => closePopup(false));
+  document.getElementById('nlp-skip').addEventListener('click', () => closePopup(true));
+
+  // Show after 25s OR 60% scroll, whichever comes first
+  let shown = false;
+  function showPopup() {
+    if (shown) return;
+    shown = true;
+    setTimeout(() => popup.classList.add('visible'), 100);
+  }
+
+  const timer = setTimeout(showPopup, 25000);
+
+  window.addEventListener('scroll', function nlScroll() {
+    const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+    if (pct > 0.6) { clearTimeout(timer); showPopup(); window.removeEventListener('scroll', nlScroll); }
+  }, {passive: true});
+
+  // Handle both forms submission — open Mailchimp tab + show success
+  document.querySelectorAll('.nl-form').forEach(function(form) {
+    form.addEventListener('submit', function(e) {
+      const email = form.querySelector('[type="email"]').value;
+      if (!email || !email.includes('@')) { e.preventDefault(); return; }
+      // Let Mailchimp handle in new tab, show local success message
+      const successEl = form.querySelector('.nl-success');
+      if (successEl) {
+        setTimeout(() => {
+          successEl.style.display = 'flex';
+          form.querySelector('.nl-input-row').style.display = 'none';
+          localStorage.setItem('dfl_nl_subscribed', '1');
+          if (form.id === 'nl-form-popup') setTimeout(() => closePopup(true), 3000);
+        }, 500);
+      }
+    });
+  });
 })();
 
 // ── Scroll Progress Bar ───────────────────────────────────────

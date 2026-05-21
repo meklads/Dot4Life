@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light" data-lang="en">
+<head>
+  <script>
+    (function(){
+      var t=localStorage.getItem('dfl-theme')||'light';
+      var l=localStorage.getItem('dfl-lang')||'en';
+      var h=document.documentElement;
+      h.setAttribute('data-theme',t);
+      h.setAttribute('data-lang',l);
+      h.setAttribute('lang',l);
+      h.setAttribute('dir',l==='ar'?'rtl':'ltr');
+    })();
+  </script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta name="description" content="Saudi Arabia travel guide — AlUla, NEOM, Diriyah, Abha, Edge of the World, Red Sea, Al-Ahsa. Best destinations for GCC and Arab travelers in the Kingdom."/>
+  <link rel="canonical" href="https://dotforlife.com/guides/saudi-tourism"/>
+  <meta property="og:title" content="Saudi Arabia Tourism Guide — DOTFORLIFE | دليل السياحة في المملكة"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://dotforlife.com/guides/saudi-tourism"/>
+  <title>Saudi Arabia Tourism Guide — DOTFORLIFE | السياحة في المملكة العربية السعودية</title>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Almarai:wght@300;400;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Almarai:wght@300;400;700;800&display=swap"/></noscript>
+  <style>
+    :root{
+      --accent:#C8860A;--accent-l:#E8A020;--accent-d:#9E6808;
+      --accent-soft:rgba(200,134,10,.09);--accent-glow:rgba(200,134,10,.20);
+      --teal:#0097A7;--teal-soft:rgba(0,151,167,.09);
+      --green:#1B7A4E;--green-soft:rgba(27,122,78,.09);
+      --border-l:#E2D9C8;--pill-bg:#FAF6EE;--muted:#9CA3AF;
+      --card-bg:#FFFFFF;--body-bg:#FAF6EE;--text:#2D2416;--text-2:#6B7280;
+      --nav-bg:#FFFFFF;--shadow:0 2px 12px rgba(0,0,0,.07);
+      --r:14px;--r-lg:20px;--transition:all .25s cubic-bezier(.4,0,.2,1);
+    }
+    [data-theme="dark"]{
+      --card-bg:#1E1A10;--body-bg:#14110A;--text:#F0E8D0;--text-2:#A09070;
+      --border-l:#33291A;--pill-bg:#1E1A10;--nav-bg:#1E1A10;
+      --shadow:0 2px 16px rgba(0,0,0,.4);--accent-soft:rgba(200,134,10,.15);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',sans-serif;background:var(--body-bg);color:var(--text);line-height:1.6;font-size:15px}
+    [data-lang="ar"] *{font-family:'Almarai',sans-serif}
+    [data-lang="ar"] .en{display:none}
+    [data-lang="en"] .ar{display:none}
+
+    .nav{position:sticky;top:0;z-index:100;background:var(--nav-bg);border-bottom:1px solid var(--border-l);box-shadow:var(--shadow);padding:0 20px;height:58px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}
+    .nav-brand .logo{width:34px;height:34px;border-radius:10px;background:var(--accent);display:grid;place-items:center;font-size:18px}
+    .nav-brand .brand-name{font-weight:700;font-size:15px;letter-spacing:-.3px}
+    .nav-brand .brand-name span{color:var(--accent)}
+    .nav-actions{display:flex;align-items:center;gap:8px}
+    .nav-btn,.back-btn{border:1px solid var(--border-l);background:var(--card-bg);color:var(--text);border-radius:8px;padding:6px 12px;font-size:13px;font-weight:500;cursor:pointer;transition:var(--transition);display:flex;align-items:center;gap:5px;text-decoration:none}
+    .nav-btn:hover,.back-btn:hover{border-color:var(--accent);color:var(--accent)}
+
+    /* HERO */
+    .hero{background:linear-gradient(145deg,#6B3E00 0%,var(--accent-d) 40%,var(--accent) 80%,#E8A020 100%);color:#fff;padding:60px 20px 50px;text-align:center;position:relative;overflow:hidden}
+    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 70% 30%,rgba(255,255,255,.08) 0%,transparent 60%)}
+    .hero-icon{font-size:56px;margin-bottom:16px;line-height:1}
+    .hero h1{font-size:clamp(22px,5vw,38px);font-weight:800;margin-bottom:10px;letter-spacing:-.5px}
+    .hero .subtitle{font-size:clamp(14px,2.5vw,17px);opacity:.88;max-width:580px;margin:0 auto 24px}
+    .hero-badges{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+    .hero-badge{background:rgba(255,255,255,.18);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.25);border-radius:20px;padding:6px 14px;font-size:13px;font-weight:500}
+
+    /* FILTER BAR */
+    .filter-bar{background:var(--card-bg);border-bottom:1px solid var(--border-l);padding:12px 20px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;align-items:center}
+    .filter-bar::-webkit-scrollbar{display:none}
+    .filter-btn{white-space:nowrap;padding:7px 16px;border-radius:20px;border:1px solid var(--border-l);background:var(--card-bg);color:var(--text-2);font-size:13px;font-weight:500;cursor:pointer;transition:var(--transition)}
+    .filter-btn.active,.filter-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+    /* JUMP NAV */
+    .jump-strip{background:var(--card-bg);border-bottom:1px solid var(--border-l);padding:0 20px;overflow-x:auto;scrollbar-width:none;display:flex;gap:4px}
+    .jump-strip::-webkit-scrollbar{display:none}
+    .jump-link{white-space:nowrap;padding:13px 14px;font-size:13px;font-weight:500;color:var(--text-2);text-decoration:none;border-bottom:2px solid transparent;transition:var(--transition)}
+    .jump-link:hover,.jump-link.active{color:var(--accent);border-bottom-color:var(--accent)}
+
+    /* MAIN */
+    .main{max-width:960px;margin:0 auto;padding:32px 16px 60px}
+    .section{margin-bottom:52px}
+    .section-head{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+    .section-head .s-icon{width:44px;height:44px;border-radius:12px;background:var(--accent-soft);border:1px solid rgba(200,134,10,.2);display:grid;place-items:center;font-size:22px;flex-shrink:0}
+    .section-head h2{font-size:clamp(17px,3vw,22px);font-weight:700;letter-spacing:-.3px}
+    .section-head p{font-size:13px;color:var(--text-2);margin-top:2px}
+
+    /* DESTINATION CARDS */
+    .dest-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+    .dest-card{background:var(--card-bg);border:1px solid var(--border-l);border-radius:var(--r);overflow:hidden;transition:var(--transition);cursor:default}
+    .dest-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(200,134,10,.12)}
+    .dest-card-img{height:140px;display:flex;align-items:center;justify-content:center;font-size:60px;position:relative}
+    .dest-card-img.alula{background:linear-gradient(135deg,#8B5E3C,#C8A27A)}
+    .dest-card-img.neom{background:linear-gradient(135deg,#0B3D6B,#1E6FA8)}
+    .dest-card-img.diriyah{background:linear-gradient(135deg,#6B4226,#C47A3A)}
+    .dest-card-img.abha{background:linear-gradient(135deg,#2D6A2D,#5AB85A)}
+    .dest-card-img.edge{background:linear-gradient(135deg,#3D2B1F,#8B5A2B)}
+    .dest-card-img.redsea{background:linear-gradient(135deg,#0077B6,#00B4D8)}
+    .dest-card-img.alahsa{background:linear-gradient(135deg,#5B6E2D,#8FAF44)}
+    .dest-card-img.riyadh{background:linear-gradient(135deg,#1A1A2E,#4A4A8A)}
+    .dest-card-img.taif{background:linear-gradient(135deg,#6B2D6B,#C47AC4)}
+    .dest-card-img.farasan{background:linear-gradient(135deg,#006666,#00AAAA)}
+    .dest-card-badge{position:absolute;top:10px;right:10px;background:rgba(0,0,0,.45);backdrop-filter:blur(6px);color:#fff;border-radius:12px;padding:3px 9px;font-size:11px;font-weight:600}
+    [data-lang="ar"] .dest-card-badge{right:auto;left:10px}
+    .dest-card-body{padding:18px}
+    .dest-card-body h3{font-size:16px;font-weight:700;margin-bottom:5px}
+    .dest-card-body .region{font-size:12px;color:var(--accent);font-weight:600;margin-bottom:6px;display:flex;align-items:center;gap:4px}
+    .dest-card-body p{font-size:13px;color:var(--text-2);line-height:1.6;margin-bottom:10px}
+    .dest-meta{display:flex;gap:8px;flex-wrap:wrap}
+    .meta-pill{background:var(--accent-soft);border:1px solid rgba(200,134,10,.15);border-radius:12px;padding:3px 9px;font-size:11px;color:var(--text-2);display:flex;align-items:center;gap:3px}
+
+    /* FEATURED CARD (full width) */
+    .dest-card.featured{grid-column:1/-1}
+    .dest-card.featured .dest-card-img{height:200px;font-size:80px}
+
+    /* TIPS GRID */
+    .tips-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+    .tip-card{background:var(--card-bg);border:1px solid var(--border-l);border-radius:var(--r);padding:16px 18px;display:flex;gap:12px;align-items:flex-start;transition:var(--transition)}
+    .tip-card:hover{border-color:var(--accent-soft);box-shadow:var(--shadow)}
+    .tip-card .t-icon{font-size:22px;flex-shrink:0;margin-top:1px}
+    .tip-card h3{font-size:14px;font-weight:700;margin-bottom:3px}
+    .tip-card p{font-size:12px;color:var(--text-2);line-height:1.6}
+
+    /* INFO BOX */
+    .info-box{background:var(--accent-soft);border:1px solid rgba(200,134,10,.2);border-radius:var(--r);padding:16px 20px;margin:20px 0;font-size:13px;color:var(--text);line-height:1.7}
+    .info-box strong{color:var(--accent)}
+
+    /* SEASON TABLE */
+    .season-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-top:12px}
+    .season-pill{background:var(--card-bg);border:1px solid var(--border-l);border-radius:10px;padding:14px;text-align:center}
+    .season-pill .s-emoji{font-size:26px;margin-bottom:6px}
+    .season-pill h4{font-size:13px;font-weight:700;margin-bottom:3px}
+    .season-pill p{font-size:11px;color:var(--text-2)}
+
+    /* DIVIDER */
+    .divider{border:none;border-top:1px solid var(--border-l);margin:40px 0}
+
+    /* GOLD BOX */
+    .gold-box{background:linear-gradient(135deg,rgba(200,134,10,.08),rgba(27,122,78,.06));border:1px solid var(--accent);border-radius:var(--r);padding:20px;margin:24px 0;display:flex;gap:14px;align-items:flex-start}
+    .gold-box .gb-icon{font-size:28px;flex-shrink:0}
+    .gold-box h3{font-size:15px;font-weight:700;margin-bottom:5px;color:var(--accent)}
+    .gold-box p{font-size:13px;color:var(--text-2);line-height:1.6}
+
+    /* FOOTER */
+    .footer{background:var(--card-bg);border-top:1px solid var(--border-l);padding:24px 20px;text-align:center;color:var(--text-2);font-size:13px}
+    .footer a{color:var(--accent);text-decoration:none}
+
+    @media(max-width:600px){
+      .hero{padding:40px 16px 36px}
+      .main{padding:20px 12px 40px}
+      .dest-grid,.tips-grid,.season-row{grid-template-columns:1fr}
+      .dest-card.featured .dest-card-img{height:160px}
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-brand" href="../index.html">
+    <div class="logo">🇸🇦</div>
+    <div class="brand-name">DOT<span>4</span>LIFE</div>
+  </a>
+  <div class="nav-actions">
+    <a class="back-btn" href="../travel.html">
+      <span class="en">← Travel</span><span class="ar">← السفر</span>
+    </a>
+    <button class="nav-btn" onclick="toggleLang()">
+      <span class="en">العربية</span><span class="ar">English</span>
+    </button>
+    <button class="nav-btn" onclick="toggleTheme()"><span id="theme-icon">🌙</span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-icon">🏜️</div>
+  <h1>
+    <span class="en">Saudi Arabia — Discover the Kingdom</span>
+    <span class="ar">المملكة العربية السعودية — اكتشف الجمال</span>
+  </h1>
+  <p class="subtitle">
+    <span class="en">From ancient Nabataean cities to futuristic megaprojects, Saudi Arabia is rewriting what travel means in the Arab world.</span>
+    <span class="ar">من المدن النبطية العريقة إلى المشاريع المستقبلية الضخمة، تُعيد المملكة تعريف السياحة في العالم العربي.</span>
+  </p>
+  <div class="hero-badges">
+    <span class="hero-badge">🏛️ <span class="en">AlUla & Hegra</span><span class="ar">العُلا والحِجر</span></span>
+    <span class="hero-badge">🌊 <span class="en">Red Sea</span><span class="ar">البحر الأحمر</span></span>
+    <span class="hero-badge">⛰️ <span class="en">Abha</span><span class="ar">أبها</span></span>
+    <span class="hero-badge">🌃 <span class="en">NEOM</span><span class="ar">نيوم</span></span>
+    <span class="hero-badge">🏺 <span class="en">Diriyah</span><span class="ar">الدرعية</span></span>
+  </div>
+</section>
+
+<!-- JUMP NAV -->
+<div class="jump-strip">
+  <a href="#destinations" class="jump-link"><span class="en">Destinations</span><span class="ar">الوجهات</span></a>
+  <a href="#seasons" class="jump-link"><span class="en">Best Times</span><span class="ar">أفضل المواسم</span></a>
+  <a href="#visa" class="jump-link"><span class="en">Visa & Entry</span><span class="ar">التأشيرة</span></a>
+  <a href="#tips" class="jump-link"><span class="en">Travel Tips</span><span class="ar">نصائح السفر</span></a>
+</div>
+
+<main class="main">
+
+  <!-- DESTINATIONS -->
+  <section class="section" id="destinations">
+    <div class="section-head">
+      <div class="s-icon">📍</div>
+      <div>
+        <h2><span class="en">Top Destinations in Saudi Arabia</span><span class="ar">أبرز الوجهات في المملكة</span></h2>
+        <p><span class="en">From the ancient north to the tropical south</span><span class="ar">من الشمال الأثري إلى الجنوب الاستوائي</span></p>
+      </div>
+    </div>
+
+    <div class="dest-grid">
+
+      <!-- AlUla FEATURED -->
+      <div class="dest-card featured">
+        <div class="dest-card-img alula">
+          🏛️
+          <div class="dest-card-badge"><span class="en">⭐ Must Visit</span><span class="ar">⭐ لا تفوّته</span></div>
+        </div>
+        <div class="dest-card-body">
+          <div class="region">📍 <span class="en">AlUla Region, NW Saudi Arabia</span><span class="ar">منطقة العُلا، شمال غرب المملكة</span></div>
+          <h3><span class="en">AlUla & Hegra (Madain Saleh)</span><span class="ar">العُلا والحِجر (مدائن صالح)</span></h3>
+          <p><span class="en">Saudi Arabia's crown jewel — a vast ancient landscape of rose-red mountains, Nabataean tombs carved into sandstone cliffs, and 200,000-year-old rock art. Hegra is the Kingdom's first UNESCO World Heritage Site. The Winter at Tantora festival (Dec–Mar) transforms AlUla into a cultural hub with international concerts, hot-air balloons, and stargazing events.</span><span class="ar">جوهرة المملكة — تضاريس تاريخية شاسعة من جبال وردية اللون ومقابر نبطية منحوتة في الصخر وفن صخري عمره 200,000 سنة. الحِجر أول موقع تراث عالمي لليونسكو في المملكة. مهرجان "شتاء طنطورة" (ديسمبر–مارس) يحوّل العُلا إلى مركز ثقافي بحفلات دولية وبالونات ومرصد نجوم.</span></p>
+          <div class="dest-meta">
+            <span class="meta-pill">🕐 <span class="en">3–5 days</span><span class="ar">3–5 أيام</span></span>
+            <span class="meta-pill">❄️ <span class="en">Oct–Apr best</span><span class="ar">أكتوبر–أبريل أفضل وقت</span></span>
+            <span class="meta-pill">✈️ <span class="en">AlUla Airport</span><span class="ar">مطار العُلا</span></span>
+            <span class="meta-pill">🏛️ <span class="en">UNESCO Heritage</span><span class="ar">تراث يونسكو</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Diriyah -->
+      <div class="dest-card">
+        <div class="dest-card-img diriyah">🏺
+          <div class="dest-card-badge">UNESCO</div>
+        </div>
+        <div class="dest-card-body">
+          <div class="region">📍 <span class="en">Riyadh Outskirts</span><span class="ar">أطراف الرياض</span></div>
+          <h3><span class="en">Diriyah — Birthplace of the Kingdom</span><span class="ar">الدرعية — مهد المملكة</span></h3>
+          <p><span class="en">The founding capital of Saudi Arabia and UNESCO World Heritage Site. Mud-brick At-Turaif district, open-air museums, traditional souqs, dining, and cultural events. 20 min from Riyadh center.</span><span class="ar">العاصمة التأسيسية للمملكة وموقع تراث يونسكو. حي الطريف الطيني ومتاحف مفتوحة وأسواق تقليدية ومطاعم. 20 دقيقة من وسط الرياض.</span></p>
+          <div class="dest-meta">
+            <span class="meta-pill">🕐 <span class="en">1–2 days</span><span class="ar">1–2 يوم</span></span>
+            <span class="meta-pill">🏺 <span class="en">History & Culture</span><span class="ar">تاريخ وثقافة</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Abha -->
+      <div class="dest-card">
+        <div class="dest-card-img abha">🌿
+          <div class="dest-card-badge"><span class="en">🌧️ Cool & Green</span><span class="ar">🌧️ بارد وأخضر</span></div>
+        </div>
+        <div class="dest-card-body">
+          <div class="region">📍 <span class="en">Asir Region, SW Saudi Arabia</span><span class="ar">منطقة عسير، جنوب غرب المملكة</span></div>
+          <h3><span class="en">Abha & Asir</span><span class="ar">أبها وعسير</span></h3>
+          <p><span class="en">Saudi Arabia's coolest city at 2,200m above sea level. Misty mountains, lush terraced farms, the famous Soudah cable car (highest in the world at 3,015m), colorful Asiri houses, and the Shada Palace museum. Summer escape for Gulf residents.</span><span class="ar">أبرد مدن المملكة على ارتفاع 2200 متر. جبال ضبابية ومدرجات زراعية خضراء وتلفريك سودة (الأعلى في العالم بـ 3015م) وبيوت عسيرية ملوّنة ومتحف قصر شدا. ملاذ صيفي لأبناء الخليج.</span></p>
+          <div class="dest-meta">
+            <span class="meta-pill">🕐 <span class="en">3–4 days</span><span class="ar">3–4 أيام</span></span>
+            <span class="meta-pill">☁️ <span class="en">Year-round cool</span><span class="ar">بارد طوال العام</span></span>
+            <span class="meta-pill">✈️ <span class="en">Abha Airport</span><span class="ar">مطار أبها</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Edge of the World -->
+      <div class="dest-card">
+        <div class="dest-card-img edge">🌄
+          <div class="dest-card-badge"><span class="en">🏆 Hidden Gem</span><span class="ar">🏆 جوهرة خفية</span></div>
+        </div>
+        <div class="dest-card-body">
+          <div class="region">📍 <span class="en">North of Riyadh, Tuwayq Escarpment</span><span class="ar">شمال الرياض، جروف طويق</span></div>
+          <h3><span class="en">Edge of the World (Jebel Fihrayn)</span><span class="ar">حافة العالم (جبل فهرين)</span></h3>
+          <p><span class="en">A dramatic 300m sheer cliff dropping into an endless flat desert plain — one of the most breathtaking views in Arabia. 90 km north of Riyadh, 4WD required. Best at sunrise or sunset. Camping overnight is unforgettable.</span><span class="ar">جرف شاهق 300 متر يطل على سهل صحراوي لا نهاية له — من أروع المناظر في الجزيرة العربية. 90 كم شمال الرياض، دفع رباعي ضروري. أجمل وقت عند الفجر والغروب. التخييم الليلي تجربة لا تُنسى.</span></p>
+          <div class="dest-meta">
+            <span class="meta-pill">🕐 <span class="en">Day trip / Overnight</span><span class="ar">يوم كامل / مبيت</span></span>
+            <span class="meta-pill">🚙 <span class="en">4WD required</span><span class="ar">دفع رباعي ضروري</span></span>
+            <span class="meta-pill">❄️ <span class="en">Nov–Mar only</span><span class="ar">نوفمبر–مارس فقط</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- NEOM / Sindalah -->
+      <div class="dest-card">
+        <div class="dest-card-img neom">🔵
+          <div class="dest-card-badge"><span class="en">🚀 Vision 2030</span><span class="ar">🚀 رؤية 2030</span></div>
+        </div>
+        <div class="dest-card-body">
+          <div class="region">📍 <span class="en">Tabuk Region, NW Saudi Arabia</span><span class="ar">منطقة تبوك، شمال غرب المملكة</span></div>
+          <h3><span class="en">NEOM, Sindalah & The Line</span><span class="ar">نيوم وسندالة واللاين</span></h3>
+          <p><span class="en">The world's most ambitious urban project. Sindalah island resort is open for visitors — turquoise Red Sea waters, yacht marina, luxury hotels, water sports. The broader NEOM region offers pristine beaches and mountains of Tabuk. Rapidly developing — more experiences open each year.</span><span class="ar">أضخم مشروع حضاري في العالم. جزيرة سندالة مفتوحة للزوار — مياه البحر الأحمر الفيروزية ومرسى اليخوت والفنادق الفاخرة والرياضات المائية. المنطقة تتطور بسرعة وتجارب جديدة تُفتح كل عام.</span></p>
+          <div class="dest-meta">
+            <span class="meta-pill">🌊 <span class="en">Sea & Luxury</span><span class="ar">بحر ورفاهية</span></span>
+            <span class="meta-pill">🏗️ <span class="en">Rapidly expanding</span><span class="ar">يتوسع بسرعة</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Red Sea / AMAALA -->
+      <div class="dest-card">
+        <div class="dest-card-img redsea">🐠
+          <div class="dest-card-badge"><span class="en">🤿 Diving Paradise</span><span class="ar">🤿 جنة الغوص</span></div>
+        </div>
+        <div class="dest-card-body">
+          <div class="region">📍 <span class="en">Red Sea Coast, Western Saudi Arabia</span><span class="ar">ساحل البحر الأحمر، غرب المملكة</span></div>
+          <h3><span class="en">Red Sea Project & AMAALA</span><span class="ar">مشروع البحر الأحمر وأمالا</span></h3>
+          <p><span class="en">Over 90 pristine islands with coral reefs, mangroves, and volcanic landscapes. Some of the least-touched marine ecosystems on earth. Luxury resorts are opening at Shura Island. AMAALA (Triple Bay) is a wellness and luxury island destination. World-class diving and snorkeling.</span><span class="ar">أكثر من 90 جزيرة بكر بشعاب مرجانية وغابات القرم والمناظر البركانية. أنقى النظم البيئية البحرية على وجه الأرض. منتجعات فاخرة تفتح في جزيرة شورى. أمالا للرفاهية والصحة. غوص وسنوركل من الدرجة الأولى.</span></p>
+          <div class="dest-meta">
+            <span class="meta-pill">🤿 <span class="en">Diving & Snorkeling</span><span class="ar">غوص وسنوركل</span></span>
+            <span class="meta-pill">🪸 <span class="en">Pristine Coral</span><span class="ar">شعاب مرجانية بكر</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Taif -->
+      <div class="dest-card">
+        <div class="dest-card-img taif">🌹
+          <div class="dest-card-badge"><span class="en">🌸 Rose Capital</span><span class="ar">🌸 عاصمة الورد</span></div>
+        </div>
+        <div class="dest-card-body">
+          <div class="region">📍 <span class="en">Mecca Region, 1800m altitude</span><span class="ar">منطقة مكة المكرمة، ارتفاع 1800م</span></div>
+          <h3><span class="en">Taif — City of Roses</span><span class="ar">الطائف — مدينة الورد</span></h3>
+          <p><span class="en">Known as the "city of roses" — home to the famous Taifi rose used in world-class perfumes. The Taif Rose Festival every March is magical. Cool mountain air, honeybee farms, grapes, and the historic Shafa and Al-Hada mountain areas. Easy day trip from Mecca.</span><span class="ar">تُعرف بـ"مدينة الورد" موطن الورد الطائفي المستخدم في أشهر عطور العالم. مهرجان الورد في مارس ساحر. هواء جبلي منعش ومزارع نحل ومناطق الشفا والهدا الجبلية. رحلة يومية سهلة من مكة.</span></p>
+          <div class="dest-meta">
+            <span class="meta-pill">🌹 <span class="en">Rose Festival: March</span><span class="ar">مهرجان الورد: مارس</span></span>
+            <span class="meta-pill">🕐 <span class="en">2–3 days</span><span class="ar">2–3 أيام</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Al-Ahsa -->
+      <div class="dest-card">
+        <div class="dest-card-img alahsa">🌴
+          <div class="dest-card-badge">UNESCO</div>
+        </div>
+        <div class="dest-card-body">
+          <div class="region">📍 <span class="en">Eastern Province</span><span class="ar">المنطقة الشرقية</span></div>
+          <h3><span class="en">Al-Ahsa Oasis</span><span class="ar">واحة الأحساء</span></h3>
+          <p><span class="en">The world's largest natural oasis — UNESCO World Heritage Site. 30 million date palms, ancient fortresses, traditional Qaisariyya market, the Jawtha Mosque ruins, and natural artesian springs. A surprisingly rich cultural destination in the Eastern Province.</span><span class="ar">أكبر واحة طبيعية في العالم — تراث يونسكو. 30 مليون نخلة، قلاع تاريخية، سوق القيصرية التقليدي، مسجد جواثا الأثري، وعيون ارتوازية طبيعية. وجهة ثقافية غنية مفاجئة في الشرقية.</span></p>
+          <div class="dest-meta">
+            <span class="meta-pill">🌴 <span class="en">30M Date Palms</span><span class="ar">30 مليون نخلة</span></span>
+            <span class="meta-pill">🏛️ UNESCO</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Riyadh -->
+      <div class="dest-card">
+        <div class="dest-card-img riyadh">🌆</div>
+        <div class="dest-card-body">
+          <div class="region">📍 <span class="en">Riyadh — The Capital</span><span class="ar">الرياض — العاصمة</span></div>
+          <h3><span class="en">Riyadh — Modern Arabia</span><span class="ar">الرياض — عربستان الحديثة</span></h3>
+          <p><span class="en">The Kingdom's beating heart. National Museum, Masmak Fortress, Kingdom Centre Tower sky bridge, Diriyah (15 min away), Riyadh Boulevard for entertainment, world-class dining, and the largest mall in the world (Mall of Saudi, opening 2025).</span><span class="ar">قلب المملكة النابض. المتحف الوطني وقلعة المصمك وجسر برج المملكة السمائي والدرعية (15 دقيقة) وبوليفارد الرياض للترفيه ومطاعم عالمية وأكبر مول في العالم (مول السعودية 2025).</span></p>
+          <div class="dest-meta">
+            <span class="meta-pill">🏙️ <span class="en">City Break</span><span class="ar">استراحة المدينة</span></span>
+            <span class="meta-pill">🛍️ <span class="en">Shopping & Dining</span><span class="ar">تسوق ومطاعم</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Farasan Islands -->
+      <div class="dest-card">
+        <div class="dest-card-img farasan">🐢
+          <div class="dest-card-badge"><span class="en">🦈 Untouched</span><span class="ar">🦈 بكر</span></div>
+        </div>
+        <div class="dest-card-body">
+          <div class="region">📍 <span class="en">Jizan, Southern Red Sea</span><span class="ar">جازان، جنوب البحر الأحمر</span></div>
+          <h3><span class="en">Farasan Islands</span><span class="ar">جزر فرسان</span></h3>
+          <p><span class="en">Saudi Arabia's best-kept secret — a protected marine sanctuary of 84 islands with crystal waters, rare sea turtles, dugongs, and ancient Roman ruins. Accessible by ferry from Jizan. Minimal tourism infrastructure makes it raw and authentic.</span><span class="ar">أجمل أسرار المملكة — محمية بحرية تضم 84 جزيرة بمياه كريستالية وسلاحف بحرية نادرة ودجونج وآثار رومانية. يصلها العبّارة من جازان. محدودية البنية السياحية تجعلها بكرة وأصيلة.</span></p>
+          <div class="dest-meta">
+            <span class="meta-pill">🐢 <span class="en">Sea Turtles</span><span class="ar">سلاحف بحرية</span></span>
+            <span class="meta-pill">⛵ <span class="en">Ferry from Jizan</span><span class="ar">عبّارة من جازان</span></span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /dest-grid -->
+  </section>
+
+  <hr class="divider"/>
+
+  <!-- BEST SEASONS -->
+  <section class="section" id="seasons">
+    <div class="section-head">
+      <div class="s-icon">📅</div>
+      <div>
+        <h2><span class="en">Best Times to Visit</span><span class="ar">أفضل أوقات الزيارة</span></h2>
+        <p><span class="en">Saudi Arabia's vast size means climate varies dramatically by region</span><span class="ar">اتساع المملكة يعني تباين المناخ بشكل كبير من منطقة لأخرى</span></p>
+      </div>
+    </div>
+    <div class="season-row">
+      <div class="season-pill">
+        <div class="s-emoji">❄️</div>
+        <h4><span class="en">Oct – Feb</span><span class="ar">أكتوبر – فبراير</span></h4>
+        <p><span class="en">Peak season for AlUla, Riyadh, Diriyah. Comfortable 15–25°C. Book in advance.</span><span class="ar">موسم الذروة للعُلا والرياض والدرعية. 15–25 درجة. احجز مبكراً.</span></p>
+      </div>
+      <div class="season-pill">
+        <div class="s-emoji">🌸</div>
+        <h4><span class="en">Mar – Apr</span><span class="ar">مارس – أبريل</span></h4>
+        <p><span class="en">Taif Rose Festival. Flowers bloom in Asir. Good for most destinations before summer heat.</span><span class="ar">مهرجان الورد في الطائف. أزهار عسير. جيد لمعظم الوجهات قبل الصيف.</span></p>
+      </div>
+      <div class="season-pill">
+        <div class="s-emoji">☀️</div>
+        <h4><span class="en">Jun – Aug</span><span class="ar">يونيو – أغسطس</span></h4>
+        <p><span class="en">Peak for Abha & Asir (cool!). Avoid Riyadh and desert regions. Red Sea diving still good.</span><span class="ar">موسم أبها وعسير (بارد!). تجنب الرياض والصحاري. الغوص في البحر الأحمر لا يزال جيداً.</span></p>
+      </div>
+      <div class="season-pill">
+        <div class="s-emoji">🌙</div>
+        <h4><span class="en">Ramadan</span><span class="ar">رمضان</span></h4>
+        <p><span class="en">Unique atmosphere across the Kingdom. Many venues open late nights. Respect fasting hours. Prices vary.</span><span class="ar">أجواء روحانية فريدة. كثير من الأماكن تفتح حتى الفجر. احترم أوقات الإفطار.</span></p>
+      </div>
+      <div class="season-pill">
+        <div class="s-emoji">🎭</div>
+        <h4><span class="en">Riyadh Season</span><span class="ar">موسم الرياض</span></h4>
+        <p><span class="en">Usually Oct–Feb. Massive entertainment events, concerts, sport, and festivals. Plan far ahead for accommodation.</span><span class="ar">عادةً أكتوبر–فبراير. فعاليات ترفيهية ضخمة وحفلات ورياضة. خطط مبكراً للسكن.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider"/>
+
+  <!-- VISA & ENTRY -->
+  <section class="section" id="visa">
+    <div class="section-head">
+      <div class="s-icon">🛂</div>
+      <div>
+        <h2><span class="en">Visa & Entry</span><span class="ar">التأشيرة والدخول</span></h2>
+        <p><span class="en">Saudi Arabia has significantly expanded tourist access since 2019</span><span class="ar">وسّعت المملكة دخول السياح بشكل ملحوظ منذ 2019</span></p>
+      </div>
+    </div>
+    <div class="tips-grid">
+      <div class="tip-card">
+        <div class="t-icon">🆓</div>
+        <div>
+          <h3><span class="en">GCC Citizens — No Visa</span><span class="ar">مواطنو دول الخليج — بدون تأشيرة</span></h3>
+          <p><span class="en">Citizens of UAE, Kuwait, Bahrain, Qatar, Oman can enter Saudi Arabia with national ID only. No visa required for tourism.</span><span class="ar">مواطنو الإمارات والكويت والبحرين وقطر وعُمان يدخلون بالهوية الوطنية فقط. لا تأشيرة مطلوبة للسياحة.</span></p>
+        </div>
+      </div>
+      <div class="tip-card">
+        <div class="t-icon">💻</div>
+        <div>
+          <h3><span class="en">Tourist e-Visa — 49+ Countries</span><span class="ar">تأشيرة سياحية إلكترونية — 49+ دولة</span></h3>
+          <p><span class="en">Apply online at visitsaudi.com or via the Nusuk App. Single or multiple entry, 90 days stay. Includes travel insurance. Fast processing (minutes to hours).</span><span class="ar">تقدّم عبر visitsaudi.com أو تطبيق نُسُك. دخول مفرد أو متعدد، إقامة 90 يوماً. يشمل تأمين سفر. معالجة سريعة.</span></p>
+        </div>
+      </div>
+      <div class="tip-card">
+        <div class="t-icon">👗</div>
+        <div>
+          <h3><span class="en">Dress Code</span><span class="ar">قواعد اللباس</span></h3>
+          <p><span class="en">Modest dress required in public. Women no longer required to wear abaya (since 2019) but modest clothing is expected. Men: no shorts in shopping malls. Beachwear only at designated beach areas.</span><span class="ar">اللباس المحتشم مطلوب في الأماكن العامة. لا يُشترط على المرأة العباءة (منذ 2019) لكن اللباس المحتشم متوقع. مناسبة الشاطئ في مناطقها المحددة.</span></p>
+        </div>
+      </div>
+      <div class="tip-card">
+        <div class="t-icon">🚫</div>
+        <div>
+          <h3><span class="en">Know Before You Go</span><span class="ar">اعرف قبل أن تسافر</span></h3>
+          <p><span class="en">Alcohol is prohibited. Public displays of affection are discouraged. Photography of government buildings, military sites, and people without consent is prohibited. Respect prayer times — some shops briefly close.</span><span class="ar">الكحول محظور. المظاهر العاطفية في الأماكن العامة غير مستحسنة. تصوير المباني الحكومية والعسكرية والأشخاص دون إذن محظور. احترم أوقات الصلاة.</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="info-box">
+      <strong><span class="en">💡 Pro Tip:</span><span class="ar">💡 نصيحة:</span></strong>
+      <span class="en"> Download the <strong>Visit Saudi</strong> and <strong>Absher</strong> apps before arrival. Absher is the official government services app — you may need it for visa registration. Download maps offline (Google Maps supports offline download for Saudi cities).</span>
+      <span class="ar"> حمّل تطبيقَي <strong>Visit Saudi</strong> و<strong>أبشر</strong> قبل الوصول. أبشر هو التطبيق الحكومي الرسمي وقد تحتاجه لتسجيل التأشيرة. حمّل الخرائط بدون إنترنت (Google Maps يدعم التحميل المسبق لمدن المملكة).</span>
+    </div>
+  </section>
+
+  <hr class="divider"/>
+
+  <!-- TRAVEL TIPS -->
+  <section class="section" id="tips">
+    <div class="section-head">
+      <div class="s-icon">💡</div>
+      <div>
+        <h2><span class="en">Saudi Arabia Travel Tips</span><span class="ar">نصائح سياحية للمملكة</span></h2>
+        <p><span class="en">Practical advice to make the most of your Saudi journey</span><span class="ar">نصائح عملية للاستفادة القصوى من رحلتك</span></p>
+      </div>
+    </div>
+    <div class="tips-grid">
+      <div class="tip-card"><div class="t-icon">📱</div><div><h3><span class="en">SIM Card on Arrival</span><span class="ar">شريحة الاتصال عند الوصول</span></h3><p><span class="en">STC, Mobily, and Zain all sell tourist SIMs at airports. ~35 SAR for 10GB. Buy at the airport for immediate connectivity.</span><span class="ar">STC وموبايلي وزين تبيع شرائح سياحية في المطارات. ~35 ريال لـ 10 جيجا. اشتر في المطار للاتصال الفوري.</span></p></div></div>
+      <div class="tip-card"><div class="t-icon">🚗</div><div><h3><span class="en">Rent a Car for Freedom</span><span class="ar">استأجر سيارة للحرية الكاملة</span></h3><p><span class="en">Public transport is limited outside Riyadh metro. Renting a car gives you full flexibility, especially for AlUla, Abha, and Edge of the World. International driving license required.</span><span class="ar">النقل العام محدود خارج مترو الرياض. استئجار سيارة يمنحك مرونة كاملة خاصة للعُلا وأبها وحافة العالم. رخصة قيادة دولية مطلوبة.</span></p></div></div>
+      <div class="tip-card"><div class="t-icon">💳</div><div><h3><span class="en">Cards Accepted Everywhere</span><span class="ar">البطاقات مقبولة في كل مكان</span></h3><p><span class="en">Saudi Arabia is nearly cashless. Visa and Mastercard work everywhere, including small shops and souqs. Apple Pay and Google Pay widely accepted. Keep some SAR for remote areas.</span><span class="ar">المملكة تكاد تكون بلا نقود. فيزا وماستركارد مقبولتان في كل مكان حتى في الأسواق الصغيرة. Apple Pay وGoogle Pay منتشران. احتفظ ببعض الريالات للمناطق النائية.</span></p></div></div>
+      <div class="tip-card"><div class="t-icon">🌡️</div><div><h3><span class="en">Hydrate Aggressively</span><span class="ar">اشرب الماء بكثرة</span></h3><p><span class="en">The desert climate dehydrates quickly, especially Apr–Oct. Keep a large water bottle. Zamzam water at Haramain stations is free and a bonus for pilgrims. Many attractions have water stations.</span><span class="ar">مناخ الصحراء يُجفف الجسم سريعاً خاصة أبريل–أكتوبر. احمل زجاجة ماء كبيرة. ماء زمزم مجاني في محطات الحرمين. كثير من المعالم فيها محطات ماء.</span></p></div></div>
+      <div class="tip-card"><div class="t-icon">🎟️</div><div><h3><span class="en">Book Activities in Advance</span><span class="ar">احجز الأنشطة مسبقاً</span></h3><p><span class="en">AlUla hot-air balloon, Diriyah evening shows, Soudah cable car, and Red Sea dive trips all sell out weeks in advance. Use the Experience Saudi Arabia app or AlUla app.</span><span class="ar">بالون العُلا وعروض الدرعية المسائية وتلفريك سودة ورحلات غوص البحر الأحمر تنفد أسابيع مسبقاً. استخدم تطبيق Experience Saudi Arabia أو تطبيق العُلا.</span></p></div></div>
+      <div class="tip-card"><div class="t-icon">🌙</div><div><h3><span class="en">Embrace the Night Culture</span><span class="ar">عِش ثقافة السهر</span></h3><p><span class="en">Saudi cities come alive after Isha prayer (9–11pm). Best restaurants, souqs, and entertainment areas peak between 10pm–2am. Adjust your schedule — sleep in, explore by night.</span><span class="ar">مدن المملكة تنبض بعد صلاة العشاء (9–11 مساءً). أفضل المطاعم والأسواق تبلغ ذروتها 10م–2ص. اضبط جدولك — نم في الصباح واستكشف الليل.</span></p></div></div>
+    </div>
+
+    <div class="gold-box">
+      <span class="gb-icon">🇸🇦</span>
+      <div>
+        <h3><span class="en">Saudi Arabia is Transforming — Visit Now</span><span class="ar">المملكة تتحول — زُرها الآن</span></h3>
+        <p><span class="en">The Kingdom is investing over $800 billion in tourism by 2030. AlUla, NEOM, and the Red Sea project are transforming at breathtaking speed. Visiting now means seeing the Kingdom at its most exciting turning point — before prices rise and crowds arrive.</span><span class="ar">المملكة تستثمر أكثر من 800 مليار دولار في السياحة بحلول 2030. العُلا ونيوم والبحر الأحمر تتحول بسرعة مذهلة. الزيارة الآن تعني مشاهدة المملكة في أكثر لحظاتها إثارة — قبل ارتفاع الأسعار وتدفق الزوار.</span></p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>
+    <span class="en">DOTFORLIFE — Discover the Kingdom | <a href="../travel.html">← Back to Travel Guides</a></span>
+    <span class="ar">DOT4LIFE — اكتشف المملكة | <a href="../travel.html">← العودة لأدلة السفر</a></span>
+  </p>
+</footer>
+
+<script>
+  function toggleTheme(){
+    var h=document.documentElement;
+    var t=h.getAttribute('data-theme')==='dark'?'light':'dark';
+    h.setAttribute('data-theme',t);localStorage.setItem('dfl-theme',t);
+    document.getElementById('theme-icon').textContent=t==='dark'?'☀️':'🌙';
+  }
+  function toggleLang(){
+    var h=document.documentElement;
+    var l=h.getAttribute('data-lang')==='ar'?'en':'ar';
+    h.setAttribute('data-lang',l);h.setAttribute('lang',l);
+    h.setAttribute('dir',l==='ar'?'rtl':'ltr');
+    localStorage.setItem('dfl-lang',l);
+  }
+  (function(){
+    document.getElementById('theme-icon').textContent=
+      document.documentElement.getAttribute('data-theme')==='dark'?'☀️':'🌙';
+  })();
+  var sections=document.querySelectorAll('section[id]');
+  var links=document.querySelectorAll('.jump-link');
+  window.addEventListener('scroll',function(){
+    var y=window.scrollY+80;
+    sections.forEach(function(s){
+      if(y>=s.offsetTop&&y<s.offsetTop+s.offsetHeight){
+        links.forEach(function(l){l.classList.remove('active')});
+        var a=document.querySelector('.jump-link[href="#'+s.id+'"]');
+        if(a)a.classList.add('active');
+      }
+    });
+  });
+</script>
+</body>
+</html>
