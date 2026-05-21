@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light" data-lang="en">
+<head>
+  <script>
+    (function(){
+      var t=localStorage.getItem('dfl-theme')||'light';
+      var l=localStorage.getItem('dfl-lang')||'en';
+      var h=document.documentElement;
+      h.setAttribute('data-theme',t);
+      h.setAttribute('data-lang',l);
+      h.setAttribute('lang',l);
+      h.setAttribute('dir',l==='ar'?'rtl':'ltr');
+    })();
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Qibla direction finder — Find the direction of Mecca (Kaaba) from any GCC city. Accurate Qibla compass with distance to Mecca. Bilingual Arabic & English." />
+  <link rel="canonical" href="https://dotforlife.com/tools/qibla" />
+  <meta property="og:title" content="Qibla Direction Finder — DOTFORLIFE | اتجاه القبلة" />
+  <meta property="og:description" content="Find the Qibla direction (towards Mecca) from your location. Interactive compass with distance to Mecca." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dotforlife.com/tools/qibla" />
+  <title>Qibla Direction Finder — DOTFORLIFE | اتجاه القبلة</title>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "@id": "https://dotforlife.com/tools/qibla",
+  "name": "Qibla Direction Finder — DOTFORLIFE",
+  "url": "https://dotforlife.com/tools/qibla",
+  "description": "Find the Qibla direction towards Mecca from any city using great-circle calculation.",
+  "applicationCategory": "LifestyleApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Almarai:wght@300;400;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Almarai:wght@300;400;700;800&display=swap" /></noscript>
+  <style>
+    :root {
+      --accent:#1B7A4E; --accent-l:#27A96C; --accent-d:#145C3A;
+      --accent-soft:rgba(27,122,78,.08); --accent-glow:rgba(27,122,78,.18);
+      --gold:#D4AF37; --gold-l:#F0C940; --gold-soft:rgba(212,175,55,.10);
+      --cyan:#06B6D4; --teal:#14B8A6;
+      --border-l:#DDE0E4; --pill-bg:#F5F6F7; --muted:#9CA3AF;
+      --card-bg:#FFFFFF; --body-bg:#F5F6F7; --text:#343B42; --text-2:#6B7280;
+      --shadow-md:0 2px 10px rgba(0,0,0,.08);
+      --shadow-lg:0 6px 24px rgba(0,0,0,.10);
+      --r-lg:16px; --r-xl:20px; --r-2xl:24px;
+    }
+    [data-theme="dark"] {
+      --card-bg:#1E293B; --body-bg:#0F172A; --text:#F1F5F9; --text-2:#94A3B8;
+      --border-l:#334155; --pill-bg:#1a2840; --shadow-md:0 2px 10px rgba(0,0,0,.35);
+    }
+    [data-lang="ar"] { font-family:'Almarai',sans-serif; direction:rtl; text-align:right; }
+    [data-lang="ar"] .en { display:none; }
+    [data-lang="en"] .ar { display:none; }
+    *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { font-family:'Inter',system-ui,sans-serif; background:var(--body-bg); color:var(--text); line-height:1.6; transition:background .3s,color .3s; overflow-x:hidden; }
+    a { color:inherit; text-decoration:none; }
+    .container { max-width:900px; margin:0 auto; padding:0 20px; }
+
+    /* NAVBAR */
+    .navbar { position:sticky; top:0; z-index:1000; background:rgba(255,255,255,.95); backdrop-filter:blur(20px); border-bottom:1px solid var(--border-l); }
+    .navbar.scrolled { box-shadow:0 2px 16px rgba(0,0,0,.07); }
+    [data-theme="dark"] .navbar { background:rgba(15,23,42,.95); border-bottom-color:rgba(51,65,85,.6); }
+    .navbar-inner { display:flex; align-items:center; justify-content:space-between; height:64px; }
+    .logo { font-size:1.2rem; font-weight:800; letter-spacing:-.02em; display:flex; align-items:center; gap:2px; }
+    .logo span:nth-child(1) { color:var(--text); }
+    .logo span:nth-child(2) { color:var(--cyan); }
+    .logo span:nth-child(3) { color:var(--teal); }
+    .breadcrumb { display:flex; align-items:center; gap:6px; font-size:.82rem; color:var(--muted); }
+    .breadcrumb a:hover { color:var(--accent); }
+    .nav-actions { display:flex; align-items:center; gap:8px; }
+    .lang-toggle,.theme-btn { padding:6px 14px; border-radius:999px; background:var(--pill-bg); border:1px solid var(--border-l); color:var(--text-2); font-size:.83rem; font-weight:600; cursor:pointer; font-family:inherit; transition:all .2s; }
+    .lang-toggle:hover,.theme-btn:hover { border-color:var(--accent); color:var(--accent); }
+    .theme-btn { padding:6px 10px; }
+
+    /* HERO */
+    .tool-hero { padding:48px 0 36px; position:relative; overflow:hidden; }
+    .hero-bg { position:absolute; inset:0;
+      background: radial-gradient(ellipse 55% 70% at 90% 20%, rgba(27,122,78,.10), transparent 60%),
+                  radial-gradient(ellipse 40% 50% at 5% 80%, rgba(212,175,55,.08), transparent 55%); }
+    .hero-grid { position:absolute; inset:0; background-image:linear-gradient(rgba(51,65,85,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(51,65,85,.05) 1px,transparent 1px); background-size:60px 60px; }
+    .hero-inner { position:relative; z-index:1; }
+    .back-link { display:inline-flex; align-items:center; gap:6px; font-size:.82rem; color:var(--muted); margin-bottom:20px; transition:color .2s; }
+    .back-link:hover { color:var(--accent); }
+    .tool-label { display:inline-flex; align-items:center; gap:8px; padding:5px 14px; border-radius:999px; background:rgba(27,122,78,.1); border:1px solid rgba(27,122,78,.25); color:var(--accent-l); font-size:.75rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; margin-bottom:16px; }
+    .tool-title { font-size:clamp(1.8rem,4vw,2.8rem); font-weight:900; letter-spacing:-.03em; line-height:1.15; margin-bottom:10px; }
+    .title-accent { background:linear-gradient(135deg,var(--accent),var(--gold)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .tool-sub { font-size:.95rem; color:var(--text-2); max-width:560px; }
+
+    /* LAYOUT */
+    .qibla-layout { display:grid; grid-template-columns:1fr 1fr; gap:24px; padding-bottom:40px; }
+    @media(max-width:640px) { .qibla-layout { grid-template-columns:1fr; } }
+
+    /* CITY SELECTOR */
+    .selector-card { background:var(--card-bg); border-radius:var(--r-2xl); border:1px solid var(--border-l); padding:28px; }
+    .selector-title { font-size:1rem; font-weight:700; margin-bottom:20px; }
+    .field-group { display:flex; flex-direction:column; gap:6px; margin-bottom:14px; }
+    .field-label { font-size:.8rem; font-weight:600; color:var(--text-2); }
+    .field-select,.field-input { width:100%; padding:10px 14px; border-radius:var(--r-lg); border:1.5px solid var(--border-l); background:var(--body-bg); color:var(--text); font-size:.9rem; font-family:inherit; outline:none; transition:border-color .2s; appearance:none; -webkit-appearance:none; }
+    .field-select:focus,.field-input:focus { border-color:var(--accent); }
+    .field-select { background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239CA3AF' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 14px center; padding-right:36px; }
+    [data-lang="ar"] .field-select { background-position:left 14px center; padding-right:14px; padding-left:36px; }
+    .btn-locate { display:flex; align-items:center; justify-content:center; gap:6px; width:100%; padding:11px; border-radius:var(--r-lg); background:var(--accent); color:#fff; font-weight:700; font-size:.88rem; border:none; cursor:pointer; font-family:inherit; transition:all .2s; margin-top:4px; }
+    .btn-locate:hover { background:var(--accent-d); }
+    .btn-locate:disabled { opacity:.6; cursor:not-allowed; }
+
+    /* STATS */
+    .stats-wrap { margin-top:20px; display:flex; flex-direction:column; gap:10px; }
+    .stat-row { display:flex; justify-content:space-between; align-items:center; padding:9px 0; border-bottom:1px solid var(--border-l); }
+    .stat-row:last-child { border-bottom:none; }
+    .stat-label { font-size:.85rem; color:var(--text-2); }
+    .stat-val { font-size:.95rem; font-weight:700; }
+    .stat-accent { color:var(--accent); }
+    .stat-gold { color:var(--gold); }
+
+    /* COMPASS */
+    .compass-card { background:var(--card-bg); border-radius:var(--r-2xl); border:1px solid var(--border-l); padding:28px; display:flex; flex-direction:column; align-items:center; }
+    .compass-wrap { position:relative; width:280px; height:280px; margin:0 auto 20px; }
+    .compass-ring { width:280px; height:280px; border-radius:50%; border:3px solid var(--border-l); position:relative; background: radial-gradient(circle, var(--body-bg) 60%, transparent 100%); }
+    [data-theme="dark"] .compass-ring { background: radial-gradient(circle, rgba(30,41,59,.8) 60%, transparent 100%); }
+
+    /* tick marks */
+    .compass-ring::before {
+      content:''; position:absolute; inset:8px; border-radius:50%;
+      border:1px dashed rgba(27,122,78,.2);
+    }
+
+    /* Cardinal labels */
+    .c-label { position:absolute; font-size:.72rem; font-weight:800; letter-spacing:.05em; color:var(--muted); }
+    .c-N { top:8px; left:50%; transform:translateX(-50%); color:var(--accent); }
+    .c-S { bottom:8px; left:50%; transform:translateX(-50%); }
+    .c-E { right:8px; top:50%; transform:translateY(-50%); }
+    .c-W { left:8px; top:50%; transform:translateY(-50%); }
+
+    /* Needle SVG rotates toward qibla */
+    .compass-needle-wrap { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; transition:transform .8s cubic-bezier(.22,1,.36,1); }
+    .compass-needle-svg { width:200px; height:200px; }
+
+    /* Center dot */
+    .compass-center { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; pointer-events:none; }
+    .compass-center-dot { width:14px; height:14px; border-radius:50%; background:var(--accent); border:3px solid var(--card-bg); box-shadow:0 0 0 3px var(--accent-glow); }
+
+    /* Qibla degree display */
+    .qibla-degree { font-size:2.8rem; font-weight:900; color:var(--accent); letter-spacing:-.03em; text-align:center; margin-bottom:4px; }
+    .qibla-label { font-size:.8rem; color:var(--muted); text-align:center; margin-bottom:16px; }
+
+    /* Device sensor */
+    .sensor-banner { background:var(--accent-soft); border:1px solid rgba(27,122,78,.2); border-radius:var(--r-lg); padding:12px 16px; margin-top:12px; text-align:center; }
+    .sensor-banner p { font-size:.8rem; color:var(--text-2); }
+    .sensor-active { color:var(--accent); font-weight:700; }
+
+    /* Compass ticks (generated via CSS) */
+    .tick { position:absolute; width:2px; background:var(--border-l); transform-origin:bottom center; left:50%; bottom:50%; }
+    .tick-major { background:rgba(27,122,78,.4); }
+
+    /* INFO NOTE */
+    .note-card { background:var(--gold-soft); border:1px solid rgba(212,175,55,.3); border-radius:var(--r-xl); padding:16px 20px; margin-top:0; }
+    .note-card p { font-size:.84rem; color:var(--text-2); line-height:1.6; }
+    .note-card strong { color:var(--text); }
+
+    /* FOOTER */
+    .tool-footer-section { padding:28px 0 40px; border-top:1px solid var(--border-l); }
+    .footer-nav { display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin-bottom:16px; }
+    .footer-nav a { font-size:.82rem; color:var(--muted); transition:color .2s; }
+    .footer-nav a:hover { color:var(--accent); }
+    .footer-copy { text-align:center; font-size:.78rem; color:var(--muted); }
+    .footer-copy span { color:var(--accent); }
+    .location-status { font-size:.8rem; color:var(--muted); margin-top:8px; text-align:center; }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <div class="navbar-inner">
+      <div style="display:flex;align-items:center;gap:20px;">
+        <a href="https://dotforlife.com" class="logo">
+          <span>DOT</span><span>FOR</span><span>LIFE</span>
+        </a>
+        <div class="breadcrumb">
+          <a href="https://dotforlife.com/islamic"><span class="en">Islamic</span><span class="ar">الأدوات الإسلامية</span></a>
+          <span style="opacity:.4;">›</span>
+          <span class="en">Qibla</span><span class="ar">القبلة</span>
+        </div>
+      </div>
+      <div class="nav-actions">
+        <button class="lang-toggle" onclick="toggleLang()">
+          <span class="en">عربي</span><span class="ar">English</span>
+        </button>
+        <button class="theme-btn" onclick="toggleTheme()">
+          <span id="theme-icon">🌙</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="tool-hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="container hero-inner">
+    <a href="https://dotforlife.com/islamic" class="back-link">
+      ← <span class="en">Back to Islamic Tools</span><span class="ar">العودة إلى الأدوات الإسلامية</span>
+    </a>
+    <div class="tool-label">
+      🧭 <span class="en">Islamic Tool</span><span class="ar">أداة إسلامية</span>
+    </div>
+    <h1 class="tool-title">
+      <span class="en"><span class="title-accent">Qibla</span> Direction Finder</span>
+      <span class="ar">حديد <span class="title-accent">اتجاه القبلة</span></span>
+    </h1>
+    <p class="tool-sub">
+      <span class="en">Find the exact direction of the Kaaba in Mecca from your location using great-circle calculations.</span>
+      <span class="ar">حدد الاتجاه الدقيق للكعبة المشرفة في مكة من موقعك باستخدام حسابات الدائرة العظمى.</span>
+    </p>
+  </div>
+</section>
+
+<!-- MAIN LAYOUT -->
+<div class="container">
+  <div class="qibla-layout">
+
+    <!-- LEFT: CITY SELECTOR + STATS -->
+    <div>
+      <div class="selector-card">
+        <div class="selector-title">
+          <span class="en">Select Your Location</span>
+          <span class="ar">اختر موقعك</span>
+        </div>
+        <div class="field-group">
+          <label class="field-label"><span class="en">City</span><span class="ar">المدينة</span></label>
+          <select class="field-select" id="city-select" onchange="onCityChange()">
+            <optgroup label="Saudi Arabia | المملكة العربية السعودية">
+              <option value="riyadh">Riyadh — الرياض</option>
+              <option value="jeddah">Jeddah — جدة</option>
+              <option value="mecca">Mecca — مكة المكرمة</option>
+              <option value="medina">Medina — المدينة المنورة</option>
+            </optgroup>
+            <optgroup label="UAE | الإمارات">
+              <option value="dubai">Dubai — دبي</option>
+              <option value="abudhabi">Abu Dhabi — أبوظبي</option>
+            </optgroup>
+            <optgroup label="Kuwait | الكويت">
+              <option value="kuwait">Kuwait City — الكويت</option>
+            </optgroup>
+            <optgroup label="Qatar | قطر">
+              <option value="doha">Doha — الدوحة</option>
+            </optgroup>
+            <optgroup label="Oman | عُمان">
+              <option value="muscat">Muscat — مسقط</option>
+            </optgroup>
+            <optgroup label="Bahrain | البحرين">
+              <option value="manama">Manama — المنامة</option>
+            </optgroup>
+            <option value="custom">📍 My Location — موقعي</option>
+          </select>
+        </div>
+        <button class="btn-locate" id="locate-btn" onclick="autoLocate()">
+          📍 <span class="en">Use My GPS Location</span><span class="ar">استخدام موقع GPS</span>
+        </button>
+        <div class="location-status" id="location-status"></div>
+
+        <!-- STATS -->
+        <div class="stats-wrap">
+          <div class="stat-row">
+            <span class="stat-label"><span class="en">Qibla Direction</span><span class="ar">اتجاه القبلة</span></span>
+            <span class="stat-val stat-accent" id="stat-deg">—</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label"><span class="en">Direction (Cardinal)</span><span class="ar">الاتجاه الجغرافي</span></span>
+            <span class="stat-val" id="stat-cardinal">—</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label"><span class="en">Distance to Mecca</span><span class="ar">المسافة إلى مكة</span></span>
+            <span class="stat-val stat-gold" id="stat-dist">—</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label"><span class="en">Your Location</span><span class="ar">موقعك</span></span>
+            <span class="stat-val" id="stat-loc">—</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- NOTE -->
+      <div class="note-card" style="margin-top:16px;">
+        <p>
+          <strong class="en">Great-Circle Method:</strong>
+          <strong class="ar">طريقة الدائرة العظمى:</strong>
+          <span class="en"> The Qibla is calculated using the shortest path (great-circle) on the Earth's surface — the most accurate Islamic method.</span>
+          <span class="ar"> يُحسب اتجاه القبلة باستخدام أقصر مسار (دائرة عظمى) على سطح الأرض — وهي الطريقة الإسلامية الأدق.</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- RIGHT: COMPASS -->
+    <div>
+      <div class="compass-card">
+        <div style="font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;text-align:center;">
+          <span class="en">Qibla Compass</span><span class="ar">بوصلة القبلة</span>
+        </div>
+
+        <div class="compass-wrap">
+          <!-- Compass ring -->
+          <div class="compass-ring" id="compass-ring">
+            <span class="c-label c-N">N</span>
+            <span class="c-label c-S">S</span>
+            <span class="c-label c-E">E</span>
+            <span class="c-label c-W">W</span>
+          </div>
+
+          <!-- Needle -->
+          <div class="compass-needle-wrap" id="needle-wrap">
+            <svg class="compass-needle-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+              <!-- Shadow glow -->
+              <defs>
+                <filter id="glow">
+                  <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                  <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+                <linearGradient id="needleGreen" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#27A96C"/>
+                  <stop offset="100%" stop-color="#1B7A4E"/>
+                </linearGradient>
+                <linearGradient id="needleGray" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#94A3B8"/>
+                  <stop offset="100%" stop-color="#64748B"/>
+                </linearGradient>
+              </defs>
+              <!-- North needle (points to Qibla = green with crescent) -->
+              <polygon points="100,20 108,100 100,115 92,100"
+                fill="url(#needleGreen)" filter="url(#glow)" stroke="#fff" stroke-width=".5"/>
+              <!-- South needle (gray) -->
+              <polygon points="100,180 108,100 100,115 92,100"
+                fill="url(#needleGray)" stroke="#fff" stroke-width=".5"/>
+              <!-- Kaaba icon at needle tip -->
+              <text x="100" y="14" text-anchor="middle" font-size="12">🕋</text>
+            </svg>
+          </div>
+
+          <!-- Center dot -->
+          <div class="compass-center">
+            <div class="compass-center-dot"></div>
+          </div>
+        </div>
+
+        <div class="qibla-degree" id="qibla-deg-display">—°</div>
+        <div class="qibla-label">
+          <span class="en">from North (clockwise)</span>
+          <span class="ar">من الشمال (باتجاه عقارب الساعة)</span>
+        </div>
+
+        <!-- Device sensor -->
+        <div class="sensor-banner" id="sensor-banner">
+          <p>
+            <span id="sensor-msg" class="en">
+              📱 On mobile: tap the button below to use your device compass for real-time Qibla pointing.
+            </span>
+            <span id="sensor-msg-ar" class="ar">
+              📱 على الجوال: اضغط الزر أدناه لاستخدام بوصلة الجهاز للإشارة إلى القبلة في الوقت الفعلي.
+            </span>
+          </p>
+          <button id="sensor-btn" onclick="requestSensor()"
+            style="margin-top:8px;padding:7px 18px;border-radius:999px;background:var(--accent);color:#fff;font-size:.8rem;font-weight:700;border:none;cursor:pointer;font-family:inherit;">
+            <span class="en">Enable Live Compass</span>
+            <span class="ar">تفعيل البوصلة الحية</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="tool-footer-section">
+  <div class="container">
+    <div class="footer-nav">
+      <a href="https://dotforlife.com/islamic"><span class="en">Islamic Tools</span><span class="ar">أدوات إسلامية</span></a>
+      <a href="https://dotforlife.com/tools/prayer-times"><span class="en">Prayer Times</span><span class="ar">أوقات الصلاة</span></a>
+      <a href="https://dotforlife.com/tools/zakat-calculator"><span class="en">Zakat Calculator</span><span class="ar">حاسبة الزكاة</span></a>
+      <a href="https://dotforlife.com"><span class="en">Home</span><span class="ar">الرئيسية</span></a>
+    </div>
+    <div class="footer-copy">
+      © 2025 <span>DOTFORLIFE</span> · <span class="en">Qibla calculated using great-circle (haversine) formula</span><span class="ar">القبلة محسوبة بمعادلة الدائرة العظمى (هافرسين)</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ═══════════════════════════════════════════════
+// MECCA COORDINATES (Kaaba)
+// ═══════════════════════════════════════════════
+var MECCA = { lat: 21.4225, lng: 39.8262 };
+
+// ═══════════════════════════════════════════════
+// CITY DATA
+// ═══════════════════════════════════════════════
+var CITIES = {
+  riyadh:  { name:'Riyadh',    nameAr:'الرياض',         lat:24.6877,  lng:46.7219 },
+  jeddah:  { name:'Jeddah',    nameAr:'جدة',             lat:21.5433,  lng:39.1728 },
+  mecca:   { name:'Mecca',     nameAr:'مكة المكرمة',     lat:21.3891,  lng:39.8579 },
+  medina:  { name:'Medina',    nameAr:'المدينة المنورة', lat:24.5247,  lng:39.5692 },
+  dubai:   { name:'Dubai',     nameAr:'دبي',             lat:25.2048,  lng:55.2708 },
+  abudhabi:{ name:'Abu Dhabi', nameAr:'أبوظبي',          lat:24.4539,  lng:54.3773 },
+  kuwait:  { name:'Kuwait City',nameAr:'مدينة الكويت',  lat:29.3759,  lng:47.9774 },
+  doha:    { name:'Doha',      nameAr:'الدوحة',          lat:25.2854,  lng:51.5310 },
+  muscat:  { name:'Muscat',    nameAr:'مسقط',            lat:23.5880,  lng:58.3829 },
+  manama:  { name:'Manama',    nameAr:'المنامة',          lat:26.2235,  lng:50.5876 },
+};
+
+// ═══════════════════════════════════════════════
+// CALCULATION
+// ═══════════════════════════════════════════════
+function toRad(d) { return d * Math.PI / 180; }
+function toDeg(r) { return r * 180 / Math.PI; }
+
+// Great-circle bearing from (lat1,lng1) to (lat2,lng2)
+function calcBearing(lat1, lng1, lat2, lng2) {
+  var phi1 = toRad(lat1), phi2 = toRad(lat2);
+  var dlng = toRad(lng2 - lng1);
+  var y = Math.sin(dlng) * Math.cos(phi2);
+  var x = Math.cos(phi1) * Math.sin(phi2) - Math.sin(phi1) * Math.cos(phi2) * Math.cos(dlng);
+  var bearing = toDeg(Math.atan2(y, x));
+  return (bearing + 360) % 360;
+}
+
+// Haversine distance in km
+function calcDistance(lat1, lng1, lat2, lng2) {
+  var R = 6371;
+  var dLat = toRad(lat2 - lat1);
+  var dLng = toRad(lng2 - lng1);
+  var a = Math.sin(dLat/2)*Math.sin(dLat/2) + Math.cos(toRad(lat1))*Math.cos(toRad(lat2))*Math.sin(dLng/2)*Math.sin(dLng/2);
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+}
+
+function bearingToCardinal(b) {
+  var dirs_en = ['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW'];
+  var dirs_ar = ['شمال','ش.ش.ش','شمال شرق','ش.ش.ش','شرق','ج.ش.ج','جنوب شرق','ج.ج.ش','جنوب','ج.ج.غ','جنوب غرب','غ.ج.غ','غرب','ش.غ.ش','شمال غرب','ش.ش.غ'];
+  var i = Math.round(b / 22.5) % 16;
+  var lang = document.documentElement.getAttribute('data-lang');
+  return lang === 'ar' ? dirs_ar[i] : dirs_en[i];
+}
+
+// ═══════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════
+var state = {
+  lat: 24.6877, lng: 46.7219,
+  cityName: 'Riyadh', cityNameAr: 'الرياض',
+  qibla: 0, dist: 0,
+};
+var deviceHeading = 0;
+var sensorActive = false;
+var sensorSupported = window.DeviceOrientationEvent !== undefined;
+
+// ═══════════════════════════════════════════════
+// RENDER COMPASS
+// ═══════════════════════════════════════════════
+function renderCompass() {
+  var q = state.qibla;
+  // In sensor mode: rotate ring by -deviceHeading, needle by qibla
+  // In static mode: rotate needle to qibla direction
+  var needleRotation = q;
+  if (sensorActive) {
+    needleRotation = q - deviceHeading;
+  }
+  document.getElementById('needle-wrap').style.transform = 'rotate(' + needleRotation + 'deg)';
+  document.getElementById('qibla-deg-display').textContent = Math.round(q) + '°';
+  document.getElementById('stat-deg').textContent = Math.round(q) + '° ' + (document.documentElement.getAttribute('data-lang')==='ar'?'من الشمال':'from North');
+  document.getElementById('stat-cardinal').textContent = bearingToCardinal(q);
+  var dist = state.dist;
+  document.getElementById('stat-dist').textContent = dist.toLocaleString(undefined,{maximumFractionDigits:0}) + ' km';
+  var lang = document.documentElement.getAttribute('data-lang');
+  document.getElementById('stat-loc').textContent = (lang === 'ar' ? state.cityNameAr : state.cityName) + ' (' + state.lat.toFixed(2) + '°, ' + state.lng.toFixed(2) + '°)';
+}
+
+function calculate() {
+  state.qibla = calcBearing(state.lat, state.lng, MECCA.lat, MECCA.lng);
+  state.dist   = calcDistance(state.lat, state.lng, MECCA.lat, MECCA.lng);
+  renderCompass();
+}
+
+// ═══════════════════════════════════════════════
+// CITY SELECT
+// ═══════════════════════════════════════════════
+function onCityChange() {
+  var key = document.getElementById('city-select').value;
+  if (key === 'custom') return;
+  var c = CITIES[key];
+  if (!c) return;
+  state.lat = c.lat; state.lng = c.lng;
+  state.cityName = c.name; state.cityNameAr = c.nameAr;
+  calculate();
+}
+
+// ═══════════════════════════════════════════════
+// AUTO LOCATE
+// ═══════════════════════════════════════════════
+function autoLocate() {
+  var btn = document.getElementById('locate-btn');
+  var status = document.getElementById('location-status');
+  var lang = document.documentElement.getAttribute('data-lang');
+  if (!navigator.geolocation) {
+    status.textContent = lang === 'ar' ? 'تحديد الموقع غير مدعوم' : 'Geolocation not supported';
+    return;
+  }
+  btn.disabled = true;
+  status.textContent = lang === 'ar' ? 'جارٍ تحديد موقعك...' : 'Detecting location...';
+  navigator.geolocation.getCurrentPosition(
+    function(pos) {
+      state.lat = pos.coords.latitude;
+      state.lng = pos.coords.longitude;
+      state.cityName = 'My Location'; state.cityNameAr = 'موقعي';
+      document.getElementById('city-select').value = 'custom';
+      btn.disabled = false;
+      status.textContent = '✅ ' + state.lat.toFixed(3) + '°, ' + state.lng.toFixed(3) + '°';
+      calculate();
+    },
+    function() {
+      btn.disabled = false;
+      status.textContent = lang === 'ar' ? '⚠️ تعذر تحديد الموقع' : '⚠️ Could not detect location';
+    }
+  );
+}
+
+// ═══════════════════════════════════════════════
+// DEVICE ORIENTATION (Live Compass)
+// ═══════════════════════════════════════════════
+function requestSensor() {
+  var lang = document.documentElement.getAttribute('data-lang');
+  if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
+    // iOS 13+ requires permission
+    DeviceOrientationEvent.requestPermission().then(function(state2) {
+      if (state2 === 'granted') {
+        startSensor();
+      } else {
+        document.getElementById('sensor-msg').textContent = lang === 'ar' ? 'تم رفض الإذن. استخدم الاتجاه الثابت.' : 'Permission denied. Using static direction.';
+        document.getElementById('sensor-msg-ar').textContent = 'تم رفض الإذن. استخدم الاتجاه الثابت.';
+      }
+    }).catch(function() {
+      startSensor(); // try anyway
+    });
+  } else {
+    startSensor();
+  }
+}
+
+function startSensor() {
+  var lang = document.documentElement.getAttribute('data-lang');
+  window.addEventListener('deviceorientationabsolute', onOrientation, true);
+  window.addEventListener('deviceorientation', onOrientation, true);
+  sensorActive = true;
+  var msg = lang === 'ar' ? '✅ البوصلة الحية مفعّلة — أمسك جهازك بشكل أفقي' : '✅ Live compass active — hold device flat';
+  document.getElementById('sensor-msg').textContent = msg;
+  document.getElementById('sensor-msg-ar').textContent = msg;
+  document.getElementById('sensor-btn').style.display = 'none';
+}
+
+function onOrientation(e) {
+  if (e.absolute && e.alpha !== null) {
+    deviceHeading = e.alpha; // degrees from North
+  } else if (e.webkitCompassHeading !== undefined) {
+    deviceHeading = e.webkitCompassHeading; // iOS
+  } else if (e.alpha !== null) {
+    deviceHeading = e.alpha;
+  }
+  renderCompass();
+}
+
+// ═══════════════════════════════════════════════
+// THEME / LANG
+// ═══════════════════════════════════════════════
+function toggleTheme() {
+  var h = document.documentElement;
+  var t = h.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  h.setAttribute('data-theme', t);
+  localStorage.setItem('dfl-theme', t);
+  document.getElementById('theme-icon').textContent = t === 'dark' ? '☀️' : '🌙';
+}
+function toggleLang() {
+  var h = document.documentElement;
+  var l = h.getAttribute('data-lang') === 'ar' ? 'en' : 'ar';
+  h.setAttribute('data-lang', l);
+  h.setAttribute('lang', l);
+  h.setAttribute('dir', l === 'ar' ? 'rtl' : 'ltr');
+  localStorage.setItem('dfl-lang', l);
+  renderCompass();
+}
+
+// NAVBAR SCROLL
+window.addEventListener('scroll', function(){ document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 10); }, { passive:true });
+
+// INIT
+document.getElementById('theme-icon').textContent = localStorage.getItem('dfl-theme') === 'dark' ? '☀️' : '🌙';
+calculate();
+</script>
+</body>
+</html>
