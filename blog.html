@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light" data-lang="en">
+<head>
+  <script>
+    (function(){
+      var t=localStorage.getItem('dfl-theme')||'light';
+      var l=localStorage.getItem('dfl-lang')||'en';
+      var h=document.documentElement;
+      h.setAttribute('data-theme',t);
+      h.setAttribute('data-lang',l);
+      h.setAttribute('lang',l);
+      h.setAttribute('dir',l==='ar'?'rtl':'ltr');
+    })();
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="DOTFORLIFE Blog — Research-backed articles on health, finance, travel, real estate, Islamic life, and productivity. In-depth guides for intelligent living." />
+  <link rel="canonical" href="https://dotforlife.com/blog" />
+  <link rel="alternate" hreflang="ar-SA" href="https://dotforlife.com/blog" />
+  <link rel="alternate" hreflang="en" href="https://dotforlife.com/blog" />
+  <link rel="alternate" hreflang="x-default" href="https://dotforlife.com/blog" />
+  <meta property="og:title" content="DOTFORLIFE Blog — Knowledge for Intelligent Living | مدونة دوت فور لايف" />
+  <meta property="og:description" content="Research-backed articles on health, finance, travel, real estate, Islamic life, and productivity. Bilingual Arabic & English." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dotforlife.com/blog" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <title>DOTFORLIFE Blog — Knowledge for Intelligent Living | مدونة دوت فور لايف</title>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Blog",
+      "@id": "https://dotforlife.com/blog#blog",
+      "name": "DOTFORLIFE Blog",
+      "url": "https://dotforlife.com/blog",
+      "description": "Research-backed articles on health, finance, travel, real estate, Islamic life, and productivity.",
+      "isPartOf": { "@id": "https://dotforlife.com" }
+    }
+  ]
+}
+</script>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Almarai:wght@300;400;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Almarai:wght@300;400;700;800&display=swap" /></noscript>
+  <style>
+    :root {
+      --accent:#0F4C8A; --accent-l:#1565C0; --accent-d:#0A3566;
+      --accent-soft:rgba(15,76,138,.08);
+      --gold:#C9A227; --gold-l:#E8BC2E; --gold-soft:rgba(201,162,39,.10);
+      --health:#EF4444; --health-soft:rgba(239,68,68,.08);
+      --finance:#0F4C8A; --finance-soft:rgba(15,76,138,.08);
+      --travel:#0097A7; --travel-soft:rgba(0,151,167,.08);
+      --realestate:#D97706; --realestate-soft:rgba(217,119,6,.08);
+      --islamic:#1B7A4E; --islamic-soft:rgba(27,122,78,.08);
+      --productivity:#6C3FC5; --productivity-soft:rgba(108,63,197,.08);
+      --teal:#14B8A6; --cyan:#06B6D4;
+      --dark:#0A1628; --slate:#1E293B;
+      --border-l:#DDE2EA; --pill-bg:#F4F6FA; --muted:#9CA3AF; --light:#F8FAFC;
+      --card-bg:#FFFFFF; --body-bg:#F8FAFC; --text:#1A2535; --text-2:#5A6E85;
+      --shadow-sm:0 1px 6px rgba(0,0,0,.06);
+      --shadow-md:0 3px 14px rgba(0,0,0,.08);
+      --shadow-lg:0 8px 30px rgba(0,0,0,.10);
+      --r-lg:14px; --r-xl:18px; --r-2xl:22px;
+    }
+    [data-theme="dark"] {
+      --card-bg:#1E293B; --body-bg:#0F172A; --text:#E8EFF8; --text-2:#8FA5C0;
+      --border-l:#334155; --pill-bg:#1E293B;
+    }
+    [data-lang="ar"] { font-family:'Almarai',sans-serif; direction:rtl; text-align:right; }
+    [data-lang="ar"] .en { display:none; } [data-lang="en"] .ar { display:none; }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Inter',system-ui,sans-serif;background:var(--body-bg);color:var(--text);line-height:1.6;transition:background .3s,color .3s;overflow-x:hidden;}
+    a{color:inherit;text-decoration:none;}
+    .container{max-width:1280px;margin:0 auto;padding:0 24px;}
+    .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1);}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+
+    /* NAV */
+    .navbar{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.95);backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid var(--border-l);}
+    .navbar.scrolled{box-shadow:0 2px 16px rgba(0,0,0,.07);}
+    [data-theme="dark"] .navbar{background:rgba(15,23,42,.95);border-bottom-color:rgba(51,65,85,.6);}
+    .navbar-inner{display:flex;align-items:center;justify-content:space-between;height:68px;}
+    .logo{font-size:1.3rem;font-weight:800;letter-spacing:-.02em;display:flex;align-items:center;gap:2px;}
+    .logo span:nth-child(1){color:var(--text);}
+    .logo span:nth-child(2){color:var(--accent-l);}
+    .logo span:nth-child(3){color:var(--teal);}
+    .nav-links{display:flex;align-items:center;gap:4px;list-style:none;}
+    .nav-links a{padding:6px 14px;border-radius:999px;font-size:.85rem;font-weight:500;color:var(--text-2);transition:all .2s;white-space:nowrap;}
+    .nav-links a:hover{color:var(--text);background:var(--pill-bg);}
+    .nav-links a.active{color:var(--accent);font-weight:700;}
+    .nav-actions{display:flex;align-items:center;gap:10px;}
+    .lang-toggle,.theme-btn{padding:7px 14px;border-radius:999px;background:var(--pill-bg);border:1px solid var(--border-l);color:var(--text-2);font-size:.85rem;font-weight:600;cursor:pointer;font-family:inherit;transition:all .2s;}
+    .lang-toggle:hover,.theme-btn:hover{border-color:var(--accent);color:var(--accent);}
+    .theme-btn{padding:7px 12px;}
+    @media(max-width:768px){.nav-links{display:none;}}
+
+    /* HERO */
+    .blog-hero{padding:60px 0 48px;position:relative;overflow:hidden;border-bottom:1px solid var(--border-l);}
+    .blog-hero-bg{position:absolute;inset:0;
+      background:
+        radial-gradient(ellipse 60% 60% at 85% 30%, rgba(15,76,138,.07), transparent),
+        radial-gradient(ellipse 40% 50% at 5% 80%, rgba(201,162,39,.05), transparent);}
+    .blog-hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end;}
+    .blog-hero-label{display:inline-flex;align-items:center;gap:7px;padding:5px 14px;border-radius:999px;background:rgba(15,76,138,.08);border:1px solid rgba(15,76,138,.2);color:var(--accent-l);font-size:.78rem;font-weight:700;letter-spacing:.05em;margin-bottom:16px;}
+    .blog-hero-title{font-size:clamp(2rem,4vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.1;margin-bottom:14px;}
+    .blog-hero-sub{font-size:1rem;color:var(--text-2);line-height:1.7;max-width:520px;}
+    .blog-stats{display:flex;gap:24px;flex-wrap:wrap;}
+    .blog-stat{text-align:right;}
+    [data-lang="ar"] .blog-stat{text-align:left;}
+    .blog-stat-val{font-size:1.6rem;font-weight:900;color:var(--text);}
+    .blog-stat-lbl{font-size:.72rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.05em;}
+
+    /* CATEGORY FILTERS */
+    .cat-filters{padding:20px 0;border-bottom:1px solid var(--border-l);background:var(--card-bg);position:sticky;top:68px;z-index:100;}
+    .filters-inner{display:flex;align-items:center;gap:8px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+    .filter-btn{display:inline-flex;align-items:center;gap:6px;padding:7px 16px;border-radius:999px;font-size:.82rem;font-weight:600;border:1.5px solid var(--border-l);color:var(--text-2);background:var(--body-bg);cursor:pointer;white-space:nowrap;transition:all .2s;font-family:inherit;}
+    .filter-btn:hover,.filter-btn.active{border-color:var(--accent);color:var(--accent);background:var(--accent-soft);}
+    .filter-btn[data-cat="health"].active{border-color:var(--health);color:var(--health);background:var(--health-soft);}
+    .filter-btn[data-cat="finance"].active{border-color:var(--finance);color:var(--finance);background:var(--finance-soft);}
+    .filter-btn[data-cat="travel"].active{border-color:var(--travel);color:var(--travel);background:var(--travel-soft);}
+    .filter-btn[data-cat="realestate"].active{border-color:var(--realestate);color:var(--realestate);background:var(--realestate-soft);}
+    .filter-btn[data-cat="islamic"].active{border-color:var(--islamic);color:var(--islamic);background:var(--islamic-soft);}
+    .filter-btn[data-cat="productivity"].active{border-color:var(--productivity);color:var(--productivity);background:var(--productivity-soft);}
+
+    /* MAIN LAYOUT */
+    .blog-layout{padding:48px 0;display:grid;grid-template-columns:1fr 340px;gap:48px;align-items:start;}
+    @media(max-width:1024px){.blog-layout{grid-template-columns:1fr;}}
+
+    /* FEATURED ARTICLE */
+    .featured-article{background:var(--card-bg);border-radius:var(--r-2xl);border:1px solid var(--border-l);overflow:hidden;margin-bottom:32px;display:grid;grid-template-columns:1fr 1fr;transition:box-shadow .25s,transform .25s;}
+    .featured-article:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px);}
+    .fa-visual{position:relative;min-height:280px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+    .fa-emoji{font-size:5rem;position:relative;z-index:1;filter:drop-shadow(0 4px 12px rgba(0,0,0,.15));}
+    .fa-content{padding:36px;}
+    .fa-cat{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:999px;font-size:.7rem;font-weight:700;letter-spacing:.04em;margin-bottom:12px;}
+    .fa-label{font-size:.7rem;font-weight:700;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px;}
+    .fa-title{font-size:1.4rem;font-weight:800;letter-spacing:-.025em;line-height:1.25;margin-bottom:10px;}
+    .fa-excerpt{font-size:.9rem;color:var(--text-2);line-height:1.65;margin-bottom:20px;}
+    .fa-meta{display:flex;align-items:center;gap:14px;font-size:.78rem;color:var(--muted);}
+    .fa-read{display:inline-flex;align-items:center;gap:6px;padding:8px 20px;border-radius:999px;background:var(--accent);color:#fff;font-size:.85rem;font-weight:600;transition:background .2s;}
+    .fa-read:hover{background:var(--accent-d);}
+
+    /* ARTICLE GRID */
+    .articles-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+    @media(max-width:640px){.articles-grid{grid-template-columns:1fr;}}
+
+    .article-card{background:var(--card-bg);border-radius:var(--r-xl);border:1px solid var(--border-l);overflow:hidden;transition:all .25s;display:flex;flex-direction:column;}
+    .article-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);}
+    .ac-visual{height:160px;display:flex;align-items:center;justify-content:center;font-size:3.5rem;position:relative;overflow:hidden;}
+    .ac-body{padding:20px;flex:1;display:flex;flex-direction:column;}
+    .ac-cat{display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:999px;font-size:.68rem;font-weight:700;margin-bottom:10px;align-self:flex-start;}
+    .ac-title{font-size:1rem;font-weight:700;letter-spacing:-.015em;line-height:1.3;margin-bottom:8px;}
+    .ac-excerpt{font-size:.83rem;color:var(--text-2);line-height:1.6;flex:1;margin-bottom:14px;}
+    .ac-footer{display:flex;align-items:center;justify-content:space-between;font-size:.75rem;color:var(--muted);}
+    .ac-read{display:inline-flex;align-items:center;gap:4px;font-size:.78rem;font-weight:600;color:var(--accent);}
+
+    /* SIDEBAR */
+    .sidebar{position:sticky;top:140px;display:flex;flex-direction:column;gap:24px;}
+    .sidebar-card{background:var(--card-bg);border-radius:var(--r-xl);border:1px solid var(--border-l);padding:24px;}
+    .sidebar-title{font-size:.78rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;}
+
+    /* Tools sidebar */
+    .tool-link{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border-l);transition:color .2s;}
+    .tool-link:last-child{border-bottom:none;}
+    .tool-link:hover{color:var(--accent);}
+    .tl-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+    .tl-name{font-size:.85rem;font-weight:600;}
+    .tl-desc{font-size:.73rem;color:var(--muted);}
+
+    /* Topics list */
+    .topic-tag{display:inline-flex;padding:6px 12px;border-radius:999px;background:var(--pill-bg);border:1px solid var(--border-l);font-size:.78rem;font-weight:600;color:var(--text-2);margin:4px;cursor:pointer;transition:all .2s;}
+    .topic-tag:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft);}
+
+    /* Newsletter sidebar */
+    .nl-sidebar{background:linear-gradient(135deg,#0A1628,#1E293B);border-radius:var(--r-xl);padding:24px;border:none;}
+    .nl-s-title{font-size:.95rem;font-weight:800;color:#fff;margin-bottom:6px;}
+    .nl-s-sub{font-size:.8rem;color:rgba(255,255,255,.5);margin-bottom:16px;line-height:1.6;}
+    .nl-s-input{width:100%;padding:10px 14px;border-radius:8px;border:1.5px solid rgba(255,255,255,.14);background:rgba(255,255,255,.08);color:#fff;font-size:.85rem;font-family:inherit;outline:none;margin-bottom:8px;transition:border-color .2s;}
+    .nl-s-input::placeholder{color:rgba(255,255,255,.35);}
+    .nl-s-input:focus{border-color:rgba(6,182,212,.5);}
+    .nl-s-btn{width:100%;padding:10px;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent-l));color:#fff;font-weight:700;font-size:.85rem;border:none;cursor:pointer;font-family:inherit;transition:opacity .2s;}
+    .nl-s-btn:hover{opacity:.9;}
+
+    /* AFFILIATE BANNER */
+    .affiliate-banner{background:linear-gradient(135deg,rgba(201,162,39,.08),rgba(15,76,138,.06));border:1px solid rgba(201,162,39,.25);border-radius:var(--r-xl);padding:20px 24px;display:flex;align-items:center;gap:16px;margin:32px 0;}
+    .aff-icon{font-size:2rem;flex-shrink:0;}
+    .aff-label{font-size:.68rem;font-weight:700;letter-spacing:.07em;color:var(--gold);text-transform:uppercase;margin-bottom:4px;}
+    .aff-text{font-size:.88rem;color:var(--text-2);line-height:1.5;}
+    .aff-cta{margin-left:auto;flex-shrink:0;display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:999px;background:var(--gold);color:#1A1A00;font-size:.82rem;font-weight:700;transition:opacity .2s;white-space:nowrap;}
+    .aff-cta:hover{opacity:.88;}
+    [data-lang="ar"] .aff-cta{margin-left:0;margin-right:auto;}
+
+    /* SECTION HEADERS */
+    .section-label{font-size:.72rem;font-weight:700;letter-spacing:.09em;color:var(--accent);text-transform:uppercase;margin-bottom:10px;display:block;}
+
+    /* LOAD MORE */
+    .load-more-area{text-align:center;padding:40px 0;}
+    .btn-outline{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border-radius:999px;border:1.5px solid var(--border-l);color:var(--text-2);font-weight:600;font-size:.9rem;cursor:pointer;background:var(--card-bg);transition:all .2s;font-family:inherit;}
+    .btn-outline:hover{border-color:var(--accent);color:var(--accent);}
+
+    /* FOOTER */
+    .footer-strip{padding:24px 0;border-top:1px solid var(--border-l);text-align:center;color:var(--muted);font-size:.85rem;}
+    .footer-strip a{color:var(--accent);}
+
+    @media(max-width:860px){
+      .featured-article{grid-template-columns:1fr;}
+      .fa-visual{min-height:180px;}
+      .blog-hero-inner{grid-template-columns:1fr;}
+      .blog-stats{display:none;}
+      .articles-grid{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar" role="navigation">
+    <div class="container">
+      <div class="navbar-inner">
+        <a href="index.html" class="logo" aria-label="DOTFORLIFE Home">
+          <span>DOT</span><span>FOR</span><span>LIFE</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
+          <li><a href="finance.html"><span class="en">Finance</span><span class="ar">المال</span></a></li>
+          <li><a href="real-estate.html"><span class="en">Real Estate</span><span class="ar">العقارات</span></a></li>
+          <li><a href="islamic.html"><span class="en">Islamic</span><span class="ar">الحياة الإسلامية</span></a></li>
+          <li><a href="travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li>
+          <li><a href="blog.html" class="active"><span class="en">Blog</span><span class="ar">المدونة</span></a></li>
+        </ul>
+        <div class="nav-actions">
+          <button class="lang-toggle" id="langBtn" aria-label="Toggle language">عربي / EN</button>
+          <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode">🌙</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="blog-hero" aria-labelledby="blog-title">
+    <div class="blog-hero-bg"></div>
+    <div class="container">
+      <div class="blog-hero-inner">
+        <div>
+          <div class="blog-hero-label">
+            <span>📖</span>
+            <span class="en">DOTFORLIFE Blog • المدونة</span>
+            <span class="ar">مدونة دوت فور لايف</span>
+          </div>
+          <h1 class="blog-hero-title" id="blog-title">
+            <span class="en">Knowledge that<br>changes how you live.</span>
+            <span class="ar">معرفة تُغيّر<br>طريقة حياتك.</span>
+          </h1>
+          <p class="blog-hero-sub">
+            <span class="en">Research-backed articles across health, finance, travel, real estate, Islamic life, and productivity. No opinions dressed as facts. Every claim sourced, every insight tested against science.</span>
+            <span class="ar">مقالات مدعومة بالبحث عبر الصحة والمال والسفر والعقارات والحياة الإسلامية والإنتاجية. لا آراء مُقنَّعة كحقائق. كل ادعاء مُستنَد، كل رؤية مُختبَرة بالعلم.</span>
+          </p>
+        </div>
+        <div class="blog-stats">
+          <div class="blog-stat">
+            <div class="blog-stat-val">6</div>
+            <div class="blog-stat-lbl"><span class="en">Categories</span><span class="ar">فئات</span></div>
+          </div>
+          <div class="blog-stat">
+            <div class="blog-stat-val">AR / EN</div>
+            <div class="blog-stat-lbl"><span class="en">Bilingual</span><span class="ar">ثنائي اللغة</span></div>
+          </div>
+          <div class="blog-stat">
+            <div class="blog-stat-val">Free</div>
+            <div class="blog-stat-lbl"><span class="en">Always</span><span class="ar">دائماً</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORY FILTERS -->
+  <div class="cat-filters" id="catFilters">
+    <div class="container">
+      <div class="filters-inner">
+        <button class="filter-btn active" data-cat="all">
+          📚 <span class="en">All</span><span class="ar">الكل</span>
+        </button>
+        <button class="filter-btn" data-cat="health">
+          ❤️ <span class="en">Health</span><span class="ar">الصحة</span>
+        </button>
+        <button class="filter-btn" data-cat="finance">
+          💼 <span class="en">Finance</span><span class="ar">المال</span>
+        </button>
+        <button class="filter-btn" data-cat="travel">
+          ✈️ <span class="en">Travel</span><span class="ar">السفر</span>
+        </button>
+        <button class="filter-btn" data-cat="realestate">
+          🏡 <span class="en">Real Estate</span><span class="ar">العقارات</span>
+        </button>
+        <button class="filter-btn" data-cat="islamic">
+          🌙 <span class="en">Islamic</span><span class="ar">الحياة الإسلامية</span>
+        </button>
+        <button class="filter-btn" data-cat="productivity">
+          ⚡ <span class="en">Productivity</span><span class="ar">الإنتاجية</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOG MAIN CONTENT -->
+  <div class="container">
+    <div class="blog-layout">
+      <!-- LEFT: ARTICLES -->
+      <main>
+        <!-- FEATURED -->
+        <span class="section-label" style="margin-top:4px;"><span class="en">Featured Article</span><span class="ar">المقال المميز</span></span>
+        <a href="#" class="featured-article reveal" data-category="health">
+          <div class="fa-visual" style="background:linear-gradient(135deg,rgba(239,68,68,.08),rgba(239,68,68,.03));">
+            <div class="fa-emoji">🧬</div>
+          </div>
+          <div class="fa-content">
+            <div class="fa-cat" style="background:var(--health-soft);color:var(--health);border:1px solid rgba(239,68,68,.2);">❤️ <span class="en">Health</span><span class="ar">الصحة</span></div>
+            <div class="fa-label"><span class="en">Deep Dive • 8 min read</span><span class="ar">دراسة معمّقة • 8 دقائق للقراءة</span></div>
+            <h2 class="fa-title">
+              <span class="en">Why Your BMI Is Lying to You (And What Actually Predicts Health)</span>
+              <span class="ar">لماذا يكذب عليك مؤشر كتلة الجسم (وما الذي يتنبأ بالصحة فعلاً)</span>
+            </h2>
+            <p class="fa-excerpt">
+              <span class="en">A 2023 American Medical Association policy shift officially recognized BMI's profound limitations — especially for people of Middle Eastern, South Asian, and African descent. What research says to measure instead, and why the waist-to-height ratio may be the metric that saves your life.</span>
+              <span class="ar">التحوّل السياسي للرابطة الأمريكية للطب في 2023 اعترف رسمياً بقيود مؤشر كتلة الجسم العميقة — خاصة لأبناء الشرق الأوسط وجنوب آسيا وأفريقيا. ما تقوله الأبحاث عن القياسات البديلة، ولماذا قد تكون نسبة الخصر للطول هي المقياس الذي يُنقذ حياتك.</span>
+            </p>
+            <div class="fa-meta">
+              <span class="en">May 2025 · WHO / AMA Research</span>
+              <span class="ar">مايو 2025 · بحث منظمة الصحة العالمية</span>
+              <span class="fa-read"><span class="en">Read article →</span><span class="ar">اقرأ المقال ←</span></span>
+            </div>
+          </div>
+        </a>
+
+        <!-- AFFILIATE NOTICE -->
+        <div class="affiliate-banner reveal">
+          <div class="aff-icon">🤝</div>
+          <div>
+            <div class="aff-label"><span class="en">Transparency</span><span class="ar">شفافية</span></div>
+            <div class="aff-text">
+              <span class="en">Some articles contain affiliate links to products we genuinely recommend. We never promote something we haven't vetted. Our editorial independence is non-negotiable.</span>
+              <span class="ar">بعض المقالات تحتوي على روابط شريكة لمنتجات نوصي بها صادقاً. لا نروّج أبداً لشيء لم نتحقق منه. استقلاليتنا التحريرية غير قابلة للتفاوض.</span>
+            </div>
+          </div>
+          <a href="#" class="aff-cta"><span class="en">Our policy →</span><span class="ar">سياستنا ←</span></a>
+        </div>
+
+        <!-- ARTICLES GRID -->
+        <span class="section-label"><span class="en">Latest Articles</span><span class="ar">أحدث المقالات</span></span>
+        <div class="articles-grid" id="articlesGrid">
+
+          <!-- Finance -->
+          <a href="#" class="article-card reveal" data-category="finance">
+            <div class="ac-visual" style="background:linear-gradient(135deg,rgba(15,76,138,.08),rgba(201,162,39,.05));">💼</div>
+            <div class="ac-body">
+              <span class="ac-cat" style="background:var(--finance-soft);color:var(--finance);border:1px solid rgba(15,76,138,.2);">💼 <span class="en">Finance</span><span class="ar">المال</span></span>
+              <div class="ac-title"><span class="en">The Rental Yield Gap: Why Dubai Properties Outperform Saudi in 2025</span><span class="ar">فجوة عائد الإيجار: لماذا تتفوق عقارات دبي على السعودية في 2025</span></div>
+              <div class="ac-excerpt"><span class="en">Data-driven analysis comparing gross and net rental yields across GCC markets, based on Q1 2025 transaction data. Which cities offer the best risk-adjusted returns for individual investors.</span><span class="ar">تحليل قائم على البيانات يقارن عوائد الإيجار الإجمالية والصافية في أسواق الخليج، استناداً لبيانات معاملات الربع الأول 2025.</span></div>
+              <div class="ac-footer">
+                <span><span class="en">6 min</span><span class="ar">6 دقائق</span></span>
+                <span class="ac-read"><span class="en">Read →</span><span class="ar">اقرأ ←</span></span>
+              </div>
+            </div>
+          </a>
+
+          <!-- Travel -->
+          <a href="#" class="article-card reveal" style="transition-delay:.08s;" data-category="travel">
+            <div class="ac-visual" style="background:linear-gradient(135deg,rgba(0,151,167,.08),rgba(20,184,166,.05));">✈️</div>
+            <div class="ac-body">
+              <span class="ac-cat" style="background:var(--travel-soft);color:var(--travel);border:1px solid rgba(0,151,167,.2);">✈️ <span class="en">Travel</span><span class="ar">السفر</span></span>
+              <div class="ac-title"><span class="en">Salalah's Khareef Season: The Scientific Reason This Microclimate Exists</span><span class="ar">موسم خريف صلالة: السبب العلمي لوجود هذا المناخ المحلي</span></div>
+              <div class="ac-excerpt"><span class="en">Why does Oman's southern coast transform into lush green paradise while the rest of the Arabian Peninsula bakes? The meteorology of the Indian Ocean monsoon and why it stops precisely at Salalah's mountains.</span><span class="ar">لماذا يتحوّل الساحل الجنوبي لعُمان إلى جنة خضراء بينما تلتهب بقية شبه الجزيرة العربية؟ أرصاد موسم الأمطار في المحيط الهندي ولماذا يتوقف تحديداً عند جبال صلالة.</span></div>
+              <div class="ac-footer">
+                <span><span class="en">5 min</span><span class="ar">5 دقائق</span></span>
+                <span class="ac-read"><span class="en">Read →</span><span class="ar">اقرأ ←</span></span>
+              </div>
+            </div>
+          </a>
+
+          <!-- Islamic -->
+          <a href="#" class="article-card reveal" style="transition-delay:.04s;" data-category="islamic">
+            <div class="ac-visual" style="background:linear-gradient(135deg,rgba(27,122,78,.08),rgba(212,175,55,.05));">🕌</div>
+            <div class="ac-body">
+              <span class="ac-cat" style="background:var(--islamic-soft);color:var(--islamic);border:1px solid rgba(27,122,78,.2);">🌙 <span class="en">Islamic</span><span class="ar">الحياة الإسلامية</span></span>
+              <div class="ac-title"><span class="en">Understanding Zakat on Investment Portfolios: A Modern Scholar's Guide</span><span class="ar">فهم زكاة المحافظ الاستثمارية: دليل العالم المعاصر</span></div>
+              <div class="ac-excerpt"><span class="en">Stocks, mutual funds, REITs, and crypto — Islamic scholars have issued nuanced rulings on modern asset classes. A comprehensive guide to calculating Zakat on 21st-century wealth, with references to contemporary fatawa.</span><span class="ar">الأسهم والصناديق المشتركة وصناديق الاستثمار العقاري والعملات المشفرة — أصدر العلماء المسلمون أحكاماً دقيقة على الفئات الحديثة للأصول. دليل شامل لحساب زكاة ثروة القرن الحادي والعشرين.</span></div>
+              <div class="ac-footer">
+                <span><span class="en">9 min</span><span class="ar">9 دقائق</span></span>
+                <span class="ac-read"><span class="en">Read →</span><span class="ar">اقرأ ←</span></span>
+              </div>
+            </div>
+          </a>
+
+          <!-- Productivity -->
+          <a href="#" class="article-card reveal" style="transition-delay:.12s;" data-category="productivity">
+            <div class="ac-visual" style="background:linear-gradient(135deg,rgba(108,63,197,.08),rgba(20,184,166,.05));">⚡</div>
+            <div class="ac-body">
+              <span class="ac-cat" style="background:var(--productivity-soft);color:var(--productivity);border:1px solid rgba(108,63,197,.2);">⚡ <span class="en">Productivity</span><span class="ar">الإنتاجية</span></span>
+              <div class="ac-title"><span class="en">The 23-Minute Cost of Every Notification (And How to Stop the Bleeding)</span><span class="ar">تكلفة 23 دقيقة لكل إشعار (وكيف توقف النزيف)</span></div>
+              <div class="ac-excerpt"><span class="en">UC Irvine's landmark study on task-switching isn't just a statistic — it's a blueprint for reconstructing your workday. Practical protocols from the world's top focus researchers, adapted for the Gulf knowledge worker.</span><span class="ar">دراسة UC Irvine الرائدة على تبديل المهام ليست مجرد إحصائية — إنها مخطط لإعادة بناء يوم عملك. بروتوكولات عملية من أبرز باحثي التركيز في العالم، مكيّفة لعامل المعرفة الخليجي.</span></div>
+              <div class="ac-footer">
+                <span><span class="en">7 min</span><span class="ar">7 دقائق</span></span>
+                <span class="ac-read"><span class="en">Read →</span><span class="ar">اقرأ ←</span></span>
+              </div>
+            </div>
+          </a>
+
+          <!-- Real Estate -->
+          <a href="#" class="article-card reveal" data-category="realestate">
+            <div class="ac-visual" style="background:linear-gradient(135deg,rgba(217,119,6,.08),rgba(201,162,39,.05));">🏡</div>
+            <div class="ac-body">
+              <span class="ac-cat" style="background:var(--realestate-soft);color:var(--realestate);border:1px solid rgba(217,119,6,.2);">🏡 <span class="en">Real Estate</span><span class="ar">العقارات</span></span>
+              <div class="ac-title"><span class="en">Off-Plan vs. Ready: The True Risk-Return Calculation in Saudi Arabia 2025</span><span class="ar">على الخارطة مقابل الجاهز: حساب المخاطرة والعائد الحقيقي في السعودية 2025</span></div>
+              <div class="ac-excerpt"><span class="en">Off-plan properties offer attractive price points but hide compounding risks most buyers don't calculate. A forensic breakdown of developer track records, contract clauses, and liquidity risk in major GCC markets.</span><span class="ar">تُقدّم عقارات الخارطة نقاط سعر جذابة لكنها تُخفي مخاطر متراكمة لا يحسبها معظم المشترين. تحليل جنائي لسجلات المطورين وبنود العقود ومخاطر السيولة في أسواق الخليج الكبرى.</span></div>
+              <div class="ac-footer">
+                <span><span class="en">10 min</span><span class="ar">10 دقائق</span></span>
+                <span class="ac-read"><span class="en">Read →</span><span class="ar">اقرأ ←</span></span>
+              </div>
+            </div>
+          </a>
+
+          <!-- Health -->
+          <a href="#" class="article-card reveal" style="transition-delay:.08s;" data-category="health">
+            <div class="ac-visual" style="background:linear-gradient(135deg,rgba(239,68,68,.07),rgba(245,158,11,.04));">🩺</div>
+            <div class="ac-body">
+              <span class="ac-cat" style="background:var(--health-soft);color:var(--health);border:1px solid rgba(239,68,68,.2);">❤️ <span class="en">Health</span><span class="ar">الصحة</span></span>
+              <div class="ac-title"><span class="en">Ramadan and Intermittent Fasting: What the Science Now Confirms</span><span class="ar">رمضان والصيام المتقطع: ما يؤكده العلم الآن</span></div>
+              <div class="ac-excerpt"><span class="en">A 2024 meta-analysis of 137 studies on Ramadan fasting found significant metabolic benefits — but only for those who managed the iftar meal correctly. The research on what to eat, when, and what to avoid to maximize the health gains of this sacred month.</span><span class="ar">وجد تحليل شامل 2024 لـ 137 دراسة حول صيام رمضان فوائد استقلابية كبيرة — لكن فقط لمن أدار وجبة الإفطار بشكل صحيح. بحث حول ما يجب تناوله ومتى وما يجب تجنبه لتعظيم مكاسب الصحة لهذا الشهر الكريم.</span></div>
+              <div class="ac-footer">
+                <span><span class="en">8 min</span><span class="ar">8 دقائق</span></span>
+                <span class="ac-read"><span class="en">Read →</span><span class="ar">اقرأ ←</span></span>
+              </div>
+            </div>
+          </a>
+
+        </div>
+
+        <!-- LOAD MORE -->
+        <div class="load-more-area">
+          <button class="btn-outline">
+            <span class="en">Load more articles</span>
+            <span class="ar">تحميل مقالات أكثر</span>
+            ↓
+          </button>
+        </div>
+      </main>
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+
+        <!-- Try the tools -->
+        <div class="sidebar-card">
+          <div class="sidebar-title"><span class="en">Try our free tools</span><span class="ar">جرّب أدواتنا المجانية</span></div>
+          <a href="tools/mortgage-calculator.html" class="tool-link">
+            <div class="tl-icon" style="background:rgba(15,76,138,.08);">🏦</div>
+            <div>
+              <div class="tl-name"><span class="en">Mortgage Calculator</span><span class="ar">حاسبة القرض العقاري</span></div>
+              <div class="tl-desc"><span class="en">Monthly payments & total cost</span><span class="ar">الأقساط الشهرية والتكلفة الإجمالية</span></div>
+            </div>
+          </a>
+          <a href="tools/roi-calculator.html" class="tool-link">
+            <div class="tl-icon" style="background:rgba(5,150,105,.08);">📈</div>
+            <div>
+              <div class="tl-name"><span class="en">ROI Calculator</span><span class="ar">حاسبة العائد</span></div>
+              <div class="tl-desc"><span class="en">Annualized investment returns</span><span class="ar">العوائد السنوية للاستثمار</span></div>
+            </div>
+          </a>
+          <a href="tools/zakat-calculator.html" class="tool-link">
+            <div class="tl-icon" style="background:rgba(27,122,78,.08);">🌙</div>
+            <div>
+              <div class="tl-name"><span class="en">Zakat Calculator</span><span class="ar">حاسبة الزكاة</span></div>
+              <div class="tl-desc"><span class="en">Precise Zakat calculation</span><span class="ar">حساب زكاة دقيق</span></div>
+            </div>
+          </a>
+          <a href="tools/bmi-calculator.html" class="tool-link">
+            <div class="tl-icon" style="background:rgba(239,68,68,.08);">⚖️</div>
+            <div>
+              <div class="tl-name"><span class="en">BMI Calculator</span><span class="ar">حاسبة مؤشر كتلة الجسم</span></div>
+              <div class="tl-desc"><span class="en">Health weight assessment</span><span class="ar">تقييم الوزن الصحي</span></div>
+            </div>
+          </a>
+          <a href="tools/password-generator.html" class="tool-link">
+            <div class="tl-icon" style="background:rgba(108,63,197,.08);">🔐</div>
+            <div>
+              <div class="tl-name"><span class="en">Password Generator</span><span class="ar">مولّد كلمات المرور</span></div>
+              <div class="tl-desc"><span class="en">Cryptographically strong</span><span class="ar">قوة تشفيرية عالية</span></div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Topics -->
+        <div class="sidebar-card">
+          <div class="sidebar-title"><span class="en">Browse topics</span><span class="ar">تصفّح المواضيع</span></div>
+          <div>
+            <span class="topic-tag"><span class="en">Zakat</span><span class="ar">الزكاة</span></span>
+            <span class="topic-tag"><span class="en">Mortgage</span><span class="ar">القرض العقاري</span></span>
+            <span class="topic-tag"><span class="en">BMI</span><span class="ar">مؤشر كتلة الجسم</span></span>
+            <span class="topic-tag"><span class="en">Salalah</span><span class="ar">صلالة</span></span>
+            <span class="topic-tag"><span class="en">ROI</span><span class="ar">عائد الاستثمار</span></span>
+            <span class="topic-tag"><span class="en">Ramadan</span><span class="ar">رمضان</span></span>
+            <span class="topic-tag"><span class="en">Off-Plan</span><span class="ar">على الخارطة</span></span>
+            <span class="topic-tag"><span class="en">Focus</span><span class="ar">التركيز</span></span>
+            <span class="topic-tag"><span class="en">Pregnancy</span><span class="ar">الحمل</span></span>
+            <span class="topic-tag"><span class="en">AlUla</span><span class="ar">العُلا</span></span>
+            <span class="topic-tag"><span class="en">Compound Growth</span><span class="ar">النمو المركّب</span></span>
+            <span class="topic-tag"><span class="en">Sleep</span><span class="ar">النوم</span></span>
+          </div>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="nl-sidebar">
+          <div class="nl-s-title"><span class="en">Weekly Knowledge Brief</span><span class="ar">نشرة المعرفة الأسبوعية</span></div>
+          <div class="nl-s-sub"><span class="en">New articles + tool updates + one evidence-backed insight. Every week.</span><span class="ar">مقالات جديدة وتحديثات الأدوات ورؤية مدعومة بالأدلة. كل أسبوع.</span></div>
+          <input type="email" class="nl-s-input" placeholder="your@email.com" aria-label="Email" />
+          <button class="nl-s-btn"><span class="en">Subscribe Free →</span><span class="ar">اشترك مجاناً ←</span></button>
+        </div>
+
+      </aside>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer-strip" role="contentinfo">
+    <div class="container">
+      <p>
+        <span class="en">© 2025 DOTFORLIFE Blog — Research-backed. Bilingual. Independent. Articles reflect research, not financial or medical advice.</span>
+        <span class="ar">© 2025 مدونة دوت فور لايف — مدعومة بالبحث. ثنائية اللغة. مستقلة. المقالات تعكس الأبحاث، وليست استشارات مالية أو طبية.</span>
+      </p>
+      <p style="margin-top:8px;">
+        <a href="index.html"><span class="en">Home</span><span class="ar">الرئيسية</span></a> ·
+        <a href="privacy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a> ·
+        <a href="contact.html"><span class="en">Contact</span><span class="ar">تواصل</span></a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Theme & Lang
+    const themeBtn=document.getElementById('themeBtn');
+    const langBtn=document.getElementById('langBtn');
+    const html=document.documentElement;
+    function applyTheme(t){html.setAttribute('data-theme',t);localStorage.setItem('dfl-theme',t);themeBtn.textContent=t==='dark'?'☀️':'🌙';}
+    function applyLang(l){html.setAttribute('data-lang',l);html.setAttribute('lang',l);html.setAttribute('dir',l==='ar'?'rtl':'ltr');localStorage.setItem('dfl-lang',l);}
+    applyTheme(html.getAttribute('data-theme')||'light');
+    applyLang(html.getAttribute('data-lang')||'en');
+    themeBtn.addEventListener('click',()=>applyTheme(html.getAttribute('data-theme')==='dark'?'light':'dark'));
+    langBtn.addEventListener('click',()=>applyLang(html.getAttribute('data-lang')==='ar'?'en':'ar'));
+
+    // Navbar scroll
+    const navbar=document.getElementById('navbar');
+    window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',window.scrollY>10));
+
+    // Scroll reveal
+    const observer=new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}});
+    },{threshold:0.1});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+    // Category filters
+    const filterBtns=document.querySelectorAll('.filter-btn');
+    const articleCards=document.querySelectorAll('#articlesGrid .article-card, .featured-article');
+    filterBtns.forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        filterBtns.forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        const cat=btn.getAttribute('data-cat');
+        articleCards.forEach(card=>{
+          const cardCat=card.getAttribute('data-category');
+          if(cat==='all'||cardCat===cat){
+            card.style.display='';
+            card.style.opacity='1';
+          } else {
+            card.style.opacity='0.2';
+            card.style.pointerEvents='none';
+            // Restore after brief delay for smooth UX
+            setTimeout(()=>{
+              if(btn.classList.contains('active')&&btn.getAttribute('data-cat')!==cardCat&&btn.getAttribute('data-cat')!=='all'){
+                card.style.display='flex';
+              }
+            },0);
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
