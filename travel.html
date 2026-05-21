@@ -1004,6 +1004,167 @@
   </div>
 </section>
 
+<!-- TRAVEL LIFE JOURNEY CHOOSER -->
+<section style="padding:clamp(60px,9vw,90px) 0;background:var(--card-bg,#fff);border-top:1px solid var(--border-l);" aria-label="Travel life journey">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:40px;">
+      <span style="display:inline-flex;align-items:center;gap:6px;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#0097A7;border:1px solid rgba(0,151,167,.2);background:rgba(0,151,167,.06);border-radius:999px;padding:5px 14px;margin-bottom:16px;">
+        <span class="en">YOUR TRAVEL JOURNEY · رحلتك في السفر</span><span class="ar">رحلتك في السفر</span>
+      </span>
+      <h2 style="font-size:clamp(1.5rem,3vw,2rem);font-weight:900;letter-spacing:-.03em;color:var(--text-1,#111);margin:0 0 12px;">
+        <span class="en">What kind of trip are you planning?</span>
+        <span class="ar">ما نوع الرحلة التي تخطط لها؟</span>
+      </h2>
+      <p style="font-size:.95rem;color:var(--text-2,#6B7280);max-width:460px;margin:0 auto;line-height:1.65;">
+        <span class="en">Every trip has a different shape. Choose yours and we'll sequence the right tools in the right order.</span>
+        <span class="ar">لكل رحلة شكلها المختلف. اختر رحلتك وسنرتّب الأدوات المناسبة بالترتيب الصحيح.</span>
+      </p>
+    </div>
+
+    <!-- Journey Selector Tabs -->
+    <div id="trv-journey-tabs" style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:36px;">
+      <button onclick="selectTrvJourney('getaway',this)" class="hj-tab" style="padding:11px 22px;border-radius:999px;border:1.5px solid #0097A7;background:#0097A7;color:#fff;font-size:.82rem;font-weight:700;cursor:pointer;transition:all .2s;font-family:inherit;">🌴 <span class="en">Weekend Getaway</span><span class="ar">رحلة عطلة قصيرة</span></button>
+      <button onclick="selectTrvJourney('longhual',this)" class="hj-tab" style="padding:11px 22px;border-radius:999px;border:1.5px solid var(--border-l);background:var(--body-bg,#f5f7fa);color:var(--text-2,#6B7280);font-size:.82rem;font-weight:700;cursor:pointer;transition:all .2s;font-family:inherit;">✈️ <span class="en">Long-Haul Adventure</span><span class="ar">مغامرة طويلة المدى</span></button>
+      <button onclick="selectTrvJourney('business',this)" class="hj-tab" style="padding:11px 22px;border-radius:999px;border:1.5px solid var(--border-l);background:var(--body-bg,#f5f7fa);color:var(--text-2,#6B7280);font-size:.82rem;font-weight:700;cursor:pointer;transition:all .2s;font-family:inherit;">💼 <span class="en">Business Travel</span><span class="ar">سفر العمل</span></button>
+    </div>
+
+    <!-- Journey: Weekend Getaway -->
+    <div id="trv-getaway" class="hj-panel">
+      <div style="background:rgba(0,151,167,.05);border:1px solid rgba(0,151,167,.12);border-radius:18px;padding:22px 26px;margin-bottom:28px;max-width:640px;margin-left:auto;margin-right:auto;text-align:center;">
+        <p style="font-size:1rem;font-style:italic;color:var(--text-1,#111);line-height:1.7;margin:0;">
+          <span class="en">"The best trips are the ones where every dirham goes toward experience — not uncertainty."</span>
+          <span class="ar">"أفضل الرحلات هي التي يذهب فيها كل درهم نحو التجربة — لا نحو الغموض."</span>
+        </p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;">
+        <a href="tools/travel-budget.html" style="display:block;background:var(--body-bg,#f5f7fa);border:1.5px solid var(--border-l);border-radius:18px;padding:22px 18px;text-decoration:none;color:var(--text-1,#111);transition:all .2s;" onmouseover="this.style.borderColor='#0097A7';this.style.boxShadow='0 6px 24px rgba(0,151,167,.12)'" onmouseout="this.style.borderColor='var(--border-l)';this.style.boxShadow='none'">
+          <div style="font-size:1.5rem;margin-bottom:10px;">💰</div>
+          <div style="font-size:.7rem;font-weight:700;color:#0097A7;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;"><span class="en">Step 1</span><span class="ar">الخطوة ١</span></div>
+          <div style="font-size:.92rem;font-weight:700;margin-bottom:5px;"><span class="en">Trip Budget</span><span class="ar">ميزانية الرحلة</span></div>
+          <div style="font-size:.78rem;color:var(--text-2,#6B7280);line-height:1.5;margin-bottom:12px;"><span class="en">What will this actually cost? Set your budget before impulse spending sets it for you.</span><span class="ar">ما الكلفة الفعلية؟ حدّد ميزانيتك قبل أن يحددها الإنفاق المتهور.</span></div>
+          <div style="font-size:.75rem;font-weight:700;color:#0097A7;">→ <span class="en">Start here</span><span class="ar">ابدأ هنا</span></div>
+        </a>
+        <a href="tools/currency-converter.html" style="display:block;background:var(--body-bg,#f5f7fa);border:1.5px solid var(--border-l);border-radius:18px;padding:22px 18px;text-decoration:none;color:var(--text-1,#111);transition:all .2s;" onmouseover="this.style.borderColor='#0097A7';this.style.boxShadow='0 6px 24px rgba(0,151,167,.12)'" onmouseout="this.style.borderColor='var(--border-l)';this.style.boxShadow='none'">
+          <div style="font-size:1.5rem;margin-bottom:10px;">💱</div>
+          <div style="font-size:.7rem;font-weight:700;color:#0097A7;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;"><span class="en">Step 2</span><span class="ar">الخطوة ٢</span></div>
+          <div style="font-size:.92rem;font-weight:700;margin-bottom:5px;"><span class="en">Currency Converter</span><span class="ar">محوّل العملات</span></div>
+          <div style="font-size:.78rem;color:var(--text-2,#6B7280);line-height:1.5;margin-bottom:12px;"><span class="en">Know exactly what you're spending before you spend it. Works with SAR, AED, and 150+ world currencies.</span><span class="ar">اعرف بالضبط ما تنفقه قبل أن تنفقه. يعمل مع الريال والدرهم و150+ عملة عالمية.</span></div>
+          <div style="font-size:.75rem;font-weight:700;color:#0097A7;">→ <span class="en">Convert now</span><span class="ar">حوّل الآن</span></div>
+        </a>
+        <a href="tools/packing-checklist.html" style="display:block;background:var(--body-bg,#f5f7fa);border:1.5px solid var(--border-l);border-radius:18px;padding:22px 18px;text-decoration:none;color:var(--text-1,#111);transition:all .2s;" onmouseover="this.style.borderColor='#0097A7';this.style.boxShadow='0 6px 24px rgba(0,151,167,.12)'" onmouseout="this.style.borderColor='var(--border-l)';this.style.boxShadow='none'">
+          <div style="font-size:1.5rem;margin-bottom:10px;">🧳</div>
+          <div style="font-size:.7rem;font-weight:700;color:#0097A7;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;"><span class="en">Step 3</span><span class="ar">الخطوة ٣</span></div>
+          <div style="font-size:.92rem;font-weight:700;margin-bottom:5px;"><span class="en">Packing Checklist</span><span class="ar">قائمة الحقيبة</span></div>
+          <div style="font-size:.78rem;color:var(--text-2,#6B7280);line-height:1.5;margin-bottom:12px;"><span class="en">Pack right the first time. Climate-specific essentials so nothing gets left behind — or overpacked.</span><span class="ar">احزم بشكل صحيح من المرة الأولى. أساسيات مناخية لا تترك شيئاً — ولا تبالغ في الحزم.</span></div>
+          <div style="font-size:.75rem;font-weight:700;color:#0097A7;">→ <span class="en">Pack smart</span><span class="ar">احزم بذكاء</span></div>
+        </a>
+        <a href="tools/return-to-hotel.html" style="display:block;background:var(--body-bg,#f5f7fa);border:1.5px solid var(--border-l);border-radius:18px;padding:22px 18px;text-decoration:none;color:var(--text-1,#111);transition:all .2s;" onmouseover="this.style.borderColor='#0097A7';this.style.boxShadow='0 6px 24px rgba(0,151,167,.12)'" onmouseout="this.style.borderColor='var(--border-l)';this.style.boxShadow='none'">
+          <div style="font-size:1.5rem;margin-bottom:10px;">🏨</div>
+          <div style="font-size:.7rem;font-weight:700;color:#0097A7;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;"><span class="en">Step 4</span><span class="ar">الخطوة ٤</span></div>
+          <div style="font-size:.92rem;font-weight:700;margin-bottom:5px;"><span class="en">Return to Hotel</span><span class="ar">العودة للفندق</span></div>
+          <div style="font-size:.78rem;color:var(--text-2,#6B7280);line-height:1.5;margin-bottom:12px;"><span class="en">Save your hotel's GPS on arrival. If you ever get lost — no signal needed. It always knows the way back.</span><span class="ar">احفظ GPS الفندق عند الوصول. إن ضعت — لا حاجة لإشارة. يعرف دائماً طريق العودة.</span></div>
+          <div style="font-size:.75rem;font-weight:700;color:#0097A7;">→ <span class="en">Save location</span><span class="ar">احفظ الموقع</span></div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Journey: Long-Haul Adventure -->
+    <div id="trv-longhual" class="hj-panel" style="display:none;">
+      <div style="background:rgba(0,151,167,.05);border:1px solid rgba(0,151,167,.12);border-radius:18px;padding:22px 26px;margin-bottom:28px;max-width:640px;margin-left:auto;margin-right:auto;text-align:center;">
+        <p style="font-size:1rem;font-style:italic;color:var(--text-1,#111);line-height:1.7;margin:0;">
+          <span class="en">"A long trip prepared well is a long trip remembered fondly. A long trip rushed is a long trip recovered from."</span>
+          <span class="ar">"رحلة طويلة مُعدّة جيداً هي رحلة تتذكرها بحنين. رحلة طويلة مُتسرّعة هي رحلة تحاول التعافي منها."</span>
+        </p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;">
+        <a href="tools/best-time-to-fly.html" style="display:block;background:var(--body-bg,#f5f7fa);border:1.5px solid var(--border-l);border-radius:18px;padding:22px 18px;text-decoration:none;color:var(--text-1,#111);transition:all .2s;" onmouseover="this.style.borderColor='#0097A7';this.style.boxShadow='0 6px 24px rgba(0,151,167,.12)'" onmouseout="this.style.borderColor='var(--border-l)';this.style.boxShadow='none'">
+          <div style="font-size:1.5rem;margin-bottom:10px;">🗓️</div>
+          <div style="font-size:.7rem;font-weight:700;color:#0097A7;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;"><span class="en">Step 1</span><span class="ar">الخطوة ١</span></div>
+          <div style="font-size:.92rem;font-weight:700;margin-bottom:5px;"><span class="en">Best Time to Fly</span><span class="ar">أفضل وقت للسفر</span></div>
+          <div style="font-size:.78rem;color:var(--text-2,#6B7280);line-height:1.5;margin-bottom:12px;"><span class="en">When does your route get cheaper, calmer, and better weather? Know before you book.</span><span class="ar">متى يصبح طريقك أرخص وأهدأ وأفضل طقساً؟ اعرف قبل الحجز.</span></div>
+          <div style="font-size:.75rem;font-weight:700;color:#0097A7;">→ <span class="en">Find the window</span><span class="ar">ابحث عن الفرصة</span></div>
+        </a>
+        <a href="tools/travel-budget.html" style="display:block;background:var(--body-bg,#f5f7fa);border:1.5px solid var(--border-l);border-radius:18px;padding:22px 18px;text-decoration:none;color:var(--text-1,#111);transition:all .2s;" onmouseover="this.style.borderColor='#0097A7';this.style.boxShadow='0 6px 24px rgba(0,151,167,.12)'" onmouseout="this.style.borderColor='var(--border-l)';this.style.boxShadow='none'">
+          <div style="font-size:1.5rem;margin-bottom:10px;">💰</div>
+          <div style="font-size:.7rem;font-weight:700;color:#0097A7;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;"><span class="en">Step 2</span><span class="ar">الخطوة ٢</span></div>
+          <div style="font-size:.92rem;font-weight:700;margin-bottom:5px;"><span class="en">Full Trip Budget</span><span class="ar">ميزانية الرحلة الكاملة</span></div>
+          <div style="font-size:.78rem;color:var(--text-2,#6B7280);line-height:1.5;margin-bottom:12px;"><span class="en">A long trip without a budget is a financial bet. Map every cost — flights, hotels, food, activities, the unexpected.</span><span class="ar">رحلة طويلة بلا ميزانية هي رهان مالي. حدد كل تكلفة — رحلات، فنادق، طعام، أنشطة، وغير المتوقع.</span></div>
+          <div style="font-size:.75rem;font-weight:700;color:#0097A7;">→ <span class="en">Plan the spend</span><span class="ar">خطط الإنفاق</span></div>
+        </a>
+        <a href="tools/packing-checklist.html" style="display:block;background:var(--body-bg,#f5f7fa);border:1.5px solid var(--border-l);border-radius:18px;padding:22px 18px;text-decoration:none;color:var(--text-1,#111);transition:all .2s;" onmouseover="this.style.borderColor='#0097A7';this.style.boxShadow='0 6px 24px rgba(0,151,167,.12)'" onmouseout="this.style.borderColor='var(--border-l)';this.style.boxShadow='none'">
+          <div style="font-size:1.5rem;margin-bottom:10px;">🧳</div>
+          <div style="font-size:.7rem;font-weight:700;color:#0097A7;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;"><span class="en">Step 3</span><span class="ar">الخطوة ٣</span></div>
+          <div style="font-size:.92rem;font-weight:700;margin-bottom:5px;"><span class="en">Multi-Climate Packing</span><span class="ar">حزم متعدد المناخات</span></div>
+          <div style="font-size:.78rem;color:var(--text-2,#6B7280);line-height:1.5;margin-bottom:12px;"><span class="en">Crossing climates on a long trip means packing smarter, not more. The checklist adapts to your route.</span><span class="ar">اجتياز مناخات متعددة في رحلة طويلة يعني الحزم بذكاء أكبر، لا حجماً أكبر. القائمة تتكيف مع مسارك.</span></div>
+          <div style="font-size:.75rem;font-weight:700;color:#0097A7;">→ <span class="en">Build your list</span><span class="ar">بنِ قائمتك</span></div>
+        </a>
+        <a href="tools/travel-insurance-guide.html" style="display:block;background:var(--body-bg,#f5f7fa);border:1.5px solid var(--border-l);border-radius:18px;padding:22px 18px;text-decoration:none;color:var(--text-1,#111);transition:all .2s;" onmouseover="this.style.borderColor='#0097A7';this.style.boxShadow='0 6px 24px rgba(0,151,167,.12)'" onmouseout="this.style.borderColor='var(--border-l)';this.style.boxShadow='none'">
+          <div style="font-size:1.5rem;margin-bottom:10px;">🛡️</div>
+          <div style="font-size:.7rem;font-weight:700;color:#0097A7;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;"><span class="en">Step 4</span><span class="ar">الخطوة ٤</span></div>
+          <div style="font-size:.92rem;font-weight:700;margin-bottom:5px;"><span class="en">Travel Insurance Guide</span><span class="ar">دليل تأمين السفر</span></div>
+          <div style="font-size:.78rem;color:var(--text-2,#6B7280);line-height:1.5;margin-bottom:12px;"><span class="en">On a long trip, insurance isn't optional — it's math. Know what you're actually covered for.</span><span class="ar">في رحلة طويلة، التأمين ليس خياراً — إنه رياضيات. اعرف ما تغطيه فعلاً.</span></div>
+          <div style="font-size:.75rem;font-weight:700;color:#0097A7;">→ <span class="en">Get covered</span><span class="ar">احمِ نفسك</span></div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Journey: Business Travel -->
+    <div id="trv-business" class="hj-panel" style="display:none;">
+      <div style="background:rgba(0,151,167,.05);border:1px solid rgba(0,151,167,.12);border-radius:18px;padding:22px 26px;margin-bottom:28px;max-width:640px;margin-left:auto;margin-right:auto;text-align:center;">
+        <p style="font-size:1rem;font-style:italic;color:var(--text-1,#111);line-height:1.7;margin:0;">
+          <span class="en">"Business travel is still travel. The tools that save you time also give you space to think."</span>
+          <span class="ar">"السفر للعمل لا يزال سفراً. الأدوات التي توفّر وقتك تمنحك أيضاً مساحة للتفكير."</span>
+        </p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;">
+        <a href="tools/currency-converter.html" style="display:block;background:var(--body-bg,#f5f7fa);border:1.5px solid var(--border-l);border-radius:18px;padding:22px 18px;text-decoration:none;color:var(--text-1,#111);transition:all .2s;" onmouseover="this.style.borderColor='#0097A7';this.style.boxShadow='0 6px 24px rgba(0,151,167,.12)'" onmouseout="this.style.borderColor='var(--border-l)';this.style.boxShadow='none'">
+          <div style="font-size:1.5rem;margin-bottom:10px;">💱</div>
+          <div style="font-size:.7rem;font-weight:700;color:#0097A7;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;"><span class="en">Step 1</span><span class="ar">الخطوة ١</span></div>
+          <div style="font-size:.92rem;font-weight:700;margin-bottom:5px;"><span class="en">Currency Converter</span><span class="ar">محوّل العملات</span></div>
+          <div style="font-size:.78rem;color:var(--text-2,#6B7280);line-height:1.5;margin-bottom:12px;"><span class="en">Expenses in foreign currency need to hit your report in your home currency. Calculate on the fly, precisely.</span><span class="ar">المصروفات بالعملة الأجنبية يجب أن تظهر في تقريرك بعملتك المحلية. احسب فورياً وبدقة.</span></div>
+          <div style="font-size:.75rem;font-weight:700;color:#0097A7;">→ <span class="en">Start here</span><span class="ar">ابدأ هنا</span></div>
+        </a>
+        <a href="tools/travel-budget.html" style="display:block;background:var(--body-bg,#f5f7fa);border:1.5px solid var(--border-l);border-radius:18px;padding:22px 18px;text-decoration:none;color:var(--text-1,#111);transition:all .2s;" onmouseover="this.style.borderColor='#0097A7';this.style.boxShadow='0 6px 24px rgba(0,151,167,.12)'" onmouseout="this.style.borderColor='var(--border-l)';this.style.boxShadow='none'">
+          <div style="font-size:1.5rem;margin-bottom:10px;">📋</div>
+          <div style="font-size:.7rem;font-weight:700;color:#0097A7;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;"><span class="en">Step 2</span><span class="ar">الخطوة ٢</span></div>
+          <div style="font-size:.92rem;font-weight:700;margin-bottom:5px;"><span class="en">Trip Expense Tracker</span><span class="ar">متتبع مصروفات الرحلة</span></div>
+          <div style="font-size:.78rem;color:var(--text-2,#6B7280);line-height:1.5;margin-bottom:12px;"><span class="en">Business trips have budgets. Track actuals against plan so reimbursement is clean and undisputed.</span><span class="ar">رحلات العمل لها ميزانيات. تتبع الفعلي مقابل المخطط لتكون التسوية نظيفة وواضحة.</span></div>
+          <div style="font-size:.75rem;font-weight:700;color:#0097A7;">→ <span class="en">Track spending</span><span class="ar">تتبع الإنفاق</span></div>
+        </a>
+        <a href="tools/packing-checklist.html" style="display:block;background:var(--body-bg,#f5f7fa);border:1.5px solid var(--border-l);border-radius:18px;padding:22px 18px;text-decoration:none;color:var(--text-1,#111);transition:all .2s;" onmouseover="this.style.borderColor='#0097A7';this.style.boxShadow='0 6px 24px rgba(0,151,167,.12)'" onmouseout="this.style.borderColor='var(--border-l)';this.style.boxShadow='none'">
+          <div style="font-size:1.5rem;margin-bottom:10px;">🧳</div>
+          <div style="font-size:.7rem;font-weight:700;color:#0097A7;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;"><span class="en">Step 3</span><span class="ar">الخطوة ٣</span></div>
+          <div style="font-size:.92rem;font-weight:700;margin-bottom:5px;"><span class="en">Business Packing List</span><span class="ar">قائمة حزم العمل</span></div>
+          <div style="font-size:.78rem;color:var(--text-2,#6B7280);line-height:1.5;margin-bottom:12px;"><span class="en">Chargers, adapters, presentation gear, backup plans — the list built for business travelers, not tourists.</span><span class="ar">شواحن، محوّلات، معدات العروض، خطط بديلة — قائمة مبنية لمسافري الأعمال، لا السياح.</span></div>
+          <div style="font-size:.75rem;font-weight:700;color:#0097A7;">→ <span class="en">Prepare</span><span class="ar">استعدّ</span></div>
+        </a>
+        <a href="tools/return-to-hotel.html" style="display:block;background:var(--body-bg,#f5f7fa);border:1.5px solid var(--border-l);border-radius:18px;padding:22px 18px;text-decoration:none;color:var(--text-1,#111);transition:all .2s;" onmouseover="this.style.borderColor='#0097A7';this.style.boxShadow='0 6px 24px rgba(0,151,167,.12)'" onmouseout="this.style.borderColor='var(--border-l)';this.style.boxShadow='none'">
+          <div style="font-size:1.5rem;margin-bottom:10px;">🏨</div>
+          <div style="font-size:.7rem;font-weight:700;color:#0097A7;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;"><span class="en">Step 4</span><span class="ar">الخطوة ٤</span></div>
+          <div style="font-size:.92rem;font-weight:700;margin-bottom:5px;"><span class="en">Return to Hotel</span><span class="ar">العودة للفندق</span></div>
+          <div style="font-size:.78rem;color:var(--text-2,#6B7280);line-height:1.5;margin-bottom:12px;"><span class="en">After a late client dinner in an unfamiliar city — find your way back. Offline, instant, reliable.</span><span class="ar">بعد عشاء عمل متأخر في مدينة غير مألوفة — ابحث عن طريق العودة. بلا إنترنت، فوري، موثوق.</span></div>
+          <div style="font-size:.75rem;font-weight:700;color:#0097A7;">→ <span class="en">Save location</span><span class="ar">احفظ الموقع</span></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+function selectTrvJourney(id, btn) {
+  ['trv-getaway','trv-longhual','trv-business'].forEach(p => document.getElementById(p).style.display = 'none');
+  document.getElementById('trv-' + id).style.display = 'block';
+  document.querySelectorAll('#trv-journey-tabs .hj-tab').forEach(t => {
+    t.style.background = 'var(--body-bg,#f5f7fa)';
+    t.style.color = 'var(--text-2,#6B7280)';
+    t.style.borderColor = 'var(--border-l)';
+  });
+  btn.style.background = '#0097A7';
+  btn.style.color = '#fff';
+  btn.style.borderColor = '#0097A7';
+}
+</script>
+
 <!-- TRAVEL FAQ -->
 <section style="padding:64px 0;background:var(--body-bg,#f5f7fa);" aria-label="Travel tools frequently asked questions">
   <div class="container">

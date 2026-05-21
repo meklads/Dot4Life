@@ -2030,6 +2030,167 @@ window.dflTrack=function(event,params){
   </div>
 </section>
 
+<!-- REAL ESTATE LIFE JOURNEY CHOOSER -->
+<section style="padding:clamp(60px,9vw,90px) 0;background:var(--card-bg);border-top:1px solid var(--border-l);" aria-label="Real estate life journey">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:40px;">
+      <span style="display:inline-flex;align-items:center;gap:6px;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#2563EB;border:1px solid rgba(37,99,235,.2);background:rgba(37,99,235,.06);border-radius:999px;padding:5px 14px;margin-bottom:16px;">
+        <span class="en">YOUR PROPERTY JOURNEY · رحلتك العقارية</span><span class="ar">رحلتك العقارية</span>
+      </span>
+      <h2 style="font-size:clamp(1.5rem,3vw,2rem);font-weight:900;letter-spacing:-.03em;color:var(--text-1);margin:0 0 12px;">
+        <span class="en">What stage is your property journey at?</span>
+        <span class="ar">أين أنت في رحلتك العقارية؟</span>
+      </h2>
+      <p style="font-size:.95rem;color:var(--text-2);max-width:460px;margin:0 auto;line-height:1.65;">
+        <span class="en">Property decisions change at every stage. Choose yours — we'll show you the calculations that matter right now.</span>
+        <span class="ar">القرارات العقارية تتغير في كل مرحلة. اختر مرحلتك — وسنريك الحسابات التي تهمك الآن.</span>
+      </p>
+    </div>
+
+    <!-- Journey Selector Tabs -->
+    <div id="re-journey-tabs" style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:36px;">
+      <button onclick="selectReJourney('firsthome',this)" class="hj-tab" style="padding:11px 22px;border-radius:999px;border:1.5px solid #2563EB;background:#2563EB;color:#fff;font-size:.82rem;font-weight:700;cursor:pointer;transition:all .2s;font-family:inherit;">🏠 <span class="en">First Home</span><span class="ar">المنزل الأول</span></button>
+      <button onclick="selectReJourney('invest',this)" class="hj-tab" style="padding:11px 22px;border-radius:999px;border:1.5px solid var(--border-l);background:var(--body-bg);color:var(--text-2);font-size:.82rem;font-weight:700;cursor:pointer;transition:all .2s;font-family:inherit;">💼 <span class="en">Property Investment</span><span class="ar">الاستثمار العقاري</span></button>
+      <button onclick="selectReJourney('portfolio',this)" class="hj-tab" style="padding:11px 22px;border-radius:999px;border:1.5px solid var(--border-l);background:var(--body-bg);color:var(--text-2);font-size:.82rem;font-weight:700;cursor:pointer;transition:all .2s;font-family:inherit;">🏘️ <span class="en">Rental Portfolio</span><span class="ar">محفظة إيجارية</span></button>
+    </div>
+
+    <!-- Journey: First Home -->
+    <div id="re-firsthome" class="hj-panel">
+      <div style="background:rgba(37,99,235,.05);border:1px solid rgba(37,99,235,.12);border-radius:18px;padding:22px 26px;margin-bottom:28px;max-width:640px;margin-left:auto;margin-right:auto;text-align:center;">
+        <p style="font-size:1rem;font-style:italic;color:var(--text-1);line-height:1.7;margin:0;">
+          <span class="en">"Your first home purchase isn't just a transaction. It's a structural shift in how your life is organized financially."</span>
+          <span class="ar">"شراء منزلك الأول ليس مجرد صفقة. إنه تحوّل هيكلي في الطريقة التي يُنظَّم بها حياتك مالياً."</span>
+        </p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;">
+        <a href="tools/mortgage-calculator.html" style="display:block;background:var(--body-bg);border:1.5px solid var(--border-l);border-radius:18px;padding:22px 18px;text-decoration:none;color:var(--text-1);transition:all .2s;" onmouseover="this.style.borderColor='#2563EB';this.style.boxShadow='0 6px 24px rgba(37,99,235,.12)'" onmouseout="this.style.borderColor='var(--border-l)';this.style.boxShadow='none'">
+          <div style="font-size:1.5rem;margin-bottom:10px;">🏦</div>
+          <div style="font-size:.7rem;font-weight:700;color:#2563EB;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;"><span class="en">Step 1</span><span class="ar">الخطوة ١</span></div>
+          <div style="font-size:.92rem;font-weight:700;margin-bottom:5px;"><span class="en">Mortgage Calculator</span><span class="ar">حاسبة التمويل</span></div>
+          <div style="font-size:.78rem;color:var(--text-2);line-height:1.5;margin-bottom:12px;"><span class="en">What monthly payment can my income genuinely support? The number that decides everything else.</span><span class="ar">ما الدفعة الشهرية التي يمكن لدخلي تحملها فعلاً؟ الرقم الذي يحدد كل شيء آخر.</span></div>
+          <div style="font-size:.75rem;font-weight:700;color:#2563EB;">→ <span class="en">Start here</span><span class="ar">ابدأ هنا</span></div>
+        </a>
+        <a href="tools/rental-yield-calculator.html" style="display:block;background:var(--body-bg);border:1.5px solid var(--border-l);border-radius:18px;padding:22px 18px;text-decoration:none;color:var(--text-1);transition:all .2s;" onmouseover="this.style.borderColor='#2563EB';this.style.boxShadow='0 6px 24px rgba(37,99,235,.12)'" onmouseout="this.style.borderColor='var(--border-l)';this.style.boxShadow='none'">
+          <div style="font-size:1.5rem;margin-bottom:10px;">⚖️</div>
+          <div style="font-size:.7rem;font-weight:700;color:#2563EB;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;"><span class="en">Step 2</span><span class="ar">الخطوة ٢</span></div>
+          <div style="font-size:.92rem;font-weight:700;margin-bottom:5px;"><span class="en">Buy vs. Rent Reality Check</span><span class="ar">الشراء مقابل الإيجار: التحقق من الواقع</span></div>
+          <div style="font-size:.78rem;color:var(--text-2);line-height:1.5;margin-bottom:12px;"><span class="en">Is buying genuinely better in your area right now — or is renting still the smarter financial move?</span><span class="ar">هل الشراء أفضل فعلاً في منطقتك الآن — أم أن الإيجار لا يزال القرار المالي الأذكى؟</span></div>
+          <div style="font-size:.75rem;font-weight:700;color:#2563EB;">→ <span class="en">Run the comparison</span><span class="ar">أجرِ المقارنة</span></div>
+        </a>
+        <a href="tools/roi-calculator.html" style="display:block;background:var(--body-bg);border:1.5px solid var(--border-l);border-radius:18px;padding:22px 18px;text-decoration:none;color:var(--text-1);transition:all .2s;" onmouseover="this.style.borderColor='#2563EB';this.style.boxShadow='0 6px 24px rgba(37,99,235,.12)'" onmouseout="this.style.borderColor='var(--border-l)';this.style.boxShadow='none'">
+          <div style="font-size:1.5rem;margin-bottom:10px;">📈</div>
+          <div style="font-size:.7rem;font-weight:700;color:#2563EB;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;"><span class="en">Step 3</span><span class="ar">الخطوة ٣</span></div>
+          <div style="font-size:.92rem;font-weight:700;margin-bottom:5px;"><span class="en">Appreciation Calculator</span><span class="ar">حاسبة ارتفاع القيمة</span></div>
+          <div style="font-size:.78rem;color:var(--text-2);line-height:1.5;margin-bottom:12px;"><span class="en">What will this property be worth in 10 years? Understand the long-term equity you're building from day one.</span><span class="ar">ما قيمة هذا العقار خلال 10 سنوات؟ افهم الملكية الطويلة المدى التي تبنيها من اليوم الأول.</span></div>
+          <div style="font-size:.75rem;font-weight:700;color:#2563EB;">→ <span class="en">See the future value</span><span class="ar">اكتشف القيمة المستقبلية</span></div>
+        </a>
+        <a href="tools/zakat-calculator.html" style="display:block;background:var(--body-bg);border:1.5px solid var(--border-l);border-radius:18px;padding:22px 18px;text-decoration:none;color:var(--text-1);transition:all .2s;" onmouseover="this.style.borderColor='#1B7A4E';this.style.boxShadow='0 6px 24px rgba(27,122,78,.12)'" onmouseout="this.style.borderColor='var(--border-l)';this.style.boxShadow='none'">
+          <div style="font-size:1.5rem;margin-bottom:10px;">🌙</div>
+          <div style="font-size:.7rem;font-weight:700;color:#1B7A4E;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;"><span class="en">Spiritual</span><span class="ar">الجانب الروحي</span></div>
+          <div style="font-size:.92rem;font-weight:700;margin-bottom:5px;"><span class="en">Zakat on Property Savings</span><span class="ar">زكاة مدخرات العقار</span></div>
+          <div style="font-size:.78rem;color:var(--text-2);line-height:1.5;margin-bottom:12px;"><span class="en">If you've saved for a down payment and it's been a full year — Zakat may be due. Calculate it correctly.</span><span class="ar">إن كنت ادّخرت للدفعة المقدمة وتجاوز عاماً — قد تجب الزكاة. احسبها بشكل صحيح.</span></div>
+          <div style="font-size:.75rem;font-weight:700;color:#1B7A4E;">→ <span class="en">Check obligation</span><span class="ar">تحقق من الالتزام</span></div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Journey: Property Investment -->
+    <div id="re-invest" class="hj-panel" style="display:none;">
+      <div style="background:rgba(37,99,235,.05);border:1px solid rgba(37,99,235,.12);border-radius:18px;padding:22px 26px;margin-bottom:28px;max-width:640px;margin-left:auto;margin-right:auto;text-align:center;">
+        <p style="font-size:1rem;font-style:italic;color:var(--text-1);line-height:1.7;margin:0;">
+          <span class="en">"Investment-grade property decisions aren't made on instinct. They're made on yield, cost of capital, and exit clarity."</span>
+          <span class="ar">"قرارات الاستثمار العقاري المحترف لا تُتخذ بالحدس. تُتخذ بالعائد وتكلفة رأس المال ووضوح الخروج."</span>
+        </p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;">
+        <a href="tools/roi-calculator.html" style="display:block;background:var(--body-bg);border:1.5px solid var(--border-l);border-radius:18px;padding:22px 18px;text-decoration:none;color:var(--text-1);transition:all .2s;" onmouseover="this.style.borderColor='#2563EB';this.style.boxShadow='0 6px 24px rgba(37,99,235,.12)'" onmouseout="this.style.borderColor='var(--border-l)';this.style.boxShadow='none'">
+          <div style="font-size:1.5rem;margin-bottom:10px;">💹</div>
+          <div style="font-size:.7rem;font-weight:700;color:#2563EB;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;"><span class="en">Step 1</span><span class="ar">الخطوة ١</span></div>
+          <div style="font-size:.92rem;font-weight:700;margin-bottom:5px;"><span class="en">Total Return on Investment</span><span class="ar">إجمالي العائد على الاستثمار</span></div>
+          <div style="font-size:.78rem;color:var(--text-2);line-height:1.5;margin-bottom:12px;"><span class="en">What's the actual return on this property — appreciation plus yield, minus holding costs?</span><span class="ar">ما العائد الفعلي على هذا العقار — ارتفاع القيمة بالإضافة إلى العائد، مطروحاً منه تكاليف الاحتفاظ؟</span></div>
+          <div style="font-size:.75rem;font-weight:700;color:#2563EB;">→ <span class="en">Start here</span><span class="ar">ابدأ هنا</span></div>
+        </a>
+        <a href="tools/rental-yield-calculator.html" style="display:block;background:var(--body-bg);border:1.5px solid var(--border-l);border-radius:18px;padding:22px 18px;text-decoration:none;color:var(--text-1);transition:all .2s;" onmouseover="this.style.borderColor='#2563EB';this.style.boxShadow='0 6px 24px rgba(37,99,235,.12)'" onmouseout="this.style.borderColor='var(--border-l)';this.style.boxShadow='none'">
+          <div style="font-size:1.5rem;margin-bottom:10px;">📊</div>
+          <div style="font-size:.7rem;font-weight:700;color:#2563EB;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;"><span class="en">Step 2</span><span class="ar">الخطوة ٢</span></div>
+          <div style="font-size:.92rem;font-weight:700;margin-bottom:5px;"><span class="en">Net Rental Yield</span><span class="ar">صافي عائد الإيجار</span></div>
+          <div style="font-size:.78rem;color:var(--text-2);line-height:1.5;margin-bottom:12px;"><span class="en">Gross yield is marketing. Net yield — after fees, voids, and maintenance — is what you actually keep.</span><span class="ar">العائد الإجمالي للتسويق. صافي العائد — بعد الرسوم والشواغر والصيانة — هو ما تحتفظ به فعلاً.</span></div>
+          <div style="font-size:.75rem;font-weight:700;color:#2563EB;">→ <span class="en">Get the real number</span><span class="ar">احصل على الرقم الحقيقي</span></div>
+        </a>
+        <a href="tools/mortgage-calculator.html" style="display:block;background:var(--body-bg);border:1.5px solid var(--border-l);border-radius:18px;padding:22px 18px;text-decoration:none;color:var(--text-1);transition:all .2s;" onmouseover="this.style.borderColor='#2563EB';this.style.boxShadow='0 6px 24px rgba(37,99,235,.12)'" onmouseout="this.style.borderColor='var(--border-l)';this.style.boxShadow='none'">
+          <div style="font-size:1.5rem;margin-bottom:10px;">🏦</div>
+          <div style="font-size:.7rem;font-weight:700;color:#2563EB;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;"><span class="en">Step 3</span><span class="ar">الخطوة ٣</span></div>
+          <div style="font-size:.92rem;font-weight:700;margin-bottom:5px;"><span class="en">Financing the Investment</span><span class="ar">تمويل الاستثمار</span></div>
+          <div style="font-size:.78rem;color:var(--text-2);line-height:1.5;margin-bottom:12px;"><span class="en">Does the rental income cover the financing cost — and by how much? Model the cash flow before you commit.</span><span class="ar">هل دخل الإيجار يغطي تكلفة التمويل — وبكم؟ صمّم التدفق النقدي قبل الالتزام.</span></div>
+          <div style="font-size:.75rem;font-weight:700;color:#2563EB;">→ <span class="en">Model cash flow</span><span class="ar">صمّم التدفق النقدي</span></div>
+        </a>
+        <a href="tools/zakat-calculator.html" style="display:block;background:var(--body-bg);border:1.5px solid var(--border-l);border-radius:18px;padding:22px 18px;text-decoration:none;color:var(--text-1);transition:all .2s;" onmouseover="this.style.borderColor='#1B7A4E';this.style.boxShadow='0 6px 24px rgba(27,122,78,.12)'" onmouseout="this.style.borderColor='var(--border-l)';this.style.boxShadow='none'">
+          <div style="font-size:1.5rem;margin-bottom:10px;">🌙</div>
+          <div style="font-size:.7rem;font-weight:700;color:#1B7A4E;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;"><span class="en">Spiritual</span><span class="ar">الجانب الروحي</span></div>
+          <div style="font-size:.92rem;font-weight:700;margin-bottom:5px;"><span class="en">Zakat on Investment Property</span><span class="ar">زكاة عقار الاستثمار</span></div>
+          <div style="font-size:.78rem;color:var(--text-2);line-height:1.5;margin-bottom:12px;"><span class="en">Is your investment property subject to Zakat? The rules differ by intent — to sell, or to rent. Know yours.</span><span class="ar">هل عقارك الاستثماري خاضع للزكاة؟ الأحكام تختلف حسب النية — للبيع أم للإيجار. اعرف حكمك.</span></div>
+          <div style="font-size:.75rem;font-weight:700;color:#1B7A4E;">→ <span class="en">Know the ruling</span><span class="ar">تعرف على الحكم</span></div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Journey: Rental Portfolio -->
+    <div id="re-portfolio" class="hj-panel" style="display:none;">
+      <div style="background:rgba(37,99,235,.05);border:1px solid rgba(37,99,235,.12);border-radius:18px;padding:22px 26px;margin-bottom:28px;max-width:640px;margin-left:auto;margin-right:auto;text-align:center;">
+        <p style="font-size:1rem;font-style:italic;color:var(--text-1);line-height:1.7;margin:0;">
+          <span class="en">"A rental portfolio isn't managed by feel. It's managed by numbers — occupancy, yield, and net cash flow, across every unit."</span>
+          <span class="ar">"المحفظة الإيجارية لا تُدار بالإحساس. تُدار بالأرقام — الإشغال والعائد وصافي التدفق النقدي، عبر كل وحدة."</span>
+        </p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;">
+        <a href="tools/rental-yield-calculator.html" style="display:block;background:var(--body-bg);border:1.5px solid var(--border-l);border-radius:18px;padding:22px 18px;text-decoration:none;color:var(--text-1);transition:all .2s;" onmouseover="this.style.borderColor='#2563EB';this.style.boxShadow='0 6px 24px rgba(37,99,235,.12)'" onmouseout="this.style.borderColor='var(--border-l)';this.style.boxShadow='none'">
+          <div style="font-size:1.5rem;margin-bottom:10px;">📊</div>
+          <div style="font-size:.7rem;font-weight:700;color:#2563EB;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;"><span class="en">Step 1</span><span class="ar">الخطوة ١</span></div>
+          <div style="font-size:.92rem;font-weight:700;margin-bottom:5px;"><span class="en">Per-Unit Yield Analysis</span><span class="ar">تحليل العائد لكل وحدة</span></div>
+          <div style="font-size:.78rem;color:var(--text-2);line-height:1.5;margin-bottom:12px;"><span class="en">Which unit in your portfolio is truly performing? Yield by unit — the only way to make portfolio decisions rationally.</span><span class="ar">أي وحدة في محفظتك تؤدي أداءً حقيقياً؟ العائد لكل وحدة — الطريقة الوحيدة لاتخاذ قرارات المحفظة بعقلانية.</span></div>
+          <div style="font-size:.75rem;font-weight:700;color:#2563EB;">→ <span class="en">Start here</span><span class="ar">ابدأ هنا</span></div>
+        </a>
+        <a href="tools/roi-calculator.html" style="display:block;background:var(--body-bg);border:1.5px solid var(--border-l);border-radius:18px;padding:22px 18px;text-decoration:none;color:var(--text-1);transition:all .2s;" onmouseover="this.style.borderColor='#2563EB';this.style.boxShadow='0 6px 24px rgba(37,99,235,.12)'" onmouseout="this.style.borderColor='var(--border-l)';this.style.boxShadow='none'">
+          <div style="font-size:1.5rem;margin-bottom:10px;">💹</div>
+          <div style="font-size:.7rem;font-weight:700;color:#2563EB;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;"><span class="en">Step 2</span><span class="ar">الخطوة ٢</span></div>
+          <div style="font-size:.92rem;font-weight:700;margin-bottom:5px;"><span class="en">Portfolio ROI</span><span class="ar">عائد المحفظة</span></div>
+          <div style="font-size:.78rem;color:var(--text-2);line-height:1.5;margin-bottom:12px;"><span class="en">Total return across all properties — blended yield, total equity, and annual cash position. The portfolio view.</span><span class="ar">إجمالي العائد على كل العقارات — العائد المدمج والأسهم الإجمالية والموقف النقدي السنوي. نظرة المحفظة.</span></div>
+          <div style="font-size:.75rem;font-weight:700;color:#2563EB;">→ <span class="en">See the portfolio</span><span class="ar">شاهد المحفظة</span></div>
+        </a>
+        <a href="tools/mortgage-calculator.html" style="display:block;background:var(--body-bg);border:1.5px solid var(--border-l);border-radius:18px;padding:22px 18px;text-decoration:none;color:var(--text-1);transition:all .2s;" onmouseover="this.style.borderColor='#2563EB';this.style.boxShadow='0 6px 24px rgba(37,99,235,.12)'" onmouseout="this.style.borderColor='var(--border-l)';this.style.boxShadow='none'">
+          <div style="font-size:1.5rem;margin-bottom:10px;">🏦</div>
+          <div style="font-size:.7rem;font-weight:700;color:#2563EB;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;"><span class="en">Step 3</span><span class="ar">الخطوة ٣</span></div>
+          <div style="font-size:.92rem;font-weight:700;margin-bottom:5px;"><span class="en">Next Acquisition Cost</span><span class="ar">تكلفة الاستحواذ القادم</span></div>
+          <div style="font-size:.78rem;color:var(--text-2);line-height:1.5;margin-bottom:12px;"><span class="en">Before expanding the portfolio, model the next mortgage. Can the new rental income service the new debt?</span><span class="ar">قبل توسيع المحفظة، صمّم التمويل القادم. هل يمكن لدخل الإيجار الجديد تغطية الدين الجديد؟</span></div>
+          <div style="font-size:.75rem;font-weight:700;color:#2563EB;">→ <span class="en">Model acquisition</span><span class="ar">صمّم الاستحواذ</span></div>
+        </a>
+        <a href="tools/zakat-calculator.html" style="display:block;background:var(--body-bg);border:1.5px solid var(--border-l);border-radius:18px;padding:22px 18px;text-decoration:none;color:var(--text-1);transition:all .2s;" onmouseover="this.style.borderColor='#1B7A4E';this.style.boxShadow='0 6px 24px rgba(27,122,78,.12)'" onmouseout="this.style.borderColor='var(--border-l)';this.style.boxShadow='none'">
+          <div style="font-size:1.5rem;margin-bottom:10px;">🌙</div>
+          <div style="font-size:.7rem;font-weight:700;color:#1B7A4E;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;"><span class="en">Spiritual</span><span class="ar">الجانب الروحي</span></div>
+          <div style="font-size:.92rem;font-weight:700;margin-bottom:5px;"><span class="en">Portfolio Zakat</span><span class="ar">زكاة المحفظة</span></div>
+          <div style="font-size:.78rem;color:var(--text-2);line-height:1.5;margin-bottom:12px;"><span class="en">A portfolio of rental properties has a specific Zakat structure. Calculate each asset correctly — purpose matters.</span><span class="ar">لمحفظة العقارات الإيجارية هيكل زكاة محدد. احسب كل أصل بشكل صحيح — النية مهمة.</span></div>
+          <div style="font-size:.75rem;font-weight:700;color:#1B7A4E;">→ <span class="en">Calculate portfolio Zakat</span><span class="ar">احسب زكاة المحفظة</span></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+function selectReJourney(id, btn) {
+  ['re-firsthome','re-invest','re-portfolio'].forEach(p => document.getElementById(p).style.display = 'none');
+  document.getElementById('re-' + id).style.display = 'block';
+  document.querySelectorAll('#re-journey-tabs .hj-tab').forEach(t => {
+    t.style.background = 'var(--body-bg)';
+    t.style.color = 'var(--text-2)';
+    t.style.borderColor = 'var(--border-l)';
+  });
+  btn.style.background = '#2563EB';
+  btn.style.color = '#fff';
+  btn.style.borderColor = '#2563EB';
+}
+</script>
+
 <!-- REAL ESTATE FAQ -->
 <section style="padding:64px 0;background:var(--body-bg);" aria-label="Real estate frequently asked questions">
   <div class="container">

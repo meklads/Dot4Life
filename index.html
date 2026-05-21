@@ -4076,6 +4076,179 @@ window.dflTrack=function(event,params){
   </div>
 </div>
 
+<!-- ═══ SEASONAL INTELLIGENCE MODULE ══════════════════════════════════ -->
+<section id="seasonal-now" style="padding:clamp(48px,7vw,72px) 0;background:var(--body-bg);border-top:1px solid var(--border-l);" aria-label="Seasonal life guidance">
+  <div class="container">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:clamp(28px,4vw,40px);flex-wrap:wrap;gap:12px;">
+      <div>
+        <p style="display:flex;align-items:center;gap:8px;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:0 0 8px;">
+          <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:currentColor;animation:seasonal-pulse 2.4s ease-in-out infinite;"></span>
+          <span class="en" id="seasonal-eyebrow-en">Right now</span>
+          <span class="ar" id="seasonal-eyebrow-ar">الآن</span>
+        </p>
+        <h2 style="font-size:clamp(1.3rem,2.2vw,1.7rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin:0;color:var(--text-1);">
+          <span class="en" id="seasonal-heading-en">What this season calls for</span>
+          <span class="ar" id="seasonal-heading-ar">ما يستدعيه هذا الموسم</span>
+        </h2>
+      </div>
+      <a id="seasonal-all-link" href="islamic.html" style="font-size:.82rem;font-weight:600;color:var(--accent);text-decoration:none;white-space:nowrap;display:none;" class="en">See all →</a>
+    </div>
+    <div id="seasonal-cards" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;"></div>
+  </div>
+</section>
+<style>
+  @keyframes seasonal-pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.8)} }
+  .s-card { background:var(--card-bg);border:1px solid var(--border-l);border-radius:20px;padding:28px 24px;text-decoration:none;color:var(--text-1);display:block;transition:box-shadow .25s,border-color .25s;position:relative;overflow:hidden; }
+  .s-card:hover { box-shadow:0 8px 32px rgba(0,0,0,.09);border-color:rgba(0,0,0,.14); }
+  .s-card-accent { position:absolute;top:0;left:0;right:0;height:3px;border-radius:20px 20px 0 0; }
+  .s-card-badge { display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:999px;font-size:.68rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-bottom:14px; }
+  .s-card-icon { font-size:1.6rem;margin-bottom:12px;display:block; }
+  .s-card-title { font-size:.97rem;font-weight:700;line-height:1.35;margin:0 0 8px;color:var(--text-1); }
+  .s-card-body { font-size:.82rem;color:var(--text-2);line-height:1.6;margin:0 0 18px; }
+  .s-card-cta { font-size:.8rem;font-weight:700;color:var(--accent); }
+  [data-lang="ar"] .s-card-cta-en { display:none; }
+  [data-lang="en"] .s-card-cta-ar { display:none; }
+  @media(max-width:768px) { #seasonal-cards { grid-template-columns:1fr !important; } }
+  @media(max-width:960px) and (min-width:769px) { #seasonal-cards { grid-template-columns:1fr 1fr !important; } }
+</style>
+<script>
+(function() {
+  var months = [
+    // Jan (0): New year reset
+    { eyeEn:'New year, new clarity', eyeAr:'عام جديد، وضوح جديد',
+      headEn:'Start the year with intention', headAr:'ابدأ العام بتعمّد',
+      cards:[
+        { accentColor:'#EF4444', badgeBg:'rgba(239,68,68,.1)', badgeColor:'#DC2626', badgeEn:'Health', badgeAr:'الصحة', icon:'💪', titleEn:'Know your numbers to start', titleAr:'اعرف أرقامك للانطلاق', bodyEn:'BMI, calorie needs, hydration — your 2025 health baseline takes five minutes to establish. Start there.', bodyAr:'المؤشر الجسدي، السعرات، الترطيب — خمس دقائق تُحدد نقطة انطلاقك الصحية.', ctaEn:'Health tools →', ctaAr:'أدوات الصحة ←', href:'health.html' },
+        { accentColor:'#0F4C8A', badgeBg:'rgba(15,76,138,.1)', badgeColor:'#0F4C8A', badgeEn:'Finance', badgeAr:'المال', icon:'📊', titleEn:'Set your financial intentions', titleAr:'حدد نواياك المالية', bodyEn:'Savings targets, investment ROI, mortgage affordability — clarity on money is the foundation of everything else.', bodyAr:'أهداف الادخار والعائد والقدرة على التمويل — الوضوح المالي هو أساس كل شيء آخر.', ctaEn:'Finance tools →', ctaAr:'أدوات المال ←', href:'finance.html' },
+        { accentColor:'#6C3FC5', badgeBg:'rgba(108,63,197,.1)', badgeColor:'#6C3FC5', badgeEn:'Productivity', badgeAr:'الإنتاجية', icon:'🎯', titleEn:'Build your year\'s rhythm', titleAr:'ابنِ إيقاع عامك', bodyEn:'Focused routines compound into changed years. This is the moment to establish them — before February does it for you.', bodyAr:'الروتين المركّز يتراكم في سنوات محوّلة. هذه اللحظة المثلى لترسيخه.', ctaEn:'Productivity tools →', ctaAr:'أدوات الإنتاجية ←', href:'productivity.html' }
+      ]},
+    // Feb (1): Valentine / spring prep
+    { eyeEn:'This time of year', eyeAr:'في هذا الوقت من العام',
+      headEn:'Building life, not just spending it', headAr:'بناء الحياة، لا مجرد العيش بها',
+      cards:[
+        { accentColor:'#EF4444', badgeBg:'rgba(239,68,68,.1)', badgeColor:'#DC2626', badgeEn:'Health', badgeAr:'الصحة', icon:'❤️', titleEn:'A health check-in', titleAr:'مراجعة صحية', bodyEn:'Your body is the longest relationship you\'ll ever have. February is a good moment to check in on it.', bodyAr:'جسمك هو أطول علاقة ستمتلكها. فبراير لحظة جيدة للمراجعة.', ctaEn:'Health tools →', ctaAr:'أدوات الصحة ←', href:'health.html' },
+        { accentColor:'#0F4C8A', badgeBg:'rgba(15,76,138,.1)', badgeColor:'#0F4C8A', badgeEn:'Real Estate', badgeAr:'العقار', icon:'🏠', titleEn:'Is homeownership the next step?', titleAr:'هل ملكية المنزل هي الخطوة التالية؟', bodyEn:'Spring market activity picks up now. If buying is on your mind, calculate your real mortgage capacity before the season heats up.', bodyAr:'نشاط سوق الربيع يبدأ الآن. إذا كان الشراء في ذهنك، احسب قدرتك الحقيقية قبل ارتفاع الطلب.', ctaEn:'Mortgage calculator →', ctaAr:'حاسبة الرهن ←', href:'tools/mortgage-calculator.html' },
+        { accentColor:'#1B7A4E', badgeBg:'rgba(27,122,78,.1)', badgeColor:'#15693a', badgeEn:'Islamic', badgeAr:'الحياة الإسلامية', icon:'🌙', titleEn:'Ramadan is approaching', titleAr:'رمضان على الأبواب', bodyEn:'Prepare your Zakat, Hijri calendar, and spiritual rhythm before the month begins. Start now, not the night before.', bodyAr:'جهّز زكاتك وتقويمك الهجري وإيقاعك الروحي قبل بدء الشهر.', ctaEn:'Islamic tools →', ctaAr:'الأدوات الإسلامية ←', href:'islamic.html' }
+      ]},
+    // Mar (2): Ramadan
+    { eyeEn:'Ramadan season', eyeAr:'موسم رمضان',
+      headEn:'The most meaningful month deserves the best preparation', headAr:'أعظم الشهور يستحق أفضل التحضير',
+      cards:[
+        { accentColor:'#1B7A4E', badgeBg:'rgba(27,122,78,.1)', badgeColor:'#15693a', badgeEn:'Islamic', badgeAr:'الإسلامية', icon:'🌙', titleEn:'Calculate your Zakat now', titleAr:'احسب زكاتك الآن', bodyEn:'Zakat is due before Eid Al-Fitr. Our calculator follows Saudi Scholars Association guidelines — clear, precise, and accountable.', bodyAr:'الزكاة واجبة قبل عيد الفطر. حاسبتنا تتبع إرشادات هيئة كبار العلماء — دقيقة وشفافة.', ctaEn:'Zakat calculator →', ctaAr:'حاسبة الزكاة ←', href:'tools/zakat-calculator.html' },
+        { accentColor:'#EF4444', badgeBg:'rgba(239,68,68,.1)', badgeColor:'#DC2626', badgeEn:'Health', badgeAr:'الصحة', icon:'🍽️', titleEn:'Eat well during fasting', titleAr:'تغذية سليمة في رمضان', bodyEn:'Fasting changes your calorie needs significantly. Calculate Suhoor and Iftar portions to maintain energy and health through the month.', bodyAr:'الصيام يغير احتياجاتك الحرارية. احسب وجبتي السحور والإفطار للحفاظ على طاقتك وصحتك.', ctaEn:'Calorie calculator →', ctaAr:'حاسبة السعرات ←', href:'tools/calorie-calculator.html' },
+        { accentColor:'#0097A7', badgeBg:'rgba(0,151,167,.1)', badgeColor:'#007080', badgeEn:'Productivity', badgeAr:'الإنتاجية', icon:'⏰', titleEn:'Protect your best hours', titleAr:'احمِ ساعاتك الذهبية', bodyEn:'Ramadan reshapes the day. Structure your focus blocks around prayer times — protect the hours after Fajr for deep, meaningful work.', bodyAr:'رمضان يعيد تشكيل اليوم. نظّم وقت تركيزك حول أوقات الصلاة — احمِ ساعات ما بعد الفجر للعمل العميق.', ctaEn:'Productivity →', ctaAr:'الإنتاجية ←', href:'productivity.html' }
+      ]},
+    // Apr (3): post-Ramadan / spring health
+    { eyeEn:'Spring reset', eyeAr:'إعادة ضبط الربيع',
+      headEn:'The energy of early spring', headAr:'طاقة أوائل الربيع',
+      cards:[
+        { accentColor:'#EF4444', badgeBg:'rgba(239,68,68,.1)', badgeColor:'#DC2626', badgeEn:'Health', badgeAr:'الصحة', icon:'🌱', titleEn:'Reset after Ramadan', titleAr:'إعادة الضبط بعد رمضان', bodyEn:'Your body adjusted to fasting. Now it\'s adjusting back. Track your hydration, calorie balance, and body metrics to ease the transition.', bodyAr:'جسمك تكيّف مع الصيام. الآن يتكيّف مجدداً. تابع ترطيبك وسعراتك لتسهيل الانتقال.', ctaEn:'Health tools →', ctaAr:'أدوات الصحة ←', href:'health.html' },
+        { accentColor:'#0F4C8A', badgeBg:'rgba(15,76,138,.1)', badgeColor:'#0F4C8A', badgeEn:'Finance', badgeAr:'المال', icon:'💰', titleEn:'Q2 financial audit', titleAr:'مراجعة الربع الثاني', bodyEn:'Three months into the year — where does your ROI actually stand? Now is the right time to run the numbers honestly.', bodyAr:'مضى ثلاثة أشهر من العام — أين يقف عائدك فعلياً؟ الآن الوقت المناسب لمراجعة الأرقام بصدق.', ctaEn:'Finance tools →', ctaAr:'أدوات المال ←', href:'finance.html' },
+        { accentColor:'#0097A7', badgeBg:'rgba(0,151,167,.1)', badgeColor:'#007080', badgeEn:'Travel', badgeAr:'السفر', icon:'🌍', titleEn:'Plan your spring trip', titleAr:'خطط لرحلة الربيع', bodyEn:'Spring shoulder season means better prices and lower crowds. The best trips start with a clear budget — before the booking.', bodyAr:'موسم الربيع الانتقالي يعني أسعاراً أفضل وازدحاماً أقل. أفضل الرحلات تبدأ بميزانية واضحة.', ctaEn:'Travel tools →', ctaAr:'أدوات السفر ←', href:'travel.html' }
+      ]},
+    // May (4): Hajj season + summer travel
+    { eyeEn:'Hajj season & summer', eyeAr:'موسم الحج والصيف',
+      headEn:'Two seasons converge. Both deserve preparation.', headAr:'موسمان يلتقيان. كلاهما يستحق التحضير.',
+      cards:[
+        { accentColor:'#1B7A4E', badgeBg:'rgba(27,122,78,.1)', badgeColor:'#15693a', badgeEn:'Islamic', badgeAr:'الإسلامية', icon:'🕌', titleEn:'Hajj 1447 is upon us', titleAr:'حج 1447 على الأبواب', bodyEn:'The most significant journey of a lifetime deserves meticulous preparation. Zakat before departure. Packing for the sacred. Prayer times at every stop.', bodyAr:'أعظم رحلة في العمر تستحق تحضيراً دقيقاً. الزكاة قبل المغادرة. التعبئة للمقدسات. أوقات الصلاة في كل محطة.', ctaEn:'Islamic tools →', ctaAr:'الأدوات الإسلامية ←', href:'islamic.html' },
+        { accentColor:'#0097A7', badgeBg:'rgba(0,151,167,.1)', badgeColor:'#007080', badgeEn:'Travel', badgeAr:'السفر', icon:'✈️', titleEn:'Summer trips need a budget', titleAr:'رحلات الصيف تحتاج ميزانية', bodyEn:'Peak summer travel is weeks away. Know your real trip cost — hotels, flights, currency exchange — before you book, not after you land.', bodyAr:'ذروة سفر الصيف على بعد أسابيع. اعرف تكلفتك الحقيقية قبل الحجز، لا بعد الوصول.', ctaEn:'Trip budget →', ctaAr:'ميزانية الرحلة ←', href:'tools/travel-budget.html' },
+        { accentColor:'#EF4444', badgeBg:'rgba(239,68,68,.1)', badgeColor:'#DC2626', badgeEn:'Health', badgeAr:'الصحة', icon:'💧', titleEn:'Heat and hydration', titleAr:'الحرارة والترطيب', bodyEn:'Summer temperatures change your water needs significantly. Our Water Calculator adjusts for heat exposure and activity — a number worth knowing now.', bodyAr:'درجات حرارة الصيف تغير احتياجاتك المائية. حاسبتنا تحسب للحرارة والنشاط — رقم يستحق المعرفة الآن.', ctaEn:'Water calculator →', ctaAr:'حاسبة الماء ←', href:'tools/water-calculator.html' }
+      ]},
+    // Jun (5): Summer peak
+    { eyeEn:'Peak summer', eyeAr:'ذروة الصيف',
+      headEn:'The summer months are for living well', headAr:'أشهر الصيف للعيش بشكل جيد',
+      cards:[
+        { accentColor:'#0097A7', badgeBg:'rgba(0,151,167,.1)', badgeColor:'#007080', badgeEn:'Travel', badgeAr:'السفر', icon:'🌍', titleEn:'Plan the trip before it plans you', titleAr:'خطط للرحلة قبل أن تفاجئك', bodyEn:'Packing lists, budget breakdowns, hotel navigation, currency conversion — everything a well-prepared traveler needs in one place.', bodyAr:'قوائم التعبئة، تفصيل الميزانية، التنقل للفندق، تحويل العملات — كل ما يحتاجه المسافر المستعد في مكان واحد.', ctaEn:'Travel tools →', ctaAr:'أدوات السفر ←', href:'travel.html' },
+        { accentColor:'#EF4444', badgeBg:'rgba(239,68,68,.1)', badgeColor:'#DC2626', badgeEn:'Health', badgeAr:'الصحة', icon:'☀️', titleEn:'Your summer health check', titleAr:'مراجعتك الصحية الصيفية', bodyEn:'Heat increases water needs, changes sleep, and disrupts routines. Check your hydration baseline and calorie balance for the hotter months.', bodyAr:'الحرارة تزيد احتياجات الماء وتؤثر على النوم والروتين. راجع قاعدة ترطيبك ومعادلة سعراتك.', ctaEn:'Health tools →', ctaAr:'أدوات الصحة ←', href:'health.html' },
+        { accentColor:'#0F4C8A', badgeBg:'rgba(15,76,138,.1)', badgeColor:'#0F4C8A', badgeEn:'Finance', badgeAr:'المال', icon:'📈', titleEn:'Mid-year: where do you stand?', titleAr:'منتصف العام: أين أنت؟', bodyEn:'Six months into the year. ROI, savings rate, mortgage remaining — half-year financial clarity changes the second half.', bodyAr:'ستة أشهر من العام مضت. العائد، معدل الادخار، ما تبقى من القرض — الوضوح المالي في منتصف العام يغيّر النصف الثاني.', ctaEn:'Finance tools →', ctaAr:'أدوات المال ←', href:'finance.html' }
+      ]},
+    // Jul (6): family travel / school prep begins
+    { eyeEn:'July — family season', eyeAr:'يوليو — موسم العائلة',
+      headEn:'Make the most of the time you have together', headAr:'استثمر الوقت الذي تقضيه مع عائلتك',
+      cards:[
+        { accentColor:'#0097A7', badgeBg:'rgba(0,151,167,.1)', badgeColor:'#007080', badgeEn:'Travel', badgeAr:'السفر', icon:'🧳', titleEn:'Family trip, smartly planned', titleAr:'رحلة عائلية مدروسة', bodyEn:'Family travel has hidden costs. Budget for everyone — flights, activities, food, and the unexpected — before you commit to a destination.', bodyAr:'للسفر العائلي تكاليف خفية. ضع ميزانية للجميع قبل اختيار الوجهة.', ctaEn:'Trip budget →', ctaAr:'ميزانية الرحلة ←', href:'tools/travel-budget.html' },
+        { accentColor:'#EF4444', badgeBg:'rgba(239,68,68,.1)', badgeColor:'#DC2626', badgeEn:'Health', badgeAr:'الصحة', icon:'💧', titleEn:'Beat the summer heat', titleAr:'تغلّب على حرارة الصيف', bodyEn:'GCC summer heat demands more hydration than most people realize. The Water Calculator adjusts for temperature and activity — check your number.', bodyAr:'حرارة صيف الخليج تستدعي ترطيباً أكثر مما يدرك أغلب الناس. حاسبة الماء تحسب للحرارة.', ctaEn:'Water calculator →', ctaAr:'حاسبة الماء ←', href:'tools/water-calculator.html' },
+        { accentColor:'#6C3FC5', badgeBg:'rgba(108,63,197,.1)', badgeColor:'#6C3FC5', badgeEn:'Productivity', badgeAr:'الإنتاجية', icon:'📚', titleEn:'Prepare for September now', titleAr:'استعد لسبتمبر الآن', bodyEn:'The back-to-school reset begins in July for people who do it well. Build the routines, the systems, the security — before the rush.', bodyAr:'إعادة ضبط العودة للمدرسة تبدأ في يوليو لمن يخطط جيداً. أنشئ الروتين والأنظمة الآن.', ctaEn:'Productivity →', ctaAr:'الإنتاجية ←', href:'productivity.html' }
+      ]},
+    // Aug (7): back to school
+    { eyeEn:'Back to routine', eyeAr:'العودة إلى الروتين',
+      headEn:'August is the quiet before the productive', headAr:'أغسطس هو الهدوء قبل الإنتاجية',
+      cards:[
+        { accentColor:'#6C3FC5', badgeBg:'rgba(108,63,197,.1)', badgeColor:'#6C3FC5', badgeEn:'Productivity', badgeAr:'الإنتاجية', icon:'🎯', titleEn:'Build your September systems', titleAr:'أنشئ أنظمتك لسبتمبر', bodyEn:'The best September starts in August. Secure passwords, structured routines, and clear intentions — set them before the season demands them.', bodyAr:'أفضل سبتمبر يبدأ في أغسطس. كلمات مرور آمنة، روتين منظم، نوايا واضحة — رتّبها قبل أن يستدعيها الموسم.', ctaEn:'Productivity tools →', ctaAr:'أدوات الإنتاجية ←', href:'productivity.html' },
+        { accentColor:'#EF4444', badgeBg:'rgba(239,68,68,.1)', badgeColor:'#DC2626', badgeEn:'Health', badgeAr:'الصحة', icon:'💪', titleEn:'Pre-season health baseline', titleAr:'الأساس الصحي قبل الموسم', bodyEn:'Before schedules take over, establish your health numbers. BMI, calorie needs, and hydration targets — five minutes that frame the whole year.', bodyAr:'قبل أن تأخذك الجداول، أثبّت أرقامك الصحية. خمس دقائق تُؤطّر بقية العام.', ctaEn:'Health tools →', ctaAr:'أدوات الصحة ←', href:'health.html' },
+        { accentColor:'#0F4C8A', badgeBg:'rgba(15,76,138,.1)', badgeColor:'#0F4C8A', badgeEn:'Finance', badgeAr:'المال', icon:'🏠', titleEn:'Q3 property market check', titleAr:'مراجعة سوق العقار في الربع الثالث', bodyEn:'September brings renewed activity to the GCC property market. Run the mortgage and yield numbers now — before demand drives decisions.', bodyAr:'سبتمبر يجلب نشاطاً متجدداً لسوق عقار الخليج. احسب الأرقام قبل أن يحرّكها الطلب.', ctaEn:'Real estate tools →', ctaAr:'أدوات العقار ←', href:'real-estate.html' }
+      ]},
+    // Sep (8): autumn planning
+    { eyeEn:'Autumn focus', eyeAr:'تركيز الخريف',
+      headEn:'The season that gets things done', headAr:'الموسم الذي ينجز الأشياء',
+      cards:[
+        { accentColor:'#6C3FC5', badgeBg:'rgba(108,63,197,.1)', badgeColor:'#6C3FC5', badgeEn:'Productivity', badgeAr:'الإنتاجية', icon:'🧠', titleEn:'Protect your focus this quarter', titleAr:'احمِ تركيزك هذا الربع', bodyEn:'Q4 starts now. The people who finish strong plan their attention in September — not December. One system. One priority. One day at a time.', bodyAr:'الربع الرابع يبدأ الآن. من ينجح يخطط لانتباهه في سبتمبر — لا في ديسمبر.', ctaEn:'Productivity →', ctaAr:'الإنتاجية ←', href:'productivity.html' },
+        { accentColor:'#EF4444', badgeBg:'rgba(239,68,68,.1)', badgeColor:'#DC2626', badgeEn:'Health', badgeAr:'الصحة', icon:'🍂', titleEn:'Autumn health reset', titleAr:'إعادة ضبط صحة الخريف', bodyEn:'Season change affects immunity, appetite, and energy. Recalibrate your calorie needs, hydration, and body metrics as the weather shifts.', bodyAr:'تغيّر الفصل يؤثر على المناعة والشهية والطاقة. أعِد معايرة أرقامك مع تغيّر الطقس.', ctaEn:'Health tools →', ctaAr:'أدوات الصحة ←', href:'health.html' },
+        { accentColor:'#0F4C8A', badgeBg:'rgba(15,76,138,.1)', badgeColor:'#0F4C8A', badgeEn:'Real Estate', badgeAr:'العقار', icon:'🏘️', titleEn:'Autumn is prime property season', titleAr:'الخريف هو موسم العقار الرئيسي', bodyEn:'September and October are historically active in GCC markets. If buying is on your horizon, calculate your real mortgage range before the rush.', bodyAr:'سبتمبر وأكتوبر من أنشط الفترات في أسواق الخليج. احسب نطاق تمويلك قبل موجة الطلب.', ctaEn:'Real estate tools →', ctaAr:'أدوات العقار ←', href:'real-estate.html' }
+      ]},
+    // Oct (9): property + health
+    { eyeEn:'Q4 begins', eyeAr:'الربع الرابع يبدأ',
+      headEn:'The year\'s final turn. Make it count.', headAr:'الدوّامة الأخيرة للعام. اجعلها تُحدث فرقاً.',
+      cards:[
+        { accentColor:'#0F4C8A', badgeBg:'rgba(15,76,138,.1)', badgeColor:'#0F4C8A', badgeEn:'Finance', badgeAr:'المال', icon:'💼', titleEn:'Year-end financial clarity', titleAr:'وضوح مالي في نهاية العام', bodyEn:'Three months left. ROI performance, savings gap, mortgage timeline — run the numbers before the year closes and regret becomes the only lesson.', bodyAr:'ثلاثة أشهر متبقية. أداء العائد، فجوة الادخار، الجدول الزمني للقرض — راجع الأرقام قبل انتهاء العام.', ctaEn:'Finance tools →', ctaAr:'أدوات المال ←', href:'finance.html' },
+        { accentColor:'#EF4444', badgeBg:'rgba(239,68,68,.1)', badgeColor:'#DC2626', badgeEn:'Health', badgeAr:'الصحة', icon:'🍁', titleEn:'Pre-winter health check', titleAr:'مراجعة ما قبل الشتاء', bodyEn:'Before seasonal illness peaks, establish your health baseline. Know your BMI trend and calorie needs as winter approaches.', bodyAr:'قبل ذروة الأمراض الموسمية، أثبّت أساسك الصحي. اعرف مسار مؤشرك وسعراتك.', ctaEn:'Health tools →', ctaAr:'أدوات الصحة ←', href:'health.html' },
+        { accentColor:'#0097A7', badgeBg:'rgba(0,151,167,.1)', badgeColor:'#007080', badgeEn:'Travel', badgeAr:'السفر', icon:'🌍', titleEn:'Winter travel, planned now', titleAr:'سفر الشتاء يُخطَّط الآن', bodyEn:'December destinations book fast. The shoulder window for winter travel planning is open now. Budget, pack, and navigate before the prices climb.', bodyAr:'وجهات ديسمبر تُحجز سريعاً. نافذة التخطيط الهادئة للسفر الشتوي مفتوحة الآن.', ctaEn:'Travel tools →', ctaAr:'أدوات السفر ←', href:'travel.html' }
+      ]},
+    // Nov (10): year-end
+    { eyeEn:'Year-end season', eyeAr:'موسم نهاية العام',
+      headEn:'Close the year with clarity, not regret', headAr:'أغلق العام بوضوح، لا بندم',
+      cards:[
+        { accentColor:'#0F4C8A', badgeBg:'rgba(15,76,138,.1)', badgeColor:'#0F4C8A', badgeEn:'Finance', badgeAr:'المال', icon:'📊', titleEn:'November financial review', titleAr:'مراجعة نوفمبر المالية', bodyEn:'One month before the year ends — still time to close the ROI gap, adjust savings, and enter January with intention rather than regret.', bodyAr:'شهر واحد قبل نهاية العام — لا يزال هناك وقت لإغلاق فجوة العائد ودخول يناير بنية واضحة.', ctaEn:'Finance tools →', ctaAr:'أدوات المال ←', href:'finance.html' },
+        { accentColor:'#1B7A4E', badgeBg:'rgba(27,122,78,.1)', badgeColor:'#15693a', badgeEn:'Islamic', badgeAr:'الإسلامية', icon:'🌙', titleEn:'Prepare for Hijri New Year', titleAr:'استعد للعام الهجري الجديد', bodyEn:'The Hijri calendar marks its own milestones. Convert key dates, plan your spiritual goals, and enter the new year with reflection.', bodyAr:'التقويم الهجري له معالمه الخاصة. حوّل التواريخ، خطط لأهدافك الروحية، وادخل العام الجديد بتأمل.', ctaEn:'Islamic tools →', ctaAr:'الأدوات الإسلامية ←', href:'islamic.html' },
+        { accentColor:'#0097A7', badgeBg:'rgba(0,151,167,.1)', badgeColor:'#007080', badgeEn:'Travel', badgeAr:'السفر', icon:'🎄', titleEn:'December travel: plan it now', titleAr:'سفر ديسمبر: خطط الآن', bodyEn:'December is the peak booking season globally. Plan your year-end trip before prices spike — budget, pack, and navigate from here.', bodyAr:'ديسمبر هو ذروة موسم الحجز عالمياً. خطط لرحلة نهاية العام قبل ارتفاع الأسعار.', ctaEn:'Travel tools →', ctaAr:'أدوات السفر ←', href:'travel.html' }
+      ]},
+    // Dec (11): reflection + new year prep
+    { eyeEn:'Year\'s end', eyeAr:'نهاية العام',
+      headEn:'The last pages of this chapter', headAr:'الصفحات الأخيرة من هذا الفصل',
+      cards:[
+        { accentColor:'#6C3FC5', badgeBg:'rgba(108,63,197,.1)', badgeColor:'#6C3FC5', badgeEn:'Productivity', badgeAr:'الإنتاجية', icon:'✨', titleEn:'Reflect before you plan', titleAr:'تأمّل قبل أن تخطط', bodyEn:'The best January intentions are built in December. Review what this year taught you — then decide what the next one is for.', bodyAr:'أفضل نوايا يناير تُبنى في ديسمبر. راجع ما علّمك إياه هذا العام — ثم قرر لأي شيء العام القادم.', ctaEn:'Productivity →', ctaAr:'الإنتاجية ←', href:'productivity.html' },
+        { accentColor:'#EF4444', badgeBg:'rgba(239,68,68,.1)', badgeColor:'#DC2626', badgeEn:'Health', badgeAr:'الصحة', icon:'💪', titleEn:'Health goals start now, not January', titleAr:'أهداف الصحة تبدأ الآن، لا في يناير', bodyEn:'The people who succeed in January started in December. Set your health baseline this month — and arrive at the new year ready, not planning.', bodyAr:'من ينجح في يناير بدأ في ديسمبر. أثبّت أساسك الصحي الآن.', ctaEn:'Health tools →', ctaAr:'أدوات الصحة ←', href:'health.html' },
+        { accentColor:'#0F4C8A', badgeBg:'rgba(15,76,138,.1)', badgeColor:'#0F4C8A', badgeEn:'Finance', badgeAr:'المال', icon:'🏦', titleEn:'Year-end wealth snapshot', titleAr:'صورة الثروة في نهاية العام', bodyEn:'Net worth, ROI performance, mortgage remaining — run your year-end numbers with clarity. Then enter January with a plan, not a wish.', bodyAr:'صافي الثروة، أداء العائد، ما تبقى من القرض — راجع أرقام نهاية العام بوضوح، وادخل يناير بخطة.', ctaEn:'Finance tools →', ctaAr:'أدوات المال ←', href:'finance.html' }
+      ]}
+  ];
+
+  var now = new Date();
+  var m = now.getMonth(); // 0=Jan
+  var season = months[m];
+
+  // Update headings
+  document.getElementById('seasonal-eyebrow-en').textContent = season.eyeEn;
+  document.getElementById('seasonal-eyebrow-ar').textContent = season.eyeAr;
+  document.getElementById('seasonal-heading-en').textContent = season.headEn;
+  document.getElementById('seasonal-heading-ar').textContent = season.headAr;
+
+  // Render cards
+  var container = document.getElementById('seasonal-cards');
+  season.cards.forEach(function(c) {
+    var card = document.createElement('a');
+    card.href = c.href;
+    card.className = 's-card reveal';
+    card.innerHTML =
+      '<div class="s-card-accent" style="background:' + c.accentColor + ';"></div>' +
+      '<span class="s-card-badge" style="background:' + c.badgeBg + ';color:' + c.badgeColor + ';">' +
+        '<span class="en">' + c.badgeEn + '</span><span class="ar">' + c.badgeAr + '</span>' +
+      '</span>' +
+      '<div class="s-card-icon">' + c.icon + '</div>' +
+      '<p class="s-card-title"><span class="en">' + c.titleEn + '</span><span class="ar">' + c.titleAr + '</span></p>' +
+      '<p class="s-card-body"><span class="en">' + c.bodyEn + '</span><span class="ar">' + c.bodyAr + '</span></p>' +
+      '<span class="s-card-cta"><span class="en s-card-cta-en">' + c.ctaEn + '</span><span class="ar s-card-cta-ar">' + c.ctaAr + '</span></span>';
+    container.appendChild(card);
+  });
+
+  // Trigger reveal observer for dynamically added cards
+  if (window.__dflObserver) {
+    container.querySelectorAll('.reveal').forEach(function(el) {
+      window.__dflObserver.observe(el);
+    });
+  }
+})();
+</script>
+
 <!-- ═══ LIFE MOMENTS: Cinematic editorial bridge ═══════════════════════ -->
 <section class="life-moments-section" aria-label="Life moments served by dot.life">
   <div class="container">
@@ -5283,6 +5456,7 @@ window.dflTrack=function(event,params){
       }
     });
   }, { threshold: 0.1 });
+  window.__dflObserver = observer; // expose globally for dynamically-injected cards
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
   // ── Tool Search ────────────────────────────
