@@ -4664,6 +4664,97 @@ window.dflTrack=function(event,params){
 </section>
 <!-- ═══ /LIFE SITUATIONS ═══════════════════════════════════════════════ -->
 
+<!-- ═══ LIFE THREAD STYLES ════════════════════════════════════════════ -->
+<style>
+/* ── Life Thread: narrative connective tissue between sections ─────── */
+.life-thread {
+  text-align: center;
+  padding: 40px 0 24px;
+  position: relative;
+}
+.life-thread::before {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, transparent, var(--border-l), transparent);
+  margin: 0 auto 24px;
+}
+.life-thread p {
+  font-size: clamp(15px, 2vw, 18px);
+  font-weight: 300;
+  color: var(--text-2);
+  line-height: 1.7;
+  letter-spacing: -0.01em;
+  max-width: 540px;
+  margin: 0 auto;
+}
+.life-thread p em {
+  font-style: italic;
+  color: var(--text-1);
+  font-weight: 400;
+}
+.life-thread-arrow {
+  display: block;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 20px;
+  letter-spacing: 0.05em;
+  opacity: 0.5;
+}
+
+/* ── Next Step: contextual progression hint ──────────────────────────── */
+.next-step {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-l);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.next-step-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.next-step-link {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-2);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border-l);
+  padding-bottom: 1px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.next-step-link:hover {
+  color: var(--text-1);
+  border-color: var(--text-2);
+}
+.next-step-sep {
+  font-size: 11px;
+  color: var(--muted);
+  opacity: 0.4;
+}
+
+/* ── Whats-Next connector upgrade ───────────────────────────────────── */
+.wnc-quote {
+  font-size: clamp(16px, 2.2vw, 22px);
+  font-weight: 300;
+  color: var(--text-1);
+  letter-spacing: -0.02em;
+  max-width: 520px;
+  margin: 0 auto 32px;
+  text-align: center;
+  line-height: 1.5;
+}
+.wnc-quote strong { font-weight: 600; }
+</style>
+
 <!-- ═══ LIFE MOMENTS: Cinematic editorial bridge ═══════════════════════ -->
 <section class="life-moments-section" aria-label="Life moments served by dot.life">
   <div class="container">
@@ -4695,8 +4786,8 @@ window.dflTrack=function(event,params){
           <span class="ar">"أريد الشراء. لكن الأرقام تخيفني."</span>
         </p>
         <p class="life-moment-sub">
-          <span class="en">The right property at the right payment. Mortgage calculations built on validated financial models. Rental yield analysis that shows you the real number — not the advertised one. Clarity before you sign anything.</span>
-          <span class="ar">العقار المناسب بالقسط المناسب. حسابات رهن عقاري وفق معايير ساما. تحليل عائد إيجار معايَر لأسواق الخليج. وضوح تام قبل توقيع أي شيء.</span>
+          <span class="en">Mortgage payments that match reality. Rental yields that show the true number, not the advertised one. Every figure validated. Every assumption shown. Clarity before you sign anything.</span>
+          <span class="ar">العقار المناسب بالقسط المناسب. حسابات رهن عقاري وفق معايير ساما. تحليل عائد إيجار يكشف الرقم الحقيقي، لا الإعلاني. وضوح تام قبل توقيع أي شيء.</span>
         </p>
         <a href="real-estate.html" class="life-moment-link"><span class="en">Finance tools →</span><span class="ar">← أدوات المال</span></a>
       </div>
@@ -4709,8 +4800,8 @@ window.dflTrack=function(event,params){
           <span class="ar">"رمضان قادم. أريد أن أؤدي واجباتي على الوجه الصحيح."</span>
         </p>
         <p class="life-moment-sub">
-          <span class="en">Zakat calculated correctly, with full transparency on every formula. Hijri dates converted precisely. Islamic tools built with scholarly care — not shortcuts.</span>
-          <span class="ar">الزكاة محسوبة بدقة مع شفافية كاملة في كل صيغة. تحويل التواريخ الهجرية بدقة. أدوات إسلامية مبنية بعناية علمية — لا اختصارات.</span>
+          <span class="en">Zakat is a pillar — it deserves a precise answer. Hijri dates, prayer direction, Umrah preparation. Islamic tools built on scholarly care, not approximations, because your faith obligations are not approximations.</span>
+          <span class="ar">الزكاة ركن — تستحق إجابة دقيقة. تواريخ هجرية واتجاه القبلة وتحضير العمرة. أدوات إسلامية مبنية بعناية علمية، لأن واجباتك الدينية ليست تقريبية.</span>
         </p>
         <a href="islamic.html" class="life-moment-link"><span class="en">Islamic tools →</span><span class="ar">← الأدوات الإسلامية</span></a>
       </div>
@@ -4798,12 +4889,22 @@ window.dflTrack=function(event,params){
             <span class="en">Water Intake</span>
             <span class="ar">حاسبة الماء</span>
           </a>
+          <div class="next-step">
+            <span class="next-step-label"><span class="en">Also worth thinking about</span><span class="ar">يستحق التفكير أيضاً</span></span>
+            <a href="real-estate.html" class="next-step-link"><span class="en">Housing costs for a growing family →</span><span class="ar">تكاليف السكن لأسرة متنامية ←</span></a>
+          </div>
         </div>
       </div>
 
     </div>
   </div>
 </section>
+
+<!-- Life thread: health → finance -->
+<div class="life-thread" aria-hidden="true">
+  <p class="en">When your body and family are the priority, <em>financial clarity</em> becomes the next thing you need.</p>
+  <p class="ar">حين يكون جسمك وأسرتك الأولوية، <em>الوضوح المالي</em> يصبح الشيء التالي الذي تحتاجه.</p>
+</div>
 
 <!-- ═══ DISCOVERY BANNER 1: SMART FINANCIAL TOOLS ════════════════════════ -->
 <section class="discovery-banner" aria-label="Financial tools discovery">
@@ -4924,15 +5025,25 @@ window.dflTrack=function(event,params){
             <span class="ar">عائد الإيجار</span>
           </a>
           <a href="real-estate.html" class="life-story-tool-btn secondary" style="--btn-bg:#0066CC">
-            <span class="en">All Finance Tools →</span>
-            <span class="ar">جميع أدوات المال ←</span>
+            <span class="en">Full Housing Guide →</span>
+            <span class="ar">دليل السكن الكامل ←</span>
           </a>
+          <div class="next-step">
+            <span class="next-step-label"><span class="en">Numbers clear. Now consider</span><span class="ar">الأرقام واضحة. الآن فكّر في</span></span>
+            <a href="fitness.html" class="next-step-link"><span class="en">Building the lifestyle to go with it →</span><span class="ar">بناء نمط الحياة المناسب ←</span></a>
+          </div>
         </div>
       </div>
 
     </div>
   </div>
 </section>
+
+<!-- Life thread: finance → wellness -->
+<div class="life-thread" aria-hidden="true">
+  <p class="en">Financial stability creates space. <em>That space is where wellness lives.</em></p>
+  <p class="ar">الاستقرار المالي يخلق مساحة. <em>في تلك المساحة تعيش العافية.</em></p>
+</div>
 
 <!-- ═══ LIFE STORY 3: FITNESS & WELLNESS ══════════════════════════════════ -->
 <section class="life-story-section" aria-label="Fitness and wellness tools">
@@ -5013,12 +5124,24 @@ window.dflTrack=function(event,params){
             <span class="en">All Fitness Tools →</span>
             <span class="ar">جميع أدوات اللياقة ←</span>
           </a>
+          <div class="next-step">
+            <span class="next-step-label"><span class="en">Wellbeing also includes</span><span class="ar">العافية تشمل أيضاً</span></span>
+            <a href="islamic.html" class="next-step-link"><span class="en">Spiritual health and practice →</span><span class="ar">الصحة الروحية والممارسة ←</span></a>
+            <span class="next-step-sep">·</span>
+            <a href="health.html" class="next-step-link"><span class="en">Sleep and recovery →</span><span class="ar">النوم والتعافي ←</span></a>
+          </div>
         </div>
       </div>
 
     </div>
   </div>
 </section>
+
+<!-- Life thread: wellness → spirituality -->
+<div class="life-thread" aria-hidden="true">
+  <p class="en">The body, the mind — <em>and then there is the soul.</em></p>
+  <p class="ar">الجسد، والعقل — <em>ثم هناك الروح.</em></p>
+</div>
 
 <!-- ═══ DISCOVERY BANNER 2: ISLAMIC LIFE TOOLS ═══════════════════════════ -->
 <section class="discovery-banner" aria-label="Islamic life tools discovery">
@@ -5142,12 +5265,24 @@ window.dflTrack=function(event,params){
             <span class="en">Islamic Hub →</span>
             <span class="ar">المحور الإسلامي ←</span>
           </a>
+          <div class="next-step">
+            <span class="next-step-label"><span class="en">Spiritual planning connects to</span><span class="ar">التخطيط الروحي يتصل بـ</span></span>
+            <a href="travel.html" class="next-step-link"><span class="en">Umrah and Hajj travel planning →</span><span class="ar">تخطيط رحلة العمرة والحج ←</span></a>
+            <span class="next-step-sep">·</span>
+            <a href="finance.html" class="next-step-link"><span class="en">Zakat budgeting →</span><span class="ar">إدارة الزكاة ←</span></a>
+          </div>
         </div>
       </div>
 
     </div>
   </div>
 </section>
+
+<!-- Life thread: spirituality → everyday life -->
+<div class="life-thread" aria-hidden="true">
+  <p class="en">Spiritual clarity <em>shapes how we show up for everyday life</em> — for family, for routine, for the small moments that matter.</p>
+  <p class="ar">الوضوح الروحي <em>يشكّل كيف نحضر في حياتنا اليومية</em> — للأسرة، والروتين، واللحظات الصغيرة التي تهم.</p>
+</div>
 
 <!-- ═══ LIFE STORY 5: FAMILY & SMART LIVING ════════════════════════════════ -->
 <section class="life-story-section" aria-label="Family and smart living tools">
@@ -5195,8 +5330,8 @@ window.dflTrack=function(event,params){
           <span class="ar">القرارات اليومية الصغيرة<br>تتراكم لتصنع حياة يُعتزّ بها.</span>
         </h2>
         <p class="life-story-body">
-          <span class="en">Your child's next birthday. How much water you actually need in the heat of summer. Whether your password is really safe. These questions feel minor — until they matter. DOTFORLIFE handles the everyday numbers so you can focus on what those moments actually mean.</span>
-          <span class="ar">عيد ميلاد طفلك القادم. كمية الماء التي تحتاجها فعلاً في صيف الخليج. هل كلمة مرورك آمنة حقاً. تبدو هذه الأسئلة عادية — حتى تصبح مهمة. دوت فور لايف يتولى الأرقام اليومية حتى تتفرغ لما تعنيه هذه اللحظات فعلاً.</span>
+          <span class="en">Your child's next birthday. How much water you actually need. Whether your password is genuinely secure. These feel like small questions — until they suddenly matter. DOTFORLIFE handles the everyday numbers so you can be fully present for what those moments actually mean.</span>
+          <span class="ar">عيد ميلاد طفلك القادم. كمية الماء التي تحتاجها فعلاً. هل كلمة مرورك آمنة حقاً. تبدو هذه أسئلة صغيرة — حتى تصبح مهمة فجأة. دوت فور لايف يتولى الأرقام اليومية حتى تكون حاضراً بالكامل لما تعنيه هذه اللحظات فعلاً.</span>
         </p>
         <ul class="life-story-tips">
           <li class="life-story-tip">
@@ -5238,22 +5373,22 @@ window.dflTrack=function(event,params){
 <!-- ═══ CROSS-CATEGORY CONNECTOR ══════════════════════════════════════════ -->
 <div class="whats-next-connector" aria-label="Explore other life categories">
   <div class="container">
-    <div class="wnc-label">
-      <span class="en">What else matters to you?</span>
-      <span class="ar">ما الذي يهمك أيضاً؟</span>
-    </div>
+    <p class="wnc-quote reveal">
+      <span class="en">Life doesn't happen in categories.<br><strong>Everything connects.</strong></span>
+      <span class="ar">الحياة لا تحدث في فئات.<br><strong>كل شيء متصل.</strong></span>
+    </p>
     <div class="wnc-pills">
       <a href="travel.html" class="wnc-pill" style="color:#0097A7;border-color:rgba(0,151,167,.3);background:rgba(0,151,167,.05)">
-        ✈️ <span class="en">Travel</span><span class="ar">السفر</span>
+        ✈️ <span class="en">Travel & Journeys</span><span class="ar">السفر والرحلات</span>
       </a>
       <a href="plants.html" class="wnc-pill" style="color:#22C55E;border-color:rgba(34,197,94,.3);background:rgba(34,197,94,.05)">
-        🌿 <span class="en">Plants</span><span class="ar">النباتات</span>
+        🌿 <span class="en">Plants & Home</span><span class="ar">النباتات والمنزل</span>
+      </a>
+      <a href="productivity.html" class="wnc-pill" style="color:#6C3FC5;border-color:rgba(108,63,197,.3);background:rgba(108,63,197,.05)">
+        🧘 <span class="en">Focus & Routines</span><span class="ar">التركيز والروتين</span>
       </a>
       <a href="life-tools.html" class="wnc-pill" style="color:#8B5CF6;border-color:rgba(139,92,246,.3);background:rgba(139,92,246,.05)">
-        🔧 <span class="en">Everyday Utilities</span><span class="ar">أدوات يومية</span>
-      </a>
-      <a href="guides/" class="wnc-pill" style="color:#0066CC;border-color:rgba(0,102,204,.3);background:rgba(0,102,204,.05)">
-        📖 <span class="en">Read the Guides</span><span class="ar">اقرأ الأدلة</span>
+        🔧 <span class="en">Everyday Tools</span><span class="ar">أدوات يومية</span>
       </a>
     </div>
   </div>
@@ -5263,56 +5398,56 @@ window.dflTrack=function(event,params){
 <section class="trust-method-strip" aria-label="How dot.life works">
   <div class="container">
     <div class="trust-method-eyebrow">
-      <span class="en">How every tool is built</span>
-      <span class="ar">كيف تُبنى كل أداة</span>
+      <span class="en">Why you can trust what we give you</span>
+      <span class="ar">لماذا يمكنك الوثوق بما نقدمه</span>
     </div>
     <div class="trust-method-grid">
 
       <div class="trust-method-item">
         <span class="trust-method-icon">📐</span>
         <div class="trust-method-title">
-          <span class="en">Validated Formulas</span>
-          <span class="ar">صيغ مُعتمدة</span>
+          <span class="en">Every formula has a name</span>
+          <span class="ar">لكل صيغة اسم</span>
         </div>
         <p class="trust-method-desc">
-          <span class="en">Every calculation cites its source — Mifflin-St Jeor, SAMA guidelines, US Navy method. No black boxes.</span>
-          <span class="ar">كل حساب يُشير إلى مصدره — ميفلين-ستجور، إرشادات ساما، طريقة البحرية الأمريكية. لا صناديق سوداء.</span>
+          <span class="en">Mifflin-St Jeor for calories. SAMA guidelines for mortgages. US Navy method for body composition. We cite every source — nothing is a black box.</span>
+          <span class="ar">ميفلين-ستجور للسعرات. إرشادات ساما للرهن. طريقة البحرية الأمريكية لتكوين الجسم. نذكر كل مصدر — لا شيء مخفي.</span>
         </p>
       </div>
 
       <div class="trust-method-item">
         <span class="trust-method-icon">🌍</span>
         <div class="trust-method-title">
-          <span class="en">Contextually Aware</span>
-          <span class="ar">واعٍ بالسياق</span>
+          <span class="en">Context is built in, not added on</span>
+          <span class="ar">السياق مدمج، لا مُضاف</span>
         </div>
         <p class="trust-method-desc">
-          <span class="en">Regional context — mortgage structures, climate conditions, cultural norms — is built into each tool, not bolted on as an afterthought.</span>
-          <span class="ar">السياق الإقليمي — هياكل التمويل والمناخ والأعراف الثقافية — مدمج في كل أداة، لا مضاف كفكرة لاحقة.</span>
+          <span class="en">Local mortgage structures, cultural norms, and regional conditions shape each tool from the inside — not as a surface-level afterthought.</span>
+          <span class="ar">هياكل التمويل المحلية والأعراف الثقافية والظروف الإقليمية تشكّل كل أداة من الداخل — لا كتفكير لاحق على السطح.</span>
         </p>
       </div>
 
       <div class="trust-method-item">
         <span class="trust-method-icon">🕌</span>
         <div class="trust-method-title">
-          <span class="en">Scholarly Islamic Sources</span>
-          <span class="ar">مصادر إسلامية علمية</span>
+          <span class="en">Scholarly care for Islamic tools</span>
+          <span class="ar">عناية علمية للأدوات الإسلامية</span>
         </div>
         <p class="trust-method-desc">
-          <span class="en">Zakat, Hijri dates, and faith tools are built on Hanafi and Shafi'i fiqh — with every assumption stated clearly.</span>
-          <span class="ar">الزكاة والتواريخ الهجرية وأدوات الإيمان مبنية على الفقه الحنفي والشافعي — مع بيان كل افتراض بوضوح.</span>
+          <span class="en">Zakat, Hijri dates, and Qibla calculations follow established fiqh — Hanafi and Shafi'i — with every assumption traceable to its source.</span>
+          <span class="ar">الزكاة والتواريخ الهجرية وحسابات القبلة تتبع الفقه المعتمد — حنفي وشافعي — مع إمكانية تتبع كل افتراض لمصدره.</span>
         </p>
       </div>
 
       <div class="trust-method-item">
         <span class="trust-method-icon">🔒</span>
         <div class="trust-method-title">
-          <span class="en">Zero Data Collection</span>
-          <span class="ar">لا جمع للبيانات</span>
+          <span class="en">Your data never leaves your device</span>
+          <span class="ar">بياناتك لا تغادر جهازك</span>
         </div>
         <p class="trust-method-desc">
-          <span class="en">Your inputs never leave your browser. No accounts, no storage, no tracking. Your data is yours alone.</span>
-          <span class="ar">مدخلاتك لا تغادر متصفحك. لا حسابات، لا تخزين، لا تتبع. بياناتك ملكك وحدك.</span>
+          <span class="en">No accounts. No servers. No tracking. Every calculation happens entirely in your browser — private by design, not as a feature.</span>
+          <span class="ar">لا حسابات. لا خوادم. لا تتبع. كل حساب يحدث بالكامل في متصفحك — خاص بطبيعة التصميم، لا كميزة إضافية.</span>
         </p>
       </div>
 

@@ -984,6 +984,105 @@
   }
   </script>
 
+  <!-- ═══ FINANCIAL LIFE SITUATIONS ═══════════════════════════════════════ -->
+  <style>
+    .fin-sit-section { padding: 72px 0 64px; border-top: 1px solid var(--border-l); background: var(--body-bg); }
+    .fin-sit-header { text-align: center; margin-bottom: 48px; }
+    .fin-sit-eyebrow { display: inline-block; font-size: 10.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent, #0F4C8A); background: rgba(15,76,138,.07); border: 1px solid rgba(15,76,138,.18); padding: 4px 13px; border-radius: 99px; margin-bottom: 14px; }
+    .fin-sit-title { font-size: clamp(22px, 3.5vw, 34px); font-weight: 300; color: var(--text-1); letter-spacing: -.02em; margin: 0 0 10px; }
+    .fin-sit-title strong { font-weight: 600; }
+    .fin-sit-sub { font-size: 15px; color: var(--text-2); max-width: 440px; margin: 0 auto; line-height: 1.65; }
+    .fin-sit-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+    .fin-sit-card { border-radius: 18px; background: var(--card-bg); border: 1px solid var(--border-l); padding: 26px 24px 22px; position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 6px; }
+    .fin-sit-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--fsit-clr, #0F4C8A); border-radius: 18px 18px 0 0; }
+    .fin-sit-card-icon { font-size: 26px; margin-bottom: 6px; }
+    .fin-sit-card-label { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--fsit-clr, #0F4C8A); }
+    .fin-sit-card-title { font-size: 16px; font-weight: 600; color: var(--text-1); letter-spacing: -.02em; line-height: 1.3; }
+    .fin-sit-card-body { font-size: 13px; color: var(--text-2); line-height: 1.65; flex: 1; }
+    .fin-sit-card-tools { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+    .fin-sit-tool { font-size: 11px; font-weight: 600; color: var(--fsit-clr, #0F4C8A); background: rgba(15,76,138,.06); border: 1px solid rgba(15,76,138,.18); padding: 4px 10px; border-radius: 99px; text-decoration: none; transition: background .2s; }
+    .fin-sit-tool:hover { background: rgba(15,76,138,.13); }
+    @media (max-width: 720px) { .fin-sit-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .fin-sit-grid { grid-template-columns: 1fr; } }
+  </style>
+  <section class="fin-sit-section" aria-label="Financial life situations">
+    <div class="container">
+      <div class="fin-sit-header">
+        <span class="fin-sit-eyebrow">
+          <span class="en">Financial Life Situations</span>
+          <span class="ar">مواقف مالية حقيقية</span>
+        </span>
+        <h2 class="fin-sit-title">
+          <span class="en">Money decisions are really <strong>life decisions.</strong></span>
+          <span class="ar">القرارات المالية هي في حقيقتها <strong>قرارات حياة.</strong></span>
+        </h2>
+        <p class="fin-sit-sub">
+          <span class="en">The right tools don't just give you numbers. They give you the confidence to make the decision that's right for your life.</span>
+          <span class="ar">الأدوات الصحيحة لا تعطيك فقط أرقاماً. إنها تمنحك الثقة لاتخاذ القرار المناسب لحياتك.</span>
+        </p>
+      </div>
+      <div class="fin-sit-grid">
+
+        <!-- Preparing for Home Ownership -->
+        <div class="fin-sit-card reveal" style="--fsit-clr:#2563EB;">
+          <div class="fin-sit-card-icon">🏡</div>
+          <span class="fin-sit-card-label"><span class="en">Home Ownership</span><span class="ar">تملّك المنزل</span></span>
+          <h3 class="fin-sit-card-title">
+            <span class="en">Preparing to buy your first home</span>
+            <span class="ar">التحضير لشراء أول منزل</span>
+          </h3>
+          <p class="fin-sit-card-body">
+            <span class="en">Before you step into a developer's office, know exactly how much you can borrow, what your monthly payments look like, and whether now is the right financial moment.</span>
+            <span class="ar">قبل أن تدخل مكتب المطور، اعرف بالضبط كم يمكنك اقتراضه، وما هي أقساطك الشهرية، وهل هذه اللحظة المالية الصحيحة.</span>
+          </p>
+          <div class="fin-sit-card-tools">
+            <a href="tools/mortgage-calculator.html" class="fin-sit-tool" style="color:#2563EB;background:rgba(37,99,235,.07);border-color:rgba(37,99,235,.2);"><span class="en">Mortgage Calculator</span><span class="ar">حاسبة الرهن</span></a>
+            <a href="real-estate.html" class="fin-sit-tool" style="color:#2563EB;background:rgba(37,99,235,.07);border-color:rgba(37,99,235,.2);"><span class="en">Real Estate Hub →</span><span class="ar">مركز العقارات ←</span></a>
+          </div>
+        </div>
+
+        <!-- Managing Monthly Expenses Calmly -->
+        <div class="fin-sit-card reveal" style="--fsit-clr:#0F4C8A;">
+          <div class="fin-sit-card-icon">📊</div>
+          <span class="fin-sit-card-label"><span class="en">Monthly Planning</span><span class="ar">التخطيط الشهري</span></span>
+          <h3 class="fin-sit-card-title">
+            <span class="en">Managing monthly expenses without the anxiety</span>
+            <span class="ar">إدارة المصاريف الشهرية بلا قلق</span>
+          </h3>
+          <p class="fin-sit-card-body">
+            <span class="en">Currency exposure, salary allocation, and Zakat obligations — when you see the full monthly picture clearly, financial stress has nowhere to hide.</span>
+            <span class="ar">انكشاف العملات وتوزيع الراتب والتزامات الزكاة — حين ترى الصورة الشهرية الكاملة بوضوح، لا مكان للتوتر المالي.</span>
+          </p>
+          <div class="fin-sit-card-tools">
+            <a href="tools/currency-converter.html" class="fin-sit-tool"><span class="en">Currency</span><span class="ar">العملات</span></a>
+            <a href="tools/zakat-calculator.html" class="fin-sit-tool"><span class="en">Zakat</span><span class="ar">الزكاة</span></a>
+          </div>
+        </div>
+
+        <!-- Family Financial Planning -->
+        <div class="fin-sit-card reveal" style="--fsit-clr:#059669;">
+          <div class="fin-sit-card-icon">👨‍👩‍👧</div>
+          <span class="fin-sit-card-label"><span class="en">Family Finance</span><span class="ar">مالية الأسرة</span></span>
+          <h3 class="fin-sit-card-title">
+            <span class="en">Planning finances for a growing family</span>
+            <span class="ar">التخطيط المالي لأسرة متنامية</span>
+          </h3>
+          <p class="fin-sit-card-body">
+            <span class="en">A new child, a home upgrade, education costs. Family financial planning isn't about restriction — it's about ensuring every major decision is made from strength, not fear.</span>
+            <span class="ar">طفل جديد، منزل أوسع، تكاليف تعليم. التخطيط المالي للأسرة ليس عن التقييد — بل عن ضمان أن كل قرار كبير يُتخذ من موضع قوة، لا خوف.</span>
+          </p>
+          <div class="fin-sit-card-tools">
+            <a href="tools/mortgage-calculator.html" class="fin-sit-tool" style="color:#059669;background:rgba(5,150,105,.07);border-color:rgba(5,150,105,.2);"><span class="en">Mortgage</span><span class="ar">الرهن</span></a>
+            <a href="tools/rental-yield-calculator.html" class="fin-sit-tool" style="color:#059669;background:rgba(5,150,105,.07);border-color:rgba(5,150,105,.2);"><span class="en">Rental Yield</span><span class="ar">عائد الإيجار</span></a>
+            <a href="health.html" class="fin-sit-tool" style="color:#059669;background:rgba(5,150,105,.07);border-color:rgba(5,150,105,.2);"><span class="en">Family Health →</span><span class="ar">صحة الأسرة ←</span></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- ═══ /FINANCIAL LIFE SITUATIONS ════════════════════════════════════ -->
+
   <!-- NEWSLETTER -->
   <section class="nl-section" aria-label="Newsletter signup">
     <div class="container">

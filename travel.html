@@ -1165,6 +1165,103 @@ function selectTrvJourney(id, btn) {
 }
 </script>
 
+<!-- ═══ TRAVEL SITUATIONS: Life-centered journeys ══════════════════════ -->
+<style>
+  .trav-sit-section { padding: 72px 0 60px; background: var(--body-bg); border-top: 1px solid var(--border-l); }
+  .trav-sit-header { text-align: center; margin-bottom: 48px; }
+  .trav-sit-eyebrow { display: inline-block; font-size: 10.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #0097A7; background: rgba(0,151,167,.07); border: 1px solid rgba(0,151,167,.18); padding: 4px 13px; border-radius: 99px; margin-bottom: 14px; }
+  .trav-sit-title { font-size: clamp(22px, 3.5vw, 34px); font-weight: 300; color: var(--text-1); letter-spacing: -.02em; margin: 0 0 10px; }
+  .trav-sit-title strong { font-weight: 600; }
+  .trav-sit-sub { font-size: 15px; color: var(--text-2); max-width: 440px; margin: 0 auto; line-height: 1.65; }
+  .trav-sit-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 18px; }
+  .trav-sit-card { border-radius: 18px; background: var(--card-bg); border: 1px solid var(--border-l); padding: 30px 28px 26px; position: relative; overflow: hidden; text-decoration: none; display: flex; flex-direction: column; transition: transform .3s, box-shadow .3s; }
+  .trav-sit-card:hover { transform: translateY(-3px); box-shadow: 0 16px 48px rgba(0,0,0,.08); }
+  .trav-sit-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2.5px; background: var(--tsit-clr, #0097A7); border-radius: 18px 18px 0 0; }
+  .trav-sit-icon { font-size: 28px; margin-bottom: 14px; }
+  .trav-sit-card-label { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--tsit-clr, #0097A7); margin-bottom: 8px; }
+  .trav-sit-card-title { font-size: 19px; font-weight: 600; color: var(--text-1); letter-spacing: -.02em; margin: 0 0 10px; line-height: 1.25; }
+  .trav-sit-card-body { font-size: 13.5px; color: var(--text-2); line-height: 1.65; margin: 0 0 20px; flex: 1; }
+  .trav-sit-tools { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 18px; }
+  .trav-sit-tool { font-size: 11.5px; font-weight: 600; color: var(--tsit-clr, #0097A7); background: rgba(0,151,167,.07); border: 1px solid rgba(0,151,167,.2); padding: 5px 11px; border-radius: 99px; text-decoration: none; transition: background .2s; }
+  .trav-sit-tool:hover { background: rgba(0,151,167,.14); }
+  .trav-sit-cta { font-size: 13px; font-weight: 600; color: var(--tsit-clr, #0097A7); display: flex; align-items: center; gap: 6px; margin-top: auto; }
+  @media (max-width: 700px) { .trav-sit-grid { grid-template-columns: 1fr; } }
+</style>
+<section class="trav-sit-section" aria-label="Travel life situations">
+  <div class="container">
+    <div class="trav-sit-header">
+      <span class="trav-sit-eyebrow">
+        <span class="en">Travel Situations</span>
+        <span class="ar">مواقف السفر</span>
+      </span>
+      <h2 class="trav-sit-title">
+        <span class="en">Not all journeys are the <strong>same journey.</strong></span>
+        <span class="ar">ليست كل الرحلات <strong>رحلة واحدة.</strong></span>
+      </h2>
+      <p class="trav-sit-sub">
+        <span class="en">A family holiday needs different preparation than a solo trip. A spiritual pilgrimage needs different tools than a business conference.</span>
+        <span class="ar">عطلة العائلة تحتاج تحضيراً مختلفاً عن الرحلة المنفردة. الحج والعمرة يحتاجان أدوات مختلفة عن مؤتمر أعمال.</span>
+      </p>
+    </div>
+    <div class="trav-sit-grid">
+
+      <!-- Family Travel -->
+      <div class="trav-sit-card reveal" style="--tsit-clr:#0097A7;">
+        <div class="trav-sit-icon">👨‍👩‍👧‍👦</div>
+        <span class="trav-sit-card-label">
+          <span class="en">Family Travel</span>
+          <span class="ar">السفر العائلي</span>
+        </span>
+        <h3 class="trav-sit-card-title">
+          <span class="en">Traveling with children requires a different kind of calm.</span>
+          <span class="ar">السفر مع الأطفال يتطلب نوعاً مختلفاً من الهدوء.</span>
+        </h3>
+        <p class="trav-sit-card-body">
+          <span class="en">Every item forgotten matters more. Every budget overshoot stresses more. Every lost moment at the airport matters more. Pack smarter, budget tighter, and arrive knowing exactly where your hotel is — so you can be fully present for the trip itself.</span>
+          <span class="ar">كل قطعة منسية تهم أكثر. كل تجاوز في الميزانية يوتر أكثر. كل لحظة ضائعة في المطار تهم أكثر. احزم بذكاء أكبر، وضع ميزانية أدق، وأوصِل عارفاً بالضبط أين فندقك — حتى تكون حاضراً بالكامل للرحلة ذاتها.</span>
+        </p>
+        <div class="trav-sit-tools">
+          <a href="tools/packing-checklist.html" class="trav-sit-tool"><span class="en">📋 Packing Checklist</span><span class="ar">📋 قائمة التعبئة</span></a>
+          <a href="tools/travel-budget.html" class="trav-sit-tool"><span class="en">💰 Trip Budget</span><span class="ar">💰 ميزانية الرحلة</span></a>
+          <a href="tools/return-to-hotel.html" class="trav-sit-tool"><span class="en">📍 Return to Hotel</span><span class="ar">📍 العودة للفندق</span></a>
+          <a href="tools/currency-converter.html" class="trav-sit-tool"><span class="en">💱 Currency</span><span class="ar">💱 العملات</span></a>
+        </div>
+        <span class="trav-sit-cta">
+          <span class="en">Plan your family trip →</span>
+          <span class="ar">خطط لرحلتك العائلية ←</span>
+        </span>
+      </div>
+
+      <!-- Spiritual Travel -->
+      <a href="islamic.html" class="trav-sit-card reveal" style="--tsit-clr:#1B7A4E;">
+        <div class="trav-sit-icon">🕌</div>
+        <span class="trav-sit-card-label">
+          <span class="en">Spiritual Travel</span>
+          <span class="ar">السفر الروحي</span>
+        </span>
+        <h3 class="trav-sit-card-title">
+          <span class="en">Umrah and Hajj deserve dedicated preparation.</span>
+          <span class="ar">العمرة والحج يستحقان تحضيراً مخصصاً.</span>
+        </h3>
+        <p class="trav-sit-card-body">
+          <span class="en">The spiritual and logistical aspects of Umrah are inseparable. We've built a complete step-by-step Umrah guide — from intention to arrival — in our Islamic Life section.</span>
+          <span class="ar">الجانب الروحي واللوجستي للعمرة لا ينفصلان. بنينا دليل عمرة متكاملاً خطوة بخطوة — من النية إلى الوصول — في قسم الحياة الإسلامية.</span>
+        </p>
+        <div class="trav-sit-tools">
+          <a href="tools/qibla.html" class="trav-sit-tool" style="color:#1B7A4E;background:rgba(27,122,78,.07);border-color:rgba(27,122,78,.2);"><span class="en">🧭 Qibla Finder</span><span class="ar">🧭 القبلة</span></a>
+          <a href="tools/prayer-times.html" class="trav-sit-tool" style="color:#1B7A4E;background:rgba(27,122,78,.07);border-color:rgba(27,122,78,.2);"><span class="en">🕌 Prayer Times</span><span class="ar">🕌 مواقيت الصلاة</span></a>
+        </div>
+        <span class="trav-sit-cta" style="color:#1B7A4E;">
+          <span class="en">View complete Umrah guide →</span>
+          <span class="ar">عرض دليل العمرة الكامل ←</span>
+        </span>
+      </a>
+
+    </div>
+  </div>
+</section>
+<!-- ═══ /TRAVEL SITUATIONS ════════════════════════════════════════════════ -->
+
 <!-- TRAVEL FAQ -->
 <section style="padding:64px 0;background:var(--body-bg,#f5f7fa);" aria-label="Travel tools frequently asked questions">
   <div class="container">
