@@ -1666,15 +1666,15 @@ window.dflTrack=function(event,params){
       </div>
       <div class="reveal" style="background:var(--card-bg);border-radius:var(--r-xl);padding:26px;border:1px solid var(--border-l);position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s;transition-delay:.1s;">
         <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#3B82F6,#06B6D4);"></div>
-        <div style="font-size:.67rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">💧 EFSA Hydration Research — 2022</div>
+        <div style="font-size:.67rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">💧 Hydration &amp; Performance</div>
         <div style="font-size:1.5rem;font-weight:900;letter-spacing:-.03em;margin-bottom:8px;line-height:1.15;">
-          <span style="background:linear-gradient(135deg,#3B82F6,#06B6D4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">75%</span> chronically dehydrated
+          <span style="background:linear-gradient(135deg,#3B82F6,#06B6D4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Daily</span> hydration matters
         </div>
         <div style="font-size:.85rem;color:var(--text-2);line-height:1.65;">
-          <span class="en">The European Food Safety Authority found that up to 75% of people in hot climates are in a state of chronic mild dehydration. This level of dehydration impairs concentration by 13%, reduces short-term memory, and increases cardiovascular strain. Most people never connect their fatigue or brain fog to water intake.</span>
-          <span class="ar">وجدت السلطة الأوروبية لسلامة الأغذية أن ما يصل إلى 75% من الناس في المناخات الحارة — بما فيها الخليج — يعانون من جفاف خفيف مزمن. هذا المستوى من الجفاف يُضعف التركيز بنسبة 13% ويُقلل الذاكرة قصيرة المدى ويزيد الإجهاد القلبي الوعائي.</span>
+          <span class="en">Mild dehydration — well below the threshold of thirst — measurably affects concentration, short-term memory, and energy. In hot, dry climates the gap between needed and actual intake widens significantly. Most people never connect their fatigue or brain fog to water intake. A personalized daily target is the first step.</span>
+          <span class="ar">الجفاف الخفيف — أقل بكثير من عتبة العطش — يؤثر بشكل ملحوظ على التركيز والذاكرة قصيرة المدى والطاقة. في المناخات الحارة الجافة تتسع الفجوة بين الاحتياج والاستهلاك الفعلي بشكل ملحوظ. معظم الناس لا يربطون تعبهم أو ضبابهم الذهني باستهلاك الماء. الهدف اليومي المُخصص هو الخطوة الأولى.</span>
         </div>
-        <div style="font-size:.7rem;color:var(--muted);margin-top:12px;font-style:italic;"><span class="en">Source: EFSA — Scientific Opinion on Dietary Reference Values for Water (2022)</span><span class="ar">المصدر: EFSA — رأي علمي حول قيم المرجع الغذائي للماء (2022)</span></div>
+        <div style="font-size:.7rem;color:var(--muted);margin-top:12px;font-style:italic;"><span class="en">Based on: EFSA dietary reference values for water intake</span><span class="ar">استناداً إلى: قيم EFSA المرجعية الغذائية لاستهلاك الماء</span></div>
       </div>
       <div class="reveal" style="background:var(--card-bg);border-radius:var(--r-xl);padding:26px;border:1px solid var(--border-l);position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s;transition-delay:.2s;">
         <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#8B5CF6,#EC4899);"></div>
@@ -2189,6 +2189,256 @@ function selectHealthJourney(id, btn) {
   btn.style.borderColor = 'var(--accent)';
 }
 </script>
+
+<!-- ═══ WELLNESS SITUATIONS ══════════════════════════════════════════════ -->
+<style>
+/* ── Health Wellness Situations ─────────────────────────────────────────── */
+.hlth-wsit-section {
+  padding: clamp(72px,10vw,100px) 0;
+  border-top: 1px solid var(--border-l);
+  background: var(--card-bg);
+}
+.hlth-wsit-header {
+  text-align: center;
+  margin-bottom: 52px;
+}
+.hlth-wsit-eyebrow {
+  display: inline-flex;
+  background: rgba(239,68,68,.07);
+  border: 1px solid rgba(239,68,68,.2);
+  color: #EF4444;
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.hlth-wsit-title {
+  font-size: clamp(24px,3.5vw,36px);
+  font-weight: 300;
+  letter-spacing: -.025em;
+  color: var(--text-1);
+  line-height: 1.25;
+  margin: 0 auto 14px;
+  max-width: 560px;
+}
+.hlth-wsit-title strong { font-weight: 700; }
+.hlth-wsit-sub {
+  font-size: clamp(14px,1.8vw,16px);
+  color: var(--text-2);
+  line-height: 1.7;
+  max-width: 460px;
+  margin: 0 auto;
+}
+.hlth-wsit-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1fr;
+  gap: 18px;
+}
+.hlth-wsit-card {
+  background: var(--body-bg);
+  border: 1px solid var(--border-l);
+  border-radius: 18px;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.hlth-wsit-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 40px rgba(239,68,68,.09);
+}
+.hlth-wsit-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2.5px;
+  background: #EF4444;
+  border-radius: 18px 18px 0 0;
+}
+.hlth-wsit-card.featured {
+  grid-row: span 1;
+  background: linear-gradient(145deg, rgba(239,68,68,.04) 0%, var(--body-bg) 100%);
+}
+.hlth-wsit-icon { font-size: 30px; line-height: 1; }
+.hlth-wsit-card-title {
+  font-size: clamp(16px,2vw,18px);
+  font-weight: 700;
+  color: var(--text-1);
+  letter-spacing: -.02em;
+  line-height: 1.3;
+  margin: 0;
+}
+.hlth-wsit-card-body {
+  font-size: 13.5px;
+  color: var(--text-2);
+  line-height: 1.7;
+  margin: 0;
+  flex: 1;
+}
+.hlth-wsit-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 4px;
+}
+.hlth-wsit-tool {
+  display: inline-flex;
+  align-items: center;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #EF4444;
+  background: rgba(239,68,68,.07);
+  border: 1px solid rgba(239,68,68,.18);
+  padding: 5px 11px;
+  border-radius: 99px;
+  text-decoration: none;
+  transition: background .2s ease, border-color .2s ease;
+}
+.hlth-wsit-tool:hover {
+  background: rgba(239,68,68,.13);
+  border-color: rgba(239,68,68,.35);
+}
+.hlth-wsit-eco {
+  margin-top: 8px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-l);
+  font-size: 11.5px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.hlth-wsit-eco a {
+  color: var(--text-2);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border-l);
+  font-weight: 500;
+  transition: color .2s, border-color .2s;
+}
+.hlth-wsit-eco a:hover { color: #EF4444; border-color: #EF4444; }
+@media (max-width: 860px) {
+  .hlth-wsit-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 540px) {
+  .hlth-wsit-grid { grid-template-columns: 1fr; }
+  .hlth-wsit-card { padding: 22px 20px; }
+}
+</style>
+
+<section class="hlth-wsit-section" aria-label="Wellness life situations">
+  <div class="container">
+
+    <div class="hlth-wsit-header">
+      <div class="hlth-wsit-eyebrow">
+        <span class="en">Wellness Situations</span>
+        <span class="ar">مواقف العافية</span>
+      </div>
+      <h2 class="hlth-wsit-title">
+        <span class="en">Health tools for the moments<br><strong>that actually happen in real life.</strong></span>
+        <span class="ar">أدوات صحية للحظات<br><strong>التي تحدث فعلاً في الحياة الحقيقية.</strong></span>
+      </h2>
+      <p class="hlth-wsit-sub">
+        <span class="en">Not workout goals. Not generic advice. Real situations that shape how you sleep, eat, travel, and show up for the people around you.</span>
+        <span class="ar">ليس أهداف رياضية. وليس نصائح عامة. مواقف حقيقية تشكّل كيف تنام وتأكل وتسافر وتكون حاضراً لمن حولك.</span>
+      </p>
+    </div>
+
+    <div class="hlth-wsit-grid">
+
+      <!-- Situation 1: Sleep and Recovery -->
+      <div class="hlth-wsit-card featured reveal">
+        <div class="hlth-wsit-icon">😴</div>
+        <h3 class="hlth-wsit-card-title">
+          <span class="en">You're tired all the time — and you don't know why.</span>
+          <span class="ar">أنت متعب طوال الوقت — ولا تعرف لماذا.</span>
+        </h3>
+        <p class="hlth-wsit-card-body">
+          <span class="en">Chronic tiredness is rarely just about sleep hours. It's hydration, caloric intake, body composition, and the gap between what you're burning and what you're consuming. Start with the numbers before you start with the solutions.</span>
+          <span class="ar">التعب المزمن نادراً ما يكون مجرد ساعات نوم. إنه الترطيب والسعرات والتركيب الجسدي والفجوة بين ما تحرق وما تستهلك. ابدأ بالأرقام قبل الحلول.</span>
+        </p>
+        <div class="hlth-wsit-tools">
+          <a href="tools/water-calculator.html" class="hlth-wsit-tool">
+            <span class="en">Hydration Check</span><span class="ar">فحص الترطيب</span>
+          </a>
+          <a href="tools/bmi-calculator.html" class="hlth-wsit-tool">
+            <span class="en">BMI</span><span class="ar">مؤشر الكتلة</span>
+          </a>
+          <a href="tools/body-fat-calculator.html" class="hlth-wsit-tool">
+            <span class="en">Body Fat</span><span class="ar">نسبة الدهون</span>
+          </a>
+        </div>
+        <div class="hlth-wsit-eco">
+          <span class="en">Also connected: </span><span class="ar">مرتبط أيضاً: </span>
+          <a href="fitness.html">
+            <span class="en">Recovery & fitness planning →</span>
+            <span class="ar">التعافي وتخطيط اللياقة ←</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Situation 2: Building a Routine -->
+      <div class="hlth-wsit-card reveal">
+        <div class="hlth-wsit-icon">🗓️</div>
+        <h3 class="hlth-wsit-card-title">
+          <span class="en">Building a routine that actually holds.</span>
+          <span class="ar">بناء روتين يصمد فعلاً.</span>
+        </h3>
+        <p class="hlth-wsit-card-body">
+          <span class="en">Routines fail when they're built on willpower instead of numbers. Know your TDEE. Know your water needs. Know your body composition. Build around what's real — not what sounds good.</span>
+          <span class="ar">الروتين يفشل حين يُبنى على الإرادة لا الأرقام. اعرف إجمالي سعراتك. اعرف احتياجك المائي. ابنِ على الحقيقة لا على ما يبدو جيداً.</span>
+        </p>
+        <div class="hlth-wsit-tools">
+          <a href="tools/calorie-calculator.html" class="hlth-wsit-tool">
+            <span class="en">TDEE</span><span class="ar">السعرات اليومية</span>
+          </a>
+          <a href="tools/water-calculator.html" class="hlth-wsit-tool">
+            <span class="en">Water Goal</span><span class="ar">هدف الماء</span>
+          </a>
+        </div>
+        <div class="hlth-wsit-eco">
+          <a href="productivity.html">
+            <span class="en">Productivity & daily habits →</span>
+            <span class="ar">الإنتاجية والعادات اليومية ←</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Situation 3: Travel & Health -->
+      <div class="hlth-wsit-card reveal">
+        <div class="hlth-wsit-icon">✈️</div>
+        <h3 class="hlth-wsit-card-title">
+          <span class="en">Staying healthy away from home.</span>
+          <span class="ar">الحفاظ على الصحة بعيداً عن البيت.</span>
+        </h3>
+        <p class="hlth-wsit-card-body">
+          <span class="en">Climate shifts, different food, disrupted sleep. Your hydration needs change when you travel — especially in heat. Your body still needs the same care it does at home, in a different context.</span>
+          <span class="ar">تغيّر المناخ، طعام مختلف، نوم مضطرب. احتياجاتك المائية تتغير حين تسافر — خاصة في الحر. جسمك ما زال يحتاج نفس الاهتمام في سياق مختلف.</span>
+        </p>
+        <div class="hlth-wsit-tools">
+          <a href="tools/water-calculator.html" class="hlth-wsit-tool">
+            <span class="en">Climate Hydration</span><span class="ar">ترطيب المناخ</span>
+          </a>
+          <a href="tools/bmi-calculator.html" class="hlth-wsit-tool">
+            <span class="en">Your Baseline</span><span class="ar">مرجعك الأساسي</span>
+          </a>
+        </div>
+        <div class="hlth-wsit-eco">
+          <a href="travel.html">
+            <span class="en">Travel planning tools →</span>
+            <span class="ar">أدوات التخطيط للسفر ←</span>
+          </a>
+        </div>
+      </div>
+
+    </div><!-- /hlth-wsit-grid -->
+
+  </div><!-- /container -->
+</section>
+<!-- ═══ /WELLNESS SITUATIONS ═════════════════════════════════════════════ -->
 
 <div class="container"><div class="ad-zone">Advertisement</div></div></main>
 

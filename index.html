@@ -4478,10 +4478,96 @@ window.dflTrack=function(event,params){
 }
 .lsit-cmp:hover .lsit-cmp-arr { transform: translateX(3px); }
 
+/* ── After-journey continuation row inside featured card ─────────────── */
+.lsit-after {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(var(--sit-rgb), 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.lsit-after-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.lsit-after-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.lsit-after-link {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-2);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border-l);
+  padding-bottom: 1px;
+  transition: color .2s ease, border-color .2s ease;
+}
+.lsit-card:hover .lsit-after-link,
+.lsit-after-link:hover {
+  color: var(--sit-clr);
+  border-color: var(--sit-clr);
+}
+
+/* ── Continue Your Journey strip ─────────────────────────────────────── */
+.lsit-continue {
+  margin-top: 48px;
+  padding-top: 36px;
+  border-top: 1px solid var(--border-l);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.lsit-continue-text {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-2);
+  line-height: 1.65;
+  max-width: 320px;
+}
+.lsit-continue-text strong {
+  color: var(--text-1);
+  font-weight: 600;
+  display: block;
+  font-size: 15px;
+  margin-bottom: 3px;
+}
+.lsit-continue-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.lsit-continue-link {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-2);
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 99px;
+  border: 1px solid var(--border-l);
+  background: var(--card-bg);
+  transition: color .2s ease, border-color .2s ease, background .2s ease;
+  white-space: nowrap;
+}
+.lsit-continue-link:hover {
+  color: var(--text-1);
+  border-color: var(--text-2);
+  background: var(--body-bg);
+}
+
 /* ── Responsive ──────────────────────────────────────────────────────── */
 @media (max-width: 900px) {
   .lsit-featured { grid-template-columns: 1fr; }
   .lsit-compact  { grid-template-columns: repeat(2, 1fr); }
+  .lsit-continue { flex-direction: column; align-items: flex-start; }
+  .lsit-continue-text { max-width: 100%; }
 }
 @media (max-width: 540px) {
   .lsit-section  { padding: 64px 0 48px; }
@@ -4530,21 +4616,41 @@ window.dflTrack=function(event,params){
           <span class="ar">التخطيط لأول عمرة</span>
         </h3>
         <p class="lsit-card-body">
-          <span class="en">From Ihram intention to prayer time precision — a complete spiritual guide for your first visit to the holy cities. Budget, pack, pray, and travel with full clarity.</span>
-          <span class="ar">من نية الإحرام إلى دقة أوقات الصلاة — دليل روحي متكامل لأول زيارة للأماكن المقدسة. الميزانية والتعبئة والصلاة والسفر بوضوح تام.</span>
+          <span class="en">The first time is unlike any other. Every decision — when to go, how much to carry, how to stay spiritually present amid the crowds — matters differently when it's new. These tools walk you through the whole journey, not just the flight.</span>
+          <span class="ar">المرة الأولى لا تشبه أي مرة أخرى. كل قرار — متى تذهب، كم تحمل، كيف تبقى حاضرًا روحيًا وسط الحشود — يكتسب أهمية مختلفة حين يكون كل شيء جديدًا. هذه الأدوات ترافقك في كامل الرحلة، ليس الرحلة الجوية فحسب.</span>
         </p>
         <div class="lsit-steps">
           <div class="lsit-step-n">1</div>
-          <span class="lsit-step-label"><span class="en">Prayer Times</span><span class="ar">أوقات الصلاة</span></span>
+          <span class="lsit-step-label"><span class="en">Intention &amp; Timing</span><span class="ar">النية والتوقيت</span></span>
           <span class="lsit-divider">→</span>
           <div class="lsit-step-n">2</div>
-          <span class="lsit-step-label"><span class="en">Qibla Direction</span><span class="ar">اتجاه القبلة</span></span>
+          <span class="lsit-step-label"><span class="en">Budget</span><span class="ar">الميزانية</span></span>
           <span class="lsit-divider">→</span>
           <div class="lsit-step-n">3</div>
-          <span class="lsit-step-label"><span class="en">Trip Budget</span><span class="ar">ميزانية الرحلة</span></span>
+          <span class="lsit-step-label"><span class="en">Pack &amp; Prepare</span><span class="ar">التعبئة والتجهيز</span></span>
           <span class="lsit-divider">→</span>
           <div class="lsit-step-n">4</div>
-          <span class="lsit-step-label"><span class="en">Packing List</span><span class="ar">قائمة التعبئة</span></span>
+          <span class="lsit-step-label"><span class="en">Pray &amp; Navigate</span><span class="ar">الصلاة والتنقل</span></span>
+        </div>
+        <div class="lsit-after">
+          <span class="lsit-after-label">
+            <span class="en">After this journey, consider</span>
+            <span class="ar">بعد هذه الرحلة، فكّر في</span>
+          </span>
+          <div class="lsit-after-links">
+            <a href="finance.html" class="lsit-after-link" onclick="event.stopPropagation()">
+              <span class="en">Zakat calculation →</span>
+              <span class="ar">حساب الزكاة ←</span>
+            </a>
+            <a href="travel.html" class="lsit-after-link" onclick="event.stopPropagation()">
+              <span class="en">Hajj planning →</span>
+              <span class="ar">التخطيط للحج ←</span>
+            </a>
+            <a href="health.html" class="lsit-after-link" onclick="event.stopPropagation()">
+              <span class="en">Physical preparation →</span>
+              <span class="ar">التحضير البدني ←</span>
+            </a>
+          </div>
         </div>
         <span class="lsit-cta">
           <span class="en">Begin this journey</span>
@@ -4569,18 +4675,34 @@ window.dflTrack=function(event,params){
           <span class="ar">شراء أول منزل</span>
         </h3>
         <p class="lsit-card-body">
-          <span class="en">Affordability, mortgage scenarios, neighborhood ROI — everything to move from wondering if you're ready, to knowing exactly what you can afford.</span>
-          <span class="ar">القدرة على التحمل، سيناريوهات الرهن، عائد الاستثمار في الحي — كل ما تحتاجه للانتقال من التساؤل عن الجاهزية إلى معرفة ما يمكنك تحمله بالضبط.</span>
+          <span class="en">The first question isn't "which property." It's "what number is real." Start with what you can genuinely afford, build the mortgage scenarios that match your income, and understand the long-term yield before you ever visit a listing.</span>
+          <span class="ar">السؤال الأول ليس "أي عقار"، بل "ما الرقم الحقيقي". ابدأ بما يمكنك تحمله فعلًا، ابنِ سيناريوهات الرهن التي تتناسب مع دخلك، وافهم العائد طويل الأمد قبل زيارة أي إعلان.</span>
         </p>
         <div class="lsit-steps">
           <div class="lsit-step-n">1</div>
-          <span class="lsit-step-label"><span class="en">Affordability</span><span class="ar">القدرة الشرائية</span></span>
+          <span class="lsit-step-label"><span class="en">What can I afford?</span><span class="ar">كم أستطيع؟</span></span>
           <span class="lsit-divider">→</span>
           <div class="lsit-step-n">2</div>
-          <span class="lsit-step-label"><span class="en">Mortgage Calc</span><span class="ar">حاسبة الرهن</span></span>
+          <span class="lsit-step-label"><span class="en">Mortgage math</span><span class="ar">حساب الرهن</span></span>
           <span class="lsit-divider">→</span>
           <div class="lsit-step-n">3</div>
-          <span class="lsit-step-label"><span class="en">ROI Check</span><span class="ar">عائد الاستثمار</span></span>
+          <span class="lsit-step-label"><span class="en">Is this a good investment?</span><span class="ar">هل هو استثمار جيد؟</span></span>
+        </div>
+        <div class="lsit-after">
+          <span class="lsit-after-label">
+            <span class="en">After this journey, consider</span>
+            <span class="ar">بعد هذه الرحلة، فكّر في</span>
+          </span>
+          <div class="lsit-after-links">
+            <a href="finance.html" class="lsit-after-link" onclick="event.stopPropagation()">
+              <span class="en">Monthly budget planning →</span>
+              <span class="ar">تخطيط الميزانية الشهرية ←</span>
+            </a>
+            <a href="health.html" class="lsit-after-link" onclick="event.stopPropagation()">
+              <span class="en">Family wellness →</span>
+              <span class="ar">صحة الأسرة ←</span>
+            </a>
+          </div>
         </div>
         <span class="lsit-cta">
           <span class="en">Begin this journey</span>
@@ -4604,8 +4726,8 @@ window.dflTrack=function(event,params){
           <span class="ar">الاستعداد لرمضان</span>
         </p>
         <p class="lsit-cmp-sub">
-          <span class="en">Prayer schedules, Suhoor nutrition, Zakat calculation — the complete month.</span>
-          <span class="ar">جداول الصلاة، تغذية السحور، حساب الزكاة — الشهر الكامل.</span>
+          <span class="en">Prayer times, Suhoor nutrition, Zakat — and the sleep shifts that come with it. Every layer of the month, ready.</span>
+          <span class="ar">أوقات الصلاة، تغذية السحور، الزكاة — وتغييرات النوم التي ترافقها. كل طبقات الشهر جاهزة.</span>
         </p>
         <span class="lsit-cmp-arr">→</span>
       </a>
@@ -4620,8 +4742,8 @@ window.dflTrack=function(event,params){
           <span class="ar">انتظار مولود</span>
         </p>
         <p class="lsit-cmp-sub">
-          <span class="en">Pregnancy nutrition, sleep tracking, and prenatal health guides.</span>
-          <span class="ar">تغذية الحمل، تتبع النوم، وأدلة صحة ما قبل الولادة.</span>
+          <span class="en">Nutrition, hydration, sleep — the essentials that change when a new life is coming. Connected to home and finance planning too.</span>
+          <span class="ar">التغذية، الترطيب، النوم — الأساسيات التي تتغير حين تنتظر حياة جديدة. مع ارتباطها بتخطيط المنزل والمال.</span>
         </p>
         <span class="lsit-cmp-arr">→</span>
       </a>
@@ -4636,8 +4758,8 @@ window.dflTrack=function(event,params){
           <span class="ar">السفر مع العائلة</span>
         </p>
         <p class="lsit-cmp-sub">
-          <span class="en">Packing lists, trip budgeting, and destination currency guidance.</span>
-          <span class="ar">قوائم التعبئة، ميزانية الرحلة، وإرشادات عملة الوجهة.</span>
+          <span class="en">Pack smart, budget accurately, and find Qibla wherever you land. Family travel and spiritual travel, both covered.</span>
+          <span class="ar">تعبئة ذكية، ميزانية دقيقة، واتجاه القبلة أينما حللت. السفر العائلي والروحي، كلاهما موجود.</span>
         </p>
         <span class="lsit-cmp-arr">→</span>
       </a>
@@ -4652,13 +4774,47 @@ window.dflTrack=function(event,params){
           <span class="ar">اللياقة هذا العام</span>
         </p>
         <p class="lsit-cmp-sub">
-          <span class="en">TDEE, macro balance, sleep quality — your complete fitness foundation.</span>
-          <span class="ar">إجمالي السعرات، توازن الماكرو، جودة النوم — أساس لياقتك الكامل.</span>
+          <span class="en">TDEE, macros, sleep, recovery — the whole picture, not just the workout. Because consistency requires more than effort.</span>
+          <span class="ar">إجمالي السعرات، الماكرو، النوم، التعافي — الصورة الكاملة لا التمرين وحده. لأن الاستمرارية تتطلب أكثر من الجهد.</span>
         </p>
         <span class="lsit-cmp-arr">→</span>
       </a>
 
     </div><!-- /lsit-compact -->
+
+    <!-- Continue Your Journey strip -->
+    <div class="lsit-continue reveal">
+      <div class="lsit-continue-text">
+        <strong>
+          <span class="en">Every situation connects to the next.</span>
+          <span class="ar">كل موقف يؤدي إلى ما يليه.</span>
+        </strong>
+        <span class="en">The tools across DOTFORLIFE are built to work together — explore what connects to your situation.</span>
+        <span class="ar">الأدوات عبر DOTFORLIFE مبنية لتعمل معًا — استكشف ما يتصل بحالتك.</span>
+      </div>
+      <div class="lsit-continue-links">
+        <a href="health.html" class="lsit-continue-link">
+          <span class="en">Health &amp; Wellness</span>
+          <span class="ar">الصحة والعافية</span>
+        </a>
+        <a href="finance.html" class="lsit-continue-link">
+          <span class="en">Finance &amp; Wealth</span>
+          <span class="ar">المال والثروة</span>
+        </a>
+        <a href="islamic.html" class="lsit-continue-link">
+          <span class="en">Spiritual Life</span>
+          <span class="ar">الحياة الروحية</span>
+        </a>
+        <a href="travel.html" class="lsit-continue-link">
+          <span class="en">Travel</span>
+          <span class="ar">السفر</span>
+        </a>
+        <a href="real-estate.html" class="lsit-continue-link">
+          <span class="en">Real Estate</span>
+          <span class="ar">العقارات</span>
+        </a>
+      </div>
+    </div>
 
   </div><!-- /container -->
 </section>
