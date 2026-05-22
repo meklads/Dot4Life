@@ -4242,6 +4242,428 @@ window.dflTrack=function(event,params){
 })();
 </script>
 
+<!-- ═══ LIFE SITUATIONS: Guided life journey experiences ═══════════════ -->
+<style>
+/* ── Life Situations Section ────────────────────────────────────────── */
+.lsit-section {
+  padding: 100px 0 80px;
+  background: var(--body-bg);
+  position: relative;
+  overflow: hidden;
+}
+.lsit-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-l), transparent);
+}
+.lsit-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.lsit-eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+.lsit-title {
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 300;
+  color: var(--text-1);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin: 0 0 14px;
+}
+.lsit-title strong {
+  font-weight: 600;
+}
+.lsit-subtitle {
+  font-size: 16px;
+  color: var(--text-2);
+  line-height: 1.6;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* ── Featured cards ──────────────────────────────────────────────────── */
+.lsit-featured {
+  display: grid;
+  grid-template-columns: 1.55fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+.lsit-card {
+  border-radius: 20px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-l);
+  padding: 36px 36px 32px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+}
+.lsit-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(var(--sit-rgb), 0.12);
+}
+.lsit-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--sit-clr);
+  border-radius: 20px 20px 0 0;
+}
+.lsit-card::after {
+  content: '';
+  position: absolute;
+  bottom: -60px; right: -60px;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(var(--sit-rgb), 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.lsit-card-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.lsit-icon {
+  width: 48px; height: 48px;
+  border-radius: 14px;
+  background: rgba(var(--sit-rgb), 0.1);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+.lsit-badge {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--sit-clr);
+  background: rgba(var(--sit-rgb), 0.08);
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid rgba(var(--sit-rgb), 0.2);
+}
+.lsit-card-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text-1);
+  margin: 0 0 10px;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+.lsit-card-body {
+  font-size: 15px;
+  color: var(--text-2);
+  line-height: 1.65;
+  margin: 0 0 28px;
+  flex: 1;
+}
+
+/* Step flow */
+.lsit-steps {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+.lsit-step-n {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--sit-clr);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.lsit-step-label {
+  font-size: 12px;
+  color: var(--text-2);
+  font-weight: 500;
+}
+.lsit-divider {
+  font-size: 11px;
+  color: var(--muted);
+  opacity: 0.5;
+}
+.lsit-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--sit-clr);
+  text-decoration: none;
+  margin-top: auto;
+  transition: gap 0.2s ease;
+}
+.lsit-cta:hover { gap: 11px; }
+.lsit-cta-arrow {
+  font-size: 16px;
+  transition: transform 0.2s ease;
+}
+.lsit-card:hover .lsit-cta-arrow { transform: translateX(3px); }
+
+/* ── Compact cards strip ─────────────────────────────────────────────── */
+.lsit-compact {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.lsit-cmp {
+  border-radius: 16px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-l);
+  padding: 24px 22px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.lsit-cmp:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 40px rgba(var(--sit-rgb), 0.1);
+}
+.lsit-cmp::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--sit-clr);
+  border-radius: 16px 16px 0 0;
+}
+.lsit-cmp-icon {
+  font-size: 26px;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.lsit-cmp-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-1);
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  margin: 0;
+}
+.lsit-cmp-sub {
+  font-size: 12px;
+  color: var(--text-2);
+  line-height: 1.5;
+  margin: 0;
+  flex: 1;
+}
+.lsit-cmp-arr {
+  font-size: 16px;
+  color: var(--sit-clr);
+  margin-top: 8px;
+  transition: transform 0.2s ease;
+}
+.lsit-cmp:hover .lsit-cmp-arr { transform: translateX(3px); }
+
+/* ── Responsive ──────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .lsit-featured { grid-template-columns: 1fr; }
+  .lsit-compact  { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 540px) {
+  .lsit-section  { padding: 64px 0 48px; }
+  .lsit-card     { padding: 26px 22px 22px; }
+  .lsit-card-title { font-size: 18px; }
+  .lsit-compact  { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .lsit-cmp      { padding: 18px 16px; }
+}
+</style>
+
+<section class="lsit-section" aria-label="Life situation experiences">
+  <div class="container">
+
+    <!-- Header -->
+    <div class="lsit-header">
+      <span class="lsit-eyebrow">
+        <span class="en">Life Situations</span>
+        <span class="ar">مواقف الحياة</span>
+      </span>
+      <h2 class="lsit-title">
+        <span class="en">Life's biggest moments <strong>deserve a guide.</strong></span>
+        <span class="ar">أكبر لحظات حياتك <strong>تستحق دليلاً.</strong></span>
+      </h2>
+      <p class="lsit-subtitle">
+        <span class="en">Not just tools — complete journeys. Step through real life situations with everything you need, in the right order.</span>
+        <span class="ar">ليست مجرد أدوات — رحلات متكاملة. تجاوز مواقف الحياة الحقيقية بكل ما تحتاجه، في الترتيب الصحيح.</span>
+      </p>
+    </div>
+
+    <!-- Featured row: 2 large cards -->
+    <div class="lsit-featured">
+
+      <!-- Featured 1: Planning Your First Umrah -->
+      <a href="islamic.html" class="lsit-card reveal"
+         style="--sit-clr:#1B7A4E; --sit-rgb:27,122,78;"
+         aria-label="Planning your first Umrah journey">
+        <div class="lsit-card-top">
+          <div class="lsit-icon">🕌</div>
+          <span class="lsit-badge">
+            <span class="en">Spiritual Journey</span>
+            <span class="ar">رحلة روحية</span>
+          </span>
+        </div>
+        <h3 class="lsit-card-title">
+          <span class="en">Planning Your First Umrah</span>
+          <span class="ar">التخطيط لأول عمرة</span>
+        </h3>
+        <p class="lsit-card-body">
+          <span class="en">From Ihram intention to prayer time precision — a complete spiritual guide for your first visit to the holy cities. Budget, pack, pray, and travel with full clarity.</span>
+          <span class="ar">من نية الإحرام إلى دقة أوقات الصلاة — دليل روحي متكامل لأول زيارة للأماكن المقدسة. الميزانية والتعبئة والصلاة والسفر بوضوح تام.</span>
+        </p>
+        <div class="lsit-steps">
+          <div class="lsit-step-n">1</div>
+          <span class="lsit-step-label"><span class="en">Prayer Times</span><span class="ar">أوقات الصلاة</span></span>
+          <span class="lsit-divider">→</span>
+          <div class="lsit-step-n">2</div>
+          <span class="lsit-step-label"><span class="en">Qibla Direction</span><span class="ar">اتجاه القبلة</span></span>
+          <span class="lsit-divider">→</span>
+          <div class="lsit-step-n">3</div>
+          <span class="lsit-step-label"><span class="en">Trip Budget</span><span class="ar">ميزانية الرحلة</span></span>
+          <span class="lsit-divider">→</span>
+          <div class="lsit-step-n">4</div>
+          <span class="lsit-step-label"><span class="en">Packing List</span><span class="ar">قائمة التعبئة</span></span>
+        </div>
+        <span class="lsit-cta">
+          <span class="en">Begin this journey</span>
+          <span class="ar">ابدأ هذه الرحلة</span>
+          <span class="lsit-cta-arrow">→</span>
+        </span>
+      </a>
+
+      <!-- Featured 2: Buying Your First Home -->
+      <a href="real-estate.html" class="lsit-card reveal"
+         style="--sit-clr:#2563EB; --sit-rgb:37,99,235;"
+         aria-label="Buying your first home journey">
+        <div class="lsit-card-top">
+          <div class="lsit-icon">🏡</div>
+          <span class="lsit-badge">
+            <span class="en">Major Decision</span>
+            <span class="ar">قرار مصيري</span>
+          </span>
+        </div>
+        <h3 class="lsit-card-title">
+          <span class="en">Buying Your First Home</span>
+          <span class="ar">شراء أول منزل</span>
+        </h3>
+        <p class="lsit-card-body">
+          <span class="en">Affordability, mortgage scenarios, neighborhood ROI — everything to move from wondering if you're ready, to knowing exactly what you can afford.</span>
+          <span class="ar">القدرة على التحمل، سيناريوهات الرهن، عائد الاستثمار في الحي — كل ما تحتاجه للانتقال من التساؤل عن الجاهزية إلى معرفة ما يمكنك تحمله بالضبط.</span>
+        </p>
+        <div class="lsit-steps">
+          <div class="lsit-step-n">1</div>
+          <span class="lsit-step-label"><span class="en">Affordability</span><span class="ar">القدرة الشرائية</span></span>
+          <span class="lsit-divider">→</span>
+          <div class="lsit-step-n">2</div>
+          <span class="lsit-step-label"><span class="en">Mortgage Calc</span><span class="ar">حاسبة الرهن</span></span>
+          <span class="lsit-divider">→</span>
+          <div class="lsit-step-n">3</div>
+          <span class="lsit-step-label"><span class="en">ROI Check</span><span class="ar">عائد الاستثمار</span></span>
+        </div>
+        <span class="lsit-cta">
+          <span class="en">Begin this journey</span>
+          <span class="ar">ابدأ هذه الرحلة</span>
+          <span class="lsit-cta-arrow">→</span>
+        </span>
+      </a>
+
+    </div><!-- /lsit-featured -->
+
+    <!-- Compact strip: 4 cards -->
+    <div class="lsit-compact">
+
+      <!-- Preparing for Ramadan -->
+      <a href="islamic.html" class="lsit-cmp reveal"
+         style="--sit-clr:#C8871A; --sit-rgb:200,135,26;"
+         aria-label="Preparing for Ramadan">
+        <div class="lsit-cmp-icon">🌙</div>
+        <p class="lsit-cmp-title">
+          <span class="en">Preparing for Ramadan</span>
+          <span class="ar">الاستعداد لرمضان</span>
+        </p>
+        <p class="lsit-cmp-sub">
+          <span class="en">Prayer schedules, Suhoor nutrition, Zakat calculation — the complete month.</span>
+          <span class="ar">جداول الصلاة، تغذية السحور، حساب الزكاة — الشهر الكامل.</span>
+        </p>
+        <span class="lsit-cmp-arr">→</span>
+      </a>
+
+      <!-- Expecting a Baby -->
+      <a href="health.html" class="lsit-cmp reveal"
+         style="--sit-clr:#EF4444; --sit-rgb:239,68,68;"
+         aria-label="Expecting a baby health journey">
+        <div class="lsit-cmp-icon">🍼</div>
+        <p class="lsit-cmp-title">
+          <span class="en">Expecting a Baby</span>
+          <span class="ar">انتظار مولود</span>
+        </p>
+        <p class="lsit-cmp-sub">
+          <span class="en">Pregnancy nutrition, sleep tracking, and prenatal health guides.</span>
+          <span class="ar">تغذية الحمل، تتبع النوم، وأدلة صحة ما قبل الولادة.</span>
+        </p>
+        <span class="lsit-cmp-arr">→</span>
+      </a>
+
+      <!-- Traveling with Family -->
+      <a href="travel.html" class="lsit-cmp reveal"
+         style="--sit-clr:#0097A7; --sit-rgb:0,151,167;"
+         aria-label="Traveling with family journey">
+        <div class="lsit-cmp-icon">✈️</div>
+        <p class="lsit-cmp-title">
+          <span class="en">Traveling with Family</span>
+          <span class="ar">السفر مع العائلة</span>
+        </p>
+        <p class="lsit-cmp-sub">
+          <span class="en">Packing lists, trip budgeting, and destination currency guidance.</span>
+          <span class="ar">قوائم التعبئة، ميزانية الرحلة، وإرشادات عملة الوجهة.</span>
+        </p>
+        <span class="lsit-cmp-arr">→</span>
+      </a>
+
+      <!-- Getting Fit This Year -->
+      <a href="fitness.html" class="lsit-cmp reveal"
+         style="--sit-clr:#6C3FC5; --sit-rgb:108,63,197;"
+         aria-label="Getting fit this year journey">
+        <div class="lsit-cmp-icon">💪</div>
+        <p class="lsit-cmp-title">
+          <span class="en">Getting Fit This Year</span>
+          <span class="ar">اللياقة هذا العام</span>
+        </p>
+        <p class="lsit-cmp-sub">
+          <span class="en">TDEE, macro balance, sleep quality — your complete fitness foundation.</span>
+          <span class="ar">إجمالي السعرات، توازن الماكرو، جودة النوم — أساس لياقتك الكامل.</span>
+        </p>
+        <span class="lsit-cmp-arr">→</span>
+      </a>
+
+    </div><!-- /lsit-compact -->
+
+  </div><!-- /container -->
+</section>
+<!-- ═══ /LIFE SITUATIONS ═══════════════════════════════════════════════ -->
+
 <!-- ═══ LIFE MOMENTS: Cinematic editorial bridge ═══════════════════════ -->
 <section class="life-moments-section" aria-label="Life moments served by dot.life">
   <div class="container">
