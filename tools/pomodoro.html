@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en" data-theme="light">
+<head>
+  <script>(function(){var t=localStorage.getItem('dfl-theme')||'light';var l=localStorage.getItem('dfl-lang')||'en';var h=document.documentElement;h.setAttribute('data-theme',t);h.setAttribute('data-lang',l);h.setAttribute('lang',l);h.setAttribute('dir',l==='ar'?'rtl':'ltr');})();</script>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<title>Pomodoro Focus Timer | مؤقت بوميدورو — DotForLife</title>
+<meta name="description" content="A calm, distraction-free Pomodoro focus timer. 25-minute work blocks, short and long breaks, session log, and customizable durations. Bilingual EN/AR."/>
+<meta name="keywords" content="pomodoro timer, focus timer, work timer, productivity timer, deep work, مؤقت بوميدورو, مؤقت تركيز, إنتاجية"/>
+<link rel="canonical" href="https://dotforlife.com/tools/pomodoro.html"/>
+<meta property="og:title" content="Pomodoro Focus Timer — DOTFORLIFE | مؤقت بوميدورو"/>
+<meta property="og:description" content="Calm, distraction-free focus timer. 25-minute work blocks, breaks, session log."/>
+<meta property="og:type" content="website"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Inter:wght@400;500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Inter:wght@400;500;600;700;800&display=swap"/></noscript>
+<style>
+/* ── BASE ────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --accent: #6C3FC5;
+  --accent-l: rgba(108,63,197,.10);
+  --accent-rgb: 108,63,197;
+  --card-bg: #ffffff;
+  --body-bg: #f7f8fc;
+  --text-1: #0d1117;
+  --text-2: #4a5568;
+  --border-l: #e2e8f0;
+  --muted: #94a3b8;
+  /* state colours */
+  --work-c: #6C3FC5;
+  --short-c: #059669;
+  --long-c: #0F4C8A;
+}
+[data-theme="dark"] {
+  --card-bg: #1a1f2e;
+  --body-bg: #0f1320;
+  --text-1: #f1f5f9;
+  --text-2: #94a3b8;
+  --border-l: #2d3748;
+  --muted: #64748b;
+}
+[data-lang="ar"] { font-family: 'Almarai', sans-serif; }
+[data-lang="en"] { font-family: 'Inter', sans-serif; }
+[data-lang="ar"] .en { display: none; }
+[data-lang="en"] .ar { display: none; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { background: var(--body-bg); color: var(--text-1); line-height: 1.6; min-height: 100vh; }
+
+/* ── LAYOUT ──────────────────────────────────────────────────────── */
+.container { max-width: 860px; margin: 0 auto; padding: 0 clamp(16px,4vw,40px); }
+.container-wide { max-width: 1060px; margin: 0 auto; padding: 0 clamp(16px,4vw,40px); }
+
+/* ── NAVBAR ──────────────────────────────────────────────────────── */
+.navbar { position: sticky; top: 0; z-index: 100; background: var(--card-bg); border-bottom: 1px solid var(--border-l); }
+.navbar-inner { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 16px; }
+.navbar-brand { text-decoration: none; font-weight: 800; font-size: 1.1rem; letter-spacing: -.02em; }
+.brand-dot { color: var(--accent); }
+.brand-life { color: var(--text-1); }
+.navbar-links { display: flex; gap: 4px; }
+.nav-link { text-decoration: none; color: var(--text-2); font-size: .82rem; font-weight: 500; padding: 5px 10px; border-radius: 8px; transition: color .2s, background .2s; }
+.nav-link:hover { color: var(--text-1); background: var(--body-bg); }
+.navbar-actions { display: flex; gap: 8px; }
+.btn-lang, .btn-theme { background: none; border: 1.5px solid var(--border-l); border-radius: 8px; padding: 5px 10px; font-family: inherit; font-size: .78rem; font-weight: 600; color: var(--text-2); cursor: pointer; transition: border-color .2s, color .2s; }
+.btn-lang:hover, .btn-theme:hover { border-color: var(--accent); color: var(--accent); }
+@media(max-width:600px){ .navbar-links { display: none; } }
+
+/* ── HERO ─────────────────────────────────────────────────────────── */
+.tool-hero { background: linear-gradient(135deg, rgba(108,63,197,.06) 0%, var(--body-bg) 60%); padding: clamp(44px,7vw,72px) 0 clamp(28px,4vw,44px); border-bottom: 1px solid var(--border-l); }
+.tool-badge { display: inline-flex; align-items: center; gap: 7px; background: var(--accent-l); border: 1px solid rgba(var(--accent-rgb),.2); color: var(--accent); font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 5px 14px; border-radius: 99px; margin-bottom: 18px; }
+.tool-h1 { font-size: clamp(26px,4.5vw,40px); font-weight: 800; letter-spacing: -.03em; color: var(--text-1); line-height: 1.1; margin: 0 0 14px; }
+.tool-desc { font-size: clamp(14px,1.8vw,16px); color: var(--text-2); line-height: 1.75; max-width: 540px; }
+
+/* ── TIMER SECTION ───────────────────────────────────────────────── */
+.timer-section { padding: clamp(32px,5vw,56px) 0; }
+
+/* Mode tabs */
+.mode-tabs { display: flex; gap: 8px; justify-content: center; margin-bottom: 36px; flex-wrap: wrap; }
+.mode-tab { padding: 9px 22px; border-radius: 99px; border: 1.5px solid var(--border-l); background: var(--card-bg); font-family: inherit; font-size: 13px; font-weight: 600; color: var(--text-2); cursor: pointer; transition: all .2s; }
+.mode-tab.active[data-mode="work"]  { border-color: var(--work-c);  background: rgba(108,63,197,.1); color: var(--work-c); }
+.mode-tab.active[data-mode="short"] { border-color: var(--short-c); background: rgba(5,150,105,.1);  color: var(--short-c); }
+.mode-tab.active[data-mode="long"]  { border-color: var(--long-c);  background: rgba(15,76,138,.1);  color: var(--long-c); }
+
+/* Timer face */
+.timer-face { text-align: center; margin-bottom: 32px; }
+.timer-ring-wrap { position: relative; width: 240px; height: 240px; margin: 0 auto 24px; }
+.timer-svg { transform: rotate(-90deg); }
+.timer-ring-bg { fill: none; stroke: var(--border-l); stroke-width: 6; }
+.timer-ring-prog { fill: none; stroke-width: 6; stroke-linecap: round; transition: stroke-dashoffset .8s linear, stroke .4s; }
+.timer-ring-prog[data-mode="work"]  { stroke: var(--work-c); }
+.timer-ring-prog[data-mode="short"] { stroke: var(--short-c); }
+.timer-ring-prog[data-mode="long"]  { stroke: var(--long-c); }
+.timer-inner { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); text-align: center; }
+.timer-display { font-size: 56px; font-weight: 800; letter-spacing: -.04em; color: var(--text-1); line-height: 1; font-variant-numeric: tabular-nums; }
+.timer-phase { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-top: 6px; }
+.timer-phase[data-mode="work"]  { color: var(--work-c); }
+.timer-phase[data-mode="short"] { color: var(--short-c); }
+.timer-phase[data-mode="long"]  { color: var(--long-c); }
+
+/* Controls */
+.timer-controls { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 20px; }
+.btn-start { padding: 14px 40px; border-radius: 99px; border: none; font-family: inherit; font-size: 16px; font-weight: 700; cursor: pointer; transition: all .2s; letter-spacing: -.01em; color: #fff; }
+.btn-start[data-mode="work"]  { background: var(--work-c); }
+.btn-start[data-mode="short"] { background: var(--short-c); }
+.btn-start[data-mode="long"]  { background: var(--long-c); }
+.btn-start:hover { opacity: .88; transform: translateY(-1px); }
+.btn-restart { padding: 14px 20px; border-radius: 99px; border: 1.5px solid var(--border-l); background: var(--card-bg); font-family: inherit; font-size: 18px; cursor: pointer; color: var(--text-2); transition: border-color .2s; }
+.btn-restart:hover { border-color: var(--accent); }
+.btn-skip { padding: 14px 16px; border-radius: 99px; border: 1.5px solid var(--border-l); background: var(--card-bg); font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer; color: var(--text-2); transition: border-color .2s; }
+.btn-skip:hover { border-color: var(--accent); }
+
+/* Session indicators */
+.session-dots { display: flex; gap: 8px; justify-content: center; margin-bottom: 32px; }
+.session-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--border-l); transition: background .3s; }
+.session-dot.done { background: var(--work-c); }
+.session-dot.current { background: var(--work-c); opacity: .5; }
+
+/* ── GRID: Timer + Settings + Log ────────────────────────────────── */
+.tool-grid { display: grid; grid-template-columns: 1fr 340px; gap: 24px; align-items: start; }
+@media(max-width:800px){ .tool-grid { grid-template-columns: 1fr; } }
+
+/* ── SETTINGS PANEL ──────────────────────────────────────────────── */
+.panel { background: var(--card-bg); border: 1px solid var(--border-l); border-radius: 20px; padding: 24px 22px; }
+.panel-title { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+.setting-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+.setting-label { font-size: 13px; font-weight: 600; color: var(--text-1); }
+.setting-sub { font-size: 11px; color: var(--muted); margin-top: 1px; }
+.setting-ctrl { display: flex; align-items: center; gap: 8px; }
+.dur-btn { width: 28px; height: 28px; border-radius: 8px; border: 1.5px solid var(--border-l); background: var(--body-bg); font-family: inherit; font-size: 16px; font-weight: 700; cursor: pointer; color: var(--text-2); line-height: 1; display: flex; align-items: center; justify-content: center; transition: border-color .2s; }
+.dur-btn:hover { border-color: var(--accent); color: var(--accent); }
+.dur-val { font-size: 15px; font-weight: 800; color: var(--text-1); min-width: 28px; text-align: center; }
+
+/* notif toggle */
+.notif-row { padding: 12px 14px; background: var(--body-bg); border-radius: 12px; display: flex; align-items: center; justify-content: space-between; margin-top: 4px; }
+.toggle-wrap { display: flex; align-items: center; }
+.toggle-input { display: none; }
+.toggle-slider { width: 38px; height: 22px; background: var(--border-l); border-radius: 99px; cursor: pointer; position: relative; transition: background .25s; display: block; }
+.toggle-slider::after { content: ''; position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; background: #fff; border-radius: 50%; transition: transform .25s; box-shadow: 0 1px 3px rgba(0,0,0,.2); }
+.toggle-input:checked + .toggle-slider { background: var(--accent); }
+.toggle-input:checked + .toggle-slider::after { transform: translateX(16px); }
+
+/* ── SESSION LOG ─────────────────────────────────────────────────── */
+.log-section { margin-top: 24px; }
+.log-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.log-title { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.log-clear { font-size: 11px; color: var(--muted); background: none; border: none; cursor: pointer; font-family: inherit; padding: 0; transition: color .2s; }
+.log-clear:hover { color: #ef4444; }
+.log-empty { font-size: 13px; color: var(--muted); text-align: center; padding: 20px 0; }
+.log-list { display: flex; flex-direction: column; gap: 7px; max-height: 240px; overflow-y: auto; }
+.log-item { display: flex; align-items: center; gap: 10px; padding: 9px 12px; background: var(--body-bg); border-radius: 10px; }
+.log-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.log-dot.work  { background: var(--work-c); }
+.log-dot.short { background: var(--short-c); }
+.log-dot.long  { background: var(--long-c); }
+.log-txt { flex: 1; font-size: 12.5px; color: var(--text-1); }
+.log-time { font-size: 11px; color: var(--muted); flex-shrink: 0; }
+.log-stats { display: flex; gap: 10px; margin-top: 12px; }
+.log-stat { flex: 1; background: var(--body-bg); border-radius: 12px; padding: 12px 10px; text-align: center; }
+.log-stat-n { font-size: 22px; font-weight: 800; color: var(--accent); }
+.log-stat-l { font-size: 10.5px; color: var(--muted); font-weight: 600; margin-top: 3px; }
+
+/* ── HOW IT WORKS ────────────────────────────────────────────────── */
+.how-section { margin-top: 52px; padding-top: 44px; border-top: 1px solid var(--border-l); }
+.how-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.how-title { font-size: clamp(18px,2.8vw,24px); font-weight: 800; letter-spacing: -.02em; color: var(--text-1); margin-bottom: 24px; }
+.how-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
+@media(max-width:700px){ .how-grid { grid-template-columns: repeat(2,1fr); } }
+@media(max-width:420px){ .how-grid { grid-template-columns: 1fr; } }
+.how-card { background: var(--card-bg); border: 1px solid var(--border-l); border-radius: 16px; padding: 20px 18px; }
+.how-num { font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+.how-name { font-size: 14px; font-weight: 700; color: var(--text-1); margin-bottom: 6px; }
+.how-body { font-size: 12.5px; color: var(--text-2); line-height: 1.6; }
+
+/* ── RELATED ──────────────────────────────────────────────────────── */
+.related-section { margin-top: 52px; padding-top: 44px; border-top: 1px solid var(--border-l); margin-bottom: clamp(40px,6vw,72px); }
+.related-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.related-title { font-size: clamp(18px,2.8vw,24px); font-weight: 800; letter-spacing: -.02em; color: var(--text-1); margin-bottom: 24px; }
+.rel-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 12px; }
+.rel-card { background: var(--card-bg); border: 1px solid var(--border-l); border-radius: 16px; padding: 18px 16px; text-decoration: none; display: block; transition: border-color .2s, transform .2s; }
+.rel-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.rel-icon { font-size: 22px; margin-bottom: 8px; }
+.rel-name { font-size: 14px; font-weight: 700; color: var(--text-1); margin-bottom: 4px; }
+.rel-desc { font-size: 12px; color: var(--text-2); line-height: 1.55; }
+
+/* ── FOOTER ──────────────────────────────────────────────────────── */
+.site-footer { border-top: 1px solid var(--border-l); padding: clamp(32px,5vw,52px) 0; }
+.footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; }
+.footer-brand-row .navbar-brand { display: inline-flex; margin-bottom: 8px; }
+.footer-tagline { font-size: 12px; color: var(--muted); max-width: 220px; line-height: 1.6; }
+.footer-links { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+.footer-link { font-size: 12px; color: var(--text-2); text-decoration: none; transition: color .2s; }
+.footer-link:hover { color: var(--accent); }
+.footer-bottom { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--border-l); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+.footer-copy { font-size: 11.5px; color: var(--muted); }
+.footer-privacy { font-size: 11px; color: var(--muted); background: rgba(var(--accent-rgb),.07); border-radius: 99px; padding: 3px 10px; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar" role="navigation" aria-label="Main navigation">
+  <div class="container-wide">
+    <div class="navbar-inner">
+      <a href="../index.html" class="navbar-brand" aria-label="DotForLife home">
+        <span class="brand-dot">dot</span><span class="brand-life">forlife</span>
+      </a>
+      <div class="navbar-links">
+        <a href="../productivity.html" class="nav-link"><span class="en">Productivity</span><span class="ar">الإنتاجية</span></a>
+        <a href="../health.html" class="nav-link"><span class="en">Health</span><span class="ar">الصحة</span></a>
+        <a href="../finance.html" class="nav-link"><span class="en">Finance</span><span class="ar">المال</span></a>
+        <a href="../islamic.html" class="nav-link"><span class="en">Islamic</span><span class="ar">إسلامي</span></a>
+      </div>
+      <div class="navbar-actions">
+        <button class="btn-lang" onclick="toggleLang()" aria-label="Toggle language">EN | AR</button>
+        <button class="btn-theme" onclick="toggleTheme()" aria-label="Toggle theme">◐</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main>
+<!-- HERO -->
+<section class="tool-hero">
+  <div class="container">
+    <div class="tool-badge">⏱️ <span class="en">Focus Timer</span><span class="ar">مؤقت التركيز</span></div>
+    <h1 class="tool-h1">
+      <span class="en">Pomodoro Focus Timer</span>
+      <span class="ar">مؤقت التركيز بوميدورو</span>
+    </h1>
+    <p class="tool-desc">
+      <span class="en">25 minutes of focused work. 5 minutes to breathe. Four sessions, then a proper rest. The technique that turns scattered effort into real output — one block at a time.</span>
+      <span class="ar">25 دقيقة تركيز حقيقي. 5 دقائق استرخاء. أربع جلسات، ثم راحة كاملة. التقنية التي تحوّل الجهد المشتت إلى نتائج حقيقية — كتلة واحدة في كل مرة.</span>
+    </p>
+  </div>
+</section>
+
+<!-- TIMER -->
+<section class="timer-section">
+  <div class="container">
+    <div class="tool-grid">
+
+      <!-- LEFT: TIMER -->
+      <div>
+        <!-- Mode tabs -->
+        <div class="mode-tabs">
+          <button class="mode-tab active" data-mode="work" onclick="switchMode('work')">
+            <span class="en">Focus</span><span class="ar">تركيز</span>
+          </button>
+          <button class="mode-tab" data-mode="short" onclick="switchMode('short')">
+            <span class="en">Short Break</span><span class="ar">راحة قصيرة</span>
+          </button>
+          <button class="mode-tab" data-mode="long" onclick="switchMode('long')">
+            <span class="en">Long Break</span><span class="ar">راحة طويلة</span>
+          </button>
+        </div>
+
+        <!-- Timer face -->
+        <div class="timer-face">
+          <div class="timer-ring-wrap">
+            <svg class="timer-svg" viewBox="0 0 240 240" width="240" height="240">
+              <circle class="timer-ring-bg" cx="120" cy="120" r="108"/>
+              <circle class="timer-ring-prog" id="timerRing" data-mode="work" cx="120" cy="120" r="108"
+                stroke-dasharray="678.6" stroke-dashoffset="0"/>
+            </svg>
+            <div class="timer-inner">
+              <div class="timer-display" id="timerDisplay">25:00</div>
+              <div class="timer-phase" data-mode="work" id="timerPhase">
+                <span class="en">Focus Time</span><span class="ar">وقت التركيز</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Session dots (4 per cycle) -->
+          <div class="session-dots" id="sessionDots">
+            <div class="session-dot current"></div>
+            <div class="session-dot"></div>
+            <div class="session-dot"></div>
+            <div class="session-dot"></div>
+          </div>
+
+          <!-- Controls -->
+          <div class="timer-controls">
+            <button class="btn-restart" onclick="resetTimer()" title="Reset" aria-label="Reset timer">↺</button>
+            <button class="btn-start" data-mode="work" id="startBtn" onclick="toggleTimer()">
+              <span class="en">Start</span><span class="ar">ابدأ</span>
+            </button>
+            <button class="btn-skip" onclick="skipPhase()">
+              <span class="en">Skip ›</span><span class="ar">تخطى ›</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- HOW IT WORKS -->
+        <div class="how-section">
+          <p class="how-eyebrow"><span class="en">The Pomodoro Technique</span><span class="ar">تقنية بوميدورو</span></p>
+          <h2 class="how-title"><span class="en">One proven cycle, endlessly repeatable</span><span class="ar">دورة مجربة، تتكرر بلا حدود</span></h2>
+          <div class="how-grid">
+            <div class="how-card">
+              <div class="how-num" style="color:var(--work-c)">25 min</div>
+              <div class="how-name"><span class="en">Deep Focus</span><span class="ar">تركيز عميق</span></div>
+              <div class="how-body"><span class="en">One task only. Phone away. The timer is your commitment to yourself.</span><span class="ar">مهمة واحدة فقط. الهاتف بعيداً. المؤقت هو التزامك لنفسك.</span></div>
+            </div>
+            <div class="how-card">
+              <div class="how-num" style="color:var(--short-c)">5 min</div>
+              <div class="how-name"><span class="en">Short Break</span><span class="ar">راحة قصيرة</span></div>
+              <div class="how-body"><span class="en">Stand up. Breathe. Hydrate. Let the mind reset before the next block.</span><span class="ar">قف. تنفّس. اشرب ماء. دع العقل يُعاد ضبطه قبل الكتلة القادمة.</span></div>
+            </div>
+            <div class="how-card">
+              <div class="how-num" style="color:var(--accent)">×4</div>
+              <div class="how-name"><span class="en">4 Sessions</span><span class="ar">4 جلسات</span></div>
+              <div class="how-body"><span class="en">Complete four focused blocks. The dots above the timer track your progress through the cycle.</span><span class="ar">أكمل أربع كتل تركيز. النقاط أعلى المؤقت تتتبع تقدمك في الدورة.</span></div>
+            </div>
+            <div class="how-card">
+              <div class="how-num" style="color:var(--long-c)">15 min</div>
+              <div class="how-name"><span class="en">Long Break</span><span class="ar">راحة طويلة</span></div>
+              <div class="how-body"><span class="en">After four sessions, take a full rest. Walk, eat, rest your eyes. Then start again.</span><span class="ar">بعد أربع جلسات، خذ راحة كاملة. تمشَّ، كل، أرح عيناك. ثم ابدأ من جديد.</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RELATED TOOLS -->
+        <div class="related-section">
+          <p class="related-eyebrow"><span class="en">More tools</span><span class="ar">أدوات أخرى</span></p>
+          <h2 class="related-title"><span class="en">Build the rest of your productivity system</span><span class="ar">ابنِ بقية نظامك الإنتاجي</span></h2>
+          <div class="rel-grid">
+            <a href="age-calculator.html" class="rel-card">
+              <div class="rel-icon">📅</div>
+              <div class="rel-name"><span class="en">Age Calculator</span><span class="ar">حاسبة العمر</span></div>
+              <div class="rel-desc"><span class="en">Exact age in years, months, and days. Useful for goal deadlines.</span><span class="ar">عمرك بالضبط بالسنوات والأشهر والأيام.</span></div>
+            </a>
+            <a href="plant-watering.html" class="rel-card">
+              <div class="rel-icon">🌿</div>
+              <div class="rel-name"><span class="en">Plant Watering</span><span class="ar">جدول الري</span></div>
+              <div class="rel-desc"><span class="en">Schedule your plants between focus sessions — a calm break ritual.</span><span class="ar">جدولة ري نباتاتك بين جلسات التركيز.</span></div>
+            </a>
+            <a href="../health.html" class="rel-card">
+              <div class="rel-icon">🏥</div>
+              <div class="rel-name"><span class="en">Health Tools</span><span class="ar">أدوات الصحة</span></div>
+              <div class="rel-desc"><span class="en">Nutrition, sleep, and fitness calculators that support sustained focus.</span><span class="ar">حاسبات التغذية والنوم واللياقة التي تدعم التركيز المستمر.</span></div>
+            </a>
+            <a href="../productivity.html" class="rel-card">
+              <div class="rel-icon">⚡</div>
+              <div class="rel-name"><span class="en">All Productivity Tools</span><span class="ar">كل أدوات الإنتاجية</span></div>
+              <div class="rel-desc"><span class="en">Every tool in the productivity ecosystem, in one place.</span><span class="ar">كل أدوات الإنتاجية في مكان واحد.</span></div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: SETTINGS + LOG -->
+      <div style="display:flex;flex-direction:column;gap:20px;">
+
+        <!-- Settings -->
+        <div class="panel">
+          <div class="panel-title"><span class="en">Timer Settings</span><span class="ar">إعدادات المؤقت</span></div>
+
+          <div class="setting-row">
+            <div>
+              <div class="setting-label"><span class="en">Focus</span><span class="ar">التركيز</span></div>
+              <div class="setting-sub"><span class="en">minutes</span><span class="ar">دقائق</span></div>
+            </div>
+            <div class="setting-ctrl">
+              <button class="dur-btn" onclick="changeDur('work',-1)">−</button>
+              <span class="dur-val" id="dur-work">25</span>
+              <button class="dur-btn" onclick="changeDur('work',1)">+</button>
+            </div>
+          </div>
+
+          <div class="setting-row">
+            <div>
+              <div class="setting-label"><span class="en">Short Break</span><span class="ar">الراحة القصيرة</span></div>
+              <div class="setting-sub"><span class="en">minutes</span><span class="ar">دقائق</span></div>
+            </div>
+            <div class="setting-ctrl">
+              <button class="dur-btn" onclick="changeDur('short',-1)">−</button>
+              <span class="dur-val" id="dur-short">5</span>
+              <button class="dur-btn" onclick="changeDur('short',1)">+</button>
+            </div>
+          </div>
+
+          <div class="setting-row">
+            <div>
+              <div class="setting-label"><span class="en">Long Break</span><span class="ar">الراحة الطويلة</span></div>
+              <div class="setting-sub"><span class="en">minutes</span><span class="ar">دقائق</span></div>
+            </div>
+            <div class="setting-ctrl">
+              <button class="dur-btn" onclick="changeDur('long',-1)">−</button>
+              <span class="dur-val" id="dur-long">15</span>
+              <button class="dur-btn" onclick="changeDur('long',1)">+</button>
+            </div>
+          </div>
+
+          <div class="setting-row" style="margin-bottom:0">
+            <div>
+              <div class="setting-label"><span class="en">Sessions per cycle</span><span class="ar">جلسات في الدورة</span></div>
+              <div class="setting-sub"><span class="en">then long break</span><span class="ar">ثم راحة طويلة</span></div>
+            </div>
+            <div class="setting-ctrl">
+              <button class="dur-btn" onclick="changeDur('cycles',-1)">−</button>
+              <span class="dur-val" id="dur-cycles">4</span>
+              <button class="dur-btn" onclick="changeDur('cycles',1)">+</button>
+            </div>
+          </div>
+
+          <div class="notif-row" style="margin-top:16px">
+            <div>
+              <div class="setting-label" style="font-size:12.5px"><span class="en">Browser notifications</span><span class="ar">إشعارات المتصفح</span></div>
+            </div>
+            <label class="toggle-wrap">
+              <input type="checkbox" class="toggle-input" id="notifToggle" onchange="toggleNotif()"/>
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Session log -->
+        <div class="panel">
+          <div class="log-header">
+            <div class="log-title"><span class="en">Today's Sessions</span><span class="ar">جلسات اليوم</span></div>
+            <button class="log-clear" onclick="clearLog()"><span class="en">Clear</span><span class="ar">مسح</span></button>
+          </div>
+
+          <div class="log-stats" id="logStats" style="display:none">
+            <div class="log-stat">
+              <div class="log-stat-n" id="logStatFocus">0</div>
+              <div class="log-stat-l"><span class="en">Focus</span><span class="ar">تركيز</span></div>
+            </div>
+            <div class="log-stat">
+              <div class="log-stat-n" id="logStatMin">0</div>
+              <div class="log-stat-l"><span class="en">Minutes</span><span class="ar">دقيقة</span></div>
+            </div>
+            <div class="log-stat">
+              <div class="log-stat-n" id="logStatBreaks">0</div>
+              <div class="log-stat-l"><span class="en">Breaks</span><span class="ar">استراحات</span></div>
+            </div>
+          </div>
+
+          <div id="logEmpty" class="log-empty">
+            <span class="en">No sessions yet. Start your first focus block.</span>
+            <span class="ar">لا جلسات بعد. ابدأ كتلة التركيز الأولى.</span>
+          </div>
+          <div class="log-list" id="logList"></div>
+        </div>
+
+      </div>
+    </div><!-- /tool-grid -->
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container-wide">
+    <div class="footer-inner">
+      <div class="footer-brand-row">
+        <a href="../index.html" class="navbar-brand"><span class="brand-dot">dot</span><span class="brand-life">forlife</span></a>
+        <p class="footer-tagline"><span class="en">Tools for real life decisions. Private, calm, intentional.</span><span class="ar">أدوات لقرارات الحياة الحقيقية. خصوصية، هدوء، وعمق.</span></p>
+      </div>
+      <div class="footer-links">
+        <a href="../productivity.html" class="footer-link"><span class="en">Productivity</span><span class="ar">الإنتاجية</span></a>
+        <a href="../health.html" class="footer-link"><span class="en">Health</span><span class="ar">الصحة</span></a>
+        <a href="../finance.html" class="footer-link"><span class="en">Finance</span><span class="ar">المال</span></a>
+        <a href="../islamic.html" class="footer-link"><span class="en">Islamic</span><span class="ar">إسلامي</span></a>
+        <a href="../about.html" class="footer-link"><span class="en">About</span><span class="ar">عن المنصة</span></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2025 DOTFORLIFE</span>
+      <span class="footer-privacy">🔒 <span class="en">No data stored.</span><span class="ar">لا بيانات محفوظة.</span></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ─── STATE ──────────────────────────────────────────────────────── */
+var durations = { work: 25, short: 5, long: 15, cycles: 4 };
+var currentMode = 'work';
+var sessionCount = 0;   // completed work sessions this cycle
+var running = false;
+var timerInterval = null;
+var timeLeft = durations.work * 60;
+var notifEnabled = false;
+var log = [];
+
+/* circumference = 2π × 108 ≈ 678.6 */
+var CIRC = 2 * Math.PI * 108;
+
+/* ─── RING HELPERS ───────────────────────────────────────────────── */
+function setRingProgress(fraction) {
+  var ring = document.getElementById('timerRing');
+  var offset = CIRC * (1 - fraction);
+  ring.style.strokeDashoffset = offset;
+}
+function setRingMode(mode) {
+  var ring = document.getElementById('timerRing');
+  ring.setAttribute('data-mode', mode);
+}
+
+/* ─── DISPLAY ────────────────────────────────────────────────────── */
+function renderTime(secs) {
+  var m = Math.floor(secs / 60);
+  var s = secs % 60;
+  document.getElementById('timerDisplay').textContent =
+    String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+}
+function updateTitle() {
+  var m = Math.floor(timeLeft / 60);
+  var s = timeLeft % 60;
+  var tag = currentMode === 'work' ? '🍅' : (currentMode === 'short' ? '☕' : '🌿');
+  document.title = tag + ' ' + String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0') + ' — DotForLife';
+}
+function updateSessionDots() {
+  var n = durations.cycles;
+  var dotsEl = document.getElementById('sessionDots');
+  dotsEl.innerHTML = '';
+  for(var i = 0; i < n; i++) {
+    var d = document.createElement('div');
+    d.className = 'session-dot' + (i < sessionCount ? ' done' : (i === sessionCount ? ' current' : ''));
+    dotsEl.appendChild(d);
+  }
+}
+
+/* ─── MODE MANAGEMENT ────────────────────────────────────────────── */
+function switchMode(mode) {
+  if(running) { clearInterval(timerInterval); running = false; }
+  currentMode = mode;
+  timeLeft = durations[mode === 'cycles' ? 'work' : mode] * 60;
+  renderTime(timeLeft);
+  setRingProgress(1);
+  setRingMode(mode);
+  /* tabs */
+  document.querySelectorAll('.mode-tab').forEach(function(t){
+    t.classList.toggle('active', t.getAttribute('data-mode') === mode);
+  });
+  /* start btn */
+  var sb = document.getElementById('startBtn');
+  sb.setAttribute('data-mode', mode);
+  sb.innerHTML = '<span class="en">Start</span><span class="ar">ابدأ</span>';
+  /* phase label */
+  var ph = document.getElementById('timerPhase');
+  ph.setAttribute('data-mode', mode);
+  if(mode === 'work') ph.innerHTML = '<span class="en">Focus Time</span><span class="ar">وقت التركيز</span>';
+  else if(mode === 'short') ph.innerHTML = '<span class="en">Short Break</span><span class="ar">راحة قصيرة</span>';
+  else ph.innerHTML = '<span class="en">Long Break</span><span class="ar">راحة طويلة</span>';
+  applyLangVisibility();
+  updateTitle();
+}
+
+/* ─── START / PAUSE / RESET ──────────────────────────────────────── */
+function toggleTimer() {
+  if(running) {
+    clearInterval(timerInterval);
+    running = false;
+    var sb = document.getElementById('startBtn');
+    sb.innerHTML = '<span class="en">Resume</span><span class="ar">استمر</span>';
+    applyLangVisibility();
+  } else {
+    running = true;
+    var sb = document.getElementById('startBtn');
+    sb.innerHTML = '<span class="en">Pause</span><span class="ar">إيقاف</span>';
+    applyLangVisibility();
+    timerInterval = setInterval(tick, 1000);
+  }
+}
+
+function resetTimer() {
+  clearInterval(timerInterval);
+  running = false;
+  timeLeft = durations[currentMode === 'work' ? 'work' : (currentMode === 'short' ? 'short' : 'long')] * 60;
+  renderTime(timeLeft);
+  setRingProgress(1);
+  var sb = document.getElementById('startBtn');
+  sb.innerHTML = '<span class="en">Start</span><span class="ar">ابدأ</span>';
+  applyLangVisibility();
+  document.title = 'Pomodoro Focus Timer | مؤقت بوميدورو — DotForLife';
+}
+
+function skipPhase() {
+  clearInterval(timerInterval);
+  running = false;
+  onPhaseComplete();
+}
+
+/* ─── TICK ───────────────────────────────────────────────────────── */
+function tick() {
+  if(timeLeft <= 0) {
+    clearInterval(timerInterval);
+    running = false;
+    onPhaseComplete();
+    return;
+  }
+  timeLeft--;
+  var total = durations[currentMode === 'work' ? 'work' : (currentMode === 'short' ? 'short' : 'long')] * 60;
+  setRingProgress(timeLeft / total);
+  renderTime(timeLeft);
+  updateTitle();
+}
+
+/* ─── PHASE COMPLETE ─────────────────────────────────────────────── */
+function onPhaseComplete() {
+  var lang = document.documentElement.getAttribute('data-lang') || 'en';
+  if(currentMode === 'work') {
+    sessionCount++;
+    /* log entry */
+    var entry = {
+      type: 'work',
+      label_en: 'Focus session #' + (log.filter(function(e){return e.type==='work';}).length + 1),
+      label_ar: 'جلسة تركيز #' + (log.filter(function(e){return e.type==='work';}).length + 1),
+      duration: durations.work,
+      time: new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})
+    };
+    log.unshift(entry);
+    renderLog();
+    notify(lang === 'ar' ? 'انتهى وقت التركيز! وقت الراحة.' : 'Focus session done! Time for a break.');
+    /* decide next mode */
+    if(sessionCount >= durations.cycles) {
+      sessionCount = 0;
+      switchMode('long');
+    } else {
+      switchMode('short');
+    }
+  } else {
+    /* break ended */
+    var bEntry = {
+      type: currentMode,
+      label_en: currentMode === 'short' ? 'Short break' : 'Long break',
+      label_ar: currentMode === 'short' ? 'راحة قصيرة' : 'راحة طويلة',
+      duration: durations[currentMode],
+      time: new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})
+    };
+    log.unshift(bEntry);
+    renderLog();
+    notify(lang === 'ar' ? 'انتهت الراحة! جاهز للتركيز؟' : 'Break over! Ready to focus?');
+    switchMode('work');
+  }
+  updateSessionDots();
+  /* auto-start next phase (optional — currently does NOT auto-start, user decides) */
+}
+
+/* ─── LOG ────────────────────────────────────────────────────────── */
+function renderLog() {
+  var empty = document.getElementById('logEmpty');
+  var list = document.getElementById('logList');
+  var stats = document.getElementById('logStats');
+  if(log.length === 0) {
+    empty.style.display = 'block';
+    list.innerHTML = '';
+    stats.style.display = 'none';
+    applyLangVisibility();
+    return;
+  }
+  empty.style.display = 'none';
+  stats.style.display = 'flex';
+
+  /* stats */
+  var focusCount = log.filter(function(e){return e.type==='work';}).length;
+  var focusMin = focusCount * durations.work;
+  var breakCount = log.filter(function(e){return e.type!=='work';}).length;
+  document.getElementById('logStatFocus').textContent = focusCount;
+  document.getElementById('logStatMin').textContent = focusMin;
+  document.getElementById('logStatBreaks').textContent = breakCount;
+
+  /* list */
+  list.innerHTML = '';
+  log.forEach(function(e) {
+    var li = document.createElement('div');
+    li.className = 'log-item';
+    li.innerHTML =
+      '<div class="log-dot ' + e.type + '"></div>' +
+      '<div class="log-txt"><span class="en">' + e.label_en + ' (' + e.duration + ' min)</span><span class="ar">' + e.label_ar + ' (' + e.duration + ' د)</span></div>' +
+      '<span class="log-time">' + e.time + '</span>';
+    list.appendChild(li);
+  });
+  applyLangVisibility();
+}
+
+function clearLog() {
+  log = [];
+  renderLog();
+}
+
+/* ─── SETTINGS ───────────────────────────────────────────────────── */
+function changeDur(key, delta) {
+  var min = key === 'cycles' ? 1 : 1;
+  var max = key === 'cycles' ? 8 : (key === 'work' ? 90 : 30);
+  durations[key] = Math.max(min, Math.min(max, durations[key] + delta));
+  document.getElementById('dur-' + key).textContent = durations[key];
+  /* if current mode is affected, reset */
+  if(key === currentMode || (key === 'work' && currentMode === 'work') ||
+     (key === 'short' && currentMode === 'short') || (key === 'long' && currentMode === 'long')) {
+    resetTimer();
+  }
+  if(key === 'cycles') updateSessionDots();
+}
+
+/* ─── NOTIFICATIONS ──────────────────────────────────────────────── */
+function toggleNotif() {
+  var chk = document.getElementById('notifToggle');
+  if(chk.checked) {
+    if('Notification' in window) {
+      Notification.requestPermission().then(function(p){
+        notifEnabled = (p === 'granted');
+        if(!notifEnabled) chk.checked = false;
+      });
+    } else {
+      chk.checked = false;
+    }
+  } else {
+    notifEnabled = false;
+  }
+}
+function notify(msg) {
+  if(notifEnabled && 'Notification' in window && Notification.permission === 'granted') {
+    new Notification('DOTFORLIFE', { body: msg, icon: '../d4l1.png' });
+  }
+}
+
+/* ─── LANGUAGE / THEME ───────────────────────────────────────────── */
+function applyLangVisibility() {
+  var lang = document.documentElement.getAttribute('data-lang') || 'en';
+  document.querySelectorAll('.en').forEach(function(el){ el.style.display = lang==='ar' ? 'none' : ''; });
+  document.querySelectorAll('.ar').forEach(function(el){ el.style.display = lang==='en' ? 'none' : ''; });
+}
+function toggleLang() {
+  var h = document.documentElement;
+  var next = h.getAttribute('data-lang') === 'en' ? 'ar' : 'en';
+  h.setAttribute('data-lang', next);
+  h.setAttribute('lang', next);
+  h.setAttribute('dir', next === 'ar' ? 'rtl' : 'ltr');
+  localStorage.setItem('dfl-lang', next);
+  applyLangVisibility();
+}
+function toggleTheme() {
+  var h = document.documentElement;
+  var next = h.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+  h.setAttribute('data-theme', next);
+  localStorage.setItem('dfl-theme', next);
+}
+
+/* ─── INIT ───────────────────────────────────────────────────────── */
+document.addEventListener('DOMContentLoaded', function() {
+  renderTime(timeLeft);
+  setRingProgress(1);
+  updateSessionDots();
+  renderLog();
+  applyLangVisibility();
+});
+</script>
+
+</body>
+</html>

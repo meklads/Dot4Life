@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en" data-theme="light">
+<head>
+  <script>(function(){var t=localStorage.getItem('dfl-theme')||'light';var l=localStorage.getItem('dfl-lang')||'en';var h=document.documentElement;h.setAttribute('data-theme',t);h.setAttribute('data-lang',l);h.setAttribute('lang',l);h.setAttribute('dir',l==='ar'?'rtl':'ltr');})();</script>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<title>Monthly Budget Planner | مخطط الميزانية الشهرية — DotForLife</title>
+<meta name="description" content="Plan your monthly budget with clarity. Track income and expenses across 9 categories, see where your money goes, and find your path to surplus. Bilingual, private, no data stored."/>
+<meta name="keywords" content="monthly budget planner, budget calculator, expense tracker, income vs expenses, ميزانية شهرية, مخطط الميزانية, حاسبة النفقات, تخطيط مالي"/>
+<link rel="canonical" href="https://dotforlife.com/tools/monthly-budget.html"/>
+<meta property="og:title" content="Monthly Budget Planner — DOTFORLIFE | مخطط الميزانية الشهرية"/>
+<meta property="og:description" content="Track income and expenses. See exactly where your money goes each month. Free, bilingual, private."/>
+<meta property="og:type" content="website"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Inter:wght@400;500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Inter:wght@400;500;600;700;800&display=swap"/></noscript>
+<style>
+/* ── BASE RESET & TOKENS ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --accent: #0F4C8A;
+  --accent-l: rgba(15,76,138,.10);
+  --accent-rgb: 15,76,138;
+  --card-bg: #ffffff;
+  --body-bg: #f7f8fc;
+  --text-1: #0d1117;
+  --text-2: #4a5568;
+  --border-l: #e2e8f0;
+  --muted: #94a3b8;
+  /* Category colors */
+  --c-housing: #6366f1;
+  --c-transport: #f59e0b;
+  --c-food: #10b981;
+  --c-utilities: #06b6d4;
+  --c-health: #ef4444;
+  --c-education: #8b5cf6;
+  --c-entertainment: #ec4899;
+  --c-savings: #0F4C8A;
+  --c-charity: #1B7A4E;
+}
+[data-theme="dark"] {
+  --card-bg: #1a1f2e;
+  --body-bg: #0f1320;
+  --text-1: #f1f5f9;
+  --text-2: #94a3b8;
+  --border-l: #2d3748;
+  --muted: #64748b;
+}
+[data-lang="ar"] { font-family: 'Almarai', sans-serif; }
+[data-lang="en"] { font-family: 'Inter', sans-serif; }
+[data-lang="ar"] .en { display: none; }
+[data-lang="en"] .ar { display: none; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { background: var(--body-bg); color: var(--text-1); line-height: 1.6; min-height: 100vh; }
+img { display: block; max-width: 100%; }
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; }
+input[type=number] { -moz-appearance: textfield; }
+
+/* ── CONTAINER ───────────────────────────────────────────────────── */
+.container { max-width: 1080px; margin: 0 auto; padding: 0 clamp(16px,4vw,40px); }
+
+/* ── NAVBAR ──────────────────────────────────────────────────────── */
+.navbar { position: sticky; top: 0; z-index: 100; background: var(--card-bg); border-bottom: 1px solid var(--border-l); backdrop-filter: saturate(180%) blur(12px); }
+.navbar-inner { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 16px; }
+.navbar-brand { text-decoration: none; font-weight: 800; font-size: 1.1rem; letter-spacing: -.02em; }
+.brand-dot { color: var(--accent); }
+.brand-life { color: var(--text-1); }
+.navbar-links { display: flex; gap: 4px; }
+.nav-link { text-decoration: none; color: var(--text-2); font-size: .82rem; font-weight: 500; padding: 5px 10px; border-radius: 8px; transition: color .2s, background .2s; }
+.nav-link:hover { color: var(--text-1); background: var(--body-bg); }
+.navbar-actions { display: flex; gap: 8px; align-items: center; }
+.btn-lang, .btn-theme { background: none; border: 1.5px solid var(--border-l); border-radius: 8px; padding: 5px 10px; font-family: inherit; font-size: .78rem; font-weight: 600; color: var(--text-2); cursor: pointer; transition: border-color .2s, color .2s; }
+.btn-lang:hover, .btn-theme:hover { border-color: var(--accent); color: var(--accent); }
+@media(max-width:600px){ .navbar-links { display: none; } }
+
+/* ── HERO ─────────────────────────────────────────────────────────── */
+.tool-hero { background: linear-gradient(135deg, rgba(15,76,138,.06) 0%, var(--body-bg) 60%); padding: clamp(48px,8vw,80px) 0 clamp(32px,5vw,52px); border-bottom: 1px solid var(--border-l); }
+.tool-badge { display: inline-flex; align-items: center; gap: 7px; background: var(--accent-l); border: 1px solid rgba(var(--accent-rgb),.2); color: var(--accent); font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 5px 14px; border-radius: 99px; margin-bottom: 18px; }
+.tool-h1 { font-size: clamp(26px,4.5vw,42px); font-weight: 800; letter-spacing: -.03em; color: var(--text-1); line-height: 1.1; margin: 0 0 14px; }
+.tool-desc { font-size: clamp(14px,1.8vw,16px); color: var(--text-2); line-height: 1.75; max-width: 540px; }
+
+/* ── TOOL LAYOUT ─────────────────────────────────────────────────── */
+.tool-main { padding: clamp(32px,5vw,56px) 0 clamp(48px,7vw,80px); }
+.tool-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 28px; align-items: start; }
+@media(max-width:860px){ .tool-grid { grid-template-columns: 1fr; } }
+
+/* ── CARDS ───────────────────────────────────────────────────────── */
+.panel { background: var(--card-bg); border: 1px solid var(--border-l); border-radius: 20px; padding: 26px 24px; }
+
+/* ── CURRENCY ────────────────────────────────────────────────────── */
+.currency-row { display: flex; gap: 6px; margin-bottom: 24px; flex-wrap: wrap; }
+.currency-btn { padding: 6px 14px; border-radius: 99px; border: 1.5px solid var(--border-l); background: var(--body-bg); font-family: inherit; font-size: 12px; font-weight: 600; color: var(--text-2); cursor: pointer; transition: all .2s; }
+.currency-btn.active { border-color: var(--accent); background: var(--accent-l); color: var(--accent); }
+
+/* ── INCOME BLOCK ────────────────────────────────────────────────── */
+.income-block { background: var(--accent-l); border: 1px solid rgba(var(--accent-rgb),.18); border-radius: 14px; padding: 18px 20px; margin-bottom: 28px; }
+.income-label { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+.income-input-wrap { position: relative; display: flex; align-items: center; }
+.income-sym { position: absolute; left: 14px; font-size: 15px; font-weight: 700; color: var(--accent); pointer-events: none; }
+[data-lang="ar"] .income-sym { left: auto; right: 14px; }
+.income-input { width: 100%; padding: 14px 14px 14px 38px; border: 2px solid rgba(var(--accent-rgb),.25); border-radius: 12px; background: var(--card-bg); color: var(--text-1); font-family: inherit; font-size: 22px; font-weight: 800; letter-spacing: -.02em; outline: none; transition: border-color .2s; }
+[data-lang="ar"] .income-input { padding: 14px 38px 14px 14px; text-align: right; }
+.income-input:focus { border-color: var(--accent); }
+.income-note { font-size: 11.5px; color: var(--text-2); margin-top: 7px; opacity: .75; }
+
+/* ── HALAL TOGGLE ────────────────────────────────────────────────── */
+.halal-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; padding: 12px 16px; background: rgba(27,122,78,.08); border: 1px solid rgba(27,122,78,.2); border-radius: 12px; }
+.halal-label { font-size: 13px; font-weight: 600; color: var(--text-1); display: flex; align-items: center; gap: 7px; }
+.halal-sub { font-size: 11px; color: var(--text-2); font-weight: 400; margin-top: 2px; }
+.toggle-wrap { display: flex; align-items: center; }
+.toggle-input { display: none; }
+.toggle-slider { width: 42px; height: 24px; background: var(--border-l); border-radius: 99px; cursor: pointer; position: relative; transition: background .25s; display: block; }
+.toggle-slider::after { content: ''; position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; background: #fff; border-radius: 50%; transition: transform .25s; box-shadow: 0 1px 3px rgba(0,0,0,.2); }
+.toggle-input:checked + .toggle-slider { background: #1B7A4E; }
+.toggle-input:checked + .toggle-slider::after { transform: translateX(18px); }
+
+/* ── EXPENSE CATEGORIES ──────────────────────────────────────────── */
+.section-label { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+.section-label::after { content:''; flex:1; height:1px; background:var(--border-l); }
+.cat-list { display: flex; flex-direction: column; gap: 10px; }
+.cat-row { display: flex; align-items: center; gap: 10px; }
+.cat-icon { width: 34px; height: 34px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+.cat-info { flex: 1; min-width: 0; }
+.cat-name { font-size: 12.5px; font-weight: 600; color: var(--text-1); margin-bottom: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cat-input-wrap { position: relative; width: 130px; flex-shrink: 0; }
+.cat-sym { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); font-size: 12px; font-weight: 600; color: var(--text-2); pointer-events: none; }
+[data-lang="ar"] .cat-sym { left: auto; right: 10px; }
+.cat-input { width: 100%; padding: 9px 10px 9px 26px; border: 1.5px solid var(--border-l); border-radius: 10px; background: var(--body-bg); color: var(--text-1); font-family: inherit; font-size: 13.5px; font-weight: 600; outline: none; transition: border-color .2s; }
+[data-lang="ar"] .cat-input { padding: 9px 26px 9px 10px; text-align: right; }
+.cat-input:focus { border-color: var(--accent); }
+
+/* ── CALCULATE BTN ───────────────────────────────────────────────── */
+.calc-btn { width: 100%; padding: 15px; background: var(--accent); color: #fff; border: none; border-radius: 12px; font-family: inherit; font-size: 15px; font-weight: 700; cursor: pointer; transition: opacity .2s, transform .15s; margin-top: 20px; letter-spacing: -.01em; }
+.calc-btn:hover { opacity: .88; transform: translateY(-1px); }
+
+/* ── RESULT PANEL ────────────────────────────────────────────────── */
+.result-panel { position: sticky; top: 76px; background: var(--card-bg); border: 1px solid var(--border-l); border-radius: 20px; overflow: hidden; }
+.result-header { padding: 22px 24px 18px; }
+.result-title { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+.result-empty { text-align: center; padding: 40px 20px; }
+.result-empty-icon { font-size: 40px; margin-bottom: 12px; }
+.result-empty-txt { font-size: 13.5px; color: var(--muted); line-height: 1.65; }
+.result-filled { display: none; }
+
+/* surplus / deficit status bar */
+.status-bar { padding: 18px 24px; }
+.status-surplus { background: rgba(16,185,129,.1); border-top: 3px solid #10b981; }
+.status-deficit { background: rgba(239,68,68,.1); border-top: 3px solid #ef4444; }
+.status-balanced { background: rgba(15,76,138,.07); border-top: 3px solid var(--accent); }
+.status-label { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 6px; }
+.status-surplus .status-label { color: #10b981; }
+.status-deficit .status-label { color: #ef4444; }
+.status-balanced .status-label { color: var(--accent); }
+.status-amount { font-size: clamp(28px,4vw,38px); font-weight: 800; letter-spacing: -.03em; line-height: 1.1; }
+.status-surplus .status-amount { color: #10b981; }
+.status-deficit .status-amount { color: #ef4444; }
+.status-balanced .status-amount { color: var(--accent); }
+.status-desc { font-size: 12.5px; color: var(--text-2); margin-top: 5px; line-height: 1.55; }
+
+/* totals row */
+.totals-row { display: flex; gap: 0; border-top: 1px solid var(--border-l); border-bottom: 1px solid var(--border-l); }
+.total-col { flex: 1; padding: 14px 18px; }
+.total-col + .total-col { border-left: 1px solid var(--border-l); }
+[data-lang="ar"] .total-col + .total-col { border-left: none; border-right: 1px solid var(--border-l); }
+.total-col-label { font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-bottom: 5px; }
+.total-col-val { font-size: 16px; font-weight: 800; color: var(--text-1); }
+.total-col-val.income-col { color: var(--accent); }
+.total-col-val.expense-col { color: #ef4444; }
+
+/* breakdown bars */
+.breakdown-section { padding: 18px 24px 20px; }
+.breakdown-title { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+.breakdown-list { display: flex; flex-direction: column; gap: 9px; }
+.bkd-row { display: flex; align-items: center; gap: 10px; }
+.bkd-icon { font-size: 14px; width: 22px; text-align: center; flex-shrink: 0; }
+.bkd-label { font-size: 12px; color: var(--text-2); width: 90px; flex-shrink: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+[data-lang="ar"] .bkd-label { text-align: right; }
+.bkd-bar-wrap { flex: 1; height: 7px; background: var(--border-l); border-radius: 99px; overflow: hidden; }
+.bkd-bar { height: 100%; border-radius: 99px; min-width: 2px; transition: width .7s cubic-bezier(.22,1,.36,1); }
+.bkd-pct { font-size: 11px; font-weight: 700; color: var(--text-2); width: 32px; text-align: right; flex-shrink: 0; }
+[data-lang="ar"] .bkd-pct { text-align: left; }
+
+/* 50/30/20 guide */
+.rule-section { padding: 16px 24px 20px; border-top: 1px solid var(--border-l); }
+.rule-title { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+.rule-chips { display: flex; gap: 8px; flex-wrap: wrap; }
+.rule-chip { padding: 7px 12px; border-radius: 10px; font-size: 11.5px; font-weight: 600; line-height: 1.4; }
+.rule-chip-needs { background: rgba(99,102,241,.1); color: #6366f1; }
+.rule-chip-wants { background: rgba(245,158,11,.1); color: #b45309; }
+.rule-chip-savings { background: rgba(15,76,138,.1); color: var(--accent); }
+
+/* halal finance tip */
+.halal-tip { margin: 14px 24px 18px; background: rgba(27,122,78,.08); border: 1px solid rgba(27,122,78,.2); border-radius: 12px; padding: 12px 14px; font-size: 12px; color: var(--text-2); line-height: 1.6; display: none; }
+.halal-tip strong { color: #1B7A4E; }
+
+/* ── RELATED TOOLS ───────────────────────────────────────────────── */
+.related-section { margin-top: 52px; padding-top: 44px; border-top: 1px solid var(--border-l); }
+.related-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.related-title { font-size: clamp(18px,2.8vw,24px); font-weight: 800; letter-spacing: -.02em; color: var(--text-1); margin-bottom: 6px; }
+.related-sub { font-size: 14px; color: var(--text-2); margin-bottom: 28px; }
+.related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; }
+.rel-card { background: var(--card-bg); border: 1px solid var(--border-l); border-radius: 16px; padding: 20px 18px; text-decoration: none; display: block; transition: border-color .2s, transform .2s; }
+.rel-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.rel-card-icon { font-size: 24px; margin-bottom: 10px; }
+.rel-card-name { font-size: 14px; font-weight: 700; color: var(--text-1); margin-bottom: 5px; }
+.rel-card-desc { font-size: 12px; color: var(--text-2); line-height: 1.55; }
+
+/* ── HOW IT WORKS ────────────────────────────────────────────────── */
+.how-section { margin-top: 48px; padding-top: 44px; border-top: 1px solid var(--border-l); }
+.how-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.how-title { font-size: clamp(18px,2.8vw,24px); font-weight: 800; letter-spacing: -.02em; color: var(--text-1); margin-bottom: 24px; }
+.how-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+@media(max-width:640px){ .how-grid { grid-template-columns: 1fr; } }
+.how-card { background: var(--card-bg); border: 1px solid var(--border-l); border-radius: 16px; padding: 22px 20px; }
+.how-num { font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+.how-name { font-size: 14px; font-weight: 700; color: var(--text-1); margin-bottom: 6px; }
+.how-body { font-size: 13px; color: var(--text-2); line-height: 1.6; }
+
+/* ── FOOTER ──────────────────────────────────────────────────────── */
+.site-footer { border-top: 1px solid var(--border-l); padding: clamp(32px,5vw,52px) 0; margin-top: clamp(40px,7vw,72px); }
+.footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; }
+.footer-brand-row .navbar-brand { display: inline-flex; margin-bottom: 8px; }
+.footer-tagline { font-size: 12px; color: var(--muted); max-width: 220px; line-height: 1.6; }
+.footer-links { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+.footer-link { font-size: 12px; color: var(--text-2); text-decoration: none; transition: color .2s; }
+.footer-link:hover { color: var(--accent); }
+.footer-bottom { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--border-l); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+.footer-copy { font-size: 11.5px; color: var(--muted); }
+.footer-privacy { font-size: 11px; color: var(--muted); background: rgba(var(--accent-rgb),.07); border-radius: 99px; padding: 3px 10px; }
+
+/* ── RTL ADJUSTMENTS ─────────────────────────────────────────────── */
+[data-lang="ar"] .totals-row { direction: rtl; }
+[data-lang="ar"] .bkd-row { direction: rtl; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar" role="navigation" aria-label="Main navigation">
+  <div class="container">
+    <div class="navbar-inner">
+      <a href="../index.html" class="navbar-brand" aria-label="DotForLife home">
+        <span class="brand-dot">dot</span><span class="brand-life">forlife</span>
+      </a>
+      <div class="navbar-links">
+        <a href="../finance.html" class="nav-link"><span class="en">Finance</span><span class="ar">المال</span></a>
+        <a href="../health.html" class="nav-link"><span class="en">Health</span><span class="ar">الصحة</span></a>
+        <a href="../islamic.html" class="nav-link"><span class="en">Islamic</span><span class="ar">إسلامي</span></a>
+        <a href="../travel.html" class="nav-link"><span class="en">Travel</span><span class="ar">السفر</span></a>
+      </div>
+      <div class="navbar-actions">
+        <button class="btn-lang" onclick="toggleLang()" aria-label="Toggle language">EN | AR</button>
+        <button class="btn-theme" onclick="toggleTheme()" aria-label="Toggle theme">◐</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main>
+<!-- HERO -->
+<section class="tool-hero">
+  <div class="container">
+    <div class="tool-badge">📊 <span class="en">Budget Planner</span><span class="ar">مخطط الميزانية</span></div>
+    <h1 class="tool-h1">
+      <span class="en">Monthly Budget Planner</span>
+      <span class="ar">مخطط الميزانية الشهرية</span>
+    </h1>
+    <p class="tool-desc">
+      <span class="en">Enter your income and expenses once. See exactly where your money goes, what you have left, and where to adjust. Private — nothing leaves your browser.</span>
+      <span class="ar">أدخل دخلك ونفقاتك مرة واحدة. واعرف بالضبط أين يذهب مالك، وماذا تبقى، وأين تحتاج للتعديل. خصوصي تماماً — لا شيء يخرج من متصفحك.</span>
+    </p>
+  </div>
+</section>
+
+<!-- TOOL -->
+<section class="tool-main">
+  <div class="container">
+    <div class="tool-grid">
+
+      <!-- LEFT: INPUTS -->
+      <div>
+        <div class="panel">
+
+          <!-- Currency -->
+          <div class="currency-row">
+            <button class="currency-btn active" onclick="setCurrency('SAR','﷼')" id="btn-SAR">SAR ﷼</button>
+            <button class="currency-btn" onclick="setCurrency('USD','$')" id="btn-USD">USD $</button>
+            <button class="currency-btn" onclick="setCurrency('AED','د.إ')" id="btn-AED">AED د.إ</button>
+            <button class="currency-btn" onclick="setCurrency('KWD','د.ك')" id="btn-KWD">KWD د.ك</button>
+          </div>
+
+          <!-- Monthly income -->
+          <div class="income-block">
+            <div class="income-label"><span class="en">Monthly Net Income</span><span class="ar">الدخل الشهري الصافي</span></div>
+            <div class="income-input-wrap">
+              <span class="income-sym" id="incomeSym">﷼</span>
+              <input type="number" id="incomeInput" class="income-input" placeholder="0" min="0" inputmode="numeric" oninput="autoCalculate()"/>
+            </div>
+            <div class="income-note">
+              <span class="en">After taxes and deductions. Include all income sources.</span>
+              <span class="ar">بعد الضرائب والاستقطاعات. اشمل جميع مصادر الدخل.</span>
+            </div>
+          </div>
+
+          <!-- Halal Finance Mode -->
+          <div class="halal-row">
+            <div>
+              <div class="halal-label">🌙 <span class="en">Halal Finance Mode</span><span class="ar">وضع التمويل الإسلامي</span></div>
+              <div class="halal-sub"><span class="en">Replaces interest-based tips with Islamic finance guidance</span><span class="ar">يستبدل النصائح التقليدية بإرشادات التمويل الإسلامي</span></div>
+            </div>
+            <label class="toggle-wrap">
+              <input type="checkbox" class="toggle-input" id="halalToggle" onchange="toggleHalal()"/>
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+
+          <!-- Expense categories -->
+          <div class="section-label"><span class="en">Monthly Expenses</span><span class="ar">النفقات الشهرية</span></div>
+
+          <div class="cat-list" id="catList">
+            <!-- rows injected by JS -->
+          </div>
+
+          <button class="calc-btn" onclick="calculate()">
+            <span class="en">Calculate My Budget</span>
+            <span class="ar">احسب ميزانيتي</span>
+          </button>
+        </div>
+
+        <!-- HOW IT WORKS -->
+        <div class="how-section">
+          <p class="how-eyebrow"><span class="en">How it works</span><span class="ar">كيف تعمل الأداة</span></p>
+          <h2 class="how-title"><span class="en">Three steps to budget clarity</span><span class="ar">ثلاث خطوات لوضوح الميزانية</span></h2>
+          <div class="how-grid">
+            <div class="how-card">
+              <div class="how-num"><span class="en">Step 01</span><span class="ar">الخطوة ١</span></div>
+              <div class="how-name"><span class="en">Enter your income</span><span class="ar">أدخل دخلك</span></div>
+              <div class="how-body"><span class="en">Your monthly net income — what actually lands in your account after all deductions.</span><span class="ar">دخلك الشهري الصافي — ما يصل إلى حسابك فعلاً بعد كل الاستقطاعات.</span></div>
+            </div>
+            <div class="how-card">
+              <div class="how-num"><span class="en">Step 02</span><span class="ar">الخطوة ٢</span></div>
+              <div class="how-name"><span class="en">Fill your expenses</span><span class="ar">أدخل نفقاتك</span></div>
+              <div class="how-body"><span class="en">Go category by category. Leave zero for things you don't spend on — the planner adapts automatically.</span><span class="ar">اعمل فئة بفئة. اترك صفراً لما لا تنفق عليه — المخطط يتكيف تلقائياً.</span></div>
+            </div>
+            <div class="how-card">
+              <div class="how-num"><span class="en">Step 03</span><span class="ar">الخطوة ٣</span></div>
+              <div class="how-name"><span class="en">See your picture</span><span class="ar">شاهد صورتك المالية</span></div>
+              <div class="how-body"><span class="en">Instant surplus or deficit. Category breakdown. Guidance on the 50/30/20 rule — or Islamic finance principles if you prefer.</span><span class="ar">فائض أو عجز فوري. تفصيل بالفئات. إرشادات بقاعدة 50/30/20 — أو مبادئ التمويل الإسلامي إن شئت.</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RELATED TOOLS -->
+        <div class="related-section">
+          <p class="related-eyebrow"><span class="en">Connected tools</span><span class="ar">أدوات مرتبطة</span></p>
+          <h2 class="related-title"><span class="en">Plan your full financial picture</span><span class="ar">خطط لصورتك المالية الكاملة</span></h2>
+          <p class="related-sub"><span class="en">Your budget is the foundation. These tools build on it.</span><span class="ar">ميزانيتك هي الأساس. هذه الأدوات تبني عليها.</span></p>
+          <div class="related-grid">
+            <a href="savings-goal.html" class="rel-card">
+              <div class="rel-card-icon">🎯</div>
+              <div class="rel-card-name"><span class="en">Savings Goal</span><span class="ar">هدف الادخار</span></div>
+              <div class="rel-card-desc"><span class="en">Turn your monthly surplus into a savings plan with a real end date.</span><span class="ar">حوّل فائضك الشهري إلى خطة ادخار بموعد نهاية حقيقي.</span></div>
+            </a>
+            <a href="mortgage-calculator.html" class="rel-card">
+              <div class="rel-card-icon">🏠</div>
+              <div class="rel-card-name"><span class="en">Mortgage Calculator</span><span class="ar">حاسبة التمويل العقاري</span></div>
+              <div class="rel-card-desc"><span class="en">See how a mortgage payment fits into your monthly budget.</span><span class="ar">شوف كيف تناسب قسط التمويل ميزانيتك الشهرية.</span></div>
+            </a>
+            <a href="zakat-calculator.html" class="rel-card">
+              <div class="rel-card-icon">🌙</div>
+              <div class="rel-card-name"><span class="en">Zakat Calculator</span><span class="ar">حاسبة الزكاة</span></div>
+              <div class="rel-card-desc"><span class="en">Calculate your annual zakat obligation on savings and assets.</span><span class="ar">احسب زكاتك السنوية على مدخراتك وأصولك.</span></div>
+            </a>
+            <a href="../finance.html" class="rel-card">
+              <div class="rel-card-icon">💼</div>
+              <div class="rel-card-name"><span class="en">All Finance Tools</span><span class="ar">جميع أدوات المال</span></div>
+              <div class="rel-card-desc"><span class="en">ROI, rental yield, mortgage, savings, zakat — every finance tool in one place.</span><span class="ar">العائد، العقار، التمويل، الادخار، الزكاة — كل أدوات المال في مكان واحد.</span></div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: RESULTS -->
+      <div class="result-panel" id="resultPanel">
+        <div class="result-header">
+          <div class="result-title"><span class="en">Your Budget Summary</span><span class="ar">ملخص ميزانيتك</span></div>
+        </div>
+
+        <!-- Empty state -->
+        <div class="result-empty" id="resultEmpty">
+          <div class="result-empty-icon">📋</div>
+          <div class="result-empty-txt">
+            <span class="en">Enter your income and at least one expense, then press Calculate.</span>
+            <span class="ar">أدخل دخلك ونفقة واحدة على الأقل، ثم اضغط احسب.</span>
+          </div>
+        </div>
+
+        <!-- Filled state -->
+        <div class="result-filled" id="resultFilled">
+
+          <!-- Status bar -->
+          <div id="statusBar" class="status-bar status-surplus">
+            <div class="status-label" id="statusLabel"></div>
+            <div class="status-amount" id="statusAmount"></div>
+            <div class="status-desc" id="statusDesc"></div>
+          </div>
+
+          <!-- Totals -->
+          <div class="totals-row">
+            <div class="total-col">
+              <div class="total-col-label"><span class="en">Income</span><span class="ar">الدخل</span></div>
+              <div class="total-col-val income-col" id="totalIncome">—</div>
+            </div>
+            <div class="total-col">
+              <div class="total-col-label"><span class="en">Expenses</span><span class="ar">النفقات</span></div>
+              <div class="total-col-val expense-col" id="totalExpenses">—</div>
+            </div>
+            <div class="total-col">
+              <div class="total-col-label"><span class="en">Saved</span><span class="ar">المدخر</span></div>
+              <div class="total-col-val" id="totalSaved" style="color:var(--accent)">—</div>
+            </div>
+          </div>
+
+          <!-- Category breakdown bars -->
+          <div class="breakdown-section">
+            <div class="breakdown-title"><span class="en">Where the money goes</span><span class="ar">أين يذهب المال</span></div>
+            <div class="breakdown-list" id="breakdownList"></div>
+          </div>
+
+          <!-- 50/30/20 guide -->
+          <div class="rule-section" id="ruleSection">
+            <div class="rule-title" id="ruleTitle"></div>
+            <div class="rule-chips" id="ruleChips"></div>
+          </div>
+
+          <!-- Halal tip -->
+          <div class="halal-tip" id="halalTip">
+            <strong>🌙 <span class="en">Islamic Finance Reminder</span><span class="ar">تذكير التمويل الإسلامي</span></strong><br/>
+            <span class="en">Aim to keep a clean financial profile: avoid interest-bearing debt, keep charity (Sadaqah) as a line in your budget, and build an emergency fund before investing.</span>
+            <span class="ar">احرص على ملف مالي نظيف: تجنب الديون الربوية، اجعل الصدقة سطراً ثابتاً في ميزانيتك، وابنِ صندوق الطوارئ قبل الاستثمار.</span>
+          </div>
+
+        </div>
+      </div>
+
+    </div><!-- /tool-grid -->
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand-row">
+        <a href="../index.html" class="navbar-brand"><span class="brand-dot">dot</span><span class="brand-life">forlife</span></a>
+        <p class="footer-tagline"><span class="en">Tools for real life decisions. Private, calm, intentional.</span><span class="ar">أدوات لقرارات الحياة الحقيقية. خصوصية، هدوء، وعمق.</span></p>
+      </div>
+      <div class="footer-links">
+        <a href="../finance.html" class="footer-link"><span class="en">Finance</span><span class="ar">المال</span></a>
+        <a href="../health.html" class="footer-link"><span class="en">Health</span><span class="ar">الصحة</span></a>
+        <a href="../productivity.html" class="footer-link"><span class="en">Productivity</span><span class="ar">الإنتاجية</span></a>
+        <a href="../islamic.html" class="footer-link"><span class="en">Islamic</span><span class="ar">إسلامي</span></a>
+        <a href="../travel.html" class="footer-link"><span class="en">Travel</span><span class="ar">السفر</span></a>
+        <a href="../about.html" class="footer-link"><span class="en">About</span><span class="ar">عن المنصة</span></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2025 DOTFORLIFE</span>
+      <span class="footer-privacy">🔒 <span class="en">No data stored. Runs in your browser.</span><span class="ar">لا بيانات محفوظة. يعمل في متصفحك.</span></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ─── STATE ────────────────────────────────────────────────────── */
+var currCode = 'SAR', currSym = '﷼';
+var halalMode = false;
+
+/* ─── CATEGORIES ───────────────────────────────────────────────── */
+var CATS = [
+  { id:'housing',       icon:'🏠', color:'#6366f1', en:'Housing / Rent',       ar:'السكن / الإيجار',        hint_en:'Rent, mortgage, building fees',           hint_ar:'الإيجار، التمويل، رسوم الصيانة' },
+  { id:'transport',     icon:'🚗', color:'#f59e0b', en:'Transport',             ar:'التنقل',                  hint_en:'Fuel, car payment, public transport',      hint_ar:'وقود، قسط سيارة، مواصلات' },
+  { id:'food',          icon:'🛒', color:'#10b981', en:'Food & Groceries',      ar:'الغذاء والمستلزمات',     hint_en:'Supermarket, restaurants, delivery',       hint_ar:'سوبرماركت، مطاعم، توصيل' },
+  { id:'utilities',     icon:'💡', color:'#06b6d4', en:'Bills & Utilities',     ar:'الفواتير والمرافق',      hint_en:'Electricity, water, internet, phone',      hint_ar:'كهرباء، ماء، إنترنت، هاتف' },
+  { id:'health',        icon:'🏥', color:'#ef4444', en:'Health & Medical',      ar:'الصحة والطب',             hint_en:'Insurance, pharmacy, gym',                 hint_ar:'تأمين، صيدلية، نادي رياضي' },
+  { id:'education',     icon:'📚', color:'#8b5cf6', en:'Education',             ar:'التعليم',                 hint_en:'School fees, courses, books',              hint_ar:'رسوم دراسية، دورات، كتب' },
+  { id:'entertainment', icon:'🎬', color:'#ec4899', en:'Entertainment',         ar:'الترفيه',                 hint_en:'Subscriptions, outings, hobbies',          hint_ar:'اشتراكات، نزهات، هوايات' },
+  { id:'savings',       icon:'💰', color:'#0F4C8A', en:'Savings & Investment',  ar:'الادخار والاستثمار',     hint_en:'Monthly savings target — treated as a fixed expense', hint_ar:'هدف الادخار الشهري — يُعامل كمصروف ثابت' },
+  { id:'charity',       icon:'🤲', color:'#1B7A4E', en:'Charity & Zakat',       ar:'الصدقة والزكاة',         hint_en:'Zakat, regular sadaqah, family support',   hint_ar:'زكاة، صدقة منتظمة، دعم الأسرة' },
+];
+
+/* ─── BUILD CATEGORY ROWS ──────────────────────────────────────── */
+function buildCatList() {
+  var el = document.getElementById('catList');
+  el.innerHTML = '';
+  CATS.forEach(function(c) {
+    var row = document.createElement('div');
+    row.className = 'cat-row';
+    row.innerHTML =
+      '<div class="cat-icon" style="background:' + c.color + '22">' + c.icon + '</div>' +
+      '<div class="cat-info">' +
+        '<div class="cat-name"><span class="en">' + c.en + '</span><span class="ar">' + c.ar + '</span></div>' +
+      '</div>' +
+      '<div class="cat-input-wrap">' +
+        '<span class="cat-sym" id="sym-' + c.id + '">' + currSym + '</span>' +
+        '<input type="number" id="cat-' + c.id + '" class="cat-input" placeholder="0" min="0" inputmode="numeric" oninput="autoCalculate()" title="' + (document.documentElement.getAttribute('data-lang')==='ar' ? c.hint_ar : c.hint_en) + '"/>' +
+      '</div>';
+    el.appendChild(row);
+  });
+  /* re-apply lang hiding */
+  applyLangVisibility();
+}
+
+/* ─── CURRENCY ─────────────────────────────────────────────────── */
+function setCurrency(code, sym) {
+  currCode = code; currSym = sym;
+  ['SAR','USD','AED','KWD'].forEach(function(c){
+    document.getElementById('btn-'+c).classList.toggle('active', c===code);
+  });
+  document.getElementById('incomeSym').textContent = sym;
+  CATS.forEach(function(c){ var s=document.getElementById('sym-'+c.id); if(s) s.textContent=sym; });
+  autoCalculate();
+}
+
+/* ─── HALAL TOGGLE ─────────────────────────────────────────────── */
+function toggleHalal() {
+  halalMode = document.getElementById('halalToggle').checked;
+  var tip = document.getElementById('halalTip');
+  if(tip) tip.style.display = halalMode ? 'block' : 'none';
+  autoCalculate();
+}
+
+/* ─── FORMATTING ───────────────────────────────────────────────── */
+function fmt(n) {
+  var abs = Math.abs(n);
+  var s;
+  if(abs >= 1000000) s = (n/1000000).toFixed(1) + 'M';
+  else if(abs >= 1000) s = (n/1000).toFixed(1) + 'K';
+  else s = Math.round(n).toLocaleString();
+  return currSym + s;
+}
+function fmtFull(n) {
+  return currSym + ' ' + Math.abs(n).toLocaleString(undefined, {minimumFractionDigits:0, maximumFractionDigits:0});
+}
+
+/* ─── AUTO CALCULATE (on input) ────────────────────────────────── */
+function autoCalculate() {
+  var income = parseFloat(document.getElementById('incomeInput').value) || 0;
+  var hasAny = false;
+  CATS.forEach(function(c){ if(parseFloat(document.getElementById('cat-'+c.id).value)||0) hasAny=true; });
+  if(income > 0 && hasAny) calculate();
+}
+
+/* ─── MAIN CALCULATE ───────────────────────────────────────────── */
+function calculate() {
+  var income = parseFloat(document.getElementById('incomeInput').value) || 0;
+  var catVals = {};
+  var totalExp = 0;
+  CATS.forEach(function(c){
+    var v = parseFloat(document.getElementById('cat-'+c.id).value) || 0;
+    catVals[c.id] = v;
+    totalExp += v;
+  });
+
+  if(income === 0 && totalExp === 0) {
+    document.getElementById('resultEmpty').style.display='block';
+    document.getElementById('resultFilled').style.display='none';
+    return;
+  }
+
+  var diff = income - totalExp;
+  var savingsAmt = catVals['savings'] || 0;
+
+  /* status bar */
+  var sb = document.getElementById('statusBar');
+  var lang = document.documentElement.getAttribute('data-lang') || 'en';
+  sb.className = 'status-bar ' + (diff > 0 ? 'status-surplus' : (diff < 0 ? 'status-deficit' : 'status-balanced'));
+
+  if(diff > 0) {
+    document.getElementById('statusLabel').innerHTML = '<span class="en">Monthly Surplus</span><span class="ar">الفائض الشهري</span>';
+    document.getElementById('statusAmount').textContent = fmtFull(diff);
+    document.getElementById('statusDesc').innerHTML = '<span class="en">You have money left over. Consider moving it to savings before it disappears.</span><span class="ar">لديك مبلغ متبقٍّ. فكر في نقله للادخار قبل أن يختفي.</span>';
+  } else if(diff < 0) {
+    document.getElementById('statusLabel').innerHTML = '<span class="en">Monthly Deficit</span><span class="ar">العجز الشهري</span>';
+    document.getElementById('statusAmount').textContent = '− ' + fmtFull(diff);
+    document.getElementById('statusDesc').innerHTML = '<span class="en">Expenses exceed income. Review the category breakdown to find where to cut.</span><span class="ar">النفقات تتجاوز الدخل. راجع تفصيل الفئات لمعرفة أين يمكن التخفيض.</span>';
+  } else {
+    document.getElementById('statusLabel').innerHTML = '<span class="en">Perfectly Balanced</span><span class="ar">ميزان مثالي</span>';
+    document.getElementById('statusAmount').textContent = fmtFull(0);
+    document.getElementById('statusDesc').innerHTML = '<span class="en">Income equals expenses. Add a savings line to create a buffer.</span><span class="ar">الدخل يساوي النفقات. أضف سطر ادخار لبناء احتياطي.</span>';
+  }
+
+  /* totals */
+  document.getElementById('totalIncome').textContent = income > 0 ? fmtFull(income) : '—';
+  document.getElementById('totalExpenses').textContent = totalExp > 0 ? fmtFull(totalExp) : '—';
+  document.getElementById('totalSaved').textContent = savingsAmt > 0 ? fmtFull(savingsAmt) : (diff > 0 ? fmtFull(diff) : '—');
+
+  /* breakdown bars */
+  var bkd = document.getElementById('breakdownList');
+  bkd.innerHTML = '';
+  var base = income > 0 ? income : totalExp;
+  var activeCats = CATS.filter(function(c){ return catVals[c.id] > 0; });
+  /* sort descending */
+  activeCats.sort(function(a,b){ return catVals[b.id]-catVals[a.id]; });
+
+  activeCats.forEach(function(c) {
+    var v = catVals[c.id];
+    var pct = base > 0 ? Math.min(100, (v/base)*100) : 0;
+    var row = document.createElement('div');
+    row.className = 'bkd-row';
+    row.innerHTML =
+      '<span class="bkd-icon">' + c.icon + '</span>' +
+      '<span class="bkd-label"><span class="en">' + c.en.split(' ')[0] + '</span><span class="ar">' + c.ar.split(' ')[0] + '</span></span>' +
+      '<div class="bkd-bar-wrap"><div class="bkd-bar" style="width:' + pct.toFixed(1) + '%;background:' + c.color + '"></div></div>' +
+      '<span class="bkd-pct">' + pct.toFixed(0) + '%</span>';
+    bkd.appendChild(row);
+  });
+
+  /* 50/30/20 guide */
+  var ruleSection = document.getElementById('ruleSection');
+  var ruleTitle = document.getElementById('ruleTitle');
+  var ruleChips = document.getElementById('ruleChips');
+  if(income > 0) {
+    var needsCats = ['housing','food','utilities','health','transport'];
+    var wantsCats = ['entertainment','education'];
+    var savCats = ['savings','charity'];
+    var needsTotal = needsCats.reduce(function(s,k){return s+(catVals[k]||0);},0);
+    var wantsTotal = wantsCats.reduce(function(s,k){return s+(catVals[k]||0);},0);
+    var savTotal = savCats.reduce(function(s,k){return s+(catVals[k]||0);},0);
+    var np = Math.round((needsTotal/income)*100);
+    var wp = Math.round((wantsTotal/income)*100);
+    var sp = Math.round((savTotal/income)*100);
+
+    if(halalMode) {
+      ruleTitle.innerHTML = '<span class="en">Islamic Finance Guidance</span><span class="ar">إرشادات التمويل الإسلامي</span>';
+      ruleChips.innerHTML =
+        '<div class="rule-chip rule-chip-needs"><span class="en">Necessities ' + np + '% (target ≤50%)</span><span class="ar">الضروريات ' + np + '% (الهدف ≤50%)</span></div>' +
+        '<div class="rule-chip rule-chip-savings" style="background:rgba(27,122,78,.1);color:#1B7A4E"><span class="en">Zakat + Savings ' + sp + '% (target ≥20%)</span><span class="ar">الزكاة + الادخار ' + sp + '% (الهدف ≥20%)</span></div>' +
+        '<div class="rule-chip" style="background:rgba(245,158,11,.1);color:#b45309"><span class="en">Lifestyle ' + wp + '%</span><span class="ar">أسلوب الحياة ' + wp + '%</span></div>';
+    } else {
+      ruleTitle.innerHTML = '<span class="en">50/30/20 Rule — Your Numbers</span><span class="ar">قاعدة 50/30/20 — أرقامك</span>';
+      ruleChips.innerHTML =
+        '<div class="rule-chip rule-chip-needs"><span class="en">Needs ' + np + '% (target 50%)</span><span class="ar">الاحتياجات ' + np + '% (الهدف 50%)</span></div>' +
+        '<div class="rule-chip rule-chip-wants"><span class="en">Wants ' + wp + '% (target 30%)</span><span class="ar">الرغبات ' + wp + '% (الهدف 30%)</span></div>' +
+        '<div class="rule-chip rule-chip-savings"><span class="en">Savings ' + sp + '% (target 20%)</span><span class="ar">الادخار ' + sp + '% (الهدف 20%)</span></div>';
+    }
+    ruleSection.style.display = 'block';
+    /* re-apply lang */
+    applyLangVisibility();
+  } else {
+    ruleSection.style.display = 'none';
+  }
+
+  /* show results */
+  document.getElementById('resultEmpty').style.display = 'none';
+  document.getElementById('resultFilled').style.display = 'block';
+  applyLangVisibility();
+}
+
+/* ─── LANGUAGE ─────────────────────────────────────────────────── */
+function applyLangVisibility() {
+  var lang = document.documentElement.getAttribute('data-lang') || 'en';
+  document.querySelectorAll('.en').forEach(function(el){ el.style.display = lang==='ar' ? 'none' : ''; });
+  document.querySelectorAll('.ar').forEach(function(el){ el.style.display = lang==='en' ? 'none' : ''; });
+}
+
+function toggleLang() {
+  var h = document.documentElement;
+  var cur = h.getAttribute('data-lang') || 'en';
+  var next = cur === 'en' ? 'ar' : 'en';
+  h.setAttribute('data-lang', next);
+  h.setAttribute('lang', next);
+  h.setAttribute('dir', next === 'ar' ? 'rtl' : 'ltr');
+  localStorage.setItem('dfl-lang', next);
+  applyLangVisibility();
+}
+
+function toggleTheme() {
+  var h = document.documentElement;
+  var cur = h.getAttribute('data-theme') || 'light';
+  var next = cur === 'light' ? 'dark' : 'light';
+  h.setAttribute('data-theme', next);
+  localStorage.setItem('dfl-theme', next);
+}
+
+/* ─── INIT ─────────────────────────────────────────────────────── */
+document.addEventListener('DOMContentLoaded', function() {
+  buildCatList();
+  applyLangVisibility();
+});
+</script>
+
+</body>
+</html>

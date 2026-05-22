@@ -3666,6 +3666,263 @@ window.dflTrack=function(event,params){
   </div>
 </div>
 
+<!-- ═══ DOTFORLIFE DAILY ═══════════════════════════════════════════════ -->
+<style>
+.dfl-daily {
+  padding: 0;
+  border-bottom: 1px solid var(--border-l);
+  background: var(--card-bg);
+  overflow: hidden;
+}
+.dfl-daily-inner {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  min-height: 68px;
+}
+.dfl-daily-hijri {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 28px;
+  border-right: 1px solid var(--border-l);
+  flex-shrink: 0;
+  min-width: 220px;
+}
+[data-lang="ar"] .dfl-daily-hijri { border-right: none; border-left: 1px solid var(--border-l); }
+.dfl-hijri-icon {
+  font-size: 26px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.dfl-hijri-date {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-1);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.dfl-hijri-greg {
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-top: 2px;
+}
+.dfl-daily-month {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 24px;
+  border-right: 1px solid var(--border-l);
+  flex-shrink: 0;
+}
+[data-lang="ar"] .dfl-daily-month { border-right: none; border-left: 1px solid var(--border-l); }
+.dfl-month-badge {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 99px;
+  white-space: nowrap;
+}
+.dfl-daily-context {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.dfl-daily-context::-webkit-scrollbar { display: none; }
+.dfl-ctx-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 24px;
+  border-right: 1px solid var(--border-l);
+  white-space: nowrap;
+  text-decoration: none;
+  transition: background 0.2s ease;
+  flex-shrink: 0;
+}
+.dfl-ctx-item:hover { background: var(--body-bg); }
+.dfl-ctx-item:last-child { border-right: none; }
+[data-lang="ar"] .dfl-ctx-item { border-right: none; border-left: 1px solid var(--border-l); }
+[data-lang="ar"] .dfl-ctx-item:last-child { border-left: none; }
+.dfl-ctx-icon { font-size: 18px; line-height: 1; }
+.dfl-ctx-body {}
+.dfl-ctx-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1;
+  margin-bottom: 3px;
+}
+.dfl-ctx-val {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-1);
+  line-height: 1.2;
+}
+.dfl-ctx-val small {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-2);
+  margin-left: 4px;
+}
+.dfl-daily-cta {
+  display: flex;
+  align-items: center;
+  padding: 16px 24px;
+  border-left: 1px solid var(--border-l);
+  flex-shrink: 0;
+  text-decoration: none;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--text-2);
+  transition: color 0.2s, background 0.2s;
+  text-transform: uppercase;
+}
+[data-lang="ar"] .dfl-daily-cta { border-left: none; border-right: 1px solid var(--border-l); }
+.dfl-daily-cta:hover { background: var(--body-bg); color: var(--text-1); }
+.dfl-cta-arrow { font-size: 14px; transition: transform 0.2s; }
+.dfl-daily-cta:hover .dfl-cta-arrow { transform: translateX(3px); }
+[data-lang="ar"] .dfl-daily-cta:hover .dfl-cta-arrow { transform: translateX(-3px); }
+@media (max-width: 768px) {
+  .dfl-daily-inner { flex-wrap: nowrap; overflow-x: auto; }
+  .dfl-daily-hijri { min-width: 160px; padding: 14px 18px; }
+  .dfl-daily-cta { display: none; }
+}
+</style>
+
+<div class="dfl-daily" aria-label="Today's Islamic date and context" id="dfl-daily-strip">
+  <div class="container">
+    <div class="dfl-daily-inner" id="dfl-daily-inner">
+      <!-- Populated by JS below -->
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  /* ── Hijri calculation (Umm al-Qura algorithm, pure JS) ─────────────── */
+  function gregorianToHijri(date) {
+    var y=date.getFullYear(), m=date.getMonth()+1, d=date.getDate();
+    if(m<3){y--;m+=12;}
+    var A=Math.floor(y/100), B=2-A+Math.floor(A/4);
+    var JD=Math.floor(365.25*(y+4716))+Math.floor(30.6001*(m+1))+d+B-1524.5;
+    JD=JD+0.5;
+    var l=JD-1948440+10632; var n=Math.floor((l-1)/10631);
+    l=l-10631*n+354; var J=(Math.floor((10985-l)/5316))*(Math.floor((50*l)/17719))+(Math.floor(l/5670))*(Math.floor((43*l)/15238));
+    l=l-(Math.floor((30-J)/15))*(Math.floor((17719*J)/50))-(Math.floor(J/16))*(Math.floor((15238*J)/43))+29;
+    var hm=Math.floor((24*l)/709); var hd=l-Math.floor((709*hm)/24); var hy=30*n+J-30;
+    return {y:hy, m:hm, d:hd};
+  }
+
+  var monthsAr = ['محرم','صفر','ربيع الأول','ربيع الثاني','جمادى الأولى','جمادى الثانية','رجب','شعبان','رمضان','شوال','ذو القعدة','ذو الحجة'];
+  var monthsEn = ['Muharram','Safar','Rabi al-Awwal','Rabi al-Thani','Jumada al-Ula','Jumada al-Thani','Rajab','Sha\'ban','Ramadan','Shawwal','Dhul Qa\'dah','Dhul Hijjah'];
+  var daysAr = ['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
+  var daysEn = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
+  var today = new Date();
+  var h = gregorianToHijri(today);
+  var dayIdx = today.getDay();
+  var isFriday = dayIdx === 5;
+  var lang = document.documentElement.getAttribute('data-lang') || 'en';
+
+  /* Month context: special Islamic months */
+  var monthCtx = {
+    1: {en:'Sacred Month', ar:'شهر محرم', color:'#1B7A4E', bg:'rgba(27,122,78,.1)', emoji:'🌙'},
+    7: {en:'Month of Rajab', ar:'شهر رجب', color:'#1B7A4E', bg:'rgba(27,122,78,.1)', emoji:'🌙'},
+    8: {en:'Month of Sha\'ban', ar:'شهر شعبان', color:'#1B7A4E', bg:'rgba(27,122,78,.08)', emoji:'🌙'},
+    9: {en:'Ramadan Mubarak', ar:'رمضان المبارك', color:'#C8871A', bg:'rgba(200,135,26,.12)', emoji:'🌙'},
+    12: {en:'Dhul Hijjah — Hajj Season', ar:'ذو الحجة — موسم الحج', color:'#1B7A4E', bg:'rgba(27,122,78,.1)', emoji:'🕋'}
+  };
+  var mCtx = monthCtx[h.m] || {en: monthsEn[h.m-1], ar: monthsAr[h.m-1], color:'var(--text-2)', bg:'var(--border-l)', emoji:'📅'};
+
+  /* Contextual tool suggestion based on month */
+  var toolSuggest = {
+    9: {en:'Fasting Nutrition', ar:'تغذية الصيام', href:'tools/ramadan-calories.html', emoji:'🌙'},
+    12: {en:'Hajj & Umrah Budget', ar:'ميزانية الحج والعمرة', href:'tools/travel-budget.html', emoji:'🕋'}
+  };
+  var suggest = toolSuggest[h.m] || {
+    en: isFriday ? 'Friday Qibla' : 'Today\'s Prayer Times',
+    ar: isFriday ? 'قبلة الجمعة' : 'أوقات الصلاة اليوم',
+    href: isFriday ? 'tools/qibla.html' : 'tools/prayer-times.html',
+    emoji: isFriday ? '🕌' : '🕐'
+  };
+
+  /* Gregorian display */
+  var gregStr = today.toLocaleDateString('en-US',{day:'numeric',month:'short',year:'numeric'});
+  var gregStrAr = today.toLocaleDateString('ar-SA',{day:'numeric',month:'long',year:'numeric'});
+
+  var hijriDateEn = h.d + ' ' + monthsEn[h.m-1] + ' ' + h.y + ' AH';
+  var hijriDateAr = h.d + ' ' + monthsAr[h.m-1] + ' ' + h.y + ' هـ';
+  var dayEn = daysEn[dayIdx];
+  var dayAr = daysAr[dayIdx];
+
+  var html = '\
+    <div class="dfl-daily-hijri">\
+      <div class="dfl-hijri-icon">🗓️</div>\
+      <div>\
+        <div class="dfl-hijri-date"><span class="en">'+hijriDateEn+'</span><span class="ar">'+hijriDateAr+'</span></div>\
+        <div class="dfl-hijri-greg"><span class="en">'+dayEn+' · '+gregStr+'</span><span class="ar">'+dayAr+' · '+gregStrAr+'</span></div>\
+      </div>\
+    </div>\
+    <div class="dfl-daily-month">\
+      <span class="dfl-month-badge" style="background:'+mCtx.bg+';color:'+mCtx.color+'">'+mCtx.emoji+' <span class="en">'+mCtx.en+'</span><span class="ar">'+mCtx.ar+'</span></span>\
+    </div>\
+    <div class="dfl-daily-context">\
+      <a href="'+suggest.href+'" class="dfl-ctx-item">\
+        <span class="dfl-ctx-icon">'+suggest.emoji+'</span>\
+        <div class="dfl-ctx-body">\
+          <div class="dfl-ctx-label"><span class="en">Relevant today</span><span class="ar">مناسب اليوم</span></div>\
+          <div class="dfl-ctx-val"><span class="en">'+suggest.en+'</span><span class="ar">'+suggest.ar+'</span></div>\
+        </div>\
+      </a>\
+      <a href="tools/zakat-calculator.html" class="dfl-ctx-item">\
+        <span class="dfl-ctx-icon">💎</span>\
+        <div class="dfl-ctx-body">\
+          <div class="dfl-ctx-label"><span class="en">Islamic Finance</span><span class="ar">الشأن المالي</span></div>\
+          <div class="dfl-ctx-val"><span class="en">Zakat Calculator</span><span class="ar">حاسبة الزكاة</span></div>\
+        </div>\
+      </a>\
+      <a href="tools/hijri-converter.html" class="dfl-ctx-item">\
+        <span class="dfl-ctx-icon">🔄</span>\
+        <div class="dfl-ctx-body">\
+          <div class="dfl-ctx-label"><span class="en">Date Tools</span><span class="ar">أدوات التاريخ</span></div>\
+          <div class="dfl-ctx-val"><span class="en">Hijri Converter</span><span class="ar">التقويم الهجري</span></div>\
+        </div>\
+      </a>'+(isFriday ? '\
+      <a href="tools/qibla.html" class="dfl-ctx-item" style="background:rgba(27,122,78,.04)">\
+        <span class="dfl-ctx-icon">🕌</span>\
+        <div class="dfl-ctx-body">\
+          <div class="dfl-ctx-label" style="color:#1B7A4E"><span class="en">Jumu\'ah Mubarak</span><span class="ar">جمعة مباركة</span></div>\
+          <div class="dfl-ctx-val" style="color:#1B7A4E"><span class="en">Find Qibla Direction</span><span class="ar">اتجاه القبلة</span></div>\
+        </div>\
+      </a>' : '')+'\
+    </div>\
+    <a href="islamic.html" class="dfl-daily-cta">\
+      <span class="en">Islamic Tools</span><span class="ar">الأدوات الإسلامية</span>\
+      <span class="dfl-cta-arrow">→</span>\
+    </a>';
+
+  document.getElementById('dfl-daily-inner').innerHTML = html;
+  /* Re-apply lang visibility after injection */
+  var dl = document.documentElement.getAttribute('data-lang') || 'en';
+  document.querySelectorAll('#dfl-daily-inner .en').forEach(function(el){ el.style.display = dl==='ar'?'none':''; });
+  document.querySelectorAll('#dfl-daily-inner .ar').forEach(function(el){ el.style.display = dl==='ar'?'':'none'; });
+})();
+</script>
+
+<!-- ═══ /DOTFORLIFE DAILY ════════════════════════════════════════════════ -->
+
 <!-- ═══ GUIDED JOURNEY SELECTOR ═══════════════════════════════════════ -->
 <section class="journey-selector" aria-label="Find the right tools for your situation">
   <div class="container">
