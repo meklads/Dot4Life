@@ -162,26 +162,29 @@
 
     /* ─── HERO ──────────────────────────────────────── */
     #hero {
-      display: grid;
-      grid-template-columns: 58% 42%;
-      min-height: 440px;
       margin-top: 64px;
       background: #FFFFFF;
-      overflow: hidden;
       border-bottom: 1px solid var(--border);
     }
     [data-theme="dark"] #hero { background: var(--card-bg); }
+    .hero-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 58% 42%;
+      min-height: 440px;
+      align-items: center;
+    }
     .hero-left {
       display: flex; flex-direction: column; justify-content: center;
-      padding: 5% 5% 5% 8%;
+      padding: 3.5rem 3rem 3.5rem 0;
     }
-    [data-lang="ar"] .hero-left { padding: 5% 8% 5% 5%; }
+    [data-lang="ar"] .hero-left { padding: 3.5rem 0 3.5rem 3rem; }
     .hero-right {
       display: flex; align-items: center; justify-content: center;
       padding: 2.5rem;
-      background: #FFFFFF;
     }
-    [data-theme="dark"] .hero-right { background: var(--card-bg); }
     /* Circular photo frame */
     .hero-photo-wrap {
       position: relative;
@@ -306,10 +309,10 @@
       margin-top: .25rem;
     }
     @media (max-width: 768px) {
-      #hero { grid-template-columns: 1fr; }
-      .hero-right { padding: 2rem; min-height: 300px; }
-      .hero-photo-wrap { width: min(260px, 70%); }
-      .hero-left { padding: 6% 5%; }
+      .hero-inner { grid-template-columns: 1fr; padding: 0 16px; }
+      .hero-right { padding: 1.5rem; }
+      .hero-photo-wrap { width: min(240px, 65%); }
+      .hero-left { padding: 2.5rem 0 1rem; }
     }
     @media (max-width: 500px) {
       .hero-stats { flex-wrap: wrap; }
@@ -964,6 +967,7 @@
        HERO
   ═══════════════════════════════════════ -->
   <section id="hero" aria-label="Hero section">
+    <div class="hero-inner">
     <div class="hero-left">
       <span class="hero-eyebrow">
         <span class="en">The Family Platform</span>
@@ -1002,6 +1006,7 @@
         </div>
       </div>
     </div>
+    </div><!-- /.hero-inner -->
   </section>
   <div class="hero-stats" aria-hidden="true">
     <div class="stat-item">
