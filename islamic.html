@@ -51,26 +51,39 @@
   <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Almarai:wght@300;400;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Almarai:wght@300;400;700;800&display=swap" /></noscript>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Almarai:wght@300;400;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Almarai:wght@300;400;700&display=swap" /></noscript>
   <style>
     :root {
-      --accent: #1B7A4E; --accent-l: #27A96C; --accent-d: #145C3A;
-      --accent-glow: rgba(27,122,78,.15); --accent-soft: rgba(27,122,78,.08);
-      --gold: #D4AF37; --gold-l: #F0C940; --gold-soft: rgba(212,175,55,.10);
-      --blue:#0066CC; --cyan:#06B6D4; --teal:#14B8A6;
-      --dark:#0F172A; --slate:#1E293B; --border:#334155;
-      --border-l:#DDE0E4; --pill-bg:#F5F6F7; --muted:#9CA3AF; --light:#F8FAFC; --white:#FFFFFF;
-      --card-bg:#FFFFFF; --body-bg:#F5F6F7; --text:#343B42; --text-2:#6B7280;
-      --shadow-md:0 2px 10px rgba(0,0,0,.08);
-      --shadow-lg:0 6px 24px rgba(0,0,0,.10);
-      --shadow-xl:0 12px 40px rgba(0,0,0,.12);
-      --r-lg:16px; --r-xl:20px; --r-2xl:24px;
+      /* Islamic accent — warm earth green (calm, not loud) */
+      --accent: #2D6A4F; --accent-l: #40916C; --accent-d: #1B4332;
+      --accent-glow: rgba(45,106,79,.12); --accent-soft: rgba(45,106,79,.06);
+      /* Gold — warm editorial, same as homepage */
+      --gold: #B8861A; --gold-l: #D4A832; --gold-d: #8A620F;
+      --gold-soft: rgba(184,134,26,.08);
+      /* Warm editorial palette — matches homepage */
+      --text: #1A1410; --text-1: #1A1410; --text-2: #5C534A;
+      --muted: #9A9188; --body-bg: #FAF8F4; --card-bg: #FFFFFF;
+      --cream: #F5F0E8; --cream-d: #EDE6D8;
+      --border: #E0D8CC; --border-l: #E0D8CC;
+      --pill-bg: #F5F0E8; --light: #FAF8F4; --white: #FFFFFF;
+      --navy: #0A1628;
+      /* Typography */
+      --font-serif: 'Crimson Pro', Georgia, serif;
+      --font-ui: 'Inter', system-ui, sans-serif;
+      --font-ar: 'Almarai', 'Segoe UI', sans-serif;
+      /* Shadows & radius */
+      --shadow-md: 0 2px 12px rgba(0,0,0,.07);
+      --shadow-lg: 0 6px 28px rgba(0,0,0,.09);
+      --shadow-xl: 0 12px 44px rgba(0,0,0,.11);
+      --r-lg: 8px; --r-xl: 12px; --r-2xl: 16px;
     }
     [data-theme="dark"] {
-      --card-bg:#1E293B; --body-bg:#0F172A; --text:#F1F5F9; --text-2:#94A3B8;
-      --border-l:#334155; --pill-bg:#263548; --shadow-md:0 2px 10px rgba(0,0,0,.35);
-      --shadow-lg:0 6px 24px rgba(0,0,0,.40);
+      --card-bg: #1E1A16; --body-bg: #12100E; --text: #EDE8E0; --text-1: #EDE8E0; --text-2: #B8B0A4;
+      --muted: #7A746C; --border: #302820; --border-l: #302820;
+      --cream: #1E1A16; --cream-d: #252018; --pill-bg: #1E1A16;
+      --shadow-md: 0 2px 10px rgba(0,0,0,.35);
+      --shadow-lg: 0 6px 24px rgba(0,0,0,.40);
     }
     [data-lang="ar"] { font-family:'Almarai',sans-serif; direction:rtl; text-align:right; }
     [data-lang="ar"] .en { display:none; } [data-lang="en"] .ar { display:none; }
@@ -87,28 +100,24 @@
     .tool-card:hover .tool-icon-wrap{transform:scale(1.1) rotate(-3deg);}
     .tool-card:nth-child(1){transition-delay:.04s;}.tool-card:nth-child(2){transition-delay:.1s;}.tool-card:nth-child(3){transition-delay:.16s;}.tool-card:nth-child(4){transition-delay:.22s;}.tool-card:nth-child(5){transition-delay:.28s;}.tool-card:nth-child(6){transition-delay:.34s;}
 
-    /* NAVBAR */
-    .navbar{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.94);backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid var(--border-l);}
-    .navbar.scrolled{box-shadow:0 2px 16px rgba(0,0,0,.07);}
-    [data-theme="dark"] .navbar{background:rgba(15,23,42,.94);border-bottom-color:rgba(51,65,85,.6);}
-    .navbar-inner{display:flex;align-items:center;justify-content:space-between;height:68px;}
-    .logo{font-size:1.3rem;font-weight:800;letter-spacing:-.02em;display:flex;align-items:center;gap:2px;}
-    .logo span:nth-child(1){color:var(--text);}
-    .logo span:nth-child(2){color:var(--cyan);}
-    .logo span:nth-child(3){color:var(--teal);}
-    .nav-links{display:flex;align-items:center;gap:4px;list-style:none;}
-    .nav-links a{padding:6px 14px;border-radius:999px;font-size:.85rem;font-weight:500;color:var(--text-2);transition:all .2s;white-space:nowrap;}
-    .nav-links a:hover{color:var(--text);background:var(--pill-bg);}
-    .nav-links a.active{color:var(--accent);font-weight:700;}
-    .nav-actions{display:flex;align-items:center;gap:10px;}
-    .lang-toggle,.theme-btn{padding:7px 14px;border-radius:999px;background:var(--pill-bg);border:1px solid var(--border-l);color:var(--text-2);font-size:.85rem;font-weight:600;cursor:pointer;font-family:inherit;transition:all .2s;}
-    .lang-toggle:hover,.theme-btn:hover{border-color:var(--accent);color:var(--accent);}
-    .theme-btn{padding:7px 12px;}
+    /* NAVBAR — matches homepage style */
+    .navbar{position:sticky;top:0;z-index:1000;background:rgba(250,248,244,.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border-l);transition:box-shadow .3s;}
+    .navbar.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.07);}
+    [data-theme="dark"] .navbar{background:rgba(18,16,14,.97);border-bottom-color:var(--border);}
+    .navbar-inner{display:flex;align-items:center;justify-content:space-between;height:64px;}
+    .logo{font-family:var(--font-serif);font-size:1.25rem;font-weight:600;letter-spacing:.04em;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:0;}
+    .logo .logo-dot{color:var(--gold);}
+    .nav-links{display:flex;align-items:center;gap:2rem;list-style:none;}
+    .nav-links a{font-size:.82rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--text-2);transition:color .2s;white-space:nowrap;}
+    .nav-links a:hover,.nav-links a.active{color:var(--text);}
+    .nav-actions{display:flex;align-items:center;gap:.75rem;}
+    .lang-toggle,.theme-btn{padding:.35rem .7rem;border-radius:6px;background:transparent;border:1px solid var(--border-l);color:var(--text-2);font-size:.76rem;font-weight:600;letter-spacing:.08em;cursor:pointer;font-family:inherit;transition:all .2s;}
+    .lang-toggle:hover,.theme-btn:hover{border-color:var(--gold);color:var(--gold);}
     @media(max-width:768px){.nav-links{display:none;}}
 
-    /* HERO — white editorial split layout */
+    /* HERO — warm cream editorial split layout */
     .cat-hero{
-      background:#FFFFFF;
+      background:var(--body-bg);
       border-bottom:1px solid var(--border-l);
       overflow:hidden;
     }
@@ -116,16 +125,16 @@
     .cat-hero-inner{
       display:grid;
       grid-template-columns:58% 42%;
-      min-height:440px;
+      min-height:480px;
       align-items:center;
     }
     .cat-hero-text{
       padding:5% 5% 5% max(32px,5%);
     }
     [data-lang="ar"] .cat-hero-text{padding:5% max(32px,5%) 5% 5%;}
-    .cat-hero-label{display:inline-flex;align-items:center;gap:8px;padding:5px 14px;border-radius:999px;background:rgba(27,122,78,.08);border:1px solid rgba(27,122,78,.2);color:var(--accent-l);font-size:.78rem;font-weight:600;letter-spacing:.05em;margin-bottom:20px;}
-    .cat-hero-title{font-size:clamp(2rem,4vw,3.4rem);font-weight:900;letter-spacing:-.03em;line-height:1.12;margin-bottom:16px;}
-    .hero-accent{background:linear-gradient(135deg,var(--accent),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    .cat-hero-label{display:inline-flex;align-items:center;gap:8px;padding:5px 14px;border-radius:999px;background:var(--gold-soft);border:1px solid rgba(184,134,26,.3);color:var(--gold-d);font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:20px;}
+    .cat-hero-title{font-family:var(--font-serif);font-size:clamp(2rem,4vw,3.4rem);font-weight:300;letter-spacing:-.02em;line-height:1.08;margin-bottom:16px;color:var(--text);}
+    .hero-accent{background:linear-gradient(135deg,var(--gold-l) 0%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-style:italic;}
     .cat-hero-sub{font-size:1rem;color:var(--text-2);line-height:1.72;max-width:460px;margin-bottom:32px;}
     .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;}
     .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 26px;border-radius:999px;font-weight:700;font-size:.9rem;cursor:pointer;border:none;transition:all .2s;font-family:inherit;}
@@ -138,7 +147,13 @@
     .islamic-photo-side{
       display:flex;align-items:center;justify-content:center;
       padding:2.5rem;
-      background:#FFFFFF;
+      background:var(--cream);
+      position:relative;
+    }
+    .islamic-photo-side::before{
+      content:'';position:absolute;inset:0;
+      background:radial-gradient(ellipse 70% 70% at center,rgba(184,134,26,.06),transparent);
+      pointer-events:none;
     }
     [data-theme="dark"] .islamic-photo-side{background:var(--card-bg);}
     .islamic-photo-wrap{
@@ -148,20 +163,20 @@
     }
     .islamic-photo-ring{
       position:absolute;inset:-14px;border-radius:50%;
-      border:1.5px dashed rgba(27,122,78,.4);
+      border:1.5px solid rgba(184,134,26,.25);
       animation:isl-ring-spin 30s linear infinite;
     }
     .islamic-photo-ring-2{
       position:absolute;inset:-28px;border-radius:50%;
-      border:1px dashed rgba(212,175,55,.25);
+      border:1px solid rgba(184,134,26,.1);
       animation:isl-ring-spin 50s linear infinite reverse;
     }
     @keyframes isl-ring-spin{to{transform:rotate(360deg);}}
     .islamic-photo-circle{
       width:100%;height:100%;
       border-radius:50%;overflow:hidden;
-      border:3px solid var(--accent);
-      box-shadow:0 8px 40px rgba(27,122,78,.2),0 2px 16px rgba(0,0,0,.07);
+      border:4px solid rgba(250,248,244,.97);
+      box-shadow:0 0 0 2px rgba(184,134,26,.3),0 12px 48px rgba(0,0,0,.12);
     }
     .islamic-photo-circle img{
       width:100%;height:100%;
@@ -178,7 +193,7 @@
     /* TOOLS SECTION */
     .tools-section{padding:80px 0;}
     .tools-header{margin-bottom:48px;}
-    .tools-header h2{font-size:1.8rem;font-weight:800;letter-spacing:-.02em;margin-bottom:8px;}
+    .tools-header h2{font-family:var(--font-serif);font-size:2rem;font-weight:400;letter-spacing:-.01em;margin-bottom:8px;color:var(--text);}
     .tools-header p{color:var(--text-2);font-size:.95rem;}
     .section-label{font-size:.75rem;font-weight:700;letter-spacing:.08em;color:var(--accent);text-transform:uppercase;margin-bottom:12px;display:block;}
 
@@ -188,7 +203,7 @@
     .featured-tool:hover{box-shadow:0 16px 48px rgba(27,122,78,.12);transform:translateY(-2px);}
     .ft-label{font-size:.72rem;font-weight:700;letter-spacing:.08em;color:var(--accent);text-transform:uppercase;margin-bottom:12px;}
     .ft-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:999px;background:var(--gold-soft);border:1px solid rgba(212,175,55,.3);color:var(--gold);font-size:.72rem;font-weight:700;margin-bottom:16px;}
-    .ft-title{font-size:1.7rem;font-weight:800;letter-spacing:-.02em;margin-bottom:12px;}
+    .ft-title{font-family:var(--font-serif);font-size:1.8rem;font-weight:400;letter-spacing:-.01em;margin-bottom:12px;color:var(--text);}
     .ft-desc{font-size:.95rem;color:var(--text-2);line-height:1.7;margin-bottom:24px;}
     .ft-meta{display:flex;gap:24px;margin-bottom:24px;flex-wrap:wrap;}
     .ft-meta-item{font-size:.82rem;color:var(--muted);}
@@ -227,7 +242,7 @@
     .hijri-card::before{content:'';position:absolute;right:-60px;top:-60px;width:300px;height:300px;background:radial-gradient(circle,rgba(27,122,78,.25) 0%,transparent 70%);pointer-events:none;}
     .hijri-card::after{content:'';position:absolute;left:-40px;bottom:-40px;width:200px;height:200px;background:radial-gradient(circle,rgba(212,175,55,.12) 0%,transparent 70%);pointer-events:none;}
     .hijri-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;color:var(--gold);text-transform:uppercase;margin-bottom:16px;}
-    .hijri-title{font-size:2rem;font-weight:900;letter-spacing:-.02em;color:#fff;margin-bottom:16px;line-height:1.2;}
+    .hijri-title{font-family:var(--font-serif);font-size:2rem;font-weight:300;letter-spacing:-.01em;color:#EDE8E0;margin-bottom:16px;line-height:1.2;}
     .hijri-sub{font-size:.95rem;color:rgba(255,255,255,.65);line-height:1.7;margin-bottom:28px;}
     .btn-gold{background:linear-gradient(135deg,var(--gold),#B8941F);color:#0F1F13;font-weight:700;box-shadow:0 4px 16px rgba(212,175,55,.4);}
     .btn-gold:hover{transform:translateY(-1px);box-shadow:0 6px 22px rgba(212,175,55,.5);}
@@ -278,24 +293,24 @@
     }
   
 /* ═══ NEWSLETTER SECTION ════════════════════════════════ */
-.nl-section{padding:clamp(48px,7vw,72px) 0;background:linear-gradient(135deg,#0a1628 0%,#0f2744 60%,#0a1f2e 100%);position:relative;overflow:hidden;}
-.nl-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 70% at 80% 50%,rgba(6,182,212,.12),transparent),radial-gradient(ellipse 40% 60% at 10% 80%,rgba(0,102,204,.10),transparent);pointer-events:none;}
+.nl-section{padding:clamp(48px,7vw,72px) 0;background:linear-gradient(135deg,#0F0C08 0%,#1A1208 60%,#0F0C08 100%);position:relative;overflow:hidden;}
+.nl-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 70% at 80% 50%,rgba(184,134,26,.1),transparent),radial-gradient(ellipse 40% 60% at 10% 80%,rgba(45,106,79,.08),transparent);pointer-events:none;}
 .nl-inner{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px);align-items:center;position:relative;z-index:1;}
 @media(max-width:700px){.nl-inner{grid-template-columns:1fr;gap:20px;}}
-.nl-eyebrow{display:flex;align-items:center;gap:8px;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(6,182,212,.8);margin-bottom:12px;}
-.nl-dot{width:6px;height:6px;border-radius:50%;background:#06B6D4;animation:nlPulse 2s infinite;}
-@keyframes nlPulse{0%,100%{box-shadow:0 0 0 0 rgba(6,182,212,.4);}50%{box-shadow:0 0 0 6px rgba(6,182,212,0);}}
-.nl-title{font-size:clamp(1.2rem,2.5vw,1.7rem);font-weight:900;letter-spacing:-.03em;line-height:1.25;color:#fff;margin-bottom:10px;}
-.nl-sub{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.7;}
+.nl-eyebrow{display:flex;align-items:center;gap:8px;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(212,168,50,.8);margin-bottom:12px;}
+.nl-dot{width:6px;height:6px;border-radius:50%;background:#D4A832;animation:nlPulse 2s infinite;}
+@keyframes nlPulse{0%,100%{box-shadow:0 0 0 0 rgba(184,134,26,.4);}50%{box-shadow:0 0 0 6px rgba(184,134,26,0);}}
+.nl-title{font-family:var(--font-serif);font-size:clamp(1.3rem,2.5vw,1.9rem);font-weight:300;letter-spacing:-.01em;line-height:1.2;color:#EDE8E0;margin-bottom:10px;}
+.nl-sub{font-size:.85rem;color:rgba(237,232,224,.45);line-height:1.7;}
 .nl-input-row{display:flex;gap:8px;margin-bottom:10px;}
 @media(max-width:400px){.nl-input-row{flex-direction:column;}}
-.nl-input{flex:1;padding:13px 16px;border-radius:10px;border:1.5px solid rgba(255,255,255,.15);background:rgba(255,255,255,.08);color:#fff;font-size:.9rem;font-family:inherit;outline:none;transition:border-color .2s;}
-.nl-input::placeholder{color:rgba(255,255,255,.35);}
-.nl-input:focus{border-color:rgba(6,182,212,.6);}
-.nl-btn{padding:13px 20px;border-radius:10px;background:linear-gradient(135deg,#0066CC,#06B6D4);color:#fff;font-weight:700;font-size:.88rem;border:none;cursor:pointer;font-family:inherit;white-space:nowrap;transition:opacity .2s;}
+.nl-input{flex:1;padding:13px 16px;border-radius:10px;border:1.5px solid rgba(184,134,26,.2);background:rgba(184,134,26,.06);color:#EDE8E0;font-size:.9rem;font-family:inherit;outline:none;transition:border-color .2s;}
+.nl-input::placeholder{color:rgba(237,232,224,.3);}
+.nl-input:focus{border-color:rgba(184,134,26,.5);}
+.nl-btn{padding:13px 20px;border-radius:10px;background:linear-gradient(135deg,var(--gold),#B8941F);color:#0F0C08;font-weight:700;font-size:.88rem;border:none;cursor:pointer;font-family:inherit;white-space:nowrap;transition:opacity .2s;}
 .nl-btn:hover{opacity:.9;}
-.nl-success{padding:10px 14px;background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.3);border-radius:8px;font-size:.83rem;color:#4ade80;display:flex;align-items:center;gap:6px;}
-.nl-trust{font-size:.72rem;color:rgba(255,255,255,.35);display:flex;align-items:center;gap:5px;margin-top:8px;}
+.nl-success{padding:10px 14px;background:rgba(45,106,79,.15);border:1px solid rgba(45,106,79,.3);border-radius:8px;font-size:.83rem;color:#6dba91;display:flex;align-items:center;gap:6px;}
+.nl-trust{font-size:.72rem;color:rgba(237,232,224,.3);display:flex;align-items:center;gap:5px;margin-top:8px;}
 </style>
 </head>
 <body>
@@ -304,7 +319,7 @@
     <div class="container">
       <div class="navbar-inner">
         <a href="index.html" class="logo" aria-label="DOTFORLIFE Home">
-          <span>DOT</span><span>FOR</span><span>LIFE</span>
+          DOT<span class="logo-dot">FOR</span>LIFE
         </a>
         <ul class="nav-links">
           <li><a href="health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
@@ -359,8 +374,8 @@
             <div class="islamic-photo-ring"></div>
             <div class="islamic-photo-circle">
               <img
-                src="https://images.unsplash.com/photo-1585036156171-384164a8c675?auto=format&fit=crop&w=700&q=85"
-                alt="Islamic calligraphy and Quran"
+                src="https://images.unsplash.com/photo-1542816417-0983c9c9ad53?auto=format&fit=crop&w=700&q=85"
+                alt="Family gathering in peaceful prayer — spiritually meaningful"
                 width="700" height="700"
                 loading="eager"
               />
@@ -378,7 +393,7 @@
 .life-intro-bridge{padding:clamp(48px,7vw,80px) 0;background:var(--surface-2);}
 .lib-inner{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,64px);align-items:start;}
 .lib-eyebrow{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#1B7A4E;margin-bottom:12px;display:block;}
-.lib-headline{font-size:clamp(1.6rem,3vw,2.3rem);font-weight:900;letter-spacing:-.03em;line-height:1.15;margin-bottom:20px;color:var(--text-1);}
+.lib-headline{font-family:var(--font-serif);font-size:clamp(1.6rem,3vw,2.3rem);font-weight:300;letter-spacing:-.02em;line-height:1.15;margin-bottom:20px;color:var(--text-1);}
 .lib-body{font-size:1rem;line-height:1.75;color:var(--text-2);margin:0;}
 .lib-pillars{display:flex;flex-direction:column;gap:20px;padding-top:8px;}
 .lib-pillar{display:grid;grid-template-columns:40px 1fr;grid-template-rows:auto auto;column-gap:14px;row-gap:2px;align-items:start;}
@@ -393,7 +408,7 @@
 .cat-hero-img-frame:hover img{transform:scale(1.03) !important;}
 .tool-card{border-radius:18px !important;transition:box-shadow .22s cubic-bezier(.22,1,.36,1),transform .22s cubic-bezier(.22,1,.36,1),border-color .22s !important;}
 .tool-card:hover{transform:translateY(-4px) !important;box-shadow:0 16px 40px rgba(0,0,0,.10) !important;}
-.lib-headline{letter-spacing:-.04em !important;}
+.lib-headline{letter-spacing:-.02em !important;}
 [data-theme="dark"] .life-intro-bridge{background:rgba(255,255,255,.024) !important;}
 @media(prefers-reduced-motion:reduce){.cat-hero-img-frame img,.cat-hero-img-frame:hover img{transform:none !important;transition:none !important;}}
 </style>
@@ -402,7 +417,7 @@
     <div class="container">
       <div style="display:flex;align-items:center;gap:10px;overflow-x:auto;scrollbar-width:none;padding:0 4px;-webkit-overflow-scrolling:touch;">
         <span style="font-size:.72rem;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;white-space:nowrap;flex-shrink:0;padding-right:6px;border-right:1px solid var(--border-l);">⚡ Jump to / انتقل</span>
-        <a style="display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;border:1.5px solid rgba(27,122,78,.4);background:rgba(27,122,78,.08);color:#15693a;font-size:.82rem;font-weight:600;white-space:nowrap;text-decoration:none;transition:all .2s;flex-shrink:0;" href="tools/zakat-calculator.html">🌙 <span class="en">Zakat Calculator</span><span class="ar">حاسبة الزكاة</span></a>
+        <a style="display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;border:1.5px solid rgba(184,134,26,.45);background:rgba(184,134,26,.09);color:var(--gold-d);font-size:.82rem;font-weight:600;white-space:nowrap;text-decoration:none;transition:all .2s;flex-shrink:0;" href="tools/zakat-calculator.html">🌙 <span class="en">Zakat Calculator</span><span class="ar">حاسبة الزكاة</span></a>
         <a style="display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;border:1.5px solid var(--border-l);background:var(--body-bg);color:var(--text-2);font-size:.82rem;font-weight:600;white-space:nowrap;text-decoration:none;transition:all .2s;flex-shrink:0;" href="tools/hijri-converter.html">📅 <span class="en">Hijri Converter</span><span class="ar">محوّل الهجري</span></a>
         <a style="display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;border:1.5px solid var(--border-l);background:var(--body-bg);color:var(--text-2);font-size:.82rem;font-weight:600;white-space:nowrap;text-decoration:none;transition:all .2s;flex-shrink:0;" href="islamic.html#prayer">🕌 <span class="en">Prayer Times</span><span class="ar">أوقات الصلاة</span></a>
         <a style="display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;border:1.5px solid var(--border-l);background:var(--body-bg);color:var(--text-2);font-size:.82rem;font-weight:600;white-space:nowrap;text-decoration:none;transition:all .2s;flex-shrink:0;" href="tools/zakat-calculator.html">🏦 <span class="en">Islamic Finance</span><span class="ar">التمويل الإسلامي</span></a>
@@ -617,7 +632,7 @@
           <span class="en">HOW WE BUILD · كيف نبني</span>
           <span class="ar">كيف نبني</span>
         </span>
-        <h2 style="font-size:1.8rem;font-weight:800;letter-spacing:-.02em;">
+        <h2 style="font-family:var(--font-serif);font-size:2rem;font-weight:300;letter-spacing:-.01em;color:var(--text);">
           <span class="en">Islamic tools deserve scholarly precision.</span>
           <span class="ar">الأدوات الإسلامية تستحق دقة علمية.</span>
         </h2>
@@ -684,7 +699,7 @@
     <div class="container">
       <div style="margin-bottom:8px;">
         <span class="section-label"><span class="en">COMMON QUESTIONS · أسئلة شائعة</span><span class="ar">أسئلة شائعة</span></span>
-        <h2 style="font-size:1.8rem;font-weight:800;letter-spacing:-.02em;margin-bottom:8px;">
+        <h2 style="font-family:var(--font-serif);font-size:2rem;font-weight:300;letter-spacing:-.01em;margin-bottom:8px;color:var(--text);">
           <span class="en">Frequently Asked Questions</span>
           <span class="ar">الأسئلة الأكثر شيوعاً</span>
         </h2>
@@ -1491,7 +1506,7 @@
         <span style="display:inline-flex;align-items:center;gap:6px;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#1B7A4E;border:1px solid rgba(27,122,78,.2);background:rgba(27,122,78,.06);border-radius:999px;padding:5px 14px;margin-bottom:16px;">
           <span class="en">YOUR SPIRITUAL JOURNEY · رحلتك الروحية</span><span class="ar">رحلتك الروحية</span>
         </span>
-        <h2 style="font-size:clamp(1.5rem,3vw,2rem);font-weight:900;letter-spacing:-.03em;color:var(--text-1,#111);margin:0 0 12px;">
+        <h2 style="font-family:var(--font-serif);font-size:clamp(1.5rem,3vw,2rem);font-weight:300;letter-spacing:-.01em;color:var(--text-1,#1A1410);margin:0 0 12px;">
           <span class="en">Where is your spiritual focus right now?</span>
           <span class="ar">أين تركيزك الروحي الآن؟</span>
         </h2>
@@ -1796,7 +1811,7 @@
   </script>
 <script>
 // Scroll Progress Bar
-(function(){var b=document.createElement("div");b.style.cssText="position:fixed;top:0;left:0;width:0%;height:3px;background:linear-gradient(90deg,#0066CC,#06B6D4);z-index:9999;transition:width .1s linear;pointer-events:none;";document.body.appendChild(b);window.addEventListener("scroll",function(){var d=document.documentElement.scrollHeight-window.innerHeight;b.style.width=(d>0?Math.min(100,(window.scrollY/d)*100):0)+"%";},{passive:true});})();</script>
+(function(){var b=document.createElement("div");b.style.cssText="position:fixed;top:0;left:0;width:0%;height:2px;background:linear-gradient(90deg,#B8861A,#D4A832);z-index:9999;transition:width .1s linear;pointer-events:none;";document.body.appendChild(b);window.addEventListener("scroll",function(){var d=document.documentElement.scrollHeight-window.innerHeight;b.style.width=(d>0?Math.min(100,(window.scrollY/d)*100):0)+"%";},{passive:true});})();</script>
 <!-- ═══ NEWSLETTER ══════════════════════════════════ -->
 <section class="nl-section" aria-label="Newsletter signup">
   <div class="container">
