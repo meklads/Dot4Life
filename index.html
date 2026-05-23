@@ -356,8 +356,24 @@
       .hero-circle-wrap { width: min(260px, 72vw); }
     }
 
+    /* ─── PAGE WIDTH CONSTRAINT ─────────────────────── */
+    /* All main sections are contained — no full-screen */
+    #daily-strip,
+    #health,
+    #finance,
+    #islamic,
+    #travel,
+    #insights,
+    #manifesto,
+    #newsletter {
+      max-width: 1280px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    /* Contain grid children inside the box */
+    #health, #finance, #islamic, #travel { overflow: hidden; }
+
     /* ─── GLOBAL CONTENT ─────────────────────────────── */
-    /* Sections are full-width — content uses internal padding */
 
     /* ─── DAILY STRIP ───────────────────────────────── */
     #daily-strip {
