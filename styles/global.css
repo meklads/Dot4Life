@@ -365,3 +365,67 @@ a { color: inherit; }
   outline-offset: 3px;
   border-radius: 3px;
 }
+
+/* ── 18. MOBILE CRITICAL FIXES ──────────────────────────── */
+
+/* Prevent horizontal scroll on any page */
+html, body { overflow-x: hidden; max-width: 100%; }
+
+/*
+ * iOS Safari zooms the page whenever a focused <input> or <select>
+ * has font-size < 16px. This rule prevents that zoom on all devices
+ * ≤ 768px wide — overriding any per-page font-size declarations.
+ * Applied with !important because per-component rules use inline px values.
+ */
+@media (max-width: 768px) {
+  input,
+  input[type="text"],
+  input[type="number"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="date"],
+  input[type="password"],
+  input[type="search"],
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Minimum 44×44px touch targets for interactive controls */
+@media (max-width: 768px) {
+  .dfl-nav-btn,
+  .nav-btn,
+  .btn-sm {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Mobile bottom nav items */
+  .mnav-item,
+  .dfl-mnav-item {
+    min-height: 44px;
+    padding: .5rem .6rem;
+  }
+
+  /* Pill/chip links used as nav */
+  .travel-pill {
+    min-height: 40px;
+    padding: .55rem 1rem;
+  }
+}
+
+/* Prevent content from touching screen edges on small phones */
+@media (max-width: 480px) {
+  .container,
+  .container-sm,
+  .container-md,
+  .container-xl,
+  .container-prose {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}

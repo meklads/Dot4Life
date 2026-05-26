@@ -169,6 +169,7 @@
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .nav-inner { padding: 0 16px; }
+      .nav-btn { min-height: 44px; min-width: 44px; display: inline-flex; align-items: center; justify-content: center; }
     }
 
     /* ─── HERO — editorial 50/50 ────────────────────── */
@@ -386,7 +387,7 @@
       background: var(--cream-d);
       border-bottom: 1px solid var(--border);
       border-top: 1px solid var(--border);
-      padding: 1rem 2rem;
+      padding: 1rem clamp(1rem,4vw,2rem);
       display: flex; align-items: center; justify-content: space-between; gap: 1rem;
       flex-wrap: wrap;
     }
@@ -614,7 +615,7 @@
 
     /* ─── INSIGHTS GRID ─────────────────────────────── */
     #insights {
-      padding: 4rem 2rem;
+      padding: 4rem clamp(1rem,4vw,2rem);
       background: var(--body-bg);
     }
     .insights-header {
@@ -691,7 +692,7 @@
     /* ─── MANIFESTO ─────────────────────────────────── */
     #manifesto {
       background: var(--navy);
-      padding: 8% 10%;
+      padding: clamp(3rem,8%,7rem) clamp(1.5rem,10%,8rem);
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -735,7 +736,7 @@
     /* ─── NEWSLETTER ─────────────────────────────────── */
     #newsletter {
       background: var(--cream);
-      padding: 4rem 2rem;
+      padding: 4rem clamp(1rem,4vw,2rem);
       text-align: center;
     }
     .newsletter-title {
@@ -761,7 +762,7 @@
       border: 1px solid var(--border);
       border-radius: var(--radius);
       background: var(--card-bg);
-      font-size: .88rem;
+      font-size: 1rem; /* ≥16px prevents iOS zoom */
       color: var(--text);
       outline: none;
       transition: border-color .2s;
@@ -939,8 +940,9 @@
       max-width: 1280px; margin: 0 auto; padding: 0 48px;
       display: grid; grid-template-columns: repeat(5,1fr);
     }
-    @media(max-width:900px){ .cat-nav-inner { grid-template-columns: repeat(5,1fr); padding: 0 16px; } }
-    @media(max-width:600px){ .cat-nav-inner { grid-template-columns: repeat(3,1fr); } }
+    @media(max-width:900px){ .cat-nav-inner { grid-template-columns: repeat(5,1fr); padding: 0 8px; } }
+    @media(max-width:600px){ .cat-nav-inner { grid-template-columns: repeat(3,1fr); padding: 0; } }
+    @media(max-width:380px){ .cat-nav-inner { grid-template-columns: repeat(3,1fr); } .cat-name { font-size: .62rem; } }
     .cat-nav-item {
       display: flex; flex-direction: column; align-items: center; gap: .55rem;
       padding: 1.6rem .5rem; text-align: center;
