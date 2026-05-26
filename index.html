@@ -417,6 +417,7 @@
       text-transform: uppercase;
       color: var(--muted);
     }
+    [data-lang="ar"] .strip-tool-label { letter-spacing: 0; text-transform: none; }
     .strip-tool-link {
       display: inline-flex; align-items: center; gap: .5rem;
       padding: .45rem 1rem;
@@ -1518,7 +1519,8 @@
     }
     if(gregEl){
       var opts = { weekday:'long', year:'numeric', month:'long', day:'numeric' };
-      try { gregEl.textContent = new Date().toLocaleDateString('en-US', opts); } catch(e){}
+      var locale = document.documentElement.getAttribute('data-lang') === 'ar' ? 'ar-SA' : 'en-US';
+      try { gregEl.textContent = new Date().toLocaleDateString(locale, opts); } catch(e){}
     }
 
     // ── IntersectionObserver reveal
