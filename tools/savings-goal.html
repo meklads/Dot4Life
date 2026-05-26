@@ -208,6 +208,23 @@
     .dfl-mnav-item:hover, .dfl-mnav-item.active { color: var(--gold); }
     [data-lang="ar"] .dfl-mnav-item { font-family: var(--font-ar); }
     @media(max-width:768px){ #dfl-mobile-nav{display:block;} body{padding-bottom:80px !important;} }
+
+    /* ── Language visibility (CRITICAL — prevents bilingual hybrid) ── */
+    .en { display: none; }
+    [data-lang="en"] .en { display: inline; }
+    .ar { display: inline; }
+    [data-lang="en"] .ar { display: none; }
+    .en-b { display: none; }
+    [data-lang="en"] .en-b { display: block; }
+    .ar-b { display: block; }
+    [data-lang="en"] .ar-b { display: none; }
+    [data-lang="ar"] { direction: rtl; }
+    [data-lang="en"] { direction: ltr; }
+    [data-lang="ar"] body { font-family: var(--font-ar); }
+    [data-lang="ar"] .dfl-nav-links { flex-direction: row-reverse; }
+
+    /* ── Container ── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 48px); }
   </style>
 </head>
 <body>
@@ -232,25 +249,6 @@
       </div>
     </div>
   </nav>
-<nav class="navbar" role="navigation" aria-label="Main navigation">
-  <div class="container">
-    <div class="navbar-inner">
-      <a href="../index.html" class="navbar-brand" aria-label="DotForLife home">
-        <span class="brand-dot">dot</span><span class="brand-life">forlife</span>
-      </a>
-      <div class="navbar-links">
-        <a href="../finance.html" class="nav-link"><span class="en">Finance</span><span class="ar">المال</span></a>
-        <a href="../health.html" class="nav-link"><span class="en">Health</span><span class="ar">الصحة</span></a>
-        <a href="../islamic.html" class="nav-link"><span class="en">Islamic</span><span class="ar">إسلامي</span></a>
-        <a href="../travel.html" class="nav-link"><span class="en">Travel</span><span class="ar">السفر</span></a>
-      </div>
-      <div class="navbar-actions">
-        <button class="btn-lang" onclick="toggleLang()" aria-label="Toggle language">EN | AR</button>
-        <button class="btn-theme" onclick="toggleTheme()" aria-label="Toggle theme">◐</button>
-      </div>
-    </div>
-  </div>
-</nav>
 
 <main>
 <!-- Hero -->
@@ -589,8 +587,14 @@ function calculate() {
 /* Enter key triggers calculate */
 document.addEventListener('keydown', function(e){ if(e.key==='Enter') calculate(); });
 
-/* Auto-calculate on load with default values */
-document.addEventListener('DOMContentLoaded', function(){ calculate(); });
+/* Auto-calculate on load — pre-fill defaults so result panel is never empty */
+document.addEventListener('DOMContentLoaded', function(){
+  var g = document.getElementById('goalAmount');
+  var m = document.getElementById('targetMonths');
+  if(!g.value) g.value = '100000';
+  if(!m.value) m.value = '24';
+  calculate();
+});
 </script>
 
   <!-- DFL CANONICAL FOOTER -->
