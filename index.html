@@ -998,6 +998,193 @@
       margin-top: 1rem;
     }
     [data-lang="ar"] .success-msg { font-family: var(--font-ar); }
+
+    /* ─── HOMEPAGE ENHANCEMENTS ─────────────────────────── */
+    /* Hero ambient glow */
+    #hero { overflow: hidden; }
+    #hero::after {
+      content: '';
+      position: absolute;
+      top: -80px; right: -120px;
+      width: 600px; height: 600px;
+      background: radial-gradient(ellipse, rgba(184,134,26,.07) 0%, transparent 68%);
+      pointer-events: none; border-radius: 50%;
+      animation: heroGlow 8s ease-in-out infinite alternate;
+    }
+    @keyframes heroGlow {
+      0% { transform: scale(1) translate(0,0); opacity: 1; }
+      100% { transform: scale(1.15) translate(-40px,30px); opacity: .6; }
+    }
+    [data-theme="dark"] #hero::after { background: radial-gradient(ellipse, rgba(212,168,50,.09) 0%, transparent 68%); }
+    /* Hero floating badge */
+    .hero-badge {
+      position: absolute; bottom: -18px; right: 8%;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: .9rem 1.2rem;
+      display: flex; align-items: center; gap: .75rem;
+      box-shadow: 0 8px 32px rgba(0,0,0,.1);
+      font-size: .78rem; min-width: 190px;
+      animation: badgeBob 4s ease-in-out infinite;
+    }
+    @keyframes badgeBob {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+    .hero-badge-icon {
+      width: 38px; height: 38px; border-radius: 10px;
+      background: linear-gradient(135deg,var(--gold-l),var(--gold));
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .hero-badge-icon svg { width: 20px; height: 20px; stroke: #fff; fill: none; stroke-width: 2; }
+    .hero-badge-label { font-size: .6rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+    .hero-badge-value { font-size: .84rem; font-weight: 600; color: var(--text); margin-top: 1px; }
+    [data-lang="ar"] .hero-badge { font-family: var(--font-ar); }
+    @media(max-width:900px){ .hero-badge { display: none; } }
+    /* Category Navigator */
+    #cat-nav {
+      background: var(--cream);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .cat-nav-inner {
+      max-width: 1280px; margin: 0 auto; padding: 0 48px;
+      display: grid; grid-template-columns: repeat(5,1fr);
+    }
+    @media(max-width:900px){ .cat-nav-inner { grid-template-columns: repeat(5,1fr); padding: 0 16px; } }
+    @media(max-width:600px){ .cat-nav-inner { grid-template-columns: repeat(3,1fr); } }
+    .cat-nav-item {
+      display: flex; flex-direction: column; align-items: center; gap: .55rem;
+      padding: 1.6rem .5rem; text-align: center;
+      border-right: 1px solid var(--border);
+      text-decoration: none; color: var(--text-2);
+      transition: background .2s, color .2s;
+      position: relative;
+    }
+    .cat-nav-item:last-child { border-right: none; }
+    [data-lang="ar"] .cat-nav-item { border-right: none; border-left: 1px solid var(--border); }
+    [data-lang="ar"] .cat-nav-item:last-child { border-left: none; }
+    .cat-nav-item:hover { background: rgba(184,134,26,.04); color: var(--gold); }
+    .cat-nav-item::after {
+      content: ''; position: absolute; bottom: 0; left: 20%; right: 20%;
+      height: 2px; background: var(--gold); border-radius: 2px 2px 0 0;
+      transform: scaleX(0); transition: transform .25s ease;
+    }
+    .cat-nav-item:hover::after { transform: scaleX(1); }
+    .cat-icon {
+      width: 40px; height: 40px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      transition: transform .2s;
+    }
+    .cat-nav-item:hover .cat-icon { transform: translateY(-3px); }
+    .cat-icon svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .cat-name { font-size: .72rem; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; }
+    .cat-count { font-size: .62rem; color: var(--muted); }
+    [data-lang="ar"] .cat-name, [data-lang="ar"] .cat-count { font-family: var(--font-ar); letter-spacing: 0; }
+    [data-theme="dark"] #cat-nav { background: var(--cream); }
+    /* Life Situations section */
+    #situations {
+      background: var(--navy);
+      color: #e2e8f0;
+    }
+    .situations-inner {
+      max-width: 1280px; margin: 0 auto; padding: 5rem 48px;
+    }
+    @media(max-width:768px){ .situations-inner { padding: 3.5rem 24px; } }
+    .situations-label {
+      font-size: .68rem; font-weight: 600; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--gold-l); margin-bottom: 1.2rem;
+    }
+    .situations-headline {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 300; line-height: 1.18;
+      color: #fff; margin-bottom: .6rem;
+    }
+    .situations-headline em { font-style: italic; color: var(--gold-l); }
+    [data-lang="ar"] .situations-headline { font-family: var(--font-ar); font-weight: 300; }
+    .situations-sub { font-size: .95rem; color: #94a3b8; margin-bottom: 3rem; max-width: 540px; }
+    [data-lang="ar"] .situations-sub { font-family: var(--font-ar); }
+    .situations-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem;
+    }
+    @media(max-width:768px){ .situations-grid { grid-template-columns: 1fr; gap: 1rem; } }
+    .situation-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 14px; padding: 1.8rem;
+      transition: background .2s, border-color .2s, transform .2s;
+      cursor: pointer; text-decoration: none;
+      display: block;
+    }
+    .situation-card:hover {
+      background: rgba(255,255,255,.07);
+      border-color: rgba(184,134,26,.35);
+      transform: translateY(-4px);
+    }
+    .situation-emoji { font-size: 1.8rem; margin-bottom: 1rem; display: block; }
+    .situation-title { font-size: .95rem; font-weight: 600; color: #e2e8f0; margin-bottom: .45rem; }
+    [data-lang="ar"] .situation-title { font-family: var(--font-ar); }
+    .situation-desc { font-size: .82rem; color: #94a3b8; line-height: 1.6; }
+    [data-lang="ar"] .situation-desc { font-family: var(--font-ar); }
+    .situation-tools {
+      margin-top: 1.2rem; display: flex; gap: .4rem; flex-wrap: wrap;
+    }
+    .situation-chip {
+      font-size: .62rem; font-weight: 500; letter-spacing: .06em;
+      text-transform: uppercase; color: var(--gold-l);
+      background: rgba(184,134,26,.1); border: 1px solid rgba(184,134,26,.2);
+      border-radius: 999px; padding: .2rem .6rem;
+    }
+    [data-lang="ar"] .situation-chip { font-family: var(--font-ar); letter-spacing: 0; font-size: .7rem; }
+    /* Enhanced manifesto */
+    #manifesto {
+      background: linear-gradient(135deg, var(--cream) 0%, var(--cream-d) 100%);
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    }
+    .manifesto-quote {
+      font-family: var(--font-serif);
+      font-size: clamp(1.35rem, 2.5vw, 2rem);
+      font-weight: 300; font-style: italic;
+      line-height: 1.55; color: var(--text);
+      max-width: 820px; margin: 0 auto 1.5rem;
+      text-align: center; letter-spacing: -.01em;
+    }
+    .manifesto-quote::before { content: '\201C'; color: var(--gold); font-size: 3rem; line-height: 0; vertical-align: -.4em; margin-right: .2em; }
+    .manifesto-quote::after { content: '\201D'; color: var(--gold); font-size: 3rem; line-height: 0; vertical-align: -.4em; margin-left: .2em; }
+    [data-lang="ar"] .manifesto-quote { font-family: var(--font-ar); font-style: normal; }
+    [data-lang="ar"] .manifesto-quote::before { content: '\201E'; }
+    [data-lang="ar"] .manifesto-quote::after { content: '\201C'; }
+    .manifesto-attr {
+      text-align: center; font-size: .72rem; font-weight: 600;
+      letter-spacing: .18em; text-transform: uppercase; color: var(--gold);
+    }
+    /* Trending Tools strip */
+    #trending-tools { background: var(--body-bg); border-bottom: 1px solid var(--border); }
+    .trending-inner { max-width: 1280px; margin: 0 auto; padding: 3.5rem 48px; }
+    @media(max-width:768px){ .trending-inner { padding: 2.5rem 24px; } }
+    .trending-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; }
+    .trending-grid {
+      display: grid; grid-template-columns: repeat(4,1fr); gap: 1.25rem;
+    }
+    @media(max-width:900px){ .trending-grid { grid-template-columns: repeat(2,1fr); } }
+    @media(max-width:500px){ .trending-grid { grid-template-columns: 1fr 1fr; gap: .75rem; } }
+    .trending-card {
+      border: 1px solid var(--border); border-radius: 12px; padding: 1.4rem;
+      background: var(--card-bg); text-decoration: none; color: var(--text);
+      transition: border-color .2s, box-shadow .2s, transform .2s;
+      display: block;
+    }
+    .trending-card:hover { border-color: var(--gold); box-shadow: 0 4px 20px rgba(184,134,26,.12); transform: translateY(-3px); }
+    .trending-cat { font-size: .6rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: .6rem; }
+    .trending-name { font-size: .92rem; font-weight: 600; color: var(--text); margin-bottom: .35rem; line-height: 1.3; }
+    [data-lang="ar"] .trending-name { font-family: var(--font-ar); }
+    .trending-desc { font-size: .78rem; color: var(--text-2); line-height: 1.55; }
+    [data-lang="ar"] .trending-desc { font-family: var(--font-ar); }
+    .trending-arrow { margin-top: 1rem; font-size: .75rem; color: var(--gold); font-weight: 600; }
+    [data-theme="dark"] .trending-card { background: var(--card-bg); }
   </style>
 </head>
 <body>
@@ -1011,7 +1198,7 @@
     <ul class="nav-links">
       <li><a href="/health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
       <li><a href="/finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li>
-      <li><a href="/realestate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li>
+      <li><a href="/real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li>
       <li><a href="/travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li>
       <li><a href="/islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li>
     </ul>
@@ -1060,10 +1247,20 @@
       <!-- Right: circular family image -->
       <div class="hero-right" aria-hidden="true">
         <div class="hero-circle-wrap">
+          <!-- Floating trust badge -->
+          <div class="hero-badge" aria-hidden="true">
+            <div class="hero-badge-icon">
+              <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <div class="hero-badge-label"><span class="en">Trusted Platform</span><span class="ar">منصة موثوقة</span></div>
+              <div class="hero-badge-value"><span class="en">Free · No Ads · Private</span><span class="ar">مجاني · بلا إعلانات</span></div>
+            </div>
+          </div>
           <div class="hero-circle">
             <img
-              src="https://images.unsplash.com/photo-1511895426328-dc8714191011?auto=format&fit=crop&w=900&q=80"
-              alt="Warm happy family together"
+              src="d4l1.png"
+              alt="DOT.FORLIFE — منصة الأسرة"
               width="900" height="900"
               loading="eager"
               fetchpriority="high"
@@ -1093,6 +1290,55 @@
       </div>
     </div>
   </section>
+
+  <!-- ═══════════════════════════════════════
+       CATEGORY NAVIGATOR
+  ═══════════════════════════════════════ -->
+  <nav id="cat-nav" aria-label="Life category navigation">
+    <div class="cat-nav-inner">
+
+      <a href="/health.html" class="cat-nav-item">
+        <div class="cat-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402C1 3.604 3.601 1 6.8 1c1.994 0 3.797 1.016 5.2 2.837C13.403 2.016 15.206 1 17.2 1 20.4 1 23 3.604 23 7.191c0 4.105-5.37 8.863-11 14.402z"/></svg>
+        </div>
+        <span class="cat-name"><span class="en">Health</span><span class="ar">الصحة</span></span>
+        <span class="cat-count"><span class="en">12 tools</span><span class="ar">١٢ أداة</span></span>
+      </a>
+
+      <a href="/finance.html" class="cat-nav-item">
+        <div class="cat-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <span class="cat-name"><span class="en">Finance</span><span class="ar">المالية</span></span>
+        <span class="cat-count"><span class="en">10 tools</span><span class="ar">١٠ أدوات</span></span>
+      </a>
+
+      <a href="/real-estate.html" class="cat-nav-item">
+        <div class="cat-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
+        </div>
+        <span class="cat-name"><span class="en">Real Estate</span><span class="ar">العقار</span></span>
+        <span class="cat-count"><span class="en">8 tools</span><span class="ar">٨ أدوات</span></span>
+      </a>
+
+      <a href="/travel.html" class="cat-nav-item">
+        <div class="cat-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        </div>
+        <span class="cat-name"><span class="en">Travel</span><span class="ar">السفر</span></span>
+        <span class="cat-count"><span class="en">6 tools</span><span class="ar">٦ أدوات</span></span>
+      </a>
+
+      <a href="/islamic.html" class="cat-nav-item">
+        <div class="cat-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg>
+        </div>
+        <span class="cat-name"><span class="en">Islamic</span><span class="ar">الإسلامية</span></span>
+        <span class="cat-count"><span class="en">8 tools</span><span class="ar">٨ أدوات</span></span>
+      </a>
+
+    </div>
+  </nav>
 
   <!-- ═══════════════════════════════════════
        DAILY STRIP
@@ -1354,6 +1600,84 @@
   </section>
 
   <!-- ═══════════════════════════════════════
+       LIFE SITUATIONS
+  ═══════════════════════════════════════ -->
+  <section id="situations" aria-label="Life situations">
+    <div class="situations-inner">
+      <div class="situations-label reveal"><span class="en">Navigate Life's Moments</span><span class="ar">تنقّل بين لحظات الحياة</span></div>
+      <h2 class="situations-headline reveal">
+        <span class="en">Whatever you're going through,<br><em>we have a tool for that.</em></span>
+        <span class="ar">مهما كنت تمرّ به،<br><em>لدينا أداة لذلك.</em></span>
+      </h2>
+      <p class="situations-sub reveal"><span class="en">Real life doesn't fit into categories. Find the right tool for exactly where you are today.</span><span class="ar">الحياة الحقيقية لا تتناسب مع التصنيفات. ابحث عن الأداة المناسبة لمرحلتك الآن.</span></p>
+
+      <div class="situations-grid">
+
+        <a href="/tools/pregnancy-calculator.html" class="situation-card reveal">
+          <span class="situation-emoji">🤰</span>
+          <div class="situation-title"><span class="en">Expecting a Baby</span><span class="ar">توقع مولود</span></div>
+          <div class="situation-desc"><span class="en">Week-by-week pregnancy tracking, nutrition guidance, and birth preparation tools.</span><span class="ar">متابعة أسبوعية للحمل، إرشادات تغذية، وأدوات التحضير للولادة.</span></div>
+          <div class="situation-tools">
+            <span class="situation-chip"><span class="en">Pregnancy</span><span class="ar">الحمل</span></span>
+            <span class="situation-chip"><span class="en">Nutrition</span><span class="ar">التغذية</span></span>
+          </div>
+        </a>
+
+        <a href="/tools/monthly-budget.html" class="situation-card reveal" style="transition-delay:.07s">
+          <span class="situation-emoji">🏠</span>
+          <div class="situation-title"><span class="en">Buying Your First Home</span><span class="ar">شراء أول منزل</span></div>
+          <div class="situation-desc"><span class="en">Mortgage calculators, rent vs. buy analysis, and Saudi property insights — all in one place.</span><span class="ar">حاسبات التمويل، تحليل الإيجار مقابل الشراء، ورؤى العقار السعودي.</span></div>
+          <div class="situation-tools">
+            <span class="situation-chip"><span class="en">Mortgage</span><span class="ar">التمويل</span></span>
+            <span class="situation-chip"><span class="en">ROI</span><span class="ar">العائد</span></span>
+          </div>
+        </a>
+
+        <a href="/tools/zakat-calculator.html" class="situation-card reveal" style="transition-delay:.14s">
+          <span class="situation-emoji">🌙</span>
+          <div class="situation-title"><span class="en">Ramadan & Worship</span><span class="ar">رمضان والعبادة</span></div>
+          <div class="situation-desc"><span class="en">Zakat calculation, prayer times, Qibla direction, and fasting nutrition — your complete spiritual toolkit.</span><span class="ar">حساب الزكاة، أوقات الصلاة، اتجاه القبلة، وتغذية الصوم.</span></div>
+          <div class="situation-tools">
+            <span class="situation-chip"><span class="en">Zakat</span><span class="ar">الزكاة</span></span>
+            <span class="situation-chip"><span class="en">Prayer</span><span class="ar">الصلاة</span></span>
+          </div>
+        </a>
+
+        <a href="/travel.html" class="situation-card reveal" style="transition-delay:.21s">
+          <span class="situation-emoji">✈️</span>
+          <div class="situation-title"><span class="en">Planning a Family Trip</span><span class="ar">التخطيط لرحلة عائلية</span></div>
+          <div class="situation-desc"><span class="en">Trip budget, packing lists, currency converter, and hotel finders — take the stress out of travel.</span><span class="ar">ميزانية الرحلة، قوائم الحقيبة، تحويل العملات، وإيجاد الفنادق.</span></div>
+          <div class="situation-tools">
+            <span class="situation-chip"><span class="en">Budget</span><span class="ar">الميزانية</span></span>
+            <span class="situation-chip"><span class="en">Packing</span><span class="ar">التعبئة</span></span>
+          </div>
+        </a>
+
+        <a href="/tools/bmi-calculator.html" class="situation-card reveal" style="transition-delay:.28s">
+          <span class="situation-emoji">💪</span>
+          <div class="situation-title"><span class="en">Starting a Health Journey</span><span class="ar">بداية رحلة صحية</span></div>
+          <div class="situation-desc"><span class="en">BMI, calorie needs, body fat percentage, and water intake — your evidence-based health baseline.</span><span class="ar">مؤشر كتلة الجسم، احتياجات السعرات، نسبة الدهون، واحتياجات الماء.</span></div>
+          <div class="situation-tools">
+            <span class="situation-chip"><span class="en">BMI</span><span class="ar">مؤشر الجسم</span></span>
+            <span class="situation-chip"><span class="en">Calories</span><span class="ar">السعرات</span></span>
+          </div>
+        </a>
+
+        <a href="/tools/savings-goal.html" class="situation-card reveal" style="transition-delay:.35s">
+          <span class="situation-emoji">💰</span>
+          <div class="situation-title"><span class="en">Building Financial Security</span><span class="ar">بناء الأمان المالي</span></div>
+          <div class="situation-desc"><span class="en">Savings goals, emergency fund planning, and monthly budget — take control of your family's finances.</span><span class="ar">أهداف الادخار، تخطيط صندوق الطوارئ، والميزانية الشهرية.</span></div>
+          <div class="situation-tools">
+            <span class="situation-chip"><span class="en">Savings</span><span class="ar">الادخار</span></span>
+            <span class="situation-chip"><span class="en">Budget</span><span class="ar">الميزانية</span></span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
        INSIGHTS GRID
   ═══════════════════════════════════════ -->
   <section id="insights" aria-label="Articles and insights">
@@ -1449,12 +1773,63 @@
   </section>
 
   <!-- ═══════════════════════════════════════
+       TRENDING TOOLS
+  ═══════════════════════════════════════ -->
+  <section id="trending-tools" aria-label="Most used tools">
+    <div class="trending-inner">
+      <div class="trending-header reveal">
+        <div>
+          <div class="section-label"><span class="en">Most Used</span><span class="ar">الأكثر استخداماً</span></div>
+          <h2 style="font-family:var(--font-serif);font-size:clamp(1.4rem,2.5vw,2rem);font-weight:300;color:var(--text);margin:.3rem 0 0;">
+            <span class="en">Tools families reach for every day</span>
+            <span class="ar">أدوات تلجأ إليها الأسر كل يوم</span>
+          </h2>
+        </div>
+        <a href="/health.html" class="btn-outline" style="font-size:.8rem;padding:.65rem 1.3rem;white-space:nowrap;">
+          <span class="en">See All Tools</span><span class="ar">كل الأدوات</span>
+        </a>
+      </div>
+      <div class="trending-grid">
+
+        <a href="/tools/bmi-calculator.html" class="trending-card reveal">
+          <div class="trending-cat"><span class="en">Health</span><span class="ar">الصحة</span></div>
+          <div class="trending-name"><span class="en">BMI Calculator</span><span class="ar">حاسبة مؤشر كتلة الجسم</span></div>
+          <div class="trending-desc"><span class="en">Know your healthy weight range in seconds with WHO-standard calculations.</span><span class="ar">اعرف نطاق وزنك الصحي في ثوانٍ.</span></div>
+          <div class="trending-arrow">→</div>
+        </a>
+
+        <a href="/tools/zakat-calculator.html" class="trending-card reveal" style="transition-delay:.07s">
+          <div class="trending-cat"><span class="en">Islamic</span><span class="ar">الإسلامية</span></div>
+          <div class="trending-name"><span class="en">Zakat Calculator</span><span class="ar">حاسبة الزكاة</span></div>
+          <div class="trending-desc"><span class="en">Accurate annual Zakat with Nisab thresholds for gold, silver, and savings.</span><span class="ar">زكاة سنوية دقيقة بنصاب الذهب والفضة والمدخرات.</span></div>
+          <div class="trending-arrow">→</div>
+        </a>
+
+        <a href="/tools/mortgage-calculator.html" class="trending-card reveal" style="transition-delay:.14s">
+          <div class="trending-cat"><span class="en">Real Estate</span><span class="ar">العقار</span></div>
+          <div class="trending-name"><span class="en">Saudi Mortgage</span><span class="ar">التمويل العقاري</span></div>
+          <div class="trending-desc"><span class="en">Monthly payments, total cost, and Islamic finance options for Saudi home buyers.</span><span class="ar">الأقساط الشهرية والتكلفة الإجمالية وخيارات التمويل الإسلامي.</span></div>
+          <div class="trending-arrow">→</div>
+        </a>
+
+        <a href="/tools/pregnancy-calculator.html" class="trending-card reveal" style="transition-delay:.21s">
+          <div class="trending-cat"><span class="en">Health</span><span class="ar">الصحة</span></div>
+          <div class="trending-name"><span class="en">Pregnancy Tracker</span><span class="ar">متتبع الحمل</span></div>
+          <div class="trending-desc"><span class="en">Week-by-week development milestones, size comparisons, and trimester guidance.</span><span class="ar">معالم التطور الأسبوعي ومقارنات الحجم وإرشادات كل ثلث.</span></div>
+          <div class="trending-arrow">→</div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
        MANIFESTO
   ═══════════════════════════════════════ -->
   <section id="manifesto" aria-label="Platform manifesto">
     <p class="manifesto-quote reveal">
-      <span class="en">"We believe every family deserves tools built with the same care a doctor brings to an examination, a craftsman to his work, and a mother to her child."</span>
-      <span class="ar">"نؤمن أن كل أسرة تستحق أدوات تُبنى بنفس العناية التي يُقدّمها الطبيب لمريضه، والحرفي لعمله، والأم لطفلها."</span>
+      <span class="en">We believe every family deserves tools built with the same care a doctor brings to an examination, a craftsman to his work, and a mother to her child.</span>
+      <span class="ar">نؤمن أن كل أسرة تستحق أدوات تُبنى بنفس العناية التي يُقدّمها الطبيب لمريضه، والحرفي لعمله، والأم لطفلها.</span>
     </p>
     <div class="manifesto-attr">DOTFORLIFE — منصة الأسرة</div>
   </section>
@@ -1533,9 +1908,9 @@
       <div class="footer-col">
         <h4><span class="en">Real Estate</span><span class="ar">العقار</span></h4>
         <ul>
-          <li><a href="/realestate.html"><span class="en">Property Calculator</span><span class="ar">حاسبة العقار</span></a></li>
-          <li><a href="/realestate.html#rent"><span class="en">Rent vs Buy</span><span class="ar">إيجار أم شراء</span></a></li>
-          <li><a href="/realestate.html#value"><span class="en">Property Value</span><span class="ar">تقييم العقار</span></a></li>
+          <li><a href="/real-estate.html"><span class="en">Property Calculator</span><span class="ar">حاسبة العقار</span></a></li>
+          <li><a href="/real-estate.html#tools"><span class="en">Rent vs Buy</span><span class="ar">إيجار أم شراء</span></a></li>
+          <li><a href="/real-estate.html#tools"><span class="en">Property Value</span><span class="ar">تقييم العقار</span></a></li>
         </ul>
       </div>
       <div class="footer-col">

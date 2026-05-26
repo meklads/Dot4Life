@@ -1587,8 +1587,153 @@ window.dflTrack=function(event,params){
 };
 </script>
 <!-- DFL_FIX3_APPLIED -->
+
+  <!-- DFL CANONICAL SYSTEM CSS -->
+  <style id="dfl-sys">
+    /* Hide all old navbars */
+    .navbar { display: none !important; }
+    nav.navbar { display: none !important; }
+    #navbar { display: none !important; }
+    nav#navbar { display: none !important; }
+    /* Flash-safe tokens */
+    :root {
+      --gold: #B8861A; --gold-l: #D4A832; --gold-d: #8A620F;
+      --text: #1A1410; --text-2: #5C534A; --muted: #9A9188;
+      --body-bg: #FAF8F4; --card-bg: #FFFFFF;
+      --border: #E0D8CC; --navy: #0A1628;
+      --font-serif: 'Crimson Pro', Georgia, serif;
+      --font-ui: 'Inter', system-ui, sans-serif;
+      --font-ar: 'Almarai', 'Segoe UI', sans-serif;
+      --radius: 6px;
+    }
+    [data-theme="dark"] {
+      --text: #EDE8E0; --text-2: #B8B0A4; --muted: #7A746C;
+      --body-bg: #12100E; --card-bg: #1E1A16;
+      --border: #302820; --gold: #D4A832;
+    }
+    /* Canonical Navbar */
+    #dfl-navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 9000;
+      height: 64px;
+      background: rgba(250,248,244,0.97);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      transition: box-shadow .3s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    [data-theme="dark"] #dfl-navbar {
+      background: rgba(18,16,14,0.97);
+      border-bottom-color: var(--border);
+    }
+    #dfl-navbar.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,.08); }
+    .dfl-nav-inner {
+      max-width: 1280px; width: 100%; padding: 0 32px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .dfl-nav-logo {
+      font-family: var(--font-serif); font-size: 1.25rem; font-weight: 600;
+      letter-spacing: .04em; color: var(--text); text-decoration: none;
+    }
+    .dfl-nav-logo .dot { color: var(--gold); }
+    .dfl-nav-links {
+      display: flex; gap: 2rem; align-items: center; list-style: none;
+      margin: 0; padding: 0;
+    }
+    .dfl-nav-links a {
+      font-size: .82rem; font-weight: 500; letter-spacing: .06em;
+      text-transform: uppercase; color: var(--text-2);
+      text-decoration: none; transition: color .2s;
+    }
+    .dfl-nav-links a:hover { color: var(--text); }
+    .dfl-nav-controls { display: flex; gap: .75rem; align-items: center; }
+    .dfl-nav-btn {
+      cursor: pointer; border: 1px solid var(--border); border-radius: 6px;
+      padding: .35rem .7rem; font-size: .76rem; font-weight: 600;
+      letter-spacing: .08em; background: transparent; color: var(--text-2);
+      transition: all .2s; font-family: inherit;
+    }
+    .dfl-nav-btn:hover { border-color: var(--gold); color: var(--gold); }
+    @media (max-width: 768px) {
+      .dfl-nav-links { display: none !important; }
+      .dfl-nav-inner { padding: 0 16px; }
+    }
+    /* Push body content below navbar */
+    body { padding-top: 64px !important; }
+    /* Canonical Footer */
+    #dfl-footer {
+      background: #0A1628; color: #94a3b8; padding: 4rem 0 0;
+    }
+    .dfl-footer-grid {
+      max-width: 1280px; margin: 0 auto; padding: 0 48px;
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 3rem;
+    }
+    @media(max-width:960px){.dfl-footer-grid{grid-template-columns:1fr 1fr;gap:2rem;padding:0 32px;}}
+    @media(max-width:600px){.dfl-footer-grid{grid-template-columns:1fr;padding:0 24px;}}
+    .dfl-footer-brand .dfl-flogo {
+      font-family: var(--font-serif); font-size: 1.3rem; font-weight: 600;
+      color: #fff; letter-spacing: .04em; margin-bottom: 1rem;
+    }
+    .dfl-footer-brand .dfl-flogo .dot { color: #B8861A; }
+    .dfl-footer-brand p { font-size: .88rem; line-height: 1.7; max-width: 240px; color: #94a3b8; }
+    .dfl-footer-col h4 {
+      color: #e2e8f0; font-size: .7rem; font-weight: 600;
+      letter-spacing: .12em; text-transform: uppercase; margin-bottom: 1.2rem;
+    }
+    .dfl-footer-col ul { list-style: none; display: flex; flex-direction: column; gap: .65rem; padding: 0; margin: 0; }
+    .dfl-footer-col a { font-size: .84rem; color: #94a3b8; transition: color .2s; text-decoration: none; }
+    .dfl-footer-col a:hover { color: #B8861A; }
+    [data-lang="ar"] .dfl-footer-col a { font-family: var(--font-ar); }
+    .dfl-footer-bottom {
+      max-width: 1280px; margin: 3rem auto 0; padding: 1.4rem 48px;
+      border-top: 1px solid rgba(255,255,255,.07);
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: .78rem; flex-wrap: wrap; gap: .5rem; color: #64748b;
+    }
+    @media(max-width:600px){.dfl-footer-bottom{padding:1.4rem 24px;flex-direction:column;text-align:center;}}
+    .dfl-footer-bottom a { color: #64748b; text-decoration: none; }
+    .dfl-footer-bottom a:hover { color: #B8861A; }
+    /* Mobile Nav */
+    #dfl-mobile-nav {
+      display: none; position: fixed; bottom: 0; left: 0; right: 0;
+      background: var(--card-bg); border-top: 1px solid var(--border);
+      z-index: 8999; padding: 4px 0 max(8px,env(safe-area-inset-bottom));
+    }
+    [data-theme="dark"] #dfl-mobile-nav { background: #1E1A16; border-top-color: #302820; }
+    .dfl-mnav-inner { display: flex; justify-content: space-around; }
+    .dfl-mnav-item {
+      display: flex; flex-direction: column; align-items: center; gap: 3px;
+      padding: 6px 8px; font-size: .62rem; font-weight: 500;
+      color: var(--muted); text-decoration: none; transition: color .2s;
+      min-width: 56px; text-align: center;
+    }
+    .dfl-mnav-item svg { width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round; }
+    .dfl-mnav-item:hover, .dfl-mnav-item.active { color: var(--gold); }
+    [data-lang="ar"] .dfl-mnav-item { font-family: var(--font-ar); }
+    @media(max-width:768px){ #dfl-mobile-nav{display:block;} body{padding-bottom:80px !important;} }
+  </style>
 </head>
 <body>
+  <!-- DFL CANONICAL NAVBAR -->
+  <nav id="dfl-navbar" role="navigation" aria-label="Main navigation">
+    <div class="dfl-nav-inner">
+      <a href="/" class="dfl-nav-logo">DOT<span class="dot">.</span>FORLIFE</a>
+      <ul class="dfl-nav-links">
+        <li><a href="/health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
+        <li><a href="/finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li>
+        <li><a href="/real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li>
+        <li><a href="/travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li>
+        <li><a href="/islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li>
+      </ul>
+      <div class="dfl-nav-controls">
+        <button class="dfl-nav-btn" id="dfl-lang-btn" aria-label="Toggle language">
+          <span class="en">عربي</span><span class="ar">English</span>
+        </button>
+        <button class="dfl-nav-btn" id="dfl-theme-btn" aria-label="Toggle theme">
+          <span class="en">🌙</span><span class="ar">🌙</span>
+        </button>
+      </div>
+    </div>
+  </nav>
 
 <header>
 <nav class="navbar" aria-label="Main navigation">
@@ -1597,7 +1742,7 @@ window.dflTrack=function(event,params){
     <ul class="nav-links">
       <li><a href="../fitness.html" class="en">Fitness</a><a href="../fitness.html" class="ar">اللياقة</a></li>
       <li><a href="../health.html" class="en">Health</a><a href="../health.html" class="ar">الصحة</a></li>
-      <li><a href="calorie-calculator.html" class="en">Calories</a><a href="calorie-calculator.html" class="ar">السعرات</a></li>
+      <li><a href="/tools/calorie-calculator.html" class="en">Calories</a><a href="/tools/calorie-calculator.html" class="ar">السعرات</a></li>
     </ul>
     <div class="nav-actions">
       <button class="icon-btn" onclick="toggleLang()"><span class="en">🌐 عربي</span><span class="ar">🌐 EN</span></button>
@@ -1794,10 +1939,10 @@ window.dflTrack=function(event,params){
 
 <!-- RELATED -->
 <div class="related-grid reveal rd2">
-  <a href="calorie-calculator.html" class="rel-card"><div class="rel-icon">🔥</div><div class="rel-name ar">حاسبة السعرات</div><div class="rel-name en">Calorie Calculator</div><div class="rel-cta"><span class="ar">احسب ←</span><span class="en">Calculate →</span></div></a>
-  <a href="body-fat-calculator.html" class="rel-card"><div class="rel-icon">📊</div><div class="rel-name ar">نسبة الدهون</div><div class="rel-name en">Body Fat %</div><div class="rel-cta"><span class="ar">احسب ←</span><span class="en">Calculate →</span></div></a>
-  <a href="water-calculator.html" class="rel-card"><div class="rel-icon">💧</div><div class="rel-name ar">حاسبة الماء</div><div class="rel-name en">Water Intake</div><div class="rel-cta"><span class="ar">احسب ←</span><span class="en">Calculate →</span></div></a>
-  <a href="one-rep-max.html" class="rel-card"><div class="rel-icon">🏋️</div><div class="rel-name ar">حاسبة أقصى رفع</div><div class="rel-name en">One Rep Max</div><div class="rel-cta"><span class="ar">احسب ←</span><span class="en">Calculate →</span></div></a>
+  <a href="/tools/calorie-calculator.html" class="rel-card"><div class="rel-icon">🔥</div><div class="rel-name ar">حاسبة السعرات</div><div class="rel-name en">Calorie Calculator</div><div class="rel-cta"><span class="ar">احسب ←</span><span class="en">Calculate →</span></div></a>
+  <a href="/tools/body-fat-calculator.html" class="rel-card"><div class="rel-icon">📊</div><div class="rel-name ar">نسبة الدهون</div><div class="rel-name en">Body Fat %</div><div class="rel-cta"><span class="ar">احسب ←</span><span class="en">Calculate →</span></div></a>
+  <a href="/tools/water-calculator.html" class="rel-card"><div class="rel-icon">💧</div><div class="rel-name ar">حاسبة الماء</div><div class="rel-name en">Water Intake</div><div class="rel-cta"><span class="ar">احسب ←</span><span class="en">Calculate →</span></div></a>
+  <a href="/tools/one-rep-max.html" class="rel-card"><div class="rel-icon">🏋️</div><div class="rel-name ar">حاسبة أقصى رفع</div><div class="rel-name en">One Rep Max</div><div class="rel-cta"><span class="ar">احسب ←</span><span class="en">Calculate →</span></div></a>
 </div>
 
 </main>
@@ -1936,17 +2081,17 @@ document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
     <h2 class="dfl-related-title"><span class="en">Related Tools & Guides</span><span class="ar">أدوات ودلائل ذات صلة</span></h2>
     <p class="dfl-related-sub"><span class="en">Tools and reading you might find useful next</span><span class="ar">أدوات وقراءات قد تفيدك في خطوتك التالية</span></p>
     <div class="dfl-related-grid">
-      <a href="calorie-calculator.html" class="dfl-rc" aria-label="Calorie Calculator">
+      <a href="/tools/calorie-calculator.html" class="dfl-rc" aria-label="Calorie Calculator">
         <div class="dfl-rc-top"><span class="dfl-rc-icon" aria-hidden="true">🔥</span><div><div class="dfl-rc-name en">Calorie Calculator</div><div class="dfl-rc-name ar">حاسبة السعرات الحرارية</div></div></div>
         <div class="dfl-rc-desc en">Daily calorie & macro targets</div><div class="dfl-rc-desc ar">السعرات اليومية ونسب العناصر</div>
         <div class="dfl-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
       </a>
-      <a href="body-fat-calculator.html" class="dfl-rc" aria-label="Body Fat Calculator">
+      <a href="/tools/body-fat-calculator.html" class="dfl-rc" aria-label="Body Fat Calculator">
         <div class="dfl-rc-top"><span class="dfl-rc-icon" aria-hidden="true">🏋️</span><div><div class="dfl-rc-name en">Body Fat Calculator</div><div class="dfl-rc-name ar">حاسبة نسبة الدهون</div></div></div>
         <div class="dfl-rc-desc en">US Navy circumference method</div><div class="dfl-rc-desc ar">طريقة البحرية الأمريكية</div>
         <div class="dfl-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
       </a>
-      <a href="water-calculator.html" class="dfl-rc" aria-label="Water Intake Calculator">
+      <a href="/tools/water-calculator.html" class="dfl-rc" aria-label="Water Intake Calculator">
         <div class="dfl-rc-top"><span class="dfl-rc-icon" aria-hidden="true">💧</span><div><div class="dfl-rc-name en">Water Intake Calculator</div><div class="dfl-rc-name ar">حاسبة شرب الماء</div></div></div>
         <div class="dfl-rc-desc en">Hydration based on your weight</div><div class="dfl-rc-desc ar">احتياجك اليومي من الماء</div>
         <div class="dfl-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
@@ -2651,5 +2796,121 @@ document.querySelectorAll('.faq-q').forEach(function(btn){
 })();
 </script>
 
+
+  <!-- DFL CANONICAL FOOTER -->
+  <footer id="dfl-footer" role="contentinfo">
+    <div class="dfl-footer-grid">
+      <div class="dfl-footer-brand">
+        <div class="dfl-flogo">DOT<span class="dot">.</span>FORLIFE</div>
+        <p><span class="en">A trusted daily companion for every family. Free, precise, and deeply human. Arabic &amp; English.</span><span class="ar">الرفيق اليومي الموثوق لكل أسرة. مجاني ودقيق وإنساني. عربي وإنجليزي.</span></p>
+      </div>
+      <div class="dfl-footer-col">
+        <h4><span class="en">Health</span><span class="ar">الصحة</span></h4>
+        <ul>
+          <li><a href="/tools/pregnancy-calculator.html"><span class="en">Pregnancy Tracker</span><span class="ar">متتبع الحمل</span></a></li>
+          <li><a href="/tools/bmi-calculator.html"><span class="en">BMI Calculator</span><span class="ar">حاسبة BMI</span></a></li>
+          <li><a href="/tools/calorie-calculator.html"><span class="en">Calorie Calculator</span><span class="ar">حاسبة السعرات</span></a></li>
+          <li><a href="/tools/water-calculator.html"><span class="en">Hydration Guide</span><span class="ar">دليل الترطيب</span></a></li>
+        </ul>
+      </div>
+      <div class="dfl-footer-col">
+        <h4><span class="en">Finance</span><span class="ar">المالية</span></h4>
+        <ul>
+          <li><a href="/tools/mortgage-calculator.html"><span class="en">Mortgage Calculator</span><span class="ar">حاسبة التمويل</span></a></li>
+          <li><a href="/tools/zakat-calculator.html"><span class="en">Zakat Calculator</span><span class="ar">حاسبة الزكاة</span></a></li>
+          <li><a href="/tools/savings-goal.html"><span class="en">Savings Goal</span><span class="ar">هدف الادخار</span></a></li>
+          <li><a href="/tools/monthly-budget.html"><span class="en">Monthly Budget</span><span class="ar">الميزانية الشهرية</span></a></li>
+        </ul>
+      </div>
+      <div class="dfl-footer-col">
+        <h4><span class="en">Real Estate</span><span class="ar">العقار</span></h4>
+        <ul>
+          <li><a href="/real-estate.html"><span class="en">Property Hub</span><span class="ar">مركز العقارات</span></a></li>
+          <li><a href="/tools/rental-yield-calculator.html"><span class="en">Rental Yield</span><span class="ar">العائد الإيجاري</span></a></li>
+          <li><a href="/tools/roi-calculator.html"><span class="en">ROI Calculator</span><span class="ar">حاسبة العائد</span></a></li>
+          <li><a href="/cities/dubai/"><span class="en">Dubai</span><span class="ar">دبي</span></a></li>
+        </ul>
+      </div>
+      <div class="dfl-footer-col">
+        <h4><span class="en">Travel &amp; Islamic</span><span class="ar">السفر والإسلامية</span></h4>
+        <ul>
+          <li><a href="/tools/travel-budget.html"><span class="en">Travel Budget</span><span class="ar">ميزانية السفر</span></a></li>
+          <li><a href="/tools/packing-checklist.html"><span class="en">Packing Checklist</span><span class="ar">قائمة الحقيبة</span></a></li>
+          <li><a href="/tools/prayer-times.html"><span class="en">Prayer Times</span><span class="ar">أوقات الصلاة</span></a></li>
+          <li><a href="/tools/qibla.html"><span class="en">Qibla Direction</span><span class="ar">اتجاه القبلة</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="dfl-footer-bottom">
+      <span>© 2025 DOTFORLIFE. <span class="en">All rights reserved.</span><span class="ar">جميع الحقوق محفوظة.</span></span>
+      <span>
+        <a href="/privacy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a> ·
+        <a href="/terms.html"><span class="en">Terms</span><span class="ar">الشروط</span></a> ·
+        <a href="/about.html"><span class="en">About</span><span class="ar">عن المنصة</span></a>
+      </span>
+    </div>
+  </footer>
+  <!-- DFL MOBILE NAV -->
+  <nav id="dfl-mobile-nav" aria-label="Mobile navigation">
+    <div class="dfl-mnav-inner">
+      <a href="/" class="dfl-mnav-item" aria-label="Home">
+        <svg viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
+        <span class="en">Home</span><span class="ar">الرئيسية</span>
+      </a>
+      <a href="/health.html" class="dfl-mnav-item" aria-label="Health">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        <span class="en">Health</span><span class="ar">الصحة</span>
+      </a>
+      <a href="/finance.html" class="dfl-mnav-item" aria-label="Finance">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v12M9 9h4.5a2.5 2.5 0 010 5H9m0 0h5"/></svg>
+        <span class="en">Finance</span><span class="ar">المالية</span>
+      </a>
+      <a href="/islamic.html" class="dfl-mnav-item" aria-label="Islamic">
+        <svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 100 18A9 9 0 0012 3zM12 3c-2 2-3 4.5-3 9s1 7 3 9m0-18c2 2 3 4.5 3 9s-1 7-3 9M3 12h18"/></svg>
+        <span class="en">Islamic</span><span class="ar">الإسلامية</span>
+      </a>
+      <a href="/travel.html" class="dfl-mnav-item" aria-label="Travel">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 011.06 2.2 2 2 0 013.04 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        <span class="en">Travel</span><span class="ar">السفر</span>
+      </a>
+    </div>
+  </nav>
+
+  <script id="dfl-nav-js">
+  (function(){
+    // Flash prevention
+    (function(){
+      var t=localStorage.getItem('dfl-theme')||'light',l=localStorage.getItem('dfl-lang')||'en',h=document.documentElement;
+      h.setAttribute('data-theme',t);h.setAttribute('data-lang',l);
+      h.setAttribute('lang',l==='ar'?'ar':'en');h.setAttribute('dir',l==='ar'?'rtl':'ltr');
+    })();
+    function ready(fn){ if(document.readyState!=='loading') fn(); else document.addEventListener('DOMContentLoaded',fn); }
+    ready(function(){
+      // Scroll shadow
+      var nb=document.getElementById('dfl-navbar');
+      if(nb){ window.addEventListener('scroll',function(){ nb.classList.toggle('scrolled',window.scrollY>40); },{passive:true}); }
+      // Language
+      var lb=document.getElementById('dfl-lang-btn');
+      if(lb){ lb.addEventListener('click',function(){
+        var h=document.documentElement,l=h.getAttribute('data-lang')==='ar'?'en':'ar';
+        h.setAttribute('data-lang',l);h.setAttribute('lang',l);
+        h.setAttribute('dir',l==='ar'?'rtl':'ltr');localStorage.setItem('dfl-lang',l);
+      }); }
+      // Theme
+      var tb=document.getElementById('dfl-theme-btn');
+      if(tb){
+        function applyT(t){
+          document.documentElement.setAttribute('data-theme',t);localStorage.setItem('dfl-theme',t);
+          var en=tb.querySelector('.en'),ar=tb.querySelector('.ar');
+          if(en)en.textContent=t==='dark'?'☀️':'🌙';if(ar)ar.textContent=t==='dark'?'☀️':'🌙';
+        }
+        applyT(localStorage.getItem('dfl-theme')||'light');
+        tb.addEventListener('click',function(){ applyT(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark'); });
+      }
+      // Language/theme spans: also update any existing dfl-lang-btn if duplicated
+      var en=document.querySelectorAll('.en'),ar=document.querySelectorAll('.ar');
+    });
+  })();
+  </script>
 </body>
 </html>
