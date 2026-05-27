@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light" data-lang="en">
+<head>
+  <script>(function(){var t=localStorage.getItem('dfl-theme')||'light';var l=localStorage.getItem('dfl-lang')||'en';var h=document.documentElement;h.setAttribute('data-theme',t);h.setAttribute('data-lang',l);h.setAttribute('lang',l==='ar'?'ar':'en');h.setAttribute('dir',l==='ar'?'rtl':'ltr');})();</script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Tasks — DOTFORLIFE | مهامي</title>
+  <meta name="description" content="Simple family task list. Today, upcoming, done. Nothing more."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500;600&family=Almarai:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/styles/global.css"/>
+<style>
+  :root {
+    --text:#1A1410; --text-2:#5C534A; --muted:#9A9188;
+    --body-bg:#FAF8F4; --card-bg:#FFFFFF; --cream:#F5F0E8;
+    --cream-d:#EDE6D8; --border:#E0D8CC; --gold:#B8861A;
+    --gold-d:#8A620F; --blue:#0F3D6E; --green:#1B7A4E;
+    --font-serif:'Crimson Pro',Georgia,serif;
+    --font-ui:'Inter',system-ui,sans-serif;
+    --font-ar:'Almarai','Segoe UI',sans-serif;
+    --radius:6px; --shadow:0 2px 24px rgba(0,0,0,.07);
+  }
+  [data-theme="dark"] {
+    --text:#EDE8E0; --text-2:#B8B0A4; --muted:#7A746C;
+    --body-bg:#12100E; --card-bg:#1E1A16; --cream:#1E1A16;
+    --cream-d:#252018; --border:#302820; --gold:#D4A832;
+    --shadow:0 2px 24px rgba(0,0,0,.4);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--font-ui);font-size:16px;color:var(--text);background:var(--body-bg);line-height:1.6;transition:background .3s,color .3s;}
+  [data-lang="ar"] body{font-family:var(--font-ar);}
+  .en{display:inline;}.ar{display:none;}
+  [data-lang="ar"] .en{display:none;}[data-lang="ar"] .ar{display:inline;}
+  img{max-width:100%;display:block;}a{color:inherit;text-decoration:none;}
+
+  /* NAVBAR */
+  #navbar{position:fixed;top:0;left:0;right:0;z-index:100;min-height:64px;height:auto;overflow:visible;background:rgba(250,248,244,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transition:box-shadow .3s;display:flex;align-items:center;justify-content:center;}
+  [data-theme="dark"] #navbar{background:rgba(18,16,14,0.97);}
+  #navbar.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.07);}
+  .nav-inner{max-width:1280px;width:100%;padding:0 32px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-logo{display:flex;align-items:center;}
+  .nav-logo img{height:130px;width:auto;display:block;margin-top:4px;margin-bottom:8px;}
+  @media(max-width:768px){.nav-logo img{height:96px;}}
+  .nav-links{display:flex;gap:2rem;align-items:center;list-style:none;}
+  .nav-links a{font-size:.82rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--text-2);transition:color .2s;}
+  .nav-links a:hover,.nav-links a.active{color:var(--gold);}
+  .nav-controls{display:flex;gap:.75rem;align-items:center;}
+  .nav-btn{cursor:pointer;border:1px solid var(--border);border-radius:var(--radius);padding:.35rem .7rem;font-size:.76rem;font-weight:600;letter-spacing:.08em;background:transparent;color:var(--text-2);transition:all .2s;}
+  .nav-btn:hover{border-color:var(--gold);color:var(--gold);}
+  @media(max-width:768px){.nav-links{display:none;}.nav-inner{padding:0 16px;}}
+
+  /* PAGE */
+  #page{margin-top:155px;max-width:680px;margin-left:auto;margin-right:auto;padding:0 clamp(1rem,4vw,2rem) 6rem;}
+
+  /* HEADER */
+  .page-header{text-align:center;padding:2.5rem 0 2rem;border-bottom:1px solid var(--border);margin-bottom:2rem;}
+  .page-header-icon{font-size:2rem;margin-bottom:.75rem;line-height:1;}
+  .page-header h1{font-family:var(--font-serif);font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:300;margin-bottom:.4rem;}
+  [data-lang="ar"] .page-header h1{font-family:var(--font-ar);}
+  .page-header p{font-size:.88rem;color:var(--text-2);max-width:380px;margin:0 auto;}
+  [data-lang="ar"] .page-header p{font-family:var(--font-ar);}
+
+  /* TAB BAR */
+  .tab-bar{display:flex;border-bottom:1px solid var(--border);margin-bottom:1.5rem;gap:0;}
+  .tab-btn{flex:1;padding:.7rem 1rem;font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;background:none;border:none;border-bottom:2px solid transparent;color:var(--muted);cursor:pointer;transition:color .2s,border-color .2s;text-align:center;}
+  .tab-btn.active{color:var(--gold);border-bottom-color:var(--gold);}
+  [data-lang="ar"] .tab-btn{font-family:var(--font-ar);letter-spacing:0;text-transform:none;}
+
+  /* ADD BAR */
+  .add-bar{display:flex;gap:.6rem;margin-bottom:1.5rem;}
+  .add-input{flex:1;padding:.65rem 1rem;border:1px solid var(--border);border-radius:999px;background:var(--card-bg);color:var(--text);font-size:.88rem;font-family:var(--font-ui);outline:none;transition:border-color .2s;}
+  [data-lang="ar"] .add-input{font-family:var(--font-ar);text-align:right;}
+  .add-input:focus{border-color:var(--gold);}
+  .add-input::placeholder{color:var(--muted);}
+  .add-btn{padding:.65rem 1.25rem;background:var(--gold);color:#fff;border:none;border-radius:999px;font-size:.82rem;font-weight:600;cursor:pointer;transition:background .2s;white-space:nowrap;flex-shrink:0;}
+  .add-btn:hover{background:var(--gold-d);}
+  [data-lang="ar"] .add-btn{font-family:var(--font-ar);}
+
+  /* TASK LIST */
+  .task-list{display:flex;flex-direction:column;gap:.6rem;}
+
+  /* TASK ITEM */
+  .task-item{
+    display:flex;align-items:center;gap:.8rem;
+    padding:.8rem 1rem;
+    background:var(--card-bg);
+    border:1px solid var(--border);
+    border-radius:14px;
+    transition:box-shadow .15s,opacity .2s;
+    animation:fadeIn .2s ease;
+  }
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .task-item.done{opacity:.55;}
+  .task-check{
+    width:22px;height:22px;border-radius:50%;border:2px solid var(--border);
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;flex-shrink:0;transition:background .2s,border-color .2s;
+  }
+  .task-check.done{background:var(--green);border-color:var(--green);}
+  .task-check.done::after{content:'✓';font-size:.7rem;color:#fff;}
+  .task-text{flex:1;font-size:.88rem;color:var(--text);}
+  .task-text.done{text-decoration:line-through;color:var(--muted);}
+  .task-del{
+    cursor:pointer;background:none;border:none;color:var(--muted);
+    font-size:.8rem;padding:0 .2rem;opacity:0;transition:opacity .15s,color .15s;
+    flex-shrink:0;line-height:1;
+  }
+  .task-item:hover .task-del{opacity:1;}
+  .task-del:hover{color:#c0392b;}
+
+  /* UPCOMING: date chip */
+  .task-date{
+    font-size:.7rem;color:var(--muted);white-space:nowrap;
+    background:var(--cream);border-radius:999px;
+    padding:.15rem .5rem;flex-shrink:0;
+  }
+
+  /* EMPTY STATE */
+  .empty-state{text-align:center;padding:3rem 1rem;}
+  .empty-state .e-icon{font-size:2.5rem;opacity:.4;margin-bottom:.75rem;}
+  .empty-state p{font-size:.85rem;color:var(--muted);}
+  [data-lang="ar"] .empty-state p{font-family:var(--font-ar);}
+
+  /* DONE CLEAR */
+  .section-action{text-align:right;margin-bottom:.75rem;}
+  .section-action button{background:none;border:none;font-size:.75rem;color:var(--muted);cursor:pointer;padding:0;}
+  .section-action button:hover{color:#c0392b;}
+  [data-lang="ar"] .section-action{text-align:left;}
+  [data-lang="ar"] .section-action button{font-family:var(--font-ar);}
+
+  /* FOOTER */
+  #footer{padding:2rem;text-align:center;border-top:1px solid var(--border);margin-top:2rem;}
+  #footer p{font-size:.78rem;color:var(--muted);}
+</style>
+</head>
+<body>
+
+  <nav id="navbar" role="navigation">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo"><img src="/logo1-transparent.png" alt="Dot4Life" height="130" style="height:130px;width:auto;display:block;margin-top:4px;margin-bottom:8px;"></a>
+      <ul class="nav-links">
+        <li><a href="/family.html"><span class="en">Family</span><span class="ar">العائلة</span></a></li>
+        <li><a href="/tasks.html" class="active"><span class="en">Tasks</span><span class="ar">المهام</span></a></li>
+        <li><a href="/notes.html"><span class="en">Notes</span><span class="ar">الملاحظات</span></a></li>
+        <li><a href="/health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
+        <li><a href="/finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li>
+      </ul>
+      <div class="nav-controls">
+        <button class="nav-btn" id="lang-toggle"><span class="en">عربي</span><span class="ar">English</span></button>
+        <button class="nav-btn" id="theme-toggle"><span class="en">🌙</span><span class="ar">🌙</span></button>
+      </div>
+    </div>
+  </nav>
+
+  <main id="page">
+
+    <header class="page-header">
+      <div class="page-header-icon">✅</div>
+      <h1><span class="en">Your Tasks</span><span class="ar">مهامك</span></h1>
+      <p>
+        <span class="en">Today, upcoming, done. Simple and clear.</span>
+        <span class="ar">اليوم، القادم، المنجز. بسيط وواضح.</span>
+      </p>
+    </header>
+
+    <!-- Tabs -->
+    <div class="tab-bar" role="tablist">
+      <button class="tab-btn active" data-tab="today" role="tab">
+        <span class="en">Today</span><span class="ar">اليوم</span>
+      </button>
+      <button class="tab-btn" data-tab="upcoming" role="tab">
+        <span class="en">Upcoming</span><span class="ar">القادم</span>
+      </button>
+      <button class="tab-btn" data-tab="done" role="tab">
+        <span class="en">Done</span><span class="ar">المنجز</span>
+      </button>
+    </div>
+
+    <!-- Add bar -->
+    <div class="add-bar">
+      <input type="text" class="add-input" id="task-input" maxlength="120"
+        placeholder="Add a task…" aria-label="New task"/>
+      <button class="add-btn" id="task-add-btn">
+        <span class="en">Add</span><span class="ar">إضافة</span>
+      </button>
+    </div>
+
+    <!-- Lists -->
+    <div id="today-panel" class="task-list" role="tabpanel"></div>
+    <div id="upcoming-panel" class="task-list" style="display:none" role="tabpanel"></div>
+    <div id="done-panel" role="tabpanel" style="display:none">
+      <div class="section-action">
+        <button id="clear-done-btn">
+          <span class="en">Clear all done</span><span class="ar">مسح المنجز</span>
+        </button>
+      </div>
+      <div class="task-list" id="done-list"></div>
+    </div>
+
+  </main>
+
+  <footer id="footer">
+    <p><span class="en"><a href="/">← Back to Today</a></span><span class="ar"><a href="/">← العودة لليوم</a></span></p>
+  </footer>
+
+  <script>
+  (function(){
+
+    // ── Nav + theme
+    var nb = document.getElementById('navbar');
+    window.addEventListener('scroll', function(){ nb.classList.toggle('scrolled', window.scrollY>40); }, {passive:true});
+    document.getElementById('lang-toggle').addEventListener('click', function(){
+      var h = document.documentElement;
+      var l = h.getAttribute('data-lang')==='ar'?'en':'ar';
+      h.setAttribute('data-lang',l); h.setAttribute('lang',l); h.setAttribute('dir',l==='ar'?'rtl':'ltr');
+      localStorage.setItem('dfl-lang',l);
+      var inp = document.getElementById('task-input');
+      inp.placeholder = l==='ar' ? 'أضف مهمة…' : 'Add a task…';
+      inp.dir = l==='ar' ? 'rtl' : 'ltr';
+      render();
+    });
+    var themeBtn = document.getElementById('theme-toggle');
+    function applyTheme(t){ document.documentElement.setAttribute('data-theme',t); localStorage.setItem('dfl-theme',t); themeBtn.querySelector('.en').textContent=t==='dark'?'☀️':'🌙'; themeBtn.querySelector('.ar').textContent=t==='dark'?'☀️':'🌙'; }
+    applyTheme(localStorage.getItem('dfl-theme')||'light');
+    themeBtn.addEventListener('click', function(){ applyTheme(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark'); });
+
+    // ── Data
+    function getTasks(){ try{ return JSON.parse(localStorage.getItem('dfl-all-tasks')||'[]'); }catch(e){ return []; } }
+    function setTasks(a){ localStorage.setItem('dfl-all-tasks', JSON.stringify(a)); }
+    function lang(){ return document.documentElement.getAttribute('data-lang')||'en'; }
+    function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+    function todayStr(){ var d=new Date(); return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate(); }
+
+    var currentTab = 'today';
+
+    // ── Tab switching
+    document.querySelectorAll('.tab-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
+        btn.classList.add('active');
+        currentTab = btn.dataset.tab;
+        ['today-panel','upcoming-panel','done-panel'].forEach(function(id){
+          document.getElementById(id).style.display = 'none';
+        });
+        document.getElementById(currentTab+'-panel').style.display = '';
+        render();
+      });
+    });
+
+    // ── Add task
+    var input = document.getElementById('task-input');
+    input.dir = lang()==='ar' ? 'rtl' : 'ltr';
+
+    function addTask(){
+      var text = input.value.trim();
+      if(!text) return;
+      var tasks = getTasks();
+      tasks.push({
+        id: Date.now(),
+        text: text,
+        done: false,
+        tab: currentTab === 'done' ? 'today' : currentTab,
+        created: todayStr()
+      });
+      setTasks(tasks);
+      input.value = '';
+      if(currentTab === 'done'){ currentTab = 'today'; switchTab('today'); }
+      render();
+    }
+    document.getElementById('task-add-btn').addEventListener('click', addTask);
+    input.addEventListener('keydown', function(e){ if(e.key==='Enter') addTask(); });
+
+    function switchTab(tab){
+      document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.toggle('active', b.dataset.tab===tab); });
+      ['today-panel','upcoming-panel','done-panel'].forEach(function(id){ document.getElementById(id).style.display='none'; });
+      document.getElementById(tab+'-panel').style.display='';
+      currentTab = tab;
+    }
+
+    // ── Clear done
+    document.getElementById('clear-done-btn').addEventListener('click', function(){
+      if(!confirm(lang()==='ar'?'مسح جميع المهام المنجزة؟':'Clear all done tasks?')) return;
+      var tasks = getTasks().filter(function(t){ return !t.done; });
+      setTasks(tasks); render();
+    });
+
+    // ── Render
+    function renderPanel(panelId, tasks, showDate){
+      var panel = document.getElementById(panelId);
+      if(!tasks.length){
+        panel.innerHTML = '<div class="empty-state"><div class="e-icon">🌿</div><p>' +
+          (lang()==='ar' ? 'لا توجد مهام هنا.' : 'Nothing here yet.') + '</p></div>';
+        return;
+      }
+      panel.innerHTML = tasks.map(function(t){
+        return '<div class="task-item'+(t.done?' done':'')+'" data-id="'+t.id+'">' +
+          '<div class="task-check'+(t.done?' done':'')+'" data-id="'+t.id+'" role="checkbox" aria-checked="'+(t.done?'true':'false')+'" tabindex="0"></div>' +
+          '<span class="task-text'+(t.done?' done':'')+'">'+esc(t.text)+'</span>' +
+          (showDate && t.created ? '<span class="task-date">'+t.created+'</span>' : '') +
+          '<button class="task-del" data-id="'+t.id+'" aria-label="Delete">✕</button>' +
+        '</div>';
+      }).join('');
+
+      panel.querySelectorAll('.task-check').forEach(function(el){
+        function toggle(){
+          var tasks2=getTasks();
+          var t=tasks2.find(function(x){ return x.id===parseInt(el.dataset.id); });
+          if(t){ t.done=!t.done; if(t.done) t.completedDate=todayStr(); setTasks(tasks2); render(); }
+        }
+        el.addEventListener('click',toggle);
+        el.addEventListener('keydown',function(e){ if(e.key===' '||e.key==='Enter'){ e.preventDefault(); toggle(); } });
+      });
+      panel.querySelectorAll('.task-del').forEach(function(btn){
+        btn.addEventListener('click',function(){
+          var tasks2=getTasks().filter(function(x){ return x.id!==parseInt(btn.dataset.id); });
+          setTasks(tasks2); render();
+        });
+      });
+    }
+
+    function render(){
+      var all = getTasks();
+      var today = all.filter(function(t){ return t.tab==='today' && !t.done; });
+      var upcoming = all.filter(function(t){ return t.tab==='upcoming' && !t.done; });
+      var done = all.filter(function(t){ return t.done; });
+      renderPanel('today-panel', today, false);
+      renderPanel('upcoming-panel', upcoming, true);
+      var doneList = document.getElementById('done-list');
+      if(!done.length){
+        doneList.innerHTML = '<div class="empty-state"><div class="e-icon">✨</div><p>' +
+          (lang()==='ar'?'لا توجد مهام منجزة.':'No completed tasks yet.') + '</p></div>';
+      } else {
+        renderPanel('done-list', done, false);
+      }
+    }
+
+    // ── Init
+    input.placeholder = lang()==='ar' ? 'أضف مهمة…' : 'Add a task…';
+    render();
+
+  })();
+  </script>
+</body>
+</html>

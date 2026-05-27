@@ -58,1480 +58,312 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Almarai:wght@300;400;700;800&display=swap" /></noscript>
   <link rel="stylesheet" href="/styles/global.css"/>
 <style>
-    :root {
-      --accent:#0F4C8A; --accent-l:#1565C0; --accent-d:#0A3566;
-      --accent-glow:rgba(15,76,138,.15); --accent-soft:rgba(15,76,138,.08);
-      --gold:#C9A227; --gold-l:#E8BC2E; --gold-soft:rgba(201,162,39,.10);
-      --teal:#0097A7; --cyan:#06B6D4; --emerald:#059669;
-      --dark:#06101F; --slate:#0F1F38; --border:#1E3A5F;
-      --border-l:#DDE2EA; --pill-bg:#F2F5F9; --muted:#9CA3AF; --light:#F4F7FB; --white:#FFFFFF;
-      --card-bg:#FFFFFF; --body-bg:#F4F7FB; --text:#1A2535; --text-2:#5A6E85;
-      --shadow-md:0 2px 12px rgba(15,76,138,.08);
-      --shadow-lg:0 6px 28px rgba(15,76,138,.10);
-      --shadow-xl:0 14px 44px rgba(15,76,138,.13);
-      --r-lg:16px; --r-xl:20px; --r-2xl:24px;
-    }
-    [data-theme="dark"] {
-      --card-bg:#0F1F38; --body-bg:#06101F; --text:#E8EDF5; --text-2:#8FA5C0;
-      --border-l:#1E3A5F; --pill-bg:#152234; --shadow-md:0 2px 12px rgba(0,0,0,.40);
-      --shadow-lg:0 6px 28px rgba(0,0,0,.45);
-    }
-    [data-lang="ar"] { font-family:'Almarai',sans-serif; direction:rtl; text-align:right; }
-    [data-lang="ar"] .en { display:none; } [data-lang="en"] .ar { display:none; }
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html{scroll-behavior:smooth;}
-    body{font-family:'Inter',system-ui,sans-serif;background:var(--body-bg);color:var(--text);line-height:1.6;transition:background .3s,color .3s;overflow-x:hidden;}
-    a{color:inherit;text-decoration:none;}
-    .container{max-width:1280px;margin:0 auto;padding:0 24px;}
-    .reveal{opacity:0;transform:translateY(22px);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1);}
-    .reveal.visible{opacity:1;transform:translateY(0);}
+  :root {
+    --accent:#1B7A4E; --accent-d:#155e3b;
+    --gold:#B8861A; --navy:#0A1628; --cream:#F5F0E8;
+    --body-bg:#FAF8F4; --card-bg:#FFFFFF; --text:#2D3142; --text-2:#6B7280;
+    --border:#E2DDD6; --shadow:0 2px 12px rgba(0,0,0,.07);
+  }
+  [data-theme="dark"] {
+    --body-bg:#0F172A; --card-bg:#1E293B; --text:#F1F5F9; --text-2:#94A3B8; --border:#334155;
+  }
+  [data-lang="ar"] { font-family:'Almarai',sans-serif; }
+  [data-lang="ar"] .en { display:none; }
+  [data-lang="en"] .ar { display:none; }
+  *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Inter',system-ui,sans-serif; background:var(--body-bg); color:var(--text); line-height:1.6; overflow-x:hidden; }
+  a { color:inherit; text-decoration:none; }
+  .container { max-width:1200px; margin:0 auto; padding:0 24px; }
+  .reveal { opacity:0; transform:translateY(20px); transition:opacity .55s ease, transform .55s ease; }
+  .reveal.visible { opacity:1; transform:none; }
 
-    /* NAVBAR */
-    .navbar{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.95);backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid var(--border-l);}
-    .navbar.scrolled{box-shadow:0 2px 18px rgba(15,76,138,.08);}
-    [data-theme="dark"] .navbar{background:rgba(6,16,31,.96);border-bottom-color:rgba(30,58,95,.6);}
-    .navbar-inner{display:flex;align-items:center;justify-content:space-between;height:68px;}
-    .logo{font-size:1.3rem;font-weight:800;letter-spacing:-.02em;display:flex;align-items:center;gap:2px;}
-    .logo span:nth-child(1){color:var(--text);}
-    .logo span:nth-child(2){color:var(--accent-l);}
-    .logo span:nth-child(3){color:var(--teal);}
-    .nav-links{display:flex;align-items:center;gap:4px;list-style:none;}
-    .nav-links a{padding:6px 14px;border-radius:999px;font-size:.85rem;font-weight:500;color:var(--text-2);transition:all .2s;white-space:nowrap;}
-    .nav-links a:hover{color:var(--text);background:var(--pill-bg);}
-    .nav-links a.active{color:var(--accent);font-weight:700;}
-    .nav-actions{display:flex;align-items:center;gap:10px;}
-    .lang-toggle,.theme-btn{padding:7px 14px;border-radius:999px;background:var(--pill-bg);border:1px solid var(--border-l);color:var(--text-2);font-size:.85rem;font-weight:600;cursor:pointer;font-family:inherit;transition:all .2s;}
-    .lang-toggle:hover,.theme-btn:hover{border-color:var(--accent);color:var(--accent);}
-    .theme-btn{padding:7px 12px;}
-    @media(max-width:768px){.nav-links{display:none;}}
+  /* NAVBAR */
+  .navbar { position:sticky; top:0; z-index:100; background:rgba(250,248,244,.95); backdrop-filter:blur(16px); border-bottom:1px solid var(--border); }
+  [data-theme="dark"] .navbar { background:rgba(15,23,42,.95); }
+  .navbar-inner { display:flex; align-items:center; justify-content:space-between; min-height:64px; height:auto; overflow:visible; padding:8px 0; }
+  .nav-logo img { height:130px; width:auto; display:block; }
+  .nav-links { display:flex; align-items:center; gap:4px; list-style:none; }
+  .nav-links a { padding:6px 14px; border-radius:999px; font-size:.85rem; font-weight:500; color:var(--text-2); transition:all .2s; white-space:nowrap; }
+  .nav-links a:hover { color:var(--text); background:#F0EDE8; }
+  [data-theme="dark"] .nav-links a:hover { background:#1e293b; }
+  .nav-links a.active { color:var(--accent); font-weight:700; }
+  .nav-actions { display:flex; align-items:center; gap:8px; }
+  .lang-toggle, .theme-btn { padding:6px 14px; border-radius:999px; background:transparent; border:1.5px solid var(--border); color:var(--text-2); font-size:.82rem; font-weight:600; cursor:pointer; font-family:inherit; transition:all .2s; }
+  .lang-toggle:hover, .theme-btn:hover { border-color:var(--accent); color:var(--accent); }
+  @media(max-width:768px) { .nav-links { display:none; } }
 
-    /* HERO */
-    .cat-hero{padding:72px 0 56px;position:relative;overflow:hidden;}
-    .hero-bg-finance{
-      position:absolute;inset:0;
-      background:
-        radial-gradient(ellipse 75% 70% at 90% 35%, rgba(15,76,138,.11), transparent 60%),
-        radial-gradient(ellipse 50% 55% at 5% 90%, rgba(201,162,39,.07), transparent 60%),
-        radial-gradient(ellipse 40% 40% at 50% 100%, rgba(0,151,167,.05), transparent 60%);
-    }
-    .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(15,76,138,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(15,76,138,.04) 1px,transparent 1px);background-size:60px 60px;}
-    .hero-lines{position:absolute;right:-100px;top:0;bottom:0;width:600px;overflow:hidden;opacity:.06;pointer-events:none;}
-    .hero-lines::before,.hero-lines::after{content:'';position:absolute;border-radius:50%;border:1px solid #0F4C8A;}
-    .hero-lines::before{width:500px;height:500px;top:-100px;right:-100px;}
-    .hero-lines::after{width:300px;height:300px;top:50px;right:50px;}
-    .cat-hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
-    .cat-hero-label{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:999px;background:rgba(15,76,138,.09);border:1px solid rgba(15,76,138,.22);color:var(--accent-l);font-size:.8rem;font-weight:600;letter-spacing:.05em;margin-bottom:20px;}
-    .cat-hero-title{font-size:clamp(2.2rem,4.5vw,3.5rem);font-weight:900;letter-spacing:-.035em;line-height:1.1;margin-bottom:20px;}
-    .hero-accent{background:linear-gradient(135deg,var(--accent-l),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-    .cat-hero-sub{font-size:1.05rem;color:var(--text-2);line-height:1.75;max-width:480px;margin-bottom:36px;}
-    .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 26px;border-radius:999px;font-weight:700;font-size:.95rem;cursor:pointer;border:none;transition:all .2s;font-family:inherit;}
-    .btn-accent{background:var(--accent);color:#fff;box-shadow:0 4px 18px rgba(15,76,138,.40);}
-    .btn-accent:hover{background:var(--accent-d);transform:translateY(-1px);box-shadow:0 6px 24px rgba(15,76,138,.50);}
-    .btn-ghost{background:transparent;color:var(--text-2);border:1.5px solid var(--border-l);}
-    .btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
+  /* HERO */
+  .cat-hero { padding:64px 0 52px; background:linear-gradient(135deg, #EDFAF4 0%, #FAF8F4 60%, #FFF8E8 100%); }
+  [data-theme="dark"] .cat-hero { background:linear-gradient(135deg, #0a1e14 0%, #0f172a 100%); }
+  .hero-eyebrow { display:inline-flex; align-items:center; gap:8px; padding:5px 14px; border-radius:999px; background:rgba(27,122,78,.1); border:1px solid rgba(27,122,78,.25); color:var(--accent); font-size:.78rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; margin-bottom:18px; }
+  .hero-title { font-size:clamp(2rem,4.5vw,3.2rem); font-weight:900; letter-spacing:-.035em; line-height:1.12; margin-bottom:16px; }
+  .hero-accent { color:var(--accent); }
+  .hero-sub { font-size:1.05rem; color:var(--text-2); max-width:540px; margin-bottom:32px; line-height:1.7; }
+  .hero-ctas { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:36px; }
+  .btn { display:inline-flex; align-items:center; gap:8px; padding:11px 24px; border-radius:999px; font-weight:700; font-size:.92rem; cursor:pointer; border:none; transition:all .2s; font-family:inherit; }
+  .btn-accent { background:var(--accent); color:#fff; }
+  .btn-accent:hover { background:var(--accent-d); transform:translateY(-1px); }
+  .btn-ghost { background:transparent; border:1.5px solid var(--border); color:var(--text-2); }
+  .btn-ghost:hover { border-color:var(--accent); color:var(--accent); }
+  .hero-stats { display:flex; gap:24px; flex-wrap:wrap; }
+  .hero-stat { display:flex; align-items:center; gap:7px; font-size:.82rem; color:var(--text-2); font-weight:500; }
+  .hero-stat::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--accent); flex-shrink:0; }
 
-    /* HERO PORTFOLIO VISUAL */
-    .hero-visual-finance{position:relative;}
-    .hero-visual-finance::before{content:'';position:absolute;inset:-32px;background:radial-gradient(ellipse at 50% 50%,rgba(15,76,138,.06) 0%,transparent 70%);pointer-events:none;}
-    .portfolio-card{background:var(--card-bg);border-radius:var(--r-2xl);padding:28px;border:1px solid var(--border-l);box-shadow:var(--shadow-xl);position:relative;overflow:hidden;}
-    .portfolio-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--accent),var(--accent-l),var(--gold));}
-    .pf-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:24px;}
-    .pf-label{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
-    .pf-value{font-size:2rem;font-weight:900;letter-spacing:-.03em;color:var(--text);}
-    .pf-gain{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:999px;background:rgba(5,150,105,.1);color:#059669;font-size:.8rem;font-weight:700;}
-    .pf-chart{margin-bottom:20px;position:relative;}
-    .pf-bars{display:flex;align-items:flex-end;gap:6px;height:72px;}
-    .pf-bar{flex:1;border-radius:4px 4px 0 0;transition:height .3s;}
-    .pf-bar:nth-child(1){height:45%;background:rgba(15,76,138,.25);}
-    .pf-bar:nth-child(2){height:55%;background:rgba(15,76,138,.35);}
-    .pf-bar:nth-child(3){height:40%;background:rgba(15,76,138,.25);}
-    .pf-bar:nth-child(4){height:65%;background:rgba(15,76,138,.40);}
-    .pf-bar:nth-child(5){height:58%;background:rgba(15,76,138,.35);}
-    .pf-bar:nth-child(6){height:75%;background:rgba(15,76,138,.50);}
-    .pf-bar:nth-child(7){height:68%;background:rgba(15,76,138,.40);}
-    .pf-bar:nth-child(8){height:85%;background:rgba(15,76,138,.60);}
-    .pf-bar:nth-child(9){height:78%;background:rgba(15,76,138,.50);}
-    .pf-bar:nth-child(10){height:92%;background:linear-gradient(180deg,var(--accent-l),var(--accent));}
-    .pf-line{position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(15,76,138,.1));}
-    .pf-allocation{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-    .pf-asset{background:var(--body-bg);border-radius:12px;padding:12px 14px;border:1px solid var(--border-l);}
-    .pf-asset-name{font-size:.72rem;color:var(--muted);font-weight:600;margin-bottom:4px;}
-    .pf-asset-val{font-size:.95rem;font-weight:800;color:var(--text);}
-    .pf-asset-pct{font-size:.75rem;font-weight:600;}
-    .pf-asset-pct.up{color:#059669;}
-    .pf-asset-pct.dn{color:#DC2626;}
+  /* TOOLS GRID */
+  .tools-section { padding:56px 0 48px; }
+  .section-header { margin-bottom:36px; }
+  .section-label { font-size:.75rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); margin-bottom:8px; }
+  .section-title { font-size:clamp(1.5rem,3vw,2rem); font-weight:800; letter-spacing:-.025em; }
+  .section-sub { font-size:.95rem; color:var(--text-2); margin-top:6px; }
+  .tools-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(240px,1fr)); gap:20px; }
+  .tool-card { display:flex; flex-direction:column; background:var(--card-bg); border:1px solid var(--border); border-radius:16px; padding:24px; cursor:pointer; transition:transform .25s, box-shadow .25s; position:relative; overflow:hidden; }
+  .tool-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:var(--tc, var(--accent)); }
+  .tool-card:hover { transform:translateY(-4px); box-shadow:0 12px 32px rgba(0,0,0,.1); }
+  .tool-card-icon { font-size:2rem; margin-bottom:14px; }
+  .tool-card-title { font-size:1rem; font-weight:700; margin-bottom:6px; line-height:1.3; }
+  .tool-card-desc { font-size:.85rem; color:var(--text-2); line-height:1.55; flex:1; }
+  .tool-card-link { margin-top:16px; font-size:.82rem; font-weight:700; color:var(--tc, var(--accent)); }
 
-    /* METRICS ROW */
-    .metrics-row{display:flex;gap:12px;margin-top:16px;padding-top:16px;border-top:1px solid var(--border-l);}
-    .metric-item{flex:1;text-align:center;}
-    .metric-val{font-size:1.1rem;font-weight:800;color:var(--text);}
-    .metric-lbl{font-size:.68rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-top:2px;}
+  /* GUIDE STRIP */
+  .guide-strip { background:var(--navy); color:#fff; border-radius:20px; padding:40px 48px; margin:0 0 64px; display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap; }
+  [data-theme="dark"] .guide-strip { background:#1e293b; border:1px solid #334155; }
+  .guide-strip-text h3 { font-size:1.4rem; font-weight:800; margin-bottom:8px; }
+  .guide-strip-text p { font-size:.9rem; color:rgba(255,255,255,.7); max-width:420px; line-height:1.6; }
+  .btn-gold { background:linear-gradient(135deg,#B8861A,#8B6514); color:#fff; }
+  .btn-gold:hover { transform:translateY(-1px); box-shadow:0 6px 20px rgba(184,134,26,.4); }
 
-    /* QUICK JUMP STRIP */
-    #qjs-strip a{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;font-size:.82rem;font-weight:600;white-space:nowrap;text-decoration:none;transition:all .2s;flex-shrink:0;}
-    #qjs-strip a:hover{border-color:var(--accent)!important;color:var(--accent)!important;background:var(--accent-soft)!important;transform:translateY(-2px);}
+  /* FOOTER */
+  .site-footer { background:var(--navy); color:rgba(255,255,255,.55); padding:48px 0 24px; }
+  .footer-top { display:flex; align-items:flex-start; justify-content:space-between; gap:32px; flex-wrap:wrap; margin-bottom:36px; }
+  .footer-brand p { font-size:.85rem; line-height:1.65; max-width:280px; margin-top:10px; color:rgba(255,255,255,.5); }
+  .dfl-nav-logo img { height:144px; width:auto; display:block; }
+  .footer-links-group h4 { font-size:.8rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:rgba(255,255,255,.4); margin-bottom:12px; }
+  .footer-links-group ul { list-style:none; display:flex; flex-direction:column; gap:8px; }
+  .footer-links-group ul li a { font-size:.88rem; color:rgba(255,255,255,.55); transition:color .2s; }
+  .footer-links-group ul li a:hover { color:#fff; }
+  .footer-bottom { border-top:1px solid rgba(255,255,255,.08); padding-top:20px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; font-size:.8rem; }
+  .footer-bottom a { color:rgba(255,255,255,.4); }
+  .footer-bottom a:hover { color:rgba(255,255,255,.7); }
 
-    /* LIFE INTRO BRIDGE */
-    .lib-section{padding:clamp(56px,8vw,88px) 0;background:var(--card-bg);border-top:1px solid var(--border-l);border-bottom:1px solid var(--border-l);}
-    .lib-inner{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,5vw,72px);align-items:start;}
-    .lib-eyebrow{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;display:block;}
-    .lib-headline{font-size:clamp(1.7rem,3vw,2.4rem);font-weight:900;letter-spacing:-.04em;line-height:1.15;margin-bottom:20px;color:var(--text);}
-    .lib-body{font-size:1rem;line-height:1.8;color:var(--text-2);margin-bottom:20px;}
-    .lib-cite{font-size:.82rem;color:var(--muted);font-style:italic;padding:12px 16px;border-left:3px solid var(--accent-soft);background:var(--body-bg);border-radius:0 8px 8px 0;}
-    [data-lang="ar"] .lib-cite{border-left:none;border-right:3px solid var(--accent-soft);border-radius:8px 0 0 8px;}
-    .lib-pillars{display:flex;flex-direction:column;gap:20px;}
-    .lib-pillar{display:grid;grid-template-columns:40px 1fr;column-gap:14px;row-gap:2px;align-items:start;}
-    .lib-pillar-icon{font-size:1.5rem;line-height:1;padding-top:2px;}
-    .lib-pillar strong{font-size:.92rem;font-weight:700;color:var(--text);}
-    .lib-pillar span{font-size:.82rem;color:var(--text-2);}
-
-    /* SCIENCE STRIP */
-    .science-strip{padding:clamp(40px,5vw,60px) 0;}
-    .science-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px;}
-    .science-card{background:var(--card-bg);border-radius:var(--r-xl);padding:28px;border:1px solid var(--border-l);position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s;}
-    .science-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);}
-    .science-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
-    .science-card:nth-child(1)::before{background:linear-gradient(90deg,var(--accent),var(--accent-l));}
-    .science-card:nth-child(2)::before{background:linear-gradient(90deg,var(--gold),var(--gold-l));}
-    .science-card:nth-child(3)::before{background:linear-gradient(90deg,var(--emerald),#34D399);}
-    .sci-source{font-size:.68rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
-    .sci-finding{font-size:1.5rem;font-weight:900;letter-spacing:-.03em;margin-bottom:8px;line-height:1.2;}
-    .sci-finding span{background:linear-gradient(135deg,var(--accent-l),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-    .sci-desc{font-size:.86rem;color:var(--text-2);line-height:1.65;}
-    .sci-ref{font-size:.72rem;color:var(--muted);margin-top:12px;font-style:italic;}
-
-    /* TOOLS SECTION */
-    .tools-section{padding:80px 0;}
-    .section-label{font-size:.75rem;font-weight:700;letter-spacing:.08em;color:var(--accent);text-transform:uppercase;margin-bottom:12px;display:block;}
-    .tools-header{margin-bottom:48px;}
-    .tools-header h2{font-size:1.9rem;font-weight:800;letter-spacing:-.025em;margin-bottom:8px;}
-    .tools-header p{color:var(--text-2);font-size:.95rem;max-width:540px;}
-
-    /* Featured tool */
-    .featured-tool{background:var(--card-bg);border-radius:var(--r-2xl);padding:40px;border:1px solid var(--border-l);display:grid;grid-template-columns:2fr 1fr;gap:40px;align-items:center;margin-bottom:32px;transition:all .3s;position:relative;overflow:hidden;}
-    .featured-tool::before{content:'';position:absolute;top:0;right:0;width:220px;height:220px;background:radial-gradient(circle,var(--accent-soft) 0%,transparent 70%);pointer-events:none;}
-    .featured-tool:hover{box-shadow:0 16px 48px rgba(15,76,138,.12);transform:translateY(-2px);}
-    .ft-label{font-size:.72rem;font-weight:700;letter-spacing:.08em;color:var(--accent);text-transform:uppercase;margin-bottom:12px;}
-    .ft-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:999px;background:var(--gold-soft);border:1px solid rgba(201,162,39,.30);color:var(--gold);font-size:.72rem;font-weight:700;margin-bottom:16px;}
-    .ft-title{font-size:1.75rem;font-weight:800;letter-spacing:-.025em;margin-bottom:12px;}
-    .ft-desc{font-size:.95rem;color:var(--text-2);line-height:1.7;margin-bottom:24px;}
-    .ft-meta{display:flex;gap:24px;margin-bottom:24px;flex-wrap:wrap;}
-    .ft-meta-item{font-size:.82rem;color:var(--muted);}
-    .ft-meta-item strong{display:block;color:var(--text);font-size:1rem;font-weight:700;}
-    .ft-visual{background:var(--accent-soft);border-radius:var(--r-xl);padding:32px;text-align:center;border:1px dashed rgba(15,76,138,.25);}
-    .ft-visual-icon{font-size:4rem;margin-bottom:12px;}
-    .ft-visual-stat{font-size:1.9rem;font-weight:900;color:var(--accent);}
-    .ft-visual-sub{font-size:.8rem;color:var(--muted);margin-top:4px;}
-
-    /* Tool grid */
-    .tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
-    .tool-card{background:var(--card-bg);border-radius:var(--r-2xl);padding:28px;border:1px solid var(--border-l);transition:all .3s;display:flex;flex-direction:column;position:relative;overflow:hidden;}
-    .tool-card:hover{transform:translateY(-4px);box-shadow:0 10px 32px rgba(15,76,138,.10);border-color:rgba(15,76,138,.28);}
-    .tool-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px;}
-    .tool-icon-wrap{width:54px;height:54px;border-radius:var(--r-lg);display:flex;align-items:center;justify-content:center;font-size:1.6rem;background:var(--accent-soft);flex-shrink:0;transition:transform .3s;}
-    .tool-card:hover .tool-icon-wrap{transform:scale(1.1) rotate(-3deg);}
-    .tool-badge{font-size:.7rem;font-weight:700;padding:3px 10px;border-radius:999px;border:1px solid rgba(15,76,138,.28);color:var(--accent);background:var(--accent-soft);}
-    .tool-badge-gold{border-color:rgba(201,162,39,.38);color:var(--gold);background:var(--gold-soft);}
-    .tool-badge-new{border-color:rgba(5,150,105,.35);color:#059669;background:rgba(5,150,105,.08);}
-    .tool-name{font-size:1.05rem;font-weight:700;margin-bottom:8px;}
-    .tool-desc{font-size:.87rem;color:var(--text-2);line-height:1.6;margin-bottom:20px;flex:1;}
-    .tool-footer{display:flex;align-items:center;justify-content:space-between;margin-top:auto;}
-    .tool-usage{font-size:.76rem;color:var(--muted);}
-    .tool-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:999px;font-size:.84rem;font-weight:600;background:var(--accent);color:#fff;transition:all .2s;}
-    .tool-cta:hover{background:var(--accent-d);}
-
-    /* WEALTH PILLARS */
-    .pillars-section{padding:72px 0;background:var(--card-bg);border-top:1px solid var(--border-l);border-bottom:1px solid var(--border-l);}
-    .pillars-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:44px;}
-    .pillar-card{text-align:center;padding:28px 20px;}
-    .pillar-icon{width:68px;height:68px;border-radius:50%;background:linear-gradient(135deg,var(--accent-soft),var(--gold-soft));display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 18px;border:1px solid rgba(15,76,138,.12);}
-    .pillar-name{font-size:1.02rem;font-weight:700;margin-bottom:10px;}
-    .pillar-desc{font-size:.85rem;color:var(--text-2);line-height:1.55;}
-
-    /* EDITORIAL DARK STRIP */
-    .editorial-strip{padding:72px 0;background:linear-gradient(135deg,#06101F,#0F1F38,#06101F);position:relative;overflow:hidden;}
-    .editorial-strip::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 85% 40%,rgba(15,76,138,.20),transparent),radial-gradient(ellipse 40% 50% at 10% 70%,rgba(201,162,39,.10),transparent);pointer-events:none;}
-    .editorial-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
-    .edit-eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.1em;color:var(--gold);text-transform:uppercase;margin-bottom:14px;}
-    .edit-title{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:900;letter-spacing:-.04em;color:#fff;line-height:1.18;margin-bottom:18px;}
-    .edit-body{font-size:.95rem;color:rgba(255,255,255,.58);line-height:1.78;margin-bottom:28px;}
-    .edit-stats{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
-    .edit-stat{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:20px;text-align:center;}
-    .edit-stat-val{font-size:1.7rem;font-weight:900;color:var(--gold-l);margin-bottom:4px;}
-    .edit-stat-lbl{font-size:.72rem;color:rgba(255,255,255,.45);font-weight:600;text-transform:uppercase;letter-spacing:.05em;}
-    .btn-gold{background:linear-gradient(135deg,var(--gold),#A0820E);color:#06101F;font-weight:700;box-shadow:0 4px 18px rgba(201,162,39,.35);}
-    .btn-gold:hover{transform:translateY(-1px);box-shadow:0 6px 24px rgba(201,162,39,.50);}
-
-    /* FAQ */
-    .faq-section{padding:72px 0;}
-    .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:40px;}
-    .faq-card{background:var(--card-bg);border-radius:var(--r-xl);padding:24px;border:1px solid var(--border-l);transition:border-color .2s;}
-    .faq-card:hover{border-color:rgba(15,76,138,.28);}
-    .faq-q{font-size:.95rem;font-weight:700;margin-bottom:8px;display:flex;align-items:flex-start;gap:10px;}
-    .faq-q-icon{width:24px;height:24px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-size:.75rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
-    .faq-a{font-size:.87rem;color:var(--text-2);line-height:1.65;padding-left:34px;}
-    [data-lang="ar"] .faq-a{padding-left:0;padding-right:34px;}
-
-    /* NEWSLETTER */
-    .nl-section{padding:clamp(48px,7vw,72px) 0;background:linear-gradient(135deg,#06101F 0%,#0F2744 60%,#06101F 100%);position:relative;overflow:hidden;}
-    .nl-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 70% at 80% 50%,rgba(15,76,138,.15),transparent),radial-gradient(ellipse 40% 60% at 10% 80%,rgba(201,162,39,.08),transparent);pointer-events:none;}
-    .nl-inner{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px);align-items:center;position:relative;z-index:1;}
-    .nl-eyebrow{display:flex;align-items:center;gap:8px;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(201,162,39,.8);margin-bottom:12px;}
-    .nl-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:nlPulse 2s infinite;}
-    @keyframes nlPulse{0%,100%{box-shadow:0 0 0 0 rgba(201,162,39,.4);}50%{box-shadow:0 0 0 6px rgba(201,162,39,0);}}
-    .nl-title{font-size:clamp(1.2rem,2.5vw,1.7rem);font-weight:900;letter-spacing:-.03em;line-height:1.25;color:#fff;margin-bottom:10px;}
-    .nl-sub{font-size:.85rem;color:rgba(255,255,255,.45);line-height:1.7;}
-    .nl-input-row{display:flex;gap:8px;margin-bottom:10px;}
-    .nl-input{flex:1;padding:13px 16px;border-radius:10px;border:1.5px solid rgba(255,255,255,.14);background:rgba(255,255,255,.07);color:#fff;font-size:.9rem;font-family:inherit;outline:none;transition:border-color .2s;}
-    .nl-input::placeholder{color:rgba(255,255,255,.32);}
-    .nl-input:focus{border-color:rgba(201,162,39,.6);}
-    .nl-btn{padding:13px 20px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-l));color:#fff;font-weight:700;font-size:.88rem;border:none;cursor:pointer;font-family:inherit;white-space:nowrap;transition:opacity .2s;}
-    .nl-btn:hover{opacity:.9;}
-    .nl-trust{font-size:.72rem;color:rgba(255,255,255,.32);display:flex;align-items:center;gap:5px;margin-top:8px;}
-
-    /* FOOTER */
-    .footer-strip{padding:24px 0;border-top:1px solid var(--border-l);text-align:center;color:var(--muted);font-size:.85rem;}
-    .footer-strip a{color:var(--accent);}
-
-    /* RESPONSIVE */
-    @media(max-width:900px){
-      .cat-hero-inner,.lib-inner,.editorial-inner,.nl-inner{grid-template-columns:1fr;}
-      .hero-visual-finance{display:none;}
-      .tools-grid{grid-template-columns:repeat(2,1fr);}
-      .featured-tool{grid-template-columns:1fr;}
-      .ft-visual{display:none;}
-      .pillars-grid{grid-template-columns:repeat(2,1fr);}
-      .faq-grid{grid-template-columns:1fr;}
-      .science-grid{grid-template-columns:1fr 1fr;}
-    }
-    @media(max-width:640px){
-      .tools-grid{grid-template-columns:1fr;}
-      .pillars-grid{grid-template-columns:1fr 1fr;}
-      .science-grid{grid-template-columns:1fr;}
-      .edit-stats{grid-template-columns:1fr 1fr;}
-    }
-    @media(max-width:400px){
-      .nl-input-row{flex-direction:column;}
-    }
-  </style>
-
-  <!-- DFL CANONICAL SYSTEM CSS -->
-  <style id="dfl-sys">
-    /* Hide all old navbars */
-    .navbar { display: none !important; }
-    nav.navbar { display: none !important; }
-    #navbar { display: none !important; }
-    nav#navbar { display: none !important; }
-    /* Flash-safe tokens */
-    :root {
-      --gold: #B8861A; --gold-l: #D4A832; --gold-d: #8A620F;
-      --text: #1A1410; --text-2: #5C534A; --muted: #9A9188;
-      --body-bg: #FAF8F4; --card-bg: #FFFFFF;
-      --border: #E0D8CC; --navy: #0A1628;
-      --font-serif: 'Crimson Pro', Georgia, serif;
-      --font-ui: 'Inter', system-ui, sans-serif;
-      --font-ar: 'Almarai', 'Segoe UI', sans-serif;
-      --radius: 6px;
-    }
-    [data-theme="dark"] {
-      --text: #EDE8E0; --text-2: #B8B0A4; --muted: #7A746C;
-      --body-bg: #12100E; --card-bg: #1E1A16;
-      --border: #302820; --gold: #D4A832;
-    }
-    /* Canonical Navbar */
-    #dfl-navbar {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 9000;
-      min-height: 64px; height: auto; overflow: visible;
-      background: rgba(250,248,244,0.97);
-      border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-      transition: box-shadow .3s;
-      display: flex; align-items: center; justify-content: center;
-    }
-    [data-theme="dark"] #dfl-navbar {
-      background: rgba(18,16,14,0.97);
-      border-bottom-color: var(--border);
-    }
-    #dfl-navbar.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,.08); }
-    .dfl-nav-inner {
-      max-width: 1280px; width: 100%; padding: 0 32px;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .dfl-nav-logo {
-      font-family: var(--font-serif); font-size: 1.25rem; font-weight: 600;
-      letter-spacing: .04em; color: var(--text); text-decoration: none;
-    }
-    .dfl-nav-logo .dot { color: var(--gold); }
-    .dfl-nav-links {
-      display: flex; gap: 2rem; align-items: center; list-style: none;
-      margin: 0; padding: 0;
-    }
-    .dfl-nav-links a {
-      font-size: .82rem; font-weight: 500; letter-spacing: .06em;
-      text-transform: uppercase; color: var(--text-2);
-      text-decoration: none; transition: color .2s;
-    }
-    .dfl-nav-links a:hover { color: var(--text); }
-    .dfl-nav-controls { display: flex; gap: .75rem; align-items: center; }
-    .dfl-nav-btn {
-      cursor: pointer; border: 1px solid var(--border); border-radius: 6px;
-      padding: .35rem .7rem; font-size: .76rem; font-weight: 600;
-      letter-spacing: .08em; background: transparent; color: var(--text-2);
-      transition: all .2s; font-family: inherit;
-    }
-    .dfl-nav-btn:hover { border-color: var(--gold); color: var(--gold); }
-    @media (max-width: 768px) {
-      .dfl-nav-links { display: none !important; }
-      .dfl-nav-inner { padding: 0 16px; }
-      .dfl-nav-btn { min-height: 44px; min-width: 44px; display: inline-flex; align-items: center; justify-content: center; }
-    }
-    /* Push body content below navbar */
-    body { padding-top: 64px !important; }
-    /* Canonical Footer */
-    #dfl-footer {
-      background: #0A1628; color: #94a3b8; padding: 4rem 0 0;
-    }
-    .dfl-footer-grid {
-      max-width: 1280px; margin: 0 auto; padding: 0 48px;
-      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 3rem;
-    }
-    @media(max-width:960px){.dfl-footer-grid{grid-template-columns:1fr 1fr;gap:2rem;padding:0 32px;}}
-    @media(max-width:600px){.dfl-footer-grid{grid-template-columns:1fr;padding:0 24px;}}
-    .dfl-footer-brand .dfl-flogo {
-      font-family: var(--font-serif); font-size: 1.3rem; font-weight: 600;
-      color: #fff; letter-spacing: .04em; margin-bottom: 1rem;
-    }
-    .dfl-footer-brand .dfl-flogo .dot { color: #B8861A; }
-    .dfl-footer-brand p { font-size: .88rem; line-height: 1.7; max-width: 240px; color: #94a3b8; }
-    .dfl-footer-col h4 {
-      color: #e2e8f0; font-size: .7rem; font-weight: 600;
-      letter-spacing: .12em; text-transform: uppercase; margin-bottom: 1.2rem;
-    }
-    .dfl-footer-col ul { list-style: none; display: flex; flex-direction: column; gap: .65rem; padding: 0; margin: 0; }
-    .dfl-footer-col a { font-size: .84rem; color: #94a3b8; transition: color .2s; text-decoration: none; }
-    .dfl-footer-col a:hover { color: #B8861A; }
-    [data-lang="ar"] .dfl-footer-col a { font-family: var(--font-ar); }
-    .dfl-footer-bottom {
-      max-width: 1280px; margin: 3rem auto 0; padding: 1.4rem 48px;
-      border-top: 1px solid rgba(255,255,255,.07);
-      display: flex; justify-content: space-between; align-items: center;
-      font-size: .78rem; flex-wrap: wrap; gap: .5rem; color: #64748b;
-    }
-    @media(max-width:600px){.dfl-footer-bottom{padding:1.4rem 24px;flex-direction:column;text-align:center;}}
-    .dfl-footer-bottom a { color: #64748b; text-decoration: none; }
-    .dfl-footer-bottom a:hover { color: #B8861A; }
-    /* Mobile Nav */
-    #dfl-mobile-nav {
-      display: none; position: fixed; bottom: 0; left: 0; right: 0;
-      background: var(--card-bg); border-top: 1px solid var(--border);
-      z-index: 8999; padding: 4px 0 max(8px,env(safe-area-inset-bottom));
-    }
-    [data-theme="dark"] #dfl-mobile-nav { background: #1E1A16; border-top-color: #302820; }
-    .dfl-mnav-inner { display: flex; justify-content: space-around; }
-    .dfl-mnav-item {
-      display: flex; flex-direction: column; align-items: center; gap: 3px;
-      padding: 6px 8px; font-size: .62rem; font-weight: 500;
-      color: var(--muted); text-decoration: none; transition: color .2s;
-      min-width: 56px; text-align: center;
-    }
-    .dfl-mnav-item svg { width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round; }
-    .dfl-mnav-item:hover, .dfl-mnav-item.active { color: var(--gold); }
-    [data-lang="ar"] .dfl-mnav-item { font-family: var(--font-ar); }
-    @media(max-width:768px){ #dfl-mobile-nav{display:block;} body{padding-bottom:80px !important;} }
-  </style>
-<script src="/scripts/global.js" defer></script>
+  /* MOBILE NAV */
+  .mobile-nav { display:none; position:fixed; bottom:0; left:0; right:0; z-index:200; background:var(--card-bg); border-top:1px solid var(--border); padding:8px 0 env(safe-area-inset-bottom,8px); }
+  @media(max-width:768px) {
+    .mobile-nav { display:flex; justify-content:space-around; }
+    body { padding-bottom:64px; }
+    .guide-strip { padding:28px 24px; }
+  }
+  .mobile-nav-item { display:flex; flex-direction:column; align-items:center; gap:3px; padding:4px 12px; font-size:.65rem; font-weight:600; color:var(--text-2); border:none; background:none; cursor:pointer; font-family:inherit; }
+  .mobile-nav-item.active { color:var(--accent); }
+  .mobile-nav-item span:first-child { font-size:1.2rem; }
+</style>
 </head>
 <body>
-  <!-- DFL CANONICAL NAVBAR -->
-  <nav id="dfl-navbar" role="navigation" aria-label="Main navigation">
-    <div class="dfl-nav-inner">
-      <a href="/" class="dfl-nav-logo"><img src="/logo1-transparent.png" alt="Dot4Life" height="130" style="height:130px;width:auto;display:block;margin-top:4px;margin-bottom:8px;"></a>
-      <ul class="dfl-nav-links">
-        <li><a href="/health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
-        <li><a href="/finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li>
-        <li><a href="/real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li>
-        <li><a href="/travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li>
-        <li><a href="/islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <div class="navbar-inner">
+      <a href="/" class="nav-logo" aria-label="DOTFORLIFE Home">
+        <img src="/images/logo.png" alt="DOTFORLIFE" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="/"><span class="en">Home</span><span class="ar">الرئيسية</span></a></li>
+        <li><a href="/health.html"><span class="en">Health</span><span class="ar">صحة</span></a></li>
+        <li><a href="/finance.html" class="active"><span class="en">Finance</span><span class="ar">مال</span></a></li>
+        <li><a href="/travel.html"><span class="en">Travel</span><span class="ar">سفر</span></a></li>
+        <li><a href="/islamic.html"><span class="en">Islamic</span><span class="ar">إسلام</span></a></li>
+        <li><a href="/tasks.html"><span class="en">Tasks</span><span class="ar">المهام</span></a></li>
+        <li><a href="/family.html"><span class="en">Family</span><span class="ar">العائلة</span></a></li>
+        <li><a href="/notes.html"><span class="en">Notes</span><span class="ar">ملاحظات</span></a></li>
       </ul>
-      <div class="dfl-nav-controls">
-        <button class="dfl-nav-btn" id="dfl-lang-btn" aria-label="Toggle language">
-          <span class="en">عربي</span><span class="ar">English</span>
-        </button>
-        <button class="dfl-nav-btn" id="dfl-theme-btn" aria-label="Toggle theme">
-          <span class="en">🌙</span><span class="ar">🌙</span>
-        </button>
-      </div>
-    </div>
-  </nav>
-  <!-- NAVBAR -->
-  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
-    <div class="container">
-      <div class="navbar-inner">
-        <a href="index.html" class="logo" aria-label="DOTFORLIFE Home">
-          <span>DOT</span><span>FOR</span><span>LIFE</span>
-        </a>
-        <ul class="nav-links">
-          <li><a href="health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
-          <li><a href="finance.html" class="active"><span class="en">Finance</span><span class="ar">المال والثروة</span></a></li>
-          <li><a href="real-estate.html"><span class="en">Real Estate</span><span class="ar">العقارات</span></a></li>
-          <li><a href="islamic.html"><span class="en">Islamic</span><span class="ar">الحياة الإسلامية</span></a></li>
-          <li><a href="travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li>
-          <li><a href="productivity.html"><span class="en">Productivity</span><span class="ar">الإنتاجية</span></a></li>
-        </ul>
-        <div class="nav-actions">
-          <button class="lang-toggle" id="langBtn" aria-label="Toggle language">عربي / EN</button>
-          <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode">🌙</button>
-        </div>
-      </div>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <section class="cat-hero" aria-labelledby="cat-title">
-    <div class="hero-bg-finance"></div>
-    <div class="hero-grid"></div>
-    <div class="hero-lines"></div>
-    <div class="container">
-      <div class="cat-hero-inner">
-        <!-- Left: Text -->
-        <div>
-          <div class="cat-hero-label">
-            <span>💼</span>
-            <span class="en">Financial Intelligence • ذكاء مالي</span>
-            <span class="ar">أدوات الثروة الذكية</span>
-          </div>
-          <h1 class="cat-hero-title" id="cat-title">
-            <span class="en">Your wealth,<br><span class="hero-accent">intelligently</span><br>understood.</span>
-            <span class="ar">ثروتك،<br>بفهم <span class="hero-accent">ذكي</span><br>وقرارات صائبة.</span>
-          </h1>
-          <p class="cat-hero-sub">
-            <span class="en">The biggest financial decisions of your life deserve more than a spreadsheet and guesswork. These tools give you the actual numbers — mortgage scenarios, property yield, investment returns — built for how money works in this region.</span>
-            <span class="ar">أكبر قراراتك المالية تستحق أكثر من جدول بيانات وتخمين. هذه الأدوات تمنحك الأرقام الفعلية — سيناريوهات الرهن والعائد العقاري والمردود الاستثماري — مبنية لطريقة عمل المال في هذه المنطقة.</span>
-          </p>
-          <div class="hero-ctas">
-            <a href="tools/mortgage-calculator.html" class="btn btn-accent">
-              <span class="en">Calculate My Mortgage</span>
-              <span class="ar">احسب قرضي العقاري</span>
-            </a>
-            <a href="#tools" class="btn btn-ghost">
-              <span class="en">All Finance Tools</span>
-              <span class="ar">كل الأدوات المالية</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- Right: Portfolio Visual -->
-        <div class="hero-visual-finance">
-          <div class="portfolio-card">
-            <div class="pf-header">
-              <div>
-                <div class="pf-label"><span class="en">Total Portfolio Value</span><span class="ar">إجمالي قيمة المحفظة</span></div>
-                <div class="pf-value">$284,500</div>
-              </div>
-              <div class="pf-gain">↑ 12.4% <span class="en">YTD</span><span class="ar">هذا العام</span></div>
-            </div>
-            <div class="pf-chart">
-              <div style="font-size:.68rem;color:var(--muted);font-weight:600;letter-spacing:.05em;text-transform:uppercase;margin-bottom:8px;"><span class="en">12-Month Growth</span><span class="ar">النمو خلال 12 شهراً</span></div>
-              <div class="pf-bars">
-                <div class="pf-bar"></div><div class="pf-bar"></div><div class="pf-bar"></div><div class="pf-bar"></div>
-                <div class="pf-bar"></div><div class="pf-bar"></div><div class="pf-bar"></div><div class="pf-bar"></div>
-                <div class="pf-bar"></div><div class="pf-bar"></div>
-              </div>
-              <div class="pf-line"></div>
-            </div>
-            <div class="pf-allocation">
-              <div class="pf-asset">
-                <div class="pf-asset-name"><span class="en">Real Estate</span><span class="ar">العقارات</span></div>
-                <div class="pf-asset-val">$148K</div>
-                <div class="pf-asset-pct up">↑ 8.2%</div>
-              </div>
-              <div class="pf-asset">
-                <div class="pf-asset-name"><span class="en">Investments</span><span class="ar">الاستثمارات</span></div>
-                <div class="pf-asset-val">$92K</div>
-                <div class="pf-asset-pct up">↑ 18.7%</div>
-              </div>
-              <div class="pf-asset">
-                <div class="pf-asset-name"><span class="en">Savings</span><span class="ar">المدخرات</span></div>
-                <div class="pf-asset-val">$28K</div>
-                <div class="pf-asset-pct up">↑ 4.1%</div>
-              </div>
-              <div class="pf-asset">
-                <div class="pf-asset-name"><span class="en">Cash</span><span class="ar">السيولة</span></div>
-                <div class="pf-asset-val">$16K</div>
-                <div class="pf-asset-pct dn">— stable</div>
-              </div>
-            </div>
-            <div class="metrics-row">
-              <div class="metric-item">
-                <div class="metric-val">7.4%</div>
-                <div class="metric-lbl"><span class="en">ROI Avg</span><span class="ar">عائد متوسط</span></div>
-              </div>
-              <div class="metric-item">
-                <div class="metric-val" style="color:#059669;">+$33K</div>
-                <div class="metric-lbl"><span class="en">This Year</span><span class="ar">هذا العام</span></div>
-              </div>
-              <div class="metric-item">
-                <div class="metric-val">3</div>
-                <div class="metric-lbl"><span class="en">Assets</span><span class="ar">أصول</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- QUICK JUMP STRIP -->
-  <div id="qjs-strip" style="padding:14px 0;border-bottom:1px solid var(--border-l);background:var(--card-bg);">
-    <div class="container">
-      <div style="display:flex;align-items:center;gap:10px;overflow-x:auto;scrollbar-width:none;padding:0 4px;-webkit-overflow-scrolling:touch;">
-        <span style="font-size:.72rem;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;white-space:nowrap;flex-shrink:0;padding-right:6px;border-right:1px solid var(--border-l);">⚡ <span class="en">Jump to</span><span class="ar">انتقل</span></span>
-        <a style="border:1.5px solid rgba(15,76,138,.38);background:rgba(15,76,138,.07);color:var(--accent-l);" href="tools/mortgage-calculator.html">🏦 <span class="en">Mortgage</span><span class="ar">القرض العقاري</span></a>
-        <a style="border:1.5px solid var(--border-l);background:var(--body-bg);color:var(--text-2);" href="tools/roi-calculator.html">📈 <span class="en">ROI Calculator</span><span class="ar">حاسبة العائد</span></a>
-        <a style="border:1.5px solid var(--border-l);background:var(--body-bg);color:var(--text-2);" href="tools/rental-yield-calculator.html">🏘️ <span class="en">Rental Yield</span><span class="ar">عائد الإيجار</span></a>
-        <a style="border:1.5px solid rgba(201,162,39,.35);background:var(--gold-soft);color:var(--gold);" href="#research">🔬 <span class="en">Research</span><span class="ar">الأبحاث</span></a>
+      <div class="nav-actions">
+        <button class="lang-toggle" id="lang-toggle" aria-label="Switch language">عربي</button>
+        <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">🌙</button>
       </div>
     </div>
   </div>
+</nav>
 
-  <!-- LIFE INTRO BRIDGE -->
-  <section class="lib-section" aria-label="Financial philosophy">
-    <div class="container">
-      <div class="lib-inner">
-        <div class="reveal">
-          <span class="lib-eyebrow"><span class="en">The Philosophy of Intelligent Wealth</span><span class="ar">فلسفة الثروة الذكية</span></span>
-          <h2 class="lib-headline">
-            <span class="en">Money is a tool.<br>Wisdom is the hand that wields it.</span>
-            <span class="ar">المال أداة.<br>والحكمة هي اليد التي تُمسكها.</span>
-          </h2>
-          <p class="lib-body">
-            <span class="en">The 2017 Nobel Prize in Economics went to Richard Thaler for proving what many sensed: humans are predictably irrational with money. We over-weight immediate losses, under-value compound growth, and consistently make emotional decisions that undercut our long-term wealth. The solution isn't willpower — it's structure. Clear tools. Reliable calculations. A framework that makes the right decision the easiest one.</span>
-            <span class="ar">جائزة نوبل للاقتصاد 2017 منحت لريتشارد ثالر لإثباته ما يشعر به كثيرون: البشر غير عقلانيين بشكل متوقع مع المال. نُبالغ في تقدير الخسائر الفورية، ونُقلّل من قيمة النمو المتراكم، ونتخذ قرارات عاطفية تُقوّض ثروتنا على المدى البعيد. الحل ليس في قوة الإرادة — بل في البنية. أدوات واضحة. حسابات موثوقة. إطار يجعل القرار الصحيح هو الأسهل.</span>
-          </p>
-          <div class="lib-cite">
-            <span class="en">"The more you learn, the more you earn." — Warren Buffett, who turned $114,000 at age 30 into $84 billion by age 93 through disciplined compounding.</span>
-            <span class="ar">"كلما تعلّمت أكثر، كلما كسبت أكثر." — وارن بافيت، الذي حوّل 114,000 دولار عمره 30 إلى 84 مليار دولار بعمر 93 من خلال التراكم المنضبط.</span>
-          </div>
-        </div>
-        <div class="lib-pillars reveal" style="transition-delay:.12s;">
-          <div class="lib-pillar">
-            <div class="lib-pillar-icon">📊</div>
-            <div>
-              <strong><span class="en">Clarity over confusion</span><span class="ar">الوضوح فوق الغموض</span></strong>
-              <span><span class="en">Know your actual mortgage cost, your real ROI, your true rental yield — before committing.</span><span class="ar">اعرف تكلفة قرضك الحقيقية، وعائدك الفعلي، ونسبة إيجارك الحقيقية — قبل الالتزام.</span></span>
-            </div>
-          </div>
-          <div class="lib-pillar">
-            <div class="lib-pillar-icon">🧮</div>
-            <div>
-              <strong><span class="en">Truth over intuition</span><span class="ar">الحقيقة فوق الحدس</span></strong>
-              <span><span class="en">Emotional decisions cost more than you think. Calculated ones compound over time. Our tools replace guesswork with clarity.</span><span class="ar">القرارات العاطفية تدمر الثروة. القرارات المحسوبة تبنيها. أدواتنا تستبدل التخمين بالدقة.</span></span>
-            </div>
-          </div>
-          <div class="lib-pillar">
-            <div class="lib-pillar-icon">🌱</div>
-            <div>
-              <strong><span class="en">Time is your real asset</span><span class="ar">الوقت هو أصلك الحقيقي</span></strong>
-              <span><span class="en">Einstein reportedly called compound interest "the eighth wonder of the world." The years you have now are worth more than the money you'll have later.</span><span class="ar">قيل إن أينشتاين أسمى الفائدة المركبة "عجيبة الدنيا الثامنة." كل شهر تتأخر فيه يكلّفك أكثر مما تظن.</span></span>
-            </div>
-          </div>
-          <div class="lib-pillar">
-            <div class="lib-pillar-icon">🔐</div>
-            <div>
-              <strong><span class="en">Privacy by design</span><span class="ar">الخصوصية في التصميم</span></strong>
-              <span><span class="en">All calculations run locally in your browser. Your financial data never leaves your device.</span><span class="ar">جميع الحسابات تعمل محلياً في متصفحك. بياناتك المالية لا تغادر جهازك أبداً.</span></span>
-            </div>
-          </div>
-        </div>
-      </div>
+<!-- HERO -->
+<section class="cat-hero">
+  <div class="container">
+    <div class="hero-eyebrow">💰 <span class="en">Finance Tools</span><span class="ar">أدوات المال</span></div>
+    <h1 class="hero-title">
+      <span class="en">Make <span class="hero-accent">smarter</span><br>money decisions.</span>
+      <span class="ar">قرارات مالية <span class="hero-accent">أذكى</span><br>لحياتك.</span>
+    </h1>
+    <p class="hero-sub">
+      <span class="en">From mortgage calculations to investment returns — calm, clear tools that help you understand your money.</span>
+      <span class="ar">من حساب القروض إلى العوائد الاستثمارية — أدوات واضحة وهادئة تساعدك على فهم أموالك.</span>
+    </p>
+    <div class="hero-ctas">
+      <a href="/tools/mortgage-calculator.html" class="btn btn-accent">
+        <span class="en">Mortgage calculator</span><span class="ar">حاسبة التمويل</span>
+      </a>
+      <a href="/tools/savings-goal.html" class="btn btn-ghost">
+        <span class="en">Savings planner</span><span class="ar">مخطط الادخار</span>
+      </a>
     </div>
-  </section>
-
-  <!-- SCIENTIFIC RESEARCH STRIP -->
-  <section id="research" class="science-strip">
-    <div class="container">
-      <span class="section-label"><span class="en">Science-Backed Insights</span><span class="ar">رؤى مدعومة بالعلم</span></span>
-      <h2 style="font-size:1.85rem;font-weight:800;letter-spacing:-.025em;margin-bottom:8px;">
-        <span class="en">What research tells us about wealth</span>
-        <span class="ar">ما تقوله الأبحاث عن الثروة</span>
-      </h2>
-      <p style="color:var(--text-2);max-width:560px;">
-        <span class="en">Science has been quietly studying wealth behavior for decades. The findings are surprising — and actionable.</span>
-        <span class="ar">العلم يدرس سلوك الثروة بهدوء لعقود. النتائج مفاجئة — وقابلة للتطبيق.</span>
-      </p>
-      <div class="science-grid">
-        <div class="science-card reveal">
-          <div class="sci-source">🏆 Nobel Economics — Thaler, 2017</div>
-          <div class="sci-finding"><span>3×</span> more pain from loss</div>
-          <div class="sci-desc">
-            <span class="en">Behavioral economics proves we feel the pain of losing $100 roughly three times more intensely than the pleasure of gaining $100. This "loss aversion" bias causes investors to sell too early and hold cash too long. Knowing this bias exists is the first step to overcoming it.</span>
-            <span class="ar">يُثبت الاقتصاد السلوكي أننا نشعر بألم خسارة 100 دولار بشكل يتجاوز بثلاثة أضعاف متعة ربح 100 دولار. هذا التحيّز "لتجنب الخسارة" يجعل المستثمرين يبيعون مبكراً ويحتفظون بالنقد طويلاً.</span>
-          </div>
-          <div class="sci-ref"><span class="en">Source: Thaler, R.H. & Sunstein, C.R. — "Nudge" (2008); Nobel Prize Committee, 2017</span><span class="ar">المصدر: ثالر وسنستين — "النظرية التحفيزية" (2008)؛ لجنة نوبل، 2017</span></div>
-        </div>
-        <div class="science-card reveal" style="transition-delay:.1s;">
-          <div class="sci-source">📊 Harvard Business Review — 2023</div>
-          <div class="sci-finding"><span>80%</span> don't track ROI</div>
-          <div class="sci-desc">
-            <span class="en">A Harvard Business Review analysis found that 80% of individuals making real estate or investment decisions had never calculated their actual return on investment. They operated on "feels profitable" intuition — which underperformed calculated decisions by an average of 34% over 10 years.</span>
-            <span class="ar">تحليل مجلة هارفارد للأعمال وجد أن 80% من الأفراد الذين يتخذون قرارات عقارية أو استثمارية لم يحسبوا عائدهم الفعلي قط. عملوا على "حدس الربحية" — الذي أقل أداءً من القرارات المحسوبة بنسبة 34% على مدى 10 سنوات.</span>
-          </div>
-          <div class="sci-ref"><span class="en">Source: Harvard Business Review — "The ROI of Financial Literacy" (2023)</span><span class="ar">المصدر: هارفارد بزنس ريفيو — "عائد الثقافة المالية" (2023)</span></div>
-        </div>
-        <div class="science-card reveal" style="transition-delay:.2s;">
-          <div class="sci-source">🌍 World Bank Global Findex — 2022</div>
-          <div class="sci-finding"><span>$1</span> saved = $1.47 later</div>
-          <div class="sci-desc">
-            <span class="en">The World Bank's Global Findex study showed that households in GCC countries that practiced systematic saving — even small amounts monthly — saw their net worth grow 47% more over a decade than peers with similar incomes who saved irregularly. Discipline, not income, is the variable.</span>
-            <span class="ar">أظهرت دراسة البنك الدولي أن الأسر في دول الخليج التي مارست الادخار المنتظم — حتى بمبالغ صغيرة شهرياً — شهدت نمو صافي ثروتها بنسبة 47% أكثر على مدى عقد مقارنة بأقران بنفس الدخل. الانضباط، لا الدخل، هو المتغير.</span>
-          </div>
-          <div class="sci-ref"><span class="en">Source: World Bank — Global Findex Database 2022</span><span class="ar">المصدر: البنك الدولي — قاعدة بيانات فايندكس العالمية 2022</span></div>
-        </div>
-      </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><span class="en">Free forever</span><span class="ar">مجاني دائماً</span></div>
+      <div class="hero-stat"><span class="en">No sign-up needed</span><span class="ar">بدون تسجيل</span></div>
+      <div class="hero-stat"><span class="en">Arabic & English</span><span class="ar">عربي وإنجليزي</span></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- TOOLS SECTION -->
-  <section id="tools" class="tools-section" aria-labelledby="tools-title">
-    <div class="container">
-      <div class="tools-header">
-        <span class="section-label"><span class="en">Financial Tools</span><span class="ar">الأدوات المالية</span></span>
-        <h2 id="tools-title">
-          <span class="en">Precision tools for intelligent decisions</span>
-          <span class="ar">أدوات دقيقة لقرارات ذكية</span>
-        </h2>
-        <p>
-          <span class="en">Each tool runs entirely in your browser. No accounts, no data collection, no judgment — just clarity.</span>
-          <span class="ar">كل أداة تعمل بالكامل في متصفحك. لا حسابات، لا جمع بيانات — فقط وضوح.</span>
-        </p>
-      </div>
+<!-- TOOLS GRID -->
+<section class="tools-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label"><span class="en">All Finance Tools</span><span class="ar">أدوات المالية</span></div>
+      <h2 class="section-title"><span class="en">Tools for every financial decision</span><span class="ar">أدوات لكل قرار مالي</span></h2>
+      <p class="section-sub"><span class="en">Pick a tool and get clarity in minutes.</span><span class="ar">اختر أداة واحصل على وضوح في دقائق.</span></p>
+    </div>
+    <div class="tools-grid">
 
-      <!-- Featured: Mortgage -->
-      <a href="tools/mortgage-calculator.html" class="featured-tool reveal" style="display:grid;">
-        <div>
-          <div class="ft-label"><span class="en">Most Used Tool</span><span class="ar">الأداة الأكثر استخداماً</span></div>
-          <div class="ft-badge">🏆 <span class="en">Featured</span><span class="ar">مميزة</span></div>
-          <h3 class="ft-title">
-            <span class="en">Mortgage Calculator</span>
-            <span class="ar">حاسبة القرض العقاري</span>
-          </h3>
-          <p class="ft-desc">
-            <span class="en">Know exactly how much your mortgage costs — monthly payment, total interest over the loan term, and amortization breakdown. Compare scenarios side by side. The most consequential financial decision of most people's lives, calculated in seconds.</span>
-            <span class="ar">اعرف بالضبط كم يكلفك قرضك العقاري — القسط الشهري، إجمالي الفائدة، وجدول التسديد التفصيلي. قارن السيناريوهات جنباً إلى جنب. أهم قرار مالي في حياة معظم الناس، محسوب في ثوانٍ.</span>
-          </p>
-          <div class="ft-meta">
-            <div class="ft-meta-item">
-              <strong><span class="en">Amortization</span><span class="ar">جدول التسديد</span></strong>
-              <span class="en">Full schedule</span><span class="ar">جدول كامل</span>
-            </div>
-            <div class="ft-meta-item">
-              <strong><span class="en">Comparison</span><span class="ar">المقارنة</span></strong>
-              <span class="en">Multiple scenarios</span><span class="ar">سيناريوهات متعددة</span>
-            </div>
-            <div class="ft-meta-item">
-              <strong><span class="en">Currencies</span><span class="ar">العملات</span></strong>
-              <span class="en">SAR, AED, USD & more</span><span class="ar">ريال، درهم، دولار وأكثر</span>
-            </div>
-          </div>
-          <span class="btn btn-accent" style="display:inline-flex;"><span class="en">Open Mortgage Calculator →</span><span class="ar">افتح حاسبة القرض العقاري ←</span></span>
-        </div>
-        <div class="ft-visual">
-          <div class="ft-visual-icon">🏦</div>
-          <div class="ft-visual-stat">$1,847<span style="font-size:.9rem;font-weight:600;color:var(--muted);">/mo</span></div>
-          <div class="ft-visual-sub"><span class="en">Example monthly payment</span><span class="ar">قسط شهري تجريبي</span></div>
-        </div>
+      <a href="/tools/mortgage-calculator.html" class="tool-card reveal" style="--tc:#1B7A4E">
+        <div class="tool-card-icon">🏠</div>
+        <div class="tool-card-title"><span class="en">Mortgage Calculator</span><span class="ar">حاسبة التمويل العقاري</span></div>
+        <div class="tool-card-desc"><span class="en">Calculate monthly payments, total interest, and amortization schedule for any home loan.</span><span class="ar">احسب الأقساط الشهرية والفائدة الإجمالية وجدول السداد لأي قرض عقاري.</span></div>
+        <div class="tool-card-link"><span class="en">Calculate →</span><span class="ar">احسب →</span></div>
       </a>
 
-      <!-- Tools Grid -->
-      <div class="tools-grid">
-        <a href="tools/roi-calculator.html" class="tool-card reveal">
-          <div class="tool-top">
-            <div class="tool-icon-wrap" style="background:rgba(15,76,138,.08);">📈</div>
-            <span class="tool-badge"><span class="en">Essential</span><span class="ar">أساسية</span></span>
-          </div>
-          <div class="tool-name"><span class="en">ROI Calculator</span><span class="ar">حاسبة العائد على الاستثمار</span></div>
-          <div class="tool-desc">
-            <span class="en">Calculate your actual return on any investment — real estate, business, or portfolio. Factor in costs, duration, and inflation to get a true picture of performance.</span>
-            <span class="ar">احسب عائدك الفعلي على أي استثمار — عقارات، أعمال، أو محفظة مالية. خذ بعين الاعتبار التكاليف والمدة والتضخم للحصول على صورة حقيقية للأداء.</span>
-          </div>
-          <div class="tool-footer">
-            <span class="tool-usage"><span class="en">Annualized ROI</span><span class="ar">عائد سنوي</span></span>
-            <span class="tool-cta"><span class="en">Open →</span><span class="ar">افتح ←</span></span>
-          </div>
+      <a href="/tools/rental-yield-calculator.html" class="tool-card reveal" style="--tc:#0097A7">
+        <div class="tool-card-icon">🏢</div>
+        <div class="tool-card-title"><span class="en">Rental Yield Calculator</span><span class="ar">حاسبة العائد الإيجاري</span></div>
+        <div class="tool-card-desc"><span class="en">Analyze rental income vs. property cost to find your gross and net yield in seconds.</span><span class="ar">قارن الدخل الإيجاري بتكلفة العقار واحسب صافي العائد في ثوانٍ.</span></div>
+        <div class="tool-card-link"><span class="en">Analyze →</span><span class="ar">حلل →</span></div>
+      </a>
+
+      <a href="/tools/roi-calculator.html" class="tool-card reveal" style="--tc:#8B5CF6">
+        <div class="tool-card-icon">📈</div>
+        <div class="tool-card-title"><span class="en">ROI Calculator</span><span class="ar">حاسبة العائد على الاستثمار</span></div>
+        <div class="tool-card-desc"><span class="en">Calculate return on investment for any purchase, project, or asset. Simple and fast.</span><span class="ar">احسب العائد على الاستثمار لأي شراء أو مشروع أو أصل. بسيط وسريع.</span></div>
+        <div class="tool-card-link"><span class="en">Calculate →</span><span class="ar">احسب →</span></div>
+      </a>
+
+      <a href="/tools/savings-goal.html" class="tool-card reveal" style="--tc:#B8861A">
+        <div class="tool-card-icon">🎯</div>
+        <div class="tool-card-title"><span class="en">Savings Goal Planner</span><span class="ar">مخطط هدف الادخار</span></div>
+        <div class="tool-card-desc"><span class="en">Set a savings target, pick a deadline, and see exactly how much to save each month.</span><span class="ar">حدد هدف الادخار واختر الموعد النهائي، وانظر كم تحتاج لادخاره شهرياً.</span></div>
+        <div class="tool-card-link"><span class="en">Plan →</span><span class="ar">خطط →</span></div>
+      </a>
+
+      <a href="/tools/zakat-calculator.html" class="tool-card reveal" style="--tc:#059669">
+        <div class="tool-card-icon">🌙</div>
+        <div class="tool-card-title"><span class="en">Zakat Calculator</span><span class="ar">حاسبة الزكاة</span></div>
+        <div class="tool-card-desc"><span class="en">Calculate your annual zakat on cash, gold, stocks, and business assets — accurate and simple.</span><span class="ar">احسب زكاتك السنوية على النقد والذهب والأسهم وأصول الأعمال.</span></div>
+        <div class="tool-card-link"><span class="en">Calculate →</span><span class="ar">احسب →</span></div>
+      </a>
+
+      <a href="/tools/salary-calculator.html" class="tool-card reveal" style="--tc:#EF4444">
+        <div class="tool-card-icon">💼</div>
+        <div class="tool-card-title"><span class="en">Salary & Take-Home Calculator</span><span class="ar">حاسبة صافي الراتب</span></div>
+        <div class="tool-card-desc"><span class="en">Understand your gross vs. net pay. Factor in GOSI, housing, transport, and allowances.</span><span class="ar">افهم راتبك الإجمالي مقارنةً بصافيه، مع الأخذ بالاعتبار التأمينات والبدلات.</span></div>
+        <div class="tool-card-link"><span class="en">Calculate →</span><span class="ar">احسب →</span></div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- GUIDE STRIP -->
+<div class="container">
+  <div class="guide-strip reveal">
+    <div class="guide-strip-text">
+      <h3><span class="en">New to investing in Saudi Arabia?</span><span class="ar">جديد في الاستثمار بالسعودية؟</span></h3>
+      <p><span class="en">Read our complete guide to real estate investing in Saudi Arabia — from Vision 2030 opportunities to rental market insights.</span><span class="ar">اقرأ دليلنا الشامل للاستثمار العقاري في السعودية — من فرص رؤية 2030 إلى رؤى سوق الإيجار.</span></p>
+    </div>
+    <a href="/guides/saudi-real-estate-investing.html" class="btn btn-gold">
+      <span class="en">Read guide →</span><span class="ar">اقرأ الدليل →</span>
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="/" class="dfl-nav-logo" aria-label="DOTFORLIFE">
+          <img src="/images/logo-light.png" alt="DOTFORLIFE" />
         </a>
-
-        <a href="tools/rental-yield-calculator.html" class="tool-card reveal" style="transition-delay:.1s;">
-          <div class="tool-top">
-            <div class="tool-icon-wrap" style="background:rgba(201,162,39,.10);">🏘️</div>
-            <span class="tool-badge tool-badge-gold"><span class="en">Investor</span><span class="ar">للمستثمر</span></span>
-          </div>
-          <div class="tool-name"><span class="en">Rental Yield Calculator</span><span class="ar">حاسبة عائد الإيجار</span></div>
-          <div class="tool-desc">
-            <span class="en">Is that property actually worth buying as a rental? Calculate gross and net rental yield, factoring in purchase costs, maintenance, and vacancy rates to know if the numbers work.</span>
-            <span class="ar">هل تلك العقار يستحق الشراء للإيجار فعلاً؟ احسب العائد الإيجاري الإجمالي والصافي، مع الأخذ بعين الاعتبار تكاليف الشراء والصيانة ومعدلات الشواغر.</span>
-          </div>
-          <div class="tool-footer">
-            <span class="tool-usage"><span class="en">Gross & net yield</span><span class="ar">العائد الإجمالي والصافي</span></span>
-            <span class="tool-cta"><span class="en">Open →</span><span class="ar">افتح ←</span></span>
-          </div>
-        </a>
-
-        <a href="tools/monthly-budget.html" class="tool-card reveal" style="transition-delay:.2s;">
-          <div class="tool-top">
-            <div class="tool-icon-wrap" style="background:rgba(5,150,105,.08);">📊</div>
-            <span class="tool-badge tool-badge-new"><span class="en">New</span><span class="ar">جديد</span></span>
-          </div>
-          <div class="tool-name"><span class="en">Monthly Budget Planner</span><span class="ar">مخطط الميزانية الشهرية</span></div>
-          <div class="tool-desc">
-            <span class="en">Enter income and 9 expense categories. See exactly where your money goes, your surplus or deficit, and how you compare to the 50/30/20 rule — with Islamic finance mode.</span>
-            <span class="ar">أدخل دخلك و9 فئات للنفقات. شاهد أين يذهب مالك، الفائض أو العجز، ومقارنتك بقاعدة 50/30/20 — مع وضع التمويل الإسلامي.</span>
-          </div>
-          <div class="tool-footer">
-            <span class="tool-usage"><span class="en">Surplus · Deficit · 50/30/20</span><span class="ar">فائض · عجز · 50/30/20</span></span>
-            <span class="tool-cta"><span class="en">Open →</span><span class="ar">افتح ←</span></span>
-          </div>
-        </a>
-
-        <a href="tools/savings-goal.html" class="tool-card reveal" style="transition-delay:.04s;">
-          <div class="tool-top">
-            <div class="tool-icon-wrap" style="background:rgba(15,76,138,.08);">🎯</div>
-            <span class="tool-badge tool-badge-new"><span class="en">New</span><span class="ar">جديد</span></span>
-          </div>
-          <div class="tool-name"><span class="en">Savings Goal Calculator</span><span class="ar">حاسبة هدف الادخار</span></div>
-          <div class="tool-desc">
-            <span class="en">Know exactly how much to save each month to reach any goal — or how long it will take at your current rate. Compound interest, multiple currencies, two calculation modes.</span>
-            <span class="ar">اعرف بالضبط كم تدخر شهرياً للوصول لأي هدف — أو كم من الوقت يلزم بمعدلك الحالي. فائدة مركبة، عملات متعددة، وضعان للحساب.</span>
-          </div>
-          <div class="tool-footer">
-            <span class="tool-usage"><span class="en">Compound growth · SAR/USD/AED/KWD</span><span class="ar">نمو مركب · ريال/دولار/درهم/دينار</span></span>
-            <span class="tool-cta"><span class="en">Open →</span><span class="ar">افتح ←</span></span>
-          </div>
-        </a>
-
-        <div class="tool-card reveal" style="transition-delay:.1s;opacity:.7;cursor:default;">
-          <div class="tool-top">
-            <div class="tool-icon-wrap" style="background:rgba(201,162,39,.10);">🛡️</div>
-            <span class="tool-badge tool-badge-new"><span class="en">Coming Soon</span><span class="ar">قريباً</span></span>
-          </div>
-          <div class="tool-name"><span class="en">Emergency Fund</span><span class="ar">حاسبة صندوق الطوارئ</span></div>
-          <div class="tool-desc">
-            <span class="en">How much emergency savings is enough? Based on your monthly expenses and risk profile, calculate the optimal emergency fund size that gives you true financial security.</span>
-            <span class="ar">كم يكفي من المدخرات الطارئة؟ بناءً على نفقاتك الشهرية وملف مخاطرك، احسب حجم صندوق الطوارئ الأمثل الذي يمنحك أماناً مالياً حقيقياً.</span>
-          </div>
-          <div class="tool-footer">
-            <span class="tool-usage"><span class="en">3–6 months method</span><span class="ar">طريقة 3-6 أشهر</span></span>
-            <span class="tool-cta" style="background:var(--muted);">🔔 <span class="en">Notify Me</span><span class="ar">أخبرني</span></span>
-          </div>
-        </div>
-
-        <div class="tool-card reveal" style="transition-delay:.16s;opacity:.7;cursor:default;">
-          <div class="tool-top">
-            <div class="tool-icon-wrap" style="background:rgba(15,76,138,.08);">📉</div>
-            <span class="tool-badge tool-badge-new"><span class="en">Coming Soon</span><span class="ar">قريباً</span></span>
-          </div>
-          <div class="tool-name"><span class="en">Debt Payoff Planner</span><span class="ar">مخطط سداد الديون</span></div>
-          <div class="tool-desc">
-            <span class="en">Avalanche or snowball? Compare debt payoff strategies across multiple liabilities. Know exactly when you'll be debt-free and how much interest you'll save by paying smarter.</span>
-            <span class="ar">هجوم الجليد أم كرة الثلج؟ قارن استراتيجيات سداد الديون عبر التزامات متعددة. اعرف متى ستكون خالياً من الديون وكم ستوفر من الفوائد بالدفع الذكي.</span>
-          </div>
-          <div class="tool-footer">
-            <span class="tool-usage"><span class="en">Avalanche & snowball</span><span class="ar">استراتيجيتان</span></span>
-            <span class="tool-cta" style="background:var(--muted);">🔔 <span class="en">Notify Me</span><span class="ar">أخبرني</span></span>
-          </div>
-        </div>
+        <p><span class="en">A calm daily operating system for family life.</span><span class="ar">نظام تشغيل هادئ لحياة الأسرة اليومية.</span></p>
       </div>
-    </div>
-  </section>
-
-  <!-- WEALTH PILLARS -->
-  <section class="pillars-section" aria-label="Pillars of financial intelligence">
-    <div class="container">
-      <div style="text-align:center;max-width:560px;margin:0 auto;">
-        <span class="section-label"><span class="en">The Four Pillars</span><span class="ar">الأعمدة الأربعة</span></span>
-        <h2 style="font-size:1.85rem;font-weight:800;letter-spacing:-.025em;margin-bottom:8px;">
-          <span class="en">Building wealth that endures</span>
-          <span class="ar">بناء ثروة تدوم</span>
-        </h2>
-        <p style="color:var(--text-2);font-size:.95rem;">
-          <span class="en">The same patterns appear in every durable wealth story: measure, plan, start early, and know your own biases. Not complicated — just rarely done consistently.</span>
-          <span class="ar">الأنماط ذاتها تظهر في كل قصة ثروة دائمة: قِس، خطّط، ابدأ مبكراً، واعرف تحيزاتك. ليس معقداً — فقط نادراً ما يُطبَّق بثبات.</span>
-        </p>
-      </div>
-      <div class="pillars-grid">
-        <div class="pillar-card reveal">
-          <div class="pillar-icon">📐</div>
-          <div class="pillar-name"><span class="en">Measure everything</span><span class="ar">قِس كل شيء</span></div>
-          <div class="pillar-desc">
-            <span class="en">What gets measured gets managed. Track income, spending, and returns precisely. The act of measuring itself changes behavior — proven by behavioral economics research.</span>
-            <span class="ar">ما يُقاس يُدار. تتبّع الدخل والإنفاق والعوائد بدقة. فعل القياس نفسه يغيّر السلوك — مُثبت بأبحاث الاقتصاد السلوكي.</span>
-          </div>
-        </div>
-        <div class="pillar-card reveal" style="transition-delay:.08s;">
-          <div class="pillar-icon">🎯</div>
-          <div class="pillar-name"><span class="en">Plan with specificity</span><span class="ar">خطّط بتحديد</span></div>
-          <div class="pillar-desc">
-            <span class="en">Vague financial goals fail. "Save more" doesn't work. "Save SAR 2,000 per month toward a property down payment by 2027" does. Clarity creates commitment.</span>
-            <span class="ar">الأهداف المالية الغامضة تفشل. "وفّر أكثر" لا يعمل. "وفّر 2000 ريال شهرياً لدفعة أولى على عقار بحلول 2027" يعمل. الوضوح يُنشئ الالتزام.</span>
-          </div>
-        </div>
-        <div class="pillar-card reveal" style="transition-delay:.16s;">
-          <div class="pillar-icon">⏳</div>
-          <div class="pillar-name"><span class="en">Start before you're ready</span><span class="ar">ابدأ قبل أن تكون مستعداً</span></div>
-          <div class="pillar-desc">
-            <span class="en">The greatest financial mistake is waiting. $500/month invested at age 25 vs. age 35 generates approximately $400,000 more by retirement — same money, same rate, just 10 years of time difference.</span>
-            <span class="ar">أعظم خطأ مالي هو الانتظار. 500 دولار شهرياً مستثمرة بعمر 25 مقابل 35 تولّد ما يقارب 400,000 دولار إضافية عند التقاعد — نفس المال، نفس المعدل، فقط 10 سنوات فارق.</span>
-          </div>
-        </div>
-        <div class="pillar-card reveal" style="transition-delay:.24s;">
-          <div class="pillar-icon">🧠</div>
-          <div class="pillar-name"><span class="en">Defeat your biases</span><span class="ar">تغلّب على تحيزاتك</span></div>
-          <div class="pillar-desc">
-            <span class="en">Confirmation bias, recency bias, herd mentality — these cognitive traps cost investors dearly. Knowing they exist is your first defense. Structured tools are your second.</span>
-            <span class="ar">تحيز التأكيد، تحيز الحداثة، عقلية القطيع — هذه الفخاخ المعرفية تكلّف المستثمرين كثيراً. معرفة وجودها هي دفاعك الأول. الأدوات المنظمة هي دفاعك الثاني.</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- EDITORIAL DARK STRIP -->
-  <section class="editorial-strip" aria-label="Wealth philosophy">
-    <div class="container">
-      <div class="editorial-inner">
-        <div class="reveal">
-          <div class="edit-eyebrow"><span class="en">The Long Game</span><span class="ar">اللعبة الطويلة</span></div>
-          <h2 class="edit-title">
-            <span class="en">Wealth is built quietly,<br>over decades, by those<br>who understand the numbers.</span>
-            <span class="ar">الثروة تُبنى بصمت،<br>عبر عقود، من قِبل من<br>يفهمون الأرقام.</span>
-          </h2>
-          <p class="edit-body">
-            <span class="en">The gap between a good investor and a poor one is rarely about picking different stocks. It's about behavior — when to stay, when to act, and whether the underlying math is understood. Structured decision-making removes that uncertainty. The tools here don't tell you what to invest in. They ensure you understand the numbers before you decide.</span>
-            <span class="ar">الفجوة بين مستثمر جيد ومستثمر سيئ نادراً ما تكون في اختيار أسهم مختلفة. إنها في السلوك — متى تبقى، متى تتصرف، وهل الرياضيات الأساسية مفهومة. اتخاذ القرار المنظم يُزيل هذا الغموض. الأدوات هنا لا تُخبرك أين تستثمر — بل تضمن أنك تفهم الأرقام قبل أن تقرر.</span>
-          </p>
-          <a href="tools/roi-calculator.html" class="btn btn-gold"><span class="en">Calculate My ROI →</span><span class="ar">احسب عائدي ←</span></a>
-        </div>
-        <div class="edit-stats reveal" style="transition-delay:.12s;">
-          <div class="edit-stat">
-            <div class="edit-stat-val">10 yrs</div>
-            <div class="edit-stat-lbl"><span class="en">Earlier you start — the compounding difference is not incremental, it's exponential</span><span class="ar">كل عشر سنوات تبدأ فيها مبكراً — الفرق في التراكم ليس تدريجياً، إنه أسي</span></div>
-          </div>
-          <div class="edit-stat">
-            <div class="edit-stat-val">SAR</div>
-            <div class="edit-stat-lbl"><span class="en">All mortgage calculations use local currency, SAMA regulations, and real market rates</span><span class="ar">جميع حسابات الرهن بالريال وفق أنظمة ساما ومعدلات السوق الفعلية</span></div>
-          </div>
-          <div class="edit-stat">
-            <div class="edit-stat-val">0%</div>
-            <div class="edit-stat-lbl"><span class="en">Data stored or transmitted — all calculations happen in your browser only</span><span class="ar">بيانات محفوظة أو منقولة — جميع الحسابات تجري في متصفحك فقط</span></div>
-          </div>
-          <div class="edit-stat">
-            <div class="edit-stat-val">Halal</div>
-            <div class="edit-stat-lbl"><span class="en">Islamic finance modes included — Murabaha and Ijara modeled alongside conventional</span><span class="ar">أنماط التمويل الإسلامي مدرجة — المرابحة والإجارة إلى جانب التقليدي</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="faq-section" aria-labelledby="faq-title">
-    <div class="container">
-      <span class="section-label"><span class="en">Common Questions</span><span class="ar">أسئلة شائعة</span></span>
-      <h2 id="faq-title" style="font-size:1.85rem;font-weight:800;letter-spacing:-.025em;margin-bottom:8px;">
-        <span class="en">Financial clarity, answered</span>
-        <span class="ar">وضوح مالي، مجاب عنه</span>
-      </h2>
-      <div class="faq-grid">
-        <div class="faq-card reveal">
-          <div class="faq-q"><span class="faq-q-icon">?</span><span class="en">What's the difference between gross and net rental yield?</span><span class="ar">ما الفرق بين عائد الإيجار الإجمالي والصافي؟</span></div>
-          <div class="faq-a">
-            <span class="en">Gross rental yield = annual rent ÷ property price × 100. Net yield subtracts operating costs (maintenance, management fees, vacancy). Net yield is the real number that matters for investment decisions — typically 1–3% lower than gross.</span>
-            <span class="ar">عائد الإيجار الإجمالي = الإيجار السنوي ÷ سعر العقار × 100. العائد الصافي يطرح تكاليف التشغيل (الصيانة، رسوم الإدارة، الشواغر). العائد الصافي هو الرقم الحقيقي المهم لقرارات الاستثمار — عادةً 1-3% أقل من الإجمالي.</span>
-          </div>
-        </div>
-        <div class="faq-card reveal" style="transition-delay:.08s;">
-          <div class="faq-q"><span class="faq-q-icon">?</span><span class="en">How much mortgage can I afford?</span><span class="ar">كم قرضاً عقارياً أستطيع تحمّله؟</span></div>
-          <div class="faq-a">
-            <span class="en">The standard rule: your monthly mortgage payment should not exceed 28% of gross monthly income, and total debt payments should not exceed 36%. Use our calculator to find the exact figure based on your income, down payment, and interest rate.</span>
-            <span class="ar">القاعدة القياسية: لا يجب أن يتجاوز قسطك الشهري 28% من دخلك الشهري الإجمالي، وإجمالي مدفوعات الديون 36%. استخدم حاسبتنا للعثور على الرقم الدقيق بناءً على دخلك ودفعتك الأولى وسعر الفائدة.</span>
-          </div>
-        </div>
-        <div class="faq-card reveal" style="transition-delay:.04s;">
-          <div class="faq-q"><span class="faq-q-icon">?</span><span class="en">Is my data stored anywhere?</span><span class="ar">هل يتم تخزين بياناتي في أي مكان؟</span></div>
-          <div class="faq-a">
-            <span class="en">No. All calculations run entirely within your browser using JavaScript. No numbers are sent to any server. Your financial data never leaves your device. This is a deliberate design choice — your wealth information is private by default.</span>
-            <span class="ar">لا. جميع الحسابات تعمل بالكامل داخل متصفحك باستخدام JavaScript. لا تُرسل أي أرقام إلى أي خادم. بياناتك المالية لا تغادر جهازك أبداً. هذا خيار تصميمي متعمد — معلوماتك المالية خاصة بطبيعتها.</span>
-          </div>
-        </div>
-        <div class="faq-card reveal" style="transition-delay:.12s;">
-          <div class="faq-q"><span class="faq-q-icon">?</span><span class="en">What's a good ROI for real estate in the Middle East?</span><span class="ar">ما هو عائد استثماري جيد للعقارات في الخليج؟</span></div>
-          <div class="faq-a">
-            <span class="en">In regional markets, a net rental yield of 5–8% is generally considered healthy. Dubai averages 6–8%, Riyadh 4–6%, and Abu Dhabi 5–7%. However, location, asset class, and market timing all significantly affect actual returns. Always calculate before committing.</span>
-            <span class="ar">في أسواق الخليج، يُعدّ عائد الإيجار الصافي 5-8% صحياً بشكل عام. دبي في المتوسط 6-8%، الرياض 4-6%، وأبو ظبي 5-7%. لكن الموقع وفئة الأصل وتوقيت السوق تؤثر جميعها بشكل كبير على العوائد الفعلية. احسب دائماً قبل الالتزام.</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- WEALTH LIFE JOURNEY CHOOSER -->
-  <section style="padding:clamp(60px,9vw,90px) 0;background:var(--body-bg);border-top:1px solid var(--border-l);" aria-label="Financial life journey">
-    <div class="container">
-      <div style="text-align:center;margin-bottom:40px;">
-        <span style="display:inline-flex;align-items:center;gap:6px;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-l);border:1px solid rgba(15,76,138,.2);background:rgba(15,76,138,.06);border-radius:999px;padding:5px 14px;margin-bottom:16px;">
-          <span class="en">YOUR FINANCIAL JOURNEY · رحلتك المالية</span><span class="ar">رحلتك المالية</span>
-        </span>
-        <h2 style="font-size:clamp(1.5rem,3vw,2rem);font-weight:900;letter-spacing:-.03em;color:var(--text);margin:0 0 12px;">
-          <span class="en">Where are you in your wealth story?</span>
-          <span class="ar">أين أنت في قصة ثروتك؟</span>
-        </h2>
-        <p style="font-size:.95rem;color:var(--text-2);max-width:460px;margin:0 auto;line-height:1.65;">
-          <span class="en">Every financial decision is part of a longer journey. Choose yours — we'll show you the tools in the order that matters.</span>
-          <span class="ar">كل قرار مالي هو جزء من رحلة أطول. اختر رحلتك — وسنريك الأدوات بالترتيب الذي يهم.</span>
-        </p>
-      </div>
-
-      <!-- Journey Selector Tabs -->
-      <div id="fin-journey-tabs" style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:36px;">
-        <button onclick="selectFinJourney('home',this)" class="hj-tab" style="padding:11px 22px;border-radius:999px;border:1.5px solid var(--accent);background:var(--accent);color:#fff;font-size:.82rem;font-weight:700;cursor:pointer;transition:all .2s;font-family:inherit;">🏠 <span class="en">Home Buying</span><span class="ar">شراء منزل</span></button>
-        <button onclick="selectFinJourney('invest',this)" class="hj-tab" style="padding:11px 22px;border-radius:999px;border:1.5px solid var(--border-l);background:var(--body-bg);color:var(--text-2);font-size:.82rem;font-weight:700;cursor:pointer;transition:all .2s;font-family:inherit;">💹 <span class="en">Investment Clarity</span><span class="ar">وضوح الاستثمار</span></button>
-        <button onclick="selectFinJourney('wealth',this)" class="hj-tab" style="padding:11px 22px;border-radius:999px;border:1.5px solid var(--border-l);background:var(--body-bg);color:var(--text-2);font-size:.82rem;font-weight:700;cursor:pointer;transition:all .2s;font-family:inherit;">📈 <span class="en">Building Wealth</span><span class="ar">بناء الثروة</span></button>
-      </div>
-
-      <!-- Journey: Home Buying -->
-      <div id="fin-home" class="hj-panel">
-        <div style="background:rgba(15,76,138,.05);border:1px solid rgba(15,76,138,.12);border-radius:18px;padding:22px 26px;margin-bottom:28px;max-width:640px;margin-left:auto;margin-right:auto;text-align:center;">
-          <p style="font-size:1rem;font-style:italic;color:var(--text);line-height:1.7;margin:0;">
-            <span class="en">"The biggest financial decision of your life deserves more than a gut feeling. It deserves a number."</span>
-            <span class="ar">"أكبر قرار مالي في حياتك يستحق أكثر من مجرد إحساس. يستحق رقماً."</span>
-          </p>
-        </div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;">
-          <a href="tools/mortgage-calculator.html" style="display:block;background:var(--body-bg);border:1.5px solid var(--border-l);border-radius:18px;padding:22px 18px;text-decoration:none;color:var(--text);transition:all .2s;" onmouseover="this.style.borderColor='#0F4C8A';this.style.boxShadow='0 6px 24px rgba(15,76,138,.12)'" onmouseout="this.style.borderColor='var(--border-l)';this.style.boxShadow='none'">
-            <div style="font-size:1.5rem;margin-bottom:10px;">🏦</div>
-            <div style="font-size:.7rem;font-weight:700;color:var(--accent-l);letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;"><span class="en">Step 1</span><span class="ar">الخطوة ١</span></div>
-            <div style="font-size:.92rem;font-weight:700;margin-bottom:5px;"><span class="en">Mortgage Calculator</span><span class="ar">حاسبة التمويل</span></div>
-            <div style="font-size:.78rem;color:var(--text-2);line-height:1.5;margin-bottom:12px;"><span class="en">What can I actually afford? Your monthly payment — broken down clearly, with no surprises.</span><span class="ar">ما الذي أستطيع تحمّله فعلاً؟ دفعتك الشهرية — مفصّلة بوضوح، دون مفاجآت.</span></div>
-            <div style="font-size:.75rem;font-weight:700;color:var(--accent-l);">→ <span class="en">Start here</span><span class="ar">ابدأ هنا</span></div>
-          </a>
-          <a href="tools/rental-yield-calculator.html" style="display:block;background:var(--body-bg);border:1.5px solid var(--border-l);border-radius:18px;padding:22px 18px;text-decoration:none;color:var(--text);transition:all .2s;" onmouseover="this.style.borderColor='#0F4C8A';this.style.boxShadow='0 6px 24px rgba(15,76,138,.12)'" onmouseout="this.style.borderColor='var(--border-l)';this.style.boxShadow='none'">
-            <div style="font-size:1.5rem;margin-bottom:10px;">📊</div>
-            <div style="font-size:.7rem;font-weight:700;color:var(--accent-l);letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;"><span class="en">Step 2</span><span class="ar">الخطوة ٢</span></div>
-            <div style="font-size:.92rem;font-weight:700;margin-bottom:5px;"><span class="en">Buy vs. Rent Analysis</span><span class="ar">تحليل الشراء مقابل الإيجار</span></div>
-            <div style="font-size:.78rem;color:var(--text-2);line-height:1.5;margin-bottom:12px;"><span class="en">Is buying actually better right now? Compare what you pay versus what you build.</span><span class="ar">هل الشراء أفضل الآن فعلاً؟ قارن ما تدفعه مقابل ما تبنيه.</span></div>
-            <div style="font-size:.75rem;font-weight:700;color:var(--accent-l);">→ <span class="en">Compare</span><span class="ar">قارن</span></div>
-          </a>
-          <a href="tools/roi-calculator.html" style="display:block;background:var(--body-bg);border:1.5px solid var(--border-l);border-radius:18px;padding:22px 18px;text-decoration:none;color:var(--text);transition:all .2s;" onmouseover="this.style.borderColor='#0F4C8A';this.style.boxShadow='0 6px 24px rgba(15,76,138,.12)'" onmouseout="this.style.borderColor='var(--border-l)';this.style.boxShadow='none'">
-            <div style="font-size:1.5rem;margin-bottom:10px;">💹</div>
-            <div style="font-size:.7rem;font-weight:700;color:var(--accent-l);letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;"><span class="en">Step 3</span><span class="ar">الخطوة ٣</span></div>
-            <div style="font-size:.92rem;font-weight:700;margin-bottom:5px;"><span class="en">Long-Term ROI</span><span class="ar">العائد على المدى البعيد</span></div>
-            <div style="font-size:.78rem;color:var(--text-2);line-height:1.5;margin-bottom:12px;"><span class="en">What does this property actually return in 5, 10, 20 years? The math most buyers skip.</span><span class="ar">ما عائد هذا العقار خلال 5 أو 10 أو 20 سنة؟ الحسابات التي يتخطاها معظم المشترين.</span></div>
-            <div style="font-size:.75rem;font-weight:700;color:var(--accent-l);">→ <span class="en">See the return</span><span class="ar">اكتشف العائد</span></div>
-          </a>
-          <a href="tools/zakat-calculator.html" style="display:block;background:var(--body-bg);border:1.5px solid var(--border-l);border-radius:18px;padding:22px 18px;text-decoration:none;color:var(--text);transition:all .2s;" onmouseover="this.style.borderColor='#1B7A4E';this.style.boxShadow='0 6px 24px rgba(27,122,78,.12)'" onmouseout="this.style.borderColor='var(--border-l)';this.style.boxShadow='none'">
-            <div style="font-size:1.5rem;margin-bottom:10px;">🌙</div>
-            <div style="font-size:.7rem;font-weight:700;color:#1B7A4E;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;"><span class="en">Spiritual</span><span class="ar">الجانب الروحي</span></div>
-            <div style="font-size:.92rem;font-weight:700;margin-bottom:5px;"><span class="en">Zakat on Property</span><span class="ar">زكاة العقار</span></div>
-            <div style="font-size:.78rem;color:var(--text-2);line-height:1.5;margin-bottom:12px;"><span class="en">Wealth that's blessed is wealth with purpose. Calculate your Zakat obligation clearly.</span><span class="ar">الثروة المباركة هي ثروة ذات هدف. احسب التزامك بالزكاة بوضوح.</span></div>
-            <div style="font-size:.75rem;font-weight:700;color:#1B7A4E;">→ <span class="en">Calculate</span><span class="ar">احسب</span></div>
-          </a>
-        </div>
-      </div>
-
-      <!-- Journey: Investment Clarity -->
-      <div id="fin-invest" class="hj-panel" style="display:none;">
-        <div style="background:rgba(15,76,138,.05);border:1px solid rgba(15,76,138,.12);border-radius:18px;padding:22px 26px;margin-bottom:28px;max-width:640px;margin-left:auto;margin-right:auto;text-align:center;">
-          <p style="font-size:1rem;font-style:italic;color:var(--text);line-height:1.7;margin:0;">
-            <span class="en">"The best investment isn't the one with the highest return. It's the one you actually understand before you commit."</span>
-            <span class="ar">"أفضل استثمار ليس الأعلى عائداً. بل هو الذي تفهمه فعلاً قبل أن تلتزم به."</span>
-          </p>
-        </div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;">
-          <a href="tools/roi-calculator.html" style="display:block;background:var(--body-bg);border:1.5px solid var(--border-l);border-radius:18px;padding:22px 18px;text-decoration:none;color:var(--text);transition:all .2s;" onmouseover="this.style.borderColor='#0F4C8A';this.style.boxShadow='0 6px 24px rgba(15,76,138,.12)'" onmouseout="this.style.borderColor='var(--border-l)';this.style.boxShadow='none'">
-            <div style="font-size:1.5rem;margin-bottom:10px;">💹</div>
-            <div style="font-size:.7rem;font-weight:700;color:var(--accent-l);letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;"><span class="en">Step 1</span><span class="ar">الخطوة ١</span></div>
-            <div style="font-size:.92rem;font-weight:700;margin-bottom:5px;"><span class="en">ROI Calculator</span><span class="ar">حاسبة العائد</span></div>
-            <div style="font-size:.78rem;color:var(--text-2);line-height:1.5;margin-bottom:12px;"><span class="en">What does this investment actually return? Cut through assumptions with a real number.</span><span class="ar">ما العائد الفعلي لهذا الاستثمار؟ تجاوز الافتراضات برقم حقيقي.</span></div>
-            <div style="font-size:.75rem;font-weight:700;color:var(--accent-l);">→ <span class="en">Start here</span><span class="ar">ابدأ هنا</span></div>
-          </a>
-          <a href="tools/rental-yield-calculator.html" style="display:block;background:var(--body-bg);border:1.5px solid var(--border-l);border-radius:18px;padding:22px 18px;text-decoration:none;color:var(--text);transition:all .2s;" onmouseover="this.style.borderColor='#0F4C8A';this.style.boxShadow='0 6px 24px rgba(15,76,138,.12)'" onmouseout="this.style.borderColor='var(--border-l)';this.style.boxShadow='none'">
-            <div style="font-size:1.5rem;margin-bottom:10px;">🏘️</div>
-            <div style="font-size:.7rem;font-weight:700;color:var(--accent-l);letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;"><span class="en">Step 2</span><span class="ar">الخطوة ٢</span></div>
-            <div style="font-size:.92rem;font-weight:700;margin-bottom:5px;"><span class="en">Rental Yield Analyzer</span><span class="ar">محلل عائد الإيجار</span></div>
-            <div style="font-size:.78rem;color:var(--text-2);line-height:1.5;margin-bottom:12px;"><span class="en">Is property your best vehicle? Gross yield, net yield, and cash flow — side by side.</span><span class="ar">هل العقار هو خيارك الأفضل؟ العائد الإجمالي والصافي والتدفق النقدي — جنباً إلى جنب.</span></div>
-            <div style="font-size:.75rem;font-weight:700;color:var(--accent-l);">→ <span class="en">Analyze</span><span class="ar">حلّل</span></div>
-          </a>
-          <a href="tools/mortgage-calculator.html" style="display:block;background:var(--body-bg);border:1.5px solid var(--border-l);border-radius:18px;padding:22px 18px;text-decoration:none;color:var(--text);transition:all .2s;" onmouseover="this.style.borderColor='#0F4C8A';this.style.boxShadow='0 6px 24px rgba(15,76,138,.12)'" onmouseout="this.style.borderColor='var(--border-l)';this.style.boxShadow='none'">
-            <div style="font-size:1.5rem;margin-bottom:10px;">🏦</div>
-            <div style="font-size:.7rem;font-weight:700;color:var(--accent-l);letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;"><span class="en">Step 3</span><span class="ar">الخطوة ٣</span></div>
-            <div style="font-size:.92rem;font-weight:700;margin-bottom:5px;"><span class="en">Leverage Math</span><span class="ar">رياضيات الرافعة المالية</span></div>
-            <div style="font-size:.78rem;color:var(--text-2);line-height:1.5;margin-bottom:12px;"><span class="en">Borrowing to invest amplifies both gains and risk. Know the exact cost of that leverage.</span><span class="ar">الاقتراض للاستثمار يضاعف المكاسب والمخاطر معاً. اعرف التكلفة الدقيقة لتلك الرافعة.</span></div>
-            <div style="font-size:.75rem;font-weight:700;color:var(--accent-l);">→ <span class="en">Model it</span><span class="ar">نمذج الأمر</span></div>
-          </a>
-          <a href="tools/zakat-calculator.html" style="display:block;background:var(--body-bg);border:1.5px solid var(--border-l);border-radius:18px;padding:22px 18px;text-decoration:none;color:var(--text);transition:all .2s;" onmouseover="this.style.borderColor='#1B7A4E';this.style.boxShadow='0 6px 24px rgba(27,122,78,.12)'" onmouseout="this.style.borderColor='var(--border-l)';this.style.boxShadow='none'">
-            <div style="font-size:1.5rem;margin-bottom:10px;">🌙</div>
-            <div style="font-size:.7rem;font-weight:700;color:#1B7A4E;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;"><span class="en">Spiritual</span><span class="ar">الجانب الروحي</span></div>
-            <div style="font-size:.92rem;font-weight:700;margin-bottom:5px;"><span class="en">Zakat on Investments</span><span class="ar">زكاة الاستثمارات</span></div>
-            <div style="font-size:.78rem;color:var(--text-2);line-height:1.5;margin-bottom:12px;"><span class="en">Purify your investment returns. Calculate Zakat on stocks, funds, and rental income.</span><span class="ar">طهّر عوائد استثماراتك. احسب الزكاة على الأسهم والصناديق ودخل الإيجار.</span></div>
-            <div style="font-size:.75rem;font-weight:700;color:#1B7A4E;">→ <span class="en">Calculate</span><span class="ar">احسب</span></div>
-          </a>
-        </div>
-      </div>
-
-      <!-- Journey: Building Wealth -->
-      <div id="fin-wealth" class="hj-panel" style="display:none;">
-        <div style="background:rgba(15,76,138,.05);border:1px solid rgba(15,76,138,.12);border-radius:18px;padding:22px 26px;margin-bottom:28px;max-width:640px;margin-left:auto;margin-right:auto;text-align:center;">
-          <p style="font-size:1rem;font-style:italic;color:var(--text);line-height:1.7;margin:0;">
-            <span class="en">"Wealth isn't built on a single decision. It's built on a thousand small ones, each slightly more informed than the last."</span>
-            <span class="ar">"الثروة لا تُبنى على قرار واحد. تُبنى على آلاف القرارات الصغيرة، كل واحد أكثر وعياً من سابقه."</span>
-          </p>
-        </div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;">
-          <a href="tools/roi-calculator.html" style="display:block;background:var(--body-bg);border:1.5px solid var(--border-l);border-radius:18px;padding:22px 18px;text-decoration:none;color:var(--text);transition:all .2s;" onmouseover="this.style.borderColor='#0F4C8A';this.style.boxShadow='0 6px 24px rgba(15,76,138,.12)'" onmouseout="this.style.borderColor='var(--border-l)';this.style.boxShadow='none'">
-            <div style="font-size:1.5rem;margin-bottom:10px;">📈</div>
-            <div style="font-size:.7rem;font-weight:700;color:var(--accent-l);letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;"><span class="en">Step 1</span><span class="ar">الخطوة ١</span></div>
-            <div style="font-size:.92rem;font-weight:700;margin-bottom:5px;"><span class="en">Understand Returns</span><span class="ar">افهم العوائد</span></div>
-            <div style="font-size:.78rem;color:var(--text-2);line-height:1.5;margin-bottom:12px;"><span class="en">First lesson of wealth: time × return = compounding. See what even small investments become.</span><span class="ar">الدرس الأول في بناء الثروة: الوقت × العائد = التراكم. اكتشف ما تتحول إليه حتى الاستثمارات الصغيرة.</span></div>
-            <div style="font-size:.75rem;font-weight:700;color:var(--accent-l);">→ <span class="en">Start here</span><span class="ar">ابدأ هنا</span></div>
-          </a>
-          <a href="tools/rental-yield-calculator.html" style="display:block;background:var(--body-bg);border:1.5px solid var(--border-l);border-radius:18px;padding:22px 18px;text-decoration:none;color:var(--text);transition:all .2s;" onmouseover="this.style.borderColor='#0F4C8A';this.style.boxShadow='0 6px 24px rgba(15,76,138,.12)'" onmouseout="this.style.borderColor='var(--border-l)';this.style.boxShadow='none'">
-            <div style="font-size:1.5rem;margin-bottom:10px;">🏘️</div>
-            <div style="font-size:.7rem;font-weight:700;color:var(--accent-l);letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;"><span class="en">Step 2</span><span class="ar">الخطوة ٢</span></div>
-            <div style="font-size:.92rem;font-weight:700;margin-bottom:5px;"><span class="en">Passive Income Math</span><span class="ar">رياضيات الدخل السلبي</span></div>
-            <div style="font-size:.78rem;color:var(--text-2);line-height:1.5;margin-bottom:12px;"><span class="en">What does rental income actually look like, after all costs? The number that changes how you see property.</span><span class="ar">كيف يبدو دخل الإيجار فعلاً بعد كل التكاليف؟ الرقم الذي يغيّر نظرتك للعقارات.</span></div>
-            <div style="font-size:.75rem;font-weight:700;color:var(--accent-l);">→ <span class="en">Run the numbers</span><span class="ar">احسب الأرقام</span></div>
-          </a>
-          <a href="tools/mortgage-calculator.html" style="display:block;background:var(--body-bg);border:1.5px solid var(--border-l);border-radius:18px;padding:22px 18px;text-decoration:none;color:var(--text);transition:all .2s;" onmouseover="this.style.borderColor='#0F4C8A';this.style.boxShadow='0 6px 24px rgba(15,76,138,.12)'" onmouseout="this.style.borderColor='var(--border-l)';this.style.boxShadow='none'">
-            <div style="font-size:1.5rem;margin-bottom:10px;">🏦</div>
-            <div style="font-size:.7rem;font-weight:700;color:var(--accent-l);letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;"><span class="en">Step 3</span><span class="ar">الخطوة ٣</span></div>
-            <div style="font-size:.92rem;font-weight:700;margin-bottom:5px;"><span class="en">The Debt That Builds Equity</span><span class="ar">الدين الذي يبني الثروة</span></div>
-            <div style="font-size:.78rem;color:var(--text-2);line-height:1.5;margin-bottom:12px;"><span class="en">Not all debt is equal. A mortgage, structured right, converts monthly payments into ownership.</span><span class="ar">ليس كل دين متساوياً. التمويل العقاري، إن هُيِّكل بشكل صحيح، يحوّل المدفوعات الشهرية إلى ملكية.</span></div>
-            <div style="font-size:.75rem;font-weight:700;color:var(--accent-l);">→ <span class="en">Understand it</span><span class="ar">افهم الأمر</span></div>
-          </a>
-          <a href="tools/zakat-calculator.html" style="display:block;background:var(--body-bg);border:1.5px solid var(--border-l);border-radius:18px;padding:22px 18px;text-decoration:none;color:var(--text);transition:all .2s;" onmouseover="this.style.borderColor='#1B7A4E';this.style.boxShadow='0 6px 24px rgba(27,122,78,.12)'" onmouseout="this.style.borderColor='var(--border-l)';this.style.boxShadow='none'">
-            <div style="font-size:1.5rem;margin-bottom:10px;">🌙</div>
-            <div style="font-size:.7rem;font-weight:700;color:#1B7A4E;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;"><span class="en">Step 4</span><span class="ar">الخطوة ٤</span></div>
-            <div style="font-size:.92rem;font-weight:700;margin-bottom:5px;"><span class="en">Wealth With Purpose</span><span class="ar">ثروة بهدف</span></div>
-            <div style="font-size:.78rem;color:var(--text-2);line-height:1.5;margin-bottom:12px;"><span class="en">As your wealth grows, so does your responsibility. Calculate Zakat — the wealth that gives back.</span><span class="ar">كلما نمت ثروتك، نمت مسؤوليتك. احسب الزكاة — الثروة التي تعود.</span></div>
-            <div style="font-size:.75rem;font-weight:700;color:#1B7A4E;">→ <span class="en">Give with clarity</span><span class="ar">أعطِ بوضوح</span></div>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <script>
-  function selectFinJourney(id, btn) {
-    document.querySelectorAll('#fin-journey-tabs ~ div .hj-panel, #fin-home, #fin-invest, #fin-wealth').forEach(p => p.style.display = 'none');
-    document.getElementById('fin-' + id).style.display = 'block';
-    document.querySelectorAll('#fin-journey-tabs .hj-tab').forEach(t => {
-      t.style.background = 'var(--body-bg)';
-      t.style.color = 'var(--text-2)';
-      t.style.borderColor = 'var(--border-l)';
-    });
-    btn.style.background = 'var(--accent)';
-    btn.style.color = '#fff';
-    btn.style.borderColor = 'var(--accent)';
-  }
-  </script>
-
-  <!-- ═══ FINANCIAL LIFE SITUATIONS ═══════════════════════════════════════ -->
-  <style>
-    .fin-sit-section { padding: 72px 0 64px; border-top: 1px solid var(--border-l); background: var(--body-bg); }
-    .fin-sit-header { text-align: center; margin-bottom: 48px; }
-    .fin-sit-eyebrow { display: inline-block; font-size: 10.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent, #0F4C8A); background: rgba(15,76,138,.07); border: 1px solid rgba(15,76,138,.18); padding: 4px 13px; border-radius: 99px; margin-bottom: 14px; }
-    .fin-sit-title { font-size: clamp(22px, 3.5vw, 34px); font-weight: 300; color: var(--text-1); letter-spacing: -.02em; margin: 0 0 10px; }
-    .fin-sit-title strong { font-weight: 600; }
-    .fin-sit-sub { font-size: 15px; color: var(--text-2); max-width: 440px; margin: 0 auto; line-height: 1.65; }
-    .fin-sit-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
-    .fin-sit-card { border-radius: 18px; background: var(--card-bg); border: 1px solid var(--border-l); padding: 26px 24px 22px; position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 6px; }
-    .fin-sit-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--fsit-clr, #0F4C8A); border-radius: 18px 18px 0 0; }
-    .fin-sit-card-icon { font-size: 26px; margin-bottom: 6px; }
-    .fin-sit-card-label { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--fsit-clr, #0F4C8A); }
-    .fin-sit-card-title { font-size: 16px; font-weight: 600; color: var(--text-1); letter-spacing: -.02em; line-height: 1.3; }
-    .fin-sit-card-body { font-size: 13px; color: var(--text-2); line-height: 1.65; flex: 1; }
-    .fin-sit-card-tools { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
-    .fin-sit-tool { font-size: 11px; font-weight: 600; color: var(--fsit-clr, #0F4C8A); background: rgba(15,76,138,.06); border: 1px solid rgba(15,76,138,.18); padding: 4px 10px; border-radius: 99px; text-decoration: none; transition: background .2s; }
-    .fin-sit-tool:hover { background: rgba(15,76,138,.13); }
-    @media (max-width: 720px) { .fin-sit-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 480px) { .fin-sit-grid { grid-template-columns: 1fr; } }
-  </style>
-  <section class="fin-sit-section" aria-label="Financial life situations">
-    <div class="container">
-      <div class="fin-sit-header">
-        <span class="fin-sit-eyebrow">
-          <span class="en">Financial Life Situations</span>
-          <span class="ar">مواقف مالية حقيقية</span>
-        </span>
-        <h2 class="fin-sit-title">
-          <span class="en">Money decisions are really <strong>life decisions.</strong></span>
-          <span class="ar">القرارات المالية هي في حقيقتها <strong>قرارات حياة.</strong></span>
-        </h2>
-        <p class="fin-sit-sub">
-          <span class="en">The right tools don't just give you numbers. They give you the confidence to make the decision that's right for your life.</span>
-          <span class="ar">الأدوات الصحيحة لا تعطيك فقط أرقاماً. إنها تمنحك الثقة لاتخاذ القرار المناسب لحياتك.</span>
-        </p>
-      </div>
-      <div class="fin-sit-grid">
-
-        <!-- Preparing for Home Ownership -->
-        <div class="fin-sit-card reveal" style="--fsit-clr:#2563EB;">
-          <div class="fin-sit-card-icon">🏡</div>
-          <span class="fin-sit-card-label"><span class="en">Home Ownership</span><span class="ar">تملّك المنزل</span></span>
-          <h3 class="fin-sit-card-title">
-            <span class="en">Preparing to buy your first home</span>
-            <span class="ar">التحضير لشراء أول منزل</span>
-          </h3>
-          <p class="fin-sit-card-body">
-            <span class="en">Before you step into a developer's office, know exactly how much you can borrow, what your monthly payments look like, and whether now is the right financial moment.</span>
-            <span class="ar">قبل أن تدخل مكتب المطور، اعرف بالضبط كم يمكنك اقتراضه، وما هي أقساطك الشهرية، وهل هذه اللحظة المالية الصحيحة.</span>
-          </p>
-          <div class="fin-sit-card-tools">
-            <a href="tools/mortgage-calculator.html" class="fin-sit-tool" style="color:#2563EB;background:rgba(37,99,235,.07);border-color:rgba(37,99,235,.2);"><span class="en">Mortgage Calculator</span><span class="ar">حاسبة الرهن</span></a>
-            <a href="real-estate.html" class="fin-sit-tool" style="color:#2563EB;background:rgba(37,99,235,.07);border-color:rgba(37,99,235,.2);"><span class="en">Real Estate Hub →</span><span class="ar">مركز العقارات ←</span></a>
-          </div>
-        </div>
-
-        <!-- Managing Monthly Expenses Calmly -->
-        <div class="fin-sit-card reveal" style="--fsit-clr:#0F4C8A;">
-          <div class="fin-sit-card-icon">📊</div>
-          <span class="fin-sit-card-label"><span class="en">Monthly Planning</span><span class="ar">التخطيط الشهري</span></span>
-          <h3 class="fin-sit-card-title">
-            <span class="en">Managing monthly expenses without the anxiety</span>
-            <span class="ar">إدارة المصاريف الشهرية بلا قلق</span>
-          </h3>
-          <p class="fin-sit-card-body">
-            <span class="en">Currency exposure, salary allocation, and Zakat obligations — when you see the full monthly picture clearly, financial stress has nowhere to hide.</span>
-            <span class="ar">انكشاف العملات وتوزيع الراتب والتزامات الزكاة — حين ترى الصورة الشهرية الكاملة بوضوح، لا مكان للتوتر المالي.</span>
-          </p>
-          <div class="fin-sit-card-tools">
-            <a href="/finance.html" class="fin-sit-tool"><span class="en">Currency</span><span class="ar">العملات</span></a>
-            <a href="tools/zakat-calculator.html" class="fin-sit-tool"><span class="en">Zakat</span><span class="ar">الزكاة</span></a>
-          </div>
-        </div>
-
-        <!-- Family Financial Planning -->
-        <div class="fin-sit-card reveal" style="--fsit-clr:#059669;">
-          <div class="fin-sit-card-icon">👨‍👩‍👧</div>
-          <span class="fin-sit-card-label"><span class="en">Family Finance</span><span class="ar">مالية الأسرة</span></span>
-          <h3 class="fin-sit-card-title">
-            <span class="en">Planning finances for a growing family</span>
-            <span class="ar">التخطيط المالي لأسرة متنامية</span>
-          </h3>
-          <p class="fin-sit-card-body">
-            <span class="en">A new child, a home upgrade, education costs. Family financial planning isn't about restriction — it's about ensuring every major decision is made from strength, not fear.</span>
-            <span class="ar">طفل جديد، منزل أوسع، تكاليف تعليم. التخطيط المالي للأسرة ليس عن التقييد — بل عن ضمان أن كل قرار كبير يُتخذ من موضع قوة، لا خوف.</span>
-          </p>
-          <div class="fin-sit-card-tools">
-            <a href="tools/mortgage-calculator.html" class="fin-sit-tool" style="color:#059669;background:rgba(5,150,105,.07);border-color:rgba(5,150,105,.2);"><span class="en">Mortgage</span><span class="ar">الرهن</span></a>
-            <a href="tools/rental-yield-calculator.html" class="fin-sit-tool" style="color:#059669;background:rgba(5,150,105,.07);border-color:rgba(5,150,105,.2);"><span class="en">Rental Yield</span><span class="ar">عائد الإيجار</span></a>
-            <a href="health.html" class="fin-sit-tool" style="color:#059669;background:rgba(5,150,105,.07);border-color:rgba(5,150,105,.2);"><span class="en">Family Health →</span><span class="ar">صحة الأسرة ←</span></a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-  <!-- ═══ /FINANCIAL LIFE SITUATIONS ════════════════════════════════════ -->
-
-  <!-- NEWSLETTER -->
-  <section class="nl-section" aria-label="Newsletter signup">
-    <div class="container">
-      <div class="nl-inner">
-        <div>
-          <div class="nl-eyebrow"><span class="nl-dot"></span> <span class="en">Financial Intelligence</span><span class="ar">ذكاء مالي</span></div>
-          <h2 class="nl-title">
-            <span class="en">One insight per week.<br>Research-backed. Bias-free.</span>
-            <span class="ar">رؤية واحدة أسبوعياً.<br>مدعومة بالبحث. خالية من التحيز.</span>
-          </h2>
-          <p class="nl-sub">
-            <span class="en">Join readers who receive weekly financial research summaries, new tool announcements, and smart money insights from global studies.</span>
-            <span class="ar">انضم للقراء الذين يتلقون ملخصات الأبحاث المالية الأسبوعية وإعلانات الأدوات الجديدة ورؤى المال الذكي من الدراسات العالمية.</span>
-          </p>
-        </div>
-        <div>
-          <div class="nl-input-row">
-            <input type="email" class="nl-input" placeholder="your@email.com" aria-label="Email address" />
-            <button class="nl-btn"><span class="en">Subscribe</span><span class="ar">اشترك</span></button>
-          </div>
-          <div class="nl-trust">🔒 <span class="en">No spam. Unsubscribe anytime. Your email stays private.</span><span class="ar">لا بريد مزعج. إلغاء الاشتراك في أي وقت. بريدك يبقى خاصاً.</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ CONTINUE YOUR JOURNEY: Cross-category ecosystem connectors ═══ -->
-  <style>
-    .eco-bridge-f{padding:64px 0 56px;border-top:1px solid var(--border-l);}
-    .eco-bridge-f .eco-fbh{text-align:center;margin-bottom:36px;}
-    .eco-bridge-f .eco-fey{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;}
-    .eco-bridge-f .eco-ftt{font-size:clamp(16px,2.5vw,24px);font-weight:300;color:var(--text-1);letter-spacing:-.02em;margin:0 0 8px;}
-    .eco-bridge-f .eco-ftt strong{font-weight:600;}
-    .eco-bridge-f .eco-fsb{font-size:14px;color:var(--text-2);max-width:420px;margin:0 auto;line-height:1.6;}
-    .eco-bridge-f .eco-fgr{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
-    .eco-conn-f{border-radius:14px;background:var(--card-bg);border:1px solid var(--border-l);padding:20px 20px 18px;text-decoration:none;display:flex;flex-direction:column;gap:5px;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s;}
-    .eco-conn-f:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(0,0,0,.07);}
-    .eco-conn-f::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--efcc,#0F4C8A);border-radius:14px 14px 0 0;}
-    .eco-fcl{font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--efcc,#0F4C8A);}
-    .eco-ftn{font-size:14px;font-weight:600;color:var(--text-1);letter-spacing:-.01em;line-height:1.3;}
-    .eco-fwy{font-size:12px;color:var(--text-2);line-height:1.55;flex:1;}
-    .eco-far{font-size:14px;color:var(--efcc,#0F4C8A);margin-top:6px;transition:transform .2s;}
-    .eco-conn-f:hover .eco-far{transform:translateX(3px);}
-    @media(max-width:600px){.eco-bridge-f .eco-fgr{grid-template-columns:1fr 1fr;}}
-  </style>
-  <section class="eco-bridge-f" aria-label="Continue your journey">
-    <div class="container">
-      <div class="eco-fbh">
-        <span class="eco-fey">
-          <span class="en">Financial clarity leads to</span>
-          <span class="ar">الوضوح المالي يقودك إلى</span>
-        </span>
-        <h2 class="eco-ftt">
-          <span class="en">Money decisions touch <strong>every part of life.</strong></span>
-          <span class="ar">القرارات المالية تلمس <strong>كل جانب من حياتك.</strong></span>
-        </h2>
-        <p class="eco-fsb">
-          <span class="en">Once your finances are in order, your next steps in real estate, travel, and wellbeing become much clearer.</span>
-          <span class="ar">حين تنظم أمورك المالية، تصبح خطواتك التالية في العقارات والسفر والصحة أوضح بكثير.</span>
-        </p>
-      </div>
-      <div class="eco-fgr">
-
-        <a href="real-estate.html" class="eco-conn-f reveal" style="--efcc:#2563EB;">
-          <span class="eco-fcl"><span class="en">Real Estate</span><span class="ar">العقارات</span></span>
-          <span class="eco-ftn">
-            <span class="en">Home Affordability Check</span>
-            <span class="ar">فحص القدرة الشرائية للمنزل</span>
-          </span>
-          <p class="eco-fwy">
-            <span class="en">See how much home your current income and savings can realistically afford.</span>
-            <span class="ar">اكتشف كم منزلاً يمكن لدخلك ومدخراتك الحالية تحمله بشكل واقعي.</span>
-          </p>
-          <span class="eco-far">→</span>
-        </a>
-
-        <a href="travel.html" class="eco-conn-f reveal" style="--efcc:#0097A7;">
-          <span class="eco-fcl"><span class="en">Travel</span><span class="ar">السفر</span></span>
-          <span class="eco-ftn">
-            <span class="en">Trip Budget Planner</span>
-            <span class="ar">مخطط ميزانية الرحلة</span>
-          </span>
-          <p class="eco-fwy">
-            <span class="en">Build a full travel budget — flights, hotels, daily spending — before committing to a trip.</span>
-            <span class="ar">ضع ميزانية سفر كاملة — رحلات وفنادق وإنفاق يومي — قبل الالتزام برحلة.</span>
-          </p>
-          <span class="eco-far">→</span>
-        </a>
-
-        <a href="islamic.html" class="eco-conn-f reveal" style="--efcc:#1B7A4E;">
-          <span class="eco-fcl"><span class="en">Islamic</span><span class="ar">الإسلامية</span></span>
-          <span class="eco-ftn">
-            <span class="en">Zakat Calculator</span>
-            <span class="ar">حاسبة الزكاة</span>
-          </span>
-          <p class="eco-fwy">
-            <span class="en">Calculate your annual Zakat obligation accurately — a financial and spiritual duty in one tool.</span>
-            <span class="ar">احسب التزامك السنوي بالزكاة بدقة — واجب مالي وروحي في أداة واحدة.</span>
-          </p>
-          <span class="eco-far">→</span>
-        </a>
-
-      </div>
-    </div>
-  </section>
-  <!-- ═══ /CONTINUE YOUR JOURNEY ═════════════════════════════════════ -->
-
-  <!-- FOOTER -->
-  <footer class="footer-strip" role="contentinfo">
-    <div class="container">
-      <p>
-        <span class="en">© 2025 DOTFORLIFE — Financial tools for intelligent decisions. Not financial advice. Always consult a qualified advisor for personal financial matters.</span>
-        <span class="ar">© 2025 DOTFORLIFE — أدوات مالية لقرارات ذكية. ليست استشارات مالية. استشر دائماً مستشاراً مؤهلاً في الشؤون المالية الشخصية.</span>
-      </p>
-      <p style="margin-top:8px;">
-        <a href="index.html"><span class="en">Home</span><span class="ar">الرئيسية</span></a> ·
-        <a href="privacy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a> ·
-        <a href="contact.html"><span class="en">Contact</span><span class="ar">تواصل</span></a>
-      </p>
-    </div>
-  </footer>
-
-  <script>
-    // Theme & Lang persistence
-    const themeBtn=document.getElementById('themeBtn');
-    const langBtn=document.getElementById('langBtn');
-    const html=document.documentElement;
-
-    function applyTheme(t){
-      html.setAttribute('data-theme',t);
-      localStorage.setItem('dfl-theme',t);
-      themeBtn.textContent=t==='dark'?'☀️':'🌙';
-    }
-    function applyLang(l){
-      html.setAttribute('data-lang',l);
-      html.setAttribute('lang',l);
-      html.setAttribute('dir',l==='ar'?'rtl':'ltr');
-      localStorage.setItem('dfl-lang',l);
-    }
-    applyTheme(html.getAttribute('data-theme')||'light');
-    applyLang(html.getAttribute('data-lang')||'en');
-
-    themeBtn.addEventListener('click',()=>{
-      applyTheme(html.getAttribute('data-theme')==='dark'?'light':'dark');
-    });
-    langBtn.addEventListener('click',()=>{
-      applyLang(html.getAttribute('data-lang')==='ar'?'en':'ar');
-    });
-
-    // Sticky navbar shadow
-    const navbar=document.getElementById('navbar');
-    window.addEventListener('scroll',()=>{
-      navbar.classList.toggle('scrolled',window.scrollY>10);
-    });
-
-    // Scroll reveal
-    const revealEls=document.querySelectorAll('.reveal');
-    const observer=new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}
-      });
-    },{threshold:0.12});
-    revealEls.forEach(el=>observer.observe(el));
-
-    // Quick Jump active detection
-    const sections=document.querySelectorAll('section[id]');
-    const qjsLinks=document.querySelectorAll('#qjs-strip a');
-    const ioQJS=new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting){
-          qjsLinks.forEach(l=>{
-            const active=l.getAttribute('href')==='#'+e.target.id;
-            if(active){
-              l.style.borderColor='rgba(15,76,138,.4)';
-              l.style.background='rgba(15,76,138,.08)';
-              l.style.color='var(--accent-l)';
-            }
-          });
-        }
-      });
-    },{threshold:0.5});
-    sections.forEach(s=>ioQJS.observe(s));
-  </script>
-
-  <!-- DFL CANONICAL FOOTER -->
-  <footer id="dfl-footer" role="contentinfo">
-    <div class="dfl-footer-grid">
-      <div class="dfl-footer-brand">
-        <div class="dfl-flogo"><img src="/logo1-footer.png" alt="Dot4Life" height="144" style="height:144px;width:auto;display:block;"></div>
-        <p><span class="en">A trusted daily companion for every family. Free, precise, and deeply human. Arabic &amp; English.</span><span class="ar">الرفيق اليومي الموثوق لكل أسرة. مجاني ودقيق وإنساني. عربي وإنجليزي.</span></p>
-      </div>
-      <div class="dfl-footer-col">
-        <h4><span class="en">Health</span><span class="ar">الصحة</span></h4>
+      <div class="footer-links-group">
+        <h4><span class="en">Categories</span><span class="ar">الأقسام</span></h4>
         <ul>
-          <li><a href="/tools/pregnancy-calculator.html"><span class="en">Pregnancy Tracker</span><span class="ar">متتبع الحمل</span></a></li>
-          <li><a href="/tools/bmi-calculator.html"><span class="en">BMI Calculator</span><span class="ar">حاسبة BMI</span></a></li>
-          <li><a href="/tools/calorie-calculator.html"><span class="en">Calorie Calculator</span><span class="ar">حاسبة السعرات</span></a></li>
-          <li><a href="/tools/water-calculator.html"><span class="en">Hydration Guide</span><span class="ar">دليل الترطيب</span></a></li>
+          <li><a href="/health.html"><span class="en">Health</span><span class="ar">صحة</span></a></li>
+          <li><a href="/finance.html"><span class="en">Finance</span><span class="ar">مال</span></a></li>
+          <li><a href="/travel.html"><span class="en">Travel</span><span class="ar">سفر</span></a></li>
+          <li><a href="/islamic.html"><span class="en">Islamic</span><span class="ar">إسلام</span></a></li>
         </ul>
       </div>
-      <div class="dfl-footer-col">
-        <h4><span class="en">Finance</span><span class="ar">المالية</span></h4>
+      <div class="footer-links-group">
+        <h4><span class="en">Daily OS</span><span class="ar">النظام اليومي</span></h4>
         <ul>
-          <li><a href="/tools/mortgage-calculator.html"><span class="en">Mortgage Calculator</span><span class="ar">حاسبة التمويل</span></a></li>
-          <li><a href="/tools/zakat-calculator.html"><span class="en">Zakat Calculator</span><span class="ar">حاسبة الزكاة</span></a></li>
-          <li><a href="/tools/savings-goal.html"><span class="en">Savings Goal</span><span class="ar">هدف الادخار</span></a></li>
-          <li><a href="/tools/monthly-budget.html"><span class="en">Monthly Budget</span><span class="ar">الميزانية الشهرية</span></a></li>
-        </ul>
-      </div>
-      <div class="dfl-footer-col">
-        <h4><span class="en">Real Estate</span><span class="ar">العقار</span></h4>
-        <ul>
-          <li><a href="/real-estate.html"><span class="en">Property Hub</span><span class="ar">مركز العقارات</span></a></li>
-          <li><a href="/tools/rental-yield-calculator.html"><span class="en">Rental Yield</span><span class="ar">العائد الإيجاري</span></a></li>
-          <li><a href="/tools/roi-calculator.html"><span class="en">ROI Calculator</span><span class="ar">حاسبة العائد</span></a></li>
-          <li><a href="/cities/dubai/"><span class="en">Dubai</span><span class="ar">دبي</span></a></li>
-        </ul>
-      </div>
-      <div class="dfl-footer-col">
-        <h4><span class="en">Travel &amp; Islamic</span><span class="ar">السفر والإسلامية</span></h4>
-        <ul>
-          <li><a href="/tools/travel-budget.html"><span class="en">Travel Budget</span><span class="ar">ميزانية السفر</span></a></li>
-          <li><a href="/tools/packing-checklist.html"><span class="en">Packing Checklist</span><span class="ar">قائمة الحقيبة</span></a></li>
-          <li><a href="/tools/prayer-times.html"><span class="en">Prayer Times</span><span class="ar">أوقات الصلاة</span></a></li>
-          <li><a href="/tools/qibla.html"><span class="en">Qibla Direction</span><span class="ar">اتجاه القبلة</span></a></li>
+          <li><a href="/tasks.html"><span class="en">Tasks</span><span class="ar">المهام</span></a></li>
+          <li><a href="/family.html"><span class="en">Family</span><span class="ar">العائلة</span></a></li>
+          <li><a href="/notes.html"><span class="en">Notes</span><span class="ar">ملاحظات</span></a></li>
         </ul>
       </div>
     </div>
-    <div class="dfl-footer-bottom">
-      <span>© 2025 DOTFORLIFE. <span class="en">All rights reserved.</span><span class="ar">جميع الحقوق محفوظة.</span></span>
-      <span>
-        <a href="/privacy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a> ·
-        <a href="/terms.html"><span class="en">Terms</span><span class="ar">الشروط</span></a> ·
-        <a href="/about.html"><span class="en">About</span><span class="ar">عن المنصة</span></a>
-      </span>
+    <div class="footer-bottom">
+      <span>© 2025 DOTFORLIFE</span>
+      <div style="display:flex;gap:16px;">
+        <a href="/privacy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a>
+        <a href="/terms.html"><span class="en">Terms</span><span class="ar">الشروط</span></a>
+      </div>
     </div>
-  </footer>
-  <!-- DFL MOBILE NAV -->
-  <nav id="dfl-mobile-nav" aria-label="Mobile navigation">
-    <div class="dfl-mnav-inner">
-      <a href="/" class="dfl-mnav-item" aria-label="Home">
-        <svg viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
-        <span class="en">Home</span><span class="ar">الرئيسية</span>
-      </a>
-      <a href="/health.html" class="dfl-mnav-item" aria-label="Health">
-        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-        <span class="en">Health</span><span class="ar">الصحة</span>
-      </a>
-      <a href="/finance.html" class="dfl-mnav-item" aria-label="Finance">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v12M9 9h4.5a2.5 2.5 0 010 5H9m0 0h5"/></svg>
-        <span class="en">Finance</span><span class="ar">المالية</span>
-      </a>
-      <a href="/islamic.html" class="dfl-mnav-item" aria-label="Islamic">
-        <svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 100 18A9 9 0 0012 3zM12 3c-2 2-3 4.5-3 9s1 7 3 9m0-18c2 2 3 4.5 3 9s-1 7-3 9M3 12h18"/></svg>
-        <span class="en">Islamic</span><span class="ar">الإسلامية</span>
-      </a>
-      <a href="/travel.html" class="dfl-mnav-item" aria-label="Travel">
-        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 011.06 2.2 2 2 0 013.04 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
-        <span class="en">Travel</span><span class="ar">السفر</span>
-      </a>
-    </div>
-  </nav>
+  </div>
+</footer>
 
-  <script id="dfl-nav-js">
-  (function(){
-    // Flash prevention
-    (function(){
-      var t=localStorage.getItem('dfl-theme')||'light',l=localStorage.getItem('dfl-lang')||'en',h=document.documentElement;
-      h.setAttribute('data-theme',t);h.setAttribute('data-lang',l);
-      h.setAttribute('lang',l==='ar'?'ar':'en');h.setAttribute('dir',l==='ar'?'rtl':'ltr');
-    })();
-    function ready(fn){ if(document.readyState!=='loading') fn(); else document.addEventListener('DOMContentLoaded',fn); }
-    ready(function(){
-      // Scroll shadow
-      var nb=document.getElementById('dfl-navbar');
-      if(nb){ window.addEventListener('scroll',function(){ nb.classList.toggle('scrolled',window.scrollY>40); },{passive:true}); }
-      // Language
-      var lb=document.getElementById('dfl-lang-btn');
-      if(lb){ lb.addEventListener('click',function(){
-        var h=document.documentElement,l=h.getAttribute('data-lang')==='ar'?'en':'ar';
-        h.setAttribute('data-lang',l);h.setAttribute('lang',l);
-        h.setAttribute('dir',l==='ar'?'rtl':'ltr');localStorage.setItem('dfl-lang',l);
-      }); }
-      // Theme
-      var tb=document.getElementById('dfl-theme-btn');
-      if(tb){
-        function applyT(t){
-          document.documentElement.setAttribute('data-theme',t);localStorage.setItem('dfl-theme',t);
-          var en=tb.querySelector('.en'),ar=tb.querySelector('.ar');
-          if(en)en.textContent=t==='dark'?'☀️':'🌙';if(ar)ar.textContent=t==='dark'?'☀️':'🌙';
-        }
-        applyT(localStorage.getItem('dfl-theme')||'light');
-        tb.addEventListener('click',function(){ applyT(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark'); });
-      }
-      // Language/theme spans: also update any existing dfl-lang-btn if duplicated
-      var en=document.querySelectorAll('.en'),ar=document.querySelectorAll('.ar');
-    });
-  })();
-  </script>
+<!-- MOBILE NAV -->
+<nav class="mobile-nav" aria-label="Mobile navigation">
+  <a href="/" class="mobile-nav-item"><span>🏠</span><span class="en">Home</span><span class="ar">الرئيسية</span></a>
+  <a href="/tasks.html" class="mobile-nav-item"><span>✅</span><span class="en">Tasks</span><span class="ar">المهام</span></a>
+  <a href="/family.html" class="mobile-nav-item"><span>👨‍👩‍👧</span><span class="en">Family</span><span class="ar">العائلة</span></a>
+  <a href="/notes.html" class="mobile-nav-item"><span>📝</span><span class="en">Notes</span><span class="ar">ملاحظات</span></a>
+  <a href="/finance.html" class="mobile-nav-item active"><span>💰</span><span class="en">Finance</span><span class="ar">مال</span></a>
+</nav>
+
+<script>
+  // Theme
+  var themeBtn = document.getElementById('theme-btn');
+  themeBtn.addEventListener('click', function(){
+    var h = document.documentElement;
+    var next = h.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    h.setAttribute('data-theme', next);
+    localStorage.setItem('dfl-theme', next);
+    themeBtn.textContent = next === 'dark' ? '☀️' : '🌙';
+  });
+  if (document.documentElement.getAttribute('data-theme') === 'dark') themeBtn.textContent = '☀️';
+
+  // Language
+  var langBtn = document.getElementById('lang-toggle');
+  langBtn.addEventListener('click', function(){
+    var h = document.documentElement;
+    var next = h.getAttribute('data-lang') === 'ar' ? 'en' : 'ar';
+    h.setAttribute('data-lang', next);
+    h.setAttribute('lang', next);
+    h.setAttribute('dir', next === 'ar' ? 'rtl' : 'ltr');
+    localStorage.setItem('dfl-lang', next);
+    langBtn.textContent = next === 'ar' ? 'EN' : 'عربي';
+  });
+  if (document.documentElement.getAttribute('data-lang') === 'ar') langBtn.textContent = 'EN';
+
+  // Navbar scroll
+  window.addEventListener('scroll', function(){
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 10);
+  }, { passive: true });
+
+  // Reveal on scroll
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(function(el){ obs.observe(el); });
+</script>
 </body>
 </html>

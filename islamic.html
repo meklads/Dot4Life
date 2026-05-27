@@ -54,2072 +54,316 @@
   <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Almarai:wght@300;400;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Almarai:wght@300;400;700&display=swap" /></noscript>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Almarai:wght@300;400;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Almarai:wght@300;400;700;800&display=swap" /></noscript>
   <link rel="stylesheet" href="/styles/global.css"/>
 <style>
-    :root {
-      /* Islamic accent — warm earth green (calm, not loud) */
-      --accent: #2D6A4F; --accent-l: #40916C; --accent-d: #1B4332;
-      --accent-glow: rgba(45,106,79,.12); --accent-soft: rgba(45,106,79,.06);
-      /* Gold — warm editorial, same as homepage */
-      --gold: #B8861A; --gold-l: #D4A832; --gold-d: #8A620F;
-      --gold-soft: rgba(184,134,26,.08);
-      /* Warm editorial palette — matches homepage */
-      --text: #1A1410; --text-1: #1A1410; --text-2: #5C534A;
-      --muted: #9A9188; --body-bg: #FAF8F4; --card-bg: #FFFFFF;
-      --cream: #F5F0E8; --cream-d: #EDE6D8;
-      --border: #E0D8CC; --border-l: #E0D8CC;
-      --pill-bg: #F5F0E8; --light: #FAF8F4; --white: #FFFFFF;
-      --navy: #0A1628;
-      /* Typography */
-      --font-serif: 'Crimson Pro', Georgia, serif;
-      --font-ui: 'Inter', system-ui, sans-serif;
-      --font-ar: 'Almarai', 'Segoe UI', sans-serif;
-      /* Shadows & radius */
-      --shadow-md: 0 2px 12px rgba(0,0,0,.07);
-      --shadow-lg: 0 6px 28px rgba(0,0,0,.09);
-      --shadow-xl: 0 12px 44px rgba(0,0,0,.11);
-      --r-lg: 8px; --r-xl: 12px; --r-2xl: 16px;
-    }
-    [data-theme="dark"] {
-      --card-bg: #1E1A16; --body-bg: #12100E; --text: #EDE8E0; --text-1: #EDE8E0; --text-2: #B8B0A4;
-      --muted: #7A746C; --border: #302820; --border-l: #302820;
-      --cream: #1E1A16; --cream-d: #252018; --pill-bg: #1E1A16;
-      --shadow-md: 0 2px 10px rgba(0,0,0,.35);
-      --shadow-lg: 0 6px 24px rgba(0,0,0,.40);
-    }
-    [data-lang="ar"] { font-family:'Almarai',sans-serif; direction:rtl; text-align:right; }
-    [data-lang="ar"] .en { display:none; } [data-lang="en"] .ar { display:none; }
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html{scroll-behavior:smooth;}
-    body{font-family:'Inter',system-ui,sans-serif;background:var(--body-bg);color:var(--text);line-height:1.6;transition:background .3s,color .3s;overflow-x:hidden;}
-    a{color:inherit;text-decoration:none;}
-    .container{max-width:1280px;margin:0 auto;padding:0 24px;}
-    .badge{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:999px;font-size:.75rem;font-weight:600;letter-spacing:.04em;}
-    .badge-green{background:rgba(27,122,78,.1);color:var(--accent-l);}
-    .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1);}
-    .reveal.visible{opacity:1;transform:translateY(0);}
-    .tool-icon-wrap{transition:transform .3s cubic-bezier(.22,1,.36,1);}
-    .tool-card:hover .tool-icon-wrap{transform:scale(1.1) rotate(-3deg);}
-    .tool-card:nth-child(1){transition-delay:.04s;}.tool-card:nth-child(2){transition-delay:.1s;}.tool-card:nth-child(3){transition-delay:.16s;}.tool-card:nth-child(4){transition-delay:.22s;}.tool-card:nth-child(5){transition-delay:.28s;}.tool-card:nth-child(6){transition-delay:.34s;}
+  :root {
+    --accent:#059669; --accent-d:#047857;
+    --gold:#B8861A; --navy:#0A1628; --cream:#F5F0E8;
+    --body-bg:#FAF8F4; --card-bg:#FFFFFF; --text:#2D3142; --text-2:#6B7280;
+    --border:#E2DDD6; --shadow:0 2px 12px rgba(0,0,0,.07);
+  }
+  [data-theme="dark"] {
+    --body-bg:#0F172A; --card-bg:#1E293B; --text:#F1F5F9; --text-2:#94A3B8; --border:#334155;
+  }
+  [data-lang="ar"] { font-family:'Almarai',sans-serif; }
+  [data-lang="ar"] .en { display:none; }
+  [data-lang="en"] .ar { display:none; }
+  *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Inter',system-ui,sans-serif; background:var(--body-bg); color:var(--text); line-height:1.6; overflow-x:hidden; }
+  a { color:inherit; text-decoration:none; }
+  .container { max-width:1200px; margin:0 auto; padding:0 24px; }
+  .reveal { opacity:0; transform:translateY(20px); transition:opacity .55s ease, transform .55s ease; }
+  .reveal.visible { opacity:1; transform:none; }
 
-    /* NAVBAR — matches homepage style */
-    .navbar{position:sticky;top:0;z-index:1000;background:rgba(250,248,244,.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border-l);transition:box-shadow .3s;}
-    .navbar.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.07);}
-    [data-theme="dark"] .navbar{background:rgba(18,16,14,.97);border-bottom-color:var(--border);}
-    .navbar-inner{display:flex;align-items:center;justify-content:space-between;height:64px;}
-    .logo{font-family:var(--font-serif);font-size:1.25rem;font-weight:600;letter-spacing:.04em;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:0;}
-    .logo .logo-dot{color:var(--gold);}
-    .nav-links{display:flex;align-items:center;gap:2rem;list-style:none;}
-    .nav-links a{font-size:.82rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--text-2);transition:color .2s;white-space:nowrap;}
-    .nav-links a:hover,.nav-links a.active{color:var(--text);}
-    .nav-actions{display:flex;align-items:center;gap:.75rem;}
-    .lang-toggle,.theme-btn{padding:.35rem .7rem;border-radius:6px;background:transparent;border:1px solid var(--border-l);color:var(--text-2);font-size:.76rem;font-weight:600;letter-spacing:.08em;cursor:pointer;font-family:inherit;transition:all .2s;}
-    .lang-toggle:hover,.theme-btn:hover{border-color:var(--gold);color:var(--gold);}
-    @media(max-width:768px){.nav-links{display:none;}}
+  /* NAVBAR */
+  .navbar { position:sticky; top:0; z-index:100; background:rgba(250,248,244,.95); backdrop-filter:blur(16px); border-bottom:1px solid var(--border); }
+  [data-theme="dark"] .navbar { background:rgba(15,23,42,.95); }
+  .navbar-inner { display:flex; align-items:center; justify-content:space-between; min-height:64px; height:auto; overflow:visible; padding:8px 0; }
+  .nav-logo img { height:130px; width:auto; display:block; }
+  .nav-links { display:flex; align-items:center; gap:4px; list-style:none; }
+  .nav-links a { padding:6px 14px; border-radius:999px; font-size:.85rem; font-weight:500; color:var(--text-2); transition:all .2s; white-space:nowrap; }
+  .nav-links a:hover { color:var(--text); background:#F0EDE8; }
+  [data-theme="dark"] .nav-links a:hover { background:#1e293b; }
+  .nav-links a.active { color:var(--accent); font-weight:700; }
+  .nav-actions { display:flex; align-items:center; gap:8px; }
+  .lang-toggle, .theme-btn { padding:6px 14px; border-radius:999px; background:transparent; border:1.5px solid var(--border); color:var(--text-2); font-size:.82rem; font-weight:600; cursor:pointer; font-family:inherit; transition:all .2s; }
+  .lang-toggle:hover, .theme-btn:hover { border-color:var(--accent); color:var(--accent); }
+  @media(max-width:768px) { .nav-links { display:none; } }
 
-    /* HERO — warm cream editorial split layout */
-    .cat-hero{
-      background:var(--body-bg);
-      border-bottom:1px solid var(--border-l);
-      overflow:hidden;
-    }
-    [data-theme="dark"] .cat-hero{background:var(--card-bg);}
-    .cat-hero-inner{
-      display:grid;
-      grid-template-columns:58% 42%;
-      min-height:480px;
-      align-items:center;
-    }
-    .cat-hero-text{
-      padding:5% 5% 5% max(32px,5%);
-    }
-    [data-lang="ar"] .cat-hero-text{padding:5% max(32px,5%) 5% 5%;}
-    .cat-hero-label{display:inline-flex;align-items:center;gap:8px;padding:5px 14px;border-radius:999px;background:var(--gold-soft);border:1px solid rgba(184,134,26,.3);color:var(--gold-d);font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:20px;}
-    .cat-hero-title{font-family:var(--font-serif);font-size:clamp(2rem,4vw,3.4rem);font-weight:300;letter-spacing:-.02em;line-height:1.08;margin-bottom:16px;color:var(--text);}
-    .hero-accent{background:linear-gradient(135deg,var(--gold-l) 0%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-style:italic;}
-    .cat-hero-sub{font-size:1rem;color:var(--text-2);line-height:1.72;max-width:460px;margin-bottom:32px;}
-    .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:.9rem 2rem;border-radius:999px;font-weight:600;font-size:.88rem;letter-spacing:.02em;cursor:pointer;border:none;transition:all .2s;font-family:inherit;}
-    .btn-accent{background:var(--accent);color:#fff;box-shadow:0 4px 16px rgba(27,122,78,.35);}
-    .btn-accent:hover{background:var(--accent-d);transform:translateY(-1px);}
-    .btn-ghost{background:transparent;color:var(--text-2);border:1.5px solid var(--border-l);}
-    .btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
+  /* HERO */
+  .cat-hero { padding:64px 0 52px; background:linear-gradient(135deg, #ECFDF5 0%, #FAF8F4 60%, #FFF8E8 100%); }
+  [data-theme="dark"] .cat-hero { background:linear-gradient(135deg, #0a1e14 0%, #0f172a 100%); }
+  .hero-eyebrow { display:inline-flex; align-items:center; gap:8px; padding:5px 14px; border-radius:999px; background:rgba(5,150,105,.1); border:1px solid rgba(5,150,105,.25); color:var(--accent); font-size:.78rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; margin-bottom:18px; }
+  .hero-title { font-size:clamp(2rem,4.5vw,3.2rem); font-weight:900; letter-spacing:-.035em; line-height:1.12; margin-bottom:16px; }
+  .hero-accent { color:var(--accent); }
+  .hero-sub { font-size:1.05rem; color:var(--text-2); max-width:540px; margin-bottom:32px; line-height:1.7; }
+  .hero-ctas { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:36px; }
+  .btn { display:inline-flex; align-items:center; gap:8px; padding:11px 24px; border-radius:999px; font-weight:700; font-size:.92rem; cursor:pointer; border:none; transition:all .2s; font-family:inherit; }
+  .btn-accent { background:var(--accent); color:#fff; }
+  .btn-accent:hover { background:var(--accent-d); transform:translateY(-1px); }
+  .btn-ghost { background:transparent; border:1.5px solid var(--border); color:var(--text-2); }
+  .btn-ghost:hover { border-color:var(--accent); color:var(--accent); }
+  .hero-stats { display:flex; gap:24px; flex-wrap:wrap; }
+  .hero-stat { display:flex; align-items:center; gap:7px; font-size:.82rem; color:var(--text-2); font-weight:500; }
+  .hero-stat::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--accent); flex-shrink:0; }
 
-    /* Circular photo for Islamic hero */
-    .islamic-photo-side{
-      display:flex;align-items:center;justify-content:center;
-      padding:2.5rem;
-      background:var(--cream);
-      position:relative;
-    }
-    .islamic-photo-side::before{
-      content:'';position:absolute;inset:0;
-      background:radial-gradient(ellipse 70% 70% at center,rgba(184,134,26,.06),transparent);
-      pointer-events:none;
-    }
-    [data-theme="dark"] .islamic-photo-side{background:var(--card-bg);}
-    .islamic-photo-wrap{
-      position:relative;
-      width:min(320px,85%);
-      aspect-ratio:1;
-    }
-    .islamic-photo-ring{
-      position:absolute;inset:-14px;border-radius:50%;
-      border:1.5px solid rgba(184,134,26,.25);
-      animation:isl-ring-spin 30s linear infinite;
-    }
-    .islamic-photo-ring-2{
-      position:absolute;inset:-28px;border-radius:50%;
-      border:1px solid rgba(184,134,26,.1);
-      animation:isl-ring-spin 50s linear infinite reverse;
-    }
-    @keyframes isl-ring-spin{to{transform:rotate(360deg);}}
-    .islamic-photo-circle{
-      width:100%;height:100%;
-      border-radius:50%;overflow:hidden;
-      border:4px solid rgba(250,248,244,.97);
-      box-shadow:0 0 0 2px rgba(184,134,26,.3),0 12px 48px rgba(0,0,0,.12);
-    }
-    .islamic-photo-circle img{
-      width:100%;height:100%;
-      object-fit:cover;object-position:center;
-      display:block;
-    }
-    @media(max-width:768px){
-      .cat-hero-inner{grid-template-columns:1fr;}
-      .islamic-photo-side{padding:2rem;min-height:280px;}
-      .islamic-photo-wrap{width:min(240px,70%);}
-      .cat-hero-text{padding:6% 5%;}
-    }
+  /* TOOLS GRID */
+  .tools-section { padding:56px 0 48px; }
+  .section-header { margin-bottom:36px; }
+  .section-label { font-size:.75rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); margin-bottom:8px; }
+  .section-title { font-size:clamp(1.5rem,3vw,2rem); font-weight:800; letter-spacing:-.025em; }
+  .section-sub { font-size:.95rem; color:var(--text-2); margin-top:6px; }
+  .tools-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(240px,1fr)); gap:20px; }
+  .tool-card { display:flex; flex-direction:column; background:var(--card-bg); border:1px solid var(--border); border-radius:16px; padding:24px; cursor:pointer; transition:transform .25s, box-shadow .25s; position:relative; overflow:hidden; }
+  .tool-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:var(--tc, var(--accent)); }
+  .tool-card:hover { transform:translateY(-4px); box-shadow:0 12px 32px rgba(0,0,0,.1); }
+  .tool-card-icon { font-size:2rem; margin-bottom:14px; }
+  .tool-card-title { font-size:1rem; font-weight:700; margin-bottom:6px; line-height:1.3; }
+  .tool-card-desc { font-size:.85rem; color:var(--text-2); line-height:1.55; flex:1; }
+  .tool-card-link { margin-top:16px; font-size:.82rem; font-weight:700; color:var(--tc, var(--accent)); }
 
-    /* TOOLS SECTION */
-    .tools-section{padding:80px 0;}
-    .tools-header{margin-bottom:48px;}
-    .tools-header h2{font-family:var(--font-serif);font-size:clamp(1.7rem,3vw,2.2rem);font-weight:300;letter-spacing:-.01em;margin-bottom:8px;color:var(--text);}
-    .tools-header p{color:var(--text-2);font-size:.95rem;}
-    .section-label{font-size:.7rem;font-weight:600;letter-spacing:.15em;color:var(--gold-d);text-transform:uppercase;margin-bottom:12px;display:block;}
+  /* GUIDE STRIP */
+  .guide-strip { background:var(--navy); color:#fff; border-radius:20px; padding:40px 48px; margin:0 0 64px; display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap; }
+  [data-theme="dark"] .guide-strip { background:#1e293b; border:1px solid #334155; }
+  .guide-strip-text h3 { font-size:1.4rem; font-weight:800; margin-bottom:8px; }
+  .guide-strip-text p { font-size:.9rem; color:rgba(255,255,255,.7); max-width:420px; line-height:1.6; }
+  .btn-gold { background:linear-gradient(135deg,#B8861A,#8B6514); color:#fff; }
+  .btn-gold:hover { transform:translateY(-1px); box-shadow:0 6px 20px rgba(184,134,26,.4); }
 
-    /* Featured tool */
-    .featured-tool{background:var(--card-bg);border-radius:var(--r-2xl);padding:40px;border:1px solid var(--border-l);display:grid;grid-template-columns:2fr 1fr;gap:40px;align-items:center;margin-bottom:32px;transition:all .3s;position:relative;overflow:hidden;}
-    .featured-tool::before{content:'';position:absolute;top:0;right:0;width:200px;height:200px;background:radial-gradient(circle,var(--accent-soft) 0%,transparent 70%);pointer-events:none;}
-    .featured-tool:hover{box-shadow:0 16px 48px rgba(27,122,78,.12);transform:translateY(-2px);}
-    .ft-label{font-size:.72rem;font-weight:700;letter-spacing:.08em;color:var(--accent);text-transform:uppercase;margin-bottom:12px;}
-    .ft-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:999px;background:var(--gold-soft);border:1px solid rgba(212,175,55,.3);color:var(--gold);font-size:.72rem;font-weight:700;margin-bottom:16px;}
-    .ft-title{font-family:var(--font-serif);font-size:1.8rem;font-weight:400;letter-spacing:-.01em;margin-bottom:12px;color:var(--text);}
-    .ft-desc{font-size:.95rem;color:var(--text-2);line-height:1.7;margin-bottom:24px;}
-    .ft-meta{display:flex;gap:24px;margin-bottom:24px;flex-wrap:wrap;}
-    .ft-meta-item{font-size:.82rem;color:var(--muted);}
-    .ft-meta-item strong{display:block;color:var(--text);font-size:1rem;font-weight:700;}
-    .ft-visual{background:var(--accent-soft);border-radius:var(--r-xl);padding:32px;text-align:center;border:1px dashed rgba(27,122,78,.25);}
-    .ft-visual-icon{font-size:4rem;margin-bottom:12px;}
-    .ft-visual-stat{font-family:var(--font-serif);font-size:1.8rem;font-weight:600;color:var(--accent);}
-    .ft-visual-sub{font-size:.8rem;color:var(--muted);margin-top:4px;}
+  /* FOOTER */
+  .site-footer { background:var(--navy); color:rgba(255,255,255,.55); padding:48px 0 24px; }
+  .footer-top { display:flex; align-items:flex-start; justify-content:space-between; gap:32px; flex-wrap:wrap; margin-bottom:36px; }
+  .footer-brand p { font-size:.85rem; line-height:1.65; max-width:280px; margin-top:10px; color:rgba(255,255,255,.5); }
+  .dfl-nav-logo img { height:144px; width:auto; display:block; }
+  .footer-links-group h4 { font-size:.8rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:rgba(255,255,255,.4); margin-bottom:12px; }
+  .footer-links-group ul { list-style:none; display:flex; flex-direction:column; gap:8px; }
+  .footer-links-group ul li a { font-size:.88rem; color:rgba(255,255,255,.55); transition:color .2s; }
+  .footer-links-group ul li a:hover { color:#fff; }
+  .footer-bottom { border-top:1px solid rgba(255,255,255,.08); padding-top:20px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; font-size:.8rem; }
+  .footer-bottom a { color:rgba(255,255,255,.4); }
+  .footer-bottom a:hover { color:rgba(255,255,255,.7); }
 
-    /* Tool grid */
-    .tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
-    .tool-card{background:var(--card-bg);border-radius:var(--r-2xl);padding:28px;border:1px solid var(--border-l);transition:all .3s;display:flex;flex-direction:column;position:relative;overflow:hidden;}
-    .tool-card:hover{transform:translateY(-4px);box-shadow:0 8px 28px rgba(27,122,78,.1);border-color:rgba(27,122,78,.3);}
-    .tool-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px;}
-    .tool-icon-wrap{width:54px;height:54px;border-radius:var(--r-lg);display:flex;align-items:center;justify-content:center;font-size:1.6rem;background:var(--accent-soft);flex-shrink:0;}
-    .tool-badge{font-size:.7rem;font-weight:700;padding:3px 10px;border-radius:999px;border:1px solid rgba(27,122,78,.3);color:var(--accent);background:var(--accent-soft);}
-    .tool-badge-gold{border-color:rgba(212,175,55,.4);color:var(--gold);background:var(--gold-soft);}
-    .tool-name{font-size:1.05rem;font-weight:700;margin-bottom:8px;}
-    .tool-desc{font-size:.87rem;color:var(--text-2);line-height:1.68;margin-bottom:20px;flex:1;}
-    .tool-footer{display:flex;align-items:center;justify-content:space-between;margin-top:auto;}
-    .tool-usage{font-size:.76rem;color:var(--muted);}
-    .tool-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:999px;font-size:.84rem;font-weight:600;background:var(--accent);color:#fff;transition:all .2s;}
-    .tool-cta:hover{background:var(--accent-d);}
-
-    /* Pillars / values section */
-    .pillars-section{padding:64px 0;background:var(--card-bg);border-top:1px solid var(--border-l);border-bottom:1px solid var(--border-l);}
-    .pillars-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-top:40px;}
-    .pillar-card{text-align:center;padding:24px 16px;}
-    .pillar-icon{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--accent-soft),var(--gold-soft));display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 16px;}
-    .pillar-name{font-size:1rem;font-weight:700;margin-bottom:8px;}
-    .pillar-desc{font-size:.85rem;color:var(--text-2);line-height:1.65;}
-
-    /* Hijri section */
-    .hijri-section{padding:64px 0;}
-    .hijri-card{background:linear-gradient(135deg,#0F1F13,#1a3322);border-radius:var(--r-2xl);padding:48px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;overflow:hidden;position:relative;}
-    .hijri-card::before{content:'';position:absolute;right:-60px;top:-60px;width:300px;height:300px;background:radial-gradient(circle,rgba(27,122,78,.25) 0%,transparent 70%);pointer-events:none;}
-    .hijri-card::after{content:'';position:absolute;left:-40px;bottom:-40px;width:200px;height:200px;background:radial-gradient(circle,rgba(212,175,55,.12) 0%,transparent 70%);pointer-events:none;}
-    .hijri-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;color:var(--gold);text-transform:uppercase;margin-bottom:16px;}
-    .hijri-title{font-family:var(--font-serif);font-size:2rem;font-weight:300;letter-spacing:-.01em;color:#EDE8E0;margin-bottom:16px;line-height:1.2;}
-    .hijri-sub{font-size:.95rem;color:rgba(255,255,255,.65);line-height:1.7;margin-bottom:28px;}
-    .btn-gold{background:linear-gradient(135deg,var(--gold),#B8941F);color:#0F1F13;font-weight:700;box-shadow:0 4px 16px rgba(212,175,55,.4);}
-    .btn-gold:hover{transform:translateY(-1px);box-shadow:0 6px 22px rgba(212,175,55,.5);}
-    .hijri-visual{position:relative;z-index:1;text-align:center;}
-    .hijri-date-display{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--r-2xl);padding:32px;backdrop-filter:blur(12px);}
-    .hijri-day{font-size:4rem;font-weight:900;color:var(--gold);line-height:1;}
-    .hijri-month{font-size:1.1rem;font-weight:600;color:#fff;margin:8px 0 4px;}
-    .hijri-year{font-size:.9rem;color:rgba(255,255,255,.5);}
-    .hijri-sep{width:1px;background:rgba(255,255,255,.1);margin:16px auto;}
-
-    /* FAQ */
-    .faq-section{padding:64px 0;}
-    .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px;}
-    .faq-card{background:var(--card-bg);border-radius:var(--r-xl);padding:24px;border:1px solid var(--border-l);}
-    .faq-q{font-size:.95rem;font-weight:700;margin-bottom:8px;display:flex;align-items:flex-start;gap:10px;}
-    .faq-q::before{content:'?';width:24px;height:24px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-size:.75rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
-    .faq-a{font-size:.87rem;color:var(--text-2);line-height:1.68;padding-left:34px;}
-    [data-lang="ar"] .faq-a{padding-left:0;padding-right:34px;}
-
-    /* Ad zone */
-    .ad-zone{min-height:90px;background:var(--card-bg);border:1px dashed var(--border-l);border-radius:var(--r-lg);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.8rem;margin:32px 0;}
-
-    /* FOOTER */
-    .footer-strip{padding:24px 0;border-top:1px solid var(--border-l);text-align:center;color:var(--muted);font-size:.85rem;}
-    .footer-strip a{color:var(--accent);}
-
-    /* RESPONSIVE */
-    @media(max-width:900px){
-      .cat-hero-inner{grid-template-columns:1fr;}
-      .hero-visual-islamic{display:none;}
-      .tools-grid{grid-template-columns:repeat(2,1fr);}
-      .featured-tool{grid-template-columns:1fr;}
-      .ft-visual{display:none;}
-      .pillars-grid{grid-template-columns:repeat(2,1fr);}
-      .hijri-card{grid-template-columns:1fr;}
-      .faq-grid{grid-template-columns:1fr;}
-      /* Islamic roadmap grid */
-      section > .container > div[style*="grid-template-columns:repeat(3,1fr)"] {
-        grid-template-columns:repeat(2,1fr) !important;
-      }
-    }
-    @media(max-width:640px){
-      .tools-grid{grid-template-columns:1fr;}
-      .pillars-grid{grid-template-columns:1fr 1fr;}
-      section > .container > div[style*="grid-template-columns:repeat(3,1fr)"] {
-        grid-template-columns:1fr !important;
-      }
-    }
-  
-/* ═══ NEWSLETTER SECTION ════════════════════════════════ */
-.nl-section{padding:clamp(48px,7vw,72px) 0;background:linear-gradient(135deg,#0F0C08 0%,#1A1208 60%,#0F0C08 100%);position:relative;overflow:hidden;}
-.nl-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 70% at 80% 50%,rgba(184,134,26,.1),transparent),radial-gradient(ellipse 40% 60% at 10% 80%,rgba(45,106,79,.08),transparent);pointer-events:none;}
-.nl-inner{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px);align-items:center;position:relative;z-index:1;}
-@media(max-width:700px){.nl-inner{grid-template-columns:1fr;gap:20px;}}
-.nl-eyebrow{display:flex;align-items:center;gap:8px;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(212,168,50,.8);margin-bottom:12px;}
-.nl-dot{width:6px;height:6px;border-radius:50%;background:#D4A832;animation:nlPulse 2s infinite;}
-@keyframes nlPulse{0%,100%{box-shadow:0 0 0 0 rgba(184,134,26,.4);}50%{box-shadow:0 0 0 6px rgba(184,134,26,0);}}
-.nl-title{font-family:var(--font-serif);font-size:clamp(1.3rem,2.5vw,1.9rem);font-weight:300;letter-spacing:-.01em;line-height:1.2;color:#EDE8E0;margin-bottom:10px;}
-.nl-sub{font-size:.85rem;color:rgba(237,232,224,.45);line-height:1.7;}
-.nl-input-row{display:flex;gap:8px;margin-bottom:10px;}
-@media(max-width:400px){.nl-input-row{flex-direction:column;}}
-.nl-input{flex:1;padding:13px 16px;border-radius:10px;border:1.5px solid rgba(184,134,26,.2);background:rgba(184,134,26,.06);color:#EDE8E0;font-size:.9rem;font-family:inherit;outline:none;transition:border-color .2s;}
-.nl-input::placeholder{color:rgba(237,232,224,.3);}
-.nl-input:focus{border-color:rgba(184,134,26,.5);}
-.nl-btn{padding:13px 20px;border-radius:10px;background:linear-gradient(135deg,var(--gold),#B8941F);color:#0F0C08;font-weight:700;font-size:.88rem;border:none;cursor:pointer;font-family:inherit;white-space:nowrap;transition:opacity .2s;}
-.nl-btn:hover{opacity:.9;}
-.nl-success{padding:10px 14px;background:rgba(45,106,79,.15);border:1px solid rgba(45,106,79,.3);border-radius:8px;font-size:.83rem;color:#6dba91;display:flex;align-items:center;gap:6px;}
-.nl-trust{font-size:.72rem;color:rgba(237,232,224,.3);display:flex;align-items:center;gap:5px;margin-top:8px;}
+  /* MOBILE NAV */
+  .mobile-nav { display:none; position:fixed; bottom:0; left:0; right:0; z-index:200; background:var(--card-bg); border-top:1px solid var(--border); padding:8px 0 env(safe-area-inset-bottom,8px); }
+  @media(max-width:768px) {
+    .mobile-nav { display:flex; justify-content:space-around; }
+    body { padding-bottom:64px; }
+    .guide-strip { padding:28px 24px; }
+  }
+  .mobile-nav-item { display:flex; flex-direction:column; align-items:center; gap:3px; padding:4px 12px; font-size:.65rem; font-weight:600; color:var(--text-2); border:none; background:none; cursor:pointer; font-family:inherit; }
+  .mobile-nav-item.active { color:var(--accent); }
+  .mobile-nav-item span:first-child { font-size:1.2rem; }
 </style>
-
-  <!-- DFL CANONICAL SYSTEM CSS -->
-  <style id="dfl-sys">
-    /* Hide all old navbars */
-    .navbar { display: none !important; }
-    nav.navbar { display: none !important; }
-    #navbar { display: none !important; }
-    nav#navbar { display: none !important; }
-    /* Flash-safe tokens */
-    :root {
-      --gold: #B8861A; --gold-l: #D4A832; --gold-d: #8A620F;
-      --text: #1A1410; --text-2: #5C534A; --muted: #9A9188;
-      --body-bg: #FAF8F4; --card-bg: #FFFFFF;
-      --border: #E0D8CC; --navy: #0A1628;
-      --font-serif: 'Crimson Pro', Georgia, serif;
-      --font-ui: 'Inter', system-ui, sans-serif;
-      --font-ar: 'Almarai', 'Segoe UI', sans-serif;
-      --radius: 6px;
-    }
-    [data-theme="dark"] {
-      --text: #EDE8E0; --text-2: #B8B0A4; --muted: #7A746C;
-      --body-bg: #12100E; --card-bg: #1E1A16;
-      --border: #302820; --gold: #D4A832;
-    }
-    /* Canonical Navbar */
-    #dfl-navbar {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 9000;
-      min-height: 64px; height: auto; overflow: visible;
-      background: rgba(250,248,244,0.97);
-      border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-      transition: box-shadow .3s;
-      display: flex; align-items: center; justify-content: center;
-    }
-    [data-theme="dark"] #dfl-navbar {
-      background: rgba(18,16,14,0.97);
-      border-bottom-color: var(--border);
-    }
-    #dfl-navbar.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,.08); }
-    .dfl-nav-inner {
-      max-width: 1280px; width: 100%; padding: 0 32px;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .dfl-nav-logo {
-      font-family: var(--font-serif); font-size: 1.25rem; font-weight: 600;
-      letter-spacing: .04em; color: var(--text); text-decoration: none;
-    }
-    .dfl-nav-logo .dot { color: var(--gold); }
-    .dfl-nav-links {
-      display: flex; gap: 2rem; align-items: center; list-style: none;
-      margin: 0; padding: 0;
-    }
-    .dfl-nav-links a {
-      font-size: .82rem; font-weight: 500; letter-spacing: .06em;
-      text-transform: uppercase; color: var(--text-2);
-      text-decoration: none; transition: color .2s;
-    }
-    .dfl-nav-links a:hover { color: var(--text); }
-    .dfl-nav-controls { display: flex; gap: .75rem; align-items: center; }
-    .dfl-nav-btn {
-      cursor: pointer; border: 1px solid var(--border); border-radius: 6px;
-      padding: .35rem .7rem; font-size: .76rem; font-weight: 600;
-      letter-spacing: .08em; background: transparent; color: var(--text-2);
-      transition: all .2s; font-family: inherit;
-    }
-    .dfl-nav-btn:hover { border-color: var(--gold); color: var(--gold); }
-    @media (max-width: 768px) {
-      .dfl-nav-links { display: none !important; }
-      .dfl-nav-inner { padding: 0 16px; }
-      .dfl-nav-btn { min-height: 44px; min-width: 44px; display: inline-flex; align-items: center; justify-content: center; }
-    }
-    /* Push body content below navbar */
-    body { padding-top: 64px !important; }
-    /* Canonical Footer */
-    #dfl-footer {
-      background: #0A1628; color: #94a3b8; padding: 4rem 0 0;
-    }
-    .dfl-footer-grid {
-      max-width: 1280px; margin: 0 auto; padding: 0 48px;
-      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 3rem;
-    }
-    @media(max-width:960px){.dfl-footer-grid{grid-template-columns:1fr 1fr;gap:2rem;padding:0 32px;}}
-    @media(max-width:600px){.dfl-footer-grid{grid-template-columns:1fr;padding:0 24px;}}
-    .dfl-footer-brand .dfl-flogo {
-      font-family: var(--font-serif); font-size: 1.3rem; font-weight: 600;
-      color: #fff; letter-spacing: .04em; margin-bottom: 1rem;
-    }
-    .dfl-footer-brand .dfl-flogo .dot { color: #B8861A; }
-    .dfl-footer-brand p { font-size: .88rem; line-height: 1.7; max-width: 240px; color: #94a3b8; }
-    .dfl-footer-col h4 {
-      color: #e2e8f0; font-size: .7rem; font-weight: 600;
-      letter-spacing: .12em; text-transform: uppercase; margin-bottom: 1.2rem;
-    }
-    .dfl-footer-col ul { list-style: none; display: flex; flex-direction: column; gap: .65rem; padding: 0; margin: 0; }
-    .dfl-footer-col a { font-size: .84rem; color: #94a3b8; transition: color .2s; text-decoration: none; }
-    .dfl-footer-col a:hover { color: #B8861A; }
-    [data-lang="ar"] .dfl-footer-col a { font-family: var(--font-ar); }
-    .dfl-footer-bottom {
-      max-width: 1280px; margin: 3rem auto 0; padding: 1.4rem 48px;
-      border-top: 1px solid rgba(255,255,255,.07);
-      display: flex; justify-content: space-between; align-items: center;
-      font-size: .78rem; flex-wrap: wrap; gap: .5rem; color: #64748b;
-    }
-    @media(max-width:600px){.dfl-footer-bottom{padding:1.4rem 24px;flex-direction:column;text-align:center;}}
-    .dfl-footer-bottom a { color: #64748b; text-decoration: none; }
-    .dfl-footer-bottom a:hover { color: #B8861A; }
-    /* Mobile Nav */
-    #dfl-mobile-nav {
-      display: none; position: fixed; bottom: 0; left: 0; right: 0;
-      background: var(--card-bg); border-top: 1px solid var(--border);
-      z-index: 8999; padding: 4px 0 max(8px,env(safe-area-inset-bottom));
-    }
-    [data-theme="dark"] #dfl-mobile-nav { background: #1E1A16; border-top-color: #302820; }
-    .dfl-mnav-inner { display: flex; justify-content: space-around; }
-    .dfl-mnav-item {
-      display: flex; flex-direction: column; align-items: center; gap: 3px;
-      padding: 6px 8px; font-size: .62rem; font-weight: 500;
-      color: var(--muted); text-decoration: none; transition: color .2s;
-      min-width: 56px; text-align: center;
-    }
-    .dfl-mnav-item svg { width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round; }
-    .dfl-mnav-item:hover, .dfl-mnav-item.active { color: var(--gold); }
-    [data-lang="ar"] .dfl-mnav-item { font-family: var(--font-ar); }
-    @media(max-width:768px){ #dfl-mobile-nav{display:block;} body{padding-bottom:80px !important;} }
-  </style>
-<script src="/scripts/global.js" defer></script>
 </head>
 <body>
-  <!-- DFL CANONICAL NAVBAR -->
-  <nav id="dfl-navbar" role="navigation" aria-label="Main navigation">
-    <div class="dfl-nav-inner">
-      <a href="/" class="dfl-nav-logo"><img src="/logo1-transparent.png" alt="Dot4Life" height="130" style="height:130px;width:auto;display:block;margin-top:4px;margin-bottom:8px;"></a>
-      <ul class="dfl-nav-links">
-        <li><a href="/health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
-        <li><a href="/finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li>
-        <li><a href="/real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li>
-        <li><a href="/travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li>
-        <li><a href="/islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <div class="navbar-inner">
+      <a href="/" class="nav-logo" aria-label="DOTFORLIFE Home">
+        <img src="/images/logo.png" alt="DOTFORLIFE" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="/"><span class="en">Home</span><span class="ar">الرئيسية</span></a></li>
+        <li><a href="/health.html"><span class="en">Health</span><span class="ar">صحة</span></a></li>
+        <li><a href="/finance.html"><span class="en">Finance</span><span class="ar">مال</span></a></li>
+        <li><a href="/travel.html"><span class="en">Travel</span><span class="ar">سفر</span></a></li>
+        <li><a href="/islamic.html" class="active"><span class="en">Islamic</span><span class="ar">إسلام</span></a></li>
+        <li><a href="/tasks.html"><span class="en">Tasks</span><span class="ar">المهام</span></a></li>
+        <li><a href="/family.html"><span class="en">Family</span><span class="ar">العائلة</span></a></li>
+        <li><a href="/notes.html"><span class="en">Notes</span><span class="ar">ملاحظات</span></a></li>
       </ul>
-      <div class="dfl-nav-controls">
-        <button class="dfl-nav-btn" id="dfl-lang-btn" aria-label="Toggle language">
-          <span class="en">عربي</span><span class="ar">English</span>
-        </button>
-        <button class="dfl-nav-btn" id="dfl-theme-btn" aria-label="Toggle theme">
-          <span class="en">🌙</span><span class="ar">🌙</span>
-        </button>
-      </div>
-    </div>
-  </nav>
-  <!-- NAVBAR -->
-  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
-    <div class="container">
-      <div class="navbar-inner">
-        <a href="index.html" class="logo" aria-label="DOTFORLIFE Home">
-          DOT<span class="logo-dot">FOR</span>LIFE
-        </a>
-        <ul class="nav-links">
-          <li><a href="health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
-          <li><a href="fitness.html"><span class="en">Fitness</span><span class="ar">اللياقة</span></a></li>
-          <li><a href="real-estate.html"><span class="en">Real Estate</span><span class="ar">العقارات</span></a></li>
-          <li><a href="islamic.html" class="active"><span class="en">Islamic</span><span class="ar">الحياة الإسلامية</span></a></li>
-          <li><a href="travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li>
-          <li><a href="life-tools.html"><span class="en">Life Tools</span><span class="ar">أدوات الحياة</span></a></li>
-        </ul>
-        <div class="nav-actions">
-          <button class="lang-toggle" id="langBtn" aria-label="Toggle language">عربي / EN</button>
-          <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode">🌙</button>
-        </div>
-      </div>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <section class="cat-hero" aria-labelledby="cat-title">
-    <div class="container">
-      <div class="cat-hero-inner">
-        <!-- Left: Text -->
-        <div class="cat-hero-text">
-          <div class="cat-hero-label">
-            <span>☪️</span>
-            <span class="en">Islamic Life • أدوات إسلامية</span>
-            <span class="ar">أدوات الحياة الإسلامية</span>
-          </div>
-          <h1 class="cat-hero-title" id="cat-title">
-            <span class="en">Faith guided<br>by <span class="hero-accent">precision.</span></span>
-            <span class="ar">إيمانك مُعزَّزٌ<br>بـ<span class="hero-accent">الدقة.</span></span>
-          </h1>
-          <p class="cat-hero-sub">
-            <span class="en">Your obligations deserve exact answers. Calculate Zakat with confidence, convert Hijri dates accurately, and plan Hajj with clarity. Tools built around Islamic principles, not just formulas.</span>
-            <span class="ar">التزاماتك تستحق إجابات دقيقة. احسب زكاتك بثقة، حوّل التواريخ الهجرية بدقة، وخطّط للحج بوضوح. أدوات مبنية حول المبادئ الإسلامية، لا مجرد معادلات.</span>
-          </p>
-          <div class="hero-ctas">
-            <a href="tools/zakat-calculator.html" class="btn btn-accent">
-              <span class="en">Calculate My Zakat</span>
-              <span class="ar">احسب زكاتي</span>
-            </a>
-            <a href="#tools" class="btn btn-ghost">
-              <span class="en">All Islamic Tools</span>
-              <span class="ar">كل الأدوات الإسلامية</span>
-            </a>
-          </div>
-        </div>
-        <!-- Right: Circular photo -->
-        <div class="islamic-photo-side">
-          <div class="islamic-photo-wrap">
-            <div class="islamic-photo-ring-2"></div>
-            <div class="islamic-photo-ring"></div>
-            <div class="islamic-photo-circle">
-              <img
-                src="https://images.unsplash.com/photo-1542816417-0983c9c9ad53?auto=format&fit=crop&w=700&q=85"
-                alt="Family gathering in peaceful prayer — spiritually meaningful"
-                width="700" height="700"
-                loading="eager"
-               fetchpriority="high" loading="eager"/ fetchpriority="high" loading="eager">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <style>
-#qjs-strip a{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;font-size:.82rem;font-weight:600;white-space:nowrap;text-decoration:none;transition:border-color .2s,color .2s,background .2s,transform .2s cubic-bezier(.22,1,.36,1);flex-shrink:0;}
-#qjs-strip a:hover{border-color:#1B7A4E !important;color:#1B7A4E !important;background:rgba(27,122,78,.08) !important;transform:translateY(-2px);}
-#qjs-strip a:active{transform:translateY(0) scale(.97);}
-.life-intro-bridge{padding:clamp(48px,7vw,80px) 0;background:var(--surface-2);}
-.lib-inner{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,64px);align-items:start;}
-.lib-eyebrow{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#1B7A4E;margin-bottom:12px;display:block;}
-.lib-headline{font-family:var(--font-serif);font-size:clamp(1.6rem,3vw,2.3rem);font-weight:300;letter-spacing:-.02em;line-height:1.15;margin-bottom:20px;color:var(--text-1);}
-.lib-body{font-size:1rem;line-height:1.75;color:var(--text-2);margin:0;}
-.lib-pillars{display:flex;flex-direction:column;gap:20px;padding-top:8px;}
-.lib-pillar{display:grid;grid-template-columns:40px 1fr;grid-template-rows:auto auto;column-gap:14px;row-gap:2px;align-items:start;}
-.lib-pillar-icon{grid-row:1/3;font-size:1.5rem;line-height:1;padding-top:2px;}
-.lib-pillar strong{font-size:.92rem;font-weight:700;color:var(--text-1);display:block;}
-.lib-pillar span{font-size:.82rem;color:var(--text-2);}
-@media(max-width:768px){.lib-inner{grid-template-columns:1fr;}.lib-pillars{padding-top:0;}}
-
-/* === VISUAL UNITY PASS === */
-.cat-hero-img-frame{border-radius:20px !important;overflow:hidden !important;box-shadow:0 24px 64px rgba(0,0,0,.22),0 0 0 1px rgba(255,255,255,.06) !important;}
-.cat-hero-img-frame img{transition:transform 6s ease !important;display:block !important;}
-.cat-hero-img-frame:hover img{transform:scale(1.03) !important;}
-.tool-card{border-radius:18px !important;transition:box-shadow .22s cubic-bezier(.22,1,.36,1),transform .22s cubic-bezier(.22,1,.36,1),border-color .22s !important;}
-.tool-card:hover{transform:translateY(-4px) !important;box-shadow:0 16px 40px rgba(0,0,0,.10) !important;}
-.lib-headline{letter-spacing:-.02em !important;}
-[data-theme="dark"] .life-intro-bridge{background:rgba(255,255,255,.024) !important;}
-@media(prefers-reduced-motion:reduce){.cat-hero-img-frame img,.cat-hero-img-frame:hover img{transform:none !important;transition:none !important;}}
-</style>
-<!-- QUICK JUMP STRIP -->
-  <div id="qjs-strip" style="padding:16px 0;border-bottom:1px solid var(--border-l);background:var(--card-bg);">
-    <div class="container">
-      <div style="display:flex;align-items:center;gap:10px;overflow-x:auto;scrollbar-width:none;padding:0 4px;-webkit-overflow-scrolling:touch;">
-        <span style="font-size:.68rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.15em;white-space:nowrap;flex-shrink:0;padding-right:6px;border-right:1px solid var(--border-l);">Jump to / انتقل</span>
-        <a style="display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;border:1.5px solid rgba(184,134,26,.45);background:rgba(184,134,26,.09);color:var(--gold-d);font-size:.82rem;font-weight:600;white-space:nowrap;text-decoration:none;transition:all .2s;flex-shrink:0;" href="tools/zakat-calculator.html">🌙 <span class="en">Zakat Calculator</span><span class="ar">حاسبة الزكاة</span></a>
-        <a style="display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;border:1.5px solid var(--border-l);background:var(--body-bg);color:var(--text-2);font-size:.82rem;font-weight:600;white-space:nowrap;text-decoration:none;transition:all .2s;flex-shrink:0;" href="tools/hijri-converter.html">📅 <span class="en">Hijri Converter</span><span class="ar">محوّل الهجري</span></a>
-        <a style="display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;border:1.5px solid var(--border-l);background:var(--body-bg);color:var(--text-2);font-size:.82rem;font-weight:600;white-space:nowrap;text-decoration:none;transition:all .2s;flex-shrink:0;" href="islamic.html#prayer">🕌 <span class="en">Prayer Times</span><span class="ar">أوقات الصلاة</span></a>
-        <a style="display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;border:1.5px solid var(--border-l);background:var(--body-bg);color:var(--text-2);font-size:.82rem;font-weight:600;white-space:nowrap;text-decoration:none;transition:all .2s;flex-shrink:0;" href="tools/zakat-calculator.html">🏦 <span class="en">Islamic Finance</span><span class="ar">التمويل الإسلامي</span></a>
+      <div class="nav-actions">
+        <button class="lang-toggle" id="lang-toggle" aria-label="Switch language">عربي</button>
+        <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">🌙</button>
       </div>
     </div>
   </div>
+</nav>
 
-  <!-- AD ZONE -->
-  <div class="container"><div class="ad-zone"><span>Advertisement</span></div></div>
-
-<!-- LIFESTYLE INTRO BRIDGE -->
-<section class="life-intro-bridge" aria-label="Islamic tools context">
+<!-- HERO -->
+<section class="cat-hero">
   <div class="container">
-    <div class="lib-inner reveal">
-      <div class="lib-text">
-        <p class="lib-eyebrow"><span class="en">Built with care</span><span class="ar">مبني بعناية</span></p>
-        <h2 class="lib-headline">
-          <span class="en">Islamic obligations<br>are not estimates.</span>
-          <span class="ar">الالتزامات الإسلامية<br>ليست تقديرات.</span>
-        </h2>
-        <p class="lib-body en">Zakat is not "around 2.5% of your savings." It's calculated on specific asset types, above a precise Nisab threshold, held for a full lunar year. Hijri dates are not approximate. Prayer times shift by minutes depending on your exact location and calculation method. These tools treat Islamic obligations with the seriousness they deserve — not as checkboxes, but as acts of precision and devotion.</p>
-        <p class="lib-body ar">الزكاة ليست "نحو 2.5% من مدخراتك". تُحسب على أنواع محددة من الأصول، فوق نصاب دقيق، لمدة حول قمري كامل. التواريخ الهجرية ليست تقريبية. أوقات الصلاة تتغير بدقائق حسب موقعك الجغرافي وطريقة الحساب. هذه الأدوات تُعامل الالتزامات الإسلامية بالجدية التي تستحقها — لا كمهام عابرة، بل كأعمال دقة وتعبّد.</p>
-      </div>
-      <div class="lib-pillars">
-        <div class="lib-pillar">
-          <span class="lib-pillar-icon">🌙</span>
-          <strong class="en">Fiqh-aligned calculations</strong>
-          <strong class="ar">حسابات وفق الفقه الإسلامي</strong>
-          <span class="en">Nisab, Hawl, and asset categories respected</span>
-          <span class="ar">النصاب، والحول، وتصنيفات الأصول مُراعاة</span>
-        </div>
-        <div class="lib-pillar">
-          <span class="lib-pillar-icon">📅</span>
-          <strong class="en">Dual calendar precision</strong>
-          <strong class="ar">دقة التقويمين الهجري والميلادي</strong>
-          <span class="en">Umm al-Qura method, verified conversion</span>
-          <span class="ar">طريقة أم القرى، تحويل مُتحقَّق منه</span>
-        </div>
-        <div class="lib-pillar">
-          <span class="lib-pillar-icon">🤲</span>
-          <strong class="en">Arabic-first experience</strong>
-          <strong class="ar">تجربة عربية بالدرجة الأولى</strong>
-          <span class="en">RTL layout, Islamic terminology, regional context</span>
-          <span class="ar">تخطيط RTL، المصطلحات الإسلامية، سياق الخليج</span>
-        </div>
-      </div>
+    <div class="hero-eyebrow">🕌 <span class="en">Islamic Tools</span><span class="ar">أدوات إسلامية</span></div>
+    <h1 class="hero-title">
+      <span class="en">Your daily <span class="hero-accent">spiritual</span><br>companion.</span>
+      <span class="ar">رفيقك <span class="hero-accent">الروحي</span><br>اليومي.</span>
+    </h1>
+    <p class="hero-sub">
+      <span class="en">Prayer times, Qibla direction, Zakat calculation, Umrah planning — calm tools for a meaningful Islamic life.</span>
+      <span class="ar">أوقات الصلاة، القبلة، الزكاة، تخطيط العمرة — أدوات هادئة لحياة إسلامية ذات معنى.</span>
+    </p>
+    <div class="hero-ctas">
+      <a href="/tools/prayer-times.html" class="btn btn-accent">
+        <span class="en">Prayer times</span><span class="ar">أوقات الصلاة</span>
+      </a>
+      <a href="/tools/qibla.html" class="btn btn-ghost">
+        <span class="en">Find Qibla</span><span class="ar">اتجاه القبلة</span>
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><span class="en">Free forever</span><span class="ar">مجاني دائماً</span></div>
+      <div class="hero-stat"><span class="en">No sign-up needed</span><span class="ar">بدون تسجيل</span></div>
+      <div class="hero-stat"><span class="en">Arabic & English</span><span class="ar">عربي وإنجليزي</span></div>
     </div>
   </div>
 </section>
 
-  <!-- FEATURED: ZAKAT CALCULATOR -->
-  <section class="tools-section" id="tools">
-    <div class="container">
-      <div class="tools-header reveal">
-        <span class="section-label"><span class="en">⭐ FEATURED TOOL</span><span class="ar">⭐ الأداة المميزة</span></span>
-        <h2><span class="en">Zakat Calculator</span><span class="ar">حاسبة الزكاة</span></h2>
-        <p><span class="en">Calculate your annual Zakat obligation based on Nisab threshold — gold, silver, and asset-based.</span><span class="ar">احسب زكاتك السنوية بناءً على النصاب — ذهب، فضة، وحسابات الأصول.</span></p>
-      </div>
+<!-- TOOLS GRID -->
+<section class="tools-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label"><span class="en">All Islamic Tools</span><span class="ar">أدوات إسلامية</span></div>
+      <h2 class="section-title"><span class="en">Everything for your Islamic daily life</span><span class="ar">كل ما تحتاجه لحياتك الإسلامية اليومية</span></h2>
+      <p class="section-sub"><span class="en">Simple, respectful, and accurate.</span><span class="ar">بسيطة، محترمة، ودقيقة.</span></p>
+    </div>
+    <div class="tools-grid">
 
-      <a href="tools/zakat-calculator.html" class="featured-tool reveal" style="text-decoration:none;color:inherit;">
-        <div>
-          <div class="ft-label"><span class="en">PILLAR OF ISLAM • ركن من أركان الإسلام</span></div>
-          <div class="ft-badge">🌟 <span class="en">Most Used · الأكثر استخداماً</span></div>
-          <h3 class="ft-title"><span class="en">Zakat Calculator</span><span class="ar">حاسبة الزكاة</span></h3>
-          <p class="ft-desc">
-            <span class="en">Based on the current Nisab threshold (gold & silver standards), this calculator covers cash, gold, silver, stocks, business inventory, and receivables. Fully bilingual with Saudi & UAE standards.</span>
-            <span class="ar">بناءً على النصاب الحالي (معيار الذهب والفضة)، تشمل الحاسبة: النقد، الذهب، الفضة، الأسهم، المخزون التجاري، والديون. ثنائية اللغة بالكامل وفق معايير السعودية والإمارات.</span>
-          </p>
-          <div class="ft-meta">
-            <div class="ft-meta-item">
-              <strong>2.5%</strong>
-              <span class="en">Standard Zakat rate</span><span class="ar">نسبة الزكاة القياسية</span>
-            </div>
-            <div class="ft-meta-item">
-              <strong>Nisab</strong>
-              <span class="en">Gold & Silver based</span><span class="ar">نصاب الذهب والفضة</span>
-            </div>
-            <div class="ft-meta-item">
-              <strong>Regional</strong>
-              <span class="en">Standards</span><span class="ar">معايير الخليج</span>
-            </div>
-          </div>
-          <div class="hero-ctas">
-            <span class="btn btn-accent"><span class="en">Calculate Zakat →</span><span class="ar">احسب الزكاة →</span></span>
-          </div>
-        </div>
-        <div class="ft-visual">
-          <div class="ft-visual-icon">🕌</div>
-          <div class="ft-visual-stat">2.5%</div>
-          <div class="ft-visual-sub"><span class="en">Annual obligation</span><span class="ar">الالتزام السنوي</span></div>
-          <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(27,122,78,.15);">
-            <div style="font-size:.8rem;color:var(--muted);margin-bottom:4px;"><span class="en">Current Nisab</span><span class="ar">النصاب الحالي</span></div>
-            <div style="font-family:var(--font-serif);font-size:1.1rem;font-weight:600;color:var(--accent);">≈ 20,000 SAR</div>
-          </div>
-        </div>
+      <a href="/tools/prayer-times.html" class="tool-card reveal" style="--tc:#059669">
+        <div class="tool-card-icon">🕐</div>
+        <div class="tool-card-title"><span class="en">Prayer Times</span><span class="ar">أوقات الصلاة</span></div>
+        <div class="tool-card-desc"><span class="en">Accurate daily prayer times based on your location. Fajr, Dhuhr, Asr, Maghrib, Isha.</span><span class="ar">أوقات الصلاة اليومية الدقيقة بناءً على موقعك. الفجر والظهر والعصر والمغرب والعشاء.</span></div>
+        <div class="tool-card-link"><span class="en">Open →</span><span class="ar">افتح →</span></div>
       </a>
 
-      <!-- Tools Grid: 6 tools -->
-      <div class="tools-grid">
+      <a href="/tools/qibla.html" class="tool-card reveal" style="--tc:#0097A7">
+        <div class="tool-card-icon">🧭</div>
+        <div class="tool-card-title"><span class="en">Qibla Direction</span><span class="ar">اتجاه القبلة</span></div>
+        <div class="tool-card-desc"><span class="en">Find the exact direction of Mecca from anywhere in the world using your device compass.</span><span class="ar">ابحث عن الاتجاه الدقيق لمكة المكرمة من أي مكان في العالم باستخدام بوصلة جهازك.</span></div>
+        <div class="tool-card-link"><span class="en">Find Qibla →</span><span class="ar">اعرف القبلة →</span></div>
+      </a>
+
+      <a href="/tools/zakat-calculator.html" class="tool-card reveal" style="--tc:#B8861A">
+        <div class="tool-card-icon">💛</div>
+        <div class="tool-card-title"><span class="en">Zakat Calculator</span><span class="ar">حاسبة الزكاة</span></div>
+        <div class="tool-card-desc"><span class="en">Calculate your annual Zakat on cash, gold, silver, stocks, and business assets accurately.</span><span class="ar">احسب زكاتك السنوية على النقد والذهب والفضة والأسهم وأصول الأعمال بدقة.</span></div>
+        <div class="tool-card-link"><span class="en">Calculate →</span><span class="ar">احسب →</span></div>
+      </a>
+
+      <a href="/tools/hijri-converter.html" class="tool-card reveal" style="--tc:#8B5CF6">
+        <div class="tool-card-icon">📅</div>
+        <div class="tool-card-title"><span class="en">Hijri Date Converter</span><span class="ar">تحويل التاريخ الهجري</span></div>
+        <div class="tool-card-desc"><span class="en">Convert between Hijri and Gregorian dates instantly. Find important Islamic dates.</span><span class="ar">حوّل بين التاريخ الهجري والميلادي فوراً. ابحث عن المواعيد الإسلامية المهمة.</span></div>
+        <div class="tool-card-link"><span class="en">Convert →</span><span class="ar">حوّل →</span></div>
+      </a>
+
+      <a href="/tools/inheritance-calculator.html" class="tool-card reveal" style="--tc:#EF4444">
+        <div class="tool-card-icon">⚖️</div>
+        <div class="tool-card-title"><span class="en">Islamic Inheritance (Mirath)</span><span class="ar">حاسبة الميراث الإسلامي</span></div>
+        <div class="tool-card-desc"><span class="en">Calculate the correct Islamic inheritance shares for any estate, following Quran and Sunnah.</span><span class="ar">احسب أسهم الميراث الإسلامي الصحيحة لأي تركة وفق القرآن والسنة.</span></div>
+        <div class="tool-card-link"><span class="en">Calculate →</span><span class="ar">احسب →</span></div>
+      </a>
+
+      <a href="/tools/ramadan-calorie-calculator.html" class="tool-card reveal" style="--tc:#F59E0B">
+        <div class="tool-card-icon">🌙</div>
+        <div class="tool-card-title"><span class="en">Ramadan Calorie Guide</span><span class="ar">دليل السعرات في رمضان</span></div>
+        <div class="tool-card-desc"><span class="en">Maintain your energy and health during fasting. Calorie and nutrition guidance for Suhoor and Iftar.</span><span class="ar">حافظ على طاقتك وصحتك أثناء الصيام. إرشادات السعرات والتغذية للسحور والإفطار.</span></div>
+        <div class="tool-card-link"><span class="en">Open guide →</span><span class="ar">افتح الدليل →</span></div>
+      </a>
 
-        <!-- Prayer Times -->
-        <a href="tools/prayer-times.html" class="tool-card reveal" style="text-decoration:none;color:inherit;">
-          <div class="tool-top">
-            <div class="tool-icon-wrap">🕐</div>
-            <span class="tool-badge"><span class="en">LIVE</span><span class="ar">مباشر</span></span>
-          </div>
-          <div class="tool-name"><span class="en">Prayer Times</span><span class="ar">أوقات الصلاة</span></div>
-          <div class="tool-desc">
-            <span class="en">Location-based daily prayer times by city worldwide. Fajr, Dhuhr, Asr, Maghrib, Isha — with Qibla direction and Hijri date.</span>
-            <span class="ar">أوقات الصلاة اليومية حسب الموقع لجميع مدن الخليج. مع اتجاه القبلة والتاريخ الهجري.</span>
-          </div>
-          <div class="tool-footer">
-            <span class="tool-usage"><span class="en">📍 Location-aware</span><span class="ar">📍 يعتمد الموقع</span></span>
-            <span class="tool-cta"><span class="en">View →</span><span class="ar">فتح →</span></span>
-          </div>
-        </a>
-
-        <!-- Hijri Converter -->
-        <a href="tools/hijri-converter.html" class="tool-card reveal" style="text-decoration:none;color:inherit;">
-          <div class="tool-top">
-            <div class="tool-icon-wrap">📅</div>
-            <span class="tool-badge"><span class="en">DATES</span><span class="ar">التواريخ</span></span>
-          </div>
-          <div class="tool-name"><span class="en">Hijri Date Converter</span><span class="ar">محول التاريخ الهجري</span></div>
-          <div class="tool-desc">
-            <span class="en">Convert between Hijri (Islamic) and Gregorian calendars accurately. Find Islamic holidays, Ramadan dates, and important occasions.</span>
-            <span class="ar">تحويل دقيق بين التقويم الهجري والميلادي. اكتشف الأعياد الإسلامية وتواريخ رمضان والمناسبات المهمة.</span>
-          </div>
-          <div class="tool-footer">
-            <span class="tool-usage"><span class="en">📆 1445 AH / 2024 CE</span></span>
-            <span class="tool-cta"><span class="en">Convert →</span><span class="ar">حوّل →</span></span>
-          </div>
-        </a>
-
-        <!-- Qibla Direction -->
-        <a href="tools/qibla.html" class="tool-card reveal" style="text-decoration:none;color:inherit;">
-          <div class="tool-top">
-            <div class="tool-icon-wrap">🧭</div>
-            <span class="tool-badge tool-badge-gold"><span class="en">GPS</span><span class="ar">GPS</span></span>
-          </div>
-          <div class="tool-name"><span class="en">Qibla Compass</span><span class="ar">بوصلة القبلة</span></div>
-          <div class="tool-desc">
-            <span class="en">Find the exact Qibla direction from your current location worldwide. Live compass with degree angle and distance to Makkah Al-Mukarramah.</span>
-            <span class="ar">اعرف اتجاه القبلة الدقيق من موقعك الحالي في أي مكان. بوصلة حية مع زاوية الدرجة والمسافة إلى مكة المكرمة.</span>
-          </div>
-          <div class="tool-footer">
-            <span class="tool-usage"><span class="en">🌍 Worldwide</span><span class="ar">🌍 عالمي</span></span>
-            <span class="tool-cta"><span class="en">Find →</span><span class="ar">ابحث →</span></span>
-          </div>
-        </a>
-
-        <!-- Islamic Inheritance -->
-        <a href="tools/inheritance-calculator.html" class="tool-card reveal" style="text-decoration:none;color:inherit;">
-          <div class="tool-top">
-            <div class="tool-icon-wrap">⚖️</div>
-            <span class="tool-badge"><span class="en">FIQH</span><span class="ar">الفقه</span></span>
-          </div>
-          <div class="tool-name"><span class="en">Inheritance Calculator (Mirath)</span><span class="ar">حاسبة الميراث الشرعي</span></div>
-          <div class="tool-desc">
-            <span class="en">Calculate Islamic inheritance shares according to Sharia law. Enter estate value and heirs to get exact shares for each beneficiary.</span>
-            <span class="ar">احسب الحصص الشرعية في الميراث وفق أحكام الإسلام. أدخل قيمة التركة والورثة للحصول على النصيب الدقيق لكل وريث.</span>
-          </div>
-          <div class="tool-footer">
-            <span class="tool-usage"><span class="en">📖 Based on Quran & Sunnah</span><span class="ar">📖 القرآن والسنة</span></span>
-            <span class="tool-cta"><span class="en">Calculate →</span><span class="ar">احسب →</span></span>
-          </div>
-        </a>
-
-        <!-- Hajj & Umrah Planner -->
-        <a href="/islamic.html" class="tool-card reveal" style="text-decoration:none;color:inherit;">
-          <div class="tool-top">
-            <div class="tool-icon-wrap">🕋</div>
-            <span class="tool-badge tool-badge-gold"><span class="en">PILLAR</span><span class="ar">الركن</span></span>
-          </div>
-          <div class="tool-name"><span class="en">Hajj & Umrah Planner</span><span class="ar">مخطط الحج والعمرة</span></div>
-          <div class="tool-desc">
-            <span class="en">Step-by-step Hajj and Umrah ritual guide with budget estimator, packing checklist, and best season calendar for pilgrims.</span>
-            <span class="ar">دليل شامل لمناسك الحج والعمرة مع تقدير التكاليف، قائمة التعبئة، وأفضل مواسم السفر لمسافري الخليج.</span>
-          </div>
-          <div class="tool-footer">
-            <span class="tool-usage"><span class="en">🕋 Makkah & Madinah</span><span class="ar">🕋 مكة والمدينة</span></span>
-            <span class="tool-cta"><span class="en">Plan →</span><span class="ar">خطّط →</span></span>
-          </div>
-        </a>
-
-        <!-- Ramadan Tracker -->
-        <a href="tools/ramadan-calorie-calculator.html" class="tool-card reveal" style="text-decoration:none;color:inherit;">
-          <div class="tool-top">
-            <div class="tool-icon-wrap">🌙</div>
-            <span class="tool-badge"><span class="en">SEASONAL</span><span class="ar">موسمي</span></span>
-          </div>
-          <div class="tool-name"><span class="en">Ramadan Calorie Guide</span><span class="ar">دليل سعرات رمضان</span></div>
-          <div class="tool-desc">
-            <span class="en">Optimize your Suhoor and Iftar nutrition during Ramadan. Personalized calorie targets and meal timing for healthy fasting.</span>
-            <span class="ar">حسّن تغذيتك في السحور والإفطار خلال رمضان. أهداف سعرات حرارية مخصصة وتوقيت وجبات لصيام صحي.</span>
-          </div>
-          <div class="tool-footer">
-            <span class="tool-usage"><span class="en">🌙 Ramadan 1447 AH</span><span class="ar">🌙 رمضان 1447هـ</span></span>
-            <span class="tool-cta"><span class="en">Guide →</span><span class="ar">دليل →</span></span>
-          </div>
-        </a>
-
-      </div><!-- /tools-grid -->
-    </div>
-  </section>
-
-  <!-- PILLARS OF ISLAM VALUES SECTION -->
-  <section class="pillars-section" aria-label="Islamic values">
-    <div class="container">
-      <div style="text-align:center;margin-bottom:8px;">
-        <span class="section-label" style="justify-content:center;display:flex;">
-          <span class="en">HOW WE BUILD · كيف نبني</span>
-          <span class="ar">كيف نبني</span>
-        </span>
-        <h2 style="font-family:var(--font-serif);font-size:2rem;font-weight:300;letter-spacing:-.01em;color:var(--text);">
-          <span class="en">Islamic tools deserve scholarly precision.</span>
-          <span class="ar">الأدوات الإسلامية تستحق دقة علمية.</span>
-        </h2>
-      </div>
-      <div class="pillars-grid">
-        <div class="pillar-card reveal">
-          <div class="pillar-icon">📖</div>
-          <div class="pillar-name"><span class="en">Grounded in fiqh</span><span class="ar">مستند للفقه</span></div>
-          <div class="pillar-desc"><span class="en">Every calculation follows established scholarly rulings — not guesswork. Sources cited. Methods documented. Faith obligations treated with the seriousness they deserve.</span><span class="ar">كل حساب يتبع الأحكام الفقهية المعتمدة — لا تخمينات. مصادر مذكورة. مناهج موثقة. الواجبات الدينية يُعامَل بجدية تستحقها.</span></div>
-        </div>
-        <div class="pillar-card reveal">
-          <div class="pillar-icon">🌍</div>
-          <div class="pillar-name"><span class="en">Calibrated for the region</span><span class="ar">معايَر للمنطقة</span></div>
-          <div class="pillar-desc"><span class="en">Prayer times use the Umm al-Qura method. Zakat Nisab reflects current market values. Regional context isn't optional — it's essential.</span><span class="ar">أوقات الصلاة بطريقة أم القرى. نصاب الزكاة يعكس القيم السوقية الحالية. السياق الإقليمي ليس اختيارياً — إنه أساسي.</span></div>
-        </div>
-        <div class="pillar-card reveal">
-          <div class="pillar-icon">🔒</div>
-          <div class="pillar-name"><span class="en">Private, always</span><span class="ar">خاص، دائماً</span></div>
-          <div class="pillar-desc"><span class="en">Your Zakat amount, wealth breakdown, and religious practice are deeply personal. Nothing leaves your device. No registration. No storage. No tracking.</span><span class="ar">مبلغ زكاتك وتوزيع ثروتك وممارستك الدينية خاصة جداً. لا شيء يغادر جهازك. لا تسجيل. لا تخزين. لا تتبع.</span></div>
-        </div>
-        <div class="pillar-card reveal">
-          <div class="pillar-icon">🌐</div>
-          <div class="pillar-name"><span class="en">Arabic-native, not translated</span><span class="ar">عربي أصيل، لا مترجم</span></div>
-          <div class="pillar-desc"><span class="en">Every tool was built in Arabic and English simultaneously — not translated from one to the other. Full RTL support. Arabic numerals where they belong.</span><span class="ar">كل أداة بُنيت بالعربية والإنجليزية في آنٍ واحد — لم تُترجم من إحداهما للأخرى. دعم RTL كامل. أرقام عربية في مكانها الصحيح.</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- HIJRI DATE CONVERTER HIGHLIGHT -->
-  <section class="hijri-section">
-    <div class="container">
-      <div class="hijri-card">
-        <div style="position:relative;z-index:1;">
-          <div class="hijri-label"><span class="en">HIJRI CALENDAR · التقويم الهجري</span><span class="ar">التقويم الهجري</span></div>
-          <h2 class="hijri-title">
-            <span class="en">Live Hijri Date &amp;<br>Islamic Calendar</span>
-            <span class="ar">التاريخ الهجري الحي<br>والتقويم الإسلامي</span>
-          </h2>
-          <p class="hijri-sub">
-            <span class="en">Always know the Islamic date, upcoming Islamic holidays, and convert any date between Hijri and Gregorian instantly.</span>
-            <span class="ar">اعرف دائماً التاريخ الإسلامي والأعياد الإسلامية القادمة، وحوّل أي تاريخ بين الهجري والميلادي فوراً.</span>
-          </p>
-          <a href="tools/hijri-converter.html" class="btn btn-gold">
-            <span class="en">Open Hijri Converter →</span>
-            <span class="ar">فتح محول التاريخ →</span>
-          </a>
-        </div>
-        <div class="hijri-visual">
-          <div class="hijri-date-display" id="hijriDisplay">
-            <div class="hijri-day" id="hijriDay">—</div>
-            <div class="hijri-month" id="hijriMonth"><span class="en">Dhul Qi'dah</span><span class="ar">ذو القعدة</span></div>
-            <div class="hijri-year" id="hijriYear">1446 AH</div>
-            <div class="hijri-sep" style="height:1px;margin:16px 0;"></div>
-            <div style="font-size:.75rem;color:rgba(255,255,255,.4);"><span class="en">Today in Hijri</span><span class="ar">اليوم بالهجري</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="faq-section">
-    <div class="container">
-      <div style="margin-bottom:8px;">
-        <span class="section-label"><span class="en">COMMON QUESTIONS · أسئلة شائعة</span><span class="ar">أسئلة شائعة</span></span>
-        <h2 style="font-family:var(--font-serif);font-size:2rem;font-weight:300;letter-spacing:-.01em;margin-bottom:8px;color:var(--text);">
-          <span class="en">Frequently Asked Questions</span>
-          <span class="ar">الأسئلة الأكثر شيوعاً</span>
-        </h2>
-      </div>
-      <div class="faq-grid">
-        <div class="faq-card reveal">
-          <div class="faq-q"><span class="en">How is Nisab calculated for Zakat?</span><span class="ar">كيف يُحسب نصاب الزكاة؟</span></div>
-          <div class="faq-a"><span class="en">Nisab is the minimum threshold of wealth. It's calculated at 85 grams of gold or 595 grams of silver, converted to current market price. If your wealth exceeds this for a full lunar year, Zakat is 2.5%.</span><span class="ar">النصاب هو الحد الأدنى للثروة الموجبة للزكاة. يُحسب بـ 85 جراماً من الذهب أو 595 جراماً من الفضة بالسعر الحالي. إذا تجاوزت ثروتك هذا الحد لمدة حول كامل، فالزكاة 2.5٪.</span></div>
-        </div>
-        <div class="faq-card reveal">
-          <div class="faq-q"><span class="en">Which prayer time calculation method do you use?</span><span class="ar">أي طريقة حساب أوقات الصلاة تستخدمون؟</span></div>
-          <div class="faq-a"><span class="en">We use the Umm al-Qura University (Makkah) method for Saudi Arabia and GCC countries, as it is the official government standard. Other methods like ISNA and MWL are available for international locations.</span><span class="ar">نستخدم طريقة جامعة أم القرى (مكة) للمملكة العربية السعودية ودول الخليج باعتبارها المعيار الحكومي الرسمي. تتوفر طرق أخرى كـ ISNA وMWL للمواقع الدولية.</span></div>
-        </div>
-        <div class="faq-card reveal">
-          <div class="faq-q"><span class="en">How accurate is the Qibla compass?</span><span class="ar">ما مدى دقة بوصلة القبلة؟</span></div>
-          <div class="faq-a"><span class="en">The Qibla direction is calculated using the Great Circle method, which gives the shortest path across the Earth's surface. Accuracy depends on your GPS signal. We display the degree angle to Makkah Al-Mukarramah from your exact coordinates.</span><span class="ar">يُحسب اتجاه القبلة باستخدام طريقة الدائرة العظمى التي تعطي أقصر مسار على سطح الأرض. الدقة تعتمد على إشارة GPS. نعرض زاوية الدرجة إلى مكة المكرمة من إحداثياتك الدقيقة.</span></div>
-        </div>
-        <div class="faq-card reveal">
-          <div class="faq-q"><span class="en">Is the Islamic Inheritance calculator based on Sharia?</span><span class="ar">هل حاسبة الميراث مبنية على أحكام الشريعة؟</span></div>
-          <div class="faq-a"><span class="en">Yes. The calculator applies Faraid (Islamic inheritance law) as defined in the Holy Quran (Surah An-Nisa 4:11-12, 4:176) and the Sunnah of the Prophet ﷺ. For final legal purposes, always consult a qualified Islamic scholar or court.</span><span class="ar">نعم. تطبق الحاسبة أحكام الفرائض (الميراث الإسلامي) كما وردت في القرآن الكريم (سورة النساء 11-12، 176) وسنة النبي ﷺ. للأغراض القانونية النهائية، استشر دائماً عالماً إسلامياً مؤهلاً أو المحكمة الشرعية.</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ UMRAH JOURNEY: Complete guided experience ════════════════════════ -->
-  <style>
-    /* ── Umrah Journey Section ────────────────────────────────────────── */
-    .umrah-section {
-      padding: clamp(72px,10vw,100px) 0;
-      border-top: 1px solid var(--border-l);
-      background: var(--body-bg);
-    }
-    .umrah-header {
-      text-align: center;
-      margin-bottom: 60px;
-    }
-    .umrah-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 10.5px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #1B7A4E;
-      background: rgba(27,122,78,.07);
-      border: 1px solid rgba(27,122,78,.18);
-      padding: 5px 14px;
-      border-radius: 99px;
-      margin-bottom: 20px;
-    }
-    .umrah-title {
-      font-size: clamp(26px, 4vw, 40px);
-      font-weight: 300;
-      color: var(--text-1);
-      letter-spacing: -0.025em;
-      line-height: 1.2;
-      margin: 0 0 16px;
-    }
-    .umrah-title strong { font-weight: 600; }
-    .umrah-subtitle {
-      font-size: 16px;
-      color: var(--text-2);
-      line-height: 1.65;
-      max-width: 500px;
-      margin: 0 auto;
-    }
-
-    /* ── Journey Steps ────────────────────────────────────────────────── */
-    .umrah-journey {
-      position: relative;
-      max-width: 860px;
-      margin: 0 auto;
-    }
-    .umrah-journey::before {
-      content: '';
-      position: absolute;
-      left: 36px;
-      top: 0; bottom: 0;
-      width: 1px;
-      background: linear-gradient(to bottom, rgba(27,122,78,.3), rgba(27,122,78,.08), transparent);
-    }
-    [data-lang="ar"] .umrah-journey::before { left: auto; right: 36px; }
-
-    .umrah-step {
-      display: flex;
-      gap: 28px;
-      padding: 28px 0;
-      align-items: flex-start;
-      position: relative;
-    }
-    .umrah-step:not(:last-child) {
-      border-bottom: 1px solid var(--border-l);
-    }
-    .umrah-step-left {
-      flex-shrink: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0;
-      width: 72px;
-    }
-    .umrah-step-num {
-      width: 52px; height: 52px;
-      border-radius: 50%;
-      background: rgba(27,122,78,.1);
-      border: 1.5px solid rgba(27,122,78,.3);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 20px;
-      flex-shrink: 0;
-      position: relative;
-      z-index: 1;
-    }
-    .umrah-step-n-label {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      color: #1B7A4E;
-      text-transform: uppercase;
-      margin-top: 8px;
-      text-align: center;
-    }
-    .umrah-step-right {
-      flex: 1;
-      padding-top: 4px;
-    }
-    .umrah-step-title {
-      font-size: 18px;
-      font-weight: 600;
-      color: var(--text-1);
-      letter-spacing: -0.02em;
-      margin: 0 0 8px;
-    }
-    .umrah-step-body {
-      font-size: 14px;
-      color: var(--text-2);
-      line-height: 1.7;
-      margin: 0 0 16px;
-    }
-    .umrah-step-tools {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    .umrah-step-tool {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 12px;
-      font-weight: 600;
-      color: #1B7A4E;
-      background: rgba(27,122,78,.07);
-      border: 1px solid rgba(27,122,78,.2);
-      padding: 6px 13px;
-      border-radius: 99px;
-      text-decoration: none;
-      transition: background 0.2s ease, border-color 0.2s ease;
-    }
-    .umrah-step-tool:hover {
-      background: rgba(27,122,78,.14);
-      border-color: rgba(27,122,78,.4);
-    }
-    .umrah-step-tool-ext {
-      background: transparent;
-      color: var(--text-2);
-      border-color: var(--border-l);
-    }
-    .umrah-step-tool-ext:hover {
-      color: var(--text-1);
-      border-color: var(--text-2);
-      background: transparent;
-    }
-
-    /* ── Closing CTA ──────────────────────────────────────────────────── */
-    .umrah-cta-block {
-      margin-top: 48px;
-      text-align: center;
-      padding: 36px;
-      border-radius: 20px;
-      background: linear-gradient(135deg, rgba(27,122,78,.06), rgba(27,122,78,.02));
-      border: 1px solid rgba(27,122,78,.15);
-    }
-    .umrah-cta-block p {
-      font-size: 15px;
-      color: var(--text-2);
-      margin: 0 0 20px;
-      line-height: 1.6;
-    }
-    .umrah-cta-block p strong { color: var(--text-1); font-weight: 600; }
-    .umrah-cta-main {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: #1B7A4E;
-      color: #fff;
-      font-size: 14px;
-      font-weight: 600;
-      padding: 13px 26px;
-      border-radius: 99px;
-      text-decoration: none;
-      transition: opacity 0.2s ease;
-    }
-    .umrah-cta-main:hover { opacity: 0.88; }
-
-    @media (max-width: 640px) {
-      .umrah-journey::before { left: 24px; }
-      [data-lang="ar"] .umrah-journey::before { left: auto; right: 24px; }
-      .umrah-step { gap: 16px; }
-      .umrah-step-left { width: 48px; }
-      .umrah-step-num { width: 40px; height: 40px; font-size: 17px; }
-    }
-  </style>
-
-  <section class="umrah-section" aria-label="Complete Umrah journey guide">
-    <div class="container">
-
-      <div class="umrah-header">
-        <span class="umrah-eyebrow">
-          <span>🕌</span>
-          <span class="en">Guided Journey</span>
-          <span class="ar">رحلة موجَّهة</span>
-        </span>
-        <h2 class="umrah-title">
-          <span class="en">Planning Your Umrah,<br><strong>step by step.</strong></span>
-          <span class="ar">التخطيط لعمرتك،<br><strong>خطوة بخطوة.</strong></span>
-        </h2>
-        <p class="umrah-subtitle">
-          <span class="en">From your first intention to your arrival at the holy cities — every step, every tool, every consideration. Calm, clear, complete.</span>
-          <span class="ar">من أول نية في قلبك إلى وصولك للأماكن المقدسة — كل خطوة، كل أداة، كل اعتبار. بهدوء ووضوح وشمولية.</span>
-        </p>
-      </div>
-
-      <div class="umrah-journey" role="list">
-
-        <!-- Step 1: Intention & Spiritual Preparation -->
-        <div class="umrah-step reveal" role="listitem">
-          <div class="umrah-step-left">
-            <div class="umrah-step-num">🤲</div>
-            <span class="umrah-step-n-label"><span class="en">Step 1</span><span class="ar">خطوة ١</span></span>
-          </div>
-          <div class="umrah-step-right">
-            <h3 class="umrah-step-title">
-              <span class="en">Set Your Intention</span>
-              <span class="ar">أحكم نيتك</span>
-            </h3>
-            <p class="umrah-step-body">
-              <span class="en">Every Umrah begins with the heart. Before logistics, before flights — clarify your intention. Understand the rituals: Tawaf, Sa'i, and what each act of worship means. Spiritual readiness carries the whole journey.</span>
-              <span class="ar">كل عمرة تبدأ من القلب. قبل اللوجستيات، قبل الرحلات — وضّح نيتك. افهم المناسك: الطواف والسعي وما يعنيه كل فعل من أفعال العبادة. الجاهزية الروحية هي التي تحمل الرحلة كلها.</span>
-            </p>
-            <div class="umrah-step-tools">
-              <a href="tools/hijri-converter.html" class="umrah-step-tool">
-                <span class="en">📅 Hijri Calendar</span>
-                <span class="ar">📅 التقويم الهجري</span>
-              </a>
-              <a href="tools/inheritance-calculator.html" class="umrah-step-tool umrah-step-tool-ext">
-                <span class="en">Settle Obligations First →</span>
-                <span class="ar">سوّي الالتزامات أولاً ←</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Step 2: Choose Your Timing -->
-        <div class="umrah-step reveal" role="listitem">
-          <div class="umrah-step-left">
-            <div class="umrah-step-num">📅</div>
-            <span class="umrah-step-n-label"><span class="en">Step 2</span><span class="ar">خطوة ٢</span></span>
-          </div>
-          <div class="umrah-step-right">
-            <h3 class="umrah-step-title">
-              <span class="en">Choose the Right Time</span>
-              <span class="ar">اختَر التوقيت المناسب</span>
-            </h3>
-            <p class="umrah-step-body">
-              <span class="en">Ramadan carries the reward of Hajj alongside Umrah — but Makkah fills beyond capacity. Rajab and Sha'ban offer peace and depth. Use the Hijri calendar to pick dates that align with your obligations and find the season that suits your pace.</span>
-              <span class="ar">رمضان يحمل ثواب الحج مع العمرة — لكن مكة تمتلئ فوق طاقتها. رجب وشعبان يمنحانك السكينة والعمق. استخدم التقويم الهجري لاختيار مواعيد تتوافق مع التزاماتك وفصل يناسب وتيرتك.</span>
-            </p>
-            <div class="umrah-step-tools">
-              <a href="tools/hijri-converter.html" class="umrah-step-tool">
-                <span class="en">🗓 Hijri Date Converter</span>
-                <span class="ar">🗓 محوّل التاريخ الهجري</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Step 3: Budget Your Trip -->
-        <div class="umrah-step reveal" role="listitem">
-          <div class="umrah-step-left">
-            <div class="umrah-step-num">💰</div>
-            <span class="umrah-step-n-label"><span class="en">Step 3</span><span class="ar">خطوة ٣</span></span>
-          </div>
-          <div class="umrah-step-right">
-            <h3 class="umrah-step-title">
-              <span class="en">Plan Your Budget</span>
-              <span class="ar">خطط لميزانيتك</span>
-            </h3>
-            <p class="umrah-step-body">
-              <span class="en">Flights, accommodation near Al-Masjid Al-Haram, transportation, food, gifts — Umrah costs vary widely. Build a realistic budget before booking anything. Knowing the full picture prevents stress and allows genuine generosity along the way.</span>
-              <span class="ar">الرحلات والإقامة قرب المسجد الحرام والمواصلات والطعام والهدايا — تكاليف العمرة تتفاوت كثيراً. ضع ميزانية واقعية قبل الحجز. معرفة الصورة الكاملة يمنع التوتر ويتيح الكرم الحقيقي في الطريق.</span>
-            </p>
-            <div class="umrah-step-tools">
-              <a href="tools/zakat-calculator.html" class="umrah-step-tool">
-                <span class="en">☪️ Clear Zakat First</span>
-                <span class="ar">☪️ أدِّ الزكاة أولاً</span>
-              </a>
-              <a href="travel.html" class="umrah-step-tool umrah-step-tool-ext">
-                <span class="en">✈️ Trip Budget Planner →</span>
-                <span class="ar">✈️ مخطط ميزانية الرحلة ←</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Step 4: Prepare Your Body -->
-        <div class="umrah-step reveal" role="listitem">
-          <div class="umrah-step-left">
-            <div class="umrah-step-num">🏃</div>
-            <span class="umrah-step-n-label"><span class="en">Step 4</span><span class="ar">خطوة ٤</span></span>
-          </div>
-          <div class="umrah-step-right">
-            <h3 class="umrah-step-title">
-              <span class="en">Prepare Your Body</span>
-              <span class="ar">أعدّ جسمك</span>
-            </h3>
-            <p class="umrah-step-body">
-              <span class="en">Umrah involves significant walking — Tawaf around the Kaaba, Sa'i between Safa and Marwa. Makkah's heat demands exceptional hydration. Weeks before departure, build your walking endurance, monitor your water intake, and ensure any health conditions are managed with your doctor.</span>
-              <span class="ar">العمرة تتضمن مشياً كثيراً — الطواف حول الكعبة والسعي بين الصفا والمروة. حرارة مكة تتطلب ترطيباً استثنائياً. قبل أسابيع من السفر، طوّر قدرتك على المشي وراقب كمية مائك واحرص على إدارة أي حالات صحية مع طبيبك.</span>
-            </p>
-            <div class="umrah-step-tools">
-              <a href="tools/water-calculator.html" class="umrah-step-tool">
-                <span class="en">💧 Hydration Calculator</span>
-                <span class="ar">💧 حاسبة الترطيب</span>
-              </a>
-              <a href="fitness.html" class="umrah-step-tool umrah-step-tool-ext">
-                <span class="en">💪 Fitness Preparation →</span>
-                <span class="ar">💪 التحضير البدني ←</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Step 5: Pack With Intention -->
-        <div class="umrah-step reveal" role="listitem">
-          <div class="umrah-step-left">
-            <div class="umrah-step-num">🎒</div>
-            <span class="umrah-step-n-label"><span class="en">Step 5</span><span class="ar">خطوة ٥</span></span>
-          </div>
-          <div class="umrah-step-right">
-            <h3 class="umrah-step-title">
-              <span class="en">Pack With Intention</span>
-              <span class="ar">عبّئ حقيبتك بنية</span>
-            </h3>
-            <p class="umrah-step-body">
-              <span class="en">Ihram garments, comfortable footwear, unscented toiletries, Quran, prayer beads, documentation — every item serves a purpose. Avoid over-packing. The simplicity of Ihram begins with the simplicity of what you carry.</span>
-              <span class="ar">ملابس الإحرام والأحذية المريحة ومستلزمات التنظيف غير المعطرة والمصحف وسبحة التسبيح والوثائق — كل عنصر له غرض. تجنب المبالغة في التعبئة. بساطة الإحرام تبدأ ببساطة ما تحمله.</span>
-            </p>
-            <div class="umrah-step-tools">
-              <a href="tools/packing-checklist.html" class="umrah-step-tool">
-                <span class="en">📋 Smart Packing Checklist</span>
-                <span class="ar">📋 قائمة التعبئة الذكية</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Step 6: Navigate with Clarity -->
-        <div class="umrah-step reveal" role="listitem">
-          <div class="umrah-step-left">
-            <div class="umrah-step-num">🧭</div>
-            <span class="umrah-step-n-label"><span class="en">Step 6</span><span class="ar">خطوة ٦</span></span>
-          </div>
-          <div class="umrah-step-right">
-            <h3 class="umrah-step-title">
-              <span class="en">Arrive & Navigate</span>
-              <span class="ar">اصل وتوجّه بوضوح</span>
-            </h3>
-            <p class="umrah-step-body">
-              <span class="en">Once in the holy cities, know your prayer times precisely — Fajr before dawn carries special reward. The Qibla finder gives you your exact direction from wherever you are. Be present. The preparation is done. Now, give your full attention to worship.</span>
-              <span class="ar">حين تصل للأماكن المقدسة، اعرف أوقات صلاتك بدقة — لصلاة الفجر قبل الفجر ثواب خاص. محدد القبلة يعطيك الاتجاه الدقيق من أي مكان. كُن حاضراً. التحضير انتهى. الآن، أعطِ عبادتك كامل انتباهك.</span>
-            </p>
-            <div class="umrah-step-tools">
-              <a href="tools/qibla.html" class="umrah-step-tool">
-                <span class="en">🧭 Qibla Direction</span>
-                <span class="ar">🧭 اتجاه القبلة</span>
-              </a>
-              <a href="tools/prayer-times.html" class="umrah-step-tool">
-                <span class="en">🕌 Prayer Times</span>
-                <span class="ar">🕌 أوقات الصلاة</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-      </div><!-- /umrah-journey -->
-
-      <!-- Closing CTA -->
-      <div class="umrah-cta-block reveal">
-        <p>
-          <span class="en"><strong>Every journey begins with a single step.</strong> Start with the one that matters most to you today.</span>
-          <span class="ar"><strong>كل رحلة تبدأ بخطوة واحدة.</strong> ابدأ بالخطوة الأهم لك اليوم.</span>
-        </p>
-        <a href="tools/zakat-calculator.html" class="umrah-cta-main">
-          <span class="en">Begin your preparation →</span>
-          <span class="ar">ابدأ تحضيرك ←</span>
-        </a>
-      </div>
-
-    </div>
-  </section>
-  <!-- ═══ /UMRAH JOURNEY ════════════════════════════════════════════════════ -->
-
-  <!-- ═══ REAL SITUATIONS ═══════════════════════════════════════════════════ -->
-  <style>
-  /* ── Islamic Real Situations section ────────────────────────────────────── */
-  .isl-rsit-section {
-    padding: clamp(72px, 10vw, 100px) 0;
-    border-top: 1px solid var(--border-l);
-  }
-  .isl-rsit-header {
-    text-align: center;
-    margin-bottom: 52px;
-  }
-  .isl-rsit-eyebrow {
-    display: inline-flex;
-    background: rgba(27,122,78,.08);
-    border: 1px solid rgba(27,122,78,.2);
-    color: #1B7A4E;
-    padding: 6px 16px;
-    border-radius: 999px;
-    font-size: .72rem;
-    font-weight: 700;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-  }
-  .isl-rsit-title {
-    font-size: clamp(24px, 3.5vw, 36px);
-    font-weight: 300;
-    letter-spacing: -.025em;
-    color: var(--text-1);
-    line-height: 1.25;
-    margin: 0 auto 14px;
-    max-width: 560px;
-  }
-  .isl-rsit-title strong { font-weight: 700; }
-  .isl-rsit-sub {
-    font-size: clamp(14px, 1.8vw, 16px);
-    font-weight: 400;
-    color: var(--text-2);
-    line-height: 1.7;
-    max-width: 480px;
-    margin: 0 auto;
-  }
-  .isl-rsit-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
-  .isl-rsit-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border-l);
-    border-radius: 18px;
-    padding: 32px 28px 28px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    position: relative;
-    overflow: hidden;
-    transition: transform .3s ease, box-shadow .3s ease;
-  }
-  .isl-rsit-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 48px rgba(27,122,78,.1);
-  }
-  .isl-rsit-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2.5px;
-    background: #1B7A4E;
-    border-radius: 18px 18px 0 0;
-  }
-  .isl-rsit-icon {
-    font-size: 32px;
-    line-height: 1;
-  }
-  .isl-rsit-card-title {
-    font-size: clamp(17px, 2.2vw, 20px);
-    font-weight: 700;
-    color: var(--text-1);
-    letter-spacing: -.02em;
-    line-height: 1.25;
-    margin: 0;
-  }
-  .isl-rsit-card-body {
-    font-size: 14px;
-    font-weight: 400;
-    color: var(--text-2);
-    line-height: 1.7;
-    margin: 0;
-    flex: 1;
-  }
-  .isl-rsit-tools {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 4px;
-  }
-  .isl-rsit-tool {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 12px;
-    font-weight: 600;
-    color: #1B7A4E;
-    background: rgba(27,122,78,.07);
-    border: 1px solid rgba(27,122,78,.2);
-    padding: 6px 12px;
-    border-radius: 99px;
-    text-decoration: none;
-    transition: background .2s ease, border-color .2s ease;
-  }
-  .isl-rsit-tool:hover {
-    background: rgba(27,122,78,.14);
-    border-color: rgba(27,122,78,.4);
-  }
-  @media (max-width: 700px) {
-    .isl-rsit-grid { grid-template-columns: 1fr; }
-    .isl-rsit-card { padding: 24px 22px 22px; }
-  }
-  </style>
-
-  <section class="isl-rsit-section" aria-label="Real Islamic life situations">
-    <div class="container">
-
-      <div class="isl-rsit-header">
-        <div class="isl-rsit-eyebrow">
-          <span class="en">Real Situations</span>
-          <span class="ar">مواقف حقيقية</span>
-        </div>
-        <h2 class="isl-rsit-title">
-          <span class="en">Life's spiritual moments<br><strong>meet the tools they deserve.</strong></span>
-          <span class="ar">لحظات الحياة الروحية<br><strong>تلتقي بالأدوات التي تستحقها.</strong></span>
-        </h2>
-        <p class="isl-rsit-sub">
-          <span class="en">These aren't hypothetical use cases. They're moments most Muslims navigate at some point — and deserve the right tools for.</span>
-          <span class="ar">هذه ليست حالات افتراضية. بل لحظات يمر بها معظم المسلمين في مرحلة ما — وتستحق الأدوات المناسبة.</span>
-        </p>
-      </div>
-
-      <div class="isl-rsit-grid">
-
-        <!-- Situation 1: Your First Umrah -->
-        <div class="isl-rsit-card reveal">
-          <div class="isl-rsit-icon">🕌</div>
-          <h3 class="isl-rsit-card-title">
-            <span class="en">Your First Umrah</span>
-            <span class="ar">أول عمرة لك</span>
-          </h3>
-          <p class="isl-rsit-card-body">
-            <span class="en">You've decided to go. Now the questions begin — how much to budget, what to pack, how to stay oriented in an unfamiliar city. The preparation is part of the worship. These tools carry you through every question before your first step into Ihram.</span>
-            <span class="ar">قررت الذهاب. والآن تبدأ الأسئلة — كم تخصص من الميزانية، ماذا تحمل، كيف تجد طريقك في مدينة لم تزرها من قبل. التحضير جزء من العبادة. هذه الأدوات ترافقك في كل سؤال قبل خطوتك الأولى في الإحرام.</span>
-          </p>
-          <div class="isl-rsit-tools">
-            <a href="tools/travel-budget.html" class="isl-rsit-tool">
-              <span class="en">Trip Budget</span><span class="ar">ميزانية الرحلة</span>
-            </a>
-            <a href="tools/packing-checklist.html" class="isl-rsit-tool">
-              <span class="en">Packing List</span><span class="ar">قائمة التعبئة</span>
-            </a>
-            <a href="tools/qibla.html" class="isl-rsit-tool">
-              <span class="en">Qibla Finder</span><span class="ar">اتجاه القبلة</span>
-            </a>
-            <a href="tools/prayer-times.html" class="isl-rsit-tool">
-              <span class="en">Prayer Times</span><span class="ar">أوقات الصلاة</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- Situation 2: Traveling with Elderly Parents -->
-        <div class="isl-rsit-card reveal">
-          <div class="isl-rsit-icon">🧓</div>
-          <h3 class="isl-rsit-card-title">
-            <span class="en">Traveling with Elderly Parents</span>
-            <span class="ar">السفر مع الوالدين المسنّين</span>
-          </h3>
-          <p class="isl-rsit-card-body">
-            <span class="en">Their pace is different. Their needs are real — hydration in the heat, prayer times they won't miss, a Qibla direction when the room faces the wrong way. This is the trip that requires the most care, and the most preparation.</span>
-            <span class="ar">وتيرتهم مختلفة. احتياجاتهم حقيقية — الترطيب في الحرارة، أوقات صلاة لن يفوتوها، اتجاه قبلة حين تكون الغرفة في الاتجاه الخاطئ. هذه الرحلة تستلزم أكبر قدر من العناية والتحضير.</span>
-          </p>
-          <div class="isl-rsit-tools">
-            <a href="/tools/water-calculator.html" class="isl-rsit-tool">
-              <span class="en">Hydration Guide</span><span class="ar">دليل الترطيب</span>
-            </a>
-            <a href="tools/prayer-times.html" class="isl-rsit-tool">
-              <span class="en">Prayer Times</span><span class="ar">أوقات الصلاة</span>
-            </a>
-            <a href="tools/qibla.html" class="isl-rsit-tool">
-              <span class="en">Qibla</span><span class="ar">القبلة</span>
-            </a>
-            <a href="tools/packing-checklist.html" class="isl-rsit-tool">
-              <span class="en">Accessible Packing</span><span class="ar">تعبئة ملائمة</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- Situation 3: Ramadan Preparation -->
-        <div class="isl-rsit-card reveal">
-          <div class="isl-rsit-icon">🌙</div>
-          <h3 class="isl-rsit-card-title">
-            <span class="en">Ramadan Preparation</span>
-            <span class="ar">الاستعداد لرمضان</span>
-          </h3>
-          <p class="isl-rsit-card-body">
-            <span class="en">Ramadan changes everything — sleep, meals, schedules, and the rhythm of the day. Good preparation means the month is spiritually full, not physically depleted. Zakat, Suhoor nutrition, Fajr times, and the Hijri calendar all align here.</span>
-            <span class="ar">رمضان يغيّر كل شيء — النوم، الوجبات، الجداول، وإيقاع اليوم. التحضير الجيد يجعل الشهر ممتلئًا روحيًا لا مُنهَكًا جسديًا. الزكاة، تغذية السحور، أوقات الفجر، والتقويم الهجري — كلها تجتمع هنا.</span>
-          </p>
-          <div class="isl-rsit-tools">
-            <a href="tools/zakat-calculator.html" class="isl-rsit-tool">
-              <span class="en">Zakat</span><span class="ar">الزكاة</span>
-            </a>
-            <a href="tools/prayer-times.html" class="isl-rsit-tool">
-              <span class="en">Prayer Times</span><span class="ar">أوقات الصلاة</span>
-            </a>
-            <a href="tools/hijri-converter.html" class="isl-rsit-tool">
-              <span class="en">Hijri Calendar</span><span class="ar">التقويم الهجري</span>
-            </a>
-            <a href="/tools/ramadan-calorie-calculator.html" class="isl-rsit-tool">
-              <span class="en">Fasting Nutrition</span><span class="ar">تغذية الصيام</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- Situation 4: Family Spiritual Journey -->
-        <div class="isl-rsit-card reveal">
-          <div class="isl-rsit-icon">👨‍👩‍👧‍👦</div>
-          <h3 class="isl-rsit-card-title">
-            <span class="en">A Family Spiritual Journey</span>
-            <span class="ar">رحلة روحية عائلية</span>
-          </h3>
-          <p class="isl-rsit-card-body">
-            <span class="en">Teaching children the direction of prayer. Calculating Zakat together as a household. Planning the family trip to Mecca and explaining every step. This is Islam lived at home, not just practiced in solitude — and these tools support it.</span>
-            <span class="ar">تعليم الأطفال اتجاه الصلاة. حساب الزكاة كأسرة. التخطيط للرحلة العائلية إلى مكة وشرح كل خطوة. هذا إسلام يُعاش في البيت لا يُمارَس في عزلة — وهذه الأدوات تدعمه.</span>
-          </p>
-          <div class="isl-rsit-tools">
-            <a href="tools/qibla.html" class="isl-rsit-tool">
-              <span class="en">Qibla</span><span class="ar">القبلة</span>
-            </a>
-            <a href="tools/zakat-calculator.html" class="isl-rsit-tool">
-              <span class="en">Zakat</span><span class="ar">الزكاة</span>
-            </a>
-            <a href="tools/hijri-converter.html" class="isl-rsit-tool">
-              <span class="en">Hijri Dates</span><span class="ar">التواريخ الهجرية</span>
-            </a>
-            <a href="tools/travel-budget.html" class="isl-rsit-tool">
-              <span class="en">Family Trip Budget</span><span class="ar">ميزانية رحلة الأسرة</span>
-            </a>
-          </div>
-        </div>
-
-      </div><!-- /isl-rsit-grid -->
-
-    </div><!-- /container -->
-  </section>
-  <!-- ═══ /REAL SITUATIONS ════════════════════════════════════════════════════ -->
-
-  <!-- ═══ ISLAMIC ECOSYSTEM ROADMAP ════════════════════════════════════════ -->
-  <section style="padding:clamp(60px,9vw,90px) 0;background:var(--bg-card,#fff);border-top:1px solid var(--border-l,#DDE0E4);">
-    <div class="container">
-      <div style="text-align:center;margin-bottom:48px;">
-        <span class="section-label" style="display:inline-flex;background:rgba(27,122,78,.08);border:1px solid rgba(27,122,78,.2);color:#1B7A4E;padding:6px 16px;border-radius:999px;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;">
-          <span class="en">COMING SOON · Platform Roadmap</span>
-          <span class="ar">قريباً · خارطة طريق المنصة</span>
-        </span>
-        <h2 style="font-family:var(--font-serif);font-size:clamp(1.5rem,3vw,2rem);font-weight:300;letter-spacing:-.01em;margin:16px 0 12px;color:var(--text);">
-          <span class="en">Growing into a complete Islamic life platform</span>
-          <span class="ar">نمو نحو منصة حياة إسلامية متكاملة</span>
-        </h2>
-        <p style="font-size:.95rem;color:var(--text-2,#6B7280);max-width:520px;margin:0 auto;line-height:1.7;">
-          <span class="en">The tools below are in development. Each one is planned with the same precision, bilingual depth, and privacy standards as the tools available today.</span>
-          <span class="ar">الأدوات التالية قيد التطوير. كل منها مخطط بنفس الدقة والعمق الثنائي اللغة ومعايير الخصوصية المعمول بها اليوم.</span>
-        </p>
-      </div>
-
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
-
-        <!-- Hajj Planner -->
-        <div style="background:var(--bg-card,#fff);border:1px solid var(--border-l,#DDE0E4);border-radius:20px;padding:24px;position:relative;opacity:.85;">
-          <div style="position:absolute;top:16px;right:16px;background:rgba(27,122,78,.1);border:1px solid rgba(27,122,78,.2);color:#1B7A4E;font-size:.65rem;font-weight:700;padding:3px 10px;border-radius:999px;letter-spacing:.04em;">
-            <span class="en">COMING SOON</span><span class="ar">قريباً</span>
-          </div>
-          <div style="font-size:2rem;margin-bottom:14px;">🕋</div>
-          <div style="font-size:.95rem;font-weight:600;letter-spacing:-.01em;margin-bottom:8px;">
-            <span class="en">Hajj Journey Planner</span>
-            <span class="ar">مخطط رحلة الحج</span>
-          </div>
-          <div style="font-size:.82rem;color:var(--text-2,#6B7280);line-height:1.65;">
-            <span class="en">Step-by-step Hajj ritual guide, packing checklist, Mina and Arafat schedule, and group tracking tools for all pilgrims.</span>
-            <span class="ar">دليل مناسك الحج خطوة بخطوة وقائمة الأمتعة وجدول منى وعرفات وأدوات التتبع الجماعي للحجاج الخليجيين.</span>
-          </div>
-        </div>
-
-        <!-- Prayer Times -->
-        <div style="background:var(--bg-card,#fff);border:1px solid var(--border-l,#DDE0E4);border-radius:20px;padding:24px;position:relative;opacity:.85;">
-          <div style="position:absolute;top:16px;right:16px;background:rgba(27,122,78,.1);border:1px solid rgba(27,122,78,.2);color:#1B7A4E;font-size:.65rem;font-weight:700;padding:3px 10px;border-radius:999px;letter-spacing:.04em;">
-            <span class="en">COMING SOON</span><span class="ar">قريباً</span>
-          </div>
-          <div style="font-size:2rem;margin-bottom:14px;">🕐</div>
-          <div style="font-size:.95rem;font-weight:600;letter-spacing:-.01em;margin-bottom:8px;">
-            <span class="en">Prayer Time Calculator</span>
-            <span class="ar">حاسبة أوقات الصلاة</span>
-          </div>
-          <div style="font-size:.82rem;color:var(--text-2,#6B7280);line-height:1.65;">
-            <span class="en">Precise daily prayer times for all cities using the Umm al-Qura method, with next prayer countdown and Qibla direction.</span>
-            <span class="ar">أوقات صلاة يومية دقيقة لجميع مدن الخليج بطريقة أم القرى مع عداد الصلاة التالية واتجاه القبلة.</span>
-          </div>
-        </div>
-
-        <!-- Umrah Guide -->
-        <div style="background:var(--bg-card,#fff);border:1px solid var(--border-l,#DDE0E4);border-radius:20px;padding:24px;position:relative;opacity:.85;">
-          <div style="position:absolute;top:16px;right:16px;background:rgba(27,122,78,.1);border:1px solid rgba(27,122,78,.2);color:#1B7A4E;font-size:.65rem;font-weight:700;padding:3px 10px;border-radius:999px;letter-spacing:.04em;">
-            <span class="en">COMING SOON</span><span class="ar">قريباً</span>
-          </div>
-          <div style="font-size:2rem;margin-bottom:14px;">🌙</div>
-          <div style="font-size:.95rem;font-weight:600;letter-spacing:-.01em;margin-bottom:8px;">
-            <span class="en">Umrah Preparation Guide</span>
-            <span class="ar">دليل الاستعداد للعمرة</span>
-          </div>
-          <div style="font-size:.82rem;color:var(--text-2,#6B7280);line-height:1.65;">
-            <span class="en">Complete Umrah itinerary planner, ritual sequence guide, hotel proximity map, and duas for each step of the journey.</span>
-            <span class="ar">مخطط رحلة العمرة الكاملة ودليل تسلسل المناسك وخريطة قرب الفنادق وأدعية كل خطوة.</span>
-          </div>
-        </div>
-
-        <!-- Islamic Finance -->
-        <div style="background:var(--bg-card,#fff);border:1px solid var(--border-l,#DDE0E4);border-radius:20px;padding:24px;position:relative;opacity:.85;">
-          <div style="position:absolute;top:16px;right:16px;background:rgba(27,122,78,.1);border:1px solid rgba(27,122,78,.2);color:#1B7A4E;font-size:.65rem;font-weight:700;padding:3px 10px;border-radius:999px;letter-spacing:.04em;">
-            <span class="en">COMING SOON</span><span class="ar">قريباً</span>
-          </div>
-          <div style="font-size:2rem;margin-bottom:14px;">💰</div>
-          <div style="font-size:.95rem;font-weight:600;letter-spacing:-.01em;margin-bottom:8px;">
-            <span class="en">Islamic Finance Tools</span>
-            <span class="ar">أدوات التمويل الإسلامي</span>
-          </div>
-          <div style="font-size:.82rem;color:var(--text-2,#6B7280);line-height:1.65;">
-            <span class="en">Murabaha and Ijara calculators, Sukuk yield tools, and Sharia-compliant mortgage comparison — referencing Saudi Zakat Authority standards.</span>
-            <span class="ar">حاسبات المرابحة والإجارة وأدوات عائد الصكوك ومقارنة التمويل الشرعي — وفق معايير هيئة الزكاة السعودية.</span>
-          </div>
-        </div>
-
-        <!-- Islamic Inheritance -->
-        <div style="background:var(--bg-card,#fff);border:1px solid var(--border-l,#DDE0E4);border-radius:20px;padding:24px;position:relative;opacity:.85;">
-          <div style="position:absolute;top:16px;right:16px;background:rgba(27,122,78,.1);border:1px solid rgba(27,122,78,.2);color:#1B7A4E;font-size:.65rem;font-weight:700;padding:3px 10px;border-radius:999px;letter-spacing:.04em;">
-            <span class="en">COMING SOON</span><span class="ar">قريباً</span>
-          </div>
-          <div style="font-size:2rem;margin-bottom:14px;">📜</div>
-          <div style="font-size:.95rem;font-weight:600;letter-spacing:-.01em;margin-bottom:8px;">
-            <span class="en">Inheritance Calculator (Faraid)</span>
-            <span class="ar">حاسبة الميراث (الفرائض)</span>
-          </div>
-          <div style="font-size:.82rem;color:var(--text-2,#6B7280);line-height:1.65;">
-            <span class="en">Calculate Islamic inheritance shares for up to 20 heirs following Quran (An-Nisa 4:11-12) and Hadith-based Faraid rules.</span>
-            <span class="ar">احسب حصص الميراث الإسلامي لـ 20 وارثاً وفق القرآن الكريم (النساء 11-12) وأحكام الفرائض المستندة إلى الحديث.</span>
-          </div>
-        </div>
-
-        <!-- Ramadan Tracker -->
-        <div style="background:var(--bg-card,#fff);border:1px solid var(--border-l,#DDE0E4);border-radius:20px;padding:24px;position:relative;opacity:.85;">
-          <div style="position:absolute;top:16px;right:16px;background:rgba(27,122,78,.1);border:1px solid rgba(27,122,78,.2);color:#1B7A4E;font-size:.65rem;font-weight:700;padding:3px 10px;border-radius:999px;letter-spacing:.04em;">
-            <span class="en">COMING SOON</span><span class="ar">قريباً</span>
-          </div>
-          <div style="font-size:2rem;margin-bottom:14px;">📿</div>
-          <div style="font-size:.95rem;font-weight:600;letter-spacing:-.01em;margin-bottom:8px;">
-            <span class="en">Ramadan Daily Tracker</span>
-            <span class="ar">تتبع رمضان اليومي</span>
-          </div>
-          <div style="font-size:.82rem;color:var(--text-2,#6B7280);line-height:1.65;">
-            <span class="en">Track your 30-day Ramadan journey: fasting log, Quran reading progress, Laylatul Qadr countdown, and Iftar calorie planning.</span>
-            <span class="ar">تابع رحلتك في رمضان الثلاثين: سجل الصيام وتقدم قراءة القرآن وعداد ليلة القدر وتخطيط سعرات الإفطار.</span>
-          </div>
-        </div>
-
-      </div>
-
-      <div style="text-align:center;margin-top:36px;">
-        <p style="font-size:.83rem;color:var(--text-2,#6B7280);">
-          <span class="en">Have a suggestion for an Islamic tool? The platform is built for this community.</span>
-          <span class="ar">هل لديك اقتراح لأداة إسلامية؟ المنصة مبنية لهذا المجتمع.</span>
-        </p>
-        <a href="contact.html" style="display:inline-flex;margin-top:12px;padding:10px 24px;border-radius:999px;background:rgba(27,122,78,.1);border:1px solid rgba(27,122,78,.25);color:#1B7A4E;font-size:.82rem;font-weight:700;text-decoration:none;">
-          <span class="en">Send a suggestion →</span>
-          <span class="ar">أرسل اقتراحاً ←</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ISLAMIC LIFE JOURNEY CHOOSER -->
-  <section style="padding:clamp(60px,9vw,90px) 0;background:var(--card-bg,#fff);border-top:1px solid var(--border-l);" aria-label="Islamic life journey">
-    <div class="container">
-      <div style="text-align:center;margin-bottom:40px;">
-        <span style="display:inline-flex;align-items:center;gap:6px;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#1B7A4E;border:1px solid rgba(27,122,78,.2);background:rgba(27,122,78,.06);border-radius:999px;padding:5px 14px;margin-bottom:16px;">
-          <span class="en">YOUR SPIRITUAL JOURNEY · رحلتك الروحية</span><span class="ar">رحلتك الروحية</span>
-        </span>
-        <h2 style="font-family:var(--font-serif);font-size:clamp(1.5rem,3vw,2rem);font-weight:300;letter-spacing:-.01em;color:var(--text-1,#1A1410);margin:0 0 12px;">
-          <span class="en">Where is your spiritual focus right now?</span>
-          <span class="ar">أين تركيزك الروحي الآن؟</span>
-        </h2>
-        <p style="font-size:.95rem;color:var(--text-2,#6B7280);max-width:460px;margin:0 auto;line-height:1.65;">
-          <span class="en">Islam is lived at different intensities through the year. Choose your season — we'll show you the tools built for this moment.</span>
-          <span class="ar">الإسلام يُعاش بمستويات مختلفة على مدار العام. اختر موسمك — وسنريك الأدوات المبنية لهذه اللحظة.</span>
-        </p>
-      </div>
-
-      <!-- Journey Selector Tabs -->
-      <div id="isl-journey-tabs" style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:36px;">
-        <button onclick="selectIslJourney('ramadan',this)" class="hj-tab" style="padding:11px 22px;border-radius:999px;border:1.5px solid #1B7A4E;background:#1B7A4E;color:#fff;font-size:.82rem;font-weight:700;cursor:pointer;transition:all .2s;font-family:inherit;">🌙 <span class="en">Ramadan</span><span class="ar">رمضان</span></button>
-        <button onclick="selectIslJourney('hajj',this)" class="hj-tab" style="padding:11px 22px;border-radius:999px;border:1.5px solid var(--border-l);background:var(--body-bg,#f5f7fa);color:var(--text-2,#6B7280);font-size:.82rem;font-weight:700;cursor:pointer;transition:all .2s;font-family:inherit;">🕌 <span class="en">Hajj & Umrah</span><span class="ar">الحج والعمرة</span></button>
-        <button onclick="selectIslJourney('daily',this)" class="hj-tab" style="padding:11px 22px;border-radius:999px;border:1.5px solid var(--border-l);background:var(--body-bg,#f5f7fa);color:var(--text-2,#6B7280);font-size:.82rem;font-weight:700;cursor:pointer;transition:all .2s;font-family:inherit;">☀️ <span class="en">Daily Practice</span><span class="ar">الممارسة اليومية</span></button>
-      </div>
-
-      <!-- Journey: Ramadan -->
-      <div id="isl-ramadan" class="hj-panel">
-        <div style="background:rgba(27,122,78,.05);border:1px solid rgba(27,122,78,.12);border-radius:18px;padding:22px 26px;margin-bottom:28px;max-width:640px;margin-left:auto;margin-right:auto;text-align:center;">
-          <p style="font-size:1rem;font-style:italic;color:var(--text-1,#111);line-height:1.7;margin:0;">
-            <span class="en">"Ramadan is not a month of hunger. It is a month of clarity — about what nourishes the soul, and what merely feeds the appetite."</span>
-            <span class="ar">"رمضان ليس شهر جوع. إنه شهر وضوح — حول ما يغذي الروح وما يغذي الشهية فحسب."</span>
-          </p>
-        </div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;">
-          <a href="/tools/ramadan-calorie-calculator.html" style="display:block;background:var(--body-bg,#f5f7fa);border:1.5px solid var(--border-l);border-radius:18px;padding:22px 18px;text-decoration:none;color:var(--text-1,#111);transition:all .2s;" onmouseover="this.style.borderColor='#1B7A4E';this.style.boxShadow='0 6px 24px rgba(27,122,78,.12)'" onmouseout="this.style.borderColor='var(--border-l)';this.style.boxShadow='none'">
-            <div style="font-size:1.5rem;margin-bottom:10px;">🌙</div>
-            <div style="font-size:.7rem;font-weight:700;color:#1B7A4E;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;"><span class="en">Step 1</span><span class="ar">الخطوة ١</span></div>
-            <div style="font-size:.92rem;font-weight:700;margin-bottom:5px;"><span class="en">Ramadan Tracker</span><span class="ar">متتبع رمضان</span></div>
-            <div style="font-size:.78rem;color:var(--text-2,#6B7280);line-height:1.5;margin-bottom:12px;"><span class="en">Log each fast. Track Quran reading. Count down to Laylatul Qadr. See your 30-day arc of devotion.</span><span class="ar">سجّل كل يوم صيام. تابع قراءة القرآن. العدّ التنازلي لليلة القدر. شاهد قوس عبادتك الثلاثين يوماً.</span></div>
-            <div style="font-size:.75rem;font-weight:700;color:#1B7A4E;">→ <span class="en">Start tracking</span><span class="ar">ابدأ التتبع</span></div>
-          </a>
-          <a href="tools/prayer-times.html" style="display:block;background:var(--body-bg,#f5f7fa);border:1.5px solid var(--border-l);border-radius:18px;padding:22px 18px;text-decoration:none;color:var(--text-1,#111);transition:all .2s;" onmouseover="this.style.borderColor='#1B7A4E';this.style.boxShadow='0 6px 24px rgba(27,122,78,.12)'" onmouseout="this.style.borderColor='var(--border-l)';this.style.boxShadow='none'">
-            <div style="font-size:1.5rem;margin-bottom:10px;">🕐</div>
-            <div style="font-size:.7rem;font-weight:700;color:#1B7A4E;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;"><span class="en">Step 2</span><span class="ar">الخطوة ٢</span></div>
-            <div style="font-size:.92rem;font-weight:700;margin-bottom:5px;"><span class="en">Suhoor & Iftar Times</span><span class="ar">أوقات السحور والإفطار</span></div>
-            <div style="font-size:.78rem;color:var(--text-2,#6B7280);line-height:1.5;margin-bottom:12px;"><span class="en">Know your exact Fajr and Maghrib times, wherever you are. The two anchors that structure every Ramadan day.</span><span class="ar">اعرف أوقات الفجر والمغرب بدقة، أينما كنت. الركيزتان اللتان تُهيكلان كل يوم رمضاني.</span></div>
-            <div style="font-size:.75rem;font-weight:700;color:#1B7A4E;">→ <span class="en">Get times</span><span class="ar">احصل على الأوقات</span></div>
-          </a>
-          <a href="tools/water-calculator.html" style="display:block;background:var(--body-bg,#f5f7fa);border:1.5px solid var(--border-l);border-radius:18px;padding:22px 18px;text-decoration:none;color:var(--text-1,#111);transition:all .2s;" onmouseover="this.style.borderColor='#1B7A4E';this.style.boxShadow='0 6px 24px rgba(27,122,78,.12)'" onmouseout="this.style.borderColor='var(--border-l)';this.style.boxShadow='none'">
-            <div style="font-size:1.5rem;margin-bottom:10px;">💧</div>
-            <div style="font-size:.7rem;font-weight:700;color:#1B7A4E;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;"><span class="en">Step 3</span><span class="ar">الخطوة ٣</span></div>
-            <div style="font-size:.92rem;font-weight:700;margin-bottom:5px;"><span class="en">Ramadan Hydration Plan</span><span class="ar">خطة ترطيب رمضان</span></div>
-            <div style="font-size:.78rem;color:var(--text-2,#6B7280);line-height:1.5;margin-bottom:12px;"><span class="en">How much water between Iftar and Suhoor? Calculate your fasting-adjusted daily intake.</span><span class="ar">كم تحتاج من الماء بين الإفطار والسحور؟ احسب استهلاكك اليومي المُعدَّل للصيام.</span></div>
-            <div style="font-size:.75rem;font-weight:700;color:#1B7A4E;">→ <span class="en">Calculate intake</span><span class="ar">احسب الاستهلاك</span></div>
-          </a>
-          <a href="tools/zakat-calculator.html" style="display:block;background:var(--body-bg,#f5f7fa);border:1.5px solid var(--border-l);border-radius:18px;padding:22px 18px;text-decoration:none;color:var(--text-1,#111);transition:all .2s;" onmouseover="this.style.borderColor='#1B7A4E';this.style.boxShadow='0 6px 24px rgba(27,122,78,.12)'" onmouseout="this.style.borderColor='var(--border-l)';this.style.boxShadow='none'">
-            <div style="font-size:1.5rem;margin-bottom:10px;">💰</div>
-            <div style="font-size:.7rem;font-weight:700;color:#1B7A4E;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;"><span class="en">Step 4</span><span class="ar">الخطوة ٤</span></div>
-            <div style="font-size:.92rem;font-weight:700;margin-bottom:5px;"><span class="en">Zakat al-Fitr & Zakat al-Mal</span><span class="ar">زكاة الفطر وزكاة المال</span></div>
-            <div style="font-size:.78rem;color:var(--text-2,#6B7280);line-height:1.5;margin-bottom:12px;"><span class="en">Ramadan ends with giving. Calculate Zakat al-Fitr for each family member — and your full obligation if due.</span><span class="ar">رمضان ينتهي بالعطاء. احسب زكاة الفطر لكل فرد — وزكاتك الكاملة إن حالت.</span></div>
-            <div style="font-size:.75rem;font-weight:700;color:#1B7A4E;">→ <span class="en">Calculate Zakat</span><span class="ar">احسب الزكاة</span></div>
-          </a>
-        </div>
-      </div>
-
-      <!-- Journey: Hajj & Umrah -->
-      <div id="isl-hajj" class="hj-panel" style="display:none;">
-        <div style="background:rgba(27,122,78,.05);border:1px solid rgba(27,122,78,.12);border-radius:18px;padding:22px 26px;margin-bottom:28px;max-width:640px;margin-left:auto;margin-right:auto;text-align:center;">
-          <p style="font-size:1rem;font-style:italic;color:var(--text-1,#111);line-height:1.7;margin:0;">
-            <span class="en">"Hajj is not a destination — it is a return. To the source of your faith, to the origin of your direction, to the beginning of your story."</span>
-            <span class="ar">"الحج ليس وجهة — بل عودة. إلى منبع إيمانك وأصل قبلتك وبداية قصتك."</span>
-          </p>
-        </div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;">
-          <a href="/islamic.html" style="display:block;background:var(--body-bg,#f5f7fa);border:1.5px solid var(--border-l);border-radius:18px;padding:22px 18px;text-decoration:none;color:var(--text-1,#111);transition:all .2s;" onmouseover="this.style.borderColor='#1B7A4E';this.style.boxShadow='0 6px 24px rgba(27,122,78,.12)'" onmouseout="this.style.borderColor='var(--border-l)';this.style.boxShadow='none'">
-            <div style="font-size:1.5rem;margin-bottom:10px;">🕌</div>
-            <div style="font-size:.7rem;font-weight:700;color:#1B7A4E;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;"><span class="en">Step 1</span><span class="ar">الخطوة ١</span></div>
-            <div style="font-size:.92rem;font-weight:700;margin-bottom:5px;"><span class="en">Hajj & Umrah Planner</span><span class="ar">مخطط الحج والعمرة</span></div>
-            <div style="font-size:.78rem;color:var(--text-2,#6B7280);line-height:1.5;margin-bottom:12px;"><span class="en">The rituals in order. The supplications for each station. The spiritual intention behind every step. Nothing missed.</span><span class="ar">المناسك بالترتيب. الأدعية لكل محطة. النية الروحية خلف كل خطوة. لا شيء يُنسى.</span></div>
-            <div style="font-size:.75rem;font-weight:700;color:#1B7A4E;">→ <span class="en">Start planning</span><span class="ar">ابدأ التخطيط</span></div>
-          </a>
-          <a href="/tools/qibla.html" style="display:block;background:var(--body-bg,#f5f7fa);border:1.5px solid var(--border-l);border-radius:18px;padding:22px 18px;text-decoration:none;color:var(--text-1,#111);transition:all .2s;" onmouseover="this.style.borderColor='#1B7A4E';this.style.boxShadow='0 6px 24px rgba(27,122,78,.12)'" onmouseout="this.style.borderColor='var(--border-l)';this.style.boxShadow='none'">
-            <div style="font-size:1.5rem;margin-bottom:10px;">🧭</div>
-            <div style="font-size:.7rem;font-weight:700;color:#1B7A4E;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;"><span class="en">Step 2</span><span class="ar">الخطوة ٢</span></div>
-            <div style="font-size:.92rem;font-weight:700;margin-bottom:5px;"><span class="en">Qibla Direction</span><span class="ar">اتجاه القبلة</span></div>
-            <div style="font-size:.78rem;color:var(--text-2,#6B7280);line-height:1.5;margin-bottom:12px;"><span class="en">You'll pray in many places on this journey — hotels, airports, courtyards. Know your direction before you bow.</span><span class="ar">ستصلي في أماكن كثيرة خلال هذه الرحلة — فنادق ومطارات وساحات. اعرف اتجاهك قبل الركوع.</span></div>
-            <div style="font-size:.75rem;font-weight:700;color:#1B7A4E;">→ <span class="en">Find Qibla</span><span class="ar">ابحث عن القبلة</span></div>
-          </a>
-          <a href="tools/zakat-calculator.html" style="display:block;background:var(--body-bg,#f5f7fa);border:1.5px solid var(--border-l);border-radius:18px;padding:22px 18px;text-decoration:none;color:var(--text-1,#111);transition:all .2s;" onmouseover="this.style.borderColor='#1B7A4E';this.style.boxShadow='0 6px 24px rgba(27,122,78,.12)'" onmouseout="this.style.borderColor='var(--border-l)';this.style.boxShadow='none'">
-            <div style="font-size:1.5rem;margin-bottom:10px;">💰</div>
-            <div style="font-size:.7rem;font-weight:700;color:#1B7A4E;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;"><span class="en">Step 3</span><span class="ar">الخطوة ٣</span></div>
-            <div style="font-size:.92rem;font-weight:700;margin-bottom:5px;"><span class="en">Clear Your Zakat Before Departure</span><span class="ar">أدِّ زكاتك قبل السفر</span></div>
-            <div style="font-size:.78rem;color:var(--text-2,#6B7280);line-height:1.5;margin-bottom:12px;"><span class="en">Many scholars recommend clearing obligations before Hajj. Calculate Zakat on savings, gold, and investments before you leave.</span><span class="ar">كثير من العلماء يوصون بتأدية الواجبات قبل الحج. احسب الزكاة على المدخرات والذهب والاستثمارات قبل المغادرة.</span></div>
-            <div style="font-size:.75rem;font-weight:700;color:#1B7A4E;">→ <span class="en">Calculate now</span><span class="ar">احسب الآن</span></div>
-          </a>
-          <a href="tools/hijri-converter.html" style="display:block;background:var(--body-bg,#f5f7fa);border:1.5px solid var(--border-l);border-radius:18px;padding:22px 18px;text-decoration:none;color:var(--text-1,#111);transition:all .2s;" onmouseover="this.style.borderColor='#1B7A4E';this.style.boxShadow='0 6px 24px rgba(27,122,78,.12)'" onmouseout="this.style.borderColor='var(--border-l)';this.style.boxShadow='none'">
-            <div style="font-size:1.5rem;margin-bottom:10px;">📅</div>
-            <div style="font-size:.7rem;font-weight:700;color:#1B7A4E;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;"><span class="en">Step 4</span><span class="ar">الخطوة ٤</span></div>
-            <div style="font-size:.92rem;font-weight:700;margin-bottom:5px;"><span class="en">Hijri Date — Sacred Timing</span><span class="ar">التاريخ الهجري — التوقيت المقدس</span></div>
-            <div style="font-size:.78rem;color:var(--text-2,#6B7280);line-height:1.5;margin-bottom:12px;"><span class="en">Hajj rituals have sacred days: 8th, 9th, 10th of Dhul Hijjah. Know exactly where you are in the Islamic calendar.</span><span class="ar">لمناسك الحج أيام مقدسة: الثامن والتاسع والعاشر من ذي الحجة. اعرف أين أنت في التقويم الهجري.</span></div>
-            <div style="font-size:.75rem;font-weight:700;color:#1B7A4E;">→ <span class="en">Convert date</span><span class="ar">حوّل التاريخ</span></div>
-          </a>
-        </div>
-      </div>
-
-      <!-- Journey: Daily Practice -->
-      <div id="isl-daily" class="hj-panel" style="display:none;">
-        <div style="background:rgba(27,122,78,.05);border:1px solid rgba(27,122,78,.12);border-radius:18px;padding:22px 26px;margin-bottom:28px;max-width:640px;margin-left:auto;margin-right:auto;text-align:center;">
-          <p style="font-size:1rem;font-style:italic;color:var(--text-1,#111);line-height:1.7;margin:0;">
-            <span class="en">"The daily practice is not the lesser Islam. It is the root. Hajj and Ramadan are the fruit of what is tended every ordinary morning."</span>
-            <span class="ar">"الممارسة اليومية ليست الإسلام الأقل. إنها الجذر. الحج ورمضان هما ثمرة ما يُرعى في كل صباح عادي."</span>
-          </p>
-        </div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;">
-          <a href="tools/prayer-times.html" style="display:block;background:var(--body-bg,#f5f7fa);border:1.5px solid var(--border-l);border-radius:18px;padding:22px 18px;text-decoration:none;color:var(--text-1,#111);transition:all .2s;" onmouseover="this.style.borderColor='#1B7A4E';this.style.boxShadow='0 6px 24px rgba(27,122,78,.12)'" onmouseout="this.style.borderColor='var(--border-l)';this.style.boxShadow='none'">
-            <div style="font-size:1.5rem;margin-bottom:10px;">🕐</div>
-            <div style="font-size:.7rem;font-weight:700;color:#1B7A4E;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;"><span class="en">First</span><span class="ar">أولاً</span></div>
-            <div style="font-size:.92rem;font-weight:700;margin-bottom:5px;"><span class="en">Today's Prayer Times</span><span class="ar">أوقات صلاة اليوم</span></div>
-            <div style="font-size:.78rem;color:var(--text-2,#6B7280);line-height:1.5;margin-bottom:12px;"><span class="en">Five prayers. Five anchors. Five times the day pauses for something greater than the task in front of you.</span><span class="ar">خمس صلوات. خمس مراسي. خمس مرات يتوقف اليوم لشيء أعظم من المهمة أمامك.</span></div>
-            <div style="font-size:.75rem;font-weight:700;color:#1B7A4E;">→ <span class="en">See times</span><span class="ar">شاهد الأوقات</span></div>
-          </a>
-          <a href="/tools/qibla.html" style="display:block;background:var(--body-bg,#f5f7fa);border:1.5px solid var(--border-l);border-radius:18px;padding:22px 18px;text-decoration:none;color:var(--text-1,#111);transition:all .2s;" onmouseover="this.style.borderColor='#1B7A4E';this.style.boxShadow='0 6px 24px rgba(27,122,78,.12)'" onmouseout="this.style.borderColor='var(--border-l)';this.style.boxShadow='none'">
-            <div style="font-size:1.5rem;margin-bottom:10px;">🧭</div>
-            <div style="font-size:.7rem;font-weight:700;color:#1B7A4E;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;"><span class="en">Direction</span><span class="ar">الاتجاه</span></div>
-            <div style="font-size:.92rem;font-weight:700;margin-bottom:5px;"><span class="en">Qibla Finder</span><span class="ar">البحث عن القبلة</span></div>
-            <div style="font-size:.78rem;color:var(--text-2,#6B7280);line-height:1.5;margin-bottom:12px;"><span class="en">Wherever you are — new office, hotel, unfamiliar city — know which way to face. Instantly.</span><span class="ar">أينما كنت — مكتب جديد، فندق، مدينة غير مألوفة — اعرف الاتجاه. فوراً.</span></div>
-            <div style="font-size:.75rem;font-weight:700;color:#1B7A4E;">→ <span class="en">Find Qibla</span><span class="ar">ابحث عن القبلة</span></div>
-          </a>
-          <a href="tools/zakat-calculator.html" style="display:block;background:var(--body-bg,#f5f7fa);border:1.5px solid var(--border-l);border-radius:18px;padding:22px 18px;text-decoration:none;color:var(--text-1,#111);transition:all .2s;" onmouseover="this.style.borderColor='#1B7A4E';this.style.boxShadow='0 6px 24px rgba(27,122,78,.12)'" onmouseout="this.style.borderColor='var(--border-l)';this.style.boxShadow='none'">
-            <div style="font-size:1.5rem;margin-bottom:10px;">💰</div>
-            <div style="font-size:.7rem;font-weight:700;color:#1B7A4E;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;"><span class="en">Wealth</span><span class="ar">المال</span></div>
-            <div style="font-size:.92rem;font-weight:700;margin-bottom:5px;"><span class="en">Zakat — Annual Obligation</span><span class="ar">الزكاة — الواجب السنوي</span></div>
-            <div style="font-size:.78rem;color:var(--text-2,#6B7280);line-height:1.5;margin-bottom:12px;"><span class="en">One of the Five Pillars — fulfilled with clarity. Calculate what's due on savings, gold, and assets.</span><span class="ar">أحد أركان الإسلام الخمسة — يُؤدَّى بوضوح. احسب ما يجب على المدخرات والذهب والأصول.</span></div>
-            <div style="font-size:.75rem;font-weight:700;color:#1B7A4E;">→ <span class="en">Calculate Zakat</span><span class="ar">احسب الزكاة</span></div>
-          </a>
-          <a href="tools/hijri-converter.html" style="display:block;background:var(--body-bg,#f5f7fa);border:1.5px solid var(--border-l);border-radius:18px;padding:22px 18px;text-decoration:none;color:var(--text-1,#111);transition:all .2s;" onmouseover="this.style.borderColor='#1B7A4E';this.style.boxShadow='0 6px 24px rgba(27,122,78,.12)'" onmouseout="this.style.borderColor='var(--border-l)';this.style.boxShadow='none'">
-            <div style="font-size:1.5rem;margin-bottom:10px;">📅</div>
-            <div style="font-size:.7rem;font-weight:700;color:#1B7A4E;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;"><span class="en">Calendar</span><span class="ar">التقويم</span></div>
-            <div style="font-size:.92rem;font-weight:700;margin-bottom:5px;"><span class="en">Hijri Date Converter</span><span class="ar">محوّل التاريخ الهجري</span></div>
-            <div style="font-size:.78rem;color:var(--text-2,#6B7280);line-height:1.5;margin-bottom:12px;"><span class="en">Live your life in both calendars. Convert any date to Hijri — for anniversaries, occasions, and sacred days.</span><span class="ar">عِش حياتك بالتقويمين. حوّل أي تاريخ إلى الهجري — للمناسبات والأيام المقدسة.</span></div>
-            <div style="font-size:.75rem;font-weight:700;color:#1B7A4E;">→ <span class="en">Convert now</span><span class="ar">حوّل الآن</span></div>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <script>
-  function selectIslJourney(id, btn) {
-    ['isl-ramadan','isl-hajj','isl-daily'].forEach(p => document.getElementById(p).style.display = 'none');
-    document.getElementById('isl-' + id).style.display = 'block';
-    document.querySelectorAll('#isl-journey-tabs .hj-tab').forEach(t => {
-      t.style.background = 'var(--body-bg,#f5f7fa)';
-      t.style.color = 'var(--text-2,#6B7280)';
-      t.style.borderColor = 'var(--border-l)';
-    });
-    btn.style.background = '#1B7A4E';
-    btn.style.color = '#fff';
-    btn.style.borderColor = '#1B7A4E';
-  }
-  </script>
-
-  <!-- AD ZONE -->
-  <div class="container"><div class="ad-zone"><span>Advertisement</span></div></div>
-
-  <!-- ═══ CONTINUE YOUR JOURNEY: Cross-category ecosystem connectors ═══ -->
-  <style>
-    .eco-bridge{padding:72px 0 64px;border-top:1px solid var(--border-l);}
-    .eco-bridge-header{text-align:center;margin-bottom:40px;}
-    .eco-bridge-eyebrow{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;}
-    .eco-bridge-title{font-size:clamp(18px,2.8vw,26px);font-weight:300;color:var(--text-1);letter-spacing:-.02em;margin:0 0 8px;}
-    .eco-bridge-title strong{font-weight:600;}
-    .eco-bridge-sub{font-size:14px;color:var(--text-2);max-width:440px;margin:0 auto;line-height:1.6;}
-    .eco-bridge-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-    .eco-connector{border-radius:16px;background:var(--card-bg);border:1px solid var(--border-l);padding:22px 22px 20px;text-decoration:none;display:flex;flex-direction:column;gap:6px;position:relative;overflow:hidden;transition:transform .3s ease,box-shadow .3s ease;}
-    .eco-connector:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(0,0,0,.07);}
-    .eco-connector::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--eco-clr,#1B7A4E);border-radius:16px 16px 0 0;}
-    .eco-cat-label{font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--eco-clr,#1B7A4E);margin-bottom:2px;}
-    .eco-tool-name{font-size:15px;font-weight:600;color:var(--text-1);letter-spacing:-.01em;line-height:1.3;}
-    .eco-why{font-size:12px;color:var(--text-2);line-height:1.55;flex:1;}
-    .eco-arr{font-size:15px;color:var(--eco-clr,#1B7A4E);margin-top:8px;transition:transform .2s ease;}
-    .eco-connector:hover .eco-arr{transform:translateX(3px);}
-    @media(max-width:640px){.eco-bridge-grid{grid-template-columns:1fr 1fr;}}
-    @media(max-width:400px){.eco-bridge-grid{grid-template-columns:1fr;}}
-  </style>
-  <section class="eco-bridge" aria-label="Continue your journey">
-    <div class="container">
-      <div class="eco-bridge-header">
-        <span class="eco-bridge-eyebrow">
-          <span class="en">Continue your journey</span>
-          <span class="ar">تابع رحلتك</span>
-        </span>
-        <h2 class="eco-bridge-title">
-          <span class="en">Your spiritual life connects to <strong>everything else.</strong></span>
-          <span class="ar">حياتك الروحية تتصل <strong>بكل شيء آخر.</strong></span>
-        </h2>
-        <p class="eco-bridge-sub">
-          <span class="en">Planning Umrah? You'll also need a travel budget, travel checklist, and health preparation.</span>
-          <span class="ar">تخطط للعمرة؟ ستحتاج أيضاً إلى ميزانية سفر وقائمة تعبئة وتحضير صحي.</span>
-        </p>
-      </div>
-      <div class="eco-bridge-grid">
-
-        <a href="travel.html" class="eco-connector reveal" style="--eco-clr:#0097A7;">
-          <span class="eco-cat-label"><span class="en">Travel</span><span class="ar">السفر</span></span>
-          <span class="eco-tool-name">
-            <span class="en">Trip Budget Planner</span>
-            <span class="ar">مخطط ميزانية الرحلة</span>
-          </span>
-          <p class="eco-why">
-            <span class="en">Calculate your Umrah or Hajj trip cost — flights, hotels, spending — before you commit.</span>
-            <span class="ar">احسب تكلفة رحلة عمرتك أو حجك — الرحلات والفنادق والإنفاق — قبل الالتزام.</span>
-          </p>
-          <span class="eco-arr">→</span>
-        </a>
-
-        <a href="travel.html" class="eco-connector reveal" style="--eco-clr:#0097A7;">
-          <span class="eco-cat-label"><span class="en">Travel</span><span class="ar">السفر</span></span>
-          <span class="eco-tool-name">
-            <span class="en">Smart Packing List</span>
-            <span class="ar">قائمة التعبئة الذكية</span>
-          </span>
-          <p class="eco-why">
-            <span class="en">Generate a complete Umrah or Hajj packing list based on your travel dates and destination.</span>
-            <span class="ar">أنشئ قائمة تعبئة كاملة للعمرة أو الحج بناءً على تواريخ سفرك ووجهتك.</span>
-          </p>
-          <span class="eco-arr">→</span>
-        </a>
-
-        <a href="health.html" class="eco-connector reveal" style="--eco-clr:#EF4444;">
-          <span class="eco-cat-label"><span class="en">Health</span><span class="ar">الصحة</span></span>
-          <span class="eco-tool-name">
-            <span class="en">Hydration & Fasting Guide</span>
-            <span class="ar">دليل الترطيب والصيام</span>
-          </span>
-          <p class="eco-why">
-            <span class="en">Prepare your body for Ramadan fasting or Hajj exertion with a personalised hydration plan.</span>
-            <span class="ar">أعد جسدك لصيام رمضان أو مجهود الحج بخطة ترطيب شخصية.</span>
-          </p>
-          <span class="eco-arr">→</span>
-        </a>
-
-      </div>
-    </div>
-  </section>
-  <!-- ═══ /CONTINUE YOUR JOURNEY ═════════════════════════════════════ -->
-
-  <!-- FOOTER -->
-  <footer class="footer-strip">
-    <div class="container">
-      <p>
-        <span class="en">© 2025 <a href="index.html">DOTFORLIFE</a> · Free Islamic Life Tools · Bilingual Arabic & English · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></span>
-        <span class="ar">© 2025 <a href="index.html">DOTFORLIFE</a> · أدوات الحياة الإسلامية المجانية · ثنائية اللغة · <a href="privacy.html">الخصوصية</a> · <a href="terms.html">الشروط</a></span>
-      </p>
-    </div>
-  </footer>
-
-  <script>
-    // Theme & Language
-    const themeBtn = document.getElementById('themeBtn');
-    const langBtn  = document.getElementById('langBtn');
-    const html     = document.documentElement;
-
-    themeBtn.addEventListener('click', () => {
-      const isDark = html.getAttribute('data-theme') === 'dark';
-      html.setAttribute('data-theme', isDark ? 'light' : 'dark');
-      themeBtn.textContent = isDark ? '🌙' : '☀️';
-      localStorage.setItem('dfl-theme', isDark ? 'light' : 'dark');
-    });
-    if (html.getAttribute('data-theme') === 'dark') themeBtn.textContent = '☀️';
-
-    langBtn.addEventListener('click', () => {
-      const isAr = html.getAttribute('data-lang') === 'ar';
-      const newLang = isAr ? 'en' : 'ar';
-      html.setAttribute('data-lang', newLang);
-      html.setAttribute('lang', newLang);
-      html.setAttribute('dir', newLang === 'ar' ? 'rtl' : 'ltr');
-      localStorage.setItem('dfl-lang', newLang);
-    });
-
-    // Navbar scroll
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 10);
-    }, { passive: true });
-
-    // Reveal on scroll
-    const reveals = document.querySelectorAll('.reveal');
-    const revealObs = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.12 });
-    reveals.forEach(r => revealObs.observe(r));
-
-    // Live Hijri date display
-    (function() {
-      try {
-        const today = new Date();
-        const hijri = new Intl.DateTimeFormat('ar-SA-u-ca-islamic-umalqura', {
-          day: 'numeric', month: 'long', year: 'numeric'
-        }).formatToParts(today);
-        const parts = {};
-        hijri.forEach(p => { parts[p.type] = p.value; });
-        const dayEl = document.getElementById('hijriDay');
-        const monthEl = document.getElementById('hijriMonth');
-        const yearEl = document.getElementById('hijriYear');
-        if (dayEl && parts.day) dayEl.textContent = parts.day;
-        if (monthEl && parts.month) monthEl.innerHTML = `<span class="en">${parts.month}</span><span class="ar">${parts.month}</span>`;
-        if (yearEl && parts.year) yearEl.textContent = parts.year;
-      } catch(e) { /* fallback — shows placeholder */ }
-    })();
-  </script>
-<script>
-// Scroll Progress Bar
-(function(){var b=document.createElement("div");b.style.cssText="position:fixed;top:0;left:0;width:0%;height:2px;background:linear-gradient(90deg,#B8861A,#D4A832);z-index:9999;transition:width .1s linear;pointer-events:none;";document.body.appendChild(b);window.addEventListener("scroll",function(){var d=document.documentElement.scrollHeight-window.innerHeight;b.style.width=(d>0?Math.min(100,(window.scrollY/d)*100):0)+"%";},{passive:true});})();</script>
-<!-- ═══ NEWSLETTER ══════════════════════════════════ -->
-<section class="nl-section" aria-label="Newsletter signup">
-  <div class="container">
-    <div class="nl-inner">
-      <div>
-        <div class="nl-eyebrow"><span class="nl-dot"></span><span class="en">Stay updated</span><span class="ar">ابقَ على اطلاع</span></div>
-        <h2 class="nl-title">
-          <span class="en">New tools &amp; life guides — free monthly.</span>
-          <span class="ar">أدوات جديدة وأدلة خليجية — مجاناً كل شهر.</span>
-        </h2>
-        <p class="nl-sub">
-          <span class="en">No spam. Unsubscribe anytime.</span>
-          <span class="ar">بدون إزعاج. إلغاء في أي وقت.</span>
-        </p>
-      </div>
-      <div>
-        <form class="nl-form"
-          action="https://dotforlife.us1.list-manage.com/subscribe/post?u=XXXXXXXX&amp;id=XXXXXXXX"
-          method="post" target="_blank" novalidate>
-          <div class="nl-input-row">
-            <input type="email" name="EMAIL" class="nl-input" required placeholder="your@email.com" />
-            <button type="submit" class="nl-btn"><span class="en">Subscribe →</span><span class="ar">اشترك ←</span></button>
-          </div>
-          <div style="position:absolute;left:-5000px;" aria-hidden="true"><input type="text" name="b_XXXXXXXX_XXXXXXXX" tabindex="-1" value=""></div>
-          <div class="nl-success" style="display:none;">✅ <span class="en">Subscribed! Welcome.</span><span class="ar">تم الاشتراك!</span></div>
-        </form>
-        <div class="nl-trust">🔒 <span class="en">No data sold · Privacy protected</span><span class="ar">خصوصية محمية · لا نبيع بياناتك</span></div>
-      </div>
     </div>
   </div>
 </section>
 
+<!-- GUIDE STRIP -->
+<div class="container">
+  <div class="guide-strip reveal">
+    <div class="guide-strip-text">
+      <h3><span class="en">Planning your Umrah or Hajj?</span><span class="ar">تخطط لرحلة العمرة أو الحج؟</span></h3>
+      <p><span class="en">Read our complete guide to Mecca and Madinah — preparation, packing, prayers, and what to expect at every step.</span><span class="ar">اقرأ دليلنا الشامل لمكة والمدينة — التحضير، التعبئة، الأدعية، وما تتوقعه في كل خطوة.</span></p>
+    </div>
+    <a href="/guides/mecca-medina.html" class="btn btn-gold">
+      <span class="en">Read guide →</span><span class="ar">اقرأ الدليل →</span>
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="/" class="dfl-nav-logo" aria-label="DOTFORLIFE">
+          <img src="/images/logo-light.png" alt="DOTFORLIFE" />
+        </a>
+        <p><span class="en">A calm daily operating system for family life.</span><span class="ar">نظام تشغيل هادئ لحياة الأسرة اليومية.</span></p>
+      </div>
+      <div class="footer-links-group">
+        <h4><span class="en">Categories</span><span class="ar">الأقسام</span></h4>
+        <ul>
+          <li><a href="/health.html"><span class="en">Health</span><span class="ar">صحة</span></a></li>
+          <li><a href="/finance.html"><span class="en">Finance</span><span class="ar">مال</span></a></li>
+          <li><a href="/travel.html"><span class="en">Travel</span><span class="ar">سفر</span></a></li>
+          <li><a href="/islamic.html"><span class="en">Islamic</span><span class="ar">إسلام</span></a></li>
+        </ul>
+      </div>
+      <div class="footer-links-group">
+        <h4><span class="en">Daily OS</span><span class="ar">النظام اليومي</span></h4>
+        <ul>
+          <li><a href="/tasks.html"><span class="en">Tasks</span><span class="ar">المهام</span></a></li>
+          <li><a href="/family.html"><span class="en">Family</span><span class="ar">العائلة</span></a></li>
+          <li><a href="/notes.html"><span class="en">Notes</span><span class="ar">ملاحظات</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 DOTFORLIFE</span>
+      <div style="display:flex;gap:16px;">
+        <a href="/privacy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a>
+        <a href="/terms.html"><span class="en">Terms</span><span class="ar">الشروط</span></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- MOBILE NAV -->
+<nav class="mobile-nav" aria-label="Mobile navigation">
+  <a href="/" class="mobile-nav-item"><span>🏠</span><span class="en">Home</span><span class="ar">الرئيسية</span></a>
+  <a href="/tasks.html" class="mobile-nav-item"><span>✅</span><span class="en">Tasks</span><span class="ar">المهام</span></a>
+  <a href="/family.html" class="mobile-nav-item"><span>👨‍👩‍👧</span><span class="en">Family</span><span class="ar">العائلة</span></a>
+  <a href="/notes.html" class="mobile-nav-item"><span>📝</span><span class="en">Notes</span><span class="ar">ملاحظات</span></a>
+  <a href="/islamic.html" class="mobile-nav-item active"><span>🕌</span><span class="en">Islamic</span><span class="ar">إسلام</span></a>
+</nav>
+
 <script>
-// Newsletter form handler
-document.querySelectorAll('.nl-form').forEach(function(form){
-  form.addEventListener('submit',function(){
-    var s=form.querySelector('.nl-success');
-    var r=form.querySelector('.nl-input-row');
-    if(s&&r){setTimeout(function(){s.style.display='flex';r.style.display='none';localStorage.setItem('dfl_nl_subscribed','1');},500);}
+  // Theme
+  var themeBtn = document.getElementById('theme-btn');
+  themeBtn.addEventListener('click', function(){
+    var h = document.documentElement;
+    var next = h.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    h.setAttribute('data-theme', next);
+    localStorage.setItem('dfl-theme', next);
+    themeBtn.textContent = next === 'dark' ? '☀️' : '🌙';
   });
-});
+  if (document.documentElement.getAttribute('data-theme') === 'dark') themeBtn.textContent = '☀️';
+
+  // Language
+  var langBtn = document.getElementById('lang-toggle');
+  langBtn.addEventListener('click', function(){
+    var h = document.documentElement;
+    var next = h.getAttribute('data-lang') === 'ar' ? 'en' : 'ar';
+    h.setAttribute('data-lang', next);
+    h.setAttribute('lang', next);
+    h.setAttribute('dir', next === 'ar' ? 'rtl' : 'ltr');
+    localStorage.setItem('dfl-lang', next);
+    langBtn.textContent = next === 'ar' ? 'EN' : 'عربي';
+  });
+  if (document.documentElement.getAttribute('data-lang') === 'ar') langBtn.textContent = 'EN';
+
+  // Navbar scroll
+  window.addEventListener('scroll', function(){
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 10);
+  }, { passive: true });
+
+  // Reveal on scroll
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(function(el){ obs.observe(el); });
 </script>
-
-  <!-- DFL CANONICAL FOOTER -->
-  <footer id="dfl-footer" role="contentinfo">
-    <div class="dfl-footer-grid">
-      <div class="dfl-footer-brand">
-        <div class="dfl-flogo"><img src="/logo1-footer.png" alt="Dot4Life" height="144" style="height:144px;width:auto;display:block;"></div>
-        <p><span class="en">A trusted daily companion for every family. Free, precise, and deeply human. Arabic &amp; English.</span><span class="ar">الرفيق اليومي الموثوق لكل أسرة. مجاني ودقيق وإنساني. عربي وإنجليزي.</span></p>
-      </div>
-      <div class="dfl-footer-col">
-        <h4><span class="en">Health</span><span class="ar">الصحة</span></h4>
-        <ul>
-          <li><a href="/tools/pregnancy-calculator.html"><span class="en">Pregnancy Tracker</span><span class="ar">متتبع الحمل</span></a></li>
-          <li><a href="/tools/bmi-calculator.html"><span class="en">BMI Calculator</span><span class="ar">حاسبة BMI</span></a></li>
-          <li><a href="/tools/calorie-calculator.html"><span class="en">Calorie Calculator</span><span class="ar">حاسبة السعرات</span></a></li>
-          <li><a href="/tools/water-calculator.html"><span class="en">Hydration Guide</span><span class="ar">دليل الترطيب</span></a></li>
-        </ul>
-      </div>
-      <div class="dfl-footer-col">
-        <h4><span class="en">Finance</span><span class="ar">المالية</span></h4>
-        <ul>
-          <li><a href="/tools/mortgage-calculator.html"><span class="en">Mortgage Calculator</span><span class="ar">حاسبة التمويل</span></a></li>
-          <li><a href="/tools/zakat-calculator.html"><span class="en">Zakat Calculator</span><span class="ar">حاسبة الزكاة</span></a></li>
-          <li><a href="/tools/savings-goal.html"><span class="en">Savings Goal</span><span class="ar">هدف الادخار</span></a></li>
-          <li><a href="/tools/monthly-budget.html"><span class="en">Monthly Budget</span><span class="ar">الميزانية الشهرية</span></a></li>
-        </ul>
-      </div>
-      <div class="dfl-footer-col">
-        <h4><span class="en">Real Estate</span><span class="ar">العقار</span></h4>
-        <ul>
-          <li><a href="/real-estate.html"><span class="en">Property Hub</span><span class="ar">مركز العقارات</span></a></li>
-          <li><a href="/tools/rental-yield-calculator.html"><span class="en">Rental Yield</span><span class="ar">العائد الإيجاري</span></a></li>
-          <li><a href="/tools/roi-calculator.html"><span class="en">ROI Calculator</span><span class="ar">حاسبة العائد</span></a></li>
-          <li><a href="/cities/dubai/"><span class="en">Dubai</span><span class="ar">دبي</span></a></li>
-        </ul>
-      </div>
-      <div class="dfl-footer-col">
-        <h4><span class="en">Travel &amp; Islamic</span><span class="ar">السفر والإسلامية</span></h4>
-        <ul>
-          <li><a href="/tools/travel-budget.html"><span class="en">Travel Budget</span><span class="ar">ميزانية السفر</span></a></li>
-          <li><a href="/tools/packing-checklist.html"><span class="en">Packing Checklist</span><span class="ar">قائمة الحقيبة</span></a></li>
-          <li><a href="/tools/prayer-times.html"><span class="en">Prayer Times</span><span class="ar">أوقات الصلاة</span></a></li>
-          <li><a href="/tools/qibla.html"><span class="en">Qibla Direction</span><span class="ar">اتجاه القبلة</span></a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="dfl-footer-bottom">
-      <span>© 2025 DOTFORLIFE. <span class="en">All rights reserved.</span><span class="ar">جميع الحقوق محفوظة.</span></span>
-      <span>
-        <a href="/privacy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a> ·
-        <a href="/terms.html"><span class="en">Terms</span><span class="ar">الشروط</span></a> ·
-        <a href="/about.html"><span class="en">About</span><span class="ar">عن المنصة</span></a>
-      </span>
-    </div>
-  </footer>
-  <!-- DFL MOBILE NAV -->
-  <nav id="dfl-mobile-nav" aria-label="Mobile navigation">
-    <div class="dfl-mnav-inner">
-      <a href="/" class="dfl-mnav-item" aria-label="Home">
-        <svg viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
-        <span class="en">Home</span><span class="ar">الرئيسية</span>
-      </a>
-      <a href="/health.html" class="dfl-mnav-item" aria-label="Health">
-        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-        <span class="en">Health</span><span class="ar">الصحة</span>
-      </a>
-      <a href="/finance.html" class="dfl-mnav-item" aria-label="Finance">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v12M9 9h4.5a2.5 2.5 0 010 5H9m0 0h5"/></svg>
-        <span class="en">Finance</span><span class="ar">المالية</span>
-      </a>
-      <a href="/islamic.html" class="dfl-mnav-item" aria-label="Islamic">
-        <svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 100 18A9 9 0 0012 3zM12 3c-2 2-3 4.5-3 9s1 7 3 9m0-18c2 2 3 4.5 3 9s-1 7-3 9M3 12h18"/></svg>
-        <span class="en">Islamic</span><span class="ar">الإسلامية</span>
-      </a>
-      <a href="/travel.html" class="dfl-mnav-item" aria-label="Travel">
-        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 011.06 2.2 2 2 0 013.04 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
-        <span class="en">Travel</span><span class="ar">السفر</span>
-      </a>
-    </div>
-  </nav>
-
-  <script id="dfl-nav-js">
-  (function(){
-    // Flash prevention
-    (function(){
-      var t=localStorage.getItem('dfl-theme')||'light',l=localStorage.getItem('dfl-lang')||'en',h=document.documentElement;
-      h.setAttribute('data-theme',t);h.setAttribute('data-lang',l);
-      h.setAttribute('lang',l==='ar'?'ar':'en');h.setAttribute('dir',l==='ar'?'rtl':'ltr');
-    })();
-    function ready(fn){ if(document.readyState!=='loading') fn(); else document.addEventListener('DOMContentLoaded',fn); }
-    ready(function(){
-      // Scroll shadow
-      var nb=document.getElementById('dfl-navbar');
-      if(nb){ window.addEventListener('scroll',function(){ nb.classList.toggle('scrolled',window.scrollY>40); },{passive:true}); }
-      // Language
-      var lb=document.getElementById('dfl-lang-btn');
-      if(lb){ lb.addEventListener('click',function(){
-        var h=document.documentElement,l=h.getAttribute('data-lang')==='ar'?'en':'ar';
-        h.setAttribute('data-lang',l);h.setAttribute('lang',l);
-        h.setAttribute('dir',l==='ar'?'rtl':'ltr');localStorage.setItem('dfl-lang',l);
-      }); }
-      // Theme
-      var tb=document.getElementById('dfl-theme-btn');
-      if(tb){
-        function applyT(t){
-          document.documentElement.setAttribute('data-theme',t);localStorage.setItem('dfl-theme',t);
-          var en=tb.querySelector('.en'),ar=tb.querySelector('.ar');
-          if(en)en.textContent=t==='dark'?'☀️':'🌙';if(ar)ar.textContent=t==='dark'?'☀️':'🌙';
-        }
-        applyT(localStorage.getItem('dfl-theme')||'light');
-        tb.addEventListener('click',function(){ applyT(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark'); });
-      }
-      // Language/theme spans: also update any existing dfl-lang-btn if duplicated
-      var en=document.querySelectorAll('.en'),ar=document.querySelectorAll('.ar');
-    });
-  })();
-  </script>
 </body>
 </html>
