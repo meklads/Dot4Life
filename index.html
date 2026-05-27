@@ -361,28 +361,25 @@
       .hero-circle-wrap { width: min(260px, 72vw); }
     }
 
-    /* ─── PAGE WIDTH CONSTRAINT ─────────────────────── */
-    /* Sections go full-width — backgrounds bleed edge to edge */
-    #health, #finance, #islamic, #travel { overflow: hidden; width: 100%; }
-
-    /* Daily strip and newsletter: full-width with inner padding */
-    #daily-strip { width: 100%; }
-    #newsletter   { width: 100%; }
-
-    /* Content within each panel — max-width to keep text readable */
-    .health-content,
-    .finance-content,
-    .islamic-panel,
-    .travel-content {
-      max-width: 640px;
+    /* ─── SECTION CARDS ─────────────────────────────── */
+    /* Wrapper gives breathing room around all cards */
+    .sections-wrap {
+      padding: 3rem clamp(1rem, 4vw, 3rem) 4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+      max-width: 1380px;
+      margin: 0 auto;
     }
-    /* On large screens, center the text column content */
-    .health-content { margin-left: auto; }
-    .finance-content { margin-right: auto; }
-    .islamic-panel { margin-right: auto; }
-    [data-lang="ar"] .health-content   { margin-left: 0; margin-right: auto; }
-    [data-lang="ar"] .finance-content  { margin-right: 0; margin-left: auto; }
-    [data-lang="ar"] .islamic-panel    { margin-right: 0; margin-left: auto; }
+
+    /* Each section is a contained card — image + content in a frame */
+    #health, #finance, #islamic, #travel {
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: 0 4px 32px rgba(0,0,0,.08);
+    }
+    #travel { box-shadow: 0 6px 40px rgba(0,0,0,.14); }
+    #daily-strip, #newsletter { width: 100%; box-sizing: border-box; }
 
     /* ─── GLOBAL CONTENT ─────────────────────────────── */
 
@@ -601,7 +598,6 @@
       position: relative; z-index: 2; width: 100%;
       padding: 0 clamp(2rem,6vw,5rem) clamp(2.5rem,5vw,4rem);
       display: flex; flex-direction: column; align-items: flex-start;
-      max-width: none;
     }
     [data-lang="ar"] .travel-content { align-items: flex-end; }
     .travel-content .sec-label { color: var(--amber); }
@@ -1042,8 +1038,11 @@
   </div>
 
   <!-- ═══════════════════════════════════════
-       HEALTH SECTION
+       SECTION CARDS WRAPPER
   ═══════════════════════════════════════ -->
+  <div class="sections-wrap">
+
+  <!-- HEALTH -->
   <section id="health" aria-label="Health ecosystem">
     <!-- Health photo — left column (1.15fr) -->
     <div class="health-visual" aria-label="Family health moment">
@@ -1337,6 +1336,8 @@
       </a>
     </div>
   </section>
+
+  </div><!-- /sections-wrap -->
 
   <!-- ═══════════════════════════════════════
        NEWSLETTER
