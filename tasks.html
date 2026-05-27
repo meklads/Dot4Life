@@ -36,23 +36,22 @@
   img{max-width:100%;display:block;}a{color:inherit;text-decoration:none;}
 
   /* NAVBAR */
-  #navbar{position:fixed;top:0;left:0;right:0;z-index:100;min-height:64px;height:auto;overflow:visible;background:rgba(250,248,244,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transition:box-shadow .3s;display:flex;align-items:center;justify-content:center;}
+  #navbar{position:sticky;top:0;z-index:100;min-height:64px;height:auto;overflow:visible;background:rgba(250,248,244,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:center;}
   [data-theme="dark"] #navbar{background:rgba(18,16,14,0.97);}
-  #navbar.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.07);}
-  .nav-inner{max-width:1280px;width:100%;padding:0 32px;display:flex;align-items:center;justify-content:space-between;}
-  .nav-logo{display:flex;align-items:center;}
-  .nav-logo img{height:130px;width:auto;display:block;margin-top:4px;margin-bottom:8px;}
-  @media(max-width:768px){.nav-logo img{height:96px;}}
-  .nav-links{display:flex;gap:2rem;align-items:center;list-style:none;}
-  .nav-links a{font-size:.82rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--text-2);transition:color .2s;}
-  .nav-links a:hover,.nav-links a.active{color:var(--gold);}
-  .nav-controls{display:flex;gap:.75rem;align-items:center;}
-  .nav-btn{cursor:pointer;border:1px solid var(--border);border-radius:var(--radius);padding:.35rem .7rem;font-size:.76rem;font-weight:600;letter-spacing:.08em;background:transparent;color:var(--text-2);transition:all .2s;}
+  .nav-inner{max-width:780px;width:100%;padding:0 24px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-logo img{height:80px;width:auto;display:block;margin:6px 0;}
+  @media(max-width:480px){.nav-logo img{height:60px;}}
+  .nav-os-links{display:flex;gap:0;align-items:center;list-style:none;}
+  .nav-os-links a{font-size:.78rem;font-weight:500;letter-spacing:.04em;padding:5px 10px;border-radius:6px;color:var(--text-2);transition:color .2s;white-space:nowrap;}
+  .nav-os-links a:hover,.nav-os-links a.active{color:var(--gold);}
+  .nav-os-links .home-link{color:var(--muted);font-size:.75rem;}
+  @media(max-width:480px){.nav-os-links .hide-sm{display:none;}}
+  .nav-controls{display:flex;gap:.5rem;align-items:center;}
+  .nav-btn{cursor:pointer;border:1px solid var(--border);border-radius:var(--radius);padding:.3rem .65rem;font-size:.74rem;font-weight:600;background:transparent;color:var(--text-2);transition:all .2s;}
   .nav-btn:hover{border-color:var(--gold);color:var(--gold);}
-  @media(max-width:768px){.nav-links{display:none;}.nav-inner{padding:0 16px;}}
 
   /* PAGE */
-  #page{margin-top:155px;max-width:680px;margin-left:auto;margin-right:auto;padding:0 clamp(1rem,4vw,2rem) 6rem;}
+  #page{max-width:680px;margin:0 auto;padding:0 clamp(1rem,4vw,2rem) 6rem;}
 
   /* HEADER */
   .page-header{text-align:center;padding:2.5rem 0 2rem;border-bottom:1px solid var(--border);margin-bottom:2rem;}
@@ -133,22 +132,28 @@
   /* FOOTER */
   #footer{padding:2rem;text-align:center;border-top:1px solid var(--border);margin-top:2rem;}
   #footer p{font-size:.78rem;color:var(--muted);}
+  /* MOBILE NAV */
+  .mobile-nav{display:none;position:fixed;bottom:0;left:0;right:0;z-index:200;background:var(--card-bg);border-top:1px solid var(--border);padding:8px 0 env(safe-area-inset-bottom,8px);}
+  @media(max-width:768px){.mobile-nav{display:flex;justify-content:space-around;}body{padding-bottom:64px;}}
+  .mobile-nav-item{display:flex;flex-direction:column;align-items:center;gap:3px;padding:4px 12px;font-size:.62rem;font-weight:600;color:var(--muted);border:none;background:none;cursor:pointer;font-family:inherit;text-decoration:none;}
+  .mobile-nav-item.active{color:var(--gold);}
+  .mobile-nav-item span:first-child{font-size:1.15rem;}
+  [data-lang="ar"] .mobile-nav-item{font-family:var(--font-ar);}
 </style>
 </head>
 <body>
 
-  <nav id="navbar" role="navigation">
+  <nav id="navbar" role="navigation" aria-label="Daily navigation">
     <div class="nav-inner">
-      <a href="/" class="nav-logo"><img src="/logo1-transparent.png" alt="Dot4Life" height="130" style="height:130px;width:auto;display:block;margin-top:4px;margin-bottom:8px;"></a>
-      <ul class="nav-links">
-        <li><a href="/family.html"><span class="en">Family</span><span class="ar">العائلة</span></a></li>
+      <a href="/" class="nav-logo"><img src="/images/logo.png" alt="DOTFORLIFE"/></a>
+      <ul class="nav-os-links">
+        <li><a href="/" class="home-link">← <span class="en">Today</span><span class="ar">اليوم</span></a></li>
+        <li><a href="/family.html" class="hide-sm"><span class="en">Family</span><span class="ar">العائلة</span></a></li>
         <li><a href="/tasks.html" class="active"><span class="en">Tasks</span><span class="ar">المهام</span></a></li>
-        <li><a href="/notes.html"><span class="en">Notes</span><span class="ar">الملاحظات</span></a></li>
-        <li><a href="/health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
-        <li><a href="/finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li>
+        <li><a href="/notes.html" class="hide-sm"><span class="en">Notes</span><span class="ar">ملاحظات</span></a></li>
       </ul>
       <div class="nav-controls">
-        <button class="nav-btn" id="lang-toggle"><span class="en">عربي</span><span class="ar">English</span></button>
+        <button class="nav-btn" id="lang-toggle"><span class="en">عربي</span><span class="ar">EN</span></button>
         <button class="nav-btn" id="theme-toggle"><span class="en">🌙</span><span class="ar">🌙</span></button>
       </div>
     </div>
@@ -204,6 +209,13 @@
   <footer id="footer">
     <p><span class="en"><a href="/">← Back to Today</a></span><span class="ar"><a href="/">← العودة لليوم</a></span></p>
   </footer>
+
+  <nav class="mobile-nav" aria-label="Daily navigation">
+    <a href="/" class="mobile-nav-item"><span>🏠</span><span class="en">Home</span><span class="ar">الرئيسية</span></a>
+    <a href="/tasks.html" class="mobile-nav-item active"><span>✅</span><span class="en">Tasks</span><span class="ar">المهام</span></a>
+    <a href="/family.html" class="mobile-nav-item"><span>👨‍👩‍👧</span><span class="en">Family</span><span class="ar">العائلة</span></a>
+    <a href="/notes.html" class="mobile-nav-item"><span>📝</span><span class="en">Notes</span><span class="ar">ملاحظات</span></a>
+  </nav>
 
   <script>
   (function(){

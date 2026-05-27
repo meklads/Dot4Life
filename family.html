@@ -39,32 +39,29 @@
 
   /* ─── NAVBAR ──────────────────────────── */
   #navbar {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    position: sticky; top: 0; z-index: 100;
     min-height: 64px; height: auto; overflow: visible;
     background: rgba(250,248,244,0.97); border-bottom: 1px solid var(--border);
     backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-    transition: box-shadow .3s; display: flex; align-items: center; justify-content: center;
+    display: flex; align-items: center; justify-content: center;
   }
   [data-theme="dark"] #navbar { background: rgba(18,16,14,0.97); }
-  #navbar.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,.07); }
-  .nav-inner { max-width: 1280px; width: 100%; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; }
-  .nav-logo { display: flex; align-items: center; }
-  .nav-logo img { height: 130px; width: auto; display: block; margin-top: 4px; margin-bottom: 8px; }
-  @media(max-width:768px){ .nav-logo img { height: 96px; } }
-  .nav-links { display: flex; gap: 2rem; align-items: center; list-style: none; }
-  .nav-links a { font-size: .82rem; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--text-2); transition: color .2s; }
-  .nav-links a:hover, .nav-links a.active { color: var(--gold); }
-  .nav-controls { display: flex; gap: .75rem; align-items: center; }
-  .nav-btn { cursor: pointer; border: 1px solid var(--border); border-radius: var(--radius); padding: .35rem .7rem; font-size: .76rem; font-weight: 600; letter-spacing: .08em; background: transparent; color: var(--text-2); transition: all .2s; }
+  .nav-inner { max-width: 900px; width: 100%; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo img { height: 80px; width: auto; display: block; margin: 6px 0; }
+  @media(max-width:480px){ .nav-logo img { height: 60px; } }
+  .nav-os-links { display: flex; gap: 0; align-items: center; list-style: none; }
+  .nav-os-links a { font-size: .78rem; font-weight: 500; letter-spacing: .04em; padding: 5px 10px; border-radius: 6px; color: var(--text-2); transition: color .2s; white-space: nowrap; }
+  .nav-os-links a:hover, .nav-os-links a.active { color: var(--gold); }
+  .nav-os-links .home-link { color: var(--muted); font-size: .75rem; }
+  @media(max-width:480px) { .nav-os-links .hide-sm { display: none; } }
+  .nav-controls { display: flex; gap: .5rem; align-items: center; }
+  .nav-btn { cursor: pointer; border: 1px solid var(--border); border-radius: var(--radius); padding: .3rem .65rem; font-size: .74rem; font-weight: 600; background: transparent; color: var(--text-2); transition: all .2s; }
   .nav-btn:hover { border-color: var(--gold); color: var(--gold); }
-  @media(max-width:768px){ .nav-links { display: none; } .nav-inner { padding: 0 16px; } }
 
   /* ─── PAGE ────────────────────────────── */
   #page {
-    margin-top: 155px;
     max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
     padding: 0 clamp(1rem, 4vw, 2.5rem) 6rem;
   }
 
@@ -216,30 +213,20 @@
   .member-task-text:hover { background: var(--cream-d); border-color: var(--border); }
   .member-task-text.placeholder { color: var(--muted); font-style: italic; }
 
-  /* card actions */
-  .member-actions {
-    display: flex;
-    gap: .5rem;
-    margin-top: 1rem;
-    padding-top: .85rem;
-    border-top: 1px solid var(--border);
+  /* delete button */
+  .member-del {
+    position: absolute; top: .85rem; right: .85rem;
+    background: none; border: none; color: var(--muted);
+    font-size: .72rem; cursor: pointer; opacity: 0;
+    transition: opacity .15s, color .15s; padding: .15rem .3rem;
+    border-radius: 4px; line-height: 1;
   }
-  .member-action-btn {
-    flex: 1;
-    padding: .4rem .5rem;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    background: transparent;
-    color: var(--text-2);
-    font-size: .72rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background .15s, border-color .15s, color .15s;
-    text-align: center;
-  }
-  .member-action-btn:hover { background: var(--cream); border-color: var(--gold); color: var(--gold); }
-  .member-action-btn.danger:hover { background: #fef0ee; border-color: #c0392b; color: #c0392b; }
-  [data-lang="ar"] .member-action-btn { font-family: var(--font-ar); }
+  [data-lang="ar"] .member-del { right: auto; left: .85rem; }
+  .member-card:hover .member-del { opacity: 1; }
+  .member-del:hover { color: #c0392b; opacity: 1; }
+  /* name is tappable */
+  .member-name { cursor: pointer; }
+  .member-name:hover { color: var(--gold); }
 
   /* ─── EMPTY STATE ──────────────────────── */
   #family-empty {
@@ -289,28 +276,31 @@
   /* ─── FOOTER ──────────────────────────── */
   #footer { padding: 2rem; text-align: center; border-top: 1px solid var(--border); margin-top: 2rem; }
   #footer p { font-size: .78rem; color: var(--muted); }
+
+  /* ─── MOBILE NAV ──────────────────────── */
+  .mobile-nav { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 200; background: var(--card-bg); border-top: 1px solid var(--border); padding: 8px 0 env(safe-area-inset-bottom, 8px); }
+  @media(max-width: 768px) { .mobile-nav { display: flex; justify-content: space-around; } body { padding-bottom: 64px; } }
+  .mobile-nav-item { display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 4px 12px; font-size: .62rem; font-weight: 600; color: var(--muted); border: none; background: none; cursor: pointer; font-family: inherit; text-decoration: none; }
+  .mobile-nav-item.active { color: var(--gold); }
+  .mobile-nav-item span:first-child { font-size: 1.15rem; }
+  [data-lang="ar"] .mobile-nav-item { font-family: var(--font-ar); }
 </style>
 </head>
 <body>
 
   <!-- NAVBAR -->
-  <nav id="navbar" role="navigation" aria-label="Main navigation">
+  <nav id="navbar" role="navigation" aria-label="Daily navigation">
     <div class="nav-inner">
-      <a href="/" class="nav-logo"><img src="/logo1-transparent.png" alt="Dot4Life" height="130" style="height:130px;width:auto;display:block;margin-top:4px;margin-bottom:8px;"></a>
-      <ul class="nav-links">
+      <a href="/" class="nav-logo"><img src="/images/logo.png" alt="DOTFORLIFE"/></a>
+      <ul class="nav-os-links">
+        <li><a href="/" class="home-link">← <span class="en">Today</span><span class="ar">اليوم</span></a></li>
         <li><a href="/family.html" class="active"><span class="en">Family</span><span class="ar">العائلة</span></a></li>
-        <li><a href="/tasks.html"><span class="en">Tasks</span><span class="ar">المهام</span></a></li>
-        <li><a href="/notes.html"><span class="en">Notes</span><span class="ar">الملاحظات</span></a></li>
-        <li><a href="/health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
-        <li><a href="/finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li>
+        <li><a href="/tasks.html" class="hide-sm"><span class="en">Tasks</span><span class="ar">المهام</span></a></li>
+        <li><a href="/notes.html" class="hide-sm"><span class="en">Notes</span><span class="ar">ملاحظات</span></a></li>
       </ul>
       <div class="nav-controls">
-        <button class="nav-btn" id="lang-toggle" aria-label="Toggle language">
-          <span class="en">عربي</span><span class="ar">English</span>
-        </button>
-        <button class="nav-btn" id="theme-toggle" aria-label="Toggle theme">
-          <span class="en">🌙</span><span class="ar">🌙</span>
-        </button>
+        <button class="nav-btn" id="lang-toggle"><span class="en">عربي</span><span class="ar">EN</span></button>
+        <button class="nav-btn" id="theme-toggle"><span class="en">🌙</span><span class="ar">🌙</span></button>
       </div>
     </div>
   </nav>
@@ -366,6 +356,14 @@
     </p>
   </footer>
 
+  <!-- Mobile Nav -->
+  <nav class="mobile-nav" aria-label="Daily navigation">
+    <a href="/" class="mobile-nav-item"><span>🏠</span><span class="en">Home</span><span class="ar">الرئيسية</span></a>
+    <a href="/tasks.html" class="mobile-nav-item"><span>✅</span><span class="en">Tasks</span><span class="ar">المهام</span></a>
+    <a href="/family.html" class="mobile-nav-item active"><span>👨‍👩‍👧</span><span class="en">Family</span><span class="ar">العائلة</span></a>
+    <a href="/notes.html" class="mobile-nav-item"><span>📝</span><span class="en">Notes</span><span class="ar">ملاحظات</span></a>
+  </nav>
+
   <script>
   (function(){
 
@@ -416,14 +414,15 @@
         var mood = m.mood || '😊';
         var hasTask = m.task && m.task.trim();
         return '<div class="member-card" data-idx="'+i+'">' +
+          '<button class="member-del" data-action="delete" data-idx="'+i+'" aria-label="Remove">✕</button>' +
           '<div class="member-card-top">' +
             '<div class="member-avatar" style="background:'+col+'">'+esc((m.name||'?').charAt(0).toUpperCase())+'</div>' +
             '<div class="member-info">' +
-              '<div class="member-name">'+esc(m.name)+'</div>' +
+              '<div class="member-name" data-action="name" data-idx="'+i+'" title="'+(lang()==='ar'?'اضغط للتغيير':'Tap to rename')+'">'+esc(m.name)+'</div>' +
               '<div class="member-role">'+esc(m.role || (lang()==='ar'?'فرد العائلة':'Family Member'))+'</div>' +
             '</div>' +
           '</div>' +
-          '<span class="member-mood" data-idx="'+i+'" title="Change mood" aria-label="Mood">'+mood+'</span>' +
+          '<span class="member-mood" data-idx="'+i+'" aria-label="Mood">'+mood+'</span>' +
           '<div class="mood-picker" id="mood-'+i+'">' +
             MOODS.map(function(e){ return '<span class="mood-opt" data-mood="'+e+'" data-idx="'+i+'">'+e+'</span>'; }).join('') +
           '</div>' +
@@ -431,12 +430,7 @@
             '<span class="en">Today\'s Focus</span><span class="ar">تركيز اليوم</span>' +
           '</div>' +
           '<div class="member-task-text'+(hasTask?'':' placeholder')+'" data-idx="'+i+'">' +
-            (hasTask ? esc(m.task) : '<span class="en">Tap to add a task…</span><span class="ar">اضغط لإضافة مهمة…</span>') +
-          '</div>' +
-          '<div class="member-actions">' +
-            '<button class="member-action-btn" data-action="role" data-idx="'+i+'"><span class="en">Edit Role</span><span class="ar">تعديل الدور</span></button>' +
-            '<button class="member-action-btn" data-action="name" data-idx="'+i+'"><span class="en">Rename</span><span class="ar">تغيير الاسم</span></button>' +
-            '<button class="member-action-btn danger" data-action="delete" data-idx="'+i+'"><span class="en">Remove</span><span class="ar">حذف</span></button>' +
+            (hasTask ? esc(m.task) : '<span class="en">Tap to add a focus…</span><span class="ar">اضغط لإضافة تركيز…</span>') +
           '</div>' +
         '</div>';
       }).join('');
@@ -480,21 +474,25 @@
         });
       });
 
-      // Action buttons
-      document.querySelectorAll('.member-action-btn').forEach(function(btn){
-        btn.addEventListener('click', function(){
-          var idx = parseInt(btn.dataset.idx);
+      // Name click → rename
+      document.querySelectorAll('.member-name[data-action="name"]').forEach(function(el){
+        el.addEventListener('click', function(e){
+          e.stopPropagation();
+          var idx = parseInt(el.dataset.idx);
           var members = getFamily();
           var m = members[idx];
-          if(btn.dataset.action === 'name'){
-            var newName = prompt(lang()==='ar'?'الاسم الجديد:':'New name:', m.name);
-            if(newName && newName.trim()){ m.name = newName.trim(); setFamily(members); render(); }
-          } else if(btn.dataset.action === 'role'){
-            var newRole = prompt(lang()==='ar'?'الدور (مثل: الأب، الأم، الابن):':'Role (e.g. Parent, Child):', m.role||'');
-            if(newRole !== null){ m.role = newRole.trim(); setFamily(members); render(); }
-          } else if(btn.dataset.action === 'delete'){
-            if(confirm(lang()==='ar'?'حذف '+m.name+'؟':'Remove '+m.name+'?')){ members.splice(idx,1); setFamily(members); render(); }
-          }
+          var newName = prompt(lang()==='ar'?'الاسم الجديد:':'New name:', m.name);
+          if(newName && newName.trim()){ m.name = newName.trim(); setFamily(members); render(); }
+        });
+      });
+
+      // Delete button
+      document.querySelectorAll('.member-del').forEach(function(btn){
+        btn.addEventListener('click', function(e){
+          e.stopPropagation();
+          var idx = parseInt(btn.dataset.idx);
+          var members = getFamily();
+          if(confirm(lang()==='ar'?'حذف '+members[idx].name+'؟':'Remove '+members[idx].name+'?')){ members.splice(idx,1); setFamily(members); render(); }
         });
       });
 

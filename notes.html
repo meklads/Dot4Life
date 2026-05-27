@@ -5,7 +5,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Notes — DOTFORLIFE | ملاحظاتي</title>
-  <meta name="description" content="Quick notes and family reminders. Frictionless."/>
+  <meta name="description" content="Quick notes and family reminders. Write it down before it disappears."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500;600&family=Almarai:wght@300;400;700&display=swap" rel="stylesheet"/>
@@ -15,318 +15,250 @@
     --text:#1A1410;--text-2:#5C534A;--muted:#9A9188;
     --body-bg:#FAF8F4;--card-bg:#FFFFFF;--cream:#F5F0E8;
     --cream-d:#EDE6D8;--border:#E0D8CC;--gold:#B8861A;--gold-d:#8A620F;
-    --green:#1B7A4E;--rose:#B8705A;--blue:#0F3D6E;--amber:#C8861A;
+    --green:#1B7A4E;--rose:#B8705A;--blue:#0F3D6E;
     --font-serif:'Crimson Pro',Georgia,serif;
     --font-ui:'Inter',system-ui,sans-serif;
     --font-ar:'Almarai','Segoe UI',sans-serif;
-    --radius:6px;--shadow:0 2px 24px rgba(0,0,0,.07);
+    --radius:6px;
   }
   [data-theme="dark"]{
     --text:#EDE8E0;--text-2:#B8B0A4;--muted:#7A746C;
     --body-bg:#12100E;--card-bg:#1E1A16;--cream:#1E1A16;
     --cream-d:#252018;--border:#302820;--gold:#D4A832;
-    --shadow:0 2px 24px rgba(0,0,0,.4);
   }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
-  body{font-family:var(--font-ui);font-size:16px;color:var(--text);background:var(--body-bg);line-height:1.6;transition:background .3s,color .3s;}
+  body{font-family:var(--font-ui);color:var(--text);background:var(--body-bg);line-height:1.6;transition:background .3s,color .3s;padding-bottom:64px;}
   [data-lang="ar"] body{font-family:var(--font-ar);}
   .en{display:inline;}.ar{display:none;}
   [data-lang="ar"] .en{display:none;}[data-lang="ar"] .ar{display:inline;}
-  img{max-width:100%;display:block;}a{color:inherit;text-decoration:none;}
+  a{color:inherit;text-decoration:none;}
 
   /* NAVBAR */
-  #navbar{position:fixed;top:0;left:0;right:0;z-index:100;min-height:64px;height:auto;overflow:visible;background:rgba(250,248,244,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transition:box-shadow .3s;display:flex;align-items:center;justify-content:center;}
+  #navbar{position:sticky;top:0;z-index:100;min-height:64px;height:auto;overflow:visible;background:rgba(250,248,244,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:center;}
   [data-theme="dark"] #navbar{background:rgba(18,16,14,0.97);}
   #navbar.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.07);}
-  .nav-inner{max-width:1280px;width:100%;padding:0 32px;display:flex;align-items:center;justify-content:space-between;}
-  .nav-logo{display:flex;align-items:center;}
-  .nav-logo img{height:130px;width:auto;display:block;margin-top:4px;margin-bottom:8px;}
-  @media(max-width:768px){.nav-logo img{height:96px;}}
-  .nav-links{display:flex;gap:2rem;align-items:center;list-style:none;}
-  .nav-links a{font-size:.82rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--text-2);transition:color .2s;}
-  .nav-links a:hover,.nav-links a.active{color:var(--gold);}
-  .nav-controls{display:flex;gap:.75rem;align-items:center;}
-  .nav-btn{cursor:pointer;border:1px solid var(--border);border-radius:var(--radius);padding:.35rem .7rem;font-size:.76rem;font-weight:600;background:transparent;color:var(--text-2);transition:all .2s;}
+  .nav-inner{max-width:780px;width:100%;padding:0 24px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-logo img{height:130px;width:auto;display:block;margin:4px 0 8px;}
+  @media(max-width:600px){.nav-logo img{height:80px;}}
+  .nav-os-links{display:flex;gap:0;align-items:center;list-style:none;}
+  .nav-os-links a{font-size:.78rem;font-weight:500;letter-spacing:.05em;padding:5px 10px;border-radius:6px;color:var(--text-2);transition:color .2s,background .2s;}
+  .nav-os-links a:hover,.nav-os-links a.active{color:var(--gold);}
+  .nav-os-links .home-link{font-size:.75rem;color:var(--muted);margin-right:4px;}
+  @media(max-width:480px){.nav-os-links .hide-sm{display:none;}}
+  .nav-controls{display:flex;gap:.5rem;align-items:center;}
+  .nav-btn{cursor:pointer;border:1px solid var(--border);border-radius:var(--radius);padding:.3rem .6rem;font-size:.74rem;font-weight:600;background:transparent;color:var(--text-2);transition:all .2s;}
   .nav-btn:hover{border-color:var(--gold);color:var(--gold);}
-  @media(max-width:768px){.nav-links{display:none;}.nav-inner{padding:0 16px;}}
 
   /* PAGE */
-  #page{margin-top:155px;max-width:860px;margin-left:auto;margin-right:auto;padding:0 clamp(1rem,4vw,2.5rem) 6rem;}
+  #page{max-width:640px;margin:0 auto;padding:32px 24px 40px;}
 
-  /* HEADER */
-  .page-header{text-align:center;padding:2.5rem 0 2rem;border-bottom:1px solid var(--border);margin-bottom:2rem;}
-  .page-header-icon{font-size:2rem;margin-bottom:.75rem;line-height:1;}
-  .page-header h1{font-family:var(--font-serif);font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:300;margin-bottom:.4rem;}
-  [data-lang="ar"] .page-header h1{font-family:var(--font-ar);}
-  .page-header p{font-size:.88rem;color:var(--text-2);max-width:380px;margin:0 auto;}
-  [data-lang="ar"] .page-header p{font-family:var(--font-ar);}
+  /* BREADCRUMB */
+  .breadcrumb{font-size:.78rem;color:var(--muted);margin-bottom:20px;}
+  .breadcrumb a{color:var(--muted);transition:color .2s;}
+  .breadcrumb a:hover{color:var(--gold);}
 
-  /* COMPOSE AREA */
-  .compose-wrap{margin-bottom:2rem;}
+  /* TITLE */
+  .page-title{font-family:var(--font-serif);font-size:clamp(1.6rem,3vw,2.1rem);font-weight:300;color:var(--text);margin-bottom:24px;}
+  [data-lang="ar"] .page-title{font-family:var(--font-ar);}
+
+  /* COMPOSE */
+  .compose-wrap{margin-bottom:24px;}
   .compose-box{
-    width:100%;
-    padding:1rem 1.2rem;
-    border:1px solid var(--border);
-    border-radius:16px;
-    background:var(--card-bg);
-    color:var(--text);
-    font-size:.92rem;
-    font-family:var(--font-ui);
-    resize:none;
-    min-height:80px;
-    line-height:1.6;
-    outline:none;
+    width:100%;padding:.9rem 1rem;
+    border:1px solid var(--border);border-radius:14px;
+    background:var(--card-bg);color:var(--text);
+    font-size:.92rem;font-family:var(--font-ui);
+    resize:none;min-height:72px;line-height:1.6;outline:none;
     transition:border-color .2s,box-shadow .2s;
-    box-shadow:var(--shadow);
   }
-  [data-lang="ar"] .compose-box{font-family:var(--font-ar);}
+  [data-lang="ar"] .compose-box{font-family:var(--font-ar);text-align:right;}
   .compose-box:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(184,134,26,.1);}
   .compose-box::placeholder{color:var(--muted);}
-  .compose-footer{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:.7rem;flex-wrap:wrap;}
-  .compose-type{display:flex;gap:.4rem;}
-  .type-btn{
-    padding:.3rem .75rem;border:1px solid var(--border);border-radius:999px;
-    background:none;color:var(--text-2);font-size:.74rem;font-weight:500;
-    cursor:pointer;transition:all .15s;
-  }
-  .type-btn.active{background:var(--gold);border-color:var(--gold);color:#fff;}
-  .type-btn:hover:not(.active){border-color:var(--gold);color:var(--gold);}
-  [data-lang="ar"] .type-btn{font-family:var(--font-ar);}
-  .compose-save{
-    padding:.5rem 1.25rem;background:var(--gold);color:#fff;border:none;
-    border-radius:999px;font-size:.82rem;font-weight:600;cursor:pointer;transition:background .2s;
-  }
-  .compose-save:hover{background:var(--gold-d);}
-  [data-lang="ar"] .compose-save{font-family:var(--font-ar);}
+  .compose-hint{font-size:.72rem;color:var(--muted);margin-top:6px;text-align:right;}
+  [data-lang="ar"] .compose-hint{text-align:left;}
 
-  /* NOTES GRID */
-  #notes-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
-    gap:1rem;
-  }
+  /* NOTES LIST — linear, not grid */
+  #notes-list{display:flex;flex-direction:column;gap:10px;}
 
-  /* NOTE CARD */
-  .note-card{
-    background:var(--card-bg);border:1px solid var(--border);border-radius:16px;
-    padding:1.1rem 1.2rem;box-shadow:var(--shadow);
-    position:relative;overflow:hidden;
-    transition:box-shadow .2s,transform .15s;
-    animation:fadeUp .2s ease;
+  .note-item{
+    background:var(--card-bg);border:1px solid var(--border);
+    border-radius:12px;padding:.9rem 1rem;
+    position:relative;
+    transition:box-shadow .15s;
+    animation:fadeUp .18s ease;
   }
-  @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-  .note-card:hover{box-shadow:0 6px 28px rgba(0,0,0,.1);transform:translateY(-2px);}
-  /* Color accent bar */
-  .note-card::before{
-    content:'';position:absolute;top:0;left:0;right:0;height:3px;
-    background:var(--nc,var(--gold));
-    border-radius:16px 16px 0 0;
-  }
-  .note-card[data-type="reminder"]{ --nc: var(--rose); }
-  .note-card[data-type="idea"]{ --nc: var(--blue); }
-  .note-card[data-type="note"]{ --nc: var(--gold); }
-
-  .note-type-badge{
-    display:inline-flex;align-items:center;gap:.3rem;
-    font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
-    color:var(--muted);margin-bottom:.5rem;
-  }
-  [data-lang="ar"] .note-type-badge{letter-spacing:0;text-transform:none;font-family:var(--font-ar);}
-  .note-body{
-    font-size:.88rem;color:var(--text);line-height:1.6;
-    word-break:break-word;
-  }
-  .note-date{font-size:.68rem;color:var(--muted);margin-top:.6rem;}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .note-item:hover{box-shadow:0 4px 16px rgba(0,0,0,.07);}
+  .note-body{font-size:.88rem;color:var(--text);line-height:1.6;word-break:break-word;padding-right:24px;}
+  [data-lang="ar"] .note-body{padding-right:0;padding-left:24px;}
+  .note-date{font-size:.68rem;color:var(--muted);margin-top:5px;}
   .note-del{
-    position:absolute;top:.65rem;right:.65rem;
-    background:none;border:none;color:var(--muted);font-size:.8rem;
-    cursor:pointer;opacity:0;transition:opacity .15s,color .15s;
-    padding:.15rem .3rem;border-radius:4px;
+    position:absolute;top:.7rem;right:.7rem;
+    background:none;border:none;color:var(--muted);
+    font-size:.75rem;cursor:pointer;
+    opacity:0;transition:opacity .15s,color .15s;
+    padding:.15rem .3rem;border-radius:4px;line-height:1;
   }
-  [data-lang="ar"] .note-del{right:auto;left:.65rem;}
-  .note-card:hover .note-del{opacity:1;}
+  [data-lang="ar"] .note-del{right:auto;left:.7rem;}
+  .note-item:hover .note-del,.note-item:focus-within .note-del{opacity:1;}
   .note-del:hover{color:#c0392b;}
 
-  /* EMPTY */
-  .notes-empty{text-align:center;padding:3rem 1rem;grid-column:1/-1;}
-  .notes-empty .e-icon{font-size:2.5rem;opacity:.4;margin-bottom:.75rem;}
-  .notes-empty p{font-size:.85rem;color:var(--muted);}
+  .notes-empty{text-align:center;padding:48px 16px;}
+  .notes-empty .e-icon{font-size:2rem;opacity:.35;margin-bottom:.5rem;}
+  .notes-empty p{font-size:.82rem;color:var(--muted);}
   [data-lang="ar"] .notes-empty p{font-family:var(--font-ar);}
 
-  /* FOOTER */
-  #footer{padding:2rem;text-align:center;border-top:1px solid var(--border);margin-top:2rem;}
-  #footer p{font-size:.78rem;color:var(--muted);}
+  /* MOBILE NAV */
+  .mobile-nav{display:none;position:fixed;bottom:0;left:0;right:0;z-index:200;background:var(--card-bg);border-top:1px solid var(--border);padding:8px 0 env(safe-area-inset-bottom,8px);}
+  @media(max-width:768px){.mobile-nav{display:flex;justify-content:space-around;}}
+  .mobile-nav-item{display:flex;flex-direction:column;align-items:center;gap:3px;padding:4px 12px;font-size:.62rem;font-weight:600;color:var(--text-2);border:none;background:none;cursor:pointer;font-family:inherit;text-decoration:none;}
+  .mobile-nav-item.active{color:var(--gold);}
+  .mobile-nav-item span:first-child{font-size:1.15rem;}
+  [data-lang="ar"] .mobile-nav-item{font-family:var(--font-ar);}
 </style>
 </head>
 <body>
 
-  <nav id="navbar" role="navigation">
-    <div class="nav-inner">
-      <a href="/" class="nav-logo"><img src="/logo1-transparent.png" alt="Dot4Life" height="130" style="height:130px;width:auto;display:block;margin-top:4px;margin-bottom:8px;"></a>
-      <ul class="nav-links">
-        <li><a href="/family.html"><span class="en">Family</span><span class="ar">العائلة</span></a></li>
-        <li><a href="/tasks.html"><span class="en">Tasks</span><span class="ar">المهام</span></a></li>
-        <li><a href="/notes.html" class="active"><span class="en">Notes</span><span class="ar">الملاحظات</span></a></li>
-        <li><a href="/health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
-        <li><a href="/finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li>
-      </ul>
-      <div class="nav-controls">
-        <button class="nav-btn" id="lang-toggle"><span class="en">عربي</span><span class="ar">English</span></button>
-        <button class="nav-btn" id="theme-toggle"><span class="en">🌙</span><span class="ar">🌙</span></button>
-      </div>
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo"><img src="/images/logo.png" alt="DOTFORLIFE"/></a>
+    <ul class="nav-os-links">
+      <li><a href="/" class="home-link">← <span class="en">Today</span><span class="ar">اليوم</span></a></li>
+      <li><a href="/family.html" class="hide-sm"><span class="en">Family</span><span class="ar">العائلة</span></a></li>
+      <li><a href="/tasks.html" class="hide-sm"><span class="en">Tasks</span><span class="ar">المهام</span></a></li>
+      <li><a href="/notes.html" class="active"><span class="en">Notes</span><span class="ar">ملاحظات</span></a></li>
+    </ul>
+    <div class="nav-controls">
+      <button class="nav-btn" id="lang-toggle"><span class="en">عربي</span><span class="ar">EN</span></button>
+      <button class="nav-btn" id="theme-toggle"><span class="en">🌙</span><span class="ar">🌙</span></button>
     </div>
-  </nav>
+  </div>
+</nav>
 
-  <main id="page">
+<main id="page">
 
-    <header class="page-header">
-      <div class="page-header-icon">📝</div>
-      <h1><span class="en">Notes &amp; Reminders</span><span class="ar">الملاحظات والتذكيرات</span></h1>
-      <p>
-        <span class="en">Capture a thought before it disappears.</span>
-        <span class="ar">سجّل فكرتك قبل أن تطير.</span>
-      </p>
-    </header>
+  <div class="breadcrumb">
+    <a href="/">DOTFORLIFE</a> / <span class="en">Notes</span><span class="ar">ملاحظات</span>
+  </div>
 
-    <!-- Compose -->
-    <div class="compose-wrap">
-      <textarea class="compose-box" id="compose-text" rows="3" maxlength="500"
-        placeholder="Write a note, reminder, or idea…"></textarea>
-      <div class="compose-footer">
-        <div class="compose-type">
-          <button class="type-btn active" data-type="note">
-            <span class="en">📝 Note</span><span class="ar">📝 ملاحظة</span>
-          </button>
-          <button class="type-btn" data-type="reminder">
-            <span class="en">🔔 Reminder</span><span class="ar">🔔 تذكير</span>
-          </button>
-          <button class="type-btn" data-type="idea">
-            <span class="en">💡 Idea</span><span class="ar">💡 فكرة</span>
-          </button>
-        </div>
-        <button class="compose-save" id="save-note-btn">
-          <span class="en">Save</span><span class="ar">حفظ</span>
-        </button>
-      </div>
-    </div>
+  <h1 class="page-title">
+    <span class="en">Notes</span>
+    <span class="ar">ملاحظاتي</span>
+  </h1>
 
-    <!-- Notes grid -->
-    <div id="notes-grid"></div>
+  <div class="compose-wrap">
+    <textarea class="compose-box" id="compose-text" rows="3" maxlength="500"
+      placeholder="Write something down…"></textarea>
+    <p class="compose-hint"><span class="en">↵ Enter to save</span><span class="ar">↵ Enter للحفظ</span></p>
+  </div>
 
-  </main>
+  <div id="notes-list"></div>
 
-  <footer id="footer">
-    <p><span class="en"><a href="/">← Back to Today</a></span><span class="ar"><a href="/">← العودة لليوم</a></span></p>
-  </footer>
+</main>
 
-  <script>
-  (function(){
+<nav class="mobile-nav" aria-label="Daily navigation">
+  <a href="/" class="mobile-nav-item"><span>🏠</span><span class="en">Home</span><span class="ar">الرئيسية</span></a>
+  <a href="/tasks.html" class="mobile-nav-item"><span>✅</span><span class="en">Tasks</span><span class="ar">المهام</span></a>
+  <a href="/family.html" class="mobile-nav-item"><span>👨‍👩‍👧</span><span class="en">Family</span><span class="ar">العائلة</span></a>
+  <a href="/notes.html" class="mobile-nav-item active"><span>📝</span><span class="en">Notes</span><span class="ar">ملاحظات</span></a>
+</nav>
 
-    // ── Nav + theme
-    var nb = document.getElementById('navbar');
-    window.addEventListener('scroll', function(){ nb.classList.toggle('scrolled', window.scrollY>40); }, {passive:true});
-    document.getElementById('lang-toggle').addEventListener('click', function(){
-      var h = document.documentElement;
-      var l = h.getAttribute('data-lang')==='ar'?'en':'ar';
-      h.setAttribute('data-lang',l); h.setAttribute('lang',l); h.setAttribute('dir',l==='ar'?'rtl':'ltr');
-      localStorage.setItem('dfl-lang',l);
-      updatePlaceholder();
-      render();
-    });
-    var themeBtn = document.getElementById('theme-toggle');
-    function applyTheme(t){ document.documentElement.setAttribute('data-theme',t); localStorage.setItem('dfl-theme',t); themeBtn.querySelector('.en').textContent=t==='dark'?'☀️':'🌙'; themeBtn.querySelector('.ar').textContent=t==='dark'?'☀️':'🌙'; }
-    applyTheme(localStorage.getItem('dfl-theme')||'light');
-    themeBtn.addEventListener('click', function(){ applyTheme(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark'); });
+<script>
+(function(){
+  // ── Nav + theme
+  var nb = document.getElementById('navbar');
+  window.addEventListener('scroll', function(){ nb.classList.toggle('scrolled', window.scrollY>40); }, {passive:true});
 
-    // ── Data
-    function getNotes(){ try{ return JSON.parse(localStorage.getItem('dfl-notes')||'[]'); }catch(e){ return []; } }
-    function setNotes(a){ localStorage.setItem('dfl-notes', JSON.stringify(a)); }
-    function lang(){ return document.documentElement.getAttribute('data-lang')||'en'; }
-    function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-
-    // ── Type selection
-    var currentType = 'note';
-    document.querySelectorAll('.type-btn').forEach(function(btn){
-      btn.addEventListener('click', function(){
-        document.querySelectorAll('.type-btn').forEach(function(b){ b.classList.remove('active'); });
-        btn.classList.add('active');
-        currentType = btn.dataset.type;
-        updatePlaceholder();
-      });
-    });
-
-    var compose = document.getElementById('compose-text');
-    function updatePlaceholder(){
-      var isAr = lang()==='ar';
-      var map = {
-        note: isAr?'اكتب ملاحظة…':'Write a note…',
-        reminder: isAr?'اكتب تذكيراً…':'Write a reminder…',
-        idea: isAr?'اكتب فكرة…':'Capture an idea…'
-      };
-      compose.placeholder = map[currentType] || (isAr?'اكتب…':'Write…');
-      compose.dir = isAr?'rtl':'ltr';
-    }
+  document.getElementById('lang-toggle').addEventListener('click', function(){
+    var h = document.documentElement;
+    var l = h.getAttribute('data-lang')==='ar'?'en':'ar';
+    h.setAttribute('data-lang',l); h.setAttribute('lang',l); h.setAttribute('dir',l==='ar'?'rtl':'ltr');
+    localStorage.setItem('dfl-lang',l);
     updatePlaceholder();
-
-    // ── Save
-    function saveNote(){
-      var text = compose.value.trim();
-      if(!text) return;
-      var notes = getNotes();
-      var d = new Date();
-      notes.unshift({
-        id: Date.now(),
-        text: text,
-        type: currentType,
-        date: d.getFullYear()+'/'+(d.getMonth()+1)+'/'+d.getDate()
-      });
-      setNotes(notes);
-      compose.value = '';
-      render();
-    }
-    document.getElementById('save-note-btn').addEventListener('click', saveNote);
-    compose.addEventListener('keydown', function(e){ if(e.key==='Enter' && e.ctrlKey) saveNote(); });
-
-    // ── Type labels
-    var typeLabels = {
-      note:     { en:'Note',     ar:'ملاحظة'  },
-      reminder: { en:'Reminder', ar:'تذكير'   },
-      idea:     { en:'Idea',     ar:'فكرة'    }
-    };
-    var typeIcons = { note:'📝', reminder:'🔔', idea:'💡' };
-
-    // ── Render
-    function render(){
-      var notes = getNotes();
-      var grid = document.getElementById('notes-grid');
-      var l = lang();
-      if(!notes.length){
-        grid.innerHTML = '<div class="notes-empty"><div class="e-icon">🌿</div><p>' +
-          (l==='ar'?'لا توجد ملاحظات بعد.':'No notes yet. Write your first one above.') + '</p></div>';
-        return;
-      }
-      grid.innerHTML = notes.map(function(n){
-        var tl = typeLabels[n.type] || typeLabels.note;
-        return '<div class="note-card" data-type="'+n.type+'">' +
-          '<button class="note-del" data-id="'+n.id+'" aria-label="Delete">✕</button>' +
-          '<div class="note-type-badge">'+typeIcons[n.type||'note']+' <span class="en">'+tl.en+'</span><span class="ar">'+tl.ar+'</span></div>' +
-          '<div class="note-body">'+esc(n.text)+'</div>' +
-          '<div class="note-date">'+n.date+'</div>' +
-        '</div>';
-      }).join('');
-
-      grid.querySelectorAll('.note-del').forEach(function(btn){
-        btn.addEventListener('click', function(){
-          var notes2 = getNotes().filter(function(x){ return x.id!==parseInt(btn.dataset.id); });
-          setNotes(notes2); render();
-        });
-      });
-    }
-
     render();
+  });
 
-  })();
-  </script>
+  var themeBtn = document.getElementById('theme-toggle');
+  function applyTheme(t){
+    document.documentElement.setAttribute('data-theme',t);
+    localStorage.setItem('dfl-theme',t);
+    var icon = t==='dark'?'☀️':'🌙';
+    themeBtn.querySelector('.en').textContent = icon;
+    themeBtn.querySelector('.ar').textContent = icon;
+  }
+  applyTheme(localStorage.getItem('dfl-theme')||'light');
+  themeBtn.addEventListener('click', function(){
+    applyTheme(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark');
+  });
+
+  // ── Data
+  function getNotes(){ try{ return JSON.parse(localStorage.getItem('dfl-notes')||'[]'); }catch(e){ return []; } }
+  function setNotes(a){ localStorage.setItem('dfl-notes', JSON.stringify(a)); }
+  function lang(){ return document.documentElement.getAttribute('data-lang')||'en'; }
+  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+  var compose = document.getElementById('compose-text');
+
+  function updatePlaceholder(){
+    var isAr = lang()==='ar';
+    compose.placeholder = isAr ? 'اكتب شيئاً…' : 'Write something down…';
+    compose.dir = isAr ? 'rtl' : 'ltr';
+  }
+  updatePlaceholder();
+
+  // Save on Enter (not Shift+Enter)
+  compose.addEventListener('keydown', function(e){
+    if(e.key==='Enter' && !e.shiftKey){
+      e.preventDefault();
+      saveNote();
+    }
+  });
+
+  function saveNote(){
+    var text = compose.value.trim();
+    if(!text) return;
+    var notes = getNotes();
+    var d = new Date();
+    notes.unshift({
+      id: Date.now(),
+      text: text,
+      date: d.toLocaleDateString(lang()==='ar'?'ar-SA':'en-GB',{day:'numeric',month:'short'})
+    });
+    setNotes(notes);
+    compose.value = '';
+    compose.focus();
+    render();
+  }
+
+  // ── Render
+  function render(){
+    var notes = getNotes();
+    var list = document.getElementById('notes-list');
+    if(!notes.length){
+      list.innerHTML = '<div class="notes-empty"><div class="e-icon">📝</div><p>' +
+        (lang()==='ar' ? 'لا توجد ملاحظات بعد.' : 'Nothing here yet. Write your first note above.') + '</p></div>';
+      return;
+    }
+    list.innerHTML = notes.map(function(n){
+      return '<div class="note-item" data-id="'+n.id+'">' +
+        '<div class="note-body">'+esc(n.text)+'</div>' +
+        '<div class="note-date">'+esc(n.date||'')+'</div>' +
+        '<button class="note-del" data-id="'+n.id+'" aria-label="Delete">✕</button>' +
+      '</div>';
+    }).join('');
+
+    list.querySelectorAll('.note-del').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var notes2 = getNotes().filter(function(n){ return n.id !== parseInt(btn.dataset.id); });
+        setNotes(notes2);
+        render();
+      });
+    });
+  }
+
+  render();
+})();
+</script>
 </body>
 </html>
