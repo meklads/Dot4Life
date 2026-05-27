@@ -855,7 +855,277 @@
     .cat-name { font-size: .72rem; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; }
     .cat-count { font-size: .62rem; color: var(--muted); }
     [data-lang="ar"] .cat-name, [data-lang="ar"] .cat-count { font-family: var(--font-ar); letter-spacing: 0; }
-    [data-theme="dark"] #cat-nav { background: var(--cream); }  </style>
+    [data-theme="dark"] #cat-nav { background: var(--cream); }
+
+    /* ─── DAILY HOME EXPERIENCE ─────────────────────── */
+    #daily-home {
+      margin-top: 155px;
+      padding: 2rem clamp(1rem, 4vw, 2.5rem) 1.5rem;
+      max-width: 1280px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    /* TODAY CARD */
+    .dh-today {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+      border-radius: 20px;
+      padding: 1.8rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 8px 40px rgba(15,61,110,.22);
+    }
+    .dh-hijri {
+      font-family: var(--font-ar);
+      font-size: 1.25rem;
+      color: #fff;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+    .dh-greg {
+      font-size: .82rem;
+      color: rgba(255,255,255,.6);
+      margin-top: .3rem;
+    }
+    .dh-focus-text {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-style: italic;
+      color: rgba(255,255,255,.82);
+      text-align: right;
+      max-width: 380px;
+    }
+    [data-lang="ar"] .dh-focus-text { text-align: left; font-family: var(--font-ar); font-style: normal; font-size: 1rem; }
+    /* 3-COLUMN GRID */
+    .dh-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+    @media (max-width: 900px) { .dh-grid { grid-template-columns: 1fr; } }
+    /* CARDS */
+    .dh-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      box-shadow: 0 2px 20px rgba(0,0,0,.07);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .dh-card-head {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      padding: .9rem 1.25rem .75rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .dh-card-icon { font-size: 1.15rem; line-height: 1; flex-shrink: 0; }
+    .dh-card-title {
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--text-2);
+      flex: 1;
+    }
+    [data-lang="ar"] .dh-card-title { font-family: var(--font-ar); letter-spacing: 0; text-transform: none; font-size: .82rem; }
+    .dh-add-btn {
+      cursor: pointer;
+      background: var(--gold);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 26px;
+      height: 26px;
+      font-size: 1rem;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background .2s, transform .15s;
+    }
+    .dh-add-btn:hover { background: var(--gold-d); transform: scale(1.1); }
+    /* FAMILY LIST */
+    .dh-family-list {
+      padding: .75rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: .55rem;
+      min-height: 88px;
+    }
+    .dh-family-item {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      padding: .6rem .75rem;
+      background: var(--cream);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background .15s;
+    }
+    .dh-family-item:hover { background: var(--cream-d); }
+    .dh-family-avatar {
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      background: var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .78rem;
+      font-weight: 700;
+      color: #fff;
+      flex-shrink: 0;
+      text-transform: uppercase;
+    }
+    .dh-family-info { flex: 1; min-width: 0; }
+    .dh-family-name {
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .dh-family-task {
+      font-size: .72rem;
+      color: var(--text-2);
+      margin-top: .1rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    /* TASKS LIST */
+    .dh-tasks-list {
+      list-style: none;
+      padding: .75rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+      min-height: 88px;
+    }
+    .dh-task-item {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      padding: .5rem .75rem;
+      background: var(--cream);
+      border-radius: 10px;
+    }
+    .dh-task-cb {
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      border: 2px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background .2s, border-color .2s;
+    }
+    .dh-task-cb.done { background: var(--green); border-color: var(--green); }
+    .dh-task-cb.done::after { content: '✓'; font-size: .6rem; color: #fff; line-height: 1; }
+    .dh-task-text {
+      flex: 1;
+      font-size: .82rem;
+      color: var(--text);
+    }
+    .dh-task-text.done { text-decoration: line-through; color: var(--muted); }
+    /* REMINDER */
+    .dh-reminder-content {
+      padding: 1.25rem;
+      min-height: 88px;
+      display: flex;
+      align-items: center;
+    }
+    .dh-reminder-text {
+      font-size: .9rem;
+      color: var(--text);
+      line-height: 1.55;
+    }
+    .dh-reminder-placeholder {
+      font-size: .8rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+    /* EMPTY / DELETE */
+    .dh-empty {
+      font-size: .78rem;
+      color: var(--muted);
+      text-align: center;
+      padding: 1rem .5rem;
+      width: 100%;
+    }
+    .dh-del-btn {
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: .78rem;
+      padding: 0 .2rem;
+      opacity: 0;
+      transition: opacity .15s, color .15s;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+    .dh-family-item:hover .dh-del-btn,
+    .dh-task-item:hover .dh-del-btn { opacity: 1; }
+    .dh-del-btn:hover { color: #c0392b; }
+    /* FAB */
+    .dh-fab {
+      position: fixed;
+      bottom: 80px;
+      right: 24px;
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: var(--gold);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 24px rgba(184,134,26,.42);
+      transition: background .2s, transform .2s, box-shadow .2s;
+      z-index: 90;
+    }
+    [data-lang="ar"] .dh-fab { right: auto; left: 24px; }
+    .dh-fab:hover { background: var(--gold-d); transform: scale(1.08); }
+    .dh-fab.open { transform: rotate(45deg); background: var(--gold-d); }
+    .dh-fab svg { width: 22px; height: 22px; }
+    .dh-fab-menu {
+      position: fixed;
+      bottom: 144px;
+      right: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: .45rem;
+      z-index: 89;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(8px);
+      transition: opacity .2s, transform .2s;
+      align-items: flex-end;
+    }
+    [data-lang="ar"] .dh-fab-menu { right: auto; left: 24px; align-items: flex-start; }
+    .dh-fab-menu.open { opacity: 1; pointer-events: auto; transform: none; }
+    .dh-fab-item {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: .55rem 1rem;
+      font-size: .8rem;
+      font-weight: 500;
+      color: var(--text);
+      cursor: pointer;
+      box-shadow: 0 2px 12px rgba(0,0,0,.09);
+      white-space: nowrap;
+      transition: background .15s, border-color .15s, color .15s;
+    }
+    .dh-fab-item:hover { background: var(--cream); border-color: var(--gold); color: var(--gold); }
+    @media (max-width: 768px) {
+      #daily-home { padding: 1rem 1rem 1rem; }
+      .dh-today { padding: 1.4rem 1.5rem; flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .dh-focus-text { text-align: left; max-width: none; }
+      [data-lang="ar"] .dh-focus-text { text-align: right; }
+    }
+  </style>
 <script src="/scripts/global.js" defer></script>
 </head>
 <body>
@@ -885,156 +1155,83 @@
   </nav>
 
   <!-- ═══════════════════════════════════════
-       HERO
+       DAILY HOME EXPERIENCE
   ═══════════════════════════════════════ -->
-  <section id="hero" aria-label="Hero section">
-    <div class="hero-inner">
-      <!-- Left: editorial text -->
-      <div class="hero-left">
-        <span class="hero-eyebrow">
-          <span class="en">The Family Platform</span>
-          <span class="ar">منصة الأسرة</span>
-        </span>
-        <h1 class="hero-headline">
-          <span class="en">Life, <em>understood.</em></span>
-          <span class="ar">الحياة،<br><em>بكل وضوح.</em></span>
-        </h1>
-        <p class="hero-sub">
-          <span class="en">A trusted daily companion for every family decision — health, finance, spirituality, travel, and home. Free, precise, deeply human.</span>
-          <span class="ar">رفيقك اليومي الموثوق في كل قرار عائلي — الصحة والمال والروح والسفر والمسكن. مجاني ودقيق وإنساني.</span>
-        </p>
-        <div class="hero-cta-row">
-          <a href="/health.html" class="btn-primary">
-            <span class="en">Explore Free Tools</span>
-            <span class="ar">استكشف الأدوات</span>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-          <a href="#health" class="btn-outline">
-            <span class="en">See How It Works</span>
-            <span class="ar">كيف يعمل</span>
-          </a>
-        </div>
+  <div id="daily-home" role="main">
+
+    <!-- TODAY CARD: date + focus sentence -->
+    <div class="dh-today">
+      <div class="dh-today-dates">
+        <div class="dh-hijri" id="hijri-display">—</div>
+        <div class="dh-greg" id="greg-display"></div>
       </div>
-      <!-- Right: circular family image -->
-      <div class="hero-right" aria-hidden="true">
-        <div class="hero-circle-wrap">
-          <!-- Floating trust badge -->
-          <div class="hero-badge" aria-hidden="true">
-            <div class="hero-badge-icon">
-              <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-            <div>
-              <div class="hero-badge-label"><span class="en">Trusted Platform</span><span class="ar">منصة موثوقة</span></div>
-              <div class="hero-badge-value"><span class="en">Free · No Ads · Private</span><span class="ar">مجاني · بلا إعلانات</span></div>
-            </div>
-          </div>
-          <div class="hero-circle">
-            <img
-              src="/d4l1.png"
-              alt="DOT.FORLIFE — منصة الأسرة"
-              width="900" height="900"
-              loading="eager"
-              fetchpriority="high"
-              decoding="async"
-            />
-          </div>
-        </div>
-      </div>
+      <p class="dh-focus-text" id="dh-focus-text">
+        <span class="en">Start your day with intention.</span>
+        <span class="ar">ابدأ يومك بنية.</span>
+      </p>
     </div>
-    <!-- Stats bar -->
-    <div class="hero-stats" aria-hidden="true">
-      <div class="stat-item">
-        <div class="stat-num">40+</div>
-        <div class="stat-label"><span class="en">Free Tools</span><span class="ar">أداة مجانية</span></div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">5</div>
-        <div class="stat-label"><span class="en">Life Ecosystems</span><span class="ar">منظومات الحياة</span></div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">AR / EN</div>
-        <div class="stat-label"><span class="en">Bilingual</span><span class="ar">ثنائي اللغة</span></div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">∞</div>
-        <div class="stat-label"><span class="en">Always Free</span><span class="ar">دائماً مجاني</span></div>
-      </div>
-    </div>
-  </section>
 
-  <!-- ═══════════════════════════════════════
-       CATEGORY NAVIGATOR
-  ═══════════════════════════════════════ -->
-  <nav id="cat-nav" aria-label="Life category navigation">
-    <div class="cat-nav-inner">
+    <!-- 3-COLUMN GRID: Family | Tasks | Reminder -->
+    <div class="dh-grid">
 
-      <a href="/health.html" class="cat-nav-item">
-        <div class="cat-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402C1 3.604 3.601 1 6.8 1c1.994 0 3.797 1.016 5.2 2.837C13.403 2.016 15.206 1 17.2 1 20.4 1 23 3.604 23 7.191c0 4.105-5.37 8.863-11 14.402z"/></svg>
+      <!-- FAMILY TODAY -->
+      <div class="dh-card" id="dh-family-card">
+        <div class="dh-card-head">
+          <span class="dh-card-icon" aria-hidden="true">👨‍👩‍👧‍👦</span>
+          <h2 class="dh-card-title">
+            <span class="en">Family Today</span>
+            <span class="ar">عائلة اليوم</span>
+          </h2>
+          <button class="dh-add-btn" id="dh-add-member" title="Add family member" aria-label="Add family member">+</button>
         </div>
-        <span class="cat-name"><span class="en">Health</span><span class="ar">الصحة</span></span>
-        <span class="cat-count"><span class="en">12 tools</span><span class="ar">١٢ أداة</span></span>
-      </a>
-
-      <a href="/finance.html" class="cat-nav-item">
-        <div class="cat-icon">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-        </div>
-        <span class="cat-name"><span class="en">Finance</span><span class="ar">المالية</span></span>
-        <span class="cat-count"><span class="en">10 tools</span><span class="ar">١٠ أدوات</span></span>
-      </a>
-
-      <a href="/real-estate.html" class="cat-nav-item">
-        <div class="cat-icon">
-          <svg viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
-        </div>
-        <span class="cat-name"><span class="en">Real Estate</span><span class="ar">العقار</span></span>
-        <span class="cat-count"><span class="en">8 tools</span><span class="ar">٨ أدوات</span></span>
-      </a>
-
-      <a href="/travel.html" class="cat-nav-item">
-        <div class="cat-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
-        </div>
-        <span class="cat-name"><span class="en">Travel</span><span class="ar">السفر</span></span>
-        <span class="cat-count"><span class="en">6 tools</span><span class="ar">٦ أدوات</span></span>
-      </a>
-
-      <a href="/islamic.html" class="cat-nav-item">
-        <div class="cat-icon">
-          <svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg>
-        </div>
-        <span class="cat-name"><span class="en">Islamic</span><span class="ar">الإسلامية</span></span>
-        <span class="cat-count"><span class="en">8 tools</span><span class="ar">٨ أدوات</span></span>
-      </a>
-
-    </div>
-  </nav>
-
-  <!-- ═══════════════════════════════════════
-       DAILY STRIP
-  ═══════════════════════════════════════ -->
-  <div id="daily-strip">
-    <div class="strip-date">
-      <div class="strip-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 2v3M16 2v3M3 9h18M5 4h14a2 2 0 012 2v13a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>
+        <div id="dh-family-list" class="dh-family-list"></div>
       </div>
-      <div>
-        <div class="strip-hijri" id="hijri-display">—</div>
-        <small id="greg-display" style="color:var(--muted);font-size:.76rem;"></small>
+
+      <!-- TOP 3 TASKS -->
+      <div class="dh-card" id="dh-tasks-card">
+        <div class="dh-card-head">
+          <span class="dh-card-icon" aria-hidden="true">✅</span>
+          <h2 class="dh-card-title">
+            <span class="en">Top 3 Tasks</span>
+            <span class="ar">أهم ٣ مهام</span>
+          </h2>
+          <button class="dh-add-btn" id="dh-add-task" title="Add task" aria-label="Add task">+</button>
+        </div>
+        <ul id="dh-tasks-list" class="dh-tasks-list"></ul>
       </div>
-    </div>
-    <div class="strip-tool">
-      <span class="strip-tool-label">
-        <span class="en">Tool of the Day</span>
-        <span class="ar">أداة اليوم</span>
-      </span>
-      <a href="/tools/monthly-budget.html" class="strip-tool-link">
-        <span class="en">Monthly Budget Planner</span>
-        <span class="ar">مخطط الميزانية الشهرية</span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-    </div>
+
+      <!-- ONE REMINDER -->
+      <div class="dh-card" id="dh-reminder-card">
+        <div class="dh-card-head">
+          <span class="dh-card-icon" aria-hidden="true">🔔</span>
+          <h2 class="dh-card-title">
+            <span class="en">Reminder</span>
+            <span class="ar">تذكير</span>
+          </h2>
+          <button class="dh-add-btn" id="dh-edit-reminder" title="Edit reminder" aria-label="Edit reminder" style="font-size:.75rem;">✏️</button>
+        </div>
+        <div id="dh-reminder-content" class="dh-reminder-content"></div>
+      </div>
+
+    </div><!-- /dh-grid -->
+  </div><!-- /daily-home -->
+
+  <!-- FAB button -->
+  <button class="dh-fab" id="dh-fab" aria-label="Quick add" aria-expanded="false">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+  </button>
+
+  <!-- FAB menu -->
+  <div class="dh-fab-menu" id="dh-fab-menu" aria-hidden="true">
+    <button class="dh-fab-item" data-action="member">
+      <span class="en">👤 Add Family Member</span><span class="ar">👤 إضافة فرد للعائلة</span>
+    </button>
+    <button class="dh-fab-item" data-action="task">
+      <span class="en">✅ Add Task</span><span class="ar">✅ إضافة مهمة</span>
+    </button>
+    <button class="dh-fab-item" data-action="reminder">
+      <span class="en">🔔 Set Reminder</span><span class="ar">🔔 تعيين تذكير</span>
+    </button>
   </div>
 
   <!-- ═══════════════════════════════════════
@@ -1568,6 +1765,202 @@
         item.classList.add('active');
       });
     });
+
+    // ══════════════════════════════════════════
+    // DAILY HOME EXPERIENCE — localStorage CRUD
+    // ══════════════════════════════════════════
+    (function(){
+
+      function currentLang(){ return document.documentElement.getAttribute('data-lang') || 'en'; }
+
+      // ── Daily focus sentences (rotate by day of week)
+      var focuses = [
+        { en: 'Start your day with intention.',        ar: 'ابدأ يومك بنية.' },
+        { en: 'Every good deed begins with a decision.', ar: 'كل عمل صالح يبدأ بقرار.' },
+        { en: 'Your family is your greatest investment.', ar: 'عائلتك هي أعظم استثماراتك.' },
+        { en: 'Progress, not perfection.',              ar: 'التقدم لا الكمال.' },
+        { en: 'A grateful heart finds peace.',          ar: 'القلب الشاكر يجد السلام.' },
+        { en: 'Plan with wisdom, act with courage.',    ar: 'خطط بحكمة، وتصرّف بشجاعة.' },
+        { en: 'Small steps lead to great destinations.', ar: 'الخطوات الصغيرة تقود إلى وجهات عظيمة.' }
+      ];
+      var focusEl = document.getElementById('dh-focus-text');
+      if(focusEl){
+        var f = focuses[new Date().getDay()];
+        focusEl.querySelector('.en').textContent = f.en;
+        focusEl.querySelector('.ar').textContent = f.ar;
+      }
+
+      // ── Helpers
+      function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+      function getJSON(key, def){ try{ return JSON.parse(localStorage.getItem(key)||'null')||def; }catch(e){ return def; } }
+      function setJSON(key, val){ localStorage.setItem(key, JSON.stringify(val)); }
+
+      // ── FAMILY MEMBERS ────────────────────────────
+      function getFamily(){ return getJSON('dfl-family', []); }
+      function setFamily(arr){ setJSON('dfl-family', arr); }
+
+      function renderFamily(){
+        var list = document.getElementById('dh-family-list');
+        if(!list) return;
+        var members = getFamily();
+        if(!members.length){
+          list.innerHTML = '<div class="dh-empty"><span class="en">No members yet — tap + to add one.</span><span class="ar">لا أفراد بعد — اضغط + للإضافة.</span></div>';
+          return;
+        }
+        list.innerHTML = members.map(function(m, i){
+          var avatarColors = ['#B8861A','#1B7A4E','#0F3D6E','#B8705A','#6B4FA0','#C8861A'];
+          var col = avatarColors[i % avatarColors.length];
+          return '<div class="dh-family-item" data-idx="'+i+'">' +
+            '<div class="dh-family-avatar" style="background:'+col+'">'+esc((m.name||'?').charAt(0).toUpperCase())+'</div>' +
+            '<div class="dh-family-info">' +
+              '<div class="dh-family-name">'+esc(m.name)+'</div>' +
+              '<div class="dh-family-task">'+(m.task ? esc(m.task) : '<span class="en" style="color:var(--muted);font-style:italic">No task</span><span class="ar" style="color:var(--muted);font-style:italic">لا مهمة</span>')+'</div>' +
+            '</div>' +
+            '<button class="dh-del-btn" data-idx="'+i+'" aria-label="Remove member">✕</button>' +
+          '</div>';
+        }).join('');
+        // Click item body → edit task
+        list.querySelectorAll('.dh-family-item').forEach(function(item){
+          item.addEventListener('click', function(e){
+            if(e.target.classList.contains('dh-del-btn')) return;
+            var idx = parseInt(item.dataset.idx);
+            var members2 = getFamily();
+            var m = members2[idx];
+            var newTask = prompt((currentLang()==='ar'?'مهمة اليوم لـ':'Today\'s task for ')+m.name+':', m.task||'');
+            if(newTask !== null){ m.task = newTask.trim(); setFamily(members2); renderFamily(); }
+          });
+        });
+        // Delete button
+        list.querySelectorAll('.dh-del-btn').forEach(function(btn){
+          btn.addEventListener('click', function(e){
+            e.stopPropagation();
+            var members2 = getFamily();
+            members2.splice(parseInt(btn.dataset.idx), 1);
+            setFamily(members2); renderFamily();
+          });
+        });
+      }
+
+      function addMember(){
+        var name = prompt(currentLang()==='ar' ? 'اسم الفرد:' : 'Family member name:');
+        if(!name || !name.trim()) return;
+        var members = getFamily();
+        if(members.length >= 6){ alert(currentLang()==='ar'?'الحد الأقصى ٦ أفراد':'Max 6 members'); return; }
+        var task = prompt(currentLang()==='ar' ? 'مهمته اليوم (اختياري):' : 'Their task today (optional):');
+        members.push({ name: name.trim(), task: (task||'').trim() });
+        setFamily(members); renderFamily();
+      }
+
+      var addMemberBtn = document.getElementById('dh-add-member');
+      if(addMemberBtn) addMemberBtn.addEventListener('click', addMember);
+
+      // ── TOP 3 TASKS ───────────────────────────────
+      function getTasks(){ return getJSON('dfl-tasks', []); }
+      function setTasks(arr){ setJSON('dfl-tasks', arr); }
+
+      function renderTasks(){
+        var list = document.getElementById('dh-tasks-list');
+        if(!list) return;
+        var tasks = getTasks();
+        if(!tasks.length){
+          list.innerHTML = '<li class="dh-empty"><span class="en">No tasks yet — tap + to add one.</span><span class="ar">لا مهام بعد — اضغط + للإضافة.</span></li>';
+          return;
+        }
+        list.innerHTML = tasks.map(function(t, i){
+          var doneClass = t.done ? ' done' : '';
+          return '<li class="dh-task-item">' +
+            '<div class="dh-task-cb'+doneClass+'" data-idx="'+i+'" role="checkbox" aria-checked="'+(t.done?'true':'false')+'" tabindex="0"></div>' +
+            '<span class="dh-task-text'+doneClass+'">'+esc(t.text)+'</span>' +
+            '<button class="dh-del-btn" data-idx="'+i+'" aria-label="Remove task">✕</button>' +
+          '</li>';
+        }).join('');
+        list.querySelectorAll('.dh-task-cb').forEach(function(cb){
+          function toggle(){ var t2 = getTasks(); t2[parseInt(cb.dataset.idx)].done ^= 1; setTasks(t2); renderTasks(); }
+          cb.addEventListener('click', toggle);
+          cb.addEventListener('keydown', function(e){ if(e.key===' '||e.key==='Enter'){ e.preventDefault(); toggle(); } });
+        });
+        list.querySelectorAll('.dh-del-btn').forEach(function(btn){
+          btn.addEventListener('click', function(){
+            var t2 = getTasks(); t2.splice(parseInt(btn.dataset.idx), 1); setTasks(t2); renderTasks();
+          });
+        });
+      }
+
+      function addTask(){
+        var tasks = getTasks();
+        if(tasks.length >= 3){ alert(currentLang()==='ar'?'الحد الأقصى ٣ مهام':'Max 3 tasks'); return; }
+        var text = prompt(currentLang()==='ar' ? 'المهمة:' : 'Task:');
+        if(!text || !text.trim()) return;
+        tasks.push({ text: text.trim(), done: false }); setTasks(tasks); renderTasks();
+      }
+
+      var addTaskBtn = document.getElementById('dh-add-task');
+      if(addTaskBtn) addTaskBtn.addEventListener('click', addTask);
+
+      // ── REMINDER ──────────────────────────────────
+      function getReminder(){ return localStorage.getItem('dfl-reminder') || ''; }
+      function setReminder(t){ localStorage.setItem('dfl-reminder', t); }
+
+      function renderReminder(){
+        var content = document.getElementById('dh-reminder-content');
+        if(!content) return;
+        var text = getReminder();
+        if(!text){
+          content.innerHTML = '<span class="dh-reminder-placeholder"><span class="en">No reminder set. Tap ✏️ to add one.</span><span class="ar">لا يوجد تذكير. اضغط ✏️ للإضافة.</span></span>';
+        } else {
+          content.innerHTML = '<span class="dh-reminder-text">'+esc(text)+'</span>';
+        }
+      }
+
+      function editReminder(){
+        var newText = prompt(currentLang()==='ar'?'التذكير:':'Reminder:', getReminder());
+        if(newText !== null){ setReminder(newText.trim()); renderReminder(); }
+      }
+
+      var editReminderBtn = document.getElementById('dh-edit-reminder');
+      if(editReminderBtn) editReminderBtn.addEventListener('click', editReminder);
+
+      // ── FAB ───────────────────────────────────────
+      var fab = document.getElementById('dh-fab');
+      var fabMenu = document.getElementById('dh-fab-menu');
+      if(fab && fabMenu){
+        fab.addEventListener('click', function(e){
+          e.stopPropagation();
+          var open = fabMenu.classList.toggle('open');
+          fab.classList.toggle('open', open);
+          fab.setAttribute('aria-expanded', open ? 'true' : 'false');
+          fabMenu.setAttribute('aria-hidden', open ? 'false' : 'true');
+        });
+        fabMenu.querySelectorAll('.dh-fab-item').forEach(function(item){
+          item.addEventListener('click', function(){
+            fabMenu.classList.remove('open'); fab.classList.remove('open');
+            fab.setAttribute('aria-expanded','false'); fabMenu.setAttribute('aria-hidden','true');
+            var action = item.dataset.action;
+            if(action==='member') addMember();
+            else if(action==='task') addTask();
+            else if(action==='reminder') editReminder();
+          });
+        });
+        document.addEventListener('click', function(e){
+          if(!fab.contains(e.target) && !fabMenu.contains(e.target)){
+            fabMenu.classList.remove('open'); fab.classList.remove('open');
+            fab.setAttribute('aria-expanded','false'); fabMenu.setAttribute('aria-hidden','true');
+          }
+        });
+      }
+
+      // ── Re-render on language change (keep lang-aware empty states)
+      document.getElementById('lang-toggle') && document.getElementById('lang-toggle').addEventListener('click', function(){
+        setTimeout(function(){ renderFamily(); renderTasks(); renderReminder(); }, 50);
+      });
+
+      // ── Init
+      renderFamily();
+      renderTasks();
+      renderReminder();
+
+    })(); // end daily home
+
   })();
 
   </script>
