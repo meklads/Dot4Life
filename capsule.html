@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light" data-lang="en">
+<head>
+  <script>(function(){var t=localStorage.getItem('dfl-theme')||'light';var l=localStorage.getItem('dfl-lang')||'en';var h=document.documentElement;h.setAttribute('data-theme',t);h.setAttribute('data-lang',l);h.setAttribute('lang',l==='ar'?'ar':'en');h.setAttribute('dir',l==='ar'?'rtl':'ltr');})();</script>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Daily Capsule — DOTFORLIFE</title>
+  <meta name="description" content="A daily wellness insight from DOTFORLIFE."/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:site_name" content="DOTFORLIFE"/>
+  <meta property="og:image" content="https://www.dotforlife.com/og-image.jpg"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500;600&family=Almarai:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/styles/global.css"/>
+<style>
+  :root{
+    --text:#1A1410;--text-2:#5C534A;--muted:#9A9188;
+    --body-bg:#FAF8F4;--card-bg:#FFFFFF;--cream:#F5F0E8;
+    --cream-d:#EDE6D8;--border:#E0D8CC;--gold:#B8861A;--gold-d:#8A620F;
+    --green:#1B7A4E;--font-serif:'Crimson Pro',Georgia,serif;
+    --font-ui:'Inter',system-ui,sans-serif;--font-ar:'Almarai','Segoe UI',sans-serif;
+    --radius:6px;
+  }
+  [data-theme="dark"]{
+    --text:#EDE8E0;--text-2:#B8B0A4;--muted:#7A746C;
+    --body-bg:#12100E;--card-bg:#1E1A16;--cream:#1E1A16;
+    --cream-d:#252018;--border:#302820;--gold:#D4A832;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--font-ui);color:var(--text);background:var(--body-bg);line-height:1.6;transition:background .3s,color .3s;}
+  [data-lang="ar"] body{font-family:var(--font-ar);}
+  .en{display:inline;}.ar{display:none;}
+  [data-lang="ar"] .en{display:none;}[data-lang="ar"] .ar{display:inline;}
+  a{color:inherit;text-decoration:none;}
+
+  /* ── NAVBAR ── */
+  #navbar{
+    position:sticky;top:0;z-index:100;
+    background:rgba(250,248,244,0.97);
+    border-bottom:1px solid var(--border);
+    backdrop-filter:blur(16px);
+    display:flex;align-items:center;justify-content:center;
+  }
+  [data-theme="dark"] #navbar{background:rgba(18,16,14,0.97);}
+  #navbar.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.07);}
+  .nav-inner{max-width:1280px;width:100%;padding:0 48px;display:flex;align-items:center;justify-content:space-between;}
+  @media(max-width:768px){.nav-inner{padding:0 20px;}}
+  .nav-logo img{height:130px;width:auto;display:block;margin:4px 0 8px;}
+  @media(max-width:600px){.nav-logo img{height:80px;}}
+  .nav-links-wrap{display:flex;align-items:center;gap:0;list-style:none;}
+  .nav-links-wrap a{font-size:.78rem;font-weight:500;letter-spacing:.05em;padding:5px 12px;border-radius:6px;color:var(--text-2);transition:color .2s;}
+  .nav-links-wrap a:hover{color:var(--gold);}
+  .nav-back{font-size:.78rem;font-weight:500;color:var(--muted)!important;display:flex;align-items:center;gap:.3rem;}
+  .nav-controls{display:flex;gap:.5rem;align-items:center;}
+  .nav-btn{cursor:pointer;border:1px solid var(--border);border-radius:var(--radius);padding:.3rem .6rem;font-size:.74rem;font-weight:600;background:transparent;color:var(--text-2);transition:all .2s;}
+  .nav-btn:hover{border-color:var(--gold);color:var(--gold);}
+
+  /* ── HERO ── */
+  #guide-hero{
+    width:100%;
+    background:linear-gradient(160deg,#FDF0D8 0%,#EEE0B8 100%);
+    min-height:280px;
+    display:flex;align-items:center;justify-content:center;
+    position:relative;overflow:hidden;
+  }
+  [data-theme="dark"] #guide-hero{background:linear-gradient(160deg,#1E1A10 0%,#161208 100%);}
+  #guide-hero::after{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(ellipse at 60% 40%,rgba(184,134,26,.12) 0%,transparent 65%);
+    pointer-events:none;
+  }
+  .hero-inner{
+    max-width:900px;width:100%;
+    padding:3rem 48px;
+    display:grid;
+    grid-template-columns:1fr auto;
+    align-items:center;
+    gap:3rem;
+    position:relative;z-index:1;
+  }
+  @media(max-width:768px){.hero-inner{grid-template-columns:1fr;padding:2.5rem 24px;gap:1.5rem;}}
+  .hero-breadcrumb{
+    font-size:.7rem;color:rgba(90,70,30,.55);
+    margin-bottom:.8rem;display:flex;align-items:center;gap:.4rem;
+  }
+  [data-theme="dark"] .hero-breadcrumb{color:rgba(212,168,50,.5);}
+  .hero-breadcrumb a{color:inherit;transition:color .15s;}
+  .hero-breadcrumb a:hover{color:var(--gold);}
+  [data-lang="ar"] .hero-breadcrumb{font-family:var(--font-ar);}
+  .hero-tag{
+    font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--gold);margin-bottom:.7rem;display:block;
+  }
+  [data-lang="ar"] .hero-tag{font-family:var(--font-ar);letter-spacing:0;}
+  .hero-title{
+    font-family:var(--font-serif);
+    font-size:clamp(1.9rem,4vw,3rem);
+    font-weight:300;color:var(--text);
+    line-height:1.15;margin-bottom:.75rem;
+  }
+  [data-lang="ar"] .hero-title{font-family:var(--font-ar);font-size:clamp(1.7rem,4vw,2.6rem);}
+  .hero-subtitle{
+    font-family:var(--font-serif);
+    font-size:1.05rem;font-style:italic;
+    color:var(--text-2);line-height:1.6;max-width:480px;
+  }
+  [data-lang="ar"] .hero-subtitle{font-family:var(--font-ar);font-style:normal;font-size:1rem;}
+  .hero-date{font-size:.72rem;color:rgba(90,70,30,.45);margin-top:.6rem;display:block;}
+  [data-theme="dark"] .hero-date{color:rgba(212,168,50,.35);}
+  .hero-emoji-wrap{
+    width:160px;height:160px;
+    background:rgba(255,255,255,.45);
+    border-radius:32px;
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+    backdrop-filter:blur(8px);
+    box-shadow:0 8px 32px rgba(184,134,26,.12);
+  }
+  [data-theme="dark"] .hero-emoji-wrap{background:rgba(255,255,255,.06);}
+  @media(max-width:768px){.hero-emoji-wrap{width:100px;height:100px;border-radius:24px;}}
+  .hero-emoji{font-size:5rem;line-height:1;}
+  @media(max-width:768px){.hero-emoji{font-size:3.5rem;}}
+
+  /* ── PAGE ── */
+  #page{
+    max-width:900px;margin:0 auto;
+    padding:3rem 48px 80px;
+    display:grid;
+    grid-template-columns:1fr 300px;
+    gap:4rem;align-items:start;
+  }
+  @media(max-width:900px){#page{grid-template-columns:1fr;gap:2.5rem;padding:2rem 24px 80px;}}
+  @media(max-width:480px){#page{padding:1.5rem 16px 80px;}}
+
+  /* ── BLOCKS ── */
+  .guide-block{margin-bottom:2.2rem;}
+  .guide-block-label{
+    font-size:.64rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--muted);margin-bottom:.85rem;
+    display:flex;align-items:center;gap:.5rem;
+  }
+  .guide-block-label::after{content:'';flex:1;height:1px;background:var(--border);}
+  [data-lang="ar"] .guide-block-label{font-family:var(--font-ar);letter-spacing:0;}
+  [data-lang="ar"] .guide-block-label::after{display:none;}
+  [data-lang="ar"] .guide-block-label::before{content:'';flex:1;height:1px;background:var(--border);}
+
+  /* Ingredients chips */
+  .guide-ingredients{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;}
+  .guide-ing{
+    font-size:.85rem;color:var(--text-2);
+    background:var(--cream);border-radius:10px;
+    padding:.6rem .9rem;line-height:1.4;
+    border:1px solid rgba(184,134,26,.08);
+  }
+  [data-lang="ar"] .guide-ing{font-family:var(--font-ar);}
+  [data-theme="dark"] .guide-ing{background:rgba(255,255,255,.05);border-color:rgba(212,168,50,.08);}
+
+  /* Steps */
+  .guide-steps{display:flex;flex-direction:column;gap:1.25rem;}
+  .guide-step{display:flex;align-items:flex-start;gap:1rem;}
+  .guide-step-num{
+    flex-shrink:0;width:28px;height:28px;
+    background:var(--gold);color:#fff;
+    border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-size:.73rem;font-weight:700;margin-top:1px;
+  }
+  .guide-step-text{font-size:.9rem;color:var(--text-2);line-height:1.65;}
+  [data-lang="ar"] .guide-step-text{font-family:var(--font-ar);font-size:.94rem;}
+
+  /* Body prose (non-structured sections) */
+  .guide-prose{font-size:.92rem;color:var(--text-2);line-height:1.8;margin-bottom:1.2rem;}
+  [data-lang="ar"] .guide-prose{font-family:var(--font-ar);font-size:.96rem;}
+  .guide-prose strong{color:var(--text);font-weight:600;}
+  .guide-prose p{margin-bottom:.85rem;}
+  .guide-prose p:last-child{margin-bottom:0;}
+
+  /* Why / Tip card */
+  .guide-why{
+    background:linear-gradient(135deg,rgba(184,134,26,.07) 0%,rgba(184,134,26,.03) 100%);
+    border:1px solid rgba(184,134,26,.15);
+    border-radius:16px;padding:1.25rem 1.5rem;
+    margin-bottom:2rem;
+  }
+  [data-theme="dark"] .guide-why{background:rgba(212,168,50,.06);border-color:rgba(212,168,50,.12);}
+  .guide-why-label{
+    font-size:.62rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--gold);margin-bottom:.45rem;
+  }
+  [data-lang="ar"] .guide-why-label{font-family:var(--font-ar);letter-spacing:0;}
+  .guide-why-text{font-size:.88rem;color:var(--text-2);line-height:1.65;font-style:italic;}
+  [data-lang="ar"] .guide-why-text{font-family:var(--font-ar);font-style:normal;font-size:.92rem;}
+
+  /* Tags */
+  .guide-tags{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:1.5rem;}
+  .guide-tag{
+    font-size:.73rem;color:var(--text-2);
+    background:var(--cream);border:1px solid var(--border);
+    padding:.25rem .75rem;border-radius:20px;
+  }
+
+  /* Actions */
+  .guide-actions{
+    display:flex;gap:.65rem;
+    padding-top:1.25rem;
+    border-top:1px solid var(--border);
+  }
+  .guide-btn{
+    flex:1;padding:.72rem .5rem;
+    border-radius:12px;border:none;
+    font-size:.78rem;font-weight:600;
+    cursor:pointer;font-family:var(--font-ui);
+    transition:background .15s,transform .1s;
+    text-align:center;
+  }
+  [data-lang="ar"] .guide-btn{font-family:var(--font-ar);}
+  .guide-btn:active{transform:scale(.97);}
+  .guide-btn-save,.guide-btn-share{
+    background:var(--cream);color:var(--text-2);border:1px solid var(--border);
+  }
+  .guide-btn-save:hover,.guide-btn-share:hover{background:var(--cream-d);}
+  [data-theme="dark"] .guide-btn-save,
+  [data-theme="dark"] .guide-btn-share{background:rgba(255,255,255,.07);border-color:var(--border);color:var(--text-2);}
+  .guide-btn-home{background:var(--gold);color:#fff;flex:1.3;}
+  .guide-btn-home:hover{background:var(--gold-d);}
+
+  /* ── PANEL ── */
+  .guide-panel{position:sticky;top:180px;display:flex;flex-direction:column;gap:1.5rem;}
+  @media(max-width:900px){.guide-panel{position:static;}}
+  .panel-card{
+    background:var(--card-bg);border:1px solid var(--border);
+    border-radius:16px;padding:1.25rem 1.4rem;
+    box-shadow:0 2px 16px rgba(0,0,0,.05);
+  }
+  .panel-card-title{
+    font-size:.66rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--muted);margin-bottom:1rem;
+  }
+  [data-lang="ar"] .panel-card-title{font-family:var(--font-ar);letter-spacing:0;}
+  .panel-facts{display:flex;flex-direction:column;gap:.6rem;}
+  .panel-fact{display:flex;align-items:center;gap:.75rem;font-size:.84rem;color:var(--text-2);}
+  [data-lang="ar"] .panel-fact{font-family:var(--font-ar);}
+  .panel-fact-icon{font-size:1.1rem;flex-shrink:0;}
+  .panel-cat-link{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:.5rem;padding:.6rem .8rem;
+    background:var(--cream);border-radius:10px;
+    font-size:.82rem;font-weight:500;color:var(--text-2);
+    transition:background .15s;cursor:pointer;margin-bottom:.45rem;
+  }
+  .panel-cat-link:last-child{margin-bottom:0;}
+  .panel-cat-link:hover{background:var(--cream-d);}
+  [data-lang="ar"] .panel-cat-link{font-family:var(--font-ar);}
+  [data-theme="dark"] .panel-cat-link{background:rgba(255,255,255,.05);}
+  [data-theme="dark"] .panel-cat-link:hover{background:rgba(255,255,255,.09);}
+  .panel-arrow{color:var(--gold);font-size:.8rem;}
+  [data-lang="ar"] .panel-arrow{transform:scaleX(-1);display:inline-block;}
+
+  /* ── STATES ── */
+  .state-box{text-align:center;padding:100px 20px;color:var(--muted);}
+  .state-box .s-emoji{font-size:3rem;margin-bottom:16px;}
+  .state-box p{font-size:15px;margin-top:8px;}
+  .state-box a{color:var(--gold);}
+
+  /* ── MOBILE NAV ── */
+  .mobile-nav{display:none;position:fixed;bottom:0;left:0;right:0;z-index:200;background:var(--card-bg);border-top:1px solid var(--border);padding:8px 0 env(safe-area-inset-bottom,8px);}
+  @media(max-width:768px){.mobile-nav{display:flex;justify-content:space-around;}body{padding-bottom:64px;}}
+  .mobile-nav-item{display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 12px;font-size:.63rem;font-weight:500;color:var(--text-2);border:none;background:none;cursor:pointer;font-family:inherit;text-decoration:none;min-width:48px;}
+  .mobile-nav-item.active{color:var(--gold);}
+  .mobile-nav-item span:first-child{font-size:1.2rem;}
+  [data-lang="ar"] .mobile-nav-item{font-family:var(--font-ar);}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo"><img src="/logo1-transparent.png" alt="DOTFORLIFE"/></a>
+    <ul class="nav-links-wrap">
+      <li><a href="/" class="nav-back">← <span class="en">Home</span><span class="ar">الرئيسية</span></a></li>
+      <li><a href="/library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a></li>
+      <li><a href="/saved.html"><span class="en">Saved</span><span class="ar">المحفوظ</span></a></li>
+    </ul>
+    <div class="nav-controls">
+      <button class="nav-btn" id="lang-toggle"><span class="en">عربي</span><span class="ar">EN</span></button>
+      <button class="nav-btn" id="theme-toggle"><span class="en">🌙</span><span class="ar">🌙</span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- LOADING -->
+<div id="stateLoading" class="state-box">
+  <div class="s-emoji">🧘</div>
+  <p class="en">Loading capsule…</p>
+  <p class="ar">جارٍ التحميل…</p>
+</div>
+
+<!-- ERROR -->
+<div id="stateError" class="state-box" style="display:none;">
+  <div class="s-emoji">🌿</div>
+  <p class="en">Capsule not found.</p>
+  <p class="ar">لم يتم العثور على هذه التذكرة.</p>
+  <p><a href="/"><span class="en">← Back to Home</span><span class="ar">→ العودة للرئيسية</span></a></p>
+</div>
+
+<!-- HERO -->
+<section id="guide-hero" style="display:none;">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-breadcrumb">
+        <a href="/"><span class="en">Home</span><span class="ar">الرئيسية</span></a>
+        <span>›</span>
+        <span id="heroCatBreadcrumb"></span>
+      </div>
+      <span class="hero-tag" id="heroTag"></span>
+      <h1 class="hero-title" id="heroTitle"></h1>
+      <p class="hero-subtitle" id="heroSubtitle"></p>
+      <span class="hero-date" id="heroDate"></span>
+    </div>
+    <div class="hero-emoji-wrap">
+      <span class="hero-emoji" id="heroEmoji"></span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENT -->
+<main id="page" style="display:none;">
+
+  <!-- MAIN CONTENT -->
+  <div class="guide-main" id="guideMain"></div>
+
+  <!-- SIDEBAR -->
+  <aside class="guide-panel">
+
+    <div class="panel-card">
+      <div class="panel-card-title"><span class="en">About this capsule</span><span class="ar">عن هذه التذكرة</span></div>
+      <div class="panel-facts" id="panelFacts"></div>
+    </div>
+
+    <div class="panel-card" id="morePanel" style="display:none;">
+      <div class="panel-card-title"><span class="en">More capsules</span><span class="ar">تذاكر أخرى</span></div>
+      <div id="moreLinks"></div>
+    </div>
+
+  </aside>
+
+</main>
+
+<!-- MOBILE NAV -->
+<nav class="mobile-nav">
+  <a href="/" class="mobile-nav-item"><span>🏠</span><span class="en">Home</span><span class="ar">الرئيسية</span></a>
+  <a href="/library.html" class="mobile-nav-item"><span>📚</span><span class="en">Library</span><span class="ar">المكتبة</span></a>
+  <a href="/saved.html" class="mobile-nav-item"><span>💾</span><span class="en">Saved</span><span class="ar">المحفوظ</span></a>
+  <a href="/tasks.html" class="mobile-nav-item"><span>✅</span><span class="en">Tasks</span><span class="ar">المهام</span></a>
+</nav>
+
+<script>
+const API = 'https://dot4life-production.up.railway.app/api';
+
+/* ─── CATEGORIES ─── */
+const CAT = {
+  meals:   {en:'Home & Meals',       ar:'البيت والطعام',        emoji:'🍽️'},
+  family:  {en:'Family',             ar:'الأسرة',               emoji:'👨‍👩‍👧'},
+  wellness:{en:'Wellness',           ar:'الصحة والعافية',        emoji:'🌿'},
+  faith:   {en:'Faith & Reflection', ar:'الإيمان والتأمل',      emoji:'☪️'},
+  money:   {en:'Money & Finance',    ar:'المال والاقتصاد',       emoji:'💰'},
+  living:  {en:'Daily Living',       ar:'الحياة اليومية',        emoji:'🏡'},
+};
+
+/* ─── PANEL FACTS by category ─── */
+const FACTS = {
+  meals:   [
+    {icon:'⏱️', en:'Quick & simple',              ar:'سريع وبسيط'},
+    {icon:'👨‍👩‍👧', en:'Family-friendly',             ar:'مناسب للعائلة'},
+    {icon:'🛒', en:'Pantry ingredients',           ar:'مكونات أساسية'},
+    {icon:'💚', en:'Nourishing & wholesome',       ar:'صحي ومغذٍّ'},
+  ],
+  family:  [
+    {icon:'❤️', en:'Strengthens family bonds',     ar:'يعزز روابط الأسرة'},
+    {icon:'🕰️', en:'A few minutes a day',          ar:'دقائق يومياً'},
+    {icon:'🌱', en:'Small acts, big impact',       ar:'أفعال صغيرة، أثر كبير'},
+  ],
+  wellness:[
+    {icon:'🌿', en:'Evidence-based insight',       ar:'مبني على الدليل'},
+    {icon:'🧘', en:'Mind & body balance',          ar:'توازن الجسد والعقل'},
+    {icon:'💤', en:'Sustainable habit',            ar:'عادة قابلة للاستمرار'},
+  ],
+  faith:   [
+    {icon:'☪️', en:'Spiritual nourishment',        ar:'غذاء روحي'},
+    {icon:'🌅', en:'A moment of reflection',       ar:'لحظة تأمل'},
+    {icon:'📖', en:'Grounded in tradition',        ar:'مرتكز على الأصالة'},
+  ],
+  money:   [
+    {icon:'💡', en:'Practical money insight',      ar:'نصيحة مالية عملية'},
+    {icon:'📊', en:'Simple to apply',              ar:'سهلة التطبيق'},
+    {icon:'🎯', en:'Long-term thinking',           ar:'تفكير طويل المدى'},
+  ],
+  living:  [
+    {icon:'🏡', en:'Calm everyday living',         ar:'حياة يومية هادئة'},
+    {icon:'🌱', en:'One small step',               ar:'خطوة صغيرة واحدة'},
+    {icon:'✨', en:'Quality over quantity',        ar:'الجودة قبل الكمية'},
+  ],
+};
+
+/* ─── BODY PARSER ─── */
+/*
+  Expected format from generator:
+  ## Ingredients / ## المقادير   → chips grid
+  ## Steps / ## الخطوات          → numbered steps
+  ## Why / ## لماذا              → why card
+  1. step text                   → numbered step (alt format)
+  - item                         → ingredient chip (alt format)
+  plain paragraphs               → prose block
+*/
+function parseBody(en, ar) {
+  const blocks = [];
+  const langLines = (text) => text ? text.split('\n') : [];
+  const enLines = langLines(en);
+  const arLines = langLines(ar);
+
+  // Zip lines by section heading
+  const sectionsEn = splitSections(enLines);
+  const sectionsAr = splitSections(arLines);
+
+  const allKeys = [...new Set([...Object.keys(sectionsEn), ...Object.keys(sectionsAr)])];
+
+  for (const key of allKeys) {
+    const eLines = sectionsEn[key] || [];
+    const aLines = sectionsAr[key] || [];
+
+    const type = getSectionType(key);
+
+    if (type === 'ingredients') {
+      const enItems = extractListItems(eLines);
+      const arItems = extractListItems(aLines);
+      if (enItems.length || arItems.length) {
+        blocks.push({ type: 'ingredients', labelEn: 'Ingredients', labelAr: 'المقادير', enItems, arItems });
+      }
+    } else if (type === 'steps') {
+      const enSteps = extractListItems(eLines, true);
+      const arSteps = extractListItems(aLines, true);
+      if (enSteps.length || arSteps.length) {
+        blocks.push({ type: 'steps', labelEn: 'Steps', labelAr: 'الخطوات', enSteps, arSteps });
+      }
+    } else if (type === 'why') {
+      const enText = eLines.filter(l=>l.trim()).join(' ');
+      const arText = aLines.filter(l=>l.trim()).join(' ');
+      if (enText || arText) {
+        blocks.push({ type: 'why', enText, arText });
+      }
+    } else if (type === 'tip') {
+      const enText = eLines.filter(l=>l.trim()).join(' ');
+      const arText = aLines.filter(l=>l.trim()).join(' ');
+      if (enText || arText) {
+        blocks.push({ type: 'tip', enText, arText });
+      }
+    } else {
+      // prose — but scan for inline lists/steps too
+      const enSteps = extractListItems(eLines, true);
+      const arSteps = extractListItems(aLines, true);
+      const enBullets = extractListItems(eLines, false);
+      const arBullets = extractListItems(aLines, false);
+
+      if (key === '__root__' && (enSteps.length >= 2 || arSteps.length >= 2)) {
+        // root has numbered items — treat as steps
+        blocks.push({ type: 'steps', labelEn: 'Steps', labelAr: 'الخطوات', enSteps, arSteps });
+      } else if (key === '__root__' && (enBullets.length >= 3 || arBullets.length >= 3)) {
+        // root has bullet items — could be ingredients
+        blocks.push({ type: 'ingredients', labelEn: 'Details', labelAr: 'التفاصيل', enItems: enBullets, arItems: arBullets });
+      } else {
+        const enProse = eLines.filter(l=>l.trim() && !l.trim().startsWith('##') && !/^[-•\d]/.test(l.trim())).join('\n');
+        const arProse = aLines.filter(l=>l.trim() && !l.trim().startsWith('##') && !/^[-•\d]/.test(l.trim())).join('\n');
+        if (enProse || arProse) {
+          blocks.push({ type: 'prose', labelEn: key !== '__root__' ? key : '', labelAr: '', enText: enProse, arText: arProse });
+        }
+      }
+    }
+  }
+
+  return blocks;
+}
+
+function splitSections(lines) {
+  const sections = {};
+  let current = '__root__';
+  sections[current] = [];
+  for (const line of lines) {
+    if (/^#{1,3}\s/.test(line.trim())) {
+      current = line.trim().replace(/^#+\s+/, '').toLowerCase();
+      sections[current] = [];
+    } else {
+      if (!sections[current]) sections[current] = [];
+      sections[current].push(line);
+    }
+  }
+  return sections;
+}
+
+function getSectionType(key) {
+  const k = key.toLowerCase();
+  if (/ingred|مقادير|مكونات|ingredients/.test(k)) return 'ingredients';
+  if (/step|خطوات|steps|طريقة|preparation/.test(k)) return 'steps';
+  if (/why|لماذا|matter|يهم/.test(k)) return 'why';
+  if (/tip|نصيحة|advice/.test(k)) return 'tip';
+  return 'prose';
+}
+
+function extractListItems(lines, numbered = false) {
+  const items = [];
+  for (const line of lines) {
+    const t = line.trim();
+    if (!t) continue;
+    if (numbered && /^\d+[\.\)]\s/.test(t)) {
+      items.push(t.replace(/^\d+[\.\)]\s+/, ''));
+    } else if (!numbered && /^[-•*]\s/.test(t)) {
+      items.push(t.replace(/^[-•*]\s+/, ''));
+    }
+  }
+  return items;
+}
+
+/* ─── RENDER BLOCKS ─── */
+function renderBlocks(blocks, tip) {
+  let html = '';
+  for (const b of blocks) {
+    if (b.type === 'ingredients') {
+      html += `<div class="guide-block">
+        <div class="guide-block-label"><span class="en">${esc(b.labelEn)}</span><span class="ar">${esc(b.labelAr)}</span></div>
+        <div class="guide-ingredients">
+          ${b.enItems.map((item,i) => `
+            <div class="guide-ing">
+              <span class="en">${esc(item)}</span>
+              <span class="ar">${esc(b.arItems[i]||item)}</span>
+            </div>`).join('')}
+        </div>
+      </div>`;
+    } else if (b.type === 'steps') {
+      const count = Math.max(b.enSteps.length, b.arSteps.length);
+      let stepsHtml = '';
+      for (let i = 0; i < count; i++) {
+        stepsHtml += `<div class="guide-step">
+          <span class="guide-step-num">${i+1}</span>
+          <span class="guide-step-text">
+            <span class="en">${esc(b.enSteps[i]||'')}</span>
+            <span class="ar">${esc(b.arSteps[i]||b.enSteps[i]||'')}</span>
+          </span>
+        </div>`;
+      }
+      html += `<div class="guide-block">
+        <div class="guide-block-label"><span class="en">${esc(b.labelEn)}</span><span class="ar">${esc(b.labelAr)}</span></div>
+        <div class="guide-steps">${stepsHtml}</div>
+      </div>`;
+    } else if (b.type === 'prose') {
+      const paras = (b.enText||'').split(/\n+/).filter(p=>p.trim());
+      const aParas = (b.arText||'').split(/\n+/).filter(p=>p.trim());
+      let pHtml = '';
+      paras.forEach((p,i) => {
+        pHtml += `<p><span class="en">${inlineMd(p)}</span><span class="ar">${inlineMd(aParas[i]||p)}</span></p>`;
+      });
+      if (pHtml) html += `<div class="guide-block">
+        ${b.labelEn ? `<div class="guide-block-label">${esc(b.labelEn)}</div>` : ''}
+        <div class="guide-prose">${pHtml}</div>
+      </div>`;
+    }
+  }
+
+  // Why block from blocks
+  const whyBlock = blocks.find(b=>b.type==='why');
+  const tipBlock = blocks.find(b=>b.type==='tip');
+  const tipText = tipBlock || (tip ? {enText:tip.en, arText:tip.ar} : null);
+
+  if (whyBlock) {
+    html += `<div class="guide-why">
+      <div class="guide-why-label"><span class="en">Why this matters</span><span class="ar">لماذا يهمّ هذا</span></div>
+      <p class="guide-why-text">
+        <span class="en">${esc(whyBlock.enText)}</span>
+        <span class="ar">${esc(whyBlock.arText)}</span>
+      </p>
+    </div>`;
+  } else if (tipText) {
+    html += `<div class="guide-why">
+      <div class="guide-why-label"><span class="en">Today's Insight</span><span class="ar">لقطة اليوم</span></div>
+      <p class="guide-why-text">
+        <span class="en">${esc(tipText.enText||tipText.en||'')}</span>
+        <span class="ar">${esc(tipText.arText||tipText.ar||'')}</span>
+      </p>
+    </div>`;
+  }
+
+  return html;
+}
+
+function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function inlineMd(s){ return esc(s).replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*(.+?)\*/g,'<em>$1</em>'); }
+
+/* ─── MAIN ─── */
+async function loadCapsule() {
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get('id');
+  if (!id) { showError(); return; }
+
+  try {
+    const res  = await fetch(`${API}/capsule/${id}`);
+    const data = await res.json();
+    if (!data.found) { showError(); return; }
+    render(data.capsule);
+    loadMore(data.capsule.category, id);
+  } catch(e) { showError(); }
+}
+
+function showError() {
+  document.getElementById('stateLoading').style.display = 'none';
+  document.getElementById('stateError').style.display = 'block';
+}
+
+function render(c) {
+  const lang = document.documentElement.getAttribute('data-lang');
+  const isAr = lang === 'ar';
+
+  // Page title + meta
+  document.title = `${isAr ? c.title_ar : c.title_en} — DOTFORLIFE`;
+
+  const cat = CAT[c.category] || {en: c.category, ar: c.category, emoji:'🌿'};
+
+  // Hero
+  document.getElementById('heroEmoji').textContent = c.emoji || '🌿';
+  document.getElementById('heroCatBreadcrumb').innerHTML =
+    `<span class="en">${cat.en}</span><span class="ar">${cat.ar}</span>`;
+  document.getElementById('heroTag').innerHTML =
+    `<span class="en">${cat.emoji} ${cat.en}</span><span class="ar">${cat.emoji} ${cat.ar}</span>`;
+  document.getElementById('heroTitle').innerHTML =
+    `<span class="en">${esc(c.title_en)}</span><span class="ar">${esc(c.title_ar)}</span>`;
+  document.getElementById('heroSubtitle').innerHTML =
+    `<span class="en">${esc(c.subtitle_en||'')}</span><span class="ar">${esc(c.subtitle_ar||'')}</span>`;
+
+  if (c.scheduled_date) {
+    const d = new Date(c.scheduled_date + 'T00:00:00');
+    document.getElementById('heroDate').innerHTML =
+      `<span class="en">${d.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'})}</span>` +
+      `<span class="ar">${d.toLocaleDateString('ar-SA',{day:'numeric',month:'long',year:'numeric'})}</span>`;
+  }
+
+  // Parse + render body
+  const blocks = parseBody(c.body_en || '', c.body_ar || '');
+  const tip = c.tip_en ? {en: c.tip_en, ar: c.tip_ar} : null;
+  let mainHtml = renderBlocks(blocks, tip);
+
+  // Tags
+  if (c.tags && c.tags.length) {
+    mainHtml += `<div class="guide-tags">${c.tags.map(t=>`<span class="guide-tag">#${esc(t)}</span>`).join('')}</div>`;
+  }
+
+  // Action buttons
+  mainHtml += `<div class="guide-actions">
+    <button class="guide-btn guide-btn-save" id="saveBtn">
+      <span class="en">💾 Save</span><span class="ar">💾 حفظ</span>
+    </button>
+    <button class="guide-btn guide-btn-share" id="shareBtn">
+      <span class="en">🔗 Share</span><span class="ar">🔗 مشاركة</span>
+    </button>
+    <a href="/" class="guide-btn guide-btn-home">
+      <span class="en">← Home</span><span class="ar">→ الرئيسية</span>
+    </a>
+  </div>`;
+
+  document.getElementById('guideMain').innerHTML = mainHtml;
+
+  // Save button
+  document.getElementById('saveBtn').addEventListener('click', function() {
+    const key = 'dfl-saved-capsules';
+    const saved = JSON.parse(localStorage.getItem(key)||'[]');
+    const item = {id:c.id, title:isAr?c.title_ar:c.title_en, emoji:c.emoji, date:Date.now()};
+    if (!saved.find(s=>s.id===c.id)) { saved.unshift(item); localStorage.setItem(key, JSON.stringify(saved)); }
+    this.innerHTML = `<span class="en">✅ Saved!</span><span class="ar">✅ تم الحفظ!</span>`;
+    this.style.cssText = 'background:rgba(27,122,78,.12);color:#1B7A4E;border-color:#1B7A4E;';
+  });
+
+  // Share button
+  document.getElementById('shareBtn').addEventListener('click', function() {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      this.innerHTML = `<span class="en">✅ Copied!</span><span class="ar">✅ تم النسخ!</span>`;
+      this.style.cssText = 'background:rgba(27,122,78,.12);color:#1B7A4E;border-color:#1B7A4E;';
+      setTimeout(() => {
+        this.innerHTML = `<span class="en">🔗 Share</span><span class="ar">🔗 مشاركة</span>`;
+        this.style.cssText = '';
+      }, 2000);
+    });
+  });
+
+  // Sidebar facts
+  const facts = FACTS[c.category] || FACTS.living;
+  document.getElementById('panelFacts').innerHTML = facts.map(f =>
+    `<div class="panel-fact"><span class="panel-fact-icon">${f.icon}</span>
+      <span class="en">${esc(f.en)}</span><span class="ar">${esc(f.ar)}</span>
+    </div>`
+  ).join('');
+
+  // Show everything
+  document.getElementById('stateLoading').style.display = 'none';
+  document.getElementById('guide-hero').style.display = 'flex';
+  document.getElementById('page').style.display = 'grid';
+}
+
+async function loadMore(category, currentId) {
+  try {
+    const res = await fetch(`${API}/capsule/category/${category}`);
+    const data = await res.json();
+    const others = (data.capsules||[]).filter(c => c.id !== currentId).slice(0, 3);
+    if (!others.length) return;
+    const lang = document.documentElement.getAttribute('data-lang');
+    const links = document.getElementById('moreLinks');
+    links.innerHTML = others.map(c => {
+      const t = lang === 'ar' ? c.title_ar : c.title_en;
+      return `<a class="panel-cat-link" href="/capsule.html?id=${c.id}">
+        <span>${esc(c.emoji||'🌿')} ${esc(t||'')}</span>
+        <span class="panel-arrow">→</span>
+      </a>`;
+    }).join('');
+    document.getElementById('morePanel').style.display = 'block';
+  } catch(e) {}
+}
+
+/* ─── NAV CONTROLS ─── */
+(function(){
+  var nb = document.getElementById('navbar');
+  window.addEventListener('scroll', function(){ nb.classList.toggle('scrolled', window.scrollY > 40); }, {passive:true});
+
+  document.getElementById('lang-toggle').addEventListener('click', function(){
+    var h=document.documentElement;
+    var l=h.getAttribute('data-lang')==='ar'?'en':'ar';
+    h.setAttribute('data-lang',l);h.setAttribute('lang',l);h.setAttribute('dir',l==='ar'?'rtl':'ltr');
+    localStorage.setItem('dfl-lang',l);
+  });
+
+  var themeBtn = document.getElementById('theme-toggle');
+  function applyTheme(t){
+    document.documentElement.setAttribute('data-theme',t);
+    localStorage.setItem('dfl-theme',t);
+    var icon = t==='dark'?'☀️':'🌙';
+    themeBtn.querySelector('.en').textContent = icon;
+    themeBtn.querySelector('.ar').textContent = icon;
+  }
+  applyTheme(localStorage.getItem('dfl-theme')||'light');
+  themeBtn.addEventListener('click', function(){
+    applyTheme(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark');
+  });
+})();
+
+loadCapsule();
+</script>
+</body>
+</html>

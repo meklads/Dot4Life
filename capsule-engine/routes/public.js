@@ -70,6 +70,39 @@ router.get('/category/:cat', async (req, res) => {
   }
 });
 
+// GET /api/capsule/:id  — fetch any single published capsule by ID
+router.get('/:id', async (req, res) => {
+  try {
+    const cap = await db.getCapsuleById(req.params.id);
+    if (!cap || cap.status !== 'published')
+      return res.status(404).json({ found: false, error: 'Capsule not found or not published' });
+
+    let tags = [];
+    try { tags = JSON.parse(cap.tags); } catch {}
+
+    res.json({
+      found: true,
+      capsule: {
+        id:             cap.id,
+        category:       cap.category,
+        emoji:          cap.emoji,
+        title_en:       cap.title_en,
+        title_ar:       cap.title_ar,
+        subtitle_en:    cap.subtitle_en,
+        subtitle_ar:    cap.subtitle_ar,
+        body_en:        cap.body_en,
+        body_ar:        cap.body_ar,
+        tip_en:         cap.tip_en,
+        tip_ar:         cap.tip_ar,
+        tags,
+        scheduled_date: cap.scheduled_date,
+      }
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // GET /api/capsule/health
 router.get('/health', (_req, res) => {
   res.json({ ok: true, system: 'd4l1-capsule-engine', ts: new Date().toISOString() });
