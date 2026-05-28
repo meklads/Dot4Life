@@ -1270,6 +1270,160 @@
       .mm-card { padding: 1.4rem; border-radius: 18px; gap: 1.25rem; }
       .mm-item { padding: .6rem .85rem; }
     }
+
+    /* ─── DAILY CAPSULE TRIGGER ─────────────────────────── */
+    .mm-capsule {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      gap: .85rem;
+      padding: .85rem 1.1rem;
+      background: rgba(184,134,26,.07);
+      border: 1px solid rgba(184,134,26,.2);
+      border-radius: 14px;
+      cursor: pointer;
+      transition: background .2s, transform .15s, box-shadow .2s;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .mm-capsule:hover {
+      background: rgba(184,134,26,.12);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(184,134,26,.1);
+    }
+    .mm-capsule:active { transform: translateY(0); }
+    [data-theme="dark"] .mm-capsule { background: rgba(212,168,50,.08); border-color: rgba(212,168,50,.18); }
+    [data-theme="dark"] .mm-capsule:hover { background: rgba(212,168,50,.14); }
+    .mm-capsule-icon { font-size: 1.35rem; flex-shrink: 0; line-height: 1; }
+    .mm-capsule-text { flex: 1; }
+    .mm-capsule-label {
+      font-size: .64rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+      color: var(--gold); display: block; margin-bottom: 2px;
+    }
+    [data-lang="ar"] .mm-capsule-label { font-family: var(--font-ar); letter-spacing: 0; }
+    .mm-capsule-title { font-size: .9rem; font-weight: 500; color: var(--text); display: block; }
+    [data-lang="ar"] .mm-capsule-title { font-family: var(--font-ar); }
+    .mm-capsule-arrow { color: var(--gold); opacity: .7; flex-shrink: 0; transition: transform .2s; display: flex; }
+    .mm-capsule:hover .mm-capsule-arrow { transform: translateX(3px); }
+    [data-lang="ar"] .mm-capsule:hover .mm-capsule-arrow { transform: translateX(-3px); }
+    [data-lang="ar"] .mm-capsule-arrow svg { transform: scaleX(-1); }
+
+    /* ─── DAILY CAPSULE POPUP ─────────────────────────── */
+    .capsule-overlay {
+      position: fixed; inset: 0; z-index: 1000;
+      display: flex; align-items: flex-end; justify-content: center;
+      padding: 0 1rem 1rem;
+    }
+    .capsule-overlay[hidden] { display: none; }
+    @media (min-width: 600px) { .capsule-overlay { align-items: center; } }
+    .capsule-backdrop {
+      position: absolute; inset: 0;
+      background: rgba(10,10,8,.5);
+      backdrop-filter: blur(7px);
+      -webkit-backdrop-filter: blur(7px);
+      cursor: pointer;
+      animation: capsuleFadeIn .22s ease;
+    }
+    @keyframes capsuleFadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .capsule-card {
+      position: relative; z-index: 1;
+      background: var(--card-bg);
+      border-radius: 24px;
+      width: 100%; max-width: 420px;
+      max-height: 88vh; overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,.22), 0 4px 16px rgba(0,0,0,.1);
+      animation: capsuleSlideUp .28s cubic-bezier(.34,1.3,.64,1);
+      overscroll-behavior: contain;
+    }
+    @keyframes capsuleSlideUp {
+      from { opacity: 0; transform: translateY(24px) scale(.97); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .capsule-card::-webkit-scrollbar { width: 4px; }
+    .capsule-card::-webkit-scrollbar-track { background: transparent; }
+    .capsule-card::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+    .capsule-close {
+      position: absolute; top: .85rem; right: .85rem; z-index: 10;
+      background: rgba(0,0,0,.08); border: none; border-radius: 50%;
+      width: 30px; height: 30px; font-size: .78rem;
+      color: var(--text-2); cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .15s;
+    }
+    [data-lang="ar"] .capsule-close { right: auto; left: .85rem; }
+    .capsule-close:hover { background: rgba(0,0,0,.15); }
+    [data-theme="dark"] .capsule-close { background: rgba(255,255,255,.1); color: var(--text-2); }
+    [data-theme="dark"] .capsule-close:hover { background: rgba(255,255,255,.18); }
+    .capsule-img-wrap {
+      background: linear-gradient(160deg, #FDF0D8 0%, #F5E5C0 100%);
+      border-radius: 24px 24px 0 0; padding: 2.5rem 1rem;
+      display: flex; align-items: center; justify-content: center; min-height: 140px;
+    }
+    [data-theme="dark"] .capsule-img-wrap { background: linear-gradient(160deg, #1E1A10 0%, #1A1508 100%); }
+    .capsule-img-emoji {
+      font-size: 4.5rem; line-height: 1;
+      filter: drop-shadow(0 6px 16px rgba(0,0,0,.15));
+    }
+    .capsule-content { padding: 1.25rem 1.4rem .5rem; }
+    .capsule-tag {
+      font-size: .65rem; font-weight: 600; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: .45rem;
+    }
+    [data-lang="ar"] .capsule-tag { font-family: var(--font-ar); letter-spacing: 0; }
+    .capsule-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.2rem, 4vw, 1.5rem);
+      font-weight: 400; color: var(--text);
+      margin-bottom: .55rem; line-height: 1.25;
+    }
+    [data-lang="ar"] .capsule-title { font-family: var(--font-ar); font-size: 1.25rem; }
+    .capsule-desc { font-size: .84rem; color: var(--text-2); line-height: 1.6; margin-bottom: 1.1rem; }
+    [data-lang="ar"] .capsule-desc { font-family: var(--font-ar); font-size: .88rem; }
+    .capsule-section { margin-bottom: 1rem; }
+    .capsule-section-title {
+      font-size: .66rem; font-weight: 600; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: .5rem;
+    }
+    [data-lang="ar"] .capsule-section-title { font-family: var(--font-ar); letter-spacing: 0; }
+    .capsule-ingredients { display: grid; grid-template-columns: 1fr 1fr; gap: .4rem; }
+    .capsule-ing {
+      font-size: .81rem; color: var(--text-2);
+      background: var(--cream); border-radius: 8px; padding: .45rem .7rem;
+    }
+    [data-lang="ar"] .capsule-ing { font-family: var(--font-ar); font-size: .85rem; }
+    [data-theme="dark"] .capsule-ing { background: rgba(255,255,255,.05); }
+    .capsule-steps { display: flex; flex-direction: column; gap: .55rem; }
+    .capsule-step { display: flex; align-items: flex-start; gap: .75rem; font-size: .83rem; color: var(--text-2); line-height: 1.55; }
+    [data-lang="ar"] .capsule-step { font-family: var(--font-ar); font-size: .88rem; }
+    .capsule-step-num {
+      flex-shrink: 0; width: 22px; height: 22px;
+      background: var(--gold); color: #fff; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .7rem; font-weight: 700; margin-top: 2px;
+    }
+    .capsule-footer {
+      display: flex; gap: .6rem;
+      padding: .9rem 1.4rem 1.4rem;
+      border-top: 1px solid var(--border);
+      margin-top: .5rem;
+    }
+    .capsule-btn {
+      flex: 1; padding: .65rem .4rem;
+      border-radius: 12px; border: none;
+      font-size: .77rem; font-weight: 600;
+      cursor: pointer; font-family: var(--font-ui);
+      transition: background .15s, transform .1s;
+    }
+    [data-lang="ar"] .capsule-btn { font-family: var(--font-ar); font-size: .82rem; }
+    .capsule-btn:active { transform: scale(.97); }
+    .capsule-btn-save, .capsule-btn-shop {
+      background: var(--cream); color: var(--text-2); border: 1px solid var(--border);
+    }
+    .capsule-btn-save:hover, .capsule-btn-shop:hover { background: var(--cream-d); }
+    [data-theme="dark"] .capsule-btn-save,
+    [data-theme="dark"] .capsule-btn-shop { background: rgba(255,255,255,.07); border-color: var(--border); color: var(--text-2); }
+    .capsule-btn-full { background: var(--gold); color: #fff; flex: 1.4; }
+    .capsule-btn-full:hover { background: var(--gold-d); }
   </style>
 <script src="/scripts/global.js" defer></script>
 </head>
@@ -1391,6 +1545,14 @@
         <div class="mm-day-label" id="mm-day-label"></div>
       </div>
       <div class="mm-items" id="mm-items"></div>
+      <div class="mm-capsule" id="mm-capsule-trigger" role="button" tabindex="0" aria-label="Open recipe idea">
+        <span class="mm-capsule-icon">🍽️</span>
+        <div class="mm-capsule-text">
+          <span class="mm-capsule-label"><span class="en">Today's idea</span><span class="ar">فكرة اليوم</span></span>
+          <span class="mm-capsule-title"><span class="en">Dinner in 15 minutes</span><span class="ar">عشاء في ١٥ دقيقة</span></span>
+        </div>
+        <span class="mm-capsule-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></span>
+      </div>
       <div class="mm-footer">
         <div class="mm-footer-left">
           <span class="mm-pulse"></span>
@@ -2343,6 +2505,109 @@
     });
   })();
 
+  /* ── DAILY CAPSULE INTERACTION ─────────────────── */
+  (function(){
+    var trigger  = document.getElementById('mm-capsule-trigger');
+    var overlay  = document.getElementById('capsule-overlay');
+    var backdrop = document.getElementById('capsule-backdrop');
+    var closeBtn = document.getElementById('capsule-close');
+    var saveBtn  = document.getElementById('capsule-save');
+    var shopBtn  = document.getElementById('capsule-shop');
+    if(!trigger || !overlay) return;
+
+    function openCapsule(){
+      overlay.removeAttribute('hidden');
+      document.body.style.overflow = 'hidden';
+      setTimeout(function(){ closeBtn && closeBtn.focus(); }, 50);
+    }
+    function closeCapsule(){
+      overlay.setAttribute('hidden', '');
+      document.body.style.overflow = '';
+      trigger.focus();
+    }
+
+    trigger.addEventListener('click', openCapsule);
+    trigger.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openCapsule(); }
+    });
+    backdrop && backdrop.addEventListener('click', closeCapsule);
+    closeBtn && closeBtn.addEventListener('click', closeCapsule);
+
+    // Save — visual feedback
+    saveBtn && saveBtn.addEventListener('click', function(){
+      var isAr = document.documentElement.getAttribute('data-lang') === 'ar';
+      var s = saveBtn;
+      s.innerHTML = isAr ? '✅ تم الحفظ' : '✅ Saved!';
+      s.style.background = 'rgba(27,122,78,.12)';
+      s.style.color = '#1B7A4E';
+      s.style.borderColor = '#1B7A4E';
+      setTimeout(function(){
+        s.innerHTML = isAr ? '<span class="ar">💾 حفظ</span>' : '<span class="en">💾 Save</span>';
+        s.style.cssText = '';
+      }, 2500);
+    });
+
+    // Shopping — visual feedback
+    shopBtn && shopBtn.addEventListener('click', function(){
+      var isAr = document.documentElement.getAttribute('data-lang') === 'ar';
+      var s = shopBtn;
+      s.innerHTML = isAr ? '✅ تمت الإضافة' : '✅ Added!';
+      s.style.background = 'rgba(27,122,78,.12)';
+      s.style.color = '#1B7A4E';
+      s.style.borderColor = '#1B7A4E';
+      setTimeout(function(){
+        s.innerHTML = isAr ? '<span class="ar">🛒 تسوق</span>' : '<span class="en">🛒 Shopping</span>';
+        s.style.cssText = '';
+      }, 2500);
+    });
+
+    // Escape key
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && !overlay.hasAttribute('hidden')) closeCapsule();
+    });
+  })();
+
   </script>
+
+  <!-- ═══════════════════════════════════════
+       DAILY CAPSULE POPUP
+  ═══════════════════════════════════════ -->
+  <div id="capsule-overlay" class="capsule-overlay" role="dialog" aria-modal="true" hidden>
+    <div class="capsule-backdrop" id="capsule-backdrop"></div>
+    <div class="capsule-card" id="capsule-card">
+      <button class="capsule-close" id="capsule-close" aria-label="Close">✕</button>
+      <div class="capsule-img-wrap">
+        <span class="capsule-img-emoji">🍝</span>
+      </div>
+      <div class="capsule-content">
+        <div class="capsule-tag"><span class="en">Quick dinner · 15 min</span><span class="ar">عشاء سريع · ١٥ دقيقة</span></div>
+        <h2 class="capsule-title"><span class="en">Pasta with Garlic &amp; Olive Oil</span><span class="ar">باستا بالثوم وزيت الزيتون</span></h2>
+        <p class="capsule-desc"><span class="en">A simple, warming dinner the whole family will love — ready in 15 minutes with pantry staples.</span><span class="ar">عشاء دافئ وبسيط تحبه العائلة كلها — يتحضر في ١٥ دقيقة بمقادير أساسية.</span></p>
+        <div class="capsule-section">
+          <div class="capsule-section-title"><span class="en">Ingredients</span><span class="ar">المقادير</span></div>
+          <div class="capsule-ingredients">
+            <div class="capsule-ing"><span class="en">Pasta — 200g</span><span class="ar">باستا — ٢٠٠ جرام</span></div>
+            <div class="capsule-ing"><span class="en">Garlic — 4 cloves</span><span class="ar">ثوم — ٤ فصوص</span></div>
+            <div class="capsule-ing"><span class="en">Olive oil — 4 tbsp</span><span class="ar">زيت زيتون — ٤ ملاعق</span></div>
+            <div class="capsule-ing"><span class="en">Parsley &amp; chilli</span><span class="ar">بقدونس وبهار حار</span></div>
+          </div>
+        </div>
+        <div class="capsule-section">
+          <div class="capsule-section-title"><span class="en">Steps</span><span class="ar">الخطوات</span></div>
+          <div class="capsule-steps">
+            <div class="capsule-step"><span class="capsule-step-num">1</span><span class="en">Boil pasta in salted water until al dente.</span><span class="ar">اسلقي الباستا في ماء مملح حتى تنضج.</span></div>
+            <div class="capsule-step"><span class="capsule-step-num">2</span><span class="en">Fry garlic in olive oil on low heat until golden.</span><span class="ar">حمّري الثوم في زيت الزيتون على نار خفيفة حتى يصبح ذهبياً.</span></div>
+            <div class="capsule-step"><span class="capsule-step-num">3</span><span class="en">Toss pasta with garlic oil, parsley and chilli. Serve warm.</span><span class="ar">اخلطي الباستا مع الثوم والبقدونس والبهار. قدميها دافئة.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="capsule-footer">
+        <button class="capsule-btn capsule-btn-save" id="capsule-save"><span class="en">💾 Save</span><span class="ar">💾 حفظ</span></button>
+        <button class="capsule-btn capsule-btn-shop" id="capsule-shop"><span class="en">🛒 Shopping</span><span class="ar">🛒 تسوق</span></button>
+        <button class="capsule-btn capsule-btn-full"><span class="en">Full Recipe →</span><span class="ar">الوصفة كاملة →</span></button>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
