@@ -1,6 +1,5 @@
 /**
  * d4l1-capsule-engine — Main Server
- * Express API server for Dot4Life capsule management
  *
  * Endpoints:
  *   Public:  GET  /api/capsule/today
@@ -24,29 +23,18 @@
 
 const express = require('express');
 const cors    = require('cors');
-const path    = require('path');
 const config  = require('./config');
+const { initSchema } = require('./db');
 
 const app = express();
 
 // ─────────────────────────────────────────
 //  MIDDLEWARE
 // ─────────────────────────────────────────
-
-app.use(cors({
-  origin: (origin, cb) => {
-    // Allow requests with no origin (curl, Postman, same-server)
-    if (!origin) return cb(null, true);
-    if (config.CORS_ORIGINS.includes(origin)) return cb(null, true);
-    cb(new Error(`CORS: origin ${origin} not allowed`));
-  },
-  credentials: true,
-}));
-
+app.use(cors({ origin: '*' }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Simple request logger
 app.use((req, _res, next) => {
   const ts = new Date().toISOString().slice(11, 19);
   console.log(`[${ts}] ${req.method} ${req.path}`);
@@ -56,55 +44,42 @@ app.use((req, _res, next) => {
 // ─────────────────────────────────────────
 //  ROUTES
 // ─────────────────────────────────────────
+app.use('/api/capsule', require('./routes/public'));
+app.use('/api/admin',   require('./routes/admin'));
 
-const publicRoutes = require('./routes/public');
-const adminRoutes  = require('./routes/admin');
+app.get('/', (_req, res) => res.json({
+  system: 'd4l1-capsule-engine', version: '1.0.0', status: 'running',
+  endpoints: {
+    public: '/api/capsule/today | /api/capsule/health',
+    admin:  '/api/admin/login  | /api/admin/capsules',
+  }
+}));
 
-// Public API — called by frontend (index.html)
-app.use('/api/capsule', publicRoutes);
-
-// Admin API — called by admin.html dashboard
-app.use('/api/admin', adminRoutes);
-
-// ─────────────────────────────────────────
-//  ROOT + 404
-// ─────────────────────────────────────────
-
-app.get('/', (_req, res) => {
-  res.json({
-    system: 'd4l1-capsule-engine',
-    version: '1.0.0',
-    status: 'running',
-    endpoints: {
-      public:  '/api/capsule/today | /api/capsule/schedule | /api/capsule/health',
-      admin:   '/api/admin/login | /api/admin/capsules | /api/admin/generate',
-    }
-  });
-});
-
-app.use((_req, res) => {
-  res.status(404).json({ error: 'Not found' });
-});
-
-// ─────────────────────────────────────────
-//  ERROR HANDLER
-// ─────────────────────────────────────────
+app.use((_req, res) => res.status(404).json({ error: 'Not found' }));
 
 app.use((err, _req, res, _next) => {
   console.error('[ERROR]', err.message);
-  res.status(500).json({ error: 'Server error', message: err.message });
+  res.status(500).json({ error: err.message });
 });
 
 // ─────────────────────────────────────────
-//  START
+//  START — init schema first, then listen
 // ─────────────────────────────────────────
-
 const PORT = config.PORT;
-app.listen(PORT, () => {
-  console.log(`\n🧘 d4l1-capsule-engine running on port ${PORT}`);
-  console.log(`   Public API : http://localhost:${PORT}/api/capsule/today`);
-  console.log(`   Admin API  : http://localhost:${PORT}/api/admin/login`);
-  console.log(`   Status     : http://localhost:${PORT}/\n`);
-});
+
+initSchema()
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`\n🧘 d4l1-capsule-engine running on port ${PORT}`);
+      console.log(`   Public API : http://localhost:${PORT}/api/capsule/today`);
+      console.log(`   Admin API  : http://localhost:${PORT}/api/admin/login`);
+      console.log(`   Status     : http://localhost:${PORT}/\n`);
+    });
+  })
+  .catch(err => {
+    console.error('[FATAL] Could not initialize database:', err.message);
+    console.error('Make sure DATABASE_URL is set correctly.');
+    process.exit(1);
+  });
 
 module.exports = app;

@@ -1,352 +1,314 @@
 /**
- * d4l1-capsule-engine — Database Layer
- * SQLite via better-sqlite3 (synchronous, zero-config)
- * All tables prefixed with ce_ to avoid future conflicts
+ * d4l1-capsule-engine — Database Layer (PostgreSQL)
+ * Uses pg Pool — works with Railway, Supabase, Neon, or any Postgres
+ * Set DATABASE_URL environment variable to connect
  */
 
-const Database = require('better-sqlite3');
-const path = require('path');
-const crypto = require('crypto');
-
-const DB_PATH = path.join(__dirname, 'data', 'capsules.db');
-
-// Ensure data directory exists
-const fs = require('fs');
-fs.mkdirSync(path.join(__dirname, 'data'), { recursive: true });
-
-const db = new Database(DB_PATH);
-
-// Enable WAL mode for better concurrent reads
-db.pragma('journal_mode = WAL');
-db.pragma('foreign_keys = ON');
+const { Pool } = require('pg');
+const crypto   = require('crypto');
 
 // ─────────────────────────────────────────
-//  SCHEMA
+//  CONNECTION
 // ─────────────────────────────────────────
-db.exec(`
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL || 'postgresql://localhost/d4l_capsules',
+  ssl: process.env.DATABASE_URL ? { rejectUnauthorized: false } : false,
+});
 
-  /* ── Core capsule record ── */
-  CREATE TABLE IF NOT EXISTS ce_capsules (
-    id          TEXT PRIMARY KEY,             -- uuid-like: cap_YYYYMMDD_xxx
-    category    TEXT NOT NULL,                -- meals | family | wellness | faith | money | living
-    emoji       TEXT DEFAULT '🌿',
-    title_en    TEXT NOT NULL,
-    title_ar    TEXT NOT NULL,
-    subtitle_en TEXT,
-    subtitle_ar TEXT,
-    body_en     TEXT,                         -- rich text / markdown
-    body_ar     TEXT,
-    tags        TEXT DEFAULT '[]',            -- JSON array of strings
-    tip_en      TEXT,                         -- short action tip
-    tip_ar      TEXT,
-
-    -- scheduling
-    scheduled_date TEXT,                      -- YYYY-MM-DD: which day to publish
-
-    -- workflow
-    status      TEXT NOT NULL DEFAULT 'draft',
-    -- values: draft | pending_review | approved | rejected | published | archived
-
-    -- metadata
-    source      TEXT DEFAULT 'manual',        -- manual | generator | import
-    created_at  TEXT DEFAULT (datetime('now')),
-    updated_at  TEXT DEFAULT (datetime('now')),
-
-    -- review
-    reviewed_at   TEXT,
-    reviewed_by   TEXT,
-    admin_notes   TEXT,
-    reject_reason TEXT
-  );
-
-  /* ── Published capsule schedule ── */
-  /* One approved capsule per day maximum */
-  CREATE TABLE IF NOT EXISTS ce_schedule (
-    date        TEXT PRIMARY KEY,             -- YYYY-MM-DD
-    capsule_id  TEXT NOT NULL,
-    published_at TEXT DEFAULT (datetime('now')),
-    FOREIGN KEY (capsule_id) REFERENCES ce_capsules(id)
-  );
-
-  /* ── Admin sessions (simple token auth) ── */
-  CREATE TABLE IF NOT EXISTS ce_admin_sessions (
-    token       TEXT PRIMARY KEY,
-    created_at  TEXT DEFAULT (datetime('now')),
-    expires_at  TEXT NOT NULL,
-    note        TEXT
-  );
-
-  /* ── Audit log ── */
-  CREATE TABLE IF NOT EXISTS ce_audit_log (
-    id          INTEGER PRIMARY KEY AUTOINCREMENT,
-    action      TEXT NOT NULL,               -- create|edit|approve|reject|publish|archive
-    capsule_id  TEXT,
-    old_status  TEXT,
-    new_status  TEXT,
-    note        TEXT,
-    created_at  TEXT DEFAULT (datetime('now'))
-  );
-
-  /* ── Indexes ── */
-  CREATE INDEX IF NOT EXISTS idx_capsules_status   ON ce_capsules(status);
-  CREATE INDEX IF NOT EXISTS idx_capsules_date     ON ce_capsules(scheduled_date);
-  CREATE INDEX IF NOT EXISTS idx_capsules_category ON ce_capsules(category);
-  CREATE INDEX IF NOT EXISTS idx_schedule_date     ON ce_schedule(date);
-`);
+pool.on('error', (err) => {
+  console.error('[DB] Unexpected pool error:', err.message);
+});
 
 // ─────────────────────────────────────────
-//  HELPERS
+//  SCHEMA INIT
 // ─────────────────────────────────────────
+async function initSchema() {
+  await pool.query(`
+    CREATE TABLE IF NOT EXISTS ce_capsules (
+      id            TEXT PRIMARY KEY,
+      category      TEXT NOT NULL,
+      emoji         TEXT DEFAULT '🌿',
+      title_en      TEXT NOT NULL,
+      title_ar      TEXT NOT NULL,
+      subtitle_en   TEXT,
+      subtitle_ar   TEXT,
+      body_en       TEXT,
+      body_ar       TEXT,
+      tags          TEXT DEFAULT '[]',
+      tip_en        TEXT,
+      tip_ar        TEXT,
+      scheduled_date TEXT,
+      status        TEXT NOT NULL DEFAULT 'draft',
+      source        TEXT DEFAULT 'manual',
+      created_at    TIMESTAMPTZ DEFAULT NOW(),
+      updated_at    TIMESTAMPTZ DEFAULT NOW(),
+      reviewed_at   TIMESTAMPTZ,
+      reviewed_by   TEXT,
+      admin_notes   TEXT,
+      reject_reason TEXT
+    );
 
-/** Generate a short unique capsule ID */
-function newCapsuleId(date) {
-  const d = date || new Date().toISOString().slice(0, 10).replace(/-/g, '');
-  const rand = crypto.randomBytes(3).toString('hex');
-  return `cap_${d}_${rand}`;
+    CREATE TABLE IF NOT EXISTS ce_schedule (
+      date         TEXT PRIMARY KEY,
+      capsule_id   TEXT NOT NULL REFERENCES ce_capsules(id),
+      published_at TIMESTAMPTZ DEFAULT NOW()
+    );
+
+    CREATE TABLE IF NOT EXISTS ce_admin_sessions (
+      token      TEXT PRIMARY KEY,
+      created_at TIMESTAMPTZ DEFAULT NOW(),
+      expires_at TIMESTAMPTZ NOT NULL,
+      note       TEXT
+    );
+
+    CREATE TABLE IF NOT EXISTS ce_audit_log (
+      id          SERIAL PRIMARY KEY,
+      action      TEXT NOT NULL,
+      capsule_id  TEXT,
+      old_status  TEXT,
+      new_status  TEXT,
+      note        TEXT,
+      created_at  TIMESTAMPTZ DEFAULT NOW()
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_capsules_status   ON ce_capsules(status);
+    CREATE INDEX IF NOT EXISTS idx_capsules_date     ON ce_capsules(scheduled_date);
+    CREATE INDEX IF NOT EXISTS idx_capsules_category ON ce_capsules(category);
+    CREATE INDEX IF NOT EXISTS idx_schedule_date     ON ce_schedule(date);
+  `);
+  console.log('[DB] Schema ready ✓');
 }
 
-/** Generate a secure session token */
-function newSessionToken() {
-  return crypto.randomBytes(32).toString('hex');
+// ─────────────────────────────────────────
+//  QUERY HELPERS
+// ─────────────────────────────────────────
+async function one(sql, params = []) {
+  const r = await pool.query(sql, params);
+  return r.rows[0] || null;
+}
+async function all(sql, params = []) {
+  const r = await pool.query(sql, params);
+  return r.rows;
+}
+async function run(sql, params = []) {
+  await pool.query(sql, params);
 }
 
 // ─────────────────────────────────────────
 //  CAPSULE QUERIES
 // ─────────────────────────────────────────
+async function getCapsuleById(id) {
+  return one('SELECT * FROM ce_capsules WHERE id = $1', [id]);
+}
 
-const q = {
+async function getCapsulesByStatus(status) {
+  return all('SELECT * FROM ce_capsules WHERE status = $1 ORDER BY created_at DESC', [status]);
+}
 
-  // ── CREATE ──
-  insertCapsule: db.prepare(`
-    INSERT INTO ce_capsules
-      (id, category, emoji, title_en, title_ar, subtitle_en, subtitle_ar,
-       body_en, body_ar, tags, tip_en, tip_ar, scheduled_date, status, source)
-    VALUES
-      (@id, @category, @emoji, @title_en, @title_ar, @subtitle_en, @subtitle_ar,
-       @body_en, @body_ar, @tags, @tip_en, @tip_ar, @scheduled_date, @status, @source)
-  `),
+async function getPendingCapsules() {
+  return all(`SELECT * FROM ce_capsules WHERE status = 'pending_review'
+              ORDER BY scheduled_date ASC, created_at ASC`);
+}
 
-  // ── READ ──
-  getCapsuleById: db.prepare(`SELECT * FROM ce_capsules WHERE id = ?`),
+async function getApprovedCapsules() {
+  return all(`SELECT * FROM ce_capsules WHERE status = 'approved' ORDER BY scheduled_date ASC`);
+}
 
-  getCapsulesByStatus: db.prepare(`
-    SELECT * FROM ce_capsules WHERE status = ? ORDER BY created_at DESC
-  `),
+async function getAllCapsules() {
+  return all('SELECT * FROM ce_capsules ORDER BY created_at DESC LIMIT 100');
+}
 
-  getPendingCapsules: db.prepare(`
-    SELECT * FROM ce_capsules WHERE status = 'pending_review' ORDER BY scheduled_date ASC, created_at ASC
-  `),
+async function getCapsulesByCategory(category) {
+  return all(`SELECT * FROM ce_capsules WHERE category = $1 AND status = 'published'
+              ORDER BY scheduled_date DESC LIMIT 20`, [category]);
+}
 
-  getApprovedCapsules: db.prepare(`
-    SELECT * FROM ce_capsules WHERE status = 'approved' ORDER BY scheduled_date ASC
-  `),
-
-  getTodayPublished: db.prepare(`
+async function getTodayPublished(date) {
+  return one(`
     SELECT c.* FROM ce_capsules c
     JOIN ce_schedule s ON s.capsule_id = c.id
-    WHERE s.date = ? AND c.status = 'published'
-    LIMIT 1
-  `),
+    WHERE s.date = $1 AND c.status = 'published'
+    LIMIT 1`, [date]);
+}
 
-  getSchedule: db.prepare(`
+async function getSchedule(limit = 30) {
+  return all(`
     SELECT s.date, c.* FROM ce_schedule s
     JOIN ce_capsules c ON c.id = s.capsule_id
-    ORDER BY s.date DESC
-    LIMIT ?
-  `),
+    ORDER BY s.date DESC LIMIT $1`, [limit]);
+}
 
-  getAllCapsules: db.prepare(`
-    SELECT * FROM ce_capsules ORDER BY created_at DESC LIMIT 100
-  `),
-
-  getCapsulesByCategory: db.prepare(`
-    SELECT * FROM ce_capsules WHERE category = ? AND status = 'published'
-    ORDER BY scheduled_date DESC LIMIT 20
-  `),
-
-  // ── UPDATE ──
-  updateCapsuleStatus: db.prepare(`
-    UPDATE ce_capsules
-    SET status = @status, reviewed_at = datetime('now'), reviewed_by = @reviewed_by,
-        admin_notes = @admin_notes, reject_reason = @reject_reason,
-        updated_at = datetime('now')
-    WHERE id = @id
-  `),
-
-  updateCapsule: db.prepare(`
-    UPDATE ce_capsules
-    SET category=@category, emoji=@emoji, title_en=@title_en, title_ar=@title_ar,
-        subtitle_en=@subtitle_en, subtitle_ar=@subtitle_ar,
-        body_en=@body_en, body_ar=@body_ar, tags=@tags,
-        tip_en=@tip_en, tip_ar=@tip_ar,
-        scheduled_date=@scheduled_date, updated_at=datetime('now')
-    WHERE id = @id
-  `),
-
-  // ── SCHEDULE ──
-  schedulePublish: db.prepare(`
-    INSERT OR REPLACE INTO ce_schedule (date, capsule_id, published_at)
-    VALUES (@date, @capsule_id, datetime('now'))
-  `),
-
-  getScheduledDate: db.prepare(`SELECT * FROM ce_schedule WHERE date = ?`),
-
-  // ── AUDIT ──
-  logAction: db.prepare(`
-    INSERT INTO ce_audit_log (action, capsule_id, old_status, new_status, note)
-    VALUES (@action, @capsule_id, @old_status, @new_status, @note)
-  `),
-
-  getAuditLog: db.prepare(`
-    SELECT * FROM ce_audit_log ORDER BY created_at DESC LIMIT 50
-  `),
-
-  // ── SESSIONS ──
-  insertSession: db.prepare(`
-    INSERT INTO ce_admin_sessions (token, expires_at, note)
-    VALUES (@token, @expires_at, @note)
-  `),
-
-  getSession: db.prepare(`
-    SELECT * FROM ce_admin_sessions
-    WHERE token = ? AND expires_at > datetime('now')
-  `),
-
-  deleteSession: db.prepare(`DELETE FROM ce_admin_sessions WHERE token = ?`),
-
-  cleanExpiredSessions: db.prepare(`
-    DELETE FROM ce_admin_sessions WHERE expires_at < datetime('now')
-  `),
-};
+async function getScheduledDate(date) {
+  return one('SELECT * FROM ce_schedule WHERE date = $1', [date]);
+}
 
 // ─────────────────────────────────────────
 //  BUSINESS LOGIC
 // ─────────────────────────────────────────
 
-/**
- * Create a new capsule (draft or pending)
- */
-function createCapsule(data) {
+function newCapsuleId(date) {
+  const d = (date || new Date().toISOString().slice(0, 10)).replace(/-/g, '');
+  const rand = crypto.randomBytes(3).toString('hex');
+  return `cap_${d}_${rand}`;
+}
+
+async function createCapsule(data) {
   const id = newCapsuleId(data.scheduled_date);
-  const capsule = {
-    id,
-    category: data.category || 'meals',
-    emoji: data.emoji || '🌿',
-    title_en: data.title_en || '',
-    title_ar: data.title_ar || '',
-    subtitle_en: data.subtitle_en || '',
-    subtitle_ar: data.subtitle_ar || '',
-    body_en: data.body_en || '',
-    body_ar: data.body_ar || '',
-    tags: JSON.stringify(data.tags || []),
-    tip_en: data.tip_en || '',
-    tip_ar: data.tip_ar || '',
-    scheduled_date: data.scheduled_date || null,
-    status: data.status || 'draft',
-    source: data.source || 'manual',
-  };
-  q.insertCapsule.run(capsule);
-  q.logAction.run({ action: 'create', capsule_id: id, old_status: null, new_status: capsule.status, note: 'Created' });
-  return q.getCapsuleById.get(id);
+  await run(`
+    INSERT INTO ce_capsules
+      (id, category, emoji, title_en, title_ar, subtitle_en, subtitle_ar,
+       body_en, body_ar, tags, tip_en, tip_ar, scheduled_date, status, source)
+    VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15)`,
+    [
+      id,
+      data.category || 'meals',
+      data.emoji    || '🌿',
+      data.title_en || '',
+      data.title_ar || '',
+      data.subtitle_en || '',
+      data.subtitle_ar || '',
+      data.body_en  || '',
+      data.body_ar  || '',
+      JSON.stringify(data.tags || []),
+      data.tip_en   || '',
+      data.tip_ar   || '',
+      data.scheduled_date || null,
+      data.status   || 'draft',
+      data.source   || 'manual',
+    ]
+  );
+  await logAction('create', id, null, data.status || 'draft', 'Created');
+  return getCapsuleById(id);
 }
 
-/**
- * Submit capsule for admin review
- */
-function submitForReview(id) {
-  const cap = q.getCapsuleById.get(id);
+async function updateCapsule(id, data) {
+  await run(`
+    UPDATE ce_capsules SET
+      category=$1, emoji=$2, title_en=$3, title_ar=$4,
+      subtitle_en=$5, subtitle_ar=$6, body_en=$7, body_ar=$8,
+      tags=$9, tip_en=$10, tip_ar=$11, scheduled_date=$12,
+      updated_at=NOW()
+    WHERE id=$13`,
+    [
+      data.category, data.emoji, data.title_en, data.title_ar,
+      data.subtitle_en, data.subtitle_ar, data.body_en, data.body_ar,
+      JSON.stringify(data.tags || []), data.tip_en, data.tip_ar,
+      data.scheduled_date, id
+    ]
+  );
+  return getCapsuleById(id);
+}
+
+async function setStatus(id, status, { reviewedBy, adminNotes, rejectReason } = {}) {
+  await run(`
+    UPDATE ce_capsules SET
+      status=$1, reviewed_at=NOW(), reviewed_by=$2,
+      admin_notes=$3, reject_reason=$4, updated_at=NOW()
+    WHERE id=$5`,
+    [status, reviewedBy || null, adminNotes || null, rejectReason || null, id]
+  );
+}
+
+async function submitForReview(id) {
+  const cap = await getCapsuleById(id);
   if (!cap) throw new Error('Capsule not found');
-  if (!['draft'].includes(cap.status)) throw new Error(`Cannot submit from status: ${cap.status}`);
-  q.updateCapsuleStatus.run({ id, status: 'pending_review', reviewed_by: null, admin_notes: null, reject_reason: null });
-  q.logAction.run({ action: 'submit', capsule_id: id, old_status: cap.status, new_status: 'pending_review', note: null });
-  return q.getCapsuleById.get(id);
+  if (cap.status !== 'draft') throw new Error(`Cannot submit from status: ${cap.status}`);
+  await setStatus(id, 'pending_review');
+  await logAction('submit', id, cap.status, 'pending_review', null);
+  return getCapsuleById(id);
 }
 
-/**
- * Admin: approve a capsule
- */
-function approveCapsule(id, { adminNote } = {}) {
-  const cap = q.getCapsuleById.get(id);
+async function approveCapsule(id, { adminNote } = {}) {
+  const cap = await getCapsuleById(id);
   if (!cap) throw new Error('Capsule not found');
-  q.updateCapsuleStatus.run({
-    id, status: 'approved',
-    reviewed_by: 'admin', admin_notes: adminNote || null, reject_reason: null
-  });
-  q.logAction.run({ action: 'approve', capsule_id: id, old_status: cap.status, new_status: 'approved', note: adminNote || null });
-  return q.getCapsuleById.get(id);
+  await setStatus(id, 'approved', { reviewedBy: 'admin', adminNotes: adminNote });
+  await logAction('approve', id, cap.status, 'approved', adminNote || null);
+  return getCapsuleById(id);
 }
 
-/**
- * Admin: reject a capsule
- */
-function rejectCapsule(id, { reason, adminNote } = {}) {
-  const cap = q.getCapsuleById.get(id);
+async function rejectCapsule(id, { reason, adminNote } = {}) {
+  const cap = await getCapsuleById(id);
   if (!cap) throw new Error('Capsule not found');
-  q.updateCapsuleStatus.run({
-    id, status: 'rejected',
-    reviewed_by: 'admin', admin_notes: adminNote || null, reject_reason: reason || null
-  });
-  q.logAction.run({ action: 'reject', capsule_id: id, old_status: cap.status, new_status: 'rejected', note: reason || null });
-  return q.getCapsuleById.get(id);
+  await setStatus(id, 'rejected', { reviewedBy: 'admin', adminNotes: adminNote, rejectReason: reason });
+  await logAction('reject', id, cap.status, 'rejected', reason || null);
+  return getCapsuleById(id);
 }
 
-/**
- * Admin: publish an approved capsule to a specific date
- */
-function publishCapsule(id, date) {
-  const cap = q.getCapsuleById.get(id);
+async function publishCapsule(id, date) {
+  const cap = await getCapsuleById(id);
   if (!cap) throw new Error('Capsule not found');
   if (cap.status !== 'approved') throw new Error('Only approved capsules can be published');
-
   const targetDate = date || cap.scheduled_date || new Date().toISOString().slice(0, 10);
-
-  // Check if date already has a published capsule
-  const existing = q.getScheduledDate.get(targetDate);
-  if (existing && existing.capsule_id !== id) {
-    throw new Error(`Date ${targetDate} already has a published capsule`);
-  }
-
-  q.updateCapsuleStatus.run({ id, status: 'published', reviewed_by: 'admin', admin_notes: null, reject_reason: null });
-  q.schedulePublish.run({ date: targetDate, capsule_id: id });
-  q.logAction.run({ action: 'publish', capsule_id: id, old_status: 'approved', new_status: 'published', note: `Published to ${targetDate}` });
-  return q.getCapsuleById.get(id);
+  const existing   = await getScheduledDate(targetDate);
+  if (existing && existing.capsule_id !== id) throw new Error(`Date ${targetDate} already has a capsule`);
+  await setStatus(id, 'published', { reviewedBy: 'admin' });
+  await run(`INSERT INTO ce_schedule (date, capsule_id) VALUES ($1, $2)
+             ON CONFLICT (date) DO UPDATE SET capsule_id=$2, published_at=NOW()`,
+    [targetDate, id]);
+  await logAction('publish', id, 'approved', 'published', `Published to ${targetDate}`);
+  return getCapsuleById(id);
 }
 
-/**
- * Get today's published capsule (for frontend API)
- */
-function getTodayCapsule(dateStr) {
+async function getTodayCapsule(dateStr) {
   const date = dateStr || new Date().toISOString().slice(0, 10);
-  return q.getTodayPublished.get(date);
+  return getTodayPublished(date);
 }
 
 // ─────────────────────────────────────────
-//  SESSION AUTH
+//  AUDIT
 // ─────────────────────────────────────────
+async function logAction(action, capsuleId, oldStatus, newStatus, note) {
+  await run(`INSERT INTO ce_audit_log (action, capsule_id, old_status, new_status, note)
+             VALUES ($1,$2,$3,$4,$5)`,
+    [action, capsuleId, oldStatus, newStatus, note]);
+}
 
-function createSession() {
-  q.cleanExpiredSessions.run();
-  const token = newSessionToken();
-  const expiresAt = new Date(Date.now() + 8 * 60 * 60 * 1000).toISOString(); // 8h
-  q.insertSession.run({ token, expires_at: expiresAt, note: 'admin' });
+async function getAuditLog() {
+  return all('SELECT * FROM ce_audit_log ORDER BY created_at DESC LIMIT 50');
+}
+
+// ─────────────────────────────────────────
+//  SESSIONS
+// ─────────────────────────────────────────
+function newToken() {
+  return crypto.randomBytes(32).toString('hex');
+}
+
+async function createSession() {
+  await run(`DELETE FROM ce_admin_sessions WHERE expires_at < NOW()`);
+  const token     = newToken();
+  const expiresAt = new Date(Date.now() + 8 * 60 * 60 * 1000);
+  await run(`INSERT INTO ce_admin_sessions (token, expires_at, note) VALUES ($1,$2,'admin')`,
+    [token, expiresAt.toISOString()]);
   return token;
 }
 
-function validateSession(token) {
+async function validateSession(token) {
   if (!token) return false;
-  const session = q.getSession.get(token);
-  return !!session;
+  const s = await one(`SELECT * FROM ce_admin_sessions WHERE token=$1 AND expires_at > NOW()`, [token]);
+  return !!s;
 }
 
-function destroySession(token) {
-  q.deleteSession.run(token);
+async function destroySession(token) {
+  await run('DELETE FROM ce_admin_sessions WHERE token=$1', [token]);
 }
 
+// ─────────────────────────────────────────
+//  EXPORTS
+// ─────────────────────────────────────────
 module.exports = {
-  db, q,
-  createCapsule, submitForReview,
-  approveCapsule, rejectCapsule, publishCapsule,
+  pool, initSchema,
+  // capsule CRUD
+  getCapsuleById, getCapsulesByStatus, getPendingCapsules,
+  getApprovedCapsules, getAllCapsules, getCapsulesByCategory,
+  getTodayPublished, getSchedule, getScheduledDate,
+  // business logic
+  createCapsule, updateCapsule,
+  submitForReview, approveCapsule, rejectCapsule, publishCapsule,
   getTodayCapsule,
+  // audit
+  logAction, getAuditLog,
+  // sessions
   createSession, validateSession, destroySession,
   newCapsuleId,
 };
