@@ -5,7 +5,6 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Calm Life Library — DOTFORLIFE</title>
-  <meta name="description" content="Small moments that make your day easier."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500;600&family=Almarai:wght@300;400;700&display=swap" rel="stylesheet"/>
@@ -14,11 +13,12 @@
     --text:#1A1410;--text-2:#5C534A;--muted:#9A9188;
     --body-bg:#FAF8F4;--card-bg:#FFFFFF;--cream:#F5F0E8;
     --cream-d:#EDE6D8;--border:#E0D8CC;--gold:#B8861A;--gold-d:#8A620F;
-    --green:#1B7A4E;--rose:#B8705A;--blue:#0F3D6E;
     --font-serif:'Crimson Pro',Georgia,serif;
     --font-ui:'Inter',system-ui,sans-serif;
     --font-ar:'Almarai','Segoe UI',sans-serif;
     --radius:6px;
+    --page-max:1100px;
+    --page-pad:48px;
   }
   [data-theme="dark"]{
     --text:#EDE8E0;--text-2:#B8B0A4;--muted:#7A746C;
@@ -34,159 +34,197 @@
   a{color:inherit;text-decoration:none;}
 
   /* ── NAVBAR ── */
-  #navbar{position:sticky;top:0;z-index:100;background:rgba(250,248,244,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:center;}
+  #navbar{position:sticky;top:0;z-index:200;background:rgba(250,248,244,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:center;}
   [data-theme="dark"] #navbar{background:rgba(18,16,14,0.97);}
   #navbar.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.07);}
-  .nav-inner{max-width:760px;width:100%;padding:0 24px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-inner{max-width:var(--page-max);width:100%;padding:0 var(--page-pad);display:flex;align-items:center;justify-content:space-between;}
   .nav-logo img{height:130px;width:auto;display:block;margin:4px 0 8px;}
   @media(max-width:600px){.nav-logo img{height:80px;}}
-  .nav-os-links{display:flex;gap:0;align-items:center;list-style:none;}
-  .nav-os-links a{font-size:.78rem;font-weight:500;letter-spacing:.05em;padding:5px 10px;border-radius:6px;color:var(--text-2);transition:color .2s,background .2s;}
-  .nav-os-links a:hover,.nav-os-links a.active{color:var(--gold);}
-  .nav-os-links .home-link{font-size:.75rem;color:var(--muted);margin-right:4px;}
-  @media(max-width:520px){.nav-os-links .hide-sm{display:none;}}
+  .nav-links{display:flex;gap:0;align-items:center;list-style:none;}
+  .nav-links a{font-size:.78rem;font-weight:500;letter-spacing:.04em;padding:5px 10px;border-radius:6px;color:var(--text-2);transition:color .2s;}
+  .nav-links a:hover,.nav-links a.active{color:var(--gold);}
+  .nav-links .home-link{font-size:.75rem;color:var(--muted);}
+  @media(max-width:520px){.nav-links .hide-sm{display:none;}}
   .nav-controls{display:flex;gap:.5rem;align-items:center;}
   .nav-btn{cursor:pointer;border:1px solid var(--border);border-radius:var(--radius);padding:.3rem .6rem;font-size:.74rem;font-weight:600;background:transparent;color:var(--text-2);transition:all .2s;}
   .nav-btn:hover{border-color:var(--gold);color:var(--gold);}
 
-  /* ── PAGE LAYOUT ── */
-  #page{max-width:720px;margin:0 auto;padding:0 24px 80px;}
-
-  /* ── LIBRARY HERO ── */
-  .lib-hero{
-    padding:3.5rem 0 2.5rem;
+  /* ── HERO ── */
+  #lib-hero{
+    background:linear-gradient(160deg,#FDF8EF 0%,#F5EDD8 100%);
     border-bottom:1px solid rgba(184,134,26,.12);
-    margin-bottom:0;
+    padding:3.5rem var(--page-pad) 3rem;
   }
-  .lib-hero-eyebrow{
-    font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
-    color:var(--gold);display:flex;align-items:center;gap:.5rem;margin-bottom:.9rem;
-  }
+  [data-theme="dark"] #lib-hero{background:linear-gradient(160deg,#18150C 0%,#141008 100%);}
+  .lib-hero-inner{max-width:var(--page-max);margin:0 auto;display:grid;grid-template-columns:1fr auto;align-items:end;gap:3rem;}
+  @media(max-width:768px){.lib-hero-inner{grid-template-columns:1fr;gap:1.5rem;}}
+  .lib-hero-eyebrow{font-size:.67rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;display:flex;align-items:center;gap:.5rem;}
+  .lib-hero-eyebrow::before{content:'';width:18px;height:1px;background:var(--gold);opacity:.5;}
   [data-lang="ar"] .lib-hero-eyebrow{font-family:var(--font-ar);letter-spacing:0;}
-  .lib-hero-eyebrow::before{content:'';display:inline-block;width:18px;height:1px;background:var(--gold);opacity:.6;}
   [data-lang="ar"] .lib-hero-eyebrow::before{display:none;}
-  [data-lang="ar"] .lib-hero-eyebrow::after{content:'';display:inline-block;width:18px;height:1px;background:var(--gold);opacity:.6;}
-  .lib-hero h1{
-    font-family:var(--font-serif);
-    font-size:clamp(2rem,5vw,2.8rem);
-    font-weight:300;
-    color:var(--text);
-    line-height:1.15;
-    margin-bottom:.75rem;
-  }
-  [data-lang="ar"] .lib-hero h1{font-family:var(--font-ar);font-size:clamp(1.8rem,4vw,2.4rem);}
-  .lib-hero-sub{
-    font-size:.95rem;color:var(--text-2);
-    max-width:480px;line-height:1.65;
-  }
-  [data-lang="ar"] .lib-hero-sub{font-family:var(--font-ar);font-size:1rem;}
+  .lib-hero h1{font-family:var(--font-serif);font-size:clamp(2rem,4vw,2.9rem);font-weight:300;color:var(--text);line-height:1.12;margin-bottom:.7rem;}
+  [data-lang="ar"] .lib-hero h1{font-family:var(--font-ar);font-size:clamp(1.8rem,4vw,2.5rem);}
+  .lib-hero-sub{font-size:.95rem;color:var(--text-2);max-width:460px;line-height:1.6;}
+  [data-lang="ar"] .lib-hero-sub{font-family:var(--font-ar);}
+  .lib-hero-stat{text-align:right;flex-shrink:0;}
+  [data-lang="ar"] .lib-hero-stat{text-align:left;}
+  .lib-hero-stat-num{font-family:var(--font-serif);font-size:3.5rem;font-weight:300;color:var(--gold);line-height:1;}
+  .lib-hero-stat-label{font-size:.72rem;color:var(--muted);margin-top:.2rem;}
+  [data-lang="ar"] .lib-hero-stat-label{font-family:var(--font-ar);}
 
-  /* ── CATEGORY SECTIONS ── */
+  /* ── CATEGORY NAV TABS ── */
+  #cat-tabs{
+    position:sticky;top:0;z-index:100;
+    background:var(--card-bg);
+    border-bottom:1px solid var(--border);
+  }
+  [data-theme="dark"] #cat-tabs{background:var(--card-bg);}
+  /* account for navbar height */
+  #cat-tabs{top:calc(130px + 12px);}
+  @media(max-width:600px){#cat-tabs{top:calc(80px + 8px);}}
+  .cat-tabs-inner{
+    max-width:var(--page-max);margin:0 auto;
+    padding:0 var(--page-pad);
+    display:flex;align-items:center;
+    gap:0;overflow-x:auto;
+    scrollbar-width:none;
+  }
+  .cat-tabs-inner::-webkit-scrollbar{display:none;}
+  @media(max-width:768px){.cat-tabs-inner{padding:0 16px;}}
+  .cat-tab{
+    display:flex;align-items:center;gap:.4rem;
+    padding:.85rem 1rem;
+    font-size:.78rem;font-weight:500;
+    color:var(--muted);
+    border-bottom:2px solid transparent;
+    white-space:nowrap;cursor:pointer;
+    transition:color .2s,border-color .2s;
+    background:none;border-top:none;border-left:none;border-right:none;
+    font-family:var(--font-ui);
+    -webkit-tap-highlight-color:transparent;
+  }
+  [data-lang="ar"] .cat-tab{font-family:var(--font-ar);}
+  .cat-tab:hover{color:var(--text-2);}
+  .cat-tab.active{color:var(--gold);border-bottom-color:var(--gold);}
+  .cat-tab-icon{font-size:1rem;line-height:1;}
+  @media(max-width:480px){.cat-tab{padding:.75rem .7rem;font-size:.72rem;gap:.3rem;}}
+
+  /* ── MAIN LAYOUT ── */
+  #lib-body{
+    max-width:var(--page-max);margin:0 auto;
+    padding:0 var(--page-pad) 80px;
+    display:grid;
+    grid-template-columns:220px 1fr;
+    gap:4rem;
+    align-items:start;
+  }
+  @media(max-width:900px){#lib-body{grid-template-columns:1fr;gap:0;}}
+  @media(max-width:768px){#lib-body{padding:0 16px 80px;}}
+
+  /* ── LEFT SIDEBAR ── */
+  #lib-sidebar{
+    position:sticky;
+    top:calc(130px + 12px + 44px + 2rem);
+    padding-top:2.5rem;
+  }
+  @media(max-width:600px){#lib-sidebar{top:calc(80px + 8px + 44px + 2rem);}}
+  @media(max-width:900px){#lib-sidebar{display:none;}}
+  .sidebar-title{font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;padding-left:.5rem;}
+  [data-lang="ar"] .sidebar-title{font-family:var(--font-ar);letter-spacing:0;padding-left:0;padding-right:.5rem;}
+  .sidebar-nav{display:flex;flex-direction:column;gap:.1rem;}
+  .sidebar-link{
+    display:flex;align-items:center;gap:.7rem;
+    padding:.55rem .75rem;border-radius:10px;
+    font-size:.82rem;color:var(--text-2);
+    cursor:pointer;transition:background .15s,color .15s;
+    -webkit-tap-highlight-color:transparent;
+  }
+  [data-lang="ar"] .sidebar-link{font-family:var(--font-ar);}
+  .sidebar-link:hover{background:var(--cream);color:var(--text);}
+  .sidebar-link.active{background:rgba(184,134,26,.1);color:var(--gold);font-weight:500;}
+  [data-theme="dark"] .sidebar-link.active{background:rgba(212,168,50,.1);}
+  .sidebar-link-icon{font-size:1rem;flex-shrink:0;}
+
+  /* ── RIGHT CONTENT ── */
+  #lib-content{padding-top:2.5rem;}
+
+  /* ── CATEGORY SECTION ── */
   .lib-section{
-    padding:2.5rem 0 0;
+    padding-bottom:3rem;
+    margin-bottom:3rem;
     border-bottom:1px solid rgba(184,134,26,.08);
   }
-  .lib-section:last-of-type{border-bottom:none;}
-
+  .lib-section:last-child{border-bottom:none;margin-bottom:0;}
   .lib-section-head{
-    display:flex;align-items:flex-start;gap:1rem;
-    margin-bottom:1.6rem;
+    display:flex;align-items:center;gap:.85rem;
+    margin-bottom:1.75rem;
   }
-  .lib-section-icon{
-    font-size:1.6rem;line-height:1;
-    flex-shrink:0;margin-top:2px;
-    opacity:.9;
-  }
+  .lib-section-icon{font-size:1.7rem;line-height:1;flex-shrink:0;}
   .lib-section-meta{flex:1;}
-  .lib-section-title{
-    font-family:var(--font-serif);
-    font-size:1.4rem;font-weight:400;
-    color:var(--text);margin-bottom:.2rem;
-    line-height:1.2;
-  }
-  [data-lang="ar"] .lib-section-title{font-family:var(--font-ar);font-size:1.3rem;}
-  .lib-section-tagline{
-    font-size:.78rem;color:var(--muted);
-    font-style:italic;
-  }
+  .lib-section-title{font-family:var(--font-serif);font-size:1.5rem;font-weight:400;color:var(--text);line-height:1.15;margin-bottom:.2rem;}
+  [data-lang="ar"] .lib-section-title{font-family:var(--font-ar);font-size:1.35rem;}
+  .lib-section-tagline{font-size:.76rem;color:var(--muted);font-style:italic;}
   [data-lang="ar"] .lib-section-tagline{font-family:var(--font-ar);font-style:normal;}
+
+  /* ── SUBCATEGORY GROUP ── */
+  .lib-subcat{margin-bottom:1.5rem;}
+  .lib-subcat-label{
+    font-size:.62rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--muted);margin-bottom:.6rem;
+    display:flex;align-items:center;gap:.6rem;
+    padding-left:.25rem;
+  }
+  [data-lang="ar"] .lib-subcat-label{font-family:var(--font-ar);letter-spacing:0;padding-left:0;padding-right:.25rem;}
+  .lib-subcat-label::after{content:'';flex:1;height:1px;background:rgba(184,134,26,.1);}
+  [data-lang="ar"] .lib-subcat-label::after{display:none;}
+  [data-lang="ar"] .lib-subcat-label::before{content:'';flex:1;height:1px;background:rgba(184,134,26,.1);}
 
   /* ── GUIDE ITEMS ── */
   .lib-items{display:flex;flex-direction:column;gap:0;}
   .lib-item{
     display:flex;align-items:center;gap:1rem;
-    padding:.85rem 0;
+    padding:.8rem .5rem;
     border-bottom:1px solid rgba(0,0,0,.04);
     cursor:pointer;
-    transition:opacity .15s;
+    transition:background .15s;
+    border-radius:8px;
     -webkit-tap-highlight-color:transparent;
   }
   [data-theme="dark"] .lib-item{border-bottom-color:rgba(255,255,255,.04);}
   .lib-item:last-child{border-bottom:none;}
-  .lib-item:hover{opacity:.75;}
-  .lib-item-dot{
-    width:7px;height:7px;
-    border-radius:50%;
-    background:var(--gold);
-    opacity:.35;
-    flex-shrink:0;
-    margin-top:2px;
-    transition:opacity .2s;
-  }
+  .lib-item:hover{background:var(--cream);}
+  [data-theme="dark"] .lib-item:hover{background:rgba(255,255,255,.03);}
+  .lib-item-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);opacity:.3;flex-shrink:0;margin-top:2px;transition:opacity .2s;}
   .lib-item:hover .lib-item-dot{opacity:.7;}
   .lib-item-body{flex:1;}
-  .lib-item-title{
-    font-size:.92rem;font-weight:500;
-    color:var(--text);display:block;
-    margin-bottom:.15rem;
-  }
-  [data-lang="ar"] .lib-item-title{font-family:var(--font-ar);font-size:.97rem;}
-  .lib-item-desc{
-    font-size:.78rem;color:var(--muted);
-    display:block;line-height:1.45;
-  }
-  [data-lang="ar"] .lib-item-desc{font-family:var(--font-ar);font-size:.82rem;}
-  .lib-item-arrow{
-    font-size:.75rem;color:var(--gold);
-    opacity:.5;flex-shrink:0;
-    transition:opacity .2s,transform .2s;
-  }
-  .lib-item:hover .lib-item-arrow{opacity:.9;transform:translateX(3px);}
+  .lib-item-title{font-size:.9rem;font-weight:500;color:var(--text);display:block;margin-bottom:.1rem;}
+  [data-lang="ar"] .lib-item-title{font-family:var(--font-ar);font-size:.95rem;}
+  .lib-item-desc{font-size:.76rem;color:var(--muted);display:block;line-height:1.4;}
+  [data-lang="ar"] .lib-item-desc{font-family:var(--font-ar);font-size:.8rem;}
+  .lib-item-arrow{font-size:.72rem;color:var(--gold);opacity:.4;flex-shrink:0;transition:opacity .2s,transform .2s;}
+  .lib-item:hover .lib-item-arrow{opacity:.8;transform:translateX(3px);}
   [data-lang="ar"] .lib-item:hover .lib-item-arrow{transform:translateX(-3px);}
 
-  .lib-viewmore{
-    display:inline-block;
-    font-size:.72rem;font-weight:500;
-    color:var(--muted);
-    padding:.6rem 0 2rem;
-    transition:color .2s;
-  }
-  [data-lang="ar"] .lib-viewmore{font-family:var(--font-ar);}
-  .lib-viewmore:hover{color:var(--gold);}
-
-  /* ── BREADCRUMB ── */
-  .breadcrumb{
-    font-size:.75rem;color:var(--muted);
-    padding:1.1rem 0 0;
-  }
-  .breadcrumb a{color:var(--muted);transition:color .2s;}
-  .breadcrumb a:hover{color:var(--gold);}
-
   /* ── MOBILE NAV ── */
-  .mobile-nav{display:none;position:fixed;bottom:0;left:0;right:0;z-index:200;background:var(--card-bg);border-top:1px solid var(--border);padding:8px 0 env(safe-area-inset-bottom,8px);}
+  .mobile-nav{display:none;position:fixed;bottom:0;left:0;right:0;z-index:300;background:var(--card-bg);border-top:1px solid var(--border);padding:8px 0 env(safe-area-inset-bottom,8px);}
   @media(max-width:768px){.mobile-nav{display:flex;justify-content:space-around;}body{padding-bottom:64px;}}
   .mobile-nav-item{display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 12px;font-size:.63rem;font-weight:500;color:var(--text-2);border:none;background:none;cursor:pointer;font-family:inherit;text-decoration:none;min-width:48px;}
   .mobile-nav-item.active{color:var(--gold);}
   .mobile-nav-item span:first-child{font-size:1.2rem;}
   [data-lang="ar"] .mobile-nav-item{font-family:var(--font-ar);}
+
+  @media(max-width:768px){
+    :root{--page-pad:20px;}
+  }
 </style>
 </head>
 <body>
 
+<!-- ── NAVBAR ── -->
 <nav id="navbar">
   <div class="nav-inner">
     <a href="/" class="nav-logo"><img src="/logo1-transparent.png" alt="DOTFORLIFE"/></a>
-    <ul class="nav-os-links">
+    <ul class="nav-links">
       <li><a href="/" class="home-link">← <span class="en">Today</span><span class="ar">اليوم</span></a></li>
       <li><a href="/library.html" class="active"><span class="en">Library</span><span class="ar">المكتبة</span></a></li>
       <li><a href="/saved.html" class="hide-sm"><span class="en">Saved</span><span class="ar">المحفوظ</span></a></li>
@@ -199,259 +237,422 @@
   </div>
 </nav>
 
-<main id="page">
-
-  <div class="breadcrumb">
-    <a href="/">DOTFORLIFE</a> / <span class="en">Calm Life Library</span><span class="ar">مكتبة الحياة الهادئة</span>
+<!-- ── HERO ── -->
+<div id="lib-hero">
+  <div class="lib-hero-inner">
+    <div>
+      <div class="lib-hero-eyebrow"><span class="en">Calm Life Library</span><span class="ar">مكتبة الحياة الهادئة</span></div>
+      <h1><span class="en">Small moments that<br>make your day easier.</span><span class="ar">لحظات صغيرة<br>تجعل يومك أهدأ.</span></h1>
+      <p class="lib-hero-sub"><span class="en">Not content to consume. Life guides to experience — one calm moment at a time.</span><span class="ar">ليست محتوى للاستهلاك. أدلة حياة تُعاش — لحظة هادئة واحدة في كل مرة.</span></p>
+    </div>
+    <div class="lib-hero-stat">
+      <div class="lib-hero-stat-num">18</div>
+      <div class="lib-hero-stat-label"><span class="en">Life Guides</span><span class="ar">دليل حياة</span></div>
+    </div>
   </div>
+</div>
 
-  <!-- HERO -->
-  <div class="lib-hero">
-    <div class="lib-hero-eyebrow">
-      <span class="en">Calm Life Library</span>
-      <span class="ar">مكتبة الحياة الهادئة</span>
-    </div>
-    <h1>
-      <span class="en">Small moments that<br>make your day easier.</span>
-      <span class="ar">لحظات صغيرة<br>تجعل يومك أهدأ.</span>
-    </h1>
-    <p class="lib-hero-sub">
-      <span class="en">Not content to consume. Life guides to experience — one calm moment at a time.</span>
-      <span class="ar">ليست محتوى للاستهلاك. أدلة حياة تُعاش — لحظة هادئة واحدة في كل مرة.</span>
-    </p>
+<!-- ── CATEGORY TABS ── -->
+<div id="cat-tabs">
+  <div class="cat-tabs-inner">
+    <button class="cat-tab active" data-target="cat-meals"><span class="cat-tab-icon">🍽️</span><span class="en">Meals</span><span class="ar">الطعام</span></button>
+    <button class="cat-tab" data-target="cat-family"><span class="cat-tab-icon">👨‍👩‍👧</span><span class="en">Family</span><span class="ar">العائلة</span></button>
+    <button class="cat-tab" data-target="cat-wellness"><span class="cat-tab-icon">🌿</span><span class="en">Wellness</span><span class="ar">العافية</span></button>
+    <button class="cat-tab" data-target="cat-faith"><span class="cat-tab-icon">☪️</span><span class="en">Faith</span><span class="ar">الإيمان</span></button>
+    <button class="cat-tab" data-target="cat-money"><span class="cat-tab-icon">💰</span><span class="en">Money</span><span class="ar">المال</span></button>
+    <button class="cat-tab" data-target="cat-living"><span class="cat-tab-icon">🧳</span><span class="en">Living</span><span class="ar">الحياة</span></button>
   </div>
+</div>
 
-  <!-- ══ HOME & MEALS ══ -->
-  <section class="lib-section" id="cat-meals">
-    <div class="lib-section-head">
-      <span class="lib-section-icon">🍽️</span>
-      <div class="lib-section-meta">
-        <h2 class="lib-section-title"><span class="en">Home &amp; Meals</span><span class="ar">البيت والطعام</span></h2>
-        <span class="lib-section-tagline"><span class="en">Nourish simply, eat together</span><span class="ar">اطعم ببساطة، كُل مع عائلتك</span></span>
+<!-- ── BODY: SIDEBAR + CONTENT ── -->
+<div id="lib-body">
+
+  <!-- LEFT SIDEBAR -->
+  <aside id="lib-sidebar">
+    <div class="sidebar-title"><span class="en">Categories</span><span class="ar">الأقسام</span></div>
+    <nav class="sidebar-nav">
+      <a class="sidebar-link active" href="#cat-meals"><span class="sidebar-link-icon">🍽️</span><span class="en">Home &amp; Meals</span><span class="ar">البيت والطعام</span></a>
+      <a class="sidebar-link" href="#cat-family"><span class="sidebar-link-icon">👨‍👩‍👧</span><span class="en">Family Life</span><span class="ar">الحياة العائلية</span></a>
+      <a class="sidebar-link" href="#cat-wellness"><span class="sidebar-link-icon">🌿</span><span class="en">Wellness</span><span class="ar">العافية</span></a>
+      <a class="sidebar-link" href="#cat-faith"><span class="sidebar-link-icon">☪️</span><span class="en">Faith &amp; Reflection</span><span class="ar">الإيمان والتأمل</span></a>
+      <a class="sidebar-link" href="#cat-money"><span class="sidebar-link-icon">💰</span><span class="en">Simple Money</span><span class="ar">المال البسيط</span></a>
+      <a class="sidebar-link" href="#cat-living"><span class="sidebar-link-icon">🧳</span><span class="en">Everyday Living</span><span class="ar">الحياة اليومية</span></a>
+    </nav>
+  </aside>
+
+  <!-- RIGHT CONTENT -->
+  <div id="lib-content">
+
+    <!-- ══════════════════════════════════
+         🍽️ HOME & MEALS
+    ══════════════════════════════════ -->
+    <section class="lib-section" id="cat-meals">
+      <div class="lib-section-head">
+        <span class="lib-section-icon">🍽️</span>
+        <div class="lib-section-meta">
+          <h2 class="lib-section-title"><span class="en">Home &amp; Meals</span><span class="ar">البيت والطعام</span></h2>
+          <span class="lib-section-tagline"><span class="en">Nourish simply, eat together</span><span class="ar">اطعم ببساطة، كُل مع عائلتك</span></span>
+        </div>
       </div>
-    </div>
-    <div class="lib-items">
-      <a href="/life-guide.html?g=quick-dinner" class="lib-item">
-        <span class="lib-item-dot"></span>
-        <div class="lib-item-body">
-          <span class="lib-item-title"><span class="en">Dinner in 15 Minutes</span><span class="ar">عشاء في ١٥ دقيقة</span></span>
-          <span class="lib-item-desc"><span class="en">Simple meals ready before the evening fades.</span><span class="ar">وجبات بسيطة جاهزة قبل أن يمضي المساء.</span></span>
-        </div>
-        <span class="lib-item-arrow">→</span>
-      </a>
-      <a href="/life-guide.html?g=family-meals" class="lib-item">
-        <span class="lib-item-dot"></span>
-        <div class="lib-item-body">
-          <span class="lib-item-title"><span class="en">Family Meals Together</span><span class="ar">وجبات عائلية مشتركة</span></span>
-          <span class="lib-item-desc"><span class="en">Sitting together is the meal itself.</span><span class="ar">الجلوس معاً هو الوجبة نفسها.</span></span>
-        </div>
-        <span class="lib-item-arrow">→</span>
-      </a>
-      <a href="/life-guide.html?g=calm-kitchen" class="lib-item">
-        <span class="lib-item-dot"></span>
-        <div class="lib-item-body">
-          <span class="lib-item-title"><span class="en">Calm Kitchen Reset</span><span class="ar">إعادة ترتيب المطبخ بهدوء</span></span>
-          <span class="lib-item-desc"><span class="en">End the day with a clean, peaceful kitchen.</span><span class="ar">أنهِ يومك بمطبخ نظيف وهادئ.</span></span>
-        </div>
-        <span class="lib-item-arrow">→</span>
-      </a>
-    </div>
-    <a href="#" class="lib-viewmore"><span class="en">More meal guides ↓</span><span class="ar">المزيد من أدلة الطعام ↓</span></a>
-  </section>
 
-  <!-- ══ FAMILY LIFE ══ -->
-  <section class="lib-section" id="cat-family">
-    <div class="lib-section-head">
-      <span class="lib-section-icon">👨‍👩‍👧</span>
-      <div class="lib-section-meta">
-        <h2 class="lib-section-title"><span class="en">Family Life</span><span class="ar">الحياة العائلية</span></h2>
-        <span class="lib-section-tagline"><span class="en">The people you love, every day</span><span class="ar">من تحبهم، كل يوم</span></span>
+      <!-- Quick Dinners -->
+      <div class="lib-subcat">
+        <div class="lib-subcat-label"><span class="en">Quick Dinners</span><span class="ar">عشاء سريع</span></div>
+        <div class="lib-items">
+          <a href="/life-guide.html?g=quick-dinner" class="lib-item">
+            <span class="lib-item-dot"></span>
+            <div class="lib-item-body">
+              <span class="lib-item-title"><span class="en">Dinner in 15 Minutes</span><span class="ar">عشاء في ١٥ دقيقة</span></span>
+              <span class="lib-item-desc"><span class="en">Simple meals ready before the evening fades.</span><span class="ar">وجبات بسيطة جاهزة قبل أن يمضي المساء.</span></span>
+            </div>
+            <span class="lib-item-arrow">→</span>
+          </a>
+          <a href="/life-guide.html?g=one-pot" class="lib-item">
+            <span class="lib-item-dot"></span>
+            <div class="lib-item-body">
+              <span class="lib-item-title"><span class="en">One-Pot Comfort Meals</span><span class="ar">وجبات إناء واحد مريحة</span></span>
+              <span class="lib-item-desc"><span class="en">Less dishes, more ease.</span><span class="ar">أقل أطباق، أكثر راحة.</span></span>
+            </div>
+            <span class="lib-item-arrow">→</span>
+          </a>
+        </div>
       </div>
-    </div>
-    <div class="lib-items">
-      <a href="/life-guide.html?g=morning-routine" class="lib-item">
-        <span class="lib-item-dot"></span>
-        <div class="lib-item-body">
-          <span class="lib-item-title"><span class="en">Morning Routines That Work</span><span class="ar">روتين صباحي يُجدي</span></span>
-          <span class="lib-item-desc"><span class="en">Start the family day gently, together.</span><span class="ar">ابدأ يوم عائلتك بلطف ومعاً.</span></span>
-        </div>
-        <span class="lib-item-arrow">→</span>
-      </a>
-      <a href="/life-guide.html?g=present-kids" class="lib-item">
-        <span class="lib-item-dot"></span>
-        <div class="lib-item-body">
-          <span class="lib-item-title"><span class="en">Being Present with Kids</span><span class="ar">الحضور مع أطفالك</span></span>
-          <span class="lib-item-desc"><span class="en">Five minutes of real attention changes everything.</span><span class="ar">خمس دقائق من الحضور الحقيقي تغيّر كل شيء.</span></span>
-        </div>
-        <span class="lib-item-arrow">→</span>
-      </a>
-      <a href="/life-guide.html?g=connection" class="lib-item">
-        <span class="lib-item-dot"></span>
-        <div class="lib-item-body">
-          <span class="lib-item-title"><span class="en">Small Connection Moments</span><span class="ar">لحظات تواصل صغيرة</span></span>
-          <span class="lib-item-desc"><span class="en">A word, a glance, a small gesture.</span><span class="ar">كلمة، نظرة، لفتة بسيطة.</span></span>
-        </div>
-        <span class="lib-item-arrow">→</span>
-      </a>
-      <a href="/life-guide.html?g=evening-together" class="lib-item">
-        <span class="lib-item-dot"></span>
-        <div class="lib-item-body">
-          <span class="lib-item-title"><span class="en">A Calm Evening Together</span><span class="ar">مساء هادئ معاً</span></span>
-          <span class="lib-item-desc"><span class="en">Screens down. Presence up.</span><span class="ar">أبعد الشاشات. قرّب الحضور.</span></span>
-        </div>
-        <span class="lib-item-arrow">→</span>
-      </a>
-    </div>
-    <a href="#" class="lib-viewmore"><span class="en">More family guides ↓</span><span class="ar">المزيد من أدلة العائلة ↓</span></a>
-  </section>
 
-  <!-- ══ WELLNESS ══ -->
-  <section class="lib-section" id="cat-wellness">
-    <div class="lib-section-head">
-      <span class="lib-section-icon">🌿</span>
-      <div class="lib-section-meta">
-        <h2 class="lib-section-title"><span class="en">Wellness</span><span class="ar">العافية</span></h2>
-        <span class="lib-section-tagline"><span class="en">Care for yourself, gently</span><span class="ar">اعتنِ بنفسك بلطف</span></span>
+      <!-- Family Meals -->
+      <div class="lib-subcat">
+        <div class="lib-subcat-label"><span class="en">Family Meals</span><span class="ar">وجبات عائلية</span></div>
+        <div class="lib-items">
+          <a href="/life-guide.html?g=family-meals" class="lib-item">
+            <span class="lib-item-dot"></span>
+            <div class="lib-item-body">
+              <span class="lib-item-title"><span class="en">Eating Together</span><span class="ar">الأكل معاً</span></span>
+              <span class="lib-item-desc"><span class="en">Sitting together is the meal itself.</span><span class="ar">الجلوس معاً هو الوجبة نفسها.</span></span>
+            </div>
+            <span class="lib-item-arrow">→</span>
+          </a>
+          <a href="/life-guide.html?g=weekend-brunch" class="lib-item">
+            <span class="lib-item-dot"></span>
+            <div class="lib-item-body">
+              <span class="lib-item-title"><span class="en">Slow Weekend Brunch</span><span class="ar">فطور عطلة بلا تسرع</span></span>
+              <span class="lib-item-desc"><span class="en">Start the weekend the right way.</span><span class="ar">ابدأ عطلتك بالطريقة الصحيحة.</span></span>
+            </div>
+            <span class="lib-item-arrow">→</span>
+          </a>
+        </div>
       </div>
-    </div>
-    <div class="lib-items">
-      <a href="/life-guide.html?g=sleep-better" class="lib-item">
-        <span class="lib-item-dot"></span>
-        <div class="lib-item-body">
-          <span class="lib-item-title"><span class="en">Sleep Better Tonight</span><span class="ar">نم أفضل الليلة</span></span>
-          <span class="lib-item-desc"><span class="en">A soft wind-down that actually works.</span><span class="ar">روتين هادئ للنوم يعمل فعلاً.</span></span>
-        </div>
-        <span class="lib-item-arrow">→</span>
-      </a>
-      <a href="/life-guide.html?g=stress-release" class="lib-item">
-        <span class="lib-item-dot"></span>
-        <div class="lib-item-body">
-          <span class="lib-item-title"><span class="en">Releasing Daily Stress</span><span class="ar">التحرر من ضغط اليوم</span></span>
-          <span class="lib-item-desc"><span class="en">Small releases before they build up.</span><span class="ar">تفريغ بسيط قبل أن يتراكم التوتر.</span></span>
-        </div>
-        <span class="lib-item-arrow">→</span>
-      </a>
-      <a href="/life-guide.html?g=slow-living" class="lib-item">
-        <span class="lib-item-dot"></span>
-        <div class="lib-item-body">
-          <span class="lib-item-title"><span class="en">Slow Living Practice</span><span class="ar">ممارسة الحياة البطيئة</span></span>
-          <span class="lib-item-desc"><span class="en">Less rush. More present.</span><span class="ar">أقل تسرعاً. أكثر حضوراً.</span></span>
-        </div>
-        <span class="lib-item-arrow">→</span>
-      </a>
-    </div>
-    <a href="#" class="lib-viewmore"><span class="en">More wellness guides ↓</span><span class="ar">المزيد من أدلة العافية ↓</span></a>
-  </section>
 
-  <!-- ══ FAITH & REFLECTION ══ -->
-  <section class="lib-section" id="cat-faith">
-    <div class="lib-section-head">
-      <span class="lib-section-icon">☪️</span>
-      <div class="lib-section-meta">
-        <h2 class="lib-section-title"><span class="en">Faith &amp; Reflection</span><span class="ar">الإيمان والتأمل</span></h2>
-        <span class="lib-section-tagline"><span class="en">Quiet the mind, ground the heart</span><span class="ar">هدّئ العقل، ثبّت القلب</span></span>
+      <!-- Calm Kitchen -->
+      <div class="lib-subcat">
+        <div class="lib-subcat-label"><span class="en">Calm Kitchen</span><span class="ar">المطبخ الهادئ</span></div>
+        <div class="lib-items">
+          <a href="/life-guide.html?g=calm-kitchen" class="lib-item">
+            <span class="lib-item-dot"></span>
+            <div class="lib-item-body">
+              <span class="lib-item-title"><span class="en">Kitchen Reset</span><span class="ar">إعادة ترتيب المطبخ</span></span>
+              <span class="lib-item-desc"><span class="en">End the day with a clean, peaceful kitchen.</span><span class="ar">أنهِ يومك بمطبخ نظيف وهادئ.</span></span>
+            </div>
+            <span class="lib-item-arrow">→</span>
+          </a>
+        </div>
       </div>
-    </div>
-    <div class="lib-items">
-      <a href="/life-guide.html?g=morning-duas" class="lib-item">
-        <span class="lib-item-dot"></span>
-        <div class="lib-item-body">
-          <span class="lib-item-title"><span class="en">Morning Duas &amp; Intentions</span><span class="ar">أدعية وأوراد الصباح</span></span>
-          <span class="lib-item-desc"><span class="en">Begin the day with remembrance.</span><span class="ar">ابدأ يومك بالذكر.</span></span>
-        </div>
-        <span class="lib-item-arrow">→</span>
-      </a>
-      <a href="/life-guide.html?g=evening-reflect" class="lib-item">
-        <span class="lib-item-dot"></span>
-        <div class="lib-item-body">
-          <span class="lib-item-title"><span class="en">Evening Reflection</span><span class="ar">تأمل المساء</span></span>
-          <span class="lib-item-desc"><span class="en">A quiet look back at your day.</span><span class="ar">نظرة هادئة على يومك.</span></span>
-        </div>
-        <span class="lib-item-arrow">→</span>
-      </a>
-      <a href="/life-guide.html?g=gratitude" class="lib-item">
-        <span class="lib-item-dot"></span>
-        <div class="lib-item-body">
-          <span class="lib-item-title"><span class="en">Gratitude Reminder</span><span class="ar">تذكير بالشكر</span></span>
-          <span class="lib-item-desc"><span class="en">Three things. Every day. No more needed.</span><span class="ar">ثلاثة أشياء. كل يوم. لا تحتاج أكثر.</span></span>
-        </div>
-        <span class="lib-item-arrow">→</span>
-      </a>
-    </div>
-    <a href="#" class="lib-viewmore"><span class="en">More reflection guides ↓</span><span class="ar">المزيد من أدلة التأمل ↓</span></a>
-  </section>
+    </section>
 
-  <!-- ══ SIMPLE MONEY ══ -->
-  <section class="lib-section" id="cat-money">
-    <div class="lib-section-head">
-      <span class="lib-section-icon">💰</span>
-      <div class="lib-section-meta">
-        <h2 class="lib-section-title"><span class="en">Simple Money</span><span class="ar">المال البسيط</span></h2>
-        <span class="lib-section-tagline"><span class="en">Enough is a kind of freedom</span><span class="ar">الكفاية نوع من الحرية</span></span>
+    <!-- ══════════════════════════════════
+         👨‍👩‍👧 FAMILY LIFE
+    ══════════════════════════════════ -->
+    <section class="lib-section" id="cat-family">
+      <div class="lib-section-head">
+        <span class="lib-section-icon">👨‍👩‍👧</span>
+        <div class="lib-section-meta">
+          <h2 class="lib-section-title"><span class="en">Family Life</span><span class="ar">الحياة العائلية</span></h2>
+          <span class="lib-section-tagline"><span class="en">The people you love, every day</span><span class="ar">من تحبهم، كل يوم</span></span>
+        </div>
       </div>
-    </div>
-    <div class="lib-items">
-      <a href="/life-guide.html?g=weekly-budget" class="lib-item">
-        <span class="lib-item-dot"></span>
-        <div class="lib-item-body">
-          <span class="lib-item-title"><span class="en">Weekly Budget Reset</span><span class="ar">إعادة ضبط الميزانية الأسبوعية</span></span>
-          <span class="lib-item-desc"><span class="en">Ten minutes on Sunday. Peace all week.</span><span class="ar">عشر دقائق في الأحد. راحة طوال الأسبوع.</span></span>
-        </div>
-        <span class="lib-item-arrow">→</span>
-      </a>
-      <a href="/life-guide.html?g=saving-habit" class="lib-item">
-        <span class="lib-item-dot"></span>
-        <div class="lib-item-body">
-          <span class="lib-item-title"><span class="en">Saving Without Pressure</span><span class="ar">الادخار بدون ضغط</span></span>
-          <span class="lib-item-desc"><span class="en">Small amounts. Consistent peace.</span><span class="ar">مبالغ صغيرة. راحة بال متواصلة.</span></span>
-        </div>
-        <span class="lib-item-arrow">→</span>
-      </a>
-    </div>
-    <a href="/finance.html" class="lib-viewmore"><span class="en">All finance tools ↓</span><span class="ar">جميع الأدوات المالية ↓</span></a>
-  </section>
 
-  <!-- ══ EVERYDAY LIVING ══ -->
-  <section class="lib-section" id="cat-living">
-    <div class="lib-section-head">
-      <span class="lib-section-icon">🧳</span>
-      <div class="lib-section-meta">
-        <h2 class="lib-section-title"><span class="en">Everyday Living</span><span class="ar">الحياة اليومية</span></h2>
-        <span class="lib-section-tagline"><span class="en">A home that flows, a day that breathes</span><span class="ar">منزل يسير بسلاسة، يوم يتنفس بهدوء</span></span>
+      <!-- Routines -->
+      <div class="lib-subcat">
+        <div class="lib-subcat-label"><span class="en">Routines</span><span class="ar">الروتين</span></div>
+        <div class="lib-items">
+          <a href="/life-guide.html?g=morning-routine" class="lib-item">
+            <span class="lib-item-dot"></span>
+            <div class="lib-item-body">
+              <span class="lib-item-title"><span class="en">Morning Routines That Work</span><span class="ar">روتين صباحي يُجدي</span></span>
+              <span class="lib-item-desc"><span class="en">Start the family day gently, together.</span><span class="ar">ابدأ يوم عائلتك بلطف ومعاً.</span></span>
+            </div>
+            <span class="lib-item-arrow">→</span>
+          </a>
+          <a href="/life-guide.html?g=evening-routine" class="lib-item">
+            <span class="lib-item-dot"></span>
+            <div class="lib-item-body">
+              <span class="lib-item-title"><span class="en">A Calm Bedtime Routine</span><span class="ar">روتين نوم هادئ</span></span>
+              <span class="lib-item-desc"><span class="en">Wind down the whole family before sleep.</span><span class="ar">هدّئ الجميع قبل النوم.</span></span>
+            </div>
+            <span class="lib-item-arrow">→</span>
+          </a>
+        </div>
       </div>
-    </div>
-    <div class="lib-items">
-      <a href="/life-guide.html?g=home-reset" class="lib-item">
-        <span class="lib-item-dot"></span>
-        <div class="lib-item-body">
-          <span class="lib-item-title"><span class="en">Home Reset Ritual</span><span class="ar">طقوس إعادة ترتيب المنزل</span></span>
-          <span class="lib-item-desc"><span class="en">A clean space is a clear mind.</span><span class="ar">مساحة نظيفة هي ذهن صافٍ.</span></span>
-        </div>
-        <span class="lib-item-arrow">→</span>
-      </a>
-      <a href="/life-guide.html?g=flow-your-day" class="lib-item">
-        <span class="lib-item-dot"></span>
-        <div class="lib-item-body">
-          <span class="lib-item-title"><span class="en">Flow Your Day</span><span class="ar">تنسيق يومك بسهولة</span></span>
-          <span class="lib-item-desc"><span class="en">Structure without rigidity. Rhythm without stress.</span><span class="ar">نظام بدون صرامة. إيقاع بدون توتر.</span></span>
-        </div>
-        <span class="lib-item-arrow">→</span>
-      </a>
-      <a href="/life-guide.html?g=simple-org" class="lib-item">
-        <span class="lib-item-dot"></span>
-        <div class="lib-item-body">
-          <span class="lib-item-title"><span class="en">Simple Organization</span><span class="ar">التنظيم البسيط</span></span>
-          <span class="lib-item-desc"><span class="en">Less clutter. More calm.</span><span class="ar">أقل فوضى. أكثر هدوء.</span></span>
-        </div>
-        <span class="lib-item-arrow">→</span>
-      </a>
-    </div>
-    <a href="#" class="lib-viewmore"><span class="en">More living guides ↓</span><span class="ar">المزيد من أدلة الحياة اليومية ↓</span></a>
-  </section>
 
-</main>
+      <!-- Kids Moments -->
+      <div class="lib-subcat">
+        <div class="lib-subcat-label"><span class="en">Kids Moments</span><span class="ar">لحظات الأطفال</span></div>
+        <div class="lib-items">
+          <a href="/life-guide.html?g=present-kids" class="lib-item">
+            <span class="lib-item-dot"></span>
+            <div class="lib-item-body">
+              <span class="lib-item-title"><span class="en">Being Present with Kids</span><span class="ar">الحضور مع أطفالك</span></span>
+              <span class="lib-item-desc"><span class="en">Five minutes of real attention changes everything.</span><span class="ar">خمس دقائق من الحضور الحقيقي تغيّر كل شيء.</span></span>
+            </div>
+            <span class="lib-item-arrow">→</span>
+          </a>
+        </div>
+      </div>
 
-<nav class="mobile-nav" aria-label="Daily navigation">
+      <!-- Connection -->
+      <div class="lib-subcat">
+        <div class="lib-subcat-label"><span class="en">Connection</span><span class="ar">التواصل</span></div>
+        <div class="lib-items">
+          <a href="/life-guide.html?g=connection" class="lib-item">
+            <span class="lib-item-dot"></span>
+            <div class="lib-item-body">
+              <span class="lib-item-title"><span class="en">Small Connection Moments</span><span class="ar">لحظات تواصل صغيرة</span></span>
+              <span class="lib-item-desc"><span class="en">A word, a glance, a small gesture.</span><span class="ar">كلمة، نظرة، لفتة بسيطة.</span></span>
+            </div>
+            <span class="lib-item-arrow">→</span>
+          </a>
+          <a href="/life-guide.html?g=evening-together" class="lib-item">
+            <span class="lib-item-dot"></span>
+            <div class="lib-item-body">
+              <span class="lib-item-title"><span class="en">A Calm Evening Together</span><span class="ar">مساء هادئ معاً</span></span>
+              <span class="lib-item-desc"><span class="en">Screens down. Presence up.</span><span class="ar">أبعد الشاشات. قرّب الحضور.</span></span>
+            </div>
+            <span class="lib-item-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         🌿 WELLNESS
+    ══════════════════════════════════ -->
+    <section class="lib-section" id="cat-wellness">
+      <div class="lib-section-head">
+        <span class="lib-section-icon">🌿</span>
+        <div class="lib-section-meta">
+          <h2 class="lib-section-title"><span class="en">Wellness</span><span class="ar">العافية</span></h2>
+          <span class="lib-section-tagline"><span class="en">Care for yourself, gently</span><span class="ar">اعتنِ بنفسك بلطف</span></span>
+        </div>
+      </div>
+
+      <!-- Sleep -->
+      <div class="lib-subcat">
+        <div class="lib-subcat-label"><span class="en">Sleep</span><span class="ar">النوم</span></div>
+        <div class="lib-items">
+          <a href="/life-guide.html?g=sleep-better" class="lib-item">
+            <span class="lib-item-dot"></span>
+            <div class="lib-item-body">
+              <span class="lib-item-title"><span class="en">Sleep Better Tonight</span><span class="ar">نم أفضل الليلة</span></span>
+              <span class="lib-item-desc"><span class="en">A soft wind-down that actually works.</span><span class="ar">روتين هادئ للنوم يعمل فعلاً.</span></span>
+            </div>
+            <span class="lib-item-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Stress Relief -->
+      <div class="lib-subcat">
+        <div class="lib-subcat-label"><span class="en">Stress Relief</span><span class="ar">تخفيف التوتر</span></div>
+        <div class="lib-items">
+          <a href="/life-guide.html?g=stress-release" class="lib-item">
+            <span class="lib-item-dot"></span>
+            <div class="lib-item-body">
+              <span class="lib-item-title"><span class="en">Releasing Daily Stress</span><span class="ar">التحرر من ضغط اليوم</span></span>
+              <span class="lib-item-desc"><span class="en">Small releases before they build up.</span><span class="ar">تفريغ بسيط قبل أن يتراكم التوتر.</span></span>
+            </div>
+            <span class="lib-item-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Slow Living -->
+      <div class="lib-subcat">
+        <div class="lib-subcat-label"><span class="en">Slow Living</span><span class="ar">الحياة البطيئة</span></div>
+        <div class="lib-items">
+          <a href="/life-guide.html?g=slow-living" class="lib-item">
+            <span class="lib-item-dot"></span>
+            <div class="lib-item-body">
+              <span class="lib-item-title"><span class="en">Slow Living Practice</span><span class="ar">ممارسة الحياة البطيئة</span></span>
+              <span class="lib-item-desc"><span class="en">Less rush. More present.</span><span class="ar">أقل تسرعاً. أكثر حضوراً.</span></span>
+            </div>
+            <span class="lib-item-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         ☪️ FAITH & REFLECTION
+    ══════════════════════════════════ -->
+    <section class="lib-section" id="cat-faith">
+      <div class="lib-section-head">
+        <span class="lib-section-icon">☪️</span>
+        <div class="lib-section-meta">
+          <h2 class="lib-section-title"><span class="en">Faith &amp; Reflection</span><span class="ar">الإيمان والتأمل</span></h2>
+          <span class="lib-section-tagline"><span class="en">Quiet the mind, ground the heart</span><span class="ar">هدّئ العقل، ثبّت القلب</span></span>
+        </div>
+      </div>
+
+      <!-- Duas -->
+      <div class="lib-subcat">
+        <div class="lib-subcat-label"><span class="en">Duas</span><span class="ar">الأدعية</span></div>
+        <div class="lib-items">
+          <a href="/life-guide.html?g=morning-duas" class="lib-item">
+            <span class="lib-item-dot"></span>
+            <div class="lib-item-body">
+              <span class="lib-item-title"><span class="en">Morning Duas &amp; Intentions</span><span class="ar">أدعية وأوراد الصباح</span></span>
+              <span class="lib-item-desc"><span class="en">Begin the day with remembrance.</span><span class="ar">ابدأ يومك بالذكر.</span></span>
+            </div>
+            <span class="lib-item-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Reminders -->
+      <div class="lib-subcat">
+        <div class="lib-subcat-label"><span class="en">Reminders</span><span class="ar">التذكيرات</span></div>
+        <div class="lib-items">
+          <a href="/life-guide.html?g=gratitude" class="lib-item">
+            <span class="lib-item-dot"></span>
+            <div class="lib-item-body">
+              <span class="lib-item-title"><span class="en">Gratitude Reminder</span><span class="ar">تذكير بالشكر</span></span>
+              <span class="lib-item-desc"><span class="en">Three things. Every day. No more needed.</span><span class="ar">ثلاثة أشياء. كل يوم. لا تحتاج أكثر.</span></span>
+            </div>
+            <span class="lib-item-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Reflection -->
+      <div class="lib-subcat">
+        <div class="lib-subcat-label"><span class="en">Reflection</span><span class="ar">التأمل</span></div>
+        <div class="lib-items">
+          <a href="/life-guide.html?g=evening-reflect" class="lib-item">
+            <span class="lib-item-dot"></span>
+            <div class="lib-item-body">
+              <span class="lib-item-title"><span class="en">Evening Reflection</span><span class="ar">تأمل المساء</span></span>
+              <span class="lib-item-desc"><span class="en">A quiet look back at your day.</span><span class="ar">نظرة هادئة على يومك.</span></span>
+            </div>
+            <span class="lib-item-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         💰 SIMPLE MONEY
+    ══════════════════════════════════ -->
+    <section class="lib-section" id="cat-money">
+      <div class="lib-section-head">
+        <span class="lib-section-icon">💰</span>
+        <div class="lib-section-meta">
+          <h2 class="lib-section-title"><span class="en">Simple Money</span><span class="ar">المال البسيط</span></h2>
+          <span class="lib-section-tagline"><span class="en">Enough is a kind of freedom</span><span class="ar">الكفاية نوع من الحرية</span></span>
+        </div>
+      </div>
+
+      <!-- Budgeting -->
+      <div class="lib-subcat">
+        <div class="lib-subcat-label"><span class="en">Budgeting</span><span class="ar">الميزانية</span></div>
+        <div class="lib-items">
+          <a href="/life-guide.html?g=weekly-budget" class="lib-item">
+            <span class="lib-item-dot"></span>
+            <div class="lib-item-body">
+              <span class="lib-item-title"><span class="en">Weekly Budget Reset</span><span class="ar">إعادة ضبط الميزانية الأسبوعية</span></span>
+              <span class="lib-item-desc"><span class="en">Ten minutes on Sunday. Peace all week.</span><span class="ar">عشر دقائق في الأحد. راحة طوال الأسبوع.</span></span>
+            </div>
+            <span class="lib-item-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Saving Habits -->
+      <div class="lib-subcat">
+        <div class="lib-subcat-label"><span class="en">Saving Habits</span><span class="ar">عادات الادخار</span></div>
+        <div class="lib-items">
+          <a href="/life-guide.html?g=saving-habit" class="lib-item">
+            <span class="lib-item-dot"></span>
+            <div class="lib-item-body">
+              <span class="lib-item-title"><span class="en">Saving Without Pressure</span><span class="ar">الادخار بدون ضغط</span></span>
+              <span class="lib-item-desc"><span class="en">Small amounts. Consistent peace.</span><span class="ar">مبالغ صغيرة. راحة بال متواصلة.</span></span>
+            </div>
+            <span class="lib-item-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         🧳 EVERYDAY LIVING
+    ══════════════════════════════════ -->
+    <section class="lib-section" id="cat-living">
+      <div class="lib-section-head">
+        <span class="lib-section-icon">🧳</span>
+        <div class="lib-section-meta">
+          <h2 class="lib-section-title"><span class="en">Everyday Living</span><span class="ar">الحياة اليومية</span></h2>
+          <span class="lib-section-tagline"><span class="en">A home that flows, a day that breathes</span><span class="ar">منزل يسير بسلاسة، يوم يتنفس بهدوء</span></span>
+        </div>
+      </div>
+
+      <!-- Organization -->
+      <div class="lib-subcat">
+        <div class="lib-subcat-label"><span class="en">Organization</span><span class="ar">التنظيم</span></div>
+        <div class="lib-items">
+          <a href="/life-guide.html?g=simple-org" class="lib-item">
+            <span class="lib-item-dot"></span>
+            <div class="lib-item-body">
+              <span class="lib-item-title"><span class="en">Simple Organization</span><span class="ar">التنظيم البسيط</span></span>
+              <span class="lib-item-desc"><span class="en">Less clutter. More calm.</span><span class="ar">أقل فوضى. أكثر هدوء.</span></span>
+            </div>
+            <span class="lib-item-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Home Reset -->
+      <div class="lib-subcat">
+        <div class="lib-subcat-label"><span class="en">Home Reset</span><span class="ar">إعادة ضبط المنزل</span></div>
+        <div class="lib-items">
+          <a href="/life-guide.html?g=home-reset" class="lib-item">
+            <span class="lib-item-dot"></span>
+            <div class="lib-item-body">
+              <span class="lib-item-title"><span class="en">Home Reset Ritual</span><span class="ar">طقوس إعادة ترتيب المنزل</span></span>
+              <span class="lib-item-desc"><span class="en">A clean space is a clear mind.</span><span class="ar">مساحة نظيفة هي ذهن صافٍ.</span></span>
+            </div>
+            <span class="lib-item-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Life Flow -->
+      <div class="lib-subcat">
+        <div class="lib-subcat-label"><span class="en">Life Flow</span><span class="ar">تدفق الحياة</span></div>
+        <div class="lib-items">
+          <a href="/life-guide.html?g=flow-your-day" class="lib-item">
+            <span class="lib-item-dot"></span>
+            <div class="lib-item-body">
+              <span class="lib-item-title"><span class="en">Flow Your Day</span><span class="ar">تنسيق يومك بسهولة</span></span>
+              <span class="lib-item-desc"><span class="en">Structure without rigidity. Rhythm without stress.</span><span class="ar">نظام بدون صرامة. إيقاع بدون توتر.</span></span>
+            </div>
+            <span class="lib-item-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /lib-content -->
+</div><!-- /lib-body -->
+
+<!-- ── MOBILE NAV ── -->
+<nav class="mobile-nav">
   <a href="/" class="mobile-nav-item"><span>🏠</span><span class="en">Home</span><span class="ar">الرئيسية</span></a>
   <a href="/library.html" class="mobile-nav-item active"><span>📚</span><span class="en">Library</span><span class="ar">المكتبة</span></a>
   <a href="/saved.html" class="mobile-nav-item"><span>💾</span><span class="en">Saved</span><span class="ar">المحفوظ</span></a>
@@ -460,9 +661,11 @@
 
 <script>
 (function(){
-  var nb = document.getElementById('navbar');
+  // Navbar
+  var nb=document.getElementById('navbar');
   window.addEventListener('scroll',function(){nb.classList.toggle('scrolled',window.scrollY>40);},{passive:true});
 
+  // Lang toggle
   document.getElementById('lang-toggle').addEventListener('click',function(){
     var h=document.documentElement;
     var l=h.getAttribute('data-lang')==='ar'?'en':'ar';
@@ -470,6 +673,7 @@
     localStorage.setItem('dfl-lang',l);
   });
 
+  // Theme
   var themeBtn=document.getElementById('theme-toggle');
   function applyTheme(t){
     document.documentElement.setAttribute('data-theme',t);
@@ -482,6 +686,37 @@
   themeBtn.addEventListener('click',function(){
     applyTheme(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark');
   });
+
+  // Category tabs → scroll to section + highlight
+  var tabs = document.querySelectorAll('.cat-tab');
+  tabs.forEach(function(tab){
+    tab.addEventListener('click',function(){
+      var target = document.getElementById(tab.dataset.target);
+      if(target){
+        var offset = target.getBoundingClientRect().top + window.scrollY - 160;
+        window.scrollTo({top:offset, behavior:'smooth'});
+      }
+      tabs.forEach(function(t){t.classList.remove('active');});
+      tab.classList.add('active');
+    });
+  });
+
+  // Sidebar active state on scroll
+  var sections = document.querySelectorAll('.lib-section');
+  var sidebarLinks = document.querySelectorAll('.sidebar-link');
+  function onScroll(){
+    var scrollY = window.scrollY + 200;
+    sections.forEach(function(sec){
+      if(scrollY >= sec.offsetTop && scrollY < sec.offsetTop + sec.offsetHeight){
+        var id = sec.id;
+        sidebarLinks.forEach(function(l){ l.classList.toggle('active', l.getAttribute('href')==='#'+id); });
+        tabs.forEach(function(t){ t.classList.toggle('active', t.dataset.target===id); });
+      }
+    });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
 })();
 </script>
 </body>
