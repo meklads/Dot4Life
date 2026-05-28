@@ -10,6 +10,8 @@ const crypto   = require('crypto');
 // ─────────────────────────────────────────
 //  CONNECTION
 // ─────────────────────────────────────────
+console.log('[DB] DATABASE_URL:', process.env.DATABASE_URL ? 'SET → ' + process.env.DATABASE_URL.slice(0, 30) + '...' : 'NOT SET — using localhost fallback');
+
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL || 'postgresql://localhost/d4l_capsules',
   ssl: process.env.DATABASE_URL ? { rejectUnauthorized: false } : false,
