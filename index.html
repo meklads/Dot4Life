@@ -1311,11 +1311,11 @@
     /* ─── DAILY CAPSULE POPUP ─────────────────────────── */
     .capsule-overlay {
       position: fixed; inset: 0; z-index: 1000;
-      display: flex; align-items: flex-end; justify-content: center;
+      display: none; align-items: flex-end; justify-content: center;
       padding: 0 1rem 1rem;
     }
-    .capsule-overlay[hidden] { display: none; }
-    @media (min-width: 600px) { .capsule-overlay { align-items: center; } }
+    .capsule-overlay.is-open { display: flex; }
+    @media (min-width: 600px) { .capsule-overlay.is-open { align-items: center; } }
     .capsule-backdrop {
       position: absolute; inset: 0;
       background: rgba(10,10,8,.5);
@@ -2073,6 +2073,46 @@
   </nav>
 
   <!-- ═══════════════════════════════════════
+       DAILY CAPSULE POPUP
+  ═══════════════════════════════════════ -->
+  <div id="capsule-overlay" class="capsule-overlay" role="dialog" aria-modal="true">
+    <div class="capsule-backdrop" id="capsule-backdrop"></div>
+    <div class="capsule-card" id="capsule-card">
+      <button class="capsule-close" id="capsule-close" aria-label="Close">✕</button>
+      <div class="capsule-img-wrap">
+        <span class="capsule-img-emoji">🍝</span>
+      </div>
+      <div class="capsule-content">
+        <div class="capsule-tag"><span class="en">Quick dinner · 15 min</span><span class="ar">عشاء سريع · ١٥ دقيقة</span></div>
+        <h2 class="capsule-title"><span class="en">Pasta with Garlic &amp; Olive Oil</span><span class="ar">باستا بالثوم وزيت الزيتون</span></h2>
+        <p class="capsule-desc"><span class="en">A simple, warming dinner the whole family will love — ready in 15 minutes with pantry staples.</span><span class="ar">عشاء دافئ وبسيط تحبه العائلة كلها — يتحضر في ١٥ دقيقة بمقادير أساسية.</span></p>
+        <div class="capsule-section">
+          <div class="capsule-section-title"><span class="en">Ingredients</span><span class="ar">المقادير</span></div>
+          <div class="capsule-ingredients">
+            <div class="capsule-ing"><span class="en">Pasta — 200g</span><span class="ar">باستا — ٢٠٠ جرام</span></div>
+            <div class="capsule-ing"><span class="en">Garlic — 4 cloves</span><span class="ar">ثوم — ٤ فصوص</span></div>
+            <div class="capsule-ing"><span class="en">Olive oil — 4 tbsp</span><span class="ar">زيت زيتون — ٤ ملاعق</span></div>
+            <div class="capsule-ing"><span class="en">Parsley &amp; chilli</span><span class="ar">بقدونس وبهار حار</span></div>
+          </div>
+        </div>
+        <div class="capsule-section">
+          <div class="capsule-section-title"><span class="en">Steps</span><span class="ar">الخطوات</span></div>
+          <div class="capsule-steps">
+            <div class="capsule-step"><span class="capsule-step-num">1</span><span class="en">Boil pasta in salted water until al dente.</span><span class="ar">اسلقي الباستا في ماء مملح حتى تنضج.</span></div>
+            <div class="capsule-step"><span class="capsule-step-num">2</span><span class="en">Fry garlic in olive oil on low heat until golden.</span><span class="ar">حمّري الثوم في زيت الزيتون على نار خفيفة حتى يصبح ذهبياً.</span></div>
+            <div class="capsule-step"><span class="capsule-step-num">3</span><span class="en">Toss pasta with garlic oil, parsley and chilli. Serve warm.</span><span class="ar">اخلطي الباستا مع الثوم والبقدونس والبهار. قدميها دافئة.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="capsule-footer">
+        <button class="capsule-btn capsule-btn-save" id="capsule-save"><span class="en">💾 Save</span><span class="ar">💾 حفظ</span></button>
+        <button class="capsule-btn capsule-btn-shop" id="capsule-shop"><span class="en">🛒 Shopping</span><span class="ar">🛒 تسوق</span></button>
+        <button class="capsule-btn capsule-btn-full"><span class="en">Full Recipe →</span><span class="ar">الوصفة كاملة →</span></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
        JAVASCRIPT
   ═══════════════════════════════════════ -->
   <script>
@@ -2516,12 +2556,12 @@
     if(!trigger || !overlay) return;
 
     function openCapsule(){
-      overlay.removeAttribute('hidden');
+      overlay.classList.add('is-open');
       document.body.style.overflow = 'hidden';
       setTimeout(function(){ closeBtn && closeBtn.focus(); }, 50);
     }
     function closeCapsule(){
-      overlay.setAttribute('hidden', '');
+      overlay.classList.remove('is-open');
       document.body.style.overflow = '';
       trigger.focus();
     }
@@ -2563,51 +2603,11 @@
 
     // Escape key
     document.addEventListener('keydown', function(e){
-      if(e.key === 'Escape' && !overlay.hasAttribute('hidden')) closeCapsule();
+      if(e.key === 'Escape' && overlay.classList.contains('is-open')) closeCapsule();
     });
   })();
 
   </script>
-
-  <!-- ═══════════════════════════════════════
-       DAILY CAPSULE POPUP
-  ═══════════════════════════════════════ -->
-  <div id="capsule-overlay" class="capsule-overlay" role="dialog" aria-modal="true" hidden>
-    <div class="capsule-backdrop" id="capsule-backdrop"></div>
-    <div class="capsule-card" id="capsule-card">
-      <button class="capsule-close" id="capsule-close" aria-label="Close">✕</button>
-      <div class="capsule-img-wrap">
-        <span class="capsule-img-emoji">🍝</span>
-      </div>
-      <div class="capsule-content">
-        <div class="capsule-tag"><span class="en">Quick dinner · 15 min</span><span class="ar">عشاء سريع · ١٥ دقيقة</span></div>
-        <h2 class="capsule-title"><span class="en">Pasta with Garlic &amp; Olive Oil</span><span class="ar">باستا بالثوم وزيت الزيتون</span></h2>
-        <p class="capsule-desc"><span class="en">A simple, warming dinner the whole family will love — ready in 15 minutes with pantry staples.</span><span class="ar">عشاء دافئ وبسيط تحبه العائلة كلها — يتحضر في ١٥ دقيقة بمقادير أساسية.</span></p>
-        <div class="capsule-section">
-          <div class="capsule-section-title"><span class="en">Ingredients</span><span class="ar">المقادير</span></div>
-          <div class="capsule-ingredients">
-            <div class="capsule-ing"><span class="en">Pasta — 200g</span><span class="ar">باستا — ٢٠٠ جرام</span></div>
-            <div class="capsule-ing"><span class="en">Garlic — 4 cloves</span><span class="ar">ثوم — ٤ فصوص</span></div>
-            <div class="capsule-ing"><span class="en">Olive oil — 4 tbsp</span><span class="ar">زيت زيتون — ٤ ملاعق</span></div>
-            <div class="capsule-ing"><span class="en">Parsley &amp; chilli</span><span class="ar">بقدونس وبهار حار</span></div>
-          </div>
-        </div>
-        <div class="capsule-section">
-          <div class="capsule-section-title"><span class="en">Steps</span><span class="ar">الخطوات</span></div>
-          <div class="capsule-steps">
-            <div class="capsule-step"><span class="capsule-step-num">1</span><span class="en">Boil pasta in salted water until al dente.</span><span class="ar">اسلقي الباستا في ماء مملح حتى تنضج.</span></div>
-            <div class="capsule-step"><span class="capsule-step-num">2</span><span class="en">Fry garlic in olive oil on low heat until golden.</span><span class="ar">حمّري الثوم في زيت الزيتون على نار خفيفة حتى يصبح ذهبياً.</span></div>
-            <div class="capsule-step"><span class="capsule-step-num">3</span><span class="en">Toss pasta with garlic oil, parsley and chilli. Serve warm.</span><span class="ar">اخلطي الباستا مع الثوم والبقدونس والبهار. قدميها دافئة.</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="capsule-footer">
-        <button class="capsule-btn capsule-btn-save" id="capsule-save"><span class="en">💾 Save</span><span class="ar">💾 حفظ</span></button>
-        <button class="capsule-btn capsule-btn-shop" id="capsule-shop"><span class="en">🛒 Shopping</span><span class="ar">🛒 تسوق</span></button>
-        <button class="capsule-btn capsule-btn-full"><span class="en">Full Recipe →</span><span class="ar">الوصفة كاملة →</span></button>
-      </div>
-    </div>
-  </div>
 
 </body>
 </html>
