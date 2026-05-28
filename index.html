@@ -1124,6 +1124,152 @@
       [data-lang="ar"] .dh-focus-text { text-align: right; }
       .dh-grid { gap: 1rem; }
     }
+
+    /* ─── MORNING MOMENT CARD ───────────────────── */
+    #morning-moment {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 48px 2.5rem;
+    }
+    .mm-card {
+      background: linear-gradient(135deg, #FDF8EF 0%, #F8F1E2 100%);
+      border: 1px solid rgba(184,134,26,.18);
+      border-radius: 24px;
+      padding: 2rem 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: center;
+      box-shadow: 0 6px 36px rgba(184,134,26,.08), 0 2px 12px rgba(0,0,0,.04);
+      position: relative;
+      overflow: hidden;
+    }
+    .mm-card::before {
+      content: '';
+      position: absolute;
+      top: -60px; left: -60px;
+      width: 240px; height: 240px;
+      background: radial-gradient(circle, rgba(184,134,26,.09) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    [data-theme="dark"] .mm-card {
+      background: linear-gradient(135deg, #1C1810 0%, #18150C 100%);
+      border-color: rgba(212,168,50,.14);
+      box-shadow: 0 6px 36px rgba(0,0,0,.25);
+    }
+    /* Left side */
+    .mm-left { display: flex; flex-direction: column; gap: .75rem; }
+    .mm-greeting {
+      font-size: .75rem;
+      font-weight: 500;
+      color: var(--gold);
+      letter-spacing: .08em;
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+    }
+    [data-lang="ar"] .mm-greeting { font-family: var(--font-ar); letter-spacing: 0; }
+    .mm-dot {
+      width: 5px; height: 5px;
+      background: var(--gold);
+      border-radius: 50%;
+      opacity: .6;
+    }
+    .mm-line {
+      font-family: var(--font-serif);
+      font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.28;
+      color: var(--text);
+    }
+    [data-lang="ar"] .mm-line {
+      font-family: var(--font-ar);
+      font-style: normal;
+      font-size: clamp(1.3rem, 2.4vw, 1.8rem);
+      font-weight: 300;
+      line-height: 1.45;
+    }
+    .mm-day-label {
+      font-size: .7rem;
+      color: var(--muted);
+      margin-top: .1rem;
+    }
+    [data-lang="ar"] .mm-day-label { font-family: var(--font-ar); }
+    /* Right side */
+    .mm-items {
+      display: flex;
+      flex-direction: column;
+      gap: .85rem;
+    }
+    .mm-item {
+      display: flex;
+      align-items: flex-start;
+      gap: .75rem;
+      padding: .7rem 1rem;
+      background: rgba(255,255,255,.65);
+      border-radius: 12px;
+      border: 1px solid rgba(184,134,26,.1);
+      transition: background .2s;
+    }
+    [data-theme="dark"] .mm-item {
+      background: rgba(255,255,255,.04);
+      border-color: rgba(212,168,50,.1);
+    }
+    .mm-item:hover { background: rgba(255,255,255,.9); }
+    [data-theme="dark"] .mm-item:hover { background: rgba(255,255,255,.07); }
+    .mm-icon { font-size: 1.05rem; line-height: 1.4; flex-shrink: 0; }
+    .mm-text {
+      font-size: .86rem;
+      color: var(--text-2);
+      line-height: 1.5;
+    }
+    [data-lang="ar"] .mm-text { font-family: var(--font-ar); font-size: .9rem; }
+    /* Bottom strip */
+    .mm-footer {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1.1rem;
+      border-top: 1px solid rgba(184,134,26,.12);
+      margin-top: .25rem;
+    }
+    .mm-footer-left {
+      font-size: .7rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+    }
+    [data-lang="ar"] .mm-footer-left { font-family: var(--font-ar); }
+    .mm-pulse {
+      width: 6px; height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      opacity: .5;
+      animation: mmPulse 3s ease-in-out infinite;
+    }
+    @keyframes mmPulse {
+      0%,100% { opacity: .5; transform: scale(1); }
+      50% { opacity: .9; transform: scale(1.3); }
+    }
+    .mm-footer-right {
+      font-size: .7rem;
+      color: var(--muted);
+    }
+    [data-lang="ar"] .mm-footer-right { font-family: var(--font-ar); }
+    /* Mobile */
+    @media (max-width: 900px) {
+      #morning-moment { padding: 0 24px 2rem; }
+      .mm-card { grid-template-columns: 1fr; gap: 1.5rem; padding: 1.6rem; border-radius: 20px; }
+      .mm-footer { grid-column: 1; }
+    }
+    @media (max-width: 480px) {
+      #morning-moment { padding: 0 1rem 1.5rem; }
+      .mm-card { padding: 1.4rem; border-radius: 18px; gap: 1.25rem; }
+      .mm-item { padding: .6rem .85rem; }
+    }
   </style>
 <script src="/scripts/global.js" defer></script>
 </head>
@@ -1230,6 +1376,34 @@
       </div>
     </div>
   </section>
+
+  <!-- ═══════════════════════════════════════
+       MORNING MOMENT
+  ═══════════════════════════════════════ -->
+  <div id="morning-moment" aria-label="Morning Moment">
+    <div class="mm-card">
+      <div class="mm-left">
+        <div class="mm-greeting">
+          <span class="mm-dot"></span>
+          <span id="mm-greeting-text"></span>
+        </div>
+        <div class="mm-line" id="mm-line"></div>
+        <div class="mm-day-label" id="mm-day-label"></div>
+      </div>
+      <div class="mm-items" id="mm-items"></div>
+      <div class="mm-footer">
+        <div class="mm-footer-left">
+          <span class="mm-pulse"></span>
+          <span class="en">Refreshes tomorrow</span>
+          <span class="ar">يتجدد غداً</span>
+        </div>
+        <div class="mm-footer-right">
+          <span class="en">One moment. Every day.</span>
+          <span class="ar">لحظة واحدة. كل يوم.</span>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- ═══════════════════════════════════════
        DAILY HOME EXPERIENCE
@@ -2035,6 +2209,138 @@
 
     })(); // end daily home
 
+  })();
+
+  /* ── MORNING MOMENT ─────────────────────── */
+  (function(){
+    var moments = [
+      // Sunday
+      { en: { line: "Rest is part of the plan.", items: [
+          { icon: "🌿", text: "Step outside, even for ten minutes." },
+          { icon: "👨‍👩‍👧", text: "A slow morning with your family is enough." },
+          { icon: "☕", text: "Let this day be gentle on you." }
+        ]},
+        ar: { line: "الراحة جزء من الخطة.", items: [
+          { icon: "🌿", text: "اخرج للهواء ولو عشر دقائق." },
+          { icon: "👨‍👩‍👧", text: "صباح هادئ مع عائلتك يكفي." },
+          { icon: "☕", text: "دع هذا اليوم يكون لطيفاً معك." }
+        ]}},
+      // Monday
+      { en: { line: "Good weeks begin with one clear intention.", items: [
+          { icon: "☀️", text: "What matters most this week?" },
+          { icon: "📌", text: "Set one family reminder before noon." },
+          { icon: "🚶", text: "A short walk changes your whole day." }
+        ]},
+        ar: { line: "الأسابيع الجيدة تبدأ بنية واحدة واضحة.", items: [
+          { icon: "☀️", text: "ما الشيء الواحد الأهم هذا الأسبوع؟" },
+          { icon: "📌", text: "ضع تذكيراً عائلياً قبل الظهر." },
+          { icon: "🚶", text: "نزهة قصيرة تغير يومك كله." }
+        ]}},
+      // Tuesday
+      { en: { line: "Small kindnesses make the whole day.", items: [
+          { icon: "🍽️", text: "Try something different for dinner tonight." },
+          { icon: "📞", text: "Call someone you haven't spoken to in a while." },
+          { icon: "💧", text: "Drink water before your first coffee." }
+        ]},
+        ar: { line: "اللطف الصغير يصنع اليوم كله.", items: [
+          { icon: "🍽️", text: "جرب شيئاً مختلفاً على العشاء الليلة." },
+          { icon: "📞", text: "تواصل مع شخص لم تكلمه منذ فترة." },
+          { icon: "💧", text: "اشرب ماء قبل قهوتك الأولى." }
+        ]}},
+      // Wednesday
+      { en: { line: "You are doing better than you think.", items: [
+          { icon: "✅", text: "Pick one task today — just one." },
+          { icon: "🌙", text: "Plan a calm evening at home tonight." },
+          { icon: "🙏", text: "One quiet moment of gratitude is enough." }
+        ]},
+        ar: { line: "أنت تسير بشكل أفضل مما تظن.", items: [
+          { icon: "✅", text: "اختر مهمة واحدة فقط لليوم." },
+          { icon: "🌙", text: "خطط لمساء هادئ في المنزل الليلة." },
+          { icon: "🙏", text: "لحظة شكر هادئة واحدة تكفي." }
+        ]}},
+      // Thursday
+      { en: { line: "The week is almost done — you made it.", items: [
+          { icon: "🏠", text: "Tidy one small corner at home tonight." },
+          { icon: "💬", text: "Tell someone at home you appreciate them." },
+          { icon: "☕", text: "Take a real break — screen off, mind off." }
+        ]},
+        ar: { line: "الأسبوع يقترب من نهايته — أنت أنجزت.", items: [
+          { icon: "🏠", text: "رتّب زاوية صغيرة في المنزل الليلة." },
+          { icon: "💬", text: "أخبر شخصاً في البيت أنك تقدّره." },
+          { icon: "☕", text: "خذ استراحة حقيقية — بعيداً عن الشاشات." }
+        ]}},
+      // Friday
+      { en: { line: "Peace begins at home.", items: [
+          { icon: "🕌", text: "A moment of reflection to start the day." },
+          { icon: "👨‍👩‍👧", text: "Family time — be fully present." },
+          { icon: "🌅", text: "Let this evening be slow and unhurried." }
+        ]},
+        ar: { line: "السلام يبدأ من البيت.", items: [
+          { icon: "🕌", text: "لحظة تأمل لبدء اليوم." },
+          { icon: "👨‍👩‍👧", text: "وقت عائلي — كن حاضراً تماماً." },
+          { icon: "🌅", text: "دع هذا المساء هادئاً بلا تسرع." }
+        ]}},
+      // Saturday
+      { en: { line: "A peaceful home is built slowly.", items: [
+          { icon: "📖", text: "Read something gentle today." },
+          { icon: "🌿", text: "Simple food, simple joy." },
+          { icon: "🤍", text: "The people you love are close by — be present." }
+        ]},
+        ar: { line: "البيت الهادئ يُبنى ببطء وعناية.", items: [
+          { icon: "📖", text: "اقرأ شيئاً لطيفاً اليوم." },
+          { icon: "🌿", text: "طعام بسيط، فرح بسيط." },
+          { icon: "🤍", text: "من تحبهم قريبون — كن حاضراً معهم." }
+        ]}}
+    ];
+
+    var dayNamesEn = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    var dayNamesAr = ["الأحد","الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"];
+
+    function greetingEn(){
+      var h = new Date().getHours();
+      if(h >= 5 && h < 12)  return "Good morning";
+      if(h >= 12 && h < 17) return "Good afternoon";
+      if(h >= 17 && h < 21) return "Good evening";
+      return "Good night";
+    }
+    function greetingAr(){
+      var h = new Date().getHours();
+      if(h >= 5 && h < 12)  return "صباح الخير";
+      if(h >= 12 && h < 21) return "مساء الخير";
+      return "تصبح على خير";
+    }
+
+    function initMM(){
+      var lang = document.documentElement.getAttribute('data-lang') || 'en';
+      var day  = new Date().getDay();
+      var m    = moments[day][lang];
+      var isAr = lang === 'ar';
+
+      var greetEl = document.getElementById('mm-greeting-text');
+      var lineEl  = document.getElementById('mm-line');
+      var dayEl   = document.getElementById('mm-day-label');
+      var itemsEl = document.getElementById('mm-items');
+      if(!greetEl) return;
+
+      greetEl.textContent = isAr ? greetingAr() : greetingEn();
+      lineEl.textContent  = m.line;
+      dayEl.textContent   = isAr ? dayNamesAr[day] : dayNamesEn[day];
+
+      itemsEl.innerHTML = m.items.map(function(it){
+        return '<div class="mm-item">'
+          + '<span class="mm-icon">'+it.icon+'</span>'
+          + '<span class="mm-text">'+it.text+'</span>'
+          + '</div>';
+      }).join('');
+    }
+
+    initMM();
+
+    // Re-init if language changes
+    document.addEventListener('dfl:langchange', initMM);
+    document.getElementById('lang-toggle') && document.getElementById('lang-toggle').addEventListener('click', function(){
+      setTimeout(initMM, 50);
+    });
   })();
 
   </script>
