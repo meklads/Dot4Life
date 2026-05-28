@@ -647,6 +647,10 @@ body {
         <span style="font-size:.72rem;color:var(--muted);display:block;margin-top:4px">رابط سيرفر capsule-engine على Hostinger</span>
       </div>
       <div class="field">
+        <label>Username</label>
+        <input type="text" id="un" placeholder="Enter username" autocomplete="username"/>
+      </div>
+      <div class="field">
         <label>Password</label>
         <input type="password" id="pw" placeholder="Enter admin password" autocomplete="current-password"/>
       </div>
@@ -760,12 +764,13 @@ async function checkAndShow() {
 // ═══════════════════════════════════════
 async function login() {
   const serverInput = document.getElementById('serverUrl').value.trim().replace(/\/+$/, '');
+  const un  = document.getElementById('un').value.trim();
   const pw  = document.getElementById('pw').value.trim();
   const btn = document.getElementById('loginBtn');
   const err = document.getElementById('loginErr');
 
   if (!serverInput) { err.textContent = 'Enter the server URL first.'; err.style.display = 'block'; return; }
-  if (!pw) return;
+  if (!un || !pw) return;
 
   // Update API base from input
   API = serverInput + '/api';
@@ -774,7 +779,7 @@ async function login() {
   btn.textContent = '…';
   err.style.display = 'none';
 
-  const r = await call('POST', '/admin/login', { password: pw });
+  const r = await call('POST', '/admin/login', { username: un, password: pw });
 
   btn.disabled = false;
   btn.textContent = 'Sign In';

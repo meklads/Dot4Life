@@ -26,11 +26,13 @@ async function requireAuth(req, res, next) {
 // ─────────────────────────────────────────
 router.post('/login', async (req, res) => {
   try {
-    const { password } = req.body;
+    const { username, password } = req.body;
     if (!password) return res.status(400).json({ error: 'Password required' });
+    if (username && username !== config.ADMIN_USERNAME)
+      return res.status(401).json({ error: 'Invalid credentials' });
     const hash = crypto.createHash('sha256').update(password).digest('hex');
     if (hash !== config.ADMIN_PASSWORD_HASH)
-      return res.status(401).json({ error: 'Invalid password' });
+      return res.status(401).json({ error: 'Invalid credentials' });
     const token = await db.createSession();
     res.json({ ok: true, token });
   } catch (err) {

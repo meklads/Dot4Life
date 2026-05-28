@@ -20,8 +20,10 @@ function sha256(str) {
 module.exports = {
   PORT: process.env.PORT || 3030,
 
+  // Admin username
+  ADMIN_USERNAME: process.env.ADMIN_USERNAME || 'admin',
+
   // SHA-256 hash of admin password
-  // Default: dotforlife2026  →  change before going live
   ADMIN_PASSWORD_HASH: process.env.ADMIN_PASSWORD_HASH
     || sha256(process.env.ADMIN_PASSWORD || 'dotforlife2026'),
 
