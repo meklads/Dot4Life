@@ -642,15 +642,6 @@ body {
     </div>
     <div class="login-card">
       <div class="field">
-        <label>Server URL</label>
-        <input type="url" id="serverUrl" placeholder="https://your-server.com" autocomplete="off"/>
-        <span style="font-size:.72rem;color:var(--muted);display:block;margin-top:4px">رابط سيرفر capsule-engine على Hostinger</span>
-      </div>
-      <div class="field">
-        <label>Username</label>
-        <input type="text" id="un" placeholder="Enter username" autocomplete="username"/>
-      </div>
-      <div class="field">
         <label>Password</label>
         <input type="password" id="pw" placeholder="Enter admin password" autocomplete="current-password"/>
       </div>
@@ -713,7 +704,7 @@ body {
 // ═══════════════════════════════════════
 //  CONFIG
 // ═══════════════════════════════════════
-let API   = (localStorage.getItem('d4l_server') || 'http://localhost:3030') + '/api';
+let API   = 'https://dot4life-production.up.railway.app/api';
 let token  = sessionStorage.getItem('d4l_token') || '';
 let filter = 'all';
 let allCapsules = [];
@@ -763,37 +754,30 @@ async function checkAndShow() {
 //  AUTH
 // ═══════════════════════════════════════
 async function login() {
-  const serverInput = document.getElementById('serverUrl').value.trim().replace(/\/+$/, '');
-  const un  = document.getElementById('un').value.trim();
   const pw  = document.getElementById('pw').value.trim();
   const btn = document.getElementById('loginBtn');
   const err = document.getElementById('loginErr');
 
-  if (!serverInput) { err.textContent = 'Enter the server URL first.'; err.style.display = 'block'; return; }
-  if (!un || !pw) return;
-
-  // Update API base from input
-  API = serverInput + '/api';
+  if (!pw) return;
 
   btn.disabled = true;
   btn.textContent = '…';
   err.style.display = 'none';
 
-  const r = await call('POST', '/admin/login', { username: un, password: pw });
+  const r = await call('POST', '/admin/login', { password: pw });
 
   btn.disabled = false;
   btn.textContent = 'Sign In';
 
   if (r.ok && r.data.token) {
     token = r.data.token;
-    localStorage.setItem('d4l_server', serverInput);   // remember for next time
     sessionStorage.setItem('d4l_token', token);
     show('app');
     load();
   } else {
-    err.textContent = r.data?.error === 'Invalid password'
+    err.textContent = r.data?.error === 'Invalid credentials'
       ? 'Incorrect password.'
-      : 'Cannot reach server — check the URL and make sure capsule-engine is running.';
+      : 'Cannot reach server.';
     err.style.display = 'block';
   }
 }
@@ -803,7 +787,6 @@ function signout() {
   token = '';
   sessionStorage.removeItem('d4l_token');
   allCapsules = [];
-  // Keep d4l_server in localStorage so URL is pre-filled next time
   show('login');
 }
 
