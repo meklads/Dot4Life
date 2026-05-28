@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light" data-lang="en">
+<head>
+  <script>(function(){var t=localStorage.getItem('dfl-theme')||'light';var l=localStorage.getItem('dfl-lang')||'en';var h=document.documentElement;h.setAttribute('data-theme',t);h.setAttribute('data-lang',l);h.setAttribute('lang',l==='ar'?'ar':'en');h.setAttribute('dir',l==='ar'?'rtl':'ltr');})();</script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Life Guide — DOTFORLIFE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500;600&family=Almarai:wght@300;400;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --text:#1A1410;--text-2:#5C534A;--muted:#9A9188;
+    --body-bg:#FAF8F4;--card-bg:#FFFFFF;--cream:#F5F0E8;
+    --cream-d:#EDE6D8;--border:#E0D8CC;--gold:#B8861A;--gold-d:#8A620F;
+    --green:#1B7A4E;--font-serif:'Crimson Pro',Georgia,serif;
+    --font-ui:'Inter',system-ui,sans-serif;--font-ar:'Almarai','Segoe UI',sans-serif;
+    --radius:6px;
+  }
+  [data-theme="dark"]{
+    --text:#EDE8E0;--text-2:#B8B0A4;--muted:#7A746C;
+    --body-bg:#12100E;--card-bg:#1E1A16;--cream:#1E1A16;
+    --cream-d:#252018;--border:#302820;--gold:#D4A832;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--font-ui);color:var(--text);background:var(--body-bg);line-height:1.6;transition:background .3s,color .3s;}
+  [data-lang="ar"] body{font-family:var(--font-ar);}
+  .en{display:inline;}.ar{display:none;}
+  [data-lang="ar"] .en{display:none;}[data-lang="ar"] .ar{display:inline;}
+  a{color:inherit;text-decoration:none;}
+
+  /* ── NAVBAR ── */
+  #navbar{position:sticky;top:0;z-index:100;background:rgba(250,248,244,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:center;}
+  [data-theme="dark"] #navbar{background:rgba(18,16,14,0.97);}
+  #navbar.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.07);}
+  .nav-inner{max-width:760px;width:100%;padding:0 24px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-logo img{height:130px;width:auto;display:block;margin:4px 0 8px;}
+  @media(max-width:600px){.nav-logo img{height:80px;}}
+  .nav-os-links{display:flex;gap:0;align-items:center;list-style:none;}
+  .nav-os-links a{font-size:.78rem;font-weight:500;letter-spacing:.05em;padding:5px 10px;border-radius:6px;color:var(--text-2);transition:color .2s;}
+  .nav-os-links a:hover{color:var(--gold);}
+  .nav-os-links .back-link{font-size:.75rem;color:var(--muted);}
+  .nav-controls{display:flex;gap:.5rem;align-items:center;}
+  .nav-btn{cursor:pointer;border:1px solid var(--border);border-radius:var(--radius);padding:.3rem .6rem;font-size:.74rem;font-weight:600;background:transparent;color:var(--text-2);transition:all .2s;}
+  .nav-btn:hover{border-color:var(--gold);color:var(--gold);}
+
+  /* ── PAGE ── */
+  #page{max-width:640px;margin:0 auto;padding:0 24px 80px;}
+
+  /* ── HERO IMAGE AREA ── */
+  .guide-hero{
+    margin:2rem 0;
+    background:linear-gradient(160deg,#FDF0D8 0%,#F0E4C4 100%);
+    border-radius:20px;
+    display:flex;align-items:center;justify-content:center;
+    min-height:200px;
+    position:relative;
+    overflow:hidden;
+  }
+  [data-theme="dark"] .guide-hero{background:linear-gradient(160deg,#1E1A10 0%,#1A1508 100%);}
+  .guide-hero-emoji{font-size:6rem;line-height:1;filter:drop-shadow(0 8px 24px rgba(0,0,0,.12));}
+  .guide-hero-back{
+    position:absolute;top:1rem;
+    left:1rem;
+    background:rgba(255,255,255,.75);
+    border:none;border-radius:10px;
+    padding:.4rem .75rem;
+    font-size:.75rem;font-weight:500;
+    color:var(--text-2);cursor:pointer;
+    backdrop-filter:blur(8px);
+    transition:background .15s;
+  }
+  [data-lang="ar"] .guide-hero-back{left:auto;right:1rem;}
+  .guide-hero-back:hover{background:rgba(255,255,255,.95);}
+  [data-theme="dark"] .guide-hero-back{background:rgba(0,0,0,.4);}
+
+  /* ── CONTENT ── */
+  .guide-tag{
+    font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--gold);margin-bottom:.6rem;
+  }
+  [data-lang="ar"] .guide-tag{font-family:var(--font-ar);letter-spacing:0;}
+  .guide-title{
+    font-family:var(--font-serif);
+    font-size:clamp(1.8rem,5vw,2.4rem);
+    font-weight:300;color:var(--text);
+    line-height:1.2;margin-bottom:.75rem;
+  }
+  [data-lang="ar"] .guide-title{font-family:var(--font-ar);font-size:clamp(1.6rem,4vw,2rem);}
+  .guide-emotion{
+    font-family:var(--font-serif);
+    font-size:1.1rem;font-style:italic;
+    color:var(--text-2);
+    line-height:1.55;margin-bottom:2rem;
+    padding-bottom:2rem;
+    border-bottom:1px solid rgba(184,134,26,.1);
+  }
+  [data-lang="ar"] .guide-emotion{font-family:var(--font-ar);font-style:normal;font-size:1rem;}
+
+  /* ── BLOCKS ── */
+  .guide-block{margin-bottom:2rem;}
+  .guide-block-label{
+    font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--muted);margin-bottom:.9rem;
+  }
+  [data-lang="ar"] .guide-block-label{font-family:var(--font-ar);letter-spacing:0;}
+
+  /* Ingredients grid */
+  .guide-ingredients{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;}
+  .guide-ing{
+    font-size:.84rem;color:var(--text-2);
+    background:var(--cream);border-radius:10px;
+    padding:.55rem .85rem;line-height:1.4;
+  }
+  [data-lang="ar"] .guide-ing{font-family:var(--font-ar);}
+  [data-theme="dark"] .guide-ing{background:rgba(255,255,255,.05);}
+
+  /* Steps */
+  .guide-steps{display:flex;flex-direction:column;gap:1rem;}
+  .guide-step{display:flex;align-items:flex-start;gap:1rem;}
+  .guide-step-num{
+    flex-shrink:0;width:26px;height:26px;
+    background:var(--gold);color:#fff;
+    border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-size:.72rem;font-weight:700;margin-top:1px;
+  }
+  .guide-step-text{font-size:.88rem;color:var(--text-2);line-height:1.6;}
+  [data-lang="ar"] .guide-step-text{font-family:var(--font-ar);font-size:.92rem;}
+
+  /* Why this matters */
+  .guide-why{
+    background:linear-gradient(135deg,rgba(184,134,26,.07) 0%,rgba(184,134,26,.03) 100%);
+    border:1px solid rgba(184,134,26,.15);
+    border-radius:14px;padding:1.1rem 1.3rem;
+    margin-bottom:2rem;
+  }
+  [data-theme="dark"] .guide-why{background:rgba(212,168,50,.06);border-color:rgba(212,168,50,.12);}
+  .guide-why-label{
+    font-size:.62rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--gold);margin-bottom:.4rem;
+  }
+  [data-lang="ar"] .guide-why-label{font-family:var(--font-ar);letter-spacing:0;}
+  .guide-why-text{font-size:.85rem;color:var(--text-2);line-height:1.6;font-style:italic;}
+  [data-lang="ar"] .guide-why-text{font-family:var(--font-ar);font-style:normal;font-size:.9rem;}
+
+  /* ── ACTIONS ── */
+  .guide-actions{
+    display:flex;gap:.65rem;
+    padding-top:1rem;
+    border-top:1px solid var(--border);
+  }
+  .guide-btn{
+    flex:1;padding:.7rem .5rem;
+    border-radius:12px;border:none;
+    font-size:.78rem;font-weight:600;
+    cursor:pointer;font-family:var(--font-ui);
+    transition:background .15s,transform .1s;
+  }
+  [data-lang="ar"] .guide-btn{font-family:var(--font-ar);}
+  .guide-btn:active{transform:scale(.97);}
+  .guide-btn-save,.guide-btn-plan{
+    background:var(--cream);color:var(--text-2);
+    border:1px solid var(--border);
+  }
+  .guide-btn-save:hover,.guide-btn-plan:hover{background:var(--cream-d);}
+  [data-theme="dark"] .guide-btn-save,[data-theme="dark"] .guide-btn-plan{background:rgba(255,255,255,.07);border-color:var(--border);color:var(--text-2);}
+  .guide-btn-lib{background:var(--gold);color:#fff;flex:1.2;}
+  .guide-btn-lib:hover{background:var(--gold-d);}
+
+  /* ── MOBILE NAV ── */
+  .mobile-nav{display:none;position:fixed;bottom:0;left:0;right:0;z-index:200;background:var(--card-bg);border-top:1px solid var(--border);padding:8px 0 env(safe-area-inset-bottom,8px);}
+  @media(max-width:768px){.mobile-nav{display:flex;justify-content:space-around;}body{padding-bottom:64px;}}
+  .mobile-nav-item{display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 12px;font-size:.63rem;font-weight:500;color:var(--text-2);border:none;background:none;cursor:pointer;font-family:inherit;text-decoration:none;min-width:48px;}
+  .mobile-nav-item.active{color:var(--gold);}
+  .mobile-nav-item span:first-child{font-size:1.2rem;}
+  [data-lang="ar"] .mobile-nav-item{font-family:var(--font-ar);}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo"><img src="/logo1-transparent.png" alt="DOTFORLIFE"/></a>
+    <ul class="nav-os-links">
+      <li><a href="/library.html" class="back-link">← <span class="en">Library</span><span class="ar">المكتبة</span></a></li>
+    </ul>
+    <div class="nav-controls">
+      <button class="nav-btn" id="lang-toggle"><span class="en">عربي</span><span class="ar">EN</span></button>
+      <button class="nav-btn" id="theme-toggle"><span class="en">🌙</span><span class="ar">🌙</span></button>
+    </div>
+  </div>
+</nav>
+
+<main id="page">
+
+  <!-- HERO -->
+  <div class="guide-hero" id="guide-hero">
+    <button class="guide-hero-back" onclick="history.back()">← <span class="en">Back</span><span class="ar">رجوع</span></button>
+    <span class="guide-hero-emoji" id="guide-emoji">🍝</span>
+  </div>
+
+  <!-- TAG + TITLE -->
+  <div class="guide-tag" id="guide-tag">
+    <span class="en">Quick dinner · 15 min</span><span class="ar">عشاء سريع · ١٥ دقيقة</span>
+  </div>
+  <h1 class="guide-title" id="guide-title">
+    <span class="en">Pasta with Garlic &amp; Olive Oil</span>
+    <span class="ar">باستا بالثوم وزيت الزيتون</span>
+  </h1>
+  <p class="guide-emotion" id="guide-emotion">
+    <span class="en">A warm, simple dinner that brings the family to the table without stress.</span>
+    <span class="ar">عشاء دافئ وبسيط يجمع العائلة على المائدة بلا توتر.</span>
+  </p>
+
+  <!-- INGREDIENTS -->
+  <div class="guide-block">
+    <div class="guide-block-label"><span class="en">Ingredients</span><span class="ar">المقادير</span></div>
+    <div class="guide-ingredients">
+      <div class="guide-ing"><span class="en">Pasta — 200g</span><span class="ar">باستا — ٢٠٠ جرام</span></div>
+      <div class="guide-ing"><span class="en">Garlic — 4 cloves</span><span class="ar">ثوم — ٤ فصوص</span></div>
+      <div class="guide-ing"><span class="en">Olive oil — 4 tbsp</span><span class="ar">زيت زيتون — ٤ ملاعق</span></div>
+      <div class="guide-ing"><span class="en">Parsley &amp; chilli</span><span class="ar">بقدونس وبهار حار</span></div>
+      <div class="guide-ing"><span class="en">Salt &amp; pasta water</span><span class="ar">ملح وماء الطهي</span></div>
+    </div>
+  </div>
+
+  <!-- STEPS -->
+  <div class="guide-block">
+    <div class="guide-block-label"><span class="en">Steps</span><span class="ar">الخطوات</span></div>
+    <div class="guide-steps">
+      <div class="guide-step">
+        <span class="guide-step-num">1</span>
+        <span class="guide-step-text"><span class="en">Boil generously salted water and cook pasta until al dente. Reserve ½ cup of pasta water before draining.</span><span class="ar">اسلقي الباستا في ماء مملح جيداً حتى تنضج. احتفظي بنصف كوب من ماء الطهي قبل التصفية.</span></span>
+      </div>
+      <div class="guide-step">
+        <span class="guide-step-num">2</span>
+        <span class="guide-step-text"><span class="en">Warm olive oil in a wide pan on low heat. Add sliced garlic and cook slowly until golden — don't rush this step.</span><span class="ar">سخّني زيت الزيتون في مقلاة واسعة على نار خفيفة. أضيفي الثوم المفروم وحمّريه ببطء حتى يصبح ذهبياً — لا تتعجلي.</span></span>
+      </div>
+      <div class="guide-step">
+        <span class="guide-step-num">3</span>
+        <span class="guide-step-text"><span class="en">Add drained pasta to the pan, splash in pasta water, toss well. Finish with parsley, chilli, and a drizzle of fresh olive oil. Serve warm.</span><span class="ar">أضيفي الباستا المصفاة للمقلاة مع رشة من ماء الطهي، قلّبي جيداً. أضيفي البقدونس والبهار ورذاذاً من زيت الزيتون الطازج. قدّميها دافئة.</span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY THIS MATTERS -->
+  <div class="guide-why">
+    <div class="guide-why-label"><span class="en">Why this matters today</span><span class="ar">لماذا يهمّ هذا اليوم</span></div>
+    <p class="guide-why-text">
+      <span class="en">A simple dinner removes one decision from your evening — leaving room for what actually matters: being present with your family.</span>
+      <span class="ar">العشاء البسيط يزيل قراراً واحداً من مسائك — ويترك مكاناً لما يهمّ فعلاً: الحضور مع عائلتك.</span>
+    </p>
+  </div>
+
+  <!-- ACTIONS -->
+  <div class="guide-actions">
+    <button class="guide-btn guide-btn-save" id="guide-save"><span class="en">💾 Save</span><span class="ar">💾 حفظ</span></button>
+    <button class="guide-btn guide-btn-plan" id="guide-plan"><span class="en">🌙 Tonight</span><span class="ar">🌙 الليلة</span></button>
+    <a href="/library.html" class="guide-btn guide-btn-lib" style="display:flex;align-items:center;justify-content:center;"><span class="en">← Back to Library</span><span class="ar">← عودة للمكتبة</span></a>
+  </div>
+
+</main>
+
+<nav class="mobile-nav" aria-label="Daily navigation">
+  <a href="/" class="mobile-nav-item"><span>🏠</span><span class="en">Home</span><span class="ar">الرئيسية</span></a>
+  <a href="/library.html" class="mobile-nav-item active"><span>📚</span><span class="en">Library</span><span class="ar">المكتبة</span></a>
+  <a href="/saved.html" class="mobile-nav-item"><span>💾</span><span class="en">Saved</span><span class="ar">المحفوظ</span></a>
+  <a href="/tasks.html" class="mobile-nav-item"><span>✅</span><span class="en">Tasks</span><span class="ar">المهام</span></a>
+</nav>
+
+<script>
+(function(){
+  var nb=document.getElementById('navbar');
+  window.addEventListener('scroll',function(){nb.classList.toggle('scrolled',window.scrollY>40);},{passive:true});
+
+  document.getElementById('lang-toggle').addEventListener('click',function(){
+    var h=document.documentElement;
+    var l=h.getAttribute('data-lang')==='ar'?'en':'ar';
+    h.setAttribute('data-lang',l);h.setAttribute('lang',l);h.setAttribute('dir',l==='ar'?'rtl':'ltr');
+    localStorage.setItem('dfl-lang',l);
+  });
+
+  var themeBtn=document.getElementById('theme-toggle');
+  function applyTheme(t){
+    document.documentElement.setAttribute('data-theme',t);
+    localStorage.setItem('dfl-theme',t);
+    var icon=t==='dark'?'☀️':'🌙';
+    themeBtn.querySelector('.en').textContent=icon;
+    themeBtn.querySelector('.ar').textContent=icon;
+  }
+  applyTheme(localStorage.getItem('dfl-theme')||'light');
+  themeBtn.addEventListener('click',function(){
+    applyTheme(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark');
+  });
+
+  // Save button feedback
+  var saveBtn=document.getElementById('guide-save');
+  saveBtn && saveBtn.addEventListener('click',function(){
+    var isAr=document.documentElement.getAttribute('data-lang')==='ar';
+    var key='dfl-saved-guides';
+    var saved=JSON.parse(localStorage.getItem(key)||'[]');
+    var guide={id:'quick-dinner',title:isAr?'باستا بالثوم وزيت الزيتون':'Pasta with Garlic & Olive Oil',emoji:'🍝',date:Date.now()};
+    if(!saved.find(function(s){return s.id===guide.id;})){saved.unshift(guide);localStorage.setItem(key,JSON.stringify(saved));}
+    saveBtn.innerHTML=isAr?'✅ تم الحفظ':'✅ Saved!';
+    saveBtn.style.background='rgba(27,122,78,.12)';saveBtn.style.color='#1B7A4E';saveBtn.style.borderColor='#1B7A4E';
+  });
+
+  // Tonight button feedback
+  var planBtn=document.getElementById('guide-plan');
+  planBtn && planBtn.addEventListener('click',function(){
+    var isAr=document.documentElement.getAttribute('data-lang')==='ar';
+    planBtn.innerHTML=isAr?'✅ أُضيف للليلة':'✅ Added!';
+    planBtn.style.background='rgba(27,122,78,.12)';planBtn.style.color='#1B7A4E';planBtn.style.borderColor='#1B7A4E';
+  });
+})();
+</script>
+</body>
+</html>
