@@ -18,7 +18,7 @@
 
   // ── CONFIG ─────────────────────────────
   // Change this URL to where your capsule-engine server is running
-  const API_URL = 'http://localhost:3030/api/capsule/today';
+  const API_URL = 'https://dot4life-production.up.railway.app/api/capsule/today';
   const TIMEOUT_MS = 2500; // Give up after 2.5s — never block page load
 
   // ── ABORT if no capsule container on page ──
