@@ -86,6 +86,26 @@ a{color:inherit;text-decoration:none}
 .pj-sub{font-size:.95rem;color:var(--text-2);max-width:480px;margin:0 auto 28px}
 [data-lang="ar"] .pj-sub{font-family:var(--font-ar)}
 
+/* ── TABS ────────────────────────────────────────── */
+.pj-tabs{display:flex;gap:6px;justify-content:center;margin-bottom:0;padding:0 24px}
+.pj-tab{background:none;border:1px solid var(--border);border-bottom:none;
+  border-radius:10px 10px 0 0;padding:9px 18px;font-size:.82rem;font-weight:600;
+  cursor:pointer;color:var(--text-2);transition:all .2s;font-family:inherit}
+.pj-tab.active{background:var(--card-bg);color:var(--rose);border-color:var(--border)}
+.pj-tab:hover:not(.active){color:var(--gold)}
+.pj-tab-hint{margin:14px 0 0;font-size:.78rem;color:var(--muted);text-align:center}
+.pj-tab-hint a{color:var(--gold)}
+
+/* ── REGISTER FORM ───────────────────────────────── */
+.pj-register-pane .pj-setup-title{color:var(--rose)}
+.pj-reg-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+@media(max-width:500px){.pj-reg-grid{grid-template-columns:1fr}}
+.pj-reg-btn{width:100%;justify-content:center;background:var(--rose)}
+.pj-reg-btn:hover{background:#b8605a}
+.pj-reg-msg{margin-top:14px;border-radius:10px;padding:14px 16px;font-size:.85rem;line-height:1.6;text-align:center}
+.pj-reg-msg.success{background:#E8F5EE;color:#1B7A4E;border:1px solid #B8DFCA}
+.pj-reg-msg.error{background:#FDECEA;color:#C8305A;border:1px solid #F4BDCA}
+
 /* ── DATE INPUT CARD ─────────────────────────────── */
 .pj-setup{
   background:var(--card-bg);border:1px solid var(--border);
@@ -322,7 +342,18 @@ a{color:inherit;text-decoration:none}
       <span class="ar">تابعي نمو طفلك أسبوعاً بأسبوع — مع نصائح وتطورات ودعم لكل مرحلة.</span>
     </p>
 
-    <div class="pj-setup">
+    <!-- TABS: Quick Browse vs Register -->
+    <div class="pj-tabs" id="pj-tabs">
+      <button class="pj-tab active" id="tab-browse" onclick="switchTab('browse')">
+        <span class="en">Quick Browse</span><span class="ar">تصفح سريع</span>
+      </button>
+      <button class="pj-tab" id="tab-register" onclick="switchTab('register')">
+        <span class="en">📧 My Personal Journey</span><span class="ar">📧 رحلتي الشخصية</span>
+      </button>
+    </div>
+
+    <!-- TAB: BROWSE -->
+    <div class="pj-setup" id="pane-browse">
       <div class="pj-setup-title">
         <span class="en">Enter your due date to get started</span>
         <span class="ar">أدخلي تاريخ الولادة المتوقع للبدء</span>
@@ -347,6 +378,44 @@ a{color:inherit;text-decoration:none}
           <span class="ar">ابدأي ←</span>
         </button>
       </div>
+      <p class="pj-tab-hint">
+        <span class="en">Want weekly reminders in your inbox? <a href="#" onclick="switchTab('register');return false">Register your journey →</a></span>
+        <span class="ar">تريدين تذكيراً أسبوعياً بالبريد؟ <a href="#" onclick="switchTab(\'register\');return false">سجّلي رحلتك ←</a></span>
+      </p>
+    </div>
+
+    <!-- TAB: REGISTER -->
+    <div class="pj-setup pj-register-pane" id="pane-register" style="display:none">
+      <div class="pj-setup-title">
+        <span class="en">Register — receive your week every Sunday 💌</span>
+        <span class="ar">سجّلي — يصلك أسبوعك كل أحد 💌</span>
+      </div>
+      <div class="pj-reg-grid">
+        <div class="pj-date-group">
+          <label><span class="en">Your Name</span><span class="ar">اسمك</span></label>
+          <input type="text" class="pj-date-input" id="reg-name" placeholder="سارة" autocomplete="given-name"/>
+        </div>
+        <div class="pj-date-group">
+          <label><span class="en">Email</span><span class="ar">البريد الإلكتروني</span></label>
+          <input type="email" class="pj-date-input" id="reg-email" placeholder="sara@email.com" autocomplete="email" dir="ltr"/>
+        </div>
+        <div class="pj-date-group">
+          <label><span class="en">Due Date</span><span class="ar">تاريخ الولادة المتوقع</span></label>
+          <input type="date" class="pj-date-input" id="reg-due-date"/>
+        </div>
+        <div class="pj-date-group">
+          <label>
+            <span class="en">Baby\'s Name (optional)</span>
+            <span class="ar">اسم الجنين (اختياري)</span>
+          </label>
+          <input type="text" class="pj-date-input" id="reg-baby-name" placeholder="ريم / Reem"/>
+        </div>
+      </div>
+      <button class="pj-calc-btn pj-reg-btn" onclick="registerJourney()">
+        <span class="en">Start My Journey →</span>
+        <span class="ar">ابدأي رحلتي ←</span>
+      </button>
+      <div id="reg-msg" class="pj-reg-msg" style="display:none"></div>
     </div>
   </div>
 </section>
@@ -879,25 +948,134 @@ function toggleTheme() {
 }
 
 // ═══════════════════════════════════════════════════════════════
+// TABS
+// ═══════════════════════════════════════════════════════════════
+function switchTab(which) {
+  document.getElementById('tab-browse').classList.toggle('active', which === 'browse');
+  document.getElementById('tab-register').classList.toggle('active', which === 'register');
+  document.getElementById('pane-browse').style.display   = which === 'browse'   ? '' : 'none';
+  document.getElementById('pane-register').style.display = which === 'register' ? '' : 'none';
+}
+
+// ═══════════════════════════════════════════════════════════════
+// REGISTER
+// ═══════════════════════════════════════════════════════════════
+const API = 'https://dot4life-production.up.railway.app/api';
+
+async function registerJourney() {
+  const name     = document.getElementById('reg-name').value.trim();
+  const email    = document.getElementById('reg-email').value.trim();
+  const dueD     = document.getElementById('reg-due-date').value;
+  const babyName = document.getElementById('reg-baby-name').value.trim();
+  const msg      = document.getElementById('reg-msg');
+  const isAr     = document.documentElement.getAttribute('data-lang') === 'ar';
+
+  if (!name || !email || !dueD) {
+    msg.className = 'pj-reg-msg error';
+    msg.textContent = isAr ? 'يرجى ملء الاسم والبريد وتاريخ الولادة.' : 'Please fill in name, email, and due date.';
+    msg.style.display = 'block';
+    return;
+  }
+
+  const btn = document.querySelector('.pj-reg-btn');
+  btn.disabled = true;
+  btn.innerHTML = isAr ? 'جاري التسجيل...' : 'Registering...';
+
+  try {
+    const res = await fetch(`${API}/pregnancy/subscribe`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, due_date: dueD, baby_name: babyName || undefined }),
+    });
+    const data = await res.json();
+
+    if (!res.ok) throw new Error(data.error || 'Server error');
+
+    // Save token to localStorage for this device
+    localStorage.setItem('dfl-pj-token', data.token);
+    localStorage.setItem('dfl-pregnancy', JSON.stringify({ week: data.currentWeek, dueDate: dueD }));
+
+    // Show success
+    const personalUrl = `${location.origin}/pregnancy-journey.html?token=${data.token}`;
+    msg.className = 'pj-reg-msg success';
+    msg.innerHTML = isAr
+      ? `✓ تم التسجيل! سيصلك بريدك كل أحد.<br/>
+         <strong>رابطك الشخصي:</strong><br/>
+         <a href="${personalUrl}" style="color:#1B7A4E;word-break:break-all">${personalUrl}</a><br/>
+         <small style="color:#5C534A">احفظي هذا الرابط — يفتح صفحتك دائماً على أسبوعك الحالي</small>`
+      : `✓ Registered! You\'ll receive your weekly email every Sunday.<br/>
+         <strong>Your personal link:</strong><br/>
+         <a href="${personalUrl}" style="color:#1B7A4E;word-break:break-all">${personalUrl}</a><br/>
+         <small style="color:#5C534A">Bookmark this link — it always opens at your current week</small>`;
+    msg.style.display = 'block';
+
+    // Auto-show current week after 1.5s
+    setTimeout(() => showMain(data.currentWeek), 1500);
+
+  } catch(err) {
+    msg.className = 'pj-reg-msg error';
+    msg.textContent = isAr ? 'حدث خطأ، يرجى المحاولة مجدداً.' : 'Something went wrong. Please try again.';
+    msg.style.display = 'block';
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = isAr ? 'ابدأي رحلتي ←' : 'Start My Journey →';
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════
+// LOAD BY TOKEN (personalized URL)
+// ═══════════════════════════════════════════════════════════════
+async function loadByToken(token) {
+  try {
+    const res  = await fetch(`${API}/pregnancy/me/${token}`);
+    if (!res.ok) return false;
+    const data = await res.json();
+    // Persist
+    localStorage.setItem('dfl-pj-token', token);
+    dueDate = new Date(data.dueDate);
+    localStorage.setItem('dfl-pregnancy', JSON.stringify({ week: data.currentWeek, dueDate: data.dueDate }));
+    // Show personalized greeting
+    const pjSub = document.querySelector('.pj-sub');
+    if (pjSub) {
+      const greet = data.babyName ? `أهلاً ${data.name} و${data.babyName} 🌸` : `أهلاً ${data.name} 🌸`;
+      pjSub.innerHTML = `<span class="ar">${greet}</span><span class="en">Welcome back, ${data.name} 🌸</span>`;
+    }
+    showMain(data.currentWeek);
+    return true;
+  } catch(e) {
+    return false;
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════
 // INIT
 // ═══════════════════════════════════════════════════════════════
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   // Theme icon
   const t = document.documentElement.getAttribute('data-theme');
   document.getElementById('theme-icon').textContent = t === 'dark' ? '☀️' : '🌙';
 
-  // URL param ?week=
   const params = new URLSearchParams(location.search);
+
+  // 1. Token in URL → personalized load
+  const urlToken = params.get('token');
+  if (urlToken) { await loadByToken(urlToken); return; }
+
+  // 2. Saved token on device
+  const savedToken = localStorage.getItem('dfl-pj-token');
+  if (savedToken) { const ok = await loadByToken(savedToken); if (ok) return; }
+
+  // 3. ?week= param (calculator link)
   const wParam = parseInt(params.get('week'));
   if (wParam >= 1 && wParam <= 40) { showMain(wParam); return; }
 
-  // Saved progress
+  // 4. Saved progress (no token)
   const saved = localStorage.getItem('dfl-pregnancy');
   if (saved) {
     try {
-      const data = JSON.parse(saved);
-      if (data.dueDate) dueDate = new Date(data.dueDate);
-      showMain(data.week || 1);
+      const d = JSON.parse(saved);
+      if (d.dueDate) dueDate = new Date(d.dueDate);
+      showMain(d.week || 1);
     } catch(e) {}
   }
 });

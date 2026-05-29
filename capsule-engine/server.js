@@ -8,23 +8,22 @@
  *            GET  /api/capsule/health
  *
  *   Admin:   POST /api/admin/login
- *            GET  /api/admin/capsules
- *            POST /api/admin/capsules
- *            PUT  /api/admin/capsules/:id
- *            POST /api/admin/capsules/:id/approve
- *            POST /api/admin/capsules/:id/reject
- *            POST /api/admin/capsules/:id/publish
- *            POST /api/admin/generate
- *            GET  /api/admin/schedule
- *            GET  /api/admin/audit
+ *            GET  /api/admin/capsules  ...etc
+ *
+ *   Pregnancy Journey:
+ *            POST /api/pregnancy/subscribe
+ *            GET  /api/pregnancy/me/:token
+ *            GET  /api/pregnancy/unsubscribe/:token
  *
  * Start: node server.js
  */
 
 const express = require('express');
 const cors    = require('cors');
+const cron    = require('node-cron');
 const config  = require('./config');
 const { initSchema } = require('./db');
+const { sendWeeklyToAll } = require('./pregnancy-mailer');
 
 const app = express();
 
@@ -44,14 +43,16 @@ app.use((req, _res, next) => {
 // ─────────────────────────────────────────
 //  ROUTES
 // ─────────────────────────────────────────
-app.use('/api/capsule', require('./routes/public'));
-app.use('/api/admin',   require('./routes/admin'));
+app.use('/api/capsule',   require('./routes/public'));
+app.use('/api/admin',     require('./routes/admin'));
+app.use('/api/pregnancy', require('./routes/pregnancy'));
 
 app.get('/', (_req, res) => res.json({
-  system: 'd4l1-capsule-engine', version: '1.0.0', status: 'running',
+  system: 'd4l1-capsule-engine', version: '1.1.0', status: 'running',
   endpoints: {
-    public: '/api/capsule/today | /api/capsule/health',
-    admin:  '/api/admin/login  | /api/admin/capsules',
+    public:    '/api/capsule/today | /api/capsule/health',
+    admin:     '/api/admin/login  | /api/admin/capsules',
+    pregnancy: '/api/pregnancy/subscribe | /api/pregnancy/me/:token',
   }
 }));
 
@@ -73,7 +74,23 @@ initSchema()
       console.log(`\n🧘 d4l1-capsule-engine running on port ${PORT}`);
       console.log(`   Public API : http://localhost:${PORT}/api/capsule/today`);
       console.log(`   Admin API  : http://localhost:${PORT}/api/admin/login`);
+      console.log(`   Pregnancy  : http://localhost:${PORT}/api/pregnancy/subscribe`);
       console.log(`   Status     : http://localhost:${PORT}/\n`);
+
+      // ─── WEEKLY CRON ───────────────────────────────────────────
+      // Every Sunday at 09:00 UTC (= 12:00 noon Saudi/UAE time)
+      // Cron: "0 9 * * 0"
+      if (process.env.RESEND_API_KEY) {
+        cron.schedule('0 9 * * 0', () => {
+          console.log('[cron] Sunday 09:00 UTC — sending weekly pregnancy emails');
+          sendWeeklyToAll().catch(err =>
+            console.error('[cron] Mailer error:', err.message)
+          );
+        }, { timezone: 'UTC' });
+        console.log('   Cron: weekly pregnancy emails → Sunday 09:00 UTC ✓');
+      } else {
+        console.warn('   Cron: RESEND_API_KEY not set — weekly emails disabled');
+      }
     });
   })
   .catch(err => {

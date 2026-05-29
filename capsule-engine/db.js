@@ -77,6 +77,24 @@ async function initSchema() {
     CREATE INDEX IF NOT EXISTS idx_capsules_date     ON ce_capsules(scheduled_date);
     CREATE INDEX IF NOT EXISTS idx_capsules_category ON ce_capsules(category);
     CREATE INDEX IF NOT EXISTS idx_schedule_date     ON ce_schedule(date);
+
+    CREATE TABLE IF NOT EXISTS pj_subscribers (
+      id                SERIAL PRIMARY KEY,
+      name              TEXT NOT NULL,
+      email             TEXT NOT NULL UNIQUE,
+      due_date          DATE NOT NULL,
+      baby_name         TEXT,
+      token             TEXT UNIQUE NOT NULL,
+      unsubscribe_token TEXT UNIQUE NOT NULL,
+      subscribed_at     TIMESTAMPTZ DEFAULT NOW(),
+      last_sent_at      TIMESTAMPTZ,
+      last_week_sent    INTEGER,
+      is_active         BOOLEAN DEFAULT TRUE
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_pj_email  ON pj_subscribers(email);
+    CREATE INDEX IF NOT EXISTS idx_pj_token  ON pj_subscribers(token);
+    CREATE INDEX IF NOT EXISTS idx_pj_active ON pj_subscribers(is_active);
   `);
   console.log('[DB] Schema ready ✓');
 }
@@ -298,8 +316,60 @@ async function destroySession(token) {
 // ─────────────────────────────────────────
 //  EXPORTS
 // ─────────────────────────────────────────
+// ─────────────────────────────────────────
+//  PREGNANCY SUBSCRIBERS
+// ─────────────────────────────────────────
+
+function calcWeekFromDue(dueDateStr) {
+  const due   = new Date(dueDateStr);
+  const today = new Date();
+  const diffDays = Math.round((due - today) / (1000 * 60 * 60 * 24));
+  return Math.max(1, Math.min(40, 40 - Math.round(diffDays / 7)));
+}
+
+async function pjSubscribe({ name, email, due_date, baby_name }) {
+  const existing = await one('SELECT * FROM pj_subscribers WHERE email=$1', [email]);
+  if (existing) {
+    // Re-activate if unsubscribed, or return existing token
+    if (!existing.is_active) {
+      await run(
+        'UPDATE pj_subscribers SET is_active=TRUE, due_date=$1, name=$2, baby_name=$3, subscribed_at=NOW() WHERE email=$4',
+        [due_date, name, baby_name || null, email]
+      );
+      return { token: existing.token, isNew: false };
+    }
+    return { token: existing.token, isNew: false };
+  }
+  const token      = newToken().slice(0, 24);
+  const unsubToken = newToken().slice(0, 24);
+  await run(
+    `INSERT INTO pj_subscribers (name, email, due_date, baby_name, token, unsubscribe_token)
+     VALUES ($1,$2,$3,$4,$5,$6)`,
+    [name, email, due_date, baby_name || null, token, unsubToken]
+  );
+  return { token, isNew: true };
+}
+
+async function pjGetByToken(token) {
+  return one('SELECT * FROM pj_subscribers WHERE token=$1 AND is_active=TRUE', [token]);
+}
+
+async function pjUnsubscribe(unsubToken) {
+  await run('UPDATE pj_subscribers SET is_active=FALSE WHERE unsubscribe_token=$1', [unsubToken]);
+}
+
+async function pjGetActiveSubscribers() {
+  return all('SELECT * FROM pj_subscribers WHERE is_active=TRUE ORDER BY subscribed_at ASC');
+}
+
+async function pjMarkSent(id, week) {
+  await run('UPDATE pj_subscribers SET last_sent_at=NOW(), last_week_sent=$1 WHERE id=$2', [week, id]);
+}
+
 module.exports = {
   pool, initSchema,
+  calcWeekFromDue,
+  pjSubscribe, pjGetByToken, pjUnsubscribe, pjGetActiveSubscribers, pjMarkSent,
   // capsule CRUD
   getCapsuleById, getCapsulesByStatus, getPendingCapsules,
   getApprovedCapsules, getAllCapsules, getCapsulesByCategory,
