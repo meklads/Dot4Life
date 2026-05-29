@@ -33,12 +33,18 @@ router.post('/subscribe', async (req, res) => {
     const { token, isNew } = await db.pjSubscribe({ name, email, due_date, baby_name });
     const currentWeek = db.calcWeekFromDue(due_date);
 
-    // Send welcome email immediately (non-blocking)
+    // Send welcome email (blocking so we can log the result)
     if (isNew) {
       const sub = await db.pjGetByToken(token);
-      sendWelcomeEmail(sub).catch(err =>
-        console.error('[pregnancy/subscribe] welcome email failed:', err.message)
-      );
+      console.log('[pregnancy/subscribe] sending welcome to:', sub?.email, 'token:', sub?.token);
+      try {
+        const mailResult = await sendWelcomeEmail(sub);
+        console.log('[pregnancy/subscribe] welcome result:', JSON.stringify(mailResult));
+      } catch (err) {
+        console.error('[pregnancy/subscribe] welcome email threw:', err.message);
+      }
+    } else {
+      console.log('[pregnancy/subscribe] isNew=false for email:', email, '— skipping welcome');
     }
 
     res.json({
