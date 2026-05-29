@@ -109,4 +109,39 @@ router.get('/unsubscribe/:token', async (req, res) => {
   }
 });
 
+// ─────────────────────────────────────────
+//  GET /api/pregnancy/test-email
+//  Diagnostic: sends a real test email and returns Resend response
+// ─────────────────────────────────────────
+router.get('/test-email', async (req, res) => {
+  const to = req.query.to || 'radwan3@gmail.com';
+  const key = process.env.RESEND_API_KEY;
+
+  if (!key) {
+    return res.status(500).json({ ok: false, error: 'RESEND_API_KEY is not set in environment' });
+  }
+
+  // Show first/last 4 chars of the key for verification without exposing it fully
+  const keyPreview = key.slice(0, 6) + '...' + key.slice(-4);
+
+  try {
+    const { Resend } = require('resend');
+    const resend = new Resend(key);
+
+    const result = await resend.emails.send({
+      from: 'onboarding@resend.dev',
+      to,
+      subject: '✅ Dot4Life — اختبار Resend',
+      html: `<p dir="rtl">هذا بريد تجريبي للتحقق من اتصال Resend بـ Railway.<br>إذا وصلك هذا الإيميل، فكل شيء يعمل ✅</p>
+             <p style="color:#888;font-size:12px">Key used: ${keyPreview}</p>`,
+    });
+
+    console.log('[test-email] Resend response:', JSON.stringify(result));
+    res.json({ ok: true, to, keyPreview, resendResponse: result });
+  } catch (err) {
+    console.error('[test-email] error:', err.message);
+    res.status(500).json({ ok: false, error: err.message, keyPreview });
+  }
+});
+
 module.exports = router;
