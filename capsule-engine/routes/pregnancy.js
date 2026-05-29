@@ -110,6 +110,30 @@ router.get('/unsubscribe/:token', async (req, res) => {
 });
 
 // ─────────────────────────────────────────
+//  GET /api/pregnancy/test-welcome
+//  Diagnostic: calls sendWelcomeEmail directly
+// ─────────────────────────────────────────
+router.get('/test-welcome', async (req, res) => {
+  const to = req.query.to || 'radwan3@gmail.com';
+  const { sendWelcomeEmail } = require('../pregnancy-mailer');
+  const mockSub = {
+    id: 0,
+    name: 'اختبار',
+    email: to,
+    baby_name: 'نور',
+    due_date: '2026-12-01',
+    token: 'test-token-123',
+    unsubscribe_token: 'unsub-test-123',
+  };
+  try {
+    await sendWelcomeEmail(mockSub);
+    res.json({ ok: true, to, message: 'sendWelcomeEmail completed without throwing' });
+  } catch (err) {
+    res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
+// ─────────────────────────────────────────
 //  GET /api/pregnancy/test-email
 //  Diagnostic: sends a real test email and returns Resend response
 // ─────────────────────────────────────────
