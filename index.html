@@ -276,6 +276,15 @@
     }
     .btn-outline:hover { border-color: rgba(184,134,26,.4); color: var(--gold); }
     /* Right side — circular family image */
+    .hero-trust-line {
+      margin-top: 18px;
+      font-size: .82rem;
+      color: var(--muted);
+      letter-spacing: .03em;
+      font-style: italic;
+    }
+    [data-lang="ar"] .hero-trust-line { font-family: var(--font-ar); font-style: normal; }
+
     .hero-right {
       display: flex;
       align-items: center;
@@ -675,6 +684,78 @@
     }
 
     /* ─── FOOTER ─────────────────────────────────────── */
+    /* ─── FRIDAY LETTER ────────────────────────────── */
+    #friday-letter {
+      padding: 72px 24px;
+      background: linear-gradient(160deg, #FAF7F2 0%, #F5EFE2 100%);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+    [data-theme="dark"] #friday-letter {
+      background: linear-gradient(160deg, #16130F 0%, #1C1710 100%);
+    }
+    .fl-inner { max-width: 540px; margin: 0 auto; }
+    .fl-icon {
+      width: 56px; height: 56px;
+      background: linear-gradient(135deg, #B8861A18, #B8861A30);
+      border: 1px solid #B8861A33;
+      border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; margin: 0 auto 20px;
+    }
+    .fl-eyebrow {
+      font-size: .72rem; font-weight: 700; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 12px;
+    }
+    .fl-headline {
+      font-family: var(--font-serif); font-size: clamp(1.6rem, 4vw, 2.1rem);
+      font-weight: 600; color: var(--text); line-height: 1.25;
+      margin-bottom: 14px;
+    }
+    [data-lang="ar"] .fl-headline { font-family: var(--font-ar); font-size: clamp(1.4rem, 3.5vw, 1.85rem); }
+    .fl-desc {
+      font-size: .92rem; color: var(--text-2); line-height: 1.7;
+      max-width: 420px; margin: 0 auto 28px;
+    }
+    [data-lang="ar"] .fl-desc { font-family: var(--font-ar); }
+    .fl-form {
+      display: flex; gap: 10px; max-width: 420px; margin: 0 auto 14px;
+    }
+    .fl-input {
+      flex: 1; padding: 12px 16px; border-radius: 10px;
+      border: 1.5px solid var(--border); background: var(--card-bg);
+      font-size: .9rem; color: var(--text); outline: none;
+      transition: border-color .2s;
+    }
+    .fl-input:focus { border-color: var(--gold); }
+    .fl-input::placeholder { color: var(--muted); }
+    .fl-btn {
+      padding: 12px 22px; border-radius: 10px; border: none;
+      background: var(--gold); color: #fff; font-size: .88rem;
+      font-weight: 600; cursor: pointer; white-space: nowrap;
+      transition: background .2s, transform .15s;
+    }
+    .fl-btn:hover { background: var(--gold-d); transform: translateY(-1px); }
+    .fl-btn:active { transform: none; }
+    [data-lang="ar"] .fl-input { direction: rtl; font-family: var(--font-ar); }
+    [data-lang="ar"] .fl-btn { font-family: var(--font-ar); }
+    .fl-trust {
+      font-size: .75rem; color: var(--muted); display: flex;
+      align-items: center; justify-content: center; gap: 6px;
+    }
+    .fl-success {
+      display: none; padding: 14px 20px;
+      background: rgba(27,122,78,.08); border: 1px solid rgba(27,122,78,.2);
+      border-radius: 10px; color: #1B7A4E;
+      font-size: .9rem; font-weight: 500; max-width: 420px; margin: 0 auto;
+    }
+    [data-lang="ar"] .fl-success { font-family: var(--font-ar); }
+    @media (max-width: 480px) {
+      .fl-form { flex-direction: column; }
+      .fl-btn { width: 100%; }
+    }
+
     #footer {
       background: #0C0A08;
       color: rgba(255,255,255,.55);
@@ -1466,28 +1547,32 @@
       <!-- Left: editorial text -->
       <div class="hero-left">
         <span class="hero-eyebrow">
-          <span class="en">For families, every day</span>
-          <span class="ar">لعائلتك، كل يوم</span>
+          <span class="en">A quieter digital space for your life</span>
+          <span class="ar">مساحة رقمية أكثر هدوءًا لحياتك</span>
         </span>
         <h1 class="hero-headline">
-          <span class="en">Life, <em>at ease.</em></span>
-          <span class="ar">الحياة،<br><em>بهدوء وسهولة.</em></span>
+          <span class="en">Not every moment<br><em>should disappear.</em></span>
+          <span class="ar">ليست كل اللحظات<br><em>يجب أن تُنسى.</em></span>
         </h1>
         <p class="hero-sub">
-          <span class="en">One calm place for your family's everyday needs — health, money, faith, travel, and home. Free, always.</span>
-          <span class="ar">مكان هادئ واحد لاحتياجات عائلتك اليومية — الصحة والمال والروح والسفر والمسكن. مجاني دائماً.</span>
+          <span class="en">Dot4Life helps you preserve your goals, memories, and the things that shape your life — in a space that feels simple, calm, and human.</span>
+          <span class="ar">Dot4Life تساعدك على حفظ أهدافك، ذكرياتك، والأشياء التي تشكل حياتك — في مكان بسيط، هادئ، وإنساني.</span>
         </p>
         <div class="hero-cta-row">
           <a href="/health.html" class="btn-primary">
-            <span class="en">Start Exploring</span>
-            <span class="ar">ابدأ الاستكشاف</span>
+            <span class="en">Start Your Journey</span>
+            <span class="ar">ابدأ رحلتك</span>
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
           <a href="#health" class="btn-outline">
-            <span class="en">See What's Inside</span>
-            <span class="ar">اكتشف ما بداخله</span>
+            <span class="en">See How It Works</span>
+            <span class="ar">شاهد كيف تعمل</span>
           </a>
         </div>
+        <p class="hero-trust-line">
+          <span class="en">Designed to stay with you for years, not days.</span>
+          <span class="ar">صُممت لتبقى معك لسنوات، لا لأيام.</span>
+        </p>
       </div>
       <!-- Right: circular family image -->
       <div class="hero-right" aria-hidden="true">
@@ -1990,6 +2075,47 @@
       <span class="en">No spam, ever. Unsubscribe anytime.</span>
       <span class="ar">لا رسائل مزعجة أبداً. يمكنك إلغاء الاشتراك في أي وقت.</span>
     </p>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       FRIDAY LETTER
+  ═══════════════════════════════════════ -->
+  <section id="friday-letter" aria-label="Newsletter signup">
+    <div class="fl-inner reveal">
+      <div class="fl-icon">📮</div>
+      <div class="fl-eyebrow">
+        <span class="en">Every Friday</span>
+        <span class="ar">كل جمعة</span>
+      </div>
+      <h2 class="fl-headline">
+        <span class="en">A letter worth opening.</span>
+        <span class="ar">رسالة تستحق القراءة.</span>
+      </h2>
+      <p class="fl-desc">
+        <span class="en">Every Friday, one calm email: the best 3 capsules of the week, a practical tip, and something that makes your day a little easier. No noise. Unsubscribe anytime.</span>
+        <span class="ar">كل جمعة، رسالة هادئة واحدة: أفضل ٣ تذاكر من الأسبوع، نصيحة عملية، وشيء يجعل يومك أخف. بدون ضجيج. إلغاء الاشتراك في أي وقت.</span>
+      </p>
+      <div class="fl-form" id="fl-form">
+        <input
+          type="email" class="fl-input" id="fl-email" autocomplete="email"
+          placeholder="your@email.com"
+          aria-label="Email address"
+        />
+        <button class="fl-btn" onclick="handleFLSubscribe()">
+          <span class="en">Subscribe →</span>
+          <span class="ar">اشترك ←</span>
+        </button>
+      </div>
+      <div class="fl-success" id="fl-success">
+        <span class="en">✓ You're in! Your first letter arrives this Friday.</span>
+        <span class="ar">✓ تم الاشتراك! رسالتك الأولى ستصل هذا الجمعة.</span>
+      </div>
+      <p class="fl-trust">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <span class="en">Private · No spam · Free forever</span>
+        <span class="ar">خاص · بدون إزعاج · مجاني للأبد</span>
+      </p>
+    </div>
   </section>
 
   <!-- ═══════════════════════════════════════
@@ -2620,6 +2746,34 @@
 
   <!-- Daily Capsule — fetches today's published capsule from Railway API -->
   <script src="/capsule-fetch.js"></script>
+
+  <!-- Friday Letter — newsletter signup -->
+  <script>
+    function handleFLSubscribe() {
+      const emailEl = document.getElementById('fl-email');
+      const email = emailEl ? emailEl.value.trim() : '';
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        if (emailEl) { emailEl.style.borderColor = '#C0705A'; emailEl.focus(); }
+        return;
+      }
+      const subs = JSON.parse(localStorage.getItem('dfl-subscribers') || '[]');
+      if (!subs.includes(email)) { subs.push(email); localStorage.setItem('dfl-subscribers', JSON.stringify(subs)); }
+      const form = document.getElementById('fl-form');
+      const success = document.getElementById('fl-success');
+      if (form) form.style.display = 'none';
+      if (success) success.style.display = 'block';
+      fetch('https://dot4life-production.up.railway.app/api/newsletter/subscribe', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      }).catch(() => {});
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      const emailEl = document.getElementById('fl-email');
+      if (emailEl) emailEl.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') handleFLSubscribe();
+      });
+    });
+  </script>
 
 </body>
 </html>
