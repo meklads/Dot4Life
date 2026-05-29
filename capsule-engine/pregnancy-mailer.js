@@ -18,7 +18,7 @@ function getResend() {
 }
 
 const SITE = (process.env.SITE_URL || 'https://dotforlife.com').replace(/\/$/, '');
-const FROM = process.env.RESEND_FROM || 'Dot4Life <journey@dotforlife.com>';
+const FROM = process.env.RESEND_FROM || 'Dot4Life <onboarding@resend.dev>';
 
 // ─────────────────────────────────────────
 //  WEEK DATA (mirrors pregnancy-journey.html)
