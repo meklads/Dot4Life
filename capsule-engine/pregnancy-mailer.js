@@ -272,4 +272,86 @@ async function sendWeeklyToAll() {
   console.log(`[mailer] Done — sent:${sent} skipped:${skipped} failed:${failed}`);
 }
 
-module.exports = { sendWeeklyToAll, sendWeeklyEmail, buildEmail };
+// ─────────────────────────────────────────
+//  WELCOME EMAIL (sent immediately on register)
+// ─────────────────────────────────────────
+async function sendWelcomeEmail(subscriber) {
+  if (!process.env.RESEND_API_KEY) return;
+
+  const week    = db.calcWeekFromDue(subscriber.due_date);
+  const pageUrl = `${SITE}/pregnancy-journey.html?token=${subscriber.token}`;
+  const unsubUrl = `${SITE.replace('dotforlife.com', 'dot4life-production.up.railway.app')}/api/pregnancy/unsubscribe/${subscriber.unsubscribe_token}`;
+  const greeting = subscriber.baby_name
+    ? `أهلاً ${subscriber.name} 🌸 ومرحباً بـ${subscriber.baby_name}`
+    : `أهلاً ${subscriber.name} 🌸`;
+
+  const html = `<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head><meta charset="UTF-8"/><title>مرحباً برحلتك</title></head>
+<body style="margin:0;padding:0;background:#FAF8F4;font-family:'Segoe UI',Tahoma,Arial,sans-serif;color:#1A1410">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#FAF8F4;padding:32px 16px">
+  <tr><td align="center">
+  <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%">
+
+    <tr>
+      <td style="background:linear-gradient(135deg,#FDF8F2 0%,#F5EBD8 100%);border-radius:20px 20px 0 0;padding:40px;text-align:center;border:1px solid #E0D8CC;border-bottom:none">
+        <div style="font-size:48px;margin-bottom:12px">🌱</div>
+        <div style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#C8706A;margin-bottom:8px">Dot4Life · رحلة الحمل</div>
+        <h1 style="margin:0 0 8px;font-size:26px;font-weight:700;color:#1A1410">رحلتك بدأت!</h1>
+        <div style="font-size:14px;color:#9A9188">الأسبوع ${week} من أصل 40</div>
+      </td>
+    </tr>
+
+    <tr>
+      <td style="background:#FFFFFF;padding:32px 40px;border-right:1px solid #E0D8CC;border-left:1px solid #E0D8CC">
+        <p style="margin:0 0 16px;font-size:16px;line-height:1.8">${greeting}</p>
+        <p style="margin:0 0 24px;font-size:14px;line-height:1.8;color:#5C534A">
+          تم تسجيلك بنجاح في رحلة الحمل على Dot4Life.<br/>
+          سيصلك كل <strong>أحد</strong> بريد مخصص لك يحمل تفاصيل أسبوعك الجديد — حجم طفلك، تطوره، نصائح التغذية، وتذكيرة الأسبوع.
+        </p>
+        <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:24px">
+          <tr>
+            <td style="background:#FDF8F2;border-radius:12px;padding:20px 24px;border:1px solid #EDE6D8;text-align:center">
+              <div style="font-size:13px;color:#9A9188;margin-bottom:6px">رابطك الشخصي — احفظيه</div>
+              <a href="${pageUrl}" style="color:#B8861A;font-size:13px;word-break:break-all">${pageUrl}</a>
+              <div style="font-size:12px;color:#9A9188;margin-top:6px">يفتح صفحتك دائماً على أسبوعك الحالي</div>
+            </td>
+          </tr>
+        </table>
+        <div style="text-align:center">
+          <a href="${pageUrl}" style="display:inline-block;background:#C8706A;color:#FFFFFF;text-decoration:none;font-size:15px;font-weight:600;padding:14px 36px;border-radius:10px">
+            افتحي صفحتك الآن ←
+          </a>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td style="background:#F5F0E8;border-radius:0 0 20px 20px;padding:20px 40px;text-align:center;border:1px solid #E0D8CC;border-top:none">
+        <p style="margin:0;font-size:12px;color:#9A9188">
+          <a href="${unsubUrl}" style="color:#C8706A;text-decoration:none">إلغاء الاشتراك</a>
+          &nbsp;·&nbsp;
+          <a href="${SITE}" style="color:#B8861A;text-decoration:none">dotforlife.com</a>
+        </p>
+      </td>
+    </tr>
+
+  </table>
+  </td></tr>
+  </table>
+</body></html>`;
+
+  try {
+    await getResend().emails.send({
+      from:    FROM,
+      to:      subscriber.email,
+      subject: `مرحباً ${subscriber.name} 🌱 — رحلة الحمل بدأت!`,
+      html,
+    });
+    console.log(`[mailer] ✓ Welcome email sent to ${subscriber.email}`);
+  } catch (err) {
+    console.error(`[mailer] ✗ Welcome email failed:`, err.message);
+  }
+}
+
+module.exports = { sendWeeklyToAll, sendWeeklyEmail, sendWelcomeEmail, buildEmail };

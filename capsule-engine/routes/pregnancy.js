@@ -9,6 +9,7 @@
 const express = require('express');
 const router  = express.Router();
 const db      = require('../db');
+const { sendWelcomeEmail } = require('../pregnancy-mailer');
 
 // ─────────────────────────────────────────
 //  POST /api/pregnancy/subscribe
@@ -31,6 +32,14 @@ router.post('/subscribe', async (req, res) => {
 
     const { token, isNew } = await db.pjSubscribe({ name, email, due_date, baby_name });
     const currentWeek = db.calcWeekFromDue(due_date);
+
+    // Send welcome email immediately (non-blocking)
+    if (isNew) {
+      const sub = await db.pjGetByToken(token);
+      sendWelcomeEmail(sub).catch(err =>
+        console.error('[pregnancy/subscribe] welcome email failed:', err.message)
+      );
+    }
 
     res.json({
       ok: true,
