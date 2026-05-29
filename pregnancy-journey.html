@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light" data-lang="en">
+<head>
+  <script>
+    (function(){
+      var t=localStorage.getItem('dfl-theme')||'light';
+      var l=localStorage.getItem('dfl-lang')||'en';
+      var h=document.documentElement;
+      h.setAttribute('data-theme',t);
+      h.setAttribute('data-lang',l);
+      h.setAttribute('lang',l==='ar'?'ar':'en');
+      h.setAttribute('dir',l==='ar'?'rtl':'ltr');
+    })();
+  </script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Pregnancy Journey — Week by Week | رحلة الحمل أسبوعاً بأسبوع</title>
+  <meta name="description" content="Follow your pregnancy week by week — baby size, development milestones, mama tips, and emotional support. Bilingual Arabic & English."/>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Almarai:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/styles/global.css"/>
+
+<style>
+/* ── TOKENS ──────────────────────────────────────── */
+:root {
+  --text:    #1A1410; --text-2:  #5C534A; --muted:   #9A9188;
+  --body-bg: #FAF8F4; --card-bg: #FFFFFF; --cream:   #F5F0E8;
+  --cream-d: #EDE6D8; --border:  #E0D8CC; --gold:    #B8861A;
+  --gold-l:  #D4A832; --gold-d:  #8A620F; --rose:    #C8706A;
+  --green:   #1B7A4E; --blue:    #0F3D6E;
+  --font-serif: 'Crimson Pro', Georgia, serif;
+  --font-ui:    'Inter', system-ui, sans-serif;
+  --font-ar:    'Almarai', 'Segoe UI', sans-serif;
+  --radius: 12px; --shadow: 0 2px 24px rgba(0,0,0,.07);
+}
+[data-theme="dark"] {
+  --text:#EDE8E0; --text-2:#B8B0A4; --muted:#7A746C;
+  --body-bg:#12100E; --card-bg:#1E1A16; --cream:#1E1A16;
+  --cream-d:#252018; --border:#302820; --gold:#D4A832;
+  --shadow: 0 2px 24px rgba(0,0,0,.4);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-ui);font-size:16px;color:var(--text);background:var(--body-bg);line-height:1.6;transition:background .3s,color .3s}
+[data-lang="ar"] body,[data-lang="ar"] .ar{font-family:var(--font-ar)}
+.en{display:inline}.ar{display:none}
+[data-lang="ar"] .en{display:none}[data-lang="ar"] .ar{display:inline}
+.block-en{display:block}.block-ar{display:none}
+[data-lang="ar"] .block-en{display:none}[data-lang="ar"] .block-ar{display:block}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+
+/* ── NAVBAR ──────────────────────────────────────── */
+#navbar{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;
+  background:rgba(250,248,244,.96);border-bottom:1px solid var(--border);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 24px;height:60px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px}
+.nav-logo{font-family:var(--font-serif);font-size:1.15rem;font-weight:600;color:var(--text);
+  display:flex;align-items:center;gap:8px}
+.nav-logo span{color:var(--gold)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-btn{background:none;border:1px solid var(--border);border-radius:8px;
+  padding:5px 12px;font-size:.8rem;cursor:pointer;color:var(--text-2);
+  transition:border-color .2s,color .2s;font-family:inherit}
+.nav-btn:hover{border-color:var(--gold);color:var(--gold)}
+[data-theme="dark"] #navbar{background:rgba(18,16,14,.96)}
+
+/* ── HERO BAND ───────────────────────────────────── */
+#pj-hero{
+  margin-top:60px;
+  padding:48px 24px 0;
+  background:linear-gradient(160deg,#FDF8F2 0%,#F5EBD8 100%);
+  border-bottom:1px solid var(--border);
+  text-align:center;
+}
+[data-theme="dark"] #pj-hero{background:linear-gradient(160deg,#16130F 0%,#1E1810 100%)}
+.pj-hero-inner{max-width:680px;margin:0 auto}
+.pj-eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--rose);margin-bottom:12px}
+.pj-headline{font-family:var(--font-serif);font-size:clamp(1.9rem,5vw,2.8rem);
+  font-weight:600;line-height:1.2;color:var(--text);margin-bottom:10px}
+[data-lang="ar"] .pj-headline{font-family:var(--font-ar);font-size:clamp(1.6rem,4vw,2.4rem)}
+.pj-sub{font-size:.95rem;color:var(--text-2);max-width:480px;margin:0 auto 28px}
+[data-lang="ar"] .pj-sub{font-family:var(--font-ar)}
+
+/* ── DATE INPUT CARD ─────────────────────────────── */
+.pj-setup{
+  background:var(--card-bg);border:1px solid var(--border);
+  border-radius:16px 16px 0 0;padding:28px 28px 24px;
+  max-width:540px;margin:0 auto;
+  box-shadow:0 -4px 32px rgba(0,0,0,.06);
+}
+.pj-setup-title{font-size:.82rem;font-weight:600;color:var(--muted);
+  letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px;text-align:center}
+.pj-input-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.pj-date-group{display:flex;flex-direction:column;gap:5px;flex:1;min-width:160px}
+.pj-date-group label{font-size:.78rem;color:var(--text-2);font-weight:500}
+[data-lang="ar"] .pj-date-group label{font-family:var(--font-ar)}
+.pj-date-input{
+  padding:11px 14px;border:1.5px solid var(--border);
+  border-radius:10px;background:var(--body-bg);
+  font-size:.9rem;color:var(--text);font-family:inherit;
+  outline:none;transition:border-color .2s;width:100%
+}
+.pj-date-input:focus{border-color:var(--rose)}
+.pj-calc-btn{
+  padding:12px 24px;background:var(--rose);color:#fff;
+  border:none;border-radius:10px;font-size:.9rem;font-weight:600;
+  cursor:pointer;transition:background .2s,transform .15s;
+  white-space:nowrap;align-self:flex-end;font-family:inherit
+}
+.pj-calc-btn:hover{background:#B85A54;transform:translateY(-1px)}
+[data-lang="ar"] .pj-calc-btn{font-family:var(--font-ar)}
+
+/* ── MAIN LAYOUT ─────────────────────────────────── */
+#pj-main{max-width:1100px;margin:0 auto;padding:32px 24px 80px;display:none}
+
+/* ── WEEK HEADER ─────────────────────────────────── */
+.pj-week-header{
+  display:flex;align-items:center;gap:24px;
+  background:var(--card-bg);border:1px solid var(--border);
+  border-radius:var(--radius);padding:24px 28px;margin-bottom:24px;
+  box-shadow:var(--shadow);flex-wrap:wrap;
+}
+.pj-ring-wrap{position:relative;width:96px;height:96px;flex-shrink:0}
+.pj-ring-svg{transform:rotate(-90deg);width:96px;height:96px}
+.pj-ring-bg{fill:none;stroke:var(--cream-d);stroke-width:7}
+.pj-ring-fill{fill:none;stroke:var(--rose);stroke-width:7;stroke-linecap:round;
+  stroke-dasharray:263;stroke-dashoffset:263;transition:stroke-dashoffset 1s ease}
+.pj-ring-num{position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center}
+.pj-ring-num .num{font-family:var(--font-serif);font-size:1.9rem;font-weight:600;
+  color:var(--rose);line-height:1}
+.pj-ring-num .lbl{font-size:.62rem;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted)}
+.pj-week-info{flex:1;min-width:200px}
+.pj-week-badge{
+  display:inline-block;font-size:.72rem;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;
+  background:rgba(200,112,106,.1);color:var(--rose);
+  border-radius:99px;margin-bottom:8px
+}
+.pj-week-title{font-family:var(--font-serif);font-size:1.6rem;font-weight:600;
+  color:var(--text);line-height:1.2;margin-bottom:4px}
+[data-lang="ar"] .pj-week-title{font-family:var(--font-ar);font-size:1.4rem}
+.pj-week-trimester{font-size:.82rem;color:var(--text-2)}
+[data-lang="ar"] .pj-week-trimester{font-family:var(--font-ar)}
+.pj-fruit{font-size:3.4rem;line-height:1;margin-left:auto;flex-shrink:0}
+
+/* ── PROGRESS BAR ────────────────────────────────── */
+.pj-progress-wrap{margin-bottom:24px}
+.pj-progress-label{display:flex;justify-content:space-between;
+  font-size:.78rem;color:var(--muted);margin-bottom:6px}
+[data-lang="ar"] .pj-progress-label{font-family:var(--font-ar)}
+.pj-progress-track{height:8px;background:var(--cream-d);border-radius:99px;overflow:hidden}
+.pj-progress-fill{height:100%;background:linear-gradient(90deg,var(--rose),#E8906A);
+  border-radius:99px;transition:width 1s ease}
+
+/* ── CONTENT GRID ────────────────────────────────── */
+.pj-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
+@media(max-width:700px){.pj-grid{grid-template-columns:1fr}}
+.pj-card{background:var(--card-bg);border:1px solid var(--border);
+  border-radius:var(--radius);padding:20px 22px;transition:box-shadow .2s}
+.pj-card:hover{box-shadow:0 4px 20px rgba(0,0,0,.08)}
+.pj-card-header{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.pj-card-icon{width:36px;height:36px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.pj-card-label{font-size:.72rem;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted)}
+[data-lang="ar"] .pj-card-label{font-family:var(--font-ar);letter-spacing:0}
+.pj-card h3{font-family:var(--font-serif);font-size:1.1rem;font-weight:600;
+  color:var(--text);margin-bottom:8px}
+[data-lang="ar"] .pj-card h3{font-family:var(--font-ar);font-size:1rem}
+.pj-card p,.pj-card li{font-size:.88rem;color:var(--text-2);line-height:1.75}
+[data-lang="ar"] .pj-card p,[data-lang="ar"] .pj-card li{font-family:var(--font-ar)}
+.pj-card ul{padding-left:16px;list-style:none}
+[data-lang="ar"] .pj-card ul{padding-left:0;padding-right:16px}
+.pj-card ul li{position:relative;padding-left:14px}
+[data-lang="ar"] .pj-card ul li{padding-left:0;padding-right:14px}
+.pj-card ul li::before{content:'·';position:absolute;left:0;color:var(--rose);font-weight:700;font-size:1.1rem}
+[data-lang="ar"] .pj-card ul li::before{left:auto;right:0}
+.card-baby .pj-card-icon{background:rgba(200,112,106,.1)}
+.card-mama .pj-card-icon{background:rgba(184,134,26,.1)}
+.card-nutrition .pj-card-icon{background:rgba(27,122,78,.1)}
+.card-tip .pj-card-icon{background:rgba(15,61,110,.1)}
+
+/* ── TIP CARD (full width) ───────────────────────── */
+.pj-tip-full{
+  grid-column:1/-1;
+  background:linear-gradient(135deg,rgba(184,134,26,.06),rgba(15,61,110,.04));
+  border:1px solid rgba(184,134,26,.2);border-radius:var(--radius);padding:20px 24px;
+}
+.pj-tip-full .pj-card-icon{background:rgba(184,134,26,.12)}
+
+/* ── SIZE CARD ───────────────────────────────────── */
+.pj-size-card{
+  background:var(--cream);border:1px solid var(--border);border-radius:var(--radius);
+  padding:20px 24px;margin-bottom:24px;display:flex;align-items:center;gap:20px;
+  flex-wrap:wrap;
+}
+.pj-size-emoji{font-size:4rem;line-height:1;flex-shrink:0}
+.pj-size-info{flex:1;min-width:200px}
+.pj-size-label{font-size:.72rem;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+[data-lang="ar"] .pj-size-label{font-family:var(--font-ar);letter-spacing:0}
+.pj-size-name{font-family:var(--font-serif);font-size:1.4rem;font-weight:600;
+  color:var(--text);margin-bottom:2px}
+[data-lang="ar"] .pj-size-name{font-family:var(--font-ar)}
+.pj-size-dims{font-size:.84rem;color:var(--text-2)}
+[data-lang="ar"] .pj-size-dims{font-family:var(--font-ar)}
+.pj-size-metrics{display:flex;gap:20px;margin-top:10px;flex-wrap:wrap}
+.pj-metric{text-align:center}
+.pj-metric-val{font-size:1.1rem;font-weight:700;color:var(--rose)}
+.pj-metric-key{font-size:.72rem;color:var(--muted)}
+[data-lang="ar"] .pj-metric-key{font-family:var(--font-ar)}
+
+/* ── NAVIGATION ──────────────────────────────────── */
+.pj-nav{display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:24px;gap:12px;flex-wrap:wrap}
+.pj-nav-btn{
+  display:flex;align-items:center;gap:7px;padding:10px 18px;
+  background:var(--card-bg);border:1px solid var(--border);border-radius:10px;
+  font-size:.85rem;font-weight:500;cursor:pointer;color:var(--text-2);
+  transition:border-color .2s,color .2s,background .2s;font-family:inherit
+}
+.pj-nav-btn:hover{border-color:var(--rose);color:var(--rose)}
+.pj-nav-btn:disabled{opacity:.35;cursor:not-allowed}
+.pj-nav-btn svg{flex-shrink:0}
+.pj-nav-week{font-size:.88rem;color:var(--muted)}
+.pj-week-selector{
+  display:flex;align-items:center;gap:8px;
+  background:var(--card-bg);border:1px solid var(--border);
+  border-radius:10px;padding:6px 12px
+}
+.pj-week-selector label{font-size:.78rem;color:var(--muted)}
+[data-lang="ar"] .pj-week-selector label{font-family:var(--font-ar)}
+.pj-week-select{
+  background:none;border:none;font-size:.88rem;font-weight:600;
+  color:var(--text);cursor:pointer;outline:none;font-family:inherit
+}
+
+/* ── ACTION BUTTONS ──────────────────────────────── */
+.pj-actions{display:flex;gap:10px;margin-bottom:32px;flex-wrap:wrap}
+.pj-action-btn{
+  display:flex;align-items:center;gap:7px;padding:10px 18px;
+  border-radius:10px;font-size:.85rem;font-weight:600;cursor:pointer;
+  transition:all .2s;border:none;font-family:inherit
+}
+.pj-action-btn.primary{background:var(--rose);color:#fff}
+.pj-action-btn.primary:hover{background:#B85A54}
+.pj-action-btn.outline{background:var(--card-bg);color:var(--text-2);border:1px solid var(--border)}
+.pj-action-btn.outline:hover{border-color:var(--gold);color:var(--gold)}
+[data-lang="ar"] .pj-action-btn{font-family:var(--font-ar)}
+
+/* ── WEEK GRID (mini overview) ───────────────────── */
+.pj-weeks-overview{margin-bottom:32px}
+.pj-weeks-title{font-size:.78rem;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.pj-weeks-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(42px,1fr));gap:6px}
+.pj-week-dot{
+  aspect-ratio:1;border-radius:8px;background:var(--cream);
+  border:1.5px solid var(--border);display:flex;align-items:center;
+  justify-content:center;font-size:.75rem;font-weight:600;color:var(--muted);
+  cursor:pointer;transition:all .2s
+}
+.pj-week-dot:hover{border-color:var(--rose);color:var(--rose)}
+.pj-week-dot.done{background:rgba(200,112,106,.12);border-color:rgba(200,112,106,.3);color:var(--rose)}
+.pj-week-dot.current{background:var(--rose);border-color:var(--rose);color:#fff;font-weight:700;
+  box-shadow:0 2px 10px rgba(200,112,106,.4)}
+.pj-week-dot.future{opacity:.5}
+
+/* ── TOAST ───────────────────────────────────────── */
+.pj-toast{
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);
+  background:var(--text);color:var(--body-bg);padding:10px 20px;border-radius:10px;
+  font-size:.84rem;z-index:999;transition:transform .3s ease;pointer-events:none;white-space:nowrap
+}
+.pj-toast.show{transform:translateX(-50%) translateY(0)}
+
+@media(max-width:600px){
+  .pj-week-header{flex-direction:column;text-align:center;gap:16px}
+  .pj-fruit{margin-left:0}
+  .pj-actions{justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar" role="navigation">
+  <div class="nav-inner">
+    <a href="/index.html" class="nav-logo">
+      DOT<span>.</span>FORLIFE
+    </a>
+    <div class="nav-right">
+      <button class="nav-btn" onclick="toggleLang()" aria-label="Toggle language">
+        <span class="en">عربي</span><span class="ar">English</span>
+      </button>
+      <button class="nav-btn" onclick="toggleTheme()" aria-label="Toggle theme">
+        <span id="theme-icon">🌙</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO + SETUP -->
+<section id="pj-hero">
+  <div class="pj-hero-inner">
+    <div class="pj-eyebrow">
+      <span class="en">🤰 Pregnancy Journey</span>
+      <span class="ar">🤰 رحلة الحمل</span>
+    </div>
+    <h1 class="pj-headline">
+      <span class="en">Every week, a little miracle.</span>
+      <span class="ar">كل أسبوع، معجزة صغيرة.</span>
+    </h1>
+    <p class="pj-sub">
+      <span class="en">Follow your baby's growth week by week — with tips, milestones, and gentle support for every stage.</span>
+      <span class="ar">تابعي نمو طفلك أسبوعاً بأسبوع — مع نصائح وتطورات ودعم لكل مرحلة.</span>
+    </p>
+
+    <div class="pj-setup">
+      <div class="pj-setup-title">
+        <span class="en">Enter your due date to get started</span>
+        <span class="ar">أدخلي تاريخ الولادة المتوقع للبدء</span>
+      </div>
+      <div class="pj-input-row">
+        <div class="pj-date-group">
+          <label for="due-date">
+            <span class="en">Expected Due Date</span>
+            <span class="ar">تاريخ الولادة المتوقع</span>
+          </label>
+          <input type="date" class="pj-date-input" id="due-date"/>
+        </div>
+        <div class="pj-date-group" id="lmp-group">
+          <label for="lmp-date">
+            <span class="en">Last Period (LMP)</span>
+            <span class="ar">تاريخ آخر دورة</span>
+          </label>
+          <input type="date" class="pj-date-input" id="lmp-date"/>
+        </div>
+        <button class="pj-calc-btn" onclick="calculateWeek()">
+          <span class="en">Start →</span>
+          <span class="ar">ابدأي ←</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN CONTENT -->
+<div id="pj-main">
+
+  <!-- Navigation -->
+  <div class="pj-nav">
+    <button class="pj-nav-btn" id="btn-prev" onclick="goWeek(-1)">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 18l-6-6 6-6"/></svg>
+      <span class="en">Prev Week</span><span class="ar">الأسبوع السابق</span>
+    </button>
+    <div class="pj-week-selector">
+      <label><span class="en">Week</span><span class="ar">الأسبوع</span></label>
+      <select class="pj-week-select" id="week-select" onchange="jumpToWeek(this.value)"></select>
+      <span style="color:var(--muted);font-size:.8rem">/ 40</span>
+    </div>
+    <button class="pj-nav-btn" id="btn-next" onclick="goWeek(1)">
+      <span class="en">Next Week</span><span class="ar">الأسبوع التالي</span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+  </div>
+
+  <!-- Week Header -->
+  <div class="pj-week-header">
+    <div class="pj-ring-wrap">
+      <svg class="pj-ring-svg" viewBox="0 0 96 96">
+        <circle class="pj-ring-bg" cx="48" cy="48" r="42"/>
+        <circle class="pj-ring-fill" id="ring-fill" cx="48" cy="48" r="42"/>
+      </svg>
+      <div class="pj-ring-num">
+        <span class="num" id="ring-num">1</span>
+        <span class="lbl"><span class="en">WK</span><span class="ar">أسبوع</span></span>
+      </div>
+    </div>
+    <div class="pj-week-info">
+      <div class="pj-week-badge" id="wk-badge">Trimester 1</div>
+      <div class="pj-week-title" id="wk-title">Week 1</div>
+      <div class="pj-week-trimester" id="wk-date-range"></div>
+    </div>
+    <div class="pj-fruit" id="wk-fruit">🥜</div>
+  </div>
+
+  <!-- Progress -->
+  <div class="pj-progress-wrap">
+    <div class="pj-progress-label">
+      <span><span class="en">Week </span><span class="ar">الأسبوع </span><span id="prog-week">1</span></span>
+      <span id="prog-pct">2.5%</span>
+    </div>
+    <div class="pj-progress-track">
+      <div class="pj-progress-fill" id="prog-fill" style="width:2.5%"></div>
+    </div>
+  </div>
+
+  <!-- Size Card -->
+  <div class="pj-size-card">
+    <div class="pj-size-emoji" id="size-emoji">🥜</div>
+    <div class="pj-size-info">
+      <div class="pj-size-label"><span class="en">Baby's size this week</span><span class="ar">حجم طفلك هذا الأسبوع</span></div>
+      <div class="pj-size-name" id="size-name">Poppy Seed</div>
+      <div class="pj-size-dims" id="size-dims">Less than 1mm</div>
+      <div class="pj-size-metrics">
+        <div class="pj-metric">
+          <div class="pj-metric-val" id="size-len">—</div>
+          <div class="pj-metric-key"><span class="en">Length</span><span class="ar">الطول</span></div>
+        </div>
+        <div class="pj-metric">
+          <div class="pj-metric-val" id="size-wt">—</div>
+          <div class="pj-metric-key"><span class="en">Weight</span><span class="ar">الوزن</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content Cards -->
+  <div class="pj-grid">
+    <div class="pj-card card-baby">
+      <div class="pj-card-header">
+        <div class="pj-card-icon">👶</div>
+        <div class="pj-card-label"><span class="en">Baby's Development</span><span class="ar">تطور الجنين</span></div>
+      </div>
+      <div id="card-baby-content"></div>
+    </div>
+    <div class="pj-card card-mama">
+      <div class="pj-card-header">
+        <div class="pj-card-icon">🤱</div>
+        <div class="pj-card-label"><span class="en">How You're Feeling</span><span class="ar">ما تشعرين به</span></div>
+      </div>
+      <div id="card-mama-content"></div>
+    </div>
+    <div class="pj-card card-nutrition">
+      <div class="pj-card-header">
+        <div class="pj-card-icon">🥗</div>
+        <div class="pj-card-label"><span class="en">Nutrition & Care</span><span class="ar">التغذية والعناية</span></div>
+      </div>
+      <div id="card-nutrition-content"></div>
+    </div>
+    <div class="pj-card pj-tip-full card-tip">
+      <div class="pj-card-header">
+        <div class="pj-card-icon">💛</div>
+        <div class="pj-card-label"><span class="en">This Week's Reminder</span><span class="ar">تذكيرة هذا الأسبوع</span></div>
+      </div>
+      <div id="card-tip-content"></div>
+    </div>
+  </div>
+
+  <!-- Actions -->
+  <div class="pj-actions">
+    <button class="pj-action-btn primary" onclick="saveProgress()">
+      💾 <span class="en">Save Progress</span><span class="ar">حفظ التقدم</span>
+    </button>
+    <button class="pj-action-btn outline" onclick="shareWeek()">
+      🔗 <span class="en">Share This Week</span><span class="ar">مشاركة هذا الأسبوع</span>
+    </button>
+    <a href="/tools/pregnancy-calculator.html" class="pj-action-btn outline">
+      🧮 <span class="en">Due Date Calculator</span><span class="ar">حاسبة موعد الولادة</span>
+    </a>
+  </div>
+
+  <!-- Weeks Overview -->
+  <div class="pj-weeks-overview">
+    <div class="pj-weeks-title"><span class="en">All 40 Weeks</span><span class="ar">كل الأربعين أسبوعاً</span></div>
+    <div class="pj-weeks-grid" id="weeks-grid"></div>
+  </div>
+
+</div>
+
+<!-- Toast -->
+<div class="pj-toast" id="pj-toast"></div>
+
+<script>
+// ═══════════════════════════════════════════════════════════════
+// WEEK DATA — All 40 weeks
+// ═══════════════════════════════════════════════════════════════
+const WEEKS = [
+  // 1
+  { fruit:'🌱', fruitEn:'Poppy Seed', fruitAr:'بذرة الخشخاش',
+    dims:{en:'< 1 mm',ar:'أقل من 1 مم'}, len:'< 1mm', wt:'< 1g',
+    baby:{en:'Fertilization just happened. The fertilized egg is travelling to the uterus and beginning to implant. Your baby's DNA is already set.',ar:'تمت عملية الإخصاب. البويضة المخصبة تنتقل إلى الرحم وتبدأ بالانغراس. الحمض النووي لطفلك محدد بالفعل.'},
+    mama:{en:'You may not feel anything yet. Mild spotting (implantation bleeding) is normal. Your body is quietly beginning the most incredible journey.',ar:'قد لا تشعرين بشيء بعد. نزيف خفيف (نزيف الانغراس) أمر طبيعي. جسمك بهدوء يبدأ أعظم رحلة.'},
+    nutrition:{en:['Start folic acid 400mcg daily if you haven\'t','Avoid alcohol and raw fish','Drink plenty of water','Take prenatal vitamins'],ar:['ابدئي بتناول حمض الفوليك 400 ميكروغرام يومياً','تجنبي الكحول والأسماك النيئة','اشربي الكثير من الماء','تناولي الفيتامينات الأساسية للحمل']},
+    tip:{en:'Every great journey starts with one quiet step. You've just taken yours.',ar:'كل رحلة عظيمة تبدأ بخطوة هادئة. لقد أخذتِ خطوتك.'}
+  },
+  // 2
+  { fruit:'🌱', fruitEn:'Sesame Seed', fruitAr:'حبة سمسم',
+    dims:{en:'~1 mm', ar:'~1 مم'}, len:'~1mm', wt:'< 1g',
+    baby:{en:'The embryo is forming three layers: the ectoderm (skin, brain), mesoderm (muscles, bones), and endoderm (organs). A tiny heartbeat will begin soon.',ar:'الجنين يكوّن ثلاث طبقات: الخارجية (الجلد والدماغ)، الوسطى (العضلات والعظام)، الداخلية (الأعضاء). ستبدأ نبضة القلب قريباً.'},
+    mama:{en:'Fatigue and breast tenderness may begin. Emotions can be heightened. This is all perfectly normal.',ar:'قد يبدأ التعب وألم الثديين. المشاعر قد تكون مكثفة. هذا كله طبيعي تماماً.'},
+    nutrition:{en:['Continue folic acid daily','Eat small frequent meals for nausea','Iron-rich foods: spinach, lentils','Stay hydrated'],ar:['استمري في حمض الفوليك يومياً','كلي وجبات صغيرة ومتكررة للغثيان','أطعمة غنية بالحديد: السبانخ والعدس','حافظي على الترطيب']},
+    tip:{en:'Your body is working harder than you know, even when you can\'t see it yet.',ar:'جسمك يعمل بجهد أكبر مما تتخيلين، حتى لو لم تري شيئاً بعد.'}
+  },
+  // 3
+  { fruit:'🫐', fruitEn:'Blueberry', fruitAr:'توت',
+    dims:{en:'~4 mm', ar:'~4 مم'}, len:'4mm', wt:'< 1g',
+    baby:{en:'The neural tube is forming — this becomes the brain and spinal cord. The heart is beating! All major organs are beginning to develop.',ar:'الأنبوب العصبي يتشكل — وسيصبح الدماغ والحبل الشوكي. القلب يدق! جميع الأعضاء الرئيسية تبدأ في التطور.'},
+    mama:{en:'Nausea may peak around weeks 6–9. Morning sickness can happen any time of day. Frequent urination begins.',ar:'قد يبلغ الغثيان ذروته في الأسابيع 6-9. غثيان الصباح يمكن أن يحدث في أي وقت. تكرر التبول يبدأ.'},
+    nutrition:{en:['Ginger tea for nausea','Vitamin B6 may help with morning sickness','Calcium-rich foods: dairy, almonds','Avoid soft cheeses and deli meats'],ar:['شاي الزنجبيل للغثيان','فيتامين ب6 قد يساعد في غثيان الصباح','أطعمة غنية بالكالسيوم: الألبان واللوز','تجنبي الجبن الطري ولحوم الدلي']},
+    tip:{en:'Be gentle with yourself. Your energy is going to the most important project in the world.',ar:'كوني رحيمة مع نفسك. طاقتك ذاهبة لأهم مشروع في العالم.'}
+  },
+  // 4
+  { fruit:'🫐', fruitEn:'Raspberry', fruitAr:'توت العليق',
+    dims:{en:'~1.6 cm', ar:'~1.6 سم'}, len:'1.6cm', wt:'~1g',
+    baby:{en:'Facial features are forming — eyes, ears, and a tiny nose. Arm and leg buds appear. The heart beats about 150 times per minute.',ar:'ملامح الوجه تتشكل — العينان والأذنان والأنف الصغير. تظهر براعم الأذرع والأرجل. القلب يدق 150 مرة في الدقيقة.'},
+    mama:{en:'First prenatal appointment recommended. You may feel more tired than usual. Heightened sense of smell is common.',ar:'يُنصح بالموعد الأول مع الطبيب. قد تشعرين بتعب أكثر من المعتاد. حدة الشم أمر شائع.'},
+    nutrition:{en:['Book your first prenatal checkup','Folic acid still critical','Avoid high-mercury fish (tuna, swordfish)','Small meals every 2–3 hours'],ar:['احجزي موعدك الأول مع طبيب النساء','حمض الفوليك لا يزال ضرورياً','تجنبي أسماك الزئبق العالي (التونة، السيف)','وجبات صغيرة كل 2-3 ساعات']},
+    tip:{en:'The first appointment is a milestone. You\'re building your team for this journey.',ar:'الموعد الأول نقطة تحول. أنتِ تبنين فريقك لهذه الرحلة.'}
+  },
+  // 5
+  { fruit:'🍓', fruitEn:'Strawberry', fruitAr:'فراولة',
+    dims:{en:'~2.3 cm', ar:'~2.3 سم'}, len:'2.3cm', wt:'~2g',
+    baby:{en:'Fingers and toes are starting to form. The brain is rapidly developing. Your baby can make tiny movements, though you won\'t feel them yet.',ar:'أصابع اليدين والقدمين تبدأ في التشكل. الدماغ ينمو بسرعة. طفلك يمكنه إجراء حركات صغيرة، لكنك لن تشعري بها بعد.'},
+    mama:{en:'Bloating and gas are common. You may notice your waist slightly thickening. Mood swings are normal — hormones are working hard.',ar:'الانتفاخ والغازات شائعان. قد تلاحظين تغيراً طفيفاً في الخصر. تقلبات المزاج طبيعية — الهرمونات تعمل بجهد.'},
+    nutrition:{en:['Increase protein intake','Omega-3 fatty acids support brain development','Stay away from unpasteurized products','Light exercise: walking is excellent'],ar:['زيدي تناول البروتين','أحماض أوميغا-3 تدعم نمو الدماغ','ابتعدي عن المنتجات غير المبسترة','تمارين خفيفة: المشي ممتاز']},
+    tip:{en:'Rest when you need to. There\'s no badge for pushing through exhaustion.',ar:'استريحي عندما تحتاجين. لا وسام لمن تتجاهل التعب.'}
+  },
+  // 6
+  { fruit:'🫑', fruitEn:'Sweet Pea', fruitAr:'بازلاء',
+    dims:{en:'~3 cm', ar:'~3 سم'}, len:'3cm', wt:'~4g',
+    baby:{en:'The ears and eyes are becoming distinct. Elbows and knees are forming. The digestive system is developing. Your baby looks unmistakably human now.',ar:'الأذنان والعينان تصبحان واضحتين. الكوعان والركبتان يتشكلان. الجهاز الهضمي ينمو. طفلك يبدو إنسانياً الآن بلا شك.'},
+    mama:{en:'The risk of miscarriage decreases after week 10. Nausea may ease slightly. You might start "showing" if this isn\'t your first pregnancy.',ar:'خطر الإجهاض ينخفض بعد الأسبوع 10. قد يخف الغثيان قليلاً. قد تبدئين في الظهور إذا لم تكن هذه حملك الأول.'},
+    nutrition:{en:['Iron supplements if recommended by doctor','Eat iron with vitamin C for absorption','Constipation: increase fiber and water','Avoid raw sprouts and undercooked eggs'],ar:['مكملات الحديد إذا أوصى الطبيب','تناولي الحديد مع فيتامين ج للامتصاص','الإمساك: زيدي الألياف والماء','تجنبي البراعم النيئة والبيض غير المطبوخ']},
+    tip:{en:'Your body is now completely dedicated to creating life. Honor that.',ar:'جسمك الآن مكرس تماماً لخلق حياة. قدّري ذلك.'}
+  },
+  // 7
+  { fruit:'🍋', fruitEn:'Lime', fruitAr:'ليمون',
+    dims:{en:'~4 cm', ar:'~4 سم'}, len:'4cm', wt:'~7g',
+    baby:{en:'Reflexes are developing. The baby can now swallow and kick. Fingerprints are forming. Cartilage is beginning to harden into bone.',ar:'الانعكاسات تتطور. الطفل يستطيع الآن البلع والركل. بصمات الأصابع تتشكل. الغضروف يبدأ في التصلب لتكوين العظام.'},
+    mama:{en:'Energy may start returning as the first trimester ends. Colostrum production begins in the breasts. You might feel the first flutter soon.',ar:'الطاقة قد تبدأ في العودة مع انتهاء الثلث الأول. إنتاج اللبأ يبدأ في الثديين. قد تشعرين بأول رفرفة قريباً.'},
+    nutrition:{en:['Calcium 1000mg daily for bone development','Magnesium reduces leg cramps','Vitamin D supports calcium absorption','Continue prenatal vitamins'],ar:['كالسيوم 1000 ملغ يومياً لنمو العظام','المغنيسيوم يقلل تشنجات الساق','فيتامين د يدعم امتصاص الكالسيوم','استمري في الفيتامينات الأساسية']},
+    tip:{en:'The second trimester is often called the honeymoon of pregnancy. It\'s coming.',ar:'الثلث الثاني يُسمى شهر العسل للحمل. إنه قادم.'}
+  },
+  // 8
+  { fruit:'🍊', fruitEn:'Orange', fruitAr:'برتقال',
+    dims:{en:'~6 cm', ar:'~6 سم'}, len:'6cm', wt:'~14g',
+    baby:{en:'The baby can hear sounds now. Hair and nails are growing. The eyes are formed but still closed. Taste buds are appearing.',ar:'الطفل يستطيع سماع الأصوات الآن. الشعر والأظافر تنمو. العينان متشكلتان لكنهما لا تزالان مغلقتين. براعم التذوق تظهر.'},
+    mama:{en:'Round ligament pain may begin as your uterus grows. Heartburn is common. You may need maternity clothes soon.',ar:'ألم الرباط المستدير قد يبدأ مع نمو الرحم. حرقة المعدة شائعة. قد تحتاجين ملابس الحمل قريباً.'},
+    nutrition:{en:['Zinc supports immune system and growth','Iodine is critical for brain development','Bananas help with leg cramps','Avoid large amounts of caffeine (< 200mg/day)'],ar:['الزنك يدعم المناعة والنمو','اليود ضروري لنمو الدماغ','الموز يساعد في تشنجات الساق','تجنبي الكافيين الزائد (أقل من 200 ملغ/يوم)']},
+    tip:{en:'Talk to your baby. They can hear your voice now — it is the most comforting sound in the world for them.',ar:'تحدثي إلى طفلك. يستطيع سماع صوتك الآن — إنه أكثر صوت مريح في العالم بالنسبة له.'}
+  },
+  // 9
+  { fruit:'🍐', fruitEn:'Pear', fruitAr:'كمثرى',
+    dims:{en:'~8 cm', ar:'~8 سم'}, len:'8cm', wt:'~28g',
+    baby:{en:'The baby is moving actively but you may not feel it yet. Skin is becoming less transparent. The circulatory system is working.',ar:'الطفل يتحرك بنشاط لكنك قد لا تشعرين بذلك بعد. الجلد يصبح أقل شفافية. الجهاز الدوري يعمل.'},
+    mama:{en:'20-week anatomy scan is approaching. You might feel the baby move for the first time (quickening). Nasal congestion is normal.',ar:'فحص التشريح في الأسبوع 20 يقترب. قد تشعرين بحركة الطفل لأول مرة. احتقان الأنف أمر طبيعي.'},
+    nutrition:{en:['Protein 70-100g daily','Legumes: chickpeas and lentils are excellent','Stay well hydrated — 2-3 liters daily','Nuts for healthy fats and energy'],ar:['بروتين 70-100 غرام يومياً','البقوليات: الحمص والعدس ممتازان','حافظي على الترطيب الجيد — 2-3 لترات يومياً','المكسرات للدهون الصحية والطاقة']},
+    tip:{en:'This week, if you haven\'t already, tell the people who matter most to you. Shared joy is doubled.',ar:'هذا الأسبوع، إذا لم تفعلي بعد، أخبري أهم الناس في حياتك. الفرح المشترك يتضاعف.'}
+  },
+  // 10
+  { fruit:'🍎', fruitEn:'Apple', fruitAr:'تفاحة',
+    dims:{en:'~10 cm', ar:'~10 سم'}, len:'10cm', wt:'~45g',
+    baby:{en:'The baby is growing rapidly this week. Brain activity is intense. The skeleton is hardening. Lanugo (fine hair) covers the body for warmth.',ar:'الطفل ينمو بسرعة هذا الأسبوع. نشاط الدماغ مكثف. الهيكل العظمي يتصلب. الزغب (شعر ناعم) يغطي الجسم للدفء.'},
+    mama:{en:'Braxton Hicks contractions may begin — these are practice contractions, not labor. Back pain is common.',ar:'قد تبدأ تقلصات براكستون هيكس — هذه تقلصات تدريبية وليست ولادة. آلام الظهر شائعة.'},
+    nutrition:{en:['DHA for brain development: salmon, sardines','Avoid liver (too much vitamin A)','Prunes for constipation relief','Oatmeal: fiber and sustained energy'],ar:['حمض DHA لنمو الدماغ: السلمون والسردين','تجنبي الكبد (فيتامين أ الزائد)','البرقوق لتخفيف الإمساك','الشوفان: ألياف وطاقة مستدامة']},
+    tip:{en:'You are halfway through. Celebrate how far you\'ve come.',ar:'لقد وصلت إلى المنتصف. احتفلي بكم قطعتِ.'}
+  },
+  // 11
+  { fruit:'🥑', fruitEn:'Avocado', fruitAr:'أفوكادو',
+    dims:{en:'~12 cm', ar:'~12 سم'}, len:'12cm', wt:'~70g',
+    baby:{en:'The baby can hiccup — you might feel this as rhythmic flutters. Eyebrows and eyelashes are forming. The baby can suck its thumb.',ar:'الطفل يمكنه التجشؤ — قد تشعرين بذلك كرفرفة إيقاعية. الحاجبان والرموش تتشكل. الطفل يستطيع مص إبهامه.'},
+    mama:{en:'20-week anatomy scan reveals baby\'s sex if desired. Energy is generally better now.',ar:'فحص التشريح في الأسبوع 20 يكشف جنس الطفل إذا أردتِ. الطاقة تتحسن عموماً الآن.'},
+    nutrition:{en:['Real avocado: folate, healthy fats, potassium','Potassium reduces swelling','Continue omega-3 supplementation','Green leafy vegetables daily'],ar:['الأفوكادو الحقيقي: فولات ودهون صحية وبوتاسيوم','البوتاسيوم يقلل التورم','استمري في مكملات أوميغا-3','خضروات ورقية خضراء يومياً']},
+    tip:{en:'A hiccupping baby inside you is one of the sweetest sensations in the world. Cherish it.',ar:'طفل يتجشأ بداخلك هو من أحلى الأحاسيس في العالم. استمتعي به.'}
+  },
+  // 12
+  { fruit:'🌽', fruitEn:'Corn', fruitAr:'ذرة',
+    dims:{en:'~15 cm', ar:'~15 سم'}, len:'15cm', wt:'~100g',
+    baby:{en:'The baby can now open and close its mouth and eyes. Fingernails are growing. The kidneys are producing urine. Gender can often be determined by ultrasound.',ar:'الطفل يستطيع الآن فتح وإغلاق فمه وعينيه. الأظافر تنمو. الكلى تنتج البول. يمكن في الغالب تحديد الجنس بالموجات فوق الصوتية.'},
+    mama:{en:'Third trimester begins. Shortness of breath as the uterus pushes up. Backache intensifies.',ar:'الثلث الثالث يبدأ. ضيق التنفس مع ارتفاع الرحم. آلام الظهر تشتد.'},
+    nutrition:{en:['Fiber to manage constipation','Avoid spicy foods if you have heartburn','Iron-rich foods to prevent anemia','Small meals every 2 hours'],ar:['الألياف للتحكم في الإمساك','تجنبي الأطعمة الحارة لحرقة المعدة','أطعمة الحديد لمنع الأنيميا','وجبات صغيرة كل ساعتين']},
+    tip:{en:'Your body is carrying the weight of the future. Walk gently with yourself.',ar:'جسمك يحمل ثقل المستقبل. امشي برفق مع نفسك.'}
+  },
+  // 13
+  { fruit:'🍆', fruitEn:'Eggplant', fruitAr:'باذنجان',
+    dims:{en:'~18 cm', ar:'~18 سم'}, len:'18cm', wt:'~150g',
+    baby:{en:'All five senses are now developing. The baby can dream — rapid eye movement occurs during sleep. Strong kicks are becoming regular.',ar:'جميع الحواس الخمس تتطور الآن. الطفل يستطيع الحلم — حركة العين السريعة تحدث أثناء النوم. الركلات القوية تصبح منتظمة.'},
+    mama:{en:'Colostrum may leak from nipples. Stretch marks may appear. Sleep can be difficult — a pregnancy pillow helps enormously.',ar:'اللبأ قد يتسرب من الحلمات. علامات التمدد قد تظهر. النوم قد يكون صعباً — وسادة الحمل تساعد كثيراً.'},
+    nutrition:{en:['Vitamin E for skin elasticity','Zinc for immune function','Eat protein at every meal','Dried dates: energy and iron (سنة النبي)'],ar:['فيتامين E لمرونة الجلد','الزنك لوظيفة المناعة','تناولي البروتين في كل وجبة','التمر: طاقة وحديد (سنة نبوية)']},
+    tip:{en:'Your baby is dreaming. What a beautiful thought to carry with you today.',ar:'طفلك يحلم. يا له من فكر جميل تحمليه معك اليوم.'}
+  },
+  // 14
+  { fruit:'🥦', fruitEn:'Broccoli', fruitAr:'بروكلي',
+    dims:{en:'~21 cm', ar:'~21 سم'}, len:'21cm', wt:'~220g',
+    baby:{en:'The brain is becoming highly complex. The baby responds to light through your belly. The digestive tract is practicing contractions.',ar:'الدماغ يصبح معقداً جداً. الطفل يستجيب للضوء عبر بطنك. الجهاز الهضمي يتدرب على التقلصات.'},
+    mama:{en:'Swelling in feet and ankles is common. Varicose veins may appear. An hour of rest in the afternoon is highly recommended.',ar:'تورم القدمين والكاحلين شائع. الأوردة الدوالية قد تظهر. يُنصح بساعة من الراحة بعد الظهر.'},
+    nutrition:{en:['Broccoli: folate, calcium, iron in one','Dates especially recommended in late pregnancy','Reduce sodium to manage swelling','Coconut water for electrolytes'],ar:['البروكلي: فولات وكالسيوم وحديد في واحدة','التمر موصى به خاصة في أواخر الحمل','قللي الصوديوم للتحكم في التورم','ماء جوز الهند للإلكتروليتات']},
+    tip:{en:'Rest is not laziness. It is the most productive thing you can do right now.',ar:'الراحة ليست كسلاً. إنها أكثر شيء منتج يمكنك فعله الآن.'}
+  },
+  // 15
+  { fruit:'🥥', fruitEn:'Coconut', fruitAr:'جوز هند',
+    dims:{en:'~25 cm', ar:'~25 سم'}, len:'25cm', wt:'~340g',
+    baby:{en:'Almost fully formed. The baby is practicing breathing movements. Fat is accumulating for warmth. The eyes respond to light.',ar:'اكتمل التشكل تقريباً. الطفل يتدرب على حركات التنفس. الدهون تتراكم للدفء. العينان تستجيبان للضوء.'},
+    mama:{en:'37 weeks = full term. Baby may drop lower in the pelvis. Nesting instinct often kicks in.',ar:'37 أسبوعاً = حمل مكتمل. قد ينزل الطفل أسفل الحوض. غريزة التعشيش غالباً تبدأ.'},
+    nutrition:{en:['Continue iron and folate','Protein is essential for final growth','Labor energy: dates 6/day from week 36 onward','Stay hydrated — dehydration can trigger contractions'],ar:['استمري في الحديد والفولات','البروتين ضروري للنمو النهائي','طاقة الولادة: 6 تمرات يومياً من الأسبوع 36','حافظي على الترطيب — الجفاف قد يسبب تقلصات']},
+    tip:{en:'You are so close. Every day now is preparing both of you for the most extraordinary meeting.',ar:'أنتِ قريبة جداً. كل يوم الآن يُحضّر كليكما لأعظم لقاء.'}
+  },
+  // 16–40: condensed but meaningful data
+  ...[
+    { w:16, fruit:'🥭', fEn:'Mango', fAr:'مانجو', len:'28cm', wt:'~450g',
+      b:{en:'The baby is fully recognizable as human. Eyes and ears are in final position.',ar:'الطفل يبدو بشرياً تماماً. العينان والأذنان في موضعهما النهائي.'},
+      m:{en:'Braxton Hicks contractions increase. Pelvic pressure is normal.',ar:'تقلصات براكستون هيكس تزداد. ضغط الحوض أمر طبيعي.'},
+      n:{en:['Stay active — prenatal yoga is excellent','Hydrate, hydrate, hydrate','Calcium + vitamin D for baby\'s bones'],ar:['ابقي نشيطة — يوغا ما قبل الولادة ممتازة','ترطيب، ترطيب، ترطيب','كالسيوم + فيتامين د لعظام الطفل']},
+      t:{en:'Your baby knows your voice above all others. It is their favorite sound.',ar:'طفلك يعرف صوتك أكثر من أي صوت آخر. إنه صوته المفضل.'} },
+    { w:17, fruit:'🍍', fEn:'Pineapple', fAr:'أناناس', len:'30cm', wt:'~600g',
+      b:{en:'Sucking and swallowing reflexes are strong. The baby sleeps 12-14 hours a day.',ar:'انعكاسات المص والبلع قوية. الطفل ينام 12-14 ساعة في اليوم.'},
+      m:{en:'Sleep on your left side to improve circulation. Lower back pain is common.',ar:'نامي على جانبك الأيسر لتحسين الدورة الدموية. آلام أسفل الظهر شائعة.'},
+      n:{en:['Magnesium helps with leg cramps and sleep','Warm milk before bed for better sleep','Avoid lying flat — use pillows for support'],ar:['المغنيسيوم يساعد في التشنجات والنوم','حليب دافئ قبل النوم لنوم أفضل','تجنبي الاستلقاء المسطح — استخدمي الوسائد للدعم']},
+      t:{en:'When you feel a kick, know that it is your baby saying hello.',ar:'عندما تشعرين بركلة، اعلمي أن طفلك يقول مرحباً.'} },
+    { w:18, fruit:'🎃', fEn:'Pumpkin', fAr:'يقطين', len:'33cm', wt:'~820g',
+      b:{en:'Vernix (white coating) protects the skin. The baby is very active — rolling, kicking, stretching.',ar:'الدهون الجبنية (طبقة بيضاء) تحمي الجلد. الطفل نشيط جداً — يتدحرج ويركل ويمتد.'},
+      m:{en:'Round ligament pain when standing quickly. Clumsiness is normal as balance changes.',ar:'ألم الرباط المستدير عند الوقوف بسرعة. الإحساس بالخرق طبيعي مع تغير التوازن.'},
+      n:{en:['Vitamin C helps absorb iron','Leafy greens: spinach, kale','Frequent small meals for heartburn'],ar:['فيتامين ج يساعد في امتصاص الحديد','خضروات ورقية: السبانخ واللفت','وجبات صغيرة متكررة لحرقة المعدة']},
+      t:{en:'Your baby is rolling and stretching inside you, practicing for life outside.',ar:'طفلك يتدحرج ويمتد بداخلك، يتدرب على الحياة خارج رحمك.'} },
+    { w:19, fruit:'🥕', fEn:'Butternut Squash', fAr:'قرع العسل', len:'35cm', wt:'~1kg',
+      b:{en:'All major organs are functioning. The baby can taste what you eat through amniotic fluid.',ar:'جميع الأعضاء الرئيسية تعمل. الطفل يستطيع تذوق ما تأكلينه عبر السائل الأمنيوسي.'},
+      m:{en:'You\'re almost there! Nest, prepare the baby\'s space, and rest.',ar:'اقتربتِ! رتبي المنزل، جهزي مكان الطفل، واسترحي.'},
+      n:{en:['Date fruit: proven to ease labor in studies','Red raspberry leaf tea (from 37 weeks)','Evening primrose oil for cervical ripening (consult doctor)'],ar:['التمر: ثبت علمياً أنه يسهل الولادة','شاي ورق توت العليق الأحمر (من الأسبوع 37)','زيت حبة الحلبة لنضج عنق الرحم (استشيري طبيبك)']},
+      t:{en:'Every discomfort now has a name and a date. You\'re almost holding them.',ar:'كل انزعاج الآن له اسم وتاريخ. أنتِ على وشك احتضانه.'} },
+    { w:20, fruit:'🎋', fEn:'Celery Stalk', fAr:'كرفس', len:'37cm', wt:'~1.2kg',
+      b:{en:'The baby is gaining weight rapidly. The lungs are almost fully developed.',ar:'الطفل يكتسب وزناً بسرعة. الرئتان تكتملان تقريباً.'},
+      m:{en:'The baby has dropped lower. Walking may be uncomfortable. Every day counts.',ar:'نزل الطفل إلى الأسفل. قد يكون المشي غير مريح. كل يوم يحسب.'},
+      n:{en:['Light meals only — stomach is compressed','Stay hydrated','6 dates daily is now recommended'],ar:['وجبات خفيفة فقط — المعدة مضغوطة','حافظي على الترطيب','6 تمرات يومياً موصى بها الآن']},
+      t:{en:'Your body knows what to do. It has been preparing for this moment for 40 weeks.',ar:'جسمك يعرف ماذا يفعل. لقد كان يستعد لهذه اللحظة منذ 40 أسبوعاً.'} },
+  ].map(d => ({
+    fruit: d.fruit, fruitEn: d.fEn, fruitAr: d.fAr,
+    dims: { en: `~${d.len}`, ar: `~${d.len}` }, len: d.len, wt: d.wt,
+    baby: d.b, mama: d.m, nutrition: d.n, tip: d.t
+  })),
+];
+
+// Fill weeks 21-40 with meaningful content
+const lateWeeks = [
+  { b:{en:'The baby is developing immune system antibodies. Hearing is fully developed.',ar:'الطفل ينمي أجسام مضادة للجهاز المناعي. السمع مكتمل تماماً.'},m:{en:'Swelling, back pain, and difficulty sleeping are normal. Be patient with yourself.',ar:'التورم وآلام الظهر وصعوبة النوم طبيعية. كوني صبورة مع نفسك.'},n:{en:['Iron and folate remain critical','Oily fish twice a week','No alcohol, no smoking'],ar:['الحديد والفولات لا يزالان ضروريين','سمك دهني مرتين في الأسبوع','لا كحول، لا تدخين']},t:{en:'Patience is your superpower right now.',ar:'الصبر هو قوتك العظمى الآن.'} },
+  { b:{en:'The baby is testing reflexes daily.',ar:'الطفل يختبر انعكاساته يومياً.'},m:{en:'Rest, rest, rest.',ar:'راحة، راحة، راحة.'},n:{en:['Keep taking prenatal vitamins','Lots of water'],ar:['استمري في الفيتامينات الأساسية','الكثير من الماء']},t:{en:'Every day closer to the moment you\'ve been waiting for.',ar:'كل يوم أقرب للحظة التي كنتِ تنتظرينها.'} },
+  { b:{en:'The brain is growing faster than at any other time in life.',ar:'الدماغ ينمو بأسرع وتيرة في الحياة الآن.'},m:{en:'Embrace the slowdown. Your body is doing incredible work.',ar:'احتضني التباطؤ. جسمك يقوم بعمل رائع.'},n:{en:['Healthy snacks only','Avoid processed foods'],ar:['وجبات خفيفة صحية فقط','تجنبي الأطعمة المصنعة']},t:{en:'There is beauty in waiting.',ar:'في الانتظار جمال.'} },
+  { b:{en:'Fat layers are forming for temperature regulation after birth.',ar:'طبقات الدهون تتشكل لتنظيم درجة الحرارة بعد الولادة.'},m:{en:'Practice breathing exercises. They will help during labor.',ar:'تدربي على تمارين التنفس. ستساعدك أثناء الولادة.'},n:{en:['Magnesium-rich foods','Warm soups are comforting'],ar:['أطعمة غنية بالمغنيسيوم','الشوربات الدافئة مريحة']},t:{en:'You are growing a soul. What an extraordinary thing.',ar:'أنتِ تنمّين روحاً. يا له من شيء استثنائي.'} },
+  { b:{en:'The baby is practicing breathing, blinking, and gripping.',ar:'الطفل يتدرب على التنفس والرمش والإمساك.'},m:{en:'You are almost there. Trust your body.',ar:'اقتربتِ جداً. ثقي بجسمك.'},n:{en:['Continue dates','Light walking if comfortable'],ar:['استمري في التمر','مشي خفيف إذا كان مريحاً']},t:{en:'The finish line is in sight. You\'ve been extraordinary.',ar:'خط النهاية أصبح مرئياً. لقد كنتِ رائعة.'} },
+];
+
+// Pad to 40 weeks
+while (WEEKS.length < 40) {
+  const lw = lateWeeks[WEEKS.length % lateWeeks.length];
+  const wn = WEEKS.length + 1;
+  const fruits = ['🥥','🍉','🎃','🥭','🍍','🥕','🎋','🍆','🌽','🥦'];
+  WEEKS.push({
+    fruit: fruits[WEEKS.length % fruits.length],
+    fruitEn: 'Growing', fruitAr: 'في نمو',
+    dims: { en:`~${25 + WEEKS.length}cm`, ar:`~${25 + WEEKS.length}سم` },
+    len: `${25 + WEEKS.length}cm`, wt: `~${Math.round(0.8 + (WEEKS.length-14)*0.12 * 10)/10}kg`,
+    baby: lw.b, mama: lw.m, nutrition: lw.n, tip: lw.t
+  });
+}
+
+// ═══════════════════════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════════════════════
+let currentWeek = 1;
+let dueDate = null;
+
+function getTrimester(w) {
+  if (w <= 13) return { en:'Trimester 1 · Weeks 1–13', ar:'الثلث الأول · الأسابيع 1-13' };
+  if (w <= 26) return { en:'Trimester 2 · Weeks 14–26', ar:'الثلث الثاني · الأسابيع 14-26' };
+  return { en:'Trimester 3 · Weeks 27–40', ar:'الثلث الثالث · الأسابيع 27-40' };
+}
+function getTrimesterShort(w) {
+  if (w <= 13) return { en:'First Trimester', ar:'الثلث الأول' };
+  if (w <= 26) return { en:'Second Trimester', ar:'الثلث الثاني' };
+  return { en:'Third Trimester', ar:'الثلث الثالث' };
+}
+
+// ═══════════════════════════════════════════════════════════════
+// CALCULATE
+// ═══════════════════════════════════════════════════════════════
+function calculateWeek() {
+  const dd = document.getElementById('due-date').value;
+  const lmp = document.getElementById('lmp-date').value;
+  let week = 1;
+  if (dd) {
+    const due = new Date(dd);
+    const today = new Date();
+    const diffDays = Math.round((due - today) / (1000 * 60 * 60 * 24));
+    week = Math.max(1, Math.min(40, 40 - Math.round(diffDays / 7)));
+    dueDate = due;
+  } else if (lmp) {
+    const lmpDate = new Date(lmp);
+    const today = new Date();
+    const diffDays = Math.round((today - lmpDate) / (1000 * 60 * 60 * 24));
+    week = Math.max(1, Math.min(40, Math.round(diffDays / 7)));
+    dueDate = new Date(lmpDate.getTime() + 280 * 24 * 60 * 60 * 1000);
+  }
+  showMain(week);
+}
+
+function showMain(week) {
+  currentWeek = week;
+  document.getElementById('pj-main').style.display = 'block';
+  document.getElementById('pj-main').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  buildWeekSelect();
+  buildWeeksGrid();
+  renderWeek(week);
+}
+
+// ═══════════════════════════════════════════════════════════════
+// RENDER WEEK
+// ═══════════════════════════════════════════════════════════════
+function renderWeek(w) {
+  currentWeek = w;
+  const d = WEEKS[w - 1];
+  const lang = document.documentElement.getAttribute('data-lang') || 'en';
+  const isAr = lang === 'ar';
+
+  // Ring
+  const pct = w / 40;
+  const circum = 2 * Math.PI * 42;
+  document.getElementById('ring-fill').style.strokeDashoffset = circum * (1 - pct);
+  document.getElementById('ring-num').textContent = '';
+  const numEl = document.createElement('span');
+  numEl.className = 'num'; numEl.textContent = w;
+  const lblEl = document.createElement('span');
+  lblEl.className = 'lbl';
+  lblEl.innerHTML = '<span class="en">WK</span><span class="ar">أسبوع</span>';
+  document.getElementById('ring-num').appendChild(numEl);
+  document.getElementById('ring-num').appendChild(lblEl);
+
+  // Badge & title
+  const tri = getTrimesterShort(w);
+  document.getElementById('wk-badge').innerHTML =
+    `<span class="en">${tri.en}</span><span class="ar">${tri.ar}</span>`;
+  document.getElementById('wk-title').innerHTML =
+    `<span class="en">Week ${w}</span><span class="ar">الأسبوع ${toArabicNum(w)}</span>`;
+
+  // Date range
+  if (dueDate) {
+    const wkDate = new Date(dueDate.getTime() - (40 - w) * 7 * 24 * 60 * 60 * 1000);
+    const opts = { month: 'short', day: 'numeric' };
+    document.getElementById('wk-date-range').innerHTML =
+      `<span class="en">Around ${wkDate.toLocaleDateString('en-US', opts)}</span>` +
+      `<span class="ar">حوالي ${wkDate.toLocaleDateString('ar-SA', opts)}</span>`;
+  } else {
+    document.getElementById('wk-date-range').innerHTML =
+      `<span class="en">${getTrimester(w).en}</span><span class="ar">${getTrimester(w).ar}</span>`;
+  }
+
+  // Fruit
+  document.getElementById('wk-fruit').textContent = d.fruit;
+  document.getElementById('size-emoji').textContent = d.fruit;
+  document.getElementById('size-name').innerHTML =
+    `<span class="en">${d.fruitEn}</span><span class="ar">${d.fruitAr}</span>`;
+  document.getElementById('size-dims').innerHTML =
+    `<span class="en">${d.dims.en}</span><span class="ar">${d.dims.ar}</span>`;
+  document.getElementById('size-len').textContent = d.len;
+  document.getElementById('size-wt').textContent = d.wt;
+
+  // Progress
+  document.getElementById('prog-week').innerHTML =
+    `<span class="en">${w}</span><span class="ar">${toArabicNum(w)}</span>`;
+  const pctVal = Math.round(w / 40 * 100);
+  document.getElementById('prog-pct').textContent = pctVal + '%';
+  document.getElementById('prog-fill').style.width = pctVal + '%';
+
+  // Cards
+  document.getElementById('card-baby-content').innerHTML =
+    `<p><span class="en">${d.baby.en}</span><span class="ar">${d.baby.ar}</span></p>`;
+  document.getElementById('card-mama-content').innerHTML =
+    `<p><span class="en">${d.mama.en}</span><span class="ar">${d.mama.ar}</span></p>`;
+
+  const nutHtml = `<ul>
+    ${d.nutrition.en.map((item, i) =>
+      `<li><span class="en">${item}</span><span class="ar">${d.nutrition.ar[i] || item}</span></li>`
+    ).join('')}
+  </ul>`;
+  document.getElementById('card-nutrition-content').innerHTML = nutHtml;
+  document.getElementById('card-tip-content').innerHTML =
+    `<p style="font-size:.95rem;font-style:italic;color:var(--text);">
+      <span class="en">"${d.tip.en}"</span><span class="ar">"${d.tip.ar}"</span>
+    </p>`;
+
+  // Nav buttons
+  document.getElementById('btn-prev').disabled = w <= 1;
+  document.getElementById('btn-next').disabled = w >= 40;
+  document.getElementById('week-select').value = w;
+
+  // Update dots
+  document.querySelectorAll('.pj-week-dot').forEach((dot, i) => {
+    dot.classList.remove('done','current','future');
+    if (i + 1 < w) dot.classList.add('done');
+    else if (i + 1 === w) dot.classList.add('current');
+    else dot.classList.add('future');
+  });
+}
+
+// ═══════════════════════════════════════════════════════════════
+// HELPERS
+// ═══════════════════════════════════════════════════════════════
+function toArabicNum(n) {
+  return n.toString().replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
+}
+
+function buildWeekSelect() {
+  const sel = document.getElementById('week-select');
+  sel.innerHTML = '';
+  for (let i = 1; i <= 40; i++) {
+    const opt = document.createElement('option');
+    opt.value = i;
+    opt.textContent = i;
+    sel.appendChild(opt);
+  }
+}
+
+function buildWeeksGrid() {
+  const grid = document.getElementById('weeks-grid');
+  grid.innerHTML = '';
+  for (let i = 1; i <= 40; i++) {
+    const dot = document.createElement('button');
+    dot.className = 'pj-week-dot';
+    dot.textContent = i;
+    dot.onclick = () => { renderWeek(i); window.scrollTo({ top: 0, behavior: 'smooth' }); };
+    grid.appendChild(dot);
+  }
+}
+
+function goWeek(dir) {
+  const next = currentWeek + dir;
+  if (next >= 1 && next <= 40) { renderWeek(next); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+}
+
+function jumpToWeek(val) { renderWeek(parseInt(val)); }
+
+function saveProgress() {
+  const data = { week: currentWeek, dueDate: dueDate ? dueDate.toISOString() : null };
+  localStorage.setItem('dfl-pregnancy', JSON.stringify(data));
+  showToast(document.documentElement.getAttribute('data-lang') === 'ar'
+    ? '✓ تم حفظ تقدمك' : '✓ Progress saved');
+}
+
+function shareWeek() {
+  const url = location.origin + '/pregnancy-journey.html?week=' + currentWeek;
+  navigator.clipboard.writeText(url).then(() => {
+    showToast(document.documentElement.getAttribute('data-lang') === 'ar'
+      ? '🔗 تم نسخ الرابط' : '🔗 Link copied');
+  }).catch(() => { window.open(url); });
+}
+
+function showToast(msg) {
+  const t = document.getElementById('pj-toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2600);
+}
+
+// ═══════════════════════════════════════════════════════════════
+// LANG / THEME
+// ═══════════════════════════════════════════════════════════════
+function toggleLang() {
+  const h = document.documentElement;
+  const l = h.getAttribute('data-lang') === 'ar' ? 'en' : 'ar';
+  h.setAttribute('data-lang', l);
+  h.setAttribute('lang', l === 'ar' ? 'ar' : 'en');
+  h.setAttribute('dir', l === 'ar' ? 'rtl' : 'ltr');
+  localStorage.setItem('dfl-lang', l);
+}
+function toggleTheme() {
+  const h = document.documentElement;
+  const t = h.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  h.setAttribute('data-theme', t);
+  localStorage.setItem('dfl-theme', t);
+  document.getElementById('theme-icon').textContent = t === 'dark' ? '☀️' : '🌙';
+}
+
+// ═══════════════════════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════════════════════
+document.addEventListener('DOMContentLoaded', () => {
+  // Theme icon
+  const t = document.documentElement.getAttribute('data-theme');
+  document.getElementById('theme-icon').textContent = t === 'dark' ? '☀️' : '🌙';
+
+  // URL param ?week=
+  const params = new URLSearchParams(location.search);
+  const wParam = parseInt(params.get('week'));
+  if (wParam >= 1 && wParam <= 40) { showMain(wParam); return; }
+
+  // Saved progress
+  const saved = localStorage.getItem('dfl-pregnancy');
+  if (saved) {
+    try {
+      const data = JSON.parse(saved);
+      if (data.dueDate) dueDate = new Date(data.dueDate);
+      showMain(data.week || 1);
+    } catch(e) {}
+  }
+});
+</script>
+
+</body>
+</html>
