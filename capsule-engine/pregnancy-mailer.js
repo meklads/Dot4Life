@@ -11,9 +11,14 @@
 const { Resend } = require('resend');
 const db = require('./db');
 
-const resend  = new Resend(process.env.RESEND_API_KEY);
-const SITE    = (process.env.SITE_URL || 'https://dotforlife.com').replace(/\/$/, '');
-const FROM    = process.env.RESEND_FROM || 'Dot4Life <journey@dotforlife.com>';
+// Lazy init — avoids crash when RESEND_API_KEY is not yet set
+function getResend() {
+  if (!process.env.RESEND_API_KEY) throw new Error('RESEND_API_KEY not set');
+  return new Resend(process.env.RESEND_API_KEY);
+}
+
+const SITE = (process.env.SITE_URL || 'https://dotforlife.com').replace(/\/$/, '');
+const FROM = process.env.RESEND_FROM || 'Dot4Life <journey@dotforlife.com>';
 
 // ─────────────────────────────────────────
 //  WEEK DATA (mirrors pregnancy-journey.html)
@@ -229,7 +234,7 @@ async function sendWeeklyEmail(subscriber) {
     : `أنتِ في الأسبوع ${week} من حملك 🌸`;
 
   try {
-    const result = await resend.emails.send({
+    const result = await getResend().emails.send({
       from:    FROM,
       to:      subscriber.email,
       subject,
