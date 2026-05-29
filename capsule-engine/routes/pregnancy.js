@@ -126,8 +126,8 @@ router.get('/test-welcome', async (req, res) => {
     unsubscribe_token: 'unsub-test-123',
   };
   try {
-    await sendWelcomeEmail(mockSub);
-    res.json({ ok: true, to, message: 'sendWelcomeEmail completed without throwing' });
+    const result = await sendWelcomeEmail(mockSub);
+    res.json({ ok: !result?.error, to, resendResponse: result });
   } catch (err) {
     res.status(500).json({ ok: false, error: err.message });
   }

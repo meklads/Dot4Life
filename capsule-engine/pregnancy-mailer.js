@@ -342,15 +342,21 @@ async function sendWelcomeEmail(subscriber) {
 </body></html>`;
 
   try {
-    await getResend().emails.send({
+    const result = await getResend().emails.send({
       from:    FROM,
       to:      subscriber.email,
       subject: `مرحباً ${subscriber.name} 🌱 — رحلة الحمل بدأت!`,
       html,
     });
-    console.log(`[mailer] ✓ Welcome email sent to ${subscriber.email}`);
+    if (result.error) {
+      console.error(`[mailer] ✗ Welcome email Resend error:`, JSON.stringify(result.error));
+    } else {
+      console.log(`[mailer] ✓ Welcome email sent to ${subscriber.email} — id: ${result.data?.id}`);
+    }
+    return result;
   } catch (err) {
     console.error(`[mailer] ✗ Welcome email failed:`, err.message);
+    return { error: { message: err.message } };
   }
 }
 
