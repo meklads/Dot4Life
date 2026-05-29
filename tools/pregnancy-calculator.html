@@ -2394,6 +2394,31 @@ window.dflTrack=function(event,params){
         <button class="s-btn" onclick="shareResult()">📤 <span class="en">Share</span><span class="ar">مشاركة</span></button>
         <button class="s-btn primary" onclick="saveResult()">💾 <span class="en">Save</span><span class="ar">حفظ</span></button>
       </div>
+
+      <!-- Journey Banner -->
+      <a id="journey-banner" href="/pregnancy-journey.html" style="
+        display:flex; align-items:center; gap:16px; margin-top:18px;
+        background:linear-gradient(135deg,rgba(200,112,106,.08),rgba(184,134,26,.06));
+        border:1.5px solid rgba(200,112,106,.25); border-radius:14px;
+        padding:16px 20px; text-decoration:none; transition:box-shadow .2s, border-color .2s;
+      " onmouseover="this.style.boxShadow='0 4px 20px rgba(200,112,106,.15)';this.style.borderColor='rgba(200,112,106,.5)'"
+         onmouseout="this.style.boxShadow='';this.style.borderColor='rgba(200,112,106,.25)'">
+        <div style="font-size:2rem;line-height:1;flex-shrink:0">🤰</div>
+        <div style="flex:1">
+          <div style="font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#C8706A;margin-bottom:3px">
+            <span class="en">Pregnancy Journey</span><span class="ar">رحلة الحمل</span>
+          </div>
+          <div style="font-size:.95rem;font-weight:600;color:var(--text,#1A1410)">
+            <span class="en">Follow Week <span id="banner-week">1</span> in detail →</span>
+            <span class="ar">← تابعي الأسبوع <span id="banner-week-ar">١</span> بالتفصيل</span>
+          </div>
+          <div style="font-size:.78rem;color:var(--text-2,#5C534A);margin-top:2px">
+            <span class="en">Baby development · Mama tips · Nutrition · Weekly reminder</span>
+            <span class="ar">تطور الجنين · نصائح الأم · التغذية · تذكيرة الأسبوع</span>
+          </div>
+        </div>
+        <div style="color:#C8706A;font-size:1.2rem;flex-shrink:0">›</div>
+      </a>
     </div>
   </div><!-- /calc-card -->
 </div>
@@ -2821,6 +2846,16 @@ function displayResults(edd,lmpEquiv){
       document.getElementById('tl-fill').style.width=pct+'%';
       document.getElementById('tl-thumb').style.left=pct+'%';
     },100);
+
+    // Journey banner — update week number and link
+    const banner = document.getElementById('journey-banner');
+    if (banner) {
+      banner.href = `/pregnancy-journey.html?week=${wk}`;
+      const bwEn = document.getElementById('banner-week');
+      const bwAr = document.getElementById('banner-week-ar');
+      if (bwEn) bwEn.textContent = wk;
+      if (bwAr) bwAr.textContent = wk.toString().replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
+    }
 
     // Show
     const ra=document.getElementById('results');
