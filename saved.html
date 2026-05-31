@@ -34,21 +34,31 @@
   [data-lang="ar"] .en{display:none;}[data-lang="ar"] .ar{display:inline;}
   a{color:inherit;text-decoration:none;}
 
-  /* ── NAVBAR ── */
-  #navbar{position:sticky;top:0;z-index:100;background:rgba(250,248,244,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:center;}
+  /* ── UNIFIED NAVBAR ── */
+  #navbar{
+    position:fixed;top:0;left:0;right:0;z-index:200;
+    background:rgba(250,248,244,0.97);
+    border-bottom:1px solid var(--border);
+    backdrop-filter:blur(16px);
+    height:60px;
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    align-items:center;
+    padding:0 24px;
+  }
   [data-theme="dark"] #navbar{background:rgba(18,16,14,0.97);}
-  #navbar.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.07);}
-  .nav-inner{max-width:760px;width:100%;padding:0 24px;display:flex;align-items:center;justify-content:space-between;}
-  .nav-logo img{height:130px;width:auto;display:block;margin:4px 0 8px;}
-  @media(max-width:600px){.nav-logo img{height:80px;}}
-  .nav-os-links{display:flex;gap:0;align-items:center;list-style:none;}
-  .nav-os-links a{font-size:.78rem;font-weight:500;letter-spacing:.05em;padding:5px 10px;border-radius:6px;color:var(--text-2);transition:color .2s;}
-  .nav-os-links a:hover,.nav-os-links a.active{color:var(--gold);}
-  .nav-os-links .home-link{font-size:.75rem;color:var(--muted);margin-right:4px;}
-  @media(max-width:520px){.nav-os-links .hide-sm{display:none;}}
-  .nav-controls{display:flex;gap:.5rem;align-items:center;}
-  .nav-btn{cursor:pointer;border:1px solid var(--border);border-radius:var(--radius);padding:.3rem .6rem;font-size:.74rem;font-weight:600;background:transparent;color:var(--text-2);transition:all .2s;}
+  #navbar.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.08);}
+  body{padding-top:60px;}
+  .nav-logo{justify-self:start;}
+  .nav-logo img{height:40px;width:auto;display:block;}
+  .nav-links{justify-self:center;display:flex;align-items:center;gap:2px;list-style:none;}
+  .nav-links a{font-size:.75rem;font-weight:500;letter-spacing:.04em;padding:5px 10px;border-radius:6px;color:var(--text-2);transition:color .2s,background .2s;white-space:nowrap;}
+  .nav-links a:hover{color:var(--gold);background:rgba(184,134,26,.07);}
+  .nav-links a.active{color:var(--gold);}
+  .nav-controls{justify-self:end;display:flex;gap:.4rem;align-items:center;}
+  .nav-btn{cursor:pointer;border:1px solid var(--border);border-radius:var(--radius);padding:.28rem .6rem;font-size:.73rem;font-weight:600;background:transparent;color:var(--text-2);transition:all .2s;font-family:inherit;}
   .nav-btn:hover{border-color:var(--gold);color:var(--gold);}
+  @media(max-width:640px){.nav-links{display:none;}#navbar{grid-template-columns:1fr auto;}.nav-controls{justify-self:end;}}
 
   /* ── PAGE ── */
   #page{max-width:640px;margin:0 auto;padding:0 24px 80px;}
@@ -155,17 +165,18 @@
 <body>
 
 <nav id="navbar">
-  <div class="nav-inner">
-    <a href="/" class="nav-logo"><img src="/logo1-transparent.png" alt="DOTFORLIFE"/></a>
-    <ul class="nav-os-links">
-      <li><a href="/" class="home-link">← <span class="en">Today</span><span class="ar">اليوم</span></a></li>
-      <li><a href="/library.html" class="hide-sm"><span class="en">Library</span><span class="ar">المكتبة</span></a></li>
-      <li><a href="/saved.html" class="active"><span class="en">Saved</span><span class="ar">المحفوظ</span></a></li>
-    </ul>
-    <div class="nav-controls">
-      <button class="nav-btn" id="lang-toggle"><span class="en">عربي</span><span class="ar">EN</span></button>
-      <button class="nav-btn" id="theme-toggle"><span class="en">🌙</span><span class="ar">🌙</span></button>
-    </div>
+  <a href="/" class="nav-logo"><img src="/logo1-transparent.png" alt="DOTFORLIFE"/></a>
+  <ul class="nav-links">
+    <li><a href="/"><span class="en">Home</span><span class="ar">الرئيسية</span></a></li>
+    <li><a href="/capsule.html"><span class="en">Capsule</span><span class="ar">التذكرة</span></a></li>
+    <li><a href="/library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a></li>
+    <li><a href="/tasks.html"><span class="en">Tasks</span><span class="ar">المهام</span></a></li>
+    <li><a href="/notes.html"><span class="en">Notes</span><span class="ar">الملاحظات</span></a></li>
+    <li><a href="/saved.html" class="active"><span class="en">Saved</span><span class="ar">المحفوظ</span></a></li>
+  </ul>
+  <div class="nav-controls">
+    <button class="nav-btn" id="lang-toggle"><span class="en">عربي</span><span class="ar">EN</span></button>
+    <button class="nav-btn" id="theme-toggle">🌙</button>
   </div>
 </nav>
 
@@ -186,8 +197,16 @@
     </p>
   </div>
 
+  <!-- SAVED CAPSULES -->
+  <div class="saved-section" id="capsules-section">
+    <div class="saved-section-title">
+      <span class="en">Daily Capsules</span><span class="ar">التذاكر اليومية</span>
+    </div>
+    <div class="saved-list" id="saved-capsules-list"></div>
+  </div>
+
   <!-- SAVED GUIDES -->
-  <div class="saved-section">
+  <div class="saved-section" id="guides-section">
     <div class="saved-section-title">
       <span class="en">Life Guides</span><span class="ar">أدلة الحياة</span>
     </div>
@@ -214,88 +233,161 @@
 <script>
 (function(){
   var nb=document.getElementById('navbar');
-  window.addEventListener('scroll',function(){nb.classList.toggle('scrolled',window.scrollY>40);},{passive:true});
+  window.addEventListener('scroll',function(){nb.classList.toggle('scrolled',window.scrollY>20);},{passive:true});
 
   document.getElementById('lang-toggle').addEventListener('click',function(){
     var h=document.documentElement;
     var l=h.getAttribute('data-lang')==='ar'?'en':'ar';
     h.setAttribute('data-lang',l);h.setAttribute('lang',l);h.setAttribute('dir',l==='ar'?'rtl':'ltr');
     localStorage.setItem('dfl-lang',l);
-    render();
+    renderAll();
   });
 
   var themeBtn=document.getElementById('theme-toggle');
   function applyTheme(t){
     document.documentElement.setAttribute('data-theme',t);
     localStorage.setItem('dfl-theme',t);
-    var icon=t==='dark'?'☀️':'🌙';
-    themeBtn.querySelector('.en').textContent=icon;
-    themeBtn.querySelector('.ar').textContent=icon;
+    themeBtn.textContent=t==='dark'?'☀️':'🌙';
   }
   applyTheme(localStorage.getItem('dfl-theme')||'light');
   themeBtn.addEventListener('click',function(){
     applyTheme(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark');
   });
 
-  function lang(){return document.documentElement.getAttribute('data-lang')||'en';}
-  function isAr(){return lang()==='ar';}
-  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  function isAr(){return (document.documentElement.getAttribute('data-lang')||'en')==='ar';}
+  function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
   function timeAgo(ts){
     var diff=Math.floor((Date.now()-ts)/1000);
     if(diff<3600) return isAr()?'منذ لحظات':'Just now';
     if(diff<86400) return isAr()?'اليوم':'Today';
     var d=Math.floor(diff/86400);
     if(d===1) return isAr()?'أمس':'Yesterday';
-    return isAr()?'منذ '+d+' أيام':d+' days ago';
+    if(d<30) return isAr()?'منذ '+d+' أيام':d+' days ago';
+    var m=Math.floor(d/30);
+    return isAr()?'منذ '+m+' أشهر':m+' months ago';
   }
 
-  function render(){
-    var guidesList=document.getElementById('saved-guides-list');
-    var guides=JSON.parse(localStorage.getItem('dfl-saved-guides')||'[]');
+  /* ── CAT EMOJI LOOKUP ── */
+  var CAT_EMOJI={meals:'🍽️',family:'👨‍👩‍👧',wellness:'🌿',faith:'☪️',money:'💰',living:'🏡'};
 
-    if(!guides.length){
-      guidesList.innerHTML=
+  /* ── RENDER SAVED CAPSULES ── */
+  function renderCapsules(){
+    var list=document.getElementById('saved-capsules-list');
+    var items=JSON.parse(localStorage.getItem('dfl-saved-capsules')||'[]');
+    if(!items.length){
+      list.innerHTML=
         '<div class="saved-empty">'
-        +'<div class="saved-empty-icon">📚</div>'
-        +'<div class="saved-empty-title">'
-          +'<span class="en">Nothing saved yet.</span>'
-          +'<span class="ar">لا يوجد محفوظات بعد.</span>'
-        +'</div>'
-        +'<p class="saved-empty-sub">'
-          +'<span class="en">When you save a life guide, it appears here — quietly waiting for you.</span>'
-          +'<span class="ar">عندما تحفظ دليلاً، يظهر هنا — ينتظرك بهدوء.</span>'
-        +'</p>'
-        +'<a href="/library.html" class="saved-empty-link">'
-          +'<span class="en">Browse the Calm Life Library →</span>'
-          +'<span class="ar">تصفح مكتبة الحياة الهادئة →</span>'
-        +'</a>'
+        +'<div class="saved-empty-icon">💊</div>'
+        +'<div class="saved-empty-title"><span class="en">No capsules saved yet.</span><span class="ar">لا توجد تذاكر محفوظة بعد.</span></div>'
+        +'<p class="saved-empty-sub"><span class="en">Open today\'s capsule and tap Save to keep it here.</span><span class="ar">افتح تذكرة اليوم واضغط حفظ لتراها هنا.</span></p>'
+        +'<a href="/capsule.html" class="saved-empty-link"><span class="en">Today\'s Capsule →</span><span class="ar">تذكرة اليوم →</span></a>'
         +'</div>';
       return;
     }
+    list.innerHTML=items.map(function(c,i){
+      var em=c.emoji||(CAT_EMOJI[c.category]||'💊');
+      var href='/capsule.html?id='+encodeURIComponent(c.id||'');
+      return '<a class="saved-item" href="'+href+'" style="text-decoration:none;">'
+        +'<div class="saved-item-emoji">'+esc(em)+'</div>'
+        +'<div class="saved-item-body">'
+          +'<span class="saved-item-title">'+esc(c.title||'Capsule')+'</span>'
+          +'<span class="saved-item-date">'+timeAgo(c.date)+'</span>'
+        +'</div>'
+        +'<button class="saved-item-del" data-idx="'+i+'" aria-label="Remove" onclick="event.preventDefault();event.stopPropagation();">✕</button>'
+        +'</a>';
+    }).join('');
+    list.querySelectorAll('.saved-item-del').forEach(function(btn){
+      btn.addEventListener('click',function(e){
+        e.preventDefault();e.stopPropagation();
+        var idx=parseInt(btn.dataset.idx);
+        var arr=JSON.parse(localStorage.getItem('dfl-saved-capsules')||'[]');
+        arr.splice(idx,1);
+        localStorage.setItem('dfl-saved-capsules',JSON.stringify(arr));
+        renderCapsules();
+      });
+    });
+  }
 
-    guidesList.innerHTML=guides.map(function(g,i){
-      return '<div class="saved-item" data-idx="'+i+'">'
+  /* ── RENDER SAVED GUIDES ── */
+  function renderGuides(){
+    var list=document.getElementById('saved-guides-list');
+    var items=JSON.parse(localStorage.getItem('dfl-saved-guides')||'[]');
+    if(!items.length){
+      list.innerHTML=
+        '<div class="saved-empty">'
+        +'<div class="saved-empty-icon">📚</div>'
+        +'<div class="saved-empty-title"><span class="en">Nothing saved yet.</span><span class="ar">لا يوجد محفوظات بعد.</span></div>'
+        +'<p class="saved-empty-sub"><span class="en">When you save a life guide, it appears here — quietly waiting for you.</span><span class="ar">عندما تحفظ دليلاً، يظهر هنا — ينتظرك بهدوء.</span></p>'
+        +'<a href="/library.html" class="saved-empty-link"><span class="en">Browse the Library →</span><span class="ar">تصفح المكتبة →</span></a>'
+        +'</div>';
+      return;
+    }
+    list.innerHTML=items.map(function(g,i){
+      var href=g.href||'/library.html';
+      return '<a class="saved-item" href="'+esc(href)+'" style="text-decoration:none;">'
         +'<div class="saved-item-emoji">'+esc(g.emoji||'📖')+'</div>'
         +'<div class="saved-item-body">'
           +'<span class="saved-item-title">'+esc(g.title||'Guide')+'</span>'
           +'<span class="saved-item-date">'+timeAgo(g.date)+'</span>'
         +'</div>'
-        +'<button class="saved-item-del" data-idx="'+i+'" aria-label="Remove">✕</button>'
-        +'</div>';
+        +'<button class="saved-item-del" data-idx="'+i+'" aria-label="Remove" onclick="event.preventDefault();event.stopPropagation();">✕</button>'
+        +'</a>';
     }).join('');
-
-    guidesList.querySelectorAll('.saved-item-del').forEach(function(btn){
-      btn.addEventListener('click',function(){
+    list.querySelectorAll('.saved-item-del').forEach(function(btn){
+      btn.addEventListener('click',function(e){
+        e.preventDefault();e.stopPropagation();
         var idx=parseInt(btn.dataset.idx);
         var arr=JSON.parse(localStorage.getItem('dfl-saved-guides')||'[]');
         arr.splice(idx,1);
         localStorage.setItem('dfl-saved-guides',JSON.stringify(arr));
-        render();
+        renderGuides();
       });
     });
   }
 
-  render();
+  /* ── RENDER NOTES PREVIEW ── */
+  function renderNotes(){
+    var sec=document.getElementById('notes-section');
+    var list=document.getElementById('saved-notes-list');
+    /* notes.html stores notes as array [{id,text,date}] or plain string */
+    var raw=localStorage.getItem('dfl-notes');
+    if(!raw){sec.style.display='none';return;}
+    var notes=[];
+    try{
+      var parsed=JSON.parse(raw);
+      if(Array.isArray(parsed)) notes=parsed;
+      else if(typeof parsed==='string'&&parsed.trim()) notes=[{text:parsed,date:Date.now()}];
+    }catch(e){
+      if(typeof raw==='string'&&raw.trim()) notes=[{text:raw,date:Date.now()}];
+    }
+    if(!notes.length){sec.style.display='none';return;}
+    sec.style.display='block';
+    list.innerHTML=notes.slice(0,5).map(function(n,i){
+      var preview=esc((n.text||'').replace(/\n/g,' ').slice(0,80));
+      if((n.text||'').length>80) preview+='…';
+      return '<a class="saved-item" href="/notes.html" style="text-decoration:none;">'
+        +'<div class="saved-item-emoji">📝</div>'
+        +'<div class="saved-item-body">'
+          +'<span class="saved-item-title">'+preview+'</span>'
+          +'<span class="saved-item-date">'+timeAgo(n.date||Date.now())+'</span>'
+        +'</div>'
+        +'</a>';
+    }).join('');
+    if(notes.length>5){
+      list.innerHTML+='<a href="/notes.html" class="saved-empty-link" style="display:inline-block;margin:.75rem 0 0;">'
+        +'<span class="en">View all '+notes.length+' notes →</span>'
+        +'<span class="ar">عرض كل '+notes.length+' ملاحظات →</span>'
+        +'</a>';
+    }
+  }
+
+  function renderAll(){
+    renderCapsules();
+    renderGuides();
+    renderNotes();
+  }
+
+  renderAll();
 })();
 </script>
 </body>
