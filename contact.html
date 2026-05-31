@@ -419,31 +419,31 @@ window.dflTrack=function(event,params){
           <h2 style="margin-top:0;margin-bottom:20px"><span class="en">Send us a Message</span><span class="ar">أرسل رسالة</span></h2>
           <div class="form-group">
             <label><span class="en">Name</span><span class="ar">الاسم</span></label>
-            <input type="text" class="form-control" placeholder="Your name / اسمك">
+            <input id="cf-name" type="text" class="form-control" placeholder="Your name / اسمك">
           </div>
           <div class="form-group">
             <label><span class="en">Email</span><span class="ar">البريد الإلكتروني</span></label>
-            <input type="email" class="form-control" placeholder="your@email.com">
+            <input id="cf-email" type="email" class="form-control" placeholder="your@email.com">
           </div>
           <div class="form-group">
             <label><span class="en">Subject</span><span class="ar">الموضوع</span></label>
-            <select class="form-control">
+            <select id="cf-subject" class="form-control">
               <option value="" disabled selected>Select subject / اختر الموضوع</option>
-              <option value="error">Report an error / الإبلاغ عن خطأ</option>
-              <option value="suggestion">Feature suggestion / اقتراح ميزة</option>
-              <option value="partnership">Partnership / شراكة</option>
-              <option value="press">Press inquiry / استفسار صحفي</option>
-              <option value="other">Other / أخرى</option>
+              <option value="Report an error / الإبلاغ عن خطأ">Report an error / الإبلاغ عن خطأ</option>
+              <option value="Feature suggestion / اقتراح ميزة">Feature suggestion / اقتراح ميزة</option>
+              <option value="Partnership / شراكة">Partnership / شراكة</option>
+              <option value="Press inquiry / استفسار صحفي">Press inquiry / استفسار صحفي</option>
+              <option value="Other / أخرى">Other / أخرى</option>
             </select>
           </div>
           <div class="form-group">
             <label><span class="en">Message</span><span class="ar">الرسالة</span></label>
-            <textarea class="form-control" placeholder="Your message... / رسالتك..."></textarea>
+            <textarea id="cf-message" class="form-control" rows="5" placeholder="Your message... / رسالتك..."></textarea>
           </div>
           <button type="button" class="submit-btn" onclick="handleSubmit(this)">
             <span class="en">Send Message →</span><span class="ar">← إرسال الرسالة</span>
           </button>
-          <p id="form-msg" style="display:none;margin-top:12px;font-size:.85rem;color:#22C55E;font-weight:600"></p>
+          <p id="form-msg" style="display:none;margin-top:12px;font-size:.85rem;font-weight:600"></p>
         </div>
       </div>
       <div>
@@ -492,19 +492,55 @@ window.dflTrack=function(event,params){
     </div>
   </div>
   <script>
-    function handleSubmit(btn){{
-      btn.disabled=true;
-      btn.querySelector('.en').textContent='Sending...';
-      btn.querySelector('.ar').textContent='...جارٍ الإرسال';
-      setTimeout(function(){{
-        btn.disabled=false;
-        btn.querySelector('.en').textContent='Send Message →';
-        btn.querySelector('.ar').textContent='← إرسال الرسالة';
-        var msg=document.getElementById('form-msg');
-        msg.style.display='block';
-        msg.innerHTML='<span class="en">✓ Thanks! We'll be in touch soon.</span><span class="ar">✓ شكراً! سنتواصل معك قريباً.</span>';
-      }},1200);
-    }}
+    const API = 'https://dot4life-production.up.railway.app/api';
+    async function handleSubmit(btn) {
+      const name    = document.getElementById('cf-name').value.trim();
+      const email   = document.getElementById('cf-email').value.trim();
+      const subject = document.getElementById('cf-subject').value;
+      const message = document.getElementById('cf-message').value.trim();
+      const msg     = document.getElementById('form-msg');
+
+      if (!name || !email || !message) {
+        msg.style.display = 'block';
+        msg.style.color = '#ef4444';
+        msg.innerHTML = '<span class="en">Please fill all required fields.</span><span class="ar">يرجى تعبئة جميع الحقول المطلوبة.</span>';
+        return;
+      }
+
+      btn.disabled = true;
+      btn.querySelector('.en').textContent = 'Sending...';
+      btn.querySelector('.ar').textContent = '...جارٍ الإرسال';
+      msg.style.display = 'none';
+
+      try {
+        const res = await fetch(`${API}/contact`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, subject, message }),
+        });
+        const data = await res.json();
+
+        if (data.ok) {
+          msg.style.color = '#22C55E';
+          msg.innerHTML = '<span class="en">✓ Message sent! We\'ll be in touch soon.</span><span class="ar">✓ تم الإرسال! سنتواصل معك قريباً.</span>';
+          msg.style.display = 'block';
+          document.getElementById('cf-name').value = '';
+          document.getElementById('cf-email').value = '';
+          document.getElementById('cf-subject').value = '';
+          document.getElementById('cf-message').value = '';
+        } else {
+          throw new Error(data.error || 'Failed');
+        }
+      } catch (err) {
+        msg.style.color = '#ef4444';
+        msg.innerHTML = '<span class="en">Something went wrong. Please try again.</span><span class="ar">حدث خطأ. يرجى المحاولة مرة أخرى.</span>';
+        msg.style.display = 'block';
+      }
+
+      btn.disabled = false;
+      btn.querySelector('.en').textContent = 'Send Message →';
+      btn.querySelector('.ar').textContent = '← إرسال الرسالة';
+    }
   </script>
 
   <!-- ═══ ECOSYSTEM FOOTER ═════════════════════════════════════════════════════ -->

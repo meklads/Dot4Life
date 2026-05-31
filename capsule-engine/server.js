@@ -46,6 +46,7 @@ app.use((req, _res, next) => {
 app.use('/api/capsule',   require('./routes/public'));
 app.use('/api/admin',     require('./routes/admin'));
 app.use('/api/pregnancy', require('./routes/pregnancy'));
+app.use('/api/contact',   require('./routes/contact'));
 
 app.get('/', (_req, res) => res.json({
   system: 'd4l1-capsule-engine', version: '1.1.0', status: 'running',
