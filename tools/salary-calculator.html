@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-lang="en" dir="ltr">
+<head>
+<script>(function(){var t=localStorage.getItem('dfl-theme')||'light';var l=localStorage.getItem('dfl-lang')||'en';var h=document.documentElement;h.setAttribute('data-theme',t);h.setAttribute('data-lang',l);h.setAttribute('lang',l);h.setAttribute('dir',l==='ar'?'rtl':'ltr');})();</script>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Salary & Take-Home Calculator | حاسبة صافي الراتب — DotForLife</title>
+<meta name="description" content="Calculate your net take-home salary after GOSI, housing, transport, and allowances. Saudi Arabia focused, bilingual Arabic & English."/>
+<link rel="canonical" href="https://www.dotforlife.com/tools/salary-calculator"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Almarai:wght@400;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Almarai:wght@400;700;800&display=swap"/></noscript>
+<link rel="stylesheet" href="/styles/global.css"/>
+<style>
+/* ═══════════════════════════════════════
+   UNIFIED NAVBAR — same on every page
+   ═══════════════════════════════════════ */
+#navbar{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,248,244,0.97);border-bottom:1px solid var(--border,#E8E0D4);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transition:box-shadow .3s;min-height:60px;}
+#navbar.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.07);}
+[data-theme="dark"] #navbar{background:rgba(18,16,14,0.97);}
+.nav-inner{max-width:1280px;margin:0 auto;padding:0 28px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;min-height:60px;}
+.nav-logo{justify-self:start;display:flex;align-items:center;text-decoration:none;flex-shrink:0;}
+.nav-logo img{height:48px;width:auto;display:block;}
+@media(max-width:768px){.nav-logo img{height:40px;}}
+.nav-links{justify-self:center;display:flex;align-items:center;gap:4px;list-style:none;margin:0;padding:0;}
+.nav-links a{display:block;padding:6px 13px;border-radius:999px;font-size:.8rem;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--text-2,#9A9188);text-decoration:none;transition:color .2s,background .2s;white-space:nowrap;}
+.nav-links a:hover{color:var(--text,#1A1410);background:rgba(184,134,26,.08);}
+.nav-links a.active{color:var(--gold,#B8861A);font-weight:700;background:rgba(184,134,26,.1);}
+@media(max-width:768px){.nav-links{display:none;}}
+.nav-controls{justify-self:end;display:flex;gap:8px;align-items:center;}
+.nav-btn{cursor:pointer;border:1px solid var(--border,#E8E0D4);border-radius:8px;padding:5px 11px;font-size:.76rem;font-weight:600;background:transparent;color:var(--text-2,#9A9188);transition:all .2s;font-family:inherit;min-height:34px;}
+.nav-btn:hover{border-color:var(--gold,#B8861A);color:var(--gold,#B8861A);}
+/* ═══════════════════════════════════════
+   UNIFIED SUB-NAV — same on every page
+   ═══════════════════════════════════════ */
+#sub-nav{position:fixed;top:60px;left:0;right:0;z-index:99;background:rgba(255,255,255,0.97);border-bottom:1px solid var(--border,#E8E0D4);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);}
+[data-theme="dark"] #sub-nav{background:rgba(22,20,18,0.97);}
+.sub-nav-inner{max-width:1280px;margin:0 auto;padding:0 28px;display:flex;align-items:center;gap:2px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;height:42px;}
+.sub-nav-inner::-webkit-scrollbar{display:none;}
+.sub-nav-inner a{display:inline-flex;align-items:center;padding:5px 12px;border-radius:999px;font-size:.76rem;font-weight:500;color:var(--text-2,#9A9188);text-decoration:none;white-space:nowrap;flex-shrink:0;transition:color .2s,background .2s;}
+.sub-nav-inner a:hover{color:var(--text,#1A1410);background:rgba(184,134,26,.07);}
+.sub-nav-inner a.active{color:var(--gold,#B8861A);font-weight:600;background:rgba(184,134,26,.1);}
+[data-lang="ar"] .sub-nav-inner{direction:rtl;}
+body{padding-top:102px;}
+@media(max-width:768px){body{padding-top:102px;}#sub-nav{top:60px;}.nav-inner{padding:0 16px;}.sub-nav-inner{padding:0 12px;}}
+/* ═══════════════════════════════════════ */
+:root{--gold:#B8861A;--cream:#FAF8F4;--border:#E8E0D4;--text:#1A1410;--text-2:#9A9188;--muted:#B8AFA6;--card:#FFFFFF;--radius:12px;}
+[data-theme="dark"]{--cream:#13110F;--card:#1E1A17;--border:#2E2A26;--text:#F5F0E8;--text-2:#8C8279;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text);line-height:1.6;}
+[data-lang="ar"]{font-family:'Almarai',sans-serif;}
+.en{display:inline;}[data-lang="ar"] .en{display:none;}
+.ar{display:none;}[data-lang="ar"] .ar{display:inline;}
+.page-wrap{max-width:640px;margin:0 auto;padding:32px 20px 64px;}
+h1{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:800;letter-spacing:-.03em;margin-bottom:6px;}
+.subtitle{color:var(--text-2);margin-bottom:32px;font-size:.95rem;}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-bottom:16px;}
+.card h2{font-size:1rem;font-weight:700;margin-bottom:16px;color:var(--text-2);text-transform:uppercase;letter-spacing:.06em;font-size:.78rem;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
+@media(max-width:480px){.form-row{grid-template-columns:1fr;}}
+label{display:block;font-size:.78rem;font-weight:600;color:var(--text-2);margin-bottom:4px;}
+input,select{width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:.9rem;background:var(--cream);color:var(--text);font-family:inherit;transition:border-color .2s;}
+input:focus,select:focus{outline:none;border-color:var(--gold);}
+.calc-btn{width:100%;padding:13px;background:var(--gold);color:#fff;border:none;border-radius:10px;font-size:1rem;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .2s;margin-top:8px;}
+.calc-btn:hover{opacity:.9;}
+.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px;}
+.result-box{background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center;}
+.result-box.highlight{background:rgba(184,134,26,.08);border-color:var(--gold);}
+.result-label{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--text-2);margin-bottom:4px;}
+.result-value{font-size:1.4rem;font-weight:800;color:var(--text);}
+.result-value.gold{color:var(--gold);}
+.note{font-size:.76rem;color:var(--muted);margin-top:12px;line-height:1.6;}
+</style>
+</head>
+<body>
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo"><img src="/logo1-transparent.png" alt="Dot4Life"/></a>
+    <ul class="nav-links">
+      <li><a href="/library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a></li>
+      <li><a href="/health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
+      <li><a href="/finance.html" class="active"><span class="en">Finance</span><span class="ar">المالية</span></a></li>
+      <li><a href="/real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li>
+      <li><a href="/travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li>
+      <li><a href="/islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li>
+    </ul>
+    <div class="nav-controls">
+      <button class="nav-btn" onclick="toggleLang()"><span class="en">عربي</span><span class="ar">English</span></button>
+      <button class="nav-btn" onclick="toggleTheme()"><span class="en">🌙</span><span class="ar">🌙</span></button>
+    </div>
+  </div>
+</nav>
+<div id="sub-nav">
+  <div class="sub-nav-inner">
+    <a href="/tools/monthly-budget.html"><span class="en">Budget</span><span class="ar">الميزانية</span></a>
+    <a href="/tools/savings-goal.html"><span class="en">Savings</span><span class="ar">المدخرات</span></a>
+    <a href="/tools/zakat-calculator.html"><span class="en">Zakat</span><span class="ar">الزكاة</span></a>
+    <a href="/tools/mortgage-calculator.html"><span class="en">Mortgage</span><span class="ar">القرض العقاري</span></a>
+    <a href="/tools/salary-calculator.html" class="active"><span class="en">Salary</span><span class="ar">الراتب</span></a>
+    <a href="/tools/roi-calculator.html"><span class="en">ROI</span><span class="ar">العائد</span></a>
+  </div>
+</div>
+
+<div class="page-wrap">
+  <h1><span class="en">Salary Calculator</span><span class="ar">حاسبة صافي الراتب</span></h1>
+  <p class="subtitle"><span class="en">Calculate your net take-home pay after deductions — Saudi Arabia (GOSI)</span><span class="ar">احسب صافي راتبك بعد الاستقطاعات — المملكة العربية السعودية (التأمينات)</span></p>
+
+  <div class="card">
+    <h2><span class="en">Basic Information</span><span class="ar">المعلومات الأساسية</span></h2>
+    <div class="form-row">
+      <div>
+        <label><span class="en">Basic Salary (SAR)</span><span class="ar">الراتب الأساسي (ريال)</span></label>
+        <input type="number" id="basic" placeholder="5000" value="5000" min="0"/>
+      </div>
+      <div>
+        <label><span class="en">Housing Allowance (SAR)</span><span class="ar">بدل السكن (ريال)</span></label>
+        <input type="number" id="housing" placeholder="1000" value="1000" min="0"/>
+      </div>
+    </div>
+    <div class="form-row">
+      <div>
+        <label><span class="en">Transport Allowance (SAR)</span><span class="ar">بدل المواصلات (ريال)</span></label>
+        <input type="number" id="transport" placeholder="500" value="500" min="0"/>
+      </div>
+      <div>
+        <label><span class="en">Other Allowances (SAR)</span><span class="ar">بدلات أخرى (ريال)</span></label>
+        <input type="number" id="other" placeholder="0" value="0" min="0"/>
+      </div>
+    </div>
+    <div class="form-row">
+      <div>
+        <label><span class="en">Nationality</span><span class="ar">الجنسية</span></label>
+        <select id="nationality">
+          <option value="saudi"><span class="en">Saudi</span></option>
+          <option value="expat"><span class="en">Expat</span></option>
+        </select>
+      </div>
+      <div>
+        <label><span class="en">Sector</span><span class="ar">القطاع</span></label>
+        <select id="sector">
+          <option value="private"><span class="en">Private</span></option>
+          <option value="government"><span class="en">Government</span></option>
+        </select>
+      </div>
+    </div>
+    <button class="calc-btn" onclick="calculate()"><span class="en">Calculate →</span><span class="ar">احسب ←</span></button>
+  </div>
+
+  <div class="card" id="result-card" style="display:none">
+    <h2><span class="en">Results</span><span class="ar">النتائج</span></h2>
+    <div class="result-grid">
+      <div class="result-box"><div class="result-label"><span class="en">Gross Salary</span><span class="ar">الراتب الإجمالي</span></div><div class="result-value" id="res-gross">—</div></div>
+      <div class="result-box"><div class="result-label"><span class="en">GOSI Deduction</span><span class="ar">استقطاع التأمينات</span></div><div class="result-value" id="res-gosi">—</div></div>
+      <div class="result-box highlight" style="grid-column:1/-1"><div class="result-label"><span class="en">Net Take-Home</span><span class="ar">صافي الراتب</span></div><div class="result-value gold" id="res-net">—</div></div>
+      <div class="result-box"><div class="result-label"><span class="en">Annual Gross</span><span class="ar">الإجمالي السنوي</span></div><div class="result-value" id="res-annual">—</div></div>
+      <div class="result-box"><div class="result-label"><span class="en">Annual Net</span><span class="ar">الصافي السنوي</span></div><div class="result-value" id="res-annual-net">—</div></div>
+    </div>
+    <p class="note"><span class="en">* Saudi employees in private sector pay 10% GOSI on basic salary. Expats are not subject to GOSI deductions. Government sector rates may vary.</span><span class="ar">* يدفع الموظفون السعوديون في القطاع الخاص 10% تأمينات اجتماعية من الراتب الأساسي. الموظفون الأجانب غير خاضعين لاستقطاعات التأمينات.</span></p>
+  </div>
+</div>
+
+<script>
+function toggleLang(){var l=document.documentElement.getAttribute('data-lang')==='ar'?'en':'ar';document.documentElement.setAttribute('data-lang',l);document.documentElement.setAttribute('lang',l);document.documentElement.setAttribute('dir',l==='ar'?'rtl':'ltr');localStorage.setItem('dfl-lang',l);}
+function toggleTheme(){var t=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',t);localStorage.setItem('dfl-theme',t);}
+window.addEventListener('scroll',function(){document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>10);});
+function fmt(n){return n.toLocaleString('en-SA',{minimumFractionDigits:0,maximumFractionDigits:0})+' SAR';}
+function calculate(){
+  var basic=parseFloat(document.getElementById('basic').value)||0;
+  var housing=parseFloat(document.getElementById('housing').value)||0;
+  var transport=parseFloat(document.getElementById('transport').value)||0;
+  var other=parseFloat(document.getElementById('other').value)||0;
+  var nat=document.getElementById('nationality').value;
+  var gross=basic+housing+transport+other;
+  var gosi=0;
+  if(nat==='saudi') gosi=basic*0.10;
+  var net=gross-gosi;
+  document.getElementById('res-gross').textContent=fmt(gross);
+  document.getElementById('res-gosi').textContent=fmt(gosi);
+  document.getElementById('res-net').textContent=fmt(net);
+  document.getElementById('res-annual').textContent=fmt(gross*12);
+  document.getElementById('res-annual-net').textContent=fmt(net*12);
+  document.getElementById('result-card').style.display='block';
+  document.getElementById('result-card').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+</script>
+</body>
+</html>
