@@ -128,10 +128,8 @@
     .container{max-width:1140px;margin:0 auto;padding:0 24px}
 
     /* NAV */
-    .navbar{position:sticky;top:0;z-index:100;background:rgba(245,246,247,.94);
-      backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-      border-bottom:1px solid var(--border-l);padding:0 24px}
-    [data-theme="dark"] .navbar{background:rgba(15,23,42,.94)}
+    
+    [data-theme="dark"] 
     .nav-inner{display:flex;align-items:center;justify-content:space-between;
       height:60px;max-width:1140px;margin:0 auto}
     .nav-logo{font-size:1.1rem;font-weight:900;letter-spacing:-.02em;
@@ -497,10 +495,7 @@
   }
 
   /* 5. Navbar in dark */
-  [data-theme="dark"] .navbar {
-    background: rgba(15,23,42,.96) !important;
-    border-bottom-color: var(--border-l, #334155) !important;
-  }
+  [data-theme="dark"] 
 
   /* 6. Mobile nav */
   [data-theme="dark"] .mobile-nav {
@@ -952,7 +947,83 @@
   .eco-footer-bottom { flex-direction: column; align-items: flex-start; gap: 12px; }
 }
 
-</style>
+
+  /* ═══════════════════════════════════════
+   UNIFIED NAVBAR — same on every page
+   ═══════════════════════════════════════ */
+#navbar {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(250,248,244,0.97);
+  border-bottom: 1px solid var(--border, #E8E0D4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: box-shadow .3s;
+  min-height: 60px;
+}
+#navbar.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,.07); }
+[data-theme="dark"] #navbar { background: rgba(18,16,14,0.97); }
+.nav-inner {
+  max-width: 1280px; margin: 0 auto; padding: 0 28px;
+  display: grid; grid-template-columns: 1fr auto 1fr;
+  align-items: center; min-height: 60px;
+}
+.nav-logo { justify-self: start; display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
+.nav-logo img { height: 48px; width: auto; display: block; }
+@media (max-width: 768px) { .nav-logo img { height: 40px; } }
+.nav-links {
+  justify-self: center; display: flex; align-items: center;
+  gap: 4px; list-style: none; margin: 0; padding: 0;
+}
+.nav-links a {
+  display: block; padding: 6px 13px; border-radius: 999px;
+  font-size: .8rem; font-weight: 500; letter-spacing: .04em;
+  text-transform: uppercase; color: var(--text-2, #9A9188);
+  text-decoration: none; transition: color .2s, background .2s; white-space: nowrap;
+}
+.nav-links a:hover { color: var(--text, #1A1410); background: rgba(184,134,26,.08); }
+.nav-links a.active { color: var(--gold, #B8861A); font-weight: 700; background: rgba(184,134,26,.1); }
+@media (max-width: 768px) { .nav-links { display: none; } }
+.nav-controls { justify-self: end; display: flex; gap: 8px; align-items: center; }
+.nav-btn {
+  cursor: pointer; border: 1px solid var(--border, #E8E0D4); border-radius: 8px;
+  padding: 5px 11px; font-size: .76rem; font-weight: 600;
+  background: transparent; color: var(--text-2, #9A9188);
+  transition: color .2s, border-color .2s;
+}
+.nav-btn:hover { color: var(--text, #1A1410); border-color: var(--gold, #B8861A); }
+[data-theme="dark"] .nav-btn { color: #9A9188; border-color: #333; }
+#sub-nav {
+  position: fixed; top: 60px; left: 0; right: 0; z-index: 99;
+  background: rgba(255,255,255,0.97);
+  border-bottom: 1px solid var(--border, #E8E0D4);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+}
+[data-theme="dark"] #sub-nav { background: rgba(22,20,18,0.97); }
+.sub-nav-inner {
+  max-width: 1280px; margin: 0 auto; padding: 0 28px;
+  display: flex; align-items: center; gap: 2px;
+  overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; height: 42px;
+}
+.sub-nav-inner::-webkit-scrollbar { display: none; }
+.sub-nav-inner a {
+  display: inline-flex; align-items: center; padding: 5px 12px;
+  border-radius: 999px; font-size: .76rem; font-weight: 500;
+  color: var(--text-2, #9A9188); text-decoration: none;
+  white-space: nowrap; flex-shrink: 0; transition: color .2s, background .2s;
+}
+.sub-nav-inner a:hover { color: var(--text, #1A1410); background: rgba(184,134,26,.07); }
+.sub-nav-inner a.active { color: var(--gold, #B8861A); font-weight: 600; background: rgba(184,134,26,.1); }
+[data-lang="ar"] .sub-nav-inner { direction: rtl; }
+body { padding-top: 102px; }
+@media (max-width: 768px) {
+  body { padding-top: 102px; }
+  #sub-nav { top: 60px; }
+  .nav-inner { padding: 0 16px; }
+  .sub-nav-inner { padding: 0 12px; }
+}
+/* ═══════════════════════════════════════ */
+  </style>
 <!-- DFL Analytics v1 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-DOTFORLIFE1"></script>
 <script>
@@ -998,8 +1069,8 @@ window.dflTrack=function(event,params){
   <!-- DFL CANONICAL SYSTEM CSS -->
   <style id="dfl-sys">
     /* Hide all old navbars */
-    .navbar { display: none !important; }
-    nav.navbar { display: none !important; }
+    
+    nav
     /* Flash-safe tokens */
     :root {
       --gold: #B8861A; --gold-l: #D4A832; --gold-d: #8A620F;
@@ -1017,50 +1088,21 @@ window.dflTrack=function(event,params){
       --border: #302820; --gold: #D4A832;
     }
     /* Canonical Navbar */
-    #dfl-navbar {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 9000;
-      min-height: 64px; height: auto; overflow: visible;
-      background: rgba(250,248,244,0.97);
-      border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-      transition: box-shadow .3s;
-      display: flex; align-items: center; justify-content: center;
-    }
-    [data-theme="dark"] #dfl-navbar {
-      background: rgba(18,16,14,0.97);
-      border-bottom-color: var(--border);
-    }
-    #dfl-navbar.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,.08); }
-    .dfl-nav-inner {
-      max-width: 1280px; width: 100%; padding: 0 32px;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .dfl-nav-logo {
-      font-family: var(--font-serif); font-size: 1.25rem; font-weight: 600;
-      letter-spacing: .04em; color: var(--text); text-decoration: none;
-    }
-    .dfl-nav-logo .dot { color: var(--gold); }
-    .dfl-nav-links {
-      display: flex; gap: 2rem; align-items: center; list-style: none;
-      margin: 0; padding: 0;
-    }
-    .dfl-nav-links a {
-      font-size: .82rem; font-weight: 500; letter-spacing: .06em;
-      text-transform: uppercase; color: var(--text-2);
-      text-decoration: none; transition: color .2s;
-    }
-    .dfl-nav-links a:hover { color: var(--text); }
-    .dfl-nav-controls { display: flex; gap: .75rem; align-items: center; }
-    .dfl-nav-btn {
-      cursor: pointer; border: 1px solid var(--border); border-radius: 6px;
-      padding: .35rem .7rem; font-size: .76rem; font-weight: 600;
-      letter-spacing: .08em; background: transparent; color: var(--text-2);
-      transition: all .2s; font-family: inherit;
-    }
-    .dfl-nav-btn:hover { border-color: var(--gold); color: var(--gold); }
+    
+    [data-theme="dark"] 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     @media (max-width: 768px) {
-      .dfl-nav-links { display: none !important; }
-      .dfl-nav-inner { padding: 0 16px; }
+      
+      
     }
     /* Push body content below navbar */
     body { padding-top: 64px !important; }
@@ -1098,60 +1140,51 @@ window.dflTrack=function(event,params){
     .dfl-footer-bottom a { color: #64748b; text-decoration: none; }
     .dfl-footer-bottom a:hover { color: #B8861A; }
     /* Mobile Nav */
-    #dfl-mobile-nav {
-      display: none; position: fixed; bottom: 0; left: 0; right: 0;
-      background: var(--card-bg); border-top: 1px solid var(--border);
-      z-index: 8999; padding: 4px 0 max(8px,env(safe-area-inset-bottom));
-    }
-    [data-theme="dark"] #dfl-mobile-nav { background: #1E1A16; border-top-color: #302820; }
-    .dfl-mnav-inner { display: flex; justify-content: space-around; }
-    .dfl-mnav-item {
-      display: flex; flex-direction: column; align-items: center; gap: 3px;
-      padding: 6px 8px; font-size: .62rem; font-weight: 500;
-      color: var(--muted); text-decoration: none; transition: color .2s;
-      min-width: 56px; text-align: center;
-    }
-    .dfl-mnav-item svg { width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round; }
-    .dfl-mnav-item:hover, .dfl-mnav-item.active { color: var(--gold); }
-    [data-lang="ar"] .dfl-mnav-item { font-family: var(--font-ar); }
-    @media(max-width:768px){ #dfl-mobile-nav{display:block;} body{padding-bottom:80px !important;} }
+    
+    [data-theme="dark"] 
+    
+    
+    
+    
+    [data-lang="ar"] 
+    @media(max-width:768px){  body{padding-bottom:80px !important;} }
   </style>
 <script src="/scripts/global.js" defer></script>
 </head>
 <body>
-  <!-- DFL CANONICAL NAVBAR -->
-  <nav id="dfl-navbar" role="navigation" aria-label="Main navigation">
-    <div class="dfl-nav-inner">
-      <a href="/" class="dfl-nav-logo"><img src="/logo1-transparent.png" alt="Dot4Life" height="130" style="height:130px;width:auto;display:block;margin-top:4px;margin-bottom:8px;"></a>
-      <ul class="dfl-nav-links">
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo"><img src="/logo1-transparent.png" alt="Dot4Life" height="48" style="height:48px;width:auto;display:block;"></a>
+      <ul class="nav-links">
+        <li><a href="/library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a></li>
         <li><a href="/health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
         <li><a href="/finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li>
         <li><a href="/real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li>
-        <li><a href="/travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li>
+        <li><a href="/travel.html" class="active"><span class="en">Travel</span><span class="ar">السفر</span></a></li>
         <li><a href="/islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li>
       </ul>
-      <div class="dfl-nav-controls">
-        <button class="dfl-nav-btn" id="dfl-lang-btn" aria-label="Toggle language">
-          <span class="en">عربي</span><span class="ar">English</span>
-        </button>
-        <button class="dfl-nav-btn" id="dfl-theme-btn" aria-label="Toggle theme">
-          <span class="en">🌙</span><span class="ar">🌙</span>
-        </button>
+      <div class="nav-controls">
+        <button class="nav-btn" id="lang-toggle"><span class="en">عربي</span><span class="ar">English</span></button>
+        <button class="nav-btn" id="theme-toggle"><span class="en">🌙</span><span class="ar">🌙</span></button>
       </div>
     </div>
   </nav>
+<div id="sub-nav">
+  <div class="sub-nav-inner">
+    <a href="/travel.html"><span class="en">✈️ Travel Hub</span><span class="ar">✈️ مركز السفر</span></a>
+    <a href="/cities/riyadh/index.html"><span class="en">🏙️ Riyadh</span><span class="ar">🏙️ الرياض</span></a>
+    <a href="/cities/jeddah/index.html"><span class="en">🌊 Jeddah</span><span class="ar">🌊 جدة</span></a>
+    <a href="/cities/dubai/index.html"><span class="en">🌆 Dubai</span><span class="ar">🌆 دبي</span></a>
+    <a href="/cities/abu-dhabi/index.html"><span class="en">🕌 Abu Dhabi</span><span class="ar">🕌 أبوظبي</span></a>
+    <a href="/cities/oman/index.html"><span class="en">🏔️ Oman</span><span class="ar">🏔️ عُمان</span></a>
+    <a href="/guides/mecca-medina.html"><span class="en">🕋 Mecca & Medina</span><span class="ar">🕋 مكة والمدينة</span></a>
+    <a href="/tools/travel-budget.html"><span class="en">💰 Travel Budget</span><span class="ar">💰 ميزانية السفر</span></a>
+    <a href="/tools/currency-converter.html"><span class="en">💱 Currency</span><span class="ar">💱 العملات</span></a>
+  </div>
+</div>
 
+  <!-- DFL CANONICAL NAVBAR -->
   <!-- NAVBAR -->
-  <nav class="navbar" role="navigation" aria-label="Main navigation">
-    <div class="nav-inner">
-      <a href="/" class="nav-logo">dot<span style="color:var(--cyan,#0ea5e9)">.</span>life</a>
-      <div class="nav-actions">
-        <button class="icon-btn" onclick="toggleLang()"><span class="en">🌐 عربي</span><span class="ar">🌐 EN</span></button>
-        <button class="icon-btn" onclick="toggleTheme()" id="themeBtn">🌙</button>
-      </div>
-    </div>
-  </nav>
-
   <!-- BREADCRUMB -->
   <div class="container">
     <nav class="breadcrumb" aria-label="Breadcrumb">
@@ -2146,65 +2179,28 @@ document.querySelectorAll('.faq-q').forEach(function(btn){
     </div>
   </footer>
   <!-- DFL MOBILE NAV -->
-  <nav id="dfl-mobile-nav" aria-label="Mobile navigation">
-    <div class="dfl-mnav-inner">
-      <a href="/" class="dfl-mnav-item" aria-label="Home">
-        <svg viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
-        <span class="en">Home</span><span class="ar">الرئيسية</span>
-      </a>
-      <a href="/health.html" class="dfl-mnav-item" aria-label="Health">
-        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-        <span class="en">Health</span><span class="ar">الصحة</span>
-      </a>
-      <a href="/finance.html" class="dfl-mnav-item" aria-label="Finance">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v12M9 9h4.5a2.5 2.5 0 010 5H9m0 0h5"/></svg>
-        <span class="en">Finance</span><span class="ar">المالية</span>
-      </a>
-      <a href="/islamic.html" class="dfl-mnav-item" aria-label="Islamic">
-        <svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 100 18A9 9 0 0012 3zM12 3c-2 2-3 4.5-3 9s1 7 3 9m0-18c2 2 3 4.5 3 9s-1 7-3 9M3 12h18"/></svg>
-        <span class="en">Islamic</span><span class="ar">الإسلامية</span>
-      </a>
-      <a href="/travel.html" class="dfl-mnav-item" aria-label="Travel">
-        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 011.06 2.2 2 2 0 013.04 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
-        <span class="en">Travel</span><span class="ar">السفر</span>
-      </a>
-    </div>
-  </nav>
-
-  <script id="dfl-nav-js">
+    <script>
   (function(){
-    // Flash prevention
-    (function(){
-      var t=localStorage.getItem('dfl-theme')||'light',l=localStorage.getItem('dfl-lang')||'en',h=document.documentElement;
-      h.setAttribute('data-theme',t);h.setAttribute('data-lang',l);
-      h.setAttribute('lang',l==='ar'?'ar':'en');h.setAttribute('dir',l==='ar'?'rtl':'ltr');
-    })();
-    function ready(fn){ if(document.readyState!=='loading') fn(); else document.addEventListener('DOMContentLoaded',fn); }
-    ready(function(){
-      // Scroll shadow
-      var nb=document.getElementById('dfl-navbar');
-      if(nb){ window.addEventListener('scroll',function(){ nb.classList.toggle('scrolled',window.scrollY>40); },{passive:true}); }
-      // Language
-      var lb=document.getElementById('dfl-lang-btn');
-      if(lb){ lb.addEventListener('click',function(){
-        var h=document.documentElement,l=h.getAttribute('data-lang')==='ar'?'en':'ar';
-        h.setAttribute('data-lang',l);h.setAttribute('lang',l);
-        h.setAttribute('dir',l==='ar'?'rtl':'ltr');localStorage.setItem('dfl-lang',l);
-      }); }
-      // Theme
-      var tb=document.getElementById('dfl-theme-btn');
-      if(tb){
-        function applyT(t){
-          document.documentElement.setAttribute('data-theme',t);localStorage.setItem('dfl-theme',t);
-          var en=tb.querySelector('.en'),ar=tb.querySelector('.ar');
-          if(en)en.textContent=t==='dark'?'☀️':'🌙';if(ar)ar.textContent=t==='dark'?'☀️':'🌙';
-        }
-        applyT(localStorage.getItem('dfl-theme')||'light');
-        tb.addEventListener('click',function(){ applyT(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark'); });
-      }
-      // Language/theme spans: also update any existing dfl-lang-btn if duplicated
-      var en=document.querySelectorAll('.en'),ar=document.querySelectorAll('.ar');
-    });
+    var nb = document.getElementById('navbar');
+    if(nb){ window.addEventListener('scroll', function(){ nb.classList.toggle('scrolled', window.scrollY>40); }, {passive:true}); }
+    var lt = document.getElementById('lang-toggle');
+    if(lt){ lt.addEventListener('click', function(){
+      var h=document.documentElement, l=h.getAttribute('data-lang')==='ar'?'en':'ar';
+      h.setAttribute('data-lang',l); h.setAttribute('lang',l); h.setAttribute('dir',l==='ar'?'rtl':'ltr');
+      localStorage.setItem('dfl-lang',l);
+    }); }
+    var tt = document.getElementById('theme-toggle');
+    if(tt){
+      function applyTheme(t){ document.documentElement.setAttribute('data-theme',t); localStorage.setItem('dfl-theme',t);
+        var e=tt.querySelector('.en'), a=tt.querySelector('.ar');
+        if(e) e.textContent=t==='dark'?'☀️':'🌙'; if(a) a.textContent=t==='dark'?'☀️':'🌙'; }
+      applyTheme(localStorage.getItem('dfl-theme')||'light');
+      tt.addEventListener('click', function(){ applyTheme(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark'); });
+    }
+    if('IntersectionObserver' in window){
+      var io=new IntersectionObserver(function(e){ e.forEach(function(x){ if(x.isIntersecting){ x.target.classList.add('visible'); io.unobserve(x.target); } }); },{threshold:.1});
+      document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+    } else { document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('visible'); }); }
   })();
   </script>
 </body>
