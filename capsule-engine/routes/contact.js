@@ -61,6 +61,37 @@ router.post('/', async (req, res) => {
     }
 
     console.log(`[contact] ✓ Message from ${email} — id: ${result.data?.id}`);
+
+    // Send thank-you email to sender
+    await getResend().emails.send({
+      from:    FROM,
+      to:      email,
+      subject: `شكراً على تواصلك مع Dot4Life 🌿`,
+      html: `
+        <div dir="rtl" style="font-family:'Segoe UI',Arial,sans-serif;max-width:600px;margin:0 auto;background:#FAF8F4;padding:32px;border-radius:16px">
+          <div style="background:#fff;border:1px solid #E0D8CC;border-radius:12px;padding:32px;text-align:center">
+            <div style="font-size:42px;margin-bottom:12px">🌿</div>
+            <div style="font-size:12px;font-weight:700;letter-spacing:.14em;color:#C8706A;margin-bottom:8px">DOT4LIFE</div>
+            <h2 style="margin:0 0 16px;font-size:22px;color:#1A1410">شكراً على رسالتك، ${name}</h2>
+            <p style="font-size:14px;line-height:1.8;color:#5C534A;margin:0 0 24px">
+              وصلتنا رسالتك بخصوص <strong>${subject || 'استفسار عام'}</strong>.<br/>
+              سنراجعها ونرد عليك في أقرب وقت ممكن.
+            </p>
+            <div style="background:#F5F0E8;border-radius:8px;padding:16px 20px;text-align:right;margin-bottom:24px">
+              <div style="font-size:12px;color:#9A9188;margin-bottom:6px">رسالتك</div>
+              <div style="font-size:13px;line-height:1.7;color:#1A1410;white-space:pre-wrap">${message}</div>
+            </div>
+            <a href="https://dotforlife.com" style="display:inline-block;background:#C8706A;color:#fff;text-decoration:none;font-size:14px;font-weight:600;padding:12px 32px;border-radius:8px">
+              العودة للموقع ←
+            </a>
+          </div>
+          <div style="text-align:center;margin-top:16px;font-size:12px;color:#9A9188">
+            dotforlife.com · الرفيق اليومي الموثوق لكل أسرة
+          </div>
+        </div>
+      `,
+    }).catch(err => console.error('[contact] thank-you email failed:', err.message));
+
     res.json({ ok: true });
 
   } catch (err) {
