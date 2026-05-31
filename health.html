@@ -201,6 +201,46 @@
     body{padding-bottom:64px;}
   }
   @media(max-width:480px){.tools-grid{grid-template-columns:1fr;}}
+
+/* ── Sub-navigation ── */
+#sub-nav {
+  background: var(--cream, #FAF8F4);
+  border-bottom: 1px solid var(--border, #E8E0D4);
+  position: sticky;
+  top: 60px;
+  z-index: 39;
+}
+.sub-nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.sub-nav-inner::-webkit-scrollbar { display: none; }
+.sub-nav-inner a {
+  padding: 9px 14px;
+  font-size: 0.79rem;
+  font-weight: 500;
+  color: var(--muted, #9A9188);
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: color .2s, border-color .2s;
+  flex-shrink: 0;
+}
+.sub-nav-inner a:hover { color: var(--text, #1A1410); }
+.sub-nav-inner a.active {
+  color: var(--gold, #B8861A);
+  border-bottom-color: var(--gold, #B8861A);
+}
+[data-lang="ar"] .sub-nav-inner { direction: rtl; flex-direction: row-reverse; }
+@media (max-width: 768px) { #sub-nav { top: 56px; } .sub-nav-inner a { padding: 8px 10px; font-size: .75rem; } }
+
 </style>
 </head>
 <body>
@@ -210,11 +250,12 @@
     <div class="nav-inner">
       <a href="/" class="nav-logo"><img src="/logo1-transparent.png" alt="Dot4Life" height="130" style="height:130px;width:auto;display:block;margin-top:4px;margin-bottom:8px;"></a>
       <ul class="nav-links">
-        <li><a href="/health.html" class="active"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
-        <li><a href="/pregnancy-journey.html" style="color:var(--rose,#C8706A)"><span class="en">Pregnancy 🌸</span><span class="ar">رحلة الحمل 🌸</span></a></li>
-        <li><a href="/finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li>
-        <li><a href="/islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li>
-        <li><a href="/real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li>
+      <li><a href="/library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a></li>
+      <li><a href="/health.html" class="active"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
+      <li><a href="/finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li>
+      <li><a href="/real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li>
+      <li><a href="/travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li>
+      <li><a href="/islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li>
       </ul>
       <div class="nav-controls">
         <button class="nav-btn" id="lang-toggle"><span class="en">عربي</span><span class="ar">English</span></button>
@@ -222,6 +263,17 @@
       </div>
     </div>
   </nav>
+<div id="sub-nav">
+  <div class="sub-nav-inner">
+    <a href="/tools/bmi-calculator.html"><span class="en">BMI Calculator</span><span class="ar">حاسبة BMI</span></a>
+    <a href="/tools/water-calculator.html"><span class="en">Water</span><span class="ar">حاسبة الماء</span></a>
+    <a href="/tools/calorie-calculator.html"><span class="en">Calories</span><span class="ar">حاسبة السعرات</span></a>
+    <a href="/tools/body-fat-calculator.html"><span class="en">Body Fat</span><span class="ar">الدهون</span></a>
+    <a href="/tools/pregnancy-calculator.html"><span class="en">Pregnancy Calc</span><span class="ar">حاسبة الحمل</span></a>
+    <a href="/pregnancy-journey.html"><span class="en">Pregnancy Journey 🌸</span><span class="ar">رحلة الحمل 🌸</span></a>
+    <a href="/guides/bmi-guide-arabs-gcc.html"><span class="en">BMI Guide</span><span class="ar">دليل BMI</span></a>
+  </div>
+</div>
 
   <!-- PAGE -->
   <div id="page">

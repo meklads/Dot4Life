@@ -285,6 +285,46 @@
   .mobile-nav-item.active { color: var(--gold); }
   .mobile-nav-item span:first-child { font-size: 1.2rem; }
   [data-lang="ar"] .mobile-nav-item { font-family: var(--font-ar); }
+
+/* ── Sub-navigation ── */
+#sub-nav {
+  background: var(--cream, #FAF8F4);
+  border-bottom: 1px solid var(--border, #E8E0D4);
+  position: sticky;
+  top: 60px;
+  z-index: 39;
+}
+.sub-nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.sub-nav-inner::-webkit-scrollbar { display: none; }
+.sub-nav-inner a {
+  padding: 9px 14px;
+  font-size: 0.79rem;
+  font-weight: 500;
+  color: var(--muted, #9A9188);
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: color .2s, border-color .2s;
+  flex-shrink: 0;
+}
+.sub-nav-inner a:hover { color: var(--text, #1A1410); }
+.sub-nav-inner a.active {
+  color: var(--gold, #B8861A);
+  border-bottom-color: var(--gold, #B8861A);
+}
+[data-lang="ar"] .sub-nav-inner { direction: rtl; flex-direction: row-reverse; }
+@media (max-width: 768px) { #sub-nav { top: 56px; } .sub-nav-inner a { padding: 8px 10px; font-size: .75rem; } }
+
 </style>
 </head>
 <body>
@@ -306,6 +346,14 @@
       </div>
     </div>
   </nav>
+<div id="sub-nav">
+  <div class="sub-nav-inner">
+    <a href="/tasks.html"><span class="en">Tasks</span><span class="ar">المهام</span></a>
+    <a href="/notes.html"><span class="en">Notes</span><span class="ar">الملاحظات</span></a>
+    <a href="/pregnancy-journey.html"><span class="en">Pregnancy 🌸</span><span class="ar">رحلة الحمل 🌸</span></a>
+    <a href="/library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a>
+  </div>
+</div>
 
   <!-- PAGE -->
   <main id="page">

@@ -220,6 +220,46 @@
   @media(max-width:768px){
     :root{--page-pad:20px;}
   }
+
+/* ── Sub-navigation ── */
+#sub-nav {
+  background: var(--cream, #FAF8F4);
+  border-bottom: 1px solid var(--border, #E8E0D4);
+  position: sticky;
+  top: 60px;
+  z-index: 39;
+}
+.sub-nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.sub-nav-inner::-webkit-scrollbar { display: none; }
+.sub-nav-inner a {
+  padding: 9px 14px;
+  font-size: 0.79rem;
+  font-weight: 500;
+  color: var(--muted, #9A9188);
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: color .2s, border-color .2s;
+  flex-shrink: 0;
+}
+.sub-nav-inner a:hover { color: var(--text, #1A1410); }
+.sub-nav-inner a.active {
+  color: var(--gold, #B8861A);
+  border-bottom-color: var(--gold, #B8861A);
+}
+[data-lang="ar"] .sub-nav-inner { direction: rtl; flex-direction: row-reverse; }
+@media (max-width: 768px) { #sub-nav { top: 56px; } .sub-nav-inner a { padding: 8px 10px; font-size: .75rem; } }
+
 </style>
 </head>
 <body>
@@ -228,18 +268,29 @@
 <nav id="navbar">
   <div class="nav-inner">
     <a href="/" class="nav-logo"><img src="/logo1-transparent.png" alt="DOTFORLIFE"/></a>
-    <ul class="nav-links">
-      <li><a href="/" class="home-link">← <span class="en">Today</span><span class="ar">اليوم</span></a></li>
+      <ul class="nav-links">
       <li><a href="/library.html" class="active"><span class="en">Library</span><span class="ar">المكتبة</span></a></li>
-      <li><a href="/saved.html" class="hide-sm"><span class="en">Saved</span><span class="ar">المحفوظ</span></a></li>
-      <li><a href="/tasks.html" class="hide-sm"><span class="en">Tasks</span><span class="ar">المهام</span></a></li>
-    </ul>
+      <li><a href="/health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
+      <li><a href="/finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li>
+      <li><a href="/real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li>
+      <li><a href="/travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li>
+      <li><a href="/islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li>
+      </ul>
     <div class="nav-controls">
       <button class="nav-btn" id="lang-toggle"><span class="en">عربي</span><span class="ar">EN</span></button>
       <button class="nav-btn" id="theme-toggle"><span class="en">🌙</span><span class="ar">🌙</span></button>
     </div>
   </div>
 </nav>
+<div id="sub-nav">
+  <div class="sub-nav-inner">
+    <a href="/saved.html"><span class="en">Saved</span><span class="ar">المحفوظ</span></a>
+    <a href="/tasks.html"><span class="en">Tasks</span><span class="ar">المهام</span></a>
+    <a href="/notes.html"><span class="en">Notes</span><span class="ar">الملاحظات</span></a>
+    <a href="/life-guide.html"><span class="en">Life Guide</span><span class="ar">دليل الحياة</span></a>
+    <a href="/capsule.html"><span class="en">Capsules</span><span class="ar">الكبسولات</span></a>
+  </div>
+</div>
 
 <!-- ── HERO ── -->
 <div id="lib-hero">

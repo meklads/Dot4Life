@@ -160,6 +160,46 @@
   .mobile-nav-item { display:flex; flex-direction:column; align-items:center; gap:3px; padding:4px 12px; font-size:.65rem; font-weight:600; color:var(--text-2); border:none; background:none; cursor:pointer; font-family:inherit; }
   .mobile-nav-item.active { color:var(--accent); }
   .mobile-nav-item span:first-child { font-size:1.2rem; }
+
+/* ── Sub-navigation ── */
+#sub-nav {
+  background: var(--cream, #FAF8F4);
+  border-bottom: 1px solid var(--border, #E8E0D4);
+  position: sticky;
+  top: 60px;
+  z-index: 39;
+}
+.sub-nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.sub-nav-inner::-webkit-scrollbar { display: none; }
+.sub-nav-inner a {
+  padding: 9px 14px;
+  font-size: 0.79rem;
+  font-weight: 500;
+  color: var(--muted, #9A9188);
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: color .2s, border-color .2s;
+  flex-shrink: 0;
+}
+.sub-nav-inner a:hover { color: var(--text, #1A1410); }
+.sub-nav-inner a.active {
+  color: var(--gold, #B8861A);
+  border-bottom-color: var(--gold, #B8861A);
+}
+[data-lang="ar"] .sub-nav-inner { direction: rtl; flex-direction: row-reverse; }
+@media (max-width: 768px) { #sub-nav { top: 56px; } .sub-nav-inner a { padding: 8px 10px; font-size: .75rem; } }
+
 </style>
 </head>
 <body>
@@ -172,14 +212,12 @@
         <img src="/logo1-transparent.png" alt="DOTFORLIFE" />
       </a>
       <ul class="nav-links">
-        <li><a href="/"><span class="en">Home</span><span class="ar">الرئيسية</span></a></li>
-        <li><a href="/health.html"><span class="en">Health</span><span class="ar">صحة</span></a></li>
-        <li><a href="/finance.html"><span class="en">Finance</span><span class="ar">مال</span></a></li>
-        <li><a href="/travel.html"><span class="en">Travel</span><span class="ar">سفر</span></a></li>
-        <li><a href="/islamic.html" class="active"><span class="en">Islamic</span><span class="ar">إسلام</span></a></li>
-        <li><a href="/tasks.html"><span class="en">Tasks</span><span class="ar">المهام</span></a></li>
-        <li><a href="/family.html"><span class="en">Family</span><span class="ar">العائلة</span></a></li>
-        <li><a href="/notes.html"><span class="en">Notes</span><span class="ar">ملاحظات</span></a></li>
+      <li><a href="/library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a></li>
+      <li><a href="/health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
+      <li><a href="/finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li>
+      <li><a href="/real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li>
+      <li><a href="/travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li>
+      <li><a href="/islamic.html" class="active"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li>
       </ul>
       <div class="nav-actions">
         <button class="lang-toggle" id="lang-toggle" aria-label="Switch language">عربي</button>
@@ -188,6 +226,17 @@
     </div>
   </div>
 </nav>
+<div id="sub-nav">
+  <div class="sub-nav-inner">
+    <a href="/tools/prayer-times.html"><span class="en">Prayer Times</span><span class="ar">أوقات الصلاة</span></a>
+    <a href="/tools/qibla.html"><span class="en">Qibla</span><span class="ar">القبلة</span></a>
+    <a href="/tools/hijri-converter.html"><span class="en">Hijri Calendar</span><span class="ar">التقويم الهجري</span></a>
+    <a href="/tools/inheritance-calculator.html"><span class="en">Inheritance</span><span class="ar">الميراث</span></a>
+    <a href="/tools/zakat-calculator.html"><span class="en">Zakat</span><span class="ar">الزكاة</span></a>
+    <a href="/guides/zakat-complete-guide.html"><span class="en">Zakat Guide</span><span class="ar">دليل الزكاة</span></a>
+    <a href="/guides/ramadan-nutrition-guide.html"><span class="en">Ramadan Guide</span><span class="ar">دليل رمضان</span></a>
+  </div>
+</div>
 
 <!-- HERO -->
 <section class="cat-hero">
