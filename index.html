@@ -316,7 +316,7 @@ body { padding-top: 60px; }
       letter-spacing: 0;
     }
     .hero-headline em {
-      font-style: italic;
+      
       background: linear-gradient(135deg, var(--gold-l) 0%, var(--gold) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -364,7 +364,7 @@ body { padding-top: 60px; }
       font-size: .82rem;
       color: var(--muted);
       letter-spacing: .02em;
-      font-style: italic;
+      
       display: flex;
       align-items: center;
       gap: .6rem;
@@ -610,7 +610,7 @@ body { padding-top: 60px; }
       font-weight: 300; line-height: 1.06; letter-spacing: -.03em;
       margin: 0 0 1.4rem;
     }
-    .sec-headline em { font-style: italic; }
+    .sec-headline em {  }
     .sec-body {
       font-size: 1.02rem; line-height: 1.82;
       max-width: 460px; margin-bottom: 2.5rem;
@@ -1111,7 +1111,7 @@ body { padding-top: 60px; }
     .dh-focus-text {
       font-family: var(--font-serif);
       font-size: 1.1rem;
-      font-style: italic;
+      
       color: rgba(255,255,255,.82);
       text-align: right;
       max-width: 380px;
@@ -1264,7 +1264,7 @@ body { padding-top: 60px; }
     .dh-reminder-placeholder {
       font-size: .8rem;
       color: var(--muted);
-      font-style: italic;
+      
     }
     /* EMPTY / DELETE */
     .dh-empty {
@@ -1401,7 +1401,7 @@ body { padding-top: 60px; }
       font-family: var(--font-serif);
       font-size: clamp(1.5rem, 2.8vw, 2.1rem);
       font-weight: 300;
-      font-style: italic;
+      
       line-height: 1.28;
       color: var(--text);
     }
@@ -1658,12 +1658,12 @@ body { padding-top: 60px; }
     <div class="nav-inner">
     <a href="/" class="nav-logo"><img src="/logo1-transparent.png" alt="Dot4Life" height="48" style="height:48px;width:auto;display:block;"></a>
       <ul class="nav-links">
-        <li><a href="/library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a></li>
         <li><a href="/health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
         <li><a href="/finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li>
         <li><a href="/real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li>
         <li><a href="/travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li>
         <li><a href="/islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li>
+        <li><a href="/library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a></li>
       </ul>
     <div class="nav-controls">
       <button class="nav-btn" id="lang-toggle" aria-label="Toggle language">
@@ -2180,43 +2180,6 @@ body { padding-top: 60px; }
   <!-- ═══════════════════════════════════════
        NEWSLETTER
   ═══════════════════════════════════════ -->
-  <section id="newsletter" aria-label="Newsletter signup">
-    <div class="section-label" style="justify-content:center;">
-      <span class="en">Stay Connected</span>
-      <span class="ar">ابقَ على تواصل</span>
-    </div>
-    <h2 class="newsletter-title reveal">
-      <span class="en">Weekly life insights,<br>in your inbox.</span>
-      <span class="ar">رؤى حياتية أسبوعية،<br>في بريدك.</span>
-    </h2>
-    <p class="newsletter-sub reveal">
-      <span class="en">No noise. Just the most useful ideas from health, finance, travel, and spiritual life — every Sunday.</span>
-      <span class="ar">لا ضجيج. فقط أكثر الأفكار فائدة من الصحة والمالية والسفر والحياة الروحية — كل أحد.</span>
-    </p>
-    <form class="newsletter-form reveal" id="newsletter-form" novalidate>
-      <input
-        type="email"
-        class="newsletter-input"
-        id="newsletter-email"
-        placeholder="your@email.com"
-        autocomplete="email"
-        required
-        aria-label="Email address"
-      />
-      <button type="submit" class="newsletter-btn">
-        <span class="en">Subscribe</span>
-        <span class="ar">اشترك</span>
-      </button>
-    </form>
-    <div class="success-msg" id="newsletter-success">
-      <span class="en">✓ You're in. Welcome to the DOTFORLIFE family.</span>
-      <span class="ar">✓ أنت معنا. أهلاً بك في عائلة DOTFORLIFE.</span>
-    </div>
-    <p class="newsletter-note">
-      <span class="en">No spam, ever. Unsubscribe anytime.</span>
-      <span class="ar">لا رسائل مزعجة أبداً. يمكنك إلغاء الاشتراك في أي وقت.</span>
-    </p>
-  </section>
 
   <!-- ═══════════════════════════════════════
        FRIDAY LETTER
@@ -2540,7 +2503,7 @@ body { padding-top: 60px; }
             '<div class="dh-family-avatar" style="background:'+col+'">'+esc((m.name||'?').charAt(0).toUpperCase())+'</div>' +
             '<div class="dh-family-info">' +
               '<div class="dh-family-name">'+esc(m.name)+'</div>' +
-              '<div class="dh-family-task">'+(m.task ? esc(m.task) : '<span class="en" style="color:var(--muted);font-style:italic">No task</span><span class="ar" style="color:var(--muted);font-style:italic">لا مهمة</span>')+'</div>' +
+              '<div class="dh-family-task">'+(m.task ? esc(m.task) : '<span class="en" style="color:var(--muted);">No task</span><span class="ar" style="color:var(--muted);">لا مهمة</span>')+'</div>' +
             '</div>' +
             '<button class="dh-del-btn" data-idx="'+i+'" aria-label="Remove member">✕</button>' +
           '</div>';
