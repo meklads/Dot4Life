@@ -472,48 +472,39 @@ body { padding-top: 60px; }
 
     /* ─── SECTION CARDS ─────────────────────────────── */
     /* Wrapper gives breathing room around all cards */
-    /* ── EDITORIAL SECTIONS WRAP ── */
+    /* ── CONTAINED SECTIONS WRAP — same max-width as rest of site ── */
     .sections-wrap {
-      padding: 0;
+      padding: clamp(5rem, 8vw, 9rem) clamp(1.5rem, 4vw, 3rem) clamp(6rem, 9vw, 10rem);
       display: flex;
       flex-direction: column;
-      gap: 0;
-      max-width: none;
-      margin: 0;
+      gap: clamp(4rem, 7vw, 7rem);
+      max-width: 1380px;
+      margin: 0 auto;
     }
 
-    /* Remove card treatment — sections are open, breathing, independent */
+    /* Each section is a contained card — kept as original, no full-bleed */
     #health, #finance, #islamic, #travel {
-      overflow: visible;
-      border-radius: 0;
-      box-shadow: none;
+      overflow: hidden;
+      border-radius: 28px;
+      box-shadow: 0 12px 60px rgba(0,0,0,.10), 0 2px 8px rgba(0,0,0,.04);
+    }
+    [data-theme="dark"] #health,
+    [data-theme="dark"] #finance,
+    [data-theme="dark"] #islamic,
+    [data-theme="dark"] #travel {
+      box-shadow: 0 12px 60px rgba(0,0,0,.36), 0 2px 8px rgba(0,0,0,.2);
     }
     #daily-strip { width: 100%; box-sizing: border-box; }
 
-    /* Section separator — thin horizontal rule with number, full-width */
-    .sec-divider {
-      display: flex; align-items: center; gap: 20px;
-      padding: 0 clamp(2rem, 5vw, 6rem);
-      margin: 0;
-    }
-    .sec-divider-num {
-      font-size: .6rem; font-weight: 700; letter-spacing: .22em;
-      color: var(--muted); font-family: var(--font-ui);
-      text-transform: uppercase; white-space: nowrap; flex-shrink: 0;
-    }
-    .sec-divider-line {
-      flex: 1; height: 1px; background: var(--border);
-    }
-
-    /* ── SECTION DIVIDER LABEL — Wirecutter-inspired ── */
+    /* Section dividers — numbered labels between cards */
     .sec-divider {
       display: flex; align-items: center; gap: 14px;
-      margin-bottom: -2rem;
+      margin-bottom: -1.5rem;
     }
     .sec-divider-num {
-      font-size: .66rem; font-weight: 700; letter-spacing: .18em;
+      font-size: .62rem; font-weight: 700; letter-spacing: .18em;
       color: var(--muted); font-family: var(--font-ui);
-      text-transform: uppercase;
+      text-transform: uppercase; white-space: nowrap; flex-shrink: 0;
     }
     .sec-divider-line {
       flex: 1; height: 1px; background: var(--border);
@@ -661,141 +652,112 @@ body { padding-top: 60px; }
     [data-lang="ar"] .tc-name,[data-lang="ar"] .tc-desc { font-family: var(--font-ar); }
     @media(max-width:500px){ .tool-cards { grid-template-columns: 1fr; } }
 
-    /* ══════════════════════════════════════════════════════
-       EDITORIAL SECTIONS — Alternating open image / text
-       Inspired: Turriva · Stripe · Apple · Wirecutter
-    ══════════════════════════════════════════════════════ */
-
-    /* ── HEALTH — image LEFT, text RIGHT, cream open background ── */
-    #health {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      min-height: 680px;
-      overflow: hidden;
-      background: var(--body-bg);
-    }
-    [data-lang="ar"] #health { direction: rtl; }
-    .health-visual {
-      position: relative; overflow: hidden;
-      min-height: 540px;
-    }
-    .health-visual img {
-      width:100%; height:100%; object-fit:cover;
-      object-position: center top; display:block;
-      transition: transform 8s ease;
-    }
-    #health:hover .health-visual img { transform: scale(1.04); }
+    /* ── HEALTH — image LEFT (1.15fr), content RIGHT (1fr) — contained card ── */
+    #health { display: grid; grid-template-columns: 1.15fr 1fr; min-height: 700px; overflow: hidden; }
+    [data-lang="ar"] #health { grid-template-columns: 1fr 1.15fr; direction: rtl; }
+    .health-visual { position: relative; overflow: hidden; }
+    .health-visual img { width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transition:transform 7s ease; }
+    .health-visual:hover img { transform: scale(1.04); }
     .health-content {
-      padding: clamp(5rem, 9%, 8rem) clamp(3.5rem, 7%, 6.5rem);
+      /* generous padding creates the visual breathing room between image and text */
+      padding: clamp(4rem, 8%, 7rem) clamp(3.5rem, 7%, 6rem);
       display: flex; flex-direction: column; justify-content: center;
-      background: var(--body-bg);
+      background: #faf9f7;
     }
-    [data-theme="dark"] .health-content { background: var(--body-bg); }
+    [data-theme="dark"] .health-content { background: #1a1814; }
     .health-content .sec-label { color: #b83232; }
     .health-content .sec-headline { color: var(--text); }
     .health-content .sec-body { color: var(--text-2); }
-    .health-content .tool-card { --tc-accent: #b83232; --tc-icon-bg: rgba(184,50,50,.07); --tc-icon-color: #b83232; }
-    @media(max-width:860px){ #health{grid-template-columns:1fr;} .health-visual{min-height:320px; order:-1;} }
+    .health-content .tool-card { --tc-accent: #b83232; --tc-icon-bg: rgba(184,50,50,.08); --tc-icon-color: #b83232; }
+    @media(max-width:860px){ #health{grid-template-columns:1fr;} .health-visual{min-height:300px;order:-1;} }
 
-    /* ── FINANCE — full-bleed dark, text LEFT, image RIGHT ── */
-    #finance {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      min-height: 680px;
-      overflow: hidden;
-      background: #0D1B2A;
-    }
-    [data-lang="ar"] #finance { direction: rtl; }
+    /* ── FINANCE — content LEFT (1fr), image RIGHT (1.15fr) — dark card ── */
+    #finance { display: grid; grid-template-columns: 1fr 1.15fr; min-height: 700px; overflow: hidden; }
+    [data-lang="ar"] #finance { grid-template-columns: 1.15fr 1fr; direction: rtl; }
     .finance-content {
-      padding: clamp(5rem, 9%, 8rem) clamp(3.5rem, 7%, 6.5rem);
+      padding: clamp(4rem, 8%, 7rem) clamp(3.5rem, 7%, 6rem);
       background: #0D1B2A;
       display: flex; flex-direction: column; justify-content: center;
     }
     .finance-content .sec-label { color: var(--gold-l); }
     .finance-content .sec-headline { color: #fff; }
-    .finance-content .sec-body { color: rgba(255,255,255,.6); }
+    .finance-content .sec-body { color: rgba(255,255,255,.62); }
     .finance-content .tool-card {
-      background: rgba(255,255,255,.04); border-color: rgba(255,255,255,.08); color: #fff;
+      background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.09); color: #fff;
       --tc-accent: var(--gold); --tc-icon-bg: rgba(184,134,26,.1); --tc-icon-color: var(--gold-l);
     }
-    .finance-content .tool-card:hover { background: rgba(255,255,255,.09); box-shadow: 0 8px 28px rgba(0,0,0,.4); }
+    .finance-content .tool-card:hover { background: rgba(255,255,255,.09); box-shadow: 0 8px 28px rgba(0,0,0,.35); }
     .finance-content .tc-name { color: rgba(255,255,255,.92); }
     .finance-content .tc-desc { color: rgba(255,255,255,.45); }
     .finance-photo { position: relative; overflow: hidden; }
-    .finance-photo img { width:100%; height:100%; object-fit:cover; object-position:center; display:block; transition:transform 8s ease; }
-    #finance:hover .finance-photo img { transform: scale(1.04); }
+    .finance-photo img { width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform 7s ease; }
+    .finance-photo:hover img { transform: scale(1.04); }
     .btn-gold-outline {
       display: inline-flex; align-items: center; gap: .55rem;
-      padding: .9rem 2rem; border: 1.5px solid rgba(184,134,26,.45);
+      padding: .9rem 2rem; border: 1.5px solid rgba(184,134,26,.5);
       color: var(--gold-l); border-radius: 999px;
       font-size: .88rem; font-weight: 600; transition: all .22s;
     }
     .btn-gold-outline:hover { background: var(--gold); border-color: var(--gold); color: #fff; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(184,134,26,.3); }
-    @media(max-width:860px){ #finance{grid-template-columns:1fr;} .finance-photo{min-height:320px;} }
+    @media(max-width:860px){ #finance{grid-template-columns:1fr;} .finance-photo{min-height:300px;} }
 
-    /* ── ISLAMIC — full-bleed forest green, content LEFT, image RIGHT ── */
-    #islamic {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      min-height: 680px;
-      overflow: hidden;
-    }
-    [data-lang="ar"] #islamic { direction: rtl; }
+    /* ── ISLAMIC — content LEFT (1.1fr), image RIGHT (1fr) — deep green card ── */
+    #islamic { display: grid; grid-template-columns: 1.1fr 1fr; min-height: 680px; overflow: hidden; }
+    [data-lang="ar"] #islamic { grid-template-columns: 1fr 1.1fr; direction: rtl; }
     .islamic-panel {
       background: #091A10;
-      padding: clamp(5rem, 9%, 8rem) clamp(3.5rem, 7%, 6.5rem);
+      padding: clamp(4rem, 8%, 7rem) clamp(3.5rem, 7%, 6rem);
       position: relative; overflow: hidden;
       display: flex; flex-direction: column; justify-content: center;
     }
-    .islamic-geo { position: absolute; inset: 0; opacity: .12; pointer-events: none; }
-    .islamic-geo svg { width:100%; height:100%; }
+    .islamic-geo { position: absolute; inset: 0; opacity: .13; pointer-events: none; }
+    .islamic-geo svg { width:100%;height:100%; }
     .islamic-content { position: relative; z-index: 2; }
     .islamic-panel .sec-label { color: var(--gold-l); }
     .islamic-panel .sec-headline { color: #fff; }
-    .islamic-panel .sec-body { color: rgba(255,255,255,.58); }
+    .islamic-panel .sec-body { color: rgba(255,255,255,.6); }
     .islamic-panel .tool-card {
-      background: rgba(255,255,255,.04); border-color: rgba(255,255,255,.07); color: #fff;
+      background: rgba(255,255,255,.04); border-color: rgba(255,255,255,.08); color: #fff;
       --tc-accent: var(--gold); --tc-icon-bg: rgba(184,134,26,.1); --tc-icon-color: var(--gold-l);
     }
     .islamic-panel .tool-card:hover { background: rgba(255,255,255,.08); box-shadow: 0 6px 24px rgba(0,0,0,.4); }
     .islamic-panel .tc-name { color: rgba(255,255,255,.92); }
     .islamic-panel .tc-desc { color: rgba(255,255,255,.44); }
     .islamic-photo { position: relative; overflow: hidden; }
-    .islamic-photo img { width:100%; height:100%; object-fit:cover; object-position:center; display:block; transition:transform 8s ease; }
-    #islamic:hover .islamic-photo img { transform: scale(1.04); }
-    @media(max-width:860px){ #islamic{grid-template-columns:1fr;} .islamic-photo{min-height:320px;} }
+    .islamic-photo img { width:100%;height:100%;object-fit:cover;object-position:center;display:block; }
+    @media(max-width:860px){ #islamic{grid-template-columns:1fr;} .islamic-photo{min-height:300px;} }
 
-    /* ── TRAVEL — full-bleed cinematic, edge-to-edge ── */
+    /* ── TRAVEL — cinematic full-bleed image inside the contained card ── */
     #travel {
       position: relative; min-height: 680px;
       display: flex; align-items: flex-end; overflow: hidden;
     }
     .travel-bg { position: absolute; inset: 0; }
-    .travel-bg img { width:100%; height:100%; object-fit:cover; object-position:center; display:block; transition:transform 10s ease; }
-    #travel:hover .travel-bg img { transform: scale(1.04); }
+    .travel-bg img { width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform 9s ease; }
+    #travel:hover .travel-bg img { transform: scale(1.05); }
     .travel-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(6,4,2,.95) 0%, rgba(6,4,2,.5) 42%, rgba(6,4,2,.04) 100%);
+      background: linear-gradient(to top, rgba(8,5,2,.93) 0%, rgba(8,5,2,.55) 45%, rgba(8,5,2,.08) 100%);
     }
     .travel-content {
       position: relative; z-index: 2; width: 100%;
-      padding: 0 clamp(3rem, 7vw, 7rem) clamp(3.5rem, 6vw, 6rem);
+      padding: 0 clamp(3rem, 7vw, 6rem) clamp(3rem, 6vw, 5rem);
       display: flex; flex-direction: column; align-items: flex-start;
     }
     [data-lang="ar"] .travel-content { align-items: flex-end; }
     .travel-content .sec-label { color: var(--amber); }
-    .travel-content .sec-headline { color: #fff; max-width: 640px; }
-    .travel-content .sec-body { color: rgba(255,255,255,.68); }
-    .travel-pills { display: flex; flex-wrap: wrap; gap: .55rem; margin-bottom: 2.4rem; }
+    .travel-content .sec-headline { color: #fff; max-width: 600px; }
+    .travel-content .sec-body { color: rgba(255,255,255,.7); }
+    .travel-pills { display: flex; flex-wrap: wrap; gap: .55rem; margin-bottom: 2.2rem; }
     .travel-pill {
       display: flex; align-items: center; gap: .45rem;
-      padding: .45rem 1rem;
-      background: rgba(255,255,255,.08); backdrop-filter: blur(12px);
-      border: 1px solid rgba(255,255,255,.14); border-radius: 99px;
-      color: rgba(255,255,255,.86); font-size: .77rem; font-weight: 500;
+      padding: .42rem .95rem;
+      background: rgba(255,255,255,.09); backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,.16); border-radius: 99px;
+      color: rgba(255,255,255,.88); font-size: .77rem; font-weight: 500;
       text-decoration: none; transition: all .2s;
     }
-    .travel-pill:hover { background: rgba(255,255,255,.16); border-color: var(--amber); color: #fff; }
+    .travel-pill:hover { background: rgba(255,255,255,.17); border-color: var(--amber); color: #fff; }
     .travel-pill svg { width: 13px; height: 13px; stroke: var(--amber); fill: none; stroke-width: 2; stroke-linecap: round; }
     [data-lang="ar"] .travel-pill { font-family: var(--font-ar); font-size: .83rem; }
     @media(max-width:768px){ #travel{min-height:500px;} .travel-content{padding:0 1.5rem 2.5rem;} }
@@ -1920,7 +1882,7 @@ body { padding-top: 60px; }
   <div class="sections-wrap">
 
   <!-- HEALTH -->
-  <div class="sec-divider" style="padding:clamp(3.5rem,6vw,6rem) clamp(2rem,5vw,6rem) 0;"><span class="sec-divider-num"><span class="en">01 / Health &amp; Wellbeing</span><span class="ar">٠١ / الصحة والعافية</span></span><div class="sec-divider-line"></div></div>
+  <div class="sec-divider"><span class="sec-divider-num">01</span><div class="sec-divider-line"></div></div>
   <section id="health" aria-label="Health ecosystem">
     <!-- Health photo — left column (1.15fr) -->
     <div class="health-visual" aria-label="Family health moment">
@@ -1994,7 +1956,7 @@ body { padding-top: 60px; }
   <!-- ═══════════════════════════════════════
        FINANCE SECTION
   ═══════════════════════════════════════ -->
-  <div class="sec-divider" style="padding:clamp(3.5rem,6vw,6rem) clamp(2rem,5vw,6rem) 0;"><span class="sec-divider-num"><span class="en">02 / Finance &amp; Wealth</span><span class="ar">٠٢ / المالية والثروة</span></span><div class="sec-divider-line"></div></div>
+  <div class="sec-divider"><span class="sec-divider-num">02</span><div class="sec-divider-line"></div></div>
   <section id="finance" aria-label="Finance ecosystem">
     <!-- Finance content — left column (1fr), dark #0D1B2A -->
     <div class="finance-content reveal">
@@ -2068,7 +2030,7 @@ body { padding-top: 60px; }
   <!-- ═══════════════════════════════════════
        ISLAMIC SECTION
   ═══════════════════════════════════════ -->
-  <div class="sec-divider" style="padding:clamp(3.5rem,6vw,6rem) clamp(2rem,5vw,6rem) 0;"><span class="sec-divider-num"><span class="en">03 / Islamic Life</span><span class="ar">٠٣ / الحياة الإسلامية</span></span><div class="sec-divider-line"></div></div>
+  <div class="sec-divider"><span class="sec-divider-num">03</span><div class="sec-divider-line"></div></div>
   <section id="islamic" aria-label="Islamic life ecosystem">
     <!-- Islamic panel — left column (1.1fr), deep #091A10 forest -->
     <div class="islamic-panel reveal">
@@ -2161,7 +2123,7 @@ body { padding-top: 60px; }
   <!-- ═══════════════════════════════════════
        TRAVEL SECTION
   ═══════════════════════════════════════ -->
-  <div class="sec-divider" style="padding:clamp(3.5rem,6vw,6rem) clamp(2rem,5vw,6rem) 0;"><span class="sec-divider-num"><span class="en">04 / Travel &amp; Adventure</span><span class="ar">٠٤ / السفر والمغامرة</span></span><div class="sec-divider-line"></div></div>
+  <div class="sec-divider"><span class="sec-divider-num">04</span><div class="sec-divider-line"></div></div>
   <section id="travel" aria-label="Travel ecosystem">
     <!-- Full-bleed background image -->
     <div class="travel-bg">

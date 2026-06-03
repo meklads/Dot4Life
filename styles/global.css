@@ -438,6 +438,7 @@ html, body { overflow-x: hidden; max-width: 100%; }
   text-decoration: none;
   font-size: 0;          /* hide any residual text */
   flex-shrink: 0;
+  justify-self: start;   /* always left-aligned in the grid */
 }
 /* Navbar logo — sized to fit inside the 60px fixed header */
 .nav-logo img,
@@ -502,7 +503,7 @@ html, body { overflow-x: hidden; max-width: 100%; }
   margin: 0 auto;
   padding: 0 clamp(16px, 3vw, 32px);
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
   height: 60px;
   gap: 0;
