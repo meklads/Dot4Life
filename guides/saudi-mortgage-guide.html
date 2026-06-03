@@ -48,14 +48,14 @@
 .nav-btn:hover{border-color:var(--gold,#B8861A);color:var(--gold,#B8861A);}
 #sub-nav{position:fixed;top:60px;left:0;right:0;z-index:99;background:rgba(255,255,255,0.97);border-bottom:1px solid var(--border,#E8E0D4);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);}
 [data-theme="dark"] #sub-nav{background:rgba(22,20,18,0.97);}
-.sub-nav-inner{max-width:1280px;margin:0 auto;padding:0 28px;display:flex;align-items:center;gap:2px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;height:42px;}
+.sub-nav-inner{max-width:1280px;margin:0 auto;padding:0 28px;display:flex;align-items:center;gap:3px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;height:42px;}
 .sub-nav-inner::-webkit-scrollbar{display:none;}
-.sub-nav-inner a{display:inline-flex;align-items:center;padding:5px 12px;border-radius:999px;font-size:.76rem;font-weight:500;color:var(--text-2,#9A9188);text-decoration:none;white-space:nowrap;flex-shrink:0;transition:color .2s,background .2s;}
+.sub-nav-inner a{display:inline-flex;align-items:center;padding:6px 14px;border-radius:999px;font-size:.76rem;font-weight:500;color:var(--text-2,#9A9188);text-decoration:none;white-space:nowrap;flex-shrink:0;transition:color .2s,background .2s;}
 .sub-nav-inner a:hover{color:var(--text,#1A1410);background:rgba(184,134,26,.07);}
 .sub-nav-inner a.active{color:var(--gold,#B8861A);font-weight:600;background:rgba(184,134,26,.1);}
 [data-lang="ar"] .sub-nav-inner{direction:rtl;}
-body{padding-top:102px;}
-@media(max-width:768px){body{padding-top:102px;}#sub-nav{top:60px;}.nav-inner{padding:0 16px;}.sub-nav-inner{padding:0 12px;}}
+body{padding-top:104px;}
+@media(max-width:768px){body{padding-top:104px;}#sub-nav{top:60px;}.nav-inner{padding:0 16px;}.sub-nav-inner{padding:0 12px;}}
 /* ════════════════════════════════════ */
 
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -264,7 +264,7 @@ body{padding-top:102px;}
 .eco-footer { background: #0a1628; color: #94a3b8; font-size: .875rem; padding: 56px 0 0; margin-top: 0; }
 .eco-footer a { color: #94a3b8; text-decoration: none; transition: color .18s; }
 .eco-footer a:hover { color: #0ea5e9; }
-.eco-footer .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.eco-footer .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
 .eco-footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 48px; border-bottom: 1px solid #1e293b; }
 .eco-footer-brand .eco-logo { font-size: 1.4rem; font-weight: 900; color: #fff; letter-spacing: -.02em; margin-bottom: 12px; font-family: Inter, sans-serif; }
 .eco-footer-brand .eco-mission { font-size: .82rem; line-height: 1.7; color: #64748b; margin-bottom: 16px; max-width: 260px; }
@@ -1016,7 +1016,7 @@ function injectSearchStyles(){
     '#dfl-sk{background:var(--body-bg,#F5F6F7);border:1px solid var(--border-l,#DDE0E4);border-radius:6px;padding:2px 7px;font-size:.68rem;color:var(--text-2,#6B7280);font-family:inherit;cursor:pointer}',
     '#dfl-stabs{display:flex;gap:4px;padding:10px 16px 0;overflow-x:auto;-webkit-overflow-scrolling:touch}',
     '#dfl-stabs::-webkit-scrollbar{height:0}',
-    '.dfl-st{border:none;background:none;padding:5px 12px;border-radius:999px;font-size:.75rem;font-weight:600;cursor:pointer;color:var(--text-2,#6B7280);white-space:nowrap;transition:all .12s}',
+    '.dfl-st{border:none;background:none;padding:6px 14px;border-radius:999px;font-size:.75rem;font-weight:600;cursor:pointer;color:var(--text-2,#6B7280);white-space:nowrap;transition:all .12s}',
     '.dfl-st.a,.dfl-st:hover{background:var(--accent,#2563EB);color:#fff}',
     '#dfl-sr{max-height:340px;overflow-y:auto;padding:10px}',
     '.dfl-rl{font-size:.65rem;font-weight:700;color:var(--text-2,#6B7280);letter-spacing:.06em;text-transform:uppercase;padding:8px 10px 2px}',
@@ -1139,7 +1139,7 @@ document.addEventListener('keydown',function(e){if((e.metaKey||e.ctrlKey)&&e.key
   var tool=TOOLS.find(function(t){return location.pathname.indexOf(t.url.replace(/^\//,''))>-1;});
   if(!tool)return;
   var s=document.createElement('style');
-  s.textContent='#dfl-mcta{display:none;position:fixed;bottom:70px;left:12px;right:12px;z-index:89;background:var(--accent,#2563EB);border-radius:14px;padding:11px 16px;box-shadow:0 8px 32px rgba(37,99,235,.4);align-items:center;justify-content:space-between;gap:10px;color:#fff}@keyframes sUp{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}#dfl-mcta.v{display:flex;animation:sUp .25s ease}#dfl-mcta .mt{font-size:.8rem;font-weight:700}#dfl-mcta .mb{background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.3);border-radius:999px;color:#fff;padding:5px 12px;font-size:.75rem;font-weight:700;cursor:pointer}#dfl-mcta .mc{background:none;border:none;color:rgba(255,255,255,.7);font-size:1.1rem;cursor:pointer;min-height:unset;min-width:unset}@media(min-width:769px){#dfl-mcta{display:none!important}}';
+  s.textContent='#dfl-mcta{display:none;position:fixed;bottom:70px;left:12px;right:12px;z-index:89;background:var(--accent,#2563EB);border-radius:14px;padding:11px 16px;box-shadow:0 8px 32px rgba(37,99,235,.4);align-items:center;justify-content:space-between;gap:10px;color:#fff}@keyframes sUp{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}#dfl-mcta.v{display:flex;animation:sUp .25s ease}#dfl-mcta .mt{font-size:.8rem;font-weight:700}#dfl-mcta .mb{background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.3);border-radius:999px;color:#fff;padding:6px 14px;font-size:.75rem;font-weight:700;cursor:pointer}#dfl-mcta .mc{background:none;border:none;color:rgba(255,255,255,.7);font-size:1.1rem;cursor:pointer;min-height:unset;min-width:unset}@media(min-width:769px){#dfl-mcta{display:none!important}}';
   document.head.appendChild(s);
   var el=document.createElement('div');el.id='dfl-mcta';
   el.innerHTML='<div class="mt">'+tool.icon+' <span class="en">'+tool.en+'</span><span class="ar">'+tool.ar+'</span></div>'
@@ -1434,7 +1434,7 @@ document.querySelectorAll('.faq-q').forEach(function(btn){
   <footer id="dfl-footer" role="contentinfo">
     <div class="dfl-footer-grid">
       <div class="dfl-footer-brand">
-        <div class="dfl-flogo"><img src="/logo1-footer.png" alt="Dot4Life" height="144" style="height:144px;width:auto;display:block;"></div>
+        <div class="dfl-flogo"><img src="/logo1-footer.png" alt="Dot4Life" height="144" style="height:120px;width:auto;display:block;"></div>
         <p><span class="en">A trusted daily companion for every family. Free, precise, and deeply human. Arabic &amp; English.</span><span class="ar">الرفيق اليومي الموثوق لكل أسرة. مجاني ودقيق وإنساني. عربي وإنجليزي.</span></p>
       </div>
       <div class="dfl-footer-col">
