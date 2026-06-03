@@ -466,9 +466,9 @@ html, body { overflow-x: hidden; max-width: 100%; }
 
 /* ── 20. UNIFIED NAVBAR SYSTEM ───────────────────────────── */
 /*
- * All pages use: #navbar (height 60px) + optional #sub-nav (height 44px)
+ * All pages use: #navbar (height 60px) + optional #sub-nav (height 48px)
  * body padding-top:
- *   - with sub-nav:    104px  (60 + 44)
+ *   - with sub-nav:    108px  (60 + 48)
  *   - without sub-nav:  60px
  */
 #navbar,
@@ -578,7 +578,7 @@ html, body { overflow-x: hidden; max-width: 100%; }
   border-bottom: 1px solid var(--border);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  height: 44px;
+  height: 48px;
 }
 [data-theme="dark"] #sub-nav,
 [data-theme="dark"] .subnav-unified {
@@ -591,8 +591,8 @@ html, body { overflow-x: hidden; max-width: 100%; }
   padding: 0 clamp(12px, 3vw, 32px);
   display: flex;
   align-items: center;
-  gap: 2px;
-  height: 44px;
+  gap: 6px;
+  height: 48px;
   overflow-x: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -603,7 +603,7 @@ html, body { overflow-x: hidden; max-width: 100%; }
 .subnav-inner-unified a {
   display: inline-flex;
   align-items: center;
-  padding: 5px 13px;
+  padding: 7px 16px;
   border-radius: var(--radius-pill, 999px);
   font-size: .76rem;
   font-weight: 500;
@@ -629,8 +629,33 @@ html, body { overflow-x: hidden; max-width: 100%; }
 [data-lang="ar"] .subnav-inner-unified { direction: rtl; }
 
 /* Body offset tokens — apply on each page */
-.has-subnav  { padding-top: 104px !important; }
+.has-subnav  { padding-top: 108px !important; }
 .no-subnav   { padding-top: 60px !important; }
 @media (max-width: 768px) {
-  .has-subnav { padding-top: 104px !important; }
+  .has-subnav { padding-top: 108px !important; }
 }
+
+/* ── 21. BREADCRUMB ─────────────────────────────────────── */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 20px clamp(16px, 3vw, 32px) 0;
+  font-size: .78rem;
+  color: var(--muted);
+  line-height: 1;
+}
+.breadcrumb a {
+  color: var(--muted);
+  text-decoration: none;
+  transition: color var(--t-fast, .15s);
+}
+.breadcrumb a:hover { color: var(--gold); }
+.breadcrumb .bc-sep,
+.breadcrumb-sep { opacity: .4; font-size: .7rem; }
+.breadcrumb > span:last-child,
+.breadcrumb-cur { color: var(--text-2); font-weight: 600; }
+[data-lang="ar"] .breadcrumb { flex-direction: row-reverse; }
