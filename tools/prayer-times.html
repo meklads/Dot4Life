@@ -355,6 +355,25 @@ body{padding-top:108px;}
     @media(max-width:768px){ #dfl-mobile-nav{display:block;} body{padding-bottom:80px !important;} }
   </style>
 <script src="/scripts/global.js" defer></script>
+<style>
+.dfl-related{border-top:1px solid var(--border);padding:52px 0 64px;background:var(--body-bg);}
+.dfl-related .container{max-width:1280px;margin:0 auto;padding:0 clamp(1.5rem,4vw,2.5rem);}
+.dfl-related-label{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+.dfl-related-title{font-size:clamp(1.2rem,2.5vw,1.55rem);font-weight:700;color:var(--text);margin:0 0 6px;letter-spacing:-.02em;}
+.dfl-related-sub{font-size:.88rem;color:var(--text-2);margin-bottom:32px;line-height:1.6;}
+.dfl-related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;}
+.dfl-rc{display:flex;flex-direction:column;background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:20px 22px 18px;text-decoration:none;color:inherit;transition:border-color .2s,box-shadow .2s,transform .2s;}
+.dfl-rc:hover{border-color:var(--gold);box-shadow:0 4px 20px rgba(184,134,26,.12);transform:translateY(-2px);}
+.dfl-rc.guide{border-style:dashed;}
+.dfl-rc.guide:hover{border-color:var(--green,#1B7A4E);box-shadow:0 4px 20px rgba(27,122,78,.1);}
+.dfl-rc-top{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.dfl-rc-icon{font-size:1.4rem;line-height:1;flex-shrink:0;}
+.dfl-rc-name{font-size:.88rem;font-weight:700;color:var(--text);line-height:1.3;}
+.dfl-rc-desc{font-size:.78rem;color:var(--text-2);line-height:1.5;flex:1;}
+.dfl-rc-cta{margin-top:12px;font-size:.76rem;font-weight:700;color:var(--gold);}
+.dfl-rc.guide .dfl-rc-cta{color:var(--green,#1B7A4E);}
+@media(max-width:600px){.dfl-related-grid{grid-template-columns:1fr 1fr;gap:10px;}.dfl-rc{padding:14px;}}
+</style>
 </head>
 <body>
   <!-- DFL CANONICAL NAVBAR -->
@@ -1138,7 +1157,37 @@ window.addEventListener('scroll', function(){ document.getElementById('navbar').
     </div>
   </footer>
   <!-- DFL MOBILE NAV -->
-  <nav id="dfl-mobile-nav" aria-label="Mobile navigation">
+  
+<section class="dfl-related" aria-label="Related tools and guides">
+  <div class="container">
+    <div class="dfl-related-label">🔗 <span class="en">Continue Your Journey</span><span class="ar">أكمل رحلتك</span></div>
+    <h2 class="dfl-related-title"><span class="en">Related Islamic Tools</span><span class="ar">الأدوات الإسلامية ذات الصلة</span></h2>
+    <p class="dfl-related-sub"><span class="en">Strengthen your daily spiritual practice</span><span class="ar">عزز ممارستك الروحية اليومية</span></p>
+    <div class="dfl-related-grid">
+      <a href="/tools/qibla.html" class="dfl-rc">
+        <div class="dfl-rc-top"><span class="dfl-rc-icon">🧭</span><div><div class="dfl-rc-name en">Qibla Direction</div><div class="dfl-rc-name ar">اتجاه القبلة</div></div></div>
+        <div class="dfl-rc-desc en">Precise compass bearing</div><div class="dfl-rc-desc ar">اتجاه القبلة الدقيق</div>
+        <div class="dfl-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
+      </a>
+      <a href="/tools/hijri-converter.html" class="dfl-rc">
+        <div class="dfl-rc-top"><span class="dfl-rc-icon">📅</span><div><div class="dfl-rc-name en">Hijri Calendar</div><div class="dfl-rc-name ar">التقويم الهجري</div></div></div>
+        <div class="dfl-rc-desc en">Convert Hijri ↔ Gregorian</div><div class="dfl-rc-desc ar">تحويل هجري ↔ ميلادي</div>
+        <div class="dfl-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
+      </a>
+      <a href="/tools/zakat-calculator.html" class="dfl-rc">
+        <div class="dfl-rc-top"><span class="dfl-rc-icon">☪️</span><div><div class="dfl-rc-name en">Zakat Calculator</div><div class="dfl-rc-name ar">حاسبة الزكاة</div></div></div>
+        <div class="dfl-rc-desc en">Annual zakat on your wealth</div><div class="dfl-rc-desc ar">زكاة أموالك السنوية</div>
+        <div class="dfl-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
+      </a>
+      <a href="/guides/zakat-complete-guide.html" class="dfl-rc guide">
+        <div class="dfl-rc-top"><span class="dfl-rc-icon">📖</span><div><div class="dfl-rc-name en">Zakat Complete Guide</div><div class="dfl-rc-name ar">دليل الزكاة الشامل</div></div></div>
+        <div class="dfl-rc-desc en">All you need to know about Zakat</div><div class="dfl-rc-desc ar">كل ما تحتاج معرفته عن الزكاة</div>
+        <div class="dfl-rc-cta"><span class="en">Read guide →</span><span class="ar">اقرأ الدليل ←</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+<nav id="dfl-mobile-nav" aria-label="Mobile navigation">
     <div class="dfl-mnav-inner">
       <a href="/" class="dfl-mnav-item" aria-label="Home">
         <svg viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>

@@ -496,6 +496,94 @@ body { padding-top: 60px; }
     }
     #daily-strip { width: 100%; box-sizing: border-box; }
 
+    /* ── THIS WEEK ON DOTFORLIFE ───────────────────────── */
+    #this-week {
+      background: var(--cream, #F5F0E8);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: clamp(3rem, 5vw, 5rem) 0;
+    }
+    [data-theme="dark"] #this-week { background: var(--card-bg); }
+    .tw-inner {
+      max-width: 1280px; margin: 0 auto;
+      padding: 0 clamp(1.5rem, 4vw, 3rem);
+    }
+    .tw-header {
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 1rem;
+      margin-bottom: 2rem; flex-wrap: wrap;
+    }
+    .tw-eyebrow {
+      display: flex; align-items: center; gap: .6rem;
+      font-size: .72rem; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--text-2);
+    }
+    .tw-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--gold); flex-shrink: 0;
+      animation: tw-pulse 2.2s ease-in-out infinite;
+    }
+    @keyframes tw-pulse {
+      0%,100% { opacity:1; transform:scale(1); }
+      50% { opacity:.5; transform:scale(.7); }
+    }
+    .tw-see-all {
+      font-size: .8rem; font-weight: 600; color: var(--gold);
+      text-decoration: none; white-space: nowrap;
+      transition: opacity .2s;
+    }
+    .tw-see-all:hover { opacity: .75; }
+    .tw-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+    @media(max-width: 760px) { .tw-grid { grid-template-columns: 1fr; } }
+    @media(min-width:761px) and (max-width:1000px) { .tw-grid { grid-template-columns: 1fr 1fr; } }
+    .tw-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 1.6rem 1.75rem 1.5rem;
+      text-decoration: none; color: var(--text);
+      display: flex; flex-direction: column; gap: .55rem;
+      transition: transform .22s, box-shadow .22s, border-color .22s;
+      position: relative;
+    }
+    .tw-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 36px rgba(0,0,0,.1);
+      border-color: var(--gold);
+    }
+    .tw-card--guide { border-top: 3px solid var(--green, #1B7A4E); }
+    .tw-card--tool  { border-top: 3px solid var(--gold); }
+    .tw-card--article { border-top: 3px solid var(--blue, #0F3D6E); }
+    .tw-card-badge {
+      font-size: .62rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted); margin-bottom: .2rem;
+    }
+    .tw-card--guide  .tw-card-badge { color: var(--green, #1B7A4E); }
+    .tw-card--tool   .tw-card-badge { color: var(--gold); }
+    .tw-card--article .tw-card-badge { color: var(--blue, #0F3D6E); }
+    .tw-card-icon { font-size: 1.6rem; line-height: 1; }
+    .tw-card-title {
+      font-size: 1rem; font-weight: 700;
+      line-height: 1.3; color: var(--text);
+    }
+    [data-lang="ar"] .tw-card-title { font-family: var(--font-ar); }
+    .tw-card-desc {
+      font-size: .84rem; color: var(--text-2);
+      line-height: 1.6; flex: 1;
+    }
+    [data-lang="ar"] .tw-card-desc { font-family: var(--font-ar); }
+    .tw-card-cta {
+      font-size: .78rem; font-weight: 700;
+      color: var(--gold); margin-top: .4rem;
+    }
+    .tw-card--guide  .tw-card-cta { color: var(--green, #1B7A4E); }
+    .tw-card--article .tw-card-cta { color: var(--blue, #0F3D6E); }
+
     /* Section dividers — numbered labels between cards */
     .sec-divider {
       display: flex; align-items: center; gap: 14px;
@@ -1875,6 +1963,74 @@ body { padding-top: 60px; }
       <span class="en">🔔 Set Reminder</span><span class="ar">🔔 تعيين تذكير</span>
     </button>
   </div>
+
+  <!-- ═══════════════════════════════════════
+       THIS WEEK ON DOTFORLIFE
+       Update: change content below every Friday
+  ═══════════════════════════════════════ -->
+  <section id="this-week" aria-label="This Week on DotForLife">
+    <div class="tw-inner">
+      <div class="tw-header">
+        <div class="tw-eyebrow">
+          <span class="tw-dot"></span>
+          <span class="en">This Week on DotForLife</span>
+          <span class="ar">هذا الأسبوع على DotForLife</span>
+        </div>
+        <a href="/library.html" class="tw-see-all">
+          <span class="en">Explore the Library →</span>
+          <span class="ar">← استكشف المكتبة</span>
+        </a>
+      </div>
+      <div class="tw-grid">
+
+        <!-- ITEM 1: Featured Guide -->
+        <a href="/guides/ramadan-nutrition-guide.html" class="tw-card tw-card--guide">
+          <div class="tw-card-badge"><span class="en">Guide</span><span class="ar">دليل</span></div>
+          <div class="tw-card-icon">🌙</div>
+          <div class="tw-card-title">
+            <span class="en">Ramadan Nutrition Guide</span>
+            <span class="ar">دليل تغذية رمضان</span>
+          </div>
+          <div class="tw-card-desc">
+            <span class="en">Balance your eating, energy, and faith this Ramadan.</span>
+            <span class="ar">وازن بين تغذيتك وطاقتك وإيمانك في رمضان.</span>
+          </div>
+          <div class="tw-card-cta"><span class="en">Read →</span><span class="ar">← اقرأ</span></div>
+        </a>
+
+        <!-- ITEM 2: Featured Tool -->
+        <a href="/tools/zakat-calculator.html" class="tw-card tw-card--tool">
+          <div class="tw-card-badge"><span class="en">Tool</span><span class="ar">أداة</span></div>
+          <div class="tw-card-icon">☪️</div>
+          <div class="tw-card-title">
+            <span class="en">Zakat Calculator</span>
+            <span class="ar">حاسبة الزكاة</span>
+          </div>
+          <div class="tw-card-desc">
+            <span class="en">Calculate your annual Zakat on savings, gold, and investments.</span>
+            <span class="ar">احسب زكاتك السنوية على المدخرات والذهب والاستثمارات.</span>
+          </div>
+          <div class="tw-card-cta"><span class="en">Open tool →</span><span class="ar">← افتح الأداة</span></div>
+        </a>
+
+        <!-- ITEM 3: Featured Article -->
+        <a href="/blog/gcc-family-budget.html" class="tw-card tw-card--article">
+          <div class="tw-card-badge"><span class="en">Article</span><span class="ar">مقالة</span></div>
+          <div class="tw-card-icon">📊</div>
+          <div class="tw-card-title">
+            <span class="en">GCC Family Budget Guide</span>
+            <span class="ar">دليل ميزانية الأسرة الخليجية</span>
+          </div>
+          <div class="tw-card-desc">
+            <span class="en">Practical budgeting strategies built for Gulf family life.</span>
+            <span class="ar">استراتيجيات ميزانية عملية مصممة لحياة الأسرة الخليجية.</span>
+          </div>
+          <div class="tw-card-cta"><span class="en">Read →</span><span class="ar">← اقرأ</span></div>
+        </a>
+
+      </div>
+    </div>
+  </section>
 
   <!-- ═══════════════════════════════════════
        SECTION CARDS WRAPPER

@@ -97,6 +97,25 @@
   "image": "https://dotforlife.com/og/og-default.png"
 }
 </script>
+<style>
+.dfl-related{border-top:1px solid var(--border);padding:52px 0 64px;background:var(--body-bg);}
+.dfl-related .container{max-width:1280px;margin:0 auto;padding:0 clamp(1.5rem,4vw,2.5rem);}
+.dfl-related-label{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+.dfl-related-title{font-size:clamp(1.2rem,2.5vw,1.55rem);font-weight:700;color:var(--text);margin:0 0 6px;letter-spacing:-.02em;}
+.dfl-related-sub{font-size:.88rem;color:var(--text-2);margin-bottom:32px;line-height:1.6;}
+.dfl-related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;}
+.dfl-rc{display:flex;flex-direction:column;background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:20px 22px 18px;text-decoration:none;color:inherit;transition:border-color .2s,box-shadow .2s,transform .2s;}
+.dfl-rc:hover{border-color:var(--gold);box-shadow:0 4px 20px rgba(184,134,26,.12);transform:translateY(-2px);}
+.dfl-rc.guide{border-style:dashed;}
+.dfl-rc.guide:hover{border-color:var(--green,#1B7A4E);box-shadow:0 4px 20px rgba(27,122,78,.1);}
+.dfl-rc-top{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.dfl-rc-icon{font-size:1.4rem;line-height:1;flex-shrink:0;}
+.dfl-rc-name{font-size:.88rem;font-weight:700;color:var(--text);line-height:1.3;}
+.dfl-rc-desc{font-size:.78rem;color:var(--text-2);line-height:1.5;flex:1;}
+.dfl-rc-cta{margin-top:12px;font-size:.76rem;font-weight:700;color:var(--gold);}
+.dfl-rc.guide .dfl-rc-cta{color:var(--green,#1B7A4E);}
+@media(max-width:600px){.dfl-related-grid{grid-template-columns:1fr 1fr;gap:10px;}.dfl-rc{padding:14px;}}
+</style>
 </head>
 <body>
 <nav id="navbar">
@@ -283,6 +302,36 @@
   </div>
 </div>
 
+
+<section class="dfl-related" aria-label="Related tools and guides">
+  <div class="container">
+    <div class="dfl-related-label">🔗 <span class="en">Try These Tools</span><span class="ar">جرّب هذه الأدوات</span></div>
+    <h2 class="dfl-related-title"><span class="en">Reclaim Your Focus</span><span class="ar">استعد تركيزك</span></h2>
+    <p class="dfl-related-sub"><span class="en">Tools that respect your attention</span><span class="ar">أدوات تحترم وقتك وتركيزك</span></p>
+    <div class="dfl-related-grid">
+      <a href="/tools/pomodoro.html" class="dfl-rc">
+        <div class="dfl-rc-top"><span class="dfl-rc-icon">⏱️</span><div><div class="dfl-rc-name en">Pomodoro Timer</div><div class="dfl-rc-name ar">مؤقت البومودورو</div></div></div>
+        <div class="dfl-rc-desc en">Focus in 25-minute sessions</div><div class="dfl-rc-desc ar">ركّز في جلسات 25 دقيقة</div>
+        <div class="dfl-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
+      </a>
+      <a href="/tasks.html" class="dfl-rc">
+        <div class="dfl-rc-top"><span class="dfl-rc-icon">✅</span><div><div class="dfl-rc-name en">Tasks & Goals</div><div class="dfl-rc-name ar">المهام والأهداف</div></div></div>
+        <div class="dfl-rc-desc en">Organize your daily priorities</div><div class="dfl-rc-desc ar">نظّم أولوياتك اليومية</div>
+        <div class="dfl-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
+      </a>
+      <a href="/notes.html" class="dfl-rc">
+        <div class="dfl-rc-top"><span class="dfl-rc-icon">📝</span><div><div class="dfl-rc-name en">Quick Notes</div><div class="dfl-rc-name ar">الملاحظات السريعة</div></div></div>
+        <div class="dfl-rc-desc en">Capture ideas instantly</div><div class="dfl-rc-desc ar">التقط أفكارك فوراً</div>
+        <div class="dfl-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
+      </a>
+      <a href="/library.html" class="dfl-rc guide">
+        <div class="dfl-rc-top"><span class="dfl-rc-icon">📖</span><div><div class="dfl-rc-name en">Calm Life Library</div><div class="dfl-rc-name ar">مكتبة الحياة الهادئة</div></div></div>
+        <div class="dfl-rc-desc en">Guides for intentional living</div><div class="dfl-rc-desc ar">أدلة للحياة المقصودة</div>
+        <div class="dfl-rc-cta"><span class="en">Read guide →</span><span class="ar">اقرأ الدليل ←</span></div>
+      </a>
+    </div>
+  </div>
+</section>
 <nav class="mobile-nav">
   <a href="/" class="mobile-nav-item"><span>🏠</span><span class="en">Home</span><span class="ar">الرئيسية</span></a>
   <a href="/capsule.html" class="mobile-nav-item"><span>💊</span><span class="en">Capsule</span><span class="ar">كبسولة</span></a>
