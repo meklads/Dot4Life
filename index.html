@@ -421,36 +421,9 @@ body { padding-top: 60px; }
       pointer-events: none;
     }
     /* Stats bar — Headspace-inspired bold proof strip */
-    .hero-stats {
-      border-top: 1px solid rgba(0,0,0,.06);
-      background: var(--cream);
-      display: flex;
-    }
-    [data-theme="dark"] .hero-stats { border-top-color: rgba(255,255,255,.05); }
-    .stat-item {
-      flex: 1;
-      padding: 1.6rem 1rem 1.5rem;
-      text-align: center;
-      border-right: 1px solid var(--border);
-      position: relative;
-    }
-    .stat-item:last-child { border-right: none; }
-    [data-lang="ar"] .stat-item { border-right: none; border-left: 1px solid var(--border); }
-    [data-lang="ar"] .stat-item:last-child { border-left: none; }
-    .stat-num {
-      font-family: var(--font-serif);
-      font-size: 1.9rem;
-      font-weight: 400;
-      color: var(--gold);
-      line-height: 1;
-      letter-spacing: -.02em;
-    }
-    .stat-label {
-      font-size: .66rem;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-top: .45rem;
+    /* stats section removed */
+    .hero-stats { display: none; }
+    .stat-item, .stat-num, .stat-label {
       line-height: 1.4;
     }
     @media (max-width: 900px) {
@@ -474,10 +447,10 @@ body { padding-top: 60px; }
     /* Wrapper gives breathing room around all cards */
     /* ── CONTAINED SECTIONS WRAP — same max-width as rest of site ── */
     .sections-wrap {
-      padding: clamp(5rem, 8vw, 9rem) clamp(1.5rem, 4vw, 3rem) clamp(6rem, 9vw, 10rem);
+      padding: clamp(6rem, 9vw, 11rem) clamp(1.5rem, 4vw, 3rem) clamp(7rem, 10vw, 12rem);
       display: flex;
       flex-direction: column;
-      gap: clamp(4rem, 7vw, 7rem);
+      gap: clamp(5rem, 8vw, 9rem);
       max-width: 1380px;
       margin: 0 auto;
     }
@@ -501,7 +474,7 @@ body { padding-top: 60px; }
       background: var(--cream, #F5F0E8);
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
-      padding: clamp(3rem, 5vw, 5rem) 0;
+      padding: clamp(4rem, 6vw, 6.5rem) 0;
     }
     [data-theme="dark"] #this-week { background: var(--card-bg); }
     .tw-inner {
@@ -511,7 +484,7 @@ body { padding-top: 60px; }
     .tw-header {
       display: flex; align-items: center;
       justify-content: space-between; gap: 1rem;
-      margin-bottom: 2rem; flex-wrap: wrap;
+      margin-bottom: 2.5rem; flex-wrap: wrap;
     }
     .tw-eyebrow {
       display: flex; align-items: center; gap: .6rem;
@@ -536,17 +509,17 @@ body { padding-top: 60px; }
     .tw-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem;
+      gap: 1.5rem;
     }
     @media(max-width: 760px) { .tw-grid { grid-template-columns: 1fr; } }
     @media(min-width:761px) and (max-width:1000px) { .tw-grid { grid-template-columns: 1fr 1fr; } }
     .tw-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 1.6rem 1.75rem 1.5rem;
+      border-radius: 20px;
+      padding: 2rem 2.1rem 1.8rem;
       text-decoration: none; color: var(--text);
-      display: flex; flex-direction: column; gap: .55rem;
+      display: flex; flex-direction: column; gap: .6rem;
       transition: transform .22s, box-shadow .22s, border-color .22s;
       position: relative;
     }
@@ -587,7 +560,7 @@ body { padding-top: 60px; }
     /* Section dividers — numbered labels between cards */
     .sec-divider {
       display: flex; align-items: center; gap: 14px;
-      margin-bottom: -1.5rem;
+      margin-bottom: -2rem;
     }
     .sec-divider-num {
       font-size: .62rem; font-weight: 700; letter-spacing: .18em;
@@ -679,9 +652,9 @@ body { padding-top: 60px; }
     /* ── Shared section tokens ── */
     /* Section label — Wirecutter-inspired: lead with the story, not the label */
     .sec-label {
-      font-size: .65rem; font-weight: 700; letter-spacing: .16em;
+      font-size: .62rem; font-weight: 700; letter-spacing: .18em;
       text-transform: uppercase; display: inline-flex; align-items: center;
-      gap: .55rem; margin-bottom: 1rem; opacity: .9;
+      gap: .6rem; margin-bottom: 1.4rem; opacity: .9;
     }
     /* Keep the line only on light backgrounds */
     .health-content .sec-label::before,
@@ -694,9 +667,9 @@ body { padding-top: 60px; }
     }
     .sec-headline {
       font-family: var(--font-serif);
-      font-size: clamp(2.6rem, 4.2vw, 4rem);
-      font-weight: 300; line-height: 1.04; letter-spacing: -.03em;
-      margin: 0 0 1.6rem;
+      font-size: clamp(2.8rem, 4.8vw, 4.6rem);
+      font-weight: 300; line-height: 1.02; letter-spacing: -.035em;
+      margin: 0 0 1.8rem;
     }
     /* Accent — second line of each section headline gets a signature color */
     .health-content  .hl-accent { color: #b83232; }
@@ -704,8 +677,8 @@ body { padding-top: 60px; }
     .islamic-panel   .hl-accent { color: var(--gold-l); }
     .travel-content  .hl-accent { color: var(--amber); }
     .sec-body {
-      font-size: 1.04rem; line-height: 1.85;
-      max-width: 480px; margin-bottom: 2.8rem;
+      font-size: 1.06rem; line-height: 1.88;
+      max-width: 500px; margin-bottom: 3rem;
       color: inherit;
       opacity: .68;
     }
@@ -717,11 +690,11 @@ body { padding-top: 60px; }
     /* ── Shared tool card grid ── */
     .tool-cards {
       display: grid; grid-template-columns: 1fr 1fr;
-      gap: 1rem; margin-bottom: 2.5rem;
+      gap: 1.1rem; margin-bottom: 3rem;
     }
     .tool-card {
       display: flex; align-items: flex-start; gap: 1rem;
-      padding: 1.1rem 1.25rem;
+      padding: 1.25rem 1.4rem;
       border-radius: 14px; border: 1px solid var(--border);
       background: var(--card-bg);
       text-decoration: none; color: var(--text);
@@ -741,14 +714,13 @@ body { padding-top: 60px; }
     @media(max-width:500px){ .tool-cards { grid-template-columns: 1fr; } }
 
     /* ── HEALTH — image LEFT (1.15fr), content RIGHT (1fr) — contained card ── */
-    #health { display: grid; grid-template-columns: 1.15fr 1fr; min-height: 700px; overflow: hidden; }
+    #health { display: grid; grid-template-columns: 1.2fr 1fr; min-height: min(820px, 90vh); overflow: hidden; }
     [data-lang="ar"] #health { grid-template-columns: 1fr 1.15fr; direction: rtl; }
     .health-visual { position: relative; overflow: hidden; }
     .health-visual img { width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transition:transform 7s ease; }
     .health-visual:hover img { transform: scale(1.04); }
     .health-content {
-      /* generous padding creates the visual breathing room between image and text */
-      padding: clamp(4rem, 8%, 7rem) clamp(3.5rem, 7%, 6rem);
+      padding: clamp(5rem, 9%, 8.5rem) clamp(4.5rem, 8%, 7.5rem);
       display: flex; flex-direction: column; justify-content: center;
       background: #faf9f7;
     }
@@ -760,10 +732,10 @@ body { padding-top: 60px; }
     @media(max-width:860px){ #health{grid-template-columns:1fr;} .health-visual{min-height:300px;order:-1;} }
 
     /* ── FINANCE — content LEFT (1fr), image RIGHT (1.15fr) — dark card ── */
-    #finance { display: grid; grid-template-columns: 1fr 1.15fr; min-height: 700px; overflow: hidden; }
+    #finance { display: grid; grid-template-columns: 1fr 1.2fr; min-height: min(820px, 90vh); overflow: hidden; }
     [data-lang="ar"] #finance { grid-template-columns: 1.15fr 1fr; direction: rtl; }
     .finance-content {
-      padding: clamp(4rem, 8%, 7rem) clamp(3.5rem, 7%, 6rem);
+      padding: clamp(5rem, 9%, 8.5rem) clamp(4.5rem, 8%, 7.5rem);
       background: #0D1B2A;
       display: flex; flex-direction: column; justify-content: center;
     }
@@ -790,11 +762,11 @@ body { padding-top: 60px; }
     @media(max-width:860px){ #finance{grid-template-columns:1fr;} .finance-photo{min-height:300px;} }
 
     /* ── ISLAMIC — content LEFT (1.1fr), image RIGHT (1fr) — deep green card ── */
-    #islamic { display: grid; grid-template-columns: 1.1fr 1fr; min-height: 680px; overflow: hidden; }
+    #islamic { display: grid; grid-template-columns: 1.1fr 1fr; min-height: min(820px, 90vh); overflow: hidden; }
     [data-lang="ar"] #islamic { grid-template-columns: 1fr 1.1fr; direction: rtl; }
     .islamic-panel {
       background: #091A10;
-      padding: clamp(4rem, 8%, 7rem) clamp(3.5rem, 7%, 6rem);
+      padding: clamp(5rem, 9%, 8.5rem) clamp(4.5rem, 8%, 7.5rem);
       position: relative; overflow: hidden;
       display: flex; flex-direction: column; justify-content: center;
     }
@@ -817,7 +789,7 @@ body { padding-top: 60px; }
 
     /* ── TRAVEL — cinematic full-bleed image inside the contained card ── */
     #travel {
-      position: relative; min-height: 680px;
+      position: relative; min-height: min(820px, 90vh);
       display: flex; align-items: flex-end; overflow: hidden;
     }
     .travel-bg { position: absolute; inset: 0; }
@@ -2043,7 +2015,7 @@ body { padding-top: 60px; }
     <!-- Health photo — left column (1.15fr) -->
     <div class="health-visual" aria-label="Family health moment">
       <img
-        src="https://images.unsplash.com/photo-1476703993599-0035a21b17a9?auto=format&fit=crop&w=1000&q=85"
+        src="https://images.unsplash.com/photo-1609710228159-0fa9bd7c0827?auto=format&fit=crop&w=1200&q=88"
         alt="Happy healthy family outdoors"
         width="1000" height="800"
         loading="lazy"
@@ -2175,7 +2147,7 @@ body { padding-top: 60px; }
     <!-- Finance photo — right column (1.15fr) -->
     <div class="finance-photo">
       <img
-        src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1000&q=85"
+        src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=88"
         alt="Family financial planning"
         width="1000" height="800"
         loading="lazy"
@@ -2267,7 +2239,7 @@ body { padding-top: 60px; }
     <!-- Islamic photo — right column (1fr) -->
     <div class="islamic-photo">
       <img
-        src="https://images.unsplash.com/photo-1585036156171-384164a8c675?auto=format&fit=crop&w=1000&q=85"
+        src="https://images.unsplash.com/photo-1519817650390-64a93db51149?auto=format&fit=crop&w=1200&q=88"
         alt="Islamic calligraphy and Quran"
         loading="lazy"
         width="1000"
@@ -2284,7 +2256,7 @@ body { padding-top: 60px; }
     <!-- Full-bleed background image -->
     <div class="travel-bg">
       <img
-        src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1600&q=85"
+        src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1800&q=90"
         alt="Family travel adventure — mountain landscape"
         width="1600" height="900"
         loading="lazy"
