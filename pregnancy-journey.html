@@ -433,10 +433,9 @@ body{padding-top:110px!important;}
         <span class="ar">سجّلي — يصلك أسبوعك كل أحد 💌</span>
       </div>
       <form
-        action="https://sibforms.com/serve/MUIFAHNA_XXXXXXXX"
+        id="sib-form"
         method="POST"
-        target="_blank"
-        id="pregnancy-journey-form"
+        action="https://fe27e801.sibforms.com/serve/MUIFAMkd5JF8otYrMcB78hsqyZpw5wTN_7YySpRiweUlDxrkVYKYCrrPbD7kVPKDWPtR1Y2FuJm7DX7fLUYM9lS2Xl5e3DHTOOXRA9Q8TTew25sU4ZeRTgjfcJozA-eFIUVjCLZBe8t7DxqSAqOCSlwjdt4XsxxtSQ9MVfxbhd5cWsvg3rPEeezNhOqv4Dkk4BM4cyB7bqUPzy7VAQ=="
         class="pj-reg-form">
         <div class="pj-reg-grid">
           <div class="pj-date-group">
@@ -449,22 +448,21 @@ body{padding-top:110px!important;}
           </div>
           <div class="pj-date-group">
             <label><span class="en">Due Date</span><span class="ar">تاريخ الولادة المتوقع</span></label>
-            <input type="date" name="DUE_DATE" class="pj-date-input" required>
+            <input type="date" name="DUE_DATE" class="pj-date-input">
           </div>
           <div class="pj-date-group">
             <label>
               <span class="en">Baby's Name (optional)</span>
               <span class="ar">اسم الجنين (اختياري)</span>
             </label>
-            <input type="text" name="BABY_NAME" class="pj-date-input" placeholder="Baby's Name (optional) / اسم الجنين">
+            <input type="text" name="BABY_NAME" class="pj-date-input" placeholder="Baby's Name (optional) / اسم الجنين (اختياري)">
           </div>
         </div>
         <input type="hidden" name="email_address_check" value="">
-        <input type="hidden" name="locale" value="en">
+        <input type="hidden" name="locale" value="ar">
         <input type="hidden" name="html_type" value="simple">
         <button type="submit" class="pj-calc-btn pj-reg-btn">
-          <span class="en">Start My Journey →</span>
-          <span class="ar">ابدأي رحلتي ←</span>
+          Start My Journey → / ابدأي رحلتي ←
         </button>
       </form>
     </div>
@@ -1156,5 +1154,32 @@ document.addEventListener('DOMContentLoaded', async () => {
   </a>
 </nav>
 <!-- ════════════════════════════════════════════════════════════ -->
+<script>
+document.getElementById('sib-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const form = this;
+  const data = new FormData(form);
+
+  fetch(form.action, {
+    method: 'POST',
+    body: data,
+    mode: 'no-cors'
+  }).then(() => {
+    form.innerHTML = `
+      <div style="text-align:center; padding: 2rem;">
+        <div style="font-size: 2.5rem; margin-bottom: 1rem;">💌</div>
+        <p style="font-size: 1.1rem; font-weight: 500; margin: 0 0 0.5rem;">
+          رحلتك مسجّلة!
+        </p>
+        <p style="font-size: 0.95rem; opacity: 0.75; margin: 0;">
+          You're registered — weekly updates every Sunday 💛
+        </p>
+      </div>
+    `;
+  }).catch(() => {
+    alert('حدث خطأ. يرجى المحاولة مرة أخرى.');
+  });
+});
+</script>
 </body>
 </html>
