@@ -636,7 +636,60 @@ html, body { overflow-x: hidden; max-width: 100%; }
   .has-subnav { padding-top: 108px !important; }
 }
 
-/* ── 21. BREADCRUMB ─────────────────────────────────────── */
+/* ── 21. MOBILE BOTTOM NAV ───────────────────────────────── */
+.dfl-mobile-nav {
+  display: none;
+}
+@media (max-width: 860px) {
+  .dfl-mobile-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: var(--z-nav, 9000);
+    height: 60px;
+    background: rgba(250,248,244,0.97);
+    border-top: 1px solid var(--border);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    align-items: stretch;
+    justify-content: space-around;
+    padding: 0;
+  }
+  [data-theme="dark"] .dfl-mobile-nav {
+    background: rgba(18,16,14,0.97);
+  }
+  body { padding-bottom: 60px; }
+}
+.dfl-mnav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  flex: 1;
+  font-size: .6rem;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color .15s;
+  padding: .4rem .3rem;
+  -webkit-tap-highlight-color: transparent;
+}
+.dfl-mnav-item svg {
+  width: 20px; height: 20px;
+  stroke: currentColor; fill: none;
+  stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+}
+.dfl-mnav-item:hover,
+.dfl-mnav-item.active {
+  color: var(--gold);
+}
+[data-lang="ar"] .dfl-mnav-item {
+  font-family: var(--font-ar);
+  font-size: .58rem;
+}
+
+/* ── 22. BREADCRUMB ─────────────────────────────────────── */
 .breadcrumb {
   display: flex;
   align-items: center;
