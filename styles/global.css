@@ -440,10 +440,10 @@ html, body { overflow-x: hidden; max-width: 100%; }
   flex-shrink: 0;
   justify-self: start;   /* always left-aligned in the grid */
 }
-/* Navbar logo — sized to fit inside the 60px fixed header */
+/* Navbar logo — 3× larger, fits 90px navbar */
 .nav-logo img,
 .dfl-nav-logo img {
-  height: 48px;
+  height: 80px;
   width: auto;
   display: block;
   margin: 0;
@@ -461,23 +461,26 @@ html, body { overflow-x: hidden; max-width: 100%; }
   margin-bottom: 8px;
 }
 @media (max-width: 768px) {
-  .nav-logo img, .dfl-nav-logo img { height: 40px; }
+  .nav-logo img, .dfl-nav-logo img { height: 60px; }
+  #navbar, .navbar-unified { height: 72px; }
+  .nav-inner, .navbar-inner, .navbar-inner-unified { height: 72px; }
+  #sub-nav, .subnav-unified { top: 72px; }
+  .has-subnav { padding-top: 120px !important; }
+  .no-subnav  { padding-top: 72px !important; }
   .dfl-footer-brand .dfl-flogo img, .footer-brand .logo img { height: 88px; }
 }
 
 /* ── 20. UNIFIED NAVBAR SYSTEM ───────────────────────────── */
 /*
- * All pages use: #navbar (height 60px) + optional #sub-nav (height 48px)
- * body padding-top:
- *   - with sub-nav:    108px  (60 + 48)
- *   - without sub-nav:  60px
+ * All pages: #navbar height 90px + optional #sub-nav 48px
+ * body padding-top: 138px (with subnav) / 90px (without)
  */
 #navbar,
 .navbar-unified {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: var(--z-nav, 9000);
-  height: 60px;
+  height: 90px;
   background: rgba(250,248,244,0.97);
   border-bottom: 1px solid var(--border);
   backdrop-filter: blur(16px);
@@ -493,19 +496,17 @@ html, body { overflow-x: hidden; max-width: 100%; }
   background: rgba(18,16,14,0.97);
 }
 
-/* Inner grid: logo | nav-links | controls
- * Aliases: .nav-inner (new), .navbar-inner (legacy pages), .navbar-inner-unified
- */
+/* Inner grid: logo | nav-links | controls */
 .nav-inner,
 .navbar-inner,
 .navbar-inner-unified {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 clamp(16px, 3vw, 32px);
+  padding: 0 clamp(16px, 3vw, 40px);
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
-  height: 60px;
+  height: 90px;
   gap: 0;
 }
 
@@ -573,7 +574,7 @@ html, body { overflow-x: hidden; max-width: 100%; }
 #sub-nav,
 .subnav-unified {
   position: fixed;
-  top: 60px; left: 0; right: 0;
+  top: 90px; left: 0; right: 0;
   z-index: calc(var(--z-nav, 9000) - 1);
   background: rgba(255,255,255,0.97);
   border-bottom: 1px solid var(--border);
@@ -630,10 +631,10 @@ html, body { overflow-x: hidden; max-width: 100%; }
 [data-lang="ar"] .subnav-inner-unified { direction: rtl; }
 
 /* Body offset tokens — apply on each page */
-.has-subnav  { padding-top: 108px !important; }
-.no-subnav   { padding-top: 60px !important; }
+.has-subnav  { padding-top: 138px !important; }
+.no-subnav   { padding-top: 90px !important; }
 @media (max-width: 768px) {
-  .has-subnav { padding-top: 108px !important; }
+  .has-subnav { padding-top: 138px !important; }
 }
 
 /* ── 21. SITE FOOTER ─────────────────────────────────────── */
