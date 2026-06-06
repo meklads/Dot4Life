@@ -434,9 +434,7 @@ body{padding-top:110px!important;}
       </div>
       <form
         id="sib-form"
-        method="POST"
-        action="https://fe27e801.sibforms.com/serve/MUIFAMkd5JF8otYrMcB78hsqyZpw5wTN_7YySpRiweUlDxrkVYKYCrrPbD7kVPKDWPtR1Y2FuJm7DX7fLUYM9lS2Xl5e3DHTOOXRA9Q8TTew25sU4ZeRTgjfcJozA-eFIUVjCLZBe8t7DxqSAqOCSlwjdt4XsxxtSQ9MVfxbhd5cWsvg3rPEeezNhOqv4Dkk4BM4cyB7bqUPzy7VAQ=="
-        class="pj-reg-form">
+                class="pj-reg-form">
         <div class="pj-reg-grid">
           <div class="pj-date-group">
             <label><span class="en">Your Name</span><span class="ar">اسمك</span></label>
@@ -1155,31 +1153,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 </nav>
 <!-- ════════════════════════════════════════════════════════════ -->
 <script>
-document.getElementById('sib-form').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const form = this;
-  const data = new FormData(form);
-
-  fetch(form.action, {
-    method: 'POST',
-    body: data,
-    mode: 'no-cors'
-  }).then(() => {
-    form.innerHTML = `
-      <div style="text-align:center; padding: 2rem;">
-        <div style="font-size: 2.5rem; margin-bottom: 1rem;">💌</div>
-        <p style="font-size: 1.1rem; font-weight: 500; margin: 0 0 0.5rem;">
-          رحلتك مسجّلة!
-        </p>
-        <p style="font-size: 0.95rem; opacity: 0.75; margin: 0;">
-          You're registered — weekly updates every Sunday 💛
-        </p>
-      </div>
-    `;
-  }).catch(() => {
-    alert('حدث خطأ. يرجى المحاولة مرة أخرى.');
-  });
-});
+// Registration handled by main pj-register handler above
 </script>
 </body>
 </html>
