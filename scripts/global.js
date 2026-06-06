@@ -70,4 +70,19 @@
     }
   });
 
+  /* ── 6. Preserve language across internal links ──────────── */
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a');
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    // Only intercept internal relative links
+    if (href.startsWith('/') || href.startsWith('./') || href.startsWith('../')) {
+      var lang = document.documentElement.getAttribute('data-lang');
+      if (lang && href.indexOf('lang=') === -1) {
+        var sep = href.indexOf('?') > -1 ? '&' : '?';
+        a.href = href + sep + 'lang=' + lang;
+      }
+    }
+  });
+
 })();

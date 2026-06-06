@@ -32,7 +32,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <meta charset="UTF-8"/>
 
-  <script>(function(){var s=localStorage,t=s.getItem("dfl-theme")||"light",l=s.getItem("dfl-lang")||"en",h=document.documentElement;h.setAttribute("data-theme",t);h.setAttribute("data-lang",l);h.setAttribute("lang",l);h.setAttribute("dir",l==="ar"?"rtl":"ltr");})()</script>
+  <script>(function(){var p=new URLSearchParams(location.search),l=p.get("lang")||localStorage.getItem("dfl-lang")||"en",t=p.get("theme")||localStorage.getItem("dfl-theme")||"light",h=document.documentElement;h.setAttribute("data-theme",t);h.setAttribute("data-lang",l);h.setAttribute("lang",l);h.setAttribute("dir",l==="ar"?"rtl":"ltr");if(p.get("lang"))localStorage.setItem("dfl-lang",l);if(p.get("theme"))localStorage.setItem("dfl-theme",t);})()</script>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
 <title>About DOTFORLIFE — Why We Built This | من نحن</title>
 <meta name="description" content="DOTFORLIFE is a free, bilingual life platform built for real decisions — not generic advice. No ads. No fake data. Just honest tools for the moments that matter."/>
