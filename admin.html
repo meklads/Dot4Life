@@ -750,6 +750,11 @@ async function checkAndShow() {
 // ═══════════════════════════════════════
 //  AUTH
 // ═══════════════════════════════════════
+async function sha256(msg) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(msg));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
 async function login() {
   const pw  = document.getElementById('pw').value.trim();
   const btn = document.getElementById('loginBtn');
@@ -761,22 +766,31 @@ async function login() {
   btn.textContent = '…';
   err.style.display = 'none';
 
-  const r = await call('POST', '/admin/login', { password: pw });
+  // Local fallback hash (password: hghgj123)
+  const LOCAL_HASH = 'f7b074395b6597bf02d3a9a66f11451bbc477e8482d281e3e697c5930f2f748f';
+  const localHash = await sha256(pw);
 
-  btn.disabled = false;
-  btn.textContent = 'Sign In';
+  const r = await call('POST', '/admin/login', { password: pw });
 
   if (r.ok && r.data.token) {
     token = r.data.token;
     sessionStorage.setItem('d4l_token', token);
     show('app');
     load();
+  } else if (localHash === LOCAL_HASH) {
+    // Local fallback — password matches without API
+    token = 'local-' + Date.now();
+    sessionStorage.setItem('d4l_token', token);
+    document.documentElement.setAttribute('data-auth', 'local');
+    show('app');
+    load();
   } else {
-    err.textContent = r.data?.error === 'Invalid credentials'
-      ? 'Incorrect password.'
-      : 'Cannot reach server.';
+    err.textContent = 'Incorrect password.';
     err.style.display = 'block';
+    btn.disabled = false;
+    btn.textContent = 'Sign In';
   }
+}
 }
 
 function signout() {
