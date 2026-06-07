@@ -700,10 +700,10 @@
       margin: 0 0 1.5rem;
     }
     /* Accent — second line of each section headline gets a signature color */
-    .health-content  .hl-accent { color: #2a9a98; }
-    .finance-content .hl-accent { color: #2a9a98; }
-    .islamic-panel   .hl-accent { color: #2a9a98; }
-    .travel-content  .hl-accent { color: #2a9a98; }
+    .health-content  .hl-accent { color: #6abfb8; }
+    .finance-content .hl-accent { color: #6abfb8; }
+    .islamic-panel   .hl-accent { color: #6abfb8; }
+    .travel-content  .hl-accent { color: #6abfb8; }
     .sec-body {
       font-size: 1rem; line-height: 1.8;
       max-width: 500px; margin-bottom: 2.5rem;
@@ -744,22 +744,22 @@
     /* ── HEALTH — image LEFT (1.15fr), content RIGHT (1fr) — contained card ── */
     #health { display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem; min-height: min(700px, 85vh); }
     [data-lang="ar"] #health { grid-template-columns: 1fr 1.15fr; direction: rtl; }
-    .health-visual { position: relative; overflow: hidden; border-radius: 24px; }
-    .health-visual img { width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transition:transform 7s ease; }
+    .health-visual { position: relative; overflow: hidden; border-radius: 24px; background: #2a3036; }
+    .health-visual img { width:100%;height:100%;object-fit:cover;object-position:center 40%;display:block;transition:transform 7s ease; }
     .health-visual:hover img { transform: scale(1.04); }
     .health-content {
       padding: clamp(4rem, 8%, 7rem) clamp(3.5rem, 7%, 6rem);
       display: flex; flex-direction: column; justify-content: center;
-      background: #0a0a0a;
+      background: #2a3036;
       border-radius: 24px;
     }
-    [data-theme="dark"] .health-content { background: #0f1218; border: 1px solid rgba(255,255,255,.04); }
-    .health-content .sec-label { color: #2a9a98; }
-    .health-content .sec-headline { color: var(--text); font-weight: 500; }
-    .health-content .sec-body { color: var(--text-2); }
-    .health-content .tool-card { --tc-accent: #2a9a98; --tc-icon-bg: rgba(42,154,152,.08); --tc-icon-color: #2a9a98; }
-    .health-content .btn-gold-outline { border-color: rgba(42,154,152,.4); color: #2a9a98; }
-    .health-content .btn-gold-outline:hover { background: #2a9a98; color: #fff; border-color: #2a9a98; }
+    [data-theme="dark"] .health-content { background: #1a1e22; border: 1px solid rgba(255,255,255,.04); }
+    .health-content .sec-label { color: #6abfb8; }
+    .health-content .sec-headline { color: #fff; font-weight: 500; }
+    .health-content .sec-body { color: rgba(255,255,255,.7); }
+    .health-content .tool-card { --tc-accent: #6abfb8; --tc-icon-bg: rgba(107,191,184,.08); --tc-icon-color: #6abfb8; }
+    .health-content .btn-gold-outline { border-color: rgba(107,191,184,.4); color: #6abfb8; }
+    .health-content .btn-gold-outline:hover { background: #6abfb8; color: #1a1e22; border-color: #6abfb8; }
     @media(max-width:860px){ #health{grid-template-columns:1fr;} .health-visual{min-height:300px;order:-1;} }
 
     /* ── FINANCE — content LEFT (1fr), image RIGHT (1.15fr) — dark card ── */
@@ -767,7 +767,7 @@
     [data-lang="ar"] #finance { grid-template-columns: 1.15fr 1fr; direction: rtl; }
     .finance-content {
       padding: clamp(4rem, 8%, 7rem) clamp(3.5rem, 7%, 6rem);
-      background: #0E1218;
+      background: #2a3036;
       border-radius: 24px;
       border: 1px solid rgba(255,255,255,.04);
       display: flex; flex-direction: column; justify-content: center;
@@ -777,12 +777,12 @@
     .finance-content .sec-body { color: rgba(255,255,255,.6); }
     .finance-content .tool-card {
       background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.09); color: #fff;
-      --tc-accent: #2a9a98; --tc-icon-bg: rgba(42,154,152,.15); --tc-icon-color: #2a9a98;
+      --tc-accent: #6abfb8; --tc-icon-bg: rgba(107,191,184,.1); --tc-icon-color: #6abfb8;
     }
     .finance-content .tool-card:hover { background: rgba(255,255,255,.09); box-shadow: 0 8px 28px rgba(0,0,0,.35); }
     .finance-content .tc-name { color: rgba(255,255,255,.92); }
     .finance-content .tc-desc { color: rgba(255,255,255,.45); }
-    .finance-photo { position: relative; overflow: hidden; border-radius: 24px; }
+    .finance-photo { position: relative; overflow: hidden; border-radius: 24px; background: #2a3036; }
     .finance-photo img { width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform 7s ease; }
     .finance-photo:hover img { transform: scale(1.04); }
     .btn-gold-outline {
@@ -791,14 +791,14 @@
       color: #fff; border-radius: 8px;
       font-size: .88rem; font-weight: 600; transition: all .22s;
     }
-    .btn-gold-outline:hover { background: #2a9a98; border-color: #2a9a98; color: #fff; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(42,154,152,.3); }
+    .btn-gold-outline:hover { background: #6abfb8; border-color: #6abfb8; color: #1a1e22; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(107,191,184,.3); }
     @media(max-width:860px){ #finance{grid-template-columns:1fr;} .finance-photo{min-height:300px;} }
 
     /* ── ISLAMIC — content LEFT (1.1fr), image RIGHT (1fr) — dark card ── */
     #islamic { display: grid; grid-template-columns: 1.1fr 1fr; gap: 3rem; min-height: min(550px, 65vh); }
     [data-lang="ar"] #islamic { grid-template-columns: 1fr 1.1fr; direction: rtl; }
     .islamic-panel {
-      background: #0a0a0a;
+      background: #2a3036;
       padding: clamp(4rem, 8%, 7rem) clamp(3.5rem, 7%, 6rem);
       position: relative; overflow: hidden;
       display: flex; flex-direction: column; justify-content: center;
@@ -810,12 +810,12 @@
     .islamic-content { position: relative; z-index: 2; }
     .islamic-panel .sec-label { color: #6abfb8; }
     .islamic-panel .sec-headline { color: #fff; }
-    .islamic-panel .sec-body { color: rgba(255,255,255,.6); }
-    .islamic-panel .tool-card { background: rgba(255,255,255,.04); border-color: rgba(255,255,255,.08); color: #fff; --tc-accent: var(--gold); --tc-icon-bg: rgba(42,154,152,.1); --tc-icon-color: var(--gold-l); }
+    .islamic-panel .sec-body { color: rgba(255,255,255,.7); }
+    .islamic-panel .tool-card { background: rgba(255,255,255,.04); border-color: rgba(255,255,255,.08); color: #fff; --tc-accent: #6abfb8; --tc-icon-bg: rgba(107,191,184,.1); --tc-icon-color: #6abfb8; }
     .islamic-panel .tool-card:hover { background: rgba(255,255,255,.08); box-shadow: 0 6px 24px rgba(0,0,0,.4); }
     .islamic-panel .tc-name { color: rgba(255,255,255,.92); }
     .islamic-panel .tc-desc { color: rgba(255,255,255,.44); }
-    .islamic-photo { position: relative; overflow: hidden; background: #0d1520; border-radius: 24px; }
+    .islamic-photo { position: relative; overflow: hidden; background: #2a3036; border-radius: 24px; }
     .islamic-photo img { width:100%;height:100%;object-fit:cover;object-position:center;display:block; }
     @media(max-width:860px){ #islamic{grid-template-columns:1fr;} .islamic-photo{min-height:280px;} }
 
@@ -837,7 +837,7 @@
       display: flex; flex-direction: column; align-items: flex-start;
     }
     [data-lang="ar"] .travel-content { align-items: flex-end; }
-    .travel-content .sec-label { color: #2a9a98; }
+    .travel-content .sec-label { color: #6abfb8; }
     .travel-content .sec-headline { color: #fff; max-width: 600px; }
     .travel-content .sec-body { color: rgba(255,255,255,.7); }
     .travel-pills { display: flex; flex-wrap: wrap; gap: .55rem; margin-bottom: 2.2rem; }
