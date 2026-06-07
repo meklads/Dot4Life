@@ -181,6 +181,73 @@
     [data-theme="dark"] #hero {
       background: linear-gradient(160deg, #0a1628 0%, #0d1f3c 100%);
     }
+
+    /* ─── Floating shapes ──────────────────────────── */
+    .hero-floats {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+    .hero-floats span {
+      position: absolute;
+      display: block;
+      border-radius: 50%;
+      opacity: 0.15;
+      will-change: transform;
+    }
+    [data-theme="dark"] .hero-floats span { opacity: 0.08; }
+
+    .hero-floats span:nth-child(1) {
+      width: 280px; height: 280px;
+      background: radial-gradient(circle, #116dff 0%, transparent 70%);
+      top: -60px; left: -80px;
+      animation: floatA 14s ease-in-out infinite;
+    }
+    .hero-floats span:nth-child(2) {
+      width: 180px; height: 180px;
+      background: radial-gradient(circle, #3899ec 0%, transparent 70%);
+      bottom: 10%; right: 5%;
+      animation: floatB 18s ease-in-out infinite;
+    }
+    .hero-floats span:nth-child(3) {
+      width: 120px; height: 120px;
+      background: radial-gradient(circle, #116dff 0%, transparent 70%);
+      top: 30%; left: 40%;
+      animation: floatA 22s ease-in-out infinite reverse;
+    }
+    .hero-floats span:nth-child(4) {
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, #7fccf7 0%, transparent 70%);
+      bottom: -40px; left: 20%;
+      animation: floatB 16s ease-in-out infinite 2s;
+    }
+    .hero-floats span:nth-child(5) {
+      width: 90px; height: 90px;
+      background: radial-gradient(circle, #116dff 0%, transparent 70%);
+      top: 15%; right: 25%;
+      animation: floatA 12s ease-in-out infinite 1s;
+    }
+    .hero-floats span:nth-child(6) {
+      width: 60px; height: 60px;
+      background: #116dff;
+      opacity: 0.06;
+      top: 55%; left: 55%;
+      animation: floatB 20s ease-in-out infinite 3s;
+    }
+    [data-theme="dark"] .hero-floats span:nth-child(6) { opacity: 0.03; }
+
+    @keyframes floatA {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(30px, -40px) scale(1.05); }
+      66% { transform: translate(-20px, 20px) scale(0.95); }
+    }
+    @keyframes floatB {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(40px, 30px) scale(1.08); }
+    }
+
     .hero-inner {
       max-width: 1280px;
       margin: 0 auto;
@@ -1679,6 +1746,9 @@ body{padding-top:110px!important;}
        HERO
   ═══════════════════════════════════════ -->
   <section id="hero" aria-label="Hero section">
+    <div class="hero-floats" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
     <div class="hero-inner">
       <!-- Left: editorial text -->
       <div class="hero-left">
