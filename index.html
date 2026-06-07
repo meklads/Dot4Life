@@ -1417,28 +1417,35 @@
       padding: 0 48px 3rem;
     }
     .mm-card {
-      background: linear-gradient(160deg, #f0f2f5 0%, #f5f7fa 20%, #fafbfc 50%, #ffffff 100%);
-      border: 1px solid rgba(0,0,0,.04);
+      background: linear-gradient(160deg, #0a0a0a 0%, #111114 30%, #16161a 60%, #1a1a1e 100%);
+      border: 1px solid rgba(255,255,255,.04);
       border-radius: 24px;
       padding: 2.5rem 3rem;
       display: grid;
       grid-template-columns: 1.2fr 1fr;
       gap: 2.5rem;
       align-items: start;
-      box-shadow: 0 4px 24px rgba(0,0,0,.04);
+      box-shadow: 0 12px 60px rgba(0,0,0,.3);
       position: relative;
       overflow: hidden;
     }
     [data-theme="dark"] .mm-card {
-      background: linear-gradient(160deg, #181a1e 0%, #1c1e22 20%, #1a1c20 50%, #0e1218 100%);
-      border-color: rgba(255,255,255,.04);
-      box-shadow: 0 4px 24px rgba(0,0,0,.15);
+      background: linear-gradient(160deg, #050505 0%, #0a0a0e 30%, #0e0e12 60%, #0e1218 100%);
+      border-color: rgba(255,255,255,.03);
     }
-    .mm-left { display: flex; flex-direction: column; gap: .5rem; }
+    .mm-card::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -60px;
+      width: 250px; height: 250px;
+      background: radial-gradient(circle, rgba(42,154,152,.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .mm-left { display: flex; flex-direction: column; gap: .5rem; position: relative; z-index: 1; }
     .mm-greeting {
       font-size: .78rem;
       font-weight: 700;
-      color: #6a7280;
+      color: #6abfb8;
       letter-spacing: .12em;
       text-transform: uppercase;
       display: flex;
@@ -1448,7 +1455,7 @@
     [data-lang="ar"] .mm-greeting { font-family: var(--font-ar); letter-spacing: 0; }
     .mm-dot {
       width: 6px; height: 6px;
-      background: #6a7280;
+      background: #6abfb8;
       border-radius: 50%;
     }
     .mm-line {
@@ -1456,7 +1463,7 @@
       font-size: clamp(1.8rem, 3.2vw, 2.6rem);
       font-weight: 600;
       line-height: 1.15;
-      color: var(--text);
+      color: #fff;
       margin-bottom: .5rem;
     }
     [data-lang="ar"] .mm-line {
@@ -1467,7 +1474,7 @@
     }
     .mm-day-label {
       font-size: .82rem;
-      color: var(--text-2);
+      color: rgba(255,255,255,.5);
       margin-top: .25rem;
       font-weight: 500;
     }
@@ -1476,41 +1483,41 @@
     .mm-item {
       display: flex; align-items: flex-start; gap: .85rem;
       padding: .8rem 1rem;
-      background: var(--card-bg);
+      background: rgba(255,255,255,.04);
       border-radius: 12px;
-      border: 1px solid var(--border);
+      border: 1px solid rgba(255,255,255,.06);
       transition: all .2s;
     }
-    [data-theme="dark"] .mm-item { background: rgba(255,255,255,.03); border-color: rgba(255,255,255,.06); }
-    .mm-item:hover { border-color: #6a7280; }
+    [data-theme="dark"] .mm-item { background: rgba(255,255,255,.03); border-color: rgba(255,255,255,.05); }
+    .mm-item:hover { background: rgba(255,255,255,.08); border-color: rgba(107,191,184,.2); }
     .mm-icon { font-size: 1.15rem; line-height: 1.4; flex-shrink: 0; }
-    .mm-text { font-size: .88rem; color: var(--text-2); line-height: 1.5; }
+    .mm-text { font-size: .88rem; color: rgba(255,255,255,.8); line-height: 1.5; }
     [data-lang="ar"] .mm-text { font-family: var(--font-ar); font-size: .9rem; }
     .mm-capsule {
       grid-column: 1 / -1; display: flex; align-items: center; gap: 1rem;
       margin-top: .5rem; padding: 1rem 1.2rem;
-      background: var(--card-bg);
-      border: 1px dashed var(--border);
+      background: rgba(255,255,255,.03);
+      border: 1px dashed rgba(255,255,255,.1);
       border-radius: 14px; cursor: pointer; transition: all .2s;
     }
-    [data-theme="dark"] .mm-capsule { background: rgba(255,255,255,.03); border-color: rgba(255,255,255,.08); }
-    .mm-capsule:hover { border-color: #6a7280; background: rgba(106,114,128,.04); }
+    [data-theme="dark"] .mm-capsule { background: rgba(255,255,255,.02); border-color: rgba(255,255,255,.06); }
+    .mm-capsule:hover { background: rgba(255,255,255,.06); border-color: rgba(107,191,184,.25); }
     .mm-capsule-icon { font-size: 1.5rem; flex-shrink: 0; }
-    .mm-capsule-label { font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #6a7280; }
+    .mm-capsule-label { font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #6abfb8; }
     [data-lang="ar"] .mm-capsule-label { font-family: var(--font-ar); letter-spacing: 0; }
-    .mm-capsule-title { font-size: .9rem; font-weight: 600; color: var(--text); }
+    .mm-capsule-title { font-size: .9rem; font-weight: 600; color: #fff; }
     [data-lang="ar"] .mm-capsule-title { font-family: var(--font-ar); }
-    .mm-capsule-arrow { margin-left: auto; color: #6a7280; flex-shrink: 0; }
+    .mm-capsule-arrow { margin-left: auto; color: #6abfb8; flex-shrink: 0; }
     .mm-footer {
       grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between;
       padding-top: 1rem; margin-top: .5rem;
-      border-top: 1px solid var(--border);
+      border-top: 1px solid rgba(255,255,255,.06);
     }
-    .mm-footer-left { font-size: .72rem; color: var(--muted); display: flex; align-items: center; gap: .5rem; }
+    .mm-footer-left { font-size: .72rem; color: rgba(255,255,255,.4); display: flex; align-items: center; gap: .5rem; }
     [data-lang="ar"] .mm-footer-left { font-family: var(--font-ar); }
-    .mm-pulse { width: 6px; height: 6px; background: #6a7280; border-radius: 50%; animation: mmPulse 2.5s ease-in-out infinite; }
+    .mm-pulse { width: 6px; height: 6px; background: #6abfb8; border-radius: 50%; animation: mmPulse 2.5s ease-in-out infinite; }
     @keyframes mmPulse { 0%,100% { opacity: .4; transform: scale(1); } 50% { opacity: 1; transform: scale(1.4); } }
-    .mm-footer-right { font-size: .72rem; color: var(--muted); }
+    .mm-footer-right { font-size: .72rem; color: rgba(255,255,255,.4); }
     [data-lang="ar"] .mm-footer-right { font-family: var(--font-ar); }
     @media (max-width: 900px) {
       #morning-moment { padding: 0 24px 2.5rem; }
