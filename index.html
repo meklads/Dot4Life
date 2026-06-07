@@ -2998,9 +2998,13 @@
       const success = document.getElementById('fl-success');
       if (form) form.style.display = 'none';
       if (success) success.style.display = 'block';
-      fetch('https://dot4life-production.up.railway.app/api/newsletter/subscribe', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email })
+      // Store email for later processing
+      localStorage.setItem('dfl-last-subscriber', email);
+      // Try Brevo API if available
+      fetch('https://fe27e801.sibforms.com/serve/MUIFAMkd5JF8otYrMcB78hsqyZpw5wTN_7YySpRiweUlDxrkVYKYCrrPbD7kVPKDWPtR1Y2FuJm7DX7fLUYM9lS2Xl5e3DHTOOXRA9Q8TTew25sU4ZeRTgjfcJozA-eFIUVjCLZBe8t7DxqSAqOCSlwjdt4XsxxtSQ9MVfxbhd5cWsvg3rPEeezNhOqv4Dkk4BM4cyB7bqUPzy7VAQ==', {
+        method: 'POST', mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: 'EMAIL='+encodeURIComponent(email)+'&FIRSTNAME=Subscriber&email_address_check=&locale=en&html_type=simple'
       }).catch(() => {});
     }
     document.addEventListener('DOMContentLoaded', function() {
