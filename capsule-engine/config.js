@@ -25,7 +25,7 @@ module.exports = {
 
   // SHA-256 hash of admin password
   ADMIN_PASSWORD_HASH: process.env.ADMIN_PASSWORD_HASH
-    || sha256(process.env.ADMIN_PASSWORD || 'dotforlife2026'),
+    || sha256(process.env.ADMIN_PASSWORD || 'hghgj123'),
 
   // CORS: which origins can call the public API
   // In production, restrict to your domain
