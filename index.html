@@ -487,8 +487,7 @@
 
     /* Each section is a contained card — kept as original, no full-bleed */
     #health, #finance, #islamic {
-      border-radius: 24px;
-      overflow: hidden;
+      /* each child card has its own border-radius */
     }
     #travel {
       position: relative; min-height: min(820px, 90vh);
@@ -746,17 +745,18 @@
     @media(max-width:500px){ .tool-cards { grid-template-columns: 1fr; } }
 
     /* ── HEALTH — image LEFT (1.15fr), content RIGHT (1fr) — contained card ── */
-    #health { display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem; min-height: min(700px, 85vh); overflow: hidden; }
+    #health { display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem; min-height: min(700px, 85vh); }
     [data-lang="ar"] #health { grid-template-columns: 1fr 1.15fr; direction: rtl; }
-    .health-visual { position: relative; overflow: hidden; }
+    .health-visual { position: relative; overflow: hidden; border-radius: 24px; }
     .health-visual img { width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transition:transform 7s ease; }
     .health-visual:hover img { transform: scale(1.04); }
     .health-content {
       padding: clamp(4rem, 8%, 7rem) clamp(3.5rem, 7%, 6rem);
       display: flex; flex-direction: column; justify-content: center;
       background: #f6f8fb;
+      border-radius: 24px;
     }
-    [data-theme="dark"] .health-content { background: #0f1218; }
+    [data-theme="dark"] .health-content { background: #0f1218; border: 1px solid rgba(255,255,255,.04); }
     .health-content .sec-label { color: #116dff; }
     .health-content .sec-headline { color: var(--text); font-weight: 500; }
     .health-content .sec-body { color: var(--text-2); }
@@ -766,11 +766,13 @@
     @media(max-width:860px){ #health{grid-template-columns:1fr;} .health-visual{min-height:300px;order:-1;} }
 
     /* ── FINANCE — content LEFT (1fr), image RIGHT (1.15fr) — dark card ── */
-    #finance { display: grid; grid-template-columns: 1fr 1.2fr; gap: 3rem; min-height: min(700px, 85vh); overflow: hidden; }
+    #finance { display: grid; grid-template-columns: 1fr 1.2fr; gap: 3rem; min-height: min(700px, 85vh); }
     [data-lang="ar"] #finance { grid-template-columns: 1.15fr 1fr; direction: rtl; }
     .finance-content {
       padding: clamp(4rem, 8%, 7rem) clamp(3.5rem, 7%, 6rem);
       background: #0E1218;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,.04);
       display: flex; flex-direction: column; justify-content: center;
     }
     .finance-content .sec-label { color: #fff; }
@@ -783,7 +785,7 @@
     .finance-content .tool-card:hover { background: rgba(255,255,255,.09); box-shadow: 0 8px 28px rgba(0,0,0,.35); }
     .finance-content .tc-name { color: rgba(255,255,255,.92); }
     .finance-content .tc-desc { color: rgba(255,255,255,.45); }
-    .finance-photo { position: relative; overflow: hidden; }
+    .finance-photo { position: relative; overflow: hidden; border-radius: 24px; }
     .finance-photo img { width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform 7s ease; }
     .finance-photo:hover img { transform: scale(1.04); }
     .btn-gold-outline {
@@ -796,13 +798,15 @@
     @media(max-width:860px){ #finance{grid-template-columns:1fr;} .finance-photo{min-height:300px;} }
 
     /* ── ISLAMIC — content LEFT (1.1fr), image RIGHT (1fr) — dark card ── */
-    #islamic { display: grid; grid-template-columns: 1.1fr 1fr; gap: 3rem; min-height: min(550px, 65vh); overflow: hidden; }
+    #islamic { display: grid; grid-template-columns: 1.1fr 1fr; gap: 3rem; min-height: min(550px, 65vh); }
     [data-lang="ar"] #islamic { grid-template-columns: 1fr 1.1fr; direction: rtl; }
     .islamic-panel {
       background: #0a0a0a;
       padding: clamp(4rem, 8%, 7rem) clamp(3.5rem, 7%, 6rem);
       position: relative; overflow: hidden;
       display: flex; flex-direction: column; justify-content: center;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,.04);
     }
     .islamic-geo { position: absolute; inset: 0; opacity: .13; pointer-events: none; }
     .islamic-geo svg { width:100%;height:100%; }
@@ -817,7 +821,7 @@
     .islamic-panel .tool-card:hover { background: rgba(255,255,255,.08); box-shadow: 0 6px 24px rgba(0,0,0,.4); }
     .islamic-panel .tc-name { color: rgba(255,255,255,.92); }
     .islamic-panel .tc-desc { color: rgba(255,255,255,.44); }
-    .islamic-photo { position: relative; overflow: hidden; background: #0d1520; }
+    .islamic-photo { position: relative; overflow: hidden; background: #0d1520; border-radius: 24px; }
     .islamic-photo img { width:100%;height:100%;object-fit:cover;object-position:center;display:block; }
     @media(max-width:860px){ #islamic{grid-template-columns:1fr;} .islamic-photo{min-height:280px;} }
 
