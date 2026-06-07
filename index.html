@@ -486,16 +486,13 @@
     }
 
     /* Each section is a contained card — kept as original, no full-bleed */
-    #health, #finance, #islamic, #travel {
-      overflow: hidden;
-      border-radius: 28px;
-      box-shadow: 0 8px 40px rgba(0,0,0,.06), 0 1px 4px rgba(0,0,0,.04);
+    #health, #finance, #islamic {
+      /* handled individually */
     }
-    [data-theme="dark"] #health,
-    [data-theme="dark"] #finance,
-    [data-theme="dark"] #islamic,
-    [data-theme="dark"] #travel {
-      box-shadow: 0 12px 60px rgba(0,0,0,.36), 0 2px 8px rgba(0,0,0,.2);
+    #travel {
+      position: relative; min-height: min(820px, 90vh);
+      display: flex; align-items: flex-end; overflow: hidden;
+      border-radius: 24px;
     }
     #daily-strip { width: 100%; box-sizing: border-box; }
 
@@ -819,9 +816,9 @@
     .islamic-panel .tool-card:hover { background: rgba(255,255,255,.08); box-shadow: 0 6px 24px rgba(0,0,0,.4); }
     .islamic-panel .tc-name { color: rgba(255,255,255,.92); }
     .islamic-panel .tc-desc { color: rgba(255,255,255,.44); }
-    .islamic-photo { position: relative; overflow: hidden; }
+    .islamic-photo { position: relative; overflow: hidden; border-radius: 24px; border: 1px solid rgba(255,255,255,.06); background: #0d1520; }
     .islamic-photo img { width:100%;height:100%;object-fit:cover;object-position:center;display:block; }
-    @media(max-width:860px){ #islamic{grid-template-columns:1fr;} .islamic-photo{min-height:300px;} }
+    @media(max-width:860px){ #islamic{grid-template-columns:1fr;} .islamic-photo{min-height:280px;} }
 
     /* ── TRAVEL — cinematic full-bleed image inside the contained card ── */
     #travel {
