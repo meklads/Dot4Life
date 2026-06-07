@@ -43,10 +43,10 @@
 :root {
   --text:    #1A1410; --text-2:  #5C534A; --muted:   #9A9188;
   --body-bg: #FAF8F4; --card-bg: #FFFFFF; --cream:   #F5F0E8;
-  --cream-d: #EDE6D8; --border:  #E0D8CC; --gold:    #B8861A;
-  --gold-l:  #D4A832; --gold-d:  #8A620F; --rose:    #C8706A;
-  --green:   #1B7A4E; --blue:    #0F3D6E;
-  --font-serif: 'Crimson Pro', Georgia, serif;
+  --cream-d: #EDE6D8; --border:  #E0D8CC; --gold:    #6abfb8;
+  --gold-l:  #8fd4cc; --gold-d:  #4a8a82; --rose:    #C8706A;
+  --green:   #2a9a98; --blue:    #2a3036;
+  --font-serif: 'Cinzel', Georgia, serif;
   --font-ui:    'Inter', system-ui, sans-serif;
   --font-ar:    'Almarai', 'Segoe UI', sans-serif;
   --radius: 12px; --shadow: 0 2px 24px rgba(0,0,0,.07);
@@ -54,7 +54,7 @@
 [data-theme="dark"] {
   --text:#EDE8E0; --text-2:#B8B0A4; --muted:#7A746C;
   --body-bg:#12100E; --card-bg:#1E1A16; --cream:#1E1A16;
-  --cream-d:#252018; --border:#302820; --gold:#D4A832;
+  --cream-d:#252018; --border:#302820; --gold:#8fd4cc;
   --shadow: 0 2px 24px rgba(0,0,0,.4);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -111,7 +111,7 @@ a{color:inherit;text-decoration:none}
 .pj-reg-btn{width:100%;justify-content:center;background:var(--rose)}
 .pj-reg-btn:hover{background:#b8605a}
 .pj-reg-msg{margin-top:14px;border-radius:10px;padding:14px 16px;font-size:.85rem;line-height:1.6;text-align:center}
-.pj-reg-msg.success{background:#E8F5EE;color:#1B7A4E;border:1px solid #B8DFCA}
+.pj-reg-msg.success{background:#E8F5EE;color:#2a9a98;border:1px solid #B8DFCA}
 .pj-reg-msg.error{background:#FDECEA;color:#C8305A;border:1px solid #F4BDCA}
 
 /* ── DATE INPUT CARD ─────────────────────────────── */
@@ -211,17 +211,17 @@ a{color:inherit;text-decoration:none}
 .pj-card ul li::before{content:'·';position:absolute;left:0;color:var(--rose);font-weight:700;font-size:1.1rem}
 [data-lang="ar"] .pj-card ul li::before{left:auto;right:0}
 .card-baby .pj-card-icon{background:rgba(200,112,106,.1)}
-.card-mama .pj-card-icon{background:rgba(184,134,26,.1)}
-.card-nutrition .pj-card-icon{background:rgba(27,122,78,.1)}
+.card-mama .pj-card-icon{background:rgba(107,191,184,.1)}
+.card-nutrition .pj-card-icon{background:rgba(42,154,152,.1)}
 .card-tip .pj-card-icon{background:rgba(15,61,110,.1)}
 
 /* ── TIP CARD (full width) ───────────────────────── */
 .pj-tip-full{
   grid-column:1/-1;
-  background:linear-gradient(135deg,rgba(184,134,26,.06),rgba(15,61,110,.04));
-  border:1px solid rgba(184,134,26,.2);border-radius:var(--radius);padding:20px 24px;
+  background:linear-gradient(135deg,rgba(107,191,184,.06),rgba(15,61,110,.04));
+  border:1px solid rgba(107,191,184,.2);border-radius:var(--radius);padding:20px 24px;
 }
-.pj-tip-full .pj-card-icon{background:rgba(184,134,26,.12)}
+.pj-tip-full .pj-card-icon{background:rgba(107,191,184,.12)}
 
 /* ── SIZE CARD ───────────────────────────────────── */
 .pj-size-card{
@@ -1047,11 +1047,11 @@ async function registerJourney() {
     msg.innerHTML = isAr
       ? `✓ تم التسجيل! سيصلك بريدك كل أحد.<br/>
          <strong>رابطك الشخصي:</strong><br/>
-         <a href="${personalUrl}" style="color:#1B7A4E;word-break:break-all">${personalUrl}</a><br/>
+         <a href="${personalUrl}" style="color:#2a9a98;word-break:break-all">${personalUrl}</a><br/>
          <small style="color:#5C534A">احفظي هذا الرابط — يفتح صفحتك دائماً على أسبوعك الحالي</small>`
       : `✓ Registered! You\'ll receive your weekly email every Sunday.<br/>
          <strong>Your personal link:</strong><br/>
-         <a href="${personalUrl}" style="color:#1B7A4E;word-break:break-all">${personalUrl}</a><br/>
+         <a href="${personalUrl}" style="color:#2a9a98;word-break:break-all">${personalUrl}</a><br/>
          <small style="color:#5C534A">Bookmark this link — it always opens at your current week</small>`;
     msg.style.display = 'block';
 
