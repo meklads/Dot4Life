@@ -174,12 +174,59 @@
     /* ─── HERO — editorial 50/50 ────────────────────── */
     #hero {
       margin-top: 0;
-      background: linear-gradient(170deg, #0a2a44 0%, #0d3b5c 30%, #1565a0 60%, #eef7ff 92%, #ffffff 100%);
+      background: linear-gradient(180deg, #0a2a44 0%, #0a2a44 48%, #dce8f5 52%, #f5f9ff 55%, #ffffff 60%, #ffffff 100%);
       position: relative;
       overflow: hidden;
     }
     [data-theme="dark"] #hero {
-      background: linear-gradient(170deg, #050e18 0%, #0a1628 30%, #0a2a44 60%, #0d1f2e 92%, #0e1218 100%);
+      background: linear-gradient(180deg, #050e18 0%, #050e18 48%, #0a1628 52%, #0d1f2e 60%, #0e1218 100%);
+    }
+
+    /* Homepage navbar override — transparent on blue hero */
+    body.index-page #navbar,
+    #navbar.index-nav {
+      background: rgba(10,42,68,0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    [data-theme="dark"] body.index-page #navbar,
+    [data-theme="dark"] #navbar.index-nav {
+      background: rgba(5,14,24,0.9);
+    }
+    body.index-page #navbar a,
+    #navbar.index-nav a {
+      color: rgba(255,255,255,.9);
+    }
+    body.index-page #navbar a:hover,
+    #navbar.index-nav a:hover {
+      background: rgba(255,255,255,.08);
+      color: #fff;
+    }
+    body.index-page .nav-links a,
+    #navbar.index-nav .nav-links a {
+      color: rgba(255,255,255,.8);
+    }
+    body.index-page .nav-links a:hover,
+    #navbar.index-nav .nav-links a:hover {
+      color: #fff;
+      background: rgba(255,255,255,.08);
+    }
+    body.index-page .nav-links a.active,
+    #navbar.index-nav .nav-links a.active {
+      color: #fff;
+      font-weight: 700;
+      background: rgba(255,255,255,.12);
+    }
+    body.index-page .nav-btn,
+    #navbar.index-nav .nav-btn {
+      color: rgba(255,255,255,.8);
+      border-color: rgba(255,255,255,.2);
+    }
+    body.index-page .nav-btn:hover,
+    #navbar.index-nav .nav-btn:hover {
+      color: #fff;
+      border-color: rgba(255,255,255,.5);
     }
 
     /* ─── Floating shapes ──────────────────────────── */
@@ -249,7 +296,7 @@
     .hero-inner {
       max-width: 1280px;
       margin: 0 auto;
-      padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 4vw, 4rem) clamp(3rem, 6vw, 5rem);
+      padding: clamp(6rem, 10vw, 9rem) clamp(1.5rem, 4vw, 4rem) clamp(6rem, 10vw, 12rem);
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: clamp(3rem, 6vw, 7rem);
@@ -365,7 +412,7 @@
       grid-template-columns: repeat(4, 1fr);
       gap: 1px;
       max-width: 1280px;
-      margin: -4rem auto 0;
+      margin: -6rem auto 0;
       padding: 0 1.5rem;
       background: rgba(255,255,255,.95);
       backdrop-filter: blur(12px);
@@ -1701,19 +1748,19 @@
 .nav-logo img,.dfl-nav-logo img{height:120px!important;width:auto!important;display:block!important;}
 #dfl-navbar{min-height:110px!important;height:110px!important;}
 .dfl-nav-inner{height:110px!important;}
-body{padding-top:110px!important;}
+body.index-page{padding-top:110px!important;}
 .footer-logo img{height:100px!important;width:auto!important;display:block!important;}
 @media(max-width:768px){
   #navbar,.navbar-unified,#dfl-navbar{height:90px!important;}
   .nav-inner,.navbar-inner,.navbar-inner-unified,.dfl-nav-inner{height:90px!important;}
   .nav-logo img,.dfl-nav-logo img{height:80px!important;}
-  body{padding-top:90px!important;}
+  body.index-page{padding-top:90px!important;}
   .footer-logo img{height:75px!important;}
 }
 </style>
 <script src="/scripts/global.js" defer></script>
 </head>
-<body>
+<body class="index-page">
 
   <!-- ═══════════════════════════════════════
        NAVBAR
