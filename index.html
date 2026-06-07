@@ -258,7 +258,7 @@
     }
     .hero-floats span:nth-child(2) {
       width: 200px; height: 200px;
-      background: radial-gradient(circle, rgba(21,179,154,0.25) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(17,109,255,0.15) 0%, transparent 70%);
       bottom: 5%; right: 8%;
       animation: floatB 20s ease-in-out infinite;
     }
@@ -270,7 +270,7 @@
     }
     .hero-floats span:nth-child(4) {
       width: 220px; height: 220px;
-      background: radial-gradient(circle, rgba(21,179,154,0.2) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
       bottom: -50px; left: 15%;
       animation: floatB 18s ease-in-out infinite 2s;
     }
@@ -282,7 +282,7 @@
     }
     .hero-floats span:nth-child(6) {
       width: 70px; height: 70px;
-      background: rgba(21,179,154,0.15);
+      background: rgba(255,255,255,0.1);
       top: 60%; left: 50%;
       animation: floatB 22s ease-in-out infinite 3s;
     }
@@ -412,18 +412,21 @@
     }
     /* Stats bar */
     .hero-stats {
+      display: block;
+      max-width: 1280px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .hero-stats-inner {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 1px;
-      max-width: 1280px;
-      margin: -3rem auto 3rem;
-      padding: 0 1.5rem;
       background: rgba(255,255,255,.95);
-      backdrop-filter: blur(12px);
       border-radius: 16px;
-      box-shadow: 0 8px 40px rgba(0,0,0,.12);
+      box-shadow: 0 8px 40px rgba(0,0,0,.08);
+      overflow: hidden;
     }
-    [data-theme="dark"] .hero-stats {
+    [data-theme="dark"] .hero-stats { padding-top: 0;
       background: rgba(18,22,30,.95);
       box-shadow: 0 8px 40px rgba(0,0,0,.3);
     }
@@ -462,10 +465,10 @@
       .hero-left { align-items: center; }
       .hero-sub { max-width: 480px; margin-left: auto; margin-right: auto; }
       .hero-circle-wrap { width: min(340px, 72vw); }
-      .hero-stats { grid-template-columns: repeat(2, 1fr); margin-top: 0; }
+      .hero-stats { padding-top: 0; grid-template-columns: repeat(2, 1fr); margin-top: 0; }
     }
     @media (max-width: 500px) {
-      .hero-stats { grid-template-columns: 1fr; }
+      .hero-stats { padding-top: 0; grid-template-columns: 1fr; }
       .stat-item + .stat-item { border-left: none; }
       .hero-circle-wrap { width: min(240px, 64vw); }
     }
@@ -555,7 +558,7 @@
       box-shadow: 0 10px 36px rgba(0,0,0,.1);
       border-color: var(--gold);
     }
-    .tw-card--guide { border-top: 3px solid #15b39a; }
+    .tw-card--guide { border-top: 3px solid var(--gold, #116dff); }
     .tw-card--tool  { border-top: 3px solid var(--gold); }
     .tw-card--article { border-top: 3px solid var(--blue, #0F3D6E); }
     .tw-card-badge {
@@ -563,7 +566,7 @@
       text-transform: uppercase;
       color: var(--muted); margin-bottom: .2rem;
     }
-    .tw-card--guide  .tw-card-badge { color: var(--green, #1B7A4E); }
+    .tw-card--guide  .tw-card-badge { color: var(--gold, #116dff); }
     .tw-card--tool   .tw-card-badge { color: var(--gold); }
     .tw-card--article .tw-card-badge { color: var(--blue, #0F3D6E); }
     .tw-card-icon { font-size: 1.6rem; line-height: 1; }
@@ -581,7 +584,7 @@
       font-size: .78rem; font-weight: 700;
       color: var(--gold); margin-top: .4rem;
     }
-    .tw-card--guide  .tw-card-cta { color: var(--green, #1B7A4E); }
+    .tw-card--guide  .tw-card-cta { color: var(--gold, #116dff); }
     .tw-card--article .tw-card-cta { color: var(--blue, #0F3D6E); }
 
     /* Section dividers — numbered labels between cards */
@@ -602,8 +605,8 @@
 
     /* ─── DAILY STRIP ───────────────────────────────── */
     #daily-strip {
-      background: #f0faf8;
-      border-bottom: 1px solid rgba(21,179,154,.1);
+      background: #f0f4f8;
+      border-bottom: 1px solid rgba(0,0,0,.06);
       border-top: none;
       padding: 1rem clamp(1.5rem,5vw,4rem);
       display: flex; align-items: center; justify-content: space-between; gap: 1rem;
@@ -612,8 +615,8 @@
       box-sizing: border-box;
     }
     [data-theme="dark"] #daily-strip {
-      background: #0d1f1c;
-      border-color: rgba(21,179,154,.1);
+      background: #0e151d;
+      border-color: rgba(255,255,255,.04);
     }
     .strip-date {
       display: flex; align-items: center; gap: .8rem;
@@ -703,9 +706,9 @@
       margin: 0 0 1.5rem;
     }
     /* Accent — second line of each section headline gets a signature color */
-    .health-content  .hl-accent { color: #15b39a; }
+    .health-content  .hl-accent { color: #116dff; }
     .finance-content .hl-accent { color: #116dff; }
-    .islamic-panel   .hl-accent { color: #15b39a; }
+    .islamic-panel   .hl-accent { color: #116dff; }
     .travel-content  .hl-accent { color: #116dff; }
     .sec-body {
       font-size: 1rem; line-height: 1.8;
@@ -756,12 +759,12 @@
       background: #f6f8fb;
     }
     [data-theme="dark"] .health-content { background: #0f1218; }
-    .health-content .sec-label { color: #15b39a; }
+    .health-content .sec-label { color: #116dff; }
     .health-content .sec-headline { color: var(--text); font-weight: 500; }
     .health-content .sec-body { color: var(--text-2); }
-    .health-content .tool-card { --tc-accent: #15b39a; --tc-icon-bg: rgba(21,179,154,.08); --tc-icon-color: #15b39a; }
-    .health-content .btn-gold-outline { border-color: rgba(21,179,154,.4); color: #15b39a; }
-    .health-content .btn-gold-outline:hover { background: #15b39a; color: #fff; border-color: #15b39a; }
+    .health-content .tool-card { --tc-accent: #116dff; --tc-icon-bg: rgba(17,109,255,.08); --tc-icon-color: #116dff; }
+    .health-content .btn-gold-outline { border-color: rgba(17,109,255,.4); color: #116dff; }
+    .health-content .btn-gold-outline:hover { background: #116dff; color: #fff; border-color: #116dff; }
     @media(max-width:860px){ #health{grid-template-columns:1fr;} .health-visual{min-height:300px;order:-1;} }
 
     /* ── FINANCE — content LEFT (1fr), image RIGHT (1.15fr) — dark card ── */
@@ -806,7 +809,7 @@
     .islamic-geo { position: absolute; inset: 0; opacity: .13; pointer-events: none; }
     .islamic-geo svg { width:100%;height:100%; }
     .islamic-content { position: relative; z-index: 2; }
-    .islamic-panel .sec-label { color: #15b39a; }
+    .islamic-panel .sec-label { color: #3899ec; }
     .islamic-panel .sec-headline { color: #fff; }
     .islamic-panel .sec-body { color: rgba(255,255,255,.6); }
     .islamic-panel .tool-card {
@@ -917,13 +920,13 @@
     /* ─── FRIDAY LETTER ────────────────────────────── */
     #friday-letter {
       padding: clamp(60px, 8vw, 90px) clamp(24px, 6vw, 80px);
-      background: linear-gradient(160deg, #f0faf8 0%, #e0f5ef 100%);
-      border-top: 1px solid rgba(21,179,154,.08);
-      border-bottom: 1px solid rgba(21,179,154,.08);
+      background: linear-gradient(160deg, var(--cream) 0%, var(--card-bg) 100%);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
       text-align: center;
     }
     [data-theme="dark"] #friday-letter {
-      background: linear-gradient(160deg, #0d1f1c 0%, #0a1816 100%);
+      background: linear-gradient(160deg, #0e1218 0%, #0a0e14 100%);
     }
     .fl-inner { max-width: 540px; margin: 0 auto; }
     .fl-icon {
@@ -1094,9 +1097,9 @@
       display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
     }
-    .hero-badge-icon svg { width: 18px; height: 18px; stroke: #fff; fill: none; stroke-width: 2; }
-    .hero-badge-label { font-size: .62rem; font-weight: 600; letter-spacing: .03em; color: rgba(255,255,255,.6); text-transform: uppercase; }
-    .hero-badge-value { font-size: .85rem; font-weight: 600; color: #fff; margin-top: 2px; }
+    .hero-badge-icon svg { width: 18px; height: 18px; stroke: #fff; fill: none; stroke-width: 2.5; }
+    .hero-badge-label { font-size: .62rem; font-weight: 600; letter-spacing: .03em; color: #6A7280; text-transform: uppercase; }
+    .hero-badge-value { font-size: .85rem; font-weight: 600; color: #0a2a44; margin-top: 2px; }
     [data-lang="ar"] .hero-badge { font-family: var(--font-ar); }
     @media(max-width:900px){ .hero-badge { display: none; } }
     /* Category Navigator — Headspace-inspired pill tabs */
@@ -1425,15 +1428,15 @@
       padding: 0 48px 2.5rem;
     }
     .mm-card {
-      background: linear-gradient(135deg, #f0faf8 0%, #e0f5ef 100%);
-      border: 1px solid rgba(21,179,154,.12);
+      background: linear-gradient(135deg, #f0f4f8 0%, #e4eef7 100%);
+      border: 1px solid rgba(17,109,255,.1);
       border-radius: 20px;
       padding: 2rem 2.5rem;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 2.5rem;
       align-items: center;
-      box-shadow: 0 4px 24px rgba(21,179,154,.06);
+      box-shadow: 0 4px 24px rgba(0,0,0,.04);
       position: relative;
       overflow: hidden;
     }
@@ -1442,12 +1445,12 @@
       position: absolute;
       top: -60px; left: -60px;
       width: 240px; height: 240px;
-      background: radial-gradient(circle, rgba(21,179,154,.09) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(17,109,255,.06) 0%, transparent 70%);
       pointer-events: none;
     }
     [data-theme="dark"] .mm-card {
-      background: linear-gradient(135deg, #0d1f1c 0%, #0a1816 100%);
-      border-color: rgba(21,179,154,.14);
+      background: linear-gradient(135deg, #0e151d 0%, #0d1a2e 100%);
+      border-color: rgba(17,109,255,.1);
       box-shadow: 0 6px 36px rgba(0,0,0,.25);
     }
     /* Left side */
@@ -1849,8 +1852,11 @@
         </div>
       </div>
     </div>
-    <!-- Stats bar -->
-    <div class="hero-stats" aria-label="Key metrics">
+  </section>
+
+  <!-- Stats bar — now between hero and morning moment -->
+  <div class="hero-stats" aria-label="Key metrics" style="max-width:1280px;margin:0 auto;padding:0 1.5rem;">
+    <div class="hero-stats-inner">
       <div class="stat-item">
         <div class="stat-num">40+</div>
         <div class="stat-label"><span class="en">Free Tools</span><span class="ar">أداة مجانية</span></div>
@@ -1868,7 +1874,7 @@
         <div class="stat-label"><span class="en">Data Stored</span><span class="ar">بيانات محفوظة</span></div>
       </div>
     </div>
-  </section>
+  </div>
 
   <!-- ═══════════════════════════════════════
        MORNING MOMENT
