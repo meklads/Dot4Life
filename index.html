@@ -487,7 +487,8 @@
 
     /* Each section is a contained card — kept as original, no full-bleed */
     #health, #finance, #islamic {
-      /* handled individually */
+      border-radius: 24px;
+      overflow: hidden;
     }
     #travel {
       position: relative; min-height: min(820px, 90vh);
@@ -745,7 +746,7 @@
     @media(max-width:500px){ .tool-cards { grid-template-columns: 1fr; } }
 
     /* ── HEALTH — image LEFT (1.15fr), content RIGHT (1fr) — contained card ── */
-    #health { display: grid; grid-template-columns: 1.2fr 1fr; gap: 1.5rem; min-height: min(700px, 85vh); overflow: hidden; }
+    #health { display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem; min-height: min(700px, 85vh); overflow: hidden; }
     [data-lang="ar"] #health { grid-template-columns: 1fr 1.15fr; direction: rtl; }
     .health-visual { position: relative; overflow: hidden; }
     .health-visual img { width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transition:transform 7s ease; }
@@ -765,7 +766,7 @@
     @media(max-width:860px){ #health{grid-template-columns:1fr;} .health-visual{min-height:300px;order:-1;} }
 
     /* ── FINANCE — content LEFT (1fr), image RIGHT (1.15fr) — dark card ── */
-    #finance { display: grid; grid-template-columns: 1fr 1.2fr; gap: 1.5rem; min-height: min(700px, 85vh); overflow: hidden; }
+    #finance { display: grid; grid-template-columns: 1fr 1.2fr; gap: 3rem; min-height: min(700px, 85vh); overflow: hidden; }
     [data-lang="ar"] #finance { grid-template-columns: 1.15fr 1fr; direction: rtl; }
     .finance-content {
       padding: clamp(4rem, 8%, 7rem) clamp(3.5rem, 7%, 6rem);
@@ -795,7 +796,7 @@
     @media(max-width:860px){ #finance{grid-template-columns:1fr;} .finance-photo{min-height:300px;} }
 
     /* ── ISLAMIC — content LEFT (1.1fr), image RIGHT (1fr) — dark card ── */
-    #islamic { display: grid; grid-template-columns: 1.1fr 1fr; gap: 1.5rem; min-height: min(550px, 65vh); overflow: hidden; }
+    #islamic { display: grid; grid-template-columns: 1.1fr 1fr; gap: 3rem; min-height: min(550px, 65vh); overflow: hidden; }
     [data-lang="ar"] #islamic { grid-template-columns: 1fr 1.1fr; direction: rtl; }
     .islamic-panel {
       background: #0a0a0a;
