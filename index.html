@@ -555,14 +555,18 @@
 
     /* ─── DAILY STRIP ───────────────────────────────── */
     #daily-strip {
-      background: var(--cream-d);
-      border-bottom: 1px solid var(--border);
-      border-top: 1px solid var(--border);
+      background: #e8f7f4;
+      border-bottom: 1px solid rgba(21,179,154,.12);
+      border-top: 1px solid rgba(21,179,154,.12);
       padding: 1rem clamp(1.5rem,5vw,4rem);
       display: flex; align-items: center; justify-content: space-between; gap: 1rem;
       flex-wrap: wrap;
       width: 100%;
       box-sizing: border-box;
+    }
+    [data-theme="dark"] #daily-strip {
+      background: #0d1f1c;
+      border-color: rgba(21,179,154,.1);
     }
     .strip-date {
       display: flex; align-items: center; gap: .8rem;
@@ -866,13 +870,13 @@
     /* ─── FRIDAY LETTER ────────────────────────────── */
     #friday-letter {
       padding: clamp(72px, 10vw, 110px) clamp(24px, 6vw, 80px);
-      background: linear-gradient(160deg, #FAF7F2 0%, #F5EFE2 100%);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
+      background: linear-gradient(160deg, #e8f7f4 0%, #d4f0eb 100%);
+      border-top: 1px solid rgba(21,179,154,.12);
+      border-bottom: 1px solid rgba(21,179,154,.12);
       text-align: center;
     }
     [data-theme="dark"] #friday-letter {
-      background: linear-gradient(160deg, #16130F 0%, #1C1710 100%);
+      background: linear-gradient(160deg, #0d1f1c 0%, #0a1816 100%);
     }
     .fl-inner { max-width: 540px; margin: 0 auto; }
     .fl-icon {
@@ -1374,15 +1378,15 @@
       padding: 0 48px 2.5rem;
     }
     .mm-card {
-      background: linear-gradient(135deg, #FDF8EF 0%, #F8F1E2 100%);
-      border: 1px solid rgba(184,134,26,.18);
+      background: linear-gradient(135deg, #e8f7f4 0%, #d4f0eb 100%);
+      border: 1px solid rgba(21,179,154,.15);
       border-radius: 24px;
       padding: 2rem 2.5rem;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 2.5rem;
       align-items: center;
-      box-shadow: 0 6px 36px rgba(184,134,26,.08), 0 2px 12px rgba(0,0,0,.04);
+      box-shadow: 0 6px 36px rgba(21,179,154,.08), 0 2px 12px rgba(0,0,0,.04);
       position: relative;
       overflow: hidden;
     }
@@ -1391,12 +1395,12 @@
       position: absolute;
       top: -60px; left: -60px;
       width: 240px; height: 240px;
-      background: radial-gradient(circle, rgba(184,134,26,.09) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(21,179,154,.09) 0%, transparent 70%);
       pointer-events: none;
     }
     [data-theme="dark"] .mm-card {
-      background: linear-gradient(135deg, #1C1810 0%, #18150C 100%);
-      border-color: rgba(212,168,50,.14);
+      background: linear-gradient(135deg, #0d1f1c 0%, #0a1816 100%);
+      border-color: rgba(21,179,154,.14);
       box-shadow: 0 6px 36px rgba(0,0,0,.25);
     }
     /* Left side */
