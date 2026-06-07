@@ -502,7 +502,7 @@ body{padding-top:110px!important;}
 const API = 'https://dot4life-production.up.railway.app/api';
 
 // Warmup ping — triggers Railway cold start before main fetch
-fetch(`${API}/capsule/today?warmup=1`).catch(() => {});
+fetch(`${API}/capsule/health`).catch(() => {});
 
 /* ─── CATEGORIES ─── */
 const CAT = {
@@ -882,8 +882,8 @@ async function loadMore(category, currentId) {
   });
 })();
 
-// Delay for warmup ping to wake Railway
-setTimeout(loadCapsule, 500);
+// Delay for warmup ping to wake Railway (cold start takes 3-5s)
+setTimeout(loadCapsule, 3000);
 </script>
 <!-- ═══ UNIFIED MOBILE NAV ══════════════════════════════════ -->
 <nav class="dfl-mobile-nav" aria-label="Mobile navigation">
