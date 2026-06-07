@@ -1416,21 +1416,39 @@
       margin: 0 auto;
       padding: 0 48px 3rem;
     }
-    .mm-card {
-      background: #2a3036;
-      border: 1px solid rgba(42,154,152,.1);
-      border-radius: 24px;
-      padding: 2.5rem 3rem;
+    #morning-moment .mm-grid {
       display: grid;
-      grid-template-columns: 1.1fr 1fr;
-      gap: 2.5rem;
-      align-items: start;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 3rem;
+      min-height: min(400px, 50vh);
+    }
+    [data-lang="ar"] #morning-moment .mm-grid {
+      grid-template-columns: 1fr 1.2fr;
+      direction: rtl;
+    }
+    .mm-visual {
       position: relative;
       overflow: hidden;
+      border-radius: 24px;
+      min-height: 350px;
+      background: linear-gradient(135deg, #2a3036, #3a4650);
     }
-    [data-theme="dark"] .mm-card {
+    .mm-visual img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center 30%;
+      display: block;
+    }
+    .mm-content {
+      padding: clamp(2rem, 4%, 4rem) clamp(2rem, 4%, 4rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: #2a3036;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,.04);
+    }
+    [data-theme="dark"] .mm-content {
       background: #1a1e22;
-      border-color: rgba(255,255,255,.04);
     }
     .mm-left { display: flex; flex-direction: column; gap: .5rem; }
     .mm-greeting {
@@ -1444,11 +1462,7 @@
       gap: .5rem;
     }
     [data-lang="ar"] .mm-greeting { font-family: var(--font-ar); letter-spacing: 0; }
-    .mm-dot {
-      width: 6px; height: 6px;
-      background: #6abfb8;
-      border-radius: 50%;
-    }
+    .mm-dot { width: 6px; height: 6px; background: #6abfb8; border-radius: 50%; }
     .mm-line {
       font-family: 'Cinzel', Georgia, serif;
       font-size: clamp(1.8rem, 3.2vw, 2.6rem);
@@ -1463,70 +1477,51 @@
       font-weight: 700;
       line-height: 1.3;
     }
-    .mm-day-label {
-      font-size: .82rem;
-      color: rgba(255,255,255,.5);
-      margin-top: .25rem;
-      font-weight: 500;
-    }
+    .mm-day-label { font-size: .82rem; color: rgba(255,255,255,.5); margin-top: .25rem; font-weight: 500; }
     [data-lang="ar"] .mm-day-label { font-family: var(--font-ar); }
-    .mm-items { display: grid; grid-template-columns: 1fr; gap: .75rem; padding-top: .25rem; }
+    .mm-items { display: grid; grid-template-columns: 1fr; gap: .6rem; padding-top: .5rem; }
     .mm-item {
-      display: flex; align-items: flex-start; gap: .9rem;
-      padding: .9rem 1.1rem;
+      display: flex; align-items: flex-start; gap: .75rem;
+      padding: .7rem 1rem;
       background: rgba(255,255,255,.04);
-      border-radius: 12px;
+      border-radius: 10px;
       border: 1px solid rgba(255,255,255,.06);
-      transition: all .22s;
+      transition: all .2s;
     }
     [data-theme="dark"] .mm-item { background: rgba(255,255,255,.03); border-color: rgba(255,255,255,.05); }
     .mm-item:hover { background: rgba(255,255,255,.08); border-color: #6abfb8; }
-    .mm-icon { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: rgba(107,191,184,.1); color: #6abfb8; font-size: 1rem; }
-    .mm-text { font-size: .88rem; color: rgba(255,255,255,.85); line-height: 1.5; }
-    [data-lang="ar"] .mm-text { font-family: var(--font-ar); font-size: .9rem; }
+    .mm-icon { width: 34px; height: 34px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: rgba(107,191,184,.1); color: #6abfb8; font-size: .9rem; }
+    .mm-text { font-size: .82rem; color: rgba(255,255,255,.85); line-height: 1.5; }
+    [data-lang="ar"] .mm-text { font-family: var(--font-ar); font-size: .85rem; }
     .mm-capsule {
-      grid-column: 1 / -1; display: flex; align-items: center; gap: 1rem;
-      margin-top: .75rem; padding: 1rem 1.4rem;
+      margin-top: .75rem; display: flex; align-items: center; gap: 1rem;
+      padding: .85rem 1.2rem;
       background: transparent;
       border: 1.5px solid rgba(107,191,184,.3);
       border-radius: 8px; cursor: pointer; transition: all .22s;
       color: #6abfb8;
     }
     [data-theme="dark"] .mm-capsule { border-color: rgba(107,191,184,.2); }
-    .mm-capsule:hover { background: #6abfb8; color: #0d201e; border-color: #6abfb8; }
-    .mm-capsule-icon { font-size: 1.4rem; flex-shrink: 0; line-height: 1; }
+    .mm-capsule:hover { background: #6abfb8; color: #1a1e22; border-color: #6abfb8; }
+    .mm-capsule-icon { font-size: 1.3rem; flex-shrink: 0; line-height: 1; }
     .mm-capsule-text { flex: 1; }
-    .mm-capsule-label { font-size: .64rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; display: block; margin-bottom: 2px; }
+    .mm-capsule-label { font-size: .62rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; display: block; margin-bottom: 2px; }
     [data-lang="ar"] .mm-capsule-label { font-family: var(--font-ar); letter-spacing: 0; }
-    .mm-capsule-title { font-size: .9rem; font-weight: 600; display: block; }
+    .mm-capsule-title { font-size: .85rem; font-weight: 600; display: block; }
     [data-lang="ar"] .mm-capsule-title { font-family: var(--font-ar); }
-    .mm-capsule-arrow { margin-left: auto; flex-shrink: 0; transition: transform .2s; display: flex; }
-    .mm-capsule:hover .mm-capsule-arrow { transform: translateX(4px); }
-    .mm-footer {
-      grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between;
-      padding-top: 1rem; margin-top: .5rem;
-      border-top: 1px solid rgba(255,255,255,.06);
-    }
-    .mm-footer-left { font-size: .72rem; color: rgba(255,255,255,.5); display: flex; align-items: center; gap: .5rem; }
+    .mm-capsule-arrow { margin-left: auto; flex-shrink: 0; }
+    .mm-footer { margin-top: .75rem; padding-top: .75rem; border-top: 1px solid rgba(255,255,255,.06); display: flex; align-items: center; justify-content: space-between; }
+    .mm-footer-left { font-size: .7rem; color: rgba(255,255,255,.45); display: flex; align-items: center; gap: .5rem; }
     [data-lang="ar"] .mm-footer-left { font-family: var(--font-ar); }
-    .mm-pulse { width: 6px; height: 6px; background: #6abfb8; border-radius: 50%; animation: mmPulse 2.5s ease-in-out infinite; }
+    .mm-pulse { width: 5px; height: 5px; background: #6abfb8; border-radius: 50%; animation: mmPulse 2.5s ease-in-out infinite; }
     @keyframes mmPulse { 0%,100% { opacity: .4; transform: scale(1); } 50% { opacity: 1; transform: scale(1.4); } }
-    .mm-footer-right { font-size: .72rem; color: rgba(255,255,255,.5); }
+    .mm-footer-right { font-size: .7rem; color: rgba(255,255,255,.45); }
     [data-lang="ar"] .mm-footer-right { font-family: var(--font-ar); }
-    @media (max-width: 900px) {
-      #morning-moment { padding: 0 24px 2.5rem; }
-      .mm-card { grid-template-columns: 1fr; gap: 1.5rem; padding: 1.8rem; }
-      .mm-capsule { grid-column: 1; }
-      .mm-footer { grid-column: 1; }
+    @media (max-width: 860px) {
+      #morning-moment .mm-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .mm-visual { min-height: 200px; order: -1; }
     }
-    @media (max-width: 480px) {
-      #morning-moment { padding: 0 1rem 2rem; }
-      .mm-card { padding: 1.4rem; border-radius: 18px; gap: 1.25rem; }
-      .mm-item { padding: .6rem .85rem; }
-    }
-
     /* (capsule styles merged into mm-card) */
-
     /* ─── DAILY CAPSULE POPUP ─────────────────────────── */
     .capsule-overlay {
       position: fixed; inset: 0; z-index: 1000;
@@ -1805,33 +1800,45 @@
        MORNING MOMENT
   ═══════════════════════════════════════ -->
   <div id="morning-moment" aria-label="Morning Moment">
-    <div class="mm-card">
-      <div class="mm-left">
-        <div class="mm-greeting">
-          <span class="mm-dot"></span>
-          <span id="mm-greeting-text"></span>
-        </div>
-        <div class="mm-line" id="mm-line"></div>
-        <div class="mm-day-label" id="mm-day-label"></div>
+    <div class="mm-grid">
+      <!-- Left: morning image -->
+      <div class="mm-visual" aria-label="Morning inspiration">
+        <img
+          src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=88"
+          alt="Peaceful morning sunrise"
+          width="1000" height="800"
+          loading="lazy"
+        />
       </div>
-      <div class="mm-items" id="mm-items"></div>
-      <div class="mm-capsule" id="mm-capsule-trigger" role="button" tabindex="0" aria-label="Open recipe idea">
-        <span class="mm-capsule-icon">🍽️</span>
-        <div class="mm-capsule-text">
-          <span class="mm-capsule-label"><span class="en">Today's idea</span><span class="ar">فكرة اليوم</span></span>
-          <span class="mm-capsule-title"><span class="en">Dinner in 15 minutes</span><span class="ar">عشاء في ١٥ دقيقة</span></span>
+      <!-- Right: content -->
+      <div class="mm-content reveal">
+        <div class="mm-left">
+          <div class="mm-greeting">
+            <span class="mm-dot"></span>
+            <span id="mm-greeting-text"></span>
+          </div>
+          <div class="mm-line" id="mm-line"></div>
+          <div class="mm-day-label" id="mm-day-label"></div>
         </div>
-        <span class="mm-capsule-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></span>
-      </div>
-      <div class="mm-footer">
-        <div class="mm-footer-left">
-          <span class="mm-pulse"></span>
-          <span class="en">Refreshes tomorrow</span>
-          <span class="ar">يتجدد غداً</span>
+        <div class="mm-items" id="mm-items"></div>
+        <div class="mm-capsule" id="mm-capsule-trigger" role="button" tabindex="0" aria-label="Open recipe idea">
+          <span class="mm-capsule-icon">🍽️</span>
+          <div class="mm-capsule-text">
+            <span class="mm-capsule-label"><span class="en">Today's idea</span><span class="ar">فكرة اليوم</span></span>
+            <span class="mm-capsule-title"><span class="en">Dinner in 15 minutes</span><span class="ar">عشاء في ١٥ دقيقة</span></span>
+          </div>
+          <span class="mm-capsule-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></span>
         </div>
-        <div class="mm-footer-right">
-          <span class="en">One moment. Every day.</span>
-          <span class="ar">لحظة واحدة. كل يوم.</span>
+        <div class="mm-footer">
+          <div class="mm-footer-left">
+            <span class="mm-pulse"></span>
+            <span class="en">Refreshes tomorrow</span>
+            <span class="ar">يتجدد غداً</span>
+          </div>
+          <div class="mm-footer-right">
+            <span class="en">One moment. Every day.</span>
+            <span class="ar">لحظة واحدة. كل يوم.</span>
+          </div>
         </div>
       </div>
     </div>
