@@ -1502,6 +1502,16 @@
     .mm-capsule-title { font-size: .85rem; font-weight: 600; display: block; }
     [data-lang="ar"] .mm-capsule-title { font-family: var(--font-ar); }
     .mm-capsule-arrow { margin-left: auto; flex-shrink: 0; }
+    .mm-subscribe { margin-top: .75rem; padding: .85rem 1.1rem; background: rgba(255,255,255,.04); border-radius: 12px; display: flex; align-items: center; gap: .85rem; }
+    .mm-subscribe-icon { font-size: 1.25rem; flex-shrink: 0; line-height: 1; }
+    .mm-subscribe-text { flex: 1; min-width: 0; }
+    .mm-subscribe-label { font-size: .62rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #6abfb8; display: block; margin-bottom: 2px; }
+    .mm-subscribe-desc { font-size: .78rem; color: rgba(255,255,255,.6); display: block; }
+    .mm-subscribe-btn { display: inline-flex; align-items: center; gap: .4rem; padding: .55rem 1.1rem; background: transparent; border: 1.5px solid rgba(107,191,184,.35); border-radius: 8px; color: #6abfb8; font-size: .78rem; font-weight: 600; text-decoration: none; white-space: nowrap; transition: all .22s; flex-shrink: 0; }
+    .mm-subscribe-btn:hover { background: #6abfb8; color: #1a1e22; border-color: #6abfb8; }
+    @media (max-width: 600px) { .mm-subscribe { flex-wrap: wrap; } .mm-subscribe-btn { width: 100%; justify-content: center; } }
+    [data-theme="dark"] .mm-subscribe { background: rgba(255,255,255,.02); }
+    [data-theme="dark"] .mm-subscribe-btn { border-color: rgba(107,191,184,.2); }
     .mm-footer { margin-top: .75rem; padding-top: .75rem; border-top: 1px solid rgba(255,255,255,.06); display: flex; align-items: center; justify-content: space-between; }
     .mm-footer-left { font-size: .7rem; color: rgba(255,255,255,.45); display: flex; align-items: center; gap: .5rem; }
     [data-lang="ar"] .mm-footer-left { font-family: var(--font-ar); }
@@ -1850,6 +1860,17 @@
             <span class="mm-capsule-title"><span class="en">Dinner in 15 minutes</span><span class="ar">عشاء في ١٥ دقيقة</span></span>
           </div>
           <span class="mm-capsule-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></span>
+        </div>
+        <div class="mm-subscribe">
+          <span class="mm-subscribe-icon">📮</span>
+          <div class="mm-subscribe-text">
+            <span class="mm-subscribe-label"><span class="en">Friday Letter</span><span class="ar">رسالة الجمعة</span></span>
+            <span class="mm-subscribe-desc"><span class="en">One calm email. Every Friday. No noise.</span><span class="ar">رسالة هادئة واحدة. كل جمعة. بدون ضجيج.</span></span>
+          </div>
+          <a href="#friday-letter" class="mm-subscribe-btn">
+            <span class="en">Subscribe →</span>
+            <span class="ar">اشترك ←</span>
+          </a>
         </div>
         <div class="mm-footer">
           <div class="mm-footer-left">
