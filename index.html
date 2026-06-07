@@ -117,11 +117,11 @@
       --gold-d:  #0a4ecf;
       --blue:    #0F3D6E;
       --blue-l:  #2E6DB4;
-      --navy:    #000000;
-      --rose:    #ff7c00;
-      --green:   #1B7A4E;
-      --green-d: #0D3320;
-      --amber:   #ff7c00;
+      --navy:    #0a2a44;
+      --rose:    #15b39a;
+      --green:   #15b39a;
+      --green-d: #0e8a77;
+      --amber:   #15b39a;
       --font-serif: 'Cinzel', Georgia, serif;
       --font-ui:    'Inter', system-ui, sans-serif;
       --font-ar:    'Almarai', 'Segoe UI', sans-serif;
@@ -201,42 +201,42 @@
 
     .hero-floats span:nth-child(1) {
       width: 280px; height: 280px;
-      background: radial-gradient(circle, #116dff 0%, transparent 70%);
+      background: radial-gradient(circle, #15b39a 0%, transparent 70%);
       top: -60px; left: -80px;
       animation: floatA 14s ease-in-out infinite;
     }
     .hero-floats span:nth-child(2) {
       width: 180px; height: 180px;
-      background: radial-gradient(circle, #3899ec 0%, transparent 70%);
+      background: radial-gradient(circle, #116dff 0%, transparent 70%);
       bottom: 10%; right: 5%;
       animation: floatB 18s ease-in-out infinite;
     }
     .hero-floats span:nth-child(3) {
       width: 120px; height: 120px;
-      background: radial-gradient(circle, #116dff 0%, transparent 70%);
+      background: radial-gradient(circle, #15b39a 0%, transparent 70%);
       top: 30%; left: 40%;
       animation: floatA 22s ease-in-out infinite reverse;
     }
     .hero-floats span:nth-child(4) {
       width: 200px; height: 200px;
-      background: radial-gradient(circle, #7fccf7 0%, transparent 70%);
+      background: radial-gradient(circle, #116dff 0%, transparent 70%);
       bottom: -40px; left: 20%;
       animation: floatB 16s ease-in-out infinite 2s;
     }
     .hero-floats span:nth-child(5) {
       width: 90px; height: 90px;
-      background: radial-gradient(circle, #116dff 0%, transparent 70%);
+      background: radial-gradient(circle, #15b39a 0%, transparent 70%);
       top: 15%; right: 25%;
       animation: floatA 12s ease-in-out infinite 1s;
     }
     .hero-floats span:nth-child(6) {
       width: 60px; height: 60px;
-      background: #116dff;
-      opacity: 0.06;
+      background: #15b39a;
+      opacity: 0.08;
       top: 55%; left: 55%;
       animation: floatB 20s ease-in-out infinite 3s;
     }
-    [data-theme="dark"] .hero-floats span:nth-child(6) { opacity: 0.03; }
+    [data-theme="dark"] .hero-floats span:nth-child(6) { opacity: 0.04; }
 
     @keyframes floatA {
       0%, 100% { transform: translate(0, 0) scale(1); }
@@ -508,7 +508,7 @@
       box-shadow: 0 10px 36px rgba(0,0,0,.1);
       border-color: var(--gold);
     }
-    .tw-card--guide { border-top: 3px solid var(--green, #1B7A4E); }
+    .tw-card--guide { border-top: 3px solid #15b39a; }
     .tw-card--tool  { border-top: 3px solid var(--gold); }
     .tw-card--article { border-top: 3px solid var(--blue, #0F3D6E); }
     .tw-card-badge {
@@ -652,10 +652,10 @@
       margin: 0 0 1.5rem;
     }
     /* Accent — second line of each section headline gets a signature color */
-    .health-content  .hl-accent { color: #116dff; }
-    .finance-content .hl-accent { color: #000; }
-    .islamic-panel   .hl-accent { color: #000; }
-    .travel-content  .hl-accent { color: #ff7c00; }
+    .health-content  .hl-accent { color: #15b39a; }
+    .finance-content .hl-accent { color: #116dff; }
+    .islamic-panel   .hl-accent { color: #15b39a; }
+    .travel-content  .hl-accent { color: #116dff; }
     .sec-body {
       font-size: 1.06rem; line-height: 1.88;
       max-width: 500px; margin-bottom: 3rem;
@@ -705,12 +705,12 @@
       background: #f6f8fb;
     }
     [data-theme="dark"] .health-content { background: #0f1218; }
-    .health-content .sec-label { color: #116dff; }
+    .health-content .sec-label { color: #15b39a; }
     .health-content .sec-headline { color: var(--text); }
     .health-content .sec-body { color: var(--text-2); }
-    .health-content .tool-card { --tc-accent: #116dff; --tc-icon-bg: rgba(17,109,255,.08); --tc-icon-color: #116dff; }
-    .health-content .btn-gold-outline { border-color: rgba(17,109,255,.4); color: #116dff; }
-    .health-content .btn-gold-outline:hover { background: #116dff; color: #fff; border-color: #116dff; }
+    .health-content .tool-card { --tc-accent: #15b39a; --tc-icon-bg: rgba(21,179,154,.08); --tc-icon-color: #15b39a; }
+    .health-content .btn-gold-outline { border-color: rgba(21,179,154,.4); color: #15b39a; }
+    .health-content .btn-gold-outline:hover { background: #15b39a; color: #fff; border-color: #15b39a; }
     @media(max-width:860px){ #health{grid-template-columns:1fr;} .health-visual{min-height:300px;order:-1;} }
 
     /* ── FINANCE — content LEFT (1fr), image RIGHT (1.15fr) — dark card ── */
@@ -755,7 +755,7 @@
     .islamic-geo { position: absolute; inset: 0; opacity: .13; pointer-events: none; }
     .islamic-geo svg { width:100%;height:100%; }
     .islamic-content { position: relative; z-index: 2; }
-    .islamic-panel .sec-label { color: var(--gold-l); }
+    .islamic-panel .sec-label { color: #15b39a; }
     .islamic-panel .sec-headline { color: #fff; }
     .islamic-panel .sec-body { color: rgba(255,255,255,.6); }
     .islamic-panel .tool-card {
