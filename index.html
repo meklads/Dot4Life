@@ -115,7 +115,7 @@
       --gold:    #2a9a98;
       --gold-l:  #6abfb8;
       --gold-d:  #054241;
-      --blue:    #0F3D6E;
+      --blue:    #2a9a98;
       --blue-l:  #2E6DB4;
       --navy:    #0a2a44;
       --rose:    #15b39a;
@@ -513,7 +513,7 @@
 
     /* ── THIS WEEK ON DOTFORLIFE ───────────────────────── */
     #this-week {
-      background: var(--cream, #F5F0E8);
+      background: #f0f5f2;
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
       padding: clamp(3rem, 5vw, 5rem) 0;
@@ -533,11 +533,7 @@
       font-size: .72rem; font-weight: 700; letter-spacing: .12em;
       text-transform: uppercase; color: var(--text-2);
     }
-    .tw-dot {
-      width: 7px; height: 7px; border-radius: 50%;
-      background: var(--gold); flex-shrink: 0;
-      animation: tw-pulse 2.2s ease-in-out infinite;
-    }
+    .tw-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
     @keyframes tw-pulse {
       0%,100% { opacity:1; transform:scale(1); }
       50% { opacity:.5; transform:scale(.7); }
@@ -572,7 +568,7 @@
     }
     .tw-card--guide { border-top: 3px solid var(--gold, #2a9a98); }
     .tw-card--tool  { border-top: 3px solid var(--gold); }
-    .tw-card--article { border-top: 3px solid var(--blue, #0F3D6E); }
+    .tw-card--article { border-top: 3px solid var(--gold, #2a9a98); }
     .tw-card-badge {
       font-size: .62rem; font-weight: 700; letter-spacing: .1em;
       text-transform: uppercase;
@@ -580,7 +576,7 @@
     }
     .tw-card--guide  .tw-card-badge { color: var(--gold, #2a9a98); }
     .tw-card--tool   .tw-card-badge { color: var(--gold); }
-    .tw-card--article .tw-card-badge { color: var(--blue, #0F3D6E); }
+    .tw-card--article .tw-card-badge { color: var(--gold, #2a9a98); }
     .tw-card-icon { font-size: 1.6rem; line-height: 1; }
     .tw-card-title {
       font-size: 1rem; font-weight: 700;
@@ -597,7 +593,7 @@
       color: var(--gold); margin-top: .4rem;
     }
     .tw-card--guide  .tw-card-cta { color: var(--gold, #2a9a98); }
-    .tw-card--article .tw-card-cta { color: var(--blue, #0F3D6E); }
+    .tw-card--article .tw-card-cta { color: var(--gold, #2a9a98); }
 
     /* Section dividers — numbered labels between cards */
     .sec-divider {
@@ -633,13 +629,7 @@
     .strip-date {
       display: flex; align-items: center; gap: .8rem;
     }
-    .strip-icon {
-      width: 38px; height: 38px;
-      background: var(--gold);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
+    .strip-icon { width: 38px; height: 38px; background: #2a9a98; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .strip-icon svg { width: 18px; height: 18px; fill: #fff; }
     .strip-hijri {
       font-family: var(--font-ar);
@@ -659,15 +649,7 @@
       color: var(--muted);
     }
     [data-lang="ar"] .strip-tool-label { letter-spacing: 0; text-transform: none; }
-    .strip-tool-link {
-      display: inline-flex; align-items: center; gap: .5rem;
-      padding: .45rem 1rem;
-      background: var(--gold);
-      color: #fff;
-      border-radius: var(--radius);
-      font-size: .8rem;
-      font-weight: 600;
-      transition: background .2s;
+    .strip-tool-link { display: inline-flex; align-items: center; gap: .5rem; padding: .45rem 1rem; background: #2a9a98; color: #fff; border-radius: var(--radius); font-size: .8rem; font-weight: 600; transition: background .2s;
     }
     .strip-tool-link:hover { background: var(--gold-d); }
 
@@ -829,10 +811,7 @@
     .islamic-panel .sec-label { color: #6abfb8; }
     .islamic-panel .sec-headline { color: #fff; }
     .islamic-panel .sec-body { color: rgba(255,255,255,.6); }
-    .islamic-panel .tool-card {
-      background: rgba(255,255,255,.04); border-color: rgba(255,255,255,.08); color: #fff;
-      --tc-accent: var(--gold); --tc-icon-bg: rgba(184,134,26,.1); --tc-icon-color: var(--gold-l);
-    }
+    .islamic-panel .tool-card { background: rgba(255,255,255,.04); border-color: rgba(255,255,255,.08); color: #fff; --tc-accent: var(--gold); --tc-icon-bg: rgba(42,154,152,.1); --tc-icon-color: var(--gold-l); }
     .islamic-panel .tool-card:hover { background: rgba(255,255,255,.08); box-shadow: 0 6px 24px rgba(0,0,0,.4); }
     .islamic-panel .tc-name { color: rgba(255,255,255,.92); }
     .islamic-panel .tc-desc { color: rgba(255,255,255,.44); }
@@ -858,7 +837,7 @@
       display: flex; flex-direction: column; align-items: flex-start;
     }
     [data-lang="ar"] .travel-content { align-items: flex-end; }
-    .travel-content .sec-label { color: var(--amber); }
+    .travel-content .sec-label { color: #2a9a98; }
     .travel-content .sec-headline { color: #fff; max-width: 600px; }
     .travel-content .sec-body { color: rgba(255,255,255,.7); }
     .travel-pills { display: flex; flex-wrap: wrap; gap: .55rem; margin-bottom: 2.2rem; }
@@ -876,11 +855,7 @@
     @media(max-width:768px){ #travel{min-height:500px;} .travel-content{padding:0 1.5rem 2.5rem;} }
 
     /* ─── NEWSLETTER ─────────────────────────────────── */
-    #newsletter {
-      background: var(--cream);
-      padding: 4rem clamp(1rem,4vw,2rem);
-      text-align: center;
-    }
+    #newsletter { background: #f0f5f2; padding: 4rem clamp(1rem,4vw,2rem); text-align: center; }
     .newsletter-title {
       font-family: var(--font-serif);
       font-size: clamp(1.6rem, 2.5vw, 2.4rem);
@@ -948,16 +923,13 @@
     .fl-inner { max-width: 540px; margin: 0 auto; }
     .fl-icon {
       width: 56px; height: 56px;
-      background: linear-gradient(135deg, #B8861A18, #B8861A30);
-      border: 1px solid #B8861A33;
+      background: linear-gradient(135deg, #2a9a9818, #2a9a9830);
+      border: 1px solid #2a9a9833;
       border-radius: 16px;
       display: flex; align-items: center; justify-content: center;
       font-size: 24px; margin: 0 auto 20px;
     }
-    .fl-eyebrow {
-      font-size: .72rem; font-weight: 700; letter-spacing: .14em;
-      text-transform: uppercase; color: var(--gold); margin-bottom: 12px;
-    }
+    .fl-eyebrow { font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
     .fl-headline {
       font-family: var(--font-serif); font-size: clamp(1.75rem, 4vw, 2.3rem);
       font-weight: 300; color: var(--text); line-height: 1.2;
@@ -1020,7 +992,7 @@
       color: #fff;
       margin-bottom: 1rem;
     }
-    .footer-brand .logo span { color: var(--gold); }
+    .footer-brand .logo span { color: #6abfb8; }
     
     [data-lang="ar"] 
     .footer-col h4 {
@@ -1725,7 +1697,7 @@
 /* dfl-footer-inline */
 
 /* ── SITE FOOTER ─────────────────────────────────────────── */
-.site-footer{background:var(--navy,#0A1628);color:rgba(255,255,255,.7);padding:clamp(3rem,6vw,5rem) 0 0;}
+.site-footer{background:var(--navy,#032a28);color:rgba(255,255,255,.7);padding:clamp(3rem,6vw,5rem) 0 0;}
 .footer-inner{max-width:1280px;margin:0 auto;padding:0 clamp(16px,4vw,48px);}
 .footer-top{display:flex;gap:3rem;margin-bottom:3rem;flex-wrap:wrap;}
 .footer-brand{flex:0 0 220px;}
@@ -2130,7 +2102,7 @@
           </div>
         </a>
       </div>
-      <a href="/health.html" class="btn-primary" style="align-self:flex-start;background:#b83232;">
+      <a href="/health.html" class="btn-primary" style="align-self:flex-start;background:#2a9a98;">
         <span class="en">All Health Tools</span>
         <span class="ar">جميع الأدوات الصحية</span>
       </a>
@@ -2142,7 +2114,7 @@
   ═══════════════════════════════════════ -->
   <div class="sec-divider"><span class="sec-divider-num">02</span><div class="sec-divider-line"></div></div>
   <section id="finance" aria-label="Finance ecosystem">
-    <!-- Finance content — left column (1fr), dark #0D1B2A -->
+    <!-- Finance content — left column (1fr), dark #032a28 -->
     <div class="finance-content reveal">
       <div class="sec-label">
         <span class="en">Finance & Wealth</span>
@@ -2216,20 +2188,20 @@
   ═══════════════════════════════════════ -->
   <div class="sec-divider"><span class="sec-divider-num">03</span><div class="sec-divider-line"></div></div>
   <section id="islamic" aria-label="Islamic life ecosystem">
-    <!-- Islamic panel — left column (1.1fr), deep #091A10 forest -->
+    <!-- Islamic panel — left column (1.1fr), deep #032a28 forest -->
     <div class="islamic-panel reveal">
       <!-- Geometric pattern overlay -->
       <div class="islamic-geo" aria-hidden="true">
         <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
           <defs>
             <pattern id="geo" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
-              <polygon points="40,0 80,40 40,80 0,40" stroke="#B8861A" stroke-width="1" fill="none" opacity=".7"/>
-              <polygon points="40,12 68,40 40,68 12,40" stroke="#B8861A" stroke-width=".6" fill="none" opacity=".4"/>
-              <circle cx="40" cy="40" r="6" stroke="#B8861A" stroke-width=".8" fill="none" opacity=".55"/>
-              <circle cx="0" cy="0" r="4" stroke="#B8861A" stroke-width=".6" fill="none" opacity=".35"/>
-              <circle cx="80" cy="0" r="4" stroke="#B8861A" stroke-width=".6" fill="none" opacity=".35"/>
-              <circle cx="0" cy="80" r="4" stroke="#B8861A" stroke-width=".6" fill="none" opacity=".35"/>
-              <circle cx="80" cy="80" r="4" stroke="#B8861A" stroke-width=".6" fill="none" opacity=".35"/>
+              <polygon points="40,0 80,40 40,80 0,40" stroke="#2a9a98" stroke-width="1" fill="none" opacity=".5"/>
+              <polygon points="40,12 68,40 40,68 12,40" stroke="#2a9a98" stroke-width=".6" fill="none" opacity=".3"/>
+              <circle cx="40" cy="40" r="6" stroke="#2a9a98" stroke-width=".8" fill="none" opacity=".4"/>
+              <circle cx="0" cy="0" r="4" stroke="#2a9a98" stroke-width=".6" fill="none" opacity=".25"/>
+              <circle cx="80" cy="0" r="4" stroke="#2a9a98" stroke-width=".6" fill="none" opacity=".25"/>
+              <circle cx="0" cy="80" r="4" stroke="#2a9a98" stroke-width=".6" fill="none" opacity=".25"/>
+              <circle cx="80" cy="80" r="4" stroke="#2a9a98" stroke-width=".6" fill="none" opacity=".25"/>
             </pattern>
           </defs>
           <rect width="400" height="400" fill="url(#geo)"/>
@@ -2661,7 +2633,7 @@
           return;
         }
         list.innerHTML = members.map(function(m, i){
-          var avatarColors = ['#B8861A','#1B7A4E','#0F3D6E','#B8705A','#6B4FA0','#C8861A'];
+          var avatarColors = ['#054241','#2a9a98','#0d7a78','#6abfb8','#032a28','#0a5a58'];
           var col = avatarColors[i % avatarColors.length];
           return '<div class="dh-family-item" data-idx="'+i+'">' +
             '<div class="dh-family-avatar" style="background:'+col+'">'+esc((m.name||'?').charAt(0).toUpperCase())+'</div>' +
@@ -2982,8 +2954,8 @@
       var s = saveBtn;
       s.innerHTML = isAr ? '✅ تم الحفظ' : '✅ Saved!';
       s.style.background = 'rgba(27,122,78,.12)';
-      s.style.color = '#1B7A4E';
-      s.style.borderColor = '#1B7A4E';
+      s.style.color = '#2a9a98';
+      s.style.borderColor = '#2a9a98';
       setTimeout(function(){
         s.innerHTML = isAr ? '<span class="ar">💾 حفظ</span>' : '<span class="en">💾 Save</span>';
         s.style.cssText = '';
@@ -2996,8 +2968,8 @@
       var s = shopBtn;
       s.innerHTML = isAr ? '✅ تمت الإضافة' : '✅ Added!';
       s.style.background = 'rgba(27,122,78,.12)';
-      s.style.color = '#1B7A4E';
-      s.style.borderColor = '#1B7A4E';
+      s.style.color = '#2a9a98';
+      s.style.borderColor = '#2a9a98';
       setTimeout(function(){
         s.innerHTML = isAr ? '<span class="ar">🛒 تسوق</span>' : '<span class="en">🛒 Shopping</span>';
         s.style.cssText = '';
