@@ -51,7 +51,7 @@
   <meta name="twitter:image" content="https://dotforlife.com/og/og-capsule.png">
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500;600&family=Almarai:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500;600family=Inter:wght@300;400;500;600;700&family=Almarai:wght@300;400;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="/styles/global.css"/>
 <style>
   :root{
@@ -670,7 +670,7 @@ async function loadByDate(dateStr) {
   try {
     const res  = await fetch(`${API}/capsule/today?date=${dateStr}`);
     const data = await res.json();
-    if (!data.found) { showError(); return; }
+    if (!data.found) { showError(); return false; }
     render(data.capsule);
     loadMore(data.capsule.category, data.capsule.id);
     // Update URL without reload
@@ -678,7 +678,8 @@ async function loadByDate(dateStr) {
     url.searchParams.set('date', dateStr);
     url.searchParams.delete('id');
     history.replaceState({}, '', url.toString());
-  } catch(e) { showError(); }
+    return true;
+  } catch(e) { showError(); return false; }
 }
 
 async function loadById(id) {
@@ -686,24 +687,27 @@ async function loadById(id) {
   try {
     const res  = await fetch(`${API}/capsule/${id}`);
     const data = await res.json();
-    if (!data.found) { showError(); return; }
+    if (!data.found) { showError(); return false; }
     _currentDate = data.capsule.scheduled_date || todayStr();
     render(data.capsule);
     loadMore(data.capsule.category, id);
-  } catch(e) { showError(); }
+    return true;
+  } catch(e) { showError(); return false; }
 }
 
 async function loadCapsule() {
   const params = new URLSearchParams(window.location.search);
   const id = params.get('id');
   const date = params.get('date');
+  let ok = false;
   if (id) {
-    await loadById(id);
+    ok = await loadById(id);
   } else if (date) {
-    await loadByDate(date);
+    ok = await loadByDate(date);
   } else {
-    await loadByDate(todayStr());
+    ok = await loadByDate(todayStr());
   }
+  if (!ok) throw new Error('API failed');
 }
 
 function showLoading() {
@@ -882,8 +886,8 @@ async function loadMore(category, currentId) {
   });
 })();
 
-// Delay for warmup ping to wake Railway (cold start takes 3-5s)
-setTimeout(loadCapsule, 3000);
+// Try immediately, retry if cold start (Railway sleep)
+loadCapsule().catch(() => setTimeout(loadCapsule, 5000));
 </script>
 <!-- ═══ UNIFIED MOBILE NAV ══════════════════════════════════ -->
 <nav class="dfl-mobile-nav" aria-label="Mobile navigation">
