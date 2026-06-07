@@ -8,21 +8,27 @@
   'use strict';
 
   const API_URL  = 'https://dot4life-production.up.railway.app/api/capsule/today';
-  const TIMEOUT  = 3000;
+  const TIMEOUT  = 8000;
+  const WARM_TIMEOUT = 2000;
 
   const lang  = document.documentElement.getAttribute('data-lang') || 'en';
   const today = new Date().toISOString().slice(0, 10);
 
-  const controller = new AbortController();
-  setTimeout(() => controller.abort(), TIMEOUT);
+  // Warmup ping — triggers Railway cold start without blocking UX
+  fetch(`${API_URL}?date=${today}`, { signal: AbortSignal.timeout(WARM_TIMEOUT) }).catch(() => {});
 
-  fetch(`${API_URL}?date=${today}`, { signal: controller.signal })
-    .then(r => r.json())
-    .then(data => {
-      if (!data.found || !data.capsule) return;
-      inject(data.capsule);
-    })
-    .catch(() => { /* API down — static fallback stays */ });
+  // Wait for the real data (longer timeout for cold start)
+  setTimeout(() => {
+    const controller = new AbortController();
+    setTimeout(() => controller.abort(), TIMEOUT);
+    fetch(`${API_URL}?date=${today}`, { signal: controller.signal })
+      .then(r => r.json())
+      .then(data => {
+        if (!data.found || !data.capsule) return;
+        inject(data.capsule);
+      })
+      .catch(() => { /* API not reachable — static fallback stays */ });
+  }, WARM_TIMEOUT);
 
   function inject(c) {
     const isAr = document.documentElement.getAttribute('data-lang') === 'ar';
