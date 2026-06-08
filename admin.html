@@ -742,6 +742,10 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 async function checkAndShow() {
+  // Local token — show app without API validation
+  if (token && token.startsWith('local-')) {
+    show('app'); load(); return;
+  }
   const r = await call('GET', '/admin/me');
   if (r.ok) { show('app'); load(); }
   else { token = ''; show('login'); }
@@ -805,6 +809,13 @@ function signout() {
 // ═══════════════════════════════════════
 async function load() {
   const list = document.getElementById('capsuleList');
+
+  // Local fallback — show message without API
+  if (token && token.startsWith('local-')) {
+    list.innerHTML = `<div class="state-empty"><div class="ico">✅</div><div class="ttl">Local Mode</div><div class="sub">You are logged in locally (API not reachable). To manage capsules, the Railway API must be running.</div></div>`;
+    return;
+  }
+
   list.innerHTML = '<div class="state-loading">Loading…</div>';
 
   const path = filter === 'all'
