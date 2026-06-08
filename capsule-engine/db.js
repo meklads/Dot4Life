@@ -374,7 +374,7 @@ module.exports = {
   pjSubscribe, pjGetByToken, pjUnsubscribe, pjGetActiveSubscribers, pjMarkSent,
   // capsule CRUD
   getCapsuleById, getCapsulesByStatus, getPendingCapsules,
-  getApprovedCapsules, getAllCapsules, getCapsulesByCategory,
+  getApprovedCapsules, getAllCapsules, getAllPublishedCapsules, getCapsulesByCategory,
   getTodayPublished, getSchedule, getScheduledDate,
   // business logic
   createCapsule, updateCapsule,
