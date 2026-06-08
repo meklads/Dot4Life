@@ -90,25 +90,64 @@
 
   /* ── 7. Google Analytics 4 — auto events ────────────── */
   if (typeof gtag === 'function') {
-    // Track language switches
+    var pagePath = window.location.pathname;
+    var pageTitle = document.title;
+
+    // ── 7a. Language switches ──────────────────────────────
     var langBtn = document.getElementById('dfl-lang-btn') || document.getElementById('lang-toggle');
     if (langBtn) {
       langBtn.addEventListener('click', function () {
         var currentLang = document.documentElement.getAttribute('data-lang') === 'ar' ? 'en' : 'ar';
-        gtag('event', 'language_switch', { 'language': currentLang });
+        gtag('event', 'language_switch', { 'language': currentLang, 'page_path': pagePath });
       });
     }
 
-    // Track theme switches
+    // ── 7b. Theme switches ─────────────────────────────────
     var themeBtn = document.getElementById('dfl-theme-btn') || document.getElementById('theme-toggle');
     if (themeBtn) {
       themeBtn.addEventListener('click', function () {
         var nextTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-        gtag('event', 'theme_switch', { 'theme': nextTheme });
+        gtag('event', 'theme_switch', { 'theme': nextTheme, 'page_path': pagePath });
       });
     }
 
-    // Track outbound links
+    // ── 7c. Page engagement (time on page) ────────────────
+    [30, 60, 120].forEach(function (sec) {
+      setTimeout(function () {
+        gtag('event', 'engagement', {
+          'seconds': sec,
+          'page_path': pagePath,
+          'page_title': pageTitle
+        });
+      }, sec * 1000);
+    });
+
+    // ── 7d. Scroll depth ────────────────────────────────────
+    var scrolledDepths = {};
+    window.addEventListener('scroll', function () {
+      var pct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+      [25, 50, 75, 100].forEach(function (d) {
+        if (pct >= d && !scrolledDepths[d]) {
+          scrolledDepths[d] = true;
+          gtag('event', 'scroll_depth', { 'percent': d, 'page_path': pagePath });
+        }
+      });
+    }, { passive: true });
+
+    // ── 7e. Tool/calculator usage ──────────────────────────
+    // Detects when a user submits/interacts with calculator forms
+    document.addEventListener('submit', function (e) {
+      var form = e.target;
+      if (form && form.closest('.calculator, .tool-card, [class*="calc"], [class*="tool"]')) {
+        gtag('event', 'tool_use', {
+          'tool_name': pageTitle,
+          'action': 'submit',
+          'page_path': pagePath
+        });
+      }
+    });
+
+    // ── 7f. Outbound links ─────────────────────────────────
     document.addEventListener('click', function (e) {
       var a = e.target.closest('a');
       if (!a) return;
@@ -116,10 +155,27 @@
       if (href.startsWith('http') && !href.includes(window.location.hostname)) {
         gtag('event', 'outbound_click', {
           'link_url': href,
-          'link_text': (a.textContent || '').trim().substring(0, 60)
+          'link_text': (a.textContent || '').trim().substring(0, 60),
+          'page_path': pagePath
         });
       }
     });
+
+    // ── 7g. Save/bookmark interactions ─────────────────────
+    document.addEventListener('click', function (e) {
+      var btn = e.target.closest('[id*="save"], [id*="bookmark"], [class*="save"], [class*="bookmark"]');
+      if (btn) {
+        gtag('event', 'save_item', {
+          'page_path': pagePath,
+          'page_title': pageTitle
+        });
+      }
+    });
+
   }
+
+  // ── 8. Broadcast custom event for other scripts ──────────
+  // Let other scripts know GA4 events are ready
+  document.dispatchEvent(new CustomEvent('dfl:analytics-ready', { detail: { id: 'G-3G1XPV4F0G' } }));
 
 })();
