@@ -74,9 +74,7 @@
   font-weight: 600;
   background: rgba(107,191,184,.1);
 }
-[data-lang="ar"] 
-
-/* Page body offset — so content is not hidden under fixed navbars */
+/* Page body offset */
 body { padding-top: 158px; }
 @media (max-width: 768px) {
   body { padding-top: 158px; }
@@ -87,9 +85,9 @@ body { padding-top: 158px; }
 /* ═══════════════════════════════════════ */
 
   :root{
-    --text:#1A1410;--text-2:#5C534A;--muted:#9A9188;
-    --body-bg:#FAF8F4;--card-bg:#FFFFFF;--cream:#F5F0E8;
-    --cream-d:#EDE6D8;--border:#E0D8CC;--gold:#6abfb8;--gold-d:#4a8a82;
+    --text:#1A1E24;--text-2:#44474D;--muted:#6A7280;
+    --body-bg:#FFFFFF;--card-bg:#FFFFFF;--cream:#f0f5f2;
+    --cream-d:#E8E8E8;--border:#D0D5DC;--gold:#6abfb8;--gold-d:#4a8a82;
     --font-serif:'Cinzel',Georgia,serif;
     --font-ui:'Inter',system-ui,sans-serif;
     --font-ar:'Almarai','Segoe UI',sans-serif;
@@ -218,7 +216,9 @@ body { padding-top: 158px; }
   [data-lang="ar"] .sidebar-link{font-family:var(--font-ar);}
   .sidebar-link:hover{background:var(--cream);color:var(--text);}
   .sidebar-link.active{background:rgba(107,191,184,.1);color:var(--gold);font-weight:500;}
-  [data-theme="dark"] .sidebar-link.active{background:rgba(212,168,50,.1);}
+  [data-theme="dark"] .sidebar-link.active{background:rgba(107,191,184,.1);}
+[data-theme="dark"] #this-week{background:#0a1210;border-color:rgba(255,255,255,.04);}
+[data-theme="dark"] .lib-section{border-bottom-color:rgba(255,255,255,.04);}
   .sidebar-link-icon{font-size:1rem;flex-shrink:0;}
 
   /* ── RIGHT CONTENT ── */
@@ -306,7 +306,7 @@ body { padding-top: 158px; }
 #dfl-navbar{min-height:110px!important;height:110px!important;}
 .dfl-nav-inner{height:110px!important;}
 body{padding-top:110px!important;}
-.footer-logo img{height:100px!important;width:auto!important;display:block!important;}
+.footer-logo img{height:80px!important;width:auto!important;display:block!important;}
 @media(max-width:768px){
   #navbar,.navbar-unified,#dfl-navbar{height:90px!important;}
   .nav-inner,.navbar-inner,.navbar-inner-unified,.dfl-nav-inner{height:90px!important;}
@@ -334,7 +334,7 @@ body{padding-top:110px!important;}
 <nav id="navbar" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo" aria-label="DOTFORLIFE Home">
-      <img src="logo1-transparent.png" alt="DOTFORLIFE" width="auto" loading="eager">
+      <img src="logo1-footer.png" alt="DOTFORLIFE" width="auto" loading="eager">
     </a>
     <ul class="nav-links">
       <li><a href="health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
@@ -378,11 +378,10 @@ body{padding-top:110px!important;}
 </div>
 
 <!-- ── THIS WEEK ── -->
-<section id="this-week" style="background:var(--cream,#F5F0E8);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:clamp(2.5rem,4vw,4rem) 0;">
+<section id="this-week" style="background:#f0f5f2;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:clamp(2.5rem,4vw,4rem) 0;">
   <div style="max-width:1280px;margin:0 auto;padding:0 clamp(1.5rem,4vw,2.5rem);">
     <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1.75rem;flex-wrap:wrap;">
-      <div style="display:flex;align-items:center;gap:.6rem;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-2);">
-        <span style="width:7px;height:7px;border-radius:50%;background:var(--gold);display:inline-block;"></span>
+      <div style="display:flex;align-items:center;gap:.6rem;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-2);"><span style="color:#6abfb8;font-size:.85rem;">●</span>
         <span class="en">This Week on DotForLife</span><span class="ar">هذا الأسبوع على DotForLife</span>
       </div>
     </div>
@@ -416,8 +415,7 @@ body{padding-top:110px!important;}
 <section id="daily-capsules" style="padding:clamp(2.5rem,4vw,4rem) 0;">
   <div style="max-width:1280px;margin:0 auto;padding:0 clamp(1.5rem,4vw,2.5rem);">
     <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1.75rem;flex-wrap:wrap;">
-      <div style="display:flex;align-items:center;gap:.6rem;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-2);">
-        <span style="width:7px;height:7px;border-radius:50%;background:var(--gold);display:inline-block;"></span>
+      <div style="display:flex;align-items:center;gap:.6rem;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-2);"><span style="color:#6abfb8;font-size:.85rem;">●</span>
         <span class="en">Daily Capsules</span><span class="ar">التذاكر اليومية</span>
       </div>
       <a href="/archive.html" style="font-size:.75rem;font-weight:600;color:var(--gold);text-decoration:none;">
