@@ -139,7 +139,7 @@ async function getAllCapsules() {
 }
 
 async function getAllPublishedCapsules() {
-  return all("SELECT * FROM ce_capsules WHERE status = 'published' AND (scheduled_date IS NULL OR scheduled_date < '2100-01-01') ORDER BY scheduled_date DESC NULLS LAST");
+  return all("SELECT * FROM ce_capsules WHERE status = 'published' AND (scheduled_date IS NULL OR scheduled_date < '2027-01-01') ORDER BY scheduled_date DESC NULLS LAST");
 }
 
 async function getCapsulesByCategory(category) {
