@@ -677,6 +677,8 @@ body {
       <button class="filter-pill"        data-f="rejected"       onclick="setFilter('rejected')">Rejected</button>
       <button class="filter-pill"        data-f="draft"          onclick="setFilter('draft')">Draft</button>
       <div class="filter-spacer"></div>
+      <button class="btn-generate" onclick="generateWeek()">📅 Generate Week</button>
+      <button class="btn-bulk-approve" id="bulkApproveBtn" onclick="bulkApprove()" style="display:none">✓ Bulk Approve All</button>
       <button class="btn-refresh" onclick="load()">
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
           <path d="M13.5 2.5A6.5 6.5 0 1 1 4 3.5"/>
@@ -687,10 +689,10 @@ body {
     </div>
 
     <div style="background:var(--gold-soft);border:1px solid rgba(107,191,184,.2);border-radius:12px;padding:12px 16px;margin-bottom:16px;font-size:.78rem;color:var(--text-2);line-height:1.6;">
-      <strong>📋 كيفية النشر:</strong>
-      1. فلتر <strong>Pending Review</strong> ← اقرأ ← <strong>Approve</strong><br>
-      2. فلتر <strong>Approved</strong> ← اضغط <strong>Publish</strong> ← التاريخ ← <strong>Confirm</strong><br>
-      3. لو ظهر خطأ "تاريخ موجود"، غيّر التاريخ أو فلتر <strong>Published</strong> لترى المنشور
+      <strong>📋 النظام الجديد:</strong>
+      1. اضغط <strong>"Generate Week"</strong> ← تولد 7 كبسولات للأسبوع القادم<br>
+      2. فلتر <strong>Pending Review</strong> ← اقرأ ← اضغط <strong>"Approve & Publish"</strong> ← تنشر تلقائياً<br>
+      3. أو اضغط <strong>"Bulk Approve All"</strong> ← توافق على الكل دفعة واحدة
     </div>
     <div class="list-meta" id="listMeta"></div>
     <div class="capsule-list" id="capsuleList">
@@ -884,7 +886,7 @@ function capsuleCard(c) {
   if (c.status === 'published')       actions.push('edit');
 
   const actionBtns = actions.map(a => {
-    if (a === 'approve') return `<button class="btn-act btn-approve" onclick="approve('${c.id}')">✓ Approve</button>`;
+    if (a === 'approve') return `<button class="btn-act btn-approve" onclick="approve('${c.id}')">✓ Approve & Publish</button>`;
     if (a === 'reject')  return `<button class="btn-act btn-reject"  onclick="toggleReject('${c.id}')">✗ Reject</button>`;
     if (a === 'edit')    return `<button class="btn-act btn-edit-open" onclick="toggleEdit('${c.id}')">✎ Edit</button>`;
     if (a === 'publish') return `<button class="btn-act btn-publish" onclick="togglePublish('${c.id}', '${c.scheduled_date||''}')">🚀 Publish</button>`;
@@ -1125,6 +1127,88 @@ async function call(method, path, body) {
     return { ok: false, status: 0, data: { error: 'Network error — is the server running?' } };
   }
 }
+
+// ═══════════════════════════════════════
+//  GENERATE WEEK
+// ═══════════════════════════════════════
+async function generateWeek() {
+  if (!confirm('Generate 7 capsules for the coming week?')) return;
+  const btn = document.querySelector('.btn-generate');
+  btn.textContent = '⏳ Generating…';
+  btn.disabled = true;
+  const r = await call('POST', '/admin/generate', { days: 7 });
+  btn.textContent = '📅 Generate Week';
+  btn.disabled = false;
+  if (r.ok) {
+    const count = r.data.count || 0;
+    const skipped = (r.data.generated || []).filter(g => g.skipped).length;
+    toast(`✅ ${count} capsules generated${skipped ? ', ' + skipped + ' skipped (already exist)' : ''}`, 'ok');
+    load();
+    // Show Bulk Approve button if there are pending capsules
+    setTimeout(checkBulkApprove, 500);
+  } else {
+    toast(r.data?.error || 'Generation failed', 'err');
+  }
+}
+
+// ═══════════════════════════════════════
+//  APPROVE & AUTO-PUBLISH
+// ═══════════════════════════════════════
+async function approve(id) {
+  // Step 1: Approve
+  const r = await call('POST', `/admin/capsules/${id}/approve`);
+  if (!r.ok) { toast(r.data?.error || 'Approve failed', 'err'); return; }
+  // Step 2: Auto-publish to scheduled date (or today+1)
+  const cap = allCapsules.find(c => c.id === id);
+  const pubDate = cap?.scheduled_date || new Date(Date.now() + 86400000).toISOString().slice(0,10);
+  const p = await call('POST', `/admin/capsules/${id}/publish`, { date: pubDate });
+  if (p.ok) { toast('✅ Approved & Published 🚀', 'ok'); load(); }
+  else { toast('✅ Approved (publish: ' + (p.data?.error || '?') + ')', 'ok'); load(); }
+}
+
+// ═══════════════════════════════════════
+//  BULK APPROVE
+// ═══════════════════════════════════════
+async function bulkApprove() {
+  const pending = allCapsules.filter(c => c.status === 'pending_review' || c.status === 'draft');
+  if (!pending.length) return toast('No pending capsules', 'inf');
+  if (!confirm(`Approve and publish ${pending.length} capsules?`)) return;
+  const btn = document.getElementById('bulkApproveBtn');
+  btn.textContent = '⏳ Approving…';
+  btn.disabled = true;
+  let ok = 0, fail = 0;
+  for (const cap of pending) {
+    const r = await call('POST', `/admin/capsules/${cap.id}/approve`);
+    if (!r.ok) { fail++; continue; }
+    const pubDate = cap.scheduled_date || new Date(Date.now() + 86400000).toISOString().slice(0,10);
+    await call('POST', `/admin/capsules/${cap.id}/publish`, { date: pubDate });
+    ok++;
+  }
+  btn.textContent = '✓ Bulk Approve All';
+  btn.disabled = false;
+  toast(`✅ ${ok} approved & published${fail ? ', ' + fail + ' failed' : ''}`, ok ? 'ok' : 'err');
+  load();
+}
+
+// Show/hide Bulk Approve button based on current filter
+function checkBulkApprove() {
+  const btn = document.getElementById('bulkApproveBtn');
+  if (!btn) return;
+  const pending = allCapsules.filter(c => c.status === 'pending_review' || c.status === 'draft');
+  btn.style.display = (filter === 'pending_review' && pending.length > 1) ? 'inline-flex' : 'none';
+}
+// Override setFilter to check Bulk button
+const _origSetFilter = setFilter;
+setFilter = function(f) {
+  _origSetFilter(f);
+  setTimeout(checkBulkApprove, 300);
+};
+// Override load to check Bulk button after render
+const _origRender = render;
+render = function(caps) {
+  _origRender(caps);
+  setTimeout(checkBulkApprove, 200);
+};
 
 // ═══════════════════════════════════════
 //  UI HELPERS
