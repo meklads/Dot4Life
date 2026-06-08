@@ -686,6 +686,12 @@ body {
       </button>
     </div>
 
+    <div style="background:var(--gold-soft);border:1px solid rgba(107,191,184,.2);border-radius:12px;padding:12px 16px;margin-bottom:16px;font-size:.78rem;color:var(--text-2);line-height:1.6;">
+      <strong>📋 كيفية النشر:</strong>
+      1. فلتر <strong>Pending Review</strong> ← اقرأ ← <strong>Approve</strong><br>
+      2. فلتر <strong>Approved</strong> ← اضغط <strong>Publish</strong> ← التاريخ ← <strong>Confirm</strong><br>
+      3. لو ظهر خطأ "تاريخ موجود"، غيّر التاريخ أو فلتر <strong>Published</strong> لترى المنشور
+    </div>
     <div class="list-meta" id="listMeta"></div>
     <div class="capsule-list" id="capsuleList">
       <div class="state-loading">Loading capsules…</div>
@@ -1049,7 +1055,14 @@ async function confirmPublish(id) {
   if (!date) return toast('Pick a date', 'err');
   const r = await call('POST', `/admin/capsules/${id}/publish`, { date });
   if (r.ok) { toast('Published 🚀', 'ok'); load(); }
-  else toast(r.data?.error || 'Failed', 'err');
+  else {
+    // Date already taken — try next day automatically
+    const nextDate = new Date(date);
+    nextDate.setDate(nextDate.getDate() + 1);
+    const nextStr = nextDate.toISOString().slice(0,10);
+    document.getElementById(`pub-date-${id}`).value = nextStr;
+    toast(`Date ${date} already published. Try ${nextStr} or choose another.`, 'err');
+  }
 }
 
 async function saveEdit(id) {
