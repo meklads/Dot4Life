@@ -824,9 +824,15 @@ async function load() {
 
   list.innerHTML = '<div class="state-loading">Loading…</div>';
 
-  const path = filter === 'all'
-    ? '/admin/capsules'
-    : `/admin/capsules?status=${filter}`;
+  // Pending Review loads all and filters client-side
+  let path;
+  if (filter === 'pending_review') {
+    path = '/admin/capsules';
+  } else if (filter === 'all') {
+    path = '/admin/capsules';
+  } else {
+    path = `/admin/capsules?status=${filter}`;
+  }
 
   const r = await call('GET', path);
 
@@ -840,6 +846,11 @@ async function load() {
 }
 
 function render(caps) {
+  // Filter by status for pending_review (show draft + pending_review only)
+  if (filter === 'pending_review') {
+    caps = caps.filter(c => c.status === 'draft' || c.status === 'pending_review');
+  }
+
   const list = document.getElementById('capsuleList');
   const meta = document.getElementById('listMeta');
 

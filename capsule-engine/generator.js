@@ -90,7 +90,7 @@ async function generateBatch(daysAhead = 7, startDate = null) {
 
     const template = TEMPLATES[i % TEMPLATES.length];
     const capsule  = await createCapsule({
-      ...template, scheduled_date: dateStr, status: 'draft', source: 'generator',
+      ...template, scheduled_date: dateStr, status: 'pending_review', source: 'generator',
     });
     results.push({ date: dateStr, capsule_id: capsule.id, title: capsule.title_en });
   }
@@ -103,7 +103,7 @@ async function generateOne({ date, category } = {}) {
   return createCapsule({
     ...template,
     scheduled_date: date || new Date().toISOString().slice(0, 10),
-    status: 'draft', source: 'generator',
+    status: 'pending_review', source: 'generator',
   });
 }
 
