@@ -75,24 +75,29 @@ const TEMPLATES = [
 
 async function generateBatch(daysAhead = 7, startDate = null) {
   const results = [];
-  const base    = startDate ? new Date(startDate) : new Date();
+  let attempt  = 0;
+  let cursor   = startDate ? new Date(startDate) : new Date();
+  let fillIdx  = 0;
 
-  for (let i = 0; i < daysAhead; i++) {
-    const d = new Date(base);
-    d.setDate(d.getDate() + i);
+  while (results.filter(r => !r.skipped).length < daysAhead && attempt < 60) {
+    const d = new Date(cursor);
+    d.setDate(d.getDate() + attempt);
     const dateStr = d.toISOString().slice(0, 10);
 
     const existing = await getScheduledDate(dateStr);
     if (existing) {
       results.push({ date: dateStr, skipped: true, reason: 'already scheduled' });
+      attempt++;
       continue;
     }
 
-    const template = TEMPLATES[i % TEMPLATES.length];
+    const template = TEMPLATES[fillIdx % TEMPLATES.length];
     const capsule  = await createCapsule({
       ...template, scheduled_date: dateStr, status: 'pending_review', source: 'generator',
     });
     results.push({ date: dateStr, capsule_id: capsule.id, title: capsule.title_en });
+    fillIdx++;
+    attempt++;
   }
   return results;
 }
