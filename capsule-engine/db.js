@@ -138,6 +138,10 @@ async function getAllCapsules() {
   return all('SELECT * FROM ce_capsules ORDER BY created_at DESC LIMIT 100');
 }
 
+async function getAllPublishedCapsules() {
+  return all("SELECT * FROM ce_capsules WHERE status = 'published' ORDER BY scheduled_date DESC NULLS LAST");
+}
+
 async function getCapsulesByCategory(category) {
   return all(`SELECT * FROM ce_capsules WHERE category = $1 AND status = 'published'
               ORDER BY scheduled_date DESC LIMIT 20`, [category]);

@@ -70,6 +70,20 @@ router.get('/category/:cat', async (req, res) => {
   }
 });
 
+// GET /api/capsule/all — all published capsules (for archive page)
+router.get('/all', async (_req, res) => {
+  try {
+    const capsules = await db.getAllPublishedCapsules();
+    res.json({ capsules: capsules.length, data: capsules.map(c => ({
+      id: c.id, category: c.category, emoji: c.emoji,
+      title_en: c.title_en, title_ar: c.title_ar,
+      scheduled_date: c.scheduled_date, tags: (() => { try { return JSON.parse(c.tags); } catch { return []; } })()
+    })) });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // GET /api/capsule/health
 router.get('/health', (_req, res) => {
   res.json({ ok: true, system: 'd4l1-capsule-engine', ts: new Date().toISOString() });
