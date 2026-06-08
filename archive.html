@@ -22,40 +22,66 @@ body{font-family:var(--font-ui);color:var(--text);background:var(--body-bg);line
 a{color:inherit;text-decoration:none;}
 .container{max-width:1200px;margin:0 auto;padding:0 clamp(16px,4vw,48px);}
 
-/* HERO */
-.archive-hero{background:linear-gradient(160deg,#1a2a28 0%,#2a3036 100%);padding:3rem 0;text-align:center;}
-.archive-hero h1{font-family:var(--font-serif);font-size:clamp(1.8rem,4vw,3rem);font-weight:600;color:#fff;margin-bottom:.5rem;}
+.archive-hero{background:linear-gradient(160deg,#1a2a28 0%,#2a3036 100%);padding:3rem 0;text-align:center;position:relative;overflow:hidden;}
+.archive-hero::after{content:'';position:absolute;top:-80px;right:-60px;width:300px;height:300px;background:radial-gradient(circle,rgba(107,191,184,.06) 0%,transparent 70%);pointer-events:none;}
+.archive-hero h1{font-family:var(--font-serif);font-size:clamp(1.8rem,4vw,3rem);font-weight:600;color:#fff;margin-bottom:.5rem;position:relative;z-index:1;}
 [data-lang="ar"] .archive-hero h1{font-family:var(--font-ar);}
-.archive-hero p{color:rgba(255,255,255,.6);font-size:1rem;}
+.archive-hero p{color:rgba(255,255,255,.6);font-size:.95rem;position:relative;z-index:1;}
+
+/* STATS ROW */
+.stats-row{display:flex;gap:1px;max-width:1080px;margin:0 auto;background:var(--card-bg);border-radius:16px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.04);position:relative;z-index:2;margin-top:-24px;padding:0 clamp(16px,4vw,48px);}
+.stat-item{flex:1;text-align:center;padding:1rem .5rem;}
+.stat-num{font-family:var(--font-serif);font-size:1.2rem;font-weight:700;color:var(--text);}
+.stat-label{font-size:.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-top:2px;}
+
+/* SEARCH + CONTROLS */
+.controls-row{display:flex;gap:1rem;align-items:center;flex-wrap:wrap;max-width:1200px;margin:1.5rem auto 0;padding:0 clamp(16px,4vw,48px);}
+.search-box{flex:1;min-width:200px;position:relative;}
+.search-box input{width:100%;padding:.7rem 1rem .7rem 2.5rem;border-radius:10px;border:1.5px solid var(--border);background:var(--card-bg);color:var(--text);font-size:.88rem;outline:none;transition:border-color .2s;}
+.search-box input:focus{border-color:var(--gold);}
+.search-box .search-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:.9rem;pointer-events:none;}
+.btn-random{display:inline-flex;align-items:center;gap:.4rem;padding:.6rem 1.2rem;border-radius:10px;border:1.5px solid rgba(42,154,152,.3);background:rgba(42,154,152,.06);color:#2a9a98;font-size:.8rem;font-weight:600;cursor:pointer;transition:all .22s;white-space:nowrap;}
+.btn-random:hover{background:#2a9a98;color:#fff;border-color:#2a9a98;}
+.sort-select{padding:.6rem .9rem;border-radius:10px;border:1.5px solid var(--border);background:var(--card-bg);color:var(--text);font-size:.78rem;outline:none;cursor:pointer;font-family:inherit;}
 
 /* FILTERS */
-.filter-bar{display:flex;gap:.5rem;flex-wrap:wrap;padding:1.5rem 0;max-width:1200px;margin:0 auto;padding-left:clamp(16px,4vw,48px);padding-right:clamp(16px,4vw,48px);}
-.filter-btn{padding:.4rem 1rem;border-radius:20px;border:1px solid var(--border);font-size:.72rem;font-weight:600;cursor:pointer;transition:all .2s;background:var(--card-bg);color:var(--text-2);}
+.filter-bar{display:flex;gap:.45rem;flex-wrap:wrap;max-width:1200px;margin:.75rem auto 0;padding:0 clamp(16px,4vw,48px);}
+.filter-btn{padding:.4rem .85rem;border-radius:20px;border:1px solid var(--border);font-size:.68rem;font-weight:600;cursor:pointer;transition:all .2s;background:var(--card-bg);color:var(--text-2);}
 .filter-btn:hover{border-color:var(--gold);color:var(--gold);}
 .filter-btn.active{background:var(--gold);color:#fff;border-color:var(--gold);}
 
+/* COUNTER */
+.counter-row{max-width:1200px;margin:1rem auto 0;padding:0 clamp(16px,4vw,48px);font-size:.78rem;color:var(--muted);}
+
 /* GRID */
-.archive-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.25rem;padding:1.5rem 0 4rem;max-width:1200px;margin:0 auto;padding-left:clamp(16px,4vw,48px);padding-right:clamp(16px,4vw,48px);}
+.archive-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.25rem;padding:1rem 0 4rem;max-width:1200px;margin:0 auto;padding-left:clamp(16px,4vw,48px);padding-right:clamp(16px,4vw,48px);}
 
 /* CARD */
-.arc-card{background:var(--card-bg);border:1px solid var(--border);border-radius:18px;overflow:hidden;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column;}
-.arc-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.06);}
-.arc-top{padding:1.2rem 1.4rem .6rem;display:flex;align-items:center;gap:.8rem;}
-.arc-emoji{font-size:1.8rem;width:48px;height:48px;background:rgba(107,191,184,.08);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.arc-card{background:var(--card-bg);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:all .3s;display:flex;flex-direction:column;}
+.arc-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.06);border-color:var(--gold);}
+.arc-card.preview-open{border-color:var(--gold);}
+.arc-top{padding:1.1rem 1.3rem .5rem;display:flex;align-items:center;gap:.75rem;}
+.arc-emoji{font-size:1.6rem;width:44px;height:44px;background:rgba(107,191,184,.08);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .arc-info{flex:1;min-width:0;}
-.arc-cat{font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:2px;}
-.arc-title{font-size:.9rem;font-weight:600;color:var(--text);line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.arc-cat{font-size:.58rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:2px;}
+.arc-title{font-size:.88rem;font-weight:600;color:var(--text);line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
 [data-lang="ar"] .arc-title{font-family:var(--font-ar);}
-.arc-title.ar{font-family:var(--font-ar);}
-.arc-body{padding:0 1.4rem .8rem;flex:1;}
-.arc-desc{font-size:.78rem;color:var(--text-2);line-height:1.65;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+.arc-title-ar{font-size:.78rem;color:var(--text-2);line-height:1.3;margin-top:2px;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;}
+.arc-body{padding:0 1.3rem .7rem;flex:1;}
+.arc-desc{font-size:.72rem;color:var(--text-2);line-height:1.6;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
 [data-lang="ar"] .arc-desc{font-family:var(--font-ar);}
-.arc-footer{display:flex;align-items:center;justify-content:space-between;padding:.7rem 1.4rem;border-top:1px solid var(--border);font-size:.72rem;color:var(--muted);}
+.arc-footer{display:flex;align-items:center;justify-content:space-between;padding:.6rem 1.3rem;border-top:1px solid var(--border);font-size:.68rem;color:var(--muted);}
 .arc-date{display:flex;align-items:center;gap:.3rem;}
 .arc-read{color:var(--gold);font-weight:600;transition:gap .2s;display:flex;align-items:center;gap:.3rem;}
 .arc-card:hover .arc-read{gap:.5rem;}
+.arc-preview{max-height:0;overflow:hidden;transition:max-height .3s ease;background:var(--cream);border-top:1px solid var(--border);}
+.arc-preview.open{max-height:300px;overflow-y:auto;}
+.arc-preview-inner{padding:1rem 1.3rem;font-size:.78rem;color:var(--text-2);line-height:1.7;}
+.arc-preview-inner strong{color:var(--text);}
+.arc-preview-tip{margin-top:.5rem;padding:.5rem .7rem;background:rgba(107,191,184,.06);border-inline-start:3px solid var(--gold);border-radius:0 6px 6px 0;font-size:.72rem;}
+[data-lang="ar"] .arc-preview-tip{border-inline-start:none;border-inline-end:3px solid var(--gold);}
+.preview-toggle{font-size:.65rem;color:var(--gold);cursor:pointer;font-weight:600;padding:.2rem 0;display:inline-block;}
 
-/* LOADING */
 .state-loading{text-align:center;padding:4rem;color:var(--muted);}
 .state-empty{text-align:center;padding:4rem;color:var(--muted);}
 .spinner{width:36px;height:36px;border:3px solid var(--border);border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 1rem;}
@@ -76,6 +102,7 @@ a{color:inherit;text-decoration:none;}
       <li><a href="travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li>
       <li><a href="islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li>
       <li><a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a></li>
+      <li><a href="archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a></li>
       <li><a href="library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a></li>
     </ul>
     <div class="nav-controls">
@@ -87,10 +114,25 @@ a{color:inherit;text-decoration:none;}
 
 <section class="archive-hero">
   <div class="container">
-    <h1><span class="en">✨ Capsule Archive</span><span class="ar">✨ مكتبة التذاكر</span></h1>
-    <p><span class="en">Every daily capsule, collected in one place.</span><span class="ar">كل التذاكر اليومية، مجموعة في مكان واحد.</span></p>
+    <h1><span class="en">📚 Capsule Library</span><span class="ar">📚 مكتبة التذاكر</span></h1>
+    <p><span class="en">Every daily capsule, collected in one place — search, browse, and discover.</span><span class="ar">كل التذاكر اليومية، مجموعة في مكان واحد — ابحث، تصفّح، واكتشف.</span></p>
   </div>
 </section>
+
+<div class="stats-row" id="statsRow"></div>
+
+<div class="controls-row">
+  <div class="search-box">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="searchInput" placeholder="Search capsules… / ابحث في التذاكر…" oninput="searchCapsules()">
+  </div>
+  <button class="btn-random" onclick="randomCapsule()">🎲 <span class="en">Random</span><span class="ar">عشوائي</span></button>
+  <select class="sort-select" id="sortSelect" onchange="sortCapsules()">
+    <option value="newest"><span class="en">Newest</span><span class="ar">الأحدث</span></option>
+    <option value="oldest"><span class="en">Oldest</span><span class="ar">الأقدم</span></option>
+    <option value="az"><span class="en">A–Z</span><span class="ar">أ–ي</span></option>
+  </select>
+</div>
 
 <div class="filter-bar" id="filterBar">
   <button class="filter-btn active" data-cat="all" onclick="setCategory('all')"><span class="en">All</span><span class="ar">الكل</span></button>
@@ -102,17 +144,18 @@ a{color:inherit;text-decoration:none;}
   <button class="filter-btn" data-cat="meals" onclick="setCategory('meals')">🍽️ <span class="en">Meals</span><span class="ar">طعام</span></button>
 </div>
 
+<div class="counter-row" id="counterRow"></div>
+
 <div id="archiveGrid" class="archive-grid">
   <div class="state-loading"><div class="spinner"></div><span class="en">Loading capsules…</span><span class="ar">جارٍ تحميل التذاكر…</span></div>
-</div>
-<div class="state-empty" id="emptyState" style="display:none">
-  <p><span class="en">No capsules found for this category.</span><span class="ar">لا توجد تذاكر في هذا التصنيف.</span></p>
 </div>
 
 <script>
 const API = 'https://dot4life-production.up.railway.app/api/capsule/all';
 let allCapsules = [];
 let currentCat = 'all';
+let currentSearch = '';
+let currentSort = 'newest';
 
 const CAT_NAMES = {
   meals:{en:'Meals & Nutrition',ar:'التغذية والوجبات'},family:{en:'Family',ar:'الأسرة'},
@@ -122,42 +165,107 @@ const CAT_NAMES = {
 
 fetch(API)
   .then(r => r.json())
-  .then(d => { allCapsules = d.data || []; render(allCapsules); })
+  .then(d => { allCapsules = d.data || []; init(); })
   .catch(() => { document.getElementById('archiveGrid').innerHTML = '<div class="state-empty">⚠️ <span class="en">Could not load capsules.</span><span class="ar">تعذر تحميل التذاكر.</span></div>'; });
+
+function init() {
+  updateStats();
+  render(getFilteredAndSorted());
+}
+
+function getFilteredAndSorted() {
+  let caps = allCapsules;
+  if (currentCat !== 'all') caps = caps.filter(c => c.category === currentCat);
+  if (currentSearch) {
+    const q = currentSearch.toLowerCase();
+    caps = caps.filter(c => 
+      (c.title_en && c.title_en.toLowerCase().includes(q)) ||
+      (c.title_ar && c.title_ar.includes(currentSearch)) ||
+      (c.tags && Array.isArray(c.tags) && c.tags.some(t => t.toLowerCase().includes(q)))
+    );
+  }
+  if (currentSort === 'newest') caps.sort((a,b) => (b.scheduled_date||'').localeCompare(a.scheduled_date||''));
+  else if (currentSort === 'oldest') caps.sort((a,b) => (a.scheduled_date||'').localeCompare(b.scheduled_date||''));
+  else if (currentSort === 'az') caps.sort((a,b) => (a.title_en||'').localeCompare(b.title_en||''));
+  return caps;
+}
+
+function updateStats() {
+  const cats = {};
+  allCapsules.forEach(c => { cats[c.category] = (cats[c.category]||0)+1; });
+  const isAr = document.documentElement.getAttribute('data-lang') === 'ar';
+  document.getElementById('statsRow').innerHTML = Object.entries(cats).map(([cat,count]) =>
+    '<div class="stat-item"><div class="stat-num">'+count+'</div><div class="stat-label">'+(isAr?{wellness:'صحة',family:'عائلة',faith:'إيمان',money:'مال',living:'حياة',meals:'طعام'}[cat]||cat:cat)+'</div></div>'
+  ).join('') + '<div class="stat-item"><div class="stat-num">'+allCapsules.length+'</div><div class="stat-label">'+(isAr?'المجموع':'Total')+'</div></div>';
+  updateCounter();
+}
+
+function updateCounter() {
+  const filtered = getFilteredAndSorted();
+  document.getElementById('counterRow').innerHTML = '<span class="en">Showing <strong>'+filtered.length+'</strong> capsule'+(filtered.length!==1?'s':'')+'</span><span class="ar">عرض <strong>'+filtered.length+'</strong> تذكرة</span>';
+}
 
 function setCategory(cat) {
   currentCat = cat;
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
-  const filtered = cat === 'all' ? allCapsules : allCapsules.filter(c => c.category === cat);
-  render(filtered);
+  render(getFilteredAndSorted());
+}
+
+function searchCapsules() {
+  currentSearch = document.getElementById('searchInput').value;
+  render(getFilteredAndSorted());
+}
+
+function sortCapsules() {
+  currentSort = document.getElementById('sortSelect').value;
+  render(getFilteredAndSorted());
+}
+
+function randomCapsule() {
+  const filtered = getFilteredAndSorted();
+  if (!filtered.length) return;
+  const pick = filtered[Math.floor(Math.random() * filtered.length)];
+  window.open('/capsule.html?id='+pick.id, '_blank');
+}
+
+function togglePreview(id) {
+  const el = document.getElementById('preview-'+id);
+  const card = document.getElementById('card-'+id);
+  if (!el) return;
+  el.classList.toggle('open');
+  card.classList.toggle('preview-open');
 }
 
 function render(caps) {
   const grid = document.getElementById('archiveGrid');
-  const empty = document.getElementById('emptyState');
-  if (!caps.length) { grid.innerHTML = ''; empty.style.display = 'block'; return; }
-  empty.style.display = 'none';
   const isAr = document.documentElement.getAttribute('data-lang') === 'ar';
-
+  updateCounter();
+  if (!caps.length) {
+    grid.innerHTML = '<div class="state-empty">📭 <span class="en">No capsules found.</span><span class="ar">لا توجد تذاكر.</span></div>';
+    return;
+  }
   grid.innerHTML = caps.map(c => {
     const cat = CAT_NAMES[c.category] || {en:c.category,ar:c.category};
     const date = c.scheduled_date ? new Date(c.scheduled_date+'T00:00:00').toLocaleDateString(isAr?'ar-SA':'en-GB',{day:'numeric',month:'short',year:'numeric'}) : '';
-    const tags = Array.isArray(c.tags) ? c.tags.map(t => '#'+t).join(' ') : '';
-    return '<a href="/capsule.html?id='+c.id+'" class="arc-card">'
+    const tags = Array.isArray(c.tags) ? c.tags.slice(0,3).map(t => '#'+t).join(' ') : '';
+    // Fetch body dynamically or use a placeholder
+    const bodyInfo = 'Click to read full capsule →';
+    return '<div class="arc-card" id="card-'+c.id+'">'
+      + '<a href="/capsule.html?id='+c.id+'" style="text-decoration:none;color:inherit">'
       + '<div class="arc-top">'
-      + '<div class="arc-emoji">'+c.emoji+'</div>'
+      + '<div class="arc-emoji">'+esc(c.emoji||'🌿')+'</div>'
       + '<div class="arc-info">'
       + '<span class="arc-cat">'+cat.en+' / '+cat.ar+'</span>'
       + '<div class="arc-title">'+esc(c.title_en)+'</div>'
-      + '<div class="arc-title ar" style="font-size:.78rem;color:var(--text-2);margin-top:2px">'+esc(c.title_ar)+'</div>'
+      + '<div class="arc-title-ar">'+esc(c.title_ar||'')+'</div>'
       + '</div></div>'
       + '<div class="arc-body">'
-      + '<div class="arc-desc">'+tags+'</div>'
+      + '<div class="arc-desc">'+esc(tags)+'</div>'
       + '</div>'
       + '<div class="arc-footer">'
       + '<span class="arc-date">📅 '+date+'</span>'
       + '<span class="arc-read"><span class="en">Read →</span><span class="ar">اقرأ ←</span></span>'
-      + '</div></a>';
+      + '</div></a></div>';
   }).join('');
 }
 
@@ -167,7 +275,8 @@ document.getElementById('lang-toggle').addEventListener('click', function(){
   var h=document.documentElement,l=h.getAttribute('data-lang')==='ar'?'en':'ar';
   h.setAttribute('data-lang',l);h.setAttribute('lang',l);h.setAttribute('dir',l==='ar'?'rtl':'ltr');
   localStorage.setItem('dfl-lang',l);
-  render(allCapsules.filter(c => currentCat === 'all' || c.category === currentCat));
+  updateStats();
+  render(getFilteredAndSorted());
 });
 document.getElementById('theme-toggle').addEventListener('click', function(){
   var h=document.documentElement,t=h.getAttribute('data-theme')==='dark'?'light':'dark';
