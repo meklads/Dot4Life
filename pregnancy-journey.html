@@ -1,35 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="light" data-lang="en">
 <head>
-  <script>
-(function(){
-  /* theme */
-  var tb=document.getElementById("theme-toggle");
-  if(tb)tb.addEventListener("click",function(){
-    var h=document.documentElement,t=h.getAttribute("data-theme")==="dark"?"light":"dark";
-    h.setAttribute("data-theme",t);localStorage.setItem("dfl-theme",t);
-  });
-  /* lang */
-  var lb=document.getElementById("lang-toggle");
-  if(lb)lb.addEventListener("click",function(){
-    var h=document.documentElement,l=h.getAttribute("data-lang")==="ar"?"en":"ar";
-    h.setAttribute("data-lang",l);h.setAttribute("lang",l);
-    h.setAttribute("dir",l==="ar"?"rtl":"ltr");localStorage.setItem("dfl-lang",l);
-  });
-  /* scroll shadow */
-  var nb=document.getElementById("navbar");
-  if(nb)window.addEventListener("scroll",function(){nb.classList.toggle("scrolled",window.scrollY>10);},{passive:true});
-  /* reveal */
-  if("IntersectionObserver" in window){
-    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add("visible");});},{threshold:0.1});
-    document.querySelectorAll(".reveal").forEach(function(el){io.observe(el);});
-  } else document.querySelectorAll(".reveal").forEach(function(el){el.classList.add("visible");});
-})();
-</script>
+  <!-- Theme/lang/reveal handled by scripts/global.js -->
   <meta charset="UTF-8"/>
   
   <script>(function(){var p=new URLSearchParams(location.search),l=p.get("lang")||localStorage.getItem("dfl-lang")||"en",t=p.get("theme")||localStorage.getItem("dfl-theme")||"light",h=document.documentElement;h.setAttribute("data-theme",t);h.setAttribute("data-lang",l);h.setAttribute("lang",l);h.setAttribute("dir",l==="ar"?"rtl":"ltr");if(p.get("lang"))localStorage.setItem("dfl-lang",l);if(p.get("theme"))localStorage.setItem("dfl-theme",t);})()</script>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<link rel="canonical" href="https://www.dotforlife.com/pregnancy-journey.html"/>
   <title>Pregnancy Journey — Week by Week | رحلة الحمل أسبوعاً بأسبوع</title>
   <meta name="description" content="Follow your pregnancy week by week — baby size, development milestones, mama tips, and emotional support. Bilingual Arabic & English."/>
   <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
@@ -341,6 +318,10 @@ body{padding-top:110px!important;}
   <meta name="twitter:title" content="Pregnancy Journey Week by Week | Dot4Life">
   <meta name="twitter:description" content="Your complete bilingual pregnancy guide — week by week, with tips and weekly email updates.">
   <meta name="twitter:image" content="https://dotforlife.com/og/og-pregnancy.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Pregnancy Journey — Week by Week | رحلة الحمل أسبوعاً بأسبوع","url":"https://www.dotforlife.com/pregnancy-journey.html","inLanguage":["en","ar"]}</script>
+  <link rel="alternate" hreflang="ar-SA" href="https://www.dotforlife.com/pregnancy-journey.html" />
+  <link rel="alternate" hreflang="en" href="https://www.dotforlife.com/pregnancy-journey.html" />
+  <link rel="alternate" hreflang="x-default" href="https://www.dotforlife.com/pregnancy-journey.html" />
 </head>
 <body>
 
@@ -1154,5 +1135,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 <script>
 
 </script>
+<script src="/scripts/global.js" defer></script>
 </body>
 </html>

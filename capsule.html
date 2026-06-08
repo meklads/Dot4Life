@@ -1,31 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="light" data-lang="en">
 <head>
-  <script>
-(function(){
-  /* theme */
-  var tb=document.getElementById("theme-toggle");
-  if(tb)tb.addEventListener("click",function(){
-    var h=document.documentElement,t=h.getAttribute("data-theme")==="dark"?"light":"dark";
-    h.setAttribute("data-theme",t);localStorage.setItem("dfl-theme",t);
-  });
-  /* lang */
-  var lb=document.getElementById("lang-toggle");
-  if(lb)lb.addEventListener("click",function(){
-    var h=document.documentElement,l=h.getAttribute("data-lang")==="ar"?"en":"ar";
-    h.setAttribute("data-lang",l);h.setAttribute("lang",l);
-    h.setAttribute("dir",l==="ar"?"rtl":"ltr");localStorage.setItem("dfl-lang",l);
-  });
-  /* scroll shadow */
-  var nb=document.getElementById("navbar");
-  if(nb)window.addEventListener("scroll",function(){nb.classList.toggle("scrolled",window.scrollY>10);},{passive:true});
-  /* reveal */
-  if("IntersectionObserver" in window){
-    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add("visible");});},{threshold:0.1});
-    document.querySelectorAll(".reveal").forEach(function(el){io.observe(el);});
-  } else document.querySelectorAll(".reveal").forEach(function(el){el.classList.add("visible");});
-})();
-</script>
+  <!-- Theme/lang/reveal handled by scripts/global.js -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -176,6 +152,10 @@
   #moreLinks a:hover{color:var(--gold);}
   [data-lang="ar"] #moreLinks a{font-family:var(--font-ar);}
 </style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Daily Capsule — DOTFORLIFE","url":"https://www.dotforlife.com/capsule.html","inLanguage":["en","ar"]}</script>
+  <link rel="alternate" hreflang="ar-SA" href="https://www.dotforlife.com/capsule.html" />
+  <link rel="alternate" hreflang="en" href="https://www.dotforlife.com/capsule.html" />
+  <link rel="alternate" hreflang="x-default" href="https://www.dotforlife.com/capsule.html" />
 </head>
 <body>
 
@@ -658,6 +638,52 @@ async function loadMore(category, currentId) {
 // Try immediately, retry if cold start (Railway sleep)
 loadCapsule().catch(() => setTimeout(loadCapsule, 5000));
 </script>
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo" aria-label="DOTFORLIFE">
+          <img src="logo1-footer.png" alt="DOTFORLIFE" width="auto" loading="lazy">
+        </a>
+        <p class="footer-tagline"><span class="en">Life, at ease.</span><span class="ar">الحياة بيسر.</span></p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4><span class="en">Life Areas</span><span class="ar">مجالات الحياة</span></h4>
+          <a href="health.html"><span class="en">Health</span><span class="ar">الصحة</span></a>
+          <a href="finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a>
+          <a href="family.html"><span class="en">Family</span><span class="ar">العائلة</span></a>
+          <a href="travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a>
+          <a href="islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a>
+        </div>
+        <div class="footer-col">
+          <h4><span class="en">Resources</span><span class="ar">الموارد</span></h4>
+          <a href="library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a>
+          <a href="archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a>
+          <a href="blog.html"><span class="en">Blog</span><span class="ar">المدونة</span></a>
+          <a href="about.html"><span class="en">About</span><span class="ar">عن الموقع</span></a>
+          <a href="contact.html"><span class="en">Contact</span><span class="ar">اتصل بنا</span></a>
+        </div>
+        <div class="footer-col">
+          <h4><span class="en">Tools</span><span class="ar">الأدوات</span></h4>
+          <a href="tools/zakat-calculator.html"><span class="en">Zakat Calculator</span><span class="ar">حاسبة الزكاة</span></a>
+          <a href="tools/bmi-calculator.html"><span class="en">BMI Calculator</span><span class="ar">حاسبة BMI</span></a>
+          <a href="tools/mortgage-calculator.html"><span class="en">Mortgage Calculator</span><span class="ar">حاسبة الرهن</span></a>
+          <a href="tools/hijri-converter.html"><span class="en">Hijri Converter</span><span class="ar">محول التاريخ</span></a>
+        </div>
+      </div>
+    </div>
+    <hr class="footer-divider">
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 DOTFORLIFE. <span class="en">All rights reserved.</span><span class="ar">جميع الحقوق محفوظة.</span></p>
+      <div class="footer-bottom-links">
+        <a href="privacy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a>
+        <a href="terms.html"><span class="en">Terms</span><span class="ar">الشروط</span></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
 <!-- ═══ UNIFIED MOBILE NAV ══════════════════════════════════ -->
 <nav class="dfl-mobile-nav" aria-label="Mobile navigation">
   <a href="index.html" class="dfl-mnav-item active" aria-label="Home">

@@ -1,6 +1,9 @@
 /*!
  * DOTFORLIFE — Global Scripts
  * Runs on every page. Keep this lean — no framework deps.
+ *
+ * Supports both legacy IDs (theme-toggle, lang-toggle, navbar)
+ * and new prefixed IDs (dfl-theme-btn, dfl-lang-btn, dfl-navbar).
  */
 
 (function () {
@@ -27,8 +30,8 @@
     });
   }
 
-  /* ── 2. Navbar scroll shadow ────────────────────────────── */
-  var nav = document.getElementById('dfl-navbar');
+  /* ── 2. Navbar scroll shadow (legacy + new ID) ─────────── */
+  var nav = document.getElementById('dfl-navbar') || document.getElementById('navbar');
   if (nav) {
     var onScroll = function () {
       nav.classList.toggle('scrolled', window.scrollY > 10);
@@ -37,8 +40,8 @@
     onScroll();
   }
 
-  /* ── 3. Theme toggle ─────────────────────────────────────── */
-  var themeBtn = document.getElementById('dfl-theme-btn');
+  /* ── 3. Theme toggle (legacy + new ID) ──────────────────── */
+  var themeBtn = document.getElementById('dfl-theme-btn') || document.getElementById('theme-toggle');
   if (themeBtn) {
     themeBtn.addEventListener('click', function () {
       var h = document.documentElement;
@@ -48,8 +51,8 @@
     });
   }
 
-  /* ── 4. Language toggle ──────────────────────────────────── */
-  var langBtn = document.getElementById('dfl-lang-btn');
+  /* ── 4. Language toggle (legacy + new ID) ───────────────── */
+  var langBtn = document.getElementById('dfl-lang-btn') || document.getElementById('lang-toggle');
   if (langBtn) {
     langBtn.addEventListener('click', function () {
       var h = document.documentElement;
@@ -61,11 +64,11 @@
     });
   }
 
-  /* ── 5. Active mobile nav item ───────────────────────────── */
-  var path = window.location.pathname;
-  document.querySelectorAll('.dfl-mnav-item').forEach(function (a) {
+  /* ── 5. Active nav item (both main nav + mobile nav) ────── */
+  var path = window.location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.nav-links a, .dfl-mnav-item, .sub-nav a').forEach(function (a) {
     var href = a.getAttribute('href') || '';
-    if (href && path.includes(href.replace('/', ''))) {
+    if (href && path === href.split('/').pop()) {
       a.classList.add('active');
     }
   });

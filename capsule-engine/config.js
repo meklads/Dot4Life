@@ -1,14 +1,11 @@
 /**
  * d4l1-capsule-engine — Configuration
  *
- * SETUP: Change ADMIN_PASSWORD below (or set via environment variable).
- * The value stored here is a SHA-256 hash of the password.
+ * ⚠️ SECURITY: Never hardcode passwords in this file.
+ * Always set ADMIN_PASSWORD or ADMIN_PASSWORD_HASH via environment variables.
  *
  * To generate a hash for your password, run:
  *   node -e "const c=require('crypto');console.log(c.createHash('sha256').update('YOUR_PASSWORD').digest('hex'))"
- *
- * Default password: dotforlife2026
- * (change before deploying to production!)
  */
 
 const crypto = require('crypto');
@@ -23,13 +20,19 @@ module.exports = {
   // Admin username
   ADMIN_USERNAME: process.env.ADMIN_USERNAME || 'admin',
 
-  // SHA-256 hash of admin password
+  // SHA-256 hash of admin password — MUST be set via env in production
+  // Will be null if no env var provided, causing admin login to fail safely
   ADMIN_PASSWORD_HASH: process.env.ADMIN_PASSWORD_HASH
-    || sha256(process.env.ADMIN_PASSWORD || 'hghgj123'),
+    || (process.env.ADMIN_PASSWORD ? sha256(process.env.ADMIN_PASSWORD) : null),
 
   // CORS: which origins can call the public API
   // In production, restrict to your domain
-  CORS_ORIGINS: (process.env.CORS_ORIGINS || 'http://localhost,https://www.dotforlife.com,https://dotforlife.com').split(','),
+  CORS_ORIGINS: process.env.CORS_ORIGINS
+    ? process.env.CORS_ORIGINS.split(',')
+    : ['http://localhost', 'https://www.dotforlife.com', 'https://dotforlife.com'],
+
+  // Whether to enforce SSL certificate validation (false for dev, true for production)
+  DB_SSL_REJECT_UNAUTHORIZED: process.env.DB_SSL_REJECT_UNAUTHORIZED === 'true',
 
   // Session expiry in hours
   SESSION_HOURS: parseInt(process.env.SESSION_HOURS || '8'),

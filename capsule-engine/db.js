@@ -6,6 +6,7 @@
 
 const { Pool } = require('pg');
 const crypto   = require('crypto');
+const config   = require('./config');
 
 // ─────────────────────────────────────────
 //  CONNECTION
@@ -14,7 +15,9 @@ console.log('[DB] DATABASE_URL:', process.env.DATABASE_URL ? 'SET → ' + proces
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL || 'postgresql://localhost/d4l_capsules',
-  ssl: process.env.DATABASE_URL ? { rejectUnauthorized: false } : false,
+  ssl: process.env.DATABASE_URL
+    ? { rejectUnauthorized: config.DB_SSL_REJECT_UNAUTHORIZED }
+    : false,
 });
 
 pool.on('error', (err) => {
