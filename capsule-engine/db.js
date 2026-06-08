@@ -258,18 +258,7 @@ async function publishCapsule(id, date) {
   const cap = await getCapsuleById(id);
   if (!cap) throw new Error('Capsule not found');
   if (cap.status !== 'approved') throw new Error('Only approved capsules can be published');
-  let targetDate = date || cap.scheduled_date || new Date().toISOString().slice(0, 10);
-  // Auto-find next available date if taken
-  let existing = await getScheduledDate(targetDate);
-  let attempts = 0;
-  while (existing && existing.capsule_id !== id && attempts < 30) {
-    const d = new Date(targetDate);
-    d.setDate(d.getDate() + 1);
-    targetDate = d.toISOString().slice(0, 10);
-    existing = await getScheduledDate(targetDate);
-    attempts++;
-  }
-  if (existing && existing.capsule_id !== id) throw new Error('No available dates found');
+  const targetDate = date || cap.scheduled_date || new Date().toISOString().slice(0, 10);
   await setStatus(id, 'published', { reviewedBy: 'admin' });
   await run(`INSERT INTO ce_schedule (date, capsule_id) VALUES ($1, $2)
              ON CONFLICT (date) DO UPDATE SET capsule_id=$2, published_at=NOW()`,
