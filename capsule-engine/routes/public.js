@@ -70,6 +70,10 @@ router.get('/category/:cat', async (req, res) => {
   }
 });
 
+// GET /api/capsule/health
+router.get('/health', (_req, res) => {
+  res.json({ ok: true, system: 'd4l1-capsule-engine', ts: new Date().toISOString() });
+});
 // GET /api/capsule/:id  — fetch any single published capsule by ID
 router.get('/:id', async (req, res) => {
   try {
@@ -103,9 +107,5 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// GET /api/capsule/health
-router.get('/health', (_req, res) => {
-  res.json({ ok: true, system: 'd4l1-capsule-engine', ts: new Date().toISOString() });
-});
 
 module.exports = router;
