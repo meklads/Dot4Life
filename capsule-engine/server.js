@@ -22,8 +22,9 @@ const express = require('express');
 const cors    = require('cors');
 const cron    = require('node-cron');
 const config  = require('./config');
-const { initSchema } = require('./db');
+const { initSchema, submitForReview, publishCapsule, getScheduledDate } = require('./db');
 const { sendWeeklyToAll } = require('./pregnancy-mailer');
+const { generateOne } = require('./generator');
 
 const app = express();
 
@@ -78,9 +79,52 @@ initSchema()
       console.log(`   Pregnancy  : http://localhost:${PORT}/api/pregnancy/subscribe`);
       console.log(`   Status     : http://localhost:${PORT}/\n`);
 
-      // ─── WEEKLY CRON ───────────────────────────────────────────
-      // Every Sunday at 09:00 UTC (= 12:00 noon Saudi/UAE time)
-      // Cron: "0 9 * * 0"
+      // ─── DAILY CAPSULE GENERATION ──────────────────────────
+      // Every day at 01:00 UTC (= 04:00 Saudi)
+      cron.schedule('0 1 * * *', async () => {
+        try {
+          const tomorrow = new Date();
+          tomorrow.setDate(tomorrow.getDate() + 1);
+          const dateStr = tomorrow.toISOString().slice(0, 10);
+
+          const existing = await getScheduledDate(dateStr);
+          if (existing) {
+            console.log(`[cron] Capsule already exists for ${dateStr} — skipping`);
+            return;
+          }
+          const capsule = await generateOne({ date: dateStr });
+          console.log(`[cron] Generated: ${capsule.title_en} (${dateStr})`);
+          const submitted = await submitForReview(capsule.id);
+          console.log(`[cron] Submitted: ${submitted.id} — ${submitted.status}`);
+        } catch (err) {
+          console.error('[cron] Generation error:', err.message);
+        }
+      }, { timezone: 'UTC' });
+      console.log('   Cron: daily capsule → 01:00 UTC ✓');
+
+      // ─── WEEKLY BATCH ────────────────────────────────────────────
+      // Every Saturday at 02:00 UTC
+      cron.schedule('0 2 * * 6', async () => {
+        try {
+          const nextWeek = [];
+          for (let i = 0; i < 7; i++) {
+            const d = new Date();
+            d.setDate(d.getDate() + i);
+            const dateStr = d.toISOString().slice(0, 10);
+            const existing = await getScheduledDate(dateStr);
+            if (existing) continue;
+            const capsule = await generateOne({ date: dateStr });
+            await submitForReview(capsule.id);
+            nextWeek.push({ date: dateStr, title: capsule.title_en });
+          }
+          console.log(`[cron] Week batch: ${nextWeek.length} generated`);
+        } catch (err) {
+          console.error('[cron] Weekly batch error:', err.message);
+        }
+      }, { timezone: 'UTC' });
+      console.log('   Cron: weekly batch → Sat 02:00 UTC ✓');
+
+      // ─── WEEKLY PREGNANCY EMAILS ───────────────────────────
       if (process.env.RESEND_API_KEY) {
         cron.schedule('0 9 * * 0', () => {
           console.log('[cron] Sunday 09:00 UTC — sending weekly pregnancy emails');
