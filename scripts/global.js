@@ -88,4 +88,38 @@
     }
   });
 
+  /* ── 7. Google Analytics 4 — auto events ────────────── */
+  if (typeof gtag === 'function') {
+    // Track language switches
+    var langBtn = document.getElementById('dfl-lang-btn') || document.getElementById('lang-toggle');
+    if (langBtn) {
+      langBtn.addEventListener('click', function () {
+        var currentLang = document.documentElement.getAttribute('data-lang') === 'ar' ? 'en' : 'ar';
+        gtag('event', 'language_switch', { 'language': currentLang });
+      });
+    }
+
+    // Track theme switches
+    var themeBtn = document.getElementById('dfl-theme-btn') || document.getElementById('theme-toggle');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', function () {
+        var nextTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        gtag('event', 'theme_switch', { 'theme': nextTheme });
+      });
+    }
+
+    // Track outbound links
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest('a');
+      if (!a) return;
+      var href = a.getAttribute('href') || '';
+      if (href.startsWith('http') && !href.includes(window.location.hostname)) {
+        gtag('event', 'outbound_click', {
+          'link_url': href,
+          'link_text': (a.textContent || '').trim().substring(0, 60)
+        });
+      }
+    });
+  }
+
 })();
