@@ -213,29 +213,7 @@ body { padding-top: 158px; }
 }
 /* ═══════════════════════════════════════ */
   </style>
-<!-- DFL Analytics v1 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DOTFORLIFE1"></script>
-<script>
-window.dataLayer=window.dataLayer||[];
-function gtag(){dataLayer.push(arguments);}
-gtag('js',new Date());
-gtag('config','G-DOTFORLIFE1',{
-  page_title:document.title,
-  page_location:window.location.href,
-  send_page_view:true,
-  cookie_flags:'SameSite=None;Secure'
-});
-// DFL Event helpers
-window.dflTrack=function(event,params){
-  gtag('event',event,Object.assign({
-    page_path:location.pathname,
-    language:document.documentElement.getAttribute('data-lang')||'en'
-  },params||{}));
-};
-</script>
-<!-- DFL_FIX3_APPLIED -->
-
-  <!-- DFL CANONICAL SYSTEM CSS -->
+<!-- DFL CANONICAL SYSTEM CSS -->
   <style id="dfl-sys">
     
     
@@ -734,14 +712,6 @@ document.addEventListener('keydown',function(e){if((e.metaKey||e.ctrlKey)&&e.key
   },{passive:true});
 })();
 
-/* ── Scroll depth ── */
-(function(){
-  var d=[25,50,75,100],f={};
-  window.addEventListener('scroll',function(){
-    var p=Math.round((window.scrollY/(document.body.scrollHeight-window.innerHeight))*100);
-    d.forEach(function(v){if(p>=v&&!f[v]){f[v]=true;if(window.gtag)gtag('event','scroll_depth',{depth:v,page:location.pathname});}});
-  },{passive:true});
-})();
 
 })();</script>
 <script>
@@ -891,33 +861,28 @@ document.addEventListener('DOMContentLoaded',function(){
 // 1. Calculator use — fire when form submits or calculate button clicked
 document.querySelectorAll('form,[id*="calc"],[id*="calculate"],[onclick*="calc"],[onclick*="Calculate"]').forEach(function(el){
   el.addEventListener('submit',function(){
-    window.dflTrack&&dflTrack('calculator_use',{tool_name:document.title,action:'submit'});
   });
 });
 document.querySelectorAll('button').forEach(function(btn){
   var t=(btn.textContent||'').toLowerCase();
   if(t.includes('calculat')||t.includes('احسب')||t.includes('حساب')){
     btn.addEventListener('click',function(){
-      window.dflTrack&&dflTrack('calculator_use',{tool_name:document.title,action:'calculate'});
     });
   }
 });
 
 // 2. Search events
 document.addEventListener('dfl:search',function(e){
-  window.dflTrack&&dflTrack('search',{search_term:e.detail&&e.detail.query,results_count:e.detail&&e.detail.count});
 });
 
 // 3. Bookmark/favorite events  
 document.addEventListener('dfl:bookmark',function(e){
-  window.dflTrack&&dflTrack('bookmark',{item_url:e.detail&&e.detail.url,action:e.detail&&e.detail.action});
 });
 
 // 4. Language toggle
 document.querySelectorAll('[id="lang-btn"],[onclick*="toggleLang"]').forEach(function(btn){
   btn.addEventListener('click',function(){
     var newLang=document.documentElement.getAttribute('data-lang')==='ar'?'en':'ar';
-    window.dflTrack&&dflTrack('language_switch',{to_language:newLang});
   });
 });
 
@@ -925,7 +890,6 @@ document.querySelectorAll('[id="lang-btn"],[onclick*="toggleLang"]').forEach(fun
 document.querySelectorAll('a[href^="http"]').forEach(function(a){
   if(!a.href.includes('dotforlife.app')){
     a.addEventListener('click',function(){
-      window.dflTrack&&dflTrack('outbound_click',{link_url:a.href,link_text:(a.textContent||'').trim().substring(0,60)});
     });
   }
 });
@@ -937,7 +901,6 @@ window.addEventListener('scroll',function(){
   depths.forEach(function(d){
     if(pct>=d&&!fired[d]){
       fired[d]=true;
-      window.dflTrack&&dflTrack('scroll_depth',{percent:d,page:document.title});
     }
   });
 },{passive:true});
@@ -945,21 +908,18 @@ window.addEventListener('scroll',function(){
 // 7. Time on page — 30s, 60s, 120s engagement
 [30,60,120].forEach(function(sec){
   setTimeout(function(){
-    window.dflTrack&&dflTrack('time_on_page',{seconds:sec,page:document.title});
   },sec*1000);
 });
 
 // 8. CTA click tracking
 document.querySelectorAll('.hero-cta,.tool-cta-btn,.tool-cta a,.cta-btn,.btn-primary').forEach(function(el){
   el.addEventListener('click',function(){
-    window.dflTrack&&dflTrack('cta_click',{cta_text:(el.textContent||'').trim().substring(0,60),destination:el.href||''});
   });
 });
 
 // 9. Guide TOC clicks
 document.querySelectorAll('.toc-list a').forEach(function(a){
   a.addEventListener('click',function(){
-    window.dflTrack&&dflTrack('toc_navigation',{section:(a.textContent||'').trim(),page:document.title});
   });
 });
 
@@ -967,7 +927,6 @@ document.querySelectorAll('.toc-list a').forEach(function(a){
 document.querySelectorAll('.faq-q').forEach(function(btn){
   btn.addEventListener('click',function(){
     var q=(btn.textContent||'').trim().substring(0,80);
-    window.dflTrack&&dflTrack('faq_expand',{question:q,page:document.title});
   });
 });
 })();
