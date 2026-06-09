@@ -11,35 +11,23 @@ jobs:
       - name: 📥 Checkout repo
         uses: actions/checkout@v4
 
-      - name: 🔐 Install SSH key
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.VPS_SSH_KEY }}" | base64 -d > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H ${{ secrets.VPS_HOST }} >> ~/.ssh/known_hosts 2>/dev/null
-
-      - name: 📦 Sync files to VPS via rsync
-        run: |
-          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa \
-            ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} \
-            "mkdir -p /var/www/dotforlife"
-          rsync -avz --delete -e "ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa" \
-            --exclude '.git' \
-            --exclude '.github' \
-            --exclude 'node_modules' \
-            --exclude 'capsule-engine/node_modules' \
-            --exclude 'capsule-engine/.env' \
-            --exclude '*.db' \
-            --exclude '*.db-shm' \
-            --exclude '*.db-wal' \
-            --exclude '.DS_Store' \
-            --exclude 'Thumbs.db' \
-            --exclude '*.docx' \
-            --exclude '*.xlsx' \
-            ./ ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/var/www/dotforlife/
+      - name: 📦 Copy files via rsync
+        uses: burnett01/rsync-deployments@7.0.1
+        with:
+          switches: -avz --delete --exclude='.git' --exclude='.github' --exclude='node_modules' --exclude='capsule-engine/node_modules' --exclude='capsule-engine/.env' --exclude='*.db' --exclude='*.db-shm' --exclude='*.db-wal' --exclude='.DS_Store' --exclude='Thumbs.db' --exclude='*.docx' --exclude='*.xlsx'
+          path: ./
+          remote_path: /var/www/dotforlife/
+          remote_host: ${{ secrets.VPS_HOST }}
+          remote_user: ${{ secrets.VPS_USER }}
+          remote_key: ${{ secrets.VPS_SSH_KEY }}
 
       - name: 🔄 Set permissions
-        run: |
-          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa \
-            ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} \
-            "chown -R www-data:www-data /var/www/dotforlife 2>/dev/null || true; chmod -R 755 /var/www/dotforlife; echo '✅ Deployment complete'"
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          script: |
+            chown -R www-data:www-data /var/www/dotforlife 2>/dev/null || true
+            chmod -R 755 /var/www/dotforlife
+            echo "✅ Deployment complete: $(date)"
