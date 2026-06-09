@@ -11,18 +11,28 @@ jobs:
       - name: 📥 Checkout repo
         uses: actions/checkout@v4
 
-      - name: 🚀 Deploy via appleboy
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER }}
-          key: ${{ secrets.VPS_SSH_KEY }}
-          script: |
-            cd /var/www/dotforlife
-            git init
-            git remote add origin git@github.com:meklads/Dot4Life.git 2>/dev/null || git remote set-url origin git@github.com:meklads/Dot4Life.git
-            git fetch --depth=1 origin main
-            git reset --hard origin/main
-            chown -R www-data:www-data /var/www/dotforlife 2>/dev/null || true
-            chmod -R 755 /var/www/dotforlife
-            echo "✅ Deployment complete: $(date)"
+      - name: 🔐 Setup key & deploy
+        run: |
+          mkdir -p ~/.ssh
+          cat > ~/.ssh/id_rsa << 'EOF'
+${{ secrets.VPS_SSH_KEY }}
+EOF
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.VPS_HOST }} >> ~/.ssh/known_hosts 2>/dev/null
+          rsync -avz --delete -e "ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa" \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='node_modules' \
+            --exclude='capsule-engine/node_modules' \
+            --exclude='capsule-engine/.env' \
+            --exclude='*.db' \
+            --exclude='*.db-shm' \
+            --exclude='*.db-wal' \
+            --exclude='.DS_Store' \
+            --exclude='Thumbs.db' \
+            --exclude='*.docx' \
+            --exclude='*.xlsx' \
+            ./ ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/var/www/dotforlife/
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa \
+            ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} \
+            "chown -R www-data:www-data /var/www/dotforlife 2>/dev/null || true; chmod -R 755 /var/www/dotforlife; echo '✅ Deployment complete'"
