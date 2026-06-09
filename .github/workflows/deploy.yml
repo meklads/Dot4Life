@@ -20,6 +20,9 @@ jobs:
 
       - name: 📦 Sync files to VPS via rsync
         run: |
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa \
+            ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} \
+            "mkdir -p /var/www/dotforlife"
           rsync -avz --delete -e "ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa" \
             --exclude '.git' \
             --exclude '.github' \
