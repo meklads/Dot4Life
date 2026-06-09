@@ -1,0 +1,160 @@
+/* DOTFORLIFE — Page-specific styles for daily-planner.html */
+/* Extracted on 2026-06-08 */
+
+  :root{
+    --accent:#0F4C8A;--accent-l:#1565C0;--teal:#14B8A6;--gold:#C9A227;
+    --text:#1A2535;--text-2:#5A6E85;--muted:#9CA3AF;
+    --body-bg:#F8FAFC;--card-bg:#FFFFFF;--border:#DDE2EA;--pill-bg:#F4F6FA;
+    --shadow-sm:0 1px 6px rgba(0,0,0,.06);--shadow-md:0 3px 14px rgba(0,0,0,.09);
+    --r:12px;--r-lg:16px;
+    --fajr:#6366F1;--fajr-s:rgba(99,102,241,.1);
+    --sunrise:#F59E0B;--sunrise-s:rgba(245,158,11,.1);
+    --dhuhr:#0F4C8A;--dhuhr-s:rgba(15,76,138,.1);
+    --asr:#0097A7;--asr-s:rgba(0,151,167,.1);
+    --maghrib:#E85D04;--maghrib-s:rgba(232,93,4,.1);
+    --isha:#2a9a98;--isha-s:rgba(42,154,152,.1);
+  }
+  [data-theme="dark"]{
+    --text:#E8EFF8;--text-2:#8FA5C0;--muted:#4B6080;
+    --body-bg:#0F172A;--card-bg:#1E293B;--border:#334155;--pill-bg:#1E293B;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Inter',system-ui,sans-serif;background:var(--body-bg);color:var(--text);line-height:1.6;padding-top:110px;min-height:100vh;}
+  [data-lang="ar"]{font-family:'Almarai',sans-serif;}
+  .en{display:inline;}.ar{display:none;}
+  [data-lang="ar"] .en{display:none;}[data-lang="ar"] .ar{display:inline;}
+  a{color:inherit;text-decoration:none;}
+
+  /* NAV */
+  .nav-title{justify-self:center;font-size:.82rem;font-weight:600;color:var(--text-2);}
+  .nav-right{justify-self:end;display:flex;gap:.4rem;}
+  
+  
+
+  /* PAGE HEADER */
+  .page-header{padding:2rem 0 1rem;text-align:center;}
+  .page-header h1{font-size:1.5rem;font-weight:800;margin-bottom:.3rem;}
+  .page-header .date-display{font-size:.85rem;color:var(--muted);}
+
+  /* DATE NAV */
+  .date-nav{display:flex;align-items:center;justify-content:center;gap:1rem;margin-bottom:1.5rem;}
+  .date-nav-btn{width:36px;height:36px;border-radius:50%;border:1px solid var(--border);background:var(--card-bg);cursor:pointer;font-size:1rem;color:var(--text-2);display:flex;align-items:center;justify-content:center;transition:all .2s;}
+  .date-nav-btn:hover{border-color:var(--accent-l);color:var(--accent-l);}
+  .date-chip{font-size:.88rem;font-weight:600;padding:.35rem 1.2rem;background:var(--card-bg);border:1px solid var(--border);border-radius:999px;min-width:160px;text-align:center;}
+
+  /* CONTAINER */
+  .container{max-width:860px;margin:0 auto;padding:0 16px 100px;}
+
+  /* PRAYER STRIP */
+  .prayer-strip{display:flex;gap:.5rem;overflow-x:auto;padding:.2rem 0 .6rem;margin-bottom:1.2rem;scrollbar-width:none;}
+  .prayer-strip::-webkit-scrollbar{display:none;}
+  .prayer-pill{display:flex;flex-direction:column;align-items:center;gap:.15rem;min-width:72px;padding:.5rem .3rem;border-radius:14px;border:2px solid transparent;cursor:pointer;transition:all .2s;background:var(--card-bg);}
+  .prayer-pill.fajr{border-color:var(--fajr);background:var(--fajr-s);}
+  .prayer-pill.dhuhr{border-color:var(--dhuhr);background:var(--dhuhr-s);}
+  .prayer-pill.asr{border-color:var(--asr);background:var(--asr-s);}
+  .prayer-pill.maghrib{border-color:var(--maghrib);background:var(--maghrib-s);}
+  .prayer-pill.isha{border-color:var(--isha);background:var(--isha-s);}
+  .prayer-pill .p-name{font-size:.68rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;}
+  .prayer-pill.fajr .p-name{color:var(--fajr);}
+  .prayer-pill.dhuhr .p-name{color:var(--dhuhr);}
+  .prayer-pill.asr .p-name{color:var(--asr);}
+  .prayer-pill.maghrib .p-name{color:var(--maghrib);}
+  .prayer-pill.isha .p-name{color:var(--isha);}
+  .prayer-pill .p-time{font-size:.75rem;font-weight:600;color:var(--text);}
+  .prayer-pill .p-check{font-size:.9rem;}
+
+  /* SECTION LABELS */
+  .section-label{display:flex;align-items:center;gap:.5rem;margin:.6rem 0;font-size:.68rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);}
+  .section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+  /* TIME BLOCKS */
+  .blocks-col{display:flex;flex-direction:column;gap:.5rem;}
+  .time-block{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--r);padding:.8rem 1rem;display:grid;grid-template-columns:56px 1fr auto;gap:.7rem;align-items:center;transition:border-color .15s;cursor:pointer;}
+  .time-block:hover{border-color:var(--accent-l);}
+  .time-block.done{opacity:.55;}
+  .time-block.prayer-anchor{border-left:3px solid var(--fajr);}
+  .time-block.prayer-anchor.dhuhr-anchor{border-left-color:var(--dhuhr);}
+  .time-block.prayer-anchor.asr-anchor{border-left-color:var(--asr);}
+  .time-block.prayer-anchor.maghrib-anchor{border-left-color:var(--maghrib);}
+  .time-block.prayer-anchor.isha-anchor{border-left-color:var(--isha);}
+  .tb-time-label{font-size:.72rem;font-weight:700;color:var(--muted);line-height:1.3;text-align:right;}
+  [data-lang="ar"] .tb-time-label{text-align:left;}
+  .tb-content{flex:1;}
+  .tb-title{font-size:.9rem;font-weight:600;color:var(--text);margin-bottom:.1rem;}
+  .tb-input{width:100%;background:transparent;border:none;outline:none;font-size:.85rem;font-weight:500;color:var(--text);font-family:inherit;line-height:1.4;resize:none;}
+  .tb-input::placeholder{color:var(--muted);}
+  .tb-check{width:24px;height:24px;border-radius:50%;border:2px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.8rem;flex-shrink:0;transition:all .2s;background:transparent;}
+  .tb-check.checked{background:var(--teal);border-color:var(--teal);color:#fff;}
+
+  /* MIT BOX */
+  .mit-box{background:linear-gradient(135deg,rgba(15,76,138,.06) 0%,rgba(20,184,166,.04) 100%);border:1.5px solid rgba(15,76,138,.18);border-radius:var(--r-lg);padding:1rem 1.2rem;margin-bottom:1rem;}
+  .mit-label{font-size:.64rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--accent-l);margin-bottom:.4rem;}
+  .mit-input{width:100%;background:transparent;border:none;outline:none;font-size:1rem;font-weight:600;color:var(--text);font-family:inherit;line-height:1.4;}
+  .mit-input::placeholder{color:var(--muted);font-weight:400;}
+
+  /* INTENTIONS BOX */
+  .intentions-box{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--r-lg);padding:1rem 1.2rem;margin-bottom:1rem;}
+  .int-label{font-size:.64rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:.6rem;}
+  .int-row{display:flex;align-items:start;gap:.5rem;margin-bottom:.4rem;}
+  .int-check{width:18px;height:18px;border-radius:50%;border:2px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.65rem;flex-shrink:0;margin-top:.15rem;transition:all .2s;}
+  .int-check.checked{background:var(--teal);border-color:var(--teal);color:#fff;}
+  .int-input{flex:1;background:transparent;border:none;border-bottom:1px solid var(--border);outline:none;font-size:.85rem;color:var(--text);font-family:inherit;padding:.1rem 0;}
+  .int-input::placeholder{color:var(--muted);}
+
+  /* PROGRESS BAR */
+  .progress-row{display:flex;align-items:center;gap:.7rem;margin-bottom:1.2rem;}
+  .progress-bar{flex:1;height:6px;background:var(--border);border-radius:999px;overflow:hidden;}
+  .progress-fill{height:100%;background:linear-gradient(90deg,var(--teal),var(--accent-l));border-radius:999px;transition:width .4s;}
+  .progress-label{font-size:.75rem;font-weight:600;color:var(--muted);white-space:nowrap;}
+
+  /* SUMMARY CARD */
+  .summary-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--r-lg);padding:1rem 1.2rem;margin-top:1.5rem;}
+  .summary-label{font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:.6rem;}
+  .summary-textarea{width:100%;background:transparent;border:none;outline:none;font-size:.85rem;color:var(--text);font-family:inherit;line-height:1.7;resize:none;min-height:60px;}
+  .summary-textarea::placeholder{color:var(--muted);}
+
+  /* BOTTOM ACTIONS */
+  .bottom-actions{display:flex;gap:.7rem;margin-top:1.2rem;flex-wrap:wrap;}
+  .btn-primary{flex:1;min-width:140px;padding:.6rem 1.2rem;border-radius:999px;border:none;background:var(--accent-l);color:#fff;font-size:.83rem;font-weight:700;cursor:pointer;font-family:inherit;transition:background .2s;}
+  .btn-primary:hover{background:var(--accent);}
+  .btn-outline{flex:1;min-width:140px;padding:.6rem 1.2rem;border-radius:999px;border:1.5px solid var(--border);background:transparent;color:var(--text-2);font-size:.83rem;font-weight:600;cursor:pointer;font-family:inherit;transition:all .2s;}
+  .btn-outline:hover{border-color:var(--teal);color:var(--teal);}
+
+  /* PRAYER TIME MODAL */
+  .modal-overlay{position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.45);display:none;align-items:center;justify-content:center;padding:1rem;}
+  .modal-overlay.open{display:flex;}
+  .modal{background:var(--card-bg);border-radius:var(--r-lg);padding:1.4rem;width:100%;max-width:380px;box-shadow:var(--shadow-md);}
+  .modal-title{font-size:1rem;font-weight:700;margin-bottom:1rem;}
+  .modal-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:.7rem;}
+  .modal-label{font-size:.82rem;color:var(--text-2);}
+  .modal-input{width:90px;padding:.35rem .6rem;border:1px solid var(--border);border-radius:8px;font-size:.85rem;background:var(--body-bg);color:var(--text);font-family:inherit;text-align:center;}
+  .modal-close{margin-top:.8rem;width:100%;padding:.55rem;border:none;background:var(--accent-l);color:#fff;border-radius:999px;font-weight:700;cursor:pointer;font-family:inherit;}
+
+  /* MOBILE NAV */
+  
+  @media(max-width:768px){body{padding-bottom:64px;}}
+  
+  
+  
+
+  @media(max-width:600px){
+    .time-block{grid-template-columns:48px 1fr auto;}
+    .prayer-pill{min-width:62px;}
+  }
+
+/* dfl-logo-inline */
+#navbar,.navbar-unified{height:110px!important;}
+.nav-inner,.navbar-inner,.navbar-inner-unified{height:110px!important;}
+.nav-logo img,.dfl-nav-logo img{height:120px!important;width:auto!important;display:block!important;}
+#dfl-navbar{min-height:110px!important;height:110px!important;}
+.dfl-nav-inner{height:110px!important;}
+body{padding-top:110px!important;}
+.footer-logo img{height:100px!important;width:auto!important;display:block!important;}
+@media(max-width:768px){
+  #navbar,.navbar-unified,#dfl-navbar{height:90px!important;}
+  .nav-inner,.navbar-inner,.navbar-inner-unified,.dfl-nav-inner{height:90px!important;}
+  .nav-logo img,.dfl-nav-logo img{height:80px!important;}
+  body{padding-top:90px!important;}
+  .footer-logo img{height:75px!important;}
+}
