@@ -48,6 +48,10 @@
       var next = h.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
       h.setAttribute('data-theme', next);
       localStorage.setItem('dfl-theme', next);
+      // Update button icon — supports emoji and short-text formats
+      if (themeBtn.textContent.trim() === '🌙' || themeBtn.textContent.trim() === '☀️') {
+        themeBtn.textContent = next === 'dark' ? '☀️' : '🌙';
+      }
     });
   }
 
@@ -61,6 +65,11 @@
       h.setAttribute('lang', next);
       h.setAttribute('dir', next === 'ar' ? 'rtl' : 'ltr');
       localStorage.setItem('dfl-lang', next);
+      // Update button text — toggle between language labels
+      var txt = langBtn.textContent.trim();
+      if (txt === 'العربية' || txt === 'English' || txt === 'AR' || txt === 'EN') {
+        langBtn.textContent = next === 'ar' ? 'English' : 'العربية';
+      }
     });
   }
 
