@@ -450,6 +450,24 @@ html, body { overflow-x: hidden; max-width: 100%; }
   display: block !important;
   margin: 0;
 }
+/* English nav logo — 5x bigger than Arabic */
+[data-lang="en"] .nav-logo img,
+[data-lang="en"] .dfl-nav-logo img {
+  height: 450px !important;
+  width: auto !important;
+  max-width: none !important;
+  object-fit: contain !important;
+  display: block !important;
+  margin: 0;
+}
+@media (max-width: 768px) {
+  [data-lang="en"] .nav-logo img,
+  [data-lang="en"] .dfl-nav-logo img {
+    height: 350px !important;
+    max-width: none !important;
+    object-fit: contain !important;
+  }
+}
 /* Footer logo — larger, outside navbar constraints */
 .dfl-footer-brand .dfl-flogo,
 .footer-brand .logo {
@@ -498,6 +516,39 @@ html, body { overflow-x: hidden; max-width: 100%; }
 [data-theme="dark"] #navbar,
 [data-theme="dark"] .navbar-unified {
   background: rgba(18,16,14,0.97);
+}
+/* English navbar — taller for 5x logo */
+[data-lang="en"] #navbar,
+[data-lang="en"] .navbar-unified {
+  height: 470px;
+}
+[data-lang="en"] .nav-inner,
+[data-lang="en"] .navbar-inner,
+[data-lang="en"] .navbar-inner-unified {
+  height: 470px;
+}
+[data-lang="en"] #sub-nav,
+[data-lang="en"] .subnav-unified {
+  top: 470px;
+}
+[data-lang="en"] .has-subnav { padding-top: 518px !important; }
+[data-lang="en"] .no-subnav  { padding-top: 470px !important; }
+@media (max-width: 768px) {
+  [data-lang="en"] #navbar,
+  [data-lang="en"] .navbar-unified {
+    height: 370px;
+  }
+  [data-lang="en"] .nav-inner,
+  [data-lang="en"] .navbar-inner,
+  [data-lang="en"] .navbar-inner-unified {
+    height: 370px;
+  }
+  [data-lang="en"] #sub-nav,
+  [data-lang="en"] .subnav-unified {
+    top: 370px;
+  }
+  [data-lang="en"] .has-subnav { padding-top: 418px !important; }
+  [data-lang="en"] .no-subnav  { padding-top: 370px !important; }
 }
 
 /* Inner grid: logo | nav-links | controls */
@@ -549,9 +600,9 @@ html, body { overflow-x: hidden; max-width: 100%; }
 }
 /* English nav text — reduced to fit snugly */
 [data-lang="en"] .nav-links a {
-  font-size: .5rem;
-  padding: 5px 8px;
-  letter-spacing: .02em;
+  font-size: .25rem;
+  padding: 4px 6px;
+  letter-spacing: .01em;
 }
 @media (max-width: 860px) { .nav-links { display: none; } }
 
