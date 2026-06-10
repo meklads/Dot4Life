@@ -440,11 +440,13 @@ html, body { overflow-x: hidden; max-width: 100%; }
   flex-shrink: 0;
   justify-self: start;   /* always left-aligned in the grid */
 }
-/* Navbar logo — 2.5× */
+/* Navbar logo — proportionate, fits within 110px nav-inner */
 .nav-logo img,
 .dfl-nav-logo img {
-  height: 120px;
+  height: 100px;
   width: auto;
+  max-width: none;
+  object-fit: contain;
   display: block;
   margin: 0;
 }
@@ -455,19 +457,21 @@ html, body { overflow-x: hidden; max-width: 100%; }
 }
 .dfl-footer-brand .dfl-flogo img,
 .footer-brand .logo img {
-  height: 120px;
+  height: 100px;
   width: auto;
+  max-width: none;
+  object-fit: contain;
   display: block;
   margin-bottom: 8px;
 }
 @media (max-width: 768px) {
-  .nav-logo img, .dfl-nav-logo img { height: 80px; }
+  .nav-logo img, .dfl-nav-logo img { height: 80px; max-width: none; object-fit: contain; }
   #navbar, .navbar-unified { height: 90px; }
   .nav-inner, .navbar-inner, .navbar-inner-unified { height: 90px; }
   #sub-nav, .subnav-unified { top: 90px; }
   .has-subnav { padding-top: 138px !important; }
   .no-subnav  { padding-top: 90px !important; }
-  .dfl-footer-brand .dfl-flogo img, .footer-brand .logo img { height: 88px; }
+  .dfl-footer-brand .dfl-flogo img, .footer-brand .logo img { height: 88px; max-width: none; object-fit: contain; }
 }
 
 /* ── 20. UNIFIED NAVBAR SYSTEM ───────────────────────────── */
@@ -542,6 +546,12 @@ html, body { overflow-x: hidden; max-width: 100%; }
   color: var(--gold);
   font-weight: 700;
   background: rgba(184,134,26,.1);
+}
+/* English nav text — 20% smaller to prevent crowding */
+[data-lang="en"] .nav-links a {
+  font-size: .62rem;
+  padding: 5px 10px;
+  letter-spacing: .025em;
 }
 @media (max-width: 860px) { .nav-links { display: none; } }
 
