@@ -31,15 +31,15 @@
 
   <script>(function(){var p=new URLSearchParams(location.search),gd=(function(){try{var z=(Intl.DateTimeFormat().resolvedOptions().timeZone||"");return /Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test(z)?"ar":"en";}catch(e){return "ar";}})(),l=p.get("lang")||localStorage.getItem("dfl-lang")||gd,t=p.get("theme")||localStorage.getItem("dfl-theme")||"light",h=document.documentElement;h.setAttribute("data-theme",t);h.setAttribute("data-lang",l);h.setAttribute("lang",l);h.setAttribute("dir",l==="ar"?"rtl":"ltr");if(p.get("lang"))localStorage.setItem("dfl-lang",l);if(p.get("theme"))localStorage.setItem("dfl-theme",t);})()</script>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
-<title>Savings Goal Calculator | حاسبة هدف الادخار — DotForLife</title>
-<meta name="description" content="Calculate exactly how much to save each month to reach your financial goal — or how long it will take at your current rate. Bilingual, precise, private."/>
+<title>Savings Goal Calculator | حاسبة هدف الادخار، DotForLife</title>
+<meta name="description" content="Calculate exactly how much to save each month to reach your financial goal, or how long it will take at your current rate. Bilingual, precise, private."/>
 <meta name="keywords" content="savings goal calculator, how much to save, monthly savings, savings planner, حاسبة الادخار, هدف الادخار, تخطيط مالي"/>
 <link rel="canonical" href="https://www.dotforlife.com/tools/savings-goal.html"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Inter:wght@400;500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Inter:wght@400;500;600;700;800&display=swap"/></noscript>
-<link rel="stylesheet" href="/styles/global.css?v=15c5d6b6"/>
+<link rel="stylesheet" href="/styles/global.css?v=c2f7b17a"/>
 <link rel="stylesheet" href="/styles/home.css?v=a1ad0f31">
 <link rel="stylesheet" href="/styles/pages/tools_savings-goal.css?v=c3f96a48">
 
@@ -167,7 +167,7 @@
     [data-lang="ar"] .dfl-mnav-item { font-family: var(--font-ar); }
     @media(max-width:768px){ #dfl-mobile-nav{display:block;} body{padding-bottom:80px !important;} }
 
-    /* ── Language visibility (CRITICAL — prevents bilingual hybrid) ── */
+    /* ── Language visibility (CRITICAL, prevents bilingual hybrid) ── */
     .en { display: none; }
     [data-lang="en"] .en { display: inline; }
     .ar { display: inline; }
@@ -259,7 +259,7 @@ body{padding-top:110px!important;}
   .footer-logo img{height:75px!important;}
 }
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Savings Goal Calculator | حاسبة هدف الادخار — DotForLife","url":"https://www.dotforlife.com/tools/savings-goal.html","applicationCategory":"UtilityApplication","operatingSystem":"Web"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Savings Goal Calculator | حاسبة هدف الادخار، DotForLife","url":"https://www.dotforlife.com/tools/savings-goal.html","applicationCategory":"UtilityApplication","operatingSystem":"Web"}</script>
   <link rel="alternate" hreflang="ar-SA" href="https://www.dotforlife.com/tools/savings-goal.html" />
   <link rel="alternate" hreflang="en" href="https://www.dotforlife.com/tools/savings-goal.html" />
   <link rel="alternate" hreflang="x-default" href="https://www.dotforlife.com/tools/savings-goal.html" />
@@ -323,8 +323,8 @@ body{padding-top:110px!important;}
         <span class="ar">حاسبة هدف الادخار</span>
       </h1>
       <p class="tool-desc">
-        <span class="en">Know exactly how much to save each month — or how long it will take to reach your goal. No guesswork. Just the number you need to start with.</span>
-        <span class="ar">اعرف بالضبط كم تدخر كل شهر — أو كم من الوقت تحتاج للوصول لهدفك. لا تخمين. فقط الرقم الذي تحتاجه للبدء.</span>
+        <span class="en">Know exactly how much to save each month, or how long it will take to reach your goal. No guesswork. Just the number you need to start with.</span>
+        <span class="ar">اعرف بالضبط كم تدخر كل شهر، أو كم من الوقت تحتاج للوصول لهدفك. لا تخمين. فقط الرقم الذي تحتاجه للبدء.</span>
       </p>
     </div>
   </div>
@@ -448,28 +448,28 @@ body{padding-top:110px!important;}
           </div>
           <div class="result-main" id="resultMain">
             <div class="result-eyebrow" id="resultEyebrow">Monthly saving needed</div>
-            <div class="result-big" id="resultBig">—</div>
+            <div class="result-big" id="resultBig">, </div>
             <div class="result-big-label" id="resultBigLabel">per month</div>
             <div class="result-breakdown">
               <div class="result-row">
                 <span class="result-row-label"><span class="en">Your goal</span><span class="ar">هدفك</span></span>
-                <span class="result-row-val" id="rGoal">—</span>
+                <span class="result-row-val" id="rGoal">, </span>
               </div>
               <div class="result-row">
                 <span class="result-row-label"><span class="en">Already saved</span><span class="ar">مدخراتك الحالية</span></span>
-                <span class="result-row-val" id="rCurrent">—</span>
+                <span class="result-row-val" id="rCurrent">, </span>
               </div>
               <div class="result-row">
                 <span class="result-row-label"><span class="en">Still needed</span><span class="ar">المتبقي</span></span>
-                <span class="result-row-val" id="rNeeded">—</span>
+                <span class="result-row-val" id="rNeeded">, </span>
               </div>
               <div class="result-row">
                 <span class="result-row-label"><span class="en">Total contributions</span><span class="ar">مجموع مدفوعاتك</span></span>
-                <span class="result-row-val" id="rContrib">—</span>
+                <span class="result-row-val" id="rContrib">, </span>
               </div>
               <div class="result-row">
                 <span class="result-row-label"><span class="en">Growth from returns</span><span class="ar">نمو من العوائد</span></span>
-                <span class="result-row-val highlight" id="rGrowth">—</span>
+                <span class="result-row-val highlight" id="rGrowth">, </span>
               </div>
             </div>
             <div class="growth-bar-wrap">
@@ -496,19 +496,19 @@ body{padding-top:110px!important;}
         <span class="ar">كيف تعمل الحسابة</span>
       </h2>
       <p style="font-size:14px;color:var(--text-2);line-height:1.7;max-width:560px;margin:0 0 24px;">
-        <span class="en">Two modes — find your monthly target, or discover your timeline. Both account for compound growth when a return rate is set.</span>
-        <span class="ar">وضعان — اعرف هدفك الشهري، أو اكتشف مدتك الزمنية. كلاهما يحسب النمو المركب عند تحديد معدل العائد.</span>
+        <span class="en">Two modes, find your monthly target, or discover your timeline. Both account for compound growth when a return rate is set.</span>
+        <span class="ar">وضعان، اعرف هدفك الشهري، أو اكتشف مدتك الزمنية. كلاهما يحسب النمو المركب عند تحديد معدل العائد.</span>
       </p>
       <div class="how-grid">
         <div class="how-card">
           <div class="how-num"><span class="en">Mode 01</span><span class="ar">الوضع 01</span></div>
           <div class="how-title"><span class="en">Monthly target</span><span class="ar">الهدف الشهري</span></div>
-          <div class="how-body"><span class="en">Given your goal and a deadline, we find the exact monthly amount using compound interest formula — so you never over-save or fall short.</span><span class="ar">بناءً على هدفك وموعدك النهائي، نجد المبلغ الشهري الدقيق باستخدام صيغة الفائدة المركبة.</span></div>
+          <div class="how-body"><span class="en">Given your goal and a deadline, we find the exact monthly amount using compound interest formula, so you never over-save or fall short.</span><span class="ar">بناءً على هدفك وموعدك النهائي، نجد المبلغ الشهري الدقيق باستخدام صيغة الفائدة المركبة.</span></div>
         </div>
         <div class="how-card">
           <div class="how-num"><span class="en">Mode 02</span><span class="ar">الوضع 02</span></div>
           <div class="how-title"><span class="en">Timeline finder</span><span class="ar">إيجاد المدة</span></div>
-          <div class="how-body"><span class="en">Already saving a fixed amount? We calculate how many months until you reach your goal — including compounding returns on what you save.</span><span class="ar">تدخر مبلغاً ثابتاً؟ نحسب عدد الأشهر حتى تصل لهدفك مع حساب عوائد مركبة.</span></div>
+          <div class="how-body"><span class="en">Already saving a fixed amount? We calculate how many months until you reach your goal, including compounding returns on what you save.</span><span class="ar">تدخر مبلغاً ثابتاً؟ نحسب عدد الأشهر حتى تصل لهدفك مع حساب عوائد مركبة.</span></div>
         </div>
         <div class="how-card">
           <div class="how-num"><span class="en">Mode 03</span><span class="ar">الوضع 03</span></div>
@@ -580,7 +580,7 @@ body{padding-top:110px!important;}
     </div>
     <hr class="footer-divider">
     <div class="footer-bottom">
-      <span>© 2025 DOTFORLIFE — <span class="en">Free for families, always.</span><span class="ar">مجاني للعائلات، دائماً.</span></span>
+      <span>© 2025 DOTFORLIFE, <span class="en">Free for families, always.</span><span class="ar">مجاني للعائلات، دائماً.</span></span>
       <div class="footer-bottom-links">
         <a href="../privacy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a>
         <a href="../privacy-policy.html"><span class="en">Privacy Policy</span><span class="ar">سياسة الخصوصية</span></a>
@@ -686,7 +686,7 @@ function calculate() {
     var tipEl = document.getElementById('resultTip');
     var startEarly = noteLang
       ? '<strong>نصيحة:</strong> البدء اليوم بدلاً من تأجيل 6 أشهر يوفر عليك فارقاً ملحوظاً بسبب التراكم المركب.'
-      : '<strong>Tip:</strong> Starting today vs. delaying 6 months makes a significant difference due to compound growth — the earlier you start, the less you actually need to save per month.';
+      : '<strong>Tip:</strong> Starting today vs. delaying 6 months makes a significant difference due to compound growth, the earlier you start, the less you actually need to save per month.';
     tipEl.innerHTML = startEarly;
     tipEl.style.display = '';
   }
@@ -698,7 +698,7 @@ function calculate() {
 /* Enter key triggers calculate */
 document.addEventListener('keydown', function(e){ if(e.key==='Enter') calculate(); });
 
-/* Auto-calculate on load — pre-fill defaults so result panel is never empty */
+/* Auto-calculate on load, pre-fill defaults so result panel is never empty */
 document.addEventListener('DOMContentLoaded', function(){
   var g = document.getElementById('goalAmount');
   var m = document.getElementById('targetMonths');

@@ -32,14 +32,14 @@
 
   <script>(function(){var p=new URLSearchParams(location.search),gd=(function(){try{var z=(Intl.DateTimeFormat().resolvedOptions().timeZone||"");return /Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test(z)?"ar":"en";}catch(e){return "ar";}})(),l=p.get("lang")||localStorage.getItem("dfl-lang")||gd,t=p.get("theme")||localStorage.getItem("dfl-theme")||"light",h=document.documentElement;h.setAttribute("data-theme",t);h.setAttribute("data-lang",l);h.setAttribute("lang",l);h.setAttribute("dir",l==="ar"?"rtl":"ltr");if(p.get("lang"))localStorage.setItem("dfl-lang",l);if(p.get("theme"))localStorage.setItem("dfl-theme",t);})()</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Calorie Calculator — BMR & TDEE 2025 | DotForLife</title>
+<title>Calorie Calculator, BMR & TDEE 2025 | DotForLife</title>
 <meta name="description" content="Calculate your daily calorie needs using the Mifflin-St Jeor formula. Get BMR, TDEE, and personalized calorie targets for weight loss, maintenance, or muscle gain. Arabic & English.">
 <link rel="canonical" href="https://www.dotforlife.com/tools/calorie-calculator">
   <link rel="alternate" hreflang="ar-SA" href="https://www.dotforlife.com/tools/calorie-calculator" />
   <link rel="alternate" hreflang="en" href="https://www.dotforlife.com/tools/calorie-calculator" />
   <link rel="alternate" hreflang="x-default" href="https://www.dotforlife.com/tools/calorie-calculator" />
 <meta property="og:site_name" content="DOTFORLIFE" />
-  <meta property="og:title" content="Calorie Calculator — BMR & TDEE | DotForLife">
+  <meta property="og:title" content="Calorie Calculator, BMR & TDEE | DotForLife">
 <meta property="og:description" content="Find your exact daily calorie needs with 5 activity levels and 3 goal options including macro breakdown.">
 <meta property="og:image" content="https://dotforlife.com/og/health.jpg" />
   <meta property="og:url" content="https://dotforlife.com/tools/calorie-calculator" />
@@ -104,7 +104,7 @@
 }
 </script>
 
-<link rel="stylesheet" href="/styles/global.css?v=15c5d6b6"/>
+<link rel="stylesheet" href="/styles/global.css?v=c2f7b17a"/>
 <link rel="stylesheet" href="/styles/home.css?v=a1ad0f31">
 <link rel="stylesheet" href="/styles/pages/tools_calorie-calculator.css?v=c9a72092">
 <!-- DFL Analytics v1 -->
@@ -370,7 +370,7 @@ body{padding-top:110px!important;}
     <div class="calc-card reveal">
       <div class="calc-header">
         <h2>🔥 <span class="en">Your Calorie Calculator</span><span class="ar">حاسبة سعراتك الحرارية</span></h2>
-        <p><span class="en">Uses Mifflin-St Jeor equation — the most accurate BMR formula for most people</span><span class="ar">تستخدم معادلة ميفلين-سانت جيور — المعادلة الأكثر دقة لحساب معدل الحرق الأساسي</span></p>
+        <p><span class="en">Uses Mifflin-St Jeor equation, the most accurate BMR formula for most people</span><span class="ar">تستخدم معادلة ميفلين-سانت جيور، المعادلة الأكثر دقة لحساب معدل الحرق الأساسي</span></p>
 
     <div class="tool-trust-bar">
       <div class="ttb-item"><span class="icon">📅</span> <span class="en">Updated May 2026</span><span class="ar">تحديث May 2026</span></div>
@@ -382,7 +382,7 @@ body{padding-top:110px!important;}
       <div class="calc-body">
 
         <!-- STEP 1: UNIT -->
-        <div class="calc-section-title"><span class="en">Step 1 — Units & Gender</span><span class="ar">الخطوة 1 — الوحدات والجنس</span></div>
+        <div class="calc-section-title"><span class="en">Step 1, Units & Gender</span><span class="ar">الخطوة 1, الوحدات والجنس</span></div>
         <div class="unit-toggle">
           <button class="unit-btn active" onclick="setUnit('metric',this)"><span class="en">Metric (kg/cm)</span><span class="ar">متري (كغ/سم)</span></button>
           <button class="unit-btn" onclick="setUnit('imperial',this)"><span class="en">Imperial (lb/in)</span><span class="ar">أمريكي (رطل/بوصة)</span></button>
@@ -396,7 +396,7 @@ body{padding-top:110px!important;}
         </div>
 
         <!-- STEP 2: STATS -->
-        <div class="calc-section-title"><span class="en">Step 2 — Your Stats</span><span class="ar">الخطوة 2 — بياناتك</span></div>
+        <div class="calc-section-title"><span class="en">Step 2, Your Stats</span><span class="ar">الخطوة 2, بياناتك</span></div>
         <div class="input-grid">
           <div class="input-group">
             <label id="weight-label"><span class="en">Weight (kg)</span><span class="ar">الوزن (كغ)</span></label>
@@ -422,14 +422,14 @@ body{padding-top:110px!important;}
           <div class="input-group">
             <label><span class="en">Body Fat % (optional)</span><span class="ar">نسبة الدهون (اختياري)</span></label>
             <div class="input-wrap">
-              <input type="number" id="body-fat" placeholder="—" min="0" max="60">
+              <input type="number" id="body-fat" placeholder=", " min="0" max="60">
               <span class="input-unit">%</span>
             </div>
           </div>
         </div>
 
         <!-- STEP 3: ACTIVITY -->
-        <div class="calc-section-title"><span class="en">Step 3 — Activity Level</span><span class="ar">الخطوة 3 — مستوى النشاط</span></div>
+        <div class="calc-section-title"><span class="en">Step 3, Activity Level</span><span class="ar">الخطوة 3, مستوى النشاط</span></div>
         <div class="activity-grid" id="activity-grid">
           <button class="activity-card" onclick="setActivity(1.2,this)">
             <span class="activity-emoji">🛋️</span>
@@ -459,7 +459,7 @@ body{padding-top:110px!important;}
         </div>
 
         <!-- STEP 4: GOAL -->
-        <div class="calc-section-title"><span class="en">Step 4 — Your Goal</span><span class="ar">الخطوة 4 — هدفك</span></div>
+        <div class="calc-section-title"><span class="en">Step 4, Your Goal</span><span class="ar">الخطوة 4, هدفك</span></div>
         <div class="goal-grid">
           <button class="goal-card" onclick="setGoal('loss',this)">
             <span class="goal-emoji">📉</span>
@@ -490,15 +490,15 @@ body{padding-top:110px!important;}
 
           <div class="metric-row">
             <div class="metric-card">
-              <div class="metric-value" id="r-bmr">—</div>
+              <div class="metric-value" id="r-bmr">, </div>
               <div class="metric-label"><span class="en">BMR (kcal/day)</span><span class="ar">معدل الحرق الأساسي</span></div>
             </div>
             <div class="metric-card primary">
-              <div class="metric-value" id="r-tdee">—</div>
+              <div class="metric-value" id="r-tdee">, </div>
               <div class="metric-label"><span class="en">TDEE (kcal/day)</span><span class="ar">الحرق اليومي الكلي</span></div>
             </div>
             <div class="metric-card">
-              <div class="metric-value" id="r-target">—</div>
+              <div class="metric-value" id="r-target">, </div>
               <div class="metric-label"><span class="en">Your Target (kcal/day)</span><span class="ar">هدفك اليومي</span></div>
             </div>
           </div>
@@ -508,19 +508,19 @@ body{padding-top:110px!important;}
             <div style="font-size:.85rem;font-weight:700;color:var(--text-main);margin-bottom:12px"><span class="en">📊 Calorie Targets by Goal</span><span class="ar">📊 أهداف السعرات حسب الهدف</span></div>
             <div class="targets-grid">
               <div class="target-card loss">
-                <div class="target-cals" id="t-loss">—</div>
+                <div class="target-cals" id="t-loss">, </div>
                 <div class="target-label"><span class="en">Weight Loss</span><span class="ar">خسارة الوزن</span></div>
-                <div class="target-note">~<span id="t-loss-kg">—</span> <span class="en">kg/week</span><span class="ar">كغ/أسبوع</span></div>
+                <div class="target-note">~<span id="t-loss-kg">, </span> <span class="en">kg/week</span><span class="ar">كغ/أسبوع</span></div>
               </div>
               <div class="target-card maintain">
-                <div class="target-cals" id="t-maintain">—</div>
+                <div class="target-cals" id="t-maintain">, </div>
                 <div class="target-label"><span class="en">Maintenance</span><span class="ar">الحفاظ على الوزن</span></div>
                 <div class="target-note"><span class="en">At current weight</span><span class="ar">عند وزنك الحالي</span></div>
               </div>
               <div class="target-card gain">
-                <div class="target-cals" id="t-gain">—</div>
+                <div class="target-cals" id="t-gain">, </div>
                 <div class="target-label"><span class="en">Muscle Gain</span><span class="ar">بناء العضلات</span></div>
-                <div class="target-note">~<span id="t-gain-kg">—</span> <span class="en">kg/month</span><span class="ar">كغ/شهر</span></div>
+                <div class="target-note">~<span id="t-gain-kg">, </span> <span class="en">kg/month</span><span class="ar">كغ/شهر</span></div>
               </div>
             </div>
           </div>
@@ -534,27 +534,27 @@ body{padding-top:110px!important;}
               <div class="macro-seg seg-fat" id="macro-fat-bar" style="width:25%"></div>
             </div>
             <div class="macro-bar-labels">
-              <div class="macro-label-item"><div class="ml-dot ml-protein"></div><span class="ml-grams" id="ml-protein">—g</span><span class="ml-name"><span class="en">Protein 30%</span><span class="ar">بروتين 30%</span></span></div>
-              <div class="macro-label-item"><div class="ml-dot ml-carbs"></div><span class="ml-grams" id="ml-carbs">—g</span><span class="ml-name"><span class="en">Carbs 45%</span><span class="ar">كربوهيدرات 45%</span></span></div>
-              <div class="macro-label-item"><div class="ml-dot ml-fat"></div><span class="ml-grams" id="ml-fat">—g</span><span class="ml-name"><span class="en">Fat 25%</span><span class="ar">دهون 25%</span></span></div>
+              <div class="macro-label-item"><div class="ml-dot ml-protein"></div><span class="ml-grams" id="ml-protein">, g</span><span class="ml-name"><span class="en">Protein 30%</span><span class="ar">بروتين 30%</span></span></div>
+              <div class="macro-label-item"><div class="ml-dot ml-carbs"></div><span class="ml-grams" id="ml-carbs">, g</span><span class="ml-name"><span class="en">Carbs 45%</span><span class="ar">كربوهيدرات 45%</span></span></div>
+              <div class="macro-label-item"><div class="ml-dot ml-fat"></div><span class="ml-grams" id="ml-fat">, g</span><span class="ml-name"><span class="en">Fat 25%</span><span class="ar">دهون 25%</span></span></div>
             </div>
           </div>
 
           <div class="macro-detail-grid">
             <div class="macro-detail-card protein">
-              <div class="md-grams" id="md-protein">—g</div>
+              <div class="md-grams" id="md-protein">, g</div>
               <div class="md-name"><span class="en">Protein</span><span class="ar">بروتين</span></div>
-              <div class="md-cals" id="md-protein-cals">— kcal</div>
+              <div class="md-cals" id="md-protein-cals">, kcal</div>
             </div>
             <div class="macro-detail-card carbs">
-              <div class="md-grams" id="md-carbs">—g</div>
+              <div class="md-grams" id="md-carbs">, g</div>
               <div class="md-name"><span class="en">Carbohydrates</span><span class="ar">كربوهيدرات</span></div>
-              <div class="md-cals" id="md-carbs-cals">— kcal</div>
+              <div class="md-cals" id="md-carbs-cals">, kcal</div>
             </div>
             <div class="macro-detail-card fat">
-              <div class="md-grams" id="md-fat">—g</div>
+              <div class="md-grams" id="md-fat">, g</div>
               <div class="md-name"><span class="en">Fat</span><span class="ar">دهون</span></div>
-              <div class="md-cals" id="md-fat-cals">— kcal</div>
+              <div class="md-cals" id="md-fat-cals">, kcal</div>
             </div>
           </div>
 
@@ -611,8 +611,8 @@ body{padding-top:110px!important;}
             <span class="faq-arrow">▼</span>
           </div>
           <div class="faq-a">
-            <span class="en">1 kg of fat ≈ 7,700 calories. To lose 1 kg/week, you need a 1,100 kcal/day deficit — this is aggressive and not recommended for most people. A safer target is 0.5 kg/week (500 kcal/day deficit). Never go below 1,200 kcal/day (women) or 1,500 kcal/day (men) without medical supervision.</span>
-            <span class="ar">كيلو جرام واحد من الدهون ≈ 7,700 سعرة. لخسارة 1 كغ/أسبوع تحتاج عجزاً يومياً بمقدار 1,100 سعرة — وهذا مكثف ولا يُنصح به لمعظم الناس. الهدف الأكثر أماناً هو 0.5 كغ/أسبوع (عجز 500 سعرة/يوم). لا تنخفض أبداً تحت 1,200 سعرة/يوم (نساء) أو 1,500 سعرة/يوم (رجال) دون إشراف طبي.</span>
+            <span class="en">1 kg of fat ≈ 7,700 calories. To lose 1 kg/week, you need a 1,100 kcal/day deficit, this is aggressive and not recommended for most people. A safer target is 0.5 kg/week (500 kcal/day deficit). Never go below 1,200 kcal/day (women) or 1,500 kcal/day (men) without medical supervision.</span>
+            <span class="ar">كيلو جرام واحد من الدهون ≈ 7,700 سعرة. لخسارة 1 كغ/أسبوع تحتاج عجزاً يومياً بمقدار 1,100 سعرة، وهذا مكثف ولا يُنصح به لمعظم الناس. الهدف الأكثر أماناً هو 0.5 كغ/أسبوع (عجز 500 سعرة/يوم). لا تنخفض أبداً تحت 1,200 سعرة/يوم (نساء) أو 1,500 سعرة/يوم (رجال) دون إشراف طبي.</span>
           </div>
         </div>
       </div>
@@ -732,7 +732,7 @@ body{padding-top:110px!important;}
   <div class="dfl-aff-badge">Partner</div>
   <div class="dfl-aff-icon">💪</div>
   <div class="dfl-aff-content">
-    <h4><span class="en">Online Personal Training — Arabic & English</span><span class="ar">تدريب شخصي أونلاين — عربي وإنجليزي</span></h4>
+    <h4><span class="en">Online Personal Training, Arabic & English</span><span class="ar">تدريب شخصي أونلاين، عربي وإنجليزي</span></h4>
     <p><span class="en">Certified trainers specialized for GCC clients. Custom plans with Ramadan fasting protocols.</span><span class="ar">مدربون معتمدون متخصصون لعملاء الخليج. خطط مخصصة مع بروتوكولات صيام رمضان.</span></p>
   </div>
   <a href="#" class="dfl-aff-btn" onclick="dflTrack&&dflTrack('affiliate_click',{partner:'personal_training',page:document.title})">
@@ -1239,7 +1239,7 @@ DFL.closeSearch=function(){var o=document.getElementById('dfl-so');if(o){o.class
 
 document.addEventListener('keydown',function(e){if((e.metaKey||e.ctrlKey)&&e.key==='k'){e.preventDefault();DFL.openSearch();}});
 
-/* search-btn injection disabled — inline search input used instead */
+/* search-btn injection disabled, inline search input used instead */
 
 /* ── Sticky tool CTA on mobile ── */
 (function(){
@@ -1415,7 +1415,7 @@ document.addEventListener('DOMContentLoaded',function(){
 <!-- DFL Event Tracking -->
 <script>
 (function(){
-// 1. Calculator use — fire when form submits or calculate button clicked
+// 1. Calculator use, fire when form submits or calculate button clicked
 document.querySelectorAll('form,[id*="calc"],[id*="calculate"],[onclick*="calc"],[onclick*="Calculate"]').forEach(function(el){
   el.addEventListener('submit',function(){
     window.dflTrack&&dflTrack('calculator_use',{tool_name:document.title,action:'submit'});
@@ -1457,7 +1457,7 @@ document.querySelectorAll('a[href^="http"]').forEach(function(a){
   }
 });
 
-// 6. Scroll depth — 25/50/75/100%
+// 6. Scroll depth, 25/50/75/100%
 var depths=[25,50,75,100],fired={};
 window.addEventListener('scroll',function(){
   var pct=Math.round((window.scrollY+window.innerHeight)/document.body.scrollHeight*100);
@@ -1469,7 +1469,7 @@ window.addEventListener('scroll',function(){
   });
 },{passive:true});
 
-// 7. Time on page — 30s, 60s, 120s engagement
+// 7. Time on page, 30s, 60s, 120s engagement
 [30,60,120].forEach(function(sec){
   setTimeout(function(){
     window.dflTrack&&dflTrack('time_on_page',{seconds:sec,page:document.title});
@@ -1602,7 +1602,7 @@ document.querySelectorAll('.faq-q').forEach(function(btn){
     </div>
     <hr class="footer-divider">
     <div class="footer-bottom">
-      <span>© 2025 DOTFORLIFE — <span class="en">Free for families, always.</span><span class="ar">مجاني للعائلات، دائماً.</span></span>
+      <span>© 2025 DOTFORLIFE, <span class="en">Free for families, always.</span><span class="ar">مجاني للعائلات، دائماً.</span></span>
       <div class="footer-bottom-links">
         <a href="../privacy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a>
         <a href="../privacy-policy.html"><span class="en">Privacy Policy</span><span class="ar">سياسة الخصوصية</span></a>

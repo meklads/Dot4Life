@@ -1,5 +1,5 @@
 /**
- * d4l1-capsule-engine — Main Server
+ * d4l1-capsule-engine, Main Server
  *
  * Endpoints:
  *   Public:  GET  /api/capsule/today
@@ -69,7 +69,7 @@ app.use((err, _req, res, _next) => {
 });
 
 // ─────────────────────────────────────────
-//  START — init schema first, then listen
+//  START, init schema first, then listen
 // ─────────────────────────────────────────
 const PORT = config.PORT;
 
@@ -92,13 +92,13 @@ initSchema()
 
           const existing = await getScheduledDate(dateStr);
           if (existing) {
-            console.log(`[cron] Capsule already exists for ${dateStr} — skipping`);
+            console.log(`[cron] Capsule already exists for ${dateStr}, skipping`);
             return;
           }
           const capsule = await generateOne({ date: dateStr });
           console.log(`[cron] Generated: ${capsule.title_en} (${dateStr})`);
           const submitted = await submitForReview(capsule.id);
-          console.log(`[cron] Submitted: ${submitted.id} — ${submitted.status}`);
+          console.log(`[cron] Submitted: ${submitted.id}, ${submitted.status}`);
         } catch (err) {
           console.error('[cron] Generation error:', err.message);
         }
@@ -130,14 +130,14 @@ initSchema()
       // ─── WEEKLY PREGNANCY EMAILS ───────────────────────────
       if (process.env.RESEND_API_KEY) {
         cron.schedule('0 9 * * 0', () => {
-          console.log('[cron] Sunday 09:00 UTC — sending weekly pregnancy emails');
+          console.log('[cron] Sunday 09:00 UTC, sending weekly pregnancy emails');
           sendWeeklyToAll().catch(err =>
             console.error('[cron] Mailer error:', err.message)
           );
         }, { timezone: 'UTC' });
         console.log('   Cron: weekly pregnancy emails → Sunday 09:00 UTC ✓');
       } else {
-        console.warn('   Cron: RESEND_API_KEY not set — weekly emails disabled');
+        console.warn('   Cron: RESEND_API_KEY not set, weekly emails disabled');
       }
     });
   })

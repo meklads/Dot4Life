@@ -1,6 +1,6 @@
 /**
  * Contact Form Route
- * POST /api/contact — receives form data and emails it via Resend
+ * POST /api/contact, receives form data and emails it via Resend
  */
 
 const express = require('express');
@@ -60,7 +60,7 @@ router.post('/', async (req, res) => {
       return res.status(500).json({ error: 'Failed to send email' });
     }
 
-    console.log(`[contact] ✓ Message from ${email} — id: ${result.data?.id}`);
+    console.log(`[contact] ✓ Message from ${email}, id: ${result.data?.id}`);
 
     // Send thank-you email to sender
     await getResend().emails.send({

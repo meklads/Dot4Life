@@ -1,6 +1,6 @@
 /**
- * d4l1-capsule-engine — Database Layer (PostgreSQL)
- * Uses pg Pool — works with Railway, Supabase, Neon, or any Postgres
+ * d4l1-capsule-engine, Database Layer (PostgreSQL)
+ * Uses pg Pool, works with Railway, Supabase, Neon, or any Postgres
  * Set DATABASE_URL environment variable to connect
  */
 
@@ -11,7 +11,7 @@ const config   = require('./config');
 // ─────────────────────────────────────────
 //  CONNECTION
 // ─────────────────────────────────────────
-console.log('[DB] DATABASE_URL:', process.env.DATABASE_URL ? 'SET → ' + process.env.DATABASE_URL.slice(0, 30) + '...' : 'NOT SET — using localhost fallback');
+console.log('[DB] DATABASE_URL:', process.env.DATABASE_URL ? 'SET → ' + process.env.DATABASE_URL.slice(0, 30) + '...' : 'NOT SET, using localhost fallback');
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL || 'postgresql://localhost/d4l_capsules',

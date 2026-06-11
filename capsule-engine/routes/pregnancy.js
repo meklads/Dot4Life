@@ -1,9 +1,9 @@
 /**
- * Pregnancy Journey — Subscriber Routes
+ * Pregnancy Journey, Subscriber Routes
  *
- * POST /api/pregnancy/subscribe    — register new subscriber
- * GET  /api/pregnancy/me/:token    — get personalized week data
- * GET  /api/pregnancy/unsubscribe/:token — unsubscribe
+ * POST /api/pregnancy/subscribe, register new subscriber
+ * GET  /api/pregnancy/me/:token, get personalized week data
+ * GET  /api/pregnancy/unsubscribe/:token, unsubscribe
  */
 
 const express = require('express');
@@ -33,7 +33,7 @@ router.post('/subscribe', async (req, res) => {
     const { token, isNew } = await db.pjSubscribe({ name, email, due_date, baby_name });
     const currentWeek = db.calcWeekFromDue(due_date);
 
-    // Send welcome/reminder email — always (new or returning subscriber)
+    // Send welcome/reminder email, always (new or returning subscriber)
     const sub = await db.pjGetByToken(token);
     console.log(`[pregnancy/subscribe] sending email to: ${sub?.email} isNew:${isNew}`);
     try {
@@ -157,7 +157,7 @@ router.get('/test-email', async (req, res) => {
     const result = await resend.emails.send({
       from: 'onboarding@resend.dev',
       to,
-      subject: '✅ Dot4Life — اختبار Resend',
+      subject: '✅ Dot4Life, اختبار Resend',
       html: `<p dir="rtl">هذا بريد تجريبي للتحقق من اتصال Resend بـ Railway.<br>إذا وصلك هذا الإيميل، فكل شيء يعمل ✅</p>
              <p style="color:#888;font-size:12px">Key used: ${keyPreview}</p>`,
     });

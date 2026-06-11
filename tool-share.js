@@ -1,5 +1,5 @@
 /**
- * DOTFORLIFE — universal tool share bar
+ * DOTFORLIFE, universal tool share bar
  * Auto-detects a tool's result card and injects "Share on WhatsApp" + "Save / Print"
  * buttons. Bilingual (reads <html data-lang>). Non-breaking: if no result card is
  * found, nothing is injected. The share message includes the tool name, a short
@@ -46,7 +46,7 @@
       if (en && en.textContent.trim()) return en.textContent.trim();
       return h1.textContent.replace(/\s+/g, ' ').trim();
     }
-    return (document.title || 'DOTFORLIFE').split('—')[0].split('|')[0].trim();
+    return (document.title || 'DOTFORLIFE').split('|')[0].split(',')[0].trim();
   }
 
   function resultSummary(card) {

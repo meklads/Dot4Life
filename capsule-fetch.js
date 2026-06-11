@@ -1,5 +1,5 @@
 /**
- * d4l1-capsule-engine — Frontend Fetch Layer
+ * d4l1-capsule-engine, Frontend Fetch Layer
  * Fetches today's published capsule and injects it into the index.html UI.
  * NON-BREAKING: if API fails, the static fallback remains unchanged.
  */
@@ -19,7 +19,7 @@
       if (!data.found || !data.capsule) return;
       inject(data.capsule);
     })
-    .catch(() => { /* API not reachable — static fallback stays */ });
+    .catch(() => { /* API not reachable, static fallback stays */ });
 
   function inject(c) {
     const isAr = document.documentElement.getAttribute('data-lang') === 'ar';

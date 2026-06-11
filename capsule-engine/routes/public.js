@@ -1,6 +1,6 @@
 /**
- * d4l1-capsule-engine — Public API Routes
- * Returns ONLY published capsules — no drafts, no pending
+ * d4l1-capsule-engine, Public API Routes
+ * Returns ONLY published capsules, no drafts, no pending
  */
 
 const express = require('express');
@@ -70,7 +70,7 @@ router.get('/category/:cat', async (req, res) => {
   }
 });
 
-// GET /api/capsule/all — all published capsules (for archive page)
+// GET /api/capsule/all, all published capsules (for archive page)
 router.get('/all', async (_req, res) => {
   try {
     const capsules = await db.getAllPublishedCapsules();
@@ -88,7 +88,7 @@ router.get('/all', async (_req, res) => {
 router.get('/health', (_req, res) => {
   res.json({ ok: true, system: 'd4l1-capsule-engine', ts: new Date().toISOString() });
 });
-// GET /api/capsule/:id  — fetch any single published capsule by ID
+// GET /api/capsule/:id, fetch any single published capsule by ID
 router.get('/:id', async (req, res) => {
   try {
     const cap = await db.getCapsuleById(req.params.id);

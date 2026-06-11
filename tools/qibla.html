@@ -30,20 +30,20 @@
   
   <script>(function(){var p=new URLSearchParams(location.search),gd=(function(){try{var z=(Intl.DateTimeFormat().resolvedOptions().timeZone||"");return /Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test(z)?"ar":"en";}catch(e){return "ar";}})(),l=p.get("lang")||localStorage.getItem("dfl-lang")||gd,t=p.get("theme")||localStorage.getItem("dfl-theme")||"light",h=document.documentElement;h.setAttribute("data-theme",t);h.setAttribute("data-lang",l);h.setAttribute("lang",l);h.setAttribute("dir",l==="ar"?"rtl":"ltr");if(p.get("lang"))localStorage.setItem("dfl-lang",l);if(p.get("theme"))localStorage.setItem("dfl-theme",t);})()</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Qibla direction finder — Find the direction of Mecca (Kaaba) from any GCC city. Accurate Qibla compass with distance to Mecca. Bilingual Arabic & English." />
+  <meta name="description" content="Qibla direction finder, Find the direction of Mecca (Kaaba) from any GCC city. Accurate Qibla compass with distance to Mecca. Bilingual Arabic & English." />
   <link rel="canonical" href="https://www.dotforlife.com/tools/qibla" />
   <meta property="og:site_name" content="DOTFORLIFE" />
-  <meta property="og:title" content="Qibla Direction Finder — DOTFORLIFE | اتجاه القبلة" />
+  <meta property="og:title" content="Qibla Direction Finder, DOTFORLIFE | اتجاه القبلة" />
   <meta property="og:description" content="Find the Qibla direction (towards Mecca) from your location. Interactive compass with distance to Mecca." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://dotforlife.com/tools/qibla" />
-  <title>Qibla Direction Finder — DOTFORLIFE | اتجاه القبلة</title>
+  <title>Qibla Direction Finder, DOTFORLIFE | اتجاه القبلة</title>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
   "@id": "https://dotforlife.com/tools/qibla",
-  "name": "Qibla Direction Finder — DOTFORLIFE",
+  "name": "Qibla Direction Finder, DOTFORLIFE",
   "url": "https://dotforlife.com/tools/qibla",
   "description": "Find the Qibla direction towards Mecca from any city using great-circle calculation.",
   "applicationCategory": "LifestyleApplication",
@@ -56,7 +56,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Almarai:wght@300;400;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Almarai:wght@300;400;700;800&display=swap" /></noscript>
-  <link rel="stylesheet" href="/styles/global.css?v=15c5d6b6"/>
+  <link rel="stylesheet" href="/styles/global.css?v=c2f7b17a"/>
 <link rel="stylesheet" href="/styles/home.css?v=a1ad0f31">
 <link rel="stylesheet" href="/styles/pages/tools_qibla.css?v=811e058e">
 
@@ -342,28 +342,28 @@ body{padding-top:110px!important;}
           <label class="field-label"><span class="en">City</span><span class="ar">المدينة</span></label>
           <select class="field-select" id="city-select" onchange="onCityChange()">
             <optgroup label="Saudi Arabia | المملكة العربية السعودية">
-              <option value="riyadh">Riyadh — الرياض</option>
-              <option value="jeddah">Jeddah — جدة</option>
-              <option value="mecca">Mecca — مكة المكرمة</option>
-              <option value="medina">Medina — المدينة المنورة</option>
+              <option value="riyadh">Riyadh, الرياض</option>
+              <option value="jeddah">Jeddah, جدة</option>
+              <option value="mecca">Mecca, مكة المكرمة</option>
+              <option value="medina">Medina, المدينة المنورة</option>
             </optgroup>
             <optgroup label="UAE | الإمارات">
-              <option value="dubai">Dubai — دبي</option>
-              <option value="abudhabi">Abu Dhabi — أبوظبي</option>
+              <option value="dubai">Dubai, دبي</option>
+              <option value="abudhabi">Abu Dhabi, أبوظبي</option>
             </optgroup>
             <optgroup label="Kuwait | الكويت">
-              <option value="kuwait">Kuwait City — الكويت</option>
+              <option value="kuwait">Kuwait City, الكويت</option>
             </optgroup>
             <optgroup label="Qatar | قطر">
-              <option value="doha">Doha — الدوحة</option>
+              <option value="doha">Doha, الدوحة</option>
             </optgroup>
             <optgroup label="Oman | عُمان">
-              <option value="muscat">Muscat — مسقط</option>
+              <option value="muscat">Muscat, مسقط</option>
             </optgroup>
             <optgroup label="Bahrain | البحرين">
-              <option value="manama">Manama — المنامة</option>
+              <option value="manama">Manama, المنامة</option>
             </optgroup>
-            <option value="custom">📍 My Location — موقعي</option>
+            <option value="custom">📍 My Location, موقعي</option>
           </select>
         </div>
         <button class="btn-locate" id="locate-btn" onclick="autoLocate()">
@@ -375,19 +375,19 @@ body{padding-top:110px!important;}
         <div class="stats-wrap">
           <div class="stat-row">
             <span class="stat-label"><span class="en">Qibla Direction</span><span class="ar">اتجاه القبلة</span></span>
-            <span class="stat-val stat-accent" id="stat-deg">—</span>
+            <span class="stat-val stat-accent" id="stat-deg">, </span>
           </div>
           <div class="stat-row">
             <span class="stat-label"><span class="en">Direction (Cardinal)</span><span class="ar">الاتجاه الجغرافي</span></span>
-            <span class="stat-val" id="stat-cardinal">—</span>
+            <span class="stat-val" id="stat-cardinal">, </span>
           </div>
           <div class="stat-row">
             <span class="stat-label"><span class="en">Distance to Mecca</span><span class="ar">المسافة إلى مكة</span></span>
-            <span class="stat-val stat-gold" id="stat-dist">—</span>
+            <span class="stat-val stat-gold" id="stat-dist">, </span>
           </div>
           <div class="stat-row">
             <span class="stat-label"><span class="en">Your Location</span><span class="ar">موقعك</span></span>
-            <span class="stat-val" id="stat-loc">—</span>
+            <span class="stat-val" id="stat-loc">, </span>
           </div>
         </div>
       </div>
@@ -397,8 +397,8 @@ body{padding-top:110px!important;}
         <p>
           <strong class="en">Great-Circle Method:</strong>
           <strong class="ar">طريقة الدائرة العظمى:</strong>
-          <span class="en"> The Qibla is calculated using the shortest path (great-circle) on the Earth's surface — the most accurate Islamic method.</span>
-          <span class="ar"> يُحسب اتجاه القبلة باستخدام أقصر مسار (دائرة عظمى) على سطح الأرض — وهي الطريقة الإسلامية الأدق.</span>
+          <span class="en"> The Qibla is calculated using the shortest path (great-circle) on the Earth's surface, the most accurate Islamic method.</span>
+          <span class="ar"> يُحسب اتجاه القبلة باستخدام أقصر مسار (دائرة عظمى) على سطح الأرض، وهي الطريقة الإسلامية الأدق.</span>
         </p>
       </div>
     </div>
@@ -454,7 +454,7 @@ body{padding-top:110px!important;}
           </div>
         </div>
 
-        <div class="qibla-degree" id="qibla-deg-display">—°</div>
+        <div class="qibla-degree" id="qibla-deg-display">, °</div>
         <div class="qibla-label">
           <span class="en">from North (clockwise)</span>
           <span class="ar">من الشمال (باتجاه عقارب الساعة)</span>
@@ -530,7 +530,7 @@ body{padding-top:110px!important;}
     </div>
     <hr class="footer-divider">
     <div class="footer-bottom">
-      <span>© 2025 DOTFORLIFE — <span class="en">Free for families, always.</span><span class="ar">مجاني للعائلات، دائماً.</span></span>
+      <span>© 2025 DOTFORLIFE, <span class="en">Free for families, always.</span><span class="ar">مجاني للعائلات، دائماً.</span></span>
       <div class="footer-bottom-links">
         <a href="../privacy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a>
         <a href="../privacy-policy.html"><span class="en">Privacy Policy</span><span class="ar">سياسة الخصوصية</span></a>
@@ -706,7 +706,7 @@ function startSensor() {
   window.addEventListener('deviceorientationabsolute', onOrientation, true);
   window.addEventListener('deviceorientation', onOrientation, true);
   sensorActive = true;
-  var msg = lang === 'ar' ? '✅ البوصلة الحية مفعّلة — أمسك جهازك بشكل أفقي' : '✅ Live compass active — hold device flat';
+  var msg = lang === 'ar' ? '✅ البوصلة الحية مفعّلة، أمسك جهازك بشكل أفقي' : '✅ Live compass active, hold device flat';
   document.getElementById('sensor-msg').textContent = msg;
   document.getElementById('sensor-msg-ar').textContent = msg;
   document.getElementById('sensor-btn').style.display = 'none';

@@ -1,5 +1,5 @@
 /**
- * d4l1-capsule-engine — Admin API Routes
+ * d4l1-capsule-engine, Admin API Routes
  * All routes require valid Bearer token
  */
 

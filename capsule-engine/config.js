@@ -1,5 +1,5 @@
 /**
- * d4l1-capsule-engine — Configuration
+ * d4l1-capsule-engine, Configuration
  *
  * ⚠️ SECURITY: Never hardcode passwords in this file.
  * Always set ADMIN_PASSWORD or ADMIN_PASSWORD_HASH via environment variables.
@@ -20,7 +20,7 @@ module.exports = {
   // Admin username
   ADMIN_USERNAME: process.env.ADMIN_USERNAME || 'admin',
 
-  // SHA-256 hash of admin password — MUST be set via env in production
+  // SHA-256 hash of admin password, MUST be set via env in production
   // Will be null if no env var provided, causing admin login to fail safely
   ADMIN_PASSWORD_HASH: process.env.ADMIN_PASSWORD_HASH
     || (process.env.ADMIN_PASSWORD ? sha256(process.env.ADMIN_PASSWORD) : null),

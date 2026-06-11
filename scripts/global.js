@@ -1,6 +1,6 @@
 /*!
- * DOTFORLIFE — Global Scripts
- * Runs on every page. Keep this lean — no framework deps.
+ * DOTFORLIFE, Global Scripts
+ * Runs on every page. Keep this lean, no framework deps.
  *
  * Supports both legacy IDs (theme-toggle, lang-toggle, navbar)
  * and new prefixed IDs (dfl-theme-btn, dfl-lang-btn, dfl-navbar).
@@ -48,7 +48,7 @@
       var next = h.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
       h.setAttribute('data-theme', next);
       localStorage.setItem('dfl-theme', next);
-      // Update button icon — supports emoji and short-text formats
+      // Update button icon, supports emoji and short-text formats
       if (themeBtn.textContent.trim() === '🌙' || themeBtn.textContent.trim() === '☀️') {
         themeBtn.textContent = next === 'dark' ? '☀️' : '🌙';
       }
@@ -65,7 +65,7 @@
       h.setAttribute('lang', next);
       h.setAttribute('dir', next === 'ar' ? 'rtl' : 'ltr');
       localStorage.setItem('dfl-lang', next);
-      // Update button text — toggle between language labels
+      // Update button text, toggle between language labels
       var txt = langBtn.textContent.trim();
       if (txt === 'العربية' || txt === 'English' || txt === 'AR' || txt === 'EN') {
         langBtn.textContent = next === 'ar' ? 'English' : 'العربية';
@@ -97,7 +97,7 @@
     }
   });
 
-  /* ── 7. Google Analytics 4 — auto events ────────────── */
+  /* ── 7. Google Analytics 4, auto events ────────────── */
   if (typeof gtag === 'function') {
     var pagePath = window.location.pathname;
     var pageTitle = document.title;
