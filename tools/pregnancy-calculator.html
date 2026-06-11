@@ -30,7 +30,7 @@
 </script>
 <meta charset="UTF-8"/>
 
-  <script>(function(){var p=new URLSearchParams(location.search),l=p.get("lang")||localStorage.getItem("dfl-lang")||"en",t=p.get("theme")||localStorage.getItem("dfl-theme")||"light",h=document.documentElement;h.setAttribute("data-theme",t);h.setAttribute("data-lang",l);h.setAttribute("lang",l);h.setAttribute("dir",l==="ar"?"rtl":"ltr");if(p.get("lang"))localStorage.setItem("dfl-lang",l);if(p.get("theme"))localStorage.setItem("dfl-theme",t);})()</script>
+  <script>(function(){var p=new URLSearchParams(location.search),gd=(function(){try{var z=(Intl.DateTimeFormat().resolvedOptions().timeZone||"");return /Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test(z)?"ar":"en";}catch(e){return "ar";}})(),l=p.get("lang")||localStorage.getItem("dfl-lang")||gd,t=p.get("theme")||localStorage.getItem("dfl-theme")||"light",h=document.documentElement;h.setAttribute("data-theme",t);h.setAttribute("data-lang",l);h.setAttribute("lang",l);h.setAttribute("dir",l==="ar"?"rtl":"ltr");if(p.get("lang"))localStorage.setItem("dfl-lang",l);if(p.get("theme"))localStorage.setItem("dfl-theme",t);})()</script>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
 <title>Pregnancy Due Date Calculator | حاسبة الحمل وموعد الولادة – DotForLife</title>
 <meta name="description" content="Calculate your pregnancy due date, current week, trimester, and baby development instantly. Free, accurate, bilingual Arabic/English."/>
@@ -1202,7 +1202,7 @@ function initStickyCTA(){
 /* ── INIT ────────────────────────────────────────────────────────────────── */
 (function init(){
   let lang='en',theme='light';
-  try{lang=localStorage.getItem('dfl-lang')||'en';theme=localStorage.getItem('dfl-theme')||'light'}catch(e){}
+  try{lang=localStorage.getItem('dfl-lang')||(/Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test((Intl.DateTimeFormat().resolvedOptions().timeZone)||'')?'ar':'en');theme=localStorage.getItem('dfl-theme')||'light'}catch(e){}
   document.documentElement.setAttribute('data-lang',lang);
   document.documentElement.setAttribute('data-theme',theme);
   document.getElementById('themeBtn').textContent=theme==='dark'?'☀️':'🌙';
@@ -1922,7 +1922,7 @@ document.querySelectorAll('.faq-q').forEach(function(btn){
   (function(){
     // Flash prevention
     (function(){
-      var t=localStorage.getItem('dfl-theme')||'light',l=localStorage.getItem('dfl-lang')||'en',h=document.documentElement;
+      var t=localStorage.getItem('dfl-theme')||'light',l=localStorage.getItem('dfl-lang')||(/Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test((Intl.DateTimeFormat().resolvedOptions().timeZone)||'')?'ar':'en'),h=document.documentElement;
       h.setAttribute('data-theme',t);h.setAttribute('data-lang',l);
       h.setAttribute('lang',l==='ar'?'ar':'en');h.setAttribute('dir',l==='ar'?'rtl':'ltr');
     })();

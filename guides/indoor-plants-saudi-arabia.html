@@ -1112,7 +1112,7 @@ document.querySelectorAll('.faq-q').forEach(function(btn){
   (function(){
     // Flash prevention
     (function(){
-      var t=localStorage.getItem('dfl-theme')||'light',l=localStorage.getItem('dfl-lang')||'en',h=document.documentElement;
+      var t=localStorage.getItem('dfl-theme')||'light',l=localStorage.getItem('dfl-lang')||(/Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test((Intl.DateTimeFormat().resolvedOptions().timeZone)||'')?'ar':'en'),h=document.documentElement;
       h.setAttribute('data-theme',t);h.setAttribute('data-lang',l);
       h.setAttribute('lang',l==='ar'?'ar':'en');h.setAttribute('dir',l==='ar'?'rtl':'ltr');
     })();
