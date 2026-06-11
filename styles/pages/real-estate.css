@@ -134,18 +134,31 @@ body { padding-top: 0; }
 @media(max-width:500px){.footer-cols{grid-template-columns:1fr;}.footer-bottom{flex-direction:column;text-align:center;}}
 
 /* dfl-logo-inline */
-/* Make navbar dark green to blend with hero gradient from top */
+/* Seamless green gradient navbar — matches hero top, like homepage */
 #navbar {
-  background: #054241 !important;
+  background: linear-gradient(180deg, rgba(5,66,65,1) 0%, rgba(5,66,65,0.9) 30%, rgba(5,66,65,0.5) 60%, rgba(5,66,65,0.2) 85%, rgba(5,66,65,0.08) 100%) !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
-  border-bottom-color: rgba(255,255,255,0.1) !important;
+  border-bottom: none !important;
   height: 110px !important;
 }
-[data-theme="dark"] #navbar {
-  background: #032a28 !important;
+#navbar::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: -250px !important;
+  left: 0 !important; right: 0 !important;
+  height: 250px !important;
+  background: linear-gradient(180deg, rgba(5,66,65,0.25) 0%, rgba(5,66,65,0.08) 30%, rgba(5,66,65,0.02) 60%, transparent 100%) !important;
+  pointer-events: none !important;
+  z-index: -1 !important;
 }
-/* Light text on dark green navbar */
+[data-theme="dark"] #navbar {
+  background: linear-gradient(180deg, rgba(3,42,40,1) 0%, rgba(3,42,40,0.9) 30%, rgba(3,42,40,0.5) 60%, rgba(3,42,40,0.2) 85%, rgba(3,42,40,0.08) 100%) !important;
+}
+[data-theme="dark"] #navbar::after {
+  background: linear-gradient(180deg, rgba(3,42,40,0.25) 0%, rgba(3,42,40,0.08) 30%, rgba(3,42,40,0.02) 60%, transparent 100%) !important;
+}
+/* Light text on green navbar */
 .nav-links a {
   color: rgba(255,255,255,0.85) !important;
 }
@@ -164,6 +177,14 @@ body { padding-top: 0; }
 .nav-btn:hover {
   color: #fff !important;
   border-color: rgba(255,255,255,0.5) !important;
+}
+/* Sub-nav: remove fixed positioning so it doesn't block the hero gradient */
+#sub-nav {
+  position: relative !important;
+  top: auto !important;
+}
+[data-theme="dark"] #sub-nav {
+  background: rgba(22,20,18,0.97) !important;
 }
 .navbar-unified{height:110px!important;}
 .nav-inner,.navbar-inner,.navbar-inner-unified{height:110px!important;}
