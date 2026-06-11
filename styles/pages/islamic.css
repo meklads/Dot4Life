@@ -160,7 +160,38 @@ body { padding-top: 0; }
 @media(max-width:500px){.footer-cols{grid-template-columns:1fr;}.footer-bottom{flex-direction:column;text-align:center;}}
 
 /* dfl-logo-inline */
-#navbar,.navbar-unified{height:110px!important;}
+/* Make navbar dark green to blend with hero gradient from top */
+#navbar {
+  background: #054241 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-bottom-color: rgba(255,255,255,0.1) !important;
+  height: 110px !important;
+}
+[data-theme="dark"] #navbar {
+  background: #032a28 !important;
+}
+/* Light text on dark green navbar */
+.nav-links a {
+  color: rgba(255,255,255,0.85) !important;
+}
+.nav-links a:hover {
+  color: #fff !important;
+  background: rgba(255,255,255,0.12) !important;
+}
+.nav-links a.active {
+  color: #fff !important;
+  background: rgba(255,255,255,0.15) !important;
+}
+.nav-btn {
+  color: rgba(255,255,255,0.85) !important;
+  border-color: rgba(255,255,255,0.25) !important;
+}
+.nav-btn:hover {
+  color: #fff !important;
+  border-color: rgba(255,255,255,0.5) !important;
+}
+.navbar-unified{height:110px!important;}
 .nav-inner,.navbar-inner,.navbar-inner-unified{height:110px!important;}
 .nav-logo img,.dfl-nav-logo img{height:100px!important;width:auto!important;max-width:none!important;object-fit:contain;display:block!important;}
 #dfl-navbar{min-height:110px!important;height:110px!important;}
