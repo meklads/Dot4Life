@@ -912,8 +912,19 @@ html, body { overflow-x: hidden; max-width: 100%; }
   min-height: 55vh !important;
 }
 .category-page .hero-inner {
-  padding-top: clamp(9rem, 12vw, 12rem) !important;
-  padding-bottom: clamp(2rem, 4vw, 4rem) !important;
+  max-width: 1280px !important;
+  margin: 0 auto !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: clamp(3rem, 6vw, 7rem) !important;
+  align-items: center !important;
+  padding: clamp(9rem, 12vw, 12rem) clamp(1.5rem, 4vw, 4rem) clamp(2rem, 4vw, 4rem) !important;
+}
+@media (max-width: 768px) {
+  .category-page .hero-inner {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+    padding: 7rem 24px 2.5rem !important;
+  }
 }
 
 /* Hero inner grid */
