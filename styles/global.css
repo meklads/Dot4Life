@@ -1163,20 +1163,31 @@ html, body { overflow-x: hidden; max-width: 100%; }
 .category-page #sub-nav + * { margin-top: 2.5rem; }
 
 
-/* Category pages: clean centered sub-nav with light pill buttons (no border lines) */
-.category-page #sub-nav { border-top: none !important; border-bottom: none !important; box-shadow: none !important; }
-.category-page .sub-nav-inner { justify-content: center; }
-.category-page .sub-nav-inner a {
-  background: rgba(0,0,0,.04);
-  border-radius: 999px;
-  color: var(--text-2, #5C534A);
-  font-weight: 500;
-  transition: color .2s ease, background .2s ease;
+/* Category pages: elegant sub-nav band — light green, framed by two thin lines, plain links */
+.category-page #sub-nav {
+  background: #e8f3ef !important;
+  border-top: 1px solid rgba(5,66,65,.16) !important;
+  border-bottom: 1px solid rgba(5,66,65,.16) !important;
+  box-shadow: none !important;
 }
-.category-page .sub-nav-inner a:hover { background: rgba(5,66,65,.10); color: #054241; }
-[data-theme="dark"] .category-page .sub-nav-inner a { background: rgba(255,255,255,.06); }
-[data-theme="dark"] .category-page .sub-nav-inner a:hover { background: rgba(107,191,184,.14); color: #8fd4cc; }
+.category-page .sub-nav-inner { justify-content: center; gap: 10px; }
+.category-page .sub-nav-inner a {
+  background: transparent !important;
+  border-radius: 0;
+  color: #054241;
+  font-weight: 600;
+  font-size: .92rem;
+  transition: color .2s ease;
+}
+.category-page .sub-nav-inner a:hover { background: transparent !important; color: #fd781c; }
+[data-theme="dark"] .category-page #sub-nav { background: rgba(5,66,65,.40) !important; border-top-color: rgba(255,255,255,.12) !important; border-bottom-color: rgba(255,255,255,.12) !important; }
+[data-theme="dark"] .category-page .sub-nav-inner a { color: #8fd4cc; }
+[data-theme="dark"] .category-page .sub-nav-inner a:hover { color: #fd781c; }
 @media (max-width: 768px) { .category-page .sub-nav-inner { justify-content: flex-start; } }
+
+/* Category pages: hide decorative rings around hero circle (they cut the gradient) */
+.category-page .hero-circle-wrap::before,
+.category-page .hero-circle-wrap::after { display: none !important; }
 
 /* Category pages: lower the sub-nav slightly from the hero */
 .category-page #sub-nav { margin-top: 1.25rem; } /* sub-nav lowered */
