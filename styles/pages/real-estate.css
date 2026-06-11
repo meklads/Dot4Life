@@ -178,13 +178,27 @@ body { padding-top: 65px; }
   color: #fff !important;
   border-color: rgba(255,255,255,0.5) !important;
 }
-/* Sub-nav: remove fixed positioning so it doesn't block the hero gradient */
+/* Sub-nav: transparent so hero gradient shows through */
 #sub-nav {
   position: relative !important;
   top: auto !important;
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-bottom: none !important;
 }
 [data-theme="dark"] #sub-nav {
-  background: rgba(22,20,18,0.97) !important;
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-bottom: none !important;
+}
+.sub-nav-inner a {
+  color: rgba(255,255,255,0.85) !important;
+}
+.sub-nav-inner a:hover {
+  background: rgba(255,255,255,0.12) !important;
+  color: #fff !important;
 }
 .navbar-unified{height:65px!important;}
 .nav-inner,.navbar-inner,.navbar-inner-unified{height:65px!important;}
