@@ -1128,3 +1128,12 @@ html, body { overflow-x: hidden; max-width: 100%; }
   .stat-item + .stat-item { border-left: none; }
   .hero-circle-wrap { width: min(240px, 64vw); }
 }
+
+/* Category pages: sub-nav sits below the hero, sticks under the navbar on scroll */
+.category-page #sub-nav {
+  position: sticky !important;
+  top: 140px !important;
+}
+@media (max-width: 768px) {
+  .category-page #sub-nav { top: 90px !important; }
+}
