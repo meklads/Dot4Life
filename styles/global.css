@@ -912,7 +912,7 @@ html, body { overflow-x: hidden; max-width: 100%; }
   min-height: 55vh !important;
 }
 .category-page .hero-inner {
-  padding-top: clamp(6rem, 9vw, 9rem) !important;
+  padding-top: clamp(9rem, 12vw, 12rem) !important;
   padding-bottom: clamp(2rem, 4vw, 4rem) !important;
 }
 
@@ -965,18 +965,18 @@ html, body { overflow-x: hidden; max-width: 100%; }
 .hero-cta-row .btn-primary {
   display: inline-flex; align-items: center; gap: .6rem;
   padding: 1rem 2.2rem;
-  background: #fd781c;
+  background: #054241;
   color: #fff;
   border-radius: 8px;
   font-size: .95rem;
   font-weight: 600;
   letter-spacing: .01em;
   transition: all .25s;
-  box-shadow: 0 4px 16px rgba(253,120,28,.25);
+  box-shadow: 0 4px 16px rgba(5,66,65,.22);
   border: none;
   text-decoration: none;
 }
-.hero-cta-row .btn-primary:hover { background: #054241; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(5,66,65,.35); }
+.hero-cta-row .btn-primary:hover { background: #fd781c; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(253,120,28,.32); }
 .hero-cta-row .btn-outline {
   display: inline-flex; align-items: center; gap: .6rem;
   padding: 1rem 2.2rem;
@@ -1161,3 +1161,9 @@ html, body { overflow-x: hidden; max-width: 100%; }
 
 /* Category pages: breathing room between sticky sub-nav and the tools section */
 .category-page #sub-nav + * { margin-top: 2.5rem; }
+
+
+/* Category pages: subtle distinctive sub-nav */
+.category-page #sub-nav { border-top: 2px solid #054241; box-shadow: 0 6px 16px rgba(5,66,65,.07); }
+.category-page .sub-nav-inner a { border-radius: 8px; transition: color .2s ease, background .2s ease; }
+.category-page .sub-nav-inner a:hover { color: #054241; background: rgba(5,66,65,.06); }
