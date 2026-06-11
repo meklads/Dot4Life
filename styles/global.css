@@ -1163,7 +1163,17 @@ html, body { overflow-x: hidden; max-width: 100%; }
 .category-page #sub-nav + * { margin-top: 2.5rem; }
 
 
-/* Category pages: subtle distinctive sub-nav */
-.category-page #sub-nav { border-top: 2px solid #054241; box-shadow: 0 6px 16px rgba(5,66,65,.07); }
-.category-page .sub-nav-inner a { border-radius: 8px; transition: color .2s ease, background .2s ease; }
-.category-page .sub-nav-inner a:hover { color: #054241; background: rgba(5,66,65,.06); }
+/* Category pages: clean centered sub-nav with light pill buttons (no border lines) */
+.category-page #sub-nav { border-top: none !important; border-bottom: none !important; box-shadow: none !important; }
+.category-page .sub-nav-inner { justify-content: center; }
+.category-page .sub-nav-inner a {
+  background: rgba(0,0,0,.04);
+  border-radius: 999px;
+  color: var(--text-2, #5C534A);
+  font-weight: 500;
+  transition: color .2s ease, background .2s ease;
+}
+.category-page .sub-nav-inner a:hover { background: rgba(5,66,65,.10); color: #054241; }
+[data-theme="dark"] .category-page .sub-nav-inner a { background: rgba(255,255,255,.06); }
+[data-theme="dark"] .category-page .sub-nav-inner a:hover { background: rgba(107,191,184,.14); color: #8fd4cc; }
+@media (max-width: 768px) { .category-page .sub-nav-inner { justify-content: flex-start; } }
