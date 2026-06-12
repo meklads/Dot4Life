@@ -688,7 +688,9 @@
 
     /* ── HEALTH — image LEFT (1.15fr), content RIGHT (1fr) — contained card ── */
     #health { display: grid; grid-template-columns: 1.1fr 1fr; min-height: min(400px, 60vh); border-radius: 24px; overflow: hidden; }
+    #health-dup { display: grid; grid-template-columns: 1.1fr 1fr; min-height: min(400px, 60vh); border-radius: 24px; overflow: hidden; max-width: 1380px; margin: 1.5rem auto; }
     [data-lang="ar"] #health { grid-template-columns: 1fr 1.15fr; direction: rtl; }
+    [data-lang="ar"] #health-dup { grid-template-columns: 1fr 1.15fr; direction: rtl; }
     .health-visual { position: relative; overflow: hidden; background: #1a2a28; }
     .health-visual img { width:100%;height:100%;object-fit:cover;object-position:center 40%;display:block;transition:transform 7s ease; }
     .health-visual:hover img { transform: scale(1.04); }
@@ -705,7 +707,7 @@
     .health-content .tool-card:hover { box-shadow: 0 12px 36px rgba(107,191,184,.15); }
     .health-content .btn-gold-outline { border-color: rgba(107,191,184,.4); color: #6abfb8; }
     .health-content .btn-gold-outline:hover { background: #6abfb8; color: #1a1e22; border-color: #6abfb8; }
-    @media(max-width:860px){ #health{grid-template-columns:1fr;} .health-visual{min-height:200px;order:-1;} }
+    @media(max-width:860px){ #health, #health-dup{grid-template-columns:1fr;} .health-visual{min-height:200px;order:-1;} }
 
     /* ── FINANCE — content LEFT (1fr), image RIGHT (1.15fr) — dark card ── */
     #finance { display: grid; grid-template-columns: 1fr 1.1fr; min-height: min(400px, 60vh); border-radius: 24px; overflow: hidden; }
