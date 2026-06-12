@@ -329,6 +329,203 @@
 
 
   <!-- ═══════════════════════════════════════
+       DAILY HOME — السلام يبدأ من البيت
+  ═══════════════════════════════════════ -->
+  <div class="section-label-wrap">
+    <div class="section-label-inner">
+      <span class="section-label-icon">🏡</span>
+      <span class="section-label-text"><span class="en">Daily Home</span><span class="ar">السلام يبدأ من البيت</span></span>
+    </div>
+  </div>
+  <div id="morning-moment" aria-label="Daily Home">
+    <div class="mm-grid">
+      <!-- Left: morning image -->
+      <div class="mm-visual" aria-label="Morning inspiration">
+        <img
+          src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=1200&q=85"
+          alt="Peaceful morning in nature"
+          width="1000" height="800"
+          loading="lazy"
+        />
+      </div>
+      <!-- Right: content -->
+      <div class="mm-content reveal">
+        <div class="mm-left">
+          <div class="mm-greeting">
+            <span class="mm-dot"></span>
+            <span id="mm-greeting-text"></span>
+          </div>
+          <div class="mm-line" id="mm-line"></div>
+          <div class="mm-day-label" id="mm-day-label"></div>
+        </div>
+        <div class="mm-items" id="mm-items"></div>
+        <div class="mm-capsule" id="mm-capsule-trigger" role="button" tabindex="0" aria-label="Open recipe idea">
+          <span class="mm-capsule-icon">🍽️</span>
+          <div class="mm-capsule-text">
+            <span class="mm-capsule-label"><span class="en">Today's idea</span><span class="ar">فكرة اليوم</span></span>
+            <span class="mm-capsule-title"><span class="en">Dinner in 15 minutes</span><span class="ar">عشاء في ١٥ دقيقة</span></span>
+          </div>
+          <span class="mm-capsule-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></span>
+        </div>
+        <div class="mm-subscribe">
+          <span class="mm-subscribe-icon">📮</span>
+          <div class="mm-subscribe-text">
+            <span class="mm-subscribe-label"><span class="en">Friday Letter</span><span class="ar">رسالة الجمعة</span></span>
+            <span class="mm-subscribe-desc"><span class="en">One calm email. Every Friday. No noise.</span><span class="ar">رسالة هادئة واحدة. كل جمعة. بدون ضجيج.</span></span>
+          </div>
+          <a href="#friday-letter" class="mm-subscribe-btn">
+            <span class="en">Subscribe →</span>
+            <span class="ar">اشترك ←</span>
+          </a>
+        </div>
+        <div class="mm-footer">
+          <div class="mm-footer-left">
+            <span class="mm-pulse"></span>
+            <span class="en">Refreshes tomorrow</span>
+            <span class="ar">يتجدد غداً</span>
+          </div>
+          <div class="mm-footer-right">
+            <span class="en">One moment. Every day.</span>
+            <span class="ar">لحظة واحدة. كل يوم.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       DAILY HOME — Family & Tasks
+  ═══════════════════════════════════════ -->
+  <div id="daily-home" role="main">
+
+    <!-- 3-COLUMN GRID: Family | Tasks | Reminder -->
+    <div class="dh-grid">
+
+      <!-- FAMILY TODAY -->
+      <div class="dh-card" id="dh-family-card">
+        <div class="dh-card-head">
+          <span class="dh-card-icon" aria-hidden="true">👨‍👩‍👧‍👦</span>
+          <h2 class="dh-card-title">
+            <a href="/family.html" class="dh-card-link"><span class="en">Family Today</span><span class="ar">عائلة اليوم</span></a>
+          </h2>
+          <button class="dh-add-btn" id="dh-add-member" title="Add family member" aria-label="Add family member">+</button>
+        </div>
+        <div id="dh-family-list" class="dh-family-list"></div>
+      </div>
+
+      <!-- TOP 3 TASKS -->
+      <div class="dh-card" id="dh-tasks-card">
+        <div class="dh-card-head">
+          <span class="dh-card-icon" aria-hidden="true">✅</span>
+          <h2 class="dh-card-title">
+            <a href="/tasks.html" class="dh-card-link"><span class="en">Top 3 Tasks</span><span class="ar">أهم ٣ مهام</span></a>
+          </h2>
+          <button class="dh-add-btn" id="dh-add-task" title="Add task" aria-label="Add task">+</button>
+        </div>
+        <ul id="dh-tasks-list" class="dh-tasks-list"></ul>
+      </div>
+
+      <!-- ONE REMINDER -->
+      <div class="dh-card" id="dh-reminder-card">
+        <div class="dh-card-head">
+          <span class="dh-card-icon" aria-hidden="true">🔔</span>
+          <h2 class="dh-card-title">
+            <a href="/notes.html" class="dh-card-link"><span class="en">Reminder</span><span class="ar">تذكير</span></a>
+          </h2>
+          <button class="dh-add-btn" id="dh-edit-reminder" title="Edit reminder" aria-label="Edit reminder" style="font-size:.75rem;">✏️</button>
+        </div>
+        <div id="dh-reminder-content" class="dh-reminder-content"></div>
+      </div>
+
+    </div><!-- /dh-grid -->
+  </div><!-- /daily-home -->
+
+  <!-- FAB button -->
+  <button class="dh-fab" id="dh-fab" aria-label="Quick add" aria-expanded="false">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+  </button>
+
+  <!-- FAB menu -->
+  <div class="dh-fab-menu" id="dh-fab-menu" aria-hidden="true">
+    <button class="dh-fab-item" data-action="member">
+      <span class="en">👤 Add Family Member</span><span class="ar">👤 إضافة فرد للعائلة</span>
+    </button>
+    <button class="dh-fab-item" data-action="task">
+      <span class="en">✅ Add Task</span><span class="ar">✅ إضافة مهمة</span>
+    </button>
+    <button class="dh-fab-item" data-action="reminder">
+      <span class="en">🔔 Set Reminder</span><span class="ar">🔔 تعيين تذكير</span>
+    </button>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       THIS WEEK ON DOTFORLIFE
+  ═══════════════════════════════════════ -->
+  <section id="this-week" aria-label="This Week on DotForLife">
+    <div class="tw-inner">
+      <div class="tw-header">
+        <div class="tw-eyebrow">
+          <span class="tw-dot"></span>
+          <span class="en">This Week on DotForLife</span>
+          <span class="ar">هذا الأسبوع على DotForLife</span>
+        </div>
+        <a href="/library.html" class="tw-see-all">
+          <span class="en">Explore the Library →</span>
+          <span class="ar">← استكشف المكتبة</span>
+        </a>
+      </div>
+      <div class="tw-grid">
+
+        <!-- ITEM 1: Featured Guide -->
+        <a href="/guides/ramadan-nutrition-guide.html" class="tw-card tw-card--guide">
+          <div class="tw-card-badge"><span class="en">Guide</span><span class="ar">دليل</span></div>
+          <div class="tw-card-icon">🌙</div>
+          <div class="tw-card-title">
+            <span class="en">Ramadan Nutrition Guide</span>
+            <span class="ar">دليل تغذية رمضان</span>
+          </div>
+          <div class="tw-card-desc">
+            <span class="en">Balance your eating, energy, and faith this Ramadan.</span>
+            <span class="ar">وازن بين تغذيتك وطاقتك وإيمانك في رمضان.</span>
+          </div>
+          <div class="tw-card-cta"><span class="en">Read →</span><span class="ar">← اقرأ</span></div>
+        </a>
+
+        <!-- ITEM 2: Featured Tool -->
+        <a href="/tools/zakat-calculator.html" class="tw-card tw-card--tool">
+          <div class="tw-card-badge"><span class="en">Tool</span><span class="ar">أداة</span></div>
+          <div class="tw-card-icon">☪️</div>
+          <div class="tw-card-title">
+            <span class="en">Zakat Calculator</span>
+            <span class="ar">حاسبة الزكاة</span>
+          </div>
+          <div class="tw-card-desc">
+            <span class="en">Calculate your annual Zakat on savings, gold, and investments.</span>
+            <span class="ar">احسب زكاتك السنوية على المدخرات والذهب والاستثمارات.</span>
+          </div>
+          <div class="tw-card-cta"><span class="en">Open tool →</span><span class="ar">← افتح الأداة</span></div>
+        </a>
+
+        <!-- ITEM 3: Featured Article -->
+        <a href="/blog/gcc-family-budget-2025.html" class="tw-card tw-card--article">
+          <div class="tw-card-badge"><span class="en">Article</span><span class="ar">مقالة</span></div>
+          <div class="tw-card-icon">📊</div>
+          <div class="tw-card-title">
+            <span class="en">GCC Family Budget Guide</span>
+            <span class="ar">دليل ميزانية الأسرة الخليجية</span>
+          </div>
+          <div class="tw-card-desc">
+            <span class="en">Practical budgeting strategies built for Gulf family life.</span>
+            <span class="ar">استراتيجيات ميزانية عملية مصممة لحياة الأسرة الخليجية.</span>
+          </div>
+          <div class="tw-card-cta"><span class="en">Read →</span><span class="ar">← اقرأ</span></div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
        SECTION CARDS WRAPPER
   ═══════════════════════════════════════ -->
   <div class="sections-wrap" id="categories">
@@ -637,203 +834,6 @@
   </section>
 
   </div><!-- /sections-wrap -->
-
-  <!-- ═══════════════════════════════════════
-       DAILY HOME — السلام يبدأ من البيت
-  ═══════════════════════════════════════ -->
-  <div class="section-label-wrap">
-    <div class="section-label-inner">
-      <span class="section-label-icon">🏡</span>
-      <span class="section-label-text"><span class="en">Daily Home</span><span class="ar">السلام يبدأ من البيت</span></span>
-    </div>
-  </div>
-  <div id="morning-moment" aria-label="Daily Home">
-    <div class="mm-grid">
-      <!-- Left: morning image -->
-      <div class="mm-visual" aria-label="Morning inspiration">
-        <img
-          src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=1200&q=85"
-          alt="Peaceful morning in nature"
-          width="1000" height="800"
-          loading="lazy"
-        />
-      </div>
-      <!-- Right: content -->
-      <div class="mm-content reveal">
-        <div class="mm-left">
-          <div class="mm-greeting">
-            <span class="mm-dot"></span>
-            <span id="mm-greeting-text"></span>
-          </div>
-          <div class="mm-line" id="mm-line"></div>
-          <div class="mm-day-label" id="mm-day-label"></div>
-        </div>
-        <div class="mm-items" id="mm-items"></div>
-        <div class="mm-capsule" id="mm-capsule-trigger" role="button" tabindex="0" aria-label="Open recipe idea">
-          <span class="mm-capsule-icon">🍽️</span>
-          <div class="mm-capsule-text">
-            <span class="mm-capsule-label"><span class="en">Today's idea</span><span class="ar">فكرة اليوم</span></span>
-            <span class="mm-capsule-title"><span class="en">Dinner in 15 minutes</span><span class="ar">عشاء في ١٥ دقيقة</span></span>
-          </div>
-          <span class="mm-capsule-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></span>
-        </div>
-        <div class="mm-subscribe">
-          <span class="mm-subscribe-icon">📮</span>
-          <div class="mm-subscribe-text">
-            <span class="mm-subscribe-label"><span class="en">Friday Letter</span><span class="ar">رسالة الجمعة</span></span>
-            <span class="mm-subscribe-desc"><span class="en">One calm email. Every Friday. No noise.</span><span class="ar">رسالة هادئة واحدة. كل جمعة. بدون ضجيج.</span></span>
-          </div>
-          <a href="#friday-letter" class="mm-subscribe-btn">
-            <span class="en">Subscribe →</span>
-            <span class="ar">اشترك ←</span>
-          </a>
-        </div>
-        <div class="mm-footer">
-          <div class="mm-footer-left">
-            <span class="mm-pulse"></span>
-            <span class="en">Refreshes tomorrow</span>
-            <span class="ar">يتجدد غداً</span>
-          </div>
-          <div class="mm-footer-right">
-            <span class="en">One moment. Every day.</span>
-            <span class="ar">لحظة واحدة. كل يوم.</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══════════════════════════════════════
-       DAILY HOME — Family & Tasks
-  ═══════════════════════════════════════ -->
-  <div id="daily-home" role="main">
-
-    <!-- 3-COLUMN GRID: Family | Tasks | Reminder -->
-    <div class="dh-grid">
-
-      <!-- FAMILY TODAY -->
-      <div class="dh-card" id="dh-family-card">
-        <div class="dh-card-head">
-          <span class="dh-card-icon" aria-hidden="true">👨‍👩‍👧‍👦</span>
-          <h2 class="dh-card-title">
-            <a href="/family.html" class="dh-card-link"><span class="en">Family Today</span><span class="ar">عائلة اليوم</span></a>
-          </h2>
-          <button class="dh-add-btn" id="dh-add-member" title="Add family member" aria-label="Add family member">+</button>
-        </div>
-        <div id="dh-family-list" class="dh-family-list"></div>
-      </div>
-
-      <!-- TOP 3 TASKS -->
-      <div class="dh-card" id="dh-tasks-card">
-        <div class="dh-card-head">
-          <span class="dh-card-icon" aria-hidden="true">✅</span>
-          <h2 class="dh-card-title">
-            <a href="/tasks.html" class="dh-card-link"><span class="en">Top 3 Tasks</span><span class="ar">أهم ٣ مهام</span></a>
-          </h2>
-          <button class="dh-add-btn" id="dh-add-task" title="Add task" aria-label="Add task">+</button>
-        </div>
-        <ul id="dh-tasks-list" class="dh-tasks-list"></ul>
-      </div>
-
-      <!-- ONE REMINDER -->
-      <div class="dh-card" id="dh-reminder-card">
-        <div class="dh-card-head">
-          <span class="dh-card-icon" aria-hidden="true">🔔</span>
-          <h2 class="dh-card-title">
-            <a href="/notes.html" class="dh-card-link"><span class="en">Reminder</span><span class="ar">تذكير</span></a>
-          </h2>
-          <button class="dh-add-btn" id="dh-edit-reminder" title="Edit reminder" aria-label="Edit reminder" style="font-size:.75rem;">✏️</button>
-        </div>
-        <div id="dh-reminder-content" class="dh-reminder-content"></div>
-      </div>
-
-    </div><!-- /dh-grid -->
-  </div><!-- /daily-home -->
-
-  <!-- FAB button -->
-  <button class="dh-fab" id="dh-fab" aria-label="Quick add" aria-expanded="false">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
-  </button>
-
-  <!-- FAB menu -->
-  <div class="dh-fab-menu" id="dh-fab-menu" aria-hidden="true">
-    <button class="dh-fab-item" data-action="member">
-      <span class="en">👤 Add Family Member</span><span class="ar">👤 إضافة فرد للعائلة</span>
-    </button>
-    <button class="dh-fab-item" data-action="task">
-      <span class="en">✅ Add Task</span><span class="ar">✅ إضافة مهمة</span>
-    </button>
-    <button class="dh-fab-item" data-action="reminder">
-      <span class="en">🔔 Set Reminder</span><span class="ar">🔔 تعيين تذكير</span>
-    </button>
-  </div>
-
-  <!-- ═══════════════════════════════════════
-       THIS WEEK ON DOTFORLIFE
-  ═══════════════════════════════════════ -->
-  <section id="this-week" aria-label="This Week on DotForLife">
-    <div class="tw-inner">
-      <div class="tw-header">
-        <div class="tw-eyebrow">
-          <span class="tw-dot"></span>
-          <span class="en">This Week on DotForLife</span>
-          <span class="ar">هذا الأسبوع على DotForLife</span>
-        </div>
-        <a href="/library.html" class="tw-see-all">
-          <span class="en">Explore the Library →</span>
-          <span class="ar">← استكشف المكتبة</span>
-        </a>
-      </div>
-      <div class="tw-grid">
-
-        <!-- ITEM 1: Featured Guide -->
-        <a href="/guides/ramadan-nutrition-guide.html" class="tw-card tw-card--guide">
-          <div class="tw-card-badge"><span class="en">Guide</span><span class="ar">دليل</span></div>
-          <div class="tw-card-icon">🌙</div>
-          <div class="tw-card-title">
-            <span class="en">Ramadan Nutrition Guide</span>
-            <span class="ar">دليل تغذية رمضان</span>
-          </div>
-          <div class="tw-card-desc">
-            <span class="en">Balance your eating, energy, and faith this Ramadan.</span>
-            <span class="ar">وازن بين تغذيتك وطاقتك وإيمانك في رمضان.</span>
-          </div>
-          <div class="tw-card-cta"><span class="en">Read →</span><span class="ar">← اقرأ</span></div>
-        </a>
-
-        <!-- ITEM 2: Featured Tool -->
-        <a href="/tools/zakat-calculator.html" class="tw-card tw-card--tool">
-          <div class="tw-card-badge"><span class="en">Tool</span><span class="ar">أداة</span></div>
-          <div class="tw-card-icon">☪️</div>
-          <div class="tw-card-title">
-            <span class="en">Zakat Calculator</span>
-            <span class="ar">حاسبة الزكاة</span>
-          </div>
-          <div class="tw-card-desc">
-            <span class="en">Calculate your annual Zakat on savings, gold, and investments.</span>
-            <span class="ar">احسب زكاتك السنوية على المدخرات والذهب والاستثمارات.</span>
-          </div>
-          <div class="tw-card-cta"><span class="en">Open tool →</span><span class="ar">← افتح الأداة</span></div>
-        </a>
-
-        <!-- ITEM 3: Featured Article -->
-        <a href="/blog/gcc-family-budget-2025.html" class="tw-card tw-card--article">
-          <div class="tw-card-badge"><span class="en">Article</span><span class="ar">مقالة</span></div>
-          <div class="tw-card-icon">📊</div>
-          <div class="tw-card-title">
-            <span class="en">GCC Family Budget Guide</span>
-            <span class="ar">دليل ميزانية الأسرة الخليجية</span>
-          </div>
-          <div class="tw-card-desc">
-            <span class="en">Practical budgeting strategies built for Gulf family life.</span>
-            <span class="ar">استراتيجيات ميزانية عملية مصممة لحياة الأسرة الخليجية.</span>
-          </div>
-          <div class="tw-card-cta"><span class="en">Read →</span><span class="ar">← اقرأ</span></div>
-        </a>
-
-      </div>
-    </div>
-  </section>
 
   <!-- ═══════════════════════════════════════
        NEWSLETTER / FRIDAY LETTER
