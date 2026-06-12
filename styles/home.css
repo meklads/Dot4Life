@@ -1653,21 +1653,14 @@
   padding: 0 clamp(16px, 3vw, 40px);
 }
 
-/* ── Row 1: Featured + Latest + Promo sidebar ── */
+/* ── Top row: Featured + Latest side by side ── */
 .sl-row1 {
   display: flex;
   gap: 2rem;
   margin-bottom: 2rem;
-  align-items: stretch;
-}
-.sl-row1-main {
-  flex: 1;
-  display: flex;
-  gap: 2rem;
-  min-width: 0;
 }
 
-/* Featured card (left, ~58% inside sl-row1-main) */
+/* Featured card (left, ~58%) */
 .sl-featured {
   width: calc(58% - 1rem);
   flex: none;
@@ -1722,7 +1715,7 @@
   color: var(--muted);
 }
 
-/* ── What's New (right, ~42% inside sl-row1-main) ── */
+/* ── What's New (right, ~42%) ── */
 .sl-latest {
   width: calc(42% - 1rem);
   flex: none;
@@ -1773,7 +1766,7 @@
 }
 [data-lang="ar"] .sl-latest-item-byline { font-family: var(--font-ar); }
 
-/* ── Row 2: 3 cards (flex:1) + Editors' Picks (sidebar, 17.5rem) ── */
+/* ── Row 2: Promo card (left) + 3 cards (middle) + Editors' Picks (right) ── */
 .sl-row2 {
   display: flex;
   gap: 2rem;
@@ -1978,9 +1971,8 @@
 /* ── Responsive ── */
 @media (max-width: 1120px) {
   .sl-row1 { flex-direction: column; }
-  .sl-row1-main { flex-direction: column; }
-  .sl-featured { width: 100%; }
-  .sl-latest { width: 100%; }
+  .sl-featured { flex: none; }
+  .sl-latest { flex: none; }
   .sl-row2 { flex-wrap: wrap; }
   .sl-promo { flex: 1 1 100%; }
   .sl-promo-img { height: 300px; }
@@ -1989,10 +1981,6 @@
   .sl-picks-link { max-width: 100%; }
 }
 @media (max-width: 768px) {
-  .sl-row1 { flex-direction: column; }
-  .sl-row1-main { flex-direction: column; }
-  .sl-featured { width: 100%; }
-  .sl-latest { width: 100%; }
   .sl-cards-wrap { flex-direction: column; }
   .sl-row2 { flex-direction: column; }
   .dfl-spotlight { margin: 1.5rem auto; }
