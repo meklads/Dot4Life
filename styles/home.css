@@ -688,7 +688,7 @@
 
     /* ── HEALTH — image LEFT (1.15fr), content RIGHT (1fr) — contained card ── */
     #health { display: grid; grid-template-columns: 1.1fr 1fr; min-height: min(400px, 60vh); border-radius: 24px; overflow: hidden; }
-    #health-dup { padding: 1.5rem 0; }
+    #health-dup { padding: 2rem 0 1rem; }
     /* ─── EDITORIAL SPOTLIGHT (Verywellhealth style) inside health-dup ──── */
     /* Aspect-ratio placeholder for images */
     .img-ph {
@@ -737,6 +737,10 @@
       color: var(--text-2);
       transition: transform .3s, box-shadow .3s;
     }
+    [data-lang="ar"] .sl-featured {
+      border-bottom-left-radius: 9px;
+      border-bottom-right-radius: 0;
+    }
     .sl-featured:hover { transform: translateY(-2px); box-shadow: 5px 8px 16px rgba(0,0,0,.06); }
     .sl-featured-img { position: relative; overflow: hidden; height: 260px; }
     
@@ -758,6 +762,10 @@
       min-width: 0; border-radius: 9px;
       border-bottom-left-radius: 0; box-shadow: 5px 5px 0 rgba(0,0,0,.03);
       overflow: hidden; background: var(--card-bg);
+    }
+    [data-lang="ar"] .sl-latest {
+      border-bottom-left-radius: 9px;
+      border-bottom-right-radius: 0;
     }
     .sl-latest-header {
       padding: .65rem 1rem; font-size: .75rem; font-weight: 700;
@@ -784,6 +792,11 @@
       background: #054241; text-decoration: none; color: #fff;
       display: flex; flex-direction: column; transition: transform .3s;
     }
+    [data-lang="ar"] .sl-promo {
+      border-bottom-left-radius: 9px;
+      border-bottom-right-radius: 0;
+    }
+    [data-theme="dark"] .sl-promo { background: #063a39; }
     .sl-promo:hover { transform: translateY(-2px); }
     .sl-promo-img { position: relative; overflow: hidden; height: 260px; }
     
@@ -794,12 +807,22 @@
       padding: .25rem .75rem; font-size: .75rem; font-weight: 800; text-transform: capitalize;
       color: #054241; background: #6abfb8; margin-bottom: .75rem;
     }
+    [data-lang="ar"] .sl-promo-kicker {
+      border-bottom-right-radius: 6px;
+      border-bottom-left-radius: 0;
+    }
     .sl-promo-title { font-size: 1.15rem; font-weight: 800; line-height: 1.2; color: #fff; margin-bottom: .75rem; }
     .sl-promo-btn {
       display: inline-block; padding: .5rem 1.25rem; font-size: .9rem; font-weight: 800;
       line-height: 1.15; color: #054241; background: #fff; border-radius: 9px;
       border-bottom-left-radius: 0; transition: background .2s, color .2s;
     }
+    [data-lang="ar"] .sl-promo-btn {
+      border-bottom-left-radius: 9px;
+      border-bottom-right-radius: 0;
+    }
+    [data-theme="dark"] .sl-promo-btn { color: #fff; background: #2a5a58; }
+    [data-theme="dark"] .sl-promo:hover .sl-promo-btn { background: #6abfb8; color: #054241; }
     .sl-promo:hover .sl-promo-btn { background: #6abfb8; color: #fff; }
 
     /* Row 2: 3 Cards + Editors' Picks */
@@ -810,6 +833,10 @@
       box-shadow: 5px 5px 0 rgba(0,0,0,.03); overflow: hidden;
       background: var(--card-bg); text-decoration: none; color: var(--text-2);
       transition: transform .3s, box-shadow .3s;
+    }
+    [data-lang="ar"] .sl-card {
+      border-bottom-left-radius: 9px;
+      border-bottom-right-radius: 0;
     }
     .sl-card:hover { transform: translateY(-2px); box-shadow: 5px 8px 16px rgba(0,0,0,.06); }
     .sl-card-img { position: relative; overflow: hidden; height: 136px; }
