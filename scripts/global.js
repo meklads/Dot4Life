@@ -41,22 +41,24 @@
   }
 
   /* ── 3. Theme toggle (legacy + new ID) ──────────────────── */
-  var themeBtn = document.getElementById('dfl-theme-btn') || document.getElementById('theme-toggle');
+  var themeBtn = document.getElementById('dfl-theme-btn') || document.getElementById('theme-toggle') || document.getElementById('theme-toggle-mobile');
   if (themeBtn) {
     themeBtn.addEventListener('click', function () {
       var h = document.documentElement;
       var next = h.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
       h.setAttribute('data-theme', next);
       localStorage.setItem('dfl-theme', next);
-      // Update button icon, supports emoji and short-text formats
-      if (themeBtn.textContent.trim() === '🌙' || themeBtn.textContent.trim() === '☀️') {
-        themeBtn.textContent = next === 'dark' ? '☀️' : '🌙';
-      }
+      // Update ALL theme buttons on the page
+      document.querySelectorAll('#theme-toggle, #theme-toggle-mobile, #dfl-theme-btn').forEach(function(btn) {
+        if (btn && (btn.textContent.trim() === '🌙' || btn.textContent.trim() === '☀️')) {
+          btn.textContent = next === 'dark' ? '☀️' : '🌙';
+        }
+      });
     });
   }
 
   /* ── 4. Language toggle (legacy + new ID) ───────────────── */
-  var langBtn = document.getElementById('dfl-lang-btn') || document.getElementById('lang-toggle');
+  var langBtn = document.getElementById('dfl-lang-btn') || document.getElementById('lang-toggle') || document.getElementById('lang-toggle-mobile');
   if (langBtn) {
     langBtn.addEventListener('click', function () {
       var h = document.documentElement;
@@ -65,11 +67,16 @@
       h.setAttribute('lang', next);
       h.setAttribute('dir', next === 'ar' ? 'rtl' : 'ltr');
       localStorage.setItem('dfl-lang', next);
-      // Update button text, toggle between language labels
-      var txt = langBtn.textContent.trim();
-      if (txt === 'العربية' || txt === 'English' || txt === 'AR' || txt === 'EN') {
-        langBtn.textContent = next === 'ar' ? 'English' : 'العربية';
-      }
+      // Update ALL language buttons on the page
+      document.querySelectorAll('#lang-toggle, #lang-toggle-mobile, #dfl-lang-btn').forEach(function(btn) {
+        if (btn) {
+          var txt = btn.textContent.trim();
+          if (txt === 'العربية' || txt === 'English' || txt === 'AR' || txt === 'EN' || txt === 'عربي') {
+            btn.textContent = next === 'ar' ? 'English' : 'العربية';
+          }
+        }
+      });
+      document.dispatchEvent(new Event('dfl:langchange'));
     });
   }
 
@@ -183,7 +190,41 @@
 
   }
 
-  // ── 8. Broadcast custom event for other scripts ──────────
+  // ── 8. Mobile hamburger menu toggle ──────────────────────
+  (function() {
+    var hamburger = document.getElementById('hamburger-btn');
+    var dropdown  = document.getElementById('mobile-dropdown');
+    if (!hamburger || !dropdown) return;
+
+    function toggleMenu(e) {
+      e.stopPropagation();
+      var open = dropdown.classList.toggle('open');
+      hamburger.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', open);
+      document.body.classList.toggle('menu-open', open);
+    }
+    function closeMenu() {
+      dropdown.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('menu-open');
+    }
+
+    hamburger.addEventListener('click', toggleMenu);
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeMenu();
+    });
+    dropdown.addEventListener('click', function(e) {
+      if (e.target === dropdown) closeMenu();
+    });
+
+    // Close menu when a nav link is clicked
+    dropdown.querySelectorAll('.md-links a').forEach(function(a) {
+      a.addEventListener('click', closeMenu);
+    });
+  })();
+
+  // ── 9. Broadcast custom event for other scripts ──────────
   // Let other scripts know GA4 events are ready
   document.dispatchEvent(new CustomEvent('dfl:analytics-ready', { detail: { id: 'G-3G1XPV4F0G' } }));
 

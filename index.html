@@ -71,8 +71,30 @@
       <li><a href="library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a></li>
     </ul>
     <div class="nav-controls">
+      <button class="hamburger" id="hamburger-btn" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
       <button class="nav-btn" id="lang-toggle" aria-label="Switch language"><span class="en">عربي</span><span class="ar">English</span></button>
       <button class="nav-btn" id="theme-toggle" aria-label="Toggle theme"><span class="en">🌙</span><span class="ar">🌙</span></button>
+    </div>
+  </div>
+
+  <!-- Mobile dropdown menu -->
+  <div class="mobile-dropdown" id="mobile-dropdown">
+    <div class="md-links">
+      <a href="health.html"><span class="en">Health</span><span class="ar">الصحة</span></a>
+      <a href="finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a>
+      <a href="real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a>
+      <a href="travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a>
+      <a href="islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a>
+      <a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a>
+      <a href="archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a>
+      <a href="/blog.html"><span class="en">Blog</span><span class="ar">المدونة</span></a>
+      <a href="library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a>
+    </div>
+    <div class="md-controls">
+      <button class="nav-btn" id="lang-toggle-mobile" aria-label="Switch language"><span class="en">عربي</span><span class="ar">English</span></button>
+      <button class="nav-btn" id="theme-toggle-mobile" aria-label="Toggle theme"><span class="en">🌙</span><span class="ar">🌙</span></button>
     </div>
   </div>
 </nav>
@@ -1090,9 +1112,11 @@
       }
 
       // ── Re-render on language change (keep lang-aware empty states)
-      document.getElementById('lang-toggle') && document.getElementById('lang-toggle').addEventListener('click', function(){
+      function handleLangChange() {
         setTimeout(function(){ renderFamily(); renderTasks(); renderReminder(); }, 50);
-      });
+      }
+      document.getElementById('lang-toggle') && document.getElementById('lang-toggle').addEventListener('click', handleLangChange);
+      document.getElementById('lang-toggle-mobile') && document.getElementById('lang-toggle-mobile').addEventListener('click', handleLangChange);
 
       // ── Init
       renderFamily();
@@ -1235,9 +1259,57 @@
     document.getElementById('lang-toggle') && document.getElementById('lang-toggle').addEventListener('click', function(){
       setTimeout(initMM, 50);
     });
+    document.getElementById('lang-toggle-mobile') && document.getElementById('lang-toggle-mobile').addEventListener('click', function(){
+      setTimeout(initMM, 50);
+    });
   })();
 
-  /* ── DAILY CAPSULE INTERACTION ─────────────────── */
+  /* ── MOBILE HAMBURGER MENU ─────────────────────── */
+  (function(){
+    var hamburger = document.getElementById('hamburger-btn');
+    var dropdown  = document.getElementById('mobile-dropdown');
+    var btns = ['lang-toggle', 'theme-toggle', 'lang-toggle-mobile', 'theme-toggle-mobile'];
+    if (!hamburger || !dropdown) return;
+
+    function toggleMenu(e) {
+      e.stopPropagation();
+      var open = dropdown.classList.toggle('open');
+      hamburger.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', open);
+      document.body.classList.toggle('menu-open', open);
+    }
+
+    function closeMenu() {
+      dropdown.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('menu-open');
+    }
+
+    hamburger.addEventListener('click', toggleMenu);
+
+    // Close on Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeMenu();
+    });
+
+    // Close on backdrop click
+    dropdown.addEventListener('click', function(e) {
+      if (e.target === dropdown) closeMenu();
+    });
+
+    // Sync mobile lang/theme buttons with desktop ones
+    btns.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      el.addEventListener('click', function() {
+        // Close menu after action on mobile
+        setTimeout(function() {
+          if (window.innerWidth <= 860) closeMenu();
+        }, 200);
+      });
+    });
+  })();
   (function(){
     var trigger  = document.getElementById('mm-capsule-trigger');
     var overlay  = document.getElementById('capsule-overlay');
