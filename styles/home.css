@@ -1632,3 +1632,383 @@
   
   .footer-logo img{height:60px!important;}
 }
+
+/* ════════════════════════════════════════════════
+   SPOTLIGHT — Verywellhealth-style editorial (7 blocks)
+   Positioned after the pink stats bar, before Morning Moment
+   ════════════════════════════════════════════════ */
+
+.dfl-spotlight {
+  max-width: 1280px;
+  margin: 2rem auto;
+  padding: 0 clamp(16px, 3vw, 40px);
+  display: grid;
+  grid-template:
+    "top       top       promo"
+    "cards     cards     picks"
+    / calc(58% - 10.75rem) calc(42% - 10.75rem) 17.5rem;
+  gap: 1.75rem;
+}
+[data-lang="ar"] .dfl-spotlight {
+  direction: rtl;
+}
+
+/* ── TOP ROW: Featured + Latest ── */
+.spotlight-top {
+  grid-area: top;
+  display: flex;
+  gap: 1.75rem;
+}
+.spotlight-featured {
+  flex: 1 1 58%;
+}
+.spotlight-latest {
+  flex: 1 1 42%;
+}
+
+/* ── BASE BLOCK ── */
+.block {
+  border-radius: 9px;
+  border-bottom-left-radius: 0;
+  box-shadow: 5px 5px 0 rgba(0,0,0,.03);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--card-bg);
+  color: var(--text-2);
+  text-decoration: none;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.block:hover {
+  transform: translateY(-2px);
+  box-shadow: 5px 8px 16px rgba(0,0,0,.06);
+}
+.block:hover .block__img {
+  transform: scale(1.06);
+}
+.block__media {
+  position: relative;
+  overflow: hidden;
+  max-height: 200px;
+}
+.block--large .block__media {
+  max-height: 350px;
+}
+.block__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0; left: 0;
+  object-fit: cover;
+  object-position: top;
+  transition: transform .5s ease-in-out;
+}
+.img-ph {
+  position: relative;
+  width: 100%;
+  background: var(--cream-d);
+}
+.block__content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1rem;
+}
+.block__content::before {
+  content: attr(data-kicker);
+  display: block;
+  font-size: .8125rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: -.25rem;
+  margin-bottom: .25rem;
+  font-family: var(--font-ui);
+}
+.block__title {
+  flex-grow: 1;
+  font-size: 1.125rem;
+  line-height: 1.2;
+  color: var(--text);
+  font-weight: 700;
+  margin-bottom: .5rem;
+  font-family: var(--font-ui);
+}
+.block--large .block__title {
+  font-size: clamp(1.25rem, 2.2vw, 2rem);
+  line-height: 1.15;
+}
+.block__byline {
+  font-size: .8125rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+.block__byline::after {
+  content: attr(data-byline);
+}
+
+/* ── WHAT'S NEW ── */
+.spotlight-latest {
+  box-shadow: 5px 5px 0 rgba(0,0,0,.03);
+  border-radius: 9px;
+  border-bottom-left-radius: 0;
+  overflow: hidden;
+  background: var(--card-bg);
+}
+.latest-title {
+  margin: 0;
+  padding: .875rem 1.25rem;
+  font-size: .8125rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--gold);
+  font-family: var(--font-ui);
+}
+[data-lang="ar"] .latest-title {
+  letter-spacing: 0;
+}
+.latest-list {
+  padding: .375rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.latest-item {
+  display: block;
+  padding: .75rem 0;
+  text-decoration: none;
+  border-bottom: 1px solid var(--border);
+  transition: all .15s ease;
+}
+.latest-item:last-child {
+  border-bottom: none;
+}
+.latest-item:hover .latest-item-title {
+  color: #d33b52;
+}
+.latest-item-title {
+  display: block;
+  font-size: 1rem;
+  line-height: 1.25;
+  color: var(--text);
+  font-weight: 600;
+  transition: color .15s ease;
+  font-family: var(--font-ui);
+}
+[data-lang="ar"] .latest-item-title {
+  font-family: var(--font-ar);
+}
+.latest-item-byline {
+  display: block;
+  font-size: .75rem;
+  color: var(--muted);
+  margin-top: .25rem;
+}
+[data-lang="ar"] .latest-item-byline {
+  font-family: var(--font-ar);
+}
+
+/* ── PROMO CARD ── */
+.spotlight-promo {
+  grid-area: promo;
+}
+.block--special {
+  background: #054241;
+  box-shadow: 5px 5px 0 rgba(5,66,65,.1);
+}
+.block--special .block__media {
+  max-height: 23.25rem;
+  height: 23.25rem;
+}
+.block--special .block__content {
+  padding: 1.25rem 1rem;
+  text-align: center;
+  align-items: center;
+}
+.block--special .block__content::before {
+  border-radius: 6px;
+  border-bottom-right-radius: 0;
+  display: inline-block;
+  padding: .25rem .75rem;
+  font-size: .75rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: capitalize;
+  color: #054241;
+  background: #6abfb8;
+  margin: -.5rem auto .75rem;
+  width: auto;
+}
+.block--special .block__title {
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.25rem;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+.block--special__btn {
+  display: inline-block;
+  padding: .5rem 1.25rem;
+  font-size: .9rem;
+  font-weight: 800;
+  line-height: 1.15;
+  text-align: center;
+  color: #054241;
+  background: #fff;
+  border-radius: 9px;
+  border-bottom-left-radius: 0;
+  transition: background .2s;
+}
+.block--special:hover .block--special__btn {
+  background: #6abfb8;
+  color: #fff;
+}
+
+/* ── CARDS GRID ── */
+.spotlight-cards {
+  grid-area: cards;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+.spotlight-cards .block--small .block__media {
+  max-height: 168px;
+}
+.spotlight-cards .block--small .block__title {
+  font-size: 1rem;
+  line-height: 1.2;
+}
+[data-lang="ar"] .spotlight-cards .block--small .block__title {
+  font-family: var(--font-ar);
+}
+
+/* ── EDITORS' PICKS ── */
+.spotlight-picks {
+  grid-area: picks;
+  border-radius: 9px;
+  border-bottom-left-radius: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem 1rem;
+  background: rgba(42,154,152,.08);
+}
+[data-lang="ar"] .spotlight-picks {
+  border-bottom-left-radius: 9px;
+  border-bottom-right-radius: 0;
+}
+.picks-title {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 800;
+  line-height: 1.12;
+  text-align: center;
+  color: #054241;
+  margin-bottom: .25rem;
+  font-family: var(--font-ui);
+}
+[data-lang="ar"] .picks-title {
+  font-family: var(--font-ar);
+}
+.picks-intro {
+  font-size: .85rem;
+  text-align: center;
+  color: var(--text-2);
+  margin-bottom: 1rem;
+}
+.picks-link {
+  display: block;
+  align-self: center;
+  width: 100%;
+  max-width: 218px;
+  margin-bottom: .6rem;
+  padding: .6rem 1rem;
+  font-size: .9rem;
+  font-weight: 700;
+  line-height: 1.15;
+  text-align: center;
+  text-decoration: none;
+  color: #054241;
+  background: #fff;
+  border-radius: 9px;
+  border-bottom-left-radius: 0;
+  box-shadow: 3px 3px 0 rgba(0,0,0,.03);
+  transition: all .15s ease;
+}
+[data-lang="ar"] .picks-link {
+  font-family: var(--font-ar);
+  border-bottom-left-radius: 9px;
+  border-bottom-right-radius: 0;
+}
+.picks-link:hover {
+  color: #d33b52;
+  transform: translateY(-1px);
+}
+
+/* ── DARK MODE ── */
+[data-theme="dark"] .block--special {
+  background: #032a28;
+}
+[data-theme="dark"] .block--special__btn {
+  color: #032a28;
+}
+[data-theme="dark"] .spotlight-picks {
+  background: rgba(42,154,152,.15);
+}
+[data-theme="dark"] .picks-title {
+  color: #6abfb8;
+}
+[data-theme="dark"] .picks-link {
+  color: #6abfb8;
+  background: #1a1e24;
+}
+[data-theme="dark"] .picks-link:hover {
+  color: #d33b52;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1120px) {
+  .dfl-spotlight {
+    grid-template:
+      "top       top"
+      "cards     cards"
+      "promo     picks"
+      / 1fr 1fr;
+  }
+  .spotlight-top {
+    flex-direction: column;
+  }
+  .spotlight-featured,
+  .spotlight-latest {
+    flex: 1 1 auto;
+  }
+}
+@media (max-width: 768px) {
+  .dfl-spotlight {
+    grid-template:
+      "top"
+      "promo"
+      "cards"
+      "picks"
+      / 1fr;
+    gap: 1.5rem;
+  }
+  .spotlight-cards {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .block--special .block__media {
+    max-height: 300px;
+    height: 300px;
+  }
+  .picks-link {
+    max-width: 100%;
+  }
+  .dfl-spotlight {
+    margin: 1.5rem auto;
+  }
+}
