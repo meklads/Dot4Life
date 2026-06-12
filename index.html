@@ -147,64 +147,6 @@
     </div>
   </div>
   <div style="height:0.5rem;"></div>
-  <!-- ═══════════════════════════════════════
-       MORNING MOMENT — تحت الشريط الوردي (مكرر)
-  ═══════════════════════════════════════ -->
-  <div id="morning-moment-dup" aria-label="Morning Moment">
-    <div class="mm-grid">
-      <!-- Left: morning image -->
-      <div class="mm-visual" aria-label="Morning inspiration">
-        <img
-          src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=1200&q=85"
-          alt="Peaceful morning in nature"
-          width="1000" height="800"
-          loading="lazy"
-        />
-      </div>
-      <!-- Right: content -->
-      <div class="mm-content reveal">
-        <div class="mm-left">
-          <div class="mm-greeting">
-            <span class="mm-dot"></span>
-            <span id="mm-greeting-text-dup"></span>
-          </div>
-          <div class="mm-line" id="mm-line-dup"></div>
-          <div class="mm-day-label" id="mm-day-label-dup"></div>
-        </div>
-        <div class="mm-items" id="mm-items-dup"></div>
-        <div class="mm-capsule" id="mm-capsule-trigger-dup" role="button" tabindex="0" aria-label="Open recipe idea">
-          <span class="mm-capsule-icon">🍽️</span>
-          <div class="mm-capsule-text">
-            <span class="mm-capsule-label"><span class="en">Today's idea</span><span class="ar">فكرة اليوم</span></span>
-            <span class="mm-capsule-title"><span class="en">Dinner in 15 minutes</span><span class="ar">عشاء في ١٥ دقيقة</span></span>
-          </div>
-          <span class="mm-capsule-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></span>
-        </div>
-        <div class="mm-subscribe">
-          <span class="mm-subscribe-icon">📮</span>
-          <div class="mm-subscribe-text">
-            <span class="mm-subscribe-label"><span class="en">Friday Letter</span><span class="ar">رسالة الجمعة</span></span>
-            <span class="mm-subscribe-desc"><span class="en">One calm email. Every Friday. No noise.</span><span class="ar">رسالة هادئة واحدة. كل جمعة. بدون ضجيج.</span></span>
-          </div>
-          <a href="#friday-letter" class="mm-subscribe-btn">
-            <span class="en">Subscribe →</span>
-            <span class="ar">اشترك ←</span>
-          </a>
-        </div>
-        <div class="mm-footer">
-          <div class="mm-footer-left">
-            <span class="mm-pulse"></span>
-            <span class="en">Refreshes tomorrow</span>
-            <span class="ar">يتجدد غداً</span>
-          </div>
-          <div class="mm-footer-right">
-            <span class="en">One moment. Every day.</span>
-            <span class="ar">لحظة واحدة. كل يوم.</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- ═══════════════════════════════════════
        MORNING MOMENT
@@ -1219,16 +1161,23 @@
       return "تصبح على خير";
     }
 
-    function populateMM(greetId, lineId, dayId, itemsId, greeting, line, dayName, items){
-      var greetEl = document.getElementById(greetId);
-      var lineEl  = document.getElementById(lineId);
-      var dayEl   = document.getElementById(dayId);
-      var itemsEl = document.getElementById(itemsId);
+    function initMM(){
+      var lang = document.documentElement.getAttribute('data-lang') || 'en';
+      var day  = new Date().getDay();
+      var m    = moments[day][lang];
+      var isAr = lang === 'ar';
+
+      var greetEl = document.getElementById('mm-greeting-text');
+      var lineEl  = document.getElementById('mm-line');
+      var dayEl   = document.getElementById('mm-day-label');
+      var itemsEl = document.getElementById('mm-items');
       if(!greetEl) return;
-      greetEl.textContent = greeting;
-      lineEl.textContent  = line;
-      dayEl.textContent   = dayName;
-      itemsEl.innerHTML = items.map(function(it){
+
+      greetEl.textContent = isAr ? greetingAr() : greetingEn();
+      lineEl.textContent  = m.line;
+      dayEl.textContent   = isAr ? dayNamesAr[day] : dayNamesEn[day];
+
+      itemsEl.innerHTML = m.items.map(function(it){
         return '<div class="mm-item">'
           + '<span class="mm-icon">'+it.icon+'</span>'
           + '<div style="flex:1">'
@@ -1236,21 +1185,6 @@
           + '</div>'
           + '</div>';
       }).join('');
-    }
-
-    function initMM(){
-      var lang = document.documentElement.getAttribute('data-lang') || 'en';
-      var day  = new Date().getDay();
-      var m    = moments[day][lang];
-      var isAr = lang === 'ar';
-
-      var greeting = isAr ? greetingAr() : greetingEn();
-      var line     = m.line;
-      var dayName  = isAr ? dayNamesAr[day] : dayNamesEn[day];
-      var items    = m.items;
-
-      populateMM('mm-greeting-text', 'mm-line', 'mm-day-label', 'mm-items', greeting, line, dayName, items);
-      populateMM('mm-greeting-text-dup', 'mm-line-dup', 'mm-day-label-dup', 'mm-items-dup', greeting, line, dayName, items);
     }
 
     initMM();
