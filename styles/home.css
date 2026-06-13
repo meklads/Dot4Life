@@ -2050,15 +2050,15 @@
   background: #fcfcfc;
 }
 
-/* ── visual (image area, fixed 120×120 square) ── */
+/* ── visual (image area, fixed 110×110 square) ── */
 .dc-item-visual {
   flex-shrink: 0 !important;
-  width: 120px !important;
-  height: 120px !important;
-  min-width: 120px !important;
-  min-height: 120px !important;
-  max-width: 120px !important;
-  max-height: 120px !important;
+  width: 110px !important;
+  height: 110px !important;
+  min-width: 110px !important;
+  min-height: 110px !important;
+  max-width: 110px !important;
+  max-height: 110px !important;
   border-radius: 8px;
   overflow: hidden !important;
   position: relative;
@@ -2067,7 +2067,7 @@
 
 
 
-/* split VS images side by side within the 120×120 box */
+/* split VS images side by side within the 110×110 box */
 .dc-item-split {
   display: flex;
   width: 100%;
@@ -2094,7 +2094,7 @@
 }
 
 .dc-item-single img {
-  width: 50% !important;
+  width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
   display: block !important;
@@ -2198,88 +2198,80 @@
   color: var(--text, #1a1a1a);
 }
 
-/* ── sidebar promotional cards ── */
-.dc-side-card {
-  border: 1px solid var(--border, #e8e8e8);
-  border-radius: 11px;
-  background: #fafaf8;
-  overflow: hidden;
-  transition: border-color 0.2s, box-shadow 0.2s;
-  display: flex;
-  flex-direction: column;
-}
-
-.dc-side-card:hover {
-  border-color: var(--gold, #b8963e);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.05);
-}
-
-/* image area at top of card */
-.dc-side-card-img {
-  width: 120px;
-  height: 120px;
-  min-width: 120px;
-  min-height: 120px;
-  overflow: hidden;
-  background: #e8e2d8;
-  border-radius: 8px;
-  margin: 16px auto 0;
-}
-
-.dc-side-card-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.35s ease;
-}
-
-.dc-side-card:hover .dc-side-card-img img {
-  transform: scale(1.04);
-}
-
-/* body text */
-.dc-side-card-body {
-  padding: 12px 14px 14px;
+/* ── sidebar ad placeholders ── */
+.dc-side-ad {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  padding: 24px 18px;
+  border: 1px solid var(--border, #e8e8e8);
+  border-radius: 11px;
+  background: #fafaf8;
+  text-decoration: none;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
 }
 
-.dc-side-card-title {
+.dc-side-ad:hover {
+  border-color: var(--gold, #b8963e);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+  background: #fcfcf7;
+}
+
+/* ad icon */
+.dc-side-ad-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(184, 150, 62, 0.12);
+  color: var(--gold, #b8963e);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  flex-shrink: 0;
+}
+
+.dc-side-ad-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+/* ad title */
+.dc-side-ad-title {
   font-family: var(--font-serif);
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
   color: var(--text, #1a1a1a);
-  margin-bottom: 4px;
+  margin-bottom: 6px;
+  line-height: 1.3;
 }
 
-.dc-side-card-desc {
+/* ad description */
+.dc-side-ad-desc {
   font-family: var(--font-ui);
-  font-size: 11px;
-  line-height: 1.45;
+  font-size: 12px;
+  line-height: 1.5;
   color: var(--text-2, #777);
-  margin-bottom: 10px;
+  margin-bottom: 14px;
 }
 
-.dc-side-card-cta {
+/* ad CTA */
+.dc-side-ad-cta {
   display: inline-flex;
   align-items: center;
   gap: 4px;
   font-family: var(--font-ui);
   font-size: 12px;
   font-weight: 600;
-  color: #fff;
-  background: var(--gold, #b8963e);
-  padding: 6px 16px;
-  border-radius: 6px;
+  color: var(--gold, #b8963e);
+  padding: 4px 0;
   text-decoration: none;
-  transition: background 0.2s;
+  transition: gap 0.2s;
 }
 
-.dc-side-card-cta:hover {
-  background: #a57e2e;
+.dc-side-ad:hover .dc-side-ad-cta {
+  gap: 8px;
 }
 
 /* ── scroll reveal ── */
@@ -2318,8 +2310,8 @@ html[dir="rtl"] .dc-head-label .ar,
 html[dir="rtl"] .dc-item-cat .ar,
 html[dir="rtl"] .dc-item-author .ar,
 html[dir="rtl"] .dc-item-time .ar,
-html[dir="rtl"] .dc-side-card-title .ar,
-html[dir="rtl"] .dc-side-card-desc .ar,
+html[dir="rtl"] .dc-side-ad-title .ar,
+html[dir="rtl"] .dc-side-ad-desc .ar,
 html[dir="rtl"] .dc-view-all .ar {
   font-family: var(--font-ar);
   letter-spacing: 0;
@@ -2329,7 +2321,7 @@ html[dir="rtl"] .dc-side {
   text-align: right;
 }
 
-html[dir="rtl"] .dc-side-card {
+html[dir="rtl"] .dc-side-ad {
   text-align: center;
 }
 
@@ -2354,7 +2346,7 @@ html[dir="rtl"] .dc-side-card {
     gap: 16px;
   }
 
-  .dc-side-card {
+  .dc-side-ad {
     flex: 1 1 calc(50% - 8px);
     min-width: 200px;
   }
@@ -2395,7 +2387,7 @@ html[dir="rtl"] .dc-side-card {
     font-size: 11px;
   }
 
-  .dc-side-card {
+  .dc-side-ad {
     flex: 1 1 100%;
   }
 }
