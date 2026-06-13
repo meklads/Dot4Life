@@ -50,11 +50,32 @@
       localStorage.setItem('dfl-theme', next);
       // Update ALL theme buttons on the page
       document.querySelectorAll('#theme-toggle, #theme-toggle-mobile, #dfl-theme-btn').forEach(function(btn) {
-        if (btn && (btn.textContent.trim() === '🌙' || btn.textContent.trim() === '☀️')) {
-          btn.textContent = next === 'dark' ? '☀️' : '🌙';
+        if (btn) {
+          var moon = btn.querySelector('.theme-icon-moon');
+          var sun = btn.querySelector('.theme-icon-sun');
+          if (moon && sun) {
+            moon.style.display = next === 'dark' ? 'none' : 'block';
+            sun.style.display = next === 'dark' ? 'block' : 'none';
+          }
         }
       });
     });
+
+    // Initialise theme icon visibility on page load
+    (function initThemeIcons() {
+      var h = document.documentElement;
+      var current = h.getAttribute('data-theme') || 'light';
+      document.querySelectorAll('#theme-toggle, #theme-toggle-mobile, #dfl-theme-btn').forEach(function(btn) {
+        if (btn) {
+          var moon = btn.querySelector('.theme-icon-moon');
+          var sun = btn.querySelector('.theme-icon-sun');
+          if (moon && sun) {
+            moon.style.display = current === 'dark' ? 'none' : 'block';
+            sun.style.display = current === 'dark' ? 'block' : 'none';
+          }
+        }
+      });
+    })();
   }
 
   /* ── 4. Language toggle (legacy + new ID) ───────────────── */
@@ -221,6 +242,92 @@
     // Close menu when a nav link is clicked
     dropdown.querySelectorAll('.md-links a').forEach(function(a) {
       a.addEventListener('click', closeMenu);
+    });
+  })();
+
+  /* ── 10. Back-to-top button (Medium/Verywell inspired) ─── */
+  (function() {
+    var btn = document.createElement('button');
+    btn.id = 'dfl-back-to-top';
+    btn.setAttribute('aria-label', 'Back to top');
+    btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>';
+    btn.style.cssText = 'position:fixed;bottom:24px;right:24px;z-index:999;width:44px;height:44px;border-radius:12px;border:none;background:var(--gold,#b8861a);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(12px);transition:opacity .3s,transform .3s;box-shadow:0 4px 16px rgba(0,0,0,.15);pointer-events:none;';
+    document.body.appendChild(btn);
+
+    var ticking = false;
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        requestAnimationFrame(function() {
+          if (window.scrollY > 600) {
+            btn.style.opacity = '1';
+            btn.style.transform = 'translateY(0)';
+            btn.style.pointerEvents = 'auto';
+          } else {
+            btn.style.opacity = '0';
+            btn.style.transform = 'translateY(12px)';
+            btn.style.pointerEvents = 'none';
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+
+    btn.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  })();
+
+  /* ── 11. Reading progress bar (Medium/Verywell inspired) ── */
+  (function() {
+    var bar = document.createElement('div');
+    bar.id = 'dfl-progress-bar';
+    bar.style.cssText = 'position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--gold,#b8861a),var(--gold-l,#d4a84b));z-index:9999;width:0%;transition:width .1s linear;';
+    document.body.appendChild(bar);
+
+    var ticking = false;
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        requestAnimationFrame(function() {
+          var scrollTop = window.scrollY;
+          var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          if (docHeight > 0) {
+            var pct = Math.min((scrollTop / docHeight) * 100, 100);
+            bar.style.width = pct + '%';
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  })();
+
+  /* ── 12. Scroll-aware navbar (Healthline-inspired) ────── */
+  (function() {
+    var nav = document.getElementById('navbar') || document.getElementById('dfl-navbar');
+    if (!nav) return;
+    var lastScroll = 0;
+    var ticking = false;
+
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        requestAnimationFrame(function() {
+          var currentScroll = window.scrollY;
+          if (currentScroll > 100) {
+            if (currentScroll > lastScroll) {
+              nav.style.transform = 'translateY(-100%)';
+              nav.style.transition = 'transform .3s ease';
+            } else {
+              nav.style.transform = 'translateY(0)';
+            }
+          } else {
+            nav.style.transform = 'translateY(0)';
+          }
+          lastScroll = currentScroll;
+          ticking = false;
+        });
+        ticking = true;
+      }
     });
   })();
 

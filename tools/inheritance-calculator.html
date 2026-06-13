@@ -56,8 +56,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Almarai:wght@300;400;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Almarai:wght@300;400;700;800&display=swap" /></noscript>
-  <link rel="stylesheet" href="/styles/global.css?v=74f966bd"/>
-<link rel="stylesheet" href="/styles/home.css?v=a1ad0f31">
+  <link rel="stylesheet" href="/styles/global.css?v=2ae3631"/>
+<link rel="stylesheet" href="/styles/home.css?v=2ae3631">
 <link rel="stylesheet" href="/styles/pages/tools_inheritance-calculator.css?v=8d0397ef">
 
   <!-- DFL CANONICAL SYSTEM CSS -->
@@ -285,7 +285,7 @@ body{padding-top:110px!important;}
     </ul>
     <div class="nav-controls">
       <button class="nav-btn" id="lang-toggle" aria-label="Switch language"><span class="en">عربي</span><span class="ar">English</span></button>
-      <button class="nav-btn" id="theme-toggle" aria-label="Toggle theme"><span class="en">🌙</span><span class="ar">🌙</span></button>
+      <button class="nav-btn" id="theme-toggle" aria-label="Toggle theme"><svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
     </div>
   </div>
 </nav>
@@ -819,7 +819,7 @@ function renderResults(results, blocked, estate, currency, awl, lang) {
   if (blocked.length > 0) {
     html += '<div class="blocked-section"><div class="blocked-title"><span class="en">Blocked Heirs (Hijb)</span><span class="ar">المحجوبون</span></div>';
     blocked.forEach(function(b) {
-      html += '<div class="blocked-item">❌ ' + (lang==='ar'? b.ar : b.en) + '</div>';
+      html += '<div class="blocked-item">✕ ' + (lang==='ar'? b.ar : b.en) + '</div>';
     });
     html += '</div>';
   }
@@ -835,7 +835,7 @@ function toggleTheme() {
   var t = h.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
   h.setAttribute('data-theme', t);
   localStorage.setItem('dfl-theme', t);
-  document.getElementById('theme-icon').textContent = t === 'dark' ? '☀️' : '🌙';
+  document.getElementById('theme-icon').textContent = t === 'dark' ? '<svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>' : '<svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
 }
 function toggleLang() {
   var h = document.documentElement;
@@ -847,7 +847,7 @@ function toggleLang() {
 }
 
 window.addEventListener('scroll', function(){ document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 10); }, { passive:true });
-document.getElementById('theme-icon').textContent = localStorage.getItem('dfl-theme') === 'dark' ? '☀️' : '🌙';
+document.getElementById('theme-icon').textContent = localStorage.getItem('dfl-theme') === 'dark' ? '<svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>' : '<svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
 </script>
 
   <!-- DFL CANONICAL FOOTER -->
@@ -907,7 +907,7 @@ document.getElementById('theme-icon').textContent = localStorage.getItem('dfl-th
   
 <section class="dfl-related" aria-label="Related tools and guides">
   <div class="container">
-    <div class="dfl-related-label">🔗 <span class="en">Continue Your Journey</span><span class="ar">أكمل رحلتك</span></div>
+    <div class="dfl-related-label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg> <span class="en">Continue Your Journey</span><span class="ar">أكمل رحلتك</span></div>
     <h2 class="dfl-related-title"><span class="en">Related Islamic Finance Tools</span><span class="ar">أدوات المالية الإسلامية</span></h2>
     <p class="dfl-related-sub"><span class="en">Complete your Islamic financial planning</span><span class="ar">أكمل تخطيطك المالي الإسلامي</span></p>
     <div class="dfl-related-grid">
@@ -917,17 +917,17 @@ document.getElementById('theme-icon').textContent = localStorage.getItem('dfl-th
         <div class="dfl-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
       </a>
       <a href="/tools/hijri-converter.html" class="dfl-rc">
-        <div class="dfl-rc-top"><span class="dfl-rc-icon">📅</span><div><div class="dfl-rc-name en">Hijri Calendar</div><div class="dfl-rc-name ar">التقويم الهجري</div></div></div>
+        <div class="dfl-rc-top"><span class="dfl-rc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span><div><div class="dfl-rc-name en">Hijri Calendar</div><div class="dfl-rc-name ar">التقويم الهجري</div></div></div>
         <div class="dfl-rc-desc en">Convert Hijri ↔ Gregorian</div><div class="dfl-rc-desc ar">تحويل هجري ↔ ميلادي</div>
         <div class="dfl-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
       </a>
       <a href="/tools/monthly-budget.html" class="dfl-rc">
-        <div class="dfl-rc-top"><span class="dfl-rc-icon">📊</span><div><div class="dfl-rc-name en">Monthly Budget</div><div class="dfl-rc-name ar">الميزانية الشهرية</div></div></div>
+        <div class="dfl-rc-top"><span class="dfl-rc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></span><div><div class="dfl-rc-name en">Monthly Budget</div><div class="dfl-rc-name ar">الميزانية الشهرية</div></div></div>
         <div class="dfl-rc-desc en">Track income & expenses</div><div class="dfl-rc-desc ar">تتبع الدخل والمصروف</div>
         <div class="dfl-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
       </a>
       <a href="/guides/zakat-complete-guide.html" class="dfl-rc guide">
-        <div class="dfl-rc-top"><span class="dfl-rc-icon">📖</span><div><div class="dfl-rc-name en">Zakat Complete Guide</div><div class="dfl-rc-name ar">دليل الزكاة الشامل</div></div></div>
+        <div class="dfl-rc-top"><span class="dfl-rc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/></svg></span><div><div class="dfl-rc-name en">Zakat Complete Guide</div><div class="dfl-rc-name ar">دليل الزكاة الشامل</div></div></div>
         <div class="dfl-rc-desc en">Jurisprudence & calculations</div><div class="dfl-rc-desc ar">الفقه والأحكام والحسابات</div>
         <div class="dfl-rc-cta"><span class="en">Read guide →</span><span class="ar">اقرأ الدليل ←</span></div>
       </a>
@@ -962,7 +962,7 @@ document.getElementById('theme-icon').textContent = localStorage.getItem('dfl-th
         function applyT(t){
           document.documentElement.setAttribute('data-theme',t);localStorage.setItem('dfl-theme',t);
           var en=tb.querySelector('.en'),ar=tb.querySelector('.ar');
-          if(en)en.textContent=t==='dark'?'☀️':'🌙';if(ar)ar.textContent=t==='dark'?'☀️':'🌙';
+          if(en)en.textContent=t==='dark'?'<svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>':'<svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';if(ar)ar.textContent=t==='dark'?'<svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>':'<svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
         }
         applyT(localStorage.getItem('dfl-theme')||'light');
         tb.addEventListener('click',function(){ applyT(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark'); });

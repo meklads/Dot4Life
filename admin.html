@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Dot4Life, Capsule Admin</title>
 <link rel="icon" href="/favicon.ico"/>
-<link rel="stylesheet" href="/styles/pages/admin.css?v=5d0edc06">
+<link rel="stylesheet" href="/styles/pages/admin.css?v=2ae3631">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3G1XPV4F0G"></script>
 <script>
@@ -29,7 +29,7 @@
 <div id="view-login">
   <div class="login-wrap">
     <div class="login-mark">
-      <div class="dot">🧘</div>
+      <div class="dot"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h16"/><path d="M4 14h16"/><rect x="2" y="6" width="20" height="12" rx="2"/></svg></div>
       <h1>Dot4Life Admin</h1>
       <p>Capsule Engine Control</p>
     </div>
@@ -74,7 +74,7 @@
       <button class="filter-pill"        data-f="rejected"       onclick="setFilter('rejected')">Rejected</button>
       <button class="filter-pill"        data-f="draft"          onclick="setFilter('draft')">Draft</button>
       <div class="filter-spacer"></div>
-      <button class="btn-generate" onclick="generateWeek()">📅 Generate Week</button>
+      <button class="btn-generate" onclick="generateWeek()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Generate Week</button>
       <button class="btn-bulk-approve" id="bulkApproveBtn" onclick="bulkApprove()" style="display:none">✓ Bulk Approve All</button>
       <button class="btn-refresh" onclick="load()">
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -86,7 +86,7 @@
     </div>
 
     <div style="background:var(--gold-soft);border:1px solid rgba(107,191,184,.2);border-radius:12px;padding:12px 16px;margin-bottom:16px;font-size:.78rem;color:var(--text-2);line-height:1.6;">
-      <strong>📋 النظام الجديد:</strong>
+      <strong><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg> النظام الجديد:</strong>
       1. اضغط <strong>"Generate Week"</strong> ← تولد 7 كبسولات للأسبوع القادم<br>
       2. فلتر <strong>Pending Review</strong> ← اقرأ ← اضغط <strong>"Approve & Publish"</strong> ← تنشر تلقائياً<br>
       3. أو اضغط <strong>"Bulk Approve All"</strong> ← توافق على الكل دفعة واحدة
@@ -112,12 +112,12 @@ let filter = 'all';
 let allCapsules = [];
 
 const CAT_LABELS = {
-  meals:   '🍽 Meals',
-  family:  '👨‍👩‍👧 Family',
-  wellness:'🌿 Wellness',
+  meals:   '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 2v4a3 3 0 0 1-3 3h-4a3 3 0 0 1-3-3V2"/><path d="M7 12v8a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-8"/></svg> Meals',
+  family:  '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>‍<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>‍<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> Family',
+  wellness:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 2 8 0 5.5-4.78 10-10 10Z"/></svg> Wellness',
   faith:   '☪️ Faith',
-  money:   '💰 Money',
-  living:  '🏠 Living',
+  money:   '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v12"/><path d="M8 10h4a2 2 0 0 1 0 4H8"/></svg> Money',
+  living:  '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 4l9 5.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-5h4v5h4a1 1 0 0 0 1-1v-9"/></svg> Living',
 };
 
 const STATUS_LABELS = {
@@ -217,7 +217,7 @@ async function load() {
 
   // Local fallback, show message without API
   if (token && token.startsWith('local-')) {
-    list.innerHTML = `<div class="state-empty"><div class="ico">✅</div><div class="ttl">Local Mode</div><div class="sub">You are logged in locally (API not reachable). To manage capsules, the Railway API must be running.</div></div>`;
+    list.innerHTML = `<div class="state-empty"><div class="ico">✓</div><div class="ttl">Local Mode</div><div class="sub">You are logged in locally (API not reachable). To manage capsules, the Railway API must be running.</div></div>`;
     return;
   }
 
@@ -257,7 +257,7 @@ function render(caps) {
 
   if (!caps.length) {
     list.innerHTML = `<div class="state-empty">
-      <div class="ico">${filter === 'pending_review' ? '✅' : '📭'}</div>
+      <div class="ico">${filter === 'pending_review' ? '✓' : '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9H9l-3-9H2"/></svg>'}</div>
       <div class="ttl">${filter === 'pending_review' ? 'Queue is clear' : 'Nothing here'}</div>
       <div class="sub">${filter === 'pending_review' ? 'No capsules waiting for review.' : 'Try a different filter.'}</div>
     </div>`;
@@ -286,7 +286,7 @@ function capsuleCard(c) {
     if (a === 'approve') return `<button class="btn-act btn-approve" onclick="approve('${c.id}')">✓ Approve & Publish</button>`;
     if (a === 'reject')  return `<button class="btn-act btn-reject"  onclick="toggleReject('${c.id}')">✗ Reject</button>`;
     if (a === 'edit')    return `<button class="btn-act btn-edit-open" onclick="toggleEdit('${c.id}')">✎ Edit</button>`;
-    if (a === 'publish') return `<button class="btn-act btn-publish" onclick="togglePublish('${c.id}', '${c.scheduled_date||''}')">🚀 Publish</button>`;
+    if (a === 'publish') return `<button class="btn-act btn-publish" onclick="togglePublish('${c.id}', '${c.scheduled_date||''}')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Publish</button>`;
     if (a === 'submit')  return `<button class="btn-act btn-submit"  onclick="submit('${c.id}')">↑ Submit for Review</button>`;
   }).join('');
 
@@ -295,14 +295,14 @@ function capsuleCard(c) {
   return `
 <div class="cap-card" id="card-${c.id}" data-status="${c.status}">
   <div class="cap-row">
-    <div class="cap-emoji">${c.emoji || '🌿'}</div>
+    <div class="cap-emoji">${c.emoji || '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 2 8 0 5.5-4.78 10-10 10Z"/></svg>'}</div>
     <div class="cap-info">
       <div class="cap-title">${esc(c.title_en)}</div>
       ${c.title_ar ? `<div class="cap-title-ar">${esc(c.title_ar)}</div>` : ''}
       <div class="cap-pills">
         <span class="pill pill-${c.status}">${statusLabel}</span>
         <span class="pill-cat">${catLabel}</span>
-        ${c.scheduled_date ? `<span class="pill-date">📅 ${c.scheduled_date}${c.scheduled_date === todayStr ? ' · today' : ''}</span>` : ''}
+        ${c.scheduled_date ? `<span class="pill-date"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> ${c.scheduled_date}${c.scheduled_date === todayStr ? ' · today' : ''}</span>` : ''}
         ${c.reject_reason  ? `<span class="pill-date" style="color:var(--red)">✗ ${esc(c.reject_reason)}</span>` : ''}
       </div>
     </div>
@@ -313,7 +313,7 @@ function capsuleCard(c) {
   <div id="body-${c.id}" style="display:none; padding:0 18px 14px; color:var(--muted); font-size:.83rem; line-height:1.7">
     ${c.body_en  ? `<p style="margin-bottom:6px">${esc(c.body_en)}</p>` : ''}
     ${c.body_ar  ? `<p style="direction:rtl;text-align:right;color:var(--faint)">${esc(c.body_ar)}</p>` : ''}
-    ${c.tip_en   ? `<p style="margin-top:8px;color:var(--gold);font-size:.8rem">💡 ${esc(c.tip_en)}</p>` : ''}
+    ${c.tip_en   ? `<p style="margin-top:8px;color:var(--gold);font-size:.8rem"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg> ${esc(c.tip_en)}</p>` : ''}
   </div>
 
   <!-- actions -->
@@ -348,18 +348,18 @@ function capsuleCard(c) {
       <div>
         <label class="ef-label">Category</label>
         <select class="ef-select" id="e-cat-${c.id}">
-          <option value="meals"   ${c.category==='meals'?'selected':''}>🍽 Meals</option>
-          <option value="family"  ${c.category==='family'?'selected':''}>👨‍👩‍👧 Family</option>
-          <option value="wellness"${c.category==='wellness'?'selected':''}>🌿 Wellness</option>
+          <option value="meals"   ${c.category==='meals'?'selected':''}><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 2v4a3 3 0 0 1-3 3h-4a3 3 0 0 1-3-3V2"/><path d="M7 12v8a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-8"/></svg> Meals</option>
+          <option value="family"  ${c.category==='family'?'selected':''}><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>‍<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>‍<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> Family</option>
+          <option value="wellness"${c.category==='wellness'?'selected':''}><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 2 8 0 5.5-4.78 10-10 10Z"/></svg> Wellness</option>
           <option value="faith"   ${c.category==='faith'?'selected':''}>☪️ Faith</option>
-          <option value="money"   ${c.category==='money'?'selected':''}>💰 Money</option>
-          <option value="living"  ${c.category==='living'?'selected':''}>🏠 Living</option>
+          <option value="money"   ${c.category==='money'?'selected':''}><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v12"/><path d="M8 10h4a2 2 0 0 1 0 4H8"/></svg> Money</option>
+          <option value="living"  ${c.category==='living'?'selected':''}><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 4l9 5.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-5h4v5h4a1 1 0 0 0 1-1v-9"/></svg> Living</option>
         </select>
       </div>
       <div style="display:grid;grid-template-columns:60px 1fr;gap:8px">
         <div>
           <label class="ef-label">Emoji</label>
-          <input class="ef-input" id="e-emoji-${c.id}" value="${esc(c.emoji||'🌿')}" maxlength="4"/>
+          <input class="ef-input" id="e-emoji-${c.id}" value="${esc(c.emoji||'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 2 8 0 5.5-4.78 10-10 10Z"/></svg>')}" maxlength="4"/>
         </div>
         <div>
           <label class="ef-label">Date</label>
@@ -464,7 +464,7 @@ async function confirmPublish(id) {
   const date = document.getElementById(`pub-date-${id}`).value;
   if (!date) return toast('Pick a date', 'err');
   const r = await call('POST', `/admin/capsules/${id}/publish`, { date });
-  if (r.ok) { toast('Published 🚀', 'ok'); load(); }
+  if (r.ok) { toast('Published <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>', 'ok'); load(); }
   else {
     // Date already taken, try next day automatically
     const nextDate = new Date(date);
@@ -534,12 +534,12 @@ async function generateWeek() {
   btn.textContent = '⏳ Generating…';
   btn.disabled = true;
   const r = await call('POST', '/admin/generate', { days: 7 });
-  btn.textContent = '📅 Generate Week';
+  btn.textContent = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Generate Week';
   btn.disabled = false;
   if (r.ok) {
     const count = r.data.count || 0;
     const skipped = (r.data.generated || []).filter(g => g.skipped).length;
-    toast(`✅ ${count} capsules generated${skipped ? ', ' + skipped + ' skipped (already exist)' : ''}`, 'ok');
+    toast(`✓ ${count} capsules generated${skipped ? ', ' + skipped + ' skipped (already exist)' : ''}`, 'ok');
     load();
     // Show Bulk Approve button if there are pending capsules
     setTimeout(checkBulkApprove, 500);
@@ -559,8 +559,8 @@ async function approve(id) {
   const cap = allCapsules.find(c => c.id === id);
   const pubDate = cap?.scheduled_date || new Date(Date.now() + 86400000).toISOString().slice(0,10);
   const p = await call('POST', `/admin/capsules/${id}/publish`, { date: pubDate });
-  if (p.ok) { toast('✅ Approved & Published 🚀', 'ok'); load(); }
-  else { toast('✅ Approved (publish: ' + (p.data?.error || '?') + ')', 'ok'); load(); }
+  if (p.ok) { toast('✓ Approved & Published <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>', 'ok'); load(); }
+  else { toast('✓ Approved (publish: ' + (p.data?.error || '?') + ')', 'ok'); load(); }
 }
 
 // ═══════════════════════════════════════
@@ -583,7 +583,7 @@ async function bulkApprove() {
   }
   btn.textContent = '✓ Bulk Approve All';
   btn.disabled = false;
-  toast(`✅ ${ok} approved & published${fail ? ', ' + fail + ' failed' : ''}`, ok ? 'ok' : 'err');
+  toast(`✓ ${ok} approved & published${fail ? ', ' + fail + ' failed' : ''}`, ok ? 'ok' : 'err');
   load();
 }
 
