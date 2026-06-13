@@ -2210,6 +2210,7 @@
   flex-direction: column;
   width: 100%;
   max-width: 300px;
+  height: 600px;
   margin: 0 auto;
   border: 1px solid var(--border, #e8e8e8);
   border-radius: 12px;
@@ -2224,10 +2225,11 @@
   box-shadow: 0 8px 28px rgba(0,0,0,0.08);
 }
 
-/* ad image: occupies top ~55% of the vertical block */
+/* ad image: fixed top portion */
 .dc-side-ad-img {
   width: 100%;
-  aspect-ratio: 3 / 4;
+  height: 380px;
+  min-height: 380px;
   overflow: hidden;
   background: #e8e2d8;
 }
@@ -2244,14 +2246,15 @@
   transform: scale(1.06);
 }
 
-/* ad body: title + description + CTA */
+/* ad body: title + description + CTA, fills remaining space */
 .dc-side-ad-body {
-  padding: 18px 16px 20px;
+  padding: 16px 14px 18px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   flex: 1;
+  justify-content: space-between;
 }
 
 .dc-side-ad-title {
