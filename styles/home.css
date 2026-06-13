@@ -1967,13 +1967,25 @@
 
 /* ── wrap / section container ── */
 .dc-wrap {
-  width: 100%;
-  padding: 28px 0 16px;
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 40px clamp(1.5rem, 4vw, 3rem) 24px;
 }
 
 /* ── section header ── */
 .dc-head {
   margin-bottom: 28px;
+  position: relative;
+}
+
+.dc-head::before {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 3px;
+  background: var(--gold, #b8963e);
+  border-radius: 2px;
+  margin-bottom: 14px;
 }
 
 .dc-head-label {
