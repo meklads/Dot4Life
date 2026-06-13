@@ -2000,14 +2000,14 @@
   align-items: flex-start;
 }
 
-/* ── left column: article list ── */
+/* ── left column: article list (70%) ── */
 .dc-main {
   flex: 0 0 70%;
   max-width: 70%;
   min-width: 0;
 }
 
-/* ── right column: promotional sidebar ── */
+/* ── right column: promotional sidebar (30%) ── */
 .dc-side {
   flex: 0 0 calc(30% - 32px);
   max-width: calc(30% - 32px);
@@ -2027,8 +2027,8 @@
 
 /* ── list item (horizontal row with frame) ── */
 .dc-item {
-  display: flex;
-  flex-direction: row;
+  display: flex !important;
+  flex-direction: row !important;
   align-items: center;
   gap: 18px;
   padding: 16px;
@@ -2052,19 +2052,25 @@
 
 /* ── visual (image area, fixed 120×120) ── */
 .dc-item-visual {
-  flex-shrink: 0;
-  width: 120px;
-  height: 120px;
+  flex-shrink: 0 !important;
+  width: 120px !important;
+  height: 120px !important;
+  min-width: 120px !important;
+  min-height: 120px !important;
   border-radius: 8px;
-  overflow: hidden;
+  overflow: hidden !important;
   position: relative;
+  background: #f5f3ee;
 }
 
 .dc-item-visual img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+  max-width: none !important;
+  position: relative;
+  z-index: 1;
 }
 
 /* split VS images side by side within the 120×120 box */
@@ -2076,10 +2082,11 @@
 }
 
 .dc-item-split img {
-  width: 50%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+  width: 50% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+  max-width: none !important;
 }
 
 .dc-vs {
@@ -2175,7 +2182,7 @@
   color: var(--text, #1a1a1a);
 }
 
-/* ── sidebar cards ── */
+/* ── sidebar promotional cards ── */
 .dc-side-card {
   border: 1px solid var(--border, #e8e8e8);
   border-radius: 10px;
@@ -2198,11 +2205,13 @@
   height: 36px;
   color: var(--gold, #b8963e);
   margin-bottom: 10px;
+  flex-shrink: 0;
 }
 
 .dc-side-card-icon svg {
   width: 100%;
   height: 100%;
+  display: block;
 }
 
 .dc-side-card-title {
@@ -2254,7 +2263,7 @@
 
 /* ── RTL (Arabic) ── */
 html[dir="rtl"] .dc-item {
-  flex-direction: row;
+  flex-direction: row !important;
 }
 
 html[dir="rtl"] .dc-item-text {
@@ -2299,13 +2308,13 @@ html[dir="rtl"] .dc-side-card {
   }
 
   .dc-main {
-    flex: 0 0 100%;
-    max-width: 100%;
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
   }
 
   .dc-side {
-    flex: 0 0 100%;
-    max-width: 100%;
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
     position: static;
     flex-direction: row;
     flex-wrap: wrap;
@@ -2333,8 +2342,10 @@ html[dir="rtl"] .dc-side-card {
   }
 
   .dc-item-visual {
-    width: 100px;
-    height: 100px;
+    width: 100px !important;
+    height: 100px !important;
+    min-width: 100px !important;
+    min-height: 100px !important;
   }
 
   .dc-item-title {
@@ -2348,8 +2359,10 @@ html[dir="rtl"] .dc-side-card {
 
 @media (max-width: 480px) {
   .dc-item-visual {
-    width: 90px;
-    height: 90px;
+    width: 90px !important;
+    height: 90px !important;
+    min-width: 90px !important;
+    min-height: 90px !important;
   }
 
   .dc-item-title {
