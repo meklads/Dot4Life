@@ -1994,6 +1994,30 @@
   font-weight: 700;
   color: var(--text, #1a1a1a);
   white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dc-head-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: var(--gold, #b8963e);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dc-head-icon svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: #fff;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 
@@ -2043,6 +2067,7 @@
   margin-bottom: 12px;
   transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
   background: #fff;
+  max-width: 760px;
 }
 
 .dc-item:last-child {
@@ -2189,18 +2214,22 @@
 .dc-view-all {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  margin-top: 16px;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 10px 24px;
   font-family: var(--font-ui);
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--gold, #b8963e);
   text-decoration: none;
-  transition: color 0.15s;
+  border: 1px solid var(--gold, #b8963e);
+  border-radius: 8px;
+  transition: background 0.2s, color 0.2s;
 }
 
 .dc-view-all:hover {
-  color: var(--text, #1a1a1a);
+  background: var(--gold, #b8963e);
+  color: #fff;
 }
 
 /* ── sidebar ad placeholders: vertical 300×600 style ── */
@@ -2305,7 +2334,7 @@
 .dc-item.reveal {
   opacity: 0;
   transform: translateY(12px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition: opacity 0.35s ease, transform 0.35s ease;
 }
 
 .dc-item.reveal.visible {
