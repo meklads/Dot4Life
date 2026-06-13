@@ -2057,21 +2057,15 @@
   height: 120px !important;
   min-width: 120px !important;
   min-height: 120px !important;
+  max-width: 120px !important;
+  max-height: 120px !important;
   border-radius: 8px;
   overflow: hidden !important;
   position: relative;
   background: #f5f3ee;
 }
 
-.dc-item-visual img {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  display: block !important;
-  max-width: none !important;
-  position: relative;
-  z-index: 1;
-}
+
 
 /* split VS images side by side within the 120×120 box */
 .dc-item-split {
@@ -2083,6 +2077,24 @@
 
 .dc-item-split img {
   width: 50% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+  max-width: none !important;
+}
+
+/* single image wrapper — same structure as split for uniform sizing */
+.dc-item-single {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.dc-item-single img {
+  width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
   display: block !important;
@@ -2363,6 +2375,8 @@ html[dir="rtl"] .dc-side-card {
     height: 100px !important;
     min-width: 100px !important;
     min-height: 100px !important;
+    max-width: 100px !important;
+    max-height: 100px !important;
   }
 
   .dc-item-title {
@@ -2393,6 +2407,8 @@ html[dir="rtl"] .dc-side-card {
     height: 80px !important;
     min-width: 80px !important;
     min-height: 80px !important;
+    max-width: 80px !important;
+    max-height: 80px !important;
   }
 
   .dc-item-title {
