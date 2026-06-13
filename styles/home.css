@@ -725,23 +725,39 @@
     /* ── HEALTH — image LEFT (1.15fr), content RIGHT (1fr) — contained card ── */
     #health { display: grid; grid-template-columns: 1.1fr 1fr; min-height: min(400px, 60vh); border-radius: 24px; overflow: hidden; }
     #health-dup { padding: 0 0 1rem; }
-    /* ─── EDITORIAL SPOTLIGHT (Verywellhealth style) inside health-dup ──── */
+	    /* ─── EDITORIAL SPOTLIGHT (Verywellhealth style) inside health-dup ──── */
 
-    /* ── Section label above the editorial grid ── */
-    .sl-section-label {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 1.25rem;
-    }
+	    /* ── Section header: Featured Stories ── */
+	    .fs-head {
+	      display: flex;
+	      align-items: center;
+	      gap: 14px;
+	      margin-bottom: 28px;
+	      padding-top: 32px;
+	    }
 
-    .sl-section-label-text {
-      font-size: .85rem; font-weight: 700; letter-spacing: .06em;
-      text-transform: uppercase; color: var(--text); white-space: nowrap;
-      font-family: var(--font-ui);
-    }
-    [data-theme="dark"] .sl-section-label-text { color: var(--text-1); }
-    .sl-section-label-text span.ar { font-family: var(--font-ar); letter-spacing: 0; }
+	    .fs-head-line {
+	      display: block;
+	      width: 48px;
+	      height: 3px;
+	      background: var(--gold, #b8963e);
+	      border-radius: 2px;
+	      flex-shrink: 0;
+	    }
+
+	    .fs-head-label {
+	      font-family: var(--font-serif);
+	      font-size: 22px;
+	      font-weight: 700;
+	      color: var(--text, #1a1a1a);
+	    }
+
+	    .fs-head-label span.ar {
+	      font-family: var(--font-ar);
+	      letter-spacing: 0;
+	    }
+
+	    [data-theme="dark"] .fs-head-label { color: var(--text-1); }
 
 
     /* Aspect-ratio placeholder for images */
