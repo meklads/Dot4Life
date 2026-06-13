@@ -2185,14 +2185,12 @@
 /* ── sidebar promotional cards ── */
 .dc-side-card {
   border: 1px solid var(--border, #e8e8e8);
-  border-radius: 10px;
-  padding: 20px;
+  border-radius: 11px;
   background: #fafaf8;
+  overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .dc-side-card:hover {
@@ -2200,18 +2198,69 @@
   box-shadow: 0 4px 16px rgba(0,0,0,0.05);
 }
 
-.dc-side-card-icon {
-  width: 36px;
-  height: 36px;
-  color: var(--gold, #b8963e);
-  margin-bottom: 10px;
-  flex-shrink: 0;
+/* image area at top of card */
+.dc-side-card-img {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 400 / 260;
+  overflow: hidden;
+  background: #e8e2d8;
 }
 
-.dc-side-card-icon svg {
+.dc-side-card-img img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
   display: block;
+  transition: transform 0.35s ease;
+}
+
+.dc-side-card:hover .dc-side-card-img img {
+  transform: scale(1.04);
+}
+
+/* icon overlay centered on image */
+.dc-side-card-img .dc-side-card-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+  background: rgba(255,255,255,0.88);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold, #b8963e);
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.dc-side-card-img .dc-side-card-icon svg {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+/* show icon + tint when image fails */
+.dc-side-card-img--fallback {
+  background: #f0ece4;
+}
+
+.dc-side-card-img--fallback .dc-side-card-icon {
+  opacity: 1;
+}
+
+/* body text */
+.dc-side-card-body {
+  padding: 16px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .dc-side-card-title {
