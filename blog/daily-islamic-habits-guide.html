@@ -18,6 +18,68 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Almarai:wght@300;400;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="/styles/global.css?v=2ae3631"/>
   <link rel="stylesheet" href="/styles/home.css?v=4a2b0c1">
+  <style>
+    .article-body { max-width: 760px; margin: 0 auto; padding: 0 1.5rem 3rem; }
+    .article-body h2 { font-family: var(--font-serif, 'Cinzel', serif); font-size: clamp(1.3rem, 2.5vw, 1.7rem); font-weight: 600; margin: 2.5rem 0 1rem; line-height: 1.3; color: var(--text); }
+    [data-lang="ar"] .article-body h2 { font-family: var(--font-ar); }
+    .article-body p { font-size: .95rem; line-height: 1.9; color: var(--text-2); margin-bottom: 1.2rem; }
+    [data-lang="ar"] .article-body p { font-family: var(--font-ar); }
+    .article-body ul, .article-body ol { padding-inline-start: 1.5rem; margin-bottom: 1.2rem; }
+    .article-body li { font-size: .95rem; line-height: 1.8; color: var(--text-2); margin-bottom: .5rem; }
+    [data-lang="ar"] .article-body li { font-family: var(--font-ar); }
+    .callout.gold { background: rgba(42,154,152,.06); border: 1px solid rgba(42,154,152,.15); border-radius: 16px; padding: 1.5rem 1.8rem; margin: 2rem 0; }
+    .callout-label { font-size: .78rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--gold, #2a9a98); margin-bottom: .5rem; }
+    [data-lang="ar"] .callout-label { font-family: var(--font-ar); letter-spacing: 0; }
+    .callout p { font-size: .9rem; line-height: 1.7; color: var(--text-2); margin: 0; }
+    .tool-cta-inline { max-width: 760px; margin: 1.5rem auto; padding: 0 1.5rem; }
+    .tool-cta-inline a { display: block; background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.5rem; text-align: center; font-weight: 600; font-size: .9rem; color: var(--gold, #2a9a98); text-decoration: none; transition: border-color .2s; }
+    .tool-cta-inline a:hover { border-color: var(--gold); }
+    .article-cta { max-width: 760px; margin: 2rem auto; padding: 0 1.5rem; }
+    .article-cta a { display: block; background: var(--cream); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.5rem; text-align: center; font-weight: 600; font-size: .9rem; color: var(--text); text-decoration: none; transition: border-color .2s; }
+    .article-cta a:hover { border-color: var(--gold); }
+    .article-footer { max-width: 760px; margin: 0 auto 2rem; padding: 0 1.5rem; }
+    .article-nav { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+    .article-nav a { text-decoration: none; padding: .75rem 1.25rem; background: var(--cream); border-radius: 12px; transition: background .2s; flex: 1; min-width: 200px; }
+    .article-nav a:hover { background: var(--cream-d); }
+    .nav-dir { font-size: .68rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: .2rem; }
+    [data-lang="ar"] .nav-dir { font-family: var(--font-ar); letter-spacing: 0; }
+    .nav-title { font-size: .85rem; font-weight: 600; color: var(--text); }
+    [data-lang="ar"] .nav-title { font-family: var(--font-ar); }
+    .dfl-related { border-top: 1px solid var(--border); padding: 52px 0 64px; background: var(--body-bg); }
+    .dfl-related .container { max-width: 1280px; margin: 0 auto; padding: 0 clamp(1.5rem,4vw,2.5rem); }
+    .dfl-related-label { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+    [data-lang="ar"] .dfl-related-label { font-family: var(--font-ar); letter-spacing: 0; }
+    .dfl-related-title { font-size: clamp(1.2rem,2.5vw,1.55rem); font-weight: 700; color: var(--text); margin: 0 0 6px; letter-spacing: -.02em; }
+    [data-lang="ar"] .dfl-related-title { font-family: var(--font-ar); letter-spacing: 0; }
+    .dfl-related-sub { font-size: .88rem; color: var(--text-2); margin-bottom: 32px; line-height: 1.6; }
+    .dfl-related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+    .dfl-rc { display: flex; flex-direction: column; background: var(--card-bg); border: 1px solid var(--border); border-radius: 14px; padding: 20px 22px 18px; text-decoration: none; color: inherit; transition: border-color .2s, box-shadow .2s, transform .2s; }
+    .dfl-rc:hover { border-color: var(--gold); box-shadow: 0 4px 20px rgba(42,154,152,.12); transform: translateY(-2px); }
+    .dfl-rc-top { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+    .dfl-rc-icon { font-size: 1.4rem; line-height: 1; flex-shrink: 0; }
+    .dfl-rc-name { font-size: .88rem; font-weight: 700; color: var(--text); line-height: 1.3; }
+    [data-lang="ar"] .dfl-rc-name { font-family: var(--font-ar); }
+    .dfl-rc-desc { font-size: .78rem; color: var(--text-2); line-height: 1.5; flex: 1; }
+    [data-lang="ar"] .dfl-rc-desc { font-family: var(--font-ar); }
+    .dfl-rc-cta { margin-top: 12px; font-size: .76rem; font-weight: 700; color: var(--gold); }
+    [data-lang="ar"] .dfl-rc-cta { font-family: var(--font-ar); }
+    .dfl-related-articles { max-width: 760px; margin: 2rem auto 0; }
+    .dfl-related-articles h3 { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: .75rem; }
+    .dfl-related-articles ul { list-style: none; padding: 0; }
+    .dfl-related-articles ul li { margin-bottom: .5rem; }
+    .dfl-related-articles ul li a { font-size: .88rem; color: var(--gold); text-decoration: none; transition: opacity .2s; }
+    .dfl-related-articles ul li a:hover { opacity: .75; }
+    @media(max-width:600px){.dfl-related-grid{grid-template-columns:1fr 1fr;gap:10px;}.dfl-rc{padding:14px;}}
+    .article-credibility { max-width:760px; margin:2.5rem auto 0; padding:1.4rem 1.6rem; background:var(--cream); border:1px solid var(--border); border-radius:14px; }
+    [data-lang="ar"] .article-credibility { font-family: var(--font-ar); }
+    .ac-badge { width:42px; height:42px; border-radius:50%; background:var(--gold-d,#054241); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:.8rem; flex-shrink:0; }
+    .ac-name { font-weight:700; color:var(--gold-d,#054241); font-size:.92rem; }
+    .ac-date { font-size:.74rem; color:var(--text-2); }
+    .ac-disclaimer { font-size:.78rem; color:var(--text-2); line-height:1.75; margin:0; padding-top:.7rem; border-top:1px solid var(--border); margin-top:.7rem; }
+    #navbar,.navbar-unified{height:110px!important;}
+    .nav-inner,.navbar-inner,.navbar-inner-unified{height:110px!important;}
+    .nav-logo img,.dfl-nav-logo img{height:120px!important;width:auto!important;display:block!important;}
+  </style>
 <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Article","headline":"Building Daily Islamic Habits Without Feeling Overwhelmed","description":"Learn how to build consistent daily Islamic habits that last. Practical system for prayer consistency, Quran reading, dhikr, and spiritual growth.","url":"https://dotforlife.com/blog/daily-islamic-habits-guide.html","datePublished":"2026-06-08","inLanguage":["en","ar"],"publisher":{"@type":"Organization","name":"DOTFORLIFE","url":"https://dotforlife.com"}}
   </script>
