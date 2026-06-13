@@ -1959,8 +1959,8 @@
   .footer-logo img{height:60px!important;}
 
 /* ═══════════════════════════════════════════════
-   DECISIONS & COMPARISONS SECTION
-   Editorial magazine-style comparison articles
+   DECISIONS & COMPARISONS — VS SPLIT-SCREEN
+   Editorial magazine layout inspired by Verywell Health
    ═══════════════════════════════════════════════ */
 .dc-section {
   padding: 0 clamp(1.5rem, 4vw, 3rem);
@@ -1993,174 +1993,245 @@
   background: var(--border);
 }
 
-/* Main two-column layout */
-.dc-grid {
-  display: grid;
-  grid-template-columns: 1.15fr 1fr;
-  gap: 2rem;
-  align-items: start;
-}
-
-/* ── FEATURED CARD (Left) ── */
+/* ── FEATURED VS SPLIT (Full width) ── */
 .dc-featured {
   display: block;
   background: var(--card-bg);
   border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: 18px;
   overflow: hidden;
   text-decoration: none;
-  transition: box-shadow .3s, transform .3s;
+  margin-bottom: 2rem;
+  transition: box-shadow .35s ease;
 }
 
 .dc-featured:hover {
-  box-shadow: 0 12px 40px rgba(0,0,0,.08);
-  transform: translateY(-2px);
+  box-shadow: 0 14px 48px rgba(0,0,0,.08);
 }
 
-.dc-featured-img {
+/* Split visual: two images side by side with VS badge */
+.dc-split-hero {
+  display: flex;
   position: relative;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 20 / 9;
   overflow: hidden;
-  background: #f0ebe4;
+  background: #e8e2d8;
 }
 
-.dc-featured-img img {
+.dc-split-hero .dc-split-side {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.dc-split-hero .dc-split-side img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform .5s ease;
 }
 
-.dc-featured:hover .dc-featured-img img {
-  transform: scale(1.03);
+.dc-featured:hover .dc-split-side img {
+  transform: scale(1.04);
 }
 
-.dc-featured-cat {
+/* VS badge — centered between the two halves */
+.dc-vs-badge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--gold, #6abfb8);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  box-shadow: 0 4px 20px rgba(0,0,0,.18);
+  z-index: 5;
+  line-height: 1;
+}
+
+/* Category badge on hero */
+.dc-hero-cat {
   position: absolute;
   top: 1rem;
   left: 1rem;
   background: rgba(255,255,255,.92);
-  backdrop-filter: blur(4px);
-  padding: .3rem .7rem;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  padding: .3rem .75rem;
   border-radius: 6px;
-  font-size: .68rem;
+  font-size: .66rem;
   font-weight: 600;
   letter-spacing: .06em;
   color: var(--text);
+  z-index: 6;
   font-family: var(--font-ui);
 }
 
-.dc-featured-body {
-  padding: 1.5rem 1.5rem 1.75rem;
+.dc-hero-body {
+  padding: 1.4rem 1.5rem 1.6rem;
 }
 
-.dc-featured-tag {
-  display: inline-block;
-  font-size: .62rem;
+.dc-hero-tag {
+  font-size: .6rem;
   font-weight: 700;
-  letter-spacing: .12em;
+  letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--gold);
-  margin-bottom: .5rem;
+  margin-bottom: .3rem;
   font-family: var(--font-ui);
 }
 
-.dc-featured-title {
+.dc-hero-title {
   font-family: var(--font-serif);
-  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  font-size: clamp(1.1rem, 2.2vw, 1.45rem);
   line-height: 1.45;
   color: var(--text);
-  margin-bottom: .5rem;
+  margin-bottom: .35rem;
   font-weight: 600;
 }
 
-.dc-featured-excerpt {
-  font-size: .85rem;
-  line-height: 1.65;
+.dc-hero-excerpt {
+  font-size: .83rem;
+  line-height: 1.6;
   color: var(--text-2);
-  margin-bottom: 1rem;
+  margin-bottom: .7rem;
 }
 
-.dc-featured-cta {
-  font-size: .82rem;
+.dc-hero-cta {
+  font-size: .8rem;
   font-weight: 600;
   color: var(--gold);
   display: inline-flex;
   align-items: center;
   gap: .35rem;
-  transition: gap .2s;
+  transition: gap .25s;
 }
 
-.dc-featured-cta svg {
+.dc-hero-cta svg {
   width: 14px;
   height: 14px;
-  transition: transform .2s;
+  transition: transform .25s;
 }
 
-.dc-featured:hover .dc-featured-cta svg {
-  transform: translateX(3px);
+.dc-featured:hover .dc-hero-cta svg {
+  transform: translateX(4px);
 }
 
-/* ── SECONDARY GRID (Right) ── */
-.dc-secondary-grid {
+/* ── GRID OF CARDS (mix of VS split + single-image) ── */
+.dc-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.25rem;
 }
 
 .dc-card {
   display: block;
   background: var(--card-bg);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 14px;
   overflow: hidden;
   text-decoration: none;
-  transition: box-shadow .3s, transform .3s;
+  transition: box-shadow .3s ease, transform .3s ease;
 }
 
 .dc-card:hover {
-  box-shadow: 0 8px 24px rgba(0,0,0,.06);
-  transform: translateY(-1px);
+  box-shadow: 0 8px 28px rgba(0,0,0,.06);
+  transform: translateY(-2px);
 }
 
-.dc-card-img {
+/* Card visual — can be split or single */
+.dc-card-visual {
+  position: relative;
   aspect-ratio: 16 / 10;
   overflow: hidden;
-  background: #f0ebe4;
+  background: #e8e2d8;
 }
 
-.dc-card-img img {
+.dc-card-visual img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform .4s ease;
 }
 
-.dc-card:hover .dc-card-img img {
-  transform: scale(1.04);
+.dc-card:hover .dc-card-visual img {
+  transform: scale(1.05);
 }
 
-.dc-card-body {
-  padding: .85rem 1rem 1rem;
+/* Small split for cards */
+.dc-split-sm {
+  display: flex;
+}
+
+.dc-split-sm .dc-split-side {
+  flex: 1;
+  overflow: hidden;
+}
+
+.dc-split-sm .dc-split-side img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dc-vs-sm {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--gold, #6abfb8);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: .65rem;
+  font-weight: 700;
+  box-shadow: 0 3px 12px rgba(0,0,0,.16);
+  z-index: 5;
+  line-height: 1;
 }
 
 .dc-card-cat {
-  font-size: .6rem;
-  font-weight: 700;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: .25rem;
+  position: absolute;
+  top: .6rem;
+  left: .6rem;
+  background: rgba(255,255,255,.9);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  padding: .2rem .55rem;
+  border-radius: 5px;
+  font-size: .58rem;
+  font-weight: 600;
+  letter-spacing: .05em;
+  color: var(--text);
+  z-index: 6;
   font-family: var(--font-ui);
+}
+
+.dc-card-body {
+  padding: .75rem .9rem .9rem;
 }
 
 .dc-card-title {
   font-family: var(--font-serif);
-  font-size: .78rem;
+  font-size: .8rem;
   line-height: 1.45;
   color: var(--text);
   font-weight: 600;
-  margin-bottom: .25rem;
+  margin-bottom: .15rem;
 }
 
 .dc-card-excerpt {
@@ -2171,13 +2242,13 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  margin-bottom: .5rem;
 }
 
 .dc-card-cta {
-  font-size: .7rem;
+  font-size: .68rem;
   font-weight: 600;
   color: var(--gold);
+  margin-top: .4rem;
   display: inline-flex;
   align-items: center;
   gap: .2rem;
@@ -2190,37 +2261,41 @@
 }
 
 .dc-card:hover .dc-card-cta svg {
-  transform: translateX(2px);
+  transform: translateX(3px);
 }
 
 /* ── RESPONSIVE ── */
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .dc-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  .dc-featured-img {
-    aspect-ratio: 16 / 9;
-  }
-
-  .dc-secondary-grid {
     grid-template-columns: 1fr 1fr;
-    gap: .85rem;
   }
 }
 
-@media (max-width: 540px) {
-  .dc-secondary-grid {
+@media (max-width: 720px) {
+  .dc-split-hero {
+    aspect-ratio: 16 / 9;
+  }
+
+  .dc-vs-badge {
+    width: 48px;
+    height: 48px;
+    font-size: .9rem;
+  }
+
+  .dc-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .dc-grid {
     grid-template-columns: 1fr;
+    gap: .85rem;
   }
 
-  .dc-featured-body {
-    padding: 1.2rem 1rem 1.4rem;
-  }
-
-  .dc-card-body {
-    padding: .7rem .85rem .9rem;
+  .dc-hero-body {
+    padding: 1rem 1rem 1.25rem;
   }
 }
 }
