@@ -28,55 +28,103 @@
   .header h1 { font-size: 28px; margin-bottom: 6px; }
   .header .sub { font-size: 14px; opacity: 0.85; }
 
-  .section-grid {
+  .role-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 16px;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
     margin-bottom: 30px;
   }
-  .sec-card {
+  @media (max-width: 640px) { .role-cards { grid-template-columns: 1fr; } }
+
+  .role-card {
     background: #fff;
-    border-radius: 12px;
+    border-radius: 14px;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    transition: all 0.2s;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
     border: 2px solid transparent;
   }
-  .sec-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(42,154,152,0.12);
-    border-color: #2a9a98;
-  }
-  .sec-card-head {
-    padding: 18px 20px 10px;
+  .role-card.claude { border-color: #2a9a98; }
+  .role-card.manus { border-color: #f59e0b; }
+
+  .role-head {
+    padding: 18px 20px 12px;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-  .sec-card-title { font-size: 16px; font-weight: 700; color: #1a5a58; }
-  .sec-card-badge {
+  .role-name { font-size: 18px; font-weight: 700; }
+  .role-name.claude { color: #2a9a98; }
+  .role-name.manus { color: #b85a00; }
+  .role-badge.claude { background: #e0f2f2; color: #1a7a78; }
+  .role-badge.manus { background: #fff3e0; color: #b85a00; }
+  .role-badge {
     font-size: 11px;
-    background: #e8f5e9;
-    color: #2e7d32;
-    padding: 2px 10px;
+    padding: 3px 12px;
     border-radius: 10px;
     font-weight: 700;
   }
-  .sec-card-badge.weekly { background: #fff3e0; color: #e65100; }
-  .sec-card-body { padding: 0 20px 12px; font-size: 13px; color: #666; }
-  .sec-card-link {
-    display: block; text-decoration: none; color: #2a9a98;
-    font-weight: 700; font-size: 13px; padding: 10px 20px;
-    border-top: 1px solid #f0f0f0; text-align: center; transition: background 0.2s;
+  .role-body {
+    padding: 0 20px 14px;
+    font-size: 13px;
+    color: #666;
   }
-  .sec-card-link:hover { background: #f0f7f7; }
+  .role-link {
+    display: block;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-top: 1px solid #f0f0f0;
+    text-align: center;
+    font-weight: 700;
+    font-size: 13px;
+    transition: background 0.2s;
+  }
+  .role-link.claude { color: #2a9a98; }
+  .role-link.manus { color: #b85a00; }
+  .role-link:hover { background: #fafafa; }
+
+  .sections-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 12px;
+    margin-bottom: 30px;
+  }
+  .sec-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 14px 18px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    border: 1px solid #eee;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: block;
+  }
+  .sec-card:hover {
+    border-color: #2a9a98;
+    box-shadow: 0 3px 12px rgba(42,154,152,0.08);
+    transform: translateY(-2px);
+  }
+  .sec-card-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a5a58;
+    margin-bottom: 4px;
+  }
+  .sec-card-desc {
+    font-size: 12px;
+    color: #999;
+  }
 
   .section-title {
-    font-size: 20px; color: #2a9a98; margin: 30px 0 12px;
-    padding-bottom: 6px; border-bottom: 2px solid #2a9a98;
+    font-size: 20px;
+    color: #2a9a98;
+    margin: 30px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #2a9a98;
   }
   .section-sub {
-    font-size: 14px; color: #888; margin-bottom: 16px;
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 16px;
   }
 
   .link-group {
@@ -84,26 +132,49 @@
     border-radius: 10px;
     border: 2px dashed #ddd;
     padding: 14px 20px;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
+    transition: border-color 0.2s;
   }
+  .link-group:hover { border-color: #bbb; }
   .link-group-title {
-    font-size: 15px; font-weight: 700; color: #1a5a58; margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a5a58;
+    margin-bottom: 6px;
   }
   .link-group .links {
-    font-size: 14px; line-height: 2.2;
+    font-size: 13px;
+    line-height: 2.2;
   }
   .link-group .links a {
-    color: #2a9a98; text-decoration: none;
-    display: inline-block; margin-left: 8px;
+    color: #2a9a98;
+    text-decoration: none;
   }
   .link-group .links a:hover { text-decoration: underline; }
-  .link-group .links .badge {
-    display: inline-block; font-size: 11px; padding: 1px 8px;
-    border-radius: 8px; margin-left: 4px; font-weight: 700;
-  }
-  .badge-ar { background: #e8f5e9; color: #2e7d32; }
-  .badge-en { background: #e3f2fd; color: #1565c0; }
   .link-group .empty { color: #bbb; font-size: 13px; }
+  .link-group .post-preview {
+    display: block;
+    background: #f9fafb;
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin: 6px 0;
+    font-size: 13px;
+    color: #444;
+    border-right: 3px solid #f59e0b;
+  }
+  .link-group .post-preview .meta {
+    font-size: 11px;
+    color: #999;
+  }
+  .post-status {
+    font-size: 11px;
+    padding: 2px 10px;
+    border-radius: 8px;
+    font-weight: 700;
+    display: inline-block;
+  }
+  .post-status.done { background: #e8f5e9; color: #2e7d32; }
+  .post-status.pending { background: #fff3e0; color: #e65100; }
 
   .instructions {
     background: #fffbe6;
@@ -127,122 +198,136 @@
   <!-- HEADER -->
   <div class="header">
     <h1>📋 لوحة المراجعة — دوت فور لايف</h1>
-    <div class="sub">مانوس يصمم صفحة HTML كاملة لكل مقالة (نص + صور + تنسيق) ويضع الرابط هنا</div>
+    <div class="sub">كلود يكتب المقالات — مانوس يدير السوشيال ميديا</div>
   </div>
 
-  <!-- تعليمات -->
+  <!-- الأدوار -->
+  <div class="role-cards">
+    <div class="role-card claude">
+      <div class="role-head">
+        <span class="role-name claude">🧠 Claude — المحتوى</span>
+        <span class="role-badge claude">✍️ كاتب</span>
+      </div>
+      <div class="role-body">
+        يكتب محتوى عميقاً "آدمياً" — عربي يخاطب العقلية العربية، إنجليزي يخاطب العقلية الغربية.<br>
+        <strong>المسؤولية:</strong> المقالات النهائية HTML + صور + نشر.
+      </div>
+      <div class="role-link claude">ملفات المقالات: sec1.html → sec6.html ↓</div>
+    </div>
+    <div class="role-card manus">
+      <div class="role-head">
+        <span class="role-name manus">🤖 Manus — السوشيال ميديا</span>
+        <span class="role-badge manus">📱 مدير</span>
+      </div>
+      <div class="role-body">
+        يصمم منشورات Instagram + Facebook + YouTube Shorts يومياً.<br>
+        <strong>التسليم:</strong> نصوص المنشورات + روابطها هنا تحت.
+      </div>
+      <div class="role-link manus">📄 <a href="system/social-workflow.md" style="color:#b85a00;">social-workflow.md</a> — التعليمات</div>
+    </div>
+  </div>
+
+  <!-- روابط سريعة للمقالات -->
+  <p style="font-size:14px;color:#888;margin-bottom:12px;">🗂️ ملفات الأقسام (للمرجعية):</p>
+  <div class="sections-grid">
+    <a href="sec1.html" class="sec-card"><div class="sec-card-title">١. قصص مميزة</div><div class="sec-card-desc">أمهات · آباء · عائلات · تحديات</div></a>
+    <a href="sec2.html" class="sec-card"><div class="sec-card-title">٢. مقارنات وقرارات</div><div class="sec-card-desc">مالية · تعليم · صحة · سكن</div></a>
+    <a href="sec3.html" class="sec-card"><div class="sec-card-title">٣. السلام يبدأ من البيت</div><div class="sec-card-desc">روتين · تواصل · تأمل · هدوء</div></a>
+    <a href="sec4.html" class="sec-card"><div class="sec-card-title">٤. الصحة والعافية</div><div class="sec-card-desc">حمل · ولادة · رضاعة · تغذية</div></a>
+    <a href="sec5.html" class="sec-card"><div class="sec-card-title">٥. المالية والثروة</div><div class="sec-card-desc">عقار · ميزانية · ادخار · استثمار</div></a>
+    <a href="sec6.html" class="sec-card"><div class="sec-card-title">٦. الإسلامية</div><div class="sec-card-desc">عمرة · حج · أذكار · زكاة</div></a>
+  </div>
+
+  <!-- ====== قسم كلود ====== -->
+  <h2 class="section-title">✍️ المقالات — Claude</h2>
+  <p class="section-sub">كلود يكتب المحتوى ويصمم HTML هنا. أنت تراجع وتوافق ↓</p>
+
+  <div class="link-group">
+    <div class="link-group-title">١. قصص مميزة — Featured Stories</div>
+    <div class="links" contenteditable="true" style="min-height:40px;">
+      <span class="empty">⏳ قيد الكتابة...</span>
+    </div>
+  </div>
+
+  <div class="link-group">
+    <div class="link-group-title">٢. مقارنات وقرارات — Comparisons</div>
+    <div class="links" contenteditable="true" style="min-height:40px;">
+      <span class="empty">⏳ قيد الكتابة...</span>
+    </div>
+  </div>
+
+  <div class="link-group">
+    <div class="link-group-title">٣. السلام يبدأ من البيت — Peace Capsules</div>
+    <div class="links" contenteditable="true" style="min-height:40px;">
+      <span class="empty">⏳ قيد الكتابة...</span>
+    </div>
+  </div>
+
+  <div class="link-group">
+    <div class="link-group-title">٤. الصحة والعافية — Health & Wellness</div>
+    <div class="links" contenteditable="true" style="min-height:40px;">
+      <span class="empty">⏳ قيد الكتابة...</span>
+    </div>
+  </div>
+
+  <div class="link-group">
+    <div class="link-group-title">٥. المالية والثروة — Finance & Wealth</div>
+    <div class="links" contenteditable="true" style="min-height:40px;">
+      <span class="empty">⏳ قيد الكتابة...</span>
+    </div>
+  </div>
+
+  <div class="link-group">
+    <div class="link-group-title">٦. الإسلامية — Islamic</div>
+    <div class="links" contenteditable="true" style="min-height:40px;">
+      <span class="empty">⏳ قيد الكتابة...</span>
+    </div>
+  </div>
+
+  <!-- ====== قسم مانوس ====== -->
+  <h2 class="section-title">📱 السوشيال ميديا — Manus</h2>
+  <p class="section-sub">مانوس يضع هنا نصوص المنشورات اليومية للمراجعة قبل النشر ↓</p>
+
   <div class="instructions">
-    <strong>📌 لمانوس — تعليمات كاملة في ملف واحد:</strong><br>
-    📄 <a href="system/manus-workflow.md" style="color:#2a9a98;font-weight:700;text-decoration:underline;">system/manus-workflow.md</a> — اقرأه الآن، فيه كل التفاصيل<br><br>
-    <strong>الملخص:</strong><br>
-    1. اقرأ تفاصيل القسم والمقال في صفحته الخاصة (sec1.html إلى sec6.html)<br>
-    2. صمم صفحة HTML كاملة للمقالة بنسختين (عربية + إنجليزية)<br>
-    3. احفظ الملفات في <code>assets/queue/</code><br>
-    4. ضع رابط المقالة هنا تحت القسم المناسب ← عربية وإنجليزية<br>
-    5. ⏰ <strong>الموعد النهائي: كل يوم الساعة ٩:٠٠ صباحاً</strong><br>
-    6. Claude سيراجع المقالة ويعدل الأخطاء ثم ينشر
+    <strong>📌 تعليمات لمانوس:</strong><br>
+    📄 التعليمات الكاملة في <a href="system/social-workflow.md" style="color:#2a9a98;font-weight:700;">system/social-workflow.md</a><br><br>
+    <strong>المطلوب يومياً:</strong><br>
+    • 🎨 <strong>منشور Instagram</strong> — عنوان + نص + هاشتاقات + رابط<br>
+    • 🎬 <strong>Reels/Shorts Script</strong> — سكريبت ١٥-٦٠ ثانية<br>
+    • 📘 <strong>منشور Facebook</strong> — أطول، تفصيلي أكثر<br>
+    ضع المحتوى في المربع المناسب تحت. كلود يراجع ويعدل.
   </div>
 
-  <!-- CARDS -->
-  <div class="section-grid">
-    <div class="sec-card">
-      <div class="sec-card-head">
-        <span class="sec-card-title">١. قصص مميزة</span>
-        <span class="sec-card-badge">يومي</span>
-      </div>
-      <div class="sec-card-body">قصص إنسانية ملهمة — أمهات، آباء، عائلات</div>
-      <a href="sec1.html" class="sec-card-link">عرض التفاصيل ←</a>
-    </div>
-    <div class="sec-card">
-      <div class="sec-card-head">
-        <span class="sec-card-title">٢. مقارنات وقرارات</span>
-        <span class="sec-card-badge">يومي</span>
-      </div>
-      <div class="sec-card-body">مقارنات موضوعية بالأرقام — مالية، تعليم، صحة</div>
-      <a href="sec2.html" class="sec-card-link">عرض التفاصيل ←</a>
-    </div>
-    <div class="sec-card">
-      <div class="sec-card-head">
-        <span class="sec-card-title">٣. السلام يبدأ من البيت</span>
-        <span class="sec-card-badge">يومي</span>
-      </div>
-      <div class="sec-card-body">كبسولات هدوء وسكينة — روتين، تواصل، تأمل</div>
-      <a href="sec3.html" class="sec-card-link">عرض التفاصيل ←</a>
-    </div>
-    <div class="sec-card">
-      <div class="sec-card-head">
-        <span class="sec-card-title">٤. الصحة والعافية</span>
-        <span class="sec-card-badge weekly">أسبوعي</span>
-      </div>
-      <div class="sec-card-body">الحمل والولادة — فحوصات، تغذية، رضاعة</div>
-      <a href="sec4.html" class="sec-card-link">عرض التفاصيل ←</a>
-    </div>
-    <div class="sec-card">
-      <div class="sec-card-head">
-        <span class="sec-card-title">٥. المالية والثروة</span>
-        <span class="sec-card-badge weekly">أسبوعي</span>
-      </div>
-      <div class="sec-card-body">العقار، الميزانية، الادخار، الاستثمار</div>
-      <a href="sec5.html" class="sec-card-link">عرض التفاصيل ←</a>
-    </div>
-    <div class="sec-card">
-      <div class="sec-card-head">
-        <span class="sec-card-title">٦. الإسلامية</span>
-        <span class="sec-card-badge weekly">أسبوعي</span>
-      </div>
-      <div class="sec-card-body">الحج، العمرة، الأذكار، الزكاة</div>
-      <a href="sec6.html" class="sec-card-link">عرض التفاصيل ←</a>
+  <div class="link-group" style="border-color:#f59e0b;">
+    <div class="link-group-title">📸 Instagram — منشور اليوم</div>
+    <div class="links" contenteditable="true" style="min-height:80px;">
+      <span class="empty">⏳ لا توجد منشورات بعد...</span>
     </div>
   </div>
 
-  <!-- روابط المقالات -->
-  <h2 class="section-title">📎 المقالات المقدمة للمراجعة</h2>
-  <p class="section-sub">👇 مانوس — ضع روابط المقالات المصممة هنا. كل قسم له مربع منفصل.</p>
-
-  <div class="link-group">
-    <div class="link-group-title">١. قصص مميزة</div>
-    <div class="links" contenteditable="true" style="min-height:50px;">
-      <span class="empty">⏳ لا توجد مقالات بعد...</span>
+  <div class="link-group" style="border-color:#f59e0b;">
+    <div class="link-group-title">🎬 Reels / YouTube Shorts — سكريبت اليوم</div>
+    <div class="links" contenteditable="true" style="min-height:80px;">
+      <span class="empty">⏳ لا توجد سكريبتات بعد...</span>
     </div>
   </div>
 
-  <div class="link-group">
-    <div class="link-group-title">٢. مقارنات وقرارات</div>
-    <div class="links" contenteditable="true" style="min-height:50px;">
-      <span class="empty">⏳ لا توجد مقالات بعد...</span>
+  <div class="link-group" style="border-color:#f59e0b;">
+    <div class="link-group-title">📘 Facebook — منشور اليوم</div>
+    <div class="links" contenteditable="true" style="min-height:80px;">
+      <span class="empty">⏳ لا توجد منشورات بعد...</span>
     </div>
   </div>
 
-  <div class="link-group">
-    <div class="link-group-title">٣. السلام يبدأ من البيت</div>
-    <div class="links" contenteditable="true" style="min-height:50px;">
-      <span class="empty">⏳ لا توجد مقالات بعد...</span>
-    </div>
-  </div>
-
-  <div class="link-group">
-    <div class="link-group-title">٤. الصحة والعافية</div>
-    <div class="links" contenteditable="true" style="min-height:50px;">
-      <span class="empty">⏳ لا توجد مقالات بعد...</span>
-    </div>
-  </div>
-
-  <div class="link-group">
-    <div class="link-group-title">٥. المالية والثروة</div>
-    <div class="links" contenteditable="true" style="min-height:50px;">
-      <span class="empty">⏳ لا توجد مقالات بعد...</span>
-    </div>
-  </div>
-
-  <div class="link-group">
-    <div class="link-group-title">٦. الإسلامية</div>
-    <div class="links" contenteditable="true" style="min-height:50px;">
-      <span class="empty">⏳ لا توجد مقالات بعد...</span>
+  <div class="link-group" style="border-color:#f59e0b;">
+    <div class="link-group-title">📊 تقرير نهاية الأسبوع — Saturday</div>
+    <div class="links" contenteditable="true" style="min-height:40px;">
+      <span class="empty">⏳ لا يوجد تقرير بعد...</span>
     </div>
   </div>
 
   <div class="footer-text">
-    بعد المراجعة والموافقة، تنقل المقالات إلى مجلداتها الرسمية وتنشر في الموقع.
+    كلود = محتوى الموقع | مانوس = إدارة السوشيال ميديا | أنت = مراجعة وموافقة نهائية 🚀
   </div>
 
 </div>
