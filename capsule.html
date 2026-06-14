@@ -622,12 +622,7 @@ async function loadMore(category, currentId) {
   var nb = document.getElementById('navbar');
   window.addEventListener('scroll', function(){ nb.classList.toggle('scrolled', window.scrollY > 20); }, {passive:true});
 
-  document.getElementById('lang-toggle').addEventListener('click', function(){
-    var h = document.documentElement;
-    var l = h.getAttribute('data-lang')==='ar'?'en':'ar';
-    h.setAttribute('data-lang',l);h.setAttribute('lang',l);h.setAttribute('dir',l==='ar'?'rtl':'ltr');
-    localStorage.setItem('dfl-lang',l);
-  });
+  // Language toggle handled by global.js
 
   var themeBtn = document.getElementById('theme-toggle');
   function applyTheme(t){

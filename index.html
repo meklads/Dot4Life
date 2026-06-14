@@ -1436,10 +1436,9 @@
 
       // ── Re-render on language change (keep lang-aware empty states)
       function handleLangChange() {
-        setTimeout(function(){ renderFamily(); renderTasks(); renderReminder(); }, 50);
+        renderFamily(); renderTasks(); renderReminder();
       }
-      document.getElementById('lang-toggle') && document.getElementById('lang-toggle').addEventListener('click', handleLangChange);
-      document.getElementById('lang-toggle-mobile') && document.getElementById('lang-toggle-mobile').addEventListener('click', handleLangChange);
+      document.addEventListener('dfl:langchange', handleLangChange);
 
       // ── Init
       renderFamily();
@@ -1579,12 +1578,6 @@
 
     // Re-init if language changes
     document.addEventListener('dfl:langchange', initMM);
-    document.getElementById('lang-toggle') && document.getElementById('lang-toggle').addEventListener('click', function(){
-      setTimeout(initMM, 50);
-    });
-    document.getElementById('lang-toggle-mobile') && document.getElementById('lang-toggle-mobile').addEventListener('click', function(){
-      setTimeout(initMM, 50);
-    });
   })();
 
   /* ── MOBILE HAMBURGER MENU ─────────────────────── */

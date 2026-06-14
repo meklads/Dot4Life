@@ -768,13 +768,7 @@
   var nb=document.getElementById('navbar');
   window.addEventListener('scroll',function(){nb.classList.toggle('scrolled',window.scrollY>40);},{passive:true});
 
-  // Lang toggle
-  document.getElementById('lang-toggle').addEventListener('click',function(){
-    var h=document.documentElement;
-    var l=h.getAttribute('data-lang')==='ar'?'en':'ar';
-    h.setAttribute('data-lang',l);h.setAttribute('lang',l);h.setAttribute('dir',l==='ar'?'rtl':'ltr');
-    localStorage.setItem('dfl-lang',l);
-  });
+  
 
   // Theme
   var themeBtn=document.getElementById('theme-toggle');
@@ -937,15 +931,7 @@
       if(s !== scrolled){ scrolled = s; nb.classList.toggle('scrolled', s); }
     }, {passive:true});
 
-    // ── Language toggle
-    document.getElementById('lang-toggle').addEventListener('click', function(){
-      var h = document.documentElement;
-      var l = h.getAttribute('data-lang') === 'ar' ? 'en' : 'ar';
-      h.setAttribute('data-lang', l);
-      h.setAttribute('lang', l);
-      h.setAttribute('dir', l === 'ar' ? 'rtl' : 'ltr');
-      localStorage.setItem('dfl-lang', l);
-    });
+    // ── Language toggle (handled by global.js)
 
     // ── Theme toggle
     var themeBtn = document.getElementById('theme-toggle');
@@ -1218,8 +1204,8 @@
       }
 
       // ── Re-render on language change (keep lang-aware empty states)
-      document.getElementById('lang-toggle') && document.getElementById('lang-toggle').addEventListener('click', function(){
-        setTimeout(function(){ renderFamily(); renderTasks(); renderReminder(); }, 50);
+      document.addEventListener('dfl:langchange', function(){
+        renderFamily(); renderTasks(); renderReminder();
       });
 
       // ── Init
@@ -1360,9 +1346,6 @@
 
     // Re-init if language changes
     document.addEventListener('dfl:langchange', initMM);
-    document.getElementById('lang-toggle') && document.getElementById('lang-toggle').addEventListener('click', function(){
-      setTimeout(initMM, 50);
-    });
   })();
 
   /* ── DAILY CAPSULE INTERACTION ─────────────────── */
