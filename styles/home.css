@@ -1595,29 +1595,35 @@
    CATEGORY/ARTICLE PAGES — reset navbar from transparent to solid
    (index-page transparent gradient is intended only for homepage)
    ══════════════════════════════════════════════════════════════ */
-.index-page.category-page #navbar,
-.category-page #navbar {
-  background: rgba(250,248,244,0.97);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--border);
+body.index-page.category-page #navbar,
+body.category-page #navbar {
+  background: #faf8f4 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-bottom: 1px solid var(--border) !important;
+  box-shadow: 0 1px 0 var(--border) !important;
 }
-.index-page.category-page #navbar::after,
-.category-page #navbar::after {
-  display: none;
+body.index-page.category-page #navbar::after,
+body.category-page #navbar::after {
+  display: none !important;
 }
-[data-theme="dark"] .index-page.category-page #navbar,
-[data-theme="dark"] .category-page #navbar {
-  background: rgba(18,16,14,0.97);
+[data-theme="dark"] body.index-page.category-page #navbar,
+[data-theme="dark"] body.category-page #navbar {
+  background: #12100e !important;
 }
-.index-page.category-page #navbar a,
-.category-page #navbar a {
-  color: var(--text);
+body.index-page.category-page #navbar a,
+body.category-page #navbar a {
+  color: var(--text) !important;
 }
-.index-page.category-page #navbar a:hover,
-.category-page #navbar a:hover {
-  background: var(--cream);
-  color: var(--text);
+body.index-page.category-page #navbar a:hover,
+body.category-page #navbar a:hover {
+  background: var(--cream) !important;
+  color: var(--text) !important;
+}
+body.index-page.category-page .nav-btn,
+body.category-page .nav-btn {
+  color: var(--text) !important;
+  border-color: var(--border) !important;
 }
 
 /* ══════════════════════════════════════════════════════════════
