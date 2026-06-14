@@ -732,15 +732,15 @@ body.index-page .mobile-dropdown .md-links a:active {
   position: fixed;
   top: 110px; left: 0; right: 0;
   z-index: calc(var(--z-nav, 9000) - 1);
-  background: rgba(255,255,255,0.97);
-  border-bottom: 1px solid var(--border);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: #054241;
+  border-bottom: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   height: 48px;
 }
 [data-theme="dark"] #sub-nav,
 [data-theme="dark"] .subnav-unified {
-  background: rgba(22,20,18,0.97);
+  background: #032a28;
 }
 .sub-nav-inner,
 .subnav-inner-unified {
@@ -1321,65 +1321,55 @@ body.index-page .mobile-dropdown .md-links a:active {
 .category-page #sub-nav + * { margin-top: 2.5rem; }
 
 
-/* Category pages: elegant sub-nav band — light green, framed by two thin lines, plain links */
+/* Category pages: sub-nav matches navbar green — continuous flow from header to hero */
 .category-page #sub-nav {
-  background: #e8f3ef !important;
-  border-top: 1px solid rgba(5,66,65,.16) !important;
-  border-bottom: 1px solid rgba(5,66,65,.16) !important;
+  background: #054241 !important;
+  border-top: none !important;
+  border-bottom: none !important;
   box-shadow: none !important;
 }
 .category-page .sub-nav-inner { justify-content: center; gap: 10px; }
 .category-page .sub-nav-inner a {
   background: transparent !important;
   border-radius: 0;
-  color: #054241;
-  font-weight: 600;
-  font-size: .92rem;
+  color: rgba(255,255,255,.85);
+  font-weight: 500;
+  font-size: .88rem;
   transition: color .2s ease;
 }
-.category-page .sub-nav-inner a:hover { background: transparent !important; color: #fd781c; }
-[data-theme="dark"] .category-page #sub-nav { background: rgba(5,66,65,.40) !important; border-top-color: rgba(255,255,255,.12) !important; border-bottom-color: rgba(255,255,255,.12) !important; }
-[data-theme="dark"] .category-page .sub-nav-inner a { color: #8fd4cc; }
-[data-theme="dark"] .category-page .sub-nav-inner a:hover { color: #fd781c; }
+.category-page .sub-nav-inner a:hover { background: transparent !important; color: #fff; }
+[data-theme="dark"] .category-page #sub-nav { background: #032a28 !important; border-top-color: transparent !important; border-bottom-color: transparent !important; }
+[data-theme="dark"] .category-page .sub-nav-inner a { color: rgba(255,255,255,.75); }
+[data-theme="dark"] .category-page .sub-nav-inner a:hover { color: #fff; }
 @media (max-width: 768px) { .category-page .sub-nav-inner { justify-content: flex-start; } }
 
-/* ── Per-category sub-nav color identity (the one element that differs per page) ── */
+/* ── Per-category sub-nav colour (subtle variation on dark green) ── */
 .cat-health #sub-nav {
-  background-color:#e1f1ea !important;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44'%3E%3Cpath d='M22 29 C 13 21 15 13 22 18 C 29 13 31 21 22 29 Z' fill='none' stroke='%23054241' stroke-opacity='0.07' stroke-width='1'/%3E%3C/svg%3E") !important;
-  background-size:44px 44px !important;
-  border-bottom:2px solid #3fa796 !important;
+  background-color:#054241 !important;
+  border-bottom:2px solid #2a9a98 !important;
 }
 .cat-finance #sub-nav {
-  background-color:#f5ecd6 !important;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44'%3E%3Cg fill='none' stroke='%23054241' stroke-opacity='0.07' stroke-width='1'%3E%3Ccircle cx='22' cy='22' r='9'/%3E%3Ccircle cx='22' cy='22' r='3.5'/%3E%3C/g%3E%3C/svg%3E") !important;
-  background-size:44px 44px !important;
+  background-color:#054241 !important;
   border-bottom:2px solid #c79a3a !important;
 }
 .cat-real-estate #sub-nav {
-  background-color:#f3e7df !important;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44'%3E%3Cg fill='none' stroke='%23054241' stroke-opacity='0.07' stroke-width='1'%3E%3Cpath d='M13 23 L22 14.5 L31 23'/%3E%3Cpath d='M15.5 22 L15.5 31 L28.5 31 L28.5 22'/%3E%3C/g%3E%3C/svg%3E") !important;
-  background-size:44px 44px !important;
+  background-color:#054241 !important;
   border-bottom:2px solid #bd7f55 !important;
 }
 .cat-travel #sub-nav {
-  background-color:#e1edf4 !important;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44'%3E%3Cpath d='M12 32 L33 12 L24 32 L20.5 24 Z' fill='none' stroke='%23054241' stroke-opacity='0.07' stroke-width='1' stroke-linejoin='round'/%3E%3C/svg%3E") !important;
-  background-size:44px 44px !important;
+  background-color:#054241 !important;
   border-bottom:2px solid #5a93c4 !important;
 }
 .cat-islamic #sub-nav {
-  background-color:#e4efe5 !important;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44'%3E%3Cg fill='none' stroke='%23054241' stroke-opacity='0.07' stroke-width='1'%3E%3Crect x='10' y='10' width='24' height='24'/%3E%3Crect x='10' y='10' width='24' height='24' transform='rotate(45 22 22)'/%3E%3C/g%3E%3C/svg%3E") !important;
-  background-size:44px 44px !important;
+  background-color:#054241 !important;
   border-bottom:2px solid #2f8f6f !important;
 }
-/* Dark theme: keep each category distinguishable with a subtle tint */
-[data-theme="dark"] .cat-health      #sub-nav { background:rgba(63,167,150,.18) !important; }
-[data-theme="dark"] .cat-finance     #sub-nav { background:rgba(199,154,58,.18) !important; }
-[data-theme="dark"] .cat-real-estate #sub-nav { background:rgba(189,127,85,.18) !important; }
-[data-theme="dark"] .cat-travel      #sub-nav { background:rgba(90,147,196,.18) !important; }
-[data-theme="dark"] .cat-islamic     #sub-nav { background:rgba(47,143,111,.18) !important; }
+/* Dark theme: sub-nav matches navbar */
+[data-theme="dark"] .cat-health      #sub-nav { background:#032a28 !important; }
+[data-theme="dark"] .cat-finance     #sub-nav { background:#032a28 !important; }
+[data-theme="dark"] .cat-real-estate #sub-nav { background:#032a28 !important; }
+[data-theme="dark"] .cat-travel      #sub-nav { background:#032a28 !important; }
+[data-theme="dark"] .cat-islamic     #sub-nav { background:#032a28 !important; }
 
 /* Category pages: hide decorative rings around hero circle (they cut the gradient) */
 .category-page .hero-circle-wrap::before,
