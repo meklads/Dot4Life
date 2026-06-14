@@ -15,7 +15,7 @@
     line-height: 1.8;
     padding: 30px 20px;
   }
-  .container { max-width: 900px; margin: 0 auto; }
+  .container { max-width: 960px; margin: 0 auto; }
 
   .header {
     background: linear-gradient(135deg, #2a9a98 0%, #1a7a78 100%);
@@ -30,11 +30,10 @@
 
   .section-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 16px;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
   }
-
   .sec-card {
     background: #fff;
     border-radius: 12px;
@@ -48,18 +47,13 @@
     box-shadow: 0 6px 20px rgba(42,154,152,0.12);
     border-color: #2a9a98;
   }
-
   .sec-card-head {
-    padding: 18px 20px 12px;
+    padding: 18px 20px 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-  .sec-card-title {
-    font-size: 16px;
-    font-weight: 700;
-    color: #1a5a58;
-  }
+  .sec-card-title { font-size: 16px; font-weight: 700; color: #1a5a58; }
   .sec-card-badge {
     font-size: 11px;
     background: #e8f5e9;
@@ -69,181 +63,186 @@
     font-weight: 700;
   }
   .sec-card-badge.weekly { background: #fff3e0; color: #e65100; }
-
-  .sec-card-body {
-    padding: 0 20px 14px;
-    font-size: 13px;
-    color: #666;
-  }
+  .sec-card-body { padding: 0 20px 12px; font-size: 13px; color: #666; }
   .sec-card-link {
-    display: block;
-    text-decoration: none;
-    color: #2a9a98;
-    font-weight: 700;
-    font-size: 13px;
-    padding: 10px 20px;
-    border-top: 1px solid #f0f0f0;
-    text-align: center;
-    transition: background 0.2s;
+    display: block; text-decoration: none; color: #2a9a98;
+    font-weight: 700; font-size: 13px; padding: 10px 20px;
+    border-top: 1px solid #f0f0f0; text-align: center; transition: background 0.2s;
   }
-  .sec-card-link:hover {
-    background: #f0f7f7;
-  }
+  .sec-card-link:hover { background: #f0f7f7; }
 
   .section-title {
-    font-size: 20px;
-    color: #2a9a98;
-    margin: 20px 0 12px;
-    padding-bottom: 6px;
-    border-bottom: 2px solid #2a9a98;
+    font-size: 20px; color: #2a9a98; margin: 30px 0 12px;
+    padding-bottom: 6px; border-bottom: 2px solid #2a9a98;
+  }
+  .section-sub {
+    font-size: 14px; color: #888; margin-bottom: 16px;
   }
 
-  .articles-list {
+  .link-group {
     background: #fff;
     border-radius: 10px;
-    padding: 16px 20px;
-    margin-bottom: 30px;
-    min-height: 60px;
     border: 2px dashed #ddd;
-    font-size: 14px;
-    line-height: 2;
+    padding: 14px 20px;
+    margin-bottom: 24px;
   }
-  .articles-list a {
-    color: #2a9a98;
-    text-decoration: none;
+  .link-group-title {
+    font-size: 15px; font-weight: 700; color: #1a5a58; margin-bottom: 8px;
   }
-  .articles-list a:hover {
-    text-decoration: underline;
+  .link-group .links {
+    font-size: 14px; line-height: 2.2;
   }
-  .articles-list .empty {
-    color: #bbb;
-    text-align: center;
-    padding: 10px 0;
+  .link-group .links a {
+    color: #2a9a98; text-decoration: none;
+    display: inline-block; margin-left: 8px;
   }
+  .link-group .links a:hover { text-decoration: underline; }
+  .link-group .links .badge {
+    display: inline-block; font-size: 11px; padding: 1px 8px;
+    border-radius: 8px; margin-left: 4px; font-weight: 700;
+  }
+  .badge-ar { background: #e8f5e9; color: #2e7d32; }
+  .badge-en { background: #e3f2fd; color: #1565c0; }
+  .link-group .empty { color: #bbb; font-size: 13px; }
 
-  .articles-list[contenteditable="true"]:focus {
-    outline: none;
-    border-color: #2a9a98;
+  .instructions {
+    background: #fffbe6;
+    border-right: 4px solid #f59e0b;
+    padding: 16px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-bottom: 30px;
   }
+  .instructions strong { color: #92400e; }
 
   .footer-text {
-    text-align: center;
-    color: #aaa;
-    font-size: 13px;
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid #eee;
+    text-align: center; color: #aaa; font-size: 13px;
+    margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee;
   }
 </style>
 </head>
 <body>
-
 <div class="container">
 
   <!-- HEADER -->
   <div class="header">
     <h1>📋 لوحة المراجعة — دوت فور لايف</h1>
-    <div class="sub">كل قسم له صفحته الخاصة. مانوس يصمم المقالات ويضع روابطها هنا للمراجعة.</div>
+    <div class="sub">مانوس يصمم صفحة HTML كاملة لكل مقالة (نص + صور + تنسيق) ويضع الرابط هنا</div>
   </div>
 
-  <!-- القائمة -->
-  <div class="section-grid">
+  <!-- تعليمات -->
+  <div class="instructions">
+    <strong>📌 لمانوس:</strong><br>
+    1. اقرأ تفاصيل القسم والمقال في صفحته الخاصة (sec1.html إلى sec6.html)<br>
+    2. صمم صفحة HTML كاملة للمقالة — نص + صور + تنسيق + روابط + Meta tags<br>
+    3. استخدم نفس قالب الموقع (navbar، footer، styles موجودة)<br>
+    4. احفظ الملف في مجلده المناسب (مثلاً <code>assets/queue/</code> أو أي مجلد مؤقت)<br>
+    5. ضع رابط المقالة هنا تحت القسم المناسب ← عربية وإنجليزية<br>
+    6. Claude سيراجع المقالة ويعدل الأخطاء ثم ينقلها للمكان الرسمي وينشرها
+  </div>
 
+  <!-- CARDS -->
+  <div class="section-grid">
     <div class="sec-card">
       <div class="sec-card-head">
         <span class="sec-card-title">١. قصص مميزة</span>
         <span class="sec-card-badge">يومي</span>
       </div>
-      <div class="sec-card-body">Featured Stories — قصص إنسانية ملهمة للعائلة الخليجية</div>
-      <a href="sec1.html" class="sec-card-link">فتح القسم ←</a>
+      <div class="sec-card-body">قصص إنسانية ملهمة — أمهات، آباء، عائلات</div>
+      <a href="sec1.html" class="sec-card-link">عرض التفاصيل ←</a>
     </div>
-
     <div class="sec-card">
       <div class="sec-card-head">
         <span class="sec-card-title">٢. مقارنات وقرارات</span>
         <span class="sec-card-badge">يومي</span>
       </div>
-      <div class="sec-card-body">Comparisons & Decisions — مقارنات موضوعية بالأرقام</div>
-      <a href="sec2.html" class="sec-card-link">فتح القسم ←</a>
+      <div class="sec-card-body">مقارنات موضوعية بالأرقام — مالية، تعليم، صحة</div>
+      <a href="sec2.html" class="sec-card-link">عرض التفاصيل ←</a>
     </div>
-
     <div class="sec-card">
       <div class="sec-card-head">
         <span class="sec-card-title">٣. السلام يبدأ من البيت</span>
         <span class="sec-card-badge">يومي</span>
       </div>
-      <div class="sec-card-body">Peace Capsules — كبسولات هدوء وسكينة للأسرة</div>
-      <a href="sec3.html" class="sec-card-link">فتح القسم ←</a>
+      <div class="sec-card-body">كبسولات هدوء وسكينة — روتين، تواصل، تأمل</div>
+      <a href="sec3.html" class="sec-card-link">عرض التفاصيل ←</a>
     </div>
-
     <div class="sec-card">
       <div class="sec-card-head">
         <span class="sec-card-title">٤. الصحة والعافية</span>
         <span class="sec-card-badge weekly">أسبوعي</span>
       </div>
-      <div class="sec-card-body">Health & Wellness — الحمل والولادة وصحة الأم</div>
-      <a href="sec4.html" class="sec-card-link">فتح القسم ←</a>
+      <div class="sec-card-body">الحمل والولادة — فحوصات، تغذية، رضاعة</div>
+      <a href="sec4.html" class="sec-card-link">عرض التفاصيل ←</a>
     </div>
-
     <div class="sec-card">
       <div class="sec-card-head">
         <span class="sec-card-title">٥. المالية والثروة</span>
         <span class="sec-card-badge weekly">أسبوعي</span>
       </div>
-      <div class="sec-card-body">Finance & Wealth — العقار والادخار والتخطيط المالي</div>
-      <a href="sec5.html" class="sec-card-link">فتح القسم ←</a>
+      <div class="sec-card-body">العقار، الميزانية، الادخار، الاستثمار</div>
+      <a href="sec5.html" class="sec-card-link">عرض التفاصيل ←</a>
     </div>
-
     <div class="sec-card">
       <div class="sec-card-head">
         <span class="sec-card-title">٦. الإسلامية</span>
         <span class="sec-card-badge weekly">أسبوعي</span>
       </div>
-      <div class="sec-card-body">Islamic — الحج والعمرة والأذكار اليومية</div>
-      <a href="sec6.html" class="sec-card-link">فتح القسم ←</a>
+      <div class="sec-card-body">الحج، العمرة، الأذكار، الزكاة</div>
+      <a href="sec6.html" class="sec-card-link">عرض التفاصيل ←</a>
     </div>
-
   </div>
 
-  <!-- المقالات المقدمة للمراجعة -->
+  <!-- روابط المقالات -->
   <h2 class="section-title">📎 المقالات المقدمة للمراجعة</h2>
-  <p style="color:#888;font-size:14px;margin-bottom:10px;">👇 مانوس — ضع روابط المقالات التي صممتها هنا (عربي + إنجليزي)</p>
+  <p class="section-sub">👇 مانوس — ضع روابط المقالات المصممة هنا. كل قسم له مربع منفصل.</p>
 
-  <h3 style="font-size:16px;color:#1a5a58;margin-top:20px;">١. قصص مميزة</h3>
-  <div class="articles-list" contenteditable="true" id="list-sec1">
-    <div class="empty">⏳ لا توجد مقالات بعد...</div>
+  <div class="link-group">
+    <div class="link-group-title">١. قصص مميزة</div>
+    <div class="links" contenteditable="true" style="min-height:50px;">
+      <span class="empty">⏳ لا توجد مقالات بعد...</span>
+    </div>
   </div>
 
-  <h3 style="font-size:16px;color:#1a5a58;">٢. مقارنات وقرارات</h3>
-  <div class="articles-list" contenteditable="true" id="list-sec2">
-    <div class="empty">⏳ لا توجد مقالات بعد...</div>
+  <div class="link-group">
+    <div class="link-group-title">٢. مقارنات وقرارات</div>
+    <div class="links" contenteditable="true" style="min-height:50px;">
+      <span class="empty">⏳ لا توجد مقالات بعد...</span>
+    </div>
   </div>
 
-  <h3 style="font-size:16px;color:#1a5a58;">٣. السلام يبدأ من البيت</h3>
-  <div class="articles-list" contenteditable="true" id="list-sec3">
-    <div class="empty">⏳ لا توجد مقالات بعد...</div>
+  <div class="link-group">
+    <div class="link-group-title">٣. السلام يبدأ من البيت</div>
+    <div class="links" contenteditable="true" style="min-height:50px;">
+      <span class="empty">⏳ لا توجد مقالات بعد...</span>
+    </div>
   </div>
 
-  <h3 style="font-size:16px;color:#1a5a58;">٤. الصحة والعافية</h3>
-  <div class="articles-list" contenteditable="true" id="list-sec4">
-    <div class="empty">⏳ لا توجد مقالات بعد...</div>
+  <div class="link-group">
+    <div class="link-group-title">٤. الصحة والعافية</div>
+    <div class="links" contenteditable="true" style="min-height:50px;">
+      <span class="empty">⏳ لا توجد مقالات بعد...</span>
+    </div>
   </div>
 
-  <h3 style="font-size:16px;color:#1a5a58;">٥. المالية والثروة</h3>
-  <div class="articles-list" contenteditable="true" id="list-sec5">
-    <div class="empty">⏳ لا توجد مقالات بعد...</div>
+  <div class="link-group">
+    <div class="link-group-title">٥. المالية والثروة</div>
+    <div class="links" contenteditable="true" style="min-height:50px;">
+      <span class="empty">⏳ لا توجد مقالات بعد...</span>
+    </div>
   </div>
 
-  <h3 style="font-size:16px;color:#1a5a58;">٦. الإسلامية</h3>
-  <div class="articles-list" contenteditable="true" id="list-sec6">
-    <div class="empty">⏳ لا توجد مقالات بعد...</div>
+  <div class="link-group">
+    <div class="link-group-title">٦. الإسلامية</div>
+    <div class="links" contenteditable="true" style="min-height:50px;">
+      <span class="empty">⏳ لا توجد مقالات بعد...</span>
+    </div>
   </div>
 
   <div class="footer-text">
-    بعد الموافقة على المقالة، يتم نقلها من مجلدها المؤقت إلى مجلدها الرسمي في الموقع.
+    بعد المراجعة والموافقة، تنقل المقالات إلى مجلداتها الرسمية وتنشر في الموقع.
   </div>
 
 </div>
-
 </body>
 </html>
