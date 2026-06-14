@@ -112,17 +112,18 @@
       background: linear-gradient(180deg, #032a28 0%, #032a28 5%, #032a28 10%, #032a28 15%, #054241 20%, #054241 28%, #054241 38%, #032a28 48%, #0e1218 100%);
     }
 
-    /* Homepage navbar override — seamless gradient blend with hero */
+    /* Homepage navbar override — solid green matching hero top,
+       no transparency to avoid dark overlay on article pages */
     body.index-page #navbar,
     #navbar.index-nav {
-      background: linear-gradient(180deg, rgba(5,66,65,1) 0%, rgba(5,66,65,0.9) 30%, rgba(5,66,65,0.5) 60%, rgba(5,66,65,0.2) 85%, rgba(5,66,65,0.08) 100%);
+      background: #054241;
       backdrop-filter: none;
       -webkit-backdrop-filter: none;
       border-bottom: none;
     }
     /* Same for category pages */
     body.has-subnav #navbar {
-      background: linear-gradient(180deg, rgba(5,66,65,1) 0%, rgba(5,66,65,0.9) 30%, rgba(5,66,65,0.5) 60%, rgba(5,66,65,0.2) 85%, rgba(5,66,65,0.08) 100%);
+      background: #054241;
       backdrop-filter: none;
       -webkit-backdrop-filter: none;
       border-bottom: none;
@@ -140,7 +141,7 @@
     }
     [data-theme="dark"] body.index-page #navbar,
     [data-theme="dark"] #navbar.index-nav {
-      background: linear-gradient(180deg, rgba(3,42,40,1) 0%, rgba(3,42,40,0.9) 30%, rgba(3,42,40,0.5) 60%, rgba(3,42,40,0.2) 85%, rgba(3,42,40,0.08) 100%);
+      background: #032a28;
     }
     [data-theme="dark"] body.index-page #navbar::after,
     [data-theme="dark"] #navbar.index-nav::after {
@@ -1591,40 +1592,6 @@
 
 } /* ← أغلاق media query 768px */
 
-/* ══════════════════════════════════════════════════════════════
-   CATEGORY/ARTICLE PAGES — reset navbar from transparent to solid
-   (index-page transparent gradient is intended only for homepage)
-   ══════════════════════════════════════════════════════════════ */
-body.index-page.category-page #navbar,
-body.category-page #navbar {
-  background: #faf8f4 !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  border-bottom: 1px solid var(--border) !important;
-  box-shadow: 0 1px 0 var(--border) !important;
-}
-body.index-page.category-page #navbar::after,
-body.category-page #navbar::after {
-  display: none !important;
-}
-[data-theme="dark"] body.index-page.category-page #navbar,
-[data-theme="dark"] body.category-page #navbar {
-  background: #12100e !important;
-}
-body.index-page.category-page #navbar a,
-body.category-page #navbar a {
-  color: var(--text) !important;
-}
-body.index-page.category-page #navbar a:hover,
-body.category-page #navbar a:hover {
-  background: var(--cream) !important;
-  color: var(--text) !important;
-}
-body.index-page.category-page .nav-btn,
-body.category-page .nav-btn {
-  color: var(--text) !important;
-  border-color: var(--border) !important;
-}
 
 /* ══════════════════════════════════════════════════════════════
    HOMEPAGE SECTION CONTAINERS — Consistent 1280px width
