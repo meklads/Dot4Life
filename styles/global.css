@@ -1054,35 +1054,27 @@ body.index-page .mobile-dropdown .md-links a:active {
 }
 [data-theme="dark"] #hero::after { background: radial-gradient(ellipse, rgba(212,168,50,.09) 0%, transparent 68%); }
 
-/* Category pages: shorter hero so sub-nav is visible below fold */
-.category-page #hero {
-  min-height: 55vh !important;
-}
-.category-page .hero-inner {
-  max-width: 1280px !important;
-  margin: 0 auto !important;
-  grid-template-columns: 1fr 1fr !important;
-  gap: clamp(3rem, 6vw, 7rem) !important;
-  align-items: center !important;
-  padding: clamp(9rem, 12vw, 12rem) clamp(1.5rem, 4vw, 4rem) clamp(2rem, 4vw, 4rem) !important;
-}
-@media (max-width: 768px) {
-  .category-page .hero-inner {
-    grid-template-columns: 1fr !important;
-    gap: 2rem !important;
-    padding: 7rem 24px 2.5rem !important;
-  }
+/* ── HERO — unified size for all pages ────────────── */
+#hero {
+  min-height: 55vh;
 }
 
-/* Hero inner grid */
+/* Hero inner grid — consistent padding matching about.html design */
 .hero-inner {
   max-width: 1280px;
   margin: 0 auto;
-  padding: clamp(14rem, 18vw, 18rem) clamp(1.5rem, 4vw, 4rem) clamp(5rem, 8vw, 8rem);
+  padding: clamp(9rem, 12vw, 12rem) clamp(1.5rem, 4vw, 4rem) clamp(2rem, 4vw, 4rem);
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: clamp(3rem, 6vw, 7rem);
   align-items: center;
+}
+@media (max-width: 768px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 7rem 24px 2.5rem;
+  }
 }
 [data-lang="ar"] .hero-inner { direction: rtl; }
 

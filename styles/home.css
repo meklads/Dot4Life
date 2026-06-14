@@ -101,15 +101,35 @@
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
     .reveal.visible { opacity: 1; transform: none; }
 
-    /* ─── HERO — editorial 50/50 ────────────────────── */
+    /* ─── HERO — editorial 50/50, smooth gradient ───── */
     #hero {
       margin-top: 0;
-      background: linear-gradient(180deg, #054241 0%, #054241 5%, #054241 10%, #054241 15%, #0a5a58 20%, #0d7a78 28%, #2a9a98 38%, #6abfb8 48%, #ffffff 100%);
+      background: linear-gradient(180deg,
+        #054241 0%,
+        #054241 12%,
+        #0a5a58 22%,
+        #0d7a78 32%,
+        #2a9a98 44%,
+        #6abfb8 56%,
+        #a8d5cf 70%,
+        #d5ebe7 84%,
+        #ffffff 100%
+      );
       position: relative;
       overflow: hidden;
     }
     [data-theme="dark"] #hero {
-      background: linear-gradient(180deg, #032a28 0%, #032a28 5%, #032a28 10%, #032a28 15%, #054241 20%, #054241 28%, #054241 38%, #032a28 48%, #0e1218 100%);
+      background: linear-gradient(180deg,
+        #032a28 0%,
+        #032a28 12%,
+        #054241 22%,
+        #054241 32%,
+        #054241 44%,
+        #0a5a58 56%,
+        #0d7a78 70%,
+        #032a28 84%,
+        #0e1218 100%
+      );
     }
 
     /* Homepage navbar override — solid green matching hero top,
