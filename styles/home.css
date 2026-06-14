@@ -104,8 +104,6 @@
     /* ─── HERO — editorial 50/50, smooth gradient ───── */
     #hero {
       margin-top: 0;
-      margin-bottom: -80px;
-      padding-top: 80px;
       background: linear-gradient(180deg,
         #054241 0%,
         #054241 12%,
@@ -134,14 +132,24 @@
       );
     }
 
-    /* Homepage navbar override — solid green matching hero top,
-       no transparency to avoid dark overlay on article pages */
+    /* Homepage navbar — transparent so hero gradient shows through from the top;
+       becomes solid green on scroll for readability over white content */
     body.index-page #navbar,
     #navbar.index-nav {
-      background: #054241;
+      background: transparent;
       backdrop-filter: none;
       -webkit-backdrop-filter: none;
       border-bottom: none;
+    }
+    body.index-page #navbar.scrolled,
+    #navbar.index-nav.scrolled {
+      background: #054241;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+    [data-theme="dark"] body.index-page #navbar.scrolled,
+    [data-theme="dark"] #navbar.index-nav.scrolled {
+      background: #032a28;
     }
     /* Same for category pages */
     body.has-subnav #navbar {
