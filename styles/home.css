@@ -1592,6 +1592,35 @@
 } /* ← أغلاق media query 768px */
 
 /* ══════════════════════════════════════════════════════════════
+   CATEGORY/ARTICLE PAGES — reset navbar from transparent to solid
+   (index-page transparent gradient is intended only for homepage)
+   ══════════════════════════════════════════════════════════════ */
+.index-page.category-page #navbar,
+.category-page #navbar {
+  background: rgba(250,248,244,0.97);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+.index-page.category-page #navbar::after,
+.category-page #navbar::after {
+  display: none;
+}
+[data-theme="dark"] .index-page.category-page #navbar,
+[data-theme="dark"] .category-page #navbar {
+  background: rgba(18,16,14,0.97);
+}
+.index-page.category-page #navbar a,
+.category-page #navbar a {
+  color: var(--text);
+}
+.index-page.category-page #navbar a:hover,
+.category-page #navbar a:hover {
+  background: var(--cream);
+  color: var(--text);
+}
+
+/* ══════════════════════════════════════════════════════════════
    HOMEPAGE SECTION CONTAINERS — Consistent 1280px width
    Added 2026-06-08 to match Featured Stories width across all sections
    ══════════════════════════════════════════════════════════════ */
