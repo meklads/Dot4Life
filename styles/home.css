@@ -588,21 +588,6 @@
 
     /* ─── HOMEPAGE ENHANCEMENTS ─────────────────────────── */
     /* Hero ambient glow */
-    #hero { overflow: hidden; }
-    #hero::after {
-      content: '';
-      position: absolute;
-      top: -80px; right: -120px;
-      width: 600px; height: 600px;
-      background: radial-gradient(ellipse, rgba(184,134,26,.07) 0%, transparent 68%);
-      pointer-events: none; border-radius: 50%;
-      animation: heroGlow 8s ease-in-out infinite alternate;
-    }
-    @keyframes heroGlow {
-      0% { transform: scale(1) translate(0,0); opacity: .9; }
-      100% { transform: scale(1.12) translate(-30px,20px); opacity: .5; }
-    }
-    [data-theme="dark"] #hero::after { background: radial-gradient(ellipse, rgba(212,168,50,.09) 0%, transparent 68%); }
     /* Hero floating badge */
     .hero-badge {
       position: absolute; bottom: -18px; right: 8%;
