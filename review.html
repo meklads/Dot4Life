@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>المراجعة — القسم الأول: قصص مميزة | دوت فور لايف</title>
+<title>لوحة المراجعة — دوت فور لايف</title>
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
 <meta name="robots" content="noindex, nofollow">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -14,94 +15,124 @@
     line-height: 1.8;
     padding: 30px 20px;
   }
-  .container { max-width: 1100px; margin: 0 auto; }
+  .container { max-width: 900px; margin: 0 auto; }
+
   .header {
     background: linear-gradient(135deg, #2a9a98 0%, #1a7a78 100%);
     color: #fff;
     padding: 30px 40px;
     border-radius: 16px;
     margin-bottom: 30px;
+    text-align: center;
   }
   .header h1 { font-size: 28px; margin-bottom: 6px; }
-  .header .sub { font-size: 15px; opacity: 0.85; }
-  .header .tag {
-    display: inline-block;
-    background: rgba(255,255,255,0.2);
-    padding: 4px 14px;
-    border-radius: 20px;
-    font-size: 13px;
-    margin-top: 8px;
+  .header .sub { font-size: 14px; opacity: 0.85; }
+
+  .section-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+    margin-bottom: 40px;
   }
-  .section-title {
-    font-size: 22px;
-    color: #2a9a98;
-    margin: 30px 0 16px;
-    padding-bottom: 8px;
-    border-bottom: 3px solid #2a9a98;
-  }
-  .subsection {
-    font-size: 17px;
-    color: #555;
-    margin: 20px 0 10px;
-  }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 14px;
-    margin: 10px 0 25px;
+
+  .sec-card {
     background: #fff;
-    border-radius: 10px;
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: all 0.2s;
+    border: 2px solid transparent;
   }
-  th, td {
-    border: 1px solid #e8e8e8;
-    padding: 10px 12px;
-    text-align: right;
-    vertical-align: top;
+  .sec-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(42,154,152,0.12);
+    border-color: #2a9a98;
   }
-  th {
-    background: #f0f7f7;
-    color: #1a5a58;
+
+  .sec-card-head {
+    padding: 18px 20px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .sec-card-title {
+    font-size: 16px;
     font-weight: 700;
-    font-size: 13px;
+    color: #1a5a58;
   }
-  td { background: #fff; }
-  tr:hover td { background: #fafcfc; }
-  .kv { color: #2a9a98; font-weight: 700; }
-  .kd { display: inline-block; background: #e8f5e9; color: #2e7d32; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 700; }
-  .kd-mid { background: #fff3e0; color: #e65100; }
-  .badge {
-    display: inline-block;
-    background: #2a9a98;
-    color: #fff;
+  .sec-card-badge {
     font-size: 11px;
+    background: #e8f5e9;
+    color: #2e7d32;
     padding: 2px 10px;
     border-radius: 10px;
     font-weight: 700;
   }
-  .glimpse {
+  .sec-card-badge.weekly { background: #fff3e0; color: #e65100; }
+
+  .sec-card-body {
+    padding: 0 20px 14px;
     font-size: 13px;
     color: #666;
-    font-style: italic;
-    line-height: 1.6;
   }
-  .type-icon { font-size: 18px; }
-  .note-box {
-    background: #fffbe6;
-    border-right: 4px solid #f59e0b;
+  .sec-card-link {
+    display: block;
+    text-decoration: none;
+    color: #2a9a98;
+    font-weight: 700;
+    font-size: 13px;
+    padding: 10px 20px;
+    border-top: 1px solid #f0f0f0;
+    text-align: center;
+    transition: background 0.2s;
+  }
+  .sec-card-link:hover {
+    background: #f0f7f7;
+  }
+
+  .section-title {
+    font-size: 20px;
+    color: #2a9a98;
+    margin: 20px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #2a9a98;
+  }
+
+  .articles-list {
+    background: #fff;
+    border-radius: 10px;
     padding: 16px 20px;
-    margin: 20px 0;
-    border-radius: 8px;
+    margin-bottom: 30px;
+    min-height: 60px;
+    border: 2px dashed #ddd;
     font-size: 14px;
+    line-height: 2;
   }
-  .note-box strong { color: #92400e; }
-  hr { border: none; border-top: 2px dashed #ddd; margin: 30px 0; }
+  .articles-list a {
+    color: #2a9a98;
+    text-decoration: none;
+  }
+  .articles-list a:hover {
+    text-decoration: underline;
+  }
+  .articles-list .empty {
+    color: #bbb;
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  .articles-list[contenteditable="true"]:focus {
+    outline: none;
+    border-color: #2a9a98;
+  }
+
   .footer-text {
     text-align: center;
     color: #aaa;
     font-size: 13px;
     margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
   }
 </style>
 </head>
@@ -111,125 +142,106 @@
 
   <!-- HEADER -->
   <div class="header">
-    <h1>📋 القسم الأول: قصص مميزة</h1>
-    <div class="sub">Featured Stories — قلب دوت فور لايف. قصص إنسانية تعكس حياة الأسرة الخليجية</div>
-    <div class="tag">📅 تحديث يومي — 5 مقالات أسبوعياً</div>
+    <h1>📋 لوحة المراجعة — دوت فور لايف</h1>
+    <div class="sub">كل قسم له صفحته الخاصة. مانوس يصمم المقالات ويضع روابطها هنا للمراجعة.</div>
   </div>
 
-  <!-- فهم القسم -->
-  <h2 class="section-title">🔍 فهم القسم</h2>
+  <!-- القائمة -->
+  <div class="section-grid">
 
-  <table>
-    <tr><th style="width:180px;">الهدف</th><td>تقديم قصص واقعية ملهمة تشبه القارئ الخليجي — ليس أخباراً ولا نصائح جافة</td></tr>
-    <tr><th>الجمهور</th><td>أمهات خليجيات (30-45)، آباء (30-50)، أسر شابة وممتدة</td></tr>
-    <tr><th>النبرة</th><td>دافئة، إنسانية، بسيطة — كأنك تجلس مع صديق</td></tr>
-    <tr><th>مدة القراءة</th><td>4-6 دقائق (800-1200 كلمة)</td></tr>
-    <tr><th>عدد المقالات</th><td>5 مقالات / أسبوع — 20-25 مقالة للمكتبة</td></tr>
-    <tr><th>أنواع القصص</th><td>🧕 قصة أم · 👨‍👧‍👦 قصة أب · 👨‍👩‍👧‍👦 قصة عائلة · 🧓 قصة أجيال · 💪 قصة تحدٍ · 🏆 قصة نجاح</td></tr>
-  </table>
+    <div class="sec-card">
+      <div class="sec-card-head">
+        <span class="sec-card-title">١. قصص مميزة</span>
+        <span class="sec-card-badge">يومي</span>
+      </div>
+      <div class="sec-card-body">Featured Stories — قصص إنسانية ملهمة للعائلة الخليجية</div>
+      <a href="sec1.html" class="sec-card-link">فتح القسم ←</a>
+    </div>
 
-  <!-- جدول المقالات -->
-  <h2 class="section-title">📊 جدول المقالات — قصص مميزة</h2>
-  <p class="subsection">5 أفكار — كل منها يغطي نوعاً مختلفاً من القصص</p>
+    <div class="sec-card">
+      <div class="sec-card-head">
+        <span class="sec-card-title">٢. مقارنات وقرارات</span>
+        <span class="sec-card-badge">يومي</span>
+      </div>
+      <div class="sec-card-body">Comparisons & Decisions — مقارنات موضوعية بالأرقام</div>
+      <a href="sec2.html" class="sec-card-link">فتح القسم ←</a>
+    </div>
 
-  <table>
-    <thead>
-      <tr>
-        <th style="width:30px;">#</th>
-        <th style="width:180px;">العنوان</th>
-        <th style="width:120px;">النوع</th>
-        <th style="width:140px;">الشخصية المحورية</th>
-        <th>الزاوية / لمحة عن القصة</th>
-        <th style="width:130px;">الكلمة المفتاحية (AR)</th>
-        <th style="width:140px;">الكلمة المفتاحية (EN)</th>
-        <th style="width:50px;">KD</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td><strong>أم عربية بنت شركة ناشئة من مطبخها</strong></td>
-        <td><span class="type-icon">🧕</span> قصة أم</td>
-        <td>أم سعودية عاملة لديها ٣ أطفال</td>
-        <td class="glimpse">"من مطبخ بيتها إلى أول ١٠٠ ألف ريال — كيف وازنت بين الحفاضات والعمل؟ قصة حقيقية لأم سعودية بدأت مشروع حلويات منزلي وتحول لشركة ناجحة."</td>
-        <td>مشاريع نسائية من المنزل السعودية</td>
-        <td>home business ideas Saudi Arabia</td>
-        <td><span class="kd">12</span></td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td><strong>أب سعودي ترك وظيفته ليكون مع أطفاله</strong></td>
-        <td><span class="type-icon">👨‍👧‍👦</span> قصة أب</td>
-        <td>أب سعودي في الأربعين</td>
-        <td class="glimpse">"قرار جريء: أب يترك وظيفة حكومية مربحة ليربي أبناءه بنفسه. ماذا قال المجتمع؟ وكيف تغيرت علاقته بأبنائه بعد سنة من التفرغ؟"</td>
-        <td>أب متفرغ لرعاية الأطفال السعودية</td>
-        <td>stay at home dad Saudi Arabia</td>
-        <td><span class="kd">6</span></td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td><strong>عائلة من ٦ أفراد عاشت بـ ٣٠٠٠ ريال شهرياً</strong></td>
-        <td><span class="type-icon">💰</span> قصة عائلة (تحدٍ مالي)</td>
-        <td>أسرة مكونة من زوجين و٤ أطفال</td>
-        <td class="glimpse">"تحدي الادخار القاسي: عائلة سعودية كبيرة قررت العيش بـ ٣٠٠٠ ريال لمدة سنة كاملة لسداد ديونها. اليوم هم بلا ديون — كيف فعلوها؟"</td>
-        <td>تجربة ادخار عائلة سعودية</td>
-        <td>family saving tips Saudi</td>
-        <td><span class="kd">8</span></td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td><strong>جدة وأم وحفيدة: ثلاث أجيال تحت سقف واحد</strong></td>
-        <td><span class="type-icon">🧓</span> قصة أجيال</td>
-        <td>جدة خليجية وابنتها وحفيدتها</td>
-        <td class="glimpse">"ثلاث نساء، ثلاثة أجيال، بيت واحد. من الطبخ إلى التربية إلى الخلافات — كيف تمكنت عائلة خليجية من العيش معاً بانسجام رغم فارق الأجيال؟"</td>
-        <td>العيش مع الأهل بعد الزواج السعودية</td>
-        <td>extended family living Gulf</td>
-        <td><span class="kd">5</span></td>
-      </tr>
-      <tr>
-        <td>5</td>
-        <td><strong>رحلة أب خليجي مع ابنه في الطيف التوحدي</strong></td>
-        <td><span class="type-icon">💪</span> قصة تحدٍ</td>
-        <td>أب خليجي وطفله المصاب بالتوحد</td>
-        <td class="glimpse">"عندما شخص ابنك بالتوحد — رحلة أب إماراتي من الصدمة إلى التقبل إلى الدعم. كيف غيّر هذا التشخيص نظرته للحياة والأبوة؟"</td>
-        <td>تربية طفل توحد في الخليج</td>
-        <td>parenting autistic child UAE</td>
-        <td><span class="kd">8</span></td>
-      </tr>
-    </tbody>
-  </table>
+    <div class="sec-card">
+      <div class="sec-card-head">
+        <span class="sec-card-title">٣. السلام يبدأ من البيت</span>
+        <span class="sec-card-badge">يومي</span>
+      </div>
+      <div class="sec-card-body">Peace Capsules — كبسولات هدوء وسكينة للأسرة</div>
+      <a href="sec3.html" class="sec-card-link">فتح القسم ←</a>
+    </div>
 
-  <!-- إرشادات الكاتب -->
-  <h2 class="section-title">✍️ إرشادات لمانوس</h2>
+    <div class="sec-card">
+      <div class="sec-card-head">
+        <span class="sec-card-title">٤. الصحة والعافية</span>
+        <span class="sec-card-badge weekly">أسبوعي</span>
+      </div>
+      <div class="sec-card-body">Health & Wellness — الحمل والولادة وصحة الأم</div>
+      <a href="sec4.html" class="sec-card-link">فتح القسم ←</a>
+    </div>
 
-  <div class="note-box">
-    <strong>📌 القاعدة الذهبية:</strong> القصة أولاً، وال SEO ثانياً. القارئ يجب أن يشعر أن هذه القصة "عنه".
+    <div class="sec-card">
+      <div class="sec-card-head">
+        <span class="sec-card-title">٥. المالية والثروة</span>
+        <span class="sec-card-badge weekly">أسبوعي</span>
+      </div>
+      <div class="sec-card-body">Finance & Wealth — العقار والادخار والتخطيط المالي</div>
+      <a href="sec5.html" class="sec-card-link">فتح القسم ←</a>
+    </div>
+
+    <div class="sec-card">
+      <div class="sec-card-head">
+        <span class="sec-card-title">٦. الإسلامية</span>
+        <span class="sec-card-badge weekly">أسبوعي</span>
+      </div>
+      <div class="sec-card-body">Islamic — الحج والعمرة والأذكار اليومية</div>
+      <a href="sec6.html" class="sec-card-link">فتح القسم ←</a>
+    </div>
+
   </div>
 
-  <table>
-    <tr><th style="width:150px;">١. البداية</th><td>جملة افتتاحية تأسر القارئ — ابدأ بمشهد حي وليس بمقدمة عامة. مثال: <em>"كانت الساعة الخامسة صباحاً عندما أخرجت نورة أول صينية كيك من الفرن..."</em></td></tr>
-    <tr><th>٢. الحوار</th><td>استخدم اقتباسات وحوارات قصيرة تمنح القصة مصداقية وحيوية</td></tr>
-    <tr><th>٣. الصراع</th><td>كل قصة تحتاج عقبة أو تحدي — بدونه ليست قصة. اجعل القارئ يقلق ثم يرتاح</td></tr>
-    <tr><th>٤. التفاصيل</th><td>أرقام، تواريخ، أماكن — تفاصيل دقيقة تمنح القصة واقعية. "في جدة، حي السلامة، كان الإيجار ٢٥٠٠ ريال..."</td></tr>
-    <tr><th>٥. العاطفة</th><td>لا تخف من المشاعر — فرح، قلق، دموع، ضحك. القارئ الخليجي يبحث عن دفء إنساني</td></tr>
-    <tr><th>٦. النهاية</th><td>خاتمة ذات عبرة أو درس — ويفضل رابط بموضوع أوسع يهم العائلة الخليجية</td></tr>
-    <tr><th>٧. الطول</th><td>800-1200 كلمة (4-6 دقائق قراءة)</td></tr>
-    <tr><th>٨. اللغة</th><td>عربية بسيطة دافئة ليست فصحى متقعرة. تحادثية كأنك تروي لصديق</td></tr>
-    <tr><th>٩. SEO</th><td>الكلمة المفتاحية في أول ١٠٠ كلمة + عنوان H2 واحد + آخر ١٠٠ كلمة. عنوان SEO ≤٦٠ حرفاً، وصف SEO ≤١٦٠ حرفاً</td></tr>
-    <tr><th>١٠. الصورة</th><td>اختر صورة من Unsplash تعكس مشاعر القصة — صور عائلية دافئة وطبيعية</td></tr>
-  </table>
+  <!-- المقالات المقدمة للمراجعة -->
+  <h2 class="section-title">📎 المقالات المقدمة للمراجعة</h2>
+  <p style="color:#888;font-size:14px;margin-bottom:10px;">👇 مانوس — ضع روابط المقالات التي صممتها هنا (عربي + إنجليزي)</p>
 
-  <hr>
-
-  <!-- مساحة كتابة المحتوى -->
-  <h2 class="section-title" style="margin-top:0;">✍️ مساحة كتابة المحتوى</h2>
-  <p style="color:#888;font-size:14px;margin-bottom:10px;">بعد اختيار المقالة، يضع مانوس المحتوى هنا للمراجعة:</p>
-
-  <div style="background:#fff;border:2px dashed #ccc;border-radius:10px;padding:24px;min-height:500px;white-space:pre-wrap;font-size:14px;line-height:1.9;direction:rtl;" contenteditable="true">
-📝 المحتوى يكتب هنا...
+  <h3 style="font-size:16px;color:#1a5a58;margin-top:20px;">١. قصص مميزة</h3>
+  <div class="articles-list" contenteditable="true" id="list-sec1">
+    <div class="empty">⏳ لا توجد مقالات بعد...</div>
   </div>
 
-  <p class="footer-text">القسم الأول — قصص مميزة | بعد الانتهاء والموافقة، ننتقل للقسم الثاني</p>
+  <h3 style="font-size:16px;color:#1a5a58;">٢. مقارنات وقرارات</h3>
+  <div class="articles-list" contenteditable="true" id="list-sec2">
+    <div class="empty">⏳ لا توجد مقالات بعد...</div>
+  </div>
+
+  <h3 style="font-size:16px;color:#1a5a58;">٣. السلام يبدأ من البيت</h3>
+  <div class="articles-list" contenteditable="true" id="list-sec3">
+    <div class="empty">⏳ لا توجد مقالات بعد...</div>
+  </div>
+
+  <h3 style="font-size:16px;color:#1a5a58;">٤. الصحة والعافية</h3>
+  <div class="articles-list" contenteditable="true" id="list-sec4">
+    <div class="empty">⏳ لا توجد مقالات بعد...</div>
+  </div>
+
+  <h3 style="font-size:16px;color:#1a5a58;">٥. المالية والثروة</h3>
+  <div class="articles-list" contenteditable="true" id="list-sec5">
+    <div class="empty">⏳ لا توجد مقالات بعد...</div>
+  </div>
+
+  <h3 style="font-size:16px;color:#1a5a58;">٦. الإسلامية</h3>
+  <div class="articles-list" contenteditable="true" id="list-sec6">
+    <div class="empty">⏳ لا توجد مقالات بعد...</div>
+  </div>
+
+  <div class="footer-text">
+    بعد الموافقة على المقالة، يتم نقلها من مجلدها المؤقت إلى مجلدها الرسمي في الموقع.
+  </div>
 
 </div>
 
