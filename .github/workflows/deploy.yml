@@ -4,37 +4,16 @@ on:
   push:
     branches: [main]
 
+# Grant write permissions for GitHub Pages deployment
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
 jobs:
-  deploy-vps:
-    name: 🖥 Deploy to VPS
-    runs-on: ubuntu-latest
-    continue-on-error: true
-    steps:
-      - name: 📥 Checkout
-        uses: actions/checkout@v4
-
-      - name: 🔐 Deploy via SSH
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER }}
-          key: ${{ secrets.VPS_SSH_KEY }}
-          script: |
-            echo "=== Starting deploy ==="
-            cd /var/www/dotforlife && \
-            git init && \
-            git remote add origin https://github.com/meklads/Dot4Life.git 2>/dev/null || \
-            git remote set-url origin https://github.com/meklads/Dot4Life.git && \
-            git fetch --depth=1 origin main && \
-            git reset --hard origin/main && \
-            chown -R www-data:www-data /var/www/dotforlife 2>/dev/null || true && \
-            chmod -R 755 /var/www/dotforlife && \
-            echo "✅ Deployment complete: $(date)"
-
   deploy-pages:
     name: 🌐 Deploy to GitHub Pages
     runs-on: ubuntu-latest
-    if: ${{ always() }}
     steps:
       - name: 📥 Checkout
         uses: actions/checkout@v4
