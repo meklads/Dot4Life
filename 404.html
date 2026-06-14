@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Redirecting… | DOTFORLIFE</title>
+<style>
+  body{margin:0;padding:2rem;font-family:system-ui,-apple-system,sans-serif;background:#f7f8fc;color:#1a1e24;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:80vh;text-align:center;}
+  h1{font-size:2rem;font-weight:600;margin-bottom:.5rem;}
+  p{color:#5c534a;max-width:400px;line-height:1.6;}
+  a{color:#2a9a98;text-decoration:underline;}
+</style>
+<script>
+(function(){
+  // Clean URL → .html redirect for GitHub Pages
+  var path = window.location.pathname.replace(/\/$/, ''); // strip trailing slash
+  if (!path || path === '') return; // root — already handled by index.html
+  
+  // Don't redirect if already ends with .html, or other known extensions
+  if (/\.\w+$/.test(path)) return;
+  
+  // Try appending .html
+  var tryUrl = path + '.html';
+  var xhr = new XMLHttpRequest();
+  xhr.open('HEAD', tryUrl, true);
+  xhr.onreadystatechange = function(){
+    if (xhr.readyState === 4){
+      if (xhr.status === 200){
+        // File exists — redirect with 301-equivalent
+        var qs = window.location.search || '';
+        window.location.replace(tryUrl + qs);
+      } else if (xhr.status === 404) {
+        // Try /index.html variant (for directory-style URLs)
+        var dirTry = path + '/index.html';
+        var xhr2 = new XMLHttpRequest();
+        xhr2.open('HEAD', dirTry, true);
+        xhr2.onreadystatechange = function(){
+          if (xhr2.readyState === 4 && xhr2.status === 200){
+            var qs = window.location.search || '';
+            window.location.replace(dirTry + qs);
+          } else {
+            // Show 404 page content
+            document.title = 'Page Not Found | DOTFORLIFE';
+            document.getElementById('status').textContent = '404';
+            document.getElementById('msg').style.display = 'block';
+            document.getElementById('loading').style.display = 'none';
+          }
+        };
+        xhr2.send();
+      }
+    }
+  };
+  xhr.send();
+})();
+</script>
+</head>
+<body>
+  <h1 id="status">Checking…</h1>
+  <p id="loading">Checking if this page exists under a different address…</p>
+  <div id="msg" style="display:none">
+    <h1>404</h1>
+    <p>Sorry, we couldn't find this page. It may have been moved or deleted.</p>
+    <p><a href="/">Return to Homepage</a></p>
+  </div>
+</body>
+</html>
