@@ -13,25 +13,26 @@ jobs:
 
       - name: 🔐 Deploy via SSH
         uses: appleboy/ssh-action@v1.2.0
-        # if this fails, the site will still be served from the last successful deploy
-        continue-on-error: true
+        continue-on-error: false
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
+          script_stop: true
           script: |
-            cd /var/www/dotforlife && \
-            git init && \
-            git remote add origin https://github.com/meklads/Dot4Life.git 2>/dev/null || \
-            git remote set-url origin https://github.com/meklads/Dot4Life.git && \
-            git fetch --depth=1 origin main && \
-            git reset --hard origin/main && \
-            chown -R www-data:www-data /var/www/dotforlife 2>/dev/null || true && \
-            chmod -R 755 /var/www/dotforlife && \
+            whoami
+            echo "=== Starting deploy ==="
+            cd /var/www/dotforlife || mkdir -p /var/www/dotforlife && cd /var/www/dotforlife
+            git init
+            git remote add origin https://github.com/meklads/Dot4Life.git 2>/dev/null || git remote set-url origin https://github.com/meklads/Dot4Life.git
+            git fetch --depth=1 origin main
+            git reset --hard origin/main
+            chown -R www-data:www-data /var/www/dotforlife 2>/dev/null || true
+            chmod -R 755 /var/www/dotforlife
             echo "✅ Deployment complete: $(date)"
 
       - name: 🌐 Deploy to GitHub Pages (fallback)
-        if: ${{ failure() || success() }}
+        if: ${{ failure() }}
         uses: peaceiris/actions-gh-pages@v4
         continue-on-error: true
         with:
