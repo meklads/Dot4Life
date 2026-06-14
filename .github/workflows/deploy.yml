@@ -8,8 +8,12 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+
       - name: 🔐 Deploy via SSH
-        uses: appleboy/ssh-action@v1.0.3
+        uses: appleboy/ssh-action@v1.1.0
+        continue-on-error: true
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
@@ -24,3 +28,12 @@ jobs:
             chown -R www-data:www-data /var/www/dotforlife 2>/dev/null || true && \
             chmod -R 755 /var/www/dotforlife && \
             echo "✅ Deployment complete: $(date)"
+
+      - name: 🌐 Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        continue-on-error: true
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
+          force_orphan: true
+          cname: dotforlife.com
