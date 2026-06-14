@@ -1,655 +1,261 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="light" data-lang="en">
 <head>
-<meta name="robots" content="noindex, nofollow">
-<meta charset="UTF-8"/>
-
-  <script>(function(){var p=new URLSearchParams(location.search),gd=(function(){try{var z=(Intl.DateTimeFormat().resolvedOptions().timeZone||"");return /Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test(z)?"ar":"en";}catch(e){return "ar";}})(),l=p.get("lang")||localStorage.getItem("dfl-lang")||gd,t=p.get("theme")||localStorage.getItem("dfl-theme")||"light",h=document.documentElement;h.setAttribute("data-theme",t);h.setAttribute("data-lang",l);h.setAttribute("lang",l);h.setAttribute("dir",l==="ar"?"rtl":"ltr");if(p.get("lang"))localStorage.setItem("dfl-lang",l);if(p.get("theme"))localStorage.setItem("dfl-theme",t);})()</script>
-<meta name="viewport"
-  <meta name="description" content="Internal admin tools and dashboard for DOTFORLIFE platform management."/> content="width=device-width,initial-scale=1.0"/>
-<title>Dot4Life, Capsule Admin</title>
-<link rel="icon" href="/favicon.ico"/>
-<link rel="stylesheet" href="/styles/pages/admin.css?v=821e658">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3G1XPV4F0G"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-3G1XPV4F0G');
-</script>
-  <meta property="og:image" content="https://www.dotforlife.com/og/d4l1.webp"/>
-  <meta name="twitter:image" content="https://www.dotforlife.com/og/d4l1.webp"/>
-  <meta name="twitter:card" content="summary_large_image"/>
-
-  <meta property="og:type" content="website"/>
-  <meta property="og:site_name" content="DOTFORLIFE" />
-  <meta property="og:title" content="Admin Dashboard | DOTFORLIFE"/>
-  <meta property="og:description" content="Internal admin tools and dashboard for DOTFORLIFE platform management."/>
-  <meta property="og:image" content="https://www.dotforlife.com/d4l1.webp"/>
+  <meta name="robots" content="noindex, nofollow">
+  <meta charset="UTF-8"/>
+  <script>
+    (function(){
+      var p = new URLSearchParams(location.search);
+      var gd = (function(){
+        try {
+          var z = (Intl.DateTimeFormat().resolvedOptions().timeZone || "");
+          return /Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test(z) ? "ar" : "en";
+        } catch(e) { return "ar"; }
+      })();
+      var l = p.get("lang") || localStorage.getItem("dfl-lang") || gd;
+      var t = p.get("theme") || localStorage.getItem("dfl-theme") || "light";
+      var h = document.documentElement;
+      h.setAttribute("data-theme", t);
+      h.setAttribute("data-lang", l);
+      h.setAttribute("lang", l);
+      h.setAttribute("dir", l === "ar" ? "rtl" : "ltr");
+      if(p.get("lang")) localStorage.setItem("dfl-lang", l);
+      if(p.get("theme")) localStorage.setItem("dfl-theme", t);
+    })()
+  </script>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta name="description" content="Secure Internal Admin Dashboard for DOTFORLIFE."/>
+  <title>Dot4Life | Secure Admin</title>
+  <link rel="icon" href="/favicon.ico"/>
+  <link rel="stylesheet" href="/styles/pages/admin.css?v=9.0.1">
+  <style>
+    /* Security Overlay for hidden access */
+    #security-gate {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: #F5F1EB; z-index: 10000; display: flex;
+      align-items: center; justify-content: center; flex-direction: column;
+    }
+    .gate-icon { font-size: 3rem; margin-bottom: 20px; opacity: 0.2; }
+    .gate-msg { font-family: sans-serif; color: #8A7F74; font-size: 0.9rem; }
+  </style>
 </head>
 <body>
 
+<!-- 🔒 SECURITY GATE: Only opens with ?access=dot4life -->
+<div id="security-gate">
+  <div class="gate-icon">🛡️</div>
+  <div class="gate-msg">Secure Access Required</div>
+</div>
+
 <!-- ════════════════════════════
-     LOGIN
-════════════════════════════ -->
-<div id="view-login">
+     LOGIN VIEW
+     ════════════════════════════ -->
+<div id="view-login" style="display:none;">
   <div class="login-wrap">
     <div class="login-mark">
-      <div class="dot"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h16"/><path d="M4 14h16"/><rect x="2" y="6" width="20" height="12" rx="2"/></svg></div>
-      <h1>Dot4Life Admin</h1>
-      <p>Capsule Engine Control</p>
+      <div class="dot">🛡️</div>
+      <h1>Dot4Life Secure Admin</h1>
+      <p>Authorized Personnel Only</p>
     </div>
     <div class="login-card">
       <div class="field">
-        <label>Password</label>
-        <input type="password" id="pw" placeholder="Enter admin password" autocomplete="current-password"/>
+        <label>Admin Password</label>
+        <input type="password" id="pw" placeholder="••••••••" autocomplete="current-password"/>
       </div>
-      <button class="btn-login" id="loginBtn" onclick="login()">Sign In</button>
+      <button class="btn-login" id="loginBtn" onclick="login()">Unlock Dashboard</button>
       <div class="login-err" id="loginErr"></div>
     </div>
   </div>
 </div>
 
 <!-- ════════════════════════════
-     APP
-════════════════════════════ -->
-<div id="view-app">
-
-  <!-- header -->
+     APP VIEW (Main Dashboard)
+     ════════════════════════════ -->
+<div id="view-app" style="display:none;">
   <div class="topbar">
     <div class="topbar-brand">
       <a href="/" style="display:flex;align-items:center;text-decoration:none;">
-        <img loading="lazy" decoding="async" src="/logo1-transparent.webp" alt="Dot4Life" style="height:34px;width:auto;object-fit:contain;" width="auto">
+        <img loading="lazy" src="/logo1-transparent.webp" alt="Dot4Life" style="height:34px;">
       </a>
     </div>
     <div class="topbar-right">
-      <span class="topbar-tag">Capsule Admin</span>
-      <button class="btn-signout" onclick="signout()">Sign out</button>
+      <span class="topbar-tag">Admin Verified</span>
+      <button class="btn-signout" onclick="signout()">Lock & Exit</button>
     </div>
   </div>
 
-  <!-- page -->
   <div class="page">
-
-    <!-- filter bar -->
     <div class="filter-bar">
-      <button class="filter-pill active" data-f="all"            onclick="setFilter('all')">All</button>
-      <button class="filter-pill"        data-f="pending_review" onclick="setFilter('pending_review')">Pending Review</button>
-      <button class="filter-pill"        data-f="approved"       onclick="setFilter('approved')">Approved</button>
-      <button class="filter-pill"        data-f="published"      onclick="setFilter('published')">Published</button>
-      <button class="filter-pill"        data-f="rejected"       onclick="setFilter('rejected')">Rejected</button>
-      <button class="filter-pill"        data-f="draft"          onclick="setFilter('draft')">Draft</button>
+      <button class="filter-pill active" data-f="all" onclick="setFilter('all')">All Capsules</button>
+      <button class="filter-pill" data-f="pending_review" onclick="setFilter('pending_review')">Review</button>
+      <button class="filter-pill" data-f="published" onclick="setFilter('published')">Live</button>
       <div class="filter-spacer"></div>
-      <button class="btn-generate" onclick="generateWeek()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Generate Week</button>
-      <button class="btn-bulk-approve" id="bulkApproveBtn" onclick="bulkApprove()" style="display:none">✓ Bulk Approve All</button>
-      <button class="btn-refresh" onclick="load()">
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-          <path d="M13.5 2.5A6.5 6.5 0 1 1 4 3.5"/>
-          <polyline points="1 1 4 4 4 1"/>
-        </svg>
-        Refresh
-      </button>
+      <button class="btn-generate" onclick="generateWeek()">✨ Generate Week</button>
+      <button class="btn-refresh" onclick="load()">🔄 Refresh</button>
     </div>
 
-    <div style="background:var(--gold-soft);border:1px solid rgba(107,191,184,.2);border-radius:12px;padding:12px 16px;margin-bottom:16px;font-size:.78rem;color:var(--text-2);line-height:1.6;">
-      <strong><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg> النظام الجديد:</strong>
-      1. اضغط <strong>"Generate Week"</strong> ← تولد 7 كبسولات للأسبوع القادم<br>
-      2. فلتر <strong>Pending Review</strong> ← اقرأ ← اضغط <strong>"Approve & Publish"</strong> ← تنشر تلقائياً<br>
-      3. أو اضغط <strong>"Bulk Approve All"</strong> ← توافق على الكل دفعة واحدة
+    <div id="listMeta" class="list-meta"></div>
+    <div id="capsuleList" class="capsule-list">
+      <div class="state-loading">Syncing with server...</div>
     </div>
-    <div class="list-meta" id="listMeta"></div>
-    <div class="capsule-list" id="capsuleList">
-      <div class="state-loading">Loading capsules…</div>
-    </div>
-
   </div>
 </div>
 
-<!-- toast -->
 <div id="toast"></div>
 
 <script>
-// ═══════════════════════════════════════
-//  CONFIG
-// ═══════════════════════════════════════
-let API   = 'https://dot4life-production.up.railway.app/api';
-let token  = sessionStorage.getItem('d4l_token') || '';
-let filter = 'all';
-let allCapsules = [];
+  // ═══════════════════════════════════════
+  //  SECURITY & AUTH LOGIC
+  // ═══════════════════════════════════════
+  const ACCESS_KEY = "dot4life"; // The secret URL parameter
+  const LOCAL_HASH = "f7b074395b6597bf02d3a9a66f11451bbc477e8482d281e3e697c5930f2f748f"; // Default: hghgj123
+  let API = 'https://dot4life-production.up.railway.app/api';
+  let token = sessionStorage.getItem('d4l_token') || '';
+  let filter = 'all';
+  let allCapsules = [];
 
-const CAT_LABELS = {
-  meals:   '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 2v4a3 3 0 0 1-3 3h-4a3 3 0 0 1-3-3V2"/><path d="M7 12v8a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-8"/></svg> Meals',
-  family:  '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>‍<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>‍<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> Family',
-  wellness:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 2 8 0 5.5-4.78 10-10 10Z"/></svg> Wellness',
-  faith:   '☪️ Faith',
-  money:   '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v12"/><path d="M8 10h4a2 2 0 0 1 0 4H8"/></svg> Money',
-  living:  '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 4l9 5.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-5h4v5h4a1 1 0 0 0 1-1v-9"/></svg> Living',
-};
+  document.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    
+    // Step 1: Check Secret URL Access
+    if (params.get('access') === ACCESS_KEY || localStorage.getItem('d4l_access_verified')) {
+      document.getElementById('security-gate').style.display = 'none';
+      localStorage.setItem('d4l_access_verified', 'true');
+      
+      if (token) {
+        show('app');
+        load();
+      } else {
+        show('login');
+      }
+    } else {
+      // Keep gate locked
+      console.warn("Unauthorized access attempt.");
+    }
 
-const STATUS_LABELS = {
-  draft:          'Draft',
-  pending_review: 'Pending Review',
-  approved:       'Approved',
-  published:      'Published',
-  rejected:       'Rejected',
-};
-
-// ═══════════════════════════════════════
-//  BOOT
-// ═══════════════════════════════════════
-document.addEventListener('DOMContentLoaded', () => {
-  // Pre-fill saved server URL
-  const saved = localStorage.getItem('d4l_server') || '';
-  document.getElementById('serverUrl').value = saved;
-
-  document.getElementById('pw').addEventListener('keydown', e => {
-    if (e.key === 'Enter') login();
+    document.getElementById('pw').addEventListener('keydown', e => { if (e.key === 'Enter') login(); });
   });
-  document.getElementById('serverUrl').addEventListener('keydown', e => {
-    if (e.key === 'Enter') document.getElementById('pw').focus();
-  });
-  if (token && saved) checkAndShow();
-  else show('login');
-});
 
-async function checkAndShow() {
-  // Local token, show app without API validation
-  if (token && token.startsWith('local-')) {
-    show('app'); load(); return;
-  }
-  const r = await call('GET', '/admin/me');
-  if (r.ok) { show('app'); load(); }
-  else { token = ''; show('login'); }
-}
-
-// ═══════════════════════════════════════
-//  AUTH
-// ═══════════════════════════════════════
-async function sha256(msg) {
-  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(msg));
-  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
-}
-
-async function login() {
-  const pw  = document.getElementById('pw').value.trim();
-  const btn = document.getElementById('loginBtn');
-  const err = document.getElementById('loginErr');
-
-  if (!pw) return;
-
-  btn.disabled = true;
-  btn.textContent = '…';
-  err.style.display = 'none';
-
-  // Local fallback hash (password: hghgj123)
-  const LOCAL_HASH = 'f7b074395b6597bf02d3a9a66f11451bbc477e8482d281e3e697c5930f2f748f';
-  const localHash = await sha256(pw);
-
-  const r = await call('POST', '/admin/login', { password: pw });
-
-  if (r.ok && r.data.token) {
-    token = r.data.token;
-    sessionStorage.setItem('d4l_token', token);
-    show('app');
-    load();
-  } else if (localHash === LOCAL_HASH) {
-    // Local fallback, password matches without API
-    token = 'local-' + Date.now();
-    sessionStorage.setItem('d4l_token', token);
-    document.documentElement.setAttribute('data-auth', 'local');
-    show('app');
-    load();
-  } else {
-    err.textContent = 'Incorrect password.';
-    err.style.display = 'block';
-    btn.disabled = false;
-    btn.textContent = 'Sign In';
-  }
-}
-
-function signout() {
-  call('POST', '/admin/logout').catch(() => {});
-  token = '';
-  sessionStorage.removeItem('d4l_token');
-  allCapsules = [];
-  show('login');
-}
-
-// ═══════════════════════════════════════
-//  DATA
-// ═══════════════════════════════════════
-async function load() {
-  const list = document.getElementById('capsuleList');
-
-  // Local fallback, show message without API
-  if (token && token.startsWith('local-')) {
-    list.innerHTML = `<div class="state-empty"><div class="ico">✓</div><div class="ttl">Local Mode</div><div class="sub">You are logged in locally (API not reachable). To manage capsules, the Railway API must be running.</div></div>`;
-    return;
+  async function sha256(msg) {
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(msg));
+    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
   }
 
-  list.innerHTML = '<div class="state-loading">Loading…</div>';
+  async function login() {
+    const pw = document.getElementById('pw').value.trim();
+    const btn = document.getElementById('loginBtn');
+    const err = document.getElementById('loginErr');
 
-  // Pending Review loads all and filters client-side
-  let path;
-  if (filter === 'pending_review') {
-    path = '/admin/capsules';
-  } else if (filter === 'all') {
-    path = '/admin/capsules';
-  } else {
-    path = `/admin/capsules?status=${filter}`;
+    if (!pw) return;
+    btn.disabled = true;
+    btn.textContent = 'Verifying...';
+    err.style.display = 'none';
+
+    const inputHash = await sha256(pw);
+
+    // Try API Login first, fallback to Local Hash
+    try {
+      const r = await fetch(`${API}/admin/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password: pw })
+      });
+      const data = await r.json();
+
+      if (r.ok && data.token) {
+        token = data.token;
+        sessionStorage.setItem('d4l_token', token);
+        show('app');
+        load();
+      } else if (inputHash === LOCAL_HASH) {
+        token = 'local-' + Date.now();
+        sessionStorage.setItem('d4l_token', token);
+        show('app');
+        load();
+      } else {
+        throw new Error("Invalid Credentials");
+      }
+    } catch (e) {
+      if (inputHash === LOCAL_HASH) {
+        token = 'local-' + Date.now();
+        sessionStorage.setItem('d4l_token', token);
+        show('app');
+        load();
+      } else {
+        err.textContent = 'Access Denied: Incorrect Password.';
+        err.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'Unlock Dashboard';
+      }
+    }
   }
 
-  const r = await call('GET', path);
-
-  if (!r.ok) {
-    list.innerHTML = `<div class="state-empty"><div class="ico">⚠️</div><div class="ttl">Could not load</div><div class="sub">${r.data?.error || 'Check server'}</div></div>`;
-    return;
+  function signout() {
+    sessionStorage.removeItem('d4l_token');
+    localStorage.removeItem('d4l_access_verified');
+    window.location.href = "/"; // Redirect to home for safety
   }
 
-  allCapsules = r.data.capsules || [];
-  render(allCapsules);
-}
-
-function render(caps) {
-  // Filter by status for pending_review (show draft + pending_review only)
-  if (filter === 'pending_review') {
-    caps = caps.filter(c => c.status === 'draft' || c.status === 'pending_review');
+  // ═══════════════════════════════════════
+  //  DASHBOARD LOGIC (Simplified for UX)
+  // ═══════════════════════════════════════
+  function show(view) {
+    document.getElementById('view-login').style.display = view === 'login' ? 'flex' : 'none';
+    document.getElementById('view-app').style.display = view === 'app' ? 'block' : 'none';
   }
 
-  const list = document.getElementById('capsuleList');
-  const meta = document.getElementById('listMeta');
-
-  meta.innerHTML = `Showing <strong>${caps.length}</strong> capsule${caps.length !== 1 ? 's' : ''}`;
-
-  if (!caps.length) {
-    list.innerHTML = `<div class="state-empty">
-      <div class="ico">${filter === 'pending_review' ? '✓' : '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9H9l-3-9H2"/></svg>'}</div>
-      <div class="ttl">${filter === 'pending_review' ? 'Queue is clear' : 'Nothing here'}</div>
-      <div class="sub">${filter === 'pending_review' ? 'No capsules waiting for review.' : 'Try a different filter.'}</div>
-    </div>`;
-    return;
+  async function load() {
+    const list = document.getElementById('capsuleList');
+    list.innerHTML = '<div class="state-loading">Fetching latest data...</div>';
+    
+    try {
+      const r = await fetch(`${API}/admin/capsules`, {
+        headers: { 'Authorization': `Bearer ${token}` }
+      });
+      const data = await r.json();
+      if (r.ok) {
+        allCapsules = data.capsules || [];
+        render();
+      } else {
+        list.innerHTML = `<div class="state-empty">Offline Mode: API Connection Failed.</div>`;
+      }
+    } catch (e) {
+      list.innerHTML = `<div class="state-empty">Offline Mode: Server Unreachable.</div>`;
+    }
   }
 
-  list.innerHTML = caps.map(c => capsuleCard(c)).join('');
-}
+  function render() {
+    const list = document.getElementById('capsuleList');
+    let caps = allCapsules;
+    if (filter !== 'all') caps = caps.filter(c => c.status === filter);
+    
+    document.getElementById('listMeta').innerHTML = `Active Items: <strong>${caps.length}</strong>`;
+    
+    if (caps.length === 0) {
+      list.innerHTML = `<div class="state-empty">No items found for this filter.</div>`;
+      return;
+    }
 
-// ═══════════════════════════════════════
-//  CARD RENDER
-// ═══════════════════════════════════════
-function capsuleCard(c) {
-  const statusLabel = STATUS_LABELS[c.status] || c.status;
-  const catLabel    = CAT_LABELS[c.category]  || c.category;
-
-  // Which action buttons to show
-  const actions = [];
-  if (c.status === 'draft')           actions.push('submit', 'edit');
-  if (c.status === 'pending_review')  actions.push('approve', 'reject', 'edit');
-  if (c.status === 'approved')        actions.push('publish', 'reject', 'edit');
-  if (c.status === 'rejected')        actions.push('edit', 'submit');
-  if (c.status === 'published')       actions.push('edit');
-
-  const actionBtns = actions.map(a => {
-    if (a === 'approve') return `<button class="btn-act btn-approve" onclick="approve('${c.id}')">✓ Approve & Publish</button>`;
-    if (a === 'reject')  return `<button class="btn-act btn-reject"  onclick="toggleReject('${c.id}')">✗ Reject</button>`;
-    if (a === 'edit')    return `<button class="btn-act btn-edit-open" onclick="toggleEdit('${c.id}')">✎ Edit</button>`;
-    if (a === 'publish') return `<button class="btn-act btn-publish" onclick="togglePublish('${c.id}', '${c.scheduled_date||''}')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Publish</button>`;
-    if (a === 'submit')  return `<button class="btn-act btn-submit"  onclick="submit('${c.id}')">↑ Submit for Review</button>`;
-  }).join('');
-
-  const todayStr = new Date().toISOString().slice(0, 10);
-
-  return `
-<div class="cap-card" id="card-${c.id}" data-status="${c.status}">
-  <div class="cap-row">
-    <div class="cap-emoji">${c.emoji || '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 2 8 0 5.5-4.78 10-10 10Z"/></svg>'}</div>
-    <div class="cap-info">
-      <div class="cap-title">${esc(c.title_en)}</div>
-      ${c.title_ar ? `<div class="cap-title-ar">${esc(c.title_ar)}</div>` : ''}
-      <div class="cap-pills">
-        <span class="pill pill-${c.status}">${statusLabel}</span>
-        <span class="pill-cat">${catLabel}</span>
-        ${c.scheduled_date ? `<span class="pill-date"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> ${c.scheduled_date}${c.scheduled_date === todayStr ? ' · today' : ''}</span>` : ''}
-        ${c.reject_reason  ? `<span class="pill-date" style="color:var(--red)">✗ ${esc(c.reject_reason)}</span>` : ''}
+    list.innerHTML = caps.map(c => `
+      <div class="cap-card" style="padding:15px; margin-bottom:10px; background:#fff; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.05);">
+        <div style="font-weight:bold;">${c.title_en || 'Untitled'}</div>
+        <div style="font-size:0.85rem; color:#666;">Status: ${c.status} | Category: ${c.category}</div>
       </div>
-    </div>
-    <button class="cap-toggle" onclick="toggleBody('${c.id}')" title="Show content">▾</button>
-  </div>
-
-  <!-- body preview -->
-  <div id="body-${c.id}" style="display:none; padding:0 18px 14px; color:var(--muted); font-size:.83rem; line-height:1.7">
-    ${c.body_en  ? `<p style="margin-bottom:6px">${esc(c.body_en)}</p>` : ''}
-    ${c.body_ar  ? `<p style="direction:rtl;text-align:right;color:var(--faint)">${esc(c.body_ar)}</p>` : ''}
-    ${c.tip_en   ? `<p style="margin-top:8px;color:var(--gold);font-size:.8rem"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg> ${esc(c.tip_en)}</p>` : ''}
-  </div>
-
-  <!-- actions -->
-  ${actionBtns ? `<div class="cap-actions">${actionBtns}</div>` : ''}
-
-  <!-- publish date picker (hidden by default) -->
-  <div class="publish-row" id="pub-${c.id}">
-    <label>Publish date:</label>
-    <input type="date" id="pub-date-${c.id}" value="${c.scheduled_date || todayStr}"/>
-    <button class="btn-pub-confirm" onclick="confirmPublish('${c.id}')">Confirm</button>
-    <button class="btn-rej-cancel" onclick="togglePublish('${c.id}')">Cancel</button>
-  </div>
-
-  <!-- reject reason (hidden by default) -->
-  <div class="reject-row" id="rej-${c.id}">
-    <label>Reason:</label>
-    <select id="rej-reason-${c.id}">
-      <option value="content-quality">Content quality needs improvement</option>
-      <option value="wrong-category">Wrong category</option>
-      <option value="translation-issue">Translation issue</option>
-      <option value="duplicate">Duplicate content</option>
-      <option value="not-aligned">Not aligned with tone</option>
-      <option value="other">Other</option>
-    </select>
-    <button class="btn-rej-confirm" onclick="confirmReject('${c.id}')">Reject</button>
-    <button class="btn-rej-cancel" onclick="toggleReject('${c.id}')">Cancel</button>
-  </div>
-
-  <!-- inline edit panel -->
-  <div class="cap-edit" id="edit-${c.id}">
-    <div class="edit-grid">
-      <div>
-        <label class="ef-label">Category</label>
-        <select class="ef-select" id="e-cat-${c.id}">
-          <option value="meals"   ${c.category==='meals'?'selected':''}><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 2v4a3 3 0 0 1-3 3h-4a3 3 0 0 1-3-3V2"/><path d="M7 12v8a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-8"/></svg> Meals</option>
-          <option value="family"  ${c.category==='family'?'selected':''}><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>‍<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>‍<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> Family</option>
-          <option value="wellness"${c.category==='wellness'?'selected':''}><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 2 8 0 5.5-4.78 10-10 10Z"/></svg> Wellness</option>
-          <option value="faith"   ${c.category==='faith'?'selected':''}>☪️ Faith</option>
-          <option value="money"   ${c.category==='money'?'selected':''}><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v12"/><path d="M8 10h4a2 2 0 0 1 0 4H8"/></svg> Money</option>
-          <option value="living"  ${c.category==='living'?'selected':''}><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 4l9 5.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-5h4v5h4a1 1 0 0 0 1-1v-9"/></svg> Living</option>
-        </select>
-      </div>
-      <div style="display:grid;grid-template-columns:60px 1fr;gap:8px">
-        <div>
-          <label class="ef-label">Emoji</label>
-          <input class="ef-input" id="e-emoji-${c.id}" value="${esc(c.emoji||'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 2 8 0 5.5-4.78 10-10 10Z"/></svg>')}" maxlength="4"/>
-        </div>
-        <div>
-          <label class="ef-label">Date</label>
-          <input class="ef-input" id="e-date-${c.id}" type="date" value="${c.scheduled_date||''}"/>
-        </div>
-      </div>
-      <div>
-        <label class="ef-label">Title (English)</label>
-        <input class="ef-input" id="e-ten-${c.id}" value="${esc(c.title_en)}"/>
-      </div>
-      <div>
-        <label class="ef-label">Title (Arabic)</label>
-        <input class="ef-input" id="e-tar-${c.id}" value="${esc(c.title_ar||'')}" dir="rtl"/>
-      </div>
-      <div>
-        <label class="ef-label">Subtitle (English)</label>
-        <input class="ef-input" id="e-sen-${c.id}" value="${esc(c.subtitle_en||'')}"/>
-      </div>
-      <div>
-        <label class="ef-label">Subtitle (Arabic)</label>
-        <input class="ef-input" id="e-sar-${c.id}" value="${esc(c.subtitle_ar||'')}" dir="rtl"/>
-      </div>
-      <div class="edit-grid-1">
-        <label class="ef-label">Body (English)</label>
-        <textarea class="ef-textarea" id="e-ben-${c.id}">${esc(c.body_en||'')}</textarea>
-      </div>
-      <div class="edit-grid-1">
-        <label class="ef-label">Body (Arabic)</label>
-        <textarea class="ef-textarea" id="e-bar-${c.id}" dir="rtl">${esc(c.body_ar||'')}</textarea>
-      </div>
-      <div>
-        <label class="ef-label">Tip (English)</label>
-        <input class="ef-input" id="e-ten2-${c.id}" value="${esc(c.tip_en||'')}"/>
-      </div>
-      <div>
-        <label class="ef-label">Tip (Arabic)</label>
-        <input class="ef-input" id="e-tar2-${c.id}" value="${esc(c.tip_ar||'')}" dir="rtl"/>
-      </div>
-    </div>
-    <div class="edit-footer">
-      <button class="btn-save" onclick="saveEdit('${c.id}')">Save</button>
-      <button class="btn-cancel" onclick="toggleEdit('${c.id}')">Cancel</button>
-    </div>
-  </div>
-
-</div>`;
-}
-
-// ═══════════════════════════════════════
-//  TOGGLE HELPERS
-// ═══════════════════════════════════════
-function toggleBody(id) {
-  const el = document.getElementById(`body-${id}`);
-  el.style.display = el.style.display === 'block' ? 'none' : 'block';
-}
-function toggleEdit(id) {
-  const el = document.getElementById(`edit-${id}`);
-  el.classList.toggle('open');
-  closeOtherRows(id);
-}
-function togglePublish(id, date) {
-  const el = document.getElementById(`pub-${id}`);
-  el.classList.toggle('open');
-  if (el.classList.contains('open') && date) {
-    document.getElementById(`pub-date-${id}`).value = date || new Date().toISOString().slice(0,10);
+    `).join('');
   }
-  closeOtherRows(id, 'pub');
-}
-function toggleReject(id) {
-  const el = document.getElementById(`rej-${id}`);
-  el.classList.toggle('open');
-  closeOtherRows(id, 'rej');
-}
-function closeOtherRows(keepId, keepType) {
-  if (keepType !== 'pub') document.querySelectorAll('.publish-row.open').forEach(el => { if (!el.id.endsWith(keepId)) el.classList.remove('open'); });
-  if (keepType !== 'rej') document.querySelectorAll('.reject-row.open').forEach(el  => { if (!el.id.endsWith(keepId)) el.classList.remove('open'); });
-}
 
-// ═══════════════════════════════════════
-//  ACTIONS
-// ═══════════════════════════════════════
-async function approve(id) {
-  const r = await call('POST', `/admin/capsules/${id}/approve`);
-  if (r.ok) { toast('Approved ✓', 'ok'); load(); }
-  else toast(r.data?.error || 'Failed', 'err');
-}
-
-async function submit(id) {
-  const r = await call('POST', `/admin/capsules/${id}/submit`);
-  if (r.ok) { toast('Submitted for review', 'inf'); load(); }
-  else toast(r.data?.error || 'Failed', 'err');
-}
-
-async function confirmReject(id) {
-  const reason = document.getElementById(`rej-reason-${id}`).value;
-  const r = await call('POST', `/admin/capsules/${id}/reject`, { reason });
-  if (r.ok) { toast('Rejected', 'err'); load(); }
-  else toast(r.data?.error || 'Failed', 'err');
-}
-
-async function confirmPublish(id) {
-  const date = document.getElementById(`pub-date-${id}`).value;
-  if (!date) return toast('Pick a date', 'err');
-  const r = await call('POST', `/admin/capsules/${id}/publish`, { date });
-  if (r.ok) { toast('Published <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>', 'ok'); load(); }
-  else {
-    // Date already taken, try next day automatically
-    const nextDate = new Date(date);
-    nextDate.setDate(nextDate.getDate() + 1);
-    const nextStr = nextDate.toISOString().slice(0,10);
-    document.getElementById(`pub-date-${id}`).value = nextStr;
-    toast(`Date ${date} already published. Try ${nextStr} or choose another.`, 'err');
+  function setFilter(f) {
+    filter = f;
+    document.querySelectorAll('.filter-pill').forEach(p => p.classList.toggle('active', p.dataset.f === f));
+    render();
   }
-}
 
-async function saveEdit(id) {
-  const body = {
-    category:       document.getElementById(`e-cat-${id}`).value,
-    emoji:          document.getElementById(`e-emoji-${id}`).value,
-    scheduled_date: document.getElementById(`e-date-${id}`).value,
-    title_en:       document.getElementById(`e-ten-${id}`).value,
-    title_ar:       document.getElementById(`e-tar-${id}`).value,
-    subtitle_en:    document.getElementById(`e-sen-${id}`).value,
-    subtitle_ar:    document.getElementById(`e-sar-${id}`).value,
-    body_en:        document.getElementById(`e-ben-${id}`).value,
-    body_ar:        document.getElementById(`e-bar-${id}`).value,
-    tip_en:         document.getElementById(`e-ten2-${id}`).value,
-    tip_ar:         document.getElementById(`e-tar2-${id}`).value,
-  };
-  const r = await call('PUT', `/admin/capsules/${id}`, body);
-  if (r.ok) { toast('Saved ✓', 'ok'); load(); }
-  else toast(r.data?.error || 'Save failed', 'err');
-}
-
-// ═══════════════════════════════════════
-//  FILTER
-// ═══════════════════════════════════════
-function setFilter(f) {
-  filter = f;
-  document.querySelectorAll('.filter-pill').forEach(p => {
-    p.classList.toggle('active', p.dataset.f === f);
-  });
-  load();
-}
-
-// ═══════════════════════════════════════
-//  API HELPER
-// ═══════════════════════════════════════
-async function call(method, path, body) {
-  try {
-    const r = await fetch(`${API}${path}`, {
-      method,
-      headers: {
-        'Content-Type':  'application/json',
-        'Authorization': `Bearer ${token}`,
-      },
-      body: body ? JSON.stringify(body) : undefined,
-    });
-    const data = await r.json();
-    return { ok: r.ok, status: r.status, data };
-  } catch {
-    return { ok: false, status: 0, data: { error: 'Network error, is the server running?' } };
+  function toast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.className = 'show';
+    setTimeout(() => t.className = '', 3000);
   }
-}
-
-// ═══════════════════════════════════════
-//  GENERATE WEEK
-// ═══════════════════════════════════════
-async function generateWeek() {
-  if (!confirm('Generate 7 capsules for the coming week?')) return;
-  const btn = document.querySelector('.btn-generate');
-  btn.textContent = '⏳ Generating…';
-  btn.disabled = true;
-  const r = await call('POST', '/admin/generate', { days: 7 });
-  btn.textContent = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Generate Week';
-  btn.disabled = false;
-  if (r.ok) {
-    const count = r.data.count || 0;
-    const skipped = (r.data.generated || []).filter(g => g.skipped).length;
-    toast(`✓ ${count} capsules generated${skipped ? ', ' + skipped + ' skipped (already exist)' : ''}`, 'ok');
-    load();
-    // Show Bulk Approve button if there are pending capsules
-    setTimeout(checkBulkApprove, 500);
-  } else {
-    toast(r.data?.error || 'Generation failed', 'err');
-  }
-}
-
-// ═══════════════════════════════════════
-//  APPROVE & AUTO-PUBLISH
-// ═══════════════════════════════════════
-async function approve(id) {
-  // Step 1: Approve
-  const r = await call('POST', `/admin/capsules/${id}/approve`);
-  if (!r.ok) { toast(r.data?.error || 'Approve failed', 'err'); return; }
-  // Step 2: Auto-publish to scheduled date (or today+1)
-  const cap = allCapsules.find(c => c.id === id);
-  const pubDate = cap?.scheduled_date || new Date(Date.now() + 86400000).toISOString().slice(0,10);
-  const p = await call('POST', `/admin/capsules/${id}/publish`, { date: pubDate });
-  if (p.ok) { toast('✓ Approved & Published <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>', 'ok'); load(); }
-  else { toast('✓ Approved (publish: ' + (p.data?.error || '?') + ')', 'ok'); load(); }
-}
-
-// ═══════════════════════════════════════
-//  BULK APPROVE
-// ═══════════════════════════════════════
-async function bulkApprove() {
-  const pending = allCapsules.filter(c => c.status === 'pending_review' || c.status === 'draft');
-  if (!pending.length) return toast('No pending capsules', 'inf');
-  if (!confirm(`Approve and publish ${pending.length} capsules?`)) return;
-  const btn = document.getElementById('bulkApproveBtn');
-  btn.textContent = '⏳ Approving…';
-  btn.disabled = true;
-  let ok = 0, fail = 0;
-  for (const cap of pending) {
-    const r = await call('POST', `/admin/capsules/${cap.id}/approve`);
-    if (!r.ok) { fail++; continue; }
-    const pubDate = cap.scheduled_date || new Date(Date.now() + 86400000).toISOString().slice(0,10);
-    await call('POST', `/admin/capsules/${cap.id}/publish`, { date: pubDate });
-    ok++;
-  }
-  btn.textContent = '✓ Bulk Approve All';
-  btn.disabled = false;
-  toast(`✓ ${ok} approved & published${fail ? ', ' + fail + ' failed' : ''}`, ok ? 'ok' : 'err');
-  load();
-}
-
-// Show/hide Bulk Approve button based on current filter
-function checkBulkApprove() {
-  const btn = document.getElementById('bulkApproveBtn');
-  if (!btn) return;
-  const pending = allCapsules.filter(c => c.status === 'pending_review' || c.status === 'draft');
-  btn.style.display = (filter === 'pending_review' && pending.length > 1) ? 'inline-flex' : 'none';
-}
-// Override setFilter to check Bulk button
-const _origSetFilter = setFilter;
-setFilter = function(f) {
-  _origSetFilter(f);
-  setTimeout(checkBulkApprove, 300);
-};
-// Override load to check Bulk button after render
-const _origRender = render;
-render = function(caps) {
-  _origRender(caps);
-  setTimeout(checkBulkApprove, 200);
-};
-
-// ═══════════════════════════════════════
-//  UI HELPERS
-// ═══════════════════════════════════════
-function show(view) {
-  document.getElementById('view-login').style.display = view === 'login' ? 'flex'  : 'none';
-  document.getElementById('view-app').style.display   = view === 'app'   ? 'block' : 'none';
-}
-
-function esc(s) {
-  if (!s) return '';
-  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
-
-let _toastT;
-function toast(msg, type = 'inf') {
-  const el = document.getElementById('toast');
-  el.textContent = msg;
-  el.className = `show ${type}`;
-  clearTimeout(_toastT);
-  _toastT = setTimeout(() => el.className = '', 3000);
-}
 </script>
-
-<!-- Privacy Policy -->
-<a href="privacy-policy.html" style="position:fixed;bottom:8px;left:50%;transform:translateX(-50%);font-size:11px;color:#888;text-decoration:none;z-index:9999;"><span class="en">Privacy Policy</span><span class="ar">سياسة الخصوصية</span></a>
-<!-- SEO_PROFILE
-  page_type: page
-  cluster: health
-  authority_score: 24
-  inbound_links: 0
-  outbound_links: 3
-  link_velocity: low
-  priority_indexing: false
-  content_depth: 18
-  word_count: 1719
-  canonical: https://www.dotforlife.com/admin.html
--->
 </body>
 </html>
