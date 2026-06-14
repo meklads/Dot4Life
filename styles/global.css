@@ -1322,33 +1322,9 @@ body.index-page .mobile-dropdown .md-links a:active {
 [data-theme="dark"] .category-page .sub-nav-inner a:hover { color: #fff; }
 @media (max-width: 768px) { .category-page .sub-nav-inner { justify-content: flex-start; } }
 
-/* ── Per-category sub-nav colour (subtle variation on dark green) ── */
-.cat-health #sub-nav {
-  background-color:#054241 !important;
-  border-bottom:2px solid #2a9a98 !important;
-}
-.cat-finance #sub-nav {
-  background-color:#054241 !important;
-  border-bottom:2px solid #c79a3a !important;
-}
-.cat-real-estate #sub-nav {
-  background-color:#054241 !important;
-  border-bottom:2px solid #bd7f55 !important;
-}
-.cat-travel #sub-nav {
-  background-color:#054241 !important;
-  border-bottom:2px solid #5a93c4 !important;
-}
-.cat-islamic #sub-nav {
-  background-color:#054241 !important;
-  border-bottom:2px solid #2f8f6f !important;
-}
-/* Dark theme: sub-nav matches navbar */
-[data-theme="dark"] .cat-health      #sub-nav { background:#032a28 !important; }
-[data-theme="dark"] .cat-finance     #sub-nav { background:#032a28 !important; }
-[data-theme="dark"] .cat-real-estate #sub-nav { background:#032a28 !important; }
-[data-theme="dark"] .cat-travel      #sub-nav { background:#032a28 !important; }
-[data-theme="dark"] .cat-islamic     #sub-nav { background:#032a28 !important; }
+/* ── Per-category sub-nav — remove all bottom borders for seamless gradient flow ── */
+/* Bottom borders create a visible seam between the header and the hero gradient.
+   The library page (no cat-xxx class) has no border — all pages must match. */
 
 /* Category pages: hide decorative rings around hero circle (they cut the gradient) */
 .category-page .hero-circle-wrap::before,
