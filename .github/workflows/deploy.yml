@@ -1,4 +1,4 @@
-name: 🚀 Deploy to VPS
+name: 🚀 Deploy
 
 on:
   push:
@@ -12,7 +12,8 @@ jobs:
         uses: actions/checkout@v4
 
       - name: 🔐 Deploy via SSH
-        uses: appleboy/ssh-action@v1.1.0
+        uses: appleboy/ssh-action@v1.2.0
+        # if this fails, the site will still be served from the last successful deploy
         continue-on-error: true
         with:
           host: ${{ secrets.VPS_HOST }}
@@ -29,11 +30,13 @@ jobs:
             chmod -R 755 /var/www/dotforlife && \
             echo "✅ Deployment complete: $(date)"
 
-      - name: 🌐 Deploy to GitHub Pages
+      - name: 🌐 Deploy to GitHub Pages (fallback)
+        if: ${{ failure() || success() }}
         uses: peaceiris/actions-gh-pages@v4
         continue-on-error: true
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: .
           force_orphan: true
-          cname: dotforlife.com
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
