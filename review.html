@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Content Review Dashboard - DOTFORLIFE</title>
+  <meta name="description" content="Internal content review dashboard for DOTFORLIFE. Preview new articles and pages before publishing."/>
+  <meta name="robots" content="noindex, nofollow">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Almarai:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --primary: #2a9a98;
+      --primary-light: rgba(42, 154, 152, 0.1);
+      --accent: #EC4899;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --text: #1a1a1a;
+      --text-light: #666;
+      --bg: #ffffff;
+      --section-bg: #f9fafb;
+      --border: #e5e7eb;
+    }
+    
+    [data-theme="dark"] {
+      --text: #f5f5f5;
+      --text-light: #b0b0b0;
+      --bg: #1a1a1a;
+      --section-bg: #262626;
+      --border: #404040;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* NAVBAR */
+    nav {
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .nav-logo img {
+      height: 50px;
+      width: auto;
+    }
+    
+    .nav-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    
+    /* HEADER */
+    .header {
+      background: linear-gradient(135deg, rgba(42, 154, 152, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%);
+      padding: 3rem 0;
+      margin-bottom: 2rem;
+    }
+    
+    .header h1 {
+      font-size: 2.5rem;
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    
+    .header p {
+      font-size: 1.1rem;
+      color: var(--text-light);
+    }
+    
+    /* BATCH SECTION */
+    .batch {
+      margin-bottom: 3rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    
+    .batch-header {
+      background: var(--section-bg);
+      padding: 1.5rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .batch-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    
+    .batch-date {
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+    
+    .batch-status {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .status-pending {
+      background: rgba(245, 158, 11, 0.1);
+      color: #f59e0b;
+    }
+    
+    .status-approved {
+      background: rgba(16, 185, 129, 0.1);
+      color: #10b981;
+    }
+    
+    /* ITEMS GRID */
+    .batch-items {
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .item-card {
+      background: var(--section-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .item-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(42, 154, 152, 0.1);
+      border-color: var(--primary);
+    }
+    
+    .item-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+      line-height: 1.4;
+    }
+    
+    .item-type {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    
+    .item-desc {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      margin-bottom: 1rem;
+      flex: 1;
+    }
+    
+    .item-links {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    
+    .item-link {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      text-decoration: none;
+      color: var(--primary);
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    
+    .item-link:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+    
+    /* FOOTER */
+    footer {
+      background: var(--section-bg);
+      border-top: 1px solid var(--border);
+      padding: 2rem 0;
+      margin-top: 3rem;
+      text-align: center;
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+    
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 1.8rem;
+      }
+      
+      .batch-items {
+        grid-template-columns: 1fr;
+      }
+      
+      .batch-header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="DOTFORLIFE Home">
+        <img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" loading="lazy">
+      </a>
+      <div class="nav-title">📋 Content Review Dashboard</div>
+      <div></div>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="container">
+      <h1>Content Review Dashboard</h1>
+      <p>Preview and approve new content before publishing to the live site.</p>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="container">
+    <!-- BATCH 1: Health Pages & Featured Stories -->
+    <div class="batch">
+      <div class="batch-header">
+        <div>
+          <div class="batch-title">Batch 1: Health Pages & Featured Stories</div>
+          <div class="batch-date">Created: June 14, 2026</div>
+        </div>
+        <div class="batch-status status-pending">⏳ Pending Review</div>
+      </div>
+      <div class="batch-items">
+        <!-- Health Pages -->
+        <div class="item-card">
+          <div class="item-type">Page (English)</div>
+          <div class="item-title">Health Hub - English</div>
+          <div class="item-desc">Redesigned health page with modern layout, tools grid, and articles section.</div>
+          <div class="item-links">
+            <a href="health.html" class="item-link" target="_blank">Preview →</a>
+          </div>
+        </div>
+        
+        <div class="item-card">
+          <div class="item-type">Page (Arabic)</div>
+          <div class="item-title">Health Hub - Arabic</div>
+          <div class="item-desc">صفحة الصحة المعاد تصميمها مع تخطيط حديث وشبكة أدوات وقسم مقالات.</div>
+          <div class="item-links">
+            <a href="health-ar.html" class="item-link" target="_blank">Preview →</a>
+          </div>
+        </div>
+        
+        <!-- Featured Stories -->
+        <div class="item-card">
+          <div class="item-type">Article (English)</div>
+          <div class="item-title">Saudi Mother: Balancing Work & Motherhood</div>
+          <div class="item-desc">A story of a Saudi working mother overcoming challenges and finding balance.</div>
+          <div class="item-links">
+            <a href="blog/featured-story-saudi-mother.html" class="item-link" target="_blank">Preview →</a>
+          </div>
+        </div>
+        
+        <div class="item-card">
+          <div class="item-type">Article (Arabic)</div>
+          <div class="item-title">قصة أم سعودية: التوفيق بين العمل والأمومة</div>
+          <div class="item-desc">قصة أم سعودية عاملة تتغلب على التحديات وتجد التوازن.</div>
+          <div class="item-links">
+            <a href="blog/featured-story-saudi-mother-ar.html" class="item-link" target="_blank">Preview →</a>
+          </div>
+        </div>
+        
+        <div class="item-card">
+          <div class="item-type">Article (English)</div>
+          <div class="item-title">Gulf Family Home: Traditions & Modern Living</div>
+          <div class="item-desc">Exploring how Gulf families blend traditional values with contemporary home design.</div>
+          <div class="item-links">
+            <a href="blog/featured-story-gulf-family-home.html" class="item-link" target="_blank">Preview →</a>
+          </div>
+        </div>
+        
+        <div class="item-card">
+          <div class="item-type">Article (Arabic)</div>
+          <div class="item-title">منزل العائلة الخليجية: التقاليد والعصرية</div>
+          <div class="item-desc">استكشاف كيفية دمج العائلات الخليجية القيم التقليدية مع التصميم الحديث.</div>
+          <div class="item-links">
+            <a href="blog/featured-story-gulf-family-home-ar.html" class="item-link" target="_blank">Preview →</a>
+          </div>
+        </div>
+        
+        <div class="item-card">
+          <div class="item-type">Article (English)</div>
+          <div class="item-title">Arab Father & Teenagers: Navigating Parenting</div>
+          <div class="item-desc">Insights on parenting teenagers in the Arab context with practical guidance.</div>
+          <div class="item-links">
+            <a href="blog/featured-story-arab-father-teens.html" class="item-link" target="_blank">Preview →</a>
+          </div>
+        </div>
+        
+        <div class="item-card">
+          <div class="item-type">Article (Arabic)</div>
+          <div class="item-title">الأب العربي والمراهقون: فن الأبوة</div>
+          <div class="item-desc">رؤى حول تربية المراهقين في السياق العربي مع إرشادات عملية.</div>
+          <div class="item-links">
+            <a href="blog/featured-story-arab-father-teens-ar.html" class="item-link" target="_blank">Preview →</a>
+          </div>
+        </div>
+        
+        <!-- Comparisons -->
+        <div class="item-card">
+          <div class="item-type">Article (English)</div>
+          <div class="item-title">Buy vs Build: Making the Right Home Decision</div>
+          <div class="item-desc">Comprehensive comparison of buying vs building a home for Gulf families.</div>
+          <div class="item-links">
+            <a href="blog/comparisons-ready-vs-build-home.html" class="item-link" target="_blank">Preview →</a>
+          </div>
+        </div>
+        
+        <div class="item-card">
+          <div class="item-type">Article (Arabic)</div>
+          <div class="item-title">شراء أم بناء: اتخاذ القرار الصحيح للمنزل</div>
+          <div class="item-desc">مقارنة شاملة بين شراء أو بناء منزل للعائلات الخليجية.</div>
+          <div class="item-links">
+            <a href="blog/comparisons-ready-vs-build-home-ar.html" class="item-link" target="_blank">Preview →</a>
+          </div>
+        </div>
+        
+        <div class="item-card">
+          <div class="item-type">Article (English)</div>
+          <div class="item-title">Public vs Private Education: Choosing for Your Family</div>
+          <div class="item-desc">Analysis of public and private education options for Gulf families.</div>
+          <div class="item-links">
+            <a href="blog/comparisons-public-vs-private-education.html" class="item-link" target="_blank">Preview →</a>
+          </div>
+        </div>
+        
+        <div class="item-card">
+          <div class="item-type">Article (Arabic)</div>
+          <div class="item-title">التعليم الحكومي أم الخاص: الاختيار لعائلتك</div>
+          <div class="item-desc">تحليل خيارات التعليم الحكومي والخاص للعائلات الخليجية.</div>
+          <div class="item-links">
+            <a href="blog/comparisons-public-vs-private-education-ar.html" class="item-link" target="_blank">Preview →</a>
+          </div>
+        </div>
+        
+        <!-- Peace Capsules -->
+        <div class="item-card">
+          <div class="item-type">Article (English)</div>
+          <div class="item-title">5 Steps to Peace at Home: Creating Calm</div>
+          <div class="item-desc">Practical steps to foster peace and harmony in your family home.</div>
+          <div class="item-links">
+            <a href="blog/peace-at-home-5-steps.html" class="item-link" target="_blank">Preview →</a>
+          </div>
+        </div>
+        
+        <div class="item-card">
+          <div class="item-type">Article (Arabic)</div>
+          <div class="item-title">5 خطوات للسلام في البيت: خلق الهدوء</div>
+          <div class="item-desc">خطوات عملية لتعزيز السلام والانسجام في منزل عائلتك.</div>
+          <div class="item-links">
+            <a href="blog/peace-at-home-5-steps-ar.html" class="item-link" target="_blank">Preview →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2024 DOTFORLIFE. Content Review Dashboard - Internal Use Only.</p>
+    <p>Once approved, content will be moved to the live site and integrated into the main navigation.</p>
+  </footer>
+</body>
+</html>
