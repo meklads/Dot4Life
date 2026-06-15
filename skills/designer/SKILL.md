@@ -1,0 +1,41 @@
+---
+name: designer
+description: Create on-brand visuals for DotForLife — article hero/inline images, YouTube thumbnails, and social media graphics for a Gulf family audience. Use this skill whenever the task involves a thumbnail, banner, cover image, social post graphic, article illustration, icon, or any visual asset — even if the user just says "اعمل صورة", "تصميم", "thumbnail", or describes wanting something to look good. Enforces brand colors, bilingual layout (RTL/LTR), and correct export specs.
+---
+
+# Designer — DotForLife
+
+## Mission
+إنتاج عناصر بصرية متّسقة مع الهوية، تخدم الوضوح والنقر، وتدعم العربي والإنجليزي.
+
+## هوية البراند (إلزامية)
+- ألوان: أخضر غامق `#054241` · تركوازي `#6abfb8` · برتقالي `#fd781c` · كريمي `#FAF8F4` · أبيض.
+- نبرة: هادئة، نظيفة، عائلية، موثوقة. لا فوضى، لا تدرّجات صارخة.
+- نص عربي = خط واضح RTL · نص إنجليزي = LTR.
+
+## أنواع المخرجات والمواصفات
+| النوع | المقاس | ملاحظات |
+|-------|--------|---------|
+| صورة مقالة (hero/inline) | 1200×630 أو دائري للهيرو | WebP، < 200KB |
+| ثَمبنيل يوتيوب | 1280×720 | عنوان كبير 4–6 كلمات، وجه/أيقونة، تباين عالٍ |
+| سوشيال (مربع) | 1080×1080 | للإنستغرام/فيسبوك |
+| سوشيال (ستوري/ريلز) | 1080×1920 | عمودي |
+
+## سير العمل
+1. حدّد النوع + القسم + الرسالة الواحدة.
+2. اختر لون القسم القائد (صحة=تركوازي، مالية=ذهبي... من هوية الموقع).
+3. تسلسل بصري: عنصر واحد بطل + عنوان موجز + شعار خفيف.
+4. تحقّق التباين والقراءة على الجوال (معظم الجمهور موبايل).
+5. صدّر بالمقاس والصيغة الصحيحة + WebP للويب.
+
+## قواعد الثَمبنيل (نقر أعلى)
+- 4–6 كلمات كحدّ أقصى، خط ضخم.
+- تباين قوي، عاطفة/فضول، تجنّب الازدحام.
+- متّسق بصرياً عبر القناة (قالب ثابت).
+
+## Definition of Done ✅
+- [ ] ألوان الهوية فقط، نظيف ومتّسق
+- [ ] المقاس والصيغة الصحيحان (+ WebP للويب)
+- [ ] مقروء على الجوال، تباين كافٍ
+- [ ] يدعم اللغة المطلوبة (RTL/LTR)
+- [ ] الحجم محسّن (< 200KB للصور الويب)

@@ -1,25 +1,7 @@
-# 🤝 HANDOFF — Dot4Life Repository Guide for Claude Ship
+# 🤝 HANDOFF — Dot4Life Repository Guide
 
 > آخر تحديث: 2026-06-15
-> مرجع دائم لـ Claude Ship عند العمل على هذا المستودع
-
----
-
-## 🔧 آخر إصلاح حرج — تسطيح المجلدات المكرّرة (commit `7071e45`)
-
-**المشكلة:** الـ"Major restructure" خلّف **19 مجلداً متداخلاً مرتين** داخل `site/`:
-`styles/styles`, `tools/tools`, `blog/blog`, `assets/assets`, `scripts/scripts`, `og/og`,
-`guides/guides`, `cities/cities`, `comparisons/comparisons`, `content/content`,
-`featured-stories`, `fitness`, `health`, `health-pregnancy`, `real-estate`,
-`peace-capsules`, `finance-wealth`, `islamic-hajj-umrah`, `_external-pages`.
-
-بما أن كل الروابط مطلقة (`/styles/...`, `/tools/...`)، كان الموقع يُبنى وينشر **بدون تنسيق ولا أدوات**.
-وكان هذا أيضاً سبب فشل Nixpacks ("failed to detect application type") لأن الجذر ليس فيه تطبيق.
-
-**الحل (تم):** تسطيح كل الـ19 مجلد — git سجّلها **renames بنسبة 100%** (صفر تغيير محتوى).
-كل المسارات تعمل الآن (تم التحقق: `GET /styles/global.css` → 200، `/tools/*.html` → 200، `/assets/images/*` → 200).
-
-**قاعدة وقائية:** أي إعادة هيكلة مستقبلية — تحقّق فوراً أن `site/<dir>/<dir>` **غير موجود** قبل الـ commit.
+> المرجع الموحّد للعمل على المستودع — يُقرأ من عامر و هيما
 
 ---
 
@@ -31,6 +13,15 @@ Dot4Life/
 ├── README.md
 ├── .gitignore
 ├── .github/workflows/deploy.yml   ← GitHub Actions (لا تستخدمه مع Coolify)
+├── skills/                        ← 🧠 الـSkills الحقيقية (مشتركة بين عامر و هيما)
+│   ├── TEAM-CONTEXT.md            ← عقد العمل بين الأداتين
+│   ├── EXECUTION-ORDERS.md        ← أوامر التنفيذ اليومية لـ هيما
+│   ├── content-writer/            ← Skill: كتابة المحتوى
+│   ├── seo/                       ← Skill: تحسين محركات البحث
+│   ├── designer/                  ← Skill: التصميم الجرافيكي
+│   ├── video-youtube/             ← Skill: فيديوهات يوتيوب
+│   ├── social-media/              ← Skill: إدارة السوشيال ميديا
+│   └── ads-manager/               ← Skill: الإعلانات المدفوعة
 ├── site/                          ← 🎯 جذر الويب الفعلي (Web Root)
 │   ├── index.html                 ← الصفحة الرئيسية
 │   ├── CNAME, robots.txt, sitemap.xml
@@ -40,12 +31,43 @@ Dot4Life/
 │   ├── tools/, blog/, guides/     ← أدوات، مقالات، أدلة
 │   ├── featured-stories/, comparisons/, peace-capsules/
 │   ├── health-pregnancy/, finance-wealth/, islamic-hajj-umrah/
-│   └── system/                    ← 🔒 internal (لوحة المراجعة، الإدارة، Notion)
+│   ├── real-estate/, fitness/, content/
+│   └── system/                    ← 🔒 internal (review.html, admin.html, notion-dashboard)
 ├── legacy/                        ← 🗑️ مرجعي
 └── ——————————
 ```
 
-## 2. 🔑 قواعد أساسية (لا تتكسر)
+---
+
+## 2. 👥 الفريق — النموذج الجديد (بلا هرم إداري)
+
+```
+👻 Ghost (أنت — صاحب القرار)
+   │
+   ├── 🏗️ عامر (Claude Desktop) — المعماري
+   │     يبني الـSkills، يصمم القوالب، يراجع أسبوعياً
+   │
+   └── ⚡ هيما — المنفّذ اليومي
+         يشتغل بالـSkills: مقالات، SEO، سوشيال، فيديو، إعلانات
+```
+
+### المنفّذون النشطون (Doers)
+
+| الاسم | الدور | الـSkill |
+|-------|-------|----------|
+| 🎨 عمر | Graphic Designer | `designer` |
+| ✍️ موني | Content Writer | `content-writer` |
+| 🔍 ميدو | SEO Developer | `seo` |
+| 🎬 هيما | Video Editor | `video-youtube` |
+| 🤖 لينو | Tech & Automation | — (تقنية) |
+| 📈 مازن | Social Media Manager | `social-media` |
+| 📊 Ads Manager | Performance Ads | `ads-manager` |
+
+> **ملاحظة:** رائد (CEO)، يوسف (BA)، نادر (PM)، جاد (PM)، فارس (Sales)، يونس (Tech Support) — مركونون في `Team Work/skills/dormant/`
+
+---
+
+## 3. 🔧 قواعد أساسية (لا تتكسر)
 
 ### الروابط
 - **جميع روابط الأصول مطلقة** من جذر `site/`:
@@ -69,7 +91,9 @@ Dot4Life/
 | `#6abfb8` | تركوازي — ثانوي |
 | `#fd781c` | برتقالي — accent |
 
-## 3. 🚀 النشر
+---
+
+## 4. 🚀 النشر
 
 ### Coolify (المُعتمَد)
 - **Build Pack:** `Static` (ليس Nixpacks)
@@ -83,9 +107,22 @@ Dot4Life/
 - ينشر إلى `dotforlife.com` عبر GitHub Pages
 - **تنبيه:** لا تشغّل الدومين نفسه من النظامين معاً
 
-## 4. ⚠️ معلّقات سابقة (تحتاج تأكيد)
+---
 
-بعض التعديلات التالية اتعملت على البنية القديمة المسطّحة وقد لا تكون وصلت إلى `site/`:
+## 5. 📋 التسليم اليومي
+
+كل المخرجات تُسلّم في:
+
+| المخرج | المسار |
+|--------|--------|
+| المقال | `site/[section]/[article-name].html` |
+| CSS/JS | `site/styles/`, `site/scripts/` |
+| الصور | `site/assets/images/` |
+| التقارير | `site/system/review.html` |
+
+---
+
+## 6. ⚠️ معلّقات سابقة
 
 - [ ] ألوان الـ sub-menu بزخارف لكل قسم
 - [ ] أزرار مشاركة واتساب على الأدوات
@@ -93,23 +130,17 @@ Dot4Life/
 - [ ] تنظيف الشرطات
 - [ ] توحيد هيرو ٢٣ صفحة
 
-## 5. 👥 الفريق
+---
 
-```
-👻 Ghost (General Director)
-   └── 📊 رائد (Project Manager)
-        ├── 🎨 عمر (Graphic Designer)
-        ├── ✍️ موني (Content Writer)
-        ├── 🔍 ميدو (SEO Developer)
-        ├── 🎬 هيما (Video Editor)
-        ├── 🤖 لينو (Automation Engineer)
-        ├── 📈 مازن (Marketing Strategist)
-        ├── 🤝 فارس (Sales Closer)
-        └── 🛠️ يونس (Tech Support)
-```
+## 7. 📂 مرجع خارجي
 
-> تم إزالة Manus — مهام التصميم أصبحت لعمر.
+| المسار | المحتوى |
+|--------|---------|
+| `../Team Work/skills/` | النسخة القديمة من أدوار الفريق (برومبتات، مركون) |
+| `../Team Work/operating-systems/` | الأنظمة الخفيفة: Weekly-Rhythm, Decision-Scoring, Traction-Dashboard |
+| `../Team Work/notion/` | قوالب Notion ومزامنة العمل |
 
 ---
 
-**اقرأني قبل أي تعديل:** هذا الملف مرجع للمحافظة على بنية المشروع. أي إعادة هيكلة مستقبلية يجب أن تتحقق من عدم تكرار المجلدات.
+> **اقرأني قبل أي تعديل:** هذا الملف مرجع للمحافظة على بنية المشروع.
+> الـ TEAM-CONTEXT.md هو العقد بين عامر و هيما — اقرأه لفهم تقسيم العمل.
