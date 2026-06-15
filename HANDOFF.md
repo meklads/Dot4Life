@@ -33,7 +33,6 @@ Dot4Life/
 ├── health-pregnancy/, finance-wealth/, islamic-hajj-umrah/
 ├── real-estate/, fitness/, content/
 ├── system/                        ← 🔒 internal (review.html, board.html, admin.html)
-├── skills/                        ← 🧠 Skills الفريق
 ├── legacy/                        ← 🗑️ مرجعي
 ```
 
@@ -70,7 +69,7 @@ Dot4Life/
 ## 3. 🔧 قواعد أساسية (لا تتكسر)
 
 ### الروابط
-- **جميع روابط الأصول مطلقة** من جذر `site/`:
+- **جميع روابط الأصول مطلقة** من الجذر:
   - `/styles/...`, `/scripts/...`, `/assets/images/...`
   - `/tools/...`, `/blog/...`
 - لا تضع مجلداً داخل مجلد بنفس الاسم (ممنوع `styles/styles/`)
@@ -115,10 +114,10 @@ Dot4Life/
 
 | المخرج | المسار |
 |--------|--------|
-| المقال | `site/[section]/[article-name].html` |
-| CSS/JS | `site/styles/`, `site/scripts/` |
-| الصور | `site/assets/images/` |
-| التقارير | `site/system/review.html` |
+| المقال | `[section]/[article-name].html` |
+| CSS/JS | `styles/`, `scripts/` |
+| الصور | `assets/images/` |
+| التقارير | `system/review.html` |
 
 ---
 
