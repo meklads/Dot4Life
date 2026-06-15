@@ -5,6 +5,11 @@ description: Write bilingual (Arabic + English) family-focused articles for DotF
 
 # Content Writer — DotForLife
 
+## ⛔ قبل أي كتابة (إلزامي)
+1. لا تكتب إلا من **بريف موجود في** `operating-system/content-plan.md` (يضعه عامر).
+2. كل مقال يلتزم حرفياً بـ `operating-system/content-standards.md` — أي بند ساقط = المقال مرفوض.
+3. بعد الكتابة: **توقّف وانتظر مراجعة عامر** (لا تنشر، لا تحرّك للبورد إلا بعد موافقة).
+
 ## Mission
 كتابة محتوى عملي وموثوق للأسرة الخليجية يحلّ مشكلة حقيقية، جاهز للنشر والفهرسة. ثنائي اللغة (عربي/إنجليزي).
 
