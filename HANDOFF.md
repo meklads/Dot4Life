@@ -22,19 +22,19 @@ Dot4Life/
 │   ├── video-youtube/             ← Skill: فيديوهات يوتيوب
 │   ├── social-media/              ← Skill: إدارة السوشيال ميديا
 │   └── ads-manager/               ← Skill: الإعلانات المدفوعة
-├── site/                          ← 🎯 جذر الويب الفعلي (Web Root)
-│   ├── index.html                 ← الصفحة الرئيسية
-│   ├── CNAME, robots.txt, sitemap.xml
-│   ├── styles/                    ← CSS
-│   ├── scripts/                   ← JavaScript
-│   ├── assets/                    ← صور وأيقونات
-│   ├── tools/, blog/, guides/     ← أدوات، مقالات، أدلة
-│   ├── featured-stories/, comparisons/, peace-capsules/
-│   ├── health-pregnancy/, finance-wealth/, islamic-hajj-umrah/
-│   ├── real-estate/, fitness/, content/
-│   └── system/                    ← 🔒 internal (review.html, admin.html, notion-dashboard)
+├── index.html                     ← 🎯 الصفحة الرئيسية (جذر الموقع)
+├── 404.html
+├── CNAME, robots.txt, sitemap.xml
+├── styles/                        ← CSS
+├── scripts/                       ← JavaScript
+├── assets/                        ← صور وأيقونات
+├── tools/, blog/, guides/         ← أدوات، مقالات، أدلة
+├── featured-stories/, comparisons/, peace-capsules/
+├── health-pregnancy/, finance-wealth/, islamic-hajj-umrah/
+├── real-estate/, fitness/, content/
+├── system/                        ← 🔒 internal (review.html, board.html, admin.html)
+├── skills/                        ← 🧠 Skills الفريق
 ├── legacy/                        ← 🗑️ مرجعي
-└── ——————————
 ```
 
 ---
@@ -97,7 +97,7 @@ Dot4Life/
 
 ### Coolify (المُعتمَد)
 - **Build Pack:** `Static` (ليس Nixpacks)
-- **Base Directory:** `./site`
+- **Base Directory:** `.` (الجذر — لا `site/`)
 - **Publish Directory:** `.`
 - يسحب من: `meklads/Dot4Life:main`
 - سيرفر: Hostinger
