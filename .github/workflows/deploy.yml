@@ -1,3 +1,7 @@
+# 🚀 Deploy DotForLife to GitHub Pages
+# Uses the modern GitHub Actions deployment method
+# Publishes from ./site/ folder → dotforlife.com
+
 name: 🚀 Deploy
 
 on:
@@ -6,23 +10,34 @@ on:
 
 # Grant write permissions for GitHub Pages deployment
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
-  deploy-pages:
-    name: 🌐 Deploy to GitHub Pages
+  deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: 📥 Checkout
         uses: actions/checkout@v4
 
-      - name: 🌐 Publish to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+      - name: ⚙️ Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: 📦 Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./site
-          force_orphan: true
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
+          # Upload the site/ folder (contains all published files)
+          path: './site'
+
+      - name: 🚀 Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
