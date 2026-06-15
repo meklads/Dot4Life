@@ -3,7 +3,7 @@
 هذه الوثيقة تحدد الأدوار والمسؤوليات لكل عضو في فريق Graphics House، مع التركيز على الهيكل الجديد:
 
 ```
-👻 Ghost (General Director)
+👻 Ghost (Coordinator)
    └── 📊 رائد (Project Manager)
         ├── 🎨 عمر (Graphic Designer)
         ├── ✍️ موني (Content Writer)
@@ -17,7 +17,7 @@
 
 ---
 
-## 1. 👻 Ghost — General Director (المدير العام)
+## 1. 👻 Ghost — Coordinator (المدير العام)
 - **المسؤوليات الرئيسية:**
   - وضع الرؤية العامة والاستراتيجية للمشروع
   - اعتماد المحتوى قبل النشر (الموافقة النهائية)
