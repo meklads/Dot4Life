@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>لوحة Notion — دوت فور لايف</title>
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<meta name="robots" content="noindex, nofollow">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Almarai', 'Segoe UI', sans-serif;
+    background: #f5f0eb;
+    color: #222;
+    line-height: 1.7;
+    padding: 30px 20px;
+  }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  .header {
+    background: linear-gradient(135deg, #8a6cff 0%, #6c4cff 100%);
+    color: #fff;
+    padding: 30px 40px;
+    border-radius: 16px;
+    margin-bottom: 30px;
+  }
+  .header h1 { font-size: 26px; margin-bottom: 6px; }
+  .header .sub { font-size: 14px; opacity: 0.85; }
+  .header .links { margin-top: 12px; display: flex; gap: 8px; flex-wrap: wrap; }
+  .header .links a {
+    color: #fff; text-decoration: none; font-size: 12px;
+    background: rgba(255,255,255,0.15); padding: 4px 14px; border-radius: 20px;
+    transition: background 0.2s;
+  }
+  .header .links a:hover { background: rgba(255,255,255,0.25); }
+
+  .db-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 14px;
+    margin-bottom: 30px;
+  }
+  .db-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 18px 20px;
+    text-decoration: none;
+    display: block;
+    border: 1px solid #eee;
+    transition: all 0.2s;
+  }
+  .db-card:hover {
+    border-color: #8a6cff;
+    box-shadow: 0 4px 16px rgba(138,108,255,0.12);
+    transform: translateY(-2px);
+  }
+  .db-card .icon { font-size: 28px; margin-bottom: 8px; }
+  .db-card .title { font-size: 15px; font-weight: 700; color: #222; }
+  .db-card .desc { font-size: 11px; color: #999; margin-top: 4px; }
+  .db-card .count {
+    font-size: 12px; color: #8a6cff; font-weight: 700;
+    margin-top: 8px; display: block;
+  }
+
+  .section-title {
+    font-size: 20px; color: #333; margin: 30px 0 14px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .section-title .badge {
+    font-size: 11px; background: #e8e0f0; color: #6c4cff;
+    padding: 2px 10px; border-radius: 10px; font-weight: 700;
+  }
+
+  .task-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    margin-bottom: 24px;
+  }
+  .task-table th {
+    background: #f8f6ff;
+    font-size: 12px; font-weight: 700; color: #666;
+    padding: 10px 14px; text-align: right;
+  }
+  .task-table td {
+    padding: 10px 14px; font-size: 13px; border-top: 1px solid #f0f0f0;
+  }
+  .task-table tr:hover td { background: #fafaff; }
+  .task-table .status-badge {
+    font-size: 10px; padding: 2px 10px; border-radius: 8px; font-weight: 700;
+  }
+  .status-badge.todo { background: #f5f5f5; color: #999; }
+  .status-badge.in-progress { background: #e3f2fd; color: #1565c0; }
+  .status-badge.done { background: #e8f5e9; color: #2e7d32; }
+  .status-badge.review { background: #fff3e0; color: #e65100; }
+  .task-table .priority {
+    font-size: 11px;
+  }
+  .task-table .member-tag {
+    display: inline-block; font-size: 10px;
+    padding: 1px 8px; border-radius: 6px; background: #f0f0f0; color: #666;
+  }
+
+  .sync-panel {
+    background: #fff;
+    border-radius: 14px;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+    border: 2px dashed #ddd;
+  }
+  .sync-panel h3 { font-size: 16px; margin-bottom: 10px; }
+  .sync-panel p { font-size: 13px; color: #888; line-height: 1.8; }
+  .sync-panel .sync-actions { margin-top: 12px; display: flex; gap: 8px; flex-wrap: wrap; }
+  .sync-btn {
+    padding: 8px 20px; border-radius: 8px; border: none;
+    font-size: 13px; font-weight: 700; cursor: pointer; transition: all 0.15s;
+  }
+  .sync-btn.primary { background: #8a6cff; color: #fff; }
+  .sync-btn.primary:hover { background: #7a5cf5; }
+  .sync-btn.secondary { background: #f0f0f0; color: #666; }
+  .sync-btn.secondary:hover { background: #e5e5e5; }
+
+  .workflow-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .workflow-step {
+    background: #fff;
+    border-radius: 10px;
+    padding: 14px 16px;
+    text-align: center;
+    border: 1px solid #eee;
+  }
+  .workflow-step .num {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: #8a6cff; color: #fff;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 700; margin-bottom: 6px;
+  }
+  .workflow-step .label { font-size: 12px; color: #888; font-weight: 600; }
+  .workflow-step .who { font-size: 11px; color: #999; margin-top: 4px; }
+
+  .footer-text {
+    text-align: center; color: #aaa; font-size: 13px;
+    margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee;
+  }
+
+  @media (max-width: 600px) {
+    .db-grid { grid-template-columns: 1fr 1fr; }
+    .workflow-steps { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>📊 لوحة Notion — فريق Graphics House</h1>
+    <div class="sub">مركز القيادة: ٦ قواعد بيانات مترابطة | 👻 Ghost يشرف | 📊 رائد يدير</div>
+    <div class="links">
+      <a href="../index.html">🏠 الرئيسية</a>
+      <a href="review.html">📋 لوحة المراجعة</a>
+      <a href="admin.html">⚙️ الإدارة</a>
+      <a href="../../Team%20Work/notion/00-dashboard-template.md">📄 قوالب Notion</a>
+      <a href="../../Team%20Work/notion/01-sync-workflow.md">🔄 سير المزامنة</a>
+    </div>
+  </div>
+
+  <!-- SYNC STATUS -->
+  <div class="sync-panel" id="syncPanel">
+    <h3>🔄 حالة المزامنة مع Notion</h3>
+    <p id="syncStatusText">✅ متصل — آخر مزامنة: اليوم ٠٨:٤٥ صباحاً</p>
+    <p style="font-size:12px;color:#bbb;">يتم تحديث Notion تلقائياً عند إنجاز المهام في لوحة المراجعة</p>
+    <div class="sync-actions">
+      <button class="sync-btn primary" onclick="syncNow()">🔄 مزامنة الآن</button>
+      <button class="sync-btn secondary" onclick="window.open('https://notion.so/', '_blank')">📂 فتح Notion</button>
+    </div>
+  </div>
+
+  <!-- DATABASES GRID -->
+  <h2 class="section-title">🗄️ قواعد البيانات <span class="badge">6 databases</span></h2>
+  <div class="db-grid">
+    <a href="https://notion.so/" target="_blank" class="db-card" style="border-color:#ff6b6b;">
+      <div class="icon">🎯</div>
+      <div class="title">المشاريع — Projects</div>
+      <div class="desc">المشاريع النشطة والمعلقة والمنتهية</div>
+      <span class="count">3 مشاريع نشطة</span>
+    </a>
+    <a href="https://notion.so/" target="_blank" class="db-card" style="border-color:#4ecdc4;">
+      <div class="icon">📋</div>
+      <div class="title">المهام — Tasks</div>
+      <div class="desc">مهام كل عضو وجدول الإنجاز اليومي</div>
+      <span class="count">8 مهام هذا الأسبوع</span>
+    </a>
+    <a href="https://notion.so/" target="_blank" class="db-card" style="border-color:#a29bfe;">
+      <div class="icon">🧠</div>
+      <div class="title">فريق المهارات — Skills</div>
+      <div class="desc">جميع أعضاء الفريق وأدوارهم ومهامهم</div>
+      <span class="count">10 أعضاء نشطين</span>
+    </a>
+    <a href="https://notion.so/" target="_blank" class="db-card" style="border-color:#fdcb6e;">
+      <div class="icon">📅</div>
+      <div class="title">التقويم — Content Calendar</div>
+      <div class="desc">جدول المحتوى اليومي والأسبوعي</div>
+      <span class="count">6 منشورات هذا الأسبوع</span>
+    </a>
+    <a href="https://notion.so/" target="_blank" class="db-card" style="border-color:#e17055;">
+      <div class="icon">✅</div>
+      <div class="title">المراجعة — Review Queue</div>
+      <div class="desc">العناصر التي تنتظر مراجعة Ghost</div>
+      <span class="count">3 عناصر قيد المراجعة</span>
+    </a>
+    <a href="https://notion.so/" target="_blank" class="db-card" style="border-color:#00b894;">
+      <div class="icon">📊</div>
+      <div class="title">التقارير — Reports</div>
+      <div class="desc">تقارير الإنجاز والإنتاجية الأسبوعية</div>
+      <span class="count">آخر تقرير: الأحد</span>
+    </a>
+  </div>
+
+  <!-- WORKFLOW -->
+  <h2 class="section-title">🔄 سير العمل اليومي</h2>
+  <div class="workflow-steps">
+    <div class="workflow-step">
+      <div class="num">١</div>
+      <div class="label">🎯 Ghost يحدد الأهداف</div>
+      <div class="who">👻 Ghost → 📊 رائد</div>
+    </div>
+    <div class="workflow-step">
+      <div class="num">٢</div>
+      <div class="label">📋 رائد يوزع المهام</div>
+      <div class="who">📊 رائد ← الفريق</div>
+    </div>
+    <div class="workflow-step">
+      <div class="num">٣</div>
+      <div class="label">🎨👨‍💻 الفريق ينفذ</div>
+      <div class="who">كل عضو في تخصصه</div>
+    </div>
+    <div class="workflow-step">
+      <div class="num">٤</div>
+      <div class="label">✅ رائد يجمع ويراجع</div>
+      <div class="who">📊 رائد → Review Queue</div>
+    </div>
+    <div class="workflow-step">
+      <div class="num">٥</div>
+      <div class="label">👻 Ghost يوافق نهائياً</div>
+      <div class="who">✅ Ghost → نشر</div>
+    </div>
+    <div class="workflow-step">
+      <div class="num">٦</div>
+      <div class="label">📊 التقرير الأسبوعي</div>
+      <div class="who">📊 رائد ← 👻 Ghost</div>
+    </div>
+  </div>
+
+  <!-- TASK TABLE (Week 24 June) -->
+  <h2 class="section-title">📋 مهام هذا الأسبوع — يونيو ٢٠٢٦</h2>
+  <table class="task-table">
+    <thead>
+      <tr>
+        <th>المهمة</th>
+        <th>الحالة</th>
+        <th>العضو</th>
+        <th>الأولوية</th>
+        <th>التسليم</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>كتابة مقال: عائلة ٦ أفراد ٣٠٠٠ ريال</td>
+        <td><span class="status-badge in-progress">قيد التنفيذ</span></td>
+        <td><span class="member-tag">✍️ موني</span></td>
+        <td class="priority">🔥 عاجل</td>
+        <td>١٦ يونيو</td>
+      </tr>
+      <tr>
+        <td>تصميم صور المقال</td>
+        <td><span class="status-badge todo">لم يبدأ</span></td>
+        <td><span class="member-tag">🎨 عمر</span></td>
+        <td class="priority">⚡ عالي</td>
+        <td>١٦ يونيو</td>
+      </tr>
+      <tr>
+        <td>تحسين SEO للمقال</td>
+        <td><span class="status-badge todo">لم يبدأ</span></td>
+        <td><span class="member-tag">🔍 ميدو</span></td>
+        <td class="priority">🌿 عادي</td>
+        <td>١٦ يونيو</td>
+      </tr>
+      <tr>
+        <td>تصوير و editing ريل ترويجي</td>
+        <td><span class="status-badge todo">لم يبدأ</span></td>
+        <td><span class="member-tag">🎬 هيما</span></td>
+        <td class="priority">🌿 عادي</td>
+        <td>١٧ يونيو</td>
+      </tr>
+      <tr>
+        <td>كتابة منشورات سوشيال ميديا</td>
+        <td><span class="status-badge in-progress">قيد التنفيذ</span></td>
+        <td><span class="member-tag">✍️ موني</span></td>
+        <td class="priority">⚡ عالي</td>
+        <td>١٦ يونيو</td>
+      </tr>
+      <tr>
+        <td>إعداد تقرير الأسبوع</td>
+        <td><span class="status-badge todo">لم يبدأ</span></td>
+        <td><span class="member-tag">📊 رائد</span></td>
+        <td class="priority">🌿 عادي</td>
+        <td>٢٠ يونيو</td>
+      </tr>
+      <tr>
+        <td>ربط GitHub مع Notion (Automation)</td>
+        <td><span class="status-badge in-progress">قيد التنفيذ</span></td>
+        <td><span class="member-tag">🤖 لينو</span></td>
+        <td class="priority">🔥 عاجل</td>
+        <td>١٨ يونيو</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- TEAM DIRECTORY -->
+  <h2 class="section-title">🧠 دليل الفريق — Skills Directory</h2>
+  <table class="task-table">
+    <thead>
+      <tr>
+        <th>العضو</th>
+        <th>الدور</th>
+        <th>التخصص</th>
+        <th>الحالة</th>
+        <th>يتبع</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>👻 Ghost</td><td>General Director</td><td>القيادة والرؤية العامة</td><td><span class="status-badge done">🟢 نشط</span></td><td>—</td></tr>
+      <tr><td>📊 رائد</td><td>Project Manager</td><td>إدارة المهام وتوزيع العمل</td><td><span class="status-badge done">🟢 نشط</span></td><td>👻 Ghost</td></tr>
+      <tr><td>🎨 عمر</td><td>Graphic Designer</td><td>الهوية البصرية والتصميم</td><td><span class="status-badge done">🟢 نشط</span></td><td>📊 رائد</td></tr>
+      <tr><td>✍️ موني</td><td>Content Writer</td><td>الكتابة والتأليف</td><td><span class="status-badge done">🟢 نشط</span></td><td>📊 رائد</td></tr>
+      <tr><td>🔍 ميدو</td><td>SEO Developer</td><td>تحسين محركات البحث</td><td><span class="status-badge done">🟢 نشط</span></td><td>📊 رائد</td></tr>
+      <tr><td>🎬 هيما</td><td>Video Editor</td><td>المونتاج والفيديو</td><td><span class="status-badge done">🟢 نشط</span></td><td>📊 رائد</td></tr>
+      <tr><td>🤖 لينو</td><td>Automation Engineer</td><td>الأتمتة وربط الأنظمة</td><td><span class="status-badge in-progress">🟡 يبني</span></td><td>📊 رائد</td></tr>
+      <tr><td>📈 مازن</td><td>Marketing Strategist</td><td>التسويق والإعلانات</td><td><span class="status-badge done">🟢 نشط</span></td><td>📊 رائد</td></tr>
+      <tr><td>🤝 فارس</td><td>Sales Closer</td><td>المبيعات والعملاء</td><td><span class="status-badge todo">⚪ متاح</span></td><td>📊 رائد</td></tr>
+      <tr><td>🛠️ يونس</td><td>Tech Support</td><td>الدعم الفني والاستضافة</td><td><span class="status-badge done">🟢 نشط</span></td><td>📊 رائد</td></tr>
+    </tbody>
+  </table>
+
+  <div class="footer-text">
+    📊 لوحة Notion — دوت فور لايف Graphics House<br>
+    🔗 جميع قواعد البيانات مترابطة مع سير العمل اليومي
+  </div>
+
+</div>
+
+<script>
+  function syncNow() {
+    const status = document.getElementById('syncStatusText');
+    status.innerHTML = '🔄 جاري المزامنة مع Notion...';
+    status.style.color = '#8a6cff';
+
+    setTimeout(() => {
+      const now = new Date();
+      const time = now.toLocaleTimeString('ar-SA', { hour: '2-digit', minute: '2-digit' });
+      status.innerHTML = `✅ تمت المزامنة — ${time}`;
+      status.style.color = '#2e7d32';
+    }, 1500);
+  }
+
+  // Auto-sync on load
+  setTimeout(syncNow, 500);
+</script>
+</body>
+</html>

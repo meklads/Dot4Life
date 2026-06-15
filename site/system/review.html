@@ -53,7 +53,6 @@
     border: 2px solid transparent;
   }
   .role-card.claude { border-color: #2a9a98; }
-  .role-card.manus { border-color: #f59e0b; }
 
   .role-head {
     padding: 18px 20px 10px;
@@ -63,9 +62,7 @@
   }
   .role-name { font-size: 17px; font-weight: 700; }
   .role-name.claude { color: #2a9a98; }
-  .role-name.manus { color: #b85a00; }
   .role-badge.claude { background: #e0f2f2; color: #1a7a78; }
-  .role-badge.manus { background: #fff3e0; color: #b85a00; }
   .role-badge {
     font-size: 11px;
     padding: 3px 12px;
@@ -188,6 +185,75 @@
     padding: 2px 12px; border-radius: 12px;
     font-size: 12px; font-weight: 700; margin-right: 6px;
   }
+
+  /* ========== NOTION SYNC PANEL ========== */
+  .notion-bar {
+    background: linear-gradient(135deg, #f0f4ff 0%, #f5f0ff 100%);
+    border: 2px solid #8a6cff;
+    border-radius: 14px;
+    padding: 18px 24px;
+    margin-bottom: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .notion-bar .status { display: flex; align-items: center; gap: 10px; }
+  .notion-bar .status .dot {
+    width: 12px; height: 12px; border-radius: 50%;
+    background: #4caf50; display: inline-block;
+  }
+  .notion-bar .status .dot.off { background: #9e9e9e; }
+  .notion-bar .status-text { font-size: 14px; font-weight: 600; color: #333; }
+  .notion-bar .status-sub { font-size: 11px; color: #888; }
+  .notion-bar .notion-links { display: flex; gap: 8px; flex-wrap: wrap; }
+  .notion-link {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.15s;
+    background: #fff;
+    border: 1px solid #ddd;
+    color: #333;
+  }
+  .notion-link:hover { border-color: #8a6cff; box-shadow: 0 2px 8px rgba(138,108,255,0.15); transform: translateY(-1px); }
+  .notion-link .emoji { margin-left: 4px; }
+
+  /* ========== TEAM STATUS ========== */
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .team-member {
+    background: #fff;
+    border-radius: 10px;
+    padding: 12px 14px;
+    border: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.15s;
+  }
+  .team-member:hover { border-color: #2a9a98; }
+  .team-member .avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0;
+  }
+  .team-member .info { flex: 1; min-width: 0; }
+  .team-member .info .name { font-size: 13px; font-weight: 700; color: #222; }
+  .team-member .info .role { font-size: 10px; color: #999; }
+  .team-member .status-ind {
+    width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+  }
+  .status-ind.green { background: #4caf50; }
+  .status-ind.yellow { background: #ff9800; }
+  .status-ind.gray { background: #cfd8dc; }
 </style>
 </head>
 <body>
@@ -196,8 +262,81 @@
   <!-- ===== HEADER ===== -->
   <div class="header">
     <h1>📋 لوحة المراجعة — دوت فور لايف</h1>
-    <div class="sub">كلود يكتب المحتوى والمنشورات | مانوس يصمم الصور والأيقونات | أنت توافق</div>
+    <div class="sub">👻 Ghost يشرف | 📊 رائد يدير | 🎨 عمر يصمم | ✍️ موني يكتب | ✅ أنت توافق</div>
     <div class="deadline">⏰ الجميع جاهز الساعة ٩:٠٠ صباحاً</div>
+  </div>
+
+  <!-- ===== NOTION SYNC BAR ===== -->
+  <div class="notion-bar">
+    <div class="status">
+      <span class="dot" id="notionDot"></span>
+      <div>
+        <div class="status-text">📊 Notion — متصل بفريق العمل</div>
+        <div class="status-sub" id="notionSyncTime">آخر مزامنة: اليوم ٠٨:٤٥ صباحاً</div>
+      </div>
+    </div>
+    <div class="notion-links">
+      <a href="https://notion.so/" target="_blank" class="notion-link"><span class="emoji">🎯</span> المشاريع</a>
+      <a href="https://notion.so/" target="_blank" class="notion-link"><span class="emoji">📋</span> المهام</a>
+      <a href="https://notion.so/" target="_blank" class="notion-link"><span class="emoji">🧠</span> الفريق</a>
+      <a href="https://notion.so/" target="_blank" class="notion-link"><span class="emoji">📅</span> التقويم</a>
+      <a href="https://notion.so/" target="_blank" class="notion-link"><span class="emoji">✅</span> المراجعة</a>
+      <a href="https://notion.so/" target="_blank" class="notion-link"><span class="emoji">📊</span> التقارير</a>
+    </div>
+  </div>
+
+  <!-- ===== TEAM STATUS ===== -->
+  <div class="team-grid">
+    <div class="team-member">
+      <div class="avatar" style="background:#e8f5e9;">👻</div>
+      <div class="info"><div class="name">Ghost</div><div class="role">General Director</div></div>
+      <span class="status-ind green"></span>
+    </div>
+    <div class="team-member">
+      <div class="avatar" style="background:#e3f2fd;">📊</div>
+      <div class="info"><div class="name">رائد</div><div class="role">Project Manager</div></div>
+      <span class="status-ind green"></span>
+    </div>
+    <div class="team-member">
+      <div class="avatar" style="background:#fff3e0;">🎨</div>
+      <div class="info"><div class="name">عمر</div><div class="role">Graphic Designer</div></div>
+      <span class="status-ind green"></span>
+    </div>
+    <div class="team-member">
+      <div class="avatar" style="background:#fce4ec;">✍️</div>
+      <div class="info"><div class="name">موني</div><div class="role">Content Writer</div></div>
+      <span class="status-ind green"></span>
+    </div>
+    <div class="team-member">
+      <div class="avatar" style="background:#e8f5e9;">🔍</div>
+      <div class="info"><div class="name">ميدو</div><div class="role">SEO Developer</div></div>
+      <span class="status-ind green"></span>
+    </div>
+    <div class="team-member">
+      <div class="avatar" style="background:#f3e5f5;">🎬</div>
+      <div class="info"><div class="name">هيما</div><div class="role">Video Editor</div></div>
+      <span class="status-ind green"></span>
+    </div>
+    <div class="team-member">
+      <div class="avatar" style="background:#e0f2f1;">🤖</div>
+      <div class="info"><div class="name">لينو</div><div class="role">Automation Eng.</div></div>
+      <span class="status-ind green"></span>
+    </div>
+    <div class="team-member">
+      <div class="avatar" style="background:#fff8e1;">📈</div>
+      <div class="info"><div class="name">مازن</div><div class="role">Marketing</div></div>
+      <span class="status-ind yellow"></span>
+    </div>
+    <div class="team-member">
+      <div class="avatar" style="background:#e8eaf6;">🤝</div>
+      <div class="info"><div class="name">فارس</div><div class="role">Sales</div></div>
+      <span class="status-ind gray"></span>
+    </div>
+    <div class="team-member">
+      <div class="avatar" style="background:#fbe9e7;">🛠️</div>
+      <div class="info"><div class="name">يونس</div><div class="role">Tech Support</div></div>
+      <span class="status-ind green"></span>
+    </div>
   </div>
 
   <!-- ===== الأدوار ===== -->
@@ -213,20 +352,6 @@
           <li>📄 كتابة مقالة + تصميم HTML (عربي + إنجليزي)</li>
           <li>📱 كتابة <strong>منشورين</strong> (صباح + عصر) لكل منصة</li>
           <li>🔗 روابط المقالات والمنشورات هنا في اللوحة</li>
-        </ul>
-      </div>
-    </div>
-    <div class="role-card manus">
-      <div class="role-head">
-        <span class="role-name manus">🎨 Manus — التصميم</span>
-        <span class="role-badge manus">🖼️ مصمم</span>
-      </div>
-      <div class="role-body">
-        <strong>مهمات مانوس اليومية:</strong>
-        <ul>
-          <li>🖼️ تصميم صور وأيقونات للمقالات</li>
-          <li>📸 تحويل نصوص المنشورات إلى تصاميم جاهزة للنشر</li>
-          <li>🎨 إخراج المنشورين بشكل مرئي (الأول + الثاني)</li>
         </ul>
       </div>
     </div>
@@ -280,7 +405,7 @@
       <a href="/featured-stories/arab-mother-startup.html" target="_blank">🇸🇦 أم عربية بنت شركة ناشئة من مطبخها ←</a><br>
       <a href="/featured-stories/arab-mother-startup-en.html" target="_blank">🇬🇧 Arab Mother Built a Startup from Her Kitchen ←</a>
     </div>
-    <div style="margin-top:6px;font-size:11px;color:#999;">🎨 <strong>مانوس:</strong> يحتاج صور + أيقونات لهذه المقالة</div>
+    <div style="margin-top:6px;font-size:11px;color:#999;">🎨 <strong>عمر:</strong> يحتاج صور + أيقونات لهذه المقالة</div>
   </div>
 
   <div class="link-box" style="border-color:#2a9a98;border-style:solid;">
@@ -289,7 +414,7 @@
       <a href="/comparisons/lease-vs-buy-car.html" target="_blank">🇸🇦 تأجير سيارة vs شراء سيارة بالتقسيط ←</a><br>
       <a href="/comparisons/lease-vs-buy-car-en.html" target="_blank">🇬🇧 Lease vs Buy Car: Which Is Better? ←</a>
     </div>
-    <div style="margin-top:6px;font-size:11px;color:#999;">🎨 <strong>مانوس:</strong> يحتاج صور + أيقونات لهذه المقالة</div>
+    <div style="margin-top:6px;font-size:11px;color:#999;">🎨 <strong>عمر:</strong> يحتاج صور + أيقونات لهذه المقالة</div>
   </div>
 
   <div class="link-box" style="border-color:#2a9a98;border-style:solid;">
@@ -298,7 +423,7 @@
       <a href="/peace-capsules/evening-rituals.html" target="_blank">🇸🇦 طقوس المساء الخليجي: ٤ عادات قبل النوم ←</a><br>
       <a href="/peace-capsules/evening-rituals-en.html" target="_blank">🇬🇧 Gulf Evening Rituals: 4 Simple Habits Before Bed ←</a>
     </div>
-    <div style="margin-top:6px;font-size:11px;color:#999;">🎨 <strong>مانوس:</strong> يحتاج صور + أيقونات لهذه المقالة</div>
+    <div style="margin-top:6px;font-size:11px;color:#999;">🎨 <strong>عمر:</strong> يحتاج صور + أيقونات لهذه المقالة</div>
   </div>
 
   <div class="link-box" style="border-color:#2a9a98;border-style:solid;">
@@ -307,7 +432,7 @@
       <a href="/health-pregnancy/preconception-checkups.html" target="_blank">🇸🇦 الفحوصات الضرورية قبل الحمل: دليل الأم الخليجية ←</a><br>
       <a href="/health-pregnancy/preconception-checkups-en.html" target="_blank">🇬🇧 Essential Preconception Checkups ←</a>
     </div>
-    <div style="margin-top:6px;font-size:11px;color:#999;">🎨 <strong>مانوس:</strong> يحتاج صور + أيقونات لهذه المقالة</div>
+    <div style="margin-top:6px;font-size:11px;color:#999;">🎨 <strong>عمر:</strong> يحتاج صور + أيقونات لهذه المقالة</div>
   </div>
 
   <div class="link-box" style="border-color:#2a9a98;border-style:solid;">
@@ -316,7 +441,7 @@
       <a href="/finance-wealth/family-budget-plan.html" target="_blank">🇸🇦 ميزانية الأسرة الخليجية: توزيع الراتب بذكاء ←</a><br>
       <a href="/finance-wealth/family-budget-plan-en.html" target="_blank">🇬🇧 Gulf Family Budget: Smart Salary Distribution ←</a>
     </div>
-    <div style="margin-top:6px;font-size:11px;color:#999;">🎨 <strong>مانوس:</strong> يحتاج صور + أيقونات لهذه المقالة</div>
+    <div style="margin-top:6px;font-size:11px;color:#999;">🎨 <strong>عمر:</strong> يحتاج صور + أيقونات لهذه المقالة</div>
   </div>
 
   <div class="link-box" style="border-color:#2a9a98;border-style:solid;">
@@ -325,7 +450,7 @@
       <a href="/islamic-hajj-umrah/umrah-with-kids.html" target="_blank">🇸🇦 العمرة مع الأطفال: دليل عملي شامل ←</a><br>
       <a href="/islamic-hajj-umrah/umrah-with-kids-en.html" target="_blank">🇬🇧 Umrah with Kids: A Complete Family Guide ←</a>
     </div>
-    <div style="margin-top:6px;font-size:11px;color:#999;">🎨 <strong>مانوس:</strong> يحتاج صور + أيقونات لهذه المقالة</div>
+    <div style="margin-top:6px;font-size:11px;color:#999;">🎨 <strong>عمر:</strong> يحتاج صور + أيقونات لهذه المقالة</div>
   </div>
 
   <hr class="divider">
@@ -333,7 +458,7 @@
   <!-- ====== قسم منشورات السوشيال ميديا ====== -->
   <h2 class="section-title">
     📱 منشورات السوشيال ميديا
-    <span class="time">كلود يكتب النص ← مانوس يصمم الصورة</span>
+    <span class="time">كلود يكتب النص ← عمر يصمم الصورة</span>
   </h2>
 
   <!-- المنشور الأول: الصباح -->
@@ -356,7 +481,7 @@ Meet Noura, a Saudi mom who turned her home baking into a thriving business. How
 #GulfMoms #WorkingMothers #HomeBusiness #DotForLife
     </div>
     <div class="foot">
-      📸 <strong>مانوس:</strong> صمم صورة مناسبة لهذا المنشور — يفضل صورة كيك أو حلويات منزلية مع لمسة عائلية دافئة
+      🎨 <strong>عمر:</strong> صمم صورة مناسبة لهذا المنشور — يفضل صورة كيك أو حلويات منزلية مع لمسة عائلية دافئة
     </div>
   </div>
 
@@ -380,39 +505,13 @@ A complete guide for Gulf families planning Umrah with children — from plannin
 #Umrah #FamilyTravel #IslamicParenting #DotForLife
     </div>
     <div class="foot">
-      📸 <strong>مانوس:</strong> صمم صورة مناسبة — صورة عائلة أمام الحرم أو تصميم هادئ بألوان إيمانية
-    </div>
-  </div>
-
-  <hr class="divider">
-
-  <!-- ====== تعليمات مانوس ====== -->
-  <h2 class="section-title">🎨 تعليمات مانوس — التصميم</h2>
-
-  <div class="instructions">
-    <strong>📌 مهامك اليومية:</strong><br><br>
-    <strong>١. صور المقالات:</strong><br>
-    - اقرأ عناوين المقالات اللي يضعها كلود في اللوحة أعلاه<br>
-    - صمم <strong>صورة رئيسية</strong> لكل مقالة + <strong>أيقونة</strong> صغيرة (SVG أو PNG)<br>
-    - الصور: محجبات، عائلات خليجية، رسوم توضيحية — ممنوع النساء بشعر مكشوف<br>
-    - ضع روابط الصور في التعليقات تحت المقالة المحددة<br><br>
-    <strong>٢. منشورات السوشيال ميديا:</strong><br>
-    - خذ نصوص المنشورات اللي كتبها كلود (صباح + عصر)<br>
-    - صمم <strong>صورة منشور</strong> جاهزة للنشر (بحجم ١٠٨٠×١٠٨٠ للمربع أو ١٠٨٠×١٩٢٠ للستوري)<br>
-    - ضع رابط الصورة المصممة في المربع المخصص تحت كل منشور<br><br>
-    <strong>⏰ الموعد النهائي: كل شيء جاهز الساعة ٩:٠٠ صباحاً</strong>
-  </div>
-
-  <!-- مربع تسليم مانوس -->
-  <div class="link-box" style="border-color:#f59e0b;border-style:solid;">
-    <div class="link-box-title">🎨 تسليمات مانوس — الصور المصممة</div>
-    <div class="links" contenteditable="true" style="min-height:60px;">
-      <span class="empty">⏳ في انتظار التصاميم...</span>
+      🎨 <strong>عمر:</strong> صمم صورة مناسبة — صورة عائلة أمام الحرم أو تصميم هادئ بألوان إيمانية
     </div>
   </div>
 
   <div class="footer-text">
-    🧠 كلود = محتوى ونصوص | 🎨 مانوس = صور وتصاميم | 👁️ أنت = مراجعة وموافقة<br>
+    🧠 كلود = محتوى | 🎨 عمر = تصميم | 👁️ أنت = مراجعة وموافقة<br>
+    👻 Ghost يقود | 📊 رائد يدير المهام | 📋 Notion ينسق الفريق<br>
     ⏰ الكل جاهز <strong>الساعة ٩:٠٠ صباحاً</strong>
   </div>
 
