@@ -1,4 +1,4 @@
-/* DOTFORLIFE — Homepage-specific styles */
+/* DOTFORLIFE — Homepage-specific styles v2 — عمر 2026-06-08 */
 /* Extracted from index.html inline <style> on 2026-06-08 */
 /* Only loaded on the homepage. */
 
@@ -2675,4 +2675,192 @@
 @media (max-width: 800px) {
   .dc-side-ad { flex-direction: column; }
   .dc-side-ad-img { flex: none; width: 100%; min-height: 180px; aspect-ratio: 3/1; }
+}
+
+/* ═══════════════════════════════════════════════════
+   DESIGN ENHANCEMENTS — عمر 2026-06-08
+   Alternating backgrounds, card lift, scroll-reveal
+═══════════════════════════════════════════════════ */
+
+/* ── Alternating backgrounds for category sections ── */
+#health {
+  background: var(--body-bg, #fff);
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  margin: 0 -1rem;
+}
+#finance {
+  background: var(--cream, #FAF8F4);
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  margin: 0 -1rem;
+}
+#islamic {
+  margin: 0 -1rem;
+}
+#travel {
+  border-radius: 20px;
+  margin: 0 -1rem;
+  overflow: hidden;
+}
+
+/* ── Enhanced scroll-reveal with staggered timing ── */
+.reveal-delay-1 { transition-delay: .1s; }
+.reveal-delay-2 { transition-delay: .2s; }
+.reveal-delay-3 { transition-delay: .3s; }
+.reveal-delay-4 { transition-delay: .4s; }
+.reveal-delay-5 { transition-delay: .5s; }
+
+/* ── Tool-card lift enhancement ── */
+.tool-card {
+  transition: transform .35s cubic-bezier(.34,1.56,.64,1), box-shadow .35s ease, border-color .3s ease;
+}
+.tool-card:hover {
+  transform: translateY(-5px) scale(1.01);
+  box-shadow: 0 12px 32px rgba(5,66,65,.12);
+}
+
+/* ── Section heading polish ── */
+.sec-label {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gold, #6abfb8);
+  margin-bottom: .5rem;
+}
+[data-lang="ar"] .sec-label {
+  font-family: var(--font-ar);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* ── Newsletter (Friday Letter) enhancements ── */
+#friday-letter {
+  position: relative;
+  border-radius: 24px;
+  margin: 2rem 0;
+}
+#friday-letter::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--teal, #6abfb8), var(--green, #054241));
+  border-radius: 2px;
+}
+.fl-inner {
+  position: relative;
+}
+.fl-trust {
+  font-size: .75rem;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px 20px;
+  background: rgba(42,154,152,.04);
+  border-radius: 12px;
+  margin-top: 16px;
+}
+
+/* ── Featured section image hover effect ── */
+.sl-featured-img img,
+.sl-card-img img,
+.sl-promo-img img {
+  transition: transform .55s cubic-bezier(.34,1.56,.64,1), filter .4s ease;
+}
+.sl-featured:hover .sl-featured-img img,
+.sl-card:hover .sl-card-img img,
+.sl-promo:hover .sl-promo-img img {
+  transform: scale(1.05);
+  filter: brightness(1.03) saturate(1.02);
+}
+
+/* ── Smooth entrance for What's New items ── */
+.sl-latest-item {
+  transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+  border-radius: 10px;
+  padding: 8px 10px;
+  margin: 0 -10px;
+}
+.sl-latest-item:hover {
+  transform: translateX(4px);
+  background: rgba(42,154,152,.04);
+}
+[data-lang="ar"] .sl-latest-item:hover {
+  transform: translateX(-4px);
+}
+
+/* ── Section spacing & visual breathing ── */
+.sections-wrap {
+  scroll-margin-top: 80px;
+}
+#health, #finance, #islamic, #travel {
+  scroll-margin-top: 100px;
+}
+
+/* ── Category section divider polish ── */
+.sec-divider {
+  opacity: .6;
+  transition: opacity .3s;
+}
+.sec-divider:hover {
+  opacity: 1;
+}
+.sec-divider--category .sec-category-label {
+  position: relative;
+  display: inline-block;
+}
+.sec-divider--category .sec-category-label::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gold, #6abfb8);
+  border-radius: 1px;
+  opacity: .4;
+}
+
+/* ── Daily Home section background continuity ── */
+#daily-home {
+  background: var(--body-bg, #fff);
+  border-radius: 20px;
+  padding: 2.5rem 2rem !important;
+}
+.dh-card {
+  transition: transform .35s cubic-bezier(.34,1.56,.64,1), box-shadow .35s ease;
+}
+.dh-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(5,66,65,.1);
+}
+
+/* ── Mobile refinements ── */
+@media (max-width: 600px) {
+  #health, #finance {
+    padding: 1.5rem 1rem !important;
+    margin: 0 -0.5rem;
+  }
+  #islamic {
+    margin: 0 -0.5rem;
+  }
+  #travel {
+    margin: 0 -0.5rem;
+  }
+  .tool-card {
+    padding: .85rem .9rem;
+  }
+  .fl-headline {
+    font-size: clamp(1.3rem, 5vw, 1.6rem);
+  }
+  #friday-letter {
+    padding: 50px 18px;
+  }
 }
