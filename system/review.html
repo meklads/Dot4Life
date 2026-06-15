@@ -3,257 +3,146 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>لوحة المراجعة — دوت فور لايف</title>
+<title>المخرجات — دوت فور لايف</title>
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <meta name="robots" content="noindex, nofollow">
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: 'Almarai', 'Segoe UI', sans-serif;
-    background: #f5f6fa;
-    color: #222;
-    line-height: 1.8;
-    padding: 30px 20px;
+  :root {
+    --green:#054241; --teal:#6abfb8; --orange:#fd781c;
+    --cream:#FAF8F4; --bg:#f5f6fa; --card:#fff; --line:#dfe6e3; --muted:#6b7a76;
+    --radius:14px;
   }
-  .container { max-width: 1000px; margin: 0 auto; }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    font-family:'Almarai','Segoe UI',sans-serif;
+    background:var(--bg);color:#222;line-height:1.8;
+    padding:30px 16px
+  }
+  .container{max-width:1100px;margin:0 auto}
 
-  .header {
-    background: linear-gradient(135deg, #2a9a98 0%, #1a7a78 100%);
-    color: #fff;
-    padding: 30px 40px;
-    border-radius: 16px;
-    margin-bottom: 30px;
-    text-align: center;
+  /* HEADER */
+  .header{
+    background:linear-gradient(135deg,var(--green),#0a6b63);
+    color:#fff;padding:28px 32px;border-radius:var(--radius);
+    margin-bottom:28px;text-align:center
   }
-  .header h1 { font-size: 28px; margin-bottom: 6px; }
-  .header .sub { font-size: 14px; opacity: 0.85; }
-  .deadline {
-    display: inline-block;
-    background: rgba(255,255,255,0.2);
-    padding: 6px 20px;
-    border-radius: 20px;
-    font-size: 15px;
-    margin-top: 10px;
-    font-weight: 700;
+  .header h1{font-size:24px;margin-bottom:4px}
+  .header .sub{font-size:13px;opacity:.85}
+  .header .date{
+    display:inline-block;
+    background:rgba(255,255,255,.15);
+    padding:4px 18px;border-radius:20px;
+    font-size:13px;margin-top:8px
   }
 
-  .role-cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 18px;
-    margin-bottom: 30px;
+  /* MEMBER SECTION */
+  .member{
+    background:var(--card);
+    border-radius:var(--radius);
+    margin-bottom:18px;
+    overflow:hidden;
+    box-shadow:0 1px 4px rgba(5,66,65,.06)
   }
-  @media (max-width: 640px) { .role-cards { grid-template-columns: 1fr; } }
+  .member-head{
+    padding:16px 22px;
+    display:flex;align-items:center;gap:12px;
+    cursor:pointer;
+    border-bottom:1px solid var(--line)
+  }
+  .member-head .avatar{
+    width:42px;height:42px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:20px;flex-shrink:0
+  }
+  .member-head .info{flex:1}
+  .member-head .info .name{font-size:16px;font-weight:800;color:var(--green)}
+  .member-head .info .role{font-size:11px;color:var(--muted)}
+  .member-head .status-badge{
+    font-size:11px;padding:3px 12px;border-radius:999px;font-weight:700
+  }
+  .status-badge.green{background:#e8f5e9;color:#2e7d32}
+  .status-badge.yellow{background:#fff3e0;color:#e65100}
+  .status-badge.gray{background:#eceff1;color:#78909c}
+  .member-head .toggle{font-size:18px;color:#bbb;transition:.2s}
+  .member-head .toggle.open{transform:rotate(180deg)}
 
-  .role-card {
-    background: #fff;
-    border-radius: 14px;
-    overflow: hidden;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-    border: 2px solid transparent;
-  }
-  .role-card.claude { border-color: #2a9a98; }
+  .member-body{padding:14px 22px 18px}
 
-  .role-head {
-    padding: 18px 20px 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  /* DELIVERABLE ITEM */
+  .deliverable{
+    background:#fafbfc;
+    border:1px solid #eef0f2;
+    border-radius:12px;
+    padding:12px 16px;
+    margin-bottom:10px;
+    transition:.15s
   }
-  .role-name { font-size: 17px; font-weight: 700; }
-  .role-name.claude { color: #2a9a98; }
-  .role-badge.claude { background: #e0f2f2; color: #1a7a78; }
-  .role-badge {
-    font-size: 11px;
-    padding: 3px 12px;
-    border-radius: 10px;
-    font-weight: 700;
-  }
-  .role-body { padding: 0 20px 14px; font-size: 13px; color: #666; }
-  .role-body li { margin-bottom: 6px; }
-  .role-body ul { padding-right: 18px; margin: 8px 0; }
+  .deliverable:hover{border-color:var(--teal);background:#f7fafa}
+  .deliverable:last-child{margin-bottom:0}
 
-  .section-title {
-    font-size: 20px; color: #2a9a98; margin: 30px 0 12px;
-    padding-bottom: 6px; border-bottom: 2px solid #2a9a98;
-    display: flex; align-items: center; gap: 8px;
+  .deliv-head{
+    display:flex;align-items:flex-start;gap:10px
   }
-  .section-title .time { font-size: 12px; color: #888; font-weight: 400; margin-right: auto; }
+  .deliv-icon{font-size:18px;line-height:1.4;flex-shrink:0}
+  .deliv-content{flex:1;min-width:0}
+  .deliv-title{
+    font-size:14px;font-weight:700;color:var(--green);
+    margin-bottom:2px
+  }
+  .deliv-desc{
+    font-size:12px;color:var(--muted);
+    margin-bottom:4px
+  }
+  .deliv-link{
+    display:inline-block;
+    font-size:12px;color:var(--teal);text-decoration:none;
+    font-weight:600;margin-left:12px
+  }
+  .deliv-link:hover{text-decoration:underline}
+  .deliv-status{
+    display:inline-block;
+    font-size:10px;padding:1px 8px;border-radius:999px;font-weight:700
+  }
+  .deliv-status.done{background:#e8f5e9;color:#2e7d32}
+  .deliv-status.pending{background:#fff3e0;color:#e65100}
+  .deliv-status.waiting{background:#e3f2fd;color:#1565c0}
+  .deliv-status.review{background:#f3e5f5;color:#7b1fa2}
 
-  .card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-  .card {
-    background: #fff;
-    border-radius: 10px;
-    border: 1px solid #eee;
-    padding: 14px 16px;
-    text-decoration: none;
-    display: block;
-    transition: all 0.2s;
-  }
-  .card:hover {
-    border-color: #2a9a98;
-    box-shadow: 0 3px 12px rgba(42,154,152,0.08);
-    transform: translateY(-2px);
-  }
-  .card-title { font-size: 14px; font-weight: 700; color: #1a5a58; margin-bottom: 2px; }
-  .card-desc { font-size: 12px; color: #999; }
-  .card .badge-ready {
-    display: inline-block;
-    font-size: 10px; background: #e8f5e9; color: #2e7d32;
-    padding: 1px 8px; border-radius: 6px; font-weight: 700; margin-top: 4px;
-  }
-  .card .badge-pending {
-    display: inline-block;
-    font-size: 10px; background: #fff3e0; color: #e65100;
-    padding: 1px 8px; border-radius: 6px; font-weight: 700; margin-top: 4px;
-  }
-
-  .link-box {
-    background: #fff;
-    border-radius: 10px;
-    border: 2px dashed #ddd;
-    padding: 14px 20px;
-    margin-bottom: 20px;
-    transition: border-color 0.2s;
-  }
-  .link-box:hover { border-color: #bbb; }
-  .link-box-title {
-    font-size: 14px; font-weight: 700; color: #1a5a58; margin-bottom: 6px;
-  }
-  .link-box .links { font-size: 13px; line-height: 2.2; }
-  .link-box .links a { color: #2a9a98; text-decoration: none; }
-  .link-box .links a:hover { text-decoration: underline; }
-  .link-box .empty { color: #bbb; font-size: 13px; }
-
-  .post-card {
-    background: #fff;
-    border-radius: 10px;
-    border: 2px solid #e8e0d0;
-    padding: 16px 20px;
-    margin-bottom: 16px;
-  }
-  .post-card .head {
-    display: flex; justify-content: space-between; align-items: center;
-    margin-bottom: 8px;
-  }
-  .post-card .head .plat {
-    font-size: 13px; font-weight: 700; 
-  }
-  .post-card .head .time-badge {
-    font-size: 10px; padding: 2px 10px; border-radius: 8px; font-weight: 700;
-  }
-  .time-badge.morning { background: #e3f2fd; color: #1565c0; }
-  .time-badge.asr { background: #fff3e0; color: #e65100; }
-  .post-card .content {
-    font-size: 13px; line-height: 1.7; color: #444;
-    white-space: pre-wrap;
-  }
-  .post-card .foot {
-    margin-top: 10px;
-    font-size: 11px; color: #999;
-    border-top: 1px solid #f0f0f0;
-    padding-top: 8px;
-  }
-  .post-card .foot a { color: #2a9a98; text-decoration: none; }
-  .post-card .foot a:hover { text-decoration: underline; }
-
-  .instructions {
-    background: #fffbe6;
-    border-right: 4px solid #f59e0b;
-    padding: 16px 20px;
-    border-radius: 8px;
-    font-size: 14px;
-    margin-bottom: 30px;
-  }
-  .instructions strong { color: #92400e; }
-
-  .divider { border: none; border-top: 2px solid #eee; margin: 30px 0; }
-
-  .footer-text {
-    text-align: center; color: #aaa; font-size: 13px;
-    margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee;
+  .empty-state{
+    text-align:center;padding:24px;color:#bbb;font-size:13px
   }
 
-  .hour {
-    display: inline-block;
-    background: #2a9a98; color: #fff;
-    padding: 2px 12px; border-radius: 12px;
-    font-size: 12px; font-weight: 700; margin-right: 6px;
+  /* FILTER BAR */
+  .filter-bar{
+    display:flex;flex-wrap:wrap;gap:8px;
+    margin-bottom:20px
   }
+  .filter-btn{
+    padding:6px 16px;border-radius:999px;border:1.5px solid var(--line);
+    background:var(--card);color:var(--muted);font-size:12px;font-weight:700;
+    cursor:pointer;transition:.15s
+  }
+  .filter-btn:hover{border-color:var(--teal);color:var(--green)}
+  .filter-btn.active{background:var(--green);color:#fff;border-color:var(--green)}
 
-  /* ========== NOTION SYNC PANEL ========== */
-  .notion-bar {
-    background: linear-gradient(135deg, #f0f4ff 0%, #f5f0ff 100%);
-    border: 2px solid #8a6cff;
-    border-radius: 14px;
-    padding: 18px 24px;
-    margin-bottom: 24px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
+  /* SUMMARY ROW */
+  .summary{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+    gap:10px;margin-bottom:24px
   }
-  .notion-bar .status { display: flex; align-items: center; gap: 10px; }
-  .notion-bar .status .dot {
-    width: 12px; height: 12px; border-radius: 50%;
-    background: #4caf50; display: inline-block;
+  .stat-box{
+    background:var(--card);
+    border:1px solid var(--line);border-radius:12px;
+    padding:12px 14px;text-align:center
   }
-  .notion-bar .status .dot.off { background: #9e9e9e; }
-  .notion-bar .status-text { font-size: 14px; font-weight: 600; color: #333; }
-  .notion-bar .status-sub { font-size: 11px; color: #888; }
-  .notion-bar .notion-links { display: flex; gap: 8px; flex-wrap: wrap; }
-  .notion-link {
-    display: inline-block;
-    padding: 6px 14px;
-    border-radius: 8px;
-    font-size: 12px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.15s;
-    background: #fff;
-    border: 1px solid #ddd;
-    color: #333;
-  }
-  .notion-link:hover { border-color: #8a6cff; box-shadow: 0 2px 8px rgba(138,108,255,0.15); transform: translateY(-1px); }
-  .notion-link .emoji { margin-left: 4px; }
+  .stat-box .num{font-size:22px;font-weight:800;color:var(--green)}
+  .stat-box .lab{font-size:11px;color:var(--muted)}
 
-  /* ========== TEAM STATUS ========== */
-  .team-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 10px;
-    margin-bottom: 24px;
+  .footer{
+    text-align:center;color:#aaa;font-size:12px;
+    margin-top:40px;padding-top:16px;border-top:1px solid #eee
   }
-  .team-member {
-    background: #fff;
-    border-radius: 10px;
-    padding: 12px 14px;
-    border: 1px solid #eee;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: all 0.15s;
-  }
-  .team-member:hover { border-color: #2a9a98; }
-  .team-member .avatar {
-    width: 36px; height: 36px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px; flex-shrink: 0;
-  }
-  .team-member .info { flex: 1; min-width: 0; }
-  .team-member .info .name { font-size: 13px; font-weight: 700; color: #222; }
-  .team-member .info .role { font-size: 10px; color: #999; }
-  .team-member .status-ind {
-    width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
-  }
-  .status-ind.green { background: #4caf50; }
-  .status-ind.yellow { background: #ff9800; }
-  .status-ind.gray { background: #cfd8dc; }
 </style>
 </head>
 <body>
@@ -261,252 +150,254 @@
 
   <!-- ===== HEADER ===== -->
   <div class="header">
-    <h1>📋 لوحة المراجعة — دوت فور لايف</h1>
-    <div class="sub">👻 جوست ينسّق | 🎨 عمر يصمم | ✍️ موني يكتب | 🔍 ميدو يحسّن SEO | 🎬 هيما يونتج | ✅ أنت توافق</div>
-    <div class="deadline">⏰ الجميع جاهز الساعة ٩:٠٠ صباحاً</div>
+    <h1>📋 المخرجات — دوت فور لايف</h1>
+    <div class="sub">كل تخصص وتحقيق مخرجاته الفعلية — للمراجعة والموافقة</div>
+    <div class="date" id="todayDate"></div>
   </div>
 
-  <!-- ===== NOTION SYNC BAR ===== -->
-  <div class="notion-bar">
-    <div class="status">
-      <span class="dot" id="notionDot"></span>
-      <div>
-        <div class="status-text">📊 Notion — متصل بفريق العمل</div>
-        <div class="status-sub" id="notionSyncTime">آخر مزامنة: اليوم ٠٨:٤٥ صباحاً</div>
-      </div>
-    </div>
-    <div class="notion-links">
-      <a href="https://notion.so/" target="_blank" class="notion-link"><span class="emoji">🎯</span> المشاريع</a>
-      <a href="https://notion.so/" target="_blank" class="notion-link"><span class="emoji">📋</span> المهام</a>
-      <a href="https://notion.so/" target="_blank" class="notion-link"><span class="emoji">🧠</span> الفريق</a>
-      <a href="https://notion.so/" target="_blank" class="notion-link"><span class="emoji">📅</span> التقويم</a>
-      <a href="https://notion.so/" target="_blank" class="notion-link"><span class="emoji">✅</span> المراجعة</a>
-      <a href="https://notion.so/" target="_blank" class="notion-link"><span class="emoji">📊</span> التقارير</a>
-    </div>
-  </div>
+  <!-- ===== SUMMARY ===== -->
+  <div class="summary" id="summaryStats"></div>
 
-  <!-- ===== TEAM STATUS ===== -->
-  <div class="team-grid">
-    <div class="team-member">
-      <div class="avatar" style="background:#e8f5e9;">👻</div>
-      <div class="info"><div class="name">جوست</div><div class="role">Coordinator</div></div>
-      <span class="status-ind green"></span>
-    </div>
-    <div class="team-member">
-      <div class="avatar" style="background:#e3f2fd;">📊</div>
-      <div class="info"><div class="name">Ads</div><div class="role">Performance Ads</div></div>
-      <span class="status-ind yellow"></span>
-    </div>
-    <div class="team-member">
-      <div class="avatar" style="background:#fff3e0;">🎨</div>
-      <div class="info"><div class="name">عمر</div><div class="role">Graphic Designer</div></div>
-      <span class="status-ind green"></span>
-    </div>
-    <div class="team-member">
-      <div class="avatar" style="background:#fce4ec;">✍️</div>
-      <div class="info"><div class="name">موني</div><div class="role">Content Writer</div></div>
-      <span class="status-ind green"></span>
-    </div>
-    <div class="team-member">
-      <div class="avatar" style="background:#e8f5e9;">🔍</div>
-      <div class="info"><div class="name">ميدو</div><div class="role">SEO Developer</div></div>
-      <span class="status-ind green"></span>
-    </div>
-    <div class="team-member">
-      <div class="avatar" style="background:#f3e5f5;">🎬</div>
-      <div class="info"><div class="name">هيما</div><div class="role">Video Editor</div></div>
-      <span class="status-ind green"></span>
-    </div>
-    <div class="team-member">
-      <div class="avatar" style="background:#e0f2f1;">🤖</div>
-      <div class="info"><div class="name">لينو</div><div class="role">Tech & Automation</div></div>
-      <span class="status-ind green"></span>
-    </div>
-    <div class="team-member">
-      <div class="avatar" style="background:#fff8e1;">📈</div>
-      <div class="info"><div class="name">مازن</div><div class="role">Social Media</div></div>
-      <span class="status-ind yellow"></span>
-    </div>
+  <!-- ===== FILTER ===== -->
+  <div class="filter-bar" id="filterBar"></div>
 
+  <!-- ===== MEMBERS ===== -->
+  <div id="membersContainer"></div>
 
-  </div>
-
-  <!-- ===== الأدوار ===== -->
-  <div class="role-cards">
-    <div class="role-card claude">
-      <div class="role-head">
-        <span class="role-name claude">🧠 Claude — المحتوى</span>
-        <span class="role-badge claude">✍️ كاتب + منشورات</span>
-      </div>
-      <div class="role-body">
-        <strong>مهماتي اليومية:</strong>
-        <ul>
-          <li>📄 كتابة مقالة + تصميم HTML (عربي + إنجليزي)</li>
-          <li>📱 كتابة <strong>منشورين</strong> (صباح + عصر) لكل منصة</li>
-          <li>🔗 روابط المقالات والمنشورات هنا في اللوحة</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <hr class="divider">
-
-  <!-- ====== قسم المقالات ====== -->
-  <h2 class="section-title">
-    📄 المقالات
-    <span class="time">⏰ تنزل تباعاً</span>
-  </h2>
-
-  <div class="card-grid">
-    <a href="sec1.html" class="card" style="border-color:#2a9a98;">
-      <div class="card-title">١. قصص مميزة ✅</div>
-      <div class="card-desc">أمهات · آباء · عائلات</div>
-      <span class="badge-ready">✅ جاهزة</span>
-    </a>
-    <a href="sec2.html" class="card" style="border-color:#2a9a98;">
-      <div class="card-title">٢. مقارنات وقرارات ✅</div>
-      <div class="card-desc">مالية · تعليم · صحة</div>
-      <span class="badge-ready">✅ جاهزة</span>
-    </a>
-    <a href="sec3.html" class="card" style="border-color:#2a9a98;">
-      <div class="card-title">٣. السلام يبدأ من البيت ✅</div>
-      <div class="card-desc">روتين · تواصل · هدوء</div>
-      <span class="badge-ready">✅ جاهزة</span>
-    </a>
-    <a href="sec4.html" class="card" style="border-color:#2a9a98;">
-      <div class="card-title">٤. الصحة والعافية ✅</div>
-      <div class="card-desc">حمل · ولادة · رضاعة</div>
-      <span class="badge-ready">✅ جاهزة</span>
-    </a>
-    <a href="sec5.html" class="card" style="border-color:#2a9a98;">
-      <div class="card-title">٥. المالية والثروة ✅</div>
-      <div class="card-desc">عقار · ميزانية · ادخار</div>
-      <span class="badge-ready">✅ جاهزة</span>
-    </a>
-    <a href="sec6.html" class="card" style="border-color:#2a9a98;">
-      <div class="card-title">٦. الإسلامية ✅</div>
-      <div class="card-desc">عمرة · حج · أذكار</div>
-      <span class="badge-ready">✅ جاهزة</span>
-    </a>
-  </div>
-
-  <!-- روابط المقالات الجاهزة -->
-  <div class="link-box" style="border-color:#2a9a98;border-style:solid;">
-    <div class="link-box-title">١. قصص مميزة — Featured Stories <span class="badge-ready" style="font-size:10px;">✅ جاهز</span></div>
-    <div class="links">
-      <a href="/featured-stories/arab-mother-startup.html" target="_blank">🇸🇦 أم عربية بنت شركة ناشئة من مطبخها ←</a><br>
-      <a href="/featured-stories/arab-mother-startup-en.html" target="_blank">🇬🇧 Arab Mother Built a Startup from Her Kitchen ←</a>
-    </div>
-    <div style="margin-top:6px;font-size:11px;color:#999;">🎨 <strong>عمر:</strong> يحتاج صور + أيقونات لهذه المقالة</div>
-  </div>
-
-  <div class="link-box" style="border-color:#2a9a98;border-style:solid;">
-    <div class="link-box-title">٢. مقارنات وقرارات — Comparisons <span class="badge-ready" style="font-size:10px;">✅ جاهز</span></div>
-    <div class="links">
-      <a href="/comparisons/lease-vs-buy-car.html" target="_blank">🇸🇦 تأجير سيارة vs شراء سيارة بالتقسيط ←</a><br>
-      <a href="/comparisons/lease-vs-buy-car-en.html" target="_blank">🇬🇧 Lease vs Buy Car: Which Is Better? ←</a>
-    </div>
-    <div style="margin-top:6px;font-size:11px;color:#999;">🎨 <strong>عمر:</strong> يحتاج صور + أيقونات لهذه المقالة</div>
-  </div>
-
-  <div class="link-box" style="border-color:#2a9a98;border-style:solid;">
-    <div class="link-box-title">٣. السلام يبدأ من البيت — Peace Capsules <span class="badge-ready" style="font-size:10px;">✅ جاهز</span></div>
-    <div class="links">
-      <a href="/peace-capsules/evening-rituals.html" target="_blank">🇸🇦 طقوس المساء الخليجي: ٤ عادات قبل النوم ←</a><br>
-      <a href="/peace-capsules/evening-rituals-en.html" target="_blank">🇬🇧 Gulf Evening Rituals: 4 Simple Habits Before Bed ←</a>
-    </div>
-    <div style="margin-top:6px;font-size:11px;color:#999;">🎨 <strong>عمر:</strong> يحتاج صور + أيقونات لهذه المقالة</div>
-  </div>
-
-  <div class="link-box" style="border-color:#2a9a98;border-style:solid;">
-    <div class="link-box-title">٤. الصحة والعافية — Health & Wellness <span class="badge-ready" style="font-size:10px;">✅ جاهز</span></div>
-    <div class="links">
-      <a href="/health-pregnancy/preconception-checkups.html" target="_blank">🇸🇦 الفحوصات الضرورية قبل الحمل: دليل الأم الخليجية ←</a><br>
-      <a href="/health-pregnancy/preconception-checkups-en.html" target="_blank">🇬🇧 Essential Preconception Checkups ←</a>
-    </div>
-    <div style="margin-top:6px;font-size:11px;color:#999;">🎨 <strong>عمر:</strong> يحتاج صور + أيقونات لهذه المقالة</div>
-  </div>
-
-  <div class="link-box" style="border-color:#2a9a98;border-style:solid;">
-    <div class="link-box-title">٥. المالية والثروة — Finance & Wealth <span class="badge-ready" style="font-size:10px;">✅ جاهز</span></div>
-    <div class="links">
-      <a href="/finance-wealth/family-budget-plan.html" target="_blank">🇸🇦 ميزانية الأسرة الخليجية: توزيع الراتب بذكاء ←</a><br>
-      <a href="/finance-wealth/family-budget-plan-en.html" target="_blank">🇬🇧 Gulf Family Budget: Smart Salary Distribution ←</a>
-    </div>
-    <div style="margin-top:6px;font-size:11px;color:#999;">🎨 <strong>عمر:</strong> يحتاج صور + أيقونات لهذه المقالة</div>
-  </div>
-
-  <div class="link-box" style="border-color:#2a9a98;border-style:solid;">
-    <div class="link-box-title">٦. الإسلامية — Islamic <span class="badge-ready" style="font-size:10px;">✅ جاهز</span></div>
-    <div class="links">
-      <a href="/islamic-hajj-umrah/umrah-with-kids.html" target="_blank">🇸🇦 العمرة مع الأطفال: دليل عملي شامل ←</a><br>
-      <a href="/islamic-hajj-umrah/umrah-with-kids-en.html" target="_blank">🇬🇧 Umrah with Kids: A Complete Family Guide ←</a>
-    </div>
-    <div style="margin-top:6px;font-size:11px;color:#999;">🎨 <strong>عمر:</strong> يحتاج صور + أيقونات لهذه المقالة</div>
-  </div>
-
-  <hr class="divider">
-
-  <!-- ====== قسم منشورات السوشيال ميديا ====== -->
-  <h2 class="section-title">
-    📱 منشورات السوشيال ميديا
-    <span class="time">كلود يكتب النص ← عمر يصمم الصورة</span>
-  </h2>
-
-  <!-- المنشور الأول: الصباح -->
-  <div class="post-card" style="border-color:#1565c0;">
-    <div class="head">
-      <span class="plat">🌅 المنشور الأول — الصباح</span>
-      <span class="time-badge morning">🕐 ٨-٩ صباحاً</span>
-    </div>
-    <div class="content" contenteditable="true" style="min-height:60px;">
-🇸🇦 **منشن 1 (صباح) — عربي:**
-🧁 من مطبخها إلى شركة ناشئة!
-تعرفي على قصة نورة، أم سعودية بدأت مشروع حلويات منزلي وتحول إلى علامة تجارية ناجحة. كيف وازنت بين الحفاضات والعمل؟
-👈 اقرئي القصة كاملة في أول تعليق
-#قصص_خليجية #أمهات_عاملات #مشاريع_منزلية #دوت_فور_لايف
-
-🇬🇧 **Post 1 (Morning) — English:**
-🧁 From kitchen to company!
-Meet Noura, a Saudi mom who turned her home baking into a thriving business. How she balanced diapers and dough.
-👈 Full story in the first comment
-#GulfMoms #WorkingMothers #HomeBusiness #DotForLife
-    </div>
-    <div class="foot">
-      🎨 <strong>عمر:</strong> صمم صورة مناسبة لهذا المنشور — يفضل صورة كيك أو حلويات منزلية مع لمسة عائلية دافئة
-    </div>
-  </div>
-
-  <!-- المنشور الثاني: العصر -->
-  <div class="post-card" style="border-color:#e65100;">
-    <div class="head">
-      <span class="plat">🌇 المنشور الثاني — بعد العصر</span>
-      <span class="time-badge asr">🕐 ٣-٤ عصراً</span>
-    </div>
-    <div class="content" contenteditable="true" style="min-height:60px;">
-🇸🇦 **منشن 2 (عصر) — عربي:**
-🕋 العمرة مع الأطفال .. صعبة؟ ولا أجمل تجربة؟
-دليل عملي شامل لكل عائلة خليجية تخطط للعمرة مع أطفالها — من التخطيط إلى العودة.
-👈 الرابط في أول تعليق
-#العمرة #العمرة_مع_الأطفال #عائلات_خليجية #دوت_فور_لايف
-
-🇬🇧 **Post 2 (Afternoon) — English:**
-🕋 Umrah with kids: Impossible or unforgettable?
-A complete guide for Gulf families planning Umrah with children — from planning to return.
-👈 Link in first comment
-#Umrah #FamilyTravel #IslamicParenting #DotForLife
-    </div>
-    <div class="foot">
-      🎨 <strong>عمر:</strong> صمم صورة مناسبة — صورة عائلة أمام الحرم أو تصميم هادئ بألوان إيمانية
-    </div>
-  </div>
-
-  <div class="footer-text">
-    🧠 كلود = محتوى | 🎨 عمر = تصميم | 👁️ أنت = مراجعة وموافقة<br>
-    👻 جوست ينسّق | 🖐️ 7 منفّذين ينفذون | 📋 Notion ينسق المهام<br>
-    ⏰ الكل جاهز <strong>الساعة ٩:٠٠ صباحاً</strong>
+  <div class="footer">
+    👻 جوست ينسّق | ٧ منفّذين ينفذون | ✅ أنت تراجع وتوافق
   </div>
 
 </div>
+
+<script>
+// ─── TEAM DATA ──────────────────────────────────────────
+const TEAM = [
+  {
+    id:'omar',      emoji:'🎨', name:'عمر',        role:'Graphic Designer',
+    color:'#fff3e0', status:'green',
+    deliverables:[
+      {icon:'🖼️', title:'تصميم صور المقالات — قصص مميزة',
+       desc:'صور + أيقونات لمقالة أم عربية بنت شركة ناشئة',
+       link:'/featured-stories/arab-mother-startup.html', status:'done'},
+      {icon:'🖼️', title:'تصميم صور المقالات — مقارنات',
+       desc:'صور لمقالة تأجير vs شراء سيارة',
+       link:'/comparisons/lease-vs-buy-car.html', status:'done'},
+      {icon:'🖼️', title:'تصميم صور المقالات — السلام يبدأ من البيت',
+       desc:'تصميم لمقالة طقوس المساء الخليجي',
+       link:'/peace-capsules/evening-rituals.html', status:'done'},
+      {icon:'🖼️', title:'تصميم صور المقالات — الصحة',
+       desc:'تصميم لمقالة الفحوصات قبل الحمل',
+       link:'/health-pregnancy/preconception-checkups.html', status:'done'},
+      {icon:'🖼️', title:'تصميم صور المقالات — المالية',
+       desc:'تصميم لمقالة ميزانية الأسرة الخليجية',
+       link:'/finance-wealth/family-budget-plan.html', status:'done'},
+      {icon:'🖼️', title:'تصميم صور المقالات — الإسلامية',
+       desc:'تصميم لمقالة العمرة مع الأطفال',
+       link:'/islamic-hajj-umrah/umrah-with-kids.html', status:'done'},
+      {icon:'📱', title:'تصميم منشور صباحي — قصة أم عربية',
+       desc:'صورة منشور سوشيال ميديا (كيك/حلويات منزلية)',
+       link:'', status:'pending'},
+      {icon:'📱', title:'تصميم منشور عصري — العمرة مع الأطفال',
+       desc:'صورة منشور سوشيال ميديا (عائلة/الحرم)',
+       link:'', status:'pending'}
+    ]
+  },
+  {
+    id:'mony',      emoji:'✍️', name:'موني',       role:'Content Writer',
+    color:'#fce4ec', status:'green',
+    deliverables:[
+      {icon:'📄', title:'مقالة: أم عربية بنت شركة ناشئة',
+       desc:'عربي + إنجليزي — قصة ملهمة لأم سعودية',
+       link:'/featured-stories/arab-mother-startup.html', status:'done'},
+      {icon:'📄', title:'مقالة: تأجير vs شراء سيارة',
+       desc:'عربي + إنجليزي — مقارنة شاملة',
+       link:'/comparisons/lease-vs-buy-car.html', status:'done'},
+      {icon:'📄', title:'مقالة: طقوس المساء الخليجي',
+       desc:'عربي + إنجليزي — ٤ عادات قبل النوم',
+       link:'/peace-capsules/evening-rituals.html', status:'done'},
+      {icon:'📄', title:'مقالة: الفحوصات قبل الحمل',
+       desc:'عربي + إنجليزي — دليل الأم الخليجية',
+       link:'/health-pregnancy/preconception-checkups.html', status:'done'},
+      {icon:'📄', title:'مقالة: ميزانية الأسرة الخليجية',
+       desc:'عربي + إنجليزي — توزيع الراتب بذكاء',
+       link:'/finance-wealth/family-budget-plan.html', status:'done'},
+      {icon:'📄', title:'مقالة: العمرة مع الأطفال',
+       desc:'عربي + إنجليزي — دليل عملي شامل',
+       link:'/islamic-hajj-umrah/umrah-with-kids.html', status:'done'}
+    ]
+  },
+  {
+    id:'medo',      emoji:'🔍', name:'ميدو',        role:'SEO Developer',
+    color:'#e8f5e9', status:'green',
+    deliverables:[
+      {icon:'📊', title:'تحسين SEO — المقالات الـ ٦',
+       desc:'تحسين العناوين، الوصف، الكلمات المفتاحية، الروابط الداخلية',
+       link:'', status:'done'},
+      {icon:'📋', title:'تقرير SEO أسبوعي',
+       desc:'أداء الكلمات المفتاحية — ترتيب الموقع — فرص التحسين',
+       link:'', status:'pending'},
+      {icon:'🔗', title:'ربط sitemap.xml محدّث',
+       desc:'تحديث خريطة الموقع بكل المقالات الجديدة',
+       link:'/sitemap.xml', status:'done'},
+      {icon:'📄', title:'تحسين robots.txt',
+       desc:'منع /system/ من الفهرسة + إعدادات الـ AI',
+       link:'/robots.txt', status:'done'}
+    ]
+  },
+  {
+    id:'hema',      emoji:'🎬', name:'هيما',        role:'Video Editor',
+    color:'#f3e5f5', status:'green',
+    deliverables:[
+      {icon:'🎥', title:'فيديو يوتيوب — قصة أم عربية',
+       desc:'فيديو قصير (٣-٥ دقائق) — قصة ملهمة',
+       link:'', status:'pending'},
+      {icon:'🎥', title:'فيديو يوتيوب — العمرة مع الأطفال',
+       desc:'فيديو قصير — نصائح عملية للعائلات',
+       link:'', status:'pending'}
+    ]
+  },
+  {
+    id:'lino',      emoji:'🤖', name:'لينو',        role:'Tech & Automation',
+    color:'#e0f2f1', status:'green',
+    deliverables:[
+      {icon:'⚙️', title:'لوحة الفريق (board.html)',
+       desc:'نظام Kanab مع حماية بكلمة سر + سحب بيانات من tasks.json',
+       link:'/system/board.html', status:'done'},
+      {icon:'⚙️', title:'لوحة المراجعة (review.html)',
+       desc:'لوحة المخرجات حسب التخصص — قابل للتصفية',
+       link:'/system/review.html', status:'done'},
+      {icon:'🔄', title:'أتمتة GitHub Actions',
+       desc:'نشر تلقائي من الجذر إلى GitHub Pages',
+       link:'', status:'done'},
+      {icon:'🛡️', title:'حماية /system/ من البحث',
+       desc:'robots.txt + noindex للملفات الداخلية',
+       link:'/robots.txt', status:'done'}
+    ]
+  },
+  {
+    id:'mazen',     emoji:'📈', name:'مازن',        role:'Social Media',
+    color:'#fff8e1', status:'yellow',
+    deliverables:[
+      {icon:'📱', title:'منشور صباحي — قصة أم عربية',
+       desc:'نص + صورة — فيسبوك، تويتر، انستغرام',
+       link:'', status:'done'},
+      {icon:'📱', title:'منشور عصري — العمرة مع الأطفال',
+       desc:'نص + صورة — فيسبوك، تويتر، انستغرام',
+       link:'', status:'pending'},
+      {icon:'📅', title:'جدول شهر كامل',
+       desc:'تقويم المحتوى — ٣٠ يوم',
+       link:'', status:'pending'}
+    ]
+  },
+  {
+    id:'ads',       emoji:'📊', name:'Ads Manager', role:'Performance Ads',
+    color:'#e3f2fd', status:'yellow',
+    deliverables:[
+      {icon:'📊', title:'تقرير أداء الإعلانات',
+       desc:'تحليل الحملات الحالية — تكلفة الاكتساب — عائد الإنفاق',
+       link:'', status:'pending'},
+      {icon:'🎯', title:'استراتيجية إعلانات — المقالات الجديدة',
+       desc:'خطة إعلانات مستهدفة للجمهور الخليجي',
+       link:'', status:'pending'}
+    ]
+  }
+];
+
+// ─── RENDER ──────────────────────────────────────────────
+function render(filter){
+  const container = document.getElementById('membersContainer');
+  const summary = document.getElementById('summaryStats');
+  let totalDone=0, totalAll=0;
+
+  let html='';
+  TEAM.forEach(m=>{
+    const items = filter
+      ? m.deliverables.filter(d=>d.status===filter)
+      : m.deliverables;
+    totalAll += m.deliverables.length;
+    totalDone += m.deliverables.filter(d=>d.status==='done').length;
+
+    if(!items.length) return; // skip if empty after filter
+
+    html += `<div class="member">
+      <div class="member-head" onclick="this.nextElementSibling.style.display=
+        this.nextElementSibling.style.display==='none'?'block':'none';
+        this.querySelector('.toggle').classList.toggle('open')">
+        <div class="avatar" style="background:${m.color}">${m.emoji}</div>
+        <div class="info">
+          <div class="name">${m.name}</div>
+          <div class="role">${m.role}</div>
+        </div>
+        <span class="status-badge ${m.status}">${m.status==='green'?'🟢 نشط':'🟡 قيد العمل'}</span>
+        <span class="toggle open">▼</span>
+      </div>
+      <div class="member-body">`;
+
+    items.forEach(d=>{
+      const statusMap={done:'✅ منجز',pending:'⏳ قيد العمل',waiting:'🔄 ينتظر',review:'🔍 بانتظار المراجعة'};
+      html += `<div class="deliverable">
+        <div class="deliv-head">
+          <span class="deliv-icon">${d.icon}</span>
+          <div class="deliv-content">
+            <div class="deliv-title">${d.title}</div>
+            ${d.desc?`<div class="deliv-desc">${d.desc}</div>`:''}
+            <div style="margin-top:4px">
+              ${d.link?`<a class="deliv-link" href="${d.link}" target="_blank">🔗 الرابط ←</a>`:''}
+              <span class="deliv-status ${d.status}">${statusMap[d.status]||d.status}</span>
+            </div>
+          </div>
+        </div>
+      </div>`;
+    });
+
+    html += `</div></div>`;
+  });
+
+  container.innerHTML = html || '<div class="empty-state">لا توجد مخرجات في هذا التصنيف</div>';
+
+  // summary
+  const pct = totalAll ? Math.round(totalDone/totalAll*100) : 0;
+  summary.innerHTML = `
+    <div class="stat-box"><div class="num">${TEAM.length}</div><div class="lab">الأعضاء</div></div>
+    <div class="stat-box"><div class="num">${totalAll}</div><div class="lab">إجمالي المخرجات</div></div>
+    <div class="stat-box"><div class="num">${totalDone}</div><div class="lab">منجز</div></div>
+    <div class="stat-box"><div class="num">${totalAll-totalDone}</div><div class="lab">قيد العمل</div></div>
+    <div class="stat-box"><div class="num">${pct}%</div><div class="lab">الإنجاز</div></div>
+  `;
+}
+
+// ─── FILTER BAR ──────────────────────────────────────────
+function setupFilter(){
+  const bar = document.getElementById('filterBar');
+  bar.innerHTML = `
+    <button class="filter-btn active" data-filter="">الكل</button>
+    <button class="filter-btn" data-filter="done">✅ منجز</button>
+    <button class="filter-btn" data-filter="pending">⏳ قيد العمل</button>
+    <button class="filter-btn" data-filter="waiting">🔄 ينتظر</button>
+    <button class="filter-btn" data-filter="review">🔍 للمراجعة</button>
+  `;
+  bar.querySelectorAll('.filter-btn').forEach(btn=>{
+    btn.onclick=()=>{
+      bar.querySelector('.active').classList.remove('active');
+      btn.classList.add('active');
+      render(btn.dataset.filter);
+    };
+  });
+}
+
+// ─── DATE ────────────────────────────────────────────────
+function setDate(){
+  const d=new Date();
+  const days=['الأحد','الإثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
+  const months=['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+  document.getElementById('todayDate').textContent=
+    `${days[d.getDay()]}، ${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
+}
+
+setDate();
+setupFilter();
+render('');
+</script>
 </body>
 </html>
