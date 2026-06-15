@@ -34,11 +34,12 @@
 
 ## 📤 التسليم — Delivery Point
 
-كل المخرجات تُسلّم في:
-- **`site/system/review.html`** — لوحة المراجعة (للـ Ghost)
-- **`site/[القسم]/[article-name].html`** — المقال مباشرة في مجلد القسم
+- **التاسكات والأفكار** → أضِفها كـ entry في `site/system/tasks.json` (عمود `queue` = صندوق الأفكار). تظهر تلقائياً في البورد الموحّد `board.html`.
+- **المحتوى النهائي** → `site/[القسم]/[article-name].html` (يُنشر على الموقع مباشرة).
+- **المسودات والأصول** → فولدر العضو في Google Drive (إن وُجد).
 
----
+> ⚠️ لم نعد نستخدم `review.html` (تحوّل لـ redirect إلى board.html). **البورد الموحّد = `board.html`، ومصدره `tasks.json`.**
+
 
 ## 📊 التقارير الأسبوعية — Weekly Reports (كل سبت)
 

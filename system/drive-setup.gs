@@ -42,5 +42,11 @@ function createDot4LifeFolders() {
     + '- لا تحذف ملفات الآخرين\n'
   );
   
-  SpreadsheetApp.getActiveSpreadsheet().toast('🎉 تم إنشاء كل الفولدرات!', 'Dot4Life', 5);
+  console.log('🎉 تم إنشاء كل الفولدرات بنجاح!');
+  console.log('📁 المجلد الرئيسي: 📁 Dot4Life — فريق');
+  console.log('📍 افتح Drive وهتلاقي المجلد الرئيسي جاهز');
+
+  // رسالة تأكيد في الواجهة
+  const ui = SpreadsheetApp.getUi();
+  ui.alert('🎉 تم إنشاء كل الفولدرات! افتح Drive وهتشوف المجلد: 📁 Dot4Life — فريق');
 }
