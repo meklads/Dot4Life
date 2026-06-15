@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>لوحة الفريق — DotForLife</title>
+<link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--green:#054241;--teal:#6abfb8;--orange:#fd781c;--cream:#FAF8F4;--bg:#eef3f1;--card:#fff;--line:#dfe6e3;--muted:#6b7a76}
+  *{box-sizing:border-box;margin:0;padding:0;font-family:'Almarai',sans-serif}
+  body{background:var(--bg);color:var(--green);min-height:100vh}
+  /* ── Login gate ── */
+  #gate{position:fixed;inset:0;background:linear-gradient(160deg,#054241,#0a6b63);display:flex;align-items:center;justify-content:center;z-index:50}
+  #gate .box{background:#fff;border-radius:18px;padding:2.2rem;width:min(360px,90vw);text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+  #gate h1{font-size:1.2rem;color:var(--green);margin-bottom:.4rem}
+  #gate p{font-size:.8rem;color:var(--muted);margin-bottom:1.2rem}
+  #gate input{width:100%;padding:.8rem 1rem;border:1.5px solid var(--line);border-radius:10px;font-size:1rem;text-align:center;margin-bottom:.8rem}
+  #gate button{width:100%;padding:.8rem;border:0;border-radius:10px;background:var(--green);color:#fff;font-size:1rem;font-weight:700;cursor:pointer}
+  #gate .err{color:#c0392b;font-size:.82rem;min-height:1.1em}
+  /* ── App ── */
+  #app{display:none;max-width:1280px;margin:0 auto;padding:1.2rem clamp(1rem,3vw,2rem) 3rem}
+  header.top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1rem}
+  .brand{font-size:1.35rem;font-weight:800;color:var(--green)}
+  .brand .dot{color:var(--teal)}
+  .top-actions button{border:1.5px solid var(--line);background:#fff;color:var(--green);border-radius:9px;padding:.5rem .9rem;font-size:.82rem;font-weight:700;cursor:pointer;margin-inline-start:.4rem}
+  .top-actions button:hover{border-color:var(--teal)}
+  /* traction strip */
+  .traction{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:1rem}
+  .metric{background:#fff;border:1px solid var(--line);border-radius:12px;padding:.7rem 1rem}
+  .metric .v{font-size:1.4rem;font-weight:800;color:var(--green)}
+  .metric .l{font-size:.72rem;color:var(--muted)}
+  /* roster */
+  .roster{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.2rem}
+  .chip{display:inline-flex;align-items:center;gap:.35rem;background:#fff;border:1px solid var(--line);border-radius:999px;padding:.3rem .7rem;font-size:.76rem;font-weight:700}
+  .chip .dotc{width:9px;height:9px;border-radius:50%}
+  /* board */
+  .board{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  @media(max-width:860px){.board{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.board{grid-template-columns:1fr}}
+  .col{background:#e4ebe8;border-radius:14px;padding:.6rem;min-height:120px}
+  .col h2{font-size:.85rem;font-weight:800;color:var(--green);padding:.3rem .4rem .6rem;display:flex;justify-content:space-between}
+  .col h2 .count{background:#cfdbd6;border-radius:999px;padding:0 .5rem;font-size:.72rem}
+  .col.drag{outline:2px dashed var(--teal);outline-offset:-3px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:11px;padding:.7rem .8rem;margin-bottom:.5rem;cursor:grab;box-shadow:0 1px 2px rgba(5,66,65,.04)}
+  .card:active{cursor:grabbing}
+  .card .t{font-size:.84rem;font-weight:700;line-height:1.5;color:var(--green)}
+  .card .meta{display:flex;align-items:center;justify-content:space-between;margin-top:.5rem}
+  .badge{font-size:.7rem;font-weight:700;color:#fff;border-radius:999px;padding:.12rem .55rem}
+  .sect{font-size:.68rem;color:var(--muted);background:var(--cream);border:1px solid var(--line);border-radius:6px;padding:.1rem .45rem}
+  .addbtn{width:100%;background:transparent;border:1.5px dashed #c2d0cb;color:var(--muted);border-radius:9px;padding:.5rem;font-size:.78rem;cursor:pointer;font-weight:700}
+  .addbtn:hover{border-color:var(--teal);color:var(--green)}
+  .note{font-size:.72rem;color:var(--muted);margin-top:1.2rem;line-height:1.7;background:#fff;border:1px solid var(--line);border-radius:10px;padding:.8rem 1rem}
+</style>
+</head>
+<body>
+
+<div id="gate">
+  <div class="box">
+    <h1>🔒 لوحة الفريق</h1>
+    <p>دوت فور لايف — للمصرّح لهم فقط</p>
+    <input id="pw" type="password" placeholder="كلمة المرور" autocomplete="off" autofocus>
+    <div class="err" id="err"></div>
+    <button id="enter">دخول</button>
+  </div>
+</div>
+
+<div id="app">
+  <header class="top">
+    <div class="brand">DOT<span class="dot">.</span>FORLIFE — لوحة الفريق</div>
+    <div class="top-actions">
+      <button id="reload">↻ تحديث من الملف</button>
+      <button id="lock">🔒 قفل</button>
+    </div>
+  </header>
+
+  <div class="traction" id="traction"></div>
+  <div class="roster" id="roster"></div>
+  <div class="board" id="board"></div>
+
+  <div class="note">
+    💡 <b>المهام مصدرها</b> <code>tasks.json</code> — رواق يحدّثها يومياً عبر git فتظهر هنا تلقائياً. تحريكك للبطاقات يُحفظ على هذا الجهاز فقط؛ زر «تحديث من الملف» يرجّع آخر نسخة من رواق.<br>
+    🔐 <b>تنبيه:</b> هذا القفل مظهري فقط (صفحة ثابتة). الحماية الحقيقية لمجلد <code>/system/</code> من إعداد Coolify (Basic Auth).
+  </div>
+</div>
+
+<script>
+// كلمة المرور مخزّنة كبصمة SHA-256 فقط (النص الصريح غير موجود في الكود)
+const PW_HASH = "fa9899abdc529955d8680983a61da3cb53473580959787592e1e1a69f2575d2b";
+const $ = s => document.querySelector(s);
+
+async function sha256(t){
+  const b = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(t));
+  return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('');
+}
+async function tryEnter(){
+  const h = await sha256($('#pw').value);
+  if(h === PW_HASH){ sessionStorage.setItem('dfl_board_ok','1'); show(); }
+  else { $('#err').textContent = 'كلمة المرور غير صحيحة'; }
+}
+$('#enter').onclick = tryEnter;
+$('#pw').addEventListener('keydown', e => { if(e.key==='Enter') tryEnter(); });
+$('#lock').onclick = () => { sessionStorage.removeItem('dfl_board_ok'); location.reload(); };
+
+function show(){ $('#gate').style.display='none'; $('#app').style.display='block'; load(); }
+if(sessionStorage.getItem('dfl_board_ok')==='1') show();
+
+let DATA=null, MEMBERS={};
+const LS='dfl_board_overrides';
+const overrides = () => JSON.parse(localStorage.getItem(LS)||'{}');
+const saveOverride = (id,col) => { const o=overrides(); o[id]=col; localStorage.setItem(LS, JSON.stringify(o)); };
+
+async function load(){
+  try{
+    DATA = await (await fetch('tasks.json?_='+Date.now())).json();
+  }catch(e){ $('#board').innerHTML='<p>تعذّر تحميل tasks.json</p>'; return; }
+  MEMBERS = DATA.members||{};
+  renderTraction(); renderRoster(); render();
+}
+function renderTraction(){
+  $('#traction').innerHTML = Object.entries(DATA.traction||{})
+    .map(([l,v])=>`<div class="metric"><div class="v">${v}</div><div class="l">${l}</div></div>`).join('');
+}
+function renderRoster(){
+  $('#roster').innerHTML = Object.entries(MEMBERS)
+    .map(([n,c])=>`<span class="chip"><span class="dotc" style="background:${c}"></span>${n}</span>`).join('');
+}
+function render(){
+  const ov = overrides();
+  const cards = (DATA.cards||[]).map(c=>({...c, col: ov[c.id]||c.col}));
+  $('#board').innerHTML = DATA.columns.map(col=>{
+    const list = cards.filter(c=>c.col===col.id);
+    return `<div class="col" data-col="${col.id}">
+      <h2>${col.title}<span class="count">${list.length}</span></h2>
+      ${list.map(cardHTML).join('')}
+      <button class="addbtn" data-col="${col.id}">+ إضافة بطاقة</button>
+    </div>`;
+  }).join('');
+  wire();
+}
+function cardHTML(c){
+  const color = MEMBERS[c.assignee]||'#054241';
+  return `<div class="card" draggable="true" data-id="${c.id}">
+    <div class="t">${c.title}</div>
+    <div class="meta">
+      <span class="badge" style="background:${color}">${c.assignee||'—'}</span>
+      <span class="sect">${c.section||''}</span>
+    </div>
+  </div>`;
+}
+function wire(){
+  let dragId=null;
+  document.querySelectorAll('.card').forEach(el=>{
+    el.addEventListener('dragstart',()=>{dragId=el.dataset.id;el.style.opacity=.5});
+    el.addEventListener('dragend',()=>{el.style.opacity=1});
+  });
+  document.querySelectorAll('.col').forEach(col=>{
+    col.addEventListener('dragover',e=>{e.preventDefault();col.classList.add('drag')});
+    col.addEventListener('dragleave',()=>col.classList.remove('drag'));
+    col.addEventListener('drop',e=>{e.preventDefault();col.classList.remove('drag');
+      if(dragId){ saveOverride(dragId, col.dataset.col); render(); }
+    });
+  });
+  document.querySelectorAll('.addbtn').forEach(b=>b.onclick=()=>{
+    const t = prompt('عنوان المهمة:'); if(!t) return;
+    const a = prompt('المسؤول (موني/ميدو/عمر/مازن/فلاش/بندق/عامر/رواق):','رواق')||'';
+    const id = 'local-'+Date.now();
+    DATA.cards.push({id, title:t, assignee:a, section:'', col:b.dataset.col});
+    const local = JSON.parse(localStorage.getItem('dfl_board_local')||'[]');
+    local.push({id, title:t, assignee:a, section:'', col:b.dataset.col});
+    localStorage.setItem('dfl_board_local', JSON.stringify(local));
+    render();
+  });
+}
+$('#reload').onclick = () => { localStorage.removeItem(LS); localStorage.removeItem('dfl_board_local'); load(); };
+
+// re-inject locally-added cards after fetch
+const _load = load;
+load = async function(){ await _load(); const local=JSON.parse(localStorage.getItem('dfl_board_local')||'[]'); if(local.length){ DATA.cards.push(...local); render(); } };
+</script>
+</body>
+</html>
