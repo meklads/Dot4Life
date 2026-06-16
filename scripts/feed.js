@@ -208,9 +208,10 @@
     var stories = getSectionArticles('featured-stories');
     if (!stories.length) return;
     var a = stories[0];
-    var title = isAr && a.title_ar ? a.title_ar : a.title_en;
-    var section = isAr && a.section_ar ? a.section_ar : a.section;
-    var section_en = a.section || 'Featured';
+    var title_en = a.title_en || '';
+    var title_ar = a.title_ar || title_en;
+    var sect_en = a.section || 'Featured';
+    var sect_ar = a.section_ar || sect_en;
     var href = isAr && a.url ? a.url : (a.url_en || a.url || '#');
     var img = a.img || '';
     container.innerHTML =
@@ -218,9 +219,9 @@
         '<img src="' + esc(img) + '" width="600" height="400" alt="" loading="lazy" fetchpriority="high">' +
       '</div></div>' +
       '<div class="sl-featured-body">' +
-        '<div class="sl-featured-kicker"><span class="en">' + esc(section_en) + '</span><span class="ar">' + esc(section) + '</span></div>' +
-        '<div class="sl-featured-title"><span class="en">' + esc(title) + '</span><span class="ar">' + esc(title) + '</span></div>' +
-        '<div class="sl-featured-byline"><span class="en">' + esc(section_en) + ' · Dot4Life</span><span class="ar">' + esc(section) + ' · دوت فور لايف</span></div>' +
+        '<div class="sl-featured-kicker"><span class="en">' + esc(sect_en) + '</span><span class="ar">' + esc(sect_ar) + '</span></div>' +
+        '<div class="sl-featured-title"><span class="en">' + esc(title_en) + '</span><span class="ar">' + esc(title_ar) + '</span></div>' +
+        '<div class="sl-featured-byline"><span class="en">' + esc(sect_en) + ' · Dot4Life</span><span class="ar">' + esc(sect_ar) + ' · دوت فور لايف</span></div>' +
       '</div>';
     container.setAttribute('data-en-href', a.url_en || a.url || '#');
     container.setAttribute('data-ar-href', a.url || '#');
@@ -246,22 +247,23 @@
     var html = '';
     for (var i = 0; i < items.length; i++) {
       var a = items[i];
-      var title = isAr && a.title_ar ? a.title_ar : a.title_en;
+      var title_en = a.title_en || '';
+      var title_ar = a.title_ar || title_en;
       var url = a.url || '#';
       var url_en = a.url_en || a.url || '#';
       var href = isAr ? url : url_en;
-      var byline = a.section_ar || a.category || '';
-      var byline_en = a.section || a.category || '';
+      var byline_ar = (a.section_ar || a.category || '') + ' · دوت فور لايف';
+      var byline_en = (a.section || a.category || '') + ' · Dot4Life';
       html += '<a href="' + esc(href) + '" class="sl-latest-item" ' +
                'data-en-href="' + esc(url_en) + '" ' +
                'data-ar-href="' + esc(url) + '">' +
         '<span class="sl-latest-item-title">' +
-          '<span class="en">' + esc(title) + '</span>' +
-          '<span class="ar">' + esc(title) + '</span>' +
+          '<span class="en">' + esc(title_en) + '</span>' +
+          '<span class="ar">' + esc(title_ar) + '</span>' +
         '</span>' +
         '<span class="sl-latest-item-byline">' +
-          '<span class="en">' + esc(byline_en) + ' · Dot4Life</span>' +
-          '<span class="ar">' + esc(byline) + ' · دوت فور لايف</span>' +
+          '<span class="en">' + esc(byline_en) + '</span>' +
+          '<span class="ar">' + esc(byline_ar) + '</span>' +
         '</span>' +
       '</a>';
     }
@@ -278,9 +280,10 @@
     var html = '';
     for (var i = 0; i < comparisons.length; i++) {
       var a = comparisons[i];
-      var title = isAr && a.title_ar ? a.title_ar : a.title_en;
-      var cat = a.section_ar || a.category || '';
+      var title_en = a.title_en || '';
+      var title_ar = a.title_ar || title_en;
       var cat_en = a.section || a.category || '';
+      var cat_ar = a.section_ar || a.category || cat_en;
       var url = a.url || '#';
       var url_en = a.url_en || a.url || '#';
       var href = isAr ? url : url_en;
@@ -294,8 +297,8 @@
           '</div>' +
         '</div>' +
         '<div class="dc-item-text">' +
-          '<span class="dc-item-cat"><span class="en">' + esc(cat_en) + '</span><span class="ar">' + esc(cat) + '</span></span>' +
-          '<span class="dc-item-title"><span class="en">' + esc(title) + '</span><span class="ar">' + esc(title) + '</span></span>' +
+          '<span class="dc-item-cat"><span class="en">' + esc(cat_en) + '</span><span class="ar">' + esc(cat_ar) + '</span></span>' +
+          '<span class="dc-item-title"><span class="en">' + esc(title_en) + '</span><span class="ar">' + esc(title_ar) + '</span></span>' +
           '<span class="dc-item-byline">' +
             '<span class="dc-item-author"><span class="en">By Dot4Life Team</span><span class="ar">كتب بواسطة فريق دوت فور لايف</span></span>' +
             '<span class="dc-item-dot">·</span>' +
