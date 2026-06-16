@@ -177,191 +177,366 @@
   </div>
 </div>
 
+<style>
+/* ═════════════════════════════════════════════════════
+   HEALTH PAGE — BODY DESIGN SYSTEM
+   Luxurious · Elegant · Optimistic · Brand-Aligned
+   ═════════════════════════════════════════════════════ */
+
+/* ── LAYOUT SAFETY (no overflow, no break) ── */
+*, *::before, *::after { box-sizing:border-box }
+#page, .hl-section, .hl-container { overflow-wrap:anywhere; word-wrap:break-word }
+.hl-container { width:100%; max-width:var(--w-xl,1280px); margin:0 auto; padding:0 clamp(1rem,4vw,2.5rem) }
+
+/* ── SECTION SYSTEM ── */
+.hl-section { padding:clamp(2.5rem,5vw,5rem) 0 }
+.hl-section--cream { background:#FAF8F4 }
+[data-theme="dark"] .hl-section--cream { background:var(--card-bg,#1A1E24) }
+.hl-eyebrow { display:flex; align-items:center; gap:.5rem; font-size:.82rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:#6abfb8; margin-bottom:.75rem }
+.hl-eyebrow svg { flex-shrink:0; width:16px; height:16px }
+.hl-h2 { font-family:'Almarai','Cinzel',Georgia,serif; font-size:clamp(1.4rem,3vw,1.9rem); font-weight:800; line-height:1.35; color:var(--text,#1A1E24); margin:0 0 1.2rem; letter-spacing:-.01em }
+[data-lang="ar"] .hl-h2 { letter-spacing:0 }
+.hl-sub { font-size:clamp(.92rem,1.2vw,1.05rem); color:var(--text-2,#5C534A); line-height:1.75; margin:0 0 2.5rem; max-width:640px }
+[data-lang="ar"] .hl-sub { max-width:none }
+
+/* ── INTRO TEXT ── */
+.hl-intro-text p { font-size:clamp(.94rem,1.2vw,1.04rem); color:var(--text-2,#5C534A); line-height:1.85; margin:0 }
+[data-lang="ar"] .hl-intro-text p { line-height:1.9 }
+
+/* ── GRID SYSTEM ── */
+.hl-grid { display:grid; gap:1.25rem; width:100% }
+.hl-grid--tools { grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr)) }
+.hl-grid--articles { grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr)) }
+.hl-grid--topic { grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr)) }
+
+/* ── CARDS ── */
+.hl-card {
+  display:flex; flex-direction:column; border-radius:18px; padding:1.5rem 1.4rem;
+  background:var(--card-bg,#fff); border:1px solid rgba(5,66,65,.08);
+  box-shadow:0 8px 30px rgba(5,66,65,.06);
+  transition:transform .22s cubic-bezier(.22,1,.36,1), box-shadow .22s cubic-bezier(.22,1,.36,1);
+  text-decoration:none; color:inherit; overflow-wrap:anywhere
+}
+.hl-card:hover {
+  transform:translateY(-4px);
+  box-shadow:0 16px 48px rgba(5,66,65,.1);
+}
+.hl-card:focus-visible { outline:2px solid #6abfb8; outline-offset:3px }
+
+/* ── TOOL CARDS ── */
+.hl-card--tool { text-decoration:none; color:inherit; cursor:pointer }
+.hl-card-icon {
+  width:44px; height:44px; border-radius:14px; display:flex; align-items:center; justify-content:center;
+  background:rgba(5,66,65,.06); color:var(--hl-accent,#054241); margin-bottom:1rem; flex-shrink:0;
+  transition:background .2s, transform .2s
+}
+.hl-card:hover .hl-card-icon { background:rgba(5,66,65,.1); transform:scale(1.05) }
+.hl-card-icon svg { width:20px; height:20px; stroke:currentColor }
+.hl-card-icon--emoji { font-size:1.3rem }
+.hl-card-title { font-size:.98rem; font-weight:700; line-height:1.45; margin-bottom:.6rem; color:var(--text,#1A1E24) }
+.hl-card-desc { font-size:.84rem; line-height:1.6; color:var(--text-2,#5C534A); margin-bottom:1rem; flex:1 }
+.hl-card-arrow { font-size:.82rem; font-weight:700; color:#6abfb8; margin-top:auto; transition:gap .2s; display:flex; align-items:center; gap:.3rem }
+.hl-card:hover .hl-card-arrow { gap:.6rem }
+[data-lang="ar"] .hl-card-arrow { flex-direction:row-reverse }
+
+/* ── ARTICLE CARDS ── */
+.hl-card--article { background:var(--card-bg,#fff); padding:1.5rem }
+.hl-card--article .hl-card-title { font-size:.95rem; font-weight:700; margin-bottom:.5rem; flex:1 }
+.hl-card--article .hl-card-desc { font-size:.82rem; margin-bottom:.7rem }
+.hl-card--article .hl-card-arrow { font-size:.8rem }
+
+/* ── GUIDE STRIP ── */
+.hl-guide-strip {
+  background:linear-gradient(135deg,rgba(5,66,65,.04),rgba(106,191,184,.08));
+  border-top:1px solid rgba(5,66,65,.06); border-bottom:1px solid rgba(5,66,65,.06);
+  padding:1.2rem 0
+}
+.hl-guide-strip-inner {
+  display:flex; align-items:center; gap:1rem; flex-wrap:wrap;
+  padding:0 clamp(1rem,4vw,2.5rem)
+}
+.hl-guide-strip-icon {
+  width:40px; height:40px; border-radius:12px; display:flex; align-items:center; justify-content:center;
+  background:#6abfb8; color:#fff; flex-shrink:0
+}
+.hl-guide-strip-icon svg { width:18px; height:18px }
+.hl-guide-strip-content { flex:1; min-width:0 }
+.hl-guide-strip-label { font-size:.75rem; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:#6abfb8; display:block; margin-bottom:.15rem }
+.hl-guide-strip-title { font-size:.92rem; font-weight:700; color:var(--text,#1A1E24); display:block; line-height:1.4 }
+.hl-guide-strip-link {
+  font-size:.82rem; font-weight:700; color:#054241; text-decoration:none; white-space:nowrap;
+  padding:.6rem 1.2rem; border-radius:999px; border:1.5px solid rgba(5,66,65,.15);
+  transition:background .2s, color .2s
+}
+.hl-guide-strip-link:hover { background:#054241; color:#fff }
+[data-theme="dark"] .hl-guide-strip-link:hover { background:#6abfb8; color:#054241 }
+
+/* ── TOPIC AUTHORITY CARDS ── */
+.hl-topic-title { font-size:.95rem; font-weight:700; margin:0 0 1rem; color:var(--text,#1A1E24) }
+.hl-topic-list { list-style:none; padding:0; margin:0 }
+.hl-topic-list li { margin-bottom:.5rem; font-size:.85rem; line-height:1.5 }
+.hl-topic-list a {
+  color:var(--text-2,#5C534A); text-decoration:none;
+  transition:color .2s
+}
+.hl-topic-list a:hover { color:#054241; font-weight:600 }
+[data-theme="dark"] .hl-topic-list a:hover { color:#6abfb8 }
+.hl-card--topic { padding:1.5rem }
+
+/* ── DARK MODE ── */
+[data-theme="dark"] .hl-card {
+  background:var(--card-bg,#1A1E24); border-color:rgba(106,191,184,.1);
+  box-shadow:0 8px 30px rgba(0,0,0,.2);
+}
+[data-theme="dark"] .hl-card:hover { box-shadow:0 16px 48px rgba(0,0,0,.3) }
+[data-theme="dark"] .hl-card-icon { background:rgba(106,191,184,.1) }
+[data-theme="dark"] .hl-guide-strip {
+  background:linear-gradient(135deg,rgba(5,66,65,.1),rgba(106,191,184,.05));
+  border-color:rgba(106,191,184,.1)
+}
+[data-theme="dark"] .hl-guide-strip-link { border-color:rgba(106,191,184,.2); color:#6abfb8 }
+
+/* ── RESPONSIVE ── */
+@media(max-width:640px){
+  .hl-section { padding:clamp(1.8rem,4vw,2.5rem) 0 }
+  .hl-h2 { font-size:1.25rem; margin-bottom:.8rem }
+  .hl-sub { margin-bottom:1.5rem }
+  .hl-grid { gap:1rem }
+  .hl-guide-strip-inner { flex-direction:column; align-items:flex-start }
+  .hl-guide-strip-link { align-self:stretch; text-align:center }
+}
+@media(max-width:480px){
+  .hl-grid--tools { grid-template-columns:1fr }
+  .hl-grid--articles { grid-template-columns:1fr }
+  .hl-grid--topic { grid-template-columns:1fr }
+}
+</style>
   <!-- PAGE -->
   <div id="page">
 
-    <section style="background:var(--section-bg);padding:3rem clamp(1rem,4vw,3rem);">
-      <div class="container-prose">
-        <div class="section-eyebrow" style="margin-bottom:.5rem;"><span class="en">Why This Matters</span><span class="ar">لماذا هذا مهم</span></div>
-        <h2 style="font-size:clamp(1.3rem,3vw,1.8rem);font-weight:700;margin:0 0 1rem;font-family:var(--font-serif);color:var(--text);"><span class="en">Family health is the foundation of everything</span><span class="ar">صحة الأسرة هي أساس كل شيء</span></h2>
-        <p class="en" style="color:var(--text-2);line-height:1.75;">For Gulf families, health management involves distinct considerations. The region has some of the highest rates of obesity, diabetes, and vitamin D deficiency in the world, driven by climate, diet, and lifestyle factors unique to the Arabian Peninsula. At the same time, Gulf healthcare systems offer world-class facilities, and preventive care is increasingly accessible. In real-world family health planning, knowing your BMI helps assess weight-related risks, tracking calorie intake supports nutritional goals for both parents and children, monitoring water intake is especially critical in a climate where dehydration can occur within hours of outdoor activity, and pregnancy tracking helps expectant mothers navigate each stage with confidence. This section provides the tools and knowledge needed to make informed health decisions for every family member.</p>
-        <p class="ar" style="color:var(--text-2);line-height:1.75;">للعائلات الخليجية، إدارة الصحة تتضمن اعتبارات متميزة. المنطقة لديها بعض من أعلى معدلات السمنة والسكري ونقص فيتامين د في العالم، بسبب المناخ والنظام الغذائي وعوامل نمط الحياة الفريدة في شبه الجزيرة العربية. في نفس الوقت، أنظمة الرعاية الصحية الخليجية تقدم مرافق عالمية المستوى، والرعاية الوقائية أصبحت متاحة بشكل متزايد. في تخطيط صحة الأسرة الواقعي، معرفة مؤشر كتلة الجسم يساعد في تقييم مخاطر الوزن، تتبع السعرات الحرارية يدعم أهداف التغذية للوالدين والأطفال، مراقبة شرب الماء مهمة بشكل خاص في مناخ قد يحدث فيه الجفاف خلال ساعات من النشاط الخارجي، وتتبع الحمل يساعد الأمهات الحوامل على التنقل في كل مرحلة بثقة. هذا القسم يوفر الأدوات والمعرفة اللازمة لاتخاذ قرارات صحية مستنيرة لكل فرد من أفراد الأسرة.</p>
+    <!-- ═══ INTRO SECTION — WHY THIS MATTERS ═══ -->
+    <section class="hl-section hl-section--cream">
+      <div class="hl-container hl-prose">
+        <div class="hl-eyebrow">
+          <span class="en">Why This Matters</span>
+          <span class="ar">لماذا هذا مهم</span>
+        </div>
+        <h2 class="hl-h2">
+          <span class="en">Family health is the foundation of everything</span>
+          <span class="ar">صحة الأسرة هي أساس كل شيء</span>
+        </h2>
+        <div class="hl-intro-text">
+          <p class="en">For Gulf families, health management involves distinct considerations. The region has some of the highest rates of obesity, diabetes, and vitamin D deficiency in the world, driven by climate, diet, and lifestyle factors unique to the Arabian Peninsula. At the same time, Gulf healthcare systems offer world-class facilities, and preventive care is increasingly accessible. In real-world family health planning, knowing your BMI helps assess weight-related risks, tracking calorie intake supports nutritional goals for both parents and children, monitoring water intake is especially critical in a climate where dehydration can occur within hours of outdoor activity, and pregnancy tracking helps expectant mothers navigate each stage with confidence. This section provides the tools and knowledge needed to make informed health decisions for every family member.</p>
+          <p class="ar">للعائلات الخليجية، إدارة الصحة تتضمن اعتبارات متميزة. المنطقة لديها بعض من أعلى معدلات السمنة والسكري ونقص فيتامين د في العالم، بسبب المناخ والنظام الغذائي وعوامل نمط الحياة الفريدة في شبه الجزيرة العربية. في نفس الوقت، أنظمة الرعاية الصحية الخليجية تقدم مرافق عالمية المستوى، والرعاية الوقائية أصبحت متاحة بشكل متزايد. في تخطيط صحة الأسرة الواقعي، معرفة مؤشر كتلة الجسم يساعد في تقييم مخاطر الوزن، تتبع السعرات الحرارية يدعم أهداف التغذية للوالدين والأطفال، مراقبة شرب الماء مهمة بشكل خاص في مناخ قد يحدث فيه الجفاف خلال ساعات من النشاط الخارجي، وتتبع الحمل يساعد الأمهات الحوامل على التنقل في كل مرحلة بثقة. هذا القسم يوفر الأدوات والمعرفة اللازمة لاتخاذ قرارات صحية مستنيرة لكل فرد من أفراد الأسرة.</p>
+        </div>
       </div>
     </section>
 
-    <!-- TOOLS GRID -->
-    <section id="tools" aria-label="Health tools">
-      <div class="container-xl" style="padding-block:3rem 4rem;">
-        <div class="section-label">
-          <span class="en">Free Calculators</span><span class="ar">حاسبات مجانية</span>
+    <!-- ═══ TOOLS GRID — FREE CALCULATORS ═══ -->
+    <section class="hl-section" id="tools" aria-label="Health tools">
+      <div class="hl-container hl-wide">
+        <div class="hl-eyebrow">
+          <span class="en">Free Calculators</span>
+          <span class="ar">حاسبات مجانية</span>
         </div>
-        <h2 class="section-title">
+        <h2 class="hl-h2">
           <span class="en">Health tools for your family</span>
           <span class="ar">أدوات صحية لعائلتك</span>
         </h2>
-        <p class="section-sub">
+        <p class="hl-sub">
           <span class="en">All calculations run locally in your browser. No data is stored or shared.</span>
           <span class="ar">جميع الحسابات تعمل محلياً في متصفحك. لا تُخزَّن أي بيانات ولا تُشارَك.</span>
         </p>
-        <div class="tools-grid">
+        <div class="hl-grid hl-grid--tools">
 
-          <a href="/tools/pregnancy-calculator.html" class="tool-card reveal" style="--tc:#EC4899">
-            <div class="tool-card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div>
-            <div class="tool-card-title"><span class="en">Pregnancy Calculator</span><span class="ar">حاسبة الحمل</span></div>
-            <div class="tool-card-desc"><span class="en">Know your due date, gestational week, and trimester. Based on Naegele's Rule (ACOG standard).</span><span class="ar">اعرفي موعد الولادة وأسبوع الحمل والثلث. بناءً على معيار ACOG.</span></div>
-            <div class="tool-card-link"><span class="en">Open calculator →</span><span class="ar">افتح الحاسبة →</span></div>
+          <a href="/tools/pregnancy-calculator.html" class="hl-card hl-card--tool" style="--hl-accent:#EC4899">
+            <div class="hl-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div>
+            <div class="hl-card-title"><span class="en">Pregnancy Calculator</span><span class="ar">حاسبة الحمل</span></div>
+            <div class="hl-card-desc"><span class="en">Know your due date, gestational week, and trimester. Based on Naegele's Rule (ACOG standard).</span><span class="ar">اعرفي موعد الولادة وأسبوع الحمل والثلث. بناءً على معيار ACOG.</span></div>
+            <div class="hl-card-arrow"><span class="en">Open calculator →</span><span class="ar">افتح الحاسبة →</span></div>
           </a>
 
-          <a href="/pregnancy-journey.html" class="tool-card reveal" style="--tc:#C8706A">
-            <div class="tool-card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/></svg></div>
-            <div class="tool-card-title"><span class="en">Pregnancy Journey</span><span class="ar">رحلة أسابيع الحمل</span></div>
-            <div class="tool-card-desc"><span class="en">Follow your baby's growth week by week, development, symptoms, nutrition tips, and a weekly reminder for every stage.</span><span class="ar">تابعي نمو طفلك أسبوعاً بأسبوع، التطور والأعراض ونصائح التغذية وتذكيرة لكل مرحلة.</span></div>
-            <div class="tool-card-link"><span class="en">Start journey →</span><span class="ar">ابدئي الرحلة →</span></div>
+          <a href="/pregnancy-journey.html" class="hl-card hl-card--tool" style="--hl-accent:#C8706A">
+            <div class="hl-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/></svg></div>
+            <div class="hl-card-title"><span class="en">Pregnancy Journey</span><span class="ar">رحلة أسابيع الحمل</span></div>
+            <div class="hl-card-desc"><span class="en">Follow your baby's growth week by week, development, symptoms, nutrition tips, and a weekly reminder for every stage.</span><span class="ar">تابعي نمو طفلك أسبوعاً بأسبوع، التطور والأعراض ونصائح التغذية وتذكيرة لكل مرحلة.</span></div>
+            <div class="hl-card-arrow"><span class="en">Start journey →</span><span class="ar">ابدئي الرحلة →</span></div>
           </a>
 
-          <a href="/tools/bmi-calculator.html" class="tool-card reveal" style="--tc:#3B82F6">
-            <div class="tool-card-icon">⚖️</div>
-            <div class="tool-card-title"><span class="en">BMI Calculator</span><span class="ar">حاسبة مؤشر كتلة الجسم</span></div>
-            <div class="tool-card-desc"><span class="en">Calculate your Body Mass Index using WHO categories. Know if your weight is in a healthy range.</span><span class="ar">احسب مؤشر كتلة الجسم وفق تصنيفات منظمة الصحة العالمية.</span></div>
-            <div class="tool-card-link"><span class="en">Open calculator →</span><span class="ar">افتح الحاسبة →</span></div>
+          <a href="/tools/bmi-calculator.html" class="hl-card hl-card--tool" style="--hl-accent:#3B82F6">
+            <div class="hl-card-icon hl-card-icon--emoji">⚖️</div>
+            <div class="hl-card-title"><span class="en">BMI Calculator</span><span class="ar">حاسبة مؤشر كتلة الجسم</span></div>
+            <div class="hl-card-desc"><span class="en">Calculate your Body Mass Index using WHO categories. Know if your weight is in a healthy range.</span><span class="ar">احسب مؤشر كتلة الجسم وفق تصنيفات منظمة الصحة العالمية.</span></div>
+            <div class="hl-card-arrow"><span class="en">Open calculator →</span><span class="ar">افتح الحاسبة →</span></div>
           </a>
 
-          <a href="/tools/calorie-calculator.html" class="tool-card reveal" style="--tc:#F97316">
-            <div class="tool-card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></div>
-            <div class="tool-card-title"><span class="en">Calorie Calculator</span><span class="ar">حاسبة السعرات الحرارية</span></div>
-            <div class="tool-card-desc"><span class="en">Calculate your daily calorie needs (TDEE) using the Mifflin-St Jeor equation, the most validated formula.</span><span class="ar">احسب احتياجاتك اليومية من السعرات باستخدام معادلة Mifflin-St Jeor المُدققة علمياً.</span></div>
-            <div class="tool-card-link"><span class="en">Open calculator →</span><span class="ar">افتح الحاسبة →</span></div>
+          <a href="/tools/calorie-calculator.html" class="hl-card hl-card--tool" style="--hl-accent:#F97316">
+            <div class="hl-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></div>
+            <div class="hl-card-title"><span class="en">Calorie Calculator</span><span class="ar">حاسبة السعرات الحرارية</span></div>
+            <div class="hl-card-desc"><span class="en">Calculate your daily calorie needs (TDEE) using the Mifflin-St Jeor equation, the most validated formula.</span><span class="ar">احسب احتياجاتك اليومية من السعرات باستخدام معادلة Mifflin-St Jeor المُدققة علمياً.</span></div>
+            <div class="hl-card-arrow"><span class="en">Open calculator →</span><span class="ar">افتح الحاسبة →</span></div>
           </a>
 
-          <a href="/tools/water-calculator.html" class="tool-card reveal" style="--tc:#06B6D4">
-            <div class="tool-card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></div>
-            <div class="tool-card-title"><span class="en">Water Intake Calculator</span><span class="ar">حاسبة شرب الماء</span></div>
-            <div class="tool-card-desc"><span class="en">Find your daily water goal based on weight, activity, and climate, adjusted for Gulf heat.</span><span class="ar">احسب هدفك اليومي من الماء حسب وزنك ونشاطك ومناخ الخليج.</span></div>
-            <div class="tool-card-link"><span class="en">Open calculator →</span><span class="ar">افتح الحاسبة →</span></div>
+          <a href="/tools/water-calculator.html" class="hl-card hl-card--tool" style="--hl-accent:#06B6D4">
+            <div class="hl-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></div>
+            <div class="hl-card-title"><span class="en">Water Intake Calculator</span><span class="ar">حاسبة شرب الماء</span></div>
+            <div class="hl-card-desc"><span class="en">Find your daily water goal based on weight, activity, and climate, adjusted for Gulf heat.</span><span class="ar">احسب هدفك اليومي من الماء حسب وزنك ونشاطك ومناخ الخليج.</span></div>
+            <div class="hl-card-arrow"><span class="en">Open calculator →</span><span class="ar">افتح الحاسبة →</span></div>
           </a>
 
-          <a href="/tools/body-fat-calculator.html" class="tool-card reveal" style="--tc:#8B5CF6">
-            <div class="tool-card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
-            <div class="tool-card-title"><span class="en">Body Fat Calculator</span><span class="ar">حاسبة نسبة الدهون</span></div>
-            <div class="tool-card-desc"><span class="en">Estimate your body fat percentage using the US Navy method, no equipment needed.</span><span class="ar">احسب نسبة الدهون بطريقة البحرية الأمريكية، بدون أجهزة.</span></div>
-            <div class="tool-card-link"><span class="en">Open calculator →</span><span class="ar">افتح الحاسبة →</span></div>
+          <a href="/tools/body-fat-calculator.html" class="hl-card hl-card--tool" style="--hl-accent:#8B5CF6">
+            <div class="hl-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+            <div class="hl-card-title"><span class="en">Body Fat Calculator</span><span class="ar">حاسبة نسبة الدهون</span></div>
+            <div class="hl-card-desc"><span class="en">Estimate your body fat percentage using the US Navy method, no equipment needed.</span><span class="ar">احسب نسبة الدهون بطريقة البحرية الأمريكية، بدون أجهزة.</span></div>
+            <div class="hl-card-arrow"><span class="en">Open calculator →</span><span class="ar">افتح الحاسبة →</span></div>
           </a>
 
-          <a href="/tools/ramadan-calorie-calculator.html" class="tool-card reveal" style="--tc:#2a9a98">
-            <div class="tool-card-icon"><svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></div>
-            <div class="tool-card-title"><span class="en">Ramadan Calorie Calculator</span><span class="ar">حاسبة سعرات رمضان</span></div>
-            <div class="tool-card-desc"><span class="en">Optimize your Suhoor and Iftar nutrition during Ramadan fasting. Stay energized all day.</span><span class="ar">نظّم تغذيتك في السحور والإفطار خلال شهر رمضان. ابقَ نشيطاً طوال اليوم.</span></div>
-            <div class="tool-card-link"><span class="en">Open calculator →</span><span class="ar">افتح الحاسبة →</span></div>
+          <a href="/tools/ramadan-calorie-calculator.html" class="hl-card hl-card--tool" style="--hl-accent:#2a9a98">
+            <div class="hl-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></div>
+            <div class="hl-card-title"><span class="en">Ramadan Calorie Calculator</span><span class="ar">حاسبة سعرات رمضان</span></div>
+            <div class="hl-card-desc"><span class="en">Optimize your Suhoor and Iftar nutrition during Ramadan fasting. Stay energized all day.</span><span class="ar">نظّم تغذيتك في السحور والإفطار خلال شهر رمضان. ابقَ نشيطاً طوال اليوم.</span></div>
+            <div class="hl-card-arrow"><span class="en">Open calculator →</span><span class="ar">افتح الحاسبة →</span></div>
           </a>
 
-          <a href="/tools/one-rep-max.html" class="tool-card reveal" style="--tc:#6abfb8">
-            <div class="tool-card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 13l-3 3-2-2"/><path d="M14 3v10"/><path d="M5 21h14"/></svg></div>
-            <div class="tool-card-title"><span class="en">One-Rep Max Calculator</span><span class="ar">حاسبة أقصى تكرار واحد</span></div>
-            <div class="tool-card-desc"><span class="en">Estimate your maximum lift weight for any exercise. Plan smarter training programs.</span><span class="ar">احسب أقصى وزن يمكنك رفعه لأي تمرين. خطّط برامج تدريب أذكى.</span></div>
-            <div class="tool-card-link"><span class="en">Open calculator →</span><span class="ar">افتح الحاسبة →</span></div>
+          <a href="/tools/one-rep-max.html" class="hl-card hl-card--tool" style="--hl-accent:#6abfb8">
+            <div class="hl-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 13l-3 3-2-2"/><path d="M14 3v10"/><path d="M5 21h14"/></svg></div>
+            <div class="hl-card-title"><span class="en">One-Rep Max Calculator</span><span class="ar">حاسبة أقصى تكرار واحد</span></div>
+            <div class="hl-card-desc"><span class="en">Estimate your maximum lift weight for any exercise. Plan smarter training programs.</span><span class="ar">احسب أقصى وزن يمكنك رفعه لأي تمرين. خطّط برامج تدريب أذكى.</span></div>
+            <div class="hl-card-arrow"><span class="en">Open calculator →</span><span class="ar">افتح الحاسبة →</span></div>
           </a>
 
-          <a href="/tools/age-calculator.html" class="tool-card reveal" style="--tc:#9A9188">
-            <div class="tool-card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v12"/><path d="M8 10h8"/></svg></div>
-            <div class="tool-card-title"><span class="en">Age Calculator</span><span class="ar">حاسبة العمر</span></div>
-            <div class="tool-card-desc"><span class="en">Know your exact age in years, months, and days. Supports both Hijri and Gregorian dates.</span><span class="ar">اعرف عمرك بالضبط بالسنوات والأشهر والأيام. يدعم التاريخين الهجري والميلادي.</span></div>
-            <div class="tool-card-link"><span class="en">Open calculator →</span><span class="ar">افتح الحاسبة →</span></div>
+          <a href="/tools/age-calculator.html" class="hl-card hl-card--tool" style="--hl-accent:#9A9188">
+            <div class="hl-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v12"/><path d="M8 10h8"/></svg></div>
+            <div class="hl-card-title"><span class="en">Age Calculator</span><span class="ar">حاسبة العمر</span></div>
+            <div class="hl-card-desc"><span class="en">Know your exact age in years, months, and days. Supports both Hijri and Gregorian dates.</span><span class="ar">اعرف عمرك بالضبط بالسنوات والأشهر والأيام. يدعم التاريخين الهجري والميلادي.</span></div>
+            <div class="hl-card-arrow"><span class="en">Open calculator →</span><span class="ar">افتح الحاسبة →</span></div>
           </a>
 
         </div>
       </div>
     </section>
 
-
-    <!-- ARTICLES GRID -->
-    <section id="articles" aria-label="Related articles">
-      <div class="page-section" style="padding-block:3rem 4rem;">
-        <div class="section-eyebrow">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/></svg>
-          <span class="en">Articles</span><span class="ar">المقالات</span>
+    <!-- ═══ ARTICLES GRID ═══ -->
+    <section class="hl-section hl-section--cream" id="articles" aria-label="Related articles">
+      <div class="hl-container hl-wide">
+        <div class="hl-eyebrow">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/></svg>
+          <span class="en">Articles</span>
+          <span class="ar">المقالات</span>
         </div>
-        <h2 class="section-title" style="margin-bottom:.75rem;">
-          <span class="en">Latest Articles & Guides</span><span class="ar">أحدث المقالات والأدلة</span>
+        <h2 class="hl-h2">
+          <span class="en">Latest Articles & Guides</span>
+          <span class="ar">أحدث المقالات والأدلة</span>
         </h2>
-        <p class="section-sub" style="margin-bottom:2rem;">
-          <span class="en">Evidence-based guidance for Gulf families</span><span class="ar">إرشادات قائمة على الأدلة للعائلات الخليجية</span>
+        <p class="hl-sub">
+          <span class="en">Evidence-based guidance for Gulf families</span>
+          <span class="ar">إرشادات قائمة على الأدلة للعائلات الخليجية</span>
         </p>
-        <div class="tools-grid" style="grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;">
-          <a href="/blog/walking-vs-running-comparison.html" class="tool-card reveal" style="--tc:#2a9a98;text-decoration:none;display:flex;flex-direction:column;">
-            <div class="tool-card-title" style="flex:1;font-size:.95rem;line-height:1.4;margin-bottom:.5rem;">
-              <span class="en">Walking vs Running: Which Burns More Calories for Most Adults?</span><span class="ar">المشي أم الجري: أيهما يحرق سعرات حرارية أكثر؟</span>
+        <div class="hl-grid hl-grid--articles">
+
+          <a href="/blog/walking-vs-running-comparison.html" class="hl-card hl-card--article">
+            <div class="hl-card-title">
+              <span class="en">Walking vs Running: Which Burns More Calories for Most Adults?</span>
+              <span class="ar">المشي أم الجري: أيهما يحرق سعرات حرارية أكثر؟</span>
             </div>
-            <div class="tool-card-desc" style="font-size:.8rem;margin-bottom:.5rem;flex:1;">
-              <span class="en">Compare walking and running for calorie burn, joint health, and sustainability.</span><span class="ar">قارن بين المشي والجري من حيث حرق السعرات وصحة المفاصل والاستدامة.</span>
+            <div class="hl-card-desc">
+              <span class="en">Compare walking and running for calorie burn, joint health, and sustainability.</span>
+              <span class="ar">قارن بين المشي والجري من حيث حرق السعرات وصحة المفاصل والاستدامة.</span>
             </div>
-            <div class="tool-card-link" style="margin-top:auto;">
-              <span class="en">Read article →</span><span class="ar">اقرأ المقال ←</span>
-            </div>
-          </a>
-          <a href="/blog/natural-birth-vs-c-section-comparison.html" class="tool-card reveal" style="--tc:#2a9a98;text-decoration:none;display:flex;flex-direction:column;">
-            <div class="tool-card-title" style="flex:1;font-size:.95rem;line-height:1.4;margin-bottom:.5rem;">
-              <span class="en">Natural Birth vs C-Section: When Is Each Option Recommended?</span><span class="ar">الولادة الطبيعية مقابل القيصرية: متى يُنصح بكل خيار؟</span>
-            </div>
-            <div class="tool-card-desc" style="font-size:.8rem;margin-bottom:.5rem;flex:1;">
-              <span class="en">Compare vaginal birth and cesarean section: recovery times, risks, benefits.</span><span class="ar">قارن بين الولادة الطبيعية والقيصرية: أوقات التعافي والمخاطر والفوائد.</span>
-            </div>
-            <div class="tool-card-link" style="margin-top:auto;">
-              <span class="en">Read article →</span><span class="ar">اقرأ المقال ←</span>
+            <div class="hl-card-arrow">
+              <span class="en">Read article →</span>
+              <span class="ar">اقرأ المقال ←</span>
             </div>
           </a>
-          <a href="/blog/bmi-middle-eastern-adults.html" class="tool-card reveal" style="--tc:#2a9a98;text-decoration:none;display:flex;flex-direction:column;">
-            <div class="tool-card-title" style="flex:1;font-size:.95rem;line-height:1.4;margin-bottom:.5rem;">
-              <span class="en">BMI for Middle Eastern Adults: What Is a Healthy BMI Really?</span><span class="ar">مؤشر كتلة الجسم للبالغين من الشرق الأوسط: ما هو النطاق الصحي حقاً؟</span>
+
+          <a href="/blog/natural-birth-vs-c-section-comparison.html" class="hl-card hl-card--article">
+            <div class="hl-card-title">
+              <span class="en">Natural Birth vs C-Section: When Is Each Option Recommended?</span>
+              <span class="ar">الولادة الطبيعية مقابل القيصرية: متى يُنصح بكل خيار؟</span>
             </div>
-            <div class="tool-card-desc" style="font-size:.8rem;margin-bottom:.5rem;flex:1;">
-              <span class="en">Why standard BMI thresholds may not apply to Middle Eastern bodies.</span><span class="ar">لماذا قد لا تنطبق حدود مؤشر كتلة الجسم القياسية على سكان الشرق الأوسط.</span>
+            <div class="hl-card-desc">
+              <span class="en">Compare vaginal birth and cesarean section: recovery times, risks, benefits.</span>
+              <span class="ar">قارن بين الولادة الطبيعية والقيصرية: أوقات التعافي والمخاطر والفوائد.</span>
             </div>
-            <div class="tool-card-link" style="margin-top:auto;">
-              <span class="en">Read article →</span><span class="ar">اقرأ المقال ←</span>
-            </div>
-          </a>
-          <a href="/blog/body-fat-vs-weight-guide.html" class="tool-card reveal" style="--tc:#2a9a98;text-decoration:none;display:flex;flex-direction:column;">
-            <div class="tool-card-title" style="flex:1;font-size:.95rem;line-height:1.4;margin-bottom:.5rem;">
-              <span class="en">Body Fat vs Weight: Which Number Matters More for Your Health?</span><span class="ar">الدهون مقابل الوزن: أي الرقمين أهم لصحتك؟</span>
-            </div>
-            <div class="tool-card-desc" style="font-size:.8rem;margin-bottom:.5rem;flex:1;">
-              <span class="en">The difference between BMI, body fat percentage, and what actually matters.</span><span class="ar">الفرق بين مؤشر كتلة الجسم ونسبة الدهون وما يهم حقاً.</span>
-            </div>
-            <div class="tool-card-link" style="margin-top:auto;">
-              <span class="en">Read article →</span><span class="ar">اقرأ المقال ←</span>
+            <div class="hl-card-arrow">
+              <span class="en">Read article →</span>
+              <span class="ar">اقرأ المقال ←</span>
             </div>
           </a>
-          <a href="/blog/water-intake-hot-climates-guide.html" class="tool-card reveal" style="--tc:#2a9a98;text-decoration:none;display:flex;flex-direction:column;">
-            <div class="tool-card-title" style="flex:1;font-size:.95rem;line-height:1.4;margin-bottom:.5rem;">
-              <span class="en">How Much Water Should You Drink in Hot Climates?</span><span class="ar">كمية الماء التي يجب شربها في المناخ الحار؟</span>
+
+          <a href="/blog/bmi-middle-eastern-adults.html" class="hl-card hl-card--article">
+            <div class="hl-card-title">
+              <span class="en">BMI for Middle Eastern Adults: What Is a Healthy BMI Really?</span>
+              <span class="ar">مؤشر كتلة الجسم للبالغين من الشرق الأوسط: ما هو النطاق الصحي حقاً؟</span>
             </div>
-            <div class="tool-card-desc" style="font-size:.8rem;margin-bottom:.5rem;flex:1;">
-              <span class="en">Find your daily water goal based on weight, activity, and Gulf climate.</span><span class="ar">احسب هدفك اليومي من الماء حسب وزنك ونشاطك ومناخ الخليج.</span>
+            <div class="hl-card-desc">
+              <span class="en">Why standard BMI thresholds may not apply to Middle Eastern bodies.</span>
+              <span class="ar">لماذا قد لا تنطبق حدود مؤشر كتلة الجسم القياسية على سكان الشرق الأوسط.</span>
             </div>
-            <div class="tool-card-link" style="margin-top:auto;">
-              <span class="en">Read article →</span><span class="ar">اقرأ المقال ←</span>
+            <div class="hl-card-arrow">
+              <span class="en">Read article →</span>
+              <span class="ar">اقرأ المقال ←</span>
             </div>
           </a>
+
+          <a href="/blog/body-fat-vs-weight-guide.html" class="hl-card hl-card--article">
+            <div class="hl-card-title">
+              <span class="en">Body Fat vs Weight: Which Number Matters More for Your Health?</span>
+              <span class="ar">الدهون مقابل الوزن: أي الرقمين أهم لصحتك؟</span>
+            </div>
+            <div class="hl-card-desc">
+              <span class="en">The difference between BMI, body fat percentage, and what actually matters.</span>
+              <span class="ar">الفرق بين مؤشر كتلة الجسم ونسبة الدهون وما يهم حقاً.</span>
+            </div>
+            <div class="hl-card-arrow">
+              <span class="en">Read article →</span>
+              <span class="ar">اقرأ المقال ←</span>
+            </div>
+          </a>
+
+          <a href="/blog/water-intake-hot-climates-guide.html" class="hl-card hl-card--article">
+            <div class="hl-card-title">
+              <span class="en">How Much Water Should You Drink in Hot Climates?</span>
+              <span class="ar">كمية الماء التي يجب شربها في المناخ الحار؟</span>
+            </div>
+            <div class="hl-card-desc">
+              <span class="en">Find your daily water goal based on weight, activity, and Gulf climate.</span>
+              <span class="ar">احسب هدفك اليومي من الماء حسب وزنك ونشاطك ومناخ الخليج.</span>
+            </div>
+            <div class="hl-card-arrow">
+              <span class="en">Read article →</span>
+              <span class="ar">اقرأ المقال ←</span>
+            </div>
+          </a>
+
         </div>
       </div>
     </section>
-    <!-- GUIDE STRIP -->
-    <div class="guide-strip">
-      <div class="guide-strip-inner">
-        <span class="guide-strip-label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/></svg> <span class="en">Reading</span><span class="ar">للقراءة</span></span>
-        <span class="guide-strip-title">
-          <span class="en">BMI & Weight in Arab & GCC Populations, A Complete Guide</span>
-          <span class="ar">مؤشر كتلة الجسم في المجتمعات العربية، دليل شامل</span>
-        </span>
-        <a href="/guides/bmi-guide-arabs-gcc.html" class="guide-strip-link">
-          <span class="en">Read guide →</span><span class="ar">اقرأ الدليل →</span>
-        </a>
+
+    <!-- ═══ GUIDE STRIP ═══ -->
+    <div class="hl-guide-strip">
+      <div class="hl-container">
+        <div class="hl-guide-strip-inner">
+          <div class="hl-guide-strip-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/></svg>
+          </div>
+          <div class="hl-guide-strip-content">
+            <span class="hl-guide-strip-label">
+              <span class="en">Reading</span>
+              <span class="ar">للقراءة</span>
+            </span>
+            <span class="hl-guide-strip-title">
+              <span class="en">BMI & Weight in Arab & GCC Populations, A Complete Guide</span>
+              <span class="ar">مؤشر كتلة الجسم في المجتمعات العربية، دليل شامل</span>
+            </span>
+          </div>
+          <a href="/guides/bmi-guide-arabs-gcc.html" class="hl-guide-strip-link">
+            <span class="en">Read guide →</span>
+            <span class="ar">اقرأ الدليل →</span>
+          </a>
+        </div>
       </div>
     </div>
-
-    <!-- FOOTER -->
-    <!-- ═══ UNIFIED FOOTER ══════════════════════════════════════ -->
-
 
   </div>
 
@@ -369,43 +544,50 @@
        FOOTER
   ═══════════════════════════════════════ -->
   <!-- ═══ UNIFIED FOOTER ══════════════════════════════════════ -->
-<!-- ═══ TOPIC AUTHORITY ═══════════════════════════════ -->
-<section class="tools-section" style="background:var(--section-bg);padding:48px 0;">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="section-label"><span class="en">Topic Authority</span><span class="ar">مرجعية الموضوع</span></div>
-      <h2 class="section-title"><span class="en">Explore Family Health</span><span class="ar">استكشف صحة العائلة</span></h2>
-      <p class="section-sub"><span class="en">Evidence-based health guides and calculators for Gulf families.</span><span class="ar">أدلة صحية وحاسبات قائمة على الأدلة للعائلات الخليجية.</span></p>
+<!-- ═══ TOPIC AUTHORITY ═══ -->
+<section class="hl-section hl-topic-authority">
+  <div class="hl-container hl-wide">
+    <div class="hl-eyebrow">
+      <span class="en">Topic Authority</span>
+      <span class="ar">مرجعية الموضوع</span>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;">
-      <div class="tool-card reveal" style="--tc:#2a9a98;padding:24px;">
-        <h3 style="font-size:1rem;font-weight:700;margin:0 0 12px;color:var(--text);"><span class="en">Top Health Guides</span><span class="ar">أهم الأدلة الصحية</span></h3>
-        <ul style="list-style:none;padding:0;margin:0;">
-          <li style="margin-bottom:8px;">→ <a href="/blog/complete-gulf-family-health-wellness.html" style="color:var(--gold);text-decoration:none;font-size:.88rem;"><span class="en">Complete Health & Wellness Hub</span><span class="ar">محور الصحة والعافية الشامل</span></a></li>
-          <li style="margin-bottom:8px;">→ <a href="/blog/water-intake-hot-climates-guide.html" style="color:var(--gold);text-decoration:none;font-size:.88rem;"><span class="en">Water Intake in Hot Climates</span><span class="ar">شرب الماء في المناخ الحار</span></a></li>
-          <li style="margin-bottom:8px;">→ <a href="/blog/bmi-middle-eastern-adults.html" style="color:var(--gold);text-decoration:none;font-size:.88rem;"><span class="en">BMI for Middle Eastern Adults</span><span class="ar">BMI للبالغين في الشرق الأوسط</span></a></li>
-          <li style="margin-bottom:8px;">→ <a href="/blog/pregnancy-weeks-guide.html" style="color:var(--gold);text-decoration:none;font-size:.88rem;"><span class="en">Pregnancy Weeks Guide</span><span class="ar">دليل أسابيع الحمل</span></a></li>
-          <li style="margin-bottom:8px;">→ <a href="/blog/family-nutrition-on-budget.html" style="color:var(--gold);text-decoration:none;font-size:.88rem;"><span class="en">Family Nutrition on a Budget</span><span class="ar">التغذية العائلية بميزانية</span></a></li>
+    <h2 class="hl-h2">
+      <span class="en">Explore Family Health</span>
+      <span class="ar">استكشف صحة العائلة</span>
+    </h2>
+    <p class="hl-sub">
+      <span class="en">Evidence-based health guides and calculators for Gulf families.</span>
+      <span class="ar">أدلة صحية وحاسبات قائمة على الأدلة للعائلات الخليجية.</span>
+    </p>
+    <div class="hl-grid hl-grid--topic">
+      <div class="hl-card hl-card--topic">
+        <h3 class="hl-topic-title"><span class="en">Top Health Guides</span><span class="ar">أهم الأدلة الصحية</span></h3>
+        <ul class="hl-topic-list">
+          <li>→ <a href="/blog/complete-gulf-family-health-wellness.html"><span class="en">Complete Health & Wellness Hub</span><span class="ar">محور الصحة والعافية الشامل</span></a></li>
+          <li>→ <a href="/blog/water-intake-hot-climates-guide.html"><span class="en">Water Intake in Hot Climates</span><span class="ar">شرب الماء في المناخ الحار</span></a></li>
+          <li>→ <a href="/blog/bmi-middle-eastern-adults.html"><span class="en">BMI for Middle Eastern Adults</span><span class="ar">BMI للبالغين في الشرق الأوسط</span></a></li>
+          <li>→ <a href="/blog/pregnancy-weeks-guide.html"><span class="en">Pregnancy Weeks Guide</span><span class="ar">دليل أسابيع الحمل</span></a></li>
+          <li>→ <a href="/blog/family-nutrition-on-budget.html"><span class="en">Family Nutrition on a Budget</span><span class="ar">التغذية العائلية بميزانية</span></a></li>
         </ul>
       </div>
-      <div class="tool-card reveal" style="--tc:#2a9a98;padding:24px;">
-        <h3 style="font-size:1rem;font-weight:700;margin:0 0 12px;color:var(--text);"><span class="en">Health Calculators</span><span class="ar">الحاسبات الصحية</span></h3>
-        <ul style="list-style:none;padding:0;margin:0;">
-          <li style="margin-bottom:8px;">→ <a href="/tools/water-calculator.html" style="color:var(--gold);text-decoration:none;font-size:.88rem;"><span class="en">Daily Water Intake Calculator</span><span class="ar">حاسبة شرب الماء اليومية</span></a></li>
-          <li style="margin-bottom:8px;">→ <a href="/tools/calorie-calculator.html" style="color:var(--gold);text-decoration:none;font-size:.88rem;"><span class="en">Calorie Calculator</span><span class="ar">حاسبة السعرات الحرارية</span></a></li>
-          <li style="margin-bottom:8px;">→ <a href="/tools/bmi-calculator.html" style="color:var(--gold);text-decoration:none;font-size:.88rem;"><span class="en">BMI Calculator</span><span class="ar">حاسبة مؤشر كتلة الجسم</span></a></li>
-          <li style="margin-bottom:8px;">→ <a href="/tools/body-fat-calculator.html" style="color:var(--gold);text-decoration:none;font-size:.88rem;"><span class="en">Body Fat Calculator</span><span class="ar">حاسبة الدهون في الجسم</span></a></li>
-          <li style="margin-bottom:8px;">→ <a href="/health/pregnancy-week-by-week.html" style="color:var(--gold);text-decoration:none;font-size:.88rem;"><span class="en">Pregnancy Week-by-Week</span><span class="ar">الحمل أسبوعاً بأسبوع</span></a></li>
+      <div class="hl-card hl-card--topic">
+        <h3 class="hl-topic-title"><span class="en">Health Calculators</span><span class="ar">الحاسبات الصحية</span></h3>
+        <ul class="hl-topic-list">
+          <li>→ <a href="/tools/water-calculator.html"><span class="en">Daily Water Intake Calculator</span><span class="ar">حاسبة شرب الماء اليومية</span></a></li>
+          <li>→ <a href="/tools/calorie-calculator.html"><span class="en">Calorie Calculator</span><span class="ar">حاسبة السعرات الحرارية</span></a></li>
+          <li>→ <a href="/tools/bmi-calculator.html"><span class="en">BMI Calculator</span><span class="ar">حاسبة مؤشر كتلة الجسم</span></a></li>
+          <li>→ <a href="/tools/body-fat-calculator.html"><span class="en">Body Fat Calculator</span><span class="ar">حاسبة الدهون في الجسم</span></a></li>
+          <li>→ <a href="/health/pregnancy-week-by-week.html"><span class="en">Pregnancy Week-by-Week</span><span class="ar">الحمل أسبوعاً بأسبوع</span></a></li>
         </ul>
       </div>
-      <div class="tool-card reveal" style="--tc:#2a9a98;padding:24px;">
-        <h3 style="font-size:1rem;font-weight:700;margin:0 0 12px;color:var(--text);"><span class="en">Health Deep Dives</span><span class="ar">غوص في الصحة</span></h3>
-        <ul style="list-style:none;padding:0;margin:0;">
-          <li style="margin-bottom:8px;">→ <a href="/blog/body-fat-vs-weight-guide.html" style="color:var(--gold);text-decoration:none;font-size:.88rem;"><span class="en">Body Fat vs Weight Guide</span><span class="ar">دليل الدهون مقابل الوزن</span></a></li>
-          <li style="margin-bottom:8px;">→ <a href="/blog/walking-vs-running-comparison.html" style="color:var(--gold);text-decoration:none;font-size:.88rem;"><span class="en">Walking vs Running Comparison</span><span class="ar">المشي مقابل الجري</span></a></li>
-          <li style="margin-bottom:8px;">→ <a href="/blog/visceral-fat-gulf.html" style="color:var(--gold);text-decoration:none;font-size:.88rem;"><span class="en">Visceral Fat Guide for Gulf</span><span class="ar">دليل الدهون الحشوية للخليج</span></a></li>
-          <li style="margin-bottom:8px;">→ <a href="/blog/preparing-for-pregnancy-guide.html" style="color:var(--gold);text-decoration:none;font-size:.88rem;"><span class="en">Preparing for Pregnancy Guide</span><span class="ar">دليل التحضير للحمل</span></a></li>
-          <li style="margin-bottom:8px;">→ <a href="/blog/managing-healthcare-costs-families.html" style="color:var(--gold);text-decoration:none;font-size:.88rem;"><span class="en">Managing Healthcare Costs</span><span class="ar">إدارة تكاليف الرعاية الصحية</span></a></li>
+      <div class="hl-card hl-card--topic">
+        <h3 class="hl-topic-title"><span class="en">Health Deep Dives</span><span class="ar">غوص في الصحة</span></h3>
+        <ul class="hl-topic-list">
+          <li>→ <a href="/blog/body-fat-vs-weight-guide.html"><span class="en">Body Fat vs Weight Guide</span><span class="ar">دليل الدهون مقابل الوزن</span></a></li>
+          <li>→ <a href="/blog/walking-vs-running-comparison.html"><span class="en">Walking vs Running Comparison</span><span class="ar">المشي مقابل الجري</span></a></li>
+          <li>→ <a href="/blog/visceral-fat-gulf.html"><span class="en">Visceral Fat Guide for Gulf</span><span class="ar">دليل الدهون الحشوية للخليج</span></a></li>
+          <li>→ <a href="/blog/preparing-for-pregnancy-guide.html"><span class="en">Preparing for Pregnancy Guide</span><span class="ar">دليل التحضير للحمل</span></a></li>
+          <li>→ <a href="/blog/managing-healthcare-costs-families.html"><span class="en">Managing Healthcare Costs</span><span class="ar">إدارة تكاليف الرعاية الصحية</span></a></li>
         </ul>
       </div>
     </div>
