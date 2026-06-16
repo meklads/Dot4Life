@@ -120,6 +120,13 @@ def extract_article_body(content):
         # Remove nav elements
         t = re.sub(r'<nav[^>]*id="navbar".*?</nav>', '', t, flags=re.IGNORECASE | re.DOTALL)
         t = re.sub(r'<nav[^>]*class="dfl-mobile-nav".*?</nav>', '', t, flags=re.IGNORECASE | re.DOTALL)
+        t = re.sub(r'<nav[^>]*aria-label="breadcrumb"[^>]*>.*?</nav>', '', t, flags=re.IGNORECASE | re.DOTALL)
+
+        # Remove structural <header> and unwrap <main> (keep content)
+        t = re.sub(r'<header[^>]*>', '', t, flags=re.IGNORECASE)
+        t = re.sub(r'</header>', '', t, flags=re.IGNORECASE)
+        t = re.sub(r'<main[^>]*>', '', t, flags=re.IGNORECASE)
+        t = re.sub(r'</main>', '', t, flags=re.IGNORECASE)
 
         # Remove footer
         t = re.sub(r'<footer[^>]*class="site-footer".*?</footer>', '', t, flags=re.IGNORECASE | re.DOTALL)
@@ -154,8 +161,11 @@ def extract_article_body(content):
 
         # Remove comment blocks
         t = re.sub(r'<!--\s*SEO_PROFILE.*?-->', '', t, flags=re.IGNORECASE | re.DOTALL)
+        t = re.sub(r'<!--\s*DFL CANONICAL NAVBAR.*?-->', '', t, flags=re.IGNORECASE | re.DOTALL)
+        t = re.sub(r'<!--\s*Author / Updated block.*?-->', '', t, flags=re.IGNORECASE | re.DOTALL)
         t = re.sub(r'<!--\s*═══ UNIFIED (HEADER|FOOTER).*?═══\s*-->', '', t, flags=re.IGNORECASE | re.DOTALL)
         t = re.sub(r'<!--\s*═══ UNIFIED MOBILE NAV.*?═══\s*-->', '', t, flags=re.IGNORECASE | re.DOTALL)
+        t = re.sub(r'<!--\s*Navbar content will be dynamically.*?-->', '', t, flags=re.IGNORECASE | re.DOTALL)
 
         # Remove any leftover script blocks (duplicates of head/footer scripts)
         t = re.sub(r'<script[^>]*>.*?</script>', '', t, flags=re.IGNORECASE | re.DOTALL)
