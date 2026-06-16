@@ -209,7 +209,7 @@
         #feed-section-featured-stories .hl-art-card { border-color:rgba(253,120,28,.15) }
         #feed-section-featured-stories .hl-art-card:hover { box-shadow:0 16px 48px rgba(253,120,28,.1) }
       </style>
-      <div class="hl-article-grid hl-feed-grid"></div>
+      <div class="hl-article-grid hl-feed-grid"><!-- feed.js populates this --></div>
     </div>
   </section>
 
@@ -1437,5 +1437,37 @@
   canonical: https://www.dotforlife.com/index.html
 -->
   <script src="/scripts/feed.js?v=20260608" defer></script>
+  <script>
+  /* ═══ Feed fallback watchdog ═══
+     If feed.js didn't render section feeds within 8s, show a visible message.
+     This runs after feed.js (deferred) has had time to execute. */
+  (function(){
+    var checkInterval = setInterval(function(){
+      var cards = document.querySelectorAll('[data-feed-section] .hl-art-card');
+      if (cards.length > 0) {
+        clearInterval(checkInterval);
+        return;
+      }
+      var grids = document.querySelectorAll('.hl-feed-grid');
+      var allEmpty = true;
+      for (var i = 0; i < grids.length; i++) {
+        if (grids[i].children.length > 0) { allEmpty = false; break; }
+      }
+      if (!allEmpty) { clearInterval(checkInterval); return; }
+    }, 500);
+    // After 8 seconds, if still empty, show fallback
+    setTimeout(function(){
+      clearInterval(checkInterval);
+      var grids = document.querySelectorAll('.hl-feed-grid');
+      for (var i = 0; i < grids.length; i++) {
+        if (grids[i].children.length === 0) {
+          grids[i].innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:2rem;color:var(--text-2,#5C534A);font-size:.9rem;">' +
+            '<span class="en">Loading articles…</span><span class="ar">جاري تحميل المقالات…</span>' +
+            '</div>';
+        }
+      }
+    }, 8000);
+  })();
+  </script>
 </body>
 </html>

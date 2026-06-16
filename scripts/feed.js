@@ -210,6 +210,7 @@
       return;
     }
 
+    var renderedCount = 0;
     for (var j = 0; j < containers.length; j++) {
       var section = containers[j].getAttribute('data-feed-section');
       if (!section) continue;
@@ -225,6 +226,18 @@
         html += buildCardHTML(sectionArticles[i]);
       }
       grid.innerHTML = html;
+      renderedCount++;
+      console.log('feed.js v2: rendered ' + limit + ' cards to [' + section + ']');
+    }
+
+    /* Verify rendering actually happened */
+    if (renderedCount > 0) {
+      var totalCards = document.querySelectorAll('[data-feed-section] .hl-art-card').length;
+      console.log('feed.js v2: section feed verification — ' + totalCards + ' total cards in ' + renderedCount + ' sections');
+      if (totalCards === 0) {
+        console.warn('feed.js v2: section feeds look empty despite render attempt — triggering re-render');
+        setTimeout(function(){ renderSectionFeeds(); }, 500);
+      }
     }
   }
 
@@ -268,19 +281,39 @@
     }
   }
 
-  /* ═══ Bootstrap ═══ */
+  /* ═══ Bootstrap ═══
+     Waits for DOM then fetches and renders.
+     Uses defer script attribute + DOMContentLoaded for safety. */
 
-  var hasGrid = !!document.querySelector(CONFIG.containerSelector);
-  var hasBlog = !!document.querySelector('#blog-list');
-  var hasArchive = !!document.querySelector('#archive-list');
-  var hasSectionFeeds = !!document.querySelector('[data-feed-section]');
-  console.log('feed.js v2: bootstrap check | grid=' + hasGrid + ' blog=' + hasBlog + ' archive=' + hasArchive + ' sections=' + hasSectionFeeds);
+  function boot() {
+    var hasGrid = !!document.querySelector(CONFIG.containerSelector);
+    var hasBlog = !!document.querySelector('#blog-list');
+    var hasArchive = !!document.querySelector('#archive-list');
+    var hasSectionFeeds = !!document.querySelector('[data-feed-section]');
+    console.log('feed.js v2: bootstrap check | grid=' + hasGrid + ' blog=' + hasBlog + ' archive=' + hasArchive + ' sections=' + hasSectionFeeds);
 
-  if (hasGrid || hasBlog || hasArchive || hasSectionFeeds) {
-    console.log('feed.js v2: bootstrap OK → fetching articles');
-    fetchArticles(render);
+    if (hasGrid || hasBlog || hasArchive || hasSectionFeeds) {
+      console.log('feed.js v2: bootstrap OK → fetching articles');
+      fetchArticles(render);
+    } else {
+      console.warn('feed.js v2: no containers found on this page — retrying in 1s');
+      setTimeout(function() {
+        var retryGrid = !!document.querySelector(CONFIG.containerSelector);
+        var retrySec = !!document.querySelector('[data-feed-section]');
+        if (retryGrid || retrySec) {
+          console.log('feed.js v2: containers found on retry → fetching');
+          fetchArticles(render);
+        } else {
+          console.warn('feed.js v2: still no containers after retry');
+        }
+      }, 1000);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot);
   } else {
-    console.warn('feed.js v2: no containers found on this page');
+    boot();
   }
 
 })();
