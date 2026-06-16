@@ -60,6 +60,11 @@
   .doc blockquote{background:var(--cream);border-right:3px solid var(--teal);padding:.6rem 1rem;margin:.8rem 0;border-radius:8px;color:var(--muted)}
   .doc code{background:var(--cream);padding:.1rem .35rem;border-radius:5px;font-size:.85em}
   .docnote{font-size:.74rem;color:var(--muted);margin-top:.8rem}
+  .vgnav{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem}
+  .vgnav button{background:#fff;border:1px solid var(--line);border-radius:999px;padding:.4rem .8rem;font-size:.76rem;font-weight:700;color:var(--green);cursor:pointer}
+  .vgnav button:hover{background:var(--cream)}
+  .vgnav button.on{background:var(--green);color:#fff;border-color:var(--green)}
+  .vgnav .grp{align-self:center;font-size:.72rem;color:var(--muted);font-weight:700;margin:0 .2rem}
 </style>
 </head>
 <body>
@@ -71,6 +76,7 @@
   <nav class="side">
     <div class="brand">DOT<span class="dot">.</span>FORLIFE</div>
     <button data-s="content" class="active">📋 إدارة المحتوى</button>
+    <button data-s="visual">🎨 الحوكمة البصرية</button>
     <button data-s="development">🔬 التطوير</button>
     <button data-s="ideas">💡 طرح الأفكار</button>
     <button data-s="growth">📈 النمو</button>
@@ -81,6 +87,7 @@
   <main class="main">
     <div id="view-content"><div class="traction" id="traction"></div><div class="roster" id="roster"></div><div class="board" id="board"></div></div>
     <div id="view-doc" style="display:none"><div class="doc" id="doc"></div><div class="docnote">يحدّثه الفريق عبر الملف في <code>system/sections/</code> ويظهر هنا بعد git push.</div></div>
+    <div id="view-vg" style="display:none"><div class="vgnav" id="vgnav"></div><div class="doc" id="vgdoc"></div><div class="docnote">المرجعية البصرية العليا — المصدر في <code>visual-governance/</code>. أي صورة أو فيديو يمرّ ببوابة الامتثال قبل النشر.</div></div>
   </main>
 </div></div>
 
@@ -88,6 +95,31 @@
 const PW_HASH="fa9899abdc529955d8680983a61da3cb53473580959787592e1e1a69f2575d2b";
 const $=s=>document.querySelector(s);
 const SECTIONS={development:'sections/development.md',ideas:'sections/ideas.md',growth:'sections/growth.md',social:'sections/social.md',youtube:'sections/youtube.md'};
+const VGB='../visual-governance/';
+const VG=[
+ {g:'الرئيسي'},
+ {k:'الميثاق الحاكم',f:'00-master-charter.md'},
+ {k:'قالب علامة جديدة',f:'future-brand-template.md'},
+ {g:'D4L'},
+ {k:'الفلسفة',f:'d4l/01-visual-philosophy.md'},
+ {k:'الألوان',f:'d4l/02-color-system.md'},
+ {k:'التصوير',f:'d4l/03-photography-direction.md'},
+ {k:'الإضاءة',f:'d4l/04-lighting-system.md'},
+ {k:'تمثيل الإنسان',f:'d4l/05-human-representation.md'},
+ {k:'الاحتشام',f:'d4l/06-islamic-modesty.md'},
+ {k:'الثَمبنيل',f:'d4l/07-thumbnail-system.md'},
+ {k:'الاتجاه العاطفي',f:'d4l/08-emotional-direction.md'},
+ {g:'العلامات'},
+ {k:'Graphics House',f:'graphics-house/visual-system.md'},
+ {k:'Human & Architecture',f:'human-architecture/visual-system.md'},
+ {g:'الأدوات'},
+ {k:'مكتبة البرومبتات',f:'prompt-library.md'},
+ {k:'الإجراءات SOPs',f:'sops.md'},
+ {k:'الامتثال',f:'compliance.md'},
+ {k:'سير العمل',f:'workflow-integration.md'},
+ {k:'التنفيذ بالمنصة',f:'platform-implementation.md'},
+ {k:'قاعدة المعرفة',f:'knowledge-base.md'},
+];
 async function sha256(t){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(t));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
 async function tryEnter(){const h=await sha256($('#pw').value);if(h===PW_HASH){sessionStorage.setItem('dfl_board_ok','1');show()}else $('#err').textContent='كلمة المرور غير صحيحة'}
 $('#enter').onclick=tryEnter;$('#pw').addEventListener('keydown',e=>{if(e.key==='Enter')tryEnter()});
@@ -98,10 +130,20 @@ if(sessionStorage.getItem('dfl_board_ok')==='1')show();
 document.querySelectorAll('.side button[data-s]').forEach(b=>b.onclick=()=>{
   document.querySelectorAll('.side button[data-s]').forEach(x=>x.classList.remove('active'));
   b.classList.add('active');const s=b.dataset.s;
-  if(s==='content'){$('#view-content').style.display='';$('#view-doc').style.display='none'}
-  else{$('#view-content').style.display='none';$('#view-doc').style.display='';loadDoc(SECTIONS[s])}
+  $('#view-content').style.display='none';$('#view-doc').style.display='none';$('#view-vg').style.display='none';
+  if(s==='content'){$('#view-content').style.display=''}
+  else if(s==='visual'){$('#view-vg').style.display='';renderVG()}
+  else{$('#view-doc').style.display='';loadDoc(SECTIONS[s])}
 });
 async function loadDoc(file){$('#doc').innerHTML='جارٍ التحميل…';try{const t=await (await fetch(file+'?_='+Date.now())).text();$('#doc').innerHTML=marked.parse(t)}catch(e){$('#doc').innerHTML='تعذّر تحميل الملف.'}}
+let vgInit=false;
+function renderVG(){if(vgInit)return;vgInit=true;
+  $('#vgnav').innerHTML=VG.map((x,i)=>x.g?`<span class="grp">${x.g}</span>`:`<button data-i="${i}">${x.k}</button>`).join('');
+  document.querySelectorAll('#vgnav button').forEach(btn=>btn.onclick=()=>{
+    document.querySelectorAll('#vgnav button').forEach(z=>z.classList.remove('on'));btn.classList.add('on');
+    loadVG(VG[btn.dataset.i].f)});
+  const first=$('#vgnav button');if(first){first.classList.add('on');loadVG(VG.find(x=>x.f).f)}}
+async function loadVG(file){$('#vgdoc').innerHTML='جارٍ التحميل…';try{const t=await (await fetch(VGB+file+'?_='+Date.now())).text();$('#vgdoc').innerHTML=marked.parse(t)}catch(e){$('#vgdoc').innerHTML='تعذّر تحميل الوثيقة.'}}
 
 let DATA=null,MEMBERS={};const LS='dfl_board_overrides';
 const ov=()=>JSON.parse(localStorage.getItem(LS)||'{}');
