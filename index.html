@@ -57,6 +57,87 @@
   gtag('js', new Date());
   gtag('config', 'G-3G1XPV4F0G');
 </script>
+<style>
+/* ── Premium left card redesign (design lang 10 + accents 09) ── */
+.dc-side-ad {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s ease;
+  border: none;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  min-height: 0;
+  box-shadow: 0 2px 4px rgba(5,66,65,.04), 0 12px 32px rgba(5,66,65,.08);
+}
+.dc-side-ad::before {
+  content: '';
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.3);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 5;
+  transition: transform .3s cubic-bezier(.22,1,.36,1);
+  box-shadow: 0 2px 8px rgba(0,0,0,.08);
+}
+.dc-side-ad::after {
+  content: '→';
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #054241;
+  z-index: 6;
+  transition: transform .3s cubic-bezier(.22,1,.36,1);
+  line-height: 1;
+}
+[data-lang="ar"] .dc-side-ad::before { right: auto; left: 14px; }
+[data-lang="ar"] .dc-side-ad::after { content: '←'; right: auto; left: 22px; }
+.dc-side-ad:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 8px rgba(5,66,65,.06), 0 20px 48px rgba(5,66,65,.12);
+}
+.dc-side-ad:hover::before {
+  transform: scale(1.1);
+  background: rgba(255,255,255,.5);
+}
+.dc-side-ad:hover::after { transform: rotate(45deg); }
+[data-lang="ar"] .dc-side-ad:hover::after { transform: rotate(-45deg); }
+.dc-side-ad--pregnancy { background: linear-gradient(135deg,#e6f5f3 0%,#f0faf8 40%,#fff 100%); border-top:3px solid #6abfb8; }
+.dc-side-ad--tourism { background: linear-gradient(135deg,#e0f2f1 0%,#eef7f6 40%,#fff 100%); border-top:3px solid #2a9a98; }
+.dc-side-ad--realestate { background: linear-gradient(135deg,#e8f0e8 0%,#f2f7f2 40%,#fff 100%); border-top:3px solid #4a8a82; }
+.dc-side-ad--finance { background: linear-gradient(135deg,#f5f0e8 0%,#faf5ee 40%,#fff 100%); border-top:3px solid #b8893c; }
+.dc-side-ad-img { flex:0 0 200px; min-height:200px; overflow:hidden; position:relative; }
+.dc-side-ad-img::after { content:''; position:absolute; inset:0; background:linear-gradient(to right,transparent 40%,rgba(255,255,255,.1)); }
+.dc-side-ad-img img { width:100%; height:100%; object-fit:cover; display:block; }
+.dc-side-ad-body { flex:1; padding:1.2rem 1.4rem; display:flex; flex-direction:column; justify-content:center; position:relative; }
+.dc-side-ad-pill { display:inline-block; padding:.2rem .75rem; border-radius:999px; font-size:.64rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; margin-bottom:.5rem; align-self:flex-start; background:rgba(5,66,65,.08); color:#054241; }
+[data-lang="ar"] .dc-side-ad-pill { font-family:var(--font-ar); }
+.dc-side-ad--pregnancy .dc-side-ad-pill { background:rgba(106,191,184,.15); color:#0a6b63; }
+.dc-side-ad--tourism .dc-side-ad-pill { background:rgba(42,154,152,.12); color:#1a7a78; }
+.dc-side-ad--realestate .dc-side-ad-pill { background:rgba(74,138,130,.15); color:#2a6a62; }
+.dc-side-ad--finance .dc-side-ad-pill { background:rgba(184,137,60,.15); color:#8a6a2a; }
+.dc-side-ad-title { font-size:.9rem; font-weight:700; color:#1A1410; margin-bottom:.35rem; line-height:1.3; }
+[data-lang="ar"] .dc-side-ad-title { font-family:var(--font-ar); }
+.dc-side-ad-desc { font-size:.74rem; color:#5C534A; line-height:1.55; margin-bottom:.65rem; }
+[data-lang="ar"] .dc-side-ad-desc { font-family:var(--font-ar); }
+.dc-side-ad-cta { font-size:.76rem; font-weight:600; color:#6abfb8; margin-top:auto; display:flex; align-items:center; gap:.3rem; transition:gap .25s; }
+.dc-side-ad-cta::after { content:'→'; display:inline-block; transition:transform .2s; }
+[data-lang="ar"] .dc-side-ad-cta::after { content:'←'; }
+.dc-side-ad:hover .dc-side-ad-cta { gap:.6rem; }
+.dc-side-ad:hover .dc-side-ad-cta::after { transform:translateX(3px); }
+[data-lang="ar"] .dc-side-ad:hover .dc-side-ad-cta::after { transform:translateX(-3px); }
+@media(max-width:768px){ .dc-side-ad{flex-direction:column} .dc-side-ad-img{flex:none;width:100%;min-height:160px;aspect-ratio:3/1} .dc-side-ad-img::after{background:linear-gradient(to bottom,transparent 50%,rgba(255,255,255,.08))} }
+@media(max-width:480px){ .dc-side-ad{border-radius:16px} .dc-side-ad-body{padding:1rem 1.1rem} .dc-side-ad-img{min-height:130px} }
+</style>
 </head>
 <body class="index-page">
 
@@ -388,141 +469,91 @@
       <!-- ─── LEFT COLUMN: article list ─── -->
       <div class="dc-main">
 
-        <div class="dc-list" data-feed-section="comparisons" data-count="3">
+        	        <div class="dc-list" data-feed-section="comparisons" data-count="4">
 
-          <a href="/blog/rent-vs-buy-comparison-guide.html" class="dc-item reveal">
-            <div class="dc-item-visual">
-              <div class="dc-item-split">
-                <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?fm=jpg&fit=crop&w=240&h=240&q=80" alt="Rent" width="120" height="120" onerror="this.style.display='none'" fetchpriority="high">
-                <span class="dc-vs">VS</span>
-                <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?fm=jpg&fit=crop&w=240&h=240&q=80" alt="Buy" width="120" height="120" onerror="this.style.display='none'" fetchpriority="high">
-              </div>
-            </div>
-            <div class="dc-item-text">
-              <span class="dc-item-cat"><span class="en">Real Estate</span><span class="ar">عقارات</span></span>
-              <span class="dc-item-title"><span class="en">Rent vs. Buy: Which Option Saves More Money Over 10 Years?</span><span class="ar">الإيجار مقابل الشراء: أي الخيارين يوفر مالاً أكثر؟</span></span>
-              <span class="dc-item-byline">
-                <span class="dc-item-author"><span class="en">By Dot4Life Team</span><span class="ar">كتب بواسطة فريق دوت فور لايف</span></span>
-                <span class="dc-item-dot">·</span>
-                <span class="dc-item-time"><span class="en">6 min read</span><span class="ar">6 دقائق قراءة</span></span>
-              </span>
-            </div>
-          </a>
+	          <a href="/comparisons/gold-vs-real-estate-gulf-family.html" class="dc-item reveal"
+	             data-en-href="/comparisons/gold-vs-real-estate-gulf-family-en.html"
+	             data-ar-href="/comparisons/gold-vs-real-estate-gulf-family.html">
+	            <div class="dc-item-visual">
+	              <div class="dc-item-split">
+	                <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=240&h=240&q=85" alt="Gold vs Real Estate" width="120" height="120" loading="lazy" fetchpriority="high">
+	                <span class="dc-vs">VS</span>
+	                <img src="https://images.unsplash.com/photo-1580519542036-c47de6196ba5?auto=format&fit=crop&w=240&h=240&q=85" alt="Investment" width="120" height="120" loading="lazy" fetchpriority="high">
+	              </div>
+	            </div>
+	            <div class="dc-item-text">
+	              <span class="dc-item-cat"><span class="en">Finance</span><span class="ar">تمويل</span></span>
+	              <span class="dc-item-title"><span class="en">Gold vs. Real Estate Investment for Gulf Families: Complete 2026 Guide</span><span class="ar">الاستثمار في الذهب أم العقار للأسرة الخليجية؟ مقارنة شاملة 2026</span></span>
+	              <span class="dc-item-byline">
+	                <span class="dc-item-author"><span class="en">By Dot4Life Team</span><span class="ar">كتب بواسطة فريق دوت فور لايف</span></span>
+	                <span class="dc-item-dot">·</span>
+	                <span class="dc-item-time"><span class="en">8 min read</span><span class="ar">8 دقائق قراءة</span></span>
+	              </span>
+	            </div>
+	          </a>
 
-          <a href="/blog/walking-vs-running-comparison.html" class="dc-item reveal">
-            <div class="dc-item-visual">
-              <div class="dc-item-split">
-                <img src="https://images.unsplash.com/photo-1621960531176-9e4894d9adf8?fm=jpg&fit=crop&w=240&h=240&q=80" alt="Walking" width="120" height="120" onerror="this.style.display='none'" fetchpriority="high">
-                <span class="dc-vs">VS</span>
-                <img src="https://images.unsplash.com/photo-1603734220970-25a0b335ca01?fm=jpg&fit=crop&w=240&h=240&q=80" alt="Running" width="120" height="120" onerror="this.style.display='none'" fetchpriority="high">
-              </div>
-            </div>
-            <div class="dc-item-text">
-              <span class="dc-item-cat"><span class="en">Fitness</span><span class="ar">لياقة</span></span>
-              <span class="dc-item-title"><span class="en">Walking vs. Running: Which Burns More Calories for Most Adults?</span><span class="ar">المشي أم الجري: أيهما يحرق سعرات حرارية أكثر؟</span></span>
-              <span class="dc-item-byline">
-                <span class="dc-item-author"><span class="en">By Dot4Life Team</span><span class="ar">كتب بواسطة فريق دوت فور لايف</span></span>
-                <span class="dc-item-dot">·</span>
-                <span class="dc-item-time"><span class="en">4 min read</span><span class="ar">4 دقائق قراءة</span></span>
-              </span>
-            </div>
-          </a>
+	          <a href="/comparisons/saving-vs-investing-gulf-family.html" class="dc-item reveal"
+	             data-en-href="/comparisons/saving-vs-investing-gulf-family-en.html"
+	             data-ar-href="/comparisons/saving-vs-investing-gulf-family.html">
+	            <div class="dc-item-visual">
+	              <div class="dc-item-split">
+	                <img src="https://images.unsplash.com/photo-1580519542036-c47de6196ba5?auto=format&fit=crop&w=240&h=240&q=85" alt="Saving vs Investing" width="120" height="120" loading="lazy" fetchpriority="high">
+	                <span class="dc-vs">VS</span>
+	                <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=240&h=240&q=85" alt="Wealth" width="120" height="120" loading="lazy" fetchpriority="high">
+	              </div>
+	            </div>
+	            <div class="dc-item-text">
+	              <span class="dc-item-cat"><span class="en">Finance</span><span class="ar">تمويل</span></span>
+	              <span class="dc-item-title"><span class="en">Saving vs Investing for a Gulf Family? The Complete Comparison</span><span class="ar">الادخار أم الاستثمار لأسرة خليجية؟ المقارنة الكاملة</span></span>
+	              <span class="dc-item-byline">
+	                <span class="dc-item-author"><span class="en">By Dot4Life Team</span><span class="ar">كتب بواسطة فريق دوت فور لايف</span></span>
+	                <span class="dc-item-dot">·</span>
+	                <span class="dc-item-time"><span class="en">7 min read</span><span class="ar">7 دقائق قراءة</span></span>
+	              </span>
+	            </div>
+	          </a>
 
-          <a href="/blog/gold-vs-savings-account-comparison.html" class="dc-item reveal">
-            <div class="dc-item-visual">
-              <div class="dc-item-split">
-                <img src="https://images.unsplash.com/photo-1610375461246-83df859d849d?fm=jpg&fit=crop&w=240&h=240&q=80" alt="Gold" width="120" height="120" onerror="this.style.display='none'" fetchpriority="high">
-                <span class="dc-vs">VS</span>
-                <img src="https://images.unsplash.com/photo-1580519542036-c47de6196ba5?fm=jpg&fit=crop&w=240&h=240&q=80" alt="Savings" width="120" height="120" onerror="this.style.display='none'" fetchpriority="high">
-              </div>
-            </div>
-            <div class="dc-item-text">
-              <span class="dc-item-cat"><span class="en">Finance</span><span class="ar">تمويل</span></span>
-              <span class="dc-item-title"><span class="en">Gold vs. Savings Accounts: Which Preserves Family Wealth Better?</span><span class="ar">الذهب مقابل التوفير: أيهما أفضل لثروة الأسرة؟</span></span>
-              <span class="dc-item-byline">
-                <span class="dc-item-author"><span class="en">By Dot4Life Team</span><span class="ar">كتب بواسطة فريق دوت فور لايف</span></span>
-                <span class="dc-item-dot">·</span>
-                <span class="dc-item-time"><span class="en">5 min read</span><span class="ar">5 دقائق قراءة</span></span>
-              </span>
-            </div>
-          </a>
+	          <a href="/comparisons/comparisons-ready-vs-build-home.html" class="dc-item reveal"
+	             data-en-href="/comparisons/comparisons-ready-vs-build-home-en.html"
+	             data-ar-href="/comparisons/comparisons-ready-vs-build-home.html">
+	            <div class="dc-item-visual">
+	              <div class="dc-item-split">
+	                <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=240&h=240&q=85" alt="Ready Home" width="120" height="120" loading="lazy" fetchpriority="high">
+	                <span class="dc-vs">VS</span>
+	                <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=240&h=240&q=85" alt="Build Home" width="120" height="120" loading="lazy" fetchpriority="high">
+	              </div>
+	            </div>
+	            <div class="dc-item-text">
+	              <span class="dc-item-cat"><span class="en">Real Estate</span><span class="ar">عقارات</span></span>
+	              <span class="dc-item-title"><span class="en">Buy Ready Home or Build Dream Home? Complete Gulf Comparison</span><span class="ar">شراء منزل جاهز أم بناء منزل الأحلام؟ مقارنة خليجية شاملة</span></span>
+	              <span class="dc-item-byline">
+	                <span class="dc-item-author"><span class="en">By Dot4Life Team</span><span class="ar">كتب بواسطة فريق دوت فور لايف</span></span>
+	                <span class="dc-item-dot">·</span>
+	                <span class="dc-item-time"><span class="en">8 min read</span><span class="ar">8 دقائق قراءة</span></span>
+	              </span>
+	            </div>
+	          </a>
 
-          <a href="/blog/hotel-near-haram-vs-budget-umrah.html" class="dc-item reveal">
-            <div class="dc-item-visual">
-              <div class="dc-item-split">
-                <img src="https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?fm=jpg&fit=crop&w=240&h=240&q=80" alt="Near Haram" width="120" height="120" onerror="this.style.display='none'" fetchpriority="high">
-                <span class="dc-vs">VS</span>
-                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?fm=jpg&fit=crop&w=240&h=240&q=80" alt="Budget" width="120" height="120" onerror="this.style.display='none'" fetchpriority="high">
-              </div>
-            </div>
-            <div class="dc-item-text">
-              <span class="dc-item-cat"><span class="en">Travel</span><span class="ar">سفر</span></span>
-              <span class="dc-item-title"><span class="en">Hotel Near Haram vs. Budget: Which Is Better for First-Time Umrah?</span><span class="ar">فندق قرب الحرم مقابل الاقتصادي: أيهما أفضل للعمرة الأولى؟</span></span>
-              <span class="dc-item-byline">
-                <span class="dc-item-author"><span class="en">By Dot4Life Team</span><span class="ar">كتب بواسطة فريق دوت فور لايف</span></span>
-                <span class="dc-item-dot">·</span>
-                <span class="dc-item-time"><span class="en">7 min read</span><span class="ar">7 دقائق قراءة</span></span>
-              </span>
-            </div>
-          </a>
-
-          <a href="/blog/daily-islamic-habits-guide.html" class="dc-item reveal">
-            <div class="dc-item-visual">
-              <div class="dc-item-single">
-                <img src="https://images.unsplash.com/photo-1587381420270-3e1a5b9e6904?fm=jpg&fit=crop&w=240&h=240&q=80" alt="Islamic habits" width="120" height="120" onerror="this.style.display='none'" fetchpriority="high">
-              </div>
-            </div>
-            <div class="dc-item-text">
-              <span class="dc-item-cat"><span class="en">Lifestyle</span><span class="ar">نمط حياة</span></span>
-              <span class="dc-item-title"><span class="en">5 Minutes of Daily Islamic Habits Can Transform Your Week</span><span class="ar">5 دقائق من العادات الإسلامية اليومية تغير أسبوعك</span></span>
-              <span class="dc-item-byline">
-                <span class="dc-item-author"><span class="en">By Dot4Life Team</span><span class="ar">كتب بواسطة فريق دوت فور لايف</span></span>
-                <span class="dc-item-dot">·</span>
-                <span class="dc-item-time"><span class="en">4 min read</span><span class="ar">4 دقائق قراءة</span></span>
-              </span>
-            </div>
-          </a>
-
-          <!-- ═══ NEW COMPARISONS ═══ -->
-          <a href="/comparisons/comparisons-ready-vs-build-home.html" class="dc-item reveal">
-            <div class="dc-item-visual">
-              <div class="dc-item-split">
-                <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?fm=jpg&fit=crop&w=240&h=240&q=80" alt="Ready Home" width="120" height="120" onerror="this.style.display='none'" fetchpriority="high">
-                <span class="dc-vs">VS</span>
-                <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?fm=jpg&fit=crop&w=240&h=240&q=80" alt="Build Home" width="120" height="120" onerror="this.style.display='none'" fetchpriority="high">
-              </div>
-            </div>
-            <div class="dc-item-text">
-              <span class="dc-item-cat"><span class="en">Real Estate</span><span class="ar">عقارات</span></span>
-              <span class="dc-item-title"><span class="en">Buy Ready Home or Build Dream Home? Complete Gulf Comparison</span><span class="ar">شراء منزل جاهز أم بناء منزل الأحلام؟ مقارنة خليجية شاملة</span></span>
-              <span class="dc-item-byline">
-                <span class="dc-item-author"><span class="en">By Dot4Life Team</span><span class="ar">كتب بواسطة فريق دوت فور لايف</span></span>
-                <span class="dc-item-dot">·</span>
-                <span class="dc-item-time"><span class="en">8 min read</span><span class="ar">8 دقائق قراءة</span></span>
-              </span>
-            </div>
-          </a>
-
-          <a href="/comparisons/comparisons-public-vs-private-education.html" class="dc-item reveal">
-            <div class="dc-item-visual">
-              <div class="dc-item-split">
-                <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?fm=jpg&fit=crop&w=240&h=240&q=80" alt="Public School" width="120" height="120" onerror="this.style.display='none'" fetchpriority="high">
-                <span class="dc-vs">VS</span>
-                <img src="https://images.unsplash.com/photo-1526243741027-444d633d7365?fm=jpg&fit=crop&w=240&h=240&q=80" alt="Private School" width="120" height="120" onerror="this.style.display='none'" fetchpriority="high">
-              </div>
-            </div>
-            <div class="dc-item-text">
-              <span class="dc-item-cat"><span class="en">Education</span><span class="ar">تعليم</span></span>
-              <span class="dc-item-title"><span class="en">Public vs Private Schools: Complete Decision Guide for Arab Families</span><span class="ar">التعليم الحكومي أم الخاص؟ دليل القرار الشامل للعائلات العربية</span></span>
-              <span class="dc-item-byline">
-                <span class="dc-item-author"><span class="en">By Dot4Life Team</span><span class="ar">كتب بواسطة فريق دوت فور لايف</span></span>
-                <span class="dc-item-dot">·</span>
-                <span class="dc-item-time"><span class="en">7 min read</span><span class="ar">7 دقائق قراءة</span></span>
-              </span>
-            </div>
-          </a>
-
-        </div><!-- /dc-list -->
+	          <a href="/comparisons/government-vs-private-school-gulf.html" class="dc-item reveal"
+	             data-en-href="/comparisons/government-vs-private-school-gulf-en.html"
+	             data-ar-href="/comparisons/government-vs-private-school-gulf.html">
+	            <div class="dc-item-visual">
+	              <div class="dc-item-split">
+	                <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=240&h=240&q=85" alt="Public School" width="120" height="120" loading="lazy" fetchpriority="high">
+	                <span class="dc-vs">VS</span>
+	                <img src="https://images.unsplash.com/photo-1526243741027-444d633d7365?auto=format&fit=crop&w=240&h=240&q=85" alt="Private School" width="120" height="120" loading="lazy" fetchpriority="high">
+	              </div>
+	            </div>
+	            <div class="dc-item-text">
+	              <span class="dc-item-cat"><span class="en">Education</span><span class="ar">تعليم</span></span>
+	              <span class="dc-item-title"><span class="en">Government vs Private Schools in the Gulf: Which Is Better?</span><span class="ar">المدرسة الحكومية أم الخاصة في الخليج: أيهما أفضل؟</span></span>
+	              <span class="dc-item-byline">
+	                <span class="dc-item-author"><span class="en">By Dot4Life Team</span><span class="ar">كتب بواسطة فريق دوت فور لايف</span></span>
+	                <span class="dc-item-dot">·</span>
+	                <span class="dc-item-time"><span class="en">7 min read</span><span class="ar">7 دقائق قراءة</span></span>
+	              </span>
+	            </div>
+	          </a>
 
         <!-- View all link -->
         <a href="/blog.html" class="dc-view-all">
@@ -535,35 +566,52 @@
             <!-- ─── RIGHT COLUMN: Tool cards (420×240 horizontal) ─── -->
       <aside class="dc-side">
 
-        <a href="/tools/pregnancy-calculator.html" class="dc-side-ad">
+        <a href="/tools/pregnancy-calculator.html" class="dc-side-ad dc-side-ad--pregnancy"
           <div class="dc-side-ad-img">
             <img src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?auto=format&fit=crop&w=400&h=400&q=85" alt="Ultrasound scan" width="400" height="400" loading="lazy" onerror="this.parentElement.style.background='#e8e2d8'" fetchpriority="high">
           </div>
           <div class="dc-side-ad-body">
+            <span class="dc-side-ad-pill"><span class="en">Health</span><span class="ar">صحة</span></span>
             <div class="dc-side-ad-title"><span class="en">Pregnancy &amp; Birth</span><span class="ar">الحمل والولادة</span></div>
             <div class="dc-side-ad-desc"><span class="en">Track pregnancy week by week with due date calculator and expert guides.</span><span class="ar">تتبعي حملك أسبوعاً بأسبوع مع حاسبة موعد الولادة وأدلة الخبراء.</span></div>
             <span class="dc-side-ad-cta"><span class="en">Start tracking</span><span class="ar">ابدئي المتابعة</span></span>
           </div>
         </a>
 
-        <a href="/travel.html" class="dc-side-ad">
+        <a href="/travel.html" class="dc-side-ad dc-side-ad--tourism"
           <div class="dc-side-ad-img">
             <img src="https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?auto=format&fit=crop&w=400&h=400&q=85" alt="Makkah" width="400" height="400" loading="lazy" onerror="this.parentElement.style.background='#e8e2d8'" fetchpriority="high">
           </div>
           <div class="dc-side-ad-body">
+            <span class="dc-side-ad-pill"><span class="en">Travel</span><span class="ar">سفر</span></span>
             <div class="dc-side-ad-title"><span class="en">Religious Tourism</span><span class="ar">السياحة الدينية</span></div>
             <div class="dc-side-ad-desc"><span class="en">Plan your Umrah journey to Makkah &amp; Madinah with guides and hotel comparisons.</span><span class="ar">خطط لرحلة عمرتك إلى مكة والمدينة مع أدلة شاملة ومقارنات فنادق.</span></div>
             <span class="dc-side-ad-cta"><span class="en">Plan journey</span><span class="ar">خطط رحلتك</span></span>
           </div>
         </a>
 
-        <a href="/tools/mortgage-calculator.html" class="dc-side-ad">
+        <a href="/tools/mortgage-calculator.html" class="dc-side-ad dc-side-ad--realestate"
           <div class="dc-side-ad-img">
             <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=400&h=400&q=85" alt="Real Estate" width="400" height="400" loading="lazy" onerror="this.parentElement.style.background='#e8e2d8'" fetchpriority="high">
           </div>
           <div class="dc-side-ad-body">
+            <span class="dc-side-ad-pill"><span class="en">Real Estate</span><span class="ar">عقار</span></span>
             <div class="dc-side-ad-title"><span class="en">Real Estate Tools</span><span class="ar">أدوات العقار</span></div>
             <div class="dc-side-ad-desc"><span class="en">Compare mortgages, calculate affordability, and make smarter property decisions.</span><span class="ar">قارن التمويل العقاري، احسب القدرة الشرائية، واتخذ قرارات عقارية ذكية.</span></div>
+            <span class="dc-side-ad-cta"><span class="en">Explore tools</span><span class="ar">استعرض الأدوات</span></span>
+          </div>
+        </a>
+
+        <a href="/finance.html" class="dc-side-ad dc-side-ad--finance"
+           data-en-href="/finance.html"
+           data-ar-href="/finance.html">
+          <div class="dc-side-ad-img">
+            <img src="https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?auto=format&fit=crop&w=400&h=400&q=85" alt="Finance" width="400" height="400" loading="lazy" fetchpriority="high">
+          </div>
+          <div class="dc-side-ad-body">
+            <span class="dc-side-ad-pill"><span class="en">Finance</span><span class="ar">المالية</span></span>
+            <div class="dc-side-ad-title"><span class="en">Finance &amp; Wealth</span><span class="ar">المالية والثروة</span></div>
+            <div class="dc-side-ad-desc"><span class="en">Calculate Zakat, compare investments, and build family wealth with smart financial tools.</span><span class="ar">احسب الزكاة، قارن الاستثمارات، وابنِ ثروة أسرتك بأدوات مالية ذكية.</span></div>
             <span class="dc-side-ad-cta"><span class="en">Explore tools</span><span class="ar">استعرض الأدوات</span></span>
           </div>
         </a>
@@ -1821,6 +1869,6 @@
   word_count: 3623
   canonical: https://www.dotforlife.com/index.html
 -->
-  <script src="/scripts/feed.js?v=20260608f" defer></script>
+  <script src="/scripts/feed.js?v=20260608g" defer></script>
 </body>
 </html>
