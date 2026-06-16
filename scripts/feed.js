@@ -1,7 +1,9 @@
 /* ═════════════════════════════════════════════════════
    feed.js — Universal Article Feed
-   Reads /articles.json and renders latest articles
-   on index.html + section pages + blog.html
+   Reads /articles.json and renders:
+   · Homepage: 3 section feeds (قصص/مقارنات/السلام) + general latest
+   · Section pages: category-filtered cards
+   · Blog + Archive: full chronological list
    Auto-updates: any new line in articles.json shows instantly
    ═════════════════════════════════════════════════════ */
 
@@ -13,6 +15,7 @@
     containerSelector: '#latest-articles .hl-article-grid',
     maxItems: 6,
     blogListMax: 50,
+    sectionFeedMax: 3,
     cacheKey: 'dfl-feed-cache',
     cacheTTL: 600000
   };
@@ -20,6 +23,8 @@
   var articles = [];
   var isAr = document.documentElement.getAttribute('data-lang') === 'ar';
   var currentPage = window.location.pathname;
+
+  /* ═══ Page Type ═══ */
 
   function getPageType() {
     var page = currentPage.replace(/\/$/, '');
@@ -37,6 +42,8 @@
     if (page.endsWith('archive.html')) return 'archive';
     return 'other';
   }
+
+  /* ═══ Data Fetching (XHR + localStorage cache 10 min) ═══ */
 
   function fetchArticles(callback) {
     try {
@@ -80,6 +87,9 @@
     xhr.send();
   }
 
+  /* ═══ Article Filtering ═══ */
+
+  /** Filter by page type (category-based for section pages) */
   function getFilteredArticles(pageType) {
     if (pageType === 'blog' || pageType === 'archive') {
       return articles.slice().sort(function(a, b) {
@@ -108,12 +118,21 @@
     return filtered;
   }
 
+  /** Filter articles by `section` field for homepage section feeds */
+  function getSectionArticles(sectionName) {
+    return articles
+      .filter(function(a) { return a.section === sectionName; })
+      .sort(function(a, b) { return new Date(b.date) - new Date(a.date); });
+  }
+
+  /* ═══ HTML Builders ═══ */
+
   function buildCardHTML(a) {
     var title = isAr && a.title_ar ? a.title_ar : a.title_en;
     var excerpt = isAr && a.excerpt_ar ? a.excerpt_ar : a.excerpt_en;
     var url = a.url || '#';
     var section = isAr && a.section_ar ? a.section_ar : a.section;
-    var img = a.img || '/health-hero.webp';
+    var img = a.img || '/assets/images/hero.webp';
 
     return '<a href="' + url + '" class="hl-art-card">' +
       '<img class="hl-art-card-img" src="' + img + '" alt="" width="600" height="340" loading="lazy">' +
@@ -129,7 +148,7 @@
     var title = isAr && a.title_ar ? a.title_ar : a.title_en;
     var url = a.url || '#';
     var section = isAr && a.section_ar ? a.section_ar : a.section;
-    var img = a.img || '/health-hero.webp';
+    var img = a.img || '/assets/images/hero.webp';
 
     return '<a href="' + url + '" class="blog-list-item">' +
       '<span class="blog-list-img" style="background-image:url(' + img + ')"></span>' +
@@ -139,6 +158,8 @@
       '<span class="blog-list-meta">' + fmtDate(a.date) + '</span>' +
       '</span></a>';
   }
+
+  /* ═══ Utilities ═══ */
 
   function esc(s) {
     if (!s) return '';
@@ -155,10 +176,41 @@
     });
   }
 
+  /* ═══ Homepage Section Feeds ═══
+     Renders each [data-feed-section] block with its latest articles
+     (featured-stories · comparisons · peace-capsules) */
+
+  function renderSectionFeeds() {
+    var containers = document.querySelectorAll('[data-feed-section]');
+    if (!containers.length) return;
+
+    for (var j = 0; j < containers.length; j++) {
+      var section = containers[j].getAttribute('data-feed-section');
+      if (!section) continue;
+      var sectionArticles = getSectionArticles(section);
+      var grid = containers[j].querySelector('.hl-feed-grid');
+      if (!grid) continue;
+      var html = '';
+      var limit = Math.min(sectionArticles.length, CONFIG.sectionFeedMax);
+      for (var i = 0; i < limit; i++) {
+        html += buildCardHTML(sectionArticles[i]);
+      }
+      grid.innerHTML = html;
+    }
+  }
+
+  /* ═══ Main Render ═══ */
+
   function render() {
     var pageType = getPageType();
     var filtered = getFilteredArticles(pageType);
 
+    // Homepage → render 3 section feeds above general latest
+    if (pageType === 'home') {
+      renderSectionFeeds();
+    }
+
+    // General latest-articles grid (homepage + all section pages)
     var grid = document.querySelector(CONFIG.containerSelector);
     if (grid && pageType !== 'blog' && pageType !== 'archive') {
       var html = '';
@@ -168,6 +220,7 @@
       grid.innerHTML = html;
     }
 
+    // Blog + Archive full list
     if (pageType === 'blog' || pageType === 'archive') {
       var list = document.querySelector('#blog-list') || document.querySelector('#archive-list');
       if (list) {
@@ -182,9 +235,12 @@
     }
   }
 
+  /* ═══ Bootstrap ═══ */
+
   if (document.querySelector(CONFIG.containerSelector) ||
       document.querySelector('#blog-list') ||
-      document.querySelector('#archive-list')) {
+      document.querySelector('#archive-list') ||
+      document.querySelector('[data-feed-section]')) {
     fetchArticles(render);
   }
 
