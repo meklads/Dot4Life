@@ -10,7 +10,7 @@
 (function() {
   'use strict';
 
-  var FEED_VERSION = 4;  // bump to invalidate all caches on deploy
+  var FEED_VERSION = 5;  // v5: unified data-feed-section slot rendering
 
   var CONFIG = {
     jsonUrl: '/articles.json',
@@ -18,7 +18,7 @@
     maxItems: 6,
     blogListMax: 50,
     sectionFeedMax: 3,
-    cacheKey: 'dfl-feed-cache-v' + FEED_VERSION,
+    cacheKey: 'dfl-cache-v' + FEED_VERSION,
     cacheTTL: 600000
   };
 
@@ -30,6 +30,8 @@
   try { localStorage.removeItem('dfl-feed-cache'); } catch(e){}
   try { localStorage.removeItem('dfl-feed-cache-v1'); } catch(e){}
   try { localStorage.removeItem('dfl-feed-cache-v2'); } catch(e){}
+  try { localStorage.removeItem('dfl-feed-cache-v3'); } catch(e){}
+  try { localStorage.removeItem('dfl-feed-cache-v4'); } catch(e){}
 
   /* ═══ Page Type ═══ */
 
@@ -200,154 +202,138 @@
     });
   }
 
-  /* ═══ Homepage: Featured Card ═══
-     Renders the latest featured-stories article into [data-feed-featured] */
-  function renderFeatured() {
-    var container = document.querySelector('[data-feed-featured]');
-    if (!container) return;
-    var stories = getSectionArticles('featured-stories');
-    if (!stories.length) return;
-    var a = stories[0];
+  /* ═══ Unified Section Slot Render ═══
+     Renders each [data-feed-section] container based on its data-role:
+     - hero:     Latest article[0] into the featured card
+     - list:     Articles[1..N] into list items (skip article[0] for hero)
+     - default:  Articles[0..N-1] into grid cards
+     Injects content into EXISTING child elements (static fallback preserved).
+     Sorted by date descending.  ═══ */
+
+  function renderHeroSlot(container, a) {
     var title_en = a.title_en || '';
     var title_ar = a.title_ar || title_en;
     var sect_en = a.section || 'Featured';
     var sect_ar = a.section_ar || sect_en;
     var href = isAr && a.url ? a.url : (a.url_en || a.url || '#');
     var img = a.img || '';
-    container.innerHTML =
-      '<div class="sl-featured-img"><div class="img-ph">' +
-        '<img src="' + esc(img) + '" width="600" height="400" alt="" loading="lazy" fetchpriority="high">' +
-      '</div></div>' +
-      '<div class="sl-featured-body">' +
-        '<div class="sl-featured-kicker"><span class="en">' + esc(sect_en) + '</span><span class="ar">' + esc(sect_ar) + '</span></div>' +
-        '<div class="sl-featured-title"><span class="en">' + esc(title_en) + '</span><span class="ar">' + esc(title_ar) + '</span></div>' +
-        '<div class="sl-featured-byline"><span class="en">' + esc(sect_en) + ' · Dot4Life</span><span class="ar">' + esc(sect_ar) + ' · دوت فور لايف</span></div>' +
-      '</div>';
+
+    var imgEl = container.querySelector('.sl-featured-img img');
+    if (imgEl && img) { imgEl.src = img; imgEl.setAttribute('src', img); }
+
+    var kickerEn = container.querySelector('.sl-featured-kicker .en');
+    var kickerAr = container.querySelector('.sl-featured-kicker .ar');
+    if (kickerEn) kickerEn.textContent = sect_en;
+    if (kickerAr) kickerAr.textContent = sect_ar;
+
+    var titleElEn = container.querySelector('.sl-featured-title .en');
+    var titleElAr = container.querySelector('.sl-featured-title .ar');
+    if (titleElEn) titleElEn.textContent = title_en;
+    if (titleElAr) titleElAr.textContent = title_ar;
+
+    var bylineEn = container.querySelector('.sl-featured-byline .en');
+    var bylineAr = container.querySelector('.sl-featured-byline .ar');
+    if (bylineEn) bylineEn.textContent = (a.section || 'Family') + ' · Dot4Life';
+    if (bylineAr) bylineAr.textContent = (a.section_ar || 'العائلة') + ' · دوت فور لايف';
+
+    container.href = href;
     container.setAttribute('data-en-href', a.url_en || a.url || '#');
     container.setAttribute('data-ar-href', a.url || '#');
-    container.href = href;
-    /* Also update the language-switching data on the parent if it exists separately */
-    var parent = container.parentElement;
-    if (parent && parent.hasAttribute && parent.hasAttribute('data-en-href')) {
-      parent.setAttribute('data-en-href', a.url_en || a.url || '#');
-      parent.setAttribute('data-ar-href', a.url || '#');
-    }
   }
 
-  /* ═══ Homepage: Latest-List ═══
-     Renders the 5 most recent articles into [data-feed-latest] */
-  function renderLatestList() {
-    var list = document.querySelector('[data-feed-latest]');
-    if (!list) return;
-    var sorted = articles.slice().sort(function(a, b) {
-      return new Date(b.date) - new Date(a.date);
-    });
-    var items = sorted.slice(0, 5);
-    if (!items.length) return;  // keep hardcoded fallback
-    var html = '';
-    for (var i = 0; i < items.length; i++) {
+  function renderListSlot(container, items) {
+    var children = container.children;
+    if (!children.length) return;
+    for (var i = 0; i < items.length && i < children.length; i++) {
+      var el = children[i];
       var a = items[i];
-      var title_en = a.title_en || '';
-      var title_ar = a.title_ar || title_en;
       var url = a.url || '#';
       var url_en = a.url_en || a.url || '#';
       var href = isAr ? url : url_en;
       var byline_ar = (a.section_ar || a.category || '') + ' · دوت فور لايف';
       var byline_en = (a.section || a.category || '') + ' · Dot4Life';
-      html += '<a href="' + esc(href) + '" class="sl-latest-item" ' +
-               'data-en-href="' + esc(url_en) + '" ' +
-               'data-ar-href="' + esc(url) + '">' +
-        '<span class="sl-latest-item-title">' +
-          '<span class="en">' + esc(title_en) + '</span>' +
-          '<span class="ar">' + esc(title_ar) + '</span>' +
-        '</span>' +
-        '<span class="sl-latest-item-byline">' +
-          '<span class="en">' + esc(byline_en) + '</span>' +
-          '<span class="ar">' + esc(byline_ar) + '</span>' +
-        '</span>' +
-      '</a>';
+
+      var titleEn = el.querySelector('.sl-latest-item-title .en');
+      var titleAr = el.querySelector('.sl-latest-item-title .ar');
+      if (titleEn) titleEn.textContent = a.title_en || '';
+      if (titleAr) titleAr.textContent = a.title_ar || a.title_en || '';
+
+      var blEn = el.querySelector('.sl-latest-item-byline .en');
+      var blAr = el.querySelector('.sl-latest-item-byline .ar');
+      if (blEn) blEn.textContent = byline_en;
+      if (blAr) blAr.textContent = byline_ar;
+
+      el.href = href;
+      el.setAttribute('data-en-href', url_en);
+      el.setAttribute('data-ar-href', url);
     }
-    list.innerHTML = html;
   }
 
-  /* ═══ Homepage: Comparisons ═══
-     Renders comparison articles into [data-feed-comparisons] */
-  function renderComparisons() {
-    var list = document.querySelector('[data-feed-comparisons]');
-    if (!list) return;
-    var comparisons = getSectionArticles('comparisons');
-    if (!comparisons.length) return;
-    var html = '';
-    for (var i = 0; i < comparisons.length; i++) {
-      var a = comparisons[i];
+  function renderGridSlot(container, items) {
+    var children = container.children;
+    if (!children.length) return;
+    for (var i = 0; i < items.length && i < children.length; i++) {
+      var el = children[i];
+      var a = items[i];
       var title_en = a.title_en || '';
       var title_ar = a.title_ar || title_en;
       var cat_en = a.section || a.category || '';
-      var cat_ar = a.section_ar || a.category || cat_en;
+      var cat_ar = a.section_ar || a.section || cat_en;
       var url = a.url || '#';
       var url_en = a.url_en || a.url || '#';
       var href = isAr ? url : url_en;
       var img = a.img || '';
-      html += '<a href="' + esc(href) + '" class="dc-item reveal" ' +
-               'data-en-href="' + esc(url_en) + '" ' +
-               'data-ar-href="' + esc(url) + '">' +
-        '<div class="dc-item-visual">' +
-          '<div class="dc-item-single">' +
-            '<img src="' + esc(img) + '" alt="" width="120" height="120" onerror="this.style.display=\'none\'" fetchpriority="high">' +
-          '</div>' +
-        '</div>' +
-        '<div class="dc-item-text">' +
-          '<span class="dc-item-cat"><span class="en">' + esc(cat_en) + '</span><span class="ar">' + esc(cat_ar) + '</span></span>' +
-          '<span class="dc-item-title"><span class="en">' + esc(title_en) + '</span><span class="ar">' + esc(title_ar) + '</span></span>' +
-          '<span class="dc-item-byline">' +
-            '<span class="dc-item-author"><span class="en">By Dot4Life Team</span><span class="ar">كتب بواسطة فريق دوت فور لايف</span></span>' +
-            '<span class="dc-item-dot">·</span>' +
-            '<span class="dc-item-time"><span class="en">Article</span><span class="ar">مقال</span></span>' +
-          '</span>' +
-        '</div>' +
-      '</a>';
+
+      var imgEl = el.querySelector('.dc-item-single img') || el.querySelector('.dc-item-split img');
+      if (imgEl && img) { imgEl.src = img; imgEl.setAttribute('src', img); }
+
+      var catElEn = el.querySelector('.dc-item-cat .en');
+      var catElAr = el.querySelector('.dc-item-cat .ar');
+      if (catElEn) catElEn.textContent = cat_en;
+      if (catElAr) catElAr.textContent = cat_ar;
+
+      var titleElEn = el.querySelector('.dc-item-title .en');
+      var titleElAr = el.querySelector('.dc-item-title .ar');
+      if (titleElEn) titleElEn.textContent = title_en;
+      if (titleElAr) titleElAr.textContent = title_ar;
+
+      el.href = href;
+      el.setAttribute('data-en-href', url_en);
+      el.setAttribute('data-ar-href', url);
     }
-    list.innerHTML = html;
   }
 
-  /* ═══ Homepage Section Feeds ═══
-     Renders each [data-feed-section] block with its latest articles
-     (featured-stories · comparisons · peace-capsules) */
-
-  function renderSectionFeeds() {
+  function renderSectionSlots() {
     var containers = document.querySelectorAll('[data-feed-section]');
     if (!containers.length) {
-      console.log('feed.js v2: no [data-feed-section] found');
+      console.log('feed.js: no [data-feed-section] found');
       return;
     }
 
-    var renderedCount = 0;
     for (var j = 0; j < containers.length; j++) {
-      var section = containers[j].getAttribute('data-feed-section');
+      var container = containers[j];
+      var section = container.getAttribute('data-feed-section');
+      var role = container.getAttribute('data-role');
+      var count = parseInt(container.getAttribute('data-count'), 10) || 1;
       if (!section) continue;
-      var sectionArticles = getSectionArticles(section);
-      var grid = containers[j].querySelector('.hl-feed-grid');
-      if (!grid) {
-        console.log('feed.js v2: no .hl-feed-grid inside', section);
-        continue;
-      }
-      var html = '';
-      var limit = Math.min(sectionArticles.length, CONFIG.sectionFeedMax);
-      for (var i = 0; i < limit; i++) {
-        html += buildCardHTML(sectionArticles[i]);
-      }
-      grid.innerHTML = html;
-      renderedCount++;
-      console.log('feed.js v2: rendered ' + limit + ' cards to [' + section + ']');
-    }
 
-    /* Verify rendering actually happened */
-    if (renderedCount > 0) {
-      var totalCards = document.querySelectorAll('[data-feed-section] .hl-art-card').length;
-      console.log('feed.js v2: section feed verification — ' + totalCards + ' total cards in ' + renderedCount + ' sections');
-      if (totalCards === 0) {
-        console.warn('feed.js v2: section feeds look empty despite render attempt — triggering re-render');
-        setTimeout(function(){ renderSectionFeeds(); }, 500);
+      var sectionArticles = getSectionArticles(section);
+      if (!sectionArticles.length) continue;
+
+      if (role === 'hero') {
+        renderHeroSlot(container, sectionArticles[0]);
+      } else if (role === 'list') {
+        var listItems = [];
+        for (var k = 1; k <= count && k < sectionArticles.length; k++) {
+          listItems.push(sectionArticles[k]);
+        }
+        renderListSlot(container, listItems);
+      } else {
+        var gridItems = [];
+        for (var m = 0; m < count && m < sectionArticles.length; m++) {
+          gridItems.push(sectionArticles[m]);
+        }
+        renderGridSlot(container, gridItems);
       }
     }
   }
@@ -359,12 +345,9 @@
     var filtered = getFilteredArticles(pageType);
     console.log('feed.js v2: render() start | pageType=' + pageType + ' | articles=' + articles.length + ' | filtered=' + filtered.length);
 
-    // Homepage → render dynamic sections
+    // Homepage → render dynamic section slots (hero · list · grid)
     if (pageType === 'home') {
-      renderSectionFeeds();
-      renderFeatured();
-      renderLatestList();
-      renderComparisons();
+      renderSectionSlots();
       // Trigger language-switching script to pick up new [data-en-href] elements
       try { document.dispatchEvent(new Event('dfl:langchange')); } catch(e) {}
     }
@@ -406,27 +389,21 @@
     var hasBlog = !!document.querySelector('#blog-list');
     var hasArchive = !!document.querySelector('#archive-list');
     var hasSectionFeeds = !!document.querySelector('[data-feed-section]');
-    var hasFeatured = !!document.querySelector('[data-feed-featured]');
-    var hasLatestList = !!document.querySelector('[data-feed-latest]');
-    var hasComparisons = !!document.querySelector('[data-feed-comparisons]');
-    console.log('feed.js v2: bootstrap check | grid=' + hasGrid + ' blog=' + hasBlog + ' archive=' + hasArchive + ' sections=' + hasSectionFeeds + ' featured=' + hasFeatured + ' latestList=' + hasLatestList + ' comps=' + hasComparisons);
+    console.log('feed.js: bootstrap | grid=' + hasGrid + ' blog=' + hasBlog + ' archive=' + hasArchive + ' sections=' + hasSectionFeeds);
 
-    if (hasGrid || hasBlog || hasArchive || hasSectionFeeds || hasFeatured || hasLatestList || hasComparisons) {
-      console.log('feed.js v2: bootstrap OK → fetching articles');
+    if (hasGrid || hasBlog || hasArchive || hasSectionFeeds) {
+      console.log('feed.js: bootstrap OK → fetching');
       fetchArticles(render);
     } else {
-      console.warn('feed.js v2: no containers found on this page — retrying in 1s');
+      console.warn('feed.js: no containers — retrying in 1s');
       setTimeout(function() {
         var retryGrid = !!document.querySelector(CONFIG.containerSelector);
         var retrySec = !!document.querySelector('[data-feed-section]');
-        var retryFeat = !!document.querySelector('[data-feed-featured]');
-        var retryList = !!document.querySelector('[data-feed-latest]');
-        var retryComp = !!document.querySelector('[data-feed-comparisons]');
-        if (retryGrid || retrySec || retryFeat || retryList || retryComp) {
-          console.log('feed.js v2: containers found on retry → fetching');
+        if (retryGrid || retrySec) {
+          console.log('feed.js: containers found on retry → fetching');
           fetchArticles(render);
         } else {
-          console.warn('feed.js v2: still no containers after retry');
+          console.warn('feed.js: still no containers after retry');
         }
       }, 1000);
     }
