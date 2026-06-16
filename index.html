@@ -165,18 +165,13 @@
   min-height: 340px;
   overflow: hidden;
   position: relative;
+  order: 2;
 }
 .dc-side-banner-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-}
-.dc-side-banner-img::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to right, transparent 30%, rgba(250,245,240,.15));
 }
 .dc-side-banner-body {
   flex: 1;
@@ -185,6 +180,7 @@
   flex-direction: column;
   justify-content: center;
   position: relative;
+  order: 1;
 }
 .dc-side-banner-pill {
   display: inline-block;
@@ -226,11 +222,14 @@
   transition: gap .25s;
 }
 .dc-side-banner:hover .dc-side-banner-cta { gap: .6rem; }
+[data-lang="ar"] .dc-side-banner {
+  flex-direction: row-reverse;
+}
 @media(max-width:768px){
   .dc-side-banner{flex-direction:column; min-height:auto}
-  .dc-side-banner-img{flex:none; width:100%; min-height:200px}
-  .dc-side-banner-img::after{background:linear-gradient(to bottom,transparent 40%,rgba(250,245,240,.1))}
-  .dc-side-banner-body{padding:1.2rem 1.4rem}
+  .dc-side-banner-img{flex:none; width:100%; min-height:200px; order:0}
+  .dc-side-banner-body{order:0; padding:1.2rem 1.4rem}
+  [data-lang="ar"] .dc-side-banner{flex-direction:column}
 }
 @media(max-width:480px){
   .dc-side-banner{border-radius:18px}
@@ -667,17 +666,17 @@
             <!-- ─── RIGHT COLUMN: Tool cards (420×240 horizontal) ─── -->
       <aside class="dc-side">
 
-        <a href="/pregnancy-journey.html" class="dc-side-banner dc-side-banner--pregnancy"
+                  <a href="/pregnancy-journey.html" class="dc-side-banner dc-side-banner--pregnancy"
            data-en-href="/pregnancy-journey.html"
            data-ar-href="/pregnancy-journey.html">
-          <div class="dc-side-banner-img">
-            <img src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?auto=format&fit=crop&w=600&h=600&q=85" alt="Pregnancy journey" width="600" height="600" loading="lazy" fetchpriority="high">
-          </div>
           <div class="dc-side-banner-body">
             <span class="dc-side-banner-pill"><span class="en">Pregnancy</span><span class="ar">الحمل</span></span>
             <div class="dc-side-banner-title"><span class="en">Pregnancy Journey, Week by Week</span><span class="ar">رحلة الحمل، أسبوعاً بأسبوع</span></div>
-            <div class="dc-side-banner-desc"><span class="en">Follow your baby's growth with our due date calculator and expert guides — calmly, confidently.</span><span class="ar">تابعي نموّ طفلك بحاسبة موعد الولادة وأدلة الخبراء — بهدوء وثقة.</span></div>
+            <div class="dc-side-banner-desc"><span class="en">Follow your baby's growth with our due-date calculator and expert guides — calmly and confidently.</span><span class="ar">تابعي نموّ طفلك بحاسبة موعد الولادة وأدلة الخبراء — بهدوء وثقة.</span></div>
             <span class="dc-side-banner-cta"><span class="en">Start tracking →</span><span class="ar">← ابدئي المتابعة</span></span>
+          </div>
+          <div class="dc-side-banner-img">
+            <img src="/assets/images/banner-pregnancy.webp" alt="Pregnancy journey" width="2048" height="2048" loading="lazy" fetchpriority="high">
           </div>
         </a>
 
@@ -1972,6 +1971,6 @@
   word_count: 3623
   canonical: https://www.dotforlife.com/index.html
 -->
-  <script src="/scripts/feed.js?v=20260608h" defer></script>
+  <script src="/scripts/feed.js?v=20260608i" defer></script>
 </body>
 </html>
