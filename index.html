@@ -147,7 +147,7 @@
   text-decoration: none;
   border-radius: 22px;
   overflow: hidden;
-  min-height: 400px;
+  min-height: 340px;
   box-shadow: 0 2px 4px rgba(5,66,65,.04), 0 12px 32px rgba(5,66,65,.08);
   transition: transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s ease;
   border: none;
@@ -161,8 +161,8 @@
   border-top: 3px solid #d48a8a;
 }
 .dc-side-banner-img {
-  flex: 0 0 45%;
-  min-height: 400px;
+  flex: 0 0 38%;
+  min-height: 340px;
   overflow: hidden;
   position: relative;
   order: 2;
@@ -175,7 +175,7 @@
 }
 .dc-side-banner-body {
   flex: 1;
-  padding: 1.6rem 1.6rem;
+  padding: 1.2rem 1.2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -197,7 +197,7 @@
 }
 [data-lang="ar"] .dc-side-banner-pill { font-family: var(--font-ar); }
 .dc-side-banner-title {
-  font-size: 1.05rem;
+  font-size: .95rem;
   font-weight: 800;
   color: #1A1410;
   margin-bottom: .5rem;
@@ -205,7 +205,7 @@
 }
 [data-lang="ar"] .dc-side-banner-title { font-family: var(--font-ar); }
 .dc-side-banner-desc {
-  font-size: .78rem;
+  font-size: .72rem;
   color: #5C534A;
   line-height: 1.6;
   margin-bottom: .8rem;
@@ -566,7 +566,51 @@
     <!-- main + sidebar body -->
     <div class="dc-body">
 
-      <!-- ─── LEFT COLUMN: article list ─── -->
+      <!-- ─── LEFT COLUMN: ads/banner ─── -->
+      <aside class="dc-side">
+
+                  <a href="/pregnancy-journey.html" class="dc-side-banner dc-side-banner--pregnancy"
+           data-en-href="/pregnancy-journey.html"
+           data-ar-href="/pregnancy-journey.html">
+          <div class="dc-side-banner-body">
+            <span class="dc-side-banner-pill"><span class="en">Pregnancy</span><span class="ar">الحمل</span></span>
+            <div class="dc-side-banner-title"><span class="en">Pregnancy Journey, Week by Week</span><span class="ar">رحلة الحمل، أسبوعاً بأسبوع</span></div>
+            <div class="dc-side-banner-desc"><span class="en">Follow your baby's growth with our due-date calculator and expert guides — calmly and confidently.</span><span class="ar">تابعي نموّ طفلك بحاسبة موعد الولادة وأدلة الخبراء — بهدوء وثقة.</span></div>
+            <span class="dc-side-banner-cta"><span class="en">Start tracking →</span><span class="ar">← ابدئي المتابعة</span></span>
+          </div>
+          <div class="dc-side-banner-img">
+            <img src="/assets/images/banner-pregnancy.webp" alt="Pregnancy journey" width="2048" height="2048" loading="lazy" fetchpriority="high">
+          </div>
+        </a>
+
+        <a href="/travel.html" class="dc-side-ad dc-side-ad--tourism">
+          <div class="dc-side-ad-img">
+            <img src="https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?auto=format&fit=crop&w=400&h=400&q=85" alt="Makkah" width="400" height="400" loading="lazy" onerror="this.parentElement.style.background='#e8e2d8'" fetchpriority="high">
+          </div>
+          <div class="dc-side-ad-body">
+            <span class="dc-side-ad-pill"><span class="en">Travel</span><span class="ar">سفر</span></span>
+            <div class="dc-side-ad-title"><span class="en">Religious Tourism</span><span class="ar">السياحة الدينية</span></div>
+            <div class="dc-side-ad-desc"><span class="en">Plan your Umrah journey to Makkah &amp; Madinah with guides and hotel comparisons.</span><span class="ar">خطط لرحلة عمرتك إلى مكة والمدينة مع أدلة شاملة ومقارنات فنادق.</span></div>
+            <span class="dc-side-ad-cta"><span class="en">Plan journey</span><span class="ar">خطط رحلتك</span></span>
+          </div>
+        </a>
+
+        <a href="/tools/mortgage-calculator.html" class="dc-side-ad dc-side-ad--realestate">
+          <div class="dc-side-ad-img">
+            <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=400&h=400&q=85" alt="Real Estate" width="400" height="400" loading="lazy" onerror="this.parentElement.style.background='#e8e2d8'" fetchpriority="high">
+          </div>
+          <div class="dc-side-ad-body">
+            <span class="dc-side-ad-pill"><span class="en">Real Estate</span><span class="ar">عقار</span></span>
+            <div class="dc-side-ad-title"><span class="en">Real Estate Tools</span><span class="ar">أدوات العقار</span></div>
+            <div class="dc-side-ad-desc"><span class="en">Compare mortgages, calculate affordability, and make smarter property decisions.</span><span class="ar">قارن التمويل العقاري، احسب القدرة الشرائية، واتخذ قرارات عقارية ذكية.</span></div>
+            <span class="dc-side-ad-cta"><span class="en">Explore tools</span><span class="ar">استعرض الأدوات</span></span>
+          </div>
+        </a>
+
+        </aside><!-- /dc-side -->
+
+            
+      <!-- ─── RIGHT COLUMN: Comparisons ─── -->
       <div class="dc-main">
 
         	        <div class="dc-list" data-feed-section="comparisons" data-count="4">
@@ -662,49 +706,6 @@
         </a>
 
       </div><!-- /dc-main -->
-
-            <!-- ─── RIGHT COLUMN: Tool cards (420×240 horizontal) ─── -->
-      <aside class="dc-side">
-
-                  <a href="/pregnancy-journey.html" class="dc-side-banner dc-side-banner--pregnancy"
-           data-en-href="/pregnancy-journey.html"
-           data-ar-href="/pregnancy-journey.html">
-          <div class="dc-side-banner-body">
-            <span class="dc-side-banner-pill"><span class="en">Pregnancy</span><span class="ar">الحمل</span></span>
-            <div class="dc-side-banner-title"><span class="en">Pregnancy Journey, Week by Week</span><span class="ar">رحلة الحمل، أسبوعاً بأسبوع</span></div>
-            <div class="dc-side-banner-desc"><span class="en">Follow your baby's growth with our due-date calculator and expert guides — calmly and confidently.</span><span class="ar">تابعي نموّ طفلك بحاسبة موعد الولادة وأدلة الخبراء — بهدوء وثقة.</span></div>
-            <span class="dc-side-banner-cta"><span class="en">Start tracking →</span><span class="ar">← ابدئي المتابعة</span></span>
-          </div>
-          <div class="dc-side-banner-img">
-            <img src="/assets/images/banner-pregnancy.webp" alt="Pregnancy journey" width="2048" height="2048" loading="lazy" fetchpriority="high">
-          </div>
-        </a>
-
-        <a href="/travel.html" class="dc-side-ad dc-side-ad--tourism">
-          <div class="dc-side-ad-img">
-            <img src="https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?auto=format&fit=crop&w=400&h=400&q=85" alt="Makkah" width="400" height="400" loading="lazy" onerror="this.parentElement.style.background='#e8e2d8'" fetchpriority="high">
-          </div>
-          <div class="dc-side-ad-body">
-            <span class="dc-side-ad-pill"><span class="en">Travel</span><span class="ar">سفر</span></span>
-            <div class="dc-side-ad-title"><span class="en">Religious Tourism</span><span class="ar">السياحة الدينية</span></div>
-            <div class="dc-side-ad-desc"><span class="en">Plan your Umrah journey to Makkah &amp; Madinah with guides and hotel comparisons.</span><span class="ar">خطط لرحلة عمرتك إلى مكة والمدينة مع أدلة شاملة ومقارنات فنادق.</span></div>
-            <span class="dc-side-ad-cta"><span class="en">Plan journey</span><span class="ar">خطط رحلتك</span></span>
-          </div>
-        </a>
-
-        <a href="/tools/mortgage-calculator.html" class="dc-side-ad dc-side-ad--realestate">
-          <div class="dc-side-ad-img">
-            <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=400&h=400&q=85" alt="Real Estate" width="400" height="400" loading="lazy" onerror="this.parentElement.style.background='#e8e2d8'" fetchpriority="high">
-          </div>
-          <div class="dc-side-ad-body">
-            <span class="dc-side-ad-pill"><span class="en">Real Estate</span><span class="ar">عقار</span></span>
-            <div class="dc-side-ad-title"><span class="en">Real Estate Tools</span><span class="ar">أدوات العقار</span></div>
-            <div class="dc-side-ad-desc"><span class="en">Compare mortgages, calculate affordability, and make smarter property decisions.</span><span class="ar">قارن التمويل العقاري، احسب القدرة الشرائية، واتخذ قرارات عقارية ذكية.</span></div>
-            <span class="dc-side-ad-cta"><span class="en">Explore tools</span><span class="ar">استعرض الأدوات</span></span>
-          </div>
-        </a>
-
-        </aside><!-- /dc-side -->
 
     </div><!-- /dc-body -->
   </div><!-- /dc-wrap -->
@@ -1146,9 +1147,6 @@
   </div><!-- /sections-wrap -->
 
 
-
-
-
     <!-- ═══════════════════════════════════════
        LATEST ARTICLES — العام
   ═══════════════════════════════════════ -->
@@ -1236,7 +1234,6 @@
       </div>
     </div>
   </section>
-
 
 
 <!-- ═══════════════════════════════════════
@@ -1957,6 +1954,6 @@
   word_count: 3623
   canonical: https://www.dotforlife.com/index.html
 -->
-  <script src="/scripts/feed.js?v=20260608l" defer></script>
+  <script src="/scripts/feed.js?v=20260608m" defer></script>
 </body>
 </html>

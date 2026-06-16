@@ -1996,15 +1996,20 @@
   text-transform: none;
 }
 .dc-body {
-  display: flex;
+  display: grid;
+  grid-template-columns: 38% 62%;
   gap: 1.5rem;
+  direction: ltr;
+}
+[data-lang="ar"] .dc-body {
+  direction: rtl;
 }
 .dc-main {
-  flex: 1;
   min-width: 0;
+  display: flex;
+  flex-direction: column;
 }
 .dc-side {
-  flex: 0 0 420px;
   display: flex;
   flex-direction: column;
   gap: .85rem;
@@ -2662,7 +2667,7 @@
   .sl-row2 { flex-direction: column; }
   .sl-cards-wrap { grid-template-columns: 1fr 1fr; }
   .sl-picks { flex: none; }
-  .dc-body { flex-direction: column; }
+  .dc-body { grid-template-columns: 1fr; }
   .dc-side { flex: none; }
   .mm-grid { grid-template-columns: 1fr; }
   .mm-content { padding: 1.5rem; }
