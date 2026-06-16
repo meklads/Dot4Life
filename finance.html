@@ -99,7 +99,7 @@
       <li><a href="library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a></li>
     </ul>
     <div class="nav-controls">
-      <button class="nav-btn" id="lang-toggle" aria-label="Switch language"><span class="en">عربي</span><span class="ar">English</span></button>
+      <button class="nav-btn" id="lang-toggle" aria-label="Switch language"><span class="en">English</span><span class="ar">عربي</span></button>
       <button class="nav-btn" id="theme-toggle" aria-label="Toggle theme"><svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
     </div>
   </div>
@@ -164,247 +164,307 @@
       </div>
     </div>
   </section>
+<style>
+/* ═════════════════════════════════════════════════════
+   Finance PAGE — BODY DESIGN SYSTEM
+   Luxurious · Elegant · Brand-Aligned
+   ═════════════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing:border-box }
+#page, .hl-section, .hl-container { overflow-wrap:anywhere; word-wrap:break-word }
+.hl-container { width:100%; max-width:var(--w-xl,1280px); margin:0 auto; padding:0 clamp(1rem,4vw,2.5rem) }
+.hl-section { padding:clamp(2.5rem,5vw,5rem) 0 }
+.hl-section--cream { background:#FAF8F4 }
+[data-theme="dark"] .hl-section--cream { background:var(--card-bg,#1A1E24) }
+.hl-eyebrow { display:flex; align-items:center; gap:.5rem; font-size:.82rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:#054241; margin-bottom:.75rem }
+.hl-eyebrow svg { flex-shrink:0; width:16px; height:16px }
+.hl-h2 { font-family:'Almarai','Cinzel',Georgia,serif; font-size:clamp(1.4rem,3vw,1.9rem); font-weight:800; line-height:1.35; color:var(--text,#1A1E24); margin:0 0 1.2rem; letter-spacing:-.01em }
+[data-lang="ar"] .hl-h2 { letter-spacing:0 }
+.hl-sub { font-size:clamp(.92rem,1.2vw,1.05rem); color:var(--text-2,#5C534A); line-height:1.75; margin:0 0 2.5rem; max-width:640px }
+[data-lang="ar"] .hl-sub { max-width:none }
+.hl-intro-text p { font-size:clamp(.94rem,1.2vw,1.04rem); color:var(--text-2,#5C534A); line-height:1.85; margin:0 }
+[data-lang="ar"] .hl-intro-text p { line-height:1.9 }
+.hl-grid { display:grid; gap:1.25rem; width:100% }
+.hl-grid--tools { grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr)) }
+.hl-grid--guides { grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr)) }
+.hl-grid--topic { grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr)) }
+.hl-card {
+  display:flex; flex-direction:column; border-radius:18px; padding:1.5rem 1.4rem;
+  background:var(--card-bg,#fff); border:1px solid rgba(5,66,65,.08);
+  box-shadow:0 8px 30px rgba(5,66,65,.06);
+  transition:transform .22s cubic-bezier(.22,1,.36,1), box-shadow .22s cubic-bezier(.22,1,.36,1);
+  text-decoration:none; color:inherit; overflow-wrap:anywhere
+}
+.hl-card:hover {
+  transform:translateY(-4px);
+  box-shadow:0 16px 48px rgba(5,66,65,.1);
+}
+.hl-card:focus-visible { outline:2px solid #054241; outline-offset:3px }
+.hl-card--tool { text-decoration:none; color:inherit; cursor:pointer }
+.hl-card-icon {
+  width:44px; height:44px; border-radius:14px; display:flex; align-items:center; justify-content:center;
+  background:rgba(5,66,65,.06); color:var(--hl-accent,#054241); margin-bottom:1rem; flex-shrink:0;
+  transition:background .2s, transform .2s
+}
+.hl-card:hover .hl-card-icon { background:rgba(5,66,65,.1); transform:scale(1.05) }
+.hl-card-icon svg { width:20px; height:20px; stroke:currentColor }
+.hl-card-icon--emoji { font-size:1.3rem }
+.hl-card-title { font-size:.98rem; font-weight:700; line-height:1.45; margin-bottom:.6rem; color:var(--text,#1A1E24) }
+.hl-card-desc { font-size:.84rem; line-height:1.6; color:var(--text-2,#5C534A); margin-bottom:1rem; flex:1 }
+.hl-card-arrow { font-size:.82rem; font-weight:700; color:#054241; margin-top:auto; transition:gap .2s; display:flex; align-items:center; gap:.3rem }
+.hl-card:hover .hl-card-arrow { gap:.6rem }
+[data-lang="ar"] .hl-card-arrow { flex-direction:row-reverse }
+.hl-card--article { background:var(--card-bg,#fff); padding:1.5rem }
+.hl-card--article .hl-card-title { font-size:.95rem; font-weight:700; margin-bottom:.5rem; flex:1 }
+.hl-card--article .hl-card-desc { font-size:.82rem; margin-bottom:.7rem }
+.hl-card--article .hl-card-arrow { font-size:.8rem }
+/* Guide Strip */
+.hl-guide-strip {
+  background:linear-gradient(135deg,rgba(5,66,65,.04),rgba(106,191,184,.08));
+  border-top:1px solid rgba(5,66,65,.06); border-bottom:1px solid rgba(5,66,65,.06);
+  padding:1.2rem 0
+}
+.hl-guide-strip-inner {
+  display:flex; align-items:center; gap:1rem; flex-wrap:wrap;
+  padding:0 clamp(1rem,4vw,2.5rem)
+}
+.hl-guide-strip-icon { width:40px; height:40px; border-radius:12px; display:flex; align-items:center; justify-content:center; background:#054241; color:#fff; flex-shrink:0 }
+.hl-guide-strip-icon svg { width:18px; height:18px }
+.hl-guide-strip-content { flex:1; min-width:0 }
+.hl-guide-strip-label { font-size:.75rem; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:#054241; display:block; margin-bottom:.15rem }
+.hl-guide-strip-title { font-size:.92rem; font-weight:700; color:var(--text,#1A1E24); display:block; line-height:1.4 }
+.hl-guide-strip-link {
+  font-size:.82rem; font-weight:700; color:#054241; text-decoration:none; white-space:nowrap;
+  padding:.6rem 1.2rem; border-radius:999px; border:1.5px solid rgba(5,66,65,.15);
+  transition:background .2s, color .2s
+}
+.hl-guide-strip-link:hover { background:#054241; color:#fff }
+[data-theme="dark"] .hl-guide-strip-link:hover { background:#054241; color:#054241 }
+/* Topic Authority */
+.hl-topic-title { font-size:.95rem; font-weight:700; margin:0 0 1rem; color:var(--text,#1A1E24) }
+.hl-topic-list { list-style:none; padding:0; margin:0 }
+.hl-topic-list li { margin-bottom:.5rem; font-size:.85rem; line-height:1.5 }
+.hl-topic-list a { color:var(--text-2,#5C534A); text-decoration:none; transition:color .2s }
+.hl-topic-list a:hover { color:#054241; font-weight:600 }
+[data-theme="dark"] .hl-topic-list a:hover { color:#054241 }
+.hl-card--topic { padding:1.5rem }
+/* Dark Mode */
+[data-theme="dark"] .hl-card { background:var(--card-bg,#1A1E24); border-color:rgba(106,191,184,.1); box-shadow:0 8px 30px rgba(0,0,0,.2) }
+[data-theme="dark"] .hl-card:hover { box-shadow:0 16px 48px rgba(0,0,0,.3) }
+[data-theme="dark"] .hl-card-icon { background:rgba(106,191,184,.1) }
+[data-theme="dark"] .hl-guide-strip { background:linear-gradient(135deg,rgba(5,66,65,.1),rgba(106,191,184,.05)); border-color:rgba(106,191,184,.1) }
+[data-theme="dark"] .hl-guide-strip-link { border-color:rgba(106,191,184,.2); color:#054241 }
+/* Responsive */
+@media(max-width:640px){
+  .hl-section { padding:clamp(1.8rem,4vw,2.5rem) 0 }
+  .hl-h2 { font-size:1.25rem; margin-bottom:.8rem }
+  .hl-sub { margin-bottom:1.5rem }
+  .hl-grid { gap:1rem }
+  .hl-guide-strip-inner { flex-direction:column; align-items:flex-start }
+  .hl-guide-strip-link { align-self:stretch; text-align:center }
+}
+@media(max-width:480px){
+  .hl-grid--tools { grid-template-columns:1fr }
+  .hl-grid--guides { grid-template-columns:1fr }
+  .hl-grid--topic { grid-template-columns:1fr }
+}
+</style>
+<div id="page">
 
-<div id="sub-nav">
-  <div class="sub-nav-inner">
-    <a href="/tools/monthly-budget.html"><span class="en">Monthly Budget</span><span class="ar">الميزانية الشهرية</span></a>
-    <a href="/tools/mortgage-calculator.html"><span class="en">Mortgage</span><span class="ar">التمويل العقاري</span></a>
-    <a href="/tools/salary-calculator.html"><span class="en">Salary</span><span class="ar">الراتب</span></a>
-    <a href="/tools/savings-goal.html"><span class="en">Savings Goal</span><span class="ar">هدف الادخار</span></a>
-    <a href="/tools/roi-calculator.html"><span class="en">ROI</span><span class="ar">العائد على الاستثمار</span></a>
-    <a href="/tools/currency-converter.html"><span class="en">Currency</span><span class="ar">محول العملات</span></a>
-    <a href="/tools/zakat-calculator.html"><span class="en">Zakat</span><span class="ar">الزكاة</span></a>
-  </div>
-</div>
-
-<section class="tools-section" style="background:var(--section-bg);padding:3rem 0 2rem;">
-  <div class="page-section">
-    <div class="section-eyebrow" style="margin-bottom:.5rem;"><span class="en">Why This Matters</span><span class="ar">لماذا هذا مهم</span></div>
-    <h2 style="font-size:clamp(1.3rem,3vw,1.8rem);font-weight:700;margin:0 0 1rem;font-family:var(--font-serif);color:var(--text);"><span class="en">Financial decisions shape your family's future</span><span class="ar">القرارات المالية تشكل مستقبل أسرتك</span></h2>
-    <p class="en" style="color:var(--text-2);line-height:1.75;max-width:720px;">In GCC countries, household financial planning involves unique factors: the cost of living varies significantly between cities like Riyadh, Dubai, and Kuwait; housing finance through Islamic mortgages is structured differently from conventional loans; and expat families face additional considerations around remittances, end-of-service benefits, and school fees. In practical financial planning, the most common challenge families face is not a lack of income but a lack of structure — knowing where money goes each month and having a system for allocating savings before spending. This section provides tools and guidance for budgeting, mortgage planning, savings goals, salary calculations, and Zakat obligations, all tailored to the Gulf context. Whether you are a Saudi national planning a home purchase, an expat managing cross-border finances, or a young family building your first budget, the resources here are designed for real-world decision-making.</p>
-    <p class="ar" style="color:var(--text-2);line-height:1.75;max-width:720px;">في دول الخليج، التخطيط المالي الأسري يتضمن عوامل فريدة: تكلفة المعيشة تختلف بشكل كبير بين المدن مثل الرياض ودبي والكويت؛ التمويل العقاري الإسلامي يختلف عن القروض التقليدية؛ والعائلات المغتربة تواجه اعتبارات إضافية حول الحوالات المالية ومكافأة نهاية الخدمة والرسوم المدرسية. في التخطيط المالي العملي، التحدي الأكثر شيوعاً الذي تواجهه العائلات ليس نقص الدخل بل نقص التنظيم — معرفة أين تذهب الأموال كل شهر ووجود نظام لتخصيص الادخار قبل الإنفاق. هذا القسم يوفر أدوات وإرشادات للميزانية، تخطيط التمويل العقاري، أهداف الادخار، حسابات الراتب، والزكاة، كلها مصممة للسياق الخليجي. سواء كنت مواطناً سعودياً تخطط لشراء منزل، أو مغترباً تدير أموالك عبر الحدود، أو أسرة شابة تبني ميزانيتك الأولى، الموارد هنا صُممت لمساعدة اتخاذ القرارات الواقعية.</p>
-  </div>
-</section>
-
-<!-- TOOLS GRID -->
-<section class="tools-section">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="section-label"><span class="en">All Finance Tools</span><span class="ar">أدوات المالية</span></div>
-      <h2 class="section-title"><span class="en">Tools for every financial decision</span><span class="ar">أدوات لكل قرار مالي</span></h2>
-      <p class="section-sub"><span class="en">Pick a tool and get clarity in minutes.</span><span class="ar">اختر أداة واحصل على وضوح في دقائق.</span></p>
+  <section class="hl-section hl-section--cream">
+    <div class="hl-container hl-prose">
+      <div class="hl-eyebrow"><span class="en">Why This Matters</span><span class="ar">لماذا هذا مهم</span></div>
+      <h2 class="hl-h2"><span class="en">Finance resources for your family</span><span class="ar">موارد المالية لعائلتك</span></h2>
+      <div class="hl-intro-text">
+        <p class="en">In GCC countries, household financial planning involves unique factors: varying cost of living between cities, Islamic mortgages, and family budgeting. The most common challenge is not lack of income but lack of structure. This section provides tools for budgeting, mortgage planning, savings goals, salary calculations, and Zakat obligations, all tailored to the Gulf context.</p>
+        <p class="ar">في دول الخليج، التخطيط المالي يتضمن عوامل فريدة: اختلاف تكلفة المعيشة بين المدن، التمويل الإسلامي، وتنظيم ميزانية الأسرة. التحدي الأكثر شيوعاً ليس نقص الدخل بل نقص التنظيم. هذا القسم يوفر أدوات للميزانية والتخطيط.</p>
+      </div>
     </div>
-    <div class="tools-grid">
+  </section>
 
-      <a href="/tools/mortgage-calculator.html" class="tool-card reveal" style="--tc:#2a9a98">
-        <div class="tool-card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 4l9 5.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-5h4v5h4a1 1 0 0 0 1-1v-9"/></svg></div>
-        <div class="tool-card-title"><span class="en">Mortgage Calculator</span><span class="ar">حاسبة التمويل العقاري</span></div>
-        <div class="tool-card-desc"><span class="en">Calculate monthly payments, total interest, and amortization schedule for any home loan.</span><span class="ar">احسب الأقساط الشهرية والفائدة الإجمالية وجدول السداد لأي قرض عقاري.</span></div>
-        <div class="tool-card-link"><span class="en">Calculate →</span><span class="ar">احسب →</span></div>
-      </a>
-
-      <a href="/tools/rental-yield-calculator.html" class="tool-card reveal" style="--tc:#0097A7">
-        <div class="tool-card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M9 22v-4h6v4"/></svg></div>
-        <div class="tool-card-title"><span class="en">Rental Yield Calculator</span><span class="ar">حاسبة العائد الإيجاري</span></div>
-        <div class="tool-card-desc"><span class="en">Analyze rental income vs. property cost to find your gross and net yield in seconds.</span><span class="ar">قارن الدخل الإيجاري بتكلفة العقار واحسب صافي العائد في ثوانٍ.</span></div>
-        <div class="tool-card-link"><span class="en">Analyze →</span><span class="ar">حلل →</span></div>
-      </a>
-
-      <a href="/tools/roi-calculator.html" class="tool-card reveal" style="--tc:#8B5CF6">
-        <div class="tool-card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
-        <div class="tool-card-title"><span class="en">ROI Calculator</span><span class="ar">حاسبة العائد على الاستثمار</span></div>
-        <div class="tool-card-desc"><span class="en">Calculate return on investment for any purchase, project, or asset. Simple and fast.</span><span class="ar">احسب العائد على الاستثمار لأي شراء أو مشروع أو أصل. بسيط وسريع.</span></div>
-        <div class="tool-card-link"><span class="en">Calculate →</span><span class="ar">احسب →</span></div>
-      </a>
-
-      <a href="/tools/savings-goal.html" class="tool-card reveal" style="--tc:#6abfb8">
-        <div class="tool-card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1"/></svg></div>
-        <div class="tool-card-title"><span class="en">Savings Goal Planner</span><span class="ar">مخطط هدف الادخار</span></div>
-        <div class="tool-card-desc"><span class="en">Set a savings target, pick a deadline, and see exactly how much to save each month.</span><span class="ar">حدد هدف الادخار واختر الموعد النهائي، وانظر كم تحتاج لادخاره شهرياً.</span></div>
-        <div class="tool-card-link"><span class="en">Plan →</span><span class="ar">خطط →</span></div>
-      </a>
-
-      <a href="/tools/zakat-calculator.html" class="tool-card reveal" style="--tc:#059669">
-        <div class="tool-card-icon"><svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></div>
-        <div class="tool-card-title"><span class="en">Zakat Calculator</span><span class="ar">حاسبة الزكاة</span></div>
-        <div class="tool-card-desc"><span class="en">Calculate your annual zakat on cash, gold, stocks, and business assets, accurate and simple.</span><span class="ar">احسب زكاتك السنوية على النقد والذهب والأسهم وأصول الأعمال.</span></div>
-        <div class="tool-card-link"><span class="en">Calculate →</span><span class="ar">احسب →</span></div>
-      </a>
-
-      <a href="/tools/salary-calculator.html" class="tool-card reveal" style="--tc:#EF4444">
-        <div class="tool-card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
-        <div class="tool-card-title"><span class="en">Salary & Take-Home Calculator</span><span class="ar">حاسبة صافي الراتب</span></div>
-        <div class="tool-card-desc"><span class="en">Understand your gross vs. net pay. Factor in GOSI, housing, transport, and allowances.</span><span class="ar">افهم راتبك الإجمالي مقارنةً بصافيه، مع الأخذ بالاعتبار التأمينات والبدلات.</span></div>
-        <div class="tool-card-link"><span class="en">Calculate →</span><span class="ar">احسب →</span></div>
-      </a>
-
+  <section class="hl-section" id="tools" aria-label="Finance tools">
+    <div class="hl-container hl-wide">
+      <div class="hl-eyebrow"><span class="en">Free Tools</span><span class="ar">أدوات مجانية</span></div>
+      <h2 class="hl-h2"><span class="en">Finance tools for your family</span><span class="ar">أدوات المالية لعائلتك</span></h2>
+      <p class="hl-sub"><span class="en">All tools run locally in your browser. No data stored or shared.</span><span class="ar">جميع الأدوات تعمل محلياً. لا تُخزَّن بيانات.</span></p>
+      <div class="hl-grid hl-grid--tools">
+        
+          <a href="/tools/monthly-budget.html" class="hl-card hl-card--tool" style="--hl-accent:#054241">
+            <div class="hl-card-icon hl-card-icon--emoji">📋</div>
+            <div class="hl-card-title"><span class="en">Monthly Budget</span><span class="ar">الميزانية الشهرية</span></div>
+            <div class="hl-card-desc"><span class="en">Practical tool for every family.</span><span class="ar">أداة عملية لكل أسرة.</span></div>
+            <div class="hl-card-arrow"><span class="en">Open tool →</span><span class="ar">افتح الأداة →</span></div>
+          </a>
+          <a href="/tools/mortgage-calculator.html" class="hl-card hl-card--tool" style="--hl-accent:#054241">
+            <div class="hl-card-icon hl-card-icon--emoji">🏠</div>
+            <div class="hl-card-title"><span class="en">Mortgage Calculator</span><span class="ar">حاسبة التمويل</span></div>
+            <div class="hl-card-desc"><span class="en">Practical tool for every family.</span><span class="ar">أداة عملية لكل أسرة.</span></div>
+            <div class="hl-card-arrow"><span class="en">Open tool →</span><span class="ar">افتح الأداة →</span></div>
+          </a>
+          <a href="/tools/salary-calculator.html" class="hl-card hl-card--tool" style="--hl-accent:#054241">
+            <div class="hl-card-icon hl-card-icon--emoji">💰</div>
+            <div class="hl-card-title"><span class="en">Salary Calculator</span><span class="ar">الراتب</span></div>
+            <div class="hl-card-desc"><span class="en">Practical tool for every family.</span><span class="ar">أداة عملية لكل أسرة.</span></div>
+            <div class="hl-card-arrow"><span class="en">Open tool →</span><span class="ar">افتح الأداة →</span></div>
+          </a>
+          <a href="/tools/savings-goal.html" class="hl-card hl-card--tool" style="--hl-accent:#054241">
+            <div class="hl-card-icon hl-card-icon--emoji">🎯</div>
+            <div class="hl-card-title"><span class="en">Savings Goal</span><span class="ar">هدف الادخار</span></div>
+            <div class="hl-card-desc"><span class="en">Practical tool for every family.</span><span class="ar">أداة عملية لكل أسرة.</span></div>
+            <div class="hl-card-arrow"><span class="en">Open tool →</span><span class="ar">افتح الأداة →</span></div>
+          </a>
+          <a href="/tools/roi-calculator.html" class="hl-card hl-card--tool" style="--hl-accent:#054241">
+            <div class="hl-card-icon hl-card-icon--emoji">📈</div>
+            <div class="hl-card-title"><span class="en">ROI Calculator</span><span class="ar">العائد على الاستثمار</span></div>
+            <div class="hl-card-desc"><span class="en">Practical tool for every family.</span><span class="ar">أداة عملية لكل أسرة.</span></div>
+            <div class="hl-card-arrow"><span class="en">Open tool →</span><span class="ar">افتح الأداة →</span></div>
+          </a>
+          <a href="/tools/currency-converter.html" class="hl-card hl-card--tool" style="--hl-accent:#054241">
+            <div class="hl-card-icon hl-card-icon--emoji">💱</div>
+            <div class="hl-card-title"><span class="en">Currency Converter</span><span class="ar">محول العملات</span></div>
+            <div class="hl-card-desc"><span class="en">Practical tool for every family.</span><span class="ar">أداة عملية لكل أسرة.</span></div>
+            <div class="hl-card-arrow"><span class="en">Open tool →</span><span class="ar">افتح الأداة →</span></div>
+          </a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- GUIDE STRIP -->
-<div class="container">
-  
-    <!-- ARTICLES GRID -->
-    <section class="tools-section" id="articles">
-      <div class="section-header reveal">
-        <div class="section-label">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d='M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z'></svg>
-          <span class="en">Articles</span><span class="ar">المقالات</span>
+  <section class="hl-section hl-section--cream" id="guides" aria-label="Guides">
+    <div class="hl-container hl-wide">
+      <div class="hl-eyebrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/></svg><span class="en">Guides</span><span class="ar">أدلة</span></div>
+      <h2 class="hl-h2"><span class="en">Guides & Articles</span><span class="ar">أدلة ومقالات</span></h2>
+      <p class="hl-sub"><span class="en">Evidence-based guidance for Gulf families</span><span class="ar">إرشادات قائمة على الأدلة للعائلات الخليجية</span></p>
+      <div class="hl-grid hl-grid--guides">
+        
+          <a href="/comparisons/saving-vs-investing-gulf-family.html" class="hl-card hl-card--article">
+            <div class="hl-card-title"><span class="en">Saving vs Investing</span><span class="ar">الادخار أم الاستثمار</span></div>
+            <div class="hl-card-desc"><span class="en">Essential reading for Gulf families.</span><span class="ar">قراءة أساسية للعائلات الخليجية.</span></div>
+            <div class="hl-card-arrow"><span class="en">Read guide →</span><span class="ar">اقرأ الدليل →</span></div>
+          </a>
+          <a href="/blog/gold-vs-savings-account-comparison.html" class="hl-card hl-card--article">
+            <div class="hl-card-title"><span class="en">Gold vs Savings</span><span class="ar">الذهب مقابل الادخار</span></div>
+            <div class="hl-card-desc"><span class="en">Essential reading for Gulf families.</span><span class="ar">قراءة أساسية للعائلات الخليجية.</span></div>
+            <div class="hl-card-arrow"><span class="en">Read guide →</span><span class="ar">اقرأ الدليل →</span></div>
+          </a>
+          <a href="/blog/end-of-service-benefits-expats.html" class="hl-card hl-card--article">
+            <div class="hl-card-title"><span class="en">End of Service Benefits</span><span class="ar">مكافأة نهاية الخدمة</span></div>
+            <div class="hl-card-desc"><span class="en">Essential reading for Gulf families.</span><span class="ar">قراءة أساسية للعائلات الخليجية.</span></div>
+            <div class="hl-card-arrow"><span class="en">Read guide →</span><span class="ar">اقرأ الدليل →</span></div>
+          </a>
+          <a href="/blog/rent-vs-buy-saudi-guide-2026.html" class="hl-card hl-card--article">
+            <div class="hl-card-title"><span class="en">Rent vs Buy</span><span class="ar">إيجار أم شراء</span></div>
+            <div class="hl-card-desc"><span class="en">Essential reading for Gulf families.</span><span class="ar">قراءة أساسية للعائلات الخليجية.</span></div>
+            <div class="hl-card-arrow"><span class="en">Read guide →</span><span class="ar">اقرأ الدليل →</span></div>
+          </a>
+          <a href="/blog/teaching-children-financial-literacy.html" class="hl-card hl-card--article">
+            <div class="hl-card-title"><span class="en">Family Budgeting</span><span class="ar">ميزانية الأسرة</span></div>
+            <div class="hl-card-desc"><span class="en">Essential reading for Gulf families.</span><span class="ar">قراءة أساسية للعائلات الخليجية.</span></div>
+            <div class="hl-card-arrow"><span class="en">Read guide →</span><span class="ar">اقرأ الدليل →</span></div>
+          </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="hl-guide-strip">
+    <div class="hl-container">
+      <div class="hl-guide-strip-inner">
+        <div class="hl-guide-strip-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/></svg></div>
+        <div class="hl-guide-strip-content">
+          <span class="hl-guide-strip-label"><span class="en">Reading</span><span class="ar">للقراءة</span></span>
+          <span class="hl-guide-strip-title"><span class="en">Saving & Investing Guide</span><span class="ar">دليل الادخار والاستثمار</span></span>
         </div>
-        <h2 class="section-title"><span class="en">Latest Articles & Guides</span><span class="ar">أحدث المقالات والأدلة</span></h2>
-        <p class="section-sub"><span class="en">Evidence-based guidance for Gulf families</span><span class="ar">إرشادات قائمة على الأدلة للعائلات الخليجية</span></p>
+        <a href="/comparisons/saving-vs-investing-gulf-family.html" class="hl-guide-strip-link"><span class="en">Read guide →</span><span class="ar">اقرأ الدليل ←</span></a>
       </div>
-      <div class="tools-grid">
-        <a href="/blog/gold-vs-savings-account-comparison.html" class="tool-card reveal" style="--tc:#0f4c8a;text-decoration:none;display:flex;flex-direction:column;">
-          <div class="tool-card-icon" style="background:var(--tc);border-radius:10px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.75rem;font-weight:700;margin-bottom:.5rem;">A</div>
-          <div class="tool-card-title" style="flex:1;font-size:.9rem;line-height:1.4;margin-bottom:.4rem;">
-            <span class="en">Gold vs Savings Account: Where Should Families Preserve Value in 2026?</span><span class="ar">الذهب مقابل التوفير: أيهما أفضل لثروة الأسرة؟</span>
-          </div>
-          <div class="tool-card-desc" style="font-size:.78rem;margin-bottom:.4rem;flex:1;">
-            <span class="en">Compare gold investment with savings accounts for Gulf families. Which option protects your wealth better?</span><span class="ar">قارن بين الاستثمار في الذهب وحسابات التوفير للعائلات الخليجية. أي الخيارين يحمي ثروتك بشكل أفضل؟</span>
-          </div>
-          <div class="tool-card-link" style="margin-top:auto;font-size:.78rem;">
-            <span class="en">Read → 5 min</span><span class="ar">اقرأ ← 5 دقائق</span>
-          </div>
-        </a>
-        <a href="/blog/emergency-fund-calculator-guide.html" class="tool-card reveal" style="--tc:#0f4c8a;text-decoration:none;display:flex;flex-direction:column;">
-          <div class="tool-card-icon" style="background:var(--tc);border-radius:10px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.75rem;font-weight:700;margin-bottom:.5rem;">A</div>
-          <div class="tool-card-title" style="flex:1;font-size:.9rem;line-height:1.4;margin-bottom:.4rem;">
-            <span class="en">Emergency Fund Calculator: How Many Months Do You Really Need?</span><span class="ar">حاسبة صندوق الطوارئ: كم شهراً تحتاج حقاً؟</span>
-          </div>
-          <div class="tool-card-desc" style="font-size:.78rem;margin-bottom:.4rem;flex:1;">
-            <span class="en">Calculate exactly how many months of expenses you need saved for true financial security.</span><span class="ar">احسب بالضبط كم شهراً من المصروفات تحتاج أن تدخر للأمان المالي الحقيقي.</span>
-          </div>
-          <div class="tool-card-link" style="margin-top:auto;font-size:.78rem;">
-            <span class="en">Read → 5 min</span><span class="ar">اقرأ ← 5 دقائق</span>
-          </div>
-        </a>
-        <a href="/blog/family-budget-planning-guide.html" class="tool-card reveal" style="--tc:#0f4c8a;text-decoration:none;display:flex;flex-direction:column;">
-          <div class="tool-card-icon" style="background:var(--tc);border-radius:10px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.75rem;font-weight:700;margin-bottom:.5rem;">A</div>
-          <div class="tool-card-title" style="flex:1;font-size:.9rem;line-height:1.4;margin-bottom:.4rem;">
-            <span class="en">Family Budget Planning in 2026: A Practical System That Works</span><span class="ar">تخطيط ميزانية الأسرة 2026: نظام عملي يعمل</span>
-          </div>
-          <div class="tool-card-desc" style="font-size:.78rem;margin-bottom:.4rem;flex:1;">
-            <span class="en">A step-by-step system for creating and maintaining a family budget that actually sticks.</span><span class="ar">نظام خطوة بخطوة لإنشاء ميزانية أسرة والحفاظ عليها بشكل فعلي.</span>
-          </div>
-          <div class="tool-card-link" style="margin-top:auto;font-size:.78rem;">
-            <span class="en">Read → 6 min</span><span class="ar">اقرأ ← 6 دقائق</span>
-          </div>
-        </a>
-        <a href="/blog/building-personal-savings-system.html" class="tool-card reveal" style="--tc:#0f4c8a;text-decoration:none;display:flex;flex-direction:column;">
-          <div class="tool-card-icon" style="background:var(--tc);border-radius:10px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.75rem;font-weight:700;margin-bottom:.5rem;">A</div>
-          <div class="tool-card-title" style="flex:1;font-size:.9rem;line-height:1.4;margin-bottom:.4rem;">
-            <span class="en">Building a Personal Savings System That Actually Works</span><span class="ar">بناء نظام ادخار شخصي يعمل فعلاً</span>
-          </div>
-          <div class="tool-card-desc" style="font-size:.78rem;margin-bottom:.4rem;flex:1;">
-            <span class="en">A practical framework for automating your savings and building long-term wealth.</span><span class="ar">إطار عملي لأتمتة مدخراتك وبناء الثروة على المدى الطويل.</span>
-          </div>
-          <div class="tool-card-link" style="margin-top:auto;font-size:.78rem;">
-            <span class="en">Read → 5 min</span><span class="ar">اقرأ ← 5 دقائق</span>
-          </div>
-        </a>
-        <a href="/blog/zakat-calculator-modern-investments-guide.html" class="tool-card reveal" style="--tc:#0f4c8a;text-decoration:none;display:flex;flex-direction:column;">
-          <div class="tool-card-icon" style="background:var(--tc);border-radius:10px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.75rem;font-weight:700;margin-bottom:.5rem;">A</div>
-          <div class="tool-card-title" style="flex:1;font-size:.9rem;line-height:1.4;margin-bottom:.4rem;">
-            <span class="en">How to Calculate Zakat Correctly on Modern Investments</span><span class="ar">كيف تحسب الزكاة على الاستثمارات الحديثة</span>
-          </div>
-          <div class="tool-card-desc" style="font-size:.78rem;margin-bottom:.4rem;flex:1;">
-            <span class="en">Zakat on stocks, real estate, retirement accounts, gold, and crypto. Clear rules and examples.</span><span class="ar">الزكاة على الأسهم والعقارات وحسابات التقاعد والذهب والعملات الرقمية. أحكام واضحة.</span>
-          </div>
-          <div class="tool-card-link" style="margin-top:auto;font-size:.78rem;">
-            <span class="en">Read → 9 min</span><span class="ar">اقرأ ← 9 دقائق</span>
-          </div>
-        </a>
-      </div>
-    </section>
-<div class="guide-strip reveal">
-    <div class="guide-strip-text">
-      <h3><span class="en">New to investing in Saudi Arabia?</span><span class="ar">جديد في الاستثمار بالسعودية؟</span></h3>
-      <p><span class="en">Read our complete guide to real estate investing in Saudi Arabia, from Vision 2030 opportunities to rental market insights.</span><span class="ar">اقرأ دليلنا الشامل للاستثمار العقاري في السعودية، من فرص رؤية 2030 إلى رؤى سوق الإيجار.</span></p>
     </div>
-    <a href="/guides/saudi-real-estate-investing.html" class="btn btn-gold">
-      <span class="en">Read guide →</span><span class="ar">اقرأ الدليل →</span>
-    </a>
   </div>
+
+  
+  <section class="hl-section hl-section--cream" id="latest-articles" aria-label="Latest articles">
+    <div class="hl-container hl-wide">
+      <div class="hl-eyebrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg><span class="en">Latest</span><span class="ar">أحدث المقالات</span></div>
+      <h2 class="hl-h2"><span class="en">New Articles & Guides</span><span class="ar">جديد المقالات والأدلة</span></h2>
+      <p class="hl-sub"><span class="en">Fresh content for Gulf families, updated regularly.</span><span class="ar">محتوى جديد للعائلات الخليجية، يُحدَّث باستمرار.</span></p>
+      <style>
+      .hl-article-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr)); gap:1.5rem; width:100% }
+      .hl-art-card { display:flex; flex-direction:column; border-radius:18px; overflow:hidden; background:var(--card-bg,#fff); border:1px solid rgba(5,66,65,.08); box-shadow:0 8px 30px rgba(5,66,65,.06); transition:transform .22s cubic-bezier(.22,1,.36,1), box-shadow .22s cubic-bezier(.22,1,.36,1); text-decoration:none; color:inherit }
+      .hl-art-card:hover { transform:translateY(-4px); box-shadow:0 16px 48px rgba(5,66,65,.1) }
+      .hl-art-card-img { width:100%; height:180px; object-fit:cover; display:block; background:linear-gradient(135deg,#054241,#0a6b63) }
+      .hl-art-card-body { padding:1.2rem 1.4rem 1.4rem; display:flex; flex-direction:column; flex:1 }
+      .hl-art-card-kicker { font-size:.7rem; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:#6abfb8; margin-bottom:.4rem; display:block }
+      .hl-art-card-title { font-size:.92rem; font-weight:700; line-height:1.45; color:var(--text,#1A1E24); margin-bottom:.4rem; flex:1 }
+      .hl-art-card-desc { font-size:.8rem; line-height:1.55; color:var(--text-2,#5C534A); margin-bottom:.6rem }
+      .hl-art-card-arrow { font-size:.78rem; font-weight:700; color:#6abfb8; display:flex; align-items:center; gap:.3rem; transition:gap .2s }
+      .hl-art-card:hover .hl-art-card-arrow { gap:.6rem }
+      [data-lang="ar"] .hl-art-card-arrow { flex-direction:row-reverse }
+      @media(max-width:480px){ .hl-article-grid { grid-template-columns:1fr } }
+      </style>
+      <div class="hl-article-grid">
+
+        <a href="/comparisons/saving-vs-investing-gulf-family.html" class="hl-art-card">
+          <img class="hl-art-card-img" src="/assets/images/articles/saving-investing.webp" alt="" width="600" height="340" loading="lazy" style="background:linear-gradient(135deg,#054241,#0a6b63)">
+          <div class="hl-art-card-body">
+            <span class="hl-art-card-kicker"><span class="en">Finance</span><span class="ar">المالية</span></span>
+            <span class="hl-art-card-title"><span class="en">Saving vs Investing for Gulf Families: The Complete Comparison</span><span class="ar">الادخار أم الاستثمار لأسرة خليجية؟ المقارنة الكاملة</span></span>
+            <span class="hl-art-card-desc"><span class="en">A practical comparison with real numbers, scenarios, and Gulf-specific advice.</span><span class="ar">مقارنة عملية بأرقام حقيقية وسيناريوهات ونصائح خاصة بالخليج.</span></span>
+            <span class="hl-art-card-arrow"><span class="en">Read article →</span><span class="ar">اقرأ المقال ←</span></span>
+          </div>
+        </a>
+
+        <a href="/islamic-hajj-umrah/teaching-children-allah-names.html" class="hl-art-card">
+          <img class="hl-art-card-img" src="/assets/images/articles/children-allah-names.webp" alt="" width="600" height="340" loading="lazy" style="background:linear-gradient(135deg,#b8893c,#a0752e)">
+          <div class="hl-art-card-body">
+            <span class="hl-art-card-kicker"><span class="en">Islamic</span><span class="ar">إسلاميات</span></span>
+            <span class="hl-art-card-title"><span class="en">Teaching Children Allah's 99 Names with Love</span><span class="ar">تعليم الأطفال أسماء الله الحسنى بطريقة محبّبة</span></span>
+            <span class="hl-art-card-desc"><span class="en">A practical guide with activities, stories, and a 30-day plan for Gulf parents.</span><span class="ar">دليل عملي بأنشطة وقصص وخطة 30 يوماً للآباء والأمهات.</span></span>
+            <span class="hl-art-card-arrow"><span class="en">Read article →</span><span class="ar">اقرأ المقال ←</span></span>
+          </div>
+        </a>
+
+        <a href="/blog/bmi-middle-eastern-adults.html" class="hl-art-card">
+          <img class="hl-art-card-img" src="/health-hero.webp" alt="" width="600" height="340" loading="lazy" style="background:linear-gradient(135deg,#4a8a82,#6abfb8)">
+          <div class="hl-art-card-body">
+            <span class="hl-art-card-kicker"><span class="en">Health</span><span class="ar">الصحة</span></span>
+            <span class="hl-art-card-title"><span class="en">BMI for Middle Eastern Adults: What Is a Healthy Range?</span><span class="ar">مؤشر كتلة الجسم للبالغين من الشرق الأوسط: ما هو النطاق الصحي؟</span></span>
+            <span class="hl-art-card-desc"><span class="en">Why standard BMI thresholds may not apply to Middle Eastern bodies.</span><span class="ar">لماذا قد لا تنطبق حدود BMI القياسية على سكان الشرق الأوسط.</span></span>
+            <span class="hl-art-card-arrow"><span class="en">Read article →</span><span class="ar">اقرأ المقال ←</span></span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="hl-section hl-topic-authority">
+    <div class="hl-container hl-wide">
+      <div class="hl-eyebrow"><span class="en">Topic Authority</span><span class="ar">مرجعية الموضوع</span></div>
+      <h2 class="hl-h2"><span class="en">Finance at a Glance</span><span class="ar">المالية في لمحة</span></h2>
+      <p class="hl-sub"><span class="en">Everything you need, organized for you.</span><span class="ar">كل ما تحتاج، منظم لك.</span></p>
+      <div class="hl-grid hl-grid--topic">
+        <div class="hl-card hl-card--topic">
+          <h3 class="hl-topic-title"><span class="en">Quick Tools</span><span class="ar">أدوات سريعة</span></h3>
+          <ul class="hl-topic-list"><li>→ <a href="/tools/monthly-budget.html"><span class="en">Monthly Budget</span><span class="ar">الميزانية</span></a></li>
+<li>→ <a href="/tools/mortgage-calculator.html"><span class="en">Mortgage</span><span class="ar">التمويل</span></a></li>
+<li>→ <a href="/tools/salary-calculator.html"><span class="en">Salary</span><span class="ar">الراتب</span></a></li>
+</ul>
+        </div>
+        <div class="hl-card hl-card--topic">
+          <h3 class="hl-topic-title"><span class="en">Top Guides</span><span class="ar">أهم الأدلة</span></h3>
+          <ul class="hl-topic-list"><li>→ <a href="/comparisons/saving-vs-investing-gulf-family.html"><span class="en">Saving vs Investing</span><span class="ar">ادخار أم استثمار</span></a></li>
+<li>→ <a href="/blog/gold-vs-savings-account-comparison.html"><span class="en">Gold vs Savings</span><span class="ar">ذهب أم ادخار</span></a></li>
+<li>→ <a href="/blog/end-of-service-benefits-expats.html"><span class="en">End of Service</span><span class="ar">نهاية الخدمة</span></a></li>
+</ul>
+        </div>
+        <div class="hl-card hl-card--topic">
+          <h3 class="hl-topic-title"><span class="en">Learn More</span><span class="ar">المزيد</span></h3>
+          <ul class="hl-topic-list"><li>→ <a href="/tools/zakat-calculator.html"><span class="en">Zakat</span><span class="ar">الزكاة</span></a></li>
+<li>→ <a href="/tools/currency-converter.html"><span class="en">Currency</span><span class="ar">العملات</span></a></li>
+<li>→ <a href="/tools/roi-calculator.html"><span class="en">ROI</span><span class="ar">العائد</span></a></li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </div>
-
-<!-- BLOG GUIDES -->
-<div class="container">
-  <div class="section-header reveal" style="margin-top:3rem;">
-    <div class="section-label"><span class="en">Budget Guides</span><span class="ar">دلائل الميزانية</span></div>
-    <h2 class="section-title"><span class="en">Read our in-depth budget guides</span><span class="ar">اقرأ دلائلنا المتعمقة للميزانية</span></h2>
-    <p class="section-sub"><span class="en">Practical, research-backed guides written for GCC families.</span><span class="ar">دلائل عملية مدعومة بالبحث مكتوبة للعائلة الخليجية.</span></p>
-  </div>
-  <div class="tools-grid" style="margin-top:1.5rem;">
-
-    <a href="/blog/gcc-family-budget-2025.html" class="tool-card reveal" style="--tc:#2a9a98">
-      <div class="tool-card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v12"/><path d="M8 10h4a2 2 0 0 1 0 4H8"/></svg></div>
-      <div class="tool-card-title"><span class="en">GCC Family Budget 2025, Allocate Your Salary Wisely</span><span class="ar">ميزانية الأسرة الخليجية 2025, كيف توزع راتبك بذكاء</span></div>
-      <div class="tool-card-desc"><span class="en">Practical guide to family budgeting in the GCC, housing, education, savings, and entertainment. A proven budget system for families in Saudi, UAE, and Kuwait.</span><span class="ar">دليل عملي لتوزيع راتب الأسرة الخليجية، السكن، التعليم، الادخار، والترفيه. نظام ميزانية مثبت للعائلات في السعودية والإمارات والكويت.</span></div>
-      <div class="tool-card-link"><span class="en">Read guide →</span><span class="ar">اقرأ الدليل →</span></div>
-    </a>
-
-    <a href="/blog/gcc-family-budget-2025-en.html" class="tool-card reveal" style="--tc:#2a9a98;transition-delay:.04s;">
-      <div class="tool-card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v12"/><path d="M8 10h4a2 2 0 0 1 0 4H8"/></svg></div>
-      <div class="tool-card-title"><span class="en">GCC Family Budget 2025, Allocate Your Salary Wisely</span><span class="ar">ميزانية الأسرة الخليجية 2025, كيف توزع راتبك بذكاء</span></div>
-      <div class="tool-card-desc"><span class="en">Practical guide to family budgeting in the GCC 2025, housing, education, savings, and entertainment. A proven budget system for families in Saudi Arabia, UAE, and Kuwait.</span><span class="ar">دليل عملي لتوزيع راتب الأسرة الخليجية 2025, السكن، التعليم، الادخار، والترفيه. نظام ميزانية مثبت للعائلات في السعودية والإمارات والكويت.</span></div>
-      <div class="tool-card-link"><span class="en">Read guide →</span><span class="ar">اقرأ الدليل →</span></div>
-    </a>
-
-  </div>
-</div>
-
-<!-- FOOTER -->
-<!-- ═══ UNIFIED FOOTER ══════════════════════════════════════ -->
-
-
-  <!-- ═══════════════════════════════════════
-       FOOTER
-  ═══════════════════════════════════════ -->
-  <!-- ═══ UNIFIED FOOTER ══════════════════════════════════════ -->
-<!-- ═══ TOPIC AUTHORITY ═══════════════════════════════ -->
-<section class="tools-section" style="background:var(--section-bg);padding:48px 0;">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="section-label"><span class="en">Topic Authority</span><span class="ar">مرجعية الموضوع</span></div>
-      <h2 class="section-title"><span class="en">Explore Family Finance</span><span class="ar">استكشف المالية العائلية</span></h2>
-      <p class="section-sub"><span class="en">Deepen your financial knowledge with our most-linked guides and tools.</span><span class="ar">عمّق معرفتك المالية مع أدلتنا وأدواتنا الأكثر ارتباطاً.</span></p>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;">
-      <div class="tool-card reveal" style="--tc:#2a9a98;padding:24px;">
-        <h3 style="font-size:1rem;font-weight:700;margin:0 0 12px;color:var(--text);"><span class="en">Top Financial Guides</span><span class="ar">أهم الأدلة المالية</span></h3>
-        <ul style="list-style:none;padding:0;margin:0;">
-          <li style="margin-bottom:8px;">→ <a href="/blog/complete-gulf-family-financial-life-hub.html" style="color:var(--gold);text-decoration:none;font-size:.88rem;"><span class="en">Complete Financial Life Hub</span><span class="ar">محور الحياة المالية الشامل</span></a></li>
-          <li style="margin-bottom:8px;">→ <a href="/blog/family-budget-planning-guide.html" style="color:var(--gold);text-decoration:none;font-size:.88rem;"><span class="en">Family Budget Planning Guide</span><span class="ar">دليل تخطيط الميزانية العائلية</span></a></li>
-          <li style="margin-bottom:8px;">→ <a href="/blog/saudi-mortgage-guide-2025-en.html" style="color:var(--gold);text-decoration:none;font-size:.88rem;"><span class="en">Saudi Mortgage Guide 2025</span><span class="ar">دليل التمويل العقاري 2025</span></a></li>
-          <li style="margin-bottom:8px;">→ <a href="/blog/emergency-fund-calculator-guide.html" style="color:var(--gold);text-decoration:none;font-size:.88rem;"><span class="en">Emergency Fund Guide</span><span class="ar">دليل صندوق الطوارئ</span></a></li>
-          <li style="margin-bottom:8px;">→ <a href="/blog/complete-household-budget-system.html" style="color:var(--gold);text-decoration:none;font-size:.88rem;"><span class="en">Household Budget System</span><span class="ar">نظام الميزانية المنزلية</span></a></li>
-        </ul>
-      </div>
-      <div class="tool-card reveal" style="--tc:#2a9a98;padding:24px;">
-        <h3 style="font-size:1rem;font-weight:700;margin:0 0 12px;color:var(--text);"><span class="en">Essential Calculators</span><span class="ar">الحاسبات الأساسية</span></h3>
-        <ul style="list-style:none;padding:0;margin:0;">
-          <li style="margin-bottom:8px;">→ <a href="/tools/monthly-budget.html" style="color:var(--gold);text-decoration:none;font-size:.88rem;"><span class="en">Monthly Budget Planner</span><span class="ar">مخطط الميزانية الشهرية</span></a></li>
-          <li style="margin-bottom:8px;">→ <a href="/tools/mortgage-calculator.html" style="color:var(--gold);text-decoration:none;font-size:.88rem;"><span class="en">Mortgage Calculator</span><span class="ar">حاسبة التمويل العقاري</span></a></li>
-          <li style="margin-bottom:8px;">→ <a href="/tools/savings-goal.html" style="color:var(--gold);text-decoration:none;font-size:.88rem;"><span class="en">Savings Goal Tracker</span><span class="ar">متتبع هدف الادخار</span></a></li>
-          <li style="margin-bottom:8px;">→ <a href="/tools/salary-calculator.html" style="color:var(--gold);text-decoration:none;font-size:.88rem;"><span class="en">Salary Calculator</span><span class="ar">حاسبة الراتب</span></a></li>
-          <li style="margin-bottom:8px;">→ <a href="/tools/zakat-calculator.html" style="color:var(--gold);text-decoration:none;font-size:.88rem;"><span class="en">Zakat Calculator</span><span class="ar">حاسبة الزكاة</span></a></li>
-        </ul>
-      </div>
-      <div class="tool-card reveal" style="--tc:#2a9a98;padding:24px;">
-        <h3 style="font-size:1rem;font-weight:700;margin:0 0 12px;color:var(--text);"><span class="en">Deep Dive Topics</span><span class="ar">مواضيع متعمقة</span></h3>
-        <ul style="list-style:none;padding:0;margin:0;">
-          <li style="margin-bottom:8px;">→ <a href="/blog/rent-vs-buy-saudi-guide-2026.html" style="color:var(--gold);text-decoration:none;font-size:.88rem;"><span class="en">Rent vs Buy in Saudi 2026</span><span class="ar">الإيجار مقابل الشراء في السعودية 2026</span></a></li>
-          <li style="margin-bottom:8px;">→ <a href="/blog/gold-vs-savings-account-comparison.html" style="color:var(--gold);text-decoration:none;font-size:.88rem;"><span class="en">Gold vs Savings Account</span><span class="ar">الذهب مقابل حساب التوفير</span></a></li>
-          <li style="margin-bottom:8px;">→ <a href="/blog/end-of-service-benefits-expats.html" style="color:var(--gold);text-decoration:none;font-size:.88rem;"><span class="en">End of Service Benefits for Expats</span><span class="ar">مكافأة نهاية الخدمة للوافدين</span></a></li>
-          <li style="margin-bottom:8px;">→ <a href="/blog/teaching-children-financial-literacy.html" style="color:var(--gold);text-decoration:none;font-size:.88rem;"><span class="en">Teaching Children Financial Literacy</span><span class="ar">تعليم الأطفال الثقافة المالية</span></a></li>
-          <li style="margin-bottom:8px;">→ <a href="/blog/house-affordability-single-income-guide.html" style="color:var(--gold);text-decoration:none;font-size:.88rem;"><span class="en">Single-Income Home Affordability</span><span class="ar">شراء منزل بدخل واحد</span></a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
 
 <footer class="site-footer" role="contentinfo">
   <div class="footer-inner">

@@ -99,7 +99,7 @@
       <li><a href="library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a></li>
     </ul>
     <div class="nav-controls">
-      <button class="nav-btn" id="lang-toggle" aria-label="Switch language"><span class="en">عربي</span><span class="ar">English</span></button>
+      <button class="nav-btn" id="lang-toggle" aria-label="Switch language"><span class="en">English</span><span class="ar">عربي</span></button>
       <button class="nav-btn" id="theme-toggle" aria-label="Toggle theme"><svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
     </div>
   </div>
@@ -164,276 +164,307 @@
       </div>
     </div>
   </section>
+<style>
+/* ═════════════════════════════════════════════════════
+   Travel PAGE — BODY DESIGN SYSTEM
+   Luxurious · Elegant · Brand-Aligned
+   ═════════════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing:border-box }
+#page, .hl-section, .hl-container { overflow-wrap:anywhere; word-wrap:break-word }
+.hl-container { width:100%; max-width:var(--w-xl,1280px); margin:0 auto; padding:0 clamp(1rem,4vw,2.5rem) }
+.hl-section { padding:clamp(2.5rem,5vw,5rem) 0 }
+.hl-section--cream { background:#FAF8F4 }
+[data-theme="dark"] .hl-section--cream { background:var(--card-bg,#1A1E24) }
+.hl-eyebrow { display:flex; align-items:center; gap:.5rem; font-size:.82rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:#6abfb8; margin-bottom:.75rem }
+.hl-eyebrow svg { flex-shrink:0; width:16px; height:16px }
+.hl-h2 { font-family:'Almarai','Cinzel',Georgia,serif; font-size:clamp(1.4rem,3vw,1.9rem); font-weight:800; line-height:1.35; color:var(--text,#1A1E24); margin:0 0 1.2rem; letter-spacing:-.01em }
+[data-lang="ar"] .hl-h2 { letter-spacing:0 }
+.hl-sub { font-size:clamp(.92rem,1.2vw,1.05rem); color:var(--text-2,#5C534A); line-height:1.75; margin:0 0 2.5rem; max-width:640px }
+[data-lang="ar"] .hl-sub { max-width:none }
+.hl-intro-text p { font-size:clamp(.94rem,1.2vw,1.04rem); color:var(--text-2,#5C534A); line-height:1.85; margin:0 }
+[data-lang="ar"] .hl-intro-text p { line-height:1.9 }
+.hl-grid { display:grid; gap:1.25rem; width:100% }
+.hl-grid--tools { grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr)) }
+.hl-grid--guides { grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr)) }
+.hl-grid--topic { grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr)) }
+.hl-card {
+  display:flex; flex-direction:column; border-radius:18px; padding:1.5rem 1.4rem;
+  background:var(--card-bg,#fff); border:1px solid rgba(5,66,65,.08);
+  box-shadow:0 8px 30px rgba(5,66,65,.06);
+  transition:transform .22s cubic-bezier(.22,1,.36,1), box-shadow .22s cubic-bezier(.22,1,.36,1);
+  text-decoration:none; color:inherit; overflow-wrap:anywhere
+}
+.hl-card:hover {
+  transform:translateY(-4px);
+  box-shadow:0 16px 48px rgba(5,66,65,.1);
+}
+.hl-card:focus-visible { outline:2px solid #6abfb8; outline-offset:3px }
+.hl-card--tool { text-decoration:none; color:inherit; cursor:pointer }
+.hl-card-icon {
+  width:44px; height:44px; border-radius:14px; display:flex; align-items:center; justify-content:center;
+  background:rgba(5,66,65,.06); color:var(--hl-accent,#6abfb8); margin-bottom:1rem; flex-shrink:0;
+  transition:background .2s, transform .2s
+}
+.hl-card:hover .hl-card-icon { background:rgba(5,66,65,.1); transform:scale(1.05) }
+.hl-card-icon svg { width:20px; height:20px; stroke:currentColor }
+.hl-card-icon--emoji { font-size:1.3rem }
+.hl-card-title { font-size:.98rem; font-weight:700; line-height:1.45; margin-bottom:.6rem; color:var(--text,#1A1E24) }
+.hl-card-desc { font-size:.84rem; line-height:1.6; color:var(--text-2,#5C534A); margin-bottom:1rem; flex:1 }
+.hl-card-arrow { font-size:.82rem; font-weight:700; color:#6abfb8; margin-top:auto; transition:gap .2s; display:flex; align-items:center; gap:.3rem }
+.hl-card:hover .hl-card-arrow { gap:.6rem }
+[data-lang="ar"] .hl-card-arrow { flex-direction:row-reverse }
+.hl-card--article { background:var(--card-bg,#fff); padding:1.5rem }
+.hl-card--article .hl-card-title { font-size:.95rem; font-weight:700; margin-bottom:.5rem; flex:1 }
+.hl-card--article .hl-card-desc { font-size:.82rem; margin-bottom:.7rem }
+.hl-card--article .hl-card-arrow { font-size:.8rem }
+/* Guide Strip */
+.hl-guide-strip {
+  background:linear-gradient(135deg,rgba(5,66,65,.04),rgba(106,191,184,.08));
+  border-top:1px solid rgba(5,66,65,.06); border-bottom:1px solid rgba(5,66,65,.06);
+  padding:1.2rem 0
+}
+.hl-guide-strip-inner {
+  display:flex; align-items:center; gap:1rem; flex-wrap:wrap;
+  padding:0 clamp(1rem,4vw,2.5rem)
+}
+.hl-guide-strip-icon { width:40px; height:40px; border-radius:12px; display:flex; align-items:center; justify-content:center; background:#6abfb8; color:#fff; flex-shrink:0 }
+.hl-guide-strip-icon svg { width:18px; height:18px }
+.hl-guide-strip-content { flex:1; min-width:0 }
+.hl-guide-strip-label { font-size:.75rem; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:#6abfb8; display:block; margin-bottom:.15rem }
+.hl-guide-strip-title { font-size:.92rem; font-weight:700; color:var(--text,#1A1E24); display:block; line-height:1.4 }
+.hl-guide-strip-link {
+  font-size:.82rem; font-weight:700; color:#054241; text-decoration:none; white-space:nowrap;
+  padding:.6rem 1.2rem; border-radius:999px; border:1.5px solid rgba(5,66,65,.15);
+  transition:background .2s, color .2s
+}
+.hl-guide-strip-link:hover { background:#054241; color:#fff }
+[data-theme="dark"] .hl-guide-strip-link:hover { background:#6abfb8; color:#054241 }
+/* Topic Authority */
+.hl-topic-title { font-size:.95rem; font-weight:700; margin:0 0 1rem; color:var(--text,#1A1E24) }
+.hl-topic-list { list-style:none; padding:0; margin:0 }
+.hl-topic-list li { margin-bottom:.5rem; font-size:.85rem; line-height:1.5 }
+.hl-topic-list a { color:var(--text-2,#5C534A); text-decoration:none; transition:color .2s }
+.hl-topic-list a:hover { color:#054241; font-weight:600 }
+[data-theme="dark"] .hl-topic-list a:hover { color:#6abfb8 }
+.hl-card--topic { padding:1.5rem }
+/* Dark Mode */
+[data-theme="dark"] .hl-card { background:var(--card-bg,#1A1E24); border-color:rgba(106,191,184,.1); box-shadow:0 8px 30px rgba(0,0,0,.2) }
+[data-theme="dark"] .hl-card:hover { box-shadow:0 16px 48px rgba(0,0,0,.3) }
+[data-theme="dark"] .hl-card-icon { background:rgba(106,191,184,.1) }
+[data-theme="dark"] .hl-guide-strip { background:linear-gradient(135deg,rgba(5,66,65,.1),rgba(106,191,184,.05)); border-color:rgba(106,191,184,.1) }
+[data-theme="dark"] .hl-guide-strip-link { border-color:rgba(106,191,184,.2); color:#6abfb8 }
+/* Responsive */
+@media(max-width:640px){
+  .hl-section { padding:clamp(1.8rem,4vw,2.5rem) 0 }
+  .hl-h2 { font-size:1.25rem; margin-bottom:.8rem }
+  .hl-sub { margin-bottom:1.5rem }
+  .hl-grid { gap:1rem }
+  .hl-guide-strip-inner { flex-direction:column; align-items:flex-start }
+  .hl-guide-strip-link { align-self:stretch; text-align:center }
+}
+@media(max-width:480px){
+  .hl-grid--tools { grid-template-columns:1fr }
+  .hl-grid--guides { grid-template-columns:1fr }
+  .hl-grid--topic { grid-template-columns:1fr }
+}
+</style>
+<div id="page">
 
-<div id="sub-nav">
-  <div class="sub-nav-inner">
-    <a href="/tools/travel-budget.html"><span class="en">Travel Budget</span><span class="ar">ميزانية السفر</span></a>
-    <a href="/tools/packing-checklist.html"><span class="en">Packing List</span><span class="ar">قائمة الأمتعة</span></a>
-    <a href="/tools/travel-tips.html"><span class="en">Travel Tips</span><span class="ar">نصائح السفر</span></a>
-    <a href="/tools/currency-converter.html"><span class="en">Currency</span><span class="ar">محول العملات</span></a>
-    <a href="/guides/salalah-oman.html"><span class="en">Salalah <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 2v4a3 3 0 0 1-3 3h-4a3 3 0 0 1-3-3V2"/><path d="M7 12v8a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-8"/></svg></span><span class="ar">صلالة <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 2v4a3 3 0 0 1-3 3h-4a3 3 0 0 1-3-3V2"/><path d="M7 12v8a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-8"/></svg></span></a>
-    <a href="/guides/mecca-medina.html"><span class="en">Mecca & Medina</span><span class="ar">مكة والمدينة</span></a>
-    <a href="/guides/saudi-tourism.html"><span class="en">Saudi Tourism</span><span class="ar">السياحة السعودية</span></a>
-  </div>
-</div>
-
-<section style="background:var(--section-bg);padding:3rem clamp(1rem,4vw,3rem);">
-  <div class="container-prose">
-    <div class="section-eyebrow" style="margin-bottom:.5rem;"><span class="en">Why This Matters</span><span class="ar">لماذا هذا مهم</span></div>
-    <h2 style="font-size:clamp(1.3rem,3vw,1.8rem);font-weight:700;margin:0 0 1rem;font-family:var(--font-serif);color:var(--text);"><span class="en">Travel connects families across borders and cultures</span><span class="ar">السفر يربط العائلات عبر الحدود والثقافات</span></h2>
-    <p class="en" style="color:var(--text-2);line-height:1.75;">For Gulf families, travel is both a necessity and a passion. From Umrah and Hajj journeys to Mecca and Medina, to summer holidays in cooler destinations, to weekend trips within the GCC, travel planning involves multiple layers of decision-making. In practical travel planning, the key challenges Gulf families face include managing budgets across different currencies, packing appropriately for diverse climates and cultural contexts, finding halal food and prayer facilities at destinations, and coordinating itineraries that work for adults and children alike. Whether you are planning a family trip to Malaysia, a business visit to London, or an Umrah journey during Ramadan, having the right tools and guidance makes the difference between a stressful trip and a memorable one. This section provides everything from packing checklists and travel budgets to currency conversion and safety tools.</p>
-    <p class="ar" style="color:var(--text-2);line-height:1.75;">للعائلات الخليجية، السفر هو ضرورة وشغف في آن واحد. من رحلات العمرة والحج إلى مكة والمدينة، إلى العطلات الصيفية في وجهات أكثر برودة، إلى الرحلات الأسبوعية داخل دول الخليج، تخطيط السفر يشمل طبقات متعددة من اتخاذ القرار. في تخطيط السفر العملي، التحديات الرئيسية التي تواجهها العائلات الخليجية تشمل إدارة الميزانيات عبر العملات المختلفة، التعبئة المناسبة للمناخات المتنوعة والسياقات الثقافية، إيجاد الطعام الحلال ومرافق الصلاة في الوجهات، وتنسيق خطط السفر التي تناسب الكبار والأطفال على حد سواء. سواء كنت تخطط لرحلة عائلية إلى ماليزيا، أو زيارة عمل إلى لندن، أو رحلة عمرة خلال رمضان، وجود الأدوات والإرشادات الصحيحة يحدث الفرق بين رحلة مرهقة وأخرى لا تُنسى. هذا القسم يوفر كل شيء من قوائم التعبئة وميزانيات السفر إلى تحويل العملات وأدوات السلامة.</p>
-  </div>
-</section>
-
-<!-- TOOLS GRID -->
-<section class="tools-section">
-  <div class="container-xl">
-    <div class="section-header reveal">
-      <div class="section-label"><span class="en">All Travel Tools</span><span class="ar">أدوات السفر</span></div>
-      <h2 class="section-title"><span class="en">Everything you need for a smooth trip</span><span class="ar">كل ما تحتاجه لرحلة ناجحة</span></h2>
-      <p class="section-sub"><span class="en">Pick a tool and start planning.</span><span class="ar">اختر أداة وابدأ التخطيط.</span></p>
+  <section class="hl-section hl-section--cream">
+    <div class="hl-container hl-prose">
+      <div class="hl-eyebrow"><span class="en">Why This Matters</span><span class="ar">لماذا هذا مهم</span></div>
+      <h2 class="hl-h2"><span class="en">Travel resources for your family</span><span class="ar">موارد السفر لعائلتك</span></h2>
+      <div class="hl-intro-text">
+        <p class="en">For Gulf families, travel is both a necessity and a passion. From Umrah and Hajj journeys to summer holidays in cooler destinations, travel planning involves managing budgets, finding halal food and prayer facilities, and coordinating itineraries for all ages. This section provides everything from packing checklists and travel budgets to destination guides and currency conversion tools.</p>
+        <p class="ar">للعائلات الخليجية، السفر ضرورة وشغف. من رحلات العمرة والحج إلى العطلات الصيفية في وجهات أبرد، تخطيط السفر يشمل إدارة الميزانيات، إيجاد الطعام الحلال ومرافق الصلاة، وتنسيق مسارات تناسب الجميع. هذا القسم يوفر قوائم التعبئة وميزانيات السفر وأدلة الوجهات.</p>
+      </div>
     </div>
-    <div class="tools-grid">
+  </section>
 
-      <a href="/tools/return-to-hotel.html" class="tool-card reveal" style="--tc:#0097A7">
-        <div class="tool-card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 14h.01"/><path d="M15 14h.01"/><path d="M9 18h.01"/><path d="M15 18h.01"/></svg></div>
-        <div class="tool-card-title"><span class="en">Return to Hotel</span><span class="ar">العودة للفندق</span></div>
-        <div class="tool-card-desc"><span class="en">Save your hotel location. Get walking directions back from anywhere in the city.</span><span class="ar">احفظ موقع فندقك واحصل على اتجاهات للعودة من أي مكان.</span></div>
-        <div class="tool-card-link"><span class="en">Open tool →</span><span class="ar">افتح الأداة →</span></div>
-      </a>
-
-      <a href="/tools/travel-budget.html" class="tool-card reveal" style="--tc:#10B981">
-        <div class="tool-card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v12"/><path d="M8 10h4a2 2 0 0 1 0 4H8"/></svg></div>
-        <div class="tool-card-title"><span class="en">Travel Budget Calculator</span><span class="ar">حاسبة ميزانية السفر</span></div>
-        <div class="tool-card-desc"><span class="en">Set your total budget, track spending by category, and see what's left, no surprises.</span><span class="ar">حدد ميزانيتك وتتبع الإنفاق حسب الفئة، بلا مفاجآت.</span></div>
-        <div class="tool-card-link"><span class="en">Calculate →</span><span class="ar">احسب →</span></div>
-      </a>
-
-      <a href="/tools/packing-checklist.html" class="tool-card reveal" style="--tc:#8B5CF6">
-        <div class="tool-card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
-        <div class="tool-card-title"><span class="en">Packing Checklist</span><span class="ar">قائمة الحقيبة</span></div>
-        <div class="tool-card-desc"><span class="en">Smart packing list by trip type, business, beach, umrah, family. Never forget essentials again.</span><span class="ar">قائمة تعبئة ذكية حسب نوع الرحلة، عمل، شاطئ، عمرة، عائلة.</span></div>
-        <div class="tool-card-link"><span class="en">Open checklist →</span><span class="ar">افتح القائمة →</span></div>
-      </a>
-
-      <a href="/tools/currency-converter.html" class="tool-card reveal" style="--tc:#F59E0B">
-        <div class="tool-card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v12"/><path d="M16 10h-4a2 2 0 0 0-2 2v0a2 2 0 0 0 2 2h4"/></svg></div>
-        <div class="tool-card-title"><span class="en">Currency Converter</span><span class="ar">محوّل العملات</span></div>
-        <div class="tool-card-desc"><span class="en">Convert between SAR, USD, EUR, AED, and 20+ currencies. Updated daily rates.</span><span class="ar">حوّل بين الريال، الدولار، اليورو، والدرهم وأكثر من 20 عملة أخرى.</span></div>
-        <div class="tool-card-link"><span class="en">Convert →</span><span class="ar">حوّل →</span></div>
-      </a>
-
-      <a href="/tools/prayer-times.html" class="tool-card reveal" style="--tc:#059669">
-        <div class="tool-card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.2h7.6l-6 4.8 2.4 7.2-6-4.8-6 4.8 2.4-7.2-6-4.8h7.6z"/></svg></div>
-        <div class="tool-card-title"><span class="en">Prayer Times & Qibla</span><span class="ar">أوقات الصلاة والقبلة</span></div>
-        <div class="tool-card-desc"><span class="en">Find prayer times and qibla direction wherever you are in the world, no app needed.</span><span class="ar">اعرف أوقات الصلاة واتجاه القبلة أينما كنت في العالم.</span></div>
-        <div class="tool-card-link"><span class="en">Find times →</span><span class="ar">ابحث →</span></div>
-      </a>
-
-      <a href="/tools/travel-tips.html" class="tool-card reveal" style="--tc:#EF4444">
-        <div class="tool-card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></div>
-        <div class="tool-card-title"><span class="en">Travel Tips Generator</span><span class="ar">نصائح السفر</span></div>
-        <div class="tool-card-desc"><span class="en">Get destination-specific tips on safety, customs, weather, and must-see spots.</span><span class="ar">احصل على نصائح خاصة بوجهتك، الأمان، العادات، الطقس، والأماكن الضرورية.</span></div>
-        <div class="tool-card-link"><span class="en">Get tips →</span><span class="ar">احصل على نصائح →</span></div>
-      </a>
-
+  <section class="hl-section" id="tools" aria-label="Travel tools">
+    <div class="hl-container hl-wide">
+      <div class="hl-eyebrow"><span class="en">Free Tools</span><span class="ar">أدوات مجانية</span></div>
+      <h2 class="hl-h2"><span class="en">Travel tools for your family</span><span class="ar">أدوات السفر لعائلتك</span></h2>
+      <p class="hl-sub"><span class="en">All tools run locally in your browser. No data stored or shared.</span><span class="ar">جميع الأدوات تعمل محلياً. لا تُخزَّن بيانات.</span></p>
+      <div class="hl-grid hl-grid--tools">
+        
+          <a href="/tools/travel-budget.html" class="hl-card hl-card--tool" style="--hl-accent:#6abfb8">
+            <div class="hl-card-icon hl-card-icon--emoji">💼</div>
+            <div class="hl-card-title"><span class="en">Travel Budget</span><span class="ar">ميزانية السفر</span></div>
+            <div class="hl-card-desc"><span class="en">Practical tool for every family.</span><span class="ar">أداة عملية لكل أسرة.</span></div>
+            <div class="hl-card-arrow"><span class="en">Open tool →</span><span class="ar">افتح الأداة →</span></div>
+          </a>
+          <a href="/tools/packing-checklist.html" class="hl-card hl-card--tool" style="--hl-accent:#6abfb8">
+            <div class="hl-card-icon hl-card-icon--emoji">🧳</div>
+            <div class="hl-card-title"><span class="en">Packing List</span><span class="ar">قائمة الأمتعة</span></div>
+            <div class="hl-card-desc"><span class="en">Practical tool for every family.</span><span class="ar">أداة عملية لكل أسرة.</span></div>
+            <div class="hl-card-arrow"><span class="en">Open tool →</span><span class="ar">افتح الأداة →</span></div>
+          </a>
+          <a href="/tools/currency-converter.html" class="hl-card hl-card--tool" style="--hl-accent:#6abfb8">
+            <div class="hl-card-icon hl-card-icon--emoji">💱</div>
+            <div class="hl-card-title"><span class="en">Currency Converter</span><span class="ar">محول العملات</span></div>
+            <div class="hl-card-desc"><span class="en">Practical tool for every family.</span><span class="ar">أداة عملية لكل أسرة.</span></div>
+            <div class="hl-card-arrow"><span class="en">Open tool →</span><span class="ar">افتح الأداة →</span></div>
+          </a>
+          <a href="/tools/prayer-times.html" class="hl-card hl-card--tool" style="--hl-accent:#6abfb8">
+            <div class="hl-card-icon hl-card-icon--emoji">🕌</div>
+            <div class="hl-card-title"><span class="en">Prayer Times Travel</span><span class="ar">أوقات الصلاة</span></div>
+            <div class="hl-card-desc"><span class="en">Practical tool for every family.</span><span class="ar">أداة عملية لكل أسرة.</span></div>
+            <div class="hl-card-arrow"><span class="en">Open tool →</span><span class="ar">افتح الأداة →</span></div>
+          </a>
+          <a href="/tools/qibla.html" class="hl-card hl-card--tool" style="--hl-accent:#6abfb8">
+            <div class="hl-card-icon hl-card-icon--emoji">🧭</div>
+            <div class="hl-card-title"><span class="en">Qibla for Travel</span><span class="ar">اتجاه القبلة</span></div>
+            <div class="hl-card-desc"><span class="en">Practical tool for every family.</span><span class="ar">أداة عملية لكل أسرة.</span></div>
+            <div class="hl-card-arrow"><span class="en">Open tool →</span><span class="ar">افتح الأداة →</span></div>
+          </a>
+          <a href="/tools/travel-tips.html" class="hl-card hl-card--tool" style="--hl-accent:#6abfb8">
+            <div class="hl-card-icon hl-card-icon--emoji">✈️</div>
+            <div class="hl-card-title"><span class="en">Travel Tips</span><span class="ar">نصائح السفر</span></div>
+            <div class="hl-card-desc"><span class="en">Practical tool for every family.</span><span class="ar">أداة عملية لكل أسرة.</span></div>
+            <div class="hl-card-arrow"><span class="en">Open tool →</span><span class="ar">افتح الأداة →</span></div>
+          </a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- GUIDE STRIP -->
-<div class="container-xl">
+  <section class="hl-section hl-section--cream" id="guides" aria-label="Guides">
+    <div class="hl-container hl-wide">
+      <div class="hl-eyebrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/></svg><span class="en">Guides</span><span class="ar">أدلة</span></div>
+      <h2 class="hl-h2"><span class="en">Guides & Articles</span><span class="ar">أدلة ومقالات</span></h2>
+      <p class="hl-sub"><span class="en">Evidence-based guidance for Gulf families</span><span class="ar">إرشادات قائمة على الأدلة للعائلات الخليجية</span></p>
+      <div class="hl-grid hl-grid--guides">
+        
+          <a href="/guides/salalah-oman.html" class="hl-card hl-card--article">
+            <div class="hl-card-title"><span class="en">Salalah Guide</span><span class="ar">دليل صلالة</span></div>
+            <div class="hl-card-desc"><span class="en">Essential reading for Gulf families.</span><span class="ar">قراءة أساسية للعائلات الخليجية.</span></div>
+            <div class="hl-card-arrow"><span class="en">Read guide →</span><span class="ar">اقرأ الدليل →</span></div>
+          </a>
+          <a href="/guides/mecca-medina.html" class="hl-card hl-card--article">
+            <div class="hl-card-title"><span class="en">Mecca & Medina Guide</span><span class="ar">دليل مكة والمدينة</span></div>
+            <div class="hl-card-desc"><span class="en">Essential reading for Gulf families.</span><span class="ar">قراءة أساسية للعائلات الخليجية.</span></div>
+            <div class="hl-card-arrow"><span class="en">Read guide →</span><span class="ar">اقرأ الدليل →</span></div>
+          </a>
+          <a href="/guides/saudi-tourism.html" class="hl-card hl-card--article">
+            <div class="hl-card-title"><span class="en">Saudi Tourism</span><span class="ar">السياحة السعودية</span></div>
+            <div class="hl-card-desc"><span class="en">Essential reading for Gulf families.</span><span class="ar">قراءة أساسية للعائلات الخليجية.</span></div>
+            <div class="hl-card-arrow"><span class="en">Read guide →</span><span class="ar">اقرأ الدليل →</span></div>
+          </a>
+          <a href="/blog/umrah-packing-checklist-guide.html" class="hl-card hl-card--article">
+            <div class="hl-card-title"><span class="en">Umrah Packing</span><span class="ar">تجهيزات العمرة</span></div>
+            <div class="hl-card-desc"><span class="en">Essential reading for Gulf families.</span><span class="ar">قراءة أساسية للعائلات الخليجية.</span></div>
+            <div class="hl-card-arrow"><span class="en">Read guide →</span><span class="ar">اقرأ الدليل →</span></div>
+          </a>
+          <a href="/blog/family-friendly-activities-gulf-cities.html" class="hl-card hl-card--article">
+            <div class="hl-card-title"><span class="en">Family Activities</span><span class="ar">أنشطة عائلية</span></div>
+            <div class="hl-card-desc"><span class="en">Essential reading for Gulf families.</span><span class="ar">قراءة أساسية للعائلات الخليجية.</span></div>
+            <div class="hl-card-arrow"><span class="en">Read guide →</span><span class="ar">اقرأ الدليل →</span></div>
+          </a>
+      </div>
+    </div>
+  </section>
 
-    <!-- ARTICLES GRID -->
-    <section class="tools-section" id="articles">
-      <div class="section-header reveal">
-        <div class="section-label">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d='M22 11.08V12a10 10 0 1 1-5.93-9.14' polyline points='22 4 12 14.01 9 11.01'></svg>
-          <span class="en">Articles</span><span class="ar">المقالات</span>
+  <div class="hl-guide-strip">
+    <div class="hl-container">
+      <div class="hl-guide-strip-inner">
+        <div class="hl-guide-strip-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/></svg></div>
+        <div class="hl-guide-strip-content">
+          <span class="hl-guide-strip-label"><span class="en">Reading</span><span class="ar">للقراءة</span></span>
+          <span class="hl-guide-strip-title"><span class="en">Complete Salalah Guide</span><span class="ar">دليل صلالة الكامل</span></span>
         </div>
-        <h2 class="section-title"><span class="en">Latest Articles & Guides</span><span class="ar">أحدث المقالات والأدلة</span></h2>
-        <p class="section-sub"><span class="en">Evidence-based guidance for Gulf families</span><span class="ar">إرشادات قائمة على الأدلة للعائلات الخليجية</span></p>
+        <a href="/guides/salalah-oman.html" class="hl-guide-strip-link"><span class="en">Read guide →</span><span class="ar">اقرأ الدليل ←</span></a>
       </div>
-      <div class="tools-grid">
-        <a href="/blog/hotel-near-haram-vs-budget-umrah.html" class="tool-card reveal" style="--tc:#14b8a6;text-decoration:none;display:flex;flex-direction:column;">
-          <div class="tool-card-icon" style="background:var(--tc);border-radius:10px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.75rem;font-weight:700;margin-bottom:.5rem;">A</div>
-          <div class="tool-card-title" style="flex:1;font-size:.9rem;line-height:1.4;margin-bottom:.4rem;">
-            <span class="en">Hotel Near Haram vs Budget Hotel: Which Is Better for First-Time Umrah?</span><span class="ar">فندق قرب الحرم مقابل الاقتصادي: أيهما أفضل للعمرة الأولى؟</span>
-          </div>
-          <div class="tool-card-desc" style="font-size:.78rem;margin-bottom:.4rem;flex:1;">
-            <span class="en">Compare staying near the Haram vs a budget hotel for Umrah. Weigh cost, convenience, and spiritual experience.</span><span class="ar">قارن بين الإقامة قرب الحرم وفندق اقتصادي للعمرة. وازن بين التكلفة والراحة والتجربة الروحية.</span>
-          </div>
-          <div class="tool-card-link" style="margin-top:auto;font-size:.78rem;">
-            <span class="en">Read → 7 min</span><span class="ar">اقرأ ← 7 دقائق</span>
-          </div>
-        </a>
-        <a href="/blog/umrah-budget-guide-families.html" class="tool-card reveal" style="--tc:#14b8a6;text-decoration:none;display:flex;flex-direction:column;">
-          <div class="tool-card-icon" style="background:var(--tc);border-radius:10px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.75rem;font-weight:700;margin-bottom:.5rem;">A</div>
-          <div class="tool-card-title" style="flex:1;font-size:.9rem;line-height:1.4;margin-bottom:.4rem;">
-            <span class="en">Complete Umrah Budget Guide for Families: Costs, Tips, and Planning</span><span class="ar">دليل ميزانية العمرة الشامل للعائلات</span>
-          </div>
-          <div class="tool-card-desc" style="font-size:.78rem;margin-bottom:.4rem;flex:1;">
-            <span class="en">A complete breakdown of Umrah costs including flights, hotels, transportation, and meals.</span><span class="ar">تفصيل كامل لتكاليف العمرة شامل الطيران والفنادق والمواصلات والوجبات.</span>
-          </div>
-          <div class="tool-card-link" style="margin-top:auto;font-size:.78rem;">
-            <span class="en">Read → 8 min</span><span class="ar">اقرأ ← 8 دقائق</span>
-          </div>
-        </a>
-        <a href="/blog/umrah-packing-checklist-guide.html" class="tool-card reveal" style="--tc:#14b8a6;text-decoration:none;display:flex;flex-direction:column;">
-          <div class="tool-card-icon" style="background:var(--tc);border-radius:10px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.75rem;font-weight:700;margin-bottom:.5rem;">A</div>
-          <div class="tool-card-title" style="flex:1;font-size:.9rem;line-height:1.4;margin-bottom:.4rem;">
-            <span class="en">What Should You Pack for Umrah? Complete Family Checklist</span><span class="ar">ماذا تحزم للعمرة؟ قائمة شاملة للعائلة</span>
-          </div>
-          <div class="tool-card-desc" style="font-size:.78rem;margin-bottom:.4rem;flex:1;">
-            <span class="en">The ultimate Umrah packing list: ihram essentials, medications, kids' items, and what NOT to pack.</span><span class="ar">قائمة العمرة النهائية: أساسيات الإحرام والأدوية ومستلزمات الأطفال وما لا يجب حمله.</span>
-          </div>
-          <div class="tool-card-link" style="margin-top:auto;font-size:.78rem;">
-            <span class="en">Read → 9 min</span><span class="ar">اقرأ ← 9 دقائق</span>
-          </div>
-        </a>
-        <a href="/blog/family-travel-planning-without-overspending.html" class="tool-card reveal" style="--tc:#14b8a6;text-decoration:none;display:flex;flex-direction:column;">
-          <div class="tool-card-icon" style="background:var(--tc);border-radius:10px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.75rem;font-weight:700;margin-bottom:.5rem;">A</div>
-          <div class="tool-card-title" style="flex:1;font-size:.9rem;line-height:1.4;margin-bottom:.4rem;">
-            <span class="en">Family Travel Planning Without Overspending: A Gulf Family's Complete Budget Guide</span><span class="ar">تخطيط السفر العائلي دون إسراف: دليل الميزانية الشامل للعائلة الخليجية</span>
-          </div>
-          <div class="tool-card-desc" style="font-size:.78rem;margin-bottom:.4rem;flex:1;">
-            <span class="en">How to plan family trips that everyone will love without breaking the bank.</span><span class="ar">كيف تخطط لرحلات عائلية يحبها الجميع دون إفراط في الإنفاق.</span>
-          </div>
-          <div class="tool-card-link" style="margin-top:auto;font-size:.78rem;">
-            <span class="en">Read → 7 min</span><span class="ar">اقرأ ← 7 دقائق</span>
-          </div>
-        </a>
-        <a href="/blog/salalah-khareef.html" class="tool-card reveal" style="--tc:#14b8a6;text-decoration:none;display:flex;flex-direction:column;">
-          <div class="tool-card-icon" style="background:var(--tc);border-radius:10px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.75rem;font-weight:700;margin-bottom:.5rem;">A</div>
-          <div class="tool-card-title" style="flex:1;font-size:.9rem;line-height:1.4;margin-bottom:.4rem;">
-            <span class="en">Salalah's Khareef Season: The Scientific Reason This Microclimate Exists</span><span class="ar">موسم الخريف في صلالة: السبب العلمي وراء هذه الظاهرة المناخية</span>
-          </div>
-          <div class="tool-card-desc" style="font-size:.78rem;margin-bottom:.4rem;flex:1;">
-            <span class="en">Explore the unique monsoon climate of Salalah and why it creates a green paradise in the Arabian Peninsula.</span><span class="ar">استكشف المناخ الموسمي الفريد لصلالة ولماذا يخلق جنة خضراء في شبه الجزيرة العربية.</span>
-          </div>
-          <div class="tool-card-link" style="margin-top:auto;font-size:.78rem;">
-            <span class="en">Read → 5 min</span><span class="ar">اقرأ ← 5 دقائق</span>
-          </div>
-        </a>
-      </div>
-    </section>
-<div class="guide-strip reveal">
-    <div class="guide-strip-text">
-      <h3><span class="en">Planning a trip to Mecca or Madinah?</span><span class="ar">تخطط لرحلة إلى مكة أو المدينة؟</span></h3>
-      <p><span class="en">Read our complete Umrah & Hajj travel guide, from packing to budgeting, all in one place.</span><span class="ar">اقرأ دليل العمرة والحج الشامل، من التعبئة إلى الميزانية، كل شيء في مكان واحد.</span></p>
     </div>
-    <a href="/guides/mecca-medina.html" class="btn btn-gold">
-      <span class="en">Read guide →</span><span class="ar">اقرأ الدليل →</span>
-    </a>
   </div>
+
+  
+  <section class="hl-section hl-section--cream" id="latest-articles" aria-label="Latest articles">
+    <div class="hl-container hl-wide">
+      <div class="hl-eyebrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg><span class="en">Latest</span><span class="ar">أحدث المقالات</span></div>
+      <h2 class="hl-h2"><span class="en">New Articles & Guides</span><span class="ar">جديد المقالات والأدلة</span></h2>
+      <p class="hl-sub"><span class="en">Fresh content for Gulf families, updated regularly.</span><span class="ar">محتوى جديد للعائلات الخليجية، يُحدَّث باستمرار.</span></p>
+      <style>
+      .hl-article-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr)); gap:1.5rem; width:100% }
+      .hl-art-card { display:flex; flex-direction:column; border-radius:18px; overflow:hidden; background:var(--card-bg,#fff); border:1px solid rgba(5,66,65,.08); box-shadow:0 8px 30px rgba(5,66,65,.06); transition:transform .22s cubic-bezier(.22,1,.36,1), box-shadow .22s cubic-bezier(.22,1,.36,1); text-decoration:none; color:inherit }
+      .hl-art-card:hover { transform:translateY(-4px); box-shadow:0 16px 48px rgba(5,66,65,.1) }
+      .hl-art-card-img { width:100%; height:180px; object-fit:cover; display:block; background:linear-gradient(135deg,#054241,#0a6b63) }
+      .hl-art-card-body { padding:1.2rem 1.4rem 1.4rem; display:flex; flex-direction:column; flex:1 }
+      .hl-art-card-kicker { font-size:.7rem; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:#6abfb8; margin-bottom:.4rem; display:block }
+      .hl-art-card-title { font-size:.92rem; font-weight:700; line-height:1.45; color:var(--text,#1A1E24); margin-bottom:.4rem; flex:1 }
+      .hl-art-card-desc { font-size:.8rem; line-height:1.55; color:var(--text-2,#5C534A); margin-bottom:.6rem }
+      .hl-art-card-arrow { font-size:.78rem; font-weight:700; color:#6abfb8; display:flex; align-items:center; gap:.3rem; transition:gap .2s }
+      .hl-art-card:hover .hl-art-card-arrow { gap:.6rem }
+      [data-lang="ar"] .hl-art-card-arrow { flex-direction:row-reverse }
+      @media(max-width:480px){ .hl-article-grid { grid-template-columns:1fr } }
+      </style>
+      <div class="hl-article-grid">
+
+        <a href="/comparisons/saving-vs-investing-gulf-family.html" class="hl-art-card">
+          <img class="hl-art-card-img" src="/assets/images/articles/saving-investing.webp" alt="" width="600" height="340" loading="lazy" style="background:linear-gradient(135deg,#054241,#0a6b63)">
+          <div class="hl-art-card-body">
+            <span class="hl-art-card-kicker"><span class="en">Finance</span><span class="ar">المالية</span></span>
+            <span class="hl-art-card-title"><span class="en">Saving vs Investing for Gulf Families: The Complete Comparison</span><span class="ar">الادخار أم الاستثمار لأسرة خليجية؟ المقارنة الكاملة</span></span>
+            <span class="hl-art-card-desc"><span class="en">A practical comparison with real numbers, scenarios, and Gulf-specific advice.</span><span class="ar">مقارنة عملية بأرقام حقيقية وسيناريوهات ونصائح خاصة بالخليج.</span></span>
+            <span class="hl-art-card-arrow"><span class="en">Read article →</span><span class="ar">اقرأ المقال ←</span></span>
+          </div>
+        </a>
+
+        <a href="/islamic-hajj-umrah/teaching-children-allah-names.html" class="hl-art-card">
+          <img class="hl-art-card-img" src="/assets/images/articles/children-allah-names.webp" alt="" width="600" height="340" loading="lazy" style="background:linear-gradient(135deg,#b8893c,#a0752e)">
+          <div class="hl-art-card-body">
+            <span class="hl-art-card-kicker"><span class="en">Islamic</span><span class="ar">إسلاميات</span></span>
+            <span class="hl-art-card-title"><span class="en">Teaching Children Allah's 99 Names with Love</span><span class="ar">تعليم الأطفال أسماء الله الحسنى بطريقة محبّبة</span></span>
+            <span class="hl-art-card-desc"><span class="en">A practical guide with activities, stories, and a 30-day plan for Gulf parents.</span><span class="ar">دليل عملي بأنشطة وقصص وخطة 30 يوماً للآباء والأمهات.</span></span>
+            <span class="hl-art-card-arrow"><span class="en">Read article →</span><span class="ar">اقرأ المقال ←</span></span>
+          </div>
+        </a>
+
+        <a href="/blog/bmi-middle-eastern-adults.html" class="hl-art-card">
+          <img class="hl-art-card-img" src="/health-hero.webp" alt="" width="600" height="340" loading="lazy" style="background:linear-gradient(135deg,#4a8a82,#6abfb8)">
+          <div class="hl-art-card-body">
+            <span class="hl-art-card-kicker"><span class="en">Health</span><span class="ar">الصحة</span></span>
+            <span class="hl-art-card-title"><span class="en">BMI for Middle Eastern Adults: What Is a Healthy Range?</span><span class="ar">مؤشر كتلة الجسم للبالغين من الشرق الأوسط: ما هو النطاق الصحي؟</span></span>
+            <span class="hl-art-card-desc"><span class="en">Why standard BMI thresholds may not apply to Middle Eastern bodies.</span><span class="ar">لماذا قد لا تنطبق حدود BMI القياسية على سكان الشرق الأوسط.</span></span>
+            <span class="hl-art-card-arrow"><span class="en">Read article →</span><span class="ar">اقرأ المقال ←</span></span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="hl-section hl-topic-authority">
+    <div class="hl-container hl-wide">
+      <div class="hl-eyebrow"><span class="en">Topic Authority</span><span class="ar">مرجعية الموضوع</span></div>
+      <h2 class="hl-h2"><span class="en">Travel at a Glance</span><span class="ar">السفر في لمحة</span></h2>
+      <p class="hl-sub"><span class="en">Everything you need, organized for you.</span><span class="ar">كل ما تحتاج، منظم لك.</span></p>
+      <div class="hl-grid hl-grid--topic">
+        <div class="hl-card hl-card--topic">
+          <h3 class="hl-topic-title"><span class="en">Quick Tools</span><span class="ar">أدوات سريعة</span></h3>
+          <ul class="hl-topic-list"><li>→ <a href="/tools/travel-budget.html"><span class="en">Travel Budget</span><span class="ar">ميزانية السفر</span></a></li>
+<li>→ <a href="/tools/packing-checklist.html"><span class="en">Packing List</span><span class="ar">قائمة الأمتعة</span></a></li>
+<li>→ <a href="/tools/currency-converter.html"><span class="en">Currency Converter</span><span class="ar">محول العملات</span></a></li>
+</ul>
+        </div>
+        <div class="hl-card hl-card--topic">
+          <h3 class="hl-topic-title"><span class="en">Top Guides</span><span class="ar">أهم الأدلة</span></h3>
+          <ul class="hl-topic-list"><li>→ <a href="/guides/salalah-oman.html"><span class="en">Salalah Khareef</span><span class="ar">صلالة الخريف</span></a></li>
+<li>→ <a href="/guides/mecca-medina.html"><span class="en">Mecca & Medina</span><span class="ar">مكة والمدينة</span></a></li>
+<li>→ <a href="/guides/saudi-tourism.html"><span class="en">Saudi Tourism</span><span class="ar">السياحة السعودية</span></a></li>
+</ul>
+        </div>
+        <div class="hl-card hl-card--topic">
+          <h3 class="hl-topic-title"><span class="en">Learn More</span><span class="ar">المزيد</span></h3>
+          <ul class="hl-topic-list"><li>→ <a href="/blog/umrah-packing-checklist-guide.html"><span class="en">Umrah Packing</span><span class="ar">تجهيزات العمرة</span></a></li>
+<li>→ <a href="/blog/family-friendly-activities-gulf-cities.html"><span class="en">Family Activities</span><span class="ar">أنشطة عائلية</span></a></li>
+<li>→ <a href="/blog/makkah-hotels-guide-en.html"><span class="en">Makkah Hotels</span><span class="ar">فنادق مكة</span></a></li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </div>
-
-<!-- ARTICLES SECTION -->
-<section class="tools-section">
-  <div class="container-xl">
-    <div class="section-header reveal">
-      <div class="section-label"><span class="en">Travel Guides</span><span class="ar">دلائل السفر</span></div>
-      <h2 class="section-title"><span class="en">Read before you go</span><span class="ar">اقرأ قبل أن تسافر</span></h2>
-      <p class="section-sub"><span class="en">Research-backed guides for Hajj, Umrah, and Makkah travel.</span><span class="ar">دلائل مدعومة بالبحث للحج والعمرة والسفر إلى مكة.</span></p>
-    </div>
-    <div class="tools-grid">
-
-      <a href="/blog/hajj-umrah-guide-2025.html" class="tool-card reveal" style="--tc:#0097A7">
-        <div class="tool-card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.2h7.6l-6 4.8 2.4 7.2-6-4.8-6 4.8 2.4-7.2-6-4.8h7.6z"/></svg></div>
-        <div class="tool-card-title"><span class="en">Umrah Guide 2025, Everything You Need</span><span class="ar">دليل العمرة 2025, كل ما تحتاجه</span></div>
-        <div class="tool-card-desc"><span class="en">Complete Umrah guide 2025, visa requirements, costs, step-by-step rituals, packing checklist, and essential tips for first-time pilgrims from the GCC.</span><span class="ar">دليل العمرة الشامل 2025, متطلبات التأشيرة، التكاليف، مناسك العمرة خطوة بخطوة، قائمة التعبئة، ونصائح للمعتمرين الجدد من الخليج.</span></div>
-        <div class="tool-card-link"><span class="en">Read guide →</span><span class="ar">اقرأ الدليل →</span></div>
-      </a>
-
-      <a href="/blog/hajj-umrah-guide-2025-en.html" class="tool-card reveal" style="--tc:#0097A7">
-        <div class="tool-card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.2h7.6l-6 4.8 2.4 7.2-6-4.8-6 4.8 2.4-7.2-6-4.8h7.6z"/></svg></div>
-        <div class="tool-card-title"><span class="en">Umrah Guide 2025, Visa to Return</span><span class="ar">دليل العمرة 2025, من التأشيرة للعودة</span></div>
-        <div class="tool-card-desc"><span class="en">Complete Umrah guide 2025, visa requirements, costs, hotels, step-by-step rituals, and essential tips for first-time and repeat pilgrims from the GCC.</span><span class="ar">دليل العمرة الشامل 2025, متطلبات التأشيرة، التكاليف، الفنادق، مناسك العمرة خطوة بخطوة، ونصائح للمعتمرين الجدد والمتمرسين من الخليج.</span></div>
-        <div class="tool-card-link"><span class="en">Read guide →</span><span class="ar">اقرأ الدليل →</span></div>
-      </a>
-
-      <a href="/blog/makkah-hotels-guide.html" class="tool-card reveal" style="--tc:#0097A7">
-        <div class="tool-card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.2h7.6l-6 4.8 2.4 7.2-6-4.8-6 4.8 2.4-7.2-6-4.8h7.6z"/></svg></div>
-        <div class="tool-card-title"><span class="en">Best Hotels Near Masjid Al-Haram</span><span class="ar">أفضل فنادق مكة المكرمة القريبة من الحرم 2025</span></div>
-        <div class="tool-card-desc"><span class="en">Complete guide to hotels near Al-Haram, sorted by distance and price for Hajj & Umrah pilgrims.</span><span class="ar">دليل شامل للفنادق قرب الحرم، مرتبة حسب المسافة والسعر للحاج والمعتمر.</span></div>
-        <div class="tool-card-link"><span class="en">Read guide →</span><span class="ar">اقرأ الدليل →</span></div>
-      </a>
-
-      <a href="/blog/makkah-hotels-guide-en.html" class="tool-card reveal" style="--tc:#0097A7">
-        <div class="tool-card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.2h7.6l-6 4.8 2.4 7.2-6-4.8-6 4.8 2.4-7.2-6-4.8h7.6z"/></svg></div>
-        <div class="tool-card-title"><span class="en">Best Hotels Near Masjid Al-Haram Makkah 2025</span><span class="ar">أفضل فنادق مكة، English</span></div>
-        <div class="tool-card-desc"><span class="en">Complete guide to the best hotels near Masjid Al-Haram in Makkah, sorted by distance, price, and rating for Hajj and Umrah pilgrims.</span><span class="ar">دليل شامل لأفضل فنادق مكة القريبة من الحرم، مرتبة حسب المسافة والسعر والتقييم للحجاج والمعتمرين.</span></div>
-        <div class="tool-card-link"><span class="en">Read guide →</span><span class="ar">اقرأ الدليل →</span></div>
-      </a>
-      <a href="/blog/salalah-travel-guide-2025.html" class="tool-card reveal" style="--tc:#10B981">
-        <div class="tool-card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 2 8 0 5.5-4.78 10-10 10Z"/></svg></div>
-        <div class="tool-card-title"><span class="en">Salalah Travel Cost Guide 2025</span><span class="ar">تكلفة السفر إلى صلالة 2025</span></div>
-        <div class="tool-card-desc"><span class="en">Complete cost breakdown for Gulf travelers, flights, hotels, and Khareef season tips.</span><span class="ar">دليل شامل للتكاليف والفنادق والأنشطة في موسم الخريف للخليجيين.</span></div>
-        <div class="tool-card-link"><span class="en">Read guide →</span><span class="ar">اقرأ الدليل ←</span></div>
-      </a>
-
-      <a href="/blog/salalah-travel-guide-2025-en.html" class="tool-card reveal" style="--tc:#10B981">
-        <div class="tool-card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 2 8 0 5.5-4.78 10-10 10Z"/></svg></div>
-        <div class="tool-card-title"><span class="en">Salalah Travel Guide 2025, Cost Breakdown</span><span class="ar">دليل السفر إلى صلالة 2025</span></div>
-        <div class="tool-card-desc"><span class="en">Complete cost guide for Salalah, flights, hotels, food, activities from Saudi, UAE, and Kuwait.</span><span class="ar">دليل شامل لتكلفة السفر إلى صلالة 2025, الطيران، الفنادق، الأكل والأنشطة.</span></div>
-        <div class="tool-card-link"><span class="en">Read guide →</span><span class="ar">اقرأ الدليل ←</span></div>
-      </a>
-
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<!-- ═══ UNIFIED FOOTER ══════════════════════════════════════ -->
-
-
-  <!-- ═══════════════════════════════════════
-       FOOTER
-  ═══════════════════════════════════════ -->
-  <!-- ═══ UNIFIED FOOTER ══════════════════════════════════════ -->
-<!-- ═══ TOPIC AUTHORITY ═══════════════════════════════ -->
-<section class="tools-section" style="background:var(--section-bg);padding:48px 0;">
-  <div class="container-xl">
-    <div class="section-header reveal">
-      <div class="section-label"><span class="en">Topic Authority</span><span class="ar">مرجعية الموضوع</span></div>
-      <h2 class="section-title"><span class="en">Explore Family Travel</span><span class="ar">استكشف سفر العائلة</span></h2>
-      <p class="section-sub"><span class="en">Comprehensive travel guides and planning tools for Gulf families.</span><span class="ar">أدلة سفر شاملة وأدوات تخطيط للعائلات الخليجية.</span></p>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;">
-      <div class="tool-card reveal" style="--tc:#2a9a98;padding:24px;">
-        <h3 style="font-size:1rem;font-weight:700;margin:0 0 12px;color:var(--text);"><span class="en">Top Travel Guides</span><span class="ar">أهم أدلة السفر</span></h3>
-        <ul style="list-style:none;padding:0;margin:0;">
-          <li style="margin-bottom:8px;">→ <a href="/blog/complete-family-travel-activities-hub.html" style="color:var(--gold);text-decoration:none;font-size:.88rem;"><span class="en">Family Travel Activities Hub</span><span class="ar">محور أنشطة السفر العائلي</span></a></li>
-          <li style="margin-bottom:8px;">→ <a href="/blog/family-travel-planning-without-overspending.html" style="color:var(--gold);text-decoration:none;font-size:.88rem;"><span class="en">Budget Family Travel Planning</span><span class="ar">تخطيط السفر العائلي بدون إسراف</span></a></li>
-          <li style="margin-bottom:8px;">→ <a href="/blog/salalah-travel-guide-2025-en.html" style="color:var(--gold);text-decoration:none;font-size:.88rem;"><span class="en">Salalah Travel Guide 2025</span><span class="ar">دليل السفر إلى صلالة 2025</span></a></li>
-          <li style="margin-bottom:8px;">→ <a href="/blog/umrah-budget-guide-families.html" style="color:var(--gold);text-decoration:none;font-size:.88rem;"><span class="en">Umrah Budget Guide</span><span class="ar">دليل ميزانية العمرة</span></a></li>
-          <li style="margin-bottom:8px;">→ <a href="/blog/hajj-umrah-guide-2025-en.html" style="color:var(--gold);text-decoration:none;font-size:.88rem;"><span class="en">Umrah Guide 2025</span><span class="ar">دليل العمرة 2025</span></a></li>
-        </ul>
-      </div>
-      <div class="tool-card reveal" style="--tc:#2a9a98;padding:24px;">
-        <h3 style="font-size:1rem;font-weight:700;margin:0 0 12px;color:var(--text);"><span class="en">Travel Tools</span><span class="ar">أدوات السفر</span></h3>
-        <ul style="list-style:none;padding:0;margin:0;">
-          <li style="margin-bottom:8px;">→ <a href="/tools/packing-checklist.html" style="color:var(--gold);text-decoration:none;font-size:.88rem;"><span class="en">Packing Checklist</span><span class="ar">قائمة التجهيز</span></a></li>
-          <li style="margin-bottom:8px;">→ <a href="/tools/travel-budget.html" style="color:var(--gold);text-decoration:none;font-size:.88rem;"><span class="en">Travel Budget Calculator</span><span class="ar">حاسبة ميزانية السفر</span></a></li>
-          <li style="margin-bottom:8px;">→ <a href="/tools/currency-converter.html" style="color:var(--gold);text-decoration:none;font-size:.88rem;"><span class="en">Currency Converter</span><span class="ar">محول العملات</span></a></li>
-          <li style="margin-bottom:8px;">→ <a href="/tools/prayer-times.html" style="color:var(--gold);text-decoration:none;font-size:.88rem;"><span class="en">Prayer Times for Travel</span><span class="ar">أوقات الصلاة للسفر</span></a></li>
-          <li style="margin-bottom:8px;">→ <a href="/tools/qibla.html" style="color:var(--gold);text-decoration:none;font-size:.88rem;"><span class="en">Qibla Direction</span><span class="ar">اتجاه القبلة</span></a></li>
-        </ul>
-      </div>
-      <div class="tool-card reveal" style="--tc:#2a9a98;padding:24px;">
-        <h3 style="font-size:1rem;font-weight:700;margin:0 0 12px;color:var(--text);"><span class="en">Travel Deep Dives</span><span class="ar">غوص في السفر</span></h3>
-        <ul style="list-style:none;padding:0;margin:0;">
-          <li style="margin-bottom:8px;">→ <a href="/blog/family-friendly-activities-gulf-cities.html" style="color:var(--gold);text-decoration:none;font-size:.88rem;"><span class="en">Family Activities in Gulf Cities</span><span class="ar">أنشطة عائلية في مدن الخليج</span></a></li>
-          <li style="margin-bottom:8px;">→ <a href="/blog/umrah-packing-checklist-guide.html" style="color:var(--gold);text-decoration:none;font-size:.88rem;"><span class="en">Umrah Packing Checklist</span><span class="ar">قائمة تجهيز العمرة</span></a></li>
-          <li style="margin-bottom:8px;">→ <a href="/blog/makkah-hotels-guide-en.html" style="color:var(--gold);text-decoration:none;font-size:.88rem;"><span class="en">Makkah Hotels Guide</span><span class="ar">دليل فنادق مكة</span></a></li>
-          <li style="margin-bottom:8px;">→ <a href="/blog/salalah-khareef.html" style="color:var(--gold);text-decoration:none;font-size:.88rem;"><span class="en">Salalah Khareef Season Guide</span><span class="ar">دليل موسم الخريف في صلالة</span></a></li>
-          <li style="margin-bottom:8px;">→ <a href="/blog/ramadan-preparation-guide-families.html" style="color:var(--gold);text-decoration:none;font-size:.88rem;"><span class="en">Ramadan Travel Guide</span><span class="ar">دليل السفر في رمضان</span></a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
 
 <footer class="site-footer" role="contentinfo">
   <div class="footer-inner">
