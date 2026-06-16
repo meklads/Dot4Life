@@ -1594,6 +1594,63 @@
    Added 2026-06-08 to match Featured Stories width across all sections
    ══════════════════════════════════════════════════════════════ */
 
+/* ── Unified section wrapper + heading for all homepage sections ── */
+.home-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 4vw, 2rem);
+}
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding-top: 2rem;
+  padding-bottom: .75rem;
+  position: relative;
+}
+.section-head::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background: var(--gold, #6abfb8);
+  border-radius: 2px;
+}
+[data-lang="ar"] .section-head::after {
+  left: auto;
+  right: 0;
+}
+.section-head-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+.section-head-icon svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--green, #054241);
+  fill: none;
+  stroke-width: 1.8;
+}
+.section-head-title {
+  font-family: 'Almarai', sans-serif;
+  font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+  font-weight: 800;
+  color: var(--green, #054241);
+  line-height: 1.3;
+  margin: 0;
+}
+[data-lang="ar"] .section-head-title {
+  font-family: var(--font-ar);
+  direction: rtl;
+  text-align: right;
+}
+
 /* ── Shared wrapper for all homepage sections ── */
 .sections-wrap {
   max-width: 1280px;
