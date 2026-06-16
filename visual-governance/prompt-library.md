@@ -80,3 +80,9 @@ Cinematic B-roll of [object/detail/place], slow push-in, shallow depth of field,
 - Generate drafts on low-cost/unlimited models; spend credits only on approved finals.
 - Every output passes the **Compliance gate** before use. AI never bypasses review.
 - Save source + final to the member's Google Drive archive; export final WebP to `assets/images/`.
+
+---
+## 🎞️ مراحل الصور + قوة البرومبت (توجّه جوست)
+- **المرحلة الحالية:** صور **still-life / مشهد / أشياء** محتشمة (جرّة، كتاب، طعام، طبيعة) — آمنة، راقية، على الهوية. مقبولة وبداية قوية.
+- **المرحلة القادمة (ليس الآن):** صور **أشخاص** — الناس تحب ترى بشراً، يزيد التفاعل والارتباط. تُضاف لاحقاً بأشخاص **محتشمين تماماً** (لاحقة الاحتشام + بوابة الامتثال صارمة) عند جاهزية الأدوات.
+- **قوة البرومبت = دقة:** برومبت أقوى (تكوين محدّد + عدسة + إضاءة + مزاج + تفاصيل) = صورة أحسن. عامر يكتب برومبتات أدقّ دائماً.
