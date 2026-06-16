@@ -78,8 +78,7 @@
         try {
           articles = JSON.parse(xhr.responseText);
           if (!articles || !articles.length) {
-            console.warn('feed.js: empty articles array');
-            callback();
+            console.warn('feed.js: empty articles.json - static fallback preserved');
             return;
           }
           try {
@@ -92,23 +91,23 @@
             console.warn('feed.js: render error', renderErr);
           }
         } catch(e) {
-          console.warn('feed.js: fetch error on', bustUrl, e);
-          /* Clear stale cache on error */
+        } catch(e) {
+          console.warn('feed.js: invalid JSON - static fallback preserved', bustUrl, e);
           try { localStorage.removeItem(CONFIG.cacheKey); } catch(ce){}
-          try { callback(); } catch(ce2){}
+          /* no callback - static fallback stays */
         }
       } else {
-        console.warn('feed.js: HTTP ' + xhr.status + ' fetching', bustUrl);
-        /* Clear stale cache on HTTP error */
+      } else {
+        console.warn('feed.js: HTTP ' + xhr.status + ' - static fallback preserved', bustUrl);
         try { localStorage.removeItem(CONFIG.cacheKey); } catch(ce){}
-        callback();
+        /* no callback - static fallback stays */
       }
     };
     xhr.onerror = function() {
-      console.warn('feed.js: network error (cannot reach server)');
-      /* Clear stale cache on network error */
+    xhr.onerror = function() {
+      console.warn('feed.js: network error - static fallback preserved');
       try { localStorage.removeItem(CONFIG.cacheKey); } catch(ce){}
-      callback();
+      /* no callback - static fallback stays */
     };
     xhr.send();
   }
@@ -343,6 +342,10 @@
   function render() {
     var pageType = getPageType();
     var filtered = getFilteredArticles(pageType);
+    if (!articles || !articles.length) {
+      console.log('feed.js: no articles - skipping render, static fallback preserved');
+      return;
+    }
     console.log('feed.js v2: render() start | pageType=' + pageType + ' | articles=' + articles.length + ' | filtered=' + filtered.length);
 
     // Homepage → render dynamic section slots (hero · list · grid)
@@ -354,7 +357,7 @@
 
     // General latest-articles grid (homepage + all section pages)
     var grid = document.querySelector(CONFIG.containerSelector);
-    if (grid && pageType !== 'blog' && pageType !== 'archive') {
+    if (grid && pageType !== 'blog' && pageType !== 'archive' && filtered.length > 0) {
       var html = '';
       for (var i = 0; i < Math.min(filtered.length, CONFIG.maxItems); i++) {
         html += buildCardHTML(filtered[i]);
@@ -368,7 +371,7 @@
     // Blog + Archive full list
     if (pageType === 'blog' || pageType === 'archive') {
       var list = document.querySelector('#blog-list') || document.querySelector('#archive-list');
-      if (list) {
+      if (list && filtered.length > 0) {
         var html = '';
         for (var i = 0; i < Math.min(filtered.length, CONFIG.blogListMax); i++) {
           html += buildListItemHTML(filtered[i]);
