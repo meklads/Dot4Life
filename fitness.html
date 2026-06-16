@@ -913,6 +913,25 @@
 </section>
 <!-- ═══ END PREMIUM PILOT v2 ═══ -->
 
+<!-- ═══ LATEST ARTICLES ═══ -->
+<section class="hl-section hl-section--cream" id="latest-articles" aria-label="Latest articles" style="padding:clamp(2.5rem,5vw,5rem) 0;">
+  <div class="hl-container hl-wide">
+    <style>
+      .hl-article-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr)); gap:1.5rem; width:100% }
+      .hl-art-card { display:flex; flex-direction:column; border-radius:18px; overflow:hidden; background:var(--card-bg,#fff); border:1px solid rgba(5,66,65,.08); box-shadow:0 8px 30px rgba(5,66,65,.06); transition:transform .22s,box-shadow .22s; text-decoration:none; color:inherit }
+      .hl-art-card:hover { transform:translateY(-4px); box-shadow:0 16px 48px rgba(5,66,65,.1) }
+      .hl-art-card-img { width:100%; aspect-ratio:600/340; object-fit:cover; background:#e8f0ee }
+      .hl-art-card-body { padding:1rem 1.2rem 1.3rem; display:flex; flex-direction:column; gap:.3rem; flex:1 }
+      .hl-art-card-kicker { font-size:.72rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:#6abfb8 }
+      .hl-art-card-title { font-size:.95rem; font-weight:700; line-height:1.45; color:var(--text,#1A1E24) }
+      .hl-art-card-desc { font-size:.82rem; line-height:1.6; color:var(--text-2,#5C534A); margin-bottom:.3rem; flex:1 }
+      .hl-art-card-arrow { font-size:.8rem; font-weight:700; color:#6abfb8; margin-top:auto }
+      @media(max-width:480px){ .hl-article-grid { grid-template-columns:1fr } }
+    </style>
+    <div class="hl-article-grid"></div>
+  </div>
+</section>
+
 <!-- ═══ UNIFIED FOOTER ══════════════════════════════════════ -->
 <footer class="site-footer" role="contentinfo">
   <div class="footer-inner">
@@ -1005,5 +1024,6 @@
   word_count: 475
   canonical: https://www.dotforlife.com/fitness.html
 -->
+  <script src="/scripts/feed.js" defer></script>
 </body>
 </html>
