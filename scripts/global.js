@@ -278,30 +278,6 @@
     });
   })();
 
-  /* ── 11. Reading progress bar (Medium/Verywell inspired) ── */
-  (function() {
-    var bar = document.createElement('div');
-    bar.id = 'dfl-progress-bar';
-    bar.style.cssText = 'position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--gold,#b8861a),var(--gold-l,#d4a84b));z-index:9999;width:0%;transition:width .1s linear;';
-    document.body.appendChild(bar);
-
-    var ticking = false;
-    window.addEventListener('scroll', function() {
-      if (!ticking) {
-        requestAnimationFrame(function() {
-          var scrollTop = window.scrollY;
-          var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-          if (docHeight > 0) {
-            var pct = Math.min((scrollTop / docHeight) * 100, 100);
-            bar.style.width = pct + '%';
-          }
-          ticking = false;
-        });
-        ticking = true;
-      }
-    });
-  })();
-
   /* ── 12. Scroll-aware navbar (Healthline-inspired) ────── */
   (function() {
     var nav = document.getElementById('navbar') || document.getElementById('dfl-navbar');
