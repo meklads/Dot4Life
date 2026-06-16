@@ -91,19 +91,16 @@
             console.warn('feed.js: render error', renderErr);
           }
         } catch(e) {
-        } catch(e) {
           console.warn('feed.js: invalid JSON - static fallback preserved', bustUrl, e);
           try { localStorage.removeItem(CONFIG.cacheKey); } catch(ce){}
           /* no callback - static fallback stays */
         }
-      } else {
       } else {
         console.warn('feed.js: HTTP ' + xhr.status + ' - static fallback preserved', bustUrl);
         try { localStorage.removeItem(CONFIG.cacheKey); } catch(ce){}
         /* no callback - static fallback stays */
       }
     };
-    xhr.onerror = function() {
     xhr.onerror = function() {
       console.warn('feed.js: network error - static fallback preserved');
       try { localStorage.removeItem(CONFIG.cacheKey); } catch(ce){}
