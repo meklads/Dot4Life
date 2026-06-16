@@ -183,8 +183,6 @@
       </div>
     </div>
   </div>
-  <!-- ═══════════════════════════════════════
-      
 <div class="sections-wrap">
   <div class="fs-head">
     <span class="fs-head-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
@@ -198,7 +196,6 @@
 
         <!-- FEATURED (~58%) → الحمل والولادة (أهم قسم استراتيجي) -->
         <a href="/pregnancy-journey.html" class="sl-featured"
-           data-feed-featured
            data-en-href="/pregnancy-journey.html"
            data-ar-href="/pregnancy-journey.html">
           <div class="sl-featured-img">
@@ -222,7 +219,7 @@
         <!-- WHAT'S NEW (~42%) → 4 مقالات حقيقية تؤدي للأقسام -->
         <div class="sl-latest">
           <div class="sl-latest-header"><span class="en">What's New</span><span class="ar">جديد الموقع</span></div>
-          <div class="sl-latest-list" data-feed-latest>
+          <div class="sl-latest-list">
             <a href="/featured-stories/featured-story-saudi-mother.html" class="sl-latest-item"
                data-en-href="/featured-stories/featured-story-saudi-mother-en.html"
                data-ar-href="/featured-stories/featured-story-saudi-mother.html">
@@ -393,7 +390,7 @@
       <!-- ─── LEFT COLUMN: article list ─── -->
       <div class="dc-main">
 
-        <div class="dc-list" data-feed-comparisons>
+        <div class="dc-list">
 
           <a href="/blog/rent-vs-buy-comparison-guide.html" class="dc-item reveal">
             <div class="dc-item-visual">
@@ -596,9 +593,6 @@
 })();
 </script>
 
-
-  <!-- ═══════════════════════════════════════
-       
 
   <!-- ═══════════════════════════════════════
        DAILY HOME — السلام يبدأ من البيت
@@ -1018,6 +1012,86 @@
   </div><!-- /sections-wrap -->
 
 
+
+  <!-- ═══════════════════════════════════════
+       SECTION FEEDS — قصص مميزة · مقارنات · السلام يبدأ من البيت
+       (populated dynamically by feed.js)
+  ═══════════════════════════════════════ -->
+
+  <!-- قصص مميزة / Featured Stories -->
+  <section class="hl-section hl-section--cream" style="padding:clamp(2.5rem,5vw,5rem) 0;"
+           id="feed-section-featured-stories" aria-label="Featured Stories"
+           data-feed-section="featured-stories">
+    <div class="hl-container hl-wide" style="max-width:1280px;margin:0 auto;padding:0 clamp(1rem,4vw,2.5rem);">
+      <div class="hl-eyebrow" style="display:flex;align-items:center;gap:.5rem;font-size:.82rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#fd781c;margin-bottom:.75rem;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/></svg>
+        <span class="en">Featured Stories</span><span class="ar">قصص مميزة</span>
+      </div>
+      <h2 class="hl-h2" style="font-family:'Almarai','Cinzel',Georgia,serif;font-size:clamp(1.4rem,3vw,1.9rem);font-weight:800;line-height:1.35;color:var(--text,#1A1E24);margin:0 0 .3rem;">
+        <span class="en">Real Stories from Gulf Families</span><span class="ar">قصص حقيقية من عائلات خليجية</span>
+      </h2>
+      <p class="hl-sub" style="font-size:clamp(.92rem,1.2vw,1.05rem);color:var(--text-2,#5C534A);line-height:1.75;margin:0 0 2rem;max-width:640px;">
+        <span class="en">Heartwarming journeys and real-life experiences.</span><span class="ar">رحلات ملهمة وتجارب حقيقية من عائلات مثلك.</span>
+      </p>
+      <style>
+        #feed-section-featured-stories .hl-art-card-kicker,
+        #feed-section-featured-stories .hl-art-card-arrow { color:#fd781c }
+        #feed-section-featured-stories .hl-art-card { border-color:rgba(253,120,28,.15) }
+        #feed-section-featured-stories .hl-art-card:hover { box-shadow:0 16px 48px rgba(253,120,28,.1) }
+      </style>
+      <div class="hl-article-grid hl-feed-grid"></div>
+    </div>
+  </section>
+
+  <!-- مقارنات / Comparisons -->
+  <section class="hl-section hl-section--cream" style="padding:clamp(2.5rem,5vw,5rem) 0;"
+           id="feed-section-comparisons" aria-label="Comparisons"
+           data-feed-section="comparisons">
+    <div class="hl-container hl-wide" style="max-width:1280px;margin:0 auto;padding:0 clamp(1rem,4vw,2.5rem);">
+      <div class="hl-eyebrow" style="display:flex;align-items:center;gap:.5rem;font-size:.82rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#6abfb8;margin-bottom:.75rem;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>
+        <span class="en">Comparisons</span><span class="ar">مقارنات</span>
+      </div>
+      <h2 class="hl-h2" style="font-family:'Almarai','Cinzel',Georgia,serif;font-size:clamp(1.4rem,3vw,1.9rem);font-weight:800;line-height:1.35;color:var(--text,#1A1E24);margin:0 0 .3rem;">
+        <span class="en">Side-by-Side Comparisons</span><span class="ar">مقارنات موضوعية لاتخاذ القرار</span>
+      </h2>
+      <p class="hl-sub" style="font-size:clamp(.92rem,1.2vw,1.05rem);color:var(--text-2,#5C534A);line-height:1.75;margin:0 0 2rem;max-width:640px;">
+        <span class="en">Evidence-based comparisons to help your family make informed decisions.</span><span class="ar">مقارنات قائمة على الأدلة لمساعدة عائلتك على اتخاذ قرارات مستنيرة.</span>
+      </p>
+      <style>
+        #feed-section-comparisons .hl-art-card-kicker,
+        #feed-section-comparisons .hl-art-card-arrow { color:#6abfb8 }
+        #feed-section-comparisons .hl-art-card { border-color:rgba(106,191,184,.15) }
+        #feed-section-comparisons .hl-art-card:hover { box-shadow:0 16px 48px rgba(106,191,184,.12) }
+      </style>
+      <div class="hl-article-grid hl-feed-grid"></div>
+    </div>
+  </section>
+
+  <!-- السلام يبدأ من البيت / Peace Capsules -->
+  <section class="hl-section hl-section--cream" style="padding:clamp(2.5rem,5vw,5rem) 0;"
+           id="feed-section-peace-capsules" aria-label="Peace Capsules"
+           data-feed-section="peace-capsules">
+    <div class="hl-container hl-wide" style="max-width:1280px;margin:0 auto;padding:0 clamp(1rem,4vw,2.5rem);">
+      <div class="hl-eyebrow" style="display:flex;align-items:center;gap:.5rem;font-size:.82rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#b8893c;margin-bottom:.75rem;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        <span class="en">Peace Begins at Home</span><span class="ar">السلام يبدأ من البيت</span>
+      </div>
+      <h2 class="hl-h2" style="font-family:'Almarai','Cinzel',Georgia,serif;font-size:clamp(1.4rem,3vw,1.9rem);font-weight:800;line-height:1.35;color:var(--text,#1A1E24);margin:0 0 .3rem;">
+        <span class="en">Mindfulness & Family Peace</span><span class="ar">وعي وسكينة للعائلة</span>
+      </h2>
+      <p class="hl-sub" style="font-size:clamp(.92rem,1.2vw,1.05rem);color:var(--text-2,#5C534A);line-height:1.75;margin:0 0 2rem;max-width:640px;">
+        <span class="en">Simple practices to turn your home into a sanctuary of calm.</span><span class="ar">ممارسات بسيطة لتحويل منزلك إلى ملاذ من السكينة.</span>
+      </p>
+      <style>
+        #feed-section-peace-capsules .hl-art-card-kicker,
+        #feed-section-peace-capsules .hl-art-card-arrow { color:#b8893c }
+        #feed-section-peace-capsules .hl-art-card { border-color:rgba(184,137,60,.15) }
+        #feed-section-peace-capsules .hl-art-card:hover { box-shadow:0 16px 48px rgba(184,137,60,.1) }
+      </style>
+      <div class="hl-article-grid hl-feed-grid"></div>
+    </div>
+  </section>
 
 <!-- ═══════════════════════════════════════
        NEWSLETTER / FRIDAY LETTER
@@ -1773,38 +1847,6 @@
   word_count: 3623
   canonical: https://www.dotforlife.com/index.html
 -->
-  <script src="/scripts/feed.js?v=20260608-4" defer></script>
-  <script>
-  /* ═══ Feed fallback watchdog ═══
-     If feed.js didn't render section feeds within 8s, show a visible message.
-     This runs after feed.js (deferred) has had time to execute. */
-  (function(){
-    var checkInterval = setInterval(function(){
-      var cards = document.querySelectorAll('[data-feed-section] .hl-art-card');
-      if (cards.length > 0) {
-        clearInterval(checkInterval);
-        return;
-      }
-      var grids = document.querySelectorAll('.hl-feed-grid');
-      var allEmpty = true;
-      for (var i = 0; i < grids.length; i++) {
-        if (grids[i].children.length > 0) { allEmpty = false; break; }
-      }
-      if (!allEmpty) { clearInterval(checkInterval); return; }
-    }, 500);
-    // After 8 seconds, if still empty, show fallback
-    setTimeout(function(){
-      clearInterval(checkInterval);
-      var grids = document.querySelectorAll('.hl-feed-grid');
-      for (var i = 0; i < grids.length; i++) {
-        if (grids[i].children.length === 0) {
-          grids[i].innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:2rem;color:var(--text-2,#5C534A);font-size:.9rem;">' +
-            '<span class="en">Loading articles…</span><span class="ar">جاري تحميل المقالات…</span>' +
-            '</div>';
-        }
-      }
-    }, 8000);
-  })();
-  </script>
+  <script src="/scripts/feed.js" defer></script>
 </body>
 </html>
