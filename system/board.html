@@ -119,6 +119,16 @@ const VG=[
  {k:'سير العمل',f:'workflow-integration.md'},
  {k:'التنفيذ بالمنصة',f:'platform-implementation.md'},
  {k:'قاعدة المعرفة',f:'knowledge-base.md'},
+ {g:'القياس والتطوّر'},
+ {k:'📊 لوحة الصحة (حيّة)',live:true},
+ {k:'إطار المؤشرات KPI',f:'intelligence/01-kpi-framework.md'},
+ {k:'محرّك تنقيط الجودة',f:'intelligence/02-quality-scoring-engine.md'},
+ {k:'لوحات حسب الدور',f:'intelligence/03-health-dashboards.md'},
+ {k:'التطوّر والإصدارات',f:'intelligence/04-evolution-versioning.md'},
+ {k:'حلقة التعلّم',f:'intelligence/05-learning-loop.md'},
+ {k:'التدريب والتبنّي',f:'intelligence/06-training-adoption.md'},
+ {k:'الإنذار وكشف المخاطر',f:'intelligence/07-alert-risk-detection.md'},
+ {k:'التوسّع والمرونة',f:'intelligence/08-scalability-expansion.md'},
 ];
 async function sha256(t){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(t));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
 async function tryEnter(){const h=await sha256($('#pw').value);if(h===PW_HASH){sessionStorage.setItem('dfl_board_ok','1');show()}else $('#err').textContent='كلمة المرور غير صحيحة'}
@@ -141,9 +151,26 @@ function renderVG(){if(vgInit)return;vgInit=true;
   $('#vgnav').innerHTML=VG.map((x,i)=>x.g?`<span class="grp">${x.g}</span>`:`<button data-i="${i}">${x.k}</button>`).join('');
   document.querySelectorAll('#vgnav button').forEach(btn=>btn.onclick=()=>{
     document.querySelectorAll('#vgnav button').forEach(z=>z.classList.remove('on'));btn.classList.add('on');
-    loadVG(VG[btn.dataset.i].f)});
+    const it=VG[btn.dataset.i];if(it.live){renderHealth()}else{loadVG(it.f)}});
   const first=$('#vgnav button');if(first){first.classList.add('on');loadVG(VG.find(x=>x.f).f)}}
 async function loadVG(file){$('#vgdoc').innerHTML='جارٍ التحميل…';try{const t=await (await fetch(VGB+file+'?_='+Date.now())).text();$('#vgdoc').innerHTML=marked.parse(t)}catch(e){$('#vgdoc').innerHTML='تعذّر تحميل الوثيقة.'}}
+function kpiColor(k){if(k.value==null)return '#9aa7a3';const v=k.value,t=k.target,w=k.warn;
+  if(k.invert){if(v<=t)return '#1f9d57';if(v<=w)return '#e0a400';return '#c0392b'}
+  if(v>=t)return '#1f9d57';if(v>=w)return '#e0a400';return '#c0392b'}
+async function renderHealth(){$('#vgdoc').innerHTML='جارٍ تحميل لوحة الصحة…';
+  try{const m=await (await fetch('governance-metrics.json?_='+Date.now())).json();
+    const cards=m.kpis.map(k=>{const c=kpiColor(k);const val=k.value==null?'—':k.value+(k.unit||'');
+      const tgt=(k.invert?'≤ ':'≥ ')+k.target+(k.unit||'');
+      return `<div class="metric" style="border-right:4px solid ${c}"><div class="v" style="color:${c}">${val}</div><div class="l">${k.label}</div><div class="l" style="margin-top:.2rem">الهدف: ${tgt}</div></div>`}).join('');
+    const al=(m.alerts&&m.alerts.length)?m.alerts.map(a=>`<li>${a.severity||''} — ${a.msg||a}</li>`).join(''):'<li>لا إنذارات نشطة ✅</li>';
+    const sw=m.scoring_weights||{};
+    $('#vgdoc').innerHTML=`<h1>📊 لوحة صحة الحوكمة</h1>
+      <div class="docnote" style="margin:0 0 1rem">آخر تحديث: ${m.updated||'—'} · المصدر: <code>system/governance-metrics.json</code> (يملؤه المدير البصري). «—» = بانتظار البيانات.</div>
+      <div class="traction">${cards}</div>
+      <h2>الإنذارات النشطة</h2><ul>${al}</ul>
+      <h2>أوزان التنقيط</h2><p>العلامة ${sw.brand}% · الاحتشام ${sw.modesty}% · العاطفي ${sw.emotional}% · التقني ${sw.technical}% · برومبت AI ${sw.ai_prompt}% — عتبة النجاح ${sw.pass_threshold}/100، حدّ الاحتشام ${sw.modesty_min}.</p>
+      <div class="docnote">تُحدَّث الأرقام تلقائياً عند تعديل ملف البيانات و git push.</div>`;
+  }catch(e){$('#vgdoc').innerHTML='تعذّر تحميل لوحة الصحة (governance-metrics.json).'}}
 
 let DATA=null,MEMBERS={};const LS='dfl_board_overrides';
 const ov=()=>JSON.parse(localStorage.getItem(LS)||'{}');
