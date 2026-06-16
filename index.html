@@ -43,7 +43,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Almarai:wght@300;400;700&display=swap" rel="stylesheet"/>
   <link rel="preload" as="image" href="/d4l1.webp" fetchpriority="high"/>
   <link rel="stylesheet" href="/styles/global.css?v=20260608"/>
-    <link rel="stylesheet" href="/styles/home.css?v=20260608o">
+    <link rel="stylesheet" href="/styles/home.css?v=20260608p">
 
 <script src="/scripts/global.js?v=20260608" defer></script>
   <link rel="alternate" hreflang="ar" href="https://www.dotforlife.com/" />
@@ -138,12 +138,12 @@
 @media(max-width:768px){ .dc-side-ad{flex-direction:column} .dc-side-ad-img{flex:none;width:100%;min-height:160px;aspect-ratio:3/1} .dc-side-ad-img::after{background:linear-gradient(to bottom,transparent 50%,rgba(255,255,255,.08))} }
 @media(max-width:480px){ .dc-side-ad{border-radius:16px} .dc-side-ad-body{padding:1rem 1.1rem} .dc-side-ad-img{min-height:130px} }
 
-/* ── Pregnancy banner (merged 2 card slots) ── */
+/* ── Pregnancy banner — full background image ── */
 .dc-side-banner {
   position: relative;
   display: flex;
   flex-direction: row;
-  align-items: stretch;
+  align-items: flex-end;
   text-decoration: none;
   border-radius: 22px;
   overflow: hidden;
@@ -151,36 +151,27 @@
   box-shadow: 0 2px 4px rgba(5,66,65,.04), 0 12px 32px rgba(5,66,65,.08);
   transition: transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s ease;
   border: none;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .dc-side-banner:hover {
   transform: translateY(-4px);
   box-shadow: 0 4px 8px rgba(5,66,65,.06), 0 20px 48px rgba(5,66,65,.12);
 }
 .dc-side-banner--pregnancy {
-  background: linear-gradient(145deg, #faf5f0 0%, #f0e8e0 25%, #e0eae8 60%, #d5e8e4 100%);
+  background-image: url('/assets/images/banner-pregnancy.webp');
   border-top: 3px solid #d48a8a;
 }
-.dc-side-banner-img {
-  flex: 0 0 38%;
-  min-height: 400px;
-  overflow: hidden;
-  position: relative;
-  order: 2;
-}
-.dc-side-banner-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
 .dc-side-banner-body {
-  flex: 1;
-  padding: 1.2rem 1.2rem;
+  width: 100%;
+  padding: 2rem 1.5rem 1.8rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   position: relative;
-  order: 1;
+  z-index: 1;
+  /* directly over the image — no background panel */
 }
 .dc-side-banner-pill {
   display: inline-block;
@@ -192,29 +183,37 @@
   text-transform: uppercase;
   margin-bottom: .6rem;
   align-self: flex-start;
-  background: rgba(212,138,138,.15);
-  color: #8a5a5a;
+  background: rgba(255,255,255,.82);
+  color: #3a7a74;
+  backdrop-filter: blur(2px);
 }
-[data-lang="ar"] .dc-side-banner-pill { font-family: var(--font-ar); }
+[data-lang="ar"] .dc-side-banner-pill {
+  font-family: var(--font-ar);
+}
 .dc-side-banner-title {
   font-size: .95rem;
   font-weight: 800;
-  color: #1A1410;
+  color: #1A5A54;
   margin-bottom: .5rem;
   line-height: 1.35;
 }
-[data-lang="ar"] .dc-side-banner-title { font-family: var(--font-ar); }
+[data-lang="ar"] .dc-side-banner-title {
+  font-family: var(--font-ar);
+}
 .dc-side-banner-desc {
   font-size: .72rem;
-  color: #5C534A;
+  color: #2a6a64;
   line-height: 1.6;
   margin-bottom: .8rem;
+  max-width: 75%;
 }
-[data-lang="ar"] .dc-side-banner-desc { font-family: var(--font-ar); }
+[data-lang="ar"] .dc-side-banner-desc {
+  font-family: var(--font-ar);
+}
 .dc-side-banner-cta {
   font-size: .8rem;
   font-weight: 700;
-  color: #8a5a5a;
+  color: #b87070;
   margin-top: auto;
   display: flex;
   align-items: center;
@@ -222,20 +221,34 @@
   transition: gap .25s;
 }
 .dc-side-banner:hover .dc-side-banner-cta { gap: .6rem; }
+/* RTL overrides */
 [data-lang="ar"] .dc-side-banner {
-  flex-direction: row-reverse;
+  direction: rtl;
+  text-align: right;
 }
+[data-lang="ar"] .dc-side-banner-body {
+  text-align: right;
+  align-items: flex-end;
+  padding-right: 40%;
+  padding-left: 1.5rem;
+}
+[data-lang="ar"] .dc-side-banner-pill {
+  align-self: flex-end;
+}
+[data-lang="ar"] .dc-side-banner-desc {
+  max-width: 100%;
+}
+/* Responsive */
 @media(max-width:768px){
-  .dc-side-banner{flex-direction:column; min-height:auto}
-  .dc-side-banner-img{flex:none; width:100%; min-height:200px; order:0}
-  .dc-side-banner-body{order:0; padding:1.2rem 1.4rem}
-  [data-lang="ar"] .dc-side-banner{flex-direction:column}
+  .dc-side-banner{min-height:380px; align-items:flex-end}
+  .dc-side-banner-body{padding:1.5rem 1.2rem}
+  .dc-side-banner-desc{max-width:100%}
+  [data-lang="ar"] .dc-side-banner-body{padding-right:1.2rem}
 }
 @media(max-width:480px){
-  .dc-side-banner{border-radius:18px}
-  .dc-side-banner-img{min-height:160px}
-  .dc-side-banner-body{padding:1rem 1.2rem}
-  .dc-side-banner-title{font-size:.95rem}
+  .dc-side-banner{border-radius:18px; min-height:320px}
+  .dc-side-banner-body{padding:1.2rem 1rem}
+  .dc-side-banner-title{font-size:.9rem}
 }
 @media(max-width:900px){.dc-wrap{overflow-x:hidden}} .dc-side,.dc-main{min-width:0}
 </style>
@@ -579,9 +592,7 @@
             <div class="dc-side-banner-desc"><span class="en">Follow your baby's growth with our due-date calculator and expert guides — calmly and confidently.</span><span class="ar">تابعي نموّ طفلك بحاسبة موعد الولادة وأدلة الخبراء — بهدوء وثقة.</span></div>
             <span class="dc-side-banner-cta"><span class="en">Start tracking →</span><span class="ar">← ابدئي المتابعة</span></span>
           </div>
-          <div class="dc-side-banner-img">
-            <img src="/assets/images/banner-pregnancy.webp" alt="Pregnancy journey" width="2048" height="2048" loading="lazy" fetchpriority="high">
-          </div>
+
         </a>
 
         <a href="/travel.html" class="dc-side-ad dc-side-ad--tourism">
@@ -2018,6 +2029,6 @@
   word_count: 3623
   canonical: https://www.dotforlife.com/index.html
 -->
-  <script src="/scripts/feed.js?v=20260608o" defer></script>
+  <script src="/scripts/feed.js?v=20260608p" defer></script>
 </body>
 </html>
