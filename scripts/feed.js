@@ -10,7 +10,7 @@
 (function() {
   'use strict';
 
-  var FEED_VERSION = 2;  // bump to invalidate all caches on deploy
+  var FEED_VERSION = 3;  // bump to invalidate all caches on deploy
 
   var CONFIG = {
     jsonUrl: '/articles.json',
@@ -29,6 +29,7 @@
   /* Clear any stale old-version caches */
   try { localStorage.removeItem('dfl-feed-cache'); } catch(e){}
   try { localStorage.removeItem('dfl-feed-cache-v1'); } catch(e){}
+  try { localStorage.removeItem('dfl-feed-cache-v2'); } catch(e){}
 
   /* ═══ Page Type ═══ */
 
