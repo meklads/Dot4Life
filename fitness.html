@@ -173,7 +173,7 @@
        TODAY'S DATE, Daily Rose
   ═══════════════════════════════════════ -->
   <div class="hero-stats" style="margin:3rem auto;max-width:1080px;padding:0 1.5rem;">
-    <div class="hero-stats-inner" style="background:linear-gradient(135deg,#b8705a 0%,#d49480 100%);box-shadow:0 8px 40px rgba(184,112,90,.15);border:1px solid rgba(184,112,90,.1);position:relative;overflow:hidden;">
+    <div class="hero-stats-inner" style="background:linear-gradient(135deg,#054241 0%,#0a6b63 100%);box-shadow:0 8px 40px rgba(5,66,65,.2);border:1px solid rgba(106,191,184,.15);position:relative;overflow:hidden;">
       <div style="position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.06);pointer-events:none;"></div>
       <div style="position:absolute;bottom:-40px;left:-40px;width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,.04);pointer-events:none;"></div>
       <div style="position:absolute;top:20%;right:30%;width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,.03);pointer-events:none;"></div>
@@ -204,60 +204,109 @@
 <!-- ════════════════════════════════════════════════════════════ -->
 
 <div id="sub-nav">
+  <!-- Graphic retouch: subtle fitness motif overlay on green bar -->
+  <div class="fl-subnav-motif" aria-hidden="true">
+    <svg viewBox="0 0 1400 48" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
+      <path d="M0,24 Q100,10 200,20 T400,15 T600,22 T800,18 T1000,24 T1200,16 T1400,20" fill="none" stroke="#6abfb8" stroke-width="1" opacity=".3"/>
+      <path d="M0,30 Q150,18 300,28 T550,22 T800,28 T1100,20 T1400,26" fill="none" stroke="#fd781c" stroke-width=".8" stroke-dasharray="3 5" opacity=".2"/>
+      <circle cx="200" cy="15" r="1.5" fill="#6abfb8" opacity=".25"/>
+      <circle cx="500" cy="25" r="1.5" fill="#fd781c" opacity=".2"/>
+      <circle cx="800" cy="12" r="1.5" fill="#6abfb8" opacity=".2"/>
+      <circle cx="1100" cy="28" r="1.5" fill="#fd781c" opacity=".2"/>
+    </svg>
+  </div>
   <div class="sub-nav-inner">
     <a href="/tools/bmi-calculator.html"><span class="en">BMI</span><span class="ar">حاسبة BMI</span></a>
     <a href="/tools/water-calculator.html"><span class="en">Water</span><span class="ar">الماء</span></a>
     <a href="/tools/calorie-calculator.html"><span class="en">Calories</span><span class="ar">السعرات</span></a>
     <a href="/tools/body-fat-calculator.html"><span class="en">Body Fat</span><span class="ar">الدهون</span></a>
     <a href="/tools/pregnancy-calculator.html"><span class="en">Pregnancy</span><span class="ar">حاسبة الحمل</span></a>
-    <a href="/pregnancy-journey.html"><span class="en">Journey <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2v6m0 0l-3-3m3 3l3-3"/><path d="M12 16v6m0 0l-3-3m3 3l3-3"/><path d="M2 12h6m0 0L5 9m3 3l-3 3"/><path d="M16 12h6m0 0l-3-3m3 3l-3 3"/></svg></span><span class="ar">رحلة الحمل <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2v6m0 0l-3-3m3 3l3-3"/><path d="M12 16v6m0 0l-3-3m3 3l3-3"/><path d="M2 12h6m0 0L5 9m3 3l-3 3"/><path d="M16 12h6m0 0l-3-3m3 3l-3 3"/></svg></span></a>
+    <a href="/pregnancy-journey.html"><span class="en">Journey <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span><span class="ar">رحلة الحمل <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span></a>
   </div>
 </div>
 
-<!-- ═══ PREMIUM DESIGN LANGUAGE — PILOT ═══
+<!-- ═══ PREMIUM DESIGN LANGUAGE — PILOT v2 ═══
      Applied per 10-premium-design-language.md
      Body only — header/hero/nav/sub-nav/footer untouched
      Scoped to .fl-pilot — does not leak to other pages
 ═══ -->
 <style>
-/* ── Premium Design Language: fitness.html pilot ── */
+/* ── Premium Design Language v2: fitness.html pilot ── */
+/* Depth · contrast · warmth · graphic retouch per section */
+
 .fl-pilot {
+  /* brand palette */
   --fl-orange: #fd781c;
   --fl-green: #054241;
   --fl-teal: #6abfb8;
-  --fl-teal-soft: rgba(106,191,184,.12);
-  --fl-teal-mid: rgba(106,191,184,.25);
+  --fl-teal-soft: rgba(106,191,184,.15);
+  --fl-teal-mid: rgba(106,191,184,.28);
+  --fl-teal-deep: rgba(5,66,65,.1);
   --fl-cream: #FAF8F4;
   --fl-white: #FFFFFF;
   --fl-text: #1A1E24;
   --fl-text-soft: #5C534A;
-  --fl-grad-warm: linear-gradient(145deg, #f3f8f6 0%, #faf8f4 100%);
-  --fl-grad-cool: linear-gradient(145deg, #eaf5f2 0%, #f5f0e8 100%);
+  /* warm grays only — no cool slate */
+  --fl-text-muted: #7A6F64;
+  /* deeper, more visible gradients (not pale) */
+  --fl-grad-warm: linear-gradient(145deg, #d4e8e4 0%, #eef5f2 35%, #faf8f4 100%);
+  --fl-grad-cool: linear-gradient(145deg, #c8ddd9 0%, #e8f0ec 40%, #f5f0e8 100%);
+  --fl-grad-energy: linear-gradient(135deg, rgba(253,120,28,.06) 0%, rgba(106,191,184,.08) 50%, rgba(5,66,65,.04) 100%);
   --fl-grad-dark: linear-gradient(145deg, #054241 0%, #0a6b63 100%);
   --fl-grad-accent: linear-gradient(135deg, #fd781c 0%, #faa05a 100%);
+  /* radii */
   --fl-radius-lg: 24px;
   --fl-radius-md: 20px;
   --fl-radius-sm: 16px;
-  --fl-shadow: 0 8px 32px rgba(5,66,65,.07);
-  --fl-shadow-hover: 0 16px 48px rgba(5,66,65,.12);
+  /* shadows with more depth */
+  --fl-shadow: 0 8px 32px rgba(5,66,65,.09);
+  --fl-shadow-hover: 0 18px 52px rgba(5,66,65,.16);
+  --fl-shadow-deep: 0 24px 64px rgba(5,66,65,.12);
   --fl-transition: .35s cubic-bezier(.22,1,.36,1);
 }
 .fl-pilot {
-  padding: 3rem 0 5rem;
+  padding: clamp(2rem,4vw,4rem) 0 clamp(3rem,5vw,5rem);
   overflow: hidden;
+  position: relative;
+  background:
+    radial-gradient(ellipse 60% 40% at 0% 10%, rgba(106,191,184,.04) 0%, transparent 100%),
+    radial-gradient(ellipse 40% 30% at 100% 90%, rgba(253,120,28,.03) 0%, transparent 100%);
 }
 .fl-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 clamp(16px,3vw,24px);
   width: 100%;
+}
+/* ── SECTION DIVIDER (fitness motif: energy line) ── */
+.fl-section-divider {
+  position: relative;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, rgba(106,191,184,.2) 30%, rgba(253,120,28,.15) 50%, rgba(106,191,184,.2) 70%, transparent 100%);
+  margin: 0 auto 2.5rem;
+  max-width: 80%;
+}
+/* ── DECORATIVE MOTIF (per section background) ── */
+.fl-section-motif {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+.fl-section-motif svg {
+  width: 100%;
+  height: 100%;
+  opacity: .5;
 }
 /* ── Bento grid ── */
 .fl-bento {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin-bottom: 3rem;
+  gap: clamp(16px,2vw,24px);
+  margin-bottom: clamp(2rem,3vw,3.5rem);
+  position: relative;
+  z-index: 1;
 }
 .fl-card {
   position: relative;
@@ -271,26 +320,26 @@
   flex-direction: column;
   background: var(--fl-white);
   box-shadow: var(--fl-shadow);
-  border: 1px solid rgba(5,66,65,.06);
+  border: 1px solid rgba(5,66,65,.08);
   min-height: 0;
 }
 .fl-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-7px);
   box-shadow: var(--fl-shadow-hover);
 }
-/* Card sizes */
+/* ── Card sizes ── */
 .fl-card--lg { grid-column: span 2; grid-row: span 2; }
 .fl-card--md { grid-column: span 1; grid-row: span 1; }
 .fl-card--sm { grid-column: span 1; grid-row: span 1; }
-/* Card with image fill */
+/* ── Card media ── */
 .fl-card-media {
   position: relative;
   width: 100%;
-  height: 200px;
+  height: clamp(160px,18vw,220px);
   overflow: hidden;
   flex-shrink: 0;
 }
-.fl-card--lg .fl-card-media { height: 280px; }
+.fl-card--lg .fl-card-media { height: clamp(200px,24vw,300px); }
 .fl-card-media img,
 .fl-card-media svg {
   width: 100%;
@@ -298,183 +347,227 @@
   object-fit: cover;
   display: block;
 }
+/* dim overlay — deeper gradient for more contrast */
 .fl-card-dim {
   position: absolute;
   inset: 0;
-  background: linear-gradient(0deg, rgba(5,66,65,.5) 0%, transparent 50%);
+  background: linear-gradient(0deg, rgba(5,66,65,.6) 0%, rgba(5,66,65,.05) 45%, transparent 65%);
   pointer-events: none;
 }
-/* Card body */
+/* ── Card body ── */
 .fl-card-body {
-  padding: 20px 22px 22px;
+  padding: clamp(16px,2vw,22px) clamp(18px,2vw,26px);
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: clamp(4px,.6vw,8px);
 }
-.fl-card--lg .fl-card-body { padding: 22px 26px 26px; }
+.fl-card--lg .fl-card-body { padding: clamp(18px,2.2vw,26px); }
 .fl-card-tag {
   display: inline-flex;
   align-items: center;
   padding: 4px 14px;
   border-radius: 999px;
-  font-size: .7rem;
+  font-size: clamp(.6rem,.7vw,.7rem);
   font-weight: 700;
   letter-spacing: .04em;
   text-transform: uppercase;
   background: var(--fl-teal-soft);
   color: var(--fl-green);
-  width: -moz-fit-content;
   width: fit-content;
   margin-bottom: 2px;
+  border: 1px solid rgba(106,191,184,.15);
 }
 .fl-card-body h3 {
-  font-size: 1.05rem;
+  font-size: clamp(1rem,1.3vw,1.1rem);
   font-weight: 800;
   line-height: 1.3;
   letter-spacing: -.02em;
   margin: 0;
+  color: var(--fl-text);
 }
-.fl-card--lg .fl-card-body h3 { font-size: 1.25rem; }
+.fl-card--lg .fl-card-body h3 { font-size: clamp(1.1rem,1.6vw,1.25rem); }
 .fl-card-body p {
-  font-size: .85rem;
+  font-size: clamp(.8rem,.95vw,.85rem);
   color: var(--fl-text-soft);
-  line-height: 1.55;
+  line-height: 1.6;
   margin: 0;
   flex: 1;
 }
 .fl-card-link {
-  font-size: .8rem;
+  font-size: clamp(.75rem,.85vw,.8rem);
   font-weight: 700;
   color: var(--fl-teal);
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  margin-top: 8px;
+  margin-top: clamp(4px,.5vw,8px);
+  transition: gap .25s ease;
+}
+.fl-card:hover .fl-card-link { gap: 8px; }
+
+/* ── Gradient cards (no image) — DEEPER VISIBLE GRADIENTS ── */
+.fl-card-grad {
+  padding: clamp(20px,2.5vw,30px);
+  min-height: clamp(160px,20vw,200px);
+  justify-content: center;
+  border: 1px solid rgba(5,66,65,.1);
+}
+.fl-card-grad.fl-card-grad--warm {
+  background: var(--fl-grad-warm);
+  box-shadow: var(--fl-shadow), inset 0 0 0 1px rgba(5,66,65,.04);
+}
+.fl-card-grad.fl-card-grad--cool {
+  background: var(--fl-grad-cool);
+  box-shadow: var(--fl-shadow), inset 0 0 0 1px rgba(5,66,65,.04);
+}
+.fl-card-grad.fl-card-grad--energy {
+  background: var(--fl-grad-energy);
+  box-shadow: var(--fl-shadow), inset 0 0 0 1px rgba(5,66,65,.04);
+}
+.fl-card-grad .fl-card-body { padding: 0; }
+.fl-card-icon {
+  width: clamp(32px,3.5vw,42px);
+  height: clamp(32px,3.5vw,42px);
+  margin-bottom: clamp(8px,1vw,14px);
+  color: var(--fl-teal);
+  flex-shrink: 0;
 }
 /* ── Floating circular icons ── */
 .fl-icon {
   position: absolute;
-  width: 36px;
-  height: 36px;
+  width: clamp(32px,3vw,38px);
+  height: clamp(32px,3vw,38px);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: .85rem;
+  font-size: clamp(.75rem,.9vw,.85rem);
   font-weight: 700;
-  transition: transform var(--fl-transition), opacity var(--fl-transition);
+  transition: transform var(--fl-transition), opacity var(--fl-transition), box-shadow var(--fl-transition);
   pointer-events: none;
   z-index: 2;
 }
 .fl-icon--arrow {
-  top: 14px;
-  right: 14px;
-  background: rgba(255,255,255,.92);
+  top: clamp(10px,1.2vw,14px);
+  right: clamp(10px,1.2vw,14px);
+  background: rgba(255,255,255,.95);
   color: var(--fl-green);
-  box-shadow: 0 2px 12px rgba(5,66,65,.12);
+  box-shadow: 0 2px 12px rgba(5,66,65,.15);
 }
 .fl-card:hover .fl-icon--arrow {
-  transform: translate(3px, -3px);
+  transform: translate(4px, -4px);
+  box-shadow: 0 4px 16px rgba(5,66,65,.2);
 }
 .fl-icon--crown {
-  top: 14px;
-  left: 14px;
-  background: rgba(253,120,28,.15);
+  top: clamp(10px,1.2vw,14px);
+  left: clamp(10px,1.2vw,14px);
+  background: linear-gradient(135deg, rgba(253,120,28,.18), rgba(253,120,28,.08));
   color: var(--fl-orange);
-  font-size: .75rem;
+  font-size: clamp(.65rem,.8vw,.75rem);
+  border: 1px solid rgba(253,120,28,.12);
 }
-/* ── Gradient cards (no image) ── */
-.fl-card-grad {
-  background: var(--fl-grad-warm);
-  padding: 26px 22px;
-  min-height: 180px;
-  justify-content: center;
-}
-.fl-card-grad .fl-card-body { padding: 0; }
-.fl-card-icon {
-  width: 40px;
-  height: 40px;
-  margin-bottom: 12px;
-  color: var(--fl-teal);
-}
-/* ── Ribbon (text-on-path) ── */
+
+/* ── RIBBON: flowing colored band with text-on-path ── */
 .fl-ribbon-wrap {
   position: relative;
   width: 100%;
   max-width: 100%;
-  height: 80px;
-  margin: 1rem 0 2.5rem;
+  height: clamp(60px,7vw,90px);
+  margin: 0 0 clamp(1.5rem,2.5vw,3rem);
   overflow: hidden;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(106,191,184,.06) 15%,
+    rgba(253,120,28,.04) 50%,
+    rgba(106,191,184,.06) 85%,
+    transparent 100%
+  );
 }
 .fl-ribbon-svg {
-  width: 110%;
-  height: 100%;
-  margin-left: -5%;
-  transform: rotate(-1.5deg);
+  width: 115%;
+  height: 110%;
+  margin-left: -7.5%;
+  margin-top: -5%;
   display: block;
 }
+/* glowing decorative blur behind ribbon */
+.fl-ribbon-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60%;
+  height: 60%;
+  transform: translate(-50%,-50%);
+  background: radial-gradient(ellipse, rgba(253,120,28,.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
 /* ── CTA bento ── */
 .fl-cta-bento {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: 20px;
-  margin-bottom: 3rem;
+  gap: clamp(16px,2vw,24px);
+  margin-bottom: clamp(2rem,3vw,3.5rem);
+  position: relative;
+  z-index: 1;
 }
 .fl-cta-card {
   background: var(--fl-grad-dark);
   border-radius: var(--fl-radius-lg);
-  padding: 40px 44px;
+  padding: clamp(28px,3.5vw,44px);
   color: #fff;
   position: relative;
   overflow: hidden;
+  box-shadow: var(--fl-shadow-deep);
 }
 .fl-cta-card::before {
   content: '';
   position: absolute;
-  top: -80px;
-  right: -80px;
-  width: 240px;
-  height: 240px;
+  top: -100px;
+  right: -100px;
+  width: 300px;
+  height: 300px;
   border-radius: 50%;
-  background: rgba(106,191,184,.1);
+  background: radial-gradient(circle, rgba(106,191,184,.12) 0%, transparent 70%);
   pointer-events: none;
 }
 .fl-cta-card::after {
   content: '';
   position: absolute;
-  bottom: -60px;
-  left: -60px;
-  width: 180px;
-  height: 180px;
+  bottom: -80px;
+  left: -80px;
+  width: 220px;
+  height: 220px;
   border-radius: 50%;
-  background: rgba(106,191,184,.06);
+  background: radial-gradient(circle, rgba(106,191,184,.08) 0%, transparent 70%);
   pointer-events: none;
 }
 .fl-cta-card h3 {
-  font-size: 1.35rem;
+  font-size: clamp(1.15rem,1.8vw,1.4rem);
   font-weight: 800;
-  margin: 0 0 8px;
+  margin: 0 0 clamp(6px,.5vw,10px);
   position: relative;
   z-index: 1;
 }
 .fl-cta-card p {
-  font-size: .9rem;
-  color: rgba(255,255,255,.7);
+  font-size: clamp(.82rem,1vw,.9rem);
+  color: rgba(255,255,255,.72);
   line-height: 1.6;
-  max-width: 380px;
-  margin: 0 0 20px;
+  max-width: 400px;
+  margin: 0 0 clamp(16px,1.5vw,22px);
   position: relative;
   z-index: 1;
 }
+/* ── Pill buttons ── */
 .fl-pill-btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 12px 28px;
+  padding: clamp(10px,1.2vw,14px) clamp(20px,2.5vw,30px);
   border-radius: 999px;
   font-weight: 700;
-  font-size: .9rem;
+  font-size: clamp(.82rem,.95vw,.9rem);
   border: none;
   cursor: pointer;
   transition: transform var(--fl-transition), box-shadow var(--fl-transition);
@@ -485,89 +578,102 @@
 .fl-pill-btn--orange {
   background: var(--fl-grad-accent);
   color: #fff;
-  box-shadow: 0 4px 16px rgba(253,120,28,.3);
+  box-shadow: 0 4px 20px rgba(253,120,28,.35);
 }
 .fl-pill-btn--orange:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(253,120,28,.4);
+  box-shadow: 0 8px 30px rgba(253,120,28,.45);
 }
-.fl-pill-btn--ghost {
-  background: rgba(255,255,255,.12);
-  color: #fff;
-  border: 1px solid rgba(255,255,255,.2);
-}
-.fl-pill-btn--ghost:hover {
-  background: rgba(255,255,255,.2);
-  transform: translateY(-2px);
-}
-/* Mini side card */
+/* ── Mini side card ── */
 .fl-cta-mini {
-  background: var(--fl-grad-warm);
+  background: #fff;
   border-radius: var(--fl-radius-lg);
-  padding: 32px 28px;
+  padding: clamp(24px,2.5vw,34px);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border: 1px solid rgba(5,66,65,.06);
+  border: 1px solid rgba(5,66,65,.07);
   box-shadow: var(--fl-shadow);
+  position: relative;
+  overflow: hidden;
 }
-.fl-cta-mini .fl-card-tag {
-  margin-bottom: 10px;
-}
+.fl-cta-mini .fl-card-tag { margin-bottom: clamp(8px,.7vw,12px); }
 .fl-cta-mini h4 {
-  font-size: 1.05rem;
+  font-size: clamp(1rem,1.3vw,1.1rem);
   font-weight: 800;
   margin: 0 0 4px;
 }
 .fl-cta-mini p {
-  font-size: .82rem;
+  font-size: clamp(.78rem,.9vw,.84rem);
   color: var(--fl-text-soft);
-  margin: 0 0 14px;
+  margin: 0 0 clamp(12px,1vw,16px);
   line-height: 1.5;
 }
 /* ── Community cluster ── */
 .fl-cluster-wrap {
-  background: var(--fl-cream);
+  background: linear-gradient(145deg, #eaf5f2 0%, #faf8f4 100%);
   border-radius: var(--fl-radius-lg);
-  padding: 3rem 2rem;
+  padding: clamp(2rem,3vw,3.5rem) clamp(1.5rem,2.5vw,2.5rem);
   text-align: center;
-  margin-top: 2rem;
+  margin-top: clamp(1.5rem,2vw,2.5rem);
+  position: relative;
+  z-index: 1;
+  border: 1px solid rgba(5,66,65,.06);
+  box-shadow: var(--fl-shadow);
 }
 .fl-cluster-inner {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 18px;
+  gap: clamp(8px,1vw,14px);
+  margin-bottom: clamp(14px,1.2vw,20px);
   flex-wrap: wrap;
 }
 .fl-circle-img {
-  width: 52px;
-  height: 52px;
+  width: clamp(44px,4.5vw,56px);
+  height: clamp(44px,4.5vw,56px);
   border-radius: 50%;
   overflow: hidden;
-  border: 2px solid var(--fl-teal);
+  border: 2.5px solid var(--fl-teal);
   flex-shrink: 0;
-  background: var(--fl-grad-warm);
+  background: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--fl-teal);
-  font-size: 1.2rem;
+  font-size: clamp(1rem,1.3vw,1.3rem);
+  box-shadow: 0 2px 12px rgba(5,66,65,.08);
 }
 .fl-cluster-text {
-  font-size: .85rem;
+  font-size: clamp(.8rem,.95vw,.88rem);
   color: var(--fl-text-soft);
   margin: 0;
+  line-height: 1.6;
 }
-.fl-cluster-text strong {
-  color: var(--fl-green);
+.fl-cluster-text strong { color: var(--fl-green); }
+
+/* ── GRAPHIC RETOUCH: decorative motif overlay on sub-nav ── */
+/* Applied via a subtle pattern on the existing #sub-nav green bar */
+/* This is a page-level enhancement for the pilot page */
+.fl-subnav-motif {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: .08;
+  z-index: 0;
 }
+.fl-subnav-motif svg { width: 100%; height: 100%; }
+/* Make sub-nav relative to contain the motif */
+#sub-nav { position: relative; }
+/* The sub-nav links need to be above the motif */
+#sub-nav .sub-nav-inner { position: relative; z-index: 1; }
+
 /* ── Responsive ── */
 @media (max-width: 860px) {
   .fl-bento { grid-template-columns: repeat(2, 1fr); }
   .fl-card--lg { grid-column: span 2; grid-row: span 1; }
-  .fl-card--lg .fl-card-media { height: 220px; }
+  .fl-card--lg .fl-card-media { height: clamp(180px,24vw,240px); }
   .fl-cta-bento { grid-template-columns: 1fr; }
 }
 @media (max-width: 540px) {
@@ -575,36 +681,47 @@
   .fl-card--lg { grid-column: span 1; grid-row: span 1; }
   .fl-card--lg .fl-card-media { height: 180px; }
   .fl-card-media { height: 160px; }
-  .fl-pilot { padding: 2rem 0 3rem; }
-  .fl-cta-card { padding: 28px 24px; }
-  .fl-ribbon-wrap { height: 60px; }
-  .fl-cluster-wrap { padding: 2rem 1.5rem; }
+  .fl-cta-card { padding: 24px 20px; }
+  .fl-cluster-wrap { padding: 1.5rem 1rem; }
+}
+/* 360px: zero overflow guaranteed */
+@media (max-width: 380px) {
+  .fl-container { padding: 0 12px; }
+  .fl-card-media { height: 140px; }
+  .fl-card-body { padding: 14px; }
+  .fl-card-grad { min-height: 140px; padding: 16px; }
+  .fl-cta-card { padding: 20px 16px; }
 }
 /* ── Dark mode ── */
 [data-theme="dark"] .fl-pilot {
   --fl-white: #1E293B;
   --fl-text: #F1F5F9;
-  --fl-text-soft: #94A3B8;
-  --fl-grad-warm: linear-gradient(145deg, #1a2a2a 0%, #0f172a 100%);
-  --fl-grad-cool: linear-gradient(145deg, #162a28 0%, #1a1a2e 100%);
+  --fl-text-soft: #D1C8B6;
+  --fl-text-muted: #A0978A;
+  --fl-grad-warm: linear-gradient(145deg, #1a2a28 0%, #1a2a2e 50%, #0f172a 100%);
+  --fl-grad-cool: linear-gradient(145deg, #162a26 0%, #1a2a2a 50%, #1a1a2e 100%);
+  --fl-grad-energy: linear-gradient(135deg, rgba(253,120,28,.08) 0%, rgba(106,191,184,.06) 50%, rgba(5,66,65,.08) 100%);
   --fl-cream: #0F172A;
 }
 [data-theme="dark"] .fl-card { border-color: rgba(255,255,255,.06); }
-[data-theme="dark"] .fl-cta-mini { border-color: rgba(255,255,255,.06); }
+[data-theme="dark"] .fl-cta-mini { border-color: rgba(255,255,255,.06); background: #1E293B; }
+[data-theme="dark"] .fl-cluster-wrap { background: linear-gradient(145deg, #1a2a28 0%, #0f172a 100%); }
+[data-theme="dark"] .fl-circle-img { background: #1E293B; border-color: rgba(106,191,184,.3); }
+[data-theme="dark"] .fl-ribbon-wrap { background: linear-gradient(90deg, transparent, rgba(106,191,184,.04), rgba(253,120,28,.03), rgba(106,191,184,.04), transparent); }
 </style>
 
 <!-- ════════════════════════════════════════════════════ -->
-<!--  PREMIUM PILOT: BENTO + RIBBON + GRADIENT CARDS    -->
+<!--  PREMIUM PILOT v2 — BENTO · RIBBON · DEPTH · MOTIF -->
 <!-- ════════════════════════════════════════════════════ -->
 <section class="fl-pilot">
 
   <!-- ── Row 1: Hero Bento (asymmetric) ── -->
   <div class="fl-container">
     <div class="fl-bento">
-      <!-- Featured card: BMI + heart SVG (large, spans 2 cols, 2 rows) -->
+      <!-- Featured: BMI (large, spans 2×2) -->
       <a href="/tools/bmi-calculator.html" class="fl-card fl-card--lg">
         <div class="fl-card-media">
-          <img src="/assets/images/fit-heart.svg" alt="" width="400" height="300" loading="lazy" style="background:#f8faf9;">
+          <img src="/assets/images/fit-heart.svg" alt="" width="400" height="300" loading="lazy" style="background:#d4e8e4;">
           <div class="fl-card-dim"></div>
         </div>
         <div class="fl-card-body">
@@ -617,8 +734,8 @@
         <div class="fl-icon fl-icon--arrow" aria-hidden="true">→</div>
       </a>
 
-      <!-- Card: Calorie + TDEE (gradient, medium) -->
-      <a href="/tools/calorie-calculator.html" class="fl-card fl-card-grad" style="background:var(--fl-grad-warm);">
+      <!-- Calorie & TDEE (energy gradient) -->
+      <a href="/tools/calorie-calculator.html" class="fl-card fl-card-grad fl-card-grad--energy">
         <div class="fl-card-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
         </div>
@@ -631,8 +748,8 @@
         <div class="fl-icon fl-icon--arrow" aria-hidden="true">→</div>
       </a>
 
-      <!-- Card: Water Intake (gradient, small) -->
-      <a href="/tools/water-calculator.html" class="fl-card fl-card-grad" style="background:var(--fl-grad-cool);">
+      <!-- Water Intake (cool gradient) -->
+      <a href="/tools/water-calculator.html" class="fl-card fl-card-grad fl-card-grad--cool">
         <div class="fl-card-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
         </div>
@@ -647,28 +764,43 @@
     </div>
   </div>
 
-  <!-- ── Diagonal Ribbon (text-on-path) ── -->
+  <!-- ── Flowing Ribbon (colorful text-on-path) ── -->
   <div class="fl-ribbon-wrap" aria-hidden="true">
-    <svg class="fl-ribbon-svg" viewBox="0 0 1400 80" preserveAspectRatio="none">
+    <div class="fl-ribbon-glow"></div>
+    <svg class="fl-ribbon-svg" viewBox="0 0 1600 100" preserveAspectRatio="xMidYMid slice">
       <defs>
-        <path id="ribbon-path" d="M-100,60 Q300,10 600,40 T1500,30"/>
-        <linearGradient id="ribbon-fade" x1="0" y1="0" x2="1" y2="0">
+        <path id="rp-v2" d="M-100,70 Q300,5 600,35 T900,25 T1600,40"/>
+        <linearGradient id="rf-v2" x1="0" y1="0" x2="1" y2="0">
           <stop offset="0%" stop-color="#6abfb8" stop-opacity="0"/>
-          <stop offset="25%" stop-color="#6abfb8" stop-opacity=".7"/>
+          <stop offset="20%" stop-color="#6abfb8" stop-opacity=".6"/>
+          <stop offset="40%" stop-color="#fd781c" stop-opacity=".7"/>
           <stop offset="50%" stop-color="#fd781c" stop-opacity=".8"/>
-          <stop offset="75%" stop-color="#6abfb8" stop-opacity=".7"/>
+          <stop offset="60%" stop-color="#fd781c" stop-opacity=".7"/>
+          <stop offset="80%" stop-color="#6abfb8" stop-opacity=".6"/>
+          <stop offset="100%" stop-color="#6abfb8" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="rf-glow" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#6abfb8" stop-opacity="0"/>
+          <stop offset="30%" stop-color="#6abfb8" stop-opacity=".25"/>
+          <stop offset="50%" stop-color="#fd781c" stop-opacity=".3"/>
+          <stop offset="70%" stop-color="#6abfb8" stop-opacity=".25"/>
           <stop offset="100%" stop-color="#6abfb8" stop-opacity="0"/>
         </linearGradient>
       </defs>
-      <path d="M-100,60 Q300,10 600,40 T1500,30" fill="none" stroke="url(#ribbon-fade)" stroke-width="1.5" stroke-dasharray="2 6" opacity=".5"/>
-      <text font-size="12" fill="#054241" font-weight="700" letter-spacing="5" opacity=".6" font-family="sans-serif">
-        <textPath href="#ribbon-path" startOffset="50%" text-anchor="middle">
-          ✦  FITNESS · STRENGTH · HEALTH · STAMINA · LIYAQAH  ✦
+      <!-- thick decorative band -->
+      <path d="M-100,72 Q300,7 600,37 T900,27 T1600,42" fill="none" stroke="url(#rf-glow)" stroke-width="12" stroke-linecap="round" opacity=".4"/>
+      <!-- thin bright line -->
+      <path d="M-100,70 Q300,5 600,35 T900,25 T1600,40" fill="none" stroke="url(#rf-v2)" stroke-width="2" stroke-linecap="round"/>
+      <!-- English text -->
+      <text font-size="13" fill="#054241" font-weight="800" letter-spacing="4" font-family="sans-serif">
+        <textPath href="#rp-v2" startOffset="30%" text-anchor="middle">
+          ✦  FITNESS · STRENGTH · ENDURANCE  ✦
         </textPath>
       </text>
-      <text font-size="9" fill="#6abfb8" font-weight="600" letter-spacing="3" opacity=".4" font-family="sans-serif">
-        <textPath href="#ribbon-path" startOffset="50%" text-anchor="middle">
-          بَدَن سَلِيم · عَقْل سَلِيم · حَيَاة مُتَوَازِنَة
+      <!-- Arabic text -->
+      <text font-size="10" fill="#6abfb8" font-weight="700" letter-spacing="2" font-family="sans-serif">
+        <textPath href="#rp-v2" startOffset="70%" text-anchor="middle">
+          لِيَاقَة · قُوَّة · تَحَمُّل
         </textPath>
       </text>
     </svg>
@@ -677,11 +809,11 @@
   <!-- ── Row 2: Tools Bento ── -->
   <div class="fl-container">
     <div class="fl-bento">
-      <!-- Body Fat (medium, with SVG image) -->
+      <!-- Body Fat (medium, SVG image) -->
       <a href="/tools/body-fat-calculator.html" class="fl-card fl-card--md">
-        <div class="fl-card-media" style="height:160px;">
+        <div class="fl-card-media" style="height:clamp(140px,16vw,170px);">
           <img src="/assets/images/fit-scale.svg" alt="" width="400" height="300" loading="lazy">
-          <div class="fl-card-dim" style="background:linear-gradient(0deg,rgba(5,66,65,.4) 0%,transparent 50%);"></div>
+          <div class="fl-card-dim"></div>
         </div>
         <div class="fl-card-body">
           <span class="fl-card-tag"><span class="en">Composition</span><span class="ar">التكوين</span></span>
@@ -692,9 +824,9 @@
         <div class="fl-icon fl-icon--arrow" aria-hidden="true">→</div>
       </a>
 
-      <!-- One-Rep Max (small, gradient) -->
-      <a href="/tools/one-rep-max.html" class="fl-card fl-card--sm fl-card-grad" style="background:var(--fl-grad-warm);">
-        <div class="fl-card-icon" aria-hidden="true" style="width:32px;height:32px;">
+      <!-- One-Rep Max (warm gradient) -->
+      <a href="/tools/one-rep-max.html" class="fl-card fl-card-grad fl-card-grad--warm">
+        <div class="fl-card-icon" aria-hidden="true" style="width:clamp(28px,3vw,34px);height:clamp(28px,3vw,34px);">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
         </div>
         <div class="fl-card-body">
@@ -706,9 +838,9 @@
         <div class="fl-icon fl-icon--arrow" aria-hidden="true">→</div>
       </a>
 
-      <!-- Age Calculator (small, gradient) -->
-      <a href="/tools/age-calculator.html" class="fl-card fl-card--sm fl-card-grad" style="background:var(--fl-grad-cool);">
-        <div class="fl-card-icon" aria-hidden="true" style="width:32px;height:32px;">
+      <!-- Age Calculator (cool gradient) -->
+      <a href="/tools/age-calculator.html" class="fl-card fl-card-grad fl-card-grad--cool">
+        <div class="fl-card-icon" aria-hidden="true" style="width:clamp(28px,3vw,34px);height:clamp(28px,3vw,34px);">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 6v12"/><path d="M8 10h8"/></svg>
         </div>
         <div class="fl-card-body">
@@ -720,11 +852,11 @@
         <div class="fl-icon fl-icon--arrow" aria-hidden="true">→</div>
       </a>
 
-      <!-- Stretch/Yoga (medium, with SVG image) -->
+      <!-- Activity Level Guide (medium, SVG image) -->
       <a href="/tools/calorie-calculator.html#activity" class="fl-card fl-card--md">
-        <div class="fl-card-media" style="height:160px;">
+        <div class="fl-card-media" style="height:clamp(140px,16vw,170px);">
           <img src="/assets/images/fit-stretch.svg" alt="" width="400" height="300" loading="lazy">
-          <div class="fl-card-dim" style="background:linear-gradient(0deg,rgba(5,66,65,.4) 0%,transparent 50%);"></div>
+          <div class="fl-card-dim"></div>
         </div>
         <div class="fl-card-body">
           <span class="fl-card-tag"><span class="en">Activity</span><span class="ar">النشاط</span></span>
@@ -753,7 +885,7 @@
         <span class="fl-card-tag"><span class="en">Community</span><span class="ar">المجتمع</span></span>
         <h4><span class="en">1,000+ families</span><span class="ar">أكثر من ١٠٠٠ عائلة</span></h4>
         <p><span class="en">trust DotForLife for their daily health and fitness tracking.</span><span class="ar">تثق في دوت فور لايف لتتبع صحتهم ولياقتهم.</span></p>
-        <a href="/about.html" class="fl-pill-btn fl-pill-btn--orange" style="padding:8px 20px;font-size:.82rem;align-self:flex-start;">
+        <a href="/about.html" class="fl-pill-btn fl-pill-btn--orange" style="padding:clamp(6px,.7vw,10px) clamp(16px,1.8vw,22px);font-size:clamp(.75rem,.85vw,.82rem);align-self:flex-start;">
           <span class="en">Our story</span><span class="ar">قصتنا</span>
         </a>
       </div>
@@ -778,7 +910,7 @@
   </div>
 
 </section>
-<!-- ═══ END PREMIUM PILOT ═══ -->
+<!-- ═══ END PREMIUM PILOT v2 ═══ -->
 
 <!-- ═══ UNIFIED FOOTER ══════════════════════════════════════ -->
 <footer class="site-footer" role="contentinfo">
