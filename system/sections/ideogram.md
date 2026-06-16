@@ -28,3 +28,10 @@
 | النباتات | `Gentle hands tending lush green indoor plants by a bright window, soft natural light, fresh calm mood, warm cream and green tones, premium lifestyle photography, photorealistic` | ☐ `page-plants-hero.webp` |
 
 > **تمييز:** صور الصفحات تبدأ بـ`page-` · صور المقالات تبدأ بـ`hero-`. كله WEBP · 1K · في `assets/images/`.
+
+---
+## 🍼 بانر ترويجي (دمج بطاقتين)
+| الغرض | البرومبت (Ideogram · WEBP · عريض ~21:9) | اسم الصورة |
+|-------|------------------------------------------|-------------|
+| بانر الحمل (ترويج خاص) | `Minimalist line-art outline illustration of a modestly dressed expectant mother gently holding her belly, loose flowing dress, serene and dignified, warm cream background with soft teal and gentle blush-pink accents, calm premium editorial vector illustration, generous negative space on one side for text, flat brand-aligned, no text, family-appropriate, high detail` | ☐ `banner-pregnancy.webp` |
+> Negative: realistic skin, exposure, tight clothing, harsh neon, clutter, text.
