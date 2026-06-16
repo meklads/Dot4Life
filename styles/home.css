@@ -2028,6 +2028,13 @@
   transition: box-shadow .2s, background .2s;
   background: var(--card-bg, #fff);
 }
+[data-lang="ar"] .dc-item {
+  flex-direction: row-reverse;
+}
+[data-lang="ar"] .dc-item-text {
+  direction: rtl;
+  text-align: right;
+}
 .dc-item:hover {
   box-shadow: 0 2px 16px rgba(0,0,0,.06);
 }
@@ -2041,6 +2048,9 @@
   border-radius: 10px;
   overflow: hidden;
   position: relative;
+}
+[data-lang="ar"] .dc-item-split {
+  direction: rtl;
 }
 .dc-item-split img {
   width: 50%;
@@ -2135,6 +2145,7 @@
 }
 [data-lang="ar"] .dc-view-all {
   font-family: var(--font-ar);
+  align-self: flex-end;
 }
 .dc-side-ad {
   display: flex;
