@@ -1,5 +1,5 @@
 /* ═════════════════════════════════════════════════════
-   feed.js — Universal Article Feed
+   feed.js v2 — Universal Article Feed
    Reads /articles.json and renders:
    · Homepage: 3 section feeds (قصص/مقارنات/السلام) + general latest
    · Section pages: category-filtered cards
@@ -10,19 +10,25 @@
 (function() {
   'use strict';
 
+  var FEED_VERSION = 2;  // bump to invalidate all caches on deploy
+
   var CONFIG = {
     jsonUrl: '/articles.json',
     containerSelector: '#latest-articles .hl-article-grid',
     maxItems: 6,
     blogListMax: 50,
     sectionFeedMax: 3,
-    cacheKey: 'dfl-feed-cache',
+    cacheKey: 'dfl-feed-cache-v' + FEED_VERSION,
     cacheTTL: 600000
   };
 
   var articles = [];
   var isAr = document.documentElement.getAttribute('data-lang') === 'ar';
   var currentPage = window.location.pathname;
+
+  /* Clear any stale old-version caches */
+  try { localStorage.removeItem('dfl-feed-cache'); } catch(e){}
+  try { localStorage.removeItem('dfl-feed-cache-v1'); } catch(e){}
 
   /* ═══ Page Type ═══ */
 
@@ -58,30 +64,47 @@
       }
     } catch(e) {}
 
+    /* Add cache-busting to prevent browser from caching JSON */
+    var bustUrl = CONFIG.jsonUrl + '?_=' + Date.now();
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', CONFIG.jsonUrl, true);
+    xhr.open('GET', bustUrl, true);
+    xhr.setRequestHeader('Cache-Control', 'no-cache, must-revalidate');
+    xhr.setRequestHeader('Pragma', 'no-cache');
     xhr.onload = function() {
       if (xhr.status === 200) {
         try {
           articles = JSON.parse(xhr.responseText);
+          if (!articles || !articles.length) {
+            console.warn('feed.js: empty articles array');
+            callback();
+            return;
+          }
           try {
             localStorage.setItem(CONFIG.cacheKey, JSON.stringify({
               articles: articles,
               timestamp: Date.now()
             }));
           } catch(e) {}
-          callback();
+          try { callback(); } catch(renderErr) {
+            console.warn('feed.js: render error', renderErr);
+          }
         } catch(e) {
-          console.warn('feed.js: parse error');
-          callback();
+          console.warn('feed.js: fetch error on', bustUrl, e);
+          /* Clear stale cache on error */
+          try { localStorage.removeItem(CONFIG.cacheKey); } catch(ce){}
+          try { callback(); } catch(ce2){}
         }
       } else {
-        console.warn('feed.js: fetch error', xhr.status);
+        console.warn('feed.js: HTTP ' + xhr.status + ' fetching', bustUrl);
+        /* Clear stale cache on HTTP error */
+        try { localStorage.removeItem(CONFIG.cacheKey); } catch(ce){}
         callback();
       }
     };
     xhr.onerror = function() {
-      console.warn('feed.js: network error');
+      console.warn('feed.js: network error (cannot reach server)');
+      /* Clear stale cache on network error */
+      try { localStorage.removeItem(CONFIG.cacheKey); } catch(ce){}
       callback();
     };
     xhr.send();
@@ -182,14 +205,20 @@
 
   function renderSectionFeeds() {
     var containers = document.querySelectorAll('[data-feed-section]');
-    if (!containers.length) return;
+    if (!containers.length) {
+      console.log('feed.js v2: no [data-feed-section] found');
+      return;
+    }
 
     for (var j = 0; j < containers.length; j++) {
       var section = containers[j].getAttribute('data-feed-section');
       if (!section) continue;
       var sectionArticles = getSectionArticles(section);
       var grid = containers[j].querySelector('.hl-feed-grid');
-      if (!grid) continue;
+      if (!grid) {
+        console.log('feed.js v2: no .hl-feed-grid inside', section);
+        continue;
+      }
       var html = '';
       var limit = Math.min(sectionArticles.length, CONFIG.sectionFeedMax);
       for (var i = 0; i < limit; i++) {
@@ -204,6 +233,7 @@
   function render() {
     var pageType = getPageType();
     var filtered = getFilteredArticles(pageType);
+    console.log('feed.js v2: render() start | pageType=' + pageType + ' | articles=' + articles.length + ' | filtered=' + filtered.length);
 
     // Homepage → render 3 section feeds above general latest
     if (pageType === 'home') {
@@ -218,6 +248,9 @@
         html += buildCardHTML(filtered[i]);
       }
       grid.innerHTML = html;
+      console.log('feed.js v2: rendered ' + Math.min(filtered.length, CONFIG.maxItems) + ' cards to #latest-articles grid');
+    } else if (pageType === 'home' && !grid) {
+      console.warn('feed.js v2: #latest-articles .hl-article-grid NOT FOUND');
     }
 
     // Blog + Archive full list
@@ -237,11 +270,17 @@
 
   /* ═══ Bootstrap ═══ */
 
-  if (document.querySelector(CONFIG.containerSelector) ||
-      document.querySelector('#blog-list') ||
-      document.querySelector('#archive-list') ||
-      document.querySelector('[data-feed-section]')) {
+  var hasGrid = !!document.querySelector(CONFIG.containerSelector);
+  var hasBlog = !!document.querySelector('#blog-list');
+  var hasArchive = !!document.querySelector('#archive-list');
+  var hasSectionFeeds = !!document.querySelector('[data-feed-section]');
+  console.log('feed.js v2: bootstrap check | grid=' + hasGrid + ' blog=' + hasBlog + ' archive=' + hasArchive + ' sections=' + hasSectionFeeds);
+
+  if (hasGrid || hasBlog || hasArchive || hasSectionFeeds) {
+    console.log('feed.js v2: bootstrap OK → fetching articles');
     fetchArticles(render);
+  } else {
+    console.warn('feed.js v2: no containers found on this page');
   }
 
 })();
