@@ -16,7 +16,7 @@ import os, re, json, sys
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_MARKER = 'data-template="article"'
-CACHE_BUSTER = 'v=20260608t'
+CACHE_BUSTER = 'v=20260608u'
 
 DIRS = [
     'featured-stories', 'comparisons', 'peace-capsules',
@@ -132,6 +132,9 @@ def extract_article_body(content):
         # Remove .hero-wrap
         t = re.sub(r'<div[^>]*class="hero-wrap".*?</div>', '', t, flags=re.IGNORECASE | re.DOTALL)
 
+        # Remove structural #sub-nav (leftover from original page layout)
+        t = re.sub(r'<div[^>]*id="sub-nav"[^>]*>.*?</div>', '', t, flags=re.IGNORECASE | re.DOTALL)
+
         # Remove lang-switch
         t = re.sub(r'<div[^>]*class="lang-switch".*?</div>', '', t, flags=re.IGNORECASE | re.DOTALL)
 
@@ -152,10 +155,22 @@ def extract_article_body(content):
         # Remove comment blocks
         t = re.sub(r'<!--\s*SEO_PROFILE.*?-->', '', t, flags=re.IGNORECASE | re.DOTALL)
         t = re.sub(r'<!--\s*═══ UNIFIED (HEADER|FOOTER).*?═══\s*-->', '', t, flags=re.IGNORECASE | re.DOTALL)
+        t = re.sub(r'<!--\s*═══ UNIFIED MOBILE NAV.*?═══\s*-->', '', t, flags=re.IGNORECASE | re.DOTALL)
 
-        # Remove empty .container wrapper
+        # Remove any leftover script blocks (duplicates of head/footer scripts)
+        t = re.sub(r'<script[^>]*>.*?</script>', '', t, flags=re.IGNORECASE | re.DOTALL)
+
+        # Remove decorative comment separators
+        t = re.sub(r'<!--\s*═══════════════════════════════════════*\s*-->', '', t)
+
+        # Remove empty .container / .article-wrap wrapper (both open & close)
         t = re.sub(r'<div\s+class=["\']container["\'][^>]*>\s*', '', t)
+        t = re.sub(r'<div\s+class=["\']article-wrap["\'][^>]*>\s*', '', t)
         t = t.replace('</div><!-- /container -->', '')
+        # Remove orphaned </div> from previously stripped .article-wrap or .container
+        # (only at the very top or bottom, so we don't break real divs)
+        t = re.sub(r'^\s*</div>\s*', '', t)
+        t = re.sub(r'\s*</div>\s*$', '', t)
 
         # Clean up excessive blank lines
         t = re.sub(r'\n{4,}', '\n\n', t)
@@ -165,7 +180,6 @@ def extract_article_body(content):
     def find_innermost_article_body(text):
         """
         Find the innermost <article class="article-body">...</article> content.
-        Uses a stack approach to handle nesting.
         Returns (inner_content, full_text_without_wrappers) or (None, original_text)
         """
         pattern = r'<article\s+class="article-body"[^>]*>'
@@ -177,19 +191,23 @@ def extract_article_body(content):
             return None, text
 
         ends = [m.start() for m in re.finditer(end_pattern, text, re.IGNORECASE)]
+        if not ends:
+            return None, text
 
-        if len(starts) == 1 and len(ends) >= 1:
-            # Only one wrapper, use the first closing tag
-            return text[starts[0]:ends[0]].strip(), text
+        if len(starts) == 1:
+            # Single wrapper — use the LAST </article> to safely
+            # handle any inner <article> tags (e.g. blog-post, guide-article).
+            # Header/footer never contain <article>, so the last one is ours.
+            return text[starts[0]:ends[-1]].strip(), text
 
-        if len(starts) > 1 and len(ends) >= len(starts):
-            # Multiple wrappers — find innermost
-            # The innermost has its opening tag after the second-to-last start
-            # and its closing tag at the last end
+        if len(starts) > 1:
+            # Multiple wrappers — find the first </article> that follows
+            # the innermost (last) opener.  This correctly strips nested
+            # article-body wrappers left by a previous migration run.
             inner_start = starts[-1]
-            inner_end = ends[-1]
-            if inner_end > inner_start:
-                return text[inner_start:inner_end].strip(), text
+            for end_pos in ends:
+                if end_pos > inner_start:
+                    return text[inner_start:end_pos].strip(), text
 
         return None, text
 
@@ -226,6 +244,72 @@ def get_meta_from_json(filename, lang):
     if key in ARTICLES_META:
         return ARTICLES_META[key]
     return None
+
+# ── JSON‑LD handling ──────────────────────────────────────────
+def heal_corrupted_jsonld(head_text):
+    """
+    Some articles have JSON‑LD that was broken by earlier script runs:
+    the <script> opener was stripped but the JSON content and </script> remain.
+    Detect this pattern and heal it.
+    """
+    # Find raw JSON content followed by orphaned </script>
+    # Pattern: lines starting with {"@context" that are NOT inside a <script> tag
+    # We'll wrap them in proper script tags
+    def wrap_match(m):
+        json_content = m.group(1).strip()
+        return f'<script type="application/ld+json">\n{json_content}\n</script>'
+
+    healed = re.sub(
+        r'(?:^|\n)\s*(\{"@context":\s*"[^"]*".*?)\s*</script>',
+        wrap_match,
+        head_text,
+        flags=re.IGNORECASE | re.DOTALL
+    )
+    return healed
+
+def extract_jsonld_blocks(head_text):
+    """Extract all JSON‑LD <script> blocks from head content."""
+    return re.findall(
+        r'<script\s+type="application/ld\+json"[^>]*>.*?</script>',
+        head_text, re.IGNORECASE | re.DOTALL
+    )
+
+def normalize_jsonld_blocks(blocks):
+    """
+    Deduplicate JSON‑LD blocks that may have been double/triple-wrapped
+    by earlier script runs.  Strips ALL nesting and returns clean
+    <script type="application/ld+json"> … </script> blocks.
+    """
+    cleaned = []
+    for block in blocks:
+        # Strip all <script … > and </script> wrappers
+        raw = re.sub(r'<script[^>]*>', '', block, flags=re.IGNORECASE)
+        raw = re.sub(r'</script>', '', raw, flags=re.IGNORECASE)
+        raw = raw.strip()
+        if raw:
+            cleaned.append(f'<script type="application/ld+json">\n{raw}\n</script>')
+    return cleaned
+
+def clean_head(head_text):
+    """Remove scripts & CSS links we replace; keep meta, title, links."""
+    # 1) Remove all <script>…</script> blocks (JSON‑LD was already saved)
+    t = re.sub(r'<script[^>]*>.*?</script>', '', head_text, flags=re.IGNORECASE | re.DOTALL)
+    # 2) Remove any orphaned </script> tags left from earlier corruption
+    t = re.sub(r'\s*</script>\s*', ' ', t)
+    # 3) Remove any remaining raw JSON that looks like schema (from corrupted state)
+    t = re.sub(r'\{"@context":\s*"[^"]*".*?(\}|</)', ' ', t, flags=re.IGNORECASE | re.DOTALL)
+    # 4) Remove our own CSS links
+    t = re.sub(r'<link[^>]*href="[^"]*(global\.css|home\.css|articles\.css)[^"]*"[^>]*/?>', '', t, flags=re.IGNORECASE)
+    # 5) Remove font preconnect/href lines
+    t = re.sub(r'<link[^>]*googleapis[^>]*/?>', '', t, flags=re.IGNORECASE)
+    t = re.sub(r'<link[^>]*gstatic[^>]*/?>', '', t, flags=re.IGNORECASE)
+    # 6) Remove dup charset / viewport / icon
+    t = re.sub(r'<meta\s+charset="UTF-8"[^>]*/?>', '', t, flags=re.IGNORECASE)
+    t = re.sub(r'<meta\s+name="viewport"[^>]*/?>', '', t, flags=re.IGNORECASE)
+    t = re.sub(r'<link\s+rel="?icon"?[^>]*/?>', '', t, flags=re.IGNORECASE)
+    # Clean up excessive blank lines
+    t = re.sub(r'\n{3,}', '\n\n', t)
+    return t.strip()
 
 def clean_title(title):
     """Remove site name suffix from title for cleaner H1 display."""
@@ -345,45 +429,35 @@ def build_new_page(filename, content):
     # Build the lang/theme script (same as other pages)
     init_script = '''<script>(function(){var p=new URLSearchParams(location.search),gd=(function(){try{var z=(Intl.DateTimeFormat().resolvedOptions().timeZone||"");return /Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test(z)?"ar":"en";}catch(e){return "ar";}})(),l=p.get("lang")||localStorage.getItem("dfl-lang")||gd,t=p.get("theme")||localStorage.getItem("dfl-theme")||"light",h=document.documentElement;h.setAttribute("data-theme",t);h.setAttribute("data-lang",l);h.setAttribute("lang",l);h.setAttribute("dir",l==="ar"?"rtl":"ltr");if(p.get("lang"))localStorage.setItem("dfl-lang",l);if(p.get("theme"))localStorage.setItem("dfl-theme",t);})()</script>'''
     
-    # Extract existing head content, removing scripts we'll replace
+    # ── Fix: extract JSON‑LD, heal corruptions, rebuild head ──
     head_content = get_head_section(content)
-    
-    # Remove any existing init scripts, css links, font links, gtag, adsense from head
-    # We'll keep: title, meta tags, canonical, alternate hreflangs, JSON-LD, og tags
-    lines_to_keep = []
-    for line in head_content.split('\n'):
-        stripped = line.strip()
-        # Skip lines we'll replace
-        if 'pagead2.googlesyndication.com' in stripped: continue
-        if 'googletagmanager.com' in stripped: continue
-        if 'googleapis.com' in stripped or 'gstatic.com' in stripped: continue
-        if stripped.startswith('<script'): continue
-        # Skip CSS links we'll replace (global, home, articles)
-        if stripped.startswith('<link rel="stylesheet"'):
-            if all(x not in stripped for x in ['global.css', 'home.css', 'articles.css']):
-                lines_to_keep.append(line)
-            continue
-        # Skip other CSS-related lines we'll replace
-        if 'googleapis.com' in stripped or 'gstatic.com' in stripped: continue
-        lines_to_keep.append(line)
-    
-    # Rebuild head content - filter out duplicate meta tags already added
-    filtered_lines = []
-    for line in lines_to_keep:
-        stripped = line.strip()
-        # Skip duplicate meta tags already in new head
-        if '<meta charset=' in stripped: continue
-        if '<meta name="viewport"' in stripped: continue
-        filtered_lines.append(line)
-    preserved_head = '\n'.join(filtered_lines).strip()
-    
-    # Build the head section
+    # 1) Extract all intact JSON-LD blocks FIRST
+    jsonld_raw = extract_jsonld_blocks(head_content)
+    # 2) De-duplicate any double/triple-wrapped blocks from earlier runs
+    jsonld_intact = normalize_jsonld_blocks(jsonld_raw)
+    # 3) Temporarily remove intact blocks so healing doesn't double-wrap them
+    head_for_healing = head_content
+    for b in jsonld_raw:
+        head_for_healing = head_for_healing.replace(b, '')
+    # 4) Heal any corrupted JSON-LD (orphaned JSON from earlier broken runs)
+    healed = heal_corrupted_jsonld(head_for_healing)
+    # 5) Extract any newly-healed blocks and normalize them
+    jsonld_new_raw = extract_jsonld_blocks(healed)
+    jsonld_new = normalize_jsonld_blocks(jsonld_new_raw)
+    # 6) Clean everything else (remove scripts, dup meta, etc.)
+    preserved_head = clean_head(healed)
+    # 7) Combine all JSON-LD
+    jsonld_blocks = jsonld_intact + jsonld_new
+    jsonld_html = '\n'.join(jsonld_blocks)
+
+    # Build the head section (JSON‑LD preserved, scripts properly wrapped)
     new_head = f'''<head>
 {init_script}
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
 {preserved_head}
+{jsonld_html}
 {css_links}
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1436107577087160" crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3G1XPV4F0G"></script>
@@ -399,7 +473,7 @@ def build_new_page(filename, content):
     reading_align = 'right' if dir_ == 'rtl' else 'left'
     dir_attr = f'dir="{dir_}"' if dir_ else ''
     
-    # Build the final page
+    # Build the final page — structure: header → container(banner + body) → footer
     new_page = f'''<!DOCTYPE html>
 <html {html_attrs}>
 {new_head}
@@ -407,11 +481,15 @@ def build_new_page(filename, content):
 
 {HEADER_HTML}
 
+<div class="article-wrap">
+
 {banner_html}
 
 <article class="article-body">
 {article_body}
 </article>
+
+</div>
 
 {FOOTER_HTML}
 

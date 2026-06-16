@@ -1,20 +1,29 @@
 /* ═══════════════════════════════════════════════════════════
    articles.css — Unified Article Template Styles
-   Banner + Body + RTL, used by all migrated articles.
+   Container + Banner + Body + RTL, for all migrated articles.
    ═══════════════════════════════════════════════════════════ */
 
-/* ── Article Banner (full-width image + overlay) ──────────── */
+/* ── Article Container (home-section width, centered) ──── */
+.article-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 4vw, 2rem);
+}
+
+/* ── Article Banner (inside container) ─────────────────── */
 .article-banner {
   position: relative;
   width: 100%;
-  margin: 0;
+  margin: 2rem 0 0;
   padding: 0;
+  border-radius: 16px;
+  overflow: hidden;
 }
 
 .article-banner-img-wrap {
   position: relative;
   width: 100%;
-  height: clamp(280px, 38vw, 420px);
+  height: clamp(260px, 34vw, 400px);
   overflow: hidden;
 }
 
@@ -47,7 +56,12 @@
   text-align: left !important;
 }
 
-/* ── Article Body Container (RTL/LTR aware) ──────────────── */
+/* ── Article Body (inside same container) ──────────────── */
+.article-body {
+  margin: 2rem auto 3rem;
+  padding: 0;
+}
+
 [data-lang="ar"] .article-body {
   direction: rtl;
   text-align: right;
@@ -59,11 +73,6 @@
 }
 
 /* ── Shared Article Styles ── */
-.article-body {
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 3rem 32px 80px;
-}
 .article-body h2 {
   font-family: 'Almarai', sans-serif;
   font-size: 1.5rem;
