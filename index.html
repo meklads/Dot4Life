@@ -43,7 +43,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Almarai:wght@300;400;700&display=swap" rel="stylesheet"/>
   <link rel="preload" as="image" href="/d4l1.webp" fetchpriority="high"/>
   <link rel="stylesheet" href="/styles/global.css?v=20260608"/>
-    <link rel="stylesheet" href="/styles/home.css?v=20260608p">
+    <link rel="stylesheet" href="/styles/home.css?v=20260608q">
 
 <script src="/scripts/global.js?v=20260608" defer></script>
   <link rel="alternate" hreflang="ar" href="https://www.dotforlife.com/" />
@@ -111,6 +111,17 @@
 }
 .dc-side-ad:hover::after { transform: rotate(45deg); }
 [data-lang="ar"] .dc-side-ad:hover::after { transform: rotate(-45deg); }
+[data-lang="ar"] .dc-side-ad {
+  flex-direction: row-reverse;
+}
+[data-lang="ar"] .dc-side-ad-body {
+  direction: rtl;
+  text-align: right;
+}
+[data-lang="ar"] .dc-side-ad-pill {
+  align-self: flex-end;
+}
+
 .dc-side-ad--pregnancy { background: linear-gradient(135deg,#e6f5f3 0%,#f0faf8 40%,#fff 100%); border-top:3px solid #6abfb8; }
 .dc-side-ad--tourism { background: linear-gradient(135deg,#e0f2f1 0%,#eef7f6 40%,#fff 100%); border-top:3px solid #2a9a98; }
 .dc-side-ad--realestate { background: linear-gradient(135deg,#e8f0e8 0%,#f2f7f2 40%,#fff 100%); border-top:3px solid #4a8a82; }
@@ -135,7 +146,7 @@
 .dc-side-ad:hover .dc-side-ad-cta { gap:.6rem; }
 .dc-side-ad:hover .dc-side-ad-cta::after { transform:translateX(3px); }
 [data-lang="ar"] .dc-side-ad:hover .dc-side-ad-cta::after { transform:translateX(-3px); }
-@media(max-width:768px){ .dc-side-ad{flex-direction:column} .dc-side-ad-img{flex:none;width:100%;min-height:160px;aspect-ratio:3/1} .dc-side-ad-img::after{background:linear-gradient(to bottom,transparent 50%,rgba(255,255,255,.08))} }
+@media(max-width:768px){ .dc-side-ad{flex-direction:column} [data-lang="ar"] .dc-side-ad{flex-direction:column} .dc-side-ad-img{flex:none;width:100%;min-height:160px;aspect-ratio:3/1} .dc-side-ad-img::after{background:linear-gradient(to bottom,transparent 50%,rgba(255,255,255,.08))} }
 @media(max-width:480px){ .dc-side-ad{border-radius:16px} .dc-side-ad-body{padding:1rem 1.1rem} .dc-side-ad-img{min-height:130px} }
 
 /* ── Pregnancy banner — full background image ── */
@@ -165,10 +176,11 @@
 }
 .dc-side-banner-body {
   width: 100%;
-  padding: 2rem 1.5rem 1.8rem;
+  padding: 1.5rem;
+  padding-right: 25%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: flex-start;
   position: relative;
   z-index: 1;
   /* directly over the image — no background panel */
@@ -227,10 +239,12 @@
   text-align: right;
 }
 [data-lang="ar"] .dc-side-banner-body {
+  direction: rtl;
   text-align: right;
   align-items: flex-end;
-  padding-right: 40%;
+  padding-right: 45%;
   padding-left: 1.5rem;
+  justify-content: flex-start;
 }
 [data-lang="ar"] .dc-side-banner-pill {
   align-self: flex-end;
@@ -240,14 +254,14 @@
 }
 /* Responsive */
 @media(max-width:768px){
-  .dc-side-banner{min-height:380px; align-items:flex-end}
-  .dc-side-banner-body{padding:1.5rem 1.2rem}
+  .dc-side-banner{min-height:380px; align-items:flex-start}
+  .dc-side-banner-body{padding:1.2rem; padding-right:20%}
   .dc-side-banner-desc{max-width:100%}
-  [data-lang="ar"] .dc-side-banner-body{padding-right:1.2rem}
+  [data-lang="ar"] .dc-side-banner-body{padding:1.2rem; padding-right:30%}
 }
 @media(max-width:480px){
   .dc-side-banner{border-radius:18px; min-height:320px}
-  .dc-side-banner-body{padding:1.2rem 1rem}
+  .dc-side-banner-body{padding:1rem; padding-right:15%}
   .dc-side-banner-title{font-size:.9rem}
 }
 @media(max-width:900px){.dc-wrap{overflow-x:hidden}} .dc-side,.dc-main{min-width:0}
@@ -2029,6 +2043,6 @@
   word_count: 3623
   canonical: https://www.dotforlife.com/index.html
 -->
-  <script src="/scripts/feed.js?v=20260608p" defer></script>
+  <script src="/scripts/feed.js?v=20260608q" defer></script>
 </body>
 </html>
