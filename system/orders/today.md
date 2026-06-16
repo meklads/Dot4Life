@@ -473,3 +473,18 @@
 - يُقرأ من اليمين لليسار: صورة (يمين) → العنوان → الميتا.
 - في الوضع الإنجليزي تنقلب طبيعياً LTR (الصورة يسار) — اربطها بحالة اللغة.
 > اختبر live (عربي + إنجليزي) قبل «تم». (تأكيد: العمودان معكوسان صح ✅ والعدد 7 ✅.)
+
+---
+## ✅ تم — اتجاه بطاقات «مقارنات وقرارات» RTL للعربي
+**المطلوب:** بطاقات المقارنات في العربية: صورة يمين، نص يسارها، text-align: right. في الإنجليزية: عكس.
+**ما عملته:**
+- `[data-lang="ar"] .dc-item { flex-direction: row-reverse; }` — قلب ترتيب العناصر في العربية
+- `[data-lang="ar"] .dc-item-text { direction: rtl; text-align: right; }` — محاذاة النص لليمين + تدفق RTL للـbyline (الزمن قبل الكاتب)
+- `[data-lang="ar"] .dc-item-split { direction: rtl; }` — قلب ترتيب الصورتين في المقارنة
+- `[data-lang="ar"] .dc-view-all { align-self: flex-end; }` — رابط «عرض الجميع» لليمين
+- على الموبايل: `[data-lang="ar"] .dc-item { flex-direction: column; }` — تكدّس عمودي عادي
+✅ اختبر live:
+- العربية ديسكتوب: `flexDirection: row-reverse`، الصورة يمين (x=1241) > النص (right=1225) ✅
+- الإنجليزية ديسكتوب: `flexDirection: row`، الصورة يسار (right=703) < النص (x=719) ✅
+- موبايل عربي: `flexDirection: column` ✅
+- Fallback: 7 مقارنات سليمة ✅
