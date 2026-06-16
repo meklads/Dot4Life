@@ -1,22 +1,15 @@
-# 🖼️ إيديوجرام — برومبتات صور المقالات
-> **المنظومة:** عامر يكتب البرومبت هنا ← جوست يولّد في Ideogram (Model 4.0 · Style Auto · **WEBP · 1K** · النسبة المذكورة) ← يحفظ بالاسم في `assets/images/` ← عمر يركّبها في البطاقة.
-> **عمر لا يولّد. جوست يولّد. عامر يضيف برومبت كل صورة هنا مع كل دفعة.**
+# 🖼️ إيديوجرام — جدول برومبتات الصور
+> **عن Ideogram:** عامر يكتب البرومبت ← جوست يولّد ← عمر يركّب. **عمر لا يولّد.**
+> **الإعدادات الثابتة:** Model `4.0` · Style `Auto` · صيغة `WEBP` · دقة `1K` · النسبة `16:10` · احفظ في `assets/images/`.
+> ✅ = مولّدة ومركّبة · ☐ = مطلوبة.
 
----
 ## 📅 دفعة ١٦ يونيو ٢٠٢٦
 
-### الادخار أم الاستثمار  ·  `hero-saving-investing.webp`  ·  16:10  ·  ☐ مطلوب
-```
-Editorial still-life of a glass jar filled with coins and a small green plant growing from it, beside a notebook on a warm cream surface, soft natural light, warm cream and soft teal color grade, premium editorial finance photography, optimistic calm mood, photorealistic, high detail
-```
+| المقال | البرومبت (انسخه في Ideogram) | اسم الصورة |
+|--------|------------------------------|-------------|
+| الادخار أم الاستثمار | `Editorial still-life of a glass jar filled with coins and a small green plant growing from it, beside a notebook on a warm cream surface, soft natural light, warm cream and soft teal color grade, premium editorial finance photography, optimistic calm mood, photorealistic, high detail` | ☐ `hero-saving-investing.webp` |
+| أسماء الله الحسنى | `Serene still-life of an open Arabic book with elegant calligraphy and a soft-glowing lantern on a warm cream table, no faces, reverent calm mood, deep green and warm gold accents, soft natural light, premium editorial, photorealistic, high detail` | ☐ `hero-allah-names.webp` |
+| السعرات والطاقة (fitness) | راجع `visual-governance/d4l/image-prompts-fitness.md` | ✅ `hero-fit-calories.webp` |
+| باقي بطاقات fitness (٨) | البرومبتات في نفس الملف أعلاه | ☐ (8 صور) |
 
-### أسماء الله الحسنى  ·  `hero-allah-names.webp`  ·  16:10  ·  ☐ مطلوب
-```
-Serene still-life of an open Arabic book with elegant calligraphy and a soft-glowing lantern on a warm cream table, no faces, reverent calm mood, deep green and warm gold accents, soft natural light, premium editorial, photorealistic, high detail
-```
-
-### بطاقات صفحة fitness (٩ صور)  ·  ✅ منجز جزئياً
-> البرومبتات التفصيلية في `visual-governance/d4l/image-prompts-fitness.md` (السعرات ✅ متركّبة).
-
----
-> **القاعدة:** أي مقال جديد → عامر يضيف بلوك برومبت هنا فوراً (المقال + اسم الصورة + النسبة + البرومبت + الحالة).
+> **القاعدة:** أي مقال جديد → عامر يضيف **صفّاً** هنا (المقال · البرومبت · اسم الصورة). كل البرومبتات في جدول واحد ثابت.
