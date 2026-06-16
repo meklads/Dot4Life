@@ -10,7 +10,7 @@
 (function() {
   'use strict';
 
-  var FEED_VERSION = 3;  // bump to invalidate all caches on deploy
+  var FEED_VERSION = 4;  // bump to invalidate all caches on deploy
 
   var CONFIG = {
     jsonUrl: '/articles.json',
@@ -200,6 +200,113 @@
     });
   }
 
+  /* ═══ Homepage: Featured Card ═══
+     Renders the latest featured-stories article into [data-feed-featured] */
+  function renderFeatured() {
+    var container = document.querySelector('[data-feed-featured]');
+    if (!container) return;
+    var stories = getSectionArticles('featured-stories');
+    if (!stories.length) return;
+    var a = stories[0];
+    var title = isAr && a.title_ar ? a.title_ar : a.title_en;
+    var section = isAr && a.section_ar ? a.section_ar : a.section;
+    var section_en = a.section || 'Featured';
+    var href = isAr && a.url ? a.url : (a.url_en || a.url || '#');
+    var img = a.img || '';
+    container.innerHTML =
+      '<div class="sl-featured-img"><div class="img-ph">' +
+        '<img src="' + esc(img) + '" width="600" height="400" alt="" loading="lazy" fetchpriority="high">' +
+      '</div></div>' +
+      '<div class="sl-featured-body">' +
+        '<div class="sl-featured-kicker"><span class="en">' + esc(section_en) + '</span><span class="ar">' + esc(section) + '</span></div>' +
+        '<div class="sl-featured-title"><span class="en">' + esc(title) + '</span><span class="ar">' + esc(title) + '</span></div>' +
+        '<div class="sl-featured-byline"><span class="en">' + esc(section_en) + ' · Dot4Life</span><span class="ar">' + esc(section) + ' · دوت فور لايف</span></div>' +
+      '</div>';
+    container.setAttribute('data-en-href', a.url_en || a.url || '#');
+    container.setAttribute('data-ar-href', a.url || '#');
+    container.href = href;
+    /* Also update the language-switching data on the parent if it exists separately */
+    var parent = container.parentElement;
+    if (parent && parent.hasAttribute && parent.hasAttribute('data-en-href')) {
+      parent.setAttribute('data-en-href', a.url_en || a.url || '#');
+      parent.setAttribute('data-ar-href', a.url || '#');
+    }
+  }
+
+  /* ═══ Homepage: Latest-List ═══
+     Renders the 5 most recent articles into [data-feed-latest] */
+  function renderLatestList() {
+    var list = document.querySelector('[data-feed-latest]');
+    if (!list) return;
+    var sorted = articles.slice().sort(function(a, b) {
+      return new Date(b.date) - new Date(a.date);
+    });
+    var items = sorted.slice(0, 5);
+    if (!items.length) return;  // keep hardcoded fallback
+    var html = '';
+    for (var i = 0; i < items.length; i++) {
+      var a = items[i];
+      var title = isAr && a.title_ar ? a.title_ar : a.title_en;
+      var url = a.url || '#';
+      var url_en = a.url_en || a.url || '#';
+      var href = isAr ? url : url_en;
+      var byline = a.section_ar || a.category || '';
+      var byline_en = a.section || a.category || '';
+      html += '<a href="' + esc(href) + '" class="sl-latest-item" ' +
+               'data-en-href="' + esc(url_en) + '" ' +
+               'data-ar-href="' + esc(url) + '">' +
+        '<span class="sl-latest-item-title">' +
+          '<span class="en">' + esc(title) + '</span>' +
+          '<span class="ar">' + esc(title) + '</span>' +
+        '</span>' +
+        '<span class="sl-latest-item-byline">' +
+          '<span class="en">' + esc(byline_en) + ' · Dot4Life</span>' +
+          '<span class="ar">' + esc(byline) + ' · دوت فور لايف</span>' +
+        '</span>' +
+      '</a>';
+    }
+    list.innerHTML = html;
+  }
+
+  /* ═══ Homepage: Comparisons ═══
+     Renders comparison articles into [data-feed-comparisons] */
+  function renderComparisons() {
+    var list = document.querySelector('[data-feed-comparisons]');
+    if (!list) return;
+    var comparisons = getSectionArticles('comparisons');
+    if (!comparisons.length) return;
+    var html = '';
+    for (var i = 0; i < comparisons.length; i++) {
+      var a = comparisons[i];
+      var title = isAr && a.title_ar ? a.title_ar : a.title_en;
+      var cat = a.section_ar || a.category || '';
+      var cat_en = a.section || a.category || '';
+      var url = a.url || '#';
+      var url_en = a.url_en || a.url || '#';
+      var href = isAr ? url : url_en;
+      var img = a.img || '';
+      html += '<a href="' + esc(href) + '" class="dc-item reveal" ' +
+               'data-en-href="' + esc(url_en) + '" ' +
+               'data-ar-href="' + esc(url) + '">' +
+        '<div class="dc-item-visual">' +
+          '<div class="dc-item-single">' +
+            '<img src="' + esc(img) + '" alt="" width="120" height="120" onerror="this.style.display=\'none\'" fetchpriority="high">' +
+          '</div>' +
+        '</div>' +
+        '<div class="dc-item-text">' +
+          '<span class="dc-item-cat"><span class="en">' + esc(cat_en) + '</span><span class="ar">' + esc(cat) + '</span></span>' +
+          '<span class="dc-item-title"><span class="en">' + esc(title) + '</span><span class="ar">' + esc(title) + '</span></span>' +
+          '<span class="dc-item-byline">' +
+            '<span class="dc-item-author"><span class="en">By Dot4Life Team</span><span class="ar">كتب بواسطة فريق دوت فور لايف</span></span>' +
+            '<span class="dc-item-dot">·</span>' +
+            '<span class="dc-item-time"><span class="en">Article</span><span class="ar">مقال</span></span>' +
+          '</span>' +
+        '</div>' +
+      '</a>';
+    }
+    list.innerHTML = html;
+  }
+
   /* ═══ Homepage Section Feeds ═══
      Renders each [data-feed-section] block with its latest articles
      (featured-stories · comparisons · peace-capsules) */
@@ -249,9 +356,14 @@
     var filtered = getFilteredArticles(pageType);
     console.log('feed.js v2: render() start | pageType=' + pageType + ' | articles=' + articles.length + ' | filtered=' + filtered.length);
 
-    // Homepage → render 3 section feeds above general latest
+    // Homepage → render dynamic sections
     if (pageType === 'home') {
       renderSectionFeeds();
+      renderFeatured();
+      renderLatestList();
+      renderComparisons();
+      // Trigger language-switching script to pick up new [data-en-href] elements
+      try { document.dispatchEvent(new Event('dfl:langchange')); } catch(e) {}
     }
 
     // General latest-articles grid (homepage + all section pages)
@@ -291,9 +403,12 @@
     var hasBlog = !!document.querySelector('#blog-list');
     var hasArchive = !!document.querySelector('#archive-list');
     var hasSectionFeeds = !!document.querySelector('[data-feed-section]');
-    console.log('feed.js v2: bootstrap check | grid=' + hasGrid + ' blog=' + hasBlog + ' archive=' + hasArchive + ' sections=' + hasSectionFeeds);
+    var hasFeatured = !!document.querySelector('[data-feed-featured]');
+    var hasLatestList = !!document.querySelector('[data-feed-latest]');
+    var hasComparisons = !!document.querySelector('[data-feed-comparisons]');
+    console.log('feed.js v2: bootstrap check | grid=' + hasGrid + ' blog=' + hasBlog + ' archive=' + hasArchive + ' sections=' + hasSectionFeeds + ' featured=' + hasFeatured + ' latestList=' + hasLatestList + ' comps=' + hasComparisons);
 
-    if (hasGrid || hasBlog || hasArchive || hasSectionFeeds) {
+    if (hasGrid || hasBlog || hasArchive || hasSectionFeeds || hasFeatured || hasLatestList || hasComparisons) {
       console.log('feed.js v2: bootstrap OK → fetching articles');
       fetchArticles(render);
     } else {
@@ -301,7 +416,10 @@
       setTimeout(function() {
         var retryGrid = !!document.querySelector(CONFIG.containerSelector);
         var retrySec = !!document.querySelector('[data-feed-section]');
-        if (retryGrid || retrySec) {
+        var retryFeat = !!document.querySelector('[data-feed-featured]');
+        var retryList = !!document.querySelector('[data-feed-latest]');
+        var retryComp = !!document.querySelector('[data-feed-comparisons]');
+        if (retryGrid || retrySec || retryFeat || retryList || retryComp) {
           console.log('feed.js v2: containers found on retry → fetching');
           fetchArticles(render);
         } else {
