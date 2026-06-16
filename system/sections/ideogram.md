@@ -31,7 +31,7 @@
 
 ---
 ## 🍼 بانر ترويجي (دمج بطاقتين)
-| الغرض | البرومبت (Ideogram · WEBP · عريض ~21:9) | اسم الصورة |
+| الغرض | البرومبت (Ideogram · WEBP · مربّع 1:1 (ارتفاع بطاقتين)) | اسم الصورة |
 |-------|------------------------------------------|-------------|
 | بانر الحمل (ترويج خاص) | `Minimalist line-art outline illustration of a modestly dressed expectant mother gently holding her belly, loose flowing dress, serene and dignified, warm cream background with soft teal and gentle blush-pink accents, calm premium editorial vector illustration, generous negative space on one side for text, flat brand-aligned, no text, family-appropriate, high detail` | ☐ `banner-pregnancy.webp` |
 > Negative: realistic skin, exposure, tight clothing, harsh neon, clutter, text.
