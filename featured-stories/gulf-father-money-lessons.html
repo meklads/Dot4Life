@@ -84,6 +84,8 @@ tr:nth-child(even){background:#f8faf9}
 </head>
 <body data-template="article">
 
+<div id="reading-progress" role="progressbar" aria-label="Reading progress"></div>
+
 <!-- ═══ UNIFIED HEADER ══════════════════════════════════════ -->
 <nav id="navbar"><div class="nav-inner"><a href="/" class="nav-logo"><img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" width="100" height="100" style="height:100px;width:auto;object-fit:contain;" loading="lazy"></a><ul class="nav-links"><li><a href="/health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li><li><a href="/finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li><li><a href="/real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li><li><a href="/travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li><li><a href="/islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li><li><a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a></li><li><a href="/archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a></li><li><a href="/blog.html"><span class="en">blog</span><span class="ar">المدونة</span></a></li><li><a href="/library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a></li></ul><div class="nav-controls"><button class="nav-btn" id="lang-toggle"><span class="en">عربي</span><span class="ar">English</span></button><button class="nav-btn" id="theme-toggle">
   <svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -96,18 +98,21 @@ tr:nth-child(even){background:#f8faf9}
 
 <section class="article-banner" aria-label="Article banner">
   <div class="article-banner-img-wrap">
-    <img src="https://images.unsplash.com/photo-1607863680198-23d4b2565df0?auto=format&fit=crop&w=600&h=340&q=85" alt="" class="article-banner-img" width="1200" height="420" loading="eager" fetchpriority="high">
+    <img src="/assets/images/articles/featured-stories-gulf-father-money-lessons.webp" alt="" class="article-banner-img" width="1200" height="420" loading="eager" fetchpriority="high">
     <div class="article-banner-overlay" style="text-align:right;">
-      <div class="article-banner-cat" style="display:inline-block;color:#fff;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:4px 14px;font-size:.72rem;font-weight:700;margin-bottom:.75rem;backdrop-filter:blur(4px);">قصص مميزة</div>
-      <h1 class="article-banner-title" style="font-size:clamp(1.5rem,3.5vw,2.2rem);line-height:1.4;font-weight:800;color:#fff;text-shadow:0 2px 20px rgba(0,0,0,.3);margin:0;">أب خليجي علّم أبناءه قيمة المال قبل العاشرة | قصة ملهمة</h1>
-      <div class="article-banner-meta" style="color:rgba(255,255,255,.8);margin-top:.75rem;font-size:.8rem;display:flex;gap:.6rem;flex-wrap:wrap;justify-content:flex-end;">
+      <div class="article-banner-cat">قصص مميزة</div>
+      <h1 class="article-banner-title">أب خليجي علّم أبناءه قيمة المال قبل العاشرة | قصة ملهمة</h1>
+      <div class="article-banner-meta" style="justify-content:flex-end;">
         <span>8 يونيو 2026</span>
-        <span>٨ دقائق قراءة</span>
+        <span>١٠ دقائق قراءة</span>
       </div>
     </div>
   </div>
 </section>
 
+<div class="article-layout">
+
+<main class="article-main">
 <article class="article-body">
 <p>في أحد أحياء الرياض، كان <strong>سامر</strong>، أب لثلاثة أبناء (٨ و٦ و٤ سنوات)، يقف أمام مشهد متكرر يزعجه: أطفاله يطلبون كل لعبة يرونها في السوق، ويبكون إن لم يشترِها، وفي اليوم التالي ينسونها في زاوية الغرفة. لم يكن سامر يريد أن يربّي أبناءً ماديين، لكنه أيضاً لم يرد أن يربّيهم على أن المال ينمو على الشجر.</p>
 
@@ -117,15 +122,15 @@ tr:nth-child(even){background:#f8faf9}
 
 <p>قبل سنتين، قرر سامر أن يجرب شيئاً مختلفاً. بدلاً من المحاضرات الأسبوعية عن «المال لا يأتي بسهولة»، صمّم <strong>نظاماً عملياً</strong> يناسب أعمار أطفاله. ما حدث بعد ذلك غيّر علاقة أسرته بالمال كلياً، وأصبح هذا النظام جزءاً من روتينهم اليومي.</p>
 
-<h2>القصة: نقطة التحول</h2>
+<h2 id="القصة-نقطة-التحول">القصة: نقطة التحول</h2>
 <p>كانت البداية في عطلة نهاية أسبوع. جمع سامر أبناءه وقال: «كل واحد منكم سيأخذ هذا الشهر مصروفه مقدماً، على أن نطبّق معاً خطة صغيرة». المصروف لم يكن كبيراً، لكن طريقة التعامل معه هي ما صنع الفارق. بدلاً من صرف المبلغ كله في أول أسبوع، ساعدهم سامر على تقسيمه إلى ثلاثة أجزاء: جزء للإنفاق الحر، جزء للادخار لشيء كبير يريدونه، وجزء للمشاركة (التبرّع).</p>
 
 <p>ما لفت انتباه سامر أن ابنه الأكبر (٨ سنوات) بدأ يسأل أسئلة عميقة: «إذا ادّخرت شهرين هل أستطيع شراء الدراجة التي أريدها؟»، «هل يجوز أن أقرّض أخي الصغير من مصروفي إذا احتاج؟». هنا أدرك سامر أن الأطفال يفهمون أكثر مما نظن، وأنهم بحاجة إلى <strong>أدوات وليس محاضرات</strong>.</p>
 
-<h2>خمس دروس عملية من تجربة سامر</h2>
+<h2 id="خمس-دروس-عملية-من-تجربة-سامر">خمس دروس عملية من تجربة سامر</h2>
 
 <div class="lesson-box">
-<h3>الدرس الأول: الحصّالات الثلاث</h3>
+<h3 id="الدرس-الأول-الحصالات-الثلاث">الدرس الأول: الحصّالات الثلاث</h3>
 <ul>
   <li><strong>حصّالة الادخار:</strong> الهدف: شراء شيء كبير لاحقاً. يتعلم الطفل تأجيل الإشباع.</li>
   <li><strong>حصّالة الإنفاق:</strong> حرية اختيار ما يريد الآن، دون رقابة (حتى لو أخطأ).</li>
@@ -135,29 +140,49 @@ tr:nth-child(even){background:#f8faf9}
 </div>
 
 <div class="lesson-box">
-<h3>الدرس الثاني: المصروف الأسبوعي لا اليومي</h3>
+<h3 id="الدرس-الثاني-المصروف-الأسبوعي-لا-اليومي">الدرس الثاني: المصروف الأسبوعي لا اليومي</h3>
 <p>المصروف الأسبوعي يعطي الطفل فرصة للتخطيط: «إذا صرفت كل شيء اليوم، لن يبقى لبقية الأسبوع». الطفل الذي يخطئ في أسبوعين يتعلم الدرس بدون محاضرة. سامر بدأ بمبلغ بسيط (٢٠ ريالاً أسبوعياً لابنه الأكبر) وترك له حرية التصرف، مع حق النقاش فقط بعد الخطأ.</p>
 </div>
 
 <div class="lesson-box">
-<h3>الدرس الثالث: سوق صغير في البيت</h3>
+<h3 id="الدرس-الثالث-سوق-صغير-في-البيت">الدرس الثالث: سوق صغير في البيت</h3>
 <p>كل يوم خميس، يفتح سامر «السوق الصغير»: يشترِي حاجيات بسيطة (وجبات خفيفة، ألعاب صغيرة، قرطاسية) ويبيعها لأطفاله بسعر التكلفة. المال الذي يدفعونه هو من مدّخراتهم. هذا التمرين يحاكي السوق الحقيقي: إذا أنفقت على شوكولاتة اليوم، لن تستطيع شراء اللعبة التي تريدها الأسبوع القادم. الدرس مؤلم لكنه آمن.</p>
 </div>
 
 <div class="lesson-box">
-<h3>الدرس الرابع: القدوة الحيّة</h3>
+<h3 id="الدرس-الرابع-القدوة-الحية">الدرس الرابع: القدوة الحيّة</h3>
 <p>سامر لم يكتفِ بتعليم الأطفال نظرياً. كان يجلس معهم مرّة في الشهر ويُريهم دفتره البسيط (ورقي، ليس تطبيقاً): كم ادّخر هذا الشهر، كم أنفق، وهل حقق هدفه الصغير. الأطفال يقلّدون ما يرون أكثر مما يسمعون. رؤية أبيهم يخطط لميزانيته علّمتهم أكثر من أي درس مباشر.</p>
 </div>
 
 <div class="lesson-box">
-<h3>الدرس الخامس: المشروع الصغير</h3>
+<h3 id="الدرس-الخامس-المشروع-الصغير">الدرس الخامس: المشروع الصغير</h3>
 <p>بعد ستة أشهر، اقترح سامر على أطفاله فكرة مشروع صغير: عصير ليمون في العطلة الصيفية، أو بيع حلويات منزلية للجيران. كل طفل يشارك وفق عمره. العائد يتوزّع بين الإنفاق والادخار والتبرّع. هنا فهم الأطفال <strong>مبدأ الكسب</strong> لأول مرة: المال يأتي نتيجة جهد، ليس من الصرّاف الآلي.</p>
 </div>
 
-<h2>النتائج بعد سنة</h2>
+<h2 id="النتائج-بعد-سنة">النتائج بعد سنة</h2>
 <p>بعد عام من التجربة، لاحظ سامر تغييرات واضحة: أطفاله أصبحوا يسألون عن السعر قبل أن يطلبوا الشراء. أكبرهم بدأ يدّخر لهدف طويل (جهاز لوحي) واستغرق ٤ أشهر لتحقيقه. صغيرهم (٤ سنوات) صار يوزّع قطعه النقدية على حصّالاته الثلاث بنفسه بفهم. الأهم: زادت محادثاتهم العائلية عن المال، وقلّت نوبات البكاء في السوبرماركت.</p>
 
-<h2>جدول توضيحي: تطوّر الوعي المالي حسب العمر</h2>
+<div class="in-content-subscribe">
+  <h3 id="enjoying-this-articleهل-يعجبك-المقال">📬 <span class="en">Enjoying this article?</span><span class="ar">هل يعجبك المقال؟</span></h3>
+  <p><span class="en">Get more family tips every Friday — join our newsletter.</span><span class="ar">احصل على نصائح أسرية كل جمعة — اشترك في نشرتنا.</span></p>
+  <div class="sub-input-wrap">
+    <input type="email" placeholder="your@email.com" aria-label="Email">
+    <button onclick="alert('🚧 Coming soon — signup integration.')"><span class="en">Subscribe</span><span class="ar">اشترك</span></button>
+  </div>
+</div>
+
+
+
+<div class="in-content-subscribe">
+  <h3>📬 <span class="en">Enjoying this article?</span><span class="ar">هل يعجبك المقال؟</span></h3>
+  <p><span class="en">Get more family tips every Friday — join our newsletter.</span><span class="ar">احصل على نصائح أسرية كل جمعة — اشترك في نشرتنا.</span></p>
+  <div class="sub-input-wrap">
+    <input type="email" placeholder="your@email.com" aria-label="Email">
+    <button onclick="alert('🚧 Coming soon — signup integration.')"><span class="en">Subscribe</span><span class="ar">اشترك</span></button>
+  </div>
+</div>
+
+<h2 id="جدول-توضيحي-تطور-الوعي-المالي-حسب-العمر">جدول توضيحي: تطوّر الوعي المالي حسب العمر</h2>
 <table>
   <tr><th>العمر</th><th>المفهوم المناسب</th><th>الأداة المقترحة</th></tr>
   <tr><td>٤–٥ سنوات</td><td>الانتظار: لا أحصل على كل ما أريد فوراً</td><td>حصّالتان (إنفاق + ادخار)</td></tr>
@@ -166,10 +191,10 @@ tr:nth-child(even){background:#f8faf9}
   <tr><td>١١–١٣ سنة</td><td>الكسب: مشاريع صغيرة ومقابل أعمال إضافية</td><td>مشروع موسمي + حساب توفير تحت إشراف</td></tr>
 </table>
 
-<h2>الخلاصة: لا تبدأ مبكراً بل ابدأ الآن</h2>
+<h2 id="الخلاصة-لا-تبدأ-مبكرا-بل-ابدأ-الآن">الخلاصة: لا تبدأ مبكراً بل ابدأ الآن</h2>
 <p>الأطفال يتعلّمون قيمة المال ليس من الكلمات بل من الممارسة. نظام سامر لم يكن معقداً. كل ما فعله هو تحويل المال من موضوع محظور إلى أداة تعليمية. الخطأ الوحيد هو الانتظار حتى سن المراهقة. ابدأ اليوم، حتى بمصروف صغير وثلاث حصّالات.</p>
 
-<h2>الأسئلة الشائعة (FAQ)</h2>
+<h2 id="الأسئلة-الشائعة-faq">الأسئلة الشائعة (FAQ)</h2>
 
 <div class="faq-item">
 <div class="faq-question">من أي سن يمكن تعليم الأطفال قيمة المال؟</div>
@@ -196,7 +221,139 @@ tr:nth-child(even){background:#f8faf9}
 <div class="faq-answer">الهدف ليس حرمان الطفل بل تمكينه. علّمه أن المال أداة لتحقيق أهدافه الكبيرة. قاعدة الثلثين مفيدة: ثلث للإنفاق الحر، ثلثان للادخار لهدف طويل. بهذا يتعلم التوازن دون شعور بالحرمان. ولا تنسَ أن القدوة أهم من التلقين.
 </article>
 
+<div class="article-end">
+<div class="article-share">
+  <a href="https://wa.me/?text=أب خليجي علم أبناءه قيمة المال قبل العاشرة%20https://dotforlife.com/featured-stories/gulf-father-money-lessons.html" target="_blank" rel="noopener" class="share-btn whatsapp" aria-label="Share on WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span>WhatsApp</span>
+  </a>
+  <a href="https://twitter.com/intent/tweet?text=أب خليجي علم أبناءه قيمة المال قبل العاشرة&url=https://dotforlife.com/featured-stories/gulf-father-money-lessons.html" target="_blank" rel="noopener" class="share-btn x" aria-label="Share on X">
+    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    <span>X</span>
+  </a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https://dotforlife.com/featured-stories/gulf-father-money-lessons.html" target="_blank" rel="noopener" class="share-btn facebook" aria-label="Share on Facebook">
+    <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    <span>Facebook</span>
+  </a>
+  <button class="share-btn copy-link" onclick="navigator.clipboard.writeText('https://dotforlife.com/featured-stories/gulf-father-money-lessons.html').then(()=>{this.innerHTML='<span class="en">✓ Copied!</span><span class="ar">✓ نُسخ!</span>'})" aria-label="Copy link">
+    <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+    <span class="en">Copy</span><span class="ar">نسخ</span>
+  </button>
 </div>
+
+<div class="article-tool-cta">
+  <h3><span class="en">Try Our حاسبة الادخار</span><span class="ar">جرّب حاسبة الادخار</span></h3>
+  <p><span class="en">Calculate, plan, and take control of your family finances.</span><span class="ar">احسب، خطّط، وتحكّم في مالية أسرتك.</span></p>
+  <a href="/tools/savings-calculator.html" class="tool-cta-btn"><span class="en">Open Tool →</span><span class="ar">فتح الأداة ←</span></a>
+</div>
+
+<div class="article-read-also">
+  <h3><span class="en">📖 Read Also</span><span class="ar">📖 اقرأ أيضاً</span></h3>
+  <div class="read-also-grid">
+    <a href="/featured-stories/featured-story-saudi-mother.html" class="read-also-card">
+      <img src="https://images.unsplash.com/photo-1511385348-a52b4a160dc2?auto=format&fit=crop&w=600&h=340&q=85" alt="" loading="lazy">
+      <span class="read-also-title">قصة أم سعودية: التوفيق بين العمل ورعاية الأطفال</span>
+    </a>
+    <a href="/featured-stories/featured-story-gulf-family-home.html" class="read-also-card">
+      <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=600&h=340&q=85" alt="" loading="lazy">
+      <span class="read-also-title">كيف حولت عائلة خليجية منزلها لواحة سلام نفسي</span>
+    </a>
+    <a href="/comparisons/government-vs-private-school-gulf.html" class="read-also-card">
+      <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=600&h=340&q=85" alt="" loading="lazy">
+      <span class="read-also-title">المدرسة الحكومية أم الخاصة في الخليج: أيهما أفضل؟</span>
+    </a>
+    <a href="/peace-capsules/peace-at-home-5-steps.html" class="read-also-card">
+      <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&h=340&q=85" alt="" loading="lazy">
+      <span class="read-also-title">5 خطوات لتحويل منزلك إلى ملاذ للهدوء والسكينة</span>
+    </a>
+  </div>
+</div>
+
+<div class="article-friday-cta">
+  <h3>📬 <span class="en">Friday Family Tips</span><span class="ar">نصائح الجمعة للأسرة</span></h3>
+  <p><span class="en">Get weekly inspiration delivered to your inbox.</span><span class="ar">احصل على إلهام أسبوعي في بريدك.</span></p>
+  <div class="friday-input-wrap">
+    <input type="email" placeholder="your@email.com" aria-label="Email">
+    <button onclick="alert('🚧 Coming soon — signup integration.')"><span class="en">Join</span><span class="ar">اشترك</span></button>
+  </div>
+</div>
+
+<div class="article-tags">
+  <span class="tag">#family</span>
+  <span class="tag">#parenting</span>
+  <span class="tag">#kids</span>
+  <span class="tag">#education</span>
+  <span class="tag">#gulf-family</span>
+  <span class="tag">#values</span>
+</div>
+</div>
+</main>
+
+<aside class="article-sidebar">
+<div class="sidebar-module sidebar-toc">
+  <h4>📑 <span class="en">Contents</span><span class="ar">المحتويات</span></h4>
+  <a href="#القصة-نقطة-التحول" class="toc-item">القصة: نقطة التحول</a>
+  <a href="#خمس-دروس-عملية-من-تجربة-سامر" class="toc-item">خمس دروس عملية من تجربة سامر</a>
+  <a href="#الدرس-الأول-الحصالات-الثلاث" class="toc-item toc-item-h3">الدرس الأول: الحصّالات الثلاث</a>
+  <a href="#الدرس-الثاني-المصروف-الأسبوعي-لا-اليومي" class="toc-item toc-item-h3">الدرس الثاني: المصروف الأسبوعي لا اليومي</a>
+  <a href="#الدرس-الثالث-سوق-صغير-في-البيت" class="toc-item toc-item-h3">الدرس الثالث: سوق صغير في البيت</a>
+  <a href="#الدرس-الرابع-القدوة-الحية" class="toc-item toc-item-h3">الدرس الرابع: القدوة الحيّة</a>
+  <a href="#الدرس-الخامس-المشروع-الصغير" class="toc-item toc-item-h3">الدرس الخامس: المشروع الصغير</a>
+  <a href="#النتائج-بعد-سنة" class="toc-item">النتائج بعد سنة</a>
+  <a href="#enjoying-this-articleهل-يعجبك-المقال" class="toc-item toc-item-h3">📬 Enjoying this article?هل يعجبك المقال؟</a>
+  <a href="#جدول-توضيحي-تطور-الوعي-المالي-حسب-العمر" class="toc-item">جدول توضيحي: تطوّر الوعي المالي حسب العمر</a>
+  <a href="#الخلاصة-لا-تبدأ-مبكرا-بل-ابدأ-الآن" class="toc-item">الخلاصة: لا تبدأ مبكراً بل ابدأ الآن</a>
+  <a href="#الأسئلة-الشائعة-faq" class="toc-item">الأسئلة الشائعة (FAQ)</a>
+</div>
+
+<div class="sidebar-module sidebar-team-card">
+  <img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" width="56" height="56" loading="lazy">
+  <div class="team-name"><span class="en">Dot4Life Team</span><span class="ar">فريق دوت فور لايف</span></div>
+  <div class="team-trust"><span class="en">Trusted content, carefully edited for Gulf families.</span><span class="ar">محتوى موثوق، محرَّر بعناية للأسرة الخليجية.</span></div>
+  <a href="/editorial-standards.html" class="team-link"><span class="en">Our Standards →</span><span class="ar">معاييرنا التحريرية ←</span></a>
+</div>
+
+<div class="sidebar-module sidebar-related">
+  <h4><span class="en">Related</span><span class="ar">ذات صلة</span></h4>
+  <a href="/featured-stories/featured-story-saudi-mother.html" class="sidebar-related-item">
+    <img src="https://images.unsplash.com/photo-1511385348-a52b4a160dc2?auto=format&fit=crop&w=600&h=340&q=85" alt="" width="64" height="48" loading="lazy">
+    <span class="related-title">قصة أم سعودية: التوفيق بين العمل ورعاية الأطفال</span>
+  </a>
+  <a href="/featured-stories/featured-story-gulf-family-home.html" class="sidebar-related-item">
+    <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=600&h=340&q=85" alt="" width="64" height="48" loading="lazy">
+    <span class="related-title">كيف حولت عائلة خليجية منزلها لواحة سلام نفسي</span>
+  </a>
+  <a href="/comparisons/government-vs-private-school-gulf.html" class="sidebar-related-item">
+    <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=600&h=340&q=85" alt="" width="64" height="48" loading="lazy">
+    <span class="related-title">المدرسة الحكومية أم الخاصة في الخليج: أيهما أفضل؟</span>
+  </a>
+  <a href="/peace-capsules/peace-at-home-5-steps.html" class="sidebar-related-item">
+    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&h=340&q=85" alt="" width="64" height="48" loading="lazy">
+    <span class="related-title">5 خطوات لتحويل منزلك إلى ملاذ للهدوء والسكينة</span>
+  </a>
+</div>
+
+<div class="sidebar-module sidebar-tools">
+  <h4>🛠 <span class="en">Tools</span><span class="ar">أدوات</span></h4>
+  <a href="/tools/savings-calculator.html" class="tool-btn">حاسبة الادخار</a>
+  <a href="/tools/budget-planner.html" class="tool-btn">مخطّط الميزانية</a>
+</div>
+
+<div class="sidebar-module sidebar-friday">
+  <h4><span class="en">📬 Friday Reminder</span><span class="ar">📬 رسالة الجمعة</span></h4>
+  <p><span class="en">Get weekly family tips every Friday.</span><span class="ar">احصل على نصائح أسبوعية للأسرة كل جمعة.</span></p>
+  <div class="friday-input-wrap">
+    <input type="email" placeholder="your@email.com" aria-label="Email">
+    <button onclick="alert('🚧 Coming soon — signup integration.')"><span class="en">Join</span><span class="ar">اشترك</span></button>
+  </div>
+</div>
+
+<div class="sidebar-module sidebar-ad"><span class="en">📢 Ad</span><span class="ar">📢 إعلان</span></div>
+</aside>
+
+</div><!-- /article-layout -->
+
+</div><!-- /article-wrap -->
 
 <!-- ═══ UNIFIED FOOTER ══════════════════════════════════════ -->
 <footer class="site-footer" role="contentinfo">
@@ -256,5 +413,38 @@ tr:nth-child(even){background:#f8faf9}
 
 
 <script src="/scripts/global.js?v=20260608u" defer></script>
+<script>
+(function(){
+  // Reading progress bar
+  var bar = document.getElementById('reading-progress');
+  if(bar){
+    window.addEventListener('scroll',function(){
+      var h = document.documentElement;
+      var total = h.scrollHeight - h.clientHeight;
+      var pct = (h.scrollTop || document.body.scrollTop) / (total || 1) * 100;
+      bar.style.width = pct + '%';
+    },{passive:true});
+  }
+  // TOC active highlight
+  var tocLinks = document.querySelectorAll('.toc-item');
+  if(tocLinks.length){
+    var headings = [];
+    tocLinks.forEach(function(link){
+      var id = link.getAttribute('href').replace('#','');
+      var el = document.getElementById(id);
+      if(el) headings.push({el:el,link:link});
+    });
+    window.addEventListener('scroll',function(){
+      var scrollY = window.scrollY + 130;
+      var current = null;
+      headings.forEach(function(h){
+        if(h.el.offsetTop <= scrollY) current = h;
+      });
+      tocLinks.forEach(function(l){ l.classList.remove('is-active'); });
+      if(current) current.link.classList.add('is-active');
+    },{passive:true});
+  }
+})();
+</script>
 </body>
 </html>
