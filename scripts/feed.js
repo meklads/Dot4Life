@@ -10,7 +10,7 @@
 (function() {
   'use strict';
 
-  var FEED_VERSION = 5;  // v5: unified data-feed-section slot rendering
+  var FEED_VERSION = 6;  // v6: supports type field filter for section feeds
 
   var CONFIG = {
     jsonUrl: '/articles.json',
@@ -140,10 +140,10 @@
     return filtered;
   }
 
-  /** Filter articles by `section` field for homepage section feeds */
+  /** Filter articles by `section` or `type` field for homepage section feeds */
   function getSectionArticles(sectionName) {
     return articles
-      .filter(function(a) { return a.section === sectionName; })
+      .filter(function(a) { return a.section === sectionName || a.type === sectionName; })
       .sort(function(a, b) { return new Date(b.date) - new Date(a.date); });
   }
 
