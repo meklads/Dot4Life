@@ -1,12 +1,40 @@
 /* DOTFORLIFE — Page-specific styles for tools/age-calculator.html */
-/* Extracted on 2026-06-08 */
+/* Premium redesign with ac- prefix */
 
 body{padding-top:158px;}
 @media(max-width:768px){body{padding-top:158px;}}
-/* ════════════════════════════════════ */
 :root{--purple:#7C3AED;--purple-l:#EDE9FE;--purple-d:#5B21B6;--bg:#FAF5FF;--card:#fff;--border:#DDD6FE;--text:#1E0A40;--text-2:#5B21B6;--muted:#A78BFA;--r-lg:16px;--r-xl:24px;--r-2xl:32px;--shadow:0 4px 24px rgba(124,58,237,.12);}
 [data-theme="dark"]{--bg:#0E0520;--card:#1A0B35;--border:#3B1F6E;--text:#EDE9FE;--text-2:#A78BFA;--muted:#5B21B6}
 .tool-mn { padding-bottom: 0 !important; }
+
+/* ── FAQ Section (ac-) ────────────────── */
+.ac-faq { background: var(--card); border: 1.5px solid var(--border); border-radius: var(--r-2xl); padding: 32px; box-shadow: var(--shadow); margin-top: 24px; }
+.ac-section-label { display: inline-flex; align-items: center; gap: 8px; background: var(--purple-l); color: var(--purple-d); border: 1px solid var(--purple); border-radius: 999px; padding: 5px 16px; font-size: .78rem; font-weight: 700; margin-bottom: 12px; }
+.ac-faq-title { font-size: clamp(1.2rem,2.5vw,1.6rem); font-weight: 800; margin-bottom: 20px; color: var(--text); }
+.ac-faq-item { border-bottom: 1px solid var(--border); }
+.ac-faq-q { width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 0; background: none; border: none; cursor: pointer; font: inherit; font-size: .92rem; font-weight: 700; color: var(--text); text-align: inherit; transition: color .2s; }
+.ac-faq-q:hover { color: var(--purple); }
+.ac-faq-arrow { flex-shrink: 0; transition: transform .25s; color: var(--muted); }
+.ac-faq-q.open .ac-faq-arrow { transform: rotate(90deg); }
+.ac-faq-a { max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .35s ease; padding: 0; }
+.ac-faq-a.active { max-height: 400px; padding: 0 0 14px 0; }
+.ac-faq-a div { font-size: .88rem; color: var(--text-2); line-height: 1.7; }
+
+/* ── Affiliate / Sponsor (ac-) ─────────── */
+.ac-affiliate, .ac-sponsor { background: linear-gradient(135deg, var(--purple), var(--purple-d)); border-radius: var(--r-2xl); padding: 24px 28px; color: #fff; margin-top: 24px; }
+.ac-aff-badge, .ac-sponsor-label { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,.15); border-radius: 999px; padding: 4px 12px; font-size: .75rem; font-weight: 700; margin-bottom: 12px; }
+.ac-aff-content { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.ac-aff-icon { flex-shrink: 0; width: 44px; height: 44px; background: rgba(255,255,255,.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+.ac-aff-icon svg { width: 22px; height: 22px; }
+.ac-aff-name { font-size: .95rem; font-weight: 800; margin-bottom: 4px; }
+.ac-aff-desc { font-size: .82rem; opacity: .85; line-height: 1.6; }
+.ac-aff-btn { display: inline-flex; align-items: center; gap: 6px; margin-left: auto; padding: 10px 20px; border-radius: 12px; background: #fff; color: var(--purple-d); font-size: .85rem; font-weight: 800; text-decoration: none; transition: all .2s; white-space: nowrap; }
+.ac-aff-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,.2); }
+[data-lang="ar"] .ac-aff-btn { margin-left: 0; margin-right: auto; }
+
+/* ── Reveal (overrides) ───────────────── */
+.tool-rv { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s cubic-bezier(.22,1,.36,1); }
+.tool-rv.visible { opacity: 1; transform: translateY(0); }
 *{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:'Almarai',sans-serif;line-height:1.6}
 [data-lang="en"] body{font-family:'Inter',sans-serif}a{text-decoration:none;color:inherit}
@@ -34,6 +62,7 @@ body{background:var(--bg);color:var(--text);font-family:'Almarai',sans-serif;lin
 .calc-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(124,58,237,.4)}
 .results-card{background:linear-gradient(135deg,var(--purple),var(--purple-d));border-radius:var(--r-2xl);padding:28px;color:#fff;margin-bottom:24px;display:none}
 .results-card.show{display:block;animation:fadeUp .4s ease}
+.results-card.show.tool-rv { opacity: 1; transform: translateY(0); }
 @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 .age-hero{text-align:center;margin-bottom:20px}
 .age-big{font-size:4rem;font-weight:900;line-height:1}

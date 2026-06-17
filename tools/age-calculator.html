@@ -279,7 +279,7 @@ window.dflTrack=function(event,params){
   <button class="calc-btn" onclick="calcAge()"><span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v12"/><path d="M8 10h8"/></svg> احسب عمري</span><span class="en"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v12"/><path d="M8 10h8"/></svg> Calculate My Age</span></button>
 </div>
 
-<div class="results-card" id="resultsCard">
+<div class="results-card tool-rv" id="resultsCard">
   <div class="age-hero">
     <div class="age-big" id="ageYears">0</div>
     <div class="age-lbl"><span class="ar">سنة</span><span class="en">years old</span></div>
@@ -388,6 +388,7 @@ function calcAge(){
   fg.innerHTML=facts.map(f=>`<div class="fact-card"><div class="fact-icon">${f.icon}</div><div class="fact-lbl">${lang==='ar'?f.ar:f.en}</div><div class="fact-val">${f.val}</div></div>`).join('');
 
   document.getElementById('resultsCard').classList.add('show');
+  document.getElementById('resultsCard').classList.add('visible');
   document.getElementById('resultsCard').scrollIntoView({behavior:'smooth',block:'nearest'});
   window._ageData={years,months,days,totalDays,lang};
 }
@@ -401,7 +402,7 @@ const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.targe
 document.querySelectorAll('.tool-rv, .reveal').forEach(el=>ro.observe(el));
 </script>
 
-<div class="container" style="max-width:1200px;margin:0 auto;padding:0 24px 0">
+<div class="container tool-rv" style="max-width:1200px;margin:0 auto;padding:0 24px 0">
 <div class="dfl-method">
   <div class="dfl-method-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> <span class="en">How this is calculated</span><span class="ar">طريقة الحساب</span></div>
   <p class="en">Age in exact years, months, and days using ISO 8601 date arithmetic with leap-year correction.</p>
@@ -410,28 +411,28 @@ document.querySelectorAll('.tool-rv, .reveal').forEach(el=>ro.observe(el));
 </div>
 
 <!-- ═══ RELATED TOOLS ═══════════════════════════════════════════════════════ -->
-<section class="dfl-related" aria-label="Related tools and guides">
+<section class="dfl-related tool-rv" aria-label="Related tools and guides">
   <div class="container">
     <div class="dfl-related-label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg> <span class="en">Continue Your Journey</span><span class="ar">أكمل رحلتك</span></div>
     <h2 class="dfl-related-title"><span class="en">Related Tools & Guides</span><span class="ar">أدوات ودلائل ذات صلة</span></h2>
     <p class="dfl-related-sub"><span class="en">Tools and reading you might find useful next</span><span class="ar">أدوات وقراءات قد تفيدك في خطوتك التالية</span></p>
     <div class="dfl-related-grid">
-      <a href="/tools/hijri-converter.html" class="dfl-rc" aria-label="Hijri Date Converter">
+      <a href="/tools/hijri-converter.html" class="dfl-rc tool-rv tool-rv-1" aria-label="Hijri Date Converter">
         <div class="dfl-rc-top"><span class="dfl-rc-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span><div><div class="dfl-rc-name en">Hijri Date Converter</div><div class="dfl-rc-name ar">محوّل التاريخ الهجري</div></div></div>
         <div class="dfl-rc-desc en">Convert Hijri ↔ Gregorian</div><div class="dfl-rc-desc ar">تحويل هجري ↔ ميلادي</div>
         <div class="dfl-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
       </a>
-      <a href="/tools/zakat-calculator.html" class="dfl-rc" aria-label="Zakat Calculator">
+      <a href="/tools/zakat-calculator.html" class="dfl-rc tool-rv tool-rv-2" aria-label="Zakat Calculator">
         <div class="dfl-rc-top"><span class="dfl-rc-icon" aria-hidden="true">☪️</span><div><div class="dfl-rc-name en">Zakat Calculator</div><div class="dfl-rc-name ar">حاسبة الزكاة</div></div></div>
         <div class="dfl-rc-desc en">Annual zakat on all asset types</div><div class="dfl-rc-desc ar">زكاة جميع أنواع المال</div>
         <div class="dfl-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
       </a>
-      <a href="/tools/pregnancy-calculator.html" class="dfl-rc" aria-label="Pregnancy Calculator">
+      <a href="/tools/pregnancy-calculator.html" class="dfl-rc tool-rv tool-rv-3" aria-label="Pregnancy Calculator">
         <div class="dfl-rc-top"><span class="dfl-rc-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2v6m0 0l-3-3m3 3l3-3"/><path d="M12 16v6m0 0l-3-3m3 3l3-3"/><path d="M2 12h6m0 0L5 9m3 3l-3 3"/><path d="M16 12h6m0 0l-3-3m3 3l-3 3"/></svg></span><div><div class="dfl-rc-name en">Pregnancy Calculator</div><div class="dfl-rc-name ar">حاسبة الحمل</div></div></div>
         <div class="dfl-rc-desc en">3 methods, 40-week guide</div><div class="dfl-rc-desc ar">3 طرق وتفصيل 40 أسبوعاً</div>
         <div class="dfl-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
       </a>
-      <a href="../guides/zakat-complete-guide.html" class="dfl-rc guide" aria-label="Zakat Complete Guide">
+      <a href="../guides/zakat-complete-guide.html" class="dfl-rc guide tool-rv" aria-label="Zakat Complete Guide">
         <div class="dfl-rc-top"><span class="dfl-rc-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/></svg></span><div><div class="dfl-rc-name en">Zakat Complete Guide</div><div class="dfl-rc-name ar">دليل الزكاة الشامل</div></div></div>
         <div class="dfl-rc-desc en">Jurisprudence & calculations</div><div class="dfl-rc-desc ar">الفقه والأحكام والحسابات</div>
         <div class="dfl-rc-cta"><span class="en">Read guide →</span><span class="ar">اقرأ الدليل ←</span></div>
@@ -439,6 +440,87 @@ document.querySelectorAll('.tool-rv, .reveal').forEach(el=>ro.observe(el));
     </div>
   </div>
 </section>
+
+<!-- FAQ -->
+<section class="ac-faq tool-rv" itemscope="" itemtype="https://schema.org/FAQPage">
+  <div class="ac-section-label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> <span class="en">FAQ</span><span class="ar">الأسئلة الشائعة</span></div>
+  <h2 class="ac-faq-title"><span class="en">Frequently Asked Questions</span><span class="ar">أسئلة شائعة عن حساب العمر</span></h2>
+
+  <div class="ac-faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
+    <button class="ac-faq-q open" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('active');">
+      <span itemprop="name"><span class="en">How is exact age calculated?</span><span class="ar">كيف يتم حساب العمر بالضبط؟</span></span>
+      <svg class="ac-faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+    <div class="ac-faq-a active" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+      <div itemprop="text"><span class="en">Exact age is computed by subtracting the birth date from today's date, accounting for leap years and varying month lengths. The result is expressed in years, months, and days using ISO 8601 date arithmetic.</span><span class="ar">يتم حساب العمر الدقيق بطرح تاريخ الميلاد من تاريخ اليوم، مع مراعاة السنوات الكبيسة واختلاف أطوال الأشهر، وفق معيار ISO 8601.</span></div>
+    </div>
+  </div>
+
+  <div class="ac-faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
+    <button class="ac-faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('active');">
+      <span itemprop="name"><span class="en">Does this account for leap years?</span><span class="ar">هل تراعي حاسبة العمر السنوات الكبيسة؟</span></span>
+      <svg class="ac-faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+    <div class="ac-faq-a" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+      <div itemprop="text"><span class="en">Yes, our calculator accounts for leap years in both the birth year and the current year. It uses the full Gregorian calendar rules including February 29 in leap years, ensuring day-accurate results.</span><span class="ar">نعم، الحاسبة تراعي السنوات الكبيسة في سنة الميلاد والسنة الحالية، وتستخدم قواعد التقويم الميلادي الكامل بما فيها 29 فبراير، لضمان دقة اليوم.</span></div>
+    </div>
+  </div>
+
+  <div class="ac-faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
+    <button class="ac-faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('active');">
+      <span itemprop="name"><span class="en">How is the Hijri age calculated?</span><span class="ar">كيف يُحتسب العمر الهجري؟</span></span>
+      <svg class="ac-faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+    <div class="ac-faq-a" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+      <div itemprop="text"><span class="en">Your Hijri age is calculated by converting both your birth date and the target date to the Islamic (Hijri) calendar using the standard tabular method (Kuwaiti algorithm), then computing the difference in Hijri years and months.</span><span class="ar">يُحتسب العمر الهجري بتحويل تاريخ الميلاد والتاريخ المستهدف إلى التقويم الهجري باستخدام الطريقة الجدولية المعيارية (خوارزمية الكويت)، ثم حساب الفرق بالسنوات والأشهر الهجرية.</span></div>
+    </div>
+  </div>
+
+  <div class="ac-faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
+    <button class="ac-faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('active');">
+      <span itemprop="name"><span class="en">What is the next birthday countdown?</span><span class="ar">ما هو العد التنازلي لعيد الميلاد القادم؟</span></span>
+      <svg class="ac-faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+    <div class="ac-faq-a" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+      <div itemprop="text"><span class="en">The calculator automatically computes the number of days until your next birthday based on today's date. If your birthday has already passed this year, it calculates the days remaining until next year's date.</span><span class="ar">تحسب الحاسبة تلقائياً عدد الأيام المتبقية حتى عيد ميلادك القادم. إذا كان عيد ميلادك قد مضى هذه السنة، تحتسب الأيام حتى تاريخ العام القادم.</span></div>
+    </div>
+  </div>
+
+  <div class="ac-faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
+    <button class="ac-faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('active');">
+      <span itemprop="name"><span class="en">Are the fun facts accurate for everyone?</span><span class="ar">هل الحقائق الممتعة دقيقة للجميع؟</span></span>
+      <svg class="ac-faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+    <div class="ac-faq-a" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+      <div itemprop="text"><span class="en">The fun facts (heartbeats, breaths, meals, etc.) are estimates based on global averages. For example, we use 80 bpm heart rate and 20 breaths per minute. Actual numbers vary per individual.</span><span class="ar">الحقائق الممتعة (نبضات القلب، الأنفاس، الوجبات...) هي تقديرات تستند إلى متوسطات عالمية. مثلاً نستخدم 80 نبضة/دقيقة و20 نفساً/دقيقة. الأرقام الفعلية تختلف من شخص لآخر.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Affiliate -->
+<div class="ac-affiliate tool-rv">
+  <div class="ac-aff-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> <span class="en">Our Pick</span><span class="ar">اختيارنا</span></div>
+  <div class="ac-aff-content">
+    <div class="ac-aff-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v12"/><path d="M8 10h8"/></svg></div>
+    <div>
+      <div class="ac-aff-name"><span class="en">Track Your Family's Health Journey</span><span class="ar">تتبع رحلة صحة عائلتك</span></div>
+      <div class="ac-aff-desc"><span class="en">Keep a daily log of health metrics, appointments, and wellness goals for every family member with our free planner.</span><span class="ar">احتفظ بسجل يومي لقياسات الصحة والمواعيد وأهداف العافية لكل فرد من أسرتك مع مخططنا المجاني.</span></div>
+    </div>
+    <a href="/health.html" class="ac-aff-btn"><span class="en">Explore Health Tools →</span><span class="ar">استكشف أدوات الصحة ←</span></a>
+  </div>
+</div>
+
+<!-- Sponsor -->
+<div class="ac-sponsor tool-rv">
+  <div class="ac-sponsor-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> <span class="en">Supported By</span><span class="ar">برعاية</span></div>
+  <div class="ac-aff-content">
+    <div class="ac-aff-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+    <div>
+      <div class="ac-aff-name"><span class="en">DotForLife — Free Family Tools</span><span class="ar">دوت فور لايف — أدوات عائلية مجانية</span></div>
+      <div class="ac-aff-desc"><span class="en">All our calculators and guides are free, always. We believe every family deserves access to reliable tools without paywalls.</span><span class="ar">جميع حاسباتنا وأدلتنا مجانية دائماً. نؤمن بأن كل عائلة تستحق أدوات موثوقة بلا حواجز دفع.</span></div>
+    </div>
+  </div>
+</div>
 
 </main>
 
