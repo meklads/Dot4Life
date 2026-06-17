@@ -161,6 +161,9 @@ def extract_article_body(content):
         t = re.sub(r'<div[^>]*class="article-cta"[^>]*>.*?</div>', '', t, flags=re.IGNORECASE | re.DOTALL)
         t = re.sub(r'<div[^>]*class="article-footer"[^>]*>.*?</div>', '', t, flags=re.IGNORECASE | re.DOTALL)
         t = re.sub(r'<div[^>]*class="disclaimer"[^>]*>.*?</div>', '', t, flags=re.IGNORECASE | re.DOTALL)
+
+        # Remove any existing in-content subscribe (we add our own)
+        t = re.sub(r'<div[^>]*class="in-content-subscribe"[^>]*>.*?</div>', '', t, flags=re.IGNORECASE | re.DOTALL)
         t = re.sub(r'<!--\s*SEO_PROFILE.*?-->', '', t, flags=re.IGNORECASE | re.DOTALL)
         t = re.sub(r'<!--\s*DFL CANONICAL NAVBAR.*?-->', '', t, flags=re.IGNORECASE | re.DOTALL)
         t = re.sub(r'<!--\s*Author / Updated block.*?-->', '', t, flags=re.IGNORECASE | re.DOTALL)
@@ -452,7 +455,7 @@ def generate_article_end(lang, meta_record, filename, canonical_url):
 
     # Share icons
     encoded_url = canonical_url.replace('&', '%26').replace('?', '%3F')
-    share_title = meta_record.get('title_ar' if lang == 'ar' else 'title_en', 'Article')
+    share_title = meta_record.get('title_ar' if lang == 'ar' else 'title_en', 'Article') if meta_record else 'Article'
 
     parts.append(f'''<div class="article-share">
   <a href="https://wa.me/?text={share_title}%20{encoded_url}" target="_blank" rel="noopener" class="share-btn whatsapp" aria-label="Share on WhatsApp">
