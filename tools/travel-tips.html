@@ -75,7 +75,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Almarai:wght@300;400;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Almarai:wght@300;400;700;800&display=swap"/></noscript>
-  <link rel="stylesheet" href="/styles/global.css?v=20260617b"/>
+  <link rel="stylesheet" href="/styles/global.css?v=20260617c"/>
 <link rel="stylesheet" href="/styles/pages/tools_travel-tips.css?v=20260617b">
 
   <!-- DFL CANONICAL SYSTEM CSS -->
@@ -176,6 +176,8 @@
         <span></span><span></span><span></span>
       </button>
     </div>
+  </div>
+</nav>
 <!-- ═══════════════════════════════════════
        HERO
   ═══════════════════════════════════════ -->
@@ -715,42 +717,6 @@
   </div>
 </section>
 
-  <script id="dfl-nav-js">
-  (function(){
-    // Flash prevention
-    (function(){
-      var t=localStorage.getItem('dfl-theme')||'light',l=localStorage.getItem('dfl-lang')||(/Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test((Intl.DateTimeFormat().resolvedOptions().timeZone)||'')?'ar':'en'),h=document.documentElement;
-      h.setAttribute('data-theme',t);h.setAttribute('data-lang',l);
-      h.setAttribute('lang',l==='ar'?'ar':'en');h.setAttribute('dir',l==='ar'?'rtl':'ltr');
-    })();
-    function ready(fn){ if(document.readyState!=='loading') fn(); else document.addEventListener('DOMContentLoaded',fn); }
-    ready(function(){
-      // Scroll shadow
-      var nb=document.getElementById('dfl-navbar');
-      if(nb){ window.addEventListener('scroll',function(){ nb.classList.toggle('scrolled',window.scrollY>40); },{passive:true}); }
-      // Language
-      var lb=document.getElementById('dfl-lang-btn');
-      if(lb){ lb.addEventListener('click',function(){
-        var h=document.documentElement,l=h.getAttribute('data-lang')==='ar'?'en':'ar';
-        h.setAttribute('data-lang',l);h.setAttribute('lang',l);
-        h.setAttribute('dir',l==='ar'?'rtl':'ltr');localStorage.setItem('dfl-lang',l);
-      }); }
-      // Theme
-      var tb=document.getElementById('dfl-theme-btn');
-      if(tb){
-        function applyT(t){
-          document.documentElement.setAttribute('data-theme',t);localStorage.setItem('dfl-theme',t);
-          var en=tb.querySelector('.en'),ar=tb.querySelector('.ar');
-          if(en)en.textContent=t==='dark'?'<svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>':'<svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';if(ar)ar.textContent=t==='dark'?'<svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>':'<svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
-        }
-        applyT(localStorage.getItem('dfl-theme')||'light');
-        tb.addEventListener('click',function(){ applyT(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark'); });
-      }
-      // Language/theme spans: also update any existing dfl-lang-btn if duplicated
-      var en=document.querySelectorAll('.en'),ar=document.querySelectorAll('.ar');
-    });
-  })();
-  </script>
   <script src="/tool-share.js" defer></script>
 <!-- ═══ UNIFIED MOBILE NAV ══════════════════════════════════ -->
 <nav class="dfl-mobile-nav" aria-label="Mobile navigation">
