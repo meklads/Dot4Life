@@ -74,14 +74,16 @@ tr:nth-child(even){background:#f8faf9}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles/global.css?v=20260608u">
-  <link rel="stylesheet" href="/styles/home.css?v=20260608u">
-  <link rel="stylesheet" href="/styles/pages/articles.css?v=20260608u">
+  <link rel="stylesheet" href="/styles/global.css?v=20260617a">
+  <link rel="stylesheet" href="/styles/home.css?v=20260617a">
+  <link rel="stylesheet" href="/styles/pages/articles.css?v=20260617a">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1436107577087160" crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3G1XPV4F0G"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3G1XPV4F0G');</script>
 </head>
 <body data-template="article">
+
+<div id="reading-progress" role="progressbar" aria-label="Reading progress"></div>
 
 <!-- ═══ UNIFIED HEADER ══════════════════════════════════════ -->
 <nav id="navbar"><div class="nav-inner"><a href="/" class="nav-logo"><img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" width="100" height="100" style="height:100px;width:auto;object-fit:contain;" loading="lazy"></a><ul class="nav-links"><li><a href="/health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li><li><a href="/finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li><li><a href="/real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li><li><a href="/travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li><li><a href="/islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li><li><a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a></li><li><a href="/archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a></li><li><a href="/blog.html"><span class="en">blog</span><span class="ar">المدونة</span></a></li><li><a href="/library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a></li></ul><div class="nav-controls"><button class="nav-btn" id="lang-toggle"><span class="en">عربي</span><span class="ar">English</span></button><button class="nav-btn" id="theme-toggle">
@@ -96,17 +98,20 @@ tr:nth-child(even){background:#f8faf9}
 <section class="article-banner" aria-label="Article banner">
   <div class="article-banner-img-wrap">
     <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&h=340&q=85" alt="" class="article-banner-img" width="1200" height="420" loading="eager" fetchpriority="high">
-    <div class="article-banner-overlay" style="text-align:right;">
-      <div class="article-banner-cat" style="display:inline-block;color:#fff;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:4px 14px;font-size:.72rem;font-weight:700;margin-bottom:.75rem;backdrop-filter:blur(4px);">السلام يبدأ من البيت</div>
-      <h1 class="article-banner-title" style="font-size:clamp(1.5rem,3.5vw,2.2rem);line-height:1.4;font-weight:800;color:#fff;text-shadow:0 2px 20px rgba(0,0,0,.3);margin:0;">روتين صباحي هادئ للأسرة قبل المدرسة والعمل | 5 خطوات عملية</h1>
-      <div class="article-banner-meta" style="color:rgba(255,255,255,.8);margin-top:.75rem;font-size:.8rem;display:flex;gap:.6rem;flex-wrap:wrap;justify-content:flex-end;">
+    <div class="article-banner-overlay">
+      <div class="article-banner-cat">السلام يبدأ من البيت</div>
+      <h1 class="article-banner-title">روتين صباحي هادئ للأسرة قبل المدرسة والعمل | 5 خطوات عملية</h1>
+      <div class="article-banner-meta">
         <span>8 يونيو 2026</span>
-        <span>٨ دقائق قراءة</span>
+        <span>١٣ دقائق قراءة</span>
       </div>
     </div>
   </div>
 </section>
 
+<div class="article-layout">
+
+<main class="article-main">
 <article class="article-body">
 <p>صباح الخميس في بيت <strong>أم خالد</strong> كان يشبه ساحة معركة: أطفال يبحثون عن حقائبهم، زوج يستعجل يطلب فطوره، خبز محروق في المطبخ، وصوت مرتفع يسبق الجميع. كل صباح ينتهي بواحد يغضب والآخر يبكي. حتى جاءت جارتها بنصيحة غيّرت كل شيء: "الصباح يبدأ من الليلة اللي فاتت". بعد أسبوعين، أصبح صباحهم مختلفاً تماماً. الجميع يغادر البيت بابتسامة، والأم أصبحت تستمتع بفنجان قهوتها الصباحي.</p>
 
@@ -116,7 +121,7 @@ tr:nth-child(even){background:#f8faf9}
 "السلام يبدأ من البيت، والصباح الهادئ يبدأ من الليلة السابقة."
 </div>
 
-<h2>الخطوة الأولى: التجهيز الليلي (سر النجاح)</h2>
+<h2 id="الخطوة-الأولى-التجهيز-الليلي-سر-النجاح">الخطوة الأولى: التجهيز الليلي (سر النجاح)</h2>
 <div class="step-box">
 <p>كل ما يمكن تجهيزه الليلة السابقة، جهّزه. هذه ليست وصية عابرة، بل قاعدة ذهبية أثبتتها التجارب. قضاء 15 دقيقة قبل النوم يوفر ساعة كاملة من التوتر الصباحي. أم خالد علّقت لوحة صغيرة في المطبخ عنوانها "قبل النوم" ووزّعت المهام على أفراد الأسرة: الأب يتأكد من قناني الماء والحقائب، الأم تجهز الملابس، الأطفال يرتبون غرفهم ويضعون أحذيتهم في المكان المخصص.</p>
 <p><strong>قائمة التجهيز الليلي الكاملة:</strong></p>
@@ -130,13 +135,13 @@ tr:nth-child(even){background:#f8faf9}
 <p>السر ليس في القائمة نفسها، بل في تحويلها إلى عادة. بعد 21 يوماً من التكرار، سيقوم أفراد الأسرة بهذه المهام تلقائياً دون تذكير.</p>
 </div>
 
-<h2>الخطوة الثانية: استيقظ قبلهم بربع ساعة</h2>
+<h2 id="الخطوة-الثانية-استيقظ-قبلهم-بربع-ساعة">الخطوة الثانية: استيقظ قبلهم بربع ساعة</h2>
 <div class="step-box">
 <p>هذا أصعب اقتراح في القائمة لكنه الأكثر تأثيراً بفارق كبير. 15 دقيقة فقط قبل بقية الأسرة تعطيك مساحة ثمينة لنفسك: رشفة قهوة هادئة، نفس عميق، قراءة آية أو ورد، ترتيب أفكارك لليوم. عندما يستيقظ الأطفال، يرونك هادئاً مبتسماً، لا مرتبكاً متأخراً. هذه الدقائق الخمس عشرة تغيّر نبرة الصباح كلها.</p>
 <p>الأم التي تستيقظ 15 دقيقة قبل أطفالها لديها فرصة للاستعداد النفسي. الأب الذي ينهض مبكراً يستطيع تجهيز الفطور بهدوء. تخيّل الفرق بين أم تفتح عينيها على صوت طفل يبكي وأم تحتسي قهوتها وتستعد لاستقبال أطفالها بابتسامة. الفرق هو 15 دقيقة فقط.</p>
 </div>
 
-<h2>الخطوة الثالثة: طقس صباحي لطيف</h2>
+<h2 id="الخطوة-الثالثة-طقس-صباحي-لطيف">الخطوة الثالثة: طقس صباحي لطيف</h2>
 <div class="step-box">
 <p>الصباح ليس وقت إعطاء الأوامر. الصباح وقت بناء العلاقات. أول 5 دقائق من استيقاظ الطفل تحدد مزاجه لباقي اليوم. جرّب أحد هذه الطقوس:</p>
 <ul>
@@ -148,19 +153,30 @@ tr:nth-child(even){background:#f8faf9}
 <p>لا تستهن بهذه التفاصيل. الجو العام للصباح يحدد كيف سيمضي اليوم الدراسي والعمل للجميع. الطفل الذي يبدأ يومه بعناق وحب يكون أكثر تركيزاً وتعاوناً في المدرسة.</p>
 </div>
 
-<h2>الخطوة الرابعة: فطور معاً (ولو عشر دقائق)</h2>
+<h2 id="الخطوة-الرابعة-فطور-معا-ولو-عشر-دقائق">الخطوة الرابعة: فطور معاً (ولو عشر دقائق)</h2>
 <div class="step-box">
 <p>الدراسات تقول إن العائلات التي تتناول الفطور معاً يومياً لديها أطفال أكثر استقراراً نفسياً واجتماعياً، ومعدلات سمنة أقل، وتحصيل دراسي أفضل. الفطور لا يحتاج أن يكون وليمة. حتى لو كان تمراً وحليباً أو شطيرة جبن بسيطة، المهم الجلوس معاً بدون شاشات. هذه اللحظة تعطي كل فرد شعوراً بالأمان والانتماء قبل أن يبدأ يومه.</p>
 <p>في البيوت الخليجية، التمر والحليب أو الفول والتميس يمكن أن تكون وجبة فطور ممتازة لا تحتاج تحضيراً طويلاً. الخلاط يعمل معجزة: تمر وحليب = عصير طاقة طبيعي في دقيقة. المهم هو الجلوس معاً، وليس ما على المائدة.</p>
 </div>
 
-<h2>الخطوة الخامسة: المغادرة بلا اندفاع</h2>
+
+
+<div class="in-content-subscribe">
+  <h3>📬 <span class="en">Enjoying this article?</span><span class="ar">هل يعجبك المقال؟</span></h3>
+  <p><span class="en">Get more family tips every Friday — join our newsletter.</span><span class="ar">احصل على نصائح أسرية كل جمعة — اشترك في نشرتنا.</span></p>
+  <div class="sub-input-wrap">
+    <input type="email" placeholder="your@email.com" aria-label="Email">
+    <button onclick="alert('🚧 Coming soon — signup integration.')"><span class="en">Subscribe</span><span class="ar">اشترك</span></button>
+  </div>
+</div>
+
+<h2 id="الخطوة-الخامسة-المغادرة-بلا-اندفاع">الخطوة الخامسة: المغادرة بلا اندفاع</h2>
 <div class="step-box">
 <p>آخر عشر دقائق هي الأكثر عرضة للتوتر والصراخ. خصصها للتجهيزات النهائية فقط: ارتداء الأحذية، فحص الحقائب، أدوات النظافة الشخصية. ضع قاعدة: "نغلق التلفزيون والأجهزة قبل المغادرة بـ15 دقيقة". آخر ما يسمعه الطفل قبل خروجه هو كلمة تشجيع، لا تذمراً من التأخير.</p>
 <p>يمكن إنشاء "محطة المغادرة" قرب الباب: رف صغير عليه كل ما يحتاجه الجميع (مفاتيح، نظارات، كمامات، معقم). هذه المحطة تمنع الرجوع للداخل بعد ركوب السيارة، وهو أحد أكبر مسببات التوتر الصباحي.</p>
 </div>
 
-<h2>جدول صباحي مقترح (لأسرة مكونة من 4 أفراد مع أطفال مدرسة)</h2>
+<h2 id="جدول-صباحي-مقترح-لأسرة-مكونة-من-4-أفراد-مع-أطفال-مدرسة">جدول صباحي مقترح (لأسرة مكونة من 4 أفراد مع أطفال مدرسة)</h2>
 <table>
   <tr><th>الوقت</th><th>النشاط</th><th>من يقوم به</th></tr>
   <tr><td>6:00 - 6:15</td><td>استيقاظ الوالدين، وقت هادئ (قهوة، ورد)</td><td>الأب والأم</td></tr>
@@ -170,17 +186,17 @@ tr:nth-child(even){background:#f8faf9}
   <tr><td>7:05 - 7:15</td><td>مغادرة هادئة، كلمة تشجيع، فحص المحطة</td><td>الجميع</td></tr>
 </table>
 
-<h2>ماذا عن الأسر ذات الظروف الخاصة؟</h2>
+<h2 id="ماذا-عن-الأسر-ذات-الظروف-الخاصة">ماذا عن الأسر ذات الظروف الخاصة؟</h2>
 <p>كل أسرة مختلفة. الأم العاملة التي تغادر في السابعة صباحاً تحتاج جدولاً مختلفاً عن الأم المتفرغة. الأب الذي يعمل بنظام المناوبات له ظروفه. العائلة الكبيرة التي تضم أطفالاً في مدارس مختلفة تواجه تحدياً إضافياً في التوقيت. المبادئ تبقى نفسها: التجهيز الليلي، الاستيقاظ المبكر ولو بعشر دقائق، واللقاء العائلي ولو قصيراً. لا تنتظر الظروف المثالية لأنها لن تأتي أبداً. ابدأ بما تستطيع اليوم، وطوّر النظام تدريجياً. التغيير التدريجي أثبت من الانقلاب المفاجئ، والثبات على روتين بسيط أفضل من التطبيق المثالي لأسبوع ثم الانهيار. أسرة خالد في الدمام طبّقت خطوة واحدة فقط لمدة أسبوعين قبل أن تضيف الثانية: التجهيز الليلي وحده غيّر صباحهم بالكامل.</p>
 
 <div class="peace-quote">
 "البيت الهادئ لا يُبنى بين ليلة وضحاها، لكن كل صباح هادئ هو لبنة في هذا البناء."
 </div>
 
-<h2>الخلاصة: التغيير يبدأ من صباح الغد</h2>
+<h2 id="الخلاصة-التغيير-يبدأ-من-صباح-الغد">الخلاصة: التغيير يبدأ من صباح الغد</h2>
 <p>لا تقرأ فقط، جرّب. اختر خطوة واحدة من الخمس وطبّقها غداً. التجهيز الليلي مثلاً: قبل أن تنام الليلة، جهّز ملابس غدك وجهّز حقيبة طفلك. صباح الغد، لاحظ الفرق في هدوء أول نصف ساعة. ثم أضف خطوة ثانية بعد أسبوع. التغيير لا يحتاج كمالاً، يحتاج بداية فقط. إذا تعثّرت في يوم، لا تتوقف بالكامل، بل عد في اليوم التالي. الفرق بين الأسر التي تنجح وتلك التي تفشل ليس في المثالية، بل في الاستمرارية. بعد شهر، سيكون الروتين الصباحي الهادئ جزءاً لا يتجزأ من حياة أسرتك، وستتساءل كيف كنت تعيش قبله في فوضى الصباح اليومية.</p>
 
-<h2>الأسئلة الشائعة (FAQ)</h2>
+<h2 id="الأسئلة-الشائعة-faq">الأسئلة الشائعة (FAQ)</h2>
 
 <div class="faq-item">
 <div class="faq-question">كيف أبدأ روتيناً صباحياً هادئاً لعائلتي من الصفر؟</div>
@@ -210,9 +226,129 @@ tr:nth-child(even){background:#f8faf9}
 <div class="faq-item">
 <div class="faq-question">ماذا أفعل إذا كان زوجي أو زوجتي غير متعاون في الصباح؟</div>
 <div class="faq-answer">التغيير يبدأ بشخص واحد. ابدأ أنت بالتجهيز الليلي والاستيقاظ المبكر. عندما يرى الطرف الآخر نتائج إيجابية (أطفال أكثر هدوءاً، صباح بلا توتر)، سيتشجع تدريجياً. يمكن عقد اتفاق بسيط: يتولى كل طرف مهمة صباحية واحدة لمدة أسبوع، ثم نقاش النتائج معاً.
+</div>
+</div>
 </article>
 
+<div class="article-end">
+<div class="article-share">
+  <a href="https://wa.me/?text=روتين صباحي هادئ للأسرة قبل المدرسة والعمل: 5 خطوات عملية%20https://dotforlife.com/peace-capsules/calm-morning-routine-family.html" target="_blank" rel="noopener" class="share-btn whatsapp" aria-label="Share on WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span>WhatsApp</span>
+  </a>
+  <a href="https://twitter.com/intent/tweet?text=روتين صباحي هادئ للأسرة قبل المدرسة والعمل: 5 خطوات عملية&url=https://dotforlife.com/peace-capsules/calm-morning-routine-family.html" target="_blank" rel="noopener" class="share-btn x" aria-label="Share on X">
+    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    <span>X</span>
+  </a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https://dotforlife.com/peace-capsules/calm-morning-routine-family.html" target="_blank" rel="noopener" class="share-btn facebook" aria-label="Share on Facebook">
+    <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    <span>Facebook</span>
+  </a>
+  <button class="share-btn copy-link" onclick="navigator.clipboard.writeText(location.href);var s=this.querySelectorAll('span');if(s.length>1){s[0].textContent='✓ Copied';s[1].textContent='✓ نُسخ'}" aria-label="Copy link">
+    <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+    <span class="en">Copy</span><span class="ar">نسخ</span>
+  </button>
 </div>
+
+<div class="article-tool-cta">
+  <h3><span class="en">Try Our حاسبة الادخار</span><span class="ar">جرّب حاسبة الادخار</span></h3>
+  <p><span class="en">Calculate, plan, and take control of your family finances.</span><span class="ar">احسب، خطّط، وتحكّم في مالية أسرتك.</span></p>
+  <a href="/tools/savings-calculator.html" class="tool-cta-btn"><span class="en">Open Tool →</span><span class="ar">فتح الأداة ←</span></a>
+</div>
+
+<div class="article-read-also">
+  <h3><span class="en">📖 Read Also</span><span class="ar">📖 اقرأ أيضاً</span></h3>
+  <div class="read-also-grid">
+    <a href="/featured-stories/featured-story-saudi-mother.html" class="read-also-card">
+      <img src="https://images.unsplash.com/photo-1511385348-a52b4a160dc2?auto=format&fit=crop&w=600&h=340&q=85" alt="" loading="lazy">
+      <span class="read-also-title">قصة أم سعودية: التوفيق بين العمل ورعاية الأطفال</span>
+    </a>
+    <a href="/featured-stories/featured-story-gulf-family-home.html" class="read-also-card">
+      <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=600&h=340&q=85" alt="" loading="lazy">
+      <span class="read-also-title">كيف حولت عائلة خليجية منزلها لواحة سلام نفسي</span>
+    </a>
+    <a href="/comparisons/government-vs-private-school-gulf.html" class="read-also-card">
+      <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=600&h=340&q=85" alt="" loading="lazy">
+      <span class="read-also-title">المدرسة الحكومية أم الخاصة في الخليج: أيهما أفضل؟</span>
+    </a>
+    <a href="/peace-capsules/peace-at-home-5-steps.html" class="read-also-card">
+      <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&h=340&q=85" alt="" loading="lazy">
+      <span class="read-also-title">5 خطوات لتحويل منزلك إلى ملاذ للهدوء والسكينة</span>
+    </a>
+  </div>
+</div>
+
+<div class="article-friday-cta">
+  <h3>📬 <span class="en">Friday Family Tips</span><span class="ar">نصائح الجمعة للأسرة</span></h3>
+  <p><span class="en">Get weekly inspiration delivered to your inbox.</span><span class="ar">احصل على إلهام أسبوعي في بريدك.</span></p>
+  <div class="friday-input-wrap">
+    <input type="email" placeholder="your@email.com" aria-label="Email">
+    <button onclick="alert('🚧 Coming soon — signup integration.')"><span class="en">Join</span><span class="ar">اشترك</span></button>
+  </div>
+</div>
+
+<div class="article-tags">
+  <span class="tag">#family</span>
+  <span class="tag">#parenting</span>
+  <span class="tag">#kids</span>
+  <span class="tag">#education</span>
+  <span class="tag">#gulf-family</span>
+  <span class="tag">#values</span>
+</div>
+</div>
+</main>
+
+<aside class="article-sidebar">
+<div class="sidebar-module sidebar-team-card">
+  <img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" width="56" height="56" loading="lazy">
+  <div class="team-name"><span class="en">Dot4Life Team</span><span class="ar">فريق دوت فور لايف</span></div>
+  <div class="team-trust"><span class="en">Trusted content, carefully edited for Gulf families.</span><span class="ar">محتوى موثوق، محرَّر بعناية للأسرة الخليجية.</span></div>
+  <a href="/editorial-standards.html" class="team-link"><span class="en">Our Standards →</span><span class="ar">معاييرنا التحريرية ←</span></a>
+</div>
+
+<div class="sidebar-module sidebar-toc">
+  <h4>📑 <span class="en">Contents</span><span class="ar">المحتويات</span></h4>
+  <a href="#الخطوة-الأولى-التجهيز-الليلي-سر-النجاح" class="toc-item">الخطوة الأولى: التجهيز الليلي (سر النجاح)</a>
+  <a href="#الخطوة-الثانية-استيقظ-قبلهم-بربع-ساعة" class="toc-item">الخطوة الثانية: استيقظ قبلهم بربع ساعة</a>
+  <a href="#الخطوة-الثالثة-طقس-صباحي-لطيف" class="toc-item">الخطوة الثالثة: طقس صباحي لطيف</a>
+  <a href="#الخطوة-الرابعة-فطور-معا-ولو-عشر-دقائق" class="toc-item">الخطوة الرابعة: فطور معاً (ولو عشر دقائق)</a>
+  <a href="#الخطوة-الخامسة-المغادرة-بلا-اندفاع" class="toc-item">الخطوة الخامسة: المغادرة بلا اندفاع</a>
+  <a href="#جدول-صباحي-مقترح-لأسرة-مكونة-من-4-أفراد-مع-أطفال-مدرسة" class="toc-item">جدول صباحي مقترح (لأسرة مكونة من 4 أفراد مع أطفال مدرسة)</a>
+  <a href="#ماذا-عن-الأسر-ذات-الظروف-الخاصة" class="toc-item">ماذا عن الأسر ذات الظروف الخاصة؟</a>
+  <a href="#الخلاصة-التغيير-يبدأ-من-صباح-الغد" class="toc-item">الخلاصة: التغيير يبدأ من صباح الغد</a>
+  <a href="#الأسئلة-الشائعة-faq" class="toc-item">الأسئلة الشائعة (FAQ)</a>
+</div>
+
+<div class="sidebar-module sidebar-related">
+  <h4><span class="en">Related</span><span class="ar">ذات صلة</span></h4>
+  <a href="/featured-stories/featured-story-saudi-mother.html" class="sidebar-related-item">
+    <img src="https://images.unsplash.com/photo-1511385348-a52b4a160dc2?auto=format&fit=crop&w=600&h=340&q=85" alt="" width="64" height="48" loading="lazy">
+    <span class="related-title">قصة أم سعودية: التوفيق بين العمل ورعاية الأطفال</span>
+  </a>
+  <a href="/featured-stories/featured-story-gulf-family-home.html" class="sidebar-related-item">
+    <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=600&h=340&q=85" alt="" width="64" height="48" loading="lazy">
+    <span class="related-title">كيف حولت عائلة خليجية منزلها لواحة سلام نفسي</span>
+  </a>
+  <a href="/comparisons/government-vs-private-school-gulf.html" class="sidebar-related-item">
+    <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=600&h=340&q=85" alt="" width="64" height="48" loading="lazy">
+    <span class="related-title">المدرسة الحكومية أم الخاصة في الخليج: أيهما أفضل؟</span>
+  </a>
+  <a href="/peace-capsules/peace-at-home-5-steps.html" class="sidebar-related-item">
+    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&h=340&q=85" alt="" width="64" height="48" loading="lazy">
+    <span class="related-title">5 خطوات لتحويل منزلك إلى ملاذ للهدوء والسكينة</span>
+  </a>
+</div>
+
+<div class="sidebar-module sidebar-tools">
+  <h4>🛠 <span class="en">Tools</span><span class="ar">أدوات</span></h4>
+  <a href="/tools/savings-calculator.html" class="tool-btn">حاسبة الادخار</a>
+  <a href="/tools/budget-planner.html" class="tool-btn">مخطّط الميزانية</a>
+</div>
+</aside>
+
+</div><!-- /article-layout -->
+
+</div><!-- /article-wrap -->
 
 <!-- ═══ UNIFIED FOOTER ══════════════════════════════════════ -->
 <footer class="site-footer" role="contentinfo">
@@ -271,6 +407,39 @@ tr:nth-child(even){background:#f8faf9}
 <!-- ═══ END FOOTER ══════════════════════════════════════ -->
 
 
-<script src="/scripts/global.js?v=20260608u" defer></script>
+<script src="/scripts/global.js?v=20260617a" defer></script>
+<script>
+(function(){
+  // Reading progress bar
+  var bar = document.getElementById('reading-progress');
+  if(bar){
+    window.addEventListener('scroll',function(){
+      var h = document.documentElement;
+      var total = h.scrollHeight - h.clientHeight;
+      var pct = (h.scrollTop || document.body.scrollTop) / (total || 1) * 100;
+      bar.style.width = pct + '%';
+    },{passive:true});
+  }
+  // TOC active highlight
+  var tocLinks = document.querySelectorAll('.toc-item');
+  if(tocLinks.length){
+    var headings = [];
+    tocLinks.forEach(function(link){
+      var id = link.getAttribute('href').replace('#','');
+      var el = document.getElementById(id);
+      if(el) headings.push({el:el,link:link});
+    });
+    window.addEventListener('scroll',function(){
+      var scrollY = window.scrollY + 130;
+      var current = null;
+      headings.forEach(function(h){
+        if(h.el.offsetTop <= scrollY) current = h;
+      });
+      tocLinks.forEach(function(l){ l.classList.remove('is-active'); });
+      if(current) current.link.classList.add('is-active');
+    },{passive:true});
+  }
+})();
+</script>
 </body>
 </html>

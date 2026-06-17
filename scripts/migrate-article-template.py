@@ -19,10 +19,7 @@ BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_MARKER = 'data-template="article"'
 CACHE_BUSTER = 'v=20260617a'
 
-DIRS = [
-    'featured-stories', 'comparisons', 'peace-capsules',
-    'health', 'islamic-hajj-umrah', 'blog', 'guides'
-]
+DIRS = ['peace-capsules']  # ⚠️ TEMP: experimental folder only
 
 # ── Category → tools mapping ──────────────────────────────
 CATEGORY_TOOLS = {
@@ -163,7 +160,9 @@ def extract_article_body(content):
         t = re.sub(r'<div[^>]*class="disclaimer"[^>]*>.*?</div>', '', t, flags=re.IGNORECASE | re.DOTALL)
 
         # Remove any existing in-content subscribe (we add our own)
-        t = re.sub(r'<div[^>]*class="in-content-subscribe"[^>]*>.*?</div>', '', t, flags=re.IGNORECASE | re.DOTALL)
+        # Note: subscribe block has nested <div class="sub-input-wrap">, so we
+        # must match both closing </div> tags to keep div balance
+        t = re.sub(r'<div[^>]*class="in-content-subscribe"[^>]*>.*?</div>\s*</div>', '', t, flags=re.IGNORECASE | re.DOTALL)
         t = re.sub(r'<!--\s*SEO_PROFILE.*?-->', '', t, flags=re.IGNORECASE | re.DOTALL)
         t = re.sub(r'<!--\s*DFL CANONICAL NAVBAR.*?-->', '', t, flags=re.IGNORECASE | re.DOTALL)
         t = re.sub(r'<!--\s*Author / Updated block.*?-->', '', t, flags=re.IGNORECASE | re.DOTALL)
@@ -171,12 +170,8 @@ def extract_article_body(content):
         t = re.sub(r'<!--\s*═══ UNIFIED MOBILE NAV.*?═══\s*-->', '', t, flags=re.IGNORECASE | re.DOTALL)
         t = re.sub(r'<!--\s*Navbar content will be dynamically.*?-->', '', t, flags=re.IGNORECASE | re.DOTALL)
         t = re.sub(r'<script[^>]*>.*?</script>', '', t, flags=re.IGNORECASE | re.DOTALL)
+        # Remove structural HTML comments
         t = re.sub(r'<!--\s*═══════════════════════════════════════*\s*-->', '', t)
-        t = re.sub(r'<div\s+class=["\']container["\'][^>]*>\s*', '', t)
-        t = re.sub(r'<div\s+class=["\']article-wrap["\'][^>]*>\s*', '', t)
-        t = t.replace('</div><!-- /container -->', '')
-        t = re.sub(r'^\s*</div>\s*', '', t)
-        t = re.sub(r'\s*</div>\s*$', '', t)
         t = re.sub(r'\n{4,}', '\n\n', t)
         return t.strip()
 
