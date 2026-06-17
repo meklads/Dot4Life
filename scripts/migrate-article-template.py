@@ -19,7 +19,7 @@ BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_MARKER = 'data-template="article"'
 CACHE_BUSTER = 'v=20260617a'
 
-DIRS = ['islamic-hajj-umrah']
+DIRS = ['featured-stories']
 
 # ── Category → tools mapping ──────────────────────────────
 CATEGORY_TOOLS = {
