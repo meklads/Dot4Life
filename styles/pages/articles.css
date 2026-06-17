@@ -46,16 +46,23 @@
 }
 .article-banner-overlay {
   position: absolute;
-  bottom: 0; left: 0; right: 0;
+  inset: auto 0 0 0;
   padding: clamp(1.5rem, 4vw, 2.5rem) clamp(1.5rem, 5vw, 3rem);
   background: linear-gradient(transparent 20%, rgba(0,0,0,.65) 100%);
   pointer-events: none;
 }
 .article-banner-title {
   font-family: 'Almarai', sans-serif;
+  color: #fff;
+  text-shadow: 0 2px 20px rgba(0,0,0,.3);
+  margin: 0;
+  font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+  font-weight: 800;
+  line-height: 1.4;
 }
-[data-lang="ar"] .article-banner-overlay { text-align: right !important; }
-[data-lang="en"] .article-banner-overlay { text-align: left !important; }
+.article-banner-overlay {
+  text-align: start;
+}
 .article-banner-cat {
   display:inline-block;
   color:#fff;
@@ -69,27 +76,32 @@
   backdrop-filter:blur(4px);
 }
 .article-banner-meta {
-  color:rgba(255,255,255,.8);
-  margin-top:.75rem;
-  font-size:.8rem;
+  color: rgba(255,255,255,.8);
+  margin-top: .75rem;
+  font-size: .8rem;
   display:flex;
   gap:.6rem;
   flex-wrap:wrap;
+  justify-content: start;
 }
 
-/* ── 4. TWO-COLUMN LAYOUT ───────────────────────────────── */
+/* ── 4. TWO-COLUMN LAYOUT (grid respects dir="rtl/ltr") ──── */
 .article-layout {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
   gap: 2.5rem;
   margin-top: 2rem;
-  align-items: flex-start;
+  align-items: start;
 }
 
-/* ── 5. MAIN CONTENT (~740px) ───────────────────────────── */
+/* ── 5. MAIN CONTENT ────────────────────────────────────── */
 .article-main {
-  flex: 1;
   min-width: 0;
-  max-width: 740px;
+}
+
+.article-body {
+  margin: 0;
+  padding: 0;
 }
 
 .article-body {
@@ -129,12 +141,7 @@
 }
 .article-body ul, .article-body ol {
   margin: 0 0 1.5rem 0;
-  padding-right: 1.5rem;
-  padding-left: 1.5rem;
-}
-[data-lang="ar"] .article-body ul, [data-lang="ar"] .article-body ol {
-  padding-right: 1.5rem;
-  padding-left: 0;
+  padding-inline: 1.5rem;
 }
 .article-body li {
   font-size: 1.0625rem;
@@ -144,7 +151,7 @@
   font-family: 'Almarai', sans-serif;
 }
 .article-body blockquote {
-  border-right: 4px solid #6abfb8;
+  border-inline-start: 4px solid #6abfb8;
   margin: 1.8rem 0;
   padding: 1rem 1.5rem;
   background: #f3f8f6;
@@ -152,10 +159,6 @@
   font-family: 'Almarai', sans-serif;
   font-size: 1.0625rem;
   color: var(--text, #1a2e2c);
-}
-[data-lang="en"] .article-body blockquote {
-  border-right: none;
-  border-left: 4px solid #6abfb8;
 }
 .article-body table {
   width: 100%;
@@ -182,13 +185,13 @@
 .article-body .callout {
   background: #f3f8f6;
   border: 1px solid #dfe8e3;
-  border-right: 4px solid #2a9a98;
+  border-inline-start: 4px solid #2a9a98;
   border-radius: 12px;
   padding: 1.2rem 1.4rem;
   margin: 1.5rem 0;
 }
 .article-body .callout.gold {
-  border-right-color: #fd781c;
+  border-inline-start-color: #fd781c;
 }
 .article-body .callout-label {
   font-weight: 700;
@@ -263,55 +266,61 @@
 .toc-item.is-active::before {
   content: '';
   position: absolute;
-  right: -1.25rem;
+  inset-inline-end: -1.25rem;
   top: 0;
   bottom: 0;
   width: 3px;
   background: #054241;
   border-radius: 3px;
 }
-[data-lang="en"] .toc-item.is-active::before {
-  right: auto;
-  left: -1.25rem;
+[data-theme="dark"] .toc-item.is-active::before {
+  background: #6abfb8;
 }
 .toc-item-h3 {
-  padding-right: 1rem;
+  padding-inline-start: 1rem;
   font-size: 0.78rem;
 }
 
-/* Team card */
+/* Team card — green→turquoise gradient, white text, E-E-A-T prominence */
 .sidebar-team-card {
   text-align: center;
+  background: linear-gradient(135deg, #054241 0%, #0a6b63 100%);
+  border: none;
+  box-shadow: 0 2px 12px rgba(5,66,65,.15);
 }
 .sidebar-team-card img {
   width: 56px;
   height: 56px;
   border-radius: 50%;
   margin-bottom: 0.6rem;
-  background: #f3f8f6;
+  background: rgba(255,255,255,.15);
   padding: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.1);
 }
 .sidebar-team-card .team-name {
   font-family: 'Almarai', sans-serif;
   font-weight: 700;
   font-size: 0.9rem;
-  color: var(--text, #1a2e2c);
+  color: #fff;
   margin-bottom: 0.3rem;
 }
 .sidebar-team-card .team-trust {
   font-size: 0.78rem;
-  color: var(--text-2, #5C534A);
+  color: rgba(255,255,255,.85);
   line-height: 1.6;
   margin-bottom: 0.6rem;
 }
 .sidebar-team-card .team-link {
   font-size: 0.78rem;
-  color: #2a9a98;
-  text-decoration: none;
+  color: rgba(255,255,255,.9);
+  text-decoration: underline;
+  text-underline-offset: 2px;
   font-weight: 600;
+  text-decoration-color: rgba(255,255,255,.4);
 }
 .sidebar-team-card .team-link:hover {
-  text-decoration: underline;
+  color: #fff;
+  text-decoration-color: #fff;
 }
 
 /* Related articles in sidebar */
@@ -674,7 +683,7 @@
 }
 
 /* ── 9. DARK MODE ───────────────────────────────────────── */
-[data-theme="dark"] .sidebar-module {
+[data-theme="dark"] .sidebar-module:not(.sidebar-team-card) {
   background: #1e2428;
   border-color: #2a3036;
 }
@@ -686,8 +695,8 @@
 [data-theme="dark"] .toc-item.is-active {
   color: #6abfb8;
 }
-[data-theme="dark"] .sidebar-team-card .team-name {
-  color: #e8e0d8;
+[data-theme="dark"] .sidebar-team-card {
+  box-shadow: 0 2px 12px rgba(0,0,0,.3);
 }
 [data-theme="dark"] .in-content-subscribe {
   background: #1e2428;
@@ -750,17 +759,14 @@ body[data-template="article"] .nav-btn {
 /* ── 11. RESPONSIVE ──────────────────────────────────────── */
 @media (max-width: 900px) {
   .article-layout {
-    flex-direction: column;
-  }
-  .article-main {
-    max-width: 100%;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
   .article-sidebar {
-    width: 100%;
     position: static;
     max-height: none;
     overflow: visible;
-    margin-top: 1rem;
+    width: 100%;
   }
   .article-sidebar::-webkit-scrollbar { display: none; }
   .read-also-grid {

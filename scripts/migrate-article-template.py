@@ -602,16 +602,14 @@ def build_banner_html(title, og_image, lang, dir_, meta_record, article_body='')
     if not cat_display:
         cat_display = 'مقال' if lang == 'ar' else 'Article'
 
-    overlay_align = 'right' if dir_ == 'rtl' else 'left'
-    meta_justify = 'flex-end' if dir_ == 'rtl' else 'flex-start'
-
+    # Alignments are handled by CSS logical properties (text-align:start, justify-content:start)
     return f'''<section class="article-banner" aria-label="Article banner">
   <div class="article-banner-img-wrap">
     <img src="{img}" alt="" class="article-banner-img" width="1200" height="420" loading="eager" fetchpriority="high">
-    <div class="article-banner-overlay" style="text-align:{overlay_align};">
+    <div class="article-banner-overlay">
       <div class="article-banner-cat">{cat_display}</div>
       <h1 class="article-banner-title">{title}</h1>
-      <div class="article-banner-meta" style="justify-content:{meta_justify};">
+      <div class="article-banner-meta">
         {f'<span>{date_str}</span>' if date_str else ''}
         <span>{reading_time}</span>
       </div>
