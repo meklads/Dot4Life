@@ -1,23 +1,9 @@
 /* DOTFORLIFE — Page-specific styles for tools/travel-tips.html */
 /* Extracted on 2026-06-08 */
 
-
-[data-theme="dark"] 
-
-@media(max-width:768px){}
-
-@media(max-width:768px){}
-
-[data-theme="dark"] 
-
-.sub-nav-inner a{display:inline-flex;align-items:center;padding:6px 14px;border-radius:999px;font-size:.76rem;font-weight:500;color:var(--text-2,#9A9188);text-decoration:none;white-space:nowrap;flex-shrink:0;transition:color .2s,background .2s;}
-.sub-nav-inner a:hover{color:var(--text,#1A1410);background:rgba(107,191,184,.07);}
-.sub-nav-inner a.active{color:var(--gold,#6abfb8);font-weight:600;background:rgba(107,191,184,.1);}
-[data-lang="ar"] 
 body{padding-top:158px;}
 @media(max-width:768px){body{padding-top:158px;}}
 /* ════════════════════════════════════ */
-
     :root{
       --accent:#0097A7;--accent-l:#00BCD4;--accent-d:#00757F;
       --accent-soft:rgba(0,151,167,.08);--accent-glow:rgba(0,151,167,.20);
@@ -41,17 +27,13 @@ body{padding-top:158px;}
     [data-lang="ar"] *{font-family:'Almarai',sans-serif}
     [data-lang="ar"] .en{display:none}
     [data-lang="en"] .ar{display:none}
-
     /* NAV */
     .nav{position:sticky;top:0;z-index:100;background:var(--nav-bg);border-bottom:1px solid var(--border-l);box-shadow:var(--shadow);padding:0 20px;height:58px;display:flex;align-items:center;justify-content:space-between;gap:12px}
     .nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}
     .nav-brand .logo{width:34px;height:34px;border-radius:10px;background:var(--accent);display:grid;place-items:center;font-size:18px}
     .nav-brand .brand-name{font-weight:700;font-size:15px;letter-spacing:-.3px}
     .nav-brand .brand-name span{color:var(--accent)}
-    .nav-actions{display:flex;align-items:center;gap:8px}
-    .nav-btn,.back-btn{border:1px solid var(--border-l);background:var(--card-bg);color:var(--text);border-radius:8px;padding:6px 12px;font-size:13px;font-weight:500;cursor:pointer;transition:var(--transition);display:flex;align-items:center;gap:5px;text-decoration:none}
-    .nav-btn:hover,.back-btn:hover{border-color:var(--accent);color:var(--accent)}
-
+.back-btn{border:1px solid var(--border-l);background:var(--card-bg);color:var(--text);border-radius:8px;padding:6px 12px;font-size:13px;font-weight:500;cursor:pointer;transition:var(--transition);display:flex;align-items:center;gap:5px;text-decoration:none}
     /* HERO */
     .hero{background:linear-gradient(145deg,#003D46 0%,#005662 40%,#0097A7 80%,#00BCD4 100%);color:#fff;padding:56px 20px 46px;text-align:center;position:relative;overflow:hidden}
     .hero::before{content:'✈️';position:absolute;right:-20px;top:-10px;font-size:180px;opacity:.07;transform:rotate(-15deg)}
@@ -61,13 +43,11 @@ body{padding-top:158px;}
     .hero .subtitle{font-size:clamp(14px,2.5vw,16px);opacity:.88;max-width:560px;margin:0 auto 22px;position:relative;z-index:1}
     .hero-badges{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;position:relative;z-index:1}
     .hero-badge{background:rgba(255,255,255,.18);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.25);border-radius:20px;padding:6px 14px;font-size:13px;font-weight:500}
-
     /* JUMP NAV */
     .jump-strip{background:var(--card-bg);border-bottom:1px solid var(--border-l);padding:0 20px;overflow-x:auto;scrollbar-width:none;display:flex;gap:2px}
     .jump-strip::-webkit-scrollbar{display:none}
     .jump-link{white-space:nowrap;padding:13px 13px;font-size:13px;font-weight:500;color:var(--text-2);text-decoration:none;border-bottom:2px solid transparent;transition:var(--transition)}
     .jump-link:hover,.jump-link.active{color:var(--accent);border-bottom-color:var(--accent)}
-
     /* MAIN */
     .main{max-width:940px;margin:0 auto;padding:32px 16px 60px}
     .section{margin-bottom:52px}
@@ -75,7 +55,6 @@ body{padding-top:158px;}
     .section-head .s-icon{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:22px;flex-shrink:0;border:1px solid transparent}
     .section-head h2{font-size:clamp(17px,3vw,22px);font-weight:700;letter-spacing:-.3px}
     .section-head p{font-size:13px;color:var(--text-2);margin-top:2px}
-
     /* TIP CARDS */
     .tips-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}
     .tip-card{background:var(--card-bg);border:1px solid var(--border-l);border-radius:var(--r);padding:18px 20px;display:flex;gap:14px;align-items:flex-start;transition:var(--transition);position:relative}
@@ -85,7 +64,6 @@ body{padding-top:158px;}
     .tip-card p{font-size:13px;color:var(--text-2);line-height:1.65}
     .tip-num{position:absolute;top:12px;right:12px;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:700}
     [data-lang="ar"] .tip-num{right:auto;left:12px}
-
     /* GOLD NUMBERED TIPS */
     .gold-tips{display:flex;flex-direction:column;gap:0}
     .gold-tip{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid var(--border-l);align-items:flex-start}
@@ -93,7 +71,6 @@ body{padding-top:158px;}
     .g-num{width:38px;height:38px;border-radius:50%;background:var(--gold);color:#fff;font-weight:800;font-size:16px;display:grid;place-items:center;flex-shrink:0;margin-top:2px;box-shadow:0 4px 12px rgba(245,158,11,.3)}
     .g-body h3{font-size:15px;font-weight:700;margin-bottom:4px}
     .g-body p{font-size:13px;color:var(--text-2);line-height:1.65}
-
     /* EMERGENCY TABLE */
     .countries-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
     .country-card{background:var(--card-bg);border:1px solid var(--border-l);border-radius:var(--r);padding:14px 16px}
@@ -125,20 +102,17 @@ body{padding-top:158px;}
     /* INFO BOX */
     .info-box{background:var(--accent-soft);border:1px solid rgba(0,151,167,.2);border-radius:var(--r);padding:16px 20px;margin:16px 0;font-size:13px;color:var(--text);line-height:1.7}
     .info-box strong{color:var(--accent)}
-
     /* GOLD BOX */
     .gold-box{background:linear-gradient(135deg,var(--gold-soft),rgba(0,151,167,.05));border:1px solid var(--gold);border-radius:var(--r);padding:20px 22px;margin:24px 0;display:flex;gap:14px;align-items:flex-start}
     .gold-box .gb-icon{font-size:28px;flex-shrink:0}
     .gold-box h3{font-size:15px;font-weight:700;margin-bottom:5px;color:var(--gold-d)}
     .gold-box p{font-size:13px;color:var(--text-2);line-height:1.6}
-
     /* DIVIDER */
     .divider{border:none;border-top:1px solid var(--border-l);margin:40px 0}
 
     /* FOOTER */
     .footer{background:var(--card-bg);border-top:1px solid var(--border-l);padding:24px 20px;text-align:center;color:var(--text-2);font-size:13px}
     .footer a{color:var(--accent);text-decoration:none}
-
     /* COLOR VARIANTS FOR SECTION ICONS */
     .s-icon.gold{background:var(--gold-soft);border-color:rgba(245,158,11,.2)}
     .s-icon.emerald{background:var(--emerald-soft);border-color:rgba(16,185,129,.2)}
@@ -151,4 +125,3 @@ body{padding-top:158px;}
       .main{padding:20px 12px 40px}
       .tips-grid,.tools-grid,.countries-grid,.sim-grid,.flight-tips-grid{grid-template-columns:1fr}
     }
-  

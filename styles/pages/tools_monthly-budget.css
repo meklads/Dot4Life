@@ -1,23 +1,9 @@
 /* DOTFORLIFE — Page-specific styles for tools/monthly-budget.html */
 /* Extracted on 2026-06-08 */
 
-
-[data-theme="dark"] 
-
-@media(max-width:768px){}
-
-@media(max-width:768px){}
-
-[data-theme="dark"] 
-
-.sub-nav-inner a{display:inline-flex;align-items:center;padding:6px 14px;border-radius:999px;font-size:.76rem;font-weight:500;color:var(--text-2,#9A9188);text-decoration:none;white-space:nowrap;flex-shrink:0;transition:color .2s,background .2s;}
-.sub-nav-inner a:hover{color:var(--text,#1A1410);background:rgba(107,191,184,.07);}
-.sub-nav-inner a.active{color:var(--gold,#6abfb8);font-weight:600;background:rgba(107,191,184,.1);}
-[data-lang="ar"] 
 body{padding-top:158px;}
 @media(max-width:768px){body{padding-top:158px;}}
 /* ════════════════════════════════════ */
-
 /* ── BASE RESET & TOKENS ─────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -59,20 +45,14 @@ img { display: block; max-width: 100%; }
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; }
 input[type=number] { -moz-appearance: textfield; }
-
 /* ── CONTAINER ───────────────────────────────────────────────────── */
 .container { max-width: 1080px; margin: 0 auto; padding: 0 clamp(16px,4vw,40px); }
 
 /* ── NAVBAR ──────────────────────────────────────────────────────── */
-.navbar { position: sticky; top: 0; z-index: 100; background: var(--card-bg); border-bottom: 1px solid var(--border-l); backdrop-filter: saturate(180%) blur(12px); }
-.navbar-inner { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 16px; }
-.navbar-brand { text-decoration: none; font-weight: 800; font-size: 1.1rem; letter-spacing: -.02em; }
 .brand-dot { color: var(--accent); }
 .brand-life { color: var(--text-1); }
-.navbar-links { display: flex; gap: 4px; }
 .nav-link { text-decoration: none; color: var(--text-2); font-size: .82rem; font-weight: 500; padding: 5px 10px; border-radius: 8px; transition: color .2s, background .2s; }
 .nav-link:hover { color: var(--text-1); background: var(--body-bg); }
-.navbar-actions { display: flex; gap: 8px; align-items: center; }
 .btn-lang, .btn-theme { background: none; border: 1.5px solid var(--border-l); border-radius: 8px; padding: 5px 10px; font-family: inherit; font-size: .78rem; font-weight: 600; color: var(--text-2); cursor: pointer; transition: border-color .2s, color .2s; }
 .btn-lang:hover, .btn-theme:hover { border-color: var(--accent); color: var(--accent); }
 @media(max-width:600px){ .navbar-links { display: none; } }
@@ -82,7 +62,6 @@ input[type=number] { -moz-appearance: textfield; }
 .tool-badge { display: inline-flex; align-items: center; gap: 7px; background: var(--accent-l); border: 1px solid rgba(var(--accent-rgb),.2); color: var(--accent); font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 5px 14px; border-radius: 99px; margin-bottom: 18px; }
 .tool-h1 { font-size: clamp(26px,4.5vw,42px); font-weight: 800; letter-spacing: -.03em; color: var(--text-1); line-height: 1.1; margin: 0 0 14px; }
 .tool-desc { font-size: clamp(14px,1.8vw,16px); color: var(--text-2); line-height: 1.75; max-width: 540px; }
-
 /* ── TOOL LAYOUT ─────────────────────────────────────────────────── */
 .tool-main { padding: clamp(32px,5vw,56px) 0 clamp(48px,7vw,80px); }
 .tool-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 28px; align-items: start; }
@@ -136,7 +115,6 @@ input[type=number] { -moz-appearance: textfield; }
 /* ── CALCULATE BTN ───────────────────────────────────────────────── */
 .calc-btn { width: 100%; padding: 15px; background: var(--accent); color: #fff; border: none; border-radius: 12px; font-family: inherit; font-size: 15px; font-weight: 700; cursor: pointer; transition: opacity .2s, transform .15s; margin-top: 20px; letter-spacing: -.01em; }
 .calc-btn:hover { opacity: .88; transform: translateY(-1px); }
-
 /* ── RESULT PANEL ────────────────────────────────────────────────── */
 .result-panel { position: sticky; top: 76px; background: var(--card-bg); border: 1px solid var(--border-l); border-radius: 20px; overflow: hidden; }
 .result-header { padding: 22px 24px 18px; }
@@ -170,7 +148,6 @@ input[type=number] { -moz-appearance: textfield; }
 .total-col-val { font-size: 16px; font-weight: 800; color: var(--text-1); }
 .total-col-val.income-col { color: var(--accent); }
 .total-col-val.expense-col { color: #ef4444; }
-
 /* breakdown bars */
 .breakdown-section { padding: 18px 24px 20px; }
 .breakdown-title { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
@@ -196,7 +173,6 @@ input[type=number] { -moz-appearance: textfield; }
 /* halal finance tip */
 .halal-tip { margin: 14px 24px 18px; background: rgba(42,154,152,.08); border: 1px solid rgba(42,154,152,.2); border-radius: 12px; padding: 12px 14px; font-size: 12px; color: var(--text-2); line-height: 1.6; display: none; }
 .halal-tip strong { color: #2a9a98; }
-
 /* ── RELATED TOOLS ───────────────────────────────────────────────── */
 .related-section { margin-top: 52px; padding-top: 44px; border-top: 1px solid var(--border-l); }
 .related-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
@@ -208,7 +184,6 @@ input[type=number] { -moz-appearance: textfield; }
 .rel-card-icon { font-size: 24px; margin-bottom: 10px; }
 .rel-card-name { font-size: 14px; font-weight: 700; color: var(--text-1); margin-bottom: 5px; }
 .rel-card-desc { font-size: 12px; color: var(--text-2); line-height: 1.55; }
-
 /* ── HOW IT WORKS ────────────────────────────────────────────────── */
 .how-section { margin-top: 48px; padding-top: 44px; border-top: 1px solid var(--border-l); }
 .how-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
@@ -221,16 +196,11 @@ input[type=number] { -moz-appearance: textfield; }
 .how-body { font-size: 13px; color: var(--text-2); line-height: 1.6; }
 
 /* ── FOOTER ──────────────────────────────────────────────────────── */
-
-.footer-brand-row .navbar-brand { display: inline-flex; margin-bottom: 8px; }
 .footer-tagline { font-size: 12px; color: var(--muted); max-width: 220px; line-height: 1.6; }
-
 .footer-link { font-size: 12px; color: var(--text-2); text-decoration: none; transition: color .2s; }
 .footer-link:hover { color: var(--accent); }
-
 .footer-copy { font-size: 11.5px; color: var(--muted); }
 .footer-privacy { font-size: 11px; color: var(--muted); background: rgba(var(--accent-rgb),.07); border-radius: 99px; padding: 3px 10px; }
-
 /* ── RTL ADJUSTMENTS ─────────────────────────────────────────────── */
 [data-lang="ar"] .totals-row { direction: rtl; }
 [data-lang="ar"] .bkd-row { direction: rtl; }

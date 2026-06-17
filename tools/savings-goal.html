@@ -25,6 +25,52 @@
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add("visible");});},{threshold:0.1});
     document.querySelectorAll(".reveal").forEach(function(el){io.observe(el);});
   } else document.querySelectorAll(".reveal").forEach(function(el){el.classList.add("visible");});
+
+  /* hamburger menu */
+  (function(){
+    var hb = document.getElementById('hamburger-btn');
+    var dd = document.getElementById('mobile-dropdown');
+    if (!hb || !dd) return;
+    function toggle(e) {
+      e.stopPropagation();
+      var open = dd.classList.toggle('open');
+      hb.classList.toggle('open', open);
+      hb.setAttribute('aria-expanded', open);
+      document.body.classList.toggle('menu-open', open);
+    }
+    function closeM() {
+      dd.classList.remove('open');
+      hb.classList.remove('open');
+      hb.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('menu-open');
+    }
+    hb.addEventListener('click', toggle);
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeM(); });
+    dd.addEventListener('click', function(e){ if(e.target===dd) closeM(); });
+  })();
+
+  /* hamburger menu */
+  (function(){
+    var hb = document.getElementById('hamburger-btn');
+    var dd = document.getElementById('mobile-dropdown');
+    if (!hb || !dd) return;
+    function toggle(e) {
+      e.stopPropagation();
+      var open = dd.classList.toggle('open');
+      hb.classList.toggle('open', open);
+      hb.setAttribute('aria-expanded', open);
+      document.body.classList.toggle('menu-open', open);
+    }
+    function closeM() {
+      dd.classList.remove('open');
+      hb.classList.remove('open');
+      hb.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('menu-open');
+    }
+    hb.addEventListener('click', toggle);
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeM(); });
+    dd.addEventListener('click', function(e){ if(e.target===dd) closeM(); });
+  })();
 })();
 </script>
 <meta charset="UTF-8"/>
@@ -48,9 +94,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Inter:wght@400;500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Inter:wght@400;500;600;700;800&display=swap"/></noscript>
-<link rel="stylesheet" href="/styles/global.css?v=821e662"/>
-<link rel="stylesheet" href="/styles/home.css?v=821e662">
-<link rel="stylesheet" href="/styles/pages/tools_savings-goal.css?v=821e658">
+<link rel="stylesheet" href="/styles/global.css?v=20260617b"/>
+<link rel="stylesheet" href="/styles/pages/tools_savings-goal.css?v=20260617b">
 
   <!-- DFL CANONICAL SYSTEM CSS -->
   
@@ -85,8 +130,6 @@
 .dfl-rc.guide .dfl-rc-cta{color:var(--green,#2a9a98);}
 @media(max-width:600px){.dfl-related-grid{grid-template-columns:1fr 1fr;gap:10px;}.dfl-rc{padding:14px;}}
 
-
-
 /* ── SITE FOOTER ─────────────────────────────────────────── */
 .site-footer{background:var(--navy,#032a28);color:rgba(255,255,255,.7);padding:clamp(3rem,6vw,5rem) 0 0;}
 .footer-inner{max-width:1280px;margin:0 auto;padding:0 clamp(16px,4vw,48px);}
@@ -113,11 +156,10 @@
 @media(max-width:860px){.footer-top{flex-direction:column;gap:2rem;}.footer-brand{flex:none;}.footer-cols{grid-template-columns:1fr 1fr;}}
 @media(max-width:500px){.footer-cols{grid-template-columns:1fr;}.footer-bottom{flex-direction:column;text-align:center;}}
 
-
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Savings Goal Calculator | حاسبة هدف الادخار، DotForLife","url":"https://www.dotforlife.com/tools/savings-goal.html","applicationCategory":"UtilityApplication","operatingSystem":"Web"}</script>
-  <link rel="alternate" hreflang="ar-SA" href="https://www.dotforlife.com/tools/savings-goal.html" />
-  <link rel="alternate" hreflang="en" href="https://www.dotforlife.com/tools/savings-goal.html" />
+  <link rel="alternate" hreflang="ar" href="https://www.dotforlife.com/tools/savings-goal.html?lang=ar" />
+  <link rel="alternate" hreflang="en" href="https://www.dotforlife.com/tools/savings-goal.html?lang=en" />
   <link rel="alternate" hreflang="x-default" href="https://www.dotforlife.com/tools/savings-goal.html" />
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3G1XPV4F0G"></script>
@@ -128,7 +170,7 @@
   gtag('config', 'G-3G1XPV4F0G');
 </script>
 </head>
-<body class="index-page">
+<body class="category-page">
   <!-- DFL CANONICAL NAVBAR -->
   <!-- ═══ UNIFIED HEADER ══════════════════════════════════════ -->
 <nav id="navbar" role="navigation" aria-label="Main navigation">
@@ -150,10 +192,11 @@
     <div class="nav-controls">
       <button class="nav-btn" id="lang-toggle" aria-label="Switch language"><span class="en">عربي</span><span class="ar">English</span></button>
       <button class="nav-btn" id="theme-toggle" aria-label="Toggle theme"><svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
+      <button class="hamburger" id="hamburger-btn" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-  </div>
-</nav>
-  <!-- ═══════════════════════════════════════
+<!-- ═══════════════════════════════════════
        HERO
   ═══════════════════════════════════════ -->
 <div id="sub-nav">
@@ -447,7 +490,6 @@
 </footer>
 <!-- ════════════════════════════════════════════════════════════ -->
 
-
 <script>
 var currentMode = 'monthly';
 var currentCurrency = 'SAR';
@@ -597,7 +639,6 @@ document.addEventListener('DOMContentLoaded', function(){
     </div>
   </div>
 </section>
-
 
   <script id="dfl-nav-js">
   (function(){
