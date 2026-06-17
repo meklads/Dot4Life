@@ -19,7 +19,7 @@ BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_MARKER = 'data-template="article"'
 CACHE_BUSTER = 'v=20260617a'
 
-DIRS = ['comparisons']
+DIRS = ['islamic-hajj-umrah']
 
 # ── Category → tools mapping ──────────────────────────────
 CATEGORY_TOOLS = {
@@ -158,6 +158,15 @@ def extract_article_body(content):
         t = re.sub(r'<div[^>]*class="article-cta"[^>]*>.*?</div>', '', t, flags=re.IGNORECASE | re.DOTALL)
         t = re.sub(r'<div[^>]*class="article-footer"[^>]*>.*?</div>', '', t, flags=re.IGNORECASE | re.DOTALL)
         t = re.sub(r'<div[^>]*class="disclaimer"[^>]*>.*?</div>', '', t, flags=re.IGNORECASE | re.DOTALL)
+        # Strip old partial-template structural elements (v1/v2 remnants)
+        t = re.sub(r'<article\s+class="article-content"[^>]*>', '', t, flags=re.IGNORECASE)
+        t = re.sub(r'</article>\s*$', '', t)  # inner </article> at end
+        t = re.sub(r'<div\s+class="article-header"[^>]*>\s*<h1[^>]*>.*?</h1>', '', t, flags=re.IGNORECASE | re.DOTALL)
+        t = re.sub(r'<div\s+style="display:\s*flex[^>]*>.*?</div>', '', t, flags=re.IGNORECASE | re.DOTALL)
+        t = re.sub(r'</div>\s*<!--\s*/article-header\s*-->', '', t, flags=re.IGNORECASE | re.DOTALL)
+        t = re.sub(r'<div\s+style="line-height:\s*1\.85[^>]*>', '', t, flags=re.IGNORECASE)
+        # Remove orphaned </div> that was part of old wrapper structures (up to 2)
+        t = re.sub(r'\n{2,}</div>\n{2,}', '\n', t)
 
         # Remove any existing in-content subscribe (we add our own)
         # Note: subscribe block has nested <div class="sub-input-wrap">, so we

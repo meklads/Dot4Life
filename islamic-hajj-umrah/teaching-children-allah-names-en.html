@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" data-lang="en" data-theme="light">
 <head>
-<script>(function(){var p=new URLSearchParams(location.search),gd=(function(){try{var z=(Intl.DateTimeFormat().resolvedOptions().timeZone||"");return /Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test(z)?"ar":"en";}catch(e){return "ar";}})(),l=p.get("lang")||localStorage.getItem("dfl-lang")||gd,t=p.get("theme")||localStorage.getItem("dfl-theme")||"light",h=document.documentElement;h.setAttribute("data-theme",t);h.setAttribute("data-lang",l);h.setAttribute("lang",l);h.setAttribute("dir",l==="ar"?"rtl":"ltr");if(p.get("lang"))localStorage.setItem("dfl-lang",l);if(p.get("theme"))localStorage.setItem("dfl-theme",t);})()</script>
+<script>(function(){var p=new URLSearchParams(location.search),gd=(function(){try{var z=(Intl.DateTimeFormat().resolvedOptions().timeZone||"");return /Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test(z)?"ar":"en";}catch(e){return "ar";}})(),h=document.documentElement,l=p.get("lang")||h.getAttribute("data-lang")||localStorage.getItem("dfl-lang")||gd,t=p.get("theme")||localStorage.getItem("dfl-theme")||h.getAttribute("data-theme")||"light";h.setAttribute("data-theme",t);h.setAttribute("data-lang",l);h.setAttribute("lang",l);h.setAttribute("dir",l==="ar"?"rtl":"ltr");if(p.get("lang"))localStorage.setItem("dfl-lang",l);if(p.get("theme"))localStorage.setItem("dfl-theme",t);})()</script>
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -21,14 +21,16 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles/global.css?v=20260608u">
-  <link rel="stylesheet" href="/styles/home.css?v=20260608u">
-  <link rel="stylesheet" href="/styles/pages/articles.css?v=20260608u">
+  <link rel="stylesheet" href="/styles/global.css?v=20260617a">
+  <link rel="stylesheet" href="/styles/home.css?v=20260617a">
+  <link rel="stylesheet" href="/styles/pages/articles.css?v=20260617a">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1436107577087160" crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3G1XPV4F0G"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3G1XPV4F0G');</script>
 </head>
 <body data-template="article">
+
+<div id="reading-progress" role="progressbar" aria-label="Reading progress"></div>
 
 <!-- ═══ UNIFIED HEADER ══════════════════════════════════════ -->
 <nav id="navbar"><div class="nav-inner"><a href="/" class="nav-logo"><img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" width="100" height="100" style="height:100px;width:auto;object-fit:contain;" loading="lazy"></a><ul class="nav-links"><li><a href="/health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li><li><a href="/finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li><li><a href="/real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li><li><a href="/travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li><li><a href="/islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li><li><a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a></li><li><a href="/archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a></li><li><a href="/blog.html"><span class="en">blog</span><span class="ar">المدونة</span></a></li><li><a href="/library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a></li></ul><div class="nav-controls"><button class="nav-btn" id="lang-toggle"><span class="en">عربي</span><span class="ar">English</span></button><button class="nav-btn" id="theme-toggle">
@@ -43,33 +45,28 @@
 <section class="article-banner" aria-label="Article banner">
   <div class="article-banner-img-wrap">
     <img src="https://images.unsplash.com/photo-1590273089302-ebbc53986b6e?auto=format&fit=crop&w=600&h=340&q=85" alt="" class="article-banner-img" width="1200" height="420" loading="eager" fetchpriority="high">
-    <div class="article-banner-overlay" style="text-align:left;">
-      <div class="article-banner-cat" style="display:inline-block;color:#fff;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:4px 14px;font-size:.72rem;font-weight:700;margin-bottom:.75rem;backdrop-filter:blur(4px);">islamic-hajj-umrah</div>
-      <h1 class="article-banner-title" style="font-size:clamp(1.5rem,3.5vw,2.2rem);line-height:1.4;font-weight:800;color:#fff;text-shadow:0 2px 20px rgba(0,0,0,.3);margin:0;">Teaching Children Allah's 99 Names with Love</h1>
-      <div class="article-banner-meta" style="color:rgba(255,255,255,.8);margin-top:.75rem;font-size:.8rem;display:flex;gap:.6rem;flex-wrap:wrap;justify-content:flex-start;">
+    <div class="article-banner-overlay">
+      <div class="article-banner-cat">islamic-hajj-umrah</div>
+      <h1 class="article-banner-title">Teaching Children Allah's 99 Names with Love</h1>
+      <div class="article-banner-meta">
         <span>Jun 08, 2026</span>
-        <span>8 min read</span>
+        <span>11 min read</span>
       </div>
     </div>
   </div>
 </section>
 
+<div class="article-layout">
+
+<main class="article-main">
 <article class="article-body">
-<article class="article-content" style="max-width:720px;margin:0 auto;padding:2rem 1.5rem 4rem;">
-<div class="article-header" style="margin-bottom:2rem;">
-
-<h1 style="font-size:clamp(1.4rem,3vw,1.8rem);font-weight:900;line-height:1.25;margin:0 0 1rem;">Teaching Children Allah's 99 Names with Love: A Guide for Gulf Families</h1>
-<div style="display:flex;gap:12px;flex-wrap:wrap;font-size:.82rem;color:var(--text-2,#5C534A);margin-bottom:1.5rem;"><span>📅 June 8, 2026</span><span>⏱ 7 min read</span><span>🏷️ <a href="/islamic.html" style="color:var(--link-color,#6abfb8);">Islamic</a> · <a href="/islamic-hajj-umrah/" style="color:var(--link-color,#6abfb8);">Parenting</a></span></div>
-</div>
-<div style="line-height:1.85;font-size:1.02rem;">
-
 <p style="font-size:1.1rem;font-weight:600;color:var(--text,#1A1E24);padding:1rem 1.2rem;background:#FAF8F4;border-radius:12px;border-left:3px solid #b8893c;">Your child asks: Who is Allah? How do you answer in a way that settles in their heart, not just their mind? It starts with one name.</p>
 
 <p>In the Al-Saif home in Dammam, Umm Abdullah sits with her two children every evening. She holds a card that reads "Ar-Razzaq" with a drawing of bread and fruit on it. "Who sends us food every day? Allah. And Allah is Ar-Razzaq, the Provider," she says. Her four-year-old repeats the word. The next morning, he sees the breakfast bread and says: "Ar-Razzaq!" He didn't just memorize the name. He felt its meaning.</p>
 
 <p>Teaching children the beautiful names of Allah (Al-Asma ul-Husna) is not a dry religious lesson. It is building a relationship of love and trust with Allah before it is memorization of information. A child who knows Allah as "Ar-Rahman" (the Most Gracious) turns to Him with tenderness in their dua. A child who knows Allah as "Al-Aziz" (the Almighty) feels secure. This article is a practical guide for every parent who wants to make Allah's names close to their child's heart.</p>
 
-<h2>Where to Start: Choosing Age-Appropriate Names</h2>
+<h2 id="where-to-start-choosing-age-appropriate-names">Where to Start: Choosing Age-Appropriate Names</h2>
 <p>Not all of Allah's 99 names are suitable for a young child's initial learning. Some require deeper cognitive maturity. Start with names the child experiences daily:</p>
 <ul style="padding-left:1.5rem;line-height:2;">
 <li><strong>Stage 1 (ages 2-3):</strong> Ar-Rahman (The Gracious), Ar-Raheem (The Merciful), Ar-Razzaq (The Provider), Al-Malik (The King), Al-Khaliq (The Creator).</li>
@@ -79,19 +76,19 @@
 </ul>
 <p>This gradual approach protects the child from feeling overwhelmed. Each stage builds on the previous one, solidifying 3-5 names before moving forward.</p>
 
-<h2>Practical Activities for Every Stage</h2>
+<h2 id="practical-activities-for-every-stage">Practical Activities for Every Stage</h2>
 <p>Learning through play and daily activities is proven to be far more effective than rote memorization. Here are activities tailored to each age group:</p>
 
-<h3>Ages 2-3: Songs and Picture Cards</h3>
+<h3 id="ages-2-3-songs-and-picture-cards">Ages 2-3: Songs and Picture Cards</h3>
 <p>Children at this age learn through repetition and rhythm. Sing the names of Allah with simple melodies. Create colorful cards for each name with an expressive image: a heart drawing for Ar-Rahman, a loaf of bread for Ar-Razzaq, a crown for Al-Malik. Let your child flip through them and repeat after you.</p>
 
-<h3>Ages 4-5: Stories and Role-Playing</h3>
+<h3 id="ages-4-5-stories-and-role-playing">Ages 4-5: Stories and Role-Playing</h3>
 <p>At this stage, children absorb simple stories. Tell a story about a child who lost their toy and found it again, then say "As-Sami heard your prayer." Act out the meaning of Al-Aziz by saying "Allah is Almighty, no one is stronger than Him." Children learn more through acting than through abstract explanation.</p>
 
-<h3>Ages 6-8: Questions and Reflection</h3>
+<h3 id="ages-6-8-questions-and-reflection">Ages 6-8: Questions and Reflection</h3>
 <p>Ask questions that spark thinking: "Who created the mountains? Allah, Al-Khaliq. Who sees us? Allah, Al-Baseer." Encourage your child to find Allah's names in the Quran. Holding a Mushaf and searching for a specific name makes the experience tangible. Our <a href="/islamic-hajj-umrah/daily-adhkar-family-guide.html" style="color:#6abfb8;font-weight:600;">Daily Adhkar Family Guide</a> helps connect names to daily worship.</p>
 
-<h2>Connecting Allah's Names to Daily Life: A 30-Day Plan</h2>
+<h2 id="connecting-allahs-names-to-daily-life-a-30-day-plan">Connecting Allah's Names to Daily Life: A 30-Day Plan</h2>
 <p>The most effective method is to connect one divine name to each day. Here is a suggested plan for the first week:</p>
 <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:.92rem;"><thead><tr style="background:#b8893c;color:#fff;"><th style="padding:10px 14px;text-align:left;">Day</th><th style="padding:10px 14px;text-align:left;">Name</th><th style="padding:10px 14px;text-align:left;">Activity</th></tr></thead><tbody>
 <tr style="border-bottom:1px solid #e2ddd6;"><td style="padding:10px 14px;">Saturday</td><td style="padding:10px 14px;font-weight:600;">Ar-Rahman</td><td style="padding:10px 14px;">Bring different fruits and reflect on Allah's diverse blessings</td></tr>
@@ -104,7 +101,18 @@
 </tbody></table>
 <p>Repeat this pattern each week with new names. In 30 days, your child will have encountered 30 of Allah's names in a practical, loving way.</p>
 
-<h2>Games and Activities That Reinforce Meaningful Memorization</h2>
+
+
+<div class="in-content-subscribe">
+  <h3>📬 <span class="en">Enjoying this article?</span><span class="ar">هل يعجبك المقال؟</span></h3>
+  <p><span class="en">Get more family tips every Friday — join our newsletter.</span><span class="ar">احصل على نصائح أسرية كل جمعة — اشترك في نشرتنا.</span></p>
+  <div class="sub-input-wrap">
+    <input type="email" placeholder="your@email.com" aria-label="Email">
+    <button onclick="alert('🚧 Coming soon — signup integration.')"><span class="en">Subscribe</span><span class="ar">اشترك</span></button>
+  </div>
+</div>
+
+<h2 id="games-and-activities-that-reinforce-meaningful-memorization">Games and Activities That Reinforce Meaningful Memorization</h2>
 <p>Here are tried-and-tested games that work well in Gulf homes:</p>
 <ul style="padding-left:1.5rem;line-height:2;">
 <li><strong>Matching Game:</strong> Cards with names vs. cards with meanings. Whoever matches the most wins.</li>
@@ -114,31 +122,155 @@
 <li><strong>Treasure Board:</strong> Each time your child learns new names, they place a sticker on a wall chart.</li>
 </ul>
 
-<h2>How to Raise Children on the Meanings, Not Just Memorization</h2>
+<h2 id="how-to-raise-children-on-the-meanings-not-just-memorization">How to Raise Children on the Meanings, Not Just Memorization</h2>
 <p>This is the real challenge. The goal is not for your child to recite 99 names like a parrot, but for their view of Allah and life to be transformed. When a child understands that Allah is "Al-Lateef" (the Subtle Kind One) who is gentle with them in every moment, they sleep in peace. When they know that Allah is "Ash-Shakur" (the Appreciative) who rewards even small deeds, they become eager to do good.</p>
 <p>Turn each name into behavior: Allah is "Al-Afuw" (the Pardoner) who loves forgiveness, so forgive your classmate. Allah is "Al-Jameel" (the Beautiful) who loves beauty, so cleanliness is part of faith. Allah is "Al-Adl" (the Just) who loves justice, so be fair with your siblings. This is how Allah's names become a life curriculum, not just information.</p>
 
-<h2>Conclusion: A Year-Long Journey</h2>
+<h2 id="conclusion-a-year-long-journey">Conclusion: A Year-Long Journey</h2>
 <p>Teaching Allah's beautiful names is an enjoyable journey worth a full year. Do not rush. Take 3 names each month. Repeat them, live them, pray with them. Supplicating with Allah's names is one of the greatest acts of worship. Teach your child to say: "Ya Razzaq, provide for me; Ya Rahman, have mercy on me." This emotional connection with Allah is the foundation that will protect your child's faith for life.</p>
 <p>For more Islamic educational activities, browse the <a href="/islamic.html" style="color:#6abfb8;font-weight:600;">Islamic section</a> on DOTFORLIFE.</p>
 
 <div style="text-align:center;margin:2rem 0;padding:1.5rem;background:#b8893c;border-radius:16px;color:#fff;"><p style="font-size:1.1rem;font-weight:700;margin:0 0 .5rem;">Connect Your Child to Allah Every Day</p><p style="font-size:.9rem;color:rgba(255,255,255,.7);margin:0 0 1rem;">Download the free monthly Allah's Names calendar</p><a href="/islamic-hajj-umrah/daily-adhkar-family-guide.html" style="display:inline-block;padding:12px 28px;border-radius:999px;background:#054241;color:#fff;font-weight:700;text-decoration:none;">Browse the Adhkar Guide →</a></div>
 
-<h2>Frequently Asked Questions (FAQ)</h2>
-<div itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question" style="margin-bottom:1rem;padding:1rem;background:#FAF8F4;border-radius:10px;"><h3 itemprop="name" style="font-size:.95rem;font-weight:700;margin:0 0 .4rem;">At what age can I start teaching my child Allah's names?</h3><div itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text" style="font-size:.88rem;color:#5C534A;">You can start as early as 2-3 years old with simple names like Ar-Rahman, Ar-Raheem, and Ar-Razzaq. With repetition and songs, the child absorbs the names without fully grasping the meaning, which is explained gradually as they grow.</div></div></div>
-<div itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question" style="margin-bottom:1rem;padding:1rem;background:#FAF8F4;border-radius:10px;"><h3 itemprop="name" style="font-size:.95rem;font-weight:700;margin:0 0 .4rem;">How many names should I teach at one time?</h3><div itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text" style="font-size:.88rem;color:#5C534A;">Focus on 3-5 names per stage. Move to the next stage only after the current ones are mastered. Gradual learning builds confidence without overwhelming the child.</div></div></div>
-<div itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question" style="margin-bottom:1rem;padding:1rem;background:#FAF8F4;border-radius:10px;"><h3 itemprop="name" style="font-size:.95rem;font-weight:700;margin:0 0 .4rem;">How can I connect Allah's names to my child's daily life?</h3><div itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text" style="font-size:.88rem;color:#5C534A;">Connect each name to a daily situation: when your child eats say "Allah is Ar-Razzaq the Provider", when they recover from illness say "Allah is Ash-Shafi the Healer". Contextual repetition in natural settings is the key.</div></div></div>
-<div itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question" style="margin-bottom:1rem;padding:1rem;background:#FAF8F4;border-radius:10px;"><h3 itemprop="name" style="font-size:.95rem;font-weight:700;margin:0 0 .4rem;">What is the best method for children to memorize Allah's names?</h3><div itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text" style="font-size:.88rem;color:#5C534A;">Songs, picture cards and stories are the most effective. Children learn through repetition and play far more than through dry memorization. Varying the methods keeps them engaged.</div></div></div>
-<div itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question" style="margin-bottom:1rem;padding:1rem;background:#FAF8F4;border-radius:10px;"><h3 itemprop="name" style="font-size:.95rem;font-weight:700;margin:0 0 .4rem;">Can children with special needs learn Allah's names?</h3><div itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text" style="font-size:.88rem;color:#5C534A;">Yes, in fact Allah's names carry special comfort for these children. Visual aids and simplicity are recommended. The names Ar-Rahman, Al-Lateef, and Al-Wadud often resonate deeply with them.</div></div></div>
+<h2 id="frequently-asked-questions-faq">Frequently Asked Questions (FAQ)</h2>
+<div itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question" style="margin-bottom:1rem;padding:1rem;background:#FAF8F4;border-radius:10px;"><h3 id="at-what-age-can-i-start-teaching-my-child-allahs-names">At what age can I start teaching my child Allah's names?</h3><div itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text" style="font-size:.88rem;color:#5C534A;">You can start as early as 2-3 years old with simple names like Ar-Rahman, Ar-Raheem, and Ar-Razzaq. With repetition and songs, the child absorbs the names without fully grasping the meaning, which is explained gradually as they grow.</div></div></div>
+<div itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question" style="margin-bottom:1rem;padding:1rem;background:#FAF8F4;border-radius:10px;"><h3 id="how-many-names-should-i-teach-at-one-time">How many names should I teach at one time?</h3><div itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text" style="font-size:.88rem;color:#5C534A;">Focus on 3-5 names per stage. Move to the next stage only after the current ones are mastered. Gradual learning builds confidence without overwhelming the child.</div></div></div>
+<div itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question" style="margin-bottom:1rem;padding:1rem;background:#FAF8F4;border-radius:10px;"><h3 id="how-can-i-connect-allahs-names-to-my-childs-daily-life">How can I connect Allah's names to my child's daily life?</h3><div itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text" style="font-size:.88rem;color:#5C534A;">Connect each name to a daily situation: when your child eats say "Allah is Ar-Razzaq the Provider", when they recover from illness say "Allah is Ash-Shafi the Healer". Contextual repetition in natural settings is the key.</div></div></div>
+<div itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question" style="margin-bottom:1rem;padding:1rem;background:#FAF8F4;border-radius:10px;"><h3 id="what-is-the-best-method-for-children-to-memorize-allahs-name">What is the best method for children to memorize Allah's names?</h3><div itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text" style="font-size:.88rem;color:#5C534A;">Songs, picture cards and stories are the most effective. Children learn through repetition and play far more than through dry memorization. Varying the methods keeps them engaged.</div></div></div>
+<div itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question" style="margin-bottom:1rem;padding:1rem;background:#FAF8F4;border-radius:10px;"><h3 id="can-children-with-special-needs-learn-allahs-names">Can children with special needs learn Allah's names?</h3><div itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text" style="font-size:.88rem;color:#5C534A;">Yes, in fact Allah's names carry special comfort for these children. Visual aids and simplicity are recommended. The names Ar-Rahman, Al-Lateef, and Al-Wadud often resonate deeply with them.</div></div></div>
 
 <hr style="border:none;border-top:1px solid #e2ddd6;margin:2rem 0;" />
 <div style="font-size:.82rem;color:#5C534A;line-height:1.7;">
 <p><strong>Sources and References:</strong></p>
 <ul><li>Tafsir As-Sa'di - Interpretation of Allah's Beautiful Names</li><li>Sahih Al-Bukhari - Book of Tawheed: Chapter on Allah's statement "To Allah belong the Most Beautiful Names"</li><li>Alukah Network - Encyclopedia of Allah's Names (alukah.net)</li></ul>
 <p style="margin-top:.5rem;"><strong>Disclaimer:</strong> This article is for educational and parenting purposes. It does not substitute consultation with qualified religious scholars.</p>
+</div>
 </article>
 
+<div class="article-end">
+<div class="article-share">
+  <a href="https://wa.me/?text=Teaching Children Allah's 99 Names with Love%20https://www.dotforlife.com/islamic-hajj-umrah/teaching-children-allah-names-en.html" target="_blank" rel="noopener" class="share-btn whatsapp" aria-label="Share on WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span>WhatsApp</span>
+  </a>
+  <a href="https://twitter.com/intent/tweet?text=Teaching Children Allah's 99 Names with Love&url=https://www.dotforlife.com/islamic-hajj-umrah/teaching-children-allah-names-en.html" target="_blank" rel="noopener" class="share-btn x" aria-label="Share on X">
+    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    <span>X</span>
+  </a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.dotforlife.com/islamic-hajj-umrah/teaching-children-allah-names-en.html" target="_blank" rel="noopener" class="share-btn facebook" aria-label="Share on Facebook">
+    <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    <span>Facebook</span>
+  </a>
+  <button class="share-btn copy-link" onclick="navigator.clipboard.writeText(location.href);var s=this.querySelectorAll('span');if(s.length>1){s[0].textContent='✓ Copied';s[1].textContent='✓ نُسخ'}" aria-label="Copy link">
+    <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+    <span class="en">Copy</span><span class="ar">نسخ</span>
+  </button>
 </div>
+
+<div class="article-tool-cta">
+  <h3><span class="en">Try Our Zakat Calculator</span><span class="ar">جرّب Zakat Calculator</span></h3>
+  <p><span class="en">Calculate, plan, and take control of your family finances.</span><span class="ar">احسب، خطّط، وتحكّم في مالية أسرتك.</span></p>
+  <a href="/tools/zakat-calculator.html" class="tool-cta-btn"><span class="en">Open Tool →</span><span class="ar">فتح الأداة ←</span></a>
+</div>
+
+<div class="article-read-also">
+  <h3><span class="en">📖 Read Also</span><span class="ar">📖 اقرأ أيضاً</span></h3>
+  <div class="read-also-grid">
+    <a href="/blog/ramadan-preparation-guide-families.html" class="read-also-card">
+      <img src="https://images.unsplash.com/photo-1587381420270-3e1a5b9e6904?auto=format&fit=crop&w=600&h=340&q=85" alt="" loading="lazy">
+      <span class="read-also-title">Ramadan Preparation Guide for Families</span>
+    </a>
+    <a href="/blog/umrah-budget-guide-families.html" class="read-also-card">
+      <img src="https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?auto=format&fit=crop&w=600&h=340&q=85" alt="" loading="lazy">
+      <span class="read-also-title">Umrah Budget Guide for Families</span>
+    </a>
+    <a href="/guides/zakat-complete-guide.html" class="read-also-card">
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&h=340&q=85" alt="" loading="lazy">
+      <span class="read-also-title">Complete Zakat Guide: Calculate and Pay Correctly</span>
+    </a>
+    <a href="/islamic-hajj-umrah/teaching-children-prayer-with-love.html" class="read-also-card">
+      <img src="https://images.unsplash.com/photo-1590273089302-ebbc53986b6e?auto=format&fit=crop&w=600&h=340&q=85" alt="" loading="lazy">
+      <span class="read-also-title">Teaching Children to Pray with Love: A Step-by-Step Guide</span>
+    </a>
+  </div>
+</div>
+
+<div class="article-friday-cta">
+  <h3>📬 <span class="en">Friday Family Tips</span><span class="ar">نصائح الجمعة للأسرة</span></h3>
+  <p><span class="en">Get weekly inspiration delivered to your inbox.</span><span class="ar">احصل على إلهام أسبوعي في بريدك.</span></p>
+  <div class="friday-input-wrap">
+    <input type="email" placeholder="your@email.com" aria-label="Email">
+    <button onclick="alert('🚧 Coming soon — signup integration.')"><span class="en">Join</span><span class="ar">اشترك</span></button>
+  </div>
+</div>
+
+<div class="article-tags">
+  <span class="tag">#islamic</span>
+  <span class="tag">#faith</span>
+  <span class="tag">#worship</span>
+  <span class="tag">#spirituality</span>
+  <span class="tag">#muslim-family</span>
+</div>
+</div>
+</main>
+
+<aside class="article-sidebar">
+<div class="sidebar-module sidebar-team-card">
+  <img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" width="56" height="56" loading="lazy">
+  <div class="team-name"><span class="en">Dot4Life Team</span><span class="ar">فريق دوت فور لايف</span></div>
+  <div class="team-trust"><span class="en">Trusted content, carefully edited for Gulf families.</span><span class="ar">محتوى موثوق، محرَّر بعناية للأسرة الخليجية.</span></div>
+  <a href="/editorial-standards.html" class="team-link"><span class="en">Our Standards →</span><span class="ar">معاييرنا التحريرية ←</span></a>
+</div>
+
+<div class="sidebar-module sidebar-toc">
+  <h4>📑 <span class="en">Contents</span><span class="ar">المحتويات</span></h4>
+  <a href="#where-to-start-choosing-age-appropriate-names" class="toc-item">Where to Start: Choosing Age-Appropriate Names</a>
+  <a href="#practical-activities-for-every-stage" class="toc-item">Practical Activities for Every Stage</a>
+  <a href="#ages-2-3-songs-and-picture-cards" class="toc-item toc-item-h3">Ages 2-3: Songs and Picture Cards</a>
+  <a href="#ages-4-5-stories-and-role-playing" class="toc-item toc-item-h3">Ages 4-5: Stories and Role-Playing</a>
+  <a href="#ages-6-8-questions-and-reflection" class="toc-item toc-item-h3">Ages 6-8: Questions and Reflection</a>
+  <a href="#connecting-allahs-names-to-daily-life-a-30-day-plan" class="toc-item">Connecting Allah's Names to Daily Life: A 30-Day Plan</a>
+  <a href="#games-and-activities-that-reinforce-meaningful-memorization" class="toc-item">Games and Activities That Reinforce Meaningful Memorization</a>
+  <a href="#how-to-raise-children-on-the-meanings-not-just-memorization" class="toc-item">How to Raise Children on the Meanings, Not Just Memorization</a>
+  <a href="#conclusion-a-year-long-journey" class="toc-item">Conclusion: A Year-Long Journey</a>
+  <a href="#frequently-asked-questions-faq" class="toc-item">Frequently Asked Questions (FAQ)</a>
+  <a href="#at-what-age-can-i-start-teaching-my-child-allahs-names" class="toc-item toc-item-h3">At what age can I start teaching my child Allah's names?</a>
+  <a href="#how-many-names-should-i-teach-at-one-time" class="toc-item toc-item-h3">How many names should I teach at one time?</a>
+  <a href="#how-can-i-connect-allahs-names-to-my-childs-daily-life" class="toc-item toc-item-h3">How can I connect Allah's names to my child's daily life?</a>
+  <a href="#what-is-the-best-method-for-children-to-memorize-allahs-name" class="toc-item toc-item-h3">What is the best method for children to memorize Allah's names?</a>
+  <a href="#can-children-with-special-needs-learn-allahs-names" class="toc-item toc-item-h3">Can children with special needs learn Allah's names?</a>
+</div>
+
+<div class="sidebar-module sidebar-related">
+  <h4><span class="en">Related</span><span class="ar">ذات صلة</span></h4>
+  <a href="/blog/ramadan-preparation-guide-families.html" class="sidebar-related-item">
+    <img src="https://images.unsplash.com/photo-1587381420270-3e1a5b9e6904?auto=format&fit=crop&w=600&h=340&q=85" alt="" width="64" height="48" loading="lazy">
+    <span class="related-title">Ramadan Preparation Guide for Families</span>
+  </a>
+  <a href="/blog/umrah-budget-guide-families.html" class="sidebar-related-item">
+    <img src="https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?auto=format&fit=crop&w=600&h=340&q=85" alt="" width="64" height="48" loading="lazy">
+    <span class="related-title">Umrah Budget Guide for Families</span>
+  </a>
+  <a href="/guides/zakat-complete-guide.html" class="sidebar-related-item">
+    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&h=340&q=85" alt="" width="64" height="48" loading="lazy">
+    <span class="related-title">Complete Zakat Guide: Calculate and Pay Correctly</span>
+  </a>
+  <a href="/islamic-hajj-umrah/teaching-children-prayer-with-love.html" class="sidebar-related-item">
+    <img src="https://images.unsplash.com/photo-1590273089302-ebbc53986b6e?auto=format&fit=crop&w=600&h=340&q=85" alt="" width="64" height="48" loading="lazy">
+    <span class="related-title">Teaching Children to Pray with Love: A Step-by-Step Guide</span>
+  </a>
+</div>
+
+<div class="sidebar-module sidebar-tools">
+  <h4>🛠 <span class="en">Tools</span><span class="ar">أدوات</span></h4>
+  <a href="/tools/zakat-calculator.html" class="tool-btn">Zakat Calculator</a>
+  <a href="/tools/hijri-converter.html" class="tool-btn">Hijri Converter</a>
+</div>
+</aside>
+
+</div><!-- /article-layout -->
+
+</div><!-- /article-wrap -->
 
 <!-- ═══ UNIFIED FOOTER ══════════════════════════════════════ -->
 <footer class="site-footer" role="contentinfo">
@@ -197,6 +329,39 @@
 <!-- ═══ END FOOTER ══════════════════════════════════════ -->
 
 
-<script src="/scripts/global.js?v=20260608u" defer></script>
+<script src="/scripts/global.js?v=20260617a" defer></script>
+<script>
+(function(){
+  // Reading progress bar
+  var bar = document.getElementById('reading-progress');
+  if(bar){
+    window.addEventListener('scroll',function(){
+      var h = document.documentElement;
+      var total = h.scrollHeight - h.clientHeight;
+      var pct = (h.scrollTop || document.body.scrollTop) / (total || 1) * 100;
+      bar.style.width = pct + '%';
+    },{passive:true});
+  }
+  // TOC active highlight
+  var tocLinks = document.querySelectorAll('.toc-item');
+  if(tocLinks.length){
+    var headings = [];
+    tocLinks.forEach(function(link){
+      var id = link.getAttribute('href').replace('#','');
+      var el = document.getElementById(id);
+      if(el) headings.push({el:el,link:link});
+    });
+    window.addEventListener('scroll',function(){
+      var scrollY = window.scrollY + 130;
+      var current = null;
+      headings.forEach(function(h){
+        if(h.el.offsetTop <= scrollY) current = h;
+      });
+      tocLinks.forEach(function(l){ l.classList.remove('is-active'); });
+      if(current) current.link.classList.add('is-active');
+    },{passive:true});
+  }
+})();
+</script>
 </body>
 </html>
