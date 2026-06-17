@@ -96,7 +96,7 @@
 </script>
 <link rel="stylesheet" href="/styles/global.css?v=20260617e"/>
 	<link rel="stylesheet" href="/styles/tools-shared.css?v=20260617g">
-	<link rel="stylesheet" href="/styles/pages/tools_zakat-calculator.css?v=20260617h">
+	<link rel="stylesheet" href="/styles/pages/tools_zakat-calculator.css?v=20260618a">
 <!-- DFL Analytics v1 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3G1XPV4F0G"></script>
 <script>
@@ -247,6 +247,7 @@ window.dflTrack=function(event,params){
   
   </div>
 <main class="tool-mn">
+
 <!-- INFO CARDS -->
   <div class="info-grid reveal rd1">
     <div class="info-card">
@@ -279,130 +280,204 @@ window.dflTrack=function(event,params){
         <li><span class="ar">ذهب 22 قيراط</span><span class="en">22K Gold</span> <span class="lv">211 SAR/g</span></li>
         <li><span class="ar">ذهب 18 قيراط</span><span class="en">18K Gold</span> <span class="lv">173 SAR/g</span></li>
         <li><span class="ar">فضة</span><span class="en">Silver</span> <span class="lv">2.7 SAR/g</span></li>
-        <li><span class="ar">نصاب ذهب (85g)</span><span class="en">Gold nisab (85g)</span> <span class="lv">19,550 SAR</span></li>
-        <li><span class="ar">نصاب فضة (595g)</span><span class="en">Silver nisab (595g)</span> <span class="lv">1,607 SAR</span></li>
+        <li><span class="ar">نصاب ذهب (85g)</span><span class="en">Gold nisab (85g)</span> <span class="lv"><span id="goldNisabVal">19,550</span> SAR</span></li>
+        <li><span class="ar">نصاب فضة (595g)</span><span class="en">Silver nisab (595g)</span> <span class="lv"><span id="silverNisabVal">1,607</span> SAR</span></li>
       </ul>
     </div>
   </div>
 
-<div class="tool-cd tool-rv tool-rv-1" id="calcCard">
+  <!-- NISAB BANNER -->
+  <div class="z-nb reveal rd2">
+    <div class="z-nb-in">
+      <div class="z-nb-item">
+        <div class="z-nb-l"><span class="ar">نصاب الذهب</span><span class="en">Gold Nisab</span></div>
+        <div class="z-nb-v" id="goldNisabDisplay">19,550 <span class="ar">ريال</span><span class="en">SAR</span></div>
+        <div class="z-nb-sub">85g × 230 <span class="ar">ريال/جم</span><span class="en">SAR/g</span></div>
+      </div>
+      <div class="z-nb-divider"></div>
+      <div class="z-nb-item">
+        <div class="z-nb-l"><span class="ar">نصاب الفضة</span><span class="en">Silver Nisab</span></div>
+        <div class="z-nb-v" id="silverNisabDisplay">1,607 <span class="ar">ريال</span><span class="en">SAR</span></div>
+        <div class="z-nb-sub">595g × 2.7 <span class="ar">ريال/جم</span><span class="en">SAR/g</span></div>
+      </div>
+    </div>
+    <div class="z-nb-note">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <span class="ar">اختر النصاب الذي تريد الاحتساب به. يُفضّل جمهور العلماء المعاصرين نصاب الفضة (الأقل) لأنه يُوجب الزكاة على أكبر عدد.</span>
+      <span class="en">Choose which nisab to use. Contemporary scholars prefer silver (lower) as it obligates Zakat for more people.</span>
+    </div>
+  </div>
+
+  <!-- NISAB SELECTOR -->
+  <div class="z-ns reveal rd3">
+    <button class="z-ns-b active" id="btnSilver" onclick="setNisab('silver')">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      <span class="ar">نصاب الفضة</span><span class="en">Silver Nisab</span>
+      <small class="ar">موصى به</small><small class="en">Recommended</small>
+    </button>
+    <button class="z-ns-b" id="btnGold" onclick="setNisab('gold')">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+      <span class="ar">نصاب الذهب</span><span class="en">Gold Nisab</span>
+    </button>
+  </div>
+
+  <!-- SECTION TABS -->
+  <div class="z-st reveal rd4">
+    <button class="z-st-b active" onclick="switchSection('cash',this)">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="13" rx="2"/><path d="M12 2v5"/><path d="M8 7V2"/><path d="M16 7V2"/><line x1="2" y1="11" x2="22" y2="11"/></svg>
+      <span class="ar">النقود</span><span class="en">Cash</span>
+    </button>
+    <button class="z-st-b" onclick="switchSection('gold',this)">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      <span class="ar">ذهب &amp; فضة</span><span class="en">Gold &amp; Silver</span>
+    </button>
+    <button class="z-st-b" onclick="switchSection('stocks',this)">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      <span class="ar">استثمارات</span><span class="en">Stocks</span>
+    </button>
+    <button class="z-st-b" onclick="switchSection('trade',this)">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      <span class="ar">تجارة</span><span class="en">Trade</span>
+    </button>
+    <button class="z-st-b" onclick="switchSection('debts',this)">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+      <span class="ar">ديون</span><span class="en">Debts</span>
+    </button>
+  </div>
+
+  <!-- CALCULATOR CARD -->
+  <div class="tool-cd tool-rv tool-rv-1" id="calcCard">
 
     <!-- CASH SECTION -->
     <div class="calc-section active" id="sec-cash">
-      <div class="section-heading"><span class="sec-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="13" rx="2"/><path d="M12 2v5"/><path d="M8 7V2"/><path d="M16 7V2"/><line x1="2" y1="11" x2="22" y2="11"/></svg></span><span class="ar">النقود والأموال البنكية</span><span class="en">Cash & Bank Balances</span></div>
-      <div class="grid-2">
-        <div class="input-group">
-          <div class="input-label"><span class="ar">رصيد الحسابات البنكية</span><span class="en">Bank account balances</span></div>
-          <div class="input-row">
-            <input type="number" class="input-field" id="bankBalance" placeholder="0" min="0"/>
-            <div class="input-currency"><span class="ar">ريال</span><span class="en">SAR</span></div>
+      <div class="z-sh">
+        <div class="z-sh-i"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="13" rx="2"/><path d="M12 2v5"/><path d="M8 7V2"/><path d="M16 7V2"/><line x1="2" y1="11" x2="22" y2="11"/></svg></div>
+        <div>
+          <div class="z-sh-t"><span class="ar">النقود والأموال البنكية</span><span class="en">Cash & Bank Balances</span></div>
+          <div class="z-sh-s"><span class="ar">أدخل أرصدة حسابك البنكي والنقد في المنزل</span><span class="en">Enter your bank and cash balances</span></div>
+        </div>
+      </div>
+      <div class="tool-g2">
+        <div class="tool-fl">
+          <label class="tool-fl-l"><span class="ar">رصيد الحسابات البنكية</span><span class="en">Bank account balances</span></label>
+          <div class="tool-fl-r">
+            <input type="number" id="bankBalance" placeholder="0" min="0"/>
+            <div class="tool-fl-u"><span class="ar">ريال</span><span class="en">SAR</span></div>
           </div>
         </div>
-        <div class="input-group">
-          <div class="input-label"><span class="ar">النقد في البيت</span><span class="en">Cash at home</span></div>
-          <div class="input-row">
-            <input type="number" class="input-field" id="cashHome" placeholder="0" min="0"/>
-            <div class="input-currency"><span class="ar">ريال</span><span class="en">SAR</span></div>
+        <div class="tool-fl">
+          <label class="tool-fl-l"><span class="ar">النقد في البيت</span><span class="en">Cash at home</span></label>
+          <div class="tool-fl-r">
+            <input type="number" id="cashHome" placeholder="0" min="0"/>
+            <div class="tool-fl-u"><span class="ar">ريال</span><span class="en">SAR</span></div>
           </div>
         </div>
-        <div class="input-group">
-          <div class="input-label"><span class="ar">ودائع واستثمارات نقدية</span><span class="en">Term deposits & savings</span></div>
-          <div class="input-row">
-            <input type="number" class="input-field" id="deposits" placeholder="0" min="0"/>
-            <div class="input-currency"><span class="ar">ريال</span><span class="en">SAR</span></div>
+        <div class="tool-fl">
+          <label class="tool-fl-l"><span class="ar">ودائع واستثمارات نقدية</span><span class="en">Term deposits & savings</span></label>
+          <div class="tool-fl-r">
+            <input type="number" id="deposits" placeholder="0" min="0"/>
+            <div class="tool-fl-u"><span class="ar">ريال</span><span class="en">SAR</span></div>
           </div>
         </div>
-        <div class="input-group">
-          <div class="input-label">
-            <span class="ar">الديون المستحقة عليك</span><span class="en">Debts you owe (deductible)</span>
-            <span class="tip ar">تُطرح</span><span class="tip en">deducted</span>
-          </div>
-          <div class="input-row">
-            <input type="number" class="input-field" id="liabilities" placeholder="0" min="0"/>
-            <div class="input-currency"><span class="ar">ريال</span><span class="en">SAR</span></div>
+        <div class="tool-fl">
+          <label class="tool-fl-l"><span class="ar">الديون المستحقة عليك</span><span class="en">Debts you owe</span> <span class="z-tip">— <span class="ar">تُطرح</span><span class="en">deducted</span></span></label>
+          <div class="tool-fl-r">
+            <input type="number" id="liabilities" placeholder="0" min="0"/>
+            <div class="tool-fl-u"><span class="ar">ريال</span><span class="en">SAR</span></div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- GOLD SECTION -->
+    <!-- GOLD & SILVER SECTION -->
     <div class="calc-section" id="sec-gold">
-      <div class="section-heading"><span class="sec-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span><span class="ar">الذهب والفضة</span><span class="en">Gold & Silver</span></div>
-      <div style="font-size:.82rem;color:var(--muted);margin-bottom:16px;padding:10px 14px;background:var(--gold-l);border-radius:10px;border:1px solid var(--gold)">
-        <span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> أسعار الذهب والفضة محدَّثة لعام 2025: ذهب 24 قيراط = 230 ريال/جرام | فضة = 2.7 ريال/جرام</span>
-        <span class="en"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> 2025 reference prices: 24K gold = SAR 230/gram | Silver = SAR 2.7/gram</span>
+      <div class="z-sh">
+        <div class="z-sh-i"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <div>
+          <div class="z-sh-t"><span class="ar">الذهب والفضة</span><span class="en">Gold & Silver</span></div>
+          <div class="z-sh-s"><span class="ar">أسعار 2025: ذهب 24 قيراط = 230 ريال/جرام | فضة = 2.7 ريال/جرام</span><span class="en">2025 prices: 24K gold = SAR 230/g | Silver = SAR 2.7/g</span></div>
+        </div>
       </div>
-      <div class="grid-2">
-        <div class="input-group">
-          <div class="input-label"><span class="ar">ذهب للاستثمار (جرام)</span><span class="en">Investment gold (grams)</span></div>
-          <div class="input-row">
-            <input type="number" class="input-field" id="goldGrams" placeholder="0" min="0" step="0.1"/>
-            <div class="input-currency">g</div>
+      <div class="z-callout">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        <span><span class="ar">ذهب الزينة المُستعمَل (الذهبية) لا زكاة فيه عند المالكية والحنابلة. ذهب الاستثمار تجب فيه الزكاة.</span><span class="en">Personal-use jewelry is exempt per Maliki & Hanbali schools. Investment gold is Zakatable.</span></span>
+      </div>
+      <div class="tool-g2">
+        <div class="tool-fl">
+          <label class="tool-fl-l"><span class="ar">ذهب للاستثمار (جرام)</span><span class="en">Investment gold (grams)</span></label>
+          <div class="tool-fl-r">
+            <input type="number" id="goldGrams" placeholder="0" min="0" step="0.1"/>
+            <div class="tool-fl-u">g</div>
           </div>
         </div>
-        <div class="input-group">
-          <div class="input-label">
-            <span class="ar">ذهب للزينة المستعمل</span><span class="en">Personal-use jewelry</span>
-            <span class="tip ar">لا زكاة عليه</span><span class="tip en">no Zakat</span>
-          </div>
-          <div class="input-row">
-            <input type="number" class="input-field" id="goldJewelry" placeholder="0" min="0" step="0.1"/>
-            <div class="input-currency">g</div>
+        <div class="tool-fl">
+          <label class="tool-fl-l"><span class="ar">ذهب للزينة المُستعمَل</span><span class="en">Personal-use jewelry</span> <span class="z-tip">— <span class="ar">لا زكاة</span><span class="en">exempt</span></span></label>
+          <div class="tool-fl-r">
+            <input type="number" id="goldJewelry" placeholder="0" min="0" step="0.1"/>
+            <div class="tool-fl-u">g</div>
           </div>
         </div>
-        <div class="input-group">
-          <div class="input-label"><span class="ar">فضة للاستثمار (جرام)</span><span class="en">Investment silver (grams)</span></div>
-          <div class="input-row">
-            <input type="number" class="input-field" id="silverGrams" placeholder="0" min="0" step="0.1"/>
-            <div class="input-currency">g</div>
+        <div class="tool-fl">
+          <label class="tool-fl-l"><span class="ar">فضة للاستثمار (جرام)</span><span class="en">Investment silver (grams)</span></label>
+          <div class="tool-fl-r">
+            <input type="number" id="silverGrams" placeholder="0" min="0" step="0.1"/>
+            <div class="tool-fl-u">g</div>
           </div>
         </div>
-        <div class="input-group">
-          <div class="input-label"><span class="ar">عيار الذهب</span><span class="en">Gold karat</span></div>
-          <select class="input-field" id="goldKarat">
-            <option value="1">24 قيراط / 24K</option>
-            <option value="0.917">22 قيراط / 22K</option>
-            <option value="0.75">18 قيراط / 18K</option>
-            <option value="0.583">14 قيراط / 14K</option>
-          </select>
+        <div class="tool-fl">
+          <label class="tool-fl-l"><span class="ar">عيار الذهب</span><span class="en">Gold karat</span></label>
+          <div class="tool-fl-r">
+            <select id="goldKarat">
+              <option value="1">24 <span class="ar">قيراط</span><span class="en">K</span></option>
+              <option value="0.917">22K</option>
+              <option value="0.75">18K</option>
+              <option value="0.583">14K</option>
+            </select>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- STOCKS SECTION -->
+    <!-- STOCKS & INVESTMENTS SECTION -->
     <div class="calc-section" id="sec-stocks">
-      <div class="section-heading"><span class="sec-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></span><span class="ar">الأسهم والاستثمارات</span><span class="en">Stocks & Investments</span></div>
-      <div style="font-size:.82rem;color:var(--muted);margin-bottom:16px;padding:10px 14px;background:var(--green-l);border-radius:10px">
-        <span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 20v-6h4v6"/><path d="M20 10V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v4"/><rect x="2" y="14" width="20" height="6" rx="2"/></svg> للأسهم الزكوية: زكِّ 40% من القيمة السوقية. للمضارب: زكِّ 100% من القيمة السوقية.</span>
-        <span class="en"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 20v-6h4v6"/><path d="M20 10V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v4"/><rect x="2" y="14" width="20" height="6" rx="2"/></svg> Long-term shares: Zakat on 40% of market value. Trading shares: Zakat on 100% of market value.</span>
+      <div class="z-sh">
+        <div class="z-sh-i"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+        <div>
+          <div class="z-sh-t"><span class="ar">الأسهم والاستثمارات</span><span class="en">Stocks & Investments</span></div>
+          <div class="z-sh-s"><span class="ar">الأسهم الزكوية: زكِّ 40% من القيمة السوقية. أسهم المضاربة: زكِّ 100%.</span><span class="en">Long-term: Zakat on 40% of market value. Trading shares: 100%.</span></div>
+        </div>
       </div>
-      <div class="grid-2">
-        <div class="input-group">
-          <div class="input-label"><span class="ar">قيمة أسهم الاستثمار (السوقية)</span><span class="en">Investment stocks (market value)</span></div>
-          <div class="input-row">
-            <input type="number" class="input-field" id="stocksInvest" placeholder="0" min="0"/>
-            <div class="input-currency"><span class="ar">ريال</span><span class="en">SAR</span></div>
+      <div class="z-callout z-callout-green">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 20v-6h4v6"/><path d="M20 10V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v4"/><rect x="2" y="14" width="20" height="6" rx="2"/></svg>
+        <span><span class="ar">للأسهم طويلة الأجل: زكِّ 40% من القيمة السوقية. للمضارب: زكِّ 100% من القيمة السوقية.</span><span class="en">Long-term shares: Zakat on 40% of market value. Trading shares: Zakat on 100%.</span></span>
+      </div>
+      <div class="tool-g2">
+        <div class="tool-fl">
+          <label class="tool-fl-l"><span class="ar">قيمة أسهم الاستثمار (السوقية)</span><span class="en">Investment stocks (mkt val)</span></label>
+          <div class="tool-fl-r">
+            <input type="number" id="stocksInvest" placeholder="0" min="0"/>
+            <div class="tool-fl-u"><span class="ar">ريال</span><span class="en">SAR</span></div>
           </div>
         </div>
-        <div class="input-group">
-          <div class="input-label"><span class="ar">قيمة أسهم المضاربة (السوقية)</span><span class="en">Trading stocks (market value)</span></div>
-          <div class="input-row">
-            <input type="number" class="input-field" id="stocksTrade" placeholder="0" min="0"/>
-            <div class="input-currency"><span class="ar">ريال</span><span class="en">SAR</span></div>
+        <div class="tool-fl">
+          <label class="tool-fl-l"><span class="ar">قيمة أسهم المضاربة (السوقية)</span><span class="en">Trading stocks (mkt val)</span></label>
+          <div class="tool-fl-r">
+            <input type="number" id="stocksTrade" placeholder="0" min="0"/>
+            <div class="tool-fl-u"><span class="ar">ريال</span><span class="en">SAR</span></div>
           </div>
         </div>
-        <div class="input-group">
-          <div class="input-label"><span class="ar">صناديق استثمارية</span><span class="en">Investment funds</span></div>
-          <div class="input-row">
-            <input type="number" class="input-field" id="funds" placeholder="0" min="0"/>
-            <div class="input-currency"><span class="ar">ريال</span><span class="en">SAR</span></div>
+        <div class="tool-fl">
+          <label class="tool-fl-l"><span class="ar">صناديق استثمارية</span><span class="en">Investment funds</span></label>
+          <div class="tool-fl-r">
+            <input type="number" id="funds" placeholder="0" min="0"/>
+            <div class="tool-fl-u"><span class="ar">ريال</span><span class="en">SAR</span></div>
           </div>
         </div>
-        <div class="input-group">
-          <div class="input-label"><span class="ar">عوائد إيجارية صافية للحول</span><span class="en">Net rental income (annual)</span></div>
-          <div class="input-row">
-            <input type="number" class="input-field" id="rentalIncome" placeholder="0" min="0"/>
-            <div class="input-currency"><span class="ar">ريال</span><span class="en">SAR</span></div>
+        <div class="tool-fl">
+          <label class="tool-fl-l"><span class="ar">عوائد إيجارية صافية للحول</span><span class="en">Net rental income (annual)</span></label>
+          <div class="tool-fl-r">
+            <input type="number" id="rentalIncome" placeholder="0" min="0"/>
+            <div class="tool-fl-u"><span class="ar">ريال</span><span class="en">SAR</span></div>
           </div>
         </div>
       </div>
@@ -410,34 +485,40 @@ window.dflTrack=function(event,params){
 
     <!-- TRADE SECTION -->
     <div class="calc-section" id="sec-trade">
-      <div class="section-heading"><span class="sec-icon">🛍</span><span class="ar">عروض التجارة والمخزون</span><span class="en">Trade Goods & Inventory</span></div>
-      <div class="grid-2">
-        <div class="input-group">
-          <div class="input-label"><span class="ar">قيمة المخزون التجاري</span><span class="en">Business inventory value</span></div>
-          <div class="input-row">
-            <input type="number" class="input-field" id="inventory" placeholder="0" min="0"/>
-            <div class="input-currency"><span class="ar">ريال</span><span class="en">SAR</span></div>
+      <div class="z-sh">
+        <div class="z-sh-i"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div>
+        <div>
+          <div class="z-sh-t"><span class="ar">عروض التجارة والمخزون</span><span class="en">Trade Goods & Inventory</span></div>
+          <div class="z-sh-s"><span class="ar">المخزون التجاري والديون والنقد المتعلق بالنشاط التجاري</span><span class="en">Business inventory, receivables & cash</span></div>
+        </div>
+      </div>
+      <div class="tool-g2">
+        <div class="tool-fl">
+          <label class="tool-fl-l"><span class="ar">قيمة المخزون التجاري</span><span class="en">Business inventory value</span></label>
+          <div class="tool-fl-r">
+            <input type="number" id="inventory" placeholder="0" min="0"/>
+            <div class="tool-fl-u"><span class="ar">ريال</span><span class="en">SAR</span></div>
           </div>
         </div>
-        <div class="input-group">
-          <div class="input-label"><span class="ar">الديون المستحقة للشركة</span><span class="en">Receivables from customers</span></div>
-          <div class="input-row">
-            <input type="number" class="input-field" id="receivables" placeholder="0" min="0"/>
-            <div class="input-currency"><span class="ar">ريال</span><span class="en">SAR</span></div>
+        <div class="tool-fl">
+          <label class="tool-fl-l"><span class="ar">الديون المستحقة للشركة</span><span class="en">Receivables from customers</span></label>
+          <div class="tool-fl-r">
+            <input type="number" id="receivables" placeholder="0" min="0"/>
+            <div class="tool-fl-u"><span class="ar">ريال</span><span class="en">SAR</span></div>
           </div>
         </div>
-        <div class="input-group">
-          <div class="input-label"><span class="ar">ديون الشركة (مستحقة عليها)</span><span class="en">Business debts owed</span><span class="tip ar">تُطرح</span></div>
-          <div class="input-row">
-            <input type="number" class="input-field" id="bizLiabilities" placeholder="0" min="0"/>
-            <div class="input-currency"><span class="ar">ريال</span><span class="en">SAR</span></div>
+        <div class="tool-fl">
+          <label class="tool-fl-l"><span class="ar">ديون الشركة (مستحقة عليها)</span><span class="en">Business debts owed</span> <span class="z-tip">— <span class="ar">تُطرح</span><span class="en">deducted</span></span></label>
+          <div class="tool-fl-r">
+            <input type="number" id="bizLiabilities" placeholder="0" min="0"/>
+            <div class="tool-fl-u"><span class="ar">ريال</span><span class="en">SAR</span></div>
           </div>
         </div>
-        <div class="input-group">
-          <div class="input-label"><span class="ar">نقد الشركة</span><span class="en">Business cash</span></div>
-          <div class="input-row">
-            <input type="number" class="input-field" id="bizCash" placeholder="0" min="0"/>
-            <div class="input-currency"><span class="ar">ريال</span><span class="en">SAR</span></div>
+        <div class="tool-fl">
+          <label class="tool-fl-l"><span class="ar">نقد الشركة</span><span class="en">Business cash</span></label>
+          <div class="tool-fl-r">
+            <input type="number" id="bizCash" placeholder="0" min="0"/>
+            <div class="tool-fl-u"><span class="ar">ريال</span><span class="en">SAR</span></div>
           </div>
         </div>
       </div>
@@ -445,254 +526,148 @@ window.dflTrack=function(event,params){
 
     <!-- DEBTS SECTION -->
     <div class="calc-section" id="sec-debts">
-      <div class="section-heading"><span class="sec-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></span><span class="ar">الديون المستحقة لك</span><span class="en">Debts Owed To You</span></div>
-      <div style="font-size:.82rem;color:var(--muted);margin-bottom:16px;padding:10px 14px;background:rgba(200,155,60,.08);border-radius:10px">
-        <span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 20v-6h4v6"/><path d="M20 10V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v4"/><rect x="2" y="14" width="20" height="6" rx="2"/></svg> تجب الزكاة في الديون المرجوّة (المتوقع سدادها). الديون المشكوك فيها لا زكاة فيها حتى تُقبض.</span>
-        <span class="en"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 20v-6h4v6"/><path d="M20 10V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v4"/><rect x="2" y="14" width="20" height="6" rx="2"/></svg> Zakat is due on collectable debts. Doubtful debts are exempt until received.</span>
+      <div class="z-sh">
+        <div class="z-sh-i"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></div>
+        <div>
+          <div class="z-sh-t"><span class="ar">الديون المستحقة لك</span><span class="en">Debts Owed To You</span></div>
+          <div class="z-sh-s"><span class="ar">الديون المرجوّة تدخل في وعاء الزكاة. المشكوك فيها معفاة.</span><span class="en">Collectable debts are Zakatable. Doubtful debts exempt.</span></div>
+        </div>
       </div>
-      <div class="grid-2">
-        <div class="input-group">
-          <div class="input-label"><span class="ar">ديون مرجوّة السداد</span><span class="en">Recoverable debts</span></div>
-          <div class="input-row">
-            <input type="number" class="input-field" id="recoverableDebts" placeholder="0" min="0"/>
-            <div class="input-currency"><span class="ar">ريال</span><span class="en">SAR</span></div>
+      <div class="z-callout z-callout-amber">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 20v-6h4v6"/><path d="M20 10V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v4"/><rect x="2" y="14" width="20" height="6" rx="2"/></svg>
+        <span><span class="ar">تجب الزكاة في الديون المرجوّة (المتوقع سدادها). الديون المشكوك فيها لا زكاة فيها حتى تُقبض.</span><span class="en">Zakat is due on collectable debts. Doubtful debts are exempt until received.</span></span>
+      </div>
+      <div class="tool-g2">
+        <div class="tool-fl">
+          <label class="tool-fl-l"><span class="ar">ديون مرجوّة السداد</span><span class="en">Recoverable debts</span></label>
+          <div class="tool-fl-r">
+            <input type="number" id="recoverableDebts" placeholder="0" min="0"/>
+            <div class="tool-fl-u"><span class="ar">ريال</span><span class="en">SAR</span></div>
           </div>
         </div>
-        <div class="input-group">
-          <div class="input-label">
-            <span class="ar">ديون مشكوك في استردادها</span><span class="en">Doubtful debts</span>
-            <span class="tip ar">معفاة</span><span class="tip en">exempt</span>
-          </div>
-          <div class="input-row">
-            <input type="number" class="input-field" id="doubtfulDebts" placeholder="0" min="0"/>
-            <div class="input-currency"><span class="ar">ريال</span><span class="en">SAR</span></div>
+        <div class="tool-fl">
+          <label class="tool-fl-l"><span class="ar">ديون مشكوك في استردادها</span><span class="en">Doubtful debts</span> <span class="z-tip">— <span class="ar">معفاة</span><span class="en">exempt</span></span></label>
+          <div class="tool-fl-r">
+            <input type="number" id="doubtfulDebts" placeholder="0" min="0"/>
+            <div class="tool-fl-u"><span class="ar">ريال</span><span class="en">SAR</span></div>
           </div>
         </div>
       </div>
     </div>
 
-    <button class="calc-btn" onclick="calculateZakat()">
-      <span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.2h7.6l-6 4.8 2.4 7.2-6-4.8-6 4.8 2.4-7.2-6-4.8h7.6z"/></svg> احسب الزكاة الآن</span><span class="en"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.2h7.6l-6 4.8 2.4 7.2-6-4.8-6 4.8 2.4-7.2-6-4.8h7.6z"/></svg> Calculate My Zakat</span>
+    <!-- CALCULATE BUTTON -->
+    <button class="tool-btn" onclick="calculateZakat()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      <span class="ar">احسب الزكاة الآن</span><span class="en">Calculate My Zakat</span>
     </button>
   </div>
 
   <!-- RESULTS -->
-  <div class="results-card" id="resultsCard">
-    <div id="nisabStatusBadge" class="nisab-status status-reached"></div>
-    <div class="results-title ar">إجمالي الزكاة المستحقة</div>
-    <div class="results-title en">Total Zakat Due</div>
-    <div><span class="results-amount" id="zakatAmount">0</span> <span class="results-currency ar">ريال سعودي</span><span class="results-currency en">SAR</span></div>
-    <div class="results-sub" id="zakatSub"></div>
-    <div class="results-grid" id="resultsGrid"></div>
-    <table class="breakdown-table" id="breakdownTable">
+  <div class="tool-rs" id="resultsCard">
+    <div class="z-rs-badge" id="nisabStatusBadge"></div>
+    <div class="z-rs-title"><span class="ar">إجمالي الزكاة المستحقة</span><span class="en">Total Zakat Due</span></div>
+    <div class="z-rs-amount">
+      <span class="z-rs-num" id="zakatAmount">0</span>
+      <span class="z-rs-cur"><span class="ar">ريال سعودي</span><span class="en">SAR</span></span>
+    </div>
+    <div class="z-rs-sub" id="zakatSub"></div>
+    <div class="z-rs-grid" id="resultsGrid"></div>
+    <table class="z-rs-tbl" id="breakdownTable">
       <thead><tr>
-        <th class="ar">فئة المال</th><th class="en">Asset Category</th>
-        <th class="ar">وعاء الزكاة</th><th class="en">Zakat Base</th>
-        <th class="ar">الزكاة</th><th class="en">Zakat</th>
+        <th><span class="ar">فئة المال</span><span class="en">Asset Category</span></th>
+        <th><span class="ar">وعاء الزكاة</span><span class="en">Zakat Base</span></th>
+        <th><span class="ar">الزكاة</span><span class="en">Zakat</span></th>
       </tr></thead>
       <tbody id="breakdownBody"></tbody>
     </table>
-    <div class="share-row">
-      <button class="share-btn" onclick="copyResult()"><span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg> نسخ النتيجة</span><span class="en"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg> Copy Result</span></button>
-      <button class="share-btn" onclick="shareResult()"><span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9H9l-3-9H2"/></svg> مشاركة</span><span class="en"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9H9l-3-9H2"/></svg> Share</span></button>
-      <button class="share-btn" onclick="printResult()"><span class="ar">🖨 طباعة</span><span class="en">🖨 Print</span></button>
+    <div class="z-rs-actions">
+      <button class="z-rs-btn" onclick="copyResult()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        <span class="ar">نسخ النتيجة</span><span class="en">Copy Result</span>
+      </button>
+      <button class="z-rs-btn" onclick="shareResult()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9H9l-3-9H2"/></svg>
+        <span class="ar">مشاركة</span><span class="en">Share</span>
+      </button>
+      <button class="z-rs-btn" onclick="printResult()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        <span class="ar">طباعة</span><span class="en">Print</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- METHOD NOTE -->
+  <div class="z-method">
+    <div class="z-method-i"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
+    <div class="z-method-t">
+      <div class="z-method-tt"><span class="ar">طريقة الحساب</span><span class="en">How this is calculated</span></div>
+      <p><span class="en">Zakat at 2.5% on assets above nisab (85g gold or 595g silver). Nisab value from Saudi Zakat Authority 1447 AH.</span>
+      <span class="ar">الزكاة 2.5% على الأموال فوق النصاب (85 جرام ذهب أو 595 جرام فضة). نصاب هيئة الزكاة السعودية 1447هـ.</span></p>
     </div>
   </div>
 
   <!-- FAQ -->
-  <div class="container" >
-<div class="dfl-method">
-  <div class="dfl-method-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> <span class="en">How this is calculated</span><span class="ar">طريقة الحساب</span></div>
-  <p class="en">Zakat at 2.5% on assets above nisab (85g gold or 595g silver). Nisab value from Saudi Zakat Authority 1447 AH.</p>
-  <p class="ar">الزكاة 2.5% على الأموال فوق النصاب (85 جرام ذهب أو 595 جرام فضة). نصاب هيئة الزكاة السعودية 1447هـ.</p>
-</div>
-</div>
+  <section class="z-faq reveal" aria-label="FAQ">
+    <h2 class="z-faq-h"><span class="ar">أسئلة شائعة حول الزكاة</span><span class="en">Frequently Asked Questions</span></h2>
 
-<section class="faq-section reveal">
-    <h2 class="faq-title ar">أسئلة شائعة حول الزكاة</h2>
-    <h2 class="faq-title en">Frequently Asked Questions</h2>
-    <div class="faq-item" onclick="toggleFaq(this)">
-      <div class="faq-q"><span class="ar">هل تجب الزكاة على الراتب الشهري؟</span><span class="en">Is Zakat due on monthly salary?</span><span class="faq-toggle">+</span></div>
-      <div class="faq-a"><div class="faq-a-inner"><span class="ar">الراتب لا تجب فيه الزكاة مباشرة عند الاستلام، بل ما يبقى منه بعد إنفاقه على الحاجات الأساسية. إذا بقي مع سائر أموالك حولاً كاملاً وبلغ النصاب، وجبت الزكاة.</span><span class="en">Salary is not immediately subject to Zakat. Whatever remains after essential expenses, if it reaches nisab and stays for a full lunar year with your other funds, Zakat becomes due.</span></div></div>
+    <div class="z-faq-i" onclick="toggleFaq(this)">
+      <div class="z-faq-q"><span class="ar">هل تجب الزكاة على الراتب الشهري؟</span><span class="en">Is Zakat due on monthly salary?</span><span class="z-faq-t">+</span></div>
+      <div class="z-faq-a"><div class="z-faq-ai"><span class="ar">الراتب لا تجب فيه الزكاة مباشرة عند الاستلام، بل ما يبقى منه بعد إنفاقه على الحاجات الأساسية. إذا بقي مع سائر أموالك حولاً كاملاً وبلغ النصاب، وجبت الزكاة.</span><span class="en">Salary is not immediately subject to Zakat. Whatever remains after essential expenses, if it reaches nisab and stays for a full lunar year with your other funds, Zakat becomes due.</span></div></div>
     </div>
-    <div class="faq-item" onclick="toggleFaq(this)">
-      <div class="faq-q"><span class="ar">هل تجب الزكاة على العقارات؟</span><span class="en">Is Zakat due on real estate?</span><span class="faq-toggle">+</span></div>
-      <div class="faq-a"><div class="faq-a-inner"><span class="ar">العقار المخصص للسكن أو الاستخدام الشخصي لا زكاة فيه. أما العقار المخصص للتجارة (البيع) فتجب زكاته على قيمته السوقية. العقار المؤجَّر: تجب الزكاة على صافي عوائده الإيجارية.</span><span class="en">Personal-use property has no Zakat. Property held for sale (investment): Zakat on full market value. Rental property: Zakat on net rental income received.</span></div></div>
+
+    <div class="z-faq-i" onclick="toggleFaq(this)">
+      <div class="z-faq-q"><span class="ar">هل تجب الزكاة على العقارات؟</span><span class="en">Is Zakat due on real estate?</span><span class="z-faq-t">+</span></div>
+      <div class="z-faq-a"><div class="z-faq-ai"><span class="ar">العقار المخصص للسكن أو الاستخدام الشخصي لا زكاة فيه. أما العقار المخصص للتجارة (البيع) فتجب زكاته على قيمته السوقية. العقار المؤجَّر: تجب الزكاة على صافي عوائده الإيجارية.</span><span class="en">Personal-use property has no Zakat. Property held for sale (investment): Zakat on full market value. Rental property: Zakat on net rental income received.</span></div></div>
     </div>
-    <div class="faq-item" onclick="toggleFaq(this)">
-      <div class="faq-q"><span class="ar">ما الفرق بين نصاب الذهب والفضة؟</span><span class="en">Gold vs. silver nisab, which to use?</span><span class="faq-toggle">+</span></div>
-      <div class="faq-a"><div class="faq-a-inner"><span class="ar">نصاب الذهب أعلى قيمة (≈19,550 ريال في 2025)، بينما نصاب الفضة أقل (≈1,607 ريال). كثير من العلماء المعاصرين يرجّحون الفضة لأنه يُوجب الزكاة على أكبر عدد ممكن من الناس، وهو أكثر نفعاً للفقراء.</span><span class="en">Gold nisab is higher (≈SAR 19,550 in 2025), silver is lower (≈SAR 1,607). Many contemporary scholars prefer silver nisab as it obligates Zakat for more people, benefiting the poor more widely.</span></div></div>
+
+    <div class="z-faq-i" onclick="toggleFaq(this)">
+      <div class="z-faq-q"><span class="ar">ما الفرق بين نصاب الذهب والفضة؟</span><span class="en">Gold vs. silver nisab, which to use?</span><span class="z-faq-t">+</span></div>
+      <div class="z-faq-a"><div class="z-faq-ai"><span class="ar">نصاب الذهب أعلى قيمة (≈19,550 ريال في 2025)، بينما نصاب الفضة أقل (≈1,607 ريال). كثير من العلماء المعاصرين يرجّحون الفضة لأنه يُوجب الزكاة على أكبر عدد ممكن من الناس، وهو أكثر نفعاً للفقراء.</span><span class="en">Gold nisab is higher (≈SAR 19,550 in 2025), silver is lower (≈SAR 1,607). Many contemporary scholars prefer silver nisab as it obligates Zakat for more people, benefiting the poor more widely.</span></div></div>
     </div>
-    <div class="faq-item" onclick="toggleFaq(this)">
-      <div class="faq-q"><span class="ar">متى يبدأ الحول (السنة الزكوية)؟</span><span class="en">When does the Zakat year (hawl) start?</span><span class="faq-toggle">+</span></div>
-      <div class="faq-a"><div class="faq-a-inner"><span class="ar">يبدأ الحول من اليوم الذي بلغت فيه أموالك النصاب لأول مرة. بعد مرور سنة قمرية كاملة (354 يوماً تقريباً)، تجب عليك الزكاة، ويبدأ حول جديد.</span><span class="en">The hawl begins the day your wealth first reaches nisab. After a full lunar year (~354 days), Zakat becomes due and a new hawl begins.</span></div></div>
+
+    <div class="z-faq-i" onclick="toggleFaq(this)">
+      <div class="z-faq-q"><span class="ar">متى يبدأ الحول (السنة الزكوية)؟</span><span class="en">When does the Zakat year (hawl) start?</span><span class="z-faq-t">+</span></div>
+      <div class="z-faq-a"><div class="z-faq-ai"><span class="ar">يبدأ الحول من اليوم الذي بلغت فيه أموالك النصاب لأول مرة. بعد مرور سنة قمرية كاملة (354 يوماً تقريباً)، تجب عليك الزكاة، ويبدأ حول جديد.</span><span class="en">The hawl begins the day your wealth first reaches nisab. After a full lunar year (~354 days), Zakat becomes due and a new hawl begins.</span></div></div>
     </div>
-    <div class="faq-item" onclick="toggleFaq(this)">
-      <div class="faq-q"><span class="ar">هل يُحسم الدين من وعاء الزكاة؟</span><span class="en">Are debts deductible from Zakat base?</span><span class="faq-toggle">+</span></div>
-      <div class="faq-a"><div class="faq-a-inner"><span class="ar">نعم، الجمهور على جواز خصم الديون الحالّة (المستحقة خلال العام) من وعاء الزكاة. أما الديون الآجلة فلا يُعجَّل خصمها. ينبغي استشارة عالم موثوق للحالات المعقدة.</span><span class="en">Yes, most scholars allow deducting current/outstanding debts from your Zakat base. Long-term debts may not be fully deductible. Consult a trusted scholar for complex situations.</span></div></div>
+
+    <div class="z-faq-i" onclick="toggleFaq(this)">
+      <div class="z-faq-q"><span class="ar">هل يُحسم الدين من وعاء الزكاة؟</span><span class="en">Are debts deductible from Zakat base?</span><span class="z-faq-t">+</span></div>
+      <div class="z-faq-a"><div class="z-faq-ai"><span class="ar">نعم، الجمهور على جواز خصم الديون الحالّة (المستحقة خلال العام) من وعاء الزكاة. أما الديون الآجلة فلا يُعجَّل خصمها. ينبغي استشارة عالم موثوق للحالات المعقدة.</span><span class="en">Yes, most scholars allow deducting current/outstanding debts from your Zakat base. Long-term debts may not be fully deductible. Consult a trusted scholar for complex situations.</span></div></div>
     </div>
   </section>
 
   <!-- RELATED TOOLS -->
-  <div class="related-grid reveal">
-    <a href="/tools/mortgage-calculator.html" class="rel-card">
-      <div class="rel-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 4l9 5.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-5h4v5h4a1 1 0 0 0 1-1v-9"/></svg></div>
-      <div class="rel-name ar">حاسبة التمويل العقاري</div><div class="rel-name en">Mortgage Calculator</div>
-      <div class="rel-desc ar">حساب قسط التمويل والجدول الزمني</div><div class="rel-desc en">Monthly payment & amortization</div>
-      <div class="rel-cta"><span class="ar">احسب ←</span><span class="en">Calculate →</span></div>
-    </a>
-    <a href="/tools/rental-yield-calculator.html" class="rel-card">
-      <div class="rel-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 4l9 5.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-5h4v5h4a1 1 0 0 0 1-1v-9"/></svg></div>
-      <div class="rel-name ar">حاسبة العائد الإيجاري</div><div class="rel-name en">Rental Yield</div>
-      <div class="rel-desc ar">عائد الإيجار الصافي والإجمالي</div><div class="rel-desc en">Gross & net rental ROI</div>
-      <div class="rel-cta"><span class="ar">احسب ←</span><span class="en">Calculate →</span></div>
-    </a>
-    <a href="/tools/hijri-converter.html" class="rel-card">
-      <div class="rel-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
-      <div class="rel-name ar">محوّل التاريخ الهجري</div><div class="rel-name en">Hijri Date Converter</div>
-      <div class="rel-desc ar">تحويل بين التاريخ الهجري والميلادي</div><div class="rel-desc en">Convert Hijri ↔ Gregorian</div>
-      <div class="rel-cta"><span class="ar">حوّل ←</span><span class="en">Convert →</span></div>
-    </a>
-    <a href="../life-tools.html" class="rel-card">
-      <div class="rel-icon">⚙️</div>
-      <div class="rel-name ar">أدوات الحياة</div><div class="rel-name en">Life Tools</div>
-      <div class="rel-desc ar">جميع الأدوات المالية والحياتية</div><div class="rel-desc en">All financial & life utilities</div>
-      <div class="rel-cta"><span class="ar">استكشف ←</span><span class="en">Explore →</span></div>
-    </a>
-  </div>
-
-
-<!-- MOBILE NAV -->
-
-<script>
-// ── PRICES & NISAB ──────────────────────────────
-const GOLD_PRICE_PER_G=230,SILVER_PRICE_PER_G=2.7;
-const GOLD_NISAB_G=85,SILVER_NISAB_G=595;
-const goldNisabSAR=GOLD_NISAB_G*GOLD_PRICE_PER_G;
-const silverNisabSAR=SILVER_NISAB_G*SILVER_PRICE_PER_G;
-let nisabMethod='silver';
-document.getElementById('goldNisabVal').innerHTML='≈ '+goldNisabSAR.toLocaleString()+' <span class="ar">ريال</span><span class="en">SAR</span>';
-document.getElementById('silverNisabVal').innerHTML='≈ '+silverNisabSAR.toLocaleString()+' <span class="ar">ريال</span><span class="en">SAR</span>';
-
-// ── NISAB METHOD ────────────────────────────────
-function setNisab(m){
-  nisabMethod=m;
-  document.getElementById('btnGold').classList.toggle('active',m==='gold');
-  document.getElementById('btnSilver').classList.toggle('active',m==='silver');
-}
-
-// ── SECTION SWITCHING ───────────────────────────
-function switchSection(id,btn){
-  document.querySelectorAll('.calc-section').forEach(s=>s.classList.remove('active'));
-  document.querySelectorAll('.stab').forEach(b=>b.classList.remove('active'));
-  document.getElementById('sec-'+id).classList.add('active');
-  btn.classList.add('active');
-}
-
-// ── CALCULATE ───────────────────────────────────
-function v(id){return parseFloat(document.getElementById(id)?.value)||0}
-
-function calculateZakat(){
-  const nisabSAR=nisabMethod==='gold'?goldNisabSAR:silverNisabSAR;
-
-  // Cash
-  const cashBase=v('bankBalance')+v('cashHome')+v('deposits')-v('liabilities');
-  // Gold
-  const karat=parseFloat(document.getElementById('goldKarat').value)||1;
-  const goldBase=(v('goldGrams')*karat)*GOLD_PRICE_PER_G;
-  const silverBase=v('silverGrams')*SILVER_PRICE_PER_G;
-  // Stocks
-  const stocksBase=(v('stocksInvest')*0.4)+(v('stocksTrade')*1.0)+(v('funds')*0.4)+v('rentalIncome');
-  // Trade
-  const tradeBase=v('inventory')+v('receivables')+v('bizCash')-v('bizLiabilities');
-  // Debts
-  const debtsBase=v('recoverableDebts');
-
-  const totalBase=Math.max(0,cashBase)+Math.max(0,goldBase)+silverBase+Math.max(0,stocksBase)+Math.max(0,tradeBase)+debtsBase;
-  const nisabReached=totalBase>=nisabSAR;
-  const zakatDue=nisabReached?(totalBase*0.025):0;
-
-  // Show results
-  const card=document.getElementById('resultsCard');
-  card.classList.add('show');
-  card.scrollIntoView({behavior:'smooth',block:'nearest'});
-
-  // Count-up animation for Zakat amount
-  (function animateZakat(){
-    const el=document.getElementById('zakatAmount');
-    const target=zakatDue;
-    const dur=800;const start=performance.now();
-    function step(now){
-      const p=Math.min((now-start)/dur,1);
-      const ease=1-Math.pow(1-p,3);
-      const v=target*ease;
-      el.textContent=v.toLocaleString('ar-SA',{maximumFractionDigits:2});
-      if(p<1)requestAnimationFrame(step);
-      else el.textContent=target.toLocaleString('ar-SA',{maximumFractionDigits:2});
-    }
-    requestAnimationFrame(step);
-  })();
-
-  const badge=document.getElementById('nisabStatusBadge');
-  const lang=document.documentElement.dataset.lang;
-  if(nisabReached){
-    badge.textContent='✓ '+(lang==='ar'?'بلغ النصاب، تجب الزكاة':'Nisab reached, Zakat is due');
-    badge.className='nisab-status status-reached';
-  }else{
-    badge.textContent='ℹ️ '+(lang==='ar'?'لم يبلغ النصاب، لا تجب الزكاة بعد':'Nisab not reached, no Zakat due');
-    badge.className='nisab-status status-not';
-  }
-
-  const sub=document.getElementById('zakatSub');
-  sub.textContent=lang==='ar'
-    ?`وعاء الزكاة الإجمالي: ${totalBase.toLocaleString('ar-SA',{maximumFractionDigits:0})} ريال | النصاب المستخدم: ${nisabMethod==='gold'?'ذهب':'فضة'} = ${nisabSAR.toLocaleString()} ريال`
-    :`Total Zakat base: SAR ${totalBase.toLocaleString(undefined,{maximumFractionDigits:0})} | Nisab (${nisabMethod}): SAR ${nisabSAR.toLocaleString()}`;
-
-  // Breakdown
-  const rows=[];
-  if(cashBase>0)rows.push({ar:'نقود وبنوك',en:'Cash & Banks',base:Math.max(0,cashBase),z:Math.max(0,cashBase)*0.025});
-  if(goldBase>0)rows.push({ar:'ذهب',en:'Gold',base:goldBase,z:goldBase*0.025});
-  if(silverBase>0)rows.push({ar:'فضة',en:'Silver',base:silverBase,z:silverBase*0.025});
-  if(stocksBase>0)rows.push({ar:'أسهم',en:'Stocks',base:Math.max(0,stocksBase),z:Math.max(0,stocksBase)*0.025});
-  if(tradeBase>0)rows.push({ar:'عروض تجارة',en:'Trade Goods',base:Math.max(0,tradeBase),z:Math.max(0,tradeBase)*0.025});
-  if(debtsBase>0)rows.push({ar:'ديون مستحقة',en:'Receivables',base:debtsBase,z:debtsBase*0.025});
-
-  const lang2=document.documentElement.dataset.lang;
-  const tbody=document.getElementById('breakdownBody');
-  tbody.innerHTML=rows.map(r=>`<tr><td>${lang2==='ar'?r.ar:r.en}</td><td>${r.base.toLocaleString(undefined,{maximumFractionDigits:0})} ${lang2==='ar'?'ريال':'SAR'}</td><td>${nisabReached?(r.z.toLocaleString(undefined,{maximumFractionDigits:2})+' '+(lang2==='ar'?'ريال':'SAR')):', '}</td></tr>`).join('');
-
-  // Summary grid
-  document.getElementById('resultsGrid').innerHTML=`
-    <div class="res-item"><div class="res-item-label">${lang2==='ar'?'الوعاء الكلي':'Total Base'}</div><div class="res-item-val">${totalBase.toLocaleString(undefined,{maximumFractionDigits:0})}</div></div>
-    <div class="res-item"><div class="res-item-label">${lang2==='ar'?'نسبة الزكاة':'Zakat Rate'}</div><div class="res-item-val">2.5%</div></div>
-    <div class="res-item"><div class="res-item-label">${lang2==='ar'?'الزكاة الشهرية (تقريباً)':'Monthly (approx)'}</div><div class="res-item-val">${(zakatDue/12).toLocaleString(undefined,{maximumFractionDigits:0})}</div></div>`;
-}
-
-// ── SHARE & COPY ────────────────────────────────
-function copyResult(){
-  const lang=document.documentElement.dataset.lang;
-  const amt=document.getElementById('zakatAmount').textContent;
-  navigator.clipboard.writeText(lang==='ar'?`حاسبة الزكاة - DotForLife\nالزكاة المستحقة: ${amt} ريال`:`DotForLife Zakat Calculator\nZakat due: SAR ${amt}`);
-}
-function shareResult(){
-  const lang=document.documentElement.dataset.lang;
-  const amt=document.getElementById('zakatAmount').textContent;
-  if(navigator.share)navigator.share({title:lang==='ar'?'حاسبة الزكاة':'Zakat Calculator',text:lang==='ar'?`زكاتي هذا العام: ${amt} ريال | DotForLife`:`My Zakat this year: SAR ${amt} | DotForLife`,url:location.href});
-}
-function printResult(){window.print()}
-
-// ── FAQ ─────────────────────────────────────────
-function toggleFaq(el){el.classList.toggle('open')}
-
-// ── LANG / THEME ────────────────────────────────
-// (handled by global script in <head>)
-
-// ── SCROLL REVEAL ───────────────────────────────
-const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.08});
-document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
-</script>
-
-<!-- ═══ RELATED TOOLS ═══════════════════════════════════════════════════════ -->
+  <section class="z-rl reveal" aria-label="Related tools">
+    <div class="z-rll"><span class="en">Continue Your Journey</span><span class="ar">أكمل رحلتك</span></div>
+    <h2 class="z-rlh"><span class="en">Related Tools & Guides</span><span class="ar">أدوات ودلائل ذات صلة</span></h2>
+    <p class="z-rlp"><span class="en">Tools and reading you might find useful next</span><span class="ar">أدوات وقراءات قد تفيدك في خطوتك التالية</span></p>
+    <div class="z-rlg">
+      <a href="/tools/mortgage-calculator.html" class="z-rc">
+        <div class="z-rc-i"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 4l9 5.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-5h4v5h4a1 1 0 0 0 1-1v-9"/></svg></div>
+        <div class="z-rc-n"><span class="ar">حاسبة التمويل العقاري</span><span class="en">Mortgage Calculator</span></div>
+        <div class="z-rc-d"><span class="ar">قسط التمويل والجدول الزمني</span><span class="en">Monthly payment & amortization</span></div>
+        <div class="z-rc-c"><span class="ar">احسب ←</span><span class="en">Calculate →</span></div>
+      </a>
+      <a href="/tools/rental-yield-calculator.html" class="z-rc">
+        <div class="z-rc-i"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 4l9 5.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-5h4v5h4a1 1 0 0 0 1-1v-9"/></svg></div>
+        <div class="z-rc-n"><span class="ar">حاسبة العائد الإيجاري</span><span class="en">Rental Yield Calculator</span></div>
+        <div class="z-rc-d"><span class="ar">العائد الإيجاري الصافي والإجمالي</span><span class="en">Gross & net rental ROI</span></div>
+        <div class="z-rc-c"><span class="ar">احسب ←</span><span class="en">Calculate →</span></div>
+      </a>
+      <a href="/tools/hijri-converter.html" class="z-rc">
+        <div class="z-rc-i"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+        <div class="z-rc-n"><span class="ar">محوّل التاريخ الهجري</span><span class="en">Hijri Date Converter</span></div>
+        <div class="z-rc-d"><span class="ar">تحويل بين التاريخ الهجري والميلادي</span><span class="en">Hijri ↔ Gregorian conversion</span></div>
+        <div class="z-rc-c"><span class="ar">حوّل ←</span><span class="en">Convert →</span></div>
+      </a>
+      <a href="../life-tools.html" class="z-rc">
+        <div class="z-rc-i"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2v20"/><path d="M2 12h20"/></svg></div>
+        <div class="z-rc-n"><span class="ar">أدوات الحياة</span><span class="en">Life Tools</span></div>
+        <div class="z-rc-d"><span class="ar">جميع الأدوات المالية والحياتية</span><span class="en">All financial & life utilities</span></div>
+        <div class="z-rc-c"><span class="ar">استكشف ←</span><span class="en">Explore →</span></div>
+      </a>
+    </div>
+  </section>
 
 </main>
 <section class="dfl-related" aria-label="Related tools and guides">
