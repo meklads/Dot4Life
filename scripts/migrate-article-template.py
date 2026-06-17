@@ -428,23 +428,8 @@ def generate_sidebar(toc_html, meta_record, lang, dir_, filename):
     tools_html += '</div>'
     parts.append(tools_html)
 
-    # 5. Friday message mini
-    friday_sub_en = '📬 Friday Reminder'
-    friday_sub_ar = '📬 رسالة الجمعة'
-    friday_desc_en = 'Get weekly family tips every Friday.'
-    friday_desc_ar = 'احصل على نصائح أسبوعية للأسرة كل جمعة.'
-    parts.append(f'''<div class="sidebar-module sidebar-friday">
-  <h4><span class="en">{friday_sub_en}</span><span class="ar">{friday_sub_ar}</span></h4>
-  <p><span class="en">{friday_desc_en}</span><span class="ar">{friday_desc_ar}</span></p>
-  <div class="friday-input-wrap">
-    <input type="email" placeholder="your@email.com" aria-label="Email">
-    <button onclick="alert('🚧 Coming soon — signup integration.')"><span class="en">Join</span><span class="ar">اشترك</span></button>
-  </div>
-</div>''')
-
-    # 6. Ad slot (placeholder)
-    parts.append('<div class="sidebar-module sidebar-ad"><span class="en">📢 Ad</span><span class="ar">📢 إعلان</span></div>')
-
+    # Contextual sidebar = Team card → TOC → Related → Tools ONLY.
+    # (Newsletter + Ad intentionally removed per approved spec — no duplication.)
     return '\n\n'.join(parts)
 
 
@@ -470,7 +455,7 @@ def generate_article_end(lang, meta_record, filename, canonical_url):
     <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
     <span>Facebook</span>
   </a>
-  <button class="share-btn copy-link" onclick="navigator.clipboard.writeText('{canonical_url}').then(()=>{{this.innerHTML='<span class=\"en\">✓ Copied!</span><span class=\"ar\">✓ نُسخ!</span>'}})" aria-label="Copy link">
+  <button class="share-btn copy-link" onclick="navigator.clipboard.writeText(location.href);var s=this.querySelectorAll('span');if(s.length>1){{s[0].textContent='✓ Copied';s[1].textContent='✓ نُسخ'}}" aria-label="Copy link">
     <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
     <span class="en">Copy</span><span class="ar">نسخ</span>
   </button>
@@ -618,6 +603,40 @@ def build_banner_html(title, og_image, lang, dir_, meta_record, article_body='')
 </section>'''
 
 
+# ── Structural safety gate ────────────────────────────────────
+def div_balanced(html_fragment):
+    """Return (ok, opens, closes) for <div>/</div> balance in a fragment."""
+    opens = len(re.findall(r'<div(?:\s[^>]*)?>', html_fragment, re.IGNORECASE))
+    closes = len(re.findall(r'</div\s*>', html_fragment, re.IGNORECASE))
+    return opens == closes, opens, closes
+
+def structure_valid(full_page):
+    """Browser-grade check: <aside class="article-sidebar"> MUST be a direct
+    child of <div class="article-layout">. Falls back to div-balance when
+    html5lib is unavailable. Returns (ok, reason)."""
+    try:
+        import html5lib
+    except ImportError:
+        ok, o, c = div_balanced(full_page)
+        return ok, f"div-balance {o}/{c} (install html5lib for full check)"
+    doc = html5lib.parse(full_page, treebuilder="dom")
+    asides = []
+    def walk(n):
+        for ch in n.childNodes:
+            if ch.nodeType == 1:
+                if 'article-sidebar' in (ch.getAttribute('class') or ''):
+                    asides.append(ch)
+                walk(ch)
+    walk(doc)
+    if not asides:
+        return False, "no .article-sidebar found"
+    p = asides[0].parentNode
+    if 'article-layout' in (p.getAttribute('class') or ''):
+        return True, "ok"
+    pc = (p.getAttribute('class') or '').split(' ')[0]
+    return False, f"sidebar nested under <{p.tagName.lower()} .{pc}> (source body likely has unbalanced tags)"
+
+
 # ── MAIN: build_new_page ──────────────────────────────────────
 def build_new_page(filename, content):
     """Transform an existing article into the complete unified template."""
@@ -632,6 +651,13 @@ def build_new_page(filename, content):
 
     if not article_body or len(article_body) < 100:
         print(f"  ⚠️  Could not extract sufficient body content ({len(article_body)} chars)")
+        return None
+
+    # Safety: refuse to wrap a body whose <div> tags are unbalanced —
+    # that is exactly what pushes the sidebar below the article.
+    bal, o, c = div_balanced(article_body)
+    if not bal:
+        print(f"  ⛔ {filename}: source body has UNBALANCED <div> ({o} open / {c} close) — skipped. Fix the article content first.")
         return None
 
     meta_record = get_meta_from_json(filename, lang)
@@ -803,6 +829,11 @@ def main():
 
                 result = build_new_page(fname, content)
                 if result:
+                    ok, why = structure_valid(result)
+                    if not ok:
+                        errors += 1
+                        print(f"  ❌ {fname} — STRUCTURE CHECK FAILED: {why} (NOT written)")
+                        continue
                     write_file(fpath, result)
                     verify = read_file(fpath)
                     if has_template(verify) and len(verify) > 500:
