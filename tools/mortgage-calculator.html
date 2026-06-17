@@ -149,9 +149,9 @@
 }
 </script>
 
-<link rel="stylesheet" href="/styles/global.css?v=20260617e"/>
-	<link rel="stylesheet" href="/styles/tools-shared.css?v=20260617e">
-	<link rel="stylesheet" href="/styles/pages/tools_mortgage-calculator.css?v=20260617b">
+<link rel="stylesheet" href="/styles/global.css?v=20260618f"/>
+	<link rel="stylesheet" href="/styles/tools-shared.css?v=20260618f">
+	<link rel="stylesheet" href="/styles/pages/tools_mortgage-calculator.css?v=20260618f">
 <!-- DFL Analytics v1 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3G1XPV4F0G"></script>
 <script>
@@ -321,391 +321,370 @@ window.dflTrack=function(event,params){
   
   </div><main class="tool-mn">
 
-  <!-- MAIN CALCULATOR -->
-  <div>
-
-    <!-- CALCULATOR CARD -->
-    <div class="tool-cd tool-rv tool-rv-1">
-      <div class="calc-header">
-        <h2><span class="en"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 12h.01"/><path d="M16 12h.01"/><path d="M12 12h.01"/></svg> Mortgage Details</span><span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 12h.01"/><path d="M16 12h.01"/><path d="M12 12h.01"/></svg> تفاصيل التمويل</span></h2>
-        <p><span class="en">Enter your loan details to calculate payments and amortization</span><span class="ar">أدخل تفاصيل القرض لحساب الأقساط وجدول الاستهلاك</span></p>
-
-    <div class="tool-trust-bar">
-      <div class="ttb-item"><span class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span> <span class="en">Updated May 2026</span><span class="ar">تحديث May 2026</span></div>
-      <div class="ttb-item"><span class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span> <span class="en">PMT Formula</span><span class="ar">PMT Formula</span></div>
-      <div class="ttb-item"><span class="icon">🔒</span> <span class="en">No data stored</span><span class="ar">لا تُخزَّن بيانات</span></div>
-      <div class="ttb-item"><span class="ttb-badge">SAMA</span></div>
-    </div>
+  <!-- MO-GRID: Info Cards -->
+  <div class="mo-grid tool-rv tool-rv-1">
+    <div class="mo-gc">
+      <div class="mo-gc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+      <div class="mo-gc-text">
+        <div class="mo-gc-label"><span class="en">Max Loan</span><span class="ar">الحد الأقصى</span></div>
+        <div class="mo-gc-value">SAR 4M</div>
       </div>
-      <div class="calc-body">
+    </div>
+    <div class="mo-gc">
+      <div class="mo-gc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v12"/><path d="M8 10h8"/></svg></div>
+      <div class="mo-gc-text">
+        <div class="mo-gc-label"><span class="en">Max Term</span><span class="ar">أقصى مدة</span></div>
+        <div class="mo-gc-value"><span class="en">30 Years</span><span class="ar">30 سنة</span></div>
+      </div>
+    </div>
+    <div class="mo-gc">
+      <div class="mo-gc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 12h.01"/><path d="M16 12h.01"/><path d="M12 12h.01"/></svg></div>
+      <div class="mo-gc-text">
+        <div class="mo-gc-label"><span class="en">Bank Rates</span><span class="ar">أسعار البنوك</span></div>
+        <div class="mo-gc-value">3.75% – 5.0%</div>
+      </div>
+    </div>
+    <div class="mo-gc">
+      <div class="mo-gc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+      <div class="mo-gc-text">
+        <div class="mo-gc-label"><span class="en">REDF Support</span><span class="ar">دعم الصندوق</span></div>
+        <div class="mo-gc-value">SAR 500K</div>
+      </div>
+    </div>
+  </div>
 
-        <!-- PROPERTY DETAILS -->
-        <div class="calc-section-title"><span class="en">Property & Loan</span><span class="ar">العقار والقرض</span></div>
-        <div class="input-grid">
-          <div class="input-group">
-            <label><span class="en">Property Price (SAR)</span><span class="ar">سعر العقار (ريال)</span></label>
-            <div class="input-wrap">
-              <input type="number" id="property-price" value="750000" min="0" oninput="syncSlider('property-price','slider-price');syncDownPayment()">
-              <span class="input-unit">SAR</span>
-            </div>
-            <div class="range-wrap">
-              <input type="range" id="slider-price" min="100000" max="5000000" step="50000" value="750000" oninput="document.getElementById('property-price').value=this.value;syncDownPayment()">
-              <div class="range-labels"><span>100K</span><span>5M</span></div>
-            </div>
+  <!-- MC-CARD: Calculator Card -->
+  <div class="mc-card tool-cd tool-rv tool-rv-2">
+    <div class="mc-hdr">
+      <h2>
+        <span class="en"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 12h.01"/><path d="M16 12h.01"/><path d="M12 12h.01"/></svg> Mortgage Details</span>
+        <span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 12h.01"/><path d="M16 12h.01"/><path d="M12 12h.01"/></svg> تفاصيل التمويل</span>
+      </h2>
+      <p><span class="en">Enter your loan details to calculate payments and amortization</span><span class="ar">أدخل تفاصيل القرض لحساب الأقساط وجدول الاستهلاك</span></p>
+    </div>
+    <div class="mc-body">
+
+      <!-- Form Grid -->
+      <div class="mo-g2">
+        <div class="mo-fl">
+          <label class="tool-fl-l" for="property-price"><span class="en">Property Price (SAR)</span><span class="ar">سعر العقار (ريال)</span></label>
+          <div class="tool-fl-r">
+            <input type="number" id="property-price" value="750000" min="0" oninput="syncSlider('property-price','slider-price');syncDownPayment()">
+            <span class="tool-fl-u">SAR</span>
           </div>
-          <div class="input-group">
-            <label><span class="en">Down Payment (%)</span><span class="ar">الدفعة الأولى (%)</span></label>
-            <div class="input-wrap">
-              <input type="number" id="down-pct" value="20" min="10" max="90" oninput="syncSlider('down-pct','slider-down');syncDownPayment()">
-              <span class="input-unit">%</span>
-            </div>
-            <div class="range-wrap">
-              <input type="range" id="slider-down" min="10" max="90" step="1" value="20" oninput="document.getElementById('down-pct').value=this.value;syncDownPayment()">
-              <div class="range-labels"><span>10%</span><span>90%</span></div>
-            </div>
-          </div>
-          <div class="input-group">
-            <label><span class="en">Loan Amount (SAR)</span><span class="ar">مبلغ القرض (ريال)</span></label>
-            <div class="input-wrap">
-              <input type="number" id="loan-amount" value="600000" min="0" oninput="syncSlider('loan-amount','slider-loan')">
-              <span class="input-unit">SAR</span>
-            </div>
-            <div class="range-wrap">
-              <input type="range" id="slider-loan" min="50000" max="4000000" step="10000" value="600000" oninput="document.getElementById('loan-amount').value=this.value">
-              <div class="range-labels"><span>50K</span><span>4M</span></div>
-            </div>
-          </div>
-          <div class="input-group">
-            <label><span class="en">Annual Interest Rate (%)</span><span class="ar">نسبة الفائدة السنوية (%)</span></label>
-            <div class="input-wrap">
-              <input type="number" id="interest-rate" value="4.5" min="0.1" max="20" step="0.1" oninput="syncSlider('interest-rate','slider-rate')">
-              <span class="input-unit">%</span>
-            </div>
-            <div class="range-wrap">
-              <input type="range" id="slider-rate" min="0.5" max="12" step="0.1" value="4.5" oninput="document.getElementById('interest-rate').value=this.value">
-              <div class="range-labels"><span>0.5%</span><span>12%</span></div>
-            </div>
-          </div>
-          <div class="input-group full">
-            <label><span class="en">Loan Term (Years)</span><span class="ar">مدة القرض (سنوات)</span></label>
-            <div class="input-wrap">
-              <input type="number" id="loan-term" value="25" min="1" max="30" oninput="syncSlider('loan-term','slider-term')">
-              <span class="input-unit"><span class="en">yrs</span><span class="ar">سنة</span></span>
-            </div>
-            <div class="range-wrap">
-              <input type="range" id="slider-term" min="1" max="30" step="1" value="25" oninput="document.getElementById('loan-term').value=this.value">
-              <div class="range-labels"><span>1 <span class="en">yr</span><span class="ar">سنة</span></span><span>30 <span class="en">yrs</span><span class="ar">سنة</span></span></div>
-            </div>
+          <div class="mo-slider-wrap">
+            <input type="range" id="slider-price" min="100000" max="5000000" step="50000" value="750000" oninput="document.getElementById('property-price').value=this.value;syncDownPayment()">
+            <div class="mo-slider-labels"><span>100K</span><span>5M</span></div>
           </div>
         </div>
-
-        <!-- BANK PRESETS -->
-        <div class="bank-presets">
-          <div class="preset-label"><span class="en"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 12h.01"/><path d="M16 12h.01"/><path d="M12 12h.01"/></svg> Saudi Bank Rate Presets</span><span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 12h.01"/><path d="M16 12h.01"/><path d="M12 12h.01"/></svg> أسعار البنوك السعودية</span></div>
-          <div class="preset-chips">
-            <button class="preset-chip" onclick="setRate(3.75,'Al Rajhi')">Al Rajhi 3.75%</button>
-            <button class="preset-chip" onclick="setRate(3.99,'SNB')">SNB 3.99%</button>
-            <button class="preset-chip" onclick="setRate(4.25,'Riyad Bank')">Riyad 4.25%</button>
-            <button class="preset-chip" onclick="setRate(4.5,'SAB')">SAB 4.5%</button>
-            <button class="preset-chip" onclick="setRate(4.75,'SABB')">SABB 4.75%</button>
-            <button class="preset-chip" onclick="setRate(5.0,'Alinma')">Alinma 5.0%</button>
+        <div class="mo-fl">
+          <label class="tool-fl-l" for="down-pct"><span class="en">Down Payment (%)</span><span class="ar">الدفعة الأولى (%)</span></label>
+          <div class="tool-fl-r">
+            <input type="number" id="down-pct" value="20" min="10" max="90" oninput="syncSlider('down-pct','slider-down');syncDownPayment()">
+            <span class="tool-fl-u">%</span>
+          </div>
+          <div class="mo-slider-wrap">
+            <input type="range" id="slider-down" min="10" max="90" step="1" value="20" oninput="document.getElementById('down-pct').value=this.value;syncDownPayment()">
+            <div class="mo-slider-labels"><span>10%</span><span>90%</span></div>
           </div>
         </div>
-
-        <!-- REDF TOGGLE -->
-        <div class="redf-toggle">
-          <div class="redf-header">
-            <div class="redf-label">
-              <span class="en">🟢 REDF Support (صندوق التنمية العقاري)</span>
-              <span class="ar">🟢 دعم صندوق التنمية العقاري</span>
-              <small><span class="en">Interest-free loan up to SAR 500,000 for eligible Saudi nationals</span><span class="ar">قرض بدون فائدة حتى 500,000 ريال للمواطنين المؤهلين</span></small>
-            </div>
-            <label class="toggle-switch">
-              <input type="checkbox" id="redf-toggle" onchange="toggleREDF()">
-              <span class="toggle-slider"></span>
-            </label>
+        <div class="mo-fl">
+          <label class="tool-fl-l" for="loan-amount"><span class="en">Loan Amount (SAR)</span><span class="ar">مبلغ القرض (ريال)</span></label>
+          <div class="tool-fl-r">
+            <input type="number" id="loan-amount" value="600000" min="0" oninput="syncSlider('loan-amount','slider-loan')">
+            <span class="tool-fl-u">SAR</span>
           </div>
-          <div class="redf-details" id="redf-details">
-            <div class="input-group">
-              <label><span class="en">REDF Amount (SAR)</span><span class="ar">مبلغ الصندوق (ريال)</span></label>
-              <div class="input-wrap">
+          <div class="mo-slider-wrap">
+            <input type="range" id="slider-loan" min="50000" max="4000000" step="10000" value="600000" oninput="document.getElementById('loan-amount').value=this.value">
+            <div class="mo-slider-labels"><span>50K</span><span>4M</span></div>
+          </div>
+        </div>
+        <div class="mo-fl">
+          <label class="tool-fl-l" for="interest-rate"><span class="en">Annual Interest Rate (%)</span><span class="ar">نسبة الفائدة السنوية (%)</span></label>
+          <div class="tool-fl-r">
+            <input type="number" id="interest-rate" value="4.5" min="0.1" max="20" step="0.1" oninput="syncSlider('interest-rate','slider-rate')">
+            <span class="tool-fl-u">%</span>
+          </div>
+          <div class="mo-slider-wrap">
+            <input type="range" id="slider-rate" min="0.5" max="12" step="0.1" value="4.5" oninput="document.getElementById('interest-rate').value=this.value">
+            <div class="mo-slider-labels"><span>0.5%</span><span>12%</span></div>
+          </div>
+        </div>
+        <div class="mo-fl mo-fl-full">
+          <label class="tool-fl-l" for="loan-term"><span class="en">Loan Term (Years)</span><span class="ar">مدة القرض (سنوات)</span></label>
+          <div class="tool-fl-r">
+            <input type="number" id="loan-term" value="25" min="1" max="30" oninput="syncSlider('loan-term','slider-term')">
+            <span class="tool-fl-u"><span class="en">yrs</span><span class="ar">سنة</span></span>
+          </div>
+          <div class="mo-slider-wrap">
+            <input type="range" id="slider-term" min="1" max="30" step="1" value="25" oninput="document.getElementById('loan-term').value=this.value">
+            <div class="mo-slider-labels"><span>1 <span class="en">yr</span><span class="ar">سنة</span></span><span>30 <span class="en">yrs</span><span class="ar">سنة</span></span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bank Presets -->
+      <div class="mb-section">
+        <div class="mb-label">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 12h.01"/><path d="M16 12h.01"/><path d="M12 12h.01"/></svg>
+          <span class="en">Saudi Bank Rate Presets</span><span class="ar">أسعار البنوك السعودية</span>
+        </div>
+        <div class="mb-grid">
+          <button class="mb-chip" onclick="setRate(3.75,'Al Rajhi')">Al Rajhi <span class="mb-rate">3.75%</span></button>
+          <button class="mb-chip" onclick="setRate(3.99,'SNB')">SNB <span class="mb-rate">3.99%</span></button>
+          <button class="mb-chip" onclick="setRate(4.25,'Riyad Bank')">Riyad <span class="mb-rate">4.25%</span></button>
+          <button class="mb-chip" onclick="setRate(4.5,'SAB')">SAB <span class="mb-rate">4.5%</span></button>
+          <button class="mb-chip" onclick="setRate(4.75,'SABB')">SABB <span class="mb-rate">4.75%</span></button>
+          <button class="mb-chip" onclick="setRate(5.0,'Alinma')">Alinma <span class="mb-rate">5.0%</span></button>
+        </div>
+      </div>
+
+      <!-- REDF Toggle -->
+      <div class="mt-section">
+        <div class="mt-hdr">
+          <div class="mt-info">
+            <div class="mt-title">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <span class="en">REDF Support (صندوق التنمية العقاري)</span>
+              <span class="ar">دعم صندوق التنمية العقاري</span>
+            </div>
+            <div class="mt-desc">
+              <span class="en">Interest-free loan up to SAR 500,000 for eligible Saudi nationals</span>
+              <span class="ar">قرض بدون فائدة حتى 500,000 ريال للمواطنين المؤهلين</span>
+            </div>
+          </div>
+          <label class="mt-switch">
+            <input type="checkbox" id="redf-toggle" onchange="toggleREDF()">
+            <span class="mt-slider"></span>
+          </label>
+        </div>
+        <div class="mt-details" id="redf-details">
+          <div class="mt-g2">
+            <div class="mo-fl">
+              <label class="tool-fl-l" for="redf-amount"><span class="en">REDF Amount (SAR)</span><span class="ar">مبلغ الصندوق (ريال)</span></label>
+              <div class="tool-fl-r">
                 <input type="number" id="redf-amount" value="300000" min="0" max="500000">
-                <span class="input-unit">SAR</span>
+                <span class="tool-fl-u">SAR</span>
               </div>
             </div>
-            <div class="input-group">
-              <label><span class="en">REDF Term (Years)</span><span class="ar">مدة الصندوق (سنوات)</span></label>
-              <div class="input-wrap">
+            <div class="mo-fl">
+              <label class="tool-fl-l" for="redf-term"><span class="en">REDF Term (Years)</span><span class="ar">مدة الصندوق (سنوات)</span></label>
+              <div class="tool-fl-r">
                 <input type="number" id="redf-term" value="25" min="1" max="25">
-                <span class="input-unit"><span class="en">yrs</span><span class="ar">سنة</span></span>
+                <span class="tool-fl-u"><span class="en">yrs</span><span class="ar">سنة</span></span>
               </div>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- CALCULATE BUTTON -->
-        <button class="calc-btn" onclick="calculateMortgage()">
-          <span class="en"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> Calculate Mortgage</span>
-          <span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> احسب التمويل</span>
+      <!-- Calculate Button -->
+      <button class="tool-btn" onclick="calculateMortgage()">
+        <span class="en"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> Calculate Mortgage</span>
+        <span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> احسب التمويل</span>
+      </button>
+
+    </div>
+  </div>
+
+  <!-- MR-CARD: Results -->
+  <div class="mr-card" id="results-section">
+    <div class="mr-hdr">
+      <h3>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        <span class="en">Calculation Results</span><span class="ar">نتائج الحساب</span>
+      </h3>
+      <span class="mr-badge"><span class="en">✓ Calculated</span><span class="ar">✓ تم الحساب</span></span>
+    </div>
+    <div class="mr-grid">
+      <div class="mr-metric mr-primary">
+        <div class="mr-val" id="r-monthly">0</div>
+        <div class="mr-lbl"><span class="en">Monthly Payment (SAR)</span><span class="ar">القسط الشهري (ريال)</span></div>
+      </div>
+      <div class="mr-metric">
+        <div class="mr-val" id="r-total">0</div>
+        <div class="mr-lbl"><span class="en">Total Amount Paid</span><span class="ar">إجمالي المبالغ المدفوعة</span></div>
+      </div>
+      <div class="mr-metric">
+        <div class="mr-val" id="r-interest">0</div>
+        <div class="mr-lbl"><span class="en">Total Interest Paid</span><span class="ar">إجمالي الفوائد المدفوعة</span></div>
+      </div>
+      <div class="mr-metric">
+        <div class="mr-val" id="r-redf-saving" style="color:var(--mo-teal)">N/A</div>
+        <div class="mr-lbl"><span class="en">REDF Monthly Payment</span><span class="ar">قسط الصندوق الشهري</span></div>
+      </div>
+    </div>
+
+    <!-- Breakdown Bar -->
+    <div class="mr-bar">
+      <div class="mr-bar-hdr">
+        <span class="en">Loan Breakdown</span><span class="ar">تفصيل القرض</span>
+        <span id="interest-pct-label">0% <span class="en">interest</span><span class="ar">فائدة</span></span>
+      </div>
+      <div class="mr-bar-track">
+        <div class="mr-bar-principal" id="bar-principal" style="width:60%"></div>
+        <div class="mr-bar-interest" id="bar-interest" style="width:40%"></div>
+      </div>
+      <div class="mr-bar-legend">
+        <span class="mr-legend-item"><span class="mr-dot mr-dot-p"></span><span class="en">Principal</span><span class="ar">أصل القرض</span></span>
+        <span class="mr-legend-item"><span class="mr-dot mr-dot-i"></span><span class="en">Interest</span><span class="ar">الفائدة</span></span>
+        <span class="mr-legend-item" id="redf-legend" style="display:none"><span class="mr-dot mr-dot-r"></span>REDF</span>
+      </div>
+    </div>
+
+    <!-- Amortization -->
+    <div class="mr-amort">
+      <button class="mr-amort-btn" onclick="toggleAmort()" id="amort-toggle-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+        <span class="en">Show Full Amortization Schedule</span>
+        <span class="ar">عرض جدول الاستهلاك الكامل</span>
+        <span class="mr-amort-arrow">▼</span>
+      </button>
+      <div class="mr-amort-content" id="amort-content">
+        <div class="mr-table-wrap">
+          <table class="mr-table">
+            <thead>
+              <tr>
+                <th><span class="en">Year</span><span class="ar">السنة</span></th>
+                <th><span class="en">Opening Balance</span><span class="ar">الرصيد الافتتاحي</span></th>
+                <th><span class="en">Annual Payment</span><span class="ar">الدفعة السنوية</span></th>
+                <th><span class="en">Principal</span><span class="ar">أصل القرض</span></th>
+                <th><span class="en">Interest</span><span class="ar">الفائدة</span></th>
+                <th><span class="en">Closing Balance</span><span class="ar">الرصيد الختامي</span></th>
+              </tr>
+            </thead>
+            <tbody id="amort-tbody"></tbody>
+          </table>
+        </div>
+        <button class="mr-show-more" id="show-more-btn" onclick="showAllRows()" style="display:none">
+          <span class="en">Show All Years</span><span class="ar">عرض جميع السنوات</span> ▼
         </button>
-
-        <!-- RESULTS -->
-        <div class="results-section" id="results-section">
-          <div class="results-header">
-            <div class="results-title"><span class="en"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> Calculation Results</span><span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> نتائج الحساب</span></div>
-            <div class="results-tag"><span class="en">✓ Calculated</span><span class="ar">✓ تم الحساب</span></div>
-          </div>
-
-          <div class="key-metrics">
-            <div class="metric-card primary">
-              <div class="metric-value" id="r-monthly">, </div>
-              <div class="metric-label"><span class="en">Monthly Payment (SAR)</span><span class="ar">القسط الشهري (ريال)</span></div>
-            </div>
-            <div class="metric-card">
-              <div class="metric-value" id="r-total">, </div>
-              <div class="metric-label"><span class="en">Total Amount Paid</span><span class="ar">إجمالي المبالغ المدفوعة</span></div>
-            </div>
-            <div class="metric-card">
-              <div class="metric-value" id="r-interest">, </div>
-              <div class="metric-label"><span class="en">Total Interest Paid</span><span class="ar">إجمالي الفوائد المدفوعة</span></div>
-            </div>
-            <div class="metric-card">
-              <div class="metric-value" id="r-redf-saving" style="color:var(--teal)">, </div>
-              <div class="metric-label"><span class="en">REDF Monthly Payment</span><span class="ar">قسط الصندوق الشهري</span></div>
-            </div>
-          </div>
-
-          <!-- BREAKDOWN BAR -->
-          <div class="breakdown-bar">
-            <div class="bar-label">
-              <span><span class="en">Loan Breakdown</span><span class="ar">تفصيل القرض</span></span>
-              <span id="interest-pct-label">, </span>
-            </div>
-            <div class="bar-track">
-              <div class="bar-principal" id="bar-principal" style="width:60%"></div>
-              <div class="bar-interest" id="bar-interest" style="width:40%"></div>
-            </div>
-            <div class="bar-legend">
-              <div class="legend-item"><div class="legend-dot dot-principal"></div><span><span class="en">Principal</span><span class="ar">أصل القرض</span></span></div>
-              <div class="legend-item"><div class="legend-dot dot-interest"></div><span><span class="en">Interest</span><span class="ar">الفائدة</span></span></div>
-              <div class="legend-item" id="redf-legend" style="display:none"><div class="legend-dot dot-redf"></div><span>REDF</span></div>
-            </div>
-          </div>
-
-          <!-- AMORTIZATION -->
-          <div class="amort-section">
-            <button class="amort-toggle" onclick="toggleAmort()" id="amort-toggle-btn">
-              <span class="en"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg> Show Full Amortization Schedule</span>
-              <span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg> عرض جدول الاستهلاك الكامل</span>
-              <span>▼</span>
-            </button>
-            <div class="amort-content" id="amort-content">
-              <div class="table-wrap">
-                <table class="amort-table">
-                  <thead>
-                    <tr>
-                      <th><span class="en">Year</span><span class="ar">السنة</span></th>
-                      <th><span class="en">Opening Balance</span><span class="ar">الرصيد الافتتاحي</span></th>
-                      <th><span class="en">Annual Payment</span><span class="ar">الدفعة السنوية</span></th>
-                      <th><span class="en">Principal</span><span class="ar">أصل القرض</span></th>
-                      <th><span class="en">Interest</span><span class="ar">الفائدة</span></th>
-                      <th><span class="en">Closing Balance</span><span class="ar">الرصيد الختامي</span></th>
-                    </tr>
-                  </thead>
-                  <tbody id="amort-tbody"></tbody>
-                </table>
-              </div>
-              <button class="show-more-btn" id="show-more-btn" onclick="showAllRows()" style="display:none">
-                <span class="en">Show All Years</span><span class="ar">عرض جميع السنوات</span> ▼
-              </button>
-            </div>
-          </div>
-        </div>
-
-      </div><!-- /calc-body -->
-    </div><!-- /calc-card -->
-
-    <!-- AD ZONE 1 -->
-    <div class="ad-zone reveal" style="margin-top:24px">
-      <span class="ad-label">ADVERTISEMENT</span>
+      </div>
     </div>
+  </div>
 
-    <!-- FAQ -->
-    <div style="margin-top:40px" class="reveal">
-      <div class="section-label"><span class="en">Common Questions</span><span class="ar">أسئلة شائعة</span></div>
-      <div class="section-h2"><span class="en">Frequently Asked Questions</span><span class="ar">الأسئلة المتكررة</span></div>
-      <div class="faq-list">
-        <div class="faq-item">
-          <div class="faq-q" onclick="toggleFAQ(this)">
-            <span><span class="en">How is the monthly mortgage payment calculated?</span><span class="ar">كيف يُحسب القسط الشهري للتمويل؟</span></span>
-            <span class="faq-arrow">▼</span>
-          </div>
-          <div class="faq-a">
-            <span class="en">Monthly payment = P × [r(1+r)^n] / [(1+r)^n - 1], where P is the principal loan amount, r is the monthly interest rate (annual rate ÷ 12), and n is total months. For example, a SAR 600,000 loan at 4.5% for 25 years gives a monthly payment of approximately SAR 3,334.</span>
-            <span class="ar">القسط الشهري = م × [س(1+س)^ع] / [(1+س)^ع - 1]، حيث م هو أصل القرض، وس هو معدل الفائدة الشهري (السنوي ÷ 12)، وع هو إجمالي الأشهر. على سبيل المثال، قرض بقيمة 600,000 ريال بفائدة 4.5% لمدة 25 سنة يعطي قسطاً شهرياً يبلغ نحو 3,334 ريال.</span>
-          </div>
+  <!-- MM-CARD: Method Note -->
+  <div class="mm-card tool-rv tool-rv-3">
+    <div class="mm-icon">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+    </div>
+    <div class="mm-content">
+      <h4><span class="en">How this is calculated</span><span class="ar">طريقة الحساب</span></h4>
+      <p><span class="en">Monthly payments use the standard PMT formula. Rates reflect SAMA-published averages for May 2026. REDF support applies the subsidized 0% tranche first.</span>
+      <span class="ar">تحسب الأقساط باستخدام معادلة PMT القياسية. الأسعار تعكس متوسطات ساما لمايو 2026. يُطبَّق دعم صندوق التنمية على الشريحة المدعومة أولاً.</span></p>
+    </div>
+  </div>
+
+  <!-- MF-SECTION: FAQ -->
+  <div class="mf-section tool-rv">
+    <div class="mf-label"><span class="en">Common Questions</span><span class="ar">أسئلة شائعة</span></div>
+    <h3 class="mf-title"><span class="en">Frequently Asked Questions</span><span class="ar">الأسئلة المتكررة</span></h3>
+    <div class="mf-list">
+      <div class="mf-item">
+        <div class="mf-q" onclick="toggleFAQ(this)">
+          <span><span class="en">How is the monthly mortgage payment calculated?</span><span class="ar">كيف يُحسب القسط الشهري للتمويل؟</span></span>
+          <span class="mf-arrow">▼</span>
         </div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="toggleFAQ(this)">
-            <span><span class="en">What is REDF and who is eligible?</span><span class="ar">ما هو صندوق التنمية العقاري ومن يستحق الدعم؟</span></span>
-            <span class="faq-arrow">▼</span>
-          </div>
-          <div class="faq-a">
-            <span class="en">The Real Estate Development Fund (REDF) offers interest-free loans up to SAR 500,000 for eligible Saudi citizens who are first-time homebuyers with a monthly income under SAR 14,000. REDF is typically combined with a bank mortgage to cover the full property price.</span>
-            <span class="ar">يقدم صندوق التنمية العقاري قروضاً بدون فائدة تصل إلى 500,000 ريال للمواطنين السعوديين المؤهلين من مشتري المنازل لأول مرة الذين يقل دخلهم الشهري عن 14,000 ريال. ويُستخدم الصندوق عادةً جنباً إلى جنب مع قرض بنكي لتغطية كامل سعر العقار.</span>
-          </div>
+        <div class="mf-a">
+          <span class="en">Monthly payment = P × [r(1+r)^n] / [(1+r)^n - 1], where P is the principal loan amount, r is the monthly interest rate (annual rate ÷ 12), and n is total months. For example, a SAR 600,000 loan at 4.5% for 25 years gives a monthly payment of approximately SAR 3,334.</span>
+          <span class="ar">القسط الشهري = م × [س(1+س)^ع] / [(1+س)^ع - 1]، حيث م هو أصل القرض، وس هو معدل الفائدة الشهري (السنوي ÷ 12)، وع هو إجمالي الأشهر. على سبيل المثال، قرض بقيمة 600,000 ريال بفائدة 4.5% لمدة 25 سنة يعطي قسطاً شهرياً يبلغ نحو 3,334 ريال.</span>
         </div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="toggleFAQ(this)">
-            <span><span class="en">What is the maximum mortgage term in Saudi Arabia?</span><span class="ar">ما هي أقصى مدة للتمويل العقاري في السعودية؟</span></span>
-            <span class="faq-arrow">▼</span>
-          </div>
-          <div class="faq-a">
-            <span class="en">Most Saudi banks offer mortgages up to 25–30 years. Longer terms mean lower monthly payments but significantly more total interest paid. For example, a SAR 600,000 loan at 4.5% over 25 years costs about SAR 400K in interest, versus SAR 240K over 15 years.</span>
-            <span class="ar">تقدم معظم البنوك السعودية تمويلاً عقارياً لمدة تصل إلى 25-30 سنة. المدد الأطول تعني أقساطاً شهرية أقل لكن فوائد إجمالية أعلى بكثير. على سبيل المثال، قرض بقيمة 600,000 ريال بفائدة 4.5% على 25 سنة يكلف نحو 400,000 ريال فوائد، مقارنة بـ 240,000 ريال على 15 سنة.</span>
-          </div>
+      </div>
+      <div class="mf-item">
+        <div class="mf-q" onclick="toggleFAQ(this)">
+          <span><span class="en">What is REDF and who is eligible?</span><span class="ar">ما هو صندوق التنمية العقاري ومن يستحق الدعم؟</span></span>
+          <span class="mf-arrow">▼</span>
         </div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="toggleFAQ(this)">
-            <span><span class="en">What is the minimum down payment in Saudi Arabia?</span><span class="ar">ما هي الدفعة الأولى الدنيا في السعودية؟</span></span>
-            <span class="faq-arrow">▼</span>
-          </div>
-          <div class="faq-a">
-            <span class="en">SAMA regulations require a minimum 10% down payment for first-time buyers (90% LTV) and 20% for subsequent purchases (80% LTV). With REDF support, effective down payment requirements may vary. Some government programs allow first-time buyers to purchase with as little as 5% down.</span>
-            <span class="ar">تشترط لوائح ساما دفعة أولى بحد أدنى 10% لمشتري المنازل لأول مرة (90% نسبة القرض إلى القيمة) و20% للمشتريات اللاحقة (80% نسبة القرض إلى القيمة). مع دعم صندوق التنمية العقاري، قد تختلف متطلبات الدفعة الأولى. تتيح بعض البرامج الحكومية للمشترين لأول مرة الشراء بدفعة أولى بنسبة 5% فقط.</span>
-          </div>
+        <div class="mf-a">
+          <span class="en">The Real Estate Development Fund (REDF) offers interest-free loans up to SAR 500,000 for eligible Saudi citizens who are first-time homebuyers with a monthly income under SAR 14,000. REDF is typically combined with a bank mortgage to cover the full property price.</span>
+          <span class="ar">يقدم صندوق التنمية العقاري قروضاً بدون فائدة تصل إلى 500,000 ريال للمواطنين السعوديين المؤهلين من مشتري المنازل لأول مرة الذين يقل دخلهم الشهري عن 14,000 ريال. ويُستخدم الصندوق عادةً جنباً إلى جنب مع قرض بنكي لتغطية كامل سعر العقار.</span>
+        </div>
+      </div>
+      <div class="mf-item">
+        <div class="mf-q" onclick="toggleFAQ(this)">
+          <span><span class="en">What is the maximum mortgage term in Saudi Arabia?</span><span class="ar">ما هي أقصى مدة للتمويل العقاري في السعودية؟</span></span>
+          <span class="mf-arrow">▼</span>
+        </div>
+        <div class="mf-a">
+          <span class="en">Most Saudi banks offer mortgages up to 25–30 years. Longer terms mean lower monthly payments but significantly more total interest paid. For example, a SAR 600,000 loan at 4.5% over 25 years costs about SAR 400K in interest, versus SAR 240K over 15 years.</span>
+          <span class="ar">تقدم معظم البنوك السعودية تمويلاً عقارياً لمدة تصل إلى 25-30 سنة. المدد الأطول تعني أقساطاً شهرية أقل لكن فوائد إجمالية أعلى بكثير. على سبيل المثال، قرض بقيمة 600,000 ريال بفائدة 4.5% على 25 سنة يكلف نحو 400,000 ريال فوائد، مقارنة بـ 240,000 ريال على 15 سنة.</span>
+        </div>
+      </div>
+      <div class="mf-item">
+        <div class="mf-q" onclick="toggleFAQ(this)">
+          <span><span class="en">What is the minimum down payment in Saudi Arabia?</span><span class="ar">ما هي الدفعة الأولى الدنيا في السعودية؟</span></span>
+          <span class="mf-arrow">▼</span>
+        </div>
+        <div class="mf-a">
+          <span class="en">SAMA regulations require a minimum 10% down payment for first-time buyers (90% LTV) and 20% for subsequent purchases (80% LTV). With REDF support, effective down payment requirements may vary. Some government programs allow first-time buyers to purchase with as little as 5% down.</span>
+          <span class="ar">تشترط لوائح ساما دفعة أولى بحد أدنى 10% لمشتري المنازل لأول مرة (90% نسبة القرض إلى القيمة) و20% للمشتريات اللاحقة (80% نسبة القرض إلى القيمة). مع دعم صندوق التنمية العقاري، قد تختلف متطلبات الدفعة الأولى. تتيح بعض البرامج الحكومية للمشترين لأول مرة الشراء بدفعة أولى بنسبة 5% فقط.</span>
         </div>
       </div>
     </div>
+  </div>
 
-  </div><!-- /main col -->
-
-  <!-- SIDEBAR -->
-  <div class="sidebar">
-
-    <!-- SAUDI BANK RATES -->
-    <div class="side-card reveal">
-      <div class="side-header">
-        <h3><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 12h.01"/><path d="M16 12h.01"/><path d="M12 12h.01"/></svg> <span class="en">Saudi Bank Rates 2025</span><span class="ar">أسعار البنوك السعودية 2025</span></h3>
-      </div>
-      <div class="side-body" style="padding:0">
-        <table class="rate-table">
-          <thead>
-            <tr>
-              <th><span class="en">Bank</span><span class="ar">البنك</span></th>
-              <th><span class="en">Rate</span><span class="ar">السعر</span></th>
-              <th><span class="en">Term</span><span class="ar">المدة</span></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td><strong>Al Rajhi</strong></td><td><span class="rate-badge low">3.75%</span></td><td>30yr</td></tr>
-            <tr><td><strong>SNB</strong></td><td><span class="rate-badge low">3.99%</span></td><td>30yr</td></tr>
-            <tr><td><strong>Riyad Bank</strong></td><td><span class="rate-badge mid">4.25%</span></td><td>25yr</td></tr>
-            <tr><td><strong>SAB</strong></td><td><span class="rate-badge mid">4.50%</span></td><td>25yr</td></tr>
-            <tr><td><strong>SABB</strong></td><td><span class="rate-badge mid">4.75%</span></td><td>25yr</td></tr>
-            <tr><td><strong>Alinma</strong></td><td><span class="rate-badge high">5.00%</span></td><td>20yr</td></tr>
-          </tbody>
-        </table>
-        <p style="padding:12px 16px;font-size:.72rem;color:var(--text-sub)">
-          <span class="en">*Indicative rates. Contact bank for current offers.</span>
-          <span class="ar">*أسعار استرشادية. تواصل مع البنك للعروض الحالية.</span>
-        </p>
-      </div>
+  <!-- MO-SECTION: Related Tools -->
+  <div class="mo-section tool-rv">
+    <div class="mo-section-label">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+      <span class="en">Continue Your Journey</span><span class="ar">أكمل رحلتك</span>
     </div>
-
-    <!-- REDF CALLOUT -->
-    <div class="redf-callout reveal">
-      <h4>🟢 REDF صندوق التنمية العقاري</h4>
-      <p>
-        <span class="en">Eligible Saudi nationals can receive up to SAR 500,000 interest-free. Combine with a bank mortgage to maximize buying power.</span>
-        <span class="ar">يمكن للمواطنين السعوديين المؤهلين الحصول على ما يصل إلى 500,000 ريال بدون فائدة. اجمع مع قرض بنكي لتعظيم قدرتك الشرائية.</span>
-      </p>
-      <a href="https://redf.gov.sa" target="_blank" rel="noopener" class="redf-link">
-        <span class="en">Visit REDF Portal</span><span class="ar">زيارة بوابة الصندوق</span> ↗
+    <h3 class="mo-section-title"><span class="en">Related Tools & Guides</span><span class="ar">أدوات ودلائل ذات صلة</span></h3>
+    <p class="mo-section-sub"><span class="en">Tools and reading you might find useful next</span><span class="ar">أدوات وقراءات قد تفيدك في خطوتك التالية</span></p>
+    <div class="mo-section-grid">
+      <a href="/tools/rental-yield-calculator.html" class="mo-card" aria-label="Rental Yield Calculator">
+        <div class="mo-card-top">
+          <span class="mo-card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></span>
+          <div>
+            <div class="mo-card-name en">Rental Yield Calculator</div>
+            <div class="mo-card-name ar">حاسبة العائد الإيجاري</div>
+          </div>
+        </div>
+        <div class="mo-card-desc en">Gross &amp; net rental yield</div>
+        <div class="mo-card-desc ar">العائد الإجمالي والصافي</div>
+        <div class="mo-card-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
+      </a>
+      <a href="/tools/roi-calculator.html" class="mo-card" aria-label="Property ROI Calculator">
+        <div class="mo-card-top">
+          <span class="mo-card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v12"/><path d="M8 10h4a2 2 0 0 1 0 4H8"/></svg></span>
+          <div>
+            <div class="mo-card-name en">Property ROI Calculator</div>
+            <div class="mo-card-name ar">حاسبة العائد على الاستثمار</div>
+          </div>
+        </div>
+        <div class="mo-card-desc en">Full ROI with Saudi fees</div>
+        <div class="mo-card-desc ar">عائد الاستثمار مع الرسوم السعودية</div>
+        <div class="mo-card-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
+      </a>
+      <a href="/tools/zakat-calculator.html" class="mo-card" aria-label="Zakat Calculator">
+        <div class="mo-card-top">
+          <span class="mo-card-icon">☪️</span>
+          <div>
+            <div class="mo-card-name en">Zakat Calculator</div>
+            <div class="mo-card-name ar">حاسبة الزكاة</div>
+          </div>
+        </div>
+        <div class="mo-card-desc en">Annual zakat on all asset types</div>
+        <div class="mo-card-desc ar">زكاة جميع أنواع المال</div>
+        <div class="mo-card-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
+      </a>
+      <a href="/guides/saudi-mortgage-guide.html" class="mo-card mo-card-guide" aria-label="Saudi Mortgage Guide">
+        <div class="mo-card-top">
+          <span class="mo-card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/></svg></span>
+          <div>
+            <div class="mo-card-name en">Saudi Mortgage Guide</div>
+            <div class="mo-card-name ar">دليل التمويل السعودي</div>
+          </div>
+        </div>
+        <div class="mo-card-desc en">Complete buyer's guide 2026</div>
+        <div class="mo-card-desc ar">دليل المشتري الشامل 2026</div>
+        <div class="mo-card-cta"><span class="en">Read guide →</span><span class="ar">اقرأ الدليل ←</span></div>
       </a>
     </div>
+  </div>
 
-    <!-- AD ZONE 2 -->
-    <div class="ad-zone reveal">
-      <span class="ad-label">ADVERTISEMENT</span>
-    </div>
-
-    <!-- MORTGAGE TIPS -->
-    <div class="side-card reveal">
-      <div class="side-header">
-        <h3><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg> <span class="en">Smart Mortgage Tips</span><span class="ar">نصائح التمويل الذكي</span></h3>
-      </div>
-      <div class="side-body">
-        <div class="tip-item">
-          <div class="tip-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="4"/><polyline points="14 20 10 16 6 20"/></svg></div>
-          <div class="tip-text">
-            <strong><span class="en">Compare rates aggressively</span><span class="ar">قارن الأسعار بنشاط</span></strong>
-            <span class="en">A 0.5% rate difference on SAR 600K saves ~SAR 60K over 25 years.</span>
-            <span class="ar">فرق 0.5% في السعر على 600,000 ريال يوفر نحو 60,000 ريال خلال 25 سنة.</span>
-          </div>
-        </div>
-        <div class="tip-item">
-          <div class="tip-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v12"/><path d="M8 10h4a2 2 0 0 1 0 4H8"/></svg></div>
-          <div class="tip-text">
-            <strong><span class="en">Maximize down payment</span><span class="ar">عظم الدفعة الأولى</span></strong>
-            <span class="en">Every extra 5% down saves thousands in interest over the loan life.</span>
-            <span class="ar">كل 5% إضافية في الدفعة الأولى توفر آلاف الريالات في الفائدة.</span>
-          </div>
-        </div>
-        <div class="tip-item">
-          <div class="tip-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 12h.01"/><path d="M16 12h.01"/><path d="M12 12h.01"/></svg></div>
-          <div class="tip-text">
-            <strong><span class="en">Use REDF if eligible</span><span class="ar">استخدم الصندوق إن كنت مؤهلاً</span></strong>
-            <span class="en">An interest-free SAR 300K REDF loan saves ~SAR 200K in interest vs. bank rate.</span>
-            <span class="ar">قرض بدون فائدة بقيمة 300,000 ريال من الصندوق يوفر نحو 200,000 ريال مقارنة بالبنك.</span>
-          </div>
-        </div>
-        <div class="tip-item">
-          <div class="tip-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
-          <div class="tip-text">
-            <strong><span class="en">Shorter term = less interest</span><span class="ar">المدة الأقصر = فائدة أقل</span></strong>
-            <span class="en">15 years vs. 25 years can save over SAR 150,000 on a typical Saudi mortgage.</span>
-            <span class="ar">15 سنة مقارنة بـ25 سنة يمكن أن توفر أكثر من 150,000 ريال في التمويل السعودي النموذجي.</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- AD ZONE 3 -->
-    <div class="ad-zone reveal">
-      <span class="ad-label">ADVERTISEMENT</span>
-    </div>
-
-  </div><!-- /sidebar -->
 </main>
 
-<!-- RELATED TOOLS -->
-<div class="related-section reveal">
-  <div class="section-label"><span class="en">More Real Estate Tools</span><span class="ar">أدوات عقارية أخرى</span></div>
-  <div class="section-h2"><span class="en">You Might Also Need</span><span class="ar">قد تحتاج أيضاً</span></div>
-  <div class="related-grid">
-    <a href="/tools/rental-yield-calculator.html" class="related-card">
-      <div class="rc-icon"><span aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></span></div>
-      <div class="rc-title"><span class="en">Rental Yield Calculator</span><span class="ar">حاسبة العائد الإيجاري</span></div>
-      <div class="rc-desc"><span class="en">Gross & net yield, expense breakdown</span><span class="ar">العائد الإجمالي والصافي وتحليل النفقات</span></div>
-    </a>
-    <a href="../real-estate.html" class="related-card">
-      <div class="rc-icon"><span aria-hidden="true">🏙️</span></div>
-      <div class="rc-title"><span class="en">All Real Estate Tools</span><span class="ar">جميع الأدوات العقارية</span></div>
-      <div class="rc-desc"><span class="en">Property value, area converter, ROI</span><span class="ar">قيمة العقار، محول المساحة، العائد على الاستثمار</span></div>
-    </a>
-    <a href="/tools/calorie-calculator.html" class="related-card">
-      <div class="rc-icon"><span aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></span></div>
-      <div class="rc-title"><span class="en">Calorie Calculator</span><span class="ar">حاسبة السعرات الحرارية</span></div>
-      <div class="rc-desc"><span class="en">TDEE, BMR, macro split</span><span class="ar">معدل الحرق اليومي والأساسي وتوزيع المغذيات</span></div>
-    </a>
-    <a href="../life-tools.html" class="related-card">
-      <div class="rc-icon"><span aria-hidden="true">🧮</span></div>
-      <div class="rc-title"><span class="en">Unit Converter</span><span class="ar">محول الوحدات</span></div>
-      <div class="rc-desc"><span class="en">Area, length, weight, and more</span><span class="ar">المساحة والطول والوزن والمزيد</span></div>
-    </a>
-  </div>
-</div>
 
 <!-- FOOTER -->
 
@@ -933,44 +912,7 @@ const revealObserver=new IntersectionObserver(entries=>{
 document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
 </script>
 
-<div class="container" style="max-width:1200px;margin:0 auto;padding:0 24px 0">
-<div class="dfl-method">
-  <div class="dfl-method-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> <span class="en">How this is calculated</span><span class="ar">طريقة الحساب</span></div>
-  <p class="en">Monthly payments use the standard PMT formula. Rates reflect SAMA-published averages for May 2026. REDF support applies the subsidized 0% tranche first.</p>
-  <p class="ar">تحسب الأقساط باستخدام معادلة PMT القياسية. الأسعار تعكس متوسطات ساما لمايو 2026. يُطبَّق دعم صندوق التنمية على الشريحة المدعومة أولاً.</p>
-</div>
-</div>
 
-<!-- ═══ RELATED TOOLS ═══════════════════════════════════════════════════════ -->
-<section class="dfl-related" aria-label="Related tools and guides">
-  <div class="container">
-    <div class="dfl-related-label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg> <span class="en">Continue Your Journey</span><span class="ar">أكمل رحلتك</span></div>
-    <h2 class="dfl-related-title"><span class="en">Related Tools & Guides</span><span class="ar">أدوات ودلائل ذات صلة</span></h2>
-    <p class="dfl-related-sub"><span class="en">Tools and reading you might find useful next</span><span class="ar">أدوات وقراءات قد تفيدك في خطوتك التالية</span></p>
-    <div class="dfl-related-grid">
-      <a href="/tools/rental-yield-calculator.html" class="dfl-rc" aria-label="Rental Yield Calculator">
-        <div class="dfl-rc-top"><span class="dfl-rc-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></span><div><div class="dfl-rc-name en">Rental Yield Calculator</div><div class="dfl-rc-name ar">حاسبة العائد الإيجاري</div></div></div>
-        <div class="dfl-rc-desc en">Gross & net rental yield</div><div class="dfl-rc-desc ar">العائد الإجمالي والصافي</div>
-        <div class="dfl-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
-      </a>
-      <a href="/tools/roi-calculator.html" class="dfl-rc" aria-label="Property ROI Calculator">
-        <div class="dfl-rc-top"><span class="dfl-rc-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v12"/><path d="M8 10h4a2 2 0 0 1 0 4H8"/></svg></span><div><div class="dfl-rc-name en">Property ROI Calculator</div><div class="dfl-rc-name ar">حاسبة العائد على الاستثمار</div></div></div>
-        <div class="dfl-rc-desc en">Full ROI with Saudi fees</div><div class="dfl-rc-desc ar">عائد الاستثمار مع الرسوم</div>
-        <div class="dfl-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
-      </a>
-      <a href="/tools/zakat-calculator.html" class="dfl-rc" aria-label="Zakat Calculator">
-        <div class="dfl-rc-top"><span class="dfl-rc-icon" aria-hidden="true">☪️</span><div><div class="dfl-rc-name en">Zakat Calculator</div><div class="dfl-rc-name ar">حاسبة الزكاة</div></div></div>
-        <div class="dfl-rc-desc en">Annual zakat on all asset types</div><div class="dfl-rc-desc ar">زكاة جميع أنواع المال</div>
-        <div class="dfl-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
-      </a>
-      <a href="../guides/saudi-mortgage-guide.html" class="dfl-rc guide" aria-label="Saudi Mortgage Guide">
-        <div class="dfl-rc-top"><span class="dfl-rc-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/></svg></span><div><div class="dfl-rc-name en">Saudi Mortgage Guide</div><div class="dfl-rc-name ar">دليل التمويل السعودي</div></div></div>
-        <div class="dfl-rc-desc en">Complete buyer's guide 2026</div><div class="dfl-rc-desc ar">دليل المشتري الشامل 2026</div>
-        <div class="dfl-rc-cta"><span class="en">Read guide →</span><span class="ar">اقرأ الدليل ←</span></div>
-      </a>
-    </div>
-  </div>
-</section>
 
 <script>
 /* ── Phase 2A Global Micro-interaction Utilities ──────────────────────────── */
