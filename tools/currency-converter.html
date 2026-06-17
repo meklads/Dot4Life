@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light" data-lang="en" dir="ltr">
 <head>
-<script>
+
+  <!-- Critical: prevent theme flash (inline) -->
+  <script>
 (function(){
   /* theme */
   var tb=document.getElementById("theme-toggle");
@@ -22,8 +24,8 @@
   /* reveal */
   if("IntersectionObserver" in window){
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add("visible");});},{threshold:0.1});
-    document.querySelectorAll(".reveal").forEach(function(el){io.observe(el);});
-  } else document.querySelectorAll(".reveal").forEach(function(el){el.classList.add("visible");});
+    document.querySelectorAll(".tool-rv").forEach(function(el){io.observe(el);});
+  } else document.querySelectorAll(".tool-rv").forEach(function(el){el.classList.add("visible");});
 
   /* hamburger menu */
   (function(){
@@ -63,51 +65,93 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://www.googletagmanager.com" />
-<title>Currency Converter | محوّل العملات، DotForLife</title>
-<meta name="description" content="Convert currencies instantly. SAR, USD, EUR, AED, EGP, KWD, QAR and more. Bilingual Arabic & English currency converter."/>
-<link rel="canonical" href="https://www.dotforlife.com/tools/currency-converter"/>
+<title>Currency Converter | محوّل العملات — SAR, USD, EUR, AED &amp; More | Dot For Life</title>
+<meta name="description" content="Free currency converter for the Gulf. Convert SAR, USD, EUR, AED, KWD, QAR, EGP and more. Bilingual Arabic & English with quick reference rates."/>
+<link rel="canonical" href="https://dotforlife.com/tools/currency-converter.html"/>
+<link rel="alternate" hreflang="ar" href="https://dotforlife.com/tools/currency-converter.html" />
+<link rel="alternate" hreflang="en" href="https://dotforlife.com/tools/currency-converter-en.html" />
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Almarai:wght@400;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Almarai:wght@400;700;800&display=swap"/></noscript>
-<link rel="stylesheet" href="/styles/global.css?v=20260617e"/>
-	<link rel="stylesheet" href="/styles/tools-shared.css?v=20260617e">
-	<link rel="stylesheet" href="/styles/pages/tools_currency-converter.css?v=20260617b">
+<link rel="stylesheet" href="/styles/global.css?v=20260618f"/>
+<link rel="stylesheet" href="/styles/tools-shared.css?v=20260618f">
+<link rel="stylesheet" href="/styles/pages/tools_currency-converter.css?v=20260618f">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.dotforlife.com/tools/currency-converter">
+  <meta property="og:url" content="https://dotforlife.com/tools/currency-converter">
   <meta property="og:title" content="GCC Currency Converter | Dot4Life">
   <meta property="og:description" content="Convert between SAR, AED, KWD, USD, EUR and more. Free bilingual currency converter for the Gulf.">
-  <meta property="og:image" content="https://www.dotforlife.com/og/og-default.png">
-  <meta property="og:locale" content="en_US">
-  <meta property="og:locale:alternate" content="ar_SA">
-  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image" content="https://dotforlife.com/og/og-default.png">
+
+<meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="GCC Currency Converter | Dot4Life">
   <meta name="twitter:description" content="Convert between SAR, AED, KWD, USD, EUR and more. Free bilingual currency converter for the Gulf.">
-  <meta name="twitter:image" content="https://www.dotforlife.com/og/og-default.png">
-<style>
-.dfl-related{border-top:1px solid var(--border);padding:52px 0 64px;background:var(--body-bg);}
-.dfl-related .container{max-width:1280px;margin:0 auto;padding:0 clamp(1.5rem,4vw,2.5rem);}
-.dfl-related-label{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
-.dfl-related-title{font-size:clamp(1.2rem,2.5vw,1.55rem);font-weight:700;color:var(--text);margin:0 0 6px;letter-spacing:-.02em;}
-.dfl-related-sub{font-size:.88rem;color:var(--text-2);margin-bottom:32px;line-height:1.6;}
-.dfl-related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;}
-.dfl-rc{display:flex;flex-direction:column;background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:20px 22px 18px;text-decoration:none;color:inherit;transition:border-color .2s,box-shadow .2s,transform .2s;}
-.dfl-rc:hover{border-color:var(--gold);box-shadow:0 4px 20px rgba(107,191,184,.12);transform:translateY(-2px);}
-.dfl-rc.guide{border-style:dashed;}
-.dfl-rc.guide:hover{border-color:var(--green,#2a9a98);box-shadow:0 4px 20px rgba(42,154,152,.1);}
-.dfl-rc-top{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
-.dfl-rc-icon{font-size:1.4rem;line-height:1;flex-shrink:0;}
-.dfl-rc-name{font-size:.88rem;font-weight:700;color:var(--text);line-height:1.3;}
-.dfl-rc-desc{font-size:.78rem;color:var(--text-2);line-height:1.5;flex:1;}
-.dfl-rc-cta{margin-top:12px;font-size:.76rem;font-weight:700;color:var(--gold);}
-.dfl-rc.guide .dfl-rc-cta{color:var(--green,#2a9a98);}
-@media(max-width:600px){.dfl-related-grid{grid-template-columns:1fr 1fr;gap:10px;}.dfl-rc{padding:14px;}}
+  <meta name="twitter:image" content="https://dotforlife.com/og/og-default.png">
 
-</style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Currency Converter | محوّل العملات، DotForLife","url":"https://www.dotforlife.com/tools/currency-converter.html","applicationCategory":"UtilityApplication","operatingSystem":"Web"}</script>
-  <link rel="alternate" hreflang="ar" href="https://www.dotforlife.com/tools/currency-converter?lang=ar" />
-  <link rel="alternate" hreflang="en" href="https://www.dotforlife.com/tools/currency-converter?lang=en" />
-  <link rel="alternate" hreflang="x-default" href="https://www.dotforlife.com/tools/currency-converter" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Currency Converter | محوّل العملات",
+      "alternateName": "GCC Currency Converter",
+      "url": "https://dotforlife.com/tools/currency-converter.html",
+      "description": "Convert between SAR, USD, EUR, AED, KWD, QAR, EGP and more. Free bilingual currency converter for GCC residents.",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "inLanguage": ["en", "ar"],
+      "featureList": ["11 currencies","Fixed reference rates","Quick reference table","Bilingual Arabic/English","GCC-optimized"]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://dotforlife.com" },
+        { "@type": "ListItem", "position": 2, "name": "Travel Tools", "item": "https://dotforlife.com/travel" },
+        { "@type": "ListItem", "position": 3, "name": "Currency Converter", "item": "https://dotforlife.com/tools/currency-converter.html" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I convert currencies using this tool?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Enter the amount, select the source currency (From) and target currency (To), then click Convert. The result shows the converted amount and the exchange rate used."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What currencies are supported?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "This converter supports 11 currencies: SAR (Saudi Riyal), USD (US Dollar), EUR (Euro), AED (UAE Dirham), KWD (Kuwaiti Dinar), QAR (Qatari Riyal), BHD (Bahraini Dinar), OMR (Omani Rial), EGP (Egyptian Pound), JOD (Jordanian Dinar), and GBP (British Pound)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are these live or fixed exchange rates?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "This converter uses fixed mid-market reference rates that reflect standard pegs and approximate values. Pegged currencies (SAR, AED, QAR) are accurate. Floating currencies (EUR, GBP) are approximate. For live rates, check your bank or a financial data provider."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which GCC currencies are pegged to the US dollar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Three GCC currencies are pegged to the USD: Saudi Riyal (SAR) at 3.75, UAE Dirham (AED) at 3.67, and Qatari Riyal (QAR) at 3.64. The Kuwaiti Dinar (KWD) is pegged to a basket of currencies. Bahraini Dinar (BHD) and Omani Rial (OMR) have fixed rates."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3G1XPV4F0G"></script>
 <script>
@@ -115,6 +159,14 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-3G1XPV4F0G');
+</script>
+<script>
+window.dflTrack=function(event,params){
+  gtag('event',event,Object.assign({
+    page_path:location.pathname,
+    language:document.documentElement.getAttribute('data-lang')||'en'
+  },params||{}));
+};
 </script>
 
 </head>
@@ -149,163 +201,296 @@
        HERO
   ═══════════════════════════════════════ -->
 
-
   <div class="tool-hr-wrap">
 
     <section class="tool-hr" aria-labelledby="tool-title">
       <div class="tool-hr-in">
         <div class="tool-hr-bd">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-          Financial Tool
+          <span class="en">Financial Tool</span><span class="ar">أداة مالية</span>
         </div>
-        <h1><span class="en">Currency Converter</span><span class="ar">محوّل العملات</span></h1>
+        <h1 id="tool-title"><span class="en">Currency Converter</span><span class="ar">محوّل العملات</span></h1>
         <p><span class="en">Convert between major currencies, GCC & world rates</span><span class="ar">حوّل بين العملات الرئيسية، أسعار الخليج والعالم</span></p>
-        
       </div>
     </section>
-<div id="sub-nav">
-  <div class="sub-nav-inner">
-    <a href="/tools/packing-checklist.html"><span class="en">Packing</span><span class="ar">قائمة الحقيبة</span></a>
-    <a href="/tools/travel-budget.html"><span class="en">Travel Budget</span><span class="ar">ميزانية السفر</span></a>
-    <a href="/tools/travel-tips.html"><span class="en">Travel Tips</span><span class="ar">نصائح السفر</span></a>
-    <a href="/tools/currency-converter.html" class="active"><span class="en">Currency</span><span class="ar">محوّل العملات</span></a>
-    <a href="/tools/return-to-hotel.html"><span class="en">Return to Hotel</span><span class="ar">العودة للفندق</span></a>
-    <a href="/guides/mecca-medina.html"><span class="en">Mecca & Medina</span><span class="ar">مكة والمدينة</span></a>
-  </div>
-</div>
+
+    <div id="sub-nav">
+      <div class="sub-nav-inner">
+        <a href="/tools/packing-checklist.html"><span class="en">Packing</span><span class="ar">قائمة الحقيبة</span></a>
+        <a href="/tools/travel-budget.html"><span class="en">Travel Budget</span><span class="ar">ميزانية السفر</span></a>
+        <a href="/tools/travel-tips.html"><span class="en">Travel Tips</span><span class="ar">نصائح السفر</span></a>
+        <a href="/tools/currency-converter.html" class="active"><span class="en">Currency</span><span class="ar">محوّل العملات</span></a>
+        <a href="/tools/return-to-hotel.html"><span class="en">Return to Hotel</span><span class="ar">العودة للفندق</span></a>
+        <a href="/guides/mecca-medina.html"><span class="en">Mecca & Medina</span><span class="ar">مكة والمدينة</span></a>
+      </div>
+    </div>
+
   </div>
 
 <main class="tool-mn">
-  <h1><span class="en">Currency Converter</span><span class="ar">محوّل العملات</span></h1>
-  <p class="subtitle"><span class="en">Convert between major currencies, GCC & world rates</span><span class="ar">حوّل بين العملات الرئيسية، أسعار الخليج والعالم</span></p>
 
-  <div class="card">
-    <label><span class="en">Amount</span><span class="ar">المبلغ</span></label>
-    <input type="number" id="amount" value="100" min="0" step="any"/>
-    <div class="row">
-      <div>
-        <label><span class="en">From</span><span class="ar">من</span></label>
-        <select id="from-cur">
-          <option value="SAR">SAR, ريال سعودي</option>
-          <option value="USD">USD, دولار أمريكي</option>
-          <option value="EUR">EUR, يورو</option>
-          <option value="AED">AED, درهم إماراتي</option>
-          <option value="KWD">KWD, دينار كويتي</option>
-          <option value="QAR">QAR, ريال قطري</option>
-          <option value="BHD">BHD, دينار بحريني</option>
-          <option value="OMR">OMR, ريال عماني</option>
-          <option value="EGP">EGP, جنيه مصري</option>
-          <option value="JOD">JOD, دينار أردني</option>
-          <option value="GBP">GBP, جنيه إسترليني</option>
-        </select>
-      </div>
-      <button class="swap-btn" onclick="swapCurrencies()" title="Swap">⇄</button>
-      <div>
-        <label><span class="en">To</span><span class="ar">إلى</span></label>
-        <select id="to-cur">
-          <option value="USD">USD, دولار أمريكي</option>
-          <option value="SAR">SAR, ريال سعودي</option>
-          <option value="EUR">EUR, يورو</option>
-          <option value="AED">AED, درهم إماراتي</option>
-          <option value="KWD">KWD, دينار كويتي</option>
-          <option value="QAR">QAR, ريال قطري</option>
-          <option value="BHD">BHD, دينار بحريني</option>
-          <option value="OMR">OMR, ريال عماني</option>
-          <option value="EGP">EGP, جنيه مصري</option>
-          <option value="JOD">JOD, دينار أردني</option>
-          <option value="GBP">GBP, جنيه إسترليني</option>
-        </select>
+  <!-- CC-GRID: Info Cards -->
+  <div class="cc-grid tool-rv tool-rv-1">
+    <div class="cc-gc">
+      <div class="cc-gc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg></div>
+      <div class="cc-gc-text">
+        <div class="cc-gc-label"><span class="en">Currencies</span><span class="ar">عدد العملات</span></div>
+        <div class="cc-gc-value">11</div>
       </div>
     </div>
-    <button class="calc-btn" onclick="convert()"><span class="en">Convert →</span><span class="ar">حوّل ←</span></button>
-    <div id="result-box" class="result-box" style="display:none">
-      <div class="result-label" id="res-label">Result</div>
-      <div class="result-value" id="res-value">, </div>
-      <div class="result-sub" id="res-rate">, </div>
+    <div class="cc-gc">
+      <div class="cc-gc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <div class="cc-gc-text">
+        <div class="cc-gc-label"><span class="en">Pegged Rates</span><span class="ar">أسعار مثبتة</span></div>
+        <div class="cc-gc-value"><span class="en">Accurate</span><span class="ar">دقيقة</span></div>
+      </div>
     </div>
-    <p class="rates-note"><span class="en">* Rates are approximate fixed reference rates. For live rates, check your bank or a financial platform.</span><span class="ar">* الأسعار تقريبية ومرجعية ثابتة. للأسعار الفعلية راجع بنكك أو منصة مالية.</span></p>
+    <div class="cc-gc">
+      <div class="cc-gc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M9 22v-4h6v4"/></svg></div>
+      <div class="cc-gc-text">
+        <div class="cc-gc-label"><span class="en">GCC Support</span><span class="ar">دعم خليجي</span></div>
+        <div class="cc-gc-value">7/6</div>
+      </div>
+    </div>
+    <div class="cc-gc">
+      <div class="cc-gc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+      <div class="cc-gc-text">
+        <div class="cc-gc-label"><span class="en">Free</span><span class="ar">مجاني</span></div>
+        <div class="cc-gc-value">100%</div>
+      </div>
+    </div>
   </div>
 
-  <div class="card">
-    <div style="font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-2);margin-bottom:12px;"><span class="en">Quick Reference Rates (vs USD)</span><span class="ar">أسعار مرجعية سريعة (مقابل الدولار)</span></div>
-    <div class="quick-rates">
-      <div class="rate-chip"><div class="pair">SAR/USD</div><div class="rate">3.75</div></div>
-      <div class="rate-chip"><div class="pair">AED/USD</div><div class="rate">3.67</div></div>
-      <div class="rate-chip"><div class="pair">KWD/USD</div><div class="rate">0.307</div></div>
-      <div class="rate-chip"><div class="pair">QAR/USD</div><div class="rate">3.64</div></div>
-      <div class="rate-chip"><div class="pair">BHD/USD</div><div class="rate">0.376</div></div>
-      <div class="rate-chip"><div class="pair">OMR/USD</div><div class="rate">0.385</div></div>
+  <!-- CC-CARD: Main Converter -->
+  <div class="cc-card tool-rv tool-rv-2">
+    <div class="cc-hdr">
+      <h2><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg> <span class="en">Convert Currency</span><span class="ar">تحويل العملة</span></h2>
+      <p><span class="en">Enter an amount and select currencies to convert</span><span class="ar">أدخل المبلغ واختر العملات للتحويل</span></p>
+    </div>
+    <div class="cc-body">
+
+      <!-- Amount Input -->
+      <div class="cc-fl">
+        <label class="cc-fl-l" for="amount"><span class="en">Amount</span><span class="ar">المبلغ</span></label>
+        <div class="cc-fl-r">
+          <input type="number" id="amount" value="100" min="0" step="any">
+        </div>
+      </div>
+
+      <!-- Currency Selectors -->
+      <div class="cc-row">
+        <div class="cc-fl">
+          <label class="cc-fl-l" for="from-cur"><span class="en">From</span><span class="ar">من</span></label>
+          <select id="from-cur" class="cc-select">
+            <option value="SAR">SAR — Saudi Riyal</option>
+            <option value="USD" selected>USD — US Dollar</option>
+            <option value="EUR">EUR — Euro</option>
+            <option value="AED">AED — UAE Dirham</option>
+            <option value="KWD">KWD — Kuwaiti Dinar</option>
+            <option value="QAR">QAR — Qatari Riyal</option>
+            <option value="BHD">BHD — Bahraini Dinar</option>
+            <option value="OMR">OMR — Omani Rial</option>
+            <option value="EGP">EGP — Egyptian Pound</option>
+            <option value="JOD">JOD — Jordanian Dinar</option>
+            <option value="GBP">GBP — British Pound</option>
+          </select>
+        </div>
+        <div class="cc-swap-wrap">
+          <button class="cc-swap" onclick="swapCurrencies()" title="Swap currencies">⇄</button>
+        </div>
+        <div class="cc-fl">
+          <label class="cc-fl-l" for="to-cur"><span class="en">To</span><span class="ar">إلى</span></label>
+          <select id="to-cur" class="cc-select">
+            <option value="USD">USD — US Dollar</option>
+            <option value="SAR" selected>SAR — Saudi Riyal</option>
+            <option value="EUR">EUR — Euro</option>
+            <option value="AED">AED — UAE Dirham</option>
+            <option value="KWD">KWD — Kuwaiti Dinar</option>
+            <option value="QAR">QAR — Qatari Riyal</option>
+            <option value="BHD">BHD — Bahraini Dinar</option>
+            <option value="OMR">OMR — Omani Rial</option>
+            <option value="EGP">EGP — Egyptian Pound</option>
+            <option value="JOD">JOD — Jordanian Dinar</option>
+            <option value="GBP">GBP — British Pound</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Convert Button -->
+      <button class="cc-btn" onclick="convert()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+        <span class="en">Convert</span><span class="ar">حوّل</span>
+      </button>
+
+      <!-- Result -->
+      <div id="result-box" class="cc-result-box" style="display:none">
+        <div class="cc-res-label" id="res-label">Result</div>
+        <div class="cc-res-value" id="res-value">, </div>
+        <div class="cc-res-sub" id="res-rate">, </div>
+      </div>
+
+      <p class="cc-rates-note"><span class="en">* Rates are approximate mid-market reference rates. Pegged currencies are accurate. For live rates, check your bank.</span><span class="ar">* الأسعار تقريبية مرجعية. العملات المربوطة دقيقة. للأسعار الفعلية راجع بنكك.</span></p>
     </div>
   </div>
+
+  <!-- CC-CARD: Quick Reference Rates -->
+  <div class="cc-card tool-rv tool-rv-3">
+    <div class="cc-hdr">
+      <h2><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M9 22v-4h6v4"/></svg> <span class="en">Quick Reference Rates (vs USD)</span><span class="ar">أسعار مرجعية سريعة (مقابل الدولار)</span></h2>
+    </div>
+    <div class="cc-body">
+      <div class="cc-chips">
+        <div class="cc-chip"><div class="cc-chip-pair">SAR/USD</div><div class="cc-chip-rate">3.75</div></div>
+        <div class="cc-chip"><div class="cc-chip-pair">AED/USD</div><div class="cc-chip-rate">3.67</div></div>
+        <div class="cc-chip"><div class="cc-chip-pair">KWD/USD</div><div class="cc-chip-rate">0.307</div></div>
+        <div class="cc-chip"><div class="cc-chip-pair">QAR/USD</div><div class="cc-chip-rate">3.64</div></div>
+        <div class="cc-chip"><div class="cc-chip-pair">BHD/USD</div><div class="cc-chip-rate">0.376</div></div>
+        <div class="cc-chip"><div class="cc-chip-pair">OMR/USD</div><div class="cc-chip-rate">0.385</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CC-SECTION: Understanding Exchange Rates -->
+  <div class="cc-section tool-rv">
+    <div class="cc-section-label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> <span class="en">Understanding Exchange Rates</span><span class="ar">فهم أسعار الصرف</span></div>
+    <p class="en">Exchange rates represent the value of one currency relative to another. For GCC residents, several currencies are pegged to the US dollar: the Saudi Riyal (SAR) at 3.75, the UAE Dirham (AED) at 3.67, and the Qatari Riyal (QAR) at 3.64. This means their values against the dollar remain stable over time. The Kuwaiti Dinar (KWD) is pegged to a basket of currencies and fluctuates within a narrow band. In practical terms, when planning a trip from Saudi Arabia to Europe, you can expect the SAR-EUR rate to change primarily based on EUR-USD movements. For everyday currency conversion, knowing these pegs helps you estimate quickly: approximately 3.75 SAR equals 1 USD at any time.</p>
+    <p class="ar">أسعار الصرف تمثل قيمة عملة مقابل أخرى. للمقيمين في الخليج، عدة عملات مربوطة بالدولار الأمريكي: الريال السعودي (SAR) عند 3.75، والدرهم الإماراتي (AED) عند 3.67، والريال القطري (QAR) عند 3.64. هذا يعني أن قيمتها مقابل الدولار تبقى مستقرة مع مرور الوقت. الدينار الكويتي (KWD) مربوط بسلة عملات ويتذبذب ضمن نطاق ضيق. من الناحية العملية، عند التخطيط لرحلة من السعودية إلى أوروبا، يمكنك توقع أن سعر SAR-EUR يتغير بشكل أساسي بناءً على تحركات EUR-USD. للتحويل اليومي، معرفة هذه الارتباطات تساعدك على التقدير السريع: حوالي 3.75 ريال سعودي تعادل 1 دولار أمريكي في أي وقت.</p>
+  </div>
+
+  <!-- CC-SECTION: Practical Usage Scenarios -->
+  <div class="cc-section tool-rv">
+    <div class="cc-section-label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v12"/><path d="M12 12l4-2.5"/></svg> <span class="en">Practical Usage Scenarios</span><span class="ar">سيناريوهات الاستخدام العملية</span></div>
+    <p class="en"><strong>Travel planning:</strong> Before any international trip, convert your home currency to the destination currency to understand spending power. For example, if you are travelling from the UAE to Turkey, knowing that 1 AED equals approximately 8 Turkish Lira helps you evaluate prices instantly.</p>
+    <p class="ar"><strong>تخطيط السفر:</strong> قبل أي رحلة دولية، حوّل عملتك المحلية إلى عملة الوجهة لفهم القوة الشرائية. مثلاً، إذا كنت مسافراً من الإمارات إلى تركيا، معرفة أن 1 درهم إماراتي يعادل حوالي 8 ليرات تركية يساعدك على تقييم الأسعار فوراً.</p>
+    <p class="en"><strong>Online shopping:</strong> When buying from international stores, always convert the listed price to your local currency including estimated VAT and customs. A $50 item may cost closer to 195 SAR after shipping and fees.</p>
+    <p class="ar"><strong>التسوق عبر الإنترنت:</strong> عند الشراء من متاجر دولية، حوّل السعر المدرج إلى عملتك المحلية شاملًا ضريبة القيمة المضافة والجمارك المقدرة. منتج بـ 50 دولاراً قد يكلف حوالي 195 ريالاً سعودياً بعد الشحن والرسوم.</p>
+    <p class="en"><strong>Remittances:</strong> For expats sending money home, comparing the mid-market rate (shown here) with the rate offered by your transfer provider reveals the true cost of the transfer.</p>
+    <p class="ar"><strong>الحوالات المالية:</strong> للمغتربين الذين يرسلون أموالاً لوطنهم، مقارنة سعر السوق الوسيط (المعروض هنا) مع السعر الذي يقدمه مزود التحويل يكشف التكلفة الحقيقية للتحويل.</p>
+  </div>
+
+  <!-- CC-SECTION: Limitations & Best Rates -->
+  <div class="cc-section tool-rv">
+    <div class="cc-section-label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> <span class="en">Getting the Best Rate</span><span class="ar">كيف تحصل على أفضل سعر</span></div>
+    <p class="en">This converter uses mid-market rates — the rate you see on financial news, not the rate you get at a currency exchange desk or ATM. Banks and exchange services typically add a margin of 1-5%. To minimize costs: use fee-free international transfer services for large amounts, withdraw local currency from ATMs at your destination rather than exchanging cash, and avoid airport exchange counters which offer the worst rates. For large currency exchanges (over 10,000 USD equivalent), consider negotiating with exchange houses directly for better rates.</p>
+    <p class="ar">هذا المحوّل يستخدم أسعار السوق الوسيطة — السعر الذي تراه في الأخبار المالية، وليس السعر الذي تحصل عليه في مكتب الصرافة أو الصراف الآلي. البنوك وخدمات الصرافة عادةً ما تضيف هامشاً يتراوح بين 1-5%. لتقليل التكاليف: استخدم خدمات التحويل الدولي بدون رسوم للمبالغ الكبيرة، اسحب العملة المحلية من الصراف الآلي في وجهتك بدلاً من صرف النقود، وتجنب مكاتب الصرافة في المطارات التي تقدم أسوأ الأسعار. لتحويل العملات الكبيرة (أكثر من 10,000 دولار أمريكي)، فكر في التفاوض مع شركات الصرافة مباشرة للحصول على أسعار أفضل.</p>
+  </div>
+
+  <!-- CC-FAQ: Frequently Asked Questions -->
+  <div class="cc-faq tool-rv">
+    <div class="cc-faq-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> <span class="en">FAQ</span><span class="ar">أسئلة شائعة</span></div>
+    <div class="cc-faq-title"><span class="en">Frequently Asked Questions</span><span class="ar">الأسئلة المتكررة</span></div>
+
+    <div class="cc-faq-item">
+      <div class="cc-faq-q" onclick="toggleFAQ(this)">
+        <span><span class="en">How do I convert currencies using this tool?</span><span class="ar">كيف أحوّل العملات باستخدام هذه الأداة؟</span></span>
+        <span class="cc-faq-arrow">▼</span>
+      </div>
+      <div class="cc-faq-a"><p><span class="en">Enter the amount in the input field, select the source currency (From) and target currency (To) from the dropdowns, then click the Convert button. The result shows the converted amount and the exchange rate used.</span><span class="ar">أدخل المبلغ في حقل الإدخال، اختر العملة المصدر (من) والعملة الهدف (إلى) من القوائم المنسدلة، ثم انقر زر "حوّل". تظهر النتيجة مع سعر الصرف المستخدم.</span></p></div>
+    </div>
+
+    <div class="cc-faq-item">
+      <div class="cc-faq-q" onclick="toggleFAQ(this)">
+        <span><span class="en">What currencies are supported?</span><span class="ar">ما العملات المدعومة؟</span></span>
+        <span class="cc-faq-arrow">▼</span>
+      </div>
+      <div class="cc-faq-a"><p><span class="en">This converter supports 11 currencies: SAR (Saudi Riyal), USD (US Dollar), EUR (Euro), AED (UAE Dirham), KWD (Kuwaiti Dinar), QAR (Qatari Riyal), BHD (Bahraini Dinar), OMR (Omani Rial), EGP (Egyptian Pound), JOD (Jordanian Dinar), and GBP (British Pound).</span><span class="ar">يدعم هذا المحوّل 11 عملة: SAR (الريال السعودي)، USD (الدولار الأمريكي)، EUR (اليورو)، AED (الدرهم الإماراتي)، KWD (الدينار الكويتي)، QAR (الريال القطري)، BHD (الدينار البحريني)، OMR (الريال العماني)، EGP (الجنيه المصري)، JOD (الدينار الأردني)، وGBP (الجنيه الإسترليني).</span></p></div>
+    </div>
+
+    <div class="cc-faq-item">
+      <div class="cc-faq-q" onclick="toggleFAQ(this)">
+        <span><span class="en">Are these live or fixed exchange rates?</span><span class="ar">هل هذه الأسعار حية أم ثابتة؟</span></span>
+        <span class="cc-faq-arrow">▼</span>
+      </div>
+      <div class="cc-faq-a"><p><span class="en">This converter uses fixed mid-market reference rates. Pegged currencies (SAR, AED, QAR) are accurate based on their official pegs. Floating currencies (EUR, GBP) are approximate. For live trading rates, check your bank or a financial data provider.</span><span class="ar">يستخدم هذا المحوّل أسعاراً مرجعية ثابتة. العملات المربوطة (SAR، AED، QAR) دقيقة بناءً على ربطها الرسمي. العملات الحرة (EUR، GBP) تقريبية. للأسعار الحية، راجع بنكك أو مزود بيانات مالية.</span></p></div>
+    </div>
+
+    <div class="cc-faq-item">
+      <div class="cc-faq-q" onclick="toggleFAQ(this)">
+        <span><span class="en">Which GCC currencies are pegged to the US dollar?</span><span class="ar">أي عملات خليجية مربوطة بالدولار؟</span></span>
+        <span class="cc-faq-arrow">▼</span>
+      </div>
+      <div class="cc-faq-a"><p><span class="en">Three GCC currencies are directly pegged to the USD: Saudi Riyal (SAR) at 3.75, UAE Dirham (AED) at 3.67, and Qatari Riyal (QAR) at 3.64. The Kuwaiti Dinar (KWD) is pegged to a basket of currencies. Bahraini Dinar (BHD) and Omani Rial (OMR) have fixed exchange rates against the USD.</span><span class="ar">ثلاث عملات خليجية مربوطة مباشرة بالدولار: الريال السعودي (SAR) عند 3.75، والدرهم الإماراتي (AED) عند 3.67، والريال القطري (QAR) عند 3.64. الدينار الكويتي (KWD) مربوط بسلة عملات. الدينار البحريني (BHD) والريال العماني (OMR) لهما سعر صرف ثابت مقابل الدولار.</span></p></div>
+    </div>
+  </div>
+
+  <!-- CC-AFFILIATE: Partner Card -->
+  <div class="cc-affiliate tool-rv">
+    <div class="cc-aff-badge">Partner</div>
+    <div class="cc-aff-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M9 22v-4h6v4"/></svg></div>
+    <div class="cc-aff-content">
+      <h4><span class="en">Get the Best Exchange Rates</span><span class="ar">احصل على أفضل أسعار الصرف</span></h4>
+      <p><span class="en">Compare fee-free international transfer services and save up to 4% on every currency exchange.</span><span class="ar">قارن بين خدمات التحويل الدولي بدون رسوم ووفّر حتى 4% على كل تحويل عملة.</span></p>
+    </div>
+    <a href="#" class="cc-aff-btn" onclick="dflTrack&&dflTrack('affiliate_click',{partner:'currency_transfer',page:document.title})">
+      <span class="en">Compare Rates →</span><span class="ar">قارن المعدلات ←</span>
+    </a>
+  </div>
+
+  <!-- CC-SPONSOR: Sponsor Block -->
+  <div class="cc-sponsor tool-rv">
+    <div class="cc-sponsor-label"><span class="en">Sponsored</span><span class="ar">محتوى مدعوم</span></div>
+    <h3><span class="en">Want to reach 100,000+ GCC residents monthly?</span><span class="ar">تريد الوصول إلى +100,000 مقيم خليجي شهرياً؟</span></h3>
+    <p><span class="en">DOTFORLIFE connects brands with high-intent users across travel, finance, and lifestyle decisions.</span><span class="ar">تربط دوت فور لايف العلامات التجارية بمستخدمين ذوي نية عالية عبر قرارات السفر والمالية وأسلوب الحياة.</span></p>
+    <a href="../contact.html" class="cc-sponsor-cta" onclick="dflTrack&&dflTrack('sponsor_cta_click',{page:document.title})">
+      <span class="en">Become a Partner →</span><span class="ar">كن شريكاً ←</span>
+    </a>
+  </div>
+
+  <!-- CC-RELATED: Related Tools -->
+  <div class="cc-related tool-rv">
+    <div class="cc-related-label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg> <span class="en">Continue Your Journey</span><span class="ar">أكمل رحلتك</span></div>
+    <div class="cc-related-title"><span class="en">Related Travel Tools</span><span class="ar">أدوات السفر ذات الصلة</span></div>
+    <div class="cc-related-sub"><span class="en">Everything you need before you travel</span><span class="ar">كل ما تحتاجه قبل السفر</span></div>
+    <div class="cc-related-grid">
+      <a href="/tools/travel-budget.html" class="cc-rc">
+        <div class="cc-rc-top">
+          <span class="cc-rc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="7.5 9.5 12 12 16.5 9.5"/><line x1="12" y1="12" x2="12" y2="17"/></svg></span>
+          <div>
+            <div class="cc-rc-name en">Trip Budget Calculator</div>
+            <div class="cc-rc-name ar">حاسبة ميزانية الرحلة</div>
+          </div>
+        </div>
+        <div class="cc-rc-desc en">Plan total trip cost</div><div class="cc-rc-desc ar">خطط ميزانية رحلتك</div>
+        <div class="cc-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
+      </a>
+      <a href="/tools/packing-checklist.html" class="cc-rc">
+        <div class="cc-rc-top">
+          <span class="cc-rc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></span>
+          <div>
+            <div class="cc-rc-name en">Packing Checklist</div>
+            <div class="cc-rc-name ar">قائمة الحقيبة الذكية</div>
+          </div>
+        </div>
+        <div class="cc-rc-desc en">Never forget essentials</div><div class="cc-rc-desc ar">لا تنسي شيئاً مهماً</div>
+        <div class="cc-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
+      </a>
+      <a href="/tools/return-to-hotel.html" class="cc-rc">
+        <div class="cc-rc-top">
+          <span class="cc-rc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg></span>
+          <div>
+            <div class="cc-rc-name en">Return to Hotel</div>
+            <div class="cc-rc-name ar">العودة للفندق</div>
+          </div>
+        </div>
+        <div class="cc-rc-desc en">Share your location safely</div><div class="cc-rc-desc ar">شاركي موقعك بأمان</div>
+        <div class="cc-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
+      </a>
+      <a href="/guides/mecca-medina.html" class="cc-rc guide">
+        <div class="cc-rc-top">
+          <span class="cc-rc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/></svg></span>
+          <div>
+            <div class="cc-rc-name en">Mecca & Medina Guide</div>
+            <div class="cc-rc-name ar">دليل مكة والمدينة</div>
+          </div>
+        </div>
+        <div class="cc-rc-desc en">Complete Hajj & Umrah guide</div><div class="cc-rc-desc ar">دليل الحج والعمرة الشامل</div>
+        <div class="cc-rc-cta"><span class="en">Read guide →</span><span class="ar">اقرأ الدليل ←</span></div>
+      </a>
+    </div>
+  </div>
+
 </main>
 
-<script>
-var RATES={SAR:3.75,USD:1,EUR:0.92,AED:3.67,KWD:0.307,QAR:3.64,BHD:0.376,OMR:0.385,EGP:48.5,JOD:0.71,GBP:0.79};
-function toggleLang(){var l=document.documentElement.getAttribute('data-lang')==='ar'?'en':'ar';document.documentElement.setAttribute('data-lang',l);document.documentElement.setAttribute('lang',l);document.documentElement.setAttribute('dir',l==='ar'?'rtl':'ltr');localStorage.setItem('dfl-lang',l);}
-function toggleTheme(){var t=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',t);localStorage.setItem('dfl-theme',t);}
-window.addEventListener('scroll',function(){document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>10);});
-function swapCurrencies(){var f=document.getElementById('from-cur').value;var t=document.getElementById('to-cur').value;document.getElementById('from-cur').value=t;document.getElementById('to-cur').value=f;}
-function convert(){
-  var amount=parseFloat(document.getElementById('amount').value)||0;
-  var from=document.getElementById('from-cur').value;
-  var to=document.getElementById('to-cur').value;
-  var inUSD=amount/RATES[from];
-  var result=inUSD*RATES[to];
-  var rate=RATES[to]/RATES[from];
-  document.getElementById('res-label').textContent=amount+' '+from+' =';
-  document.getElementById('res-value').textContent=result.toLocaleString('en',{minimumFractionDigits:2,maximumFractionDigits:4})+' '+to;
-  document.getElementById('res-rate').textContent='1 '+from+' = '+rate.toFixed(4)+' '+to;
-  document.getElementById('result-box').style.display='block';
-}
-</script>
-
-<div class="dfl-method" style="max-width:1200px;margin:32px auto;padding:0 24px">
-  <div class="dfl-method-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> <span class="en">Understanding exchange rates</span><span class="ar">فهم أسعار الصرف</span></div>
-  <p class="en">Exchange rates represent the value of one currency relative to another. For GCC residents, several currencies are pegged to the US dollar: the Saudi Riyal (SAR) at 3.75, the UAE Dirham (AED) at 3.67, and the Qatari Riyal (QAR) at 3.64. This means their values against the dollar remain stable over time. The Kuwaiti Dinar (KWD) is pegged to a basket of currencies and fluctuates within a narrow band. In practical terms, when planning a trip from Saudi Arabia to Europe, you can expect the SAR-EUR rate to change primarily based on EUR-USD movements. For everyday currency conversion, knowing these pegs helps you estimate quickly: approximately 3.75 SAR equals 1 USD at any time.</p>
-  <p class="ar">أسعار الصرف تمثل قيمة عملة مقابل أخرى. للمقيمين في الخليج، عدة عملات مربوطة بالدولار الأمريكي: الريال السعودي (SAR) عند 3.75، والدرهم الإماراتي (AED) عند 3.67، والريال القطري (QAR) عند 3.64. هذا يعني أن قيمتها مقابل الدولار تبقى مستقرة مع مرور الوقت. الدينار الكويتي (KWD) مربوط بسلة عملات ويتذبذب ضمن نطاق ضيق. من الناحية العملية، عند التخطيط لرحلة من السعودية إلى أوروبا، يمكنك توقع أن سعر SAR-EUR يتغير بشكل أساسي بناءً على تحركات EUR-USD. للتحويل اليومي، معرفة هذه الارتباطات تساعدك على التقدير السريع: حوالي 3.75 ريال سعودي تعادل 1 دولار أمريكي في أي وقت.</p>
-</div>
-
-<div class="dfl-method" style="max-width:1200px;margin:32px auto;padding:0 24px">
-  <div class="dfl-method-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v12"/><path d="M12 12l4-2.5"/></svg> <span class="en">Practical usage scenarios</span><span class="ar">سيناريوهات الاستخدام العملية</span></div>
-  <p class="en"><strong>Travel planning:</strong> Before any international trip, convert your home currency to the destination currency to understand spending power. For example, if you are travelling from the UAE to Turkey, knowing that 1 AED equals approximately 8 Turkish Lira helps you evaluate prices instantly.<br><strong>Online shopping:</strong> When buying from international stores, always convert the listed price to your local currency including estimated VAT and customs. A $50 item may cost closer to 195 SAR after shipping and fees.<br><strong>Remittances:</strong> For expats sending money home, comparing the mid-market rate (shown here) with the rate offered by your transfer provider reveals the true cost of the transfer.</p>
-  <p class="ar"><strong>تخطيط السفر:</strong> قبل أي رحلة دولية، حوّل عملتك المحلية إلى عملة الوجهة لفهم القوة الشرائية. مثلاً، إذا كنت مسافراً من الإمارات إلى تركيا، معرفة أن 1 درهم إماراتي يعادل حوالي 8 ليرات تركية يساعدك على تقييم الأسعار فوراً.<br><strong>التسوق عبر الإنترنت:</strong> عند الشراء من متاجر دولية، حوّل السعر المدرج إلى عملتك المحلية شاملًا ضريبة القيمة المضافة والجمارك المقدرة. منتج بـ 50 دولاراً قد يكلف حوالي 195 ريالاً سعودياً بعد الشحن والرسوم.<br><strong>الحوالات المالية:</strong> للمغتربين الذين يرسلون أموالاً لوطنهم، مقارنة سعر السوق الوسيط (المعروض هنا) مع السعر الذي يقدمه مزود التحويل يكشف التكلفة الحقيقية للتحويل.</p>
-</div>
-
-<div class="dfl-method" style="max-width:1200px;margin:32px auto;padding:0 24px">
-  <div class="dfl-method-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> <span class="en">Limitations &amp; how to get the best rate</span><span class="ar">القيود وكيفية الحصول على أفضل سعر</span></div>
-  <p class="en">This converter uses mid-market rates — the rate you see on financial news, not the rate you get at a currency exchange desk or ATM. Banks and exchange services typically add a margin of 1-5%. To minimize costs: use fee-free international transfer services for large amounts, withdraw local currency from ATMs at your destination rather than exchanging cash, and avoid airport exchange counters which offer the worst rates. For large currency exchanges (over 10,000 USD equivalent), consider negotiating with exchange houses directly for better rates.</p>
-  <p class="ar">هذا المحوّل يستخدم أسعار السوق الوسيطة — السعر الذي تراه في الأخبار المالية، وليس السعر الذي تحصل عليه في مكتب الصرافة أو الصراف الآلي. البنوك وخدمات الصرافة عادةً ما تضيف هامشاً يتراوح بين 1-5%. لتقليل التكاليف: استخدم خدمات التحويل الدولي بدون رسوم للمبالغ الكبيرة، اسحب العملة المحلية من الصراف الآلي في وجهتك بدلاً من صرف النقود، وتجنب مكاتب الصرافة في المطارات التي تقدم أسوأ الأسعار. لتحويل العملات الكبيرة (أكثر من 10,000 دولار أمريكي)، فكر في التفاوض مع شركات الصرافة مباشرة للحصول على أسعار أفضل.</p>
-</div>
-
-<section class="dfl-related" aria-label="Related tools and guides">
-  <div class="container">
-    <div class="dfl-related-label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg> <span class="en">Continue Your Journey</span><span class="ar">أكمل رحلتك</span></div>
-    <h2 class="dfl-related-title"><span class="en">Related Travel Tools</span><span class="ar">أدوات السفر ذات الصلة</span></h2>
-    <p class="dfl-related-sub"><span class="en">Everything you need before you travel</span><span class="ar">كل ما تحتاجه قبل السفر</span></p>
-    <div class="dfl-related-grid">
-      <a href="/tools/travel-budget.html" class="dfl-rc">
-        <div class="dfl-rc-top"><span class="dfl-rc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="7.5 9.5 12 12 16.5 9.5"/><line x1="12" y1="12" x2="12" y2="17"/></svg></span><div><div class="dfl-rc-name en">Trip Budget Calculator</div><div class="dfl-rc-name ar">حاسبة ميزانية الرحلة</div></div></div>
-        <div class="dfl-rc-desc en">Plan total trip cost</div><div class="dfl-rc-desc ar">خطط ميزانية رحلتك</div>
-        <div class="dfl-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
-      </a>
-      <a href="/tools/packing-checklist.html" class="dfl-rc">
-        <div class="dfl-rc-top"><span class="dfl-rc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></span><div><div class="dfl-rc-name en">Packing Checklist</div><div class="dfl-rc-name ar">قائمة الحقيبة الذكية</div></div></div>
-        <div class="dfl-rc-desc en">Never forget essentials</div><div class="dfl-rc-desc ar">لا تنسي شيئاً مهماً</div>
-        <div class="dfl-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
-      </a>
-      <a href="/tools/return-to-hotel.html" class="dfl-rc">
-        <div class="dfl-rc-top"><span class="dfl-rc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg></span><div><div class="dfl-rc-name en">Return to Hotel</div><div class="dfl-rc-name ar">العودة للفندق</div></div></div>
-        <div class="dfl-rc-desc en">Share your location safely</div><div class="dfl-rc-desc ar">شاركي موقعك بأمان</div>
-        <div class="dfl-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
-      </a>
-      <a href="/guides/mecca-medina.html" class="dfl-rc guide">
-        <div class="dfl-rc-top"><span class="dfl-rc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/></svg></span><div><div class="dfl-rc-name en">Mecca & Medina Guide</div><div class="dfl-rc-name ar">دليل مكة والمدينة</div></div></div>
-        <div class="dfl-rc-desc en">Complete Hajj & Umrah guide</div><div class="dfl-rc-desc ar">دليل الحج والعمرة الشامل</div>
-        <div class="dfl-rc-cta"><span class="en">Read guide →</span><span class="ar">اقرأ الدليل ←</span></div>
-      </a>
-    </div>
-  </div>
-</section>
 <footer class="site-footer" role="contentinfo">
   <div class="footer-inner">
     <div class="footer-top">
@@ -332,7 +517,7 @@ function convert(){
             <li><a href="../tools/bmi-calculator.html"><span class="en">BMI Calculator</span><span class="ar">حاسبة BMI</span></a></li>
             <li><a href="../tools/mortgage-calculator.html"><span class="en">Mortgage</span><span class="ar">التمويل</span></a></li>
             <li><a href="../tools/zakat-calculator.html"><span class="en">Zakat</span><span class="ar">الزكاة</span></a></li>
-            <li><a href="../tools/hijri-converter.html"><span class="en">Hijri Date</span><span class="ar">التاريخ الهجري</span></a></li>
+            <li><a href="../tools/currency-converter.html"><span class="en">Currency</span><span class="ar">العملات</span></a></li>
             <li><a href="../library.html"><span class="en">All Tools</span><span class="ar">كل الأدوات</span></a></li>
           </ul>
         </div>
@@ -343,9 +528,7 @@ function convert(){
             <li><a href="../blog.html"><span class="en">blog</span><span class="ar">المدونة</span></a></li>
             <li><a href="../contact.html"><span class="en">Contact</span><span class="ar">تواصل</span></a></li>
             <li><a href="../privacy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a></li>
-            <li><a href="../privacy-policy.html"><span class="en">Privacy Policy</span><span class="ar">سياسة الخصوصية</span></a></li>
             <li><a href="../terms.html"><span class="en">Terms</span><span class="ar">الشروط</span></a></li>
-            <li><a href="../editorial-standards.html"><span class="en">Editorial Standards</span><span class="ar">المعايير التحريرية</span></a></li>
           </ul>
         </div>
       </div>
@@ -355,7 +538,6 @@ function convert(){
       <span>© 2026 DOTFORLIFE, <span class="en">Free for families, always.</span><span class="ar">مجاني للعائلات، دائماً.</span></span>
       <div class="footer-bottom-links">
         <a href="../privacy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a>
-        <a href="../privacy-policy.html"><span class="en">Privacy Policy</span><span class="ar">سياسة الخصوصية</span></a>
         <a href="../terms.html"><span class="en">Terms</span><span class="ar">الشروط</span></a>
       </div>
     </div>
@@ -371,7 +553,7 @@ function convert(){
     <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
     <span class="en">Health</span><span class="ar">الصحة</span>
   </a>
-  <a href="../finance.html" class="dfl-mnav-item active" aria-label="Finance">
+  <a href="../finance.html" class="dfl-mnav-item" aria-label="Finance">
     <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
     <span class="en">Finance</span><span class="ar">المالية</span>
   </a>
@@ -408,19 +590,41 @@ function convert(){
 </div>
 <!-- ════════════════════════════════════════════════════════════ -->
 <script src="/scripts/global.js" defer></script>
-  <script src="/tool-share.js" defer></script>
-<!-- SEO_PROFILE
-  page_type: page
-  cluster: islamic
-  authority_score: 71
-  inbound_links: 29
-  outbound_links: 10
-  link_velocity: high
-  priority_indexing: true
-  content_depth: 23
-  word_count: 429
-  canonical: https://www.dotforlife.com/tools/currency-converter.html
--->
+<script>
+// ── RATES ──────────────────────────────────────────────────
+var RATES={SAR:3.75,USD:1,EUR:0.92,AED:3.67,KWD:0.307,QAR:3.64,BHD:0.376,OMR:0.385,EGP:48.5,JOD:0.71,GBP:0.79};
+
+function swapCurrencies(){
+  var f=document.getElementById('from-cur').value;
+  var t=document.getElementById('to-cur').value;
+  document.getElementById('from-cur').value=t;
+  document.getElementById('to-cur').value=f;
+}
+
+function convert(){
+  var amount=parseFloat(document.getElementById('amount').value)||0;
+  var from=document.getElementById('from-cur').value;
+  var to=document.getElementById('to-cur').value;
+  var inUSD=amount/RATES[from];
+  var result=inUSD*RATES[to];
+  var rate=RATES[to]/RATES[from];
+  var fmt={minimumFractionDigits:2,maximumFractionDigits:4};
+  document.getElementById('res-label').textContent=amount+' '+from+' =';
+  document.getElementById('res-value').textContent=result.toLocaleString('en',fmt)+' '+to;
+  document.getElementById('res-rate').textContent='1 '+from+' = '+rate.toFixed(4)+' '+to;
+  document.getElementById('result-box').style.display='block';
+}
+
+// ── FAQ TOGGLE ─────────────────────────────────────────────
+function toggleFAQ(el){
+  el.classList.toggle('open');
+  var answer=el.nextElementSibling;
+  if(answer) answer.classList.toggle('open');
+}
+
+// ── AUTO-CONVERT ON LOAD ──────────────────────────────────
+document.addEventListener('DOMContentLoaded',function(){ convert(); });
+</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1436107577087160" crossorigin="anonymous"></script>
 </body>
 </html>
