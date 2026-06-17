@@ -17,7 +17,7 @@ from datetime import datetime
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_MARKER = 'data-template="article"'
-CACHE_BUSTER = 'v=20260617a'
+CACHE_BUSTER = "v=20260617b"
 
 DIRS = ['featured-stories']
 
