@@ -787,10 +787,11 @@ body.index-page .mobile-dropdown .md-links a:active {
 [data-lang="ar"] .subnav-inner-unified { direction: rtl; }
 
 /* Body offset tokens — apply on each page */
-.has-subnav  { padding-top: 0 !important; }
+.has-subnav  { padding-top: 158px !important; }
 .no-subnav   { padding-top: 110px !important; }
 @media (max-width: 768px) {
-  .has-subnav { padding-top: 0 !important; }
+  .has-subnav { padding-top: 138px !important; }
+  .no-subnav  { padding-top: 90px !important; }
 }
 
 /* ── 21. SITE FOOTER ─────────────────────────────────────── */
@@ -1297,7 +1298,7 @@ body.index-page .mobile-dropdown .md-links a:active {
 @media (max-width: 520px) { .tools-grid { grid-template-columns: 1fr; } }
 
 /* Category pages: breathing room between sticky sub-nav and the tools section */
-.category-page #sub-nav + * { margin-top: 2.5rem; }
+.category-page:not(.has-subnav) #sub-nav + * { margin-top: 2.5rem; }
 
 
 /* Category pages: sub-nav matches navbar green — continuous flow from header to hero */
@@ -1335,6 +1336,11 @@ body.index-page .mobile-dropdown .md-links a:active {
 
 /* Category pages: hero green gradient starts from the very top (override page-specific body top padding) */
 body.category-page { padding-top: 0 !important; }
+/* Tool pages with sub-nav need proper offset to clear both fixed navbars */
+body.category-page.has-subnav { padding-top: 158px !important; }
+@media (max-width: 768px) {
+  body.category-page.has-subnav { padding-top: 138px !important; }
+}
 
 /* Internal pages: hero-stats (metrics + "start your day" bar) only on homepage, hidden on category-class pages */
 .category-page .hero-stats { display: none !important; }
