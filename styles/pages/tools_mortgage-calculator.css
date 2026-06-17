@@ -1091,3 +1091,197 @@
   .mo-gc-value { font-size: .9rem; }
   .mr-hdr { flex-direction: column; align-items: flex-start; }
 }
+
+/* ── MO-AFFILIATE: Affiliate Card ───────── */
+.mo-affiliate {
+  max-width: 760px;
+  margin: 0 auto 16px;
+  background: var(--mo-bg);
+  border: 1px solid var(--mo-bd);
+  border-radius: 20px;
+  padding: 20px 24px;
+  position: relative;
+  overflow: hidden;
+  transition: all .4s var(--mo-trans);
+  box-shadow: var(--mo-sh);
+}
+
+.mo-affiliate:hover {
+  border-color: var(--mo-teal);
+  box-shadow: var(--mo-shl);
+}
+
+.mo-aff-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: .6rem;
+  font-weight: 700;
+  color: var(--mo-teal);
+  background: var(--mo-teal-l);
+  padding: 3px 10px;
+  border-radius: 999px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+[data-lang="ar"] .mo-aff-badge {
+  right: auto;
+  left: 12px;
+}
+
+.mo-aff-inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.mo-aff-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: var(--mo-teal-l);
+  color: var(--mo-teal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.mo-aff-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+[data-theme="dark"] .mo-aff-icon {
+  background: rgba(13, 115, 119, .12);
+}
+
+.mo-aff-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.mo-aff-content h4 {
+  font-size: .85rem;
+  font-weight: 700;
+  color: var(--mo-text);
+  margin: 0 0 3px;
+}
+
+.mo-aff-content p {
+  font-size: .72rem;
+  color: var(--mo-text2);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.mo-aff-btn {
+  flex-shrink: 0;
+  padding: 10px 20px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--mo-teal), var(--mo-teal-d));
+  color: #fff;
+  font-size: .78rem;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all .3s var(--mo-trans);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mo-aff-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(13, 115, 119, .25);
+}
+
+[data-theme="dark"] .mo-aff-icon {
+  background: rgba(13, 115, 119, .12);
+}
+
+@media (max-width: 600px) {
+  .mo-aff-inner { flex-direction: column; text-align: center; }
+  .mo-aff-btn { width: 100%; justify-content: center; }
+}
+
+/* ── MO-SPONSOR: Sponsor Block ─────────── */
+.mo-sponsor {
+  max-width: 760px;
+  margin: 0 auto 16px;
+  background: linear-gradient(135deg, var(--mo-teal-l), rgba(13, 115, 119, .04));
+  border: 1px solid rgba(13, 115, 119, .12);
+  border-radius: 20px;
+  padding: 28px 24px;
+  text-align: center;
+  position: relative;
+  transition: all .4s var(--mo-trans);
+}
+
+[data-theme="dark"] .mo-sponsor {
+  background: linear-gradient(135deg, rgba(13, 115, 119, .08), rgba(13, 115, 119, .04));
+  border-color: rgba(13, 115, 119, .15);
+}
+
+.mo-sponsor:hover {
+  border-color: var(--mo-teal);
+  box-shadow: var(--mo-shl);
+}
+
+.mo-sponsor-label {
+  font-size: .6rem;
+  font-weight: 700;
+  color: var(--mo-text2);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  margin-bottom: 8px;
+}
+
+.mo-sponsor h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--mo-text);
+  margin: 0 0 6px;
+}
+
+.mo-sponsor p {
+  font-size: .78rem;
+  color: var(--mo-text2);
+  margin: 0 0 16px;
+  line-height: 1.5;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mo-sponsor-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 22px;
+  border-radius: 12px;
+  background: transparent;
+  border: 1.5px solid var(--mo-teal);
+  color: var(--mo-teal);
+  font-size: .78rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all .3s var(--mo-trans);
+}
+
+.mo-sponsor-cta:hover {
+  background: var(--mo-teal);
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(13, 115, 119, .2);
+}
+
+/* Add to animation stack */
+.mo-affiliate,
+.mo-sponsor {
+  animation: moFadeIn .5s var(--mo-trans) both;
+}
+
+.mo-affiliate { animation-delay: .3s; }
+.mo-sponsor { animation-delay: .35s; }
