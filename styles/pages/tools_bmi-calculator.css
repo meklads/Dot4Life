@@ -59,7 +59,6 @@ a{text-decoration:none;color:inherit}
 .bmi-hr-wrap {
   background: linear-gradient(175deg, #054241 0%, #0A5C5A 28%, #0D7377 50%, #0A5C5A 72%, #054241 100%);
   position: relative;
-  overflow: hidden;
   padding-top: 24px;
 }
 [data-theme="dark"] .bmi-hr-wrap {
@@ -119,7 +118,7 @@ a{text-decoration:none;color:inherit}
 .bmi-hr {
   position: relative;
   z-index: 1;
-  padding: 40px 28px 56px;
+  padding: 40px 28px 28px;
   text-align: center;
 }
 [data-lang="ar"] .bmi-hr { text-align: right; }
@@ -206,6 +205,45 @@ a{text-decoration:none;color:inherit}
 .bmi-mn {
   position: relative;
   z-index: 1;
+}
+
+/* Sub-nav inside hero */
+.bmi-hr-wrap #sub-nav {
+  margin-top: 0;
+  background: transparent !important;
+  position: sticky !important;
+  top: 140px !important;
+  border-top: 1px solid rgba(255,255,255,.08) !important;
+  padding: 0 28px;
+  z-index: 10;
+}
+.bmi-hr-wrap #sub-nav .sub-nav-inner {
+  justify-content: center;
+  gap: 4px;
+  padding: 12px 0;
+  max-width: 800px;
+  margin: 0 auto;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.bmi-hr-wrap #sub-nav .sub-nav-inner a {
+  background: rgba(255,255,255,.08) !important;
+  color: rgba(255,255,255,.75) !important;
+  border-radius: 999px !important;
+  padding: 7px 18px !important;
+  font-size: .78rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: all .3s ease;
+}
+.bmi-hr-wrap #sub-nav .sub-nav-inner a:hover {
+  background: rgba(255,255,255,.15) !important;
+  color: #fff !important;
+}
+.bmi-hr-wrap #sub-nav .sub-nav-inner a.active {
+  background: rgba(255,255,255,.18) !important;
+  color: #fff !important;
+  font-weight: 600;
 }
 
 /* ── Main ──────────────────────────────────── */
@@ -602,9 +640,10 @@ a{text-decoration:none;color:inherit}
   .bmi-hr-wrap { padding-top: 16px; }
   .bmi-hr-wrap::after { width: 300px; height: 300px; top: -150px; right: -80px; }
   .bmi-bc { padding: 0 20px 12px; font-size: .7rem; }
-  .bmi-hr { padding: 28px 20px 40px; }
+  .bmi-hr { padding: 28px 20px 20px; }
   .bmi-hr-st { gap: 24px; }
   .bmi-mn { padding: 28px 20px 60px; }
+  .bmi-hr-wrap #sub-nav { padding: 0 20px; }
   .bmi-cd { padding: 28px; }
   .bmi-cd::before { left: 28px; right: 28px; }
   .bmi-rs { padding: 28px; }
