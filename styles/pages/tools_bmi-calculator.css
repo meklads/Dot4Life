@@ -5,8 +5,11 @@
    Fabian Lorde references)
    ═══════════════════════════════════════════════ */
 
-body{padding-top:158px;}
-@media(max-width:768px){body{padding-top:158px;}}
+/* BMI sub-nav is inside hero, so only navbar offset needed */
+body.category-page.has-subnav { padding-top: 110px !important; }
+@media (max-width: 768px) {
+  body.category-page.has-subnav { padding-top: 90px !important; }
+}
 
 /* ── Design Tokens ─────────────────────────── */
 :root {
@@ -93,26 +96,6 @@ a{text-decoration:none;color:inherit}
   right: auto;
   left: -120px;
 }
-
-/* Breadcrumb inside hero, light text */
-.bmi-bc {
-  position: relative;
-  z-index: 1;
-  max-width: 1040px;
-  margin: 0 auto;
-  padding: 0 28px 24px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: .75rem;
-  color: rgba(255,255,255,.5);
-  flex-wrap: wrap;
-}
-[data-lang="ar"] .bmi-bc { flex-direction: row-reverse; }
-.bmi-bc a { color: rgba(255,255,255,.5); transition: color .2s; }
-.bmi-bc a:hover { color: rgba(255,255,255,.85); }
-.bmi-bc-sep { opacity: .4; }
-.bmi-bc-cur { color: rgba(255,255,255,.8); font-weight: 500; }
 
 /* Hero content */
 .bmi-hr {
@@ -212,7 +195,7 @@ a{text-decoration:none;color:inherit}
   margin-top: 0;
   background: transparent !important;
   position: sticky !important;
-  top: 140px !important;
+  top: 110px !important;
   border-top: 1px solid rgba(255,255,255,.08) !important;
   padding: 0 28px;
   z-index: 10;
@@ -639,7 +622,6 @@ a{text-decoration:none;color:inherit}
 @media (max-width: 768px) {
   .bmi-hr-wrap { padding-top: 16px; }
   .bmi-hr-wrap::after { width: 300px; height: 300px; top: -150px; right: -80px; }
-  .bmi-bc { padding: 0 20px 12px; font-size: .7rem; }
   .bmi-hr { padding: 28px 20px 20px; }
   .bmi-hr-st { gap: 24px; }
   .bmi-mn { padding: 28px 20px 60px; }
