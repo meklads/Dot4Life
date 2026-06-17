@@ -23,8 +23,8 @@
   /* reveal */
   if("IntersectionObserver" in window){
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add("visible");});},{threshold:0.1});
-    document.querySelectorAll(".reveal").forEach(function(el){io.observe(el);});
-  } else document.querySelectorAll(".reveal").forEach(function(el){el.classList.add("visible");});
+    document.querySelectorAll(".tool-rv, .reveal").forEach(function(el){io.observe(el);});
+  } else document.querySelectorAll(".tool-rv, .reveal").forEach(function(el){el.classList.add("visible");});
 
   /* hamburger menu */
   (function(){
@@ -634,7 +634,7 @@ function toggleFAQ(el){
 const ro=new IntersectionObserver(entries=>{
   entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); ro.unobserve(e.target); } });
 },{threshold:.1});
-document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+document.querySelectorAll('.tool-rv, .reveal').forEach(el=>ro.observe(el));
 </script>
 
 <div class="container" style="max-width:1200px;margin:0 auto;padding:0 24px 0">

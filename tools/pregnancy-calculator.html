@@ -24,8 +24,8 @@
   /* reveal */
   if("IntersectionObserver" in window){
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add("visible");});},{threshold:0.1});
-    document.querySelectorAll(".reveal").forEach(function(el){io.observe(el);});
-  } else document.querySelectorAll(".reveal").forEach(function(el){el.classList.add("visible");});
+    document.querySelectorAll(".tool-rv, .reveal").forEach(function(el){io.observe(el);});
+  } else document.querySelectorAll(".tool-rv, .reveal").forEach(function(el){el.classList.add("visible");});
 
   /* hamburger menu */
   (function(){
@@ -999,7 +999,7 @@ function toggleTheme(){
 /* ── REVEAL ──────────────────────────────────────────────────────────────── */
 function observeReveal(){
   const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}})},{threshold:.07});
-  document.querySelectorAll('.reveal:not(.visible)').forEach(el=>io.observe(el));
+  document.querySelectorAll('.tool-rv, .reveal:not(.visible)').forEach(el=>io.observe(el));
 }
 
 /* ── STICKY CTA ──────────────────────────────────────────────────────────── */
