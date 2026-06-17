@@ -184,7 +184,7 @@ window.dflTrack=function(event,params){
 <nav id="navbar" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
     <a href="../index.html" class="nav-logo" aria-label="DOTFORLIFE Home">
-      <img src="../logo1-footer.webp" alt="DOTFORLIFE" width="100" height="100" style="height:100px;width:auto;object-fit:contain;" width="100" height="100" loading="lazy">
+      <img src="../logo1-footer.webp" alt="DOTFORLIFE" width="100" height="100" style="height:100px;width:auto;object-fit:contain;" loading="lazy">
     </a>
     <ul class="nav-links">
       <li><a href="../health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
@@ -570,10 +570,14 @@ function calcBMI(){
   const tdee=(bmr*1.4).toFixed(0);
 
   const mg=document.getElementById('bmiMetrics');
+  const m1='<div class="bmi-mi"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>';
+  const m2='<div class="bmi-mi"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>';
+  const m3='<div class="bmi-mi"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>';
+  const m4='<div class="bmi-mi"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg></div>';
   if(unit==='metric'){
-    mg.innerHTML='<div class="bmi-mc"><div class="bmi-ml ar">الوزن الصحي</div><div class="bmi-ml en">Healthy range</div><div class="bmi-mv">'+minW+'–'+maxW+' كجم</div></div><div class="bmi-mc"><div class="bmi-ml ar">الوزن المثالي</div><div class="bmi-ml en">Ideal weight</div><div class="bmi-mv">'+idealKg.toFixed(1)+' كجم</div></div><div class="bmi-mc"><div class="bmi-ml ar">السعرات اليومية</div><div class="bmi-ml en">Daily calories</div><div class="bmi-mv">'+tdee+' كيلو</div></div><div class="bmi-mc"><div class="bmi-ml ar">فوق المثالي</div><div class="bmi-ml en">Above ideal</div><div class="bmi-mv">'+Math.max(0,weightKg-idealKg).toFixed(1)+' كجم</div></div>';
+    mg.innerHTML='<div class="bmi-mc">'+m1+'<div class="bmi-ml ar">الوزن الصحي</div><div class="bmi-ml en">Healthy range</div><div class="bmi-mv">'+minW+'–'+maxW+' كجم</div></div><div class="bmi-mc">'+m2+'<div class="bmi-ml ar">الوزن المثالي</div><div class="bmi-ml en">Ideal weight</div><div class="bmi-mv">'+idealKg.toFixed(1)+' كجم</div></div><div class="bmi-mc">'+m3+'<div class="bmi-ml ar">السعرات اليومية</div><div class="bmi-ml en">Daily calories</div><div class="bmi-mv">'+tdee+' كيلو</div></div><div class="bmi-mc">'+m4+'<div class="bmi-ml ar">فوق المثالي</div><div class="bmi-ml en">Above ideal</div><div class="bmi-mv">'+Math.max(0,weightKg-idealKg).toFixed(1)+' كجم</div></div>';
   }else{
-    mg.innerHTML='<div class="bmi-mc"><div class="bmi-ml en">Healthy range</div><div class="bmi-mv">'+minWLbs+'–'+maxWLbs+' lbs</div></div><div class="bmi-mc"><div class="bmi-ml en">Ideal weight</div><div class="bmi-mv">'+(idealKg*2.205).toFixed(1)+' lbs</div></div><div class="bmi-mc"><div class="bmi-ml en">Daily calories</div><div class="bmi-mv">'+tdee+' kcal</div></div><div class="bmi-mc"><div class="bmi-ml en">Above ideal</div><div class="bmi-mv">'+Math.max(0,(weightKg-idealKg)*2.205).toFixed(1)+' lbs</div></div>';
+    mg.innerHTML='<div class="bmi-mc">'+m1+'<div class="bmi-ml en">Healthy range</div><div class="bmi-mv">'+minWLbs+'–'+maxWLbs+' lbs</div></div><div class="bmi-mc">'+m2+'<div class="bmi-ml en">Ideal weight</div><div class="bmi-mv">'+(idealKg*2.205).toFixed(1)+' lbs</div></div><div class="bmi-mc">'+m3+'<div class="bmi-ml en">Daily calories</div><div class="bmi-mv">'+tdee+' kcal</div></div><div class="bmi-mc">'+m4+'<div class="bmi-ml en">Above ideal</div><div class="bmi-mv">'+Math.max(0,(weightKg-idealKg)*2.205).toFixed(1)+' lbs</div></div>';
   }
 
   // Waist risk
