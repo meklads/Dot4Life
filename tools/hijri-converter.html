@@ -306,13 +306,7 @@ window.dflTrack=function(event,params){
   </div>
 </div>
 
-<nav aria-label="breadcrumb" style="max-width:1100px;margin:0 auto;padding:14px 24px 0;display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--muted,#94a3b8);flex-wrap:wrap;">
-  <a href="../index.html" style="color:inherit;text-decoration:none;"><span class="en">Home</span><span class="ar">الرئيسية</span></a>
-  <span style="opacity:.4;">›</span>
-  <a href="../islamic.html" style="color:inherit;text-decoration:none;"><span class="en">Islamic Tools</span><span class="ar">الأدوات الإسلامية</span></a>
-  <span style="opacity:.4;">›</span>
-  <span style="font-weight:600;"><span class="en">Hijri Converter</span><span class="ar">محوّل التقويم الهجري</span></span>
-</nav>
+
 
 <!-- HERO -->
   <div class="tool-hr-wrap">
@@ -337,10 +331,10 @@ window.dflTrack=function(event,params){
   </div>
 </div>
   
-  </div><main role="main" class="main">
+  </div>
 
 <!-- CONVERTER CARD -->
-<div class="conv-card reveal">
+<div class="tool-cd conv-card reveal">
   <div class="conv-tabs">
     <button class="ctab active" id="tabG2H" onclick="switchTab('g2h')"><span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> ميلادي ← هجري</span><span class="en"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Gregorian → Hijri</span></button>
     <button class="ctab" id="tabH2G" onclick="switchTab('h2g')"><span class="ar"><svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg> هجري ← ميلادي</span><span class="en"><svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg> Hijri → Gregorian</span></button>
@@ -448,7 +442,7 @@ window.dflTrack=function(event,params){
   </div>
 </section>
 
-</main>
+
 
 <!-- MOBILE NAV -->
 
@@ -650,6 +644,7 @@ const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.targe
 document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 </script>
 
+<main class="tool-mn">
 <div class="container" style="max-width:1200px;margin:0 auto;padding:0 24px 0">
 <div class="dfl-method">
   <div class="dfl-method-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> <span class="en">How this is calculated</span><span class="ar">طريقة الحساب</span></div>
@@ -659,6 +654,8 @@ document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 </div>
 
 <!-- ═══ RELATED TOOLS ═══════════════════════════════════════════════════════ -->
+
+</main>
 <section class="dfl-related" aria-label="Related tools and guides">
   <div class="container">
     <div class="dfl-related-label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg> <span class="en">Continue Your Journey</span><span class="ar">أكمل رحلتك</span></div>
