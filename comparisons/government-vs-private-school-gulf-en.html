@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" data-lang="en" data-theme="light">
 <head>
-<script>(function(){var p=new URLSearchParams(location.search),gd=(function(){try{var z=(Intl.DateTimeFormat().resolvedOptions().timeZone||"");return /Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test(z)?"ar":"en";}catch(e){return "ar";}})(),l=p.get("lang")||localStorage.getItem("dfl-lang")||gd,t=p.get("theme")||localStorage.getItem("dfl-theme")||"light",h=document.documentElement;h.setAttribute("data-theme",t);h.setAttribute("data-lang",l);h.setAttribute("lang",l);h.setAttribute("dir",l==="ar"?"rtl":"ltr");if(p.get("lang"))localStorage.setItem("dfl-lang",l);if(p.get("theme"))localStorage.setItem("dfl-theme",t);})()</script>
+<script>(function(){var p=new URLSearchParams(location.search),gd=(function(){try{var z=(Intl.DateTimeFormat().resolvedOptions().timeZone||"");return /Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test(z)?"ar":"en";}catch(e){return "ar";}})(),h=document.documentElement,l=p.get("lang")||h.getAttribute("data-lang")||localStorage.getItem("dfl-lang")||gd,t=p.get("theme")||localStorage.getItem("dfl-theme")||h.getAttribute("data-theme")||"light";h.setAttribute("data-theme",t);h.setAttribute("data-lang",l);h.setAttribute("lang",l);h.setAttribute("dir",l==="ar"?"rtl":"ltr");if(p.get("lang"))localStorage.setItem("dfl-lang",l);if(p.get("theme"))localStorage.setItem("dfl-theme",t);})()</script>
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -71,14 +71,16 @@ tr:nth-child(even){background:#f8faf9}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles/global.css?v=20260608u">
-  <link rel="stylesheet" href="/styles/home.css?v=20260608u">
-  <link rel="stylesheet" href="/styles/pages/articles.css?v=20260608u">
+  <link rel="stylesheet" href="/styles/global.css?v=20260617a">
+  <link rel="stylesheet" href="/styles/home.css?v=20260617a">
+  <link rel="stylesheet" href="/styles/pages/articles.css?v=20260617a">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1436107577087160" crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3G1XPV4F0G"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3G1XPV4F0G');</script>
 </head>
 <body data-template="article">
+
+<div id="reading-progress" role="progressbar" aria-label="Reading progress"></div>
 
 <!-- ═══ UNIFIED HEADER ══════════════════════════════════════ -->
 <nav id="navbar"><div class="nav-inner"><a href="/" class="nav-logo"><img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" width="100" height="100" style="height:100px;width:auto;object-fit:contain;" loading="lazy"></a><ul class="nav-links"><li><a href="/health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li><li><a href="/finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li><li><a href="/real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li><li><a href="/travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li><li><a href="/islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li><li><a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a></li><li><a href="/archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a></li><li><a href="/blog.html"><span class="en">blog</span><span class="ar">المدونة</span></a></li><li><a href="/library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a></li></ul><div class="nav-controls"><button class="nav-btn" id="lang-toggle"><span class="en">عربي</span><span class="ar">English</span></button><button class="nav-btn" id="theme-toggle">
@@ -93,26 +95,29 @@ tr:nth-child(even){background:#f8faf9}
 <section class="article-banner" aria-label="Article banner">
   <div class="article-banner-img-wrap">
     <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=600&h=340&q=85" alt="" class="article-banner-img" width="1200" height="420" loading="eager" fetchpriority="high">
-    <div class="article-banner-overlay" style="text-align:left;">
-      <div class="article-banner-cat" style="display:inline-block;color:#fff;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:4px 14px;font-size:.72rem;font-weight:700;margin-bottom:.75rem;backdrop-filter:blur(4px);">comparisons</div>
-      <h1 class="article-banner-title" style="font-size:clamp(1.5rem,3.5vw,2.2rem);line-height:1.4;font-weight:800;color:#fff;text-shadow:0 2px 20px rgba(0,0,0,.3);margin:0;">Government vs Private School for Gulf Children: A Complete Cost Decision Guide</h1>
-      <div class="article-banner-meta" style="color:rgba(255,255,255,.8);margin-top:.75rem;font-size:.8rem;display:flex;gap:.6rem;flex-wrap:wrap;justify-content:flex-start;">
+    <div class="article-banner-overlay">
+      <div class="article-banner-cat">comparisons</div>
+      <h1 class="article-banner-title">Government vs Private School for Gulf Children: A Complete Cost Decision Guide</h1>
+      <div class="article-banner-meta">
         <span>Apr 01, 2026</span>
-        <span>8 min read</span>
+        <span>9 min read</span>
       </div>
     </div>
   </div>
 </section>
 
+<div class="article-layout">
+
+<main class="article-main">
 <article class="article-body">
 <p>Seven years ago, Abu Khalid stood before a choice: the government school near his home in Riyadh for free, or the private school whose annual fee of 45,000 SAR could buy a new car. He chose private, worried that government schooling would not prepare his son for the future. Seven years later, Abu Khalid admits the decision was not easy and asks himself: Was it truly the best choice? This article is a neutral guide to help you decide based on clear criteria, not fears or social pressure.</p>
 
-<h2>Why This Decision Is Hard for Gulf Families</h2>
+<h2 id="why-this-decision-is-hard-for-gulf-families">Why This Decision Is Hard for Gulf Families</h2>
 <p>Choosing a school is one of the most important financial and educational decisions a family makes. In the Gulf, the difficulty is amplified by multiple factors: the range of options (government, national private, international private), the huge cost variation (from free to 120,000 AED annually), and social pressure that makes some parents feel that choosing government school is "falling short" even if it is excellent.</p>
 
 <p>In a Saudi Ministry of Education survey (2026), 62% of parents said choosing a school was the most stressful educational decision they faced, and 38% regretted their first choice within a year of enrollment. This means rushing the decision without clear criteria leads to regret later.</p>
 
-<h2>Comprehensive Comparison Table</h2>
+<h2 id="comprehensive-comparison-table">Comprehensive Comparison Table</h2>
 <table>
   <tr><th>Criterion</th><th>Government School</th><th>Private (National)</th><th>Private (International)</th></tr>
   <tr><td>Annual Cost</td><td>Free</td><td>15,000-35,000 SAR</td><td>40,000-80,000+ SAR</td></tr>
@@ -125,19 +130,19 @@ tr:nth-child(even){background:#f8faf9}
   <tr><td>Facilities</td><td>Good</td><td>Very good</td><td>Excellent</td></tr>
 </table>
 
-<h2>Key Decision Criteria</h2>
+<h2 id="key-decision-criteria">Key Decision Criteria</h2>
 
-<h3>1. Cost: The Biggest Financial Illusion</h3>
+<h3 id="1-cost-the-biggest-financial-illusion">1. Cost: The Biggest Financial Illusion</h3>
 <p>Many families believe private school is an indispensable educational investment. But the numbers tell a different story. One child in a mid-range private school (30,000 SAR annually) costs 570,000 SAR over 12 years (from kindergarten to grade 12). With two children, that figure exceeds one million SAR. That amount could be a down payment on a property or an investment in a future education fund.</p>
 
 <p>More importantly, not every private school offers better education. A study from the National Education Center (2025) found that some mid-range private schools deliver lower education quality than neighboring government schools. High fees do not automatically guarantee higher quality.</p>
 
-<h3>2. Education Quality: What the Numbers Say</h3>
+<h3 id="2-education-quality-what-the-numbers-say">2. Education Quality: What the Numbers Say</h3>
 <p>In TIMSS international assessments for math and science (2023), Saudi Arabia and the UAE showed notable improvement in government school student results, outperforming many developed countries. Government school students in the UAE outperformed private school students in some subjects, especially at primary levels. This challenges the common assumption that private is always better academically.</p>
 
 <p>However, government school quality varies between regions and individual schools. There are excellent government schools and weaker ones. The solution is to research the specific school you are targeting, not judge the entire sector.</p>
 
-<h3>3. Values and Identity: What Money Cannot Buy</h3>
+<h3 id="3-values-and-identity-what-money-cannot-buy">3. Values and Identity: What Money Cannot Buy</h3>
 <p>Government schools clearly excel in instilling national identity, Arabic language, and Islamic values. If this is your family's top priority, government school may be the better choice despite its limitations. International private schools, especially those taught entirely in English with Western curricula, may weaken a child's connection to Arab and Islamic identity. Some families choose a middle path: national private schools that combine the national curriculum with strong English.</p>
 
 <div class="pro-box">
@@ -148,27 +153,38 @@ tr:nth-child(even){background:#f8faf9}
 <strong>✅ Private School Advantages:</strong> Smaller classes | Internationally accredited curricula | Strong English | Diverse extracurriculars | Modern facilities | International university preparation
 </div>
 
-<h2>Practical Scenarios: Which School Fits You</h2>
+<h2 id="practical-scenarios-which-school-fits-you">Practical Scenarios: Which School Fits You</h2>
 <p><strong>Scenario 1: Limited income family (under 15,000 SAR/month):</strong> Government school is the logical choice. Save 570,000 SAR per child and invest it in external support activities (language courses, skills, sports). A strong government school plus quality external activities beats a weak private school.</p>
 
 <p><strong>Scenario 2: Middle-income family (15,000-30,000 SAR):</strong> Comparison is essential. Study the excellent government schools in your area first. If you do not find one that satisfies you, consider a mid-range national private school. Do not stretch your budget for an expensive international school. Two children in a mid-range private school is better than one child in a premium international school.</p>
 
 <p><strong>Scenario 3: High-income (+30,000 SAR) + international education priority:</strong> An international school is a suitable choice, especially if you plan for your children to study abroad. But even here, do not neglect checking the school's quality yourself. Reputation alone is not enough. Make an unannounced visit, talk to current parents honestly, and ask about university admission rates, not just the school's general reputation.</p>
 
-<h2>The Hidden Criteria Parents Overlook</h2>
+
+
+<div class="in-content-subscribe">
+  <h3>📬 <span class="en">Enjoying this article?</span><span class="ar">هل يعجبك المقال؟</span></h3>
+  <p><span class="en">Get more family tips every Friday — join our newsletter.</span><span class="ar">احصل على نصائح أسرية كل جمعة — اشترك في نشرتنا.</span></p>
+  <div class="sub-input-wrap">
+    <input type="email" placeholder="your@email.com" aria-label="Email">
+    <button onclick="alert('🚧 Coming soon — signup integration.')"><span class="en">Subscribe</span><span class="ar">اشترك</span></button>
+  </div>
+</div>
+
+<h2 id="the-hidden-criteria-parents-overlook">The Hidden Criteria Parents Overlook</h2>
 <p>Some criteria do not appear in glossy brochures but significantly impact the child's educational experience. Most important: teacher turnover rate (if the school changes teachers every year, that is a red flag), the quality of school administration beyond just building appearance, how well activities match your child's interests not just their total count, and finally the school's overall culture: is it competitively tense or supportively encouraging?</p>
 
 <p>Visiting during a regular school day gives you a more honest picture than an official tour. Notice how teachers interact with students, how children behave in the playground, and your general feeling walking through the corridors. Your parental intuition matters.</p>
 
-<h2>A Decision That Lives With You for Years</h2>
+<h2 id="a-decision-that-lives-with-you-for-years">A Decision That Lives With You for Years</h2>
 <p>School choice is not a single decision but a series of decisions. What works for a 6-year-old may not work at 14. Some children need a more supportive environment in early years then transition to a more challenging school later. Transferring between schools is possible and not a failure. What matters is tracking your child's changing needs and not clinging to an old decision that no longer fits.</p>
 
 <p>In the end, remember that good schools are made by good families, not the other way around. School is a supporting environment, but the real engine of education is the home. Your involvement in checking homework, talking about their school day, and reading together are the most influential factors in their educational success, regardless of the school name on their shirt.</p>
 
-<h2>The Bottom Line: There Is No Single Right Choice</h2>
+<h2 id="the-bottom-line-there-is-no-single-right-choice">The Bottom Line: There Is No Single Right Choice</h2>
 <p>The right decision varies by family based on: budget, value priorities, school proximity, individual child needs, and the quality of available schools in your area. Do not feel social pressure. An excellent government school is better than a mediocre private school. And most importantly: parental involvement and engagement with their children's education affects outcomes more than the type of school itself.</p>
 
-<h2>Frequently Asked Questions (FAQ)</h2>
+<h2 id="frequently-asked-questions-faq">Frequently Asked Questions (FAQ)</h2>
 
 <p><strong>What is the difference between government and private schools in the Gulf?</strong><br>
 Government schools are free and follow each country's national curriculum. Private schools offer international curricula (British, American, IB) with annual fees from 15,000 to 80,000+ SAR depending on city and program. Government schools provide a local environment with strong cultural values, while private schools offer internationally recognized curricula, broader activities, and smaller class sizes. There are also national private schools that combine the national curriculum with strong English.</p>
@@ -189,7 +205,127 @@ Set a realistic budget and stick to it. Compare 3-5 schools in your area not jus
 Yes, but not as decisively as many believe. International curriculum graduates (IGCSE, IB, SAT) find easier international university admission because their qualifications are directly recognized. For local Gulf universities, GPA and entrance exam scores (Qiyas, Aptitude) matter most regardless of school type. Many high-achieving students from government schools have earned full scholarships at top global universities. The student's individual performance is what matters, not the school name.</p>
 </article>
 
+<div class="article-end">
+<div class="article-share">
+  <a href="https://wa.me/?text=Government vs Private Schools in the Gulf: Which Is Better?%20https://dotforlife.com/comparisons/government-vs-private-school-gulf-en.html" target="_blank" rel="noopener" class="share-btn whatsapp" aria-label="Share on WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span>WhatsApp</span>
+  </a>
+  <a href="https://twitter.com/intent/tweet?text=Government vs Private Schools in the Gulf: Which Is Better?&url=https://dotforlife.com/comparisons/government-vs-private-school-gulf-en.html" target="_blank" rel="noopener" class="share-btn x" aria-label="Share on X">
+    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    <span>X</span>
+  </a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https://dotforlife.com/comparisons/government-vs-private-school-gulf-en.html" target="_blank" rel="noopener" class="share-btn facebook" aria-label="Share on Facebook">
+    <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    <span>Facebook</span>
+  </a>
+  <button class="share-btn copy-link" onclick="navigator.clipboard.writeText(location.href);var s=this.querySelectorAll('span');if(s.length>1){s[0].textContent='✓ Copied';s[1].textContent='✓ نُسخ'}" aria-label="Copy link">
+    <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+    <span class="en">Copy</span><span class="ar">نسخ</span>
+  </button>
 </div>
+
+<div class="article-tool-cta">
+  <h3><span class="en">Try Our Savings Calculator</span><span class="ar">جرّب Savings Calculator</span></h3>
+  <p><span class="en">Calculate, plan, and take control of your family finances.</span><span class="ar">احسب، خطّط، وتحكّم في مالية أسرتك.</span></p>
+  <a href="/tools/savings-calculator.html" class="tool-cta-btn"><span class="en">Open Tool →</span><span class="ar">فتح الأداة ←</span></a>
+</div>
+
+<div class="article-read-also">
+  <h3><span class="en">📖 Read Also</span><span class="ar">📖 اقرأ أيضاً</span></h3>
+  <div class="read-also-grid">
+    <a href="/featured-stories/featured-story-saudi-mother.html" class="read-also-card">
+      <img src="https://images.unsplash.com/photo-1511385348-a52b4a160dc2?auto=format&fit=crop&w=600&h=340&q=85" alt="" loading="lazy">
+      <span class="read-also-title">A Saudi Mother's Journey: Balancing Work and Parenting</span>
+    </a>
+    <a href="/featured-stories/featured-story-gulf-family-home.html" class="read-also-card">
+      <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=600&h=340&q=85" alt="" loading="lazy">
+      <span class="read-also-title">How a Gulf Family Transformed Their Home into a Peace Oasis</span>
+    </a>
+    <a href="/peace-capsules/peace-at-home-5-steps.html" class="read-also-card">
+      <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&h=340&q=85" alt="" loading="lazy">
+      <span class="read-also-title">5 Steps to Turn Your Home into a Haven of Peace</span>
+    </a>
+    <a href="/featured-stories/emirati-grandmother-cooking-traditions.html" class="read-also-card">
+      <img src="https://images.unsplash.com/photo-1547573854-74d2a71d0826?auto=format&fit=crop&w=600&h=340&q=85" alt="" loading="lazy">
+      <span class="read-also-title">An Emirati Grandmother Teaches Her Grandchildren Traditional Cooking Every Friday</span>
+    </a>
+  </div>
+</div>
+
+<div class="article-friday-cta">
+  <h3>📬 <span class="en">Friday Family Tips</span><span class="ar">نصائح الجمعة للأسرة</span></h3>
+  <p><span class="en">Get weekly inspiration delivered to your inbox.</span><span class="ar">احصل على إلهام أسبوعي في بريدك.</span></p>
+  <div class="friday-input-wrap">
+    <input type="email" placeholder="your@email.com" aria-label="Email">
+    <button onclick="alert('🚧 Coming soon — signup integration.')"><span class="en">Join</span><span class="ar">اشترك</span></button>
+  </div>
+</div>
+
+<div class="article-tags">
+  <span class="tag">#family</span>
+  <span class="tag">#parenting</span>
+  <span class="tag">#kids</span>
+  <span class="tag">#education</span>
+  <span class="tag">#gulf-family</span>
+  <span class="tag">#values</span>
+</div>
+</div>
+</main>
+
+<aside class="article-sidebar">
+<div class="sidebar-module sidebar-team-card">
+  <img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" width="56" height="56" loading="lazy">
+  <div class="team-name"><span class="en">Dot4Life Team</span><span class="ar">فريق دوت فور لايف</span></div>
+  <div class="team-trust"><span class="en">Trusted content, carefully edited for Gulf families.</span><span class="ar">محتوى موثوق، محرَّر بعناية للأسرة الخليجية.</span></div>
+  <a href="/editorial-standards.html" class="team-link"><span class="en">Our Standards →</span><span class="ar">معاييرنا التحريرية ←</span></a>
+</div>
+
+<div class="sidebar-module sidebar-toc">
+  <h4>📑 <span class="en">Contents</span><span class="ar">المحتويات</span></h4>
+  <a href="#why-this-decision-is-hard-for-gulf-families" class="toc-item">Why This Decision Is Hard for Gulf Families</a>
+  <a href="#comprehensive-comparison-table" class="toc-item">Comprehensive Comparison Table</a>
+  <a href="#key-decision-criteria" class="toc-item">Key Decision Criteria</a>
+  <a href="#1-cost-the-biggest-financial-illusion" class="toc-item toc-item-h3">1. Cost: The Biggest Financial Illusion</a>
+  <a href="#2-education-quality-what-the-numbers-say" class="toc-item toc-item-h3">2. Education Quality: What the Numbers Say</a>
+  <a href="#3-values-and-identity-what-money-cannot-buy" class="toc-item toc-item-h3">3. Values and Identity: What Money Cannot Buy</a>
+  <a href="#practical-scenarios-which-school-fits-you" class="toc-item">Practical Scenarios: Which School Fits You</a>
+  <a href="#the-hidden-criteria-parents-overlook" class="toc-item">The Hidden Criteria Parents Overlook</a>
+  <a href="#a-decision-that-lives-with-you-for-years" class="toc-item">A Decision That Lives With You for Years</a>
+  <a href="#the-bottom-line-there-is-no-single-right-choice" class="toc-item">The Bottom Line: There Is No Single Right Choice</a>
+  <a href="#frequently-asked-questions-faq" class="toc-item">Frequently Asked Questions (FAQ)</a>
+</div>
+
+<div class="sidebar-module sidebar-related">
+  <h4><span class="en">Related</span><span class="ar">ذات صلة</span></h4>
+  <a href="/featured-stories/featured-story-saudi-mother.html" class="sidebar-related-item">
+    <img src="https://images.unsplash.com/photo-1511385348-a52b4a160dc2?auto=format&fit=crop&w=600&h=340&q=85" alt="" width="64" height="48" loading="lazy">
+    <span class="related-title">A Saudi Mother's Journey: Balancing Work and Parenting</span>
+  </a>
+  <a href="/featured-stories/featured-story-gulf-family-home.html" class="sidebar-related-item">
+    <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=600&h=340&q=85" alt="" width="64" height="48" loading="lazy">
+    <span class="related-title">How a Gulf Family Transformed Their Home into a Peace Oasis</span>
+  </a>
+  <a href="/peace-capsules/peace-at-home-5-steps.html" class="sidebar-related-item">
+    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&h=340&q=85" alt="" width="64" height="48" loading="lazy">
+    <span class="related-title">5 Steps to Turn Your Home into a Haven of Peace</span>
+  </a>
+  <a href="/featured-stories/emirati-grandmother-cooking-traditions.html" class="sidebar-related-item">
+    <img src="https://images.unsplash.com/photo-1547573854-74d2a71d0826?auto=format&fit=crop&w=600&h=340&q=85" alt="" width="64" height="48" loading="lazy">
+    <span class="related-title">An Emirati Grandmother Teaches Her Grandchildren Traditional Cooking Every Friday</span>
+  </a>
+</div>
+
+<div class="sidebar-module sidebar-tools">
+  <h4>🛠 <span class="en">Tools</span><span class="ar">أدوات</span></h4>
+  <a href="/tools/savings-calculator.html" class="tool-btn">Savings Calculator</a>
+  <a href="/tools/budget-planner.html" class="tool-btn">Budget Planner</a>
+</div>
+</aside>
+
+</div><!-- /article-layout -->
+
+</div><!-- /article-wrap -->
 
 <!-- ═══ UNIFIED FOOTER ══════════════════════════════════════ -->
 <footer class="site-footer" role="contentinfo">
@@ -248,6 +384,39 @@ Yes, but not as decisively as many believe. International curriculum graduates (
 <!-- ═══ END FOOTER ══════════════════════════════════════ -->
 
 
-<script src="/scripts/global.js?v=20260608u" defer></script>
+<script src="/scripts/global.js?v=20260617a" defer></script>
+<script>
+(function(){
+  // Reading progress bar
+  var bar = document.getElementById('reading-progress');
+  if(bar){
+    window.addEventListener('scroll',function(){
+      var h = document.documentElement;
+      var total = h.scrollHeight - h.clientHeight;
+      var pct = (h.scrollTop || document.body.scrollTop) / (total || 1) * 100;
+      bar.style.width = pct + '%';
+    },{passive:true});
+  }
+  // TOC active highlight
+  var tocLinks = document.querySelectorAll('.toc-item');
+  if(tocLinks.length){
+    var headings = [];
+    tocLinks.forEach(function(link){
+      var id = link.getAttribute('href').replace('#','');
+      var el = document.getElementById(id);
+      if(el) headings.push({el:el,link:link});
+    });
+    window.addEventListener('scroll',function(){
+      var scrollY = window.scrollY + 130;
+      var current = null;
+      headings.forEach(function(h){
+        if(h.el.offsetTop <= scrollY) current = h;
+      });
+      tocLinks.forEach(function(l){ l.classList.remove('is-active'); });
+      if(current) current.link.classList.add('is-active');
+    },{passive:true});
+  }
+})();
+</script>
 </body>
 </html>

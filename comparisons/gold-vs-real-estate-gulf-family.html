@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl" data-lang="ar" data-theme="light">
 <head>
-<script>(function(){var p=new URLSearchParams(location.search),gd=(function(){try{var z=(Intl.DateTimeFormat().resolvedOptions().timeZone||"");return /Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test(z)?"ar":"en";}catch(e){return "ar";}})(),l=p.get("lang")||localStorage.getItem("dfl-lang")||gd,t=p.get("theme")||localStorage.getItem("dfl-theme")||"light",h=document.documentElement;h.setAttribute("data-theme",t);h.setAttribute("data-lang",l);h.setAttribute("lang",l);h.setAttribute("dir",l==="ar"?"rtl":"ltr");if(p.get("lang"))localStorage.setItem("dfl-lang",l);if(p.get("theme"))localStorage.setItem("dfl-theme",t);})()</script>
+<script>(function(){var p=new URLSearchParams(location.search),gd=(function(){try{var z=(Intl.DateTimeFormat().resolvedOptions().timeZone||"");return /Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test(z)?"ar":"en";}catch(e){return "ar";}})(),h=document.documentElement,l=p.get("lang")||h.getAttribute("data-lang")||localStorage.getItem("dfl-lang")||gd,t=p.get("theme")||localStorage.getItem("dfl-theme")||h.getAttribute("data-theme")||"light";h.setAttribute("data-theme",t);h.setAttribute("data-lang",l);h.setAttribute("lang",l);h.setAttribute("dir",l==="ar"?"rtl":"ltr");if(p.get("lang"))localStorage.setItem("dfl-lang",l);if(p.get("theme"))localStorage.setItem("dfl-theme",t);})()</script>
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -76,14 +76,16 @@ tr:nth-child(even){background:#f8faf9}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles/global.css?v=20260608u">
-  <link rel="stylesheet" href="/styles/home.css?v=20260608u">
-  <link rel="stylesheet" href="/styles/pages/articles.css?v=20260608u">
+  <link rel="stylesheet" href="/styles/global.css?v=20260617a">
+  <link rel="stylesheet" href="/styles/home.css?v=20260617a">
+  <link rel="stylesheet" href="/styles/pages/articles.css?v=20260617a">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1436107577087160" crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3G1XPV4F0G"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3G1XPV4F0G');</script>
 </head>
 <body data-template="article">
+
+<div id="reading-progress" role="progressbar" aria-label="Reading progress"></div>
 
 <!-- ═══ UNIFIED HEADER ══════════════════════════════════════ -->
 <nav id="navbar"><div class="nav-inner"><a href="/" class="nav-logo"><img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" width="100" height="100" style="height:100px;width:auto;object-fit:contain;" loading="lazy"></a><ul class="nav-links"><li><a href="/health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li><li><a href="/finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li><li><a href="/real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li><li><a href="/travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li><li><a href="/islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li><li><a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a></li><li><a href="/archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a></li><li><a href="/blog.html"><span class="en">blog</span><span class="ar">المدونة</span></a></li><li><a href="/library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a></li></ul><div class="nav-controls"><button class="nav-btn" id="lang-toggle"><span class="en">عربي</span><span class="ar">English</span></button><button class="nav-btn" id="theme-toggle">
@@ -97,27 +99,30 @@ tr:nth-child(even){background:#f8faf9}
 
 <section class="article-banner" aria-label="Article banner">
   <div class="article-banner-img-wrap">
-    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=600&h=340&q=85" alt="" class="article-banner-img" width="1200" height="420" loading="eager" fetchpriority="high">
-    <div class="article-banner-overlay" style="text-align:right;">
-      <div class="article-banner-cat" style="display:inline-block;color:#fff;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:4px 14px;font-size:.72rem;font-weight:700;margin-bottom:.75rem;backdrop-filter:blur(4px);">مقارنات</div>
-      <h1 class="article-banner-title" style="font-size:clamp(1.5rem,3.5vw,2.2rem);line-height:1.4;font-weight:800;color:#fff;text-shadow:0 2px 20px rgba(0,0,0,.3);margin:0;">الاستثمار في الذهب أم العقار للأسرة الخليجية؟ مقارنة شاملة 2026</h1>
-      <div class="article-banner-meta" style="color:rgba(255,255,255,.8);margin-top:.75rem;font-size:.8rem;display:flex;gap:.6rem;flex-wrap:wrap;justify-content:flex-end;">
+    <img src="/assets/images/articles/featured-stories-gulf-father-money-lessons.webp" alt="" class="article-banner-img" width="1200" height="420" loading="eager" fetchpriority="high">
+    <div class="article-banner-overlay">
+      <div class="article-banner-cat">مقارنات</div>
+      <h1 class="article-banner-title">الاستثمار في الذهب أم العقار للأسرة الخليجية؟ مقارنة شاملة 2026</h1>
+      <div class="article-banner-meta">
         <span>8 يونيو 2026</span>
-        <span>٨ دقائق قراءة</span>
+        <span>١٤ دقائق قراءة</span>
       </div>
     </div>
   </div>
 </section>
 
+<div class="article-layout">
+
+<main class="article-main">
 <article class="article-body">
 <p>أمام الأسرة الخليجية سؤال متكرر: إذا توفّر مبلغ من المال، هل أشتري ذهباً أم عقاراً؟ كل خيار له أنصاره، وكلاهما يعتبران ملاذاً آمناً في الثقافة المالية الخليجية. لكن الحقيقة أن كلاً منهما يناسب أهدافاً وظروفاً مختلفة تماماً. هذه المقارنة تأخذك خطوة بخطوة في كل ما تحتاج معرفته قبل اتخاذ القرار، مع أمثلة حقيقية من السوق السعودي والخليجي.</p>
 
-<h2>لماذا هذا السؤال ملحّ للأسرة الخليجية؟</h2>
+<h2 id="لماذا-هذا-السؤال-ملح-للأسرة-الخليجية">لماذا هذا السؤال ملحّ للأسرة الخليجية؟</h2>
 <p>في السنوات الخمس الأخيرة، زادت تقلبات الأسواق العالمية، وتغيّرت أنظمة التمويل العقاري في السعودية والإمارات وقطر، وارتفعت أسعار الذهب إلى مستويات قياسية. في 2024 تجاوز سعر جرام الذهب عيار 24 حاجز 260 ريالاً سعودياً. وفي الرياض، ارتفع متوسط أسعار الشقق بنسبة 12% خلال عامين بسبب النمو السكاني المتسارع والتحولات الاقتصادية الكبرى.</p>
 
 <p>الأسرة الخليجية لم تعد تستثمر فقط للادخار، بل لحماية أموالها من التضخم وتحقيق دخل إضافي. اختيار الوعاء الاستثماري المناسب أصبح قراراً مصيرياً. تخيّل أسرة في جدة لديها 500 ألف ريال مدخرات. هل تشتري شقة صغيرة وتؤجرها، أم تستثمر في سبائك ذهب وتدخر العائد؟ لكل خيار سيناريو مختلف تماماً.</p>
 
-<h2>جدول المقارنة المباشر: الذهب مقابل العقار</h2>
+<h2 id="جدول-المقارنة-المباشر-الذهب-مقابل-العقار">جدول المقارنة المباشر: الذهب مقابل العقار</h2>
 
 <table>
   <tr><th>المعيار</th><th>🥇 الذهب</th><th>🏠 العقار</th></tr>
@@ -133,9 +138,9 @@ tr:nth-child(even){background:#f8faf9}
   <tr><td><strong>تنويع المحفظة</strong></td><td>عنصر حماية</td><td>عنصر دخل واستقرار</td></tr>
 </table>
 
-<h2>تحليل كل خيار بالتفصيل</h2>
+<h2 id="تحليل-كل-خيار-بالتفصيل">تحليل كل خيار بالتفصيل</h2>
 
-<h3>متى يناسبك الاستثمار في الذهب؟</h3>
+<h3 id="متى-يناسبك-الاستثمار-في-الذهب">متى يناسبك الاستثمار في الذهب؟</h3>
 <p><strong>رأس مال محدود:</strong> لا تملك مئات الآلاف، لكنك تريد بدء استثمار بمبلغ صغير. في السعودية، يمكنك شراء سبيكة 5 جرامات بحوالي 1300 ريال، أو 10 جرامات بحوالي 2600 ريال. تطبيقات مثل تطبيقات الذهب المرخصة تسمح بشراء أجزاء من الجرام بمبالغ صغيرة جداً.</p>
 
 <p><strong>حاجة للسيولة:</strong> تتوقع أن تحتاج المال خلال سنة أو سنتين، ولا تستطيع تجميده. الذهب يمكن بيعه في أي وقت. محلات الذهب في كل حي، وهناك تطبيقات تبيع وتشتري الذهب فوراً. في المقابل، بيع العقار قد يستغرق 3-6 أشهر أو أكثر للحصول على سعر جيد.</p>
@@ -148,7 +153,7 @@ tr:nth-child(even){background:#f8faf9}
 <strong>💡 نصيحة للمبتدئين:</strong> إذا كنت مبتدئاً في الاستثمار، ابدأ بالذهب أولاً. تعلّم إدارة الاستثمار بمبلغ صغير، ولاحظ كيف تتفاعل مع تقلبات السوق، ثم انتقل للعقار حين يتوفر رأس المال الكافي. خسارة 1000 ريال في الذهب أثناء التعلم أفضل من خسارة 200 ألف ريال في عقار.
 </div>
 
-<h3>متى يناسبك الاستثمار في العقار؟</h3>
+<h3 id="متى-يناسبك-الاستثمار-في-العقار">متى يناسبك الاستثمار في العقار؟</h3>
 <p><strong>دخل شهري تريده:</strong> تبحث عن عائد إيجاري منتظم يكمل راتبك. شقة في شمال الرياض مثلاً (قيمتها 800 ألف ريال) يمكن أن تؤجر بـ 40-50 ألف ريال سنوياً، أي عائد إجمالي 5-6%. في جدة، العوائد الإيجارية أعلى قليلاً (6-7%) في بعض الأحياء الشعبية. في دبي، العوائد تصل إلى 8-9% لكن مع رسوم سنوية مرتفعة.</p>
 
 <p><strong>أفق استثماري طويل:</strong> تستطيع انتظار 5-10 سنوات أو أكثر لتحقيق أرباح رأس المال. العقار في الرياض مثلاً تضاعفت أسعاره في بعض الأحياء خلال 7 سنوات. لكن لا تتوقع هذا الأداء في كل مكان. اختيار الموقع هو العامل الأهم.</p>
@@ -159,12 +164,23 @@ tr:nth-child(even){background:#f8faf9}
 
 <p>العقار في الخليج، خاصة السعودية والإمارات، أظهر نمواً مطرداً في العقدين الأخيرين. مدن مثل الرياض تشهد طلباً متزايداً مع مشاريع الملك سلمان الكبرى. جدة تستفيد من الموسم السياحي والحج. دبي تواصل جذب المستثمرين الأجانب. لكن العقار يحتاج إلى إدارة: صيانة، تواصل مع مستأجرين، رسوم حكومية. هذا ليس استثماراً سلبياً تماماً.</p>
 
-<h2>مسألة الزكاة: فروق مهمة جداً</h2>
+<h2 id="مسألة-الزكاة-فروق-مهمة-جدا">مسألة الزكاة: فروق مهمة جداً</h2>
 <p>في الذهب، الزكاة واجبة إذا بلغ النصاب (85 جراماً فأكثر) وحال عليه الحول الهجري. الزكاة 2.5% من قيمة الذهب سنوياً. يعني إذا معك 100 ألف ريال ذهباً، ستخرج 2500 ريال زكاة كل عام. هذا يقلل العائد الصافي للاستثمار.</p>
 
 <p>أما العقار المعد للتأجير، فالراجح عند جمهور الفقهاء أن الزكاة تكون على العائد الإيجاري الصافي (بعد المصاريف) إذا بلغ النصاب، وليس على قيمة العقار نفسه. هذا فرق جوهري. لو معك عقار قيمته مليون ريال يؤجر بـ 60 ألفاً سنوياً، ستدفع زكاة على 60 ألفاً فقط (1500 ريال تقريباً) وليس على المليون (25000 ريال). هذا يجعل العقار أفضل من الذهب من ناحية التكاليف الشرعية السنوية.</p>
 
-<h2>ماذا عن الجمع بين الاثنين؟</h2>
+
+
+<div class="in-content-subscribe">
+  <h3>📬 <span class="en">Enjoying this article?</span><span class="ar">هل يعجبك المقال؟</span></h3>
+  <p><span class="en">Get more family tips every Friday — join our newsletter.</span><span class="ar">احصل على نصائح أسرية كل جمعة — اشترك في نشرتنا.</span></p>
+  <div class="sub-input-wrap">
+    <input type="email" placeholder="your@email.com" aria-label="Email">
+    <button onclick="alert('🚧 Coming soon — signup integration.')"><span class="en">Subscribe</span><span class="ar">اشترك</span></button>
+  </div>
+</div>
+
+<h2 id="ماذا-عن-الجمع-بين-الاثنين">ماذا عن الجمع بين الاثنين؟</h2>
 <p>التنويع ليس خياراً، بل ضرورة للمستثمر الذكي. الجمع بين الذهب والعقار يمنحك حماية (الذهب) ودخلاً ثابتاً (العقار) في آن واحد. تخيّل أسرة في الدمام لديها 300 ألف ريال. يمكنها توزيعها: 100 ألف في سبائك ذهب (حماية وسيولة) و200 ألف كدفعة مقدمة لشقة صغيرة بالتمويل العقاري. بهذا تحصل على أصلين بتوزيع متوازن.</p>
 
 <table>
@@ -174,20 +190,20 @@ tr:nth-child(even){background:#f8faf9}
   <tr><td>أكثر من 45 سنة</td><td>40%</td><td>60% (مع زيادة السيولة)</td><td>الاقتراب من التقاعد يستدعي سيولة أكبر</td></tr>
 </table>
 
-<h2>سيناريو واقعي: أسرة في الرياض مع 200 ألف ريال</h2>
+<h2 id="سيناريو-واقعي-أسرة-في-الرياض-مع-200-ألف-ريال">سيناريو واقعي: أسرة في الرياض مع 200 ألف ريال</h2>
 <p>لنأخذ مثالاً تطبيقياً. أسرة سعودية لديها 200 ألف ريال مدخرات وتفكر في الاستثمار. الخيار الأول: شراء سبائك ذهب بـ 200 ألف بالكامل. العائد المتوقع بعد سنة (بافتراض ارتفاع 6%): 12 ألف ريال، لكن مع زكاة 5000 ريال، صافي العائد 7000 ريال. السيولة كاملة متاحة.</p>
 
 <p>الخيار الثاني: استخدام المبلغ كدفعة مقدمة (20%) لشقة بقيمة مليون ريال عبر التمويل العقاري. القسط الشهري للتمويل حوالي 4500 ريال. الإيجار المتوقع 4000 ريال شهرياً. صافي العائد السنوي: 48 ألف ريال إيجار ناقص أقساط التمويل والصيانة. هنا تستفيد الأسرة من ارتفاع قيمة العقار مع الوقت وتبني أصولاً طويلة الأجل.</p>
 
 <p>الخيار الثالث (الأكثر حكمة): 50 ألف ذهب + 150 ألف دفعة مقدمة لعقار أصغر. تنويع يمنح سيولة جزئية وبناء أصولاً في آن.</p>
 
-<h2>الخلاصة: القرار ليس أبيض أو أسود</h2>
+<h2 id="الخلاصة-القرار-ليس-أبيض-أو-أسود">الخلاصة: القرار ليس أبيض أو أسود</h2>
 <p>الاستثمار في الذهب والعقار ليس اختياراً بين صح وخطأ. كلاهما جيد، لكن لكل منهما وظيفة مختلفة في محفظتك. الذهب للحماية والسيولة والبدء بمبلغ صغير. العقار للدخل والاستقرار وبناء ثروة طويلة الأجل. ابدأ بما يناسب ظرفك اليوم، ولا تؤجل الاستثمار خوفاً من الاختيار الخاطئ. الأسوأ هو عدم البدء أبداً. والأفضل هو التنويع الذكي.</p>
 
-<h2>المراجع والمصادر</h2>
+<h2 id="المراجع-والمصادر">المراجع والمصادر</h2>
 <p>استندت هذه المقارنة إلى تقارير اقتصادية من البنك المركزي السعودي (SAMA)، وهيئة السوق المالية، وتقارير غرفة الرياض حول أداء القطاع العقاري، وتحليلات مجلس الذهب العالمي (World Gold Council)، وتقارير شركة ناাইট فرانك للعقار. يوصى بالرجوع إلى المصادر الرسمية للحصول على أحدث البيانات.</p>
 
-<h2>الأسئلة الشائعة (FAQ)</h2>
+<h2 id="الأسئلة-الشائعة-faq">الأسئلة الشائعة (FAQ)</h2>
 
 <div class="faq-item">
 <div class="faq-question">هل الاستثمار في الذهب أفضل من العقار للأسرة الخليجية؟</div>
@@ -217,9 +233,122 @@ tr:nth-child(even){background:#f8faf9}
 <div class="faq-item">
 <div class="faq-question">ما أفضل مدينة خليجية للاستثمار العقاري حالياً؟</div>
 <div class="faq-answer">الرياض تشهد طلباً مرتفعاً مع نمو سكاني متسارع ومشاريع كبرى، والعائد الإيجاري فيها مستقر. جدة جيدة للعقار السياحي والموسمي بفضل الحج والعمرة. دبي تقدم عوائد إيجارية مرتفعة لكن مع رسوم سنوية على المستثمرين. ابوظبي مناسبة للاستثمار طويل الأجل. اختر المدينة التي تستطيع إدارة العقار فيها بسهولة.
+</div>
+</div>
 </article>
 
+<div class="article-end">
+<div class="article-share">
+  <a href="https://wa.me/?text=الاستثمار في الذهب أم العقار للأسرة الخليجية؟ مقارنة شاملة 2026%20https://dotforlife.com/comparisons/gold-vs-real-estate-gulf-family.html" target="_blank" rel="noopener" class="share-btn whatsapp" aria-label="Share on WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span>WhatsApp</span>
+  </a>
+  <a href="https://twitter.com/intent/tweet?text=الاستثمار في الذهب أم العقار للأسرة الخليجية؟ مقارنة شاملة 2026&url=https://dotforlife.com/comparisons/gold-vs-real-estate-gulf-family.html" target="_blank" rel="noopener" class="share-btn x" aria-label="Share on X">
+    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    <span>X</span>
+  </a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https://dotforlife.com/comparisons/gold-vs-real-estate-gulf-family.html" target="_blank" rel="noopener" class="share-btn facebook" aria-label="Share on Facebook">
+    <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    <span>Facebook</span>
+  </a>
+  <button class="share-btn copy-link" onclick="navigator.clipboard.writeText(location.href);var s=this.querySelectorAll('span');if(s.length>1){s[0].textContent='✓ Copied';s[1].textContent='✓ نُسخ'}" aria-label="Copy link">
+    <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+    <span class="en">Copy</span><span class="ar">نسخ</span>
+  </button>
 </div>
+
+<div class="article-tool-cta">
+  <h3><span class="en">Try Our حاسبة التمويل</span><span class="ar">جرّب حاسبة التمويل</span></h3>
+  <p><span class="en">Calculate, plan, and take control of your family finances.</span><span class="ar">احسب، خطّط، وتحكّم في مالية أسرتك.</span></p>
+  <a href="/tools/mortgage-calculator.html" class="tool-cta-btn"><span class="en">Open Tool →</span><span class="ar">فتح الأداة ←</span></a>
+</div>
+
+<div class="article-read-also">
+  <h3><span class="en">📖 Read Also</span><span class="ar">📖 اقرأ أيضاً</span></h3>
+  <div class="read-also-grid">
+    <a href="/blog/rent-vs-buy-saudi-guide-2026.html" class="read-also-card">
+      <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=600&h=340&q=85" alt="" loading="lazy">
+      <span class="read-also-title">الإيجار مقابل الشراء في السعودية 2026: دليل كامل</span>
+    </a>
+    <a href="/guides/saudi-real-estate-investing.html" class="read-also-card">
+      <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=600&h=340&q=85" alt="" loading="lazy">
+      <span class="read-also-title">الاستثمار العقاري في السعودية: دليل شامل</span>
+    </a>
+    <a href="/comparisons/comparisons-ready-vs-build-home.html" class="read-also-card">
+      <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=600&h=340&q=85" alt="" loading="lazy">
+      <span class="read-also-title">شراء منزل جاهز أم بناء منزل الأحلام؟ مقارنة شاملة</span>
+    </a>
+  </div>
+</div>
+
+<div class="article-friday-cta">
+  <h3>📬 <span class="en">Friday Family Tips</span><span class="ar">نصائح الجمعة للأسرة</span></h3>
+  <p><span class="en">Get weekly inspiration delivered to your inbox.</span><span class="ar">احصل على إلهام أسبوعي في بريدك.</span></p>
+  <div class="friday-input-wrap">
+    <input type="email" placeholder="your@email.com" aria-label="Email">
+    <button onclick="alert('🚧 Coming soon — signup integration.')"><span class="en">Join</span><span class="ar">اشترك</span></button>
+  </div>
+</div>
+
+<div class="article-tags">
+  <span class="tag">#real-estate</span>
+  <span class="tag">#property</span>
+  <span class="tag">#housing</span>
+  <span class="tag">#mortgage</span>
+  <span class="tag">#gulf-property</span>
+</div>
+</div>
+</main>
+
+<aside class="article-sidebar">
+<div class="sidebar-module sidebar-team-card">
+  <img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" width="56" height="56" loading="lazy">
+  <div class="team-name"><span class="en">Dot4Life Team</span><span class="ar">فريق دوت فور لايف</span></div>
+  <div class="team-trust"><span class="en">Trusted content, carefully edited for Gulf families.</span><span class="ar">محتوى موثوق، محرَّر بعناية للأسرة الخليجية.</span></div>
+  <a href="/editorial-standards.html" class="team-link"><span class="en">Our Standards →</span><span class="ar">معاييرنا التحريرية ←</span></a>
+</div>
+
+<div class="sidebar-module sidebar-toc">
+  <h4>📑 <span class="en">Contents</span><span class="ar">المحتويات</span></h4>
+  <a href="#لماذا-هذا-السؤال-ملح-للأسرة-الخليجية" class="toc-item">لماذا هذا السؤال ملحّ للأسرة الخليجية؟</a>
+  <a href="#جدول-المقارنة-المباشر-الذهب-مقابل-العقار" class="toc-item">جدول المقارنة المباشر: الذهب مقابل العقار</a>
+  <a href="#تحليل-كل-خيار-بالتفصيل" class="toc-item">تحليل كل خيار بالتفصيل</a>
+  <a href="#متى-يناسبك-الاستثمار-في-الذهب" class="toc-item toc-item-h3">متى يناسبك الاستثمار في الذهب؟</a>
+  <a href="#متى-يناسبك-الاستثمار-في-العقار" class="toc-item toc-item-h3">متى يناسبك الاستثمار في العقار؟</a>
+  <a href="#مسألة-الزكاة-فروق-مهمة-جدا" class="toc-item">مسألة الزكاة: فروق مهمة جداً</a>
+  <a href="#ماذا-عن-الجمع-بين-الاثنين" class="toc-item">ماذا عن الجمع بين الاثنين؟</a>
+  <a href="#سيناريو-واقعي-أسرة-في-الرياض-مع-200-ألف-ريال" class="toc-item">سيناريو واقعي: أسرة في الرياض مع 200 ألف ريال</a>
+  <a href="#الخلاصة-القرار-ليس-أبيض-أو-أسود" class="toc-item">الخلاصة: القرار ليس أبيض أو أسود</a>
+  <a href="#المراجع-والمصادر" class="toc-item">المراجع والمصادر</a>
+  <a href="#الأسئلة-الشائعة-faq" class="toc-item">الأسئلة الشائعة (FAQ)</a>
+</div>
+
+<div class="sidebar-module sidebar-related">
+  <h4><span class="en">Related</span><span class="ar">ذات صلة</span></h4>
+  <a href="/blog/rent-vs-buy-saudi-guide-2026.html" class="sidebar-related-item">
+    <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=600&h=340&q=85" alt="" width="64" height="48" loading="lazy">
+    <span class="related-title">الإيجار مقابل الشراء في السعودية 2026: دليل كامل</span>
+  </a>
+  <a href="/guides/saudi-real-estate-investing.html" class="sidebar-related-item">
+    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=600&h=340&q=85" alt="" width="64" height="48" loading="lazy">
+    <span class="related-title">الاستثمار العقاري في السعودية: دليل شامل</span>
+  </a>
+  <a href="/comparisons/comparisons-ready-vs-build-home.html" class="sidebar-related-item">
+    <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=600&h=340&q=85" alt="" width="64" height="48" loading="lazy">
+    <span class="related-title">شراء منزل جاهز أم بناء منزل الأحلام؟ مقارنة شاملة</span>
+  </a>
+</div>
+
+<div class="sidebar-module sidebar-tools">
+  <h4>🛠 <span class="en">Tools</span><span class="ar">أدوات</span></h4>
+  <a href="/tools/mortgage-calculator.html" class="tool-btn">حاسبة التمويل</a>
+  <a href="/tools/rent-vs-buy-calculator.html" class="tool-btn">إيجار أم شراء</a>
+</div>
+</aside>
+
+</div><!-- /article-layout -->
+
+</div><!-- /article-wrap -->
 
 <!-- ═══ UNIFIED FOOTER ══════════════════════════════════════ -->
 <footer class="site-footer" role="contentinfo">
@@ -278,6 +407,39 @@ tr:nth-child(even){background:#f8faf9}
 <!-- ═══ END FOOTER ══════════════════════════════════════ -->
 
 
-<script src="/scripts/global.js?v=20260608u" defer></script>
+<script src="/scripts/global.js?v=20260617a" defer></script>
+<script>
+(function(){
+  // Reading progress bar
+  var bar = document.getElementById('reading-progress');
+  if(bar){
+    window.addEventListener('scroll',function(){
+      var h = document.documentElement;
+      var total = h.scrollHeight - h.clientHeight;
+      var pct = (h.scrollTop || document.body.scrollTop) / (total || 1) * 100;
+      bar.style.width = pct + '%';
+    },{passive:true});
+  }
+  // TOC active highlight
+  var tocLinks = document.querySelectorAll('.toc-item');
+  if(tocLinks.length){
+    var headings = [];
+    tocLinks.forEach(function(link){
+      var id = link.getAttribute('href').replace('#','');
+      var el = document.getElementById(id);
+      if(el) headings.push({el:el,link:link});
+    });
+    window.addEventListener('scroll',function(){
+      var scrollY = window.scrollY + 130;
+      var current = null;
+      headings.forEach(function(h){
+        if(h.el.offsetTop <= scrollY) current = h;
+      });
+      tocLinks.forEach(function(l){ l.classList.remove('is-active'); });
+      if(current) current.link.classList.add('is-active');
+    },{passive:true});
+  }
+})();
+</script>
 </body>
 </html>

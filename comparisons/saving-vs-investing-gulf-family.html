@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl" data-lang="ar" data-theme="light">
 <head>
-<script>(function(){var p=new URLSearchParams(location.search),gd=(function(){try{var z=(Intl.DateTimeFormat().resolvedOptions().timeZone||"");return /Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test(z)?"ar":"en";}catch(e){return "ar";}})(),l=p.get("lang")||localStorage.getItem("dfl-lang")||gd,t=p.get("theme")||localStorage.getItem("dfl-theme")||"light",h=document.documentElement;h.setAttribute("data-theme",t);h.setAttribute("data-lang",l);h.setAttribute("lang",l);h.setAttribute("dir",l==="ar"?"rtl":"ltr");if(p.get("lang"))localStorage.setItem("dfl-lang",l);if(p.get("theme"))localStorage.setItem("dfl-theme",t);})()</script>
+<script>(function(){var p=new URLSearchParams(location.search),gd=(function(){try{var z=(Intl.DateTimeFormat().resolvedOptions().timeZone||"");return /Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test(z)?"ar":"en";}catch(e){return "ar";}})(),h=document.documentElement,l=p.get("lang")||h.getAttribute("data-lang")||localStorage.getItem("dfl-lang")||gd,t=p.get("theme")||localStorage.getItem("dfl-theme")||h.getAttribute("data-theme")||"light";h.setAttribute("data-theme",t);h.setAttribute("data-lang",l);h.setAttribute("lang",l);h.setAttribute("dir",l==="ar"?"rtl":"ltr");if(p.get("lang"))localStorage.setItem("dfl-lang",l);if(p.get("theme"))localStorage.setItem("dfl-theme",t);})()</script>
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -21,14 +21,16 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles/global.css?v=20260608u">
-  <link rel="stylesheet" href="/styles/home.css?v=20260608u">
-  <link rel="stylesheet" href="/styles/pages/articles.css?v=20260608u">
+  <link rel="stylesheet" href="/styles/global.css?v=20260617a">
+  <link rel="stylesheet" href="/styles/home.css?v=20260617a">
+  <link rel="stylesheet" href="/styles/pages/articles.css?v=20260617a">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1436107577087160" crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3G1XPV4F0G"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3G1XPV4F0G');</script>
 </head>
 <body data-template="article">
+
+<div id="reading-progress" role="progressbar" aria-label="Reading progress"></div>
 
 <!-- ═══ UNIFIED HEADER ══════════════════════════════════════ -->
 <nav id="navbar"><div class="nav-inner"><a href="/" class="nav-logo"><img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" width="100" height="100" style="height:100px;width:auto;object-fit:contain;" loading="lazy"></a><ul class="nav-links"><li><a href="/health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li><li><a href="/finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li><li><a href="/real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li><li><a href="/travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li><li><a href="/islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li><li><a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a></li><li><a href="/archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a></li><li><a href="/blog.html"><span class="en">blog</span><span class="ar">المدونة</span></a></li><li><a href="/library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a></li></ul><div class="nav-controls"><button class="nav-btn" id="lang-toggle"><span class="en">عربي</span><span class="ar">English</span></button><button class="nav-btn" id="theme-toggle">
@@ -43,17 +45,20 @@
 <section class="article-banner" aria-label="Article banner">
   <div class="article-banner-img-wrap">
     <img src="https://images.unsplash.com/photo-1580519542036-c47de6196ba5?auto=format&fit=crop&w=600&h=340&q=85" alt="" class="article-banner-img" width="1200" height="420" loading="eager" fetchpriority="high">
-    <div class="article-banner-overlay" style="text-align:right;">
-      <div class="article-banner-cat" style="display:inline-block;color:#fff;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:4px 14px;font-size:.72rem;font-weight:700;margin-bottom:.75rem;backdrop-filter:blur(4px);">مقارنات</div>
-      <h1 class="article-banner-title" style="font-size:clamp(1.5rem,3.5vw,2.2rem);line-height:1.4;font-weight:800;color:#fff;text-shadow:0 2px 20px rgba(0,0,0,.3);margin:0;">الادخار أم الاستثمار لأسرة خليجية؟ دليل المقارنة الكامل</h1>
-      <div class="article-banner-meta" style="color:rgba(255,255,255,.8);margin-top:.75rem;font-size:.8rem;display:flex;gap:.6rem;flex-wrap:wrap;justify-content:flex-end;">
+    <div class="article-banner-overlay">
+      <div class="article-banner-cat">مقارنات</div>
+      <h1 class="article-banner-title">الادخار أم الاستثمار لأسرة خليجية؟ دليل المقارنة الكامل</h1>
+      <div class="article-banner-meta">
         <span>8 يونيو 2026</span>
-        <span>٨ دقائق قراءة</span>
+        <span>16 دقائق قراءة</span>
       </div>
     </div>
   </div>
 </section>
 
+<div class="article-layout">
+
+<main class="article-main">
 <article class="article-body">
 <article class="article-content" style="max-width:720px;margin:0 auto;padding:2rem 1.5rem 4rem;">
 <div class="article-header" style="margin-bottom:2rem;">
@@ -69,7 +74,7 @@
 
 <p>هذه القصة تمثل مئات الآلاف من العائلات الخليجية التي تواجه معضلة: الادخار آمن لكنه لا ينمو، والاستثمار ينمو لكنه يحمل مخاطر. هذا المقال يقدم مقارنة واضحة بين الخيارين، مع أمثلة وأرقام محلية، لتقرر أنت ما يناسب أسرتك.</p>
 
-<h2>ما الفرق بين الادخار والاستثمار؟</h2>
+<h2 id="ما-الفرق-بين-الادخار-والاستثمار">ما الفرق بين الادخار والاستثمار؟</h2>
 <p>الادخار هو تخصيص جزء من الدخل الحالي لاستخدامه مستقبلاً، في حساب سهل الوصول، بفائدة منخفضة. الهدف: أمان وسيولة. الاستثمار هو شراء أصول (أسهم، عقار، صناديق) بهدف تنمية رأس المال على المدى الطويل، مع احتمال تقلبات في القيمة.</p>
 
 <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:.92rem;"><thead><tr style="background:#054241;color:#fff;"><th style="padding:10px 14px;text-align:right;">المقارنة</th><th style="padding:10px 14px;text-align:right;">الادخار</th><th style="padding:10px 14px;text-align:right;">الاستثمار</th></tr></thead><tbody>
@@ -80,16 +85,16 @@
 <tr><td style="padding:10px 14px;font-weight:600;">أفضل لـ</td><td style="padding:10px 14px;">أقل من ٣ سنوات</td><td style="padding:10px 14px;">أكثر من ٥ سنوات</td></tr>
 </tbody></table>
 
-<h2>لماذا الادخار مهم لكل أسرة؟</h2>
+<h2 id="لماذا-الادخار-مهم-لكل-أسرة">لماذا الادخار مهم لكل أسرة؟</h2>
 <p>قبل أن تفكر في الاستثمار، يجب أن يكون لديك صندوق طوارئ. هذا هو المبدأ الأول في التمويل الشخصي. أغلب خبراء المالية ينصحون بأن تدّخر الأسرة ما يعادل ٣–٦ أشهر من مصاريفها الشهرية في حساب سهل الوصول.</p>
 <p>إذا كانت مصاريف أسرتك ١٠ آلاف ريال شهرياً، فصندوق الطوارئ المثالي هو ٣٠–٦٠ ألف ريال. هذا المال يحميك من: فقدان الوظيفة، عطل سيارة مفاجئ، فاتورة طبية طارئة، أو أي حدث غير متوقع.</p>
 <p>في الخليج، حيث نسبة كبيرة من العاملين في القطاع الخاص، صندوق الطوارئ ليس ترفاً بل ضرورة. <a href="/finance.html" style="color:#6abfb8;font-weight:600;">أدوات التخطيط المالي</a> المتاحة على دوت فور لايف تساعدك في حساب احتياجاتك بدقة.</p>
 
-<h2>لماذا الاستثمار ضروري لنمو الثروة؟</h2>
+<h2 id="لماذا-الاستثمار-ضروري-لنمو-الثروة">لماذا الاستثمار ضروري لنمو الثروة؟</h2>
 <p>الاعتماد على الادخار فقط يعني أن أموالك تفقد قيمتها تدريجياً بسبب التضخم. في السعودية، التضخم السنوي يتراوح بين ٢٪ و٣٪. فوائد البنوك المحلية على حسابات التوفير تتراوح بين ١.٥٪ و٢.٥٪. بعبارة أخرى: العائد الحقيقي (بعد التضخم) قريب من الصفر أو سلبي.</p>
 <p>الاستثمار هو الطريق الوحيد لبناء ثروة حقيقية. مؤشر سوق الأسهم السعودية (TASI) حقق متوسط عائد سنوي حوالي ٧–٩٪ على مدى ١٠ سنوات ماضية. العقار في الرياض وجدة شهد ارتفاعات تجاوزت ١٠٪ سنوياً في بعض المناطق. المهم ليس كم تستثمر بل منذ متى تستثمر. كلما بدأت مبكراً، كلما استفدت من قوة الفائدة المركبة.</p>
 
-<h2>جدول مقارنة: سيناريوهات لعائلة خليجية</h2>
+<h2 id="جدول-مقارنة-سيناريوهات-لعائلة-خليجية">جدول مقارنة: سيناريوهات لعائلة خليجية</h2>
 <p>لنتخيل أسرة تدخر ٣ آلاف ريال شهرياً لمدة ١٠ سنوات:</p>
 <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:.92rem;"><thead><tr style="background:#054241;color:#fff;"><th style="padding:10px 14px;text-align:right;">السيناريو</th><th style="padding:10px 14px;text-align:left;">القيمة بعد ١٠ سنوات</th></tr></thead><tbody>
 <tr style="border-bottom:1px solid #e2ddd6;"><td style="padding:10px 14px;">ادخار في البنك (عائد ٢٪)</td><td style="padding:10px 14px;">~٣٩٨,٠٠٠ ريال</td></tr>
@@ -98,7 +103,18 @@
 </tbody></table>
 <p>الفرق بين الادخار والاستثمار على ١٠ سنوات قد يتجاوز ٢٠٠ ألف ريال. هذا المال يمكن أن يكون تعليم ابنك الجامعي أو دفعة أولى لبيت.</p>
 
-<h2>استراتيجية متوازنة للأسرة الخليجية</h2>
+
+
+<div class="in-content-subscribe">
+  <h3>📬 <span class="en">Enjoying this article?</span><span class="ar">هل يعجبك المقال؟</span></h3>
+  <p><span class="en">Get more family tips every Friday — join our newsletter.</span><span class="ar">احصل على نصائح أسرية كل جمعة — اشترك في نشرتنا.</span></p>
+  <div class="sub-input-wrap">
+    <input type="email" placeholder="your@email.com" aria-label="Email">
+    <button onclick="alert('🚧 Coming soon — signup integration.')"><span class="en">Subscribe</span><span class="ar">اشترك</span></button>
+  </div>
+</div>
+
+<h2 id="استراتيجية-متوازنة-للأسرة-الخليجية">استراتيجية متوازنة للأسرة الخليجية</h2>
 <p>الحل الأمثل ليس اختيار واحد منهما، بل الجمع بين الادخار والاستثمار بنسب تناسب أهدافك ومرونتك للمخاطرة. إليك نموذج مقترح:</p>
 <ul style="padding-right:1.5rem;line-height:2;">
 <li><strong>٥٠٪ من المدخرات الشهرية للطوارئ:</strong> في حساب توفير سهل الوصول، حتى تصل لـ ٣–٦ أشهر من المصاريف.</li>
@@ -108,7 +124,7 @@
 <p>هذه النسب تتغير مع تقدمك في العمر. في الثلاثينات، قد تخصص ٤٠٪ للاستثمار. قرب التقاعد، تخفضها إلى ٢٠٪. المهم أن تبدأ الآن، مهما كان المبلغ صغيراً. الاستمرارية أهم من الكمية.</p>
 <p><strong>مفاهيم خاطئة شائعة في بيوت الخليج:</strong> يعتقد كثيرون أن الاستثمار حكر على الأغنياء، أو أنه يحتاج إلى مبالغ كبيرة، أو أنه يشبه القمار. هذه كلها مفاهيم غير صحيحة. الاستثمار المنضبط في صناديق المؤشرات أو الصناديق العقارية يمكن أن يبدأ بـ ٥٠٠ ريال شهرياً، وهو مختلف تماماً عن المضاربة العشوائية. الفرق بين المستثمر الناجح والمضارب أن الأول يخطط لسنوات وال second يبحث عن ربح سريع.</p>
 
-<h2>أفضل خيارات الاستثمار للعائلات الخليجية</h2>
+<h2 id="أفضل-خيارات-الاستثمار-للعائلات-الخليجية">أفضل خيارات الاستثمار للعائلات الخليجية</h2>
 <ul style="padding-right:1.5rem;line-height:2;">
 <li><strong>صناديق المؤشرات المتداولة (ETFs):</strong> مثل صندوق الراجحي أو إتش إس بي سي، منخفضة التكلفة ومناسبة للمبتدئين.</li>
 <li><strong>الصناديق العقارية (REITs):</strong> توزيع أرباح منتظمة (٤–٧٪ سنوياً)، تداولها مثل الأسهم.</li>
@@ -117,7 +133,7 @@
 <li><strong>تطبيقات الاستثمار الصغير:</strong> Derayah وArcapita تسمح بالبدء بمبالغ صغيرة (٥٠٠ ريال).</li>
 </ul>
 
-<h2>أخطاء شائعة يجب تجنبها</h2>
+<h2 id="أخطاء-شائعة-يجب-تجنبها">أخطاء شائعة يجب تجنبها</h2>
 <ul style="padding-right:1.5rem;line-height:2;">
 <li><strong>وضع كل البيض في سلة واحدة:</strong> لا تضع كل مدخراتك في استثمار واحد. التنويع هو مفتاح الأمان.</li>
 <li><strong>الاستثمار بدون صندوق طوارئ:</strong> قد تضطر لبيع استثماراتك في وقت خسارة لتغطية طارئ.</li>
@@ -125,7 +141,7 @@
 <li><strong>إهمال التخطيط:</strong> كثير من العائلات تدخر بدون هدف واضح. استخدم <a href="/tools/savings-goal.html" style="color:#6abfb8;font-weight:600;">حاسبة الهدف الادخاري</a> لتحديد هدفك بدقة.</li>
 </ul>
 
-<h2>خلاصة: ماذا تفعل الأسبوع القادم؟</h2>
+<h2 id="خلاصة-ماذا-تفعل-الأسبوع-القادم">خلاصة: ماذا تفعل الأسبوع القادم؟</h2>
 <ol style="padding-right:1.5rem;line-height:2;">
 <li>احسب مصاريفك الشهرية بدقة. اعرف أين تذهب أموالك أولاً.</li>
 <li>حدد هدفاً للادخار الشهري (ابدأ بـ ١٠٪ من الدخل لو صعباً).</li>
@@ -138,21 +154,122 @@
 
 <div style="text-align:center;margin:2rem 0;padding:1.5rem;background:#054241;border-radius:16px;color:#fff;"><p style="font-size:1.1rem;font-weight:700;margin:0 0 .5rem;">ابدأ تخطيطك المالي الآن</p><p style="font-size:.9rem;color:rgba(255,255,255,.7);margin:0 0 1rem;">استخدم حاسبة الهدف الادخاري لتعرف كم تحتاج وكم شهراً</p><a href="/tools/savings-goal.html" style="display:inline-block;padding:12px 28px;border-radius:999px;background:#fd781c;color:#fff;font-weight:700;text-decoration:none;">احسب هدفك الآن ←</a></div>
 
-<h2>الأسئلة الشائعة (FAQ)</h2>
-<div itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question" style="margin-bottom:1rem;padding:1rem;background:#FAF8F4;border-radius:10px;"><h3 itemprop="name" style="font-size:.95rem;font-weight:700;margin:0 0 .4rem;">هل الأفضل الادخار أم الاستثمار للأسرة الخليجية؟</h3><div itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text" style="font-size:.88rem;color:#5C534A;">ليس هناك جواب واحد. الادخار ضروري للطوارئ والأهداف القصيرة (أقل من ٣ سنوات). الاستثمار مناسب للأهداف الطويلة (أكثر من ٥ سنوات). التوازن بينهما هو الحل الأمثل.</div></div></div>
-<div itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question" style="margin-bottom:1rem;padding:1rem;background:#FAF8F4;border-radius:10px;"><h3 itemprop="name" style="font-size:.95rem;font-weight:700;margin:0 0 .4rem;">كم يجب أن تدّخر الأسرة شهرياً؟</h3><div itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text" style="font-size:.88rem;color:#5C534A;">يوصي خبراء المالية بأن تدّخر الأسرة ٢٠٪ من دخلها الشهري: ١٠–١٥٪ للطوارئ والأهداف القصيرة، و٥–١٠٪ للاستثمار طويل الأجل.</div></div></div>
-<div itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question" style="margin-bottom:1rem;padding:1rem;background:#FAF8F4;border-radius:10px;"><h3 itemprop="name" style="font-size:.95rem;font-weight:700;margin:0 0 .4rem;">هل الادخار في البنك كافٍ لمستقبل الأسرة؟</h3><div itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text" style="font-size:.88rem;color:#5C534A;">الادخار وحده لا يكفي لأن التضخم يأكل قيمة النقود مع الوقت. فوائد البنوك في الخليج منخفضة. الاستثمار ضروري للحفاظ على القوة الشرائية.</div></div></div>
-<div itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question" style="margin-bottom:1rem;padding:1rem;background:#FAF8F4;border-radius:10px;"><h3 itemprop="name" style="font-size:.95rem;font-weight:700;margin:0 0 .4rem;">كيف أبدأ الاستثمار كأسرة خليجية بمبلغ صغير؟</h3><div itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text" style="font-size:.88rem;color:#5C534A;">تطبيقات الاستثمار مثل Derayah وArcapita تسمح ببدء استثمار بمبلغ ٥٠٠ ريال. صناديق المؤشرات ETFs خيار جيد للمبتدئين.</div></div></div>
-<div itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question" style="margin-bottom:1rem;padding:1rem;background:#FAF8F4;border-radius:10px;"><h3 itemprop="name" style="font-size:.95rem;font-weight:700;margin:0 0 .4rem;">ما الفرق بين صندوق الطوارئ والاستثمار؟</h3><div itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text" style="font-size:.88rem;color:#5C534A;">صندوق الطوارئ مبلغ سائل يغطي ٣–٦ أشهر من مصاريف الأسرة في حساب سهل الوصول. الاستثمار وضع مال في أصول بهدف نموه طويل المدى.</div></div></div>
+<h2 id="الأسئلة-الشائعة-faq">الأسئلة الشائعة (FAQ)</h2>
+<div itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question" style="margin-bottom:1rem;padding:1rem;background:#FAF8F4;border-radius:10px;"><h3 id="هل-الأفضل-الادخار-أم-الاستثمار-للأسرة-الخليجية">هل الأفضل الادخار أم الاستثمار للأسرة الخليجية؟</h3><div itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text" style="font-size:.88rem;color:#5C534A;">ليس هناك جواب واحد. الادخار ضروري للطوارئ والأهداف القصيرة (أقل من ٣ سنوات). الاستثمار مناسب للأهداف الطويلة (أكثر من ٥ سنوات). التوازن بينهما هو الحل الأمثل.</div></div></div>
+<div itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question" style="margin-bottom:1rem;padding:1rem;background:#FAF8F4;border-radius:10px;"><h3 id="كم-يجب-أن-تدخر-الأسرة-شهريا">كم يجب أن تدّخر الأسرة شهرياً؟</h3><div itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text" style="font-size:.88rem;color:#5C534A;">يوصي خبراء المالية بأن تدّخر الأسرة ٢٠٪ من دخلها الشهري: ١٠–١٥٪ للطوارئ والأهداف القصيرة، و٥–١٠٪ للاستثمار طويل الأجل.</div></div></div>
+<div itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question" style="margin-bottom:1rem;padding:1rem;background:#FAF8F4;border-radius:10px;"><h3 id="هل-الادخار-في-البنك-كاف-لمستقبل-الأسرة">هل الادخار في البنك كافٍ لمستقبل الأسرة؟</h3><div itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text" style="font-size:.88rem;color:#5C534A;">الادخار وحده لا يكفي لأن التضخم يأكل قيمة النقود مع الوقت. فوائد البنوك في الخليج منخفضة. الاستثمار ضروري للحفاظ على القوة الشرائية.</div></div></div>
+<div itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question" style="margin-bottom:1rem;padding:1rem;background:#FAF8F4;border-radius:10px;"><h3 id="كيف-أبدأ-الاستثمار-كأسرة-خليجية-بمبلغ-صغير">كيف أبدأ الاستثمار كأسرة خليجية بمبلغ صغير؟</h3><div itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text" style="font-size:.88rem;color:#5C534A;">تطبيقات الاستثمار مثل Derayah وArcapita تسمح ببدء استثمار بمبلغ ٥٠٠ ريال. صناديق المؤشرات ETFs خيار جيد للمبتدئين.</div></div></div>
+<div itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question" style="margin-bottom:1rem;padding:1rem;background:#FAF8F4;border-radius:10px;"><h3 id="ما-الفرق-بين-صندوق-الطوارئ-والاستثمار">ما الفرق بين صندوق الطوارئ والاستثمار؟</h3><div itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text" style="font-size:.88rem;color:#5C534A;">صندوق الطوارئ مبلغ سائل يغطي ٣–٦ أشهر من مصاريف الأسرة في حساب سهل الوصول. الاستثمار وضع مال في أصول بهدف نموه طويل المدى.</div></div></div>
 
 <hr style="border:none;border-top:1px solid #e2ddd6;margin:2rem 0;" />
 <div style="font-size:.82rem;color:#5C534A;line-height:1.7;">
 <p><strong>المصادر:</strong></p>
 <ul><li>SAMA - تقارير التضخم وأسعار الفائدة في السعودية</li><li>تداول السعودية - أداء مؤشر TASI التاريخي</li><li>هيئة السوق المالية - دليل المستثمر (cma.org.sa)</li></ul>
 <p style="margin-top:.5rem;"><strong>إخلاء مسؤولية:</strong> هذا المقال لأغراض تعليمية ولا يشكل توصية استثمارية.</p>
+</div>
+</div>
 </article>
 
+<div class="article-end">
+<div class="article-share">
+  <a href="https://wa.me/?text=الادخار أم الاستثمار لأسرة خليجية؟ المقارنة الكاملة%20https://www.dotforlife.com/comparisons/saving-vs-investing-gulf-family.html" target="_blank" rel="noopener" class="share-btn whatsapp" aria-label="Share on WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span>WhatsApp</span>
+  </a>
+  <a href="https://twitter.com/intent/tweet?text=الادخار أم الاستثمار لأسرة خليجية؟ المقارنة الكاملة&url=https://www.dotforlife.com/comparisons/saving-vs-investing-gulf-family.html" target="_blank" rel="noopener" class="share-btn x" aria-label="Share on X">
+    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    <span>X</span>
+  </a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.dotforlife.com/comparisons/saving-vs-investing-gulf-family.html" target="_blank" rel="noopener" class="share-btn facebook" aria-label="Share on Facebook">
+    <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    <span>Facebook</span>
+  </a>
+  <button class="share-btn copy-link" onclick="navigator.clipboard.writeText(location.href);var s=this.querySelectorAll('span');if(s.length>1){s[0].textContent='✓ Copied';s[1].textContent='✓ نُسخ'}" aria-label="Copy link">
+    <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+    <span class="en">Copy</span><span class="ar">نسخ</span>
+  </button>
 </div>
+
+<div class="article-tool-cta">
+  <h3><span class="en">Try Our حاسبة التمويل</span><span class="ar">جرّب حاسبة التمويل</span></h3>
+  <p><span class="en">Calculate, plan, and take control of your family finances.</span><span class="ar">احسب، خطّط، وتحكّم في مالية أسرتك.</span></p>
+  <a href="/tools/mortgage-calculator.html" class="tool-cta-btn"><span class="en">Open Tool →</span><span class="ar">فتح الأداة ←</span></a>
+</div>
+
+<div class="article-read-also">
+  <h3><span class="en">📖 Read Also</span><span class="ar">📖 اقرأ أيضاً</span></h3>
+  <div class="read-also-grid">
+    <a href="/blog/gold-vs-savings-account-comparison.html" class="read-also-card">
+      <img src="https://images.unsplash.com/photo-1610375461246-83df859d849d?auto=format&fit=crop&w=600&h=340&q=85" alt="" loading="lazy">
+      <span class="read-also-title">الذهب مقابل حساب التوفير: أيهما ينمي ثروتك أفضل؟</span>
+    </a>
+  </div>
+</div>
+
+<div class="article-friday-cta">
+  <h3>📬 <span class="en">Friday Family Tips</span><span class="ar">نصائح الجمعة للأسرة</span></h3>
+  <p><span class="en">Get weekly inspiration delivered to your inbox.</span><span class="ar">احصل على إلهام أسبوعي في بريدك.</span></p>
+  <div class="friday-input-wrap">
+    <input type="email" placeholder="your@email.com" aria-label="Email">
+    <button onclick="alert('🚧 Coming soon — signup integration.')"><span class="en">Join</span><span class="ar">اشترك</span></button>
+  </div>
+</div>
+
+<div class="article-tags">
+  <span class="tag">#finance</span>
+  <span class="tag">#savings</span>
+  <span class="tag">#investment</span>
+  <span class="tag">#budget</span>
+  <span class="tag">#gulf-economy</span>
+</div>
+</div>
+</main>
+
+<aside class="article-sidebar">
+<div class="sidebar-module sidebar-team-card">
+  <img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" width="56" height="56" loading="lazy">
+  <div class="team-name"><span class="en">Dot4Life Team</span><span class="ar">فريق دوت فور لايف</span></div>
+  <div class="team-trust"><span class="en">Trusted content, carefully edited for Gulf families.</span><span class="ar">محتوى موثوق، محرَّر بعناية للأسرة الخليجية.</span></div>
+  <a href="/editorial-standards.html" class="team-link"><span class="en">Our Standards →</span><span class="ar">معاييرنا التحريرية ←</span></a>
+</div>
+
+<div class="sidebar-module sidebar-toc">
+  <h4>📑 <span class="en">Contents</span><span class="ar">المحتويات</span></h4>
+  <a href="#ما-الفرق-بين-الادخار-والاستثمار" class="toc-item">ما الفرق بين الادخار والاستثمار؟</a>
+  <a href="#لماذا-الادخار-مهم-لكل-أسرة" class="toc-item">لماذا الادخار مهم لكل أسرة؟</a>
+  <a href="#لماذا-الاستثمار-ضروري-لنمو-الثروة" class="toc-item">لماذا الاستثمار ضروري لنمو الثروة؟</a>
+  <a href="#جدول-مقارنة-سيناريوهات-لعائلة-خليجية" class="toc-item">جدول مقارنة: سيناريوهات لعائلة خليجية</a>
+  <a href="#استراتيجية-متوازنة-للأسرة-الخليجية" class="toc-item">استراتيجية متوازنة للأسرة الخليجية</a>
+  <a href="#أفضل-خيارات-الاستثمار-للعائلات-الخليجية" class="toc-item">أفضل خيارات الاستثمار للعائلات الخليجية</a>
+  <a href="#أخطاء-شائعة-يجب-تجنبها" class="toc-item">أخطاء شائعة يجب تجنبها</a>
+  <a href="#خلاصة-ماذا-تفعل-الأسبوع-القادم" class="toc-item">خلاصة: ماذا تفعل الأسبوع القادم؟</a>
+  <a href="#الأسئلة-الشائعة-faq" class="toc-item">الأسئلة الشائعة (FAQ)</a>
+  <a href="#هل-الأفضل-الادخار-أم-الاستثمار-للأسرة-الخليجية" class="toc-item toc-item-h3">هل الأفضل الادخار أم الاستثمار للأسرة الخليجية؟</a>
+  <a href="#كم-يجب-أن-تدخر-الأسرة-شهريا" class="toc-item toc-item-h3">كم يجب أن تدّخر الأسرة شهرياً؟</a>
+  <a href="#هل-الادخار-في-البنك-كاف-لمستقبل-الأسرة" class="toc-item toc-item-h3">هل الادخار في البنك كافٍ لمستقبل الأسرة؟</a>
+  <a href="#كيف-أبدأ-الاستثمار-كأسرة-خليجية-بمبلغ-صغير" class="toc-item toc-item-h3">كيف أبدأ الاستثمار كأسرة خليجية بمبلغ صغير؟</a>
+  <a href="#ما-الفرق-بين-صندوق-الطوارئ-والاستثمار" class="toc-item toc-item-h3">ما الفرق بين صندوق الطوارئ والاستثمار؟</a>
+</div>
+
+<div class="sidebar-module sidebar-related">
+  <h4><span class="en">Related</span><span class="ar">ذات صلة</span></h4>
+  <a href="/blog/gold-vs-savings-account-comparison.html" class="sidebar-related-item">
+    <img src="https://images.unsplash.com/photo-1610375461246-83df859d849d?auto=format&fit=crop&w=600&h=340&q=85" alt="" width="64" height="48" loading="lazy">
+    <span class="related-title">الذهب مقابل حساب التوفير: أيهما ينمي ثروتك أفضل؟</span>
+  </a>
+</div>
+
+<div class="sidebar-module sidebar-tools">
+  <h4>🛠 <span class="en">Tools</span><span class="ar">أدوات</span></h4>
+  <a href="/tools/mortgage-calculator.html" class="tool-btn">حاسبة التمويل</a>
+  <a href="/tools/savings-calculator.html" class="tool-btn">حاسبة الادخار</a>
+  <a href="/tools/zakat-calculator.html" class="tool-btn">حاسبة الزكاة</a>
+</div>
+</aside>
+
+</div><!-- /article-layout -->
+
+</div><!-- /article-wrap -->
 
 <!-- ═══ UNIFIED FOOTER ══════════════════════════════════════ -->
 <footer class="site-footer" role="contentinfo">
@@ -211,6 +328,39 @@
 <!-- ═══ END FOOTER ══════════════════════════════════════ -->
 
 
-<script src="/scripts/global.js?v=20260608u" defer></script>
+<script src="/scripts/global.js?v=20260617a" defer></script>
+<script>
+(function(){
+  // Reading progress bar
+  var bar = document.getElementById('reading-progress');
+  if(bar){
+    window.addEventListener('scroll',function(){
+      var h = document.documentElement;
+      var total = h.scrollHeight - h.clientHeight;
+      var pct = (h.scrollTop || document.body.scrollTop) / (total || 1) * 100;
+      bar.style.width = pct + '%';
+    },{passive:true});
+  }
+  // TOC active highlight
+  var tocLinks = document.querySelectorAll('.toc-item');
+  if(tocLinks.length){
+    var headings = [];
+    tocLinks.forEach(function(link){
+      var id = link.getAttribute('href').replace('#','');
+      var el = document.getElementById(id);
+      if(el) headings.push({el:el,link:link});
+    });
+    window.addEventListener('scroll',function(){
+      var scrollY = window.scrollY + 130;
+      var current = null;
+      headings.forEach(function(h){
+        if(h.el.offsetTop <= scrollY) current = h;
+      });
+      tocLinks.forEach(function(l){ l.classList.remove('is-active'); });
+      if(current) current.link.classList.add('is-active');
+    },{passive:true});
+  }
+})();
+</script>
 </body>
 </html>
