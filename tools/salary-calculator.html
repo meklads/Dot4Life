@@ -3,29 +3,23 @@
 <head>
 <script>
 (function(){
-  /* theme */
   var tb=document.getElementById("theme-toggle");
   if(tb)tb.addEventListener("click",function(){
     var h=document.documentElement,t=h.getAttribute("data-theme")==="dark"?"light":"dark";
     h.setAttribute("data-theme",t);localStorage.setItem("dfl-theme",t);
   });
-  /* lang */
   var lb=document.getElementById("lang-toggle");
   if(lb)lb.addEventListener("click",function(){
     var h=document.documentElement,l=h.getAttribute("data-lang")==="ar"?"en":"ar";
     h.setAttribute("data-lang",l);h.setAttribute("lang",l);
     h.setAttribute("dir",l==="ar"?"rtl":"ltr");localStorage.setItem("dfl-lang",l);
   });
-  /* scroll shadow */
   var nb=document.getElementById("navbar");
   if(nb)window.addEventListener("scroll",function(){nb.classList.toggle("scrolled",window.scrollY>10);},{passive:true});
-  /* reveal */
   if("IntersectionObserver" in window){
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add("visible");});},{threshold:0.1});
-    document.querySelectorAll(".reveal").forEach(function(el){io.observe(el);});
-  } else document.querySelectorAll(".reveal").forEach(function(el){el.classList.add("visible");});
-
-  /* hamburger menu */
+    document.querySelectorAll(".tool-rv").forEach(function(el){io.observe(el);});
+  } else document.querySelectorAll(".tool-rv").forEach(function(el){el.classList.add("visible");});
   (function(){
     var hb = document.getElementById('hamburger-btn');
     var dd = document.getElementById('mobile-dropdown');
@@ -47,83 +41,107 @@
     document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeM(); });
     dd.addEventListener('click', function(e){ if(e.target===dd) closeM(); });
   })();
-
-  })();
+})();
 </script>
 <meta charset="UTF-8"/>
-
-  <script>(function(){var p=new URLSearchParams(location.search),gd=(function(){try{var z=(Intl.DateTimeFormat().resolvedOptions().timeZone||"");return /Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test(z)?"ar":"en";}catch(e){return "ar";}})(),l=p.get("lang")||localStorage.getItem("dfl-lang")||gd,t=p.get("theme")||localStorage.getItem("dfl-theme")||"light",h=document.documentElement;h.setAttribute("data-theme",t);h.setAttribute("data-lang",l);h.setAttribute("lang",l);h.setAttribute("dir",l==="ar"?"rtl":"ltr");if(p.get("lang"))localStorage.setItem("dfl-lang",l);if(p.get("theme"))localStorage.setItem("dfl-theme",t);})()</script>
+<script>(function(){var p=new URLSearchParams(location.search),gd=(function(){try{var z=(Intl.DateTimeFormat().resolvedOptions().timeZone||"");return /Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test(z)?"ar":"en";}catch(e){return "ar";}})(),l=p.get("lang")||localStorage.getItem("dfl-lang")||gd,t=p.get("theme")||localStorage.getItem("dfl-theme")||"light",h=document.documentElement;h.setAttribute("data-theme",t);h.setAttribute("data-lang",l);h.setAttribute("lang",l);h.setAttribute("dir",l==="ar"?"rtl":"ltr");if(p.get("lang"))localStorage.setItem("dfl-lang",l);if(p.get("theme"))localStorage.setItem("dfl-theme",t);})()</script>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <meta http-equiv="x-dns-prefetch-control" content="on" />
-  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
-  <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-  <link rel="dns-prefetch" href="https://images.unsplash.com" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://www.googletagmanager.com" />
-<title>Salary & Take-Home Calculator | حاسبة صافي الراتب، DotForLife</title>
-<meta name="description" content="Calculate your net take-home salary after GOSI, housing, transport, and allowances. Saudi Arabia focused, bilingual Arabic & English."/>
-<link rel="canonical" href="https://www.dotforlife.com/tools/salary-calculator"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<meta http-equiv="x-dns-prefetch-control" content="on" />
+<link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+<link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<title>Salary & Take-Home Calculator | حاسبة صافي الراتب — Saudi Arabia (GOSI) | Dot For Life</title>
+<meta name="description" content="Calculate your net take-home salary after GOSI, housing, transport, and allowances. Saudi-focused, bilingual Arabic/English."/>
+<link rel="canonical" href="https://dotforlife.com/tools/salary-calculator.html"/>
+<link rel="alternate" hreflang="ar" href="https://dotforlife.com/tools/salary-calculator.html" />
+<link rel="alternate" hreflang="en" href="https://dotforlife.com/tools/salary-calculator-en.html" />
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Almarai:wght@400;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Almarai:wght@400;700;800&display=swap"/></noscript>
-<link rel="stylesheet" href="/styles/global.css?v=20260617e"/>
-	<link rel="stylesheet" href="/styles/tools-shared.css?v=20260617e">
-	<link rel="stylesheet" href="/styles/pages/tools_salary-calculator.css?v=20260617b">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.dotforlife.com/tools/salary-calculator">
-  <meta property="og:title" content="Saudi Salary Calculator | Dot4Life">
-  <meta property="og:description" content="Calculate your Saudi net salary with GOSI deductions. Free, bilingual, and accurate.">
-  <meta property="og:image" content="https://www.dotforlife.com/og/og-default.png">
-  <meta property="og:locale" content="en_US">
-  <meta property="og:locale:alternate" content="ar_SA">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Saudi Salary Calculator | Dot4Life">
-  <meta name="twitter:description" content="Calculate your Saudi net salary with GOSI deductions. Free, bilingual, and accurate.">
-  <meta name="twitter:image" content="https://www.dotforlife.com/og/og-default.png">
-<style>
-.dfl-related{border-top:1px solid var(--border);padding:52px 0 64px;background:var(--body-bg);}
-.dfl-related .container{max-width:1280px;margin:0 auto;padding:0 clamp(1.5rem,4vw,2.5rem);}
-.dfl-related-label{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
-.dfl-related-title{font-size:clamp(1.2rem,2.5vw,1.55rem);font-weight:700;color:var(--text);margin:0 0 6px;letter-spacing:-.02em;}
-.dfl-related-sub{font-size:.88rem;color:var(--text-2);margin-bottom:32px;line-height:1.6;}
-.dfl-related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;}
-.dfl-rc{display:flex;flex-direction:column;background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:20px 22px 18px;text-decoration:none;color:inherit;transition:border-color .2s,box-shadow .2s,transform .2s;}
-.dfl-rc:hover{border-color:var(--gold);box-shadow:0 4px 20px rgba(107,191,184,.12);transform:translateY(-2px);}
-.dfl-rc.guide{border-style:dashed;}
-.dfl-rc.guide:hover{border-color:var(--green,#2a9a98);box-shadow:0 4px 20px rgba(42,154,152,.1);}
-.dfl-rc-top{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
-.dfl-rc-icon{font-size:1.4rem;line-height:1;flex-shrink:0;}
-.dfl-rc-name{font-size:.88rem;font-weight:700;color:var(--text);line-height:1.3;}
-.dfl-rc-desc{font-size:.78rem;color:var(--text-2);line-height:1.5;flex:1;}
-.dfl-rc-cta{margin-top:12px;font-size:.76rem;font-weight:700;color:var(--gold);}
-.dfl-rc.guide .dfl-rc-cta{color:var(--green,#2a9a98);}
-@media(max-width:600px){.dfl-related-grid{grid-template-columns:1fr 1fr;gap:10px;}.dfl-rc{padding:14px;}}
+<link rel="stylesheet" href="/styles/global.css?v=20260618f"/>
+<link rel="stylesheet" href="/styles/tools-shared.css?v=20260618f">
+<link rel="stylesheet" href="/styles/pages/tools_salary-calculator.css?v=20260618f">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dotforlife.com/tools/salary-calculator">
+<meta property="og:title" content="Saudi Salary Calculator | Dot4Life">
+<meta property="og:description" content="Calculate your Saudi net salary with GOSI deductions. Free, bilingual, and accurate.">
+<meta property="og:image" content="https://dotforlife.com/og/og-default.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Saudi Salary Calculator | Dot4Life">
+<meta name="twitter:description" content="Calculate your Saudi net salary with GOSI deductions. Free, bilingual, and accurate.">
+<meta name="twitter:image" content="https://dotforlife.com/og/og-default.png">
 
-</style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Salary & Take-Home Calculator | حاسبة صافي الراتب، DotForLife","url":"https://www.dotforlife.com/tools/salary-calculator.html","applicationCategory":"UtilityApplication","operatingSystem":"Web"}</script>
-  <link rel="alternate" hreflang="ar" href="https://www.dotforlife.com/tools/salary-calculator?lang=ar" />
-  <link rel="alternate" hreflang="en" href="https://www.dotforlife.com/tools/salary-calculator?lang=en" />
-  <link rel="alternate" hreflang="x-default" href="https://www.dotforlife.com/tools/salary-calculator" />
-<!-- Google tag (gtag.js) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Salary Calculator Saudi Arabia | حاسبة صافي الراتب",
+      "alternateName": "Saudi Salary & Take-Home Pay Calculator",
+      "url": "https://dotforlife.com/tools/salary-calculator.html",
+      "description": "Calculate your net take-home salary after GOSI, housing, transport, and allowances. Saudi Arabia focused.",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "SAR" },
+      "inLanguage": ["en", "ar"],
+      "featureList": ["GOSI deduction calculation","Net take-home pay","Annual gross & net","Saudi & expat support","Bilingual Arabic/English"]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://dotforlife.com" },
+        { "@type": "ListItem", "position": 2, "name": "Finance Tools", "item": "https://dotforlife.com/finance" },
+        { "@type": "ListItem", "position": 3, "name": "Salary Calculator", "item": "https://dotforlife.com/tools/salary-calculator.html" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How is GOSI (social insurance) calculated in Saudi Arabia?",
+          "acceptedAnswer": { "@type": "Answer", "text": "For Saudi nationals in the private sector, GOSI is 9.75% of basic salary (employee share). The employer pays an additional contribution. Expats are not subject to GOSI deductions. Government sector rates may differ slightly." }
+        },
+        {
+          "@type": "Question",
+          "name": "What allowances are included in the salary calculation?",
+          "acceptedAnswer": { "@type": "Answer", "text": "This calculator includes basic salary, housing allowance, transport allowance, and other allowances. Not all companies offer all allowances; enter only what applies to your package. Housing and transport allowances are often tax-free in Saudi Arabia." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is income tax deducted from salaries in Saudi Arabia?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Saudi nationals and GCC citizens do not pay personal income tax in Saudi Arabia. Expatriates from non-GCC countries are subject to income tax only on income earned from non-Saudi sources. This calculator focuses on GOSI deductions which apply to Saudi nationals." }
+        },
+        {
+          "@type": "Question",
+          "name": "How accurate is this salary calculator for expats?",
+          "acceptedAnswer": { "@type": "Answer", "text": "For expats, this calculator shows gross salary minus any applicable deductions. Since expats are not subject to GOSI, their net pay equals gross pay in most cases. However, company-specific deductions (health insurance, housing deductions) are not included. Always check your employment contract." }
+        }
+      ]
+    }
+  ]
+}
+</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3G1XPV4F0G"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-3G1XPV4F0G');
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-3G1XPV4F0G');
+window.dflTrack=function(event,params){
+  gtag('event',event,Object.assign({
+    page_path:location.pathname,
+    language:document.documentElement.getAttribute('data-lang')||'en'
+  },params||{}));
+};
 </script>
-
 </head>
 <body class="category-page has-subnav">
-<!-- ═══ UNIFIED HEADER ══════════════════════════════════════ -->
 <nav id="navbar" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
     <a href="../index.html" class="nav-logo" aria-label="DOTFORLIFE Home">
-      <img src="../logo1-footer.webp" alt="DOTFORLIFE" width="100" height="100" style="height:100px;width:auto;object-fit:contain;" width="100" height="100" loading="lazy">
+      <img src="../logo1-footer.webp" alt="DOTFORLIFE" width="100" height="100" style="height:100px;width:auto;object-fit:contain;" loading="lazy">
     </a>
     <ul class="nav-links">
       <li><a href="../health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
@@ -145,166 +163,264 @@
     </div>
   </div>
 </nav>
-<!-- ═══════════════════════════════════════
-       HERO
-  ═══════════════════════════════════════ -->
 
-
-  <div class="tool-hr-wrap">
-
-    <section class="tool-hr" aria-labelledby="tool-title">
-      <div class="tool-hr-in">
-        <div class="tool-hr-bd">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-          Financial Tool
-        </div>
-        <h1><span class="en">Salary Calculator</span><span class="ar">حاسبة صافي الراتب</span></h1>
-        <p><span class="en">Calculate your net take-home pay after deductions, Saudi Arabia (GOSI)</span><span class="ar">احسب صافي راتبك بعد الاستقطاعات، المملكة العربية السعودية (التأمينات)</span></p>
-        
+<div class="tool-hr-wrap">
+  <section class="tool-hr" aria-labelledby="tool-title">
+    <div class="tool-hr-in">
+      <div class="tool-hr-bd">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        <span class="en">Financial Tool</span><span class="ar">أداة مالية</span>
       </div>
-    </section>
-<div id="sub-nav">
-  <div class="sub-nav-inner">
-    <a href="/tools/monthly-budget.html"><span class="en">Budget</span><span class="ar">الميزانية</span></a>
-    <a href="/tools/savings-goal.html"><span class="en">Savings</span><span class="ar">المدخرات</span></a>
-    <a href="/tools/zakat-calculator.html"><span class="en">Zakat</span><span class="ar">الزكاة</span></a>
-    <a href="/tools/mortgage-calculator.html"><span class="en">Mortgage</span><span class="ar">القرض العقاري</span></a>
-    <a href="/tools/salary-calculator.html" class="active"><span class="en">Salary</span><span class="ar">الراتب</span></a>
-    <a href="/tools/roi-calculator.html"><span class="en">ROI</span><span class="ar">العائد</span></a>
+      <h1 id="tool-title"><span class="en">Salary Calculator</span><span class="ar">حاسبة صافي الراتب</span></h1>
+      <p><span class="en">Calculate your net take-home pay after deductions, Saudi Arabia (GOSI)</span><span class="ar">احسب صافي راتبك بعد الاستقطاعات، المملكة العربية السعودية (التأمينات)</span></p>
+    </div>
+  </section>
+  <div id="sub-nav">
+    <div class="sub-nav-inner">
+      <a href="/tools/monthly-budget.html"><span class="en">Budget</span><span class="ar">الميزانية</span></a>
+      <a href="/tools/savings-goal.html"><span class="en">Savings</span><span class="ar">المدخرات</span></a>
+      <a href="/tools/zakat-calculator.html"><span class="en">Zakat</span><span class="ar">الزكاة</span></a>
+      <a href="/tools/mortgage-calculator.html"><span class="en">Mortgage</span><span class="ar">القرض العقاري</span></a>
+      <a href="/tools/salary-calculator.html" class="active"><span class="en">Salary</span><span class="ar">الراتب</span></a>
+      <a href="/tools/roi-calculator.html"><span class="en">ROI</span><span class="ar">العائد</span></a>
+    </div>
   </div>
 </div>
-  </div>
 
 <main class="tool-mn">
-  <h1><span class="en">Salary Calculator</span><span class="ar">حاسبة صافي الراتب</span></h1>
-  <p class="subtitle"><span class="en">Calculate your net take-home pay after deductions, Saudi Arabia (GOSI)</span><span class="ar">احسب صافي راتبك بعد الاستقطاعات، المملكة العربية السعودية (التأمينات)</span></p>
 
-  <div class="card">
-    <h2><span class="en">Basic Information</span><span class="ar">المعلومات الأساسية</span></h2>
-    <div class="form-row">
-      <div>
-        <label><span class="en">Basic Salary (SAR)</span><span class="ar">الراتب الأساسي (ريال)</span></label>
-        <input type="number" id="basic" placeholder="5000" value="5000" min="0"/>
-      </div>
-      <div>
-        <label><span class="en">Housing Allowance (SAR)</span><span class="ar">بدل السكن (ريال)</span></label>
-        <input type="number" id="housing" placeholder="1000" value="1000" min="0"/>
+  <!-- SC-GRID: Info Cards -->
+  <div class="sc-grid tool-rv tool-rv-1">
+    <div class="sc-gc">
+      <div class="sc-gc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+      <div class="sc-gc-text">
+        <div class="sc-gc-label"><span class="en">GOSI Rate</span><span class="ar">نسبة التأمينات</span></div>
+        <div class="sc-gc-value">9.75%</div>
       </div>
     </div>
-    <div class="form-row">
-      <div>
-        <label><span class="en">Transport Allowance (SAR)</span><span class="ar">بدل المواصلات (ريال)</span></label>
-        <input type="number" id="transport" placeholder="500" value="500" min="0"/>
-      </div>
-      <div>
-        <label><span class="en">Other Allowances (SAR)</span><span class="ar">بدلات أخرى (ريال)</span></label>
-        <input type="number" id="other" placeholder="0" value="0" min="0"/>
+    <div class="sc-gc">
+      <div class="sc-gc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M9 22v-4h6v4"/></svg></div>
+      <div class="sc-gc-text">
+        <div class="sc-gc-label"><span class="en">Allowances</span><span class="ar">البدلات</span></div>
+        <div class="sc-gc-value"><span class="en">3 Types</span><span class="ar">3 أنواع</span></div>
       </div>
     </div>
-    <div class="form-row">
-      <div>
-        <label><span class="en">Nationality</span><span class="ar">الجنسية</span></label>
-        <select id="nationality">
-          <option value="saudi"><span class="en">Saudi</span></option>
-          <option value="expat"><span class="en">Expat</span></option>
-        </select>
-      </div>
-      <div>
-        <label><span class="en">Sector</span><span class="ar">القطاع</span></label>
-        <select id="sector">
-          <option value="private"><span class="en">Private</span></option>
-          <option value="government"><span class="en">Government</span></option>
-        </select>
+    <div class="sc-gc">
+      <div class="sc-gc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg></div>
+      <div class="sc-gc-text">
+        <div class="sc-gc-label"><span class="en">Support</span><span class="ar">الدعم</span></div>
+        <div class="sc-gc-value"><span class="en">Saudi & Expat</span><span class="ar">سعودي وأجنبي</span></div>
       </div>
     </div>
-    <button class="calc-btn" onclick="calculate()"><span class="en">Calculate →</span><span class="ar">احسب ←</span></button>
+    <div class="sc-gc">
+      <div class="sc-gc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <div class="sc-gc-text">
+        <div class="sc-gc-label"><span class="en">Free</span><span class="ar">مجاني</span></div>
+        <div class="sc-gc-value">100%</div>
+      </div>
+    </div>
   </div>
 
-  <div class="card" id="result-card" style="display:none">
-    <h2><span class="en">Results</span><span class="ar">النتائج</span></h2>
-    <div class="result-grid">
-      <div class="result-box"><div class="result-label"><span class="en">Gross Salary</span><span class="ar">الراتب الإجمالي</span></div><div class="result-value" id="res-gross">, </div></div>
-      <div class="result-box"><div class="result-label"><span class="en">GOSI Deduction</span><span class="ar">استقطاع التأمينات</span></div><div class="result-value" id="res-gosi">, </div></div>
-      <div class="result-box highlight" style="grid-column:1/-1"><div class="result-label"><span class="en">Net Take-Home</span><span class="ar">صافي الراتب</span></div><div class="result-value gold" id="res-net">, </div></div>
-      <div class="result-box"><div class="result-label"><span class="en">Annual Gross</span><span class="ar">الإجمالي السنوي</span></div><div class="result-value" id="res-annual">, </div></div>
-      <div class="result-box"><div class="result-label"><span class="en">Annual Net</span><span class="ar">الصافي السنوي</span></div><div class="result-value" id="res-annual-net">, </div></div>
+  <!-- SC-CARD: Calculator -->
+  <div class="sc-card tool-rv tool-rv-2">
+    <div class="sc-hdr">
+      <h2><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> <span class="en">Basic Information</span><span class="ar">المعلومات الأساسية</span></h2>
+      <p><span class="en">Enter your salary details and nationality to calculate take-home pay</span><span class="ar">أدخل تفاصيل راتبك وجنسيتك لحساب صافي الراتب</span></p>
     </div>
-    <p class="note"><span class="en">* Saudi employees in private sector pay 10% GOSI on basic salary. Expats are not subject to GOSI deductions. Government sector rates may vary.</span><span class="ar">* يدفع الموظفون السعوديون في القطاع الخاص 10% تأمينات اجتماعية من الراتب الأساسي. الموظفون الأجانب غير خاضعين لاستقطاعات التأمينات.</span></p>
+    <div class="sc-body">
+
+      <!-- Salary inputs -->
+      <div class="sc-g2">
+        <div class="sc-fl">
+          <label class="sc-fl-l" for="basic"><span class="en">Basic Salary (SAR)</span><span class="ar">الراتب الأساسي (ريال)</span></label>
+          <div class="sc-fl-r">
+            <input type="number" id="basic" value="5000" min="0">
+            <span class="sc-fl-u">SAR</span>
+          </div>
+        </div>
+        <div class="sc-fl">
+          <label class="sc-fl-l" for="housing"><span class="en">Housing Allowance (SAR)</span><span class="ar">بدل السكن (ريال)</span></label>
+          <div class="sc-fl-r">
+            <input type="number" id="housing" value="1000" min="0">
+            <span class="sc-fl-u">SAR</span>
+          </div>
+        </div>
+        <div class="sc-fl">
+          <label class="sc-fl-l" for="transport"><span class="en">Transport Allowance (SAR)</span><span class="ar">بدل المواصلات (ريال)</span></label>
+          <div class="sc-fl-r">
+            <input type="number" id="transport" value="500" min="0">
+            <span class="sc-fl-u">SAR</span>
+          </div>
+        </div>
+        <div class="sc-fl">
+          <label class="sc-fl-l" for="other"><span class="en">Other Allowances (SAR)</span><span class="ar">بدلات أخرى (ريال)</span></label>
+          <div class="sc-fl-r">
+            <input type="number" id="other" value="0" min="0">
+            <span class="sc-fl-u">SAR</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Nationality & Sector -->
+      <div class="sc-g2" style="margin-top:6px;">
+        <div class="sc-fl">
+          <label class="sc-fl-l" for="nationality"><span class="en">Nationality</span><span class="ar">الجنسية</span></label>
+          <select id="nationality" class="sc-select">
+            <option value="saudi">Saudi / سعودي</option>
+            <option value="expat">Expat / أجنبي</option>
+          </select>
+        </div>
+        <div class="sc-fl">
+          <label class="sc-fl-l" for="sector"><span class="en">Sector</span><span class="ar">القطاع</span></label>
+          <select id="sector" class="sc-select">
+            <option value="private">Private / خاص</option>
+            <option value="government">Government / حكومي</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Calculate Button -->
+      <button class="sc-btn" onclick="calculate()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        <span class="en">Calculate Salary</span><span class="ar">احسب الراتب</span>
+      </button>
+
+    </div>
   </div>
+
+  <!-- SC-CARD: Results -->
+  <div class="sc-card tool-rv" id="result-card" style="display:none">
+    <div class="sc-hdr">
+      <h2><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> <span class="en">Results</span><span class="ar">النتائج</span></h2>
+    </div>
+    <div class="sc-body">
+      <div class="sc-res-grid">
+        <div class="sc-res-box">
+          <div class="sc-res-label"><span class="en">Gross Salary</span><span class="ar">الراتب الإجمالي</span></div>
+          <div class="sc-res-value" id="res-gross">, </div>
+        </div>
+        <div class="sc-res-box">
+          <div class="sc-res-label"><span class="en">GOSI Deduction</span><span class="ar">استقطاع التأمينات</span></div>
+          <div class="sc-res-value" id="res-gosi">, </div>
+        </div>
+        <div class="sc-res-box sc-primary">
+          <div class="sc-res-label"><span class="en">Net Take-Home Monthly</span><span class="ar">صافي الراتب الشهري</span></div>
+          <div class="sc-res-value" id="res-net">, </div>
+        </div>
+        <div class="sc-res-box">
+          <div class="sc-res-label"><span class="en">Annual Gross</span><span class="ar">الإجمالي السنوي</span></div>
+          <div class="sc-res-value" id="res-annual">, </div>
+        </div>
+        <div class="sc-res-box">
+          <div class="sc-res-label"><span class="en">Annual Net</span><span class="ar">الصافي السنوي</span></div>
+          <div class="sc-res-value" id="res-annual-net">, </div>
+        </div>
+        <div class="sc-res-box sc-note">
+          <p><span class="en">* Saudi employees in private sector pay 9.75% GOSI on basic salary. Expats are not subject to GOSI deductions. Government sector rates may vary.</span>
+          <span class="ar">* يدفع الموظفون السعوديون في القطاع الخاص 9.75% تأمينات اجتماعية من الراتب الأساسي. الموظفون الأجانب غير خاضعين لاستقطاعات التأمينات.</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SC-SECTION: How to Interpret -->
+  <div class="sc-section tool-rv">
+    <div class="sc-section-label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> <span class="en">Understanding Your Salary Breakdown</span><span class="ar">كيف تقرأ تحليل راتبك</span></div>
+    <p class="en">Your gross salary is the total compensation package before deductions. In Saudi Arabia, the main deduction is GOSI (Social Insurance) at 9.75% of basic salary for Saudi nationals. The net result shown is your actual monthly take-home pay — the amount deposited into your bank account. Knowing your net pay is essential for budgeting, mortgage qualification, and savings planning. For example, if your gross package is 15,000 SAR but your net is 12,800 SAR, your monthly budget should be built around the lower figure.</p>
+    <p class="ar">الراتب الإجمالي هو إجمالي التعويضات قبل الاستقطاعات. في المملكة العربية السعودية، الخصم الرئيسي هو التأمينات الاجتماعية (GOSI) بنسبة 9.75% من الراتب الأساسي للمواطنين السعوديين. النتيجة الصافية هي راتبك الفعلي الذي يُودع في حسابك البنكي شهرياً. معرفة صافي راتبك ضرورية لوضع الميزانية، وتقييم أهلية التمويل العقاري، وتخطيط الادخار. على سبيل المثال، إذا كانت باقة راتبك الإجمالي 15,000 ريال ولكن صافي الراتب 12,800 ريال، يجب بناء ميزانيتك الشهرية حول الرقم الأقل.</p>
+  </div>
+
+  <!-- SC-SECTION: When to Use -->
+  <div class="sc-section tool-rv">
+    <div class="sc-section-label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v12"/><path d="M12 12l4-2.5"/></svg> <span class="en">When to Use This Calculator</span><span class="ar">متى تستخدم هذه الحاسبة</span></div>
+    <p class="en">This calculator is most useful when evaluating a new job offer, negotiating salary, or planning your annual budget. For Saudi nationals, understanding GOSI deductions helps set realistic expectations for take-home pay. For expats, the calculator accounts for the standard deduction structure. However, this calculator does not account for variable deductions such as voluntary retirement savings, loan repayments, or court-ordered deductions. For a complete financial picture, use this result alongside the <a href="/tools/monthly-budget.html">Monthly Budget tool</a>.</p>
+    <p class="ar">هذه الحاسبة مفيدة عند تقييم عرض وظيفي جديد، أو التفاوض على الراتب، أو تخطيط ميزانيتك السنوية. للمواطنين السعوديين، فهم استقطاعات التأمينات يساعد في وضع توقعات واقعية للراتب الصافي. للمغتربين، تراعي الحاسبة هيكل الاستقطاعات القياسي. لكن هذه الحاسبة لا تشمل الاستقطاعات المتغيرة مثل الادخار التقاعدي الاختياري، أو أقساط القروض، أو الاستقطاعات القضائية. للحصول على صورة مالية كاملة، استخدم هذه النتيجة مع <a href="/tools/monthly-budget.html">أداة الميزانية الشهرية</a>.</p>
+  </div>
+
+  <!-- SC-SECTION: Limitations -->
+  <div class="sc-section tool-rv">
+    <div class="sc-section-label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> <span class="en">Limitations & Edge Cases</span><span class="ar">القيود والحالات الخاصة</span></div>
+    <p class="en"><strong>When NOT to rely solely on this calculator:</strong> If you have multiple income sources, commission-based earnings, or variable overtime pay, this tool provides a baseline estimate. Company-specific benefit deductions (health insurance premiums, housing deductions) are not included. For complex employment contracts, consulting a certified financial advisor or accountant is recommended. This tool follows standard GOSI rules but individual company policies may differ.</p>
+    <p class="ar"><strong>متى لا تعتمد فقط على هذه الحاسبة:</strong> إذا كان لديك مصادر دخل متعددة، أو أرباح عمولات، أو أجر عمل إضافي متغير، فهذه الأداة توفر تقديراً أساسياً. استقطاعات المزايا الخاصة بكل شركة (أقساط التأمين الصحي، استقطاعات السكن) غير مشمولة. لعقود العمل المعقدة، يُوصى باستشارة مستشار مالي أو محاسب معتمد.</p>
+  </div>
+
+  <!-- SC-FAQ -->
+  <div class="sc-faq tool-rv">
+    <div class="sc-faq-label"><span class="en">FAQ</span><span class="ar">أسئلة شائعة</span></div>
+    <div class="sc-faq-title"><span class="en">Frequently Asked Questions</span><span class="ar">الأسئلة المتكررة</span></div>
+
+    <div class="sc-faq-item">
+      <div class="sc-faq-q" onclick="toggleFAQ(this)"><span><span class="en">How is GOSI calculated in Saudi Arabia?</span><span class="ar">كيف تُحسب التأمينات الاجتماعية في السعودية؟</span></span><span class="sc-faq-arrow">▼</span></div>
+      <div class="sc-faq-a"><p><span class="en">For Saudi nationals in the private sector, GOSI is 9.75% of basic salary. The employer pays an additional contribution. Expats are not subject to GOSI. Government sector rates may differ.</span><span class="ar">للموظفين السعوديين في القطاع الخاص، التأمينات الاجتماعية 9.75% من الراتب الأساسي. الموظفون الأجانب غير خاضعين للتأمينات.</span></p></div>
+    </div>
+    <div class="sc-faq-item">
+      <div class="sc-faq-q" onclick="toggleFAQ(this)"><span><span class="en">What allowances are included?</span><span class="ar">ما البدلات المشمولة؟</span></span><span class="sc-faq-arrow">▼</span></div>
+      <div class="sc-faq-a"><p><span class="en">This calculator includes basic salary, housing allowance, transport allowance, and other allowances. Enter only what applies to your package. Housing and transport allowances are often tax-free in Saudi Arabia.</span><span class="ar">تتضمن الحاسبة الراتب الأساسي، بدل السكن، بدل المواصلات، وبدلات أخرى. أدخل فقط ما ينطبق على باقة راتبك. بدل السكن والمواصلات غالباً معفيان من الضريبة.</span></p></div>
+    </div>
+    <div class="sc-faq-item">
+      <div class="sc-faq-q" onclick="toggleFAQ(this)"><span><span class="en">Is income tax deducted in Saudi Arabia?</span><span class="ar">هل تُخصم ضريبة الدخل في السعودية؟</span></span><span class="sc-faq-arrow">▼</span></div>
+      <div class="sc-faq-a"><p><span class="en">Saudi nationals and GCC citizens do not pay personal income tax. Expats are only taxed on non-Saudi source income. This calculator focuses on GOSI deductions which apply to Saudi nationals.</span><span class="ar">السعوديون ومواطنو دول الخليج لا يدفعون ضريبة دخل شخصية. المغتربون يُضرّبون فقط على الدخل من مصادر غير سعودية.</span></p></div>
+    </div>
+    <div class="sc-faq-item">
+      <div class="sc-faq-q" onclick="toggleFAQ(this)"><span><span class="en">How accurate is this for expats?</span><span class="ar">ما دقة هذه الحاسبة للمغتربين؟</span></span><span class="sc-faq-arrow">▼</span></div>
+      <div class="sc-faq-a"><p><span class="en">For expats, net pay equals gross pay in most cases since they are not subject to GOSI. Company-specific deductions (health insurance, housing) are not included. Check your employment contract for exact figures.</span><span class="ar">للمغتربين، صافي الراتب يساوي الراتب الإجمالي في معظم الحالات. الاستقطاعات الخاصة بكل شركة (تأمين صحي، سكن) غير مشمولة.</span></p></div>
+    </div>
+  </div>
+
+  <!-- SC-AFFILIATE -->
+  <div class="sc-affiliate tool-rv">
+    <div class="sc-aff-badge">Partner</div>
+    <div class="sc-aff-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M9 22v-4h6v4"/></svg></div>
+    <div class="sc-aff-content">
+      <h4><span class="en">Open a Free Saudi Bank Account Online</span><span class="ar">افتح حساب بنكي سعودي مجاني أونلاين</span></h4>
+      <p><span class="en">Compare top digital banks in Saudi Arabia — Al Rajhi, STC Pay, and more. No minimum balance, instant activation.</span><span class="ar">قارن أفضل البنوك الرقمية في السعودية — الراجحي، STC Pay، والمزيد. بدون حد أدنى وتفعيل فوري.</span></p>
+    </div>
+    <a href="#" class="sc-aff-btn" onclick="dflTrack&&dflTrack('affiliate_click',{partner:'saudi_bank',page:document.title})">
+      <span class="en">Open Account →</span><span class="ar">افتح حساب ←</span>
+    </a>
+  </div>
+
+  <!-- SC-SPONSOR -->
+  <div class="sc-sponsor tool-rv">
+    <div class="sc-sponsor-label"><span class="en">Sponsored</span><span class="ar">محتوى مدعوم</span></div>
+    <h3><span class="en">Want to reach 100,000+ GCC residents monthly?</span><span class="ar">تريد الوصول إلى +100,000 مقيم خليجي شهرياً؟</span></h3>
+    <p><span class="en">DOTFORLIFE connects brands with high-intent users across finance, real estate, health, and lifestyle decisions.</span><span class="ar">تربط دوت فور لايف العلامات التجارية بمستخدمين ذوي نية عالية عبر قرارات المالية والعقارات والصحة وأسلوب الحياة.</span></p>
+    <a href="../contact.html" class="sc-sponsor-cta" onclick="dflTrack&&dflTrack('sponsor_cta_click',{page:document.title})">
+      <span class="en">Become a Partner →</span><span class="ar">كن شريكاً ←</span>
+    </a>
+  </div>
+
+  <!-- SC-RELATED -->
+  <div class="sc-related tool-rv">
+    <div class="sc-related-label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg> <span class="en">Continue Your Journey</span><span class="ar">أكمل رحلتك</span></div>
+    <div class="sc-related-title"><span class="en">Related Finance Tools</span><span class="ar">أدوات مالية ذات صلة</span></div>
+    <div class="sc-related-sub"><span class="en">Make the most of your income</span><span class="ar">استثمر دخلك بشكل أفضل</span></div>
+    <div class="sc-related-grid">
+      <a href="/tools/monthly-budget.html" class="sc-rc">
+        <div class="sc-rc-top"><span class="sc-rc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></span><div><div class="sc-rc-name en">Monthly Budget</div><div class="sc-rc-name ar">الميزانية الشهرية</div></div></div>
+        <div class="sc-rc-desc en">Track income & expenses</div><div class="sc-rc-desc ar">تتبع الدخل والمصروف</div>
+        <div class="sc-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
+      </a>
+      <a href="/tools/savings-goal.html" class="sc-rc">
+        <div class="sc-rc-top"><span class="sc-rc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1"/></svg></span><div><div class="sc-rc-name en">Savings Goal</div><div class="sc-rc-name ar">هدف الادخار</div></div></div>
+        <div class="sc-rc-desc en">Plan your savings milestones</div><div class="sc-rc-desc ar">خطط لأهدافك الادخارية</div>
+        <div class="sc-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
+      </a>
+      <a href="/tools/mortgage-calculator.html" class="sc-rc">
+        <div class="sc-rc-top"><span class="sc-rc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 4l9 5.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-5h4v5h4a1 1 0 0 0 1-1v-9"/></svg></span><div><div class="sc-rc-name en">Mortgage Calculator</div><div class="sc-rc-name ar">حاسبة التمويل</div></div></div>
+        <div class="sc-rc-desc en">Can you afford a home?</div><div class="sc-rc-desc ar">هل يمكنك تحمل تمويل عقاري؟</div>
+        <div class="sc-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
+      </a>
+      <a href="/tools/currency-converter.html" class="sc-rc">
+        <div class="sc-rc-top"><span class="sc-rc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg></span><div><div class="sc-rc-name en">Currency Converter</div><div class="sc-rc-name ar">محوّل العملات</div></div></div>
+        <div class="sc-rc-desc en">Convert SAR, USD, EUR & more</div><div class="sc-rc-desc ar">حوّل الريال والدولار وغيرها</div>
+        <div class="sc-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
+      </a>
+    </div>
+  </div>
+
 </main>
 
-<script>
-function toggleLang(){var l=document.documentElement.getAttribute('data-lang')==='ar'?'en':'ar';document.documentElement.setAttribute('data-lang',l);document.documentElement.setAttribute('lang',l);document.documentElement.setAttribute('dir',l==='ar'?'rtl':'ltr');localStorage.setItem('dfl-lang',l);}
-function toggleTheme(){var t=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',t);localStorage.setItem('dfl-theme',t);}
-window.addEventListener('scroll',function(){document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>10);});
-function fmt(n){return n.toLocaleString('en-SA',{minimumFractionDigits:0,maximumFractionDigits:0})+' SAR';}
-function calculate(){
-  var basic=parseFloat(document.getElementById('basic').value)||0;
-  var housing=parseFloat(document.getElementById('housing').value)||0;
-  var transport=parseFloat(document.getElementById('transport').value)||0;
-  var other=parseFloat(document.getElementById('other').value)||0;
-  var nat=document.getElementById('nationality').value;
-  var gross=basic+housing+transport+other;
-  var gosi=0;
-  if(nat==='saudi') gosi=basic*0.10;
-  var net=gross-gosi;
-  document.getElementById('res-gross').textContent=fmt(gross);
-  document.getElementById('res-gosi').textContent=fmt(gosi);
-  document.getElementById('res-net').textContent=fmt(net);
-  document.getElementById('res-annual').textContent=fmt(gross*12);
-  document.getElementById('res-annual-net').textContent=fmt(net*12);
-  document.getElementById('result-card').style.display='block';
-  document.getElementById('result-card').scrollIntoView({behavior:'smooth',block:'nearest'});
-}
-</script>
-
-<div class="dfl-method" style="max-width:1200px;margin:32px auto;padding:0 24px">
-  <div class="dfl-method-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> <span class="en">How to interpret your salary breakdown</span><span class="ar">كيف تقرأ تحليل راتبك</span></div>
-  <p class="en">Your gross salary is the total compensation package before deductions. In Saudi Arabia, the main deductions are GOSI (Social Insurance) at 9.75% of basic salary for Saudi nationals, plus any applicable income tax for expats from non-GCC countries. The net result shown is your actual monthly take-home pay — the amount deposited into your bank account. In real-world financial planning, knowing your net pay is essential for budgeting, mortgage qualification assessments, and savings planning. For example, if your gross package is 15,000 SAR but your net is 12,800 SAR, your monthly budget should be built around the lower figure.</p>
-  <p class="ar">الراتب الإجمالي هو إجمالي التعويضات قبل الاستقطاعات. في المملكة العربية السعودية، الخصومات الرئيسية هي التأمينات الاجتماعية (GOSI) بنسبة 9.75% من الراتب الأساسي للمواطنين السعوديين، بالإضافة إلى أي ضريبة دخل تنطبق على المغتربين من خارج دول الخليج. النتيجة الصافية هي راتبك الفعلي الذي يُودع في حسابك البنكي شهرياً. في التخطيط المالي الواقعي، معرفة صافي راتبك ضرورية لوضع الميزانية، وتقييم أهلية التمويل العقاري، وتخطيط الادخار. على سبيل المثال، إذا كانت باقة راتبك الإجمالي 15,000 ريال ولكن صافي الراتب 12,800 ريال، يجب بناء ميزانيتك الشهرية حول الرقم الأقل.</p>
-</div>
-
-<div class="dfl-method" style="max-width:1200px;margin:32px auto;padding:0 24px">
-  <div class="dfl-method-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v12"/><path d="M12 12l4-2.5"/></svg> <span class="en">When to use this calculator</span><span class="ar">متى تستخدم هذه الحاسبة</span></div>
-  <p class="en">This calculator is most useful when evaluating a new job offer, negotiating salary, or planning your annual budget. For Saudi nationals, understanding GOSI deductions helps set realistic expectations for take-home pay. For expats, the calculator accounts for the standard deduction structure applicable in the Kingdom. However, this calculator does not account for variable deductions such as voluntary retirement savings, loan repayments, or court-ordered deductions. For a complete financial picture, use this result alongside the <a href="/tools/monthly-budget.html">Monthly Budget tool</a>.</p>
-  <p class="ar">هذه الحاسبة مفيدة عند تقييم عرض وظيفي جديد، أو التفاوض على الراتب، أو تخطيط ميزانيتك السنوية. للمواطنين السعوديين، فهم استقطاعات التأمينات يساعد في وضع توقعات واقعية للراتب الصافي. للمغتربين، تراعي الحاسبة هيكل الاستقطاعات القياسي المطبق في المملكة. لكن هذه الحاسبة لا تشمل الاستقطاعات المتغيرة مثل الادخار التقاعدي الاختياري، أو أقساط القروض، أو الاستقطاعات القضائية. للحصول على صورة مالية كاملة، استخدم هذه النتيجة مع <a href="/tools/monthly-budget.html">أداة الميزانية الشهرية</a>.</p>
-</div>
-
-<div class="dfl-method" style="max-width:1200px;margin:32px auto;padding:0 24px">
-  <div class="dfl-method-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> <span class="en">Limitations &amp; edge cases</span><span class="ar">القيود والحالات الخاصة</span></div>
-  <p class="en"><strong>When NOT to rely solely on this calculator:</strong> If you have multiple income sources, commission-based earnings, or variable overtime pay, this tool provides a baseline estimate rather than an exact figure. Additionally, company-specific benefit deductions (such as health insurance premiums or housing deductions) are not included. For complex employment contracts, consulting a certified financial advisor or accountant is recommended. This tool follows standard GOSI rules but individual company policies may differ.</p>
-  <p class="ar"><strong>متى لا تعتمد فقط على هذه الحاسبة:</strong> إذا كان لديك مصادر دخل متعددة، أو أرباح عمولات، أو أجر عمل إضافي متغير، فهذه الأداة توفر تقديراً أساسياً وليس رقماً دقيقاً. بالإضافة إلى ذلك، استقطاعات المزايا الخاصة بكل شركة (مثل أقساط التأمين الصحي أو استقطاعات السكن) غير مشمولة. لعقود العمل المعقدة، يُوصى باستشارة مستشار مالي أو محاسب معتمد. تتبع هذه الأداة قواعد التأمينات الاجتماعية القياسية لكن سياسات الشركات الفردية قد تختلف.</p>
-</div>
-
-<section class="dfl-related" aria-label="Related tools and guides">
-  <div class="container">
-    <div class="dfl-related-label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg> <span class="en">Continue Your Journey</span><span class="ar">أكمل رحلتك</span></div>
-    <h2 class="dfl-related-title"><span class="en">Related Finance Tools</span><span class="ar">أدوات المالية ذات الصلة</span></h2>
-    <p class="dfl-related-sub"><span class="en">Make the most of your income</span><span class="ar">استثمر دخلك بشكل أفضل</span></p>
-    <div class="dfl-related-grid">
-      <a href="/tools/monthly-budget.html" class="dfl-rc">
-        <div class="dfl-rc-top"><span class="dfl-rc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></span><div><div class="dfl-rc-name en">Monthly Budget</div><div class="dfl-rc-name ar">الميزانية الشهرية</div></div></div>
-        <div class="dfl-rc-desc en">Track income & expenses</div><div class="dfl-rc-desc ar">تتبع الدخل والمصروف</div>
-        <div class="dfl-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
-      </a>
-      <a href="/tools/savings-goal.html" class="dfl-rc">
-        <div class="dfl-rc-top"><span class="dfl-rc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1"/></svg></span><div><div class="dfl-rc-name en">Savings Goal</div><div class="dfl-rc-name ar">هدف الادخار</div></div></div>
-        <div class="dfl-rc-desc en">Plan your savings milestones</div><div class="dfl-rc-desc ar">خطط لأهدافك الادخارية</div>
-        <div class="dfl-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
-      </a>
-      <a href="/tools/mortgage-calculator.html" class="dfl-rc">
-        <div class="dfl-rc-top"><span class="dfl-rc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 4l9 5.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-5h4v5h4a1 1 0 0 0 1-1v-9"/></svg></span><div><div class="dfl-rc-name en">Mortgage Calculator</div><div class="dfl-rc-name ar">حاسبة التمويل</div></div></div>
-        <div class="dfl-rc-desc en">Can you afford a home?</div><div class="dfl-rc-desc ar">هل يمكنك تحمل تمويل عقاري؟</div>
-        <div class="dfl-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
-      </a>
-      <a href="/blog/expat-vs-national-finance.html" class="dfl-rc guide">
-        <div class="dfl-rc-top"><span class="dfl-rc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/></svg></span><div><div class="dfl-rc-name en">Expat vs National Finance</div><div class="dfl-rc-name ar">تمويل المغترب مقابل المواطن</div></div></div>
-        <div class="dfl-rc-desc en">Financial planning for both</div><div class="dfl-rc-desc ar">تخطيط مالي للجميع</div>
-        <div class="dfl-rc-cta"><span class="en">Read guide →</span><span class="ar">اقرأ الدليل ←</span></div>
-      </a>
-    </div>
-  </div>
-</section>
 <footer class="site-footer" role="contentinfo">
   <div class="footer-inner">
     <div class="footer-top">
@@ -331,7 +447,7 @@ function calculate(){
             <li><a href="../tools/bmi-calculator.html"><span class="en">BMI Calculator</span><span class="ar">حاسبة BMI</span></a></li>
             <li><a href="../tools/mortgage-calculator.html"><span class="en">Mortgage</span><span class="ar">التمويل</span></a></li>
             <li><a href="../tools/zakat-calculator.html"><span class="en">Zakat</span><span class="ar">الزكاة</span></a></li>
-            <li><a href="../tools/hijri-converter.html"><span class="en">Hijri Date</span><span class="ar">التاريخ الهجري</span></a></li>
+            <li><a href="../tools/salary-calculator.html"><span class="en">Salary</span><span class="ar">الراتب</span></a></li>
             <li><a href="../library.html"><span class="en">All Tools</span><span class="ar">كل الأدوات</span></a></li>
           </ul>
         </div>
@@ -339,12 +455,10 @@ function calculate(){
           <h4><span class="en">Company</span><span class="ar">الشركة</span></h4>
           <ul>
             <li><a href="../about.html"><span class="en">About</span><span class="ar">عنّا</span></a></li>
-            <li><a href="../blog.html"><span class="en">blog</span><span class="ar">المدونة</span></a></li>
+            <li><a href="../blog.html"><span class="en">Blog</span><span class="ar">المدونة</span></a></li>
             <li><a href="../contact.html"><span class="en">Contact</span><span class="ar">تواصل</span></a></li>
             <li><a href="../privacy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a></li>
-            <li><a href="../privacy-policy.html"><span class="en">Privacy Policy</span><span class="ar">سياسة الخصوصية</span></a></li>
             <li><a href="../terms.html"><span class="en">Terms</span><span class="ar">الشروط</span></a></li>
-            <li><a href="../editorial-standards.html"><span class="en">Editorial Standards</span><span class="ar">المعايير التحريرية</span></a></li>
           </ul>
         </div>
       </div>
@@ -354,13 +468,12 @@ function calculate(){
       <span>© 2026 DOTFORLIFE, <span class="en">Free for families, always.</span><span class="ar">مجاني للعائلات، دائماً.</span></span>
       <div class="footer-bottom-links">
         <a href="../privacy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a>
-        <a href="../privacy-policy.html"><span class="en">Privacy Policy</span><span class="ar">سياسة الخصوصية</span></a>
         <a href="../terms.html"><span class="en">Terms</span><span class="ar">الشروط</span></a>
       </div>
     </div>
   </div>
 </footer>
-<!-- ═══ UNIFIED MOBILE NAV ══════════════════════════════════ -->
+
 <nav class="dfl-mobile-nav" aria-label="Mobile navigation">
   <a href="../index.html" class="dfl-mnav-item" aria-label="Home">
     <svg viewBox="0 0 24 24"><polyline points="3 9 12 2 21 9"/><path d="M5 9v11a1 1 0 001 1h4v-6h4v6h4a1 1 0 001-1V9"/></svg>
@@ -384,7 +497,6 @@ function calculate(){
   </a>
 </nav>
 
-<!-- ── Mobile dropdown menu ── -->
 <div class="mobile-dropdown" id="mobile-dropdown" aria-hidden="true">
   <div class="md-links">
     <a href="../health.html"><span class="en">Health</span><span class="ar">الصحة</span></a>
@@ -405,21 +517,37 @@ function calculate(){
     </button>
   </div>
 </div>
-<!-- ════════════════════════════════════════════════════════════ -->
+
 <script src="/scripts/global.js" defer></script>
-  <script src="/tool-share.js" defer></script>
-<!-- SEO_PROFILE
-  page_type: tool
-  cluster: finance
-  authority_score: 77
-  inbound_links: 24
-  outbound_links: 11
-  link_velocity: high
-  priority_indexing: true
-  content_depth: 29
-  word_count: 401
-  canonical: https://www.dotforlife.com/tools/salary-calculator.html
--->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1436107577087160" crossorigin="anonymous"></script>
+<script>
+function fmt(n){return n.toLocaleString('en-SA',{minimumFractionDigits:0,maximumFractionDigits:0})+' SAR';}
+
+function calculate(){
+  var basic=parseFloat(document.getElementById('basic').value)||0;
+  var housing=parseFloat(document.getElementById('housing').value)||0;
+  var transport=parseFloat(document.getElementById('transport').value)||0;
+  var other=parseFloat(document.getElementById('other').value)||0;
+  var nat=document.getElementById('nationality').value;
+  var gross=basic+housing+transport+other;
+  var gosi=0;
+  if(nat==='saudi') gosi=basic*0.0975;
+  var net=gross-gosi;
+  document.getElementById('res-gross').textContent=fmt(gross);
+  document.getElementById('res-gosi').textContent=fmt(gosi);
+  document.getElementById('res-net').textContent=fmt(net);
+  document.getElementById('res-annual').textContent=fmt(gross*12);
+  document.getElementById('res-annual-net').textContent=fmt(net*12);
+  document.getElementById('result-card').style.display='block';
+  document.getElementById('result-card').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function toggleFAQ(el){
+  el.classList.toggle('open');
+  var answer=el.nextElementSibling;
+  if(answer) answer.classList.toggle('open');
+}
+
+document.addEventListener('DOMContentLoaded',function(){ calculate(); });
+</script>
 </body>
 </html>
