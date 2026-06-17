@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl" data-lang="ar" data-theme="light">
 <head>
-<script>(function(){var p=new URLSearchParams(location.search),gd=(function(){try{var z=(Intl.DateTimeFormat().resolvedOptions().timeZone||"");return /Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test(z)?"ar":"en";}catch(e){return "ar";}})(),l=p.get("lang")||localStorage.getItem("dfl-lang")||gd,t=p.get("theme")||localStorage.getItem("dfl-theme")||"light",h=document.documentElement;h.setAttribute("data-theme",t);h.setAttribute("data-lang",l);h.setAttribute("lang",l);h.setAttribute("dir",l==="ar"?"rtl":"ltr");if(p.get("lang"))localStorage.setItem("dfl-lang",l);if(p.get("theme"))localStorage.setItem("dfl-theme",t);})()</script>
+<script>(function(){var p=new URLSearchParams(location.search),gd=(function(){try{var z=(Intl.DateTimeFormat().resolvedOptions().timeZone||"");return /Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test(z)?"ar":"en";}catch(e){return "ar";}})(),h=document.documentElement,l=p.get("lang")||h.getAttribute("data-lang")||localStorage.getItem("dfl-lang")||gd,t=p.get("theme")||localStorage.getItem("dfl-theme")||h.getAttribute("data-theme")||"light";h.setAttribute("data-theme",t);h.setAttribute("data-lang",l);h.setAttribute("lang",l);h.setAttribute("dir",l==="ar"?"rtl":"ltr");if(p.get("lang"))localStorage.setItem("dfl-lang",l);if(p.get("theme"))localStorage.setItem("dfl-theme",t);})()</script>
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -73,14 +73,16 @@ tr:nth-child(even){background:#f8faf9}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles/global.css?v=20260608u">
-  <link rel="stylesheet" href="/styles/home.css?v=20260608u">
-  <link rel="stylesheet" href="/styles/pages/articles.css?v=20260608u">
+  <link rel="stylesheet" href="/styles/global.css?v=20260617a">
+  <link rel="stylesheet" href="/styles/home.css?v=20260617a">
+  <link rel="stylesheet" href="/styles/pages/articles.css?v=20260617a">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1436107577087160" crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3G1XPV4F0G"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3G1XPV4F0G');</script>
 </head>
 <body data-template="article">
+
+<div id="reading-progress" role="progressbar" aria-label="Reading progress"></div>
 
 <!-- ═══ UNIFIED HEADER ══════════════════════════════════════ -->
 <nav id="navbar"><div class="nav-inner"><a href="/" class="nav-logo"><img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" width="100" height="100" style="height:100px;width:auto;object-fit:contain;" loading="lazy"></a><ul class="nav-links"><li><a href="/health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li><li><a href="/finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li><li><a href="/real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li><li><a href="/travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li><li><a href="/islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li><li><a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a></li><li><a href="/archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a></li><li><a href="/blog.html"><span class="en">blog</span><span class="ar">المدونة</span></a></li><li><a href="/library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a></li></ul><div class="nav-controls"><button class="nav-btn" id="lang-toggle"><span class="en">عربي</span><span class="ar">English</span></button><button class="nav-btn" id="theme-toggle">
@@ -95,21 +97,24 @@ tr:nth-child(even){background:#f8faf9}
 <section class="article-banner" aria-label="Article banner">
   <div class="article-banner-img-wrap">
     <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=600&h=340&q=85" alt="" class="article-banner-img" width="1200" height="420" loading="eager" fetchpriority="high">
-    <div class="article-banner-overlay" style="text-align:right;">
-      <div class="article-banner-cat" style="display:inline-block;color:#fff;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:4px 14px;font-size:.72rem;font-weight:700;margin-bottom:.75rem;backdrop-filter:blur(4px);">أدلة</div>
-      <h1 class="article-banner-title" style="font-size:clamp(1.5rem,3.5vw,2.2rem);line-height:1.4;font-weight:800;color:#fff;text-shadow:0 2px 20px rgba(0,0,0,.3);margin:0;">نوم الأطفال في الإجازة الصيفية: حماية روتين نوم صحي للطفل</h1>
-      <div class="article-banner-meta" style="color:rgba(255,255,255,.8);margin-top:.75rem;font-size:.8rem;display:flex;gap:.6rem;flex-wrap:wrap;justify-content:flex-end;">
+    <div class="article-banner-overlay">
+      <div class="article-banner-cat">أدلة</div>
+      <h1 class="article-banner-title">نوم الأطفال في الإجازة الصيفية: حماية روتين نوم صحي للطفل</h1>
+      <div class="article-banner-meta">
         <span>16 يونيو 2026</span>
-        <span>٨ دقائق قراءة</span>
+        <span>١٤ دقائق قراءة</span>
       </div>
     </div>
   </div>
 </section>
 
+<div class="article-layout">
+
+<main class="article-main">
 <article class="article-body">
 <p>الأسبوع الأول من الإجازة الصيفية، كانت سارة (8 سنوات) تذهب إلى السرير في الواحدة صباحاً وتستيقظ في الحادية عشرة. أمها كانت سعيدة أنها "ترتاح"، لكن بعد شهر، لاحظت أن سارة أصبحت سريعة الغضب، لا تركز في أي نشاط، وتشكو من الصداع. هذا السيناريو يتكرر في آلاف البيوت الخليجية كل صيف. تغير روتين النوم في الإجازة ليس مجرد تغيير جدول، إنه يؤثر في صحة الطفل الجسدية والنفسية والعقلية. هذا المقال يشرح لماذا يحدث ذلك، وما يمكنك فعله لحماية نوم أطفالك.</p>
 
-<h2>لماذا يختل نوم الأطفال في الصيف</h2>
+<h2 id="لماذا-يختل-نوم-الأطفال-في-الصيف">لماذا يختل نوم الأطفال في الصيف</h2>
 <p>تتعدد الأسباب التي تجعل نوم الأطفال يضطرب مع بداية الإجازة الصيفية. أكاديمية النوم الأمريكية تشير إلى أن تغيير الروتين اليومي هو السبب الرئيسي لاضطراب الساعة البيولوجية عند الأطفال. في الإجازة، يختفي الدافع للاستيقاظ مبكراً (لا مدرسة)، ويزيد وقت الشاشات بشكل كبير، وتتغير مواعيد الوجبات، كل ذلك يخلط إشارات الجسم الطبيعية للنوم والاستيقاظ.</p>
 
 <p>في الخليج، تتفاقم المشكلة بسبب ارتفاع الحرارة نهاراً الذي يقلل النشاط الخارجي، فيقضي الأطفال وقتاً أطول في الداخل أمام الشاشات. الأكاديمية الأمريكية لطب الأطفال توصي بعدم تجاوز ساعتين يومياً من وقت الشاشات للأطفال فوق سن الثانية، لكن في الإجازة، يتضاعف هذا الرقم غالباً.</p>
@@ -118,7 +123,7 @@ tr:nth-child(even){background:#f8faf9}
 
 <p>هناك عامل آخر مهم وهو غياب ضوء الشمس الصباحي. الأطفال الذين يستيقظون متأخراً يفوتون التعرض لضوء الشمس في الساعات الأولى من النهار — و<a href="/blog/managing-screen-time-children.html">إدارة وقت الشاشات للأطفال</a> تحدٍّ يحتاج حلولاً عملية، وهو الضوء الذي يساعد على ضبط الساعة البيولوجية عبر تثبيت إيقاع الميلاتونين. عدم التعرض للشمس صباحاً يضعف إشارة الاستيقاظ الطبيعية للجسم، مما يجعل دورة النوم والاستيقاظ بأكملها تنتقل إلى وقت متأخر تدريجياً.</p>
 
-<h2>الأضرار الحقيقية للسهر على الأطفال</h2>
+<h2 id="الأضرار-الحقيقية-للسهر-على-الأطفال">الأضرار الحقيقية للسهر على الأطفال</h2>
 <p>السهر ليس مجرد تغيير في العادات، له آثار صحية موثقة تمتد لتشمل جميع جوانب حياة الطفل. من المهم أن يدرك الآباء أن اضطراب النوم الصيفي لا يقتصر على الإرهاق، بل له عواقب أعمق:</p>
 <ul>
   <li><strong>تأثير على النمو:</strong> هرمون النمو يُفرز بشكل أساسي خلال النوم العميق في الساعات الأولى من الليل (بين 10 مساءً و 2 صباحاً). السهر يقلص هذه الساعات ويؤثر على الطول والنمو الطبيعي للطفل على المدى الطويل.</li>
@@ -133,7 +138,7 @@ tr:nth-child(even){background:#f8faf9}
 <strong>⚠️ تنبيه مهم:</strong> دراسة من جامعة الملك فيصل (2025) وجدت أن 68% من أطفال الخليج يعانون من تغير كبير في نمط نومهم خلال الإجازة الصيفية، و42% منهم يحتاجون أكثر من أسبوعين لاستعادة نمط نوم طبيعي عند العودة للمدرسة.
 </div>
 
-<h2>احتياجات النوم حسب العمر</h2>
+<h2 id="احتياجات-النوم-حسب-العمر">احتياجات النوم حسب العمر</h2>
 <table>
   <tr><th>الفئة العمرية</th><th>ساعات النوم الموصى بها</th><th>القيلولة</th><th>وقت النوم المقترح</th></tr>
   <tr><td>3-5 سنوات</td><td>10-13 ساعة</td><td>نعم (30-60 دقيقة)</td><td>8:00-9:00 مساءً</td></tr>
@@ -142,7 +147,7 @@ tr:nth-child(even){background:#f8faf9}
 </table>
 <p>المصدر: الأكاديمية الأمريكية لطب النوم (2025).</p>
 
-<h2>روتين عملي للحفاظ على نوم صحي في الإجازة</h2>
+<h2 id="روتين-عملي-للحفاظ-على-نوم-صحي-في-الإجازة">روتين عملي للحفاظ على نوم صحي في الإجازة</h2>
 <ol>
   <li><strong>حافظ على وقت نوم واستيقاظ ثابت:</strong> لا تختلف عن وقت المدرسة بأكثر من ساعة. إذا كان طفلك يستيقظ 6:30 صباحاً في أيام الدراسة، لا تدعه ينام حتى 10 صباحاً في الإجازة.</li>
   <li><strong>أنشئ طقوساً ثابتة قبل النوم:</strong> 30-45 دقيقة من الهدوء قبل النوم: أضواء خافتة، حمام دافئ، قصة هادئة، دعاء النوم. التكرار يخلق إشارات عصبية تطمئن الجسم أن وقت النوم قد حان.</li>
@@ -152,17 +157,28 @@ tr:nth-child(even){background:#f8faf9}
   <li><strong>تهيئة غرفة النوم:</strong> مظلمة، درجة حرارة معتدلة (22-24°C)، هادئة. استخدم ستائر معتمة إذا لزم الأمر.</li>
 </ol>
 
-<h2>مشكلة الشاشات: التحدي الأكبر</h2>
+
+
+<div class="in-content-subscribe">
+  <h3>📬 <span class="en">Enjoying this article?</span><span class="ar">هل يعجبك المقال؟</span></h3>
+  <p><span class="en">Get more family tips every Friday — join our newsletter.</span><span class="ar">احصل على نصائح أسرية كل جمعة — اشترك في نشرتنا.</span></p>
+  <div class="sub-input-wrap">
+    <input type="email" placeholder="your@email.com" aria-label="Email">
+    <button onclick="alert('🚧 Coming soon — signup integration.')"><span class="en">Subscribe</span><span class="ar">اشترك</span></button>
+  </div>
+</div>
+
+<h2 id="مشكلة-الشاشات-التحدي-الأكبر">مشكلة الشاشات: التحدي الأكبر</h2>
 <p>في دراسة من جامعة الملك سعود (2026)، وجد أن أطفال الخليج يقضون في المتوسط 5-7 ساعات يومياً أمام الشاشات في الإجازة الصيفية. هذا الرقم يزيد بأكثر من الضعف عن الحد الموصى به من قبل الأكاديمية الأمريكية لطب الأطفال. الضوء الأزرق المنبعث من الشاشات يخدع الدماغ فيعتقد أنه نهار، مما يؤخر إفراز الميلاتونين ويجعل النوم صعباً حتى عندما يكون الطفل متعباً.</p>
 
 <p>المشكلة لا تقتصر على الضوء الأزرق فقط. محتوى الشاشات نفسه (ألعاب مثيرة، مقاطع يوتيوب سريعة، مسلسلات مشوقة) ينشط الجهاز العصبي ويرفع مستويات الأدرينالين، مما يجعل انتقال الدماغ إلى حالة الاسترخاء اللازمة للنوم أكثر صعوبة. حتى بعد إطفاء الشاشة، يحتاج الدماغ 30-60 دقيقة ليهدأ، وهذه الدقائق الثمينة تُسرق من وقت النوم الثمين.</p>
 
 <p>الحل ليس منع الشاشات بالكامل (هذا غير واقعي)، لكن وضع حدود واضحة: ساعتان كحد أقصى يومياً، لا شاشات بعد المغرب، واستبدال وقت الشاشة بنشاطات أخرى ممتعة. الأكاديمية الأمريكية لطب الأطفال توصي بـ"ميثاق عائلي للشاشات" يتفق عليه الجميع في بداية الإجازة، وتكون فيه أوقات الشاشة محددة سلفاً مثل أي نشاط عائلي آخر.</p>
 
-<h2>تحديات خاصة: فروق العمر والأشقاء</h2>
+<h2 id="تحديات-خاصة-فروق-العمر-والأشقاء">تحديات خاصة: فروق العمر والأشقاء</h2>
 <p>من التحديات التي تواجه الأسر التي لديها أكثر من طفل أن احتياجات النوم تختلف حسب العمر. الطفل الصغير (3-5 سنوات) يحتاج للنوم أبكر من أخيه المراهق، لكن الأجواء المنزلية قد لا تساعد. الحل الأمثل هو وضع جدول زمني متدرج: ينام الصغار أولاً (8-9 مساءً) في أجواء هادئة، بينما يمكث المراهقون قليلاً (حتى 10 مساءً) لكن بأنشطة هادئة كالقراءة أو الاستماع للبودكاست، وليس أمام الشاشات. هذا التدرج يحقق احتياجات جميع أفراد الأسرة دون إجبار الجميع على نمط نوم واحد لا يناسب الجميع.</p>
 
-<h2>متى تستشير طبيب الأطفال</h2>
+<h2 id="متى-تستشير-طبيب-الأطفال">متى تستشير طبيب الأطفال</h2>
 <p>معظم اضطرابات النوم الصيفية مؤقتة وتتحسن بالالتزام بالروتين. لكن استشر طبيب الأطفال إذا استمرت الأعراض التالية لأكثر من أسبوعين:</p>
 <ul>
   <li>شخير مرتفع ومنتظم أثناء النوم.</li>
@@ -177,7 +193,7 @@ tr:nth-child(even){background:#f8faf9}
 <strong>المصادر:</strong> الأكاديمية الأمريكية لطب النوم (2025)، الأكاديمية الأمريكية لطب الأطفال (2025)، جامعة الملك سعود (2026)، جامعة الملك فيصل (2025)، جامعة كارنيجي ميلون (2024).
 </div>
 
-<h2>الأسئلة الشائعة (FAQ)</h2>
+<h2 id="الأسئلة-الشائعة-faq">الأسئلة الشائعة (FAQ)</h2>
 
 <p><strong>لماذا يختل نوم الأطفال في الإجازة الصيفية؟</strong><br>
 يختل نوم الأطفال صيفاً لأسباب متعددة: تغير الروتين اليومي (لا مدرسة يعني لا استيقاظ مبكر)، السهر بسبب غياب الالتزامات الصباحية، زيادة وقت الشاشات (ألعاب الفيديو واليوتيوب)، النهار الطويل وارتفاع الحرارة الذي يقلل النشاط الخارجي، والسفر والزيارات العائلية التي تعطل الجدول المعتاد. كل هذه العوامل مجتمعة تؤدي لتأخر موعد النوم واضطراب الساعة البيولوجية، وتفسر لماذا يعاني معظم أطفال الخليج من تغير نمط النوم في الصيف.</p>
@@ -198,7 +214,123 @@ tr:nth-child(even){background:#f8faf9}
 نعم، القيلولة مفيدة جداً لكن يجب تنظيمها بعناية. الأطفال دون 5 سنوات يحتاجون قيلولة يومية منتظمة لمدة 30-60 دقيقة، والأفضل أن تكون قبل العصر. القيلولة الطويلة (أكثر من ساعة) أو المتأخرة (بعد العصر) تؤثر سلباً على نوم الليل. الأطفال بين 5-7 سنوات قد يحتاجون القيلولة أو لا حسب احتياجهم الفردي. للمراهقين، قيلولة قصيرة جداً (20 دقيقة فقط) كافية لتحسين اليقظة والتركيز دون التأثير على نوم الليل.</p>
 </article>
 
+<div class="article-end">
+<div class="article-share">
+  <a href="https://wa.me/?text=نوم الأطفال في الإجازة الصيفية: حماية روتين نوم صحي%20https://dotforlife.com/health/children-sleep-summer.html" target="_blank" rel="noopener" class="share-btn whatsapp" aria-label="Share on WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span>WhatsApp</span>
+  </a>
+  <a href="https://twitter.com/intent/tweet?text=نوم الأطفال في الإجازة الصيفية: حماية روتين نوم صحي&url=https://dotforlife.com/health/children-sleep-summer.html" target="_blank" rel="noopener" class="share-btn x" aria-label="Share on X">
+    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    <span>X</span>
+  </a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https://dotforlife.com/health/children-sleep-summer.html" target="_blank" rel="noopener" class="share-btn facebook" aria-label="Share on Facebook">
+    <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    <span>Facebook</span>
+  </a>
+  <button class="share-btn copy-link" onclick="navigator.clipboard.writeText(location.href);var s=this.querySelectorAll('span');if(s.length>1){s[0].textContent='✓ Copied';s[1].textContent='✓ نُسخ'}" aria-label="Copy link">
+    <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+    <span class="en">Copy</span><span class="ar">نسخ</span>
+  </button>
 </div>
+
+<div class="article-tool-cta">
+  <h3><span class="en">Try Our حاسبة BMI</span><span class="ar">جرّب حاسبة BMI</span></h3>
+  <p><span class="en">Calculate, plan, and take control of your family finances.</span><span class="ar">احسب، خطّط، وتحكّم في مالية أسرتك.</span></p>
+  <a href="/tools/bmi-calculator.html" class="tool-cta-btn"><span class="en">Open Tool →</span><span class="ar">فتح الأداة ←</span></a>
+</div>
+
+<div class="article-read-also">
+  <h3><span class="en">📖 Read Also</span><span class="ar">📖 اقرأ أيضاً</span></h3>
+  <div class="read-also-grid">
+    <a href="/blog/bmi-middle-eastern-adults.html" class="read-also-card">
+      <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=600&h=340&q=85" alt="" loading="lazy">
+      <span class="read-also-title">مؤشر كتلة الجسم للبالغين من الشرق الأوسط: ما هو النطاق الصحي؟</span>
+    </a>
+    <a href="/blog/walking-vs-running-comparison.html" class="read-also-card">
+      <img src="https://images.unsplash.com/photo-1592859600972-1b0834d83747?auto=format&fit=crop&w=600&h=340&q=85" alt="" loading="lazy">
+      <span class="read-also-title">المشي أم الجري: أيهما يحرق سعرات حرارية أكثر؟</span>
+    </a>
+    <a href="/blog/natural-birth-vs-c-section-comparison.html" class="read-also-card">
+      <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=600&h=340&q=85" alt="" loading="lazy">
+      <span class="read-also-title">الولادة الطبيعية مقابل القيصرية: متى يُنصح بكل خيار؟</span>
+    </a>
+    <a href="/blog/body-fat-vs-weight-guide.html" class="read-also-card">
+      <img src="https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?auto=format&fit=crop&w=600&h=340&q=85" alt="" loading="lazy">
+      <span class="read-also-title">الدهون مقابل الوزن: أي الرقمين أهم لصحتك؟</span>
+    </a>
+  </div>
+</div>
+
+<div class="article-friday-cta">
+  <h3>📬 <span class="en">Friday Family Tips</span><span class="ar">نصائح الجمعة للأسرة</span></h3>
+  <p><span class="en">Get weekly inspiration delivered to your inbox.</span><span class="ar">احصل على إلهام أسبوعي في بريدك.</span></p>
+  <div class="friday-input-wrap">
+    <input type="email" placeholder="your@email.com" aria-label="Email">
+    <button onclick="alert('🚧 Coming soon — signup integration.')"><span class="en">Join</span><span class="ar">اشترك</span></button>
+  </div>
+</div>
+
+<div class="article-tags">
+  <span class="tag">#health</span>
+  <span class="tag">#wellness</span>
+  <span class="tag">#nutrition</span>
+  <span class="tag">#fitness</span>
+  <span class="tag">#gulf-health</span>
+</div>
+</div>
+</main>
+
+<aside class="article-sidebar">
+<div class="sidebar-module sidebar-team-card">
+  <img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" width="56" height="56" loading="lazy">
+  <div class="team-name"><span class="en">Dot4Life Team</span><span class="ar">فريق دوت فور لايف</span></div>
+  <div class="team-trust"><span class="en">Trusted content, carefully edited for Gulf families.</span><span class="ar">محتوى موثوق، محرَّر بعناية للأسرة الخليجية.</span></div>
+  <a href="/editorial-standards.html" class="team-link"><span class="en">Our Standards →</span><span class="ar">معاييرنا التحريرية ←</span></a>
+</div>
+
+<div class="sidebar-module sidebar-toc">
+  <h4>📑 <span class="en">Contents</span><span class="ar">المحتويات</span></h4>
+  <a href="#لماذا-يختل-نوم-الأطفال-في-الصيف" class="toc-item">لماذا يختل نوم الأطفال في الصيف</a>
+  <a href="#الأضرار-الحقيقية-للسهر-على-الأطفال" class="toc-item">الأضرار الحقيقية للسهر على الأطفال</a>
+  <a href="#احتياجات-النوم-حسب-العمر" class="toc-item">احتياجات النوم حسب العمر</a>
+  <a href="#روتين-عملي-للحفاظ-على-نوم-صحي-في-الإجازة" class="toc-item">روتين عملي للحفاظ على نوم صحي في الإجازة</a>
+  <a href="#مشكلة-الشاشات-التحدي-الأكبر" class="toc-item">مشكلة الشاشات: التحدي الأكبر</a>
+  <a href="#تحديات-خاصة-فروق-العمر-والأشقاء" class="toc-item">تحديات خاصة: فروق العمر والأشقاء</a>
+  <a href="#متى-تستشير-طبيب-الأطفال" class="toc-item">متى تستشير طبيب الأطفال</a>
+  <a href="#الأسئلة-الشائعة-faq" class="toc-item">الأسئلة الشائعة (FAQ)</a>
+</div>
+
+<div class="sidebar-module sidebar-related">
+  <h4><span class="en">Related</span><span class="ar">ذات صلة</span></h4>
+  <a href="/blog/bmi-middle-eastern-adults.html" class="sidebar-related-item">
+    <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=600&h=340&q=85" alt="" width="64" height="48" loading="lazy">
+    <span class="related-title">مؤشر كتلة الجسم للبالغين من الشرق الأوسط: ما هو النطاق الصحي؟</span>
+  </a>
+  <a href="/blog/walking-vs-running-comparison.html" class="sidebar-related-item">
+    <img src="https://images.unsplash.com/photo-1592859600972-1b0834d83747?auto=format&fit=crop&w=600&h=340&q=85" alt="" width="64" height="48" loading="lazy">
+    <span class="related-title">المشي أم الجري: أيهما يحرق سعرات حرارية أكثر؟</span>
+  </a>
+  <a href="/blog/natural-birth-vs-c-section-comparison.html" class="sidebar-related-item">
+    <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=600&h=340&q=85" alt="" width="64" height="48" loading="lazy">
+    <span class="related-title">الولادة الطبيعية مقابل القيصرية: متى يُنصح بكل خيار؟</span>
+  </a>
+  <a href="/blog/body-fat-vs-weight-guide.html" class="sidebar-related-item">
+    <img src="https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?auto=format&fit=crop&w=600&h=340&q=85" alt="" width="64" height="48" loading="lazy">
+    <span class="related-title">الدهون مقابل الوزن: أي الرقمين أهم لصحتك؟</span>
+  </a>
+</div>
+
+<div class="sidebar-module sidebar-tools">
+  <h4>🛠 <span class="en">Tools</span><span class="ar">أدوات</span></h4>
+  <a href="/tools/bmi-calculator.html" class="tool-btn">حاسبة BMI</a>
+  <a href="/tools/water-calculator.html" class="tool-btn">حاسبة الماء</a>
+</div>
+</aside>
+
+</div><!-- /article-layout -->
+
+</div><!-- /article-wrap -->
 
 <!-- ═══ UNIFIED FOOTER ══════════════════════════════════════ -->
 <footer class="site-footer" role="contentinfo">
@@ -257,6 +389,39 @@ tr:nth-child(even){background:#f8faf9}
 <!-- ═══ END FOOTER ══════════════════════════════════════ -->
 
 
-<script src="/scripts/global.js?v=20260608u" defer></script>
+<script src="/scripts/global.js?v=20260617a" defer></script>
+<script>
+(function(){
+  // Reading progress bar
+  var bar = document.getElementById('reading-progress');
+  if(bar){
+    window.addEventListener('scroll',function(){
+      var h = document.documentElement;
+      var total = h.scrollHeight - h.clientHeight;
+      var pct = (h.scrollTop || document.body.scrollTop) / (total || 1) * 100;
+      bar.style.width = pct + '%';
+    },{passive:true});
+  }
+  // TOC active highlight
+  var tocLinks = document.querySelectorAll('.toc-item');
+  if(tocLinks.length){
+    var headings = [];
+    tocLinks.forEach(function(link){
+      var id = link.getAttribute('href').replace('#','');
+      var el = document.getElementById(id);
+      if(el) headings.push({el:el,link:link});
+    });
+    window.addEventListener('scroll',function(){
+      var scrollY = window.scrollY + 130;
+      var current = null;
+      headings.forEach(function(h){
+        if(h.el.offsetTop <= scrollY) current = h;
+      });
+      tocLinks.forEach(function(l){ l.classList.remove('is-active'); });
+      if(current) current.link.classList.add('is-active');
+    },{passive:true});
+  }
+})();
+</script>
 </body>
 </html>
