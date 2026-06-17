@@ -73,7 +73,8 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Inter:wght@400;500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Inter:wght@400;500;600;700;800&display=swap"/></noscript>
 <link rel="stylesheet" href="/styles/global.css?v=20260617c"/>
-<link rel="stylesheet" href="/styles/pages/tools_savings-goal.css?v=20260617b">
+	<link rel="stylesheet" href="/styles/tools-shared.css?v=20260617e">
+	<link rel="stylesheet" href="/styles/pages/tools_savings-goal.css?v=20260617b">
 
   <!-- DFL CANONICAL SYSTEM CSS -->
   
@@ -179,7 +180,28 @@
 <!-- ═══════════════════════════════════════
        HERO
   ═══════════════════════════════════════ -->
-<div id="sub-nav">
+
+
+<main class="tool-mn">
+<!-- Hero -->
+  <div class="tool-hr-wrap">
+
+    <section class="tool-hr" aria-labelledby="tool-title">
+      <div class="tool-hr-in">
+        <div class="tool-hr-bd"> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v12"/><path d="M8 10h4a2 2 0 0 1 0 4H8"/></svg> <span class="en">Savings Planner</span><span class="ar">مخطط الادخار</span></div>
+        <h1 class="tool-h1">
+        <span class="en">Savings Goal Calculator</span>
+        <span class="ar">حاسبة هدف الادخار</span>
+      </h1>
+        <p class="tool-desc">
+        <span class="en">Know exactly how much to save each month, or how long it will take to reach your goal. No guesswork. Just the number you need to start with.</span>
+        <span class="ar">اعرف بالضبط كم تدخر كل شهر، أو كم من الوقت تحتاج للوصول لهدفك. لا تخمين. فقط الرقم الذي تحتاجه للبدء.</span>
+      </p>
+        
+      </div>
+    </section>
+
+    <div id="sub-nav">
   <div class="sub-nav-inner">
     <a href="/tools/monthly-budget.html"><span class="en">Budget</span><span class="ar">الميزانية</span></a>
     <a href="/tools/savings-goal.html" class="active"><span class="en">Savings</span><span class="ar">المدخرات</span></a>
@@ -190,45 +212,8 @@
     <a href="/tools/rental-yield-calculator.html"><span class="en">Yield</span><span class="ar">العائد الإيجاري</span></a>
   </div>
 </div>
-
-<main>
-<!-- Hero -->
-<section class="tool-hero">
-  <div class="container">
-    <div class="tool-hero-inner">
-      <div class="tool-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v12"/><path d="M8 10h4a2 2 0 0 1 0 4H8"/></svg> <span class="en">Savings Planner</span><span class="ar">مخطط الادخار</span></div>
-      <h1 class="tool-h1">
-        <span class="en">Savings Goal Calculator</span>
-        <span class="ar">حاسبة هدف الادخار</span>
-      </h1>
-      <p class="tool-desc">
-        <span class="en">Know exactly how much to save each month, or how long it will take to reach your goal. No guesswork. Just the number you need to start with.</span>
-        <span class="ar">اعرف بالضبط كم تدخر كل شهر، أو كم من الوقت تحتاج للوصول لهدفك. لا تخمين. فقط الرقم الذي تحتاجه للبدء.</span>
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- Tool -->
-<section class="tool-main">
-  <div class="container">
-    <div class="tool-grid">
-
-      <!-- LEFT: Inputs -->
-      <div>
-        <!-- Mode tabs -->
-        <div class="mode-tabs" id="modeTabs">
-          <button class="mode-tab active" onclick="setMode('monthly')" id="tab-monthly">
-            <span class="en">How much per month?</span>
-            <span class="ar">كم أدخر شهرياً؟</span>
-          </button>
-          <button class="mode-tab" onclick="setMode('time')" id="tab-time">
-            <span class="en">How long will it take?</span>
-            <span class="ar">كم من الوقت يلزم؟</span>
-          </button>
-        </div>
-
-        <div class="calc-card">
+  
+  </div><div class="tool-cd">
 
           <!-- Currency selector -->
           <div class="field-group">
@@ -313,7 +298,6 @@
             <span class="ar">احسب ←</span>
           </button>
         </div><!-- /calc-card -->
-      </div><!-- /left -->
 
       <!-- RIGHT: Result -->
       <div>
@@ -366,7 +350,6 @@
         </div>
       </div><!-- /right -->
 
-    </div><!-- /tool-grid -->
 
     <!-- How it works -->
     <div class="how-section">
@@ -408,8 +391,6 @@
       </div>
     </div>
 
-  </div>
-</section>
 </main>
 
 <!-- ═══ UNIFIED FOOTER ══════════════════════════════════════ -->
@@ -614,10 +595,10 @@ document.addEventListener('DOMContentLoaded', function(){
       <a href="/blog/gcc-family-budget-2025.html" class="dfl-rc guide">
         <div class="dfl-rc-top"><span class="dfl-rc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/></svg></span><div><div class="dfl-rc-name en">GCC Family Budget Guide</div><div class="dfl-rc-name ar">دليل ميزانية الأسرة</div></div></div>
         <div class="dfl-rc-desc en">Smart family financial planning</div><div class="dfl-rc-desc ar">تخطيط مالي ذكي للأسرة</div>
-        <div class="dfl-rc-cta"><span class="en">Read guide →</span><span class="ar">اقرأ الدليل ←</span></div>
+        <div class="dfl-rc-cta"><span class="en">Read guide →</span><span class="ar">اقرأ الدليل ←</span><!-- removed extra --></div>
       </a>
-    </div>
-  </div>
+    <!-- removed extra --></div>
+  <!-- removed extra --></div>
 </section>
 
   <script src="/tool-share.js" defer></script>

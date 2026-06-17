@@ -95,7 +95,8 @@
 ]}]}
 </script>
 <link rel="stylesheet" href="/styles/global.css?v=20260617c"/>
-<link rel="stylesheet" href="/styles/pages/tools_zakat-calculator.css?v=20260617b">
+	<link rel="stylesheet" href="/styles/tools-shared.css?v=20260617e">
+	<link rel="stylesheet" href="/styles/pages/tools_zakat-calculator.css?v=20260617b">
 <!-- DFL Analytics v1 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3G1XPV4F0G"></script>
 <script>
@@ -214,7 +215,25 @@ window.dflTrack=function(event,params){
 <!-- ═══════════════════════════════════════
        HERO
   ═══════════════════════════════════════ -->
-<div id="sub-nav">
+
+
+<!-- NAVBAR -->
+
+
+
+<!-- HERO -->
+  <div class="tool-hr-wrap">
+
+    <section class="tool-hr" aria-labelledby="tool-title">
+      <div class="tool-hr-in">
+        <div class="tool-hr-bd"> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.2h7.6l-6 4.8 2.4 7.2-6-4.8-6 4.8 2.4-7.2-6-4.8h7.6z"/></svg> <span class="ar">مُحتسب شرعاً</span><span class="en">Shariah Compliant</span></div>
+        <h1 class="hero-title"><span class="ar">حاسبة <span class="hl">الزكاة</span> الأكثر شمولاً</span><span class="en">The Most Complete <span class="hl">Zakat</span> Calculator</span></h1>
+        <p class="hero-sub ar">احسب زكاتك بدقة على جميع أنواع الأموال، نقود، ذهب، فضة، أسهم، عروض تجارة، مع نصاب محدَّث لعام 2025.</p>
+        
+      </div>
+    </section>
+
+    <div id="sub-nav">
   <div class="sub-nav-inner">
     <a href="/tools/monthly-budget.html"><span class="en">Budget</span><span class="ar">الميزانية</span></a>
     <a href="/tools/savings-goal.html"><span class="en">Savings</span><span class="ar">المدخرات</span></a>
@@ -225,80 +244,8 @@ window.dflTrack=function(event,params){
     <a href="/tools/rental-yield-calculator.html"><span class="en">Yield</span><span class="ar">العائد الإيجاري</span></a>
   </div>
 </div>
-
-<!-- NAVBAR -->
-
-<nav class="breadcrumb" aria-label="breadcrumb" style="max-width:1100px;margin:0 auto;padding:14px 24px 0;display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--muted);flex-wrap:wrap;">
-  <a href="../index.html" style="color:var(--muted);text-decoration:none;"><span class="en">Home</span><span class="ar">الرئيسية</span></a>
-  <span style="opacity:.4;font-size:.7rem;">›</span>
-  <a href="../islamic.html" style="color:var(--muted);text-decoration:none;"><span class="en">Islamic Tools</span><span class="ar">الأدوات الإسلامية</span></a>
-  <span style="opacity:.4;font-size:.7rem;">›</span>
-  <span style="color:var(--text-2);font-weight:600;"><span class="en">Zakat Calculator</span><span class="ar">حاسبة الزكاة</span></span>
-</nav>
-
-<!-- HERO -->
-<section class="hero" aria-labelledby="hero-heading">
-  <div class="hero-blobs"><div class="blob blob1"></div><div class="blob blob2"></div><div class="blob blob3"></div></div>
-  <div class="hero-inner">
-    <div class="hero-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.2h7.6l-6 4.8 2.4 7.2-6-4.8-6 4.8 2.4-7.2-6-4.8h7.6z"/></svg> <span class="ar">مُحتسب شرعاً</span><span class="en">Shariah Compliant</span></div>
-    <h1 class="hero-title"><span class="ar">حاسبة <span class="hl">الزكاة</span> الأكثر شمولاً</span><span class="en">The Most Complete <span class="hl">Zakat</span> Calculator</span></h1>
-    <p class="hero-sub ar">احسب زكاتك بدقة على جميع أنواع الأموال، نقود، ذهب، فضة، أسهم، عروض تجارة، مع نصاب محدَّث لعام 2025.</p>
-    <p class="hero-sub en">Calculate Zakat on all your assets, cash, gold, silver, stocks, trade inventory, with 2025 nisab thresholds.</p>
-    <div class="trust-row">
-      <div class="trust-item"><div class="trust-num">2.5%</div><div class="trust-lbl ar">نسبة الزكاة الشرعية</div><div class="trust-lbl en">Zakat Rate</div></div>
-      <div class="trust-item"><div class="trust-num">7</div><div class="trust-lbl ar">فئات أموال مغطاة</div><div class="trust-lbl en">Asset Categories</div></div>
-      <div class="trust-item"><div class="trust-num">85g</div><div class="trust-lbl ar">نصاب الذهب</div><div class="trust-lbl en">Gold Nisab</div></div>
-      <div class="trust-item"><div class="trust-num">٪100</div><div class="trust-lbl ar">مجاني للأبد</div><div class="trust-lbl en">Forever Free</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- NISAB BANNER -->
-<div class="nisab-banner">
-  <div class="nisab-card reveal">
-    <div class="nisab-col">
-      <div class="nisab-type ar">نصاب الذهب</div><div class="nisab-type en">Gold Nisab</div>
-      <div class="nisab-val">85g</div>
-      <div class="nisab-sub" id="goldNisabVal">≈ <span class="ar">يُحدَّث تلقائياً</span><span class="en">auto-calculated</span></div>
-    </div>
-    <div class="nisab-divider"></div>
-    <div class="nisab-col">
-      <div class="nisab-type ar">نصاب الفضة</div><div class="nisab-type en">Silver Nisab</div>
-      <div class="nisab-val">595g</div>
-      <div class="nisab-sub" id="silverNisabVal">≈ <span class="ar">يُحدَّث تلقائياً</span><span class="en">auto-calculated</span></div>
-    </div>
-  </div>
-  <div class="nisab-note ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg> الفقهاء يرجّحون استخدام نصاب الفضة لأنه يشمل أكبر عدد من أصحاب الثروات الصغيرة، وهو ما نُرجّحه في هذه الحاسبة.</div>
-  <div class="nisab-note en"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg> Many scholars prefer the silver nisab as it covers more people with modest wealth, recommended in this calculator.</div>
-</div>
-
-<!-- MAIN -->
-<main role="main" class="main">
-
-  <!-- NISAB METHOD -->
-  <div style="margin-bottom:24px">
-    <p style="font-size:.88rem;font-weight:700;color:var(--text-2);margin-bottom:10px">
-      <span class="ar">معيار النصاب المستخدم:</span><span class="en">Nisab standard:</span>
-    </p>
-    <div class="nisab-selector">
-      <button class="nisab-btn active" id="btnSilver" onclick="setNisab('silver')"><span class="ar">🥈 الفضة (الأكثر شمولاً)</span><span class="en">🥈 Silver (Recommended)</span></button>
-      <button class="nisab-btn" id="btnGold" onclick="setNisab('gold')"><span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M12 14v8"/><path d="M8 22h8"/></svg> الذهب</span><span class="en"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M12 14v8"/><path d="M8 22h8"/></svg> Gold</span></button>
-    
-    <div class="hero-trust-chips"><div class="hero-trust-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.2h7.6l-6 4.8 2.4 7.2-6-4.8-6 4.8 2.4-7.2-6-4.8h7.6z"/></svg> Nisab Verified</div><div class="hero-trust-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Hawl Year</div><div class="hero-trust-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Instant</div><div class="hero-trust-chip">🔒 Private</div></div>
-  </div>
-  </div>
-
-  <!-- SECTION TABS -->
-  <div class="section-tabs">
-    <button class="stab active" onclick="switchSection('cash',this)"><span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="13" rx="2"/><path d="M12 2v5"/><path d="M8 7V2"/><path d="M16 7V2"/><line x1="2" y1="11" x2="22" y2="11"/></svg> نقود وبنوك</span><span class="en"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="13" rx="2"/><path d="M12 2v5"/><path d="M8 7V2"/><path d="M16 7V2"/><line x1="2" y1="11" x2="22" y2="11"/></svg> Cash & Banks</span></button>
-    <button class="stab" onclick="switchSection('gold',this)"><span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> ذهب وفضة</span><span class="en"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> Gold & Silver</span></button>
-    <button class="stab" onclick="switchSection('stocks',this)"><span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> أسهم واستثمارات</span><span class="en"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> Stocks & Investments</span></button>
-    <button class="stab" onclick="switchSection('trade',this)"><span class="ar">🛍 عروض تجارة</span><span class="en">🛍 Trade Goods</span></button>
-    <button class="stab" onclick="switchSection('debts',this)"><span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg> ديون مستحقة</span><span class="en"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg> Receivable Debts</span></button>
-  </div>
-
-  <!-- CALCULATOR CARD -->
-  <div class="calc-card reveal" id="calcCard">
+  
+  </div><div class="tool-cd tool-rv tool-rv-1" id="calcCard">
 
     <!-- CASH SECTION -->
     <div class="calc-section active" id="sec-cash">
