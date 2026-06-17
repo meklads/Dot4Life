@@ -1008,6 +1008,9 @@
 .rd3 { transition-delay: .15s; }
 .rd4 { transition-delay: .2s; }
 
+.tool-rv { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s cubic-bezier(.22,1,.36,1); }
+.tool-rv.visible { opacity: 1; transform: translateY(0); }
+
 /* ══════════════════════════════════════════════
    RESPONSIVE — Info Grid
    ══════════════════════════════════════════════ */
@@ -1167,3 +1170,51 @@
 @media (min-width: 601px) and (max-width: 900px) {
   .zo-grid { grid-template-columns: 1fr 1fr; }
 }
+
+/* ── ZK-AFFILIATE ────────────────────────── */
+.tool-mn { padding-bottom: 0 !important; }
+
+.zk-affiliate {
+  display: flex; align-items: center; gap: 16px; padding: 20px 24px;
+  background: linear-gradient(135deg, #0A0F1E, #1A2440);
+  border-radius: 16px; margin-bottom: 14px; position: relative; color: #fff;
+}
+[data-theme="dark"] .zk-affiliate { background: linear-gradient(135deg, #0A0F1E, #162032); }
+@media (max-width: 640px) { .zk-affiliate { flex-direction: column; text-align: center; padding: 20px; } }
+.zk-aff-badge {
+  position: absolute; top: -6px; right: 16px; font-size: .6rem; font-weight: 800;
+  text-transform: uppercase; letter-spacing: .06em; padding: 3px 10px;
+  background: var(--z-gold); color: #fff; border-radius: 99px;
+}
+.zk-aff-icon {
+  width: 42px; height: 42px; border-radius: 12px;
+  background: var(--z-gold); display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.zk-aff-icon svg { width: 20px; height: 20px; color: #fff; }
+.zk-aff-content { flex: 1; min-width: 0; }
+.zk-aff-content h4 { font-size: .88rem; font-weight: 700; margin: 0 0 4px; color: #fff; }
+.zk-aff-content p { font-size: .78rem; color: rgba(255,255,255,.7); margin: 0; line-height: 1.5; }
+.zk-aff-btn {
+  display: inline-flex; align-items: center; padding: 10px 20px; white-space: nowrap;
+  background: var(--z-gold); color: #fff; border-radius: 10px; font-size: .82rem;
+  font-weight: 700; text-decoration: none; transition: transform .2s, box-shadow .2s;
+}
+.zk-aff-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(200,155,60,.3); }
+
+/* ── ZK-SPONSOR ──────────────────────────── */
+.zk-sponsor {
+  text-align: center; padding: 28px 24px; margin-bottom: 14px;
+  background: var(--z-card-bg); border: 1px dashed var(--z-bd); border-radius: 16px;
+}
+[data-theme="dark"] .zk-sponsor { background: #162032; }
+.zk-sponsor-label { font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: #ADB5BD; margin-bottom: 8px; }
+.zk-sponsor h3 { font-size: 1rem; font-weight: 700; color: var(--text-1); margin: 0 0 8px; }
+[data-theme="dark"] .zk-sponsor h3 { color: #F1F5F9; }
+.zk-sponsor p { font-size: .82rem; color: var(--text-2); line-height: 1.6; max-width: 400px; margin: 0 auto 14px; }
+.zk-sponsor-cta {
+  display: inline-flex; align-items: center; gap: 6px; padding: 10px 22px;
+  background: transparent; border: 2px solid var(--z-gold); color: var(--z-gold);
+  border-radius: 10px; font-size: .82rem; font-weight: 700; text-decoration: none;
+  transition: all .3s cubic-bezier(.22,1,.36,1);
+}
+.zk-sponsor-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(200,155,60,.15); background: var(--z-gold); color: #fff; }
