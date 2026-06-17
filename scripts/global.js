@@ -83,17 +83,33 @@
   if (langBtn) {
     langBtn.addEventListener('click', function () {
       var h = document.documentElement;
-      var next = h.getAttribute('data-lang') === 'ar' ? 'en' : 'ar';
-      h.setAttribute('data-lang', next);
-      h.setAttribute('lang', next);
-      h.setAttribute('dir', next === 'ar' ? 'rtl' : 'ltr');
-      localStorage.setItem('dfl-lang', next);
+      var currentLang = h.getAttribute('data-lang');
+      var targetLang = currentLang === 'ar' ? 'en' : 'ar';
+
+      // Check for hreflang alternate links → navigate to opposite language page
+      var altLink = document.querySelector('link[rel="alternate"][hreflang="' + targetLang + '"]');
+      if (!altLink && targetLang === 'ar') {
+        altLink = document.querySelector('link[rel="alternate"][hreflang="ar-SA"]');
+      }
+      if (!altLink && targetLang === 'en') {
+        altLink = document.querySelector('link[rel="alternate"][hreflang="en"]');
+      }
+      if (altLink && altLink.getAttribute('href')) {
+        window.location.href = altLink.getAttribute('href');
+        return;
+      }
+
+      // Fall back to same-page span toggle (for pages without alternate links)
+      h.setAttribute('data-lang', targetLang);
+      h.setAttribute('lang', targetLang);
+      h.setAttribute('dir', targetLang === 'ar' ? 'rtl' : 'ltr');
+      localStorage.setItem('dfl-lang', targetLang);
       // Update ALL language buttons on the page
       document.querySelectorAll('#lang-toggle, #lang-toggle-mobile, #dfl-lang-btn').forEach(function(btn) {
         if (btn) {
           var txt = btn.textContent.trim();
           if (txt === 'العربية' || txt === 'English' || txt === 'AR' || txt === 'EN' || txt === 'عربي') {
-            btn.textContent = next === 'ar' ? 'English' : 'العربية';
+            btn.textContent = targetLang === 'ar' ? 'English' : 'العربية';
           }
         }
       });

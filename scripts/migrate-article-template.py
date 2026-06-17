@@ -377,14 +377,10 @@ def find_related_tools(meta_record, lang='ar'):
 
 # ── NEW: generate_sidebar ────────────────────────────────────
 def generate_sidebar(toc_html, meta_record, lang, dir_, filename):
-    """Build the full sidebar HTML (TOC → Team card → Related → Tools → Friday → Ad)."""
+    """Build the full sidebar HTML (Team card → TOC → Related → Tools → Friday → Ad)."""
     parts = []
 
-    # 1. TOC
-    if toc_html:
-        parts.append(toc_html)
-
-    # 2. Team card (trust/E-E-A-T)
+    # 1. Team card (trust/E-E-A-T) — FIRST per user spec
     team_logo = '/assets/images/logo1-footer.webp'
     team_name_en = 'Dot4Life Team'
     team_name_ar = 'فريق دوت فور لايف'
@@ -397,6 +393,10 @@ def generate_sidebar(toc_html, meta_record, lang, dir_, filename):
   <div class="team-trust"><span class="en">{trust_en}</span><span class="ar">{trust_ar}</span></div>
   <a href="/editorial-standards.html" class="team-link"><span class="en">Our Standards →</span><span class="ar">معاييرنا التحريرية ←</span></a>
 </div>''')
+
+    # 2. TOC (second)
+    if toc_html:
+        parts.append(toc_html)
 
     # 3. Related articles
     rel_articles = find_related_articles(meta_record, filename, lang)
