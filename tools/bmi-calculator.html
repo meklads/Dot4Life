@@ -1,33 +1,25 @@
 <!DOCTYPE html>
-<html lang="ar" data-lang="ar" data-theme="light">
+<html lang="en" data-theme="light" data-lang="en" dir="ltr">
 <head>
-
-  <!-- Critical: prevent theme flash (inline) -->
-  <script>
+<script>
 (function(){
-  /* theme */
   var tb=document.getElementById("theme-toggle");
   if(tb)tb.addEventListener("click",function(){
     var h=document.documentElement,t=h.getAttribute("data-theme")==="dark"?"light":"dark";
     h.setAttribute("data-theme",t);localStorage.setItem("dfl-theme",t);
   });
-  /* lang */
   var lb=document.getElementById("lang-toggle");
   if(lb)lb.addEventListener("click",function(){
     var h=document.documentElement,l=h.getAttribute("data-lang")==="ar"?"en":"ar";
     h.setAttribute("data-lang",l);h.setAttribute("lang",l);
     h.setAttribute("dir",l==="ar"?"rtl":"ltr");localStorage.setItem("dfl-lang",l);
   });
-  /* scroll shadow */
   var nb=document.getElementById("navbar");
   if(nb)window.addEventListener("scroll",function(){nb.classList.toggle("scrolled",window.scrollY>10);},{passive:true});
-  /* reveal */
   if("IntersectionObserver" in window){
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add("visible");});},{threshold:0.1});
-    document.querySelectorAll(".reveal").forEach(function(el){io.observe(el);});
-  } else document.querySelectorAll(".reveal").forEach(function(el){el.classList.add("visible");});
-
-  /* hamburger menu */
+    document.querySelectorAll(".tool-rv").forEach(function(el){io.observe(el);});
+  } else document.querySelectorAll(".tool-rv").forEach(function(el){el.classList.add("visible");});
   (function(){
     var hb = document.getElementById('hamburger-btn');
     var dd = document.getElementById('mobile-dropdown');
@@ -49,65 +41,94 @@
     document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeM(); });
     dd.addEventListener('click', function(e){ if(e.target===dd) closeM(); });
   })();
-
-  })();
+})();
 </script>
 <meta charset="UTF-8"/>
+<script>(function(){var p=new URLSearchParams(location.search),gd=(function(){try{var z=(Intl.DateTimeFormat().resolvedOptions().timeZone||"");return /Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test(z)?"ar":"en";}catch(e){return "ar";}})(),l=p.get("lang")||localStorage.getItem("dfl-lang")||gd,t=p.get("theme")||localStorage.getItem("dfl-theme")||"light",h=document.documentElement;h.setAttribute("data-theme",t);h.setAttribute("data-lang",l);h.setAttribute("lang",l);h.setAttribute("dir",l==="ar"?"rtl":"ltr");if(p.get("lang"))localStorage.setItem("dfl-lang",l);if(p.get("theme"))localStorage.setItem("dfl-theme",t);})()</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta http-equiv="x-dns-prefetch-control" content="on" />
+<link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+<link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<title>BMI Calculator | حاسبة مؤشر كتلة الجسم — WHO Standards | Dot For Life</title>
+<meta name="description" content="Calculate your Body Mass Index (BMI) using WHO standards. Free bilingual BMI calculator for adults — metric and imperial units."/>
+<link rel="canonical" href="https://dotforlife.com/tools/bmi-calculator.html"/>
+<link rel="alternate" hreflang="ar" href="https://dotforlife.com/tools/bmi-calculator.html" />
+<link rel="alternate" hreflang="en" href="https://dotforlife.com/tools/bmi-calculator-en.html" />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Almarai:wght@400;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Almarai:wght@400;700;800&display=swap"/></noscript>
+<link rel="stylesheet" href="/styles/global.css?v=20260618f"/>
+<link rel="stylesheet" href="/styles/tools-shared.css?v=20260618f">
+<link rel="stylesheet" href="/styles/pages/tools_bmi-calculator.css?v=20260618f">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dotforlife.com/tools/bmi-calculator">
+<meta property="og:title" content="BMI Calculator | Dot4Life">
+<meta property="og:description" content="Calculate your Body Mass Index (BMI) using WHO standards. Free, bilingual.">
+<meta property="og:image" content="https://dotforlife.com/og/og-default.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="BMI Calculator | Dot4Life">
+<meta name="twitter:description" content="Calculate your Body Mass Index (BMI) using WHO standards. Free, bilingual.">
+<meta name="twitter:image" content="https://dotforlife.com/og/og-default.png">
 
-  <script>(function(){var p=new URLSearchParams(location.search),gd=(function(){try{var z=(Intl.DateTimeFormat().resolvedOptions().timeZone||"");return /Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test(z)?"ar":"en";}catch(e){return "ar";}})(),l=p.get("lang")||localStorage.getItem("dfl-lang")||gd,t=p.get("theme")||localStorage.getItem("dfl-theme")||"light",h=document.documentElement;h.setAttribute("data-theme",t);h.setAttribute("data-lang",l);h.setAttribute("lang",l);h.setAttribute("dir",l==="ar"?"rtl":"ltr");if(p.get("lang"))localStorage.setItem("dfl-lang",l);if(p.get("theme"))localStorage.setItem("dfl-theme",t);})()</script>
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
-<title>حاسبة مؤشر كتلة الجسم BMI 2025 | الوزن الصحي، DotForLife</title>
-<meta name="description" content="احسب مؤشر كتلة جسمك بدقة واعرف تصنيفك الصحي ونطاق وزنك المثالي. معايير منظمة الصحة العالمية. مجاني وثنائي اللغة."/>
-<meta name="keywords" content="حاسبة مؤشر كتلة الجسم, BMI calculator, الوزن المثالي, حاسبة الوزن, مؤشر كتلة الجسم, نحيف سمين, body mass index Arabic"/>
-<link rel="canonical" href="https://www.dotforlife.com/tools/bmi-calculator.html"/>
-  <link rel="alternate" hreflang="ar" href="https://www.dotforlife.com/tools/bmi-calculator.html?lang=ar" />
-  <link rel="alternate" hreflang="en" href="https://www.dotforlife.com/tools/bmi-calculator.html?lang=en" />
-  <link rel="alternate" hreflang="x-default" href="https://www.dotforlife.com/tools/bmi-calculator.html" />
-<meta property="og:site_name" content="DOTFORLIFE" />
-  <meta property="og:title" content="حاسبة BMI | مؤشر كتلة الجسم 2025, DotForLife"/>
-<meta property="og:image" content="https://www.dotforlife.com/og/health.jpg" />
-  <meta property="og:url" content="https://www.dotforlife.com/tools/bmi-calculator.html" />
-  <meta property="og:description" content="احسب مؤشر كتلة جسمك بدقة واعرف تصنيفك الصحي ونطاق وزنك المثالي. معايير منظمة الصحة العالمية. مجاني وثنائي اللغة." />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="حاسبة مؤشر كتلة الجسم BMI 2025 | الوزن الصحي، DotForLife" />
-  <meta name="twitter:description" content="احسب مؤشر كتلة جسمك بدقة واعرف تصنيفك الصحي ونطاق وزنك المثالي. معايير منظمة الصحة العالمية. مجاني وثنائي اللغة." />
-  <meta name="twitter:image" content="https://www.dotforlife.com/og/health.jpg" />
-  <meta name="twitter:site" content="@dotforlife" />  <meta property="og:type" content="website"/>
-  <!-- Performance: resource hints -->
-  <meta http-equiv="x-dns-prefetch-control" content="on" />
-  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <!-- Font loading strategy: swap + non-blocking -->
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Inter:wght@400;500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Inter:wght@400;500;600;700;800&display=swap" /></noscript>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[
-{"@type":"WebApplication","name":"BMI Calculator, حاسبة مؤشر كتلة الجسم","url":"https://dotforlife.com/tools/bmi-calculator.html","applicationCategory":"HealthApplication","offers":{"@type":"Offer","price":"0"}},
-{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"الرئيسية","item":"https://dotforlife.com/"},{"@type":"ListItem","position":2,"name":"اللياقة","item":"https://dotforlife.com/fitness.html"},{"@type":"ListItem","position":3,"name":"حاسبة BMI","item":"https://dotforlife.com/tools/bmi-calculator.html"}]},
-{"@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"ما هو مؤشر كتلة الجسم الطبيعي؟","acceptedAnswer":{"@type":"Answer","text":"المؤشر الطبيعي وفق منظمة الصحة العالمية بين 18.5 و24.9. أقل من 18.5 نحيف، 25-29.9 زيادة وزن، 30 فأكثر سمنة."}},
-{"@type":"Question","name":"هل مؤشر كتلة الجسم دقيق للعرب؟","acceptedAnswer":{"@type":"Answer","text":"تشير الدراسات إلى أن مخاطر الأمراض المزمنة تبدأ لدى بعض الشعوب الآسيوية والعربية عند مؤشر 23 بدلاً من 25. لذلك يُنصح بالأخذ بعين الاعتبار محيط الخصر إلى جانب المؤشر."}}
-]}]}
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "BMI Calculator | حاسبة مؤشر كتلة الجسم",
+      "alternateName": "Body Mass Index Calculator",
+      "url": "https://dotforlife.com/tools/bmi-calculator.html",
+      "description": "Calculate your Body Mass Index (BMI) based on WHO standards. Supports metric and imperial units.",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Any",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "SAR" },
+      "inLanguage": ["en", "ar"],
+      "featureList": ["Metric & imperial units","WHO BMI categories","Weight range indicator","Adult BMI standards","Bilingual Arabic/English"]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://dotforlife.com" },
+        { "@type": "ListItem", "position": 2, "name": "Health Tools", "item": "https://dotforlife.com/health" },
+        { "@type": "ListItem", "position": 3, "name": "BMI Calculator", "item": "https://dotforlife.com/tools/bmi-calculator.html" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is BMI?",
+          "acceptedAnswer": { "@type": "Answer", "text": "BMI (Body Mass Index) is a measure of body fat based on height and weight. It is calculated by dividing weight in kilograms by height in meters squared. WHO classifies adults as underweight (&lt;18.5), normal (18.5–24.9), overweight (25–29.9), and obese (≥30)." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is BMI accurate for everyone?",
+          "acceptedAnswer": { "@type": "Answer", "text": "BMI is a general screening tool, not a diagnostic test. It may overestimate body fat in athletes with high muscle mass and underestimate it in older adults who have lost muscle. For a complete health assessment, combine BMI with waist circumference, body fat percentage, and other clinical measurements." }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the ideal BMI for adults?",
+          "acceptedAnswer": { "@type": "Answer", "text": "According to WHO, a BMI between 18.5 and 24.9 is considered normal/healthy weight. Below 18.5 is underweight, 25–29.9 is overweight, and 30 or above is obese. For Asian populations, some health organizations recommend a lower threshold of 23 for overweight." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use this calculator for children?",
+          "acceptedAnswer": { "@type": "Answer", "text": "This calculator is designed for adults aged 18+. For children and teenagers, BMI is calculated the same way but interpreted using age- and sex-specific percentile charts. Please consult a pediatrician for accurate child BMI assessment." }
+        }
+      ]
+    }
+  ]
+}
 </script>
-<link rel="stylesheet" href="/styles/global.css?v=20260617e"/>
-<link rel="stylesheet" href="/styles/pages/tools_bmi-calculator.css?v=20260617e">
-<!-- DFL Analytics v1 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3G1XPV4F0G"></script>
 <script>
-window.dataLayer=window.dataLayer||[];
+window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
-gtag('js',new Date());
-gtag('config','G-3G1XPV4F0G',{
-  page_title:document.title,
-  page_location:window.location.href,
-  send_page_view:true,
-  cookie_flags:'SameSite=None;Secure'
-});
-// DFL Event helpers
+gtag('js', new Date());
+gtag('config', 'G-3G1XPV4F0G');
 window.dflTrack=function(event,params){
   gtag('event',event,Object.assign({
     page_path:location.pathname,
@@ -115,72 +136,8 @@ window.dflTrack=function(event,params){
   },params||{}));
 };
 </script>
-<!-- DFL_FIX3_APPLIED -->
-
-  <!-- DFL CANONICAL SYSTEM CSS -->
-  
-<script src="/scripts/global.js" defer></script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "BMI Calculator, حاسبة مؤشر كتلة الجسم",
-  "url": "https://dotforlife.com/tools/bmi-calculator.html",
-  "description": "Calculate your Body Mass Index with WHO standards adapted for Middle Eastern populations. Free bilingual BMI calculator. احسب مؤشر كتلة جسمك وفق معايير منظمة الصحة العالمية.",
-  "applicationCategory": "HealthApplication",
-  "operatingSystem": "Web",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "SAR"
-  },
-  "inLanguage": ["ar", "en"]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "ما هو مؤشر كتلة الجسم الطبيعي؟",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "مؤشر كتلة الجسم الطبيعي يتراوح بين 18.5 و 24.9. أقل من 18.5 يعني نقص الوزن، وبين 25 و 29.9 يعني زيادة الوزن، وأكثر من 30 يعني السمنة."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "كيف أحسب مؤشر كتلة الجسم؟",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "قسّم وزنك بالكيلوجرام على مربع طولك بالمتر. مثال: وزن 70 كجم وطول 1.75 متر = 70 ÷ (1.75²) = 22.9"
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is a healthy BMI for Middle Eastern adults?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "For Middle Eastern populations, a BMI between 18.5 and 24.9 is considered healthy. Some research suggests lower thresholds for metabolic risk in this population."
-      }
-    }
-  ]
-}
-</script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3G1XPV4F0G"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-3G1XPV4F0G');
-</script>
 </head>
 <body class="category-page has-subnav">
-  <!-- DFL CANONICAL NAVBAR -->
-  <!-- ═══ UNIFIED HEADER ══════════════════════════════════════ -->
 <nav id="navbar" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
     <a href="../index.html" class="nav-logo" aria-label="DOTFORLIFE Home">
@@ -206,434 +163,235 @@ window.dflTrack=function(event,params){
     </div>
   </div>
 </nav>
-<!-- ════════════════════════════════════════════════════════════ -->
 
-
-
-<!-- ═══════════════════════════════════════════════
-     BMI CALCULATOR — Premium Redesign
-     ═══════════════════════════════════════════════ -->
-
-<!-- Hero Wrapper (gradient connecting to header) -->
-<div class="bmi-hr-wrap">
-
-  <!-- Hero -->
-  <section class="bmi-hr" aria-labelledby="bmi-title">
-    <div class="bmi-hr-in">
-      <div class="bmi-hr-bd">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-        <span class="ar">معايير منظمة الصحة العالمية</span><span class="en">WHO Standards</span>
+<div class="tool-hr-wrap">
+  <section class="tool-hr" aria-labelledby="tool-title">
+    <div class="tool-hr-in">
+      <div class="tool-hr-bd">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        <span class="en">Health Tool</span><span class="ar">أداة صحية</span>
       </div>
-      <h1 class="bmi-hr-h1" id="bmi-title">
-        <span class="ar">حاسبة <span class="hl">مؤشر كتلة الجسم</span> BMI</span>
-        <span class="en"><span class="hl">BMI</span> Calculator</span>
-      </h1>
-      <p class="bmi-hr-p ar">اكشف مؤشر كتلة جسمك، نطاق وزنك المثالي، وتوصياتك الصحية الشخصية - في ثوانٍ.</p>
-      <p class="bmi-hr-p en">Find your BMI, healthy weight range, and personalized health insights - instantly.</p>
-      <div class="bmi-hr-st">
-        <div><div class="bmi-hr-sn">WHO</div><div class="bmi-hr-sl ar">معيار عالمي</div><div class="bmi-hr-sl en">Global</div></div>
-        <div><div class="bmi-hr-sn">4</div><div class="bmi-hr-sl ar">تصنيفات صحية</div><div class="bmi-hr-sl en">Categories</div></div>
-        <div><div class="bmi-hr-sn">GCC</div><div class="bmi-hr-sl ar">محسّن للخليج</div><div class="bmi-hr-sl en">Optimized</div></div>
-        <div><div class="bmi-hr-sn">100%</div><div class="bmi-hr-sl ar">مجاني</div><div class="bmi-hr-sl en">Free</div></div>
-      </div>
+      <h1 id="tool-title"><span class="en">BMI Calculator</span><span class="ar">حاسبة مؤشر كتلة الجسم</span></h1>
+      <p><span class="en">Calculate your Body Mass Index (BMI) using WHO standards — metric and imperial units supported</span><span class="ar">احسب مؤشر كتلة جسمك وفق معايير منظمة الصحة العالمية — يدعم الوحدات المترية والإمبراطورية</span></p>
     </div>
   </section>
-
-  <!-- Sub-nav inside hero -->
   <div id="sub-nav">
     <div class="sub-nav-inner">
-      <a href="/tools/bmi-calculator.html" class="active"><span class="en">BMI</span><span class="ar">حاسبة BMI</span></a>
-      <a href="/tools/water-calculator.html"><span class="en">Water</span><span class="ar">الماء</span></a>
+      <a href="/tools/bmi-calculator.html" class="active"><span class="en">BMI</span><span class="ar">BMI</span></a>
       <a href="/tools/calorie-calculator.html"><span class="en">Calories</span><span class="ar">السعرات</span></a>
       <a href="/tools/body-fat-calculator.html"><span class="en">Body Fat</span><span class="ar">الدهون</span></a>
-      <a href="/tools/pregnancy-calculator.html"><span class="en">Pregnancy</span><span class="ar">حاسبة الحمل</span></a>
-      <a href="/pregnancy-journey.html"><span class="en">Journey <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2v6m0 0l-3-3m3 3l3-3"/><path d="M12 16v6m0 0l-3-3m3 3l3-3"/><path d="M2 12h6m0 0L5 9m3 3l-3 3"/><path d="M16 12h6m0 0l-3-3m3 3l-3 3"/></svg></span><span class="ar">رحلة الحمل <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2v6m0 0l-3-3m3 3l3-3"/><path d="M12 16v6m0 0l-3-3m3 3l3-3"/><path d="M2 12h6m0 0L5 9m3 3l-3 3"/><path d="M16 12h6m0 0l-3-3m3 3l-3 3"/></svg></span></a>
+      <a href="/tools/water-calculator.html"><span class="en">Water</span><span class="ar">الماء</span></a>
+      <a href="/tools/pregnancy-calculator.html"><span class="en">Pregnancy</span><span class="ar">الحمل</span></a>
+      <a href="/tools/age-calculator.html"><span class="en">Age</span><span class="ar">العمر</span></a>
     </div>
   </div>
-
 </div>
 
-<!-- Main -->
-<main class="bmi-mn" role="main">
+<main class="tool-mn">
 
-  <!-- Calculator Card -->
-  <div class="bmi-cd bmi-rv bmi-rv-1" id="calcCard">
+  <!-- BM-GRID: Info Cards -->
+  <div class="bm-grid tool-rv tool-rv-1">
+    <div class="bm-gc">
+      <div class="bm-gc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+      <div class="bm-gc-text">
+        <div class="bm-gc-label"><span class="en">WHO Standard</span><span class="ar">معيار WHO</span></div>
+        <div class="bm-gc-value"><span class="en">Global</span><span class="ar">عالمي</span></div>
+      </div>
+    </div>
+    <div class="bm-gc">
+      <div class="bm-gc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg></div>
+      <div class="bm-gc-text">
+        <div class="bm-gc-label"><span class="en">Units</span><span class="ar">الوحدات</span></div>
+        <div class="bm-gc-value"><span class="en">Metric / Imperial</span><span class="ar">متري / إمبراطوري</span></div>
+      </div>
+    </div>
+    <div class="bm-gc">
+      <div class="bm-gc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
+      <div class="bm-gc-text">
+        <div class="bm-gc-label"><span class="en">Categories</span><span class="ar">التصنيفات</span></div>
+        <div class="bm-gc-value">4 <span class="en">Classes</span><span class="ar">فئات</span></div>
+      </div>
+    </div>
+    <div class="bm-gc">
+      <div class="bm-gc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <div class="bm-gc-text">
+        <div class="bm-gc-label"><span class="en">Free</span><span class="ar">مجاني</span></div>
+        <div class="bm-gc-value">100%</div>
+      </div>
+    </div>
+  </div>
 
-    <!-- Unit Toggle -->
-    <div class="bmi-ut">
-      <button class="bmi-ut-b a" id="btnMetric" onclick="setUnit('metric')">
-        <span class="ar">← متري (كجم/سم)</span><span class="en">Metric (kg/cm) →</span>
+  <!-- BM-CARD: Calculator -->
+  <div class="bm-card tool-rv tool-rv-2">
+    <div class="bm-hdr">
+      <h2><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg> <span class="en">Your Measurements</span><span class="ar">قياساتك</span></h2>
+      <p><span class="en">Enter your height and weight to calculate your BMI and weight category</span><span class="ar">أدخل طولك ووزنك لحساب مؤشر كتلة جسمك وفئة وزنك</span></p>
+    </div>
+    <div class="bm-body">
+
+      <div class="bm-g2">
+        <div class="bm-fl">
+          <label class="bm-fl-l" for="bm-height"><span class="en">Height</span><span class="ar">الطول</span></label>
+          <div class="bm-fl-r">
+            <input type="number" id="bm-height" value="175" min="0" step="0.1">
+            <span class="bm-fl-u" id="bm-height-unit">cm</span>
+          </div>
+        </div>
+        <div class="bm-fl">
+          <label class="bm-fl-l" for="bm-weight"><span class="en">Weight</span><span class="ar">الوزن</span></label>
+          <div class="bm-fl-r">
+            <input type="number" id="bm-weight" value="75" min="0" step="0.1">
+            <span class="bm-fl-u" id="bm-weight-unit">kg</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bm-fl" style="margin-top:6px;">
+        <label class="bm-fl-l" for="bm-unit"><span class="en">Unit System</span><span class="ar">نظام الوحدات</span></label>
+        <select id="bm-unit" class="bm-select" onchange="toggleUnit()">
+          <option value="metric"><span class="en">Metric (cm / kg)</span><span class="ar">متري (سم / كجم)</span></option>
+          <option value="imperial"><span class="en">Imperial (ft·in / lbs)</span><span class="ar">إمبراطوري (قدم·بوصة / رطل)</span></option>
+        </select>
+      </div>
+
+      <button class="bm-btn" onclick="calculate()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
+        <span class="en">Calculate BMI</span><span class="ar">احسب المؤشر</span>
       </button>
-      <button class="bmi-ut-b" id="btnImperial" onclick="setUnit('imperial')">
-        <span class="ar">← إمبراطوري (باوند/قدم)</span><span class="en">Imperial (lbs/ft) →</span>
-      </button>
-    </div>
 
-    <!-- Metric Inputs -->
-    <div id="metricInputs">
-      <div class="bmi-g2">
-        <div class="bmi-fl">
-          <label class="bmi-fl-l"><span class="ar">الطول</span><span class="en">Height</span></label>
-          <div class="bmi-fl-r">
-            <input type="number" id="heightCm" placeholder="175" min="100" max="250"/>
-            <div class="bmi-fl-u"><span class="ar">سم</span><span class="en">cm</span></div>
-          </div>
-        </div>
-        <div class="bmi-fl">
-          <label class="bmi-fl-l"><span class="ar">الوزن</span><span class="en">Weight</span></label>
-          <div class="bmi-fl-r">
-            <input type="number" id="weightKg" placeholder="75" min="20" max="300"/>
-            <div class="bmi-fl-u"><span class="ar">كجم</span><span class="en">kg</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Imperial Inputs -->
-    <div id="imperialInputs" style="display:none">
-      <div class="bmi-g2">
-        <div class="bmi-fl">
-          <label class="bmi-fl-l"><span class="ar">الطول (قدم + بوصة)</span><span class="en">Height (ft + in)</span></label>
-          <div class="bmi-fl-r">
-            <input type="number" id="heightFt" placeholder="5" min="3" max="8"/>
-            <div class="bmi-fl-u">ft</div>
-            <input type="number" id="heightIn" placeholder="9" min="0" max="11"/>
-            <div class="bmi-fl-u">in</div>
-          </div>
-        </div>
-        <div class="bmi-fl">
-          <label class="bmi-fl-l"><span class="ar">الوزن</span><span class="en">Weight</span></label>
-          <div class="bmi-fl-r">
-            <input type="number" id="weightLbs" placeholder="165" min="44" max="660"/>
-            <div class="bmi-fl-u">lbs</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Gender & Age -->
-    <div class="bmi-g2" style="margin-top:16px">
-      <div class="bmi-fl">
-        <label class="bmi-fl-l"><span class="ar">الجنس</span><span class="en">Gender</span></label>
-        <div class="bmi-fl-r">
-          <select id="gender">
-            <option value="m" class="ar">ذكر</option><option value="m" class="en">Male</option>
-            <option value="f" class="ar">أنثى</option><option value="f" class="en">Female</option>
-          </select>
-        </div>
-      </div>
-      <div class="bmi-fl">
-        <label class="bmi-fl-l"><span class="ar">العمر</span><span class="en">Age</span></label>
-        <div class="bmi-fl-r">
-          <input type="number" id="age" placeholder="30" min="5" max="100"/>
-          <div class="bmi-fl-u"><span class="ar">سنة</span><span class="en">yr</span></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Waist (optional) -->
-    <div class="bmi-wr">
-      <div class="bmi-fl" style="grid-column:1/-1">
-        <label class="bmi-fl-l"><span class="ar">محيط الخصر (اختياري)</span><span class="en">Waist (optional)</span></label>
-        <div class="bmi-fl-r">
-          <input type="number" id="waist" placeholder="85"/>
-          <div class="bmi-fl-u" id="waistUnit"><span class="ar">سم</span><span class="en">cm</span></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Calculate Button -->
-    <button class="bmi-btn" onclick="calcBMI()">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-      <span class="ar">احسب مؤشر كتلة الجسم</span><span class="en">Calculate BMI</span>
-    </button>
-  </div>
-
-  <!-- Results -->
-  <div class="bmi-rs" id="bmiResults">
-    <div class="bmi-rh">
-      <div class="bmi-sr" id="bmiRing">
-        <svg viewBox="0 0 130 130">
-          <circle class="bg" cx="65" cy="65" r="60"/>
-          <circle class="pg" id="bmiArc" cx="65" cy="65" r="60"/>
-        </svg>
-        <div class="bmi-sr-t">
-          <div class="bmi-sr-n" id="bmiNum">—</div>
-          <div class="bmi-sr-l">BMI</div>
-        </div>
-      </div>
-      <div class="bmi-ri">
-        <div class="bmi-rc" id="bmiCat">—</div>
-        <div class="bmi-rd" id="bmiDesc">—</div>
-      </div>
-    </div>
-
-    <!-- Scale -->
-    <div class="bmi-sc">
-      <div class="bmi-sc-tr">
-        <div class="bmi-sc-mk" id="bmiMarker" style="left:0%"></div>
-      </div>
-      <div class="bmi-sc-lb">
-        <span><span class="ar">نحيف</span><span class="en">Under</span></span>
-        <span><span class="ar">طبيعي</span><span class="en">Normal</span></span>
-        <span><span class="ar">زيادة</span><span class="en">Over</span></span>
-        <span><span class="ar">سمنة</span><span class="en">Obese</span></span>
-        <span><span class="ar">مفرطة</span><span class="en">Sev.</span></span>
-      </div>
-    </div>
-
-    <!-- Metrics -->
-    <div class="bmi-mg" id="bmiMetrics"></div>
-
-    <!-- Waist Risk -->
-    <div class="bmi-wrk" id="bmiWaistRisk"></div>
-  </div>
-
-  <!-- Method Note -->
-  <div class="bmi-mt bmi-rv bmi-rv-2">
-    <div class="bmi-mt-i">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-    </div>
-    <div class="bmi-mt-t">
-      <span class="en"><strong>BMI</strong> = weight(kg) ÷ height²(m). Categories follow WHO 2000 standards with Asia-Pacific thresholds for GCC populations.</span>
-      <span class="ar"><strong>مؤشر الكتلة</strong> = الوزن(كغ) ÷ الطول²(م). الفئات وفق معايير منظمة الصحة 2000 مع عتبات الخليج.</span>
     </div>
   </div>
 
-  <!-- Info Cards -->
-  <div class="bmi-ig">
-    <div class="bmi-ic bmi-rv bmi-rv-1">
-      <div class="bmi-ii">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
-      </div>
-      <div class="bmi-it ar">حدود مؤشر كتلة الجسم</div><div class="bmi-it en">BMI Limitations</div>
-      <div class="bmi-ix ar">المؤشر لا يفرّق بين الدهون والعضلات. الرياضيون قد يظهر مؤشرهم مرتفعاً رغم لياقتهم. استخدمه مع محيط الخصر ونسبة الدهون للصورة الكاملة.</div>
-      <div class="bmi-ix en">BMI doesn't distinguish fat from muscle. Athletes may show "overweight" despite high fitness. Use alongside waist circumference for the full picture.</div>
+  <!-- BM-CARD: Results -->
+  <div class="bm-card tool-rv" id="result-card" style="display:none">
+    <div class="bm-hdr">
+      <h2><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> <span class="en">Your Results</span><span class="ar">نتائجك</span></h2>
     </div>
-    <div class="bmi-ic bmi-rv bmi-rv-2">
-      <div class="bmi-ii">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+    <div class="bm-body">
+      <div class="bm-res-grid">
+        <div class="bm-res-box bm-primary">
+          <div class="bm-res-label"><span class="en">Your BMI</span><span class="ar">مؤشر كتلة جسمك</span></div>
+          <div class="bm-res-value" id="res-bmi">—</div>
+          <div class="bm-cat" id="res-cat">Normal</div>
+        </div>
+        <div class="bm-res-box">
+          <div class="bm-res-label"><span class="en">Height</span><span class="ar">الطول</span></div>
+          <div class="bm-res-value" id="res-height">—</div>
+        </div>
+        <div class="bm-res-box">
+          <div class="bm-res-label"><span class="en">Weight</span><span class="ar">الوزن</span></div>
+          <div class="bm-res-value" id="res-weight">—</div>
+        </div>
+        <div class="bm-res-box">
+          <div class="bm-res-label"><span class="en">Healthy Range</span><span class="ar">النطاق الصحي</span></div>
+          <div class="bm-res-value" id="res-range">—</div>
+        </div>
+        <div class="bm-res-box bm-note">
+          <p><span class="en">* BMI is a screening tool, not a medical diagnosis. Consult a healthcare professional for a complete health assessment.</span>
+          <span class="ar">* مؤشر كتلة الجسم أداة فحص وليس تشخيصاً طبياً. استشر مختصاً صحياً لتقييم صحي كامل.</span></p>
+        </div>
       </div>
-      <div class="bmi-it ar">BMI وصحة العرب</div><div class="bmi-it en">BMI & Arab Health</div>
-      <div class="bmi-ix ar">تشير دراسات السعودية والخليج إلى أن خطر داء السكري وأمراض القلب يبدأ عند مؤشر 23-24 لدى العرب. السمنة المركزية (الخصر) أكثر دقة.</div>
-      <div class="bmi-ix en">Saudi and Gulf studies show diabetes risk begins at BMI 23-24. Central obesity (waist) is more predictive than BMI alone for our region.</div>
-    </div>
-    <div class="bmi-ic bmi-rv bmi-rv-3">
-      <div class="bmi-ii">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg>
-      </div>
-      <div class="bmi-it ar">نصائح للوزن الصحي في الخليج</div><div class="bmi-it en">Healthy Weight Tips</div>
-      <div class="bmi-ix ar">• تمارين الصباح الباكر أو المساء • المشي 30 دقيقة يومياً • الصيام المتقطع مناسب للمناخ الخليجي • المطابخ الخليجية يمكن تحويلها لصحية.</div>
-      <div class="bmi-ix en">• Exercise early morning/evening • 30min daily walk • Intermittent fasting fits Gulf climate • Traditional dishes can be made healthier.</div>
     </div>
   </div>
 
-  <!-- FAQ -->
-  <section class="bmi-fq bmi-rv" aria-label="FAQ">
-    <h2 class="bmi-fq-h"><span class="ar">أسئلة شائعة</span><span class="en">Frequently Asked Questions</span></h2>
+  <!-- BM-SECTION: Understanding -->
+  <div class="bm-section tool-rv">
+    <div class="bm-section-label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> <span class="en">Understanding Your BMI</span><span class="ar">كيف تفهم نتيجة BMI</span></div>
+    <p class="en">Body Mass Index (BMI) is a simple calculation using your height and weight. The result places you in one of four WHO categories: <strong>Underweight</strong> (&lt;18.5), <strong>Normal weight</strong> (18.5–24.9), <strong>Overweight</strong> (25–29.9), or <strong>Obese</strong> (≥30). While BMI is a useful screening tool, it does not measure body fat directly. Athletes may have a high BMI due to muscle mass, and older adults may have a normal BMI but low muscle mass. For a comprehensive picture, combine BMI with other measurements like waist circumference and body fat percentage.</p>
+    <p class="ar">مؤشر كتلة الجسم (BMI) هو حساب بسيط باستخدام طولك ووزنك. تضعك النتيجة في واحدة من أربع فئات حسب منظمة الصحة العالمية: <strong>نقص وزن</strong> (&lt;18.5)، <strong>وزن طبيعي</strong> (18.5–24.9)، <strong>زيادة وزن</strong> (25–29.9)، أو <strong>سمنة</strong> (≥30). بينما يعتبر BMI أداة فحص مفيدة، فإنه لا يقيس الدهون مباشرة. قد يكون للرياضيين BMI مرتفع بسبب الكتلة العضلية.</p>
+  </div>
 
-    <div class="bmi-fq-i" onclick="this.classList.toggle('o')">
-      <div class="bmi-fq-q"><span class="ar">ما الفرق بين BMI ونسبة الدهون؟</span><span class="en">What's the difference between BMI and body fat %?</span><span class="bmi-fq-t">+</span></div>
-      <div class="bmi-fq-a"><div class="bmi-fq-ai"><span class="ar">BMI حساب رياضي (الوزن ÷ الطول²) لا يُفرّق بين الدهون والعضلات. نسبة الدهون أدق وتُقاس بمحيط الخصر والرقبة أو بأجهزة متخصصة. المثالي استخدام الاثنين معاً.</span><span class="en">BMI is simple math (weight ÷ height²) and can't distinguish fat from muscle. Body fat % is more precise. Ideally use both.</span></div></div>
+  <!-- BM-SECTION: When to Use -->
+  <div class="bm-section tool-rv">
+    <div class="bm-section-label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v12"/><path d="M12 12l4-2.5"/></svg> <span class="en">When to Use This Calculator</span><span class="ar">متى تستخدم هذه الحاسبة</span></div>
+    <p class="en">Use this BMI calculator for a quick health screening — when starting a new fitness routine, monitoring weight changes, or preparing for a medical check-up. Track your BMI over time to see trends. For the most accurate assessment, measure your height and weight in the morning before eating. This calculator follows WHO guidelines for adults 18+ years. For children and teens, use a pediatric BMI calculator with percentile charts.</p>
+    <p class="ar">استخدم حاسبة BMI للفحص الصحي السريع — عند بدء روتين لياقة جديد، مراقبة تغيرات الوزن، أو التحضير لفحص طبي. تابع BMI عبر الزمن لملاحظة الاتجاهات. للحصول على تقييم دقيق، قس طولك ووزنك في الصباح قبل الأكل.</p>
+  </div>
+
+  <!-- BM-SECTION: Limitations -->
+  <div class="bm-section tool-rv">
+    <div class="bm-section-label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> <span class="en">Limitations & Important Notes</span><span class="ar">القيود والملاحظات الهامة</span></div>
+    <p class="en"><strong>When BMI may not be accurate:</strong> For bodybuilders and athletes with high muscle mass, pregnant and breastfeeding women, elderly individuals with muscle loss, and people with certain medical conditions affecting body composition. BMI does not account for fat distribution, bone density, or ethnic differences in body fat. For Asian populations, some health organizations recommend adjusted thresholds (overweight at BMI ≥23, obese at ≥27.5). Always consult a healthcare professional for personalized advice.</p>
+    <p class="ar"><strong>متى قد لا يكون BMI دقيقاً:</strong> للاعبي كمال الأجسام والرياضيين ذوي الكتلة العضلية العالية، الحوامل والمرضعات، كبار السن، والأشخاص ذوي الحالات الطبية المؤثرة على تكوين الجسم.</p>
+  </div>
+
+  <!-- BM-FAQ -->
+  <div class="bm-faq tool-rv">
+    <div class="bm-faq-label"><span class="en">FAQ</span><span class="ar">أسئلة شائعة</span></div>
+    <div class="bm-faq-title"><span class="en">Frequently Asked Questions</span><span class="ar">الأسئلة المتكررة</span></div>
+
+    <div class="bm-faq-item">
+      <div class="bm-faq-q" onclick="toggleFAQ(this)"><span><span class="en">What is BMI and how is it calculated?</span><span class="ar">ما هو BMI وكيف يُحسب؟</span></span><span class="bm-faq-arrow">▼</span></div>
+      <div class="bm-faq-a"><p><span class="en">BMI = weight (kg) ÷ height² (m²). For imperial: BMI = (weight in lbs × 703) ÷ height² (in²). WHO classifies adults as underweight (&lt;18.5), normal (18.5–24.9), overweight (25–29.9), and obese (≥30).</span><span class="ar">BMI = الوزن (كجم) ÷ مربع الطول (م²). للوحدات الإمبراطورية: BMI = (الوزن بالرطل × 703) ÷ مربع الطول (بوصة²).</span></p></div>
     </div>
-
-    <div class="bmi-fq-i" onclick="this.classList.toggle('o')">
-      <div class="bmi-fq-q"><span class="ar">هل يختلف BMI الطبيعي بين الرجال والنساء؟</span><span class="en">Does healthy BMI differ for men and women?</span><span class="bmi-fq-t">+</span></div>
-      <div class="bmi-fq-a"><div class="bmi-fq-ai"><span class="ar">نطاقات BMI نفسها (18.5–24.9 طبيعي)، لكن النساء يحملن نسبة دهون أعلى عند نفس المؤشر. نسبة الدهون المقبولة: 20-32% للنساء مقابل 8-19% للرجال.</span><span class="en">BMI ranges are the same for both sexes, but women carry higher body fat at the same BMI. Healthy body fat: 20-32% women vs 8-19% men.</span></div></div>
+    <div class="bm-faq-item">
+      <div class="bm-faq-q" onclick="toggleFAQ(this)"><span><span class="en">Is BMI accurate for athletes?</span><span class="ar">هل BMI دقيق للرياضيين؟</span></span><span class="bm-faq-arrow">▼</span></div>
+      <div class="bm-faq-a"><p><span class="en">BMI may overestimate body fat in athletes with high muscle mass since muscle weighs more than fat. For athletes, body fat percentage measurements (skin fold, BIA, or DEXA) provide a more accurate picture of health.</span><span class="ar">قد يبالغ BMI في تقدير دهون الرياضيين ذوي الكتلة العضلية العالية. لقياس دقيق، استخدم قياس نسبة الدهون.</span></p></div>
     </div>
-
-    <div class="bmi-fq-i" onclick="this.classList.toggle('o')">
-      <div class="bmi-fq-q"><span class="ar">كيف أخفّض BMI بشكل صحي؟</span><span class="en">How do I lower BMI healthily?</span><span class="bmi-fq-t">+</span></div>
-      <div class="bmi-fq-a"><div class="bmi-fq-ai"><span class="ar">عجز سعراتي معتدل (500 سعرة/يوم) مع تمارين مختلطة (كارديو + مقاومة) يُفقدك 0.5–1 كجم/أسبوع. تجنب الأنظمة القاسية.</span><span class="en">Moderate calorie deficit (~500/day) plus mixed exercise leads to 0.5-1 kg/week loss. Avoid crash diets.</span></div></div>
+    <div class="bm-faq-item">
+      <div class="bm-faq-q" onclick="toggleFAQ(this)"><span><span class="en">What is a healthy BMI range?</span><span class="ar">ما هو نطاق BMI الصحي؟</span></span><span class="bm-faq-arrow">▼</span></div>
+      <div class="bm-faq-a"><p><span class="en">A BMI between 18.5 and 24.9 is considered healthy for most adults. Below 18.5 is underweight, 25–29.9 is overweight, and 30+ is obese. For Asian populations, the recommended healthy range may be 18.5–22.9.</span><span class="ar">BMI بين 18.5 و 24.9 يعتبر صحياً لمعظم البالغين. أقل من 18.5 نقص وزن، 25–29.9 زيادة وزن، 30+ سمنة.</span></p></div>
     </div>
-
-    <div class="bmi-fq-i" onclick="this.classList.toggle('o')">
-      <div class="bmi-fq-q"><span class="ar">هل BMI مناسب للأطفال؟</span><span class="en">Is BMI valid for children?</span><span class="bmi-fq-t">+</span></div>
-      <div class="bmi-fq-a"><div class="bmi-fq-ai"><span class="ar">للأطفال دون 18 سنة يُستخدم BMI-للعمر (percentile) وليس النطاقات البالغة. يُحدد الطبيب الوضع بناءً على منحنيات النمو المعيارية.</span><span class="en">For children under 18, BMI-for-age percentiles are used, not adult ranges. A doctor determines status using growth charts.</span></div></div>
+    <div class="bm-faq-item">
+      <div class="bm-faq-q" onclick="toggleFAQ(this)"><span><span class="en">Can I use this calculator for children?</span><span class="ar">هل يمكن استخدام هذه الحاسبة للأطفال؟</span></span><span class="bm-faq-arrow">▼</span></div>
+      <div class="bm-faq-a"><p><span class="en">This calculator is designed for adults aged 18+. For children, BMI is calculated the same way but must be interpreted using age- and sex-specific percentile charts from WHO or CDC growth standards.</span><span class="ar">هذه الحاسبة مخصصة للبالغين 18+. للأطفال، يحسب BMI بنفس الطريقة ولكن يفسر باستخدام مخططات النسبة المئوية الخاصة بالعمر والجنس.</span></p></div>
     </div>
-  </section>
+  </div>
 
-  <!-- Related Tools -->
-  <section class="bmi-rl" aria-label="Related tools">
-    <div class="bmi-rll"><span class="en">Continue Your Journey</span><span class="ar">أكمل رحلتك</span></div>
-    <h2 class="bmi-rlh"><span class="en">Related Tools & Guides</span><span class="ar">أدوات ودلائل ذات صلة</span></h2>
-    <p class="bmi-rlp"><span class="en">Tools and reading you might find useful next</span><span class="ar">أدوات وقراءات قد تفيدك في خطوتك التالية</span></p>
-    <div class="bmi-rlg">
-      <a href="/tools/calorie-calculator.html" class="bmi-rc">
-        <div class="bmi-rc-i"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></div>
-        <div class="bmi-rc-n en">Calorie Calculator</div><div class="bmi-rc-n ar">حاسبة السعرات</div>
-        <div class="bmi-rc-d en">Daily calorie & macro targets</div><div class="bmi-rc-d ar">السعرات اليومية</div>
-        <div class="bmi-rc-c"><span class="en">Open →</span><span class="ar">افتح ←</span></div>
+  <!-- BM-AFFILIATE -->
+  <div class="bm-affiliate tool-rv">
+    <div class="bm-aff-badge">Partner</div>
+    <div class="bm-aff-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M9 22v-4h6v4"/></svg></div>
+    <div class="bm-aff-content">
+      <h4><span class="en">Track Your Health with a Smart Scale</span><span class="ar">تابع صحتك بميزان ذكي</span></h4>
+      <p><span class="en">Measure BMI, body fat, muscle mass, and more with a Bluetooth smart scale. Syncs with your phone for daily health tracking.</span><span class="ar">قس BMI والدهون والكتلة العضلية والمزيد بميزان ذكي بلوتوث. يتزامن مع هاتفك للمتابعة اليومية.</span></p>
+    </div>
+    <a href="#" class="bm-aff-btn" onclick="dflTrack&&dflTrack('affiliate_click',{partner:'smart_scale',page:document.title})">
+      <span class="en">Shop Now →</span><span class="ar">تسوق الآن ←</span>
+    </a>
+  </div>
+
+  <!-- BM-SPONSOR -->
+  <div class="bm-sponsor tool-rv">
+    <div class="bm-sponsor-label"><span class="en">Sponsored</span><span class="ar">محتوى مدعوم</span></div>
+    <h3><span class="en">Reach health-conscious families in the GCC</span><span class="ar">تواصل مع العائلات المهتمة بالصحة في الخليج</span></h3>
+    <p><span class="en">DOTFORLIFE connects brands with engaged users during health and wellness decisions — from BMI tracking to nutrition and fitness.</span><span class="ar">تربط دوت فور لايف العلامات التجارية بمستخدمين متفاعلين خلال قرارات الصحة والعافية.</span></p>
+    <a href="../contact.html" class="bm-sponsor-cta" onclick="dflTrack&&dflTrack('sponsor_cta_click',{page:document.title})">
+      <span class="en">Become a Partner →</span><span class="ar">كن شريكاً ←</span>
+    </a>
+  </div>
+
+  <!-- BM-RELATED -->
+  <div class="bm-related tool-rv">
+    <div class="bm-related-label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg> <span class="en">Continue Your Journey</span><span class="ar">أكمل رحلتك</span></div>
+    <div class="bm-related-title"><span class="en">Related Health Tools</span><span class="ar">أدوات صحية ذات صلة</span></div>
+    <div class="bm-related-sub"><span class="en">Complete your health assessment</span><span class="ar">أكمل تقييمك الصحي</span></div>
+    <div class="bm-related-grid">
+      <a href="/tools/calorie-calculator.html" class="bm-rc">
+        <div class="bm-rc-top"><span class="bm-rc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v12"/><path d="M12 12l4-2.5"/></svg></span><div><div class="bm-rc-name en">Calorie Calculator</div><div class="bm-rc-name ar">حاسبة السعرات</div></div></div>
+        <div class="bm-rc-desc en">Daily calorie needs based on your stats</div><div class="bm-rc-desc ar">احتياجك اليومي من السعرات</div>
+        <div class="bm-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
       </a>
-      <a href="/tools/body-fat-calculator.html" class="bmi-rc">
-        <div class="bmi-rc-i"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-        <div class="bmi-rc-n en">Body Fat %</div><div class="bmi-rc-n ar">نسبة الدهون</div>
-        <div class="bmi-rc-d en">US Navy circumference method</div><div class="bmi-rc-d ar">طريقة البحرية</div>
-        <div class="bmi-rc-c"><span class="en">Open →</span><span class="ar">افتح ←</span></div>
+      <a href="/tools/body-fat-calculator.html" class="bm-rc">
+        <div class="bm-rc-top"><span class="bm-rc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><div><div class="bm-rc-name en">Body Fat Calculator</div><div class="bm-rc-name ar">حاسبة الدهون</div></div></div>
+        <div class="bm-rc-desc en">Estimate your body fat percentage</div><div class="bm-rc-desc ar">تقدير نسبة دهون جسمك</div>
+        <div class="bm-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
       </a>
-      <a href="/tools/water-calculator.html" class="bmi-rc">
-        <div class="bmi-rc-i"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></div>
-        <div class="bmi-rc-n en">Water Intake</div><div class="bmi-rc-n ar">حاسبة الماء</div>
-        <div class="bmi-rc-d en">Hydration based on weight</div><div class="bmi-rc-d ar">احتياجك المائي</div>
-        <div class="bmi-rc-c"><span class="en">Open →</span><span class="ar">افتح ←</span></div>
+      <a href="/tools/water-calculator.html" class="bm-rc">
+        <div class="bm-rc-top"><span class="bm-rc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></span><div><div class="bm-rc-name en">Water Intake Calculator</div><div class="bm-rc-name ar">حاسبة الماء</div></div></div>
+        <div class="bm-rc-desc en">Daily hydration needs</div><div class="bm-rc-desc ar">احتياجك اليومي من الماء</div>
+        <div class="bm-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
       </a>
-      <a href="/tools/one-rep-max.html" class="bmi-rc">
-        <div class="bmi-rc-i"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="14 13 3 3"/><path d="M14 3v10H4"/></svg></div>
-        <div class="bmi-rc-n en">One Rep Max</div><div class="bmi-rc-n ar">أقصى رفع</div>
-        <div class="bmi-rc-d en">Strength training calculator</div><div class="bmi-rc-d ar">حاسبة التمارين</div>
-        <div class="bmi-rc-c"><span class="en">Open →</span><span class="ar">افتح ←</span></div>
+      <a href="/tools/one-rep-max.html" class="bm-rc">
+        <div class="bm-rc-top"><span class="bm-rc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 20 10 12 18 4"/><line x1="6" y1="4" x2="6" y2="20"/></svg></span><div><div class="bm-rc-name en">One Rep Max</div><div class="bm-rc-name ar">أقصى تكرار</div></div></div>
+        <div class="bm-rc-desc en">Calculate your 1RM for lifts</div><div class="bm-rc-desc ar">احسب أقصى وزن لك</div>
+        <div class="bm-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
       </a>
     </div>
-  </section>
+  </div>
 
 </main>
 
-<!-- BMI Calculator JavaScript -->
-<script>
-let unit='metric';
-function setUnit(u){
-  unit=u;
-  document.getElementById('btnMetric').classList.toggle('a',u==='metric');
-  document.getElementById('btnImperial').classList.toggle('a',u==='imperial');
-  document.getElementById('metricInputs').style.display=u==='metric'?'block':'none';
-  document.getElementById('imperialInputs').style.display=u==='imperial'?'block':'none';
-  document.getElementById('waistUnit').innerHTML=u==='metric'?'<span class="ar">سم</span><span class="en">cm</span>':'<span>in</span>';
-}
-function v(id){return parseFloat(document.getElementById(id)?.value)||0}
-function calcBMI(){
-  let heightM,weightKg;
-  if(unit==='metric'){heightM=v('heightCm')/100;weightKg=v('weightKg');}
-  else{const ft=v('heightFt'),inches=v('heightIn');heightM=((ft*12)+inches)*0.0254;weightKg=v('weightLbs')*0.453592;}
-  if(!heightM||!weightKg){alert(document.documentElement.dataset.lang==='ar'?'أدخل الطول والوزن':'Enter height and weight');return;}
-  const bmi=weightKg/(heightM*heightM);
-  const age=v('age')||25;
-  const gender=document.getElementById('gender').value;
-  const waist=v('waist');
-  const lang=document.documentElement.dataset.lang;
-
-  // Category
-  let cat,catEn,color,desc,descEn;
-  if(bmi<18.5){cat='نحيف';catEn='Underweight';color='#3B82F6';desc='وزنك أقل من المثالي. يُنصح بزيادة تدريجية في السعرات مع بروتين كافٍ.';descEn='Your weight is below the healthy range. Gradually increase calories with protein.';}
-  else if(bmi<25){cat='وزن طبيعي ✓';catEn='Normal weight ✓';color='#22C55E';desc='وزنك في النطاق الصحي الأمثل. حافظ عليه بنظام غذائي متوازن وتمارين منتظمة.';descEn='Your weight is in the optimal healthy range. Maintain with balanced nutrition.';}
-  else if(bmi<30){cat='زيادة في الوزن';catEn='Overweight';color='#F97316';desc='وزنك فوق المثالي. خسارة 5-10% ستحسّن صحتك بشكل ملحوظ.';descEn='Your weight is above ideal. Losing 5-10% will significantly improve your health.';}
-  else if(bmi<35){cat='سمنة درجة أولى';catEn='Obesity Class I';color='#EF4444';desc='سمنة معتدلة. يُنصح بمتابعة طبيب أو أخصائي تغذية لبرنامج خسارة وزن مدروس.';descEn='Moderate obesity. Consult a doctor for a structured weight-loss program.';}
-  else{cat='سمنة مفرطة';catEn='Severe Obesity';color='#991B1B';desc='مخاطر صحية مرتفعة. يُنصح بشدة بمتابعة طبية متخصصة.';descEn='High health risks. Seek specialized medical care.';}
-
-  // Show results
-  document.getElementById('bmiResults').classList.add('s');
-
-  // Animated number
-  const target=parseFloat(bmi.toFixed(1));
-  const el=document.getElementById('bmiNum');
-  const dur=800;const start=performance.now();
-  function step(now){
-    const p=Math.min((now-start)/dur,1);
-    const ease=1-Math.pow(1-p,3);
-    el.textContent=(target*ease).toFixed(1);
-    if(p<1)requestAnimationFrame(step);else el.textContent=target.toFixed(1);
-  }
-  requestAnimationFrame(step);
-
-  // Category & description
-  document.getElementById('bmiCat').textContent=lang==='ar'?cat:catEn;
-  document.getElementById('bmiCat').style.color=color;
-  document.getElementById('bmiDesc').textContent=lang==='ar'?desc:descEn;
-
-  // Ring chart: map BMI 10-50 to 0-377 stroke-dashoffset
-  const offset=Math.max(0,Math.min(377,377-((bmi-10)/40)*377));
-  setTimeout(()=>{document.getElementById('bmiArc').style.strokeDashoffset=offset;document.getElementById('bmiArc').style.stroke=color;},50);
-  document.getElementById('bmiNum').style.color=color;
-
-  // Scale marker
-  const pct=Math.max(0,Math.min(100,((bmi-10)/40)*100));
-  setTimeout(()=>document.getElementById('bmiMarker').style.left=pct+'%',150);
-
-  // Healthy weight range
-  const minW=(18.5*heightM*heightM).toFixed(1);
-  const maxW=(24.9*heightM*heightM).toFixed(1);
-  const minWLbs=(minW*2.205).toFixed(1),maxWLbs=(maxW*2.205).toFixed(1);
-  const heightCm=heightM*100;
-  let idealKg;
-  if(gender==='m') idealKg=50+2.3*((heightCm-152.4)/2.54);
-  else idealKg=45.5+2.3*((heightCm-152.4)/2.54);
-  idealKg=Math.max(40,idealKg);
-  let bmr;
-  if(gender==='m') bmr=10*weightKg+6.25*heightCm-5*age+5;
-  else bmr=10*weightKg+6.25*heightCm-5*age-161;
-  const tdee=(bmr*1.4).toFixed(0);
-
-  const mg=document.getElementById('bmiMetrics');
-  const m1='<div class="bmi-mi"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>';
-  const m2='<div class="bmi-mi"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>';
-  const m3='<div class="bmi-mi"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>';
-  const m4='<div class="bmi-mi"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg></div>';
-  if(unit==='metric'){
-    mg.innerHTML='<div class="bmi-mc">'+m1+'<div class="bmi-ml ar">الوزن الصحي</div><div class="bmi-ml en">Healthy range</div><div class="bmi-mv">'+minW+'–'+maxW+' كجم</div></div><div class="bmi-mc">'+m2+'<div class="bmi-ml ar">الوزن المثالي</div><div class="bmi-ml en">Ideal weight</div><div class="bmi-mv">'+idealKg.toFixed(1)+' كجم</div></div><div class="bmi-mc">'+m3+'<div class="bmi-ml ar">السعرات اليومية</div><div class="bmi-ml en">Daily calories</div><div class="bmi-mv">'+tdee+' كيلو</div></div><div class="bmi-mc">'+m4+'<div class="bmi-ml ar">فوق المثالي</div><div class="bmi-ml en">Above ideal</div><div class="bmi-mv">'+Math.max(0,weightKg-idealKg).toFixed(1)+' كجم</div></div>';
-  }else{
-    mg.innerHTML='<div class="bmi-mc">'+m1+'<div class="bmi-ml en">Healthy range</div><div class="bmi-mv">'+minWLbs+'–'+maxWLbs+' lbs</div></div><div class="bmi-mc">'+m2+'<div class="bmi-ml en">Ideal weight</div><div class="bmi-mv">'+(idealKg*2.205).toFixed(1)+' lbs</div></div><div class="bmi-mc">'+m3+'<div class="bmi-ml en">Daily calories</div><div class="bmi-mv">'+tdee+' kcal</div></div><div class="bmi-mc">'+m4+'<div class="bmi-ml en">Above ideal</div><div class="bmi-mv">'+Math.max(0,(weightKg-idealKg)*2.205).toFixed(1)+' lbs</div></div>';
-  }
-
-  // Waist risk
-  const wr=document.getElementById('bmiWaistRisk');
-  if(waist>0){
-    const waistCm=unit==='metric'?waist:waist*2.54;
-    const highRisk=(gender==='m'&&waistCm>102)||(gender==='f'&&waistCm>88);
-    const modRisk=(gender==='m'&&waistCm>94)||(gender==='f'&&waistCm>80);
-    wr.style.display='block';
-    if(highRisk){wr.style.background='#FEE2E2';wr.style.color='#DC2626';wr.innerHTML='⚠️ '+(lang==='ar'?'محيط الخصر مرتفع جداً - خطر قلبي مرتفع':'Waist very high - high cardiovascular risk');}
-    else if(modRisk){wr.style.background='#FEF3C7';wr.style.color='#D97706';wr.innerHTML='🟠 '+(lang==='ar'?'الخصر مرتفع - خطر معتدل':'Waist elevated - moderate risk');}
-    else{wr.style.background='#D1FAE5';wr.style.color='#059669';wr.innerHTML='✓ '+(lang==='ar'?'الخصر ضمن النطاق الصحي':'Waist in healthy range');}
-  }else{wr.style.display='none';}
-
-  // Scroll to results
-  document.getElementById('bmiResults').scrollIntoView({behavior:'smooth',block:'nearest'});
-}
-
-// Reveal observer
-(function(){
-  if('IntersectionObserver' in window){
-    const io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('v');});},{threshold:.08});
-    document.querySelectorAll('.bmi-rv').forEach(function(el){io.observe(el);});
-  }else{document.querySelectorAll('.bmi-rv').forEach(function(el){el.classList.add('v');});}
-})();
-</script>
-
-<!-- Footer -->
-<!-- ═══ ECOSYSTEM FOOTER ═════════════════════════════════════════════════════ -->
-
-<script>
-// Scroll Progress Bar
-(function(){var b=document.createElement("div");b.style.cssText="position:fixed;top:0;left:0;width:0%;height:3px;background:linear-gradient(90deg,#0066CC,#06B6D4);z-index:9999;transition:width .1s linear;pointer-events:none;";document.body.appendChild(b);window.addEventListener("scroll",function(){var d=document.documentElement.scrollHeight-window.innerHeight;b.style.width=(d>0?Math.min(100,(window.scrollY/d)*100):0)+"%";},{passive:true});})();</script>
-
-<!-- Back to Category Floating Button -->
-<style>
-.back-cat-fab{position:fixed;bottom:1.5rem;right:1.5rem;z-index:890;display:inline-flex;align-items:center;gap:.4rem;padding:.6rem 1.15rem .6rem .9rem;border-radius:50px;background:#EF4444;color:#fff;font-size:.78rem;font-weight:700;letter-spacing:.01em;text-decoration:none;box-shadow:0 4px 18px rgba(0,0,0,.22);opacity:0;transform:translateY(10px) scale(.96);transition:opacity .28s cubic-bezier(.22,1,.36,1),transform .28s cubic-bezier(.22,1,.36,1);pointer-events:none;white-space:nowrap;}
-.back-cat-fab.fab-visible{opacity:1;transform:translateY(0) scale(1);pointer-events:auto;}
-.back-cat-fab:hover{filter:brightness(1.13);transform:translateY(-1px) scale(1.02);}
-.back-cat-fab .fab-arrow{font-size:.9rem;opacity:.85;}
-[data-lang="ar"] .back-cat-fab{right:auto;left:1.5rem;flex-direction:row-reverse;padding:.6rem .9rem .6rem 1.15rem;}
-</style>
-<a class="back-cat-fab" id="backCatFab" href="../health.html" aria-label="Back to Health">
-  <span class="fab-arrow">←</span>
-  <span class="en">Health</span>
-  <span class="ar">الصحة</span>
-</a>
-<script>
-(function(){
-  var fab=document.getElementById('backCatFab');
-  if(!fab)return;
-  var shown=false;
-  function check(){
-    var should=window.scrollY>260;
-    if(should!==shown){shown=should;fab.classList.toggle('fab-visible',shown);}
-  }
-  window.addEventListener('scroll',check,{passive:true});
-  check();
-})();
-</script>
-
-  <!-- DFL CANONICAL FOOTER -->
-  <!-- ═══ UNIFIED FOOTER ══════════════════════════════════════ -->
 <footer class="site-footer" role="contentinfo">
   <div class="footer-inner">
     <div class="footer-top">
@@ -658,9 +416,9 @@ function calcBMI(){
           <h4><span class="en">Tools</span><span class="ar">الأدوات</span></h4>
           <ul>
             <li><a href="../tools/bmi-calculator.html"><span class="en">BMI Calculator</span><span class="ar">حاسبة BMI</span></a></li>
+            <li><a href="../tools/calorie-calculator.html"><span class="en">Calories</span><span class="ar">السعرات</span></a></li>
+            <li><a href="../tools/water-calculator.html"><span class="en">Water</span><span class="ar">الماء</span></a></li>
             <li><a href="../tools/mortgage-calculator.html"><span class="en">Mortgage</span><span class="ar">التمويل</span></a></li>
-            <li><a href="../tools/zakat-calculator.html"><span class="en">Zakat</span><span class="ar">الزكاة</span></a></li>
-            <li><a href="../tools/hijri-converter.html"><span class="en">Hijri Date</span><span class="ar">التاريخ الهجري</span></a></li>
             <li><a href="../library.html"><span class="en">All Tools</span><span class="ar">كل الأدوات</span></a></li>
           </ul>
         </div>
@@ -668,12 +426,10 @@ function calcBMI(){
           <h4><span class="en">Company</span><span class="ar">الشركة</span></h4>
           <ul>
             <li><a href="../about.html"><span class="en">About</span><span class="ar">عنّا</span></a></li>
-            <li><a href="../blog.html"><span class="en">blog</span><span class="ar">المدونة</span></a></li>
+            <li><a href="../blog.html"><span class="en">Blog</span><span class="ar">المدونة</span></a></li>
             <li><a href="../contact.html"><span class="en">Contact</span><span class="ar">تواصل</span></a></li>
             <li><a href="../privacy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a></li>
-            <li><a href="../privacy-policy.html"><span class="en">Privacy Policy</span><span class="ar">سياسة الخصوصية</span></a></li>
             <li><a href="../terms.html"><span class="en">Terms</span><span class="ar">الشروط</span></a></li>
-            <li><a href="../editorial-standards.html"><span class="en">Editorial Standards</span><span class="ar">المعايير التحريرية</span></a></li>
           </ul>
         </div>
       </div>
@@ -683,25 +439,18 @@ function calcBMI(){
       <span>© 2026 DOTFORLIFE, <span class="en">Free for families, always.</span><span class="ar">مجاني للعائلات، دائماً.</span></span>
       <div class="footer-bottom-links">
         <a href="../privacy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a>
-        <a href="../privacy-policy.html"><span class="en">Privacy Policy</span><span class="ar">سياسة الخصوصية</span></a>
         <a href="../terms.html"><span class="en">Terms</span><span class="ar">الشروط</span></a>
       </div>
     </div>
   </div>
 </footer>
-<!-- ════════════════════════════════════════════════════════════ -->
 
-  <!-- DFL MOBILE NAV -->
-  
-
-  <script src="/tool-share.js" defer></script>
-<!-- ═══ UNIFIED MOBILE NAV ══════════════════════════════════ -->
 <nav class="dfl-mobile-nav" aria-label="Mobile navigation">
   <a href="../index.html" class="dfl-mnav-item" aria-label="Home">
     <svg viewBox="0 0 24 24"><polyline points="3 9 12 2 21 9"/><path d="M5 9v11a1 1 0 001 1h4v-6h4v6h4a1 1 0 001-1V9"/></svg>
     <span class="en">Home</span><span class="ar">الرئيسية</span>
   </a>
-  <a href="../health.html" class="dfl-mnav-item" aria-label="Health">
+  <a href="../health.html" class="dfl-mnav-item active" aria-label="Health">
     <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
     <span class="en">Health</span><span class="ar">الصحة</span>
   </a>
@@ -719,17 +468,95 @@ function calcBMI(){
   </a>
 </nav>
 
-<!-- SEO_PROFILE
-  page_type: tool
-  cluster: health
-  authority_score: 79
-  inbound_links: 32
-  outbound_links: 11
-  link_velocity: high
-  priority_indexing: true
-  content_depth: 41
-  word_count: 2540
-  canonical: https://www.dotforlife.com/tools/bmi-calculator.html
--->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1436107577087160" crossorigin="anonymous"></script>
-</body></html>
+<div class="mobile-dropdown" id="mobile-dropdown" aria-hidden="true">
+  <div class="md-links">
+    <a href="../health.html"><span class="en">Health</span><span class="ar">الصحة</span></a>
+    <a href="../finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a>
+    <a href="../real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a>
+    <a href="../travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a>
+    <a href="../islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a>
+    <a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a>
+    <a href="../archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a>
+    <a href="/blog.html"><span class="en">Blog</span><span class="ar">المدونة</span></a>
+    <a href="../library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a>
+  </div>
+  <div class="md-controls">
+    <button class="nav-btn" id="lang-toggle-mobile"><span class="en">عربي</span><span class="ar">English</span></button>
+    <button class="nav-btn" id="theme-toggle-mobile">
+      <svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </button>
+  </div>
+</div>
+
+<script src="/scripts/global.js" defer></script>
+<script>
+var isMetric = true;
+
+function toggleUnit(){
+  var unit = document.getElementById('bm-unit').value;
+  isMetric = unit === 'metric';
+  document.getElementById('bm-height-unit').textContent = isMetric ? 'cm' : 'ft';
+  document.getElementById('bm-weight-unit').textContent = isMetric ? 'kg' : 'lbs';
+  document.getElementById('bm-height').value = isMetric ? '175' : '5.7';
+  document.getElementById('bm-weight').value = isMetric ? '75' : '165';
+  calculate();
+}
+
+function calculate(){
+  var h = parseFloat(document.getElementById('bm-height').value)||0;
+  var w = parseFloat(document.getElementById('bm-weight').value)||0;
+  var bmi = 0, cat = '';
+  
+  if(isMetric){
+    var hm = h/100;
+    bmi = hm > 0 ? w / (hm*hm) : 0;
+  } else {
+    var hin = h * 12;
+    bmi = hin > 0 ? (w * 703) / (hin*hin) : 0;
+  }
+  
+  if(bmi < 18.5) cat = 'underweight';
+  else if(bmi < 25) cat = 'normal';
+  else if(bmi < 30) cat = 'overweight';
+  else cat = 'obese';
+  
+  var catLabels = {
+    underweight: {en:'Underweight',ar:'نقص وزن'},
+    normal: {en:'Normal Weight',ar:'وزن طبيعي'},
+    overweight: {en:'Overweight',ar:'زيادة وزن'},
+    obese: {en:'Obese',ar:'سمنة'}
+  };
+  var lang = document.documentElement.getAttribute('data-lang')||'en';
+  
+  document.getElementById('res-bmi').textContent = bmi.toFixed(1);
+  var catEl = document.getElementById('res-cat');
+  catEl.textContent = catLabels[cat][lang];
+  catEl.className = 'bm-cat ' + cat;
+  
+  document.getElementById('res-height').textContent = h + (isMetric ? ' cm' : ' ft');
+  document.getElementById('res-weight').textContent = w + (isMetric ? ' kg' : ' lbs');
+  
+  var low = isMetric ? (18.5 * (h/100) * (h/100)).toFixed(1) : ((18.5 * h * h / 703).toFixed(1));
+  var high = isMetric ? (24.9 * (h/100) * (h/100)).toFixed(1) : ((24.9 * h * h / 703).toFixed(1));
+  
+  if(isMetric){
+    document.getElementById('res-range').textContent = low + ' – ' + high + ' kg';
+  } else {
+    document.getElementById('res-range').textContent = low + ' – ' + high + ' lbs';
+  }
+  
+  document.getElementById('result-card').style.display = 'block';
+  document.getElementById('result-card').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function toggleFAQ(el){
+  el.classList.toggle('open');
+  var answer=el.nextElementSibling;
+  if(answer) answer.classList.toggle('open');
+}
+
+document.addEventListener('DOMContentLoaded',function(){ calculate(); });
+</script>
+</body>
+</html>
