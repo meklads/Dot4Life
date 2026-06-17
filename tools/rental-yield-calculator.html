@@ -133,9 +133,9 @@
 }
 </script>
 
-<link rel="stylesheet" href="/styles/global.css?v=20260617e"/>
-	<link rel="stylesheet" href="/styles/tools-shared.css?v=20260617e">
-	<link rel="stylesheet" href="/styles/pages/tools_rental-yield-calculator.css?v=20260617b">
+<link rel="stylesheet" href="/styles/global.css?v=20260618f"/>
+	<link rel="stylesheet" href="/styles/tools-shared.css?v=20260618f">
+	<link rel="stylesheet" href="/styles/pages/tools_rental-yield-calculator.css?v=20260618f">
 <!-- DFL Analytics v1 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3G1XPV4F0G"></script>
 <script>
@@ -251,299 +251,336 @@ window.dflTrack=function(event,params){
 </div>
   
   </div><main class="tool-mn">
-  <div>
 
-    <!-- MAIN CALCULATOR -->
-    <div class="tool-cd tool-rv tool-rv-1">
-      <div class="calc-header">
-        <h2><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 4l9 5.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-5h4v5h4a1 1 0 0 0 1-1v-9"/></svg> <span class="en">Property Details</span><span class="ar">تفاصيل العقار</span></h2>
-        <p><span class="en">Enter your property details to calculate gross and net rental yield</span><span class="ar">أدخل تفاصيل عقارك لحساب العائد الإيجاري الإجمالي والصافي</span></p>
-
-    <div class="tool-trust-bar">
-      <div class="ttb-item"><span class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span> <span class="en">Updated May 2026</span><span class="ar">تحديث May 2026</span></div>
-      <div class="ttb-item"><span class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span> <span class="en">RICS Method</span><span class="ar">RICS Method</span></div>
-      <div class="ttb-item"><span class="icon">🔒</span> <span class="en">No data stored</span><span class="ar">لا تُخزَّن بيانات</span></div>
-      <div class="ttb-item"><span class="ttb-badge">RICS</span></div>
-    </div>
-      </div>
-      <div class="calc-body">
-
-        <div class="calc-section-title"><span class="en">Property & Rental Income</span><span class="ar">العقار والإيراد الإيجاري</span></div>
-        <div class="input-grid">
-          <div class="input-group">
-            <label><span class="en">Property Value (SAR)</span><span class="ar">قيمة العقار (ريال)</span></label>
-            <div class="input-wrap">
-              <input type="number" id="prop-value" value="800000" min="0">
-              <span class="input-unit">SAR</span>
-            </div>
-          </div>
-          <div class="input-group">
-            <label><span class="en">Monthly Rent (SAR)</span><span class="ar">الإيجار الشهري (ريال)</span></label>
-            <div class="input-wrap">
-              <input type="number" id="monthly-rent" value="4500" min="0">
-              <span class="input-unit">SAR</span>
-            </div>
-          </div>
-          <div class="input-group">
-            <label><span class="en">Property Type</span><span class="ar">نوع العقار</span></label>
-            <div class="input-wrap">
-              <select id="prop-type" onchange="setTypeDefaults()">
-                <option value="apartment"><span class="en">Apartment</span><span class="ar">شقة</span></option>
-                <option value="villa"><span class="en">Villa / House</span><span class="ar">فيلا / منزل</span></option>
-                <option value="commercial"><span class="en">Commercial</span><span class="ar">تجاري</span></option>
-                <option value="office"><span class="en">Office</span><span class="ar">مكتب</span></option>
-              </select>
-            </div>
-          </div>
-          <div class="input-group">
-            <label><span class="en">Expected Vacancy (days/yr)</span><span class="ar">الشغور المتوقع (أيام/سنة)</span></label>
-            <div class="input-wrap">
-              <input type="number" id="vacancy-days" value="18" min="0" max="365">
-              <span class="input-unit"><span class="en">days</span><span class="ar">يوم</span></span>
-            </div>
-          </div>
-        </div>
-
-        <div class="calc-section-title"><span class="en">Annual Expenses</span><span class="ar">النفقات السنوية</span></div>
-        <div class="expense-list">
-          <div class="expense-item">
-            <div class="expense-name">🔧 <span class="en">Maintenance & Repairs</span><span class="ar">الصيانة والإصلاحات</span></div>
-            <input type="number" class="expense-input" id="exp-maintenance" value="1" step="0.1">
-            <div class="expense-unit">% <span class="en">of value</span><span class="ar">من القيمة</span></div>
-          </div>
-          <div class="expense-item">
-            <div class="expense-name"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>‍<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg> <span class="en">Management Fee</span><span class="ar">رسوم الإدارة</span></div>
-            <input type="number" class="expense-input" id="exp-management" value="8" step="0.5">
-            <div class="expense-unit">% <span class="en">of rent</span><span class="ar">من الإيجار</span></div>
-          </div>
-          <div class="expense-item">
-            <div class="expense-name">🏛️ <span class="en">Property Tax / Fees</span><span class="ar">الضرائب والرسوم</span></div>
-            <input type="number" class="expense-input" id="exp-tax" value="0">
-            <div class="expense-unit">SAR/yr</div>
-          </div>
-          <div class="expense-item">
-            <div class="expense-name"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 22s8-4 8-10V6l-8-4-8 4v6c0 6 8 10 8 10z"/></svg>️ <span class="en">Insurance</span><span class="ar">التأمين</span></div>
-            <input type="number" class="expense-input" id="exp-insurance" value="0.15" step="0.05">
-            <div class="expense-unit">% <span class="en">of value</span><span class="ar">من القيمة</span></div>
-          </div>
-          <div class="expense-item">
-            <div class="expense-name"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg> <span class="en">Utilities (if landlord pays)</span><span class="ar">الخدمات (إن دفعها المالك)</span></div>
-            <input type="number" class="expense-input" id="exp-utilities" value="0">
-            <div class="expense-unit">SAR/yr</div>
-          </div>
-          <div class="expense-item">
-            <div class="expense-name"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg> <span class="en">Other Expenses</span><span class="ar">نفقات أخرى</span></div>
-            <input type="number" class="expense-input" id="exp-other" value="0">
-            <div class="expense-unit">SAR/yr</div>
-          </div>
-        </div>
-
-        <button class="calc-btn" onclick="calculateYield()">
-          <span class="en"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> Calculate Rental Yield</span>
-          <span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> احسب العائد الإيجاري</span>
-        </button>
-
-        <!-- RESULTS -->
-        <div class="results-section" id="results-section">
-          <hr class="results-divider">
-
-          <div class="yield-cards">
-            <div class="yield-card gross">
-              <div class="yield-pct"><span id="r-gross">, </span>%</div>
-              <div class="yield-label"><span class="en">Gross Yield</span><span class="ar">العائد الإجمالي</span></div>
-              <div class="yield-rating" id="gross-rating">, </div>
-            </div>
-            <div class="yield-card net">
-              <div class="yield-pct"><span id="r-net">, </span>%</div>
-              <div class="yield-label"><span class="en">Net Yield</span><span class="ar">العائد الصافي</span></div>
-              <div class="yield-rating" id="net-rating">, </div>
-            </div>
-          </div>
-
-          <div class="summary-list">
-            <div class="summary-item">
-              <div class="summary-label"><span class="en">Annual Gross Income</span><span class="ar">الدخل الإجمالي السنوي</span></div>
-              <div class="summary-value positive" id="s-gross-income">, </div>
-            </div>
-            <div class="summary-item">
-              <div class="summary-label"><span class="en">Vacancy Loss</span><span class="ar">خسارة الشغور</span></div>
-              <div class="summary-value negative" id="s-vacancy">, </div>
-            </div>
-            <div class="summary-item">
-              <div class="summary-label"><span class="en">Effective Gross Income</span><span class="ar">الدخل الإجمالي الفعلي</span></div>
-              <div class="summary-value positive" id="s-egi">, </div>
-            </div>
-            <div class="summary-item">
-              <div class="summary-label"><span class="en">Total Annual Expenses</span><span class="ar">إجمالي النفقات السنوية</span></div>
-              <div class="summary-value negative" id="s-expenses">, </div>
-            </div>
-            <div class="summary-item" style="background:var(--blue-light);border-radius:8px;margin-top:8px">
-              <div class="summary-label" style="font-weight:700;color:var(--blue)"><span class="en">Net Operating Income (NOI)</span><span class="ar">صافي الدخل التشغيلي</span></div>
-              <div class="summary-value" style="color:var(--blue);font-size:1.1rem" id="s-noi">, </div>
-            </div>
-          </div>
-
-          <!-- EXPENSE BREAKDOWN -->
-          <div class="expense-breakdown">
-            <div style="font-size:.85rem;font-weight:700;color:var(--text-main);margin-bottom:12px"><span class="en"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> Expense Breakdown</span><span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> تفصيل النفقات</span></div>
-            <div class="expense-bars" id="expense-bars"></div>
-          </div>
-
-          <!-- SAVE FOR COMPARISON -->
-          <button class="calc-btn" style="background:linear-gradient(135deg,#065F46,#047857);margin-top:8px" onclick="saveForComparison()">
-            <span class="en">+ Add to Property Comparison</span>
-            <span class="ar">+ أضف لمقارنة العقارات</span>
-          </button>
-        </div>
-
+  <!-- RY-GRID: Info Cards -->
+  <div class="ry-grid tool-rv tool-rv-1">
+    <div class="ry-gc">
+      <div class="ry-gc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+      <div class="ry-gc-text">
+        <div class="ry-gc-label"><span class="en">Gross Yield</span><span class="ar">العائد الإجمالي</span></div>
+        <div class="ry-gc-value"><span class="en">Quick ROI</span><span class="ar">عائد سريع</span></div>
       </div>
     </div>
-
-    <!-- AD ZONE 1 -->
-    <div class="ad-zone reveal"><span class="ad-label">ADVERTISEMENT</span></div>
-
-    <!-- COMPARISON SECTION -->
-    <div style="margin-top:32px" class="reveal">
-      <div class="section-label"><span class="en">Property Comparison</span><span class="ar">مقارنة العقارات</span></div>
-      <div class="section-h2"><span class="en">Compare Up to 3 Properties</span><span class="ar">قارن حتى 3 عقارات</span></div>
-      <div class="comparison-grid" id="comparison-grid">
-        <div class="comp-card" style="border:1.5px dashed var(--border);display:flex;align-items:center;justify-content:center;min-height:200px;color:var(--text-sub);font-size:.875rem">
-          <div style="text-align:center">
-            <div style="font-size:2rem;margin-bottom:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 4l9 5.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-5h4v5h4a1 1 0 0 0 1-1v-9"/></svg></div>
-            <span class="en">Calculate a property above and click "Add to Comparison"</span>
-            <span class="ar">احسب عقاراً أعلاه وانقر "أضف للمقارنة"</span>
-          </div>
-        </div>
+    <div class="ry-gc">
+      <div class="ry-gc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v12"/><path d="M8 10h8"/></svg></div>
+      <div class="ry-gc-text">
+        <div class="ry-gc-label"><span class="en">Net Yield</span><span class="ar">العائد الصافي</span></div>
+        <div class="ry-gc-value"><span class="en">After Expenses</span><span class="ar">بعد النفقات</span></div>
       </div>
     </div>
-
-    <!-- FAQ -->
-    <div style="margin-top:40px" class="reveal">
-      <div class="section-label"><span class="en">Questions</span><span class="ar">أسئلة</span></div>
-      <div class="section-h2"><span class="en">Frequently Asked Questions</span><span class="ar">الأسئلة المتكررة</span></div>
-      <div class="faq-list">
-        <div class="faq-item">
-          <div class="faq-q" onclick="toggleFAQ(this)">
-            <span><span class="en">What is a good rental yield in Saudi Arabia?</span><span class="ar">ما هو العائد الإيجاري الجيد في السعودية؟</span></span>
-            <span class="faq-arrow">▼</span>
-          </div>
-          <div class="faq-a">
-            <span class="en">In Saudi Arabia, a gross rental yield of 5–8% is generally considered good. Riyadh's prime districts (Al Olaya, Al Malqa) typically yield 5–7%, while Jeddah Corniche yields 4–6%. Commercial properties often yield higher at 7–10%. Compare with Saudi bank deposit rates (~4.5%) to assess opportunity cost.</span>
-            <span class="ar">في السعودية، يُعدّ العائد الإيجاري الإجمالي بين 5-8% جيداً عموماً. تحقق أحياء الرياض الرئيسية (العليا، الملقا) عادةً 5-7%، بينما يحقق كورنيش جدة 4-6%. كثيراً ما تحقق العقارات التجارية عائداً أعلى يتراوح بين 7-10%. قارن مع أسعار الودائع البنكية السعودية (~4.5%) لتقييم تكلفة الفرصة البديلة.</span>
-          </div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="toggleFAQ(this)">
-            <span><span class="en">What is the difference between gross and net rental yield?</span><span class="ar">ما الفرق بين العائد الإجمالي والصافي؟</span></span>
-            <span class="faq-arrow">▼</span>
-          </div>
-          <div class="faq-a">
-            <span class="en"><strong>Gross yield</strong> = (Annual Rent / Property Price) × 100. Simple and useful for quick comparisons. <strong>Net yield</strong> subtracts all expenses (maintenance, management fees, insurance, vacancy, taxes) from gross income before dividing by property value. Net yield is more accurate and is typically 1–3% lower than gross yield.</span>
-            <span class="ar"><strong>العائد الإجمالي</strong> = (الإيجار السنوي / سعر العقار) × 100. بسيط ومفيد للمقارنة السريعة. <strong>العائد الصافي</strong> يطرح جميع النفقات (الصيانة، رسوم الإدارة، التأمين، الشغور، الضرائب) من الدخل الإجمالي قبل القسمة على قيمة العقار. العائد الصافي أكثر دقة وعادةً ما يكون أقل بـ1-3% من الإجمالي.</span>
-          </div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="toggleFAQ(this)">
-            <span><span class="en">Are there taxes on rental income in Saudi Arabia?</span><span class="ar">هل هناك ضرائب على الإيجار في السعودية؟</span></span>
-            <span class="faq-arrow">▼</span>
-          </div>
-          <div class="faq-a">
-            <span class="en">Saudi citizens are generally not subject to income tax on rental income. However, there is a Real Estate Transaction Tax (RETT) of 5% on property sales, and VAT of 15% applies to commercial property rentals. Expatriate investors should consult a tax advisor. There is also a 2.5% Zakat applicable to some property holdings.</span>
-            <span class="ar">لا يخضع المواطنون السعوديون عموماً لضريبة الدخل على الإيجار. ومع ذلك، تُطبَّق ضريبة التصرفات العقارية بنسبة 5% على مبيعات العقارات، وتُطبَّق ضريبة القيمة المضافة بنسبة 15% على إيجارات العقارات التجارية. يجب على المستثمرين الأجانب استشارة مستشار ضريبي. كما تُطبَّق الزكاة بنسبة 2.5% على بعض حيازات العقارات.</span>
-          </div>
-        </div>
+    <div class="ry-gc">
+      <div class="ry-gc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+      <div class="ry-gc-text">
+        <div class="ry-gc-label"><span class="en">Compare</span><span class="ar">مقارنة</span></div>
+        <div class="ry-gc-value"><span class="en">Up to 3 Properties</span><span class="ar">حتى 3 عقارات</span></div>
       </div>
     </div>
-
-  </div><!-- /main -->
-
-  <!-- SIDEBAR -->
-  <div class="sidebar">
-
-    <!-- SAUDI MARKET BENCHMARKS -->
-    <div class="side-card reveal">
-      <div class="side-header"><h3><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> <span class="en">Saudi Market Yields 2025</span><span class="ar">عوائد السوق السعودي 2025</span></h3></div>
-      <div class="side-body" style="padding:0">
-        <table class="benchmark-table">
-          <thead>
-            <tr>
-              <th><span class="en">Area / Type</span><span class="ar">المنطقة / النوع</span></th>
-              <th><span class="en">Gross Yield</span><span class="ar">العائد الإجمالي</span></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td><strong>Riyadh, Al Olaya</strong></td><td><span class="yield-pill yp-mid">5–6%</span></td></tr>
-            <tr><td><strong>Riyadh, Al Malqa</strong></td><td><span class="yield-pill yp-mid">5.5–7%</span></td></tr>
-            <tr><td><strong>Riyadh, Hittin</strong></td><td><span class="yield-pill yp-mid">4.5–6%</span></td></tr>
-            <tr><td><strong>Jeddah, Al Rawdah</strong></td><td><span class="yield-pill yp-mid">5–6.5%</span></td></tr>
-            <tr><td><strong>Jeddah, Corniche</strong></td><td><span class="yield-pill yp-low">4–5.5%</span></td></tr>
-            <tr><td><strong>Commercial, Riyadh</strong></td><td><span class="yield-pill yp-high">7–10%</span></td></tr>
-            <tr><td><strong>Industrial</strong></td><td><span class="yield-pill yp-high">8–12%</span></td></tr>
-          </tbody>
-        </table>
-        <p style="padding:10px 16px;font-size:.72rem;color:var(--text-sub)">
-          <span class="en">*Indicative gross yields. Market conditions vary.</span>
-          <span class="ar">*عوائد إجمالية استرشادية. تتباين الظروف السوقية.</span>
-        </p>
+    <div class="ry-gc">
+      <div class="ry-gc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+      <div class="ry-gc-text">
+        <div class="ry-gc-label"><span class="en">RICS Method</span><span class="ar">طريقة RICS</span></div>
+        <div class="ry-gc-value"><span class="en">Standard</span><span class="ar">قياسية</span></div>
       </div>
     </div>
-
-    <!-- AD ZONE 2 -->
-    <div class="ad-zone reveal"><span class="ad-label">ADVERTISEMENT</span></div>
-
-    <!-- YIELD RATING GUIDE -->
-    <div class="side-card reveal">
-      <div class="side-header"><h3>⭐ <span class="en">Yield Rating Guide</span><span class="ar">دليل تقييم العائد</span></h3></div>
-      <div class="side-body">
-        <div style="display:flex;flex-direction:column;gap:8px">
-          <div style="display:flex;align-items:center;gap:10px;padding:8px;background:var(--body-bg);border-radius:6px">
-            <span class="yield-pill yp-high" style="padding:4px 10px">8%+</span>
-            <span style="font-size:.8rem;color:var(--text-sub)"><span class="en">Excellent, Strong investment</span><span class="ar">ممتاز، استثمار قوي</span></span>
-          </div>
-          <div style="display:flex;align-items:center;gap:10px;padding:8px;background:var(--body-bg);border-radius:6px">
-            <span class="yield-pill yp-mid" style="padding:4px 10px">5–8%</span>
-            <span style="font-size:.8rem;color:var(--text-sub)"><span class="en">Good, Market average</span><span class="ar">جيد، متوسط السوق</span></span>
-          </div>
-          <div style="display:flex;align-items:center;gap:10px;padding:8px;background:var(--body-bg);border-radius:6px">
-            <span class="yield-pill yp-low" style="padding:4px 10px">3–5%</span>
-            <span style="font-size:.8rem;color:var(--text-sub)"><span class="en">Fair, Below market</span><span class="ar">مقبول، أقل من السوق</span></span>
-          </div>
-          <div style="display:flex;align-items:center;gap:10px;padding:8px;background:var(--body-bg);border-radius:6px">
-            <span class="yield-pill yp-low" style="padding:4px 10px">&lt;3%</span>
-            <span style="font-size:.8rem;color:var(--text-sub)"><span class="en">Poor, Consider alternatives</span><span class="ar">ضعيف، فكّر في البدائل</span></span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- AD ZONE 3 -->
-    <div class="ad-zone reveal"><span class="ad-label">ADVERTISEMENT</span></div>
-
-  </div><!-- /sidebar -->
-</main>
-
-<!-- RELATED -->
-<div class="related-section reveal">
-  <div class="section-label"><span class="en">More Real Estate Tools</span><span class="ar">أدوات عقارية أخرى</span></div>
-  <div class="section-h2"><span class="en">Related Calculators</span><span class="ar">حاسبات ذات صلة</span></div>
-  <div class="related-grid">
-    <a href="/tools/mortgage-calculator.html" class="related-card">
-      <div class="rc-icon"><span aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 12h.01"/><path d="M16 12h.01"/><path d="M12 12h.01"/></svg></span></div>
-      <div class="rc-title"><span class="en">Mortgage Calculator</span><span class="ar">حاسبة التمويل العقاري</span></div>
-      <div class="rc-desc"><span class="en">Monthly payments, REDF, amortization</span><span class="ar">القسط الشهري والصندوق وجدول السداد</span></div>
-    </a>
-    <a href="../real-estate.html" class="related-card">
-      <div class="rc-icon"><span aria-hidden="true">🏙️</span></div>
-      <div class="rc-title"><span class="en">All Real Estate Tools</span><span class="ar">جميع الأدوات العقارية</span></div>
-      <div class="rc-desc"><span class="en">Property value, area converter, ROI</span><span class="ar">قيمة العقار ومحول المساحة والعائد</span></div>
-    </a>
-    <a href="/tools/calorie-calculator.html" class="related-card">
-      <div class="rc-icon"><span aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></span></div>
-      <div class="rc-title"><span class="en">Calorie Calculator</span><span class="ar">حاسبة السعرات</span></div>
-      <div class="rc-desc"><span class="en">BMR & TDEE with macros</span><span class="ar">معدل الحرق وتوزيع المغذيات</span></div>
-    </a>
   </div>
-</div>
+
+  <!-- RC-CARD: Calculator Card -->
+  <div class="rc-card tool-cd tool-rv tool-rv-2">
+    <div class="rc-hdr">
+      <h2>
+        <span class="en"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 4l9 5.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-5h4v5h4a1 1 0 0 0 1-1v-9"/></svg> Property Details</span>
+        <span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 4l9 5.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-5h4v5h4a1 1 0 0 0 1-1v-9"/></svg> تفاصيل العقار</span>
+      </h2>
+      <p><span class="en">Enter your property details to calculate gross and net rental yield</span><span class="ar">أدخل تفاصيل عقارك لحساب العائد الإيجاري الإجمالي والصافي</span></p>
+    </div>
+    <div class="rc-body">
+
+      <!-- Property Inputs -->
+      <div class="ry-g2">
+        <div class="ry-fl">
+          <label class="tool-fl-l" for="prop-value"><span class="en">Property Value (SAR)</span><span class="ar">قيمة العقار (ريال)</span></label>
+          <div class="tool-fl-r">
+            <input type="number" id="prop-value" value="800000" min="0">
+            <span class="tool-fl-u">SAR</span>
+          </div>
+        </div>
+        <div class="ry-fl">
+          <label class="tool-fl-l" for="monthly-rent"><span class="en">Monthly Rent (SAR)</span><span class="ar">الإيجار الشهري (ريال)</span></label>
+          <div class="tool-fl-r">
+            <input type="number" id="monthly-rent" value="4500" min="0">
+            <span class="tool-fl-u">SAR</span>
+          </div>
+        </div>
+        <div class="ry-fl">
+          <label class="tool-fl-l" for="prop-type"><span class="en">Property Type</span><span class="ar">نوع العقار</span></label>
+          <div class="tool-fl-r">
+            <select id="prop-type" onchange="setTypeDefaults()">
+              <option value="apartment"><span class="en">Apartment</span><span class="ar">شقة</span></option>
+              <option value="villa"><span class="en">Villa / House</span><span class="ar">فيلا / منزل</span></option>
+              <option value="commercial"><span class="en">Commercial</span><span class="ar">تجاري</span></option>
+              <option value="office"><span class="en">Office</span><span class="ar">مكتب</span></option>
+            </select>
+          </div>
+        </div>
+        <div class="ry-fl">
+          <label class="tool-fl-l" for="vacancy-days"><span class="en">Expected Vacancy (days/yr)</span><span class="ar">الشغور المتوقع (أيام/سنة)</span></label>
+          <div class="tool-fl-r">
+            <input type="number" id="vacancy-days" value="18" min="0" max="365">
+            <span class="tool-fl-u"><span class="en">days</span><span class="ar">يوم</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Expenses Section -->
+      <div class="re-section">
+        <div class="re-label">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          <span class="en">Annual Expenses</span><span class="ar">النفقات السنوية</span>
+        </div>
+        <div class="re-grid">
+          <div class="re-item">
+            <div class="re-name"><span class="en">🔧 Maintenance</span><span class="ar">🔧 الصيانة</span></div>
+            <div class="re-inp-wrap">
+              <input type="number" class="re-inp" id="exp-maintenance" value="1" step="0.1">
+              <span class="re-unit">% <span class="en">of value</span><span class="ar">من القيمة</span></span>
+            </div>
+          </div>
+          <div class="re-item">
+            <div class="re-name"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> <span class="en">Management Fee</span><span class="ar">رسوم الإدارة</span></div>
+            <div class="re-inp-wrap">
+              <input type="number" class="re-inp" id="exp-management" value="8" step="0.5">
+              <span class="re-unit">% <span class="en">of rent</span><span class="ar">من الإيجار</span></span>
+            </div>
+          </div>
+          <div class="re-item">
+            <div class="re-name"><span class="en">🏛️ Property Tax</span><span class="ar">🏛️ الضرائب</span></div>
+            <div class="re-inp-wrap">
+              <input type="number" class="re-inp" id="exp-tax" value="0">
+              <span class="re-unit">SAR/yr</span>
+            </div>
+          </div>
+          <div class="re-item">
+            <div class="re-name"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 22s8-4 8-10V6l-8-4-8 4v6c0 6 8 10 8 10z"/></svg> <span class="en">Insurance</span><span class="ar">التأمين</span></div>
+            <div class="re-inp-wrap">
+              <input type="number" class="re-inp" id="exp-insurance" value="0.15" step="0.05">
+              <span class="re-unit">% <span class="en">of value</span><span class="ar">من القيمة</span></span>
+            </div>
+          </div>
+          <div class="re-item">
+            <div class="re-name"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg> <span class="en">Utilities</span><span class="ar">الخدمات</span></div>
+            <div class="re-inp-wrap">
+              <input type="number" class="re-inp" id="exp-utilities" value="0">
+              <span class="re-unit">SAR/yr</span>
+            </div>
+          </div>
+          <div class="re-item">
+            <div class="re-name"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg> <span class="en">Other</span><span class="ar">أخرى</span></div>
+            <div class="re-inp-wrap">
+              <input type="number" class="re-inp" id="exp-other" value="0">
+              <span class="re-unit">SAR/yr</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Calculate Button -->
+      <button class="tool-btn" onclick="calculateYield()" style="margin-top:10px">
+        <span class="en"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> Calculate Rental Yield</span>
+        <span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> احسب العائد الإيجاري</span>
+      </button>
+
+    </div>
+  </div>
+
+  <!-- RR-CARD: Results -->
+  <div class="rr-card" id="results-section">
+    <div class="rr-hdr">
+      <h3>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        <span class="en">Yield Results</span><span class="ar">نتائج العائد</span>
+      </h3>
+      <span class="rr-badge"><span class="en">✓ Calculated</span><span class="ar">✓ تم الحساب</span></span>
+    </div>
+
+    <!-- Yield Cards -->
+    <div class="rr-yield-grid">
+      <div class="rr-yield-card rr-gross">
+        <div class="rr-yield-pct"><span id="r-gross">0.00</span>%</div>
+        <div class="rr-yield-lbl"><span class="en">Gross Yield</span><span class="ar">العائد الإجمالي</span></div>
+        <div class="rr-yield-rating" id="gross-rating">—</div>
+      </div>
+      <div class="rr-yield-card rr-net">
+        <div class="rr-yield-pct"><span id="r-net">0.00</span>%</div>
+        <div class="rr-yield-lbl"><span class="en">Net Yield</span><span class="ar">العائد الصافي</span></div>
+        <div class="rr-yield-rating" id="net-rating">—</div>
+      </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="rr-summary">
+      <div class="rr-summary-item">
+        <span class="rr-summary-lbl"><span class="en">Annual Gross Income</span><span class="ar">الدخل الإجمالي السنوي</span></span>
+        <span class="rr-summary-val rr-pos" id="s-gross-income">SAR 0</span>
+      </div>
+      <div class="rr-summary-item">
+        <span class="rr-summary-lbl"><span class="en">Vacancy Loss</span><span class="ar">خسارة الشغور</span></span>
+        <span class="rr-summary-val rr-neg" id="s-vacancy">−SAR 0</span>
+      </div>
+      <div class="rr-summary-item">
+        <span class="rr-summary-lbl"><span class="en">Effective Gross Income</span><span class="ar">الدخل الإجمالي الفعلي</span></span>
+        <span class="rr-summary-val rr-pos" id="s-egi">SAR 0</span>
+      </div>
+      <div class="rr-summary-item">
+        <span class="rr-summary-lbl"><span class="en">Total Annual Expenses</span><span class="ar">إجمالي النفقات السنوية</span></span>
+        <span class="rr-summary-val rr-neg" id="s-expenses">−SAR 0</span>
+      </div>
+      <div class="rr-summary-item rr-summary-noi">
+        <span class="rr-summary-lbl" style="font-weight:700"><span class="en">Net Operating Income (NOI)</span><span class="ar">صافي الدخل التشغيلي</span></span>
+        <span class="rr-summary-val" id="s-noi" style="color:var(--ry-teal);font-weight:800;font-size:1rem">SAR 0</span>
+      </div>
+    </div>
+
+    <!-- Expense Breakdown Bars -->
+    <div class="re-breakdown">
+      <div class="re-breakdown-title">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v12"/><path d="M8 10h8"/></svg>
+        <span class="en">Expense Breakdown</span><span class="ar">تفصيل النفقات</span>
+      </div>
+      <div class="re-breakdown-bars" id="expense-bars"></div>
+    </div>
+
+    <!-- Save for Comparison -->
+    <button class="rr-save-btn" onclick="saveForComparison()">
+      <span class="en">+ Add to Property Comparison</span>
+      <span class="ar">+ أضف لمقارنة العقارات</span>
+    </button>
+  </div>
+
+  <!-- COMPARISON SECTION -->
+  <div class="ry-compare tool-rv">
+    <div class="ry-compare-label"><span class="en">Property Comparison</span><span class="ar">مقارنة العقارات</span></div>
+    <h3 class="ry-compare-title"><span class="en">Compare Up to 3 Properties</span><span class="ar">قارن حتى 3 عقارات</span></h3>
+    <div class="ry-compare-grid" id="comparison-grid">
+      <div class="ry-comp-card ry-comp-empty" onclick="document.querySelector('.rc-card')?.scrollIntoView({behavior:'smooth'})">
+        <div class="ry-comp-empty-inner">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          <span><span class="en">Add your first property</span><span class="ar">أضف عقارك الأول</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RM-CARD: Method Note -->
+  <div class="rm-card tool-rv tool-rv-3">
+    <div class="rm-icon">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+    </div>
+    <div class="rm-content">
+      <h4><span class="en">How this is calculated</span><span class="ar">طريقة الحساب</span></h4>
+      <p><span class="en">Gross yield = Annual rent ÷ Property price. Net yield deducts management, maintenance & vacancy at standard GCC rates per RICS guidelines.</span>
+      <span class="ar">العائد الإجمالي = الإيجار السنوي ÷ سعر العقار. يخصم الصافي رسوم الإدارة والصيانة والشغور وفق معدلات خليجية قياسية.</span></p>
+    </div>
+  </div>
+
+  <!-- RF-SECTION: FAQ -->
+  <div class="rf-section tool-rv">
+    <div class="rf-label"><span class="en">Questions</span><span class="ar">أسئلة</span></div>
+    <h3 class="rf-title"><span class="en">Frequently Asked Questions</span><span class="ar">الأسئلة المتكررة</span></h3>
+    <div class="rf-list">
+      <div class="rf-item">
+        <div class="rf-q" onclick="toggleFAQ(this)">
+          <span><span class="en">What is a good rental yield in Saudi Arabia?</span><span class="ar">ما هو العائد الإيجاري الجيد في السعودية؟</span></span>
+          <span class="rf-arrow">▼</span>
+        </div>
+        <div class="rf-a">
+          <span class="en">In Saudi Arabia, a gross rental yield of 5–8% is generally considered good. Riyadh's prime districts (Al Olaya, Al Malqa) typically yield 5–7%, while Jeddah Corniche yields 4–6%. Commercial properties often yield higher at 7–10%. Compare with Saudi bank deposit rates (~4.5%) to assess opportunity cost.</span>
+          <span class="ar">في السعودية، يُعدّ العائد الإيجاري الإجمالي بين 5-8% جيداً عموماً. تحقق أحياء الرياض الرئيسية (العليا، الملقا) عادةً 5-7%، بينما يحقق كورنيش جدة 4-6%. كثيراً ما تحقق العقارات التجارية عائداً أعلى يتراوح بين 7-10%. قارن مع أسعار الودائع البنكية السعودية (~4.5%) لتقييم تكلفة الفرصة البديلة.</span>
+        </div>
+      </div>
+      <div class="rf-item">
+        <div class="rf-q" onclick="toggleFAQ(this)">
+          <span><span class="en">What is the difference between gross and net rental yield?</span><span class="ar">ما الفرق بين العائد الإجمالي والصافي؟</span></span>
+          <span class="rf-arrow">▼</span>
+        </div>
+        <div class="rf-a">
+          <span class="en"><strong>Gross yield</strong> = (Annual Rent / Property Price) × 100. Simple and useful for quick comparisons. <strong>Net yield</strong> subtracts all expenses (maintenance, management fees, insurance, vacancy, taxes) from gross income before dividing by property value. Net yield is more accurate and is typically 1–3% lower than gross yield.</span>
+          <span class="ar"><strong>العائد الإجمالي</strong> = (الإيجار السنوي / سعر العقار) × 100. بسيط ومفيد للمقارنة السريعة. <strong>العائد الصافي</strong> يطرح جميع النفقات (الصيانة، رسوم الإدارة، التأمين، الشغور، الضرائب) من الدخل الإجمالي قبل القسمة على قيمة العقار. العائد الصافي أكثر دقة وعادةً ما يكون أقل بـ1-3% من الإجمالي.</span>
+        </div>
+      </div>
+      <div class="rf-item">
+        <div class="rf-q" onclick="toggleFAQ(this)">
+          <span><span class="en">Are there taxes on rental income in Saudi Arabia?</span><span class="ar">هل هناك ضرائب على الإيجار في السعودية؟</span></span>
+          <span class="rf-arrow">▼</span>
+        </div>
+        <div class="rf-a">
+          <span class="en">Saudi citizens are generally not subject to income tax on rental income. However, there is a Real Estate Transaction Tax (RETT) of 5% on property sales, and VAT of 15% applies to commercial property rentals. Expatriate investors should consult a tax advisor. There is also a 2.5% Zakat applicable to some property holdings.</span>
+          <span class="ar">لا يخضع المواطنون السعوديون عموماً لضريبة الدخل على الإيجار. ومع ذلك، تُطبَّق ضريبة التصرفات العقارية بنسبة 5% على مبيعات العقارات، وتُطبَّق ضريبة القيمة المضافة بنسبة 15% على إيجارات العقارات التجارية. يجب على المستثمرين الأجانب استشارة مستشار ضريبي. كما تُطبَّق الزكاة بنسبة 2.5% على بعض حيازات العقارات.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RO-SECTION: Related Tools -->
+  <div class="ro-section tool-rv">
+    <div class="ro-section-label">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+      <span class="en">Continue Your Journey</span><span class="ar">أكمل رحلتك</span>
+    </div>
+    <h3 class="ro-section-title"><span class="en">Related Tools & Guides</span><span class="ar">أدوات ودلائل ذات صلة</span></h3>
+    <p class="ro-section-sub"><span class="en">Tools and reading you might find useful next</span><span class="ar">أدوات وقراءات قد تفيدك في خطوتك التالية</span></p>
+    <div class="ro-section-grid">
+      <a href="/tools/mortgage-calculator.html" class="ro-card" aria-label="Mortgage Calculator">
+        <div class="ro-card-top">
+          <span class="ro-card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 4l9 5.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-5h4v5h4a1 1 0 0 0 1-1v-9"/></svg></span>
+          <div>
+            <div class="ro-card-name en">Mortgage Calculator</div>
+            <div class="ro-card-name ar">حاسبة التمويل العقاري</div>
+          </div>
+        </div>
+        <div class="ro-card-desc en">Monthly payment &amp; amortization</div>
+        <div class="ro-card-desc ar">قسط التمويل والجدول الزمني</div>
+        <div class="ro-card-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
+      </a>
+      <a href="/tools/roi-calculator.html" class="ro-card" aria-label="Property ROI Calculator">
+        <div class="ro-card-top">
+          <span class="ro-card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v12"/><path d="M8 10h4a2 2 0 0 1 0 4H8"/></svg></span>
+          <div>
+            <div class="ro-card-name en">Property ROI Calculator</div>
+            <div class="ro-card-name ar">حاسبة العائد على الاستثمار</div>
+          </div>
+        </div>
+        <div class="ro-card-desc en">Full ROI with Saudi fees</div>
+        <div class="ro-card-desc ar">عائد الاستثمار مع الرسوم السعودية</div>
+        <div class="ro-card-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
+      </a>
+      <a href="/tools/zakat-calculator.html" class="ro-card" aria-label="Zakat Calculator">
+        <div class="ro-card-top">
+          <span class="ro-card-icon">☪️</span>
+          <div>
+            <div class="ro-card-name en">Zakat Calculator</div>
+            <div class="ro-card-name ar">حاسبة الزكاة</div>
+          </div>
+        </div>
+        <div class="ro-card-desc en">Annual zakat on all asset types</div>
+        <div class="ro-card-desc ar">زكاة جميع أنواع المال</div>
+        <div class="ro-card-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
+      </a>
+      <a href="/guides/saudi-real-estate-investing.html" class="ro-card ro-card-guide" aria-label="Real Estate Investing Guide">
+        <div class="ro-card-top">
+          <span class="ro-card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/></svg></span>
+          <div>
+            <div class="ro-card-name en">Real Estate Investing Guide</div>
+            <div class="ro-card-name ar">دليل الاستثمار العقاري</div>
+          </div>
+        </div>
+        <div class="ro-card-desc en">Saudi market analysis 2026</div>
+        <div class="ro-card-desc ar">تحليل السوق السعودي 2026</div>
+        <div class="ro-card-cta"><span class="en">Read guide →</span><span class="ar">اقرأ الدليل ←</span></div>
+      </a>
+    </div>
+  </div>
+
+</main>
 
 <div class="dfl-ad dfl-ad-inline" data-slot="dfl-inline-1">
   <!-- AdSense: ca-pub-XXXXXXXXXXXXXXXX / slot: inline-content -->
@@ -744,44 +781,7 @@ const ro=new IntersectionObserver(entries=>{
 document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 </script>
 
-<div class="container" style="max-width:1200px;margin:0 auto;padding:0 24px 0">
-<div class="dfl-method">
-  <div class="dfl-method-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> <span class="en">How this is calculated</span><span class="ar">طريقة الحساب</span></div>
-  <p class="en">Gross yield = Annual rent ÷ Property price. Net yield deducts management, maintenance & vacancy at standard GCC rates per RICS guidelines.</p>
-  <p class="ar">العائد الإجمالي = الإيجار السنوي ÷ سعر العقار. يخصم الصافي رسوم الإدارة والصيانة والشغور وفق معدلات خليجية قياسية.</p>
-</div>
-</div>
 
-<!-- ═══ RELATED TOOLS ═══════════════════════════════════════════════════════ -->
-<section class="dfl-related" aria-label="Related tools and guides">
-  <div class="container">
-    <div class="dfl-related-label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg> <span class="en">Continue Your Journey</span><span class="ar">أكمل رحلتك</span></div>
-    <h2 class="dfl-related-title"><span class="en">Related Tools & Guides</span><span class="ar">أدوات ودلائل ذات صلة</span></h2>
-    <p class="dfl-related-sub"><span class="en">Tools and reading you might find useful next</span><span class="ar">أدوات وقراءات قد تفيدك في خطوتك التالية</span></p>
-    <div class="dfl-related-grid">
-      <a href="/tools/mortgage-calculator.html" class="dfl-rc" aria-label="Mortgage Calculator">
-        <div class="dfl-rc-top"><span class="dfl-rc-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 4l9 5.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-5h4v5h4a1 1 0 0 0 1-1v-9"/></svg></span><div><div class="dfl-rc-name en">Mortgage Calculator</div><div class="dfl-rc-name ar">حاسبة التمويل العقاري</div></div></div>
-        <div class="dfl-rc-desc en">Monthly payment & amortization</div><div class="dfl-rc-desc ar">قسط التمويل والجدول الزمني</div>
-        <div class="dfl-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
-      </a>
-      <a href="/tools/roi-calculator.html" class="dfl-rc" aria-label="Property ROI Calculator">
-        <div class="dfl-rc-top"><span class="dfl-rc-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v12"/><path d="M8 10h4a2 2 0 0 1 0 4H8"/></svg></span><div><div class="dfl-rc-name en">Property ROI Calculator</div><div class="dfl-rc-name ar">حاسبة العائد على الاستثمار</div></div></div>
-        <div class="dfl-rc-desc en">Full ROI with Saudi fees</div><div class="dfl-rc-desc ar">عائد الاستثمار مع الرسوم</div>
-        <div class="dfl-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
-      </a>
-      <a href="/tools/zakat-calculator.html" class="dfl-rc" aria-label="Zakat Calculator">
-        <div class="dfl-rc-top"><span class="dfl-rc-icon" aria-hidden="true">☪️</span><div><div class="dfl-rc-name en">Zakat Calculator</div><div class="dfl-rc-name ar">حاسبة الزكاة</div></div></div>
-        <div class="dfl-rc-desc en">Annual zakat on all asset types</div><div class="dfl-rc-desc ar">زكاة جميع أنواع المال</div>
-        <div class="dfl-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
-      </a>
-      <a href="../guides/saudi-real-estate-investing.html" class="dfl-rc guide" aria-label="Real Estate Investing Guide">
-        <div class="dfl-rc-top"><span class="dfl-rc-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/></svg></span><div><div class="dfl-rc-name en">Real Estate Investing Guide</div><div class="dfl-rc-name ar">دليل الاستثمار العقاري</div></div></div>
-        <div class="dfl-rc-desc en">Saudi market analysis 2026</div><div class="dfl-rc-desc ar">تحليل السوق السعودي 2026</div>
-        <div class="dfl-rc-cta"><span class="en">Read guide →</span><span class="ar">اقرأ الدليل ←</span></div>
-      </a>
-    </div>
-  </div>
-</section>
 
 <script>
 /* ── Phase 2A Global Micro-interaction Utilities ──────────────────────────── */
