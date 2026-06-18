@@ -311,3 +311,150 @@ Added `style="display:grid;..."` as an **inline fallback** on the `.article-layo
 4. **Tags must match article language**: English tags (`#realestate`) on Arabic articles look unprofessional. Use Arabic tags (`#عقار`).
 5. **Close all HTML tags**: Ensure `<article>`, `<div>`, and other container tags are properly closed. Browsers may auto-close, but this affects DOM structure.
 6. **Section numbering must be sequential**: Articles with headings like "Section 1, Section 3, Section 2, Section 5" confuse readers. Always check section order.
+
+---
+
+# Batch 4 — Full BOOM Compliance for 6 Articles
+
+## تاريخ التسجيل: 2026-06-08
+
+---
+
+## المشكلة (Issue)
+
+### Old-style articles missing BOOM components
+**الملفات المتأثرة:** 6 articles × 2 versions (AR + EN) = 12 files
+
+| # | Article | Description |
+|---|---------|-------------|
+| 1 | `saudi-mortgage-guide-2025` | دليل التمويل العقاري |
+| 2 | `gcc-family-budget-2025` | ميزانية الأسرة الخليجية |
+| 3 | `hajj-umrah-guide-2025` | دليل الحج والعمرة |
+| 4 | `zakat-guide-2025` | دليل الزكاة |
+| 5 | `salalah-travel-guide-2025` | دليل السفر إلى صلالة |
+| 6 | `makkah-hotels-guide` | دليل فنادق مكة |
+
+**السبب الجذري:** These articles were created with an **old template** that lacked:
+- `article-layout` two-column grid (no sidebar at all)
+- `article-main` wrapper
+- `<aside>` sidebar with TOC, Related, Tools modules
+- `article-end` sections (CTA, read-also, share, tags, friday-cta)
+- Inline `display:grid` fallback
+- Heading `id` attributes for TOC linking
+- Arabic tags on Arabic version
+
+### Type B mixed content (gcc-family-budget-2025 AR)
+**الملف المتأثر:** `blog/gcc-family-budget-2025.html` — AR version had 236 English words
+
+**السبب الجذري:** Like Batch 3 Type B articles, this article had supplementary English content ("Key Insights — Citation-Ready", "Practical Decision Framework", etc.) that was not wrapped in bilingual `<span class="en">`/`<span class="ar">` pairs. The content-based filtering was needed to remove English-only text segments.
+
+---
+
+## الإصلاح (Fix Applied)
+
+### Fix 1: Complete HTML restructuring
+For each article, the old structure:
+```html
+<div class="article-wrap">
+  <section class="article-banner">...</section>
+  <article class="article-body">...</article>
+</div>
+```
+Was replaced with:
+```html
+<div class="article-wrap">
+  <section class="article-banner">...</section>
+  <div class="article-layout" style="display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:2.5rem">
+    <main class="article-main">
+      <article class="article-body">
+        [ARABIC or ENGLISH content]
+      </article>
+      <div class="article-end">
+        [SHARE] [CTA] [READ-ALSO] [FRIDAY-CTA] [TAGS]
+      </div>
+    </main>
+    <aside class="article-sidebar">
+      [TEAM CARD] [TOC] [RELATED] [TOOLS]
+    </aside>
+  </div>
+</div>
+```
+
+### Fix 2: Content extraction from bilingual spans
+Used the same proven regex extraction:
+```python
+# Extract Arabic
+cleaned = re.sub(r'<span class="en">(.*?)</span>\s*<span class="ar">(.*?)</span>', r'\2', body)
+# Extract English
+cleaned = re.sub(r'<span class="en">(.*?)</span>\s*<span class="ar">(.*?)</span>', r'\1', body)
+```
+
+### Fix 3: Tag-aware content filtering (gcc-family-budget)
+Applied the same tag-aware segmentation approach from Batch 3 to remove English-only text:
+- Split HTML into tag/text segments via `re.split(r'(<[^>]*>)', body)`
+- For AR articles: keep segments with Arabic chars, drop English-only segments >15 chars
+- Result: 236 EN words → 7 EN words (HTML attributes only)
+
+### Fix 4: Automated TOC generation
+For each article, script extracts all `<h2>` headings, generates Arabic-safe `id` attributes, and populates:
+- `id` on each `<h2>` tag in the body
+- TOC sidebar module with matching `<a href="#id">` links
+
+### Fix 5: Topic-appropriate metadata
+Each article configured with:
+- **CTA**: Topic-appropriate tool links (mortgage calculator, travel budget, zakat calculator, etc.)
+- **Sidebar tools**: 3 topic-appropriate tool links per article
+- **Related articles**: 3 links to related content (different from the article itself)
+- **Tags**: Arabic for AR versions, English for EN versions
+
+---
+
+## Results
+
+| File | AR Chars | EN Words | Grid | TOC | CTA | Status |
+|------|----------|----------|------|-----|-----|--------|
+| saudi-mortgage-guide-2025 AR | 5,795 | 7 | ✅ | ✅ | ✅ | ✅ |
+| saudi-mortgage-guide-2025 EN | 0 | 1,444 | ✅ | ✅ | ✅ | ✅ |
+| gcc-family-budget-2025 AR | 6,228 | 7 | ✅ | ✅ | ✅ | ✅ |
+| gcc-family-budget-2025 EN | 0 | 1,252 | ✅ | ✅ | ✅ | ✅ |
+| hajj-umrah-guide-2025 AR | 5,251 | 5 | ✅ | ✅ | ✅ | ✅ |
+| hajj-umrah-guide-2025 EN | 0 | 1,311 | ✅ | ✅ | ✅ | ✅ |
+| zakat-guide-2025 AR | 4,055 | 5 | ✅ | ✅ | ✅ | ✅ |
+| salalah-travel-guide-2025 AR | 4,529 | 0 | ✅ | ✅ | ✅ | ✅ |
+| makkah-hotels-guide AR | 4,624 | 1 | ✅ | ✅ | ✅ | ✅ |
+
+*Remaining EN in AR files are HTML attribute values (itemprop, svg, etc.) — not visible text.*
+
+---
+
+## BOOM Checklist — Batch 4
+
+| # | BOOM Point | Status |
+|---|-----------|--------|
+| 1 | File naming | ✅ |
+| 2 | canonical/hreflang/og:url | ✅ |
+| 3 | articles.json/sitemap.xml | ✅ |
+| 4 | article-layout structure | ✅ (NEW — added from scratch) |
+| 5 | No bilingual spans | ✅ (extracted correctly) |
+| 6 | Monolingual header/footer | ✅ |
+| 7 | Fixed inline script | ✅ |
+| 8 | Lang-toggle | ✅ |
+| 9 | FAQ as faq-question/faq-answer | ✅ |
+| 10 | HTTP 200 | ✅ |
+| 11 | Suitable image | ✅ |
+| 12 | Sidebar populated | ✅ (TOC + Related + Tools) |
+| 13 | Article-end sections | ✅ (CTA + Read-also + Tags + Share + Friday) |
+| 14 | Clean body HTML | ✅ (no malformed tags, no mixed content) |
+| 15 | Inline grid fallback | ✅ |
+| 16 | Heading ids for TOC | ✅ |
+
+---
+
+## الدروس المستفادة (Lessons Learned)
+
+1. **Old templates may lack entire sections**: Some articles were created without article-layout, sidebar, or article-end. These need full HTML restructuring, not just content replacement.
+2. **Div balance must be verified**: When replacing sections of HTML, always check that `<div>` open/close counts match. Use a script to verify after every transformation.
+3. **Type B mixed content persists**: Even in Type A articles, supplementary English content (callouts, "Key Insights" boxes) may not be wrapped in bilingual spans. Content-based filtering is needed as a second pass.
+4. **Automated TOC is possible**: By extracting h2 headings and generating Arabic-safe ids, we can automatically populate the TOC sidebar without manual data entry.
+5. **Article-level configuration is essential**: Each article needs topic-appropriate CTA, tools, and related links. A configuration dictionary per article keeps everything organized.
+6. **Verify on live after deployment**: GitHub Pages + Cloudflare caching can serve stale versions. Always verify with cache-busting headers after deployment.
