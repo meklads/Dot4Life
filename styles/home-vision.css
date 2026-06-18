@@ -45,9 +45,19 @@ body.index-page .core-section--pillars > .section-head,
 body.index-page .core-section--pillars > .pillar-grid,
 body.index-page .core-section--pillars > .pillar-more,
 body.index-page #morning-moment.core-peace-moment,
-body.index-page #daily-home.core-peace-daily,
-body.index-page .home-feed-section,
-body.index-page #friday-letter {
+body.index-page #daily-home.core-peace-daily {
+  max-width: var(--hp-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--hp-gutter);
+  padding-right: var(--hp-gutter);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+body.index-page .home-feed-section .section-head,
+body.index-page .home-feed-section .hl-article-grid,
+body.index-page #friday-letter .fl-inner {
   max-width: var(--hp-max);
   margin-left: auto;
   margin-right: auto;
@@ -63,7 +73,7 @@ body.index-page .home-section.core-section {
   padding-right: 0;
 }
 
-body.index-page .home-section:not(.core-section) {
+body.index-page .home-section:not(.core-section):not(.home-feed-section) {
   max-width: var(--hp-max);
   margin-left: auto;
   margin-right: auto;

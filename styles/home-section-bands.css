@@ -1,0 +1,90 @@
+/*
+ * DOTFORLIFE — Full-width section bands
+ * Each homepage chapter: edge-to-edge background + centered content
+ */
+
+body.index-page {
+  --band-featured:    #FAFAF8;
+  --band-decisions:   #EDE9E1;
+  --band-peace:       #FFFFFF;
+  --band-pillars:     #F5F3ED;
+  --band-articles:    #F0EDE6;
+  --band-newsletter:  #FAFAF8;
+  --band-y:           clamp(3.25rem, 6.5vw, 5rem);
+}
+
+/* ── Full-bleed wrappers (background spans viewport) ─────── */
+body.index-page .core-section--featured,
+body.index-page .core-section--decisions,
+body.index-page .core-section--peace,
+body.index-page .core-section--pillars,
+body.index-page .home-feed-section,
+body.index-page #morning-moment.core-peace-moment,
+body.index-page #daily-home.core-peace-daily,
+body.index-page #friday-letter {
+  width: 100%;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  box-sizing: border-box;
+}
+
+/* ── Alternating band colors ─────────────────────────────── */
+body.index-page .core-section--featured {
+  background: var(--band-featured) !important;
+  background-image: none !important;
+}
+
+body.index-page .core-section--decisions {
+  background: var(--band-decisions) !important;
+  background-image: none !important;
+  padding-bottom: var(--band-y);
+}
+
+body.index-page .core-section--peace,
+body.index-page #morning-moment.core-peace-moment,
+body.index-page #daily-home.core-peace-daily {
+  background-color: var(--band-peace) !important;
+  background-image: none !important;
+}
+
+body.index-page #daily-home.core-peace-daily {
+  padding-bottom: var(--band-y);
+}
+
+body.index-page .core-section--pillars {
+  background: var(--band-pillars) !important;
+  background-image: none !important;
+}
+
+body.index-page .home-feed-section {
+  background: var(--band-articles) !important;
+  background-image: none !important;
+  padding-top: var(--band-y) !important;
+  padding-bottom: var(--band-y) !important;
+}
+
+body.index-page #friday-letter {
+  background: var(--band-newsletter) !important;
+  background-image: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+}
+
+/* ── Articles feed — inner content width ─────────────────── */
+body.index-page .home-feed-section .section-head,
+body.index-page .home-feed-section .hl-article-grid {
+  max-width: var(--hp-max, 1100px);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--hp-gutter, clamp(1.25rem, 4vw, 2rem));
+  padding-right: var(--hp-gutter, clamp(1.25rem, 4vw, 2rem));
+  width: 100%;
+  box-sizing: border-box;
+}
+
+body.index-page .home-feed-section .hl-article-grid {
+  padding-bottom: 0;
+}
