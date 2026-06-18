@@ -17,7 +17,7 @@ body.index-page {
   --hv-shadow:     0 1px 2px rgba(10, 22, 18, .03), 0 8px 32px rgba(10, 22, 18, .05);
   --hv-shadow-hover: 0 12px 40px rgba(10, 22, 18, .09);
   --hv-ease:       cubic-bezier(.22, 1, .36, 1);
-  --hv-section-y:  clamp(3.5rem, 7vw, 5.5rem);
+  --hv-section-y:  clamp(3.25rem, 6.5vw, 5rem);
   --hp-max:        1100px;
   --hp-gutter:     clamp(1.25rem, 4vw, 2rem);
   background: var(--hv-paper);
@@ -87,11 +87,20 @@ body.index-page .home-section:not(.core-section) {
 }
 
 .index-page .section-head::after {
-  width: 44px;
-  height: 2px;
-  background: linear-gradient(90deg, var(--hv-gold) 0%, var(--hv-teal) 100%);
-  border-radius: 2px;
-  opacity: .75;
+  display: none !important;
+  content: none !important;
+}
+
+.index-page .core-layer-marker {
+  padding-top: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
+.index-page .core-layer-marker span {
+  font-size: .58rem;
+  letter-spacing: .12em;
+  color: var(--hv-muted);
+  border-top: none;
+  padding-top: 0;
 }
 
 .index-page .section-head-eyebrow {
@@ -136,36 +145,66 @@ body.index-page .home-section:not(.core-section) {
   max-width: 42ch;
 }
 
-/* ── Layer markers — quieter ────────────────────────────── */
-.index-page .core-layer-marker {
-  padding-top: clamp(2rem, 4vw, 2.75rem);
-}
-
-.index-page .core-layer-marker span {
-  font-size: .58rem;
-  letter-spacing: .12em;
-  color: var(--hv-muted);
-  border-top-color: var(--hv-border);
-  padding-top: .85rem;
-}
-
-/* ── Core sections — breathing room ─────────────────────── */
+/* ── Core sections — unified vertical rhythm ────────────── */
 .index-page .core-section--featured {
-  padding-bottom: clamp(2.5rem, 5vw, 3.5rem);
+  padding-bottom: 0;
 }
 
 .index-page .core-section--decisions {
-  padding-bottom: var(--hv-section-y);
+  padding-bottom: 0;
 }
 
 .index-page .core-section--peace .section-head {
   padding-bottom: clamp(.75rem, 1.5vw, 1rem);
-  margin-bottom: clamp(1rem, 2vw, 1.5rem);
+  margin-bottom: clamp(1rem, 2vw, 1.35rem);
 }
 
 .index-page .core-peace-moment,
 .index-page .core-peace-daily {
-  margin-bottom: var(--hv-section-y);
+  margin-bottom: 0;
+}
+
+.index-page #daily-home.core-peace-daily {
+  padding-bottom: 0;
+}
+
+.index-page .core-section--pillars {
+  padding-bottom: 0;
+}
+
+.index-page .home-feed-section {
+  padding-bottom: 0;
+}
+
+.index-page .section-head {
+  margin-bottom: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
+.index-page .pillar-more {
+  border-top: none;
+  padding-top: clamp(1rem, 2vw, 1.35rem);
+}
+
+.index-page #friday-letter {
+  margin-top: 0;
+  border-top: none !important;
+  border-bottom: none !important;
+}
+
+.index-page #friday-letter::before {
+  display: none !important;
+  content: none !important;
+}
+
+.index-page .core-section--featured .sl-row2 {
+  border-top: none !important;
+  margin-top: 0;
+  padding-top: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
+.index-page .core-section--featured .sl-row2::before {
+  display: none !important;
+  content: none !important;
 }
 
 /* img-ph fill fix — promo + pillars ────────────────────── */
@@ -284,9 +323,9 @@ body.index-page .home-section:not(.core-section) {
 }
 
 .pillar-more {
-  margin-top: clamp(1.75rem, 3vw, 2.25rem);
-  padding-top: clamp(1.25rem, 2vw, 1.5rem);
-  border-top: 1px solid var(--hv-border);
+  margin-top: clamp(1.25rem, 2.5vw, 1.75rem);
+  padding-top: clamp(1rem, 2vw, 1.25rem);
+  border-top: none;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -430,19 +469,15 @@ body.index-page .home-section:not(.core-section) {
   flex-direction: row-reverse;
 }
 
-/* ── Friday letter spacing ──────────────────────────────── */
-/* ── Friday letter spacing ──────────────────────────────── */
-.index-page #friday-letter {
-  margin-top: 0;
-}
-
+/* ── Section head spacing (featured first) ─────────────── */
 .index-page .core-section--featured .section-head {
   padding-top: clamp(1rem, 2vw, 1.5rem);
 }
 
 .index-page .core-section--decisions .section-head,
 .index-page .core-section--peace .section-head,
-.index-page .core-section--pillars .section-head {
+.index-page .core-section--pillars .section-head,
+.index-page .home-feed-section .section-head {
   padding-top: var(--hv-section-y);
 }
 
