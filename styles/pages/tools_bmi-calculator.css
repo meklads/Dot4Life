@@ -6,6 +6,24 @@
 
 .tool-mn { padding-bottom: 0 !important; }
 
+/* Panels inside workspace */
+.tool-workspace .bm-card,
+.tool-workspace .tool-panel {
+  margin-bottom: 0;
+  box-shadow: none;
+}
+
+.tool-workspace .bm-card:hover,
+.tool-workspace .tool-panel:hover {
+  box-shadow: 0 4px 20px rgba(43, 168, 162, .1);
+}
+
+.tool-workspace .bm-body {
+  padding-top: 0;
+}
+
+.tool-workspace .bm-hdr { display: none; }
+
 .bm-card {
   --bm-teal: #2BA8A2;
   --bm-teal-l: #E8F6F5;
@@ -123,8 +141,9 @@
 .bm-fl-r {
   display: flex; align-items: center; border: 1.5px solid var(--bm-bd); border-radius: 10px;
   overflow: hidden; transition: border-color .2s, box-shadow .2s;
+  background: #FFF8E7;
 }
-.bm-fl-r:focus-within { border-color: var(--bm-cyan); box-shadow: 0 0 0 3px rgba(6,182,212,.1); }
+.bm-fl-r:focus-within { border-color: var(--bm-teal); box-shadow: 0 0 0 3px rgba(43, 168, 162, .12); }
 .bm-fl-r input, .bm-fl-r select {
   flex: 1; border: none; background: transparent; padding: 12px 14px;
   font-family: inherit; font-size: 15px; font-weight: 600; color: var(--bm-text); outline: none;
@@ -141,10 +160,10 @@
 
 .bm-select {
   width: 100%; padding: 12px 14px; border: 1.5px solid var(--bm-bd); border-radius: 10px;
-  background: var(--bm-bg); font-family: inherit; font-size: .85rem; font-weight: 600;
+  background: #FFF8E7; font-family: inherit; font-size: .85rem; font-weight: 600;
   color: var(--bm-text); cursor: pointer; transition: border-color .2s, box-shadow .2s; outline: none;
 }
-.bm-select:focus { border-color: var(--bm-cyan); box-shadow: 0 0 0 3px rgba(6,182,212,.1); }
+.bm-select:focus { border-color: var(--bm-teal); box-shadow: 0 0 0 3px rgba(43, 168, 162, .12); }
 
 /* ── BM-BTN ──────────────────────────────── */
 .bm-btn {
@@ -155,7 +174,7 @@
   display: flex; align-items: center; justify-content: center; gap: 8px;
   transition: transform .3s var(--bm-trans), box-shadow .3s var(--bm-trans);
 }
-.bm-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(6,182,212,.25); }
+.bm-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(43, 168, 162, .22); }
 .bm-btn:active { transform: translateY(0); }
 .bm-btn svg { width: 18px; height: 18px; }
 
@@ -164,20 +183,21 @@
 @media (max-width: 440px) { .bm-res-grid { grid-template-columns: 1fr; } }
 
 .bm-res-box {
-  background: var(--bm-cyan-l); border-radius: 14px; padding: 18px 20px;
-  text-align: center; border: 1px solid rgba(6,182,212,.15);
+  background: var(--bm-teal-l); border-radius: 14px; padding: 16px 18px;
+  text-align: center; border: 1px solid rgba(43, 168, 162, .12);
 }
-[data-theme="dark"] .bm-res-box { background: rgba(34,211,238,.06); }
+[data-theme="dark"] .bm-res-box { background: rgba(60, 196, 189, .06); }
 
 .bm-res-box.bm-primary {
-  background: linear-gradient(135deg, var(--bm-cyan), var(--bm-cyan-d));
-  border-color: transparent; grid-column: 1 / -1; padding: 22px 20px;
+  background: linear-gradient(135deg, var(--bm-teal), var(--bm-teal-d));
+  border-color: transparent; grid-column: 1 / -1; padding: 20px 18px;
 }
-.bm-res-box.bm-primary .bm-res-label { color: rgba(255,255,255,.7); }
-.bm-res-box.bm-primary .bm-res-value { color: #fff; font-size: 1.6rem; }
+.bm-res-box.bm-primary .bm-res-value { color: #fff; font-size: clamp(1.5rem, 4vw, 1.85rem); }
 
-.bm-res-label { font-size: .7rem; font-weight: 700; color: var(--bm-text2); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 4px; }
-.bm-res-value { font-size: 1.3rem; font-weight: 800; color: var(--bm-text); line-height: 1.2; }
+.bm-res-label { font-size: .68rem; font-weight: 700; color: var(--bm-text2); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 4px; }
+.bm-res-box.bm-primary .bm-res-label { color: rgba(255,255,255,.75); }
+.bm-res-value { font-size: 1.15rem; font-weight: 800; color: var(--bm-text); line-height: 1.2; }
+.bm-res-box.bm-primary .bm-cat { margin-top: .35rem; background: rgba(255,255,255,.18); color: #fff; }
 
 .bm-res-box.bm-note {
   background: transparent; border: 1px dashed var(--bm-bd); grid-column: 1 / -1; padding: 14px 18px;
