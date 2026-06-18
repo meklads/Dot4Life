@@ -43,7 +43,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Almarai:wght@300;400;700&display=swap" rel="stylesheet"/>
   <link rel="preload" as="image" href="/d4l1.webp" fetchpriority="high"/>
   <link rel="stylesheet" href="/styles/global.css?v=20260617c"/>
-    <link rel="stylesheet" href="/styles/home.css?v=20260617b">
+  <link rel="stylesheet" href="/styles/home.css?v=20260617b"/>
+  <link rel="stylesheet" href="/styles/home-core-premium.css?v=20260618a"/>
+  <link rel="stylesheet" href="/styles/home-secondary.css?v=20260618a"/>
 
 <script src="/scripts/global.js?v=20260608" defer></script>
   <link rel="alternate" hreflang="ar" href="https://dotforlife.com/?lang=ar" />
@@ -304,7 +306,7 @@
   <!-- ═══════════════════════════════════════
        HERO
   ═══════════════════════════════════════ -->
-  <section id="hero" aria-label="Hero section">
+  <section id="hero" class="hero-editorial" aria-label="Hero section">
     <div class="hero-floats" aria-hidden="true">
       <span></span><span></span><span></span><span></span><span></span><span></span>
     </div>
@@ -357,39 +359,29 @@
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- ═══════════════════════════════════════
-       TODAY'S DATE, Daily Rose
-  ═══════════════════════════════════════ -->
-  <div class="hero-stats" style="margin:1.5rem auto;max-width:1080px;padding:0 1.5rem;">
-    <div class="hero-stats-inner" style="background:linear-gradient(135deg,#054241 0%,#0a6b63 40%,#6abfb8 100%);box-shadow:0 8px 40px rgba(5,66,65,.15);border:1px solid rgba(5,66,65,.1);position:relative;overflow:hidden;">
-      <div style="position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.06);pointer-events:none;"></div>
-      <div style="position:absolute;bottom:-40px;left:-40px;width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,.04);pointer-events:none;"></div>
-      <div style="position:absolute;top:20%;right:30%;width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,.03);pointer-events:none;"></div>
-      <div class="stat-item" style="border:none;text-align:center;">
-        <div class="stat-num" style="font-size:1.2rem;font-weight:600;color:rgba(255,255,255,.75);font-family:'Inter',sans-serif;margin-bottom:0;">
-          <span class="en"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.75)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span><span class="ar"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.75)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
-        </div>
+  <!-- Date ribbon — integrated into hero, subdued -->
+  <div class="hero-date-ribbon">
+    <div class="hero-date-ribbon-inner">
+      <div class="stat-item">
+        <div class="stat-num" id="hijri-display">, </div>
+        <div class="stat-label" id="greg-display"></div>
       </div>
-      <div class="stat-item" style="text-align:center;">
-        <div class="stat-num" style="font-size:1.5rem;font-family:var(--font-ar);color:#fff;font-weight:700;" id="hijri-display">, </div>
-        <div class="stat-label" style="color:rgba(255,255,255,.7);font-size:.65rem;" id="greg-display"></div>
-      </div>
-      <div class="stat-item" style="text-align:center;border:none;">
-        <div class="stat-num" style="font-size:1.5rem;color:#fff;font-family:'Cinzel',serif;font-weight:600;">
-          <span class="en"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span><span class="ar"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
-        </div>
-      </div>
-      <div class="stat-item" style="text-align:center;">
-        <div class="stat-num" style="font-size:1.3rem;color:#fff;font-weight:500;" id="dh-focus-text-standalone">
+      <div class="stat-item">
+        <div class="stat-num" id="dh-focus-text-standalone">
           <span class="en">Start your day with intention.</span>
           <span class="ar">ابدأ يومك بنية.</span>
         </div>
       </div>
     </div>
   </div>
-<div class="home-section">
+  </section>
+
+  <div class="core-layer-marker" aria-hidden="true">
+    <span class="en">Your daily experience</span><span class="ar">تجربتك اليومية</span>
+  </div>
+
+<div class="home-section core-section core-section--featured">
   <div class="section-head">
     <span class="section-head-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
     <h2 class="section-head-title"><span class="en">Featured Stories</span><span class="ar">قصص مميزة</span></h2>
@@ -579,7 +571,7 @@
        DECISIONS & COMPARISONS
        Refined horizontal list + sidebar (Verywell Health style)
   ═══════════════════════════════════════ -->
-  <div class="home-section">
+  <div class="home-section core-section core-section--decisions">
 
     <!-- section heading -->
     <div class="section-head">
@@ -819,13 +811,13 @@
   <!-- ═══════════════════════════════════════
        DAILY HOME — السلام يبدأ من البيت
   ═══════════════════════════════════════ -->
-  <div class="home-section">
+  <div class="home-section core-section core-section--peace">
     <div class="section-head">
       <span class="section-head-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 4l9 5.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-5h4v5h4a1 1 0 0 0 1-1v-9"/></svg></span>
       <h2 class="section-head-title"><span class="en">Daily Home</span><span class="ar">السلام يبدأ من البيت</span></h2>
     </div>
   </div>
-  <div id="morning-moment" aria-label="Daily Home">
+  <div id="morning-moment" class="core-peace-moment" aria-label="Daily Home">
     <div class="mm-grid">
       <!-- Left: morning image -->
       <div class="mm-visual" aria-label="Morning inspiration">
@@ -884,7 +876,7 @@
   <!-- ═══════════════════════════════════════
        DAILY HOME — Family & Tasks
   ═══════════════════════════════════════ -->
-  <div id="daily-home" role="main">
+  <div id="daily-home" class="core-peace-daily" role="main">
 
     <!-- 3-COLUMN GRID: Family | Tasks | Reminder -->
     <div class="dh-grid">
@@ -951,377 +943,77 @@
   ═══════════════════════════════════════ -->
 
   <!-- ═══════════════════════════════════════
-       SECTION CARDS WRAPPER
+       SECONDARY ZONE — supportive, defers to core layer
   ═══════════════════════════════════════ -->
-  <div class="home-section">
+  <div class="home-secondary">
+    <div class="home-secondary-inner">
 
-  <!-- HEALTH -->
-  <section id="health" aria-label="Health ecosystem">
-    <!-- Health photo, left column (1.15fr) -->
-    <div class="health-visual" aria-label="Family health moment">
-      <img
-        src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=1200&q=85"
-        alt="Happy healthy family outdoors"
-        width="1000" height="800"
-        loading="lazy"
-        fetchpriority="high">
-    </div>
-
-    <!-- Health content, right column (1fr) -->
-    <div class="health-content reveal">
-      <div class="section-head" style="margin-bottom:1.5rem;padding-top:0;">
-        <span class="section-head-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span>
-        <h2 class="section-head-title"><span class="en">Health & Wellbeing</span><span class="ar">الصحة والعافية</span></h2>
+      <div class="secondary-intro">
+        <p class="secondary-intro-eyebrow"><span class="en">Explore further</span><span class="ar">استكشف المزيد</span></p>
+        <h2><span class="en">Tools & guides for every chapter of family life</span><span class="ar">أدوات وأدلة لكل فصل من حياة الأسرة</span></h2>
+        <p><span class="en">When you need calculators, planners, or deeper guides — they are here, quietly.</span><span class="ar">عندما تحتاج حاسبات أو مخططات أو أدلة أعمق — تجدها هنا، بهدوء.</span></p>
       </div>
-      <h2 class="sec-headline">
-        <span class="en">Your body,<br><span class="hl-accent">understood.</span></span>
-        <span class="ar">جسمك،<br><span class="hl-accent">مُفهوم تماماً.</span></span>
-      </h2>
-      <p class="sec-body">
-        <span class="en">From pregnancy to daily nutrition, track what matters for your family's health — clearly, simply, without the jargon.</span>
-        <span class="ar">من الحمل إلى التغذية اليومية، تابعي ما يهم لصحة عائلتك — بوضوح، بدون تعقيد.</span>
-      </p>
-      <div class="tool-cards">
-        <a href="/tools/pregnancy-calculator.html" class="tool-card reveal-delay-1">
-          <div class="tc-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 2C9.24 2 7 4.24 7 7s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5z"/><path d="M3 21v-1a9 9 0 0118 0v1"/></svg>
-          </div>
-          <div>
-            <div class="tc-name"><span class="en">Pregnancy Tracker</span><span class="ar">متتبع الحمل</span></div>
-            <div class="tc-desc"><span class="en">Week-by-week milestones</span><span class="ar">مراحل أسبوع بأسبوع</span></div>
-          </div>
-        </a>
-        <a href="/tools/bmi-calculator.html" class="tool-card reveal-delay-2">
-          <div class="tc-icon">
-            <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/><circle cx="7" cy="12" r="1" fill="currentColor"/></svg>
-          </div>
-          <div>
-            <div class="tc-name"><span class="en">BMI Calculator</span><span class="ar">حاسبة مؤشر الجسم</span></div>
-            <div class="tc-desc"><span class="en">Know your healthy range</span><span class="ar">عرف نطاق وزنك الصحي</span></div>
-          </div>
-        </a>
-        <a href="/tools/calorie-calculator.html" class="tool-card reveal-delay-3">
-          <div class="tc-icon">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l2.5 2.5"/></svg>
-          </div>
-          <div>
-            <div class="tc-name"><span class="en">Calorie Needs</span><span class="ar">احتياجات السعرات</span></div>
-            <div class="tc-desc"><span class="en">Daily nutrition baseline</span><span class="ar">أساسيات التغذية اليومية</span></div>
-          </div>
-        </a>
-        <a href="/tools/water-calculator.html" class="tool-card reveal-delay-4">
-          <div class="tc-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 2C7 10 4 14 4 17a8 8 0 0016 0c0-3-3-7-8-15z"/></svg>
-          </div>
-          <div>
-            <div class="tc-name"><span class="en">Hydration Tracker</span><span class="ar">متتبع الترطيب</span></div>
-            <div class="tc-desc"><span class="en">Daily water intake</span><span class="ar">احتياجات الماء اليومية</span></div>
-          </div>
-        </a>
-      </div>
-      <a href="/health.html" class="btn-primary" style="align-self:flex-start;background:#6abfb8;">
-        <span class="en">All Health Tools</span>
-        <span class="ar">جميع الأدوات الصحية</span>
-      </a>
-    </div>
-  </section>
 
-  <!-- ═══════════════════════════════════════
-       FINANCE SECTION
-  ═══════════════════════════════════════ -->
-  <div class="sec-divider"><div class="sec-divider-line"></div></div>
-  <section id="finance" aria-label="Finance ecosystem">
-    <!-- Finance content, left column (1fr), dark #032a28 -->
-    <div class="finance-content reveal">
-      <div class="section-head" style="margin-bottom:1.5rem;padding-top:0;">
-        <span class="section-head-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span>
-        <h2 class="section-head-title"><span class="en">Finance & Wealth</span><span class="ar">المالية والثروة</span></h2>
-      </div>
-      <h2 class="sec-headline">
-        <span class="en">Money decisions<br><span class="hl-accent">made with confidence.</span></span>
-        <span class="ar">قرارات مالية<br><span class="hl-accent">بثقة واطمئنان.</span></span>
-      </h2>
-      <p class="sec-body">
-        <span class="en">Mortgages, Zakat, savings, monthly budgets — the numbers that matter, made clear.</span>
-        <span class="ar">التمويل والزكاة والادخار والميزانية — الأرقام التي تهم، بوضوح.</span>
-      </p>
-      <div class="tool-cards">
-        <a href="/tools/mortgage-calculator.html" class="tool-card reveal-delay-1">
-          <div class="tc-icon">
-            <svg viewBox="0 0 24 24"><path d="M3 10.5L12 4l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1v-9.5z"/><path d="M9 21V13h6v8"/></svg>
-          </div>
-          <div>
-            <div class="tc-name"><span class="en">Mortgage Calculator</span><span class="ar">حاسبة التمويل</span></div>
-            <div class="tc-desc"><span class="en">Monthly payment breakdown</span><span class="ar">تفاصيل القسط الشهري</span></div>
-          </div>
+      <nav class="hub-grid" aria-label="Life hubs">
+        <a href="/health.html" class="hub-link">
+          <span class="hub-link-icon"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span>
+          <span class="hub-link-label"><span class="en">Health</span><span class="ar">الصحة</span></span>
         </a>
-        <a href="/tools/zakat-calculator.html" class="tool-card reveal-delay-2">
-          <div class="tc-icon">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>
-          </div>
-          <div>
-            <div class="tc-name"><span class="en">Zakat Calculator</span><span class="ar">حاسبة الزكاة</span></div>
-            <div class="tc-desc"><span class="en">Nisab & annual calculation</span><span class="ar">النصاب والحساب السنوي</span></div>
-          </div>
+        <a href="/finance.html" class="hub-link">
+          <span class="hub-link-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span>
+          <span class="hub-link-label"><span class="en">Finance</span><span class="ar">المالية</span></span>
         </a>
-        <a href="/tools/savings-goal.html" class="tool-card reveal-delay-3">
-          <div class="tc-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          </div>
-          <div>
-            <div class="tc-name"><span class="en">Savings Goal</span><span class="ar">هدف الادخار</span></div>
-            <div class="tc-desc"><span class="en">Plan your milestones</span><span class="ar">خطط لأهدافك المالية</span></div>
-          </div>
+        <a href="/real-estate.html" class="hub-link">
+          <span class="hub-link-icon"><svg viewBox="0 0 24 24"><path d="M3 10.5L12 4l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-9.5z"/><path d="M9 21V13h6v8"/></svg></span>
+          <span class="hub-link-label"><span class="en">Real Estate</span><span class="ar">العقار</span></span>
         </a>
-        <a href="/tools/monthly-budget.html" class="tool-card reveal-delay-4">
-          <div class="tc-icon">
-            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-          </div>
-          <div>
-            <div class="tc-name"><span class="en">Monthly Budget</span><span class="ar">الميزانية الشهرية</span></div>
-            <div class="tc-desc"><span class="en">Track income & expenses</span><span class="ar">تتبع الدخل والمصروف</span></div>
-          </div>
+        <a href="/islamic.html" class="hub-link">
+          <span class="hub-link-icon"><svg viewBox="0 0 24 24"><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10A15.3 15.3 0 0 1 12 2z"/></svg></span>
+          <span class="hub-link-label"><span class="en">Islamic</span><span class="ar">الإسلامية</span></span>
         </a>
-      </div>
-      <a href="/finance.html" class="btn-gold-outline">
-        <span class="en">All Finance Tools</span>
-        <span class="ar">جميع الأدوات المالية</span>
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-    </div>
-    <!-- Finance photo, right column (1.15fr) -->
-    <div class="finance-photo">
-      <img
-        src="https://images.unsplash.com/photo-1591696205602-2f950c417cb9?auto=format&fit=crop&w=1200&q=85"
-        alt="Family financial planning"
-        width="1000" height="800"
-        loading="lazy"
-        fetchpriority="high">
-    </div>
-  </section>
+        <a href="/travel.html" class="hub-link">
+          <span class="hub-link-icon"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></span>
+          <span class="hub-link-label"><span class="en">Travel</span><span class="ar">السفر</span></span>
+        </a>
+      </nav>
 
-  
-
-  <!-- ═══════════════════════════════════════
-       ISLAMIC SECTION
-  ═══════════════════════════════════════ -->
-  <!-- LIFE JOURNEYS heading -->
-  <div class="sec-divider sec-divider--category"><span class="sec-category-label"><span class="en">Life Journeys</span><span class="ar">رحلات الحياة</span></span><div class="sec-divider-line"></div></div>
-
-  <section id="islamic" aria-label="Islamic life ecosystem">
-    <!-- Islamic panel, left column (1.1fr), deep #032a28 forest -->
-    <div class="islamic-panel reveal">
-      <!-- Geometric pattern overlay -->
-      <div class="islamic-geo" aria-hidden="true">
-        <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-          <defs>
-            <pattern id="geo" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
-              <polygon points="40,0 80,40 40,80 0,40" stroke="#2a9a98" stroke-width="1" fill="none" opacity=".5"/>
-              <polygon points="40,12 68,40 40,68 12,40" stroke="#2a9a98" stroke-width=".6" fill="none" opacity=".3"/>
-              <circle cx="40" cy="40" r="6" stroke="#2a9a98" stroke-width=".8" fill="none" opacity=".4"/>
-              <circle cx="0" cy="0" r="4" stroke="#2a9a98" stroke-width=".6" fill="none" opacity=".25"/>
-              <circle cx="80" cy="0" r="4" stroke="#2a9a98" stroke-width=".6" fill="none" opacity=".25"/>
-              <circle cx="0" cy="80" r="4" stroke="#2a9a98" stroke-width=".6" fill="none" opacity=".25"/>
-              <circle cx="80" cy="80" r="4" stroke="#2a9a98" stroke-width=".6" fill="none" opacity=".25"/>
-            </pattern>
-          </defs>
-          <rect width="400" height="400" fill="url(#geo)"/>
-        </svg>
-      </div>
-      <div class="islamic-content">
-        <div class="section-head" style="margin-bottom:1.5rem;padding-top:0;">
-          <span class="section-head-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10A15.3 15.3 0 0 1 12 2z"/><path d="M12.5 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10"/></svg></span>
-          <h2 class="section-head-title"><span class="en">Islamic Life</span><span class="ar">الحياة الإسلامية</span></h2>
+      <div class="tools-row">
+        <div class="tools-row-head">
+          <h3><span class="en">Popular tools</span><span class="ar">أدوات شائعة</span></h3>
+          <a href="/life-tools.html"><span class="en">All tools →</span><span class="ar">← كل الأدوات</span></a>
         </div>
-        <h2 class="sec-headline">
-          <span class="en">Life, guided<br><span class="hl-accent">by faith.</span></span>
-          <span class="ar">بوصلة<br><span class="hl-accent">الإيمان.</span></span>
-        </h2>
-        <p class="sec-body">
-          <span class="en">Prayer times, Zakat, Hijri calendar, Qibla — faith woven into your day, simply and beautifully.</span>
-          <span class="ar">أوقات الصلاة والزكاة والتقويم الهجري واتجاه القبلة — إيمان ينسجم مع يومك، ببساطة.</span>
-        </p>
-        <div class="tool-cards">
-          <a href="/tools/prayer-times.html" class="tool-card reveal-delay-1">
-            <div class="tc-icon">
-              <svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-            </div>
-            <div>
-              <div class="tc-name"><span class="en">Prayer Times</span><span class="ar">أوقات الصلاة</span></div>
-              <div class="tc-desc"><span class="en">Daily Fajr to Isha</span><span class="ar">من الفجر إلى العشاء</span></div>
-            </div>
+        <div class="tools-chips">
+          <a href="/tools/bmi-calculator.html" class="tool-chip"><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg><span class="en">BMI</span><span class="ar">مؤشر الجسم</span></a>
+          <a href="/tools/mortgage-calculator.html" class="tool-chip"><svg viewBox="0 0 24 24"><path d="M3 10.5L12 4l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-9.5z"/></svg><span class="en">Mortgage</span><span class="ar">التمويل</span></a>
+          <a href="/tools/zakat-calculator.html" class="tool-chip"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg><span class="en">Zakat</span><span class="ar">الزكاة</span></a>
+          <a href="/tools/pregnancy-calculator.html" class="tool-chip"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/></svg><span class="en">Pregnancy</span><span class="ar">الحمل</span></a>
+          <a href="/tools/hijri-converter.html" class="tool-chip"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span class="en">Hijri Date</span><span class="ar">التاريخ الهجري</span></a>
+          <a href="/tools/calorie-calculator.html" class="tool-chip"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l2.5 2.5"/></svg><span class="en">Calories</span><span class="ar">السعرات</span></a>
+        </div>
+      </div>
+
+      <div class="secondary-articles">
+        <div class="secondary-articles-head">
+          <h3><span class="en">Recently published</span><span class="ar">نُشر مؤخراً</span></h3>
+        </div>
+        <div class="secondary-articles-grid">
+          <a href="/comparisons/gold-vs-real-estate-gulf-family.html" class="secondary-art-card">
+            <span class="secondary-art-kicker"><span class="en">Comparison</span><span class="ar">مقارنة</span></span>
+            <span class="secondary-art-title"><span class="en">Gold vs. Real Estate for Gulf Families</span><span class="ar">الذهب مقابل العقار للأسرة الخليجية</span></span>
+            <span class="secondary-art-arrow"><span class="en">Read →</span><span class="ar">← اقرأ</span></span>
           </a>
-          <a href="/tools/zakat-calculator.html" class="tool-card reveal-delay-2">
-            <div class="tc-icon">
-              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            </div>
-            <div>
-              <div class="tc-name"><span class="en">Zakat Calculator</span><span class="ar">حاسبة الزكاة</span></div>
-              <div class="tc-desc"><span class="en">Gold, silver & savings</span><span class="ar">الذهب والفضة والمدخرات</span></div>
-            </div>
+          <a href="/islamic-hajj-umrah/teaching-children-allah-names.html" class="secondary-art-card">
+            <span class="secondary-art-kicker"><span class="en">Islamic Life</span><span class="ar">الحياة الإسلامية</span></span>
+            <span class="secondary-art-title"><span class="en">Teaching Children Allah's 99 Names with Love</span><span class="ar">تعليم أسماء الله الحسنى للأطفال</span></span>
+            <span class="secondary-art-arrow"><span class="en">Read →</span><span class="ar">← اقرأ</span></span>
           </a>
-          <a href="/tools/hijri-converter.html" class="tool-card reveal-delay-3">
-            <div class="tc-icon">
-              <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-            </div>
-            <div>
-              <div class="tc-name"><span class="en">Hijri Calendar</span><span class="ar">التقويم الهجري</span></div>
-              <div class="tc-desc"><span class="en">Gregorian conversion</span><span class="ar">التحويل الميلادي</span></div>
-            </div>
-          </a>
-          <a href="/tools/qibla.html" class="tool-card reveal-delay-4">
-            <div class="tc-icon">
-              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><circle cx="12" cy="12" r="3"/></svg>
-            </div>
-            <div>
-              <div class="tc-name"><span class="en">Qibla Direction</span><span class="ar">اتجاه القبلة</span></div>
-              <div class="tc-desc"><span class="en">Precise compass bearing</span><span class="ar">اتجاه القبلة الدقيق</span></div>
-            </div>
+          <a href="/blog/bmi-middle-eastern-adults.html" class="secondary-art-card">
+            <span class="secondary-art-kicker"><span class="en">Health</span><span class="ar">الصحة</span></span>
+            <span class="secondary-art-title"><span class="en">BMI for Middle Eastern Adults: Healthy Range</span><span class="ar">مؤشر كتلة الجسم للبالغين في الشرق الأوسط</span></span>
+            <span class="secondary-art-arrow"><span class="en">Read →</span><span class="ar">← اقرأ</span></span>
           </a>
         </div>
-        <a href="/islamic.html" class="btn-gold-outline">
-          <span class="en">Explore Islamic Tools</span>
-          <span class="ar">اكتشف الأدوات الإسلامية</span>
-        </a>
       </div>
-    </div>
-    <!-- Islamic photo, right column (1fr) -->
-    <div class="islamic-photo">
-      <img
-        src="https://images.unsplash.com/photo-1590273089302-ebbc53986b6e?auto=format&fit=crop&w=600&h=700&q=85"
-        alt="Peaceful Islamic architecture and spiritual calm"
-        loading="lazy"
-        width="600"
-        height="700"
-        fetchpriority="high">
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════
-       TRAVEL SECTION
-  ═══════════════════════════════════════ -->
-  <div class="sec-divider"><div class="sec-divider-line"></div></div>
-  <div class="section-head">
-    <span class="section-head-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 4l9 5.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-5h4v5h4a1 1 0 0 0 1-1v-9"/></svg></span>
-    <h2 class="section-head-title"><span class="en">Travel</span><span class="ar">السفر</span></h2>
-  </div>
-  <section id="travel" aria-label="Travel ecosystem">
-    <!-- Full-bleed background image -->
-    <div class="travel-bg">
-      <img
-        src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1800&q=90"
-        alt="Family travel adventure, mountain landscape"
-        width="1600" height="900"
-        loading="lazy"
-        fetchpriority="high">
-      <!-- Dark gradient overlay, bottom-heavy for text legibility -->
-      <div class="travel-overlay" aria-hidden="true"></div>
-    </div>
-    <!-- Content over the image -->
-    <div class="travel-content reveal">
-      <h2 class="sec-headline">
-        <span class="en">The world<br><span class="hl-accent">awaits your family.</span></span>
-        <span class="ar">العالم<br><span class="hl-accent">ينتظر أسرتك.</span></span>
-      </h2>
-      <p class="sec-body">
-        <span class="en">Packing checklists, trip budgets, return-to-hotel cards, everything a family needs before they board the plane.</span>
-        <span class="ar">قوائم التعبئة وميزانيات الرحلات وبطاقة العودة للفندق، كل ما تحتاجه الأسرة قبل الصعود إلى الطائرة.</span>
-      </p>
-      <a href="/travel.html" class="btn-primary" style="background:var(--amber);">
-        <span class="en">Plan Your Trip</span>
-        <span class="ar">خطط رحلتك</span>
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-    </div>
-  </section>
-
-  </div><!-- /sections-wrap (now home-section) -->
-
-
-    <!-- ═══════════════════════════════════════
-       LATEST ARTICLES — العام
-  ═══════════════════════════════════════ -->
-  <section class="home-section" id="latest-articles" aria-label="Latest articles" style="padding:clamp(2.5rem,5vw,5rem) 0;">
-        <div class="section-head" style="padding-bottom:1rem;">
-      <span class="section-head-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></span>
-      <h2 class="section-head-title"><span class="en">New Articles & Guides</span><span class="ar">جديد المقالات والأدلة</span></h2>
-    </div>
-    <p class="hl-sub" style="font-size:clamp(.92rem,1.2vw,1.05rem);color:var(--text-2,#5C534A);line-height:1.75;margin:0 0 2.5rem;max-width:640px;">
-        <span class="en">Fresh content for Gulf families, updated regularly.</span><span class="ar">محتوى جديد للعائلات الخليجية، يُحدَّث باستمرار.</span>
-      </p>
-      <style>
-      .hl-article-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr)); gap:1.5rem; width:100% }
-      .hl-art-card { display:flex; flex-direction:column; border-radius:18px; overflow:hidden; background:var(--card-bg,#fff); border:1px solid rgba(5,66,65,.08); box-shadow:0 8px 30px rgba(5,66,65,.06); transition:transform .22s cubic-bezier(.22,1,.36,1), box-shadow .22s cubic-bezier(.22,1,.36,1); text-decoration:none; color:inherit }
-      .hl-art-card:hover { transform:translateY(-4px); box-shadow:0 16px 48px rgba(5,66,65,.1) }
-      .hl-art-card-img { width:100%; height:180px; object-fit:cover; display:block }
-      .hl-art-card-body { padding:1.2rem 1.4rem 1.4rem; display:flex; flex-direction:column; flex:1 }
-      .hl-art-card-kicker { font-size:.7rem; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:#6abfb8; margin-bottom:.4rem; display:block }
-      .hl-art-card-title { font-size:.92rem; font-weight:700; line-height:1.45; color:var(--text,#1A1E24); margin-bottom:.4rem; flex:1 }
-      .hl-art-card-desc { font-size:.8rem; line-height:1.55; color:var(--text-2,#5C534A); margin-bottom:.6rem }
-      .hl-art-card-arrow { font-size:.78rem; font-weight:700; color:#6abfb8; display:flex; align-items:center; gap:.3rem; transition:gap .2s }
-      .hl-art-card:hover .hl-art-card-arrow { gap:.6rem }
-      [data-lang="ar"] .hl-art-card-arrow { flex-direction:row-reverse }
-      @media(max-width:480px){ .hl-article-grid { grid-template-columns:1fr } }
-      </style>
-      <div class="hl-article-grid">
-        <a href="/comparisons/gold-vs-real-estate-gulf-family.html" class="hl-art-card">
-          <img class="hl-art-card-img" src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=600&h=340&q=85" alt="" width="600" height="340" loading="lazy">
-          <div class="hl-art-card-body">
-            <span class="hl-art-card-kicker">comparisons</span>
-            <span class="hl-art-card-title">Gold vs. Real Estate Investment for Gulf Families: Complete 2026 Guide</span>
-            <span class="hl-art-card-desc">A complete comparison between gold and real estate investment for Gulf families: liquidity, risk, returns, and Shariah considerations.</span>
-            <span class="hl-art-card-arrow">Read article →</span>
-          </div>
-        </a>
-        <a href="/comparisons/saving-vs-investing-gulf-family.html" class="hl-art-card">
-          <img class="hl-art-card-img" src="https://images.unsplash.com/photo-1580519542036-c47de6196ba5?auto=format&fit=crop&w=600&h=340&q=85" alt="" width="600" height="340" loading="lazy">
-          <div class="hl-art-card-body">
-            <span class="hl-art-card-kicker">comparisons</span>
-            <span class="hl-art-card-title">Saving vs Investing for a Gulf Family? The Complete Comparison</span>
-            <span class="hl-art-card-desc">A practical comparison with real numbers, scenarios, and Gulf-specific advice for families deciding where to put their money.</span>
-            <span class="hl-art-card-arrow">Read article →</span>
-          </div>
-        </a>
-        <a href="/islamic-hajj-umrah/teaching-children-allah-names.html" class="hl-art-card">
-          <img class="hl-art-card-img" src="https://images.unsplash.com/photo-1590273089302-ebbc53986b6e?auto=format&fit=crop&w=600&h=340&q=85" alt="" width="600" height="340" loading="lazy">
-          <div class="hl-art-card-body">
-            <span class="hl-art-card-kicker">islamic-hajj-umrah</span>
-            <span class="hl-art-card-title">Teaching Children Allah's 99 Names with Love</span>
-            <span class="hl-art-card-desc">A practical guide with activities, stories, and a 30-day plan for Gulf parents to teach Allah's names in a loving way.</span>
-            <span class="hl-art-card-arrow">Read article →</span>
-          </div>
-        </a>
-        <a href="/blog/bmi-middle-eastern-adults.html" class="hl-art-card">
-          <img class="hl-art-card-img" src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=600&h=340&q=85" alt="" width="600" height="340" loading="lazy">
-          <div class="hl-art-card-body">
-            <span class="hl-art-card-kicker">blog</span>
-            <span class="hl-art-card-title">BMI for Middle Eastern Adults: What Is a Healthy Range?</span>
-            <span class="hl-art-card-desc">Why standard BMI thresholds may not apply to Middle Eastern bodies and what the evidence says.</span>
-            <span class="hl-art-card-arrow">Read article →</span>
-          </div>
-        </a>
-        <a href="/blog/walking-vs-running-comparison.html" class="hl-art-card">
-          <img class="hl-art-card-img" src="https://images.unsplash.com/photo-1592859600972-1b0834d83747?auto=format&fit=crop&w=600&h=340&q=85" alt="" width="600" height="340" loading="lazy">
-          <div class="hl-art-card-body">
-            <span class="hl-art-card-kicker">blog</span>
-            <span class="hl-art-card-title">Walking vs Running: Which Burns More Calories?</span>
-            <span class="hl-art-card-desc">Compare walking and running for calorie burn, joint health, and sustainability for Gulf residents.</span>
-            <span class="hl-art-card-arrow">Read article →</span>
-          </div>
-        </a>
-        <a href="/blog/natural-birth-vs-c-section-comparison.html" class="hl-art-card">
-          <img class="hl-art-card-img" src="https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=600&h=340&q=85" alt="" width="600" height="340" loading="lazy">
-          <div class="hl-art-card-body">
-            <span class="hl-art-card-kicker">blog</span>
-            <span class="hl-art-card-title">Natural Birth vs C-Section: When Is Each Recommended?</span>
-            <span class="hl-art-card-desc">Compare vaginal birth and cesarean section: recovery times, risks, benefits for Gulf families.</span>
-            <span class="hl-art-card-arrow">Read article →</span>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
-
 
 <!-- ═══════════════════════════════════════
        NEWSLETTER / FRIDAY LETTER
@@ -1362,7 +1054,11 @@
         <span class="ar">خاص · بدون إزعاج · مجاني للأبد</span>
       </p>
     </div>
-  </section>  <!-- ═══════════════════════════════════════
+  </section>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
        FOOTER
   ═══════════════════════════════════════ -->
   <!-- ═══ UNIFIED FOOTER ══════════════════════════════════════ -->
