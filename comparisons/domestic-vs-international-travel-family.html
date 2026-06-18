@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl" data-lang="ar" data-theme="light">
 <head>
-<script>(function(){var p=new URLSearchParams(location.search),gd=(function(){try{var z=(Intl.DateTimeFormat().resolvedOptions().timeZone||"");return /Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test(z)?"ar":"en";}catch(e){return "ar";}})(),l=p.get("lang")||localStorage.getItem("dfl-lang")||gd,t=p.get("theme")||localStorage.getItem("dfl-theme")||"light",h=document.documentElement;h.setAttribute("data-theme",t);h.setAttribute("data-lang",l);h.setAttribute("lang",l);h.setAttribute("dir",l==="ar"?"rtl":"ltr");if(p.get("lang"))localStorage.setItem("dfl-lang",l);if(p.get("theme"))localStorage.setItem("dfl-theme",t);})()</script>
+<script>(function(){var h=document.documentElement,t=localStorage.getItem("dfl-theme")||"light";h.setAttribute("data-lang","ar");h.setAttribute("lang","ar");h.setAttribute("dir","rtl");h.setAttribute("data-theme",t);})()</script>
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -48,15 +48,13 @@ img{max-width:100%;height:auto}
 .article-body table td{padding:10px 12px;border-bottom:1px solid #e8eceb}
 .article-body table tr:nth-child(even){background:#f6faf9}
 .faq-item{margin:.8rem 0;border:1px solid #e8eceb;border-radius:12px;overflow:hidden}
-.faq-q{background:#fff;padding:1rem 1.2rem;font-weight:700;font-size:.95rem;color:var(--green);cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:background .2s}
-.faq-q:hover{background:#f6faf9}
-.faq-q .faq-arrow{font-size:.75rem;color:var(--teal);transition:transform .3s}
-.faq-q.open .faq-arrow{transform:rotate(180deg)}
-.faq-a{padding:0 1.2rem;max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease}
-.faq-a.open{max-height:400px;padding:0 1.2rem 1rem}
-.faq-a p{font-size:.9rem;color:#555;margin:.5rem 0}
-.share-section{margin:2rem 0;text-align:center;padding:1.5rem 0;border-top:1px solid #e8eceb;border-bottom:1px solid #e8eceb}
-.share-section p{font-size:.85rem;color:var(--text2);margin-bottom:.8rem;font-weight:600}
+.faq-question{background:#fff;padding:1rem 1.2rem;font-weight:700;font-size:.95rem;color:var(--green);cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:background .2s}
+.faq-question:hover{background:#f6faf9}
+.faq-question::after{content:"▼";font-size:.75rem;color:var(--teal);transition:transform .3s}
+.faq-question.open::after{transform:rotate(180deg)}
+.faq-answer{padding:0 1.2rem;max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease}
+.faq-answer.open{max-height:400px;padding:0 1.2rem 1rem}
+.faq-answer p{font-size:.9rem;color:#555;margin:.5rem 0}
 .share-btns{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
 .share-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:10px;text-decoration:none;font-size:.82rem;font-weight:600;color:#fff;transition:transform .2s}
 .share-btn:hover{transform:translateY(-2px)}
@@ -64,15 +62,6 @@ img{max-width:100%;height:auto}
 .share-btn.tw{background:#000}
 .share-btn.fb{background:#1877F2}
 .share-btn.cp{background:var(--green)}
-.related-section{margin:2rem 0 3rem}
-.related-section h3{font-size:1rem;color:var(--green);margin-bottom:1rem;text-align:center}
-.related-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.related-card{display:flex;flex-direction:column;padding:1rem;border-radius:14px;background:#fff;border:1px solid #e8eceb;text-decoration:none;color:var(--text);transition:all .3s}
-.related-card:hover{border-color:var(--teal);transform:translateY(-2px);box-shadow:0 4px 16px rgba(5,66,65,.08)}
-.related-card-title{font-size:.85rem;font-weight:700;color:var(--green);margin-bottom:4px}
-.related-card-desc{font-size:.75rem;color:var(--text2);line-height:1.4}
-.related-card-cta{font-size:.7rem;font-weight:700;color:var(--teal);margin-top:6px}
-@media(max-width:600px){.related-grid{grid-template-columns:1fr}}
 .site-footer{background:#054241;color:rgba(255,255,255,.7);padding:3rem 0 0;margin-top:2rem}
 .footer-inner{max-width:var(--max-w);margin:0 auto;padding:0 20px}
 .footer-top{display:flex;gap:2rem;flex-wrap:wrap;margin-bottom:2rem}
@@ -109,24 +98,12 @@ img{max-width:100%;height:auto}
 </head>
 <body>
 
-<nav id="navbar">
-  <div class="nav-inner">
-    <a href="/" class="nav-logo"><img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" width="100" height="50" style="height:50px;width:auto;object-fit:contain;" loading="lazy"></a>
-    <ul class="nav-links">
-      <li><a href="/health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
-      <li><a href="/finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li>
-      <li><a href="/real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li>
-      <li><a href="/travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li>
-      <li><a href="/islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li>
-      <li><a href="/blog.html"><span class="en">blog</span><span class="ar">المدونة</span></a></li>
-      <li><a href="/archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a></li>
-      <li><a href="/library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a></li>
-    </ul>
-    <div class="nav-controls">
-      <button class="nav-btn" id="lang-toggle" onclick="var r=document.documentElement;var l=r.getAttribute('data-lang')==='en'?'ar':'en';r.setAttribute('data-lang',l);r.setAttribute('lang',l);r.setAttribute('dir',l==='ar'?'rtl':'ltr');localStorage.setItem('dfl-lang',l);this.innerHTML=l==='ar'?'English':'العربية';">English</button>
-    </div>
-  </div>
-</nav>
+<!-- ═══ ARABIC HEADER ══════════════════════════════════════ -->
+<nav id="navbar"><div class="nav-inner"><a href="/" class="nav-logo"><img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" width="100" height="100" style="height:100px;width:auto;object-fit:contain;" loading="lazy"></a><ul class="nav-links"><li><a href="/health.html">الصحة</a></li><li><a href="/finance.html">المالية</a></li><li><a href="/real-estate.html">العقار</a></li><li><a href="/travel.html">السفر</a></li><li><a href="/islamic.html">الإسلامية</a></li><li><a href="/about.html">عنّا</a></li><li><a href="/archive.html">الأرشيف</a></li><li><a href="/blog.html">المدونة</a></li><li><a href="/library.html">المكتبة</a></li></ul><div class="nav-controls"><button class="nav-btn" id="lang-toggle">English</button><button class="nav-btn" id="theme-toggle">
+      <svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </button></div></div></nav>
+<!-- ═══ END HEADER ══════════════════════════════════════ -->
 
 <div class="article-wrap">
 
@@ -144,27 +121,16 @@ img{max-width:100%;height:auto}
   </div>
 </section>
 
+<div class="article-layout">
+
+<main class="article-main">
 <article class="article-body">
-
-<h1>🏖️ السياحة الداخلية أم السفر الخارجي للعائلة صيف 2026؟ دليل قرار كامل</h1>
-
-<div class="toc">
-  <div class="toc-title">📋 المحتويات</div>
-  <ul class="toc-list">
-    <li><a href="#comparison">جدول المقارنة الشامل</a></li>
-    <li><a href="#cost">مقارنة التكاليف بالأرقام</a></li>
-    <li><a href="#weather">الطقس والتوقيت</a></li>
-    <li><a href="#kids">أيها أفضل للأطفال؟</a></li>
-    <li><a href="#when">متى يناسب كل خيار؟</a></li>
-    <li><a href="#faq">أسئلة شائعة</a></li>
-  </ul>
-</div>
 
 <p>تتذكرتان للخارج أم أسبوع في مصائف الجنوب بنصف الكلفة؟ هذا السؤال يواجه كل أب وأم مع اقتراب الإجازة الصيفية. في هذا الدليل، نقارن بين الخيارين بموضوعية—التكلفة الإجمالية لأسرة مكونة من ٤–٦ أفراد، الوقت والإرهاق، الطقس، القيمة الترفيهية والتعليمية، وسهولة التنفيذ—لتساعدك على اتخاذ قرار يناسب ميزانيتك وأهدافك العائلية.</p>
 
 <p>الخلاصة المختصرة: لكل خيار سياقه المناسب. السياحة الداخلية تتفوق في التكلفة وسهولة التنقل وقصر وقت السفر، بينما السفر الخارجي يقدم تجارب ثقافية مختلفة ومناخاً معتدلاً في وجهات معينة. القرار النهائي يعتمد على عمر أطفالك، وميزانيتك، ونوع التجربة التي تبحث عنها.</p>
 
-<div class="comparison-badge">📊 مقارنة رقمية</div>
+<div class="comparison-badge" style="display:inline-block;background:rgba(253,120,28,.12);color:#c95f00;padding:2px 12px;border-radius:999px;font-size:.7rem;font-weight:700;margin-bottom:.5rem">📊 مقارنة رقمية</div>
 
 <h2 id="comparison">جدول المقارنة الشامل</h2>
 
@@ -180,7 +146,7 @@ img{max-width:100%;height:auto}
   <tr><td>المرونة في التغيير</td><td>عالية (إلغاء/تعديل سهل)</td><td>منخفضة (قيود حجز واسترداد)</td></tr>
 </table>
 
-<p class="source-ref">* الأسعار تقديرية تستند إلى متوسطات فصل الصيف 2026 في السعودية والوجهات القريبة. المصدر: HostPalace (السياحة الداخلية)، QessaTravel (الخارجية). قد تختلف الأسعار حسب الموسم ومستوى الإقامة.</p>
+<p style="font-size:.75rem;color:#888;margin-top:-.5rem;margin-bottom:1rem;font-style:italic">* الأسعار تقديرية تستند إلى متوسطات فصل الصيف 2026 في السعودية والوجهات القريبة. المصدر: HostPalace (السياحة الداخلية)، QessaTravel (الخارجية). قد تختلف الأسعار حسب الموسم ومستوى الإقامة.</p>
 
 <h2 id="cost">🔢 مقارنة التكاليف بالأرقام (أسرة مكونة من ٤–٦ أفراد)</h2>
 
@@ -197,7 +163,7 @@ img{max-width:100%;height:auto}
   <tr><td><strong>الإجمالي التقديري</strong></td><td><strong>٣٬٦٠٠–٦٬٥٠٠ ريال</strong></td><td><strong>١٢٬٨٠٠–٢٦٬٠٠٠ ريال</strong></td></tr>
 </table>
 
-<p class="source-ref">المصادر: HostPalace «تكلفة السياحة الداخلية في السعودية 2026» (hostpalace.com)، QessaTravel لمتوسط أسعار السفر الخارجي (qessatravel.com). الأسعار تقديرية وقد تختلف حسب الموسم والحجز المبكر.</p>
+<p style="font-size:.75rem;color:#888;margin-top:-.5rem;margin-bottom:1rem;font-style:italic">المصادر: HostPalace «تكلفة السياحة الداخلية في السعودية 2026» (hostpalace.com)، QessaTravel لمتوسط أسعار السفر الخارجي (qessatravel.com). الأسعار تقديرية وقد تختلف حسب الموسم والحجز المبكر.</p>
 
 <p>الفرق واضح: السياحة الداخلية أقل تكلفة بنسبة ٥٠–٧٥٪ تقريباً. لكن التكلفة ليست كل شيء. لننظر إلى العوامل الأخرى.</p>
 
@@ -235,99 +201,134 @@ img{max-width:100%;height:auto}
 <h2 id="faq">أسئلة شائعة</h2>
 
 <div class="faq-item">
-  <div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
-    ما أرخص وجهة سياحية داخلية في السعودية صيفاً؟
-    <span class="faq-arrow">▼</span>
-  </div>
-  <div class="faq-a">
-    <p>الطائف غالباً ما تكون أقل تكلفة من أبها والباحة، وتتمتع بطقس معتدل صيفاً (٢٥–٣٢ درجة). يمكن العثور على إقامة جيدة بأسعار تبدأ من ١٨٠ ريالاً لليلة (حسب HostPalace). أبها توفر طقساً أبرد (٢٠–٢٨ درجة) لكن الإقامة أغلى قليلاً. العلا وجهة ممتازة للتاريخ والطبيعة لكن أسعار الإقامة أعلى (تبدأ من ٣٠٠ ريال لليلة).</p>
-  </div>
+<div class="faq-question">ما أرخص وجهة سياحية داخلية في السعودية صيفاً؟</div>
+<div class="faq-answer">الطائف غالباً ما تكون أقل تكلفة من أبها والباحة، وتتمتع بطقس معتدل صيفاً (٢٥–٣٢ درجة). يمكن العثور على إقامة جيدة بأسعار تبدأ من ١٨٠ ريالاً لليلة (حسب HostPalace). أبها توفر طقساً أبرد (٢٠–٢٨ درجة) لكن الإقامة أغلى قليلاً. العلا وجهة ممتازة للتاريخ والطبيعة لكن أسعار الإقامة أعلى (تبدأ من ٣٠٠ ريال لليلة).</div>
 </div>
 
 <div class="faq-item">
-  <div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
-    متى أفضل وقت للسفر الخارجي للعائلة الخليجية؟
-    <span class="faq-arrow">▼</span>
-  </div>
-  <div class="faq-a">
-    <p>يونيو ويوليو هما ذروة الصيف، والوجهات الأوروبية تكون مزدحمة وأسعارها أعلى. سبتمبر وأكتوبر (قبل بدء الدراسة) يوفران طقساً معتدلاً وأسعاراً أقل. تركيا من يونيو إلى أغسطس حارة لكنها مقبولة، في حين أن بريطانيا وسويسرا معتدلتان صيفاً. خطّط للحجز المبكر (فبراير–مارس) للحصول على أفضل الأسعار.</p>
-  </div>
+<div class="faq-question">متى أفضل وقت للسفر الخارجي للعائلة الخليجية؟</div>
+<div class="faq-answer">يونيو ويوليو هما ذروة الصيف، والوجهات الأوروبية تكون مزدحمة وأسعارها أعلى. سبتمبر وأكتوبر (قبل بدء الدراسة) يوفران طقساً معتدلاً وأسعاراً أقل. تركيا من يونيو إلى أغسطس حارة لكنها مقبولة، في حين أن بريطانيا وسويسرا معتدلتان صيفاً. خطّط للحجز المبكر (فبراير–مارس) للحصول على أفضل الأسعار.</div>
 </div>
 
 <div class="faq-item">
-  <div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
-    كيف أوفر في تكاليف السفر العائلي؟
-    <span class="faq-arrow">▼</span>
-  </div>
-  <div class="faq-a">
-    <p>خمس طرق عملية: 1) احجز مبكراً (قبل ٣–٦ أشهر) لتحصل على أسعار طيران مخفضة. 2) اختر وجهة داخلية إذا كانت ميزانيتك تقل عن ٨٠٠٠ ريال. 3) استخدم بطاقات ائتمان تكافئك بأميال السفر. 4) اختر إقامة مع مطبخ صغير لتوفير وجبات الإفطار والعشاء. 5) سافر خارج مواسم الذروة (الأسبوع الأول من يونيو أو آخر أغسطس غالباً أقل سعراً).</p>
-  </div>
+<div class="faq-question">كيف أوفر في تكاليف السفر العائلي؟</div>
+<div class="faq-answer">خمس طرق عملية: 1) احجز مبكراً (قبل ٣–٦ أشهر) لتحصل على أسعار طيران مخفضة. 2) اختر وجهة داخلية إذا كانت ميزانيتك تقل عن ٨٠٠٠ ريال. 3) استخدم بطاقات ائتمان تكافئك بأميال السفر. 4) اختر إقامة مع مطبخ صغير لتوفير وجبات الإفطار والعشاء. 5) سافر خارج مواسم الذروة (الأسبوع الأول من يونيو أو آخر أغسطس غالباً أقل سعراً).</div>
 </div>
 
 <div class="faq-item">
-  <div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
-    هل السياحة الداخلية في السعودية مملة للأطفال؟
-    <span class="faq-arrow">▼</span>
-  </div>
-  <div class="faq-a">
-    <p>العكس. الوجهات السعودية صارت أكثر تنوّعاً مما يعتقده الكثيرون. العلا تقدم مغامرات تاريخية (مدائن صالح، جبال الأُثَريّة)، أبها توفر الطبيعة والتلفريك والغابات، الطائف تشتهر بحدائقها ومزارع العنب، جدة توفر شواطئ وأسواقاً تاريخية. السر في التنويع: لا تقضِ الأسبوع كله في مكان واحد، بل خطّط لبرنامج يجمع بين الطبيعة والترفيه والتعليم.</p>
-  </div>
+<div class="faq-question">هل السياحة الداخلية في السعودية مملة للأطفال؟</div>
+<div class="faq-answer">العكس. الوجهات السعودية صارت أكثر تنوّعاً مما يعتقده الكثيرون. العلا تقدم مغامرات تاريخية (مدائن صالح، جبال الأُثَريّة)، أبها توفر الطبيعة والتلفريك والغابات، الطائف تشتهر بحدائقها ومزارع العنب، جدة توفر شواطئ وأسواقاً تاريخية. السر في التنويع: لا تقضِ الأسبوع كله في مكان واحد، بل خطّط لبرنامج يجمع بين الطبيعة والترفيه والتعليم.</div>
 </div>
 
 <div class="faq-item">
-  <div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
-    ما الفرق في إجراءات السفر بين الداخلي والخارجي للعائلة؟
-    <span class="faq-arrow">▼</span>
-  </div>
-  <div class="faq-a">
-    <p>السفر الداخلي أسهل بكثير. تحتاج فقط سيارة (أو تذكرة طيران/قطار) وحجوزات فندقية. لا جواز سفر، لا تأشيرة، لا عملة أجنبية، لا قيود على الأمتعة. السفر الخارجي يحتاج جواز سفر ساري المفعول للجميع (مدّة صلاحية لا تقل عن ٦ أشهر)، تأشيرة (حسب الوجهة)، تأمين سفر، عملة محلية أو بطاقات دولية، وشهادات تطعيم لبعض الوجهات. للعائلات التي تسافر أول مرة، نوصي ببدء رحلة داخلية قبل المغامرة في الخارج.</p>
-  </div>
+<div class="faq-question">ما الفرق في إجراءات السفر بين الداخلي والخارجي للعائلة؟</div>
+<div class="faq-answer">السفر الداخلي أسهل بكثير. تحتاج فقط سيارة (أو تذكرة طيران/قطار) وحجوزات فندقية. لا جواز سفر، لا تأشيرة، لا عملة أجنبية، لا قيود على الأمتعة. السفر الخارجي يحتاج جواز سفر ساري المفعول للجميع (مدّة صلاحية لا تقل عن ٦ أشهر)، تأشيرة (حسب الوجهة)، تأمين سفر، عملة محلية أو بطاقات دولية، وشهادات تطعيم لبعض الوجهات. للعائلات التي تسافر أول مرة، نوصي ببدء رحلة داخلية قبل المغامرة في الخارج.</div>
 </div>
 
 <div class="disclaimer">
   <strong>إخلاء مسؤولية:</strong> الأسعار والتكاليف في هذا المقال تقديرية مأخوذة من مصادر متاحة عام 2026. قد تختلف الأسعار حسب موسم الحجز، مستوى الإقامة، والتغييرات الاقتصادية. تحقّق من الأسعار والتوفر قبل الحجز. أنظمة السفر واشتراطات التأشيرات تختلف بين دول الخليج والوجهات الخارجية—راجع الجهات الرسمية للحصول على معلومات محدّثة.
 </div>
 
-<div class="cta-box">
-  <h3>احسب تكلفة رحلتك العائلية بدقة</h3>
-  <p>قدّر مصاريف السفر قبل أن تقرر—داخلياً أو خارجياً.</p>
-  <a href="/tools/travel-budget.html">جرب حاسبة ميزانية السفر</a>
-</div>
-
-<div class="share-section">
-  <p>شارك هذا الدليل مع عائلة تخطط لرحلتها الصيفية</p>
-  <div class="share-btns">
-    <a href="https://wa.me/?text=دليل%20مقارنة%20السياحة%20الداخلية%20والخارجية%20للأسرة%20الخليجية%202026:%20https://dotforlife.com/comparisons/domestic-vs-international-travel-family.html" class="share-btn wa" target="_blank" rel="noopener">واتساب</a>
-    <a href="https://twitter.com/intent/tweet?text=السياحة%20الداخلية%20أم%20السفر%20الخارجي%20للعائلة%20صيف%202026؟&url=https://dotforlife.com/comparisons/domestic-vs-international-travel-family.html" class="share-btn tw" target="_blank" rel="noopener">تويتر</a>
-    <a href="https://www.facebook.com/sharer.php?u=https://dotforlife.com/comparisons/domestic-vs-international-travel-family.html" class="share-btn fb" target="_blank" rel="noopener">فيسبوك</a>
-    <button class="share-btn cp" onclick="navigator.clipboard.writeText('https://dotforlife.com/comparisons/domestic-vs-international-travel-family.html');alert('تم نسخ الرابط')">نسخ الرابط</button>
-  </div>
-</div>
-
 </article>
 
-<section class="related-section">
-  <h3>قد تهمك أيضاً</h3>
-  <div class="related-grid">
-    <a href="/comparisons/saving-vs-investing-gulf-family.html" class="related-card">
-      <div class="related-card-title">💰 الادخار أم الاستثمار للأسرة الخليجية؟</div>
-      <div class="related-card-desc">مقارنة عملية بأرقام وسيناريوهات حقيقية</div>
-      <div class="related-card-cta">اقرأ المقارنة ←</div>
+<div class="article-end">
+<div class="article-share">
+  <a href="https://wa.me/?text=دليل%20مقارنة%20السياحة%20الداخلية%20والخارجية%20للأسرة%20الخليجية%202026:%20https://www.dotforlife.com/comparisons/domestic-vs-international-travel-family.html" target="_blank" rel="noopener" class="share-btn wa" aria-label="Share on WhatsApp">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span>واتساب</span>
+  </a>
+  <a href="https://twitter.com/intent/tweet?text=السياحة%20الداخلية%20أم%20السفر%20الخارجي%20للعائلة%20صيف%202026؟&url=https://www.dotforlife.com/comparisons/domestic-vs-international-travel-family.html" target="_blank" rel="noopener" class="share-btn tw" aria-label="Share on X">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    <span>إكس</span>
+  </a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.dotforlife.com/comparisons/domestic-vs-international-travel-family.html" target="_blank" rel="noopener" class="share-btn fb" aria-label="Share on Facebook">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    <span>فيسبوك</span>
+  </a>
+  <button class="share-btn cp" onclick="navigator.clipboard.writeText(location.href)" aria-label="Copy link">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+    <span>نسخ</span>
+  </button>
+</div>
+
+<div class="article-tool-cta">
+  <h3>احسب تكلفة رحلتك العائلية بدقة</h3>
+  <p>قدّر مصاريف السفر قبل أن تقرر—داخلياً أو خارجياً.</p>
+  <a href="/tools/travel-budget.html" class="tool-cta-btn">جرب الحاسبة ←</a>
+</div>
+
+<div class="article-read-also">
+  <h3>📖 اقرأ أيضاً</h3>
+  <div class="read-also-grid">
+    <a href="/comparisons/saving-vs-investing-gulf-family.html" class="read-also-card">
+      <span class="read-also-title">💰 الادخار أم الاستثمار للأسرة الخليجية؟</span>
     </a>
-    <a href="/comparisons/gold-vs-real-estate-gulf-family.html" class="related-card">
-      <div class="related-card-title">🥇 الذهب أم العقار؟ مقارنة للأسرة الخليجية</div>
-      <div class="related-card-desc">السيولة، المخاطر، العائد، الزكاة</div>
-      <div class="related-card-cta">اقرأ المقارنة ←</div>
+    <a href="/comparisons/gold-vs-real-estate-gulf-family.html" class="read-also-card">
+      <span class="read-also-title">🥇 الذهب أم العقار؟ مقارنة للأسرة الخليجية</span>
     </a>
-    <a href="/guides/saudi-tourism.html" class="related-card">
-      <div class="related-card-title">🏞️ دليل السياحة السعودية 2026</div>
-      <div class="related-card-desc">أهم الوجهات والنصائح للعائلات</div>
-      <div class="related-card-cta">اقرأ الدليل ←</div>
+    <a href="/guides/saudi-tourism.html" class="read-also-card">
+      <span class="read-also-title">🏞️ دليل السياحة السعودية 2026</span>
     </a>
   </div>
-</section>
-
 </div>
+
+<div class="article-friday-cta">
+  <h3>📬 نصائح العائلة كل جمعة</h3>
+  <p>اشترك ليصلك كل جديد يناسب عائلتك.</p>
+  <div class="friday-input-wrap">
+    <input type="email" placeholder="بريدك@example.com" aria-label="البريد الإلكتروني">
+    <button onclick="alert('🚧 قريباً — تكامل التسجيل.')">اشترك</button>
+  </div>
+</div>
+
+<div class="article-tags">
+  <span class="tag">#سفر</span>
+  <span class="tag">#عائلة</span>
+  <span class="tag">#مقارنات</span>
+  <span class="tag">#صيف</span>
+  <span class="tag">#ميزانية</span>
+</div>
+</div>
+</main>
+
+<aside class="article-sidebar">
+<div class="sidebar-module sidebar-team-card">
+  <img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" width="56" height="56" loading="lazy">
+  <div class="team-name">فريق Dot4Life</div>
+  <div class="team-trust">محتوى موثوق، معدّ بعناية للعائلات الخليجية.</div>
+  <a href="/editorial-standards.html" class="team-link">معاييرنا ←</a>
+</div>
+
+<div class="sidebar-module sidebar-toc">
+  <h4>📑 المحتويات</h4>
+  <a href="#comparison" class="toc-item">جدول المقارنة الشامل</a>
+  <a href="#cost" class="toc-item">مقارنة التكاليف</a>
+  <a href="#weather" class="toc-item">الطقس والتوقيت</a>
+  <a href="#kids" class="toc-item">أيها أفضل للأطفال؟</a>
+  <a href="#when" class="toc-item">متى يناسب كل خيار؟</a>
+  <a href="#faq" class="toc-item">أسئلة شائعة</a>
+</div>
+
+<div class="sidebar-module sidebar-related">
+  <h4>ذات صلة</h4>
+  <a href="/comparisons/saving-vs-investing-gulf-family.html" class="sidebar-related-item">
+    <span class="related-title">الادخار أم الاستثمار</span>
+  </a>
+  <a href="/comparisons/gold-vs-real-estate-gulf-family.html" class="sidebar-related-item">
+    <span class="related-title">الذهب أم العقار</span>
+  </a>
+</div>
+
+<div class="sidebar-module sidebar-tools">
+  <h4>🛠 أدوات</h4>
+  <a href="/tools/travel-budget.html" class="tool-btn">ميزانية السفر</a>
+  <a href="/tools/currency-converter.html" class="tool-btn">محول العملات</a>
+</div>
+</aside>
+
+</div><!-- /article-layout -->
+
+</div><!-- /article-wrap -->
 
 <footer class="site-footer" role="contentinfo">
   <div class="footer-inner">
@@ -387,6 +388,11 @@ img{max-width:100%;height:auto}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"ما أرخص وجهة سياحية داخلية في السعودية صيفاً؟","acceptedAnswer":{"@type":"Answer","text":"الطائف غالباً أقل تكلفة من أبها والباحة، وتتمتع بطقس معتدل صيفاً ٢٥–٣٢ درجة. إقامة جيدة تبدأ من ١٨٠ ريالاً لليلة."}},{"@type":"Question","name":"متى أفضل وقت للسفر الخارجي للعائلة الخليجية؟","acceptedAnswer":{"@type":"Answer","text":"يونيو ويوليو ذروة الصيف. سبتمبر وأكتوبر يوفران طقساً معتدلاً وأسعاراً أقل. خطط للحجز المبكر فبراير–مارس."}},{"@type":"Question","name":"كيف أوفر في تكاليف السفر العائلي؟","acceptedAnswer":{"@type":"Answer","text":"احجز مبكراً، اختر وجهة داخلية للميزانيات الأقل، استخدم بطاقات الأميال، اختر إقامة مع مطبخ صغير، سافر خارج مواسم الذروة."}},{"@type":"Question","name":"هل السياحة الداخلية في السعودية مملة للأطفال؟","acceptedAnswer":{"@type":"Answer","text":"العكس. الوجهات السعودية متنوعة: العلا للمغامرات التاريخية، أبها للطبيعة والتلفريك، الطائف للحدائق، جدة للشواطئ. التنويع هو السر."}},{"@type":"Question","name":"ما الفرق في إجراءات السفر بين الداخلي والخارجي؟","acceptedAnswer":{"@type":"Answer","text":"السفر الداخلي أسهل بكثير—لا جواز، لا تأشيرة، لا عملة أجنبية. الخارجي يحتاج جوازاً، تأشيرة، تأمين سفر، وعملة محلية."}}]}
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('.faq-question').forEach(function(q){q.addEventListener('click',function(){this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')})})});
 </script>
 
 </body>
