@@ -1,0 +1,232 @@
+/*
+ * DOTFORLIFE — Per-tool accent colors
+ * Palettes from brand green harmonies (#003300, #597931, #00cc99, #ff9900,
+ * #3f6a54, #4f6e71, #e4a31e, #99cc66, #28bca9, #fb4673, #b22616…)
+ *
+ * Usage: <body class="tool-flagship-page" data-tool="bmi-calculator">
+ * Accents apply to: eyebrow, tabs, panel bar, buttons, results, trust dots, ticket rail.
+ * Navbar/footer stay brand teal — tool identity lives in the body layer.
+ */
+
+body.tool-flagship-page[data-tool] {
+  --tool-teal: var(--tool-accent);
+  --tool-teal-dark: var(--tool-accent-dark);
+  --tool-teal-light: var(--tool-accent-light);
+}
+
+/* ── Health (8) ─────────────────────────────────────────── */
+body.tool-flagship-page[data-tool="bmi-calculator"] {
+  --tool-accent: #3f6a54;
+  --tool-accent-dark: #1d2f23;
+  --tool-accent-light: #eef4f0;
+}
+
+body.tool-flagship-page[data-tool="calorie-calculator"] {
+  --tool-accent: #ff9900;
+  --tool-accent-dark: #cc7a00;
+  --tool-accent-light: #fff4e8;
+}
+
+body.tool-flagship-page[data-tool="water-calculator"] {
+  --tool-accent: #00cc99;
+  --tool-accent-dark: #00a67a;
+  --tool-accent-light: #e8faf5;
+}
+
+body.tool-flagship-page[data-tool="body-fat-calculator"] {
+  --tool-accent: #597931;
+  --tool-accent-dark: #465a26;
+  --tool-accent-light: #f2f5eb;
+}
+
+body.tool-flagship-page[data-tool="pregnancy-calculator"] {
+  --tool-accent: #fb4673;
+  --tool-accent-dark: #d93660;
+  --tool-accent-light: #fdeef2;
+}
+
+body.tool-flagship-page[data-tool="age-calculator"] {
+  --tool-accent: #4f6e71;
+  --tool-accent-dark: #3d5659;
+  --tool-accent-light: #eef2f2;
+}
+
+body.tool-flagship-page[data-tool="one-rep-max"] {
+  --tool-accent: #b22616;
+  --tool-accent-dark: #8f1e11;
+  --tool-accent-light: #fbeeec;
+}
+
+body.tool-flagship-page[data-tool="ramadan-calorie-calculator"] {
+  --tool-accent: #e4a31e;
+  --tool-accent-dark: #b88418;
+  --tool-accent-light: #fdf6e8;
+}
+
+/* ── Finance (6) ─────────────────────────────────────────── */
+body.tool-flagship-page[data-tool="mortgage-calculator"] {
+  --tool-accent: #003300;
+  --tool-accent-dark: #002200;
+  --tool-accent-light: #e6ebe6;
+}
+
+body.tool-flagship-page[data-tool="salary-calculator"] {
+  --tool-accent: #336600;
+  --tool-accent-dark: #285200;
+  --tool-accent-light: #eef5e8;
+}
+
+body.tool-flagship-page[data-tool="savings-goal"] {
+  --tool-accent: #99cc66;
+  --tool-accent-dark: #7aa352;
+  --tool-accent-light: #f3f9ec;
+}
+
+body.tool-flagship-page[data-tool="monthly-budget"] {
+  --tool-accent: #4f6e71;
+  --tool-accent-dark: #3d5659;
+  --tool-accent-light: #eef2f2;
+}
+
+body.tool-flagship-page[data-tool="roi-calculator"] {
+  --tool-accent: #e7ae27;
+  --tool-accent-dark: #b88b1f;
+  --tool-accent-light: #fdf8eb;
+}
+
+body.tool-flagship-page[data-tool="rental-yield-calculator"] {
+  --tool-accent: #597931;
+  --tool-accent-dark: #465a26;
+  --tool-accent-light: #f2f5eb;
+}
+
+/* ── Islamic (5) ─────────────────────────────────────────── */
+body.tool-flagship-page[data-tool="prayer-times"] {
+  --tool-accent: #223634;
+  --tool-accent-dark: #003300;
+  --tool-accent-light: #eef1f1;
+}
+
+body.tool-flagship-page[data-tool="qibla"] {
+  --tool-accent: #28bca9;
+  --tool-accent-dark: #1f9687;
+  --tool-accent-light: #e9f9f6;
+}
+
+body.tool-flagship-page[data-tool="zakat-calculator"] {
+  --tool-accent: #e4a31e;
+  --tool-accent-dark: #b88418;
+  --tool-accent-light: #fdf6e8;
+}
+
+body.tool-flagship-page[data-tool="hijri-converter"] {
+  --tool-accent: #3f6a54;
+  --tool-accent-dark: #2d4d3d;
+  --tool-accent-light: #eef4f0;
+}
+
+body.tool-flagship-page[data-tool="inheritance-calculator"] {
+  --tool-accent: #1d2f23;
+  --tool-accent-dark: #0f1a13;
+  --tool-accent-light: #e8ece9;
+}
+
+/* ── Travel (3) ──────────────────────────────────────────── */
+body.tool-flagship-page[data-tool="currency-converter"] {
+  --tool-accent: #00cc99;
+  --tool-accent-dark: #00a67a;
+  --tool-accent-light: #e8faf5;
+}
+
+body.tool-flagship-page[data-tool="travel-budget"] {
+  --tool-accent: #ff9900;
+  --tool-accent-dark: #cc7a00;
+  --tool-accent-light: #fff4e8;
+}
+
+body.tool-flagship-page[data-tool="packing-checklist"] {
+  --tool-accent: #99cc66;
+  --tool-accent-dark: #7aa352;
+  --tool-accent-light: #f3f9ec;
+}
+
+/* ── Accent-driven UI touches ────────────────────────────── */
+body.tool-flagship-page[data-tool] .tool-eyebrow {
+  color: var(--tool-accent-dark);
+  background: var(--tool-accent-light);
+  border-color: color-mix(in srgb, var(--tool-accent) 22%, transparent);
+}
+
+body.tool-flagship-page[data-tool] .tool-eyebrow svg {
+  color: var(--tool-accent);
+}
+
+body.tool-flagship-page[data-tool] .tool-trust li {
+  color: var(--tool-accent-dark);
+}
+
+body.tool-flagship-page[data-tool] .tool-trust li::before {
+  background: var(--tool-accent);
+}
+
+body.tool-flagship-page[data-tool] .tool-tabs-inner a.is-active {
+  color: var(--tool-accent-dark);
+  background: var(--tool-accent-light);
+  border-color: color-mix(in srgb, var(--tool-accent) 28%, transparent);
+}
+
+body.tool-flagship-page[data-tool] .tool-tabs-inner a:hover {
+  color: var(--tool-accent-dark);
+  background: var(--tool-accent-light);
+}
+
+body.tool-flagship-page[data-tool] .tool-panel::before {
+  background: var(--tool-accent);
+}
+
+body.tool-flagship-page[data-tool] .tool-panel-hdr h2 svg {
+  color: var(--tool-accent);
+}
+
+body.tool-flagship-page[data-tool] .tool-tickets-rail::before {
+  background: linear-gradient(90deg, var(--tool-accent-dark), var(--tool-gold), var(--tool-accent));
+}
+
+body.tool-flagship-page[data-tool] .tool-tickets-rail {
+  border-color: color-mix(in srgb, var(--tool-accent) 14%, transparent);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, .03),
+    0 8px 32px color-mix(in srgb, var(--tool-accent) 10%, transparent);
+}
+
+body.tool-flagship-page[data-tool] .tool-breadcrumb a {
+  color: var(--tool-accent-dark);
+}
+
+body.tool-flagship-page[data-tool] .tool-breadcrumb a:hover {
+  color: var(--tool-accent);
+}
+
+/* Calculator internals inherit via --bm-teal aliases */
+body.tool-flagship-page[data-tool] .bm-card {
+  --bm-teal: var(--tool-accent);
+  --bm-teal-l: var(--tool-accent-light);
+  --bm-teal-d: var(--tool-accent-dark);
+  --bm-cyan: var(--tool-accent);
+  --bm-cyan-l: var(--tool-accent-light);
+  --bm-cyan-d: var(--tool-accent-dark);
+}
+
+body.tool-flagship-page[data-tool] .tool-workspace .tool-panel:hover {
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, .04),
+    0 10px 32px color-mix(in srgb, var(--tool-accent) 14%, transparent);
+}
+
+[data-theme="dark"] body.tool-flagship-page[data-tool] {
+  --tool-accent-light: color-mix(in srgb, var(--tool-accent) 18%, #12100E);
+}
+
+[data-theme="dark"] body.tool-flagship-page[data-tool] .tool-eyebrow {
+  border-color: color-mix(in srgb, var(--tool-accent) 35%, transparent);
+}

@@ -9,6 +9,9 @@ body.tool-flagship-page {
   --tool-teal: #2BA8A2;
   --tool-teal-dark: #1E8C86;
   --tool-teal-light: #E8F6F5;
+  --tool-accent: var(--tool-teal);
+  --tool-accent-dark: var(--tool-teal-dark);
+  --tool-accent-light: var(--tool-teal-light);
   --tool-gold: #FFD23F;
   --tool-cream: #FFF8E7;
   --tool-ink: #1A1612;
@@ -160,12 +163,12 @@ body.tool-flagship-page .mobile-dropdown .md-controls .nav-btn {
 }
 
 .tool-breadcrumb a {
-  color: var(--tool-teal-dark);
+  color: var(--tool-accent-dark);
   text-decoration: none;
   transition: color .2s;
 }
 
-.tool-breadcrumb a:hover { color: var(--tool-teal); }
+.tool-breadcrumb a:hover { color: var(--tool-accent); }
 
 .tool-breadcrumb-sep {
   opacity: .4;
@@ -182,9 +185,9 @@ body.tool-flagship-page .mobile-dropdown .md-controls .nav-btn {
   font-weight: 700;
   letter-spacing: .08em;
   text-transform: uppercase;
-  color: var(--tool-teal-dark);
-  background: var(--tool-teal-light);
-  border: 1px solid rgba(43, 168, 162, .15);
+  color: var(--tool-accent-dark);
+  background: var(--tool-accent-light);
+  border: 1px solid color-mix(in srgb, var(--tool-accent) 15%, transparent);
   border-radius: 999px;
 }
 
@@ -196,7 +199,7 @@ body.tool-flagship-page .mobile-dropdown .md-controls .nav-btn {
 .tool-eyebrow svg {
   width: 12px;
   height: 12px;
-  color: var(--tool-teal);
+  color: var(--tool-accent);
   flex-shrink: 0;
 }
 
@@ -242,7 +245,7 @@ body.tool-flagship-page .mobile-dropdown .md-controls .nav-btn {
   gap: .35rem;
   font-size: .72rem;
   font-weight: 600;
-  color: var(--tool-teal-dark);
+  color: var(--tool-accent-dark);
 }
 
 .tool-trust li::before {
@@ -250,7 +253,7 @@ body.tool-flagship-page .mobile-dropdown .md-controls .nav-btn {
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: var(--tool-teal);
+  background: var(--tool-accent);
   flex-shrink: 0;
 }
 
@@ -295,13 +298,13 @@ body.tool-flagship-page .mobile-dropdown .md-controls .nav-btn {
 }
 
 .tool-tabs-inner a:hover {
-  color: var(--tool-teal-dark);
-  background: var(--tool-teal-light);
+  color: var(--tool-accent-dark);
+  background: var(--tool-accent-light);
 }
 
 .tool-tabs-inner a.is-active {
-  color: var(--tool-teal-dark);
-  background: var(--tool-teal-light);
+  color: var(--tool-accent-dark);
+  background: var(--tool-accent-light);
   border-color: rgba(43, 168, 162, .22);
   font-weight: 700;
 }
@@ -312,15 +315,15 @@ body.tool-flagship-page .mobile-dropdown .md-controls .nav-btn {
 body.tool-flagship-page .tool-mn {
   max-width: var(--tool-max);
   margin: 0 auto;
-  padding: .85rem var(--tool-gutter) 1.25rem;
+  padding: var(--tool-space) var(--tool-gutter) 1.35rem;
 }
 
 .tool-workspace {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: .85rem;
+  gap: var(--tool-space);
   align-items: stretch;
-  margin-bottom: 1rem;
+  margin-bottom: var(--tool-space);
 }
 
 @media (max-width: 820px) {
@@ -344,7 +347,7 @@ body.tool-flagship-page .tool-mn {
   bottom: 0;
   left: 0;
   width: 4px;
-  background: var(--tool-teal);
+  background: var(--tool-accent);
 }
 
 [dir="rtl"] .tool-panel::before {
@@ -369,7 +372,7 @@ body.tool-flagship-page .tool-mn {
 .tool-panel-hdr h2 svg {
   width: 16px;
   height: 16px;
-  color: var(--tool-teal);
+  color: var(--tool-accent);
   flex-shrink: 0;
 }
 
@@ -388,8 +391,8 @@ body.tool-flagship-page .tool-mn {
 .tool-below {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: .75rem;
-  margin-bottom: 1rem;
+  gap: var(--tool-space);
+  margin-bottom: var(--tool-space);
 }
 
 @media (max-width: 820px) {
@@ -506,7 +509,7 @@ body.tool-flagship-page .footer-bottom-links a:hover {
    Event-ticket frames · cream stub · perforated tear line
    ═══════════════════════════════════════════════════════════ */
 .tool-tickets-rail {
-  margin-top: 1rem;
+  margin-top: var(--tool-space);
   padding: clamp(1rem, 2vw, 1.35rem);
   background: linear-gradient(165deg, #FFF8E7 0%, #FFFFFF 42%, #F8FDFC 100%);
   border: 1px solid rgba(43, 168, 162, .12);
@@ -525,7 +528,7 @@ body.tool-flagship-page .footer-bottom-links a:hover {
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--tool-teal-dark), var(--tool-gold), var(--tool-teal));
+  background: linear-gradient(90deg, var(--tool-accent-dark), var(--tool-gold), var(--tool-accent));
 }
 
 .tool-tickets-head {
@@ -542,7 +545,7 @@ body.tool-flagship-page .footer-bottom-links a:hover {
   font-weight: 800;
   letter-spacing: .1em;
   text-transform: uppercase;
-  color: var(--tool-teal-dark);
+  color: var(--tool-accent-dark);
 }
 
 [data-lang="ar"] .tool-tickets-eyebrow {
@@ -553,7 +556,7 @@ body.tool-flagship-page .footer-bottom-links a:hover {
 .tool-tickets-eyebrow svg {
   width: 13px;
   height: 13px;
-  color: var(--tool-teal);
+  color: var(--tool-accent);
 }
 
 .tool-tickets-title {
@@ -689,7 +692,7 @@ body.tool-flagship-page .footer-bottom-links a:hover {
   font-size: .58rem;
   font-weight: 800;
   letter-spacing: .06em;
-  color: var(--tool-teal-dark);
+  color: var(--tool-accent-dark);
   background: rgba(255, 255, 255, .85);
   border: 1px solid rgba(43, 168, 162, .18);
   border-radius: 999px;
@@ -702,7 +705,7 @@ body.tool-flagship-page .footer-bottom-links a:hover {
   font-weight: 800;
   letter-spacing: .08em;
   text-transform: uppercase;
-  color: var(--tool-teal);
+  color: var(--tool-accent);
   margin-bottom: .25rem;
 }
 
@@ -766,13 +769,13 @@ body.tool-flagship-page .footer-bottom-links a:hover {
   margin-top: .65rem;
   font-size: .72rem;
   font-weight: 700;
-  color: var(--tool-teal-dark);
+  color: var(--tool-accent-dark);
   transition: gap .25s var(--tool-ease), color .2s;
 }
 
 .tool-ticket:hover .tool-ticket-cta {
   gap: .45rem;
-  color: var(--tool-teal);
+  color: var(--tool-accent);
 }
 
 [dir="rtl"] .tool-ticket-cta { flex-direction: row-reverse; }
