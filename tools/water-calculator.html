@@ -19,7 +19,7 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Almarai:wght@400;700;800&display=swap"/></noscript>
 <link rel="stylesheet" href="/styles/global.css?v=20260618f"/>
 <link rel="stylesheet" href="/styles/tools-shared.css?v=20260608a">
-<link rel="stylesheet" href="/styles/tools-flagship.css?v=20260624c">
+<link rel="stylesheet" href="/styles/tools-flagship.css?v=20260624d">
 <link rel="stylesheet" href="/styles/tools-accents.css?v=20260624a">
 <link rel="stylesheet" href="/styles/pages/tools_water-calculator.css?v=20260625a">
 <meta property="og:type" content="website">
@@ -448,7 +448,7 @@ window.dflTrack=function(event,params){
   </div>
 </div>
 
-<script src="/scripts/global.js" defer></script>
+<script src="/scripts/global.js?v=20260618a" defer></script>
 <script>
 var activityAddon = 0.3;
 var climateAddon = 0.2;
@@ -590,6 +590,11 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('slider-weight').addEventListener('input', syncWeightFromSlider);
   document.getElementById('exercise-mins').addEventListener('input', function() { calculateWater(true); });
   document.getElementById('special').addEventListener('change', function() { calculateWater(true); });
+  calculateWater(true);
+});
+
+document.addEventListener('dfl:langchange', function() {
+  updateSelectLabels();
   calculateWater(true);
 });
 </script>

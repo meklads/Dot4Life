@@ -19,7 +19,7 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Almarai:wght@400;700;800&display=swap"/></noscript>
 <link rel="stylesheet" href="/styles/global.css?v=20260618f"/>
 <link rel="stylesheet" href="/styles/tools-shared.css?v=20260608a">
-<link rel="stylesheet" href="/styles/tools-flagship.css?v=20260624c">
+<link rel="stylesheet" href="/styles/tools-flagship.css?v=20260624d">
 <link rel="stylesheet" href="/styles/tools-accents.css?v=20260624a">
 <link rel="stylesheet" href="/styles/pages/tools_bmi-calculator.css?v=20260624a">
 <meta property="og:type" content="website">
@@ -350,7 +350,8 @@ window.dflTrack=function(event,params){
         <a href="/index.html" class="footer-logo" aria-label="DOTFORLIFE">
           <img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" width="auto" loading="lazy">
         </a>
-        <p class="footer-tagline"><span class="en">One calm place for your family's everyday needs. Free, always.</span><span class="ar">مكان هادئ واحد لاحتياجات عائلتك اليومية. مجاني دائماً.</span></p>
+        <p class="footer-tagline"><span class="en">One calm place for your family's everyday decisions. Free, always.</span><span class="ar">مكان هادئ واحد لقرارات عائلتك اليومية. مجاني دائماً.</span></p>
+        <p class="footer-motto"><span class="en">Life, at ease.</span><span class="ar">الحياة، براحة.</span></p>
       </div>
       <div class="footer-links-grid">
         <div class="footer-col">
@@ -367,27 +368,39 @@ window.dflTrack=function(event,params){
           <h4><span class="en">Tools</span><span class="ar">الأدوات</span></h4>
           <ul>
             <li><a href="/tools/bmi-calculator.html"><span class="en">BMI Calculator</span><span class="ar">حاسبة BMI</span></a></li>
-            <li><a href="/tools/calorie-calculator.html"><span class="en">Calories</span><span class="ar">السعرات</span></a></li>
-            <li><a href="/tools/water-calculator.html"><span class="en">Water</span><span class="ar">الماء</span></a></li>
+            <li><a href="/tools/calorie-calculator.html"><span class="en">Calorie Calculator</span><span class="ar">حاسبة السعرات</span></a></li>
+            <li><a href="/tools/water-calculator.html"><span class="en">Hydration</span><span class="ar">الترطيب</span></a></li>
+            <li><a href="/tools/body-fat-calculator.html"><span class="en">Body Fat</span><span class="ar">الدهون</span></a></li>
             <li><a href="/library.html"><span class="en">All Tools</span><span class="ar">كل الأدوات</span></a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4><span class="en">Discover</span><span class="ar">اكتشف</span></h4>
+          <ul>
+            <li><a href="/blog.html"><span class="en">Blog</span><span class="ar">المدونة</span></a></li>
+            <li><a href="/archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a></li>
+            <li><a href="/our-vision.html"><span class="en">Our Vision</span><span class="ar">رؤيتنا</span></a></li>
+            <li><a href="/pregnancy-journey.html"><span class="en">Pregnancy Journey</span><span class="ar">رحلة الحمل</span></a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4><span class="en">Company</span><span class="ar">الشركة</span></h4>
           <ul>
             <li><a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a></li>
-            <li><a href="/blog.html"><span class="en">Blog</span><span class="ar">المدونة</span></a></li>
             <li><a href="/contact.html"><span class="en">Contact</span><span class="ar">تواصل</span></a></li>
+            <li><a href="/editorial-standards.html"><span class="en">Editorial Standards</span><span class="ar">المعايير التحريرية</span></a></li>
             <li><a href="/privacy-policy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a></li>
+            <li><a href="/terms.html"><span class="en">Terms</span><span class="ar">الشروط</span></a></li>
           </ul>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <span class="footer-copy">© 2026 DOTFORLIFE — <span class="en">Free for families, always.</span><span class="ar">مجاني للعائلات، دائماً.</span></span>
+      <span class="footer-copy">© 2026 DOTFORLIFE · <span class="en">Free for families, always.</span><span class="ar">مجاني للعائلات، دائماً.</span></span>
       <div class="footer-bottom-links">
         <a href="/privacy-policy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a>
         <a href="/terms.html"><span class="en">Terms</span><span class="ar">الشروط</span></a>
+        <a href="/contact.html"><span class="en">Contact</span><span class="ar">تواصل</span></a>
       </div>
     </div>
   </div>
@@ -437,7 +450,7 @@ window.dflTrack=function(event,params){
   </div>
 </div>
 
-<script src="/scripts/global.js" defer></script>
+<script src="/scripts/global.js?v=20260618a" defer></script>
 <script>
 var isMetric = true;
 var lastCat = '';
@@ -527,30 +540,13 @@ document.addEventListener('DOMContentLoaded', function(){
   calculate();
   document.getElementById('bm-height').addEventListener('input', calculate);
   document.getElementById('bm-weight').addEventListener('input', calculate);
+});
 
-  var langBtn = document.getElementById('lang-toggle');
-  if (langBtn) {
-    langBtn.addEventListener('click', function(){
-      setTimeout(function(){
-        updateSelectLabels();
-        if (lastCat) {
-          var lang = getLang();
-          document.getElementById('res-cat').textContent = catLabels[lastCat][lang];
-        }
-      }, 0);
-    });
-  }
-  var langBtnM = document.getElementById('lang-toggle-mobile');
-  if (langBtnM) {
-    langBtnM.addEventListener('click', function(){
-      setTimeout(function(){
-        updateSelectLabels();
-        if (lastCat) {
-          var lang = getLang();
-          document.getElementById('res-cat').textContent = catLabels[lastCat][lang];
-        }
-      }, 0);
-    });
+document.addEventListener('dfl:langchange', function(){
+  updateSelectLabels();
+  if (lastCat) {
+    var lang = getLang();
+    document.getElementById('res-cat').textContent = catLabels[lastCat][lang];
   }
 });
 </script>

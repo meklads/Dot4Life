@@ -79,43 +79,50 @@
   }
 
   /* ── 4. Language toggle (legacy + new ID) ───────────────── */
-  var langBtn = document.getElementById('dfl-lang-btn') || document.getElementById('lang-toggle') || document.getElementById('lang-toggle-mobile');
-  if (langBtn) {
+  function applyLanguage(targetLang) {
+    var h = document.documentElement;
+    h.setAttribute('data-lang', targetLang);
+    h.setAttribute('lang', targetLang);
+    h.setAttribute('dir', targetLang === 'ar' ? 'rtl' : 'ltr');
+    localStorage.setItem('dfl-lang', targetLang);
+    try {
+      var url = new URL(window.location.href);
+      url.searchParams.set('lang', targetLang);
+      history.replaceState(null, '', url);
+    } catch (e) { /* ignore */ }
+    document.dispatchEvent(new CustomEvent('dfl:langchange', { detail: { lang: targetLang } }));
+  }
+
+  function bindLangToggle(langBtn) {
+    if (!langBtn || langBtn.dataset.dflLangBound === '1') return;
+    langBtn.dataset.dflLangBound = '1';
     langBtn.addEventListener('click', function () {
       var h = document.documentElement;
-      var currentLang = h.getAttribute('data-lang');
+      var currentLang = h.getAttribute('data-lang') || 'en';
       var targetLang = currentLang === 'ar' ? 'en' : 'ar';
+      var hasBilingualSpans = document.querySelector('span.en, span.ar');
 
-      // Check for hreflang alternate links → navigate to opposite language page
+      // Bilingual span pages: toggle in-place (no full reload)
+      if (hasBilingualSpans) {
+        applyLanguage(targetLang);
+        return;
+      }
+
+      // Legacy pages: navigate via hreflang when available
       var altLink = document.querySelector('link[rel="alternate"][hreflang="' + targetLang + '"]');
       if (!altLink && targetLang === 'ar') {
         altLink = document.querySelector('link[rel="alternate"][hreflang="ar-SA"]');
-      }
-      if (!altLink && targetLang === 'en') {
-        altLink = document.querySelector('link[rel="alternate"][hreflang="en"]');
       }
       if (altLink && altLink.getAttribute('href')) {
         window.location.href = altLink.getAttribute('href');
         return;
       }
 
-      // Fall back to same-page span toggle (for pages without alternate links)
-      h.setAttribute('data-lang', targetLang);
-      h.setAttribute('lang', targetLang);
-      h.setAttribute('dir', targetLang === 'ar' ? 'rtl' : 'ltr');
-      localStorage.setItem('dfl-lang', targetLang);
-      // Update ALL language buttons on the page
-      document.querySelectorAll('#lang-toggle, #lang-toggle-mobile, #dfl-lang-btn').forEach(function(btn) {
-        if (btn) {
-          var txt = btn.textContent.trim();
-          if (txt === 'العربية' || txt === 'English' || txt === 'AR' || txt === 'EN' || txt === 'عربي') {
-            btn.textContent = targetLang === 'ar' ? 'English' : 'العربية';
-          }
-        }
-      });
-      document.dispatchEvent(new Event('dfl:langchange'));
+      applyLanguage(targetLang);
     });
   }
+
+  document.querySelectorAll('#dfl-lang-btn, #lang-toggle, #lang-toggle-mobile').forEach(bindLangToggle);
 
   /* ── 5. Active nav item (both main nav + mobile nav) ────── */
   var path = window.location.pathname.split('/').pop() || 'index.html';

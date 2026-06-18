@@ -19,7 +19,7 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Almarai:wght@400;700;800&display=swap"/></noscript>
 <link rel="stylesheet" href="/styles/global.css?v=20260618f"/>
 <link rel="stylesheet" href="/styles/tools-shared.css?v=20260608a">
-<link rel="stylesheet" href="/styles/tools-flagship.css?v=20260624c">
+<link rel="stylesheet" href="/styles/tools-flagship.css?v=20260624d">
 <link rel="stylesheet" href="/styles/tools-accents.css?v=20260624a">
 <link rel="stylesheet" href="/styles/pages/tools_calorie-calculator.css?v=20260624d">
 <meta property="og:type" content="website">
@@ -529,7 +529,7 @@ window.dflTrack=function(event,params){
   </div>
 </div>
 
-<script src="/scripts/global.js" defer></script>
+<script src="/scripts/global.js?v=20260618a" defer></script>
 <script>
 var currentUnit = 'metric';
 var currentGender = 'male';
@@ -697,6 +697,10 @@ document.addEventListener('DOMContentLoaded', function() {
     var el = document.getElementById(id);
     if (el) el.addEventListener('input', function() { calculateCalories(true); });
   });
+  calculateCalories(true);
+});
+
+document.addEventListener('dfl:langchange', function() {
   calculateCalories(true);
 });
 </script>
