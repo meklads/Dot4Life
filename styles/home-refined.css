@@ -1,0 +1,545 @@
+/*
+ * DOTFORLIFE — Homepage Refined Layer v3
+ * Premium editorial elevation · brand-safe · CSS-only
+ * Scoped to body.index-page — loads last
+ */
+
+body.index-page {
+  --hr-ink:          #1A1612;
+  --hr-ink-soft:     #4A524E;
+  --hr-muted:        #8E9692;
+  --hr-cream:        #F7F5F0;
+  --hr-cream-deep:   #EDE9E1;
+  --hr-paper:        #FAFAF8;
+  --hr-gold:         #e4a31e;
+  --hr-gold-soft:    #e7ae27;
+  --hr-teal:         #28bca9;
+  --hr-slate:        #223634;
+  --hr-deep:         #003300;
+  --hr-mint:         #cae4c5;
+  --hr-border:       rgba(10, 22, 18, .055);
+  --hr-border-soft:  rgba(10, 22, 18, .035);
+  --hr-shadow-sm:
+    0 1px 2px rgba(10, 22, 18, .02),
+    0 4px 20px rgba(10, 22, 18, .04);
+  --hr-shadow-md:
+    0 2px 4px rgba(10, 22, 18, .03),
+    0 12px 40px rgba(10, 22, 18, .06);
+  --hr-ease:         cubic-bezier(.22, 1, .36, 1);
+  --hr-section-y:    clamp(4rem, 8vw, 6rem);
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+body.index-page ::selection {
+  background: rgba(228, 163, 30, .22);
+  color: var(--hr-ink);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   HERO — quiet luxury, editorial calm
+   ═══════════════════════════════════════════════════════════ */
+body.index-page #hero.hero-editorial {
+  background: linear-gradient(
+    165deg,
+    var(--hr-deep) 0%,
+    var(--hr-slate) 42%,
+    #2a4540 68%,
+    rgba(202, 228, 197, .35) 88%,
+    var(--hr-paper) 100%
+  );
+}
+
+body.index-page #hero.hero-editorial::before {
+  background:
+    radial-gradient(ellipse 55% 40% at 88% 12%, rgba(228, 163, 30, .07) 0%, transparent 60%),
+    radial-gradient(ellipse 45% 35% at 8% 82%, rgba(40, 188, 169, .06) 0%, transparent 55%);
+}
+
+body.index-page #hero.hero-editorial::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  opacity: .4;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+body.index-page .hero-floats span {
+  opacity: .05;
+}
+
+body.index-page .hero-headline {
+  font-weight: 600;
+  letter-spacing: -.02em;
+  line-height: 1.14;
+  text-shadow: 0 1px 40px rgba(0, 0, 0, .12);
+}
+
+[data-lang="en"] body.index-page .hero-headline {
+  font-family: 'Cinzel', Georgia, serif;
+  font-weight: 500;
+  letter-spacing: -.015em;
+}
+
+[data-lang="ar"] body.index-page .hero-headline {
+  font-weight: 700;
+  line-height: 1.32;
+}
+
+body.index-page .hero-sub {
+  color: rgba(255, 255, 255, .62);
+  line-height: 1.75;
+  font-weight: 400;
+  font-size: clamp(.92rem, 1.35vw, 1.02rem);
+}
+
+body.index-page .hero-editorial .btn-primary {
+  background: rgba(255, 255, 255, .96);
+  color: var(--hr-slate);
+  border: 1px solid rgba(255, 255, 255, .5);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, .1);
+  font-weight: 600;
+  letter-spacing: .02em;
+}
+
+body.index-page .hero-editorial .btn-primary:hover {
+  background: #fff;
+  color: var(--hr-deep);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, .14);
+}
+
+body.index-page .hero-editorial .btn-outline {
+  border-color: rgba(255, 255, 255, .28);
+  background: rgba(255, 255, 255, .06);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: rgba(255, 255, 255, .88);
+}
+
+body.index-page .hero-editorial .btn-outline:hover {
+  background: rgba(255, 255, 255, .14);
+  border-color: rgba(255, 255, 255, .45);
+}
+
+body.index-page .hero-editorial .hero-circle {
+  border: 2px solid rgba(228, 163, 30, .25);
+  box-shadow:
+    0 0 0 8px rgba(255, 255, 255, .04),
+    0 24px 64px rgba(0, 0, 0, .22);
+}
+
+body.index-page .hero-editorial .hero-badge {
+  border: 1px solid rgba(228, 163, 30, .15);
+  border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, .1);
+}
+
+body.index-page .hero-date-ribbon-inner {
+  background: linear-gradient(
+    135deg,
+    var(--hr-slate) 0%,
+    var(--hr-deep) 52%,
+    #1a3832 100%
+  ) !important;
+  border: 1px solid rgba(228, 163, 30, .18) !important;
+  border-radius: 20px !important;
+  box-shadow: var(--hr-shadow-md) !important;
+}
+
+body.index-page .hero-date-ribbon-inner::before {
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--hr-gold) 20%,
+    var(--hr-gold-soft) 50%,
+    transparent 100%
+  );
+}
+
+body.index-page #hijri-display {
+  color: #99cc66 !important;
+}
+
+body.index-page #greg-display {
+  color: rgba(244, 244, 244, .65) !important;
+}
+
+body.index-page #dh-focus-text-standalone {
+  color: rgba(244, 244, 244, .88) !important;
+  font-weight: 500 !important;
+  letter-spacing: .01em;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SECTION MASTHEADS — magazine rhythm
+   ═══════════════════════════════════════════════════════════ */
+body.index-page .section-head {
+  padding-top: var(--hr-section-y);
+  margin-bottom: clamp(2rem, 4vw, 2.75rem);
+  gap: .65rem;
+}
+
+body.index-page .section-head::after {
+  width: 52px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--hr-gold) 0%, rgba(228, 163, 30, .25) 100%);
+  opacity: 1;
+}
+
+body.index-page .section-head-eyebrow {
+  color: var(--hr-muted);
+  font-weight: 600;
+  letter-spacing: .16em;
+}
+
+body.index-page .section-head-title {
+  font-size: clamp(1.45rem, 2.6vw, 2.05rem) !important;
+  font-weight: 600 !important;
+  letter-spacing: -.03em !important;
+  color: var(--hr-ink) !important;
+}
+
+[data-lang="en"] body.index-page .section-head-title {
+  font-family: 'Cinzel', Georgia, serif;
+  font-weight: 500 !important;
+}
+
+body.index-page .section-head-desc {
+  color: var(--hr-muted);
+  line-height: 1.7;
+  max-width: 44ch;
+}
+
+body.index-page .core-layer-marker span {
+  font-size: .56rem;
+  letter-spacing: .14em;
+  color: var(--hr-muted);
+  border-top-color: var(--hr-border);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   FEATURED STORIES — flagship editorial
+   ═══════════════════════════════════════════════════════════ */
+body.index-page .core-section--featured {
+  background: var(--hr-paper);
+}
+
+body.index-page .core-section--featured .sl-featured {
+  border-radius: 24px;
+  box-shadow: var(--hr-shadow-sm);
+}
+
+body.index-page .core-section--featured .sl-featured:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--hr-shadow-md);
+}
+
+body.index-page .core-section--featured .sl-featured-body::before {
+  height: 2px;
+  opacity: .75;
+  background: linear-gradient(90deg, var(--hr-gold) 0%, var(--hr-teal) 100%);
+}
+
+body.index-page .core-section--featured .sl-featured-kicker {
+  color: var(--hr-teal);
+  letter-spacing: .13em;
+}
+
+body.index-page .core-section--featured .sl-featured-title {
+  color: var(--hr-ink);
+  letter-spacing: -.02em;
+}
+
+[data-lang="en"] body.index-page .core-section--featured .sl-featured-title {
+  font-family: 'Cinzel', Georgia, serif;
+  font-weight: 500;
+}
+
+body.index-page .core-section--featured .sl-latest {
+  background: rgba(255, 255, 255, .72);
+  border: 1px solid var(--hr-border-soft);
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--hr-shadow-sm);
+}
+
+body.index-page .core-section--featured .sl-latest-header {
+  color: var(--hr-ink-soft);
+  letter-spacing: .12em;
+  font-size: .62rem;
+}
+
+body.index-page .core-section--featured .sl-latest-item {
+  border-color: var(--hr-border-soft);
+  transition: background .28s var(--hr-ease), padding-inline .28s var(--hr-ease);
+}
+
+body.index-page .core-section--featured .sl-latest-item:hover {
+  background: rgba(255, 255, 255, .85);
+}
+
+body.index-page .core-section--featured .sl-latest-item-title {
+  color: var(--hr-ink);
+  font-weight: 600;
+  line-height: 1.42;
+}
+
+body.index-page .core-section--featured .sl-latest-item:hover .sl-latest-item-title {
+  color: var(--hr-slate);
+}
+
+body.index-page .core-section--featured .sl-promo {
+  border-radius: 24px;
+  border-color: var(--hr-border);
+  box-shadow: var(--hr-shadow-sm);
+  overflow: hidden;
+}
+
+body.index-page .core-section--featured .sl-promo:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--hr-shadow-md);
+}
+
+body.index-page .core-section--featured .sl-promo-kicker {
+  color: var(--hr-gold);
+}
+
+body.index-page .core-section--featured .sl-promo-btn {
+  color: var(--hr-slate);
+  font-weight: 600;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   DECISIONS & COMPARISONS — confident, clean
+   ═══════════════════════════════════════════════════════════ */
+body.index-page .core-section--decisions {
+  background: linear-gradient(180deg, var(--hr-cream) 0%, var(--hr-paper) 100%);
+  border-top-color: var(--hr-border-soft);
+}
+
+body.index-page .core-section--decisions .dc-item {
+  border-radius: 20px;
+  border-color: var(--hr-border);
+  box-shadow: none;
+  transition:
+    transform .32s var(--hr-ease),
+    box-shadow .32s var(--hr-ease),
+    border-color .32s;
+}
+
+body.index-page .core-section--decisions .dc-item:hover {
+  transform: translateX(3px);
+  box-shadow: var(--hr-shadow-sm);
+  border-color: rgba(228, 163, 30, .2);
+}
+
+[data-lang="ar"] body.index-page .core-section--decisions .dc-item:hover {
+  transform: translateX(-3px);
+}
+
+body.index-page .core-section--decisions .dc-item-cat {
+  color: var(--hr-gold);
+  letter-spacing: .12em;
+}
+
+body.index-page .core-section--decisions .dc-item-title {
+  color: var(--hr-ink);
+  font-weight: 600;
+}
+
+body.index-page .core-section--decisions .dc-vs {
+  background: var(--hr-slate);
+  box-shadow: 0 2px 8px rgba(34, 54, 52, .25);
+}
+
+body.index-page .core-section--decisions .dc-view-all {
+  color: var(--hr-slate);
+  font-weight: 600;
+}
+
+body.index-page .core-section--decisions .dc-view-all:hover {
+  color: var(--hr-gold);
+}
+
+body.index-page .core-section--decisions .dc-side-ad,
+body.index-page .core-section--decisions .dc-side-banner {
+  border-radius: 20px;
+  border: 1px solid var(--hr-border);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   DAILY HOME — warm sanctuary
+   ═══════════════════════════════════════════════════════════ */
+body.index-page .core-peace-moment .mm-grid {
+  border-radius: 24px;
+  background: linear-gradient(145deg, #FDFCF9 0%, #F6F1E8 55%, #FAF8F4 100%);
+  box-shadow: var(--hr-shadow-sm);
+}
+
+body.index-page .core-peace-moment .mm-line {
+  color: var(--hr-ink-soft);
+}
+
+body.index-page .core-peace-daily .dh-card {
+  border-radius: 20px;
+  border-color: var(--hr-border);
+  background: rgba(255, 255, 255, .9);
+}
+
+body.index-page .core-peace-daily .dh-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--hr-shadow-sm);
+}
+
+body.index-page .core-peace-daily .dh-add-btn,
+body.index-page .core-peace-daily .dh-fab {
+  background: var(--hr-slate);
+}
+
+body.index-page .core-peace-daily .dh-add-btn:hover,
+body.index-page .core-peace-daily .dh-fab:hover {
+  background: var(--hr-deep);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PILLARS — five quiet doors
+   ═══════════════════════════════════════════════════════════ */
+body.index-page .core-section--pillars {
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(237, 233, 225, .4) 45%,
+    transparent 100%
+  );
+}
+
+body.index-page .pillar-card {
+  border-radius: 22px;
+  border-color: var(--hr-border);
+  box-shadow: var(--hr-shadow-sm);
+}
+
+body.index-page .pillar-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--hr-shadow-md);
+}
+
+body.index-page .pillar-card-kicker {
+  color: var(--hr-gold);
+}
+
+body.index-page .pillar-card-title {
+  color: var(--hr-ink);
+}
+
+body.index-page .pillar-more-links a:hover {
+  color: var(--hr-gold);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ARTICLE FEED + FRIDAY LETTER
+   ═══════════════════════════════════════════════════════════ */
+body.index-page .hl-art-card {
+  border-radius: 22px;
+  border-color: var(--hr-border);
+  box-shadow: var(--hr-shadow-sm);
+}
+
+body.index-page .hl-art-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--hr-shadow-md);
+}
+
+body.index-page .hl-art-card-kicker {
+  color: var(--hr-gold);
+}
+
+body.index-page .hl-art-card-title {
+  font-weight: 600;
+  color: var(--hr-ink);
+}
+
+body.index-page .hl-art-card-arrow {
+  color: var(--hr-slate);
+}
+
+body.index-page .hl-art-card:hover .hl-art-card-arrow {
+  color: var(--hr-gold);
+}
+
+body.index-page #friday-letter {
+  background: linear-gradient(
+    165deg,
+    var(--hr-cream) 0%,
+    var(--hr-paper) 48%,
+    rgba(202, 228, 197, .15) 100%
+  );
+  border-top: 1px solid var(--hr-border);
+  border-bottom: 1px solid var(--hr-border);
+  border-radius: 0;
+  padding-top: clamp(4rem, 8vw, 5.5rem);
+  padding-bottom: clamp(4rem, 8vw, 5.5rem);
+}
+
+body.index-page #friday-letter::before {
+  background: linear-gradient(90deg, transparent, var(--hr-gold), transparent);
+  width: 48px;
+  height: 1px;
+}
+
+body.index-page .fl-eyebrow {
+  color: var(--hr-gold);
+  letter-spacing: .15em;
+}
+
+body.index-page .fl-headline {
+  color: var(--hr-ink);
+  font-weight: 500;
+}
+
+[data-lang="en"] body.index-page .fl-headline {
+  font-family: 'Cinzel', Georgia, serif;
+}
+
+body.index-page .fl-btn {
+  background: var(--hr-slate);
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+body.index-page .fl-btn:hover {
+  background: var(--hr-deep);
+}
+
+body.index-page .fl-input {
+  border-radius: 999px;
+  border-color: var(--hr-border);
+}
+
+body.index-page .fl-input:focus {
+  border-color: var(--hr-gold);
+  box-shadow: 0 0 0 3px rgba(228, 163, 30, .12);
+}
+
+/* ── Calmer motion on touch devices ─────────────────────── */
+@media (max-width: 768px) {
+  body.index-page .core-section--featured .sl-featured:hover,
+  body.index-page .pillar-card:hover,
+  body.index-page .hl-art-card:hover {
+    transform: none;
+  }
+
+  body.index-page .section-head-title {
+    font-size: clamp(1.3rem, 5vw, 1.65rem) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.index-page {
+    scroll-behavior: auto;
+  }
+}
