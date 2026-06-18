@@ -9,19 +9,20 @@
 <script>(function(){var p=new URLSearchParams(location.search),gd=(function(){try{var z=(Intl.DateTimeFormat().resolvedOptions().timeZone||"");return /Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test(z)?"ar":"en";}catch(e){return "ar";}})(),l=p.get("lang")||localStorage.getItem("dfl-lang")||gd,t=p.get("theme")||localStorage.getItem("dfl-theme")||"light",h=document.documentElement;h.setAttribute("data-theme",t);h.setAttribute("data-lang",l);h.setAttribute("lang",l);h.setAttribute("dir",l==="ar"?"rtl":"ltr");if(p.get("lang"))localStorage.setItem("dfl-lang",l);if(p.get("theme"))localStorage.setItem("dfl-theme",t);})()</script>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Library | جميع الأدوات | DOTFORLIFE</title>
-<meta name="description" content="All free tools and calculators on DOTFORLIFE for Gulf families."/>
+<meta name="description" content="All free tools and calculators on DOTFORLIFE for Gulf families — health, finance, Islamic life, and travel."/>
 <link rel="canonical" href="https://dotforlife.com/library.html"/>
 <link rel="alternate" hreflang="ar" href="https://dotforlife.com/library.html?lang=ar" />
-  <link rel="alternate" hreflang="en" href="https://dotforlife.com/library.html?lang=en" />
-  <link rel="alternate" hreflang="x-default" href="https://dotforlife.com/library.html" />
+<link rel="alternate" hreflang="en" href="https://dotforlife.com/library.html?lang=en" />
+<link rel="alternate" hreflang="x-default" href="https://dotforlife.com/library.html" />
 <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Almarai:wght@300;400;700&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="/styles/global.css?v=20260617c"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Almarai:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/styles/global.css?v=20260623a"/>
+<link rel="stylesheet" href="/styles/pages/library.css?v=20260623a"/>
 <script src="/scripts/global.js" defer></script>
 </head>
-<body class="index-page category-page">
+<body class="library-page">
 <nav id="navbar" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo" aria-label="DOTFORLIFE Home">
@@ -36,7 +37,7 @@
       <li><a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a></li>
       <li><a href="archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a></li>
       <li><a href="/blog.html"><span class="en">blog</span><span class="ar">المدونة</span></a></li>
-      <li><a href="library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a></li>
+      <li><a href="library.html" aria-current="page"><span class="en">Library</span><span class="ar">المكتبة</span></a></li>
     </ul>
     <div class="nav-controls">
       <button class="nav-btn" id="lang-toggle" aria-label="Switch language"><span class="en">عربي</span><span class="ar">English</span></button>
@@ -45,192 +46,223 @@
   </div>
 </nav>
 
-<style>
-*, *::before, *::after { box-sizing:border-box }
-.hl-container { width:100%; max-width:1280px; margin:0 auto; padding:0 clamp(1rem,4vw,2.5rem) }
-.hl-section { padding:clamp(2.5rem,5vw,5rem) 0 }
-.hl-section--cream { background:#FAF8F4 }
-[data-theme="dark"] .hl-section--cream { background:var(--card-bg,#1A1E24) }
-.hl-eyebrow { display:flex; align-items:center; gap:.5rem; font-size:.82rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:#6abfb8; margin-bottom:.75rem }
-.hl-h2 { font-family:'Almarai','Cinzel',Georgia,serif; font-size:clamp(1.4rem,3vw,1.9rem); font-weight:800; line-height:1.35; color:var(--text,#1A1E24); margin:0 0 1.2rem }
-.hl-sub { font-size:clamp(.92rem,1.2vw,1.05rem); color:var(--text-2,#5C534A); line-height:1.75; margin:0 0 2.5rem; max-width:640px }
-.hl-grid { display:grid; gap:1.25rem; width:100%; grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr)) }
-.hl-card { display:flex; flex-direction:column; border-radius:18px; padding:1.5rem 1.4rem; background:var(--card-bg,#fff); border:1px solid rgba(5,66,65,.08); box-shadow:0 8px 30px rgba(5,66,65,.06); transition:transform .22s, box-shadow .22s; text-decoration:none; color:inherit }
-.hl-card:hover { transform:translateY(-4px); box-shadow:0 16px 48px rgba(5,66,65,.1) }
-.hl-card-icon { width:44px; height:44px; border-radius:14px; display:flex; align-items:center; justify-content:center; background:rgba(5,66,65,.06); color:#054241; margin-bottom:1rem; flex-shrink:0; font-size:1.3rem }
-.hl-card-title { font-size:.98rem; font-weight:700; line-height:1.45; margin-bottom:.6rem; color:var(--text,#1A1E24) }
-.hl-card-desc { font-size:.84rem; line-height:1.6; color:var(--text-2,#5C534A); margin-bottom:1rem; flex:1 }
-.hl-card-arrow { font-size:.82rem; font-weight:700; color:#6abfb8; margin-top:auto; display:flex; align-items:center; gap:.3rem; transition:gap .2s }
-.hl-card:hover .hl-card-arrow { gap:.6rem }
-[data-lang="ar"] .hl-card-arrow { flex-direction:row-reverse }
-@media(max-width:640px){ .hl-section { padding:clamp(1.8rem,4vw,2.5rem) 0 }; .hl-h2 { font-size:1.25rem }; .hl-grid { gap:1rem } }
-@media(max-width:480px){ .hl-grid { grid-template-columns:1fr } }
-</style>
+<header class="lib-hero">
+  <div class="lib-hero-inner">
+    <p class="lib-eyebrow"><span class="en">Library</span><span class="ar">المكتبة</span></p>
+    <h1 class="lib-title"><span class="en">All Free Tools &amp; Calculators</span><span class="ar">جميع الأدوات والحاسبات المجانية</span></h1>
+    <p class="lib-sub"><span class="en">Every tool runs locally in your browser. No data stored or shared.</span><span class="ar">جميع الأدوات تعمل محلياً في متصفحك. لا تُخزَّن بيانات ولا تُشارَك.</span></p>
+    <ul class="lib-trust">
+      <li><span class="en">Free forever</span><span class="ar">مجاني دائماً</span></li>
+      <li><span class="en">Arabic &amp; English</span><span class="ar">عربي وإنجليزي</span></li>
+      <li><span class="en">Private by design</span><span class="ar">خصوصيتك محفوظة</span></li>
+    </ul>
+  </div>
+</header>
 
-<div class="hl-section hl-section--cream">
-  <div class="hl-container">
-    <div class="hl-eyebrow"><span class="en">Library</span><span class="ar">المكتبة</span></div>
-    <h1 class="hl-h2"><span class="en">All Free Tools & Calculators</span><span class="ar">جميع الأدوات والحاسبات المجانية</span></h1>
-    <p class="hl-sub"><span class="en">Every tool runs locally in your browser. No data stored or shared.</span><span class="ar">جميع الأدوات تعمل محلياً في متصفحك. لا تُخزَّن بيانات ولا تُشارَك.</span></p>
-    <div class="hl-grid">
-
-      <a href="/tools/bmi-calculator.html" class="hl-card" style="--hl-accent:#054241">
-        <div class="hl-card-icon">⚖️</div>
-        <div class="hl-card-title"><span class="en">BMI Calculator</span><span class="ar">حاسبة مؤشر كتلة الجسم</span></div>
-        <div class="hl-card-desc"><span class="en">WHO-standard BMI for adults.</span><span class="ar">مؤشر كتلة الجسم وفق منظمة الصحة.</span></div>
-        <div class="hl-card-arrow"><span class="en">Open →</span><span class="ar">→ افتح</span></div>
-      </a>
-
-      <a href="/tools/calorie-calculator.html" class="hl-card" style="--hl-accent:#fd781c">
-        <div class="hl-card-icon">🔥</div>
-        <div class="hl-card-title"><span class="en">Calorie & TDEE Calculator</span><span class="ar">حاسبة السعرات والطاقة</span></div>
-        <div class="hl-card-desc"><span class="en">Mifflin-St Jeor equation.</span><span class="ar">معادلة Mifflin-St Jeor.</span></div>
-        <div class="hl-card-arrow"><span class="en">Open →</span><span class="ar">→ افتح</span></div>
-      </a>
-
-      <a href="/tools/water-calculator.html" class="hl-card" style="--hl-accent:#6abfb8">
-        <div class="hl-card-icon">💧</div>
-        <div class="hl-card-title"><span class="en">Water Intake Calculator</span><span class="ar">حاسبة شرب الماء</span></div>
-        <div class="hl-card-desc"><span class="en">Adjusted for Gulf heat.</span><span class="ar">معدّلة لمناخ الخليج.</span></div>
-        <div class="hl-card-arrow"><span class="en">Open →</span><span class="ar">→ افتح</span></div>
-      </a>
-
-      <a href="/tools/body-fat-calculator.html" class="hl-card" style="--hl-accent:#054241">
-        <div class="hl-card-icon">📊</div>
-        <div class="hl-card-title"><span class="en">Body Fat Calculator</span><span class="ar">حاسبة نسبة الدهون</span></div>
-        <div class="hl-card-desc"><span class="en">US Navy method, no equipment.</span><span class="ar">بطريقة البحرية الأمريكية.</span></div>
-        <div class="hl-card-arrow"><span class="en">Open →</span><span class="ar">→ افتح</span></div>
-      </a>
-
-      <a href="/tools/pregnancy-calculator.html" class="hl-card" style="--hl-accent:#3a9d8e">
-        <div class="hl-card-icon">👶</div>
-        <div class="hl-card-title"><span class="en">Pregnancy Calculator</span><span class="ar">حاسبة الحمل</span></div>
-        <div class="hl-card-desc"><span class="en">Due date & gestational week.</span><span class="ar">موعد الولادة وأسبوع الحمل.</span></div>
-        <div class="hl-card-arrow"><span class="en">Open →</span><span class="ar">→ افتح</span></div>
-      </a>
-
-      <a href="/tools/age-calculator.html" class="hl-card" style="--hl-accent:#4a8a82">
-        <div class="hl-card-icon">📅</div>
-        <div class="hl-card-title"><span class="en">Age Calculator</span><span class="ar">حاسبة العمر</span></div>
-        <div class="hl-card-desc"><span class="en">Hijri & Gregorian support.</span><span class="ar">تدعم الهجري والميلادي.</span></div>
-        <div class="hl-card-arrow"><span class="en">Open →</span><span class="ar">→ افتح</span></div>
-      </a>
-
-      <a href="/tools/one-rep-max.html" class="hl-card" style="--hl-accent:#fd781c">
-        <div class="hl-card-icon">🏋️</div>
-        <div class="hl-card-title"><span class="en">One-Rep Max Calculator</span><span class="ar">حاسبة أقصى تكرار</span></div>
-        <div class="hl-card-desc"><span class="en">Estimate max lift weight.</span><span class="ar">احسب أقصى وزن للرفع.</span></div>
-        <div class="hl-card-arrow"><span class="en">Open →</span><span class="ar">→ افتح</span></div>
-      </a>
-
-      <a href="/tools/ramadan-calorie-calculator.html" class="hl-card" style="--hl-accent:#b8893c">
-        <div class="hl-card-icon">🌙</div>
-        <div class="hl-card-title"><span class="en">Ramadan Calorie Calculator</span><span class="ar">حاسبة سعرات رمضان</span></div>
-        <div class="hl-card-desc"><span class="en">Suhoor & Iftar nutrition.</span><span class="ar">التغذية في السحور والإفطار.</span></div>
-        <div class="hl-card-arrow"><span class="en">Open →</span><span class="ar">→ افتح</span></div>
-      </a>
-
-      <a href="/tools/mortgage-calculator.html" class="hl-card" style="--hl-accent:#054241">
-        <div class="hl-card-icon">🏠</div>
-        <div class="hl-card-title"><span class="en">Mortgage Calculator</span><span class="ar">حاسبة التمويل العقاري</span></div>
-        <div class="hl-card-desc"><span class="en">Monthly payment & affordability.</span><span class="ar">القسط الشهري والقدرة الشرائية.</span></div>
-        <div class="hl-card-arrow"><span class="en">Open →</span><span class="ar">→ افتح</span></div>
-      </a>
-
-      <a href="/tools/salary-calculator.html" class="hl-card" style="--hl-accent:#054241">
-        <div class="hl-card-icon">💰</div>
-        <div class="hl-card-title"><span class="en">Salary Calculator</span><span class="ar">حاسبة الراتب</span></div>
-        <div class="hl-card-desc"><span class="en">Net pay after deductions.</span><span class="ar">الراتب الصافي بعد الخصومات.</span></div>
-        <div class="hl-card-arrow"><span class="en">Open →</span><span class="ar">→ افتح</span></div>
-      </a>
-
-      <a href="/tools/savings-goal.html" class="hl-card" style="--hl-accent:#6abfb8">
-        <div class="hl-card-icon">🎯</div>
-        <div class="hl-card-title"><span class="en">Savings Goal Tracker</span><span class="ar">متتبع هدف الادخار</span></div>
-        <div class="hl-card-desc"><span class="en">Plan & track your savings.</span><span class="ar">خطط وتتبّع مدخراتك.</span></div>
-        <div class="hl-card-arrow"><span class="en">Open →</span><span class="ar">→ افتح</span></div>
-      </a>
-
-      <a href="/tools/monthly-budget.html" class="hl-card" style="--hl-accent:#054241">
-        <div class="hl-card-icon">📋</div>
-        <div class="hl-card-title"><span class="en">Monthly Budget Planner</span><span class="ar">مخطط الميزانية الشهرية</span></div>
-        <div class="hl-card-desc"><span class="en">Track income & expenses.</span><span class="ar">تتبّع الإيرادات والمصروفات.</span></div>
-        <div class="hl-card-arrow"><span class="en">Open →</span><span class="ar">→ افتح</span></div>
-      </a>
-
-      <a href="/tools/roi-calculator.html" class="hl-card" style="--hl-accent:#0a6b63">
-        <div class="hl-card-icon">📈</div>
-        <div class="hl-card-title"><span class="en">ROI Calculator</span><span class="ar">حاسبة العائد على الاستثمار</span></div>
-        <div class="hl-card-desc"><span class="en">Investment return analysis.</span><span class="ar">تحليل عائد الاستثمار.</span></div>
-        <div class="hl-card-arrow"><span class="en">Open →</span><span class="ar">→ افتح</span></div>
-      </a>
-
-      <a href="/tools/rental-yield-calculator.html" class="hl-card" style="--hl-accent:#4a8a82">
-        <div class="hl-card-icon">🏘️</div>
-        <div class="hl-card-title"><span class="en">Rental Yield Calculator</span><span class="ar">حاسبة العائد الإيجاري</span></div>
-        <div class="hl-card-desc"><span class="en">Gross & net yield analysis.</span><span class="ar">تحليل العائد الإجمالي والصافي.</span></div>
-        <div class="hl-card-arrow"><span class="en">Open →</span><span class="ar">→ افتح</span></div>
-      </a>
-
-      <a href="/tools/prayer-times.html" class="hl-card" style="--hl-accent:#b8893c">
-        <div class="hl-card-icon">🕌</div>
-        <div class="hl-card-title"><span class="en">Prayer Times</span><span class="ar">مواقيت الصلاة</span></div>
-        <div class="hl-card-desc"><span class="en">Accurate daily prayer times.</span><span class="ar">مواقيت صلاة دقيقة يومياً.</span></div>
-        <div class="hl-card-arrow"><span class="en">Open →</span><span class="ar">→ افتح</span></div>
-      </a>
-
-      <a href="/tools/qibla.html" class="hl-card" style="--hl-accent:#b8893c">
-        <div class="hl-card-icon">🧭</div>
-        <div class="hl-card-title"><span class="en">Qibla Direction</span><span class="ar">اتجاه القبلة</span></div>
-        <div class="hl-card-desc"><span class="en">Find Qibla from anywhere.</span><span class="ar">اعرف اتجاه القبلة من أي مكان.</span></div>
-        <div class="hl-card-arrow"><span class="en">Open →</span><span class="ar">→ افتح</span></div>
-      </a>
-
-      <a href="/tools/zakat-calculator.html" class="hl-card" style="--hl-accent:#b8893c">
-        <div class="hl-card-icon">🤲</div>
-        <div class="hl-card-title"><span class="en">Zakat Calculator</span><span class="ar">حاسبة الزكاة</span></div>
-        <div class="hl-card-desc"><span class="en">Calculate Zakat accurately.</span><span class="ar">احسب زكاتك بدقة.</span></div>
-        <div class="hl-card-arrow"><span class="en">Open →</span><span class="ar">→ افتح</span></div>
-      </a>
-
-      <a href="/tools/hijri-converter.html" class="hl-card" style="--hl-accent:#b8893c">
-        <div class="hl-card-icon">📅</div>
-        <div class="hl-card-title"><span class="en">Hijri Converter</span><span class="ar">محول التقويم الهجري</span></div>
-        <div class="hl-card-desc"><span class="en">Convert between calendars.</span><span class="ar">تحويل بين التقويمين.</span></div>
-        <div class="hl-card-arrow"><span class="en">Open →</span><span class="ar">→ افتح</span></div>
-      </a>
-
-      <a href="/tools/inheritance-calculator.html" class="hl-card" style="--hl-accent:#b8893c">
-        <div class="hl-card-icon">⚖️</div>
-        <div class="hl-card-title"><span class="en">Inheritance Calculator</span><span class="ar">حاسبة المواريث</span></div>
-        <div class="hl-card-desc"><span class="en">Islamic inheritance shares.</span><span class="ar">توزيع الميراث الشرعي.</span></div>
-        <div class="hl-card-arrow"><span class="en">Open →</span><span class="ar">→ افتح</span></div>
-      </a>
-
-      <a href="/tools/currency-converter.html" class="hl-card" style="--hl-accent:#6abfb8">
-        <div class="hl-card-icon">💱</div>
-        <div class="hl-card-title"><span class="en">Currency Converter</span><span class="ar">محول العملات</span></div>
-        <div class="hl-card-desc"><span class="en">Live exchange rates.</span><span class="ar">أسعار صرف حية.</span></div>
-        <div class="hl-card-arrow"><span class="en">Open →</span><span class="ar">→ افتح</span></div>
-      </a>
-
-      <a href="/tools/travel-budget.html" class="hl-card" style="--hl-accent:#6abfb8">
-        <div class="hl-card-icon">💼</div>
-        <div class="hl-card-title"><span class="en">Travel Budget</span><span class="ar">ميزانية السفر</span></div>
-        <div class="hl-card-desc"><span class="en">Plan your trip costs.</span><span class="ar">خطط تكاليف رحلتك.</span></div>
-        <div class="hl-card-arrow"><span class="en">Open →</span><span class="ar">→ افتح</span></div>
-      </a>
-
-      <a href="/tools/packing-checklist.html" class="hl-card" style="--hl-accent:#6abfb8">
-        <div class="hl-card-icon">🧳</div>
-        <div class="hl-card-title"><span class="en">Packing Checklist</span><span class="ar">قائمة الأمتعة</span></div>
-        <div class="hl-card-desc"><span class="en">Never forget essentials.</span><span class="ar">لا تنسَ الأساسيات أبداً.</span></div>
-        <div class="hl-card-arrow"><span class="en">Open →</span><span class="ar">→ افتح</span></div>
-      </a>
-
-    </div>
+<div class="lib-tabs-wrap" role="navigation" aria-label="Tool categories">
+  <div class="lib-tabs-inner">
+    <button type="button" class="lib-tab is-active" data-filter="all"><span class="en">All</span><span class="ar">الكل</span></button>
+    <button type="button" class="lib-tab" data-filter="health"><span class="en">Health</span><span class="ar">الصحة</span></button>
+    <button type="button" class="lib-tab" data-filter="finance"><span class="en">Finance</span><span class="ar">المالية</span></button>
+    <button type="button" class="lib-tab" data-filter="islamic"><span class="en">Islamic</span><span class="ar">الإسلامية</span></button>
+    <button type="button" class="lib-tab" data-filter="travel"><span class="en">Travel</span><span class="ar">السفر</span></button>
   </div>
 </div>
+
+<main class="lib-main" id="lib-main">
+
+  <section class="lib-section" id="cat-health" data-category="health">
+    <div class="lib-section-head">
+      <h2 class="lib-section-title"><span class="en">Health &amp; Wellbeing</span><span class="ar">الصحة والعافية</span></h2>
+      <span class="lib-section-count">8</span>
+    </div>
+    <div class="lib-grid">
+      <a href="/tools/bmi-calculator.html" class="lib-card" data-cat="health">
+        <p class="lib-card-kicker"><span class="en">Health</span><span class="ar">صحة</span></p>
+        <h3 class="lib-card-title"><span class="en">BMI Calculator</span><span class="ar">حاسبة مؤشر كتلة الجسم</span></h3>
+        <p class="lib-card-desc"><span class="en">WHO-standard BMI for adults.</span><span class="ar">مؤشر كتلة الجسم وفق منظمة الصحة.</span></p>
+        <span class="lib-card-arrow"><span class="en">Open →</span><span class="ar">← افتح</span></span>
+      </a>
+      <a href="/tools/calorie-calculator.html" class="lib-card" data-cat="health">
+        <p class="lib-card-kicker"><span class="en">Health</span><span class="ar">صحة</span></p>
+        <h3 class="lib-card-title"><span class="en">Calorie &amp; TDEE Calculator</span><span class="ar">حاسبة السعرات والطاقة</span></h3>
+        <p class="lib-card-desc"><span class="en">Mifflin-St Jeor equation.</span><span class="ar">معادلة Mifflin-St Jeor.</span></p>
+        <span class="lib-card-arrow"><span class="en">Open →</span><span class="ar">← افتح</span></span>
+      </a>
+      <a href="/tools/water-calculator.html" class="lib-card" data-cat="health">
+        <p class="lib-card-kicker"><span class="en">Health</span><span class="ar">صحة</span></p>
+        <h3 class="lib-card-title"><span class="en">Water Intake Calculator</span><span class="ar">حاسبة شرب الماء</span></h3>
+        <p class="lib-card-desc"><span class="en">Adjusted for Gulf heat.</span><span class="ar">معدّلة لمناخ الخليج.</span></p>
+        <span class="lib-card-arrow"><span class="en">Open →</span><span class="ar">← افتح</span></span>
+      </a>
+      <a href="/tools/body-fat-calculator.html" class="lib-card" data-cat="health">
+        <p class="lib-card-kicker"><span class="en">Health</span><span class="ar">صحة</span></p>
+        <h3 class="lib-card-title"><span class="en">Body Fat Calculator</span><span class="ar">حاسبة نسبة الدهون</span></h3>
+        <p class="lib-card-desc"><span class="en">US Navy method, no equipment.</span><span class="ar">بطريقة البحرية الأمريكية.</span></p>
+        <span class="lib-card-arrow"><span class="en">Open →</span><span class="ar">← افتح</span></span>
+      </a>
+      <a href="/tools/pregnancy-calculator.html" class="lib-card" data-cat="health">
+        <p class="lib-card-kicker"><span class="en">Health</span><span class="ar">صحة</span></p>
+        <h3 class="lib-card-title"><span class="en">Pregnancy Calculator</span><span class="ar">حاسبة الحمل</span></h3>
+        <p class="lib-card-desc"><span class="en">Due date &amp; gestational week.</span><span class="ar">موعد الولادة وأسبوع الحمل.</span></p>
+        <span class="lib-card-arrow"><span class="en">Open →</span><span class="ar">← افتح</span></span>
+      </a>
+      <a href="/tools/age-calculator.html" class="lib-card" data-cat="health">
+        <p class="lib-card-kicker"><span class="en">Health</span><span class="ar">صحة</span></p>
+        <h3 class="lib-card-title"><span class="en">Age Calculator</span><span class="ar">حاسبة العمر</span></h3>
+        <p class="lib-card-desc"><span class="en">Hijri &amp; Gregorian support.</span><span class="ar">تدعم الهجري والميلادي.</span></p>
+        <span class="lib-card-arrow"><span class="en">Open →</span><span class="ar">← افتح</span></span>
+      </a>
+      <a href="/tools/one-rep-max.html" class="lib-card" data-cat="health">
+        <p class="lib-card-kicker"><span class="en">Health</span><span class="ar">صحة</span></p>
+        <h3 class="lib-card-title"><span class="en">One-Rep Max Calculator</span><span class="ar">حاسبة أقصى تكرار</span></h3>
+        <p class="lib-card-desc"><span class="en">Estimate max lift weight.</span><span class="ar">احسب أقصى وزن للرفع.</span></p>
+        <span class="lib-card-arrow"><span class="en">Open →</span><span class="ar">← افتح</span></span>
+      </a>
+      <a href="/tools/ramadan-calorie-calculator.html" class="lib-card" data-cat="health">
+        <p class="lib-card-kicker"><span class="en">Health</span><span class="ar">صحة</span></p>
+        <h3 class="lib-card-title"><span class="en">Ramadan Calorie Calculator</span><span class="ar">حاسبة سعرات رمضان</span></h3>
+        <p class="lib-card-desc"><span class="en">Suhoor &amp; Iftar nutrition.</span><span class="ar">التغذية في السحور والإفطار.</span></p>
+        <span class="lib-card-arrow"><span class="en">Open →</span><span class="ar">← افتح</span></span>
+      </a>
+    </div>
+  </section>
+
+  <section class="lib-section" id="cat-finance" data-category="finance">
+    <div class="lib-section-head">
+      <h2 class="lib-section-title"><span class="en">Finance &amp; Wealth</span><span class="ar">المالية والثروة</span></h2>
+      <span class="lib-section-count">6</span>
+    </div>
+    <div class="lib-grid">
+      <a href="/tools/mortgage-calculator.html" class="lib-card" data-cat="finance">
+        <p class="lib-card-kicker"><span class="en">Finance</span><span class="ar">مالية</span></p>
+        <h3 class="lib-card-title"><span class="en">Mortgage Calculator</span><span class="ar">حاسبة التمويل العقاري</span></h3>
+        <p class="lib-card-desc"><span class="en">Monthly payment &amp; affordability.</span><span class="ar">القسط الشهري والقدرة الشرائية.</span></p>
+        <span class="lib-card-arrow"><span class="en">Open →</span><span class="ar">← افتح</span></span>
+      </a>
+      <a href="/tools/salary-calculator.html" class="lib-card" data-cat="finance">
+        <p class="lib-card-kicker"><span class="en">Finance</span><span class="ar">مالية</span></p>
+        <h3 class="lib-card-title"><span class="en">Salary Calculator</span><span class="ar">حاسبة الراتب</span></h3>
+        <p class="lib-card-desc"><span class="en">Net pay after deductions.</span><span class="ar">الراتب الصافي بعد الخصومات.</span></p>
+        <span class="lib-card-arrow"><span class="en">Open →</span><span class="ar">← افتح</span></span>
+      </a>
+      <a href="/tools/savings-goal.html" class="lib-card" data-cat="finance">
+        <p class="lib-card-kicker"><span class="en">Finance</span><span class="ar">مالية</span></p>
+        <h3 class="lib-card-title"><span class="en">Savings Goal Tracker</span><span class="ar">متتبع هدف الادخار</span></h3>
+        <p class="lib-card-desc"><span class="en">Plan &amp; track your savings.</span><span class="ar">خطط وتتبّع مدخراتك.</span></p>
+        <span class="lib-card-arrow"><span class="en">Open →</span><span class="ar">← افتح</span></span>
+      </a>
+      <a href="/tools/monthly-budget.html" class="lib-card" data-cat="finance">
+        <p class="lib-card-kicker"><span class="en">Finance</span><span class="ar">مالية</span></p>
+        <h3 class="lib-card-title"><span class="en">Monthly Budget Planner</span><span class="ar">مخطط الميزانية الشهرية</span></h3>
+        <p class="lib-card-desc"><span class="en">Track income &amp; expenses.</span><span class="ar">تتبّع الإيرادات والمصروفات.</span></p>
+        <span class="lib-card-arrow"><span class="en">Open →</span><span class="ar">← افتح</span></span>
+      </a>
+      <a href="/tools/roi-calculator.html" class="lib-card" data-cat="finance">
+        <p class="lib-card-kicker"><span class="en">Finance</span><span class="ar">مالية</span></p>
+        <h3 class="lib-card-title"><span class="en">ROI Calculator</span><span class="ar">حاسبة العائد على الاستثمار</span></h3>
+        <p class="lib-card-desc"><span class="en">Investment return analysis.</span><span class="ar">تحليل عائد الاستثمار.</span></p>
+        <span class="lib-card-arrow"><span class="en">Open →</span><span class="ar">← افتح</span></span>
+      </a>
+      <a href="/tools/rental-yield-calculator.html" class="lib-card" data-cat="finance">
+        <p class="lib-card-kicker"><span class="en">Real Estate</span><span class="ar">عقار</span></p>
+        <h3 class="lib-card-title"><span class="en">Rental Yield Calculator</span><span class="ar">حاسبة العائد الإيجاري</span></h3>
+        <p class="lib-card-desc"><span class="en">Gross &amp; net yield analysis.</span><span class="ar">تحليل العائد الإجمالي والصافي.</span></p>
+        <span class="lib-card-arrow"><span class="en">Open →</span><span class="ar">← افتح</span></span>
+      </a>
+    </div>
+  </section>
+
+  <section class="lib-section" id="cat-islamic" data-category="islamic">
+    <div class="lib-section-head">
+      <h2 class="lib-section-title"><span class="en">Islamic Life</span><span class="ar">الحياة الإسلامية</span></h2>
+      <span class="lib-section-count">5</span>
+    </div>
+    <div class="lib-grid">
+      <a href="/tools/prayer-times.html" class="lib-card" data-cat="islamic">
+        <p class="lib-card-kicker"><span class="en">Islamic</span><span class="ar">إسلامي</span></p>
+        <h3 class="lib-card-title"><span class="en">Prayer Times</span><span class="ar">مواقيت الصلاة</span></h3>
+        <p class="lib-card-desc"><span class="en">Accurate daily prayer times.</span><span class="ar">مواقيت صلاة دقيقة يومياً.</span></p>
+        <span class="lib-card-arrow"><span class="en">Open →</span><span class="ar">← افتح</span></span>
+      </a>
+      <a href="/tools/qibla.html" class="lib-card" data-cat="islamic">
+        <p class="lib-card-kicker"><span class="en">Islamic</span><span class="ar">إسلامي</span></p>
+        <h3 class="lib-card-title"><span class="en">Qibla Direction</span><span class="ar">اتجاه القبلة</span></h3>
+        <p class="lib-card-desc"><span class="en">Find Qibla from anywhere.</span><span class="ar">اعرف اتجاه القبلة من أي مكان.</span></p>
+        <span class="lib-card-arrow"><span class="en">Open →</span><span class="ar">← افتح</span></span>
+      </a>
+      <a href="/tools/zakat-calculator.html" class="lib-card" data-cat="islamic">
+        <p class="lib-card-kicker"><span class="en">Islamic</span><span class="ar">إسلامي</span></p>
+        <h3 class="lib-card-title"><span class="en">Zakat Calculator</span><span class="ar">حاسبة الزكاة</span></h3>
+        <p class="lib-card-desc"><span class="en">Calculate Zakat accurately.</span><span class="ar">احسب زكاتك بدقة.</span></p>
+        <span class="lib-card-arrow"><span class="en">Open →</span><span class="ar">← افتح</span></span>
+      </a>
+      <a href="/tools/hijri-converter.html" class="lib-card" data-cat="islamic">
+        <p class="lib-card-kicker"><span class="en">Islamic</span><span class="ar">إسلامي</span></p>
+        <h3 class="lib-card-title"><span class="en">Hijri Converter</span><span class="ar">محول التقويم الهجري</span></h3>
+        <p class="lib-card-desc"><span class="en">Convert between calendars.</span><span class="ar">تحويل بين التقويمين.</span></p>
+        <span class="lib-card-arrow"><span class="en">Open →</span><span class="ar">← افتح</span></span>
+      </a>
+      <a href="/tools/inheritance-calculator.html" class="lib-card" data-cat="islamic">
+        <p class="lib-card-kicker"><span class="en">Islamic</span><span class="ar">إسلامي</span></p>
+        <h3 class="lib-card-title"><span class="en">Inheritance Calculator</span><span class="ar">حاسبة المواريث</span></h3>
+        <p class="lib-card-desc"><span class="en">Islamic inheritance shares.</span><span class="ar">توزيع الميراث الشرعي.</span></p>
+        <span class="lib-card-arrow"><span class="en">Open →</span><span class="ar">← افتح</span></span>
+      </a>
+    </div>
+  </section>
+
+  <section class="lib-section" id="cat-travel" data-category="travel">
+    <div class="lib-section-head">
+      <h2 class="lib-section-title"><span class="en">Travel</span><span class="ar">السفر</span></h2>
+      <span class="lib-section-count">3</span>
+    </div>
+    <div class="lib-grid">
+      <a href="/tools/currency-converter.html" class="lib-card" data-cat="travel">
+        <p class="lib-card-kicker"><span class="en">Travel</span><span class="ar">سفر</span></p>
+        <h3 class="lib-card-title"><span class="en">Currency Converter</span><span class="ar">محول العملات</span></h3>
+        <p class="lib-card-desc"><span class="en">Live exchange rates.</span><span class="ar">أسعار صرف حية.</span></p>
+        <span class="lib-card-arrow"><span class="en">Open →</span><span class="ar">← افتح</span></span>
+      </a>
+      <a href="/tools/travel-budget.html" class="lib-card" data-cat="travel">
+        <p class="lib-card-kicker"><span class="en">Travel</span><span class="ar">سفر</span></p>
+        <h3 class="lib-card-title"><span class="en">Travel Budget</span><span class="ar">ميزانية السفر</span></h3>
+        <p class="lib-card-desc"><span class="en">Plan your trip costs.</span><span class="ar">خطط تكاليف رحلتك.</span></p>
+        <span class="lib-card-arrow"><span class="en">Open →</span><span class="ar">← افتح</span></span>
+      </a>
+      <a href="/tools/packing-checklist.html" class="lib-card" data-cat="travel">
+        <p class="lib-card-kicker"><span class="en">Travel</span><span class="ar">سفر</span></p>
+        <h3 class="lib-card-title"><span class="en">Packing Checklist</span><span class="ar">قائمة الأمتعة</span></h3>
+        <p class="lib-card-desc"><span class="en">Never forget essentials.</span><span class="ar">لا تنسَ الأساسيات أبداً.</span></p>
+        <span class="lib-card-arrow"><span class="en">Open →</span><span class="ar">← افتح</span></span>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<script>
+(function(){
+  var tabs = document.querySelectorAll('.lib-tab');
+  var sections = document.querySelectorAll('.lib-section');
+  function applyFilter(cat) {
+    tabs.forEach(function(t){ t.classList.toggle('is-active', t.getAttribute('data-filter') === cat); });
+    sections.forEach(function(s){
+      var show = cat === 'all' || s.getAttribute('data-category') === cat;
+      s.classList.toggle('is-hidden', !show);
+    });
+    if (cat !== 'all') {
+      var el = document.getElementById('cat-' + cat);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+  tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){ applyFilter(tab.getAttribute('data-filter')); });
+  });
+  var hash = (location.hash || '').replace('#','');
+  if (hash && document.getElementById('cat-' + hash)) applyFilter(hash);
+})();
+</script>
 
 <footer class="site-footer" role="contentinfo">
   <div class="footer-inner">
@@ -278,7 +310,7 @@
     <div class="footer-bottom"><span>&copy; 2026 DOTFORLIFE, <span class="en">Free for families, always.</span><span class="ar">مجاني للعائلات، دائماً.</span></span></div>
   </div>
 </footer>
-<!-- ═══ UNIFIED MOBILE NAV ══════════════════════════════════ -->
+
 <nav class="dfl-mobile-nav" aria-label="Mobile navigation">
   <a href="index.html" class="dfl-mnav-item" aria-label="Home">
     <svg viewBox="0 0 24 24"><polyline points="3 9 12 2 21 9"/><path d="M5 9v11a1 1 0 001 1h4v-6h4v6h4a1 1 0 001-1V9"/></svg>
