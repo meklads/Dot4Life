@@ -19,7 +19,7 @@ body.tool-flagship-page {
   --tool-border: rgba(0, 0, 0, .07);
   --tool-max: 1100px;
   --tool-gutter: clamp(1.25rem, 4vw, 2rem);
-  --tool-nav-h: 80px;
+  --tool-nav-h: 110px;
   --tool-nav-gap: clamp(1rem, 2vw, 1.35rem);
   --tool-space: clamp(.85rem, 1.5vw, 1.1rem);
   --tool-ease: cubic-bezier(.22, 1, .36, 1);
@@ -28,12 +28,12 @@ body.tool-flagship-page {
 
 @media (max-width: 768px) {
   body.tool-flagship-page {
-    --tool-nav-h: 72px;
+    --tool-nav-h: 90px;
     padding-bottom: 64px;
   }
 }
 
-/* ── Teal navbar — logo visible on dark band ─────────────── */
+/* ── Navbar — same scale as homepage (110px / 100px logo) ── */
 body.tool-flagship-page #navbar {
   height: var(--tool-nav-h);
   background: #054241 !important;
@@ -49,34 +49,38 @@ body.tool-flagship-page #navbar.scrolled {
 
 body.tool-flagship-page .nav-inner {
   height: var(--tool-nav-h);
-  max-width: var(--tool-max);
-  padding: 0 var(--tool-gutter);
+  max-width: 1280px;
+  padding: 0 clamp(16px, 3vw, 40px);
 }
 
 body.tool-flagship-page .nav-logo img {
-  height: 56px !important;
+  height: 100px !important;
   width: auto !important;
+  max-width: none !important;
+  object-fit: contain !important;
+  display: block !important;
   filter: none;
 }
 
 @media (max-width: 768px) {
   body.tool-flagship-page .nav-logo img {
-    height: 48px !important;
+    height: 75px !important;
   }
 }
 
 body.tool-flagship-page .nav-links a {
-  color: rgba(255, 255, 255, .82);
-  text-transform: none;
-  letter-spacing: 0;
+  color: rgba(255, 255, 255, .85);
+  text-transform: uppercase;
+  letter-spacing: .03em;
   font-size: .78rem;
   font-weight: 500;
-  padding: 5px 9px;
+  padding: 6px 12px;
 }
 
 [data-lang="en"] body.tool-flagship-page .nav-links a {
-  font-size: .72rem;
-  padding: 4px 7px;
+  font-size: .65rem;
+  padding: 4px 6px;
+  letter-spacing: .01em;
 }
 
 body.tool-flagship-page .nav-links a:hover {
@@ -88,19 +92,20 @@ body.tool-flagship-page .nav-links a.active,
 body.tool-flagship-page .nav-links a[aria-current="page"] {
   color: #fff;
   font-weight: 700;
-  background: rgba(255, 255, 255, .14);
+  background: rgba(255, 255, 255, .15);
 }
 
 body.tool-flagship-page .nav-btn {
   color: rgba(255, 255, 255, .85);
   border-color: rgba(255, 255, 255, .22);
   font-size: .74rem;
+  height: 34px;
 }
 
 body.tool-flagship-page .nav-btn:hover {
-  color: #fff;
-  border-color: rgba(255, 255, 255, .4);
-  background: rgba(255, 255, 255, .08);
+  color: var(--dfl-gold, #C9A227);
+  border-color: var(--dfl-gold, #C9A227);
+  background: transparent;
 }
 
 body.tool-flagship-page .hamburger span {
