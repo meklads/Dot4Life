@@ -216,43 +216,57 @@
 
 /* ── BM-SECTION ──────────────────────────── */
 .bm-section {
-  background: var(--bm-bg); border: 1px solid var(--bm-bd); border-radius: 16px;
-  padding: 22px 26px; margin-bottom: 14px;
+  background: var(--bm-bg); border: 1px solid var(--bm-bd); border-radius: 14px;
+  padding: 16px 18px; margin-bottom: 0;
   transition: box-shadow .3s var(--bm-trans);
 }
-.bm-section:hover { box-shadow: var(--bm-shl); }
+.bm-section p { font-size: .8rem; color: var(--bm-text2); line-height: 1.6; margin-bottom: .35rem; }
+.bm-section p:last-child { margin-bottom: 0; }
 .bm-section-label {
-  font-size: .85rem; font-weight: 700; color: var(--bm-text); margin-bottom: 8px;
+  font-size: .82rem; font-weight: 700; color: var(--bm-text); margin-bottom: 6px;
   display: flex; align-items: center; gap: 6px;
 }
-.bm-section-label svg { width: 14px; height: 14px; color: var(--bm-cyan); }
-.bm-section p { font-size: .85rem; color: var(--bm-text2); line-height: 1.7; margin-bottom: .5rem; }
+.bm-section-label svg { width: 14px; height: 14px; color: var(--bm-teal); }
 .bm-section strong { color: var(--bm-text); }
 
-/* ── BM-FAQ ──────────────────────────────── */
-.bm-faq { margin-bottom: 20px; }
-.bm-faq-label {
-  font-size: .72rem; font-weight: 700; color: var(--bm-cyan); text-transform: uppercase;
-  letter-spacing: .08em; text-align: center; margin-bottom: 2px;
+.bm-faq {
+  margin-bottom: 0;
+  background: var(--bm-bg);
+  border: 1px solid var(--bm-bd);
+  border-radius: 14px;
+  padding: 14px 16px;
 }
-.bm-faq-title { font-size: 1rem; font-weight: 700; color: var(--bm-text); margin: 0 0 16px; text-align: center; }
-.bm-faq-item { margin-bottom: 8px; }
+.bm-faq-label {
+  font-size: .68rem; font-weight: 700; color: var(--bm-teal);
+  text-transform: uppercase; letter-spacing: .06em; margin-bottom: 2px;
+}
+.bm-faq-title { font-size: .92rem; font-weight: 700; color: var(--bm-text); margin: 0 0 10px; }
+.bm-faq-item { margin-bottom: 6px; }
+.bm-faq-item:last-child { margin-bottom: 0; }
+.bm-faq-q { padding: 10px 12px; font-size: .78rem; border-radius: 10px; }
+.bm-faq-a.open { max-height: 280px; padding: 0 12px 10px; }
+.bm-faq-a p { font-size: .78rem; line-height: 1.6; }
+
+.bm-related { margin-bottom: 0; margin-top: .75rem; }
+.bm-related-sub { margin-bottom: 10px; font-size: .76rem; }
+.bm-related-grid { gap: 8px; }
+.bm-rc { padding: 14px 12px; border-radius: 12px; }
+
+/* ── BM-FAQ items ──────────────────────────── */
 .bm-faq-q {
   display: flex; justify-content: space-between; align-items: center;
-  padding: 14px 18px; background: var(--bm-bg); border: 1px solid var(--bm-bd); border-radius: 12px;
-  font-size: .82rem; font-weight: 600; color: var(--bm-text); cursor: pointer;
+  background: #FAFAFA; border: 1px solid var(--bm-bd);
+  font-weight: 600; color: var(--bm-text); cursor: pointer;
   transition: background .2s, border-color .2s;
 }
-.bm-faq-q:hover { background: var(--bm-cyan-l); }
-[data-theme="dark"] .bm-faq-q:hover { background: rgba(34,211,238,.06); }
-.bm-faq-q .bm-faq-arrow { font-size: .7rem; color: var(--bm-cyan); flex-shrink: 0; transition: transform .3s; }
+.bm-faq-q:hover { background: var(--bm-teal-l); }
+[data-theme="dark"] .bm-faq-q { background: rgba(255,255,255,.03); }
+[data-theme="dark"] .bm-faq-q:hover { background: rgba(60, 196, 189, .08); }
+.bm-faq-q .bm-faq-arrow { font-size: .65rem; color: var(--bm-teal); flex-shrink: 0; transition: transform .3s; }
 .bm-faq-q.open .bm-faq-arrow { transform: rotate(180deg); }
-.bm-faq-a { padding: 0 20px; max-height: 0; overflow: hidden; transition: max-height .3s ease, padding .3s ease; }
-.bm-faq-a.open { max-height: 400px; padding: 0 20px 16px; }
-.bm-faq-a p { font-size: .82rem; color: var(--bm-text2); line-height: 1.7; margin: 0; }
+.bm-faq-a { padding: 0 12px; max-height: 0; overflow: hidden; transition: max-height .3s ease, padding .3s ease; }
 
 /* ── BM-RELATED ──────────────────────────── */
-.bm-related { margin-bottom: 24px; }
 .bm-related-label {
   font-size: .72rem; font-weight: 700; color: var(--bm-cyan); text-transform: uppercase;
   letter-spacing: .08em; display: flex; align-items: center; gap: 6px; margin-bottom: 2px;
