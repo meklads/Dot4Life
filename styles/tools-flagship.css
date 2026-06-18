@@ -19,7 +19,8 @@ body.tool-flagship-page {
   --tool-border: rgba(0, 0, 0, .07);
   --tool-max: 1100px;
   --tool-gutter: clamp(1.25rem, 4vw, 2rem);
-  --tool-nav-h: 110px;
+  --tool-nav-h: 120px;
+  --tool-logo-h: 115px;
   --tool-nav-gap: clamp(1rem, 2vw, 1.35rem);
   --tool-space: clamp(.85rem, 1.5vw, 1.1rem);
   --tool-ease: cubic-bezier(.22, 1, .36, 1);
@@ -28,12 +29,13 @@ body.tool-flagship-page {
 
 @media (max-width: 768px) {
   body.tool-flagship-page {
-    --tool-nav-h: 90px;
+    --tool-nav-h: 96px;
+    --tool-logo-h: 86px;
     padding-bottom: 64px;
   }
 }
 
-/* ── Navbar — same scale as homepage (110px / 100px logo) ── */
+/* ── Navbar — homepage scale (120px bar / 115px logo) ── */
 body.tool-flagship-page #navbar {
   height: var(--tool-nav-h);
   background: #054241 !important;
@@ -54,18 +56,12 @@ body.tool-flagship-page .nav-inner {
 }
 
 body.tool-flagship-page .nav-logo img {
-  height: 100px !important;
+  height: var(--tool-logo-h) !important;
   width: auto !important;
   max-width: none !important;
   object-fit: contain !important;
   display: block !important;
   filter: none;
-}
-
-@media (max-width: 768px) {
-  body.tool-flagship-page .nav-logo img {
-    height: 75px !important;
-  }
 }
 
 body.tool-flagship-page .nav-links a {
@@ -410,103 +406,88 @@ body.tool-flagship-page .tool-rv {
 }
 
 body.tool-flagship-page .tool-below .bm-section,
-body.tool-flagship-page .tool-below .bm-faq {
+body.tool-flagship-page .tool-below .bm-faq,
+body.tool-flagship-page .tool-below .cc-section,
+body.tool-flagship-page .tool-below .cc-faq {
   margin-bottom: 0;
 }
 
-body.tool-flagship-page .tool-below .bm-faq {
+body.tool-flagship-page .tool-below .bm-faq,
+body.tool-flagship-page .tool-below .cc-faq {
   grid-column: 1 / -1;
 }
 
-/* ── Site footer — full brand footer (dark teal) ─────────── */
+/* ── Site footer — matches homepage (4-col · motto · gold accent) ── */
 body.tool-flagship-page .site-footer {
-  background: linear-gradient(180deg, var(--dfl-green-slate, #054241) 0%, var(--dfl-green-charcoal, #032a28) 100%) !important;
-  color: rgba(245, 240, 232, .68);
-  border-top: none;
-  margin-top: 0;
-  padding: 0 0 clamp(1.25rem, 2.5vw, 1.75rem);
+  margin-top: clamp(1.5rem, 3vw, 2rem);
 }
 
 body.tool-flagship-page .footer-inner {
-  max-width: var(--tool-max);
-  margin: 0 auto;
-  padding: clamp(2rem, 4vw, 2.75rem) var(--tool-gutter) 0;
+  max-width: 1100px;
 }
 
-body.tool-flagship-page .footer-main {
-  display: grid;
-  grid-template-columns: minmax(200px, 1.1fr) minmax(0, 2fr);
-  gap: clamp(1.5rem, 3vw, 2.5rem);
-  padding-bottom: clamp(1.25rem, 2.5vw, 1.75rem);
-}
-
-body.tool-flagship-page .footer-links-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(1rem, 2vw, 1.5rem);
-}
-
-body.tool-flagship-page .footer-brand p,
-body.tool-flagship-page .footer-tagline {
-  color: rgba(245, 240, 232, .68);
-  font-size: .82rem;
-  line-height: 1.6;
-  margin: .85rem 0 0;
-  max-width: 28ch;
+body.tool-flagship-page .footer-brand {
+  max-width: 280px;
 }
 
 body.tool-flagship-page .footer-brand .footer-logo img {
-  height: clamp(56px, 8vw, 72px) !important;
+  height: clamp(72px, 10vw, 88px) !important;
   width: auto !important;
+  opacity: .96;
 }
 
-body.tool-flagship-page .footer-col h4 {
-  color: rgba(245, 240, 232, .92);
-  font-size: .62rem;
-  letter-spacing: .12em;
+body.tool-flagship-page .footer-tagline {
+  font-size: .84rem;
+  line-height: 1.75;
+  max-width: 26ch;
+}
+
+body.tool-flagship-page .footer-motto {
+  margin: .85rem 0 0;
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .08em;
   text-transform: uppercase;
-  margin-bottom: .75rem;
+  color: var(--dfl-gold, #C9A227);
+  opacity: .9;
 }
 
-[data-lang="ar"] body.tool-flagship-page .footer-col h4 {
-  letter-spacing: 0;
+[data-lang="en"] body.tool-flagship-page .footer-motto {
+  letter-spacing: .06em;
   text-transform: none;
-  font-size: .68rem;
+  font-size: .78rem;
 }
 
-body.tool-flagship-page .footer-col a {
-  color: rgba(245, 240, 232, .5);
-  font-size: .82rem;
+[data-lang="ar"] body.tool-flagship-page .footer-tagline,
+[data-lang="ar"] body.tool-flagship-page .footer-motto {
+  max-width: none;
 }
 
-body.tool-flagship-page .footer-col a:hover {
-  color: var(--dfl-gold, #C9A227);
+body.tool-flagship-page .footer-links-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(1.25rem, 2.5vw, 2rem);
 }
 
-body.tool-flagship-page .footer-bottom {
-  color: rgba(245, 240, 232, .46);
-  font-size: .74rem;
-  padding-top: 1rem;
+body.tool-flagship-page .footer-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
+  flex-direction: column;
+  gap: .62rem;
+}
+
+body.tool-flagship-page .footer-col ul li a {
+  font-size: .82rem;
+  line-height: 1.45;
+  text-decoration: none;
+  transition: color .22s ease;
+}
+
+body.tool-flagship-page .footer-bottom-links {
+  display: flex;
   flex-wrap: wrap;
-  border-top: 1px solid rgba(245, 240, 232, .08);
-}
-
-body.tool-flagship-page .footer-bottom-links a {
-  color: rgba(245, 240, 232, .46);
-  font-size: .74rem;
-}
-
-body.tool-flagship-page .footer-bottom-links a:hover {
-  color: var(--dfl-gold, #C9A227);
-}
-
-[dir="rtl"] body.tool-flagship-page .footer-main,
-[dir="rtl"] body.tool-flagship-page .footer-bottom {
-  direction: rtl;
+  gap: .35rem 1.35rem;
 }
 
 /* ═══════════════════════════════════════════════════════════
