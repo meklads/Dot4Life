@@ -417,7 +417,7 @@
   <div class="hero-date-ribbon">
     <div class="hero-date-ribbon-inner">
       <div class="stat-item">
-        <div class="stat-num" id="hijri-display">, </div>
+        <div class="stat-num" id="hijri-display"></div>
         <div class="stat-label" id="greg-display"></div>
       </div>
       <div class="stat-item">
@@ -1338,21 +1338,37 @@
         var month = Math.floor((24 * l) / 709);
         var day = l - Math.floor((709 * month) / 24);
         var year = 30 * n + j - 30;
-        var months = ['محرم','صفر','ربيع الأول','ربيع الآخر','جمادى الأولى','جمادى الآخرة','رجب','شعبان','رمضان','شوال','ذو القعدة','ذو الحجة'];
-        return { d: day, m: month, y: year, mName: months[month - 1] || '' };
+        var monthsAr = ['محرم','صفر','ربيع الأول','ربيع الآخر','جمادى الأولى','جمادى الآخرة','رجب','شعبان','رمضان','شوال','ذو القعدة','ذو الحجة'];
+        var monthsEn = ['Muharram','Safar','Rabi al-Awwal','Rabi al-Thani','Jumada al-Ula','Jumada al-Thani','Rajab','Shaban','Ramadan','Shawwal','Dhu al-Qadah','Dhu al-Hijjah'];
+        return {
+          d: day,
+          m: month,
+          y: year,
+          mNameAr: monthsAr[month - 1] || '',
+          mNameEn: monthsEn[month - 1] || ''
+        };
       } catch(e){ return null; }
     }
-    var hd = getHijriDate(new Date());
-    var hijriEl = document.getElementById('hijri-display');
-    var gregEl = document.getElementById('greg-display');
-    if(hd && hijriEl){
-      hijriEl.textContent = hd.d + ' ' + hd.mName + ' ' + hd.y + ' هـ';
+
+    function updateDateRibbon(){
+      var hd = getHijriDate(new Date());
+      var hijriEl = document.getElementById('hijri-display');
+      var gregEl = document.getElementById('greg-display');
+      var lang = document.documentElement.getAttribute('data-lang') || 'en';
+      if(hd && hijriEl){
+        hijriEl.textContent = lang === 'ar'
+          ? (hd.d + ' ' + hd.mNameAr + ' ' + hd.y + ' هـ')
+          : (hd.d + ' ' + hd.mNameEn + ' ' + hd.y + ' AH');
+      }
+      if(gregEl){
+        var opts = { weekday:'long', year:'numeric', month:'long', day:'numeric' };
+        var locale = lang === 'ar' ? 'ar-SA' : 'en-US';
+        try { gregEl.textContent = new Date().toLocaleDateString(locale, opts); } catch(e){}
+      }
     }
-    if(gregEl){
-      var opts = { weekday:'long', year:'numeric', month:'long', day:'numeric' };
-      var locale = document.documentElement.getAttribute('data-lang') === 'ar' ? 'ar-SA' : 'en-US';
-      try { gregEl.textContent = new Date().toLocaleDateString(locale, opts); } catch(e){}
-    }
+
+    updateDateRibbon();
+    document.addEventListener('dfl:langchange', updateDateRibbon);
 
     // ── Newsletter form
     var nf = document.getElementById('newsletter-form');
