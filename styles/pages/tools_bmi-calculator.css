@@ -7,9 +7,12 @@
 .tool-mn { padding-bottom: 0 !important; }
 
 .bm-card {
-  --bm-cyan: #06B6D4;
-  --bm-cyan-l: #E0F8FF;
-  --bm-cyan-d: #0891B2;
+  --bm-teal: #2BA8A2;
+  --bm-teal-l: #E8F6F5;
+  --bm-teal-d: #1E8C86;
+  --bm-cyan: var(--bm-teal);
+  --bm-cyan-l: var(--bm-teal-l);
+  --bm-cyan-d: var(--bm-teal-d);
   --bm-green: #10B981;
   --bm-amber: #F59E0B;
   --bm-red: #EF4444;
@@ -24,9 +27,12 @@
 }
 
 [data-theme="dark"] .bm-card {
-  --bm-cyan: #22D3EE;
-  --bm-cyan-l: #164E63;
-  --bm-cyan-d: #06B6D4;
+  --bm-teal: #3CC4BD;
+  --bm-teal-l: #1a3835;
+  --bm-teal-d: #2BA8A2;
+  --bm-cyan: var(--bm-teal);
+  --bm-cyan-l: var(--bm-teal-l);
+  --bm-cyan-d: var(--bm-teal-d);
   --bm-green: #34D399;
   --bm-amber: #FBBF24;
   --bm-red: #F87171;
@@ -48,6 +54,17 @@
   background: var(--bm-bg); border: 1px solid var(--bm-bd); border-radius: 14px;
   padding: 14px 16px; display: flex; align-items: center; gap: 12px;
   transition: transform .3s var(--bm-trans), box-shadow .3s var(--bm-trans), border-color .3s;
+  position: relative; overflow: hidden;
+}
+.bm-gc::before {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0; left: 0;
+  width: 3px;
+  background: var(--bm-teal);
+}
+[dir="rtl"] .bm-gc::before {
+  left: auto; right: 0;
 }
 .bm-gc:hover { transform: translateY(-2px); box-shadow: var(--bm-shl); border-color: var(--bm-cyan); }
 
@@ -65,6 +82,19 @@
 .bm-card {
   background: var(--bm-bg); border: 1px solid var(--bm-bd); border-radius: 20px;
   margin-bottom: 20px; transition: box-shadow .3s var(--bm-trans);
+  position: relative; overflow: hidden;
+}
+.bm-card::before {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0; left: 0;
+  width: 4px;
+  background: var(--bm-teal);
+  border-radius: 20px 0 0 20px;
+}
+[dir="rtl"] .bm-card::before {
+  left: auto; right: 0;
+  border-radius: 0 20px 20px 0;
 }
 .bm-card:hover { box-shadow: var(--bm-shl); }
 
@@ -234,7 +264,7 @@
 /* ── BM-AFFILIATE ────────────────────────── */
 .bm-affiliate {
   display: flex; align-items: center; gap: 16px; padding: 20px 24px;
-  background: linear-gradient(135deg, #0891B2, #06B6D4);
+  background: linear-gradient(135deg, var(--bm-teal-d), var(--bm-teal));
   border: none; border-radius: 16px; margin-bottom: 14px; position: relative; color: #fff;
 }
 [data-theme="dark"] .bm-affiliate { background: linear-gradient(135deg, #164E63, #0891B2); }

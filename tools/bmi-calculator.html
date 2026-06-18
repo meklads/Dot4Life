@@ -1,54 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light" data-lang="en" dir="ltr">
 <head>
-<script>
-(function(){
-  var tb=document.getElementById("theme-toggle");
-  if(tb)tb.addEventListener("click",function(){
-    var h=document.documentElement,t=h.getAttribute("data-theme")==="dark"?"light":"dark";
-    h.setAttribute("data-theme",t);localStorage.setItem("dfl-theme",t);
-  });
-  var lb=document.getElementById("lang-toggle");
-  if(lb)lb.addEventListener("click",function(){
-    var h=document.documentElement,l=h.getAttribute("data-lang")==="ar"?"en":"ar";
-    h.setAttribute("data-lang",l);h.setAttribute("lang",l);
-    h.setAttribute("dir",l==="ar"?"rtl":"ltr");localStorage.setItem("dfl-lang",l);
-  });
-  var nb=document.getElementById("navbar");
-  if(nb)window.addEventListener("scroll",function(){nb.classList.toggle("scrolled",window.scrollY>10);},{passive:true});
-  if("IntersectionObserver" in window){
-    document.addEventListener("DOMContentLoaded",function(){
-      var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add("visible");});},{threshold:0.1});
-      document.querySelectorAll(".tool-rv").forEach(function(el){io.observe(el);});
-    });
-  } else {
-    document.addEventListener("DOMContentLoaded",function(){
-      document.querySelectorAll(".tool-rv").forEach(function(el){el.classList.add("visible");});
-    });
-  }
-  (function(){
-    var hb = document.getElementById('hamburger-btn');
-    var dd = document.getElementById('mobile-dropdown');
-    if (!hb || !dd) return;
-    function toggle(e) {
-      e.stopPropagation();
-      var open = dd.classList.toggle('open');
-      hb.classList.toggle('open', open);
-      hb.setAttribute('aria-expanded', open);
-      document.body.classList.toggle('menu-open', open);
-    }
-    function closeM() {
-      dd.classList.remove('open');
-      hb.classList.remove('open');
-      hb.setAttribute('aria-expanded', 'false');
-      document.body.classList.remove('menu-open');
-    }
-    hb.addEventListener('click', toggle);
-    document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeM(); });
-    dd.addEventListener('click', function(e){ if(e.target===dd) closeM(); });
-  })();
-})();
-</script>
 <meta charset="UTF-8"/>
 <script>(function(){var p=new URLSearchParams(location.search),gd=(function(){try{var z=(Intl.DateTimeFormat().resolvedOptions().timeZone||"");return /Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test(z)?"ar":"en";}catch(e){return "ar";}})(),l=p.get("lang")||localStorage.getItem("dfl-lang")||gd,t=p.get("theme")||localStorage.getItem("dfl-theme")||"light",h=document.documentElement;h.setAttribute("data-theme",t);h.setAttribute("data-lang",l);h.setAttribute("lang",l);h.setAttribute("dir",l==="ar"?"rtl":"ltr");if(p.get("lang"))localStorage.setItem("dfl-lang",l);if(p.get("theme"))localStorage.setItem("dfl-theme",t);})()</script>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
@@ -60,13 +12,15 @@
 <title>BMI Calculator | حاسبة مؤشر كتلة الجسم — WHO Standards | Dot For Life</title>
 <meta name="description" content="Calculate your Body Mass Index (BMI) using WHO standards. Free bilingual BMI calculator for adults — metric and imperial units."/>
 <link rel="canonical" href="https://dotforlife.com/tools/bmi-calculator.html"/>
-<link rel="alternate" hreflang="ar" href="https://dotforlife.com/tools/bmi-calculator.html" />
-<link rel="alternate" hreflang="en" href="https://dotforlife.com/tools/bmi-calculator-en.html" />
+<link rel="alternate" hreflang="ar" href="https://dotforlife.com/tools/bmi-calculator.html?lang=ar" />
+<link rel="alternate" hreflang="en" href="https://dotforlife.com/tools/bmi-calculator.html?lang=en" />
+<link rel="alternate" hreflang="x-default" href="https://dotforlife.com/tools/bmi-calculator.html" />
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Almarai:wght@400;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Almarai:wght@400;700;800&display=swap"/></noscript>
 <link rel="stylesheet" href="/styles/global.css?v=20260618f"/>
 <link rel="stylesheet" href="/styles/tools-shared.css?v=20260608a">
-<link rel="stylesheet" href="/styles/pages/tools_bmi-calculator.css?v=20260618f">
+<link rel="stylesheet" href="/styles/tools-flagship.css?v=20260623a">
+<link rel="stylesheet" href="/styles/pages/tools_bmi-calculator.css?v=20260623a">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://dotforlife.com/tools/bmi-calculator">
 <meta property="og:title" content="BMI Calculator | Dot4Life">
@@ -97,7 +51,7 @@
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://dotforlife.com" },
-        { "@type": "ListItem", "position": 2, "name": "Health Tools", "item": "https://dotforlife.com/health" },
+        { "@type": "ListItem", "position": 2, "name": "Library", "item": "https://dotforlife.com/library.html" },
         { "@type": "ListItem", "position": 3, "name": "BMI Calculator", "item": "https://dotforlife.com/tools/bmi-calculator.html" }
       ]
     },
@@ -143,11 +97,11 @@ window.dflTrack=function(event,params){
 };
 </script>
 </head>
-<body class="category-page has-subnav">
+<body class="category-page has-subnav tool-flagship-page">
 <nav id="navbar" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
     <a href="../index.html" class="nav-logo" aria-label="DOTFORLIFE Home">
-      <img src="../logo1-footer.webp" alt="DOTFORLIFE" width="100" height="100" style="height:100px;width:auto;object-fit:contain;" loading="lazy">
+      <img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" width="100" height="100" style="height:100px;width:auto;object-fit:contain;" loading="lazy">
     </a>
     <ul class="nav-links">
       <li><a href="../health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
@@ -173,6 +127,13 @@ window.dflTrack=function(event,params){
 <div class="tool-hr-wrap">
   <section class="tool-hr" aria-labelledby="tool-title">
     <div class="tool-hr-in">
+      <nav class="tool-breadcrumb" aria-label="Breadcrumb">
+        <a href="/index.html"><span class="en">Home</span><span class="ar">الرئيسية</span></a>
+        <span class="tool-breadcrumb-sep" aria-hidden="true">/</span>
+        <a href="/library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a>
+        <span class="tool-breadcrumb-sep" aria-hidden="true">/</span>
+        <span><span class="en">BMI Calculator</span><span class="ar">حاسبة BMI</span></span>
+      </nav>
       <div class="tool-hr-bd">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
         <span class="en">Health Tool</span><span class="ar">أداة صحية</span>
@@ -255,8 +216,8 @@ window.dflTrack=function(event,params){
       <div class="bm-fl" style="margin-top:6px;">
         <label class="bm-fl-l" for="bm-unit"><span class="en">Unit System</span><span class="ar">نظام الوحدات</span></label>
         <select id="bm-unit" class="bm-select" onchange="toggleUnit()">
-          <option value="metric"><span class="en">Metric (cm / kg)</span><span class="ar">متري (سم / كجم)</span></option>
-          <option value="imperial"><span class="en">Imperial (ft·in / lbs)</span><span class="ar">إمبراطوري (قدم·بوصة / رطل)</span></option>
+          <option value="metric" data-en="Metric (cm / kg)" data-ar="متري (سم / كجم)">Metric (cm / kg)</option>
+          <option value="imperial" data-en="Imperial (ft / lbs)" data-ar="إمبراطوري (قدم / رطل)">Imperial (ft / lbs)</option>
         </select>
       </div>
 
@@ -403,7 +364,7 @@ window.dflTrack=function(event,params){
     <div class="footer-top">
       <div class="footer-brand">
         <a href="../index.html" class="footer-logo" aria-label="DOTFORLIFE">
-          <img src="../logo1-footer.webp" alt="DOTFORLIFE" width="100" height="100" loading="lazy">
+          <img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" width="100" height="100" loading="lazy">
         </a>
         <p><span class="en">One calm place for your family's everyday needs. Free, always.</span><span class="ar">مكان هادئ واحد لاحتياجات عائلتك اليومية. مجاني دائماً.</span></p>
       </div>
@@ -434,7 +395,7 @@ window.dflTrack=function(event,params){
             <li><a href="../about.html"><span class="en">About</span><span class="ar">عنّا</span></a></li>
             <li><a href="../blog.html"><span class="en">Blog</span><span class="ar">المدونة</span></a></li>
             <li><a href="../contact.html"><span class="en">Contact</span><span class="ar">تواصل</span></a></li>
-            <li><a href="../privacy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a></li>
+            <li><a href="../privacy-policy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a></li>
             <li><a href="../terms.html"><span class="en">Terms</span><span class="ar">الشروط</span></a></li>
           </ul>
         </div>
@@ -444,7 +405,7 @@ window.dflTrack=function(event,params){
     <div class="footer-bottom">
       <span>© 2026 DOTFORLIFE, <span class="en">Free for families, always.</span><span class="ar">مجاني للعائلات، دائماً.</span></span>
       <div class="footer-bottom-links">
-        <a href="../privacy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a>
+        <a href="../privacy-policy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a>
         <a href="../terms.html"><span class="en">Terms</span><span class="ar">الشروط</span></a>
       </div>
     </div>
@@ -498,6 +459,25 @@ window.dflTrack=function(event,params){
 <script src="/scripts/global.js" defer></script>
 <script>
 var isMetric = true;
+var lastCat = '';
+
+var catLabels = {
+  underweight: {en:'Underweight',ar:'نقص وزن'},
+  normal: {en:'Normal Weight',ar:'وزن طبيعي'},
+  overweight: {en:'Overweight',ar:'زيادة وزن'},
+  obese: {en:'Obese',ar:'سمنة'}
+};
+
+function getLang(){
+  return document.documentElement.getAttribute('data-lang') || 'en';
+}
+
+function updateSelectLabels(){
+  var lang = getLang();
+  document.querySelectorAll('#bm-unit option').forEach(function(opt){
+    opt.textContent = opt.getAttribute('data-' + lang) || opt.textContent;
+  });
+}
 
 function toggleUnit(){
   var unit = document.getElementById('bm-unit').value;
@@ -510,61 +490,89 @@ function toggleUnit(){
 }
 
 function calculate(){
-  var h = parseFloat(document.getElementById('bm-height').value)||0;
-  var w = parseFloat(document.getElementById('bm-weight').value)||0;
-  var bmi = 0, cat = '';
-  
-  if(isMetric){
-    var hm = h/100;
-    bmi = hm > 0 ? w / (hm*hm) : 0;
+  var h = parseFloat(document.getElementById('bm-height').value) || 0;
+  var w = parseFloat(document.getElementById('bm-weight').value) || 0;
+  if (h <= 0 || w <= 0) return;
+
+  var bmi, cat, hin;
+  if (isMetric) {
+    var hm = h / 100;
+    bmi = w / (hm * hm);
   } else {
-    var hin = h * 12;
-    bmi = hin > 0 ? (w * 703) / (hin*hin) : 0;
+    hin = h * 12;
+    bmi = (w * 703) / (hin * hin);
   }
-  
-  if(bmi < 18.5) cat = 'underweight';
-  else if(bmi < 25) cat = 'normal';
-  else if(bmi < 30) cat = 'overweight';
+
+  if (bmi < 18.5) cat = 'underweight';
+  else if (bmi < 25) cat = 'normal';
+  else if (bmi < 30) cat = 'overweight';
   else cat = 'obese';
-  
-  var catLabels = {
-    underweight: {en:'Underweight',ar:'نقص وزن'},
-    normal: {en:'Normal Weight',ar:'وزن طبيعي'},
-    overweight: {en:'Overweight',ar:'زيادة وزن'},
-    obese: {en:'Obese',ar:'سمنة'}
-  };
-  var lang = document.documentElement.getAttribute('data-lang')||'en';
-  
+  lastCat = cat;
+
+  var lang = getLang();
   document.getElementById('res-bmi').textContent = bmi.toFixed(1);
   var catEl = document.getElementById('res-cat');
   catEl.textContent = catLabels[cat][lang];
   catEl.className = 'bm-cat ' + cat;
-  
+
   document.getElementById('res-height').textContent = h + (isMetric ? ' cm' : ' ft');
   document.getElementById('res-weight').textContent = w + (isMetric ? ' kg' : ' lbs');
-  
-  var low = isMetric ? (18.5 * (h/100) * (h/100)).toFixed(1) : ((18.5 * h * h / 703).toFixed(1));
-  var high = isMetric ? (24.9 * (h/100) * (h/100)).toFixed(1) : ((24.9 * h * h / 703).toFixed(1));
-  
-  if(isMetric){
+
+  var low, high;
+  if (isMetric) {
+    var hm2 = (h / 100) * (h / 100);
+    low = (18.5 * hm2).toFixed(1);
+    high = (24.9 * hm2).toFixed(1);
     document.getElementById('res-range').textContent = low + ' – ' + high + ' kg';
   } else {
+    hin = h * 12;
+    low = (18.5 * hin * hin / 703).toFixed(1);
+    high = (24.9 * hin * hin / 703).toFixed(1);
     document.getElementById('res-range').textContent = low + ' – ' + high + ' lbs';
   }
-  
-  var rc=document.getElementById('result-card');
+
+  var rc = document.getElementById('result-card');
   rc.style.display = 'block';
   rc.classList.add('visible');
-  rc.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 
 function toggleFAQ(el){
   el.classList.toggle('open');
-  var answer=el.nextElementSibling;
-  if(answer) answer.classList.toggle('open');
+  var answer = el.nextElementSibling;
+  if (answer) answer.classList.toggle('open');
 }
 
-document.addEventListener('DOMContentLoaded',function(){ calculate(); });
+document.addEventListener('DOMContentLoaded', function(){
+  updateSelectLabels();
+  calculate();
+  document.getElementById('bm-height').addEventListener('input', calculate);
+  document.getElementById('bm-weight').addEventListener('input', calculate);
+
+  var langBtn = document.getElementById('lang-toggle');
+  if (langBtn) {
+    langBtn.addEventListener('click', function(){
+      setTimeout(function(){
+        updateSelectLabels();
+        if (lastCat) {
+          var lang = getLang();
+          document.getElementById('res-cat').textContent = catLabels[lastCat][lang];
+        }
+      }, 0);
+    });
+  }
+  var langBtnM = document.getElementById('lang-toggle-mobile');
+  if (langBtnM) {
+    langBtnM.addEventListener('click', function(){
+      setTimeout(function(){
+        updateSelectLabels();
+        if (lastCat) {
+          var lang = getLang();
+          document.getElementById('res-cat').textContent = catLabels[lastCat][lang];
+        }
+      }, 0);
+    });
+  }
+});
 </script>
 </body>
 </html>

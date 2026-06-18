@@ -1,0 +1,157 @@
+/*
+ * DOTFORLIFE — Tool pages flagship layer
+ * White canvas + teal accents — matches homepage & library
+ */
+
+body.tool-flagship-page {
+  background: #FFFFFF !important;
+  --tool-teal: #2BA8A2;
+  --tool-teal-dark: #1E8C86;
+  --tool-teal-light: #E8F6F5;
+  --tool-ink: #1A1612;
+  --tool-muted: #7A7A7A;
+  --tool-border: rgba(0, 0, 0, .07);
+  --tool-max: 1100px;
+  --tool-gutter: clamp(1.25rem, 4vw, 2rem);
+}
+
+/* ── White editorial hero (replaces dark gradient) ───────── */
+body.tool-flagship-page .tool-hr-wrap {
+  background: #FFFFFF;
+  border-bottom: 1px solid var(--tool-border);
+  padding-top: clamp(1rem, 2vw, 1.5rem);
+  padding-bottom: 0;
+}
+
+body.tool-flagship-page .tool-hr-wrap::before,
+body.tool-flagship-page .tool-hr-wrap::after {
+  display: none;
+}
+
+body.tool-flagship-page .tool-hr {
+  padding: clamp(1rem, 2vw, 1.75rem) var(--tool-gutter) clamp(.75rem, 1.5vw, 1rem);
+  text-align: start;
+}
+
+body.tool-flagship-page .tool-hr-in {
+  max-width: var(--tool-max);
+  margin: 0 auto;
+}
+
+body.tool-flagship-page .tool-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .35rem .5rem;
+  margin-bottom: 1rem;
+  font-size: .72rem;
+  font-weight: 500;
+  color: var(--tool-muted);
+}
+
+body.tool-flagship-page .tool-breadcrumb a {
+  color: var(--tool-teal-dark);
+  text-decoration: none;
+  transition: color .2s;
+}
+
+body.tool-flagship-page .tool-breadcrumb a:hover {
+  color: var(--tool-teal);
+}
+
+body.tool-flagship-page .tool-breadcrumb-sep {
+  opacity: .45;
+  user-select: none;
+}
+
+body.tool-flagship-page .tool-hr-bd {
+  background: var(--tool-teal-light);
+  color: var(--tool-teal-dark);
+  border: 1px solid rgba(43, 168, 162, .15);
+  backdrop-filter: none;
+  margin-bottom: .75rem;
+}
+
+body.tool-flagship-page .tool-hr-bd svg {
+  color: var(--tool-teal);
+}
+
+body.tool-flagship-page .tool-hr h1,
+body.tool-flagship-page .tool-hr .tool-hr-h1 {
+  font-family: var(--font-ar, 'Almarai', sans-serif);
+  font-size: clamp(1.35rem, 3.2vw, 1.85rem);
+  font-weight: 500;
+  letter-spacing: -.015em;
+  color: var(--tool-ink);
+  margin-bottom: .5rem;
+}
+
+[data-lang="en"] body.tool-flagship-page .tool-hr h1 {
+  font-family: var(--font-ui, 'Inter', sans-serif);
+}
+
+[data-lang="ar"] body.tool-flagship-page .tool-hr h1 {
+  letter-spacing: 0;
+  line-height: 1.35;
+}
+
+body.tool-flagship-page .tool-hr > .tool-hr-in > p,
+body.tool-flagship-page .tool-hr p {
+  color: var(--tool-muted);
+  font-size: clamp(.88rem, 1.1vw, .98rem);
+  line-height: 1.65;
+  max-width: 52ch;
+  margin: 0;
+}
+
+/* ── Sub-nav — light pills ───────────────────────────────── */
+body.tool-flagship-page .tool-hr-wrap #sub-nav {
+  position: sticky !important;
+  top: 110px !important;
+  background: rgba(255, 255, 255, .94) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid var(--tool-border) !important;
+  padding: 0 var(--tool-gutter);
+}
+
+body.tool-flagship-page .tool-hr-wrap #sub-nav .sub-nav-inner a {
+  background: #F5F5F5 !important;
+  color: var(--tool-muted) !important;
+  border: 1px solid transparent;
+}
+
+body.tool-flagship-page .tool-hr-wrap #sub-nav .sub-nav-inner a:hover {
+  background: var(--tool-teal-light) !important;
+  color: var(--tool-teal-dark) !important;
+}
+
+body.tool-flagship-page .tool-hr-wrap #sub-nav .sub-nav-inner a.active {
+  background: var(--tool-teal-light) !important;
+  color: var(--tool-teal-dark) !important;
+  border-color: rgba(43, 168, 162, .2) !important;
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  body.tool-flagship-page .tool-hr-wrap #sub-nav {
+    top: 90px !important;
+  }
+}
+
+/* ── Main — flush white, no overlap card lift ─────────────── */
+body.tool-flagship-page .tool-mn {
+  max-width: var(--tool-max);
+  margin: 0 auto;
+  padding: clamp(1.5rem, 3vw, 2.25rem) var(--tool-gutter) clamp(3rem, 6vw, 4rem);
+}
+
+body.tool-flagship-page.category-page.has-subnav {
+  padding-top: 110px !important;
+}
+
+@media (max-width: 768px) {
+  body.tool-flagship-page.category-page.has-subnav {
+    padding-top: 90px !important;
+  }
+}
