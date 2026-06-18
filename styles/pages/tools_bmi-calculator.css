@@ -191,6 +191,19 @@
 .bm-res-box.bm-primary {
   background: linear-gradient(135deg, var(--bm-teal), var(--bm-teal-d));
   border-color: transparent; grid-column: 1 / -1; padding: 20px 18px;
+  position: relative;
+  overflow: hidden;
+}
+.bm-res-box.bm-primary::after {
+  content: '';
+  position: absolute;
+  top: -20px;
+  inset-inline-end: -20px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(255, 210, 63, .22);
+  pointer-events: none;
 }
 .bm-res-box.bm-primary .bm-res-value { color: #fff; font-size: clamp(1.5rem, 4vw, 1.85rem); }
 
