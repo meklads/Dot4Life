@@ -458,3 +458,147 @@ Each article configured with:
 4. **Automated TOC is possible**: By extracting h2 headings and generating Arabic-safe ids, we can automatically populate the TOC sidebar without manual data entry.
 5. **Article-level configuration is essential**: Each article needs topic-appropriate CTA, tools, and related links. A configuration dictionary per article keeps everything organized.
 6. **Verify on live after deployment**: GitHub Pages + Cloudflare caching can serve stale versions. Always verify with cache-busting headers after deployment.
+
+---
+
+# Batch 5 — Full BOOM Compliance for 25 Remaining Articles
+
+## تاريخ التسجيل: 2026-06-08
+
+## Overview
+Processed all 25 remaining articles to full BOOM compliance:
+- 21 Type A articles (bilingual spans in -ar.html body)
+- 4 Type B articles (mixed AR/EN content, emergency-fund-calculator-guide, family-budget-planning-guide, house-affordability-single-income-guide, umrah-packing-checklist-guide)
+
+## What was done for each article
+1. **Source Analysis**: Detected bilingual span pairs in body (Type A) vs. mixed content (Type B)
+2. **AR Body Extraction**: 
+   - Type A: Extracted Arabic from `<span class="en">EN</span><span class="ar">AR</span>` → keep Arabic text
+   - Type B: Tag-aware language filtering preserving all h2-h6 headings, keeping Arabic text, removing English-only text segments
+3. **EN Body Extraction**: 
+   - From main .html (already English) — bilingual span extraction if present, cleanup otherwise
+4. **Old Structure Stripping**: Removed old `article-tools`, `article-end`, `article-share`, `sidebar` sections from body
+5. **Div Balancing**: Auto-detected and fixed div imbalances (added/closing missing divs)
+6. **Low-Arabic Fallback**: If AR body had <200 Arabic chars, used EN body as fallback
+7. **BOOM Structure**: Built complete article-layout grid with:
+   - Inline grid style `display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:2.5rem`
+   - Populated sidebar (team-card, TOC with heading IDs, related articles, tools)
+   - Article-end sections (share buttons, CTA, read-also cards, tags, Friday CTA)
+   - lang-toggle button, canonical/hreflang/og:url tags
+8. **File Naming**: 
+   - `.html` = Arabic version (was English, replaced)
+   - `-en.html` = English version (new)
+   - `-ar.html` = Redirect to .html (was old template, replaced)
+
+## Articles Processed (25)
+### Finance (6)
+- building-personal-savings-system ✅ (AR: 4633 chars, 52 EN words)
+- children-education-savings-guide ✅ (AR: 1622 chars, 427 EN words)
+- complete-household-budget-system ✅ (AR: 924 chars, 704 EN words)
+- end-of-service-benefits-expats ✅ (AR: 1457 chars, 314 EN words)
+- life-insurance-gulf-families ✅ (AR: 1997 chars, 430 EN words)
+- starting-side-business-saudi-uae ✅ (AR: 1457 chars, 383 EN words)
+
+### Family / Parenting (8)
+- choosing-right-school-child-gulf ✅ (AR: 1129 chars, 711 EN words)
+- complete-family-financial-planning ✅ (AR: 507 chars, 1403 EN words)
+- complete-family-systems-productivity-hub ✅ (AR: 669 chars, 647 EN words)
+- family-nutrition-on-budget ✅ (AR: 514 chars, 961 EN words)
+- managing-screen-time-children ✅ (AR: 1101 chars, 710 EN words)
+- organize-life-daily-systems ✅ (AR: 989 chars, 815 EN words)
+- stress-management-working-parents ✅ (AR: 926 chars, 519 EN words)
+- teaching-children-financial-literacy ✅ (AR: 1483 chars, 736 EN words)
+
+### Health (3)
+- complete-gulf-family-health-wellness ✅ (AR: 547 chars, 722 EN words)
+- managing-healthcare-costs-families ✅ (AR: 1054 chars, 566 EN words)
+- preparing-for-pregnancy-guide ✅ (AR: 1010 chars, 636 EN words)
+
+### Travel / Islamic (3)
+- complete-family-travel-activities-hub ✅ (AR: 629 chars, 722 EN words)
+- complete-islamic-lifestyle-guide ✅ (AR: 627 chars, 828 EN words)
+- family-friendly-activities-gulf-cities ✅ (AR: 626 chars, 548 EN words)
+
+### Holistic (1)
+- complete-gulf-family-financial-life-hub ✅ (AR: 514 chars, 1058 EN words)
+
+### Problematic Type B (4)
+- emergency-fund-calculator-guide ✅ (AR: 2491 chars, 37 EN words)
+- family-budget-planning-guide ✅ (AR: 4062 chars, 36 EN words)
+- house-affordability-single-income-guide ✅ (AR: 1040 chars, 18 EN words)
+- umrah-packing-checklist-guide ✅ (AR: 763 chars, 8 EN words)
+
+## Div Balance Fixes
+Articles where original body had imbalanced divs (auto-fixed):
+- end-of-service-benefits-expats: 12/15 → 12/12
+- life-insurance-gulf-families: 22/20 → 22/22
+- starting-side-business-saudi-uae: 24/26 → 24/24
+- choosing-right-school-child-gulf: 29/27 → 29/29
+- complete-family-systems-productivity-hub: AR 35/39 → 35/35, EN 37/39 → 37/37
+- managing-screen-time-children: 20/23 → 20/20
+- stress-management-working-parents: 27/28 → 27/27
+- teaching-children-financial-literacy: 25/24 → 25/25
+- complete-gulf-family-health-wellness: EN 41/43 → 41/41
+- managing-healthcare-costs-families: 30/32 → 30/30
+- complete-family-travel-activities-hub: AR 15/16 → 15/15, EN 37/39 → 37/37
+- complete-islamic-lifestyle-guide: EN 41/43 → 41/41
+- family-friendly-activities-gulf-cities: 16/17 → 16/16
+- complete-gulf-family-financial-life-hub: AR 19/21 → 19/19, EN 37/39 → 37/37
+- emergency-fund-calculator-guide: 11/8 → 11/11
+- house-affordability-single-income-guide: 1/0 → 1/1
+- umrah-packing-checklist-guide: 0/1 → 0/0
+
+## Lessons Learned
+1. **Source quality varies**: Many -ar.html files have mixed AR/EN content (Type B), not clean bilingual spans (Type A). Need tag-aware filtering.
+2. **Div imbalances are common**: Old templates often have malformed HTML with unclosed divs. Auto-balancing is essential.
+3. **Heading preservation**: h2-h6 tags must be preserved during language filtering, even if heading text is in English. They provide structure and TOC content.
+4. **EN version creation**: Creating `-en.html` files is safe (they don't exist in git history), but replacing `.html` (which was English-primary) with Arabic version is the right approach since git tracks changes.
+5. **Fallback for low Arabic**: When AR source has very little Arabic (<200 chars), use EN body as fallback with AR attributes.
+6. **Redirect -ar.html**: Old -ar.html files should become redirects to the main .html file (now Arabic).
+
+
+## Batch 5 — Full BOOM Compliance (25 articles)
+
+Date: 2026-06-08
+
+### Articles Processed
+| Article | AR Chars | EN Words (AR body) | EN Words (EN body) | English Headings | Div Balance | Notes |
+|---------|----------|-------------------|-------------------|-----------------|-------------|-------|
+| building-personal-savings-system | 4788 | 0 | 1447 | 0 | ✅ | Perfect |
+| children-education-savings-guide | 1834 | 168 | 1532 | 0 | ✅ | Type B mix |
+| complete-household-budget-system | 1127 | 168 | 1381 | 0 | ✅ | Type B mix |
+| end-of-service-benefits-expats | 1722 | 188 | 946 | 0 | ✅ | Type B mix |
+| life-insurance-gulf-families | 2211 | 323 | 1183 | 0 | ✅ | Type B mix |
+| starting-side-business-saudi-uae | 1690 | 207 | 960 | 0 | ✅ | Type B mix |
+| choosing-right-school-child-gulf | 1346 | 217 | 1372 | 0 | ✅ | Type B mix |
+| complete-family-financial-planning | 690 | 65 | 1815 | 0 | ✅ | Type B mix |
+| complete-family-systems-productivity-hub | 845 | 398 | 1468 | 0 | ✅ | Type B mix |
+| family-nutrition-on-budget | 735 | 95 | 1315 | 0 | ✅ | Type B mix |
+| managing-screen-time-children | 1312 | 347 | 1420 | 0 | ✅ | Fixed malformed h2s |
+| organize-life-daily-systems | 1112 | 254 | 1556 | 0 | ✅ | Type B mix |
+| stress-management-working-parents | 1077 | 304 | 1075 | 0 | ✅ | Fixed malformed h2s |
+| teaching-children-financial-literacy | 1751 | 389 | 1453 | 0 | ✅ | Type B mix |
+| complete-gulf-family-health-wellness | 687 | 143 | 1662 | 0 | ✅ | Type B mix |
+| managing-healthcare-costs-families | 1283 | 277 | 1130 | 0 | ✅ | Fixed malformed h2s |
+| preparing-for-pregnancy-guide | 1143 | 282 | 1656 | 0 | ✅ | Type B mix |
+| complete-family-travel-activities-hub | 807 | 326 | 1577 | 0 | ✅ | Type B mix |
+| complete-islamic-lifestyle-guide | 791 | 305 | 1452 | 0 | ✅ | Type B mix |
+| family-friendly-activities-gulf-cities | 812 | 190 | 1185 | 0 | ✅ | Type B mix |
+| complete-gulf-family-financial-life-hub | 715 | 11 | 1389 | 0 | ✅ | Type B mix |
+| emergency-fund-calculator-guide | 2720 | 2 | 685 | 0 | ✅ | Bilingual spans |
+| family-budget-planning-guide | 4346 | 225 | 935 | 0 | ✅ | Already had AR headings |
+| house-affordability-single-income-guide | 1205 | 142 | 690 | 0 | ✅ | Fixed malformed h2s |
+| umrah-packing-checklist-guide | 960 | 260 | 881 | 0 | ✅ | Umrah section headings |
+
+### Key Improvements
+- **Section-number-agnostic matching**: Headings matched by topic content, not section number
+- **Malformed h2 handling**: `fix_malformed_h2s()` splits nested/corrupted h2 tags
+- **Fragment mapping**: Malformed heading fragments mapped to correct Arabic translations
+- **EN-only paragraph filter**: Uses `re.split()` to preserve non-p elements
+- **Div balancing**: Auto-fixed across all articles
+- **All BOOM checks passed**: lang=ar, dir=rtl, article-layout grid, sidebar/TOC/tools, article-end sections, hreflang/canonical
+
+### Known Limitations
+- Some EN words in AR body are legitimate (brand names, tool names, Islamic terms)
+- Type B articles have inherent EN/AR mixing that can't be fully separated
+- Source HTML quality varies significantly with malformed/corrupted tags
