@@ -215,3 +215,99 @@ Skip first `<article class="article-body">` if it's inside a `<style>` tag.
 3. **Always fix malformed HTML first** — `</p<h2>` is invalid and breaks regex matching.
 4. **Check tag balance after cleaning** — removing content can create unpaired tags.
 5. **SVG/HTML attribute values inflate EN counts** — focus on visible text content, not raw character counts.
+
+---
+
+# Batch 3.5 — Sidebar Position & Content Fixes
+
+## تاريخ التسجيل: 2026-06-08
+
+---
+
+## المشكلة (Issue)
+
+### 1. Sidebar Position — "السايد بار موجود اسفل المقاله"
+**الملف المتأثر:** `blog/rent-vs-buy-saudi-guide-2026.html` (and potentially all Batch 3 AR articles)
+
+**السبب الجذري المحتمل:**
+- The `.article-layout` CSS grid (`display: grid; grid-template-columns: minmax(0, 1fr) 300px`) may not have been applied correctly due to CSS specificity or caching issues.
+- Articles.css loads with version hash `?v=20260617a` — but GitHub Pages + Cloudflare CDN may serve stale cached CSS.
+- Some articles lacked `display: grid` on the `.article-layout` div in cases where the external CSS failed to load or was overridden.
+
+**الإصلاح:**
+```html
+<div class="article-layout" style="display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:2.5rem">
+```
+Added `style="display:grid;..."` as an **inline fallback** on the `.article-layout` div to ensure the grid layout works regardless of external CSS loading. This is a belt-and-suspenders approach — the class-based rule in articles.css still applies, but the inline style ensures the layout even if caching causes a stale CSS version.
+
+### 2. Empty Sidebar Modules
+**الملفات المتأثرة:** All three Batch 3 AR articles
+
+**السبب الجذري:** The sidebar had empty TOC (Table of Contents) and Related modules — just `<h4>` headings with no content.
+
+**الإصلاح:**
+- **TOC module**: Populated with `<a href="#..." class="toc-item">` links matching each `<h2>` heading in the article
+- **Related module**: Populated with `sidebar-related-item` divs containing thumbnail images and links to related articles
+- Added `id` attributes to all `<h2>` headings in the article body for TOC anchor linking
+
+### 3. Article Body — Broken HTML & English Remnants
+**الملفات المتأثرة:** `rent-vs-buy-saudi-guide-2026.html`, `ramadan-preparation-guide-families.html`
+
+**السبب الجذري:** 
+- Type B content filtering left behind malformed HTML: `<p><h2>` (heading inside paragraph), duplicate headings, stray `</li>`, `</ul>`, `</p>` tags
+- SVG fragments from broken tool icons floating in text
+- English labels: "Quick:", "Islamic Section", "Buy if:", "Rent if:"
+- Mixed-up section ordering (1, 1, 3, 2, 5, 3, 7, 4, 4, 5 instead of sequential)
+
+**الإصلاح:**
+- **Rewrote body** with clean Arabic-only content, sequentially numbered sections (1–7)
+- **Fixed malformed HTML**: All `<p><h2>` → proper `<h2>` after closing `<p>`
+- **Removed SVG fragments**: Deleted floating `<line>` elements and broken icon markup
+- **Removed English labels**: Translated "Quick:" and "Islamic Section" to Arabic equivalents
+- **Added comparison table** for rent vs buy decision factors
+- **Fixed article-tools section**: Replaced empty `<div>` containers with proper tool cards containing at-name and at-desc elements
+
+### 4. Article-End Sections — CTA & Read-Also
+**الملفات المتأثرة:** All three Batch 3 AR articles
+
+**السبب الجذري:** 
+- CTA text was generic ("احسب استثمارك") instead of topic-specific
+- Read-also links pointed to same article (AR and EN versions) instead of related content
+
+**الإصلاح:**
+- **CTA**: Topic-appropriate (rent: "قارن بين الإيجار والتمويل", ramadan: "احسب زكاتك", umrah: "خطط لميزانية العمرة")
+- **Read-also**: Links to 2-3 different related articles instead of self-referencing
+- **Tags**: Changed from English (`#realestate`, `#saudi`, `#islamic`, `#travel`) to Arabic (`#عقار`, `#السعودية`, `#عمرة`, `#سفر`)
+- **Added `</article>` closing tag** where missing (umrah article)
+
+---
+
+## BOOM Checklist — Batch 3.5
+
+| # | BOOM Point | Status |
+|---|-----------|--------|
+| 1 | File naming | ✅ |
+| 2 | canonical/hreflang/og:url | ✅ |
+| 3 | articles.json/sitemap.xml | ✅ |
+| 4 | article-layout structure | ✅ (inline grid fallback added) |
+| 5 | No bilingual spans | ✅ |
+| 6 | Monolingual header/footer | ✅ |
+| 7 | Fixed inline script | ✅ |
+| 8 | Lang-toggle | ✅ |
+| 9 | FAQ as faq-question/faq-answer | ✅ |
+| 10 | HTTP 200 | ✅ |
+| 11 | Suitable image | ✅ |
+| 12 | **Sidebar populated** | ✅ (TOC + Related filled) |
+| 13 | **Article-end sections** | ✅ (CTA + Read-also improved) |
+| 14 | **Clean body HTML** | ✅ (no malformed tags, no English, no SVG fragments) |
+
+---
+
+## الدروس المستفادة (Lessons Learned)
+
+1. **Inline styles as CSS fallback**: When CDN caching may serve stale CSS, add inline `style` attributes as fallbacks for critical layout properties (grid, flex).
+2. **Sidebar modules must be populated**: Empty sidebar modules (TOC, Related) look broken. Always populate them or remove them entirely.
+3. **Read-also should never link to itself**: Always check that read-also links point to different articles, not the same one in another language.
+4. **Tags must match article language**: English tags (`#realestate`) on Arabic articles look unprofessional. Use Arabic tags (`#عقار`).
+5. **Close all HTML tags**: Ensure `<article>`, `<div>`, and other container tags are properly closed. Browsers may auto-close, but this affects DOM structure.
+6. **Section numbering must be sequential**: Articles with headings like "Section 1, Section 3, Section 2, Section 5" confuse readers. Always check section order.
