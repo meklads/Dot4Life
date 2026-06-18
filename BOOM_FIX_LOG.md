@@ -1,3 +1,64 @@
+# BOOM Fix Log — Batch 5 EN Template Fix
+
+## تاريخ التسجيل: 2026-06-08
+
+---
+
+## المشكلة (Issue)
+
+### 1. EN template missing banner and article-end sections
+**الملف المتأثر:** All 25 EN articles from Batch 5
+
+**السبب الجذري:** 
+- The EN template was a minimal version with only article-body, team-card, and TOC sidebar
+- Missing: article-banner (hero image with overlay), article-end (share buttons, CTA, read-also, friday-cta, tags)
+- This caused users to report "السايد بار تحت المقاله" (sidebar below article) and "ومفيس صوره" (no image)
+- The layout appeared broken in the browser because CSS grid depended on the full structure
+
+### 2. Div imbalance in source body
+Some source HTML files had more `</div>` than `<div>` tags (e.g., 58 opens vs 66 closes)
+
+---
+
+## الإصلاح (Fix Applied)
+
+### 1. Upgraded EN template to full BOOM structure (matching AR template)
+- **Added** `<section class="article-banner">` with Unsplash hero image, overlay with title and meta
+- **Added** complete `<div class="article-end">` with:
+  - `article-share` — WhatsApp, Twitter/X, Facebook, Copy Link buttons
+  - `article-tool-cta` — category-specific CTA with tool link
+  - `article-read-also` — cards linking to 3 related articles in same category
+  - `article-friday-cta` — email subscription with placeholder
+  - `article-tags` — article tags from config
+- **Added** `reading-progress` bar
+- **Added** `theme-toggle` button (moon/sun icons)
+- **Added** Google Ads (pagead2) and Google Tag Manager scripts
+- **Added** proper `<style>` block with CSS variables and font imports
+- **Verified** all div counts balanced (0 mismatch)
+
+### 2. Fixed div imbalance with `balance_divs()`
+- `balance_divs()` now called on `en_body` before template injection
+- Counts all `<div` (not just `<div `) for accuracy
+- All 25 EN articles now have balanced div counts
+
+### 3. 코드 committed & pushed
+- Commit `c890556` pushed to `main`
+- GitHub Actions deployment triggered automatically
+- Live site verified: `article-banner`, `article-end`, `sidebar-toc`, `sidebar-tools` all present
+
+### Verification Results
+```
+All 25 EN articles verified on live site:
+✅ article-banner with hero image
+✅ article-layout grid (display:grid)
+✅ article-sidebar with sidebar-toc, sidebar-related, sidebar-tools
+✅ article-end with share, CTA, read-also, friday-cta, tags
+✅ Div counts balanced (56/56, 37/37, etc.)
+✅ hreflang, canonical, og:image, og:title, og:description
+```
+
+---
+
 # BOOM Fix Log — Batch 2 (Articles 6–10)
 
 ## تاريخ التسجيل: 2026-06-08
