@@ -168,29 +168,25 @@
 
 .core-section--featured .sl-featured-img {
   position: relative;
+  overflow: hidden;
   max-height: none;
   aspect-ratio: 16 / 10;
   min-height: clamp(220px, 32vw, 320px);
   background: var(--fs-paper-deep);
 }
 
-.core-section--featured .sl-featured-img::before {
-  content: '';
+/* img-ph wrapper must fill the aspect-ratio box (wide feed images otherwise leave a gap) */
+.core-section--featured .sl-featured-img .img-ph {
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(to top, rgba(10, 22, 18, .52) 0%, rgba(10, 22, 18, .08) 38%, transparent 62%);
-  z-index: 1;
-  pointer-events: none;
-  opacity: .55;
-  transition: opacity .45s var(--fs-ease);
-}
-
-.core-section--featured .sl-featured:hover .sl-featured-img::before {
-  opacity: .72;
 }
 
 .core-section--featured .sl-featured-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  display: block;
   transition: transform .75s var(--fs-ease-soft);
   will-change: transform;
 }
