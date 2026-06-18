@@ -60,7 +60,7 @@ body.index-page .core-section--peace ~ .core-peace-daily {
 }
 
 /* ═══════════════════════════════════════════════════════════
-   MORNING MOMENT — daily sanctuary card
+   MORNING MOMENT — twin cards (content + image separated)
    ═══════════════════════════════════════════════════════════ */
 body.index-page #morning-moment.core-peace-moment {
   max-width: 1100px;
@@ -68,37 +68,60 @@ body.index-page #morning-moment.core-peace-moment {
   padding: 0 clamp(1.25rem, 4vw, 2rem) clamp(2rem, 4vw, 2.75rem);
 }
 
+/* Grid = two independent panels, not one merged card */
 body.index-page .peace-flagship .mm-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr);
-  gap: 0;
-  min-height: min(440px, 72vh);
+  grid-template-columns: minmax(0, 1.06fr) minmax(0, .94fr);
+  align-items: stretch;
+  gap: clamp(1.15rem, 2.4vw, 1.65rem);
+  min-height: 0;
   border: none;
-  border-radius: var(--peace-radius-xl);
-  background:
-    linear-gradient(145deg, #fdfbf7 0%, #f8f3eb 38%, #faf8f4 100%);
-  box-shadow: var(--peace-shadow);
-  overflow: hidden;
-  transition: box-shadow .45s var(--peace-ease);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
 }
 
 body.index-page .peace-flagship .mm-grid:hover {
-  box-shadow: var(--peace-shadow-hover);
+  box-shadow: none;
 }
 
+/* ── Content card ── */
 body.index-page .peace-flagship .mm-content {
   order: 1;
   display: flex;
   flex-direction: column;
-  gap: clamp(1rem, 2vw, 1.35rem);
-  padding: clamp(1.85rem, 3.5vw, 2.65rem);
+  gap: clamp(1rem, 2vw, 1.3rem);
+  padding: clamp(1.85rem, 3.2vw, 2.5rem);
   justify-content: center;
   position: relative;
-  z-index: 2;
+  z-index: 1;
+  border-radius: var(--peace-radius-xl);
+  background:
+    linear-gradient(165deg, #fff 0%, #fdfbf7 38%, #f8f3eb 100%);
+  border: 1px solid rgba(95, 141, 119, .14);
+  box-shadow: var(--peace-shadow);
+  transition: box-shadow .45s var(--peace-ease), transform .45s var(--peace-ease);
+}
+
+body.index-page .peace-flagship .mm-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: clamp(1.5rem, 3vw, 2rem);
+  right: clamp(1.5rem, 3vw, 2rem);
+  height: 3px;
+  border-radius: 0 0 4px 4px;
+  background: linear-gradient(90deg, var(--peace-gold) 0%, var(--peace-teal) 100%);
+  opacity: .88;
+}
+
+body.index-page .peace-flagship .mm-grid:hover .mm-content {
+  box-shadow: var(--peace-shadow-hover);
 }
 
 [data-lang="ar"] body.index-page .peace-flagship .mm-content {
-  padding: clamp(1.85rem, 3.5vw, 2.65rem);
+  padding: clamp(1.85rem, 3.2vw, 2.5rem);
 }
 
 body.index-page .peace-flagship .mm-head {
@@ -374,52 +397,122 @@ body.index-page .peace-flagship .mm-footer-left {
   gap: .45rem;
 }
 
-/* Visual — forest sanctuary */
+/* ── Image card — fully separate, no bleed into content ── */
 body.index-page .peace-flagship .mm-visual {
   order: 2;
   position: relative;
-  min-height: 360px;
+  min-height: 0;
+  display: flex;
+  padding: .45rem;
+  border-radius: calc(var(--peace-radius-xl) + 4px);
+  background: linear-gradient(145deg, rgba(228, 163, 30, .22) 0%, rgba(40, 188, 169, .18) 100%);
+  box-shadow:
+    0 2px 4px rgba(26, 46, 40, .04),
+    0 18px 52px rgba(26, 46, 40, .1);
+  transition: transform .5s var(--peace-ease), box-shadow .5s var(--peace-ease);
+}
+
+body.index-page .peace-flagship .mm-grid:hover .mm-visual {
+  transform: translateY(-3px);
+  box-shadow:
+    0 4px 8px rgba(26, 46, 40, .06),
+    0 28px 64px rgba(26, 46, 40, .14);
+}
+
+body.index-page .peace-flagship .mm-visual-inner {
+  position: relative;
+  flex: 1;
+  min-height: min(420px, 58vh);
+  border-radius: var(--peace-radius-xl);
   overflow: hidden;
+  background: #e8e2d8;
+  border: 3px solid #fff;
 }
 
-body.index-page .peace-flagship .mm-visual::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: linear-gradient(
-    to right,
-    rgba(253, 251, 247, .94) 0%,
-    rgba(253, 251, 247, .35) 18%,
-    transparent 42%
-  );
-  pointer-events: none;
-}
-
-[data-lang="ar"] body.index-page .peace-flagship .mm-visual::before {
-  background: linear-gradient(
-    to left,
-    rgba(253, 251, 247, .94) 0%,
-    rgba(253, 251, 247, .35) 18%,
-    transparent 42%
-  );
-}
-
+body.index-page .peace-flagship .mm-visual::before,
 body.index-page .peace-flagship .mm-visual::after {
-  content: none;
+  content: none !important;
+  display: none !important;
 }
 
 body.index-page .peace-flagship .mm-visual img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 40%;
-  transform: scale(1.02);
-  transition: transform 12s var(--peace-ease-soft);
+  object-position: center 42%;
+  display: block;
+  transform: scale(1);
+  transition: transform 14s var(--peace-ease-soft);
 }
 
 body.index-page .peace-flagship .mm-grid:hover .mm-visual img {
-  transform: scale(1.07);
+  transform: scale(1.06);
+}
+
+/* Bottom vignette — only inside the photo frame */
+body.index-page .peace-flagship .mm-visual-shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      to top,
+      rgba(26, 46, 40, .62) 0%,
+      rgba(26, 46, 40, .18) 28%,
+      transparent 58%
+    );
+  pointer-events: none;
+}
+
+body.index-page .peace-flagship .mm-visual-tag {
+  position: absolute;
+  top: 1.1rem;
+  inset-inline-start: 1.1rem;
+  margin: 0;
+  padding: .38rem .85rem;
+  border-radius: 999px;
+  font-size: .62rem;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--peace-sage-deep);
+  background: rgba(255, 255, 255, .92);
+  border: 1px solid rgba(255, 255, 255, .6);
+  box-shadow: 0 4px 16px rgba(26, 46, 40, .12);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 2;
+}
+
+[data-lang="ar"] body.index-page .peace-flagship .mm-visual-tag {
+  letter-spacing: 0;
+  text-transform: none;
+  font-size: .68rem;
+}
+
+body.index-page .peace-flagship .mm-visual-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 1.35rem 1.25rem 1.25rem;
+  font-size: clamp(.95rem, 1.8vw, 1.12rem);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -.01em;
+  color: #fff;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, .25);
+  z-index: 2;
+}
+
+[data-lang="en"] body.index-page .peace-flagship .mm-visual-caption {
+  font-family: 'Cinzel', Georgia, serif;
+  font-weight: 500;
+}
+
+[data-lang="ar"] body.index-page .peace-flagship .mm-visual-caption {
+  font-size: 1.05rem;
+  line-height: 1.55;
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -679,7 +772,7 @@ body.index-page .peace-flagship .dh-fab-item:hover {
 @media (max-width: 900px) {
   body.index-page .peace-flagship .mm-grid {
     grid-template-columns: 1fr;
-    min-height: 0;
+    gap: clamp(1rem, 3vw, 1.35rem);
   }
 
   body.index-page .peace-flagship .mm-content {
@@ -688,11 +781,11 @@ body.index-page .peace-flagship .dh-fab-item:hover {
 
   body.index-page .peace-flagship .mm-visual {
     order: 2;
-    min-height: 240px;
   }
 
-  body.index-page .peace-flagship .mm-visual::before {
-    background: linear-gradient(to bottom, transparent 55%, rgba(253, 251, 247, .92) 100%);
+  body.index-page .peace-flagship .mm-visual-inner {
+    min-height: 260px;
+    aspect-ratio: 16 / 10;
   }
 
   body.index-page .peace-flagship .dh-grid {
@@ -718,6 +811,7 @@ body.index-page .peace-flagship .dh-fab-item:hover {
 
 @media (prefers-reduced-motion: reduce) {
   body.index-page .peace-flagship .mm-visual img,
+  body.index-page .peace-flagship .mm-visual,
   body.index-page .peace-flagship .mm-item:hover,
   body.index-page .peace-flagship .mm-capsule:hover,
   body.index-page .peace-flagship .dh-card:hover {
