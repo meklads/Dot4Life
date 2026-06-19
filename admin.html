@@ -115,7 +115,7 @@ let filter = 'all';
 let allCapsules = [];
 let useOffline = false;
 const ACCESS_KEY = 'dot4life';
-const LOCAL_HASH = 'f7b074395b6597bf02d3a9a66f11451bbc477e8482d281e3e697c5930f2f748f';
+const LOCAL_HASH = '8248c7ae40e0134d712024986fb17eefb0d7eed11a779554158e5bbd12c391eb';
 const LS_KEY = 'd4l_capsules_db';
 
 function isLocal() { return useOffline || (token && token.startsWith('local-')); }
@@ -267,7 +267,7 @@ async function login() {
   btn.textContent = '…';
   err.style.display = 'none';
 
-  // Local fallback hash (password: hghgj123)
+  // Local fallback (SHA-256 of admin password)
   const localHash = await sha256(pw);
 
   const r = await call('POST', '/admin/login', { password: pw });
