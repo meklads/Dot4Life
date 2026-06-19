@@ -1,0 +1,63 @@
+# Dot4Life — Weekly Capsule Autopilot
+# Generates 7-day buffer when fewer than 10 days remain ahead.
+# Schedule: Sunday 06:00 Asia/Riyadh (03:00 UTC)
+
+name: Capsules Autopilot
+
+on:
+  schedule:
+    - cron: '0 3 * * 0'
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Force generate batch even if buffer is OK'
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - 'false'
+          - 'true'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: capsules-autopilot
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run capsule autopilot
+        run: |
+          ARGS=""
+          if [ "${{ github.event.inputs.force }}" = "true" ]; then
+            ARGS="--force"
+          fi
+          python3 scripts/auto_capsules_weekly.py $ARGS
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "d4l-autopilot[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet data/capsules-published.json scripts/dfl-config.js; then
+            echo "No capsule changes — skipping commit."
+            exit 0
+          fi
+          git add data/capsules-published.json scripts/dfl-config.js
+          git commit -m "$(cat <<'EOF'
+chore(capsules): autopilot weekly buffer refill
+
+Automated schedule extension via scripts/auto_capsules_weekly.py (Dot4Life rules).
+EOF
+)"
+          git push

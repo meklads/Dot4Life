@@ -9,7 +9,7 @@
 
   DFL.staticMode = true;
   DFL.capsulesJson = '/data/capsules-published.json';
-  DFL.capsulesJsonVersion = '20260619f';
+  DFL.capsulesJsonVersion = '20260619a';
 
   /** @type {'brevo'|'mailto'|'none'} */
   DFL.emailListProvider = 'brevo';

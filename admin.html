@@ -20,7 +20,7 @@
 <!-- ════════════════════════════
      LOGIN
 ════════════════════════════ -->
-<div id="view-login" style="display:none;">
+<div id="view-login">
   <div class="login-wrap">
     <div class="login-mark">
       <div class="dot">🧘</div>
@@ -41,7 +41,7 @@
 <!-- ════════════════════════════
      APP
 ════════════════════════════ -->
-<div id="view-app">
+<div id="view-app" style="display:none;">
 
   <!-- header -->
   <div class="topbar">
@@ -71,6 +71,7 @@
       <button class="btn-generate" onclick="generateWeek()">📅 Generate Week</button>
       <button class="btn-bulk-approve" id="bulkApproveBtn" onclick="bulkApprove()" style="display:none"><span class="en">✓ Bulk Approve All</span><span class="ar">✓ موافقة جماعية</span></button>
       <button class="btn-export" id="exportBtn" onclick="exportPublished()" style="display:none"><span class="en">⬇ Export JSON</span><span class="ar">⬇ تصدير JSON</span></button>
+      <button class="btn-generate" id="syncBtn" onclick="syncFromSite()" style="display:none"><span class="en">↻ Sync from site</span><span class="ar">↻ مزامنة من الموقع</span></button>
       <button class="btn-refresh" onclick="load()">
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
           <path d="M13.5 2.5A6.5 6.5 0 1 1 4 3.5"/>
@@ -81,11 +82,7 @@
     </div>
 
     <div id="offlineBanner" class="offline-banner" style="display:none"></div>
-    <div style="background:var(--gold-soft);border:1px solid rgba(107,191,184,.2);border-radius:12px;padding:12px 16px;margin-bottom:16px;font-size:.78rem;line-height:1.6;">
-      <strong>📋 <span class="en">Weekly workflow</span><span class="ar">النظام الأسبوعي</span>:</strong><br>
-      <span class="ar">1. Generate Week ← 7 كبسولات · 2. Approve & Publish · 3. Export JSON → احفظ في <code>data/capsules-published.json</code> → git push</span>
-      <span class="en">1. Generate Week → 7 capsules · 2. Approve & Publish · 3. Export JSON → save to <code>data/capsules-published.json</code> → git push</span>
-    </div>
+    <div id="autopilotInfo" style="background:var(--gold-soft);border:1px solid rgba(107,191,184,.2);border-radius:12px;padding:12px 16px;margin-bottom:16px;font-size:.78rem;line-height:1.6;display:none"></div>
     <div class="list-meta" id="listMeta"></div>
     <div class="capsule-list" id="capsuleList">
       <div class="state-loading">Loading capsules…</div>
@@ -135,14 +132,48 @@ const OFFLINE_TEMPLATES = [
 function setOfflineBanner(on) {
   const el = document.getElementById('offlineBanner');
   const ex = document.getElementById('exportBtn');
+  const sync = document.getElementById('syncBtn');
   if (!el) return;
   if (on) {
     el.style.display = 'block';
-    el.innerHTML = '<strong>📁 Static Mode</strong> — <span class="en">Capsules live in this browser until you <strong>Export JSON</strong> → save as <code>data/capsules-published.json</code> → git push.</span><span class="ar">الكبسولات في هذا المتصفح حتى <strong>تصدير JSON</strong> → احفظ في <code>data/capsules-published.json</code> → git push.</span>';
+    el.innerHTML = '<strong>🤖 Autopilot</strong> — <span class="en">Capsules auto-generate weekly via GitHub Actions. The site publishes by date — no daily action needed. Use this panel to <strong>review</strong>, edit, or override.</span><span class="ar">الكبسولات تُولَّد أسبوعياً تلقائياً. الموقع ينشر حسب التاريخ — لا حاجة لإجراء يومي. استخدم اللوحة لل<strong>مراجعة</strong> أو التعديل.</span>';
     if (ex) ex.style.display = 'inline-flex';
+    if (sync) sync.style.display = 'inline-flex';
+    loadAutopilotInfo();
   } else {
     el.style.display = 'none';
     if (ex) ex.style.display = 'none';
+    if (sync) sync.style.display = 'none';
+  }
+}
+
+async function loadAutopilotInfo() {
+  const box = document.getElementById('autopilotInfo');
+  if (!box) return;
+  try {
+    const r = await fetch('/data/capsules-published.json?v=' + Date.now(), { cache: 'no-store' });
+    if (!r.ok) return;
+    const file = await r.json();
+    const ap = file.autopilot || {};
+    const dates = Object.keys(file.byDate || {}).sort();
+    const today = new Date().toISOString().slice(0, 10);
+    const ahead = dates.filter(d => d >= today).length;
+    box.style.display = 'block';
+    box.innerHTML = '<strong>📋 <span class="en">Autopilot status</span><span class="ar">حالة التشغيل التلقائي</span></strong><br>'
+      + '<span class="en">Buffer: <strong>' + ahead + '</strong> days scheduled · Last run: ' + esc(ap.lastRun || file.updated || '—') + ' · Pool: ' + (ap.templatePool || '—') + ' templates</span>'
+      + '<span class="ar">المخزون: <strong>' + ahead + '</strong> يوم مجدول · آخر تشغيل: ' + esc(ap.lastRun || file.updated || '—') + '</span><br>'
+      + '<span class="en" style="opacity:.85">Override flow: edit → Export JSON → commit <code>data/capsules-published.json</code></span>'
+      + '<span class="ar" style="opacity:.85">للتعديل: عدّل → صدّر JSON → احفظ في <code>data/capsules-published.json</code></span>';
+  } catch { box.style.display = 'none'; }
+}
+
+async function syncFromSite() {
+  const n = await importFromPublishedJson(true);
+  if (n) {
+    toast('↻ Synced ' + n + ' capsules from site JSON', 'ok');
+    load();
+  } else {
+    toast('Nothing to sync', 'inf');
   }
 }
 
@@ -198,7 +229,7 @@ function exportPublished() {
   toast('Exported — commit to data/capsules-published.json', 'ok');
 }
 
-async function importFromPublishedJson() {
+async function importFromPublishedJson(replace = false) {
   try {
     const r = await fetch('/data/capsules-published.json?v=' + Date.now(), { cache: 'no-store' });
     if (!r.ok) return 0;
@@ -213,7 +244,7 @@ async function importFromPublishedJson() {
         status: 'published',
         scheduled_date: dateStr,
         published_date: dateStr,
-        source: 'import',
+        source: c.source || 'import',
         category: c.category || 'wellness',
         emoji: c.emoji || '🌿',
         title_en: c.title_en || '',
@@ -227,6 +258,10 @@ async function importFromPublishedJson() {
       });
     });
     if (!imported.length) return 0;
+    if (replace) {
+      setLocalCapsules(imported);
+      return imported.length;
+    }
     const existing = getLocalCapsules();
     const merged = existing.slice();
     imported.forEach(cap => {

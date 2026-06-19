@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "name": "Dot4Life Capsule Autopilot",
+  "description": "Strict scheduling rules for weekly capsule generation (GCC family life platform)",
+  "buffer": {
+    "minDaysAhead": 10,
+    "targetDaysAhead": 14,
+    "generateBatchSize": 7,
+    "maxPastDaysKept": 90
+  },
+  "dedup": {
+    "slugWindowDays": 30,
+    "maxSameCategoryConsecutive": 1,
+    "maxFaithPerWeek": 2
+  },
+  "weekdayPreferredCategories": {
+    "0": ["wellness", "living"],
+    "1": ["family"],
+    "2": ["money", "living"],
+    "3": ["wellness", "money"],
+    "4": ["family", "faith"],
+    "5": ["meals", "family"],
+    "6": ["wellness", "living", "meals"]
+  },
+  "validation": {
+    "minBodyLength": 20,
+    "minTitleLength": 3,
+    "requireArabicScript": true,
+    "allowedCategories": ["wellness", "family", "faith", "money", "living", "meals"]
+  },
+  "seasonal": {
+    "ramadanTags": ["ramadan"],
+    "ramadanPreferOnWeekdays": [5, 6]
+  },
+  "platform": {
+    "timezone": "Asia/Riyadh",
+    "currency": "SAR",
+    "locale": ["ar", "en"],
+    "idPrefix": "cap_"
+  }
+}
