@@ -1,34 +1,64 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" fill="none">
   <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#054241"/>
-      <stop offset="50%" style="stop-color:#0a6b66"/>
-      <stop offset="100%" style="stop-color:#3a7569"/>
+    <linearGradient id="mn-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#054241"/>
+      <stop offset="50%" stop-color="#0a6b66"/>
+      <stop offset="100%" stop-color="#1e5c4a"/>
+    </linearGradient>
+    <radialGradient id="mn-glow" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#6ABFB8" stop-opacity=".28"/>
+      <stop offset="100%" stop-color="#6ABFB8" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="mn-dome" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3ecf9a"/>
+      <stop offset="100%" stop-color="#1a7a5c"/>
     </linearGradient>
   </defs>
-  <rect width="1200" height="600" fill="url(#bg)"/>
-  <!-- Green dome silhouette -->
-  <rect x="480" y="280" width="240" height="150" rx="6" fill="#6abfb8" opacity=".15"/>
-  <path d="M480 280 Q540 200 600 240 Q660 200 720 280" fill="#6abfb8" opacity=".2"/>
-  <ellipse cx="600" cy="240" rx="40" ry="30" fill="#fd781c" opacity=".1"/>
-  <line x1="590" y1="240" x2="590" y2="430" stroke="#6abfb8" stroke-width="2" opacity=".2"/>
-  <line x1="610" y1="240" x2="610" y2="430" stroke="#6abfb8" stroke-width="2" opacity=".2"/>
+  <rect width="1200" height="420" fill="url(#mn-bg)"/>
+  <circle cx="600" cy="200" r="180" fill="url(#mn-glow)"/>
+
+  <!-- Night sky -->
+  <g fill="#fff" opacity=".5">
+    <circle cx="100" cy="50" r="1.2"/><circle cx="280" cy="35" r="1"/><circle cx="920" cy="40" r="1.3"/>
+    <circle cx="1080" cy="65" r="1"/><circle cx="500" cy="55" r="1.1"/><circle cx="700" cy="30" r="1.2"/>
+  </g>
+
+  <!-- Main building base -->
+  <rect x="420" y="250" width="360" height="90" rx="4" fill="#6ABFB8" fill-opacity=".22" stroke="#6ABFB8" stroke-width="1.5" stroke-opacity=".35"/>
+
+  <!-- Green dome (Nabawi signature) -->
+  <ellipse cx="600" cy="218" rx="72" ry="38" fill="url(#mn-dome)" opacity=".82"/>
+  <ellipse cx="600" cy="210" rx="58" ry="28" fill="#2ecc8a" opacity=".35"/>
+  <rect x="528" y="218" width="144" height="34" fill="#6ABFB8" opacity=".15"/>
+
+  <!-- Side domes -->
+  <ellipse cx="490" cy="238" rx="28" ry="16" fill="#3ecf9a" opacity=".55"/>
+  <ellipse cx="710" cy="238" rx="28" ry="16" fill="#3ecf9a" opacity=".55"/>
+
   <!-- Minarets -->
-  <rect x="460" y="250" width="8" height="180" fill="#6abfb8" opacity=".25"/>
-  <rect x="732" y="250" width="8" height="180" fill="#6abfb8" opacity=".25"/>
-  <circle cx="464" cy="245" r="5" fill="#fd781c" opacity=".3"/>
-  <circle cx="736" cy="245" r="5" fill="#fd781c" opacity=".3"/>
-  <!-- Palm trees -->
-  <path d="M380 350 Q390 280 380 250" fill="none" stroke="#6abfb8" stroke-width="2" opacity=".3"/>
-  <path d="M370 270 L380 260 L390 275" fill="none" stroke="#6abfb8" stroke-width="1.5" opacity=".3"/>
-  <path d="M820 350 Q810 280 820 250" fill="none" stroke="#6abfb8" stroke-width="2" opacity=".3"/>
-  <path d="M810 270 L820 260 L830 275" fill="none" stroke="#6abfb8" stroke-width="1.5" opacity=".3"/>
-  <!-- Decorative dots -->
-  <circle cx="80" cy="80" r="3" fill="#6abfb8" opacity=".3"/>
-  <circle cx="1120" cy="520" r="4" fill="#fd781c" opacity=".25"/>
-  <circle cx="200" cy="500" r="2" fill="#fd781c" opacity=".4"/>
-  <circle cx="1000" cy="100" r="2" fill="#fd781c" opacity=".3"/>
-  <circle cx="600" cy="60" r="3" fill="#6abfb8" opacity=".2"/>
-  <circle cx="350" cy="120" r="2" fill="#6abfb8" opacity=".3"/>
-  <circle cx="850" cy="480" r="2" fill="#fd781c" opacity=".2"/>
+  <rect x="405" y="170" width="14" height="170" rx="3" fill="#6ABFB8" opacity=".55"/>
+  <rect x="781" y="170" width="14" height="170" rx="3" fill="#6ABFB8" opacity=".55"/>
+  <rect x="401" y="162" width="22" height="12" rx="2" fill="#FD781C" opacity=".75"/>
+  <rect x="777" y="162" width="22" height="12" rx="2" fill="#FD781C" opacity=".75"/>
+  <circle cx="412" cy="168" r="4" fill="#fff" opacity=".6"/>
+  <circle cx="788" cy="168" r="4" fill="#fff" opacity=".6"/>
+
+  <!-- Rawdah / courtyard hint -->
+  <rect x="560" y="290" width="80" height="30" rx="3" fill="#2ecc8a" fill-opacity=".25" stroke="#6ABFB8" stroke-width="1" stroke-opacity=".4"/>
+
+  <!-- Palm trees (Medina) -->
+  <g stroke="#6ABFB8" stroke-width="2.5" opacity=".55" fill="none">
+    <path d="M330 320 Q340 240 330 200"/>
+    <path d="M318 230 L330 215 L342 235"/>
+    <path d="M322 250 L330 240 L338 255"/>
+    <path d="M870 320 Q860 240 870 200"/>
+    <path d="M858 230 L870 215 L882 235"/>
+    <path d="M862 250 L870 240 L878 255"/>
+  </g>
+
+  <!-- Golden accent -->
+  <rect x="520" y="248" width="160" height="3" fill="#FD781C" opacity=".6" rx="1"/>
+
+  <circle cx="150" cy="350" r="2" fill="#FD781C" opacity=".45"/>
+  <circle cx="1050" cy="360" r="2" fill="#6ABFB8" opacity=".5"/>
 </svg>
