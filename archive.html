@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="light" data-lang="en">
 <head>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -9,24 +10,27 @@
 <script>(function(){var p=new URLSearchParams(location.search),gd=(function(){try{var z=(Intl.DateTimeFormat().resolvedOptions().timeZone||"");return /Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test(z)?"ar":"en";}catch(e){return "ar";}})(),l=p.get("lang")||localStorage.getItem("dfl-lang")||gd,t=p.get("theme")||localStorage.getItem("dfl-theme")||"light",h=document.documentElement;h.setAttribute("data-theme",t);h.setAttribute("data-lang",l);h.setAttribute("lang",l);h.setAttribute("dir",l==="ar"?"rtl":"ltr");if(p.get("lang"))localStorage.setItem("dfl-lang",l);if(p.get("theme"))localStorage.setItem("dfl-theme",t);})()</script>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Archive | جميع المقالات | DOTFORLIFE</title>
-<meta name="description" content="All articles and guides on DOTFORLIFE, organized for Gulf families."/>
+<meta name="description" content="Browse all DOTFORLIFE articles and guides for Gulf families — health, finance, travel, Islamic life, and more. Bilingual Arabic & English."/>
 <link rel="canonical" href="https://dotforlife.com/archive.html"/>
 <link rel="alternate" hreflang="ar" href="https://dotforlife.com/archive.html?lang=ar" />
-  <link rel="alternate" hreflang="en" href="https://dotforlife.com/archive.html?lang=en" />
-  <link rel="alternate" hreflang="x-default" href="https://dotforlife.com/archive.html" />
+<link rel="alternate" hreflang="en" href="https://dotforlife.com/archive.html?lang=en" />
+<link rel="alternate" hreflang="x-default" href="https://dotforlife.com/archive.html" />
 <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Almarai:wght@300;400;700&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="/styles/global.css?v=20260626c"/>
+<link rel="stylesheet" href="/styles/global.css?v=20260627b"/>
+<link rel="stylesheet" href="/styles/home.css?v=20260627a"/>
+<link rel="stylesheet" href="/styles/pages/archive.css?v=20260628b"/>
 <script src="/scripts/global.js" defer></script>
-<script src="/scripts/feed.js?v=20260608" defer></script>
+<script src="/scripts/feed.js?v=20260628b" defer></script>
 </head>
-<body class="index-page category-page">
-<nav id="navbar" role="navigation" aria-label="Main navigation">
+<body class="index-page archive-page no-subnav">
+
+<nav id="navbar" class="index-nav" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo" aria-label="DOTFORLIFE Home">
-      <img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" width="100" height="100" style="height:100px;width:auto;object-fit:contain;" loading="lazy">
+      <img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" width="115" height="115" loading="eager" fetchpriority="high">
     </a>
     <ul class="nav-links">
       <li><a href="health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
@@ -35,47 +39,86 @@
       <li><a href="travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li>
       <li><a href="islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li>
       <li><a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a></li>
-      <li><a href="archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a></li>
+      <li><a href="archive.html" aria-current="page"><span class="en">Archive</span><span class="ar">الأرشيف</span></a></li>
       <li><a href="/blog.html"><span class="en">blog</span><span class="ar">المدونة</span></a></li>
       <li><a href="library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a></li>
     </ul>
     <div class="nav-controls">
       <button class="nav-btn" id="lang-toggle" aria-label="Switch language"><span class="en">عربي</span><span class="ar">English</span></button>
       <button class="nav-btn" id="theme-toggle" aria-label="Toggle theme"><svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
+      <button class="hamburger" id="hamburger-btn" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
 </nav>
 
-<style>
-*, *::before, *::after { box-sizing:border-box }
-.hl-container { width:100%; max-width:1280px; margin:0 auto; padding:0 clamp(1rem,4vw,2.5rem) }
-.hl-section { padding:clamp(2.5rem,5vw,5rem) 0 }
-.hl-section--cream { background:#FAF8F4 }
-[data-theme="dark"] .hl-section--cream { background:var(--card-bg,#1A1E24) }
-.hl-eyebrow { display:flex; align-items:center; gap:.5rem; font-size:.82rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:#6abfb8; margin-bottom:.75rem }
-.hl-h2 { font-family:'Almarai','Cinzel',Georgia,serif; font-size:clamp(1.4rem,3vw,1.9rem); font-weight:800; line-height:1.35; color:var(--text,#1A1E24); margin:0 0 1.2rem }
-.hl-sub { font-size:clamp(.92rem,1.2vw,1.05rem); color:var(--text-2,#5C534A); line-height:1.75; margin:0 0 2.5rem; max-width:640px }
-/* Blog list styles for archive */
-#archive-list { display:flex; flex-direction:column; gap:.75rem; width:100% }
-.blog-list-item { display:flex; gap:1rem; align-items:flex-start; padding:.8rem 1rem; border-radius:14px; background:var(--card-bg,#fff); border:1px solid rgba(5,66,65,.08); box-shadow:0 4px 16px rgba(5,66,65,.04); text-decoration:none; color:inherit; transition:transform .2s, box-shadow .2s }
-.blog-list-item:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(5,66,65,.08) }
-.blog-list-img { width:80px; height:60px; border-radius:10px; background-size:cover; background-position:center; flex-shrink:0; background-color:#FAF8F4 }
-.blog-list-body { flex:1; min-width:0 }
-.blog-list-kicker { font-size:.68rem; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:#6abfb8; display:block; margin-bottom:.15rem }
-.blog-list-title { font-size:.88rem; font-weight:600; line-height:1.4; color:var(--text,#1A1E24); display:block; margin-bottom:.2rem }
-.blog-list-meta { font-size:.75rem; color:var(--text-2,#5C534A) }
-@media(max-width:640px){ .blog-list-item { padding:.6rem .8rem } }
-@media(max-width:480px){ .blog-list-img { width:60px; height:50px } }
-</style>
-
-<div class="hl-section hl-section--cream">
-  <div class="hl-container">
-    <div class="hl-eyebrow"><span class="en">Archive</span><span class="ar">الأرشيف</span></div>
-    <h1 class="hl-h2"><span class="en">All Articles & Guides</span><span class="ar">جميع المقالات والأدلة</span></h1>
-    <p class="hl-sub"><span class="en"><span id="article-count">0</span> articles and guides for Gulf families, updated regularly.</span><span class="ar"><span id="article-count">0</span> مقالاً ودليلاً للعائلات الخليجية، تُحدَّث باستمرار.</span></p>
-    <div id="archive-list"></div>
+<section class="arc-hero" aria-label="Archive hero">
+  <div class="arc-hero-inner">
+    <p class="arc-eyebrow"><span class="en">Archive</span><span class="ar">الأرشيف</span></p>
+    <h1 class="arc-title">
+      <span class="en">All articles & guides</span>
+      <span class="ar">جميع المقالات والأدلة</span>
+    </h1>
+    <p class="arc-lead">
+      <span class="en">Evidence-based guides for Gulf families — health, finance, travel, faith, and home. Search or filter by topic.</span>
+      <span class="ar">أدلة قائمة على الأدلة للعائلات الخليجية — الصحة والمالية والسفر والإيمان والمنزل. ابحث أو رشّح حسب الموضوع.</span>
+    </p>
+    <div class="arc-stats" aria-label="Archive highlights">
+      <div class="arc-stat">
+        <span class="arc-stat-value" data-article-count>—</span>
+        <span class="arc-stat-label"><span class="en">Articles</span><span class="ar">مقال</span></span>
+      </div>
+      <div class="arc-stat">
+        <span class="arc-stat-value">5</span>
+        <span class="arc-stat-label"><span class="en">Life pillars</span><span class="ar">محاور حياة</span></span>
+      </div>
+      <div class="arc-stat">
+        <span class="arc-stat-value">2</span>
+        <span class="arc-stat-label"><span class="en">Languages</span><span class="ar">لغتان</span></span>
+      </div>
+    </div>
   </div>
-</div>
+</section>
+
+<main class="arc-main">
+  <div class="arc-toolbar">
+    <div class="arc-search-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="search" class="arc-search" id="arc-search" autocomplete="off"
+        placeholder="Search articles…" data-placeholder-en="Search articles…" data-placeholder-ar="ابحث في المقالات…"
+        aria-label="Search articles">
+    </div>
+    <div class="arc-filters" role="group" aria-label="Filter by category">
+      <button type="button" class="arc-filter active" data-cat="all" aria-pressed="true"><span class="en">All</span><span class="ar">الكل</span></button>
+      <button type="button" class="arc-filter" data-cat="health" aria-pressed="false"><span class="en">Health</span><span class="ar">الصحة</span></button>
+      <button type="button" class="arc-filter" data-cat="finance" aria-pressed="false"><span class="en">Finance</span><span class="ar">المالية</span></button>
+      <button type="button" class="arc-filter" data-cat="real-estate" aria-pressed="false"><span class="en">Real Estate</span><span class="ar">العقار</span></button>
+      <button type="button" class="arc-filter" data-cat="travel" aria-pressed="false"><span class="en">Travel</span><span class="ar">السفر</span></button>
+      <button type="button" class="arc-filter" data-cat="islamic" aria-pressed="false"><span class="en">Islamic</span><span class="ar">الإسلامية</span></button>
+      <button type="button" class="arc-filter" data-cat="family" aria-pressed="false"><span class="en">Family</span><span class="ar">الأسرة</span></button>
+      <button type="button" class="arc-filter" data-cat="productivity" aria-pressed="false"><span class="en">Productivity</span><span class="ar">الإنتاجية</span></button>
+    </div>
+  </div>
+
+  <p class="arc-result-meta" id="arc-result-meta" aria-live="polite">
+    <span class="en">Loading articles…</span>
+    <span class="ar">جاري تحميل المقالات…</span>
+  </p>
+
+  <div id="archive-grid" class="arc-grid" aria-label="Article archive">
+    <div id="archive-loading" class="arc-loading" aria-hidden="false">
+      <div class="arc-loading-spinner" aria-hidden="true"></div>
+      <span class="en">Loading articles…</span>
+      <span class="ar">جاري تحميل المقالات…</span>
+    </div>
+  </div>
+
+  <div id="archive-empty" class="arc-empty" hidden>
+    <span class="en">No articles match your search. Try a different keyword or category.</span>
+    <span class="ar">لا توجد مقالات مطابقة. جرّب كلمة أو تصنيفاً مختلفاً.</span>
+  </div>
+</main>
 
 <footer class="site-footer" role="contentinfo">
   <div class="footer-accent" aria-hidden="true"></div>
@@ -140,7 +183,7 @@
     </div>
   </div>
 </footer>
-<!-- ═══ UNIFIED MOBILE NAV ══════════════════════════════════ -->
+
 <nav class="dfl-mobile-nav" aria-label="Mobile navigation">
   <a href="index.html" class="dfl-mnav-item" aria-label="Home">
     <svg viewBox="0 0 24 24"><polyline points="3 9 12 2 21 9"/><path d="M5 9v11a1 1 0 001 1h4v-6h4v6h4a1 1 0 001-1V9"/></svg>
@@ -151,7 +194,7 @@
     <span class="en">Health</span><span class="ar">الصحة</span>
   </a>
   <a href="finance.html" class="dfl-mnav-item" aria-label="Finance">
-    <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+    <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 000 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
     <span class="en">Finance</span><span class="ar">المالية</span>
   </a>
   <a href="islamic.html" class="dfl-mnav-item" aria-label="Islamic">
@@ -163,5 +206,19 @@
     <span class="en">Travel</span><span class="ar">السفر</span>
   </a>
 </nav>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  function syncSearchPlaceholder() {
+    var input = document.getElementById('arc-search');
+    if (!input) return;
+    var ar = root.getAttribute('data-lang') === 'ar';
+    input.placeholder = ar ? (input.getAttribute('data-placeholder-ar') || '') : (input.getAttribute('data-placeholder-en') || '');
+  }
+  syncSearchPlaceholder();
+  document.getElementById('lang-toggle') && document.getElementById('lang-toggle').addEventListener('click', function(){ setTimeout(syncSearchPlaceholder, 50); });
+})();
+</script>
 </body>
 </html>

@@ -10,7 +10,7 @@
 (function() {
   'use strict';
 
-  var FEED_VERSION = 6;  // v6: supports type field filter for section feeds
+  var FEED_VERSION = 7;  // v7: archive editorial grid + search/filter
 
   var CONFIG = {
     jsonUrl: '/articles.json',
@@ -168,7 +168,7 @@
 
   function buildListItemHTML(a) {
     var title = isAr && a.title_ar ? a.title_ar : a.title_en;
-    var url = a.url || '#';
+    var url = isAr ? (a.url || '#') : (a.url_en || a.url || '#');
     var section = isAr && a.section_ar ? a.section_ar : a.section;
     var img = a.img || '/assets/images/hero.webp';
 
@@ -179,6 +179,113 @@
       '<span class="blog-list-title">' + esc(title) + '</span>' +
       '<span class="blog-list-meta">' + fmtDate(a.date) + '</span>' +
       '</span></a>';
+  }
+
+  /** Text-only editorial card for archive grid (no images) */
+  function buildArchiveCardHTML(a) {
+    var title = isAr && a.title_ar ? a.title_ar : a.title_en;
+    var excerpt = isAr && a.excerpt_ar ? a.excerpt_ar : a.excerpt_en;
+    var url = isAr ? (a.url || '#') : (a.url_en || a.url || '#');
+    var section = isAr && a.section_ar ? a.section_ar : (a.section || a.category || '');
+    var cat = a.category || 'general';
+    var readLabel = isAr ? '← اقرأ' : 'Read →';
+
+    return '<a href="' + url + '" class="arc-card" data-cat="' + esc(cat) + '">' +
+      '<span class="arc-card-kicker">' + esc(section) + '</span>' +
+      '<span class="arc-card-title">' + esc(title) + '</span>' +
+      (excerpt ? '<span class="arc-card-desc">' + esc(excerpt) + '</span>' : '') +
+      '<span class="arc-card-foot">' +
+      '<span class="arc-card-date">' + fmtDate(a.date) + '</span>' +
+      '<span class="arc-card-link">' + readLabel + '</span>' +
+      '</span></a>';
+  }
+
+  function setArticleCounts(n) {
+    document.querySelectorAll('[data-article-count]').forEach(function(el) {
+      el.textContent = n;
+    });
+    var legacy = document.getElementById('article-count');
+    if (legacy) legacy.textContent = n;
+  }
+
+  var archiveArticles = [];
+
+  function renderArchiveGrid(items) {
+    var grid = document.querySelector('#archive-grid');
+    var empty = document.querySelector('#archive-empty');
+    var loading = document.querySelector('#archive-loading');
+    if (!grid) return;
+
+    if (loading) loading.hidden = true;
+
+    if (!items.length) {
+      grid.innerHTML = '';
+      if (empty) empty.hidden = false;
+      setArticleCounts(0);
+      updateArchiveResultMeta(0, archiveArticles.length);
+      return;
+    }
+
+    if (empty) empty.hidden = true;
+    var html = '';
+    for (var i = 0; i < items.length; i++) {
+      html += buildArchiveCardHTML(items[i]);
+    }
+    grid.innerHTML = html;
+    setArticleCounts(archiveArticles.length);
+    updateArchiveResultMeta(items.length, archiveArticles.length);
+  }
+
+  function updateArchiveResultMeta(shown, total) {
+    var el = document.querySelector('#arc-result-meta');
+    if (!el) return;
+    var en = el.querySelector('.en');
+    var ar = el.querySelector('.ar');
+    if (en) en.innerHTML = 'Showing <strong>' + shown + '</strong> of <strong>' + total + '</strong> articles';
+    if (ar) ar.innerHTML = 'عرض <strong>' + shown + '</strong> من <strong>' + total + '</strong> مقال';
+  }
+
+  function initArchivePage(allArticles) {
+    archiveArticles = allArticles.slice();
+    var activeCat = 'all';
+    var query = '';
+
+    function applyFilters() {
+      var q = query.trim().toLowerCase();
+      var filtered = archiveArticles.filter(function(a) {
+        if (activeCat !== 'all' && (a.category || '') !== activeCat) return false;
+        if (!q) return true;
+        var hay = [
+          a.title_en, a.title_ar, a.excerpt_en, a.excerpt_ar,
+          a.section, a.section_ar, a.category
+        ].join(' ').toLowerCase();
+        return hay.indexOf(q) !== -1;
+      });
+      renderArchiveGrid(filtered);
+    }
+
+    var search = document.getElementById('arc-search');
+    if (search) {
+      search.addEventListener('input', function() {
+        query = search.value;
+        applyFilters();
+      });
+    }
+
+    document.querySelectorAll('.arc-filter').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.arc-filter').forEach(function(b) {
+          b.classList.remove('active');
+          b.setAttribute('aria-pressed', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
+        activeCat = btn.getAttribute('data-cat') || 'all';
+        applyFilters();
+      });
+    });
+
+    applyFilters();
   }
 
   /* ═══ Utilities ═══ */
@@ -365,18 +472,26 @@
       console.warn('feed.js v2: #latest-articles .hl-article-grid NOT FOUND');
     }
 
-    // Blog + Archive full list
-    if (pageType === 'blog' || pageType === 'archive') {
-      var list = document.querySelector('#blog-list') || document.querySelector('#archive-list');
+    // Blog full list
+    if (pageType === 'blog') {
+      var list = document.querySelector('#blog-list');
       if (list && filtered.length > 0) {
-        var html = '';
-        for (var i = 0; i < Math.min(filtered.length, CONFIG.blogListMax); i++) {
-          html += buildListItemHTML(filtered[i]);
+        var listHtml = '';
+        for (var j = 0; j < Math.min(filtered.length, CONFIG.blogListMax); j++) {
+          listHtml += buildListItemHTML(filtered[j]);
         }
-        list.innerHTML = html;
+        list.innerHTML = listHtml;
       }
-      var count = document.querySelector('#article-count');
-      if (count) count.textContent = filtered.length;
+      setArticleCounts(filtered.length);
+    }
+
+    // Archive — editorial text grid + search/filter
+    if (pageType === 'archive') {
+      if (filtered.length > 0) {
+        initArchivePage(filtered);
+      } else {
+        renderArchiveGrid([]);
+      }
     }
   }
 
@@ -387,7 +502,7 @@
   function boot() {
     var hasGrid = !!document.querySelector(CONFIG.containerSelector);
     var hasBlog = !!document.querySelector('#blog-list');
-    var hasArchive = !!document.querySelector('#archive-list');
+    var hasArchive = !!document.querySelector('#archive-grid') || !!document.querySelector('#archive-list');
     var hasSectionFeeds = !!document.querySelector('[data-feed-section]');
     console.log('feed.js: bootstrap | grid=' + hasGrid + ' blog=' + hasBlog + ' archive=' + hasArchive + ' sections=' + hasSectionFeeds);
 
@@ -399,7 +514,9 @@
       setTimeout(function() {
         var retryGrid = !!document.querySelector(CONFIG.containerSelector);
         var retrySec = !!document.querySelector('[data-feed-section]');
-        if (retryGrid || retrySec) {
+        var retryBlog = !!document.querySelector('#blog-list');
+        var retryArchive = !!document.querySelector('#archive-grid') || !!document.querySelector('#archive-list');
+        if (retryGrid || retrySec || retryBlog || retryArchive) {
           console.log('feed.js: containers found on retry → fetching');
           fetchArticles(render);
         } else {
