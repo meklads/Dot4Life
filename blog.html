@@ -128,15 +128,12 @@
   <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Almarai:wght@300;400;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Almarai:wght@300;400;700;800&display=swap" /></noscript>
-  <link rel="stylesheet" href="/styles/global.css?v=20260626c"/>
-    <link rel="stylesheet" href="/styles/home.css?v=20260617b">
-<link rel="stylesheet" href="/styles/pages/blog.css?v=821e658">
-
-  <!-- DFL CANONICAL SYSTEM CSS -->
-  
-<script src="/scripts/global.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Almarai:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/styles/global.css?v=20260627b"/>
+  <link rel="stylesheet" href="/styles/home.css?v=20260627a"/>
+  <link rel="stylesheet" href="/styles/pages/blog-hub.css?v=20260628d"/>
+  <script src="/scripts/global.js" defer></script>
+  <script src="/scripts/feed.js?v=20260628d" defer></script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3G1XPV4F0G"></script>
 <script>
@@ -167,12 +164,12 @@
   ]
 }</script>
 </head>
-<body class="index-page category-page">
-<!-- ═══ UNIFIED HEADER ══════════════════════════════════════ -->
-<nav id="navbar" role="navigation" aria-label="Main navigation">
+<body class="index-page blog-page no-subnav">
+
+<nav id="navbar" class="index-nav" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo" aria-label="DOTFORLIFE Home">
-      <img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" style="height:100px; width:auto; object-fit:contain;" width="100" height="100" loading="lazy">
+      <img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" width="115" height="115" loading="eager" fetchpriority="high">
     </a>
     <ul class="nav-links">
       <li><a href="health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
@@ -182,341 +179,181 @@
       <li><a href="islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li>
       <li><a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a></li>
       <li><a href="archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a></li>
-      <li><a href="/blog.html"><span class="en">blog</span><span class="ar">المدونة</span></a></li>
+      <li><a href="/blog.html" aria-current="page"><span class="en">Blog</span><span class="ar">المدونة</span></a></li>
       <li><a href="library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a></li>
     </ul>
     <div class="nav-controls">
-      <button class="hamburger" id="hamburger-btn" aria-label="Toggle menu" aria-expanded="false">
+      <button class="nav-btn" id="lang-toggle" aria-label="Switch language"><span class="en">عربي</span><span class="ar">English</span></button>
+      <button class="nav-btn" id="theme-toggle" aria-label="Toggle theme"><svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
+      <button class="hamburger" id="hamburger-btn" aria-label="Menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
-      <button class="nav-btn" id="lang-toggle" aria-label="Switch language"><span class="en">عربي</span><span class="ar">English</span></button>
-      <button class="nav-btn" id="theme-toggle" aria-label="Toggle theme"><svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
     </div>
   </div>
 </nav>
-
-<!-- Mobile dropdown menu -->
-<div class="mobile-dropdown" id="mobile-dropdown">
-  <div class="md-links">
-    <a href="health.html"><span class="en">Health</span><span class="ar">الصحة</span></a>
-    <a href="finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a>
-    <a href="real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a>
-    <a href="travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a>
-    <a href="islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a>
-    <a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a>
-    <a href="archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a>
-    <a href="/blog.html"><span class="en">Blog</span><span class="ar">المدونة</span></a>
-    <a href="library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a>
-  </div>
-  <div class="md-controls">
-    <button class="nav-btn" id="lang-toggle-mobile" aria-label="Switch language"><span class="en">عربي</span><span class="ar">English</span></button>
-    <button class="nav-btn" id="theme-toggle-mobile" aria-label="Toggle theme"><svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
-  </div>
-</div>
-  <!-- ═══════════════════════════════════════
-       HERO
-  ═══════════════════════════════════════ -->
-  <section id="hero" aria-label="Hero section">
-    <div class="hero-floats" aria-hidden="true">
-      <span></span><span></span><span></span><span></span><span></span><span></span>
+<section class="bl-hero" aria-labelledby="blog-title">
+  <div class="bl-hero-inner">
+    <div>
+      <p class="bl-eyebrow"><span class="en">DOTFORLIFE Blog</span><span class="ar">مدونة دوت فور لايف</span></p>
+      <h1 class="bl-title" id="blog-title">
+        <span class="en">Knowledge that<br>changes how you live.</span>
+        <span class="ar">معرفة تُغيّر<br>طريقة حياتك.</span>
+      </h1>
+      <p class="bl-lead">
+        <span class="en">Research-backed articles across health, finance, travel, real estate, Islamic life, and productivity. Every claim sourced, every insight tested against science.</span>
+        <span class="ar">مقالات مدعومة بالبحث عبر الصحة والمال والسفر والعقارات والحياة الإسلامية والإنتاجية. كل ادعاء مُستنَد، كل رؤية مُختبَرة بالعلم.</span>
+      </p>
     </div>
-    <div class="hero-inner">
-      <!-- Left: editorial text -->
-      <div class="hero-left">
-        <h1 class="hero-headline">
-          <span class="en">Stories &amp; guides<br>for your family.</span>
-          <span class="ar">مقالات وأدلّة<br>تهمّ أسرتك.</span>
-        </h1>
-        <p class="hero-sub">
-          <span class="en">Health, money, faith, travel, home,<br>one calm platform built for Gulf families.</span>
-          <span class="ar">الصحة والمال والإيمان والسفر والمنزل، منصة هادئة واحدة صُممت للأسرة الخليجية. مجانية دائماً.</span>
-        </p>
-        <div class="hero-cta-row">
-          <a href="/our-vision.html" class="btn-primary">
-            <span class="en">Explore the Platform</span>
-            <span class="ar">استكشف المنصة</span>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-          <a href="/about.html" class="btn-outline">
-            <span class="en">Our Story</span>
-            <span class="ar">قصتنا</span>
-          </a>
-        </div>
+    <div class="bl-hero-stats" aria-label="Blog highlights">
+      <div class="bl-stat">
+        <span class="bl-stat-val" data-blog-stat-count data-article-count>—</span>
+        <span class="bl-stat-lbl"><span class="en">Articles</span><span class="ar">مقال</span></span>
       </div>
-      <!-- Right: circular family image -->
-      <div class="hero-right" aria-hidden="true">
-        <div class="hero-circle-wrap">
-          <!-- Floating trust badge -->
-          <div class="hero-badge" aria-hidden="true">
-            <div class="hero-badge-icon">
-              <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-            <div>
-              <div class="hero-badge-label"><span class="en">Always with you</span><span class="ar">دائماً معك</span></div>
-              <div class="hero-badge-value"><span class="en">Free · Private · Human</span><span class="ar">مجاني · خاص · إنساني</span></div>
-            </div>
-          </div>
-          <div class="hero-circle">
-            <img
-              src="/d4l1.webp"
-              alt="DOT.FORLIFE, منصة الأسرة"
-              width="900" height="900"
-              loading="eager"
-              fetchpriority="high"
-              decoding="async"
-            />
-          </div>
-        </div>
+      <div class="bl-stat">
+        <span class="bl-stat-val">7</span>
+        <span class="bl-stat-lbl"><span class="en">Categories</span><span class="ar">فئات</span></span>
       </div>
-    </div>
-  </section>
-
-  <!-- Stats bar -->
-  <div class="hero-stats" aria-label="Key metrics">
-    <div class="hero-stats-inner">
-      <div class="stat-item">
-        <div class="stat-num">40+</div>
-        <div class="stat-label"><span class="en">Free Tools</span><span class="ar">أداة مجانية</span></div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">6</div>
-        <div class="stat-label"><span class="en">Life Areas</span><span class="ar">مجالات حياة</span></div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">AR / EN</div>
-        <div class="stat-label"><span class="en">Bilingual</span><span class="ar">ثنائي اللغة</span></div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">0</div>
-        <div class="stat-label"><span class="en">Data Stored</span><span class="ar">بيانات محفوظة</span></div>
+      <div class="bl-stat">
+        <span class="bl-stat-val">AR / EN</span>
+        <span class="bl-stat-lbl"><span class="en">Bilingual</span><span class="ar">ثنائي اللغة</span></span>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- ═══════════════════════════════════════
-       TODAY'S DATE, Daily Rose
-  ═══════════════════════════════════════ -->
-  <div class="hero-stats" style="margin:3rem auto;max-width:1080px;padding:0 1.5rem;">
-    <div class="hero-stats-inner" style="background:linear-gradient(135deg,#b8705a 0%,#d49480 100%);box-shadow:0 8px 40px rgba(184,112,90,.15);border:1px solid rgba(184,112,90,.1);position:relative;overflow:hidden;">
-      <div style="position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.06);pointer-events:none;"></div>
-      <div style="position:absolute;bottom:-40px;left:-40px;width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,.04);pointer-events:none;"></div>
-      <div style="position:absolute;top:20%;right:30%;width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,.03);pointer-events:none;"></div>
-      <div class="stat-item" style="border:none;text-align:center;">
-        <div class="stat-num" style="font-size:1.2rem;font-weight:600;color:rgba(255,255,255,.75);font-family:'Inter',sans-serif;margin-bottom:0;">
-          <span class="en"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span><span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
-        </div>
-      </div>
-      <div class="stat-item" style="text-align:center;">
-        <div class="stat-num" style="font-size:1.5rem;font-family:var(--font-ar);color:#fff;font-weight:700;" id="hijri-display">, </div>
-        <div class="stat-label" style="color:rgba(255,255,255,.7);font-size:.65rem;" id="greg-display"></div>
-      </div>
-      <div class="stat-item" style="text-align:center;border:none;">
-        <div class="stat-num" style="font-size:1.5rem;color:#fff;font-family:'Cinzel',serif;font-weight:600;">
-          <span class="en"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span><span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
-        </div>
-      </div>
-      <div class="stat-item" style="text-align:center;">
-        <div class="stat-num" style="font-size:1.3rem;color:#fff;font-weight:500;" id="dh-focus-text-standalone">
-          <span class="en">Start your day with intention.</span>
-          <span class="ar">ابدأ يومك بنية.</span>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div style="height:0.5rem;"></div>
-
-
-<!-- ════════════════════════════════════════════════════════════ -->
-
-
-  <!-- HERO -->
-  <section class="blog-hero" aria-labelledby="blog-title">
-    <div class="blog-hero-bg"></div>
-    <div class="container">
-      <div class="blog-hero-inner">
-        <div>
-          <div class="blog-hero-label">
-            <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/></svg></span>
-            <span class="en">DOTFORLIFE Blog • المدونة</span>
-            <span class="ar">مدونة دوت فور لايف</span>
-          </div>
-          <h1 class="blog-hero-title" id="blog-title">
-            <span class="en">Knowledge that<br>changes how you live.</span>
-            <span class="ar">معرفة تُغيّر<br>طريقة حياتك.</span>
-          </h1>
-          <p class="blog-hero-sub">
-            <span class="en">Research-backed articles across health, finance, travel, real estate, Islamic life, and productivity. No opinions dressed as facts. Every claim sourced, every insight tested against science.</span>
-            <span class="ar">مقالات مدعومة بالبحث عبر الصحة والمال والسفر والعقارات والحياة الإسلامية والإنتاجية. لا آراء مُقنَّعة كحقائق. كل ادعاء مُستنَد، كل رؤية مُختبَرة بالعلم.</span>
+<div class="bl-shell">
+  <div class="bl-wrap">
+    <div class="bl-layout">
+      <main class="bl-main">
+        <p class="bl-section-label"><span class="en">Featured Article</span><span class="ar">المقال المميز</span></p>
+        <a href="/blog/bmi-article.html" class="bl-featured" id="blog-featured">
+          <p class="bl-featured-kicker"><span class="en">Featured · Deep dive</span><span class="ar">مميز · دراسة معمّقة</span></p>
+          <span class="bl-featured-cat"><span class="en">Health</span><span class="ar">الصحة</span></span>
+          <h2 class="bl-featured-title">
+            <span class="en">Why Your BMI Is Lying to You (And What Actually Predicts Health)</span>
+            <span class="ar">لماذا يكذب عليك مؤشر كتلة الجسم (وما الذي يتنبأ بالصحة فعلاً)</span>
+          </h2>
+          <p class="bl-featured-excerpt">
+            <span class="en">A 2023 American Medical Association policy shift officially recognized BMI's profound limitations, especially for people of Middle Eastern, South Asian, and African descent.</span>
+            <span class="ar">التحوّل السياسي للرابطة الأمريكية للطب في 2023 اعترف رسمياً بقيود مؤشر كتلة الجسم العميقة، خاصة لأبناء الشرق الأوسط وجنوب آسيا وأفريقيا.</span>
           </p>
-        </div>
-        <div class="blog-stats">
-          <div class="blog-stat">
-            <div class="blog-stat-val">18</div>
-            <div class="blog-stat-lbl"><span class="en">Categories</span><span class="ar">فئات</span></div>
-          </div>
-          <div class="blog-stat">
-            <div class="blog-stat-val">AR / EN</div>
-            <div class="blog-stat-lbl"><span class="en">Bilingual</span><span class="ar">ثنائي اللغة</span></div>
-          </div>
-          <div class="blog-stat">
-            <div class="blog-stat-val">Free</div>
-            <div class="blog-stat-lbl"><span class="en">Always</span><span class="ar">دائماً</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- BLOG MAIN CONTENT -->
-  <div class="container">
-    <div class="blog-layout">
-      <!-- LEFT: ARTICLES -->
-      <main>
-        <!-- FEATURED -->
-        <span class="section-label" style="margin-top:4px;"><span class="en">Featured Article</span><span class="ar">المقال المميز</span></span>
-        <a href="/blog/bmi-article.html" class="featured-article reveal" data-category="health">
-          <div class="fa-visual" style="background:linear-gradient(135deg,rgba(239,68,68,.08),rgba(239,68,68,.03));">
-            <div class="fa-emoji"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4c0 2-2 5-4 7-2-2-4-5-4-7a4 4 0 0 1 4-4z"/><path d="M12 22V12"/></svg></div>
-          </div>
-          <div class="fa-content">
-            <div class="fa-cat" style="background:var(--health-soft);color:var(--health);border:1px solid rgba(239,68,68,.2);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> <span class="en">Health</span><span class="ar">الصحة</span></div>
-            <div class="fa-label"><span class="en">Deep Dive • 8 min read</span><span class="ar">دراسة معمّقة • 8 دقائق للقراءة</span></div>
-            <h2 class="fa-title">
-              <span class="en">Why Your BMI Is Lying to You (And What Actually Predicts Health)</span>
-              <span class="ar">لماذا يكذب عليك مؤشر كتلة الجسم (وما الذي يتنبأ بالصحة فعلاً)</span>
-            </h2>
-            <p class="fa-excerpt">
-              <span class="en">A 2023 American Medical Association policy shift officially recognized BMI's profound limitations, especially for people of Middle Eastern, South Asian, and African descent. What research says to measure instead, and why the waist-to-height ratio may be the metric that saves your life.</span>
-              <span class="ar">التحوّل السياسي للرابطة الأمريكية للطب في 2023 اعترف رسمياً بقيود مؤشر كتلة الجسم العميقة، خاصة لأبناء الشرق الأوسط وجنوب آسيا وأفريقيا. ما تقوله الأبحاث عن القياسات البديلة، ولماذا قد تكون نسبة الخصر للطول هي المقياس الذي يُنقذ حياتك.</span>
-            </p>
-            <div class="fa-meta">
-              <span class="en">May 2025 · WHO / AMA Research</span>
-              <span class="ar">مايو 2025 · بحث منظمة الصحة العالمية</span>
-              <span class="fa-read"><span class="en">Read article →</span><span class="ar">اقرأ المقال ←</span></span>
-            </div>
+          <div class="bl-featured-meta">
+            <span class="bl-featured-date">May 2025</span>
+            <span class="bl-featured-read"><span class="en">Read article →</span><span class="ar">← اقرأ المقال</span></span>
           </div>
         </a>
 
-        <!-- AFFILIATE NOTICE -->
-        <div class="affiliate-banner reveal">
-          <div class="aff-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div class="bl-affiliate">
           <div>
-            <div class="aff-label"><span class="en">Transparency</span><span class="ar">شفافية</span></div>
-            <div class="aff-text">
+            <p class="bl-affiliate-label"><span class="en">Transparency</span><span class="ar">شفافية</span></p>
+            <p class="bl-affiliate-text">
               <span class="en">Some articles contain affiliate links to products we genuinely recommend. We never promote something we haven't vetted. Our editorial independence is non-negotiable.</span>
               <span class="ar">بعض المقالات تحتوي على روابط شريكة لمنتجات نوصي بها صادقاً. لا نروّج أبداً لشيء لم نتحقق منه. استقلاليتنا التحريرية غير قابلة للتفاوض.</span>
-            </div>
+            </p>
           </div>
-          <a href="#" class="aff-cta"><span class="en">Our policy →</span><span class="ar">سياستنا ←</span></a>
+          <a href="/editorial-standards.html" class="bl-affiliate-link"><span class="en">Our policy →</span><span class="ar">← سياستنا</span></a>
         </div>
 
-        <!-- ARTICLES GRID -->
-        <span class="section-label"><span class="en">Latest Articles</span><span class="ar">أحدث المقالات</span></span>
-          <style>
-    #blog-list { display:flex; flex-direction:column; gap:.75rem; width:100%; margin-top:1rem }
-    .blog-list-item { display:flex; gap:1rem; align-items:flex-start; padding:.8rem 1rem; border-radius:14px; background:var(--card-bg,#fff); border:1px solid rgba(5,66,65,.08); box-shadow:0 4px 16px rgba(5,66,65,.04); text-decoration:none; color:inherit; transition:transform .2s, box-shadow .2s }
-    .blog-list-item:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(5,66,65,.08) }
-    .blog-list-img { width:80px; height:60px; border-radius:10px; background-size:cover; background-position:center; flex-shrink:0; background-color:#FAF8F4 }
-    .blog-list-body { flex:1; min-width:0 }
-    .blog-list-kicker { font-size:.68rem; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:#6abfb8; display:block; margin-bottom:.15rem }
-    .blog-list-title { font-size:.88rem; font-weight:600; line-height:1.4; color:var(--text,#1A1E24); display:block; margin-bottom:.2rem }
-    .blog-list-meta { font-size:.75rem; color:var(--text-2,#5C534A) }
-    @media(max-width:640px){ .blog-list-item { padding:.6rem .8rem } }
-    @media(max-width:480px){ .blog-list-img { width:60px; height:50px } }
-  </style>
-<div id="blog-list"></div>
+        <div class="bl-toolbar">
+          <div class="bl-search-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="search" class="bl-search" id="bl-search" autocomplete="off"
+              placeholder="Search articles…" data-placeholder-en="Search articles…" data-placeholder-ar="ابحث في المقالات…"
+              aria-label="Search articles">
+          </div>
+          <div class="bl-filters" role="group" aria-label="Filter by category">
+            <button type="button" class="bl-filter active" data-cat="all" aria-pressed="true"><span class="en">All</span><span class="ar">الكل</span></button>
+            <button type="button" class="bl-filter" data-cat="health" aria-pressed="false"><span class="en">Health</span><span class="ar">الصحة</span></button>
+            <button type="button" class="bl-filter" data-cat="finance" aria-pressed="false"><span class="en">Finance</span><span class="ar">المالية</span></button>
+            <button type="button" class="bl-filter" data-cat="real-estate" aria-pressed="false"><span class="en">Real Estate</span><span class="ar">العقار</span></button>
+            <button type="button" class="bl-filter" data-cat="travel" aria-pressed="false"><span class="en">Travel</span><span class="ar">السفر</span></button>
+            <button type="button" class="bl-filter" data-cat="islamic" aria-pressed="false"><span class="en">Islamic</span><span class="ar">الإسلامية</span></button>
+            <button type="button" class="bl-filter" data-cat="family" aria-pressed="false"><span class="en">Family</span><span class="ar">الأسرة</span></button>
+            <button type="button" class="bl-filter" data-cat="productivity" aria-pressed="false"><span class="en">Productivity</span><span class="ar">الإنتاجية</span></button>
+          </div>
+        </div>
 
-        <!-- LOAD MORE --><!-- LOAD MORE -->
-        <div class="load-more-area">
-          <button class="btn-outline">
-            <span class="en">Load more articles</span>
-            <span class="ar">تحميل مقالات أكثر</span>
-            ↓
+        <p class="bl-section-label"><span class="en">Latest Articles</span><span class="ar">أحدث المقالات</span></p>
+        <div id="blog-grid" class="bl-grid" aria-label="Blog articles">
+          <div id="blog-loading" class="bl-loading" aria-hidden="false">
+            <div class="bl-loading-spinner" aria-hidden="true"></div>
+            <span class="en">Loading articles…</span>
+            <span class="ar">جاري تحميل المقالات…</span>
+          </div>
+        </div>
+
+        <div class="bl-load-more">
+          <button type="button" class="bl-load-btn" id="blog-load-more" hidden>
+            <span class="en">Load more articles ↓</span>
+            <span class="ar">تحميل مقالات أكثر ↓</span>
           </button>
         </div>
       </main>
 
-      <!-- SIDEBAR -->
-      <aside class="sidebar">
-
-        <!-- Try the tools -->
-        <div class="sidebar-card">
-          <div class="sidebar-title"><span class="en">Try our free tools</span><span class="ar">جرّب أدواتنا المجانية</span></div>
-          <a href="tools/mortgage-calculator.html" class="tool-link">
-            <div class="tl-icon" style="background:rgba(15,76,138,.08);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 12h.01"/><path d="M16 12h.01"/><path d="M12 12h.01"/></svg></div>
-            <div>
-              <div class="tl-name"><span class="en">Mortgage Calculator</span><span class="ar">حاسبة القرض العقاري</span></div>
-              <div class="tl-desc"><span class="en">Monthly payments & total cost</span><span class="ar">الأقساط الشهرية والتكلفة الإجمالية</span></div>
-            </div>
+      <aside class="bl-sidebar">
+        <div class="bl-side-card">
+          <p class="bl-side-title"><span class="en">Try our free tools</span><span class="ar">جرّب أدواتنا المجانية</span></p>
+          <a href="/tools/mortgage-calculator.html" class="bl-tool-link">
+            <span class="bl-tool-icon" aria-hidden="true">🏠</span>
+            <span>
+              <span class="bl-tool-name"><span class="en">Mortgage Calculator</span><span class="ar">حاسبة القرض العقاري</span></span>
+              <span class="bl-tool-desc"><span class="en">Monthly payments & total cost</span><span class="ar">الأقساط الشهرية والتكلفة الإجمالية</span></span>
+            </span>
           </a>
-          <a href="tools/roi-calculator.html" class="tool-link">
-            <div class="tl-icon" style="background:rgba(5,150,105,.08);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
-            <div>
-              <div class="tl-name"><span class="en">ROI Calculator</span><span class="ar">حاسبة العائد</span></div>
-              <div class="tl-desc"><span class="en">Annualized investment returns</span><span class="ar">العوائد السنوية للاستثمار</span></div>
-            </div>
+          <a href="/tools/roi-calculator.html" class="bl-tool-link">
+            <span class="bl-tool-icon" aria-hidden="true">📈</span>
+            <span>
+              <span class="bl-tool-name"><span class="en">ROI Calculator</span><span class="ar">حاسبة العائد</span></span>
+              <span class="bl-tool-desc"><span class="en">Annualized investment returns</span><span class="ar">العوائد السنوية للاستثمار</span></span>
+            </span>
           </a>
-          <a href="tools/zakat-calculator.html" class="tool-link">
-            <div class="tl-icon" style="background:rgba(42,154,152,.08);"><svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></div>
-            <div>
-              <div class="tl-name"><span class="en">Zakat Calculator</span><span class="ar">حاسبة الزكاة</span></div>
-              <div class="tl-desc"><span class="en">Precise Zakat calculation</span><span class="ar">حساب زكاة دقيق</span></div>
-            </div>
+          <a href="/tools/zakat-calculator.html" class="bl-tool-link">
+            <span class="bl-tool-icon" aria-hidden="true">⚖️</span>
+            <span>
+              <span class="bl-tool-name"><span class="en">Zakat Calculator</span><span class="ar">حاسبة الزكاة</span></span>
+              <span class="bl-tool-desc"><span class="en">Precise Zakat calculation</span><span class="ar">حساب زكاة دقيق</span></span>
+            </span>
           </a>
-          <a href="tools/bmi-calculator.html" class="tool-link">
-            <div class="tl-icon" style="background:rgba(239,68,68,.08);">⚖️</div>
-            <div>
-              <div class="tl-name"><span class="en">BMI Calculator</span><span class="ar">حاسبة مؤشر كتلة الجسم</span></div>
-              <div class="tl-desc"><span class="en">Health weight assessment</span><span class="ar">تقييم الوزن الصحي</span></div>
-            </div>
+          <a href="/tools/bmi-calculator.html" class="bl-tool-link">
+            <span class="bl-tool-icon" aria-hidden="true">💚</span>
+            <span>
+              <span class="bl-tool-name"><span class="en">BMI Calculator</span><span class="ar">حاسبة مؤشر كتلة الجسم</span></span>
+              <span class="bl-tool-desc"><span class="en">Health weight assessment</span><span class="ar">تقييم الوزن الصحي</span></span>
+            </span>
           </a>
-          <a href="tools/password-generator.html" class="tool-link">
-            <div class="tl-icon" style="background:rgba(108,63,197,.08);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-            <div>
-              <div class="tl-name"><span class="en">Password Generator</span><span class="ar">مولّد كلمات المرور</span></div>
-              <div class="tl-desc"><span class="en">Cryptographically strong</span><span class="ar">قوة تشفيرية عالية</span></div>
-            </div>
-          </a>
-          <a href="/daily-planner.html" class="tool-link">
-            <div class="tl-icon" style="background:rgba(20,184,166,.08);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
-            <div>
-              <div class="tl-name"><span class="en">Daily Planner</span><span class="ar">المخطط اليومي</span></div>
-              <div class="tl-desc"><span class="en">Prayer-anchored day structure</span><span class="ar">يوم مرتبط بأوقات الصلاة</span></div>
-            </div>
+          <a href="/daily-planner.html" class="bl-tool-link">
+            <span class="bl-tool-icon" aria-hidden="true">📅</span>
+            <span>
+              <span class="bl-tool-name"><span class="en">Daily Planner</span><span class="ar">المخطط اليومي</span></span>
+              <span class="bl-tool-desc"><span class="en">Prayer-anchored day structure</span><span class="ar">يوم مرتبط بأوقات الصلاة</span></span>
+            </span>
           </a>
         </div>
 
-        <!-- Topics -->
-        <div class="sidebar-card">
-          <div class="sidebar-title"><span class="en">Browse topics</span><span class="ar">تصفّح المواضيع</span></div>
-          <div>
-            <span class="topic-tag"><span class="en">Zakat</span><span class="ar">الزكاة</span></span>
-            <span class="topic-tag"><span class="en">Mortgage</span><span class="ar">القرض العقاري</span></span>
-            <span class="topic-tag"><span class="en">BMI</span><span class="ar">مؤشر كتلة الجسم</span></span>
-            <span class="topic-tag"><span class="en">Salalah</span><span class="ar">صلالة</span></span>
-            <span class="topic-tag"><span class="en">ROI</span><span class="ar">عائد الاستثمار</span></span>
-            <span class="topic-tag"><span class="en">Ramadan</span><span class="ar">رمضان</span></span>
-            <span class="topic-tag"><span class="en">Off-Plan</span><span class="ar">على الخارطة</span></span>
-            <span class="topic-tag"><span class="en">Focus</span><span class="ar">التركيز</span></span>
-            <span class="topic-tag"><span class="en">Pregnancy</span><span class="ar">الحمل</span></span>
-            <span class="topic-tag"><span class="en">AlUla</span><span class="ar">العُلا</span></span>
-            <span class="topic-tag"><span class="en">Compound Growth</span><span class="ar">النمو المركّب</span></span>
-            <span class="topic-tag"><span class="en">Sleep</span><span class="ar">النوم</span></span>
+        <div class="bl-side-card">
+          <p class="bl-side-title"><span class="en">Browse topics</span><span class="ar">تصفّح المواضيع</span></p>
+          <div class="bl-topics">
+            <a href="archive.html?cat=finance" class="bl-topic"><span class="en">Zakat</span><span class="ar">الزكاة</span></a>
+            <a href="archive.html?cat=finance" class="bl-topic"><span class="en">Mortgage</span><span class="ar">القرض العقاري</span></a>
+            <a href="archive.html?cat=health" class="bl-topic"><span class="en">BMI</span><span class="ar">مؤشر كتلة الجسم</span></a>
+            <a href="archive.html?cat=travel" class="bl-topic"><span class="en">Salalah</span><span class="ar">صلالة</span></a>
+            <a href="archive.html?cat=islamic" class="bl-topic"><span class="en">Ramadan</span><span class="ar">رمضان</span></a>
+            <a href="archive.html?cat=health" class="bl-topic"><span class="en">Pregnancy</span><span class="ar">الحمل</span></a>
+            <a href="archive.html?cat=productivity" class="bl-topic"><span class="en">Focus</span><span class="ar">التركيز</span></a>
+            <a href="archive.html?cat=travel" class="bl-topic"><span class="en">AlUla</span><span class="ar">العُلا</span></a>
           </div>
         </div>
 
-        <!-- Newsletter -->
-        <div class="nl-sidebar">
-          <div class="nl-s-title"><span class="en">Weekly Knowledge Brief</span><span class="ar">نشرة المعرفة الأسبوعية</span></div>
-          <div class="nl-s-sub"><span class="en">New articles + tool updates + one evidence-backed insight. Every week.</span><span class="ar">مقالات جديدة وتحديثات الأدوات ورؤية مدعومة بالأدلة. كل أسبوع.</span></div>
-          <input type="email" class="nl-s-input" placeholder="your@email.com" aria-label="Email" />
-          <button class="nl-s-btn"><span class="en">Subscribe Free →</span><span class="ar">اشترك مجاناً ←</span></button>
+        <div class="bl-newsletter">
+          <p class="bl-nl-title"><span class="en">Weekly Knowledge Brief</span><span class="ar">نشرة المعرفة الأسبوعية</span></p>
+          <p class="bl-nl-sub"><span class="en">New articles + tool updates + one evidence-backed insight. Every week.</span><span class="ar">مقالات جديدة وتحديثات الأدوات ورؤية مدعومة بالأدلة. كل أسبوع.</span></p>
+          <input type="email" class="bl-nl-input" placeholder="your@email.com" aria-label="Email">
+          <button type="button" class="bl-nl-btn"><span class="en">Subscribe Free →</span><span class="ar">← اشترك مجاناً</span></button>
         </div>
-
       </aside>
     </div>
   </div>
+</div>
 
   <!-- FOOTER -->
   <!-- ═══ UNIFIED FOOTER ══════════════════════════════════════ -->
@@ -583,75 +420,9 @@
     </div>
   </div>
 </footer>
-<!-- ════════════════════════════════════════════════════════════ -->
 
-
-  <script>
-    // Theme & Lang
-    const themeBtn=document.getElementById('themeBtn');
-    const langBtn=document.getElementById('langBtn');
-    const html=document.documentElement;
-    function applyTheme(t){html.setAttribute('data-theme',t);localStorage.setItem('dfl-theme',t);themeBtn.textContent=t==='dark'?'<svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>':'<svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';}
-    function applyLang(l){html.setAttribute('data-lang',l);html.setAttribute('lang',l);html.setAttribute('dir',l==='ar'?'rtl':'ltr');localStorage.setItem('dfl-lang',l);}
-    applyTheme(html.getAttribute('data-theme')||'light');
-    applyLang(html.getAttribute('data-lang')||'en');
-    themeBtn.addEventListener('click',()=>applyTheme(html.getAttribute('data-theme')==='dark'?'light':'dark'));
-    langBtn.addEventListener('click',()=>applyLang(html.getAttribute('data-lang')==='ar'?'en':'ar'));
-
-    // Navbar scroll
-    const navbar=document.getElementById('navbar');
-    window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',window.scrollY>10));
-
-    // Scroll reveal
-    const observer=new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}});
-    },{threshold:0.1});
-    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-
-  </script>
-
-  <!-- DFL MOBILE NAV -->
-  
-
-  <script id="dfl-nav-js">
-  (function(){
-    // Flash prevention
-    (function(){
-      var t=localStorage.getItem('dfl-theme')||'light',l=localStorage.getItem('dfl-lang')||(/Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test((Intl.DateTimeFormat().resolvedOptions().timeZone)||'')?'ar':'en'),h=document.documentElement;
-      h.setAttribute('data-theme',t);h.setAttribute('data-lang',l);
-      h.setAttribute('lang',l==='ar'?'ar':'en');h.setAttribute('dir',l==='ar'?'rtl':'ltr');
-    })();
-    function ready(fn){ if(document.readyState!=='loading') fn(); else document.addEventListener('DOMContentLoaded',fn); }
-    ready(function(){
-      // Scroll shadow
-      var nb=document.getElementById('dfl-navbar');
-      if(nb){ window.addEventListener('scroll',function(){ nb.classList.toggle('scrolled',window.scrollY>40); },{passive:true}); }
-      // Language
-      var lb=document.getElementById('dfl-lang-btn');
-      if(lb){ lb.addEventListener('click',function(){
-        var h=document.documentElement,l=h.getAttribute('data-lang')==='ar'?'en':'ar';
-        h.setAttribute('data-lang',l);h.setAttribute('lang',l);
-        h.setAttribute('dir',l==='ar'?'rtl':'ltr');localStorage.setItem('dfl-lang',l);
-      }); }
-      // Theme
-      var tb=document.getElementById('dfl-theme-btn');
-      if(tb){
-        function applyT(t){
-          document.documentElement.setAttribute('data-theme',t);localStorage.setItem('dfl-theme',t);
-          var en=tb.querySelector('.en'),ar=tb.querySelector('.ar');
-          if(en)en.textContent=t==='dark'?'<svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>':'<svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';if(ar)ar.textContent=t==='dark'?'<svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>':'<svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
-        }
-        applyT(localStorage.getItem('dfl-theme')||'light');
-        tb.addEventListener('click',function(){ applyT(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark'); });
-      }
-      // Language/theme spans: also update any existing dfl-lang-btn if duplicated
-      var en=document.querySelectorAll('.en'),ar=document.querySelectorAll('.ar');
-    });
-  })();
-  </script>
-<!-- ═══ UNIFIED MOBILE NAV ══════════════════════════════════ -->
 <nav class="dfl-mobile-nav" aria-label="Mobile navigation">
-  <a href="index.html" class="dfl-mnav-item active" aria-label="Home">
+  <a href="index.html" class="dfl-mnav-item" aria-label="Home">
     <svg viewBox="0 0 24 24"><polyline points="3 9 12 2 21 9"/><path d="M5 9v11a1 1 0 001 1h4v-6h4v6h4a1 1 0 001-1V9"/></svg>
     <span class="en">Home</span><span class="ar">الرئيسية</span>
   </a>
@@ -673,18 +444,5 @@
   </a>
 </nav>
 
-<!-- SEO_PROFILE
-  page_type: page
-  cluster: finance
-  authority_score: 76
-  inbound_links: 42
-  outbound_links: 70
-  link_velocity: medium
-  priority_indexing: true
-  content_depth: 38
-  word_count: 4550
-  canonical: https://dotforlife.com/blog.html
--->
-  <script src="/scripts/feed.js?v=20260608" defer></script>
-</body></html>
+</body>
 </html>

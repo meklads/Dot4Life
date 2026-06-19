@@ -10,7 +10,7 @@
 (function() {
   'use strict';
 
-  var FEED_VERSION = 7;  // v7: archive editorial grid + search/filter
+  var FEED_VERSION = 8;  // v8: blog hub editorial grid + load more
 
   var CONFIG = {
     jsonUrl: '/articles.json',
@@ -38,7 +38,7 @@
   function getPageType() {
     var page = currentPage.replace(/\/$/, '');
     if (page === '' || page.endsWith('index.html')) return 'home';
-    if (page.endsWith('blog.html')) return 'blog';
+    if (page.endsWith('blog.html') || page.endsWith('/blog')) return 'blog';
     if (page.endsWith('health.html')) return 'health';
     if (page.endsWith('finance.html')) return 'finance';
     if (page.endsWith('real-estate.html')) return 'real-estate';
@@ -206,6 +206,188 @@
     });
     var legacy = document.getElementById('article-count');
     if (legacy) legacy.textContent = n;
+  }
+
+  /** Text-only editorial card for blog grid */
+  function buildBlogCardHTML(a) {
+    var title = isAr && a.title_ar ? a.title_ar : a.title_en;
+    var excerpt = isAr && a.excerpt_ar ? a.excerpt_ar : a.excerpt_en;
+    var url = isAr ? (a.url || '#') : (a.url_en || a.url || '#');
+    var section = isAr && a.section_ar ? a.section_ar : (a.section || a.category || '');
+    var cat = a.category || 'general';
+    var readLabel = isAr ? '← اقرأ' : 'Read →';
+
+    return '<a href="' + url + '" class="bl-card" data-cat="' + esc(cat) + '">' +
+      '<span class="bl-card-kicker">' + esc(section) + '</span>' +
+      '<span class="bl-card-title">' + esc(title) + '</span>' +
+      (excerpt ? '<span class="bl-card-desc">' + esc(excerpt) + '</span>' : '') +
+      '<span class="bl-card-foot">' +
+      '<span class="bl-card-date">' + fmtDate(a.date) + '</span>' +
+      '<span class="bl-card-link">' + readLabel + '</span>' +
+      '</span></a>';
+  }
+
+  var blogArticles = [];
+  var blogVisibleCount = 12;
+  var blogFiltered = [];
+
+  function updateBlogFeatured(a) {
+    var el = document.getElementById('blog-featured');
+    if (!el || !a) return;
+    var title = isAr && a.title_ar ? a.title_ar : a.title_en;
+    var excerpt = isAr && a.excerpt_ar ? a.excerpt_ar : a.excerpt_en;
+    var url = isAr ? (a.url || '#') : (a.url_en || a.url || '#');
+    var section = isAr && a.section_ar ? a.section_ar : (a.section || a.category || '');
+    var cat = a.category || '';
+    var readLabel = isAr ? '← اقرأ المقال' : 'Read article →';
+    var kickerEn = 'Featured · Deep dive';
+    var kickerAr = 'مميز · دراسة معمّقة';
+
+    el.href = url;
+    var kicker = el.querySelector('.bl-featured-kicker');
+    if (kicker) {
+      var ke = kicker.querySelector('.en');
+      var ka = kicker.querySelector('.ar');
+      if (ke) ke.textContent = kickerEn;
+      if (ka) ka.textContent = kickerAr;
+    }
+    var catEl = el.querySelector('.bl-featured-cat');
+    if (catEl) {
+      var ce = catEl.querySelector('.en');
+      var ca = catEl.querySelector('.ar');
+      var catLabels = {
+        health: ['Health', 'الصحة'],
+        finance: ['Finance', 'المالية'],
+        travel: ['Travel', 'السفر'],
+        'real-estate': ['Real Estate', 'العقار'],
+        islamic: ['Islamic', 'الإسلامية'],
+        family: ['Family', 'الأسرة'],
+        productivity: ['Productivity', 'الإنتاجية']
+      };
+      var labels = catLabels[cat] || [section, section];
+      if (ce) ce.textContent = labels[0];
+      if (ca) ca.textContent = labels[1];
+    }
+    var titleEl = el.querySelector('.bl-featured-title');
+    if (titleEl) {
+      var te = titleEl.querySelector('.en');
+      var ta = titleEl.querySelector('.ar');
+      if (te) te.textContent = a.title_en || title;
+      if (ta) ta.textContent = a.title_ar || a.title_en || title;
+    }
+    var exEl = el.querySelector('.bl-featured-excerpt');
+    if (exEl) {
+      var ee = exEl.querySelector('.en');
+      var ea = exEl.querySelector('.ar');
+      if (ee) ee.textContent = a.excerpt_en || '';
+      if (ea) ea.textContent = a.excerpt_ar || a.excerpt_en || '';
+    }
+    var dateEl = el.querySelector('.bl-featured-date');
+    if (dateEl) dateEl.textContent = fmtDate(a.date);
+    var readEl = el.querySelector('.bl-featured-read');
+    if (readEl) {
+      var re = readEl.querySelector('.en');
+      var ra = readEl.querySelector('.ar');
+      if (re) re.textContent = 'Read article →';
+      if (ra) ra.textContent = '← اقرأ المقال';
+    }
+  }
+
+  function renderBlogGrid(items, append) {
+    var grid = document.querySelector('#blog-grid');
+    var loading = document.querySelector('#blog-loading');
+    var loadBtn = document.getElementById('blog-load-more');
+    if (!grid) return;
+
+    if (loading) loading.remove();
+
+    if (!items.length) {
+      grid.innerHTML = '<p class="bl-empty"><span class="en">No articles match your search.</span><span class="ar">لا توجد مقالات مطابقة.</span></p>';
+      if (loadBtn) loadBtn.hidden = true;
+      return;
+    }
+
+    var slice = items.slice(0, blogVisibleCount);
+    var html = '';
+    for (var i = 0; i < slice.length; i++) {
+      html += buildBlogCardHTML(slice[i]);
+    }
+    grid.innerHTML = html;
+    setArticleCounts(blogArticles.length);
+
+    var statEl = document.querySelector('[data-blog-stat-count]');
+    if (statEl) statEl.textContent = blogArticles.length;
+
+    if (loadBtn) {
+      loadBtn.hidden = slice.length >= items.length;
+    }
+  }
+
+  function initBlogPage(allArticles) {
+    blogArticles = allArticles.slice();
+    blogVisibleCount = 12;
+    var activeCat = 'all';
+    var query = '';
+
+    if (blogArticles.length > 0) {
+      updateBlogFeatured(blogArticles[0]);
+    }
+
+    function getFiltered() {
+      var q = query.trim().toLowerCase();
+      return blogArticles.filter(function(a, idx) {
+        if (idx === 0 && activeCat === 'all' && !q) return false;
+        if (activeCat !== 'all' && (a.category || '') !== activeCat) return false;
+        if (!q) return true;
+        var hay = [
+          a.title_en, a.title_ar, a.excerpt_en, a.excerpt_ar,
+          a.section, a.section_ar, a.category
+        ].join(' ').toLowerCase();
+        return hay.indexOf(q) !== -1;
+      });
+    }
+
+    function applyFilters(resetVisible) {
+      if (resetVisible) blogVisibleCount = 12;
+      blogFiltered = getFiltered();
+      if (activeCat !== 'all' || query.trim()) {
+        if (blogFiltered.length > 0) updateBlogFeatured(blogFiltered[0]);
+      } else if (blogArticles.length > 0) {
+        updateBlogFeatured(blogArticles[0]);
+      }
+      renderBlogGrid(blogFiltered, false);
+    }
+
+    var search = document.getElementById('bl-search');
+    if (search) {
+      search.addEventListener('input', function() {
+        query = search.value;
+        applyFilters(true);
+      });
+    }
+
+    document.querySelectorAll('.bl-filter').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.bl-filter').forEach(function(b) {
+          b.classList.remove('active');
+          b.setAttribute('aria-pressed', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
+        activeCat = btn.getAttribute('data-cat') || 'all';
+        applyFilters(true);
+      });
+    });
+
+    var loadBtn = document.getElementById('blog-load-more');
+    if (loadBtn) {
+      loadBtn.addEventListener('click', function() {
+        blogVisibleCount += 12;
+        renderBlogGrid(blogFiltered, false);
+      });
+    }
+
+    applyFilters(true);
   }
 
   var archiveArticles = [];
@@ -472,17 +654,21 @@
       console.warn('feed.js v2: #latest-articles .hl-article-grid NOT FOUND');
     }
 
-    // Blog full list
+    // Blog hub — editorial grid + featured + load more
     if (pageType === 'blog') {
-      var list = document.querySelector('#blog-list');
-      if (list && filtered.length > 0) {
-        var listHtml = '';
-        for (var j = 0; j < Math.min(filtered.length, CONFIG.blogListMax); j++) {
-          listHtml += buildListItemHTML(filtered[j]);
+      if (document.querySelector('#blog-grid') && filtered.length > 0) {
+        initBlogPage(filtered);
+      } else {
+        var legacyList = document.querySelector('#blog-list');
+        if (legacyList && filtered.length > 0) {
+          var listHtml = '';
+          for (var j = 0; j < Math.min(filtered.length, CONFIG.blogListMax); j++) {
+            listHtml += buildListItemHTML(filtered[j]);
+          }
+          legacyList.innerHTML = listHtml;
         }
-        list.innerHTML = listHtml;
+        setArticleCounts(filtered.length);
       }
-      setArticleCounts(filtered.length);
     }
 
     // Archive — editorial text grid + search/filter
@@ -501,7 +687,7 @@
 
   function boot() {
     var hasGrid = !!document.querySelector(CONFIG.containerSelector);
-    var hasBlog = !!document.querySelector('#blog-list');
+    var hasBlog = !!document.querySelector('#blog-grid') || !!document.querySelector('#blog-list');
     var hasArchive = !!document.querySelector('#archive-grid') || !!document.querySelector('#archive-list');
     var hasSectionFeeds = !!document.querySelector('[data-feed-section]');
     console.log('feed.js: bootstrap | grid=' + hasGrid + ' blog=' + hasBlog + ' archive=' + hasArchive + ' sections=' + hasSectionFeeds);
@@ -514,7 +700,7 @@
       setTimeout(function() {
         var retryGrid = !!document.querySelector(CONFIG.containerSelector);
         var retrySec = !!document.querySelector('[data-feed-section]');
-        var retryBlog = !!document.querySelector('#blog-list');
+        var retryBlog = !!document.querySelector('#blog-grid') || !!document.querySelector('#blog-list');
         var retryArchive = !!document.querySelector('#archive-grid') || !!document.querySelector('#archive-list');
         if (retryGrid || retrySec || retryBlog || retryArchive) {
           console.log('feed.js: containers found on retry → fetching');
