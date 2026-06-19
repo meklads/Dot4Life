@@ -30,11 +30,27 @@ html:has(body.blog-page) { background: #032a28; }
   body.blog-page { --bl-nav-h: 96px; }
 }
 
-/* Nav */
+/* Nav — lock 120px bar + 115px logo (override home.css 140px) */
+body.blog-page #navbar,
 body.blog-page #navbar.index-nav {
   background: transparent !important;
   border-bottom: none !important;
   box-shadow: none !important;
+  height: var(--bl-nav-h) !important;
+  min-height: var(--bl-nav-h) !important;
+}
+
+body.blog-page #navbar .nav-inner {
+  height: var(--bl-nav-h) !important;
+  min-height: var(--bl-nav-h) !important;
+  align-items: center;
+}
+
+body.blog-page #navbar .nav-logo {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  flex-shrink: 0;
 }
 
 body.blog-page #navbar.index-nav::before {
@@ -53,12 +69,24 @@ body.blog-page #navbar.index-nav.scrolled {
 
 body.blog-page #navbar .nav-logo img {
   height: 115px !important;
+  max-height: calc(var(--bl-nav-h) - 6px) !important;
   width: auto !important;
   object-fit: contain !important;
+  display: block !important;
 }
 
 @media (max-width: 768px) {
-  body.blog-page #navbar .nav-logo img { height: 75px !important; }
+  body.blog-page #navbar .nav-logo img {
+    height: 75px !important;
+    max-height: calc(var(--bl-nav-h) - 6px) !important;
+  }
+}
+
+[data-lang="ar"] body.blog-page #navbar .nav-links a {
+  font-size: .72rem;
+  padding: 4px 8px;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 body.blog-page #navbar .nav-links a[href*="blog"] {
@@ -67,10 +95,13 @@ body.blog-page #navbar .nav-links a[href*="blog"] {
   font-weight: 700;
 }
 
-/* Hero */
+/* Hero — full-bleed under fixed nav; double nav-h padding clears logo bar */
 .bl-hero {
   margin-top: calc(-1 * var(--bl-nav-h));
-  padding: calc(var(--bl-nav-h) + clamp(2.5rem, 5vw, 3.5rem)) var(--bl-gutter) clamp(2rem, 4vw, 2.75rem);
+  padding:
+    calc(var(--bl-nav-h) * 2 + clamp(1.5rem, 3.5vw, 2.75rem))
+    var(--bl-gutter)
+    clamp(2rem, 4vw, 2.75rem);
   background: linear-gradient(
     165deg,
     #032a28 0%,
@@ -102,6 +133,10 @@ body.blog-page #navbar .nav-links a[href*="blog"] {
 }
 
 @media (max-width: 860px) {
+  .bl-hero {
+    padding-top: calc(var(--bl-nav-h) + clamp(1.25rem, 3vw, 2rem));
+    margin-top: 0;
+  }
   .bl-hero-stats { margin-top: 1.35rem; }
 }
 
@@ -119,6 +154,7 @@ body.blog-page #navbar .nav-links a[href*="blog"] {
   text-transform: uppercase;
   color: rgba(255,255,255,.85);
   margin-bottom: .85rem;
+  max-width: max-content;
 }
 
 [data-lang="ar"] .bl-eyebrow {
