@@ -10,7 +10,7 @@
 (function() {
   'use strict';
 
-  var FEED_VERSION = 12;  // v12: blog top-3 images + keywords
+  var FEED_VERSION = 13;  // v13: archive feed failure fallback + hub nav fixes
 
   var CONFIG = {
     jsonUrl: '/articles.json',
@@ -54,15 +54,17 @@
 
   /* ═══ Data Fetching (XHR + localStorage cache 10 min) ═══ */
 
-  function fetchArticles(callback) {
+  function fetchArticles(callback, onFailure) {
     try {
       var cached = localStorage.getItem(CONFIG.cacheKey);
       if (cached) {
         var data = JSON.parse(cached);
         if (Date.now() - data.timestamp < CONFIG.cacheTTL) {
-          articles = data.articles;
-          callback();
-          return;
+          articles = data.articles || [];
+          if (articles.length) {
+            callback();
+            return;
+          }
         }
       }
     } catch(e) {}
@@ -78,7 +80,10 @@
         try {
           articles = JSON.parse(xhr.responseText);
           if (!articles || !articles.length) {
-            console.warn('feed.js: empty articles.json - static fallback preserved');
+            console.warn('feed.js: empty articles.json');
+            articles = [];
+            if (onFailure) onFailure();
+            else callback();
             return;
           }
           try {
@@ -89,22 +94,26 @@
           } catch(e) {}
           try { callback(); } catch(renderErr) {
             console.warn('feed.js: render error', renderErr);
+            if (onFailure) onFailure();
           }
         } catch(e) {
-          console.warn('feed.js: invalid JSON - static fallback preserved', bustUrl, e);
+          console.warn('feed.js: invalid JSON', bustUrl, e);
           try { localStorage.removeItem(CONFIG.cacheKey); } catch(ce){}
-          /* no callback - static fallback stays */
+          articles = [];
+          if (onFailure) onFailure();
         }
       } else {
-        console.warn('feed.js: HTTP ' + xhr.status + ' - static fallback preserved', bustUrl);
+        console.warn('feed.js: HTTP ' + xhr.status, bustUrl);
         try { localStorage.removeItem(CONFIG.cacheKey); } catch(ce){}
-        /* no callback - static fallback stays */
+        articles = [];
+        if (onFailure) onFailure();
       }
     };
     xhr.onerror = function() {
-      console.warn('feed.js: network error - static fallback preserved');
+      console.warn('feed.js: network error');
       try { localStorage.removeItem(CONFIG.cacheKey); } catch(ce){}
-      /* no callback - static fallback stays */
+      articles = [];
+      if (onFailure) onFailure();
     };
     xhr.send();
   }
@@ -717,6 +726,24 @@
      Waits for DOM then fetches and renders.
      Uses defer script attribute + DOMContentLoaded for safety. */
 
+  function handleFeedFailure() {
+    var pageType = getPageType();
+    if (pageType === 'archive' || document.querySelector('#archive-grid')) {
+      renderArchiveGrid([]);
+    }
+    var meta = document.querySelector('#arc-result-meta');
+    if (meta) {
+      var en = meta.querySelector('.en');
+      var ar = meta.querySelector('.ar');
+      if (en) en.textContent = 'Unable to load articles. Please refresh.';
+      if (ar) ar.textContent = 'تعذّر تحميل المقالات. يرجى تحديث الصفحة.';
+    }
+  }
+
+  function bootFetch() {
+    fetchArticles(render, handleFeedFailure);
+  }
+
   function boot() {
     var hasGrid = !!document.querySelector(CONFIG.containerSelector);
     var hasBlog = !!document.querySelector('#blog-grid') || !!document.querySelector('#blog-list');
@@ -726,7 +753,7 @@
 
     if (hasGrid || hasBlog || hasArchive || hasSectionFeeds) {
       console.log('feed.js: bootstrap OK → fetching');
-      fetchArticles(render);
+      bootFetch();
     } else {
       console.warn('feed.js: no containers — retrying in 1s');
       setTimeout(function() {
@@ -736,7 +763,7 @@
         var retryArchive = !!document.querySelector('#archive-grid') || !!document.querySelector('#archive-list');
         if (retryGrid || retrySec || retryBlog || retryArchive) {
           console.log('feed.js: containers found on retry → fetching');
-          fetchArticles(render);
+          bootFetch();
         } else {
           console.warn('feed.js: still no containers after retry');
         }

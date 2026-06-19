@@ -10,91 +10,50 @@
 <script src="/scripts/lang-redirect.js?v=20260620"></script>
 <link rel="dns-prefetch" href="https://images.pexels.com" />
 <meta property="og:image" content="https://images.pexels.com/photos/4260320/pexels-photo-4260320.jpeg?auto=compress&cs=tinysrgb&w=1200&h=420&fit=crop" />
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles/global.css?v=20260627b"><link rel="stylesheet" href="/styles/home.css?v=20260627a"><link rel="stylesheet" href="/styles/pages/articles.css?v=20260628a">
 <style>
-:root{--green:#054241;--teal:#6abfb8;--orange:#fd781c;--cream:#FAF8F4;--text:#1a1d23;--text2:#6C757D;--max-w:1100px}
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter','Segoe UI',sans-serif;background:var(--cream);color:var(--text);line-height:1.9;padding:0}
-img{max-width:100%;height:auto}
-#navbar{background:#054241;color:#fff;padding:0 20px;position:sticky;top:0;z-index:100;height:70px}
-.nav-inner{max-width:var(--max-w);margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:70px}
-.nav-logo img{height:50px;width:auto;display:block}
-.nav-links{display:flex;gap:6px;list-style:none;overflow-x:auto}
-.nav-links a{color:rgba(255,255,255,.8);text-decoration:none;font-size:.78rem;font-weight:600;padding:6px 12px;border-radius:8px;white-space:nowrap}
-.nav-links a:hover{background:rgba(255,255,255,.1);color:#fff}
-.nav-controls{display:flex;gap:6px}
-.nav-btn{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:#fff;padding:6px 14px;border-radius:8px;font-size:.72rem;font-weight:600;cursor:pointer;font-family:inherit}
-.nav-btn:hover{background:rgba(255,255,255,.18)}
-@media(max-width:768px){.nav-links{display:none}}
-.article-wrap{max-width:var(--max-w);margin:0 auto;padding:0 20px}
-.article-banner{border-radius:20px;overflow:hidden;margin:20px 0;position:relative;aspect-ratio:1200/420;max-height:420px}
-.article-banner-img{width:100%;height:100%;object-fit:cover;display:block}
-.article-banner-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(5,66,65,.75),rgba(5,66,65,.25));display:flex;flex-direction:column;justify-content:flex-end;padding:2rem;text-align:left}
-.article-banner-title{font-size:clamp(1.3rem,3vw,1.9rem);line-height:1.4;font-weight:800;color:#fff;text-shadow:0 2px 20px rgba(0,0,0,.3);margin:0;max-width:700px}
-.article-banner-meta{color:rgba(255,255,255,.8);margin-top:.5rem;font-size:.78rem;display:flex;gap:.6rem;flex-wrap:wrap}
-.article-body{max-width:760px;margin:0 auto;padding:1rem 0 2rem}
-.article-body h1{font-size:1.4rem;color:var(--green);margin-bottom:.5rem;line-height:1.5;display:none}
-.article-body h2{font-size:1.15rem;color:var(--green);margin:2rem 0 .8rem;border-left:4px solid var(--teal);padding-left:12px}
-.article-body h3{font-size:.95rem;color:#054241;margin:1.2rem 0 .5rem}
-.article-body p{margin-bottom:1rem;color:#444;font-size:1rem;line-height:1.9}
-.article-body ul,.article-body ol{margin:.5rem 1.5rem 1rem;color:#444}
-.article-body li{margin-bottom:.4rem}
-.article-body table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.85rem;border-radius:10px;overflow:hidden}
-.article-body table th{background:var(--green);color:#fff;padding:10px 12px;text-align:left;font-weight:700}
-.article-body table td{padding:10px 12px;border-bottom:1px solid #e8eceb}
-.article-body table tr:nth-child(even){background:#f6faf9}
+.toc{background:#f6faf9;border-radius:14px;padding:1rem 1.5rem;margin:1.2rem 0;border:1px solid #e0ece8}
+.toc-title{font-size:.78rem;font-weight:700;color:#054241;margin-bottom:.6rem;text-transform:uppercase;letter-spacing:.04em}
+.toc-list{list-style:none;margin:0;padding:0}
+.toc-list li{margin-bottom:.3rem}
+.toc-list a{color:#6C757D;text-decoration:none;font-size:.85rem}
+.toc-list a:hover{color:#054241}
 .faq-item{margin:.8rem 0;border:1px solid #e8eceb;border-radius:12px;overflow:hidden}
-.faq-q{background:#fff;padding:1rem 1.2rem;font-weight:700;font-size:.95rem;color:var(--green);cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.faq-q{background:#fff;padding:1rem 1.2rem;font-weight:700;font-size:.95rem;color:#054241;cursor:pointer;display:flex;justify-content:space-between;align-items:center;width:100%;border:none;text-align:left;font-family:inherit}
 .faq-q:hover{background:#f6faf9}
-.faq-q .faq-arrow{font-size:.75rem;color:var(--teal);transition:transform .3s}
+.faq-arrow{font-size:.75rem;color:#6abfb8;transition:transform .3s}
 .faq-q.open .faq-arrow{transform:rotate(180deg)}
 .faq-a{padding:0 1.2rem;max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease}
 .faq-a.open{max-height:400px;padding:0 1.2rem 1rem}
 .faq-a p{font-size:.9rem;color:#555;margin:.5rem 0}
 .share-section{margin:2rem 0;text-align:center;padding:1.5rem 0;border-top:1px solid #e8eceb;border-bottom:1px solid #e8eceb}
-.share-section p{font-size:.85rem;color:var(--text2);margin-bottom:.8rem;font-weight:600}
 .share-btns{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
-.share-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:10px;text-decoration:none;font-size:.82rem;font-weight:600;color:#fff;transition:transform .2s}
-.share-btn:hover{transform:translateY(-2px)}
-.share-btn.wa{background:#25D366}
-.share-btn.tw{background:#000}
-.share-btn.fb{background:#1877F2}
-.share-btn.cp{background:var(--green)}
+.share-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:10px;text-decoration:none;font-size:.82rem;font-weight:600;color:#fff}
+.share-btn.wa{background:#25D366}.share-btn.tw{background:#000}.share-btn.cp{background:#054241;border:none;cursor:pointer;font-family:inherit}
 .related-section{margin:2rem 0 3rem}
-.related-section h3{font-size:1rem;color:var(--green);margin-bottom:1rem;text-align:center}
 .related-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.related-card{display:flex;flex-direction:column;padding:1rem;border-radius:14px;background:#fff;border:1px solid #e8eceb;text-decoration:none;color:var(--text);transition:all .3s}
-.related-card:hover{border-color:var(--teal);transform:translateY(-2px);box-shadow:0 4px 16px rgba(5,66,65,.08)}
-.related-card-title{font-size:.85rem;font-weight:700;color:var(--green);margin-bottom:4px}
-.related-card-desc{font-size:.75rem;color:var(--text2);line-height:1.4}
-.related-card-cta{font-size:.7rem;font-weight:700;color:var(--teal);margin-top:6px}
-@media(max-width:600px){.related-grid{grid-template-columns:1fr}}
-.disclaimer{background:#f8f5f0;border-radius:12px;padding:1rem 1.2rem;margin:1.5rem 0;font-size:.82rem;color:#888;line-height:1.6;border-left:3px solid var(--orange)}
+.related-card{display:flex;flex-direction:column;padding:1rem;border-radius:14px;background:#fff;border:1px solid #e8eceb;text-decoration:none;color:#1a1d23}
+.related-card-title{font-size:.85rem;font-weight:700;color:#054241;margin-bottom:4px}
+.related-card-desc{font-size:.75rem;color:#6C757D;line-height:1.4}
+.related-card-cta{font-size:.7rem;font-weight:700;color:#6abfb8;margin-top:6px}
+.story-highlight{background:#f6faf9;border-left:4px solid #6abfb8;padding:1rem 1.2rem;border-radius:10px;margin:1.2rem 0}
+.disclaimer{background:#f8f5f0;border-radius:12px;padding:1rem 1.2rem;margin:1.5rem 0;font-size:.82rem;color:#888;border-left:3px solid #fd781c}
 .cta-box{background:linear-gradient(135deg,#054241,#0a6b66);border-radius:16px;padding:1.5rem 2rem;margin:2rem 0;text-align:center;color:#fff}
-.cta-box h3{font-size:1.05rem;font-weight:700;margin-bottom:.5rem;color:#fff}
-.cta-box p{font-size:.85rem;color:rgba(255,255,255,.7);margin-bottom:1rem}
-.cta-box a{display:inline-block;padding:10px 24px;border-radius:12px;background:#fff;color:var(--green);font-weight:700;text-decoration:none;font-size:.88rem}
-.cta-box a:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.15)}
-.toc{background:#f6faf9;border-radius:14px;padding:1rem 1.5rem;margin:1.2rem 0;border:1px solid #e0ece8}
-.toc-title{font-size:.78rem;font-weight:700;color:var(--green);margin-bottom:.6rem;text-transform:uppercase;letter-spacing:.04em}
-.toc-list{list-style:none;margin:0}
-.toc-list li{margin-bottom:.3rem}
-.toc-list a{color:var(--text2);text-decoration:none;font-size:.85rem}
-.toc-list a:hover{color:var(--green)}
-.story-highlight{background:#f6faf9;border-left:4px solid var(--teal);padding:1rem 1.2rem;border-radius:10px;margin:1.2rem 0}
-.story-highlight strong{color:var(--green)}
-.schedule-table td:first-child{font-weight:700;color:var(--green);white-space:nowrap}
-.islamic-pattern{background:repeating-linear-gradient(45deg,transparent,transparent 5px,rgba(5,66,65,.03) 5px,rgba(5,66,65,.03) 10px);border-radius:12px;padding:1rem 1.2rem;margin:1.2rem 0}
+.cta-box a{display:inline-block;padding:10px 24px;border-radius:12px;background:#fff;color:#054241;font-weight:700;text-decoration:none}
+@media(max-width:600px){.related-grid{grid-template-columns:1fr}}
 </style>
-</head>
-<body>
-
-<nav id="navbar"><div class="nav-inner"><a href="/" class="nav-logo"><img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" width="100" height="50" style="height:50px;object-fit:contain;" loading="lazy"></a><ul class="nav-links"><li><a href="/health.html">Health</a></li><li><a href="/finance.html">Finance</a></li><li><a href="/real-estate.html">Real Estate</a></li><li><a href="/travel.html">Travel</a></li><li><a href="/islamic.html">Islamic</a></li><li><a href="/blog.html">Blog</a></li><li><a href="/archive.html">Archive</a></li><li><a href="/library.html">Library</a></li></ul><div class="nav-controls"><button class="nav-btn" id="lang-toggle" onclick="var r=document.documentElement;var l=r.getAttribute('data-lang')==='en'?'ar':'en';r.setAttribute('data-lang',l);r.setAttribute('lang',l);r.setAttribute('dir',l==='ar'?'rtl':'ltr');localStorage.setItem('dfl-lang',l);this.innerHTML=l==='ar'?'English':'العربية';">العربية</button></div></div></nav>
+<script>window.addEventListener('DOMContentLoaded',function(){var lt=document.getElementById('lang-toggle');if(lt)lt.addEventListener('click',function(){location.href='/islamic-hajj-umrah/hijri-new-year-children.html'});});</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1436107577087160" crossorigin="anonymous"></script></head>
+<body data-template="article">
+<nav id="navbar"><div class="nav-inner"><a href="/" class="nav-logo"><img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" width="100" height="100" style="height:100px;width:auto;object-fit:contain;" loading="lazy"></a><ul class="nav-links"><li><a href="/health.html">Health</a></li><li><a href="/finance.html">Finance</a></li><li><a href="/real-estate.html">Real Estate</a></li><li><a href="/travel.html">Travel</a></li><li><a href="/islamic.html">Islamic</a></li><li><a href="/about.html">About</a></li><li><a href="/archive.html">Archive</a></li><li><a href="/blog.html">Blog</a></li><li><a href="/library.html">Library</a></li><li><a href="/life-guide.html">Guides</a></li></ul><div class="nav-controls"><button class="nav-btn" id="lang-toggle">عربي</button><button class="nav-btn" id="theme-toggle"><svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div></nav>
 
 <div class="article-wrap">
 
 <section class="article-banner" aria-label="Article banner">
   <div class="article-banner-img-wrap">
-    <img src="https://images.pexels.com/photos/4260320/pexels-photo-4260320.jpeg?auto=compress&cs=tinysrgb&w=1200&h=420&fit=crop" alt="" class="article-banner-img" width="1200" height="420" loading="eager" fetchpriority="high">
+    <img src="https://images.pexels.com/photos/4260320/pexels-photo-4260320.jpeg?auto=compress&cs=tinysrgb&w=1200&h=420&fit=crop" alt="Parent reading with a child — teaching the Hijri calendar at home" class="article-banner-img" width="1200" height="420" loading="eager" fetchpriority="high">
     <div class="article-banner-overlay">
       <h1 class="article-banner-title">Hijri New Year: Teaching Children About the Hijra and the Islamic Calendar</h1>
       <div class="article-banner-meta"><span>1 Muharram 1448 — June 17, 2026</span><span>9 min read</span><span>Muslim Family</span></div>
@@ -103,7 +62,6 @@ img{max-width:100%;height:auto}
 </section>
 
 <article class="article-body">
-<h1>🌙 Hijri New Year: Teaching Children About the Hijra and the Islamic Calendar</h1>
 
 <div class="toc">
   <div class="toc-title">Contents</div>
@@ -278,6 +236,8 @@ img{max-width:100%;height:auto}
 
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Hijri New Year: Teaching Children About the Hijra and the Islamic Calendar","description":"A practical guide to teach children the meaning of the Hijri year and the story of the Prophet's migration. Age-appropriate explanations, activities, and timeline.","author":{"@type":"Organization","name":"Dot For Life"},"datePublished":"2026-06-17","dateModified":"2026-06-17","publisher":{"@type":"Organization","name":"Dot For Life"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why is it called the Hijri calendar?","acceptedAnswer":{"@type":"Answer","text":"Named after the Prophet's migration (Hijra) from Makkah to Madinah in 622 CE."}},{"@type":"Question","name":"Who established the Hijri calendar?","acceptedAnswer":{"@type":"Answer","text":"Caliph Umar ibn al-Khattab in 17 AH, starting from Muharram of the Hijra year."}},{"@type":"Question","name":"How do you convert Gregorian to Hijri?","acceptedAnswer":{"@type":"Answer","text":"Hijri year = Gregorian year - 622 + ((Gregorian - 622) / 32). The Hijri year has 354 days."}},{"@type":"Question","name":"What's the difference between Hijri and Gregorian calendars?","acceptedAnswer":{"@type":"Answer","text":"Hijri is lunar (354 days) tied to the Hijra. Gregorian is solar (365 days) tied to Christ's birth."}},{"@type":"Question","name":"Are there special acts of worship in Muharram for children?","acceptedAnswer":{"@type":"Answer","text":"Fasting Ashura (10th Muharram) is a confirmed Sunnah. Children can participate with half-day fasts."}}]}</script>
+<script src="/scripts/global.js?v=20260619e" defer></script>
+<script>(function(){var u=encodeURIComponent(location.href),t=encodeURIComponent(document.title);document.querySelectorAll('.share-btn.wa').forEach(function(a){a.href='https://wa.me/?text='+t+'%20'+u;});document.querySelectorAll('.share-btn.tw').forEach(function(a){a.href='https://twitter.com/intent/tweet?url='+u+'&text='+t;});})();</script>
 
 </body>
 </html>

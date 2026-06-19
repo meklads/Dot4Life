@@ -1,0 +1,580 @@
+/*
+ * DOTFORLIFE — Islamic Hub (islamic.html)
+ * Premium islamic identity · gold/emerald · sacred warm
+ */
+
+/* ── Tokens ─────────────────────────────────────────────── */
+body.islamic-hub-page {
+  --hh-mint:       #b8893c;
+  --hh-mint-soft:  #d4b06a;
+  --hh-teal:       #7a621f;
+  --hh-teal-deep:  #054241;
+  --hh-teal-dark:  #5a4716;
+  --hh-cream:      #f7f5f0;
+  --hh-cream-warm: #f8f3e8;
+  --hh-glow:       rgba(184,137,60,.18);
+  --hh-nav-h:      120px;
+  --hh-sub-h:      52px;
+  --hh-ease:       cubic-bezier(.22, 1, .36, 1);
+}
+
+@media (max-width: 768px) {
+  body.islamic-hub-page {
+    --hh-nav-h: 96px;
+    --hh-sub-h: 48px;
+  }
+}
+
+/* Full-bleed hero under transparent nav */
+body.islamic-hub-page {
+  padding-top: 0 !important;
+}
+
+/* Override generic has-subnav solid nav (home.css) */
+body.islamic-hub-page.has-subnav #navbar.islamic-nav:not(.scrolled) {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* ── Nav ───────────────────────────────────────── */
+body.islamic-hub-page #navbar.islamic-nav {
+  height: var(--hh-nav-h);
+  background: transparent;
+  border-bottom: none;
+  box-shadow: none;
+}
+
+body.islamic-hub-page #navbar.islamic-nav::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(5,66,65,.6) 0%, rgba(5,66,65,.2) 70%, transparent 100%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+body.islamic-hub-page #navbar.islamic-nav .nav-inner {
+  height: var(--hh-nav-h);
+}
+
+body.islamic-hub-page #navbar.islamic-nav .nav-links a {
+  color: #fff !important;
+  text-shadow: 0 1px 6px rgba(0,0,0,.25);
+}
+
+body.islamic-hub-page #navbar.islamic-nav .nav-links a:hover {
+  opacity: .85;
+}
+
+body.islamic-hub-page #navbar.islamic-nav .nav-btn {
+  color: #fff !important;
+  border-color: rgba(255,255,255,.3) !important;
+}
+
+body.islamic-hub-page #navbar.islamic-nav.scrolled {
+  background: rgba(5,66,65,.97) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  box-shadow: 0 2px 20px rgba(0,0,0,.12) !important;
+}
+
+body.islamic-hub-page #navbar.islamic-nav.scrolled .nav-links a {
+  color: var(--text-primary) !important;
+  text-shadow: none !important;
+}
+
+body.islamic-hub-page #navbar.islamic-nav.scrolled .nav-btn {
+  color: var(--text-primary) !important;
+  border-color: var(--border-color) !important;
+}
+
+/* ── Sub-nav ─────────────────────────────────────────────── */
+body.islamic-hub-page #sub-nav {
+  position: sticky;
+  top: var(--hh-nav-h);
+  z-index: 49;
+  height: var(--hh-sub-h);
+  background: rgba(5,66,65,.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+body.islamic-hub-page #sub-nav::-webkit-scrollbar { display: none; }
+
+body.islamic-hub-page .sub-nav-inner {
+  display: flex;
+  align-items: center;
+  gap: .25rem;
+  height: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+body.islamic-hub-page .sub-nav-inner a {
+  display: flex;
+  align-items: center;
+  height: calc(var(--hh-sub-h) - 12px);
+  padding: 0 .875rem;
+  font-size: .8125rem;
+  font-weight: 500;
+  color: rgba(255,255,255,.75);
+  border-radius: 6px;
+  white-space: nowrap;
+  transition: background .2s, color .2s;
+  text-decoration: none;
+}
+
+body.islamic-hub-page .sub-nav-inner a:hover {
+  background: rgba(255,255,255,.1);
+  color: #fff;
+}
+
+body.islamic-hub-page .sub-nav-inner a[aria-current] {
+  background: var(--hh-mint);
+  color: #fff;
+}
+
+/* ── Hero ──────────────────────────────────────────────────── */
+body.islamic-hub-page #hero {
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(145deg, #054241 0%, #7a621f 35%, #8a7a3a 70%, #6a6a3a 100%);
+  padding: calc(var(--hh-nav-h) + 2rem) 2rem 4rem;
+  color: #fff;
+}
+
+body.islamic-hub-page #hero .hero-wellness-orbs {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+body.islamic-hub-page #hero .hero-wellness-orbs span {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(184,137,60,.12) 0%, transparent 70%);
+}
+
+body.islamic-hub-page #hero .hero-wellness-orbs span:nth-child(1) {
+  width: 700px; height: 700px; top: -200px; right: -150px;
+  background: radial-gradient(circle, rgba(184,137,60,.12) 0%, transparent 70%);
+}
+body.islamic-hub-page #hero .hero-wellness-orbs span:nth-child(2) {
+  width: 450px; height: 450px; bottom: -100px; left: -100px;
+  background: radial-gradient(circle, rgba(106,191,184,.1) 0%, transparent 70%);
+}
+body.islamic-hub-page #hero .hero-wellness-orbs span:nth-child(3) {
+  width: 300px; height: 300px; top: 30%; left: 40%;
+  background: radial-gradient(circle, rgba(253,120,28,.06) 0%, transparent 70%);
+}
+
+body.islamic-hub-page .hero-inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+  align-items: center;
+}
+
+body.islamic-hub-page .hero-left {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+body.islamic-hub-page .hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--hh-mint-soft);
+  margin: 0;
+}
+
+body.islamic-hub-page .hero-eyebrow-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--hh-mint);
+  display: inline-block;
+}
+
+body.islamic-hub-page .hero-headline {
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.18;
+  letter-spacing: -.02em;
+  margin: 0;
+  color: #fff;
+}
+
+body.islamic-hub-page .hero-sub {
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: .8;
+  max-width: 520px;
+  margin: 0;
+}
+
+body.islamic-hub-page .hero-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+  margin-top: .5rem;
+}
+
+body.islamic-hub-page .hero-cta-row .btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .75rem 1.75rem;
+  background: #fff;
+  color: #054241;
+  font-weight: 600;
+  font-size: .9375rem;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: transform .2s var(--hh-ease), box-shadow .2s;
+  box-shadow: 0 4px 14px rgba(0,0,0,.15);
+}
+
+body.islamic-hub-page .hero-cta-row .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,.2);
+}
+
+body.islamic-hub-page .hero-cta-row .btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .75rem 1.75rem;
+  background: transparent;
+  color: #fff;
+  font-weight: 500;
+  font-size: .9375rem;
+  border-radius: 999px;
+  text-decoration: none;
+  border: 1.5px solid rgba(255,255,255,.3);
+  transition: background .2s, border-color .2s;
+}
+
+body.islamic-hub-page .hero-cta-row .btn-outline:hover {
+  background: rgba(255,255,255,.08);
+  border-color: rgba(255,255,255,.5);
+}
+
+body.islamic-hub-page .hero-trust-line {
+  display: flex;
+  gap: 1.5rem;
+  font-size: .75rem;
+  opacity: .55;
+  margin: 0;
+}
+
+body.islamic-hub-page .hero-trust-line span {
+  display: flex;
+  align-items: center;
+  gap: .35rem;
+}
+
+body.islamic-hub-page .hero-trust-line span::before {
+  content: '✓';
+  font-size: .7rem;
+  color: var(--hh-mint);
+}
+
+/* Stats row */
+body.islamic-hub-page .hero-wellness-stats {
+  display: flex;
+  gap: 2rem;
+  margin-top: .5rem;
+}
+
+body.islamic-hub-page .hero-wellness-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+body.islamic-hub-page .hero-wellness-stat-value {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--hh-mint-soft);
+  line-height: 1.2;
+}
+
+body.islamic-hub-page .hero-wellness-stat-label {
+  font-size: .7rem;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  opacity: .6;
+}
+
+/* Hero right — circle */
+body.islamic-hub-page .hero-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body.islamic-hub-page .hero-circle-wrap {
+  position: relative;
+  width: min(380px, 30vw);
+  aspect-ratio: 1/1;
+}
+
+body.islamic-hub-page .hero-circle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,.3);
+}
+
+body.islamic-hub-page .hero-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+body.islamic-hub-page .hero-badge {
+  position: absolute;
+  bottom: 8%;
+  right: -8%;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  background: rgba(255,255,255,.12);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: .65rem 1rem;
+  border-radius: 12px;
+  color: #fff;
+  font-size: .75rem;
+  white-space: nowrap;
+  border: 1px solid rgba(255,255,255,.15);
+}
+
+body.islamic-hub-page .hero-badge-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(184,137,60,.25);
+  border-radius: 50%;
+}
+
+body.islamic-hub-page .hero-badge-icon svg {
+  width: 16px;
+  height: 16px;
+  color: var(--hh-mint);
+}
+
+body.islamic-hub-page .hero-badge-label {
+  font-weight: 500;
+  font-size: .7rem;
+  opacity: .7;
+}
+
+body.islamic-hub-page .hero-badge-value {
+  font-weight: 700;
+  font-size: .8125rem;
+}
+
+/* Ribbon */
+body.islamic-hub-page .pillar-hero-ribbon {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(90deg, rgba(5,66,65,.9), rgba(10,107,99,.8));
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  padding: .6rem 2rem;
+  text-align: center;
+  font-size: .8rem;
+  color: rgba(255,255,255,.7);
+  letter-spacing: .04em;
+}
+
+/* ── Intro / "Why This Matters" ──────────────────────────── */
+body.islamic-hub-page .hh-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  body.islamic-hub-page .hh-pillars { grid-template-columns: 1fr; }
+}
+
+body.islamic-hub-page .hh-pillar {
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.75rem 1.5rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,.04);
+  border: 1px solid var(--border-color);
+  transition: transform .3s var(--hh-ease), box-shadow .3s;
+}
+
+body.islamic-hub-page .hh-pillar:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0,0,0,.07);
+}
+
+body.islamic-hub-page .hh-pillar-icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(184,137,60,.1);
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
+
+body.islamic-hub-page .hh-pillar-icon svg {
+  width: 22px;
+  height: 22px;
+  color: var(--hh-mint);
+}
+
+body.islamic-hub-page .hh-pillar-title {
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin-bottom: .5rem;
+  color: var(--text-primary);
+}
+
+body.islamic-hub-page .hh-pillar-desc {
+  font-size: .875rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* ── Featured cards ────────────────────────────────────────── */
+body.islamic-hub-page .hh-featured {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin: 2rem 0;
+}
+
+@media (max-width: 900px) {
+  body.islamic-hub-page .hh-featured { grid-template-columns: 1fr; }
+}
+
+body.islamic-hub-page .hh-featured-card {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  background: linear-gradient(145deg, #f8f3e8, #fefcf7);
+  border: 1px solid rgba(184,137,60,.15);
+  border-radius: 16px;
+  padding: 1.5rem 1.25rem;
+  text-decoration: none;
+  color: inherit;
+  transition: transform .3s var(--hh-ease), box-shadow .3s;
+}
+
+body.islamic-hub-page .hh-featured-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(184,137,60,.1);
+}
+
+body.islamic-hub-page .hh-featured-kicker {
+  font-size: .65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--hh-mint);
+}
+
+body.islamic-hub-page .hh-featured-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+body.islamic-hub-page .hh-featured-desc {
+  font-size: .8125rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  margin: 0;
+  flex: 1;
+}
+
+body.islamic-hub-page .hh-featured-link {
+  font-size: .8125rem;
+  font-weight: 600;
+  color: var(--hh-mint);
+  margin-top: auto;
+}
+
+/* ── Section spacing overrides ──────────────────────────── */
+body.islamic-hub-page .hl-section--cream {
+  background: var(--hh-cream);
+}
+
+/* ── Dark mode ─────────────────────────────────────────────── */
+[data-theme="dark"] body.islamic-hub-page .hh-pillar {
+  background: var(--card-bg);
+}
+
+[data-theme="dark"] body.islamic-hub-page .hh-featured-card {
+  background: linear-gradient(145deg, #2a2215, #322a1a);
+  border-color: rgba(184,137,60,.1);
+}
+
+[data-theme="dark"] body.islamic-hub-page .hl-section--cream {
+  background: var(--bg-secondary);
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  body.islamic-hub-page #hero {
+    min-height: 0;
+    padding: calc(var(--hh-nav-h) + 1.5rem) 1.25rem 3rem;
+  }
+
+  body.islamic-hub-page .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  body.islamic-hub-page .hero-right {
+    display: none;
+  }
+
+  body.islamic-hub-page .hero-wellness-stats {
+    gap: 1.25rem;
+  }
+
+  body.islamic-hub-page .sub-nav-inner {
+    padding: 0 1rem;
+  }
+
+  body.islamic-hub-page .sub-nav-inner a {
+    padding: 0 .65rem;
+    font-size: .75rem;
+    height: calc(var(--hh-sub-h) - 16px);
+  }
+}
