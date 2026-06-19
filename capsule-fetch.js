@@ -1,11 +1,12 @@
 /**
- * DOTFORLIFE — Daily Capsule (homepage #morning-moment)
- * Priority: Railway API → data/capsules-published.json → weekly fallback
+ * DOTFORLIFE — Daily Capsule (homepage)
+ * Static-first: data/capsules-published.json → weekly fallback (no backend)
  */
 (function () {
   'use strict';
 
-  var API = 'https://dot4life-production.up.railway.app/api/capsule/today';
+  var JSON_VER = (window.DFL && window.DFL.capsulesJsonVersion) || '20260619f';
+  var JSON_URL = (window.DFL && window.DFL.capsulesJson) || '/data/capsules-published.json';
 
   var FALLBACK = [
     { id: 'quick-dinner', tagEn: 'Quick dinner · 15 min', tagAr: 'عشاء سريع · ١٥ دقيقة', titleEn: 'Pasta with Garlic & Olive Oil', titleAr: 'باستا بالثوم وزيت الزيتون', labelEn: 'Dinner in 15 minutes', labelAr: 'عشاء في ١٥ دقيقة', descEn: 'A simple, warming dinner the whole family will love, ready in 15 minutes with pantry staples.', descAr: 'عشاء دافئ وبسيط تحبه العائلة كلها، يتحضر في ١٥ دقيقة بمقادير أساسية.', ingredients: [{ en: 'Pasta, 200g', ar: 'باستا، ٢٠٠ جرام' }, { en: 'Garlic, 4 cloves', ar: 'ثوم، ٤ فصوص' }, { en: 'Olive oil, 4 tbsp', ar: 'زيت زيتون، ٤ ملاعق' }, { en: 'Parsley & chilli', ar: 'بقدونس وبهار حار' }], steps: [{ en: 'Boil pasta in salted water until al dente.', ar: 'اسلقي الباستا في ماء مملح حتى تنضج.' }, { en: 'Fry garlic in olive oil on low heat until golden.', ar: 'حمّري الثوم في زيت الزيتون على نار خفيفة.' }, { en: 'Toss pasta with garlic oil, parsley and chilli. Serve warm.', ar: 'اخلطي الباستا مع الثوم والبقدونس. قدميها دافئة.' }] },
@@ -29,14 +30,14 @@
     if (arEl) arEl.textContent = ar;
   }
 
-  function fromApiCapsule(raw) {
+  function fromRawCapsule(raw) {
     if (!raw) return null;
     var cat = raw.category || 'wellness';
     var tagEn = (raw.subtitle_en || raw.title_en || '').slice(0, 40);
     var tagAr = (raw.subtitle_ar || raw.title_ar || '').slice(0, 40);
     return {
       id: raw.id || cat,
-      capsuleId: /^cap_/.test(raw.id || '') ? raw.id : null,
+      capsuleId: raw.id || null,
       tagEn: tagEn, tagAr: tagAr,
       titleEn: raw.title_en || '', titleAr: raw.title_ar || '',
       labelEn: raw.subtitle_en || raw.title_en || "Today's idea",
@@ -47,8 +48,13 @@
     };
   }
 
-  function fromPublishedEntry(raw, date) {
-    return fromApiCapsule(Object.assign({ id: raw.id || date }, raw));
+  function pickFromFile(file, date) {
+    if (!file || !file.byDate) return null;
+    if (file.byDate[date]) return file.byDate[date];
+    var keys = Object.keys(file.byDate).sort();
+    if (!keys.length) return null;
+    var past = keys.filter(function (k) { return k <= date; });
+    return file.byDate[past.length ? past[past.length - 1] : keys[keys.length - 1]];
   }
 
   function applyCapsule(c) {
@@ -107,23 +113,13 @@
 
   function init() {
     var date = todayStr();
-    fetchJson(API + '?date=' + date)
-      .then(function (data) {
-        if (data && data.found && data.capsule) {
-          applyCapsule(fromApiCapsule(data.capsule));
-          return;
-        }
-        throw new Error('no capsule');
+    fetchJson(JSON_URL + '?v=' + JSON_VER)
+      .then(function (file) {
+        var entry = pickFromFile(file, date);
+        if (entry) applyCapsule(fromRawCapsule(entry));
+        else applyFallback();
       })
-      .catch(function () {
-        return fetchJson('/data/capsules-published.json?v=20260619e')
-          .then(function (file) {
-            var entry = file.byDate && (file.byDate[date] || file.byDate[Object.keys(file.byDate).sort().pop()]);
-            if (entry) applyCapsule(fromPublishedEntry(entry, date));
-            else applyFallback();
-          })
-          .catch(applyFallback);
-      });
+      .catch(applyFallback);
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);

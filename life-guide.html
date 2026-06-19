@@ -688,7 +688,18 @@ var GUIDES = {
 // ═══════════════════════════════════════
 // RENDER
 // ═══════════════════════════════════════
-var CAPSULE_API = 'https://dotforlife-production.up.railway.app/api/capsule';
+var CAPSULES_JSON = (window.DFL && window.DFL.capsulesJsonUrl) ? window.DFL.capsulesJsonUrl() : '/data/capsules-published.json?v=20260619f';
+
+function findCapsuleInFile(file, id) {
+  if (!file || !id) return null;
+  if (file.byId && file.byId[id]) return file.byId[id];
+  var dates = file.byDate || {};
+  var keys = Object.keys(dates);
+  for (var i = 0; i < keys.length; i++) {
+    if (dates[keys[i]].id === id) return dates[keys[i]];
+  }
+  return null;
+}
 var CAT_META = {
   meals:    { catEn:'Home & Meals', catAr:'البيت والطعام', catHash:'#cat-meals' },
   family:   { catEn:'Family Life', catAr:'الحياة العائلية', catHash:'#cat-family' },
@@ -834,14 +845,15 @@ function renderGuide(id, g) {
   if (!capsuleId && /^cap_/.test(id)) capsuleId = id;
 
   if (capsuleId) {
-    fetch(CAPSULE_API + '/' + encodeURIComponent(capsuleId), { cache: 'no-store' })
+    fetch(CAPSULES_JSON, { cache: 'no-store' })
       .then(function(r) {
         if (!r.ok) throw new Error('HTTP ' + r.status);
         return r.json();
       })
-      .then(function(data) {
-        if (!data.found || !data.capsule) throw new Error('not found');
-        renderGuide(capsuleId, capsuleToGuide(data.capsule));
+      .then(function(file) {
+        var cap = findCapsuleInFile(file, capsuleId);
+        if (!cap) throw new Error('not found');
+        renderGuide(capsuleId, capsuleToGuide(cap));
       })
       .catch(function() { showGuideNotFound(); });
     return;

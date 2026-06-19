@@ -1,0 +1,288 @@
+#!/usr/bin/env python3
+"""Generate flagship finance tool HTML files."""
+import re, os
+BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+LANG_BOOT = '''<script>(function(){var p=new URLSearchParams(location.search),gd=(function(){try{var z=(Intl.DateTimeFormat().resolvedOptions().timeZone||"");return /Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test(z)?"ar":"en";}catch(e){return "ar";}})(),l=p.get("lang")||localStorage.getItem("dfl-lang")||gd,t=p.get("theme")||localStorage.getItem("dfl-theme")||"light",h=document.documentElement;h.setAttribute("data-theme",t);h.setAttribute("data-lang",l);h.setAttribute("lang",l);h.setAttribute("dir",l==="ar"?"rtl":"ltr");if(p.get("lang"))localStorage.setItem("dfl-lang",l);if(p.get("theme"))localStorage.setItem("dfl-theme",t);})()</script>'''
+
+GTAG = '''<script async src="https://www.googletagmanager.com/gtag/js?id=G-3G1XPV4F0G"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-3G1XPV4F0G');
+window.dflTrack=function(event,params){gtag('event',event,Object.assign({page_path:location.pathname,language:document.documentElement.getAttribute('data-lang')||'en'},params||{}));};
+</script>'''
+
+NAV = '''<nav id="navbar" class="index-nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/index.html" class="nav-logo" aria-label="DOTFORLIFE Home"><img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" width="115" height="115" loading="eager" fetchpriority="high"></a>
+    <ul class="nav-links">
+      <li><a href="/health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
+      <li><a href="/finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li>
+      <li><a href="/real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li>
+      <li><a href="/travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li>
+      <li><a href="/islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li>
+      <li><a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a></li>
+      <li><a href="/archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a></li>
+      <li><a href="/blog.html"><span class="en">blog</span><span class="ar">المدونة</span></a></li>
+      <li><a href="/library.html" aria-current="page"><span class="en">Library</span><span class="ar">المكتبة</span></a></li>
+    </ul>
+    <div class="nav-controls">
+      <button class="nav-btn" id="lang-toggle" aria-label="Switch language"><span class="en">عربي</span><span class="ar">English</span></button>
+      <button class="nav-btn" id="theme-toggle" aria-label="Toggle theme"><svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/></svg></button>
+      <button class="hamburger" id="hamburger-btn" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>'''
+
+def finance_tabs(active):
+    tabs = [
+        ('mortgage-calculator', 'Mortgage', 'القرض'),
+        ('salary-calculator', 'Salary', 'الراتب'),
+        ('savings-goal', 'Savings', 'المدخرات'),
+        ('monthly-budget', 'Budget', 'الميزانية'),
+        ('roi-calculator', 'ROI', 'العائد'),
+        ('rental-yield-calculator', 'Yield', 'العائد الإيجاري'),
+        ('zakat-calculator', 'Zakat', 'الزكاة'),
+    ]
+    items = []
+    for slug, en, ar in tabs:
+        cls = ' class="is-active"' if slug == active else ''
+        items.append(f'<a href="/tools/{slug}.html"{cls}><span class="en">{en}</span><span class="ar">{ar}</span></a>')
+    return f'''<div class="tool-tabs-wrap" role="navigation" aria-label="Finance tools">
+  <div class="tool-tabs-inner">
+    {chr(10).join('    '+i for i in items)}
+  </div>
+</div>'''
+
+FOOTER = '''<footer class="site-footer" role="contentinfo">
+  <div class="footer-accent" aria-hidden="true"></div>
+  <div class="footer-inner">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <a href="/index.html" class="footer-logo" aria-label="DOTFORLIFE"><img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" width="auto" loading="lazy"></a>
+        <p class="footer-tagline"><span class="en">One calm place for your family's everyday decisions. Free, always.</span><span class="ar">مكان هادئ واحد لقرارات عائلتك اليومية. مجاني دائماً.</span></p>
+        <p class="footer-motto"><span class="en">Life, at ease.</span><span class="ar">الحياة، براحة.</span></p>
+      </div>
+      <div class="footer-links-grid">
+        <div class="footer-col"><h4><span class="en">Life</span><span class="ar">الحياة</span></h4><ul><li><a href="/health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li><li><a href="/finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li><li><a href="/real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li><li><a href="/travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li><li><a href="/islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li></ul></div>
+        <div class="footer-col"><h4><span class="en">Tools</span><span class="ar">الأدوات</span></h4><ul><li><a href="/tools/mortgage-calculator.html"><span class="en">Mortgage</span><span class="ar">التمويل</span></a></li><li><a href="/tools/salary-calculator.html"><span class="en">Salary</span><span class="ar">الراتب</span></a></li><li><a href="/tools/monthly-budget.html"><span class="en">Budget</span><span class="ar">الميزانية</span></a></li><li><a href="/tools/zakat-calculator.html"><span class="en">Zakat</span><span class="ar">الزكاة</span></a></li><li><a href="/library.html"><span class="en">All Tools</span><span class="ar">كل الأدوات</span></a></li></ul></div>
+        <div class="footer-col"><h4><span class="en">Discover</span><span class="ar">اكتشف</span></h4><ul><li><a href="/blog.html"><span class="en">Blog</span><span class="ar">المدونة</span></a></li><li><a href="/archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a></li><li><a href="/our-vision.html"><span class="en">Our Vision</span><span class="ar">رؤيتنا</span></a></li><li><a href="/pregnancy-journey.html"><span class="en">Pregnancy Journey</span><span class="ar">رحلة الحمل</span></a></li></ul></div>
+        <div class="footer-col"><h4><span class="en">Company</span><span class="ar">الشركة</span></h4><ul><li><a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a></li><li><a href="/contact.html"><span class="en">Contact</span><span class="ar">تواصل</span></a></li><li><a href="/editorial-standards.html"><span class="en">Editorial Standards</span><span class="ar">المعايير التحريرية</span></a></li><li><a href="/privacy-policy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a></li><li><a href="/terms.html"><span class="en">Terms</span><span class="ar">الشروط</span></a></li></ul></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 DOTFORLIFE · <span class="en">Free for families, always.</span><span class="ar">مجاني للعائلات، دائماً.</span></span>
+      <div class="footer-bottom-links"><a href="/privacy-policy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a><a href="/terms.html"><span class="en">Terms</span><span class="ar">الشروط</span></a><a href="/contact.html"><span class="en">Contact</span><span class="ar">تواصل</span></a></div>
+    </div>
+  </div>
+</footer>
+
+<nav class="dfl-mobile-nav" aria-label="Mobile navigation">
+  <a href="/index.html" class="dfl-mnav-item"><svg viewBox="0 0 24 24"><polyline points="3 9 12 2 21 9"/><path d="M5 9v11a1 1 0 001 1h4v-6h4v6h4a1 1 0 001-1V9"/></svg><span class="en">Home</span><span class="ar">الرئيسية</span></a>
+  <a href="/library.html" class="dfl-mnav-item active"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg><span class="en">Library</span><span class="ar">المكتبة</span></a>
+  <a href="/finance.html" class="dfl-mnav-item"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg><span class="en">Finance</span><span class="ar">المالية</span></a>
+  <a href="/islamic.html" class="dfl-mnav-item"><svg viewBox="0 0 24 24"><path d="M21 10.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l2.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg><span class="en">Islamic</span><span class="ar">الإسلامية</span></a>
+  <a href="/travel.html" class="dfl-mnav-item"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><span class="en">Travel</span><span class="ar">السفر</span></a>
+</nav>
+
+<div class="mobile-dropdown" id="mobile-dropdown" aria-hidden="true">
+  <div class="md-links">
+    <a href="/health.html"><span class="en">Health</span><span class="ar">الصحة</span></a>
+    <a href="/finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a>
+    <a href="/real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a>
+    <a href="/travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a>
+    <a href="/islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a>
+    <a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a>
+    <a href="/archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a>
+    <a href="/blog.html"><span class="en">Blog</span><span class="ar">المدونة</span></a>
+    <a href="/library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a>
+  </div>
+  <div class="md-controls">
+    <button class="nav-btn" id="lang-toggle-mobile"><span class="en">عربي</span><span class="ar">English</span></button>
+    <button class="nav-btn" id="theme-toggle-mobile"><svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/></svg></button>
+  </div>
+</div>'''
+
+TAIL = '''<script src="/scripts/global.js?v=20260618a" defer></script>'''
+
+def head(meta):
+    return f'''<!DOCTYPE html>
+<html lang="en" data-theme="light" data-lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+{LANG_BOOT}
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta http-equiv="x-dns-prefetch-control" content="on" />
+<link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+<link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<title>{meta["title"]}</title>
+<meta name="description" content="{meta["desc"]}"/>
+<link rel="canonical" href="https://dotforlife.com/tools/{meta["slug"]}.html"/>
+<link rel="alternate" hreflang="ar" href="https://dotforlife.com/tools/{meta["slug"]}.html?lang=ar" />
+<link rel="alternate" hreflang="en" href="https://dotforlife.com/tools/{meta["slug"]}.html?lang=en" />
+<link rel="alternate" hreflang="x-default" href="https://dotforlife.com/tools/{meta["slug"]}.html" />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Almarai:wght@400;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Almarai:wght@400;700;800&display=swap"/></noscript>
+<link rel="stylesheet" href="/styles/global.css?v=20260618f"/>
+<link rel="stylesheet" href="/styles/tools-shared.css?v=20260608a">
+<link rel="stylesheet" href="/styles/tools-flagship.css?v=20260625b">
+<link rel="stylesheet" href="/styles/tools-accents.css?v=20260625a">
+<link rel="stylesheet" href="/styles/pages/tools_{meta["slug"]}.css?v=20260625a">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dotforlife.com/tools/{meta["slug"]}.html">
+<meta property="og:title" content="{meta["og_title"]}">
+<meta property="og:description" content="{meta["og_desc"]}">
+<meta property="og:image" content="https://dotforlife.com/og/og-default.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{{"@context":"https://schema.org","@type":"WebApplication","name":"{meta["schema_name"]}","url":"https://dotforlife.com/tools/{meta["slug"]}.html","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{{"@type":"Offer","price":"0","priceCurrency":"SAR"}},"inLanguage":["en","ar"]}}</script>
+{GTAG}
+</head>
+<body class="tool-flagship-page no-subnav" data-tool="{meta["data_tool"]}">'''
+
+def hero(meta):
+    return f'''{NAV}
+<div class="tool-hero">
+  <div class="tool-hero-inner">
+    <nav class="tool-breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html"><span class="en">Home</span><span class="ar">الرئيسية</span></a>
+      <span class="tool-breadcrumb-sep" aria-hidden="true">/</span>
+      <a href="/library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a>
+      <span class="tool-breadcrumb-sep" aria-hidden="true">/</span>
+      <span><span class="en">{meta["bc_en"]}</span><span class="ar">{meta["bc_ar"]}</span></span>
+    </nav>
+    <p class="tool-eyebrow">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      <span class="en">{meta["eyebrow_en"]}</span><span class="ar">{meta["eyebrow_ar"]}</span>
+    </p>
+    <h1 id="tool-title"><span class="en">{meta["h1_en"]}</span><span class="ar">{meta["h1_ar"]}</span></h1>
+    <p class="tool-hero-desc"><span class="en">{meta["desc_en"]}</span><span class="ar">{meta["desc_ar"]}</span></p>
+    <ul class="tool-trust">{meta["trust"]}</ul>
+  </div>
+</div>
+{finance_tabs(meta["slug"])}'''
+
+def tickets(rail):
+    return f'''<section class="tool-tickets-rail" aria-labelledby="related-tools-title">
+  <header class="tool-tickets-head">
+    <p class="tool-tickets-eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg> <span class="en">Continue Your Journey</span><span class="ar">أكمل رحلتك</span></p>
+    <h2 class="tool-tickets-title" id="related-tools-title"><span class="en">Related Tools &amp; Guides</span><span class="ar">أدوات ودلائل ذات صلة</span></h2>
+  </header>
+  <div class="tool-tickets-track">{rail}</div>
+</section>'''
+
+def ticket(href, cls, kicker_en, kicker_ar, title_en, title_ar, desc_en, desc_ar):
+    return f'''<a href="{href}" class="tool-ticket {cls}"><div class="tool-ticket-body"><span class="tool-ticket-kicker"><span class="en">{kicker_en}</span><span class="ar">{kicker_ar}</span></span><h3><span class="en">{title_en}</span><span class="ar">{title_ar}</span></h3><p><span class="en">{desc_en}</span><span class="ar">{desc_ar}</span></p><span class="tool-ticket-cta"><span class="en">Open tool →</span><span class="ar">← افتح الأداة</span></span></div></a>'''
+
+def extract_js(path, start_line_contains):
+    with open(path) as f:
+        lines = f.readlines()
+    start = None
+    for i, line in enumerate(lines):
+        if start_line_contains in line:
+            start = i
+            break
+    if start is None:
+        return ''
+    # find script end
+    end = start
+    for i in range(start, len(lines)):
+        if '</script>' in lines[i] and i > start:
+            end = i
+            break
+    js = ''.join(lines[start:end])
+    # strip theme/lang bloat before calc functions
+    if '// ── SLIDER SYNC' in js:
+        js = js[js.index('// ── SLIDER SYNC'):]
+    elif 'function fmt(n){ return Math.round' in js and 'calculateYield' in path:
+        idx = js.index('function fmt(n){ return Math.round')
+        js = js[idx:]
+    elif 'function v(id)' in js:
+        idx = js.index('function v(id)')
+        js = js[idx:]
+    # remove scroll reveal / intersection observer tail
+    for marker in ['// ── SCROLL REVEAL', 'const ro=new IntersectionObserver', 'const revealObserver']:
+        if marker in js:
+            js = js[:js.index(marker)]
+    # fix faq selectors
+    js = js.replace('.faq-q', '.t-faq-q')
+    js = js.replace("document.querySelectorAll('.mf-q')", "document.querySelectorAll('.t-faq-q')")
+    js = js.replace("document.querySelectorAll('.rf-q')", "document.querySelectorAll('.t-faq-q')")
+    return js.strip()
+
+def wrap_page(meta, main, below, rail, js, init_extra=''):
+    faq_toggle = '''function toggleFAQ(el){
+  var answer=el.nextElementSibling;var isOpen=el.classList.contains('open');
+  document.querySelectorAll('.t-faq-q').forEach(function(q){q.classList.remove('open');q.nextElementSibling.classList.remove('active');});
+  if(!isOpen){el.classList.add('open');answer.classList.add('active');}
+}'''
+    if 'function toggleFAQ' not in js:
+        js = js + '\n' + faq_toggle
+    lang_listener = '''document.addEventListener('dfl:langchange',function(){
+  if(typeof calcROI==='function'&&document.getElementById('resultsWrap')&&document.getElementById('resultsWrap').classList.contains('show'))calcROI();
+  if(typeof calculateYield==='function'&&document.getElementById('results-section')&&document.getElementById('results-section').classList.contains('active'))calculateYield();
+  if(typeof calculate==='function'&&document.getElementById('result-card')&&document.getElementById('resultFilled')&&document.getElementById('resultFilled').style.display!=='none')calculate();
+  if(typeof calculate==='function'&&document.getElementById('results-body')&&document.getElementById('results-body').querySelector('.heir-result'))calculate();
+  if(typeof renderAmortTable==='function'&&fullAmortData&&fullAmortData.length)renderAmortTable(showingAll);
+});'''
+    return '\n'.join([
+        head(meta), hero(meta),
+        '<main class="tool-mn">', main, below, tickets(rail), '</main>',
+        FOOTER, TAIL,
+        f'<script>\n{js}\n{init_extra}\n{lang_listener}\n</script>',
+        '</body></html>'
+    ])
+
+# ── SAVINGS GOAL ──
+def gen_savings():
+    meta = dict(slug='savings-goal', data_tool='savings-goal',
+        title='Savings Goal Calculator | حاسبة هدف الادخار — Dot For Life',
+        desc='Plan how long to reach your savings goal or how much to save monthly. Bilingual, free, private.',
+        og_title='Savings Goal Calculator | Dot4Life', og_desc='Plan your savings goal with time or monthly contribution modes.',
+        schema_name='Savings Goal Calculator',
+        bc_en='Savings Goal', bc_ar='هدف الادخار',
+        eyebrow_en='Finance Tool · Planning', eyebrow_ar='أداة مالية · التخطيط',
+        h1_en='Savings Goal Calculator', h1_ar='حاسبة هدف الادخار',
+        desc_en='Enter your target, current savings, and monthly contribution — or set a timeframe.',
+        desc_ar='أدخل هدفك ومدخراتك الحالية ومساهمتك الشهرية — أو حدد إطاراً زمنياً.',
+        trust='<li><span class="en">Two modes</span><span class="ar">وضعان</span></li><li><span class="en">Progress bar</span><span class="ar">شريط التقدم</span></li><li><span class="en">Free &amp; private</span><span class="ar">مجاني وخاص</span></li>')
+    main = '''<div class="tool-workspace">
+  <div class="tool-panel sg-card">
+    <div class="tool-panel-hdr"><h2><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg> <span class="en">Your Goal</span><span class="ar">هدفك</span></h2><p><span class="en">Results update as you type.</span><span class="ar">النتائج تتحدث أثناء الكتابة.</span></p></div>
+    <div class="tool-panel-body t-body">
+      <div class="t-g2">
+        <div class="t-fl"><label class="t-fl-l" for="target"><span class="en">Target Amount</span><span class="ar">المبلغ المستهدف</span></label><div class="t-fl-r"><input type="number" id="target" value="50000" min="0"><span class="t-fl-u">SAR</span></div></div>
+        <div class="t-fl"><label class="t-fl-l" for="current"><span class="en">Current Savings</span><span class="ar">المدخرات الحالية</span></label><div class="t-fl-r"><input type="number" id="current" value="5000" min="0"><span class="t-fl-u">SAR</span></div></div>
+        <div class="t-fl"><label class="t-fl-l" for="monthly"><span class="en">Monthly Contribution</span><span class="ar">المساهمة الشهرية</span></label><div class="t-fl-r"><input type="number" id="monthly" value="2000" min="1"><span class="t-fl-u">SAR</span></div></div>
+        <div class="t-fl"><label class="t-fl-l" for="months"><span class="en">Or — Timeframe (months)</span><span class="ar">أو — الإطار الزمني (أشهر)</span></label><div class="t-fl-r"><input type="number" id="months" value="24" min="1"><span class="t-fl-u"><span class="en">mo</span><span class="ar">شهر</span></span></div></div>
+      </div>
+      <button class="t-btn" type="button" onclick="calculate()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span class="en">Calculate</span><span class="ar">احسب</span></button>
+    </div>
+  </div>
+  <div class="tool-panel sg-card" id="result-card">
+    <div class="tool-panel-hdr"><h2><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> <span class="en">Results</span><span class="ar">النتائج</span></h2></div>
+    <div class="tool-panel-body t-body">
+      <div class="sg-res-grid">
+        <div class="sg-res-box sg-primary"><div class="sg-res-label"><span class="en">Remaining to Save</span><span class="ar">المتبقي للادخار</span></div><div class="sg-res-value" id="res-remaining">—</div></div>
+        <div class="sg-res-box"><div class="sg-res-label"><span class="en">Target Amount</span><span class="ar">المبلغ المستهدف</span></div><div class="sg-res-value" id="res-target">—</div></div>
+        <div class="sg-res-box"><div class="sg-res-label"><span class="en">Current Savings</span><span class="ar">المدخرات الحالية</span></div><div class="sg-res-value" id="res-current">—</div></div>
+        <div class="sg-res-box"><div class="sg-res-label"><span class="en">Monthly Contribution</span><span class="ar">المساهمة الشهرية</span></div><div class="sg-res-value" id="res-monthly">—</div></div>
+        <div class="sg-res-box"><div class="sg-res-label"><span class="en">Time Needed</span><span class="ar">الوقت المطلوب</span></div><div class="sg-res-value" id="res-time">—</div></div>
+      </div>
+      <div class="sg-progress-wrap"><div class="sg-progress-label"><span><span class="en">Progress</span><span class="ar">التقدم</span></span><span id="res-progress-pct">0%</span></div><div class="sg-progress-bg"><div class="sg-progress-fill" id="res-progress" style="width:0%"></div></div></div>
+    </div>
+  </div>
+</div>'''
+    below = '''<div class="tool-below"><div class="t-section"><div class="t-section-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg> <span class="en">How this works</span><span class="ar">كيف تعمل</span></div><p class="en">Mode 1: enter target, current savings, and monthly contribution to see time needed. Mode 2: enter a timeframe to see required monthly savings.</p><p class="ar">الوضع 1: أدخل الهدف والمدخرات والمساهمة الشهرية لمعرفة المدة. الوضع 2: أدخل الإطار الزمني لمعرفة المبلغ الشهري المطلوب.</p></div>
+<div class="t-faq"><div class="t-faq-label"><span class="en">FAQ</span><span class="ar">أسئلة شائعة</span></div><div class="t-faq-item"><div class="t-faq-q" onclick="toggleFAQ(this)"><span><span class="en">Does this include interest?</span><span class="ar">هل تشمل الفوائد؟</span></span><span class="t-faq-arrow">▼</span></div><div class="t-faq-a"><p><span class="en">No. Simple savings without interest, returns, or inflation.</span><span class="ar">لا. ادخار بسيط بدون فوائد أو عوائد أو تضخم.</span></p></div></div></div></div>'''
+    rail = ticket('/tools/monthly-budget.html','tool-ticket--budget','Finance','مالية','Monthly Budget','الميزانية الشهرية','Plan spending.','خطط مصروفك.')+ticket('/tools/salary-calculator.html','tool-ticket--salary','Finance','مالية','Salary Calculator','حاسبة الراتب','Know net pay.','اعرف صافي راتبك.')
+    js = extract_js(os.path.join(BASE,'tools/savings-goal.html'), 'function fmt(n)')
+    js = js.replace("document.getElementById('result-card').style.display='block';\n  document.getElementById('result-card').scrollIntoView", "document.getElementById('result-card').classList.add('active')")
+    init = "document.addEventListener('DOMContentLoaded',function(){['target','current','monthly','months'].forEach(function(id){var el=document.getElementById(id);if(el)el.addEventListener('input',calculate);});calculate();});"
+    return wrap_page(meta, main, below, rail, js, init)
+
+if __name__ == '__main__':
+    print('Run scripts/build_finance_flagship.py to generate pages.')

@@ -83,8 +83,8 @@
     <div id="offlineBanner" class="offline-banner" style="display:none"></div>
     <div style="background:var(--gold-soft);border:1px solid rgba(107,191,184,.2);border-radius:12px;padding:12px 16px;margin-bottom:16px;font-size:.78rem;line-height:1.6;">
       <strong>📋 <span class="en">Weekly workflow</span><span class="ar">النظام الأسبوعي</span>:</strong><br>
-      <span class="ar">1. اضغط «Generate Week» ← 7 كبسولات · 2. Pending Review ← Approve & Publish · 3. Export JSON ← ارفع الملف إلى data/capsules-published.json</span>
-      <span class="en">1. Generate Week → 7 capsules · 2. Pending Review → Approve & Publish · 3. Export JSON → commit to data/capsules-published.json</span>
+      <span class="ar">1. Generate Week ← 7 كبسولات · 2. Approve & Publish · 3. Export JSON → احفظ في <code>data/capsules-published.json</code> → git push</span>
+      <span class="en">1. Generate Week → 7 capsules · 2. Approve & Publish · 3. Export JSON → save to <code>data/capsules-published.json</code> → git push</span>
     </div>
     <div class="list-meta" id="listMeta"></div>
     <div class="capsule-list" id="capsuleList">
@@ -99,9 +99,10 @@
 
 <script>
 // ═══════════════════════════════════════
-//  CONFIG
+//  CONFIG — Static-first (no Railway)
 // ═══════════════════════════════════════
-let API   = 'https://dot4life-production.up.railway.app/api';
+const STATIC_MODE = true;
+let API   = ''; // unused in static mode
 let token  = sessionStorage.getItem('d4l_token') || '';
 let filter = 'all';
 let allCapsules = [];
@@ -137,7 +138,7 @@ function setOfflineBanner(on) {
   if (!el) return;
   if (on) {
     el.style.display = 'block';
-    el.innerHTML = '<strong>⚡ Offline Mode</strong> — Railway API unavailable. Capsules saved in this browser. After approving, use <strong>Export JSON</strong> and commit to <code>data/capsules-published.json</code>.';
+    el.innerHTML = '<strong>📁 Static Mode</strong> — <span class="en">Capsules live in this browser until you <strong>Export JSON</strong> → save as <code>data/capsules-published.json</code> → git push.</span><span class="ar">الكبسولات في هذا المتصفح حتى <strong>تصدير JSON</strong> → احفظ في <code>data/capsules-published.json</code> → git push.</span>';
     if (ex) ex.style.display = 'inline-flex';
   } else {
     el.style.display = 'none';
@@ -174,18 +175,21 @@ function localApproveAndPublish(id) {
 function exportPublished() {
   const caps = getLocalCapsules().filter(c => c.status === 'published');
   const byDate = {};
+  const byId = {};
   caps.forEach(c => {
     const d = c.published_date || c.scheduled_date;
     if (!d) return;
-    byDate[d] = {
+    const entry = {
       id: c.id, category: c.category, emoji: c.emoji,
       title_en: c.title_en, title_ar: c.title_ar,
       subtitle_en: c.subtitle_en, subtitle_ar: c.subtitle_ar,
       body_en: c.body_en, body_ar: c.body_ar,
       tip_en: c.tip_en, tip_ar: c.tip_ar
     };
+    byDate[d] = entry;
+    if (c.id) byId[c.id] = entry;
   });
-  const payload = { updated: new Date().toISOString(), byDate };
+  const payload = { updated: new Date().toISOString(), mode: 'static', byDate, byId };
   const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
@@ -221,7 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 async function checkAndShow() {
-  if (token && token.startsWith('local-')) {
+  if (STATIC_MODE || (token && token.startsWith('local-'))) {
     useOffline = true;
     setOfflineBanner(true);
     show('app');
@@ -252,8 +256,25 @@ async function login() {
   btn.textContent = '…';
   err.style.display = 'none';
 
-  // Local fallback (SHA-256 of admin password)
+  // Static mode: local password only (no Railway)
   const localHash = await sha256(pw);
+
+  if (STATIC_MODE) {
+    if (localHash === LOCAL_HASH) {
+      token = 'local-' + Date.now();
+      useOffline = true;
+      sessionStorage.setItem('d4l_token', token);
+      setOfflineBanner(true);
+      show('app');
+      load();
+    } else {
+      err.textContent = 'Incorrect password.';
+      err.style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = 'Sign In';
+    }
+    return;
+  }
 
   const r = await call('POST', '/admin/login', { password: pw });
 

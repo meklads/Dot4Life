@@ -231,6 +231,10 @@
             <label><span class="en">Message</span><span class="ar">الرسالة</span></label>
             <textarea id="cf-message" class="form-control" rows="5" placeholder="Your message... / رسالتك..."></textarea>
           </div>
+          <label style="display:flex;align-items:flex-start;gap:8px;margin:12px 0;font-size:.85rem;cursor:pointer;">
+            <input type="checkbox" id="cf-newsletter" style="margin-top:3px;">
+            <span><span class="en">Also subscribe to Friday Letter (weekly email)</span><span class="ar">اشترك أيضاً في رسالة الجمعة (بريد أسبوعي)</span></span>
+          </label>
           <button type="button" class="submit-btn" onclick="handleSubmit(this)">
             <span class="en">Send Message →</span><span class="ar">← إرسال الرسالة</span>
           </button>
@@ -270,14 +274,16 @@
       </div>
     </div>
   </div>
+  <script src="/scripts/dfl-config.js?v=20260619f"></script>
+  <script src="/scripts/dfl-email-list.js?v=20260619f"></script>
   <script>
-    const API = 'https://dotforlife-production.up.railway.app/api';
-    async function handleSubmit(btn) {
+    function handleSubmit(btn) {
       const name    = document.getElementById('cf-name').value.trim();
       const email   = document.getElementById('cf-email').value.trim();
-      const subject = document.getElementById('cf-subject').value;
+      const subject = document.getElementById('cf-subject').value || 'Contact';
       const message = document.getElementById('cf-message').value.trim();
       const msg     = document.getElementById('form-msg');
+      const wantList = document.getElementById('cf-newsletter') && document.getElementById('cf-newsletter').checked;
 
       if (!name || !email || !message) {
         msg.style.display = 'block';
@@ -287,38 +293,23 @@
       }
 
       btn.disabled = true;
-      btn.querySelector('.en').textContent = 'Sending...';
-      btn.querySelector('.ar').textContent = '...جارٍ الإرسال';
       msg.style.display = 'none';
 
-      try {
-        const res = await fetch(`${API}/contact`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, email, subject, message }),
-        });
-        const data = await res.json();
+      const body = 'Name / الاسم: ' + name + '\nEmail: ' + email + '\n\n' + message;
+      const mailto = 'mailto:' + (window.DFL && DFL.emailList ? DFL.emailList.contactEmail : 'hello@dotforlife.com')
+        + '?subject=' + encodeURIComponent('[Dot4Life] ' + subject)
+        + '&body=' + encodeURIComponent(body);
 
-        if (data.ok) {
-          msg.style.color = '#22C55E';
-          msg.innerHTML = '<span class="en">✓ Message sent! We\'ll be in touch soon.</span><span class="ar">✓ تم الإرسال! سنتواصل معك قريباً.</span>';
-          msg.style.display = 'block';
-          document.getElementById('cf-name').value = '';
-          document.getElementById('cf-email').value = '';
-          document.getElementById('cf-subject').value = '';
-          document.getElementById('cf-message').value = '';
-        } else {
-          throw new Error(data.error || 'Failed');
-        }
-      } catch (err) {
-        msg.style.color = '#ef4444';
-        msg.innerHTML = '<span class="en">Could not send — try <a href="mailto:hello@dotforlife.com" style="color:inherit">hello@dotforlife.com</a></span><span class="ar">تعذّر الإرسال — راسلنا على <a href="mailto:hello@dotforlife.com" style="color:inherit">hello@dotforlife.com</a></span>';
-        msg.style.display = 'block';
+      if (wantList && window.DFL && DFL.subscribeContactList) {
+        DFL.subscribeContactList(email, name);
       }
 
+      window.location.href = mailto;
+
+      msg.style.color = '#22C55E';
+      msg.innerHTML = '<span class="en">✓ Your email app should open — send the message to complete.</span><span class="ar">✓ يفترض أن يفتح تطبيق البريد — أرسل الرسالة لإكمال التواصل.</span>';
+      msg.style.display = 'block';
       btn.disabled = false;
-      btn.querySelector('.en').textContent = 'Send Message →';
-      btn.querySelector('.ar').textContent = '← إرسال الرسالة';
     }
   </script>
 

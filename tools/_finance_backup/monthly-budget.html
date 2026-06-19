@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en" data-theme="light">
+<head>
+
+  <script>
+(function(){
+  /* theme */
+  var tb=document.getElementById("theme-toggle");
+  if(tb)tb.addEventListener("click",function(){
+    var h=document.documentElement,t=h.getAttribute("data-theme")==="dark"?"light":"dark";
+    h.setAttribute("data-theme",t);localStorage.setItem("dfl-theme",t);
+  });
+  /* lang */
+  var lb=document.getElementById("lang-toggle");
+  if(lb)lb.addEventListener("click",function(){
+    var h=document.documentElement,l=h.getAttribute("data-lang")==="ar"?"en":"ar";
+    h.setAttribute("data-lang",l);h.setAttribute("lang",l);
+    h.setAttribute("dir",l==="ar"?"rtl":"ltr");localStorage.setItem("dfl-lang",l);
+  });
+  /* scroll shadow */
+  var nb=document.getElementById("navbar");
+  if(nb)window.addEventListener("scroll",function(){nb.classList.toggle("scrolled",window.scrollY>10);},{passive:true});
+  /* reveal */
+  if("IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add("visible");});},{threshold:0.1});
+    document.querySelectorAll(".reveal").forEach(function(el){io.observe(el);});
+  } else document.querySelectorAll(".reveal").forEach(function(el){el.classList.add("visible");});
+
+  /* hamburger menu */
+  (function(){
+    var hb = document.getElementById('hamburger-btn');
+    var dd = document.getElementById('mobile-dropdown');
+    if (!hb || !dd) return;
+    function toggle(e) {
+      e.stopPropagation();
+      var open = dd.classList.toggle('open');
+      hb.classList.toggle('open', open);
+      hb.setAttribute('aria-expanded', open);
+      document.body.classList.toggle('menu-open', open);
+    }
+    function closeM() {
+      dd.classList.remove('open');
+      hb.classList.remove('open');
+      hb.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('menu-open');
+    }
+    hb.addEventListener('click', toggle);
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeM(); });
+    dd.addEventListener('click', function(e){ if(e.target===dd) closeM(); });
+  })();
+
+  })();
+</script>
+<meta charset="UTF-8"/>
+
+  <script>(function(){var p=new URLSearchParams(location.search),gd=(function(){try{var z=(Intl.DateTimeFormat().resolvedOptions().timeZone||"");return /Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test(z)?"ar":"en";}catch(e){return "ar";}})(),l=p.get("lang")||localStorage.getItem("dfl-lang")||gd,t=p.get("theme")||localStorage.getItem("dfl-theme")||"light",h=document.documentElement;h.setAttribute("data-theme",t);h.setAttribute("data-lang",l);h.setAttribute("lang",l);h.setAttribute("dir",l==="ar"?"rtl":"ltr");if(p.get("lang"))localStorage.setItem("dfl-lang",l);if(p.get("theme"))localStorage.setItem("dfl-theme",t);})()</script>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+  <meta http-equiv="x-dns-prefetch-control" content="on" />
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+  <link rel="dns-prefetch" href="https://images.unsplash.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://www.googletagmanager.com" />
+<title>Monthly Budget Planner | مخطط الميزانية الشهرية، DotForLife</title>
+<meta name="description" content="Plan your monthly budget with clarity. Track income and expenses across 9 categories, see where your money goes, and find your path to surplus. Bilingual, private, no data stored."/>
+<meta name="keywords" content="monthly budget planner, budget calculator, expense tracker, income vs expenses, ميزانية شهرية, مخطط الميزانية, حاسبة النفقات, تخطيط مالي"/>
+<link rel="canonical" href="https://www.dotforlife.com/tools/monthly-budget.html"/>
+<meta property="og:site_name" content="DOTFORLIFE" />
+  <meta property="og:title" content="Monthly Budget Planner, DOTFORLIFE | مخطط الميزانية الشهرية"/>
+<meta property="og:description" content="Track income and expenses. See exactly where your money goes each month. Free, bilingual, private."/>
+<meta property="og:type" content="website"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Inter:wght@400;500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Inter:wght@400;500;600;700;800&display=swap"/></noscript>
+<link rel="stylesheet" href="/styles/global.css?v=20260617e"/>
+	<link rel="stylesheet" href="/styles/tools-shared.css?v=20260608a">
+	<link rel="stylesheet" href="/styles/pages/tools_monthly-budget.css?v=20260617b">
+
+  <!-- DFL CANONICAL SYSTEM CSS -->
+  
+<script src="/scripts/global.js" defer></script>
+<style>
+.dfl-related{border-top:1px solid var(--border);padding:52px 0 64px;background:var(--body-bg);}
+.dfl-related .container{max-width:1280px;margin:0 auto;padding:0 clamp(1.5rem,4vw,2.5rem);}
+.dfl-related-label{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+.dfl-related-title{font-size:clamp(1.2rem,2.5vw,1.55rem);font-weight:700;color:var(--text);margin:0 0 6px;letter-spacing:-.02em;}
+.dfl-related-sub{font-size:.88rem;color:var(--text-2);margin-bottom:32px;line-height:1.6;}
+.dfl-related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;}
+.dfl-rc{display:flex;flex-direction:column;background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:20px 22px 18px;text-decoration:none;color:inherit;transition:border-color .2s,box-shadow .2s,transform .2s;}
+.dfl-rc:hover{border-color:var(--gold);box-shadow:0 4px 20px rgba(107,191,184,.12);transform:translateY(-2px);}
+.dfl-rc.guide{border-style:dashed;}
+.dfl-rc.guide:hover{border-color:var(--green,#2a9a98);box-shadow:0 4px 20px rgba(42,154,152,.1);}
+.dfl-rc-top{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.dfl-rc-icon{font-size:1.4rem;line-height:1;flex-shrink:0;}
+.dfl-rc-name{font-size:.88rem;font-weight:700;color:var(--text);line-height:1.3;}
+.dfl-rc-desc{font-size:.78rem;color:var(--text-2);line-height:1.5;flex:1;}
+.dfl-rc-cta{margin-top:12px;font-size:.76rem;font-weight:700;color:var(--gold);}
+.dfl-rc.guide .dfl-rc-cta{color:var(--green,#2a9a98);}
+@media(max-width:600px){.dfl-related-grid{grid-template-columns:1fr 1fr;gap:10px;}.dfl-rc{padding:14px;}}
+
+/* ── SITE FOOTER ─────────────────────────────────────────── */
+.site-footer{background:var(--navy,#032a28);color:rgba(255,255,255,.7);padding:clamp(3rem,6vw,5rem) 0 0;}
+.footer-inner{max-width:1280px;margin:0 auto;padding:0 clamp(16px,4vw,48px);}
+.footer-top{display:flex;gap:3rem;margin-bottom:3rem;flex-wrap:wrap;}
+.footer-brand{flex:0 0 220px;}
+.footer-brand p{font-size:.82rem;line-height:1.65;color:rgba(255,255,255,.45);margin-top:.75rem;}
+[data-lang="ar"] .footer-brand p{font-family:var(--font-ar);}
+.footer-logo img{height:100px;width:auto;display:block;}
+.footer-cols{flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;}
+.footer-col h4{font-size:.68rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.85);margin-bottom:1rem;}
+[data-lang="ar"] .footer-col h4{font-family:var(--font-ar);letter-spacing:0;}
+.footer-col ul{list-style:none;}
+.footer-col ul li{margin-bottom:.55rem;}
+.footer-col ul li a{font-size:.83rem;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s;}
+.footer-col ul li a:hover{color:var(--gold);}
+[data-lang="ar"] .footer-col ul li a{font-family:var(--font-ar);}
+.footer-divider{border:none;border-top:1px solid rgba(255,255,255,.08);margin:0;}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.25rem 0 calc(1.25rem + 60px);font-size:.78rem;color:rgba(255,255,255,.35);flex-wrap:wrap;}
+.footer-bottom-links{display:flex;gap:1.25rem;}
+.footer-bottom-links a,.footer-bottom a{color:rgba(255,255,255,.35);text-decoration:none;font-size:.78rem;transition:color .2s;}
+.footer-bottom-links a:hover,.footer-bottom a:hover{color:var(--gold);}
+[data-lang="ar"] .footer-bottom{font-family:var(--font-ar);}
+[data-lang="ar"] .footer-top{direction:rtl;}
+@media(max-width:860px){.footer-top{flex-direction:column;gap:2rem;}.footer-brand{flex:none;}.footer-cols{grid-template-columns:1fr 1fr;}}
+@media(max-width:500px){.footer-cols{grid-template-columns:1fr;}.footer-bottom{flex-direction:column;text-align:center;}}
+
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Monthly Budget Planner | مخطط الميزانية الشهرية، DotForLife","url":"https://www.dotforlife.com/tools/monthly-budget.html","applicationCategory":"UtilityApplication","operatingSystem":"Web"}</script>
+  <link rel="alternate" hreflang="ar" href="https://www.dotforlife.com/tools/monthly-budget.html?lang=ar" />
+  <link rel="alternate" hreflang="en" href="https://www.dotforlife.com/tools/monthly-budget.html?lang=en" />
+  <link rel="alternate" hreflang="x-default" href="https://www.dotforlife.com/tools/monthly-budget.html" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3G1XPV4F0G"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3G1XPV4F0G');
+</script>
+  <meta property="og:image" content="https://www.dotforlife.com/og/finance.jpg"/>
+  <meta name="twitter:image" content="https://www.dotforlife.com/og/finance.jpg"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+</head>
+<body class="category-page has-subnav">
+  <!-- DFL CANONICAL NAVBAR -->
+  <!-- ═══ UNIFIED HEADER ══════════════════════════════════════ -->
+<nav id="navbar" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo" aria-label="DOTFORLIFE Home">
+      <img src="../logo1-footer.webp" alt="DOTFORLIFE" width="100" height="100" style="height:100px;width:auto;object-fit:contain;" width="100" height="100" loading="lazy">
+    </a>
+    <ul class="nav-links">
+      <li><a href="../health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
+      <li><a href="../finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li>
+      <li><a href="../real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li>
+      <li><a href="../travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li>
+      <li><a href="../islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li>
+      <li><a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a></li>
+      <li><a href="../archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a></li>
+      <li><a href="/blog.html"><span class="en">blog</span><span class="ar">المدونة</span></a></li>
+      <li><a href="../library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a></li>
+    </ul>
+    <div class="nav-controls">
+      <button class="nav-btn" id="lang-toggle" aria-label="Switch language"><span class="en">عربي</span><span class="ar">English</span></button>
+      <button class="nav-btn" id="theme-toggle" aria-label="Toggle theme"><svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
+      <button class="hamburger" id="hamburger-btn" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+<!-- ═══════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════ -->
+
+
+<!-- NAV -->
+
+<main class="tool-mn">
+<!-- HERO -->
+  <div class="tool-hr-wrap">
+
+    <section class="tool-hr" aria-labelledby="tool-title">
+      <div class="tool-hr-in">
+        <div class="tool-hr-bd">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> <span class="en">Budget Planner</span><span class="ar">مخطط الميزانية</span>
+        </div>
+        <h1 class="tool-h1">
+      <span class="en">Monthly Budget Planner</span>
+      <span class="ar">مخطط الميزانية الشهرية</span>
+    </h1>
+        <p>
+      <span class="en">Enter your income and expenses once. See exactly where your money goes, what you have left, and where to adjust. Private, nothing leaves your browser.</span>
+      <span class="ar">أدخل دخلك ونفقاتك مرة واحدة. واعرف بالضبط أين يذهب مالك، وماذا تبقى، وأين تحتاج للتعديل. خصوصي تماماً، لا شيء يخرج من متصفحك.</span>
+    </p>
+        
+      </div>
+    </section>
+<div id="sub-nav">
+  <div class="sub-nav-inner">
+    <a href="/tools/monthly-budget.html" class="active"><span class="en">Budget</span><span class="ar">الميزانية</span></a>
+    <a href="/tools/savings-goal.html"><span class="en">Savings</span><span class="ar">المدخرات</span></a>
+    <a href="/tools/zakat-calculator.html"><span class="en">Zakat</span><span class="ar">الزكاة</span></a>
+    <a href="/tools/mortgage-calculator.html"><span class="en">Mortgage</span><span class="ar">القرض</span></a>
+    <a href="/tools/salary-calculator.html"><span class="en">Salary</span><span class="ar">الراتب</span></a>
+    <a href="/tools/roi-calculator.html"><span class="en">ROI</span><span class="ar">العائد</span></a>
+    <a href="/tools/rental-yield-calculator.html"><span class="en">Yield</span><span class="ar">العائد الإيجاري</span></a>
+  </div>
+</div>
+  </div>
+
+
+
+<!-- TOOL -->
+<section class="tool-main">
+  <div class="container">
+    <div class="tool-grid">
+
+      <!-- LEFT: INPUTS -->
+      <div>
+        <div class="panel">
+
+          <!-- Currency -->
+          <div class="currency-row">
+            <button class="currency-btn active" onclick="setCurrency('SAR','﷼')" id="btn-SAR">SAR ﷼</button>
+            <button class="currency-btn" onclick="setCurrency('USD','$')" id="btn-USD">USD $</button>
+            <button class="currency-btn" onclick="setCurrency('AED','د.إ')" id="btn-AED">AED د.إ</button>
+            <button class="currency-btn" onclick="setCurrency('KWD','د.ك')" id="btn-KWD">KWD د.ك</button>
+          </div>
+
+          <!-- Monthly income -->
+          <div class="income-block">
+            <div class="income-label"><span class="en">Monthly Net Income</span><span class="ar">الدخل الشهري الصافي</span></div>
+            <div class="income-input-wrap">
+              <span class="income-sym" id="incomeSym">﷼</span>
+              <input type="number" id="incomeInput" class="income-input" placeholder="0" min="0" inputmode="numeric" oninput="autoCalculate()"/>
+            </div>
+            <div class="income-note">
+              <span class="en">After taxes and deductions. Include all income sources.</span>
+              <span class="ar">بعد الضرائب والاستقطاعات. اشمل جميع مصادر الدخل.</span>
+            </div>
+          </div>
+
+          <!-- Halal Finance Mode -->
+          <div class="halal-row">
+            <div>
+              <div class="halal-label"><svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg> <span class="en">Halal Finance Mode</span><span class="ar">وضع التمويل الإسلامي</span></div>
+              <div class="halal-sub"><span class="en">Replaces interest-based tips with Islamic finance guidance</span><span class="ar">يستبدل النصائح التقليدية بإرشادات التمويل الإسلامي</span></div>
+            </div>
+            <label class="toggle-wrap">
+              <input type="checkbox" class="toggle-input" id="halalToggle" onchange="toggleHalal()"/>
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+
+          <!-- Expense categories -->
+          <div class="section-label"><span class="en">Monthly Expenses</span><span class="ar">النفقات الشهرية</span></div>
+
+          <div class="cat-list" id="catList">
+            <!-- rows injected by JS -->
+          </div>
+
+          <button class="calc-btn" onclick="calculate()">
+            <span class="en">Calculate My Budget</span>
+            <span class="ar">احسب ميزانيتي</span>
+          </button>
+        </div>
+
+        <!-- HOW IT WORKS -->
+        <div class="how-section">
+          <p class="how-eyebrow"><span class="en">How it works</span><span class="ar">كيف تعمل الأداة</span></p>
+          <h2 class="how-title"><span class="en">Three steps to budget clarity</span><span class="ar">ثلاث خطوات لوضوح الميزانية</span></h2>
+          <div class="how-grid">
+            <div class="how-card">
+              <div class="how-num"><span class="en">Step 01</span><span class="ar">الخطوة ١</span></div>
+              <div class="how-name"><span class="en">Enter your income</span><span class="ar">أدخل دخلك</span></div>
+              <div class="how-body"><span class="en">Your monthly net income, what actually lands in your account after all deductions.</span><span class="ar">دخلك الشهري الصافي، ما يصل إلى حسابك فعلاً بعد كل الاستقطاعات.</span></div>
+            </div>
+            <div class="how-card">
+              <div class="how-num"><span class="en">Step 02</span><span class="ar">الخطوة ٢</span></div>
+              <div class="how-name"><span class="en">Fill your expenses</span><span class="ar">أدخل نفقاتك</span></div>
+              <div class="how-body"><span class="en">Go category by category. Leave zero for things you don't spend on, the planner adapts automatically.</span><span class="ar">اعمل فئة بفئة. اترك صفراً لما لا تنفق عليه، المخطط يتكيف تلقائياً.</span></div>
+            </div>
+            <div class="how-card">
+              <div class="how-num"><span class="en">Step 03</span><span class="ar">الخطوة ٣</span></div>
+              <div class="how-name"><span class="en">See your picture</span><span class="ar">شاهد صورتك المالية</span></div>
+              <div class="how-body"><span class="en">Instant surplus or deficit. Category breakdown. Guidance on the 50/30/20 rule, or Islamic finance principles if you prefer.</span><span class="ar">فائض أو عجز فوري. تفصيل بالفئات. إرشادات بقاعدة 50/30/20, أو مبادئ التمويل الإسلامي إن شئت.</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RELATED TOOLS -->
+        <div class="related-section">
+          <p class="related-eyebrow"><span class="en">Connected tools</span><span class="ar">أدوات مرتبطة</span></p>
+          <h2 class="related-title"><span class="en">Plan your full financial picture</span><span class="ar">خطط لصورتك المالية الكاملة</span></h2>
+          <p class="related-sub"><span class="en">Your budget is the foundation. These tools build on it.</span><span class="ar">ميزانيتك هي الأساس. هذه الأدوات تبني عليها.</span></p>
+          <div class="related-grid">
+            <a href="/tools/savings-goal.html" class="rel-card">
+              <div class="rel-card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1"/></svg></div>
+              <div class="rel-card-name"><span class="en">Savings Goal</span><span class="ar">هدف الادخار</span></div>
+              <div class="rel-card-desc"><span class="en">Turn your monthly surplus into a savings plan with a real end date.</span><span class="ar">حوّل فائضك الشهري إلى خطة ادخار بموعد نهاية حقيقي.</span></div>
+            </a>
+            <a href="/tools/mortgage-calculator.html" class="rel-card">
+              <div class="rel-card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 4l9 5.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-5h4v5h4a1 1 0 0 0 1-1v-9"/></svg></div>
+              <div class="rel-card-name"><span class="en">Mortgage Calculator</span><span class="ar">حاسبة التمويل العقاري</span></div>
+              <div class="rel-card-desc"><span class="en">See how a mortgage payment fits into your monthly budget.</span><span class="ar">شوف كيف تناسب قسط التمويل ميزانيتك الشهرية.</span></div>
+            </a>
+            <a href="/tools/zakat-calculator.html" class="rel-card">
+              <div class="rel-card-icon"><svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></div>
+              <div class="rel-card-name"><span class="en">Zakat Calculator</span><span class="ar">حاسبة الزكاة</span></div>
+              <div class="rel-card-desc"><span class="en">Calculate your annual zakat obligation on savings and assets.</span><span class="ar">احسب زكاتك السنوية على مدخراتك وأصولك.</span></div>
+            </a>
+            <a href="../finance.html" class="rel-card">
+              <div class="rel-card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+              <div class="rel-card-name"><span class="en">All Finance Tools</span><span class="ar">جميع أدوات المال</span></div>
+              <div class="rel-card-desc"><span class="en">ROI, rental yield, mortgage, savings, zakat, every finance tool in one place.</span><span class="ar">العائد، العقار، التمويل، الادخار، الزكاة، كل أدوات المال في مكان واحد.</span></div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: RESULTS -->
+      <div class="result-panel" id="resultPanel">
+        <div class="result-header">
+          <div class="result-title"><span class="en">Your Budget Summary</span><span class="ar">ملخص ميزانيتك</span></div>
+        </div>
+
+        <!-- Empty state -->
+        <div class="result-empty" id="resultEmpty">
+          <div class="result-empty-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></div>
+          <div class="result-empty-txt">
+            <span class="en">Enter your income and at least one expense, then press Calculate.</span>
+            <span class="ar">أدخل دخلك ونفقة واحدة على الأقل، ثم اضغط احسب.</span>
+          </div>
+        </div>
+
+        <!-- Filled state -->
+        <div class="result-filled" id="resultFilled">
+
+          <!-- Status bar -->
+          <div id="statusBar" class="status-bar status-surplus">
+            <div class="status-label" id="statusLabel"></div>
+            <div class="status-amount" id="statusAmount"></div>
+            <div class="status-desc" id="statusDesc"></div>
+          </div>
+
+          <!-- Totals -->
+          <div class="totals-row">
+            <div class="total-col">
+              <div class="total-col-label"><span class="en">Income</span><span class="ar">الدخل</span></div>
+              <div class="total-col-val income-col" id="totalIncome">, </div>
+            </div>
+            <div class="total-col">
+              <div class="total-col-label"><span class="en">Expenses</span><span class="ar">النفقات</span></div>
+              <div class="total-col-val expense-col" id="totalExpenses">, </div>
+            </div>
+            <div class="total-col">
+              <div class="total-col-label"><span class="en">Saved</span><span class="ar">المدخر</span></div>
+              <div class="total-col-val" id="totalSaved" style="color:var(--accent)">, </div>
+            </div>
+          </div>
+
+          <!-- Category breakdown bars -->
+          <div class="breakdown-section">
+            <div class="breakdown-title"><span class="en">Where the money goes</span><span class="ar">أين يذهب المال</span></div>
+            <div class="breakdown-list" id="breakdownList"></div>
+          </div>
+
+          <!-- 50/30/20 guide -->
+          <div class="rule-section" id="ruleSection">
+            <div class="rule-title" id="ruleTitle"></div>
+            <div class="rule-chips" id="ruleChips"></div>
+          </div>
+
+          <!-- Halal tip -->
+          <div class="halal-tip" id="halalTip">
+            <strong><svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg> <span class="en">Islamic Finance Reminder</span><span class="ar">تذكير التمويل الإسلامي</span></strong><br/>
+            <span class="en">Aim to keep a clean financial profile: avoid interest-bearing debt, keep charity (Sadaqah) as a line in your budget, and build an emergency fund before investing.</span>
+            <span class="ar">احرص على ملف مالي نظيف: تجنب الديون الربوية، اجعل الصدقة سطراً ثابتاً في ميزانيتك، وابنِ صندوق الطوارئ قبل الاستثمار.</span>
+          </div>
+
+        </div>
+      </div>
+
+    </div><!-- /tool-grid -->
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+
+<script>
+/* ─── STATE ────────────────────────────────────────────────────── */
+var currCode = 'SAR', currSym = '﷼';
+var halalMode = false;
+
+/* ─── CATEGORIES ───────────────────────────────────────────────── */
+var CATS = [
+  { id:'housing',       icon:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 4l9 5.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-5h4v5h4a1 1 0 0 0 1-1v-9"/></svg>', color:'#6366f1', en:'Housing / Rent',       ar:'السكن / الإيجار',        hint_en:'Rent, mortgage, building fees',           hint_ar:'الإيجار، التمويل، رسوم الصيانة' },
+  { id:'transport',     icon:'🚗', color:'#f59e0b', en:'Transport',             ar:'التنقل',                  hint_en:'Fuel, car payment, public transport',      hint_ar:'وقود، قسط سيارة، مواصلات' },
+  { id:'food',          icon:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>', color:'#10b981', en:'Food & Groceries',      ar:'الغذاء والمستلزمات',     hint_en:'Supermarket, restaurants, delivery',       hint_ar:'سوبرماركت، مطاعم، توصيل' },
+  { id:'utilities',     icon:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg>', color:'#06b6d4', en:'Bills & Utilities',     ar:'الفواتير والمرافق',      hint_en:'Electricity, water, internet, phone',      hint_ar:'كهرباء، ماء، إنترنت، هاتف' },
+  { id:'health',        icon:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>', color:'#ef4444', en:'Health & Medical',      ar:'الصحة والطب',             hint_en:'Insurance, pharmacy, gym',                 hint_ar:'تأمين، صيدلية، نادي رياضي' },
+  { id:'education',     icon:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>', color:'#8b5cf6', en:'Education',             ar:'التعليم',                 hint_en:'School fees, courses, books',              hint_ar:'رسوم دراسية، دورات، كتب' },
+  { id:'entertainment', icon:'🎬', color:'#ec4899', en:'Entertainment',         ar:'الترفيه',                 hint_en:'Subscriptions, outings, hobbies',          hint_ar:'اشتراكات، نزهات، هوايات' },
+  { id:'savings',       icon:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v12"/><path d="M8 10h4a2 2 0 0 1 0 4H8"/></svg>', color:'#0F4C8A', en:'Savings & Investment',  ar:'الادخار والاستثمار',     hint_en:'Monthly savings target, treated as a fixed expense', hint_ar:'هدف الادخار الشهري، يُعامل كمصروف ثابت' },
+  { id:'charity',       icon:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 2v4a3 3 0 0 1-3 3h-4a3 3 0 0 1-3-3V2"/></svg>', color:'#2a9a98', en:'Charity & Zakat',       ar:'الصدقة والزكاة',         hint_en:'Zakat, regular sadaqah, family support',   hint_ar:'زكاة، صدقة منتظمة، دعم الأسرة' },
+];
+
+/* ─── BUILD CATEGORY ROWS ──────────────────────────────────────── */
+function buildCatList() {
+  var el = document.getElementById('catList');
+  el.innerHTML = '';
+  CATS.forEach(function(c) {
+    var row = document.createElement('div');
+    row.className = 'cat-row';
+    row.innerHTML =
+      '<div class="cat-icon" style="background:' + c.color + '22">' + c.icon + '</div>' +
+      '<div class="cat-info">' +
+        '<div class="cat-name"><span class="en">' + c.en + '</span><span class="ar">' + c.ar + '</span></div>' +
+      '</div>' +
+      '<div class="cat-input-wrap">' +
+        '<span class="cat-sym" id="sym-' + c.id + '">' + currSym + '</span>' +
+        '<input type="number" id="cat-' + c.id + '" class="cat-input" placeholder="0" min="0" inputmode="numeric" oninput="autoCalculate()" title="' + (document.documentElement.getAttribute('data-lang')==='ar' ? c.hint_ar : c.hint_en) + '"/>' +
+      '</div>';
+    el.appendChild(row);
+  });
+  /* re-apply lang hiding */
+  applyLangVisibility();
+}
+
+/* ─── CURRENCY ─────────────────────────────────────────────────── */
+function setCurrency(code, sym) {
+  currCode = code; currSym = sym;
+  ['SAR','USD','AED','KWD'].forEach(function(c){
+    document.getElementById('btn-'+c).classList.toggle('active', c===code);
+  });
+  document.getElementById('incomeSym').textContent = sym;
+  CATS.forEach(function(c){ var s=document.getElementById('sym-'+c.id); if(s) s.textContent=sym; });
+  autoCalculate();
+}
+
+/* ─── HALAL TOGGLE ─────────────────────────────────────────────── */
+function toggleHalal() {
+  halalMode = document.getElementById('halalToggle').checked;
+  var tip = document.getElementById('halalTip');
+  if(tip) tip.style.display = halalMode ? 'block' : 'none';
+  autoCalculate();
+}
+
+/* ─── FORMATTING ───────────────────────────────────────────────── */
+function fmt(n) {
+  var abs = Math.abs(n);
+  var s;
+  if(abs >= 1000000) s = (n/1000000).toFixed(1) + 'M';
+  else if(abs >= 1000) s = (n/1000).toFixed(1) + 'K';
+  else s = Math.round(n).toLocaleString();
+  return currSym + s;
+}
+function fmtFull(n) {
+  return currSym + ' ' + Math.abs(n).toLocaleString(undefined, {minimumFractionDigits:0, maximumFractionDigits:0});
+}
+
+/* ─── AUTO CALCULATE (on input) ────────────────────────────────── */
+function autoCalculate() {
+  var income = parseFloat(document.getElementById('incomeInput').value) || 0;
+  var hasAny = false;
+  CATS.forEach(function(c){ if(parseFloat(document.getElementById('cat-'+c.id).value)||0) hasAny=true; });
+  if(income > 0 && hasAny) calculate();
+}
+
+/* ─── MAIN CALCULATE ───────────────────────────────────────────── */
+function calculate() {
+  var income = parseFloat(document.getElementById('incomeInput').value) || 0;
+  var catVals = {};
+  var totalExp = 0;
+  CATS.forEach(function(c){
+    var v = parseFloat(document.getElementById('cat-'+c.id).value) || 0;
+    catVals[c.id] = v;
+    totalExp += v;
+  });
+
+  if(income === 0 && totalExp === 0) {
+    document.getElementById('resultEmpty').style.display='block';
+    document.getElementById('resultFilled').style.display='none';
+    return;
+  }
+
+  var diff = income - totalExp;
+  var savingsAmt = catVals['savings'] || 0;
+
+  /* status bar */
+  var sb = document.getElementById('statusBar');
+  var lang = document.documentElement.getAttribute('data-lang') || 'en';
+  sb.className = 'status-bar ' + (diff > 0 ? 'status-surplus' : (diff < 0 ? 'status-deficit' : 'status-balanced'));
+
+  if(diff > 0) {
+    document.getElementById('statusLabel').innerHTML = '<span class="en">Monthly Surplus</span><span class="ar">الفائض الشهري</span>';
+    document.getElementById('statusAmount').textContent = fmtFull(diff);
+    document.getElementById('statusDesc').innerHTML = '<span class="en">You have money left over. Consider moving it to savings before it disappears.</span><span class="ar">لديك مبلغ متبقٍّ. فكر في نقله للادخار قبل أن يختفي.</span>';
+  } else if(diff < 0) {
+    document.getElementById('statusLabel').innerHTML = '<span class="en">Monthly Deficit</span><span class="ar">العجز الشهري</span>';
+    document.getElementById('statusAmount').textContent = '− ' + fmtFull(diff);
+    document.getElementById('statusDesc').innerHTML = '<span class="en">Expenses exceed income. Review the category breakdown to find where to cut.</span><span class="ar">النفقات تتجاوز الدخل. راجع تفصيل الفئات لمعرفة أين يمكن التخفيض.</span>';
+  } else {
+    document.getElementById('statusLabel').innerHTML = '<span class="en">Perfectly Balanced</span><span class="ar">ميزان مثالي</span>';
+    document.getElementById('statusAmount').textContent = fmtFull(0);
+    document.getElementById('statusDesc').innerHTML = '<span class="en">Income equals expenses. Add a savings line to create a buffer.</span><span class="ar">الدخل يساوي النفقات. أضف سطر ادخار لبناء احتياطي.</span>';
+  }
+
+  /* totals */
+  document.getElementById('totalIncome').textContent = income > 0 ? fmtFull(income) : ', ';
+  document.getElementById('totalExpenses').textContent = totalExp > 0 ? fmtFull(totalExp) : ', ';
+  document.getElementById('totalSaved').textContent = savingsAmt > 0 ? fmtFull(savingsAmt) : (diff > 0 ? fmtFull(diff) : ', ');
+
+  /* breakdown bars */
+  var bkd = document.getElementById('breakdownList');
+  bkd.innerHTML = '';
+  var base = income > 0 ? income : totalExp;
+  var activeCats = CATS.filter(function(c){ return catVals[c.id] > 0; });
+  /* sort descending */
+  activeCats.sort(function(a,b){ return catVals[b.id]-catVals[a.id]; });
+
+  activeCats.forEach(function(c) {
+    var v = catVals[c.id];
+    var pct = base > 0 ? Math.min(100, (v/base)*100) : 0;
+    var row = document.createElement('div');
+    row.className = 'bkd-row';
+    row.innerHTML =
+      '<span class="bkd-icon">' + c.icon + '</span>' +
+      '<span class="bkd-label"><span class="en">' + c.en.split(' ')[0] + '</span><span class="ar">' + c.ar.split(' ')[0] + '</span></span>' +
+      '<div class="bkd-bar-wrap"><div class="bkd-bar" style="width:' + pct.toFixed(1) + '%;background:' + c.color + '"></div></div>' +
+      '<span class="bkd-pct">' + pct.toFixed(0) + '%</span>';
+    bkd.appendChild(row);
+  });
+
+  /* 50/30/20 guide */
+  var ruleSection = document.getElementById('ruleSection');
+  var ruleTitle = document.getElementById('ruleTitle');
+  var ruleChips = document.getElementById('ruleChips');
+  if(income > 0) {
+    var needsCats = ['housing','food','utilities','health','transport'];
+    var wantsCats = ['entertainment','education'];
+    var savCats = ['savings','charity'];
+    var needsTotal = needsCats.reduce(function(s,k){return s+(catVals[k]||0);},0);
+    var wantsTotal = wantsCats.reduce(function(s,k){return s+(catVals[k]||0);},0);
+    var savTotal = savCats.reduce(function(s,k){return s+(catVals[k]||0);},0);
+    var np = Math.round((needsTotal/income)*100);
+    var wp = Math.round((wantsTotal/income)*100);
+    var sp = Math.round((savTotal/income)*100);
+
+    if(halalMode) {
+      ruleTitle.innerHTML = '<span class="en">Islamic Finance Guidance</span><span class="ar">إرشادات التمويل الإسلامي</span>';
+      ruleChips.innerHTML =
+        '<div class="rule-chip rule-chip-needs"><span class="en">Necessities ' + np + '% (target ≤50%)</span><span class="ar">الضروريات ' + np + '% (الهدف ≤50%)</span></div>' +
+        '<div class="rule-chip rule-chip-savings" style="background:rgba(42,154,152,.1);color:#2a9a98"><span class="en">Zakat + Savings ' + sp + '% (target ≥20%)</span><span class="ar">الزكاة + الادخار ' + sp + '% (الهدف ≥20%)</span></div>' +
+        '<div class="rule-chip" style="background:rgba(245,158,11,.1);color:#b45309"><span class="en">Lifestyle ' + wp + '%</span><span class="ar">أسلوب الحياة ' + wp + '%</span></div>';
+    } else {
+      ruleTitle.innerHTML = '<span class="en">50/30/20 Rule, Your Numbers</span><span class="ar">قاعدة 50/30/20, أرقامك</span>';
+      ruleChips.innerHTML =
+        '<div class="rule-chip rule-chip-needs"><span class="en">Needs ' + np + '% (target 50%)</span><span class="ar">الاحتياجات ' + np + '% (الهدف 50%)</span></div>' +
+        '<div class="rule-chip rule-chip-wants"><span class="en">Wants ' + wp + '% (target 30%)</span><span class="ar">الرغبات ' + wp + '% (الهدف 30%)</span></div>' +
+        '<div class="rule-chip rule-chip-savings"><span class="en">Savings ' + sp + '% (target 20%)</span><span class="ar">الادخار ' + sp + '% (الهدف 20%)</span></div>';
+    }
+    ruleSection.style.display = 'block';
+    /* re-apply lang */
+    applyLangVisibility();
+  } else {
+    ruleSection.style.display = 'none';
+  }
+
+  /* show results */
+  document.getElementById('resultEmpty').style.display = 'none';
+  document.getElementById('resultFilled').style.display = 'block';
+  applyLangVisibility();
+}
+
+/* ─── LANGUAGE ─────────────────────────────────────────────────── */
+function applyLangVisibility() {
+  var lang = document.documentElement.getAttribute('data-lang') || 'en';
+  document.querySelectorAll('.en').forEach(function(el){ el.style.display = lang==='ar' ? 'none' : ''; });
+  document.querySelectorAll('.ar').forEach(function(el){ el.style.display = lang==='en' ? 'none' : ''; });
+}
+
+function toggleLang() {
+  var h = document.documentElement;
+  var cur = h.getAttribute('data-lang') || 'en';
+  var next = cur === 'en' ? 'ar' : 'en';
+  h.setAttribute('data-lang', next);
+  h.setAttribute('lang', next);
+  h.setAttribute('dir', next === 'ar' ? 'rtl' : 'ltr');
+  localStorage.setItem('dfl-lang', next);
+  applyLangVisibility();
+}
+
+function toggleTheme() {
+  var h = document.documentElement;
+  var cur = h.getAttribute('data-theme') || 'light';
+  var next = cur === 'light' ? 'dark' : 'light';
+  h.setAttribute('data-theme', next);
+  localStorage.setItem('dfl-theme', next);
+}
+
+/* ─── INIT ─────────────────────────────────────────────────────── */
+document.addEventListener('DOMContentLoaded', function() {
+  buildCatList();
+  applyLangVisibility();
+});
+</script>
+
+  <!-- DFL CANONICAL FOOTER -->
+  <!-- ═══ UNIFIED FOOTER ══════════════════════════════════════ -->
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="../index.html" class="footer-logo" aria-label="DOTFORLIFE">
+          <img src="../logo1-footer.webp" alt="DOTFORLIFE" width="100" height="100" loading="lazy">
+        </a>
+        <p><span class="en">One calm place for your family's everyday needs. Free, always.</span><span class="ar">مكان هادئ واحد لاحتياجات عائلتك اليومية. مجاني دائماً.</span></p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4><span class="en">Life</span><span class="ar">الحياة</span></h4>
+          <ul>
+            <li><a href="../health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
+            <li><a href="../finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li>
+            <li><a href="../real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li>
+            <li><a href="../travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li>
+            <li><a href="../islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4><span class="en">Tools</span><span class="ar">الأدوات</span></h4>
+          <ul>
+            <li><a href="../tools/bmi-calculator.html"><span class="en">BMI Calculator</span><span class="ar">حاسبة BMI</span></a></li>
+            <li><a href="../tools/mortgage-calculator.html"><span class="en">Mortgage</span><span class="ar">التمويل</span></a></li>
+            <li><a href="../tools/zakat-calculator.html"><span class="en">Zakat</span><span class="ar">الزكاة</span></a></li>
+            <li><a href="../tools/hijri-converter.html"><span class="en">Hijri Date</span><span class="ar">التاريخ الهجري</span></a></li>
+            <li><a href="../library.html"><span class="en">All Tools</span><span class="ar">كل الأدوات</span></a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4><span class="en">Company</span><span class="ar">الشركة</span></h4>
+          <ul>
+            <li><a href="../about.html"><span class="en">About</span><span class="ar">عنّا</span></a></li>
+            <li><a href="../blog.html"><span class="en">blog</span><span class="ar">المدونة</span></a></li>
+            <li><a href="../contact.html"><span class="en">Contact</span><span class="ar">تواصل</span></a></li>
+            <li><a href="../privacy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a></li>
+            <li><a href="../privacy-policy.html"><span class="en">Privacy Policy</span><span class="ar">سياسة الخصوصية</span></a></li>
+            <li><a href="../terms.html"><span class="en">Terms</span><span class="ar">الشروط</span></a></li>
+            <li><a href="../editorial-standards.html"><span class="en">Editorial Standards</span><span class="ar">المعايير التحريرية</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <hr class="footer-divider">
+    <div class="footer-bottom">
+      <span>© 2026 DOTFORLIFE, <span class="en">Free for families, always.</span><span class="ar">مجاني للعائلات، دائماً.</span></span>
+      <div class="footer-bottom-links">
+        <a href="../privacy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a>
+        <a href="../privacy-policy.html"><span class="en">Privacy Policy</span><span class="ar">سياسة الخصوصية</span></a>
+        <a href="../terms.html"><span class="en">Terms</span><span class="ar">الشروط</span></a>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- ════════════════════════════════════════════════════════════ -->
+
+  <!-- DFL MOBILE NAV -->
+  
+<section class="dfl-related" aria-label="Related tools and guides">
+  <div class="container">
+    <div class="dfl-related-label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg> <span class="en">Continue Your Journey</span><span class="ar">أكمل رحلتك</span></div>
+    <h2 class="dfl-related-title"><span class="en">Related Finance Tools</span><span class="ar">أدوات المالية ذات الصلة</span></h2>
+    <p class="dfl-related-sub"><span class="en">Build your complete financial picture</span><span class="ar">ابنِ صورتك المالية الكاملة</span></p>
+    <div class="dfl-related-grid">
+      <a href="/tools/salary-calculator.html" class="dfl-rc">
+        <div class="dfl-rc-top"><span class="dfl-rc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></span><div><div class="dfl-rc-name en">Salary Calculator</div><div class="dfl-rc-name ar">حاسبة الراتب</div></div></div>
+        <div class="dfl-rc-desc en">Net salary after deductions</div><div class="dfl-rc-desc ar">الراتب الصافي بعد الاستقطاعات</div>
+        <div class="dfl-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
+      </a>
+      <a href="/tools/savings-goal.html" class="dfl-rc">
+        <div class="dfl-rc-top"><span class="dfl-rc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1"/></svg></span><div><div class="dfl-rc-name en">Savings Goal</div><div class="dfl-rc-name ar">هدف الادخار</div></div></div>
+        <div class="dfl-rc-desc en">Reach your savings milestones</div><div class="dfl-rc-desc ar">حقق أهدافك الادخارية</div>
+        <div class="dfl-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
+      </a>
+      <a href="/tools/mortgage-calculator.html" class="dfl-rc">
+        <div class="dfl-rc-top"><span class="dfl-rc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 4l9 5.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-5h4v5h4a1 1 0 0 0 1-1v-9"/></svg></span><div><div class="dfl-rc-name en">Mortgage Calculator</div><div class="dfl-rc-name ar">حاسبة التمويل</div></div></div>
+        <div class="dfl-rc-desc en">Monthly payment breakdown</div><div class="dfl-rc-desc ar">تفاصيل القسط الشهري</div>
+        <div class="dfl-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
+      </a>
+      <a href="/blog/gcc-family-budget-2025.html" class="dfl-rc guide">
+        <div class="dfl-rc-top"><span class="dfl-rc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/></svg></span><div><div class="dfl-rc-name en">GCC Family Budget Guide</div><div class="dfl-rc-name ar">دليل ميزانية الأسرة الخليجية</div></div></div>
+        <div class="dfl-rc-desc en">Smart budgeting for families</div><div class="dfl-rc-desc ar">تخطيط مالي ذكي للأسرة</div>
+        <div class="dfl-rc-cta"><span class="en">Read guide →</span><span class="ar">اقرأ الدليل ←</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+</main>
+
+  <script src="/tool-share.js" defer></script>
+<!-- ═══ UNIFIED MOBILE NAV ══════════════════════════════════ -->
+<nav class="dfl-mobile-nav" aria-label="Mobile navigation">
+  <a href="../index.html" class="dfl-mnav-item" aria-label="Home">
+    <svg viewBox="0 0 24 24"><polyline points="3 9 12 2 21 9"/><path d="M5 9v11a1 1 0 001 1h4v-6h4v6h4a1 1 0 001-1V9"/></svg>
+    <span class="en">Home</span><span class="ar">الرئيسية</span>
+  </a>
+  <a href="../health.html" class="dfl-mnav-item" aria-label="Health">
+    <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+    <span class="en">Health</span><span class="ar">الصحة</span>
+  </a>
+  <a href="../finance.html" class="dfl-mnav-item" aria-label="Finance">
+    <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+    <span class="en">Finance</span><span class="ar">المالية</span>
+  </a>
+  <a href="../islamic.html" class="dfl-mnav-item" aria-label="Islamic">
+    <svg viewBox="0 0 24 24"><path d="M21 10.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l2.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+    <span class="en">Islamic</span><span class="ar">الإسلامية</span>
+  </a>
+  <a href="../travel.html" class="dfl-mnav-item" aria-label="Travel">
+    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    <span class="en">Travel</span><span class="ar">السفر</span>
+  </a>
+</nav>
+
+<!-- SEO_PROFILE
+  page_type: page
+  cluster: finance
+  authority_score: 79
+  inbound_links: 37
+  outbound_links: 11
+  link_velocity: high
+  priority_indexing: true
+  content_depth: 37
+  word_count: 1859
+  canonical: https://www.dotforlife.com/tools/monthly-budget.html
+-->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1436107577087160" crossorigin="anonymous"></script>
+</body></html>
+</html>

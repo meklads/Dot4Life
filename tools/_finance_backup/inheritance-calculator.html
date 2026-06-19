@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light" data-lang="en">
+<head>
+  <script>
+(function(){
+  /* theme */
+  var tb=document.getElementById("theme-toggle");
+  if(tb)tb.addEventListener("click",function(){
+    var h=document.documentElement,t=h.getAttribute("data-theme")==="dark"?"light":"dark";
+    h.setAttribute("data-theme",t);localStorage.setItem("dfl-theme",t);
+  });
+  /* lang */
+  var lb=document.getElementById("lang-toggle");
+  if(lb)lb.addEventListener("click",function(){
+    var h=document.documentElement,l=h.getAttribute("data-lang")==="ar"?"en":"ar";
+    h.setAttribute("data-lang",l);h.setAttribute("lang",l);
+    h.setAttribute("dir",l==="ar"?"rtl":"ltr");localStorage.setItem("dfl-lang",l);
+  });
+  /* scroll shadow */
+  var nb=document.getElementById("navbar");
+  if(nb)window.addEventListener("scroll",function(){nb.classList.toggle("scrolled",window.scrollY>10);},{passive:true});
+  /* reveal */
+  if("IntersectionObserver" in window){
+    document.addEventListener("DOMContentLoaded",function(){
+      var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add("visible");});},{threshold:0.1});
+      document.querySelectorAll(".tool-rv, .reveal").forEach(function(el){io.observe(el);});
+    });
+  } else {
+    document.addEventListener("DOMContentLoaded",function(){
+      document.querySelectorAll(".tool-rv, .reveal").forEach(function(el){el.classList.add("visible");});
+    });
+  }
+})();
+</script>
+  <meta charset="UTF-8" />
+  
+  <script>(function(){var p=new URLSearchParams(location.search),gd=(function(){try{var z=(Intl.DateTimeFormat().resolvedOptions().timeZone||"");return /Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test(z)?"ar":"en";}catch(e){return "ar";}})(),l=p.get("lang")||localStorage.getItem("dfl-lang")||gd,t=p.get("theme")||localStorage.getItem("dfl-theme")||"light",h=document.documentElement;h.setAttribute("data-theme",t);h.setAttribute("data-lang",l);h.setAttribute("lang",l);h.setAttribute("dir",l==="ar"?"rtl":"ltr");if(p.get("lang"))localStorage.setItem("dfl-lang",l);if(p.get("theme"))localStorage.setItem("dfl-theme",t);
+  /* hamburger menu */
+  (function(){
+    var hb = document.getElementById('hamburger-btn');
+    var dd = document.getElementById('mobile-dropdown');
+    if (!hb || !dd) return;
+    function toggle(e) {
+      e.stopPropagation();
+      var open = dd.classList.toggle('open');
+      hb.classList.toggle('open', open);
+      hb.setAttribute('aria-expanded', open);
+      document.body.classList.toggle('menu-open', open);
+    }
+    function closeM() {
+      dd.classList.remove('open');
+      hb.classList.remove('open');
+      hb.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('menu-open');
+    }
+    hb.addEventListener('click', toggle);
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeM(); });
+    dd.addEventListener('click', function(e){ if(e.target===dd) closeM(); });
+  })();
+})()</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Islamic Inheritance Calculator (Mirath), Calculate inheritance shares according to Islamic law (Sharia). Bilingual Arabic & English tool for GCC families." />
+  <link rel="canonical" href="https://www.dotforlife.com/tools/inheritance-calculator" />
+  <meta property="og:site_name" content="DOTFORLIFE" />
+  <meta property="og:title" content="Islamic Inheritance Calculator, DOTFORLIFE | حاسبة الميراث الإسلامي" />
+  <meta property="og:description" content="Calculate Islamic inheritance (Mirath) shares for heirs according to Quran and Sunnah." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.dotforlife.com/tools/inheritance-calculator" />
+  <meta http-equiv="x-dns-prefetch-control" content="on" />
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+  <link rel="dns-prefetch" href="https://images.unsplash.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://www.googletagmanager.com" />
+  <title>Islamic Inheritance Calculator, DOTFORLIFE | حاسبة الميراث الإسلامي</title>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "@id": "https://dotforlife.com/tools/inheritance-calculator",
+  "name": "Islamic Inheritance Calculator, DOTFORLIFE",
+  "url": "https://dotforlife.com/tools/inheritance-calculator",
+  "description": "Calculate Islamic inheritance shares (Mirath/Faraid) according to Quran and Sunnah.",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Almarai:wght@300;400;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Almarai:wght@300;400;700;800&display=swap" /></noscript>
+  <link rel="stylesheet" href="/styles/global.css?v=20260618f"/>
+	<link rel="stylesheet" href="/styles/tools-shared.css?v=20260608a">
+	<link rel="stylesheet" href="/styles/pages/tools_inheritance-calculator.css?v=20260618f">
+
+  <!-- DFL CANONICAL SYSTEM CSS -->
+  
+<script src="/scripts/global.js" defer></script>
+<style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ── SITE FOOTER ─────────────────────────────────────────── */
+.site-footer{background:var(--navy,#032a28);color:rgba(255,255,255,.7);padding:clamp(3rem,6vw,5rem) 0 0;}
+.footer-inner{max-width:1280px;margin:0 auto;padding:0 clamp(16px,4vw,48px);}
+.footer-top{display:flex;gap:3rem;margin-bottom:3rem;flex-wrap:wrap;}
+.footer-brand{flex:0 0 220px;}
+.footer-brand p{font-size:.82rem;line-height:1.65;color:rgba(255,255,255,.45);margin-top:.75rem;}
+[data-lang="ar"] .footer-brand p{font-family:var(--font-ar);}
+.footer-logo img{height:100px;width:auto;display:block;}
+.footer-cols{flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;}
+.footer-col h4{font-size:.68rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.85);margin-bottom:1rem;}
+[data-lang="ar"] .footer-col h4{font-family:var(--font-ar);letter-spacing:0;}
+.footer-col ul{list-style:none;}
+.footer-col ul li{margin-bottom:.55rem;}
+.footer-col ul li a{font-size:.83rem;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s;}
+.footer-col ul li a:hover{color:var(--gold);}
+[data-lang="ar"] .footer-col ul li a{font-family:var(--font-ar);}
+.footer-divider{border:none;border-top:1px solid rgba(255,255,255,.08);margin:0;}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.25rem 0 calc(1.25rem + 60px);font-size:.78rem;color:rgba(255,255,255,.35);flex-wrap:wrap;}
+.footer-bottom-links{display:flex;gap:1.25rem;}
+.footer-bottom-links a,.footer-bottom a{color:rgba(255,255,255,.35);text-decoration:none;font-size:.78rem;transition:color .2s;}
+.footer-bottom-links a:hover,.footer-bottom a:hover{color:var(--gold);}
+[data-lang="ar"] .footer-bottom{font-family:var(--font-ar);}
+[data-lang="ar"] .footer-top{direction:rtl;}
+@media(max-width:860px){.footer-top{flex-direction:column;gap:2rem;}.footer-brand{flex:none;}.footer-cols{grid-template-columns:1fr 1fr;}}
+@media(max-width:500px){.footer-cols{grid-template-columns:1fr;}.footer-bottom{flex-direction:column;text-align:center;}}
+
+</style>
+  <link rel="alternate" hreflang="ar" href="https://www.dotforlife.com/tools/inheritance-calculator?lang=ar" />
+  <link rel="alternate" hreflang="en" href="https://www.dotforlife.com/tools/inheritance-calculator?lang=en" />
+  <link rel="alternate" hreflang="x-default" href="https://www.dotforlife.com/tools/inheritance-calculator" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3G1XPV4F0G"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3G1XPV4F0G');
+</script>
+
+  <meta property="og:image" content="https://www.dotforlife.com/og/islamic.jpg"/>
+  <meta name="twitter:image" content="https://www.dotforlife.com/og/islamic.jpg"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Islamic Inheritance Calculator, حاسبة المواريث",
+  "url": "https://www.dotforlife.com/tools/inheritance-calculator",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "All",
+  "browserRequirements": "Requires JavaScript",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "description": "Islamic Inheritance Calculator (Mirath), Calculate inheritance shares according to Islamic law (Sharia). Bilingual Arabic & English tool for GCC families."
+}</script>
+</head>
+<body class="category-page has-subnav">
+  <!-- DFL CANONICAL NAVBAR -->
+  <!-- ═══ UNIFIED HEADER ══════════════════════════════════════ -->
+<nav id="navbar" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo" aria-label="DOTFORLIFE Home">
+      <img src="../logo1-footer.webp" alt="DOTFORLIFE" width="100" height="100" style="height:100px;width:auto;object-fit:contain;" width="100" height="100" loading="lazy">
+    </a>
+    <ul class="nav-links">
+      <li><a href="../health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
+      <li><a href="../finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li>
+      <li><a href="../real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li>
+      <li><a href="../travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li>
+      <li><a href="../islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li>
+      <li><a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a></li>
+      <li><a href="../archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a></li>
+      <li><a href="/blog.html"><span class="en">blog</span><span class="ar">المدونة</span></a></li>
+      <li><a href="../library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a></li>
+    </ul>
+    <div class="nav-controls">
+      <button class="nav-btn" id="lang-toggle" aria-label="Switch language"><span class="en">عربي</span><span class="ar">English</span></button>
+      <button class="nav-btn" id="theme-toggle" aria-label="Toggle theme"><svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
+      <button class="hamburger" id="hamburger-btn" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+<!-- ═══════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════ -->
+
+
+<!-- NAVBAR -->
+
+<!-- HERO -->
+  <div class="tool-hr-wrap">
+
+    <section class="tool-hr" aria-labelledby="tool-title">
+      <div class="tool-hr-in">
+        <div class="tool-hr-bd">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          Tool
+        </div>
+        <h1 class="tool-title">
+      <span class="en">Islamic <span class="title-accent">Inheritance</span> Calculator</span>
+      <span class="ar">حاسبة <span class="title-accent">الميراث الإسلامي</span></span>
+    </h1>
+        <p>
+      <span class="en">Calculate inheritance shares (Faraid/Mirath) according to Islamic law. Based on Quran, Sunnah, and scholarly consensus.</span>
+      <span class="ar">احسب حصص الميراث (الفرائض) وفق أحكام الشريعة الإسلامية. مستند إلى القرآن والسنة وإجماع العلماء.</span>
+    </p>
+        
+      </div>
+    </section>
+<div id="sub-nav">
+  <div class="sub-nav-inner">
+    <a href="/tools/prayer-times.html"><span class="en">Prayer Times</span><span class="ar">أوقات الصلاة</span></a>
+    <a href="/tools/qibla.html"><span class="en">Qibla</span><span class="ar">القبلة</span></a>
+    <a href="/tools/hijri-converter.html"><span class="en">Hijri</span><span class="ar">الهجري</span></a>
+    <a href="/tools/inheritance-calculator.html" class="active"><span class="en">Inheritance</span><span class="ar">الميراث</span></a>
+    <a href="/tools/zakat-calculator.html"><span class="en">Zakat</span><span class="ar">الزكاة</span></a>
+    <a href="/guides/zakat-complete-guide.html"><span class="en">Zakat Guide</span><span class="ar">دليل الزكاة</span></a>
+  </div>
+</div>
+  </div><main class="tool-mn">
+
+  <!-- IN-GRID: Info Cards -->
+  <div class="in-grid tool-rv tool-rv-1">
+    <div class="in-gc">
+      <div class="in-gc-icon">⚖️</div>
+      <div class="in-gc-text">
+        <div class="in-gc-label"><span class="en">Quran-Based</span><span class="ar">قائم على القرآن</span></div>
+        <div class="in-gc-value"><span class="en">An-Nisa 4:11-12</span><span class="ar">النساء 4:11-12</span></div>
+      </div>
+    </div>
+    <div class="in-gc">
+      <div class="in-gc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.2h7.6l-6 4.8 2.4 7.2-6-4.8-6 4.8 2.4-7.2-6-4.8h7.6z"/></svg></div>
+      <div class="in-gc-text">
+        <div class="in-gc-label"><span class="en">Sunni Fiqh</span><span class="ar">فقه سني</span></div>
+        <div class="in-gc-value"><span class="en">Mainstream</span><span class="ar">الجمهور</span></div>
+      </div>
+    </div>
+    <div class="in-gc">
+      <div class="in-gc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+      <div class="in-gc-text">
+        <div class="in-gc-label"><span class="en">Auto Rules</span><span class="ar">قواعد تلقائية</span></div>
+        <div class="in-gc-value"><span class="en">Hijb · Awl · Asaba</span><span class="ar">حجب · عول · عصبة</span></div>
+      </div>
+    </div>
+    <div class="in-gc">
+      <div class="in-gc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+      <div class="in-gc-text">
+        <div class="in-gc-label"><span class="en">Multiple Currencies</span><span class="ar">عملات متعددة</span></div>
+        <div class="in-gc-value">SAR · AED · KWD · USD</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- IC-CARD: Calculator Card -->
+  <div class="ic-card tool-cd tool-rv tool-rv-2">
+    <div class="ic-hdr">
+      <h2>
+        <span class="en"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Islamic Inheritance Calculator</span>
+        <span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> حاسبة الميراث الإسلامية</span>
+      </h2>
+      <p><span class="en">Enter the net estate value and select heirs to calculate Islamic inheritance distribution</span><span class="ar">أدخل صافي قيمة التركة واختر الورثة لحساب توزيع الميراث وفق الشريعة</span></p>
+    </div>
+    <div class="ic-body">
+
+      <!-- Estate Value -->
+      <div class="ic-estate">
+        <div class="ic-estate-label">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <span class="en">Net Estate Value</span><span class="ar">صافي قيمة التركة</span>
+        </div>
+        <p class="ic-estate-hint"><span class="en">After debts, funeral costs & bequests (max ⅓)</span><span class="ar">بعد خصم الديون ومصاريف الجنازة والوصية (بحد أقصى الثلث)</span></p>
+        <div class="ic-estate-row">
+          <div class="ic-estate-inp">
+            <input type="number" class="ic-inp" id="estate-val" placeholder="1,000,000" value="1000000" min="0">
+          </div>
+          <div class="ic-estate-cur">
+            <select id="estate-currency" class="ic-sel">
+              <option value="SAR">SAR</option>
+              <option value="AED">AED</option>
+              <option value="KWD">KWD</option>
+              <option value="QAR">QAR</option>
+              <option value="OMR">OMR</option>
+              <option value="BHD">BHD</option>
+              <option value="USD">USD</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Heir Sections -->
+      <div class="ic-heirs">
+
+        <!-- Spouse -->
+        <div class="ic-heir-section">
+          <div class="ic-heir-section-title"><span class="en">Spouse</span><span class="ar">الزوج / الزوجة</span></div>
+          <div class="ic-heir-grid">
+            <div class="ic-heir">
+              <div class="ic-heir-info">
+                <div class="ic-heir-name"><span class="en">Husband</span><span class="ar">الزوج</span></div>
+                <div class="ic-heir-hint"><span class="en">¼ or ½ depending on children</span><span class="ar">الربع أو النصف حسب الأبناء</span></div>
+              </div>
+              <button class="ic-heir-toggle" id="toggle-husband" onclick="toggleHeir('husband')"></button>
+            </div>
+            <div class="ic-heir">
+              <div class="ic-heir-info">
+                <div class="ic-heir-name"><span class="en">Wife (Wives)</span><span class="ar">الزوجة (الزوجات)</span></div>
+                <div class="ic-heir-hint"><span class="en">⅛ or ¼ depending on children</span><span class="ar">الثمن أو الربع حسب الأبناء</span></div>
+              </div>
+              <input type="number" class="ic-heir-count" id="count-wife" value="0" min="0" max="4" onchange="syncCount('wife')">
+            </div>
+          </div>
+        </div>
+
+        <!-- Children -->
+        <div class="ic-heir-section">
+          <div class="ic-heir-section-title"><span class="en">Children</span><span class="ar">الأبناء</span></div>
+          <div class="ic-heir-grid">
+            <div class="ic-heir">
+              <div class="ic-heir-info">
+                <div class="ic-heir-name"><span class="en">Sons</span><span class="ar">أبناء ذكور</span></div>
+                <div class="ic-heir-hint"><span class="en">Asaba, each son = 2× daughter's share</span><span class="ar">عصبة، الابن ضعف البنت</span></div>
+              </div>
+              <input type="number" class="ic-heir-count" id="count-son" value="0" min="0" onchange="syncCount('son')">
+            </div>
+            <div class="ic-heir">
+              <div class="ic-heir-info">
+                <div class="ic-heir-name"><span class="en">Daughters</span><span class="ar">بنات</span></div>
+                <div class="ic-heir-hint"><span class="en">½ (one), ⅔ (two+) if no sons</span><span class="ar">النصف (واحدة) والثلثان (اثنتان+) إن لم يكن ابن</span></div>
+              </div>
+              <input type="number" class="ic-heir-count" id="count-daughter" value="0" min="0" onchange="syncCount('daughter')">
+            </div>
+          </div>
+        </div>
+
+        <!-- Parents -->
+        <div class="ic-heir-section">
+          <div class="ic-heir-section-title"><span class="en">Parents</span><span class="ar">الوالدان</span></div>
+          <div class="ic-heir-grid">
+            <div class="ic-heir">
+              <div class="ic-heir-info">
+                <div class="ic-heir-name"><span class="en">Father</span><span class="ar">الأب</span></div>
+                <div class="ic-heir-hint"><span class="en">⅙ (if children), or Asaba</span><span class="ar">السدس (مع الأبناء) أو العصبة</span></div>
+              </div>
+              <button class="ic-heir-toggle" id="toggle-father" onclick="toggleHeir('father')"></button>
+            </div>
+            <div class="ic-heir">
+              <div class="ic-heir-info">
+                <div class="ic-heir-name"><span class="en">Mother</span><span class="ar">الأم</span></div>
+                <div class="ic-heir-hint"><span class="en">⅙ (if children/siblings), ⅓ otherwise</span><span class="ar">السدس (مع الأبناء/الإخوة) أو الثلث</span></div>
+              </div>
+              <button class="ic-heir-toggle" id="toggle-mother" onclick="toggleHeir('mother')"></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Grandparents -->
+        <div class="ic-heir-section">
+          <div class="ic-heir-section-title"><span class="en">Grandparents (Paternal)</span><span class="ar">الأجداد (من جهة الأب)</span></div>
+          <div class="ic-heir-grid">
+            <div class="ic-heir">
+              <div class="ic-heir-info">
+                <div class="ic-heir-name"><span class="en">Grandfather</span><span class="ar">الجد (أب الأب)</span></div>
+                <div class="ic-heir-hint"><span class="en">Like father if no father</span><span class="ar">كالأب عند عدمه</span></div>
+              </div>
+              <button class="ic-heir-toggle" id="toggle-grandfather" onclick="toggleHeir('grandfather')"></button>
+            </div>
+            <div class="ic-heir">
+              <div class="ic-heir-info">
+                <div class="ic-heir-name"><span class="en">Grandmother</span><span class="ar">الجدة (أم الأم)</span></div>
+                <div class="ic-heir-hint"><span class="en">⅙ if no mother</span><span class="ar">السدس عند عدم الأم</span></div>
+              </div>
+              <button class="ic-heir-toggle" id="toggle-grandmother" onclick="toggleHeir('grandmother')"></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Siblings -->
+        <div class="ic-heir-section">
+          <div class="ic-heir-section-title"><span class="en">Full Siblings</span><span class="ar">الإخوة الأشقاء</span></div>
+          <div class="ic-heir-grid">
+            <div class="ic-heir">
+              <div class="ic-heir-info">
+                <div class="ic-heir-name"><span class="en">Full Brothers</span><span class="ar">إخوة أشقاء</span></div>
+                <div class="ic-heir-hint"><span class="en">Asaba, if no children/father</span><span class="ar">عصبة عند عدم الأبناء والأب</span></div>
+              </div>
+              <input type="number" class="ic-heir-count" id="count-fullbrother" value="0" min="0" onchange="syncCount('fullbrother')">
+            </div>
+            <div class="ic-heir">
+              <div class="ic-heir-info">
+                <div class="ic-heir-name"><span class="en">Full Sisters</span><span class="ar">أخوات شقيقات</span></div>
+                <div class="ic-heir-hint"><span class="en">½ (one), ⅔ (two+) if no children</span><span class="ar">النصف (واحدة) والثلثان (اثنتان+) عند عدم الأبناء</span></div>
+              </div>
+              <input type="number" class="ic-heir-count" id="count-fullsister" value="0" min="0" onchange="syncCount('fullsister')">
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="ic-actions">
+        <button class="tool-btn" onclick="calculate()" style="margin-top:0">
+          <span class="en">⚖️ Calculate Inheritance</span>
+          <span class="ar">⚖️ احسب الميراث</span>
+        </button>
+        <button class="ic-reset-btn" onclick="resetForm()">
+          <span class="en">↺ Reset</span>
+          <span class="ar">↺ إعادة تعيين</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- IR-CARD: Results -->
+  <div class="ir-card tool-rv">
+    <div class="ir-hdr">
+      <h3>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span class="en">Inheritance Distribution</span><span class="ar">توزيع الميراث</span>
+      </h3>
+      <span class="ir-badge"><span class="en">⚖️ Faraid</span><span class="ar">⚖️ الفرائض</span></span>
+    </div>
+    <div class="ir-sub"><span class="en">Islamic Faraid calculation result</span><span class="ar">نتيجة حساب الفرائض الإسلامية</span></div>
+    <div id="results-body">
+      <div class="ir-empty">
+        <div class="ir-empty-icon">⚖️</div>
+        <div class="ir-empty-title"><span class="en">No calculation yet</span><span class="ar">لا يوجد حساب بعد</span></div>
+        <div class="ir-empty-sub"><span class="en">Select heirs and click Calculate</span><span class="ar">اختر الورثة ثم انقر احسب</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- IM-CARD: Method Note / Disclaimer -->
+  <div class="im-card tool-rv">
+    <div class="im-icon">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+    </div>
+    <div class="im-content">
+      <h4><span class="en">How it works</span><span class="ar">كيف يعمل</span></h4>
+      <p><span class="en">The calculator applies Quran verses (An-Nisa 4:11-12), Sunnah rules, and Ijma (scholarly consensus). It handles Hijb (blocking), Asaba (residuary), and Awl (increase) automatically.</span>
+      <span class="ar">تطبّق الآلة الحاسبة آيات القرآن الكريم (النساء 11-12) وأحكام السنة والإجماع. وتعالج الحجب والعصبة والعول تلقائياً.</span></p>
+      <p style="margin-top:8px;padding:8px 12px;background:rgba(217,119,6,.08);border-radius:8px;font-size:.75rem">
+        <strong><span class="en">⚠️ Disclaimer:</span><span class="ar">⚠️ تنبيه:</span></strong>
+        <span class="en">This tool provides general guidance based on mainstream Sunni Fiqh. Complex cases require a qualified Islamic scholar (Qadi). Results are for educational purposes only.</span>
+        <span class="ar">هذه الأداة توجيه عام وفق الفقه السني. الحالات المعقدة تستلزم استشارة قاضٍ شرعي مؤهل. النتائج لأغراض تعليمية فقط.</span>
+      </p>
+    </div>
+  </div>
+
+  <!-- IC-FAQ -->
+  <div class="ic-faq tool-rv">
+    <div class="ic-faq-label"><span class="en">FAQ</span><span class="ar">أسئلة شائعة</span></div>
+    <div class="ic-faq-title"><span class="en">Frequently Asked Questions</span><span class="ar">الأسئلة المتكررة</span></div>
+
+    <div class="ic-faq-item">
+      <div class="ic-faq-q" onclick="toggleFAQ(this)"><span><span class="en">How is inheritance distributed in Islam?</span><span class="ar">كيف يتم توزيع الميراث في الإسلام؟</span></span><span class="ic-faq-arrow">▼</span></div>
+      <div class="ic-faq-a"><p><span class="en">Islamic inheritance (Faraid) distributes the estate according to fixed shares prescribed in the Quran (Surah An-Nisa 4:11-12). Shares depend on the relationship to the deceased — spouses, children, parents, and siblings each receive specific portions based on the family composition.</span><span class="ar">يعتمد توزيع الميراث (الفرائض) على أنصبة محددة في القرآن (سورة النساء 4:11-12). تختلف الأنصبة حسب صلة الورثة بالميت — الأزواج والأبناء والوالدين والإخوة.</span></p></div>
+    </div>
+    <div class="ic-faq-item">
+      <div class="ic-faq-q" onclick="toggleFAQ(this)"><span><span class="en">What is a 'Asaba' in inheritance?</span><span class="ar">ما هي العصبة في الميراث؟</span></span><span class="ic-faq-arrow">▼</span></div>
+      <div class="ic-faq-a"><p><span class="en">Asaba (residuary heirs) are those who receive whatever remains after the fixed-share heirs take their portions. Male children and male agnate relatives typically inherit as Asaba. In the absence of fixed-share heirs, the Asaba inherits the entire estate.</span><span class="ar">العصبة هم الورثة الذين يرثون الباقي بعد أصحاب الفروض. الأبناء الذكور والعصبات من الأقارب يرثون بالتعصيب. في حال عدم وجود أصحاب فروض، تأخذ العصبة كل التركة.</span></p></div>
+    </div>
+    <div class="ic-faq-item">
+      <div class="ic-faq-q" onclick="toggleFAQ(this)"><span><span class="en">Can a son inherit more than a daughter?</span><span class="ar">هل يرث الابن أكثر من البنت؟</span></span><span class="ic-faq-arrow">▼</span></div>
+      <div class="ic-faq-a"><p><span class="en">Yes, generally a son inherits twice the share of a daughter when they are both direct children of the deceased. This is based on Quranic ruling (An-Nisa 4:11). However, this is not absolute — in certain configurations where daughters inherit as fixed-share heirs and sons as residuary, the ratio may differ.</span><span class="ar">نعم، عموماً يرث الابن ضعف نصيب البنت عندما يكونان أولاداً مباشرين للمتوفى. هذا مستند إلى حكم قرآني (النساء 4:11). لكن هذا ليس مطلقاً في جميع الحالات.</span></p></div>
+    </div>
+    <div class="ic-faq-item">
+      <div class="ic-faq-q" onclick="toggleFAQ(this)"><span><span class="en">What is Awl and how does it work?</span><span class="ar">ما هو العول وكيف يعمل؟</span></span><span class="ic-faq-arrow">▼</span></div>
+      <div class="ic-faq-a"><p><span class="en">Awl (proportional reduction) occurs when the sum of fixed shares exceeds the total estate. In this case, all shares are reduced proportionally so they total 100%. This concept, established by Caliph Umar ibn Al-Khattab (RA), ensures fairness among all heirs when the estate is insufficient to cover all prescribed shares.</span><span class="ar">العول يحدث عندما يتجاوز مجموع الفروض كامل التركة. في هذه الحالة، تُخفّض جميع الحصص بنسبة متساوية ليصبح المجموع 100%. هذا المفهوم وضع في عهد الخليفة عمر بن الخطاب رضي الله عنه لضمان العدل بين الورثة.</span></p></div>
+    </div>
+  </div>
+
+  <!-- IC-AFFILIATE -->
+  <div class="ic-affiliate tool-rv">
+    <div class="ic-aff-badge">Partner</div>
+    <div class="ic-aff-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M9 22v-4h6v4"/></svg></div>
+    <div class="ic-aff-content">
+      <h4><span class="en">Need Professional Inheritance Planning?</span><span class="ar">تحتاج تخطيطاً احترافياً للميراث؟</span></h4>
+      <p><span class="en">Connect with Sharia-certified legal advisors for complex estate cases, wills, and inheritance documentation in Saudi Arabia and the GCC.</span><span class="ar">تواصل مع مستشارين قانونيين معتمدين شرعاً لحالات التركة المعقدة والوصايا وتوثيق الميراث في السعودية والخليج.</span></p>
+    </div>
+    <a href="#" class="ic-aff-btn" onclick="dflTrack&&dflTrack('affiliate_click',{partner:'inheritance_advisor',page:document.title})">
+      <span class="en">Find Advisor →</span><span class="ar">ابحث عن مستشار ←</span>
+    </a>
+  </div>
+
+  <!-- IC-SPONSOR -->
+  <div class="ic-sponsor tool-rv">
+    <div class="ic-sponsor-label"><span class="en">Sponsored</span><span class="ar">محتوى مدعوم</span></div>
+    <h3><span class="en">Reach families planning their Islamic financial legacy</span><span class="ar">تواصل مع العائلات التي تخطط لتراثها المالي الإسلامي</span></h3>
+    <p><span class="en">DOTFORLIFE connects brands with engaged users during faith-based family decisions — from inheritance to zakat to halal investing.</span><span class="ar">تربط دوت فور لايف العلامات التجارية بمستخدمين متفاعلين خلال القرارات العائلية الإسلامية.</span></p>
+    <a href="../contact.html" class="ic-sponsor-cta" onclick="dflTrack&&dflTrack('sponsor_cta_click',{page:document.title})">
+      <span class="en">Become a Partner →</span><span class="ar">كن شريكاً ←</span>
+    </a>
+  </div>
+
+  <!-- IO-SECTION: Related Tools -->
+  <div class="io-section tool-rv">
+    <div class="io-section-label">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+      <span class="en">Continue Your Journey</span><span class="ar">أكمل رحلتك</span>
+    </div>
+    <h3 class="io-section-title"><span class="en">Related Islamic Finance Tools</span><span class="ar">أدوات المالية الإسلامية</span></h3>
+    <p class="io-section-sub"><span class="en">Complete your Islamic financial planning</span><span class="ar">أكمل تخطيطك المالي الإسلامي</span></p>
+    <div class="io-section-grid">
+      <a href="/tools/zakat-calculator.html" class="io-card" aria-label="Zakat Calculator">
+        <div class="io-card-top">
+          <span class="io-card-icon">☪️</span>
+          <div>
+            <div class="io-card-name en">Zakat Calculator</div>
+            <div class="io-card-name ar">حاسبة الزكاة</div>
+          </div>
+        </div>
+        <div class="io-card-desc en">Annual Zakat on all asset types</div>
+        <div class="io-card-desc ar">زكاة جميع أنواع المال</div>
+        <div class="io-card-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
+      </a>
+      <a href="/tools/hijri-converter.html" class="io-card" aria-label="Hijri Date Converter">
+        <div class="io-card-top">
+          <span class="io-card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
+          <div>
+            <div class="io-card-name en">Hijri Date Converter</div>
+            <div class="io-card-name ar">محول التاريخ الهجري</div>
+          </div>
+        </div>
+        <div class="io-card-desc en">Convert between Hijri and Gregorian</div>
+        <div class="io-card-desc ar">تحويل بين الهجري والميلادي</div>
+        <div class="io-card-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
+      </a>
+      <a href="/tools/prayer-times.html" class="io-card" aria-label="Prayer Times">
+        <div class="io-card-top">
+          <span class="io-card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l2.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></span>
+          <div>
+            <div class="io-card-name en">Prayer Times</div>
+            <div class="io-card-name ar">أوقات الصلاة</div>
+          </div>
+        </div>
+        <div class="io-card-desc en">Accurate prayer times for any city</div>
+        <div class="io-card-desc ar">أوقات صلاة دقيقة لأي مدينة</div>
+        <div class="io-card-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
+      </a>
+      <a href="/guides/zakat-complete-guide.html" class="io-card io-card-guide" aria-label="Zakat Guide">
+        <div class="io-card-top">
+          <span class="io-card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/></svg></span>
+          <div>
+            <div class="io-card-name en">Zakat Guide</div>
+            <div class="io-card-name ar">دليل الزكاة</div>
+          </div>
+        </div>
+        <div class="io-card-desc en">Complete Zakat calculation guide</div>
+        <div class="io-card-desc ar">الدليل الشامل لحساب الزكاة</div>
+        <div class="io-card-cta"><span class="en">Read guide →</span><span class="ar">اقرأ الدليل ←</span></div>
+      </a>
+    </div>
+  </div>
+
+</main><!-- ═══ UNIFIED FOOTER ══════════════════════════════════════ -->
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="../index.html" class="footer-logo" aria-label="DOTFORLIFE">
+          <img src="../logo1-footer.webp" alt="DOTFORLIFE" width="100" height="100" loading="lazy">
+        </a>
+        <p><span class="en">One calm place for your family's everyday needs. Free, always.</span><span class="ar">مكان هادئ واحد لاحتياجات عائلتك اليومية. مجاني دائماً.</span></p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4><span class="en">Life</span><span class="ar">الحياة</span></h4>
+          <ul>
+            <li><a href="../health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
+            <li><a href="../finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li>
+            <li><a href="../real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li>
+            <li><a href="../travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li>
+            <li><a href="../islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4><span class="en">Tools</span><span class="ar">الأدوات</span></h4>
+          <ul>
+            <li><a href="../tools/bmi-calculator.html"><span class="en">BMI Calculator</span><span class="ar">حاسبة BMI</span></a></li>
+            <li><a href="../tools/mortgage-calculator.html"><span class="en">Mortgage</span><span class="ar">التمويل</span></a></li>
+            <li><a href="../tools/zakat-calculator.html"><span class="en">Zakat</span><span class="ar">الزكاة</span></a></li>
+            <li><a href="../tools/hijri-converter.html"><span class="en">Hijri Date</span><span class="ar">التاريخ الهجري</span></a></li>
+            <li><a href="../library.html"><span class="en">All Tools</span><span class="ar">كل الأدوات</span></a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4><span class="en">Company</span><span class="ar">الشركة</span></h4>
+          <ul>
+            <li><a href="../about.html"><span class="en">About</span><span class="ar">عنّا</span></a></li>
+            <li><a href="../blog.html"><span class="en">blog</span><span class="ar">المدونة</span></a></li>
+            <li><a href="../contact.html"><span class="en">Contact</span><span class="ar">تواصل</span></a></li>
+            <li><a href="../privacy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a></li>
+            <li><a href="../privacy-policy.html"><span class="en">Privacy Policy</span><span class="ar">سياسة الخصوصية</span></a></li>
+            <li><a href="../terms.html"><span class="en">Terms</span><span class="ar">الشروط</span></a></li>
+            <li><a href="../editorial-standards.html"><span class="en">Editorial Standards</span><span class="ar">المعايير التحريرية</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <hr class="footer-divider">
+    <div class="footer-bottom">
+      <span>© 2026 DOTFORLIFE, <span class="en">Free for families, always.</span><span class="ar">مجاني للعائلات، دائماً.</span></span>
+      <div class="footer-bottom-links">
+        <a href="../privacy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a>
+        <a href="../privacy-policy.html"><span class="en">Privacy Policy</span><span class="ar">سياسة الخصوصية</span></a>
+        <a href="../terms.html"><span class="en">Terms</span><span class="ar">الشروط</span></a>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- ════════════════════════════════════════════════════════════ -->
+
+<script>
+// ═══════════════════════════════════════════════
+// HEIR STATE
+// ═══════════════════════════════════════════════
+var heirs = {
+  husband:     false,
+  wife:        0,
+  son:         0,
+  daughter:    0,
+  father:      false,
+  mother:      false,
+  grandfather: false,
+  grandmother: false,
+  fullbrother: 0,
+  fullsister:  0,
+};
+
+// ═══════════════════════════════════════════════
+// TOGGLE / SYNC
+// ═══════════════════════════════════════════════
+function toggleHeir(key) {
+  heirs[key] = !heirs[key];
+  var btn = document.getElementById('toggle-' + key);
+  if (btn) btn.classList.toggle('on', heirs[key]);
+}
+function syncCount(key) {
+  var el = document.getElementById('count-' + key);
+  heirs[key] = Math.max(0, parseInt(el.value) || 0);
+  el.value = heirs[key];
+}
+
+function resetForm() {
+  Object.keys(heirs).forEach(function(k) {
+    heirs[k] = (typeof heirs[k] === 'boolean') ? false : 0;
+    var btn = document.getElementById('toggle-' + k);
+    if (btn) btn.classList.remove('on');
+    var cnt = document.getElementById('count-' + k);
+    if (cnt) cnt.value = 0;
+  });
+  document.getElementById('estate-val').value = '1000000';
+  document.getElementById('results-body').innerHTML = getEmptyState();
+}
+
+function getEmptyState() {
+  return '<div class="empty-state"><div class="empty-icon">⚖️</div><div class="empty-title"><span class="en">No calculation yet</span><span class="ar">لا يوجد حساب بعد</span></div><div class="empty-sub"><span class="en">Select heirs on the left and click Calculate</span><span class="ar">اختر الورثة من اليسار ثم انقر احسب</span></div></div>';
+}
+
+// ═══════════════════════════════════════════════
+// ISLAMIC INHERITANCE RULES
+// Simplified Sunni Hanafi/Shafi'i majority rules
+// ═══════════════════════════════════════════════
+function gcd(a, b) { return b ? gcd(b, a % b) : a; }
+function lcm(a, b) { return a / gcd(a, b) * b; }
+
+function calculate() {
+  var estate = parseFloat(document.getElementById('estate-val').value) || 0;
+  var currency = document.getElementById('estate-currency').value;
+
+  var h = JSON.parse(JSON.stringify(heirs)); // copy
+  var lang = document.documentElement.getAttribute('data-lang');
+  var shares = []; // { key, nameEn, nameAr, num, den, count, note }
+  var blocked = [];
+
+  var hasChildren = (h.son + h.daughter) > 0;
+  var hasSons     = h.son > 0;
+
+  // === BLOCKING RULES (Hijb) ===
+  // Father blocks grandfather
+  if (h.father && h.grandfather) { h.grandfather = false; blocked.push({ en:'Grandfather (blocked by Father)', ar:'الجد (محجوب بالأب)' }); }
+  // Mother blocks grandmother
+  if (h.mother && h.grandmother) { h.grandmother = false; blocked.push({ en:'Grandmother (blocked by Mother)', ar:'الجدة (محجوبة بالأم)' }); }
+  // Children or Father block full siblings (brothers/sisters become residuaries only if neither son nor father)
+  var siblingsBlocked = hasChildren || h.father || h.grandfather;
+  if (siblingsBlocked && (h.fullbrother + h.fullsister) > 0) {
+    blocked.push({ en:'Full Siblings (blocked by children/father)', ar:'الإخوة الأشقاء (محجوبون بالأبناء أو الأب)' });
+    h.fullbrother = 0; h.fullsister = 0;
+  }
+  // Can't have both husband and wife
+  if (h.husband && h.wife > 0) { h.husband = false; blocked.push({ en:'Husband (removed, only one spouse)', ar:'الزوج (غير ممكن مع الزوجات)' }); }
+
+  // === FIXED SHARES (Fard) ===
+
+  // HUSBAND: 1/4 if children, 1/2 if no children
+  if (h.husband) {
+    if (hasChildren) shares.push({ nameEn:'Husband', nameAr:'الزوج', num:1, den:4, count:1, note:{ en:'¼ (children present)', ar:'الربع (مع الأبناء)' } });
+    else             shares.push({ nameEn:'Husband', nameAr:'الزوج', num:1, den:2, count:1, note:{ en:'½ (no children)', ar:'النصف (بلا أبناء)' } });
+  }
+
+  // WIFE/WIVES: 1/8 if children, 1/4 if no children (shared among all wives)
+  if (h.wife > 0) {
+    if (hasChildren) shares.push({ nameEn:'Wife/Wives (' + h.wife + ')', nameAr:'الزوجة/الزوجات (' + h.wife + ')', num:1, den:8, count:h.wife, note:{ en:'⅛ total (children present)', ar:'الثمن إجمالاً (مع الأبناء)' } });
+    else             shares.push({ nameEn:'Wife/Wives (' + h.wife + ')', nameAr:'الزوجة/الزوجات (' + h.wife + ')', num:1, den:4, count:h.wife, note:{ en:'¼ total (no children)', ar:'الربع إجمالاً (بلا أبناء)' } });
+  }
+
+  // MOTHER: 1/6 if children or 2+ siblings, 1/3 otherwise
+  if (h.mother) {
+    var hasSiblings = (h.fullbrother + h.fullsister) > 0;
+    if (hasChildren || hasSiblings) shares.push({ nameEn:'Mother', nameAr:'الأم', num:1, den:6, count:1, note:{ en:'⅙ (children or siblings present)', ar:'السدس (مع الأبناء أو الإخوة)' } });
+    else                            shares.push({ nameEn:'Mother', nameAr:'الأم', num:1, den:3, count:1, note:{ en:'⅓ (no children, no siblings)', ar:'الثلث (بلا أبناء ولا إخوة)' } });
+  }
+
+  // GRANDMOTHER: 1/6 if no mother
+  if (h.grandmother && !h.mother) {
+    shares.push({ nameEn:'Grandmother', nameAr:'الجدة', num:1, den:6, count:1, note:{ en:'⅙ (no mother)', ar:'السدس (بلا أم)' } });
+  }
+
+  // FATHER: 1/6 if children, else Asaba
+  var fatherAsaba = false;
+  if (h.father) {
+    if (hasChildren) shares.push({ nameEn:'Father', nameAr:'الأب', num:1, den:6, count:1, note:{ en:'⅙ (children present)', ar:'السدس (مع الأبناء)' } });
+    else { fatherAsaba = true; }
+  }
+
+  // GRANDFATHER: 1/6 if children (like father if no father)
+  var grandfatherAsaba = false;
+  if (h.grandfather) {
+    if (hasChildren) shares.push({ nameEn:'Grandfather', nameAr:'الجد', num:1, den:6, count:1, note:{ en:'⅙ (children present)', ar:'السدس (مع الأبناء)' } });
+    else { grandfatherAsaba = true; }
+  }
+
+  // DAUGHTERS ONLY (no sons): 1/2 (one), 2/3 (two+)
+  if (h.daughter > 0 && !hasSons) {
+    if (h.daughter === 1) shares.push({ nameEn:'Daughter', nameAr:'البنت', num:1, den:2, count:1, note:{ en:'½ (one daughter, no sons)', ar:'النصف (بنت واحدة بلا أبناء)' } });
+    else                  shares.push({ nameEn:'Daughters (' + h.daughter + ')', nameAr:'البنات (' + h.daughter + ')', num:2, den:3, count:h.daughter, note:{ en:'⅔ shared (two+ daughters, no sons)', ar:'الثلثان مناصفة (بنتان+ بلا أبناء)' } });
+  }
+
+  // FULL SISTERS ONLY (no brothers, no children): 1/2, 2/3 (like daughters)
+  if (h.fullsister > 0 && h.fullbrother === 0 && !hasChildren && !h.father && !h.grandfather) {
+    if (h.fullsister === 1) shares.push({ nameEn:'Full Sister', nameAr:'الأخت الشقيقة', num:1, den:2, count:1, note:{ en:'½ (one sister, no male siblings)', ar:'النصف (أخت واحدة بلا إخوة)' } });
+    else                    shares.push({ nameEn:'Full Sisters (' + h.fullsister + ')', nameAr:'الأخوات الشقيقات (' + h.fullsister + ')', num:2, den:3, count:h.fullsister, note:{ en:'⅔ shared', ar:'الثلثان مناصفة' } });
+  }
+
+  // === CALCULATE FIXED SHARE TOTAL ===
+  var fixedTotal = 0;
+  shares.forEach(function(s) { fixedTotal += s.num / s.den; });
+
+  // === ASABA (Residue) ===
+  var residue = Math.max(0, 1 - fixedTotal);
+  var asabaShares = [];
+
+  // Sons + daughters with sons: each son = 2 × daughter
+  if (hasSons) {
+    var units = h.son * 2 + h.daughter * 1;
+    if (h.son > 0) asabaShares.push({ nameEn:'Son' + (h.son>1?'s ('+h.son+')':''), nameAr:h.son>1?'الأبناء ('+h.son+')':'الابن', units: h.son * 2, totalUnits: units });
+    if (h.daughter > 0) asabaShares.push({ nameEn:'Daughter'+(h.daughter>1?'s ('+h.daughter+')':''), nameAr:h.daughter>1?'البنات ('+h.daughter+')':'البنت', units: h.daughter * 1, totalUnits: units });
+  } else if (fatherAsaba) {
+    asabaShares.push({ nameEn:'Father (residuary)', nameAr:'الأب (عصبة)', units:1, totalUnits:1 });
+  } else if (grandfatherAsaba) {
+    asabaShares.push({ nameEn:'Grandfather (residuary)', nameAr:'الجد (عصبة)', units:1, totalUnits:1 });
+  } else if (h.fullbrother > 0 || h.fullsister > 0) {
+    // Full siblings with sisters: brother = 2 × sister
+    var su = h.fullbrother * 2 + h.fullsister * 1;
+    if (h.fullbrother > 0) asabaShares.push({ nameEn:'Full Brother'+(h.fullbrother>1?'s ('+h.fullbrother+')':''), nameAr:h.fullbrother>1?'الإخوة الأشقاء ('+h.fullbrother+')':'الأخ الشقيق', units:h.fullbrother*2, totalUnits:su });
+    if (h.fullsister > 0 && h.fullbrother > 0) asabaShares.push({ nameEn:'Full Sister'+(h.fullsister>1?'s ('+h.fullsister+')':'')+ ' (with brother)', nameAr:'الأخت الشقيقة (مع أخ)', units:h.fullsister, totalUnits:su });
+  }
+
+  // === AWL (Increase) if fixed > 1 ===
+  var awl = false;
+  if (fixedTotal > 1.001) {
+    awl = true;
+    // Proportionally reduce all fixed shares
+    shares.forEach(function(s) { s.awlFactor = fixedTotal; });
+  }
+
+  // === BUILD RESULTS ===
+  var results = [];
+  var checkTotal = 0;
+
+  shares.forEach(function(s) {
+    var pct = s.num / s.den;
+    if (awl) pct = pct / fixedTotal;
+    var amount = estate * pct;
+    var perPerson = s.count > 1 ? amount / s.count : amount;
+    results.push({
+      nameEn: s.nameEn, nameAr: s.nameAr,
+      pct: pct, amount: amount, perPerson: perPerson, count: s.count,
+      frac: fracStr(s.num, s.den), note: s.note,
+    });
+    checkTotal += pct;
+  });
+
+  asabaShares.forEach(function(s) {
+    var pct = residue * s.units / s.totalUnits;
+    var cnt = parseInt(s.nameEn.match(/\d+/) && s.nameEn.match(/\d+/)[0]) || 1;
+    var amount = estate * pct;
+    var perPerson = cnt > 1 ? amount / cnt : amount;
+    results.push({
+      nameEn: s.nameEn, nameAr: s.nameAr,
+      pct: pct, amount: amount, perPerson: perPerson, count: cnt,
+      frac: 'Asaba', note: { en:'Residue', ar:'عصبة' },
+    });
+    checkTotal += pct;
+  });
+
+  // If no heirs selected
+  if (results.length === 0) {
+    document.getElementById('results-body').innerHTML = getEmptyState();
+    return;
+  }
+
+  renderResults(results, blocked, estate, currency, awl, lang);
+}
+
+function fracStr(n, d) {
+  var fracs = {'1/2':'½','1/3':'⅓','2/3':'⅔','1/4':'¼','3/4':'¾','1/6':'⅙','1/8':'⅛'};
+  var k = n + '/' + d;
+  return fracs[k] || k;
+}
+
+function renderResults(results, blocked, estate, currency, awl, lang) {
+  var fmt = function(n) { return n.toLocaleString(undefined, {minimumFractionDigits:0, maximumFractionDigits:0}); };
+  var maxPct = Math.max.apply(null, results.map(function(r){ return r.pct; }));
+
+  var html = '';
+
+  // Summary bar
+  html += '<div class="summary-bar">';
+  html += '<div class="summary-bar-row">';
+  html += '<div><div class="summary-label"><span class="en">Net Estate</span><span class="ar">صافي التركة</span></div><div class="summary-val">' + fmt(estate) + ' ' + currency + '</div></div>';
+  html += '<div style="text-align:right"><div class="summary-label"><span class="en">Heirs</span><span class="ar">الورثة</span></div><div class="summary-val">' + results.length + '</div></div>';
+  html += '</div>';
+  if (awl) {
+    html += '<div style="margin-top:10px;font-size:.78rem;opacity:.85;background:rgba(255,255,255,.15);border-radius:8px;padding:6px 10px;">';
+    html += '<span class="en">⚠️ Awl applied, shares reduced proportionally as total exceeded 100%</span>';
+    html += '<span class="ar">⚠️ تُطبَّق قاعدة العول، خُفِّضت الحصص بالتناسب لأن مجموعها تجاوز 100%</span>';
+    html += '</div>';
+  }
+  html += '</div>';
+
+  // Each heir
+  results.forEach(function(r) {
+    var pctStr = (r.pct * 100).toFixed(1) + '%';
+    var barW = maxPct > 0 ? (r.pct / maxPct * 100) : 0;
+    html += '<div class="heir-result">';
+    html += '<div class="heir-result-top">';
+    html += '<div>';
+    html += '<div class="heir-result-name">' + (lang==='ar'? r.nameAr : r.nameEn) + '</div>';
+    html += '<div style="font-size:.75rem;color:var(--muted)">' + (lang==='ar'? r.note.ar : r.note.en) + '</div>';
+    html += '</div>';
+    html += '<div style="text-align:right">';
+    html += '<div class="heir-result-fraction">' + r.frac + '</div>';
+    html += '</div>';
+    html += '</div>';
+    html += '<div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:6px">';
+    html += '<div><div class="heir-result-amount">' + fmt(r.amount) + ' ' + currency + '</div>';
+    if (r.count > 1) html += '<div style="font-size:.75rem;color:var(--muted)">' + (lang==='ar'?'كل فرد: ':'Per person: ') + fmt(r.perPerson) + ' ' + currency + '</div>';
+    html += '</div>';
+    html += '<div class="heir-result-pct">' + pctStr + '</div>';
+    html += '</div>';
+    html += '<div class="bar-wrap"><div class="bar-fill" style="width:' + barW.toFixed(1) + '%"></div></div>';
+    html += '</div>';
+  });
+
+  // Blocked
+  if (blocked.length > 0) {
+    html += '<div class="blocked-section"><div class="blocked-title"><span class="en">Blocked Heirs (Hijb)</span><span class="ar">المحجوبون</span></div>';
+    blocked.forEach(function(b) {
+      html += '<div class="blocked-item">✕ ' + (lang==='ar'? b.ar : b.en) + '</div>';
+    });
+    html += '</div>';
+  }
+
+  document.getElementById('results-body').innerHTML = html;
+}
+
+// ═══════════════════════════════════════════════
+// THEME / LANG
+// ═══════════════════════════════════════════════
+function toggleTheme() {
+  var h = document.documentElement;
+  var t = h.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  h.setAttribute('data-theme', t);
+  localStorage.setItem('dfl-theme', t);
+  document.getElementById('theme-icon').textContent = t === 'dark' ? '<svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>' : '<svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+}
+function toggleLang() {
+  var h = document.documentElement;
+  var l = h.getAttribute('data-lang') === 'ar' ? 'en' : 'ar';
+  h.setAttribute('data-lang', l);
+  h.setAttribute('lang', l);
+  h.setAttribute('dir', l === 'ar' ? 'rtl' : 'ltr');
+  localStorage.setItem('dfl-lang', l);
+}
+
+window.addEventListener('scroll', function(){ document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 10); }, { passive:true });
+document.getElementById('theme-icon').textContent = localStorage.getItem('dfl-theme') === 'dark' ? '<svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>' : '<svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+
+function toggleFAQ(el){
+  el.classList.toggle('open');
+  var answer=el.nextElementSibling;
+  if(answer) answer.classList.toggle('open');
+}
+</script>
+
+  <!-- DFL CANONICAL FOOTER -->
+  
+  <!-- DFL MOBILE NAV -->
+  
+
+
+  <script src="/tool-share.js" defer></script>
+<!-- ═══ UNIFIED MOBILE NAV ══════════════════════════════════ -->
+<nav class="dfl-mobile-nav" aria-label="Mobile navigation">
+  <a href="../index.html" class="dfl-mnav-item" aria-label="Home">
+    <svg viewBox="0 0 24 24"><polyline points="3 9 12 2 21 9"/><path d="M5 9v11a1 1 0 001 1h4v-6h4v6h4a1 1 0 001-1V9"/></svg>
+    <span class="en">Home</span><span class="ar">الرئيسية</span>
+  </a>
+  <a href="../health.html" class="dfl-mnav-item" aria-label="Health">
+    <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+    <span class="en">Health</span><span class="ar">الصحة</span>
+  </a>
+  <a href="../finance.html" class="dfl-mnav-item" aria-label="Finance">
+    <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+    <span class="en">Finance</span><span class="ar">المالية</span>
+  </a>
+  <a href="../islamic.html" class="dfl-mnav-item" aria-label="Islamic">
+    <svg viewBox="0 0 24 24"><path d="M21 10.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l2.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+    <span class="en">Islamic</span><span class="ar">الإسلامية</span>
+  </a>
+  <a href="../travel.html" class="dfl-mnav-item" aria-label="Travel">
+    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    <span class="en">Travel</span><span class="ar">السفر</span>
+  </a>
+</nav>
+
+<!-- ── Mobile dropdown menu ── -->
+<div class="mobile-dropdown" id="mobile-dropdown" aria-hidden="true">
+  <div class="md-links">
+    <a href="../health.html"><span class="en">Health</span><span class="ar">الصحة</span></a>
+    <a href="../finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a>
+    <a href="../real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a>
+    <a href="../travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a>
+    <a href="../islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a>
+    <a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a>
+    <a href="../archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a>
+    <a href="/blog.html"><span class="en">Blog</span><span class="ar">المدونة</span></a>
+    <a href="../library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a>
+  </div>
+  <div class="md-controls">
+    <button class="nav-btn" id="lang-toggle-mobile"><span class="en">عربي</span><span class="ar">English</span></button>
+    <button class="nav-btn" id="theme-toggle-mobile">
+      <svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </button>
+  </div>
+</div>
+<!-- ═══════════════════════════════════════
+     CONTENT
+═══════════════════════════════════════ -->
+<!-- 
+  page_type: tool
+  cluster: islamic
+  authority_score: 75
+  inbound_links: 17
+  outbound_links: 12
+  link_velocity: high
+  priority_indexing: true
+  content_depth: 31
+  word_count: 2309
+  canonical: https://www.dotforlife.com/tools/inheritance-calculator.html
+-->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1436107577087160" crossorigin="anonymous"></script>
+</body></html>
+</html>
