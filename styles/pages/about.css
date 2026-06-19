@@ -30,6 +30,33 @@
 html { font-size: 16px; scroll-behavior: smooth; }
 body { background: var(--body-bg); color: var(--text-1); line-height: 1.7; min-height: 100vh; }
 
+/* Solid nav + body offset (home.css sets navbar 140px) */
+body.about-page.no-subnav {
+  padding-top: 140px !important;
+}
+@media (max-width: 768px) {
+  body.about-page.no-subnav { padding-top: 120px !important; }
+}
+
+body.about-page #navbar {
+  background: #054241 !important;
+  width: 100%;
+  left: 0;
+  right: 0;
+  max-width: none;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, .08);
+}
+
+body.about-page #navbar .nav-links a,
+body.about-page #navbar .nav-btn {
+  color: rgba(255, 255, 255, .9) !important;
+  border-color: rgba(255, 255, 255, .28) !important;
+}
+
+body.about-page #navbar .hamburger span {
+  background: rgba(255, 255, 255, .88);
+}
+
 /* ── CONTAINER ───────────────────────────────────────────────────── */
 .container { max-width: 760px; margin: 0 auto; padding: 0 clamp(20px,5vw,40px); }
 .container-wide { max-width: 1060px; margin: 0 auto; padding: 0 clamp(20px,5vw,40px); }

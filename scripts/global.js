@@ -301,8 +301,14 @@
     });
   })();
 
-  /* ── 12. Scroll-aware navbar (Healthline-inspired) ────── */
+  /* ── 12. Scroll-aware navbar (homepage only — hide on scroll down) ────── */
   (function() {
+    var body = document.body;
+    if (!body.classList.contains('index-page')) return;
+    if (body.classList.contains('category-page')) return;
+    if (body.classList.contains('about-page')) return;
+    if (body.classList.contains('archive-page')) return;
+
     var nav = document.getElementById('navbar') || document.getElementById('dfl-navbar');
     if (!nav) return;
     var lastScroll = 0;

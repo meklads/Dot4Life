@@ -514,18 +514,69 @@ html, body { overflow-x: hidden; max-width: 100%; }
 #navbar,
 .navbar-unified {
   position: fixed;
-  top: 0; left: 0; right: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-width: none;
   z-index: var(--z-nav, 9000);
   height: 110px;
   background: var(--dfl-green-slate);
   border-bottom: none;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
-  transition: box-shadow var(--t-base, .22s);
+  transition: background var(--t-base, .22s), box-shadow var(--t-base, .22s);
 }
 #navbar.scrolled,
 .navbar-unified.scrolled {
   box-shadow: 0 2px 20px rgba(0,0,0,.07);
+}
+
+/* Hub/category scrolled nav — full-width solid bar, light links */
+body.category-page #navbar.scrolled,
+body.category-page #navbar.index-nav.scrolled {
+  background: #054241 !important;
+  width: 100%;
+  left: 0;
+  right: 0;
+}
+
+body.category-page #navbar.scrolled::before,
+body[class*="-hub-page"] #navbar.scrolled::before {
+  display: none !important;
+}
+
+body.category-page #navbar.scrolled .nav-links a,
+body.category-page #navbar.index-nav.scrolled .nav-links a,
+body[class*="-hub-page"] #navbar.scrolled .nav-links a {
+  color: rgba(255, 255, 255, .9) !important;
+  text-shadow: none !important;
+}
+
+body.category-page #navbar.scrolled .nav-btn,
+body.category-page #navbar.index-nav.scrolled .nav-btn,
+body[class*="-hub-page"] #navbar.scrolled .nav-btn {
+  color: rgba(255, 255, 255, .9) !important;
+  border-color: rgba(255, 255, 255, .28) !important;
+}
+
+body.category-page #navbar.scrolled .hamburger span,
+body[class*="-hub-page"] #navbar.scrolled .hamburger span,
+body.about-page #navbar .hamburger span {
+  background: rgba(255, 255, 255, .88);
+}
+
+/* Light content pages — always solid green nav (no transparent-over-white) */
+body.about-page #navbar,
+body.about-page #navbar.scrolled {
+  background: #054241 !important;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, .08);
+}
+
+body.about-page #navbar .nav-links a,
+body.about-page #navbar .nav-btn {
+  color: rgba(255, 255, 255, .9) !important;
+  border-color: rgba(255, 255, 255, .28) !important;
 }
 [data-theme="dark"] #navbar,
 [data-theme="dark"] .navbar-unified {
