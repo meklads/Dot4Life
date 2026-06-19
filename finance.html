@@ -47,10 +47,12 @@
   <link rel="stylesheet" href="/styles/home-refined.css?v=20260622c"/>
   <link rel="stylesheet" href="/styles/home-vision.css?v=20260623b"/>
   <link rel="stylesheet" href="/styles/pillar-pages.css?v=20260628a"/>
+  <link rel="stylesheet" href="/styles/pages/finance-hub.css?v=20260628a"/>
 
 <script src="/scripts/global.js?v=20260619e" defer></script>
   <link rel="alternate" hreflang="ar-SA" href="https://dotforlife.com/finance.html" />
   <link rel="alternate" hreflang="en" href="https://dotforlife.com/finance.html" />
+<script src="/scripts/lang-redirect.js?v=20260620"></script>
   <link rel="alternate" hreflang="x-default" href="https://dotforlife.com/finance.html" />
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3G1XPV4F0G"></script>
@@ -80,16 +82,16 @@
   ]
 }</script>
 </head>
-<body class="index-page category-page cat-finance">
+<body class="index-page category-page has-subnav cat-finance finance-hub-page">
 
   <!-- ═══════════════════════════════════════
        NAVBAR
   ═══════════════════════════════════════ -->
   <!-- ═══ UNIFIED HEADER ══════════════════════════════════════ -->
-<nav id="navbar" class="index-nav" role="navigation" aria-label="Main navigation">
+<nav id="navbar" class="index-nav finance-nav" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo" aria-label="DOTFORLIFE Home">
-      <img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" width="100" height="100" style="height:100px;width:auto;object-fit:contain;" width="100" height="100" loading="lazy">
+      <img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" width="100" height="100" width="115" height="115" loading="lazy">
     </a>
     <ul class="nav-links">
       <li><a href="health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
@@ -112,10 +114,16 @@
 <!-- ════════════════════════════════════════════════════════════ -->
 
 
-  <section id="hero" class="hero-editorial hero-pillar" aria-label="Hero section">
+    <section id="hero" class="hero-editorial hero-pillar" aria-label="Hero section">
+    <div class="hero-wellness-orbs" aria-hidden="true">
+      <span></span><span></span><span></span>
+    </div>
     <div class="hero-inner">
       <div class="hero-left">
-        <p class="hero-eyebrow"><span class="en">Finance & Wealth</span><span class="ar">المالية والثروة</span></p>
+        <p class="hero-eyebrow">
+          <span class="hero-eyebrow-dot" aria-hidden="true"></span>
+          <span class="en">Finance & Wealth</span><span class="ar">المالية والثروة</span>
+        </p>
         <h1 class="hero-headline">
           <span class="en">Your money decisions,<br>clear and confident.</span>
           <span class="ar">قراراتك المالية،<br>واضحة وواثقة.</span>
@@ -140,15 +148,29 @@
           <span><span class="en">Bilingual</span><span class="ar">عربي · English</span></span>
           <span><span class="en">Private by design</span><span class="ar">خصوصيتك محفوظة</span></span>
         </p>
+        <div class="hero-wellness-stats" aria-label="Finance hub highlights">
+          <div class="hero-wellness-stat">
+            <span class="hero-wellness-stat-value">8+</span>
+            <span class="hero-wellness-stat-label"><span class="en">Free tools</span><span class="ar">أدوات مجانية</span></span>
+          </div>
+          <div class="hero-wellness-stat">
+            <span class="hero-wellness-stat-value">Sharia</span>
+            <span class="hero-wellness-stat-label"><span class="en">Aware</span><span class="ar">متوافق شرعاً</span></span>
+          </div>
+          <div class="hero-wellness-stat">
+            <span class="hero-wellness-stat-value">100%</span>
+            <span class="hero-wellness-stat-label"><span class="en">On your device</span><span class="ar">على جهازك</span></span>
+          </div>
+        </div>
       </div>
       <div class="hero-right" aria-hidden="true">
         <div class="hero-circle-wrap">
           <div class="hero-badge" aria-hidden="true">
             <div class="hero-badge-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
             <div>
-              <div class="hero-badge-label"><span class="en">Always with you</span><span class="ar">دائماً معك</span></div>
+              <div class="hero-badge-label"><span class="en">Family finance</span><span class="ar">مالية الأسرة</span></div>
               <div class="hero-badge-value"><span class="en">Free · Private</span><span class="ar">مجاني · خاص</span></div>
             </div>
           </div>
@@ -165,65 +187,129 @@
       </div>
     </div>
   </section>
+
+<div id="sub-nav">
+  <div class="sub-nav-inner">
+    <a href="/tools/monthly-budget.html"><span class="en">Budget</span><span class="ar">الميزانية</span></a>
+    <a href="/tools/mortgage-calculator.html"><span class="en">Mortgage</span><span class="ar">التمويل</span></a>
+    <a href="/tools/salary-calculator.html"><span class="en">Salary</span><span class="ar">الراتب</span></a>
+    <a href="/tools/savings-goal.html"><span class="en">Savings</span><span class="ar">الادخار</span></a>
+    <a href="/tools/zakat-calculator.html"><span class="en">Zakat</span><span class="ar">الزكاة</span></a>
+    <a href="/tools/currency-converter.html"><span class="en">Currency</span><span class="ar">العملات</span></a>
+    <a href="/tools/roi-calculator.html"><span class="en">ROI</span><span class="ar">العائد</span></a>
+  </div>
+</div>
+
 <div id="page">
 
-  <section class="hl-section hl-section--cream">
-    <div class="hl-container hl-prose">
-      <div class="hl-eyebrow"><span class="en">Why This Matters</span><span class="ar">لماذا هذا مهم</span></div>
-      <h2 class="hl-h2"><span class="en">Finance resources for your family</span><span class="ar">موارد المالية لعائلتك</span></h2>
-      <div class="hl-intro-text">
-        <p class="en">In GCC countries, household financial planning involves unique factors: varying cost of living between cities, Islamic mortgages, and family budgeting. The most common challenge is not lack of income but lack of structure. This section provides tools for budgeting, mortgage planning, savings goals, salary calculations, and Zakat obligations, all tailored to the Gulf context.</p>
-        <p class="ar">في دول الخليج، التخطيط المالي يتضمن عوامل فريدة: اختلاف تكلفة المعيشة بين المدن، التمويل الإسلامي، وتنظيم ميزانية الأسرة. التحدي الأكثر شيوعاً ليس نقص الدخل بل نقص التنظيم. هذا القسم يوفر أدوات للميزانية والتخطيط.</p>
+    <section class="hl-section hl-section--cream">
+      <div class="hl-container hl-prose">
+        <div class="hl-eyebrow">
+          <span class="en">Why This Matters</span>
+          <span class="ar">لماذا هذا مهم</span>
+        </div>
+        <h2 class="hl-h2">
+          <span class="en">Smart finance is the foundation of family stability</span>
+          <span class="ar">المالية الذكية هي أساس استقرار الأسرة</span>
+        </h2>
+        <div class="hl-intro-text">
+          <p class="en">In GCC countries, household financial planning involves unique factors: varying cost of living between cities, Islamic mortgages, and family budgeting. The most common challenge is not lack of income but lack of structure. This section provides tools for budgeting, mortgage planning, savings goals, salary calculations, and Zakat obligations, all tailored to the Gulf context.</p>
+          <p class="ar">في دول الخليج، التخطيط المالي يتضمن عوامل فريدة: اختلاف تكلفة المعيشة بين المدن، التمويل الإسلامي، وتنظيم ميزانية الأسرة. التحدي الأكثر شيوعاً ليس نقص الدخل بل نقص التنظيم. هذا القسم يوفر أدوات للميزانية والتخطيط.</p>
+        </div>
+        <div class="hh-pillars">
+          <div class="hh-pillar">
+            <div class="hh-pillar-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <div class="hh-pillar-title"><span class="en">Budget with confidence</span><span class="ar">ميزانية بثقة</span></div>
+            <p class="hh-pillar-desc"><span class="en">Track income, expenses, and savings goals with tools built for Gulf household realities.</span><span class="ar">تتبع الدخل والمصروفات وأهداف الادخار بأدوات مصممة لواقع الأسر الخليجية.</span></p>
+          </div>
+          <div class="hh-pillar">
+            <div class="hh-pillar-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <div class="hh-pillar-title"><span class="en">Sharia-aware planning</span><span class="ar">تخطيط متوافق شرعاً</span></div>
+            <p class="hh-pillar-desc"><span class="en">Mortgage, Zakat, and investment calculators aligned with Islamic finance principles.</span><span class="ar">حاسبات التمويل والزكاة والاستثمار وفق مبادئ المالية الإسلامية.</span></p>
+          </div>
+          <div class="hh-pillar">
+            <div class="hh-pillar-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div class="hh-pillar-title"><span class="en">Future-proof savings</span><span class="ar">ادخار للمستقبل</span></div>
+            <p class="hh-pillar-desc"><span class="en">Plan for education, retirement, and major life goals with our savings and ROI calculators.</span><span class="ar">خطط للتعليم والتقاعد والأهداف الكبرى مع حاسبات الادخار والعائد.</span></p>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="hl-section" id="tools" aria-label="Finance tools">
-    <div class="hl-container hl-wide">
-      <div class="hl-eyebrow"><span class="en">Free Tools</span><span class="ar">أدوات مجانية</span></div>
-      <h2 class="hl-h2"><span class="en">Finance tools for your family</span><span class="ar">أدوات المالية لعائلتك</span></h2>
-      <p class="hl-sub"><span class="en">All tools run locally in your browser. No data stored or shared.</span><span class="ar">جميع الأدوات تعمل محلياً. لا تُخزَّن بيانات.</span></p>
-      <div class="hl-grid hl-grid--tools">
-        
-          <a href="/tools/monthly-budget.html" class="hl-card hl-card--tool" style="--hl-accent:#054241">
-            <div class="hl-card-icon hl-card-icon--emoji">📋</div>
-            <div class="hl-card-title"><span class="en">Monthly Budget</span><span class="ar">الميزانية الشهرية</span></div>
-            <div class="hl-card-desc"><span class="en">Practical tool for every family.</span><span class="ar">أداة عملية لكل أسرة.</span></div>
-            <div class="hl-card-arrow"><span class="en">Open tool →</span><span class="ar">افتح الأداة →</span></div>
+    <section class="hl-section" id="tools" aria-label="Finance tools">
+      <div class="hl-container hl-wide">
+        <div class="hl-eyebrow">
+          <span class="en">Free Tools</span>
+          <span class="ar">أدوات مجانية</span>
+        </div>
+        <h2 class="hl-h2">
+          <span class="en">Finance tools for your family</span>
+          <span class="ar">أدوات المالية لعائلتك</span>
+        </h2>
+        <p class="hl-sub">
+          <span class="en">All calculations run locally in your browser. No data is stored or shared.</span>
+          <span class="ar">جميع الحسابات تعمل محلياً في متصفحك. لا تُخزَّن أي بيانات ولا تُشارَك.</span>
+        </p>
+
+        <div class="hh-featured">
+          <a href="/tools/monthly-budget.html" class="hh-featured-card">
+            <span class="hh-featured-kicker"><span class="en">Essential</span><span class="ar">أساسي</span></span>
+            <div class="hh-featured-title"><span class="en">Monthly Budget Planner</span><span class="ar">مخطط الميزانية الشهرية</span></div>
+            <p class="hh-featured-desc"><span class="en">Track income, fixed expenses, savings, and discretionary spending. See where your money goes each month.</span><span class="ar">تتبع الدخل والمصروفات الثابتة والادخار والمصروفات الاختيارية. اعرف أين تذهب أموالك كل شهر.</span></p>
+            <span class="hh-featured-link"><span class="en">Open tool →</span><span class="ar">افتح الأداة →</span></span>
           </a>
-          <a href="/tools/mortgage-calculator.html" class="hl-card hl-card--tool" style="--hl-accent:#054241">
-            <div class="hl-card-icon hl-card-icon--emoji">🏠</div>
-            <div class="hl-card-title"><span class="en">Mortgage Calculator</span><span class="ar">حاسبة التمويل</span></div>
-            <div class="hl-card-desc"><span class="en">Practical tool for every family.</span><span class="ar">أداة عملية لكل أسرة.</span></div>
-            <div class="hl-card-arrow"><span class="en">Open tool →</span><span class="ar">افتح الأداة →</span></div>
+          <a href="/tools/mortgage-calculator.html" class="hh-featured-card">
+            <span class="hh-featured-kicker"><span class="en">Sharia</span><span class="ar">إسلامي</span></span>
+            <div class="hh-featured-title"><span class="en">Mortgage Calculator</span><span class="ar">حاسبة التمويل العقاري</span></div>
+            <p class="hh-featured-desc"><span class="en">Calculate monthly payments, total profit, and affordability for Islamic mortgages. Compare 5, 10, 15, 20 & 25-year terms.</span><span class="ar">احسب الأقساط الشهرية والأرباح الكلية والقدرة الشرائية للتمويل العقاري الإسلامي.</span></p>
+            <span class="hh-featured-link"><span class="en">Open calculator →</span><span class="ar">افتح الحاسبة →</span></span>
           </a>
+          <a href="/tools/zakat-calculator.html" class="hh-featured-card">
+            <span class="hh-featured-kicker"><span class="en">Obligation</span><span class="ar">فريضة</span></span>
+            <div class="hh-featured-title"><span class="en">Zakat Calculator</span><span class="ar">حاسبة الزكاة</span></div>
+            <p class="hh-featured-desc"><span class="en">Calculate Zakat on cash, gold, investments, and property. Updated for 2026 with current nisab values.</span><span class="ar">احسب زكاتك على النقد والذهب والاستثمارات والعقار. محدثة لعام 2026 مع قيم النصاب الحالية.</span></p>
+            <span class="hh-featured-link"><span class="en">Open calculator →</span><span class="ar">افتح الحاسبة →</span></span>
+          </a>
+        </div>
+
+        <div class="hl-grid hl-grid--tools">
+
           <a href="/tools/salary-calculator.html" class="hl-card hl-card--tool" style="--hl-accent:#054241">
             <div class="hl-card-icon hl-card-icon--emoji">💰</div>
-            <div class="hl-card-title"><span class="en">Salary Calculator</span><span class="ar">الراتب</span></div>
-            <div class="hl-card-desc"><span class="en">Practical tool for every family.</span><span class="ar">أداة عملية لكل أسرة.</span></div>
+            <div class="hl-card-title"><span class="en">Salary Calculator</span><span class="ar">حاسبة الراتب</span></div>
+            <div class="hl-card-desc"><span class="en">Calculate your monthly take-home pay after deductions, social insurance, and Zakat contribution in GCC countries.</span><span class="ar">احسب صافي راتبك الشهري بعد الخصومات والتأمينات الاجتماعية والزكاة في دول الخليج.</span></div>
             <div class="hl-card-arrow"><span class="en">Open tool →</span><span class="ar">افتح الأداة →</span></div>
           </a>
-          <a href="/tools/savings-goal.html" class="hl-card hl-card--tool" style="--hl-accent:#054241">
+
+          <a href="/tools/savings-goal.html" class="hl-card hl-card--tool" style="--hl-accent:#0a6b63">
             <div class="hl-card-icon hl-card-icon--emoji">🎯</div>
-            <div class="hl-card-title"><span class="en">Savings Goal</span><span class="ar">هدف الادخار</span></div>
-            <div class="hl-card-desc"><span class="en">Practical tool for every family.</span><span class="ar">أداة عملية لكل أسرة.</span></div>
+            <div class="hl-card-title"><span class="en">Savings Goal Planner</span><span class="ar">مخطط هدف الادخار</span></div>
+            <div class="hl-card-desc"><span class="en">Set a savings target and see how much to save monthly to reach it. Plan for education, travel, or a home.</span><span class="ar">حدد هدف ادخار وشاهد كم تحتاج لتوفر شهرياً. خطط للتعليم أو السفر أو منزل.</span></div>
             <div class="hl-card-arrow"><span class="en">Open tool →</span><span class="ar">افتح الأداة →</span></div>
           </a>
-          <a href="/tools/roi-calculator.html" class="hl-card hl-card--tool" style="--hl-accent:#054241">
+
+          <a href="/tools/roi-calculator.html" class="hl-card hl-card--tool" style="--hl-accent:#4a8a82">
             <div class="hl-card-icon hl-card-icon--emoji">📈</div>
-            <div class="hl-card-title"><span class="en">ROI Calculator</span><span class="ar">العائد على الاستثمار</span></div>
-            <div class="hl-card-desc"><span class="en">Practical tool for every family.</span><span class="ar">أداة عملية لكل أسرة.</span></div>
+            <div class="hl-card-title"><span class="en">ROI Calculator</span><span class="ar">حاسبة العائد</span></div>
+            <div class="hl-card-desc"><span class="en">Quickly estimate your return on investment for any opportunity. Compare options side by side with visual charts.</span><span class="ar">قدّر عائد استثمارك بسرعة لأي فرصة. قارن الخيارات جنباً إلى جنب مع رسوم بيانية.</span></div>
             <div class="hl-card-arrow"><span class="en">Open tool →</span><span class="ar">افتح الأداة →</span></div>
           </a>
-          <a href="/tools/currency-converter.html" class="hl-card hl-card--tool" style="--hl-accent:#054241">
+
+          <a href="/tools/currency-converter.html" class="hl-card hl-card--tool" style="--hl-accent:#3a9d8e">
             <div class="hl-card-icon hl-card-icon--emoji">💱</div>
             <div class="hl-card-title"><span class="en">Currency Converter</span><span class="ar">محول العملات</span></div>
-            <div class="hl-card-desc"><span class="en">Practical tool for every family.</span><span class="ar">أداة عملية لكل أسرة.</span></div>
+            <div class="hl-card-desc"><span class="en">Real-time exchange rates for SAR, AED, QAR, KWD, BHD, OMR, EGP, and major world currencies.</span><span class="ar">أسعار صرف محدثة للريال والدرهم والريال القطري والدينار وغيرها من العملات العالمية.</span></div>
             <div class="hl-card-arrow"><span class="en">Open tool →</span><span class="ar">افتح الأداة →</span></div>
           </a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
   <section class="hl-section hl-section--cream" id="guides" aria-label="Guides">
     <div class="hl-container hl-wide">
