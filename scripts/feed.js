@@ -10,7 +10,7 @@
 (function() {
   'use strict';
 
-  var FEED_VERSION = 10;  // v10: Umrah/Masjid guides → featured-stories homepage
+  var FEED_VERSION = 11;  // v11: natural Unsplash/Pexels heroes (not SVG)
 
   var CONFIG = {
     jsonUrl: '/articles.json',
