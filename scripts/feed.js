@@ -10,7 +10,7 @@
 (function() {
   'use strict';
 
-  var FEED_VERSION = 8;  // v8: blog hub editorial grid + load more
+  var FEED_VERSION = 9;  // v9: blog cards + featured with article images
 
   var CONFIG = {
     jsonUrl: '/articles.json',
@@ -208,7 +208,24 @@
     if (legacy) legacy.textContent = n;
   }
 
-  /** Text-only editorial card for blog grid */
+  /** Article image for blog cards — per-article img or category fallback */
+  var BLOG_CAT_IMG = {
+    health: '/assets/images/fit-heart.svg',
+    finance: '/assets/images/hero-money-lessons.svg',
+    travel: '/assets/images/hero-travel-comparison.jpg',
+    'real-estate': '/assets/images/hero-gold-vs-real-estate.svg',
+    islamic: '/assets/images/hero-prayer.svg',
+    family: '/assets/images/hero-carpentry-workshop.jpg',
+    productivity: '/assets/images/hero-morning-routine.svg'
+  };
+
+  function getBlogArticleImg(a) {
+    if (a && a.img) return a.img;
+    var cat = (a && a.category) || 'general';
+    return BLOG_CAT_IMG[cat] || '/assets/images/hero-travel-comparison.jpg';
+  }
+
+  /** Editorial card with image for blog grid */
   function buildBlogCardHTML(a) {
     var title = isAr && a.title_ar ? a.title_ar : a.title_en;
     var excerpt = isAr && a.excerpt_ar ? a.excerpt_ar : a.excerpt_en;
@@ -216,15 +233,20 @@
     var section = isAr && a.section_ar ? a.section_ar : (a.section || a.category || '');
     var cat = a.category || 'general';
     var readLabel = isAr ? '← اقرأ' : 'Read →';
+    var img = getBlogArticleImg(a);
 
     return '<a href="' + url + '" class="bl-card" data-cat="' + esc(cat) + '">' +
+      '<span class="bl-card-media">' +
+      '<img class="bl-card-img" src="' + img + '" alt="' + esc(title) + '" width="600" height="340" loading="lazy" decoding="async">' +
+      '</span>' +
+      '<span class="bl-card-body">' +
       '<span class="bl-card-kicker">' + esc(section) + '</span>' +
       '<span class="bl-card-title">' + esc(title) + '</span>' +
       (excerpt ? '<span class="bl-card-desc">' + esc(excerpt) + '</span>' : '') +
       '<span class="bl-card-foot">' +
       '<span class="bl-card-date">' + fmtDate(a.date) + '</span>' +
       '<span class="bl-card-link">' + readLabel + '</span>' +
-      '</span></a>';
+      '</span></span></a>';
   }
 
   var blogArticles = [];
@@ -290,6 +312,11 @@
       var ra = readEl.querySelector('.ar');
       if (re) re.textContent = 'Read article →';
       if (ra) ra.textContent = '← اقرأ المقال';
+    }
+    var imgEl = el.querySelector('.bl-featured-img');
+    if (imgEl) {
+      imgEl.src = getBlogArticleImg(a);
+      imgEl.alt = title;
     }
   }
 
