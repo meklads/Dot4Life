@@ -10,7 +10,7 @@
 (function() {
   'use strict';
 
-  var FEED_VERSION = 9;  // v9: blog cards + featured with article images
+  var FEED_VERSION = 10;  // v10: Umrah/Masjid guides → featured-stories homepage
 
   var CONFIG = {
     jsonUrl: '/articles.json',
