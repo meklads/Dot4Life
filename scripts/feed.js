@@ -10,7 +10,7 @@
 (function() {
   'use strict';
 
-  var FEED_VERSION = 11;  // v11: natural Unsplash/Pexels heroes (not SVG)
+  var FEED_VERSION = 12;  // v12: blog top-3 images + keywords
 
   var CONFIG = {
     jsonUrl: '/articles.json',
