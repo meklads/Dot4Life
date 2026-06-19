@@ -16,7 +16,8 @@ body.category-page {
   --hv-shadow:     0 1px 2px rgba(10, 22, 18, .03), 0 8px 32px rgba(10, 22, 18, .05);
   --hv-shadow-hover: 0 12px 40px rgba(10, 22, 18, .09);
   --hv-ease:       cubic-bezier(.22, 1, .36, 1);
-  background: var(--hv-paper);
+  --pillar-nav-h:  110px;
+  padding-top: 0 !important;
   color: var(--hv-ink);
   overflow-x: hidden;
 }
@@ -82,6 +83,43 @@ body.category-page.cat-islamic {
   --pillar-hero-4:       #e6f0ee;
 }
 
+/* Match body to hero top — prevents white flash in any nav gap */
+body.category-page.cat-health,
+body.category-page.cat-finance,
+body.category-page.cat-real-estate,
+body.category-page.cat-travel,
+body.category-page.cat-islamic {
+  background: var(--pillar-hero-0);
+}
+
+/* ── Seamless header — hero flows under transparent nav ──── */
+body.category-page #navbar,
+body.category-page #navbar.index-nav {
+  background: transparent !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+body.category-page #navbar.scrolled,
+body.category-page #navbar.index-nav.scrolled {
+  background: var(--pillar-hero-0) !important;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, .12) !important;
+}
+
+[data-theme="dark"] body.category-page #navbar:not(.scrolled),
+[data-theme="dark"] body.category-page #navbar.index-nav:not(.scrolled) {
+  background: transparent !important;
+}
+
+[data-theme="dark"] body.category-page #navbar.scrolled {
+  background: var(--pillar-hero-0) !important;
+}
+
+/* Override homepage hero band styles loaded on index-page body */
+body.category-page.index-page #hero.hero-editorial.hero-pillar {
+  min-height: min(78vh, 720px) !important;
+}
+
 /* ── Editorial pillar hero ───────────────────────────────── */
 body.category-page #hero.hero-editorial.hero-pillar {
   display: flex;
@@ -123,16 +161,15 @@ body.category-page #hero.hero-pillar .hero-inner {
   box-sizing: border-box;
 }
 
-/* Full-bleed hero under transparent nav (pillar pages without sub-nav) */
-body.category-page:not(:has(#sub-nav)):not(.health-hub-page) #hero.hero-pillar {
-  margin-top: -110px;
-  padding-top: 110px;
+/* Full-bleed hero under fixed nav (health-hub uses 120px override) */
+body.category-page:not(.health-hub-page) #hero.hero-pillar {
+  margin-top: calc(-1 * var(--pillar-nav-h));
+  padding-top: var(--pillar-nav-h);
 }
 
 @media (max-width: 768px) {
-  body.category-page:not(:has(#sub-nav)):not(.health-hub-page) #hero.hero-pillar {
-    margin-top: -90px;
-    padding-top: 90px;
+  body.category-page {
+    --pillar-nav-h: 90px;
   }
 }
 
