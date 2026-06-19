@@ -41,8 +41,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Almarai:wght@300;400;700&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="/styles/global.css?v=20260617c"/>
-    <link rel="stylesheet" href="/styles/home.css?v=20260617b">
+<link rel="stylesheet" href="/styles/global.css?v=20260626b"/>
+  <link rel="stylesheet" href="/styles/home.css?v=20260619c"/>
+  <link rel="stylesheet" href="/styles/home-secondary.css?v=20260619e"/>
+  <link rel="stylesheet" href="/styles/home-refined.css?v=20260622c"/>
+  <link rel="stylesheet" href="/styles/home-vision.css?v=20260623b"/>
+  <link rel="stylesheet" href="/styles/pillar-pages.css?v=20260626a"/>
 
 <script src="/scripts/global.js" defer></script>
   <link rel="alternate" hreflang="ar-SA" href="https://dotforlife.com/finance.html" />
@@ -76,7 +80,7 @@
   ]
 }</script>
 </head>
-<body class="index-page category-page cat-finance">
+<body class="index-page category-page has-subnav cat-finance">
 
   <!-- ═══════════════════════════════════════
        NAVBAR
@@ -89,7 +93,7 @@
     </a>
     <ul class="nav-links">
       <li><a href="health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
-      <li><a href="finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li>
+      <li><a href="finance.html" aria-current="page"><span class="en">Finance</span><span class="ar">المالية</span></a></li>
       <li><a href="real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li>
       <li><a href="travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li>
       <li><a href="islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li>
@@ -99,7 +103,7 @@
       <li><a href="library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a></li>
     </ul>
     <div class="nav-controls">
-      <button class="nav-btn" id="lang-toggle" aria-label="Switch language"><span class="en">English</span><span class="ar">عربي</span></button>
+      <button class="nav-btn" id="lang-toggle" aria-label="Switch language"><span class="en">عربي</span><span class="ar">English</span></button>
       <button class="nav-btn" id="theme-toggle" aria-label="Toggle theme"><svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
     </div>
   </div>
@@ -107,167 +111,59 @@
 <!-- ════════════════════════════════════════════════════════════ -->
 
 
-  <!-- ═══════════════════════════════════════
-       HERO
-  ═══════════════════════════════════════ -->
-  <section id="hero" aria-label="Hero section">
-    <div class="hero-floats" aria-hidden="true">
-      <span></span><span></span><span></span><span></span><span></span><span></span>
-    </div>
+  <section id="hero" class="hero-editorial hero-pillar" aria-label="Hero section">
     <div class="hero-inner">
-      <!-- Left: editorial text -->
       <div class="hero-left">
+        <p class="hero-eyebrow"><span class="en">Finance & Wealth</span><span class="ar">المالية والثروة</span></p>
         <h1 class="hero-headline">
-          <span class="en">Smart money decisions,<br>for every family milestone.</span>
-          <span class="ar">قرارات مالية ذكية،<br>لكل مرحلة في حياة أسرتك.</span>
+          <span class="en">Your money decisions,<br>clear and confident.</span>
+          <span class="ar">قراراتك المالية،<br>واضحة وواثقة.</span>
         </h1>
         <p class="hero-sub">
-          <span class="en">Health, money, faith, travel, home,<br>one calm platform built for Gulf families.</span>
-          <span class="ar">الصحة والمال والإيمان والسفر والمنزل، منصة هادئة واحدة صُممت للأسرة الخليجية. مجانية دائماً.</span>
+          <span class="en">Mortgage, Zakat, savings, and budget tools — practical calculators for Gulf families.</span>
+          <span class="ar">التمويل والزكاة والادخار والميزانية — حاسبات عملية للعائلات الخليجية.</span>
         </p>
         <div class="hero-cta-row">
-          <a href="/our-vision.html" class="btn-primary">
-            <span class="en">Explore the Platform</span>
-            <span class="ar">استكشف المنصة</span>
+          <a href="#tools" class="btn-primary">
+            <span class="en">Explore tools</span>
+            <span class="ar">استكشف الأدوات</span>
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
-          <a href="/about.html" class="btn-outline">
-            <span class="en">Our Story</span>
-            <span class="ar">قصتنا</span>
+          <a href="/library.html?cat=finance" class="btn-outline">
+            <span class="en">All tools</span>
+            <span class="ar">كل الأدوات</span>
           </a>
         </div>
+        <p class="hero-trust-line" aria-hidden="true">
+          <span><span class="en">Free forever</span><span class="ar">مجاني دائماً</span></span>
+          <span><span class="en">Bilingual</span><span class="ar">عربي · English</span></span>
+          <span><span class="en">Private by design</span><span class="ar">خصوصيتك محفوظة</span></span>
+        </p>
       </div>
-      <!-- Right: circular family image -->
       <div class="hero-right" aria-hidden="true">
         <div class="hero-circle-wrap">
-          <!-- Floating trust badge -->
           <div class="hero-badge" aria-hidden="true">
             <div class="hero-badge-icon">
-              <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
             <div>
               <div class="hero-badge-label"><span class="en">Always with you</span><span class="ar">دائماً معك</span></div>
-              <div class="hero-badge-value"><span class="en">Free · Private · Human</span><span class="ar">مجاني · خاص · إنساني</span></div>
+              <div class="hero-badge-value"><span class="en">Free · Private</span><span class="ar">مجاني · خاص</span></div>
             </div>
           </div>
           <div class="hero-circle">
-            <img
-              src="/finance-hero.webp"
-              alt="DOT.FORLIFE, منصة الأسرة"
-              width="900" height="900"
-              loading="eager"
-              fetchpriority="high"
-              decoding="async"
-            />
+            <img src="/finance-hero.webp" alt="DOTFORLIFE" width="900" height="900" loading="eager" fetchpriority="high" decoding="async"/>
           </div>
         </div>
       </div>
     </div>
+    <div class="pillar-hero-ribbon">
+      <div class="pillar-hero-ribbon-inner">
+        <span class="en">Sharia-aware · Free · No sign-up</span>
+        <span class="ar">متوافق شرعاً · مجاني · بدون تسجيل</span>
+      </div>
+    </div>
   </section>
-<style>
-/* ═════════════════════════════════════════════════════
-   Finance PAGE — BODY DESIGN SYSTEM
-   Luxurious · Elegant · Brand-Aligned
-   ═════════════════════════════════════════════════════ */
-*, *::before, *::after { box-sizing:border-box }
-#page, .hl-section, .hl-container { overflow-wrap:anywhere; word-wrap:break-word }
-.hl-container { width:100%; max-width:var(--w-xl,1280px); margin:0 auto; padding:0 clamp(1rem,4vw,2.5rem) }
-.hl-section { padding:clamp(2.5rem,5vw,5rem) 0 }
-.hl-section--cream { background:#FAF8F4 }
-[data-theme="dark"] .hl-section--cream { background:var(--card-bg,#1A1E24) }
-.hl-eyebrow { display:flex; align-items:center; gap:.5rem; font-size:.82rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:#054241; margin-bottom:.75rem }
-.hl-eyebrow svg { flex-shrink:0; width:16px; height:16px }
-.hl-h2 { font-family:'Almarai','Cinzel',Georgia,serif; font-size:clamp(1.4rem,3vw,1.9rem); font-weight:800; line-height:1.35; color:var(--text,#1A1E24); margin:0 0 1.2rem; letter-spacing:-.01em }
-[data-lang="ar"] .hl-h2 { letter-spacing:0 }
-.hl-sub { font-size:clamp(.92rem,1.2vw,1.05rem); color:var(--text-2,#5C534A); line-height:1.75; margin:0 0 2.5rem; max-width:640px }
-[data-lang="ar"] .hl-sub { max-width:none }
-.hl-intro-text p { font-size:clamp(.94rem,1.2vw,1.04rem); color:var(--text-2,#5C534A); line-height:1.85; margin:0 }
-[data-lang="ar"] .hl-intro-text p { line-height:1.9 }
-.hl-grid { display:grid; gap:1.25rem; width:100% }
-.hl-grid--tools { grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr)) }
-.hl-grid--guides { grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr)) }
-.hl-grid--topic { grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr)) }
-.hl-card {
-  display:flex; flex-direction:column; border-radius:18px; padding:1.5rem 1.4rem;
-  background:var(--card-bg,#fff); border:1px solid rgba(5,66,65,.08);
-  box-shadow:0 8px 30px rgba(5,66,65,.06);
-  transition:transform .22s cubic-bezier(.22,1,.36,1), box-shadow .22s cubic-bezier(.22,1,.36,1);
-  text-decoration:none; color:inherit; overflow-wrap:anywhere
-}
-.hl-card:hover {
-  transform:translateY(-4px);
-  box-shadow:0 16px 48px rgba(5,66,65,.1);
-}
-.hl-card:focus-visible { outline:2px solid #054241; outline-offset:3px }
-.hl-card--tool { text-decoration:none; color:inherit; cursor:pointer }
-.hl-card-icon {
-  width:44px; height:44px; border-radius:14px; display:flex; align-items:center; justify-content:center;
-  background:rgba(5,66,65,.06); color:var(--hl-accent,#054241); margin-bottom:1rem; flex-shrink:0;
-  transition:background .2s, transform .2s
-}
-.hl-card:hover .hl-card-icon { background:rgba(5,66,65,.1); transform:scale(1.05) }
-.hl-card-icon svg { width:20px; height:20px; stroke:currentColor }
-.hl-card-icon--emoji { font-size:1.3rem }
-.hl-card-title { font-size:.98rem; font-weight:700; line-height:1.45; margin-bottom:.6rem; color:var(--text,#1A1E24) }
-.hl-card-desc { font-size:.84rem; line-height:1.6; color:var(--text-2,#5C534A); margin-bottom:1rem; flex:1 }
-.hl-card-arrow { font-size:.82rem; font-weight:700; color:#054241; margin-top:auto; transition:gap .2s; display:flex; align-items:center; gap:.3rem }
-.hl-card:hover .hl-card-arrow { gap:.6rem }
-[data-lang="ar"] .hl-card-arrow { flex-direction:row-reverse }
-.hl-card--article { background:var(--card-bg,#fff); padding:1.5rem }
-.hl-card--article .hl-card-title { font-size:.95rem; font-weight:700; margin-bottom:.5rem; flex:1 }
-.hl-card--article .hl-card-desc { font-size:.82rem; margin-bottom:.7rem }
-.hl-card--article .hl-card-arrow { font-size:.8rem }
-/* Guide Strip */
-.hl-guide-strip {
-  background:linear-gradient(135deg,rgba(5,66,65,.04),rgba(106,191,184,.08));
-  border-top:1px solid rgba(5,66,65,.06); border-bottom:1px solid rgba(5,66,65,.06);
-  padding:1.2rem 0
-}
-.hl-guide-strip-inner {
-  display:flex; align-items:center; gap:1rem; flex-wrap:wrap;
-  padding:0 clamp(1rem,4vw,2.5rem)
-}
-.hl-guide-strip-icon { width:40px; height:40px; border-radius:12px; display:flex; align-items:center; justify-content:center; background:#054241; color:#fff; flex-shrink:0 }
-.hl-guide-strip-icon svg { width:18px; height:18px }
-.hl-guide-strip-content { flex:1; min-width:0 }
-.hl-guide-strip-label { font-size:.75rem; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:#054241; display:block; margin-bottom:.15rem }
-.hl-guide-strip-title { font-size:.92rem; font-weight:700; color:var(--text,#1A1E24); display:block; line-height:1.4 }
-.hl-guide-strip-link {
-  font-size:.82rem; font-weight:700; color:#054241; text-decoration:none; white-space:nowrap;
-  padding:.6rem 1.2rem; border-radius:999px; border:1.5px solid rgba(5,66,65,.15);
-  transition:background .2s, color .2s
-}
-.hl-guide-strip-link:hover { background:#054241; color:#fff }
-[data-theme="dark"] .hl-guide-strip-link:hover { background:#054241; color:#054241 }
-/* Topic Authority */
-.hl-topic-title { font-size:.95rem; font-weight:700; margin:0 0 1rem; color:var(--text,#1A1E24) }
-.hl-topic-list { list-style:none; padding:0; margin:0 }
-.hl-topic-list li { margin-bottom:.5rem; font-size:.85rem; line-height:1.5 }
-.hl-topic-list a { color:var(--text-2,#5C534A); text-decoration:none; transition:color .2s }
-.hl-topic-list a:hover { color:#054241; font-weight:600 }
-[data-theme="dark"] .hl-topic-list a:hover { color:#054241 }
-.hl-card--topic { padding:1.5rem }
-/* Dark Mode */
-[data-theme="dark"] .hl-card { background:var(--card-bg,#1A1E24); border-color:rgba(106,191,184,.1); box-shadow:0 8px 30px rgba(0,0,0,.2) }
-[data-theme="dark"] .hl-card:hover { box-shadow:0 16px 48px rgba(0,0,0,.3) }
-[data-theme="dark"] .hl-card-icon { background:rgba(106,191,184,.1) }
-[data-theme="dark"] .hl-guide-strip { background:linear-gradient(135deg,rgba(5,66,65,.1),rgba(106,191,184,.05)); border-color:rgba(106,191,184,.1) }
-[data-theme="dark"] .hl-guide-strip-link { border-color:rgba(106,191,184,.2); color:#054241 }
-/* Responsive */
-@media(max-width:640px){
-  .hl-section { padding:clamp(1.8rem,4vw,2.5rem) 0 }
-  .hl-h2 { font-size:1.25rem; margin-bottom:.8rem }
-  .hl-sub { margin-bottom:1.5rem }
-  .hl-grid { gap:1rem }
-  .hl-guide-strip-inner { flex-direction:column; align-items:flex-start }
-  .hl-guide-strip-link { align-self:stretch; text-align:center }
-}
-@media(max-width:480px){
-  .hl-grid--tools { grid-template-columns:1fr }
-  .hl-grid--guides { grid-template-columns:1fr }
-  .hl-grid--topic { grid-template-columns:1fr }
-}
-</style>
 <div id="page">
 
   <section class="hl-section hl-section--cream">
@@ -383,20 +279,6 @@
       <div class="hl-eyebrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg><span class="en">Latest</span><span class="ar">أحدث المقالات</span></div>
       <h2 class="hl-h2"><span class="en">New Articles & Guides</span><span class="ar">جديد المقالات والأدلة</span></h2>
       <p class="hl-sub"><span class="en">Fresh content for Gulf families, updated regularly.</span><span class="ar">محتوى جديد للعائلات الخليجية، يُحدَّث باستمرار.</span></p>
-      <style>
-      .hl-article-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr)); gap:1.5rem; width:100% }
-      .hl-art-card { display:flex; flex-direction:column; border-radius:18px; overflow:hidden; background:var(--card-bg,#fff); border:1px solid rgba(5,66,65,.08); box-shadow:0 8px 30px rgba(5,66,65,.06); transition:transform .22s cubic-bezier(.22,1,.36,1), box-shadow .22s cubic-bezier(.22,1,.36,1); text-decoration:none; color:inherit }
-      .hl-art-card:hover { transform:translateY(-4px); box-shadow:0 16px 48px rgba(5,66,65,.1) }
-      .hl-art-card-img { width:100%; height:180px; object-fit:cover; display:block; background:linear-gradient(135deg,#054241,#0a6b63) }
-      .hl-art-card-body { padding:1.2rem 1.4rem 1.4rem; display:flex; flex-direction:column; flex:1 }
-      .hl-art-card-kicker { font-size:.7rem; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:#6abfb8; margin-bottom:.4rem; display:block }
-      .hl-art-card-title { font-size:.92rem; font-weight:700; line-height:1.45; color:var(--text,#1A1E24); margin-bottom:.4rem; flex:1 }
-      .hl-art-card-desc { font-size:.8rem; line-height:1.55; color:var(--text-2,#5C534A); margin-bottom:.6rem }
-      .hl-art-card-arrow { font-size:.78rem; font-weight:700; color:#6abfb8; display:flex; align-items:center; gap:.3rem; transition:gap .2s }
-      .hl-art-card:hover .hl-art-card-arrow { gap:.6rem }
-      [data-lang="ar"] .hl-art-card-arrow { flex-direction:row-reverse }
-      @media(max-width:480px){ .hl-article-grid { grid-template-columns:1fr } }
-      </style>
       <div class="hl-article-grid">
       </div>
     </div>
@@ -449,7 +331,7 @@
           <h4><span class="en">Life</span><span class="ar">الحياة</span></h4>
           <ul>
             <li><a href="health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
-            <li><a href="finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li>
+            <li><a href="finance.html" aria-current="page"><span class="en">Finance</span><span class="ar">المالية</span></a></li>
             <li><a href="real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li>
             <li><a href="travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li>
             <li><a href="islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li>
