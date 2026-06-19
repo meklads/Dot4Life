@@ -1,0 +1,200 @@
+{
+  "version": 1,
+  "name": "Dot4Life Occasion Calendar",
+  "description": "Islamic Hijri months, Eids, and GCC family seasons. No Western/non-Islamic holidays.",
+  "timezone": "Asia/Riyadh",
+  "forbiddenTags": [
+    "christmas",
+    "halloween",
+    "valentine",
+    "easter",
+    "new-year-western",
+    "thanksgiving",
+    "carnival"
+  ],
+  "occasions": [
+    {
+      "id": "muharram",
+      "label_en": "Muharram",
+      "label_ar": "محرم",
+      "type": "hijri_month",
+      "preferredCategories": ["faith", "family", "wellness"],
+      "templateTags": ["muharram", "faith", "new-year-hijri"],
+      "ranges": [
+        { "start": "2025-06-27", "end": "2025-07-25" },
+        { "start": "2026-06-17", "end": "2026-07-16" },
+        { "start": "2027-06-07", "end": "2027-07-06" },
+        { "start": "2028-05-26", "end": "2028-06-24" }
+      ]
+    },
+    {
+      "id": "ashura",
+      "label_en": "Day of Ashura",
+      "label_ar": "عاشوراء",
+      "type": "hijri_day",
+      "preferredCategories": ["faith"],
+      "templateTags": ["ashura", "muharram", "fasting"],
+      "ranges": [
+        { "start": "2025-07-05", "end": "2025-07-07" },
+        { "start": "2026-06-25", "end": "2026-06-27" },
+        { "start": "2027-06-15", "end": "2027-06-17" },
+        { "start": "2028-06-04", "end": "2028-06-06" }
+      ]
+    },
+    {
+      "id": "shaban",
+      "label_en": "Sha'ban",
+      "label_ar": "شعبان",
+      "type": "hijri_month",
+      "preferredCategories": ["faith", "wellness", "family"],
+      "templateTags": ["shaban", "ramadan-prep", "faith"],
+      "ranges": [
+        { "start": "2025-01-30", "end": "2025-02-28" },
+        { "start": "2026-01-19", "end": "2026-02-17" },
+        { "start": "2027-01-09", "end": "2027-02-07" },
+        { "start": "2028-01-28", "end": "2028-02-26" }
+      ]
+    },
+    {
+      "id": "ramadan",
+      "label_en": "Ramadan",
+      "label_ar": "رمضان",
+      "type": "hijri_month",
+      "preferredCategories": ["faith", "meals", "family", "wellness"],
+      "templateTags": ["ramadan"],
+      "maxFaithPerWeek": 3,
+      "ranges": [
+        { "start": "2025-03-01", "end": "2025-03-29" },
+        { "start": "2026-02-18", "end": "2026-03-19" },
+        { "start": "2027-02-08", "end": "2027-03-09" },
+        { "start": "2028-01-28", "end": "2028-02-26" }
+      ]
+    },
+    {
+      "id": "eid-fitr",
+      "label_en": "Eid al-Fitr",
+      "label_ar": "عيد الفطر",
+      "type": "eid",
+      "preferredCategories": ["family", "faith", "meals"],
+      "templateTags": ["eid-fitr", "eid", "family"],
+      "ranges": [
+        { "start": "2025-03-30", "end": "2025-04-02" },
+        { "start": "2026-03-20", "end": "2026-03-23" },
+        { "start": "2027-03-10", "end": "2027-03-13" },
+        { "start": "2028-02-27", "end": "2028-03-01" }
+      ]
+    },
+    {
+      "id": "shawwal",
+      "label_en": "Shawwal",
+      "label_ar": "شوال",
+      "type": "hijri_month",
+      "preferredCategories": ["faith", "family", "wellness"],
+      "templateTags": ["shawwal", "fasting-six", "faith"],
+      "ranges": [
+        { "start": "2025-03-30", "end": "2025-04-28" },
+        { "start": "2026-03-20", "end": "2026-04-18" },
+        { "start": "2027-03-10", "end": "2027-04-08" },
+        { "start": "2028-02-27", "end": "2028-03-28" }
+      ]
+    },
+    {
+      "id": "dhul-hijjah",
+      "label_en": "Dhul Hijjah",
+      "label_ar": "ذو الحجة",
+      "type": "hijri_month",
+      "preferredCategories": ["faith", "family", "money"],
+      "templateTags": ["dhul-hijjah", "hajj", "qurbani", "faith"],
+      "ranges": [
+        { "start": "2025-05-28", "end": "2025-06-26" },
+        { "start": "2026-05-18", "end": "2026-06-16" },
+        { "start": "2027-05-08", "end": "2027-06-06" },
+        { "start": "2028-04-26", "end": "2028-05-25" }
+      ]
+    },
+    {
+      "id": "eid-adha",
+      "label_en": "Eid al-Adha",
+      "label_ar": "عيد الأضحى",
+      "type": "eid",
+      "preferredCategories": ["family", "faith", "meals"],
+      "templateTags": ["eid-adha", "eid", "qurbani", "family"],
+      "ranges": [
+        { "start": "2025-06-06", "end": "2025-06-09" },
+        { "start": "2026-05-27", "end": "2026-05-30" },
+        { "start": "2027-05-17", "end": "2027-05-20" },
+        { "start": "2028-05-06", "end": "2028-05-09" }
+      ]
+    },
+    {
+      "id": "hajj-season",
+      "label_en": "Hajj season (first 10 days)",
+      "label_ar": "موسم الحج (العشر)",
+      "type": "hijri_window",
+      "preferredCategories": ["faith", "family"],
+      "templateTags": ["hajj", "dhul-hijjah", "arafah", "faith"],
+      "ranges": [
+        { "start": "2025-06-04", "end": "2025-06-06" },
+        { "start": "2026-05-24", "end": "2026-05-26" },
+        { "start": "2027-05-14", "end": "2027-05-16" },
+        { "start": "2028-05-03", "end": "2028-05-05" }
+      ]
+    },
+    {
+      "id": "summer-vacation",
+      "label_en": "GCC summer vacation",
+      "label_ar": "إجازة الصيف",
+      "type": "gcc_season",
+      "preferredCategories": ["family", "wellness", "living", "meals"],
+      "templateTags": ["summer", "gulf", "family", "travel"],
+      "ranges": [
+        { "start": "2025-06-15", "end": "2025-08-31" },
+        { "start": "2026-06-15", "end": "2026-08-31" },
+        { "start": "2027-06-15", "end": "2027-08-31" },
+        { "start": "2028-06-15", "end": "2028-08-31" }
+      ]
+    },
+    {
+      "id": "school-start",
+      "label_en": "Back to school (GCC)",
+      "label_ar": "بداية الدراسة",
+      "type": "gcc_season",
+      "preferredCategories": ["family", "wellness", "living"],
+      "templateTags": ["school", "family", "routine", "kids"],
+      "ranges": [
+        { "start": "2025-08-20", "end": "2025-09-15" },
+        { "start": "2026-08-20", "end": "2026-09-15" },
+        { "start": "2027-08-20", "end": "2027-09-15" },
+        { "start": "2028-08-20", "end": "2028-09-15" }
+      ]
+    },
+    {
+      "id": "midterm-break",
+      "label_en": "Mid-year school break",
+      "label_ar": "إجازة منتصف العام",
+      "type": "gcc_season",
+      "preferredCategories": ["family", "wellness"],
+      "templateTags": ["school-break", "family"],
+      "ranges": [
+        { "start": "2025-12-20", "end": "2026-01-05" },
+        { "start": "2026-12-20", "end": "2027-01-05" },
+        { "start": "2027-12-20", "end": "2028-01-05" }
+      ]
+    }
+  ],
+  "priorityWhenOverlapping": [
+    "eid-fitr",
+    "eid-adha",
+    "hajj-season",
+    "ashura",
+    "ramadan",
+    "shaban",
+    "shawwal",
+    "dhul-hijjah",
+    "muharram",
+    "school-start",
+    "summer-vacation",
+    "midterm-break"
+  ],
+  "notes": "Gregorian ranges follow Umm al-Qura (Saudi). Update annually via scripts/build_occasion_calendar.py"
+}

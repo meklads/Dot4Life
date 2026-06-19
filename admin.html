@@ -160,8 +160,8 @@ async function loadAutopilotInfo() {
     const ahead = dates.filter(d => d >= today).length;
     box.style.display = 'block';
     box.innerHTML = '<strong>📋 <span class="en">Autopilot status</span><span class="ar">حالة التشغيل التلقائي</span></strong><br>'
-      + '<span class="en">Buffer: <strong>' + ahead + '</strong> days scheduled · Last run: ' + esc(ap.lastRun || file.updated || '—') + ' · Pool: ' + (ap.templatePool || '—') + ' templates</span>'
-      + '<span class="ar">المخزون: <strong>' + ahead + '</strong> يوم مجدول · آخر تشغيل: ' + esc(ap.lastRun || file.updated || '—') + '</span><br>'
+      + '<span class="en">Buffer: <strong>' + ahead + '</strong> days · Occasions: Islamic + GCC seasons · Pool: ' + (ap.templatePool || '—') + '</span>'
+      + '<span class="ar">المخزون: <strong>' + ahead + '</strong> يوم · المناسبات: إسلامية + مواسم خليجية</span><br>'
       + '<span class="en" style="opacity:.85">Override flow: edit → Export JSON → commit <code>data/capsules-published.json</code></span>'
       + '<span class="ar" style="opacity:.85">للتعديل: عدّل → صدّر JSON → احفظ في <code>data/capsules-published.json</code></span>';
   } catch { box.style.display = 'none'; }
