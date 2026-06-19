@@ -1586,12 +1586,12 @@ html[data-lang="ar"] .site-footer .footer-bottom-links a span.ar {
 /* Category pages: lower the sub-nav slightly from the hero */
 .category-page #sub-nav { margin-top: 0; } /* sub-nav flush with hero */
 
-/* Category pages: hero green gradient starts from the very top (override page-specific body top padding) */
+/* Category pages: hero starts from the very top (override page-specific body top padding) */
 body.category-page { padding-top: 0 !important; }
-/* Tool pages with sub-nav need proper offset to clear both fixed navbars */
-body.category-page.has-subnav { padding-top: 158px !important; }
+/* Only offset when a sub-nav bar actually exists in the DOM */
+body.category-page:has(#sub-nav):not(.health-hub-page) { padding-top: 158px !important; }
 @media (max-width: 768px) {
-  body.category-page.has-subnav { padding-top: 138px !important; }
+  body.category-page:has(#sub-nav):not(.health-hub-page) { padding-top: 138px !important; }
 }
 
 /* Internal pages: hero-stats (metrics + "start your day" bar) only on homepage, hidden on category-class pages */
