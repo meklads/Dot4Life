@@ -820,9 +820,25 @@ function switchTab(which) {
 }
 
 // ═══════════════════════════════════════════════════════════════
-// REGISTER
+// REGISTER (static — localStorage, no backend)
 // ═══════════════════════════════════════════════════════════════
-const API = 'https://dotforlife-production.up.railway.app/api';
+async function sha256Hex(msg) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(msg));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+function weekFromDueDate(dueD) {
+  const due = new Date(dueD);
+  const today = new Date();
+  const diffDays = Math.round((due - today) / (1000 * 60 * 60 * 24));
+  return Math.max(1, Math.min(40, 40 - Math.round(diffDays / 7)));
+}
+
+function saveLocalProfile(profile) {
+  localStorage.setItem('dfl-pj-token', profile.token);
+  localStorage.setItem('dfl-pj-profile', JSON.stringify(profile));
+  localStorage.setItem('dfl-pregnancy', JSON.stringify({ week: profile.currentWeek, dueDate: profile.dueDate }));
+}
 
 async function registerJourney() {
   const name     = document.getElementById('reg-name').value.trim();
@@ -844,35 +860,30 @@ async function registerJourney() {
   btn.innerHTML = isAr ? 'جاري التسجيل...' : 'Registering...';
 
   try {
-    const res = await fetch(`${API}/pregnancy/subscribe`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, email, due_date: dueD, baby_name: babyName || undefined }),
-    });
-    const data = await res.json();
+    const token = 'local-' + (await sha256Hex(email + dueD)).slice(0, 20);
+    const currentWeek = weekFromDueDate(dueD);
+    const profile = { token, name, email, dueDate: dueD, babyName: babyName || '', currentWeek };
 
-    if (!res.ok) throw new Error(data.error || 'Server error');
+    saveLocalProfile(profile);
 
-    // Save token to localStorage for this device
-    localStorage.setItem('dfl-pj-token', data.token);
-    localStorage.setItem('dfl-pregnancy', JSON.stringify({ week: data.currentWeek, dueDate: dueD }));
+    if (window.DFL && DFL.subscribePregnancyList) {
+      DFL.subscribePregnancyList(email, name);
+    }
 
-    // Show success
-    const personalUrl = `${location.origin}/pregnancy-journey.html?token=${data.token}`;
+    const personalUrl = `${location.origin}/pregnancy-journey.html?token=${token}`;
     msg.className = 'pj-reg-msg success';
     msg.innerHTML = isAr
-      ? `✓ تم التسجيل! سيصلك بريدك كل أحد.<br/>
+      ? `✓ تم حفظ رحلتك على هذا الجهاز.<br/>
          <strong>رابطك الشخصي:</strong><br/>
          <a href="${personalUrl}" style="color:#2a9a98;word-break:break-all">${personalUrl}</a><br/>
-         <small style="color:#5C534A">احفظي هذا الرابط، يفتح صفحتك دائماً على أسبوعك الحالي</small>`
-      : `✓ Registered! You\'ll receive your weekly email every Sunday.<br/>
+         <small style="color:#5C534A">احفظي هذا الرابط — البريد الأسبوعي يُفعّل لاحقاً عبر Brevo</small>`
+      : `✓ Journey saved on this device.<br/>
          <strong>Your personal link:</strong><br/>
          <a href="${personalUrl}" style="color:#2a9a98;word-break:break-all">${personalUrl}</a><br/>
-         <small style="color:#5C534A">Bookmark this link, it always opens at your current week</small>`;
+         <small style="color:#5C534A">Bookmark this link — weekly email activates when Brevo list is wired</small>`;
     msg.style.display = 'block';
 
-    // Auto-show current week after 1.5s
-    setTimeout(() => showMain(data.currentWeek), 1500);
+    setTimeout(() => showMain(currentWeek), 1500);
 
   } catch(err) {
     msg.className = 'pj-reg-msg error';
@@ -885,24 +896,27 @@ async function registerJourney() {
 }
 
 // ═══════════════════════════════════════════════════════════════
-// LOAD BY TOKEN (personalized URL)
+// LOAD BY TOKEN (local profile)
 // ═══════════════════════════════════════════════════════════════
 async function loadByToken(token) {
   try {
-    const res  = await fetch(`${API}/pregnancy/me/${token}`);
-    if (!res.ok) return false;
-    const data = await res.json();
-    // Persist
-    localStorage.setItem('dfl-pj-token', token);
+    const raw = localStorage.getItem('dfl-pj-profile');
+    if (!raw) return false;
+    const data = JSON.parse(raw);
+    if (data.token !== token) return false;
+
     dueDate = new Date(data.dueDate);
-    localStorage.setItem('dfl-pregnancy', JSON.stringify({ week: data.currentWeek, dueDate: data.dueDate }));
-    // Show personalized greeting
+    const week = weekFromDueDate(data.dueDate);
+    saveLocalProfile(Object.assign({}, data, { currentWeek: week }));
+
     const pjSub = document.querySelector('.pj-sub');
     if (pjSub) {
-      const greet = data.babyName ? `أهلاً ${data.name} و${data.babyName} <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2v6m0 0l-3-3m3 3l3-3"/><path d="M12 16v6m0 0l-3-3m3 3l3-3"/><path d="M2 12h6m0 0L5 9m3 3l-3 3"/><path d="M16 12h6m0 0l-3-3m3 3l-3 3"/></svg>` : `أهلاً ${data.name} <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2v6m0 0l-3-3m3 3l3-3"/><path d="M12 16v6m0 0l-3-3m3 3l3-3"/><path d="M2 12h6m0 0L5 9m3 3l-3 3"/><path d="M16 12h6m0 0l-3-3m3 3l-3 3"/></svg>`;
-      pjSub.innerHTML = `<span class="ar">${greet}</span><span class="en">Welcome back, ${data.name} <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2v6m0 0l-3-3m3 3l3-3"/><path d="M12 16v6m0 0l-3-3m3 3l3-3"/><path d="M2 12h6m0 0L5 9m3 3l-3 3"/><path d="M16 12h6m0 0l-3-3m3 3l-3 3"/></svg></span>`;
+      const greet = data.babyName
+        ? `أهلاً ${data.name} و${data.babyName}`
+        : `أهلاً ${data.name}`;
+      pjSub.innerHTML = `<span class="ar">${greet}</span><span class="en">Welcome back, ${data.name}</span>`;
     }
-    showMain(data.currentWeek);
+    showMain(week);
     return true;
   } catch(e) {
     return false;
@@ -1031,6 +1045,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   </a>
 </nav>
 <!-- ════════════════════════════════════════════════════════════ -->
+<script src="/scripts/dfl-config.js?v=20260619f"></script>
+<script src="/scripts/dfl-email-list.js?v=20260619f"></script>
 <script src="/scripts/global.js?v=20260619e" defer></script>
 <!-- SEO_PROFILE
   page_type: page
