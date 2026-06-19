@@ -116,7 +116,7 @@
         throw new Error('no capsule');
       })
       .catch(function () {
-        return fetchJson('/data/capsules-published.json?v=20260618')
+        return fetchJson('/data/capsules-published.json?v=20260619e')
           .then(function (file) {
             var entry = file.byDate && (file.byDate[date] || file.byDate[Object.keys(file.byDate).sort().pop()]);
             if (entry) applyCapsule(fromPublishedEntry(entry, date));

@@ -23,13 +23,13 @@
   <meta property="og:url" content="https://dotforlife.com/life-guide.html">
   <meta property="og:title" content="Life Guides | Dot4Life">
   <meta property="og:description" content="Step-by-step guides for everyday life, cooking, family routines, wellness and faith. Bilingual.">
-  <meta property="og:image" content="https://dotforlife.com/og/og-default.png">
+  <meta property="og:image" content="https://dotforlife.com/d4l1.webp">
   <meta property="og:locale" content="en_US">
   <meta property="og:locale:alternate" content="ar_SA">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Life Guides | Dot4Life">
   <meta name="twitter:description" content="Step-by-step guides for everyday life, cooking, family routines, wellness and faith. Bilingual.">
-  <meta name="twitter:image" content="https://dotforlife.com/og/og-default.png">
+  <meta name="twitter:image" content="https://dotforlife.com/d4l1.webp">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Life Guide, DOTFORLIFE","url":"https://dotforlife.com/life-guide.html","inLanguage":["en","ar"]}</script>
   <link rel="alternate" hreflang="ar-SA" href="https://dotforlife.com/life-guide.html" />
   <link rel="alternate" hreflang="en" href="https://dotforlife.com/life-guide.html" />
@@ -60,8 +60,9 @@
       <li><a href="islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li>
       <li><a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a></li>
       <li><a href="archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a></li>
-      <li><a href="/blog.html"><span class="en">blog</span><span class="ar">المدونة</span></a></li>
+      <li><a href="/blog.html"><span class="en">Blog</span><span class="ar">المدونة</span></a></li>
       <li><a href="library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a></li>
+      <li><a href="/life-guide.html"><span class="en">Guides</span><span class="ar">الأدلة</span></a></li>
     </ul>
     <div class="nav-controls">
       <button class="nav-btn" id="lang-toggle" aria-label="Switch language"><span class="en">عربي</span><span class="ar">English</span></button>
@@ -474,7 +475,7 @@ var GUIDES = {
 // ── FAITH & REFLECTION ──────────────────────
 'morning-duas': {
   cat:'faith', catEn:'Faith & Reflection', catAr:'الإيمان والتأمل', catHash:'#cat-faith',
-  emoji:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 2v4a3 3 0 0 1-3 3h-4a3 3 0 0 1-3-3V2"/></svg>', tagEn:'Faith · morning', tagAr:'إيمان · الصباح',
+  emoji:'🕌', tagEn:'Faith · morning', tagAr:'إيمان · الصباح',
   titleEn:'Morning Remembrance (Adhkar)', titleAr:'أذكار الصباح',
   emotionEn:'Begin your day in His name and watch how it unfolds.',
   emotionAr:'ابدأ يومك باسمه وانظر كيف يتكشّف.',
@@ -813,6 +814,14 @@ function renderGuide(id, g) {
   });
 
   document.getElementById('guide-plan').addEventListener('click', function(){
+    var tasks = [];
+    try { tasks = JSON.parse(localStorage.getItem('dfl-tasks') || '[]'); } catch(e) {}
+    var title = t(g.titleEn, g.titleAr);
+    if (!tasks.find(function(x){ return x.text === title; })) {
+      tasks.unshift({ id: Date.now(), text: title, done: false });
+      localStorage.setItem('dfl-tasks', JSON.stringify(tasks.slice(0, 20)));
+      try { localStorage.setItem('dfl-all-tasks', JSON.stringify(tasks.slice(0, 20))); } catch(e) {}
+    }
     this.innerHTML = t('✓ Added!','✓ أُضيف');
     this.style.cssText = 'background:rgba(42,154,152,.12);color:#2a9a98;border-color:#2a9a98';
   });
@@ -856,15 +865,7 @@ function renderGuide(id, g) {
     h.setAttribute('lang', l);
     h.setAttribute('dir', l==='ar'?'rtl':'ltr');
     localStorage.setItem('dfl-lang', l);
-    // Re-render guide in new language
     window.location.reload();
-  });
-
-  var themeBtn = document.getElementById('theme-toggle');
-  themeBtn && themeBtn.addEventListener('click', function(){
-    var t = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', t);
-    localStorage.setItem('dfl-theme', t);
   });
 })();
 </script>
@@ -956,7 +957,7 @@ function renderGuide(id, g) {
   </a>
 </nav>
 <!-- ════════════════════════════════════════════════════════════ -->
-<script src="/scripts/global.js" defer></script>
+<script src="/scripts/global.js?v=20260619e" defer></script>
 <!-- SEO_PROFILE
   page_type: page
   cluster: finance

@@ -23,13 +23,13 @@
   <meta property="og:url" content="https://dotforlife.com/notes.html">
   <meta property="og:title" content="My Notes | Dot4Life">
   <meta property="og:description" content="Your personal notes space on Dot4Life. Jot ideas, reflections and reminders.">
-  <meta property="og:image" content="https://dotforlife.com/og/og-default.png">
+  <meta property="og:image" content="https://dotforlife.com/d4l1.webp">
   <meta property="og:locale" content="en_US">
   <meta property="og:locale:alternate" content="ar_SA">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="My Notes | Dot4Life">
   <meta name="twitter:description" content="Your personal notes space on Dot4Life. Jot ideas, reflections and reminders.">
-  <meta name="twitter:image" content="https://dotforlife.com/og/og-default.png">
+  <meta name="twitter:image" content="https://dotforlife.com/d4l1.webp">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Notes, DOTFORLIFE | ملاحظاتي","url":"https://dotforlife.com/notes.html","inLanguage":["en","ar"]}</script>
   <link rel="alternate" hreflang="ar-SA" href="https://dotforlife.com/notes.html" />
   <link rel="alternate" hreflang="en" href="https://dotforlife.com/notes.html" />
@@ -59,8 +59,9 @@
       <li><a href="islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li>
       <li><a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a></li>
       <li><a href="archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a></li>
-      <li><a href="/blog.html"><span class="en">blog</span><span class="ar">المدونة</span></a></li>
+      <li><a href="/blog.html"><span class="en">Blog</span><span class="ar">المدونة</span></a></li>
       <li><a href="library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a></li>
+      <li><a href="/life-guide.html"><span class="en">Guides</span><span class="ar">الأدلة</span></a></li>
     </ul>
     <div class="nav-controls">
       <button class="nav-btn" id="lang-toggle" aria-label="Switch language"><span class="en">عربي</span><span class="ar">English</span></button>
@@ -215,19 +216,6 @@
 
   document.addEventListener('dfl:langchange', function(){ updatePlaceholder(); render(); });
 
-  var themeBtn = document.getElementById('theme-toggle');
-  function applyTheme(t){
-    document.documentElement.setAttribute('data-theme',t);
-    localStorage.setItem('dfl-theme',t);
-    var icon = t==='dark'?'<svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>':'<svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
-    themeBtn.querySelector('.en').textContent = icon;
-    themeBtn.querySelector('.ar').textContent = icon;
-  }
-  applyTheme(localStorage.getItem('dfl-theme')||'light');
-  themeBtn.addEventListener('click', function(){
-    applyTheme(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark');
-  });
-
   // ── Data
   function getNotes(){ try{ return JSON.parse(localStorage.getItem('dfl-notes')||'[]'); }catch(e){ return []; } }
   function setNotes(a){ localStorage.setItem('dfl-notes', JSON.stringify(a)); }
@@ -271,18 +259,30 @@
   function render(){
     var notes = getNotes();
     var list = document.getElementById('notes-list');
-    if(!notes.length){
+    var reminder = (localStorage.getItem('dfl-reminder') || '').trim();
+    var html = '';
+    if (reminder) {
+      html += '<div class="note-item" style="border-color:var(--gold,#c9a227);background:rgba(201,162,39,.06)">' +
+        '<div class="note-body"><strong>' + (lang()==='ar' ? 'تذكير اليوم: ' : 'Today\'s reminder: ') + '</strong>' + esc(reminder) + '</div>' +
+        '</div>';
+    }
+    if(!notes.length && !reminder){
       list.innerHTML = '<div class="notes-empty"><div class="e-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div><p>' +
         (lang()==='ar' ? 'لا توجد ملاحظات بعد.' : 'Nothing here yet. Write your first note above.') + '</p></div>';
       return;
     }
-    list.innerHTML = notes.map(function(n){
+    if(!notes.length){
+      list.innerHTML = html;
+      return;
+    }
+    html += notes.map(function(n){
       return '<div class="note-item" data-id="'+n.id+'">' +
         '<div class="note-body">'+esc(n.text)+'</div>' +
         '<div class="note-date">'+esc(n.date||'')+'</div>' +
         '<button class="note-del" data-id="'+n.id+'" aria-label="Delete">✕</button>' +
       '</div>';
     }).join('');
+    list.innerHTML = html;
 
     list.querySelectorAll('.note-del').forEach(function(btn){
       btn.addEventListener('click', function(){
@@ -384,7 +384,7 @@
   </a>
 </nav>
 <!-- ════════════════════════════════════════════════════════════ -->
-<script src="/scripts/global.js" defer></script>
+<script src="/scripts/global.js?v=20260619e" defer></script>
 <!-- SEO_PROFILE
   page_type: page
   cluster: finance

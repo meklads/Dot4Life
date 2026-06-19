@@ -12,8 +12,8 @@
   <script>(function(){var p=new URLSearchParams(location.search),gd=(function(){try{var z=(Intl.DateTimeFormat().resolvedOptions().timeZone||"");return /Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test(z)?"ar":"en";}catch(e){return "ar";}})(),l=p.get("lang")||localStorage.getItem("dfl-lang")||gd,t=p.get("theme")||localStorage.getItem("dfl-theme")||"light",h=document.documentElement;h.setAttribute("data-theme",t);h.setAttribute("data-lang",l);h.setAttribute("lang",l);h.setAttribute("dir",l==="ar"?"rtl":"ltr");if(p.get("lang"))localStorage.setItem("dfl-lang",l);if(p.get("theme"))localStorage.setItem("dfl-theme",t);})()</script>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <link rel="canonical" href="https://dotforlife.com/tasks.html"/>
-  <title>مخطط رحلة الحج والعمرة، خطواتك من البداية للنهاية | DOTFORLIFE</title>
-  <meta name="description" content="مخطط متكامل لرحلة الحج والعمرة، التأشيرة، الحجز، التحضير، المناسك. تابع تقدمك خطوة بخطوة."/>
+  <title>Daily Tasks | مهامك اليومية | DOTFORLIFE</title>
+  <meta name="description" content="Your daily task list — simple, bilingual, saved on your device. مهامك اليومية ببساطة."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500;600&family=Almarai:wght@300;400;700&display=swap" rel="stylesheet"/>
@@ -24,13 +24,13 @@
   <meta property="og:url" content="https://dotforlife.com/tasks.html">
   <meta property="og:title" content="My Tasks | Dot4Life">
   <meta property="og:description" content="A calm, focused task manager, built into your Dot4Life dashboard.">
-  <meta property="og:image" content="https://dotforlife.com/og/og-default.png">
+  <meta property="og:image" content="https://dotforlife.com/d4l1.webp">
   <meta property="og:locale" content="en_US">
   <meta property="og:locale:alternate" content="ar_SA">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="My Tasks | Dot4Life">
   <meta name="twitter:description" content="A calm, focused task manager, built into your Dot4Life dashboard.">
-  <meta name="twitter:image" content="https://dotforlife.com/og/og-default.png">
+  <meta name="twitter:image" content="https://dotforlife.com/d4l1.webp">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Tasks, DOTFORLIFE | مهامي","url":"https://dotforlife.com/tasks.html","inLanguage":["en","ar"]}</script>
   <link rel="alternate" hreflang="ar-SA" href="https://dotforlife.com/tasks.html" />
   <link rel="alternate" hreflang="en" href="https://dotforlife.com/tasks.html" />
@@ -60,8 +60,9 @@
       <li><a href="islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li>
       <li><a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a></li>
       <li><a href="archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a></li>
-      <li><a href="/blog.html"><span class="en">blog</span><span class="ar">المدونة</span></a></li>
+      <li><a href="/blog.html"><span class="en">Blog</span><span class="ar">المدونة</span></a></li>
       <li><a href="library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a></li>
+      <li><a href="/life-guide.html"><span class="en">Guides</span><span class="ar">الأدلة</span></a></li>
     </ul>
     <div class="nav-controls">
       <button class="nav-btn" id="lang-toggle" aria-label="Switch language"><span class="en">عربي</span><span class="ar">English</span></button>
@@ -304,21 +305,35 @@
   <script>
   (function(){
 
-    // ── Nav + theme
+    // ── Nav scroll (theme handled by global.js)
     var nb = document.getElementById('navbar');
     window.addEventListener('scroll', function(){ nb.classList.toggle('scrolled', window.scrollY>40); }, {passive:true});
     document.addEventListener('dfl:langchange', function(){ render(); });
-    var themeBtn = document.getElementById('theme-toggle');
-    function applyTheme(t){ document.documentElement.setAttribute('data-theme',t); localStorage.setItem('dfl-theme',t); themeBtn.querySelector('.en').textContent=t==='dark'?'<svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>':'<svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>'; themeBtn.querySelector('.ar').textContent=t==='dark'?'<svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>':'<svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>'; }
-    applyTheme(localStorage.getItem('dfl-theme')||'light');
-    themeBtn.addEventListener('click', function(){ applyTheme(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark'); });
 
-    // ── Data
-    function getTasks(){ try{ return JSON.parse(localStorage.getItem('dfl-all-tasks')||'[]'); }catch(e){ return []; } }
-    function setTasks(a){ localStorage.setItem('dfl-all-tasks', JSON.stringify(a)); }
+    function todayStr(){ var d=new Date(); return d.getFullYear()+'-'+(String(d.getMonth()+1).padStart(2,'0'))+'-'+String(d.getDate()).padStart(2,'0'); }
+
+    // ── Data (synced with homepage dfl-tasks)
+    function getTasks(){
+      try{
+        var raw = JSON.parse(localStorage.getItem('dfl-tasks')||'[]');
+        if(!raw.length){
+          var legacy = JSON.parse(localStorage.getItem('dfl-all-tasks')||'[]');
+          if(legacy.length){
+            raw = legacy.map(function(t,i){
+              return { id: t.id||Date.now()+i, text: t.text, done: !!t.done, tab: t.tab||'today', created: t.created||todayStr() };
+            });
+            setTasks(raw);
+          }
+        }
+        return raw;
+      }catch(e){ return []; }
+    }
+    function setTasks(a){
+      localStorage.setItem('dfl-tasks', JSON.stringify(a));
+      localStorage.setItem('dfl-all-tasks', JSON.stringify(a));
+    }
     function lang(){ return document.documentElement.getAttribute('data-lang')||'en'; }
     function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-    function todayStr(){ var d=new Date(); return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate(); }
 
     var currentTab = 'today';
 
@@ -453,7 +468,7 @@
   </a>
 </nav>
 <!-- ════════════════════════════════════════════════════════════ -->
-<script src="/scripts/global.js" defer></script>
+<script src="/scripts/global.js?v=20260619e" defer></script>
 <!-- SEO_PROFILE
   page_type: page
   cluster: finance

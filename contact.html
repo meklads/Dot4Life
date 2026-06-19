@@ -30,7 +30,7 @@
 <link rel="stylesheet" href="/styles/pages/contact.css?v=20260617b">
 <!-- DFL CANONICAL SYSTEM CSS -->
   
-<script src="/scripts/global.js" defer></script>
+<script src="/scripts/global.js?v=20260619e" defer></script>
   <link rel="alternate" hreflang="ar" href="https://dotforlife.com/contact.html?lang=ar" />
   <link rel="alternate" hreflang="en" href="https://dotforlife.com/contact.html?lang=en" />
   <link rel="alternate" hreflang="x-default" href="https://dotforlife.com/contact.html" />
@@ -42,8 +42,8 @@
   gtag('js', new Date());
   gtag('config', 'G-3G1XPV4F0G');
 </script>
-  <meta property="og:image" content="https://dotforlife.com/og/d4l1.webp"/>
-  <meta name="twitter:image" content="https://dotforlife.com/og/d4l1.webp"/>
+  <meta property="og:image" content="https://dotforlife.com/d4l1.webp"/>
+  <meta name="twitter:image" content="https://dotforlife.com/d4l1.webp"/>
   <meta name="twitter:card" content="summary_large_image"/>
 </head>
 <body class="index-page category-page">
@@ -61,8 +61,9 @@
       <li><a href="islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li>
       <li><a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a></li>
       <li><a href="archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a></li>
-      <li><a href="/blog.html"><span class="en">blog</span><span class="ar">المدونة</span></a></li>
+      <li><a href="/blog.html"><span class="en">Blog</span><span class="ar">المدونة</span></a></li>
       <li><a href="library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a></li>
+      <li><a href="/life-guide.html"><span class="en">Guides</span><span class="ar">الأدلة</span></a></li>
     </ul>
     <div class="nav-controls">
       <button class="nav-btn" id="lang-toggle" aria-label="Switch language"><span class="en">عربي</span><span class="ar">English</span></button>
@@ -188,9 +189,9 @@
   <div class="sub-nav-inner">
     <a href="/about.html"><span class="en">About</span><span class="ar">من نحن</span></a>
     <a href="/contact.html"><span class="en">Contact</span><span class="ar">تواصل معنا</span></a>
-    <a href="/privacy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a>
+    <a href="/privacy-policy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a>
     <a href="/terms.html"><span class="en">Terms</span><span class="ar">الشروط</span></a>
-    <a href="/blog.html"><span class="en">blog</span><span class="ar">المدونة</span></a>
+    <a href="/blog.html"><span class="en">Blog</span><span class="ar">المدونة</span></a>
   </div>
 </div>
 
@@ -270,7 +271,7 @@
     </div>
   </div>
   <script>
-    // API removed — automation discontinued;
+    const API = 'https://dotforlife-production.up.railway.app/api';
     async function handleSubmit(btn) {
       const name    = document.getElementById('cf-name').value.trim();
       const email   = document.getElementById('cf-email').value.trim();
@@ -311,7 +312,7 @@
         }
       } catch (err) {
         msg.style.color = '#ef4444';
-        msg.innerHTML = '<span class="en">Something went wrong. Please try again.</span><span class="ar">حدث خطأ. يرجى المحاولة مرة أخرى.</span>';
+        msg.innerHTML = '<span class="en">Could not send — try <a href="mailto:hello@dotforlife.com" style="color:inherit">hello@dotforlife.com</a></span><span class="ar">تعذّر الإرسال — راسلنا على <a href="mailto:hello@dotforlife.com" style="color:inherit">hello@dotforlife.com</a></span>';
         msg.style.display = 'block';
       }
 
