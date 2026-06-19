@@ -36,6 +36,7 @@
     var tagAr = (raw.subtitle_ar || raw.title_ar || '').slice(0, 40);
     return {
       id: raw.id || cat,
+      capsuleId: /^cap_/.test(raw.id || '') ? raw.id : null,
       tagEn: tagEn, tagAr: tagAr,
       titleEn: raw.title_en || '', titleAr: raw.title_ar || '',
       labelEn: raw.subtitle_en || raw.title_en || "Today's idea",
@@ -80,8 +81,13 @@
       }).join('');
     }
     var fullLink = overlay.querySelector('.capsule-btn-full');
-    if (fullLink && c.id) {
-      fullLink.href = '/life-guide.html?g=' + encodeURIComponent(c.id) + (lang() === 'ar' ? '&lang=ar' : '&lang=en');
+    if (fullLink) {
+      var langQ = lang() === 'ar' ? '&lang=ar' : '&lang=en';
+      if (c.capsuleId) {
+        fullLink.href = '/life-guide.html?c=' + encodeURIComponent(c.capsuleId) + langQ;
+      } else if (c.id) {
+        fullLink.href = '/life-guide.html?g=' + encodeURIComponent(c.id) + langQ;
+      }
     }
   }
 

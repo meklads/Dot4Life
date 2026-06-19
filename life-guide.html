@@ -687,19 +687,42 @@ var GUIDES = {
 // ═══════════════════════════════════════
 // RENDER
 // ═══════════════════════════════════════
-(function(){
-  var params = new URLSearchParams(window.location.search);
-  var id = params.get('g') || 'quick-dinner';
-  var g = GUIDES[id];
+var CAPSULE_API = 'https://dotforlife-production.up.railway.app/api/capsule';
+var CAT_META = {
+  meals:    { catEn:'Home & Meals', catAr:'البيت والطعام', catHash:'#cat-meals' },
+  family:   { catEn:'Family Life', catAr:'الحياة العائلية', catHash:'#cat-family' },
+  wellness: { catEn:'Wellness', catAr:'العافية', catHash:'#cat-wellness' },
+  faith:    { catEn:'Faith & Reflection', catAr:'الإيمان والتأمل', catHash:'#cat-faith' },
+  money:    { catEn:'Simple Money', catAr:'المال البسيط', catHash:'#cat-money' },
+  living:   { catEn:'Everyday Living', catAr:'الحياة اليومية', catHash:'#cat-living' }
+};
+
+function showGuideNotFound() {
+  document.getElementById('guide-hero').style.display = 'none';
+  document.getElementById('page').style.display = 'none';
+  document.getElementById('guide-not-found').style.display = 'block';
+}
+
+function capsuleToGuide(cap) {
+  var meta = CAT_META[cap.category] || CAT_META.wellness;
+  return {
+    cat: cap.category,
+    catEn: meta.catEn, catAr: meta.catAr, catHash: meta.catHash,
+    emoji: cap.emoji || '🌿',
+    tagEn: cap.subtitle_en || '', tagAr: cap.subtitle_ar || '',
+    titleEn: cap.title_en || '', titleAr: cap.title_ar || '',
+    emotionEn: cap.subtitle_en || (cap.body_en || '').slice(0, 140),
+    emotionAr: cap.subtitle_ar || (cap.body_ar || '').slice(0, 140),
+    facts: cap.tip_en ? [{ icon:'💡', en: cap.tip_en, ar: cap.tip_ar || cap.tip_en }] : [],
+    ingredients: [],
+    steps: cap.body_en ? [{ en: cap.body_en, ar: cap.body_ar || cap.body_en }] : [],
+    whyEn: cap.tip_en || cap.body_en || '',
+    whyAr: cap.tip_ar || cap.body_ar || ''
+  };
+}
+
+function renderGuide(id, g) {
   var isAr = document.documentElement.getAttribute('data-lang') === 'ar';
-
-  if (!g) {
-    document.getElementById('guide-hero').style.display = 'none';
-    document.getElementById('page').style.display = 'none';
-    document.getElementById('guide-not-found').style.display = 'block';
-    return;
-  }
-
   function t(en, ar) { return isAr ? ar : en; }
 
   // Hero
@@ -793,7 +816,31 @@ var GUIDES = {
     this.innerHTML = t('✓ Added!','✓ أُضيف');
     this.style.cssText = 'background:rgba(42,154,152,.12);color:#2a9a98;border-color:#2a9a98';
   });
+}
 
+(function(){
+  var params = new URLSearchParams(window.location.search);
+  var capsuleId = params.get('c');
+  var id = params.get('g') || 'quick-dinner';
+  if (!capsuleId && /^cap_/.test(id)) capsuleId = id;
+
+  if (capsuleId) {
+    fetch(CAPSULE_API + '/' + encodeURIComponent(capsuleId), { cache: 'no-store' })
+      .then(function(r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+      })
+      .then(function(data) {
+        if (!data.found || !data.capsule) throw new Error('not found');
+        renderGuide(capsuleId, capsuleToGuide(data.capsule));
+      })
+      .catch(function() { showGuideNotFound(); });
+    return;
+  }
+
+  var g = GUIDES[id];
+  if (!g) { showGuideNotFound(); return; }
+  renderGuide(id, g);
 })();
 
 // Nav handlers
