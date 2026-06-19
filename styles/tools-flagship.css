@@ -791,6 +791,53 @@ body.tool-flagship-page .tool-below .t-faq {
 .t-tab-panel { display: none; }
 .t-tab-panel.active { display: block; }
 
+.t-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.t-label {
+  font-size: .79rem;
+  font-weight: 600;
+  color: var(--tool-muted);
+}
+
+.t-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 14px;
+  border-radius: 16px;
+  border: 1.5px solid var(--tool-border);
+  background: var(--tool-accent-light);
+  color: var(--tool-ink);
+  font-size: .9rem;
+  font-family: inherit;
+  outline: none;
+}
+
+.t-input:focus {
+  border-color: var(--tool-accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--tool-accent) 15%, transparent);
+}
+
+select.t-input {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239CA3AF' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+}
+
+[data-lang="ar"] select.t-input {
+  background-position: left 14px center;
+  padding-right: 14px;
+  padding-left: 36px;
+}
+
 .t-table {
   width: 100%;
   border-collapse: collapse;

@@ -19,9 +19,9 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Almarai:wght@400;700;800&display=swap"/></noscript>
 <link rel="stylesheet" href="/styles/global.css?v=20260618f"/>
 <link rel="stylesheet" href="/styles/tools-shared.css?v=20260608a">
-<link rel="stylesheet" href="/styles/tools-flagship.css?v=20260625b">
+<link rel="stylesheet" href="/styles/tools-flagship.css?v=20260626a">
 <link rel="stylesheet" href="/styles/tools-accents.css?v=20260625a">
-<link rel="stylesheet" href="/styles/pages/tools_return-to-hotel.css?v=20260625a">
+<link rel="stylesheet" href="/styles/pages/tools_return-to-hotel.css?v=20260626a">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://dotforlife.com/tools/return-to-hotel.html">
 <meta property="og:title" content="Return to Hotel | Dot4Life">
@@ -158,8 +158,8 @@ window.dflTrack=function(event,params){
           <div class="field-group">
             <label class="field-label"><span class="en">Destination Country</span><span class="ar">دولة الوجهة</span></label>
             <select class="field-select" id="f-country">
-              <option value="">, <span class="en">Select</span><span class="ar">اختر</span></option>
-              <optgroup label="<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Popular">
+              <option value="" data-en="Select country" data-ar="اختر الدولة">Select country</option>
+              <optgroup label="Popular destinations">
                 <option value="TR"> Turkey</option>
                 <option value="TH"> Thailand</option>
                 <option value="MA"> Morocco / France</option>
@@ -612,7 +612,9 @@ function copyAddress(){
 function shareWhatsApp(){
   if(!hotel)return;
   var l=document.documentElement.getAttribute('data-lang');
-  var msg=l==='ar'?'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 14h.01"/><path d="M15 14h.01"/><path d="M9 18h.01"/><path d="M15 18h.01"/></svg> أنا نازل في:\n'+hotel.name+'\n<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg> '+hotel.address+(hotel.phone?'\n<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg> '+hotel.phone:''):'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 14h.01"/><path d="M15 14h.01"/><path d="M9 18h.01"/><path d="M15 18h.01"/></svg> I\'m staying at:\n'+hotel.name+'\n<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg> '+hotel.address+(hotel.phone?'\n<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg> '+hotel.phone:'');
+  var msg=l==='ar'
+    ? '🏨 أنا نازل في:\n'+hotel.name+'\n📍 '+hotel.address+(hotel.phone?'\n📞 '+hotel.phone:'')
+    : '🏨 I\'m staying at:\n'+hotel.name+'\n📍 '+hotel.address+(hotel.phone?'\n📞 '+hotel.phone:'');
   window.open('https://wa.me/?text='+encodeURIComponent(msg),'_blank');
 }
 
@@ -627,6 +629,15 @@ function toggleFAQ(el){
   if(!isOpen){el.classList.add('open');answer.classList.add('active');}
 }
 (function init(){
+  function updateSelectLabels() {
+    var lang = document.documentElement.getAttribute('data-lang') || 'en';
+    document.querySelectorAll('#f-country option[data-en]').forEach(function(opt) {
+      opt.textContent = opt.getAttribute('data-' + lang) || opt.getAttribute('data-en');
+    });
+  }
+  updateSelectLabels();
+  document.addEventListener('dfl:langchange', updateSelectLabels);
+
   var today=new Date(); var fmt=function(d){return d.toISOString().split('T')[0];};
   document.getElementById('f-checkin').value=fmt(today);
   var co=new Date(today);co.setDate(co.getDate()+3);document.getElementById('f-checkout').value=fmt(co);
