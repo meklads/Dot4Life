@@ -198,6 +198,49 @@ function exportPublished() {
   toast('Exported — commit to data/capsules-published.json', 'ok');
 }
 
+async function importFromPublishedJson() {
+  try {
+    const r = await fetch('/data/capsules-published.json?v=' + Date.now(), { cache: 'no-store' });
+    if (!r.ok) return 0;
+    const file = await r.json();
+    const dates = file.byDate || {};
+    const imported = [];
+    Object.keys(dates).sort().forEach(dateStr => {
+      const c = dates[dateStr];
+      if (!c) return;
+      imported.push({
+        id: c.id || uid(),
+        status: 'published',
+        scheduled_date: dateStr,
+        published_date: dateStr,
+        source: 'import',
+        category: c.category || 'wellness',
+        emoji: c.emoji || '🌿',
+        title_en: c.title_en || '',
+        title_ar: c.title_ar || '',
+        subtitle_en: c.subtitle_en || '',
+        subtitle_ar: c.subtitle_ar || '',
+        body_en: c.body_en || '',
+        body_ar: c.body_ar || '',
+        tip_en: c.tip_en || '',
+        tip_ar: c.tip_ar || '',
+      });
+    });
+    if (!imported.length) return 0;
+    const existing = getLocalCapsules();
+    const merged = existing.slice();
+    imported.forEach(cap => {
+      if (!merged.some(x => x.id === cap.id || x.scheduled_date === cap.scheduled_date)) {
+        merged.push(cap);
+      }
+    });
+    setLocalCapsules(merged);
+    return imported.length;
+  } catch {
+    return 0;
+  }
+}
+
 const CAT_LABELS = {
   meals:   '🍽 Meals',
   family:  '👨‍👩‍👧 Family',
@@ -315,8 +358,14 @@ async function load() {
   const list = document.getElementById('capsuleList');
 
   if (isLocal()) {
+    if (!getLocalCapsules().length) {
+      list.innerHTML = '<div class="state-loading">Loading published capsules…</div>';
+      const n = await importFromPublishedJson();
+      if (n) toast(`📥 Imported ${n} published capsules from site JSON`, 'ok');
+    }
     allCapsules = getLocalCapsules();
     render(allCapsules);
+    setTimeout(checkBulkApprove, 200);
     return;
   }
 
@@ -359,10 +408,13 @@ function render(caps) {
   meta.innerHTML = `Showing <strong>${caps.length}</strong> capsule${caps.length !== 1 ? 's' : ''}`;
 
   if (!caps.length) {
+    const emptyHint = isLocal() && filter === 'all'
+      ? 'Click <strong>Generate Week</strong> to create 7 new capsules, or switch to <strong>Published</strong> to see live site content.'
+      : (filter === 'pending_review' ? 'No capsules waiting for review.' : 'Try a different filter.');
     list.innerHTML = `<div class="state-empty">
       <div class="ico">${filter === 'pending_review' ? '✅' : '📭'}</div>
       <div class="ttl">${filter === 'pending_review' ? 'Queue is clear' : 'Nothing here'}</div>
-      <div class="sub">${filter === 'pending_review' ? 'No capsules waiting for review.' : 'Try a different filter.'}</div>
+      <div class="sub">${emptyHint}</div>
     </div>`;
     return;
   }
