@@ -142,8 +142,13 @@
 
   /** Filter articles by `section` or `type` field for homepage section feeds */
   function getSectionArticles(sectionName) {
+    var aliases = { comparison: 'comparisons' };
+    var key = aliases[sectionName] || sectionName;
     return articles
-      .filter(function(a) { return a.section === sectionName || a.type === sectionName; })
+      .filter(function(a) {
+        return a.section === key || a.type === key
+          || a.section === sectionName || a.type === sectionName;
+      })
       .sort(function(a, b) { return new Date(b.date) - new Date(a.date); });
   }
 
