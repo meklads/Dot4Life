@@ -11,16 +11,30 @@ const config   = require('./config');
 // ─────────────────────────────────────────
 //  CONNECTION
 // ─────────────────────────────────────────
-console.log('[DB] DATABASE_URL:', process.env.DATABASE_URL ? 'SET → ' + process.env.DATABASE_URL.slice(0, 30) + '...' : 'NOT SET — using localhost fallback');
+console.log('[DB] DATABASE_URL:', dbUrl ? 'SET → ' + dbUrl.slice(0, 30) + '...' : 'NOT SET');
+
+function resolveDatabaseUrl() {
+  return process.env.DATABASE_URL
+    || process.env.DATABASE_PRIVATE_URL
+    || process.env.POSTGRES_URL
+    || null;
+}
+
+const dbUrl = resolveDatabaseUrl();
+const onRailway = !!(process.env.RAILWAY_ENVIRONMENT || process.env.RAILWAY_PROJECT_ID);
+
+if (onRailway && !dbUrl) {
+  console.error('[DB] FATAL: DATABASE_URL is missing. In Railway Variables add:');
+  console.error('[DB]   DATABASE_URL = ${{Postgres.DATABASE_URL}}');
+}
 
 function dbSsl() {
-  if (!process.env.DATABASE_URL) return false;
-  // Railway / Neon / Supabase require SSL with relaxed cert validation
+  if (!dbUrl) return false;
   return { rejectUnauthorized: false };
 }
 
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL || 'postgresql://localhost/d4l_capsules',
+  connectionString: dbUrl || 'postgresql://localhost/d4l_capsules',
   ssl: dbSsl(),
   connectionTimeoutMillis: 15000,
   idleTimeoutMillis: 30000,

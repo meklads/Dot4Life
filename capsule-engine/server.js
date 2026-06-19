@@ -1,21 +1,6 @@
 /**
  * d4l1-capsule-engine — Main Server
- *
- * Endpoints:
- *   Public:  GET  /api/capsule/today
- *            GET  /api/capsule/schedule
- *            GET  /api/capsule/category/:cat
- *            GET  /api/capsule/health
- *
- *   Admin:   POST /api/admin/login
- *            GET  /api/admin/capsules  ...etc
- *
- *   Pregnancy Journey:
- *            POST /api/pregnancy/subscribe
- *            GET  /api/pregnancy/me/:token
- *            GET  /api/pregnancy/unsubscribe/:token
- *
- * Start: node server.js
+ * Listens immediately (Railway healthcheck), then connects to Postgres with retries.
  */
 
 const express = require('express');
@@ -27,14 +12,9 @@ const { sendWeeklyToAll } = require('./pregnancy-mailer');
 const { generateOne } = require('./generator');
 
 const app = express();
+let dbReady = false;
 
-// ─────────────────────────────────────────
-//  MIDDLEWARE
-// ─────────────────────────────────────────
-app.use(cors({
-  origin: config.CORS_ORIGINS,
-  credentials: true,
-}));
+app.use(cors({ origin: config.CORS_ORIGINS, credentials: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -44,107 +24,102 @@ app.use((req, _res, next) => {
   next();
 });
 
-// ─────────────────────────────────────────
-//  ROUTES
-// ─────────────────────────────────────────
-app.use('/api/capsule',   require('./routes/public'));
-app.use('/api/admin',     require('./routes/admin'));
-app.use('/api/pregnancy', require('./routes/pregnancy'));
-app.use('/api/contact',   require('./routes/contact'));
-
 app.get('/', (_req, res) => res.json({
-  system: 'd4l1-capsule-engine', version: '1.1.0', status: 'running',
+  system: 'd4l1-capsule-engine',
+  version: '1.1.0',
+  status: dbReady ? 'running' : 'starting',
+  db: dbReady ? 'connected' : 'connecting',
   endpoints: {
-    public:    '/api/capsule/today | /api/capsule/health',
-    admin:     '/api/admin/login  | /api/admin/capsules',
+    public: '/api/capsule/today | /api/capsule/health',
+    admin: '/api/admin/login | /api/admin/capsules',
     pregnancy: '/api/pregnancy/subscribe | /api/pregnancy/me/:token',
-  }
+  },
 }));
 
-app.use((_req, res) => res.status(404).json({ error: 'Not found' }));
+app.use('/api/capsule', require('./routes/public'));
+app.use('/api/admin', require('./routes/admin'));
+app.use('/api/pregnancy', require('./routes/pregnancy'));
+app.use('/api/contact', require('./routes/contact'));
 
+app.use((_req, res) => res.status(404).json({ error: 'Not found' }));
 app.use((err, _req, res, _next) => {
   console.error('[ERROR]', err.message);
   res.status(500).json({ error: err.message });
 });
 
-// ─────────────────────────────────────────
-//  START — init schema first, then listen
-// ─────────────────────────────────────────
 const PORT = config.PORT;
 
-initSchema()
-  .then(() => {
-    app.listen(PORT, '0.0.0.0', () => {
-      console.log(`\n🧘 d4l1-capsule-engine running on port ${PORT}`);
-      console.log(`   Public API : http://localhost:${PORT}/api/capsule/today`);
-      console.log(`   Admin API  : http://localhost:${PORT}/api/admin/login`);
-      console.log(`   Pregnancy  : http://localhost:${PORT}/api/pregnancy/subscribe`);
-      console.log(`   Status     : http://localhost:${PORT}/\n`);
+function sleep(ms) {
+  return new Promise(r => setTimeout(r, ms));
+}
 
-      // ─── DAILY CAPSULE GENERATION ──────────────────────────
-      // Every day at 01:00 UTC (= 04:00 Saudi)
-      cron.schedule('0 1 * * *', async () => {
-        try {
-          const tomorrow = new Date();
-          tomorrow.setDate(tomorrow.getDate() + 1);
-          const dateStr = tomorrow.toISOString().slice(0, 10);
+function startCrons() {
+  cron.schedule('0 1 * * *', async () => {
+    try {
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      const dateStr = tomorrow.toISOString().slice(0, 10);
+      const existing = await getScheduledDate(dateStr);
+      if (existing) return;
+      const capsule = await generateOne({ date: dateStr });
+      await submitForReview(capsule.id);
+      console.log(`[cron] Generated: ${capsule.title_en} (${dateStr})`);
+    } catch (err) {
+      console.error('[cron] Generation error:', err.message);
+    }
+  }, { timezone: 'UTC' });
 
-          const existing = await getScheduledDate(dateStr);
-          if (existing) {
-            console.log(`[cron] Capsule already exists for ${dateStr} — skipping`);
-            return;
-          }
-          const capsule = await generateOne({ date: dateStr });
-          console.log(`[cron] Generated: ${capsule.title_en} (${dateStr})`);
-          const submitted = await submitForReview(capsule.id);
-          console.log(`[cron] Submitted: ${submitted.id} — ${submitted.status}`);
-        } catch (err) {
-          console.error('[cron] Generation error:', err.message);
-        }
-      }, { timezone: 'UTC' });
-      console.log('   Cron: daily capsule → 01:00 UTC ✓');
-
-      // ─── WEEKLY BATCH ────────────────────────────────────────────
-      // Every Saturday at 02:00 UTC
-      cron.schedule('0 2 * * 6', async () => {
-        try {
-          const nextWeek = [];
-          for (let i = 0; i < 7; i++) {
-            const d = new Date();
-            d.setDate(d.getDate() + i);
-            const dateStr = d.toISOString().slice(0, 10);
-            const existing = await getScheduledDate(dateStr);
-            if (existing) continue;
-            const capsule = await generateOne({ date: dateStr });
-            await submitForReview(capsule.id);
-            nextWeek.push({ date: dateStr, title: capsule.title_en });
-          }
-          console.log(`[cron] Week batch: ${nextWeek.length} generated`);
-        } catch (err) {
-          console.error('[cron] Weekly batch error:', err.message);
-        }
-      }, { timezone: 'UTC' });
-      console.log('   Cron: weekly batch → Sat 02:00 UTC ✓');
-
-      // ─── WEEKLY PREGNANCY EMAILS ───────────────────────────
-      if (process.env.RESEND_API_KEY) {
-        cron.schedule('0 9 * * 0', () => {
-          console.log('[cron] Sunday 09:00 UTC — sending weekly pregnancy emails');
-          sendWeeklyToAll().catch(err =>
-            console.error('[cron] Mailer error:', err.message)
-          );
-        }, { timezone: 'UTC' });
-        console.log('   Cron: weekly pregnancy emails → Sunday 09:00 UTC ✓');
-      } else {
-        console.warn('   Cron: RESEND_API_KEY not set — weekly emails disabled');
+  cron.schedule('0 2 * * 6', async () => {
+    try {
+      let n = 0;
+      for (let i = 0; i < 7; i++) {
+        const d = new Date();
+        d.setDate(d.getDate() + i);
+        const dateStr = d.toISOString().slice(0, 10);
+        if (await getScheduledDate(dateStr)) continue;
+        const capsule = await generateOne({ date: dateStr });
+        await submitForReview(capsule.id);
+        n++;
       }
-    });
-  })
-  .catch(err => {
-    console.error('[FATAL] Could not initialize database:', err.message);
-    console.error('[FATAL] Check DATABASE_URL is set and Postgres is Online on Railway.');
-    process.exit(1);
-  });
+      console.log(`[cron] Week batch: ${n} generated`);
+    } catch (err) {
+      console.error('[cron] Weekly batch error:', err.message);
+    }
+  }, { timezone: 'UTC' });
+
+  if (process.env.RESEND_API_KEY) {
+    cron.schedule('0 9 * * 0', () => {
+      sendWeeklyToAll().catch(err => console.error('[cron] Mailer error:', err.message));
+    }, { timezone: 'UTC' });
+  }
+  console.log('   Cron jobs scheduled ✓');
+}
+
+async function connectDatabase() {
+  const max = 10;
+  for (let i = 1; i <= max; i++) {
+    try {
+      await initSchema();
+      dbReady = true;
+      console.log('[DB] Schema ready ✓');
+      startCrons();
+      return;
+    } catch (err) {
+      console.error(`[DB] Connect attempt ${i}/${max} failed:`, err.message);
+      if (i === max) {
+        console.error('[DB] Giving up after max retries — API admin routes may fail until DB is fixed.');
+        return;
+      }
+      await sleep(4000);
+    }
+  }
+}
+
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`\n🧘 d4l1-capsule-engine listening on 0.0.0.0:${PORT}`);
+  console.log(`   Health     : /api/capsule/health`);
+  console.log(`   Status     : /\n`);
+  connectDatabase();
+});
 
 module.exports = app;
