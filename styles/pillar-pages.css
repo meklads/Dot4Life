@@ -331,6 +331,148 @@ body.category-page .hl-container {
   padding: 0 var(--hp-gutter);
 }
 
+body.category-page .hl-container.hl-wide {
+  max-width: 1280px;
+}
+
+body.category-page .hl-container.hl-prose {
+  max-width: 900px;
+}
+
+body.category-page .hl-intro-text .en,
+body.category-page .hl-intro-text .ar {
+  display: none;
+}
+
+[data-lang="en"] body.category-page .hl-intro-text .en {
+  display: block;
+}
+
+[data-lang="ar"] body.category-page .hl-intro-text .ar {
+  display: block;
+}
+
+body.category-page .hh-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  body.category-page .hh-pillars { grid-template-columns: 1fr; }
+}
+
+body.category-page .hh-pillar {
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.75rem 1.5rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, .04);
+  border: 1px solid var(--hv-border);
+  transition: transform .3s var(--hv-ease), box-shadow .3s;
+}
+
+body.category-page .hh-pillar:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, .07);
+}
+
+body.category-page .hh-pillar-icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--pillar-accent-light);
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+body.category-page .hh-pillar-icon svg {
+  width: 22px !important;
+  height: 22px !important;
+  max-width: 22px;
+  max-height: 22px;
+  stroke: currentColor;
+  fill: none;
+  color: var(--pillar-accent-dark);
+  flex-shrink: 0;
+}
+
+body.category-page .hh-pillar-title {
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin-bottom: .5rem;
+  color: var(--hv-ink);
+}
+
+body.category-page .hh-pillar-desc {
+  font-size: .875rem;
+  line-height: 1.6;
+  color: var(--hv-muted);
+  margin: 0;
+}
+
+body.category-page .hh-featured {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin: 2rem 0;
+}
+
+@media (max-width: 900px) {
+  body.category-page .hh-featured { grid-template-columns: 1fr; }
+}
+
+body.category-page .hh-featured-card {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  background: linear-gradient(145deg, #fafaf8, #fff);
+  border: 1px solid var(--hv-border);
+  border-radius: 16px;
+  padding: 1.5rem 1.25rem;
+  text-decoration: none;
+  color: inherit;
+  transition: transform .3s var(--hv-ease), box-shadow .3s;
+}
+
+body.category-page .hh-featured-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--hv-shadow-hover);
+}
+
+body.category-page .hh-featured-kicker {
+  font-size: .65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--pillar-accent-dark);
+}
+
+body.category-page .hh-featured-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--hv-ink);
+}
+
+body.category-page .hh-featured-desc {
+  font-size: .8125rem;
+  line-height: 1.55;
+  color: var(--hv-muted);
+  margin: 0;
+  flex: 1;
+}
+
+body.category-page .hh-featured-link {
+  font-size: .8125rem;
+  font-weight: 600;
+  color: var(--pillar-accent-dark);
+  margin-top: auto;
+}
+
 /* ── Section system ──────────────────────────────────────── */
 body.category-page .hl-section {
   padding: clamp(2.75rem, 5.5vw, 4.5rem) 0;
@@ -624,6 +766,14 @@ body.category-page .hl-guide-strip-icon {
   flex-shrink: 0;
 }
 
+body.category-page .hl-guide-strip-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  fill: none;
+  flex-shrink: 0;
+}
+
 body.category-page .hl-guide-strip-label {
   font-size: .58rem;
   font-weight: 700;
@@ -707,6 +857,16 @@ body.category-page .hl-card--topic { padding: 1.35rem; }
 
 [data-theme="dark"] body.category-page .hl-card-icon {
   background: rgba(255,255,255,.06);
+}
+
+[data-theme="dark"] body.category-page .hh-pillar {
+  background: var(--card-bg, #1E1A16);
+  border-color: rgba(255,255,255,.08);
+}
+
+[data-theme="dark"] body.category-page .hh-featured-card {
+  background: linear-gradient(145deg, #1E1A16, #252018);
+  border-color: rgba(255,255,255,.08);
 }
 
 /* ── Responsive ──────────────────────────────────────────── */
