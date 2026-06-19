@@ -13,11 +13,17 @@ const config   = require('./config');
 // ─────────────────────────────────────────
 console.log('[DB] DATABASE_URL:', process.env.DATABASE_URL ? 'SET → ' + process.env.DATABASE_URL.slice(0, 30) + '...' : 'NOT SET — using localhost fallback');
 
+function dbSsl() {
+  if (!process.env.DATABASE_URL) return false;
+  // Railway / Neon / Supabase require SSL with relaxed cert validation
+  return { rejectUnauthorized: false };
+}
+
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL || 'postgresql://localhost/d4l_capsules',
-  ssl: process.env.DATABASE_URL
-    ? { rejectUnauthorized: config.DB_SSL_REJECT_UNAUTHORIZED }
-    : false,
+  ssl: dbSsl(),
+  connectionTimeoutMillis: 15000,
+  idleTimeoutMillis: 30000,
 });
 
 pool.on('error', (err) => {

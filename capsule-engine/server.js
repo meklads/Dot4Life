@@ -75,7 +75,7 @@ const PORT = config.PORT;
 
 initSchema()
   .then(() => {
-    app.listen(PORT, () => {
+    app.listen(PORT, '0.0.0.0', () => {
       console.log(`\n🧘 d4l1-capsule-engine running on port ${PORT}`);
       console.log(`   Public API : http://localhost:${PORT}/api/capsule/today`);
       console.log(`   Admin API  : http://localhost:${PORT}/api/admin/login`);
@@ -143,7 +143,7 @@ initSchema()
   })
   .catch(err => {
     console.error('[FATAL] Could not initialize database:', err.message);
-    console.error('Make sure DATABASE_URL is set correctly.');
+    console.error('[FATAL] Check DATABASE_URL is set and Postgres is Online on Railway.');
     process.exit(1);
   });
 

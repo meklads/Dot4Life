@@ -28,7 +28,7 @@ module.exports = {
   // CORS: which origins can call the public API
   // In production, restrict to your domain
   CORS_ORIGINS: process.env.CORS_ORIGINS
-    ? process.env.CORS_ORIGINS.split(',')
+    ? process.env.CORS_ORIGINS.split(',').map(s => s.trim()).filter(Boolean)
     : ['http://localhost', 'https://www.dotforlife.com', 'https://dotforlife.com'],
 
   // Whether to enforce SSL certificate validation (false for dev, true for production)
