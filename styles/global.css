@@ -1036,6 +1036,94 @@ body.index-page .mobile-dropdown .md-links a:active {
   }
 }
 
+/* ── Legacy footer markup (footer-top / footer-cols) ─────── */
+.footer-top {
+  display: grid;
+  grid-template-columns: minmax(220px, 1.15fr) minmax(0, 2fr);
+  gap: clamp(2.5rem, 5vw, 4rem);
+  padding-bottom: clamp(2rem, 3.5vw, 2.75rem);
+}
+
+.footer-cols {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.footer-cols:has(.footer-col:nth-child(3):last-child) {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.footer-brand > p:not(.footer-tagline):not(.footer-motto) {
+  font-size: .84rem;
+  line-height: 1.75;
+  color: var(--ft-text);
+  margin: 1.1rem 0 0;
+  max-width: 26ch;
+}
+
+[data-lang="ar"] .footer-brand > p:not(.footer-tagline):not(.footer-motto) {
+  font-family: var(--font-ar);
+  max-width: none;
+}
+
+.footer-divider {
+  display: none;
+}
+
+.footer-bottom > span:not(.footer-copy) {
+  font-size: .74rem;
+  color: var(--ft-text-soft);
+  line-height: 1.5;
+}
+
+[data-lang="ar"] .footer-top,
+[data-lang="ar"] .footer-cols {
+  direction: rtl;
+}
+
+@media (max-width: 900px) {
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+  }
+
+  .footer-cols {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .footer-cols {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+}
+
+/* Bilingual footer spans — all pages */
+.site-footer span.en,
+.site-footer span.ar {
+  display: none;
+}
+
+html[data-lang="en"] .site-footer span.en {
+  display: inline;
+}
+
+html[data-lang="ar"] .site-footer span.ar {
+  display: inline;
+}
+
+html[data-lang="en"] .site-footer .footer-col h4 span.en,
+html[data-lang="ar"] .site-footer .footer-col h4 span.ar {
+  display: inline;
+}
+
+html[data-lang="en"] .site-footer .footer-bottom-links a span.en,
+html[data-lang="ar"] .site-footer .footer-bottom-links a span.ar {
+  display: inline;
+}
+
 /* ── 22. MOBILE BOTTOM NAV ───────────────────────────────── */
 .dfl-mobile-nav {
   display: none;
