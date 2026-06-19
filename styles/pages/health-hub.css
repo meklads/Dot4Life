@@ -1,0 +1,584 @@
+/*
+ * DOTFORLIFE — Health Hub (health.html)
+ * Premium wellness identity · mint/teal · editorial calm
+ */
+
+/* ── Tokens ─────────────────────────────────────────────── */
+body.health-hub-page {
+  --hh-mint:       #6abfb8;
+  --hh-mint-soft:  #8fd4cc;
+  --hh-teal:       #0a6b63;
+  --hh-teal-deep:  #054241;
+  --hh-teal-dark:  #0a4d48;
+  --hh-cream:      #f7f5f0;
+  --hh-cream-warm: #eef8f6;
+  --hh-glow:       rgba(106, 191, 184, .22);
+  --hh-nav-h:      120px;
+  --hh-sub-h:      52px;
+  --hh-ease:       cubic-bezier(.22, 1, .36, 1);
+}
+
+@media (max-width: 768px) {
+  body.health-hub-page {
+    --hh-nav-h: 96px;
+    --hh-sub-h: 48px;
+  }
+}
+
+/* Full-bleed hero under transparent nav */
+body.health-hub-page {
+  padding-top: 0 !important;
+}
+
+/* Override generic has-subnav solid nav (home.css) */
+body.health-hub-page.has-subnav #navbar.health-nav:not(.scrolled) {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* ── Wellness nav ───────────────────────────────────────── */
+body.health-hub-page #navbar.health-nav {
+  height: var(--hh-nav-h);
+  background: transparent;
+  border-bottom: none;
+  box-shadow: none;
+}
+
+body.health-hub-page #navbar.health-nav::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--hh-mint-soft), var(--hh-mint), var(--hh-teal));
+  opacity: .95;
+  z-index: 2;
+}
+
+body.health-hub-page #navbar.health-nav .nav-inner {
+  height: var(--hh-nav-h);
+}
+
+body.health-hub-page #navbar.health-nav .nav-logo img {
+  height: 115px !important;
+  width: auto !important;
+  object-fit: contain !important;
+}
+
+@media (max-width: 768px) {
+  body.health-hub-page #navbar.health-nav .nav-logo img {
+    height: 75px !important;
+  }
+}
+
+body.health-hub-page #navbar.health-nav.scrolled {
+  background: rgba(5, 66, 65, .97);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 24px rgba(5, 66, 65, .18);
+}
+
+[data-theme="dark"] body.health-hub-page #navbar.health-nav.scrolled {
+  background: rgba(3, 42, 40, .98);
+}
+
+body.health-hub-page #navbar.health-nav .nav-links a[aria-current="page"] {
+  color: var(--hh-mint-soft) !important;
+  background: rgba(106, 191, 184, .15) !important;
+  font-weight: 700;
+}
+
+/* ── Hero — wellness atmosphere ─────────────────────────── */
+body.health-hub-page #hero.hero-pillar {
+  min-height: min(82vh, 780px);
+  margin-top: calc(-1 * var(--hh-nav-h));
+  padding-top: var(--hh-nav-h);
+  background: linear-gradient(
+    165deg,
+    var(--hh-teal-dark) 0%,
+    #0d5a54 18%,
+    #1a7a72 38%,
+    #3a9a92 58%,
+    #7ecbc4 78%,
+    #d4f0ec 92%,
+    #ffffff 100%
+  ) !important;
+}
+
+body.health-hub-page #hero.hero-pillar::before {
+  background:
+    radial-gradient(ellipse 50% 45% at 92% 8%, rgba(255,255,255,.16) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 35% at 8% 75%, rgba(106,191,184,.12) 0%, transparent 50%);
+}
+
+body.health-hub-page #hero.hero-pillar::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: .6;
+}
+
+body.health-hub-page .hero-wellness-orbs {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+body.health-hub-page .hero-wellness-orbs span {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: .35;
+  animation: hh-float 18s ease-in-out infinite;
+}
+
+body.health-hub-page .hero-wellness-orbs span:nth-child(1) {
+  width: 280px;
+  height: 280px;
+  background: var(--hh-mint);
+  top: 12%;
+  right: 8%;
+  animation-delay: 0s;
+}
+
+body.health-hub-page .hero-wellness-orbs span:nth-child(2) {
+  width: 180px;
+  height: 180px;
+  background: #fff;
+  bottom: 25%;
+  left: 5%;
+  animation-delay: -6s;
+  opacity: .2;
+}
+
+body.health-hub-page .hero-wellness-orbs span:nth-child(3) {
+  width: 120px;
+  height: 120px;
+  background: var(--hh-mint-soft);
+  top: 45%;
+  left: 42%;
+  animation-delay: -12s;
+  opacity: .25;
+}
+
+@keyframes hh-float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(12px, -18px) scale(1.04); }
+  66%       { transform: translate(-8px, 10px) scale(.96); }
+}
+
+body.health-hub-page #hero.hero-pillar .hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  padding: .35rem .9rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.2);
+  color: rgba(255,255,255,.88);
+}
+
+body.health-hub-page #hero.hero-pillar .hero-eyebrow-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--hh-mint-soft);
+  box-shadow: 0 0 8px var(--hh-mint);
+  animation: hh-pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes hh-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: .6; transform: scale(1.2); }
+}
+
+body.health-hub-page .hero-wellness-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: .65rem;
+  margin-top: 1.75rem;
+  max-width: 420px;
+}
+
+body.health-hub-page .hero-wellness-stat {
+  padding: .75rem .65rem;
+  border-radius: 14px;
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.15);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  text-align: center;
+}
+
+body.health-hub-page .hero-wellness-stat-value {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+}
+
+[data-lang="en"] body.health-hub-page .hero-wellness-stat-value {
+  font-family: 'Cinzel', Georgia, serif;
+}
+
+body.health-hub-page .hero-wellness-stat-label {
+  display: block;
+  font-size: .58rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.62);
+  margin-top: .2rem;
+  line-height: 1.35;
+}
+
+[data-lang="ar"] body.health-hub-page .hero-wellness-stat-label {
+  letter-spacing: 0;
+  text-transform: none;
+  font-size: .62rem;
+}
+
+body.health-hub-page #hero.hero-pillar .hero-badge-icon {
+  background: linear-gradient(135deg, var(--hh-mint-light, rgba(106,191,184,.2)), rgba(255,255,255,.5));
+  color: var(--hh-teal);
+}
+
+body.health-hub-page #hero.hero-pillar .hero-circle {
+  border: 3px solid rgba(255,255,255,.35);
+  box-shadow:
+    0 0 0 8px rgba(106, 191, 184, .12),
+    0 24px 64px rgba(5, 66, 65, .25);
+}
+
+body.health-hub-page .pillar-hero-ribbon-inner {
+  background: rgba(255,255,255,.14);
+  border-color: rgba(255,255,255,.22);
+}
+
+/* ── Quick links (sub-nav) — wellness pills ─────────────── */
+body.health-hub-page #sub-nav {
+  position: sticky !important;
+  top: var(--hh-nav-h) !important;
+  z-index: 8000;
+  background: rgba(247, 245, 240, .92) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: none !important;
+  border-bottom: 1px solid rgba(10, 107, 99, .1) !important;
+  box-shadow: 0 4px 20px rgba(10, 22, 18, .04);
+  height: var(--hh-sub-h);
+}
+
+[data-theme="dark"] body.health-hub-page #sub-nav {
+  background: rgba(26, 30, 36, .94) !important;
+  border-bottom-color: rgba(106, 191, 184, .15) !important;
+}
+
+body.health-hub-page .sub-nav-inner {
+  justify-content: center;
+  gap: .45rem;
+  padding: 0 clamp(.75rem, 3vw, 1.5rem);
+  height: 100%;
+  align-items: center;
+}
+
+body.health-hub-page .sub-nav-inner a {
+  padding: .45rem .85rem !important;
+  border-radius: 999px !important;
+  font-size: .72rem !important;
+  font-weight: 600 !important;
+  color: var(--hh-teal) !important;
+  background: transparent !important;
+  border: 1px solid transparent;
+  transition: background .2s var(--hh-ease), color .2s, border-color .2s, transform .2s;
+}
+
+body.health-hub-page .sub-nav-inner a:hover,
+body.health-hub-page .sub-nav-inner a:focus-visible {
+  color: var(--hh-teal-deep) !important;
+  background: rgba(106, 191, 184, .14) !important;
+  border-color: rgba(106, 191, 184, .25);
+  transform: translateY(-1px);
+}
+
+[data-theme="dark"] body.health-hub-page .sub-nav-inner a {
+  color: var(--hh-mint-soft) !important;
+}
+
+[data-theme="dark"] body.health-hub-page .sub-nav-inner a:hover {
+  background: rgba(106, 191, 184, .12) !important;
+  color: #fff !important;
+}
+
+body.health-hub-page .sub-nav-inner a svg {
+  vertical-align: -2px;
+  margin-inline-start: .2rem;
+  opacity: .7;
+}
+
+@media (max-width: 768px) {
+  body.health-hub-page .sub-nav-inner {
+    justify-content: flex-start;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  body.health-hub-page .hero-wellness-stats {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 100%;
+  }
+  body.health-hub-page .hero-wellness-stat-value { font-size: .95rem; }
+}
+
+/* ── Wellness pillars (intro enhancement) ───────────────── */
+body.health-hub-page .hh-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(.75rem, 1.5vw, 1.1rem);
+  margin-top: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+body.health-hub-page .hh-pillar {
+  padding: 1.25rem 1.15rem;
+  border-radius: 18px;
+  background: #fff;
+  border: 1px solid rgba(10, 107, 99, .08);
+  box-shadow: 0 2px 16px rgba(10, 22, 18, .04);
+  transition: transform .3s var(--hh-ease), box-shadow .3s var(--hh-ease);
+}
+
+body.health-hub-page .hh-pillar:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(10, 107, 99, .1);
+}
+
+[data-theme="dark"] body.health-hub-page .hh-pillar {
+  background: var(--card-bg, #1a1e24);
+  border-color: rgba(106, 191, 184, .12);
+}
+
+body.health-hub-page .hh-pillar-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(106,191,184,.18), rgba(106,191,184,.08));
+  color: var(--hh-teal);
+  margin-bottom: .75rem;
+}
+
+body.health-hub-page .hh-pillar-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+body.health-hub-page .hh-pillar-title {
+  font-size: .88rem;
+  font-weight: 700;
+  color: var(--hv-ink, #1a1612);
+  margin-bottom: .35rem;
+  line-height: 1.3;
+}
+
+body.health-hub-page .hh-pillar-desc {
+  font-size: .76rem;
+  line-height: 1.55;
+  color: var(--hv-muted, #8a918d);
+  margin: 0;
+}
+
+@media (max-width: 720px) {
+  body.health-hub-page .hh-pillars {
+    grid-template-columns: 1fr;
+  }
+}
+
+body.health-hub-page .hl-section--cream {
+  background: linear-gradient(180deg, var(--hh-cream) 0%, var(--hh-cream-warm) 100%);
+}
+
+/* ── Featured tools strip ───────────────────────────────── */
+body.health-hub-page .hh-featured {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(.85rem, 1.5vw, 1.15rem);
+  margin-bottom: clamp(1.5rem, 2.5vw, 2rem);
+}
+
+body.health-hub-page .hh-featured-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1.35rem;
+  border-radius: 22px;
+  background: linear-gradient(145deg, #fff 0%, var(--hh-cream-warm) 100%);
+  border: 1px solid rgba(106, 191, 184, .2);
+  box-shadow: 0 4px 24px rgba(10, 107, 99, .08);
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+  transition: transform .35s var(--hh-ease), box-shadow .35s var(--hh-ease);
+}
+
+body.health-hub-page .hh-featured-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--hh-teal), var(--hh-mint));
+}
+
+body.health-hub-page .hh-featured-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 40px rgba(10, 107, 99, .14);
+}
+
+[data-theme="dark"] body.health-hub-page .hh-featured-card {
+  background: linear-gradient(145deg, #1e2428 0%, #1a2826 100%);
+  border-color: rgba(106, 191, 184, .15);
+}
+
+body.health-hub-page .hh-featured-kicker {
+  font-size: .58rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--hh-teal);
+  margin-bottom: .5rem;
+}
+
+[data-lang="ar"] body.health-hub-page .hh-featured-kicker {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+body.health-hub-page .hh-featured-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--hv-ink, #1a1612);
+  line-height: 1.3;
+  margin-bottom: .45rem;
+}
+
+[data-lang="en"] body.health-hub-page .hh-featured-title {
+  font-family: 'Cinzel', Georgia, serif;
+  font-weight: 600;
+}
+
+body.health-hub-page .hh-featured-desc {
+  font-size: .78rem;
+  line-height: 1.6;
+  color: var(--hv-muted, #8a918d);
+  flex: 1;
+  margin-bottom: .85rem;
+}
+
+body.health-hub-page .hh-featured-link {
+  font-size: .72rem;
+  font-weight: 700;
+  color: var(--hh-teal);
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  transition: gap .2s;
+}
+
+body.health-hub-page .hh-featured-card:hover .hh-featured-link {
+  gap: .55rem;
+}
+
+@media (max-width: 900px) {
+  body.health-hub-page .hh-featured {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Tool cards — wellness polish ───────────────────────── */
+body.health-hub-page .hl-card--tool {
+  border-radius: 20px;
+  border-color: rgba(106, 191, 184, .12);
+  transition: transform .35s var(--hh-ease), box-shadow .35s var(--hh-ease), border-color .25s;
+}
+
+body.health-hub-page .hl-card--tool:hover {
+  border-color: rgba(106, 191, 184, .35);
+  box-shadow: 0 12px 36px rgba(10, 107, 99, .1);
+}
+
+body.health-hub-page .hl-card--tool .hl-card-icon {
+  background: linear-gradient(135deg, rgba(106,191,184,.16), rgba(106,191,184,.06));
+  border: 1px solid rgba(106, 191, 184, .15);
+}
+
+body.health-hub-page .hl-card--tool .hl-card-arrow {
+  color: var(--hh-teal);
+}
+
+body.health-hub-page .hl-eyebrow {
+  color: var(--hh-teal);
+}
+
+body.health-hub-page .hl-eyebrow::before {
+  content: '';
+  width: 20px;
+  height: 2px;
+  background: var(--hh-mint);
+  border-radius: 1px;
+  flex-shrink: 0;
+}
+
+/* ── Guide strip & topic authority ────────────────────────── */
+body.health-hub-page .hl-guide-strip {
+  background: linear-gradient(90deg, var(--hh-teal-deep) 0%, var(--hh-teal) 100%);
+  border: none;
+}
+
+body.health-hub-page .hl-guide-strip-inner {
+  color: #fff;
+}
+
+body.health-hub-page .hl-guide-strip-label {
+  color: rgba(255,255,255,.65);
+}
+
+body.health-hub-page .hl-guide-strip-title {
+  color: #fff;
+}
+
+body.health-hub-page .hl-guide-strip-link {
+  border-color: rgba(255,255,255,.4);
+  color: #fff;
+}
+
+body.health-hub-page .hl-guide-strip-link:hover {
+  background: #fff;
+  color: var(--hh-teal-deep);
+  border-color: #fff;
+}
+
+body.health-hub-page .hl-guide-strip-icon {
+  background: rgba(255,255,255,.12);
+  color: var(--hh-mint-soft);
+}
+
+body.health-hub-page .hl-topic-authority {
+  background: linear-gradient(180deg, #fff 0%, var(--hh-cream-warm) 100%);
+}
+
+body.health-hub-page .hl-card--topic {
+  border-color: rgba(106, 191, 184, .1);
+}
+
+body.health-hub-page .hl-card--topic .hl-topic-list a:hover {
+  color: var(--hh-teal);
+}
