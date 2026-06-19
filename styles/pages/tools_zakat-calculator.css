@@ -1,33 +1,14 @@
+/* tools_zakat-calculator.css — flagship page styles | accent via tools-accents.css */
+
+.tool-mn { padding-bottom: 0 !important; }
+
 /* ═══════════════════════════════════════════════════════
    DOTFORLIFE — Zakat Calculator | Ultimate Premium Design
    كل شيء مصمم من الصفر — فخامة ذهبية عصرية
    ═══════════════════════════════════════════════════════ */
 
 /* ── Design Tokens ──────────────────────────── */
-:root {
-  --z-gold: #C89B3C;
-  --z-gold-l: #F5E6B3;
-  --z-gold-d: #8B6914;
-  --z-gold-g: linear-gradient(135deg, #C89B3C, #A67C2E, #8B6914);
-  --z-gold-soft: linear-gradient(135deg, rgba(200,155,60,.08), rgba(200,155,60,.02));
-  --z-green: #059669;
-  --z-red: #DC2626;
-  --z-amber: #D97706;
-  --z-dark: #0A0F1E;
-  --z-card-bg: #FFFFFF;
-  --z-bd: #E9ECEF;
-  --z-shadow: 0 1px 3px rgba(0,0,0,.04), 0 6px 24px rgba(0,0,0,.04);
-  --z-shadow-h: 0 12px 48px rgba(0,0,0,.07);
-  --z-radius: 20px;
-  --z-trans: cubic-bezier(.22,1,.36,1);
-}
 
-[data-theme="dark"] {
-  --z-card-bg: #162032;
-  --z-bd: #26304A;
-  --z-shadow: 0 1px 3px rgba(0,0,0,.3), 0 6px 24px rgba(0,0,0,.35);
-  --z-shadow-h: 0 12px 48px rgba(0,0,0,.45);
-}
 
 /* ══════════════════════════════════════════════
    INFO GRID — 3 Premium Cards
@@ -93,7 +74,6 @@
   letter-spacing: -.01em;
   line-height: 1.3;
 }
-[data-theme="dark"] .zi-c-tt { color: #F1F5F9; }
 .zi-c-st {
   font-size: .68rem;
   color: var(--text-2, #6C757D);
@@ -133,7 +113,6 @@
   border-radius: 50%;
   font-size: .65rem;
 }
-[data-theme="dark"] .zi-li { border-color: #26304A; }
 
 /* ══════════════════════════════════════════════
    NISAB BANNER
@@ -159,10 +138,6 @@
   height: 200%;
   background: radial-gradient(circle at 30% 40%, rgba(200,155,60,.04) 0%, transparent 50%);
   pointer-events: none;
-}
-[data-theme="dark"] .zn-banner {
-  background: linear-gradient(135deg, rgba(200,155,60,.12), rgba(200,155,60,.04));
-  border-color: rgba(200,155,60,.2);
 }
 
 .zn-b-inner {
@@ -288,8 +263,6 @@
   background: rgba(255,255,255,.2);
   color: #fff;
 }
-[data-theme="dark"] .zn-s-btn { background: #162032; border-color: #26304A; }
-[data-theme="dark"] .zn-s-btn:hover { border-color: var(--z-gold); }
 
 @media (max-width: 480px) {
   .zn-select { flex-direction: column; gap: 8px; }
@@ -336,10 +309,6 @@
   color: #fff;
   box-shadow: 0 2px 8px rgba(200,155,60,.2);
 }
-[data-theme="dark"] .zt-tabs { background: rgba(200,155,60,.06); border-color: rgba(200,155,60,.1); }
-[data-theme="dark"] .zt-tab { color: #94A3B8; }
-[data-theme="dark"] .zt-tab:hover { color: var(--z-gold); }
-[data-theme="dark"] .zt-tab.active { color: #fff; }
 @media (max-width: 600px) {
   .zt-tabs { gap: 3px; padding: 3px; }
   .zt-tab { padding: 7px 12px; font-size: .68rem; gap: 3px; }
@@ -371,7 +340,6 @@
   opacity: .6;
 }
 .zc-card:hover { box-shadow: var(--z-shadow-h); transform: translateY(-2px); }
-[data-theme="dark"] .zc-card { background: #162032; border-color: #26304A; }
 @media (max-width: 768px) {
   .zc-card { padding: 22px 20px 8px; }
   .zc-card::before { left: 22px; right: 22px; }
@@ -404,14 +372,12 @@
   letter-spacing: -.01em;
   line-height: 1.3;
 }
-[data-theme="dark"] .zc-h-tt { color: #F1F5F9; }
 .zc-h-st {
   font-size: .75rem;
   color: var(--text-2, #6C757D);
   margin-top: 2px;
   line-height: 1.5;
 }
-[data-theme="dark"] .zc-hdr { border-color: #26304A; }
 
 /* ── Notice / Callout ───────────────────────── */
 .zc-notice {
@@ -437,8 +403,6 @@
   border-color: rgba(5,150,105,.14);
 }
 .zc-notice-green svg { color: var(--z-green); }
-[data-theme="dark"] .zc-notice-amber { background: rgba(200,155,60,.1); border-color: rgba(200,155,60,.18); }
-[data-theme="dark"] .zc-notice-green { background: rgba(5,150,105,.1); border-color: rgba(5,150,105,.18); }
 
 /* ── Input Grid ─────────────────────────────── */
 .zc-grid {
@@ -467,7 +431,6 @@
   white-space: nowrap;
   font-family: inherit;
 }
-[data-theme="dark"] .zf-tag { background: rgba(200,155,60,.15); color: var(--z-gold); }
 
 .zf-unit-sm {
   font-weight: 400;
@@ -485,7 +448,6 @@
   transition: border-color .4s var(--z-trans), box-shadow .4s var(--z-trans);
   background: var(--tool-bg, #F5F7FA);
 }
-[data-theme="dark"] .zf-inp { background: #0F172A; }
 .zf-inp:focus-within {
   border-color: var(--z-gold);
   box-shadow: 0 0 0 4px rgba(200,155,60,.1);
@@ -521,9 +483,6 @@
   background-position: left 12px center;
   padding-left: 30px;
 }
-[data-lang="ar"] .zf-inp select { background-position: right 12px center; padding-left: 14px; padding-right: 30px; }
-[data-theme="dark"] .zf-inp input { color: #F1F5F9; }
-[data-theme="dark"] .zf-inp select { color: #F1F5F9; }
 
 .zf-unit {
   display: flex;
@@ -537,8 +496,6 @@
   border-left: 1px solid var(--z-bd);
   letter-spacing: .02em;
 }
-[data-lang="ar"] .zf-unit { border-left: none; border-right: 1px solid var(--z-bd); }
-[data-theme="dark"] .zf-unit { background: rgba(200,155,60,.08); }
 
 /* ── Calculate Button ───────────────────────── */
 .zc-btn {
@@ -718,7 +675,6 @@
   letter-spacing: .03em;
   text-transform: uppercase;
 }
-[data-lang="en"] .zr-tbl th { text-align: left; }
 .zr-tbl td {
   padding: 9px 12px;
   border-bottom: 1px solid rgba(255,255,255,.08);
@@ -780,7 +736,6 @@
   box-shadow: var(--z-shadow);
   transform: translateX(3px);
 }
-[data-lang="ar"] .zm-card:hover { transform: translateX(-3px); }
 .zm-icon {
   width: 34px;
   height: 34px;
@@ -806,7 +761,6 @@
   color: var(--text-2, #6C757D);
   line-height: 1.7;
 }
-[data-theme="dark"] .zm-card { background: #162032; border-color: #26304A; }
 @media (max-width: 600px) {
   .zm-card { flex-direction: column; gap: 10px; padding: 14px 16px; margin-bottom: 24px; }
 }
@@ -825,7 +779,6 @@
   color: var(--text, #1A1D23);
   letter-spacing: -.02em;
 }
-[data-theme="dark"] .zf-hdr { color: #F1F5F9; }
 
 .zf-item {
   border: 1px solid var(--z-bd);
@@ -840,8 +793,6 @@
   box-shadow: 0 2px 12px rgba(0,0,0,.04);
   border-color: rgba(200,155,60,.2);
 }
-[data-theme="dark"] .zf-item { background: #162032; border-color: #26304A; }
-[data-theme="dark"] .zf-item:hover { border-color: rgba(200,155,60,.25); }
 
 .zf-q {
   padding: 15px 18px;
@@ -856,8 +807,6 @@
   user-select: none;
 }
 .zf-q:hover { background: rgba(200,155,60,.03); }
-[data-theme="dark"] .zf-q { color: #F1F5F9; }
-[data-theme="dark"] .zf-q:hover { background: rgba(255,255,255,.03); }
 
 .zf-tog {
   color: var(--z-gold);
@@ -912,7 +861,6 @@
   letter-spacing: -.02em;
   margin: 0 0 3px;
 }
-[data-theme="dark"] .zrl-hdr { color: #F1F5F9; }
 .zrl-sub {
   font-size: .8rem;
   color: var(--text-2, #6C757D);
@@ -959,7 +907,6 @@
   color: var(--text, #1A1D23);
   line-height: 1.3;
 }
-[data-theme="dark"] .zrl-c-tt { color: #F1F5F9; }
 .zrl-c-desc {
   font-size: .72rem;
   color: var(--text-2, #6C757D);
@@ -975,11 +922,6 @@
 .zrl-card:hover .zrl-c-arr {
   transform: translateX(4px);
 }
-[data-lang="ar"] .zrl-card:hover .zrl-c-arr {
-  transform: translateX(-4px);
-}
-[data-theme="dark"] .zrl-card { background: #162032; border-color: #26304A; }
-[data-theme="dark"] .zrl-card:hover { border-color: var(--z-gold); box-shadow: 0 6px 24px rgba(0,0,0,.3); }
 @media (max-width: 600px) {
   .zrl-grid { grid-template-columns: 1fr; gap: 10px; }
 }
@@ -1025,16 +967,11 @@
 /* ══════════════════════════════════════════════
    DARK MODE — General Overrides
    ══════════════════════════════════════════════ */
-[data-theme="dark"] {
-  --tool-bg: #0F172A;
-}
-[data-theme="dark"] .zf-inp { background: #0F172A; }
 
 /* ══════════════════════════════════════════════
    MOBILE BODY PADDING
    ══════════════════════════════════════════════ */
 @media (max-width: 768px) {
-  body { padding-bottom: 80px; }
   .zn-banner { margin-top: 14px; }
   .zn-select { margin-top: 10px; }
   .zt-tabs { margin-top: 8px; }
@@ -1049,10 +986,6 @@
   border-top: 1px solid rgba(200,155,60,.08);
   padding: 48px 24px 56px;
   margin-top: 8px;
-}
-[data-theme="dark"] .zo-section {
-  background: linear-gradient(180deg, transparent 0%, rgba(200,155,60,.05) 40%, rgba(200,155,60,.08) 100%);
-  border-top-color: rgba(200,155,60,.12);
 }
 .zo-inner {
   max-width: 760px;
@@ -1077,7 +1010,6 @@
   letter-spacing: -.02em;
   margin: 0 0 3px;
 }
-[data-theme="dark"] .zo-tt { color: #F1F5F9; }
 .zo-st {
   font-size: .8rem;
   color: var(--text-2, #6C757D);
@@ -1134,7 +1066,6 @@
   color: var(--text, #1A1D23);
   line-height: 1.3;
 }
-[data-theme="dark"] .zo-c-tt { color: #F1F5F9; }
 .zo-c-desc {
   font-size: .72rem;
   color: var(--text-2, #6C757D);
@@ -1152,17 +1083,6 @@
 .zo-card:hover .zo-c-arr {
   transform: translateX(4px);
 }
-[data-lang="ar"] .zo-card:hover .zo-c-arr {
-  transform: translateX(-4px);
-}
-[data-theme="dark"] .zo-card { background: #162032; border-color: #26304A; }
-[data-theme="dark"] .zo-card:hover {
-  border-color: var(--z-gold);
-  box-shadow: 0 6px 24px rgba(0,0,0,.3);
-}
-[data-theme="dark"] .zo-card-guide {
-  background: linear-gradient(135deg, rgba(200,155,60,.08), rgba(200,155,60,.03));
-}
 @media (max-width: 600px) {
   .zo-section { padding: 36px 16px 44px; }
   .zo-card { padding: 14px 16px; gap: 10px; }
@@ -1179,7 +1099,6 @@
   background: linear-gradient(135deg, #0A0F1E, #1A2440);
   border-radius: 16px; margin-bottom: 14px; position: relative; color: #fff;
 }
-[data-theme="dark"] .zk-affiliate { background: linear-gradient(135deg, #0A0F1E, #162032); }
 @media (max-width: 640px) { .zk-affiliate { flex-direction: column; text-align: center; padding: 20px; } }
 .zk-aff-badge {
   position: absolute; top: -6px; right: 16px; font-size: .6rem; font-weight: 800;
@@ -1206,10 +1125,8 @@
   text-align: center; padding: 28px 24px; margin-bottom: 14px;
   background: var(--z-card-bg); border: 1px dashed var(--z-bd); border-radius: 16px;
 }
-[data-theme="dark"] .zk-sponsor { background: #162032; }
 .zk-sponsor-label { font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: #ADB5BD; margin-bottom: 8px; }
 .zk-sponsor h3 { font-size: 1rem; font-weight: 700; color: var(--text-1); margin: 0 0 8px; }
-[data-theme="dark"] .zk-sponsor h3 { color: #F1F5F9; }
 .zk-sponsor p { font-size: .82rem; color: var(--text-2); line-height: 1.6; max-width: 400px; margin: 0 auto 14px; }
 .zk-sponsor-cta {
   display: inline-flex; align-items: center; gap: 6px; padding: 10px 22px;

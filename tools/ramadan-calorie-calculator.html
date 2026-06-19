@@ -1,577 +1,226 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light" data-lang="en" dir="ltr">
 <head>
-<script>
-(function(){
-  /* theme */
-  var tb=document.getElementById("theme-toggle");
-  if(tb)tb.addEventListener("click",function(){
-    var h=document.documentElement,t=h.getAttribute("data-theme")==="dark"?"light":"dark";
-    h.setAttribute("data-theme",t);localStorage.setItem("dfl-theme",t);
-  });
-  /* lang */
-  var lb=document.getElementById("lang-toggle");
-  if(lb)lb.addEventListener("click",function(){
-    var h=document.documentElement,l=h.getAttribute("data-lang")==="ar"?"en":"ar";
-    h.setAttribute("data-lang",l);h.setAttribute("lang",l);
-    h.setAttribute("dir",l==="ar"?"rtl":"ltr");localStorage.setItem("dfl-lang",l);
-  });
-  /* scroll shadow */
-  var nb=document.getElementById("navbar");
-  if(nb)window.addEventListener("scroll",function(){nb.classList.toggle("scrolled",window.scrollY>10);},{passive:true});
-  /* reveal */
-  if("IntersectionObserver" in window){
-    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add("visible");});},{threshold:0.1});
-    document.querySelectorAll(".reveal").forEach(function(el){io.observe(el);});
-  } else document.querySelectorAll(".reveal").forEach(function(el){el.classList.add("visible");});
-
-  /* hamburger menu */
-  (function(){
-    var hb = document.getElementById('hamburger-btn');
-    var dd = document.getElementById('mobile-dropdown');
-    if (!hb || !dd) return;
-    function toggle(e) {
-      e.stopPropagation();
-      var open = dd.classList.toggle('open');
-      hb.classList.toggle('open', open);
-      hb.setAttribute('aria-expanded', open);
-      document.body.classList.toggle('menu-open', open);
-    }
-    function closeM() {
-      dd.classList.remove('open');
-      hb.classList.remove('open');
-      hb.setAttribute('aria-expanded', 'false');
-      document.body.classList.remove('menu-open');
-    }
-    hb.addEventListener('click', toggle);
-    document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeM(); });
-    dd.addEventListener('click', function(e){ if(e.target===dd) closeM(); });
-  })();
-
-  })();
-</script>
 <meta charset="UTF-8"/>
-
-  <script>(function(){var p=new URLSearchParams(location.search),gd=(function(){try{var z=(Intl.DateTimeFormat().resolvedOptions().timeZone||"");return /Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test(z)?"ar":"en";}catch(e){return "ar";}})(),l=p.get("lang")||localStorage.getItem("dfl-lang")||gd,t=p.get("theme")||localStorage.getItem("dfl-theme")||"light",h=document.documentElement;h.setAttribute("data-theme",t);h.setAttribute("data-lang",l);h.setAttribute("lang",l);h.setAttribute("dir",l==="ar"?"rtl":"ltr");if(p.get("lang"))localStorage.setItem("dfl-lang",l);if(p.get("theme"))localStorage.setItem("dfl-theme",t);})()</script>
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
-  <meta http-equiv="x-dns-prefetch-control" content="on" />
-  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
-  <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-  <link rel="dns-prefetch" href="https://images.unsplash.com" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://www.googletagmanager.com" />
-<title>Ramadan Calorie Calculator 2025, Suhoor & Iftar Nutrition | DotForLife</title>
-<meta name="description" content="Calculate your daily calorie needs during Ramadan fasting. Suhoor and Iftar meal breakdown, fasting TDEE, hydration targets. Bilingual Arabic & English. Free."/>
-<link rel="canonical" href="https://www.dotforlife.com/tools/ramadan-calorie-calculator"/>
-<meta property="og:site_name" content="DOTFORLIFE" />
-  <meta property="og:title" content="Ramadan Calorie Calculator, Suhoor & Iftar Nutrition | DotForLife"/>
-<meta property="og:description" content="Smart calorie planner for Ramadan fasting. Know exactly how much to eat at Suhoor and Iftar to maintain your health and weight goals."/>
-<meta property="og:image" content="https://www.dotforlife.com/og/islamic.jpg"/>
-<meta property="og:type" content="website"/>
-<meta name="twitter:image" content="https://www.dotforlife.com/og/islamic.jpg" />
-  <meta name="twitter:card" content="summary_large_image"/>
-<meta http-equiv="x-dns-prefetch-control" content="on"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Almarai:wght@400;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Almarai:wght@400;700;800&display=swap"/></noscript>
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Ramadan Calorie Calculator","alternateName":"حاسبة سعرات رمضان","url":"https://dotforlife.com/tools/ramadan-calorie-calculator","applicationCategory":"HealthApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"inLanguage":["en","ar"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://dotforlife.com"},{"@type":"ListItem","position":2,"name":"Islamic","item":"https://dotforlife.com/islamic"},{"@type":"ListItem","position":3,"name":"Ramadan Calorie Calculator","item":"https://dotforlife.com/tools/ramadan-calorie-calculator"}]}]}</script>
-
-<link rel="stylesheet" href="/styles/global.css?v=20260617e"/>
-<link rel="stylesheet" href="/styles/tools-shared.css?v=20260608a"/>
-<link rel="stylesheet" href="/styles/pages/tools_ramadan-calorie-calculator.css?v=20260617b">
-
-  <!-- DFL CANONICAL SYSTEM CSS -->
-  
-<script src="/scripts/global.js" defer></script>
-<style>
-.dfl-related{border-top:1px solid var(--border);padding:52px 0 64px;background:var(--body-bg);}
-.dfl-related .container{max-width:1280px;margin:0 auto;padding:0 clamp(1.5rem,4vw,2.5rem);}
-.dfl-related-label{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
-.dfl-related-title{font-size:clamp(1.2rem,2.5vw,1.55rem);font-weight:700;color:var(--text);margin:0 0 6px;letter-spacing:-.02em;}
-.dfl-related-sub{font-size:.88rem;color:var(--text-2);margin-bottom:32px;line-height:1.6;}
-.dfl-related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;}
-.dfl-rc{display:flex;flex-direction:column;background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:20px 22px 18px;text-decoration:none;color:inherit;transition:border-color .2s,box-shadow .2s,transform .2s;}
-.dfl-rc:hover{border-color:var(--gold);box-shadow:0 4px 20px rgba(107,191,184,.12);transform:translateY(-2px);}
-.dfl-rc.guide{border-style:dashed;}
-.dfl-rc.guide:hover{border-color:var(--green,#2a9a98);box-shadow:0 4px 20px rgba(42,154,152,.1);}
-.dfl-rc-top{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
-.dfl-rc-icon{font-size:1.4rem;line-height:1;flex-shrink:0;}
-.dfl-rc-name{font-size:.88rem;font-weight:700;color:var(--text);line-height:1.3;}
-.dfl-rc-desc{font-size:.78rem;color:var(--text-2);line-height:1.5;flex:1;}
-.dfl-rc-cta{margin-top:12px;font-size:.76rem;font-weight:700;color:var(--gold);}
-.dfl-rc.guide .dfl-rc-cta{color:var(--green,#2a9a98);}
-@media(max-width:600px){.dfl-related-grid{grid-template-columns:1fr 1fr;gap:10px;}.dfl-rc{padding:14px;}}
-
-.site-footer{background:var(--navy,#032a28);color:rgba(255,255,255,.7);padding:clamp(3rem,6vw,5rem) 0 0;}
-.footer-inner{max-width:1280px;margin:0 auto;padding:0 clamp(16px,4vw,48px);}
-.footer-top{display:flex;gap:3rem;margin-bottom:3rem;flex-wrap:wrap;}
-.footer-brand{flex:0 0 220px;}
-.footer-brand p{font-size:.82rem;line-height:1.65;color:rgba(255,255,255,.45);margin-top:.75rem;}
-.footer-logo img{height:100px;width:auto;display:block;}
-.footer-cols{flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;}
-.footer-col h4{font-size:.68rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.85);margin-bottom:1rem;}
-.footer-col ul{list-style:none;}.footer-col ul li{margin-bottom:.55rem;}
-.footer-col ul li a{font-size:.83rem;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s;}
-.footer-col ul li a:hover,.footer-bottom a{color:var(--gold);}
-.footer-divider{border:none;border-top:1px solid rgba(255,255,255,.08);margin:0;}
-.footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.25rem 0 calc(1.25rem + 60px);font-size:.78rem;color:rgba(255,255,255,.35);flex-wrap:wrap;}
-.footer-bottom-links{display:flex;gap:1.25rem;}
-.footer-bottom-links a{color:rgba(255,255,255,.35);text-decoration:none;transition:color .2s;}
-@media(max-width:860px){.footer-top{flex-direction:column;}.footer-cols{grid-template-columns:1fr 1fr;}}
-@media(max-width:500px){.footer-cols{grid-template-columns:1fr;}.footer-bottom{flex-direction:column;text-align:center;}}
-
-</style>
-  <link rel="alternate" hreflang="ar" href="https://www.dotforlife.com/tools/ramadan-calorie-calculator?lang=ar" />
-  <link rel="alternate" hreflang="en" href="https://www.dotforlife.com/tools/ramadan-calorie-calculator?lang=en" />
-  <link rel="alternate" hreflang="x-default" href="https://www.dotforlife.com/tools/ramadan-calorie-calculator" />
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3G1XPV4F0G"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-3G1XPV4F0G');
-</script>
+<script>(function(){var p=new URLSearchParams(location.search),gd=(function(){try{var z=(Intl.DateTimeFormat().resolvedOptions().timeZone||"");return /Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test(z)?"ar":"en";}catch(e){return "ar";}})(),l=p.get("lang")||localStorage.getItem("dfl-lang")||gd,t=p.get("theme")||localStorage.getItem("dfl-theme")||"light",h=document.documentElement;h.setAttribute("data-theme",t);h.setAttribute("data-lang",l);h.setAttribute("lang",l);h.setAttribute("dir",l==="ar"?"rtl":"ltr");if(p.get("lang"))localStorage.setItem("dfl-lang",l);if(p.get("theme"))localStorage.setItem("dfl-theme",t);})()</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta http-equiv="x-dns-prefetch-control" content="on" />
+<link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+<link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<title>Ramadan Calorie Calculator | حاسبة سعرات رمضان | Dot For Life</title>
+<meta name="description" content="Ramadan calorie and hydration calculator with Suhoor/Iftar split."/>
+<link rel="canonical" href="https://dotforlife.com/tools/ramadan-calorie-calculator.html"/>
+<link rel="alternate" hreflang="ar" href="https://dotforlife.com/tools/ramadan-calorie-calculator.html?lang=ar" />
+<link rel="alternate" hreflang="en" href="https://dotforlife.com/tools/ramadan-calorie-calculator.html?lang=en" />
+<link rel="alternate" hreflang="x-default" href="https://dotforlife.com/tools/ramadan-calorie-calculator.html" />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Almarai:wght@400;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Almarai:wght@400;700;800&display=swap"/></noscript>
+<link rel="stylesheet" href="/styles/global.css?v=20260618f"/>
+<link rel="stylesheet" href="/styles/tools-shared.css?v=20260608a">
+<link rel="stylesheet" href="/styles/tools-flagship.css?v=20260625b">
+<link rel="stylesheet" href="/styles/tools-accents.css?v=20260625a">
+<link rel="stylesheet" href="/styles/pages/tools_ramadan-calorie-calculator.css?v=20260625a">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dotforlife.com/tools/ramadan-calorie-calculator.html">
+<meta property="og:title" content="Ramadan Calorie Calculator | حاسبة سعرات رمضان | Dot For Life">
+<meta property="og:description" content="Ramadan calorie and hydration calculator with Suhoor/Iftar split.">
+<meta property="og:image" content="https://dotforlife.com/og/og-default.png">
+<meta name="twitter:card" content="summary_large_image">
 
 </head>
-<body class="category-page has-subnav">
-  <!-- DFL CANONICAL NAVBAR -->
-  <!-- ═══ UNIFIED HEADER ══════════════════════════════════════ -->
-<nav id="navbar" role="navigation" aria-label="Main navigation">
+<body class="tool-flagship-page no-subnav" data-tool="ramadan-calorie-calculator">
+<nav id="navbar" class="index-nav" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
-    <a href="../index.html" class="nav-logo" aria-label="DOTFORLIFE Home">
-      <img src="../logo1-footer.webp" alt="DOTFORLIFE" width="100" height="100" style="height:100px;width:auto;object-fit:contain;" width="100" height="100" loading="lazy">
+    <a href="/index.html" class="nav-logo" aria-label="DOTFORLIFE Home">
+      <img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" width="115" height="115" loading="eager" fetchpriority="high">
     </a>
     <ul class="nav-links">
-      <li><a href="../health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
-      <li><a href="../finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li>
-      <li><a href="../real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li>
-      <li><a href="../travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li>
-      <li><a href="../islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li>
+      <li><a href="/health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
+      <li><a href="/finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li>
+      <li><a href="/real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li>
+      <li><a href="/travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li>
+      <li><a href="/islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li>
       <li><a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a></li>
-      <li><a href="../archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a></li>
+      <li><a href="/archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a></li>
       <li><a href="/blog.html"><span class="en">blog</span><span class="ar">المدونة</span></a></li>
-      <li><a href="../library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a></li>
+      <li><a href="/library.html" aria-current="page"><span class="en">Library</span><span class="ar">المكتبة</span></a></li>
     </ul>
     <div class="nav-controls">
       <button class="nav-btn" id="lang-toggle" aria-label="Switch language"><span class="en">عربي</span><span class="ar">English</span></button>
       <button class="nav-btn" id="theme-toggle" aria-label="Toggle theme"><svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
-      <button class="hamburger" id="hamburger-btn" aria-label="Menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+      <button class="hamburger" id="hamburger-btn" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </div>
 </nav>
-<!-- ═══════════════════════════════════════
-       HERO
-  ═══════════════════════════════════════ -->
-<div class="tool-hr-wrap">
-  <section class="tool-hr" aria-labelledby="tool-title">
-    <div class="tool-hr-in">
-      <div class="tool-hr-bd"> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg> <span class="en">Ramadan Tool</span><span class="ar">أداة رمضانية</span></div>
-      <h1 id="tool-title"><span class="en">Ramadan Calorie Calculator</span><span class="ar">حاسبة السعرات الحرارية في رمضان</span></h1>
-      <p>
-    <span class="en">Personalised Suhoor & Iftar calorie targets based on your body, activity level, and Ramadan goals.</span>
-    <span class="ar">أهداف سعرات السحور والإفطار المخصّصة بناءً على جسمك ومستوى نشاطك وأهداف رمضانك.</span>
-  </p>
-      <div class="hero-badges">
-    <span class="h-badge"><svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg> <span class="en">Fasting-Adapted</span><span class="ar">محسوب للصيام</span></span>
-    <span class="h-badge">⚗️ <span class="en">Mifflin-St Jeor</span></span>
-    <span class="h-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> <span class="en">GCC Climate</span><span class="ar">مناخ الخليج</span></span>
-  </div>
-    </div>
-  </section>
-  <div id="sub-nav">
-  <div class="sub-nav-inner">
-    <a href="/tools/prayer-times.html"><span class="en">Prayer Times</span><span class="ar">أوقات الصلاة</span></a>
+<div class="tool-hero"><div class="tool-hero-inner">
+    <nav class="tool-breadcrumb" aria-label="Breadcrumb"><a href="/index.html"><span class="en">Home</span><span class="ar">الرئيسية</span></a><span class="tool-breadcrumb-sep">/</span><a href="/library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a><span class="tool-breadcrumb-sep">/</span><span><span class="en">Ramadan Calories</span><span class="ar">سعرات رمضان</span></span></nav>
+    <p class="tool-eyebrow"><span class="en">Islamic Tool · Fasting-Adapted</span><span class="ar">أداة إسلامية · للصيام</span></p>
+    <h1 id="tool-title"><span class="en">Ramadan Calorie Calculator</span><span class="ar">حاسبة السعرات في رمضان</span></h1>
+    <p class="tool-hero-desc"><span class="en">Personalised Suhoor and Iftar calorie targets with hydration plan — Mifflin-St Jeor adapted for fasting.</span><span class="ar">أهداف سعرات السحور والإفطار مع خطة ترطيب — ميفلين-سانت جيور للصيام.</span></p>
+    <ul class="tool-trust"><li><span class="en">Mifflin-St Jeor</span><span class="ar">ميفلين-سانت جيور</span></li><li><span class="en">35/65 split</span><span class="ar">35/65 توزيع</span></li><li><span class="en">Free &amp; private</span><span class="ar">مجاني وخاص</span></li></ul>
+  </div></div>
+<div class="tool-tabs-wrap" role="navigation" aria-label="Islamic tools">
+  <div class="tool-tabs-inner">
+    <a href="/tools/prayer-times.html"><span class="en">Prayer</span><span class="ar">الصلاة</span></a>
     <a href="/tools/qibla.html"><span class="en">Qibla</span><span class="ar">القبلة</span></a>
     <a href="/tools/hijri-converter.html"><span class="en">Hijri</span><span class="ar">الهجري</span></a>
-    <a href="/tools/inheritance-calculator.html"><span class="en">Inheritance</span><span class="ar">الميراث</span></a>
     <a href="/tools/zakat-calculator.html"><span class="en">Zakat</span><span class="ar">الزكاة</span></a>
-    <a href="/guides/zakat-complete-guide.html"><span class="en">Zakat Guide</span><span class="ar">دليل الزكاة</span></a>
+    <a href="/tools/ramadan-calorie-calculator.html" class="is-active"><span class="en">Ramadan</span><span class="ar">رمضان</span></a>
+    <a href="/tools/inheritance-calculator.html"><span class="en">Inherit</span><span class="ar">الميراث</span></a>
   </div>
 </div>
-</div>
-
-<div class="container">
-
-<main class="tool-mn">
-<div class="tool-cd calc-card">
-  <div class="tool-cd-title"><svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg> <span class="en">Your Ramadan Profile</span><span class="ar">ملفك في رمضان</span></div>
-
-  <div class="form-grid">
-    <div class="form-group">
-      <label class="form-label"><span class="en">Age</span><span class="ar">العمر</span></label>
-      <input class="form-input" type="number" id="age" min="14" max="90" value="30" placeholder="30"/>
+<main class="tool-mn"><div class="tool-workspace">
+    <div class="tool-panel rc-card"><div class="tool-panel-hdr"><h2><span class="en">Your Ramadan Profile</span><span class="ar">ملفك في رمضان</span></h2></div>
+      <div class="tool-panel-body t-body">
+        <div class="t-g2">
+          <div class="t-fl"><label class="t-fl-l" for="age"><span class="en">Age</span><span class="ar">العمر</span></label><div class="t-fl-r"><input type="number" id="age" value="30" min="14" max="90"></div></div>
+          <div class="t-fl"><label class="t-fl-l" for="gender"><span class="en">Gender</span><span class="ar">الجنس</span></label><div class="t-fl-r"><select id="gender"><option value="male">Male / ذكر</option><option value="female">Female / أنثى</option></select></div></div>
+          <div class="t-fl"><label class="t-fl-l" for="weight"><span class="en">Weight (kg)</span><span class="ar">الوزن (كغ)</span></label><div class="t-fl-r"><input type="number" id="weight" value="75" min="30" max="250"><span class="t-fl-u">kg</span></div></div>
+          <div class="t-fl"><label class="t-fl-l" for="height"><span class="en">Height (cm)</span><span class="ar">الطول (سم)</span></label><div class="t-fl-r"><input type="number" id="height" value="170" min="100" max="230"><span class="t-fl-u">cm</span></div></div>
+        </div>
+        <div class="t-fl"><label class="t-fl-l" for="activity"><span class="en">Activity during Ramadan</span><span class="ar">النشاط في رمضان</span></label><div class="t-fl-r"><select id="activity"><option value="1.2">Sedentary / خامل</option><option value="1.375" selected>Light / خفيف</option><option value="1.55">Moderate / متوسط</option><option value="1.725">Active / نشط</option></select></div></div>
+        <div class="t-step"><span class="en">Ramadan Goal</span><span class="ar">هدف رمضان</span></div>
+        <div class="rc-goal-grid">
+          <button type="button" class="rc-goal" data-goal="lose"><span class="en">Lose Weight</span><span class="ar">خسارة وزن</span></button>
+          <button type="button" class="rc-goal active" data-goal="maintain"><span class="en">Maintain</span><span class="ar">ثبات</span></button>
+          <button type="button" class="rc-goal" data-goal="gain"><span class="en">Keep Muscle</span><span class="ar">العضلات</span></button>
+        </div>
+        <button class="t-btn" type="button" id="calcBtn"><span class="en">Calculate Nutrition</span><span class="ar">احسب التغذية</span></button>
+      </div>
     </div>
-    <div class="form-group">
-      <label class="form-label"><span class="en">Gender</span><span class="ar">الجنس</span></label>
-      <select class="form-select" id="gender">
-        <option value="male"><span class="en">Male</span></option>
-        <option value="female"><span class="en">Female</span></option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label class="form-label"><span class="en">Weight (kg)</span><span class="ar">الوزن (كجم)</span></label>
-      <input class="form-input" type="number" id="weight" min="30" max="250" value="75" placeholder="75"/>
-    </div>
-    <div class="form-group">
-      <label class="form-label"><span class="en">Height (cm)</span><span class="ar">الطول (سم)</span></label>
-      <input class="form-input" type="number" id="height" min="100" max="230" value="170" placeholder="170"/>
-    </div>
-    <div class="form-group full">
-      <label class="form-label"><span class="en">Activity Level During Ramadan</span><span class="ar">مستوى النشاط في رمضان</span></label>
-      <select class="form-select" id="activity">
-        <option value="1.2"><span class="en">Sedentary (desk job, little movement)</span></option>
-        <option value="1.375" selected><span class="en">Light (short walks, light household tasks)</span></option>
-        <option value="1.55"><span class="en">Moderate (daily exercise after Iftar)</span></option>
-        <option value="1.725"><span class="en">Active (Tarawih + daily workout)</span></option>
-      </select>
-    </div>
-    <div class="form-group full">
-      <label class="form-label"><span class="en">Ramadan Goal</span><span class="ar">هدف رمضان</span></label>
-      <div class="goal-grid">
-        <button class="goal-btn" data-goal="lose"><span class="gb-icon">⬇️</span><span class="en">Lose Weight</span><span class="ar">خسارة وزن</span></button>
-        <button class="goal-btn active" data-goal="maintain"><span class="gb-icon">⚖️</span><span class="en">Maintain Weight</span><span class="ar">ثبات الوزن</span></button>
-        <button class="goal-btn" data-goal="gain"><span class="gb-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 13l-3 3-2-2"/><path d="M14 3v10"/><path d="M5 21h14"/></svg></span><span class="en">Maintain Muscle</span><span class="ar">الحفاظ على العضلات</span></button>
+    <div class="tool-panel rc-card" id="results"><div class="tool-panel-hdr"><h2><span class="en">Your Plan</span><span class="ar">خطتك</span></h2></div>
+      <div class="tool-panel-body t-body">
+        <div class="t-metrics">
+          <div class="t-metric"><div class="t-metric-val" id="r-tdee">—</div><div class="t-metric-lbl"><span class="en">Ramadan TDEE</span><span class="ar">السعرات اليومية</span></div></div>
+          <div class="t-metric"><div class="t-metric-val" id="r-target">—</div><div class="t-metric-lbl"><span class="en">Target Intake</span><span class="ar">الاستهلاك المستهدف</span></div></div>
+          <div class="t-metric"><div class="t-metric-val" id="r-water">—</div><div class="t-metric-lbl"><span class="en">Water (L)</span><span class="ar">الماء (لتر)</span></div></div>
+        </div>
+        <div class="rc-meals">
+          <div class="rc-meal"><div class="t-step"><span class="en">Suhoor (35%)</span><span class="ar">السحور (35%)</span></div><div class="rc-meal-cal" id="r-suhoor">—</div><div class="rc-meal-sub"><span class="en">kcal · slow carbs + protein</span><span class="ar">سعرة · كربوهيدرات بطيئة + بروتين</span></div></div>
+          <div class="rc-meal"><div class="t-step"><span class="en">Iftar (65%)</span><span class="ar">الإفطار (65%)</span></div><div class="rc-meal-cal" id="r-iftar">—</div><div class="rc-meal-sub"><span class="en">kcal · balanced plate</span><span class="ar">سعرة · طبق متوازن</span></div></div>
+        </div>
+        <div class="t-step"><span class="en">Hydration Plan</span><span class="ar">خطة الترطيب</span></div>
+        <div id="waterGlassesLabel" style="font-size:.82rem;color:var(--tool-muted);margin-bottom:8px"></div>
+        <div class="rc-water-glasses" id="waterGlasses"></div>
+        <p class="t-disclaimer"><span class="en">For informational purposes only. Consult a doctor before dietary changes during fasting.</span><span class="ar">لأغراض معلوماتية فقط. استشر طبيبك قبل تغيير نظامك الغذائي أثناء الصيام.</span></p>
       </div>
     </div>
   </div>
-
-  <button class="calc-btn" id="calcBtn">
-    <span class="en"><svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg> Calculate My Ramadan Nutrition</span>
-    <span class="ar"><svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg> احسب تغذيتي في رمضان</span>
-  </button>
-</div>
-
-<!-- RESULTS -->
-<div class="results" id="results">
-
-  <div class="res-section-title"><span class="en"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> Your Daily Calorie Summary</span><span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> ملخص سعراتك اليومية</span></div>
-  <div class="kpi-row">
-    <div class="kpi-box">
-      <div class="kpi-val" id="r-tdee">, </div>
-      <div class="kpi-unit">kcal/<span class="en">day</span><span class="ar">يوم</span></div>
-      <div class="kpi-label"><span class="en">Ramadan TDEE</span><span class="ar">السعرات اليومية</span></div>
-    </div>
-    <div class="kpi-box">
-      <div class="kpi-val" id="r-target">, </div>
-      <div class="kpi-unit">kcal/<span class="en">day</span><span class="ar">يوم</span></div>
-      <div class="kpi-label"><span class="en">Target Intake</span><span class="ar">الاستهلاك المستهدف</span></div>
-    </div>
-    <div class="kpi-box">
-      <div class="kpi-val" id="r-water">, </div>
-      <div class="kpi-unit">L</div>
-      <div class="kpi-label"><span class="en">Water (Iftar–Suhoor)</span><span class="ar">الماء (إفطار–سحور)</span></div>
-    </div>
-  </div>
-
-  <div class="res-section-title"><span class="en"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 2v4a3 3 0 0 1-3 3h-4a3 3 0 0 1-3-3V2"/><path d="M7 12v8a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-8"/></svg>️ Meal Breakdown</span><span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 2v4a3 3 0 0 1-3 3h-4a3 3 0 0 1-3-3V2"/><path d="M7 12v8a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-8"/></svg>️ توزيع الوجبات</span></div>
-  <div class="meal-cards">
-    <div class="meal-card meal-suhoor">
-      <span class="meal-card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 18a5 5 0 0 0-10 0"/><line x1="12" y1="9" x2="12" y2="2"/><line x1="4.22" y1="10.22" x2="5.64" y2="11.64"/><line x1="1" y1="18" x2="3" y2="18"/><line x1="21" y1="18" x2="23" y2="18"/><line x1="18.36" y1="11.64" x2="19.78" y2="10.22"/></svg></span>
-      <div class="meal-card-title"><span class="en">Suhoor (Pre-dawn)</span><span class="ar">السحور (قبل الفجر)</span></div>
-      <div class="meal-card-cal" id="r-suhoor">, </div>
-      <div class="meal-card-sub en">kcal · ~35% of daily target</div>
-      <div class="meal-card-sub ar">سعرة · ~٣٥٪ من هدفك اليومي</div>
-      <div class="meal-tips">
-        <div class="meal-tip">🥣 <span class="en">Slow-release carbs: oats, whole grain bread</span><span class="ar">كربوهيدرات بطيئة: شوفان، خبز أسمر</span></div>
-        <div class="meal-tip">🥚 <span class="en">Protein: eggs, labneh, cheese</span><span class="ar">بروتين: بيض، لبنة، جبن</span></div>
-        <div class="meal-tip">🍌 <span class="en">Fruit for natural sugars & fibre</span><span class="ar">فاكهة للسكر الطبيعي والألياف</span></div>
-        <div class="meal-tip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg> <span class="en">2–3 glasses of water before Fajr</span><span class="ar">٢-٣ أكواب ماء قبل الفجر</span></div>
+  <div class="tool-below"><div class="t-section"><div class="t-section-label"><span class="en">How this is calculated</span><span class="ar">طريقة الحساب</span></div>
+    <p class="en">BMR via Mifflin-St Jeor × activity × 0.87 fasting factor. Goals: lose −18%, gain +5%. Suhoor 35%, Iftar 65%. Water: 35 ml/kg + 300 ml GCC heat.</p>
+    <p class="ar">BMR بميفلين-سانت جيور × النشاط × 0.87 للصيام. خسارة −18%، زيادة +5%. سحور 35%، إفطار 65%. ماء: 35 مل/كغ + 300 مل حرارة الخليج.</p>
+  </div><div class="t-faq"><div class="t-faq-label"><span class="en">FAQ</span><span class="ar">أسئلة شائعة</span></div><div class="t-faq-title"><span class="en">Frequently Asked Questions</span><span class="ar">الأسئلة المتكررة</span></div>
+      <div class="t-faq-item">
+        <div class="t-faq-q" onclick="toggleFAQ(this)"><span><span class="en">Why is TDEE lower during Ramadan?</span><span class="ar">لماذا TDEE أقل في رمضان?</span></span><span class="t-faq-arrow">▼</span></div>
+        <div class="t-faq-a"><p><span class="en">Fasting reduces daily expenditure ~13% due to lower activity and circadian changes.</span><span class="ar">الصيام يقلل الحرق ~13% بسبب النشاط الأقل.</span></p></div>
       </div>
-    </div>
-    <div class="meal-card meal-iftar">
-      <span class="meal-card-icon"><svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
-      <div class="meal-card-title"><span class="en">Iftar (Sunset meal)</span><span class="ar">الإفطار (وجبة الغروب)</span></div>
-      <div class="meal-card-cal" id="r-iftar">, </div>
-      <div class="meal-card-sub en">kcal · ~65% of daily target</div>
-      <div class="meal-card-sub ar">سعرة · ~٦٥٪ من هدفك اليومي</div>
-      <div class="meal-tips">
-        <div class="meal-tip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 2v4a3 3 0 0 1-3 3h-4a3 3 0 0 1-3-3V2"/><path d="M7 12v8a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-8"/></svg> <span class="en">Break fast with 3 dates + water (Sunnah)</span><span class="ar">أفطر على ٣ تمرات + ماء (سنّة)</span></div>
-        <div class="meal-tip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 2v4a3 3 0 0 1-3 3h-4a3 3 0 0 1-3-3V2"/><path d="M7 12v8a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-8"/></svg> <span class="en">Soup first, prevents overeating</span><span class="ar">الحساء أولاً، يمنع الإفراط في الأكل</span></div>
-        <div class="meal-tip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 2v4a3 3 0 0 1-3 3h-4a3 3 0 0 1-3-3V2"/><path d="M7 12v8a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-8"/></svg> <span class="en">Balanced plate: protein + veg + complex carbs</span><span class="ar">طبق متوازن: بروتين + خضار + كربوهيدرات</span></div>
-        <div class="meal-tip">⏰ <span class="en">Eat slowly, your stomach is smaller after fasting</span><span class="ar">كُل ببطء، معدتك أصغر بعد الصيام</span></div>
+      <div class="t-faq-item">
+        <div class="t-faq-q" onclick="toggleFAQ(this)"><span><span class="en">Should I skip Suhoor?</span><span class="ar">هل أتخطى السحور؟</span></span><span class="t-faq-arrow">▼</span></div>
+        <div class="t-faq-a"><p><span class="en">No — Suhoor sustains energy and protects muscle mass throughout the fast.</span><span class="ar">لا — السحور يحافظ على الطاقة وكتلة العضلات.</span></p></div>
       </div>
+  </div></div>
+  <section class="tool-tickets-rail"><header class="tool-tickets-head"><h2 class="tool-tickets-title"><span class="en">Related Tools</span><span class="ar">أدوات ذات صلة</span></h2></header>
+    <div class="tool-tickets-track">
+      <a href="/tools/calorie-calculator.html" class="tool-ticket"><div class="tool-ticket-body"><h3><span class="en">Calorie Calculator</span><span class="ar">حاسبة السعرات</span></h3></div></a>
+      <a href="/tools/water-calculator.html" class="tool-ticket"><div class="tool-ticket-body"><h3><span class="en">Water Intake</span><span class="ar">حاسبة الماء</span></h3></div></a>
+      <a href="/tools/prayer-times.html" class="tool-ticket"><div class="tool-ticket-body"><h3><span class="en">Prayer Times</span><span class="ar">أوقات الصلاة</span></h3></div></a>
+      <a href="/tools/hijri-converter.html" class="tool-ticket"><div class="tool-ticket-body"><h3><span class="en">Hijri Converter</span><span class="ar">الهجري</span></h3></div></a>
     </div>
-  </div>
-
-  <div class="res-section-title"><span class="en"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg> Hydration Plan (Iftar to Suhoor)</span><span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg> خطة الترطيب (من الإفطار إلى السحور)</span></div>
-  <div class="tool-cd calc-card" style="padding:1.25rem;">
-    <div id="waterGlassesLabel" style="font-size:.85rem;color:var(--text2);margin-bottom:.5rem;"></div>
-    <div class="water-glasses" id="waterGlasses"></div>
-    <div class="hydration-bar-wrap"><div class="hydration-bar" id="waterBar" style="width:0%"></div></div>
-    <p style="font-size:.75rem;color:var(--muted);margin-top:.5rem;"><span class="en">Spread across the non-fasting window, Iftar, evening, Tarawih, Suhoor.</span><span class="ar">وزّعها على نافذة الإفراط، الإفطار والمساء والتراويح والسحور.</span></p>
-  </div>
-
-  <div class="res-section-title"><span class="en"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Ramadan Nutrition Tips</span><span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> نصائح التغذية في رمضان</span></div>
-  <div class="tip-list">
-    <div class="tip-item"><span class="tip-icon">✕</span><p class="tip-text"><span class="en"><strong>Avoid fried foods</strong> at Iftar, they cause energy crashes and increase thirst during the next day's fast.</span><span class="ar"><strong>تجنّب الأطعمة المقلية</strong> عند الإفطار، فهي تسبب انهيار الطاقة وتزيد العطش في صيام اليوم التالي.</span></p></div>
-    <div class="tip-item"><span class="tip-icon"><svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span><p class="tip-text"><span class="en"><strong>Don't skip Suhoor.</strong> It is the most important meal, it sustains your energy and protects muscle mass throughout the fast.</span><span class="ar"><strong>لا تتخطَ السحور.</strong> إنه أهم وجبة، يحافظ على طاقتك ويحمي كتلتك العضلية طوال الصيام.</span></p></div>
-    <div class="tip-item"><span class="tip-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></span><p class="tip-text"><span class="en"><strong>Limit caffeine</strong> at Suhoor, coffee and tea are diuretics that increase water loss during your fast.</span><span class="ar"><strong>قلّل الكافيين</strong> في السحور، القهوة والشاي مدرّات للبول تزيد فقدان الماء أثناء صيامك.</span></p></div>
-    <div class="tip-item"><span class="tip-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span><p class="tip-text"><span class="en"><strong>Exercise timing:</strong> light exercise before Iftar (fat burning) or 2–3 hours after Iftar (performance training) works best during Ramadan.</span><span class="ar"><strong>توقيت التمرين:</strong> التمرين الخفيف قبل الإفطار (حرق الدهون) أو ٢-٣ ساعات بعد الإفطار (تدريب الأداء) يعمل بشكل أفضل في رمضان.</span></p></div>
-    <div class="tip-item"><span class="tip-icon">🌡️</span><p class="tip-text"><span class="en"><strong>GCC heat increases water loss</strong> even indoors. Prioritise hydration in the Iftar–Suhoor window, aim for the calculated target above.</span><span class="ar"><strong>حرارة الخليج تزيد فقدان الماء</strong> حتى في الداخل. أعطِ الأولوية للترطيب في نافذة الإفطار–السحور، استهدف الرقم المحسوب أعلاه.</span></p></div>
-  </div>
-
-</div><!-- /results -->
-
-<div class="disclaimer container">
-  ⚠️ <span class="en"><strong>For informational purposes only.</strong> This calculator uses established formulas (Mifflin-St Jeor BMR). Consult a doctor before making dietary changes, especially if you have diabetes, hypertension, or other conditions affected by fasting.</span>
-  <span class="ar"><strong>لأغراض معلوماتية فقط.</strong> تستخدم هذه الحاسبة معادلات راسخة (ميفلين-سانت جور). استشر طبيبك قبل إجراء تغييرات غذائية، خاصة إذا كنت مصاباً بالسكري أو ضغط الدم أو حالات أخرى تتأثر بالصيام.</span>
-</div>
-
-</div><!-- /container -->
-
-<!-- Back to Category FAB -->
-<style>
-.back-cat-fab{position:fixed;bottom:1.5rem;right:1.5rem;z-index:890;display:inline-flex;align-items:center;gap:.4rem;padding:.6rem 1.15rem .6rem .9rem;border-radius:50px;background:#2a9a98;color:#fff;font-size:.78rem;font-weight:700;text-decoration:none;box-shadow:0 4px 18px rgba(0,0,0,.22);opacity:0;transform:translateY(10px) scale(.96);transition:opacity .28s cubic-bezier(.22,1,.36,1),transform .28s cubic-bezier(.22,1,.36,1);pointer-events:none;white-space:nowrap;}
-.back-cat-fab.fab-visible{opacity:1;transform:translateY(0) scale(1);pointer-events:auto;}
-.back-cat-fab:hover{filter:brightness(1.12);transform:translateY(-1px) scale(1.02);}
-[data-lang="ar"] .back-cat-fab{right:auto;left:1.5rem;flex-direction:row-reverse;}
-</style>
-<a class="back-cat-fab" id="backCatFab" href="../islamic.html">
-  <span>←</span>
-  <span class="en">Islamic</span>
-  <span class="ar">الإسلامية</span>
-</a>
-
-<script>
-let currentGoal = 'maintain';
-
-// Goal buttons
-document.querySelectorAll('.goal-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.goal-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    currentGoal = btn.dataset.goal;
-  });
-});
-
-function calculate() {
-  const age = parseFloat(document.getElementById('age').value) || 30;
-  const gender = document.getElementById('gender').value;
-  const weight = parseFloat(document.getElementById('weight').value) || 75;
-  const height = parseFloat(document.getElementById('height').value) || 170;
-  const activity = parseFloat(document.getElementById('activity').value) || 1.375;
-
-  // Mifflin-St Jeor BMR
-  let bmr;
-  if(gender === 'male') bmr = 10*weight + 6.25*height - 5*age + 5;
-  else bmr = 10*weight + 6.25*height - 5*age - 161;
-
-  // Fasting reduces TDEE by ~15–20% (circadian rhythm adjustment)
-  const fastingFactor = 0.87;
-  const tdee = Math.round(bmr * activity * fastingFactor);
-
-  let target;
-  if(currentGoal === 'lose') target = Math.round(tdee * 0.82);
-  else if(currentGoal === 'gain') target = Math.round(tdee * 1.05);
-  else target = tdee;
-
-  const suhoor = Math.round(target * 0.35);
-  const iftar  = Math.round(target * 0.65);
-
-  // Water: base 35ml/kg + 300ml for GCC heat, split over ~8h window
-  const water = Math.round((weight * 35 + 300) / 100) / 10;
-  const glasses = Math.round(water / 0.25);
-
-  // Animate KPIs
-  animateKPI('r-tdee', tdee);
-  animateKPI('r-target', target);
-  document.getElementById('r-water').textContent = water.toFixed(1);
-  animateKPI('r-suhoor', suhoor, ' kcal');
-  animateKPI('r-iftar', iftar, ' kcal');
-
-  // Water glasses
-  const wgWrap = document.getElementById('waterGlasses');
-  wgWrap.innerHTML = '';
-  for(let i=0;i<glasses;i++){
-    const sp = document.createElement('span');
-    sp.className='wg';
-    sp.textContent='🥛';
-    wgWrap.appendChild(sp);
-    setTimeout(()=>sp.classList.add('filled'),(i*60)+200);
-  }
-  document.getElementById('waterBar').style.width='100%';
-  const isAr = document.documentElement.getAttribute('data-lang')==='ar';
-  document.getElementById('waterGlassesLabel').innerHTML = isAr
-    ? `<span class="ar">اشرب <strong>${glasses} كوب</strong> (${water.toFixed(1)} لتر) من الإفطار إلى السحور</span>`
-    : `<span class="en">Drink <strong>${glasses} glasses</strong> (${water.toFixed(1)}L) between Iftar and Suhoor</span>`;
-
-  const res = document.getElementById('results');
-  res.classList.add('show');
-  res.scrollIntoView({behavior:'smooth',block:'start'});
-}
-
-function animateKPI(id, target, suffix='') {
-  const el = document.getElementById(id);
-  const dur=700;const start=performance.now();
-  (function step(now){
-    const p=Math.min((now-start)/dur,1);
-    const ease=1-Math.pow(1-p,3);
-    el.textContent=Math.round(target*ease)+(suffix||'');
-    if(p<1)requestAnimationFrame(step);else el.textContent=target+(suffix||'');
-  })(start);
-}
-
-document.getElementById('calcBtn').addEventListener('click', calculate);
-
-// THEME + LANG
-document.getElementById('themeBtn').addEventListener('click', ()=>{
-  const h=document.documentElement;const dark=h.getAttribute('data-theme')!=='dark';
-  h.setAttribute('data-theme',dark?'dark':'light');localStorage.setItem('dfl-theme',dark?'dark':'light');
-  document.getElementById('themeBtn').textContent=dark?'<svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>':'<svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
-});
-(function(){const t=localStorage.getItem('dfl-theme')||'light';document.getElementById('themeBtn').textContent=t==='dark'?'<svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>':'<svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';})();
-document.getElementById('langBtn').addEventListener('click',()=>{
-  const h=document.documentElement;const cur=h.getAttribute('data-lang')||'en';const next=cur==='en'?'ar':'en';
-  h.setAttribute('data-lang',next);h.setAttribute('lang',next);h.setAttribute('dir',next==='ar'?'rtl':'ltr');
-  localStorage.setItem('dfl-lang',next);
-});
-
-// FAB
-(function(){var fab=document.getElementById('backCatFab');if(!fab)return;window.addEventListener('scroll',function(){fab.classList.toggle('fab-visible',window.scrollY>280);},{passive:true});})();
-
-// Scroll Progress
-(function(){var b=document.createElement('div');b.style.cssText='position:fixed;top:0;left:0;width:0%;height:3px;background:linear-gradient(90deg,#2a9a98,#22C55E);z-index:9999;transition:width .1s linear;pointer-events:none;';document.body.appendChild(b);window.addEventListener('scroll',function(){var d=document.documentElement.scrollHeight-window.innerHeight;b.style.width=(d>0?Math.min(100,(window.scrollY/d)*100):0)+'%';},{passive:true});})();
-</script>
-
-  <!-- DFL CANONICAL FOOTER -->
-  <!-- ═══ UNIFIED FOOTER ══════════════════════════════════════ -->
-
+  </section></main>
 <footer class="site-footer" role="contentinfo">
+  <div class="footer-accent" aria-hidden="true"></div>
   <div class="footer-inner">
-    <div class="footer-top">
+    <div class="footer-main">
       <div class="footer-brand">
-        <a href="../index.html" class="footer-logo" aria-label="DOTFORLIFE">
-          <img src="../logo1-footer.webp" alt="DOTFORLIFE" width="100" height="100" loading="lazy">
-        </a>
-        <p><span class="en">One calm place for your family's everyday needs. Free, always.</span><span class="ar">مكان هادئ واحد لاحتياجات عائلتك اليومية. مجاني دائماً.</span></p>
+        <a href="/index.html" class="footer-logo" aria-label="DOTFORLIFE"><img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" width="auto" loading="lazy"></a>
+        <p class="footer-tagline"><span class="en">One calm place for your family's everyday decisions. Free, always.</span><span class="ar">مكان هادئ واحد لقرارات عائلتك اليومية. مجاني دائماً.</span></p>
+        <p class="footer-motto"><span class="en">Life, at ease.</span><span class="ar">الحياة، براحة.</span></p>
       </div>
-      <div class="footer-cols">
-        <div class="footer-col">
-          <h4><span class="en">Life</span><span class="ar">الحياة</span></h4>
-          <ul>
-            <li><a href="../health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
-            <li><a href="../finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li>
-            <li><a href="../real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li>
-            <li><a href="../travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li>
-            <li><a href="../islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4><span class="en">Tools</span><span class="ar">الأدوات</span></h4>
-          <ul>
-            <li><a href="../tools/bmi-calculator.html"><span class="en">BMI Calculator</span><span class="ar">حاسبة BMI</span></a></li>
-            <li><a href="../tools/mortgage-calculator.html"><span class="en">Mortgage</span><span class="ar">التمويل</span></a></li>
-            <li><a href="../tools/zakat-calculator.html"><span class="en">Zakat</span><span class="ar">الزكاة</span></a></li>
-            <li><a href="../tools/hijri-converter.html"><span class="en">Hijri Date</span><span class="ar">التاريخ الهجري</span></a></li>
-            <li><a href="../library.html"><span class="en">All Tools</span><span class="ar">كل الأدوات</span></a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4><span class="en">Company</span><span class="ar">الشركة</span></h4>
-          <ul>
-            <li><a href="../about.html"><span class="en">About</span><span class="ar">عنّا</span></a></li>
-            <li><a href="../blog.html"><span class="en">blog</span><span class="ar">المدونة</span></a></li>
-            <li><a href="../contact.html"><span class="en">Contact</span><span class="ar">تواصل</span></a></li>
-            <li><a href="../privacy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a></li>
-            <li><a href="../privacy-policy.html"><span class="en">Privacy Policy</span><span class="ar">سياسة الخصوصية</span></a></li>
-            <li><a href="../terms.html"><span class="en">Terms</span><span class="ar">الشروط</span></a></li>
-            <li><a href="../editorial-standards.html"><span class="en">Editorial Standards</span><span class="ar">المعايير التحريرية</span></a></li>
-          </ul>
-        </div>
+      <div class="footer-links-grid">
+        <div class="footer-col"><h4><span class="en">Life</span><span class="ar">الحياة</span></h4><ul>
+          <li><a href="/health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
+          <li><a href="/finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li>
+          <li><a href="/real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li>
+          <li><a href="/travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li>
+          <li><a href="/islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li>
+        </ul></div>
+        <div class="footer-col"><h4><span class="en">Tools</span><span class="ar">الأدوات</span></h4><ul>
+          <li><a href="/tools/bmi-calculator.html"><span class="en">BMI Calculator</span><span class="ar">حاسبة BMI</span></a></li>
+          <li><a href="/tools/calorie-calculator.html"><span class="en">Calorie Calculator</span><span class="ar">حاسبة السعرات</span></a></li>
+          <li><a href="/tools/water-calculator.html"><span class="en">Hydration</span><span class="ar">الترطيب</span></a></li>
+          <li><a href="/tools/pregnancy-calculator.html"><span class="en">Pregnancy</span><span class="ar">الحمل</span></a></li>
+          <li><a href="/library.html"><span class="en">All Tools</span><span class="ar">كل الأدوات</span></a></li>
+        </ul></div>
+        <div class="footer-col"><h4><span class="en">Discover</span><span class="ar">اكتشف</span></h4><ul>
+          <li><a href="/blog.html"><span class="en">Blog</span><span class="ar">المدونة</span></a></li>
+          <li><a href="/archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a></li>
+          <li><a href="/our-vision.html"><span class="en">Our Vision</span><span class="ar">رؤيتنا</span></a></li>
+          <li><a href="/pregnancy-journey.html"><span class="en">Pregnancy Journey</span><span class="ar">رحلة الحمل</span></a></li>
+        </ul></div>
+        <div class="footer-col"><h4><span class="en">Company</span><span class="ar">الشركة</span></h4><ul>
+          <li><a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a></li>
+          <li><a href="/contact.html"><span class="en">Contact</span><span class="ar">تواصل</span></a></li>
+          <li><a href="/editorial-standards.html"><span class="en">Editorial Standards</span><span class="ar">المعايير التحريرية</span></a></li>
+          <li><a href="/privacy-policy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a></li>
+          <li><a href="/terms.html"><span class="en">Terms</span><span class="ar">الشروط</span></a></li>
+        </ul></div>
       </div>
     </div>
-    <hr class="footer-divider">
     <div class="footer-bottom">
-      <span>© 2026 DOTFORLIFE, <span class="en">Free for families, always.</span><span class="ar">مجاني للعائلات، دائماً.</span></span>
+      <span class="footer-copy">© 2026 DOTFORLIFE · <span class="en">Free for families, always.</span><span class="ar">مجاني للعائلات، دائماً.</span></span>
       <div class="footer-bottom-links">
-        <a href="../privacy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a>
-        <a href="../privacy-policy.html"><span class="en">Privacy Policy</span><span class="ar">سياسة الخصوصية</span></a>
-        <a href="../terms.html"><span class="en">Terms</span><span class="ar">الشروط</span></a>
+        <a href="/privacy-policy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a>
+        <a href="/terms.html"><span class="en">Terms</span><span class="ar">الشروط</span></a>
+        <a href="/contact.html"><span class="en">Contact</span><span class="ar">تواصل</span></a>
       </div>
     </div>
   </div>
 </footer>
-<!-- ════════════════════════════════════════════════════════════ -->
 
-  <!-- DFL MOBILE NAV -->
-  
-<section class="dfl-related" aria-label="Related tools and guides">
-  <div class="container">
-    <div class="dfl-related-label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg> <span class="en">Continue Your Journey</span><span class="ar">أكمل رحلتك</span></div>
-    <h2 class="dfl-related-title"><span class="en">Related Health & Ramadan Tools</span><span class="ar">أدوات الصحة ورمضان</span></h2>
-    <p class="dfl-related-sub"><span class="en">Keep your health on track this Ramadan</span><span class="ar">حافظ على صحتك في رمضان</span></p>
-    <div class="dfl-related-grid">
-      <a href="/tools/calorie-calculator.html" class="dfl-rc">
-        <div class="dfl-rc-top"><span class="dfl-rc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></span><div><div class="dfl-rc-name en">Calorie Calculator</div><div class="dfl-rc-name ar">حاسبة السعرات</div></div></div>
-        <div class="dfl-rc-desc en">Daily calorie & macro targets</div><div class="dfl-rc-desc ar">السعرات اليومية والعناصر الغذائية</div>
-        <div class="dfl-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
-      </a>
-      <a href="/tools/water-calculator.html" class="dfl-rc">
-        <div class="dfl-rc-top"><span class="dfl-rc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></span><div><div class="dfl-rc-name en">Water Intake Calculator</div><div class="dfl-rc-name ar">حاسبة شرب الماء</div></div></div>
-        <div class="dfl-rc-desc en">Stay hydrated while fasting</div><div class="dfl-rc-desc ar">حافظ على الترطيب أثناء الصيام</div>
-        <div class="dfl-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
-      </a>
-      <a href="/tools/prayer-times.html" class="dfl-rc">
-        <div class="dfl-rc-top"><span class="dfl-rc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.2h7.6l-6 4.8 2.4 7.2-6-4.8-6 4.8 2.4-7.2-6-4.8h7.6z"/></svg></span><div><div class="dfl-rc-name en">Prayer Times</div><div class="dfl-rc-name ar">أوقات الصلاة</div></div></div>
-        <div class="dfl-rc-desc en">Iftar & Suhoor schedule</div><div class="dfl-rc-desc ar">مواعيد الإفطار والسحور</div>
-        <div class="dfl-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
-      </a>
-      <a href="/guides/ramadan-nutrition-guide.html" class="dfl-rc guide">
-        <div class="dfl-rc-top"><span class="dfl-rc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/></svg></span><div><div class="dfl-rc-name en">Ramadan Nutrition Guide</div><div class="dfl-rc-name ar">دليل تغذية رمضان</div></div></div>
-        <div class="dfl-rc-desc en">Balanced eating during Ramadan</div><div class="dfl-rc-desc ar">التوازن الغذائي في رمضان</div>
-        <div class="dfl-rc-cta"><span class="en">Read guide →</span><span class="ar">اقرأ الدليل ←</span></div>
-      </a>
-    </div>
-  </div>
-</section>
-
-
-</main>
-
-  <script src="/tool-share.js" defer></script>
-<!-- ═══ UNIFIED MOBILE NAV ══════════════════════════════════ -->
 <nav class="dfl-mobile-nav" aria-label="Mobile navigation">
-  <a href="../index.html" class="dfl-mnav-item" aria-label="Home">
-    <svg viewBox="0 0 24 24"><polyline points="3 9 12 2 21 9"/><path d="M5 9v11a1 1 0 001 1h4v-6h4v6h4a1 1 0 001-1V9"/></svg>
-    <span class="en">Home</span><span class="ar">الرئيسية</span>
-  </a>
-  <a href="../health.html" class="dfl-mnav-item" aria-label="Health">
-    <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-    <span class="en">Health</span><span class="ar">الصحة</span>
-  </a>
-  <a href="../finance.html" class="dfl-mnav-item" aria-label="Finance">
-    <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-    <span class="en">Finance</span><span class="ar">المالية</span>
-  </a>
-  <a href="../islamic.html" class="dfl-mnav-item" aria-label="Islamic">
-    <svg viewBox="0 0 24 24"><path d="M21 10.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l2.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
-    <span class="en">Islamic</span><span class="ar">الإسلامية</span>
-  </a>
-  <a href="../travel.html" class="dfl-mnav-item" aria-label="Travel">
-    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-    <span class="en">Travel</span><span class="ar">السفر</span>
-  </a>
+  <a href="/index.html" class="dfl-mnav-item"><svg viewBox="0 0 24 24"><polyline points="3 9 12 2 21 9"/><path d="M5 9v11a1 1 0 001 1h4v-6h4v6h4a1 1 0 001-1V9"/></svg><span class="en">Home</span><span class="ar">الرئيسية</span></a>
+  <a href="/library.html" class="dfl-mnav-item active"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg><span class="en">Library</span><span class="ar">المكتبة</span></a>
+  <a href="/finance.html" class="dfl-mnav-item"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg><span class="en">Finance</span><span class="ar">المالية</span></a>
+  <a href="/islamic.html" class="dfl-mnav-item"><svg viewBox="0 0 24 24"><path d="M21 10.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l2.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg><span class="en">Islamic</span><span class="ar">الإسلامية</span></a>
+  <a href="/travel.html" class="dfl-mnav-item"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><span class="en">Travel</span><span class="ar">السفر</span></a>
 </nav>
 
-<!-- SEO_PROFILE
-  page_type: tool
-  cluster: islamic
-  authority_score: 66
-  inbound_links: 5
-  outbound_links: 14
-  link_velocity: low
-  priority_indexing: true
-  content_depth: 31
-  word_count: 1194
-  canonical: https://www.dotforlife.com/tools/ramadan-calorie-calculator.html
--->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1436107577087160" crossorigin="anonymous"></script>
-</body></html>
+<div class="mobile-dropdown" id="mobile-dropdown" aria-hidden="true">
+  <div class="md-links">
+    <a href="/health.html"><span class="en">Health</span><span class="ar">الصحة</span></a>
+    <a href="/finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a>
+    <a href="/real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a>
+    <a href="/travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a>
+    <a href="/islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a>
+    <a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a>
+    <a href="/archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a>
+    <a href="/blog.html"><span class="en">Blog</span><span class="ar">المدونة</span></a>
+    <a href="/library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a>
+  </div>
+  <div class="md-controls">
+    <button class="nav-btn" id="lang-toggle-mobile"><span class="en">عربي</span><span class="ar">English</span></button>
+    <button class="nav-btn" id="theme-toggle-mobile"><svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/></svg></button>
+  </div>
+</div>
+
+<script src="/scripts/global.js?v=20260618a" defer></script>
+<script>
+var currentGoal='maintain';
+var _rcWater={glasses:0,water:0};
+document.querySelectorAll('.rc-goal').forEach(function(btn){btn.addEventListener('click',function(){document.querySelectorAll('.rc-goal').forEach(function(b){b.classList.remove('active');});btn.classList.add('active');currentGoal=btn.dataset.goal;});});
+function animateKPI(id,target,suffix){suffix=suffix||'';var el=document.getElementById(id),dur=700,s=performance.now();(function step(n){var p=Math.min((n-s)/dur,1),e=1-Math.pow(1-p,3);el.textContent=Math.round(target*e)+suffix;if(p<1)requestAnimationFrame(step);else el.textContent=target+suffix;})(s);}
+function renderWaterLabel(){var el=document.getElementById('waterGlassesLabel');if(!el||!_rcWater.glasses)return;el.innerHTML=getLang()==='ar'?'<span class="ar">اشرب <strong>'+_rcWater.glasses+' كوب</strong> ('+_rcWater.water.toFixed(1)+' لتر)</span>':'<span class="en">Drink <strong>'+_rcWater.glasses+' glasses</strong> ('+_rcWater.water.toFixed(1)+'L)</span>';}
+function calculate(){var age=parseFloat(document.getElementById('age').value)||30;var gender=document.getElementById('gender').value;var weight=parseFloat(document.getElementById('weight').value)||75;var height=parseFloat(document.getElementById('height').value)||170;var activity=parseFloat(document.getElementById('activity').value)||1.375;var bmr; if(gender==='male') bmr=10*weight+6.25*height-5*age+5; else bmr=10*weight+6.25*height-5*age-161;var fastingFactor=0.87;var tdee=Math.round(bmr*activity*fastingFactor);var target; if(currentGoal==='lose') target=Math.round(tdee*0.82); else if(currentGoal==='gain') target=Math.round(tdee*1.05); else target=tdee;var suhoor=Math.round(target*0.35);var iftar=Math.round(target*0.65);var water=Math.round((weight*35+300)/100)/10;var glasses=Math.round(water/0.25);animateKPI('r-tdee',tdee);animateKPI('r-target',target);document.getElementById('r-water').textContent=water.toFixed(1);animateKPI('r-suhoor',suhoor,' kcal');animateKPI('r-iftar',iftar,' kcal');var wg=document.getElementById('waterGlasses');wg.innerHTML='';for(var i=0;i<glasses;i++){var sp=document.createElement('span');sp.textContent='🥛';wg.appendChild(sp);setTimeout(function(x){return function(){x.classList.add('filled');};}(sp),(i*60)+200);}_rcWater={glasses:glasses,water:water};renderWaterLabel();document.getElementById('results').classList.add('show');}
+function toggleFAQ(el){
+  var answer=el.nextElementSibling;var isOpen=el.classList.contains('open');
+  document.querySelectorAll('.t-faq-q').forEach(function(q){q.classList.remove('open');q.nextElementSibling.classList.remove('active');});
+  if(!isOpen){el.classList.add('open');answer.classList.add('active');}
+}
+function getLang(){return document.documentElement.getAttribute('data-lang')||'en';}
+document.getElementById('calcBtn').addEventListener('click',calculate);
+document.addEventListener('dfl:langchange',renderWaterLabel);
+</script>
+</body>
 </html>

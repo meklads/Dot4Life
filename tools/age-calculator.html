@@ -1,1091 +1,223 @@
 <!DOCTYPE html>
-<html lang="ar" data-lang="ar" data-theme="light">
+<html lang="en" data-theme="light" data-lang="en" dir="ltr">
 <head>
-  <!-- Critical: prevent theme flash (inline) -->
-  <script>
-(function(){
-  /* theme */
-  var tb=document.getElementById("theme-toggle");
-  if(tb)tb.addEventListener("click",function(){
-    var h=document.documentElement,t=h.getAttribute("data-theme")==="dark"?"light":"dark";
-    h.setAttribute("data-theme",t);localStorage.setItem("dfl-theme",t);
-  });
-  /* lang */
-  var lb=document.getElementById("lang-toggle");
-  if(lb)lb.addEventListener("click",function(){
-    var h=document.documentElement,l=h.getAttribute("data-lang")==="ar"?"en":"ar";
-    h.setAttribute("data-lang",l);h.setAttribute("lang",l);
-    h.setAttribute("dir",l==="ar"?"rtl":"ltr");localStorage.setItem("dfl-lang",l);
-  });
-  /* scroll shadow */
-  var nb=document.getElementById("navbar");
-  if(nb)window.addEventListener("scroll",function(){nb.classList.toggle("scrolled",window.scrollY>10);},{passive:true});
-  /* reveal */
-  if("IntersectionObserver" in window){
-    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add("visible");});},{threshold:0.1});
-    document.querySelectorAll(".tool-rv, .reveal").forEach(function(el){io.observe(el);});
-  } else document.querySelectorAll(".tool-rv, .reveal").forEach(function(el){el.classList.add("visible");});
-
-  /* hamburger menu */
-  (function(){
-    var hb = document.getElementById('hamburger-btn');
-    var dd = document.getElementById('mobile-dropdown');
-    if (!hb || !dd) return;
-    function toggle(e) {
-      e.stopPropagation();
-      var open = dd.classList.toggle('open');
-      hb.classList.toggle('open', open);
-      hb.setAttribute('aria-expanded', open);
-      document.body.classList.toggle('menu-open', open);
-    }
-    function closeM() {
-      dd.classList.remove('open');
-      hb.classList.remove('open');
-      hb.setAttribute('aria-expanded', 'false');
-      document.body.classList.remove('menu-open');
-    }
-    hb.addEventListener('click', toggle);
-    document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeM(); });
-    dd.addEventListener('click', function(e){ if(e.target===dd) closeM(); });
-  })();
-
-  })();
-</script>
 <meta charset="UTF-8"/>
-
-  <script>(function(){var p=new URLSearchParams(location.search),gd=(function(){try{var z=(Intl.DateTimeFormat().resolvedOptions().timeZone||"");return /Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test(z)?"ar":"en";}catch(e){return "ar";}})(),l=p.get("lang")||localStorage.getItem("dfl-lang")||gd,t=p.get("theme")||localStorage.getItem("dfl-theme")||"light",h=document.documentElement;h.setAttribute("data-theme",t);h.setAttribute("data-lang",l);h.setAttribute("lang",l);h.setAttribute("dir",l==="ar"?"rtl":"ltr");if(p.get("lang"))localStorage.setItem("dfl-lang",l);if(p.get("theme"))localStorage.setItem("dfl-theme",t);})()</script>
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
-<title>حاسبة العمر بالتفصيل هجري وميلادي 2025 | Age Calculator, DotForLife</title>
-<meta name="description" content="احسب عمرك بالسنوات والأشهر والأيام والساعات، مع عمرك الهجري وعدد أيام حياتك والأيام المتبقية لعيد ميلادك. مجاني وفوري."/>
-<meta name="keywords" content="حاسبة العمر, كم عمري, حساب العمر, age calculator Arabic, عمر هجري, حاسبة عيد الميلاد"/>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebApplication",
-      "name": "حاسبة العمر بالتفصيل هجري وميلادي 2025 | Age Calculator",
-      "url": "https://dotforlife.com/tools/age-calculator",
-      "description": "احسب عمرك بالسنوات والأشهر والأيام والساعات، مع عمرك الهجري وعدد أيام حياتك والأيام المتبقية لعيد ميلادك. مجاني وفوري.",
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "SAR"
-      },
-      "inLanguage": [
-        "en",
-        "ar"
-      ]
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://dotforlife.com"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Life Tools",
-          "item": "https://dotforlife.com/life-tools"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Age Calculator",
-          "item": "https://dotforlife.com/tools/age-calculator"
-        }
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "How is exact age calculated?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Exact age is computed by subtracting the birth date from today's date, accounting for leap years and varying month lengths. The result is expressed in years, months, and days."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Does the age calculator account for leap years?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, our calculator accounts for leap years in both the birth year and the current year, ensuring day-accurate results."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is the next birthday countdown?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The calculator automatically computes the number of days until your next birthday based on today's date."
-          }
-        }
-      ]
-    }
-  ]
-}
-</script>
-<link rel="canonical" href="https://www.dotforlife.com/tools/age-calculator.html"/>
-  <link rel="alternate" hreflang="ar" href="https://www.dotforlife.com/tools/age-calculator.html?lang=ar" />
-  <link rel="alternate" hreflang="en" href="https://www.dotforlife.com/tools/age-calculator.html?lang=en" />
-  <link rel="alternate" hreflang="x-default" href="https://www.dotforlife.com/tools/age-calculator.html" />
-  <meta property="og:site_name" content="DOTFORLIFE" />
-  <meta property="og:title" content="حاسبة العمر بالتفصيل هجري وميلادي 2025 | Age Calculator, DotForLife" />
-  <meta property="og:description" content="احسب عمرك بالسنوات والأشهر والأيام والساعات، مع عمرك الهجري وعدد أيام حياتك والأيام المتبقية لعيد ميلادك. مجاني وفوري." />
-  <meta property="og:image" content="https://www.dotforlife.com/og/life-tools.jpg" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.dotforlife.com/tools/age-calculator.html" />
-  <meta name="twitter:image" content="https://www.dotforlife.com/og/life-tools.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="حاسبة العمر بالتفصيل هجري وميلادي 2025 | Age Calculator, DotForLife" />
-  <meta name="twitter:description" content="احسب عمرك بالسنوات والأشهر والأيام والساعات، مع عمرك الهجري وعدد أيام حياتك والأيام المتبقية لعيد ميلادك. مجاني وفوري." />
-  <!-- Performance: resource hints -->
-  <meta http-equiv="x-dns-prefetch-control" content="on" />
-  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <!-- Font loading strategy: swap + non-blocking -->
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Inter:wght@400;500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Inter:wght@400;500;600;700;800&display=swap" /></noscript>
-<link rel="stylesheet" href="/styles/global.css?v=20260617e"/>
-	<link rel="stylesheet" href="/styles/tools-shared.css?v=20260608a">
-	<link rel="stylesheet" href="/styles/pages/tools_age-calculator.css?v=20260617b">
-<!-- DFL Analytics v1 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3G1XPV4F0G"></script>
-<script>
-window.dataLayer=window.dataLayer||[];
-function gtag(){dataLayer.push(arguments);}
-gtag('js',new Date());
-gtag('config','G-3G1XPV4F0G',{
-  page_title:document.title,
-  page_location:window.location.href,
-  send_page_view:true,
-  cookie_flags:'SameSite=None;Secure'
-});
-// DFL Event helpers
-window.dflTrack=function(event,params){
-  gtag('event',event,Object.assign({
-    page_path:location.pathname,
-    language:document.documentElement.getAttribute('data-lang')||'en'
-  },params||{}));
-};
-</script>
-<!-- DFL_FIX3_APPLIED -->
-
-  <!-- DFL CANONICAL SYSTEM CSS -->
-  
-<script src="/scripts/global.js" defer></script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3G1XPV4F0G"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-3G1XPV4F0G');
-</script>
-
-<script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "Age Calculator, حاسبة العمر",
-  "url": "https://www.dotforlife.com/tools/age-calculator.html",
-  "applicationCategory": "UtilityApplication",
-  "operatingSystem": "All",
-  "browserRequirements": "Requires JavaScript",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  },
-  "description": "احسب عمرك بالسنوات والأشهر والأيام والساعات، مع عمرك الهجري وعدد أيام حياتك والأيام المتبقية لعيد ميلادك. مجاني وفوري."
-}</script>
+<script>(function(){var p=new URLSearchParams(location.search),gd=(function(){try{var z=(Intl.DateTimeFormat().resolvedOptions().timeZone||"");return /Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test(z)?"ar":"en";}catch(e){return "ar";}})(),l=p.get("lang")||localStorage.getItem("dfl-lang")||gd,t=p.get("theme")||localStorage.getItem("dfl-theme")||"light",h=document.documentElement;h.setAttribute("data-theme",t);h.setAttribute("data-lang",l);h.setAttribute("lang",l);h.setAttribute("dir",l==="ar"?"rtl":"ltr");if(p.get("lang"))localStorage.setItem("dfl-lang",l);if(p.get("theme"))localStorage.setItem("dfl-theme",t);})()</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta http-equiv="x-dns-prefetch-control" content="on" />
+<link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+<link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<title>Age Calculator | حاسبة العمر — Hijri & Gregorian | Dot For Life</title>
+<meta name="description" content="Calculate exact age in years, months, days — Gregorian and Hijri — with birthday countdown."/>
+<link rel="canonical" href="https://dotforlife.com/tools/age-calculator.html"/>
+<link rel="alternate" hreflang="ar" href="https://dotforlife.com/tools/age-calculator.html?lang=ar" />
+<link rel="alternate" hreflang="en" href="https://dotforlife.com/tools/age-calculator.html?lang=en" />
+<link rel="alternate" hreflang="x-default" href="https://dotforlife.com/tools/age-calculator.html" />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Almarai:wght@400;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Almarai:wght@400;700;800&display=swap"/></noscript>
+<link rel="stylesheet" href="/styles/global.css?v=20260618f"/>
+<link rel="stylesheet" href="/styles/tools-shared.css?v=20260608a">
+<link rel="stylesheet" href="/styles/tools-flagship.css?v=20260625b">
+<link rel="stylesheet" href="/styles/tools-accents.css?v=20260625a">
+<link rel="stylesheet" href="/styles/pages/tools_age-calculator.css?v=20260625a">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dotforlife.com/tools/age-calculator.html">
+<meta property="og:title" content="Age Calculator | حاسبة العمر — Hijri & Gregorian | Dot For Life">
+<meta property="og:description" content="Calculate exact age in years, months, days — Gregorian and Hijri — with birthday countdown.">
+<meta property="og:image" content="https://dotforlife.com/og/og-default.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Age Calculator","url":"https://dotforlife.com/tools/age-calculator.html","applicationCategory":"HealthApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"SAR"},"inLanguage":["en","ar"]}</script>
 </head>
-<body class="category-page has-subnav">
-  <!-- DFL CANONICAL NAVBAR -->
-  <!-- ═══ UNIFIED HEADER ══════════════════════════════════════ -->
-<nav id="navbar" role="navigation" aria-label="Main navigation">
+<body class="tool-flagship-page no-subnav" data-tool="age-calculator">
+<nav id="navbar" class="index-nav" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
-    <a href="../index.html" class="nav-logo" aria-label="DOTFORLIFE Home">
-      <img src="../logo1-footer.webp" alt="DOTFORLIFE" width="100" height="100" style="height:100px;width:auto;object-fit:contain;" width="100" height="100" loading="lazy">
+    <a href="/index.html" class="nav-logo" aria-label="DOTFORLIFE Home">
+      <img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" width="115" height="115" loading="eager" fetchpriority="high">
     </a>
     <ul class="nav-links">
-      <li><a href="../health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
-      <li><a href="../finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li>
-      <li><a href="../real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li>
-      <li><a href="../travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li>
-      <li><a href="../islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li>
+      <li><a href="/health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
+      <li><a href="/finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li>
+      <li><a href="/real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li>
+      <li><a href="/travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li>
+      <li><a href="/islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li>
       <li><a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a></li>
-      <li><a href="../archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a></li>
+      <li><a href="/archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a></li>
       <li><a href="/blog.html"><span class="en">blog</span><span class="ar">المدونة</span></a></li>
-      <li><a href="../library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a></li>
+      <li><a href="/library.html" aria-current="page"><span class="en">Library</span><span class="ar">المكتبة</span></a></li>
     </ul>
     <div class="nav-controls">
       <button class="nav-btn" id="lang-toggle" aria-label="Switch language"><span class="en">عربي</span><span class="ar">English</span></button>
       <button class="nav-btn" id="theme-toggle" aria-label="Toggle theme"><svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
-      <button class="hamburger" id="hamburger-btn" aria-label="Menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+      <button class="hamburger" id="hamburger-btn" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </div>
 </nav>
-<!-- ═══════════════════════════════════════
-       HERO
-  ═══════════════════════════════════════ -->
-
-  <div class="tool-hr-wrap">
-
-    <section class="tool-hr" aria-labelledby="tool-title">
-      <div class="tool-hr-in">
-        <div class="tool-hr-bd"> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v12"/><path d="M8 10h8"/></svg> <span class="ar">هجري + ميلادي</span><span class="en">Hijri + Gregorian</span></div>
-        <h1 class="hero-title"><span class="ar">حاسبة <span class="hl">العمر</span> التفصيلية</span><span class="en">Detailed <span class="hl">Age</span> Calculator</span></h1>
-        <p class="hero-sub ar">اكشف عمرك بالسنوات والأشهر والأيام والساعات، بالتقويمَين الهجري والميلادي، مع العد التنازلي لعيد ميلادك.</p>
-        
-      </div>
-    </section>
-
-    <div id="sub-nav">
-  <div class="sub-nav-inner">
-    <a href="/tools/bmi-calculator.html"><span class="en">BMI</span><span class="ar">حاسبة BMI</span></a>
-    <a href="/tools/water-calculator.html"><span class="en">Water</span><span class="ar">الماء</span></a>
+<div class="tool-hero"><div class="tool-hero-inner">
+    <nav class="tool-breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html"><span class="en">Home</span><span class="ar">الرئيسية</span></a>
+      <span class="tool-breadcrumb-sep">/</span>
+      <a href="/library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a>
+      <span class="tool-breadcrumb-sep">/</span>
+      <span><span class="en">Age Calculator</span><span class="ar">حاسبة العمر</span></span>
+    </nav>
+    <p class="tool-eyebrow"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v12"/><path d="M8 10h8"/></svg> <span class="en">Health Tool · Hijri + Gregorian</span><span class="ar">أداة صحية · هجري + ميلادي</span></p>
+    <h1 id="tool-title"><span class="en">Detailed Age Calculator</span><span class="ar">حاسبة العمر التفصيلية</span></h1>
+    <p class="tool-hero-desc"><span class="en">Exact age in years, months, and days — Gregorian and Hijri — with birthday countdown and life stats.</span><span class="ar">عمرك بالسنوات والأشهر والأيام — ميلادي وهجري — مع عد تنازلي لعيد الميلاد وإحصائيات.</span></p>
+    <ul class="tool-trust"><li><span class="en">ISO 8601 dates</span><span class="ar">تواريخ ISO 8601</span></li><li><span class="en">Runs locally</span><span class="ar">يعمل محلياً</span></li><li><span class="en">Free &amp; private</span><span class="ar">مجاني وخاص</span></li></ul>
+  </div></div>
+<div class="tool-tabs-wrap" role="navigation" aria-label="Health tools">
+  <div class="tool-tabs-inner">
+    <a href="/tools/bmi-calculator.html"><span class="en">BMI</span><span class="ar">BMI</span></a>
     <a href="/tools/calorie-calculator.html"><span class="en">Calories</span><span class="ar">السعرات</span></a>
     <a href="/tools/body-fat-calculator.html"><span class="en">Body Fat</span><span class="ar">الدهون</span></a>
-    <a href="/tools/pregnancy-calculator.html"><span class="en">Pregnancy</span><span class="ar">حاسبة الحمل</span></a>
-    <a href="/pregnancy-journey.html"><span class="en">Journey <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2v6m0 0l-3-3m3 3l3-3"/><path d="M12 16v6m0 0l-3-3m3 3l3-3"/><path d="M2 12h6m0 0L5 9m3 3l-3 3"/><path d="M16 12h6m0 0l-3-3m3 3l-3 3"/></svg></span><span class="ar">رحلة الحمل <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2v6m0 0l-3-3m3 3l3-3"/><path d="M12 16v6m0 0l-3-3m3 3l3-3"/><path d="M2 12h6m0 0L5 9m3 3l-3 3"/><path d="M16 12h6m0 0l-3-3m3 3l-3 3"/></svg></span></a>
+    <a href="/tools/water-calculator.html"><span class="en">Water</span><span class="ar">الماء</span></a>
+    <a href="/tools/pregnancy-calculator.html"><span class="en">Pregnancy</span><span class="ar">الحمل</span></a>
+    <a href="/tools/age-calculator.html" class="is-active"><span class="en">Age</span><span class="ar">العمر</span></a>
   </div>
 </div>
-  
-  </div><main class="tool-mn"><div class="tool-cd tool-rv tool-rv-1">
-  <div class="grid-2">
-    <div>
-      <label class="input-label"><span class="ar">تاريخ ميلادك (ميلادي)</span><span class="en">Your date of birth (Gregorian)</span></label>
-      <input type="date" class="input-field" id="dob" max="2025-12-31"/>
+<main class="tool-mn"><div class="tool-workspace">
+    <div class="tool-panel ac-card"><div class="tool-panel-hdr"><h2><span class="en">Your Dates</span><span class="ar">تواريخك</span></h2></div>
+      <div class="tool-panel-body t-body">
+        <div class="t-g2">
+          <div class="t-fl"><label class="t-fl-l" for="dob"><span class="en">Date of birth</span><span class="ar">تاريخ الميلاد</span></label><div class="t-fl-r"><input type="date" id="dob" max="2026-12-31"></div></div>
+          <div class="t-fl"><label class="t-fl-l" for="targetDate"><span class="en">Calculate age as of</span><span class="ar">احسب العمر حتى</span></label><div class="t-fl-r"><input type="date" id="targetDate"></div></div>
+        </div>
+        <button class="t-btn" type="button" onclick="calcAge()"><span class="en">Calculate My Age</span><span class="ar">احسب عمري</span></button>
+      </div>
     </div>
-    <div>
-      <label class="input-label"><span class="ar">احسب العمر حتى</span><span class="en">Calculate age as of</span></label>
-      <input type="date" class="input-field" id="targetDate"/>
-    </div>
-  </div>
-  <button class="calc-btn" onclick="calcAge()"><span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v12"/><path d="M8 10h8"/></svg> احسب عمري</span><span class="en"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v12"/><path d="M8 10h8"/></svg> Calculate My Age</span></button>
-</div>
-
-<div class="results-card tool-rv" id="resultsCard">
-  <div class="age-hero">
-    <div class="age-big" id="ageYears">0</div>
-    <div class="age-lbl"><span class="ar">سنة</span><span class="en">years old</span></div>
-  </div>
-  <div class="stats-grid" id="statsGrid"></div>
-  <div class="hijri-section">
-    <div class="hijri-title"><span class="ar">عمرك بالتقويم الهجري</span><span class="en">Your Hijri Age</span></div>
-    <div class="hijri-grid" id="hijriGrid"></div>
-  </div>
-  <div class="birthday-countdown" id="bdayCountdown"></div>
-  <div class="share-row">
-    <button class="share-btn" onclick="copyAge()"><span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg> نسخ</span><span class="en"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg> Copy</span></button>
-    <button class="share-btn" onclick="shareAge()"><span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9H9l-3-9H2"/></svg> مشاركة</span><span class="en"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9H9l-3-9H2"/></svg> Share</span></button>
-  </div>
-</div>
-
-<!-- FUN FACTS -->
-<div class="facts-grid reveal" id="factsGrid" style="display:none"></div>
-
-<script>
-// Set defaults
-const today=new Date();
-document.getElementById('targetDate').value=today.toISOString().slice(0,10);
-document.getElementById('dob').value='1990-01-01';
-
-function gregorianToHijri(gy,gm,gd){
-  const jd=Math.floor(gregorianToJulian(gy,gm,gd)+.5);
-  const l=jd-1948440+10632;const n=Math.floor((l-1)/10631);
-  const l2=l-10631*n+354;
-  const j=(Math.floor((10985-l2)/5316))*(Math.floor((50*l2)/17719))+(Math.floor(l2/5670))*(Math.floor((43*l2)/15238));
-  const l3=l2-(Math.floor((30-j)/15))*(Math.floor((17719*j)/50))-(Math.floor(j/16))*(Math.floor((15238*j)/43))+29;
-  const month=Math.floor((24*l3)/709);const day=l3-Math.floor((709*month)/24);const year=30*n+j-30;
-  return{year,month,day};
-}
-function gregorianToJulian(y,m,d){if(m<=2){y--;m+=12;}const A=Math.floor(y/100),B=2-A+Math.floor(A/4);return Math.floor(365.25*(y+4716))+Math.floor(30.6001*(m+1))+d+B-1524.5;}
-const HM=['محرّم','صفر','ربيع الأول','ربيع الثاني','جمادى الأولى','جمادى الثانية','رجب','شعبان','رمضان','شوال','ذو القعدة','ذو الحجة'];
-const HM_EN=['Muharram','Safar','Rabi al-Awwal','Rabi al-Thani','Jumada I','Jumada II','Rajab','Sha\'ban','Ramadan','Shawwal','Dhu al-Qi\'dah','Dhu al-Hijjah'];
-
-function calcAge(){
-  const dob=new Date(document.getElementById('dob').value);
-  const target=new Date(document.getElementById('targetDate').value);
-  if(!dob||!target||dob>target){alert('يرجى إدخال تاريخ ميلاد صحيح');return;}
-  const lang=document.documentElement.dataset.lang;
-
-  let years=target.getFullYear()-dob.getFullYear();
-  let months=target.getMonth()-dob.getMonth();
-  let days=target.getDate()-dob.getDate();
-  if(days<0){months--;const prevMonth=new Date(target.getFullYear(),target.getMonth(),0);days+=prevMonth.getDate();}
-  if(months<0){years--;months+=12;}
-
-  const totalDays=Math.floor((target-dob)/86400000);
-  const totalHours=totalDays*24;
-  const totalWeeks=Math.floor(totalDays/7);
-  const totalMonths=years*12+months;
-  const heartbeats=Math.round(totalDays*100800);
-  const breaths=Math.round(totalDays*20*60*24);
-
-  // Count-up animation for age years
-  (function animateAge(){
-    const el=document.getElementById('ageYears');
-    const target=years;
-    const dur=700;const start=performance.now();
-    function step(now){
-      const p=Math.min((now-start)/dur,1);
-      const ease=1-Math.pow(1-p,3);
-      el.textContent=Math.round(target*ease);
-      if(p<1)requestAnimationFrame(step);else el.textContent=target;
-    }
-    requestAnimationFrame(step);
-  })();
-
-  const stats=[
-    {ar:'الأشهر الكاملة',en:'Total months',val:totalMonths.toLocaleString()},
-    {ar:'الأسابيع',en:'Total weeks',val:totalWeeks.toLocaleString()},
-    {ar:'الأيام',en:'Total days',val:totalDays.toLocaleString()},
-    {ar:'الساعات',en:'Total hours',val:totalHours.toLocaleString()},
-    {ar:'نبضات القلب',en:'Heartbeats',val:heartbeats.toLocaleString()},
-    {ar:'نفَس',en:'Breaths taken',val:breaths.toLocaleString()},
-  ];
-  document.getElementById('statsGrid').innerHTML=stats.map(s=>`<div class="stat"><div class="stat-val">${s.val}</div><div class="stat-lbl">${lang==='ar'?s.ar:s.en}</div></div>`).join('');
-
-  // Hijri age
-  const hDob=gregorianToHijri(dob.getFullYear(),dob.getMonth()+1,dob.getDate());
-  const hTarget=gregorianToHijri(target.getFullYear(),target.getMonth()+1,target.getDate());
-  let hYears=hTarget.year-hDob.year;let hMonths=hTarget.month-hDob.month;
-  if(hTarget.day<hDob.day)hMonths--;if(hMonths<0){hYears--;hMonths+=12;}
-  document.getElementById('hijriGrid').innerHTML=`
-    <div class="stat"><div class="stat-val">${hYears}</div><div class="stat-lbl ar">سنة هجرية</div><div class="stat-lbl en">Hijri years</div></div>
-    <div class="stat"><div class="stat-val">${hDob.day} ${lang==='ar'?HM[hDob.month-1]:HM_EN[hDob.month-1]} ${hDob.year}</div><div class="stat-lbl ar">تاريخ ميلادك هجرياً</div><div class="stat-lbl en">Hijri birth date</div></div>`;
-
-  // Birthday countdown
-  let nextBday=new Date(target.getFullYear(),dob.getMonth(),dob.getDate());
-  if(nextBday<=target)nextBday.setFullYear(target.getFullYear()+1);
-  const daysToB=Math.ceil((nextBday-target)/86400000);
-  document.getElementById('bdayCountdown').innerHTML=`<div class="bday-num"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v12"/><path d="M8 10h8"/></svg> ${daysToB}</div><div class="bday-lbl">${lang==='ar'?'يوماً حتى عيد ميلادك القادم':'days until your next birthday'}</div>`;
-
-  // Fun facts
-  const facts=[
-    {icon:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',ar:'نبضات القلب',en:'Heartbeats',val:heartbeats.toLocaleString()},
-    {icon:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/><path d="M17 14a5 5 0 0 0-10 0"/></svg>',ar:'ساعات النوم',en:'Hours slept',val:Math.round(totalDays*8).toLocaleString()},
-    {icon:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 2v4a3 3 0 0 1-3 3h-4a3 3 0 0 1-3-3V2"/><path d="M7 12v8a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-8"/></svg>️',ar:'وجبات تقريباً',en:'Meals approx.',val:Math.round(totalDays*3).toLocaleString()},
-    {icon:'<svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>',ar:'ليالٍ نمتها',en:'Nights slept',val:totalDays.toLocaleString()},
-  ];
-  const fg=document.getElementById('factsGrid');
-  fg.style.display='grid';
-  fg.innerHTML=facts.map(f=>`<div class="fact-card"><div class="fact-icon">${f.icon}</div><div class="fact-lbl">${lang==='ar'?f.ar:f.en}</div><div class="fact-val">${f.val}</div></div>`).join('');
-
-  document.getElementById('resultsCard').classList.add('show');
-  document.getElementById('resultsCard').classList.add('visible');
-  document.getElementById('resultsCard').scrollIntoView({behavior:'smooth',block:'nearest'});
-  window._ageData={years,months,days,totalDays,lang};
-}
-
-function copyAge(){const d=window._ageData||{};const l=document.documentElement.dataset.lang;navigator.clipboard.writeText(l==='ar'?`عمري: ${d.years} سنة و${d.months} شهراً و${d.days} يوماً | ${d.totalDays} يوم إجمالاً`:`Age: ${d.years} years, ${d.months} months, ${d.days} days | ${d.totalDays} total days`);}
-function shareAge(){const d=window._ageData||{};const l=document.documentElement.dataset.lang;if(navigator.share)navigator.share({title:'DotForLife Age Calculator',text:l==='ar'?`عمري ${d.years} سنة، DotForLife`:`I'm ${d.years} years old, DotForLife`,url:location.href});}
-function toggleLang(){const l=document.documentElement.dataset.lang==='ar'?'en':'ar';document.documentElement.dataset.lang=l;document.documentElement.lang=l;localStorage.setItem('dfl-lang',l);}
-function toggleTheme(){const t=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=t;localStorage.setItem('dfl-theme',t);document.getElementById('themeBtn').textContent=t==='dark'?'<svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>':'<svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';}
-(function(){const l=localStorage.getItem('dfl-lang')||'ar';const t=localStorage.getItem('dfl-theme')||'light';document.documentElement.dataset.lang=l;document.documentElement.lang=l;document.documentElement.dataset.theme=t;document.getElementById('themeBtn').textContent=t==='dark'?'<svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>':'<svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';})();
-const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.08});
-document.querySelectorAll('.tool-rv, .reveal').forEach(el=>ro.observe(el));
-</script>
-
-<div class="container tool-rv" style="max-width:1200px;margin:0 auto;padding:0 24px 0">
-<div class="dfl-method">
-  <div class="dfl-method-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> <span class="en">How this is calculated</span><span class="ar">طريقة الحساب</span></div>
-  <p class="en">Age in exact years, months, and days using ISO 8601 date arithmetic with leap-year correction.</p>
-  <p class="ar">العمر بالسنوات والأشهر والأيام الدقيقة باستخدام ISO 8601 مع تصحيح السنة الكبيسة.</p>
-</div>
-</div>
-
-<!-- ═══ RELATED TOOLS ═══════════════════════════════════════════════════════ -->
-<section class="dfl-related tool-rv" aria-label="Related tools and guides">
-  <div class="container">
-    <div class="dfl-related-label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg> <span class="en">Continue Your Journey</span><span class="ar">أكمل رحلتك</span></div>
-    <h2 class="dfl-related-title"><span class="en">Related Tools & Guides</span><span class="ar">أدوات ودلائل ذات صلة</span></h2>
-    <p class="dfl-related-sub"><span class="en">Tools and reading you might find useful next</span><span class="ar">أدوات وقراءات قد تفيدك في خطوتك التالية</span></p>
-    <div class="dfl-related-grid">
-      <a href="/tools/hijri-converter.html" class="dfl-rc tool-rv tool-rv-1" aria-label="Hijri Date Converter">
-        <div class="dfl-rc-top"><span class="dfl-rc-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span><div><div class="dfl-rc-name en">Hijri Date Converter</div><div class="dfl-rc-name ar">محوّل التاريخ الهجري</div></div></div>
-        <div class="dfl-rc-desc en">Convert Hijri ↔ Gregorian</div><div class="dfl-rc-desc ar">تحويل هجري ↔ ميلادي</div>
-        <div class="dfl-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
-      </a>
-      <a href="/tools/zakat-calculator.html" class="dfl-rc tool-rv tool-rv-2" aria-label="Zakat Calculator">
-        <div class="dfl-rc-top"><span class="dfl-rc-icon" aria-hidden="true">☪️</span><div><div class="dfl-rc-name en">Zakat Calculator</div><div class="dfl-rc-name ar">حاسبة الزكاة</div></div></div>
-        <div class="dfl-rc-desc en">Annual zakat on all asset types</div><div class="dfl-rc-desc ar">زكاة جميع أنواع المال</div>
-        <div class="dfl-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
-      </a>
-      <a href="/tools/pregnancy-calculator.html" class="dfl-rc tool-rv tool-rv-3" aria-label="Pregnancy Calculator">
-        <div class="dfl-rc-top"><span class="dfl-rc-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2v6m0 0l-3-3m3 3l3-3"/><path d="M12 16v6m0 0l-3-3m3 3l3-3"/><path d="M2 12h6m0 0L5 9m3 3l-3 3"/><path d="M16 12h6m0 0l-3-3m3 3l-3 3"/></svg></span><div><div class="dfl-rc-name en">Pregnancy Calculator</div><div class="dfl-rc-name ar">حاسبة الحمل</div></div></div>
-        <div class="dfl-rc-desc en">3 methods, 40-week guide</div><div class="dfl-rc-desc ar">3 طرق وتفصيل 40 أسبوعاً</div>
-        <div class="dfl-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
-      </a>
-      <a href="../guides/zakat-complete-guide.html" class="dfl-rc guide tool-rv" aria-label="Zakat Complete Guide">
-        <div class="dfl-rc-top"><span class="dfl-rc-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/></svg></span><div><div class="dfl-rc-name en">Zakat Complete Guide</div><div class="dfl-rc-name ar">دليل الزكاة الشامل</div></div></div>
-        <div class="dfl-rc-desc en">Jurisprudence & calculations</div><div class="dfl-rc-desc ar">الفقه والأحكام والحسابات</div>
-        <div class="dfl-rc-cta"><span class="en">Read guide →</span><span class="ar">اقرأ الدليل ←</span></div>
-      </a>
+    <div class="tool-panel ac-card" id="resultsCard"><div class="tool-panel-hdr"><h2><span class="en">Your Age</span><span class="ar">عمرك</span></h2></div>
+      <div class="tool-panel-body t-body">
+        <div class="t-hero-result"><div class="t-hero-val" id="ageYears">—</div><div class="t-hero-lbl"><span class="en">years old</span><span class="ar">سنة</span></div></div>
+        <div class="t-stats" id="statsGrid"></div>
+        <div class="ac-hijri-block"><div class="ac-hijri-title"><span class="en">Your Hijri Age</span><span class="ar">عمرك بالتقويم الهجري</span></div><div class="t-stats" id="hijriGrid"></div></div>
+        <div class="ac-bday" id="bdayCountdown"></div>
+        <div class="ac-facts" id="factsGrid" style="display:none"></div>
+      </div>
     </div>
   </div>
-</section>
-
-<!-- FAQ -->
-<section class="ac-faq tool-rv" itemscope="" itemtype="https://schema.org/FAQPage">
-  <div class="ac-section-label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> <span class="en">FAQ</span><span class="ar">الأسئلة الشائعة</span></div>
-  <h2 class="ac-faq-title"><span class="en">Frequently Asked Questions</span><span class="ar">أسئلة شائعة عن حساب العمر</span></h2>
-
-  <div class="ac-faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-    <button class="ac-faq-q open" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('active');">
-      <span itemprop="name"><span class="en">How is exact age calculated?</span><span class="ar">كيف يتم حساب العمر بالضبط؟</span></span>
-      <svg class="ac-faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-    </button>
-    <div class="ac-faq-a active" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-      <div itemprop="text"><span class="en">Exact age is computed by subtracting the birth date from today's date, accounting for leap years and varying month lengths. The result is expressed in years, months, and days using ISO 8601 date arithmetic.</span><span class="ar">يتم حساب العمر الدقيق بطرح تاريخ الميلاد من تاريخ اليوم، مع مراعاة السنوات الكبيسة واختلاف أطوال الأشهر، وفق معيار ISO 8601.</span></div>
+  <div class="tool-below">
+    <div class="t-section"><div class="t-section-label"><span class="en">How this is calculated</span><span class="ar">طريقة الحساب</span></div>
+      <p class="en">Age in exact years, months, and days using ISO 8601 date arithmetic with leap-year correction. Hijri dates use the Kuwaiti tabular algorithm.</p>
+      <p class="ar">العمر بالسنوات والأشهر والأيام الدقيقة باستخدام ISO 8601 مع تصحيح السنة الكبيسة. التواريخ الهجرية بخوارزمية الكويت الجدولية.</p>
+    </div>
+    <div class="t-faq"><div class="t-faq-label"><span class="en">FAQ</span><span class="ar">أسئلة شائعة</span></div><div class="t-faq-title"><span class="en">Frequently Asked Questions</span><span class="ar">الأسئلة المتكررة</span></div>
+      <div class="t-faq-item">
+        <div class="t-faq-q" onclick="toggleFAQ(this)"><span><span class="en">How is exact age calculated?</span><span class="ar">كيف يتم حساب العمر بالضبط؟</span></span><span class="t-faq-arrow">▼</span></div>
+        <div class="t-faq-a"><p><span class="en">Exact age subtracts birth date from target date, accounting for leap years and varying month lengths.</span><span class="ar">يتم حساب العمر الدقيق بطرح تاريخ الميلاد من التاريخ المستهدف مع مراعاة السنوات الكبيسة.</span></p></div>
+      </div>
+      <div class="t-faq-item">
+        <div class="t-faq-q" onclick="toggleFAQ(this)"><span><span class="en">Does this account for leap years?</span><span class="ar">هل تراعي السنوات الكبيسة؟</span></span><span class="t-faq-arrow">▼</span></div>
+        <div class="t-faq-a"><p><span class="en">Yes — full Gregorian calendar rules including February 29.</span><span class="ar">نعم — قواعد التقويم الميلادي الكامل بما فيها 29 فبراير.</span></p></div>
+      </div>
+      <div class="t-faq-item">
+        <div class="t-faq-q" onclick="toggleFAQ(this)"><span><span class="en">How is Hijri age calculated?</span><span class="ar">كيف يُحتسب العمر الهجري؟</span></span><span class="t-faq-arrow">▼</span></div>
+        <div class="t-faq-a"><p><span class="en">Both dates convert to Hijri via the Kuwaiti tabular method, then the difference is computed.</span><span class="ar">يُحوَّل التاريخان للهجري ثم يُحسب الفرق.</span></p></div>
+      </div>
     </div>
   </div>
-
-  <div class="ac-faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-    <button class="ac-faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('active');">
-      <span itemprop="name"><span class="en">Does this account for leap years?</span><span class="ar">هل تراعي حاسبة العمر السنوات الكبيسة؟</span></span>
-      <svg class="ac-faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-    </button>
-    <div class="ac-faq-a" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-      <div itemprop="text"><span class="en">Yes, our calculator accounts for leap years in both the birth year and the current year. It uses the full Gregorian calendar rules including February 29 in leap years, ensuring day-accurate results.</span><span class="ar">نعم، الحاسبة تراعي السنوات الكبيسة في سنة الميلاد والسنة الحالية، وتستخدم قواعد التقويم الميلادي الكامل بما فيها 29 فبراير، لضمان دقة اليوم.</span></div>
+  <section class="tool-tickets-rail"><header class="tool-tickets-head"><p class="tool-tickets-eyebrow"><span class="en">Continue Your Journey</span><span class="ar">أكمل رحلتك</span></p><h2 class="tool-tickets-title"><span class="en">Related Tools</span><span class="ar">أدوات ذات صلة</span></h2></header>
+    <div class="tool-tickets-track">
+      <a href="/tools/hijri-converter.html" class="tool-ticket"><div class="tool-ticket-body"><h3><span class="en">Hijri Converter</span><span class="ar">محوّل الهجري</span></h3><span class="tool-ticket-cta"><span class="en">Open →</span><span class="ar">← افتح</span></span></div></a>
+      <a href="/tools/pregnancy-calculator.html" class="tool-ticket"><div class="tool-ticket-body"><h3><span class="en">Pregnancy Calculator</span><span class="ar">حاسبة الحمل</span></h3><span class="tool-ticket-cta"><span class="en">Open →</span><span class="ar">← افتح</span></span></div></a>
+      <a href="/tools/bmi-calculator.html" class="tool-ticket"><div class="tool-ticket-body"><h3><span class="en">BMI Calculator</span><span class="ar">حاسبة BMI</span></h3><span class="tool-ticket-cta"><span class="en">Open →</span><span class="ar">← افتح</span></span></div></a>
+      <a href="/tools/calorie-calculator.html" class="tool-ticket"><div class="tool-ticket-body"><h3><span class="en">Calorie Calculator</span><span class="ar">حاسبة السعرات</span></h3><span class="tool-ticket-cta"><span class="en">Open →</span><span class="ar">← افتح</span></span></div></a>
     </div>
-  </div>
-
-  <div class="ac-faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-    <button class="ac-faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('active');">
-      <span itemprop="name"><span class="en">How is the Hijri age calculated?</span><span class="ar">كيف يُحتسب العمر الهجري؟</span></span>
-      <svg class="ac-faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-    </button>
-    <div class="ac-faq-a" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-      <div itemprop="text"><span class="en">Your Hijri age is calculated by converting both your birth date and the target date to the Islamic (Hijri) calendar using the standard tabular method (Kuwaiti algorithm), then computing the difference in Hijri years and months.</span><span class="ar">يُحتسب العمر الهجري بتحويل تاريخ الميلاد والتاريخ المستهدف إلى التقويم الهجري باستخدام الطريقة الجدولية المعيارية (خوارزمية الكويت)، ثم حساب الفرق بالسنوات والأشهر الهجرية.</span></div>
-    </div>
-  </div>
-
-  <div class="ac-faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-    <button class="ac-faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('active');">
-      <span itemprop="name"><span class="en">What is the next birthday countdown?</span><span class="ar">ما هو العد التنازلي لعيد الميلاد القادم؟</span></span>
-      <svg class="ac-faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-    </button>
-    <div class="ac-faq-a" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-      <div itemprop="text"><span class="en">The calculator automatically computes the number of days until your next birthday based on today's date. If your birthday has already passed this year, it calculates the days remaining until next year's date.</span><span class="ar">تحسب الحاسبة تلقائياً عدد الأيام المتبقية حتى عيد ميلادك القادم. إذا كان عيد ميلادك قد مضى هذه السنة، تحتسب الأيام حتى تاريخ العام القادم.</span></div>
-    </div>
-  </div>
-
-  <div class="ac-faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
-    <button class="ac-faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('active');">
-      <span itemprop="name"><span class="en">Are the fun facts accurate for everyone?</span><span class="ar">هل الحقائق الممتعة دقيقة للجميع؟</span></span>
-      <svg class="ac-faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-    </button>
-    <div class="ac-faq-a" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-      <div itemprop="text"><span class="en">The fun facts (heartbeats, breaths, meals, etc.) are estimates based on global averages. For example, we use 80 bpm heart rate and 20 breaths per minute. Actual numbers vary per individual.</span><span class="ar">الحقائق الممتعة (نبضات القلب، الأنفاس، الوجبات...) هي تقديرات تستند إلى متوسطات عالمية. مثلاً نستخدم 80 نبضة/دقيقة و20 نفساً/دقيقة. الأرقام الفعلية تختلف من شخص لآخر.</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- Affiliate -->
-<div class="ac-affiliate tool-rv">
-  <div class="ac-aff-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> <span class="en">Our Pick</span><span class="ar">اختيارنا</span></div>
-  <div class="ac-aff-content">
-    <div class="ac-aff-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v12"/><path d="M8 10h8"/></svg></div>
-    <div>
-      <div class="ac-aff-name"><span class="en">Track Your Family's Health Journey</span><span class="ar">تتبع رحلة صحة عائلتك</span></div>
-      <div class="ac-aff-desc"><span class="en">Keep a daily log of health metrics, appointments, and wellness goals for every family member with our free planner.</span><span class="ar">احتفظ بسجل يومي لقياسات الصحة والمواعيد وأهداف العافية لكل فرد من أسرتك مع مخططنا المجاني.</span></div>
-    </div>
-    <a href="/health.html" class="ac-aff-btn"><span class="en">Explore Health Tools →</span><span class="ar">استكشف أدوات الصحة ←</span></a>
-  </div>
-</div>
-
-<!-- Sponsor -->
-<div class="ac-sponsor tool-rv">
-  <div class="ac-sponsor-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> <span class="en">Supported By</span><span class="ar">برعاية</span></div>
-  <div class="ac-aff-content">
-    <div class="ac-aff-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-    <div>
-      <div class="ac-aff-name"><span class="en">DotForLife — Free Family Tools</span><span class="ar">دوت فور لايف — أدوات عائلية مجانية</span></div>
-      <div class="ac-aff-desc"><span class="en">All our calculators and guides are free, always. We believe every family deserves access to reliable tools without paywalls.</span><span class="ar">جميع حاسباتنا وأدلتنا مجانية دائماً. نؤمن بأن كل عائلة تستحق أدوات موثوقة بلا حواجز دفع.</span></div>
-    </div>
-  </div>
-</div>
-
-</main>
-
-<script>
-/* ── Phase 2A Global Micro-interaction Utilities ──────────────────────────── */
-(function(){
-  // 1. Loading state on all .calc-btn buttons
-  document.querySelectorAll('.calc-btn').forEach(function(btn){
-    // Wrap existing label text in .btn-label if not already done
-    if(!btn.querySelector('.btn-label')){
-      btn.innerHTML = '<span class="btn-label">'+btn.innerHTML+'</span>'
-                    + '<span class="btn-spinner"></span>';
-    }
-    var origOnclick = btn.getAttribute('onclick');
-    if(origOnclick){
-      btn.removeAttribute('onclick');
-      btn.addEventListener('click', function(e){
-        btn.classList.add('loading');
-        setTimeout(function(){
-          try { (new Function(origOnclick))(); } catch(err){ console.warn(err); }
-          setTimeout(function(){ btn.classList.remove('loading'); }, 400);
-        }, 180);
-      });
-    }
-  });
-
-  // 2. Attach copy-to-clipboard on big result numbers
-  function attachCopy(container){
-    container.querySelectorAll('.result-value, .result-number, .big-result, .kpi-value, .stat-number').forEach(function(el){
-      if(el.dataset.copyAttached) return;
-      el.dataset.copyAttached = '1';
-      el.classList.add('copy-val');
-      el.title = 'Click to copy';
-      el.addEventListener('click', function(){
-        var text = el.textContent.replace(/[^0-9.,٠-٩]/g,'').trim();
-        if(!text) text = el.textContent.trim();
-        navigator.clipboard && navigator.clipboard.writeText(text).then(function(){
-          el.classList.add('copied');
-          setTimeout(function(){ el.classList.remove('copied'); }, 1800);
-        });
-      });
-    });
-  }
-
-  // Observe results becoming visible
-  ['resultsCard','results-section','result-section'].forEach(function(id){
-    var el = document.getElementById(id);
-    if(!el) return;
-    var obs = new MutationObserver(function(){ attachCopy(el); });
-    obs.observe(el, {attributes:true, attributeFilter:['class']});
-  });
-  // Also run on page load for any already-visible results
-  document.querySelectorAll('.results-card.show, .results-section.active, .result-section.active').forEach(attachCopy);
-
-  // 3. Num-pop animation whenever a result text node changes
-  var resultContainers = document.querySelectorAll('.results-card, .results-section, .result-section');
-  resultContainers.forEach(function(container){
-    var textObs = new MutationObserver(function(mutations){
-      mutations.forEach(function(m){
-        if(m.type === 'characterData' || m.type === 'childList'){
-          var target = m.target.nodeType === 3 ? m.target.parentElement : m.target;
-          if(target && /result-value|result-number|big-result|kpi-value|stat-number/.test(target.className)){
-            target.classList.remove('num-pop');
-            void target.offsetWidth; // reflow
-            target.classList.add('num-pop');
-            setTimeout(function(){ target.classList.remove('num-pop'); }, 300);
-          }
-        }
-      });
-    });
-    textObs.observe(container, {childList:true, subtree:true, characterData:true});
-  });
-
-  // 4. Input validation shake helper (global)
-  window.dfl = window.dfl || {};
-  window.dfl.shakeInput = function(el){
-    el.classList.remove('input-error');
-    void el.offsetWidth;
-    el.classList.add('input-error');
-    el.addEventListener('animationend', function(){ el.classList.remove('input-error'); }, {once:true});
-    el.addEventListener('input', function(){ el.classList.remove('input-error'); }, {once:true});
-  };
-  window.dfl.validateRequired = function(ids){
-    var ok = true;
-    ids.forEach(function(id){
-      var el = document.getElementById(id);
-      if(!el) return;
-      var val = parseFloat(el.value);
-      if(!el.value || isNaN(val) || val <= 0){
-        window.dfl.shakeInput(el);
-        ok = false;
-      }
-    });
-    return ok;
-  };
-})();
-
-</script><script>/* ═══════════════════════════════════════════════════════════
-   DOTFORLIFE GLOBAL PLATFORM ENGINE v2
-   ═══════════════════════════════════════════════════════════ */
-(function(){
-'use strict';
-
-var TOOLS=[
-  {en:"BMI Calculator",ar:"حاسبة مؤشر كتلة الجسم",url:"tools/bmi-calculator.html",cat:"health",icon:"⚖️",tags:"weight height body mass bmi"},
-  {en:"Pregnancy Calculator",ar:"حاسبة الحمل",url:"tools/pregnancy-calculator.html",cat:"health",icon:"<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>",tags:"due date trimester edd pregnancy"},
-  {en:"Calorie Calculator",ar:"حاسبة السعرات",url:"tools/calorie-calculator.html",cat:"health",icon:"<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>",tags:"tdee bmr calorie diet weight loss"},
-  {en:"Water Intake",ar:"حاسبة شرب الماء",url:"tools/water-calculator.html",cat:"health",icon:"<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>",tags:"hydration water daily intake"},
-  {en:"Body Fat Calculator",ar:"حاسبة نسبة الدهون",url:"tools/body-fat-calculator.html",cat:"fitness",icon:"<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>",tags:"body fat percentage navy method fitness"},
-  {en:"One Rep Max",ar:"حاسبة أقصى تكرار",url:"tools/one-rep-max.html",cat:"fitness",icon:"<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 13l-3 3-2-2"/><path d="M14 3v10"/><path d="M5 21h14"/></svg>",tags:"1rm strength training gym max"},
-  {en:"Saudi Mortgage",ar:"حاسبة التمويل العقاري",url:"tools/mortgage-calculator.html",cat:"real-estate",icon:"<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 4l9 5.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-5h4v5h4a1 1 0 0 0 1-1v-9"/></svg>",tags:"mortgage redf loan payment saudi bank"},
-  {en:"Rental Yield",ar:"حاسبة العائد الإيجاري",url:"tools/rental-yield-calculator.html",cat:"real-estate",icon:"<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>",tags:"rental income investment property yield"},
-  {en:"ROI Calculator",ar:"حاسبة العائد",url:"tools/roi-calculator.html",cat:"real-estate",icon:"<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>",tags:"roi return investment property cap rate"},
-  {en:"Zakat Calculator",ar:"حاسبة الزكاة",url:"tools/zakat-calculator.html",cat:"life",icon:"<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.2h7.6l-6 4.8 2.4 7.2-6-4.8-6 4.8 2.4-7.2-6-4.8h7.6z"/></svg>",tags:"zakat nisab hawl islamic finance"},
-  {en:"Hijri Converter",ar:"محول التاريخ الهجري",url:"tools/hijri-converter.html",cat:"life",icon:"<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>",tags:"hijri gregorian calendar islamic date"},
-  {en:"Plant Watering",ar:"حاسبة ري النباتات",url:"tools/plant-watering.html",cat:"plants",icon:"<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 2 8 0 5.5-4.78 10-10 10Z"/></svg>",tags:"plant watering schedule gcc garden"},
-  {en:"Age Calculator",ar:"حاسبة العمر",url:"tools/age-calculator.html",cat:"life",icon:"<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v12"/><path d="M8 10h8"/></svg>",tags:"age years months days birthday"},
-  {en:"Password Generator",ar:"مولّد كلمات المرور",url:"tools/password-generator.html",cat:"life",icon:"<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>",tags:"password secure generator entropy"}
-];
-
-var TRENDING=["tools/bmi-calculator.html","tools/mortgage-calculator.html","tools/pregnancy-calculator.html","tools/zakat-calculator.html","tools/calorie-calculator.html"];
-
-/* ── localStorage ── */
-var LS={
-  get:function(k){try{return JSON.parse(localStorage.getItem('dfl_'+k)||'null');}catch(e){return null;}},
-  set:function(k,v){try{localStorage.setItem('dfl_'+k,JSON.stringify(v));}catch(e){}}
-};
-
-/* ── Track current page ── */
-(function(){
-  var p=location.pathname.replace(/^\//,'');
-  var tool=TOOLS.find(function(t){return p.indexOf(t.url.replace(/^\//,''))>-1;});
-  if(!tool)return;
-  var rec=LS.get('recents')||[];
-  rec=rec.filter(function(r){return r.url!==tool.url;});
-  rec.unshift({url:tool.url,en:tool.en,ar:tool.ar,icon:tool.icon,time:Date.now()});
-  if(rec.length>8)rec=rec.slice(0,8);
-  LS.set('recents',rec);
-  var c=LS.get('counts')||{};c[tool.url]=(c[tool.url]||0)+1;LS.set('counts',c);
-})();
-
-/* ── Bookmarks ── */
-window.DFL=window.DFL||{};
-DFL.getBookmarks=function(){return LS.get('bookmarks')||[];};
-DFL.isBookmarked=function(url){return DFL.getBookmarks().some(function(b){return b.url===url;});};
-DFL.toggleBookmark=function(url){
-  var tool=TOOLS.find(function(t){return t.url===url;});if(!tool)return false;
-  var bm=DFL.getBookmarks(),idx=bm.findIndex(function(b){return b.url===url;});
-  if(idx>-1){bm.splice(idx,1);}else{bm.unshift({url:url,en:tool.en,ar:tool.ar,icon:tool.icon});}
-  LS.set('bookmarks',bm);
-  document.querySelectorAll('[data-bookmark="'+url+'"]').forEach(function(btn){
-    btn.classList.toggle('bookmarked',idx===-1);
-  });
-  return idx===-1;
-};
-
-/* ── Search overlay styles ── */
-function injectSearchStyles(){
-  if(document.getElementById('dfl-search-css'))return;
-  var s=document.createElement('style');s.id='dfl-search-css';
-  s.textContent=[
-    '#dfl-so{position:fixed;inset:0;z-index:9999;display:none;align-items:flex-start;justify-content:center;padding-top:80px}',
-    '#dfl-so.open{display:flex}',
-    '#dfl-sb{position:absolute;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(4px)}',
-    '#dfl-sp{position:relative;width:calc(100% - 32px);max-width:580px;background:var(--card-bg,#fff);border-radius:20px;box-shadow:0 24px 80px rgba(0,0,0,.25);overflow:hidden;animation:sIn .16s cubic-bezier(.34,1.56,.64,1)}',
-    '[data-theme="dark"] #dfl-sp{background:#1E293B}',
-    '@keyframes sIn{from{opacity:0;transform:scale(.95) translateY(-10px)}to{opacity:1;transform:scale(1) translateY(0)}}',
-    '#dfl-sh{padding:16px 20px;border-bottom:1px solid var(--border-l,#DDE0E4);display:flex;align-items:center;gap:10px}',
-    '#dfl-si{flex:1;border:none;background:none;font-size:1rem;font-weight:500;color:var(--text,#343B42);outline:none;font-family:inherit}',
-    '#dfl-si::placeholder{color:var(--text-2,#6B7280)}',
-    '#dfl-sk{background:var(--body-bg,#F5F6F7);border:1px solid var(--border-l,#DDE0E4);border-radius:6px;padding:2px 7px;font-size:.68rem;color:var(--text-2,#6B7280);font-family:inherit;cursor:pointer}',
-    '#dfl-stabs{display:flex;gap:4px;padding:10px 16px 0;overflow-x:auto;-webkit-overflow-scrolling:touch}',
-    '#dfl-stabs::-webkit-scrollbar{height:0}',
-    '.dfl-st{border:none;background:none;padding:6px 14px;border-radius:999px;font-size:.75rem;font-weight:600;cursor:pointer;color:var(--text-2,#6B7280);white-space:nowrap;transition:all .12s}',
-    '.dfl-st.a,.dfl-st:hover{background:var(--accent,#2563EB);color:#fff}',
-    '#dfl-sr{max-height:340px;overflow-y:auto;padding:10px}',
-    '.dfl-rl{font-size:.65rem;font-weight:700;color:var(--text-2,#6B7280);letter-spacing:.06em;text-transform:uppercase;padding:8px 10px 2px}',
-    '.dfl-ri{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:10px;text-decoration:none;color:var(--text,#343B42);transition:background .1s}',
-    '.dfl-ri:hover,.dfl-ri.f{background:var(--body-bg,#F5F6F7)}',
-    '[data-theme="dark"] .dfl-ri:hover,[data-theme="dark"] .dfl-ri.f{background:rgba(255,255,255,.06)}',
-    '.dfl-ric{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;background:rgba(37,99,235,.08);flex-shrink:0}',
-    '.dfl-rin{font-weight:700;font-size:.85rem}',
-    '.dfl-ric2{font-size:.68rem;color:var(--text-2,#6B7280);margin-top:1px;text-transform:capitalize}',
-    '.dfl-rbm{background:none;border:none;cursor:pointer;font-size:.9rem;opacity:.35;transition:all .12s;padding:4px;min-height:unset;min-width:unset;margin-inline-start:auto;flex-shrink:0}',
-    '.dfl-rbm:hover,.dfl-rbm.bookmarked{opacity:1;color:#F59E0B}',
-    '.dfl-empty{text-align:center;padding:28px;color:var(--text-2,#6B7280);font-size:.88rem}',
-    '#dfl-sf{border-top:1px solid var(--border-l,#DDE0E4);padding:9px 18px;font-size:.68rem;color:var(--text-2,#6B7280);text-align:center}',
-    '@media(max-width:600px){#dfl-so{padding-top:0;align-items:flex-end}#dfl-sp{border-radius:20px 20px 0 0;max-height:85vh;width:100%}}'
-  ].join('');
-  document.head.appendChild(s);
-}
-
-function buildSearch(){
-  if(document.getElementById('dfl-so'))return;
-  injectSearchStyles();
-  var o=document.createElement('div');o.id='dfl-so';
-  o.setAttribute('role','dialog');o.setAttribute('aria-modal','true');
-  o.innerHTML='<div id="dfl-sb"></div>'
-    +'<div id="dfl-sp">'
-      +'<div id="dfl-sh"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0;color:var(--text-2)"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>'
-        +'<input id="dfl-si" type="search" autocomplete="off" spellcheck="false">'
-        +'<kbd id="dfl-sk" onclick="DFL.closeSearch()">ESC</kbd>'
-      +'</div>'
-      +'<div id="dfl-stabs">'
-        +'<button class="dfl-st a" data-tab="all">All</button>'
-        +'<button class="dfl-st" data-tab="health"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> Health</button>'
-        +'<button class="dfl-st" data-tab="real-estate"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 4l9 5.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-5h4v5h4a1 1 0 0 0 1-1v-9"/></svg> Real Estate</button>'
-        +'<button class="dfl-st" data-tab="fitness"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 13l-3 3-2-2"/><path d="M14 3v10"/><path d="M5 21h14"/></svg> Fitness</button>'
-        +'<button class="dfl-st" data-tab="plants"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 2 8 0 5.5-4.78 10-10 10Z"/></svg> Plants</button>'
-        +'<button class="dfl-st" data-tab="life"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Life</button>'
-      +'</div>'
-      +'<div id="dfl-sr"></div>'
-      +'<div id="dfl-sf">↑↓ navigate · Enter select · ESC close &nbsp;|&nbsp; ⌘K to open</div>'
-    +'</div>';
-  document.body.appendChild(o);
-
-  var input=document.getElementById('dfl-si');
-  var results=document.getElementById('dfl-sr');
-  var tab='all';var fi=-1;
-
-  function setph(){input.placeholder=document.documentElement.getAttribute('data-lang')==='ar'?'ابحث عن أداة...':'Search tools...';}
-  setph();
-
-  document.querySelectorAll('.dfl-st').forEach(function(t){
-    t.addEventListener('click',function(){
-      document.querySelectorAll('.dfl-st').forEach(function(x){x.classList.remove('a');});
-      t.classList.add('a');tab=t.dataset.tab;render(input.value.trim());
-    });
-  });
-
-  function hrefFor(url){
-    var p=location.pathname;
-    if(p.includes('/tools/')||p.includes('/cities/')||p.includes('/guides/'))return'../'+url;
-    return url;
-  }
-
-  function rHTML(t,bm){
-    var l=document.documentElement.getAttribute('data-lang')||'en';
-    var nm=l==='ar'?t.ar:t.en;
-    var isBm=bm.some(function(b){return b.url===t.url;});
-    return '<a class="dfl-ri" href="'+hrefFor(t.url)+'">'
-      +'<div class="dfl-ric">'+t.icon+'</div>'
-      +'<div style="flex:1;min-width:0"><div class="dfl-rin">'+nm+'</div>'
-        +'<div class="dfl-ric2">'+t.cat.replace('-',' ')+'</div></div>'
-      +'<button class="dfl-rbm'+(isBm?' bookmarked':'')+'" data-bookmark="'+t.url+'" '
-        +'onclick="event.preventDefault();event.stopPropagation();'
-        +'DFL.toggleBookmark(\''+t.url+'\');render(document.getElementById(\'dfl-si\').value)">★</button>'
-      +'</a>';
-  }
-
-  function render(q){
-    var bm=DFL.getBookmarks();
-    var pool=TOOLS.filter(function(t){return tab==='all'||t.cat===tab;});
-    var html='';
-    if(!q){
-      var tr=pool.filter(function(t){return TRENDING.indexOf(t.url)>-1;});
-      if(tr.length){html+='<div class="dfl-rl"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg> Trending</div>';tr.forEach(function(t){html+=rHTML(t,bm);});}
-      var bmF=pool.filter(function(t){return bm.some(function(b){return b.url===t.url;});});
-      if(bmF.length){html+='<div class="dfl-rl">⭐ Bookmarked</div>';bmF.forEach(function(t){html+=rHTML(t,bm);});}
-      if(!html)html='<div class="dfl-empty">Type to search · ⌘K to open anytime</div>';
-    } else {
-      var ql=q.toLowerCase();
-      var m=pool.filter(function(t){return t.en.toLowerCase().includes(ql)||t.ar.includes(ql)||t.tags.includes(ql);});
-      html=m.length?m.map(function(t){return rHTML(t,bm);}).join(''):'<div class="dfl-empty">No results for "'+q+'"</div>';
-    }
-    results.innerHTML=html;fi=-1;
-  }
-  window.renderDFLSearch=render;
-  input.addEventListener('input',function(){render(this.value.trim());});
-  document.addEventListener('keydown',function(e){
-    if(!document.getElementById('dfl-so').classList.contains('open'))return;
-    var items=results.querySelectorAll('.dfl-ri');
-    if(e.key==='ArrowDown'){e.preventDefault();fi=Math.min(fi+1,items.length-1);}
-    else if(e.key==='ArrowUp'){e.preventDefault();fi=Math.max(fi-1,-1);}
-    else if(e.key==='Enter'&&fi>-1){e.preventDefault();items[fi].click();}
-    else if(e.key==='Escape'){DFL.closeSearch();}
-    items.forEach(function(el,i){el.classList.toggle('f',i===fi);});
-    if(items[fi])items[fi].scrollIntoView({block:'nearest'});
-  });
-  document.getElementById('dfl-sb').addEventListener('click',DFL.closeSearch);
-  render('');
-}
-
-DFL.openSearch=function(){buildSearch();var o=document.getElementById('dfl-so');o.classList.add('open');document.body.style.overflow='hidden';setTimeout(function(){document.getElementById('dfl-si').focus();},60);};
-DFL.closeSearch=function(){var o=document.getElementById('dfl-so');if(o){o.classList.remove('open');document.body.style.overflow='';}};
-
-document.addEventListener('keydown',function(e){if((e.metaKey||e.ctrlKey)&&e.key==='k'){e.preventDefault();DFL.openSearch();}});
-
-/* search-btn injection disabled, inline search input used instead */
-
-/* ── Sticky tool CTA on mobile ── */
-(function(){
-  if(!location.pathname.includes('/tools/'))return;
-  var tool=TOOLS.find(function(t){return location.pathname.indexOf(t.url.replace(/^\//,''))>-1;});
-  if(!tool)return;
-  var s=document.createElement('style');
-  s.textContent='#dfl-mcta{display:none;position:fixed;bottom:70px;left:12px;right:12px;z-index:89;background:var(--accent,#2563EB);border-radius:14px;padding:11px 16px;box-shadow:0 8px 32px rgba(37,99,235,.4);align-items:center;justify-content:space-between;gap:10px;color:#fff}@keyframes sUp{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}#dfl-mcta.v{display:flex;animation:sUp .25s ease}#dfl-mcta .mt{font-size:.8rem;font-weight:700}#dfl-mcta .mb{background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.3);border-radius:999px;color:#fff;padding:6px 14px;font-size:.75rem;font-weight:700;cursor:pointer}#dfl-mcta .mc{background:none;border:none;color:rgba(255,255,255,.7);font-size:1.1rem;cursor:pointer;min-height:unset;min-width:unset}@media(min-width:769px){#dfl-mcta{display:none!important}}';
-  document.head.appendChild(s);
-  var el=document.createElement('div');el.id='dfl-mcta';
-  el.innerHTML='<div class="mt">'+tool.icon+' <span class="en">'+tool.en+'</span><span class="ar">'+tool.ar+'</span></div>'
-    +'<button class="mb" onclick="document.querySelector(\'.calc-btn\')?.scrollIntoView({behavior:\'smooth\'})"><span class="en">Calculate</span><span class="ar">احسب</span></button>'
-    +'<button class="mc" onclick="this.closest(\'#dfl-mcta\').style.display=\'none\'">×</button>';
-  document.body.appendChild(el);
-  var shown=false;
-  window.addEventListener('scroll',function(){
-    if(window.scrollY>350&&!shown){shown=true;el.classList.add('v');}
-    if(window.scrollY<150){el.classList.remove('v');shown=false;}
-  },{passive:true});
-})();
-
-/* ── Scroll depth ── */
-(function(){
-  var d=[25,50,75,100],f={};
-  window.addEventListener('scroll',function(){
-    var p=Math.round((window.scrollY/(document.body.scrollHeight-window.innerHeight))*100);
-    d.forEach(function(v){if(p>=v&&!f[v]){f[v]=true;if(window.gtag)gtag('event','scroll_depth',{depth:v,page:location.pathname});}});
-  },{passive:true});
-})();
-
-})();</script>
-
-<!-- DFL Event Tracking -->
-<script>
-(function(){
-// 1. Calculator use, fire when form submits or calculate button clicked
-document.querySelectorAll('form,[id*="calc"],[id*="calculate"],[onclick*="calc"],[onclick*="Calculate"]').forEach(function(el){
-  el.addEventListener('submit',function(){
-    window.dflTrack&&dflTrack('calculator_use',{tool_name:document.title,action:'submit'});
-  });
-});
-document.querySelectorAll('button').forEach(function(btn){
-  var t=(btn.textContent||'').toLowerCase();
-  if(t.includes('calculat')||t.includes('احسب')||t.includes('حساب')){
-    btn.addEventListener('click',function(){
-      window.dflTrack&&dflTrack('calculator_use',{tool_name:document.title,action:'calculate'});
-    });
-  }
-});
-
-// 2. Search events
-document.addEventListener('dfl:search',function(e){
-  window.dflTrack&&dflTrack('search',{search_term:e.detail&&e.detail.query,results_count:e.detail&&e.detail.count});
-});
-
-// 3. Bookmark/favorite events  
-document.addEventListener('dfl:bookmark',function(e){
-  window.dflTrack&&dflTrack('bookmark',{item_url:e.detail&&e.detail.url,action:e.detail&&e.detail.action});
-});
-
-// 4. Language toggle
-document.querySelectorAll('[id="lang-btn"],[onclick*="toggleLang"]').forEach(function(btn){
-  btn.addEventListener('click',function(){
-    var newLang=document.documentElement.getAttribute('data-lang')==='ar'?'en':'ar';
-    window.dflTrack&&dflTrack('language_switch',{to_language:newLang});
-  });
-});
-
-// 5. Outbound link tracking
-document.querySelectorAll('a[href^="http"]').forEach(function(a){
-  if(!a.href.includes('dotforlife.app')){
-    a.addEventListener('click',function(){
-      window.dflTrack&&dflTrack('outbound_click',{link_url:a.href,link_text:(a.textContent||'').trim().substring(0,60)});
-    });
-  }
-});
-
-// 6. Scroll depth, 25/50/75/100%
-var depths=[25,50,75,100],fired={};
-window.addEventListener('scroll',function(){
-  var pct=Math.round((window.scrollY+window.innerHeight)/document.body.scrollHeight*100);
-  depths.forEach(function(d){
-    if(pct>=d&&!fired[d]){
-      fired[d]=true;
-      window.dflTrack&&dflTrack('scroll_depth',{percent:d,page:document.title});
-    }
-  });
-},{passive:true});
-
-// 7. Time on page, 30s, 60s, 120s engagement
-[30,60,120].forEach(function(sec){
-  setTimeout(function(){
-    window.dflTrack&&dflTrack('time_on_page',{seconds:sec,page:document.title});
-  },sec*1000);
-});
-
-// 8. CTA click tracking
-document.querySelectorAll('.hero-cta,.tool-cta-btn,.tool-cta a,.cta-btn,.btn-primary').forEach(function(el){
-  el.addEventListener('click',function(){
-    window.dflTrack&&dflTrack('cta_click',{cta_text:(el.textContent||'').trim().substring(0,60),destination:el.href||''});
-  });
-});
-
-// 9. Guide TOC clicks
-document.querySelectorAll('.toc-list a').forEach(function(a){
-  a.addEventListener('click',function(){
-    window.dflTrack&&dflTrack('toc_navigation',{section:(a.textContent||'').trim(),page:document.title});
-  });
-});
-
-// 10. FAQ interactions
-document.querySelectorAll('.faq-q').forEach(function(btn){
-  btn.addEventListener('click',function(){
-    var q=(btn.textContent||'').trim().substring(0,80);
-    window.dflTrack&&dflTrack('faq_expand',{question:q,page:document.title});
-  });
-});
-})();
-</script>
-<!-- Sticky Mobile Ad -->
-<div class="dfl-ad dfl-ad-sticky-mobile" id="dfl-sticky-ad">
-  <!-- AdSense mobile anchor slot -->
-</div>
-<script>
-(function(){
-  var ad=document.getElementById('dfl-sticky-ad');
-  if(!ad)return;
-  var lastScroll=0;
-  window.addEventListener('scroll',function(){
-    var s=window.scrollY;
-    if(s>300){
-      ad.style.display='block';
-      // Hide when scrolling up fast
-      if(s<lastScroll-50)ad.style.transform='translateY(100%)';
-      else ad.style.transform='translateY(0)';
-    } else {
-      ad.style.display='none';
-    }
-    lastScroll=s;
-  },{passive:true});
-})();
-</script>
-
-<!-- Footer -->
-<!-- ═══ ECOSYSTEM FOOTER ═════════════════════════════════════════════════════ -->
-
-<script>
-// Scroll Progress Bar
-(function(){var b=document.createElement("div");b.style.cssText="position:fixed;top:0;left:0;width:0%;height:3px;background:linear-gradient(90deg,#0066CC,#06B6D4);z-index:9999;transition:width .1s linear;pointer-events:none;";document.body.appendChild(b);window.addEventListener("scroll",function(){var d=document.documentElement.scrollHeight-window.innerHeight;b.style.width=(d>0?Math.min(100,(window.scrollY/d)*100):0)+"%";},{passive:true});})();</script>
-
-<!-- Back to Category Floating Button -->
-<style>
-.back-cat-fab{position:fixed;bottom:1.5rem;right:1.5rem;z-index:890;display:inline-flex;align-items:center;gap:.4rem;padding:.6rem 1.15rem .6rem .9rem;border-radius:50px;background:#8B5CF6;color:#fff;font-size:.78rem;font-weight:700;letter-spacing:.01em;text-decoration:none;box-shadow:0 4px 18px rgba(0,0,0,.22);opacity:0;transform:translateY(10px) scale(.96);transition:opacity .28s cubic-bezier(.22,1,.36,1),transform .28s cubic-bezier(.22,1,.36,1);pointer-events:none;white-space:nowrap;}
-.back-cat-fab.fab-visible{opacity:1;transform:translateY(0) scale(1);pointer-events:auto;}
-.back-cat-fab:hover{filter:brightness(1.13);transform:translateY(-1px) scale(1.02);}
-.back-cat-fab .fab-arrow{font-size:.9rem;opacity:.85;}
-[data-lang="ar"] .back-cat-fab{right:auto;left:1.5rem;flex-direction:row-reverse;padding:.6rem .9rem .6rem 1.15rem;}
-</style>
-<a class="back-cat-fab" id="backCatFab" href="../life-tools.html" aria-label="Back to Life Tools">
-  <span class="fab-arrow">←</span>
-  <span class="en">Life Tools</span>
-  <span class="ar">أدوات الحياة</span>
-</a>
-<script>
-(function(){
-  var fab=document.getElementById('backCatFab');
-  if(!fab)return;
-  var shown=false;
-  function check(){
-    var should=window.scrollY>260;
-    if(should!==shown){shown=should;fab.classList.toggle('fab-visible',shown);}
-  }
-  window.addEventListener('scroll',check,{passive:true});
-  check();
-})();
-</script>
-
-  <!-- DFL CANONICAL FOOTER -->
-  <!-- ═══ UNIFIED FOOTER ══════════════════════════════════════ -->
+  </section></main>
 <footer class="site-footer" role="contentinfo">
+  <div class="footer-accent" aria-hidden="true"></div>
   <div class="footer-inner">
-    <div class="footer-top">
+    <div class="footer-main">
       <div class="footer-brand">
-        <a href="../index.html" class="footer-logo" aria-label="DOTFORLIFE">
-          <img src="../logo1-footer.webp" alt="DOTFORLIFE" width="100" height="100" loading="lazy">
-        </a>
-        <p><span class="en">One calm place for your family's everyday needs. Free, always.</span><span class="ar">مكان هادئ واحد لاحتياجات عائلتك اليومية. مجاني دائماً.</span></p>
+        <a href="/index.html" class="footer-logo" aria-label="DOTFORLIFE"><img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" width="auto" loading="lazy"></a>
+        <p class="footer-tagline"><span class="en">One calm place for your family's everyday decisions. Free, always.</span><span class="ar">مكان هادئ واحد لقرارات عائلتك اليومية. مجاني دائماً.</span></p>
+        <p class="footer-motto"><span class="en">Life, at ease.</span><span class="ar">الحياة، براحة.</span></p>
       </div>
-      <div class="footer-cols">
-        <div class="footer-col">
-          <h4><span class="en">Life</span><span class="ar">الحياة</span></h4>
-          <ul>
-            <li><a href="../health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
-            <li><a href="../finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li>
-            <li><a href="../real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li>
-            <li><a href="../travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li>
-            <li><a href="../islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4><span class="en">Tools</span><span class="ar">الأدوات</span></h4>
-          <ul>
-            <li><a href="../tools/bmi-calculator.html"><span class="en">BMI Calculator</span><span class="ar">حاسبة BMI</span></a></li>
-            <li><a href="../tools/mortgage-calculator.html"><span class="en">Mortgage</span><span class="ar">التمويل</span></a></li>
-            <li><a href="../tools/zakat-calculator.html"><span class="en">Zakat</span><span class="ar">الزكاة</span></a></li>
-            <li><a href="../tools/hijri-converter.html"><span class="en">Hijri Date</span><span class="ar">التاريخ الهجري</span></a></li>
-            <li><a href="../library.html"><span class="en">All Tools</span><span class="ar">كل الأدوات</span></a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4><span class="en">Company</span><span class="ar">الشركة</span></h4>
-          <ul>
-            <li><a href="../about.html"><span class="en">About</span><span class="ar">عنّا</span></a></li>
-            <li><a href="../blog.html"><span class="en">blog</span><span class="ar">المدونة</span></a></li>
-            <li><a href="../contact.html"><span class="en">Contact</span><span class="ar">تواصل</span></a></li>
-            <li><a href="../privacy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a></li>
-            <li><a href="../privacy-policy.html"><span class="en">Privacy Policy</span><span class="ar">سياسة الخصوصية</span></a></li>
-            <li><a href="../terms.html"><span class="en">Terms</span><span class="ar">الشروط</span></a></li>
-            <li><a href="../editorial-standards.html"><span class="en">Editorial Standards</span><span class="ar">المعايير التحريرية</span></a></li>
-          </ul>
-        </div>
+      <div class="footer-links-grid">
+        <div class="footer-col"><h4><span class="en">Life</span><span class="ar">الحياة</span></h4><ul>
+          <li><a href="/health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
+          <li><a href="/finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li>
+          <li><a href="/real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li>
+          <li><a href="/travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li>
+          <li><a href="/islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li>
+        </ul></div>
+        <div class="footer-col"><h4><span class="en">Tools</span><span class="ar">الأدوات</span></h4><ul>
+          <li><a href="/tools/bmi-calculator.html"><span class="en">BMI Calculator</span><span class="ar">حاسبة BMI</span></a></li>
+          <li><a href="/tools/calorie-calculator.html"><span class="en">Calorie Calculator</span><span class="ar">حاسبة السعرات</span></a></li>
+          <li><a href="/tools/water-calculator.html"><span class="en">Hydration</span><span class="ar">الترطيب</span></a></li>
+          <li><a href="/tools/pregnancy-calculator.html"><span class="en">Pregnancy</span><span class="ar">الحمل</span></a></li>
+          <li><a href="/library.html"><span class="en">All Tools</span><span class="ar">كل الأدوات</span></a></li>
+        </ul></div>
+        <div class="footer-col"><h4><span class="en">Discover</span><span class="ar">اكتشف</span></h4><ul>
+          <li><a href="/blog.html"><span class="en">Blog</span><span class="ar">المدونة</span></a></li>
+          <li><a href="/archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a></li>
+          <li><a href="/our-vision.html"><span class="en">Our Vision</span><span class="ar">رؤيتنا</span></a></li>
+          <li><a href="/pregnancy-journey.html"><span class="en">Pregnancy Journey</span><span class="ar">رحلة الحمل</span></a></li>
+        </ul></div>
+        <div class="footer-col"><h4><span class="en">Company</span><span class="ar">الشركة</span></h4><ul>
+          <li><a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a></li>
+          <li><a href="/contact.html"><span class="en">Contact</span><span class="ar">تواصل</span></a></li>
+          <li><a href="/editorial-standards.html"><span class="en">Editorial Standards</span><span class="ar">المعايير التحريرية</span></a></li>
+          <li><a href="/privacy-policy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a></li>
+          <li><a href="/terms.html"><span class="en">Terms</span><span class="ar">الشروط</span></a></li>
+        </ul></div>
       </div>
     </div>
-    <hr class="footer-divider">
     <div class="footer-bottom">
-      <span>© 2026 DOTFORLIFE, <span class="en">Free for families, always.</span><span class="ar">مجاني للعائلات، دائماً.</span></span>
+      <span class="footer-copy">© 2026 DOTFORLIFE · <span class="en">Free for families, always.</span><span class="ar">مجاني للعائلات، دائماً.</span></span>
       <div class="footer-bottom-links">
-        <a href="../privacy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a>
-        <a href="../privacy-policy.html"><span class="en">Privacy Policy</span><span class="ar">سياسة الخصوصية</span></a>
-        <a href="../terms.html"><span class="en">Terms</span><span class="ar">الشروط</span></a>
+        <a href="/privacy-policy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a>
+        <a href="/terms.html"><span class="en">Terms</span><span class="ar">الشروط</span></a>
+        <a href="/contact.html"><span class="en">Contact</span><span class="ar">تواصل</span></a>
       </div>
     </div>
   </div>
 </footer>
-<!-- ════════════════════════════════════════════════════════════ -->
 
-  <!-- DFL MOBILE NAV -->
-  
-
-  <script src="/tool-share.js" defer></script>
-<!-- ═══ UNIFIED MOBILE NAV ══════════════════════════════════ -->
 <nav class="dfl-mobile-nav" aria-label="Mobile navigation">
-  <a href="../index.html" class="dfl-mnav-item" aria-label="Home">
-    <svg viewBox="0 0 24 24"><polyline points="3 9 12 2 21 9"/><path d="M5 9v11a1 1 0 001 1h4v-6h4v6h4a1 1 0 001-1V9"/></svg>
-    <span class="en">Home</span><span class="ar">الرئيسية</span>
-  </a>
-  <a href="../health.html" class="dfl-mnav-item" aria-label="Health">
-    <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-    <span class="en">Health</span><span class="ar">الصحة</span>
-  </a>
-  <a href="../finance.html" class="dfl-mnav-item" aria-label="Finance">
-    <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-    <span class="en">Finance</span><span class="ar">المالية</span>
-  </a>
-  <a href="../islamic.html" class="dfl-mnav-item" aria-label="Islamic">
-    <svg viewBox="0 0 24 24"><path d="M21 10.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l2.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
-    <span class="en">Islamic</span><span class="ar">الإسلامية</span>
-  </a>
-  <a href="../travel.html" class="dfl-mnav-item" aria-label="Travel">
-    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-    <span class="en">Travel</span><span class="ar">السفر</span>
-  </a>
+  <a href="/index.html" class="dfl-mnav-item"><svg viewBox="0 0 24 24"><polyline points="3 9 12 2 21 9"/><path d="M5 9v11a1 1 0 001 1h4v-6h4v6h4a1 1 0 001-1V9"/></svg><span class="en">Home</span><span class="ar">الرئيسية</span></a>
+  <a href="/library.html" class="dfl-mnav-item active"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg><span class="en">Library</span><span class="ar">المكتبة</span></a>
+  <a href="/finance.html" class="dfl-mnav-item"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg><span class="en">Finance</span><span class="ar">المالية</span></a>
+  <a href="/islamic.html" class="dfl-mnav-item"><svg viewBox="0 0 24 24"><path d="M21 10.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l2.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg><span class="en">Islamic</span><span class="ar">الإسلامية</span></a>
+  <a href="/travel.html" class="dfl-mnav-item"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><span class="en">Travel</span><span class="ar">السفر</span></a>
 </nav>
 
-<!-- SEO_PROFILE
-  page_type: tool
-  cluster: health
-  authority_score: 78
-  inbound_links: 10
-  outbound_links: 13
-  link_velocity: medium
-  priority_indexing: true
-  content_depth: 31
-  word_count: 1905
-  canonical: https://www.dotforlife.com/tools/age-calculator.html
--->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1436107577087160" crossorigin="anonymous"></script>
-</body></html>
+<div class="mobile-dropdown" id="mobile-dropdown" aria-hidden="true">
+  <div class="md-links">
+    <a href="/health.html"><span class="en">Health</span><span class="ar">الصحة</span></a>
+    <a href="/finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a>
+    <a href="/real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a>
+    <a href="/travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a>
+    <a href="/islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a>
+    <a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a>
+    <a href="/archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a>
+    <a href="/blog.html"><span class="en">Blog</span><span class="ar">المدونة</span></a>
+    <a href="/library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a>
+  </div>
+  <div class="md-controls">
+    <button class="nav-btn" id="lang-toggle-mobile"><span class="en">عربي</span><span class="ar">English</span></button>
+    <button class="nav-btn" id="theme-toggle-mobile"><svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/></svg></button>
+  </div>
+</div>
+
+<script src="/scripts/global.js?v=20260618a" defer></script>
+<script>
+var _ageCache=null;
+var HM=['محرّم','صفر','ربيع الأول','ربيع الثاني','جمادى الأولى','جمادى الثانية','رجب','شعبان','رمضان','شوال','ذو القعدة','ذو الحجة'];
+var HM_EN=['Muharram','Safar','Rabi al-Awwal','Rabi al-Thani','Jumada I','Jumada II','Rajab','Sha\'ban','Ramadan','Shawwal','Dhu al-Qi\'dah','Dhu al-Hijjah'];
+function gregorianToJulian(y,m,d){if(m<=2){y--;m+=12;}var A=Math.floor(y/100),B=2-A+Math.floor(A/4);return Math.floor(365.25*(y+4716))+Math.floor(30.6001*(m+1))+d+B-1524.5;}
+function gregorianToHijri(gy,gm,gd){var jd=Math.floor(gregorianToJulian(gy,gm,gd)+.5);var l=jd-1948440+10632;var n=Math.floor((l-1)/10631);var l2=l-10631*n+354;var j=(Math.floor((10985-l2)/5316))*(Math.floor((50*l2)/17719))+(Math.floor(l2/5670))*(Math.floor((43*l2)/15238));var l3=l2-(Math.floor((30-j)/15))*(Math.floor((17719*j)/50))-(Math.floor(j/16))*(Math.floor((15238*j)/43))+29;var month=Math.floor((24*l3)/709);var day=l3-Math.floor((709*month)/24);var year=30*n+j-30;return{year,month,day};}
+function renderAgeDynamic(){if(!_ageCache)return;var lang=getLang(),s=_ageCache.stats;document.getElementById('statsGrid').innerHTML=s.map(function(x){return '<div class="t-stat"><div class="t-stat-val">'+x.val+'</div><div class="t-stat-lbl">'+(lang==='ar'?x.ar:x.en)+'</div></div>';}).join('');var fg=document.getElementById('factsGrid');fg.style.display='grid';fg.innerHTML=_ageCache.facts.map(function(f){return '<div class="ac-fact"><div class="ac-fact-val">'+f.val+'</div><div class="ac-fact-lbl">'+(lang==='ar'?f.ar:f.en)+'</div></div>';}).join('');document.getElementById('bdayCountdown').innerHTML='<div class="ac-bday-num">'+_ageCache.daysToB+'</div><div class="ac-bday-lbl">'+(lang==='ar'?'يوماً حتى عيد ميلادك القادم':'days until your next birthday')+'</div>';}
+function calcAge(){var dob=new Date(document.getElementById('dob').value);var target=new Date(document.getElementById('targetDate').value);if(!dob||!target||dob>target){alert(getLang()==='ar'?'يرجى إدخال تاريخ ميلاد صحيح':'Please enter a valid birth date.');return;}var lang=getLang();var years=target.getFullYear()-dob.getFullYear();var months=target.getMonth()-dob.getMonth();var days=target.getDate()-dob.getDate();if(days<0){months--;days+=new Date(target.getFullYear(),target.getMonth(),0).getDate();}if(months<0){years--;months+=12;}var totalDays=Math.floor((target-dob)/86400000);var totalHours=totalDays*24;var totalWeeks=Math.floor(totalDays/7);var totalMonths=years*12+months;var heartbeats=Math.round(totalDays*100800);var breaths=Math.round(totalDays*20*60*24);(function(){var el=document.getElementById('ageYears'),t=years,d=700,s=performance.now();function step(n){var p=Math.min((n-s)/d,1),e=1-Math.pow(1-p,3);el.textContent=Math.round(t*e);if(p<1)requestAnimationFrame(step);else el.textContent=t;}requestAnimationFrame(step);})();var stats=[{ar:'الأشهر الكاملة',en:'Total months',val:totalMonths.toLocaleString()},{ar:'الأسابيع',en:'Total weeks',val:totalWeeks.toLocaleString()},{ar:'الأيام',en:'Total days',val:totalDays.toLocaleString()},{ar:'الساعات',en:'Total hours',val:totalHours.toLocaleString()},{ar:'نبضات القلب',en:'Heartbeats',val:heartbeats.toLocaleString()},{ar:'نفَس',en:'Breaths',val:breaths.toLocaleString()}];var hDob=gregorianToHijri(dob.getFullYear(),dob.getMonth()+1,dob.getDate());var hTarget=gregorianToHijri(target.getFullYear(),target.getMonth()+1,target.getDate());var hYears=hTarget.year-hDob.year;var hMonths=hTarget.month-hDob.month;if(hTarget.day<hDob.day)hMonths--;if(hMonths<0){hYears--;hMonths+=12;}document.getElementById('hijriGrid').innerHTML='<div class="t-stat"><div class="t-stat-val">'+hYears+'</div><div class="t-stat-lbl"><span class="en">Hijri years</span><span class="ar">سنة هجرية</span></div></div><div class="t-stat"><div class="t-stat-val">'+hDob.day+' '+(lang==='ar'?HM[hDob.month-1]:HM_EN[hDob.month-1])+' '+hDob.year+'</div><div class="t-stat-lbl"><span class="en">Hijri birth date</span><span class="ar">تاريخ ميلادك هجرياً</span></div></div>';var nextBday=new Date(target.getFullYear(),dob.getMonth(),dob.getDate());if(nextBday<=target)nextBday.setFullYear(target.getFullYear()+1);var daysToB=Math.ceil((nextBday-target)/86400000);var facts=[{ar:'نبضات القلب',en:'Heartbeats',val:heartbeats.toLocaleString()},{ar:'ساعات النوم',en:'Hours slept',val:Math.round(totalDays*8).toLocaleString()},{ar:'وجبات تقريباً',en:'Meals approx.',val:Math.round(totalDays*3).toLocaleString()},{ar:'ليالٍ نمتها',en:'Nights slept',val:totalDays.toLocaleString()}];_ageCache={stats:stats,facts:facts,daysToB:daysToB,years:years,months:months,days:days,totalDays:totalDays};renderAgeDynamic();document.getElementById('resultsCard').classList.add('show');}
+function toggleFAQ(el){
+  var answer=el.nextElementSibling;var isOpen=el.classList.contains('open');
+  document.querySelectorAll('.t-faq-q').forEach(function(q){q.classList.remove('open');q.nextElementSibling.classList.remove('active');});
+  if(!isOpen){el.classList.add('open');answer.classList.add('active');}
+}
+function getLang(){return document.documentElement.getAttribute('data-lang')||'en';}
+document.addEventListener('DOMContentLoaded',function(){var t=new Date();document.getElementById('targetDate').value=t.toISOString().slice(0,10);document.getElementById('dob').value='1990-01-01';});
+document.addEventListener('dfl:langchange',renderAgeDynamic);
+</script>
+</body>
 </html>

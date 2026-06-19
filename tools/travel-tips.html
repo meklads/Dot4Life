@@ -1,174 +1,67 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" data-theme="light" data-lang="en">
+<html lang="en" data-theme="light" data-lang="en" dir="ltr">
 <head>
-  <script>
-(function(){
-  /* theme */
-  var tb=document.getElementById("theme-toggle");
-  if(tb)tb.addEventListener("click",function(){
-    var h=document.documentElement,t=h.getAttribute("data-theme")==="dark"?"light":"dark";
-    h.setAttribute("data-theme",t);localStorage.setItem("dfl-theme",t);
-  });
-  /* lang */
-  var lb=document.getElementById("lang-toggle");
-  if(lb)lb.addEventListener("click",function(){
-    var h=document.documentElement,l=h.getAttribute("data-lang")==="ar"?"en":"ar";
-    h.setAttribute("data-lang",l);h.setAttribute("lang",l);
-    h.setAttribute("dir",l==="ar"?"rtl":"ltr");localStorage.setItem("dfl-lang",l);
-  });
-  /* scroll shadow */
-  var nb=document.getElementById("navbar");
-  if(nb)window.addEventListener("scroll",function(){nb.classList.toggle("scrolled",window.scrollY>10);},{passive:true});
-  /* reveal */
-  if("IntersectionObserver" in window){
-    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add("visible");});},{threshold:0.1});
-    document.querySelectorAll(".reveal").forEach(function(el){io.observe(el);});
-  } else document.querySelectorAll(".reveal").forEach(function(el){el.classList.add("visible");});
-})();
-</script>
-  <meta charset="UTF-8"/>
-  
-  <script>(function(){var p=new URLSearchParams(location.search),gd=(function(){try{var z=(Intl.DateTimeFormat().resolvedOptions().timeZone||"");return /Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test(z)?"ar":"en";}catch(e){return "ar";}})(),l=p.get("lang")||localStorage.getItem("dfl-lang")||gd,t=p.get("theme")||localStorage.getItem("dfl-theme")||"light",h=document.documentElement;h.setAttribute("data-theme",t);h.setAttribute("data-lang",l);h.setAttribute("lang",l);h.setAttribute("dir",l==="ar"?"rtl":"ltr");if(p.get("lang"))localStorage.setItem("dfl-lang",l);if(p.get("theme"))localStorage.setItem("dfl-theme",t);
-  /* hamburger menu */
-  (function(){
-    var hb = document.getElementById('hamburger-btn');
-    var dd = document.getElementById('mobile-dropdown');
-    if (!hb || !dd) return;
-    function toggle(e) {
-      e.stopPropagation();
-      var open = dd.classList.toggle('open');
-      hb.classList.toggle('open', open);
-      hb.setAttribute('aria-expanded', open);
-      document.body.classList.toggle('menu-open', open);
-    }
-    function closeM() {
-      dd.classList.remove('open');
-      hb.classList.remove('open');
-      hb.setAttribute('aria-expanded', 'false');
-      document.body.classList.remove('menu-open');
-    }
-    hb.addEventListener('click', toggle);
-    document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeM(); });
-    dd.addEventListener('click', function(e){ if(e.target===dd) closeM(); });
-  })();
-})()</script>
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <meta name="description" content="Golden travel tips and essential travel tools for GCC travelers, airport hacks, booking tricks, packing wisdom, safety, health, and emergency contacts."/>
-  <link rel="canonical" href="https://www.dotforlife.com/tools/travel-tips"/>
-  <meta property="og:site_name" content="DOTFORLIFE" />
-  <meta property="og:title" content="Golden Travel Tips, DOTFORLIFE | نصائح المسافر الذهبية"/>
-  <meta property="og:type" content="website"/>
-  <meta property="og:url" content="https://www.dotforlife.com/tools/travel-tips"/>
-
-  <meta property="og:description" content="Golden travel tips and essential travel tools for GCC travelers, airport hacks, booking tricks, packing wisdom, safety, health, and emergency contacts." />  <title>Golden Travel Tips, DOTFORLIFE | نصائح المسافر الذهبية</title>
-  <meta http-equiv="x-dns-prefetch-control" content="on" />
-  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
-  <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-  <link rel="dns-prefetch" href="https://images.unsplash.com" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://www.googletagmanager.com" />
-  <link rel="dns-prefetch" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Almarai:wght@300;400;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Almarai:wght@300;400;700;800&display=swap"/></noscript>
-  <link rel="stylesheet" href="/styles/global.css?v=20260617e"/>
-	<link rel="stylesheet" href="/styles/tools-shared.css?v=20260608a">
-	<link rel="stylesheet" href="/styles/pages/tools_travel-tips.css?v=20260617b">
-
-  <!-- DFL CANONICAL SYSTEM CSS -->
-  
-<script src="/scripts/global.js" defer></script>
-<style>
-.dfl-related{border-top:1px solid var(--border);padding:52px 0 64px;background:var(--body-bg);}
-.dfl-related .container{max-width:1280px;margin:0 auto;padding:0 clamp(1.5rem,4vw,2.5rem);}
-.dfl-related-label{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
-.dfl-related-title{font-size:clamp(1.2rem,2.5vw,1.55rem);font-weight:700;color:var(--text);margin:0 0 6px;letter-spacing:-.02em;}
-.dfl-related-sub{font-size:.88rem;color:var(--text-2);margin-bottom:32px;line-height:1.6;}
-.dfl-related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;}
-.dfl-rc{display:flex;flex-direction:column;background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:20px 22px 18px;text-decoration:none;color:inherit;transition:border-color .2s,box-shadow .2s,transform .2s;}
-.dfl-rc:hover{border-color:var(--gold);box-shadow:0 4px 20px rgba(107,191,184,.12);transform:translateY(-2px);}
-.dfl-rc.guide{border-style:dashed;}
-.dfl-rc.guide:hover{border-color:var(--green,#2a9a98);box-shadow:0 4px 20px rgba(42,154,152,.1);}
-.dfl-rc-top{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
-.dfl-rc-icon{font-size:1.4rem;line-height:1;flex-shrink:0;}
-.dfl-rc-name{font-size:.88rem;font-weight:700;color:var(--text);line-height:1.3;}
-.dfl-rc-desc{font-size:.78rem;color:var(--text-2);line-height:1.5;flex:1;}
-.dfl-rc-cta{margin-top:12px;font-size:.76rem;font-weight:700;color:var(--gold);}
-.dfl-rc.guide .dfl-rc-cta{color:var(--green,#2a9a98);}
-@media(max-width:600px){.dfl-related-grid{grid-template-columns:1fr 1fr;gap:10px;}.dfl-rc{padding:14px;}}
-
-/* Page header */
-.page-header{padding:clamp(4rem,8vw,6rem) clamp(1.5rem,4vw,2.5rem) 1rem;max-width:1280px;margin:0 auto;}
-.page-header-title{font-size:clamp(1.6rem,3.5vw,2.6rem);font-weight:700;color:var(--text);margin-bottom:.5rem;font-family:var(--font-serif);}
-.page-header-sub{font-size:clamp(.88rem,1.2vw,1.05rem);color:var(--text-2);line-height:1.6;max-width:680px;}
-[data-lang="ar"] .page-header-title{font-family:var(--font-ar);}
-
-/* ── SITE FOOTER ─────────────────────────────────────────── */
-.site-footer{background:var(--navy,#032a28);color:rgba(255,255,255,.7);padding:clamp(3rem,6vw,5rem) 0 0;}
-.footer-inner{max-width:1280px;margin:0 auto;padding:0 clamp(16px,4vw,48px);}
-.footer-top{display:flex;gap:3rem;margin-bottom:3rem;flex-wrap:wrap;}
-.footer-brand{flex:0 0 220px;}
-.footer-brand p{font-size:.82rem;line-height:1.65;color:rgba(255,255,255,.45);margin-top:.75rem;}
-[data-lang="ar"] .footer-brand p{font-family:var(--font-ar);}
-.footer-logo img{height:100px;width:auto;display:block;}
-.footer-cols{flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;}
-.footer-col h4{font-size:.68rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.85);margin-bottom:1rem;}
-[data-lang="ar"] .footer-col h4{font-family:var(--font-ar);letter-spacing:0;}
-.footer-col ul{list-style:none;}
-.footer-col ul li{margin-bottom:.55rem;}
-.footer-col ul li a{font-size:.83rem;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s;}
-.footer-col ul li a:hover{color:var(--gold);}
-[data-lang="ar"] .footer-col ul li a{font-family:var(--font-ar);}
-.footer-divider{border:none;border-top:1px solid rgba(255,255,255,.08);margin:0;}
-.footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.25rem 0 calc(1.25rem + 60px);font-size:.78rem;color:rgba(255,255,255,.35);flex-wrap:wrap;}
-.footer-bottom-links{display:flex;gap:1.25rem;}
-.footer-bottom-links a,.footer-bottom a{color:rgba(255,255,255,.35);text-decoration:none;font-size:.78rem;transition:color .2s;}
-.footer-bottom-links a:hover,.footer-bottom a:hover{color:var(--gold);}
-[data-lang="ar"] .footer-bottom{font-family:var(--font-ar);}
-[data-lang="ar"] .footer-top{direction:rtl;}
-@media(max-width:860px){.footer-top{flex-direction:column;gap:2rem;}.footer-brand{flex:none;}.footer-cols{grid-template-columns:1fr 1fr;}}
-@media(max-width:500px){.footer-cols{grid-template-columns:1fr;}.footer-bottom{flex-direction:column;text-align:center;}}
-
-</style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Golden Travel Tips, DOTFORLIFE | نصائح المسافر الذهبية","url":"https://www.dotforlife.com/tools/travel-tips.html","applicationCategory":"UtilityApplication","operatingSystem":"Web"}</script>
-  <link rel="alternate" hreflang="ar" href="https://www.dotforlife.com/tools/travel-tips?lang=ar" />
-  <link rel="alternate" hreflang="en" href="https://www.dotforlife.com/tools/travel-tips?lang=en" />
-  <link rel="alternate" hreflang="x-default" href="https://www.dotforlife.com/tools/travel-tips" />
-<!-- Google tag (gtag.js) -->
+<meta charset="UTF-8"/>
+<script>(function(){var p=new URLSearchParams(location.search),gd=(function(){try{var z=(Intl.DateTimeFormat().resolvedOptions().timeZone||"");return /Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test(z)?"ar":"en";}catch(e){return "ar";}})(),l=p.get("lang")||localStorage.getItem("dfl-lang")||gd,t=p.get("theme")||localStorage.getItem("dfl-theme")||"light",h=document.documentElement;h.setAttribute("data-theme",t);h.setAttribute("data-lang",l);h.setAttribute("lang",l);h.setAttribute("dir",l==="ar"?"rtl":"ltr");if(p.get("lang"))localStorage.setItem("dfl-lang",l);if(p.get("theme"))localStorage.setItem("dfl-theme",t);})()</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta http-equiv="x-dns-prefetch-control" content="on" />
+<link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+<link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<title>Golden Travel Tips | نصائح المسافر الذهبية — Dot For Life</title>
+<meta name="description" content="Golden travel tips and essential travel tools for GCC travelers: airport hacks, booking tricks, packing wisdom, safety, health, and emergency contacts."/>
+<link rel="canonical" href="https://dotforlife.com/tools/travel-tips.html"/>
+<link rel="alternate" hreflang="ar" href="https://dotforlife.com/tools/travel-tips.html?lang=ar" />
+<link rel="alternate" hreflang="en" href="https://dotforlife.com/tools/travel-tips.html?lang=en" />
+<link rel="alternate" hreflang="x-default" href="https://dotforlife.com/tools/travel-tips.html" />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Almarai:wght@400;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Almarai:wght@400;700;800&display=swap"/></noscript>
+<link rel="stylesheet" href="/styles/global.css?v=20260618f"/>
+<link rel="stylesheet" href="/styles/tools-shared.css?v=20260608a">
+<link rel="stylesheet" href="/styles/tools-flagship.css?v=20260625b">
+<link rel="stylesheet" href="/styles/tools-accents.css?v=20260625a">
+<link rel="stylesheet" href="/styles/pages/tools_travel-tips.css?v=20260625a">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dotforlife.com/tools/travel-tips.html">
+<meta property="og:title" content="Golden Travel Tips | Dot4Life">
+<meta property="og:description" content="Proven travel wisdom for GCC travelers — airport, booking, safety, and emergency contacts.">
+<meta property="og:image" content="https://dotforlife.com/og/og-default.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Golden Travel Tips | Dot4Life">
+<meta name="twitter:description" content="Proven travel wisdom for GCC travelers — airport, booking, safety, and emergency contacts.">
+<meta name="twitter:image" content="https://dotforlife.com/og/og-default.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Golden Travel Tips | نصائح المسافر الذهبية","url":"https://dotforlife.com/tools/travel-tips.html","applicationCategory":"TravelApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"SAR"},"inLanguage":["en","ar"]}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3G1XPV4F0G"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-3G1XPV4F0G');
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-3G1XPV4F0G');
+window.dflTrack=function(event,params){
+  gtag('event',event,Object.assign({
+    page_path:location.pathname,
+    language:document.documentElement.getAttribute('data-lang')||'en'
+  },params||{}));
+};
 </script>
-
-  <meta property="og:image" content="https://www.dotforlife.com/og/travel.jpg"/>
-  <meta name="twitter:image" content="https://www.dotforlife.com/og/travel.jpg"/>
-  <meta name="twitter:card" content="summary_large_image"/>
 </head>
-<body class="category-page has-subnav">
-  <!-- DFL CANONICAL NAVBAR -->
-  <!-- ═══ UNIFIED HEADER ══════════════════════════════════════ -->
-<nav id="navbar" role="navigation" aria-label="Main navigation">
+<body class="tool-flagship-page no-subnav" data-tool="travel-tips">
+<nav id="navbar" class="index-nav" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
-    <a href="../index.html" class="nav-logo" aria-label="DOTFORLIFE Home">
-      <img src="../logo1-footer.webp" alt="DOTFORLIFE" width="100" height="100" style="height:100px;width:auto;object-fit:contain;" width="100" height="100" loading="lazy">
+    <a href="/index.html" class="nav-logo" aria-label="DOTFORLIFE Home">
+      <img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" width="115" height="115" loading="eager" fetchpriority="high">
     </a>
     <ul class="nav-links">
-      <li><a href="../health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
-      <li><a href="../finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li>
-      <li><a href="../real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li>
-      <li><a href="../travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li>
-      <li><a href="../islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li>
+      <li><a href="/health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
+      <li><a href="/finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li>
+      <li><a href="/real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li>
+      <li><a href="/travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li>
+      <li><a href="/islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li>
       <li><a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a></li>
-      <li><a href="../archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a></li>
+      <li><a href="/archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a></li>
       <li><a href="/blog.html"><span class="en">blog</span><span class="ar">المدونة</span></a></li>
-      <li><a href="../library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a></li>
+      <li><a href="/library.html" aria-current="page"><span class="en">Library</span><span class="ar">المكتبة</span></a></li>
     </ul>
     <div class="nav-controls">
       <button class="nav-btn" id="lang-toggle" aria-label="Switch language"><span class="en">عربي</span><span class="ar">English</span></button>
@@ -179,166 +72,178 @@
     </div>
   </div>
 </nav>
-<!-- ═══════════════════════════════════════
-       HERO
-  ═══════════════════════════════════════ -->
 
-
-<!-- PAGE HEADER -->
-<header class="page-header">
-  <div class="page-header-inner">
-    <h1 class="page-header-title">
-      <span class="en">Golden Travel Tips</span>
-      <span class="ar">النصائح الذهبية للمسافر</span>
-    </h1>
-    <p class="page-header-sub">
-      <span class="en">Proven wisdom, essential tools, and insider knowledge for every GCC traveler, from first-timers to frequent flyers.</span>
-      <span class="ar">حكمة مجرّبة وأدوات أساسية ومعرفة الخبراء لكل مسافر خليجي، من المبتدئ إلى المسافر الدائم.</span>
+<div class="tool-hero">
+  <div class="tool-hero-inner">
+    <nav class="tool-breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html"><span class="en">Home</span><span class="ar">الرئيسية</span></a>
+      <span class="tool-breadcrumb-sep" aria-hidden="true">/</span>
+      <a href="/library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a>
+      <span class="tool-breadcrumb-sep" aria-hidden="true">/</span>
+      <span><span class="en">Golden Travel Tips</span><span class="ar">النصائح الذهبية للمسافر</span></span>
+    </nav>
+    <p class="tool-eyebrow">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2v6m0 0l-3-3m3 3l3-3"/></svg>
+      <span class="en">Travel Guide · GCC Travelers</span><span class="ar">دليل السفر · مسافرو الخليج</span>
     </p>
+    <h1 id="tool-title"><span class="en">Golden Travel Tips</span><span class="ar">النصائح الذهبية للمسافر</span></h1>
+    <p class="tool-hero-desc"><span class="en">Proven wisdom, essential tools, and insider knowledge for every GCC traveler, from first-timers to frequent flyers.</span><span class="ar">حكمة مجرّبة وأدوات أساسية ومعرفة الخبراء لكل مسافر خليجي، من المبتدئ إلى المسافر الدائم.</span></p>
+    <ul class="tool-trust">
+      <li><span class="en">Airport hacks</span><span class="ar">حيل المطار</span></li>
+      <li><span class="en">Booking tricks</span><span class="ar">حيل الحجز</span></li>
+      <li><span class="en">Emergency contacts</span><span class="ar">أرقام الطوارئ</span></li>
+    </ul>
   </div>
-</header>
-
-<!-- JUMP NAV -->
-<div class="jump-strip">
-  <a href="#golden" class="jump-link"><span class="en">Golden Tips</span><span class="ar">النصائح الذهبية</span></a>
-  <a href="#airport" class="jump-link"><span class="en">Airport</span><span class="ar">المطار</span></a>
-  <a href="#booking" class="jump-link"><span class="en">Booking</span><span class="ar">الحجز</span></a>
-  <a href="#health" class="jump-link"><span class="en">Health</span><span class="ar">الصحة</span></a>
-  <a href="#tools" class="jump-link"><span class="en">Travel Tools</span><span class="ar">أدوات السفر</span></a>
-  <a href="#sim" class="jump-link"><span class="en">SIM Guide</span><span class="ar">دليل الشرائح</span></a>
-  <a href="#emergency" class="jump-link"><span class="en">Emergency</span><span class="ar">الطوارئ</span></a>
+</div>
+<div class="tool-tabs-wrap" role="navigation" aria-label="Travel tools">
+  <div class="tool-tabs-inner">
+    <a href="/tools/packing-checklist.html"><span class="en">Packing</span><span class="ar">قائمة الحقيبة</span></a>
+    <a href="/tools/travel-budget.html"><span class="en">Budget</span><span class="ar">الميزانية</span></a>
+    <a href="/tools/travel-tips.html" class="is-active"><span class="en">Tips</span><span class="ar">النصائح</span></a>
+    <a href="/tools/currency-converter.html"><span class="en">Currency</span><span class="ar">العملات</span></a>
+    <a href="/tools/return-to-hotel.html"><span class="en">Hotel</span><span class="ar">الفندق</span></a>
+  </div>
+</div>
+<main class="tool-mn">
+<div class="tt-jump-strip">
+  <a href="#golden" class="tt-jump-link"><span class="en">Golden Tips</span><span class="ar">النصائح الذهبية</span></a>
+  <a href="#airport" class="tt-jump-link"><span class="en">Airport</span><span class="ar">المطار</span></a>
+  <a href="#booking" class="tt-jump-link"><span class="en">Booking</span><span class="ar">الحجز</span></a>
+  <a href="#health" class="tt-jump-link"><span class="en">Health</span><span class="ar">الصحة</span></a>
+  <a href="#tools" class="tt-jump-link"><span class="en">Travel Tools</span><span class="ar">أدوات السفر</span></a>
+  <a href="#sim" class="tt-jump-link"><span class="en">SIM Guide</span><span class="ar">دليل الشرائح</span></a>
+  <a href="#emergency" class="tt-jump-link"><span class="en">Emergency</span><span class="ar">الطوارئ</span></a>
 </div>
 
-<main class="tool-mn">
-
   <!-- GOLDEN TIPS -->
-  <section class="section" id="golden">
-    <div class="section-head">
+  <section class="tt-section" id="golden">
+    <div class="tt-section-head">
       <div class="s-icon gold">⭐</div>
       <div>
         <h2><span class="en">20 Golden Rules Every Traveler Should Know</span><span class="ar">20 قاعدة ذهبية يجب أن يعرفها كل مسافر</span></h2>
         <p><span class="en">Timeless advice from seasoned travelers, follow these and travel better</span><span class="ar">نصائح خالدة من مسافرين محترفين، اتبعها وسافر بذكاء</span></p>
       </div>
     </div>
-    <div class="gold-tips">
-      <div class="gold-tip">
-        <div class="g-num">1</div>
-        <div class="g-body">
+    <div class="tt-gold-tips">
+      <div class="tt-gold-tip">
+        <div class="tt-g-num">1</div>
+        <div class="tt-g-body">
           <h3><span class="en">Take photos of every document before you leave home</span><span class="ar">صوّر كل وثائقك قبل مغادرة المنزل</span></h3>
           <p><span class="en">Passport, visa, tickets, hotel bookings, insurance, save them to Google Drive or email yourself. A lost passport becomes manageable when you have a photo of it. Share a copy with one trusted family member.</span><span class="ar">جواز السفر والتأشيرة والتذاكر وحجز الفندق والتأمين، احفظها في Google Drive أو أرسلها لنفسك بالبريد. فقدان الجواز يصبح محتملاً حين تملك صورته. شارك نسخة مع فرد موثوق من أسرتك.</span></p>
         </div>
       </div>
-      <div class="gold-tip">
-        <div class="g-num">2</div>
-        <div class="g-body">
+      <div class="tt-gold-tip">
+        <div class="tt-g-num">2</div>
+        <div class="tt-g-body">
           <h3><span class="en">Pack half the clothes you think you need</span><span class="ar">اعبّئ نصف الملابس التي تظن أنك تحتاجها</span></h3>
           <p><span class="en">You'll wear 20% of what you pack 80% of the time. Laundry services exist everywhere. Overpacking kills your energy and your back. If you can't carry your bag comfortably for 5 minutes, it's too heavy.</span><span class="ar">ستلبس 20% مما تحمله في 80% من الوقت. غسيل الملابس متاح في كل مكان. الحمل الزائد يستنزف طاقتك وظهرك. إذا لم تستطع حمل حقيبتك بيسر لخمس دقائق، فهي ثقيلة جداً.</span></p>
         </div>
       </div>
-      <div class="gold-tip">
-        <div class="g-num">3</div>
-        <div class="g-body">
+      <div class="tt-gold-tip">
+        <div class="tt-g-num">3</div>
+        <div class="tt-g-body">
           <h3><span class="en">Always carry 48 hours of medications in your hand luggage</span><span class="ar">احمل دواءك لـ 48 ساعة في حقيبة اليد دائماً</span></h3>
           <p><span class="en">Checked luggage gets lost. If your regular medication is in your hold bag and it disappears for 3 days, you have a medical emergency. Your prescriptions and a 2-day supply should always be on your person.</span><span class="ar">الأمتعة المسجّلة تضيع. إذا كان دواؤك في الحقيبة المسجّلة واختفت لثلاثة أيام، فأنت في حالة طارئة طبية. وصفاتك وإمداد يومين يجب أن يكونا معك دائماً.</span></p>
         </div>
       </div>
-      <div class="gold-tip">
-        <div class="g-num">4</div>
-        <div class="g-body">
+      <div class="tt-gold-tip">
+        <div class="tt-g-num">4</div>
+        <div class="tt-g-body">
           <h3><span class="en">The cheapest flight is rarely the cheapest trip</span><span class="ar">أرخص رحلة نادراً ما تكون أرخص رحلة</span></h3>
           <p><span class="en">A flight saving 200 SAR that departs at 2am, requires a long transfer, or lands far from the city usually costs more in taxis, hotels, and exhaustion than you saved. Factor in the full cost of travel.</span><span class="ar">رحلة توفّر 200 ريال تقلع الساعة 2 صباحاً أو تحتاج ترانزيت طويل أو تهبط بعيداً عن المدينة عادة تكلّفك أكثر في التاكسي والفنادق والإرهاق مما وفّرت. احسب التكلفة الكاملة للسفر.</span></p>
         </div>
       </div>
-      <div class="gold-tip">
-        <div class="g-num">5</div>
-        <div class="g-body">
+      <div class="tt-gold-tip">
+        <div class="tt-g-num">5</div>
+        <div class="tt-g-body">
           <h3><span class="en">Tell your bank before traveling internationally</span><span class="ar">أخبر بنكك قبل السفر دولياً</span></h3>
           <p><span class="en">Banks freeze cards without warning when they detect foreign transactions. A 2-minute call or app notification saves you from being stranded without cash at 11pm in a foreign country. Do this for every card you plan to use.</span><span class="ar">البنوك تجمّد البطاقات دون إنذار عند اكتشاف معاملات خارجية. مكالمة دقيقتين أو إشعار التطبيق تنقذك من التقطع بلا نقود الساعة 11 مساءً في بلد غريب. افعل هذا لكل بطاقة تنوي استخدامها.</span></p>
         </div>
       </div>
-      <div class="gold-tip">
-        <div class="g-num">6</div>
-        <div class="g-body">
+      <div class="tt-gold-tip">
+        <div class="tt-g-num">6</div>
+        <div class="tt-g-body">
           <h3><span class="en">Offline maps save trips</span><span class="ar">الخرائط بدون إنترنت تنقذ الرحلات</span></h3>
           <p><span class="en">Download Google Maps or Maps.me offline for every city you visit before you arrive. Roaming data surprises happen. Your GPS works without internet, only the maps need to be downloaded in advance.</span><span class="ar">حمّل Google Maps أو Maps.me بدون إنترنت لكل مدينة تزورها قبل الوصول. مفاجآت بيانات التجوال تحدث. نظام GPS يعمل بدون إنترنت، فقط الخرائط تحتاج تحميلاً مسبقاً.</span></p>
         </div>
       </div>
-      <div class="gold-tip">
-        <div class="g-num">7</div>
-        <div class="g-body">
+      <div class="tt-gold-tip">
+        <div class="tt-g-num">7</div>
+        <div class="tt-g-body">
           <h3><span class="en">The first day in a new timezone, stay awake until local bedtime</span><span class="ar">اليوم الأول في منطقة زمنية جديدة، ابقَ مستيقظاً حتى وقت النوم المحلي</span></h3>
           <p><span class="en">The fastest jet lag cure is forcing yourself to stay awake until 10–11pm local time on your first day, even if you're exhausted. Natural light exposure in the morning also helps reset your internal clock rapidly.</span><span class="ar">أسرع علاج لتعب السفر هو إجبار نفسك على البقاء مستيقظاً حتى 10–11 مساءً بالتوقيت المحلي يوم وصولك حتى لو كنت منهكاً. التعرض للضوء الطبيعي صباحاً يساعد أيضاً على ضبط ساعتك البيولوجية.</span></p>
         </div>
       </div>
-      <div class="gold-tip">
-        <div class="g-num">8</div>
-        <div class="g-body">
+      <div class="tt-gold-tip">
+        <div class="tt-g-num">8</div>
+        <div class="tt-g-body">
           <h3><span class="en">Buy travel insurance, every single time</span><span class="ar">اشترِ تأمين السفر، في كل مرة دون استثناء</span></h3>
           <p><span class="en">A single medical evacuation can cost $50,000+. One cancelled flight due to a family emergency can mean losing non-refundable hotel bookings worth thousands. Travel insurance costs 1–3% of your trip total. It's the best money you'll spend.</span><span class="ar">الإخلاء الطبي الواحد قد يكلّف أكثر من 50,000 دولار. رحلة ملغاة بسبب طارئ عائلي قد تعني خسارة حجوزات فنادق غير قابلة للاسترداد بالآلاف. تأمين السفر يكلّف 1–3% من قيمة رحلتك. إنه أفضل ما تنفقه.</span></p>
         </div>
       </div>
-      <div class="gold-tip">
-        <div class="g-num">9</div>
-        <div class="g-body">
+      <div class="tt-gold-tip">
+        <div class="tt-g-num">9</div>
+        <div class="tt-g-body">
           <h3><span class="en">Learn 10 words in the local language</span><span class="ar">تعلّم 10 كلمات من اللغة المحلية</span></h3>
           <p><span class="en">Hello, thank you, please, excuse me, where, how much, yes, no, help, and toilet. These 10 words in the local language will open doors, earn smiles, and build goodwill that English alone never could.</span><span class="ar">مرحباً وشكراً ومن فضلك وعذراً وأين وبكم ونعم ولا ومساعدة ودورة المياه. هذه الكلمات العشر بالغة المحلية تفتح الأبواب وتستدعي الابتسامات وتبني حسن النية بما لا تستطيع الإنجليزية وحدها فعله.</span></p>
         </div>
       </div>
-      <div class="gold-tip">
-        <div class="g-num">10</div>
-        <div class="g-body">
+      <div class="tt-gold-tip">
+        <div class="tt-g-num">10</div>
+        <div class="tt-g-body">
           <h3><span class="en">Never exchange currency at the airport, except in emergencies</span><span class="ar">لا تصرف العملة في المطار، إلا في حالات الطوارئ</span></h3>
           <p><span class="en">Airport exchange counters typically offer rates 8–15% worse than city exchange offices. Change only what you need for the taxi ride (use Wise, Revolut, or a zero-fee card for everything else). The ATM at the airport lobby often has better rates than the counters.</span><span class="ar">مكاتب صرف المطارات تقدم عادة أسعاراً أسوأ بـ 8–15% من مكاتب المدينة. صرّف فقط ما تحتاجه لأجرة التاكسي (استخدم Wise أو Revolut أو بطاقة بدون رسوم لكل شيء آخر). أجهزة الصراف في صالة المطار غالباً أفضل من المكاتب.</span></p>
         </div>
       </div>
     </div>
+  </section>
 
   <!-- AIRPORT TIPS -->
-  <section class="section" id="airport">
-    <div class="section-head">
+  <section class="tt-section" id="airport">
+    <div class="tt-section-head">
       <div class="s-icon accent"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="7.5 9.5 12 12 16.5 9.5"/><line x1="12" y1="12" x2="12" y2="17"/></svg></div>
       <div>
         <h2><span class="en">Airport Hacks & Tricks</span><span class="ar">حيل واختصارات المطار</span></h2>
         <p><span class="en">Save time, reduce stress, and travel like a pro</span><span class="ar">وفّر الوقت وقلّل التوتر وسافر باحترافية</span></p>
       </div>
     </div>
-    <div class="tips-grid">
-      <div class="tip-card">
+    <div class="tt-tips-grid">
+      <div class="tt-tip-card">
         <div class="t-icon">⏰</div>
         <div>
           <h3><span class="en">Arrive 3h early for international, 2h for regional</span><span class="ar">احضر قبل 3 ساعات للدولي و2 ساعات للإقليمي</span></h3>
           <p><span class="en">GCC international airports are large and often crowded. Queues at check-in, immigration, and security are unpredictable. Budget extra time, you can always relax in the lounge, not rush through checkpoints.</span><span class="ar">مطارات الخليج الدولية كبيرة وكثيراً ما تكون مزدحمة. طوابير تسجيل الوصول والجوازات والأمن لا يمكن التنبؤ بها. خصّص وقتاً إضافياً، يمكنك دائماً الاسترخاء في الصالة بدلاً من الركض.</span></p>
         </div>
       </div>
-      <div class="tip-card">
+      <div class="tt-tip-card">
         <div class="t-icon">📲</div>
         <div>
           <h3><span class="en">Use mobile boarding pass, never print</span><span class="ar">استخدم بطاقة الصعود الرقمية، لا تطبع</span></h3>
           <p><span class="en">All major GCC carriers support mobile boarding passes (Apple Wallet, Google Pay, airline apps). Paper can get wet, torn, or lost. Your phone screenshot works even with no signal. Add it to your wallet app.</span><span class="ar">جميع شركات الطيران الخليجية الكبرى تدعم بطاقات الصعود الرقمية (Apple Wallet و Google Pay وتطبيقات الشركات). الورق يبتل أو يتمزق أو يضيع. لقطة الشاشة تعمل حتى بدون إشارة. أضفها لمحفظة هاتفك.</span></p>
         </div>
       </div>
-      <div class="tip-card">
+      <div class="tt-tip-card">
         <div class="t-icon">🎒</div>
         <div>
           <h3><span class="en">Aisle seat for legroom, window for sleep</span><span class="ar">مقعد الممر للساقين، النافذة للنوم</span></h3>
           <p><span class="en">Aisle seats let you stretch and move freely. Window seats have the wall to lean against for sleeping. Avoid middle seats at all costs. For long hauls, request bulk-head or exit rows for maximum legroom (usually free 24h before departure).</span><span class="ar">مقاعد الممر تتيح مد ساقيك والتحرك بحرية. مقاعد النافذة لها جدار تستند إليه للنوم. تجنب المقاعد الوسطى بأي ثمن. للرحلات الطويلة، اطلب مقاعد الجدار الأمامي أو مخارج الطوارئ.</span></p>
         </div>
       </div>
-      <div class="tip-card">
+      <div class="tt-tip-card">
         <div class="t-icon">🏅</div>
         <div>
           <h3><span class="en">Use the Priority Lane if you have lounge access</span><span class="ar">استخدم الممر السريع إذا كان لديك دخول للصالة</span></h3>
           <p><span class="en">Many Visa Infinite, Mastercard Platinum and World Elite cards include free lounge access (through Priority Pass or LoungeKey). This means priority check-in and security lanes too. Check your credit card benefits, most GCC cardholders have this and don't use it.</span><span class="ar">كثير من بطاقات Visa Infinite و Mastercard Platinum تشمل دخولاً مجانياً للصالات (عبر Priority Pass أو LoungeKey). هذا يعني أيضاً ممرات تسجيل وأمن سريعة. تحقق من مزايا بطاقتك، معظم حاملي بطاقات الخليج لديهم هذا ولا يستخدمونه.</span></p>
         </div>
       </div>
-      <div class="tip-card">
+      <div class="tt-tip-card">
         <div class="t-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
         <div>
           <h3><span class="en">Put a bright luggage tag and colored belt on your bag</span><span class="ar">ضع وسماً لافتاً وحزاماً ملوناً على حقيبتك</span></h3>
           <p><span class="en">Black suitcases all look identical. A neon-colored luggage strap (2–3 SAR) means you spot your bag instantly and no one takes it by mistake. Write your name and phone inside the bag in case the external tag falls off.</span><span class="ar">الحقائب السوداء متطابقة. شريط أمتعة بلون فاقع (2–3 ريال) يعني رؤية حقيبتك فوراً وعدم أخذ أحد لها بالخطأ. اكتب اسمك ورقم هاتفك داخل الحقيبة في حال سقوط الوسم الخارجي.</span></p>
         </div>
       </div>
-      <div class="tip-card">
+      <div class="tt-tip-card">
         <div class="t-icon">🔋</div>
         <div>
           <h3><span class="en">Carry an international power adapter + powerbank</span><span class="ar">احمل محوّل كهرباء دولي وشاحناً متنقلاً</span></h3>
@@ -348,233 +253,233 @@
     </div>
   </section>
 
-  <hr class="divider"/>
+  <hr class="tt-divider"/>
 
   <!-- BOOKING TRICKS -->
-  <section class="section" id="booking">
-    <div class="section-head">
+  <section class="tt-section" id="booking">
+    <div class="tt-section-head">
       <div class="s-icon gold"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v12"/><path d="M8 10h4a2 2 0 0 1 0 4H8"/></svg></div>
       <div>
         <h2><span class="en">Smart Booking Tricks</span><span class="ar">حيل الحجز الذكي</span></h2>
         <p><span class="en">How to get the best prices on flights and hotels</span><span class="ar">كيف تحصل على أفضل أسعار الطيران والفنادق</span></p>
       </div>
     </div>
-    <div class="tips-grid">
-      <div class="tip-card"><div class="t-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div><div><h3><span class="en">Use incognito mode when searching flights</span><span class="ar">استخدم وضع التصفح الخاص عند البحث عن رحلات</span></h3><p><span class="en">Flight and hotel search engines track your searches and raise prices when they see repeated interest. Always search in incognito (private) mode for the first uninfluenced price. Also clear cookies between sessions.</span><span class="ar">محركات بحث الطيران والفنادق تتتبع بحثك وترفع الأسعار حين ترى اهتماماً متكرراً. ابحث دائماً في وضع التصفح الخاص للحصول على أول سعر غير متأثر. امسح الكوكيز بين الجلسات أيضاً.</span></p></div></div>
-      <div class="tip-card"><div class="t-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><div><h3><span class="en">Tuesday & Wednesday are cheapest days to book</span><span class="ar">الثلاثاء والأربعاء أرخص أيام الحجز</span></h3><p><span class="en">Airlines release discounts early in the week and most people book on weekends. Mid-week bookings typically save 5–15%. For travel, Tuesday and Wednesday are also cheaper departure days than Friday and weekends.</span><span class="ar">شركات الطيران تُطلق التخفيضات في بداية الأسبوع ومعظم الناس يحجزون في نهاية الأسبوع. حجوزات منتصف الأسبوع توفر عادة 5–15%. للسفر، الثلاثاء والأربعاء أيضاً أرخص أيام المغادرة من الجمعة ونهاية الأسبوع.</span></p></div></div>
-      <div class="tip-card"><div class="t-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 14h.01"/><path d="M15 14h.01"/><path d="M9 18h.01"/><path d="M15 18h.01"/></svg></div><div><h3><span class="en">Book hotels direct after finding on Booking.com</span><span class="ar">احجز الفندق مباشرة بعد العثور عليه في Booking.com</span></h3><p><span class="en">Use Booking.com and Hotels.com to find and compare. Then call or email the hotel directly, they often match the online price and throw in extras (free upgrade, breakfast, late checkout). Cuts the commission they pay to OTAs.</span><span class="ar">استخدم Booking.com و Hotels.com للبحث والمقارنة. ثم اتصل بالفندق مباشرة أو راسله، كثيراً ما يطابقون السعر الإلكتروني ويضيفون مميزات إضافية. هذا يوفر لهم عمولة منصات الحجز.</span></p></div></div>
-      <div class="tip-card"><div class="t-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><div><h3><span class="en">Set price alerts, never check daily</span><span class="ar">فعّل تنبيهات الأسعار، لا تتحقق يومياً</span></h3><p><span class="en">Google Flights, Skyscanner, and Kayak all have free price alert features. Set an alert for your route and dates and let it notify you when prices drop. Obsessively checking prices daily is exhausting and doesn't help.</span><span class="ar">Google Flights و Skyscanner و Kayak لديها جميعاً تنبيهات أسعار مجانية. فعّل تنبيهاً لمسارك وتاريخك ودعه يخطرك حين تنخفض الأسعار. التحقق اليومي المتواصل مرهق ولا يفيد.</span></p></div></div>
-      <div class="tip-card"><div class="t-icon"><svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></div><div><h3><span class="en">Red-eye flights save a hotel night</span><span class="ar">رحلات منتصف الليل توفّر ليلة فندق</span></h3><p><span class="en">Overnight flights (that arrive in the morning) let you sleep on the plane and arrive ready to explore, effectively saving a night's hotel cost. Best for medium-haul routes (3–7 hours).</span><span class="ar">الرحلات الليلية (التي تصل في الصباح) تتيح لك النوم على الطائرة والوصول جاهزاً للاستكشاف، مما يوفر فعلياً تكلفة ليلة فندق. الأفضل للمسافات المتوسطة (3–7 ساعات).</span></p></div></div>
-      <div class="tip-card"><div class="t-icon">🎁</div><div><h3><span class="en">Join every frequent flyer program, it's free</span><span class="ar">انضم لكل برنامج مسافر دائم، الاشتراك مجاني</span></h3><p><span class="en">Skywards (Emirates), Alfursan (Saudia), Jazeera Miles, flydubai OPEN are all free to join. Miles accumulate even without status. Connecting flights, hotels, credit cards, and car rentals all add miles. One round-trip business class upgrade can save SAR 3,000+.</span><span class="ar">Skywards وألفرسان وجزيرة مايلز وflydubai OPEN, كلها مجانية للانضمام. الأميال تتراكم حتى بدون مكانة مميزة. رحلات التوصيل والفنادق والبطاقات وتأجير السيارات كلها تضيف أميال. ترقية واحدة لدرجة الأعمال توفر أكثر من 3000 ريال.</span></p></div></div>
+    <div class="tt-tips-grid">
+      <div class="tt-tip-card"><div class="t-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div><div><h3><span class="en">Use incognito mode when searching flights</span><span class="ar">استخدم وضع التصفح الخاص عند البحث عن رحلات</span></h3><p><span class="en">Flight and hotel search engines track your searches and raise prices when they see repeated interest. Always search in incognito (private) mode for the first uninfluenced price. Also clear cookies between sessions.</span><span class="ar">محركات بحث الطيران والفنادق تتتبع بحثك وترفع الأسعار حين ترى اهتماماً متكرراً. ابحث دائماً في وضع التصفح الخاص للحصول على أول سعر غير متأثر. امسح الكوكيز بين الجلسات أيضاً.</span></p></div></div>
+      <div class="tt-tip-card"><div class="t-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><div><h3><span class="en">Tuesday & Wednesday are cheapest days to book</span><span class="ar">الثلاثاء والأربعاء أرخص أيام الحجز</span></h3><p><span class="en">Airlines release discounts early in the week and most people book on weekends. Mid-week bookings typically save 5–15%. For travel, Tuesday and Wednesday are also cheaper departure days than Friday and weekends.</span><span class="ar">شركات الطيران تُطلق التخفيضات في بداية الأسبوع ومعظم الناس يحجزون في نهاية الأسبوع. حجوزات منتصف الأسبوع توفر عادة 5–15%. للسفر، الثلاثاء والأربعاء أيضاً أرخص أيام المغادرة من الجمعة ونهاية الأسبوع.</span></p></div></div>
+      <div class="tt-tip-card"><div class="t-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 14h.01"/><path d="M15 14h.01"/><path d="M9 18h.01"/><path d="M15 18h.01"/></svg></div><div><h3><span class="en">Book hotels direct after finding on Booking.com</span><span class="ar">احجز الفندق مباشرة بعد العثور عليه في Booking.com</span></h3><p><span class="en">Use Booking.com and Hotels.com to find and compare. Then call or email the hotel directly, they often match the online price and throw in extras (free upgrade, breakfast, late checkout). Cuts the commission they pay to OTAs.</span><span class="ar">استخدم Booking.com و Hotels.com للبحث والمقارنة. ثم اتصل بالفندق مباشرة أو راسله، كثيراً ما يطابقون السعر الإلكتروني ويضيفون مميزات إضافية. هذا يوفر لهم عمولة منصات الحجز.</span></p></div></div>
+      <div class="tt-tip-card"><div class="t-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><div><h3><span class="en">Set price alerts, never check daily</span><span class="ar">فعّل تنبيهات الأسعار، لا تتحقق يومياً</span></h3><p><span class="en">Google Flights, Skyscanner, and Kayak all have free price alert features. Set an alert for your route and dates and let it notify you when prices drop. Obsessively checking prices daily is exhausting and doesn't help.</span><span class="ar">Google Flights و Skyscanner و Kayak لديها جميعاً تنبيهات أسعار مجانية. فعّل تنبيهاً لمسارك وتاريخك ودعه يخطرك حين تنخفض الأسعار. التحقق اليومي المتواصل مرهق ولا يفيد.</span></p></div></div>
+      <div class="tt-tip-card"><div class="t-icon"><svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></div><div><h3><span class="en">Red-eye flights save a hotel night</span><span class="ar">رحلات منتصف الليل توفّر ليلة فندق</span></h3><p><span class="en">Overnight flights (that arrive in the morning) let you sleep on the plane and arrive ready to explore, effectively saving a night's hotel cost. Best for medium-haul routes (3–7 hours).</span><span class="ar">الرحلات الليلية (التي تصل في الصباح) تتيح لك النوم على الطائرة والوصول جاهزاً للاستكشاف، مما يوفر فعلياً تكلفة ليلة فندق. الأفضل للمسافات المتوسطة (3–7 ساعات).</span></p></div></div>
+      <div class="tt-tip-card"><div class="t-icon">🎁</div><div><h3><span class="en">Join every frequent flyer program, it's free</span><span class="ar">انضم لكل برنامج مسافر دائم، الاشتراك مجاني</span></h3><p><span class="en">Skywards (Emirates), Alfursan (Saudia), Jazeera Miles, flydubai OPEN are all free to join. Miles accumulate even without status. Connecting flights, hotels, credit cards, and car rentals all add miles. One round-trip business class upgrade can save SAR 3,000+.</span><span class="ar">Skywards وألفرسان وجزيرة مايلز وflydubai OPEN, كلها مجانية للانضمام. الأميال تتراكم حتى بدون مكانة مميزة. رحلات التوصيل والفنادق والبطاقات وتأجير السيارات كلها تضيف أميال. ترقية واحدة لدرجة الأعمال توفر أكثر من 3000 ريال.</span></p></div></div>
     </div>
   </section>
 
-  <hr class="divider"/>
+  <hr class="tt-divider"/>
 
   <!-- HEALTH TIPS -->
-  <section class="section" id="health">
-    <div class="section-head">
+  <section class="tt-section" id="health">
+    <div class="tt-section-head">
       <div class="s-icon emerald"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg></div>
       <div>
         <h2><span class="en">Health & Safety While Traveling</span><span class="ar">الصحة والأمان أثناء السفر</span></h2>
         <p><span class="en">Stay healthy so travel doesn't cost you more than expected</span><span class="ar">حافظ على صحتك حتى لا يكلّفك السفر أكثر مما تتوقع</span></p>
       </div>
     </div>
-    <div class="tips-grid">
-      <div class="tip-card"><div class="t-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg></div><div><h3><span class="en">Build a travel health kit</span><span class="ar">جهّز حقيبة صحة للسفر</span></h3><p><span class="en">Paracetamol (fever/pain), Imodium (diarrhea), antihistamine (allergies/insect bites), oral rehydration salts, antiseptic wipes, bandages, and blister plasters. Costs under 50 SAR and saves you from pharmacy hunting at midnight abroad.</span><span class="ar">باراسيتامول (حمى/ألم) وإيموديوم (إسهال) ومضاد هيستامين (حساسية/لدغات) وأملاح إماهة فموية ومناديل مطهّرة وضمادات ولصقات فقاعات. أقل من 50 ريال وتوفّر عليك البحث عن صيدلية منتصف الليل في الخارج.</span></p></div></div>
-      <div class="tip-card"><div class="t-icon">🚿</div><div><h3><span class="en">The 3 food safety rules abroad</span><span class="ar">قواعد سلامة الطعام الثلاث في الخارج</span></h3><p><span class="en">If you can't peel it, cook it, or boil it, be cautious. Avoid ice in drinks in developing countries (it may be tap water). Street food from a busy stall is often safer than an empty restaurant (high turnover = fresh food).</span><span class="ar">إذا لم تستطع تقشيره أو طهيه أو غليه، كن حذراً. تجنب الثلج في المشروبات في الدول النامية (قد يكون ماء الصنبور). الأكل الشعبي في موقف مزدحم غالباً أأمن من مطعم فارغ (دوران سريع = طعام طازج).</span></p></div></div>
-      <div class="tip-card"><div class="t-icon"><svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></div><div><h3><span class="en">Sun protection in hot climates</span><span class="ar">الحماية من الشمس في المناخات الحارة</span></h3><p><span class="en">SPF50+ sunscreen, UV-blocking sunglasses, a lightweight long-sleeve shirt, and a hat are your best tools. Heatstroke can ruin a trip in hours. Reapply sunscreen every 90 minutes when outdoors, not just once in the morning.</span><span class="ar">واقي شمس SPF50+ ونظارة UV ورداء خفيف بأكمام طويلة وقبعة، هذه أدواتك الأفضل. ضربة الشمس تدمر رحلة في ساعات. أعد وضع واقي الشمس كل 90 دقيقة في الخارج وليس مرة واحدة صباحاً.</span></p></div></div>
-      <div class="tip-card"><div class="t-icon">🦟</div><div><h3><span class="en">Mosquito protection in tropical destinations</span><span class="ar">الحماية من البعوض في الوجهات الاستوائية</span></h3><p><span class="en">DEET-based repellent (20%+) is the gold standard. Apply to all exposed skin at dusk and dawn. Wear long sleeves in the evening. In high-risk areas (SE Asia, Africa), take malaria prophylaxis as prescribed, start before you travel.</span><span class="ar">طارد حشرات DEET (20%+) هو المعيار الذهبي. ضعه على الجلد المكشوف عند الغسق والفجر. ارتدِ أكماماً طويلة في المساء. في المناطق عالية الخطر (جنوب شرق آسيا وأفريقيا) خذ وقاية الملاريا حسب الوصفة، ابدأها قبل السفر.</span></p></div></div>
+    <div class="tt-tips-grid">
+      <div class="tt-tip-card"><div class="t-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg></div><div><h3><span class="en">Build a travel health kit</span><span class="ar">جهّز حقيبة صحة للسفر</span></h3><p><span class="en">Paracetamol (fever/pain), Imodium (diarrhea), antihistamine (allergies/insect bites), oral rehydration salts, antiseptic wipes, bandages, and blister plasters. Costs under 50 SAR and saves you from pharmacy hunting at midnight abroad.</span><span class="ar">باراسيتامول (حمى/ألم) وإيموديوم (إسهال) ومضاد هيستامين (حساسية/لدغات) وأملاح إماهة فموية ومناديل مطهّرة وضمادات ولصقات فقاعات. أقل من 50 ريال وتوفّر عليك البحث عن صيدلية منتصف الليل في الخارج.</span></p></div></div>
+      <div class="tt-tip-card"><div class="t-icon">🚿</div><div><h3><span class="en">The 3 food safety rules abroad</span><span class="ar">قواعد سلامة الطعام الثلاث في الخارج</span></h3><p><span class="en">If you can't peel it, cook it, or boil it, be cautious. Avoid ice in drinks in developing countries (it may be tap water). Street food from a busy stall is often safer than an empty restaurant (high turnover = fresh food).</span><span class="ar">إذا لم تستطع تقشيره أو طهيه أو غليه، كن حذراً. تجنب الثلج في المشروبات في الدول النامية (قد يكون ماء الصنبور). الأكل الشعبي في موقف مزدحم غالباً أأمن من مطعم فارغ (دوران سريع = طعام طازج).</span></p></div></div>
+      <div class="tt-tip-card"><div class="t-icon"><svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></div><div><h3><span class="en">Sun protection in hot climates</span><span class="ar">الحماية من الشمس في المناخات الحارة</span></h3><p><span class="en">SPF50+ sunscreen, UV-blocking sunglasses, a lightweight long-sleeve shirt, and a hat are your best tools. Heatstroke can ruin a trip in hours. Reapply sunscreen every 90 minutes when outdoors, not just once in the morning.</span><span class="ar">واقي شمس SPF50+ ونظارة UV ورداء خفيف بأكمام طويلة وقبعة، هذه أدواتك الأفضل. ضربة الشمس تدمر رحلة في ساعات. أعد وضع واقي الشمس كل 90 دقيقة في الخارج وليس مرة واحدة صباحاً.</span></p></div></div>
+      <div class="tt-tip-card"><div class="t-icon">🦟</div><div><h3><span class="en">Mosquito protection in tropical destinations</span><span class="ar">الحماية من البعوض في الوجهات الاستوائية</span></h3><p><span class="en">DEET-based repellent (20%+) is the gold standard. Apply to all exposed skin at dusk and dawn. Wear long sleeves in the evening. In high-risk areas (SE Asia, Africa), take malaria prophylaxis as prescribed, start before you travel.</span><span class="ar">طارد حشرات DEET (20%+) هو المعيار الذهبي. ضعه على الجلد المكشوف عند الغسق والفجر. ارتدِ أكماماً طويلة في المساء. في المناطق عالية الخطر (جنوب شرق آسيا وأفريقيا) خذ وقاية الملاريا حسب الوصفة، ابدأها قبل السفر.</span></p></div></div>
     </div>
   </section>
 
-  <hr class="divider"/>
+  <hr class="tt-divider"/>
 
   <!-- ESSENTIAL TOOLS -->
-  <section class="section" id="tools">
-    <div class="section-head">
+  <section class="tt-section" id="tools">
+    <div class="tt-section-head">
       <div class="s-icon accent"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
       <div>
         <h2><span class="en">Essential Travel Tools & Apps</span><span class="ar">أدوات وتطبيقات السفر الضرورية</span></h2>
         <p><span class="en">The traveler's digital toolkit for every situation</span><span class="ar">مجموعة الأدوات الرقمية للمسافر لكل موقف</span></p>
       </div>
     </div>
-    <div class="tools-grid">
-      <a class="tool-card" href="../tools/travel-budget.html">
+    <div class="tt-tools-grid">
+      <a class="tt-tool-card" href="/tools/travel-budget.html">
         <div class="t-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v12"/><path d="M8 10h4a2 2 0 0 1 0 4H8"/></svg></div>
         <h3><span class="en">Travel Budget Calculator</span><span class="ar">حاسبة ميزانية السفر</span></h3>
         <p><span class="en">Plan your trip budget in SAR/AED with daily spending tracker</span><span class="ar">خطط ميزانية رحلتك بالريال والدرهم مع تتبع الإنفاق اليومي</span></p>
-        <span class="tool-tag"><span class="en">On this site ✓</span><span class="ar">في هذا الموقع ✓</span></span>
+        <span class="tt-tool-tag"><span class="en">On this site ✓</span><span class="ar">في هذا الموقع ✓</span></span>
       </a>
-      <a class="tool-card" href="../tools/packing-checklist.html">
+      <a class="tt-tool-card" href="/tools/packing-checklist.html">
         <div class="t-icon">✓</div>
         <h3><span class="en">Smart Packing Checklist</span><span class="ar">قائمة التجهيز الذكية</span></h3>
         <p><span class="en">Customized by trip type, beach, business, family, cold weather</span><span class="ar">مخصصة حسب نوع الرحلة، شاطئ وعمل وعائلة وبرد</span></p>
-        <span class="tool-tag"><span class="en">On this site ✓</span><span class="ar">في هذا الموقع ✓</span></span>
+        <span class="tt-tool-tag"><span class="en">On this site ✓</span><span class="ar">في هذا الموقع ✓</span></span>
       </a>
-      <a class="tool-card" href="../tools/return-to-hotel.html">
+      <a class="tt-tool-card" href="/tools/return-to-hotel.html">
         <div class="t-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 14h.01"/><path d="M15 14h.01"/><path d="M9 18h.01"/><path d="M15 18h.01"/></svg></div>
         <h3><span class="en">Return to Hotel</span><span class="ar">العودة إلى الفندق</span></h3>
         <p><span class="en">Save your hotel and show it to taxi drivers in any language</span><span class="ar">احفظ فندقك وأظهره لسائقي التاكسي بأي لغة</span></p>
-        <span class="tool-tag"><span class="en">On this site ✓</span><span class="ar">في هذا الموقع ✓</span></span>
+        <span class="tt-tool-tag"><span class="en">On this site ✓</span><span class="ar">في هذا الموقع ✓</span></span>
       </a>
-      <div class="tool-card">
+      <div class="tt-tool-card">
         <div class="t-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg></div>
         <h3>Google Maps</h3>
         <p><span class="en">Download offline maps before you arrive. Works without internet. GPS is free globally.</span><span class="ar">حمّل خرائط بدون إنترنت قبل وصولك. يعمل بدون شبكة. GPS مجاني عالمياً.</span></p>
-        <span class="tool-tag">Free</span>
+        <span class="tt-tool-tag">Free</span>
       </div>
-      <div class="tool-card">
+      <div class="tt-tool-card">
         <div class="t-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
         <h3>Wise (formerly TransferWise)</h3>
         <p><span class="en">Send money internationally at real exchange rate. Multi-currency card accepted worldwide. No hidden fees.</span><span class="ar">أرسل الأموال دولياً بسعر الصرف الحقيقي. بطاقة متعددة العملات مقبولة عالمياً. بدون رسوم خفية.</span></p>
-        <span class="tool-tag">Free card</span>
+        <span class="tt-tool-tag">Free card</span>
       </div>
-      <div class="tool-card">
+      <div class="tt-tool-card">
         <div class="t-icon">🌐</div>
         <h3>Google Translate</h3>
         <p><span class="en">Camera translation reads menus and signs in real time. Download languages offline for Arabic, Turkish, Thai, Japanese, and more.</span><span class="ar">ترجمة الكاميرا تقرأ القوائم واللافتات في الوقت الفعلي. حمّل اللغات بدون إنترنت للعربية والتركية والتايلاندية.</span></p>
-        <span class="tool-tag">Free + Offline</span>
+        <span class="tt-tool-tag">Free + Offline</span>
       </div>
-      <div class="tool-card">
+      <div class="tt-tool-card">
         <div class="t-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 22s8-4 8-10V6l-8-4-8 4v6c0 6 8 10 8 10z"/></svg>️</div>
         <h3>Airalo (eSIM)</h3>
         <p><span class="en">Buy local data eSIMs for 200+ countries before you fly. No physical SIM swap. Costs 60–90% less than roaming. GCC phones with eSIM support work perfectly.</span><span class="ar">اشترِ eSIM بيانات محلية لأكثر من 200 دولة قبل السفر. لا تبديل شريحة. التكلفة أقل 60–90% من التجوال. هواتف الخليج ذات دعم eSIM تعمل بشكل مثالي.</span></p>
-        <span class="tool-tag">Best for roaming</span>
+        <span class="tt-tool-tag">Best for roaming</span>
       </div>
-      <div class="tool-card">
+      <div class="tt-tool-card">
         <div class="t-icon">🔒</div>
         <h3>NordVPN / ExpressVPN</h3>
         <p><span class="en">Protect yourself on hotel and airport Wi-Fi. Some countries block apps GCC residents use regularly. A VPN ensures access and security. Pay monthly, not yearly, for travel periods.</span><span class="ar">حماية نفسك على Wi-Fi الفنادق والمطارات. بعض الدول تحجب تطبيقات يستخدمها أبناء الخليج بانتظام. VPN يضمن الوصول والأمان. ادفع شهرياً وليس سنوياً لفترات السفر.</span></p>
-        <span class="tool-tag">~20 SAR/month</span>
+        <span class="tt-tool-tag">~20 SAR/month</span>
       </div>
-      <div class="tool-card">
+      <div class="tt-tool-card">
         <div class="t-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="7.5 9.5 12 12 16.5 9.5"/><line x1="12" y1="12" x2="12" y2="17"/></svg></div>
         <h3>FlightRadar24</h3>
         <p><span class="en">Track any flight in real time. See why your flight is delayed, where your aircraft is coming from, and estimated arrival times. Free version covers most needs.</span><span class="ar">تتبع أي رحلة في الوقت الفعلي. اعرف سبب تأخر رحلتك وأين طائرتك وأوقات وصول محتملة. النسخة المجانية تغطي معظم الاحتياجات.</span></p>
-        <span class="tool-tag">Free</span>
+        <span class="tt-tool-tag">Free</span>
       </div>
     </div>
   </section>
 
-  <hr class="divider"/>
+  <hr class="tt-divider"/>
 
   <!-- SIM GUIDE -->
-  <section class="section" id="sim">
-    <div class="section-head">
+  <section class="tt-section" id="sim">
+    <div class="tt-section-head">
       <div class="s-icon purple">📡</div>
       <div>
         <h2><span class="en">SIM Card Guide for GCC Travelers</span><span class="ar">دليل شرائح الاتصال لمسافري الخليج</span></h2>
         <p><span class="en">Stay connected without the roaming shock</span><span class="ar">ابقَ متصلاً بدون صدمة فاتورة التجوال</span></h3></p>
       </div>
     </div>
-    <div class="info-box">
+    <div class="tt-info-box">
       <strong><span class="en"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg> Best Option:</span><span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg> أفضل خيار:</span></strong>
       <span class="en"> Get an <strong>Airalo eSIM</strong> before you fly, cheaper, instant, no physical SIM swap. If your phone doesn't support eSIM, buy a local SIM at the destination airport.</span>
       <span class="ar"> احصل على <strong>Airalo eSIM</strong> قبل السفر، أرخص وفوري ولا تبديل شريحة. إذا لم يدعم هاتفك eSIM، اشترِ شريحة محلية في مطار الوجهة.</span>
     </div>
-    <div class="sim-grid">
-      <div class="sim-card">
+    <div class="tt-sim-grid">
+      <div class="tt-sim-card">
         <h3> <span class="en">Turkey</span><span class="ar">تركيا</span></h3>
-        <div class="sim-price">~25–40 TRY / 10GB</div>
+        <div class="tt-sim-price">~25–40 TRY / 10GB</div>
         <p><span class="en">Turkcell, Vodafone TR, or Türk Telekom at airport. 30-day validity. Excellent coverage across Istanbul and Antalya.</span><span class="ar">Turkcell أو Vodafone TR في المطار. صلاحية 30 يوماً. تغطية ممتازة في إسطنبول وأنطاليا.</span></p>
       </div>
-      <div class="sim-card">
+      <div class="tt-sim-card">
         <h3> <span class="en">UK</span><span class="ar">المملكة المتحدة</span></h3>
-        <div class="sim-price">~£10–15 / 20GB</div>
+        <div class="tt-sim-price">~£10–15 / 20GB</div>
         <p><span class="en">EE, O2, or Three at airport. Three has best value for data. Consider a European roaming SIM if also visiting EU.</span><span class="ar">EE أو O2 أو Three في المطار. Three أفضل قيمة للبيانات. فكّر في شريحة تجوال أوروبية إذا ستزور الاتحاد الأوروبي أيضاً.</span></p>
       </div>
-      <div class="sim-card">
+      <div class="tt-sim-card">
         <h3> <span class="en">Europe (EU)</span><span class="ar">أوروبا (الاتحاد الأوروبي)</span></h3>
-        <div class="sim-price">~€15–25 / 15GB</div>
+        <div class="tt-sim-price">~€15–25 / 15GB</div>
         <p><span class="en">One EU SIM works across all 27 EU countries. Orange, Lebara, or Airalo eSIM. Roaming within EU is free by law.</span><span class="ar">شريحة EU واحدة تعمل في جميع دول الاتحاد الـ 27. Orange أو Lebara أو Airalo eSIM. التجوال داخل الاتحاد الأوروبي مجاني بموجب القانون.</span></p>
       </div>
-      <div class="sim-card">
+      <div class="tt-sim-card">
         <h3> <span class="en">Thailand</span><span class="ar">تايلاند</span></h3>
-        <div class="sim-price">~200–350 THB / 30 days</div>
+        <div class="tt-sim-price">~200–350 THB / 30 days</div>
         <p><span class="en">AIS, True Move, or DTAC at Suvarnabhumi Airport. Tourist SIM includes unlimited data (throttled after cap) + calls. Best value destination for SIMs.</span><span class="ar">AIS أو True Move أو DTAC في مطار سوارنابهومي. شريحة سياحية تشمل بيانات غير محدودة (تُبطأ بعد الحد) + مكالمات. أفضل قيمة للشرائح.</span></p>
       </div>
-      <div class="sim-card">
+      <div class="tt-sim-card">
         <h3> <span class="en">Malaysia</span><span class="ar">ماليزيا</span></h3>
-        <div class="sim-price">~30–50 MYR / 10GB</div>
+        <div class="tt-sim-price">~30–50 MYR / 10GB</div>
         <p><span class="en">Maxis, Celcom, or Digi at KLIA airport. Affordable and fast LTE. Easy to top up at 7-Eleven stores. Good for Langkawi and KL.</span><span class="ar">Maxis أو Celcom أو Digi في مطار كوالالمبور. سعر معقول وLTE سريع. سهل الشحن في محلات 7-Eleven. جيد للانكاوي وكوالالمبور.</span></p>
       </div>
-      <div class="sim-card">
+      <div class="tt-sim-card">
         <h3> <span class="en">Indonesia</span><span class="ar">إندونيسيا</span></h3>
-        <div class="sim-price">~50,000–80,000 IDR / 10GB</div>
+        <div class="tt-sim-price">~50,000–80,000 IDR / 10GB</div>
         <p><span class="en">Telkomsel, XL, or Indosat at Ngurah Rai (Bali) or Soekarno-Hatta (Jakarta). Coverage excellent in Bali and Jakarta, patchy in remote areas.</span><span class="ar">Telkomsel أو XL أو Indosat في مطاري بالي وجاكرتا. تغطية ممتازة في بالي وجاكرتا، متقطعة في المناطق النائية.</span></p>
       </div>
     </div>
   </section>
 
-  <hr class="divider"/>
+  <hr class="tt-divider"/>
 
   <!-- EMERGENCY CONTACTS -->
-  <section class="section" id="emergency">
-    <div class="section-head">
+  <section class="tt-section" id="emergency">
+    <div class="tt-section-head">
       <div class="s-icon rose">🚨</div>
       <div>
         <h2><span class="en">Emergency Numbers by Country</span><span class="ar">أرقام الطوارئ حسب الدولة</span></h2>
         <p><span class="en">Save these before every trip, and your embassy contact</span><span class="ar">احفظها قبل كل رحلة، ومعها رقم سفارتك</span></p>
       </div>
     </div>
-    <div class="info-box">
+    <div class="tt-info-box">
       <strong><span class="en">⚠️ Always:</span><span class="ar">⚠️ دائماً:</span></strong>
       <span class="en"> Save your home country's <strong>embassy phone number</strong> for the country you're visiting. In a true emergency (arrest, hospitalization, lost passport), the embassy is your lifeline. Find numbers at embassyworld.com or your country's foreign ministry website.</span>
       <span class="ar"> احفظ رقم <strong>هاتف سفارة بلدك</strong> في الدولة التي تزورها. في حالات الطوارئ الحقيقية (اعتقال أو دخول مستشفى أو فقدان جواز سفر)، السفارة هي طوق نجاتك. ابحث عن الأرقام في embassyworld.com أو موقع وزارة الخارجية في بلدك.</span>
     </div>
-    <div class="countries-grid">
-      <div class="country-card">
+    <div class="tt-countries-grid">
+      <div class="tt-country-card">
         <h3> <span class="en">Turkey</span><span class="ar">تركيا</span></h3>
-        <div class="emergency-row"><span class="label"><span class="en">Police</span><span class="ar">الشرطة</span></span><span class="number">155</span></div>
-        <div class="emergency-row"><span class="label"><span class="en">Ambulance</span><span class="ar">الإسعاف</span></span><span class="number">112</span></div>
-        <div class="emergency-row"><span class="label"><span class="en">Fire</span><span class="ar">الحرائق</span></span><span class="number">110</span></div>
+        <div class="tt-emergency-row"><span class="label"><span class="en">Police</span><span class="ar">الشرطة</span></span><span class="number">155</span></div>
+        <div class="tt-emergency-row"><span class="label"><span class="en">Ambulance</span><span class="ar">الإسعاف</span></span><span class="number">112</span></div>
+        <div class="tt-emergency-row"><span class="label"><span class="en">Fire</span><span class="ar">الحرائق</span></span><span class="number">110</span></div>
       </div>
-      <div class="country-card">
+      <div class="tt-country-card">
         <h3> <span class="en">UK</span><span class="ar">المملكة المتحدة</span></h3>
-        <div class="emergency-row"><span class="label"><span class="en">All emergencies</span><span class="ar">جميع الطوارئ</span></span><span class="number">999</span></div>
-        <div class="emergency-row"><span class="label"><span class="en">Non-urgent police</span><span class="ar">شرطة غير عاجلة</span></span><span class="number">101</span></div>
-        <div class="emergency-row"><span class="label"><span class="en">NHS helpline</span><span class="ar">خط صحة</span></span><span class="number">111</span></div>
+        <div class="tt-emergency-row"><span class="label"><span class="en">All emergencies</span><span class="ar">جميع الطوارئ</span></span><span class="number">999</span></div>
+        <div class="tt-emergency-row"><span class="label"><span class="en">Non-urgent police</span><span class="ar">شرطة غير عاجلة</span></span><span class="number">101</span></div>
+        <div class="tt-emergency-row"><span class="label"><span class="en">NHS helpline</span><span class="ar">خط صحة</span></span><span class="number">111</span></div>
       </div>
-      <div class="country-card">
+      <div class="tt-country-card">
         <h3> <span class="en">France</span><span class="ar">فرنسا</span></h3>
-        <div class="emergency-row"><span class="label"><span class="en">Police</span><span class="ar">الشرطة</span></span><span class="number">17</span></div>
-        <div class="emergency-row"><span class="label"><span class="en">Ambulance (SAMU)</span><span class="ar">الإسعاف</span></span><span class="number">15</span></div>
-        <div class="emergency-row"><span class="label"><span class="en">EU Emergency</span><span class="ar">طوارئ أوروبية</span></span><span class="number">112</span></div>
+        <div class="tt-emergency-row"><span class="label"><span class="en">Police</span><span class="ar">الشرطة</span></span><span class="number">17</span></div>
+        <div class="tt-emergency-row"><span class="label"><span class="en">Ambulance (SAMU)</span><span class="ar">الإسعاف</span></span><span class="number">15</span></div>
+        <div class="tt-emergency-row"><span class="label"><span class="en">EU Emergency</span><span class="ar">طوارئ أوروبية</span></span><span class="number">112</span></div>
       </div>
-      <div class="country-card">
+      <div class="tt-country-card">
         <h3> <span class="en">Germany</span><span class="ar">ألمانيا</span></h3>
-        <div class="emergency-row"><span class="label"><span class="en">Police</span><span class="ar">الشرطة</span></span><span class="number">110</span></div>
-        <div class="emergency-row"><span class="label"><span class="en">Ambulance/Fire</span><span class="ar">إسعاف/حرائق</span></span><span class="number">112</span></div>
-        <div class="emergency-row"><span class="label"><span class="en">EU Emergency</span><span class="ar">طوارئ أوروبية</span></span><span class="number">112</span></div>
+        <div class="tt-emergency-row"><span class="label"><span class="en">Police</span><span class="ar">الشرطة</span></span><span class="number">110</span></div>
+        <div class="tt-emergency-row"><span class="label"><span class="en">Ambulance/Fire</span><span class="ar">إسعاف/حرائق</span></span><span class="number">112</span></div>
+        <div class="tt-emergency-row"><span class="label"><span class="en">EU Emergency</span><span class="ar">طوارئ أوروبية</span></span><span class="number">112</span></div>
       </div>
-      <div class="country-card">
+      <div class="tt-country-card">
         <h3> <span class="en">Thailand</span><span class="ar">تايلاند</span></h3>
-        <div class="emergency-row"><span class="label"><span class="en">Tourist Police</span><span class="ar">شرطة سياحية</span></span><span class="number">1155</span></div>
-        <div class="emergency-row"><span class="label"><span class="en">Ambulance</span><span class="ar">الإسعاف</span></span><span class="number">1669</span></div>
-        <div class="emergency-row"><span class="label"><span class="en">Fire</span><span class="ar">الحرائق</span></span><span class="number">199</span></div>
+        <div class="tt-emergency-row"><span class="label"><span class="en">Tourist Police</span><span class="ar">شرطة سياحية</span></span><span class="number">1155</span></div>
+        <div class="tt-emergency-row"><span class="label"><span class="en">Ambulance</span><span class="ar">الإسعاف</span></span><span class="number">1669</span></div>
+        <div class="tt-emergency-row"><span class="label"><span class="en">Fire</span><span class="ar">الحرائق</span></span><span class="number">199</span></div>
       </div>
-      <div class="country-card">
+      <div class="tt-country-card">
         <h3> <span class="en">Malaysia</span><span class="ar">ماليزيا</span></h3>
-        <div class="emergency-row"><span class="label"><span class="en">Police</span><span class="ar">الشرطة</span></span><span class="number">999</span></div>
-        <div class="emergency-row"><span class="label"><span class="en">Ambulance</span><span class="ar">الإسعاف</span></span><span class="number">999</span></div>
-        <div class="emergency-row"><span class="label"><span class="en">Tourist Hotline</span><span class="ar">خط السياحة</span></span><span class="number">1300 88 5050</span></div>
+        <div class="tt-emergency-row"><span class="label"><span class="en">Police</span><span class="ar">الشرطة</span></span><span class="number">999</span></div>
+        <div class="tt-emergency-row"><span class="label"><span class="en">Ambulance</span><span class="ar">الإسعاف</span></span><span class="number">999</span></div>
+        <div class="tt-emergency-row"><span class="label"><span class="en">Tourist Hotline</span><span class="ar">خط السياحة</span></span><span class="number">1300 88 5050</span></div>
       </div>
-      <div class="country-card">
+      <div class="tt-country-card">
         <h3> <span class="en">Indonesia / Bali</span><span class="ar">إندونيسيا / بالي</span></h3>
-        <div class="emergency-row"><span class="label"><span class="en">Police</span><span class="ar">الشرطة</span></span><span class="number">110</span></div>
-        <div class="emergency-row"><span class="label"><span class="en">Ambulance</span><span class="ar">الإسعاف</span></span><span class="number">118</span></div>
-        <div class="emergency-row"><span class="label"><span class="en">Bali Tourist Police</span><span class="ar">شرطة سياحة بالي</span></span><span class="number">0361-224111</span></div>
+        <div class="tt-emergency-row"><span class="label"><span class="en">Police</span><span class="ar">الشرطة</span></span><span class="number">110</span></div>
+        <div class="tt-emergency-row"><span class="label"><span class="en">Ambulance</span><span class="ar">الإسعاف</span></span><span class="number">118</span></div>
+        <div class="tt-emergency-row"><span class="label"><span class="en">Bali Tourist Police</span><span class="ar">شرطة سياحة بالي</span></span><span class="number">0361-224111</span></div>
       </div>
-      <div class="country-card">
+      <div class="tt-country-card">
         <h3> <span class="en">Japan</span><span class="ar">اليابان</span></h3>
-        <div class="emergency-row"><span class="label"><span class="en">Police</span><span class="ar">الشرطة</span></span><span class="number">110</span></div>
-        <div class="emergency-row"><span class="label"><span class="en">Ambulance/Fire</span><span class="ar">إسعاف/حرائق</span></span><span class="number">119</span></div>
-        <div class="emergency-row"><span class="label"><span class="en">Tourist Helpline</span><span class="ar">خط مساعدة سياحي</span></span><span class="number">050-3816-2787</span></div>
+        <div class="tt-emergency-row"><span class="label"><span class="en">Police</span><span class="ar">الشرطة</span></span><span class="number">110</span></div>
+        <div class="tt-emergency-row"><span class="label"><span class="en">Ambulance/Fire</span><span class="ar">إسعاف/حرائق</span></span><span class="number">119</span></div>
+        <div class="tt-emergency-row"><span class="label"><span class="en">Tourist Helpline</span><span class="ar">خط مساعدة سياحي</span></span><span class="number">050-3816-2787</span></div>
       </div>
     </div>
 
-    <div class="gold-box" style="margin-top:24px">
+    <div class="tt-gold-box" style="margin-top:24px">
       <span class="gb-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v12"/><path d="M8 10h4a2 2 0 0 1 0 4H8"/></svg></span>
       <div>
         <h3><span class="en">The best souvenir is a safe return</span><span class="ar">أفضل هدية هي العودة سالماً</span></h3>
@@ -583,198 +488,158 @@
     </div>
   </section>
 
+<section class="tool-tickets-rail" aria-labelledby="related-tools-title">
+    <header class="tool-tickets-head">
+      <p class="tool-tickets-eyebrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+        <span class="en">Continue Your Journey</span><span class="ar">أكمل رحلتك</span>
+      </p>
+      <h2 class="tool-tickets-title" id="related-tools-title"><span class="en">Related Travel Tools</span><span class="ar">أدوات السفر ذات الصلة</span></h2>
+      <p class="tool-tickets-sub"><span class="en">Complete your travel toolkit.</span><span class="ar">أكمل أدوات سفرك.</span></p>
+    </header>
+    <div class="tool-tickets-track">
+      <a href="/tools/packing-checklist.html" class="tool-ticket tool-ticket--travel">
+        <div class="tool-ticket-stub"><span class="tool-ticket-num">01</span></div>
+        <div class="tool-ticket-perforation" aria-hidden="true"></div>
+        <div class="tool-ticket-body">
+          <span class="tool-ticket-kicker"><span class="en">Travel</span><span class="ar">سفر</span></span>
+          <h3><span class="en">Packing Checklist</span><span class="ar">قائمة الحقيبة</span></h3>
+          <p><span class="en">Systematic packing every time.</span><span class="ar">توضيب منهجي في كل مرة.</span></p>
+          <span class="tool-ticket-cta"><span class="en">Open tool →</span><span class="ar">← افتح الأداة</span></span>
+        </div>
+      </a>
+      <a href="/tools/travel-budget.html" class="tool-ticket tool-ticket--travel">
+        <div class="tool-ticket-stub"><span class="tool-ticket-num">02</span></div>
+        <div class="tool-ticket-perforation" aria-hidden="true"></div>
+        <div class="tool-ticket-body">
+          <span class="tool-ticket-kicker"><span class="en">Travel</span><span class="ar">سفر</span></span>
+          <h3><span class="en">Trip Budget</span><span class="ar">ميزانية الرحلة</span></h3>
+          <p><span class="en">Plan costs in SAR, USD, or AED.</span><span class="ar">خطط التكاليف بالريال أو الدولار.</span></p>
+          <span class="tool-ticket-cta"><span class="en">Open tool →</span><span class="ar">← افتح الأداة</span></span>
+        </div>
+      </a>
+      <a href="/tools/return-to-hotel.html" class="tool-ticket tool-ticket--travel">
+        <div class="tool-ticket-stub"><span class="tool-ticket-num">03</span></div>
+        <div class="tool-ticket-perforation" aria-hidden="true"></div>
+        <div class="tool-ticket-body">
+          <span class="tool-ticket-kicker"><span class="en">Travel</span><span class="ar">سفر</span></span>
+          <h3><span class="en">Return to Hotel</span><span class="ar">العودة للفندق</span></h3>
+          <p><span class="en">Show your hotel to any taxi driver.</span><span class="ar">أظهر فندقك لأي سائق.</span></p>
+          <span class="tool-ticket-cta"><span class="en">Open tool →</span><span class="ar">← افتح الأداة</span></span>
+        </div>
+      </a>
+      <a href="/guides/saudi-tourism.html" class="tool-ticket tool-ticket--travel">
+        <div class="tool-ticket-stub"><span class="tool-ticket-num">04</span></div>
+        <div class="tool-ticket-perforation" aria-hidden="true"></div>
+        <div class="tool-ticket-body">
+          <span class="tool-ticket-kicker"><span class="en">Guide</span><span class="ar">دليل</span></span>
+          <h3><span class="en">Saudi Tourism</span><span class="ar">السياحة السعودية</span></h3>
+          <p><span class="en">Best destinations in KSA.</span><span class="ar">أفضل الوجهات في السعودية.</span></p>
+          <span class="tool-ticket-cta"><span class="en">Read guide →</span><span class="ar">← اقرأ الدليل</span></span>
+        </div>
+      </a>
+    </div>
+  </section>
+</main>
 
-
-<!-- ═══ UNIFIED FOOTER ══════════════════════════════════════ -->
 <footer class="site-footer" role="contentinfo">
+  <div class="footer-accent" aria-hidden="true"></div>
   <div class="footer-inner">
-    <div class="footer-top">
+    <div class="footer-main">
       <div class="footer-brand">
-        <a href="../index.html" class="footer-logo" aria-label="DOTFORLIFE">
-          <img src="../logo1-footer.webp" alt="DOTFORLIFE" width="100" height="100" loading="lazy">
+        <a href="/index.html" class="footer-logo" aria-label="DOTFORLIFE">
+          <img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" width="auto" loading="lazy">
         </a>
-        <p><span class="en">One calm place for your family's everyday needs. Free, always.</span><span class="ar">مكان هادئ واحد لاحتياجات عائلتك اليومية. مجاني دائماً.</span></p>
+        <p class="footer-tagline"><span class="en">One calm place for your family's everyday decisions. Free, always.</span><span class="ar">مكان هادئ واحد لقرارات عائلتك اليومية. مجاني دائماً.</span></p>
+        <p class="footer-motto"><span class="en">Life, at ease.</span><span class="ar">الحياة، براحة.</span></p>
       </div>
-      <div class="footer-cols">
+      <div class="footer-links-grid">
         <div class="footer-col">
           <h4><span class="en">Life</span><span class="ar">الحياة</span></h4>
           <ul>
-            <li><a href="../health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
-            <li><a href="../finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li>
-            <li><a href="../real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li>
-            <li><a href="../travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li>
-            <li><a href="../islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li>
+            <li><a href="/health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
+            <li><a href="/finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li>
+            <li><a href="/real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li>
+            <li><a href="/travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li>
+            <li><a href="/islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4><span class="en">Tools</span><span class="ar">الأدوات</span></h4>
           <ul>
-            <li><a href="../tools/bmi-calculator.html"><span class="en">BMI Calculator</span><span class="ar">حاسبة BMI</span></a></li>
-            <li><a href="../tools/mortgage-calculator.html"><span class="en">Mortgage</span><span class="ar">التمويل</span></a></li>
-            <li><a href="../tools/zakat-calculator.html"><span class="en">Zakat</span><span class="ar">الزكاة</span></a></li>
-            <li><a href="../tools/hijri-converter.html"><span class="en">Hijri Date</span><span class="ar">التاريخ الهجري</span></a></li>
-            <li><a href="../library.html"><span class="en">All Tools</span><span class="ar">كل الأدوات</span></a></li>
+            <li><a href="/tools/bmi-calculator.html"><span class="en">BMI Calculator</span><span class="ar">حاسبة BMI</span></a></li>
+            <li><a href="/tools/calorie-calculator.html"><span class="en">Calorie Calculator</span><span class="ar">حاسبة السعرات</span></a></li>
+            <li><a href="/tools/water-calculator.html"><span class="en">Hydration</span><span class="ar">الترطيب</span></a></li>
+            <li><a href="/tools/body-fat-calculator.html"><span class="en">Body Fat</span><span class="ar">الدهون</span></a></li>
+            <li><a href="/library.html"><span class="en">All Tools</span><span class="ar">كل الأدوات</span></a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4><span class="en">Discover</span><span class="ar">اكتشف</span></h4>
+          <ul>
+            <li><a href="/blog.html"><span class="en">Blog</span><span class="ar">المدونة</span></a></li>
+            <li><a href="/archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a></li>
+            <li><a href="/our-vision.html"><span class="en">Our Vision</span><span class="ar">رؤيتنا</span></a></li>
+            <li><a href="/pregnancy-journey.html"><span class="en">Pregnancy Journey</span><span class="ar">رحلة الحمل</span></a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4><span class="en">Company</span><span class="ar">الشركة</span></h4>
           <ul>
-            <li><a href="../about.html"><span class="en">About</span><span class="ar">عنّا</span></a></li>
-            <li><a href="../blog.html"><span class="en">blog</span><span class="ar">المدونة</span></a></li>
-            <li><a href="../contact.html"><span class="en">Contact</span><span class="ar">تواصل</span></a></li>
-            <li><a href="../privacy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a></li>
-            <li><a href="../privacy-policy.html"><span class="en">Privacy Policy</span><span class="ar">سياسة الخصوصية</span></a></li>
-            <li><a href="../terms.html"><span class="en">Terms</span><span class="ar">الشروط</span></a></li>
-            <li><a href="../editorial-standards.html"><span class="en">Editorial Standards</span><span class="ar">المعايير التحريرية</span></a></li>
+            <li><a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a></li>
+            <li><a href="/contact.html"><span class="en">Contact</span><span class="ar">تواصل</span></a></li>
+            <li><a href="/editorial-standards.html"><span class="en">Editorial Standards</span><span class="ar">المعايير التحريرية</span></a></li>
+            <li><a href="/privacy-policy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a></li>
+            <li><a href="/terms.html"><span class="en">Terms</span><span class="ar">الشروط</span></a></li>
           </ul>
         </div>
       </div>
     </div>
-    <hr class="footer-divider">
     <div class="footer-bottom">
-      <span>© 2026 DOTFORLIFE, <span class="en">Free for families, always.</span><span class="ar">مجاني للعائلات، دائماً.</span></span>
+      <span class="footer-copy">© 2026 DOTFORLIFE · <span class="en">Free for families, always.</span><span class="ar">مجاني للعائلات، دائماً.</span></span>
       <div class="footer-bottom-links">
-        <a href="../privacy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a>
-        <a href="../privacy-policy.html"><span class="en">Privacy Policy</span><span class="ar">سياسة الخصوصية</span></a>
-        <a href="../terms.html"><span class="en">Terms</span><span class="ar">الشروط</span></a>
+        <a href="/privacy-policy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a>
+        <a href="/terms.html"><span class="en">Terms</span><span class="ar">الشروط</span></a>
+        <a href="/contact.html"><span class="en">Contact</span><span class="ar">تواصل</span></a>
       </div>
     </div>
   </div>
 </footer>
-<!-- ════════════════════════════════════════════════════════════ -->
 
-<script>
-  function toggleTheme(){
-    var h=document.documentElement;
-    var t=h.getAttribute('data-theme')==='dark'?'light':'dark';
-    h.setAttribute('data-theme',t);localStorage.setItem('dfl-theme',t);
-    document.getElementById('theme-icon').textContent=t==='dark'?'<svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>':'<svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
-  }
-  function toggleLang(){
-    var h=document.documentElement;
-    var l=h.getAttribute('data-lang')==='ar'?'en':'ar';
-    h.setAttribute('data-lang',l);h.setAttribute('lang',l);
-    h.setAttribute('dir',l==='ar'?'rtl':'ltr');
-    localStorage.setItem('dfl-lang',l);
-  }
-  (function(){
-    document.getElementById('theme-icon').textContent=
-      document.documentElement.getAttribute('data-theme')==='dark'?'<svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>':'<svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
-  })();
-  var sections=document.querySelectorAll('section[id]');
-  var links=document.querySelectorAll('.jump-link');
-  window.addEventListener('scroll',function(){
-    var y=window.scrollY+80;
-    sections.forEach(function(s){
-      if(y>=s.offsetTop&&y<s.offsetTop+s.offsetHeight){
-        links.forEach(function(l){l.classList.remove('active')});
-        var a=document.querySelector('.jump-link[href="#'+s.id+'"]');
-        if(a)a.classList.add('active');
-      }
-    });
-  });
-</script>
-
-  <!-- DFL CANONICAL FOOTER -->
-  
-  <!-- DFL MOBILE NAV -->
-  
-<section class="dfl-related" aria-label="Related tools and guides">
-    <div class="tool-hr-wrap">
-
-    <section class="tool-hr" aria-labelledby="tool-title">
-      <div class="tool-hr-in">
-        <div class="tool-hr-bd"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg> Premium Tool</div>
-        <h1>Tool</h1>
-        <p>Description</p>
-      </div>
-    </section>
-
-
-
-
-
-
-
-
-    <div id="sub-nav">
-  <div class="sub-nav-inner">
-    <a href="/tools/packing-checklist.html"><span class="en">Packing</span><span class="ar">قائمة الحقيبة</span></a>
-    <a href="/tools/travel-budget.html"><span class="en">Budget</span><span class="ar">الميزانية</span></a>
-    <a href="/tools/travel-tips.html" class="active"><span class="en">Tips</span><span class="ar">النصائح</span></a>
-    <a href="/tools/currency-converter.html"><span class="en">Currency</span><span class="ar">العملات</span></a>
-    <a href="/tools/return-to-hotel.html"><span class="en">Hotel Finder</span><span class="ar">الفندق</span></a>
-    <a href="/guides/mecca-medina.html"><span class="en">Mecca Guide</span><span class="ar">مكة والمدينة</span></a>
-  </div>
-</div>
-  
-  </div>
-<div class="container">
-    <div class="dfl-related-label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg> <span class="en">Continue Your Journey</span><span class="ar">أكمل رحلتك</span></div>
-    <h2 class="dfl-related-title"><span class="en">Related Travel Tools</span><span class="ar">أدوات السفر ذات الصلة</span></h2>
-    <p class="dfl-related-sub"><span class="en">Complete your travel toolkit</span><span class="ar">أكمل أدوات سفرك</span></p>
-    <div class="dfl-related-grid">
-      <a href="/tools/packing-checklist.html" class="dfl-rc">
-        <div class="dfl-rc-top"><span class="dfl-rc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></span><div><div class="dfl-rc-name en">Packing Checklist</div><div class="dfl-rc-name ar">قائمة الحقيبة الذكية</div></div></div>
-        <div class="dfl-rc-desc en">Systematic packing every time</div><div class="dfl-rc-desc ar">توضيب منهجي في كل مرة</div>
-        <div class="dfl-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
-      </a>
-      <a href="/tools/travel-budget.html" class="dfl-rc">
-        <div class="dfl-rc-top"><span class="dfl-rc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="7.5 9.5 12 12 16.5 9.5"/><line x1="12" y1="12" x2="12" y2="17"/></svg></span><div><div class="dfl-rc-name en">Trip Budget Calculator</div><div class="dfl-rc-name ar">حاسبة ميزانية الرحلة</div></div></div>
-        <div class="dfl-rc-desc en">Never overspend on a trip</div><div class="dfl-rc-desc ar">لا تتجاوز ميزانيتك أبداً</div>
-        <div class="dfl-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
-      </a>
-      <a href="/tools/return-to-hotel.html" class="dfl-rc">
-        <div class="dfl-rc-top"><span class="dfl-rc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg></span><div><div class="dfl-rc-name en">Return to Hotel</div><div class="dfl-rc-name ar">العودة للفندق</div></div></div>
-        <div class="dfl-rc-desc en">Find your way back safely</div><div class="dfl-rc-desc ar">ارجع لفندقك بأمان</div>
-        <div class="dfl-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
-      </a>
-      <a href="/guides/saudi-tourism.html" class="dfl-rc guide">
-        <div class="dfl-rc-top"><span class="dfl-rc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/></svg></span><div><div class="dfl-rc-name en">Saudi Tourism Guide</div><div class="dfl-rc-name ar">دليل السياحة السعودية</div></div></div>
-        <div class="dfl-rc-desc en">Best destinations in KSA</div><div class="dfl-rc-desc ar">أفضل الوجهات في السعودية</div>
-        <div class="dfl-rc-cta"><span class="en">Read guide →</span><span class="ar">اقرأ الدليل ←</span></div>
-      </a>
-    </div>
-  </div>
-</section>
-
-  <script src="/tool-share.js" defer></script>
-<!-- ═══ UNIFIED MOBILE NAV ══════════════════════════════════ -->
 <nav class="dfl-mobile-nav" aria-label="Mobile navigation">
-  <a href="../index.html" class="dfl-mnav-item" aria-label="Home">
+  <a href="/index.html" class="dfl-mnav-item" aria-label="Home">
     <svg viewBox="0 0 24 24"><polyline points="3 9 12 2 21 9"/><path d="M5 9v11a1 1 0 001 1h4v-6h4v6h4a1 1 0 001-1V9"/></svg>
     <span class="en">Home</span><span class="ar">الرئيسية</span>
   </a>
-  <a href="../health.html" class="dfl-mnav-item" aria-label="Health">
-    <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-    <span class="en">Health</span><span class="ar">الصحة</span>
+  <a href="/library.html" class="dfl-mnav-item active" aria-label="Library">
+    <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+    <span class="en">Library</span><span class="ar">المكتبة</span>
   </a>
-  <a href="../finance.html" class="dfl-mnav-item" aria-label="Finance">
+  <a href="/finance.html" class="dfl-mnav-item" aria-label="Finance">
     <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
     <span class="en">Finance</span><span class="ar">المالية</span>
   </a>
-  <a href="../islamic.html" class="dfl-mnav-item" aria-label="Islamic">
+  <a href="/islamic.html" class="dfl-mnav-item" aria-label="Islamic">
     <svg viewBox="0 0 24 24"><path d="M21 10.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l2.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
     <span class="en">Islamic</span><span class="ar">الإسلامية</span>
   </a>
-  <a href="../travel.html" class="dfl-mnav-item" aria-label="Travel">
+  <a href="/travel.html" class="dfl-mnav-item" aria-label="Travel">
     <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
     <span class="en">Travel</span><span class="ar">السفر</span>
   </a>
 </nav>
 
-<!-- ── Mobile dropdown menu ── -->
 <div class="mobile-dropdown" id="mobile-dropdown" aria-hidden="true">
   <div class="md-links">
-    <a href="../health.html"><span class="en">Health</span><span class="ar">الصحة</span></a>
-    <a href="../finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a>
-    <a href="../real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a>
-    <a href="../travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a>
-    <a href="../islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a>
+    <a href="/health.html"><span class="en">Health</span><span class="ar">الصحة</span></a>
+    <a href="/finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a>
+    <a href="/real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a>
+    <a href="/travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a>
+    <a href="/islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a>
     <a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a>
-    <a href="../archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a>
+    <a href="/archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a>
     <a href="/blog.html"><span class="en">Blog</span><span class="ar">المدونة</span></a>
-    <a href="../library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a>
+    <a href="/library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a>
   </div>
   <div class="md-controls">
     <button class="nav-btn" id="lang-toggle-mobile"><span class="en">عربي</span><span class="ar">English</span></button>
@@ -784,23 +649,22 @@
     </button>
   </div>
 </div>
-<!-- ═══════════════════════════════════════
-     CONTENT
-═══════════════════════════════════════ -->
-<!-- 
-  page_type: hub
-  cluster: travel
-  authority_score: 82
-  inbound_links: 10
-  outbound_links: 11
-  link_velocity: medium
-  priority_indexing: true
-  content_depth: 60
-  word_count: 3655
-  canonical: https://www.dotforlife.com/tools/travel-tips.html
--->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1436107577087160" crossorigin="anonymous"></script>
 
-</main>
+<script src="/scripts/global.js?v=20260618a" defer></script>
+<script>
+(function(){
+  var sections=document.querySelectorAll('.tt-section[id]');
+  var links=document.querySelectorAll('.tt-jump-link');
+  window.addEventListener('scroll',function(){
+    var y=window.scrollY+120;
+    sections.forEach(function(s){
+      if(y>=s.offsetTop&&y<s.offsetTop+s.offsetHeight){
+        links.forEach(function(l){l.classList.remove('active');});
+        var a=document.querySelector('.tt-jump-link[href="#'+s.id+'"]');
+        if(a)a.classList.add('active');
+      }
+    });
+  },{passive:true});
+})();
+</script>
 </body></html>
-</html>

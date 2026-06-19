@@ -1,168 +1,67 @@
 <!DOCTYPE html>
-<html lang="en" data-lang="en" data-theme="light">
+<html lang="en" data-theme="light" data-lang="en" dir="ltr">
 <head>
-  <script>
-(function(){
-  /* theme */
-  var tb=document.getElementById("theme-toggle");
-  if(tb)tb.addEventListener("click",function(){
-    var h=document.documentElement,t=h.getAttribute("data-theme")==="dark"?"light":"dark";
-    h.setAttribute("data-theme",t);localStorage.setItem("dfl-theme",t);
-  });
-  /* lang */
-  var lb=document.getElementById("lang-toggle");
-  if(lb)lb.addEventListener("click",function(){
-    var h=document.documentElement,l=h.getAttribute("data-lang")==="ar"?"en":"ar";
-    h.setAttribute("data-lang",l);h.setAttribute("lang",l);
-    h.setAttribute("dir",l==="ar"?"rtl":"ltr");localStorage.setItem("dfl-lang",l);
-  });
-  /* scroll shadow */
-  var nb=document.getElementById("navbar");
-  if(nb)window.addEventListener("scroll",function(){nb.classList.toggle("scrolled",window.scrollY>10);},{passive:true});
-  /* reveal */
-  if("IntersectionObserver" in window){
-    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add("visible");});},{threshold:0.1});
-    document.querySelectorAll(".reveal").forEach(function(el){io.observe(el);});
-  } else document.querySelectorAll(".reveal").forEach(function(el){el.classList.add("visible");});
-})();
-</script>
-<meta name="robots" content="noindex, nofollow">
 <meta charset="UTF-8"/>
-
-  <script>(function(){var p=new URLSearchParams(location.search),gd=(function(){try{var z=(Intl.DateTimeFormat().resolvedOptions().timeZone||"");return /Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test(z)?"ar":"en";}catch(e){return "ar";}})(),l=p.get("lang")||localStorage.getItem("dfl-lang")||gd,t=p.get("theme")||localStorage.getItem("dfl-theme")||"light",h=document.documentElement;h.setAttribute("data-theme",t);h.setAttribute("data-lang",l);h.setAttribute("lang",l);h.setAttribute("dir",l==="ar"?"rtl":"ltr");if(p.get("lang"))localStorage.setItem("dfl-lang",l);if(p.get("theme"))localStorage.setItem("dfl-theme",t);
-  /* hamburger menu */
-  (function(){
-    var hb = document.getElementById('hamburger-btn');
-    var dd = document.getElementById('mobile-dropdown');
-    if (!hb || !dd) return;
-    function toggle(e) {
-      e.stopPropagation();
-      var open = dd.classList.toggle('open');
-      hb.classList.toggle('open', open);
-      hb.setAttribute('aria-expanded', open);
-      document.body.classList.toggle('menu-open', open);
-    }
-    function closeM() {
-      dd.classList.remove('open');
-      hb.classList.remove('open');
-      hb.setAttribute('aria-expanded', 'false');
-      document.body.classList.remove('menu-open');
-    }
-    hb.addEventListener('click', toggle);
-    document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeM(); });
-    dd.addEventListener('click', function(e){ if(e.target===dd) closeM(); });
-  })();
-})()</script>
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
-  <meta http-equiv="x-dns-prefetch-control" content="on" />
-  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
-  <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-  <link rel="dns-prefetch" href="https://images.unsplash.com" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://www.googletagmanager.com" />
-<title>Pomodoro Focus Timer | مؤقت بوميدورو، DotForLife</title>
+<script>(function(){var p=new URLSearchParams(location.search),gd=(function(){try{var z=(Intl.DateTimeFormat().resolvedOptions().timeZone||"");return /Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test(z)?"ar":"en";}catch(e){return "ar";}})(),l=p.get("lang")||localStorage.getItem("dfl-lang")||gd,t=p.get("theme")||localStorage.getItem("dfl-theme")||"light",h=document.documentElement;h.setAttribute("data-theme",t);h.setAttribute("data-lang",l);h.setAttribute("lang",l);h.setAttribute("dir",l==="ar"?"rtl":"ltr");if(p.get("lang"))localStorage.setItem("dfl-lang",l);if(p.get("theme"))localStorage.setItem("dfl-theme",t);})()</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta http-equiv="x-dns-prefetch-control" content="on" />
+<link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+<link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<title>Pomodoro Focus Timer | مؤقت بوميدورو — Dot For Life</title>
 <meta name="description" content="A calm, distraction-free Pomodoro focus timer. 25-minute work blocks, short and long breaks, session log, and customizable durations. Bilingual EN/AR."/>
-<meta name="keywords" content="pomodoro timer, focus timer, work timer, productivity timer, deep work, مؤقت بوميدورو, مؤقت تركيز, إنتاجية"/>
-<link rel="canonical" href="https://www.dotforlife.com/tools/pomodoro.html"/>
-<meta property="og:site_name" content="DOTFORLIFE" />
-  <meta property="og:title" content="Pomodoro Focus Timer, DOTFORLIFE | مؤقت بوميدورو"/>
-<meta property="og:description" content="Calm, distraction-free focus timer. 25-minute work blocks, breaks, session log."/>
-<meta property="og:type" content="website"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Inter:wght@400;500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Inter:wght@400;500;600;700;800&display=swap"/></noscript>
-<link rel="stylesheet" href="/styles/global.css?v=20260617e"/>
-	<link rel="stylesheet" href="/styles/tools-shared.css?v=20260608a">
-	<link rel="stylesheet" href="/styles/pages/tools_pomodoro.css?v=20260617b">
-
-  <!-- DFL CANONICAL SYSTEM CSS -->
-  
-<script src="/scripts/global.js" defer></script>
-<style>
-.dfl-related{border-top:1px solid var(--border);padding:52px 0 64px;background:var(--body-bg);}
-.dfl-related .container{max-width:1280px;margin:0 auto;padding:0 clamp(1.5rem,4vw,2.5rem);}
-.dfl-related-label{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
-.dfl-related-title{font-size:clamp(1.2rem,2.5vw,1.55rem);font-weight:700;color:var(--text);margin:0 0 6px;letter-spacing:-.02em;}
-.dfl-related-sub{font-size:.88rem;color:var(--text-2);margin-bottom:32px;line-height:1.6;}
-.dfl-related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;}
-.dfl-rc{display:flex;flex-direction:column;background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:20px 22px 18px;text-decoration:none;color:inherit;transition:border-color .2s,box-shadow .2s,transform .2s;}
-.dfl-rc:hover{border-color:var(--gold);box-shadow:0 4px 20px rgba(107,191,184,.12);transform:translateY(-2px);}
-.dfl-rc.guide{border-style:dashed;}
-.dfl-rc.guide:hover{border-color:var(--green,#2a9a98);box-shadow:0 4px 20px rgba(42,154,152,.1);}
-.dfl-rc-top{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
-.dfl-rc-icon{font-size:1.4rem;line-height:1;flex-shrink:0;}
-.dfl-rc-name{font-size:.88rem;font-weight:700;color:var(--text);line-height:1.3;}
-.dfl-rc-desc{font-size:.78rem;color:var(--text-2);line-height:1.5;flex:1;}
-.dfl-rc-cta{margin-top:12px;font-size:.76rem;font-weight:700;color:var(--gold);}
-.dfl-rc.guide .dfl-rc-cta{color:var(--green,#2a9a98);}
-@media(max-width:600px){.dfl-related-grid{grid-template-columns:1fr 1fr;gap:10px;}.dfl-rc{padding:14px;}}
-
-/* ── SITE FOOTER ─────────────────────────────────────────── */
-.site-footer{background:var(--navy,#032a28);color:rgba(255,255,255,.7);padding:clamp(3rem,6vw,5rem) 0 0;}
-.footer-inner{max-width:1280px;margin:0 auto;padding:0 clamp(16px,4vw,48px);}
-.footer-top{display:flex;gap:3rem;margin-bottom:3rem;flex-wrap:wrap;}
-.footer-brand{flex:0 0 220px;}
-.footer-brand p{font-size:.82rem;line-height:1.65;color:rgba(255,255,255,.45);margin-top:.75rem;}
-[data-lang="ar"] .footer-brand p{font-family:var(--font-ar);}
-.footer-logo img{height:100px;width:auto;display:block;}
-.footer-cols{flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;}
-.footer-col h4{font-size:.68rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.85);margin-bottom:1rem;}
-[data-lang="ar"] .footer-col h4{font-family:var(--font-ar);letter-spacing:0;}
-.footer-col ul{list-style:none;}
-.footer-col ul li{margin-bottom:.55rem;}
-.footer-col ul li a{font-size:.83rem;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s;}
-.footer-col ul li a:hover{color:var(--gold);}
-[data-lang="ar"] .footer-col ul li a{font-family:var(--font-ar);}
-.footer-divider{border:none;border-top:1px solid rgba(255,255,255,.08);margin:0;}
-.footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.25rem 0 calc(1.25rem + 60px);font-size:.78rem;color:rgba(255,255,255,.35);flex-wrap:wrap;}
-.footer-bottom-links{display:flex;gap:1.25rem;}
-.footer-bottom-links a,.footer-bottom a{color:rgba(255,255,255,.35);text-decoration:none;font-size:.78rem;transition:color .2s;}
-.footer-bottom-links a:hover,.footer-bottom a:hover{color:var(--gold);}
-[data-lang="ar"] .footer-bottom{font-family:var(--font-ar);}
-[data-lang="ar"] .footer-top{direction:rtl;}
-@media(max-width:860px){.footer-top{flex-direction:column;gap:2rem;}.footer-brand{flex:none;}.footer-cols{grid-template-columns:1fr 1fr;}}
-@media(max-width:500px){.footer-cols{grid-template-columns:1fr;}.footer-bottom{flex-direction:column;text-align:center;}}
-
-</style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Pomodoro Focus Timer | مؤقت بوميدورو، DotForLife","url":"https://www.dotforlife.com/tools/pomodoro.html","applicationCategory":"UtilityApplication","operatingSystem":"Web"}</script>
-  <link rel="alternate" hreflang="ar" href="https://www.dotforlife.com/tools/pomodoro.html?lang=ar" />
-  <link rel="alternate" hreflang="en" href="https://www.dotforlife.com/tools/pomodoro.html?lang=en" />
-  <link rel="alternate" hreflang="x-default" href="https://www.dotforlife.com/tools/pomodoro.html" />
-<!-- Google tag (gtag.js) -->
+<link rel="canonical" href="https://dotforlife.com/tools/pomodoro.html"/>
+<link rel="alternate" hreflang="ar" href="https://dotforlife.com/tools/pomodoro.html?lang=ar" />
+<link rel="alternate" hreflang="en" href="https://dotforlife.com/tools/pomodoro.html?lang=en" />
+<link rel="alternate" hreflang="x-default" href="https://dotforlife.com/tools/pomodoro.html" />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Almarai:wght@400;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Almarai:wght@400;700;800&display=swap"/></noscript>
+<link rel="stylesheet" href="/styles/global.css?v=20260618f"/>
+<link rel="stylesheet" href="/styles/tools-shared.css?v=20260608a">
+<link rel="stylesheet" href="/styles/tools-flagship.css?v=20260625b">
+<link rel="stylesheet" href="/styles/tools-accents.css?v=20260625a">
+<link rel="stylesheet" href="/styles/pages/tools_pomodoro.css?v=20260625a">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dotforlife.com/tools/pomodoro.html">
+<meta property="og:title" content="Pomodoro Focus Timer | Dot4Life">
+<meta property="og:description" content="Calm focus timer with customizable Pomodoro cycles and session log.">
+<meta property="og:image" content="https://dotforlife.com/og/og-default.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Pomodoro Focus Timer | Dot4Life">
+<meta name="twitter:description" content="Calm focus timer with customizable Pomodoro cycles and session log.">
+<meta name="twitter:image" content="https://dotforlife.com/og/og-default.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Pomodoro Focus Timer | مؤقت بوميدورو","url":"https://dotforlife.com/tools/pomodoro.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"inLanguage":["en","ar"]}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3G1XPV4F0G"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-3G1XPV4F0G');
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-3G1XPV4F0G');
+window.dflTrack=function(event,params){
+  gtag('event',event,Object.assign({
+    page_path:location.pathname,
+    language:document.documentElement.getAttribute('data-lang')||'en'
+  },params||{}));
+};
 </script>
-
-  <meta property="og:image" content="https://www.dotforlife.com/og/d4l1.webp"/>
-  <meta name="twitter:image" content="https://www.dotforlife.com/og/d4l1.webp"/>
-  <meta name="twitter:card" content="summary_large_image"/>
 </head>
-<body class="category-page has-subnav">
-  <!-- DFL CANONICAL NAVBAR -->
-  <!-- ═══ UNIFIED HEADER ══════════════════════════════════════ -->
-<nav id="navbar" role="navigation" aria-label="Main navigation">
+<body class="tool-flagship-page no-subnav" data-tool="pomodoro">
+<nav id="navbar" class="index-nav" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
-    <a href="../index.html" class="nav-logo" aria-label="DOTFORLIFE Home">
-      <img src="../logo1-footer.webp" alt="DOTFORLIFE" width="100" height="100" style="height:100px;width:auto;object-fit:contain;" width="100" height="100" loading="lazy">
+    <a href="/index.html" class="nav-logo" aria-label="DOTFORLIFE Home">
+      <img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" width="115" height="115" loading="eager" fetchpriority="high">
     </a>
     <ul class="nav-links">
-      <li><a href="../health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
-      <li><a href="../finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li>
-      <li><a href="../real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li>
-      <li><a href="../travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li>
-      <li><a href="../islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li>
+      <li><a href="/health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
+      <li><a href="/finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li>
+      <li><a href="/real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li>
+      <li><a href="/travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li>
+      <li><a href="/islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li>
       <li><a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a></li>
-      <li><a href="../archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a></li>
+      <li><a href="/archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a></li>
       <li><a href="/blog.html"><span class="en">blog</span><span class="ar">المدونة</span></a></li>
-      <li><a href="../library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a></li>
+      <li><a href="/library.html" aria-current="page"><span class="en">Library</span><span class="ar">المكتبة</span></a></li>
     </ul>
     <div class="nav-controls">
       <button class="nav-btn" id="lang-toggle" aria-label="Switch language"><span class="en">عربي</span><span class="ar">English</span></button>
@@ -173,262 +72,241 @@
     </div>
   </div>
 </nav>
-<!-- ═══════════════════════════════════════
-       HERO
-  ═══════════════════════════════════════ -->
 
-
-<!-- NAV -->
-
-<main class="tool-mn">
-<!-- HERO -->
-  <div class="tool-hr-wrap">
-
-    <section class="tool-hr" aria-labelledby="tool-title">
-      <div class="tool-hr-in">
-        <div class="tool-hr-bd">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-          ⏱️ <span class="en">Focus Timer</span><span class="ar">مؤقت التركيز</span>
-        </div>
-        <h1 class="tool-h1">
-      <span class="en">Pomodoro Focus Timer</span>
-      <span class="ar">مؤقت التركيز بوميدورو</span>
-    </h1>
-        <p>
-      <span class="en">25 minutes of focused work. 5 minutes to breathe. Four sessions, then a proper rest. The technique that turns scattered effort into real output, one block at a time.</span>
-      <span class="ar">25 دقيقة تركيز حقيقي. 5 دقائق استرخاء. أربع جلسات، ثم راحة كاملة. التقنية التي تحوّل الجهد المشتت إلى نتائج حقيقية، كتلة واحدة في كل مرة.</span>
+<div class="tool-hero">
+  <div class="tool-hero-inner">
+    <nav class="tool-breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html"><span class="en">Home</span><span class="ar">الرئيسية</span></a>
+      <span class="tool-breadcrumb-sep" aria-hidden="true">/</span>
+      <a href="/library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a>
+      <span class="tool-breadcrumb-sep" aria-hidden="true">/</span>
+      <span><span class="en">Pomodoro Timer</span><span class="ar">مؤقت بوميدورو</span></span>
+    </nav>
+    <p class="tool-eyebrow">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      <span class="en">Productivity Tool · Focus Timer</span><span class="ar">أداة إنتاجية · مؤقت التركيز</span>
     </p>
-        
-      </div>
-    </section>
-<div id="sub-nav">
-  <div class="sub-nav-inner">
-    <a href="/saved.html"><span class="en">Saved</span><span class="ar">المحفوظ</span></a>
-    <a href="/tasks.html"><span class="en">Tasks</span><span class="ar">المهام</span></a>
-    <a href="/notes.html"><span class="en">Notes</span><span class="ar">الملاحظات</span></a>
-    <a href="/life-guide.html"><span class="en">Life Guide</span><span class="ar">دليل الحياة</span></a>
+    <h1 id="tool-title"><span class="en">Pomodoro Focus Timer</span><span class="ar">مؤقت التركيز بوميدورو</span></h1>
+    <p class="tool-hero-desc"><span class="en">25 minutes of focused work. 5 minutes to breathe. Four sessions, then a proper rest. One block at a time.</span><span class="ar">25 دقيقة تركيز حقيقي. 5 دقائق استرخاء. أربع جلسات، ثم راحة كاملة. كتلة واحدة في كل مرة.</span></p>
+    <ul class="tool-trust">
+      <li><span class="en">Custom durations</span><span class="ar">مدد قابلة للتخصيص</span></li>
+      <li><span class="en">Session log</span><span class="ar">سجل الجلسات</span></li>
+      <li><span class="en">Browser notifications</span><span class="ar">إشعارات المتصفح</span></li>
+    </ul>
   </div>
 </div>
-  </div>
-
-
-
-<!-- TIMER -->
-<section class="timer-section">
-  <div class="container">
-    <div class="tool-grid">
-
-      <!-- LEFT: TIMER -->
+<main class="tool-mn">
+  <div class="pomo-workspace">
+    <div class="pomo-grid">
       <div>
-        <!-- Mode tabs -->
-        <div class="mode-tabs">
-          <button class="mode-tab active" data-mode="work" onclick="switchMode('work')">
-            <span class="en">Focus</span><span class="ar">تركيز</span>
-          </button>
-          <button class="mode-tab" data-mode="short" onclick="switchMode('short')">
-            <span class="en">Short Break</span><span class="ar">راحة قصيرة</span>
-          </button>
-          <button class="mode-tab" data-mode="long" onclick="switchMode('long')">
-            <span class="en">Long Break</span><span class="ar">راحة طويلة</span>
-          </button>
+        <div class="pomo-mode-tabs">
+          <button type="button" class="pomo-mode-tab active" data-mode="work" onclick="switchMode('work')"><span class="en">Focus</span><span class="ar">تركيز</span></button>
+          <button type="button" class="pomo-mode-tab" data-mode="short" onclick="switchMode('short')"><span class="en">Short Break</span><span class="ar">راحة قصيرة</span></button>
+          <button type="button" class="pomo-mode-tab" data-mode="long" onclick="switchMode('long')"><span class="en">Long Break</span><span class="ar">راحة طويلة</span></button>
         </div>
-
-        <!-- Timer face -->
-        <div class="timer-face">
-          <div class="timer-ring-wrap">
-            <svg class="timer-svg" viewBox="0 0 240 240" width="240" height="240">
-              <circle class="timer-ring-bg" cx="120" cy="120" r="108"/>
-              <circle class="timer-ring-prog" id="timerRing" data-mode="work" cx="120" cy="120" r="108"
-                stroke-dasharray="678.6" stroke-dashoffset="0"/>
+        <div class="pomo-timer-face">
+          <div class="pomo-ring-wrap">
+            <svg class="pomo-timer-svg" viewBox="0 0 240 240" width="240" height="240">
+              <circle class="pomo-ring-bg" cx="120" cy="120" r="108"/>
+              <circle class="pomo-ring-prog" id="timerRing" data-mode="work" cx="120" cy="120" r="108" stroke-dasharray="678.6" stroke-dashoffset="0"/>
             </svg>
-            <div class="timer-inner">
-              <div class="timer-display" id="timerDisplay">25:00</div>
-              <div class="timer-phase" data-mode="work" id="timerPhase">
-                <span class="en">Focus Time</span><span class="ar">وقت التركيز</span>
-              </div>
+            <div class="pomo-timer-inner">
+              <div class="pomo-timer-display" id="timerDisplay">25:00</div>
+              <div class="pomo-timer-phase" data-mode="work" id="timerPhase"><span class="en">Focus Time</span><span class="ar">وقت التركيز</span></div>
             </div>
           </div>
-
-          <!-- Session dots (4 per cycle) -->
-          <div class="session-dots" id="sessionDots">
-            <div class="session-dot current"></div>
-            <div class="session-dot"></div>
-            <div class="session-dot"></div>
-            <div class="session-dot"></div>
+          <div class="pomo-session-dots" id="sessionDots">
+            <div class="pomo-session-dot current"></div><div class="pomo-session-dot"></div><div class="pomo-session-dot"></div><div class="pomo-session-dot"></div>
           </div>
-
-          <!-- Controls -->
-          <div class="timer-controls">
-            <button class="btn-restart" onclick="resetTimer()" title="Reset" aria-label="Reset timer">↺</button>
-            <button class="btn-start" data-mode="work" id="startBtn" onclick="toggleTimer()">
-              <span class="en">Start</span><span class="ar">ابدأ</span>
-            </button>
-            <button class="btn-skip" onclick="skipPhase()">
-              <span class="en">Skip ›</span><span class="ar">تخطى ›</span>
-            </button>
+          <div class="pomo-timer-controls">
+            <button type="button" class="pomo-btn-restart" onclick="resetTimer()" aria-label="Reset timer">↺</button>
+            <button type="button" class="pomo-btn-start" data-mode="work" id="startBtn" onclick="toggleTimer()"><span class="en">Start</span><span class="ar">ابدأ</span></button>
+            <button type="button" class="pomo-btn-skip" onclick="skipPhase()"><span class="en">Skip ›</span><span class="ar">تخطى ›</span></button>
           </div>
         </div>
-
-        <!-- HOW IT WORKS -->
-        <div class="how-section">
-          <p class="how-eyebrow"><span class="en">The Pomodoro Technique</span><span class="ar">تقنية بوميدورو</span></p>
-          <h2 class="how-title"><span class="en">One proven cycle, endlessly repeatable</span><span class="ar">دورة مجربة، تتكرر بلا حدود</span></h2>
-          <div class="how-grid">
-            <div class="how-card">
-              <div class="how-num" style="color:var(--work-c)">25 min</div>
-              <div class="how-name"><span class="en">Deep Focus</span><span class="ar">تركيز عميق</span></div>
-              <div class="how-body"><span class="en">One task only. Phone away. The timer is your commitment to yourself.</span><span class="ar">مهمة واحدة فقط. الهاتف بعيداً. المؤقت هو التزامك لنفسك.</span></div>
+        <div class="tool-panel" style="margin-top:24px">
+          <div class="tool-panel-hdr"><h2><span class="en">The Pomodoro Technique</span><span class="ar">تقنية بوميدورو</span></h2></div>
+          <div class="tool-panel-body">
+            <div class="pomo-how-grid">
+              <div class="pomo-how-card"><div class="pomo-how-num" style="color:#6C3FC5">25 min</div><div class="pomo-how-name"><span class="en">Deep Focus</span><span class="ar">تركيز عميق</span></div><div class="pomo-how-body"><span class="en">One task only. Phone away. The timer is your commitment.</span><span class="ar">مهمة واحدة فقط. الهاتف بعيداً. المؤقت هو التزامك.</span></div></div>
+              <div class="pomo-how-card"><div class="pomo-how-num" style="color:#059669">5 min</div><div class="pomo-how-name"><span class="en">Short Break</span><span class="ar">راحة قصيرة</span></div><div class="pomo-how-body"><span class="en">Stand up. Breathe. Hydrate. Reset before the next block.</span><span class="ar">قف. تنفّس. اشرب ماء. أعد ضبط نفسك قبل الكتلة القادمة.</span></div></div>
+              <div class="pomo-how-card"><div class="pomo-how-num" style="color:#6C3FC5">×4</div><div class="pomo-how-name"><span class="en">4 Sessions</span><span class="ar">4 جلسات</span></div><div class="pomo-how-body"><span class="en">Complete four focused blocks. Dots track your cycle progress.</span><span class="ar">أكمل أربع كتل تركيز. النقاط تتتبع تقدم دورتك.</span></div></div>
+              <div class="pomo-how-card"><div class="pomo-how-num" style="color:#0F4C8A">15 min</div><div class="pomo-how-name"><span class="en">Long Break</span><span class="ar">راحة طويلة</span></div><div class="pomo-how-body"><span class="en">After four sessions, take a full rest. Then start again.</span><span class="ar">بعد أربع جلسات، خذ راحة كاملة. ثم ابدأ من جديد.</span></div></div>
             </div>
-            <div class="how-card">
-              <div class="how-num" style="color:var(--short-c)">5 min</div>
-              <div class="how-name"><span class="en">Short Break</span><span class="ar">راحة قصيرة</span></div>
-              <div class="how-body"><span class="en">Stand up. Breathe. Hydrate. Let the mind reset before the next block.</span><span class="ar">قف. تنفّس. اشرب ماء. دع العقل يُعاد ضبطه قبل الكتلة القادمة.</span></div>
-            </div>
-            <div class="how-card">
-              <div class="how-num" style="color:var(--accent)">×4</div>
-              <div class="how-name"><span class="en">4 Sessions</span><span class="ar">4 جلسات</span></div>
-              <div class="how-body"><span class="en">Complete four focused blocks. The dots above the timer track your progress through the cycle.</span><span class="ar">أكمل أربع كتل تركيز. النقاط أعلى المؤقت تتتبع تقدمك في الدورة.</span></div>
-            </div>
-            <div class="how-card">
-              <div class="how-num" style="color:var(--long-c)">15 min</div>
-              <div class="how-name"><span class="en">Long Break</span><span class="ar">راحة طويلة</span></div>
-              <div class="how-body"><span class="en">After four sessions, take a full rest. Walk, eat, rest your eyes. Then start again.</span><span class="ar">بعد أربع جلسات، خذ راحة كاملة. تمشَّ، كل، أرح عيناك. ثم ابدأ من جديد.</span></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- RELATED TOOLS -->
-        <div class="related-section">
-          <p class="related-eyebrow"><span class="en">More tools</span><span class="ar">أدوات أخرى</span></p>
-          <h2 class="related-title"><span class="en">Build the rest of your productivity system</span><span class="ar">ابنِ بقية نظامك الإنتاجي</span></h2>
-          <div class="rel-grid">
-            <a href="/tools/age-calculator.html" class="rel-card">
-              <div class="rel-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
-              <div class="rel-name"><span class="en">Age Calculator</span><span class="ar">حاسبة العمر</span></div>
-              <div class="rel-desc"><span class="en">Exact age in years, months, and days. Useful for goal deadlines.</span><span class="ar">عمرك بالضبط بالسنوات والأشهر والأيام.</span></div>
-            </a>
-            <a href="/tools/plant-watering.html" class="rel-card">
-              <div class="rel-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 2 8 0 5.5-4.78 10-10 10Z"/></svg></div>
-              <div class="rel-name"><span class="en">Plant Watering</span><span class="ar">جدول الري</span></div>
-              <div class="rel-desc"><span class="en">Schedule your plants between focus sessions, a calm break ritual.</span><span class="ar">جدولة ري نباتاتك بين جلسات التركيز.</span></div>
-            </a>
-            <a href="../health.html" class="rel-card">
-              <div class="rel-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg></div>
-              <div class="rel-name"><span class="en">Health Tools</span><span class="ar">أدوات الصحة</span></div>
-              <div class="rel-desc"><span class="en">Nutrition, sleep, and fitness calculators that support sustained focus.</span><span class="ar">حاسبات التغذية والنوم واللياقة التي تدعم التركيز المستمر.</span></div>
-            </a>
-            <a href="../productivity.html" class="rel-card">
-              <div class="rel-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
-              <div class="rel-name"><span class="en">All Productivity Tools</span><span class="ar">كل أدوات الإنتاجية</span></div>
-              <div class="rel-desc"><span class="en">Every tool in the productivity ecosystem, in one place.</span><span class="ar">كل أدوات الإنتاجية في مكان واحد.</span></div>
-            </a>
           </div>
         </div>
       </div>
-
-      <!-- RIGHT: SETTINGS + LOG -->
-      <div style="display:flex;flex-direction:column;gap:20px;">
-
-        <!-- Settings -->
-        <div class="panel">
-          <div class="panel-title"><span class="en">Timer Settings</span><span class="ar">إعدادات المؤقت</span></div>
-
-          <div class="setting-row">
-            <div>
-              <div class="setting-label"><span class="en">Focus</span><span class="ar">التركيز</span></div>
-              <div class="setting-sub"><span class="en">minutes</span><span class="ar">دقائق</span></div>
-            </div>
-            <div class="setting-ctrl">
-              <button class="dur-btn" onclick="changeDur('work',-1)">−</button>
-              <span class="dur-val" id="dur-work">25</span>
-              <button class="dur-btn" onclick="changeDur('work',1)">+</button>
-            </div>
-          </div>
-
-          <div class="setting-row">
-            <div>
-              <div class="setting-label"><span class="en">Short Break</span><span class="ar">الراحة القصيرة</span></div>
-              <div class="setting-sub"><span class="en">minutes</span><span class="ar">دقائق</span></div>
-            </div>
-            <div class="setting-ctrl">
-              <button class="dur-btn" onclick="changeDur('short',-1)">−</button>
-              <span class="dur-val" id="dur-short">5</span>
-              <button class="dur-btn" onclick="changeDur('short',1)">+</button>
-            </div>
-          </div>
-
-          <div class="setting-row">
-            <div>
-              <div class="setting-label"><span class="en">Long Break</span><span class="ar">الراحة الطويلة</span></div>
-              <div class="setting-sub"><span class="en">minutes</span><span class="ar">دقائق</span></div>
-            </div>
-            <div class="setting-ctrl">
-              <button class="dur-btn" onclick="changeDur('long',-1)">−</button>
-              <span class="dur-val" id="dur-long">15</span>
-              <button class="dur-btn" onclick="changeDur('long',1)">+</button>
-            </div>
-          </div>
-
-          <div class="setting-row" style="margin-bottom:0">
-            <div>
-              <div class="setting-label"><span class="en">Sessions per cycle</span><span class="ar">جلسات في الدورة</span></div>
-              <div class="setting-sub"><span class="en">then long break</span><span class="ar">ثم راحة طويلة</span></div>
-            </div>
-            <div class="setting-ctrl">
-              <button class="dur-btn" onclick="changeDur('cycles',-1)">−</button>
-              <span class="dur-val" id="dur-cycles">4</span>
-              <button class="dur-btn" onclick="changeDur('cycles',1)">+</button>
-            </div>
-          </div>
-
-          <div class="notif-row" style="margin-top:16px">
-            <div>
-              <div class="setting-label" style="font-size:12.5px"><span class="en">Browser notifications</span><span class="ar">إشعارات المتصفح</span></div>
-            </div>
-            <label class="toggle-wrap">
-              <input type="checkbox" class="toggle-input" id="notifToggle" onchange="toggleNotif()"/>
-              <span class="toggle-slider"></span>
-            </label>
-          </div>
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div class="pomo-panel">
+          <div class="pomo-panel-title"><span class="en">Timer Settings</span><span class="ar">إعدادات المؤقت</span></div>
+          <div class="pomo-setting-row"><div><div class="pomo-setting-label"><span class="en">Focus</span><span class="ar">التركيز</span></div><div class="pomo-setting-sub"><span class="en">minutes</span><span class="ar">دقائق</span></div></div><div class="pomo-setting-ctrl"><button type="button" class="pomo-dur-btn" onclick="changeDur('work',-1)">−</button><span class="pomo-dur-val" id="dur-work">25</span><button type="button" class="pomo-dur-btn" onclick="changeDur('work',1)">+</button></div></div>
+          <div class="pomo-setting-row"><div><div class="pomo-setting-label"><span class="en">Short Break</span><span class="ar">الراحة القصيرة</span></div><div class="pomo-setting-sub"><span class="en">minutes</span><span class="ar">دقائق</span></div></div><div class="pomo-setting-ctrl"><button type="button" class="pomo-dur-btn" onclick="changeDur('short',-1)">−</button><span class="pomo-dur-val" id="dur-short">5</span><button type="button" class="pomo-dur-btn" onclick="changeDur('short',1)">+</button></div></div>
+          <div class="pomo-setting-row"><div><div class="pomo-setting-label"><span class="en">Long Break</span><span class="ar">الراحة الطويلة</span></div><div class="pomo-setting-sub"><span class="en">minutes</span><span class="ar">دقائق</span></div></div><div class="pomo-setting-ctrl"><button type="button" class="pomo-dur-btn" onclick="changeDur('long',-1)">−</button><span class="pomo-dur-val" id="dur-long">15</span><button type="button" class="pomo-dur-btn" onclick="changeDur('long',1)">+</button></div></div>
+          <div class="pomo-setting-row" style="margin-bottom:0"><div><div class="pomo-setting-label"><span class="en">Sessions per cycle</span><span class="ar">جلسات في الدورة</span></div><div class="pomo-setting-sub"><span class="en">then long break</span><span class="ar">ثم راحة طويلة</span></div></div><div class="pomo-setting-ctrl"><button type="button" class="pomo-dur-btn" onclick="changeDur('cycles',-1)">−</button><span class="pomo-dur-val" id="dur-cycles">4</span><button type="button" class="pomo-dur-btn" onclick="changeDur('cycles',1)">+</button></div></div>
+          <div class="pomo-notif-row" style="margin-top:16px"><div class="pomo-setting-label" style="font-size:12.5px"><span class="en">Browser notifications</span><span class="ar">إشعارات المتصفح</span></div><label class="pomo-toggle-wrap"><input type="checkbox" class="pomo-toggle-input" id="notifToggle" onchange="toggleNotif()"/><span class="pomo-toggle-slider"></span></label></div>
         </div>
-
-        <!-- Session log -->
-        <div class="panel">
-          <div class="log-header">
-            <div class="log-title"><span class="en">Today's Sessions</span><span class="ar">جلسات اليوم</span></div>
-            <button class="log-clear" onclick="clearLog()"><span class="en">Clear</span><span class="ar">مسح</span></button>
-          </div>
-
-          <div class="log-stats" id="logStats" style="display:none">
-            <div class="log-stat">
-              <div class="log-stat-n" id="logStatFocus">0</div>
-              <div class="log-stat-l"><span class="en">Focus</span><span class="ar">تركيز</span></div>
-            </div>
-            <div class="log-stat">
-              <div class="log-stat-n" id="logStatMin">0</div>
-              <div class="log-stat-l"><span class="en">Minutes</span><span class="ar">دقيقة</span></div>
-            </div>
-            <div class="log-stat">
-              <div class="log-stat-n" id="logStatBreaks">0</div>
-              <div class="log-stat-l"><span class="en">Breaks</span><span class="ar">استراحات</span></div>
-            </div>
-          </div>
-
-          <div id="logEmpty" class="log-empty">
-            <span class="en">No sessions yet. Start your first focus block.</span>
-            <span class="ar">لا جلسات بعد. ابدأ كتلة التركيز الأولى.</span>
-          </div>
-          <div class="log-list" id="logList"></div>
+        <div class="pomo-panel">
+          <div class="pomo-log-header"><div class="pomo-panel-title" style="margin:0"><span class="en">Today's Sessions</span><span class="ar">جلسات اليوم</span></div><button type="button" class="pomo-log-clear" onclick="clearLog()"><span class="en">Clear</span><span class="ar">مسح</span></button></div>
+          <div class="pomo-log-stats" id="logStats" style="display:none"><div class="pomo-log-stat"><div class="pomo-log-stat-n" id="logStatFocus">0</div><div class="pomo-log-stat-l"><span class="en">Focus</span><span class="ar">تركيز</span></div></div><div class="pomo-log-stat"><div class="pomo-log-stat-n" id="logStatMin">0</div><div class="pomo-log-stat-l"><span class="en">Minutes</span><span class="ar">دقيقة</span></div></div><div class="pomo-log-stat"><div class="pomo-log-stat-n" id="logStatBreaks">0</div><div class="pomo-log-stat-l"><span class="en">Breaks</span><span class="ar">استراحات</span></div></div></div>
+          <div id="logEmpty" class="pomo-log-empty"><span class="en">No sessions yet. Start your first focus block.</span><span class="ar">لا جلسات بعد. ابدأ كتلة التركيز الأولى.</span></div>
+          <div class="pomo-log-list" id="logList"></div>
         </div>
-
       </div>
-    </div><!-- /tool-grid -->
+    </div>
   </div>
-</section>
 
+  <section class="tool-tickets-rail" aria-labelledby="related-tools-title">
+    <header class="tool-tickets-head">
+      <p class="tool-tickets-eyebrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+        <span class="en">Continue Your Journey</span><span class="ar">أكمل رحلتك</span>
+      </p>
+      <h2 class="tool-tickets-title" id="related-tools-title"><span class="en">Related Productivity Tools</span><span class="ar">أدوات الإنتاجية ذات الصلة</span></h2>
+    </header>
+    <div class="tool-tickets-track">
+      <a href="/tools/plant-watering.html" class="tool-ticket tool-ticket--life">
+        <div class="tool-ticket-stub"><span class="tool-ticket-num">01</span></div>
+        <div class="tool-ticket-perforation" aria-hidden="true"></div>
+        <div class="tool-ticket-body">
+          <span class="tool-ticket-kicker"><span class="en">Life</span><span class="ar">حياة</span></span>
+          <h3><span class="en">Plant Watering</span><span class="ar">جدول الري</span></h3>
+          <p><span class="en">A calm break ritual between sessions.</span><span class="ar">طقس راحة هادئ بين الجلسات.</span></p>
+          <span class="tool-ticket-cta"><span class="en">Open tool →</span><span class="ar">← افتح الأداة</span></span>
+        </div>
+      </a>
+      <a href="/tools/age-calculator.html" class="tool-ticket tool-ticket--life">
+        <div class="tool-ticket-stub"><span class="tool-ticket-num">02</span></div>
+        <div class="tool-ticket-perforation" aria-hidden="true"></div>
+        <div class="tool-ticket-body">
+          <span class="tool-ticket-kicker"><span class="en">Life</span><span class="ar">حياة</span></span>
+          <h3><span class="en">Age Calculator</span><span class="ar">حاسبة العمر</span></h3>
+          <p><span class="en">Track deadlines and milestones.</span><span class="ar">تتبع المواعيد والمعالم.</span></p>
+          <span class="tool-ticket-cta"><span class="en">Open tool →</span><span class="ar">← افتح الأداة</span></span>
+        </div>
+      </a>
+      <a href="/tools/password-generator.html" class="tool-ticket tool-ticket--life">
+        <div class="tool-ticket-stub"><span class="tool-ticket-num">03</span></div>
+        <div class="tool-ticket-perforation" aria-hidden="true"></div>
+        <div class="tool-ticket-body">
+          <span class="tool-ticket-kicker"><span class="en">Security</span><span class="ar">أمان</span></span>
+          <h3><span class="en">Password Generator</span><span class="ar">مولّد كلمات المرور</span></h3>
+          <p><span class="en">Secure accounts in seconds.</span><span class="ar">أمّن حساباتك في ثوانٍ.</span></p>
+          <span class="tool-ticket-cta"><span class="en">Open tool →</span><span class="ar">← افتح الأداة</span></span>
+        </div>
+      </a>
+    </div>
+  </section>
+</main>
 
-<!-- FOOTER -->
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-accent" aria-hidden="true"></div>
+  <div class="footer-inner">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <a href="/index.html" class="footer-logo" aria-label="DOTFORLIFE">
+          <img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" width="auto" loading="lazy">
+        </a>
+        <p class="footer-tagline"><span class="en">One calm place for your family's everyday decisions. Free, always.</span><span class="ar">مكان هادئ واحد لقرارات عائلتك اليومية. مجاني دائماً.</span></p>
+        <p class="footer-motto"><span class="en">Life, at ease.</span><span class="ar">الحياة، براحة.</span></p>
+      </div>
+      <div class="footer-links-grid">
+        <div class="footer-col">
+          <h4><span class="en">Life</span><span class="ar">الحياة</span></h4>
+          <ul>
+            <li><a href="/health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
+            <li><a href="/finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li>
+            <li><a href="/real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li>
+            <li><a href="/travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li>
+            <li><a href="/islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4><span class="en">Tools</span><span class="ar">الأدوات</span></h4>
+          <ul>
+            <li><a href="/tools/bmi-calculator.html"><span class="en">BMI Calculator</span><span class="ar">حاسبة BMI</span></a></li>
+            <li><a href="/tools/calorie-calculator.html"><span class="en">Calorie Calculator</span><span class="ar">حاسبة السعرات</span></a></li>
+            <li><a href="/tools/water-calculator.html"><span class="en">Hydration</span><span class="ar">الترطيب</span></a></li>
+            <li><a href="/tools/body-fat-calculator.html"><span class="en">Body Fat</span><span class="ar">الدهون</span></a></li>
+            <li><a href="/library.html"><span class="en">All Tools</span><span class="ar">كل الأدوات</span></a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4><span class="en">Discover</span><span class="ar">اكتشف</span></h4>
+          <ul>
+            <li><a href="/blog.html"><span class="en">Blog</span><span class="ar">المدونة</span></a></li>
+            <li><a href="/archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a></li>
+            <li><a href="/our-vision.html"><span class="en">Our Vision</span><span class="ar">رؤيتنا</span></a></li>
+            <li><a href="/pregnancy-journey.html"><span class="en">Pregnancy Journey</span><span class="ar">رحلة الحمل</span></a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4><span class="en">Company</span><span class="ar">الشركة</span></h4>
+          <ul>
+            <li><a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a></li>
+            <li><a href="/contact.html"><span class="en">Contact</span><span class="ar">تواصل</span></a></li>
+            <li><a href="/editorial-standards.html"><span class="en">Editorial Standards</span><span class="ar">المعايير التحريرية</span></a></li>
+            <li><a href="/privacy-policy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a></li>
+            <li><a href="/terms.html"><span class="en">Terms</span><span class="ar">الشروط</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 DOTFORLIFE · <span class="en">Free for families, always.</span><span class="ar">مجاني للعائلات، دائماً.</span></span>
+      <div class="footer-bottom-links">
+        <a href="/privacy-policy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a>
+        <a href="/terms.html"><span class="en">Terms</span><span class="ar">الشروط</span></a>
+        <a href="/contact.html"><span class="en">Contact</span><span class="ar">تواصل</span></a>
+      </div>
+    </div>
+  </div>
+</footer>
 
+<nav class="dfl-mobile-nav" aria-label="Mobile navigation">
+  <a href="/index.html" class="dfl-mnav-item" aria-label="Home">
+    <svg viewBox="0 0 24 24"><polyline points="3 9 12 2 21 9"/><path d="M5 9v11a1 1 0 001 1h4v-6h4v6h4a1 1 0 001-1V9"/></svg>
+    <span class="en">Home</span><span class="ar">الرئيسية</span>
+  </a>
+  <a href="/library.html" class="dfl-mnav-item active" aria-label="Library">
+    <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+    <span class="en">Library</span><span class="ar">المكتبة</span>
+  </a>
+  <a href="/finance.html" class="dfl-mnav-item" aria-label="Finance">
+    <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+    <span class="en">Finance</span><span class="ar">المالية</span>
+  </a>
+  <a href="/islamic.html" class="dfl-mnav-item" aria-label="Islamic">
+    <svg viewBox="0 0 24 24"><path d="M21 10.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l2.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+    <span class="en">Islamic</span><span class="ar">الإسلامية</span>
+  </a>
+  <a href="/travel.html" class="dfl-mnav-item" aria-label="Travel">
+    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    <span class="en">Travel</span><span class="ar">السفر</span>
+  </a>
+</nav>
+
+<div class="mobile-dropdown" id="mobile-dropdown" aria-hidden="true">
+  <div class="md-links">
+    <a href="/health.html"><span class="en">Health</span><span class="ar">الصحة</span></a>
+    <a href="/finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a>
+    <a href="/real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a>
+    <a href="/travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a>
+    <a href="/islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a>
+    <a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a>
+    <a href="/archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a>
+    <a href="/blog.html"><span class="en">Blog</span><span class="ar">المدونة</span></a>
+    <a href="/library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a>
+  </div>
+  <div class="md-controls">
+    <button class="nav-btn" id="lang-toggle-mobile"><span class="en">عربي</span><span class="ar">English</span></button>
+    <button class="nav-btn" id="theme-toggle-mobile">
+      <svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </button>
+  </div>
+</div>
+
+<script src="/scripts/global.js?v=20260618a" defer></script>
 <script>
 /* ─── STATE ──────────────────────────────────────────────────────── */
 var durations = { work: 25, short: 5, long: 15, cycles: 4 };
@@ -679,21 +557,8 @@ function applyLangVisibility() {
   document.querySelectorAll('.en').forEach(function(el){ el.style.display = lang==='ar' ? 'none' : ''; });
   document.querySelectorAll('.ar').forEach(function(el){ el.style.display = lang==='en' ? 'none' : ''; });
 }
-function toggleLang() {
-  var h = document.documentElement;
-  var next = h.getAttribute('data-lang') === 'en' ? 'ar' : 'en';
-  h.setAttribute('data-lang', next);
-  h.setAttribute('lang', next);
-  h.setAttribute('dir', next === 'ar' ? 'rtl' : 'ltr');
-  localStorage.setItem('dfl-lang', next);
-  applyLangVisibility();
-}
-function toggleTheme() {
-  var h = document.documentElement;
-  var next = h.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-  h.setAttribute('data-theme', next);
-  localStorage.setItem('dfl-theme', next);
-}
+
+
 
 /* ─── INIT ───────────────────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', function() {
@@ -703,163 +568,8 @@ document.addEventListener('DOMContentLoaded', function() {
   renderLog();
   applyLangVisibility();
 });
+
+document.addEventListener('dfl:langchange', applyLangVisibility);
+
 </script>
-
-  <!-- DFL CANONICAL FOOTER -->
-  <!-- ═══ UNIFIED FOOTER ══════════════════════════════════════ -->
-<footer class="site-footer" role="contentinfo">
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <a href="../index.html" class="footer-logo" aria-label="DOTFORLIFE">
-          <img src="../logo1-footer.webp" alt="DOTFORLIFE" width="100" height="100" loading="lazy">
-        </a>
-        <p><span class="en">One calm place for your family's everyday needs. Free, always.</span><span class="ar">مكان هادئ واحد لاحتياجات عائلتك اليومية. مجاني دائماً.</span></p>
-      </div>
-      <div class="footer-cols">
-        <div class="footer-col">
-          <h4><span class="en">Life</span><span class="ar">الحياة</span></h4>
-          <ul>
-            <li><a href="../health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
-            <li><a href="../finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li>
-            <li><a href="../real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li>
-            <li><a href="../travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li>
-            <li><a href="../islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4><span class="en">Tools</span><span class="ar">الأدوات</span></h4>
-          <ul>
-            <li><a href="../tools/bmi-calculator.html"><span class="en">BMI Calculator</span><span class="ar">حاسبة BMI</span></a></li>
-            <li><a href="../tools/mortgage-calculator.html"><span class="en">Mortgage</span><span class="ar">التمويل</span></a></li>
-            <li><a href="../tools/zakat-calculator.html"><span class="en">Zakat</span><span class="ar">الزكاة</span></a></li>
-            <li><a href="../tools/hijri-converter.html"><span class="en">Hijri Date</span><span class="ar">التاريخ الهجري</span></a></li>
-            <li><a href="../library.html"><span class="en">All Tools</span><span class="ar">كل الأدوات</span></a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4><span class="en">Company</span><span class="ar">الشركة</span></h4>
-          <ul>
-            <li><a href="../about.html"><span class="en">About</span><span class="ar">عنّا</span></a></li>
-            <li><a href="../blog.html"><span class="en">blog</span><span class="ar">المدونة</span></a></li>
-            <li><a href="../contact.html"><span class="en">Contact</span><span class="ar">تواصل</span></a></li>
-            <li><a href="../privacy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a></li>
-            <li><a href="../privacy-policy.html"><span class="en">Privacy Policy</span><span class="ar">سياسة الخصوصية</span></a></li>
-            <li><a href="../terms.html"><span class="en">Terms</span><span class="ar">الشروط</span></a></li>
-            <li><a href="../editorial-standards.html"><span class="en">Editorial Standards</span><span class="ar">المعايير التحريرية</span></a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <hr class="footer-divider">
-    <div class="footer-bottom">
-      <span>© 2026 DOTFORLIFE, <span class="en">Free for families, always.</span><span class="ar">مجاني للعائلات، دائماً.</span></span>
-      <div class="footer-bottom-links">
-        <a href="../privacy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a>
-        <a href="../privacy-policy.html"><span class="en">Privacy Policy</span><span class="ar">سياسة الخصوصية</span></a>
-        <a href="../terms.html"><span class="en">Terms</span><span class="ar">الشروط</span></a>
-      </div>
-    </div>
-  </div>
-</footer>
-<!-- ════════════════════════════════════════════════════════════ -->
-
-  <!-- DFL MOBILE NAV -->
-  
-<section class="dfl-related" aria-label="Related tools and guides">
-  <div class="container">
-    <div class="dfl-related-label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg> <span class="en">Continue Your Journey</span><span class="ar">أكمل رحلتك</span></div>
-    <h2 class="dfl-related-title"><span class="en">Related Productivity Tools</span><span class="ar">أدوات الإنتاجية ذات الصلة</span></h2>
-    <p class="dfl-related-sub"><span class="en">Stay focused and organized</span><span class="ar">ابقَ مركزاً ومنظماً</span></p>
-    <div class="dfl-related-grid">
-      <a href="/tasks.html" class="dfl-rc">
-        <div class="dfl-rc-top"><span class="dfl-rc-icon">✓</span><div><div class="dfl-rc-name en">Tasks & Goals</div><div class="dfl-rc-name ar">المهام والأهداف</div></div></div>
-        <div class="dfl-rc-desc en">Track your daily tasks</div><div class="dfl-rc-desc ar">تتبع مهامك اليومية</div>
-        <div class="dfl-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
-      </a>
-      <a href="/notes.html" class="dfl-rc">
-        <div class="dfl-rc-top"><span class="dfl-rc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span><div><div class="dfl-rc-name en">Notes</div><div class="dfl-rc-name ar">الملاحظات</div></div></div>
-        <div class="dfl-rc-desc en">Quick notes and ideas</div><div class="dfl-rc-desc ar">ملاحظات وأفكار سريعة</div>
-        <div class="dfl-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
-      </a>
-      <a href="/tools/plant-watering.html" class="dfl-rc">
-        <div class="dfl-rc-top"><span class="dfl-rc-icon">🪴</span><div><div class="dfl-rc-name en">Plant Watering Tracker</div><div class="dfl-rc-name ar">متتبع سقي النباتات</div></div></div>
-        <div class="dfl-rc-desc en">Never forget to water plants</div><div class="dfl-rc-desc ar">لا تنسي سقي نباتاتك</div>
-        <div class="dfl-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
-      </a>
-      <a href="/blog/notification-cost-productivity.html" class="dfl-rc guide">
-        <div class="dfl-rc-top"><span class="dfl-rc-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/></svg></span><div><div class="dfl-rc-name en">The Real Cost of Notifications</div><div class="dfl-rc-name ar">تكلفة الإشعارات الحقيقية</div></div></div>
-        <div class="dfl-rc-desc en">Reclaim your focus time</div><div class="dfl-rc-desc ar">استعد وقت تركيزك</div>
-        <div class="dfl-rc-cta"><span class="en">Read guide →</span><span class="ar">اقرأ الدليل ←</span></div>
-      </a>
-    </div>
-  </div>
-</section>
-
-
-</main>
-
-  <script src="/tool-share.js" defer></script>
-<!-- ═══ UNIFIED MOBILE NAV ══════════════════════════════════ -->
-<nav class="dfl-mobile-nav" aria-label="Mobile navigation">
-  <a href="../index.html" class="dfl-mnav-item" aria-label="Home">
-    <svg viewBox="0 0 24 24"><polyline points="3 9 12 2 21 9"/><path d="M5 9v11a1 1 0 001 1h4v-6h4v6h4a1 1 0 001-1V9"/></svg>
-    <span class="en">Home</span><span class="ar">الرئيسية</span>
-  </a>
-  <a href="../health.html" class="dfl-mnav-item" aria-label="Health">
-    <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-    <span class="en">Health</span><span class="ar">الصحة</span>
-  </a>
-  <a href="../finance.html" class="dfl-mnav-item" aria-label="Finance">
-    <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-    <span class="en">Finance</span><span class="ar">المالية</span>
-  </a>
-  <a href="../islamic.html" class="dfl-mnav-item" aria-label="Islamic">
-    <svg viewBox="0 0 24 24"><path d="M21 10.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l2.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
-    <span class="en">Islamic</span><span class="ar">الإسلامية</span>
-  </a>
-  <a href="../travel.html" class="dfl-mnav-item" aria-label="Travel">
-    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-    <span class="en">Travel</span><span class="ar">السفر</span>
-  </a>
-</nav>
-
-<!-- ── Mobile dropdown menu ── -->
-<div class="mobile-dropdown" id="mobile-dropdown" aria-hidden="true">
-  <div class="md-links">
-    <a href="../health.html"><span class="en">Health</span><span class="ar">الصحة</span></a>
-    <a href="../finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a>
-    <a href="../real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a>
-    <a href="../travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a>
-    <a href="../islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a>
-    <a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a>
-    <a href="../archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a>
-    <a href="/blog.html"><span class="en">Blog</span><span class="ar">المدونة</span></a>
-    <a href="../library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a>
-  </div>
-  <div class="md-controls">
-    <button class="nav-btn" id="lang-toggle-mobile"><span class="en">عربي</span><span class="ar">English</span></button>
-    <button class="nav-btn" id="theme-toggle-mobile">
-      <svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      <svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-    </button>
-  </div>
-</div>
-<!-- ═══════════════════════════════════════
-     CONTENT
-═══════════════════════════════════════ -->
-<!-- 
-  page_type: page
-  cluster: health
-  authority_score: 76
-  inbound_links: 14
-  outbound_links: 11
-  link_velocity: high
-  priority_indexing: true
-  content_depth: 37
-  word_count: 1544
-  canonical: https://www.dotforlife.com/tools/pomodoro.html
--->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1436107577087160" crossorigin="anonymous"></script>
 </body></html>
-</html>

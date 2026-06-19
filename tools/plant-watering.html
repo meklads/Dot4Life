@@ -1,112 +1,43 @@
 <!DOCTYPE html>
-<html lang="ar" data-lang="ar" data-theme="light">
+<html lang="en" data-theme="light" data-lang="en" dir="ltr">
 <head>
-  <!-- Critical: prevent theme flash (inline) -->
-  <script>
-(function(){
-  /* theme */
-  var tb=document.getElementById("theme-toggle");
-  if(tb)tb.addEventListener("click",function(){
-    var h=document.documentElement,t=h.getAttribute("data-theme")==="dark"?"light":"dark";
-    h.setAttribute("data-theme",t);localStorage.setItem("dfl-theme",t);
-  });
-  /* lang */
-  var lb=document.getElementById("lang-toggle");
-  if(lb)lb.addEventListener("click",function(){
-    var h=document.documentElement,l=h.getAttribute("data-lang")==="ar"?"en":"ar";
-    h.setAttribute("data-lang",l);h.setAttribute("lang",l);
-    h.setAttribute("dir",l==="ar"?"rtl":"ltr");localStorage.setItem("dfl-lang",l);
-  });
-  /* scroll shadow */
-  var nb=document.getElementById("navbar");
-  if(nb)window.addEventListener("scroll",function(){nb.classList.toggle("scrolled",window.scrollY>10);},{passive:true});
-  /* reveal */
-  if("IntersectionObserver" in window){
-    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add("visible");});},{threshold:0.1});
-    document.querySelectorAll(".tool-rv, .reveal").forEach(function(el){io.observe(el);});
-  } else document.querySelectorAll(".tool-rv, .reveal").forEach(function(el){el.classList.add("visible");});
-
-  /* hamburger menu */
-  (function(){
-    var hb = document.getElementById('hamburger-btn');
-    var dd = document.getElementById('mobile-dropdown');
-    if (!hb || !dd) return;
-    function toggle(e) {
-      e.stopPropagation();
-      var open = dd.classList.toggle('open');
-      hb.classList.toggle('open', open);
-      hb.setAttribute('aria-expanded', open);
-      document.body.classList.toggle('menu-open', open);
-    }
-    function closeM() {
-      dd.classList.remove('open');
-      hb.classList.remove('open');
-      hb.setAttribute('aria-expanded', 'false');
-      document.body.classList.remove('menu-open');
-    }
-    hb.addEventListener('click', toggle);
-    document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeM(); });
-    dd.addEventListener('click', function(e){ if(e.target===dd) closeM(); });
-  })();
-
-  })();
-</script>
 <meta charset="UTF-8"/>
-
-  <script>(function(){var p=new URLSearchParams(location.search),gd=(function(){try{var z=(Intl.DateTimeFormat().resolvedOptions().timeZone||"");return /Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test(z)?"ar":"en";}catch(e){return "ar";}})(),l=p.get("lang")||localStorage.getItem("dfl-lang")||gd,t=p.get("theme")||localStorage.getItem("dfl-theme")||"light",h=document.documentElement;h.setAttribute("data-theme",t);h.setAttribute("data-lang",l);h.setAttribute("lang",l);h.setAttribute("dir",l==="ar"?"rtl":"ltr");if(p.get("lang"))localStorage.setItem("dfl-lang",l);if(p.get("theme"))localStorage.setItem("dfl-theme",t);})()</script>
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
-<title>حاسبة ري النباتات الخليجية 2025 | Plant Watering Calculator GCC, DotForLife</title>
-<meta name="description" content="أول حاسبة ري نباتات متخصصة بالمناخ الخليجي. تحسب كمية الماء ومعدل الري لنباتاتك بناءً على نوع النبات والمناخ الخليجي ودرجة الحرارة. مجانية وثنائية اللغة."/>
-<meta name="keywords" content="حاسبة ري النباتات, ري النباتات الخليج, نباتات السعودية, plant watering calculator, GCC plants, desert plants watering, نباتات الخليج"/>
-<link rel="canonical" href="https://www.dotforlife.com/tools/plant-watering.html"/>
-  <link rel="alternate" hreflang="ar" href="https://www.dotforlife.com/tools/plant-watering.html?lang=ar" />
-  <link rel="alternate" hreflang="en" href="https://www.dotforlife.com/tools/plant-watering.html?lang=en" />
-  <link rel="alternate" hreflang="x-default" href="https://www.dotforlife.com/tools/plant-watering.html" />
-  <meta property="og:site_name" content="DOTFORLIFE" />
-  <meta property="og:title" content="حاسبة ري النباتات الخليجية 2025 | Plant Watering Calculator GCC, DotForLife" />
-  <meta property="og:description" content="أول حاسبة ري نباتات متخصصة بالمناخ الخليجي. تحسب كمية الماء ومعدل الري لنباتاتك بناءً على نوع النبات والمناخ الخليجي ودرجة الحرارة. مجانية وثنائية اللغة." />
-  <meta property="og:image" content="https://www.dotforlife.com/og/plants.jpg" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.dotforlife.com/tools/plant-watering.html" />
-  <meta name="twitter:image" content="https://www.dotforlife.com/og/plants.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="حاسبة ري النباتات الخليجية 2025 | Plant Watering Calculator GCC, DotForLife" />
-  <meta name="twitter:description" content="أول حاسبة ري نباتات متخصصة بالمناخ الخليجي. تحسب كمية الماء ومعدل الري لنباتاتك بناءً على نوع النبات والمناخ الخليجي ودرجة الحرارة. مجانية وثنائية اللغة." />
-  <!-- Performance: resource hints -->
-  <meta http-equiv="x-dns-prefetch-control" content="on" />
-  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <!-- Font loading strategy: swap + non-blocking -->
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Inter:wght@400;500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Inter:wght@400;500;600;700;800&display=swap" /></noscript>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[
-{"@type":"WebApplication","name":"Plant Watering Calculator, حاسبة ري النباتات الخليجية","url":"https://dotforlife.com/tools/plant-watering.html","applicationCategory":"LifestyleApplication","offers":{"@type":"Offer","price":"0"}},
-{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"الرئيسية","item":"https://dotforlife.com/"},{"@type":"ListItem","position":2,"name":"النباتات","item":"https://dotforlife.com/plants.html"},{"@type":"ListItem","position":3,"name":"حاسبة الري","item":"https://dotforlife.com/tools/plant-watering.html"}]},
-{"@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"كم مرة أسقي نباتاتي في الصيف الخليجي؟","acceptedAnswer":{"@type":"Answer","text":"في الصيف الخليجي (40-50°م) تحتاج معظم النباتات الداخلية للري كل 2-3 أيام، والخارجية كل يوم أو يومين. النباتات الصحراوية كالصبار مرة كل 7-14 يوماً."}},
-{"@type":"Question","name":"ما هي النباتات الأنسب للمناخ الخليجي؟","acceptedAnswer":{"@type":"Answer","text":"الصبار، الأغاف، البوغنفيلية، النخيل، الفلفل الحار، الباذنجان، الريحان، الياسمين، والفيكس من أكثر النباتات تحملاً للحرارة الشديدة في منطقة الخليج."}}
-]}]}
-</script>
-<link rel="stylesheet" href="/styles/global.css?v=20260617e"/>
-	<link rel="stylesheet" href="/styles/tools-shared.css?v=20260608a">
-	<link rel="stylesheet" href="/styles/pages/tools_plant-watering.css?v=20260617b">
-<!-- DFL Analytics v1 -->
+<script>(function(){var p=new URLSearchParams(location.search),gd=(function(){try{var z=(Intl.DateTimeFormat().resolvedOptions().timeZone||"");return /Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test(z)?"ar":"en";}catch(e){return "ar";}})(),l=p.get("lang")||localStorage.getItem("dfl-lang")||gd,t=p.get("theme")||localStorage.getItem("dfl-theme")||"light",h=document.documentElement;h.setAttribute("data-theme",t);h.setAttribute("data-lang",l);h.setAttribute("lang",l);h.setAttribute("dir",l==="ar"?"rtl":"ltr");if(p.get("lang"))localStorage.setItem("dfl-lang",l);if(p.get("theme"))localStorage.setItem("dfl-theme",t);})()</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta http-equiv="x-dns-prefetch-control" content="on" />
+<link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+<link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<title>Plant Watering Calculator GCC | حاسبة ري النباتات — Dot For Life</title>
+<meta name="description" content="GCC plant watering calculator. Water amount and schedule by plant type, climate zone, season, and location. Free bilingual tool."/>
+<link rel="canonical" href="https://dotforlife.com/tools/plant-watering.html"/>
+<link rel="alternate" hreflang="ar" href="https://dotforlife.com/tools/plant-watering.html?lang=ar" />
+<link rel="alternate" hreflang="en" href="https://dotforlife.com/tools/plant-watering.html?lang=en" />
+<link rel="alternate" hreflang="x-default" href="https://dotforlife.com/tools/plant-watering.html" />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Almarai:wght@400;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Almarai:wght@400;700;800&display=swap"/></noscript>
+<link rel="stylesheet" href="/styles/global.css?v=20260618f"/>
+<link rel="stylesheet" href="/styles/tools-shared.css?v=20260608a">
+<link rel="stylesheet" href="/styles/tools-flagship.css?v=20260625b">
+<link rel="stylesheet" href="/styles/tools-accents.css?v=20260625a">
+<link rel="stylesheet" href="/styles/pages/tools_plant-watering.css?v=20260625a">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dotforlife.com/tools/plant-watering.html">
+<meta property="og:title" content="Plant Watering Calculator | Dot4Life">
+<meta property="og:description" content="First plant watering calculator built for Gulf climate zones.">
+<meta property="og:image" content="https://dotforlife.com/og/og-default.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Plant Watering Calculator | Dot4Life">
+<meta name="twitter:description" content="First plant watering calculator built for Gulf climate zones.">
+<meta name="twitter:image" content="https://dotforlife.com/og/og-default.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Plant Watering Calculator | حاسبة ري النباتات","url":"https://dotforlife.com/tools/plant-watering.html","applicationCategory":"LifestyleApplication","offers":{"@type":"Offer","price":"0"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How often should I water plants in Gulf summer?","acceptedAnswer":{"@type":"Answer","text":"Most indoor plants need watering every 2-3 days in Gulf summer (40-50°C). Desert plants like cactus every 7-14 days."}}]}]}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3G1XPV4F0G"></script>
 <script>
-window.dataLayer=window.dataLayer||[];
+window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
-gtag('js',new Date());
-gtag('config','G-3G1XPV4F0G',{
-  page_title:document.title,
-  page_location:window.location.href,
-  send_page_view:true,
-  cookie_flags:'SameSite=None;Secure'
-});
-// DFL Event helpers
+gtag('js', new Date());
+gtag('config', 'G-3G1XPV4F0G');
 window.dflTrack=function(event,params){
   gtag('event',event,Object.assign({
     page_path:location.pathname,
@@ -114,39 +45,23 @@ window.dflTrack=function(event,params){
   },params||{}));
 };
 </script>
-<!-- DFL_FIX3_APPLIED -->
-
-  <!-- DFL CANONICAL SYSTEM CSS -->
-  
-<script src="/scripts/global.js" defer></script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3G1XPV4F0G"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-3G1XPV4F0G');
-</script>
-
 </head>
-<body class="category-page has-subnav">
-  <!-- DFL CANONICAL NAVBAR -->
-  <!-- ═══ UNIFIED HEADER ══════════════════════════════════════ -->
-<nav id="navbar" role="navigation" aria-label="Main navigation">
+<body class="tool-flagship-page no-subnav" data-tool="plant-watering">
+<nav id="navbar" class="index-nav" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
-    <a href="../index.html" class="nav-logo" aria-label="DOTFORLIFE Home">
-      <img src="../logo1-footer.webp" alt="DOTFORLIFE" width="100" height="100" style="height:100px;width:auto;object-fit:contain;" width="100" height="100" loading="lazy">
+    <a href="/index.html" class="nav-logo" aria-label="DOTFORLIFE Home">
+      <img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" width="115" height="115" loading="eager" fetchpriority="high">
     </a>
     <ul class="nav-links">
-      <li><a href="../health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
-      <li><a href="../finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li>
-      <li><a href="../real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li>
-      <li><a href="../travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li>
-      <li><a href="../islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li>
+      <li><a href="/health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
+      <li><a href="/finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li>
+      <li><a href="/real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li>
+      <li><a href="/travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li>
+      <li><a href="/islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li>
       <li><a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a></li>
-      <li><a href="../archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a></li>
+      <li><a href="/archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a></li>
       <li><a href="/blog.html"><span class="en">blog</span><span class="ar">المدونة</span></a></li>
-      <li><a href="../library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a></li>
+      <li><a href="/library.html" aria-current="page"><span class="en">Library</span><span class="ar">المكتبة</span></a></li>
     </ul>
     <div class="nav-controls">
       <button class="nav-btn" id="lang-toggle" aria-label="Switch language"><span class="en">عربي</span><span class="ar">English</span></button>
@@ -157,149 +72,287 @@ window.dflTrack=function(event,params){
     </div>
   </div>
 </nav>
-<!-- ═══════════════════════════════════════
-       HERO
-  ═══════════════════════════════════════ -->
 
+<div class="tool-hero">
+  <div class="tool-hero-inner">
+    <nav class="tool-breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html"><span class="en">Home</span><span class="ar">الرئيسية</span></a>
+      <span class="tool-breadcrumb-sep" aria-hidden="true">/</span>
+      <a href="/plants.html"><span class="en">Plants</span><span class="ar">النباتات</span></a>
+      <span class="tool-breadcrumb-sep" aria-hidden="true">/</span>
+      <span><span class="en">Plant Watering Calculator</span><span class="ar">حاسبة ري النباتات</span></span>
+    </nav>
+    <p class="tool-eyebrow">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+      <span class="en">Plants Tool · First in the GCC</span><span class="ar">أداة النباتات · الأول خليجياً</span>
+    </p>
+    <h1 id="tool-title"><span class="en">Plant Watering Calculator for the Gulf</span><span class="ar">حاسبة ري النباتات الخليجية</span></h1>
+    <p class="tool-hero-desc"><span class="en">The first calculator built for Gulf climate. Get water amount and frequency based on plant type, season, and location.</span><span class="ar">أول حاسبة متخصصة بالمناخ الخليجي. تحسب كمية الماء وتردد الري بناءً على نوع النبات والموسم والموقع.</span></p>
+    <ul class="tool-trust">
+      <li><span class="en">GCC climate zones</span><span class="ar">مناطق مناخ الخليج</span></li>
+      <li><span class="en">12 plant types</span><span class="ar">12 نوع نبات</span></li>
+      <li><span class="en">Seasonal adjust</span><span class="ar">تعديل موسمي</span></li>
+    </ul>
+  </div>
+</div>
+<main class="tool-mn">
+  <div class="tool-workspace">
+    <div class="tool-panel">
+      <div class="tool-panel-hdr">
+        <h2><span class="en">Select Your Plant</span><span class="ar">اختر نباتك</span></h2>
+      </div>
+      <div class="tool-panel-body">
+        <div class="pw-plant-grid" id="plantGrid"></div>
+      </div>
+    </div>
 
+    <div class="tool-panel">
+      <div class="tool-panel-hdr">
+        <h2><span class="en">Growing Conditions</span><span class="ar">ظروف النمو</span></h2>
+      </div>
+      <div class="tool-panel-body">
+        <div class="pw-grid-2">
+          <div class="t-field">
+            <label class="t-label" for="climateZone"><span class="en">GCC Climate Zone</span><span class="ar">المنطقة المناخية الخليجية</span></label>
+            <select class="t-input" id="climateZone">
+              <option value="coastal_humid"><span class="en">Coastal Humid (Jeddah, Abu Dhabi, Manama)</span><span class="ar">ساحلي رطب (جدة، أبوظبي، المنامة)</span></option>
+              <option value="desert_hot"><span class="en">Desert Hot (Riyadh, Dammam)</span><span class="ar">صحراوي حار (الرياض، الدمام)</span></option>
+              <option value="arid_extreme"><span class="en">Arid Extreme (Al-Qassim, Ha'il)</span><span class="ar">جاف قاسٍ (القصيم، حائل)</span></option>
+              <option value="mountain"><span class="en">Mountain Moderate (Abha, Taif)</span><span class="ar">جبلي معتدل (أبها، الطائف)</span></option>
+              <option value="uae_desert"><span class="en">UAE Desert (Sharjah, Al Ain)</span><span class="ar">إمارات - صحراوي (الشارقة، العين)</span></option>
+              <option value="kuwait_q"><span class="en">Kuwait / Qatar (Extreme Heat)</span><span class="ar">كويتي / قطري (شديد الحرارة)</span></option>
+            </select>
+          </div>
+          <div class="t-field">
+            <label class="t-label" for="season"><span class="en">Current Season</span><span class="ar">الموسم الحالي</span></label>
+            <select class="t-input" id="season">
+              <option value="summer"><span class="en">Summer (Jun–Sep)</span><span class="ar">صيف (يونيو - سبتمبر)</span></option>
+              <option value="spring"><span class="en">Spring (Mar–May)</span><span class="ar">ربيع (مارس - مايو)</span></option>
+              <option value="autumn"><span class="en">Autumn (Oct–Nov)</span><span class="ar">خريف (أكتوبر - نوفمبر)</span></option>
+              <option value="winter"><span class="en">Winter (Dec–Feb)</span><span class="ar">شتاء (ديسمبر - فبراير)</span></option>
+            </select>
+          </div>
+          <div class="t-field">
+            <label class="t-label" for="location"><span class="en">Plant Location</span><span class="ar">موقع النبات</span></label>
+            <select class="t-input" id="location">
+              <option value="indoor"><span class="en">Indoor (with AC)</span><span class="ar">داخلي (مع مكيف)</span></option>
+              <option value="shaded_outdoor"><span class="en">Shaded outdoor</span><span class="ar">خارجي مظلل</span></option>
+              <option value="direct_sun"><span class="en">Full sun outdoor</span><span class="ar">خارجي شمس مباشرة</span></option>
+              <option value="balcony"><span class="en">Balcony</span><span class="ar">شرفة / بلكونة</span></option>
+            </select>
+          </div>
+          <div class="t-field">
+            <label class="t-label" for="potSize"><span class="en">Pot Size / Area</span><span class="ar">حجم الوعاء / المساحة</span></label>
+            <select class="t-input" id="potSize">
+              <option value="small"><span class="en">Small (&lt;20cm pot)</span><span class="ar">صغير (&lt; 20 سم)</span></option>
+              <option value="medium"><span class="en">Medium (20-40cm pot)</span><span class="ar">متوسط (20-40 سم)</span></option>
+              <option value="large"><span class="en">Large (&gt;40cm pot)</span><span class="ar">كبير (&gt; 40 سم)</span></option>
+              <option value="garden"><span class="en">Garden / open ground</span><span class="ar">حديقة / أرض مفتوحة</span></option>
+            </select>
+          </div>
+        </div>
+        <div class="t-field" style="margin-top:14px">
+          <label class="t-label" for="soilType"><span class="en">Soil Type</span><span class="ar">نوع التربة</span></label>
+          <select class="t-input" id="soilType">
+            <option value="sandy"><span class="en">Sandy (dries fast)</span><span class="ar">رملية (جافة بسرعة)</span></option>
+            <option value="loamy" selected><span class="en">Loamy (balanced)</span><span class="ar">طمية (متوازنة)</span></option>
+            <option value="clay"><span class="en">Clay (retains water)</span><span class="ar">طينية (تحتفظ بالماء)</span></option>
+            <option value="cactus_mix"><span class="en">Cactus/succulent mix</span><span class="ar">خليط صبار وتحميل جيد</span></option>
+          </select>
+        </div>
+        <button class="pw-calc-btn" type="button" onclick="calcWatering()">
+          <span class="en">Calculate Watering Schedule</span><span class="ar">احسب جدول الري</span>
+        </button>
+      </div>
+    </div>
 
-<nav aria-label="breadcrumb" style="max-width:1100px;margin:0 auto;padding:14px 24px 0;display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--muted,#94a3b8);flex-wrap:wrap;">
-  <a href="../index.html" style="color:inherit;text-decoration:none;"><span class="en">Home</span><span class="ar">الرئيسية</span></a>
-  <span style="opacity:.4;">›</span>
-  <a href="../plants.html" style="color:inherit;text-decoration:none;"><span class="en">Plants</span><span class="ar">النباتات</span></a>
-  <span style="opacity:.4;">›</span>
-  <span style="font-weight:600;"><span class="en">Plant Watering Calculator</span><span class="ar">حاسبة ري النباتات</span></span>
+    <div class="pw-results-card" id="resultsCard">
+      <div class="pw-res-grid">
+        <div class="pw-res-item"><div class="pw-res-lbl en">Frequency</div><div class="pw-res-lbl ar">تردد الري</div><div class="pw-res-val" id="resFreq"></div><div class="pw-res-sub" id="resFreqSub"></div></div>
+        <div class="pw-res-item"><div class="pw-res-lbl en">Water amount</div><div class="pw-res-lbl ar">كمية الماء</div><div class="pw-res-val" id="resAmount"></div><div class="pw-res-sub" id="resAmountSub"></div></div>
+        <div class="pw-res-item"><div class="pw-res-lbl en">Best time to water</div><div class="pw-res-lbl ar">أفضل وقت للري</div><div class="pw-res-val" id="resTiming"></div></div>
+      </div>
+      <div class="pw-care-tips" id="careTips"></div>
+    </div>
+  </div>
+
+  <div class="tool-below">
+    <div class="tool-panel">
+      <div class="tool-panel-hdr"><h2><span class="en">GCC Plant Database</span><span class="ar">قاعدة بيانات النباتات الخليجية</span></h2></div>
+      <div class="tool-panel-body"><div class="pw-plant-db" id="plantDB"></div></div>
+    </div>
+    <div class="tool-panel">
+      <div class="tool-panel-hdr"><h2><span class="en">Seasonal Plant Care Guide</span><span class="ar">دليل العناية بالنباتات — الفصول الأربعة</span></h2></div>
+      <div class="tool-panel-body">
+        <div class="pw-season-grid">
+          <div class="pw-season-card"><div class="pw-season-icon">☀️</div><div class="pw-season-name en">Summer</div><div class="pw-season-name ar">الصيف</div><div class="pw-season-temp">40–50°C</div><div class="pw-season-tip en">Water early morning. Shade sensitive plants. Double watering frequency. Avoid fertilizing.</div><div class="pw-season-tip ar">ري صباحي مبكر. تظليل النباتات الحساسة. مضاعفة الري مرتين. تجنب الأسمدة.</div></div>
+          <div class="pw-season-card"><div class="pw-season-icon">🌱</div><div class="pw-season-name en">Spring</div><div class="pw-season-name ar">الربيع</div><div class="pw-season-temp">20–35°C</div><div class="pw-season-tip en">Optimal growing season. Regular watering. Best for planting new species. Fertilizing time.</div><div class="pw-season-tip ar">موسم النمو الأمثل. ريٍّ منتظم. مثالي لزراعة نباتات جديدة. وقت التسميد.</div></div>
+          <div class="pw-season-card"><div class="pw-season-icon">🍂</div><div class="pw-season-name en">Autumn</div><div class="pw-season-name ar">الخريف</div><div class="pw-season-temp">25–38°C</div><div class="pw-season-tip en">Gradually reduce watering. Good pruning time. New plants begin establishing roots.</div><div class="pw-season-tip ar">تخفيف الري تدريجياً. وقت جيد للتقليم. نباتات جديدة تبدأ بالتجذّر.</div></div>
+          <div class="pw-season-card"><div class="pw-season-icon">🌧</div><div class="pw-season-name en">Winter</div><div class="pw-season-name ar">الشتاء</div><div class="pw-season-temp">10–25°C</div><div class="pw-season-tip en">Reduce watering by half. Use rainwater. Protect tropical plants from cold snaps.</div><div class="pw-season-tip ar">تقليل الري إلى النصف. استفد من مياه الأمطار. حماية النباتات الاستوائية من البرد.</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="tool-panel">
+      <div class="tool-panel-hdr"><h2><span class="en">How this is calculated</span><span class="ar">طريقة الحساب</span></h2></div>
+      <div class="tool-panel-body">
+        <p class="en">Schedules based on Royal Horticultural Society guidelines adapted for GCC climate (Köppen BSh/BWh), adjusted for temperature, humidity, and season.</p>
+        <p class="ar">جداول الري من إرشادات الجمعية الملكية للبستنة ومكيَّفة لمناخ الخليج، معدَّلة للحرارة والرطوبة والموسم.</p>
+      </div>
+    </div>
+  </div>
+
+  <section class="tool-tickets-rail" aria-labelledby="related-tools-title">
+    <header class="tool-tickets-head">
+      <p class="tool-tickets-eyebrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+        <span class="en">Continue Your Journey</span><span class="ar">أكمل رحلتك</span>
+      </p>
+      <h2 class="tool-tickets-title" id="related-tools-title"><span class="en">Related Tools &amp; Guides</span><span class="ar">أدوات ودلائل ذات صلة</span></h2>
+    </header>
+    <div class="tool-tickets-track">
+      <a href="/tools/water-calculator.html" class="tool-ticket tool-ticket--water">
+        <div class="tool-ticket-stub"><span class="tool-ticket-num">01</span></div>
+        <div class="tool-ticket-perforation" aria-hidden="true"></div>
+        <div class="tool-ticket-body">
+          <span class="tool-ticket-kicker"><span class="en">Health</span><span class="ar">صحة</span></span>
+          <h3><span class="en">Water Intake</span><span class="ar">حاسبة الماء</span></h3>
+          <p><span class="en">Daily hydration for Gulf climate.</span><span class="ar">الترطيب اليومي لمناخ الخليج.</span></p>
+          <span class="tool-ticket-cta"><span class="en">Open tool →</span><span class="ar">← افتح الأداة</span></span>
+        </div>
+      </a>
+      <a href="/tools/bmi-calculator.html" class="tool-ticket tool-ticket--water">
+        <div class="tool-ticket-stub"><span class="tool-ticket-num">02</span></div>
+        <div class="tool-ticket-perforation" aria-hidden="true"></div>
+        <div class="tool-ticket-body">
+          <span class="tool-ticket-kicker"><span class="en">Health</span><span class="ar">صحة</span></span>
+          <h3><span class="en">BMI Calculator</span><span class="ar">حاسبة BMI</span></h3>
+          <p><span class="en">WHO body mass screening.</span><span class="ar">فحص مؤشر كتلة الجسم.</span></p>
+          <span class="tool-ticket-cta"><span class="en">Open tool →</span><span class="ar">← افتح الأداة</span></span>
+        </div>
+      </a>
+      <a href="/guides/indoor-plants-saudi-arabia.html" class="tool-ticket tool-ticket--travel">
+        <div class="tool-ticket-stub"><span class="tool-ticket-num">03</span></div>
+        <div class="tool-ticket-perforation" aria-hidden="true"></div>
+        <div class="tool-ticket-body">
+          <span class="tool-ticket-kicker"><span class="en">Guide</span><span class="ar">دليل</span></span>
+          <h3><span class="en">Indoor Plants Guide</span><span class="ar">دليل نباتات الخليج</span></h3>
+          <p><span class="en">Best plants for GCC homes.</span><span class="ar">أفضل النباتات للمنازل الخليجية.</span></p>
+          <span class="tool-ticket-cta"><span class="en">Read guide →</span><span class="ar">← اقرأ الدليل</span></span>
+        </div>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-accent" aria-hidden="true"></div>
+  <div class="footer-inner">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <a href="/index.html" class="footer-logo" aria-label="DOTFORLIFE">
+          <img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" width="auto" loading="lazy">
+        </a>
+        <p class="footer-tagline"><span class="en">One calm place for your family's everyday decisions. Free, always.</span><span class="ar">مكان هادئ واحد لقرارات عائلتك اليومية. مجاني دائماً.</span></p>
+        <p class="footer-motto"><span class="en">Life, at ease.</span><span class="ar">الحياة، براحة.</span></p>
+      </div>
+      <div class="footer-links-grid">
+        <div class="footer-col">
+          <h4><span class="en">Life</span><span class="ar">الحياة</span></h4>
+          <ul>
+            <li><a href="/health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
+            <li><a href="/finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li>
+            <li><a href="/real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li>
+            <li><a href="/travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li>
+            <li><a href="/islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4><span class="en">Tools</span><span class="ar">الأدوات</span></h4>
+          <ul>
+            <li><a href="/tools/bmi-calculator.html"><span class="en">BMI Calculator</span><span class="ar">حاسبة BMI</span></a></li>
+            <li><a href="/tools/calorie-calculator.html"><span class="en">Calorie Calculator</span><span class="ar">حاسبة السعرات</span></a></li>
+            <li><a href="/tools/water-calculator.html"><span class="en">Hydration</span><span class="ar">الترطيب</span></a></li>
+            <li><a href="/tools/body-fat-calculator.html"><span class="en">Body Fat</span><span class="ar">الدهون</span></a></li>
+            <li><a href="/library.html"><span class="en">All Tools</span><span class="ar">كل الأدوات</span></a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4><span class="en">Discover</span><span class="ar">اكتشف</span></h4>
+          <ul>
+            <li><a href="/blog.html"><span class="en">Blog</span><span class="ar">المدونة</span></a></li>
+            <li><a href="/archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a></li>
+            <li><a href="/our-vision.html"><span class="en">Our Vision</span><span class="ar">رؤيتنا</span></a></li>
+            <li><a href="/pregnancy-journey.html"><span class="en">Pregnancy Journey</span><span class="ar">رحلة الحمل</span></a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4><span class="en">Company</span><span class="ar">الشركة</span></h4>
+          <ul>
+            <li><a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a></li>
+            <li><a href="/contact.html"><span class="en">Contact</span><span class="ar">تواصل</span></a></li>
+            <li><a href="/editorial-standards.html"><span class="en">Editorial Standards</span><span class="ar">المعايير التحريرية</span></a></li>
+            <li><a href="/privacy-policy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a></li>
+            <li><a href="/terms.html"><span class="en">Terms</span><span class="ar">الشروط</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 DOTFORLIFE · <span class="en">Free for families, always.</span><span class="ar">مجاني للعائلات، دائماً.</span></span>
+      <div class="footer-bottom-links">
+        <a href="/privacy-policy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a>
+        <a href="/terms.html"><span class="en">Terms</span><span class="ar">الشروط</span></a>
+        <a href="/contact.html"><span class="en">Contact</span><span class="ar">تواصل</span></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<nav class="dfl-mobile-nav" aria-label="Mobile navigation">
+  <a href="/index.html" class="dfl-mnav-item" aria-label="Home">
+    <svg viewBox="0 0 24 24"><polyline points="3 9 12 2 21 9"/><path d="M5 9v11a1 1 0 001 1h4v-6h4v6h4a1 1 0 001-1V9"/></svg>
+    <span class="en">Home</span><span class="ar">الرئيسية</span>
+  </a>
+  <a href="/library.html" class="dfl-mnav-item active" aria-label="Library">
+    <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+    <span class="en">Library</span><span class="ar">المكتبة</span>
+  </a>
+  <a href="/finance.html" class="dfl-mnav-item" aria-label="Finance">
+    <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+    <span class="en">Finance</span><span class="ar">المالية</span>
+  </a>
+  <a href="/islamic.html" class="dfl-mnav-item" aria-label="Islamic">
+    <svg viewBox="0 0 24 24"><path d="M21 10.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l2.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+    <span class="en">Islamic</span><span class="ar">الإسلامية</span>
+  </a>
+  <a href="/travel.html" class="dfl-mnav-item" aria-label="Travel">
+    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    <span class="en">Travel</span><span class="ar">السفر</span>
+  </a>
 </nav>
 
-  <div class="tool-hr-wrap">
-
-    <section class="tool-hr" aria-labelledby="tool-title">
-      <div class="tool-hr-in">
-        <div class="tool-hr-bd"> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> <span class="ar">الأول خليجياً</span><span class="en">First in the GCC</span></div>
-        <h1 class="hero-title"><span class="ar">حاسبة <span class="hl">ري النباتات</span> الخليجية</span><span class="en"><span class="hl">Plant Watering</span> Calculator for the Gulf</span></h1>
-        <p class="hero-sub ar">أول حاسبة متخصصة بالمناخ الخليجي. تحسب كمية الماء وتردد الري لنباتاتك بناءً على نوع النبات، المناخ، والموسم.</p>
-        
-      </div>
-    </section>
-
-    <div id="sub-nav">
-  <div class="sub-nav-inner">
-    <a href="/saved.html"><span class="en">Saved</span><span class="ar">المحفوظ</span></a>
-    <a href="/tasks.html"><span class="en">Tasks</span><span class="ar">المهام</span></a>
-    <a href="/notes.html"><span class="en">Notes</span><span class="ar">الملاحظات</span></a>
-    <a href="/life-guide.html"><span class="en">Life Guide</span><span class="ar">دليل الحياة</span></a>
+<div class="mobile-dropdown" id="mobile-dropdown" aria-hidden="true">
+  <div class="md-links">
+    <a href="/health.html"><span class="en">Health</span><span class="ar">الصحة</span></a>
+    <a href="/finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a>
+    <a href="/real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a>
+    <a href="/travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a>
+    <a href="/islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a>
+    <a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a>
+    <a href="/archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a>
+    <a href="/blog.html"><span class="en">Blog</span><span class="ar">المدونة</span></a>
+    <a href="/library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a>
+  </div>
+  <div class="md-controls">
+    <button class="nav-btn" id="lang-toggle-mobile"><span class="en">عربي</span><span class="ar">English</span></button>
+    <button class="nav-btn" id="theme-toggle-mobile">
+      <svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </button>
   </div>
 </div>
-  
-  <main class="tool-mn">
-</div><div class="tool-cd tool-rv tool-rv-1">
-  <div class="grid-2">
-    <div class="input-group">
-      <label class="input-label"><span class="ar">المنطقة المناخية الخليجية</span><span class="en">GCC Climate Zone</span></label>
-      <select class="input-field" id="climateZone">
-        <option value="coastal_humid"><span class="ar">ساحلي رطب (جدة، أبوظبي، المنامة)</span><span class="en">Coastal Humid (Jeddah, Abu Dhabi, Manama)</span></option>
-        <option value="desert_hot"><span class="ar">صحراوي حار (الرياض، الدمام)</span><span class="en">Desert Hot (Riyadh, Dammam)</span></option>
-        <option value="arid_extreme"><span class="ar">جاف قاسٍ (القصيم، حائل)</span><span class="en">Arid Extreme (Al-Qassim, Ha'il)</span></option>
-        <option value="mountain"><span class="ar">جبلي معتدل (أبها، الطائف)</span><span class="en">Mountain Moderate (Abha, Taif)</span></option>
-        <option value="uae_desert"><span class="ar">إمارات - صحراوي (الشارقة، العين)</span><span class="en">UAE Desert (Sharjah, Al Ain)</span></option>
-        <option value="kuwait_q"><span class="ar">كويتي / قطري (شديد الحرارة)</span><span class="en">Kuwait / Qatar (Extreme Heat)</span></option>
-      </select>
-    </div>
-    <div class="input-group">
-      <label class="input-label"><span class="ar">الموسم الحالي</span><span class="en">Current Season</span></label>
-      <select class="input-field" id="season">
-        <option value="summer"><span class="ar">صيف (يونيو - سبتمبر)</span><span class="en">Summer (Jun–Sep)</span></option>
-        <option value="spring"><span class="ar">ربيع (مارس - مايو)</span><span class="en">Spring (Mar–May)</span></option>
-        <option value="autumn"><span class="ar">خريف (أكتوبر - نوفمبر)</span><span class="en">Autumn (Oct–Nov)</span></option>
-        <option value="winter"><span class="ar">شتاء (ديسمبر - فبراير)</span><span class="en">Winter (Dec–Feb)</span></option>
-      </select>
-    </div>
-    <div class="input-group">
-      <label class="input-label"><span class="ar">موقع النبات</span><span class="en">Plant location</span></label>
-      <select class="input-field" id="location">
-        <option value="indoor"><span class="ar">داخلي (مع مكيف)</span><span class="en">Indoor (with AC)</span></option>
-        <option value="shaded_outdoor"><span class="ar">خارجي مظلل</span><span class="en">Shaded outdoor</span></option>
-        <option value="direct_sun"><span class="ar">خارجي شمس مباشرة</span><span class="en">Full sun outdoor</span></option>
-        <option value="balcony"><span class="ar">شرفة / بلكونة</span><span class="en">Balcony</span></option>
-      </select>
-    </div>
-    <div class="input-group">
-      <label class="input-label"><span class="ar">حجم الوعاء / المساحة</span><span class="en">Pot size / area</span></label>
-      <select class="input-field" id="potSize">
-        <option value="small"><span class="ar">صغير (< 20 سم)</span><span class="en">Small (&lt;20cm pot)</span></option>
-        <option value="medium"><span class="ar">متوسط (20-40 سم)</span><span class="en">Medium (20-40cm pot)</span></option>
-        <option value="large"><span class="ar">كبير (> 40 سم)</span><span class="en">Large (&gt;40cm pot)</span></option>
-        <option value="garden"><span class="ar">حديقة / أرض مفتوحة</span><span class="en">Garden / open ground</span></option>
-      </select>
-    </div>
-  </div>
-  <div class="input-group" style="margin-top:14px">
-    <label class="input-label"><span class="ar">نوع التربة</span><span class="en">Soil type</span></label>
-    <select class="input-field" id="soilType">
-      <option value="sandy"><span class="ar">رملية (جافة بسرعة)</span><span class="en">Sandy (dries fast)</span></option>
-      <option value="loamy" selected><span class="ar">طمية (متوازنة)</span><span class="en">Loamy (balanced)</span></option>
-      <option value="clay"><span class="ar">طينية (تحتفظ بالماء)</span><span class="en">Clay (retains water)</span></option>
-      <option value="cactus_mix"><span class="ar">خليط صبار وتحميل جيد</span><span class="en">Cactus/succulent mix</span></option>
-    </select>
-  </div>
-  <button class="calc-btn" onclick="calcWatering()">
-    <span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg> احسب جدول الري</span><span class="en"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg> Calculate Watering Schedule</span>
-  </button>
-</div>
 
-<!-- RESULTS -->
-<div class="results-card" id="resultsCard">
-  <div class="res-grid">
-    <div class="res-item"><div class="res-lbl ar">تردد الري</div><div class="res-lbl en">Frequency</div><div class="res-val" id="resFreq">, </div><div class="res-sub" id="resFreqSub"></div></div>
-    <div class="res-item"><div class="res-lbl ar">كمية الماء</div><div class="res-lbl en">Water amount</div><div class="res-val" id="resAmount">, </div><div class="res-sub" id="resAmountSub"></div></div>
-    <div class="res-item"><div class="res-lbl ar">أفضل وقت للري</div><div class="res-lbl en">Best time to water</div><div class="res-val" id="resTiming">, </div></div>
-  </div>
-  <div class="care-tips" id="careTips"></div>
-</div>
-
-<!-- GCC PLANT DATABASE -->
-<section class="reveal rd1">
-  <h2 class="sec-title"><span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 2v4a3 3 0 0 1-3 3h-4a3 3 0 0 1-3-3V2"/><path d="M7 12v8a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-8"/></svg> قاعدة بيانات النباتات الخليجية</span><span class="en"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 2v4a3 3 0 0 1-3 3h-4a3 3 0 0 1-3-3V2"/><path d="M7 12v8a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-8"/></svg> GCC Plant Database</span></h2>
-  <div class="plant-db" id="plantDB"></div>
-</section>
-
-<!-- SEASONAL GUIDE -->
-<section class="reveal rd2">
-  <h2 class="sec-title"><span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> دليل العناية بالنباتات، الفصول الأربعة</span><span class="en"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Seasonal Plant Care Guide</span></h2>
-  <div class="season-grid">
-    <div class="season-card">
-      <div class="season-icon"><svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></div>
-      <div class="season-name ar">الصيف</div><div class="season-name en">Summer</div>
-      <div class="season-temp">40–50°C</div>
-      <div class="season-tip ar">ري صباحي مبكر. تظليل النباتات الحساسة. مضاعفة الري مرتين. تجنب الأسمدة.</div>
-      <div class="season-tip en">Water early morning. Shade sensitive plants. Double watering frequency. Avoid fertilizing.</div>
-    </div>
-    <div class="season-card">
-      <div class="season-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2v6m0 0l-3-3m3 3l3-3"/><path d="M12 16v6m0 0l-3-3m3 3l3-3"/><path d="M2 12h6m0 0L5 9m3 3l-3 3"/><path d="M16 12h6m0 0l-3-3m3 3l-3 3"/></svg></div>
-      <div class="season-name ar">الربيع</div><div class="season-name en">Spring</div>
-      <div class="season-temp">20–35°C</div>
-      <div class="season-tip ar">موسم النمو الأمثل. ريٍّ منتظم. مثالي لزراعة نباتات جديدة. وقت التسميد.</div>
-      <div class="season-tip en">Optimal growing season. Regular watering. Best for planting new species. Fertilizing time.</div>
-    </div>
-    <div class="season-card">
-      <div class="season-icon">🍂</div>
-      <div class="season-name ar">الخريف</div><div class="season-name en">Autumn</div>
-      <div class="season-temp">25–38°C</div>
-      <div class="season-tip ar">تخفيف الري تدريجياً. وقت جيد للتقليم. نباتات جديدة تبدأ بالتجذّر.</div>
-      <div class="season-tip en">Gradually reduce watering. Good pruning time. New plants begin establishing roots.</div>
-    </div>
-    <div class="season-card">
-      <div class="season-icon">🌧</div>
-      <div class="season-name ar">الشتاء</div><div class="season-name en">Winter</div>
-      <div class="season-temp">10–25°C</div>
-      <div class="season-tip ar">تقليل الري إلى النصف. استفد من مياه الأمطار. حماية النباتات الاستوائية من البرد.</div>
-      <div class="season-tip en">Reduce watering by half. Use rainwater. Protect tropical plants from cold snaps.</div>
-    </div>
-  </div>
-</section>
-
-
-
+<script src="/scripts/global.js?v=20260618a" defer></script>
 <script>
 // ── PLANT DATA ───────────────────────────────────
 const PLANTS=[
@@ -323,9 +376,9 @@ let selectedPlant=PLANTS[0];
 const pg=document.getElementById('plantGrid');
 PLANTS.forEach((p,i)=>{
   const btn=document.createElement('button');
-  btn.className='plant-btn'+(i===0?' active':'');
-  btn.innerHTML=`<div class="plant-icon">${p.icon}</div><div class="ar">${p.ar}</div><div class="en">${p.en}</div>`;
-  btn.onclick=()=>{document.querySelectorAll('.plant-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');selectedPlant=p;};
+  btn.className='pw-plant-btn'+(i===0?' active':'');
+  btn.innerHTML=`<div class="pw-plant-icon">${p.icon}</div><div class="ar">${p.ar}</div><div class="en">${p.en}</div>`;
+  btn.onclick=()=>{document.querySelectorAll('.pw-plant-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');selectedPlant=p;};
   pg.appendChild(btn);
 });
 
@@ -335,12 +388,12 @@ PLANTS.forEach(p=>{
   const tagClass=p.diff==='easy'?'tag-easy':p.diff==='med'?'tag-med':'tag-hard';
   const tagAr=p.diff==='easy'?'سهل':p.diff==='med'?'متوسط':'صعب';
   const tagEn=p.diff==='easy'?'Easy':p.diff==='med'?'Moderate':'Advanced';
-  pdb.innerHTML+=`<div class="pdb-card">
-    <div class="pdb-icon">${p.icon}</div>
-    <div class="pdb-name ar">${p.ar}</div><div class="pdb-name en">${p.en}</div>
-    <div class="pdb-detail"><span class="ar">ري كل</span><span class="en">Water every</span><strong>${p.baseDays} <span class="ar">أيام</span><span class="en">days</span></strong></div>
-    <div class="pdb-detail ar">${p.tip_ar}</div><div class="pdb-detail en">${p.tip_en}</div>
-    <span class="pdb-tag ${tagClass} ar">${tagAr}</span><span class="pdb-tag ${tagClass} en">${tagEn}</span>
+  pdb.innerHTML+=`<div class="pw-pdb-card">
+    <div class="pw-pdb-icon">${p.icon}</div>
+    <div class="pw-pdb-name ar">${p.ar}</div><div class="pw-pdb-name en">${p.en}</div>
+    <div class="pw-pdb-detail"><span class="ar">ري كل</span><span class="en">Water every</span><strong>${p.baseDays} <span class="ar">أيام</span><span class="en">days</span></strong></div>
+    <div class="pw-pdb-detail ar">${p.tip_ar}</div><div class="pw-pdb-detail en">${p.tip_en}</div>
+    <span class="pw-pdb-tag ${tagClass} ar">${tagAr}</span><span class="pw-pdb-tag ${tagClass} en">${tagEn}</span>
   </div>`;
 });
 
@@ -392,622 +445,15 @@ function calcWatering(){
   if(soil==='sandy'){tips.push({icon:'🏖️',ar:'التربة الرملية تجف سريعاً. فكّر في إضافة بيت موس لتحسين الاحتفاظ بالماء.',en:'Sandy soil dries fast. Consider adding peat moss to improve water retention.'});}
   if(loc==='direct_sun'&season==='summer'){tips.push({icon:'<svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>',ar:'الشمس المباشرة صيفاً قد تحرق النباتات. فكّر في تظليل جزئي من 11ص-3م.',en:'Direct summer sun can scorch plants. Consider partial shade from 11am–3pm.'});}
 
-  document.getElementById('careTips').innerHTML=tips.map(t=>`<div class="care-tip"><span class="care-tip-icon">${t.icon}</span><span class="ar">${t.ar}</span><span class="en">${t.en}</span></div>`).join('');
+  document.getElementById('careTips').innerHTML=tips.map(t=>`<div class="pw-care-tip"><span class="pw-care-tip-icon">${t.icon}</span><span class="ar">${t.ar}</span><span class="en">${t.en}</span></div>`).join('');
   document.getElementById('resultsCard').classList.add('show');
   document.getElementById('resultsCard').scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 
-function toggleLang(){const l=document.documentElement.dataset.lang==='ar'?'en':'ar';document.documentElement.dataset.lang=l;document.documentElement.lang=l;localStorage.setItem('dfl-lang',l);}
-function toggleTheme(){const t=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=t;localStorage.setItem('dfl-theme',t);document.getElementById('themeBtn').textContent=t==='dark'?'<svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>':'<svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';}
-(function(){const l=localStorage.getItem('dfl-lang')||'ar';const t=localStorage.getItem('dfl-theme')||'light';document.documentElement.dataset.lang=l;document.documentElement.lang=l;document.documentElement.dataset.theme=t;document.getElementById('themeBtn').textContent=t==='dark'?'<svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>':'<svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';})();
-const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.08});
-document.querySelectorAll('.tool-rv, .reveal').forEach(el=>ro.observe(el));
+document.addEventListener('dfl:langchange', function(){
+  var card = document.getElementById('resultsCard');
+  if(card && card.classList.contains('show')) calcWatering();
+});
+
 </script>
-
-<div class="container" style="max-width:1200px;margin:0 auto;padding:0 24px 0">
-<div class="dfl-method">
-  <div class="dfl-method-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> <span class="en">How this is calculated</span><span class="ar">طريقة الحساب</span></div>
-  <p class="en">Schedules based on Royal Horticultural Society guidelines adapted for GCC climate (Koppen BSh/BWh), adjusted for temperature, humidity, and season.</p>
-  <p class="ar">جداول الري من إرشادات الجمعية الملكية للبستنة ومكيَّفة لمناخ الخليج، معدَّلة للحرارة والرطوبة والموسم.</p>
-</div>
-</div>
-
-<!-- ═══ RELATED TOOLS ═══════════════════════════════════════════════════════ -->
-<section class="dfl-related" aria-label="Related tools and guides">
-  <div class="container">
-    <div class="dfl-related-label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg> <span class="en">Continue Your Journey</span><span class="ar">أكمل رحلتك</span></div>
-    <h2 class="dfl-related-title"><span class="en">Related Tools & Guides</span><span class="ar">أدوات ودلائل ذات صلة</span></h2>
-    <p class="dfl-related-sub"><span class="en">Tools and reading you might find useful next</span><span class="ar">أدوات وقراءات قد تفيدك في خطوتك التالية</span></p>
-    <div class="dfl-related-grid">
-      <a href="/tools/water-calculator.html" class="dfl-rc" aria-label="Water Intake Calculator">
-        <div class="dfl-rc-top"><span class="dfl-rc-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></span><div><div class="dfl-rc-name en">Water Intake Calculator</div><div class="dfl-rc-name ar">حاسبة شرب الماء</div></div></div>
-        <div class="dfl-rc-desc en">Hydration based on your weight</div><div class="dfl-rc-desc ar">احتياجك اليومي من الماء</div>
-        <div class="dfl-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
-      </a>
-      <a href="/tools/bmi-calculator.html" class="dfl-rc" aria-label="BMI Calculator">
-        <div class="dfl-rc-top"><span class="dfl-rc-icon" aria-hidden="true">⚖️</span><div><div class="dfl-rc-name en">BMI Calculator</div><div class="dfl-rc-name ar">حاسبة مؤشر كتلة الجسم</div></div></div>
-        <div class="dfl-rc-desc en">Body Mass Index with WHO ranges</div><div class="dfl-rc-desc ar">مؤشر الكتلة وفق معايير WHO</div>
-        <div class="dfl-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
-      </a>
-      <a href="/tools/age-calculator.html" class="dfl-rc" aria-label="Age Calculator">
-        <div class="dfl-rc-top"><span class="dfl-rc-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v12"/><path d="M8 10h8"/></svg></span><div><div class="dfl-rc-name en">Age Calculator</div><div class="dfl-rc-name ar">حاسبة العمر</div></div></div>
-        <div class="dfl-rc-desc en">Exact age in years, months, days</div><div class="dfl-rc-desc ar">عمرك بالسنوات والأشهر والأيام</div>
-        <div class="dfl-rc-cta"><span class="en">Open tool →</span><span class="ar">افتح الأداة ←</span></div>
-      </a>
-      <a href="../guides/indoor-plants-saudi-arabia.html" class="dfl-rc guide" aria-label="Indoor Plants Guide">
-        <div class="dfl-rc-top"><span class="dfl-rc-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/></svg></span><div><div class="dfl-rc-name en">Indoor Plants Guide</div><div class="dfl-rc-name ar">دليل نباتات الخليج</div></div></div>
-        <div class="dfl-rc-desc en">Best plants for GCC homes</div><div class="dfl-rc-desc ar">أفضل النباتات للمنازل الخليجية</div>
-        <div class="dfl-rc-cta"><span class="en">Read guide →</span><span class="ar">اقرأ الدليل ←</span></div>
-      </a>
-    </div>
-  </div>
-</section>
-
-
-</main>
-
-<script>
-/* ── Phase 2A Global Micro-interaction Utilities ──────────────────────────── */
-(function(){
-  // 1. Loading state on all .calc-btn buttons
-  document.querySelectorAll('.calc-btn').forEach(function(btn){
-    // Wrap existing label text in .btn-label if not already done
-    if(!btn.querySelector('.btn-label')){
-      btn.innerHTML = '<span class="btn-label">'+btn.innerHTML+'</span>'
-                    + '<span class="btn-spinner"></span>';
-    }
-    var origOnclick = btn.getAttribute('onclick');
-    if(origOnclick){
-      btn.removeAttribute('onclick');
-      btn.addEventListener('click', function(e){
-        btn.classList.add('loading');
-        setTimeout(function(){
-          try { (new Function(origOnclick))(); } catch(err){ console.warn(err); }
-          setTimeout(function(){ btn.classList.remove('loading'); }, 400);
-        }, 180);
-      });
-    }
-  });
-
-  // 2. Attach copy-to-clipboard on big result numbers
-  function attachCopy(container){
-    container.querySelectorAll('.result-value, .result-number, .big-result, .kpi-value, .stat-number').forEach(function(el){
-      if(el.dataset.copyAttached) return;
-      el.dataset.copyAttached = '1';
-      el.classList.add('copy-val');
-      el.title = 'Click to copy';
-      el.addEventListener('click', function(){
-        var text = el.textContent.replace(/[^0-9.,٠-٩]/g,'').trim();
-        if(!text) text = el.textContent.trim();
-        navigator.clipboard && navigator.clipboard.writeText(text).then(function(){
-          el.classList.add('copied');
-          setTimeout(function(){ el.classList.remove('copied'); }, 1800);
-        });
-      });
-    });
-  }
-
-  // Observe results becoming visible
-  ['resultsCard','results-section','result-section'].forEach(function(id){
-    var el = document.getElementById(id);
-    if(!el) return;
-    var obs = new MutationObserver(function(){ attachCopy(el); });
-    obs.observe(el, {attributes:true, attributeFilter:['class']});
-  });
-  // Also run on page load for any already-visible results
-  document.querySelectorAll('.results-card.show, .results-section.active, .result-section.active').forEach(attachCopy);
-
-  // 3. Num-pop animation whenever a result text node changes
-  var resultContainers = document.querySelectorAll('.results-card, .results-section, .result-section');
-  resultContainers.forEach(function(container){
-    var textObs = new MutationObserver(function(mutations){
-      mutations.forEach(function(m){
-        if(m.type === 'characterData' || m.type === 'childList'){
-          var target = m.target.nodeType === 3 ? m.target.parentElement : m.target;
-          if(target && /result-value|result-number|big-result|kpi-value|stat-number/.test(target.className)){
-            target.classList.remove('num-pop');
-            void target.offsetWidth; // reflow
-            target.classList.add('num-pop');
-            setTimeout(function(){ target.classList.remove('num-pop'); }, 300);
-          }
-        }
-      });
-    });
-    textObs.observe(container, {childList:true, subtree:true, characterData:true});
-  });
-
-  // 4. Input validation shake helper (global)
-  window.dfl = window.dfl || {};
-  window.dfl.shakeInput = function(el){
-    el.classList.remove('input-error');
-    void el.offsetWidth;
-    el.classList.add('input-error');
-    el.addEventListener('animationend', function(){ el.classList.remove('input-error'); }, {once:true});
-    el.addEventListener('input', function(){ el.classList.remove('input-error'); }, {once:true});
-  };
-  window.dfl.validateRequired = function(ids){
-    var ok = true;
-    ids.forEach(function(id){
-      var el = document.getElementById(id);
-      if(!el) return;
-      var val = parseFloat(el.value);
-      if(!el.value || isNaN(val) || val <= 0){
-        window.dfl.shakeInput(el);
-        ok = false;
-      }
-    });
-    return ok;
-  };
-})();
-
-</script><script>/* ═══════════════════════════════════════════════════════════
-   DOTFORLIFE GLOBAL PLATFORM ENGINE v2
-   ═══════════════════════════════════════════════════════════ */
-(function(){
-'use strict';
-
-var TOOLS=[
-  {en:"BMI Calculator",ar:"حاسبة مؤشر كتلة الجسم",url:"tools/bmi-calculator.html",cat:"health",icon:"⚖️",tags:"weight height body mass bmi"},
-  {en:"Pregnancy Calculator",ar:"حاسبة الحمل",url:"tools/pregnancy-calculator.html",cat:"health",icon:"<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>",tags:"due date trimester edd pregnancy"},
-  {en:"Calorie Calculator",ar:"حاسبة السعرات",url:"tools/calorie-calculator.html",cat:"health",icon:"<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>",tags:"tdee bmr calorie diet weight loss"},
-  {en:"Water Intake",ar:"حاسبة شرب الماء",url:"tools/water-calculator.html",cat:"health",icon:"<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>",tags:"hydration water daily intake"},
-  {en:"Body Fat Calculator",ar:"حاسبة نسبة الدهون",url:"tools/body-fat-calculator.html",cat:"fitness",icon:"<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>",tags:"body fat percentage navy method fitness"},
-  {en:"One Rep Max",ar:"حاسبة أقصى تكرار",url:"tools/one-rep-max.html",cat:"fitness",icon:"<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 13l-3 3-2-2"/><path d="M14 3v10"/><path d="M5 21h14"/></svg>",tags:"1rm strength training gym max"},
-  {en:"Saudi Mortgage",ar:"حاسبة التمويل العقاري",url:"tools/mortgage-calculator.html",cat:"real-estate",icon:"<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 4l9 5.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-5h4v5h4a1 1 0 0 0 1-1v-9"/></svg>",tags:"mortgage redf loan payment saudi bank"},
-  {en:"Rental Yield",ar:"حاسبة العائد الإيجاري",url:"tools/rental-yield-calculator.html",cat:"real-estate",icon:"<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>",tags:"rental income investment property yield"},
-  {en:"ROI Calculator",ar:"حاسبة العائد",url:"tools/roi-calculator.html",cat:"real-estate",icon:"<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>",tags:"roi return investment property cap rate"},
-  {en:"Zakat Calculator",ar:"حاسبة الزكاة",url:"tools/zakat-calculator.html",cat:"life",icon:"<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.2h7.6l-6 4.8 2.4 7.2-6-4.8-6 4.8 2.4-7.2-6-4.8h7.6z"/></svg>",tags:"zakat nisab hawl islamic finance"},
-  {en:"Hijri Converter",ar:"محول التاريخ الهجري",url:"tools/hijri-converter.html",cat:"life",icon:"<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>",tags:"hijri gregorian calendar islamic date"},
-  {en:"Plant Watering",ar:"حاسبة ري النباتات",url:"tools/plant-watering.html",cat:"plants",icon:"<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 2 8 0 5.5-4.78 10-10 10Z"/></svg>",tags:"plant watering schedule gcc garden"},
-  {en:"Age Calculator",ar:"حاسبة العمر",url:"tools/age-calculator.html",cat:"life",icon:"<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v12"/><path d="M8 10h8"/></svg>",tags:"age years months days birthday"},
-  {en:"Password Generator",ar:"مولّد كلمات المرور",url:"tools/password-generator.html",cat:"life",icon:"<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>",tags:"password secure generator entropy"}
-];
-
-var TRENDING=["tools/bmi-calculator.html","tools/mortgage-calculator.html","tools/pregnancy-calculator.html","tools/zakat-calculator.html","tools/calorie-calculator.html"];
-
-/* ── localStorage ── */
-var LS={
-  get:function(k){try{return JSON.parse(localStorage.getItem('dfl_'+k)||'null');}catch(e){return null;}},
-  set:function(k,v){try{localStorage.setItem('dfl_'+k,JSON.stringify(v));}catch(e){}}
-};
-
-/* ── Track current page ── */
-(function(){
-  var p=location.pathname.replace(/^\//,'');
-  var tool=TOOLS.find(function(t){return p.indexOf(t.url.replace(/^\//,''))>-1;});
-  if(!tool)return;
-  var rec=LS.get('recents')||[];
-  rec=rec.filter(function(r){return r.url!==tool.url;});
-  rec.unshift({url:tool.url,en:tool.en,ar:tool.ar,icon:tool.icon,time:Date.now()});
-  if(rec.length>8)rec=rec.slice(0,8);
-  LS.set('recents',rec);
-  var c=LS.get('counts')||{};c[tool.url]=(c[tool.url]||0)+1;LS.set('counts',c);
-})();
-
-/* ── Bookmarks ── */
-window.DFL=window.DFL||{};
-DFL.getBookmarks=function(){return LS.get('bookmarks')||[];};
-DFL.isBookmarked=function(url){return DFL.getBookmarks().some(function(b){return b.url===url;});};
-DFL.toggleBookmark=function(url){
-  var tool=TOOLS.find(function(t){return t.url===url;});if(!tool)return false;
-  var bm=DFL.getBookmarks(),idx=bm.findIndex(function(b){return b.url===url;});
-  if(idx>-1){bm.splice(idx,1);}else{bm.unshift({url:url,en:tool.en,ar:tool.ar,icon:tool.icon});}
-  LS.set('bookmarks',bm);
-  document.querySelectorAll('[data-bookmark="'+url+'"]').forEach(function(btn){
-    btn.classList.toggle('bookmarked',idx===-1);
-  });
-  return idx===-1;
-};
-
-/* ── Search overlay styles ── */
-function injectSearchStyles(){
-  if(document.getElementById('dfl-search-css'))return;
-  var s=document.createElement('style');s.id='dfl-search-css';
-  s.textContent=[
-    '#dfl-so{position:fixed;inset:0;z-index:9999;display:none;align-items:flex-start;justify-content:center;padding-top:80px}',
-    '#dfl-so.open{display:flex}',
-    '#dfl-sb{position:absolute;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(4px)}',
-    '#dfl-sp{position:relative;width:calc(100% - 32px);max-width:580px;background:var(--card-bg,#fff);border-radius:20px;box-shadow:0 24px 80px rgba(0,0,0,.25);overflow:hidden;animation:sIn .16s cubic-bezier(.34,1.56,.64,1)}',
-    '[data-theme="dark"] #dfl-sp{background:#1E293B}',
-    '@keyframes sIn{from{opacity:0;transform:scale(.95) translateY(-10px)}to{opacity:1;transform:scale(1) translateY(0)}}',
-    '#dfl-sh{padding:16px 20px;border-bottom:1px solid var(--border-l,#DDE0E4);display:flex;align-items:center;gap:10px}',
-    '#dfl-si{flex:1;border:none;background:none;font-size:1rem;font-weight:500;color:var(--text,#343B42);outline:none;font-family:inherit}',
-    '#dfl-si::placeholder{color:var(--text-2,#6B7280)}',
-    '#dfl-sk{background:var(--body-bg,#F5F6F7);border:1px solid var(--border-l,#DDE0E4);border-radius:6px;padding:2px 7px;font-size:.68rem;color:var(--text-2,#6B7280);font-family:inherit;cursor:pointer}',
-    '#dfl-stabs{display:flex;gap:4px;padding:10px 16px 0;overflow-x:auto;-webkit-overflow-scrolling:touch}',
-    '#dfl-stabs::-webkit-scrollbar{height:0}',
-    '.dfl-st{border:none;background:none;padding:6px 14px;border-radius:999px;font-size:.75rem;font-weight:600;cursor:pointer;color:var(--text-2,#6B7280);white-space:nowrap;transition:all .12s}',
-    '.dfl-st.a,.dfl-st:hover{background:var(--accent,#2563EB);color:#fff}',
-    '#dfl-sr{max-height:340px;overflow-y:auto;padding:10px}',
-    '.dfl-rl{font-size:.65rem;font-weight:700;color:var(--text-2,#6B7280);letter-spacing:.06em;text-transform:uppercase;padding:8px 10px 2px}',
-    '.dfl-ri{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:10px;text-decoration:none;color:var(--text,#343B42);transition:background .1s}',
-    '.dfl-ri:hover,.dfl-ri.f{background:var(--body-bg,#F5F6F7)}',
-    '[data-theme="dark"] .dfl-ri:hover,[data-theme="dark"] .dfl-ri.f{background:rgba(255,255,255,.06)}',
-    '.dfl-ric{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;background:rgba(37,99,235,.08);flex-shrink:0}',
-    '.dfl-rin{font-weight:700;font-size:.85rem}',
-    '.dfl-ric2{font-size:.68rem;color:var(--text-2,#6B7280);margin-top:1px;text-transform:capitalize}',
-    '.dfl-rbm{background:none;border:none;cursor:pointer;font-size:.9rem;opacity:.35;transition:all .12s;padding:4px;min-height:unset;min-width:unset;margin-inline-start:auto;flex-shrink:0}',
-    '.dfl-rbm:hover,.dfl-rbm.bookmarked{opacity:1;color:#F59E0B}',
-    '.dfl-empty{text-align:center;padding:28px;color:var(--text-2,#6B7280);font-size:.88rem}',
-    '#dfl-sf{border-top:1px solid var(--border-l,#DDE0E4);padding:9px 18px;font-size:.68rem;color:var(--text-2,#6B7280);text-align:center}',
-    '@media(max-width:600px){#dfl-so{padding-top:0;align-items:flex-end}#dfl-sp{border-radius:20px 20px 0 0;max-height:85vh;width:100%}}'
-  ].join('');
-  document.head.appendChild(s);
-}
-
-function buildSearch(){
-  if(document.getElementById('dfl-so'))return;
-  injectSearchStyles();
-  var o=document.createElement('div');o.id='dfl-so';
-  o.setAttribute('role','dialog');o.setAttribute('aria-modal','true');
-  o.innerHTML='<div id="dfl-sb"></div>'
-    +'<div id="dfl-sp">'
-      +'<div id="dfl-sh"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0;color:var(--text-2)"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>'
-        +'<input id="dfl-si" type="search" autocomplete="off" spellcheck="false">'
-        +'<kbd id="dfl-sk" onclick="DFL.closeSearch()">ESC</kbd>'
-      +'</div>'
-      +'<div id="dfl-stabs">'
-        +'<button class="dfl-st a" data-tab="all">All</button>'
-        +'<button class="dfl-st" data-tab="health"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> Health</button>'
-        +'<button class="dfl-st" data-tab="real-estate"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 4l9 5.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-5h4v5h4a1 1 0 0 0 1-1v-9"/></svg> Real Estate</button>'
-        +'<button class="dfl-st" data-tab="fitness"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 13l-3 3-2-2"/><path d="M14 3v10"/><path d="M5 21h14"/></svg> Fitness</button>'
-        +'<button class="dfl-st" data-tab="plants"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 2 8 0 5.5-4.78 10-10 10Z"/></svg> Plants</button>'
-        +'<button class="dfl-st" data-tab="life"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Life</button>'
-      +'</div>'
-      +'<div id="dfl-sr"></div>'
-      +'<div id="dfl-sf">↑↓ navigate · Enter select · ESC close &nbsp;|&nbsp; ⌘K to open</div>'
-    +'</div>';
-  document.body.appendChild(o);
-
-  var input=document.getElementById('dfl-si');
-  var results=document.getElementById('dfl-sr');
-  var tab='all';var fi=-1;
-
-  function setph(){input.placeholder=document.documentElement.getAttribute('data-lang')==='ar'?'ابحث عن أداة...':'Search tools...';}
-  setph();
-
-  document.querySelectorAll('.dfl-st').forEach(function(t){
-    t.addEventListener('click',function(){
-      document.querySelectorAll('.dfl-st').forEach(function(x){x.classList.remove('a');});
-      t.classList.add('a');tab=t.dataset.tab;render(input.value.trim());
-    });
-  });
-
-  function hrefFor(url){
-    var p=location.pathname;
-    if(p.includes('/tools/')||p.includes('/cities/')||p.includes('/guides/'))return'../'+url;
-    return url;
-  }
-
-  function rHTML(t,bm){
-    var l=document.documentElement.getAttribute('data-lang')||'en';
-    var nm=l==='ar'?t.ar:t.en;
-    var isBm=bm.some(function(b){return b.url===t.url;});
-    return '<a class="dfl-ri" href="'+hrefFor(t.url)+'">'
-      +'<div class="dfl-ric">'+t.icon+'</div>'
-      +'<div style="flex:1;min-width:0"><div class="dfl-rin">'+nm+'</div>'
-        +'<div class="dfl-ric2">'+t.cat.replace('-',' ')+'</div></div>'
-      +'<button class="dfl-rbm'+(isBm?' bookmarked':'')+'" data-bookmark="'+t.url+'" '
-        +'onclick="event.preventDefault();event.stopPropagation();'
-        +'DFL.toggleBookmark(\''+t.url+'\');render(document.getElementById(\'dfl-si\').value)">★</button>'
-      +'</a>';
-  }
-
-  function render(q){
-    var bm=DFL.getBookmarks();
-    var pool=TOOLS.filter(function(t){return tab==='all'||t.cat===tab;});
-    var html='';
-    if(!q){
-      var tr=pool.filter(function(t){return TRENDING.indexOf(t.url)>-1;});
-      if(tr.length){html+='<div class="dfl-rl"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg> Trending</div>';tr.forEach(function(t){html+=rHTML(t,bm);});}
-      var bmF=pool.filter(function(t){return bm.some(function(b){return b.url===t.url;});});
-      if(bmF.length){html+='<div class="dfl-rl">⭐ Bookmarked</div>';bmF.forEach(function(t){html+=rHTML(t,bm);});}
-      if(!html)html='<div class="dfl-empty">Type to search · ⌘K to open anytime</div>';
-    } else {
-      var ql=q.toLowerCase();
-      var m=pool.filter(function(t){return t.en.toLowerCase().includes(ql)||t.ar.includes(ql)||t.tags.includes(ql);});
-      html=m.length?m.map(function(t){return rHTML(t,bm);}).join(''):'<div class="dfl-empty">No results for "'+q+'"</div>';
-    }
-    results.innerHTML=html;fi=-1;
-  }
-  window.renderDFLSearch=render;
-  input.addEventListener('input',function(){render(this.value.trim());});
-  document.addEventListener('keydown',function(e){
-    if(!document.getElementById('dfl-so').classList.contains('open'))return;
-    var items=results.querySelectorAll('.dfl-ri');
-    if(e.key==='ArrowDown'){e.preventDefault();fi=Math.min(fi+1,items.length-1);}
-    else if(e.key==='ArrowUp'){e.preventDefault();fi=Math.max(fi-1,-1);}
-    else if(e.key==='Enter'&&fi>-1){e.preventDefault();items[fi].click();}
-    else if(e.key==='Escape'){DFL.closeSearch();}
-    items.forEach(function(el,i){el.classList.toggle('f',i===fi);});
-    if(items[fi])items[fi].scrollIntoView({block:'nearest'});
-  });
-  document.getElementById('dfl-sb').addEventListener('click',DFL.closeSearch);
-  render('');
-}
-
-DFL.openSearch=function(){buildSearch();var o=document.getElementById('dfl-so');o.classList.add('open');document.body.style.overflow='hidden';setTimeout(function(){document.getElementById('dfl-si').focus();},60);};
-DFL.closeSearch=function(){var o=document.getElementById('dfl-so');if(o){o.classList.remove('open');document.body.style.overflow='';}};
-
-document.addEventListener('keydown',function(e){if((e.metaKey||e.ctrlKey)&&e.key==='k'){e.preventDefault();DFL.openSearch();}});
-
-/* search-btn injection disabled, inline search input used instead */
-
-/* ── Sticky tool CTA on mobile ── */
-(function(){
-  if(!location.pathname.includes('/tools/'))return;
-  var tool=TOOLS.find(function(t){return location.pathname.indexOf(t.url.replace(/^\//,''))>-1;});
-  if(!tool)return;
-  var s=document.createElement('style');
-  s.textContent='#dfl-mcta{display:none;position:fixed;bottom:70px;left:12px;right:12px;z-index:89;background:var(--accent,#2563EB);border-radius:14px;padding:11px 16px;box-shadow:0 8px 32px rgba(37,99,235,.4);align-items:center;justify-content:space-between;gap:10px;color:#fff}@keyframes sUp{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}#dfl-mcta.v{display:flex;animation:sUp .25s ease}#dfl-mcta .mt{font-size:.8rem;font-weight:700}#dfl-mcta .mb{background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.3);border-radius:999px;color:#fff;padding:6px 14px;font-size:.75rem;font-weight:700;cursor:pointer}#dfl-mcta .mc{background:none;border:none;color:rgba(255,255,255,.7);font-size:1.1rem;cursor:pointer;min-height:unset;min-width:unset}@media(min-width:769px){#dfl-mcta{display:none!important}}';
-  document.head.appendChild(s);
-  var el=document.createElement('div');el.id='dfl-mcta';
-  el.innerHTML='<div class="mt">'+tool.icon+' <span class="en">'+tool.en+'</span><span class="ar">'+tool.ar+'</span></div>'
-    +'<button class="mb" onclick="document.querySelector(\'.calc-btn\')?.scrollIntoView({behavior:\'smooth\'})"><span class="en">Calculate</span><span class="ar">احسب</span></button>'
-    +'<button class="mc" onclick="this.closest(\'#dfl-mcta\').style.display=\'none\'">×</button>';
-  document.body.appendChild(el);
-  var shown=false;
-  window.addEventListener('scroll',function(){
-    if(window.scrollY>350&&!shown){shown=true;el.classList.add('v');}
-    if(window.scrollY<150){el.classList.remove('v');shown=false;}
-  },{passive:true});
-})();
-
-/* ── Scroll depth ── */
-(function(){
-  var d=[25,50,75,100],f={};
-  window.addEventListener('scroll',function(){
-    var p=Math.round((window.scrollY/(document.body.scrollHeight-window.innerHeight))*100);
-    d.forEach(function(v){if(p>=v&&!f[v]){f[v]=true;if(window.gtag)gtag('event','scroll_depth',{depth:v,page:location.pathname});}});
-  },{passive:true});
-})();
-
-})();</script>
-
-<!-- DFL Event Tracking -->
-<script>
-(function(){
-// 1. Calculator use, fire when form submits or calculate button clicked
-document.querySelectorAll('form,[id*="calc"],[id*="calculate"],[onclick*="calc"],[onclick*="Calculate"]').forEach(function(el){
-  el.addEventListener('submit',function(){
-    window.dflTrack&&dflTrack('calculator_use',{tool_name:document.title,action:'submit'});
-  });
-});
-document.querySelectorAll('button').forEach(function(btn){
-  var t=(btn.textContent||'').toLowerCase();
-  if(t.includes('calculat')||t.includes('احسب')||t.includes('حساب')){
-    btn.addEventListener('click',function(){
-      window.dflTrack&&dflTrack('calculator_use',{tool_name:document.title,action:'calculate'});
-    });
-  }
-});
-
-// 2. Search events
-document.addEventListener('dfl:search',function(e){
-  window.dflTrack&&dflTrack('search',{search_term:e.detail&&e.detail.query,results_count:e.detail&&e.detail.count});
-});
-
-// 3. Bookmark/favorite events  
-document.addEventListener('dfl:bookmark',function(e){
-  window.dflTrack&&dflTrack('bookmark',{item_url:e.detail&&e.detail.url,action:e.detail&&e.detail.action});
-});
-
-// 4. Language toggle
-document.querySelectorAll('[id="lang-btn"],[onclick*="toggleLang"]').forEach(function(btn){
-  btn.addEventListener('click',function(){
-    var newLang=document.documentElement.getAttribute('data-lang')==='ar'?'en':'ar';
-    window.dflTrack&&dflTrack('language_switch',{to_language:newLang});
-  });
-});
-
-// 5. Outbound link tracking
-document.querySelectorAll('a[href^="http"]').forEach(function(a){
-  if(!a.href.includes('dotforlife.app')){
-    a.addEventListener('click',function(){
-      window.dflTrack&&dflTrack('outbound_click',{link_url:a.href,link_text:(a.textContent||'').trim().substring(0,60)});
-    });
-  }
-});
-
-// 6. Scroll depth, 25/50/75/100%
-var depths=[25,50,75,100],fired={};
-window.addEventListener('scroll',function(){
-  var pct=Math.round((window.scrollY+window.innerHeight)/document.body.scrollHeight*100);
-  depths.forEach(function(d){
-    if(pct>=d&&!fired[d]){
-      fired[d]=true;
-      window.dflTrack&&dflTrack('scroll_depth',{percent:d,page:document.title});
-    }
-  });
-},{passive:true});
-
-// 7. Time on page, 30s, 60s, 120s engagement
-[30,60,120].forEach(function(sec){
-  setTimeout(function(){
-    window.dflTrack&&dflTrack('time_on_page',{seconds:sec,page:document.title});
-  },sec*1000);
-});
-
-// 8. CTA click tracking
-document.querySelectorAll('.hero-cta,.tool-cta-btn,.tool-cta a,.cta-btn,.btn-primary').forEach(function(el){
-  el.addEventListener('click',function(){
-    window.dflTrack&&dflTrack('cta_click',{cta_text:(el.textContent||'').trim().substring(0,60),destination:el.href||''});
-  });
-});
-
-// 9. Guide TOC clicks
-document.querySelectorAll('.toc-list a').forEach(function(a){
-  a.addEventListener('click',function(){
-    window.dflTrack&&dflTrack('toc_navigation',{section:(a.textContent||'').trim(),page:document.title});
-  });
-});
-
-// 10. FAQ interactions
-document.querySelectorAll('.faq-q').forEach(function(btn){
-  btn.addEventListener('click',function(){
-    var q=(btn.textContent||'').trim().substring(0,80);
-    window.dflTrack&&dflTrack('faq_expand',{question:q,page:document.title});
-  });
-});
-})();
-</script>
-<!-- Sticky Mobile Ad -->
-<div class="dfl-ad dfl-ad-sticky-mobile" id="dfl-sticky-ad">
-  <!-- AdSense mobile anchor slot -->
-</div>
-<script>
-(function(){
-  var ad=document.getElementById('dfl-sticky-ad');
-  if(!ad)return;
-  var lastScroll=0;
-  window.addEventListener('scroll',function(){
-    var s=window.scrollY;
-    if(s>300){
-      ad.style.display='block';
-      // Hide when scrolling up fast
-      if(s<lastScroll-50)ad.style.transform='translateY(100%)';
-      else ad.style.transform='translateY(0)';
-    } else {
-      ad.style.display='none';
-    }
-    lastScroll=s;
-  },{passive:true});
-})();
-</script>
-
-<!-- Footer -->
-<!-- ═══ ECOSYSTEM FOOTER ═════════════════════════════════════════════════════ -->
-
-<script>
-// Scroll Progress Bar
-(function(){var b=document.createElement("div");b.style.cssText="position:fixed;top:0;left:0;width:0%;height:3px;background:linear-gradient(90deg,#0066CC,#06B6D4);z-index:9999;transition:width .1s linear;pointer-events:none;";document.body.appendChild(b);window.addEventListener("scroll",function(){var d=document.documentElement.scrollHeight-window.innerHeight;b.style.width=(d>0?Math.min(100,(window.scrollY/d)*100):0)+"%";},{passive:true});})();</script>
-
-<!-- Back to Category Floating Button -->
-<style>
-.back-cat-fab{position:fixed;bottom:1.5rem;right:1.5rem;z-index:890;display:inline-flex;align-items:center;gap:.4rem;padding:.6rem 1.15rem .6rem .9rem;border-radius:50px;background:#22C55E;color:#fff;font-size:.78rem;font-weight:700;letter-spacing:.01em;text-decoration:none;box-shadow:0 4px 18px rgba(0,0,0,.22);opacity:0;transform:translateY(10px) scale(.96);transition:opacity .28s cubic-bezier(.22,1,.36,1),transform .28s cubic-bezier(.22,1,.36,1);pointer-events:none;white-space:nowrap;}
-.back-cat-fab.fab-visible{opacity:1;transform:translateY(0) scale(1);pointer-events:auto;}
-.back-cat-fab:hover{filter:brightness(1.13);transform:translateY(-1px) scale(1.02);}
-.back-cat-fab .fab-arrow{font-size:.9rem;opacity:.85;}
-[data-lang="ar"] .back-cat-fab{right:auto;left:1.5rem;flex-direction:row-reverse;padding:.6rem .9rem .6rem 1.15rem;}
-</style>
-<a class="back-cat-fab" id="backCatFab" href="../plants.html" aria-label="Back to Plants">
-  <span class="fab-arrow">←</span>
-  <span class="en">Plants</span>
-  <span class="ar">النباتات</span>
-</a>
-<script>
-(function(){
-  var fab=document.getElementById('backCatFab');
-  if(!fab)return;
-  var shown=false;
-  function check(){
-    var should=window.scrollY>260;
-    if(should!==shown){shown=should;fab.classList.toggle('fab-visible',shown);}
-  }
-  window.addEventListener('scroll',check,{passive:true});
-  check();
-})();
-</script>
-
-  <!-- DFL CANONICAL FOOTER -->
-  <!-- ═══ UNIFIED FOOTER ══════════════════════════════════════ -->
-<footer class="site-footer" role="contentinfo">
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <a href="../index.html" class="footer-logo" aria-label="DOTFORLIFE">
-          <img src="../logo1-footer.webp" alt="DOTFORLIFE" width="100" height="100" loading="lazy">
-        </a>
-        <p><span class="en">One calm place for your family's everyday needs. Free, always.</span><span class="ar">مكان هادئ واحد لاحتياجات عائلتك اليومية. مجاني دائماً.</span></p>
-      </div>
-      <div class="footer-cols">
-        <div class="footer-col">
-          <h4><span class="en">Life</span><span class="ar">الحياة</span></h4>
-          <ul>
-            <li><a href="../health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
-            <li><a href="../finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li>
-            <li><a href="../real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li>
-            <li><a href="../travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li>
-            <li><a href="../islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4><span class="en">Tools</span><span class="ar">الأدوات</span></h4>
-          <ul>
-            <li><a href="../tools/bmi-calculator.html"><span class="en">BMI Calculator</span><span class="ar">حاسبة BMI</span></a></li>
-            <li><a href="../tools/mortgage-calculator.html"><span class="en">Mortgage</span><span class="ar">التمويل</span></a></li>
-            <li><a href="../tools/zakat-calculator.html"><span class="en">Zakat</span><span class="ar">الزكاة</span></a></li>
-            <li><a href="../tools/hijri-converter.html"><span class="en">Hijri Date</span><span class="ar">التاريخ الهجري</span></a></li>
-            <li><a href="../library.html"><span class="en">All Tools</span><span class="ar">كل الأدوات</span></a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4><span class="en">Company</span><span class="ar">الشركة</span></h4>
-          <ul>
-            <li><a href="../about.html"><span class="en">About</span><span class="ar">عنّا</span></a></li>
-            <li><a href="../blog.html"><span class="en">blog</span><span class="ar">المدونة</span></a></li>
-            <li><a href="../contact.html"><span class="en">Contact</span><span class="ar">تواصل</span></a></li>
-            <li><a href="../privacy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a></li>
-            <li><a href="../privacy-policy.html"><span class="en">Privacy Policy</span><span class="ar">سياسة الخصوصية</span></a></li>
-            <li><a href="../terms.html"><span class="en">Terms</span><span class="ar">الشروط</span></a></li>
-            <li><a href="../editorial-standards.html"><span class="en">Editorial Standards</span><span class="ar">المعايير التحريرية</span></a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <hr class="footer-divider">
-    <div class="footer-bottom">
-      <span>© 2026 DOTFORLIFE, <span class="en">Free for families, always.</span><span class="ar">مجاني للعائلات، دائماً.</span></span>
-      <div class="footer-bottom-links">
-        <a href="../privacy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a>
-        <a href="../privacy-policy.html"><span class="en">Privacy Policy</span><span class="ar">سياسة الخصوصية</span></a>
-        <a href="../terms.html"><span class="en">Terms</span><span class="ar">الشروط</span></a>
-      </div>
-    </div>
-  </div>
-</footer>
-<!-- ════════════════════════════════════════════════════════════ -->
-
-  <!-- DFL MOBILE NAV -->
-  
-
-  <script src="/tool-share.js" defer></script>
-<!-- ═══ UNIFIED MOBILE NAV ══════════════════════════════════ -->
-<nav class="dfl-mobile-nav" aria-label="Mobile navigation">
-  <a href="../index.html" class="dfl-mnav-item" aria-label="Home">
-    <svg viewBox="0 0 24 24"><polyline points="3 9 12 2 21 9"/><path d="M5 9v11a1 1 0 001 1h4v-6h4v6h4a1 1 0 001-1V9"/></svg>
-    <span class="en">Home</span><span class="ar">الرئيسية</span>
-  </a>
-  <a href="../health.html" class="dfl-mnav-item" aria-label="Health">
-    <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-    <span class="en">Health</span><span class="ar">الصحة</span>
-  </a>
-  <a href="../finance.html" class="dfl-mnav-item" aria-label="Finance">
-    <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-    <span class="en">Finance</span><span class="ar">المالية</span>
-  </a>
-  <a href="../islamic.html" class="dfl-mnav-item" aria-label="Islamic">
-    <svg viewBox="0 0 24 24"><path d="M21 10.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l2.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
-    <span class="en">Islamic</span><span class="ar">الإسلامية</span>
-  </a>
-  <a href="../travel.html" class="dfl-mnav-item" aria-label="Travel">
-    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-    <span class="en">Travel</span><span class="ar">السفر</span>
-  </a>
-</nav>
-
-<!-- SEO_PROFILE
-  page_type: page
-  cluster: health
-  authority_score: 77
-  inbound_links: 11
-  outbound_links: 12
-  link_velocity: medium
-  priority_indexing: true
-  content_depth: 40
-  word_count: 2441
-  canonical: https://www.dotforlife.com/tools/plant-watering.html
--->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1436107577087160" crossorigin="anonymous"></script>
 </body></html>
-</html>
