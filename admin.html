@@ -9,9 +9,6 @@
 <link rel="icon" href="/favicon.ico"/>
 <link rel="stylesheet" href="/styles/pages/admin.css?v=20260618">
 <style>
-  #security-gate{position:fixed;inset:0;background:#F5F1EB;z-index:10000;display:flex;align-items:center;justify-content:center;flex-direction:column;}
-  .gate-icon{font-size:3rem;margin-bottom:16px;opacity:.25}
-  .gate-msg{color:#8A7F74;font-size:.9rem}
   .offline-banner{background:#FBF1E0;border:1px solid rgba(184,112,24,.25);border-radius:12px;padding:12px 16px;margin-bottom:16px;font-size:.78rem;line-height:1.6}
   .btn-generate,.btn-bulk-approve{display:inline-flex;align-items:center;gap:5px;padding:6px 12px;border:1.5px solid var(--border);border-radius:var(--r-sm);background:var(--surface);color:var(--green);font-size:.78rem;font-weight:600;cursor:pointer}
   .btn-generate:hover,.btn-bulk-approve:hover{border-color:var(--gold);color:var(--gold)}
@@ -19,11 +16,6 @@
 </style>
 </head>
 <body>
-
-<div id="security-gate">
-  <div class="gate-icon">🛡️</div>
-  <div class="gate-msg"><span class="en">Secure access required — use ?access=dot4life</span><span class="ar">الوصول محمي — استخدم ?access=dot4life</span></div>
-</div>
 
 <!-- ════════════════════════════
      LOGIN
@@ -114,7 +106,6 @@ let token  = sessionStorage.getItem('d4l_token') || '';
 let filter = 'all';
 let allCapsules = [];
 let useOffline = false;
-const ACCESS_KEY = 'dot4life';
 const LOCAL_HASH = '8248c7ae40e0134d712024986fb17eefb0d7eed11a779554158e5bbd12c391eb';
 const LS_KEY = 'd4l_capsules_db';
 
@@ -224,15 +215,9 @@ const STATUS_LABELS = {
 //  BOOT
 // ═══════════════════════════════════════
 document.addEventListener('DOMContentLoaded', () => {
-  const params = new URLSearchParams(window.location.search);
-  const gate = document.getElementById('security-gate');
-  if (params.get('access') === ACCESS_KEY || localStorage.getItem('d4l_access_verified') === '1') {
-    if (gate) gate.style.display = 'none';
-    localStorage.setItem('d4l_access_verified', '1');
-    document.getElementById('pw').addEventListener('keydown', e => { if (e.key === 'Enter') login(); });
-    if (token) checkAndShow();
-    else show('login');
-  }
+  document.getElementById('pw').addEventListener('keydown', e => { if (e.key === 'Enter') login(); });
+  if (token) checkAndShow();
+  else show('login');
 });
 
 async function checkAndShow() {
