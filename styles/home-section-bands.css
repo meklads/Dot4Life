@@ -5,7 +5,8 @@
 
 body.index-page {
   --band-white:       #FFFFFF;
-  --band-featured:    var(--band-white);
+  --band-max:         1260px;
+  --band-featured:    #f7f9f8;
   --band-decisions:   var(--band-white);
   --band-peace:       var(--band-white);
   --band-pillars:     var(--band-white);
@@ -53,7 +54,7 @@ body.index-page .hero-date-ribbon {
   flex-shrink: 0;
   margin-top: auto !important;
   width: 100%;
-  max-width: var(--hp-max, 1100px);
+  max-width: var(--band-max, var(--hp-max, 1260px));
   margin-left: auto;
   margin-right: auto;
   padding: 0 var(--hp-gutter, clamp(1.25rem, 4vw, 2rem)) clamp(1.25rem, 2.5vw, 1.75rem) !important;
@@ -85,7 +86,7 @@ body.index-page #friday-letter {
 body.index-page .core-section--peace .section-head,
 body.index-page #morning-moment.core-peace-moment,
 body.index-page #daily-home.core-peace-daily {
-  max-width: var(--hp-max, 1100px) !important;
+  max-width: var(--band-max, var(--hp-max, 1260px)) !important;
   margin-left: auto !important;
   margin-right: auto !important;
   padding-left: var(--hp-gutter, clamp(1.25rem, 4vw, 2rem)) !important;
@@ -96,7 +97,7 @@ body.index-page #daily-home.core-peace-daily {
 
 /* ── Alternating band colors ─────────────────────────────── */
 body.index-page .core-section--featured {
-  background: var(--band-white) !important;
+  background: var(--band-featured) !important;
   background-image: none !important;
 }
 
@@ -139,7 +140,7 @@ body.index-page #friday-letter {
 /* ── Articles feed — inner content width ─────────────────── */
 body.index-page .home-feed-section .section-head,
 body.index-page .home-feed-section .hl-article-grid {
-  max-width: var(--hp-max, 1100px);
+  max-width: var(--band-max, var(--hp-max, 1260px));
   margin-left: auto;
   margin-right: auto;
   padding-left: var(--hp-gutter, clamp(1.25rem, 4vw, 2rem));

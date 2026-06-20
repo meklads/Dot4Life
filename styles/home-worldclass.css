@@ -140,35 +140,22 @@ body.index-page .section-head-title {
 /* ═══════════════════════════════════════════════════════════
    FEATURED — Apple News / NYT flagship grid
    ═══════════════════════════════════════════════════════════ */
+/* Row1 grid · home-tickets-unified.css FEATURED GRID LAW (2fr 1fr 1fr) */
 @media (min-width: 901px) {
-  body.index-page .core-section--featured .sl-row1 {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(240px, 280px);
-    align-items: start;
-    gap: clamp(1.25rem, 2.2vw, 1.75rem);
-  }
-
+  body.index-page .core-section--featured .sl-row1,
   body.index-page .core-section--featured .sl-row1-main {
-    display: grid;
-    grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr);
-    gap: clamp(1.15rem, 2vw, 1.5rem);
-    min-width: 0;
+    display: contents;
   }
 
   body.index-page .core-section--featured .sl-promo {
-    position: sticky;
-    top: calc(110px + 1.25rem);
+    position: static;
+    top: auto;
   }
 }
 
 body.index-page .core-section--featured .sl-featured {
   border-radius: var(--wc-radius-xl);
   box-shadow: var(--wc-shadow-float);
-}
-
-body.index-page .core-section--featured .sl-featured-img {
-  aspect-ratio: 16 / 9;
-  min-height: clamp(240px, 28vw, 340px);
 }
 
 body.index-page .core-section--featured .sl-featured-img::after {
