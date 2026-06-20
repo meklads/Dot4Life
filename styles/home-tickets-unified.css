@@ -582,7 +582,7 @@ body.index-page .core-section--featured .section-head-desc {
     grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
     grid-template-rows: auto auto;
     gap: var(--dfl-vw-gap) !important;
-    align-items: start;
+    align-items: stretch;
     background: var(--dfl-vw-bg) !important;
     margin-top: 0;
     padding: 0 var(--dfl-gutter) calc(var(--dfl-gap) + 4px);
@@ -611,14 +611,16 @@ body.index-page .core-section--featured .section-head-desc {
     max-width: none !important;
   }
 
+  /* Latest + promo stretch to hero row height; hero stays content-sized */
   body.index-page .core-section--featured .fs-grid-latest,
   body.index-page .core-section--featured .sl-latest {
     grid-column: 3;
     grid-row: 1;
     min-width: 0;
     width: 100%;
-    height: auto !important;
-    align-self: start;
+    height: 100%;
+    min-height: 100%;
+    align-self: stretch;
     flex: unset !important;
     flex-grow: unset !important;
     flex-shrink: unset !important;
@@ -633,14 +635,35 @@ body.index-page .core-section--featured .section-head-desc {
     width: 100% !important;
     max-width: none !important;
     min-width: 0;
-    height: auto !important;
-    align-self: start;
+    height: 100%;
+    min-height: 100%;
+    align-self: stretch;
     flex: unset !important;
     flex-grow: unset !important;
     flex-shrink: unset !important;
     flex-basis: auto !important;
     position: static !important;
     top: auto !important;
+  }
+
+  body.index-page .core-section--featured .sl-promo-img {
+    flex: 1 1 0 !important;
+    aspect-ratio: unset !important;
+    min-height: 160px;
+    height: auto !important;
+  }
+
+  body.index-page .core-section--featured .sl-promo-body {
+    flex: 0 0 auto;
+  }
+
+  body.index-page .core-section--featured .sl-latest-list {
+    flex: 1 1 auto;
+    justify-content: space-between;
+  }
+
+  body.index-page .core-section--featured .sl-latest-header {
+    flex: 0 0 auto;
   }
 
   body.index-page .core-section--featured .fs-grid-row2,
@@ -853,7 +876,6 @@ body.index-page .core-section--featured .sl-latest {
   border: 1px solid rgba(5, 66, 65, .09);
   display: flex;
   flex-direction: column;
-  height: auto !important;
 }
 
 body.index-page .core-section--featured .sl-latest-header {
@@ -874,7 +896,8 @@ body.index-page .core-section--featured .sl-latest-header::after {
 body.index-page .core-section--featured .sl-latest-list {
   gap: 0;
   padding: 0 18px 6px;
-  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 
 body.index-page .core-section--featured .sl-latest-item {
@@ -905,7 +928,6 @@ body.index-page .core-section--featured .sl-latest-item:hover .sl-latest-item-ti
 body.index-page .core-section--featured .sl-promo {
   display: flex;
   flex-direction: column;
-  height: auto !important;
   border: none;
   border-radius: var(--dfl-radius);
   background: var(--dfl-vw-promo);
