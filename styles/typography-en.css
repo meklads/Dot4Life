@@ -73,19 +73,38 @@ html[data-lang="en"] .hero-headline {
   letter-spacing: -0.02em;
 }
 
-/* Homepage hero — white on dark gradient (EN + AR) */
+/* Homepage hero — white on dark gradient (EN + AR); spans must inherit explicitly */
 html[data-lang="en"] body.index-page #hero.hero-editorial .hero-headline,
-html[data-lang="en"] body.index-page #hero.hero-editorial .hero-sub,
-html[data-lang="en"] body.index-page #hero.hero-editorial .hero-trust-line {
+html[data-lang="en"] body.index-page #hero.hero-editorial .hero-headline .en,
+html[data-lang="en"] body.index-page #hero.hero-editorial .hero-headline .ar,
+html[data-lang="ar"] body.index-page #hero.hero-editorial .hero-headline,
+html[data-lang="ar"] body.index-page #hero.hero-editorial .hero-headline .en,
+html[data-lang="ar"] body.index-page #hero.hero-editorial .hero-headline .ar {
   color: #fff !important;
 }
 
-html[data-lang="en"] body.index-page #hero.hero-editorial .hero-sub {
+html[data-lang="en"] body.index-page #hero.hero-editorial .hero-sub,
+html[data-lang="en"] body.index-page #hero.hero-editorial .hero-sub .en,
+html[data-lang="en"] body.index-page #hero.hero-editorial .hero-sub .ar,
+html[data-lang="ar"] body.index-page #hero.hero-editorial .hero-sub,
+html[data-lang="ar"] body.index-page #hero.hero-editorial .hero-sub .en,
+html[data-lang="ar"] body.index-page #hero.hero-editorial .hero-sub .ar {
   color: rgba(255, 255, 255, 0.88) !important;
 }
 
-html[data-lang="en"] body.index-page #hero.hero-editorial .hero-trust-line {
+html[data-lang="en"] body.index-page #hero.hero-editorial .hero-trust-line,
+html[data-lang="en"] body.index-page #hero.hero-editorial .hero-trust-line .en,
+html[data-lang="en"] body.index-page #hero.hero-editorial .hero-trust-line .ar,
+html[data-lang="ar"] body.index-page #hero.hero-editorial .hero-trust-line,
+html[data-lang="ar"] body.index-page #hero.hero-editorial .hero-trust-line .en,
+html[data-lang="ar"] body.index-page #hero.hero-editorial .hero-trust-line .ar {
   color: rgba(255, 255, 255, 0.72) !important;
+}
+
+html[data-lang="ar"] body.index-page #hero.hero-editorial .hero-headline {
+  font-family: Almarai, sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: 0;
 }
 
 html[data-lang="en"] .section-head-eyebrow,
