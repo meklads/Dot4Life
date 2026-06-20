@@ -556,6 +556,45 @@ body.index-page .hl-art-card-arrow {
   color: var(--dfl-green) !important;
 }
 
+/* Latest feed — featured (first) ticket: cap image height, crop from bottom */
+@media (min-width: 901px) {
+  body.index-page .hl-art-card:first-child {
+    grid-column: span 2 !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+  }
+
+  [data-lang="ar"] body.index-page .hl-art-card:first-child {
+    flex-direction: row-reverse !important;
+  }
+
+  body.index-page .hl-art-card:first-child .hl-art-card-img {
+    width: 46% !important;
+    max-width: 320px;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: 200px !important;
+    aspect-ratio: 3 / 2 !important;
+    object-fit: cover !important;
+    object-position: center top !important;
+    flex-shrink: 0;
+    align-self: flex-start !important;
+  }
+
+  body.index-page .hl-art-card:first-child .hl-art-card-body {
+    flex: 1;
+    min-width: 0;
+    padding: clamp(1rem, 2vw, 1.35rem) !important;
+  }
+
+  body.index-page .hl-art-card:first-child .hl-art-card-desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
 /* Peace / Daily Home panels */
 body.index-page .peace-flagship .mm-content,
 body.index-page .peace-flagship .mm-visual {
