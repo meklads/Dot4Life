@@ -10,7 +10,7 @@
 (function() {
   'use strict';
 
-  var FEED_VERSION = 13;  // v13: archive feed failure fallback + hub nav fixes
+  var FEED_VERSION = 14;  // v14: umrah-with-kids local hero webp
 
   var CONFIG = {
     jsonUrl: '/articles.json',
