@@ -1,0 +1,174 @@
+/*
+ * DOTFORLIFE — English typography (Verywell Health editorial law)
+ * Sans headlines · Merriweather body · navy ink · teal kicker · warm meta
+ */
+
+html[data-lang="en"] {
+  --font-ui: 'Libre Franklin', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-serif: 'Merriweather', Georgia, 'Times New Roman', serif;
+  --font-display: var(--font-ui);
+
+  /* Verywell editorial palette */
+  --text: #1a313c;
+  --text-1: #1a313c;
+  --text-2: #3d4f56;
+  --muted: #6b7379;
+  --dfl-ink: #1a313c;
+  --dfl-muted: #6b7379;
+  --dfl-muted-light: #8a9299;
+  --dfl-teal: #1a5e73;
+  --dfl-vw-latest-head: #1a5e73;
+  --dfl-vw-accent: #1cacbd;
+  --vw-meta-time: #c45500;
+  --accent: #1a5e73;
+
+  /* Type scale (Verywell homepage tickets) */
+  --vw-kicker: 11px;
+  --vw-title-lg: clamp(1.35rem, 2vw, 1.625rem);
+  --vw-title-md: 17px;
+  --vw-title-sm: 15px;
+  --vw-meta: 12px;
+  --vw-section-title: 22px;
+}
+
+html[data-lang="en"] body {
+  font-family: var(--font-ui);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+/* Headings — clean sans (not Cinzel) */
+html[data-lang="en"] h1,
+html[data-lang="en"] h2,
+html[data-lang="en"] h3,
+html[data-lang="en"] h4,
+html[data-lang="en"] h5,
+html[data-lang="en"] h6,
+html[data-lang="en"] .section-head-title,
+html[data-lang="en"] .page-title,
+html[data-lang="en"] .pillar-card-title,
+html[data-lang="en"] .hl-art-card-title,
+html[data-lang="en"] .dc-item-title {
+  font-family: var(--font-ui) !important;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+html[data-lang="en"] .hero-headline {
+  font-family: var(--font-ui) !important;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+html[data-lang="en"] .section-head-eyebrow,
+html[data-lang="en"] .sl-featured-kicker,
+html[data-lang="en"] .sl-card-kicker,
+html[data-lang="en"] .article-banner-cat,
+html[data-lang="en"] .article-cat {
+  font-family: var(--font-ui) !important;
+  font-size: var(--vw-kicker);
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--dfl-teal) !important;
+}
+
+/* Article long-form — Merriweather body */
+html[data-lang="en"] .article-body,
+html[data-lang="en"] .article-body p,
+html[data-lang="en"] .article-prose,
+html[data-lang="en"] .article-wrap .content {
+  font-family: var(--font-serif);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--text-2);
+}
+
+html[data-lang="en"] .article-body h2,
+html[data-lang="en"] .article-body h3 {
+  font-family: var(--font-ui) !important;
+  color: var(--text);
+  font-weight: 700;
+}
+
+html[data-lang="en"] .article-banner-title {
+  font-family: var(--font-ui) !important;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+html[data-lang="en"] .article-byline,
+html[data-lang="en"] .article-meta,
+html[data-lang="en"] .article-review {
+  font-family: var(--font-serif);
+  font-size: var(--vw-meta);
+  color: var(--muted);
+}
+
+/* Homepage featured tickets */
+html[data-lang="en"] body.index-page .core-section--featured .section-head-title,
+html[data-lang="en"] body.index-page .core-section--decisions .section-head-title,
+html[data-lang="en"] body.index-page .core-section--peace .section-head-title,
+html[data-lang="en"] body.index-page .core-section--pillars .section-head-title,
+html[data-lang="en"] body.index-page .home-feed-section .section-head-title {
+  font-family: var(--font-ui) !important;
+  font-size: var(--vw-section-title) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+  color: var(--text) !important;
+}
+
+html[data-lang="en"] body.index-page .sl-featured-title {
+  font-family: var(--font-ui) !important;
+  font-size: var(--vw-title-lg) !important;
+  font-weight: 700 !important;
+  line-height: 1.28 !important;
+  color: var(--text) !important;
+  letter-spacing: -0.02em;
+}
+
+html[data-lang="en"] body.index-page .sl-latest-item-title,
+html[data-lang="en"] body.index-page .sl-card-title {
+  font-family: var(--font-ui) !important;
+  font-size: var(--vw-title-md) !important;
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
+  color: var(--text) !important;
+}
+
+html[data-lang="en"] body.index-page .sl-promo-title {
+  font-family: var(--font-ui) !important;
+  font-size: var(--vw-title-sm) !important;
+  font-weight: 700 !important;
+}
+
+html[data-lang="en"] body.index-page .sl-featured-byline,
+html[data-lang="en"] body.index-page .sl-latest-item-byline,
+html[data-lang="en"] body.index-page .sl-card-byline {
+  font-family: var(--font-ui) !important;
+  font-size: var(--vw-meta) !important;
+  color: var(--muted) !important;
+  line-height: 1.45;
+}
+
+html[data-lang="en"] body.index-page .sl-latest-header {
+  font-family: var(--font-ui) !important;
+  font-size: var(--vw-kicker) !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.1em !important;
+}
+
+html[data-lang="en"] .footer-motto {
+  font-family: var(--font-serif) !important;
+  font-style: italic;
+}
+
+/* Nav + UI chrome */
+html[data-lang="en"] .nav-links a,
+html[data-lang="en"] .nav-btn,
+html[data-lang="en"] .subnav-unified a {
+  font-family: var(--font-ui) !important;
+}
