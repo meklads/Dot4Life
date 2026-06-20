@@ -35,7 +35,11 @@ body.index-page {
   --dfl-title: 17px;
   --dfl-meta: 12px;
   --dfl-pad: 18px 20px 20px;
-  --dfl-section-y: clamp(2.5rem, 5vw, 3.5rem);
+  --dfl-section-y: clamp(1.25rem, 2.5vw, 1.75rem);
+  --band-y: clamp(1.625rem, 3.25vw, 2.5rem);
+  --wc-section-y: clamp(1.625rem, 3.25vw, 2.5rem);
+  --hv-section-y: clamp(1.625rem, 3.25vw, 2.5rem);
+  --hr-section-y: clamp(2rem, 4vw, 3rem);
   --hp-max: 1260px;
   --hp-gutter: 24px;
   background: var(--dfl-page-bg);
@@ -525,7 +529,8 @@ body.index-page .core-section--featured > #featured-sections {
 body.index-page .core-section--featured .section-head {
   background: var(--dfl-page-bg) !important;
   max-width: var(--dfl-max) !important;
-  margin: 0 auto 0;
+  margin: 0 auto !important;
+  margin-bottom: 0 !important;
   padding: 18px var(--dfl-gutter) 12px;
   padding-top: var(--dfl-section-y);
   border-radius: 0 !important;
@@ -602,8 +607,9 @@ body.index-page .core-section--featured .section-head-desc {
     grid-row: 1;
     min-width: 0;
     width: 100%;
-    height: auto !important;
-    align-self: start;
+    height: 100%;
+    min-height: 100%;
+    align-self: stretch;
     flex: unset !important;
     flex-grow: unset !important;
     flex-shrink: unset !important;
@@ -611,7 +617,7 @@ body.index-page .core-section--featured .section-head-desc {
     max-width: none !important;
   }
 
-  /* Latest + promo stretch to hero row height; hero stays content-sized */
+  /* Row1 — all three tickets share the same grid-row height (AR + EN) */
   body.index-page .core-section--featured .fs-grid-latest,
   body.index-page .core-section--featured .sl-latest {
     grid-column: 3;
@@ -1287,5 +1293,27 @@ body.index-page .core-section--featured .sl-featured-img::after {
 
   body.index-page .core-section--featured .sl-promo-title {
     margin-bottom: 12px;
+  }
+
+  body.index-page .core-section--featured .sl-featured {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+  }
+
+  body.index-page .core-section--featured .sl-featured-body {
+    flex: 1 1 auto !important;
+  }
+
+  body.index-page .core-section--featured .sl-latest {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+  }
+
+  body.index-page .core-section--featured .sl-promo {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
   }
 }
