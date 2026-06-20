@@ -1,6 +1,6 @@
 # Homepage Design v1 — Baseline (Frozen)
 
-> **Status:** LOCKED · **Date:** 2026-06-20 · **Git tag:** `v1` · **Commit:** `3757e8c`
+> **Status:** LOCKED · **Date:** 2026-06-20 · **Git tag:** `v1` · **Commit:** `573b2ba` (tag) · **Main:** `201569c`
 
 Any change to homepage layout, section order, column law, or bilingual direction rules **after this point** requires explicit approval and should bump to `v2`.
 
