@@ -179,36 +179,51 @@ body.index-page .core-section--decisions > .dc-body {
   display: grid !important;
   grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr);
   align-items: start;
+  direction: ltr;
 }
 
-@media (min-width: 901px) {
-  body.index-page .core-section--decisions > .dc-body > .dc-body-head {
-    grid-column: 2;
-    grid-row: 1;
-    padding: 0 !important;
-    margin: 0 !important;
-    max-width: none !important;
-    width: 100%;
-  }
+/* Section head inside right sidebar (Verywell reference layout) */
+body.index-page .core-section--decisions .dc-side .dc-body-head {
+  padding: 0 !important;
+  margin: 0 0 0.25rem !important;
+  max-width: none !important;
+  width: 100%;
+  background: transparent !important;
+  border: none !important;
+}
 
-  body.index-page .core-section--decisions > .dc-body > .dc-main {
-    grid-column: 1;
-    grid-row: 1 / -1;
-  }
+/* Verywell list: flat rows + dividers (not individual card shells) */
+body.index-page .core-section--decisions .dc-list {
+  gap: 0 !important;
+  border-top: 1px solid rgba(5, 66, 65, .1);
+}
 
-  body.index-page .core-section--decisions > .dc-body > .dc-side {
-    grid-column: 2;
-    grid-row: 2;
-  }
+body.index-page .core-section--decisions .dc-item {
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  border-bottom: 1px solid rgba(5, 66, 65, .1) !important;
+  padding: 18px 0 !important;
+  background: transparent !important;
+}
 
-  [data-lang="ar"] body.index-page .core-section--decisions > .dc-body > .dc-body-head {
-    text-align: right;
-  }
+body.index-page .core-section--decisions .dc-item:hover {
+  box-shadow: none !important;
+  background: rgba(5, 66, 65, .02) !important;
+}
 
-  [data-lang="ar"] body.index-page .core-section--decisions > .dc-body > .dc-body-head .section-head-desc {
-    margin-inline-start: auto;
-    margin-inline-end: 0;
-  }
+body.index-page .core-section--decisions .dc-view-all {
+  padding: 16px 0 0 !important;
+  margin-top: 0 !important;
+}
+
+[data-lang="ar"] body.index-page .core-section--decisions .dc-side .dc-body-head {
+  text-align: right;
+}
+
+[data-lang="ar"] body.index-page .core-section--decisions .dc-side .dc-body-head .section-head-desc {
+  margin-inline-start: auto;
+  margin-inline-end: 0;
 }
 
 @media (max-width: 900px) {
@@ -217,14 +232,15 @@ body.index-page .core-section--decisions > .dc-body {
     padding-top: 0 !important;
   }
 
-  body.index-page .core-section--decisions > .dc-body > .dc-body-head,
-  body.index-page .core-section--decisions > .dc-body > .dc-main,
-  body.index-page .core-section--decisions > .dc-body > .dc-side {
-    grid-column: 1;
-    grid-row: auto;
+  body.index-page .core-section--decisions > .dc-body > .dc-main {
+    order: 2;
   }
 
-  body.index-page .core-section--decisions > .dc-body > .dc-body-head {
+  body.index-page .core-section--decisions > .dc-body > .dc-side {
+    order: 1;
+  }
+
+  body.index-page .core-section--decisions .dc-side .dc-body-head {
     padding-top: var(--dfl-section-y) !important;
   }
 }
