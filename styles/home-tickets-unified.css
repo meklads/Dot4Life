@@ -936,10 +936,15 @@ body.index-page .core-section--featured .sl-promo {
   text-align: center;
   align-items: stretch;
   overflow: hidden;
+  box-sizing: border-box;
+}
+
+body.index-page .core-section--featured .sl-promo-img::after {
+  display: none !important;
 }
 
 body.index-page .core-section--featured .sl-promo-body {
-  padding: 0 12px 14px;
+  padding: 0;
   flex: 0 0 auto !important;
   display: flex;
   flex-direction: column;
@@ -950,34 +955,45 @@ body.index-page .core-section--featured .sl-promo-body {
 
 body.index-page .core-section--featured .sl-promo-kicker {
   display: inline-block;
-  margin: -12px auto 6px;
+  margin: -12px auto 8px;
   position: relative;
   z-index: 2;
-  padding: 4px 10px;
-  background: var(--dfl-teal);
-  border-radius: 6px;
-  color: #fff;
-  letter-spacing: .06em;
+  padding: 5px 10px;
+  background: #7ad8e8;
+  border-radius: 4px;
+  color: #13404f;
+  letter-spacing: .04em;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1.25;
+  max-width: calc(100% - 8px);
 }
 
 body.index-page .core-section--featured .sl-promo-title {
   color: #fff !important;
-  margin-bottom: 4px;
+  margin: 0 0 10px;
+  padding: 0 2px;
+  font-size: 15px !important;
+  line-height: 1.32;
+  max-width: 22ch;
 }
 
 body.index-page .core-section--featured .sl-promo-desc {
   color: rgba(255, 255, 255, .88);
   margin-bottom: 8px;
   line-height: 1.35;
+  font-size: 12px;
 }
 
 body.index-page .core-section--featured .sl-promo-btn {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 0;
-  padding: 8px 16px;
-  min-height: 36px;
+  padding: 10px 14px;
+  min-height: 38px;
+  width: 100%;
+  box-sizing: border-box;
   background: #fff;
   color: var(--dfl-vw-promo);
   font-size: var(--dfl-meta);
@@ -1221,17 +1237,55 @@ body.index-page .core-section--featured .sl-featured-img::after {
   display: none !important;
 }
 
-/* Promo row1 — image absorbs height; compact teal body (wins over aspect-ratio base) */
+/* Promo row1 — Verywell sidebar frame (inset image + badge + title + CTA) */
 @media (min-width: 901px) {
+  body.index-page .core-section--featured .sl-promo {
+    padding: 14px 12px 16px !important;
+    justify-content: flex-start;
+    gap: 0;
+  }
+
   body.index-page .core-section--featured .sl-promo-img {
     flex: 1 1 0 !important;
     flex-shrink: 1 !important;
     aspect-ratio: unset !important;
-    min-height: 220px;
+    min-height: 0;
     height: auto !important;
+    width: 100%;
+    position: relative;
+    display: block;
+    margin: 0;
+  }
+
+  body.index-page .core-section--featured .sl-promo-img .img-ph {
+    position: absolute;
+    inset: 0;
+    border: 2px solid rgba(255, 255, 255, .92);
+    border-radius: 3px;
+    overflow: hidden;
+    background: #f5f0e8;
   }
 
   body.index-page .core-section--featured .sl-promo-img img {
-    object-position: center 20%;
+    object-fit: cover;
+    object-position: center 15%;
+  }
+
+  body.index-page .core-section--featured .sl-promo-body {
+    flex: 0 0 auto !important;
+    width: 100%;
+    padding: 0;
+  }
+
+  body.index-page .core-section--featured .sl-promo-desc {
+    display: none !important;
+  }
+
+  body.index-page .core-section--featured .sl-promo-kicker {
+    margin: -13px auto 10px;
+  }
+
+  body.index-page .core-section--featured .sl-promo-title {
+    margin-bottom: 12px;
   }
 }
