@@ -939,20 +939,21 @@ body.index-page .core-section--featured .sl-promo {
 }
 
 body.index-page .core-section--featured .sl-promo-body {
-  padding: 0 18px 20px;
-  flex: 1;
+  padding: 0 12px 14px;
+  flex: 0 0 auto !important;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
+  box-sizing: border-box;
 }
 
 body.index-page .core-section--featured .sl-promo-kicker {
   display: inline-block;
-  margin: -14px auto 12px;
+  margin: -12px auto 6px;
   position: relative;
   z-index: 2;
-  padding: 5px 12px;
+  padding: 4px 10px;
   background: var(--dfl-teal);
   border-radius: 6px;
   color: #fff;
@@ -961,21 +962,22 @@ body.index-page .core-section--featured .sl-promo-kicker {
 
 body.index-page .core-section--featured .sl-promo-title {
   color: #fff !important;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 
 body.index-page .core-section--featured .sl-promo-desc {
   color: rgba(255, 255, 255, .88);
-  margin-bottom: 14px;
+  margin-bottom: 8px;
+  line-height: 1.35;
 }
 
 body.index-page .core-section--featured .sl-promo-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-top: auto;
-  padding: 10px 22px;
-  min-height: 40px;
+  margin-top: 0;
+  padding: 8px 16px;
+  min-height: 36px;
   background: #fff;
   color: var(--dfl-vw-promo);
   font-size: var(--dfl-meta);
@@ -1217,4 +1219,19 @@ body.index-page #friday-letter::before {
 
 body.index-page .core-section--featured .sl-featured-img::after {
   display: none !important;
+}
+
+/* Promo row1 — image absorbs height; compact teal body (wins over aspect-ratio base) */
+@media (min-width: 901px) {
+  body.index-page .core-section--featured .sl-promo-img {
+    flex: 1 1 0 !important;
+    flex-shrink: 1 !important;
+    aspect-ratio: unset !important;
+    min-height: 220px;
+    height: auto !important;
+  }
+
+  body.index-page .core-section--featured .sl-promo-img img {
+    object-position: center 20%;
+  }
 }
