@@ -287,7 +287,6 @@ body.index-page .peace-flagship .mm-grid {
 /* ── Shared ticket shell ────────────────────────────────────── */
 body.index-page .core-section--decisions .dc-item,
 body.index-page .core-section--decisions .dc-side-ad,
-body.index-page .core-section--decisions .dc-side-banner,
 body.index-page .pillar-card,
 body.index-page .hl-art-card,
 body.index-page .peace-flagship .mm-content,
@@ -301,9 +300,29 @@ body.index-page #friday-letter .fl-inner {
   transition: box-shadow .2s ease, transform .2s ease;
 }
 
+/* Pregnancy banner — illustration as full card background (not white shell) */
+body.index-page .core-section--decisions .dc-side-banner--pregnancy {
+  border-radius: var(--dfl-radius) !important;
+  box-shadow: var(--dfl-shadow) !important;
+  border: none !important;
+  border-top: 3px solid #d48a8a !important;
+  background-color: #fff9e5 !important;
+  background-image: url('/assets/images/banner-pregnancy.webp') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  min-height: 400px !important;
+  overflow: hidden;
+  transition: box-shadow .2s ease;
+}
+
+body.index-page .core-section--decisions .dc-side-banner--pregnancy:hover {
+  box-shadow: var(--dfl-shadow-hover) !important;
+  transform: none !important;
+}
+
 body.index-page .core-section--decisions .dc-item:hover,
 body.index-page .core-section--decisions .dc-side-ad:hover,
-body.index-page .core-section--decisions .dc-side-banner:hover,
 body.index-page .pillar-card:hover,
 body.index-page .hl-art-card:hover,
 body.index-page .peace-flagship .mm-grid:hover .mm-content,
@@ -959,7 +978,7 @@ body.index-page .core-section--featured .sl-latest-item:hover {
   body.index-page .pillar-card:hover,
   body.index-page .hl-art-card:hover,
   body.index-page .core-section--decisions .dc-side-ad:hover,
-  body.index-page .core-section--decisions .dc-side-banner:hover {
+  body.index-page .core-section--decisions .dc-side-banner--pregnancy:hover {
     transform: none !important;
   }
 }
