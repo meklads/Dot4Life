@@ -39,12 +39,20 @@ a{color:inherit;text-decoration:none}
 #pj-hero{
   margin-top:60px;
   padding:48px 24px 0;
-  background:linear-gradient(160deg,#FDF8F2 0%,#F5EBD8 100%);
+  background:
+    linear-gradient(180deg, rgba(253,248,242,.94) 0%, rgba(253,248,242,.88) 45%, rgba(245,235,216,.92) 100%),
+    url('/assets/images/banner-pregnancy.webp') center top / cover no-repeat;
   border-bottom:1px solid var(--border);
   text-align:center;
+  position:relative;
+  overflow:hidden;
 }
-[data-theme="dark"] #pj-hero{background:linear-gradient(160deg,#16130F 0%,#1E1810 100%)}
-.pj-hero-inner{max-width:680px;margin:0 auto}
+[data-theme="dark"] #pj-hero{
+  background:
+    linear-gradient(180deg, rgba(22,19,15,.94) 0%, rgba(22,19,15,.88) 45%, rgba(30,24,16,.92) 100%),
+    url('/assets/images/banner-pregnancy.webp') center top / cover no-repeat;
+}
+.pj-hero-inner{max-width:680px;margin:0 auto;position:relative;z-index:1}
 .pj-eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.14em;
   text-transform:uppercase;color:var(--rose);margin-bottom:12px}
 .pj-headline{font-family:var(--font-serif);font-size:clamp(1.9rem,5vw,2.8rem);
