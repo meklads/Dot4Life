@@ -556,42 +556,49 @@ body.index-page .hl-art-card-arrow {
   color: var(--dfl-green) !important;
 }
 
-/* Latest feed — featured (first) ticket: cap image height, crop from bottom */
+/* Latest feed — uniform 4-col tickets (no oversized first card) */
 @media (min-width: 901px) {
-  body.index-page .hl-art-card:first-child {
-    grid-column: span 2 !important;
-    flex-direction: row !important;
-    align-items: flex-start !important;
+  body.index-page .home-feed-section .hl-article-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
   }
 
-  [data-lang="ar"] body.index-page .hl-art-card:first-child {
-    flex-direction: row-reverse !important;
+  body.index-page .hl-art-card:first-child {
+    grid-column: auto !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
   }
 
   body.index-page .hl-art-card:first-child .hl-art-card-img {
-    width: 46% !important;
-    max-width: 320px;
+    width: 100% !important;
+    max-width: none !important;
     height: auto !important;
     min-height: 0 !important;
-    max-height: 200px !important;
-    aspect-ratio: 3 / 2 !important;
+    max-height: none !important;
+    aspect-ratio: var(--dfl-img-law-card) !important;
     object-fit: cover !important;
-    object-position: center top !important;
+    object-position: center center !important;
     flex-shrink: 0;
-    align-self: flex-start !important;
+    align-self: auto !important;
   }
 
   body.index-page .hl-art-card:first-child .hl-art-card-body {
-    flex: 1;
+    flex: 1 1 auto;
     min-width: 0;
-    padding: clamp(1rem, 2vw, 1.35rem) !important;
+    padding: var(--dfl-pad) !important;
+    justify-content: flex-start !important;
+  }
+
+  body.index-page .hl-art-card:first-child .hl-art-card-title {
+    font-size: var(--dfl-title) !important;
+    font-family: inherit !important;
+    font-weight: 700 !important;
   }
 
   body.index-page .hl-art-card:first-child .hl-art-card-desc {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    display: block;
+    -webkit-line-clamp: unset;
+    -webkit-box-orient: unset;
+    overflow: visible;
   }
 }
 
