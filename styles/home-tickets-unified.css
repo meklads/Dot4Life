@@ -173,17 +173,51 @@ body.index-page .home-feed-section .hl-sub {
 body.index-page .core-section--decisions > .dc-body {
   background: var(--dfl-page-bg) !important;
   margin-top: 0;
-  padding: var(--dfl-section-y) var(--dfl-gutter) calc(var(--dfl-gap) + 4px) !important;
+  padding: 0 var(--dfl-gutter) calc(var(--dfl-gap) + 4px) !important;
   border-radius: 0 !important;
   gap: var(--dfl-gap) !important;
   display: grid !important;
-  grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr);
   align-items: start;
   direction: ltr;
 }
 
-/* Section head inside right sidebar (Verywell reference layout) */
-body.index-page .core-section--decisions .dc-side .dc-body-head {
+/* Arabic: original layout — sidebar left, articles right */
+[data-lang="ar"] body.index-page .core-section--decisions > .dc-body {
+  grid-template-columns: 38% 62%;
+}
+
+[data-lang="ar"] body.index-page .core-section--decisions > .dc-body > .dc-side {
+  order: 1;
+}
+
+[data-lang="ar"] body.index-page .core-section--decisions > .dc-body > .dc-main {
+  order: 2;
+}
+
+/* English: Verywell — articles left, sidebar right */
+[data-lang="en"] body.index-page .core-section--decisions > .dc-body {
+  grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr);
+  padding-top: var(--dfl-section-y) !important;
+}
+
+[data-lang="en"] body.index-page .core-section--decisions > .dc-body > .dc-main {
+  order: 1;
+}
+
+[data-lang="en"] body.index-page .core-section--decisions > .dc-body > .dc-side {
+  order: 2;
+}
+
+/* Section heads: AR above grid, EN inside sidebar */
+[data-lang="ar"] body.index-page .core-section--decisions .dc-section-head--sidebar {
+  display: none !important;
+}
+
+[data-lang="en"] body.index-page .core-section--decisions .dc-section-head--top {
+  display: none !important;
+}
+
+body.index-page .core-section--decisions .dc-side .dc-section-head--sidebar {
   padding: 0 !important;
   margin: 0 0 0.25rem !important;
   max-width: none !important;
@@ -192,13 +226,13 @@ body.index-page .core-section--decisions .dc-side .dc-body-head {
   border: none !important;
 }
 
-/* Verywell list: flat rows + dividers (not individual card shells) */
-body.index-page .core-section--decisions .dc-list {
+/* English only: Verywell flat list rows */
+[data-lang="en"] body.index-page .core-section--decisions .dc-list {
   gap: 0 !important;
   border-top: 1px solid rgba(5, 66, 65, .1);
 }
 
-body.index-page .core-section--decisions .dc-item {
+[data-lang="en"] body.index-page .core-section--decisions .dc-item {
   border: none !important;
   border-radius: 0 !important;
   box-shadow: none !important;
@@ -207,41 +241,42 @@ body.index-page .core-section--decisions .dc-item {
   background: transparent !important;
 }
 
-body.index-page .core-section--decisions .dc-item:hover {
+[data-lang="en"] body.index-page .core-section--decisions .dc-item:hover {
   box-shadow: none !important;
   background: rgba(5, 66, 65, .02) !important;
 }
 
-body.index-page .core-section--decisions .dc-view-all {
+[data-lang="en"] body.index-page .core-section--decisions .dc-view-all {
   padding: 16px 0 0 !important;
   margin-top: 0 !important;
-}
-
-[data-lang="ar"] body.index-page .core-section--decisions .dc-side .dc-body-head {
-  text-align: right;
-}
-
-[data-lang="ar"] body.index-page .core-section--decisions .dc-side .dc-body-head .section-head-desc {
-  margin-inline-start: auto;
-  margin-inline-end: 0;
 }
 
 @media (max-width: 900px) {
   body.index-page .core-section--decisions > .dc-body {
     grid-template-columns: 1fr;
+  }
+
+  /* EN mobile: sidebar (with head) first, then articles */
+  [data-lang="en"] body.index-page .core-section--decisions > .dc-body {
     padding-top: 0 !important;
   }
 
-  body.index-page .core-section--decisions > .dc-body > .dc-main {
+  [data-lang="en"] body.index-page .core-section--decisions > .dc-body > .dc-main {
     order: 2;
   }
 
-  body.index-page .core-section--decisions > .dc-body > .dc-side {
+  [data-lang="en"] body.index-page .core-section--decisions > .dc-body > .dc-side {
     order: 1;
   }
 
-  body.index-page .core-section--decisions .dc-side .dc-body-head {
+  [data-lang="en"] body.index-page .core-section--decisions .dc-section-head--sidebar {
     padding-top: var(--dfl-section-y) !important;
+  }
+
+  /* AR mobile: natural DOM order (sidebar then articles) */
+  [data-lang="ar"] body.index-page .core-section--decisions > .dc-body > .dc-main,
+  [data-lang="ar"] body.index-page .core-section--decisions > .dc-body > .dc-side {
+    order: unset;
   }
 }
 
