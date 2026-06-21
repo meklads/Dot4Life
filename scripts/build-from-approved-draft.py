@@ -429,7 +429,215 @@ FAQ_MARKERS = (
 EM_DASH = "\u2014"
 TITLE_SUFFIX = " | DOTFORLIFE"
 MAX_TITLE_LEN = 60
+MAX_META_LEN = 155
+MIN_DRAFT_WORDS = 1200
+MIN_FAQ_Q = 4
+MIN_INTERNAL_LINKS = 3
 DISCLAIMER_KEYS = ("Disclaimer:", "إخلاء مسؤولية", "Sharia Disclaimer", "إخلاء مالي")
+
+DISCLAIMER_BY_ID: dict[str, str] = {
+    "A-01-1": "financial", "A-01-2": "financial", "A-07-1": "financial",
+    "A-02-1": "medical", "A-02-2": "medical", "A-03-1": "medical", "A-03-2": "medical",
+    "A-04-1": "medical", "A-04-2": "sharia", "A-05-1": "sharia", "A-05-2": "sharia",
+    "A-06-1": "sharia", "A-06-2": "sharia", "A-08-1": "financial", "A-08-2": "financial",
+}
+
+DISCLAIMER_PATTERNS: dict[str, re.Pattern[str] | None] = {
+    "medical": re.compile(
+        r"Disclaimer|إخلاء مسؤولية|medical advice|not medical|استشارة طبية|ليست استشارة",
+        re.I,
+    ),
+    "financial": re.compile(
+        r"Disclaimer|إخلاء مالي|financial advice|investment advice|not financial|ليست استشارة",
+        re.I,
+    ),
+    "sharia": re.compile(
+        r"Sharia Disclaimer|إخلاء|fatwa|فتوى|religious guidance|guidance only",
+        re.I,
+    ),
+    "none": None,
+}
+
+
+class BuildGateError(Exception):
+    def __init__(self, gate: str, path: Path, detail: str) -> None:
+        self.gate = gate
+        self.path = path
+        self.detail = detail
+        rel = path.relative_to(ROOT) if path.is_relative_to(ROOT) else path
+        super().__init__(f"BUILD GATE FAIL [{gate}] file={rel} detail={detail}")
+
+
+def gate_fail(gate: str, path: Path, detail: str) -> None:
+    raise BuildGateError(gate, path, detail)
+
+
+def disclaimer_type_for(cfg: dict, out_path: Path) -> str:
+    return cfg.get("disclaimer_type") or DISCLAIMER_BY_ID.get(cfg["id"], "none")
+
+
+def extract_ldjson_blocks(page: str) -> list[dict]:
+    blocks: list[dict] = []
+    for m in re.finditer(r'<script type="application/ld\+json">(.*?)</script>', page, re.S):
+        try:
+            blocks.append(json.loads(m.group(1).strip()))
+        except json.JSONDecodeError as e:
+            raise BuildGateError("G11", Path("?"), f"invalid JSON-LD: {e}") from e
+    return blocks
+
+
+def visible_word_count(page: str) -> int:
+    text = re.sub(r"<script[\s\S]*?</script>", " ", page, flags=re.I)
+    text = re.sub(r"<style[\s\S]*?</style>", " ", text, flags=re.I)
+    text = re.sub(r"<[^>]+>", " ", text)
+    text = html.unescape(text)
+    return len(re.findall(r"\w+", text, re.UNICODE))
+
+
+def draft_word_count(md: str) -> int:
+    return len(re.findall(r"\w+", md, re.UNICODE))
+
+
+def has_disclaimer(page: str, dtype: str) -> bool:
+    pat = DISCLAIMER_PATTERNS.get(dtype)
+    if not pat:
+        return True
+    return bool(pat.search(page))
+
+
+def count_internal_links(page: str) -> int:
+    return len(re.findall(r'<a\s+href="/[^"]+"', page))
+
+
+def assert_build_gates(
+    page: str,
+    lang: str,
+    out_path: Path,
+    cfg: dict,
+    draft_md: str | None = None,
+) -> list[str]:
+    """G1–G11 fail-closed. Returns list of passed gate ids."""
+    passed: list[str] = []
+
+    # G1 em-dash
+    if EM_DASH in page:
+        gate_fail("G1", out_path, f"{page.count(EM_DASH)} em dash(es)")
+    passed.append("G1")
+
+    # G2 word count — draft prose (not template chrome)
+    if draft_md is not None:
+        wc = draft_word_count(draft_md)
+        if wc < MIN_DRAFT_WORDS:
+            gate_fail("G2", out_path, f"draft words={wc} < {MIN_DRAFT_WORDS}")
+    else:
+        wc = visible_word_count(page)
+        if wc < MIN_DRAFT_WORDS:
+            gate_fail("G2", out_path, f"visible words={wc} < {MIN_DRAFT_WORDS}")
+    passed.append("G2")
+
+    ld_blocks = extract_ldjson_blocks(page)
+
+    # G11 JSON-LD valid (already parsed)
+    passed.append("G11")
+
+    # G3 Article
+    article_blocks = [b for b in ld_blocks if b.get("@type") == "Article"]
+    if not article_blocks:
+        gate_fail("G3", out_path, "Article schema missing")
+    passed.append("G3")
+
+    # G4 FAQPage
+    faq_blocks = [b for b in ld_blocks if b.get("@type") == "FAQPage"]
+    if not faq_blocks:
+        gate_fail("G4", out_path, "FAQPage schema missing")
+    faq_q = sum(
+        len(b.get("mainEntity") or [])
+        for b in faq_blocks
+    )
+    if faq_q < MIN_FAQ_Q:
+        gate_fail("G4", out_path, f"FAQ questions={faq_q} < {MIN_FAQ_Q}")
+    passed.append("G4")
+
+    # G5 hero WebP + alt + og:image
+    hero = re.search(r'<figure class="hero"><img[^>]+src="([^"]+\.webp)"[^>]+alt="([^"]*)"', page)
+    if not hero:
+        gate_fail("G5", out_path, "hero WebP img missing")
+    if not hero.group(2).strip():
+        gate_fail("G5", out_path, "hero alt empty")
+    if 'property="og:image"' not in page:
+        gate_fail("G5", out_path, "og:image missing")
+    passed.append("G5")
+
+    # G6 Title
+    tm = re.search(r"<title>(.*?)</title>", page)
+    if not tm:
+        gate_fail("G6", out_path, "no <title>")
+    title = tm.group(1)
+    if len(title) > MAX_TITLE_LEN:
+        gate_fail("G6", out_path, f"title len={len(title)} > {MAX_TITLE_LEN}")
+    if title.endswith(TITLE_SUFFIX) and title[: -len(TITLE_SUFFIX)].endswith(" "):
+        gate_fail("G6", out_path, "title truncated mid-token")
+    passed.append("G6")
+
+    # G7 Meta (visible chars after entity decode)
+    mm = re.search(r'<meta name="description" content="(.*?)"', page)
+    if not mm:
+        gate_fail("G7", out_path, "meta description missing")
+    meta_text = html.unescape(mm.group(1))
+    if len(meta_text) > MAX_META_LEN:
+        gate_fail("G7", out_path, f"meta len={len(meta_text)} > {MAX_META_LEN}")
+    passed.append("G7")
+
+    # G8 hreflang
+    lang_only = cfg.get("lang_only")
+    if lang_only:
+        if f'hreflang="{lang_only}"' not in page:
+            gate_fail("G8", out_path, f'hreflang="{lang_only}" missing')
+    else:
+        if 'hreflang="ar"' not in page or 'hreflang="en"' not in page:
+            gate_fail("G8", out_path, "hreflang ar/en pair missing")
+    passed.append("G8")
+
+    # G9 disclaimer
+    dtype = disclaimer_type_for(cfg, out_path)
+    if dtype != "none" and not has_disclaimer(page, dtype):
+        gate_fail("G9", out_path, f"disclaimer missing (type={dtype})")
+    passed.append("G9")
+
+    # G10 internal links
+    nlinks = count_internal_links(page)
+    if nlinks < MIN_INTERNAL_LINKS:
+        gate_fail("G10", out_path, f"internal links={nlinks} < {MIN_INTERNAL_LINKS}")
+    passed.append("G10")
+
+    return passed
+
+
+def assert_parity(
+    ar_page: str,
+    en_page: str,
+    cfg: dict,
+    ar_path: Path,
+    en_path: Path,
+) -> None:
+    if cfg.get("lang_only"):
+        return
+    ar_ld = extract_ldjson_blocks(ar_page)
+    en_ld = extract_ldjson_blocks(en_page)
+    ar_types = sorted(b.get("@type", "") for b in ar_ld)
+    en_types = sorted(b.get("@type", "") for b in en_ld)
+    if ar_types != en_types:
+        gate_fail("P1", ar_path, f"schema types ar={ar_types} en={en_types}")
+    ar_faq = any(b.get("@type") == "FAQPage" for b in ar_ld)
+    en_faq = any(b.get("@type") == "FAQPage" for b in en_ld)
+    if ar_faq != en_faq:
+        gate_fail("P2", ar_path, "FAQPage parity fail")
+    dtype = disclaimer_type_for(cfg, ar_path)
+    if dtype != "none":
+        if not has_disclaimer(ar_page, dtype):
+            gate_fail("P3", ar_path, "disclaimer missing in AR")
+        if not has_disclaimer(en_page, dtype):
+            gate_fail("P3", en_path, "disclaimer missing in EN")
 
 
 def seo_page_title(h1: str, cfg: dict, lang: str) -> str:
@@ -709,7 +917,7 @@ def schema_json(
     return "\n".join(f'<script type="application/ld+json">{b}</script>' for b in blocks)
 
 
-def build_page(cfg: dict, draft_path: Path, out_path: Path, lang: str) -> None:
+def build_page(cfg: dict, draft_path: Path, out_path: Path, lang: str) -> tuple[str, str]:
     md = draft_path.read_text(encoding="utf-8")
     title, body = md_body_html(md, lang)
     faqs = parse_faq(md)
@@ -734,7 +942,13 @@ def build_page(cfg: dict, draft_path: Path, out_path: Path, lang: str) -> None:
             f'<link rel="alternate" hreflang="ar" href="{href_ar}">\n'
             f'<link rel="alternate" hreflang="en" href="{href_en}">'
         )
-    desc = re.sub(r"\s+", " ", md.split("\n\n")[1 if md.startswith("#") else 0][:155])
+    desc_raw = re.sub(r"\s+", " ", md.split("\n\n")[1 if md.startswith("#") else 0].strip())
+    if len(desc_raw) > MAX_META_LEN:
+        chunk = desc_raw[:MAX_META_LEN]
+        if " " in chunk:
+            chunk = chunk.rsplit(" ", 1)[0]
+        desc_raw = chunk.rstrip("?.,")
+    desc = desc_raw
     section = cfg.get("section_en" if is_en else "section_ar", cfg.get("section_en", ""))
     lang_link = ""
     lang_label = ""
@@ -824,25 +1038,82 @@ td{{padding:10px 12px;border-bottom:1px solid #eee}}
 </body>
 </html>
 """
+    return page, md
+
+
+def write_page(page: str, out_path: Path, cfg: dict, lang: str, md: str) -> list[str]:
+    gates = assert_build_gates(page, lang, out_path, cfg, md)
     BACKUP.mkdir(parents=True, exist_ok=True)
-    assert_cf4_gate(page, out_path)
-    assert_title_gate(page, out_path)
     if out_path.exists():
         shutil.copy2(out_path, BACKUP / out_path.name)
     out_path.write_text(page, encoding="utf-8")
-    wc = len(re.findall(r"\w+", md, re.UNICODE))
-    print(f"  ✅ {cfg['id']} {lang}: {out_path.name} (~{wc} words draft)")
+    wc = draft_word_count(md)
+    rel = out_path.relative_to(ROOT)
+    print(f"  ✅ ALL GATES PASS {rel} ({', '.join(gates + ['P-ok'])}) ~{wc}w draft")
+    return gates
+
+
+def audit_live() -> int:
+    """Audit LIVE HTML from BUILD_MAP — no rebuild unless FAIL."""
+    print("=== LIVE GATE AUDIT (G1–G11 + parity) ===\n")
+    fails: list[str] = []
+    passed = 0
+    for cfg in BUILD_MAP:
+        built: dict[str, tuple[str, Path, str]] = {}
+        for lang, draft_path, out_path in config_build_targets(cfg):
+            if not out_path.exists():
+                fails.append(f"MISSING {out_path.relative_to(ROOT)}")
+                continue
+            page = out_path.read_text(encoding="utf-8")
+            md = draft_path.read_text(encoding="utf-8") if draft_path.exists() else ""
+            try:
+                assert_build_gates(page, lang, out_path, cfg, md or None)
+                built[lang] = (page, out_path, md)
+                passed += 1
+                print(f"  PASS {out_path.relative_to(ROOT)}")
+            except BuildGateError as e:
+                fails.append(str(e))
+                print(f"  FAIL {e}")
+        if not cfg.get("lang_only") and "ar" in built and "en" in built:
+            try:
+                assert_parity(
+                    built["ar"][0], built["en"][0], cfg,
+                    built["ar"][1], built["en"][1],
+                )
+                print(f"  PASS parity {cfg['id']}")
+            except BuildGateError as e:
+                fails.append(str(e))
+                print(f"  FAIL {e}")
+
+    oman = ROOT / "real-estate/oman-property-roi.html"
+    if oman.exists():
+        print(f"\n  SKIP {oman.relative_to(ROOT)} — calculator shell (surgical inject pending)")
+
+    print(f"\n=== SUMMARY: {passed} pages PASS, {len(fails)} FAIL ===")
+    for f in fails:
+        print(f"  • {f}")
+    return 1 if fails else 0
 
 
 def main() -> None:
     validate_build_map()
+    if len(sys.argv) > 1 and sys.argv[1] == "--audit":
+        raise SystemExit(audit_live())
     ids = sys.argv[1:] if len(sys.argv) > 1 else [c["id"] for c in BUILD_MAP]
     for cfg in BUILD_MAP:
         if cfg["id"] not in ids and ids != ["all"]:
             continue
         print(f"Building {cfg['id']}…")
+        rendered: list[tuple[str, Path, str, str]] = []
         for lang, draft_path, out_path in config_build_targets(cfg):
-            build_page(cfg, draft_path, out_path, lang)
+            page, md = build_page(cfg, draft_path, out_path, lang)
+            rendered.append((lang, out_path, page, md))
+        if not cfg.get("lang_only") and len(rendered) == 2:
+            ar = next(r for r in rendered if r[0] == "ar")
+            en = next(r for r in rendered if r[0] == "en")
+            assert_parity(ar[2], en[2], cfg, ar[1], en[1])
+        for lang, out_path, page, md in rendered:
+            write_page(page, out_path, cfg, lang, md)
 
 
 if __name__ == "__main__":

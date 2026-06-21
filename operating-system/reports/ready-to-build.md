@@ -12,7 +12,7 @@
 | 1 | A-01 | drafts/task01/investment-basics-beginners(-en) | finance-wealth/investment-basics-beginners(-en).html | 1370/1516 | 🟢 **LIVE** 2026-06-21 |
 | 2 | A-01 | drafts/task01/family-budget-plan(-en) | finance-wealth/family-budget-plan(-en).html | 1289/1508 | 🟢 **LIVE** 2026-06-21 |
 | 3 | A-07 | drafts/task07/rent-vs-buy-gulf-family(-en) | real-estate/rent-vs-buy-gulf-family(-en).html | 1353/1775 | 🟢 **LIVE** 2026-06-21 |
-| 4 | A-07 | drafts/task07/oman-property-roi | real-estate/oman-property-roi.html | —/1347 | ⏸ **BLOCKED** — calculator shell; inject strategy needed |
+| 4 | A-07 | drafts/task07/oman-property-roi | real-estate/oman-property-roi.html | —/1347 | 🟢 **GO** حقن جراحي (Amer) — التالي |
 | 5 | A-02 | drafts/task02/daily-walking-benefits(-en) | health/daily-walking-benefits(-en).html | 1261/1532 | 🟢 **LIVE** 2026-06-21 |
 | 6 | A-02 | drafts/task02/bmi-calculator-women | health/bmi-calculator-women.html | —/1498 | 🟢 **LIVE** (EN) |
 | 7 | A-03 | drafts/task03/children-sleep-summer(-en) | health/children-sleep-summer(-en).html | 1242/1492 | 🟢 **LIVE** 2026-06-21 |

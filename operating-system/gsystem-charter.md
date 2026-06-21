@@ -101,12 +101,23 @@ Hema drafts → Self-QA → Amer APPROVED|REVISE|REJECT
 **Rule:** LIVE state **فقط** في GSystem / `ready-to-build.md`.
 
 ## Build gates (Cursor — fail build if missing)
-- Title ≤60 chars (full `<title>`, no mid-word chop)
-- Meta ≤155 · C-F4 em-dash = 0
-- Article + FAQPage JSON-LD · hreflang ar/en
-- WebP hero + alt + og:image · 3 internal links
-- Financial / Sharia / medical disclaimer when required (AR + EN)
-- **Image report** في `operating-system/reports/ghost/` (`images-YYYY-MM-DD.md`)
+**حزمة G1–G11 + parity** في `scripts/build-from-approved-draft.py` — `assert_build_gates()` قبل كل write؛ `assert_parity()` للأزواج ع/إن.
+
+| Gate | فحص |
+|------|-----|
+| G1 | em-dash = 0 |
+| G2 | مسوّدة ≥1200 كلمة (نثر المسوّدة، لا القالب) |
+| G3–G4 | Article + FAQPage ≥4Q |
+| G5 | WebP hero + alt + og:image |
+| G6 | Title ≤60 |
+| G7 | Meta ≤155 (بعد decode) |
+| G8 | hreflang (استثناء EN-only) |
+| G9 | disclaimer حسب `disclaimer_type` |
+| G10 | روابط داخلية ≥3 |
+| G11 | JSON-LD valid |
+| P1–P3 | parity ع/إن (schema, FAQ, disclaimer) |
+
+**Audit LIVE:** `python3 scripts/build-from-approved-draft.py --audit` — لا rebuild إلا FAIL.
 
 ## Image loop (Ghost directive 2026-06-21)
 | خطوة | من | ماذا |
