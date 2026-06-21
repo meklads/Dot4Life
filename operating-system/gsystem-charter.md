@@ -141,6 +141,7 @@ Hema drafts → Self-QA → Amer APPROVED|REVISE|REJECT
 
 ## Tracks
 - **A** New/deepen articles · **B** Thin Live top 20 · **C** AdSense technical
+- **Blog campaign (2026-06-22):** Amer = `track-blog-triage.md` + `draft-gate.py` (Markdown only). Cursor = HTML execute **after** triage list approved. **No overlap.**
 
 ## v2 (after first CLOSED loop)
 - WIP=1 TECH_BUILD · proof bundle per item · Kanban links to A-xx IDs
