@@ -77,6 +77,9 @@
   .side button.gs-tab.active{box-shadow:0 0 0 2px var(--teal)}
   .side button.ghost-tab{background:linear-gradient(135deg,#fd781c,#e8650a);color:#fff;margin-bottom:.5rem}
   .side button.ghost-tab.active{box-shadow:0 0 0 2px #ffb347}
+  .view-panel{display:none}
+  .view-panel.is-active{display:block}
+  .loading{color:var(--muted);padding:1.5rem;text-align:center;font-size:.9rem}
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1436107577087160" crossorigin="anonymous"></script></head>
 <body>
@@ -99,25 +102,25 @@
     <button class="lock" id="lock">🔓 قفل وخروج</button>
   </nav>
   <main class="main">
-    <div id="view-content"><div class="traction" id="traction"></div><div class="roster" id="roster"></div><div class="board" id="board"></div></div>
-    <div id="view-doc" style="display:none"><div class="doc" id="doc"></div><div class="docnote">يحدّثه الفريق عبر الملف في <code>system/sections/</code> ويظهر هنا بعد git push.</div></div>
-    <div id="view-vg" style="display:none"><div class="vgnav" id="vgnav"></div><div class="doc" id="vgdoc"></div><div class="docnote">المرجعية البصرية العليا — المصدر في <code>visual-governance/</code>. أي صورة أو فيديو يمرّ ببوابة الامتثال قبل النشر.</div></div>
-    <div id="view-gsystem">
+    <div id="view-content" class="view-panel"><div class="traction" id="traction"></div><div class="roster" id="roster"></div><div class="board" id="board"></div></div>
+    <div id="view-doc" class="view-panel"><div class="doc" id="doc"><div class="loading">جارٍ التحميل…</div></div><div class="docnote">يحدّثه الفريق عبر الملف في <code>system/sections/</code> ويظهر هنا بعد git push.</div></div>
+    <div id="view-vg" class="view-panel"><div class="vgnav" id="vgnav"></div><div class="doc" id="vgdoc"><div class="loading">جارٍ التحميل…</div></div><div class="docnote">المرجعية البصرية العليا — المصدر في <code>visual-governance/</code>. أي صورة أو فيديو يمرّ ببوابة الامتثال قبل النشر.</div></div>
+    <div id="view-gsystem" class="view-panel is-active">
       <div class="gs-head">
         <div><h1>GSystem</h1><div class="sub">Ghost Closed Loop OS · حلقة مغلقة · قراءة فقط</div></div>
         <span class="mode green" id="gsMode">🟢 GREEN</span>
       </div>
       <div class="vgnav" id="gsnav"></div>
-      <div class="doc" id="gsdoc"></div>
+      <div class="doc" id="gsdoc"><div class="loading">جارٍ التحميل…</div></div>
       <div class="docnote">المصدر: <code>operating-system/reports/</code> — يتحدّث بعد git push. <a href="gsystem.html">فتح في صفحة كاملة ↗</a></div>
     </div>
-    <div id="view-ghost" style="display:none">
+    <div id="view-ghost" class="view-panel">
       <div class="gs-head">
         <div><h1>👑 جوست</h1><div class="sub">تقرير يومي + تقرير صور · قراءة فقط</div></div>
         <span class="mode" style="background:#fff3e6;color:#c45a00;border:1px solid #ffd4a8;font-size:.72rem;font-weight:800;padding:.3rem .7rem;border-radius:999px" id="ghostLatest">—</span>
       </div>
       <div class="vgnav" id="ghostnav"></div>
-      <div class="doc" id="ghostdoc"></div>
+      <div class="doc" id="ghostdoc"><div class="loading">جارٍ التحميل…</div></div>
       <div class="docnote">المصدر: <code>operating-system/reports/ghost/</code> — Cursor (يومي + صور).</div>
     </div>
   </main>
@@ -167,7 +170,7 @@ const GS=[
  {k:'🧭 اللوحة الموحّدة',f:'reports/track-board.md'},
  {k:'📦 طابور البناء',f:'reports/ready-to-build.md'},
  {k:'🟢 GREEN MODE',f:'reports/yellow-mode-active.md',mode:true},
- {k:'📜 GSystem Charter',f:'../operating-system/gsystem-charter.md'},
+ {k:'📜 GSystem Charter',f:'gsystem-charter.md'},
  {k:'🛡️ الميثاق',f:'manager-charter-adsense.md'},
  {k:'⚙️ Track C',f:'reports/track-C-adsense-technical.md'},
  {k:'📝 خطة التنفيذ',f:'reports/claude-chef-execution-plan.md'},
@@ -178,24 +181,29 @@ async function sha256(t){const b=await crypto.subtle.digest('SHA-256',new TextEn
 async function tryEnter(){const h=await sha256($('#pw').value);if(h===PW_HASH){sessionStorage.setItem('dfl_board_ok','1');show()}else $('#err').textContent='كلمة المرور غير صحيحة'}
 $('#enter').onclick=tryEnter;$('#pw').addEventListener('keydown',e=>{if(e.key==='Enter')tryEnter()});
 $('#lock').onclick=()=>{sessionStorage.removeItem('dfl_board_ok');location.reload()};
-function show(){$('#gate').style.display='none';$('#app').style.display='block';openGSystem()}
-function openGSystem(){
+const VIEWS={content:'view-content',doc:'view-doc',vg:'view-vg',gsystem:'view-gsystem',ghost:'view-ghost'};
+function mdHTML(t){try{return(window.marked&&marked.parse)?marked.parse(t):('<pre style="white-space:pre-wrap">'+t.replace(/</g,'&lt;')+'</pre>')}catch(e){return'<p style="color:#c0392b">تعذّر عرض المحتوى.</p>'}}
+function switchView(key){
+  Object.values(VIEWS).forEach(id=>{const el=document.getElementById(id);if(el)el.classList.remove('is-active')});
+  const target=document.getElementById(VIEWS[key]||VIEWS.gsystem);
+  if(target)target.classList.add('is-active');
+}
+function setSideActive(s){
   document.querySelectorAll('.side button[data-s]').forEach(x=>x.classList.remove('active'));
-  const gs=document.querySelector('button[data-s="gsystem"]');if(gs)gs.classList.add('active');
-  $('#view-content').style.display='none';$('#view-doc').style.display='none';$('#view-vg').style.display='none';
-  $('#view-gsystem').style.display='';$('#view-ghost').style.display='none';renderGS()}
-if(sessionStorage.getItem('dfl_board_ok')==='1')show();
-
-document.querySelectorAll('.side button[data-s]').forEach(b=>b.onclick=()=>{
-  document.querySelectorAll('.side button[data-s]').forEach(x=>x.classList.remove('active'));
-  b.classList.add('active');const s=b.dataset.s;
-  $('#view-content').style.display='none';$('#view-doc').style.display='none';$('#view-vg').style.display='none';$('#view-gsystem').style.display='none';$('#view-ghost').style.display='none';
-  if(s==='visual'){$('#view-vg').style.display='';renderVG()}
-  else if(s==='gsystem'){$('#view-gsystem').style.display='';renderGS()}
-  else if(s==='ghost'){$('#view-ghost').style.display='';renderGhost()}
-  else{$('#view-doc').style.display='';loadDoc(SECTIONS[s])}
+  const b=document.querySelector('.side button[data-s="'+s+'"]');if(b)b.classList.add('active');
+}
+function show(){document.getElementById('gate').style.display='none';document.getElementById('app').style.display='block';openGSystem()}
+function openGSystem(){setSideActive('gsystem');switchView('gsystem');renderGS()}
+document.querySelector('.side').addEventListener('click',e=>{
+  const b=e.target.closest('button[data-s]');if(!b)return;
+  const s=b.dataset.s;setSideActive(s);
+  if(s==='visual'){switchView('vg');renderVG()}
+  else if(s==='gsystem'){switchView('gsystem');renderGS()}
+  else if(s==='ghost'){switchView('ghost');renderGhost()}
+  else{switchView('doc');loadDoc(SECTIONS[s])}
 });
-async function loadDoc(file){$('#doc').innerHTML='جارٍ التحميل…';try{const t=await (await fetch(file+'?_='+Date.now())).text();$('#doc').innerHTML=marked.parse(t)}catch(e){$('#doc').innerHTML='تعذّر تحميل الملف.'}}
+if(sessionStorage.getItem('dfl_board_ok')==='1')show();
+async function loadDoc(file){const el=document.getElementById('doc');if(!file){el.innerHTML='<p style="color:#c0392b">قسم غير معرّف.</p>';return}el.innerHTML='<div class="loading">جارٍ التحميل…</div>';try{const t=await (await fetch(file+'?_='+Date.now())).text();if(!t.trim())throw new Error('empty');el.innerHTML=mdHTML(t)}catch(e){el.innerHTML='<p style="color:#c0392b">تعذّر تحميل الملف: <code>'+file+'</code></p>'}}
 let vgInit=false;
 function renderVG(){if(vgInit)return;vgInit=true;
   $('#vgnav').innerHTML=VG.map((x,i)=>x.g?`<span class="grp">${x.g}</span>`:`<button data-i="${i}">${x.k}</button>`).join('');
@@ -203,18 +211,21 @@ function renderVG(){if(vgInit)return;vgInit=true;
     document.querySelectorAll('#vgnav button').forEach(z=>z.classList.remove('on'));btn.classList.add('on');
     const it=VG[btn.dataset.i];if(it.live){renderHealth()}else{loadVG(it.f)}});
   const first=$('#vgnav button');if(first){first.classList.add('on');loadVG(VG.find(x=>x.f).f)}}
-async function loadVG(file){$('#vgdoc').innerHTML='جارٍ التحميل…';try{const t=await (await fetch(VGB+file+'?_='+Date.now())).text();$('#vgdoc').innerHTML=marked.parse(t)}catch(e){$('#vgdoc').innerHTML='تعذّر تحميل الوثيقة.'}}
-let gsInit=false;
-function renderGS(){if(!gsInit){gsInit=true;
-  $('#gsnav').innerHTML=GS.map((x,i)=>`<button data-i="${i}">${x.k}</button>`).join('');
-  document.querySelectorAll('#gsnav button').forEach(btn=>btn.onclick=()=>{
-    document.querySelectorAll('#gsnav button').forEach(z=>z.classList.remove('on'));btn.classList.add('on');
-    loadGS(GS[btn.dataset.i])});
-  const first=$('#gsnav button');if(first){first.classList.add('on');loadGS(GS[0])}}
-  else updateGsMode()}
-async function loadGS(item){$('#gsdoc').innerHTML='جارٍ التحميل…';try{
-  const t=await (await fetch(GSB+item.f+'?_='+Date.now())).text();$('#gsdoc').innerHTML=marked.parse(t);
-  if(item.mode)updateGsMode(t)}catch(e){$('#gsdoc').innerHTML='تعذّر تحميل ملف GSystem. تأكّد من git push.'}}
+async function loadVG(file){const el=document.getElementById('vgdoc');el.innerHTML='<div class="loading">جارٍ التحميل…</div>';try{const t=await (await fetch(VGB+file+'?_='+Date.now())).text();el.innerHTML=mdHTML(t)}catch(e){el.innerHTML='<p style="color:#c0392b">تعذّر تحميل الوثيقة.</p>'}}
+let gsInit=false,gsActive=0;
+function renderGS(){
+  if(!gsInit){gsInit=true;
+    document.getElementById('gsnav').innerHTML=GS.map((x,i)=>'<button type="button" data-i="'+i+'">'+x.k+'</button>').join('');
+    document.getElementById('gsnav').addEventListener('click',e=>{
+      const btn=e.target.closest('button[data-i]');if(!btn)return;
+      gsActive=+btn.dataset.i;
+      document.querySelectorAll('#gsnav button').forEach(z=>z.classList.remove('on'));btn.classList.add('on');
+      loadGS(GS[gsActive])});
+    const first=document.querySelector('#gsnav button');if(first)first.classList.add('on')}
+  loadGS(GS[gsActive]);updateGsMode()}
+async function loadGS(item){const el=document.getElementById('gsdoc');if(!item)return;el.innerHTML='<div class="loading">جارٍ التحميل…</div>';try{
+  const t=await (await fetch(GSB+item.f+'?_='+Date.now())).text();if(!t.trim())throw new Error('empty');el.innerHTML=mdHTML(t);
+  if(item.mode)updateGsMode(t)}catch(e){el.innerHTML='<p style="color:#c0392b">تعذّر تحميل ملف GSystem: <code>'+item.f+'</code></p>'}}
 async function updateGsMode(modeText){let isYellow=false;try{
   const t=modeText||await (await fetch(GSB+'reports/yellow-mode-active.md?_='+Date.now())).text();
   const head=t.split('\n').slice(0,5).join('\n');
@@ -241,9 +252,10 @@ async function renderGhost(){
 }
 async function loadGhost(item){
   if(!item)return;
-  $('#ghostdoc').innerHTML='جارٍ التحميل…';
-  try{const t=await (await fetch(GSB+item.file+'?_='+Date.now())).text();$('#ghostdoc').innerHTML=marked.parse(t)}
-  catch(e){$('#ghostdoc').innerHTML='تعذّر تحميل التقرير.'}}
+  const el=document.getElementById('ghostdoc');
+  el.innerHTML='<div class="loading">جارٍ التحميل…</div>';
+  try{const t=await (await fetch(GSB+item.file+'?_='+Date.now())).text();el.innerHTML=mdHTML(t)}
+  catch(e){el.innerHTML='<p style="color:#c0392b">تعذّر تحميل التقرير.</p>'}}
 function kpiColor(k){if(k.value==null)return '#9aa7a3';const v=k.value,t=k.target,w=k.warn;
   if(k.invert){if(v<=t)return '#1f9d57';if(v<=w)return '#e0a400';return '#c0392b'}
   if(v>=t)return '#1f9d57';if(v>=w)return '#e0a400';return '#c0392b'}
