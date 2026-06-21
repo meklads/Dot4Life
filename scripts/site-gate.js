@@ -6,7 +6,7 @@
 (function () {
   'use strict';
 
-  var SITE_GATE_ENABLED = true;
+  var SITE_GATE_ENABLED = false;
   var GATE_STORAGE_KEY = 'dfl-site-gate-v1';
   /* SHA-256 of site password — rotate hash if password changes */
   var GATE_PASSWORD_HASH = '8248c7ae40e0134d712024986fb17eefb0d7eed11a779554158e5bbd12c391eb';

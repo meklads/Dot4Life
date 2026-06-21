@@ -1,6 +1,8 @@
 # Site gate (pre-launch password)
 
-Protects the public GitHub Pages site until official launch.
+**Status (Dot4Life): DISABLED** — gate was added by mistake; use on Ruwaq instead.
+
+Protects a static GitHub Pages site until official launch (when enabled).
 
 ## How it works
 
