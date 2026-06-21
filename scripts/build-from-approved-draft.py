@@ -1086,8 +1086,26 @@ def audit_live() -> int:
                 print(f"  FAIL {e}")
 
     oman = ROOT / "real-estate/oman-property-roi.html"
-    if oman.exists():
-        print(f"\n  SKIP {oman.relative_to(ROOT)} — calculator shell (surgical inject pending)")
+    oman_draft = ROOT / "operating-system/reports/drafts/task07/oman-property-roi.md"
+    oman_cfg = {
+        "id": "A-07-2",
+        "lang_only": "en",
+        "disclaimer_type": "financial",
+        "out_en": oman,
+    }
+    if oman.exists() and oman_draft.exists():
+        page = oman.read_text(encoding="utf-8")
+        md = oman_draft.read_text(encoding="utf-8")
+        if "DFL SURGICAL ARTICLE" in page:
+            try:
+                assert_build_gates(page, "en", oman, oman_cfg, md)
+                passed += 1
+                print(f"  PASS {oman.relative_to(ROOT)} (surgical inject)")
+            except BuildGateError as e:
+                fails.append(str(e))
+                print(f"  FAIL {e}")
+        else:
+            print(f"\n  SKIP {oman.relative_to(ROOT)} — calculator shell (surgical inject pending)")
 
     print(f"\n=== SUMMARY: {passed} pages PASS, {len(fails)} FAIL ===")
     for f in fails:

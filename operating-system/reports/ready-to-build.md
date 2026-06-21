@@ -12,7 +12,7 @@
 | 1 | A-01 | drafts/task01/investment-basics-beginners(-en) | finance-wealth/investment-basics-beginners(-en).html | 1370/1516 | 🟢 **LIVE** 2026-06-21 |
 | 2 | A-01 | drafts/task01/family-budget-plan(-en) | finance-wealth/family-budget-plan(-en).html | 1289/1508 | 🟢 **LIVE** 2026-06-21 |
 | 3 | A-07 | drafts/task07/rent-vs-buy-gulf-family(-en) | real-estate/rent-vs-buy-gulf-family(-en).html | 1353/1775 | 🟢 **LIVE** 2026-06-21 |
-| 4 | A-07 | drafts/task07/oman-property-roi | real-estate/oman-property-roi.html | —/1347 | 🟢 **GO** حقن جراحي (Amer) — التالي |
+| 4 | A-07 | drafts/task07/oman-property-roi | real-estate/oman-property-roi.html | —/1347 | 🟢 **LIVE** 2026-06-21 (حقن جراحي) |
 | 5 | A-02 | drafts/task02/daily-walking-benefits(-en) | health/daily-walking-benefits(-en).html | 1261/1532 | 🟢 **LIVE** 2026-06-21 |
 | 6 | A-02 | drafts/task02/bmi-calculator-women | health/bmi-calculator-women.html | —/1498 | 🟢 **LIVE** (EN) |
 | 7 | A-03 | drafts/task03/children-sleep-summer(-en) | health/children-sleep-summer(-en).html | 1242/1492 | 🟢 **LIVE** 2026-06-21 |
@@ -74,7 +74,7 @@
 
 **A-07 rent-vs-buy (صفحتان):** ✅ شرطات=0/FAQPage+4Q/WebP/كلمات. ❌ بندان: (1) **Title=71>60** في الاثنتين (نفس عيب القطع). (2) **rent-vs-buy-gulf-family-en بلا إخلاء مسؤولية** (العربية فيها؛ الإنجليزية لا) — محتوى مالي يلزمه إخلاء. **المطلوب:** أضِف الإخلاء المالي للنسخة EN + أصلح العنوان.
 
-> oman-property-roi (A-07 item 4): ⏸ **BLOCKED** — صفحة حاسبة (shell). لا استبدال قالب كامل. توصيتي: **حقن جراحي** — أضِف قسم المقال أسفل الحاسبة (لا تمسّ الأداة) + Schema. ينتظر Cursor إشارتي للبدء بهذه الطريقة.
+> ~~oman-property-roi (A-07 item 4): ⏸ BLOCKED~~ → ✅ **LIVE 2026-06-22** (حقن جراحي — Article+FAQ+إخلاء أسفل الحاسبة، الأداة لم تُمس).
 
 ### ✅ Cursor rebuild j4 (2026-06-21) — pending Amer BUILD VERIFY
 - **Title ≤60:** `title_seo_*` + `assert_title_gate()` — 6 صفحات (37–47 حرفاً شاملة ` | DOTFORLIFE`)
@@ -93,4 +93,4 @@
 | TECH_BUILD (Cursor) | **22 pages** ✅ (FIFO 5–16) |
 | BUILD VERIFIED (Amer) | **28** ✅ (auto-gates + Amer spot-check) |
 | READY for LIVE | **0** |
-| LIVE | **28** ✅ (6 + 22) — autonomous loop 2026-06-21 |
+| LIVE | **29** ✅ (28 + oman حقن جراحي) |
