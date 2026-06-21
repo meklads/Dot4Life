@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>GSystem — Closed Loop | DotForLife</title>
+<link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.0/marked.min.js"></script>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<style>
+  :root{--green:#054241;--teal:#6abfb8;--orange:#fd781c;--cream:#FAF8F4;--bg:#eef3f1;--line:#dfe6e3;--muted:#6b7a76;--yellow:#e0a400;--red:#c0392b}
+  *{box-sizing:border-box;margin:0;padding:0;font-family:'Almarai',sans-serif}
+  body{background:var(--bg);color:var(--green);min-height:100vh}
+  #gate{position:fixed;inset:0;background:linear-gradient(160deg,#054241,#0a6b63);display:flex;align-items:center;justify-content:center;z-index:50}
+  #gate .box{background:#fff;border-radius:18px;padding:2.2rem;width:min(380px,90vw);text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+  #gate h1{font-size:1.25rem;margin-bottom:.3rem}#gate .tag{font-size:.72rem;color:var(--teal);font-weight:800;letter-spacing:.06em;margin-bottom:.5rem}
+  #gate p{font-size:.8rem;color:var(--muted);margin-bottom:1.2rem}
+  #gate input{width:100%;padding:.8rem 1rem;border:1.5px solid var(--line);border-radius:10px;font-size:1rem;text-align:center;margin-bottom:.8rem}
+  #gate button{width:100%;padding:.8rem;border:0;border-radius:10px;background:var(--green);color:#fff;font-size:1rem;font-weight:700;cursor:pointer}
+  #gate .err{color:var(--red);font-size:.82rem;min-height:1.1em}
+  #app{display:none}
+  .top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding:1rem clamp(1rem,3vw,2rem);background:#fff;border-bottom:1px solid var(--line)}
+  .brand{font-size:1.15rem;font-weight:800}.brand span{color:var(--teal)}
+  .brand small{display:block;font-size:.68rem;color:var(--muted);font-weight:700;margin-top:2px}
+  .toplinks{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .toplinks a,.toplinks button{font-size:.76rem;font-weight:700;text-decoration:none;border-radius:8px;padding:.45rem .75rem;cursor:pointer;border:1px solid var(--line);background:#fff;color:var(--green)}
+  .toplinks a:hover,.toplinks button:hover{background:var(--cream)}
+  .mode{display:inline-flex;align-items:center;gap:6px;font-size:.74rem;font-weight:800;padding:.35rem .75rem;border-radius:999px}
+  .mode.yellow{background:#fff8e1;color:#9a7200;border:1px solid #f0d878}
+  .mode.green{background:#eafaf0;color:#1f7a4d;border:1px solid #bfe8cf}
+  .wrap{padding:1rem clamp(1rem,3vw,2rem) 2rem}
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1rem}
+  .tabs button{background:#fff;border:1px solid var(--line);border-radius:999px;padding:.45rem .9rem;font-size:.78rem;font-weight:700;color:var(--green);cursor:pointer}
+  .tabs button.on{background:var(--green);color:#fff;border-color:var(--green)}
+  .doc{background:#fff;border:1px solid var(--line);border-radius:14px;padding:1.4rem clamp(1rem,3vw,2rem);line-height:1.85;max-width:1100px}
+  .doc h1{font-size:1.45rem;margin:.2rem 0 1rem;color:var(--green)}
+  .doc h2{font-size:1.12rem;margin:1.3rem 0 .55rem;color:var(--green)}
+  .doc h3{font-size:1rem;margin:1rem 0 .45rem}
+  .doc table{width:100%;border-collapse:collapse;margin:.8rem 0;font-size:.82rem;display:block;overflow-x:auto}
+  .doc th,.doc td{border:1px solid var(--line);padding:.5rem .6rem;text-align:right;white-space:normal}
+  .doc th{background:var(--cream)}
+  .doc a{color:var(--orange);font-weight:700}
+  .doc blockquote{background:var(--cream);border-right:3px solid var(--teal);padding:.6rem 1rem;margin:.8rem 0;border-radius:8px;color:var(--muted)}
+  .doc code{background:var(--cream);padding:.1rem .35rem;border-radius:5px;font-size:.85em}
+  .doc pre{background:#1a1a2e;color:#e8e8e8;padding:1rem;border-radius:10px;overflow-x:auto;font-size:.78rem}
+  .docnote{font-size:.74rem;color:var(--muted);margin-top:.8rem}
+  .loading{color:var(--muted);padding:2rem;text-align:center}
+</style>
+</head>
+<body>
+<div id="gate">
+  <div class="box">
+    <div class="tag">GSYSTEM</div>
+    <h1>🔒 GSystem — Closed Loop</h1>
+    <p>حلقة Ghost المغلقة · للمصرّح لهم فقط</p>
+    <input id="pw" type="password" placeholder="كلمة المرور" autocomplete="off" autofocus>
+    <div class="err" id="err"></div>
+    <button id="enter">دخول</button>
+  </div>
+</div>
+
+<div id="app">
+  <header class="top">
+    <div class="brand">G<span>System</span><small>Ghost Closed Loop OS · Dot4Life</small></div>
+    <div class="toplinks">
+      <span class="mode yellow" id="modeBadge">🟡 YELLOW</span>
+      <a href="board.html">📋 لوحة الفريق</a>
+      <a href="admin.html">⚙️ الإدارة</a>
+      <button id="refresh">↻ تحديث</button>
+      <button id="lock">🔓 خروج</button>
+    </div>
+  </header>
+  <div class="wrap">
+    <nav class="tabs" id="tabs"></nav>
+    <div class="doc" id="doc"><div class="loading">جارٍ التحميل…</div></div>
+    <p class="docnote">المصدر: ملفات <code>operating-system/reports/</code> — يتحدّث بعد git push. قراءة فقط.</p>
+  </div>
+</div>
+
+<script>
+const PW_HASH="8248c7ae40e0134d712024986fb17eefb0d7eed11a779554158e5bbd12c391eb";
+const SESSION_KEY="dfl_board_ok";
+const $=s=>document.querySelector(s);
+
+const DOCS=[
+  {id:"board",label:"🧭 اللوحة الموحّدة",file:"../operating-system/reports/track-board.md"},
+  {id:"build",label:"📦 طابور البناء",file:"../operating-system/reports/ready-to-build.md"},
+  {id:"yellow",label:"🟡 YELLOW MODE",file:"../operating-system/reports/yellow-mode-active.md"},
+  {id:"charter",label:"🛡️ الميثاق",file:"../operating-system/manager-charter-adsense.md"},
+  {id:"trackc",label:"⚙️ Track C",file:"../operating-system/reports/track-C-adsense-technical.md"},
+  {id:"plan",label:"📝 خطة التنفيذ",file:"../operating-system/reports/claude-chef-execution-plan.md"},
+];
+
+let active=DOCS[0].id;
+
+async function sha256(t){
+  const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(t));
+  return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("");
+}
+
+async function tryEnter(){
+  const h=await sha256($("#pw").value);
+  if(h===PW_HASH){sessionStorage.setItem(SESSION_KEY,"1");show()}
+  else $("#err").textContent="كلمة المرور غير صحيحة";
+}
+
+$("#enter").onclick=tryEnter;
+$("#pw").addEventListener("keydown",e=>{if(e.key==="Enter")tryEnter()});
+$("#lock").onclick=()=>{sessionStorage.removeItem(SESSION_KEY);location.reload()};
+$("#refresh").onclick=()=>loadDoc(active);
+
+function show(){
+  $("#gate").style.display="none";
+  $("#app").style.display="block";
+  renderTabs();
+  loadDoc(active);
+  updateModeBadge();
+}
+
+if(sessionStorage.getItem(SESSION_KEY)==="1")show();
+
+function renderTabs(){
+  $("#tabs").innerHTML=DOCS.map(d=>`<button data-id="${d.id}" class="${d.id===active?"on":""}">${d.label}</button>`).join("");
+  document.querySelectorAll("#tabs button").forEach(b=>b.onclick=()=>{active=b.dataset.id;renderTabs();loadDoc(active)});
+}
+
+async function loadDoc(id){
+  const doc=DOCS.find(d=>d.id===id)||DOCS[0];
+  $("#doc").innerHTML='<div class="loading">جارٍ التحميل…</div>';
+  try{
+    const t=await (await fetch(doc.file+"?_="+Date.now())).text();
+    $("#doc").innerHTML=marked.parse(t);
+    if(id==="yellow")updateModeBadge(t);
+  }catch(e){
+    $("#doc").innerHTML="<p>تعذّر تحميل الملف. تأكّد أنك تشغّل الموقع محلياً أو أن الملفات منشورة على dotforlife.com.</p>";
+  }
+}
+
+async function updateModeBadge(yellowText){
+  let yellow=true;
+  try{
+    const t=yellowText||await (await fetch(DOCS[2].file+"?_="+Date.now())).text();
+    yellow=/YELLOW MODE.*Active|مفعّل/i.test(t)&&!/Ends when|HANDOFF/i.test(t.split("\n").slice(0,5).join(""));
+  }catch(e){}
+  const b=$("#modeBadge");
+  if(yellow){b.className="mode yellow";b.textContent="🟡 YELLOW"}
+  else{b.className="mode green";b.textContent="🟢 GREEN"}
+}
+</script>
+</body>
+</html>
