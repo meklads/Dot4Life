@@ -1,0 +1,126 @@
+/* Pre-launch site gate — hide content until authenticated */
+html.dfl-gate-pending body {
+  visibility: hidden;
+}
+
+html.dfl-gate-pending #dfl-site-gate,
+html.dfl-gate-pending #dfl-site-gate * {
+  visibility: visible;
+}
+
+#dfl-site-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483646;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  background: linear-gradient(165deg, #003300 0%, #223634 48%, #1a3832 100%);
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.dfl-gate-card {
+  width: min(100%, 400px);
+  padding: clamp(1.75rem, 4vw, 2.25rem);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.97);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.28);
+  text-align: center;
+}
+
+[data-lang="ar"] .dfl-gate-card {
+  font-family: Almarai, sans-serif;
+  direction: rtl;
+}
+
+.dfl-gate-logo {
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #054241;
+  margin-bottom: 0.75rem;
+}
+
+.dfl-gate-eyebrow {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #1a5e73;
+  margin-bottom: 0.5rem;
+}
+
+[data-lang="ar"] .dfl-gate-eyebrow {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.dfl-gate-title {
+  font-size: clamp(1.25rem, 3vw, 1.45rem);
+  font-weight: 700;
+  color: #1a313c;
+  margin: 0 0 0.65rem;
+  line-height: 1.35;
+}
+
+.dfl-gate-desc {
+  font-size: 0.92rem;
+  color: #6b7379;
+  line-height: 1.6;
+  margin: 0 0 1.25rem;
+}
+
+.dfl-gate-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: start;
+}
+
+[data-lang="ar"] .dfl-gate-form {
+  text-align: right;
+}
+
+.dfl-gate-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #1a313c;
+}
+
+.dfl-gate-input {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid rgba(5, 66, 65, 0.18);
+  border-radius: 10px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.dfl-gate-input:focus {
+  outline: 2px solid rgba(40, 188, 169, 0.45);
+  border-color: #28bca9;
+}
+
+.dfl-gate-error {
+  font-size: 0.82rem;
+  color: #b42318;
+  margin: 0;
+}
+
+.dfl-gate-btn {
+  margin-top: 0.35rem;
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: none;
+  border-radius: 999px;
+  background: #054241;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.dfl-gate-btn:hover {
+  background: #0a6b63;
+}
