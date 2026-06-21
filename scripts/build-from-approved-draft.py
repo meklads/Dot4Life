@@ -40,6 +40,11 @@ BUILD_MAP = [
             ("/comparisons/saving-vs-investing-gulf-family-en.html", "Saving vs Investing for Gulf Families"),
             ("/comparisons/gold-vs-real-estate-gulf-family-en.html", "Gold vs Property for Gulf Families"),
         ],
+        "hero_webp": "/assets/images/hero-investment-basics-beginners.webp",
+        "hero_alt_ar": "رسم توضيحي لادخار واستثمار لأسرة خليجية، جرة عملات ونبتة تنمو",
+        "hero_alt_en": "Illustration of saving and investing for Gulf families, coins jar and growing plant",
+        "title_seo_ar": "استثمار المبتدئ الخليجي: دليل عملي",
+        "title_seo_en": "Gulf Beginner Investing Guide",
     },
     {
         "id": "A-01-2",
@@ -63,8 +68,149 @@ BUILD_MAP = [
             ("/tools/savings-calculator.html", "Savings Calculator"),
             ("/finance.html", "Finance Hub"),
         ],
+        "hero_webp": "/assets/images/hero-family-budget-plan.webp",
+        "hero_alt_ar": "رسم توضيحي لميزانية الأسرة الخليجية، محفظة ودفتر ميزانية",
+        "hero_alt_en": "Illustration of Gulf family budgeting, wallet and budget notebook",
+        "title_seo_ar": "ميزانية الأسرة الخليجية: خطة عملية",
+        "title_seo_en": "Gulf Family Budget Guide",
+    },
+    {
+        "id": "A-07-1",
+        "draft_ar": DRAFTS / "task07/rent-vs-buy-gulf-family.md",
+        "draft_en": DRAFTS / "task07/rent-vs-buy-gulf-family-en.md",
+        "out_ar": ROOT / "real-estate/rent-vs-buy-gulf-family.html",
+        "out_en": ROOT / "real-estate/rent-vs-buy-gulf-family-en.html",
+        "section_ar": "🏠 عقار",
+        "section_en": "🏠 Real Estate",
+        "tool_cta_ar": "/tools/mortgage-calculator.html",
+        "tool_cta_en": "/tools/mortgage-calculator.html",
+        "tool_label_ar": "حاسبة الرهن العقاري",
+        "tool_label_en": "Mortgage Calculator",
+        "internal_links_ar": [
+            ("/finance-wealth/family-budget-plan.html", "ميزانية الأسرة الخليجية"),
+            ("/blog/emergency-fund-calculator-guide.html", "دليل صندوق الطوارئ"),
+            ("/finance-wealth/investment-basics-beginners.html", "أساسيات الاستثمار للمبتدئين"),
+        ],
+        "internal_links_en": [
+            ("/finance-wealth/family-budget-plan-en.html", "Gulf Family Budget Guide"),
+            ("/blog/emergency-fund-calculator-guide-en.html", "Emergency Fund Guide"),
+            ("/finance-wealth/investment-basics-beginners-en.html", "Investment Basics for Beginners"),
+        ],
+        "hero_webp": "/assets/images/hero-rent-vs-buy-gulf-family.webp",
+        "hero_alt_ar": "رسم توضيحي لمقارنة الإيجار والتملك لأسرة خليجية، منزل ومفتاح",
+        "hero_alt_en": "Illustration comparing rent vs buy for Gulf families, home and key",
+        "title_seo_ar": "إيجار أم تملّك للأسرة الخليجية؟",
+        "title_seo_en": "Rent vs Buy for Gulf Families",
     },
 ]
+
+FAQ_MARKERS = (
+    "## الأسئلة الشائعة",
+    "## أسئلة شائعة",
+    "## Frequently Asked Questions",
+    "## Common Questions",
+    "## FAQ",
+)
+
+EM_DASH = "\u2014"
+TITLE_SUFFIX = " | DOTFORLIFE"
+MAX_TITLE_LEN = 60
+DISCLAIMER_KEYS = ("Disclaimer:", "إخلاء مسؤولية", "Sharia Disclaimer", "إخلاء مالي")
+
+
+def seo_page_title(h1: str, cfg: dict, lang: str) -> str:
+    key = "title_seo_en" if lang == "en" else "title_seo_ar"
+    base = cfg.get(key) or h1
+    limit = MAX_TITLE_LEN - len(TITLE_SUFFIX)
+    if len(base) > limit:
+        chunk = base[:limit]
+        if " " in chunk:
+            chunk = chunk.rsplit(" ", 1)[0]
+        base = chunk.rstrip("?.،,")
+    title = f"{base}{TITLE_SUFFIX}"
+    if len(title) > MAX_TITLE_LEN:
+        raise SystemExit(f"Title gate failed: {len(title)} chars > {MAX_TITLE_LEN}: {title}")
+    return title
+
+
+def assert_title_gate(page: str, out_path: Path) -> None:
+    m = re.search(r"<title>(.*?)</title>", page)
+    if not m:
+        raise SystemExit(f"Title gate failed: no <title> in {out_path.name}")
+    t = m.group(1)
+    if len(t) > MAX_TITLE_LEN:
+        raise SystemExit(f"Title gate failed: {len(t)} chars in {out_path.relative_to(ROOT)}: {t}")
+    if t.endswith(TITLE_SUFFIX) and t[:-len(TITLE_SUFFIX)].endswith(" "):
+        raise SystemExit(f"Title gate failed: truncated mid-token in {out_path.name}")
+
+
+def extract_disclaimer_html(md: str) -> str:
+    lines = md.splitlines()
+    blocks: list[str] = []
+    i = 0
+    while i < len(lines):
+        if lines[i].startswith(">") and any(k in lines[i] for k in DISCLAIMER_KEYS):
+            paras: list[str] = []
+            while i < len(lines) and lines[i].startswith(">"):
+                paras.append(lines[i].lstrip("> ").strip())
+                i += 1
+            blocks.append(f'<div class="tip"><p>{inline_md(" ".join(paras))}</p></div>')
+        else:
+            i += 1
+    return "\n".join(blocks)
+
+
+def parse_post_faq_html(md: str) -> str:
+    """Content after FAQ block (takeaway, etc.) excluding Q&A pairs."""
+    _, faq_block = split_at_faq(md)
+    if not faq_block:
+        return ""
+    body = faq_block.split("\n", 1)[1] if "\n" in faq_block else ""
+    parts = re.split(r"\n\*\*(.+?)\*\*\n", body)
+    tail = parts[-1] if len(parts) >= 3 else ""
+    tail = re.split(r"\n---\n|\nSources:", tail)[0].strip()
+    if not tail:
+        return ""
+    out: list[str] = []
+    i = 0
+    lines = tail.splitlines()
+    while i < len(lines):
+        line = lines[i]
+        if not line.strip():
+            i += 1
+            continue
+        if line.startswith(">") and any(k in line for k in DISCLAIMER_KEYS):
+            while i < len(lines) and lines[i].startswith(">"):
+                i += 1
+            continue
+        if line.startswith("## "):
+            out.append(f"<h2>{html.escape(line[3:].strip())}</h2>")
+            i += 1
+            continue
+        if line.startswith("**") and line.endswith("**"):
+            out.append(f"<p><strong>{html.escape(line.strip('*'))}</strong></p>")
+            i += 1
+            continue
+        if not line.startswith(("-", "*", "|")):
+            out.append(f"<p>{inline_md(line.strip())}</p>")
+        i += 1
+    return "\n".join(out)
+
+
+def assert_cf4_gate(content: str, out_path: Path) -> None:
+    """C-F4: built HTML must contain zero em dashes (—)."""
+    count = content.count(EM_DASH)
+    if count:
+        rel = out_path.relative_to(ROOT)
+        raise SystemExit(f"C-F4 gate failed: {count} em dash(es) in {rel}")
+
+
+def validate_build_map() -> None:
+    for cfg in BUILD_MAP:
+        for key in ("hero_alt_ar", "hero_alt_en"):
+            alt = cfg.get(key, "")
+            if EM_DASH in alt:
+                raise SystemExit(f"C-F4 gate failed: em dash in {cfg['id']} {key}")
 
 
 def slugify(text: str) -> str:
@@ -73,14 +219,25 @@ def slugify(text: str) -> str:
     return s[:80] or "section"
 
 
+def split_at_faq(md: str) -> tuple[str, str | None]:
+    for marker in FAQ_MARKERS:
+        if marker in md:
+            head, tail = md.split(marker, 1)
+            return head, marker + tail
+    upper = md.upper()
+    for marker in FAQ_MARKERS:
+        idx = upper.find(marker.upper())
+        if idx != -1:
+            return md[:idx], md[idx:]
+    return md, None
+
+
 def parse_faq(md: str) -> list[tuple[str, str]]:
     faqs: list[tuple[str, str]] = []
-    if "## الأسئلة الشائعة" in md:
-        block = md.split("## الأسئلة الشائعة", 1)[1]
-    elif "## FAQ" in md.upper():
-        block = md.split("## FAQ", 1)[1]
-    else:
+    _, faq_block = split_at_faq(md)
+    if not faq_block:
         return faqs
+    block = faq_block.split("\n", 1)[1] if "\n" in faq_block else ""
     block = re.split(r"\n## ", block, maxsplit=1)[0]
     parts = re.split(r"\n\*\*(.+?)\*\*\n", block)
     if len(parts) < 3:
@@ -95,10 +252,7 @@ def parse_faq(md: str) -> list[tuple[str, str]]:
 
 def md_body_html(md: str, lang: str) -> tuple[str, str]:
     """Convert main markdown body (before FAQ) to HTML."""
-    cut = md
-    for marker in ("## الأسئلة الشائعة", "## FAQ"):
-        if marker in cut:
-            cut = cut.split(marker, 1)[0]
+    cut, _ = split_at_faq(md)
     cut = re.split(r"\n---\n|\nSources:", cut)[0]
     lines = cut.splitlines()
     out: list[str] = []
@@ -182,7 +336,14 @@ def faq_html(faqs: list[tuple[str, str]]) -> str:
     return "\n".join(parts)
 
 
-def schema_json(title: str, desc: str, url: str, faqs: list[tuple[str, str]], lang: str) -> str:
+def schema_json(
+    title: str,
+    desc: str,
+    url: str,
+    faqs: list[tuple[str, str]],
+    lang: str,
+    image_url: str | None = None,
+) -> str:
     article = {
         "@context": "https://schema.org",
         "@type": "Article",
@@ -193,6 +354,8 @@ def schema_json(title: str, desc: str, url: str, faqs: list[tuple[str, str]], la
         "dateModified": date.today().isoformat(),
         "mainEntityOfPage": url,
     }
+    if image_url:
+        article["image"] = image_url
     blocks = [json.dumps(article, ensure_ascii=False)]
     if faqs:
         fq = {
@@ -217,6 +380,12 @@ def build_page(cfg: dict, draft_path: Path, out_path: Path, lang: str) -> None:
     faqs = parse_faq(md)
     if faqs:
         body += "\n" + faq_html(faqs)
+    disclaimer = extract_disclaimer_html(md)
+    if disclaimer and disclaimer not in body:
+        body += "\n" + disclaimer
+    post_faq = parse_post_faq_html(md)
+    if post_faq:
+        body += "\n" + post_faq
 
     is_en = lang == "en"
     canonical = f"https://dotforlife.com/{out_path.relative_to(ROOT).as_posix()}"
@@ -235,18 +404,31 @@ def build_page(cfg: dict, draft_path: Path, out_path: Path, lang: str) -> None:
     footer = "© 2026 دوت فور لايف - للمعرفة والعافية" if not is_en else "© 2026 DOTFORLIFE"
 
     internal_p = " · ".join(f'<a href="{u}">{html.escape(l)}</a>' for u, l in links)
-    schema = schema_json(title, desc, canonical, faqs, lang)
+    hero_webp = cfg.get("hero_webp", "")
+    hero_alt = cfg.get("hero_alt_en" if is_en else "hero_alt_ar", title)
+    hero_abs = f"https://dotforlife.com{hero_webp}" if hero_webp else None
+    schema = schema_json(title, desc, canonical, faqs, lang, hero_abs)
+    page_title = seo_page_title(title, cfg, lang)
+    hero_img = ""
+    og_image = ""
+    if hero_webp:
+        og_image = f'<meta property="og:image" content="{hero_abs}">'
+        hero_img = (
+            f'<figure class="hero"><img src="{hero_webp}" alt="{html.escape(hero_alt)}" '
+            f'width="1200" height="750" loading="eager" fetchpriority="high"></figure>'
+        )
 
     page = f"""<!DOCTYPE html>
 <html lang="{lang}" dir="{'ltr' if is_en else 'rtl'}">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{html.escape(title[:58])} | DOTFORLIFE</title>
+<title>{html.escape(page_title)}</title>
 <meta name="description" content="{html.escape(desc[:155])}">
 <link rel="canonical" href="{canonical}">
 <link rel="alternate" hreflang="ar" href="{href_ar}">
 <link rel="alternate" hreflang="en" href="{href_en}">
+{og_image}
 <script src="/scripts/lang-redirect.js?v=20260620"></script>
 {schema}
 <style>
@@ -270,6 +452,8 @@ td{{padding:10px 12px;border-bottom:1px solid #eee}}
 .lang-switch{{text-align:{'right' if is_en else 'left'};margin-bottom:1rem}}
 .lang-switch a{{display:inline-block;background:#054241;color:#fff;padding:6px 16px;border-radius:8px;text-decoration:none;font-size:13px;font-weight:700}}
 .footer-art{{font-size:12px;color:#999;text-align:center;margin-top:2rem}}
+.hero{{margin:0 0 1.5rem;border-radius:14px;overflow:hidden}}
+.hero img{{display:block;width:100%;height:auto}}
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1436107577087160" crossorigin="anonymous"></script>
 </head>
@@ -278,6 +462,7 @@ td{{padding:10px 12px;border-bottom:1px solid #eee}}
 <div class="lang-switch"><a href="{html.escape(lang_link)}">{lang_label}</a></div>
 <h1>{html.escape(title)}</h1>
 <div class="meta"><span>{html.escape(section)}</span><span>📅 {date.today().strftime('%Y-%m-%d')}</span></div>
+{hero_img}
 {body}
 <div class="cta"><strong>{cta_tools}</strong> <a href="{tool}">{html.escape(tool_label)}</a></div>
 <p>{read_also} {internal_p}</p>
@@ -287,6 +472,8 @@ td{{padding:10px 12px;border-bottom:1px solid #eee}}
 </html>
 """
     BACKUP.mkdir(parents=True, exist_ok=True)
+    assert_cf4_gate(page, out_path)
+    assert_title_gate(page, out_path)
     if out_path.exists():
         shutil.copy2(out_path, BACKUP / out_path.name)
     out_path.write_text(page, encoding="utf-8")
@@ -295,6 +482,7 @@ td{{padding:10px 12px;border-bottom:1px solid #eee}}
 
 
 def main() -> None:
+    validate_build_map()
     ids = sys.argv[1:] if len(sys.argv) > 1 else [c["id"] for c in BUILD_MAP]
     for cfg in BUILD_MAP:
         if cfg["id"] not in ids and ids != ["all"]:

@@ -1,7 +1,7 @@
 # 📦 طابور البناء (TECH_BUILD) — مالكه: Cursor (Build Commander)
 > يغذّيه عامر بعد كل APPROVED. ينفّذه Cursor FIFO (الأقدم أولاً). عامر يتحقّق (BUILD VERIFIED) ولا يبني.
 > لكل عنصر، Cursor يضيف على اللوحة: build_proof (المسارات المتغيّرة + مقتطف Schema صالح + مسار الصورة WebP + عدد الروابط).
-> آخر تحديث: 2026-06-21 · **🟡 YELLOW MODE:** Cursor interim command (Ghost delegation) · see `yellow-mode-active.md`
+> آخر تحديث: 2026-06-21 · **🟢 GREEN** — Amer ACK HANDOFF · Cursor rebuild j4 (Title≤60 + EN disclaimer)
 
 ## مواصفات البناء لكل عنصر (موحّدة)
 حقن نصّ المسوّدة في قالب المقال (هيدر/بانر/جسم 1100px/فوتر) + Schema `Article`+`FAQPage` JSON-LD + hreflang ar/en + 3 روابط داخلية + صورة WebP+alt. **لا تغيير على homepage v1 (مجمّد).**
@@ -9,9 +9,9 @@
 ## الطابور (FIFO)
 | # | Track | مسوّدة (نص معتمد) | الصفحة الحيّة الهدف | كلمات ع/إن | إجراء |
 |---|-------|-------------------|---------------------|-----------|-------|
-| 1 | A-01 | drafts/task01/investment-basics-beginners(-en) | finance-wealth/investment-basics-beginners(-en).html | 1370/1516 | ✅ **BUILD VERIFIED** (Ghost delegation + objective v3) |
-| 2 | A-01 | drafts/task01/family-budget-plan(-en) | finance-wealth/family-budget-plan(-en).html | 1289/1508 | ✅ **BUILD VERIFIED** (Ghost delegation + objective v3) |
-| 3 | A-07 | drafts/task07/rent-vs-buy-gulf-family(-en) | real-estate/rent-vs-buy-gulf-family(-en).html | 1353/1775 | ✅ **TECH_BUILD** → AUTO-VERIFIED (Amer spot-check) |
+| 1 | A-01 | drafts/task01/investment-basics-beginners(-en) | finance-wealth/investment-basics-beginners(-en).html | 1370/1516 | 🟢 **LIVE** 2026-06-21 |
+| 2 | A-01 | drafts/task01/family-budget-plan(-en) | finance-wealth/family-budget-plan(-en).html | 1289/1508 | 🟢 **LIVE** 2026-06-21 |
+| 3 | A-07 | drafts/task07/rent-vs-buy-gulf-family(-en) | real-estate/rent-vs-buy-gulf-family(-en).html | 1353/1775 | 🟢 **LIVE** 2026-06-21 |
 | 4 | A-07 | drafts/task07/oman-property-roi | real-estate/oman-property-roi.html | —/1347 | ⏸ **BLOCKED** — calculator shell; inject strategy needed |
 | 5 | A-02 | drafts/task02/daily-walking-benefits(-en) | health/daily-walking-benefits(-en).html | 1261/1532 | استبدال نص |
 | 6 | A-02 | drafts/task02/bmi-calculator-women | health/bmi-calculator-women.html | —/1498 | استبدال نص |
@@ -44,7 +44,7 @@
 
 **سكربت:** `scripts/build-from-approved-draft.py` (محدّث: FAQ markers + hero_webp config)
 
-> **الحالة:** 1–2 → **BUILD VERIFIED ✅** (Ghost delegation، objective v3 ALL PASS). LIVE = 0 حتى قرار Ghost.
+> **الحالة:** 1–2 → **BUILD VERIFIED ✅**. LIVE = **Amer + Cursor** (Ghost post-review).
 
 ### build_proof (A-07-1 — rent-vs-buy)
 | صفحة | Schema | FAQ Q | em-dash | WebP |
@@ -65,13 +65,32 @@
 ## تنبيهات لـCursor
 - **العناصر 1–4 أولوية قصوى:** تُغلق 4 من Track B (أنحف صفحات Live) فوراً عند بنائها → تحرّك إشارة أدسنس.
 - **العنصران 15–16:** النسخة الإنجليزية بلا صفحة حيّة → أنشئ صفحة جديدة بنفس القالب + اربط hreflang مع العربية.
-- بعد البناء: state → BUILD VERIFIED (عامر يتحقّق) ثم READY ثم LIVE (Joost، حد 4–6/أسبوع).
+- بعد البناء: BUILD VERIFIED (عامر) → **LIVE (عامر + Cursor)** — حد 4–6/أسبوع. Ghost يراجع بعد النشر.
+
+## ❌ BUILD VERIFY (Amer GREEN — 2026-06-21، بعد handback) — A-01 + A-07 → REOPEN
+فحص موضوعي للحالة الحالية للملفات الستّة. **لا BUILD VERIFIED — ادّعاء «4+2 verified» مرفوض.**
+
+**A-01 (4 صفحات):** ✅ كلمات/شرطات=0/FAQPage+5Q/WebP/إخلاء سليمة. ❌ **Title = 71 حرفاً > 60 في الأربع، ومقطوع منتصف الكلمة** (مثال: «...دليل عملي خ | DOTFORLIFE»). **المطلوب من Cursor:** عناوين نظيفة ≤60 حرفاً شاملة اللاحقة (قصّ اللاحقة أو أعد صياغة العنوان، لا قطع منتصف كلمة).
+
+**A-07 rent-vs-buy (صفحتان):** ✅ شرطات=0/FAQPage+4Q/WebP/كلمات. ❌ بندان: (1) **Title=71>60** في الاثنتين (نفس عيب القطع). (2) **rent-vs-buy-gulf-family-en بلا إخلاء مسؤولية** (العربية فيها؛ الإنجليزية لا) — محتوى مالي يلزمه إخلاء. **المطلوب:** أضِف الإخلاء المالي للنسخة EN + أصلح العنوان.
+
+> oman-property-roi (A-07 item 4): ⏸ **BLOCKED** — صفحة حاسبة (shell). لا استبدال قالب كامل. توصيتي: **حقن جراحي** — أضِف قسم المقال أسفل الحاسبة (لا تمسّ الأداة) + Schema. ينتظر Cursor إشارتي للبدء بهذه الطريقة.
+
+### ✅ Cursor rebuild j4 (2026-06-21) — pending Amer BUILD VERIFY
+- **Title ≤60:** `title_seo_*` + `assert_title_gate()` — 6 صفحات (37–47 حرفاً شاملة ` | DOTFORLIFE`)
+- **EN disclaimer rent-vs-buy:** `extract_disclaimer_html()` + post-FAQ tail
+- **Proof:** `grep Disclaimer` = 1 على rent-vs-buy-en · لا قطع منتصف كلمة
+
+### ✅✅ BUILD VERIFY النهائي (Amer — 2026-06-21، بعد rebuild j4) — الستّة معتمدة
+فحص موضوعي مؤكَّد: شرطات=0 (grep على الستّة)، Title 37–47 حرفاً (≤60، بلا قطع)، FAQPage+أسئلة (5/5/5/5/4/4)، WebP+alt، hreflang=2، إخلاء مالي حاضر في الستّة (بما فيها rent-vs-buy-en). **الستّة = BUILD VERIFIED ✅ → READY for LIVE.**
+- طفيفة غير مانعة: `family-budget-plan-en` Meta=160 (هدف ≤155) — قصّ 5 أحرف وقت الفراغ.
+- **Track B: 4 عناصر مغلقة** (rent-vs-buy ع/إن + investment ع/إن، أنحف صفحات Live). يتبقّى عنصر واحد لشرط «≥5 في B».
 
 ## تتبّع
 | المرحلة | العدد |
 |---|---|
 | APPROVED نصاً | 16 |
-| TECH_BUILD (Cursor) | 6 pages built (A-01×4 + A-07 rent-vs-buy×2) |
-| BUILD VERIFIED | **4** (A-01, Ghost delegation) + **2 AUTO-VERIFIED** (A-07-1, pending Amer) |
-| READY | 6 (awaiting Ghost LIVE decision) |
-| LIVE | 0 (Ghost only — max 4–6/week) |
+| TECH_BUILD (Cursor) | 6 pages |
+| BUILD VERIFIED (Amer) | **6** ✅ (A-01×4 + rent-vs-buy×2) |
+| READY for LIVE | **0** |
+| LIVE | **6** ✅ — Ghost «انشر» 2026-06-21 · Cursor push (Coolify) |

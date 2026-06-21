@@ -65,7 +65,7 @@
   <header class="top">
     <div class="brand">G<span>System</span><small>Ghost Closed Loop OS · Dot4Life</small></div>
     <div class="toplinks">
-      <span class="mode yellow" id="modeBadge">🟡 YELLOW</span>
+      <span class="mode green" id="modeBadge">🟢 GREEN</span>
       <a href="board.html">📋 لوحة الفريق</a>
       <a href="admin.html">⚙️ الإدارة</a>
       <button id="refresh">↻ تحديث</button>
@@ -87,7 +87,8 @@ const $=s=>document.querySelector(s);
 const DOCS=[
   {id:"board",label:"🧭 اللوحة الموحّدة",file:"../operating-system/reports/track-board.md"},
   {id:"build",label:"📦 طابور البناء",file:"../operating-system/reports/ready-to-build.md"},
-  {id:"yellow",label:"🟡 YELLOW MODE",file:"../operating-system/reports/yellow-mode-active.md"},
+  {id:"yellow",label:"🟢 GREEN MODE",file:"../operating-system/reports/yellow-mode-active.md"},
+  {id:"gscharter",label:"📜 GSystem Charter",file:"../operating-system/gsystem-charter.md"},
   {id:"charter",label:"🛡️ الميثاق",file:"../operating-system/manager-charter-adsense.md"},
   {id:"trackc",label:"⚙️ Track C",file:"../operating-system/reports/track-C-adsense-technical.md"},
   {id:"plan",label:"📝 خطة التنفيذ",file:"../operating-system/reports/claude-chef-execution-plan.md"},
@@ -138,14 +139,15 @@ async function loadDoc(id){
   }
 }
 
-async function updateModeBadge(yellowText){
-  let yellow=true;
+async function updateModeBadge(modeText){
+  let isYellow=false;
   try{
-    const t=yellowText||await (await fetch(DOCS[2].file+"?_="+Date.now())).text();
-    yellow=/YELLOW MODE.*Active|مفعّل/i.test(t)&&!/Ends when|HANDOFF/i.test(t.split("\n").slice(0,5).join(""));
+    const t=modeText||await (await fetch(DOCS[2].file+"?_="+Date.now())).text();
+    const head=t.split("\n").slice(0,5).join("\n");
+    isYellow=/YELLOW MODE/i.test(head)&&!/GREEN MODE|ended|ENDED/i.test(head);
   }catch(e){}
   const b=$("#modeBadge");
-  if(yellow){b.className="mode yellow";b.textContent="🟡 YELLOW"}
+  if(isYellow){b.className="mode yellow";b.textContent="🟡 YELLOW"}
   else{b.className="mode green";b.textContent="🟢 GREEN"}
 }
 </script>

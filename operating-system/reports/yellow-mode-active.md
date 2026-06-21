@@ -1,36 +1,34 @@
-# 🟡 YELLOW MODE — Cursor Interim Command (Active)
-> **Activated:** 2026-06-21 · **Owner:** Ghost (Joost) — explicit delegation: «استلام مكانه وتشغيل الفريق والحلقة»
-> **Reason:** Amer session limit (~4h until reset 6pm Asia/Riyadh)
-> **Ends when:** Amer returns + ACK handback, or Ghost `LOOP RESUME GREEN`
-> **UI:** [`system/gsystem.html`](/system/gsystem.html) (GSystem — read-only dashboard)
+# 🟢 GREEN MODE — Amer resumed command
+> **Amer ACK HANDOFF:** 2026-06-21 · YELLOW ended.
+> **UI:** [`system/gsystem.html`](/system/gsystem.html) · Charter: [`gsystem-charter.md`](/operating-system/gsystem-charter.md)
 
-## Who leads what (interim)
-| Role | Interim owner | Allowed | Forbidden |
-|------|---------------|---------|-----------|
-| **Command / BUILD VERIFY (objective)** | **Cursor** | Gate checks, proof bundle, board updates | Subjective text re-approval |
-| **TECH_BUILD** | **Cursor** | FIFO on pre-approved queue | Homepage v1 changes |
-| **Text APPROVED (new)** | **Amer** (frozen) | — | No new APPROVED without Amer or `EMERGENCY APPROVE [id]` from Ghost |
-| **LIVE / AdSense / v1** | **Ghost** | Release when READY | — |
-| **Drafts (Ship/Hema)** | **Hema** | Queue drafts A-09+ in `drafts/` only | HTML, schema, publish |
+## Commander
+**Amer** — text APPROVED/REVISE/REJECT + BUILD VERIFY. Cursor TECH_BUILD only after APPROVED.
 
-## Current loop state (as of activation)
-| Item | Track | State |
-|------|-------|-------|
-| 1–2 | A-01 investment + budget | **BUILD VERIFIED ✅** (Ghost delegation + Cursor objective v3 ALL PASS) |
-| 3 | A-07 rent-vs-buy | **TECH_BUILD ✅** → AUTO-VERIFIED pending Amer spot-check |
-| 4 | A-07 oman-property-roi | **BLOCKED** — page is calculator shell; needs surgical inject, not full template replace |
-| 5–16 | various | QUEUE — TECH_BUILD after 3–4 |
+> **Amer ACK GSystem (2026-06-21):** Kanban frozen · GSystem = sole source · A-09 → `drafts/task09/_amer-review.md`
 
-## Gates enforced (Cursor)
-- C-F4: `grep -c "—"` = 0 on every built HTML
-- Article + FAQPage JSON-LD + hreflang + WebP hero + alt + og:image
-- `scripts/build-from-approved-draft.py` fails build if em-dash present
+## Latest Amer verify (2026-06-21)
+| Item | Result |
+|------|--------|
+| A-01 (4p) + rent-vs-buy (2p) | 🟢 **LIVE** 2026-06-21 (Ghost «انشر» → Cursor push) |
+| oman ROI | ⏸ BLOCKED — surgical inject (await Amer signal) |
+| A-09 (4 drafts) | 🔄 REVISE → `drafts/task09/_amer-review.md` (Hema) |
+| A-10 (4 drafts) | Hold until A-09 closed |
+| **LIVE** | **6 pages LIVE** — 2026-06-21 · Coolify deploy via git push |
 
-## Handback to Amer
-When Amer returns:
-1. Spot-check BUILD VERIFIED 1–2 + AUTO-VERIFIED 3
-2. Confirm or REOPEN with specific line refs
-3. Post `ACK HANDOFF` on this file → GREEN mode
+## Cursor rebuild j4 — ✅ Amer BUILD VERIFY closed
+- `title_seo_*` in BUILD_MAP · `assert_title_gate()` ≤60
+- `extract_disclaimer_html()` + post-FAQ tail (EN disclaimer fixed)
+- 6 pages rebuilt: A-01-1, A-01-2, A-07-1
 
-## Team ping (copy to Hema)
-> YELLOW MODE active. Continue **drafts only** for A-09+. No HTML. No new submissions for APPROVED until Amer back unless Ghost EMERGENCY APPROVE.
+## Ghost (Owner — post-review only)
+- **يتكلم → Cursor يترجم** (ميثاق + كود + تقرير 👑 جوست). لا يكتب ملفات تشغيل.
+- يراجع **بعد** LIVE في **👑 جوست** — FLAG / PULL / توجيه جديد بالكلام.
+
+## Cursor — LIVE + تقرير Ghost
+- **Amer notes:** كل ملاحظة → ✅ مقبولة (ماذا فُعل) أو ❌ مرفوضة (سبب + بديل) — **إلزامي في تقرير 👑 جوست**
+- **LIVE:** Ghost «انشر» + away mode → Cursor ينفّذ فوراً ويُبلّغ في 👑 جوست (لا انتظار موافقة)
+
+## Hema
+- Fix A-09 per Amer REVISE notes
+- Task 10 drafts hold until A-09 closed

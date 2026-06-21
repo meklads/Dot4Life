@@ -75,6 +75,8 @@
   .mode.green{background:#eafaf0;color:#1f7a4d;border:1px solid #bfe8cf}
   .side button.gs-tab{background:linear-gradient(135deg,#054241,#0a6b63);color:#fff;margin-bottom:.5rem}
   .side button.gs-tab.active{box-shadow:0 0 0 2px var(--teal)}
+  .side button.ghost-tab{background:linear-gradient(135deg,#fd781c,#e8650a);color:#fff;margin-bottom:.5rem}
+  .side button.ghost-tab.active{box-shadow:0 0 0 2px #ffb347}
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1436107577087160" crossorigin="anonymous"></script></head>
 <body>
@@ -85,7 +87,8 @@
 <div id="app"><div class="layout">
   <nav class="side">
     <div class="brand">DOT<span class="dot">.</span>FORLIFE</div>
-    <button data-s="content" class="active">📋 إدارة المحتوى</button>
+    <button data-s="gsystem" class="gs-tab active">🔄 GSystem</button>
+    <button data-s="ghost" class="ghost-tab">👑 جوست</button>
     <button data-s="visual">🎨 الحوكمة البصرية</button>
     <button data-s="development">🔬 التطوير</button>
     <button data-s="ideas">💡 طرح الأفكار</button>
@@ -94,20 +97,30 @@
     <button data-s="youtube">🎬 يوتيوب</button>
     <button data-s="ideogram">🖼️ إيديوجرام</button>
     <button data-s="gsystem" class="gs-tab">🔄 GSystem</button>
+    <button data-s="ghost" class="ghost-tab">👑 جوست</button>
     <button class="lock" id="lock">🔓 قفل وخروج</button>
   </nav>
   <main class="main">
     <div id="view-content"><div class="traction" id="traction"></div><div class="roster" id="roster"></div><div class="board" id="board"></div></div>
     <div id="view-doc" style="display:none"><div class="doc" id="doc"></div><div class="docnote">يحدّثه الفريق عبر الملف في <code>system/sections/</code> ويظهر هنا بعد git push.</div></div>
     <div id="view-vg" style="display:none"><div class="vgnav" id="vgnav"></div><div class="doc" id="vgdoc"></div><div class="docnote">المرجعية البصرية العليا — المصدر في <code>visual-governance/</code>. أي صورة أو فيديو يمرّ ببوابة الامتثال قبل النشر.</div></div>
-    <div id="view-gsystem" style="display:none">
+    <div id="view-gsystem">
       <div class="gs-head">
         <div><h1>GSystem</h1><div class="sub">Ghost Closed Loop OS · حلقة مغلقة · قراءة فقط</div></div>
-        <span class="mode yellow" id="gsMode">🟡 YELLOW</span>
+        <span class="mode green" id="gsMode">🟢 GREEN</span>
       </div>
       <div class="vgnav" id="gsnav"></div>
       <div class="doc" id="gsdoc"></div>
       <div class="docnote">المصدر: <code>operating-system/reports/</code> — يتحدّث بعد git push. <a href="gsystem.html">فتح في صفحة كاملة ↗</a></div>
+    </div>
+    <div id="view-ghost" style="display:none">
+      <div class="gs-head">
+        <div><h1>👑 جوست</h1><div class="sub">تقرير يومي + تقرير صور · قراءة فقط</div></div>
+        <span class="mode" style="background:#fff3e6;color:#c45a00;border:1px solid #ffd4a8;font-size:.72rem;font-weight:800;padding:.3rem .7rem;border-radius:999px" id="ghostLatest">—</span>
+      </div>
+      <div class="vgnav" id="ghostnav"></div>
+      <div class="doc" id="ghostdoc"></div>
+      <div class="docnote">المصدر: <code>operating-system/reports/ghost/</code> — Cursor (يومي + صور).</div>
     </div>
   </main>
 </div></div>
@@ -155,26 +168,33 @@ const GSB='../operating-system/';
 const GS=[
  {k:'🧭 اللوحة الموحّدة',f:'reports/track-board.md'},
  {k:'📦 طابور البناء',f:'reports/ready-to-build.md'},
- {k:'🟡 YELLOW MODE',f:'reports/yellow-mode-active.md',mode:true},
+ {k:'🟢 GREEN MODE',f:'reports/yellow-mode-active.md',mode:true},
+ {k:'📜 GSystem Charter',f:'../operating-system/gsystem-charter.md'},
  {k:'🛡️ الميثاق',f:'manager-charter-adsense.md'},
  {k:'⚙️ Track C',f:'reports/track-C-adsense-technical.md'},
  {k:'📝 خطة التنفيذ',f:'reports/claude-chef-execution-plan.md'},
  {k:'📋 Track B thin',f:'reports/track-B-thin-live-top20.md'},
+ {k:'⏸ Kanban (أرشيف)',f:'reports/kanban-frozen.md'},
 ];
 async function sha256(t){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(t));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
 async function tryEnter(){const h=await sha256($('#pw').value);if(h===PW_HASH){sessionStorage.setItem('dfl_board_ok','1');show()}else $('#err').textContent='كلمة المرور غير صحيحة'}
 $('#enter').onclick=tryEnter;$('#pw').addEventListener('keydown',e=>{if(e.key==='Enter')tryEnter()});
 $('#lock').onclick=()=>{sessionStorage.removeItem('dfl_board_ok');location.reload()};
-function show(){$('#gate').style.display='none';$('#app').style.display='block';loadBoard()}
+function show(){$('#gate').style.display='none';$('#app').style.display='block';openGSystem()}
+function openGSystem(){
+  document.querySelectorAll('.side button[data-s]').forEach(x=>x.classList.remove('active'));
+  const gs=document.querySelector('button[data-s="gsystem"]');if(gs)gs.classList.add('active');
+  $('#view-content').style.display='none';$('#view-doc').style.display='none';$('#view-vg').style.display='none';
+  $('#view-gsystem').style.display='';$('#view-ghost').style.display='none';renderGS()}
 if(sessionStorage.getItem('dfl_board_ok')==='1')show();
 
 document.querySelectorAll('.side button[data-s]').forEach(b=>b.onclick=()=>{
   document.querySelectorAll('.side button[data-s]').forEach(x=>x.classList.remove('active'));
   b.classList.add('active');const s=b.dataset.s;
-  $('#view-content').style.display='none';$('#view-doc').style.display='none';$('#view-vg').style.display='none';$('#view-gsystem').style.display='none';
-  if(s==='content'){$('#view-content').style.display=''}
-  else if(s==='visual'){$('#view-vg').style.display='';renderVG()}
+  $('#view-content').style.display='none';$('#view-doc').style.display='none';$('#view-vg').style.display='none';$('#view-gsystem').style.display='none';$('#view-ghost').style.display='none';
+  if(s==='visual'){$('#view-vg').style.display='';renderVG()}
   else if(s==='gsystem'){$('#view-gsystem').style.display='';renderGS()}
+  else if(s==='ghost'){$('#view-ghost').style.display='';renderGhost()}
   else{$('#view-doc').style.display='';loadDoc(SECTIONS[s])}
 });
 async function loadDoc(file){$('#doc').innerHTML='جارٍ التحميل…';try{const t=await (await fetch(file+'?_='+Date.now())).text();$('#doc').innerHTML=marked.parse(t)}catch(e){$('#doc').innerHTML='تعذّر تحميل الملف.'}}
@@ -197,11 +217,35 @@ function renderGS(){if(!gsInit){gsInit=true;
 async function loadGS(item){$('#gsdoc').innerHTML='جارٍ التحميل…';try{
   const t=await (await fetch(GSB+item.f+'?_='+Date.now())).text();$('#gsdoc').innerHTML=marked.parse(t);
   if(item.mode)updateGsMode(t)}catch(e){$('#gsdoc').innerHTML='تعذّر تحميل ملف GSystem. تأكّد من git push.'}}
-async function updateGsMode(yellowText){let yellow=true;try{
-  const t=yellowText||await (await fetch(GSB+'reports/yellow-mode-active.md?_='+Date.now())).text();
-  yellow=/YELLOW MODE.*Active|مفعّل/i.test(t)}catch(e){}
+async function updateGsMode(modeText){let isYellow=false;try{
+  const t=modeText||await (await fetch(GSB+'reports/yellow-mode-active.md?_='+Date.now())).text();
+  const head=t.split('\n').slice(0,5).join('\n');
+  isYellow=/YELLOW MODE/i.test(head)&&!/GREEN MODE|ended|ENDED/i.test(head)}catch(e){}
   const b=$('#gsMode');if(!b)return;
-  if(yellow){b.className='mode yellow';b.textContent='🟡 YELLOW'}else{b.className='mode green';b.textContent='🟢 GREEN'}}
+  if(isYellow){b.className='mode yellow';b.textContent='🟡 YELLOW'}else{b.className='mode green';b.textContent='🟢 GREEN'}}
+let ghostInit=false,ghostReports=[];
+async function renderGhost(){
+  if(!ghostInit){
+    ghostInit=true;
+    try{
+      const m=await (await fetch(GSB+'reports/ghost/manifest.json?_='+Date.now())).json();
+      ghostReports=m.reports||[];
+      $('#ghostLatest').textContent='آخر تحديث: '+ (m.updated||'—');
+      $('#ghostnav').innerHTML=ghostReports.map((r,i)=>{
+        const ic=r.kind==='images'?'🖼️':'📅';
+        return `<button data-i="${i}">${ic} ${r.label||r.date}</button>`}).join('');
+      document.querySelectorAll('#ghostnav button').forEach(btn=>btn.onclick=()=>{
+        document.querySelectorAll('#ghostnav button').forEach(z=>z.classList.remove('on'));btn.classList.add('on');
+        loadGhost(ghostReports[btn.dataset.i])});
+      const first=$('#ghostnav button');if(first){first.classList.add('on');loadGhost(ghostReports[0])}
+    }catch(e){$('#ghostdoc').innerHTML='تعذّر تحميل التقارير. تأكّد من git push.'}
+  }else if(ghostReports.length){loadGhost(ghostReports[0])}
+}
+async function loadGhost(item){
+  if(!item)return;
+  $('#ghostdoc').innerHTML='جارٍ التحميل…';
+  try{const t=await (await fetch(GSB+item.file+'?_='+Date.now())).text();$('#ghostdoc').innerHTML=marked.parse(t)}
+  catch(e){$('#ghostdoc').innerHTML='تعذّر تحميل التقرير.'}}
 function kpiColor(k){if(k.value==null)return '#9aa7a3';const v=k.value,t=k.target,w=k.warn;
   if(k.invert){if(v<=t)return '#1f9d57';if(v<=w)return '#e0a400';return '#c0392b'}
   if(v>=t)return '#1f9d57';if(v>=w)return '#e0a400';return '#c0392b'}
