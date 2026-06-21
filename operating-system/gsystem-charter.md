@@ -14,6 +14,18 @@
 - الكلام في الشات ≠ حوكمة — **الملف المحدَّث = الحقيقة**.
 - Cursor يُبلّغ Ghost في **👑 جوست** بما طُبِّق من توجيهاته.
 
+## ⛔ قاعدة مثبتة — push فوري (Ghost directive، دائمة)
+**أي تعديل على الريبو → `git push origin main` مباشرة — بدون طلب من Ghost.**
+
+| | |
+|---|---|
+| **متى** | نهاية **كل** جلسة فيها تغيير ملف (UI، HTML، CSS، JS، reports، charter، صور…) |
+| **من يطلب؟** | **لا أحد** — Ghost لا يقول «ارفع»؛ Cursor **يرفع تلقائياً** |
+| **متى أقول «تم»؟** | **بعد** push فقط + **commit hash** في تقرير 👑 جوست |
+| **استثناء** | Ghost **FULL STOP** 🔴 فقط |
+
+> Ghost **لا يعمل redeploy يدوي** ظناً أن التحديث رُفع — Cursor مسؤول عن الرفع **دائماً**.
+
 ## Principle
 **One deep article worth publishing > ten thin pages.** Text APPROVED ≠ LIVE.
 
@@ -62,8 +74,8 @@ Hema drafts → Self-QA → Amer APPROVED|REVISE|REJECT
 - Ghost «انشر» أو غياب = **تفويض كامل** — Cursor يكمل FIFO ويُبلّغ في التقرير.
 - **استثناء واحد:** Ghost **FULL STOP** (🔴 PAUSED) — طوارئ فقط.
 
-## Deploy rule — Ghost directive (إلزامي)
-**كل تغيير = commit + push فوراً.** لا «إصلاح محلي» ولا «بعد refresh».
+## Deploy rule — Ghost directive (إلزامي · **قاعدة مثبتة**)
+**مرجع:** § «push فوري» أعلاه. **كل تغيير = commit + push في نفس الجلسة** — **لا انتظار طلب Ghost.**
 
 | ❌ ممنوع | ✅ إلزامي |
 |---------|---------|
