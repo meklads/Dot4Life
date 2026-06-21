@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-lang="en" data-theme="light">
+<head>
+<script>(function(){var p=new URLSearchParams(location.search),gd=(function(){try{var z=(Intl.DateTimeFormat().resolvedOptions().timeZone||"");return /Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test(z)?"ar":"en";}catch(e){return "ar";}})(),l=p.get("lang")||localStorage.getItem("dfl-lang")||gd,t=p.get("theme")||localStorage.getItem("dfl-theme")||"light",h=document.documentElement;h.setAttribute("data-theme",t);h.setAttribute("data-lang",l);h.setAttribute("lang",l);h.setAttribute("dir",l==="ar"?"rtl":"ltr");if(p.get("lang"))localStorage.setItem("dfl-lang",l);if(p.get("theme"))localStorage.setItem("dfl-theme",t);})()</script>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+(function(){
+  /* theme */
+  var tb=document.getElementById("theme-toggle");
+  if(tb)tb.addEventListener("click",function(){
+    var h=document.documentElement,t=h.getAttribute("data-theme")==="dark"?"light":"dark";
+    h.setAttribute("data-theme",t);localStorage.setItem("dfl-theme",t);
+  });
+  /* lang */
+  var lb=document.getElementById("lang-toggle");
+  if(lb)lb.addEventListener("click",function(){
+    var h=document.documentElement,l=h.getAttribute("data-lang")==="ar"?"en":"ar";
+    h.setAttribute("data-lang",l);h.setAttribute("lang",l);
+    h.setAttribute("dir",l==="ar"?"rtl":"ltr");localStorage.setItem("dfl-lang",l);
+  });
+  /* scroll shadow */
+  var nb=document.getElementById("navbar");
+  if(nb)window.addEventListener("scroll",function(){nb.classList.toggle("scrolled",window.scrollY>10);},{passive:true});
+  /* reveal */
+  if("IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add("visible");});},{threshold:0.1});
+    document.querySelectorAll(".reveal").forEach(function(el){io.observe(el);});
+  } else document.querySelectorAll(".reveal").forEach(function(el){el.classList.add("visible");});
+})(); <meta name="description" content="Saudi Arabia travel guide, AlUla, NEOM, Diriyah, Abha, Edge of the World, Red Sea, Al-Ahsa. Best destinations for GCC and Arab travelers in the Kingdom."/>
+  <link rel="canonical" href="https://dotforlife.com/guides/saudi-tourism.html"/>
+  <meta property="og:site_name" content="DOTFORLIFE" />
+  <meta property="og:title" content="Saudi Arabia Tourism Guide, DOTFORLIFE | دليل السياحة في المملكة"
+  <meta property="og:description" content="Saudi Arabia tourism guide: AlUla, NEOM, Diriyah, Abha, and Red Sea destinations for families and adventure travelers." />/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://dotforlife.com/guides/saudi-tourism"/>
+  <title>Saudi Arabia Tourism Guide, DOTFORLIFE | السياحة في المملكة</title>
+<link rel="stylesheet" href="/styles/pages/guides_saudi-tourism.css?v=821e658">
+
+  <!-- DFL CANONICAL SYSTEM CSS -->
+  <style id="dfl-sys">
+    
+    
+    nav
+    
+    nav
+    /* Flash-safe tokens */
+    :root {
+      --gold: #6abfb8; --gold-l: #8fd4cc; --gold-d: #4a8a82;
+      --text: #1A1410; --text-2: #5C534A; --muted: #9A9188;
+      --body-bg: #FAF8F4; --card-bg: #FFFFFF;
+      --border: #E0D8CC; --navy: #032a28;
+      --font-serif: 'Cinzel', Georgia, serif;
+      --font-ui: 'Inter', system-ui, sans-serif;
+      --font-ar: 'Almarai', 'Segoe UI', sans-serif;
+      --radius: 6px;
+    }
+    [data-theme="dark"] {
+      --text: #EDE8E0; --text-2: #B8B0A4; --muted: #7A746C;
+      --body-bg: #12100E; --card-bg: #1E1A16;
+      --border: #302820; --gold: #8fd4cc;
+    }
+    /* Canonical Navbar */
+    #dfl-navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 9000;
+      min-height: 64px; height: auto; overflow: visible;
+      background: rgba(250,248,244,0.97);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      transition: box-shadow .3s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    [data-theme="dark"] #dfl-navbar {
+      background: rgba(18,16,14,0.97);
+      border-bottom-color: var(--border);
+    }
+    #dfl-navbar.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,.08); }
+    .dfl-nav-inner {
+      max-width: 1280px; width: 100%; padding: 0 32px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .dfl-nav-logo {
+      font-family: var(--font-serif); font-size: 1.25rem; font-weight: 600;
+      letter-spacing: .04em; color: var(--text); text-decoration: none;
+    }
+    .dfl-nav-logo .dot { color: var(--gold); }
+    .dfl-nav-links {
+      display: flex; gap: 2rem; align-items: center; list-style: none;
+      margin: 0; padding: 0;
+    }
+    .dfl-nav-links a {
+      font-size: .82rem; font-weight: 500; letter-spacing: .06em;
+      text-transform: uppercase; color: var(--text-2);
+      text-decoration: none; transition: color .2s;
+    }
+    .dfl-nav-links a:hover { color: var(--text); }
+    .dfl-nav-controls { display: flex; gap: .75rem; align-items: center; }
+    .dfl-nav-btn {
+      cursor: pointer; border: 1px solid var(--border); border-radius: 6px;
+      padding: .35rem .7rem; font-size: .76rem; font-weight: 600;
+      letter-spacing: .08em; background: transparent; color: var(--text-2);
+      transition: all .2s; font-family: inherit;
+    }
+    .dfl-nav-btn:hover { border-color: var(--gold); color: var(--gold); }
+    @media (max-width: 768px) {
+      .dfl-nav-links { display: none !important; }
+      .dfl-nav-inner { padding: 0 16px; }
+    }
+    /* Push body content below navbar */
+    body { padding-top: 158px !important; }
+    /* Canonical Footer */
+    #dfl-footer {
+      background: #032a28; color: #94a3b8; padding: 4rem 0 0;
+    }
+    .dfl-footer-grid {
+      max-width: 1280px; margin: 0 auto; padding: 0 48px;
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 3rem;
+    }
+    @media(max-width:960px){.dfl-footer-grid{grid-template-columns:1fr 1fr;gap:2rem;padding:0 32px;}}
+    @media(max-width:600px){.dfl-footer-grid{grid-template-columns:1fr;padding:0 24px;}}
+    .dfl-footer-brand .dfl-flogo {
+      font-family: var(--font-serif); font-size: 1.3rem; font-weight: 600;
+      color: #fff; letter-spacing: .04em; margin-bottom: 1rem;
+    }
+    .dfl-footer-brand .dfl-flogo .dot { color: #6abfb8; }
+    .dfl-footer-brand p { font-size: .88rem; line-height: 1.7; max-width: 240px; color: #94a3b8; }
+    .dfl-footer-col h4 {
+      color: #e2e8f0; font-size: .7rem; font-weight: 600;
+      letter-spacing: .12em; text-transform: uppercase; margin-bottom: 1.2rem;
+    }
+    .dfl-footer-col ul { list-style: none; display: flex; flex-direction: column; gap: .65rem; padding: 0; margin: 0; }
+    .dfl-footer-col a { font-size: .84rem; color: #94a3b8; transition: color .2s; text-decoration: none; }
+    .dfl-footer-col a:hover { color: #6abfb8; }
+    [data-lang="ar"] .dfl-footer-col a { font-family: var(--font-ar); }
+    .dfl-footer-bottom {
+      max-width: 1280px; margin: 3rem auto 0; padding: 1.4rem 48px;
+      border-top: 1px solid rgba(255,255,255,.07);
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: .78rem; flex-wrap: wrap; gap: .5rem; color: #64748b;
+    }
+    @media(max-width:600px){.dfl-footer-bottom{padding:1.4rem 24px;flex-direction:column;text-align:center;}}
+    .dfl-footer-bottom a { color: #64748b; text-decoration: none; }
+    .dfl-footer-bottom a:hover { color: #6abfb8; }
+    /* Mobile Nav */
+    #dfl-mobile-nav {
+      display: none; position: fixed; bottom: 0; left: 0; right: 0;
+      background: var(--card-bg); border-top: 1px solid var(--border);
+      z-index: 8999; padding: 4px 0 max(8px,env(safe-area-inset-bottom));
+    }
+    [data-theme="dark"] #dfl-mobile-nav { background: #1E1A16; border-top-color: #302820; }
+    .dfl-mnav-inner { display: flex; justify-content: space-around; }
+    .dfl-mnav-item {
+      display: flex; flex-direction: column; align-items: center; gap: 3px;
+      padding: 6px 8px; font-size: .62rem; font-weight: 500;
+      color: var(--muted); text-decoration: none; transition: color .2s;
+      min-width: 56px; text-align: center;
+    }
+    .dfl-mnav-item svg { width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round; }
+    .dfl-mnav-item:hover, .dfl-mnav-item.active { color: var(--gold); }
+    [data-lang="ar"] .dfl-mnav-item { font-family: var(--font-ar); }
+    @media(max-width:768px){ #dfl-mobile-nav{display:block;} body{padding-bottom:80px !important;} }
+  
+/* dfl-logo-inline */
+#navbar,.navbar-unified{height:110px!important;}
+.nav-inner,.navbar-inner,.navbar-inner-unified{height:110px!important;}
+.nav-logo img,.dfl-nav-logo img{height:120px!important;width:auto!important;display:block!important;}
+#dfl-navbar{min-height:110px!important;height:110px!important;}
+.dfl-nav-inner{height:110px!important;}
+body{padding-top:110px!important;}
+.footer-logo img{height:100px!important;width:auto!important;display:block!important;}
+@media(max-width:768px){
+  #navbar,.navbar-unified,#dfl-navbar{height:90px!important;}
+  .nav-inner,.navbar-inner,.navbar-inner-unified,.dfl-nav-inner{height:90px!important;}
+  .nav-logo img,.dfl-nav-logo img{height:80px!important;}
+  body{padding-top:90px!important;}
+  .footer-logo img{height:75px!important;}
+}
+</style>
+  <link rel="alternate" hreflang="ar-SA" href="https://dotforlife.com/guides/saudi-tourism.html" />
+  <link rel="alternate" hreflang="en" href="https://dotforlife.com/guides/saudi-tourism.html" />
+<script src="/scripts/lang-redirect.js?v=20260620"></script>
+  <link rel="alternate" hreflang="x-default" href="https://dotforlife.com/guides/saudi-tourism.html" />
+<!-- Google tag (gtag.js) -->
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3G1XPV4F0G'); <meta property="og:image" content="https://dotforlife.com/og/travel.jpg"/>
+  <meta name="twitter:image" content="https://dotforlife.com/og/travel.jpg"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles/global.css?v=20260624n">
+  <link rel="stylesheet" href="/styles/home.css?v=20260608u">
+  <link rel="stylesheet" href="/styles/pages/articles.css?v=20260608u">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1436107577087160" crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3G1XPV4F0G"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3G1XPV4F0G');</script>
+</head>
+<body data-template="article">
+
+<!-- ═══ UNIFIED HEADER ══════════════════════════════════════ -->
+<nav id="navbar"><div class="nav-inner"><a href="/" class="nav-logo"><img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" width="100" height="100" style="height:100px;width:auto;object-fit:contain;" loading="lazy"></a><ul class="nav-links"><li><a href="/health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li><li><a href="/finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li><li><a href="/real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li><li><a href="/travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li><li><a href="/islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li><li><a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a></li><li><a href="/archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a></li><li><a href="/blog.html"><span class="en">Blog</span><span class="ar">المدونة</span></a></li><li><a href="/library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a></li></ul><div class="nav-controls"><button class="nav-btn" id="lang-toggle"><span class="en">عربي</span><span class="ar">English</span></button><button class="nav-btn" id="theme-toggle">
+  <svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  <svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button></div></div></nav>
+<!-- ═══ END HEADER ══════════════════════════════════════ -->
+
+
+<div class="article-wrap">
+
+<section class="article-banner" aria-label="Article banner">
+  <div class="article-banner-img-wrap">
+    <img src="https://dotforlife.com/og/travel.jpg" alt="" class="article-banner-img" width="1200" height="420" loading="eager" fetchpriority="high">
+    <div class="article-banner-overlay" style="text-align:left;">
+      <div class="article-banner-cat" style="display:inline-block;color:#fff;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:4px 14px;font-size:.72rem;font-weight:700;margin-bottom:.75rem;backdrop-filter:blur(4px);">Article</div>
+      <h1 class="article-banner-title" style="font-size:clamp(1.5rem,3.5vw,2.2rem);line-height:1.4;font-weight:800;color:#fff;text-shadow:0 2px 20px rgba(0,0,0,.3);margin:0;">Saudi Arabia Tourism Guide, DOTFORLIFE | السياحة في المملكة العربية السعودية</h1>
+      <div class="article-banner-meta" style="color:rgba(255,255,255,.8);margin-top:.75rem;font-size:.8rem;display:flex;gap:.6rem;flex-wrap:wrap;justify-content:flex-start;">
+        
+        <span>8 min read</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<article class="article-body">
+<!-- ═══════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════ -->
+  
+
+  <!-- Stats bar -->
+  <div class="hero-stats" aria-label="Key metrics">
+    <div class="hero-stats-inner">
+      <div class="stat-item">
+        <div class="stat-num">40+</div>
+        <div class="stat-label"><span class="en">Free Tools</span><span class="ar">أداة مجانية</span></div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">6</div>
+        <div class="stat-label"><span class="en">Life Areas</span><span class="ar">مجالات حياة</span></div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">AR / EN</div>
+        <div class="stat-label"><span class="en">Bilingual</span><span class="ar">ثنائي اللغة</span></div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">0</div>
+        <div class="stat-label"><span class="en">Data Stored</span><span class="ar">بيانات محفوظة</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       TODAY'S DATE, Daily Rose
+  ═══════════════════════════════════════ -->
+  <div class="hero-stats" style="margin:3rem auto;max-width:1080px;padding:0 1.5rem;">
+    <div class="hero-stats-inner" style="background:linear-gradient(135deg,#b8705a 0%,#d49480 100%);box-shadow:0 8px 40px rgba(184,112,90,.15);border:1px solid rgba(184,112,90,.1);position:relative;overflow:hidden;">
+      <div style="position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.06);pointer-events:none;"></div>
+      <div style="position:absolute;bottom:-40px;left:-40px;width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,.04);pointer-events:none;"></div>
+      <div style="position:absolute;top:20%;right:30%;width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,.03);pointer-events:none;"></div>
+      <div class="stat-item" style="border:none;text-align:center;">
+        <div class="stat-num" style="font-size:1.2rem;font-weight:600;color:rgba(255,255,255,.75);font-family:'Inter',sans-serif;margin-bottom:0;">
+          <span class="en"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span><span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
+        </div>
+      </div>
+      <div class="stat-item" style="text-align:center;">
+        <div class="stat-num" style="font-size:1.5rem;font-family:var(--font-ar);color:#fff;font-weight:700;" id="hijri-display">, </div>
+        <div class="stat-label" style="color:rgba(255,255,255,.7);font-size:.65rem;" id="greg-display"></div>
+      </div>
+      <div class="stat-item" style="text-align:center;border:none;">
+        <div class="stat-num" style="font-size:1.5rem;color:#fff;font-family:'Cinzel',serif;font-weight:600;">
+          <span class="en"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span><span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
+        </div>
+      </div>
+      <div class="stat-item" style="text-align:center;">
+        <div class="stat-num" style="font-size:1.3rem;color:#fff;font-weight:500;" id="dh-focus-text-standalone">
+          <span class="en">Start your day with intention.</span>
+          <span class="ar">ابدأ يومك بنية.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="height:0.5rem;"></div>
+
+</div>
+
+<nav class="nav">
+  <a class="nav-brand" href="../index.html">
+    <div class="logo"></div>
+    <div class="brand-name">DOT<span>4</span>LIFE</div>
+  </a>
+  <div class="nav-actions">
+    <a class="back-btn" href="../travel.html">
+      <span class="en">← Travel</span><span class="ar">← السفر</span>
+    </a>
+    <button class="nav-btn" onclick="toggleLang()">
+      <span class="en">العربية</span><span class="ar">English</span>
+    </button>
+    <button class="nav-btn" onclick="toggleTheme()"><span id="theme-icon"><svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-icon">🏜️</div>
+  <h1>
+    <span class="en">Saudi Arabia, Discover the Kingdom</span>
+    <span class="ar">المملكة العربية السعودية، اكتشف الجمال</span>
+  </h1>
+  <p class="subtitle">
+    <span class="en">From ancient Nabataean cities to futuristic megaprojects, Saudi Arabia is rewriting what travel means in the Arab world.</span>
+    <span class="ar">من المدن النبطية العريقة إلى المشاريع المستقبلية الضخمة، تُعيد المملكة تعريف السياحة في العالم العربي.</span>
+  </p>
+  <div class="hero-badges">
+    <span class="hero-badge">🏛️ <span class="en">AlUla & Hegra</span><span class="ar">العُلا والحِجر</span></span>
+    <span class="hero-badge">🌊 <span class="en">Red Sea</span><span class="ar">البحر الأحمر</span></span>
+    <span class="hero-badge">⛰️ <span class="en">Abha</span><span class="ar">أبها</span></span>
+    <span class="hero-badge">🌃 <span class="en">NEOM</span><span class="ar">نيوم</span></span>
+    <span class="hero-badge">🏺 <span class="en">Diriyah</span><span class="ar">الدرعية</span></span>
+  </div>
+</section>
+
+<!-- JUMP NAV -->
+<div class="jump-strip">
+  <a href="#destinations" class="jump-link"><span class="en">Destinations</span><span class="ar">الوجهات</span></a>
+  <a href="#seasons" class="jump-link"><span class="en">Best Times</span><span class="ar">أفضل المواسم</span></a>
+  <a href="#visa" class="jump-link"><span class="en">Visa & Entry</span><span class="ar">التأشيرة</span></a>
+  <a href="#tips" class="jump-link"><span class="en">Travel Tips</span><span class="ar">نصائح السفر</span></a>
+</div>
+
+  <!-- DESTINATIONS -->
+  <section class="section" id="destinations">
+    <div class="section-head">
+      <div class="s-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg></div>
+      <div>
+        <h2><span class="en">Top Destinations in Saudi Arabia</span><span class="ar">أبرز الوجهات في المملكة</span></h2>
+        <p><span class="en">From the ancient north to the tropical south</span><span class="ar">من الشمال الأثري إلى الجنوب الاستوائي</span></p>
+      </div>
+    </div>
+
+    <div class="dest-grid">
+
+      <!-- AlUla FEATURED -->
+      <div class="dest-card featured">
+        <div class="dest-card-img alula">
+          🏛️
+          <div class="dest-card-badge"><span class="en">⭐ Must Visit</span><span class="ar">⭐ لا تفوّته</span></div>
+        </div>
+        <div class="dest-card-body">
+          <div class="region"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg> <span class="en">AlUla Region, NW Saudi Arabia</span><span class="ar">منطقة العُلا، شمال غرب المملكة</span></div>
+          <h3><span class="en">AlUla & Hegra (Madain Saleh)</span><span class="ar">العُلا والحِجر (مدائن صالح)</span></h3>
+          <p><span class="en">Saudi Arabia's crown jewel, a vast ancient landscape of rose-red mountains, Nabataean tombs carved into sandstone cliffs, and 200,000-year-old rock art. Hegra is the Kingdom's first UNESCO World Heritage Site. The Winter at Tantora festival (Dec–Mar) transforms AlUla into a cultural hub with international concerts, hot-air balloons, and stargazing events.</span><span class="ar">جوهرة المملكة، تضاريس تاريخية شاسعة من جبال وردية اللون ومقابر نبطية منحوتة في الصخر وفن صخري عمره 200,000 سنة. الحِجر أول موقع تراث عالمي لليونسكو في المملكة. مهرجان "شتاء طنطورة" (ديسمبر–مارس) يحوّل العُلا إلى مركز ثقافي بحفلات دولية وبالونات ومرصد نجوم.</span></p>
+          <div class="dest-meta">
+            <span class="meta-pill"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> <span class="en">3–5 days</span><span class="ar">3–5 أيام</span></span>
+            <span class="meta-pill">❄️ <span class="en">Oct–Apr best</span><span class="ar">أكتوبر–أبريل أفضل وقت</span></span>
+            <span class="meta-pill"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="7.5 9.5 12 12 16.5 9.5"/><line x1="12" y1="12" x2="12" y2="17"/></svg> <span class="en">AlUla Airport</span><span class="ar">مطار العُلا</span></span>
+            <span class="meta-pill">🏛️ <span class="en">UNESCO Heritage</span><span class="ar">تراث يونسكو</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Diriyah -->
+      <div class="dest-card">
+        <div class="dest-card-img diriyah">🏺
+          <div class="dest-card-badge">UNESCO</div>
+        </div>
+        <div class="dest-card-body">
+          <div class="region"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg> <span class="en">Riyadh Outskirts</span><span class="ar">أطراف الرياض</span></div>
+          <h3><span class="en">Diriyah, Birthplace of the Kingdom</span><span class="ar">الدرعية، مهد المملكة</span></h3>
+          <p><span class="en">The founding capital of Saudi Arabia and UNESCO World Heritage Site. Mud-brick At-Turaif district, open-air museums, traditional souqs, dining, and cultural events. 20 min from Riyadh center.</span><span class="ar">العاصمة التأسيسية للمملكة وموقع تراث يونسكو. حي الطريف الطيني ومتاحف مفتوحة وأسواق تقليدية ومطاعم. 20 دقيقة من وسط الرياض.</span></p>
+          <div class="dest-meta">
+            <span class="meta-pill"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> <span class="en">1–2 days</span><span class="ar">1–2 يوم</span></span>
+            <span class="meta-pill">🏺 <span class="en">History & Culture</span><span class="ar">تاريخ وثقافة</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Abha -->
+      <div class="dest-card">
+        <div class="dest-card-img abha"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 2 8 0 5.5-4.78 10-10 10Z"/></svg>
+          <div class="dest-card-badge"><span class="en">🌧️ Cool & Green</span><span class="ar">🌧️ بارد وأخضر</span></div>
+        </div>
+        <div class="dest-card-body">
+          <div class="region"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg> <span class="en">Asir Region, SW Saudi Arabia</span><span class="ar">منطقة عسير، جنوب غرب المملكة</span></div>
+          <h3><span class="en">Abha & Asir</span><span class="ar">أبها وعسير</span></h3>
+          <p><span class="en">Saudi Arabia's coolest city at 2,200m above sea level. Misty mountains, lush terraced farms, the famous Soudah cable car (highest in the world at 3,015m), colorful Asiri houses, and the Shada Palace museum. Summer escape for Gulf residents.</span><span class="ar">أبرد مدن المملكة على ارتفاع 2200 متر. جبال ضبابية ومدرجات زراعية خضراء وتلفريك سودة (الأعلى في العالم بـ 3015م) وبيوت عسيرية ملوّنة ومتحف قصر شدا. ملاذ صيفي لأبناء الخليج.</span></p>
+          <div class="dest-meta">
+            <span class="meta-pill"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> <span class="en">3–4 days</span><span class="ar">3–4 أيام</span></span>
+            <span class="meta-pill"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>️ <span class="en">Year-round cool</span><span class="ar">بارد طوال العام</span></span>
+            <span class="meta-pill"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="7.5 9.5 12 12 16.5 9.5"/><line x1="12" y1="12" x2="12" y2="17"/></svg> <span class="en">Abha Airport</span><span class="ar">مطار أبها</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Edge of the World -->
+      <div class="dest-card">
+        <div class="dest-card-img edge">🌄
+          <div class="dest-card-badge"><span class="en">🏆 Hidden Gem</span><span class="ar">🏆 جوهرة خفية</span></div>
+        </div>
+        <div class="dest-card-body">
+          <div class="region"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg> <span class="en">North of Riyadh, Tuwayq Escarpment</span><span class="ar">شمال الرياض، جروف طويق</span></div>
+          <h3><span class="en">Edge of the World (Jebel Fihrayn)</span><span class="ar">حافة العالم (جبل فهرين)</span></h3>
+          <p><span class="en">A dramatic 300m sheer cliff dropping into an endless flat desert plain, one of the most breathtaking views in Arabia. 90 km north of Riyadh, 4WD required. Best at sunrise or sunset. Camping overnight is unforgettable.</span><span class="ar">جرف شاهق 300 متر يطل على سهل صحراوي لا نهاية له، من أروع المناظر في الجزيرة العربية. 90 كم شمال الرياض، دفع رباعي ضروري. أجمل وقت عند الفجر والغروب. التخييم الليلي تجربة لا تُنسى.</span></p>
+          <div class="dest-meta">
+            <span class="meta-pill"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> <span class="en">Day trip / Overnight</span><span class="ar">يوم كامل / مبيت</span></span>
+            <span class="meta-pill">🚙 <span class="en">4WD required</span><span class="ar">دفع رباعي ضروري</span></span>
+            <span class="meta-pill">❄️ <span class="en">Nov–Mar only</span><span class="ar">نوفمبر–مارس فقط</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- NEOM / Sindalah -->
+      <div class="dest-card">
+        <div class="dest-card-img neom">🔵
+          <div class="dest-card-badge"><span class="en"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Vision 2030</span><span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> رؤية 2030</span></div>
+        </div>
+        <div class="dest-card-body">
+          <div class="region"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg> <span class="en">Tabuk Region, NW Saudi Arabia</span><span class="ar">منطقة تبوك، شمال غرب المملكة</span></div>
+          <h3><span class="en">NEOM, Sindalah & The Line</span><span class="ar">نيوم وسندالة واللاين</span></h3>
+          <p><span class="en">The world's most ambitious urban project. Sindalah island resort is open for visitors, turquoise Red Sea waters, yacht marina, luxury hotels, water sports. The broader NEOM region offers pristine beaches and mountains of Tabuk. Rapidly developing, more experiences open each year.</span><span class="ar">أضخم مشروع حضاري في العالم. جزيرة سندالة مفتوحة للزوار، مياه البحر الأحمر الفيروزية ومرسى اليخوت والفنادق الفاخرة والرياضات المائية. المنطقة تتطور بسرعة وتجارب جديدة تُفتح كل عام.</span></p>
+          <div class="dest-meta">
+            <span class="meta-pill">🌊 <span class="en">Sea & Luxury</span><span class="ar">بحر ورفاهية</span></span>
+            <span class="meta-pill"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 4l9 5.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-5h4v5h4a1 1 0 0 0 1-1v-9"/></svg>️ <span class="en">Rapidly expanding</span><span class="ar">يتوسع بسرعة</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Red Sea / AMAALA -->
+      <div class="dest-card">
+        <div class="dest-card-img redsea">🐠
+          <div class="dest-card-badge"><span class="en">🤿 Diving Paradise</span><span class="ar">🤿 جنة الغوص</span></div>
+        </div>
+        <div class="dest-card-body">
+          <div class="region"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg> <span class="en">Red Sea Coast, Western Saudi Arabia</span><span class="ar">ساحل البحر الأحمر، غرب المملكة</span></div>
+          <h3><span class="en">Red Sea Project & AMAALA</span><span class="ar">مشروع البحر الأحمر وأمالا</span></h3>
+          <p><span class="en">Over 90 pristine islands with coral reefs, mangroves, and volcanic landscapes. Some of the least-touched marine ecosystems on earth. Luxury resorts are opening at Shura Island. AMAALA (Triple Bay) is a wellness and luxury island destination. World-class diving and snorkeling.</span><span class="ar">أكثر من 90 جزيرة بكر بشعاب مرجانية وغابات القرم والمناظر البركانية. أنقى النظم البيئية البحرية على وجه الأرض. منتجعات فاخرة تفتح في جزيرة شورى. أمالا للرفاهية والصحة. غوص وسنوركل من الدرجة الأولى.</span></p>
+          <div class="dest-meta">
+            <span class="meta-pill">🤿 <span class="en">Diving & Snorkeling</span><span class="ar">غوص وسنوركل</span></span>
+            <span class="meta-pill">🪸 <span class="en">Pristine Coral</span><span class="ar">شعاب مرجانية بكر</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Taif -->
+      <div class="dest-card">
+        <div class="dest-card-img taif">🌹
+          <div class="dest-card-badge"><span class="en"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2v6m0 0l-3-3m3 3l3-3"/><path d="M12 16v6m0 0l-3-3m3 3l3-3"/><path d="M2 12h6m0 0L5 9m3 3l-3 3"/><path d="M16 12h6m0 0l-3-3m3 3l-3 3"/></svg> Rose Capital</span><span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2v6m0 0l-3-3m3 3l3-3"/><path d="M12 16v6m0 0l-3-3m3 3l3-3"/><path d="M2 12h6m0 0L5 9m3 3l-3 3"/><path d="M16 12h6m0 0l-3-3m3 3l-3 3"/></svg> عاصمة الورد</span></div>
+        </div>
+        <div class="dest-card-body">
+          <div class="region"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg> <span class="en">Mecca Region, 1800m altitude</span><span class="ar">منطقة مكة المكرمة، ارتفاع 1800م</span></div>
+          <h3><span class="en">Taif, City of Roses</span><span class="ar">الطائف، مدينة الورد</span></h3>
+          <p><span class="en">Known as the "city of roses", home to the famous Taifi rose used in world-class perfumes. The Taif Rose Festival every March is magical. Cool mountain air, honeybee farms, grapes, and the historic Shafa and Al-Hada mountain areas. Easy day trip from Mecca.</span><span class="ar">تُعرف بـ"مدينة الورد" موطن الورد الطائفي المستخدم في أشهر عطور العالم. مهرجان الورد في مارس ساحر. هواء جبلي منعش ومزارع نحل ومناطق الشفا والهدا الجبلية. رحلة يومية سهلة من مكة.</span></p>
+          <div class="dest-meta">
+            <span class="meta-pill">🌹 <span class="en">Rose Festival: March</span><span class="ar">مهرجان الورد: مارس</span></span>
+            <span class="meta-pill"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> <span class="en">2–3 days</span><span class="ar">2–3 أيام</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Al-Ahsa -->
+      <div class="dest-card">
+        <div class="dest-card-img alahsa"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 2v4a3 3 0 0 1-3 3h-4a3 3 0 0 1-3-3V2"/><path d="M7 12v8a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-8"/></svg>
+          <div class="dest-card-badge">UNESCO</div>
+        </div>
+        <div class="dest-card-body">
+          <div class="region"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg> <span class="en">Eastern Province</span><span class="ar">المنطقة الشرقية</span></div>
+          <h3><span class="en">Al-Ahsa Oasis</span><span class="ar">واحة الأحساء</span></h3>
+          <p><span class="en">The world's largest natural oasis, UNESCO World Heritage Site. 30 million date palms, ancient fortresses, traditional Qaisariyya market, the Jawtha Mosque ruins, and natural artesian springs. A surprisingly rich cultural destination in the Eastern Province.</span><span class="ar">أكبر واحة طبيعية في العالم، تراث يونسكو. 30 مليون نخلة، قلاع تاريخية، سوق القيصرية التقليدي، مسجد جواثا الأثري، وعيون ارتوازية طبيعية. وجهة ثقافية غنية مفاجئة في الشرقية.</span></p>
+          <div class="dest-meta">
+            <span class="meta-pill"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 2v4a3 3 0 0 1-3 3h-4a3 3 0 0 1-3-3V2"/><path d="M7 12v8a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-8"/></svg> <span class="en">30M Date Palms</span><span class="ar">30 مليون نخلة</span></span>
+            <span class="meta-pill">🏛️ UNESCO</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Riyadh -->
+      <div class="dest-card">
+        <div class="dest-card-img riyadh"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 18a5 5 0 0 0-10 0"/><line x1="12" y1="9" x2="12" y2="2"/><line x1="4.22" y1="10.22" x2="5.64" y2="11.64"/></svg></div>
+        <div class="dest-card-body">
+          <div class="region"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg> <span class="en">Riyadh, The Capital</span><span class="ar">الرياض، العاصمة</span></div>
+          <h3><span class="en">Riyadh, Modern Arabia</span><span class="ar">الرياض، عربستان الحديثة</span></h3>
+          <p><span class="en">The Kingdom's beating heart. National Museum, Masmak Fortress, Kingdom Centre Tower sky bridge, Diriyah (15 min away), Riyadh Boulevard for entertainment, world-class dining, and the largest mall in the world (Mall of Saudi, opening 2025).</span><span class="ar">قلب المملكة النابض. المتحف الوطني وقلعة المصمك وجسر برج المملكة السمائي والدرعية (15 دقيقة) وبوليفارد الرياض للترفيه ومطاعم عالمية وأكبر مول في العالم (مول السعودية 2025).</span></p>
+          <div class="dest-meta">
+            <span class="meta-pill">🏙️ <span class="en">City Break</span><span class="ar">استراحة المدينة</span></span>
+            <span class="meta-pill">🛍️ <span class="en">Shopping & Dining</span><span class="ar">تسوق ومطاعم</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Farasan Islands -->
+      <div class="dest-card">
+        <div class="dest-card-img farasan">🐢
+          <div class="dest-card-badge"><span class="en">🦈 Untouched</span><span class="ar">🦈 بكر</span></div>
+        </div>
+        <div class="dest-card-body">
+          <div class="region"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg> <span class="en">Jizan, Southern Red Sea</span><span class="ar">جازان، جنوب البحر الأحمر</span></div>
+          <h3><span class="en">Farasan Islands</span><span class="ar">جزر فرسان</span></h3>
+          <p><span class="en">Saudi Arabia's best-kept secret, a protected marine sanctuary of 84 islands with crystal waters, rare sea turtles, dugongs, and ancient Roman ruins. Accessible by ferry from Jizan. Minimal tourism infrastructure makes it raw and authentic.</span><span class="ar">أجمل أسرار المملكة، محمية بحرية تضم 84 جزيرة بمياه كريستالية وسلاحف بحرية نادرة ودجونج وآثار رومانية. يصلها العبّارة من جازان. محدودية البنية السياحية تجعلها بكرة وأصيلة.</span></p>
+          <div class="dest-meta">
+            <span class="meta-pill">🐢 <span class="en">Sea Turtles</span><span class="ar">سلاحف بحرية</span></span>
+            <span class="meta-pill">⛵ <span class="en">Ferry from Jizan</span><span class="ar">عبّارة من جازان</span></span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /dest-grid -->
+  </section>
+
+  <hr class="divider"/>
+
+  <!-- BEST SEASONS -->
+  <section class="section" id="seasons">
+    <div class="section-head">
+      <div class="s-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+      <div>
+        <h2><span class="en">Best Times to Visit</span><span class="ar">أفضل أوقات الزيارة</span></h2>
+        <p><span class="en">Saudi Arabia's vast size means climate varies dramatically by region</span><span class="ar">اتساع المملكة يعني تباين المناخ بشكل كبير من منطقة لأخرى</span></p>
+      </div>
+    </div>
+    <div class="season-row">
+      <div class="season-pill">
+        <div class="s-emoji">❄️</div>
+        <h4><span class="en">Oct – Feb</span><span class="ar">أكتوبر – فبراير</span></h4>
+        <p><span class="en">Peak season for AlUla, Riyadh, Diriyah. Comfortable 15–25°C. Book in advance.</span><span class="ar">موسم الذروة للعُلا والرياض والدرعية. 15–25 درجة. احجز مبكراً.</span></p>
+      </div>
+      <div class="season-pill">
+        <div class="s-emoji"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2v6m0 0l-3-3m3 3l3-3"/><path d="M12 16v6m0 0l-3-3m3 3l3-3"/><path d="M2 12h6m0 0L5 9m3 3l-3 3"/><path d="M16 12h6m0 0l-3-3m3 3l-3 3"/></svg></div>
+        <h4><span class="en">Mar – Apr</span><span class="ar">مارس – أبريل</span></h4>
+        <p><span class="en">Taif Rose Festival. Flowers bloom in Asir. Good for most destinations before summer heat.</span><span class="ar">مهرجان الورد في الطائف. أزهار عسير. جيد لمعظم الوجهات قبل الصيف.</span></p>
+      </div>
+      <div class="season-pill">
+        <div class="s-emoji"><svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></div>
+        <h4><span class="en">Jun – Aug</span><span class="ar">يونيو – أغسطس</span></h4>
+        <p><span class="en">Peak for Abha & Asir (cool!). Avoid Riyadh and desert regions. Red Sea diving still good.</span><span class="ar">موسم أبها وعسير (بارد!). تجنب الرياض والصحاري. الغوص في البحر الأحمر لا يزال جيداً.</span></p>
+      </div>
+      <div class="season-pill">
+        <div class="s-emoji"><svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></div>
+        <h4><span class="en">Ramadan</span><span class="ar">رمضان</span></h4>
+        <p><span class="en">Unique atmosphere across the Kingdom. Many venues open late nights. Respect fasting hours. Prices vary.</span><span class="ar">أجواء روحانية فريدة. كثير من الأماكن تفتح حتى الفجر. احترم أوقات الإفطار.</span></p>
+      </div>
+      <div class="season-pill">
+        <div class="s-emoji">🎭</div>
+        <h4><span class="en">Riyadh Season</span><span class="ar">موسم الرياض</span></h4>
+        <p><span class="en">Usually Oct–Feb. Massive entertainment events, concerts, sport, and festivals. Plan far ahead for accommodation.</span><span class="ar">عادةً أكتوبر–فبراير. فعاليات ترفيهية ضخمة وحفلات ورياضة. خطط مبكراً للسكن.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider"/>
+
+  <!-- VISA & ENTRY -->
+  <section class="section" id="visa">
+    <div class="section-head">
+      <div class="s-icon">🛂</div>
+      <div>
+        <h2><span class="en">Visa & Entry</span><span class="ar">التأشيرة والدخول</span></h2>
+        <p><span class="en">Saudi Arabia has significantly expanded tourist access since 2019</span><span class="ar">وسّعت المملكة دخول السياح بشكل ملحوظ منذ 2019</span></p>
+      </div>
+    </div>
+    <div class="tips-grid">
+      <div class="tip-card">
+        <div class="t-icon">🆓</div>
+        <div>
+          <h3><span class="en">GCC Citizens, No Visa</span><span class="ar">مواطنو دول الخليج، بدون تأشيرة</span></h3>
+          <p><span class="en">Citizens of UAE, Kuwait, Bahrain, Qatar, Oman can enter Saudi Arabia with national ID only. No visa required for tourism.</span><span class="ar">مواطنو الإمارات والكويت والبحرين وقطر وعُمان يدخلون بالهوية الوطنية فقط. لا تأشيرة مطلوبة للسياحة.</span></p>
+        </div>
+      </div>
+      <div class="tip-card">
+        <div class="t-icon">💻</div>
+        <div>
+          <h3><span class="en">Tourist e-Visa, 49+ Countries</span><span class="ar">تأشيرة سياحية إلكترونية، 49+ دولة</span></h3>
+          <p><span class="en">Apply online at visitsaudi.com or via the Nusuk App. Single or multiple entry, 90 days stay. Includes travel insurance. Fast processing (minutes to hours).</span><span class="ar">تقدّم عبر visitsaudi.com أو تطبيق نُسُك. دخول مفرد أو متعدد، إقامة 90 يوماً. يشمل تأمين سفر. معالجة سريعة.</span></p>
+        </div>
+      </div>
+      <div class="tip-card">
+        <div class="t-icon">👗</div>
+        <div>
+          <h3><span class="en">Dress Code</span><span class="ar">قواعد اللباس</span></h3>
+          <p><span class="en">Modest dress required in public. Women no longer required to wear abaya (since 2019) but modest clothing is expected. Men: no shorts in shopping malls. Beachwear only at designated beach areas.</span><span class="ar">اللباس المحتشم مطلوب في الأماكن العامة. لا يُشترط على المرأة العباءة (منذ 2019) لكن اللباس المحتشم متوقع. مناسبة الشاطئ في مناطقها المحددة.</span></p>
+        </div>
+      </div>
+      <div class="tip-card">
+        <div class="t-icon">✕</div>
+        <div>
+          <h3><span class="en">Know Before You Go</span><span class="ar">اعرف قبل أن تسافر</span></h3>
+          <p><span class="en">Alcohol is prohibited. Public displays of affection are discouraged. Photography of government buildings, military sites, and people without consent is prohibited. Respect prayer times, some shops briefly close.</span><span class="ar">الكحول محظور. المظاهر العاطفية في الأماكن العامة غير مستحسنة. تصوير المباني الحكومية والعسكرية والأشخاص دون إذن محظور. احترم أوقات الصلاة.</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="info-box">
+      <strong><span class="en"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg> Pro Tip:</span><span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg> نصيحة:</span></strong>
+      <span class="en"> Download the <strong>Visit Saudi</strong> and <strong>Absher</strong> apps before arrival. Absher is the official government services app, you may need it for visa registration. Download maps offline (Google Maps supports offline download for Saudi cities).</span>
+      <span class="ar"> حمّل تطبيقَي <strong>Visit Saudi</strong> و<strong>أبشر</strong> قبل الوصول. أبشر هو التطبيق الحكومي الرسمي وقد تحتاجه لتسجيل التأشيرة. حمّل الخرائط بدون إنترنت (Google Maps يدعم التحميل المسبق لمدن المملكة).</span>
+    </div>
+  </section>
+
+  <hr class="divider"/>
+
+  <!-- TRAVEL TIPS -->
+  <section class="section" id="tips">
+    <div class="section-head">
+      <div class="s-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg></div>
+      <div>
+        <h2><span class="en">Saudi Arabia Travel Tips</span><span class="ar">نصائح سياحية للمملكة</span></h2>
+        <p><span class="en">Practical advice to make the most of your Saudi journey</span><span class="ar">نصائح عملية للاستفادة القصوى من رحلتك</span></p>
+      </div>
+    </div>
+    <div class="tips-grid">
+      <div class="tip-card"><div class="t-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div><div><h3><span class="en">SIM Card on Arrival</span><span class="ar">شريحة الاتصال عند الوصول</span></h3><p><span class="en">STC, Mobily, and Zain all sell tourist SIMs at airports. ~35 SAR for 10GB. Buy at the airport for immediate connectivity.</span><span class="ar">STC وموبايلي وزين تبيع شرائح سياحية في المطارات. ~35 ريال لـ 10 جيجا. اشتر في المطار للاتصال الفوري.</span></p></div></div>
+      <div class="tip-card"><div class="t-icon">🚗</div><div><h3><span class="en">Rent a Car for Freedom</span><span class="ar">استأجر سيارة للحرية الكاملة</span></h3><p><span class="en">Public transport is limited outside Riyadh metro. Renting a car gives you full flexibility, especially for AlUla, Abha, and Edge of the World. International driving license required.</span><span class="ar">النقل العام محدود خارج مترو الرياض. استئجار سيارة يمنحك مرونة كاملة خاصة للعُلا وأبها وحافة العالم. رخصة قيادة دولية مطلوبة.</span></p></div></div>
+      <div class="tip-card"><div class="t-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="22" height="12" rx="2"/><path d="M6 12h4"/><path d="M14 12h4"/></svg></div><div><h3><span class="en">Cards Accepted Everywhere</span><span class="ar">البطاقات مقبولة في كل مكان</span></h3><p><span class="en">Saudi Arabia is nearly cashless. Visa and Mastercard work everywhere, including small shops and souqs. Apple Pay and Google Pay widely accepted. Keep some SAR for remote areas.</span><span class="ar">المملكة تكاد تكون بلا نقود. فيزا وماستركارد مقبولتان في كل مكان حتى في الأسواق الصغيرة. Apple Pay وGoogle Pay منتشران. احتفظ ببعض الريالات للمناطق النائية.</span></p></div></div>
+      <div class="tip-card"><div class="t-icon">🌡️</div><div><h3><span class="en">Hydrate Aggressively</span><span class="ar">اشرب الماء بكثرة</span></h3><p><span class="en">The desert climate dehydrates quickly, especially Apr–Oct. Keep a large water bottle. Zamzam water at Haramain stations is free and a bonus for pilgrims. Many attractions have water stations.</span><span class="ar">مناخ الصحراء يُجفف الجسم سريعاً خاصة أبريل–أكتوبر. احمل زجاجة ماء كبيرة. ماء زمزم مجاني في محطات الحرمين. كثير من المعالم فيها محطات ماء.</span></p></div></div>
+      <div class="tip-card"><div class="t-icon">🎟️</div><div><h3><span class="en">Book Activities in Advance</span><span class="ar">احجز الأنشطة مسبقاً</span></h3><p><span class="en">AlUla hot-air balloon, Diriyah evening shows, Soudah cable car, and Red Sea dive trips all sell out weeks in advance. Use the Experience Saudi Arabia app or AlUla app.</span><span class="ar">بالون العُلا وعروض الدرعية المسائية وتلفريك سودة ورحلات غوص البحر الأحمر تنفد أسابيع مسبقاً. استخدم تطبيق Experience Saudi Arabia أو تطبيق العُلا.</span></p></div></div>
+      <div class="tip-card"><div class="t-icon"><svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></div><div><h3><span class="en">Embrace the Night Culture</span><span class="ar">عِش ثقافة السهر</span></h3><p><span class="en">Saudi cities come alive after Isha prayer (9–11pm). Best restaurants, souqs, and entertainment areas peak between 10pm–2am. Adjust your schedule, sleep in, explore by night.</span><span class="ar">مدن المملكة تنبض بعد صلاة العشاء (9–11 مساءً). أفضل المطاعم والأسواق تبلغ ذروتها 10م–2ص. اضبط جدولك، نم في الصباح واستكشف الليل.</span></p></div></div>
+    </div>
+
+    <div class="gold-box">
+      <span class="gb-icon"></span>
+      <div>
+        <h3><span class="en">Saudi Arabia is Transforming, Visit Now</span><span class="ar">المملكة تتحول، زُرها الآن</span></h3>
+        <p><span class="en">The Kingdom is investing over $800 billion in tourism by 2030. AlUla, NEOM, and the Red Sea project are transforming at breathtaking speed. Visiting now means seeing the Kingdom at its most exciting turning point, before prices rise and crowds arrive.</span><span class="ar">المملكة تستثمر أكثر من 800 مليار دولار في السياحة بحلول 2030. العُلا ونيوم والبحر الأحمر تتحول بسرعة مذهلة. الزيارة الآن تعني مشاهدة المملكة في أكثر لحظاتها إثارة، قبل ارتفاع الأسعار وتدفق الزوار.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DFL CANONICAL FOOTER -->
+  <footer id="dfl-footer" role="contentinfo">
+    <div class="dfl-footer-grid">
+      <div class="dfl-footer-brand">
+        <div class="dfl-flogo"><img loading="lazy" decoding="async" src="/logo1-footer.webp" alt="Dot4Life" height="144" style="height:120px;width:auto;display:block;"></div>
+        <p><span class="en">A trusted daily companion for every family. Free, precise, and deeply human. Arabic &amp; English.</span><span class="ar">الرفيق اليومي الموثوق لكل أسرة. مجاني ودقيق وإنساني. عربي وإنجليزي.</span></p>
+      </div>
+      <div class="dfl-footer-col">
+        <h4><span class="en">Health</span><span class="ar">الصحة</span></h4>
+        <ul>
+          <li><a href="/tools/pregnancy-calculator.html"><span class="en">Pregnancy Tracker</span><span class="ar">متتبع الحمل</span></a></li>
+          <li><a href="/tools/bmi-calculator.html"><span class="en">BMI Calculator</span><span class="ar">حاسبة BMI</span></a></li>
+          <li><a href="/tools/calorie-calculator.html"><span class="en">Calorie Calculator</span><span class="ar">حاسبة السعرات</span></a></li>
+          <li><a href="/tools/water-calculator.html"><span class="en">Hydration Guide</span><span class="ar">دليل الترطيب</span></a></li>
+        </ul>
+      </div>
+      <div class="dfl-footer-col">
+        <h4><span class="en">Finance</span><span class="ar">المالية</span></h4>
+        <ul>
+          <li><a href="/tools/mortgage-calculator.html"><span class="en">Mortgage Calculator</span><span class="ar">حاسبة التمويل</span></a></li>
+          <li><a href="/tools/zakat-calculator.html"><span class="en">Zakat Calculator</span><span class="ar">حاسبة الزكاة</span></a></li>
+          <li><a href="/tools/savings-goal.html"><span class="en">Savings Goal</span><span class="ar">هدف الادخار</span></a></li>
+          <li><a href="/tools/monthly-budget.html"><span class="en">Monthly Budget</span><span class="ar">الميزانية الشهرية</span></a></li>
+        </ul>
+      </div>
+      <div class="dfl-footer-col">
+        <h4><span class="en">Real Estate</span><span class="ar">العقار</span></h4>
+        <ul>
+          <li><a href="/real-estate.html"><span class="en">Property Hub</span><span class="ar">مركز العقارات</span></a></li>
+          <li><a href="/tools/rental-yield-calculator.html"><span class="en">Rental Yield</span><span class="ar">العائد الإيجاري</span></a></li>
+          <li><a href="/tools/roi-calculator.html"><span class="en">ROI Calculator</span><span class="ar">حاسبة العائد</span></a></li>
+          <li><a href="/cities/dubai/"><span class="en">Dubai</span><span class="ar">دبي</span></a></li>
+        </ul>
+      </div>
+      <div class="dfl-footer-col">
+        <h4><span class="en">Travel &amp; Islamic</span><span class="ar">السفر والإسلامية</span></h4>
+        <ul>
+          <li><a href="/tools/travel-budget.html"><span class="en">Travel Budget</span><span class="ar">ميزانية السفر</span></a></li>
+          <li><a href="/tools/packing-checklist.html"><span class="en">Packing Checklist</span><span class="ar">قائمة الحقيبة</span></a></li>
+          <li><a href="/tools/prayer-times.html"><span class="en">Prayer Times</span><span class="ar">أوقات الصلاة</span></a></li>
+          <li><a href="/tools/qibla.html"><span class="en">Qibla Direction</span><span class="ar">اتجاه القبلة</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="dfl-footer-bottom">
+      <span>© 2026 DOTFORLIFE. <span class="en">All rights reserved.</span><span class="ar">جميع الحقوق محفوظة.</span></span>
+      <span>
+        <a href="/privacy-policy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a> ·
+        <a href="/terms.html"><span class="en">Terms</span><span class="ar">الشروط</span></a> ·
+        <a href="/about.html"><span class="en">About</span><span class="ar">عن المنصة</span></a>
+      </span>
+    </div>
+  </footer>
+  <!-- DFL MOBILE NAV -->
+</article>
+
+</div>
+
+<!-- ═══ UNIFIED FOOTER ══════════════════════════════════════ -->
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-accent" aria-hidden="true"></div>
+  <div class="footer-inner">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <a href="/" class="footer-logo" aria-label="DOTFORLIFE">
+          <img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" width="auto" loading="lazy">
+        </a>
+        <p class="footer-tagline"><span class="en">One calm place for your family's everyday decisions. Free, always.</span><span class="ar">مكان هادئ واحد لقرارات عائلتك اليومية. مجاني دائماً.</span></p>
+        <p class="footer-motto"><span class="en">Life, at ease.</span><span class="ar">الحياة، براحة.</span></p>
+      </div>
+      <div class="footer-links-grid">
+        <div class="footer-col">
+          <h4><span class="en">Life</span><span class="ar">الحياة</span></h4>
+          <ul>
+            <li><a href="/health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
+            <li><a href="/finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li>
+            <li><a href="/real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li>
+            <li><a href="/travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li>
+            <li><a href="/islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4><span class="en">Tools</span><span class="ar">الأدوات</span></h4>
+          <ul>
+            <li><a href="/tools/bmi-calculator.html"><span class="en">BMI Calculator</span><span class="ar">حاسبة BMI</span></a></li>
+            <li><a href="/tools/mortgage-calculator.html"><span class="en">Mortgage</span><span class="ar">التمويل</span></a></li>
+            <li><a href="/tools/zakat-calculator.html"><span class="en">Zakat</span><span class="ar">الزكاة</span></a></li>
+            <li><a href="/tools/water-calculator.html"><span class="en">Hydration</span><span class="ar">الترطيب</span></a></li>
+            <li><a href="/library.html"><span class="en">All Tools</span><span class="ar">كل الأدوات</span></a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4><span class="en">Discover</span><span class="ar">اكتشف</span></h4>
+          <ul>
+            <li><a href="/blog.html"><span class="en">Blog</span><span class="ar">المدونة</span></a></li>
+            <li><a href="/archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a></li>
+            <li><a href="/our-vision.html"><span class="en">Our Vision</span><span class="ar">رؤيتنا</span></a></li>
+            <li><a href="/pregnancy-journey.html"><span class="en">Pregnancy Journey</span><span class="ar">رحلة الحمل</span></a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4><span class="en">Company</span><span class="ar">الشركة</span></h4>
+          <ul>
+            <li><a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a></li>
+            <li><a href="/contact.html"><span class="en">Contact</span><span class="ar">تواصل</span></a></li>
+            <li><a href="/editorial-standards.html"><span class="en">Editorial Standards</span><span class="ar">المعايير التحريرية</span></a></li>
+            <li><a href="/privacy-policy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a></li>
+            <li><a href="/terms.html"><span class="en">Terms</span><span class="ar">الشروط</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 DOTFORLIFE · <span class="en">Free for families, always.</span><span class="ar">مجاني للعائلات، دائماً.</span></span>
+      <div class="footer-bottom-links">
+        <a href="/privacy-policy.html"><span class="en">Privacy</span><span class="ar">الخصوصية</span></a>
+        <a href="/terms.html"><span class="en">Terms</span><span class="ar">الشروط</span></a>
+        <a href="/contact.html"><span class="en">Contact</span><span class="ar">تواصل</span></a>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- ═══ END FOOTER ══════════════════════════════════════ -->
+
+
+<script src="/scripts/global.js?v=20260619e" defer></script>
+</body>
+</html>

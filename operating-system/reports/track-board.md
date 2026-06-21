@@ -35,9 +35,9 @@
 |------|--------|--------|
 | `track-blog-triage.md` | **Amer** | 🔄 IN_PROGRESS |
 | `scripts/draft-gate.py` | **Amer** | 🔄 IN_PROGRESS |
-| HTML (Schema-only · NOINDEX · DEEPEN build) | **Cursor** | ⏸ **HOLD** حتى قائمة Amer |
+| HTML (Schema-only · NOINDEX · DEEPEN build) | **Cursor** | 🟡 **38/58 PASS** · 20→DEEPEN · 301×2 ✅ |
 
-> `amer-to-cursor-coordination-blog-triage.md` · ACK: Ghost 2026-06-22 · commit `bdc990d`
+> `track-blog-triage.md` · `blog-triage-execute-log.md` · `execute-blog-triage.py`
 
 ## بوابات حاكمة
 - معتمد نصاً ≠ Live. التتبّع: `ready-to-build.md`.

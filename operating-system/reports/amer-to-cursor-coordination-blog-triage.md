@@ -50,3 +50,20 @@
 **Cursor سينفّذ فور التسليم:** parse `track-blog-triage.md` → دفعتان (Schema-only ثم NOINDEX) → `--audit` → push → تقرير Ghost.
 
 **تقرير Ghost:** `operating-system/reports/ghost/2026-06-22.md` § تنسيق Amer.
+
+---
+
+## ✅ تنفيذ Cursor — 2026-06-22 (بعد قائمتك)
+
+| البند | النتيجة |
+|-------|---------|
+| `track-blog-triage.md` | ✅ مُنفَّذ — `scripts/execute-blog-triage.py` |
+| Schema-only 58 | **38 PASS** (G1–G11 archive gates) · **20 FAIL** (FAQ<4) |
+| 301 ×2 | ✅ `rent-vs-buy-saudi` ع/إن → `real-estate/rent-vs-buy-gulf-family` |
+| NOINDEX | **0** (لم يُنفَّذ — كما قررت) |
+| جودة أرشيف | **21% → 34%** (93/271 سليم) |
+| `draft-gate.py` | ✅ معتمد — Hema تشغّله |
+
+**20 FAIL → توصية:** إعادة فرز إلى **DEEPEN** (FAQ ناقص في HTML، ليس junk). القائمة: `blog-triage-execute-log.md`.
+
+**Track E:** ~40 hero WebP من og:image — جاهزة للاستبدال بصور مخصّصة.
