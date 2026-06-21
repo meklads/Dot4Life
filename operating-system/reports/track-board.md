@@ -9,7 +9,7 @@
 | id | الموضوعان | owner | state | amer_review | proof |
 |----|-----------|-------|-------|-------------|-------|
 | A-01 | الاستثمار + ميزانية الأسرة | Cursor | **LIVE** 🟢 | BUILD VERIFIED | 4 pages LIVE 2026-06-21 |
-| A-07 | إيجار vs تملّك + Oman ROI | Cursor | LIVE (2p) · ROI ⏸ | BUILD VERIFIED | rent-vs-buy×2 LIVE |
+| A-07 | إيجار vs تملّك + Oman ROI | Cursor | **LIVE** 🟢 | BUILD VERIFIED | rent-vs-buy×2 + oman inject |
 | A-02 | المشي + BMI للنساء | Cursor | **LIVE** 🟢 | auto-gates ✅ | 3 pages |
 | A-03 | الحمل أسبوعياً + نوم الأطفال | Cursor | **LIVE** 🟢 | auto-gates ✅ | 3 pages |
 | A-04 | فحوصات قبل الحمل + أذكار | Cursor | **LIVE** 🟢 | auto-gates ✅ | 4 pages |
@@ -29,9 +29,15 @@
 ## Track C — أدسنس التقني
 - التفاصيل والأدلة: `track-C-adsense-technical.md`.
 - C-F1 ✅ · C-F2 ✅ · C-F4 ✅ · C-F5 ✅ · C-F7 ✅ · C-F3/C-F6 🟡 جزئي · جودة **21%**
-- TECH_BUILD: A-01 **j4 rebuild** (4p) · A-07 rent-vs-buy **j4 rebuild** (2p) · oman ROI **blocked** (calculator shell)
-- **🟢 GREEN:** **28 صفحات LIVE** — FIFO TECH_BUILD 5–16 مكتمل (autonomous)
-- **LIVE gate:** Ghost **ليس** طرفاً في الاعتماد — يراجع بعد النشر فقط
+
+## Track D — حملة blog (2026-06-22)
+| حارة | المالك | الحالة |
+|------|--------|--------|
+| `track-blog-triage.md` | **Amer** | 🔄 IN_PROGRESS |
+| `scripts/draft-gate.py` | **Amer** | 🔄 IN_PROGRESS |
+| HTML (Schema-only · NOINDEX · DEEPEN build) | **Cursor** | ⏸ **HOLD** حتى قائمة Amer |
+
+> `amer-to-cursor-coordination-blog-triage.md` · ACK: Ghost 2026-06-22 · commit `bdc990d`
 
 ## بوابات حاكمة
 - معتمد نصاً ≠ Live. التتبّع: `ready-to-build.md`.
