@@ -10,16 +10,16 @@
 |----|-----------|-------|-------|-------------|-------|
 | A-01 | الاستثمار + ميزانية الأسرة | Cursor | **LIVE** 🟢 | BUILD VERIFIED | 4 pages LIVE 2026-06-21 |
 | A-07 | إيجار vs تملّك + Oman ROI | Cursor | LIVE (2p) · ROI ⏸ | BUILD VERIFIED | rent-vs-buy×2 LIVE |
-| A-02 | المشي + BMI للنساء | Ship | TECH_BUILD queue | approved | drafts/task02/ |
-| A-03 | الحمل أسبوعياً + نوم الأطفال | Ship | TECH_BUILD | approved | drafts/task03/ |
-| A-04 | فحوصات قبل الحمل + أذكار | Ship | TECH_BUILD | approved | drafts/task04/ |
-| A-05 | العمرة مع الأطفال + رأس السنة الهجرية | Ship | TECH_BUILD | approved | drafts/task05/ |
-| A-06 | أسماء الله + الصلاة بالحب | Ship | TECH_BUILD queue | approved | drafts/task06/ |
-| A-08 | تمويل جدة + عائد إيجار الرياض | Ship | TECH_BUILD queue | approved (بعد REVISE) | drafts/task08/ |
+| A-02 | المشي + BMI للنساء | Cursor | **LIVE** 🟢 | auto-gates ✅ | 3 pages |
+| A-03 | الحمل أسبوعياً + نوم الأطفال | Cursor | **LIVE** 🟢 | auto-gates ✅ | 3 pages |
+| A-04 | فحوصات قبل الحمل + أذكار | Cursor | **LIVE** 🟢 | auto-gates ✅ | 4 pages |
+| A-05 | العمرة مع الأطفال + رأس السنة الهجرية | Cursor | **LIVE** 🟢 | auto-gates ✅ | 4 pages |
+| A-06 | أسماء الله + الصلاة بالحب | Cursor | **LIVE** 🟢 | auto-gates ✅ | 4 pages |
+| A-08 | تمويل جدة + عائد إيجار الرياض | Cursor | **LIVE** 🟢 | auto-gates ✅ | 4 pages (+2 EN new) |
 | A-09 | تطوّع صيفي + مخيمات vs منزل | Hema | **REVISE** 🔄 | REVISE | `drafts/task09/_amer-review.md` |
 | A-10…A-59 | — | Ship | QUEUE | hold (after A-09) | drafts/task10/ |
 
-**الحالة:** **6 صفحات LIVE** (2026-06-21 — Ghost «انشر»). A-09 REVISE مفتوح (Hema). FIFO TECH_BUILD 5–16 قادم.
+**الحالة:** **28 صفحة LIVE** (FIFO 1–16 مكتمل، oman ROI ⏸). A-09 REVISE عند هيما. **Autonomous loop** — لا انتظار Ghost.
 
 ## Track B — Live الرفيع (الأولوية)
 - قائمة أسوأ 20: `track-B-thin-live-top20.md` ✅ منشورة.
@@ -30,7 +30,7 @@
 - التفاصيل والأدلة: `track-C-adsense-technical.md`.
 - C-F1 ✅ · C-F2 ✅ (21 hub redirects) · C-F4 ✅ · C-F3/F5/F6/F7 ⏳
 - TECH_BUILD: A-01 **j4 rebuild** (4p) · A-07 rent-vs-buy **j4 rebuild** (2p) · oman ROI **blocked** (calculator shell)
-- **🟢 GREEN:** **6 صفحات LIVE** (2026-06-21) — investment×2 + budget×2 + rent-vs-buy×2
+- **🟢 GREEN:** **28 صفحات LIVE** — FIFO TECH_BUILD 5–16 مكتمل (autonomous)
 - **LIVE gate:** Ghost **ليس** طرفاً في الاعتماد — يراجع بعد النشر فقط
 
 ## بوابات حاكمة

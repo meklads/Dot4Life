@@ -102,6 +102,320 @@ BUILD_MAP = [
         "title_seo_ar": "إيجار أم تملّك للأسرة الخليجية؟",
         "title_seo_en": "Rent vs Buy for Gulf Families",
     },
+    {
+        "id": "A-02-1",
+        "draft_ar": DRAFTS / "task02/daily-walking-benefits.md",
+        "draft_en": DRAFTS / "task02/daily-walking-benefits-en.md",
+        "out_ar": ROOT / "health/daily-walking-benefits.html",
+        "out_en": ROOT / "health/daily-walking-benefits-en.html",
+        "section_ar": "🏥 صحة",
+        "section_en": "🏥 Health",
+        "tool_cta_ar": "/tools/bmi-calculator.html",
+        "tool_cta_en": "/tools/bmi-calculator.html",
+        "tool_label_ar": "حاسبة مؤشر كتلة الجسم",
+        "tool_label_en": "BMI Calculator",
+        "internal_links_ar": [
+            ("/health/bmi-calculator-women.html", "حاسبة BMI للنساء"),
+            ("/health/children-sleep-summer.html", "نوم الأطفال في الصيف"),
+            ("/health.html", "قسم الصحة"),
+        ],
+        "internal_links_en": [
+            ("/health/bmi-calculator-women.html", "BMI Calculator for Women"),
+            ("/health/children-sleep-summer-en.html", "Children's Sleep in Summer"),
+            ("/health.html", "Health Hub"),
+        ],
+        "hero_webp": "/assets/images/hero-daily-walking-benefits.webp",
+        "hero_alt_ar": "عائلة تمشي في ممشى، نشاط يومي صحي في الخليج",
+        "hero_alt_en": "Family walking on a path, daily healthy activity in the Gulf",
+        "title_seo_ar": "فوائد المشي اليومي للعائلة",
+        "title_seo_en": "Daily Walking Benefits for Families",
+    },
+    {
+        "id": "A-02-2",
+        "lang_only": "en",
+        "draft_en": DRAFTS / "task02/bmi-calculator-women.md",
+        "out_en": ROOT / "health/bmi-calculator-women.html",
+        "section_en": "🏥 Health",
+        "tool_cta_en": "/tools/bmi-calculator.html",
+        "tool_label_en": "BMI Calculator",
+        "internal_links_en": [
+            ("/health/daily-walking-benefits-en.html", "Daily Walking Benefits"),
+            ("/tools/body-fat-calculator.html", "Body Fat Calculator"),
+            ("/health.html", "Health Hub"),
+        ],
+        "hero_webp": "/assets/images/hero-bmi-calculator-women.webp",
+        "hero_alt_en": "Bathroom scale and measuring tape, women's health screening",
+        "title_seo_en": "BMI Calculator for Women Guide",
+    },
+    {
+        "id": "A-03-1",
+        "draft_ar": DRAFTS / "task03/children-sleep-summer.md",
+        "draft_en": DRAFTS / "task03/children-sleep-summer-en.md",
+        "out_ar": ROOT / "health/children-sleep-summer.html",
+        "out_en": ROOT / "health/children-sleep-summer-en.html",
+        "section_ar": "🏥 صحة",
+        "section_en": "🏥 Health",
+        "tool_cta_ar": "/tools/water-calculator.html",
+        "tool_cta_en": "/tools/water-calculator.html",
+        "tool_label_ar": "حاسبة شرب الماء",
+        "tool_label_en": "Water Intake Calculator",
+        "internal_links_ar": [
+            ("/health/daily-walking-benefits.html", "فوائد المشي اليومي"),
+            ("/health-pregnancy/preconception-checkups.html", "فحوصات قبل الحمل"),
+            ("/health.html", "قسم الصحة"),
+        ],
+        "internal_links_en": [
+            ("/health/daily-walking-benefits-en.html", "Daily Walking Benefits"),
+            ("/health-pregnancy/preconception-checkups-en.html", "Preconception Checkups"),
+            ("/health.html", "Health Hub"),
+        ],
+        "hero_webp": "/assets/images/hero-children-sleep-summer.webp",
+        "hero_alt_ar": "غرفة نوم أطفال هادئة، روتين نوم صحي في الصيف",
+        "hero_alt_en": "Calm children's bedroom, healthy summer sleep routine",
+        "title_seo_ar": "نوم الأطفال في الإجازة الصيفية",
+        "title_seo_en": "Children's Sleep in Summer Break",
+    },
+    {
+        "id": "A-03-2",
+        "lang_only": "en",
+        "draft_en": DRAFTS / "task03/pregnancy-week-by-week.md",
+        "out_en": ROOT / "health/pregnancy-week-by-week.html",
+        "section_en": "🏥 Health",
+        "tool_cta_en": "/tools/pregnancy-calculator.html",
+        "tool_label_en": "Pregnancy Due Date Calculator",
+        "internal_links_en": [
+            ("/health-pregnancy/preconception-checkups-en.html", "Preconception Checkups"),
+            ("/pregnancy-journey.html", "Pregnancy Journey Hub"),
+            ("/health.html", "Health Hub"),
+        ],
+        "hero_webp": "/assets/images/hero-pregnancy-week-by-week.webp",
+        "hero_alt_en": "Gentle pregnancy journal and calendar on cream desk",
+        "title_seo_en": "Pregnancy Week by Week Guide",
+    },
+    {
+        "id": "A-04-1",
+        "draft_ar": DRAFTS / "task04/preconception-checkups.md",
+        "draft_en": DRAFTS / "task04/preconception-checkups-en.md",
+        "out_ar": ROOT / "health-pregnancy/preconception-checkups.html",
+        "out_en": ROOT / "health-pregnancy/preconception-checkups-en.html",
+        "section_ar": "🤰 صحة الحمل",
+        "section_en": "🤰 Pregnancy Health",
+        "tool_cta_ar": "/tools/pregnancy-calculator.html",
+        "tool_cta_en": "/tools/pregnancy-calculator.html",
+        "tool_label_ar": "حاسبة الحمل",
+        "tool_label_en": "Pregnancy Calculator",
+        "internal_links_ar": [
+            ("/health/pregnancy-week-by-week.html", "الحمل أسبوعاً بأسبوع"),
+            ("/pregnancy-journey.html", "رحلة الحمل"),
+            ("/health.html", "قسم الصحة"),
+        ],
+        "internal_links_en": [
+            ("/health/pregnancy-week-by-week.html", "Pregnancy Week by Week"),
+            ("/pregnancy-journey.html", "Pregnancy Journey"),
+            ("/health.html", "Health Hub"),
+        ],
+        "hero_webp": "/assets/images/hero-preconception-checkups.webp",
+        "hero_alt_ar": "فحوصات طبية قبل الحمل، دليل الأم الخليجية",
+        "hero_alt_en": "Preconception medical checkup guide for mothers",
+        "title_seo_ar": "فحوصات ضرورية قبل الحمل",
+        "title_seo_en": "Essential Tests Before Pregnancy",
+    },
+    {
+        "id": "A-04-2",
+        "draft_ar": DRAFTS / "task04/daily-adhkar-family-guide.md",
+        "draft_en": DRAFTS / "task04/daily-adhkar-family-guide-en.md",
+        "out_ar": ROOT / "islamic-hajj-umrah/daily-adhkar-family-guide.html",
+        "out_en": ROOT / "islamic-hajj-umrah/daily-adhkar-family-guide-en.html",
+        "section_ar": "🕌 إسلامي",
+        "section_en": "🕌 Islamic",
+        "tool_cta_ar": "/islamic.html",
+        "tool_cta_en": "/islamic.html",
+        "tool_label_ar": "قسم الإسلام",
+        "tool_label_en": "Islamic Hub",
+        "internal_links_ar": [
+            ("/islamic-hajj-umrah/teaching-children-allah-names.html", "تعليم أسماء الله للأطفال"),
+            ("/islamic-hajj-umrah/teaching-children-prayer-with-love.html", "تعليم الصلاة بالحب"),
+            ("/islamic.html", "قسم الإسلام"),
+        ],
+        "internal_links_en": [
+            ("/islamic-hajj-umrah/teaching-children-allah-names-en.html", "Allah's Names for Children"),
+            ("/islamic-hajj-umrah/teaching-children-prayer-with-love-en.html", "Teaching Prayer With Love"),
+            ("/islamic.html", "Islamic Hub"),
+        ],
+        "hero_webp": "/assets/images/hero-daily-adhkar-family-guide.webp",
+        "hero_alt_ar": "سبحة ومصحف على سطح دافئ، أذكار صباح ومساء",
+        "hero_alt_en": "Prayer beads and Quran on warm surface, morning adhkar",
+        "title_seo_ar": "أذكار الصباح والمساء للأسرة",
+        "title_seo_en": "Morning and Evening Adhkar Guide",
+    },
+    {
+        "id": "A-05-1",
+        "draft_ar": DRAFTS / "task05/umrah-with-kids.md",
+        "draft_en": DRAFTS / "task05/umrah-with-kids-en.md",
+        "out_ar": ROOT / "islamic-hajj-umrah/umrah-with-kids.html",
+        "out_en": ROOT / "islamic-hajj-umrah/umrah-with-kids-en.html",
+        "section_ar": "🕌 إسلامي",
+        "section_en": "🕌 Islamic",
+        "tool_cta_ar": "/islamic.html",
+        "tool_cta_en": "/islamic.html",
+        "tool_label_ar": "قسم الإسلام",
+        "tool_label_en": "Islamic Hub",
+        "internal_links_ar": [
+            ("/islamic-hajj-umrah/daily-adhkar-family-guide.html", "أذكار الأسرة اليومية"),
+            ("/islamic-hajj-umrah/hijri-new-year-children.html", "رأس السنة الهجرية للأطفال"),
+            ("/islamic.html", "قسم الإسلام"),
+        ],
+        "internal_links_en": [
+            ("/islamic-hajj-umrah/daily-adhkar-family-guide-en.html", "Daily Adhkar Family Guide"),
+            ("/islamic-hajj-umrah/hijri-new-year-children-en.html", "Hijri New Year for Children"),
+            ("/islamic.html", "Islamic Hub"),
+        ],
+        "hero_webp": "/assets/images/hero-umrah-with-kids.webp",
+        "hero_alt_ar": "حقيبة سفر عائلية وسبحة، استعداد للعمرة مع الأطفال",
+        "hero_alt_en": "Family travel bag and prayer beads, Umrah with kids prep",
+        "title_seo_ar": "العمرة مع الأطفال: دليل عملي",
+        "title_seo_en": "Umrah With Kids: Family Guide",
+    },
+    {
+        "id": "A-05-2",
+        "draft_ar": DRAFTS / "task05/hijri-new-year-children.md",
+        "draft_en": DRAFTS / "task05/hijri-new-year-children-en.md",
+        "out_ar": ROOT / "islamic-hajj-umrah/hijri-new-year-children.html",
+        "out_en": ROOT / "islamic-hajj-umrah/hijri-new-year-children-en.html",
+        "section_ar": "🕌 إسلامي",
+        "section_en": "🕌 Islamic",
+        "tool_cta_ar": "/tools/age-calculator.html",
+        "tool_cta_en": "/tools/age-calculator.html",
+        "tool_label_ar": "حاسبة العمر",
+        "tool_label_en": "Age Calculator",
+        "internal_links_ar": [
+            ("/islamic-hajj-umrah/umrah-with-kids.html", "العمرة مع الأطفال"),
+            ("/islamic-hajj-umrah/teaching-children-allah-names.html", "أسماء الله للأطفال"),
+            ("/islamic.html", "قسم الإسلام"),
+        ],
+        "internal_links_en": [
+            ("/islamic-hajj-umrah/umrah-with-kids-en.html", "Umrah With Kids"),
+            ("/islamic-hajj-umrah/teaching-children-allah-names-en.html", "Allah's Names for Children"),
+            ("/islamic.html", "Islamic Hub"),
+        ],
+        "hero_webp": "/assets/images/hero-hijri-new-year-children.webp",
+        "hero_alt_ar": "تقويم هجري وهلال على خشب دافئ، رأس السنة للأطفال",
+        "hero_alt_en": "Hijri calendar and crescent on warm wood, new year for kids",
+        "title_seo_ar": "رأس السنة الهجرية للأطفال",
+        "title_seo_en": "Hijri New Year for Children",
+    },
+    {
+        "id": "A-06-1",
+        "draft_ar": DRAFTS / "task06/teaching-children-allah-names.md",
+        "draft_en": DRAFTS / "task06/teaching-children-allah-names-en.md",
+        "out_ar": ROOT / "islamic-hajj-umrah/teaching-children-allah-names.html",
+        "out_en": ROOT / "islamic-hajj-umrah/teaching-children-allah-names-en.html",
+        "section_ar": "🕌 إسلامي",
+        "section_en": "🕌 Islamic",
+        "tool_cta_ar": "/islamic.html",
+        "tool_cta_en": "/islamic.html",
+        "tool_label_ar": "قسم الإسلام",
+        "tool_label_en": "Islamic Hub",
+        "internal_links_ar": [
+            ("/islamic-hajj-umrah/teaching-children-prayer-with-love.html", "تعليم الصلاة بالحب"),
+            ("/islamic-hajj-umrah/daily-adhkar-family-guide.html", "أذكار الأسرة"),
+            ("/islamic.html", "قسم الإسلام"),
+        ],
+        "internal_links_en": [
+            ("/islamic-hajj-umrah/teaching-children-prayer-with-love-en.html", "Teaching Prayer With Love"),
+            ("/islamic-hajj-umrah/daily-adhkar-family-guide-en.html", "Daily Adhkar Guide"),
+            ("/islamic.html", "Islamic Hub"),
+        ],
+        "hero_webp": "/assets/images/hero-teaching-children-allah-names.webp",
+        "hero_alt_ar": "كتاب أسماء الله الحسنى للأطفال على مكتب دافئ",
+        "hero_alt_en": "Children's book of Allah's names on warm desk",
+        "title_seo_ar": "تعليم أسماء الله للأطفال",
+        "title_seo_en": "Teaching Allah's Names to Children",
+    },
+    {
+        "id": "A-06-2",
+        "draft_ar": DRAFTS / "task06/teaching-children-prayer-with-love.md",
+        "draft_en": DRAFTS / "task06/teaching-children-prayer-with-love-en.md",
+        "out_ar": ROOT / "islamic-hajj-umrah/teaching-children-prayer-with-love.html",
+        "out_en": ROOT / "islamic-hajj-umrah/teaching-children-prayer-with-love-en.html",
+        "section_ar": "🕌 إسلامي",
+        "section_en": "🕌 Islamic",
+        "tool_cta_ar": "/islamic.html",
+        "tool_cta_en": "/islamic.html",
+        "tool_label_ar": "قسم الإسلام",
+        "tool_label_en": "Islamic Hub",
+        "internal_links_ar": [
+            ("/islamic-hajj-umrah/teaching-children-allah-names.html", "أسماء الله للأطفال"),
+            ("/islamic-hajj-umrah/daily-adhkar-family-guide.html", "أذكار الأسرة"),
+            ("/islamic.html", "قسم الإسلام"),
+        ],
+        "internal_links_en": [
+            ("/islamic-hajj-umrah/teaching-children-allah-names-en.html", "Allah's Names for Children"),
+            ("/islamic-hajj-umrah/daily-adhkar-family-guide-en.html", "Daily Adhkar Guide"),
+            ("/islamic.html", "Islamic Hub"),
+        ],
+        "hero_webp": "/assets/images/hero-teaching-children-prayer-with-love.webp",
+        "hero_alt_ar": "سجادة صلاة صغيرة ولعبة هادئة، تعليم الصلاة بالحب",
+        "hero_alt_en": "Small prayer mat and calm toy, teaching prayer with love",
+        "title_seo_ar": "تعليم الصلاة للأطفال بالحب",
+        "title_seo_en": "Teaching Children to Love Prayer",
+    },
+    {
+        "id": "A-08-1",
+        "draft_ar": DRAFTS / "task08/jeddah-mortgage-calculator.md",
+        "draft_en": DRAFTS / "task08/jeddah-mortgage-calculator-en.md",
+        "out_ar": ROOT / "real-estate/jeddah-mortgage-calculator.html",
+        "out_en": ROOT / "real-estate/jeddah-mortgage-calculator-en.html",
+        "section_ar": "🏠 عقار",
+        "section_en": "🏠 Real Estate",
+        "tool_cta_ar": "/tools/mortgage-calculator.html",
+        "tool_cta_en": "/tools/mortgage-calculator.html",
+        "tool_label_ar": "حاسبة الرهن العقاري",
+        "tool_label_en": "Mortgage Calculator",
+        "internal_links_ar": [
+            ("/real-estate/rent-vs-buy-gulf-family.html", "إيجار أم تملّك"),
+            ("/real-estate/riyadh-rental-yield.html", "العائد الإيجاري في الرياض"),
+            ("/real-estate.html", "قسم العقار"),
+        ],
+        "internal_links_en": [
+            ("/real-estate/rent-vs-buy-gulf-family-en.html", "Rent vs Buy Guide"),
+            ("/real-estate/riyadh-rental-yield-en.html", "Riyadh Rental Yield"),
+            ("/real-estate.html", "Real Estate Hub"),
+        ],
+        "hero_webp": "/assets/images/hero-jeddah-mortgage-calculator.webp",
+        "hero_alt_ar": "مفاتيح منزل وحاسبة على مكتب، تمويل عقاري في جدة",
+        "hero_alt_en": "House keys and calculator on desk, Jeddah mortgage",
+        "title_seo_ar": "حاسبة التمويل العقاري في جدة",
+        "title_seo_en": "Jeddah Mortgage Calculator Guide",
+    },
+    {
+        "id": "A-08-2",
+        "draft_ar": DRAFTS / "task08/riyadh-rental-yield.md",
+        "draft_en": DRAFTS / "task08/riyadh-rental-yield-en.md",
+        "out_ar": ROOT / "real-estate/riyadh-rental-yield.html",
+        "out_en": ROOT / "real-estate/riyadh-rental-yield-en.html",
+        "section_ar": "🏠 عقار",
+        "section_en": "🏠 Real Estate",
+        "tool_cta_ar": "/tools/mortgage-calculator.html",
+        "tool_cta_en": "/tools/mortgage-calculator.html",
+        "tool_label_ar": "حاسبة الرهن العقاري",
+        "tool_label_en": "Mortgage Calculator",
+        "internal_links_ar": [
+            ("/real-estate/jeddah-mortgage-calculator.html", "تمويل عقاري في جدة"),
+            ("/real-estate/rent-vs-buy-gulf-family.html", "إيجار أم تملّك"),
+            ("/real-estate.html", "قسم العقار"),
+        ],
+        "internal_links_en": [
+            ("/real-estate/jeddah-mortgage-calculator-en.html", "Jeddah Mortgage Guide"),
+            ("/real-estate/rent-vs-buy-gulf-family-en.html", "Rent vs Buy Guide"),
+            ("/real-estate.html", "Real Estate Hub"),
+        ],
+        "hero_webp": "/assets/images/hero-riyadh-rental-yield.webp",
+        "hero_alt_ar": "مبنى سكني وورقة عائد إيجاري، استثمار عقاري في الرياض",
+        "hero_alt_en": "Residential building and rental yield sheet, Riyadh property",
+        "title_seo_ar": "حاسبة العائد الإيجاري في الرياض",
+        "title_seo_en": "Riyadh Rental Yield Calculator Guide",
+    },
 ]
 
 FAQ_MARKERS = (
@@ -207,10 +521,31 @@ def assert_cf4_gate(content: str, out_path: Path) -> None:
 
 def validate_build_map() -> None:
     for cfg in BUILD_MAP:
+        lo = cfg.get("lang_only")
+        if lo not in (None, "ar", "en"):
+            raise SystemExit(f"Invalid lang_only in {cfg['id']}")
+        if lo != "en" and not cfg.get("draft_ar"):
+            raise SystemExit(f"Missing draft_ar in {cfg['id']}")
+        if lo != "ar" and not cfg.get("draft_en"):
+            raise SystemExit(f"Missing draft_en in {cfg['id']}")
         for key in ("hero_alt_ar", "hero_alt_en"):
+            if key not in cfg:
+                continue
             alt = cfg.get(key, "")
             if EM_DASH in alt:
                 raise SystemExit(f"C-F4 gate failed: em dash in {cfg['id']} {key}")
+
+
+def config_build_targets(cfg: dict) -> list[tuple[str, Path, Path]]:
+    lo = cfg.get("lang_only")
+    if lo == "en":
+        return [("en", cfg["draft_en"], cfg["out_en"])]
+    if lo == "ar":
+        return [("ar", cfg["draft_ar"], cfg["out_ar"])]
+    return [
+        ("ar", cfg["draft_ar"], cfg["out_ar"]),
+        ("en", cfg["draft_en"], cfg["out_en"]),
+    ]
 
 
 def slugify(text: str) -> str:
@@ -389,18 +724,34 @@ def build_page(cfg: dict, draft_path: Path, out_path: Path, lang: str) -> None:
 
     is_en = lang == "en"
     canonical = f"https://dotforlife.com/{out_path.relative_to(ROOT).as_posix()}"
-    href_ar = f"https://dotforlife.com/{cfg['out_ar'].relative_to(ROOT).as_posix()}"
-    href_en = f"https://dotforlife.com/{cfg['out_en'].relative_to(ROOT).as_posix()}"
+    lang_only = cfg.get("lang_only")
+    href_ar = f"https://dotforlife.com/{cfg['out_ar'].relative_to(ROOT).as_posix()}" if cfg.get("out_ar") else canonical
+    href_en = f"https://dotforlife.com/{cfg['out_en'].relative_to(ROOT).as_posix()}" if cfg.get("out_en") else canonical
+    if lang_only:
+        hreflang = f'<link rel="alternate" hreflang="{lang_only}" href="{canonical}">'
+    else:
+        hreflang = (
+            f'<link rel="alternate" hreflang="ar" href="{href_ar}">\n'
+            f'<link rel="alternate" hreflang="en" href="{href_en}">'
+        )
     desc = re.sub(r"\s+", " ", md.split("\n\n")[1 if md.startswith("#") else 0][:155])
-    section = cfg["section_en" if is_en else "section_ar"]
-    lang_link = cfg["out_en" if is_en else "out_ar"].name
-    lang_label = "🌐 English" if not is_en else "🌐 عربي"
+    section = cfg.get("section_en" if is_en else "section_ar", cfg.get("section_en", ""))
+    lang_link = ""
+    lang_label = ""
+    if not lang_only:
+        lang_link = cfg["out_en" if is_en else "out_ar"].name
+        lang_label = "🌐 English" if not is_en else "🌐 عربي"
+    elif lang_only == "en":
+        lang_link = cfg["out_en"].name
+        lang_label = "🌐 English"
+    else:
+        lang_link = cfg["out_ar"].name
+        lang_label = "🌐 عربي"
     links = cfg["internal_links_en" if is_en else "internal_links_ar"]
     tool = cfg["tool_cta_en" if is_en else "tool_cta_ar"]
     tool_label = cfg["tool_label_en" if is_en else "tool_label_ar"]
     read_also = "اقرأ أيضاً:" if not is_en else "Read also:"
     cta_tools = "🧮 أدوات مساعدة:" if not is_en else "🧮 Helpful tools:"
-    share = "شارك:" if not is_en else "Share:"
     footer = "© 2026 دوت فور لايف - للمعرفة والعافية" if not is_en else "© 2026 DOTFORLIFE"
 
     internal_p = " · ".join(f'<a href="{u}">{html.escape(l)}</a>' for u, l in links)
@@ -417,6 +768,9 @@ def build_page(cfg: dict, draft_path: Path, out_path: Path, lang: str) -> None:
             f'<figure class="hero"><img src="{hero_webp}" alt="{html.escape(hero_alt)}" '
             f'width="1200" height="750" loading="eager" fetchpriority="high"></figure>'
         )
+    lang_switch = ""
+    if lang_link:
+        lang_switch = f'<div class="lang-switch"><a href="{html.escape(lang_link)}">{lang_label}</a></div>'
 
     page = f"""<!DOCTYPE html>
 <html lang="{lang}" dir="{'ltr' if is_en else 'rtl'}">
@@ -426,8 +780,7 @@ def build_page(cfg: dict, draft_path: Path, out_path: Path, lang: str) -> None:
 <title>{html.escape(page_title)}</title>
 <meta name="description" content="{html.escape(desc[:155])}">
 <link rel="canonical" href="{canonical}">
-<link rel="alternate" hreflang="ar" href="{href_ar}">
-<link rel="alternate" hreflang="en" href="{href_en}">
+{hreflang}
 {og_image}
 <script src="/scripts/lang-redirect.js?v=20260620"></script>
 {schema}
@@ -459,7 +812,7 @@ td{{padding:10px 12px;border-bottom:1px solid #eee}}
 </head>
 <body>
 <div class="container">
-<div class="lang-switch"><a href="{html.escape(lang_link)}">{lang_label}</a></div>
+{lang_switch}
 <h1>{html.escape(title)}</h1>
 <div class="meta"><span>{html.escape(section)}</span><span>📅 {date.today().strftime('%Y-%m-%d')}</span></div>
 {hero_img}
@@ -488,8 +841,8 @@ def main() -> None:
         if cfg["id"] not in ids and ids != ["all"]:
             continue
         print(f"Building {cfg['id']}…")
-        build_page(cfg, cfg["draft_ar"], cfg["out_ar"], "ar")
-        build_page(cfg, cfg["draft_en"], cfg["out_en"], "en")
+        for lang, draft_path, out_path in config_build_targets(cfg):
+            build_page(cfg, draft_path, out_path, lang)
 
 
 if __name__ == "__main__":

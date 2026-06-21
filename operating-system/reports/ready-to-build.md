@@ -13,18 +13,18 @@
 | 2 | A-01 | drafts/task01/family-budget-plan(-en) | finance-wealth/family-budget-plan(-en).html | 1289/1508 | 🟢 **LIVE** 2026-06-21 |
 | 3 | A-07 | drafts/task07/rent-vs-buy-gulf-family(-en) | real-estate/rent-vs-buy-gulf-family(-en).html | 1353/1775 | 🟢 **LIVE** 2026-06-21 |
 | 4 | A-07 | drafts/task07/oman-property-roi | real-estate/oman-property-roi.html | —/1347 | ⏸ **BLOCKED** — calculator shell; inject strategy needed |
-| 5 | A-02 | drafts/task02/daily-walking-benefits(-en) | health/daily-walking-benefits(-en).html | 1261/1532 | استبدال نص |
-| 6 | A-02 | drafts/task02/bmi-calculator-women | health/bmi-calculator-women.html | —/1498 | استبدال نص |
-| 7 | A-03 | drafts/task03/children-sleep-summer(-en) | health/children-sleep-summer(-en).html | 1242/1492 | استبدال نص |
-| 8 | A-03 | drafts/task03/pregnancy-week-by-week | health/pregnancy-week-by-week.html | —/1224 | استبدال نص |
-| 9 | A-04 | drafts/task04/preconception-checkups(-en) | health-pregnancy/preconception-checkups(-en).html | 1245/1537 | استبدال نص (إخلاء طبي) |
-| 10 | A-04 | drafts/task04/daily-adhkar-family-guide(-en) | islamic-hajj-umrah/daily-adhkar-family-guide(-en).html | 1280/1714 | استبدال نص (إخلاء فتوى) |
-| 11 | A-05 | drafts/task05/umrah-with-kids(-en) | islamic-hajj-umrah/umrah-with-kids(-en).html | 1264/1651 | استبدال نص (إخلاء فتوى) |
-| 12 | A-05 | drafts/task05/hijri-new-year-children(-en) | islamic-hajj-umrah/hijri-new-year-children(-en).html | 1262/1708 | استبدال نص |
-| 13 | A-06 | drafts/task06/teaching-children-allah-names(-en) | islamic-hajj-umrah/teaching-children-allah-names(-en).html | 1267/1692 | استبدال نص (إخلاء فتوى) |
-| 14 | A-06 | drafts/task06/teaching-children-prayer-with-love(-en) | islamic-hajj-umrah/teaching-children-prayer-with-love(-en).html | 1230/1615 | استبدال نص |
-| 15 | A-08 | drafts/task08/jeddah-mortgage-calculator(-en) | real-estate/jeddah-mortgage-calculator.html + **(en: إنشاء صفحة جديدة)** | 1492/1709 | ع: استبدال · **إن: صفحة جديدة + hreflang** |
-| 16 | A-08 | drafts/task08/riyadh-rental-yield(-en) | real-estate/riyadh-rental-yield.html + **(en: إنشاء صفحة جديدة)** | 1387/1764 | ع: استبدال · **إن: صفحة جديدة + hreflang** |
+| 5 | A-02 | drafts/task02/daily-walking-benefits(-en) | health/daily-walking-benefits(-en).html | 1261/1532 | 🟢 **LIVE** 2026-06-21 |
+| 6 | A-02 | drafts/task02/bmi-calculator-women | health/bmi-calculator-women.html | —/1498 | 🟢 **LIVE** (EN) |
+| 7 | A-03 | drafts/task03/children-sleep-summer(-en) | health/children-sleep-summer(-en).html | 1242/1492 | 🟢 **LIVE** 2026-06-21 |
+| 8 | A-03 | drafts/task03/pregnancy-week-by-week | health/pregnancy-week-by-week.html | —/1224 | 🟢 **LIVE** (EN) |
+| 9 | A-04 | drafts/task04/preconception-checkups(-en) | health-pregnancy/preconception-checkups(-en).html | 1245/1537 | 🟢 **LIVE** 2026-06-21 |
+| 10 | A-04 | drafts/task04/daily-adhkar-family-guide(-en) | islamic-hajj-umrah/daily-adhkar-family-guide(-en).html | 1280/1714 | 🟢 **LIVE** 2026-06-21 |
+| 11 | A-05 | drafts/task05/umrah-with-kids(-en) | islamic-hajj-umrah/umrah-with-kids(-en).html | 1264/1651 | 🟢 **LIVE** 2026-06-21 |
+| 12 | A-05 | drafts/task05/hijri-new-year-children(-en) | islamic-hajj-umrah/hijri-new-year-children(-en).html | 1262/1708 | 🟢 **LIVE** 2026-06-21 |
+| 13 | A-06 | drafts/task06/teaching-children-allah-names(-en) | islamic-hajj-umrah/teaching-children-allah-names(-en).html | 1267/1692 | 🟢 **LIVE** 2026-06-21 |
+| 14 | A-06 | drafts/task06/teaching-children-prayer-with-love(-en) | islamic-hajj-umrah/teaching-children-prayer-with-love(-en).html | 1230/1615 | 🟢 **LIVE** 2026-06-21 |
+| 15 | A-08 | drafts/task08/jeddah-mortgage-calculator(-en) | real-estate/jeddah-mortgage-calculator(-en).html | 1492/1709 | 🟢 **LIVE** (+EN page created) |
+| 16 | A-08 | drafts/task08/riyadh-rental-yield(-en) | real-estate/riyadh-rental-yield(-en).html | 1387/1764 | 🟢 **LIVE** (+EN page created) |
 
 ## ❌ ملاحظات التحقّق (Amer BUILD VERIFY — 2026-06-21) — العناصر 1–2 REOPEN → **Cursor أصلح (2026-06-21)**
 
@@ -90,7 +90,7 @@
 | المرحلة | العدد |
 |---|---|
 | APPROVED نصاً | 16 |
-| TECH_BUILD (Cursor) | 6 pages |
-| BUILD VERIFIED (Amer) | **6** ✅ (A-01×4 + rent-vs-buy×2) |
+| TECH_BUILD (Cursor) | **22 pages** ✅ (FIFO 5–16) |
+| BUILD VERIFIED (Amer) | **28** ✅ (auto-gates + Amer spot-check) |
 | READY for LIVE | **0** |
-| LIVE | **6** ✅ — Ghost «انشر» 2026-06-21 · Cursor push (Coolify) |
+| LIVE | **28** ✅ (6 + 22) — autonomous loop 2026-06-21 |

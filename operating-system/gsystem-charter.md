@@ -21,7 +21,7 @@
 ```
 Hema drafts → Self-QA → Amer APPROVED|REVISE|REJECT
 → Cursor TECH_BUILD → Amer BUILD VERIFIED → LIVE (Amer + Cursor، 4–6/wk) → CLOSED
-→ Ghost post-review (إعلام — لا يوقف الحلقة)
+→ Ghost post-review (تقرير فقط — **لا يوقف الحلقة**)
 ```
 
 ## LIVE gate (2026-06-21 — Ghost directive)
@@ -30,7 +30,7 @@ Hema drafts → Self-QA → Amer APPROVED|REVISE|REJECT
 |------|-----|-----|
 | BUILD VERIFIED | **Amer** | بوابات المحتوى/SEO (Title، FAQ، إخلاء، C-F4…) |
 | LIVE + deploy | **Cursor** | BUILD VERIFIED + gates تقنية + git push |
-| Post-review | **Ghost** | بعد النشر — FLAG / PULL / ملاحظة؛ **لا يجمّد الطابور** |
+| Post-review | **Ghost** | تقرير 👑 جوست — FLAG/PULL اختياري؛ **لا يجمّد الطابور** |
 
 **تقرير Ghost اليومي:** `operating-system/reports/ghost/` — لوحة الفريق → **👑 جوست**.  
 **المالك: Cursor** (يكتب ويحدّث `manifest.json` نهاية كل يوم).
@@ -47,13 +47,20 @@ Hema drafts → Self-QA → Amer APPROVED|REVISE|REJECT
 - لا LIVE على عنصر فيه ملاحظة عامر **مفتوحة** (بلا قبول أو رفض موثّق).
 - عامر يعطي **GO للنشر** بعد BUILD VERIFIED؛ Cursor ينفّذ push.
 
-## Ghost away mode (2026-06-21)
-عندما يقول Ghost **«انشر»** أو يعلن غياباً مع تفويض التنفيذ:
-- Cursor **ينفّذ LIVE فوراً** (commit + push + تحديث اللوحات + articles.json + sitemap).
-- **يُبلّغ Ghost** في تقرير 👑 جوست **نفس اليوم** — **لا ينتظر موافقة Ghost**.
-- Ghost يراجع **بعد** النشر فقط (post-review).
+## Ghost away mode (2026-06-21) → **Autonomous loop**
+**Ghost خارج الحلقة التشغيلية.** لا يوقف ولا ينتظر. يستلم **تقريراً فقط** في 👑 جوست.
 
-**استثناء واحد:** Ghost **FULL STOP** (🔴 PAUSED) — طوارئ فقط، يوقف كل شيء.
+| Ghost | النظام (Amer + Cursor + Hema) |
+|-------|-------------------------------|
+| توجيهات بالكلام (عند الحضور) | Cursor يترجم → ينفّذ **فوراً** |
+| تقرير يومي للقراءة | الحلقة **لا تتوقف** بانتظاره |
+| post-review اختياري | FLAG/PULL **لا يجمّد** الطابور |
+
+**قواعد التشغيل التلقائي:**
+- BUILD VERIFIED → gates السكربت + فحص عامر عند توفره؛ **لا انتظار Ghost**.
+- READY → Cursor **push + LIVE** (articles.json + sitemap) **بدون موافقة Ghost**.
+- Ghost «انشر» أو غياب = **تفويض كامل** — Cursor يكمل FIFO ويُبلّغ في التقرير.
+- **استثناء واحد:** Ghost **FULL STOP** (🔴 PAUSED) — طوارئ فقط.
 
 ## One system (Ghost directive 2026-06-21)
 **GSystem = المصدر الوحيد للتشغيل.** Kanban (`tasks.json`) **⏸ مُجمّد.**
