@@ -62,6 +62,18 @@ Hema drafts → Self-QA → Amer APPROVED|REVISE|REJECT
 - Ghost «انشر» أو غياب = **تفويض كامل** — Cursor يكمل FIFO ويُبلّغ في التقرير.
 - **استثناء واحد:** Ghost **FULL STOP** (🔴 PAUSED) — طوارئ فقط.
 
+## Deploy rule — Ghost directive (إلزامي)
+**كل تغيير = commit + push فوراً.** لا «إصلاح محلي» ولا «بعد refresh».
+
+| ❌ ممنوع | ✅ إلزامي |
+|---------|---------|
+| تعديل ملف وتركه uncommitted | **commit + `git push origin main` في نفس الجلسة** |
+| قول «تم الإصلاح» بدون push | ذكر **commit hash** في تقرير 👑 جوست |
+| انتظار موافقة Ghost للرفع | push مباشرة — Coolify يبني تلقائياً |
+
+- **UI / board / charter / HTML / CSS / JS / reports** — الكل يُرفع.
+- Ghost **لا يعمل redeploy يدوي** ظناً أن Cursor رفع — Cursor **يلتزم بالرفع دائماً**.
+
 ## One system (Ghost directive 2026-06-21)
 **GSystem = المصدر الوحيد للتشغيل.** Kanban (`tasks.json`) **⏸ مُجمّد.**
 
