@@ -87,14 +87,7 @@
   .handoff-head .sub{font-size:.74rem;color:var(--muted);font-weight:700;line-height:1.6}
   .handoff-board{display:flex;gap:12px;overflow-x:auto;padding-bottom:1rem;align-items:flex-start}
   .handoff-col{flex:0 0 min(260px,78vw);background:#e4ebe8;border-radius:14px;padding:.6rem;min-height:200px;max-height:72vh;overflow-y:auto}
-  .handoff-col.col-hema{flex:1 1 min(920px,100%);min-width:min(780px,96vw);max-width:none}
-  .handoff-col.col-hema .hcard-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;align-items:stretch}
-  .handoff-col.col-hema .hcard-grid .hcard{margin-bottom:0;height:100%}
-  .handoff-col.col-hema .hcard .hlbl{flex:0 0 3.4rem;font-size:.7rem}
-  @media (max-width:900px){
-    .handoff-col.col-hema{min-width:min(260px,96vw)}
-    .handoff-col.col-hema .hcard-grid{grid-template-columns:1fr}
-  }
+  .handoff-col.col-cursor2{flex:0 0 min(240px,72vw);background:#e8eaf6}
   .handoff-col h2{font-size:.82rem;font-weight:800;padding:.35rem .45rem .5rem;display:flex;justify-content:space-between;align-items:flex-start;gap:6px;line-height:1.4}
   .handoff-col h2 small{display:block;font-size:.65rem;font-weight:700;color:var(--muted);margin-top:2px}
   .handoff-col h2 .count{background:#cfdbd6;border-radius:999px;padding:0 .45rem;font-size:.7rem;flex-shrink:0}
@@ -140,7 +133,7 @@
     <div id="view-handoff" class="view-panel">
       <div class="handoff-head">
         <h1>لوحة التسليم — المرحلة 1</h1>
-        <div class="sub">Hema = وكيل واحد (سكيلز: عمر · Moni · عامر). Cursor = بناء. جوست = مخزون. انقل لـ «انتهى من عندي».</div>
+        <div class="sub">Hema = سكيلز (عمر·Moni·عامر). Cursor = بناء. كورسر ٢ = LIVE منتظر صور. اسحب يميناً لرؤية كل الأعمدة.</div>
       </div>
       <div class="handoff-board" id="handoffBoard"><div class="loading">جارٍ التحميل…</div></div>
       <div class="docnote">المصدر: <code>operating-system/handoff-tickets.json</code> · السحب يحفظ على جهازك · Cursor يثبّت في Git</div>
@@ -347,10 +340,8 @@ async function renderHandoff(){
   const cols=HANDOFF.columns||[];
   el.innerHTML=cols.map(col=>{
     const list=cards.filter(c=>c.col===col.id);
-    const colCls='handoff-col'+(col.id==='hema'?' col-hema':'');
-    const body=col.id==='hema'
-      ?`<div class="hcard-grid">${list.map(hcardHTML).join('')}</div>`
-      :list.map(hcardHTML).join('');
+    const colCls='handoff-col'+(col.id==='cursor2'?' col-cursor2':'');
+    const body=list.map(hcardHTML).join('');
     return `<div class="${colCls}" data-col="${col.id}" style="border-top:4px solid ${col.color||'#054241'}"><h2><span>${col.title}<small>${col.subtitle||''}</small></span><span class="count">${list.length}</span></h2>${body}</div>`}).join('');
   wireHandoff(cards,cols);
 }

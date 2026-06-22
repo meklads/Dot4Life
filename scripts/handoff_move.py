@@ -24,6 +24,10 @@ ALIASES = {
     "moni": "hema",
     "hema": "hema",
     "cursor": "cursor",
+    "cursor2": "cursor2",
+    "كورسر2": "cursor2",
+    "كورسر ٢": "cursor2",
+    "wait": "cursor2",
     "منتهي": "done",
     "done": "done",
     "تم": "done",
@@ -45,6 +49,9 @@ def norm_id(raw: str) -> str:
     m = re.match(r"^T-?(\d+)$", raw, re.I)
     if m:
         return f"T-{int(m.group(1)):02d}"
+    m = re.match(r"^W-?(\d+)$", raw, re.I)
+    if m:
+        return f"W-{int(m.group(1)):02d}"
     return raw
 
 

@@ -15,6 +15,8 @@ WEB_OUT = ROOT / "system/gsystem-data/handoff-tickets.json"
 STAGE_LABEL = {
     "backlog": "في الانتظار",
     "waiting": "انتظار الفريق",
+    "ready": "جاهز للبناء",
+    "live_no_hero": "LIVE · بلا hero",
     "prompt": "برومبت",
     "generate": "توليد",
     "approve": "اعتماد WebP",
@@ -28,6 +30,7 @@ ASSIGNEE = {
     "ghost": "جوست",
     "hema": "Hema",
     "cursor": "Cursor",
+    "cursor2": "كورسر ٢",
     "member_done": "—",
     "done": "—",
 }
@@ -86,9 +89,9 @@ HEMA_TASKS = {
 }
 
 CURSOR_TASKS = {
-    "C-01": "ابدأ لما H-07..H-09 في «انتهى من عندي»: approved → HTML → push LIVE → ثم «انتهى من عندي»",
-    "C-02": "ابدأ لما H-10..H-12 في «انتهى من عندي»: approved → HTML → push LIVE → ثم «انتهى من عندي»",
-    "C-03": "ابدأ لما T-02..T-04 في «انتهى من عندي»: دمج مسودات → build → push LIVE → ثم «انتهى من عندي»",
+    "C-01": "⛔ موقوف — QA رفض placeholders H-07..H-09 — بانتظار Higgsfield",
+    "C-02": "⛔ موقوف — QA رفض placeholders H-10..H-12 — بانتظار Higgsfield",
+    "C-03": "T-02..T-04 جاهزة — دمج مسودات → build → push LIVE → «انتهى من عندي»",
     "C-04": "BUILD Track B thin (4 URLs معتمدة) → Schema → push → «انتهى من عندي»",
     "C-05": "C-F3 Schema دفعة 1 (20 blog) → verify → «انتهى من عندي»",
     "C-06": "C-F3 Schema دفعة 2 (20 blog) → verify → «انتهى من عندي»",
@@ -111,12 +114,25 @@ CURSOR_COMMANDS = {
     "C-10": "C-10: quality audit CSV + AdSense readiness % → Ghost report",
 }
 
+CURSOR2_TASKS = {
+    "W-01": "LIVE — بانتظار hero WebP · لا يوقف Cursor الرئيسي",
+    "W-02": "LIVE — بانتظار hero WebP · لا يوقف Cursor الرئيسي",
+    "W-03": "LIVE — بانتظار hero WebP · لا يوقف Cursor الرئيسي",
+}
+
+CURSOR2_COMMANDS = {
+    "W-01": "W-01: hero hijri-new-year-children — Omar/Amer أو ingest صور/",
+    "W-02": "W-02: hero teaching-children-allah-names — Omar/Amer أو ingest صور/",
+    "W-03": "W-03: hero teaching-children-prayer-with-love — Omar/Amer أو ingest صور/",
+}
+
 GHOST_POOL = {
     "omar": "Hema · سكيل عمر",
     "amer": "Hema · سكيل عامر",
     "hema": "Hema · سكيل Moni",
     "moni": "Hema · سكيل Moni",
     "cursor": "Cursor · بناء",
+    "wait_images": "كورسر ٢ · بانتظار صور",
 }
 
 
@@ -171,6 +187,8 @@ def task_for(card: dict) -> str:
         return HEMA_TASKS.get(cid, "DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي»")
     if col == "cursor":
         return CURSOR_TASKS.get(cid, "بناء ونشر — ثم «انتهى من عندي»")
+    if col == "cursor2":
+        return CURSOR2_TASKS.get(cid, "LIVE — بانتظار hero WebP فقط")
     return card.get("task", "")
 
 
@@ -190,6 +208,8 @@ def enrich_card(card: dict) -> dict:
         card["assignee"] = lbl + (" (انتهى)" if card.get("col") == "member_done" else "")
     elif card.get("col") == "ghost" and card.get("pool_for"):
         card["assignee"] = GHOST_POOL.get(card["pool_for"], "جوست")
+    elif card.get("col") == "cursor2":
+        card["assignee"] = ASSIGNEE["cursor2"]
     else:
         card["assignee"] = card.get("owner") or ASSIGNEE.get(card.get("col", "ghost"), "—")
     card["task"] = task_for(card)
@@ -227,6 +247,8 @@ def command_for(card: dict, col: str) -> str:
         return card.get("command") or f"{cid}: أكمل المسودة — {slug}"
     if col == "cursor":
         return CURSOR_COMMANDS.get(cid, f"{cid}: approved جاهز — Autopilot يبني — {slug}")
+    if col == "cursor2":
+        return CURSOR2_COMMANDS.get(cid, f"{cid}: hero WebP — {slug}")
     return card.get("command", "")
 
 
@@ -242,7 +264,9 @@ def advance_stage(card: dict, col: str, prev_col: str) -> str:
             return "generate"
         return card.get("stage", "revise")
     if col == "cursor":
-        return "build" if prev_col == "cursor" else card.get("stage", "waiting")
+        return "build" if prev_col == "cursor" else card.get("stage", "ready")
+    if col == "cursor2":
+        return card.get("stage", "live_no_hero")
     if col == "member_done":
         return "member_complete"
     if col == "done":
@@ -339,7 +363,7 @@ def render_board_md(data: dict) -> str:
         "2. يشتغل على راحته.\n"
         "3. لما يخلص ينقل التذكرة لـ **انتهى من عندي**.\n"
         "4. جوست يقول «ابدؤوا» أو «وزّع 3 لـ عمر» من المخزون.\n"
-        "5. **Cursor** يبني بعد الفريق — C-F3/C-F6/Track B للجودة وAdSense.\n"
+        "5. **Cursor** = بناء فقط (C-01..C-03 جاهزة). **كورسر ٢** = LIVE منتظر صور — لا يوقف البناء.\n"
         "6. بعد 10 → دفعة جديدة 10 حسب أولوية المنصة.\n"
     )
     return "".join(parts)

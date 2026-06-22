@@ -3,7 +3,7 @@
   "phase": 1,
   "batch_size": 10,
   "backlog_per_pool": 7,
-  "rules": "Hema (Claude Ship) = وكيل واحد · سكيلز: عمر · Moni · عامر. عمود Hema واحد. Cursor = بناء. جوست = مخزون.",
+  "rules": "Hema = سكيلز (عمر·Moni·عامر). Cursor = بناء. كورسر ٢ = LIVE منتظر صور فقط (لا يوقف البناء). جوست = مخزون.",
   "columns": [
     {
       "id": "ghost",
@@ -20,8 +20,14 @@
     {
       "id": "cursor",
       "title": "Cursor",
-      "subtitle": "3 تذاكر — بناء ونشر",
+      "subtitle": "بناء ونشر — لا ينتظر صور",
       "color": "#34495e"
+    },
+    {
+      "id": "cursor2",
+      "title": "كورسر ٢",
+      "subtitle": "LIVE · منتظر صور فقط",
+      "color": "#5c6bc0"
     },
     {
       "id": "member_done",
@@ -165,7 +171,7 @@
         "H-09"
       ],
       "assignee": "Cursor",
-      "task": "ابدأ لما H-07..H-09 في «انتهى من عندي»: approved → HTML → push LIVE → ثم «انتهى من عندي»",
+      "task": "⛔ موقوف — QA رفض placeholders H-07..H-09 — بانتظار Higgsfield",
       "command": "C-01: Autopilot — H-07,H-08,H-09 approved → HTML → git push"
     },
     {
@@ -182,7 +188,7 @@
         "H-12"
       ],
       "assignee": "Cursor",
-      "task": "ابدأ لما H-10..H-12 في «انتهى من عندي»: approved → HTML → push LIVE → ثم «انتهى من عندي»",
+      "task": "⛔ موقوف — QA رفض placeholders H-10..H-12 — بانتظار Higgsfield",
       "command": "C-02: Autopilot — H-10,H-11,H-12 approved → HTML → git push"
     },
     {
@@ -190,7 +196,7 @@
       "slug": "deploy-hema-text",
       "kind": "build",
       "col": "cursor",
-      "stage": "waiting",
+      "stage": "ready",
       "owner": "Cursor",
       "article": "نشر نص Hema — T-02 → T-04",
       "depends_on": [
@@ -199,53 +205,47 @@
         "T-04"
       ],
       "assignee": "Cursor",
-      "task": "ابدأ لما T-02..T-04 في «انتهى من عندي»: دمج مسودات → build → push LIVE → ثم «انتهى من عندي»",
+      "task": "T-02..T-04 جاهزة — دمج مسودات → build → push LIVE → «انتهى من عندي»",
       "command": "C-03: دمج T-02,T-03,T-04 → build → git push"
     },
     {
-      "id": "H-13",
+      "id": "W-01",
       "slug": "hijri-new-year-children",
-      "kind": "image",
-      "col": "ghost",
-      "stage": "backlog",
-      "batch": 2,
-      "pool_for": "omar",
-      "priority": 1,
-      "owner": "جوست",
+      "kind": "wait_images",
+      "col": "cursor2",
+      "stage": "live_no_hero",
+      "owner": "Cursor",
       "article": "رأس السنة الهجرية والأطفال",
-      "reason": "C-F6 hero · A-05 LIVE",
-      "assignee": "Hema · سكيل عمر",
-      "task": "مخزون جوست — Hema · سكيل عمر · C-F6 hero · A-05 LIVE"
+      "reason": "A-05 LIVE · C-F6 hero",
+      "assignee": "كورسر ٢",
+      "task": "LIVE — بانتظار hero WebP · لا يوقف Cursor الرئيسي",
+      "command": "W-01: hero hijri-new-year-children — Omar/Amer أو ingest صور/"
     },
     {
-      "id": "H-14",
+      "id": "W-02",
       "slug": "teaching-children-allah-names",
-      "kind": "image",
-      "col": "ghost",
-      "stage": "backlog",
-      "batch": 2,
-      "pool_for": "omar",
-      "priority": 2,
-      "owner": "جوست",
+      "kind": "wait_images",
+      "col": "cursor2",
+      "stage": "live_no_hero",
+      "owner": "Cursor",
       "article": "تعليم أسماء الله للأطفال",
-      "reason": "C-F6 hero · A-06 LIVE",
-      "assignee": "Hema · سكيل عمر",
-      "task": "مخزون جوست — Hema · سكيل عمر · C-F6 hero · A-06 LIVE"
+      "reason": "A-06 LIVE · C-F6 hero",
+      "assignee": "كورسر ٢",
+      "task": "LIVE — بانتظار hero WebP · لا يوقف Cursor الرئيسي",
+      "command": "W-02: hero teaching-children-allah-names — Omar/Amer أو ingest صور/"
     },
     {
-      "id": "H-15",
+      "id": "W-03",
       "slug": "teaching-children-prayer-with-love",
-      "kind": "image",
-      "col": "ghost",
-      "stage": "backlog",
-      "batch": 2,
-      "pool_for": "omar",
-      "priority": 3,
-      "owner": "جوست",
+      "kind": "wait_images",
+      "col": "cursor2",
+      "stage": "live_no_hero",
+      "owner": "Cursor",
       "article": "تعليم الصلاة بالحب",
-      "reason": "C-F6 hero · A-06 LIVE",
-      "assignee": "Hema · سكيل عمر",
-      "task": "مخزون جوست — Hema · سكيل عمر · C-F6 hero · A-06 LIVE"
+      "reason": "A-06 LIVE · C-F6 hero",
+      "assignee": "كورسر ٢",
+      "task": "LIVE — بانتظار hero WebP · لا يوقف Cursor الرئيسي",
+      "command": "W-03: hero teaching-children-prayer-with-love — Omar/Amer أو ingest صور/"
     },
     {
       "id": "H-16",

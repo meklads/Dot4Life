@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Copy existing hero WebP → approved/ and mark manifest approved (reuse site assets)."""
+"""Copy existing hero WebP → approved/ and mark manifest approved (reuse site assets).
+
+⚠️ QA 2026-06-23: Do NOT run blindly — verify each file matches omar-image-table prompt
+(still-life, 1200×750, on-brand). Placeholders were falsely approved for H-07→H-12.
+"""
 from __future__ import annotations
 
 import json
