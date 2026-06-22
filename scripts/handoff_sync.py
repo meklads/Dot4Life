@@ -26,10 +26,9 @@ STAGE_LABEL = {
 ASSIGNEE = {
     "ghost": "جوست",
     "omar": "عمر",
-    "claude": "كلود",
+    "amer": "عامر",
     "hema": "Hema",
     "cursor": "Cursor",
-    "amer": "عامر",
     "member_done": "—",
     "done": "—",
 }
@@ -74,14 +73,12 @@ def task_for(card: dict) -> str:
         return "احتياط — دفعة قادمة"
     if col == "omar":
         return "جهّز برومبت الصورة وضعه pending — ثم انقلها لـ «انتهى من عندي»"
-    if col == "claude":
+    if col == "amer":
         return "ولّد الصورة WebP 1200×750 (تحقق من برومبت عمر) — ثم «انتهى من عندي»"
     if col == "hema":
         return HEMA_TASKS.get(cid, "أكمل المطلوب — ثم «انتهى من عندي»")
     if col == "cursor":
         return "المرحلة 2 — Autopilot يبني بعد approved"
-    if col == "amer":
-        return "المرحلة 2 — BUILD VERIFY"
     return card.get("task", "")
 
 
@@ -116,17 +113,15 @@ def save(data: dict) -> None:
 def command_for(card: dict, col: str) -> str:
     cid, slug = card["id"], card.get("slug", "")
     if col == "omar":
-        if card.get("stage") == "approve" or card.get("_prev_col") == "claude":
+        if card.get("stage") == "approve" or card.get("_prev_col") == "amer":
             return f"{cid}: راجع WebP → approved في الفهرس + approved/ — {slug}"
         return card.get("command") or f"{cid}: جهّز برومبت + pending في الفهرس — {slug}"
-    if col == "claude":
+    if col == "amer":
         return f"{cid}: ولّد في Higgsfield → WebP 1200×750 → سلّم لعمر: hero-{slug}.webp"
     if col == "hema":
         return card.get("command") or f"{cid}: أكمل المسودة — {slug}"
     if col == "cursor":
         return f"{cid}: approved جاهز — Autopilot يبني؛ راقب team-board — {slug}"
-    if col == "amer":
-        return f"{cid}: BUILD VERIFY — hero + alt + G5 — {slug}"
     return card.get("command", "")
 
 
@@ -134,15 +129,13 @@ def advance_stage(card: dict, col: str, prev_col: str) -> str:
     if col == "ghost":
         return "backlog"
     if col == "omar":
-        return "approve" if prev_col == "claude" else "prompt"
-    if col == "claude":
+        return "approve" if prev_col == "amer" else "prompt"
+    if col == "amer":
         return "generate"
     if col == "hema":
         return card.get("stage", "revise")
     if col == "cursor":
         return "build"
-    if col == "amer":
-        return "verify"
     if col == "member_done":
         return "member_complete"
     if col == "done":
