@@ -28,20 +28,24 @@
 
 ## Track C — أدسنس التقني
 - التفاصيل والأدلة: `track-C-adsense-technical.md`.
-- C-F1 ✅ · C-F2 ✅ · C-F4 ✅ · C-F5 ✅ · C-F7 ✅ · C-F3/C-F6 🟡 جزئي · جودة **21%**
+- C-F1 ✅ · C-F2 ✅ · C-F4 ✅ · C-F5 ✅ · C-F7 ✅ · C-F3/C-F6 🟡 جزئي · جودة **34%** (92/271)
 
 ## Track D — حملة blog (2026-06-22)
 | حارة | المالك | الحالة |
 |------|--------|--------|
-| `track-blog-triage.md` | **Amer** | 🔄 IN_PROGRESS |
-| `scripts/draft-gate.py` | **Amer** | 🔄 IN_PROGRESS |
-| HTML (Schema-only · NOINDEX · DEEPEN build) | **Cursor** | 🟡 **43/58 PASS** · 15→DEEPEN · 301×2 ✅ |
+| `track-blog-triage.md` | **Amer** | ✅ Schema-only منفّذ |
+| `scripts/draft-gate.py` | **Amer** | ✅ معتمد |
+| HTML (Schema-only · 301) | **Cursor** | 🟢 **43/58 PASS** · 15→DEEPEN |
 
-> `track-blog-triage.md` · `blog-triage-execute-log.md` · Track E: `ghost/images-2026-06-22-track-e.md`
+## Track E — Image Module (2026-06-22) 🟢 LIVE
+| حارة | المالك | الحالة |
+|------|--------|--------|
+| `assets/images/approved/` + `image-manifest.json` | **عمر** | 🟢 **مُفعَّل** (جوست) |
+| `scripts/image_manifest.py` + G5 fail-closed | **Cursor** | ✅ `3252bb1` |
+| دفعة الإنتاج | **عمر** | 📋 `omar-image-production.md` (49 slug) |
+| BUILD VERIFY | **Amer** | ينتظر أول دفعة معتمدة |
 
-## Track E — صور (2026-06-22)
-- **62** hero WebP · **43** blog triage PASS تحتاج مراجعة Ghost
-- التقرير: `ghost/images-2026-06-22-track-e.md`
+> قائمة حية: `python3 scripts/list-image-pending.py`
 
 ## بوابات حاكمة
 - معتمد نصاً ≠ Live. التتبّع: `ready-to-build.md`.

@@ -108,7 +108,7 @@ Hema drafts → Self-QA → Amer APPROVED|REVISE|REJECT
 | G1 | em-dash = 0 |
 | G2 | مسوّدة ≥1200 كلمة (نثر المسوّدة، لا القالب) |
 | G3–G4 | Article + FAQPage ≥4Q |
-| G5 | WebP hero + alt + og:image |
+| G5 | WebP hero + alt + og:image — **manifest `approved`** على TECH_BUILD؛ grandfather على `--audit` |
 | G6 | Title ≤60 |
 | G7 | Meta ≤155 (بعد decode) |
 | G8 | hreflang (استثناء EN-only) |
@@ -119,17 +119,19 @@ Hema drafts → Self-QA → Amer APPROVED|REVISE|REJECT
 
 **Audit LIVE:** `python3 scripts/build-from-approved-draft.py --audit` — لا rebuild إلا FAIL.
 
-## Image loop (Ghost directive 2026-06-21)
+## Image loop (Ghost directive 2026-06-22 — **Image Module**)
 | خطوة | من | ماذا |
 |------|-----|------|
-| اختيار | **Cursor** | Pexels / Unsplash / Pixabay — معايير D4L (still-life، احتشام) |
-| حفظ | **Cursor** | `assets/images/hero-<slug>.webp` |
-| تقرير | **Cursor** | `reports/ghost/images-YYYY-MM-DD.md` — جدول: **اسم المقالة · برومبت صورتين · تاريخ · اسم/مسار الملف** |
-| مراجعة | **Ghost** | نهاية الأسبوع — ما لا يعجبك |
-| استبدال | **Ghost** | Ideogram من البرومبت → **نفس اسم الملف** في `assets/images/` |
+| اختيار + إجازة بصرية | **عمر** | WebP في `assets/images/approved/` + صف في `image-manifest.json` |
+| `visual_director` | **عمر** | `approved` \| `rejected` \| `pending` — فقط approved يُبنى |
+| استهلاك الفهرس | **Cursor** | `scripts/image_manifest.py` · G5 fail-closed على TECH_BUILD |
+| grandfather | **Cursor** | `--audit` LIVE يمرّ placeholders حتى يعتمد عمر |
+| قائمة الانتظار | **Cursor** | `scripts/list-image-pending.py` · `omar-image-production.md` |
+| BUILD VERIFY | **Amer** | صفحة مكتملة = صورة معتمدة من الفهرس |
 
-- **لا توقف الحلقة** بانتظار موافقة Ghost على الصور — تُراجع لاحقاً.
-- عمر/Ideogram Kanban: اختياري؛ المصدر الأساسي = تقرير Cursor + استبدال Ghost.
+- **لا صورة معتمدة = لا TECH_BUILD جديد** (`BLOCKED_IMAGE`).
+- Cursor **لا يختار** صوراً ولا يحمّل og:image كـ fallback.
+- تقارير Track E السابقة = مرجع مراجعة؛ المصدر الرسمي = **الفهرس**.
 
 
 ## Modes
