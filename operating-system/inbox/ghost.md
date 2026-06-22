@@ -1,6 +1,4 @@
-# 📬 جوست — ملخص · 2026-06-22 15:32
+# 📬 جوست — ملخص
 
-- صور معتمدة في الفهرس: **6**
-- DEEPEN (قصير): **174**
-- آخر autopilot: built 0 slug(s)
-- تقارير: `operating-system/reports/ghost/`
+- **لوحة التسليم (Trello):** `operating-system/handoff-board.md` ← انقل البطاقات + أوامر جاهزة
+- **الحالة الآن:** `operating-system/team-board.md`

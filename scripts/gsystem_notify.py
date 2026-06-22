@@ -11,6 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 INBOX = ROOT / "operating-system/inbox"
 STATE = ROOT / "operating-system/.gsystem-state.json"
 MANIFEST = ROOT / "assets/images/image-manifest.json"
+TEAM_BOARD = "`operating-system/team-board.md`"
 
 
 def load_state() -> dict:
@@ -58,6 +59,8 @@ def build_inboxes(autopilot_result: dict | None = None) -> dict[str, str]:
     omar_lines = [
         f"# 📬 عمر — مهام الصور · {now}",
         "",
+        f"- **الحالة الآن:** {TEAM_BOARD} (تم · جاري · لسه)",
+        "",
         "## 🔴 عاجل",
     ]
     if pending_with_file:
@@ -72,6 +75,8 @@ def build_inboxes(autopilot_result: dict | None = None) -> dict[str, str]:
     claude_lines = [
         f"# 📬 كلود — توليد Higgsfield · {now}",
         "",
+        f"- **الحالة الآن:** {TEAM_BOARD} (تم · جاري · لسه)",
+        "",
         "## مهام",
         "- توليد صور للـ slugs التي يجهّزها عمر برومبتات",
         f"- **{len([s for s, e in by.items() if e.get('visual_director') != 'approved'])}** slug بلا اعتماد نهائي في الفهرس",
@@ -80,6 +85,8 @@ def build_inboxes(autopilot_result: dict | None = None) -> dict[str, str]:
 
     hema_lines = [
         f"# 📬 Hema — كتابة · {now}",
+        "",
+        f"- **الحالة الآن:** {TEAM_BOARD} (تم · جاري · لسه)",
         "",
         f"## DEEPEN · **{deepen_count()}** صفحة قصيرة",
         "- طابور: `hema-deepen-priority.md`",
@@ -91,6 +98,8 @@ def build_inboxes(autopilot_result: dict | None = None) -> dict[str, str]:
 
     amer_lines = [
         f"# 📬 عامر — BUILD VERIFY · {now}",
+        "",
+        f"- **الحالة الآن:** {TEAM_BOARD} (تم · جاري · لسه)",
         "",
     ]
     if approved_need_verify:
@@ -104,6 +113,7 @@ def build_inboxes(autopilot_result: dict | None = None) -> dict[str, str]:
     cursor_lines = [
         f"# 📬 Cursor — أوتوبايلوت · {now}",
         "",
+        f"- **الحالة الآن:** {TEAM_BOARD} (تم · جاري · لسه)",
         f"- آخر تشغيل: {autopilot_result.get('ran_at', '—')}",
         f"- صفحات بُنيت: **{autopilot_result.get('pages_built', 0)}**",
         f"- push: {autopilot_result.get('commit', '—')}",
@@ -113,10 +123,13 @@ def build_inboxes(autopilot_result: dict | None = None) -> dict[str, str]:
     ghost_lines = [
         f"# 📬 جوست — ملخص · {now}",
         "",
+        f"- **لوحة التسليم (Trello):** `operating-system/handoff-board.md` ← انقل البطاقات + أوامر جاهزة",
+        f"- **الحالة الآن (تم/جاري/لسه):** {TEAM_BOARD}",
         f"- صور معتمدة في الفهرس: **{sum(1 for e in by.values() if is_approved(e))}**",
         f"- DEEPEN (قصير): **{deepen_count()}**",
         f"- آخر autopilot: {autopilot_result.get('summary', 'لم يُشغَّل')}",
-        "- تقارير: `operating-system/reports/ghost/`",
+        "- تقارير تفصيلية: `operating-system/reports/ghost/`",
+        "- سجل الأوتوبايلوت: `outputs/logs/gsystem-autopilot.log`",
     ]
 
     boxes = {

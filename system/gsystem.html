@@ -75,7 +75,7 @@
   <div class="wrap">
     <nav class="tabs" id="tabs"></nav>
     <div class="doc" id="doc"><div class="loading">جارٍ التحميل…</div></div>
-    <p class="docnote">المصدر: ملفات <code>operating-system/reports/</code> — يتحدّث بعد git push. قراءة فقط.</p>
+    <p class="docnote">المصدر: <code>operating-system/</code> → <code>system/gsystem-data/*.json</code> (السيرفر لا يخدم .md مباشرة).</p>
   </div>
 </div>
 
@@ -84,14 +84,16 @@ const PW_HASH="8248c7ae40e0134d712024986fb17eefb0d7eed11a779554158e5bbd12c391eb"
 const SESSION_KEY="dfl_board_ok";
 const $=s=>document.querySelector(s);
 
+const GD="gsystem-data/";
 const DOCS=[
-  {id:"board",label:"🧭 اللوحة الموحّدة",file:"../operating-system/reports/track-board.md"},
-  {id:"build",label:"📦 طابور البناء",file:"../operating-system/reports/ready-to-build.md"},
-  {id:"yellow",label:"🟢 GREEN MODE",file:"../operating-system/reports/yellow-mode-active.md"},
-  {id:"gscharter",label:"📜 GSystem Charter",file:"../operating-system/gsystem-charter.md"},
-  {id:"charter",label:"🛡️ الميثاق",file:"../operating-system/manager-charter-adsense.md"},
-  {id:"trackc",label:"⚙️ Track C",file:"../operating-system/reports/track-C-adsense-technical.md"},
-  {id:"plan",label:"📝 خطة التنفيذ",file:"../operating-system/reports/claude-chef-execution-plan.md"},
+  {id:"live",label:"🕐 الحالة الآن",json:"team-board"},
+  {id:"board",label:"🧭 اللوحة الموحّدة",json:"track-board"},
+  {id:"build",label:"📦 طابور البناء",json:"ready-to-build"},
+  {id:"yellow",label:"🟢 GREEN MODE",json:"yellow-mode-active"},
+  {id:"gscharter",label:"📜 GSystem Charter",json:"gsystem-charter"},
+  {id:"charter",label:"🛡️ الميثاق",json:"manager-charter-adsense"},
+  {id:"trackc",label:"⚙️ Track C",json:"track-c"},
+  {id:"plan",label:"📝 خطة التنفيذ",json:"claude-chef-execution-plan"},
 ];
 
 let active=DOCS[0].id;
@@ -131,18 +133,18 @@ async function loadDoc(id){
   const doc=DOCS.find(d=>d.id===id)||DOCS[0];
   $("#doc").innerHTML='<div class="loading">جارٍ التحميل…</div>';
   try{
-    const t=await (await fetch(doc.file+"?_="+Date.now())).text();
-    $("#doc").innerHTML=marked.parse(t);
-    if(id==="yellow")updateModeBadge(t);
+    const j=await (await fetch(GD+doc.json+".json?_="+Date.now())).json();
+    $("#doc").innerHTML=marked.parse(j.markdown||"");
+    if(id==="yellow")updateModeBadge(j.markdown);
   }catch(e){
-    $("#doc").innerHTML="<p>تعذّر تحميل الملف. تأكّد أنك تشغّل الموقع محلياً أو أن الملفات منشورة على dotforlife.com.</p>";
+    $("#doc").innerHTML="<p>تعذّر تحميل الملف. شغّل <code>python3 scripts/sync_gsystem_web.py</code> ثم push.</p>";
   }
 }
 
 async function updateModeBadge(modeText){
   let isYellow=false;
   try{
-    const t=modeText||await (await fetch(DOCS[2].file+"?_="+Date.now())).text();
+    const t=modeText||await (await fetch(GD+"yellow-mode-active.json?_="+Date.now())).json().then(j=>j.markdown);
     const head=t.split("\n").slice(0,5).join("\n");
     isYellow=/YELLOW MODE/i.test(head)&&!/GREEN MODE|ended|ENDED/i.test(head);
   }catch(e){}

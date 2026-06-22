@@ -107,12 +107,12 @@
     <div id="view-vg" class="view-panel"><div class="vgnav" id="vgnav"></div><div class="doc" id="vgdoc"><div class="loading">جارٍ التحميل…</div></div><div class="docnote">المرجعية البصرية العليا — المصدر في <code>visual-governance/</code>. أي صورة أو فيديو يمرّ ببوابة الامتثال قبل النشر.</div></div>
     <div id="view-gsystem" class="view-panel is-active">
       <div class="gs-head">
-        <div><h1>GSystem</h1><div class="sub">Ghost Closed Loop OS · حلقة مغلقة · قراءة فقط</div></div>
+        <div><h1 id="gsTitle">GSystem</h1><div class="sub" id="gsSub">Ghost Closed Loop OS · حلقة مغلقة · قراءة فقط</div></div>
         <span class="mode green" id="gsMode">🟢 GREEN</span>
       </div>
       <div class="vgnav" id="gsnav"></div>
       <div class="doc" id="gsdoc"><div class="loading">جارٍ التحميل…</div></div>
-      <div class="docnote">المصدر: <code>operating-system/reports/</code> — يتحدّث بعد git push. <a href="gsystem.html">فتح في صفحة كاملة ↗</a></div>
+      <div class="docnote">المصدر: <code>operating-system/</code> → يُصدَّر إلى <code>system/gsystem-data/*.json</code> بعد push. <a href="gsystem.html">فتح في صفحة كاملة ↗</a></div>
     </div>
     <div id="view-ghost" class="view-panel">
       <div class="gs-head">
@@ -166,17 +166,20 @@ const VG=[
  {k:'التوسّع والمرونة',f:'intelligence/08-scalability-expansion.md'},
 ];
 const GSB='../operating-system/';
+const GD='gsystem-data/';
 const GS=[
- {k:'🧭 اللوحة الموحّدة',f:'reports/track-board.md'},
- {k:'📦 طابور البناء',f:'reports/ready-to-build.md'},
- {k:'🟢 GREEN MODE',f:'reports/yellow-mode-active.md',mode:true},
- {k:'📜 GSystem Charter',f:'gsystem-charter.md'},
- {k:'🛡️ الميثاق',f:'manager-charter-adsense.md'},
- {k:'⚙️ Track C',f:'reports/track-C-adsense-technical.md'},
- {k:'📝 خطة التنفيذ',f:'reports/claude-chef-execution-plan.md'},
- {k:'📋 Track B thin',f:'reports/track-B-thin-live-top20.md'},
- {k:'⏸ Kanban (أرشيف)',f:'reports/kanban-frozen.md'},
+ {k:'🕐 الحالة الآن (تم·جاري·لسه)',id:'team-board',team:true},
+ {k:'🧭 اللوحة الموحّدة',id:'track-board'},
+ {k:'📦 طابور البناء',id:'ready-to-build'},
+ {k:'🟢 GREEN MODE',id:'yellow-mode-active',mode:true},
+ {k:'📜 GSystem Charter',id:'gsystem-charter'},
+ {k:'🛡️ الميثاق',id:'manager-charter-adsense'},
+ {k:'⚙️ Track C',id:'track-c'},
+ {k:'📝 خطة التنفيذ',id:'claude-chef-execution-plan'},
+ {k:'📋 Track B thin',id:'track-b-thin'},
+ {k:'⏸ Kanban (أرشيف)',id:'kanban-frozen'},
 ];
+async function fetchMdJson(url){const r=await fetch(url+'?_='+Date.now());if(!r.ok)throw new Error('http '+r.status);const j=await r.json();if(!j.markdown||!j.markdown.trim())throw new Error('empty');return j.markdown}
 async function sha256(t){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(t));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
 async function tryEnter(){const h=await sha256($('#pw').value);if(h===PW_HASH){sessionStorage.setItem('dfl_board_ok','1');show()}else $('#err').textContent='كلمة المرور غير صحيحة'}
 $('#enter').onclick=tryEnter;$('#pw').addEventListener('keydown',e=>{if(e.key==='Enter')tryEnter()});
@@ -223,11 +226,15 @@ function renderGS(){
       loadGS(GS[gsActive])});
     const first=document.querySelector('#gsnav button');if(first)first.classList.add('on')}
   loadGS(GS[gsActive]);updateGsMode()}
-async function loadGS(item){const el=document.getElementById('gsdoc');if(!item)return;el.innerHTML='<div class="loading">جارٍ التحميل…</div>';try{
-  const t=await (await fetch(GSB+item.f+'?_='+Date.now())).text();if(!t.trim())throw new Error('empty');el.innerHTML=mdHTML(t);
-  if(item.mode)updateGsMode(t)}catch(e){el.innerHTML='<p style="color:#c0392b">تعذّر تحميل ملف GSystem: <code>'+item.f+'</code></p>'}}
+async function loadGS(item){const el=document.getElementById('gsdoc');if(!item)return;el.innerHTML='<div class="loading">جارٍ التحميل…</div>';
+  const title=document.getElementById('gsTitle');const sub=document.getElementById('gsSub');
+  if(item.team){if(title)title.textContent='🧭 لوحة الفريق';if(sub)sub.textContent='تم · جاري · لسه — يتحدّث كل 15 دقيقة'}
+  else{if(title)title.textContent='GSystem';if(sub)sub.textContent='Ghost Closed Loop OS · حلقة مغلقة · قراءة فقط'}
+  try{
+  const t=await fetchMdJson(GD+item.id+'.json');el.innerHTML=mdHTML(t);
+  if(item.mode)updateGsMode(t)}catch(e){el.innerHTML='<p style="color:#c0392b">تعذّر تحميل لوحة GSystem: <code>'+GD+item.id+'.json</code><br><small>السبب الشائع: لم يُشغَّل sync بعد push — راجع <code>scripts/sync_gsystem_web.py</code></small></p>'}}
 async function updateGsMode(modeText){let isYellow=false;try{
-  const t=modeText||await (await fetch(GSB+'reports/yellow-mode-active.md?_='+Date.now())).text();
+  const t=modeText||await fetchMdJson(GD+'yellow-mode-active.json');
   const head=t.split('\n').slice(0,5).join('\n');
   isYellow=/YELLOW MODE/i.test(head)&&!/GREEN MODE|ended|ENDED/i.test(head)}catch(e){}
   const b=$('#gsMode');if(!b)return;
@@ -237,9 +244,9 @@ async function renderGhost(){
   if(!ghostInit){
     ghostInit=true;
     try{
-      const m=await (await fetch(GSB+'reports/ghost/manifest.json?_='+Date.now())).json();
+      const m=await (await fetch(GD+'ghost.json?_='+Date.now())).json();
       ghostReports=m.reports||[];
-      $('#ghostLatest').textContent='آخر تحديث: '+ (m.updated||'—');
+      $('#ghostLatest').textContent='آخر تحديث: '+ (m.updated||m.synced_at||'—');
       $('#ghostnav').innerHTML=ghostReports.map((r,i)=>{
         const ic=r.kind==='images'?'🖼️':'📅';
         return `<button data-i="${i}">${ic} ${r.label||r.date}</button>`}).join('');
@@ -254,7 +261,7 @@ async function loadGhost(item){
   if(!item)return;
   const el=document.getElementById('ghostdoc');
   el.innerHTML='<div class="loading">جارٍ التحميل…</div>';
-  try{const t=await (await fetch(GSB+item.file+'?_='+Date.now())).text();el.innerHTML=mdHTML(t)}
+  try{if(!item.markdown)throw new Error('no markdown');el.innerHTML=mdHTML(item.markdown)}
   catch(e){el.innerHTML='<p style="color:#c0392b">تعذّر تحميل التقرير.</p>'}}
 function kpiColor(k){if(k.value==null)return '#9aa7a3';const v=k.value,t=k.target,w=k.warn;
   if(k.invert){if(v<=t)return '#1f9d57';if(v<=w)return '#e0a400';return '#c0392b'}

@@ -21,16 +21,68 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 STATE = ROOT / "operating-system/.gsystem-state.json"
 LOG = ROOT / "outputs/logs/gsystem-autopilot.log"
+LEGEND_MARKER = "<!-- gsystem-autopilot-legend -->"
 
 SKIP_DIRS = {"outputs", "node_modules", ".git", "scripts"}
 
+LOG_LEGEND = """\
+# سجل الأوتوبايلوت — كيف تقرأه
+# GSystem Autopilot log — how to read
 
-def log(msg: str) -> None:
-    line = f"[{datetime.now().isoformat(timespec='seconds')}] {msg}"
+كل تشغيلة تبدأ بـ: === تشغيل جديد ===
+Each run starts with: === new run ===
+
+| السطر (English) | المعنى بالعربي |
+|-----------------|----------------|
+| slugs needing build: [] | لا مقالات تنتظر بناء — كل الصور المعتمدة على الموقع ✓ |
+| slugs needing build: ['x'] | مقال/مقالات تحتاج حقن صورة البطل في HTML |
+| SKIP slug: approved but file missing | معتمد في الفهرس لكن ملف WebP غير موجود في approved/ |
+| WARN slug: no HTML pages found | لا توجد صفحة HTML لهذا المقال في الموقع |
+| RUN scripts/... | يبني المقال من مسودة معتمدة |
+| APPLY path/to/page.html | تم تحديث صورة البطل في هذه الصفحة |
+| AUDIT PASS | فحص الجودة نجح — الموقع سليم |
+| AUDIT FAIL | فحص الجودة فشل — راجع السطر التالي للتفاصيل |
+| git: nothing to commit | لا تغييرات جديدة — لم يُرفع شيء على GitHub |
+| git: pushed abc1234 | تم الرفع على GitHub بنجاح |
+| ERROR: BUILD_MAP rebuild failed | فشل بناء المقال — راجع الأخطاء أعلاه |
+| inboxes: ... | تم تحديث صناديق مهام الفريق (عمر، كلود، Hema، …) |
+
+السطر الذي يبدأ بـ ↳ هو شرح عربي للسطر الذي قبله مباشرة.
+Lines starting with ↳ explain the line above in Arabic.
+
+---
+"""
+
+
+def _ts() -> str:
+    return datetime.now().isoformat(timespec="seconds")
+
+
+def ensure_log_legend() -> None:
+    LOG.parent.mkdir(parents=True, exist_ok=True)
+    if not LOG.exists() or LEGEND_MARKER not in LOG.read_text(encoding="utf-8"):
+        LOG.write_text(f"{LEGEND_MARKER}\n{LOG_LEGEND}", encoding="utf-8")
+
+
+def log(msg: str, *, meaning: str | None = None) -> None:
+    ts = _ts()
+    line = f"[{ts}] {msg}"
     print(line)
+    if meaning:
+        print(f"  ↳ {meaning}")
     LOG.parent.mkdir(parents=True, exist_ok=True)
     with LOG.open("a", encoding="utf-8") as f:
         f.write(line + "\n")
+        if meaning:
+            f.write(f"[{ts}]   ↳ {meaning}\n")
+
+
+def log_run_start() -> None:
+    ts = _ts()
+    banner = f"[{ts}] === تشغيل جديد / new run ==="
+    print(banner)
+    with LOG.open("a", encoding="utf-8") as f:
+        f.write(banner + "\n")
 
 
 def load_build_map() -> list[dict]:
@@ -88,12 +140,18 @@ def slugs_needing_build() -> list[str]:
         if not is_approved(e):
             continue
         if not image_disk_path(e).exists():
-            log(f"SKIP {slug}: approved but file missing")
+            log(
+                f"SKIP {slug}: approved but file missing",
+                meaning=f"تخطي {slug}: معتمد في الفهرس لكن ملف الصورة غير موجود في approved/",
+            )
             continue
         web = image_web_path(e)
         pages = html_pages_for_slug(slug)
         if not pages:
-            log(f"WARN {slug}: no HTML pages found")
+            log(
+                f"WARN {slug}: no HTML pages found",
+                meaning=f"تحذير {slug}: لا توجد صفحة HTML لهذا المقال على الموقع",
+            )
             continue
         if any(not page_has_approved_hero(p, web) for p in pages):
             need.append(slug)
@@ -104,7 +162,10 @@ def run_build_ids(ids: list[str]) -> bool:
     if not ids:
         return True
     cmd = [sys.executable, str(ROOT / "scripts/build-from-approved-draft.py"), *ids]
-    log("RUN " + " ".join(cmd))
+    log(
+        "RUN " + " ".join(cmd),
+        meaning="تشغيل سكربت بناء المقال من المسودة المعتمدة",
+    )
     return subprocess.run(cmd, cwd=ROOT).returncode == 0
 
 
@@ -125,14 +186,21 @@ def run_apply_heroes() -> int:
             slug = mod.article_slug_from_path(fp)
             if slug in approved and mod.apply_path(fp, approved[slug]):
                 done += 1
-                log(f"APPLY {fp.relative_to(ROOT)}")
+                rel = fp.relative_to(ROOT)
+                log(
+                    f"APPLY {rel}",
+                    meaning=f"تم تحديث صورة البطل في: {rel}",
+                )
     return done
 
 
 def git_push_if_changed(message: str) -> str | None:
     st = subprocess.run(["git", "status", "--porcelain"], cwd=ROOT, capture_output=True, text=True)
     if not st.stdout.strip():
-        log("git: nothing to commit")
+        log(
+            "git: nothing to commit",
+            meaning="لا تغييرات جديدة — لم يُرفع شيء على GitHub (هذا طبيعي إذا كان كل شيء محدّثاً)",
+        )
         return None
     subprocess.run(["git", "add", "-A"], cwd=ROOT, check=True)
     # exclude pycache from commit if picked up
@@ -142,7 +210,12 @@ def git_push_if_changed(message: str) -> str | None:
     rev = subprocess.run(
         ["git", "rev-parse", "--short", "HEAD"], cwd=ROOT, capture_output=True, text=True
     )
-    return rev.stdout.strip()
+    short = rev.stdout.strip()
+    log(
+        f"git: pushed {short}",
+        meaning=f"تم الرفع على GitHub بنجاح — رقم الالتزام: {short}",
+    )
+    return short
 
 
 def run_autopilot(*, do_build: bool, do_push: bool) -> dict:
@@ -157,7 +230,16 @@ def run_autopilot(*, do_build: bool, do_push: bool) -> dict:
 
     if do_build:
         need = slugs_needing_build()
-        log(f"slugs needing build: {need}")
+        if need:
+            log(
+                f"slugs needing build: {need}",
+                meaning=f"مقالات تنتظر بناء/تحديث صورة البطل: {', '.join(need)}",
+            )
+        else:
+            log(
+                "slugs needing build: []",
+                meaning="لا مقالات تنتظر بناء — كل الصور المعتمدة موجودة على الموقع ✓",
+            )
         slug_ids = slug_to_build_id()
         build_ids: list[str] = []
         archive_slugs: list[str] = []
@@ -171,7 +253,10 @@ def run_autopilot(*, do_build: bool, do_push: bool) -> dict:
 
         if build_ids:
             if not run_build_ids(build_ids):
-                log("ERROR: BUILD_MAP rebuild failed")
+                log(
+                    "ERROR: BUILD_MAP rebuild failed",
+                    meaning="فشل بناء المقال — راجع سطور RUN أعلاه للتفاصيل",
+                )
             else:
                 result["built_slugs"].extend(
                     [s for s in need if slug_ids.get(s) in build_ids]
@@ -193,9 +278,17 @@ def run_autopilot(*, do_build: bool, do_push: bool) -> dict:
             text=True,
         )
         if audit.returncode != 0:
-            log("AUDIT FAIL:\n" + (audit.stdout or "")[-500:])
+            tail = (audit.stdout or "")[-500:]
+            log(f"AUDIT FAIL:\n{tail}")
+            log(
+                "AUDIT FAIL (summary)",
+                meaning="فحص الجودة فشل — الموقع فيه مشكلة، راجع التفاصيل في السطر السابق",
+            )
         else:
-            log("AUDIT PASS")
+            log(
+                "AUDIT PASS",
+                meaning="فحص الجودة نجح — المقالات LIVE سليمة",
+            )
 
         if do_push:
             result["commit"] = git_push_if_changed(
@@ -214,20 +307,46 @@ def main() -> None:
     do_push = "--push" in sys.argv
     desktop = "--desktop-notify" in sys.argv
 
+    ensure_log_legend()
+
     if notify_only:
         from gsystem_notify import notify_new_tasks, write_inboxes
 
+        log_run_start()
         write_inboxes({})
+        from team_board_refresh import refresh_team_board
+        from sync_gsystem_web import sync_all
+
+        refresh_team_board({})
+        sync_all()
+        log(
+            "inboxes only (no build)",
+            meaning="تحديث صناديق المهام + لوحة الفريق — بدون بناء أو رفع",
+        )
         print("Inboxes updated: operating-system/inbox/")
         return
 
+    log_run_start()
     result = run_autopilot(do_build=not notify_only, do_push=do_push)
 
     sys.path.insert(0, str(ROOT / "scripts"))
     from gsystem_notify import notify_new_tasks, write_inboxes
 
     paths = write_inboxes(result)
-    log("inboxes: " + ", ".join(paths))
+    log(
+        "inboxes: " + ", ".join(paths),
+        meaning="تم تحديث صناديق مهام الفريق (عمر، كلود، Hema، عامر، Cursor، جوست)",
+    )
+
+    from team_board_refresh import refresh_team_board
+    from sync_gsystem_web import sync_all
+
+    refresh_team_board(result)
+    sync_all()
+    log(
+        f"team-board refreshed",
+        meaning="تم تحديث لوحة الفريق بالساعة والدقيقة — operating-system/team-board.md",
+    )
 
     if desktop:
         notify_new_tasks(result)

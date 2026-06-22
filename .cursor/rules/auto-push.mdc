@@ -1,0 +1,16 @@
+---
+description: Always commit and push to GitHub after completing work — no need to wait for Joost
+alwaysApply: true
+---
+
+# Auto push — Dot4Life
+
+After completing any meaningful change in this repo:
+
+1. **Commit** with a clear message (why, not just what).
+2. **`git push origin main`** immediately — Joost does not need to ask.
+3. Run `python3 scripts/sync_gsystem_web.py` before push if `operating-system/` or `team-board.md` changed (board.html reads JSON).
+4. Do **not** push secrets (`.env`, credentials).
+5. If push fails, fix and retry; tell Joost only if blocked.
+
+Exception: do not push if Joost explicitly says «لا ترفع» in that turn.

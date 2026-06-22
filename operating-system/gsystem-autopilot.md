@@ -58,7 +58,11 @@ bash scripts/install-gsystem-autopilot-cron.sh
 | Cursor | `operating-system/inbox/cursor.md` |
 | جوست | `operating-system/inbox/ghost.md` |
 
+**لوحة الفريق (Kanban):** `operating-system/team-board.md` — على الويب: `system/board.html` → **🕐 الحالة الآن** (يقرأ `system/gsystem-data/team-board.json`)
+
+> السيرفر لا يخدم `.md` مباشرة — `scripts/sync_gsystem_web.py` يصدّر JSON بعد كل تحديث.
+
 ## السجلات
 
-- `outputs/logs/gsystem-autopilot.log`
+- `outputs/logs/gsystem-autopilot.log` — **دليل قراءة في أعلى الملف** + شرح عربي (`↳`) تحت كل سطر تقني
 - `operating-system/.gsystem-state.json`

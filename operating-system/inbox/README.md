@@ -9,4 +9,6 @@
 | `hema.md` | Hema — DEEPEN |
 | `amer.md` | عامر — BUILD VERIFY |
 | `cursor.md` | Cursor — أوتوبايلوت |
-| `ghost.md` | جوست — ملخص |
+| `ghost.md` | جوست — ملخص + رابط لوحة الفريق |
+
+**اللوحة الموحّدة:** [`operating-system/team-board.md`](../team-board.md) — Kanban للفريق (تذاكر · منجز · ملاحظات · تقارير)
