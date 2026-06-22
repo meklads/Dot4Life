@@ -34,6 +34,8 @@ ASSIGNEE = {
     "done": "—",
 }
 
+OWNER_FOR_COL = {"omar": "عمر", "amer": "عامر", "hema": "Hema", "cursor": "Cursor"}
+
 ARTICLE_TITLES: dict[str, str] = {
     "investment-basics-beginners": "استثمار للمبتدئين",
     "rent-vs-buy-gulf-family": "إيجار أم تملّك للعائلة الخليجية",
@@ -54,6 +56,20 @@ ARTICLE_TITLES: dict[str, str] = {
     "A-09": "مسودة A-09",
     "deepen-priority-25": "DEEPEN — أولوية 25 صفحة",
     "deepen-priority-next-10": "DEEPEN — 10 صفحات تالية",
+    "pregnancy-nutrition-first-trimester": "تغذية الحمل — الثلث الأول",
+    "end-of-service-saudi": "مكافأة نهاية الخدمة",
+    "family-time-management": "إدارة وقت العائلة",
+    "saving-for-education-gulf": "ادخار التعليم للأطفال",
+    "family-budget-planning-guide": "دليل ميزانية الأسرة",
+    "gold-vs-savings-account-comparison": "ذهب vs حساب ادخار",
+    "managing-screen-time-children": "وقت الشاشة للأطفال",
+    "build-track-b-approved-thin": "BUILD — investment + rent-vs-buy thin",
+    "schema-batch-1": "C-F3 Schema — دفعة 1",
+    "schema-batch-2": "C-F3 Schema — دفعة 2",
+    "redirect-rent-vs-buy-saudi": "301 rent-vs-buy-saudi",
+    "hero-webp-batch-d4l1": "C-F6 استبدال d4l1.webp",
+    "credibility-gate-blog": "بوابة مصداقية blog",
+    "quality-adsense-readiness": "تقرير جودة AdSense",
 }
 
 HEMA_TASKS = {
@@ -66,12 +82,33 @@ CURSOR_TASKS = {
     "C-01": "ابدأ لما H-07..H-09 في «انتهى من عندي»: approved → HTML → push LIVE → ثم «انتهى من عندي»",
     "C-02": "ابدأ لما H-10..H-12 في «انتهى من عندي»: approved → HTML → push LIVE → ثم «انتهى من عندي»",
     "C-03": "ابدأ لما T-02..T-04 في «انتهى من عندي»: دمج مسودات → build → push LIVE → ثم «انتهى من عندي»",
+    "C-04": "BUILD Track B thin (4 URLs معتمدة) → Schema → push → «انتهى من عندي»",
+    "C-05": "C-F3 Schema دفعة 1 (20 blog) → verify → «انتهى من عندي»",
+    "C-06": "C-F3 Schema دفعة 2 (20 blog) → verify → «انتهى من عندي»",
+    "C-07": "301 rent-vs-buy-saudi duplicate → push → «انتهى من عندي»",
+    "C-08": "استبدال d4l1.webp (20 صفحة) → push → «انتهى من عندي»",
+    "C-09": "بوابة مصداقية blog → push → «انتهى من عندي»",
+    "C-10": "تقرير جودة % + AdSense readiness → Ghost → «انتهى من عندي»",
 }
 
 CURSOR_COMMANDS = {
     "C-01": "C-01: Autopilot — H-07,H-08,H-09 approved → HTML → git push",
     "C-02": "C-02: Autopilot — H-10,H-11,H-12 approved → HTML → git push",
     "C-03": "C-03: دمج T-02,T-03,T-04 → build → git push",
+    "C-04": "C-04: inject Track B thin LIVE (investment+rent-vs-buy ×4) → Schema → push",
+    "C-05": "C-05: inject-article-schema.py batch 1 (20 blog) → verify JSON-LD",
+    "C-06": "C-06: inject-article-schema.py batch 2 (20 blog) → verify JSON-LD",
+    "C-07": "C-07: 301 blog/rent-vs-buy-saudi → real-estate/rent-vs-buy-gulf-family",
+    "C-08": "C-08: replace d4l1.webp heroes (20 pages) from approved manifest",
+    "C-09": "C-09: credibility gate — fabricated callouts + unverified stats sweep",
+    "C-10": "C-10: quality audit CSV + AdSense readiness % → Ghost report",
+}
+
+GHOST_POOL = {
+    "omar": "برومبت → عمر",
+    "amer": "توليد → عامر",
+    "hema": "DEEPEN → Hema",
+    "cursor": "بناء/جودة → Cursor",
 }
 
 
@@ -83,7 +120,10 @@ def task_for(card: dict) -> str:
         who = card.get("owner", "العضو")
         return f"انتهى من جهة {who} — بانتظار المرحلة التالية"
     if col == "ghost":
-        return "احتياط — دفعة قادمة"
+        pool = card.get("pool_for", "")
+        label = GHOST_POOL.get(pool, "مخزون")
+        reason = card.get("reason", "")
+        return f"مخزون جوست — {label}" + (f" · {reason}" if reason else "")
     if col == "omar":
         return "جهّز برومبت الصورة وضعه pending — ثم انقلها لـ «انتهى من عندي»"
     if col == "amer":
@@ -100,6 +140,8 @@ def enrich_card(card: dict) -> dict:
     if not card.get("article"):
         card["article"] = ARTICLE_TITLES.get(slug, card.get("title", slug))
     card["assignee"] = card.get("owner") or ASSIGNEE.get(card.get("col", "ghost"), "—")
+    if card.get("col") == "ghost" and card.get("pool_for"):
+        card["assignee"] = GHOST_POOL.get(card["pool_for"], "جوست")
     if card.get("col") == "member_done" and card.get("owner"):
         card["assignee"] = card["owner"] + " (انتهى)"
     card["task"] = task_for(card)
@@ -163,6 +205,8 @@ def move_card(data: dict, card_id: str, col: str) -> dict | None:
             card["_prev_col"] = prev
             card["col"] = col
             card["stage"] = advance_stage(card, col, prev)
+            if prev == "ghost" and col in OWNER_FOR_COL:
+                card["owner"] = OWNER_FOR_COL[col]
             if col not in ("done", "ghost", "member_done"):
                 card["command"] = command_for(card, col)
             if col in ("done", "member_done"):
@@ -212,6 +256,22 @@ def render_board_md(data: dict) -> str:
         sub = col.get("subtitle", "")
         if cid == "done":
             parts.append(f"\n## {title}\n\n| التذكرة | المقال | انتهى |\n|---------|--------|-------|\n")
+        elif cid == "ghost":
+            parts.append(
+                f"\n## {title} — {sub}\n\n"
+                f"| التذكرة | المقال | المسار | السبب |\n|---------|--------|--------|-------|\n"
+            )
+            active = [c for c in cards if c.get("col") == cid]
+            if not active:
+                parts.append("| — | — | — | — |\n")
+            else:
+                for c in active:
+                    parts.append(
+                        f"| {c['id']} | {c.get('article', '')} | "
+                        f"{GHOST_POOL.get(c.get('pool_for', ''), '—')} | {c.get('reason', '—')} |\n"
+                    )
+            parts.append("\n---\n")
+            continue
         else:
             parts.append(
                 f"\n## {title} — {sub}\n\n| التذكرة | المقال | موجه لـ | المطلوب |\n|---------|--------|---------|----------|\n"
@@ -220,12 +280,12 @@ def render_board_md(data: dict) -> str:
         parts.append("\n---\n")
     parts.append(
         "\n## تعليمات المرحلة 1\n\n"
-        "1. كل عضو عنده 3 تذاكر في مربعه.\n"
+        "1. كل عضو عنده **3 نشطة** + **7 مخزون** عند جوست.\n"
         "2. يشتغل على راحته.\n"
         "3. لما يخلص ينقل التذكرة لـ **انتهى من عندي**.\n"
-        "4. جوست يقول «ابدؤوا» — مو لازم يتابع كل تذكرة.\n"
-        "5. **Cursor** يبدأ البناء لما تصل تذاكر الفريق إلى «انتهى من عندي».\n"
-        "6. المرحلة 2: نربط «انتهى من عندي» بالعضو التالي.\n"
+        "4. جوست يقول «ابدؤوا» أو «وزّع 3 لـ عمر» من المخزون.\n"
+        "5. **Cursor** يبني بعد الفريق — C-F3/C-F6/Track B للجودة وAdSense.\n"
+        "6. بعد 10 → دفعة جديدة 10 حسب أولوية المنصة.\n"
     )
     return "".join(parts)
 
