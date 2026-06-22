@@ -40,7 +40,8 @@
 ## Track E — Image Module (2026-06-22) 🟢 LIVE
 | حارة | المالك | الحالة |
 |------|--------|--------|
-| `assets/images/approved/` + `image-manifest.json` | **عمر** | 🟢 **مُفعَّل** (جوست) |
+| `assets/images/approved/` + `image-manifest.json` | **عمر** | 🟢 4 pending · **بانتظار WebP في approved/** |
+| تكليف مباشر Cursor→عمر | **Cursor** | `cursor-to-omar-assignment.md` (هدف 4 قبل 01:00) |
 | `scripts/image_manifest.py` + G5 fail-closed | **Cursor** | ✅ `3252bb1` |
 | دفعة الإنتاج | **عمر** | 📋 `omar-image-production.md` (49 slug) |
 | BUILD VERIFY | **Amer** | ينتظر أول دفعة معتمدة |
