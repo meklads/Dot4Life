@@ -13,6 +13,8 @@ import sys
 from datetime import date
 from pathlib import Path
 
+from image_manifest import assert_g5_image, resolve_hero_for_build
+
 ROOT = Path(__file__).resolve().parents[1]
 DRAFTS = ROOT / "operating-system" / "reports" / "drafts"
 BACKUP = ROOT / "outputs" / "backups" / "tech-build"
@@ -515,6 +517,8 @@ def assert_build_gates(
     out_path: Path,
     cfg: dict,
     draft_md: str | None = None,
+    *,
+    strict_image: bool = False,
 ) -> list[str]:
     """G1–G11 fail-closed. Returns list of passed gate ids."""
     passed: list[str] = []
@@ -558,14 +562,8 @@ def assert_build_gates(
         gate_fail("G4", out_path, f"FAQ questions={faq_q} < {MIN_FAQ_Q}")
     passed.append("G4")
 
-    # G5 hero WebP + alt + og:image
-    hero = re.search(r'<figure class="hero"><img[^>]+src="([^"]+\.webp)"[^>]+alt="([^"]*)"', page)
-    if not hero:
-        gate_fail("G5", out_path, "hero WebP img missing")
-    if not hero.group(2).strip():
-        gate_fail("G5", out_path, "hero alt empty")
-    if 'property="og:image"' not in page:
-        gate_fail("G5", out_path, "og:image missing")
+    # G5 hero — manifest approved (strict) or legacy WebP grandfather (audit)
+    assert_g5_image(page, out_path, lang, strict=strict_image, gate_fail=gate_fail)
     passed.append("G5")
 
     # G6 Title
@@ -969,19 +967,16 @@ def build_page(cfg: dict, draft_path: Path, out_path: Path, lang: str) -> tuple[
     footer = "© 2026 دوت فور لايف - للمعرفة والعافية" if not is_en else "© 2026 DOTFORLIFE"
 
     internal_p = " · ".join(f'<a href="{u}">{html.escape(l)}</a>' for u, l in links)
-    hero_webp = cfg.get("hero_webp", "")
-    hero_alt = cfg.get("hero_alt_en" if is_en else "hero_alt_ar", title)
-    hero_abs = f"https://dotforlife.com{hero_webp}" if hero_webp else None
-    schema = schema_json(title, desc, canonical, faqs, lang, hero_abs)
-    page_title = seo_page_title(title, cfg, lang)
+    resolved = resolve_hero_for_build(out_path, lang, cfg)
     hero_img = ""
     og_image = ""
-    if hero_webp:
+    hero_abs = None
+    if resolved:
+        hero_img, _web, hero_abs = resolved
+    schema = schema_json(title, desc, canonical, faqs, lang, hero_abs)
+    page_title = seo_page_title(title, cfg, lang)
+    if hero_abs:
         og_image = f'<meta property="og:image" content="{hero_abs}">'
-        hero_img = (
-            f'<figure class="hero"><img src="{hero_webp}" alt="{html.escape(hero_alt)}" '
-            f'width="1200" height="750" loading="eager" fetchpriority="high"></figure>'
-        )
     lang_switch = ""
     if lang_link:
         lang_switch = f'<div class="lang-switch"><a href="{html.escape(lang_link)}">{lang_label}</a></div>'
@@ -1042,7 +1037,7 @@ td{{padding:10px 12px;border-bottom:1px solid #eee}}
 
 
 def write_page(page: str, out_path: Path, cfg: dict, lang: str, md: str) -> list[str]:
-    gates = assert_build_gates(page, lang, out_path, cfg, md)
+    gates = assert_build_gates(page, lang, out_path, cfg, md, strict_image=True)
     BACKUP.mkdir(parents=True, exist_ok=True)
     if out_path.exists():
         shutil.copy2(out_path, BACKUP / out_path.name)
@@ -1067,7 +1062,7 @@ def audit_live() -> int:
             page = out_path.read_text(encoding="utf-8")
             md = draft_path.read_text(encoding="utf-8") if draft_path.exists() else ""
             try:
-                assert_build_gates(page, lang, out_path, cfg, md or None)
+                assert_build_gates(page, lang, out_path, cfg, md or None, strict_image=False)
                 built[lang] = (page, out_path, md)
                 passed += 1
                 print(f"  PASS {out_path.relative_to(ROOT)}")

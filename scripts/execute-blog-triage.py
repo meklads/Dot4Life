@@ -6,7 +6,6 @@ import importlib.util
 import json
 import re
 import shutil
-import subprocess
 import sys
 from datetime import date
 from pathlib import Path
@@ -264,63 +263,39 @@ def ensure_hreflang(html: str, path: Path) -> str:
     return html.replace("</head>", block + "\n</head>", 1)
 
 
-def hero_path(slug: str) -> Path:
-    return ROOT / "assets/images" / f"hero-{slug}.webp"
-
-
 def ensure_hero(html: str, path: Path, h1: str) -> tuple[str, str]:
-    slug = path.stem.replace("_", "-")
-    hp = hero_path(slug)
-    hp.parent.mkdir(parents=True, exist_ok=True)
-    if not hp.exists():
-        src_url = None
-        og = re.search(r'property="og:image"[^>]+content="([^"]+)"', html, re.I)
-        if og:
-            src_url = og.group(1)
-        if not src_url:
-            img = re.search(r'class="article-banner-img"[^>]+src="([^"]+)"', html)
-            if img:
-                src_url = img.group(1)
-        if src_url and src_url.startswith("http"):
-            try:
-                subprocess.run(
-                    ["curl", "-sL", "-o", str(hp.with_suffix(".jpg")), src_url],
-                    check=True,
-                    timeout=30,
-                )
-                jpg = hp.with_suffix(".jpg")
-                if jpg.exists() and jpg.stat().st_size > 1000:
-                    subprocess.run(["cwebp", "-q", "82", str(jpg), "-o", str(hp)], check=True)
-                    jpg.unlink(missing_ok=True)
-            except (subprocess.CalledProcessError, FileNotFoundError, subprocess.TimeoutExpired):
-                pass
-        if not hp.exists():
-            fallback = ROOT / "assets/images/d4l1.webp"
-            if fallback.exists():
-                shutil.copy2(fallback, hp)
-            else:
-                shutil.copy2(ROOT / "d4l1.webp", hp)
-    webp = f"/assets/images/hero-{slug}.webp"
-    alt = h1[:120] if h1 else slug.replace("-", " ")
-    figure = (
-        f'<figure class="hero"><img src="{webp}" alt="{alt}" '
-        f'width="1200" height="750" loading="lazy"></figure>'
+    """Manifest-first hero; legacy keep existing; no og:image fallback download."""
+    from image_manifest import article_slug_from_path, hero_block, is_approved, lookup
+
+    slug = article_slug_from_path(path)
+    lang = "en" if path.name.endswith("-en.html") else "ar"
+    entry = lookup(slug)
+
+    if is_approved(entry):
+        figure, webp, _alt = hero_block(entry, lang)
+        if '<figure class="hero">' not in html:
+            html = html.replace(
+                '<article class="article-body">',
+                f'<article class="article-body">\n{figure}',
+                1,
+            )
+            if figure not in html:
+                html = html.replace("<main", figure + "\n<main", 1)
+        og = f'<meta property="og:image" content="{SITE}{webp}">'
+        if 'property="og:image"' not in html:
+            html = html.replace("</head>", og + "\n</head>", 1)
+        else:
+            html = re.sub(r'<meta property="og:image" content="[^"]*">', og, html, count=1)
+        return html, webp
+
+    hero_m = re.search(
+        r'<figure class="hero"><img[^>]+src="([^"]+)"[^>]+alt="([^"]*)"',
+        html,
     )
-    if '<figure class="hero">' not in html:
-        html = html.replace("<article class=\"article-body\">", f"<article class=\"article-body\">\n{figure}", 1)
-        if figure not in html:
-            html = html.replace("<main", figure + "\n<main", 1)
-    og = f'<meta property="og:image" content="{SITE}{webp}">'
-    if 'property="og:image"' not in html:
-        html = html.replace("</head>", og + "\n</head>", 1)
-    else:
-        html = re.sub(
-            r'<meta property="og:image" content="[^"]*">',
-            og,
-            html,
-            count=1,
-        )
-    return html, webp
+    if hero_m and hero_m.group(1).endswith(".webp"):
+        return html, hero_m.group(1)
+
+    return html, ""
 
 
 def ld_json(atype: str, data: dict) -> str:
@@ -430,15 +405,9 @@ def archive_assert_gates(page: str, lang: str, out_path: Path, dtype: str) -> No
     faq_q = sum(len(b.get("mainEntity") or []) for b in faq_blocks)
     if faq_q < build.MIN_FAQ_Q:
         build.gate_fail("G4", out_path, f"FAQ questions={faq_q} < {build.MIN_FAQ_Q}")
-    hero = re.search(
-        r'<figure class="hero"><img[^>]+src="([^"]+\.webp)"[^>]+alt="([^"]*)"', page
-    )
-    if not hero:
-        build.gate_fail("G5", out_path, "hero WebP img missing")
-    if not hero.group(2).strip():
-        build.gate_fail("G5", out_path, "hero alt empty")
-    if 'property="og:image"' not in page:
-        build.gate_fail("G5", out_path, "og:image missing")
+    from image_manifest import assert_g5_image
+
+    assert_g5_image(page, out_path, lang, strict=False, gate_fail=build.gate_fail)
     tm = re.search(r"<title>(.*?)</title>", page)
     if not tm:
         build.gate_fail("G6", out_path, "no <title>")
