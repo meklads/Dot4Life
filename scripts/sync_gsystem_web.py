@@ -27,6 +27,37 @@ GS_DOCS: dict[str, str] = {
 }
 
 GHOST_SKIP = re.compile(r"^_|STANDING-ORDERS|amer-to-cursor-notify|TEAM-NOTICE")
+MARKED = ROOT / "system/vendor/marked.min.js"
+
+
+def md_to_html(markdown: str) -> str:
+    """Pre-render markdown → HTML (board does not depend on marked.js at runtime)."""
+    import subprocess
+
+    clean = re.sub(r"<!--[\s\S]*?-->", "", markdown)
+    if not MARKED.is_file():
+        return f"<pre>{clean}</pre>"
+    script = r"""
+const fs=require('fs');
+const code=fs.readFileSync(process.argv[1],'utf8');
+eval(code);
+const md=fs.readFileSync(0,'utf8');
+process.stdout.write(marked.parse(md));
+"""
+    try:
+        r = subprocess.run(
+            ["node", "-e", script, str(MARKED)],
+            input=clean,
+            capture_output=True,
+            text=True,
+            cwd=ROOT,
+            timeout=30,
+        )
+        if r.returncode == 0 and r.stdout.strip():
+            return r.stdout
+    except (FileNotFoundError, subprocess.TimeoutExpired, OSError):
+        pass
+    return f"<pre style='white-space:pre-wrap'>{clean}</pre>"
 
 
 def pack(source: Path, markdown: str) -> dict:
@@ -34,6 +65,7 @@ def pack(source: Path, markdown: str) -> dict:
         "source": str(source.relative_to(ROOT)),
         "synced_at": datetime.now().isoformat(timespec="seconds"),
         "markdown": markdown,
+        "html": md_to_html(markdown),
     }
 
 
@@ -62,13 +94,15 @@ def sync_ghost() -> int:
             label = "🖼️ " + fp.stem.replace("images-", "", 1)
         elif re.match(r"\d{4}-\d{2}-\d{2}", fp.name):
             label = "📅 " + fp.name.replace(".md", "")
+        text = fp.read_text(encoding="utf-8")
         reports.append(
             {
                 "date": fp.stem[:10] if re.match(r"\d{4}-\d{2}-\d{2}", fp.name) else fp.stem,
                 "kind": kind,
                 "label": label,
                 "source": str(fp.relative_to(ROOT)),
-                "markdown": fp.read_text(encoding="utf-8"),
+                "markdown": text,
+                "html": md_to_html(text),
             }
         )
     bundle = {

@@ -90,7 +90,7 @@
 <div id="app"><div class="layout">
   <nav class="side">
     <div class="brand">DOT<span class="dot">.</span>FORLIFE</div>
-    <button data-s="gsystem" class="gs-tab active">🔄 GSystem</button>
+    <button data-s="gsystem" class="gs-tab active">🔄 GSystem ← ابدأ هنا</button>
     <button data-s="ghost" class="ghost-tab">👑 جوست</button>
     <button data-s="visual">🎨 الحوكمة البصرية</button>
     <button data-s="development">🔬 التطوير</button>
@@ -180,7 +180,8 @@ const GS=[
  {k:'📋 Track B thin',id:'track-b-thin'},
  {k:'⏸ Kanban (أرشيف)',id:'kanban-frozen'},
 ];
-async function fetchMdJson(url){const r=await fetch(url+'?_='+Date.now());if(!r.ok)throw new Error('http '+r.status);const j=await r.json();if(!j.markdown||!j.markdown.trim())throw new Error('empty');return j.markdown}
+async function fetchMdJson(url){const r=await fetch(url+'?_='+Date.now());if(!r.ok)throw new Error('http '+r.status);const j=await r.json();if(j.html&&String(j.html).trim())return {html:j.html,raw:j.markdown||''};if(j.markdown&&String(j.markdown).trim())return {html:null,raw:j.markdown};throw new Error('empty')}
+function renderDoc(el, payload){if(payload.html){el.innerHTML=payload.html;return}el.innerHTML=mdHTML(payload.raw)}
 async function sha256(t){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(t));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
 async function tryEnter(){const h=await sha256($('#pw').value);if(h===PW_HASH){sessionStorage.setItem('dfl_board_ok','1');show()}else $('#err').textContent='كلمة المرور غير صحيحة'}
 $('#enter').onclick=tryEnter;$('#pw').addEventListener('keydown',e=>{if(e.key==='Enter')tryEnter()});
@@ -215,8 +216,8 @@ function renderVG(){if(vgInit)return;vgInit=true;
   document.querySelectorAll('#vgnav button').forEach(btn=>btn.onclick=()=>{
     document.querySelectorAll('#vgnav button').forEach(z=>z.classList.remove('on'));btn.classList.add('on');
     const it=VG[btn.dataset.i];if(it.live){renderHealth()}else{loadVG(it.f)}});
-  const first=$('#vgnav button');if(first){first.classList.add('on');loadVG(VG.find(x=>x.f).f)}}
-async function loadVG(file){const el=document.getElementById('vgdoc');el.innerHTML='<div class="loading">جارٍ التحميل…</div>';try{const t=await (await fetch(VGB+file+'?_='+Date.now())).text();el.innerHTML=mdHTML(t)}catch(e){el.innerHTML='<p style="color:#c0392b">تعذّر تحميل الوثيقة.</p>'}}
+  $('#vgdoc').innerHTML='<div class="doc"><h1>🎨 الحوكمة البصرية</h1><p>ملفات <code>.md</code> لا تُخدم على السيرفر حالياً.</p><p><strong>لللوحة والتسليم:</strong> اضغط <button type="button" onclick="openGSystem()" style="padding:.4rem .8rem;border:0;border-radius:8px;background:#054241;color:#fff;font-weight:700;cursor:pointer">🔄 GSystem</button> ← ابدأ هنا</p><p class="docnote">المرجع الكامل في المستودع: <code>visual-governance/</code></p></div>'}
+async function loadVG(file){const el=document.getElementById('vgdoc');el.innerHTML='<p style="color:#c0392b;padding:1rem">ملفات .md محظورة على السيرفر. استخدم <a href="#" onclick="openGSystem();return false">GSystem</a>.</p>'}
 let gsInit=false,gsActive=0;
 function renderGS(){
   if(!gsInit){gsInit=true;
@@ -233,10 +234,10 @@ async function loadGS(item){const el=document.getElementById('gsdoc');if(!item)r
   if(item.team){if(title)title.textContent=item.id==='handoff-board'?'🔀 لوحة التسليم':'🧭 لوحة الفريق';if(sub)sub.textContent=item.id==='handoff-board'?'Trello لجوست — انقل البطاقات + أوامر جاهزة':'تم · جاري · لسه — يتحدّث كل 15 دقيقة'}
   else{if(title)title.textContent='GSystem';if(sub)sub.textContent='Ghost Closed Loop OS · حلقة مغلقة · قراءة فقط'}
   try{
-  const t=await fetchMdJson(GD+item.id+'.json');el.innerHTML=mdHTML(t);
-  if(item.mode)updateGsMode(t)}catch(e){el.innerHTML='<p style="color:#c0392b">تعذّر التحميل: '+esc(e)+'</p><p><code>'+GD+item.id+'.json</code></p><p class="docnote">جرّب Ctrl+Shift+R (تحديث قوي) · أو <a href="/system/gsystem-data/'+item.id+'.json" target="_blank">افتح JSON</a></p>'}}
+  const payload=await fetchMdJson(GD+item.id+'.json');renderDoc(el,payload);
+  if(item.mode)updateGsMode(payload.raw||payload.html)}catch(e){el.innerHTML='<p style="color:#c0392b">تعذّر التحميل: '+esc(e)+'</p><p><code>'+GD+item.id+'.json</code></p><p class="docnote">اضغط <strong>GSystem ← ابدأ هنا</strong> · Ctrl+Shift+R</p>'}}
 async function updateGsMode(modeText){let isYellow=false;try{
-  const t=modeText||await fetchMdJson(GD+'yellow-mode-active.json');
+  const t=modeText||(await fetchMdJson(GD+'yellow-mode-active.json')).raw;
   const head=t.split('\n').slice(0,5).join('\n');
   isYellow=/YELLOW MODE/i.test(head)&&!/GREEN MODE|ended|ENDED/i.test(head)}catch(e){}
   const b=$('#gsMode');if(!b)return;
@@ -263,7 +264,7 @@ async function loadGhost(item){
   if(!item)return;
   const el=document.getElementById('ghostdoc');
   el.innerHTML='<div class="loading">جارٍ التحميل…</div>';
-  try{if(!item.markdown)throw new Error('no markdown');el.innerHTML=mdHTML(item.markdown)}
+  try{if(!item.markdown&&!item.html)throw new Error('no content');if(item.html)el.innerHTML=item.html;else el.innerHTML=mdHTML(item.markdown)}
   catch(e){el.innerHTML='<p style="color:#c0392b">تعذّر تحميل التقرير.</p>'}}
 function kpiColor(k){if(k.value==null)return '#9aa7a3';const v=k.value,t=k.target,w=k.warn;
   if(k.invert){if(v<=t)return '#1f9d57';if(v<=w)return '#e0a400';return '#c0392b'}

@@ -135,7 +135,7 @@ async function loadDoc(id){
   $("#doc").innerHTML='<div class="loading">جارٍ التحميل…</div>';
   try{
     const j=await (await fetch(GD+doc.json+".json?_="+Date.now())).json();
-    $("#doc").innerHTML=marked.parse(j.markdown||"");
+    $("#doc").innerHTML=j.html||(window.marked&&marked.parse?marked.parse(j.markdown||""):("<pre>"+(j.markdown||"")+"</pre>"));
     if(id==="yellow")updateModeBadge(j.markdown);
   }catch(e){
     $("#doc").innerHTML="<p>تعذّر تحميل الملف. شغّل <code>python3 scripts/sync_gsystem_web.py</code> ثم push.</p>";
