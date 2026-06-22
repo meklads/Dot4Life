@@ -79,6 +79,11 @@
 | `blog/rent-vs-buy-saudi-en.html` | `real-estate/rent-vs-buy-gulf-family.html` |
 | `blog/rent-vs-buy-saudi.html` | `real-estate/rent-vs-buy-gulf-family.html` |
 
+## 4) إعادة فرز Cursor (2026-06-22) — 20 FAIL الأصلية
+- **43 PASS** نهائياً (38 + 5 retry بمحسّن FAQ parser)
+- **15 متبقية** → **DEEPEN** (ليست junk — FAQ ناقص أو G2<1200 أو HTML تالف)
+- التفاصيل: `blog-triage-execute-log.md`
+
 ## 3) DEEPEN → طابور Hema (الأهزل أولاً، يمرّ draft-gate ثم اعتمادي ثم بناء Cursor)
 | # | الملف | كلمات الآن |
 |---|------|------:|

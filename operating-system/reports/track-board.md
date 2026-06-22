@@ -16,10 +16,10 @@
 | A-05 | العمرة مع الأطفال + رأس السنة الهجرية | Cursor | **LIVE** 🟢 | auto-gates ✅ | 4 pages |
 | A-06 | أسماء الله + الصلاة بالحب | Cursor | **LIVE** 🟢 | auto-gates ✅ | 4 pages |
 | A-08 | تمويل جدة + عائد إيجار الرياض | Cursor | **LIVE** 🟢 | auto-gates ✅ | 4 pages (+2 EN new) |
-| A-09 | تطوّع صيفي + مخيمات vs منزل | Hema | **REVISE** 🔄 | REVISE | `drafts/task09/_amer-review.md` |
+| A-09 | تطوّع صيفي + مخيمات vs منزل | Cursor | **TECH_BUILD** | ✅ approved (بعد REVISE) | `drafts/task09/` |
 | A-10…A-59 | — | Ship | QUEUE | hold (after A-09) | drafts/task10/ |
 
-**الحالة:** **29 صفحة LIVE** · جودة أرشيف **21%** (58/271). A-09 REVISE عند Hema. **Autonomous loop** — Track C دفعة 2026-06-22.
+**الحالة:** **29 LIVE** · جودة أرشيف **34%** (92/271) · blog triage **43/58 PASS** · A-09 REVISE عند Hema.
 
 ## Track B — Live الرفيع (الأولوية)
 - قائمة أسوأ 20: `track-B-thin-live-top20.md` ✅ منشورة.
@@ -35,9 +35,13 @@
 |------|--------|--------|
 | `track-blog-triage.md` | **Amer** | 🔄 IN_PROGRESS |
 | `scripts/draft-gate.py` | **Amer** | 🔄 IN_PROGRESS |
-| HTML (Schema-only · NOINDEX · DEEPEN build) | **Cursor** | 🟡 **38/58 PASS** · 20→DEEPEN · 301×2 ✅ |
+| HTML (Schema-only · NOINDEX · DEEPEN build) | **Cursor** | 🟡 **43/58 PASS** · 15→DEEPEN · 301×2 ✅ |
 
-> `track-blog-triage.md` · `blog-triage-execute-log.md` · `execute-blog-triage.py`
+> `track-blog-triage.md` · `blog-triage-execute-log.md` · Track E: `ghost/images-2026-06-22-track-e.md`
+
+## Track E — صور (2026-06-22)
+- **62** hero WebP · **43** blog triage PASS تحتاج مراجعة Ghost
+- التقرير: `ghost/images-2026-06-22-track-e.md`
 
 ## بوابات حاكمة
 - معتمد نصاً ≠ Live. التتبّع: `ready-to-build.md`.

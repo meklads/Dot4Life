@@ -110,14 +110,14 @@ def parse_faqs(html: str, lang: str) -> list[tuple[str, str]]:
     # 2) microdata Question — h3 or div.faq-question
     for m in re.finditer(
         r'itemtype="https://schema.org/Question"[\s\S]*?'
-        r'(?:itemprop="name"[^>]*>(.*?)</h3>|class="faq-question"[^>]*itemprop="name"[^>]*>(.*?)</div>|'
+        r'(?:<h3[^>]*itemprop="name"[^>]*>(.*?)</h3>|'
+        r'class="faq-question"[^>]*itemprop="name"[^>]*>(.*?)</div>|'
         r'class="faq-question"[^>]*>(.*?)</div>)'
         r'[\s\S]*?itemprop="text"[\s\S]*?<p>(.*?)</p>',
         html,
         re.I,
     ):
-        q = next((g.strip() for g in m.groups()[:3] if g), "")
-        q = re.sub(r"<[^>]+>", "", q).strip()
+        q = next((re.sub(r"<[^>]+>", "", g).strip() for g in m.groups()[:3] if g), "")
         a = re.sub(r"<[^>]+>", "", m.group(4)).strip()
         if q and a:
             faqs.append((q, a))
@@ -168,6 +168,13 @@ def parse_faqs(html: str, lang: str) -> list[tuple[str, str]]:
             q = re.sub(r"<[^>]+>", "", m.group(1)).strip()
             a = re.sub(r"<[^>]+>", "", m.group(2)).strip()
             if q and a and len(q) > 8:
+                faqs.append((q, a))
+        for m in re.finditer(
+            r"<p><strong>(.+?)</strong><br\s*/?>(.+?)</p>", chunk, re.S | re.I
+        ):
+            q = re.sub(r"<[^>]+>", "", m.group(1)).strip().rstrip("?؟") + "?"
+            a = re.sub(r"<[^>]+>", "", m.group(2)).strip()
+            if q and a and len(a) > 20:
                 faqs.append((q, a))
 
     # dedupe
@@ -517,7 +524,19 @@ def enhance_page(rel: str) -> tuple[bool, str]:
 def main() -> None:
     BACKUP.mkdir(parents=True, exist_ok=True)
     schema, redirects = parse_triage()
-    print(f"=== Blog triage execute ===\nSchema-only: {len(schema)} · 301: {len(redirects)}\n")
+    retry_only = "--retry-failures" in sys.argv
+    if retry_only:
+        fail_log = ROOT / "operating-system/reports/blog-triage-execute-log.md"
+        schema = []
+        if fail_log.exists():
+            for line in fail_log.read_text(encoding="utf-8").splitlines():
+                m = re.match(r"- ((?:blog|guides|comparisons)/[^:]+):", line)
+                if m:
+                    schema.append(m.group(1).strip())
+        redirects = []
+        print(f"=== Retry failures only: {len(schema)} pages ===\n")
+    else:
+        print(f"=== Blog triage execute ===\nSchema-only: {len(schema)} · 301: {len(redirects)}\n")
 
     for src_rel, dest_rel in redirects:
         redirect_stub(ROOT / src_rel, dest_rel)
