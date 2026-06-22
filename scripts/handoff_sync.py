@@ -74,8 +74,8 @@ ARTICLE_TITLES: dict[str, str] = {
 
 HEMA_TASKS = {
     "T-02": "أعد REVISE في drafts/task09/ ثم ضعها في «انتهى من عندي»",
-    "T-03": "وسّع 25 صفحة من hema-deepen-priority.md ثم «انتهى من عندي»",
-    "T-04": "وسّع 10 صفحات DEEPEN تالية ثم «انتهى من عندي»",
+    "T-03": "DEEPEN الـ15 في hema-deepen-t03-blog-triage-15.txt — draft-gate — ثم «انتهى من عندي»",
+    "T-04": "DEEPEN الـ7 في hema-deepen-t04-thin-7.txt — draft-gate — ثم «انتهى من عندي»",
 }
 
 CURSOR_TASKS = {
