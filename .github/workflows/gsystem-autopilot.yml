@@ -1,0 +1,38 @@
+# GSystem Autopilot — on manifest/approved change: build heroes + push
+name: GSystem Autopilot
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "assets/images/image-manifest.json"
+      - "assets/images/approved/**"
+  workflow_dispatch:
+  schedule:
+    # كل 30 دقيقة — يبني إن وُجد approved لم يُحقن بعد
+    - cron: "*/30 * * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  autopilot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run GSystem Autopilot (build + push)
+        env:
+          PYTHONPATH: scripts
+        run: |
+          python3 scripts/gsystem_autopilot.py --push
+
+      - name: Update team inboxes
+        env:
+          PYTHONPATH: scripts
+        run: python3 scripts/gsystem_autopilot.py --notify

@@ -137,6 +137,19 @@ Hema drafts → Self-QA → Amer APPROVED|REVISE|REJECT
 - **لا صورة معتمدة = لا TECH_BUILD جديد** (`BLOCKED_IMAGE`).
 - المصدر الرسمي = **`image-manifest.json`** + `assets/images/approved/`.
 
+## GSystem Autopilot (2026-06-22 — إلزامي)
+
+**`approved` في الفهرس = أمر بناء. ممنوع انتظار موافقة جوست أو «ابنِ».**
+
+| مكوّن | الوظيفة |
+|--------|---------|
+| `scripts/gsystem_autopilot.py` | يفحص الفهرس → يبني → `--push` |
+| `scripts/gsystem_notify.py` | صناديق `operating-system/inbox/*.md` |
+| `.github/workflows/gsystem-autopilot.yml` | CI كل 30 دقيقة + عند push الفهرس |
+| `install-gsystem-autopilot-cron.sh` | Mac كل 15 دقيقة |
+
+راجع `operating-system/gsystem-autopilot.md`.
+
 
 ## Modes
 | Mode | When | APPROVED | LIVE |
