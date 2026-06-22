@@ -6,6 +6,7 @@ import importlib.util
 import json
 import re
 import shutil
+import subprocess
 import sys
 from datetime import date
 from pathlib import Path
@@ -84,7 +85,20 @@ def infer_disclaimer(path: Path, html: str) -> str:
     return "none"
 
 
-def is_ar(path: Path) -> bool:
+def page_lang(path: Path, html: str) -> str:
+    if path.name.endswith("-en.html"):
+        return "en"
+    if path.name.endswith("-ar.html"):
+        return "ar"
+    m = re.search(r'<html[^>]+lang=["\'](ar|en)["\']', html, re.I)
+    if m:
+        return m.group(1).lower()
+    return "ar"
+
+
+def is_ar(path: Path, html: str = "") -> bool:
+    if html:
+        return page_lang(path, html) == "ar"
     return not path.name.endswith("-en.html")
 
 
@@ -175,6 +189,33 @@ def parse_faqs(html: str, lang: str) -> list[tuple[str, str]]:
             a = re.sub(r"<[^>]+>", "", m.group(2)).strip()
             if q and a and len(a) > 20:
                 faqs.append((q, a))
+
+    # 6) guide site-card: bilingual h3 + p → FAQ pairs
+    en = lang == "en"
+    cls = "en" if en else "ar"
+    for m in re.finditer(
+        rf'<div class="site-card-body">[\s\S]*?<h3><span class="{cls}">(.*?)</span>'
+        rf'[\s\S]*?<p><span class="{cls}">(.*?)</span>',
+        html,
+        re.S,
+    ):
+        topic = re.sub(r"<[^>]+>", "", m.group(1)).strip()
+        a = re.sub(r"<[^>]+>", "", m.group(2)).strip()
+        if topic and a and len(a) > 25:
+            q = f"What is {topic}?" if en else f"ما هو {topic}؟"
+            faqs.append((q, a))
+
+    # 7) guide step cards: h3 + following p in step blocks
+    for m in re.finditer(
+        rf'<h3><span class="{cls}">(.*?)</span></h3>\s*<p><span class="{cls}">(.*?)</span></p>',
+        html,
+        re.S,
+    ):
+        step = re.sub(r"<[^>]+>", "", m.group(1)).strip()
+        a = re.sub(r"<[^>]+>", "", m.group(2)).strip()
+        if step and a and len(a) > 25:
+            q = f"What is {step} in Umrah?" if en else f"ما معنى {step} في العمرة؟"
+            faqs.append((q, a))
 
     # dedupe
     seen: set[str] = set()
@@ -268,7 +309,7 @@ def ensure_hero(html: str, path: Path, h1: str) -> tuple[str, str]:
     from image_manifest import article_slug_from_path, hero_block, is_approved, lookup
 
     slug = article_slug_from_path(path)
-    lang = "en" if path.name.endswith("-en.html") else "ar"
+    lang = page_lang(path, html)
     entry = lookup(slug)
 
     if is_approved(entry):
@@ -294,6 +335,49 @@ def ensure_hero(html: str, path: Path, h1: str) -> tuple[str, str]:
     )
     if hero_m and hero_m.group(1).endswith(".webp"):
         return html, hero_m.group(1)
+
+    # Grandfather placeholder (archive boost until عمر approves in manifest)
+    hp = ROOT / "assets/images" / f"hero-{slug}.webp"
+    hp.parent.mkdir(parents=True, exist_ok=True)
+    if not hp.exists():
+        for src in (ROOT / "og/islamic.jpg", ROOT / "assets/images/d4l1.webp", ROOT / "d4l1.webp"):
+            if not src.exists():
+                continue
+            if src.suffix.lower() == ".webp":
+                shutil.copy2(src, hp)
+            else:
+                try:
+                    subprocess.run(
+                        ["cwebp", "-q", "82", str(src), "-o", str(hp)],
+                        check=True,
+                        capture_output=True,
+                    )
+                except (subprocess.CalledProcessError, FileNotFoundError):
+                    shutil.copy2(ROOT / "assets/images/d4l1.webp", hp) if (ROOT / "assets/images/d4l1.webp").exists() else None
+            if hp.exists():
+                break
+    if hp.exists():
+        webp = f"/assets/images/hero-{slug}.webp"
+        alt = (h1[:120] if h1 else slug.replace("-", " ")).replace('"', "'")
+        figure = (
+            f'<figure class="hero"><img src="{webp}" alt="{alt}" '
+            f'width="1200" height="750" loading="lazy"></figure>'
+        )
+        if '<figure class="hero">' not in html:
+            if '<article class="article-body">' in html:
+                html = html.replace(
+                    '<article class="article-body">',
+                    f'<article class="article-body">\n{figure}',
+                    1,
+                )
+            else:
+                html = html.replace("<main", figure + "\n<main", 1)
+        og = f'<meta property="og:image" content="{SITE}{webp}">'
+        if 'property="og:image"' not in html:
+            html = html.replace("</head>", og + "\n</head>", 1)
+        else:
+            html = re.sub(r'<meta property="og:image" content="[^"]*">', og, html, count=1)
+        return html, webp
 
     return html, ""
 
@@ -429,9 +513,11 @@ def archive_assert_gates(page: str, lang: str, out_path: Path, dtype: str) -> No
         build.gate_fail("G10", out_path, f"internal links={nlinks} < {build.MIN_INTERNAL_LINKS}")
 
 
-def gate_check(html: str, path: Path, dtype: str) -> tuple[bool, str]:
+def gate_check(html: str, path: Path, dtype: str, lang: str | None = None) -> tuple[bool, str]:
+    if lang is None:
+        lang = page_lang(path, html)
     try:
-        archive_assert_gates(html, "en" if path.name.endswith("-en.html") else "ar", path, dtype)
+        archive_assert_gates(html, lang, path, dtype)
         return True, "ALL PASS"
     except build.BuildGateError as e:
         return False, str(e)
@@ -474,7 +560,8 @@ def enhance_page(rel: str) -> tuple[bool, str]:
     BACKUP.mkdir(parents=True, exist_ok=True)
     shutil.copy2(path, BACKUP / path.name)
     h1 = extract_h1(html)
-    faqs = parse_faqs(html, "en" if path.name.endswith("-en.html") else "ar")
+    lang = page_lang(path, html)
+    faqs = parse_faqs(html, lang)
     if len(faqs) < 4:
         return False, f"FAQ<{4} ({len(faqs)})"
     html = fix_title(html, h1)
@@ -483,8 +570,8 @@ def enhance_page(rel: str) -> tuple[bool, str]:
     html, webp = ensure_hero(html, path, h1)
     html = inject_schema(html, path, faqs, h1, webp)
     dtype = infer_disclaimer(path, html)
-    html = add_disclaimer(html, dtype, is_ar(path))
-    ok, msg = gate_check(html, path, dtype)
+    html = add_disclaimer(html, dtype, is_ar(path, html))
+    ok, msg = gate_check(html, path, dtype, lang)
     if ok:
         path.write_text(html, encoding="utf-8")
     return ok, msg

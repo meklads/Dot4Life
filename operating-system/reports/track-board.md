@@ -19,7 +19,7 @@
 | A-09 | تطوّع صيفي + مخيمات vs منزل | Cursor | **TECH_BUILD** | ✅ approved (بعد REVISE) | `drafts/task09/` |
 | A-10…A-59 | — | Ship | QUEUE | hold (after A-09) | drafts/task10/ |
 
-**الحالة:** **29 LIVE** · جودة أرشيف **34%** (92/271) · blog triage **43/58 PASS** · A-09 REVISE عند Hema.
+**الحالة:** **29 LIVE** · جودة أرشيف **35%** (95/271) · guides **100%** · blog triage **43/58 PASS** · A-09 REVISE عند Hema.
 
 ## Track B — Live الرفيع (الأولوية)
 - قائمة أسوأ 20: `track-B-thin-live-top20.md` ✅ منشورة.

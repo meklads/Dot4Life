@@ -75,9 +75,11 @@ def article_script(path: Path, html: str) -> str:
     return f'<script type="application/ld+json">{json.dumps(data, ensure_ascii=False)}</script>'
 
 
-def inject(path: Path) -> bool:
+def inject(path: Path, *, require_faq: bool = True) -> bool:
     html = path.read_text(encoding="utf-8")
-    if ARTICLE_RE.search(html) or not FAQ_RE.search(html):
+    if ARTICLE_RE.search(html):
+        return False
+    if require_faq and not FAQ_RE.search(html):
         return False
     block = article_script(path, html)
     # Insert before first FAQPage script or before </head>
@@ -96,19 +98,24 @@ def inject(path: Path) -> bool:
 
 def main() -> None:
     dry = "--dry-run" in sys.argv
+    all_pages = "--all" in sys.argv
     done = 0
     for sec in SECTIONS:
         d = ROOT / sec
         if not d.is_dir():
             continue
         for fp in sorted(d.glob("*.html")):
+            if ".bak" in fp.name:
+                continue
             html = fp.read_text(encoding="utf-8")
-            if ARTICLE_RE.search(html) or not FAQ_RE.search(html):
+            if ARTICLE_RE.search(html):
+                continue
+            if not all_pages and not FAQ_RE.search(html):
                 continue
             if dry:
                 print(f"  would inject Article → {fp.relative_to(ROOT)}")
                 continue
-            if inject(fp):
+            if inject(fp, require_faq=not all_pages):
                 done += 1
                 print(f"  ✅ Article → {fp.relative_to(ROOT)}")
     print(f"\nC-F3 batch: {done} pages got Article schema")
