@@ -80,6 +80,27 @@
   .view-panel{display:none}
   .view-panel.is-active{display:block}
   .loading{color:var(--muted);padding:1.5rem;text-align:center;font-size:.9rem}
+  .handoff-tab{background:linear-gradient(135deg,#fd781c,#e8650a)!important;color:#fff!important;margin-bottom:.5rem}
+  .handoff-tab.active{box-shadow:0 0 0 2px #ffb347}
+  .handoff-head{margin-bottom:1rem}
+  .handoff-head h1{font-size:1.2rem;font-weight:800;color:var(--green)}
+  .handoff-head .sub{font-size:.74rem;color:var(--muted);font-weight:700;line-height:1.6}
+  .handoff-board{display:flex;gap:12px;overflow-x:auto;padding-bottom:1rem;align-items:flex-start}
+  .handoff-col{flex:0 0 min(260px,78vw);background:#e4ebe8;border-radius:14px;padding:.6rem;min-height:200px;max-height:72vh;overflow-y:auto}
+  .handoff-col h2{font-size:.82rem;font-weight:800;padding:.35rem .45rem .5rem;display:flex;justify-content:space-between;align-items:flex-start;gap:6px;line-height:1.4}
+  .handoff-col h2 small{display:block;font-size:.65rem;font-weight:700;color:var(--muted);margin-top:2px}
+  .handoff-col h2 .count{background:#cfdbd6;border-radius:999px;padding:0 .45rem;font-size:.7rem;flex-shrink:0}
+  .handoff-col.drag{outline:2px dashed var(--teal);outline-offset:-3px}
+  .hcard{background:#fff;border:1px solid var(--line);border-left:4px solid var(--green);border-radius:11px;padding:.65rem .75rem;margin-bottom:.5rem;cursor:grab;box-shadow:0 1px 2px rgba(5,66,65,.05)}
+  .hcard .hid{font-size:.68rem;font-weight:800;color:var(--muted)}
+  .hcard .htitle{font-size:.82rem;font-weight:800;line-height:1.45;margin:.15rem 0 .35rem}
+  .hcard .hslug{font-size:.68rem;color:var(--muted);font-family:monospace}
+  .hcard .hcmd{margin-top:.45rem}
+  .hcard .hcmd summary{font-size:.72rem;font-weight:700;cursor:pointer;color:var(--orange)}
+  .hcard .hcmd pre{font-size:.68rem;white-space:pre-wrap;background:var(--cream);border:1px solid var(--line);border-radius:8px;padding:.45rem .5rem;margin-top:.35rem;line-height:1.5}
+  .hcard .copybtn{margin-top:.4rem;font-size:.68rem;font-weight:700;border:0;border-radius:7px;padding:.3rem .55rem;background:var(--cream);color:var(--green);cursor:pointer;width:100%}
+  .hcard .copybtn.ok{background:#eafaf0;color:#1f7a4d}
+  .handoff-toast{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);background:#054241;color:#fff;padding:.65rem 1rem;border-radius:10px;font-size:.78rem;font-weight:700;z-index:60;box-shadow:0 8px 24px rgba(0,0,0,.2);max-width:min(420px,90vw);text-align:center;display:none}
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1436107577087160" crossorigin="anonymous"></script></head>
 <body>
@@ -91,6 +112,7 @@
   <nav class="side">
     <div class="brand">DOT<span class="dot">.</span>FORLIFE</div>
     <button data-s="gsystem" class="gs-tab active">🔄 GSystem ← ابدأ هنا</button>
+    <button data-s="handoff" class="handoff-tab">🔀 التسليم (Trello)</button>
     <button data-s="ghost" class="ghost-tab">👑 جوست</button>
     <button data-s="visual">🎨 الحوكمة البصرية</button>
     <button data-s="development">🔬 التطوير</button>
@@ -105,6 +127,14 @@
     <div id="view-content" class="view-panel"><div class="traction" id="traction"></div><div class="roster" id="roster"></div><div class="board" id="board"></div></div>
     <div id="view-doc" class="view-panel"><div class="doc" id="doc"><div class="loading">جارٍ التحميل…</div></div><div class="docnote">يحدّثه الفريق عبر الملف في <code>system/sections/</code> ويظهر هنا بعد git push.</div></div>
     <div id="view-vg" class="view-panel"><div class="vgnav" id="vgnav"></div><div class="doc" id="vgdoc"><div class="loading">جارٍ التحميل…</div></div><div class="docnote">المرجعية البصرية العليا — المصدر في <code>visual-governance/</code>. أي صورة أو فيديو يمرّ ببوابة الامتثال قبل النشر.</div></div>
+    <div id="view-handoff" class="view-panel">
+      <div class="handoff-head">
+        <h1>🔀 لوحة التسليم — Trello مبسّط</h1>
+        <div class="sub">عمود = عضو · لما يقول «انتهيت» اسحب البطاقة للعضو التالي · انسخ الأمر والصقه في الشات<br>max <strong>3</strong> بطاقات نشطة خارج عمود جوست · التثبيت: قل لـ Cursor «ثبّت التسليم»</div>
+      </div>
+      <div class="handoff-board" id="handoffBoard"><div class="loading">جارٍ التحميل…</div></div>
+      <div class="docnote">المصدر: <code>operating-system/handoff-tickets.json</code> · السحب يحفظ على جهازك · Cursor يثبّت في Git</div>
+    </div>
     <div id="view-gsystem" class="view-panel is-active">
       <div class="gs-head">
         <div><h1 id="gsTitle">GSystem</h1><div class="sub" id="gsSub">Ghost Closed Loop OS · حلقة مغلقة · قراءة فقط</div></div>
@@ -125,6 +155,8 @@
     </div>
   </main>
 </div></div>
+
+<div id="handoffToast" class="handoff-toast"></div>
 
 <script>
 const PW_HASH="8248c7ae40e0134d712024986fb17eefb0d7eed11a779554158e5bbd12c391eb";
@@ -168,8 +200,9 @@ const VG=[
 const GSB='../operating-system/';
 const GD='/system/gsystem-data/';
 const GS=[
+ {k:'🔀 Trello (سحب وإفلات)',id:'handoff-trello',handoff:true},
  {k:'🕐 الحالة الآن (تم·جاري·لسه)',id:'team-board',team:true},
- {k:'🔀 التسليم (Trello)',id:'handoff-board',team:true},
+ {k:'📄 التسليم (نص)',id:'handoff-board',team:true},
  {k:'🧭 اللوحة الموحّدة',id:'track-board'},
  {k:'📦 طابور البناء',id:'ready-to-build'},
  {k:'🟢 GREEN MODE',id:'yellow-mode-active',mode:true},
@@ -186,7 +219,7 @@ async function sha256(t){const b=await crypto.subtle.digest('SHA-256',new TextEn
 async function tryEnter(){const h=await sha256($('#pw').value);if(h===PW_HASH){sessionStorage.setItem('dfl_board_ok','1');show()}else $('#err').textContent='كلمة المرور غير صحيحة'}
 $('#enter').onclick=tryEnter;$('#pw').addEventListener('keydown',e=>{if(e.key==='Enter')tryEnter()});
 $('#lock').onclick=()=>{sessionStorage.removeItem('dfl_board_ok');location.reload()};
-const VIEWS={content:'view-content',doc:'view-doc',vg:'view-vg',gsystem:'view-gsystem',ghost:'view-ghost'};
+const VIEWS={content:'view-content',doc:'view-doc',vg:'view-vg',gsystem:'view-gsystem',ghost:'view-ghost',handoff:'view-handoff'};
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
 function mdHTML(t){const clean=String(t).replace(/<!--[\s\S]*?-->/g,'');try{if(window.marked&&marked.parse)return marked.parse(clean);return'<pre style="white-space:pre-wrap">'+esc(clean)+'</pre>'}catch(e){return'<pre style="white-space:pre-wrap">'+esc(clean)+'</pre>'}}
 function switchView(key){
@@ -198,13 +231,19 @@ function setSideActive(s){
   document.querySelectorAll('.side button[data-s]').forEach(x=>x.classList.remove('active'));
   const b=document.querySelector('.side button[data-s="'+s+'"]');if(b)b.classList.add('active');
 }
-let vgInit=false,gsInit=false,gsActive=0,ghostInit=false,ghostReports=[];
+let vgInit=false,gsInit=false,gsActive=0,ghostInit=false,ghostReports=[],handoffInit=false,HANDOFF=null;
+const HANDOFF_LS='dfl_handoff_cols';
+const handoffOv=()=>JSON.parse(localStorage.getItem(HANDOFF_LS)||'{}');
+const saveHandoffOv=(id,col)=>{const o=handoffOv();o[id]=col;localStorage.setItem(HANDOFF_LS,JSON.stringify(o))};
+function handoffToast(msg){const t=$('#handoffToast');if(!t)return;t.textContent=msg;t.style.display='block';clearTimeout(handoffToast._t);handoffToast._t=setTimeout(()=>{t.style.display='none'},4200)}
+function openHandoff(){setSideActive('handoff');switchView('handoff');HANDOFF=null;renderHandoff()}
 function show(){document.getElementById('gate').style.display='none';document.getElementById('app').style.display='block';openGSystem()}
 function openGSystem(){setSideActive('gsystem');switchView('gsystem');renderGS()}
 document.querySelector('.side').addEventListener('click',e=>{
   const b=e.target.closest('button[data-s]');if(!b)return;
   const s=b.dataset.s;setSideActive(s);
   if(s==='visual'){switchView('vg');renderVG()}
+  else if(s==='handoff'){openHandoff()}
   else if(s==='gsystem'){switchView('gsystem');renderGS()}
   else if(s==='ghost'){switchView('ghost');renderGhost()}
   else{switchView('doc');loadDoc(SECTIONS[s])}
@@ -227,10 +266,12 @@ function renderGS(){
       document.querySelectorAll('#gsnav button').forEach(z=>z.classList.remove('on'));btn.classList.add('on');
       loadGS(GS[gsActive])});
     const first=document.querySelector('#gsnav button');if(first)first.classList.add('on')}
-  loadGS(GS[gsActive]);updateGsMode()}
+  const item=GS[gsActive];
+  if(item&&item.handoff){openHandoff();return}
+  loadGS(item);updateGsMode()}
 async function loadGS(item){const el=document.getElementById('gsdoc');if(!item)return;el.innerHTML='<div class="loading">جارٍ التحميل…</div>';
   const title=document.getElementById('gsTitle');const sub=document.getElementById('gsSub');
-  if(item.team){if(title)title.textContent=item.id==='handoff-board'?'🔀 لوحة التسليم':'🧭 لوحة الفريق';if(sub)sub.textContent=item.id==='handoff-board'?'Trello لجوست — انقل البطاقات + أوامر جاهزة':'تم · جاري · لسه — يتحدّث كل 15 دقيقة'}
+  if(item.team){if(title)title.textContent=item.id==='handoff-board'?'📄 التسليم (نص)':'🧭 لوحة الفريق';if(sub)sub.textContent=item.id==='handoff-board'?'نسخة Markdown — للتسليم البصري استخدم 🔀 التسليم':'تم · جاري · لسه — يتحدّث كل 15 دقيقة'}
   else{if(title)title.textContent='GSystem';if(sub)sub.textContent='Ghost Closed Loop OS · حلقة مغلقة · قراءة فقط'}
   try{
   const payload=await fetchMdJson(GD+item.id+'.json');renderDoc(el,payload);
@@ -281,6 +322,54 @@ async function renderHealth(){$('#vgdoc').innerHTML='جارٍ تحميل لوح�
       <h2>أوزان التنقيط</h2><p>العلامة ${sw.brand}% · الاحتشام ${sw.modesty}% · العاطفي ${sw.emotional}% · التقني ${sw.technical}% · برومبت AI ${sw.ai_prompt}% — عتبة النجاح ${sw.pass_threshold}/100، حدّ الاحتشام ${sw.modesty_min}.</p>
       <div class="docnote">تُحدَّث الأرقام تلقائياً عند تعديل ملف البيانات و git push.</div>`;
   }catch(e){$('#vgdoc').innerHTML='تعذّر تحميل لوحة الصحة (governance-metrics.json).'}}
+
+async function renderHandoff(){
+  const el=$('#handoffBoard');
+  if(!el)return;
+  if(!HANDOFF){
+    el.innerHTML='<div class="loading">جارٍ التحميل…</div>';
+    try{HANDOFF=await (await fetch(GD+'handoff-tickets.json?_='+Date.now())).json()}
+    catch(e){el.innerHTML='<p style="color:#c0392b">تعذّر تحميل التذاكر.</p>';return}
+  }
+  handoffInit=true;
+  const ov=handoffOv();
+  const cards=(HANDOFF.cards||[]).map(c=>({...c,col:ov[c.id]||c.col}));
+  const cols=HANDOFF.columns||[];
+  el.innerHTML=cols.map(col=>{
+    const list=cards.filter(c=>c.col===col.id);
+    return `<div class="handoff-col" data-col="${col.id}" style="border-top:4px solid ${col.color||'#054241'}"><h2><span>${col.title}<small>${col.subtitle||''}</small></span><span class="count">${list.length}</span></h2>${list.map(hcardHTML).join('')}</div>`}).join('');
+  wireHandoff(cards,cols);
+}
+function hcardHTML(c){
+  const cmd=c.command?`<details class="hcmd" open><summary>📋 الأمر — انسخ للعضو</summary><pre>${esc(c.command)}</pre></details><button type="button" class="copybtn">📋 نسخ الأمر</button>`:'';
+  return `<div class="hcard" draggable="true" data-id="${c.id}" style="border-left-color:${c.kind==='text'?'#7d5ba6':'#fd781c'}"><div class="hid">${c.id}</div><div class="htitle">${esc(c.title||c.slug)}</div><div class="hslug">${esc(c.slug||'')}</div>${cmd}</div>`}
+function wireHandoff(cards,cols){
+  let dragId=null;
+  document.querySelectorAll('.hcard').forEach(card=>{
+    card.addEventListener('dragstart',()=>{dragId=card.dataset.id;card.style.opacity=.55});
+    card.addEventListener('dragend',()=>{card.style.opacity=1});
+  });
+  document.querySelectorAll('.handoff-col').forEach(col=>{
+    col.addEventListener('dragover',e=>{e.preventDefault();col.classList.add('drag')});
+    col.addEventListener('dragleave',()=>col.classList.remove('drag'));
+    col.addEventListener('drop',e=>{
+      e.preventDefault();col.classList.remove('drag');
+      if(!dragId)return;
+      const target=col.dataset.col;
+      saveHandoffOv(dragId,target);
+      const c=cards.find(x=>x.id===dragId);
+      const colTitle=(cols.find(x=>x.id===target)||{}).title||target;
+      handoffToast('✅ '+dragId+' → '+colTitle+' · قل: ثبّت '+dragId);
+      renderHandoff();
+    });
+  });
+  document.querySelectorAll('.copybtn').forEach(btn=>btn.onclick=async()=>{
+    const pre=btn.closest('.hcard')?.querySelector('.hcmd pre');
+    const t=pre?pre.textContent:'';
+    try{await navigator.clipboard.writeText(t);btn.textContent='✓ تم النسخ';btn.classList.add('ok')}
+    catch(e){btn.textContent='انسخ يدوياً'}
+  });
+}
 
 let DATA=null,MEMBERS={};const LS='dfl_board_overrides';
 const ov=()=>JSON.parse(localStorage.getItem(LS)||'{}');

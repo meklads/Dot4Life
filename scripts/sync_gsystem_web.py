@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import re
+import shutil
 from datetime import datetime
 from pathlib import Path
 
@@ -132,7 +133,13 @@ def sync_all() -> dict:
         else:
             missing.append(rel)
     n_ghost = sync_ghost()
-    return {"synced": synced, "missing": missing, "ghost_reports": n_ghost}
+    handoff = False
+    ht = ROOT / "operating-system/handoff-tickets.json"
+    if ht.is_file():
+        OUT.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(ht, OUT / "handoff-tickets.json")
+        handoff = True
+    return {"synced": synced, "missing": missing, "ghost_reports": n_ghost, "handoff_tickets": handoff}
 
 
 def main() -> None:
