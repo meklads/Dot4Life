@@ -1,7 +1,7 @@
 {
   "updated": "2026-06-23",
   "phase": 1,
-  "rules": "المرحلة 1: 3 تذاكر في مربع كل عضو. يشتغلون على راحتهم. لما يخلصون ينقلون للعمود «انتهى من عندي». المرحلة 2 لاحقاً.",
+  "rules": "المرحلة 1: 3 تذاكر في مربع كل عضو (عمر · عامر · Hema · Cursor). يشتغلون على راحتهم. لما يخلصون ينقلون للعمود «انتهى من عندي». Cursor يبدأ البناء بعد ما يصل عمل الفريق إلى «انتهى من عندي».",
   "columns": [
     {
       "id": "ghost",
@@ -30,7 +30,7 @@
     {
       "id": "cursor",
       "title": "Cursor",
-      "subtitle": "المرحلة 2 · أوتوبايلوت",
+      "subtitle": "3 تذاكر — بناء ونشر",
       "color": "#34495e"
     },
     {
@@ -154,6 +154,57 @@
       "assignee": "Hema",
       "task": "وسّع 10 صفحات DEEPEN تالية ثم «انتهى من عندي»",
       "command": "T-04: أكمل المسودة — deepen-priority-next-10"
+    },
+    {
+      "id": "C-01",
+      "slug": "deploy-images-07-09",
+      "kind": "build",
+      "col": "cursor",
+      "stage": "waiting",
+      "owner": "Cursor",
+      "article": "نشر صور H-07 → H-09",
+      "depends_on": [
+        "H-07",
+        "H-08",
+        "H-09"
+      ],
+      "assignee": "Cursor",
+      "task": "ابدأ لما H-07..H-09 في «انتهى من عندي»: approved → HTML → push LIVE → ثم «انتهى من عندي»",
+      "command": "C-01: Autopilot — H-07,H-08,H-09 approved → HTML → git push"
+    },
+    {
+      "id": "C-02",
+      "slug": "deploy-images-10-12",
+      "kind": "build",
+      "col": "cursor",
+      "stage": "waiting",
+      "owner": "Cursor",
+      "article": "نشر صور H-10 → H-12",
+      "depends_on": [
+        "H-10",
+        "H-11",
+        "H-12"
+      ],
+      "assignee": "Cursor",
+      "task": "ابدأ لما H-10..H-12 في «انتهى من عندي»: approved → HTML → push LIVE → ثم «انتهى من عندي»",
+      "command": "C-02: Autopilot — H-10,H-11,H-12 approved → HTML → git push"
+    },
+    {
+      "id": "C-03",
+      "slug": "deploy-hema-text",
+      "kind": "build",
+      "col": "cursor",
+      "stage": "waiting",
+      "owner": "Cursor",
+      "article": "نشر نص Hema — T-02 → T-04",
+      "depends_on": [
+        "T-02",
+        "T-03",
+        "T-04"
+      ],
+      "assignee": "Cursor",
+      "task": "ابدأ لما T-02..T-04 في «انتهى من عندي»: دمج مسودات → build → push LIVE → ثم «انتهى من عندي»",
+      "command": "C-03: دمج T-02,T-03,T-04 → build → git push"
     },
     {
       "id": "H-13",

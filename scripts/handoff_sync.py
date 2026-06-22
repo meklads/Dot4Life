@@ -14,6 +14,7 @@ WEB_OUT = ROOT / "system/gsystem-data/handoff-tickets.json"
 
 STAGE_LABEL = {
     "backlog": "في الانتظار",
+    "waiting": "انتظار الفريق",
     "prompt": "برومبت",
     "generate": "توليد",
     "approve": "اعتماد WebP",
@@ -61,6 +62,18 @@ HEMA_TASKS = {
     "T-04": "وسّع 10 صفحات DEEPEN تالية ثم «انتهى من عندي»",
 }
 
+CURSOR_TASKS = {
+    "C-01": "ابدأ لما H-07..H-09 في «انتهى من عندي»: approved → HTML → push LIVE → ثم «انتهى من عندي»",
+    "C-02": "ابدأ لما H-10..H-12 في «انتهى من عندي»: approved → HTML → push LIVE → ثم «انتهى من عندي»",
+    "C-03": "ابدأ لما T-02..T-04 في «انتهى من عندي»: دمج مسودات → build → push LIVE → ثم «انتهى من عندي»",
+}
+
+CURSOR_COMMANDS = {
+    "C-01": "C-01: Autopilot — H-07,H-08,H-09 approved → HTML → git push",
+    "C-02": "C-02: Autopilot — H-10,H-11,H-12 approved → HTML → git push",
+    "C-03": "C-03: دمج T-02,T-03,T-04 → build → git push",
+}
+
 
 def task_for(card: dict) -> str:
     col, stage, cid = card.get("col", "ghost"), card.get("stage", "backlog"), card.get("id", "")
@@ -78,7 +91,7 @@ def task_for(card: dict) -> str:
     if col == "hema":
         return HEMA_TASKS.get(cid, "أكمل المطلوب — ثم «انتهى من عندي»")
     if col == "cursor":
-        return "المرحلة 2 — Autopilot يبني بعد approved"
+        return CURSOR_TASKS.get(cid, "بناء ونشر — ثم «انتهى من عندي»")
     return card.get("task", "")
 
 
@@ -121,7 +134,7 @@ def command_for(card: dict, col: str) -> str:
     if col == "hema":
         return card.get("command") or f"{cid}: أكمل المسودة — {slug}"
     if col == "cursor":
-        return f"{cid}: approved جاهز — Autopilot يبني؛ راقب team-board — {slug}"
+        return CURSOR_COMMANDS.get(cid, f"{cid}: approved جاهز — Autopilot يبني — {slug}")
     return card.get("command", "")
 
 
@@ -135,7 +148,7 @@ def advance_stage(card: dict, col: str, prev_col: str) -> str:
     if col == "hema":
         return card.get("stage", "revise")
     if col == "cursor":
-        return "build"
+        return "build" if prev_col == "cursor" else card.get("stage", "waiting")
     if col == "member_done":
         return "member_complete"
     if col == "done":
@@ -211,7 +224,8 @@ def render_board_md(data: dict) -> str:
         "2. يشتغل على راحته.\n"
         "3. لما يخلص ينقل التذكرة لـ **انتهى من عندي**.\n"
         "4. جوست يقول «ابدؤوا» — مو لازم يتابع كل تذكرة.\n"
-        "5. المرحلة 2: نربط «انتهى من عندي» بالعضو التالي.\n"
+        "5. **Cursor** يبدأ البناء لما تصل تذاكر الفريق إلى «انتهى من عندي».\n"
+        "6. المرحلة 2: نربط «انتهى من عندي» بالعضو التالي.\n"
     )
     return "".join(parts)
 

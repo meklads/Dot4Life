@@ -38,6 +38,12 @@ def norm_id(raw: str) -> str:
     m = re.match(r"^H-?(\d+)$", raw, re.I)
     if m:
         return f"H-{int(m.group(1)):02d}"
+    m = re.match(r"^C-?(\d+)$", raw, re.I)
+    if m:
+        return f"C-{int(m.group(1)):02d}"
+    m = re.match(r"^T-?(\d+)$", raw, re.I)
+    if m:
+        return f"T-{int(m.group(1)):02d}"
     return raw
 
 
