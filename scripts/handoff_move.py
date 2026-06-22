@@ -21,6 +21,7 @@ ALIASES = {
     "عامر": "amer",
     "amer": "amer",
     "كلود": "amer",
+    "moni": "hema",
     "hema": "hema",
     "cursor": "cursor",
     "منتهي": "done",

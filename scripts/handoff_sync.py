@@ -26,15 +26,22 @@ STAGE_LABEL = {
 
 ASSIGNEE = {
     "ghost": "جوست",
-    "omar": "عمر",
-    "amer": "عامر",
     "hema": "Hema",
     "cursor": "Cursor",
     "member_done": "—",
     "done": "—",
 }
 
-OWNER_FOR_COL = {"omar": "عمر", "amer": "عامر", "hema": "Hema", "cursor": "Cursor"}
+SKILL_LABELS = {
+    "omar": "Hema · سكيل عمر",
+    "moni": "Hema · سكيل Moni",
+    "amer": "Hema · سكيل عامر",
+    "ruwaq": "Hema · سكيل Ruwaq",
+}
+
+SKILL_ALIASES = {"omar", "amer", "moni", "ruwaq", "hema"}
+
+AGENT = "Hema"
 
 ARTICLE_TITLES: dict[str, str] = {
     "investment-basics-beginners": "استثمار للمبتدئين",
@@ -105,11 +112,43 @@ CURSOR_COMMANDS = {
 }
 
 GHOST_POOL = {
-    "omar": "برومبت → عمر",
-    "amer": "توليد → عامر",
-    "hema": "DEEPEN → Hema",
-    "cursor": "بناء/جودة → Cursor",
+    "omar": "Hema · سكيل عمر",
+    "amer": "Hema · سكيل عامر",
+    "hema": "Hema · سكيل Moni",
+    "moni": "Hema · سكيل Moni",
+    "cursor": "Cursor · بناء",
 }
+
+
+def infer_skill(card: dict) -> str:
+    if card.get("skill"):
+        return card["skill"]
+    pool = card.get("pool_for", "")
+    if pool == "hema":
+        return "moni"
+    if pool in SKILL_LABELS:
+        return pool
+    cid = card.get("id", "")
+    if cid.startswith("T-"):
+        return "moni"
+    if card.get("stage") == "generate":
+        return "amer"
+    if cid.startswith("H-"):
+        return "omar"
+    return "moni"
+
+
+def skill_label(card: dict) -> str:
+    return SKILL_LABELS.get(infer_skill(card), AGENT)
+
+
+def normalize_col(col: str, card: dict) -> str:
+    if col in SKILL_ALIASES or col in ("omar", "amer"):
+        card["skill"] = "moni" if col in ("hema", "moni") else col
+        return "hema"
+    if col == "hema" and not card.get("skill"):
+        card["skill"] = infer_skill(card)
+    return col
 
 
 def task_for(card: dict) -> str:
@@ -117,37 +156,47 @@ def task_for(card: dict) -> str:
     if col == "done":
         return "منتهي — على الموقع"
     if col == "member_done":
-        who = card.get("owner", "العضو")
-        return f"انتهى من جهة {who} — بانتظار المرحلة التالية"
+        return f"انتهى — {skill_label(card)} — بانتظار المرحلة التالية"
     if col == "ghost":
         pool = card.get("pool_for", "")
         label = GHOST_POOL.get(pool, "مخزون")
         reason = card.get("reason", "")
         return f"مخزون جوست — {label}" + (f" · {reason}" if reason else "")
-    if col == "omar":
-        return "جهّز برومبت الصورة وضعه pending — ثم انقلها لـ «انتهى من عندي»"
-    if col == "amer":
-        return "ولّد الصورة WebP 1200×750 (تحقق من برومبت عمر) — ثم «انتهى من عندي»"
     if col == "hema":
-        return HEMA_TASKS.get(cid, "أكمل المطلوب — ثم «انتهى من عندي»")
+        sk = infer_skill(card)
+        if sk == "omar":
+            return "جهّز برومبت الصورة وضعه pending — ثم «انتهى من عندي»"
+        if sk == "amer":
+            return "ولّد الصورة WebP 1200×750 — ثم «انتهى من عندي»"
+        return HEMA_TASKS.get(cid, "DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي»")
     if col == "cursor":
         return CURSOR_TASKS.get(cid, "بناء ونشر — ثم «انتهى من عندي»")
     return card.get("task", "")
 
 
+
 def enrich_card(card: dict) -> dict:
     slug = card.get("slug", "")
+    if card.get("col") in ("omar", "amer"):
+        card["skill"] = infer_skill(card)
+        card["col"] = "hema"
+    if card.get("col") == "hema" and not card.get("skill"):
+        card["skill"] = infer_skill(card)
     if not card.get("article"):
         card["article"] = ARTICLE_TITLES.get(slug, card.get("title", slug))
-    card["assignee"] = card.get("owner") or ASSIGNEE.get(card.get("col", "ghost"), "—")
-    if card.get("col") == "ghost" and card.get("pool_for"):
+    if card.get("col") in ("hema", "member_done") and card.get("skill"):
+        card["owner"] = AGENT
+        lbl = skill_label(card)
+        card["assignee"] = lbl + (" (انتهى)" if card.get("col") == "member_done" else "")
+    elif card.get("col") == "ghost" and card.get("pool_for"):
         card["assignee"] = GHOST_POOL.get(card["pool_for"], "جوست")
-    if card.get("col") == "member_done" and card.get("owner"):
-        card["assignee"] = card["owner"] + " (انتهى)"
+    else:
+        card["assignee"] = card.get("owner") or ASSIGNEE.get(card.get("col", "ghost"), "—")
     card["task"] = task_for(card)
-    if card.get("col") not in ("done", "ghost") and not card.get("command"):
+    if card.get("col") not in ("done", "ghost", "member_done") and not card.get("command"):
         card["command"] = command_for(card, card["col"])
     return card
+
 
 
 def enrich_all(data: dict) -> dict:
@@ -167,12 +216,13 @@ def save(data: dict) -> None:
 
 def command_for(card: dict, col: str) -> str:
     cid, slug = card["id"], card.get("slug", "")
-    if col == "omar":
-        if card.get("stage") == "approve" or card.get("_prev_col") == "amer":
+    sk = infer_skill(card) if col == "hema" else ""
+    if col == "hema" and sk == "omar":
+        if card.get("stage") == "approve":
             return f"{cid}: راجع WebP → approved في الفهرس + approved/ — {slug}"
         return card.get("command") or f"{cid}: جهّز برومبت + pending في الفهرس — {slug}"
-    if col == "amer":
-        return f"{cid}: ولّد في Higgsfield → WebP 1200×750 → سلّم لعمر: hero-{slug}.webp"
+    if col == "hema" and sk == "amer":
+        return f"{cid}: ولّد في Higgsfield → WebP 1200×750 → hero-{slug}.webp"
     if col == "hema":
         return card.get("command") or f"{cid}: أكمل المسودة — {slug}"
     if col == "cursor":
@@ -180,14 +230,16 @@ def command_for(card: dict, col: str) -> str:
     return card.get("command", "")
 
 
+
 def advance_stage(card: dict, col: str, prev_col: str) -> str:
     if col == "ghost":
         return "backlog"
-    if col == "omar":
-        return "approve" if prev_col == "amer" else "prompt"
-    if col == "amer":
-        return "generate"
     if col == "hema":
+        sk = infer_skill(card)
+        if sk == "omar":
+            return "approve" if card.get("stage") == "approve" else "prompt"
+        if sk == "amer":
+            return "generate"
         return card.get("stage", "revise")
     if col == "cursor":
         return "build" if prev_col == "cursor" else card.get("stage", "waiting")
@@ -198,15 +250,17 @@ def advance_stage(card: dict, col: str, prev_col: str) -> str:
     return card.get("stage", "backlog")
 
 
+
 def move_card(data: dict, card_id: str, col: str) -> dict | None:
     for card in data["cards"]:
         if card["id"] == card_id:
             prev = card.get("col", "ghost")
             card["_prev_col"] = prev
+            col = normalize_col(col, card)
             card["col"] = col
             card["stage"] = advance_stage(card, col, prev)
-            if prev == "ghost" and col in OWNER_FOR_COL:
-                card["owner"] = OWNER_FOR_COL[col]
+            if prev == "ghost" and col == "hema":
+                card["owner"] = AGENT
             if col not in ("done", "ghost", "member_done"):
                 card["command"] = command_for(card, col)
             if col in ("done", "member_done"):
@@ -217,6 +271,7 @@ def move_card(data: dict, card_id: str, col: str) -> dict | None:
             enrich_card(card)
             return card
     return None
+
 
 
 def _esc(s: str) -> str:
