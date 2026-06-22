@@ -198,6 +198,7 @@ function setSideActive(s){
   document.querySelectorAll('.side button[data-s]').forEach(x=>x.classList.remove('active'));
   const b=document.querySelector('.side button[data-s="'+s+'"]');if(b)b.classList.add('active');
 }
+let vgInit=false,gsInit=false,gsActive=0,ghostInit=false,ghostReports=[];
 function show(){document.getElementById('gate').style.display='none';document.getElementById('app').style.display='block';openGSystem()}
 function openGSystem(){setSideActive('gsystem');switchView('gsystem');renderGS()}
 document.querySelector('.side').addEventListener('click',e=>{
@@ -210,7 +211,6 @@ document.querySelector('.side').addEventListener('click',e=>{
 });
 if(sessionStorage.getItem('dfl_board_ok')==='1')show();
 async function loadDoc(file){const el=document.getElementById('doc');if(!file){el.innerHTML='<p style="color:#c0392b">قسم غير معرّف.</p>';return}el.innerHTML='<div class="loading">جارٍ التحميل…</div>';try{const t=await (await fetch(file+'?_='+Date.now())).text();if(!t.trim())throw new Error('empty');el.innerHTML=mdHTML(t)}catch(e){el.innerHTML='<p style="color:#c0392b">تعذّر تحميل الملف: <code>'+file+'</code></p>'}}
-let vgInit=false;
 function renderVG(){if(vgInit)return;vgInit=true;
   $('#vgnav').innerHTML=VG.map((x,i)=>x.g?`<span class="grp">${x.g}</span>`:`<button data-i="${i}">${x.k}</button>`).join('');
   document.querySelectorAll('#vgnav button').forEach(btn=>btn.onclick=()=>{
@@ -218,7 +218,6 @@ function renderVG(){if(vgInit)return;vgInit=true;
     const it=VG[btn.dataset.i];if(it.live){renderHealth()}else{loadVG(it.f)}});
   $('#vgdoc').innerHTML='<div class="doc"><h1>🎨 الحوكمة البصرية</h1><p>ملفات <code>.md</code> لا تُخدم على السيرفر حالياً.</p><p><strong>لللوحة والتسليم:</strong> اضغط <button type="button" onclick="openGSystem()" style="padding:.4rem .8rem;border:0;border-radius:8px;background:#054241;color:#fff;font-weight:700;cursor:pointer">🔄 GSystem</button> ← ابدأ هنا</p><p class="docnote">المرجع الكامل في المستودع: <code>visual-governance/</code></p></div>'}
 async function loadVG(file){const el=document.getElementById('vgdoc');el.innerHTML='<p style="color:#c0392b;padding:1rem">ملفات .md محظورة على السيرفر. استخدم <a href="#" onclick="openGSystem();return false">GSystem</a>.</p>'}
-let gsInit=false,gsActive=0;
 function renderGS(){
   if(!gsInit){gsInit=true;
     document.getElementById('gsnav').innerHTML=GS.map((x,i)=>'<button type="button" data-i="'+i+'">'+x.k+'</button>').join('');
@@ -242,7 +241,6 @@ async function updateGsMode(modeText){let isYellow=false;try{
   isYellow=/YELLOW MODE/i.test(head)&&!/GREEN MODE|ended|ENDED/i.test(head)}catch(e){}
   const b=$('#gsMode');if(!b)return;
   if(isYellow){b.className='mode yellow';b.textContent='🟡 YELLOW'}else{b.className='mode green';b.textContent='🟢 GREEN'}}
-let ghostInit=false,ghostReports=[];
 async function renderGhost(){
   if(!ghostInit){
     ghostInit=true;

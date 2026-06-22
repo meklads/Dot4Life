@@ -39,8 +39,13 @@ def md_to_html(markdown: str) -> str:
         return f"<pre>{clean}</pre>"
     script = r"""
 const fs=require('fs');
+const vm=require('vm');
 const code=fs.readFileSync(process.argv[1],'utf8');
-eval(code);
+const ctx={console,globalThis:{}};
+vm.createContext(ctx);
+vm.runInContext(code,ctx);
+const marked=ctx.globalThis.marked||ctx.marked;
+if(!marked||typeof marked.parse!=='function')process.exit(2);
 const md=fs.readFileSync(0,'utf8');
 process.stdout.write(marked.parse(md));
 """
