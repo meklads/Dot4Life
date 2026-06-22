@@ -30,6 +30,7 @@ ASSIGNEE = {
     "hema": "Hema",
     "cursor": "Cursor",
     "amer": "عامر",
+    "member_done": "—",
     "done": "—",
 }
 
@@ -51,27 +52,36 @@ ARTICLE_TITLES: dict[str, str] = {
     "family-friendly-activities-gulf-cities": "أنشطة عائلية في مدن الخليج",
     "best-family-destinations-gulf": "أفضل وجهات عائلية في الخليج",
     "A-09": "مسودة A-09",
+    "deepen-priority-25": "DEEPEN — أولوية 25 صفحة",
+    "deepen-priority-next-10": "DEEPEN — 10 صفحات تالية",
+}
+
+HEMA_TASKS = {
+    "T-02": "أعد REVISE في drafts/task09/ ثم ضعها في «انتهى من عندي»",
+    "T-03": "وسّع 25 صفحة من hema-deepen-priority.md ثم «انتهى من عندي»",
+    "T-04": "وسّع 10 صفحات DEEPEN تالية ثم «انتهى من عندي»",
 }
 
 
 def task_for(card: dict) -> str:
-    col, stage = card.get("col", "ghost"), card.get("stage", "backlog")
+    col, stage, cid = card.get("col", "ghost"), card.get("stage", "backlog"), card.get("id", "")
     if col == "done":
         return "منتهي — على الموقع"
+    if col == "member_done":
+        who = card.get("owner", "العضو")
+        return f"انتهى من جهة {who} — بانتظار المرحلة التالية"
     if col == "ghost":
-        return "بانتظار قرار جوست — متى تُسلَّم للفريق"
-    if col == "omar" and stage == "approve":
-        return "راجع الصورة وضعها approved في الفهرس ومجلد approved"
+        return "احتياط — دفعة قادمة"
     if col == "omar":
-        return "جهّز برومبت الصورة الرئيسية وضعه pending في الفهرس"
+        return "جهّز برومبت الصورة وضعه pending — ثم انقلها لـ «انتهى من عندي»"
     if col == "claude":
-        return "ولّد الصورة في Higgsfield WebP 1200×750 وسلّم الملف لعمر"
-    if col == "cursor":
-        return "تأكد Autopilot بنى الصورة على صفحات المقال"
-    if col == "amer":
-        return "تحقق: hero + alt + G5 على الموقع"
+        return "ولّد الصورة WebP 1200×750 (تحقق من برومبت عمر) — ثم «انتهى من عندي»"
     if col == "hema":
-        return card.get("task") or "أكمل المسودة وأرسل لعامر"
+        return HEMA_TASKS.get(cid, "أكمل المطلوب — ثم «انتهى من عندي»")
+    if col == "cursor":
+        return "المرحلة 2 — Autopilot يبني بعد approved"
+    if col == "amer":
+        return "المرحلة 2 — BUILD VERIFY"
     return card.get("task", "")
 
 
@@ -79,7 +89,9 @@ def enrich_card(card: dict) -> dict:
     slug = card.get("slug", "")
     if not card.get("article"):
         card["article"] = ARTICLE_TITLES.get(slug, card.get("title", slug))
-    card["assignee"] = ASSIGNEE.get(card.get("col", "ghost"), "—")
+    card["assignee"] = card.get("owner") or ASSIGNEE.get(card.get("col", "ghost"), "—")
+    if card.get("col") == "member_done" and card.get("owner"):
+        card["assignee"] = card["owner"] + " (انتهى)"
     card["task"] = task_for(card)
     if card.get("col") not in ("done", "ghost") and not card.get("command"):
         card["command"] = command_for(card, card["col"])
@@ -131,6 +143,8 @@ def advance_stage(card: dict, col: str, prev_col: str) -> str:
         return "build"
     if col == "amer":
         return "verify"
+    if col == "member_done":
+        return "member_complete"
     if col == "done":
         return "done"
     return card.get("stage", "backlog")
@@ -143,10 +157,11 @@ def move_card(data: dict, card_id: str, col: str) -> dict | None:
             card["_prev_col"] = prev
             card["col"] = col
             card["stage"] = advance_stage(card, col, prev)
-            if col not in ("done", "ghost"):
+            if col not in ("done", "ghost", "member_done"):
                 card["command"] = command_for(card, col)
-            if col == "done":
-                card["finished"] = datetime.now().strftime("%Y-%m-%d")
+            if col in ("done", "member_done"):
+                if col == "done":
+                    card["finished"] = datetime.now().strftime("%Y-%m-%d")
                 card["command"] = ""
             card.pop("_prev_col", None)
             enrich_card(card)
@@ -176,75 +191,36 @@ def _rows(cards: list[dict], col: str) -> str:
 def render_board_md(data: dict) -> str:
     cards = data["cards"]
     updated = data.get("updated", "")
-    return f"""# 👑 لوحة التسليم — Handoff Board (Trello لجوست)
-
-> **أنت = الـ Hub.** عمود = عضو · لما يقول «انتهيت» → انقل البطاقة · انسخ الأمر.
-> **الواجهة البصرية:** `system/board.html` → **🔀 التسليم (Trello)**
-> **المصدر:** `handoff-tickets.json` · آخر مزامنة: {updated}
-
----
-
-## 📋 عند جوست — ابدأ من هنا
-
-| التذكرة | المقال | موجه لـ | المطلوب |
-|---------|--------|---------|---------|
-{_rows(cards, "ghost")}
----
-
-## 🎨 عند عمر
-
-| التذكرة | المقال | موجه لـ | المطلوب |
-|---------|--------|---------|---------|
-{_rows(cards, "omar")}
----
-
-## 🤖 عند كلود — توليد Higgsfield
-
-| التذكرة | المقال | موجه لـ | المطلوب |
-|---------|--------|---------|---------|
-{_rows(cards, "claude")}
----
-
-## ✍️ عند Hema — نص
-
-| التذكرة | المقال | موجه لـ | المطلوب |
-|---------|--------|---------|---------|
-{_rows(cards, "hema")}
----
-
-## ⚙️ عند Cursor — بناء
-
-| التذكرة | المقال | موجه لـ | المطلوب |
-|---------|--------|---------|---------|
-{_rows(cards, "cursor")}
----
-
-## 🛡️ عند عامر — BUILD VERIFY
-
-| التذكرة | المقال | موجه لـ | المطلوب |
-|---------|--------|---------|---------|
-{_rows(cards, "amer")}
----
-
-## ✅ منتهي
-
-| التذكرة | المقال | انتهى |
-|---------|--------|-------|
-{_rows(cards, "done")}
----
-
-## مسار الصورة
-
-```
-جوست → عمر (برومبت) → كلود → عمر (اعتماد) → Cursor → عامر → ✅
-```
-
-## ثبّت التسليم
-
-```bash
-python3 scripts/handoff_move.py H-07 omar
-```
-"""
+    phase = data.get("phase", 1)
+    rules = data.get("rules", "")
+    parts = [
+        f"# لوحة التسليم — المرحلة {phase}\n",
+        f"> {rules}\n",
+        f"> الواجهة: `system/board.html` → التسليم (Trello)\n",
+        f"> آخر مزامنة: {updated}\n",
+        "\n---\n",
+    ]
+    for col in data.get("columns", []):
+        cid = col["id"]
+        title = col.get("title", cid)
+        sub = col.get("subtitle", "")
+        if cid == "done":
+            parts.append(f"\n## {title}\n\n| التذكرة | المقال | انتهى |\n|---------|--------|-------|\n")
+        else:
+            parts.append(
+                f"\n## {title} — {sub}\n\n| التذكرة | المقال | موجه لـ | المطلوب |\n|---------|--------|---------|----------|\n"
+            )
+        parts.append(_rows(cards, cid))
+        parts.append("\n---\n")
+    parts.append(
+        "\n## تعليمات المرحلة 1\n\n"
+        "1. كل عضو عنده 3 تذاكر في مربعه.\n"
+        "2. يشتغل على راحته.\n"
+        "3. لما يخلص ينقل التذكرة لـ **انتهى من عندي**.\n"
+        "4. جوست يقول «ابدؤوا» — مو لازم يتابع كل تذكرة.\n"
+        "5. المرحلة 2: نربط «انتهى من عندي» بالعضو التالي.\n"
+    )
+    return "".join(parts)
 
 
 def export_web(data: dict | None = None) -> None:

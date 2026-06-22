@@ -27,6 +27,10 @@ ALIASES = {
     "منتهي": "done",
     "done": "done",
     "تم": "done",
+    "member_done": "member_done",
+    "انتهى": "member_done",
+    "انتهيت": "member_done",
+    "منتهى": "member_done",
 }
 
 
