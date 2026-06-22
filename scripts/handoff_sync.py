@@ -23,6 +23,74 @@ STAGE_LABEL = {
     "done": "LIVE",
 }
 
+ASSIGNEE = {
+    "ghost": "جوست",
+    "omar": "عمر",
+    "claude": "كلود",
+    "hema": "Hema",
+    "cursor": "Cursor",
+    "amer": "عامر",
+    "done": "—",
+}
+
+ARTICLE_TITLES: dict[str, str] = {
+    "investment-basics-beginners": "استثمار للمبتدئين",
+    "rent-vs-buy-gulf-family": "إيجار أم تملّك للعائلة الخليجية",
+    "daily-walking-benefits": "فوائد المشي اليومي",
+    "pregnancy-week-by-week": "الحمل أسبوع بأسبوع",
+    "preconception-checkups": "فحوصات ما قبل الحمل",
+    "umrah-with-kids": "العمرة مع الأطفال",
+    "hijri-new-year-children": "رأس السنة الهجرية والأطفال",
+    "teaching-children-allah-names": "تعليم أسماء الله للأطفال",
+    "teaching-children-prayer-with-love": "تعليم الصلاة بالحب",
+    "jeddah-mortgage-calculator": "حاسبة تمويل جدة",
+    "family-budget-plan": "خطة ميزانية العائلة",
+    "bmi-calculator-women": "حاسبة BMI للنساء",
+    "daily-adhkar-family-guide": "أذكار يومية للعائلة",
+    "children-sleep-summer": "نوم الأطفال في الصيف",
+    "family-friendly-activities-gulf-cities": "أنشطة عائلية في مدن الخليج",
+    "best-family-destinations-gulf": "أفضل وجهات عائلية في الخليج",
+    "A-09": "مسودة A-09",
+}
+
+
+def task_for(card: dict) -> str:
+    col, stage = card.get("col", "ghost"), card.get("stage", "backlog")
+    if col == "done":
+        return "منتهي — على الموقع"
+    if col == "ghost":
+        return "بانتظار قرار جوست — متى تُسلَّم للفريق"
+    if col == "omar" and stage == "approve":
+        return "راجع الصورة وضعها approved في الفهرس ومجلد approved"
+    if col == "omar":
+        return "جهّز برومبت الصورة الرئيسية وضعه pending في الفهرس"
+    if col == "claude":
+        return "ولّد الصورة في Higgsfield WebP 1200×750 وسلّم الملف لعمر"
+    if col == "cursor":
+        return "تأكد Autopilot بنى الصورة على صفحات المقال"
+    if col == "amer":
+        return "تحقق: hero + alt + G5 على الموقع"
+    if col == "hema":
+        return card.get("task") or "أكمل المسودة وأرسل لعامر"
+    return card.get("task", "")
+
+
+def enrich_card(card: dict) -> dict:
+    slug = card.get("slug", "")
+    if not card.get("article"):
+        card["article"] = ARTICLE_TITLES.get(slug, card.get("title", slug))
+    card["assignee"] = ASSIGNEE.get(card.get("col", "ghost"), "—")
+    card["task"] = task_for(card)
+    if card.get("col") not in ("done", "ghost") and not card.get("command"):
+        card["command"] = command_for(card, card["col"])
+    return card
+
+
+def enrich_all(data: dict) -> dict:
+    for card in data.get("cards", []):
+        enrich_card(card)
+    return data
+
 
 def load() -> dict:
     return json.loads(TICKETS.read_text(encoding="utf-8"))
@@ -81,6 +149,7 @@ def move_card(data: dict, card_id: str, col: str) -> dict | None:
                 card["finished"] = datetime.now().strftime("%Y-%m-%d")
                 card["command"] = ""
             card.pop("_prev_col", None)
+            enrich_card(card)
             return card
     return None
 
@@ -96,15 +165,10 @@ def _rows(cards: list[dict], col: str) -> str:
     lines: list[str] = []
     for c in active:
         if col == "done":
-            lines.append(f"| {c['id']} | `{c.get('slug', '')}` | {c.get('finished', '—')} |")
-        elif col == "ghost":
-            lines.append(
-                f"| {c['id']} | `{c.get('slug', '')}` | {c.get('title', '')} | {_esc(c.get('command', ''))} |"
-            )
+            lines.append(f"| {c['id']} | {c.get('article', '')} | {c.get('finished', '—')} |")
         else:
-            note = STAGE_LABEL.get(c.get("stage", ""), c.get("stage", ""))
             lines.append(
-                f"| {c['id']} | `{c.get('slug', '')}` | {note} | {_esc(c.get('command', ''))} |"
+                f"| {c['id']} | {c.get('article', '')} | {c.get('assignee', '')} | {c.get('task', '')} |"
             )
     return "\n".join(lines) + "\n"
 
@@ -122,50 +186,50 @@ def render_board_md(data: dict) -> str:
 
 ## 📋 عند جوست — ابدأ من هنا
 
-| ID | slug | المهمة | أمر عند التسليم |
-|----|------|--------|------------------|
+| التذكرة | المقال | موجه لـ | المطلوب |
+|---------|--------|---------|---------|
 {_rows(cards, "ghost")}
 ---
 
 ## 🎨 عند عمر
 
-| ID | slug | حالة | أمر |
-|----|------|------|-----|
+| التذكرة | المقال | موجه لـ | المطلوب |
+|---------|--------|---------|---------|
 {_rows(cards, "omar")}
 ---
 
 ## 🤖 عند كلود — توليد Higgsfield
 
-| ID | slug | حالة | أمر |
-|----|------|------|-----|
+| التذكرة | المقال | موجه لـ | المطلوب |
+|---------|--------|---------|---------|
 {_rows(cards, "claude")}
 ---
 
 ## ✍️ عند Hema — نص
 
-| ID | slug | حالة | أمر |
-|----|------|------|-----|
+| التذكرة | المقال | موجه لـ | المطلوب |
+|---------|--------|---------|---------|
 {_rows(cards, "hema")}
 ---
 
 ## ⚙️ عند Cursor — بناء
 
-| ID | slug | حالة | ملاحظة |
-|----|------|------|--------|
+| التذكرة | المقال | موجه لـ | المطلوب |
+|---------|--------|---------|---------|
 {_rows(cards, "cursor")}
 ---
 
 ## 🛡️ عند عامر — BUILD VERIFY
 
-| ID | slug | حالة | أمر |
-|----|------|------|-----|
+| التذكرة | المقال | موجه لـ | المطلوب |
+|---------|--------|---------|---------|
 {_rows(cards, "amer")}
 ---
 
 ## ✅ منتهي
 
-| ID | slug | انتهى |
-|----|------|-------|
+| التذكرة | المقال | انتهى |
+|---------|--------|-------|
 {_rows(cards, "done")}
 ---
 
@@ -190,7 +254,8 @@ def export_web(data: dict | None = None) -> None:
 
 
 def sync_all(write_md: bool = True) -> dict:
-    data = load()
+    data = enrich_all(load())
+    save(data)
     if write_md:
         BOARD_MD.write_text(render_board_md(data), encoding="utf-8")
     export_web(data)

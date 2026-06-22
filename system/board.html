@@ -93,8 +93,10 @@
   .handoff-col.drag{outline:2px dashed var(--teal);outline-offset:-3px}
   .hcard{background:#fff;border:1px solid var(--line);border-left:4px solid var(--green);border-radius:11px;padding:.65rem .75rem;margin-bottom:.5rem;cursor:grab;box-shadow:0 1px 2px rgba(5,66,65,.05)}
   .hcard .hid{font-size:.68rem;font-weight:800;color:var(--muted)}
-  .hcard .htitle{font-size:.82rem;font-weight:800;line-height:1.45;margin:.15rem 0 .35rem}
-  .hcard .hslug{font-size:.68rem;color:var(--muted);font-family:monospace}
+  .hcard .hrow{display:flex;gap:8px;font-size:.76rem;line-height:1.5;margin-bottom:.4rem;align-items:flex-start}
+  .hcard .hlbl{font-weight:800;color:var(--muted);flex:0 0 4.2rem}
+  .hcard .hval{flex:1;font-weight:700;color:var(--green)}
+  .hcard .hval.task{font-weight:600}
   .hcard .hcmd{margin-top:.45rem}
   .hcard .hcmd summary{font-size:.72rem;font-weight:700;cursor:pointer;color:var(--orange)}
   .hcard .hcmd pre{font-size:.68rem;white-space:pre-wrap;background:var(--cream);border:1px solid var(--line);border-radius:8px;padding:.45rem .5rem;margin-top:.35rem;line-height:1.5}
@@ -341,8 +343,9 @@ async function renderHandoff(){
   wireHandoff(cards,cols);
 }
 function hcardHTML(c){
-  const cmd=c.command?`<details class="hcmd" open><summary>📋 الأمر — انسخ للعضو</summary><pre>${esc(c.command)}</pre></details><button type="button" class="copybtn">📋 نسخ الأمر</button>`:'';
-  return `<div class="hcard" draggable="true" data-id="${c.id}" style="border-left-color:${c.kind==='text'?'#7d5ba6':'#fd781c'}"><div class="hid">${c.id}</div><div class="htitle">${esc(c.title||c.slug)}</div><div class="hslug">${esc(c.slug||'')}</div>${cmd}</div>`}
+  const copyText=['التذكرة: '+(c.id||''),'المقال: '+(c.article||c.title||c.slug||''),'موجه لـ: '+(c.assignee||'—'),'المطلوب: '+(c.task||'')].join('\n');
+  const cmd=c.task?`<button type="button" class="copybtn" data-msg="${esc(copyText).replace(/"/g,'&quot;')}">نسخ للعضو</button>`:'';
+  return `<div class="hcard" draggable="true" data-id="${c.id}"><div class="hrow"><span class="hlbl">التذكرة</span><span class="hval">${esc(c.id||'')}</span></div><div class="hrow"><span class="hlbl">المقال</span><span class="hval">${esc(c.article||c.title||c.slug||'')}</span></div><div class="hrow"><span class="hlbl">موجه لـ</span><span class="hval">${esc(c.assignee||'—')}</span></div><div class="hrow"><span class="hlbl">المطلوب</span><span class="hval task">${esc(c.task||'')}</span></div>${cmd}</div>`}
 function wireHandoff(cards,cols){
   let dragId=null;
   document.querySelectorAll('.hcard').forEach(card=>{
@@ -364,9 +367,9 @@ function wireHandoff(cards,cols){
     });
   });
   document.querySelectorAll('.copybtn').forEach(btn=>btn.onclick=async()=>{
-    const pre=btn.closest('.hcard')?.querySelector('.hcmd pre');
+    const pre=btn.closest('.hcard')?.querySelector('.hcopy');
     const t=pre?pre.textContent:'';
-    try{await navigator.clipboard.writeText(t);btn.textContent='✓ تم النسخ';btn.classList.add('ok')}
+    try{await navigator.clipboard.writeText(t);btn.textContent='تم النسخ';btn.classList.add('ok')}
     catch(e){btn.textContent='انسخ يدوياً'}
   });
 }
