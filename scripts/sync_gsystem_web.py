@@ -14,6 +14,7 @@ OUT = ROOT / "system/gsystem-data"
 # id → path under operating-system/
 GS_DOCS: dict[str, str] = {
     "team-board": "team-board.md",
+    "handoff-board": "handoff-board.md",
     "track-board": "reports/track-board.md",
     "ready-to-build": "reports/ready-to-build.md",
     "yellow-mode-active": "reports/yellow-mode-active.md",

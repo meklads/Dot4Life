@@ -6,7 +6,7 @@
 <meta name="robots" content="noindex,nofollow">
 <title>لوحة الفريق — DotForLife</title>
 <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.0/marked.min.js"></script>
+<script src="vendor/marked.min.js"></script>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <style>
@@ -166,9 +166,10 @@ const VG=[
  {k:'التوسّع والمرونة',f:'intelligence/08-scalability-expansion.md'},
 ];
 const GSB='../operating-system/';
-const GD='gsystem-data/';
+const GD='/system/gsystem-data/';
 const GS=[
  {k:'🕐 الحالة الآن (تم·جاري·لسه)',id:'team-board',team:true},
+ {k:'🔀 التسليم (Trello)',id:'handoff-board',team:true},
  {k:'🧭 اللوحة الموحّدة',id:'track-board'},
  {k:'📦 طابور البناء',id:'ready-to-build'},
  {k:'🟢 GREEN MODE',id:'yellow-mode-active',mode:true},
@@ -185,7 +186,8 @@ async function tryEnter(){const h=await sha256($('#pw').value);if(h===PW_HASH){s
 $('#enter').onclick=tryEnter;$('#pw').addEventListener('keydown',e=>{if(e.key==='Enter')tryEnter()});
 $('#lock').onclick=()=>{sessionStorage.removeItem('dfl_board_ok');location.reload()};
 const VIEWS={content:'view-content',doc:'view-doc',vg:'view-vg',gsystem:'view-gsystem',ghost:'view-ghost'};
-function mdHTML(t){try{return(window.marked&&marked.parse)?marked.parse(t):('<pre style="white-space:pre-wrap">'+t.replace(/</g,'&lt;')+'</pre>')}catch(e){return'<p style="color:#c0392b">تعذّر عرض المحتوى.</p>'}}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+function mdHTML(t){const clean=String(t).replace(/<!--[\s\S]*?-->/g,'');try{if(window.marked&&marked.parse)return marked.parse(clean);return'<pre style="white-space:pre-wrap">'+esc(clean)+'</pre>'}catch(e){return'<pre style="white-space:pre-wrap">'+esc(clean)+'</pre>'}}
 function switchView(key){
   Object.values(VIEWS).forEach(id=>{const el=document.getElementById(id);if(el)el.classList.remove('is-active')});
   const target=document.getElementById(VIEWS[key]||VIEWS.gsystem);
@@ -228,11 +230,11 @@ function renderGS(){
   loadGS(GS[gsActive]);updateGsMode()}
 async function loadGS(item){const el=document.getElementById('gsdoc');if(!item)return;el.innerHTML='<div class="loading">جارٍ التحميل…</div>';
   const title=document.getElementById('gsTitle');const sub=document.getElementById('gsSub');
-  if(item.team){if(title)title.textContent='🧭 لوحة الفريق';if(sub)sub.textContent='تم · جاري · لسه — يتحدّث كل 15 دقيقة'}
+  if(item.team){if(title)title.textContent=item.id==='handoff-board'?'🔀 لوحة التسليم':'🧭 لوحة الفريق';if(sub)sub.textContent=item.id==='handoff-board'?'Trello لجوست — انقل البطاقات + أوامر جاهزة':'تم · جاري · لسه — يتحدّث كل 15 دقيقة'}
   else{if(title)title.textContent='GSystem';if(sub)sub.textContent='Ghost Closed Loop OS · حلقة مغلقة · قراءة فقط'}
   try{
   const t=await fetchMdJson(GD+item.id+'.json');el.innerHTML=mdHTML(t);
-  if(item.mode)updateGsMode(t)}catch(e){el.innerHTML='<p style="color:#c0392b">تعذّر تحميل لوحة GSystem: <code>'+GD+item.id+'.json</code><br><small>السبب الشائع: لم يُشغَّل sync بعد push — راجع <code>scripts/sync_gsystem_web.py</code></small></p>'}}
+  if(item.mode)updateGsMode(t)}catch(e){el.innerHTML='<p style="color:#c0392b">تعذّر التحميل: '+esc(e)+'</p><p><code>'+GD+item.id+'.json</code></p><p class="docnote">جرّب Ctrl+Shift+R (تحديث قوي) · أو <a href="/system/gsystem-data/'+item.id+'.json" target="_blank">افتح JSON</a></p>'}}
 async function updateGsMode(modeText){let isYellow=false;try{
   const t=modeText||await fetchMdJson(GD+'yellow-mode-active.json');
   const head=t.split('\n').slice(0,5).join('\n');
