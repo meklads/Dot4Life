@@ -10,7 +10,6 @@
 
 | ID | slug | المهمة | أمر عند التسليم |
 |----|------|--------|------------------|
-| H-07 | `investment-basics-beginners` | صورة LIVE · استثمار المبتدئ | H-07: برومبت استثمار المبتدئ — omar-image-table #1 |
 | H-08 | `rent-vs-buy-gulf-family` | صورة LIVE · إيجار vs تملّك | H-08: برومبت إيجار vs تملّك |
 | H-09 | `daily-walking-benefits` | صورة LIVE · فوائد المشي | H-09: برومبت فوائد المشي |
 | H-10 | `pregnancy-week-by-week` | صورة LIVE · الحمل أسبوعياً | H-10: برومبت الحمل أسبوعياً |
@@ -27,7 +26,7 @@
 
 | ID | slug | حالة | أمر |
 |----|------|------|-----|
-| — | — | — | — |
+| H-07 | `investment-basics-beginners` | برومبت | H-07: برومبت استثمار المبتدئ — omar-image-table #1 |
 
 ---
 
