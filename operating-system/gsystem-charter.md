@@ -119,19 +119,23 @@ Hema drafts → Self-QA → Amer APPROVED|REVISE|REJECT
 
 **Audit LIVE:** `python3 scripts/build-from-approved-draft.py --audit` — لا rebuild إلا FAIL.
 
-## Image loop (Ghost directive 2026-06-22 — **Image Module**)
+## Image loop (Ghost directive 2026-06-22 — **Image Module** + Higgsfield)
 | خطوة | من | ماذا |
 |------|-----|------|
-| اختيار + إجازة بصرية | **عمر** | WebP في `assets/images/approved/` + صف في `image-manifest.json` |
+| الاشتراك / الأداة | **جوست** | **Higgsfield** — توليد الصور |
+| توليد + تنسيق | **كلود** | يشغّل Higgsfield · يدير الدفعات · يكلف عمر بالبرومبتات |
+| البرومبتات | **عمر** | كتابة برومبت لكل مقال (احتشام/هوية/قسم) |
+| إجازة بصرية + فهرس | **عمر** | `visual_director` · alt ع/إن · صف في `image-manifest.json` |
+| استلام + نشر | **Cursor** | WebP → `assets/images/approved/` · `ingest-omar-images.py` · TECH_BUILD · hero في HTML |
 | `visual_director` | **عمر** | `approved` \| `rejected` \| `pending` — فقط approved يُبنى |
-| استهلاك الفهرس | **Cursor** | `scripts/image_manifest.py` · G5 fail-closed على TECH_BUILD |
-| grandfather | **Cursor** | `--audit` LIVE يمرّ placeholders حتى يعتمد عمر |
-| قائمة الانتظار | **Cursor** | `scripts/list-image-pending.py` · `omar-image-production.md` |
+| G5 fail-closed | **Cursor** | `scripts/image_manifest.py` — لا صورة معتمدة = `BLOCKED_IMAGE` |
 | BUILD VERIFY | **Amer** | صفحة مكتملة = صورة معتمدة من الفهرس |
 
+**تقسيم الحارات (لا تداخل):**
+- **كلود** = توليد (Higgsfield) · **عمر** = برومبت + إجازة · **Cursor** = استلام + بناء HTML فقط · **لا يختار Cursor صوراً**
+
 - **لا صورة معتمدة = لا TECH_BUILD جديد** (`BLOCKED_IMAGE`).
-- Cursor **لا يختار** صوراً ولا يحمّل og:image كـ fallback.
-- تقارير Track E السابقة = مرجع مراجعة؛ المصدر الرسمي = **الفهرس**.
+- المصدر الرسمي = **`image-manifest.json`** + `assets/images/approved/`.
 
 
 ## Modes
