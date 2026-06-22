@@ -344,7 +344,7 @@ async function renderHandoff(){
 }
 function hcardHTML(c){
   const copyText=['التذكرة: '+(c.id||''),'المقال: '+(c.article||c.title||c.slug||''),'موجه لـ: '+(c.assignee||'—'),'المطلوب: '+(c.task||'')].join('\n');
-  const cmd=c.task?`<button type="button" class="copybtn" data-msg="${esc(copyText).replace(/"/g,'&quot;')}">نسخ للعضو</button>`:'';
+  const cmd=c.task?`<pre class="hcopy" hidden>${esc(copyText)}</pre><button type="button" class="copybtn">نسخ للعضو</button>`:'';
   return `<div class="hcard" draggable="true" data-id="${c.id}"><div class="hrow"><span class="hlbl">التذكرة</span><span class="hval">${esc(c.id||'')}</span></div><div class="hrow"><span class="hlbl">المقال</span><span class="hval">${esc(c.article||c.title||c.slug||'')}</span></div><div class="hrow"><span class="hlbl">موجه لـ</span><span class="hval">${esc(c.assignee||'—')}</span></div><div class="hrow"><span class="hlbl">المطلوب</span><span class="hval task">${esc(c.task||'')}</span></div>${cmd}</div>`}
 function wireHandoff(cards,cols){
   let dragId=null;
