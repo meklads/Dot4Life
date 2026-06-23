@@ -1,7 +1,15 @@
-# 📬 Cursor — أوتوبايلوت · 2026-06-23 22:55
+# 📬 Cursor — Batch 02 · بناء
 
-- **الحالة الآن:** `operating-system/team-board.md` (تم · جاري · لسه)
-- آخر تشغيل: 2026-06-23T22:55:34
-- صفحات بُنيت: **0**
-- push: None
-- القاعدة: `approved` + ملف → بناء فوري بدون سؤال جوست
+- **الحالة:** `operating-system/reports/batch-02-launch.md`
+- **دفعتك:** **3 مقالات** — B2-08..B2-10 (بانتظار `approved`)
+
+## 🔄 جاهز للبناء عند الصورة
+
+| التذكرة | slug |
+|---------|------|
+| B2-08 | `umrah-visa-gulf-residents-guide` |
+| B2-09 | `family-nutrition-on-budget` |
+| B2-10 | `managing-screen-time-children` |
+
+- Autopilot: `approved` + slug → hero HTML → git push
+- إعادة إطلاق الدفعة: `python3 scripts/launch-batch-02.py`

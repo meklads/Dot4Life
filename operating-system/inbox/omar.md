@@ -1,9 +1,7 @@
-# 📬 عمر — مهام الصور · 2026-06-23 22:55
+# 📬 عمر — Batch 02 · برومبتات
 
-- **الحالة الآن:** `operating-system/team-board.md` (تم · جاري · لسه)
+- **10 برومبتات جاهزة:** `operating-system/reports/batch-02-prompts.md`
+- **التوليد:** عامر (Higgsfield) — B2-05..07 فوراً
+- **مراجعة بصرية:** عمر عند الحاجة
 
-## 🔴 عاجل
-- لا شيء عاجل (ملف بلا approved).
-
-## 📋 التالي (بلا صورة بعد)
-- راجع `omar-image-production.md` و`list-image-pending.py`
+لا slug بلا برومبت في هذه الدفعة.

@@ -202,6 +202,8 @@ def normalize_col(col: str, card: dict) -> str:
 
 def task_for(card: dict) -> str:
     col, stage, cid = card.get("col", "ghost"), card.get("stage", "backlog"), card.get("id", "")
+    if card.get("kind") == "batch2" and card.get("task"):
+        return card["task"]
     if col == "done":
         return "منتهي — على الموقع"
     if col == "member_done":
@@ -252,6 +254,9 @@ def enrich_card(card: dict) -> dict:
     elif card.get("col") == "amer":
         card["owner"] = AMER
         card["assignee"] = AMER
+    elif card.get("col") == "cursor":
+        card["owner"] = "Cursor"
+        card["assignee"] = "Cursor"
     elif card.get("col") == "cursor2":
         card["assignee"] = ASSIGNEE["cursor2"]
     else:
