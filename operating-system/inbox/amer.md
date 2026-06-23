@@ -1,23 +1,21 @@
-# 📬 عامر — Batch 02 · صور
+# 📬 عامر — Batch 02 · صور (4 فوراً)
 
-- **الحالة:** `operating-system/reports/batch-02-launch.md`
-- **دفعتك:** **3 صور فوراً** + اعتماد نص B2-01..04 عند وصولها
+- **الملخص:** `operating-system/reports/batch-02-launch.md`
+- **برومبتات:** `operating-system/reports/batch-02-prompts.md`
 
-## 🔴 توليد الآن (نص جاهز)
+## 🔴 توليد الآن
 
-| التذكرة | المقال | hero |
-|---------|--------|------|
-| B2-05 | دليل ميزانية الأسرة | `hero-family-budget-planning-guide.webp` |
-| B2-06 | مكافأة نهاية الخدمة | `hero-end-of-service-saudi.webp` |
-| B2-07 | فنادق المدينة | `hero-medina-hotels-near-masjid-nabawi.webp` |
+| التذكرة | القسم | المقال |
+|---------|-------|--------|
+| B2-01 | ⭐ قصص | دروس الأب عن المال |
+| B2-03 | ⚖️ مقارنات | ادخار أم استثمار |
+| B2-09 | ✈️ سفر | فنادق المدينة |
+| B2-10 | 🏠 عقار | ذهب أم عقار |
 
-- البرومبتات: `operating-system/reports/batch-02-prompts.md`
-- بعد التوليد: `image-manifest.json` → `visual_director: approved` → autopilot
+## ⏳ بعد DEEPEN من Hema
 
-## ⏳ ينتظر Hema
+B2-02 · B2-04 · B2-07
 
-B2-01..B2-04 — DEEPEN ثم بوابة نص
+## ⏳ Cursor ينتظر صورك
 
-## ⏳ ينتظر صورك
-
-B2-08..B2-10 — Cursor جاهز للبناء عند `approved`
+B2-05 · B2-06 · B2-08

@@ -1,53 +1,53 @@
 # 🚀 Batch 02 — إطلاق الدفعة الثانية (10 مقالات)
 
 > **التاريخ:** 2026-06-24 · **القرار:** جوست · **التنفيذ:** Cursor  
-> **الحجم:** 10 مقالات · 10 برومبتات · 10 صور WebP
+> **الحجم:** 10 مقالات · 10 برومبتات · 10 صور WebP  
+> **المبدأ:** تغطية **الأقسام السبعة** في `editorial-plan.md`
 
-## الهدف
+## الأقسام السبعة — التغطية
 
-نشر **10 مقالات blog** بصور `approved` معتمدة + نص يجتاز `draft-gate` — رفع جودة AdSense.
+| # | القسم | عدد في B2 | التذاكر |
+|---|--------|---------|---------|
+| 1 | ⭐ قصص مميزة | 2 | B2-01 · B2-02 |
+| 2 | ⚖️ مقارنات وقرارات | 1 | B2-03 |
+| 3 | 🏡 السلام يبدأ من البيت | 2 | B2-04 · B2-05 |
+| 4 | 🩺 الصحة والعافية | 1 | B2-06 |
+| 5 | ☪️ رحلات الحياة (الإسلاميات) | 2 | B2-07 · B2-08 |
+| 6 | ✈️ العالم ينتظر أسرتك | 1 | B2-09 |
+| 7 | 🏠 العقار | 1 | B2-10 |
 
-## التوزيع
+## التوزيع على الفريق
 
-| العضو | العدد | التذاكر | المطلوب |
-|-------|------:|---------|---------|
-| **Hema** (Moni ×3 · رواق ×1) | **4** | B2-01..B2-04 | DEEPEN ≥1300w · FAQ×4 · Schema |
-| **عامر** (Higgsfield) | **3** | B2-05..B2-07 | توليد hero → manifest `approved` |
-| **Cursor** (autopilot) | **3** | B2-08..B2-10 | بناء hero عند `approved` → push |
+| العضو | العدد | التذاكر |
+|-------|------:|---------|
+| **Hema** (Moni ×2 · رواق ×1) | **3** | B2-02 · B2-04 · B2-07 |
+| **عامر** (Higgsfield) | **4** | B2-01 · B2-03 · B2-09 · B2-10 |
+| **Cursor** (autopilot) | **3** | B2-05 · B2-06 · B2-08 |
 
 ## المقالات
 
-| # | التذكرة | المقال | slug | كلمات |
-|---|---------|--------|------|------:|
-| 1 | B2-01 | ادخار تعليم الأطفال | `children-education-savings-guide` | 827 |
-| 2 | B2-02 | عادات إسلامية يومية | `daily-islamic-habits-guide` | 773 |
-| 3 | B2-03 | التأمين على الحياة | `life-insurance-gulf-families` | 884 |
-| 4 | B2-04 | نظام الادخار الشخصي | `building-personal-savings-system` | 1055 |
-| 5 | B2-05 | دليل ميزانية الأسرة | `family-budget-planning-guide` | 1912 |
-| 6 | B2-06 | مكافأة نهاية الخدمة | `end-of-service-saudi` | 1444 |
-| 7 | B2-07 | فنادق المدينة | `medina-hotels-near-masjid-nabawi` | 1563 |
-| 8 | B2-08 | تأشيرة العمرة | `umrah-visa-gulf-residents-guide` | 1624 |
-| 9 | B2-09 | تغذية العائلة | `family-nutrition-on-budget` | 1100 |
-| 10 | B2-10 | وقت الشاشة للأطفال | `managing-screen-time-children` | 1304 |
+| # | التذكرة | القسم | المقال | المسار |
+|---|---------|-------|--------|--------|
+| 1 | B2-01 | قصص | دروس الأب عن المال | `featured-stories/gulf-father-money-lessons` |
+| 2 | B2-02 | قصص | أم عربية وريادة الأعمال | `featured-stories/arab-mother-startup` |
+| 3 | B2-03 | مقارنات | ادخار أم استثمار | `comparisons/saving-vs-investing-gulf-family` |
+| 4 | B2-04 | سلام | طقوس المساء العائلية | `peace-capsules/evening-rituals` |
+| 5 | B2-05 | سلام | الحد الأدنى الرقمي | `blog/digital-minimalism-families` |
+| 6 | B2-06 | صحة | تغذية العائلة | `blog/family-nutrition-on-budget` |
+| 7 | B2-07 | إسلاميات | عادات إسلامية يومية | `blog/daily-islamic-habits-guide` |
+| 8 | B2-08 | إسلاميات | تأشيرة العمرة | `blog/umrah-visa-gulf-residents-guide` |
+| 9 | B2-09 | سفر | فنادق المدينة | `blog/medina-hotels-near-masjid-nabawi` |
+| 10 | B2-10 | عقار | ذهب أم عقار | `comparisons/gold-vs-real-estate-gulf-family` |
 
 ## البرومبتات
 
-الملف الكامل: [`batch-02-prompts.md`](batch-02-prompts.md)  
-المصدر التفصيلي: [`ghost/omar-image-table.md`](ghost/omar-image-table.md)
+[`batch-02-prompts.md`](batch-02-prompts.md) · [`batch-02.json`](../batch-02.json)
 
 ## خط السير
 
 ```
-Hema (DEEPEN) ──→ عامر (اعتماد نص) ──→ عامر (صورة) ──→ Cursor (LIVE)
-                      ↑
-              B2-05..07 نص جاهز — يبدأ عامر بالصور فوراً
+Hema (DEEPEN ×3) → عامر (صور ×4 فوراً + باقي عند approved) → Cursor (LIVE ×3)
 ```
-
-## اللوحة
-
-- Trello: `system/board.html` → 🔀 التسليم  
-- JSON: `operating-system/batch-02.json`  
-- إعادة الإطلاق: `python3 scripts/launch-batch-02.py`
 
 ---
 

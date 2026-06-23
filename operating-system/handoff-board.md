@@ -23,10 +23,9 @@
 
 | التذكرة | المقال | موجه لـ | المطلوب |
 |---------|--------|---------|----------|
-| B2-01 | ادخار تعليم الأطفال | Hema · سكيل Moni | DEEPEN/كتابة — ≥1300w · FAQ×4 · draft-gate — ثم «انتهى من عندي» → عامر |
-| B2-02 | عادات إسلامية يومية | Hema · سكيل Moni | DEEPEN/كتابة — ≥1300w · FAQ×4 · draft-gate — ثم «انتهى من عندي» → عامر |
-| B2-03 | التأمين على الحياة للعائلات | Hema · سكيل Moni | DEEPEN/كتابة — ≥1300w · FAQ×4 · draft-gate — ثم «انتهى من عندي» → عامر |
-| B2-04 | بناء نظام ادخار شخصي | Hema · سكيل رواق | DEEPEN/كتابة — ≥1300w · FAQ×4 · draft-gate — ثم «انتهى من عندي» → عامر |
+| B2-02 | أم عربية وريادة الأعمال | Hema · سكيل Moni | DEEPEN/كتابة — ≥1300w · FAQ×4 · draft-gate — ثم «انتهى من عندي» → عامر |
+| B2-04 | طقوس المساء العائلية | Hema · سكيل رواق | DEEPEN/كتابة — ≥1300w · FAQ×4 · draft-gate — ثم «انتهى من عندي» → عامر |
+| B2-07 | عادات إسلامية يومية | Hema · سكيل Moni | DEEPEN/كتابة — ≥1300w · FAQ×4 · draft-gate — ثم «انتهى من عندي» → عامر |
 
 ---
 
@@ -34,9 +33,10 @@
 
 | التذكرة | المقال | موجه لـ | المطلوب |
 |---------|--------|---------|----------|
-| B2-05 | دليل ميزانية الأسرة | عامر | توليد Higgsfield → WebP 1200×750 → manifest approved → BUILD VERIFY |
-| B2-06 | مكافأة نهاية الخدمة | عامر | توليد Higgsfield → WebP 1200×750 → manifest approved → BUILD VERIFY |
-| B2-07 | فنادق المدينة قرب المسجد النبوي | عامر | توليد Higgsfield → WebP 1200×750 → manifest approved → BUILD VERIFY |
+| B2-01 | دروس الأب عن المال | عامر | توليد Higgsfield → WebP 1200×750 → manifest approved → BUILD VERIFY |
+| B2-03 | ادخار أم استثمار للعائلة الخليجية | عامر | توليد Higgsfield → WebP 1200×750 → manifest approved → BUILD VERIFY |
+| B2-09 | فنادق المدينة قرب المسجد النبوي | عامر | توليد Higgsfield → WebP 1200×750 → manifest approved → BUILD VERIFY |
+| B2-10 | ذهب أم عقار للعائلة الخليجية | عامر | توليد Higgsfield → WebP 1200×750 → manifest approved → BUILD VERIFY |
 
 ---
 
@@ -44,9 +44,9 @@
 
 | التذكرة | المقال | موجه لـ | المطلوب |
 |---------|--------|---------|----------|
+| B2-05 | الحد الأدنى الرقمي للعائلات | Cursor | Autopilot: approved + slug → hero HTML → git push → «منتهي LIVE» |
+| B2-06 | تغذية العائلة بميزانية محدودة | Cursor | Autopilot: approved + slug → hero HTML → git push → «منتهي LIVE» |
 | B2-08 | تأشيرة العمرة لسكان الخليج | Cursor | Autopilot: approved + slug → hero HTML → git push → «منتهي LIVE» |
-| B2-09 | تغذية العائلة بميزانية محدودة | Cursor | Autopilot: approved + slug → hero HTML → git push → «منتهي LIVE» |
-| B2-10 | إدارة وقت الشاشة للأطفال | Cursor | Autopilot: approved + slug → hero HTML → git push → «منتهي LIVE» |
 
 ---
 

@@ -1,15 +1,9 @@
-# 📬 Cursor — Batch 02 · بناء
+# 📬 Cursor — Batch 02 · بناء (3)
 
-- **الحالة:** `operating-system/reports/batch-02-launch.md`
-- **دفعتك:** **3 مقالات** — B2-08..B2-10 (بانتظار `approved`)
+| التذكرة | القسم | slug |
+|---------|-------|------|
+| B2-05 | 🏡 سلام | `digital-minimalism-families` |
+| B2-06 | 🩺 صحة | `family-nutrition-on-budget` |
+| B2-08 | ☪️ إسلاميات | `umrah-visa-gulf-residents-guide` |
 
-## 🔄 جاهز للبناء عند الصورة
-
-| التذكرة | slug |
-|---------|------|
-| B2-08 | `umrah-visa-gulf-residents-guide` |
-| B2-09 | `family-nutrition-on-budget` |
-| B2-10 | `managing-screen-time-children` |
-
-- Autopilot: `approved` + slug → hero HTML → git push
-- إعادة إطلاق الدفعة: `python3 scripts/launch-batch-02.py`
+Autopilot عند `approved` في الفهرس.
