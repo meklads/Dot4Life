@@ -77,9 +77,11 @@ def card_from_article(a: dict) -> dict:
         "prompt_ref": a["prompt_ref"],
         "alt_ar": a["alt_ar"],
         "alt_en": a["alt_en"],
-        "url": url,
+        "url_path": url_path,
         "ts": ts,
     }
+    if stage == "done":
+        c["url"] = url
     if skill:
         c["skill"] = skill
     return c

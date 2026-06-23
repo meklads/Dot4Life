@@ -264,6 +264,12 @@ def enrich_card(card: dict) -> dict:
     card["task"] = task_for(card)
     if card.get("col") not in ("done", "ghost", "member_done") and not card.get("command"):
         card["command"] = command_for(card, card["col"])
+    # معاينة الصفحة: LIVE فقط — url يُضاف عند done، url_path للمسودات
+    if card.get("col") == "done" or card.get("stage") == "done":
+        if not card.get("url") and card.get("url_path"):
+            card["url"] = "https://dotforlife.com" + card["url_path"]
+    elif card.get("kind") == "batch2" and card.get("url_path"):
+        card.pop("url", None)
     return card
 
 
