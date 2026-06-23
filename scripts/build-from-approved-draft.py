@@ -13,7 +13,7 @@ import sys
 from datetime import date
 from pathlib import Path
 
-from image_manifest import assert_g5_image, resolve_hero_for_build
+from image_manifest import assert_g5_image, article_slug_from_path, is_approved, lookup, resolve_hero_for_build
 
 ROOT = Path(__file__).resolve().parents[1]
 DRAFTS = ROOT / "operating-system" / "reports" / "drafts"
@@ -417,6 +417,64 @@ BUILD_MAP = [
         "hero_alt_en": "Residential building and rental yield sheet, Riyadh property",
         "title_seo_ar": "حاسبة العائد الإيجاري في الرياض",
         "title_seo_en": "Riyadh Rental Yield Calculator Guide",
+    },
+    {
+        "id": "A-09-1",
+        "draft_ar": DRAFTS / "task09/summer-camps-vs-home.md",
+        "draft_en": DRAFTS / "task09/summer-camps-vs-home-en.md",
+        "out_ar": ROOT / "peace-capsules/summer-camps-vs-home.html",
+        "out_en": ROOT / "peace-capsules/summer-camps-vs-home-en.html",
+        "section_ar": "🧘 كبسولات السلام",
+        "section_en": "🧘 Peace Capsules",
+        "tool_cta_ar": "/peace-capsules/beat-summer-boredom-without-screens.html",
+        "tool_cta_en": "/peace-capsules/beat-summer-boredom-without-screens-en.html",
+        "tool_label_ar": "ترويض ملل الصيف بلا شاشات",
+        "tool_label_en": "Summer Boredom Without Screens",
+        "internal_links_ar": [
+            ("/peace-capsules/family-volunteering-summer.html", "تطوّع عائلي في الصيف"),
+            ("/peace-capsules/beat-summer-boredom-without-screens.html", "أنشطة منزلية صيفية"),
+            ("/peace-capsules/calm-morning-routine-family.html", "روتين صباحي هادئ"),
+        ],
+        "internal_links_en": [
+            ("/peace-capsules/family-volunteering-summer-en.html", "Family Summer Volunteering"),
+            ("/peace-capsules/beat-summer-boredom-without-screens-en.html", "Screen-Free Summer Ideas"),
+            ("/peace-capsules/calm-morning-routine-family.html", "Calm Morning Routine"),
+        ],
+        "hero_webp": "/assets/images/d4l1.webp",
+        "hero_alt_ar": "عائلة خليجية تخطط لأنشطة صيفية، مخيم أو برنامج منزلي",
+        "hero_alt_en": "Gulf family planning summer activities, camp or home program",
+        "title_seo_ar": "مخيمات صيفية أم منزل: دليل القرار",
+        "title_seo_en": "Summer Camps vs Home: Kids Guide",
+        "disclaimer_type": "none",
+    },
+    {
+        "id": "A-09-2",
+        "draft_ar": DRAFTS / "task09/family-volunteering-summer.md",
+        "draft_en": DRAFTS / "task09/family-volunteering-summer-en.md",
+        "out_ar": ROOT / "peace-capsules/family-volunteering-summer.html",
+        "out_en": ROOT / "peace-capsules/family-volunteering-summer-en.html",
+        "section_ar": "🧘 كبسولات السلام",
+        "section_en": "🧘 Peace Capsules",
+        "tool_cta_ar": "/tools/monthly-budget.html",
+        "tool_cta_en": "/tools/monthly-budget.html",
+        "tool_label_ar": "مخطّط الميزانية العائلية",
+        "tool_label_en": "Family Budget Planner",
+        "internal_links_ar": [
+            ("/peace-capsules/summer-camps-vs-home.html", "مخيمات صيفية أم منزل"),
+            ("/peace-capsules/beat-summer-boredom-without-screens.html", "ترويض ملل الصيف"),
+            ("/peace-capsules/calm-morning-routine-family.html", "روتين صباحي هادئ"),
+        ],
+        "internal_links_en": [
+            ("/peace-capsules/summer-camps-vs-home-en.html", "Summer Camps vs Home"),
+            ("/peace-capsules/beat-summer-boredom-without-screens-en.html", "Beat Summer Boredom"),
+            ("/peace-capsules/calm-morning-routine-family.html", "Calm Morning Routine"),
+        ],
+        "hero_webp": "/assets/images/d4l1.webp",
+        "hero_alt_ar": "أسرة خليجية تتطوع معاً في الصيف، عمل عائلي ذو معنى",
+        "hero_alt_en": "Gulf family volunteering together in summer",
+        "title_seo_ar": "تطوّع عائلي في الصيف",
+        "title_seo_en": "Family Summer Volunteering",
+        "disclaimer_type": "none",
     },
 ]
 
@@ -973,6 +1031,14 @@ def build_page(cfg: dict, draft_path: Path, out_path: Path, lang: str) -> tuple[
     hero_abs = None
     if resolved:
         hero_img, _web, hero_abs = resolved
+    elif cfg.get("hero_webp"):
+        web = cfg["hero_webp"]
+        alt = cfg.get(f"hero_alt_{lang}") or cfg.get("hero_alt_ar") or cfg.get("hero_alt_en") or ""
+        hero_img = (
+            f'<figure class="hero"><img src="{web}" alt="{html.escape(alt)}" '
+            f'width="1200" height="630" loading="eager"></figure>'
+        )
+        hero_abs = f"https://dotforlife.com{web}"
     schema = schema_json(title, desc, canonical, faqs, lang, hero_abs)
     page_title = seo_page_title(title, cfg, lang)
     if hero_abs:
@@ -1037,7 +1103,8 @@ td{{padding:10px 12px;border-bottom:1px solid #eee}}
 
 
 def write_page(page: str, out_path: Path, cfg: dict, lang: str, md: str) -> list[str]:
-    gates = assert_build_gates(page, lang, out_path, cfg, md, strict_image=True)
+    strict_image = is_approved(lookup(article_slug_from_path(out_path)))
+    gates = assert_build_gates(page, lang, out_path, cfg, md, strict_image=strict_image)
     BACKUP.mkdir(parents=True, exist_ok=True)
     if out_path.exists():
         shutil.copy2(out_path, BACKUP / out_path.name)

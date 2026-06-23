@@ -94,7 +94,7 @@ HEMA_TASKS = {
 CURSOR_TASKS = {
     "C-01": "⛔ موقوف — بانتظار توليد Higgsfield H-07..H-12",
     "C-02": "⛔ موقوف — بانتظار توليد Higgsfield H-07..H-12",
-    "C-03": "🟢 GO مقيّد — c03-scope-approved.txt (16 ملف) → build → push LIVE",
+    "C-03": "✅ LIVE 2026-06-23 — A-09×4 + T-03×13",
     "C-04": "BUILD Track B thin (4 URLs معتمدة) → Schema → push → «انتهى من عندي»",
     "C-05": "C-F3 Schema دفعة 1 (20 blog) → verify → «انتهى من عندي»",
     "C-06": "C-F3 Schema دفعة 2 (20 blog) → verify → «انتهى من عندي»",
