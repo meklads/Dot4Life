@@ -1,4 +1,4 @@
-# 🛡️ أوامر عامر النشطة (المصدر الثابت) — 2026-06-23
+# 🛡️ أوامر عامر النشطة (المصدر الثابت) — 2026-06-23 (آخر دورة 19:10)
 
 > ملف ثابت يحدّثه عامر فقط. الأوتوبايلوت يعيد كتابة `inbox/*.md` كل دورة، لذا الأوامر المُلزِمة هنا.
 > تفاصيل كل أمر في تقارير `reports/amer-to-*.md`.
@@ -8,29 +8,29 @@
 ## ✅ منجز (عامر نفّذه)
 - صور H-07→H-12: ولّدها عامر عبر Higgsfield، فحص بصري، 1200×750 WebP، الفهرس 12/12 approved.
 - بناء 6 صفحات أبطال (12 ملف) — كل البوابات PASS — **مدفوعة LIVE** (`ada54db`).
+- **دورة 19:10 — أُغلقت دفعة التعميق كاملة (9 ملفات):** Hema عمّقت B(2)+C(7)؛ عامر أعاد الفحص الآلي الكامل → **9/9 PASS** (جسم 1661–2089 كلمة، شرطات=0، Article+FAQPage صحيحا JSON، FAQ≥4، إخلاء، مصادر https، LIVE في sitemap). نُقلت T-05/06/07 من «عامر» إلى «done».
 
 ---
 
 ## 🟢 أمر Cursor — نفّذ الآن
 المرجع: `reports/amer-to-cursor-c03-gate.md` · `reports/c03-scope-approved.txt`
 1. الصور: ✅ تمّت — صفحات الأبطال LIVE.
-2. **C-03 النصّي = 17 مساراً**: ابنِ وانشر T-02 (4 مسودات task09 → HTML) + 13 ملف T-03 المعتمدة. لا غيرها.
+2. **المتبقّي الوحيد = T-02 (4 مسودات task09 → HTML):** summer-camps-vs-home (ع/en) + family-volunteering-summer (ع/en). كلها اجتازت بوابة عامر (≥1300 كلمة، 0 شرطات، 0 اقتباس مختلَق، مصادر، إخلاء — APPROVED). ابنِها عبر `build-from-approved-draft.py` وانشر وادفع.
+   - 13 ملف T-03 = ✅ مبنية وLIVE (في sitemap). لا إعادة.
 3. بعد النشر: احذف مكرّرات `assets/queue/`.
-4. **ممنوع البناء:** pregnancy-weeks-guide · umrah-budget-guide-families-en · كل T-04 (راجعة Hema).
+4. **رُفع الحظر السابق:** pregnancy-weeks-guide · umrah-budget-guide-families-en عُمّقتا واجتازتا البوابة (1661w/1793w) — LIVE. باقٍ فقط: لا بناء T-04 القديمة المرفوضة إن وُجدت بلا تعميق.
 5. لا تشغّل `inject-article-schema.py` بالجملة.
 
-## 🔴 أمر Hema وفريقها — نفّذ الآن (9 ملفات تعميق)
-المرجع: `reports/amer-to-hema-execute.md` · البوابة: `scripts/draft-gate.py` ثم «انتهى من عندي» لعامر.
+## ✅ أمر Hema (دفعة التعميق 9 ملفات) — مُغلق
+- **B(2):** pregnancy-weeks-guide (1661w) · umrah-budget-guide-families-en (1793w) → ✅ PASS.
+- **C(7):** visceral-fat-gulf · end-of-service-saudi (ع/en) · pregnancy-nutrition-first-trimester (ع/en) · saving-for-education-gulf (ع/en) → ✅ PASS (1731–2089w).
+- اعتمدها عامر بالفحص الآلي الكامل في دورة 19:10. لا عمل متبقٍّ في هذه الدفعة.
 > تذكير حاكم: التوليد الفعلي للصور = عامر فقط (MCP). أدوار عمر/كلود تجهّز البرومبت؛ Hema تكتب النص.
 
-**B · تعميق (2):** بعد revert ظهرتا رقيقتين بلا FAQ.
-- `blog/pregnancy-weeks-guide.html` (1146w) → جسم طبي مصدّر ≥1300 + FAQ4 (FAQPage).
-- `blog/umrah-budget-guide-families-en.html` (1165w) → جسم ≥1300 + FAQ4 (شرعي/مالي).
-
-**C · تعميق thin (7):** جسم حقيقي مصدّر ≥1300 + Article + إخلاء — ليس FAQ فقط.
-- visceral-fat-gulf · end-of-service-saudi (ع/en) · pregnancy-nutrition-first-trimester (ع/en) · saving-for-education-gulf (ع/en).
-
-**قاعدة الطابور:** 3 نشطة + الباقي مخزون. ابدئي بـ B ثم C.
+## 🟠 صور معلّقة (عامر — Higgsfield، الدورة القادمة عند رفع قفل git)
+3 صفحات LIVE بلا hero — البرومبتات جاهزة في `omar-image-table.md`:
+- `hijri-new-year-children` (W-01) · `teaching-children-allah-names` (W-02) · `teaching-children-prayer-with-love` (W-03).
+- أُجّل التوليد هذه الدورة: `.git/index.lock` يتيم غير قابل للحذف → لا دفع؛ تجنّب صرف كريديت قبل ضمان الالتزام.
 
 ---
 
