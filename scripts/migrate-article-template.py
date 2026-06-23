@@ -18,6 +18,7 @@ from datetime import datetime
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_MARKER = 'data-template="article"'
 CACHE_BUSTER = "v=20260624e"
+LANG_REDIRECT_SNIPPET = '<script src="/scripts/lang-redirect.js?v=20260624"></script>'
 
 DIRS = ['featured-stories']
 
@@ -710,6 +711,9 @@ def build_new_page(filename, content):
     preserved_head = clean_head(healed)
     jsonld_blocks = jsonld_intact + jsonld_new
     jsonld_html = '\n'.join(jsonld_blocks)
+    lang_redirect_line = (
+        '' if 'lang-redirect.js' in preserved_head else LANG_REDIRECT_SNIPPET + '\n'
+    )
 
     new_head = f'''<head>
 {init_script}
@@ -717,7 +721,7 @@ def build_new_page(filename, content):
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
 {preserved_head}
-{jsonld_html}
+{lang_redirect_line}{jsonld_html}
 {css_links}
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1436107577087160" crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3G1XPV4F0G"></script>
