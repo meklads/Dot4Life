@@ -26,6 +26,11 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Configure git identity
+        run: |
+          git config user.name "gsystem-bot"
+          git config user.email "gsystem-bot@users.noreply.github.com"
+
       - name: Run GSystem Autopilot (build + push)
         env:
           PYTHONPATH: scripts

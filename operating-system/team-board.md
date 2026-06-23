@@ -22,7 +22,7 @@
 <!-- TEAM-BOARD-LIVE-START -->
 ## 🕐 الحالة الآن — محدّث تلقائياً
 
-**آخر تحديث:** 2026-06-23 **13:14** · مصدر: autopilot + manifest + git
+**آخر تحديث:** 2026-06-23 **16:18** · مصدر: autopilot + manifest + git
 
 > **اقرأ هنا أولاً** — ثلاث حالات: **✅ تم** · **🔄 جاري** · **⏳ لسه**
 
@@ -32,22 +32,22 @@
 | تنتظر بناء HTML | **0** |
 | DEEPEN (قصير) | **174** |
 | جودة الموقع | **0/271 (0%)** |
-| آخر autopilot | `2026-06-23 **13:14**` |
+| آخر autopilot | `2026-06-23 **16:18**` |
 
 ### ✅ تم — آخر ما اكتمل
 
 | الوقت | ماذا | من | الدليل |
 |-------|------|-----|--------|
-| 2026-06-23 **13:14** | بُنيت صور: `investment-basics-beginners`, `rent-vs-buy-gulf-family`, `daily-walking-benefits`, `pregnancy-week-by-week`, `preconception-checkups`, `umrah-with-kids` | Cursor | autopilot |
-| 2026-06-23 **13:14** | built 6 slug(s) · AUDIT PASS | Cursor | autopilot |
-| 2026-06-23 **12:03** | آخر commit `1901323` | Cursor | Apply Amer afternoon quality gate and unlock restricted C-03. |
+| 2026-06-23 **16:18** | فحص autopilot — كل الصور المعتمدة على الموقع | Cursor | log `[]` |
+| 2026-06-23 **16:18** | built 0 slug(s) · ada54db · AUDIT PASS | Cursor | autopilot |
+| 2026-06-23 **16:18** | رفع GitHub `ada54db` | Cursor | origin/main |
 
 ### 🔄 جاري العمل — الآن
 
 | الوقت | ماذا | من | التالي |
 |-------|------|-----|--------|
 | — | A-09 REVISE — `drafts/task09/` | Hema | تسليم لعامر بعد draft-gate |
-| 2026-06-23 **13:14** | BUILD VERIFY — **12** صور LIVE | عامر | hero + alt + G5 |
+| 2026-06-23 **16:18** | BUILD VERIFY — **12** صور LIVE | عامر | hero + alt + G5 |
 
 ### ⏳ لسه — منتظر / مفتوح
 
@@ -59,11 +59,11 @@
 
 ### 📎 آخر سطور الأوتوبايلوت
 
-- `[2026-06-23T13:14:03] === تشغيل جديد / new run ===`
-- `[2026-06-23T13:14:16] slugs needing build: ['investment-basics-beginners', 'rent-vs-buy-gulf-family', 'daily-walking-benefits', 'pregnancy-week-by-week', 'preconception-checkups', 'umrah-with-kids']`
-- `[2026-06-23T13:14:16] RUN /usr/bin/python3 /sessions/serene-clever-cannon/mnt/Dot4Life/scripts/build-from-approved-draft.py A-01-1 A-07-1 A-02-1 A-03-2 A-04-1 A-05-1`
-- `[2026-06-23T13:14:29] AUDIT PASS`
-- `[2026-06-23T13:14:29] inboxes: operating-system/inbox/omar.md, operating-system/inbox/claude.md, operating-system/inbox/hema.md, operating-system/inbox/amer.md, operating-system/inbox/cursor.md, operating-system/inbox/ghost.md`
+- `[2026-06-23T16:18:26] === تشغيل جديد / new run ===`
+- `[2026-06-23T16:18:27] slugs needing build: []`
+- `[2026-06-23T16:18:28] AUDIT PASS`
+- `[2026-06-23T16:18:34] git: pushed ada54db`
+- `[2026-06-23T16:18:34] inboxes: operating-system/inbox/omar.md, operating-system/inbox/claude.md, operating-system/inbox/hema.md, operating-system/inbox/amer.md, operating-system/inbox/cursor.md, operating-system/inbox/ghost.md`
 
 <!-- TEAM-BOARD-LIVE-END -->
 ---
