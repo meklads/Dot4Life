@@ -10,7 +10,7 @@
 (function() {
   'use strict';
 
-  var FEED_VERSION = 17;  // v17: Verywell image law — promo 6:5 · cards 3:2
+  var FEED_VERSION = 18;  // v18: approved heroes — pregnancy AR + children-sleep fix
 
   var CONFIG = {
     jsonUrl: '/articles.json',
