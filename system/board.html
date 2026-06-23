@@ -237,8 +237,32 @@ function setSideActive(s){
 }
 let vgInit=false,gsInit=false,gsActive=0,ghostInit=false,ghostReports=[],handoffInit=false,HANDOFF=null;
 const HANDOFF_LS='dfl_handoff_cols';
+const HANDOFF_REV_LS='dfl_handoff_rev';
 const handoffOv=()=>JSON.parse(localStorage.getItem(HANDOFF_LS)||'{}');
 const saveHandoffOv=(id,col)=>{const o=handoffOv();o[id]=col;localStorage.setItem(HANDOFF_LS,JSON.stringify(o))};
+function syncHandoffOverrides(handoff){
+  const rev=handoff.updated||handoff.synced_at||'';
+  if(rev&&localStorage.getItem(HANDOFF_REV_LS)!==rev){
+    localStorage.removeItem(HANDOFF_LS);
+    localStorage.setItem(HANDOFF_REV_LS,rev);
+    return {};
+  }
+  const ov=handoffOv();
+  const cleaned={};
+  Object.keys(ov).forEach(id=>{
+    const card=(handoff.cards||[]).find(c=>c.id===id);
+    if(card&&(card.col==='done'||card.stage==='done'))return;
+    cleaned[id]=ov[id];
+  });
+  if(Object.keys(cleaned).length!==Object.keys(ov).length){
+    localStorage.setItem(HANDOFF_LS,JSON.stringify(cleaned));
+  }
+  return cleaned;
+}
+function resolveHandoffCol(card,ov){
+  if(card.col==='done'||card.stage==='done')return 'done';
+  return ov[card.id]||card.col;
+}
 function handoffToast(msg){const t=$('#handoffToast');if(!t)return;t.textContent=msg;t.style.display='block';clearTimeout(handoffToast._t);handoffToast._t=setTimeout(()=>{t.style.display='none'},4200)}
 function openHandoff(){setSideActive('handoff');switchView('handoff');HANDOFF=null;renderHandoff()}
 function show(){document.getElementById('gate').style.display='none';document.getElementById('app').style.display='block';openGSystem()}
@@ -336,8 +360,8 @@ async function renderHandoff(){
     catch(e){el.innerHTML='<p style="color:#c0392b">تعذّر تحميل التذاكر.</p>';return}
   }
   handoffInit=true;
-  const ov=handoffOv();
-  const cards=(HANDOFF.cards||[]).map(c=>({...c,col:ov[c.id]||c.col}));
+  const ov=syncHandoffOverrides(HANDOFF);
+  const cards=(HANDOFF.cards||[]).map(c=>({...c,col:resolveHandoffCol(c,ov)}));
   const cols=HANDOFF.columns||[];
   el.innerHTML=cols.map(col=>{
     const list=cards.filter(c=>c.col===col.id);
@@ -367,6 +391,12 @@ function wireHandoff(cards,cols){
       e.preventDefault();col.classList.remove('drag');
       if(!dragId)return;
       const target=col.dataset.col;
+      const server=(HANDOFF.cards||[]).find(x=>x.id===dragId);
+      if(server&&(server.col==='done'||server.stage==='done')){
+        handoffToast('⚠️ '+dragId+' منتهية — تبقى في LIVE');
+        renderHandoff();
+        return;
+      }
       saveHandoffOv(dragId,target);
       const c=cards.find(x=>x.id===dragId);
       const colTitle=(cols.find(x=>x.id===target)||{}).title||target;
