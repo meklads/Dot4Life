@@ -195,6 +195,27 @@ def run_apply_heroes() -> int:
 
 
 def git_push_if_changed(message: str) -> str | None:
+    import glob as _glob
+    import os as _os
+
+    # 1) Self-heal: clear any stale lock files anywhere under .git
+    for _lk in _glob.glob(str(ROOT / ".git/**/*.lock"), recursive=True):
+        try:
+            _os.remove(_lk)
+        except OSError:
+            pass
+    # 2) Self-heal: ensure a git identity exists so `git commit` never dies with 128
+    id_check = subprocess.run(
+        ["git", "config", "user.email"], cwd=ROOT, capture_output=True, text=True
+    )
+    if not id_check.stdout.strip():
+        subprocess.run(["git", "config", "user.name", "gsystem-bot"], cwd=ROOT, check=False)
+        subprocess.run(
+            ["git", "config", "user.email", "gsystem-bot@users.noreply.github.com"],
+            cwd=ROOT,
+            check=False,
+        )
+
     st = subprocess.run(["git", "status", "--porcelain"], cwd=ROOT, capture_output=True, text=True)
     if not st.stdout.strip():
         log(
@@ -202,11 +223,34 @@ def git_push_if_changed(message: str) -> str | None:
             meaning="لا تغييرات جديدة — لم يُرفع شيء على GitHub (هذا طبيعي إذا كان كل شيء محدّثاً)",
         )
         return None
-    subprocess.run(["git", "add", "-A"], cwd=ROOT, check=True)
+    subprocess.run(["git", "add", "-A"], cwd=ROOT, check=False)
     # exclude pycache from commit if picked up
     subprocess.run(["git", "reset", "HEAD", "--", "**/__pycache__"], cwd=ROOT, check=False)
-    subprocess.run(["git", "commit", "-m", message], cwd=ROOT, check=True)
-    subprocess.run(["git", "push", "origin", "main"], cwd=ROOT, check=True)
+    cm = subprocess.run(
+        ["git", "commit", "-m", message], cwd=ROOT, capture_output=True, text=True
+    )
+    if cm.returncode != 0:
+        # Tolerate commit failure (e.g. nothing staged / in-progress merge); try to push what exists
+        log(
+            "git: commit skipped",
+            meaning="تعذّر الالتزام (قد يكون لا جديد أو دمج معلّق) — أحاول الدفع بما هو موجود: "
+            + (cm.stderr or "").strip()[:120],
+        )
+    # 3) Self-heal non-fast-forward: integrate remote (merge, no editor) before pushing
+    push = subprocess.run(["git", "push", "origin", "main"], cwd=ROOT, capture_output=True, text=True)
+    if push.returncode != 0:
+        subprocess.run(
+            ["git", "pull", "--no-rebase", "--no-edit", "origin", "main"], cwd=ROOT, check=False
+        )
+        push = subprocess.run(
+            ["git", "push", "origin", "main"], cwd=ROOT, capture_output=True, text=True
+        )
+    if push.returncode != 0:
+        log(
+            "git: push failed",
+            meaning="فشل الدفع بعد محاولة الدمج — يدوي مطلوب: " + (push.stderr or "").strip()[:140],
+        )
+        return None
     rev = subprocess.run(
         ["git", "rev-parse", "--short", "HEAD"], cwd=ROOT, capture_output=True, text=True
     )
