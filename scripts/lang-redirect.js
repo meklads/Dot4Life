@@ -1,13 +1,16 @@
 /*!
  * DOTFORLIFE — Bilingual page redirect
- * When homepage links append ?lang=en, send users to the matching -en.html (or ar twin).
- * Must load synchronously in <head> after hreflang alternate links.
+ * Sends users to the matching -en.html (or ar twin) when ?lang= or stored preference
+ * disagrees with the current file. Must load synchronously in <head> after hreflang links.
  */
 (function () {
   'use strict';
   var p = new URLSearchParams(location.search);
   var req = p.get('lang');
-  if (!req) return;
+  if (!req) {
+    try { req = localStorage.getItem('dfl-lang'); } catch (e) { /* ignore */ }
+  }
+  if (req !== 'en' && req !== 'ar') return;
 
   var path = location.pathname;
   var isEnPage = /-en\.html$/i.test(path);

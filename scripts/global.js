@@ -93,6 +93,25 @@
     document.dispatchEvent(new CustomEvent('dfl:langchange', { detail: { lang: targetLang } }));
   }
 
+  function getAlternateHref(targetLang) {
+    var altLink = document.querySelector('link[rel="alternate"][hreflang="' + targetLang + '"]');
+    if (!altLink && targetLang === 'ar') {
+      altLink = document.querySelector('link[rel="alternate"][hreflang="ar-SA"]');
+    }
+    return altLink && altLink.getAttribute('href');
+  }
+
+  function hasSplitLangPages() {
+    var enHref = getAlternateHref('en');
+    var arHref = getAlternateHref('ar');
+    if (!enHref || !arHref) return false;
+    try {
+      var enPath = new URL(enHref, location.origin).pathname;
+      var arPath = new URL(arHref, location.origin).pathname;
+      return enPath !== arPath;
+    } catch (e) { return false; }
+  }
+
   function bindLangToggle(langBtn) {
     if (!langBtn || langBtn.dataset.dflLangBound === '1') return;
     langBtn.dataset.dflLangBound = '1';
@@ -100,6 +119,16 @@
       var h = document.documentElement;
       var currentLang = h.getAttribute('data-lang') || 'en';
       var targetLang = currentLang === 'ar' ? 'en' : 'ar';
+
+      // Separate ar.html / -en.html twins: always navigate (nav spans alone are not bilingual body)
+      if (hasSplitLangPages()) {
+        var twinHref = getAlternateHref(targetLang);
+        if (twinHref) {
+          window.location.href = twinHref;
+          return;
+        }
+      }
+
       var hasBilingualSpans = document.querySelector('span.en, span.ar');
 
       // Bilingual span pages: toggle in-place (no full reload)
