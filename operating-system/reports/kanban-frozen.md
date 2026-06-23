@@ -19,7 +19,7 @@
 - ❌ لا `amer_review` / `chef_status` في `tasks.json`
 - ✅ APPROVED / REVISE / REJECT → `track-board.md` + مسودات `drafts/taskNN/`
 - ✅ BUILD VERIFY → `ready-to-build.md`
-- ✅ ملاحظات عامr → Cursor يرد في تقرير Ghost (قسم ملاحظات عامr)
+- ✅ ملاحظات عامر → Cursor يرد في تقرير Ghost (قسم ملاحظات عامر)
 
 ## Hema / Ship
 - نفس الحلقة — لا بطاقات Kanban

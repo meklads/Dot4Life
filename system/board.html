@@ -380,12 +380,14 @@ function handoffPageUrl(c){
 function hcardHTML(c){
   const copyText=['التذكرة: '+(c.id||''),'المقال: '+(c.article||c.title||c.slug||''),'موجه لـ: '+(c.assignee||'—'),'المطلوب: '+(c.task||'')].join('\n');
   const cmd=c.task?`<pre class="hcopy" hidden>${esc(copyText)}</pre><button type="button" class="copybtn">نسخ للعضو</button>`:'';
+  const step=c.step_ar?`<div class="hrow"><span class="hlbl">الخطوة</span><span class="hval">${esc(c.step_ar)}</span></div>`:'';
   const skill=c.skill?`<div class="hrow"><span class="hlbl">السكيل</span><span class="hval">${esc(c.skill==='moni'?'Moni':c.skill==='omar'?'عمر':c.skill==='amer'?'عامر':c.skill||'')}</span></div>`:'';
   const task=c.task?`<div class="hrow"><span class="hlbl">المطلوب</span><span class="hval task">${esc(c.task)}</span></div>`:'';
   const pageUrl=handoffPageUrl(c);
   const link=pageUrl?`<a class="rlink" href="${esc(pageUrl)}" target="_blank" rel="noopener">معاينة الصفحة ↗</a>`:'';
   const ts=c.ts?`<div class="hts" style="margin-top:.5rem;font-size:.7rem;color:#6C757D;font-weight:700">🕐 ${esc(c.ts)}</div>`:'';
-  return `<div class="hcard" draggable="true" data-id="${c.id}"><div class="hrow"><span class="hlbl">التذكرة</span><span class="hval">${esc(c.id||'')}</span></div><div class="hrow"><span class="hlbl">المقال</span><span class="hval">${esc(c.article||c.title||c.slug||'')}</span></div><div class="hrow"><span class="hlbl">موجه لـ</span><span class="hval">${esc(c.assignee||'—')}</span></div>${skill}${task}${link}${ts}${cmd}</div>`}
+  const artLabel=c.batch_article?`${esc(c.batch_article)} · ${esc(c.article||'')}`:esc(c.article||c.title||c.slug||'');
+  return `<div class="hcard" draggable="true" data-id="${c.id}"><div class="hrow"><span class="hlbl">التذكرة</span><span class="hval">${esc(c.id||'')}</span></div><div class="hrow"><span class="hlbl">المقال</span><span class="hval">${artLabel}</span></div><div class="hrow"><span class="hlbl">موجه لـ</span><span class="hval">${esc(c.assignee||'—')}</span></div>${step}${skill}${task}${link}${ts}${cmd}</div>`}
 function wireHandoff(cards,cols){
   let dragId=null;
   document.querySelectorAll('.hcard').forEach(card=>{

@@ -23,8 +23,20 @@
 
 | التذكرة | المقال | موجه لـ | المطلوب |
 |---------|--------|---------|----------|
-| B2-01 | أم عربية وريادة الأعمال | Hema · سكيل Moni | DEEPEN/كتابة — ≥1300w · FAQ×4 · draft-gate — ثم «انتهى من عندي» → عامر |
-| B2-03 | طقوس المساء العائلية | Hema · سكيل رواق | DEEPEN/كتابة — ≥1300w · FAQ×4 · draft-gate — ثم «انتهى من عندي» → عامر |
+| B2-01N | أم عربية وريادة الأعمال | Hema · سكيل Moni | DEEPEN/كتابة — ≥1300w · FAQ×4 · draft-gate — ثم «انتهى من عندي» |
+| B2-01P | أم عربية وريادة الأعمال | Hema · سكيل عمر | جهّز/راجع برومبت الصورة — batch-02-prompts.md — ثم «انتهى من عندي» |
+| B2-02N | ادخار أم استثمار للعائلة الخليجية | Hema · سكيل Moni | DEEPEN/كتابة — ≥1300w · FAQ×4 · draft-gate — ثم «انتهى من عندي» |
+| B2-02P | ادخار أم استثمار للعائلة الخليجية | Hema · سكيل عمر | جهّز/راجع برومبت الصورة — batch-02-prompts.md — ثم «انتهى من عندي» |
+| B2-03N | طقوس المساء العائلية | Hema · سكيل رواق | DEEPEN/كتابة — ≥1300w · FAQ×4 · draft-gate — ثم «انتهى من عندي» |
+| B2-03P | طقوس المساء العائلية | Hema · سكيل عمر | جهّز/راجع برومبت الصورة — batch-02-prompts.md — ثم «انتهى من عندي» |
+| B2-04N | تغذية العائلة بميزانية محدودة | Hema · سكيل Moni | DEEPEN/كتابة — ≥1300w · FAQ×4 · draft-gate — ثم «انتهى من عندي» |
+| B2-04P | تغذية العائلة بميزانية محدودة | Hema · سكيل عمر | جهّز/راجع برومبت الصورة — batch-02-prompts.md — ثم «انتهى من عندي» |
+| B2-05N | تأشيرة العمرة لسكان الخليج | Hema · سكيل Moni | مراجعة نص + draft-gate PASS — ثم «انتهى من عندي» |
+| B2-05P | تأشيرة العمرة لسكان الخليج | Hema · سكيل عمر | جهّز/راجع برومبت الصورة — batch-02-prompts.md — ثم «انتهى من عندي» |
+| B2-06N | فنادق المدينة قرب المسجد النبوي | Hema · سكيل Moni | مراجعة نص + draft-gate PASS — ثم «انتهى من عندي» |
+| B2-06P | فنادق المدينة قرب المسجد النبوي | Hema · سكيل عمر | جهّز/راجع برومبت الصورة — batch-02-prompts.md — ثم «انتهى من عندي» |
+| B2-07N | ذهب أم عقار للعائلة الخليجية | Hema · سكيل Moni | مراجعة نص + draft-gate PASS — ثم «انتهى من عندي» |
+| B2-07P | ذهب أم عقار للعائلة الخليجية | Hema · سكيل عمر | جهّز/راجع برومبت الصورة — batch-02-prompts.md — ثم «انتهى من عندي» |
 
 ---
 
@@ -32,9 +44,13 @@
 
 | التذكرة | المقال | موجه لـ | المطلوب |
 |---------|--------|---------|----------|
-| B2-02 | ادخار أم استثمار للعائلة الخليجية | عامر | توليد Higgsfield → WebP 1200×750 → manifest approved → BUILD VERIFY |
-| B2-06 | فنادق المدينة قرب المسجد النبوي | عامر | توليد Higgsfield → WebP 1200×750 → manifest approved → BUILD VERIFY |
-| B2-07 | ذهب أم عقار للعائلة الخليجية | عامر | توليد Higgsfield → WebP 1200×750 → manifest approved → BUILD VERIFY |
+| B2-01A | أم عربية وريادة الأعمال | عامر | توليد Higgsfield → WebP 1200×750 → manifest approved → BUILD VERIFY |
+| B2-02A | ادخار أم استثمار للعائلة الخليجية | عامر | توليد Higgsfield → WebP 1200×750 → manifest approved → BUILD VERIFY |
+| B2-03A | طقوس المساء العائلية | عامر | توليد Higgsfield → WebP 1200×750 → manifest approved → BUILD VERIFY |
+| B2-04A | تغذية العائلة بميزانية محدودة | عامر | توليد Higgsfield → WebP 1200×750 → manifest approved → BUILD VERIFY |
+| B2-05A | تأشيرة العمرة لسكان الخليج | عامر | توليد Higgsfield → WebP 1200×750 → manifest approved → BUILD VERIFY |
+| B2-06A | فنادق المدينة قرب المسجد النبوي | عامر | توليد Higgsfield → WebP 1200×750 → manifest approved → BUILD VERIFY |
+| B2-07A | ذهب أم عقار للعائلة الخليجية | عامر | توليد Higgsfield → WebP 1200×750 → manifest approved → BUILD VERIFY |
 
 ---
 
@@ -42,8 +58,13 @@
 
 | التذكرة | المقال | موجه لـ | المطلوب |
 |---------|--------|---------|----------|
-| B2-04 | تغذية العائلة بميزانية محدودة | Cursor | Autopilot: approved + slug → hero HTML → git push → «منتهي LIVE» |
-| B2-05 | تأشيرة العمرة لسكان الخليج | Cursor | Autopilot: approved + slug → hero HTML → git push → «منتهي LIVE» |
+| B2-01C | أم عربية وريادة الأعمال | Cursor | Autopilot: approved + slug → hero HTML → git push → «منتهي LIVE» |
+| B2-02C | ادخار أم استثمار للعائلة الخليجية | Cursor | Autopilot: approved + slug → hero HTML → git push → «منتهي LIVE» |
+| B2-03C | طقوس المساء العائلية | Cursor | Autopilot: approved + slug → hero HTML → git push → «منتهي LIVE» |
+| B2-04C | تغذية العائلة بميزانية محدودة | Cursor | Autopilot: approved + slug → hero HTML → git push → «منتهي LIVE» |
+| B2-05C | تأشيرة العمرة لسكان الخليج | Cursor | Autopilot: approved + slug → hero HTML → git push → «منتهي LIVE» |
+| B2-06C | فنادق المدينة قرب المسجد النبوي | Cursor | Autopilot: approved + slug → hero HTML → git push → «منتهي LIVE» |
+| B2-07C | ذهب أم عقار للعائلة الخليجية | Cursor | Autopilot: approved + slug → hero HTML → git push → «منتهي LIVE» |
 
 ---
 

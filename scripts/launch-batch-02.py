@@ -27,79 +27,110 @@ PROMPTS = {
 }
 
 TASKS = {
-    "hema": {
-        "deepen": "DEEPEN/كتابة — ≥1300w · FAQ×4 · draft-gate — ثم «انتهى من عندي» → عامر",
-        "prompt": "جهّز/راجع برومبت الصورة — batch-02-prompts.md — ثم «انتهى من عندي»",
-    },
+    "hema_write_deepen": "DEEPEN/كتابة — ≥1300w · FAQ×4 · draft-gate — ثم «انتهى من عندي»",
+    "hema_write_review": "مراجعة نص + draft-gate PASS — ثم «انتهى من عندي»",
+    "hema_prompt": "جهّز/راجع برومبت الصورة — batch-02-prompts.md — ثم «انتهى من عندي»",
     "amer": "توليد Higgsfield → WebP 1200×750 → manifest approved → BUILD VERIFY",
     "cursor": "Autopilot: approved + slug → hero HTML → git push → «منتهي LIVE»",
 }
 
+SKILL_LABEL = {
+    "moni": "Hema · سكيل Moni",
+    "ruwaq": "Hema · سكيل رواق",
+    "omar": "Hema · سكيل عمر",
+}
 
-def card_from_article(a: dict) -> dict:
-    col = a["owner_col"]
-    skill = a.get("skill")
-    stage = a["stage"]
+
+def cards_for_article(a: dict) -> list[dict]:
+    """4 tickets per article: Hema نص · Hema برومبت · عامر · Cursor."""
+    base_id = a["id"]
     slug = a["slug"]
     ts = datetime.now().strftime("%Y-%m-%d %H:%M")
-
-    if col == "hema":
-        task = TASKS["hema"]["deepen" if stage == "deepen" else "prompt"]
-        assignee = {"moni": "Hema · سكيل Moni", "ruwaq": "Hema · سكيل رواق", "omar": "Hema · سكيل عمر"}.get(
-            skill or "moni", "Hema"
-        )
-    elif col == "amer":
-        task = TASKS["amer"]
-        assignee = "عامر"
-    else:
-        task = TASKS["cursor"]
-        assignee = "Cursor"
-
     url_path = a.get("url_path", f"/blog/{slug}.html")
-    url = f"https://dotforlife.com{url_path}"
     pillar = a.get("pillar_ar", a.get("section", ""))
-    cmd = f"{a['id']}: {slug} — {a['needs']}"
+    write_skill = a.get("write_skill") or "moni"
+    words = a["words_ar"]
+    deepen = words < 1300
 
-    c = {
-        "id": a["id"],
-        "slug": slug,
-        "kind": "batch2",
-        "col": col,
-        "stage": stage,
-        "batch": 2,
-        "owner": "جوست",
-        "article": a["title_ar"],
-        "reason": f"Batch 02 · {pillar} · {a['words_ar']}w",
-        "assignee": assignee,
-        "task": task,
-        "command": cmd,
-        "hero_file": a["hero_file"],
-        "prompt_ref": a["prompt_ref"],
-        "alt_ar": a["alt_ar"],
-        "alt_en": a["alt_en"],
-        "url_path": url_path,
-        "ts": ts,
-    }
-    if stage == "done":
-        c["url"] = url
-    if skill:
-        c["skill"] = skill
-    return c
+    def base(**extra: object) -> dict:
+        c = {
+            "slug": slug,
+            "kind": "batch2",
+            "batch": 2,
+            "batch_article": base_id,
+            "owner": "جوست",
+            "article": a["title_ar"],
+            "reason": f"Batch 02 · {pillar} · {words}w",
+            "hero_file": a["hero_file"],
+            "prompt_ref": a["prompt_ref"],
+            "alt_ar": a["alt_ar"],
+            "alt_en": a["alt_en"],
+            "url_path": url_path,
+            "ts": ts,
+        }
+        c.update(extra)
+        return c
+
+    write_stage = "deepen" if deepen else "review"
+    write_task = TASKS["hema_write_deepen"] if deepen else TASKS["hema_write_review"]
+    write_cmd = f"{base_id}N: {slug} — {'DEEPEN ≥1300w' if deepen else 'مراجعة + draft-gate'}"
+
+    return [
+        base(
+            id=f"{base_id}N",
+            col="hema",
+            stage=write_stage,
+            step_ar="📝 نص",
+            skill=write_skill,
+            assignee=SKILL_LABEL.get(write_skill, "Hema"),
+            task=write_task,
+            command=write_cmd,
+        ),
+        base(
+            id=f"{base_id}P",
+            col="hema",
+            stage="prompt",
+            step_ar="🖼️ برومبت",
+            skill="omar",
+            assignee=SKILL_LABEL["omar"],
+            task=TASKS["hema_prompt"],
+            command=f"{base_id}P: {slug} — برومبت + pending في الفهرس",
+        ),
+        base(
+            id=f"{base_id}A",
+            col="amer",
+            stage="generate",
+            step_ar="🎨 صورة",
+            skill="generate",
+            assignee="عامر",
+            task=TASKS["amer"],
+            command=f"{base_id}A: {slug} — Higgsfield → {a['hero_file']}",
+        ),
+        base(
+            id=f"{base_id}C",
+            col="cursor",
+            stage="build",
+            step_ar="⚙️ بناء",
+            assignee="Cursor",
+            task=TASKS["cursor"],
+            command=f"{base_id}C: {slug} — بناء hero عند approved → autopilot",
+        ),
+    ]
 
 
 def write_prompts_md(articles: list) -> None:
     lines = [
         f"# 🖼️ Batch 02 — {len(articles)} برومبتات صور",
         "",
-        "> **من:** جوست + Cursor · **إلى:** Hema (مراجعة) · عامر (توليد Higgsfield) · **2026-06-24**",
+        "> **من:** جوست + Cursor · **إلى:** Hema (مراجعة برومبت) · عامر (توليد Higgsfield) · **2026-06-24**",
         "> **المسار:** `assets/images/approved/hero-<slug>.webp` · 1200×750 WebP",
         "",
-        "| # | القسم | slug | الملف | المالك |",
-        "|---|-------|------|-------|--------|",
+        "| # | القسم | slug | الملف |",
+        "|---|-------|------|-------|",
     ]
     for i, a in enumerate(articles, 1):
         lines.append(
-            f"| {i} | {a.get('pillar_ar', a.get('section', ''))} | `{a['slug']}` | `{a['hero_file']}` | {a['owner_col']} |"
+            f"| {i} | {a.get('pillar_ar', a.get('section', ''))} | `{a['slug']}` | `{a['hero_file']}` |"
         )
     lines.append("")
     lines.append("---")
@@ -132,7 +163,6 @@ def main() -> int:
     articles = batch["articles"]
     data = json.loads(TICKETS.read_text(encoding="utf-8"))
 
-    # Remove old batch-2 ghost backlog superseded by B2 launch
     supersede = {
         "H-16", "H-17", "H-18", "H-19", "H-20", "H-21", "H-22",
         "H-23", "H-24", "H-25", "H-26",
@@ -145,14 +175,17 @@ def main() -> int:
             c["task"] = "أُدمج في Batch 02"
             c["result"] = "✅ superseded by batch-02 launch 2026-06-24"
 
-    # Drop existing B2-* if re-run
     data["cards"] = [c for c in data["cards"] if not str(c.get("id", "")).startswith("B2-")]
 
-    new_cards = [card_from_article(a) for a in articles]
+    new_cards: list[dict] = []
+    for a in articles:
+        new_cards.extend(cards_for_article(a))
+
     data["cards"].extend(new_cards)
     data["updated"] = datetime.now().strftime("%Y-%m-%d")
     data["batch_active"] = "batch-02"
     data["batch_size"] = batch.get("size", len(articles))
+    data["batch_tickets"] = len(new_cards)
 
     TICKETS.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     write_prompts_md(articles)
@@ -160,9 +193,11 @@ def main() -> int:
     subprocess.run([sys.executable, str(ROOT / "scripts/handoff_sync.py")], check=True)
     subprocess.run([sys.executable, str(ROOT / "scripts/sync_gsystem_web.py")], check=True)
 
-    print(f"Launched batch-02: {len(new_cards)} tickets")
+    by_col: dict[str, int] = {}
     for c in new_cards:
-        print(f"  {c['id']} → {c['col']} · {c['article']}")
+        by_col[c["col"]] = by_col.get(c["col"], 0) + 1
+    print(f"Launched batch-02: {len(articles)} articles · {len(new_cards)} tickets")
+    print(f"  Hema {by_col.get('hema', 0)} · عامر {by_col.get('amer', 0)} · Cursor {by_col.get('cursor', 0)}")
     return 0
 
 

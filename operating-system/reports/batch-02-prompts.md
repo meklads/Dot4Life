@@ -1,17 +1,17 @@
 # 🖼️ Batch 02 — 7 برومبتات صور
 
-> **من:** جوست + Cursor · **إلى:** Hema (مراجعة) · عامر (توليد Higgsfield) · **2026-06-24**
+> **من:** جوست + Cursor · **إلى:** Hema (مراجعة برومبت) · عامر (توليد Higgsfield) · **2026-06-24**
 > **المسار:** `assets/images/approved/hero-<slug>.webp` · 1200×750 WebP
 
-| # | القسم | slug | الملف | المالك |
-|---|-------|------|-------|--------|
-| 1 | قصص مميزة | `arab-mother-startup` | `hero-arab-mother-startup.webp` | hema |
-| 2 | مقارنات وقرارات | `saving-vs-investing-gulf-family` | `hero-saving-vs-investing-gulf-family.webp` | amer |
-| 3 | السلام يبدأ من البيت | `evening-rituals` | `hero-evening-rituals.webp` | hema |
-| 4 | الصحة والعافية | `family-nutrition-on-budget` | `hero-family-nutrition-on-budget.webp` | cursor |
-| 5 | رحلات الحياة (الإسلاميات) | `umrah-visa-gulf-residents-guide` | `hero-umrah-visa-gulf-residents-guide.webp` | cursor |
-| 6 | العالم ينتظر أسرتك | `medina-hotels-near-masjid-nabawi` | `hero-medina-hotels-near-masjid-nabawi.webp` | amer |
-| 7 | العقار | `gold-vs-real-estate-gulf-family` | `hero-gold-vs-real-estate-gulf-family.webp` | amer |
+| # | القسم | slug | الملف |
+|---|-------|------|-------|
+| 1 | قصص مميزة | `arab-mother-startup` | `hero-arab-mother-startup.webp` |
+| 2 | مقارنات وقرارات | `saving-vs-investing-gulf-family` | `hero-saving-vs-investing-gulf-family.webp` |
+| 3 | السلام يبدأ من البيت | `evening-rituals` | `hero-evening-rituals.webp` |
+| 4 | الصحة والعافية | `family-nutrition-on-budget` | `hero-family-nutrition-on-budget.webp` |
+| 5 | رحلات الحياة (الإسلاميات) | `umrah-visa-gulf-residents-guide` | `hero-umrah-visa-gulf-residents-guide.webp` |
+| 6 | العالم ينتظر أسرتك | `medina-hotels-near-masjid-nabawi` | `hero-medina-hotels-near-masjid-nabawi.webp` |
+| 7 | العقار | `gold-vs-real-estate-gulf-family` | `hero-gold-vs-real-estate-gulf-family.webp` |
 
 ---
 
