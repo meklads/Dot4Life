@@ -16,7 +16,7 @@
 | A-05 | العمرة مع الأطفال + رأس السنة الهجرية | Cursor | **LIVE** 🟢 | auto-gates ✅ | 4 pages |
 | A-06 | أسماء الله + الصلاة بالحب | Cursor | **LIVE** 🟢 | auto-gates ✅ | 4 pages |
 | A-08 | تمويل جدة + عائد إيجار الرياض | Cursor | **LIVE** 🟢 | auto-gates ✅ | 4 pages (+2 EN new) |
-| A-09 | تطوّع صيفي + مخيمات vs منزل | Cursor | **TECH_BUILD** | ✅ approved (بعد REVISE) | `drafts/task09/` |
+| A-09 | تطوّع صيفي + مخيمات vs منزل | Cursor | **TECH_BUILD** 🟢 | ✅ APPROVED 2026-06-23 | `drafts/task09/` · C-03 |
 | A-10…A-59 | — | Ship | QUEUE | hold (after A-09) | drafts/task10/ |
 
 **الحالة:** **29 LIVE** · جودة أرشيف **35%** (95/271) · guides **100%** · blog triage **43/58 PASS** · A-09 REVISE عند Hema.

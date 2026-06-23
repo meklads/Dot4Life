@@ -85,15 +85,16 @@ ARTICLE_TITLES: dict[str, str] = {
 }
 
 HEMA_TASKS = {
-    "T-02": "أعد REVISE في drafts/task09/ ثم ضعها في «انتهى من عندي»",
-    "T-03": "DEEPEN الـ15 في hema-deepen-t03-blog-triage-15.txt — draft-gate — ثم «انتهى من عندي»",
-    "T-04": "DEEPEN الـ7 في hema-deepen-t04-thin-7.txt — draft-gate — ثم «انتهى من عندي»",
+    "T-02": "✅ APPROVED — Cursor يبني A-09 ضمن C-03",
+    "T-03": "✅ 12/15 في C-03 — أصلح T-03R (3 ملفات schema/إخلاء)",
+    "T-03R": "inject Article مستهدف + إخلاء: pregnancy-weeks · umrah-budget-en · complete-life-guide",
+    "T-04": "↩️ تعميق جسم ≥1300w للـ7 في hema-deepen-t04 — ليس FAQ فقط",
 }
 
 CURSOR_TASKS = {
-    "C-01": "⛔ موقوف — بانتظار اعتماد عامر A-01",
-    "C-02": "⛔ موقوف — بانتظار اعتماد عامر A-01",
-    "C-03": "⏳ بانتظار اعتماد عامر A-02 — ثم دمج → build → push LIVE",
+    "C-01": "⛔ موقوف — بانتظار توليد Higgsfield H-07..H-12",
+    "C-02": "⛔ موقوف — بانتظار توليد Higgsfield H-07..H-12",
+    "C-03": "🟢 GO مقيّد — c03-scope-approved.txt (16 ملف) → build → push LIVE",
     "C-04": "BUILD Track B thin (4 URLs معتمدة) → Schema → push → «انتهى من عندي»",
     "C-05": "C-F3 Schema دفعة 1 (20 blog) → verify → «انتهى من عندي»",
     "C-06": "C-F3 Schema دفعة 2 (20 blog) → verify → «انتهى من عندي»",
@@ -106,7 +107,7 @@ CURSOR_TASKS = {
 CURSOR_COMMANDS = {
     "C-01": "C-01: Autopilot — H-07,H-08,H-09 approved → HTML → git push",
     "C-02": "C-02: Autopilot — H-10,H-11,H-12 approved → HTML → git push",
-    "C-03": "C-03: دمج T-02,T-03,T-04 → build → git push",
+    "C-03": "C-03: T-02×4 + T-03×12 → build → git push (c03-scope-approved.txt)",
     "C-04": "C-04: inject Track B thin LIVE (investment+rent-vs-buy ×4) → Schema → push",
     "C-05": "C-05: inject-article-schema.py batch 1 (20 blog) → verify JSON-LD",
     "C-06": "C-06: inject-article-schema.py batch 2 (20 blog) → verify JSON-LD",
@@ -129,9 +130,9 @@ CURSOR2_COMMANDS = {
 }
 
 AMER_TASKS = {
-    "A-01": "بوابة صور H-07..H-12 — رفض placeholders · وجّه Hema · لا approved حتى فحص بصري",
-    "A-02": "اعتماد T-02..T-04 — amer-mandate كامل — ثم «انتهى من عندي» لفتح C-03",
-    "A-03": "متابعة رفض T-05..T-07 + R-01..R-03 — إرجاع Moni أو اعتماد بعد إصلاح",
+    "A-01": "✅ أُغلق — رفض placeholders · Hema تولّد",
+    "A-02": "✅ أُغلق — C-03 🟢 مقيّد",
+    "A-03": "متابعة رفض T-05..T-07 + R-01 — لا توزيع Hema قبل الإغلاق",
 }
 
 AMER_COMMANDS = {
