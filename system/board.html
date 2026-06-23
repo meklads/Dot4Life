@@ -88,6 +88,7 @@
   .handoff-board{display:flex;gap:12px;overflow-x:auto;padding-bottom:1rem;align-items:flex-start}
   .handoff-col{flex:0 0 min(260px,78vw);background:#e4ebe8;border-radius:14px;padding:.6rem;min-height:200px;max-height:72vh;overflow-y:auto}
   .handoff-col.col-cursor2{flex:0 0 min(240px,72vw);background:#e8eaf6}
+  .handoff-col.col-amer{flex:0 0 min(260px,78vw);background:#faf3e8;border-left:4px solid #c17817}
   .handoff-col h2{font-size:.82rem;font-weight:800;padding:.35rem .45rem .5rem;display:flex;justify-content:space-between;align-items:flex-start;gap:6px;line-height:1.4}
   .handoff-col h2 small{display:block;font-size:.65rem;font-weight:700;color:var(--muted);margin-top:2px}
   .handoff-col h2 .count{background:#cfdbd6;border-radius:999px;padding:0 .45rem;font-size:.7rem;flex-shrink:0}
@@ -133,7 +134,7 @@
     <div id="view-handoff" class="view-panel">
       <div class="handoff-head">
         <h1>لوحة التسليم — المرحلة 1</h1>
-        <div class="sub">Hema = سكيلز (عمر·Moni·عامر). Cursor = بناء. كورسر ٢ = LIVE منتظر صور. اسحب يميناً لرؤية كل الأعمدة.</div>
+        <div class="sub">عامر = مدير تحريري. Hema = سكيلز (عمر·Moni·رواق). Cursor = بناء. كورسر ٢ = LIVE منتظر صور. اسحب يميناً.</div>
       </div>
       <div class="handoff-board" id="handoffBoard"><div class="loading">جارٍ التحميل…</div></div>
       <div class="docnote">المصدر: <code>operating-system/handoff-tickets.json</code> · السحب يحفظ على جهازك · Cursor يثبّت في Git</div>
@@ -340,7 +341,7 @@ async function renderHandoff(){
   const cols=HANDOFF.columns||[];
   el.innerHTML=cols.map(col=>{
     const list=cards.filter(c=>c.col===col.id);
-    const colCls='handoff-col'+(col.id==='cursor2'?' col-cursor2':'');
+    const colCls='handoff-col'+(col.id==='cursor2'?' col-cursor2':col.id==='amer'?' col-amer':'');
     const body=list.map(hcardHTML).join('');
     return `<div class="${colCls}" data-col="${col.id}" style="border-top:4px solid ${col.color||'#054241'}"><h2><span>${col.title}<small>${col.subtitle||''}</small></span><span class="count">${list.length}</span></h2>${body}</div>`}).join('');
   wireHandoff(cards,cols);

@@ -3,7 +3,7 @@
   "phase": 1,
   "batch_size": 10,
   "backlog_per_pool": 7,
-  "rules": "Hema = سكيلز (عمر·Moni·عامر). Cursor = بناء. كورسر ٢ = LIVE منتظر صور فقط (لا يوقف البناء). جوست = مخزون.",
+  "rules": "عامر = مدير تحريري (فوق Hema). Hema = Claude Ship · سكيلز: عمر·Moni·رواق. Cursor = بناء. كورسر ٢ = LIVE منتظر صور. جوست = مخزون.",
   "columns": [
     {
       "id": "ghost",
@@ -14,8 +14,14 @@
     {
       "id": "hema",
       "title": "Hema",
-      "subtitle": "Claude Ship · سكيلز: عمر · Moni · عامر",
+      "subtitle": "Claude Ship · سكيلز: عمر · Moni · رواق",
       "color": "#7d5ba6"
+    },
+    {
+      "id": "amer",
+      "title": "عامر",
+      "subtitle": "المدير التحريري — اعتماد وبوابة جودة",
+      "color": "#c17817"
     },
     {
       "id": "cursor",
@@ -90,10 +96,10 @@
       "stage": "member_complete",
       "owner": "Hema",
       "article": "الحمل أسبوع بأسبوع",
-      "assignee": "Hema · سكيل عامر (انتهى)",
-      "task": "انتهى — Hema · سكيل عامر — بانتظار المرحلة التالية",
+      "assignee": "Hema · توليد صور (انتهى)",
+      "task": "انتهى — Hema · توليد صور — بانتظار بوابة عامر",
       "command": "",
-      "skill": "amer"
+      "skill": "generate"
     },
     {
       "id": "H-11",
@@ -103,10 +109,10 @@
       "stage": "member_complete",
       "owner": "Hema",
       "article": "فحوصات ما قبل الحمل",
-      "assignee": "Hema · سكيل عامر (انتهى)",
-      "task": "انتهى — Hema · سكيل عامر — بانتظار المرحلة التالية",
+      "assignee": "Hema · توليد صور (انتهى)",
+      "task": "انتهى — Hema · توليد صور — بانتظار بوابة عامر",
       "command": "",
-      "skill": "amer"
+      "skill": "generate"
     },
     {
       "id": "H-12",
@@ -116,10 +122,10 @@
       "stage": "member_complete",
       "owner": "Hema",
       "article": "العمرة مع الأطفال",
-      "assignee": "Hema · سكيل عامر (انتهى)",
-      "task": "انتهى — Hema · سكيل عامر — بانتظار المرحلة التالية",
+      "assignee": "Hema · توليد صور (انتهى)",
+      "task": "انتهى — Hema · توليد صور — بانتظار بوابة عامر",
       "command": "",
-      "skill": "amer"
+      "skill": "generate"
     },
     {
       "id": "T-02",
@@ -166,12 +172,13 @@
       "owner": "Cursor",
       "article": "نشر صور H-07 → H-09",
       "depends_on": [
+        "A-01",
         "H-07",
         "H-08",
         "H-09"
       ],
       "assignee": "Cursor",
-      "task": "⛔ موقوف — QA رفض placeholders H-07..H-09 — بانتظار Higgsfield",
+      "task": "⛔ موقوف — بانتظار اعتماد عامر A-01",
       "command": "C-01: Autopilot — H-07,H-08,H-09 approved → HTML → git push"
     },
     {
@@ -183,12 +190,13 @@
       "owner": "Cursor",
       "article": "نشر صور H-10 → H-12",
       "depends_on": [
+        "A-01",
         "H-10",
         "H-11",
         "H-12"
       ],
       "assignee": "Cursor",
-      "task": "⛔ موقوف — QA رفض placeholders H-10..H-12 — بانتظار Higgsfield",
+      "task": "⛔ موقوف — بانتظار اعتماد عامر A-01",
       "command": "C-02: Autopilot — H-10,H-11,H-12 approved → HTML → git push"
     },
     {
@@ -196,17 +204,74 @@
       "slug": "deploy-hema-text",
       "kind": "build",
       "col": "cursor",
-      "stage": "ready",
+      "stage": "waiting",
       "owner": "Cursor",
       "article": "نشر نص Hema — T-02 → T-04",
       "depends_on": [
+        "A-02",
         "T-02",
         "T-03",
         "T-04"
       ],
       "assignee": "Cursor",
-      "task": "T-02..T-04 جاهزة — دمج مسودات → build → push LIVE → «انتهى من عندي»",
+      "task": "⏳ بانتظار اعتماد عامر A-02 — ثم دمج → build → push LIVE",
       "command": "C-03: دمج T-02,T-03,T-04 → build → git push"
+    },
+    {
+      "id": "A-01",
+      "slug": "qa-images-07-12",
+      "kind": "review",
+      "col": "amer",
+      "stage": "review",
+      "owner": "عامر",
+      "article": "بوابة صور H-07 → H-12",
+      "depends_on": [
+        "H-07",
+        "H-08",
+        "H-09",
+        "H-10",
+        "H-11",
+        "H-12"
+      ],
+      "blocks": [
+        "C-01",
+        "C-02"
+      ],
+      "assignee": "عامر",
+      "task": "بوابة صور H-07..H-12 — رفض placeholders · وجّه Hema · لا approved حتى فحص بصري",
+      "command": "A-01: راجع image-manifest H-07..H-12 → pending/approved · quality-log"
+    },
+    {
+      "id": "A-02",
+      "slug": "approve-text-t02-t04",
+      "kind": "review",
+      "col": "amer",
+      "stage": "review",
+      "owner": "عامر",
+      "article": "اعتماد نص T-02 → T-04",
+      "depends_on": [
+        "T-02",
+        "T-03",
+        "T-04"
+      ],
+      "blocks": [
+        "C-03"
+      ],
+      "assignee": "عامر",
+      "task": "اعتماد T-02..T-04 — amer-mandate كامل — ثم «انتهى من عندي» لفتح C-03",
+      "command": "A-02: راجع T-02,T-03,T-04 → اعتماد أو إرجاع Moni → ثم «انتهى من عندي»"
+    },
+    {
+      "id": "A-03",
+      "slug": "reject-deepen-batch",
+      "kind": "review",
+      "col": "amer",
+      "stage": "review",
+      "owner": "عامر",
+      "article": "متابعة رفض DEEPEN — T-05..T-07 + R-01..R-03",
+      "assignee": "عامر",
+      "task": "متابعة رفض T-05..T-07 + R-01..R-03 — إرجاع Moni أو اعتماد بعد إصلاح",
+      "command": "A-03: T-05,T-06,T-07,R-01,R-02,R-03 — بنود رفض في handoff-tickets"
     },
     {
       "id": "W-01",
@@ -314,13 +379,13 @@
       "col": "ghost",
       "stage": "backlog",
       "batch": 2,
-      "pool_for": "amer",
+      "pool_for": "generate",
       "priority": 1,
       "owner": "جوست",
       "article": "رأس السنة الهجرية والأطفال",
       "reason": "C-F6 · بعد برومبت عمر",
-      "assignee": "Hema · سكيل عامر",
-      "task": "مخزون جوست — Hema · سكيل عامر · C-F6 · بعد برومبت عمر"
+      "assignee": "Hema · توليد صور",
+      "task": "مخزون جوست — Hema · توليد صور · C-F6 · بعد برومبت عمر"
     },
     {
       "id": "H-21",
@@ -329,13 +394,13 @@
       "col": "ghost",
       "stage": "backlog",
       "batch": 2,
-      "pool_for": "amer",
+      "pool_for": "generate",
       "priority": 2,
       "owner": "جوست",
       "article": "تعليم أسماء الله للأطفال",
       "reason": "C-F6 · بعد برومبت عمر",
-      "assignee": "Hema · سكيل عامر",
-      "task": "مخزون جوست — Hema · سكيل عامر · C-F6 · بعد برومبت عمر"
+      "assignee": "Hema · توليد صور",
+      "task": "مخزون جوست — Hema · توليد صور · C-F6 · بعد برومبت عمر"
     },
     {
       "id": "H-22",
@@ -344,13 +409,13 @@
       "col": "ghost",
       "stage": "backlog",
       "batch": 2,
-      "pool_for": "amer",
+      "pool_for": "generate",
       "priority": 3,
       "owner": "جوست",
       "article": "تعليم الصلاة بالحب",
       "reason": "C-F6 · بعد برومبت عمر",
-      "assignee": "Hema · سكيل عامر",
-      "task": "مخزون جوست — Hema · سكيل عامر · C-F6 · بعد برومبت عمر"
+      "assignee": "Hema · توليد صور",
+      "task": "مخزون جوست — Hema · توليد صور · C-F6 · بعد برومبت عمر"
     },
     {
       "id": "H-23",
@@ -359,13 +424,13 @@
       "col": "ghost",
       "stage": "backlog",
       "batch": 2,
-      "pool_for": "amer",
+      "pool_for": "generate",
       "priority": 4,
       "owner": "جوست",
       "article": "حاسبة تمويل جدة",
       "reason": "C-F6 · بعد برومبت عمر",
-      "assignee": "Hema · سكيل عامر",
-      "task": "مخزون جوست — Hema · سكيل عامر · C-F6 · بعد برومبت عمر"
+      "assignee": "Hema · توليد صور",
+      "task": "مخزون جوست — Hema · توليد صور · C-F6 · بعد برومبت عمر"
     },
     {
       "id": "H-24",
@@ -374,13 +439,13 @@
       "col": "ghost",
       "stage": "backlog",
       "batch": 2,
-      "pool_for": "amer",
+      "pool_for": "generate",
       "priority": 5,
       "owner": "جوست",
       "article": "تغذية الحمل — الثلث الأول",
       "reason": "Track B صحة · بعد برومبت",
-      "assignee": "Hema · سكيل عامر",
-      "task": "مخزون جوست — Hema · سكيل عامر · Track B صحة · بعد برومبت"
+      "assignee": "Hema · توليد صور",
+      "task": "مخزون جوست — Hema · توليد صور · Track B صحة · بعد برومبت"
     },
     {
       "id": "H-25",
@@ -389,13 +454,13 @@
       "col": "ghost",
       "stage": "backlog",
       "batch": 2,
-      "pool_for": "amer",
+      "pool_for": "generate",
       "priority": 6,
       "owner": "جوست",
       "article": "مكافأة نهاية الخدمة",
       "reason": "Track B مالية · بعد برومبت",
-      "assignee": "Hema · سكيل عامر",
-      "task": "مخزون جوست — Hema · سكيل عامر · Track B مالية · بعد برومبت"
+      "assignee": "Hema · توليد صور",
+      "task": "مخزون جوست — Hema · توليد صور · Track B مالية · بعد برومبت"
     },
     {
       "id": "H-26",
@@ -404,58 +469,67 @@
       "col": "ghost",
       "stage": "backlog",
       "batch": 2,
-      "pool_for": "amer",
+      "pool_for": "generate",
       "priority": 7,
       "owner": "جوست",
       "article": "إدارة وقت العائلة",
       "reason": "Track B · بعد برومبت",
-      "assignee": "Hema · سكيل عامر",
-      "task": "مخزون جوست — Hema · سكيل عامر · Track B · بعد برومبت"
+      "assignee": "Hema · توليد صور",
+      "task": "مخزون جوست — Hema · توليد صور · Track B · بعد برومبت"
     },
     {
       "id": "T-05",
       "slug": "pregnancy-nutrition-first-trimester",
       "kind": "text",
-      "col": "ghost",
+      "col": "amer",
       "stage": "backlog",
       "batch": 2,
       "pool_for": "hema",
       "priority": 1,
-      "owner": "جوست",
+      "owner": "عامر",
       "article": "DEEPEN — تغذية الحمل (ع+en)",
       "reason": "Track B #12,17 · صحة · أولوية AdSense",
-      "assignee": "Hema · سكيل Moni",
-      "task": "مخزون جوست — Hema · سكيل Moni · Track B #12,17 · صحة · أولوية AdSense"
+      "assignee": "عامر",
+      "task": "↩️ رفض عامر 2026-06-23: تغذية الحمل (ع 452 / en 515 كلمة) — أُضيف FAQ فقط، الجسم ما زال أقل من نصف الحد (1200). ينقص: 600–800 كلمة جسم حقيقي (أمثلة/خطوات، بلا أرقام طبية مختلقة) + Article schema + إخلاء مسؤولية طبي. يبقى في review.",
+      "result": "↩️ رفض عامر 2026-06-23: تغذية الحمل (ع 452 / en 515 كلمة) — أُضيف FAQ فقط، الجسم ما زال أقل من نصف الحد (1200). ينقص: 600–800 كلمة جسم حقيقي (أمثلة/خطوات، بلا أرقام طبية مختلقة) + Article schema + إخلاء مسؤولية طبي. يبقى في review.",
+      "review_status": "rejected_needs_deepening",
+      "command": "T-05: amer-mandate review — pregnancy-nutrition-first-trimester"
     },
     {
       "id": "T-06",
       "slug": "end-of-service-saudi",
       "kind": "text",
-      "col": "ghost",
+      "col": "amer",
       "stage": "backlog",
       "batch": 2,
       "pool_for": "hema",
       "priority": 2,
-      "owner": "جوست",
+      "owner": "عامر",
       "article": "DEEPEN — مكافأة نهاية الخدمة (ع+en)",
       "reason": "Track B #15,20 · مالية · 432w",
-      "assignee": "Hema · سكيل Moni",
-      "task": "مخزون جوست — Hema · سكيل Moni · Track B #15,20 · مالية · 432w"
+      "assignee": "عامر",
+      "task": "↩️ رفض عامر 2026-06-23: مكافأة نهاية الخدمة (ع 490 / en 524) — FAQ فقط. ينقص: 600–800 كلمة (طريقة الاحتساب بالأنظمة الرسمية، أمثلة) + Article schema + إخلاء مسؤولية مالي. يبقى في review.",
+      "result": "↩️ رفض عامر 2026-06-23: مكافأة نهاية الخدمة (ع 490 / en 524) — FAQ فقط. ينقص: 600–800 كلمة (طريقة الاحتساب بالأنظمة الرسمية، أمثلة) + Article schema + إخلاء مسؤولية مالي. يبقى في review.",
+      "review_status": "rejected_needs_deepening",
+      "command": "T-06: amer-mandate review — end-of-service-saudi"
     },
     {
       "id": "T-07",
       "slug": "saving-for-education-gulf",
       "kind": "text",
-      "col": "ghost",
+      "col": "amer",
       "stage": "backlog",
       "batch": 2,
       "pool_for": "hema",
       "priority": 3,
-      "owner": "جوست",
+      "owner": "عامر",
       "article": "DEEPEN — ادخار التعليم (ع+en)",
       "reason": "Track B #10,16 · مالية · 392w",
-      "assignee": "Hema · سكيل Moni",
-      "task": "مخزون جوست — Hema · سكيل Moni · Track B #10,16 · مالية · 392w"
+      "assignee": "عامر",
+      "task": "↩️ رفض عامر 2026-06-23: ادخار التعليم (ع 419 / en 469) — FAQ فقط. ينقص: 600–800 كلمة جسم + Article schema + إخلاء مسؤولية مالي. يبقى في review.",
+      "result": "↩️ رفض عامر 2026-06-23: ادخار التعليم (ع 419 / en 469) — FAQ فقط. ينقص: 600–800 كلمة جسم + Article schema + إخلاء مسؤولية مالي. يبقى في review.",
+      "review_status": "rejected_needs_deepening",
+      "command": "T-07: amer-mandate review — saving-for-education-gulf"
     },
     {
       "id": "T-08",
@@ -687,6 +761,51 @@
       "article": "أفضل وجهات عائلية في الخليج",
       "assignee": "—",
       "task": "منتهي — على الموقع"
+    },
+    {
+      "id": "R-01",
+      "slug": "visceral-fat-gulf",
+      "kind": "reject",
+      "col": "amer",
+      "stage": "review",
+      "owner": "عامر",
+      "article": "visceral-fat-gulf.html",
+      "assignee": "عامر",
+      "task": "↩️ رفض عامر 2026-06-23: الدهون الحشوية (624 كلمة) — FAQ فقط، أقل من نصف الحد. ينقص: 700+ كلمة جسم + Article schema + إخلاء مسؤولية طبي.",
+      "command": "R-01: amer-mandate review — visceral-fat-gulf",
+      "finished": false,
+      "result": "↩️ رفض عامر 2026-06-23: الدهون الحشوية (624 كلمة) — FAQ فقط، أقل من نصف الحد. ينقص: 700+ كلمة جسم + Article schema + إخلاء مسؤولية طبي.",
+      "review_status": "rejected_needs_deepening"
+    },
+    {
+      "id": "R-02",
+      "slug": "pregnancy-weeks-guide",
+      "kind": "reject",
+      "col": "amer",
+      "stage": "review",
+      "owner": "عامر",
+      "article": "pregnancy-weeks-guide.html",
+      "assignee": "عامر",
+      "task": "↩️ رفض عامر 2026-06-23: دليل أسابيع الحمل (1101 كلمة) — تحت حد 1200. ينقص: ~250 كلمة جسم + Article schema + إخلاء مسؤولية طبي.",
+      "command": "R-02: amer-mandate review — pregnancy-weeks-guide",
+      "finished": false,
+      "result": "↩️ رفض عامر 2026-06-23: دليل أسابيع الحمل (1101 كلمة) — تحت حد 1200. ينقص: ~250 كلمة جسم + Article schema + إخلاء مسؤولية طبي.",
+      "review_status": "rejected_needs_deepening"
+    },
+    {
+      "id": "R-03",
+      "slug": "umrah-budget-guide-families-en",
+      "kind": "reject",
+      "col": "amer",
+      "stage": "review",
+      "owner": "عامر",
+      "article": "umrah-budget-guide-families-en.html",
+      "assignee": "عامر",
+      "task": "↩️ رفض عامر 2026-06-23: Umrah budget guide (1140 كلمة) — تحت حد 1200. ينقص: ~200 كلمة جسم + Article schema + إخلاء مسؤولية (سعري/شرعي).",
+      "command": "R-03: amer-mandate review — umrah-budget-guide-families-en",
+      "finished": false,
+      "result": "↩️ رفض عامر 2026-06-23: Umrah budget guide (1140 كلمة) — تحت حد 1200. ينقص: ~200 كلمة جسم + Article schema + إخلاء مسؤولية (سعري/شرعي).",
+      "review_status": "rejected_needs_deepening"
     }
   ]
 }

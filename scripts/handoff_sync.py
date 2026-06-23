@@ -29,6 +29,7 @@ STAGE_LABEL = {
 ASSIGNEE = {
     "ghost": "جوست",
     "hema": "Hema",
+    "amer": "عامر",
     "cursor": "Cursor",
     "cursor2": "كورسر ٢",
     "member_done": "—",
@@ -38,13 +39,14 @@ ASSIGNEE = {
 SKILL_LABELS = {
     "omar": "Hema · سكيل عمر",
     "moni": "Hema · سكيل Moni",
-    "amer": "Hema · سكيل عامر",
-    "ruwaq": "Hema · سكيل Ruwaq",
+    "ruwaq": "Hema · سكيل رواق",
+    "generate": "Hema · توليد صور",
 }
 
-SKILL_ALIASES = {"omar", "amer", "moni", "ruwaq", "hema"}
+SKILL_ALIASES = {"omar", "moni", "ruwaq", "hema", "generate"}
 
 AGENT = "Hema"
+AMER = "عامر"
 
 ARTICLE_TITLES: dict[str, str] = {
     "investment-basics-beginners": "استثمار للمبتدئين",
@@ -89,9 +91,9 @@ HEMA_TASKS = {
 }
 
 CURSOR_TASKS = {
-    "C-01": "⛔ موقوف — QA رفض placeholders H-07..H-09 — بانتظار Higgsfield",
-    "C-02": "⛔ موقوف — QA رفض placeholders H-10..H-12 — بانتظار Higgsfield",
-    "C-03": "T-02..T-04 جاهزة — دمج مسودات → build → push LIVE → «انتهى من عندي»",
+    "C-01": "⛔ موقوف — بانتظار اعتماد عامر A-01",
+    "C-02": "⛔ موقوف — بانتظار اعتماد عامر A-01",
+    "C-03": "⏳ بانتظار اعتماد عامر A-02 — ثم دمج → build → push LIVE",
     "C-04": "BUILD Track B thin (4 URLs معتمدة) → Schema → push → «انتهى من عندي»",
     "C-05": "C-F3 Schema دفعة 1 (20 blog) → verify → «انتهى من عندي»",
     "C-06": "C-F3 Schema دفعة 2 (20 blog) → verify → «انتهى من عندي»",
@@ -121,14 +123,35 @@ CURSOR2_TASKS = {
 }
 
 CURSOR2_COMMANDS = {
-    "W-01": "W-01: hero hijri-new-year-children — Omar/Amer أو ingest صور/",
-    "W-02": "W-02: hero teaching-children-allah-names — Omar/Amer أو ingest صور/",
-    "W-03": "W-03: hero teaching-children-prayer-with-love — Omar/Amer أو ingest صور/",
+    "W-01": "W-01: hero hijri-new-year-children — Hema/عمر → توليد → ingest",
+    "W-02": "W-02: hero teaching-children-allah-names — Hema/عمر → توليد → ingest",
+    "W-03": "W-03: hero teaching-children-prayer-with-love — Hema/عمر → توليد → ingest",
+}
+
+AMER_TASKS = {
+    "A-01": "بوابة صور H-07..H-12 — رفض placeholders · وجّه Hema · لا approved حتى فحص بصري",
+    "A-02": "اعتماد T-02..T-04 — amer-mandate كامل — ثم «انتهى من عندي» لفتح C-03",
+    "A-03": "متابعة رفض T-05..T-07 + R-01..R-03 — إرجاع Moni أو اعتماد بعد إصلاح",
+}
+
+AMER_COMMANDS = {
+    "A-01": "A-01: image-manifest + quality-log — H-07..H-12 pending/approved",
+    "A-02": "A-02: راجع مسودات T-02,T-03,T-04 — grep schema · wordcount · em-dash",
+    "A-03": "A-03: بنود رفض في handoff-tickets — T-05..07,R-01..03",
+}
+
+AMER_REJECT_TASKS = {
+    "T-05": "↩️ مرفوض — تعميق جسم + Article schema + إخلاء طبي",
+    "T-06": "↩️ مرفوض — تعميق جسم + Article schema + إخلاء مالي",
+    "T-07": "↩️ مرفوض — تعميق جسم + Article schema + إخلاء مالي",
+    "R-01": "↩️ مرفوض — 700+ كلمة + Article + إخلاء طبي",
+    "R-02": "↩️ مرفوض — ~250 كلمة + Article + إخلاء طبي",
+    "R-03": "↩️ مرفوض — ~200 كلمة + Article + إخلاء سعري/شرعي",
 }
 
 GHOST_POOL = {
     "omar": "Hema · سكيل عمر",
-    "amer": "Hema · سكيل عامر",
+    "generate": "Hema · توليد صور",
     "hema": "Hema · سكيل Moni",
     "moni": "Hema · سكيل Moni",
     "cursor": "Cursor · بناء",
@@ -140,6 +163,8 @@ def infer_skill(card: dict) -> str:
     if card.get("skill"):
         return card["skill"]
     pool = card.get("pool_for", "")
+    if pool == "generate":
+        return "generate"
     if pool == "hema":
         return "moni"
     if pool in SKILL_LABELS:
@@ -148,7 +173,7 @@ def infer_skill(card: dict) -> str:
     if cid.startswith("T-"):
         return "moni"
     if card.get("stage") == "generate":
-        return "amer"
+        return "generate"
     if cid.startswith("H-"):
         return "omar"
     return "moni"
@@ -159,8 +184,15 @@ def skill_label(card: dict) -> str:
 
 
 def normalize_col(col: str, card: dict) -> str:
-    if col in SKILL_ALIASES or col in ("omar", "amer"):
-        card["skill"] = "moni" if col in ("hema", "moni") else col
+    if col in ("amer", "عامر"):
+        return "amer"
+    if col in SKILL_ALIASES or col == "omar":
+        if col in ("hema", "moni", "ruwaq"):
+            card["skill"] = "moni" if col != "ruwaq" else "ruwaq"
+        elif col == "generate":
+            card["skill"] = "generate"
+        else:
+            card["skill"] = col if col != "omar" else "omar"
         return "hema"
     if col == "hema" and not card.get("skill"):
         card["skill"] = infer_skill(card)
@@ -172,6 +204,10 @@ def task_for(card: dict) -> str:
     if col == "done":
         return "منتهي — على الموقع"
     if col == "member_done":
+        if card.get("kind") == "review" or cid.startswith("A-"):
+            return f"انتهى — {AMER} — بانتظار Cursor"
+        if card.get("skill") == "generate":
+            return "انتهى — Hema · توليد صور — بانتظار بوابة عامر"
         return f"انتهى — {skill_label(card)} — بانتظار المرحلة التالية"
     if col == "ghost":
         pool = card.get("pool_for", "")
@@ -182,9 +218,13 @@ def task_for(card: dict) -> str:
         sk = infer_skill(card)
         if sk == "omar":
             return "جهّز برومبت الصورة وضعه pending — ثم «انتهى من عندي»"
-        if sk == "amer":
-            return "ولّد الصورة WebP 1200×750 — ثم «انتهى من عندي»"
+        if sk == "generate":
+            return "ولّد WebP 1200×750 (Higgsfield/صور/) — ثم «انتهى من عندي»"
         return HEMA_TASKS.get(cid, "DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي»")
+    if col == "amer":
+        if cid in AMER_REJECT_TASKS:
+            return card.get("result") or AMER_REJECT_TASKS[cid]
+        return AMER_TASKS.get(cid, "مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي»")
     if col == "cursor":
         return CURSOR_TASKS.get(cid, "بناء ونشر — ثم «انتهى من عندي»")
     if col == "cursor2":
@@ -195,8 +235,8 @@ def task_for(card: dict) -> str:
 
 def enrich_card(card: dict) -> dict:
     slug = card.get("slug", "")
-    if card.get("col") in ("omar", "amer"):
-        card["skill"] = infer_skill(card)
+    if card.get("col") == "omar":
+        card["skill"] = "omar"
         card["col"] = "hema"
     if card.get("col") == "hema" and not card.get("skill"):
         card["skill"] = infer_skill(card)
@@ -208,6 +248,9 @@ def enrich_card(card: dict) -> dict:
         card["assignee"] = lbl + (" (انتهى)" if card.get("col") == "member_done" else "")
     elif card.get("col") == "ghost" and card.get("pool_for"):
         card["assignee"] = GHOST_POOL.get(card["pool_for"], "جوست")
+    elif card.get("col") == "amer":
+        card["owner"] = AMER
+        card["assignee"] = AMER
     elif card.get("col") == "cursor2":
         card["assignee"] = ASSIGNEE["cursor2"]
     else:
@@ -241,10 +284,12 @@ def command_for(card: dict, col: str) -> str:
         if card.get("stage") == "approve":
             return f"{cid}: راجع WebP → approved في الفهرس + approved/ — {slug}"
         return card.get("command") or f"{cid}: جهّز برومبت + pending في الفهرس — {slug}"
-    if col == "hema" and sk == "amer":
-        return f"{cid}: ولّد في Higgsfield → WebP 1200×750 → hero-{slug}.webp"
+    if col == "hema" and sk == "generate":
+        return f"{cid}: Higgsfield → hero-{slug}.webp 1200×750 → صور/"
     if col == "hema":
         return card.get("command") or f"{cid}: أكمل المسودة — {slug}"
+    if col == "amer":
+        return AMER_COMMANDS.get(cid, f"{cid}: amer-mandate review — {slug}")
     if col == "cursor":
         return CURSOR_COMMANDS.get(cid, f"{cid}: approved جاهز — Autopilot يبني — {slug}")
     if col == "cursor2":
@@ -260,9 +305,11 @@ def advance_stage(card: dict, col: str, prev_col: str) -> str:
         sk = infer_skill(card)
         if sk == "omar":
             return "approve" if card.get("stage") == "approve" else "prompt"
-        if sk == "amer":
+        if sk == "generate":
             return "generate"
         return card.get("stage", "revise")
+    if col == "amer":
+        return card.get("stage", "review")
     if col == "cursor":
         return "build" if prev_col == "cursor" else card.get("stage", "ready")
     if col == "cursor2":
@@ -285,6 +332,8 @@ def move_card(data: dict, card_id: str, col: str) -> dict | None:
             card["stage"] = advance_stage(card, col, prev)
             if prev == "ghost" and col == "hema":
                 card["owner"] = AGENT
+            if col == "amer":
+                card["owner"] = AMER
             if col not in ("done", "ghost", "member_done"):
                 card["command"] = command_for(card, col)
             if col in ("done", "member_done"):
@@ -363,8 +412,9 @@ def render_board_md(data: dict) -> str:
         "2. يشتغل على راحته.\n"
         "3. لما يخلص ينقل التذكرة لـ **انتهى من عندي**.\n"
         "4. جوست يقول «ابدؤوا» أو «وزّع 3 لـ عمر» من المخزون.\n"
-        "5. **Cursor** = بناء فقط (C-01..C-03 جاهزة). **كورسر ٢** = LIVE منتظر صور — لا يوقف البناء.\n"
-        "6. بعد 10 → دفعة جديدة 10 حسب أولوية المنصة.\n"
+        "5. **عامر** = مدير تحريري — اعتماد قبل Cursor. **Hema** = تنفيذ. **Cursor** = بناء.\n"
+        "6. **كورسر ٢** = LIVE منتظر صور — لا يوقف البناء.\n"
+        "7. بعد 10 → دفعة جديدة 10 حسب أولوية المنصة.\n"
     )
     return "".join(parts)
 
