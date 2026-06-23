@@ -84,3 +84,4 @@
 4. **فوتر الموقع** (عرض كامل).
 - **schema JSON-LD داخل `<script type="application/ld+json">` (مخفي، للسيو فقط — لا يظهر كنص).**
 - المصدر/السكربت: `scripts/migrate-article-template.py`. الهيدر/الفوتر ثابتان (لا اعتماد على JS).
+- **TECH_BUILD:** `scripts/build-from-approved-draft.py` يطبّق التمبليت تلقائياً بعد كل بناء (لا صفحة عارية).

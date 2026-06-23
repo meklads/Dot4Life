@@ -1115,7 +1115,27 @@ def write_page(page: str, out_path: Path, cfg: dict, lang: str, md: str) -> list
     return gates
 
 
-def audit_live() -> int:
+def apply_article_template(out_path: Path) -> None:
+    """Wrap TECH_BUILD output in full site shell (header, banner, sidebar, footer)."""
+    import importlib.util
+
+    mig_path = ROOT / "scripts" / "migrate-article-template.py"
+    spec = importlib.util.spec_from_file_location("d4l_migrate_tpl", mig_path)
+    if spec is None or spec.loader is None:
+        raise SystemExit(f"Cannot load migrate-article-template.py for {out_path}")
+    mig = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mig)
+    content = mig.read_file(str(out_path))
+    if mig.has_template(content):
+        return
+    result = mig.build_new_page(out_path.name, content)
+    if not result:
+        raise SystemExit(f"Template migration failed: {out_path.relative_to(ROOT)}")
+    ok, why = mig.structure_valid(result)
+    if not ok:
+        raise SystemExit(f"Template structure invalid {out_path.relative_to(ROOT)}: {why}")
+    mig.write_file(str(out_path), result)
+    print(f"  🎨 TEMPLATE {out_path.relative_to(ROOT)}")
     """Audit LIVE HTML from BUILD_MAP — no rebuild unless FAIL."""
     print("=== LIVE GATE AUDIT (G1–G11 + parity) ===\n")
     fails: list[str] = []
@@ -1194,6 +1214,7 @@ def main() -> None:
             assert_parity(ar[2], en[2], cfg, ar[1], en[1])
         for lang, out_path, page, md in rendered:
             write_page(page, out_path, cfg, lang, md)
+            apply_article_template(out_path)
 
 
 if __name__ == "__main__":
