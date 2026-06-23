@@ -22,49 +22,50 @@
 <!-- TEAM-BOARD-LIVE-START -->
 ## 🕐 الحالة الآن — محدّث تلقائياً
 
-**آخر تحديث:** 2026-06-22 **15:32** · مصدر: autopilot + manifest + git
+**آخر تحديث:** 2026-06-23 **13:14** · مصدر: autopilot + manifest + git
 
 > **اقرأ هنا أولاً** — ثلاث حالات: **✅ تم** · **🔄 جاري** · **⏳ لسه**
 
 | المقياس | القيمة |
 |---------|--------|
-| صور `approved` | **6** |
+| صور `approved` | **12** |
 | تنتظر بناء HTML | **0** |
 | DEEPEN (قصير) | **174** |
-| جودة الموقع | **95/271 (35%)** |
-| آخر autopilot | `2026-06-22 **15:32**` |
+| جودة الموقع | **0/271 (0%)** |
+| آخر autopilot | `2026-06-23 **13:14**` |
 
 ### ✅ تم — آخر ما اكتمل
 
 | الوقت | ماذا | من | الدليل |
 |-------|------|-----|--------|
-| 2026-06-22 **15:32** | فحص autopilot — كل الصور المعتمدة على الموقع | Cursor | log `[]` |
-| 2026-06-22 **15:32** | built 0 slug(s) · AUDIT PASS | Cursor | autopilot |
-| 2026-06-22 **15:32** | تحديث صناديق الفريق | Cursor | `inbox/*.md` |
+| 2026-06-23 **13:14** | بُنيت صور: `investment-basics-beginners`, `rent-vs-buy-gulf-family`, `daily-walking-benefits`, `pregnancy-week-by-week`, `preconception-checkups`, `umrah-with-kids` | Cursor | autopilot |
+| 2026-06-23 **13:14** | built 6 slug(s) · AUDIT PASS | Cursor | autopilot |
+| 2026-06-23 **12:03** | آخر commit `1901323` | Cursor | Apply Amer afternoon quality gate and unlock restricted C-03. |
 
 ### 🔄 جاري العمل — الآن
 
 | الوقت | ماذا | من | التالي |
 |-------|------|-----|--------|
 | — | A-09 REVISE — `drafts/task09/` | Hema | تسليم لعامر بعد draft-gate |
-| 2026-06-22 **15:32** | BUILD VERIFY — **6** صور LIVE | عامر | hero + alt + G5 |
+| 2026-06-23 **13:14** | BUILD VERIFY — **12** صور LIVE | عامر | hero + alt + G5 |
 
 ### ⏳ لسه — منتظر / مفتوح
 
 | من | ماذا | ملاحظة |
 |-----|------|--------|
-| عمر + كلود | صور Tier 1 دفعة 2 | برومبتات + Higgsfield |
+| عمر + كلود | صور Tier 1 دفعة 2 — **0** slug بلا اعتماد | منذ ٢٢ يونيو |
 | Hema | DEEPEN — **174** صفحة قصيرة | `hema-deepen-priority.md` |
 | Cursor | وضع النشر المستمر | بانتظار «فعّل» من جوست |
 
 ### 📎 آخر سطور الأوتوبايلوت
 
-- `[2026-06-22T15:32:32] slugs needing build: []`
-- `[2026-06-22T15:32:32] AUDIT PASS`
-- `[2026-06-22T15:32:32] inboxes: operating-system/inbox/...`
+- `[2026-06-23T13:14:03] === تشغيل جديد / new run ===`
+- `[2026-06-23T13:14:16] slugs needing build: ['investment-basics-beginners', 'rent-vs-buy-gulf-family', 'daily-walking-benefits', 'pregnancy-week-by-week', 'preconception-checkups', 'umrah-with-kids']`
+- `[2026-06-23T13:14:16] RUN /usr/bin/python3 /sessions/serene-clever-cannon/mnt/Dot4Life/scripts/build-from-approved-draft.py A-01-1 A-07-1 A-02-1 A-03-2 A-04-1 A-05-1`
+- `[2026-06-23T13:14:29] AUDIT PASS`
+- `[2026-06-23T13:14:29] inboxes: operating-system/inbox/omar.md, operating-system/inbox/claude.md, operating-system/inbox/hema.md, operating-system/inbox/amer.md, operating-system/inbox/cursor.md, operating-system/inbox/ghost.md`
 
 <!-- TEAM-BOARD-LIVE-END -->
-
 ---
 
 ## 1 · 📋 تذاكر — مفتوح (يدوي)

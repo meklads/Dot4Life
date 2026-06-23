@@ -1,0 +1,50 @@
+<!-- gsystem-autopilot-legend -->
+# سجل الأوتوبايلوت — كيف تقرأه
+# GSystem Autopilot log — how to read
+
+كل تشغيلة تبدأ بـ: === تشغيل جديد ===
+Each run starts with: === new run ===
+
+| السطر (English) | المعنى بالعربي |
+|-----------------|----------------|
+| slugs needing build: [] | لا مقالات تنتظر بناء — كل الصور المعتمدة على الموقع ✓ |
+| slugs needing build: ['x'] | مقال/مقالات تحتاج حقن صورة البطل في HTML |
+| SKIP slug: approved but file missing | معتمد في الفهرس لكن ملف WebP غير موجود في approved/ |
+| WARN slug: no HTML pages found | لا توجد صفحة HTML لهذا المقال في الموقع |
+| RUN scripts/... | يبني المقال من مسودة معتمدة |
+| APPLY path/to/page.html | تم تحديث صورة البطل في هذه الصفحة |
+| AUDIT PASS | فحص الجودة نجح — الموقع سليم |
+| AUDIT FAIL | فحص الجودة فشل — راجع السطر التالي للتفاصيل |
+| git: nothing to commit | لا تغييرات جديدة — لم يُرفع شيء على GitHub |
+| git: pushed abc1234 | تم الرفع على GitHub بنجاح |
+| ERROR: BUILD_MAP rebuild failed | فشل بناء المقال — راجع الأخطاء أعلاه |
+| inboxes: ... | تم تحديث صناديق مهام الفريق (عمر، كلود، Hema، …) |
+
+السطر الذي يبدأ بـ ↳ هو شرح عربي للسطر الذي قبله مباشرة.
+Lines starting with ↳ explain the line above in Arabic.
+
+---
+
+[2026-06-22T15:32:32] === تشغيل جديد / new run ===
+[2026-06-22T15:32:32] slugs needing build: []
+[2026-06-22T15:32:32]   ↳ لا مقالات تنتظر بناء — كل الصور المعتمدة موجودة على الموقع ✓
+[2026-06-22T15:32:32] AUDIT PASS
+[2026-06-22T15:32:32]   ↳ فحص الجودة نجح — المقالات LIVE سليمة
+[2026-06-22T15:32:32] inboxes: operating-system/inbox/omar.md, operating-system/inbox/claude.md, operating-system/inbox/hema.md, operating-system/inbox/amer.md, operating-system/inbox/cursor.md, operating-system/inbox/ghost.md
+[2026-06-22T15:32:32]   ↳ تم تحديث صناديق مهام الفريق (عمر، كلود، Hema، عامر، Cursor، جوست)
+[2026-06-23T13:14:03] === تشغيل جديد / new run ===
+[2026-06-23T13:14:16] slugs needing build: ['investment-basics-beginners', 'rent-vs-buy-gulf-family', 'daily-walking-benefits', 'pregnancy-week-by-week', 'preconception-checkups', 'umrah-with-kids']
+[2026-06-23T13:14:16]   ↳ مقالات تنتظر بناء/تحديث صورة البطل: investment-basics-beginners, rent-vs-buy-gulf-family, daily-walking-benefits, pregnancy-week-by-week, preconception-checkups, umrah-with-kids
+[2026-06-23T13:14:16] RUN /usr/bin/python3 /sessions/serene-clever-cannon/mnt/Dot4Life/scripts/build-from-approved-draft.py A-01-1 A-07-1 A-02-1 A-03-2 A-04-1 A-05-1
+[2026-06-23T13:14:16]   ↳ تشغيل سكربت بناء المقال من المسودة المعتمدة
+[2026-06-23T13:14:29] AUDIT PASS
+[2026-06-23T13:14:29]   ↳ فحص الجودة نجح — المقالات LIVE سليمة
+[2026-06-23T13:14:29] inboxes: operating-system/inbox/omar.md, operating-system/inbox/claude.md, operating-system/inbox/hema.md, operating-system/inbox/amer.md, operating-system/inbox/cursor.md, operating-system/inbox/ghost.md
+[2026-06-23T13:14:29]   ↳ تم تحديث صناديق مهام الفريق (عمر، كلود، Hema، عامر، Cursor، جوست)
+[2026-06-23T13:14:44] team-board refreshed
+[2026-06-23T13:14:44]   ↳ تم تحديث لوحة الفريق بالساعة والدقيقة — operating-system/team-board.md
+[2026-06-23T16:18:26] === تشغيل جديد / new run ===
+[2026-06-23T16:18:27] slugs needing build: []
+[2026-06-23T16:18:27]   ↳ لا مقالات تنتظر بناء — كل الصور المعتمدة موجودة على الموقع ✓
+[2026-06-23T16:18:28] AUDIT PASS
+[2026-06-23T16:18:28]   ↳ فحص الجودة نجح — المقالات LIVE سليمة

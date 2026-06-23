@@ -8,6 +8,7 @@
 | مسار المقالات (A-01…A-59) | `operating-system/reports/track-board.md` + `ready-to-build.md` |
 | BUILD / LIVE | `ready-to-build.md` |
 | تقرير Ghost | `operating-system/reports/ghost/` |
+| **لوحة الفريق (Kanban)** | `operating-system/team-board.md` |
 | الميثاق | `operating-system/gsystem-charter.md` |
 
 ## أرشيف Kanban
