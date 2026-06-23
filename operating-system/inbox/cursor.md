@@ -1,13 +1,15 @@
-# 📬 Cursor — Batch 02 · 7 تذاكر (بناء)
+# 📬 Cursor — كورسر ٢ · Batch 02 · 7 بناء
 
-| التذكرة | slug |
-|---------|------|
-| B2-01C | `arab-mother-startup` |
-| B2-02C | `saving-vs-investing-gulf-family` |
-| B2-03C | `evening-rituals` |
-| B2-04C | `family-nutrition-on-budget` |
-| B2-05C | `umrah-visa-gulf-residents-guide` |
-| B2-06C | `medina-hotels-near-masjid-nabawi` |
-| B2-07C | `gold-vs-real-estate-gulf-family` |
+**🔴 نشط الآن** — نص Hema PASS · hero لاحقاً من عامr
 
-Autopilot عند `approved` + draft-gate PASS.
+| التذكرة | slug | المطلوب |
+|---------|------|---------|
+| B2-01C | `arab-mother-startup` | بناء/تحديث HTML → LIVE بانتظار hero |
+| B2-02C | `saving-vs-investing-gulf-family` | بناء/تحديث HTML → LIVE بانتظار hero |
+| B2-03C | `evening-rituals` | بناء/تحديث HTML → LIVE بانتظار hero |
+| B2-04C | `family-nutrition-on-budget` | بناء/تحديث HTML → LIVE بانتظار hero |
+| B2-05C | `umrah-visa-gulf-residents-guide` | بناء/تحديث HTML → LIVE بانتظار hero |
+| B2-06C | `medina-hotels-near-masjid-nabawi` | بناء/تحديث HTML → LIVE بانتظار hero |
+| B2-07C | `gold-vs-real-estate-gulf-family` | بناء/تحديث HTML → LIVE بانتظار hero |
+
+على اللوحة: عمود **كورسر ٢**. Autopilot يحقن hero عند `approved`.
