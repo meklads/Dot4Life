@@ -17,8 +17,8 @@ from datetime import datetime
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_MARKER = 'data-template="article"'
-CACHE_BUSTER = "v=20260624e"
-LANG_REDIRECT_SNIPPET = '<script src="/scripts/lang-redirect.js?v=20260624"></script>'
+CACHE_BUSTER = "v=20260625"
+LANG_REDIRECT_SNIPPET = '<script src="/scripts/lang-redirect.js?v=20260625"></script>'
 
 DIRS = ['featured-stories']
 

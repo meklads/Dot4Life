@@ -112,6 +112,21 @@
     } catch (e) { return false; }
   }
 
+  var ARTICLE_PATH_PREFIX = /^\/(?:health(?:-pregnancy)?|finance-wealth|real-estate|islamic-hajj-umrah|peace-capsules|blog|featured-stories|comparisons|guides)\//;
+
+  function articleLangTwinHref(href, targetLang) {
+    var q = href.indexOf('?');
+    var path = q > -1 ? href.slice(0, q) : href;
+    var qs = q > -1 ? href.slice(q) : '';
+    if (targetLang === 'en' && /\.html$/i.test(path) && !/-en\.html$/i.test(path)) {
+      return path.replace(/\.html$/i, '-en.html') + qs;
+    }
+    if (targetLang === 'ar' && /-en\.html$/i.test(path)) {
+      return path.replace(/-en\.html$/i, '.html') + qs;
+    }
+    return href;
+  }
+
   function bindLangToggle(langBtn) {
     if (!langBtn || langBtn.dataset.dflLangBound === '1') return;
     langBtn.dataset.dflLangBound = '1';
@@ -124,6 +139,7 @@
       if (hasSplitLangPages()) {
         var twinHref = getAlternateHref(targetLang);
         if (twinHref) {
+          localStorage.setItem('dfl-lang', targetLang);
           window.location.href = twinHref;
           return;
         }
@@ -170,10 +186,14 @@
     // Only intercept internal relative links
     if (href.startsWith('/') || href.startsWith('./') || href.startsWith('../')) {
       var lang = document.documentElement.getAttribute('data-lang');
-      if (lang && href.indexOf('lang=') === -1) {
-        var sep = href.indexOf('?') > -1 ? '&' : '?';
-        a.href = href + sep + 'lang=' + lang;
+      if (!lang || href.indexOf('lang=') > -1) return;
+      var pathOnly = href.split('?')[0].split('#')[0];
+      if (ARTICLE_PATH_PREFIX.test(pathOnly)) {
+        a.href = articleLangTwinHref(href, lang);
+        return;
       }
+      var sep = href.indexOf('?') > -1 ? '&' : '?';
+      a.href = href + sep + 'lang=' + lang;
     }
   });
 

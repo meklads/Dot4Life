@@ -6,8 +6,8 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-LANG_REDIRECT = '<script src="/scripts/lang-redirect.js?v=20260624"></script>'
-GLOBAL_JS_TARGET = 'v=20260624d'
+LANG_REDIRECT = '<script src="/scripts/lang-redirect.js?v=20260625"></script>'
+GLOBAL_JS_TARGET = 'v=20260625'
 DIRS = [
     'health', 'health-pregnancy', 'finance-wealth', 'islamic-hajj-umrah',
     'real-estate', 'peace-capsules', 'featured-stories', 'comparisons', 'guides', 'blog',

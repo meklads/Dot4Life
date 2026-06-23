@@ -7,9 +7,7 @@
   'use strict';
   var p = new URLSearchParams(location.search);
   var req = p.get('lang');
-  if (!req) {
-    try { req = localStorage.getItem('dfl-lang'); } catch (e) { /* ignore */ }
-  }
+  // Only explicit ?lang= — never localStorage (would hijack Arabic URLs for en-preference users)
   if (req !== 'en' && req !== 'ar') return;
 
   var path = location.pathname;

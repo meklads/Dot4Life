@@ -1068,7 +1068,7 @@ def build_page(cfg: dict, draft_path: Path, out_path: Path, lang: str) -> tuple[
 <link rel="canonical" href="{canonical}">
 {hreflang}
 {og_image}
-<script src="/scripts/lang-redirect.js?v=20260624"></script>
+<script src="/scripts/lang-redirect.js?v=20260625"></script>
 {schema}
 <style>
 body{{font-family:'Almarai','Segoe UI',sans-serif;background:#FAF8F4;color:#222;line-height:1.9;padding:20px}}
