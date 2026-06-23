@@ -12,12 +12,12 @@ Usage:
   python3 scripts/migrate-article-template.py
 """
 
-import os, re, json, sys
+import os, re, json, sys, html
 from datetime import datetime
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_MARKER = 'data-template="article"'
-CACHE_BUSTER = "v=20260617b"
+CACHE_BUSTER = "v=20260624e"
 
 DIRS = ['featured-stories']
 
@@ -268,6 +268,8 @@ def clean_title(title):
     return title.strip()
 
 def look_for_image_in_body(content):
+    m = re.search(r'<figure[^>]*class="[^"]*hero[^"]*"[^>]*>.*?<img[^>]*src="([^"]+)"', content, re.IGNORECASE | re.DOTALL)
+    if m: return m.group(1)
     m = re.search(r'<img[^>]*class="hero-img"[^>]*src="([^"]+)"', content, re.IGNORECASE)
     if m: return m.group(1)
     m = re.search(r'<img[^>]*class="hero-banner-img"[^>]*src="([^"]+)"', content, re.IGNORECASE)
@@ -287,6 +289,24 @@ def estimate_read_time(article_body, lang='ar'):
     mins_ar = ['١','٢','٣','٤','٥','٦','٧','٨','٩','١٠','١١','١٢','١٣','١٤','١٥']
     mins_str = mins_ar[mins-1] if 1 <= mins <= 15 else str(mins)
     return f'{mins_str} دقائق قراءة'
+
+
+def ensure_inline_hero(body_html, hero_src, alt=''):
+    """Dual-hero v2: banner (large) + figure.hero after H1 (same image, inline)."""
+    if not hero_src:
+        return body_html
+    if re.search(r'<figure[^>]*class="[^"]*hero', body_html, re.IGNORECASE):
+        return body_html
+    hero_block = (
+        f'<figure class="hero"><img src="{hero_src}" alt="{html.escape(alt)}" '
+        f'width="1200" height="750" loading="eager" fetchpriority="high"></figure>'
+    )
+    m = re.search(r'</h1>', body_html, re.IGNORECASE)
+    if m:
+        pos = m.end()
+        return body_html[:pos] + '\n\n' + hero_block + body_html[pos:]
+    return hero_block + '\n\n' + body_html
+
 
 # ── NEW: generate_toc ────────────────────────────────────────
 def generate_toc(article_body, dir_='rtl'):
@@ -707,6 +727,12 @@ def build_new_page(filename, content):
     # ── Banner ──
     best_img = og_image or body_img or ''
     banner_html = build_banner_html(title, best_img, lang, dir_, meta_record, article_body)
+
+    hero_for_body = (meta_record.get('img') if meta_record else None) or best_img or ''
+    hero_alt = ''
+    if meta_record:
+        hero_alt = meta_record.get('title_ar' if lang == 'ar' else 'title_en', '') or ''
+    article_body = ensure_inline_hero(article_body, hero_for_body, hero_alt)
 
     # ── TOC ──
     toc_html, body_with_ids = generate_toc(article_body, dir_)
