@@ -89,7 +89,7 @@ def card_from_article(a: dict) -> dict:
 
 def write_prompts_md(articles: list) -> None:
     lines = [
-        "# 🖼️ Batch 02 — 10 برومبتات صور",
+        f"# 🖼️ Batch 02 — {len(articles)} برومبتات صور",
         "",
         "> **من:** جوست + Cursor · **إلى:** Hema (مراجعة) · عامر (توليد Higgsfield) · **2026-06-24**",
         "> **المسار:** `assets/images/approved/hero-<slug>.webp` · 1200×750 WebP",
@@ -152,7 +152,7 @@ def main() -> int:
     data["cards"].extend(new_cards)
     data["updated"] = datetime.now().strftime("%Y-%m-%d")
     data["batch_active"] = "batch-02"
-    data["batch_size"] = 10
+    data["batch_size"] = batch.get("size", len(articles))
 
     TICKETS.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     write_prompts_md(articles)

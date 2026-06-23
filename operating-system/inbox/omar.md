@@ -1,9 +1,8 @@
-# 📬 عمر — Batch 02 · برومبتات
+# 📬 عمر — Batch 02 · 7 برومبتات
 
-- **10 برومبتات جاهزة:** `operating-system/reports/batch-02-prompts.md`
-- **التوليد:** عامر (Higgsfield) — B2-01 · B2-03 · B2-09 · B2-10 فوراً
-- **بعد DEEPEN من Hema:** B2-02 · B2-04 · B2-07
-- **Cursor ينتظر:** B2-05 · B2-06 · B2-08
-- **مراجعة بصرية:** عمر عند الحاجة
+- **7 برومبتات:** `operating-system/reports/batch-02-prompts.md`
+- **التوليد فوراً:** B2-02 · B2-06 · B2-07
+- **بعد Hema:** B2-01 · B2-03
+- **Cursor ينتظر:** B2-04 · B2-05
 
-لا slug بلا برومبت في هذه الدفعة.
+3 slugs مؤجّلة لـ Batch 03 (انظر `batch-02-launch.md`).
