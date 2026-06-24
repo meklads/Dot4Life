@@ -50,49 +50,49 @@
 <!-- TEAM-BOARD-LIVE-START -->
 ## 🕐 الحالة الآن — محدّث تلقائياً
 
-**آخر تحديث:** 2026-06-23 **22:55** · مصدر: autopilot + manifest + git
+**آخر تحديث:** 2026-06-24 **06:35** · مصدر: autopilot + manifest + git
 
 > **اقرأ هنا أولاً** — ثلاث حالات: **✅ تم** · **🔄 جاري** · **⏳ لسه**
 
 | المقياس | القيمة |
 |---------|--------|
-| صور `approved` | **20** |
-| تنتظر بناء HTML | **1** |
+| صور `approved` | **27** |
+| تنتظر بناء HTML | **2** |
 | DEEPEN (قصير) | **155** |
 | جودة الموقع | **0/275 (0%)** |
-| آخر autopilot | `2026-06-23 **22:55**` |
+| آخر autopilot | `2026-06-24 **06:35**` |
 
 ### ✅ تم — آخر ما اكتمل
 
 | الوقت | ماذا | من | الدليل |
 |-------|------|-----|--------|
-| 2026-06-23 **22:55** | بُنيت صور: `oman-property-roi` | Cursor | autopilot |
-| 2026-06-23 **22:55** | built 1 slug(s) · يحتاج بناء | Cursor | autopilot |
-| 2026-06-23 **22:55** | آخر commit `8d7a3ae` | Cursor | GSystem autopilot: apply manifest-approved heroes. |
+| 2026-06-24 **06:35** | بُنيت صور: `arab-mother-startup`, `evening-rituals` | Cursor | autopilot |
+| 2026-06-24 **06:35** | built 2 slug(s) · ae47dc6 · يحتاج بناء | Cursor | autopilot |
+| 2026-06-24 **06:35** | رفع GitHub `ae47dc6` | Cursor | origin/main |
 
 ### 🔄 جاري العمل — الآن
 
 | الوقت | ماذا | من | التالي |
 |-------|------|-----|--------|
-| 2026-06-23 **22:55** | حقن صور في HTML: `oman-property-roi` | Cursor | BUILD_MAP / APPLY |
+| 2026-06-24 **06:35** | حقن صور في HTML: `arab-mother-startup`, `evening-rituals` | Cursor | BUILD_MAP / APPLY |
 | — | A-09 REVISE — `drafts/task09/` | Hema | تسليم لعامر بعد draft-gate |
 
 ### ⏳ لسه — منتظر / مفتوح
 
 | من | ماذا | ملاحظة |
 |-----|------|--------|
-| عمر + عامر | Batch 02 — **7×4=28** · عامر B2-XXA ×7 | `batch-02-prompts.md` |
+| عمر + كلود | صور Tier 1 دفعة 2 — **0** slug بلا اعتماد | منذ ٢٢ يونيو |
 | Hema | DEEPEN — **155** صفحة قصيرة | `hema-deepen-priority.md` |
 | Cursor | وضع النشر المستمر | بانتظار «فعّل» من جوست |
 
 ### 📎 آخر سطور الأوتوبايلوت
 
-- `[2026-06-23T19:30:00] === تشغيل جديد / new run ===`
-- `[2026-06-23T19:30:00] slugs needing build: []`
-- `[2026-06-23T19:30:00] AUDIT FAIL:`
-- `[2026-06-23T19:30:00] AUDIT FAIL (summary)`
-- `[2026-06-23T22:55:45] git: push failed`
-- `[2026-06-23T22:55:45] inboxes: operating-system/inbox/omar.md, operating-system/inbox/claude.md, operating-system/inbox/hema.md, operating-system/inbox/amer.md, operating-system/inbox/cursor.md, operating-system/inbox/ghost.md`
+- `[2026-06-24T06:35:42] === تشغيل جديد / new run ===`
+- `[2026-06-24T06:35:44] slugs needing build: ['arab-mother-startup', 'evening-rituals']`
+- `[2026-06-24T06:35:45] AUDIT FAIL:`
+- `[2026-06-24T06:35:45] AUDIT FAIL (summary)`
+- `[2026-06-24T06:35:56] git: pushed ae47dc6`
+- `[2026-06-24T06:35:56] inboxes: operating-system/inbox/omar.md, operating-system/inbox/claude.md, operating-system/inbox/hema.md, operating-system/inbox/amer.md, operating-system/inbox/cursor.md, operating-system/inbox/ghost.md`
 
 <!-- TEAM-BOARD-LIVE-END -->
 ---

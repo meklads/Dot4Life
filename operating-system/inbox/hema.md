@@ -1,8 +1,8 @@
-# 📬 Hema — Batch 02
+# 📬 Hema — كتابة · 2026-06-24 06:35
 
-**✅ انتهى — 14/14** (2026-06-24)
+- **الحالة الآن:** `operating-system/team-board.md` (تم · جاري · لسه)
 
-- التقرير: `operating-system/reports/batch-02-hema-delivery.md`
-- B2-01N … B2-07N + B2-01P … B2-07P → **انتهى من عندي**
-
-لا تذكرة نشطة في عمودك.
+## DEEPEN · **155** صفحة قصيرة
+- طابور: `hema-deepen-priority.md`
+- بوابة: `scripts/draft-gate.py` قبل التسليم لعامر
+- **A-09** REVISE — راجع `drafts/task09/`

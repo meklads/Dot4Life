@@ -1,8 +1,9 @@
-# 📬 عمر — Batch 02 · 7 برومبتات
+# 📬 عمر — مهام الصور · 2026-06-24 06:35
 
-- **7 برومبتات:** `operating-system/reports/batch-02-prompts.md`
-- **التوليد فوراً:** B2-02 · B2-06 · B2-07
-- **بعد Hema:** B2-01 · B2-03
-- **Cursor ينتظر:** B2-04 · B2-05
+- **الحالة الآن:** `operating-system/team-board.md` (تم · جاري · لسه)
 
-3 slugs مؤجّلة لـ Batch 03 (انظر `batch-02-launch.md`).
+## 🔴 عاجل
+- لا شيء عاجل (ملف بلا approved).
+
+## 📋 التالي (بلا صورة بعد)
+- راجع `omar-image-production.md` و`list-image-pending.py`

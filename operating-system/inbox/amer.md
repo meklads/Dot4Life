@@ -1,9 +1,9 @@
-# 📬 عامr — Batch 02 · 7 صور (عند العودة)
+# 📬 عامر — BUILD VERIFY · 2026-06-24 06:35
 
-**⏳ Hema أنهت:** نص + برومبت — راجع `batch-02-hema-delivery.md`
+- **الحالة الآن:** `operating-system/team-board.md` (تم · جاري · لسه)
 
-| التذكرة | المقال | الحالة |
-|---------|--------|--------|
-| B2-01A … B2-07A | 7 مقالات | برومبت جاهز · Higgsfield → approved |
+## ✅ يحتاج تحقّق بعد بناء Cursor (2)
+- `arab-mother-startup` — تحقّق hero + alt + G5
+- `evening-rituals` — تحقّق hero + alt + G5
 
-Cursor يبني الصفحات في **كورسر ٢** — لا تنتظرك للنص.
+- جودة: `python3 scripts/quality-audit.py`
