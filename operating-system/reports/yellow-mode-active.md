@@ -1,9 +1,19 @@
-# 🟢 GREEN MODE — Amer resumed command
+# 🟢 GREEN MODE — Amer command · Batch 03 active
 > **Amer ACK HANDOFF:** 2026-06-21 · YELLOW ended.
-> **UI:** [`system/gsystem.html`](/system/gsystem.html) · Charter: [`gsystem-charter.md`](/operating-system/gsystem-charter.md)
+> **Ghost kickoff Batch 03:** 2026-06-24 — عامر يولّد 7 صور · Hema سكيلات بالتوازي.
+> **UI:** [`system/board.html`](/system/board.html) · Charter: [`gsystem-charter.md`](/operating-system/gsystem-charter.md)
 
 ## Commander
-**Amer** — text APPROVED/REVISE/REJECT + BUILD VERIFY. Cursor TECH_BUILD only after APPROVED.
+**Amer** — توليد Higgsfield (Batch 03) + BUILD VERIFY + إجازة manifest `approved`.
+
+## Batch 03 (2026-06-24)
+| المسار | المالك | الحالة |
+|--------|--------|--------|
+| 7 صور hero | عامر | `amer-batch03-kickoff.md` · B3-01A…07A |
+| SEO Briefs | Hema · تحليل | AN-00 → B3-XXQ |
+| ربط داخلي | Hema · نمو | GR-00 → B3-XXL |
+| كتابة | Hema · كتابة | B3-XXN بعد Q |
+| بناء HTML | Cursor | عند `approved` في الفهرس |
 
 > **Amer ACK GSystem (2026-06-21):** Kanban frozen · GSystem = sole source · A-09 → `drafts/task09/_amer-review.md`
 

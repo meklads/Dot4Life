@@ -32,7 +32,7 @@
     <td style="padding:.55rem;border:1px solid #e0e6e3;">تحليل البيانات وSEO</td>
     <td style="padding:.55rem;border:1px solid #e0e6e3;">تصميم UI/UX والصور</td>
     <td style="padding:.55rem;border:1px solid #e0e6e3;">برمجة Front-End والبناء</td>
-    <td style="padding:.55rem;border:1px solid #e0e6e3;">سوشيال وتوزيع <br><small>(غير مفعّل)</small></td>
+    <td style="padding:.55rem;border:1px solid #e0e6e3;">سوشيال وتوزيع <br><small>(Batch 03)</small></td>
   </tr>
   <tr style="font-size:.8rem;color:#6b7a76;">
     <td style="padding:.4rem;border:1px solid #e0e6e3;">WRITING-LAW</td>
@@ -107,6 +107,8 @@
 | T-04 | BUILD VERIFY — 6 صور منشورة | عامر | hero + alt + G5 | ٢٢ يونيو |
 | T-05 | وضع النشر المستمر | Cursor | `draft-gate` PASS → build + push تلقائي | بانتظار «فعّل» |
 | T-06 | مراجعة جوست — ما نُشر هذا الأسبوع | جوست | قراءة العمود 2 + التقارير (لا توقف) | مستمر |
+| T-07 | **Batch 03 — عامر يولّد 7 صور** | عامر → Cursor | `amer-batch03-kickoff.md` | **24 يونيو** |
+| T-08 | Batch 03 — Hema تحليل/نمو/كتابة | Hema (5 سكيلات) | AN-00 → Q → N | **24 يونيو** |
 
 ---
 
@@ -133,7 +135,7 @@
 | ٢١ يونيو | جوست | GSystem فقط — Kanban قديم مجمّد | ✅ |
 | ٢٢ يونيو | جوست | publish-first — لا توقف لكل نشر | ✅ autopilot |
 | ٢٢ يونيو | جوست | لوحة Kanban للفريق (مو بس جوست) | ✅ هذا الملف |
-| — | — | *(ملاحظة جديدة)* | مفتوح |
+| ٢٤ يونيو | جوست | عامر — ابدأ Batch 03 + توليد الصور | 🔄 جاري |
 
 ---
 

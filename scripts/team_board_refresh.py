@@ -187,6 +187,18 @@ def build_live_block(now: datetime, autopilot: dict | None = None) -> str:
             "| — | A-09 REVISE — `drafts/task09/` | Hema | تسليم لعامر بعد draft-gate |"
         )
 
+    batch_path = ROOT / "operating-system/batch-03.json"
+    if batch_path.exists():
+        batch = json.loads(batch_path.read_text(encoding="utf-8"))
+        if batch.get("amer_status") == "generating":
+            n = len(batch.get("articles", []))
+            progress_rows.append(
+                f"| {_hm(now)} | **Batch 03** — توليد {n} صور Higgsfield | عامر | `amer-batch03-kickoff.md` |"
+            )
+            progress_rows.append(
+                f"| {_hm(now)} | Batch 03 — SEO Briefs + كتابة | Hema | AN-00 → B3-XXQ → B3-XXN |"
+            )
+
     if snap["approved"] and not need_build:
         progress_rows.append(
             f"| {_hm(now)} | BUILD VERIFY — **{len(snap['approved'])}** صور LIVE | عامر | hero + alt + G5 |"
@@ -194,12 +206,30 @@ def build_live_block(now: datetime, autopilot: dict | None = None) -> str:
 
     if not progress_rows:
         progress_rows.append(
-            f"| {_hm(now)} | لا مهمة نشطة — الحلقة تنتظر مدخلات جديدة | — | عمر/كلود دفعة 2 |"
+            f"| {_hm(now)} | لا مهمة نشطة — الحلقة تنتظر مدخلات جديدة | — | راجع اللوحة |"
         )
 
+    batch_path = ROOT / "operating-system/batch-03.json"
+    batch_pending = 0
+    if batch_path.exists():
+        batch = json.loads(batch_path.read_text(encoding="utf-8"))
+        if batch.get("amer_status") == "generating":
+            batch_slugs = {a["slug"] for a in batch.get("articles", [])}
+            sys.path.insert(0, str(ROOT / "scripts"))
+            from image_manifest import entries_by_slug, is_approved, load_manifest
+
+            by = entries_by_slug(load_manifest())
+            batch_pending = sum(
+                1 for s in batch_slugs if s not in by or not is_approved(by.get(s, {}))
+            )
+
     waiting_rows.append(
-        f"| عمر + كلود | صور Tier 1 دفعة 2 — **{snap['not_approved_count']}** slug بلا اعتماد | منذ ٢٢ يونيو |"
+        f"| Hema | Batch 03 — تحليل/نمو/كتابة (7 مقالات) | `inbox/hema-batch03.md` |"
     )
+    if batch_pending:
+        waiting_rows.append(
+            f"| عامر | Batch 03 — **{batch_pending}** صورة بلا `approved` | `batch-03-prompts.md` |"
+        )
     waiting_rows.append(
         f"| Hema | DEEPEN — **{deepen}** صفحة قصيرة | `hema-deepen-priority.md` |"
     )

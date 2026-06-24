@@ -84,8 +84,9 @@ def build_inboxes(autopilot_result: dict | None = None) -> dict[str, str]:
     ]
 
     hema_lines = [
-        f"# 📬 Hema — كتابة · {now}",
+        f"# 📬 Hema — أوامر السكيلات · {now}",
         "",
+        f"- **اللوحة:** `system/board.html` · **القانون:** `operating-system/HEMA-CHARTER.md`",
         f"- **الحالة الآن:** {TEAM_BOARD} (تم · جاري · لسه)",
         "",
         f"## DEEPEN · **{deepen_count()}** صفحة قصيرة",
@@ -95,19 +96,48 @@ def build_inboxes(autopilot_result: dict | None = None) -> dict[str, str]:
     a09 = ROOT / "operating-system/reports/drafts/task09"
     if a09.exists():
         hema_lines.append("- **A-09** REVISE — راجع `drafts/task09/`")
+    batch03_snippet = ROOT / "operating-system/inbox/hema-batch03.md"
+    if batch03_snippet.exists():
+        hema_lines.append("")
+        hema_lines.append(batch03_snippet.read_text(encoding="utf-8").strip())
 
     amer_lines = [
-        f"# 📬 عامر — BUILD VERIFY · {now}",
+        f"# 📬 عامر — COMMANDER · Batch 03 · {now}",
         "",
         f"- **الحالة الآن:** {TEAM_BOARD} (تم · جاري · لسه)",
+        f"- **أمر جوست:** ابدأ العمل · شغّل الفريق · توليد الصور",
         "",
     ]
+    batch_path = ROOT / "operating-system/batch-03.json"
+    batch_articles: list[dict] = []
+    if batch_path.exists():
+        batch = json.loads(batch_path.read_text(encoding="utf-8"))
+        batch_articles = batch.get("articles", [])
+        if batch.get("amer_status") == "generating":
+            amer_lines += [
+                "## 🟢 Batch 03 — توليد 7 صور (Higgsfield)",
+                "",
+                f"- التقرير الكامل: `operating-system/reports/amer-batch03-kickoff.md`",
+                f"- البرومبتات: `operating-system/reports/batch-03-prompts.md`",
+                f"- المسار: `assets/images/approved/hero-<slug>.webp` → `visual_director: approved`",
+                "",
+                "| # | تذكرة | slug |",
+                "|---|--------|------|",
+            ]
+            for i, a in enumerate(batch_articles, 1):
+                amer_lines.append(f"| {i} | `{a['id']}A` | `{a['slug']}` |")
+            amer_lines += [
+                "",
+                "### أول تذكرة",
+                "```",
+                "B3-01A: gulf-father-money-lessons — Higgsfield → hero-gulf-father-money-lessons.webp → manifest approved",
+                "```",
+            ]
     if approved_need_verify:
-        amer_lines.append(f"## ✅ يحتاج تحقّق بعد بناء Cursor ({len(approved_need_verify)})")
+        amer_lines.append("")
+        amer_lines.append(f"## ✅ BUILD VERIFY بعد بناء Cursor ({len(approved_need_verify)})")
         for s in approved_need_verify:
-            amer_lines.append(f"- `{s}` — تحقّق hero + alt + G5")
-    else:
-        amer_lines.append("## لا دفعة بناء جديدة منذ آخر تشغيل")
+            amer_lines.append(f"- `{s}` — hero + alt + G5")
     amer_lines += ["", "- جودة: `python3 scripts/quality-audit.py`"]
 
     cursor_lines = [
@@ -119,6 +149,13 @@ def build_inboxes(autopilot_result: dict | None = None) -> dict[str, str]:
         f"- push: {autopilot_result.get('commit', '—')}",
         "- القاعدة: `approved` + ملف → بناء فوري بدون سؤال جوست",
     ]
+    if batch_path.exists() and json.loads(batch_path.read_text(encoding="utf-8")).get("amer_status") == "generating":
+        cursor_lines += [
+            "",
+            "## Batch 03 — جاهز للبناء",
+            "- راقب `image-manifest.json` — عند `approved` + WebP في `approved/` → Autopilot يبني فوراً",
+            "- تذاكر البناء: `B3-01C` … `B3-07C` على عمود Cursor",
+        ]
 
     ghost_lines = [
         f"# 📬 جوست — ملخص · {now}",
