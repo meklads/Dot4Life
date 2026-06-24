@@ -188,7 +188,10 @@ def is_hema_col(col: str) -> bool:
 
 
 def hema_col_for(skill: str) -> str:
-    return "hema"
+    return {"writing": "hema_writing", "analysis": "hema_analysis", "design": "hema_design",
+            "dev": "hema_dev", "growth": "hema_growth",
+            "moni": "hema_writing", "ruwaq": "hema_writing", "omar": "hema_design",
+            "generate": "hema_design"}.get(skill, "hema_writing")
 
 
 def hema_skill_from_col(col: str, card: dict) -> str:
