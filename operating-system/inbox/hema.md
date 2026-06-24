@@ -1,6 +1,6 @@
 # 📬 Hema — أوامر السكيلات · 2026-06-24
 
-> **آخر تحديث:** 2026-06-24 — **أمر جوست (كلمة واحدة): ١ — ابدئي D10-01N فوراً**
+> **آخر تحديث:** 2026-06-24 — **D10-08N AR+EN منجزان → D10-09N جاري**
 
 ---
 
@@ -11,16 +11,16 @@
 
 | # | تذكرة | slug |
 |---|--------|------|
-| 1 | **D10-01N** | best-family-destinations-gulf |
-| 2 | **D10-02N** | featured-story-arab-father-teens |
-| 3 | **D10-03N** | featured-story-gulf-family-home |
-| 4 | **D10-04N** | featured-story-saudi-mother |
-| 5 | **D10-05N** | body-fat-vs-weight-guide |
-| 6 | **D10-06N** | peace-at-home-5-steps |
-| 7 | **D10-07N** | comparisons-public-vs-private-education |
-| 8 | **D10-08N** | comparisons-ready-vs-build-home |
-| 9 | **D10-09N** | ramadan-preparation-guide-families |
-| 10 | **D10-10N** | house-affordability-single-income-guide |
+| 1 | **D10-01N** | best-family-destinations-gulf | ✅ AR+EN منجزان |
+| 2 | **D10-02N** | featured-story-arab-father-teens | ✅ AR+EN منجزان |
+| 3 | **D10-03N** | featured-story-gulf-family-home | ✅ AR+EN منجزان |
+| 4 | **D10-04N** | featured-story-saudi-mother | ✅ AR+EN منجزان |
+| 5 | **D10-05N** | body-fat-vs-weight-guide | ✅ AR+EN منجزان |
+| 6 | **D10-06N** | peace-at-home-5-steps | ✅ AR+EN منجزان |
+| 7 | **D10-07N** | comparisons-public-vs-private-education | ✅ AR+EN منجزان |
+| 8 | **D10-08N** | comparisons-ready-vs-build-home | ✅ AR+EN منجزان |
+| 9 | **D10-09N** | ramadan-preparation-guide-families | ✅ EN منجز · 🔄 AR بحاجة لإعادة |
+| 10 | **D10-10N** | house-affordability-single-income-guide | ⏳ لم يبدأ بعد |
 
 ```
 ابدئي D10-01N فوراً — لا تنتظري الـ155 دفعة واحدة.
