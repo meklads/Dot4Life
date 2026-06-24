@@ -4,10 +4,12 @@ from __future__ import annotations
 
 import json
 import shutil
+import sys
 from datetime import datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "scripts"))
 TICKETS = ROOT / "operating-system/handoff-tickets.json"
 BOARD_MD = ROOT / "operating-system/handoff-board.md"
 WEB_OUT = ROOT / "system/gsystem-data/handoff-tickets.json"
@@ -28,7 +30,9 @@ STAGE_LABEL = {
 
 ASSIGNEE = {
     "ghost": "جوست",
-    "hema": "Hema",
+    "hema_moni": "Hema · سكيل Moni",
+    "hema_ruwaq": "Hema · سكيل رواق",
+    "hema_omar": "Hema · سكيل عمر",
     "amer": "عامر",
     "cursor": "Cursor",
     "cursor2": "كورسر ٢",
@@ -43,7 +47,15 @@ SKILL_LABELS = {
     "generate": "Hema · توليد صور",
 }
 
-SKILL_ALIASES = {"omar", "moni", "ruwaq", "hema", "generate"}
+HEMA_SKILL_TO_COL = {
+    "omar": "hema_omar",
+    "moni": "hema_moni",
+    "ruwaq": "hema_ruwaq",
+}
+HEMA_COL_TO_SKILL = {v: k for k, v in HEMA_SKILL_TO_COL.items()}
+HEMA_COLS = frozenset(HEMA_SKILL_TO_COL.values())
+
+SKILL_ALIASES = {"omar", "moni", "ruwaq", "generate", *HEMA_COLS, "hema"}
 
 AGENT = "Hema"
 AMER = "عامر"
@@ -160,6 +172,30 @@ GHOST_POOL = {
 }
 
 
+def is_hema_col(col: str) -> bool:
+    return col in HEMA_COLS or col == "hema"
+
+
+def hema_col_for(skill: str) -> str:
+    return HEMA_SKILL_TO_COL.get(skill, "hema_moni")
+
+
+def hema_skill_from_col(col: str, card: dict) -> str:
+    if col in HEMA_COL_TO_SKILL:
+        return HEMA_COL_TO_SKILL[col]
+    return infer_skill(card)
+
+
+def migrate_hema_col(card: dict) -> None:
+    col = card.get("col", "")
+    if col == "hema" or col == "omar":
+        sk = "omar" if col == "omar" else infer_skill(card)
+        card["skill"] = sk
+        card["col"] = hema_col_for(sk)
+    elif col in HEMA_COLS and not card.get("skill"):
+        card["skill"] = HEMA_COL_TO_SKILL[col]
+
+
 def infer_skill(card: dict) -> str:
     if card.get("skill"):
         return card["skill"]
@@ -187,16 +223,18 @@ def skill_label(card: dict) -> str:
 def normalize_col(col: str, card: dict) -> str:
     if col in ("amer", "عامر"):
         return "amer"
-    if col in SKILL_ALIASES or col == "omar":
-        if col in ("hema", "moni", "ruwaq"):
-            card["skill"] = "moni" if col != "ruwaq" else "ruwaq"
-        elif col == "generate":
-            card["skill"] = "generate"
-        else:
-            card["skill"] = col if col != "omar" else "omar"
-        return "hema"
-    if col == "hema" and not card.get("skill"):
-        card["skill"] = infer_skill(card)
+    if col == "generate":
+        card["skill"] = "generate"
+        return "amer"
+    if col in HEMA_COLS:
+        card["skill"] = HEMA_COL_TO_SKILL[col]
+        return col
+    if col in ("hema", "omar", "moni", "ruwaq"):
+        sk = "omar" if col == "omar" else ("ruwaq" if col == "ruwaq" else ("moni" if col in ("moni", "hema") else infer_skill(card)))
+        card["skill"] = sk
+        return hema_col_for(sk)
+    if is_hema_col(col) and not card.get("skill"):
+        card["skill"] = hema_skill_from_col(col, card)
     return col
 
 
@@ -217,8 +255,8 @@ def task_for(card: dict) -> str:
         label = GHOST_POOL.get(pool, "مخزون")
         reason = card.get("reason", "")
         return f"مخزون جوست — {label}" + (f" · {reason}" if reason else "")
-    if col == "hema":
-        sk = infer_skill(card)
+    if is_hema_col(col):
+        sk = hema_skill_from_col(col, card)
         if sk == "omar":
             return "جهّز برومبت الصورة وضعه pending — ثم «انتهى من عندي»"
         if sk == "generate":
@@ -238,14 +276,12 @@ def task_for(card: dict) -> str:
 
 def enrich_card(card: dict) -> dict:
     slug = card.get("slug", "")
-    if card.get("col") == "omar":
-        card["skill"] = "omar"
-        card["col"] = "hema"
-    if card.get("col") == "hema" and not card.get("skill"):
-        card["skill"] = infer_skill(card)
+    migrate_hema_col(card)
+    if is_hema_col(card.get("col", "")) and not card.get("skill"):
+        card["skill"] = hema_skill_from_col(card["col"], card)
     if not card.get("article"):
         card["article"] = ARTICLE_TITLES.get(slug, card.get("title", slug))
-    if card.get("col") in ("hema", "member_done") and card.get("skill"):
+    if (is_hema_col(card.get("col", "")) or card.get("col") == "member_done") and card.get("skill"):
         card["owner"] = AGENT
         lbl = skill_label(card)
         card["assignee"] = lbl + (" (انتهى)" if card.get("col") == "member_done" else "")
@@ -291,14 +327,14 @@ def save(data: dict) -> None:
 
 def command_for(card: dict, col: str) -> str:
     cid, slug = card["id"], card.get("slug", "")
-    sk = infer_skill(card) if col == "hema" else ""
-    if col == "hema" and sk == "omar":
+    sk = hema_skill_from_col(col, card) if is_hema_col(col) else ""
+    if is_hema_col(col) and sk == "omar":
         if card.get("stage") == "approve":
             return f"{cid}: راجع WebP → approved في الفهرس + approved/ — {slug}"
         return card.get("command") or f"{cid}: جهّز برومبت + pending في الفهرس — {slug}"
-    if col == "hema" and sk == "generate":
+    if is_hema_col(col) and sk == "generate":
         return f"{cid}: Higgsfield → hero-{slug}.webp 1200×750 → صور/"
-    if col == "hema":
+    if is_hema_col(col):
         return card.get("command") or f"{cid}: أكمل المسودة — {slug}"
     if col == "amer":
         return AMER_COMMANDS.get(cid, f"{cid}: amer-mandate review — {slug}")
@@ -313,8 +349,8 @@ def command_for(card: dict, col: str) -> str:
 def advance_stage(card: dict, col: str, prev_col: str) -> str:
     if col == "ghost":
         return "backlog"
-    if col == "hema":
-        sk = infer_skill(card)
+    if is_hema_col(col):
+        sk = hema_skill_from_col(col, card)
         if sk == "omar":
             return "approve" if card.get("stage") == "approve" else "prompt"
         if sk == "generate":
@@ -342,7 +378,7 @@ def move_card(data: dict, card_id: str, col: str) -> dict | None:
             col = normalize_col(col, card)
             card["col"] = col
             card["stage"] = advance_stage(card, col, prev)
-            if prev == "ghost" and col == "hema":
+            if prev == "ghost" and is_hema_col(col):
                 card["owner"] = AGENT
             if col == "amer":
                 card["owner"] = AMER
@@ -438,11 +474,14 @@ def export_web(data: dict | None = None) -> None:
 
 
 def sync_all(write_md: bool = True) -> dict:
+    from site_sections import export_site_sections
+
     data = enrich_all(load())
     save(data)
     if write_md:
         BOARD_MD.write_text(render_board_md(data), encoding="utf-8")
     export_web(data)
+    export_site_sections(data)
     return {"cards": len(data["cards"]), "updated": data.get("updated")}
 
 

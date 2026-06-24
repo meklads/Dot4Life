@@ -1,7 +1,24 @@
-# 🛡️ أوامر عامر النشطة (المصدر الثابت) — 2026-06-23 (آخر دورة 19:10)
+# 🛡️ أوامر عامر النشطة (المصدر الثابت) — 2026-06-24 (آخر دورة 03:06)
 
 > ملف ثابت يحدّثه عامر فقط. الأوتوبايلوت يعيد كتابة `inbox/*.md` كل دورة، لذا الأوامر المُلزِمة هنا.
 > تفاصيل كل أمر في تقارير `reports/amer-to-*.md`.
+
+---
+
+## 🟢 أمر Cursor — Batch 02 (نفّذ قبل أي اعتماد LIVE)
+المرجع: `reports/amer-cycle-2026-06-24-0306.md`
+**النص اجتاز بوابة عامر: 7/7 مقالات (14 ملف) APPROVED** — لا تعديل نصّي. **الصور كلّها جاهزة ومعتمَدة** (7 heroes موجودة في `assets/images/approved/` 1200×750 WebP + `visual_director=approved` بالمانيفست). **لا توليد جديد مطلوب.** المتبقّي لـ LIVE:
+1. ✅ **عيب Schema حُلّ مباشرةً (عامر):** `blog/family-nutrition-on-budget.html` (ع) الآن FAQPage واحدة صحيحة (5 أسئلة) + Article=1.
+2. ✅ **5/7 ربط `figure.hero` تلقائياً** (شغّل عامر `apply-approved-heroes.py`): family-nutrition · umrah-visa · medina-hotels · gold-vs-real-estate · saving-vs-investing — كلها تشير الآن لـ`/assets/images/approved/hero-<slug>.webp`.
+3. 🔴 **متبقٍّ على Cursor (3 بنود):**
+   - **(أ) arab-mother-startup + evening-rituals (ع+en، 4 ملفات):** لم يصلهما السكربت (قسماهما `featured-stories`/`peace-capsules` خارج SECTIONS، وكلاهما تمبليت article-banner بلا figure.hero). اربط `hero-arab-mother-startup.webp` و`hero-evening-rituals.webp` يدوياً في og:image + banner.
+   - **(ب) og:image لم تُحدَّث في الـ5** (ريجِكس السكربت لا يطابق `/>` المغلق ذاتياً) → حدّثها إلى `https://dotforlife.com/assets/images/approved/hero-<slug>.webp`.
+   - **(ج) صورة `article-banner` العلوية ما تزال placeholder في الـ5** (التمبليت فيه بانر + figure مكرّران) → وحّدها على الـhero المعتمَد أو احذف البانر المكرّر.
+
+## 🟠 إصلاحات سكربت مطلوبة (Cursor/autopilot — ليست صور)
+1. `scripts/apply-approved-heroes.py`: أضِف `featured-stories` و`peace-capsules` إلى `SECTIONS`.
+2. نفس السكربت: ريجِكس og:image يجب أن يطابق `<meta property="og:image" content="..." />` (المغلق ذاتياً)، وأن يحدّث صورة `article-banner-img-wrap`.
+3. نفس العيب المنهجي في حقن FAQPage: ابتلاع نص الخاتمة/التنقّل كأسئلة «قمامة» — راجع المولّد (ظهر في family-nutrition ع+en).
 
 ---
 

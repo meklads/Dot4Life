@@ -6,14 +6,42 @@
 
 **الأسبوع:** 2026-W25 (٢٠–٢٦ يونيو)
 
-| العضو | الدور | صندوقه السريع |
+| العضو | الدور | السكيل (Skill) |
 |-------|------|----------------|
-| 👑 جوست | قرار · مراجعة بعد النشر | [`inbox/ghost.md`](inbox/ghost.md) |
-| 🎨 عمر | برومبت · اعتماد بصري · الفهرس | [`inbox/omar.md`](inbox/omar.md) |
-| 🤖 كلود | توليد Higgsfield | [`inbox/claude.md`](inbox/claude.md) |
-| ✍️ Hema | كتابة · DEEPEN · مسودات | [`inbox/hema.md`](inbox/hema.md) |
-| 🛡️ عامر | BUILD VERIFY · جودة | [`inbox/amer.md`](inbox/amer.md) |
-| ⚙️ Cursor | بناء · أوتوبايلوت · push | [`inbox/cursor.md`](inbox/cursor.md) |
+| 👑 **جوست** | صاحب المشروع · مؤسس · توجيه استراتيجي | قرارات عليا · سياسة المحتوى · اعتماد الرؤية · الهوية البصرية |
+| 🛡️ **عامر** | COMMANDER · مدير تحريري · بوّابة الجودة الوحيدة | استلام المقالات (WRITING-LAW) · برومبتات الصور (VISUAL-DIRECTION) · مراجعة صفحات Cursor · إجازة LIVE |
+| 🟢 **Hema · Claude Ship** | المنفّذ — كل السكيلات هي Hema بسكيل مختلف | ✍️ الكتابة (Writing) · 🔍 التحليل (Analysis) · 🎨 التصميم (Design) · 💻 البرمجة (Dev) · 📣 النمو (Growth) — كلٌّ مربوط بقانونه ومسقوف بـ4/5 |
+
+> **خط الإنتاج:** ✍️ اكتب → 🔍 حلّل → 🎨 صمّم → 💻 ابنِ → **بوابة عامر** → LIVE. · **خط النمو (بعد LIVE):** 📣 وزّع وابنِ جمهوراً (يُفعَّل بأمر جوست). التفصيل: [`system/roles.md`](../system/roles.md).
+
+### 🟢 سكيلات Hema الخمسة
+
+<table style="width:100%;border-collapse:collapse;text-align:center;">
+  <tr>
+    <th colspan="5" style="background:#054241;color:#fff;padding:.7rem;font-size:1.05rem;border:1px solid #054241;">🟢 Hema · Claude Ship — منفّذ واحد · خمسة سكيلات</th>
+  </tr>
+  <tr style="background:#e4ebe8;">
+    <th style="padding:.55rem;border:1px solid #cfdbd6;">✍️ سكيل الكتابة<br><small>Writing</small></th>
+    <th style="padding:.55rem;border:1px solid #cfdbd6;">🔍 سكيل التحليل<br><small>Analysis</small></th>
+    <th style="padding:.55rem;border:1px solid #cfdbd6;">🎨 سكيل التصميم<br><small>Design</small></th>
+    <th style="padding:.55rem;border:1px solid #cfdbd6;">💻 سكيل البرمجة<br><small>Dev</small></th>
+    <th style="padding:.55rem;border:1px solid #cfdbd6;">📣 سكيل النمو<br><small>Growth</small></th>
+  </tr>
+  <tr>
+    <td style="padding:.55rem;border:1px solid #e0e6e3;">كتابة المحتوى والتحرير</td>
+    <td style="padding:.55rem;border:1px solid #e0e6e3;">تحليل البيانات وSEO</td>
+    <td style="padding:.55rem;border:1px solid #e0e6e3;">تصميم UI/UX والصور</td>
+    <td style="padding:.55rem;border:1px solid #e0e6e3;">برمجة Front-End والبناء</td>
+    <td style="padding:.55rem;border:1px solid #e0e6e3;">سوشيال وتوزيع <br><small>(غير مفعّل)</small></td>
+  </tr>
+  <tr style="font-size:.8rem;color:#6b7a76;">
+    <td style="padding:.4rem;border:1px solid #e0e6e3;">WRITING-LAW</td>
+    <td style="padding:.4rem;border:1px solid #e0e6e3;">Schema + كلمات</td>
+    <td style="padding:.4rem;border:1px solid #e0e6e3;">VISUAL-DIRECTION</td>
+    <td style="padding:.4rem;border:1px solid #e0e6e3;">تمبليت + audit</td>
+    <td style="padding:.4rem;border:1px solid #e0e6e3;">خطة توزيع/مقال</td>
+  </tr>
+</table>
 
 **🔀 تسليم يدوي (Trello لجوست):** [`handoff-board.md`](handoff-board.md) ← انقل البطاقات · أوامر جاهزة
 

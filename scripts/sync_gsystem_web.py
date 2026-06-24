@@ -139,6 +139,10 @@ def sync_all() -> dict:
         OUT.mkdir(parents=True, exist_ok=True)
         shutil.copy2(ht, OUT / "handoff-tickets.json")
         handoff = True
+    ss = ROOT / "operating-system/site-sections.json"
+    if ss.is_file():
+        OUT.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(ss, OUT / "site-sections.json")
     return {"synced": synced, "missing": missing, "ghost_reports": n_ghost, "handoff_tickets": handoff}
 
 

@@ -89,6 +89,9 @@
   .handoff-col{flex:0 0 min(260px,78vw);background:#e4ebe8;border-radius:14px;padding:.6rem;min-height:200px;max-height:72vh;overflow-y:auto}
   .handoff-col.col-cursor2{flex:0 0 min(240px,72vw);background:#e8eaf6}
   .handoff-col.col-amer{flex:0 0 min(260px,78vw);background:#faf3e8;border-left:4px solid #c17817}
+  .handoff-col.col-hema-moni{flex:0 0 min(250px,76vw);background:#ede8f4}
+  .handoff-col.col-hema-ruwaq{flex:0 0 min(250px,76vw);background:#e8e4f2}
+  .handoff-col.col-hema-omar{flex:0 0 min(250px,76vw);background:#f0eaf8;border-left:4px solid #8f6bb8}
   .handoff-col h2{font-size:.82rem;font-weight:800;padding:.35rem .45rem .5rem;display:flex;justify-content:space-between;align-items:flex-start;gap:6px;line-height:1.4}
   .handoff-col h2 small{display:block;font-size:.65rem;font-weight:700;color:var(--muted);margin-top:2px}
   .handoff-col h2 .count{background:#cfdbd6;border-radius:999px;padding:0 .45rem;font-size:.7rem;flex-shrink:0}
@@ -105,6 +108,26 @@
   .hcard .copybtn{margin-top:.4rem;font-size:.68rem;font-weight:700;border:0;border-radius:7px;padding:.3rem .55rem;background:var(--cream);color:var(--green);cursor:pointer;width:100%}
   .hcard .copybtn.ok{background:#eafaf0;color:#1f7a4d}
   .handoff-toast{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);background:#054241;color:#fff;padding:.65rem 1rem;border-radius:10px;font-size:.78rem;font-weight:700;z-index:60;box-shadow:0 8px 24px rgba(0,0,0,.2);max-width:min(420px,90vw);text-align:center;display:none}
+  .handoff-stack{display:flex;flex-direction:column;gap:12px}
+  .site-sections-map{background:linear-gradient(135deg,#054241 0%,#0d6b5c 55%,#1f7a4d 100%);border-radius:16px;padding:.85rem .9rem 1rem;color:#fff;box-shadow:0 4px 18px rgba(5,66,65,.18)}
+  .site-sections-map .ss-head{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:.75rem;padding:0 .15rem}
+  .site-sections-map .ss-head h2{font-size:.95rem;font-weight:800;line-height:1.4}
+  .site-sections-map .ss-head small{display:block;font-size:.68rem;font-weight:700;opacity:.85;margin-top:3px}
+  .site-sections-map .ss-meta{font-size:.68rem;font-weight:700;background:rgba(255,255,255,.14);border-radius:999px;padding:.25rem .6rem;white-space:nowrap}
+  .site-sections-scroll{overflow-x:auto;padding-bottom:.35rem;-webkit-overflow-scrolling:touch}
+  .site-sections-table{display:flex;gap:10px;min-width:min-content;padding:.15rem}
+  .site-section-cell{flex:0 0 min(168px,42vw);background:rgba(255,255,255,.97);color:var(--green);border-radius:12px;padding:.55rem .6rem .65rem;min-height:120px;border:1px solid rgba(255,255,255,.35)}
+  .site-section-cell.is-new{box-shadow:0 0 0 2px #bfe8cf inset}
+  .site-section-cell .ss-title{font-size:.76rem;font-weight:800;line-height:1.45;margin-bottom:.35rem;display:flex;align-items:flex-start;gap:4px}
+  .site-section-cell .ss-badge{font-size:.58rem;font-weight:800;background:#eafaf0;color:#1f7a4d;border-radius:5px;padding:.1rem .35rem;flex-shrink:0}
+  .site-section-cell .ss-places{display:flex;flex-wrap:wrap;gap:3px;margin-bottom:.45rem}
+  .site-section-cell .ss-place{font-size:.58rem;font-weight:700;background:var(--cream);color:var(--muted);border:1px solid var(--line);border-radius:5px;padding:.08rem .35rem}
+  .site-section-cell .ss-count{font-size:.62rem;font-weight:800;color:#1f7a4d;margin-bottom:.35rem}
+  .site-section-cell .ss-empty{font-size:.65rem;color:var(--muted);font-weight:700;line-height:1.5}
+  .site-section-cell .ss-articles{list-style:none;display:flex;flex-direction:column;gap:4px}
+  .site-section-cell .ss-articles a{font-size:.68rem;font-weight:700;color:var(--green);text-decoration:none;line-height:1.45;display:block;padding:.2rem .1rem;border-radius:6px}
+  .site-section-cell .ss-articles a:hover{background:var(--cream);color:#0a6b63}
+  .site-section-cell .ss-articles .ss-live{font-size:.58rem;color:var(--muted);font-weight:700}
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1436107577087160" crossorigin="anonymous"></script></head>
 <body>
@@ -134,10 +157,13 @@
     <div id="view-handoff" class="view-panel">
       <div class="handoff-head">
         <h1>لوحة التسليم — المرحلة 1</h1>
-        <div class="sub">عامر = مدير تحريري. Hema = سكيلز (عمر·Moni·رواق). Cursor = بناء. كورسر ٢ = LIVE منتظر صور. اسحب يميناً.</div>
+        <div class="sub">عامر = مدير تحريري. Hema = سكيلز (عمر·Moni·رواق). Cursor = بناء. كورسر ٢ = LIVE منتظر صور. تحت جوست: أقسام الموقع.</div>
       </div>
-      <div class="handoff-board" id="handoffBoard"><div class="loading">جارٍ التحميل…</div></div>
-      <div class="docnote">المصدر: <code>operating-system/handoff-tickets.json</code> · السحب يحفظ على جهازك · Cursor يثبّت في Git</div>
+      <div class="handoff-stack">
+        <div class="handoff-board" id="handoffBoard"><div class="loading">جارٍ التحميل…</div></div>
+        <div id="handoffSectionsMap" class="site-sections-map" hidden></div>
+      </div>
+      <div class="docnote">المصدر: <code>operating-system/handoff-tickets.json</code> + <code>site-sections.json</code> · السحب يحفظ على جهازك · Cursor يثبّت في Git</div>
     </div>
     <div id="view-gsystem" class="view-panel is-active">
       <div class="gs-head">
@@ -261,7 +287,12 @@ function syncHandoffOverrides(handoff){
 }
 function resolveHandoffCol(card,ov){
   if(card.col==='done'||card.stage==='done')return 'done';
-  return ov[card.id]||card.col;
+  let col=ov[card.id]||card.col;
+  if(col==='hema'||col==='omar'){
+    const sk=card.skill||(col==='omar'?'omar':'moni');
+    col=sk==='omar'?'hema_omar':sk==='ruwaq'?'hema_ruwaq':'hema_moni';
+  }
+  return col;
 }
 function handoffToast(msg){const t=$('#handoffToast');if(!t)return;t.textContent=msg;t.style.display='block';clearTimeout(handoffToast._t);handoffToast._t=setTimeout(()=>{t.style.display='none'},4200)}
 function openHandoff(){setSideActive('handoff');switchView('handoff');HANDOFF=null;renderHandoff()}
@@ -351,6 +382,24 @@ async function renderHealth(){$('#vgdoc').innerHTML='جارٍ تحميل لوح�
       <div class="docnote">تُحدَّث الأرقام تلقائياً عند تعديل ملف البيانات و git push.</div>`;
   }catch(e){$('#vgdoc').innerHTML='تعذّر تحميل لوحة الصحة (governance-metrics.json).'}}
 
+async function renderSiteSections(){
+  const el=$('#handoffSectionsMap');
+  if(!el)return;
+  try{
+    const data=await (await fetch(GD+'site-sections.json?_='+Date.now())).json();
+    const sections=data.sections||[];
+    const cells=sections.map(sec=>{
+      const arts=(sec.articles||[]).slice(0,6);
+      const artList=arts.length?`<ul class="ss-articles">${arts.map(a=>`<li><a href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.title)}</a>${a.live?`<span class="ss-live"> · ${esc(a.live)}</span>`:''}</li>`).join('')}</ul>`:`<div class="ss-empty">— بانتظار مقال LIVE —</div>`;
+      const places=(sec.placement_labels||sec.placements||[]).map(p=>`<span class="ss-place">${esc(typeof p==='string'?p:(data.placement_labels||{})[p]||p)}</span>`).join('');
+      const badge=sec.is_new?'<span class="ss-badge">جديد</span>':'';
+      return `<div class="site-section-cell${sec.is_new?' is-new':''}"><div class="ss-title">${badge}<span>${esc(sec.title)}</span></div><div class="ss-places">${places}</div><div class="ss-count">${sec.count||0} LIVE</div>${artList}</div>`;
+    }).join('');
+    el.innerHTML=`<div class="ss-head"><div><h2>🗂️ ${esc(data.title||'أقسام الموقع')}</h2><small>${esc(data.subtitle||'خريطة النشر بعد LIVE — هوم · أدوات · مدونة')}</small></div><span class="ss-meta">${data.live_total||0} مقال · ${sections.length} قسم</span></div><div class="site-sections-scroll"><div class="site-sections-table">${cells}</div></div>`;
+    el.hidden=false;
+  }catch(e){el.hidden=true}
+}
+
 async function renderHandoff(){
   const el=$('#handoffBoard');
   if(!el)return;
@@ -359,13 +408,14 @@ async function renderHandoff(){
     try{HANDOFF=await (await fetch(GD+'handoff-tickets.json?_='+Date.now())).json()}
     catch(e){el.innerHTML='<p style="color:#c0392b">تعذّر تحميل التذاكر.</p>';return}
   }
+  await renderSiteSections();
   handoffInit=true;
   const ov=syncHandoffOverrides(HANDOFF);
   const cards=(HANDOFF.cards||[]).map(c=>({...c,col:resolveHandoffCol(c,ov)}));
   const cols=HANDOFF.columns||[];
   el.innerHTML=cols.map(col=>{
     const list=cards.filter(c=>c.col===col.id);
-    const colCls='handoff-col'+(col.id==='cursor2'?' col-cursor2':col.id==='amer'?' col-amer':'');
+    const colCls='handoff-col'+(col.id==='cursor2'?' col-cursor2':col.id==='amer'?' col-amer':col.id==='hema_moni'?' col-hema-moni':col.id==='hema_ruwaq'?' col-hema-ruwaq':col.id==='hema_omar'?' col-hema-omar':'');
     const body=list.map(hcardHTML).join('');
     return `<div class="${colCls}" data-col="${col.id}" style="border-top:4px solid ${col.color||'#054241'}"><h2><span>${col.title}<small>${col.subtitle||''}</small></span><span class="count">${list.length}</span></h2>${body}</div>`}).join('');
   wireHandoff(cards,cols);

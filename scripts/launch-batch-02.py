@@ -40,6 +40,12 @@ SKILL_LABEL = {
     "omar": "Hema · سكيل عمر",
 }
 
+HEMA_SKILL_TO_COL = {
+    "omar": "hema_omar",
+    "moni": "hema_moni",
+    "ruwaq": "hema_ruwaq",
+}
+
 
 def cards_for_article(a: dict) -> list[dict]:
     """4 tickets per article: Hema نص · Hema برومبت · عامر · Cursor."""
@@ -49,6 +55,7 @@ def cards_for_article(a: dict) -> list[dict]:
     url_path = a.get("url_path", f"/blog/{slug}.html")
     pillar = a.get("pillar_ar", a.get("section", ""))
     write_skill = a.get("write_skill") or "moni"
+    site_section = a.get("site_section") or a.get("section", "")
     words = a["words_ar"]
     deepen = words < 1300
 
@@ -67,6 +74,8 @@ def cards_for_article(a: dict) -> list[dict]:
             "alt_en": a["alt_en"],
             "url_path": url_path,
             "ts": ts,
+            "site_section": site_section,
+            "pillar": a.get("pillar", ""),
         }
         c.update(extra)
         return c
@@ -78,7 +87,7 @@ def cards_for_article(a: dict) -> list[dict]:
     return [
         base(
             id=f"{base_id}N",
-            col="hema",
+            col=HEMA_SKILL_TO_COL.get(write_skill, "hema_moni"),
             stage=write_stage,
             step_ar="📝 نص",
             skill=write_skill,
@@ -88,7 +97,7 @@ def cards_for_article(a: dict) -> list[dict]:
         ),
         base(
             id=f"{base_id}P",
-            col="hema",
+            col="hema_omar",
             stage="prompt",
             step_ar="🖼️ برومبت",
             skill="omar",
@@ -196,8 +205,9 @@ def main() -> int:
     by_col: dict[str, int] = {}
     for c in new_cards:
         by_col[c["col"]] = by_col.get(c["col"], 0) + 1
+    hema_cols = sum(1 for c in new_cards if c["col"].startswith("hema_"))
     print(f"Launched batch-02: {len(articles)} articles · {len(new_cards)} tickets")
-    print(f"  Hema {by_col.get('hema', 0)} · عامر {by_col.get('amer', 0)} · Cursor {by_col.get('cursor', 0)}")
+    print(f"  Hema {hema_cols} · عامر {by_col.get('amer', 0)} · Cursor {by_col.get('cursor', 0)}")
     return 0
 
 
