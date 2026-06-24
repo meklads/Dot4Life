@@ -287,7 +287,9 @@ def task_for(card: dict) -> str:
     if col == "cursor":
         return CURSOR_TASKS.get(cid, "بناء ونشر — ثم «انتهى من عندي»")
     if col == "cursor2":
-        return CURSOR2_TASKS.get(cid, "LIVE — بانتظار hero WebP فقط")
+        if card.get("kind") == "batch2" and card.get("task"):
+            return card["task"]
+        return CURSOR2_TASKS.get(cid, "ربط hero من manifest — ثم «منتهي LIVE»")
     return card.get("task", "")
 
 
