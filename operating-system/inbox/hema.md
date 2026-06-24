@@ -1,7 +1,12 @@
-# 📬 Hema — أوامر السكيلات · 2026-06-24
+# 📬 Hema — أوامر السكيلات · 2026-06-24 13:38
 
-- **اللوحة:** `system/board.html` → أعمدة **سكيل التحليل** · **سكيل النمو** · **سكيل الكتابة**
-- **القانون:** `operating-system/HEMA-CHARTER.md`
+- **اللوحة:** `system/board.html` · **القانون:** `operating-system/HEMA-CHARTER.md`
+- **الحالة الآن:** `operating-system/team-board.md` (تم · جاري · لسه)
+
+## DEEPEN · **155** صفحة قصيرة
+- طابور: `hema-deepen-priority.md`
+- بوابة: `scripts/draft-gate.py` قبل التسليم لعامر
+- **A-09** REVISE — راجع `drafts/task09/`
 
 ---
 
@@ -54,5 +59,5 @@ B3-07L: rent-vs-buy-gulf-family
 
 ---
 
-## 🎨 سكيل التصميم
-- **B3-01P … B3-07P** — برومبتات في `operating-system/reports/batch-03-prompts.md`
+## 🎨 سكيل التصميم — ✅ منجز
+- برومبتات B3-01P…07P جاهزة في `operating-system/reports/batch-03-prompts.md` — **عامر يولّد الآن**

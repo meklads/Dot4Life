@@ -190,11 +190,16 @@ def build_live_block(now: datetime, autopilot: dict | None = None) -> str:
     batch_path = ROOT / "operating-system/batch-03.json"
     if batch_path.exists():
         batch = json.loads(batch_path.read_text(encoding="utf-8"))
-        if batch.get("amer_status") == "generating":
+        if batch.get("amer_status") in ("generating", "images_complete"):
             n = len(batch.get("articles", []))
-            progress_rows.append(
-                f"| {_hm(now)} | **Batch 03** — توليد {n} صور Higgsfield | عامر | `amer-batch03-kickoff.md` |"
-            )
+            if batch.get("amer_status") == "images_complete":
+                progress_rows.append(
+                    f"| {_hm(now)} | **Batch 03** — BUILD VERIFY {n} صور | عامر | `amer-batch03-kickoff.md` |"
+                )
+            else:
+                progress_rows.append(
+                    f"| {_hm(now)} | **Batch 03** — توليد {n} صور Higgsfield | عامر | `amer-batch03-kickoff.md` |"
+                )
             progress_rows.append(
                 f"| {_hm(now)} | Batch 03 — SEO Briefs + كتابة | Hema | AN-00 → B3-XXQ → B3-XXN |"
             )

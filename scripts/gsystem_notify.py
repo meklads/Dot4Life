@@ -113,7 +113,14 @@ def build_inboxes(autopilot_result: dict | None = None) -> dict[str, str]:
     if batch_path.exists():
         batch = json.loads(batch_path.read_text(encoding="utf-8"))
         batch_articles = batch.get("articles", [])
-        if batch.get("amer_status") == "generating":
+        if batch.get("amer_status") == "images_complete":
+            amer_lines += [
+                "## ✅ Batch 03 — الصور منجزة (7/7)",
+                "",
+                f"- التقرير: `operating-system/reports/amer-batch03-kickoff.md`",
+                "- **الآن:** BUILD VERIFY لكل slug بعد حقن Cursor",
+            ]
+        elif batch.get("amer_status") == "generating":
             amer_lines += [
                 "## 🟢 Batch 03 — توليد 7 صور (Higgsfield)",
                 "",
@@ -149,7 +156,7 @@ def build_inboxes(autopilot_result: dict | None = None) -> dict[str, str]:
         f"- push: {autopilot_result.get('commit', '—')}",
         "- القاعدة: `approved` + ملف → بناء فوري بدون سؤال جوست",
     ]
-    if batch_path.exists() and json.loads(batch_path.read_text(encoding="utf-8")).get("amer_status") == "generating":
+    if batch_path.exists() and json.loads(batch_path.read_text(encoding="utf-8")).get("amer_status") in ("generating", "images_complete"):
         cursor_lines += [
             "",
             "## Batch 03 — جاهز للبناء",

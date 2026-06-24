@@ -137,7 +137,7 @@ def main() -> int:
     TICKETS.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     batch["amer_kickoff"] = ts
-    batch["amer_status"] = "generating"
+    batch["amer_status"] = "images_complete"
     BATCH.write_text(json.dumps(batch, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     write_kickoff_md(articles, ts)
