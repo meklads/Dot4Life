@@ -128,6 +128,34 @@
   .site-section-cell .ss-articles a{font-size:.68rem;font-weight:700;color:var(--green);text-decoration:none;line-height:1.45;display:block;padding:.2rem .1rem;border-radius:6px}
   .site-section-cell .ss-articles a:hover{background:var(--cream);color:#0a6b63}
   .site-section-cell .ss-articles .ss-live{font-size:.58rem;color:var(--muted);font-weight:700}
+  .handoff-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1rem}
+  .handoff-tabs button{background:#fff;border:1.5px solid var(--line);border-radius:999px;padding:.45rem 1rem;font-size:.78rem;font-weight:800;color:var(--green);cursor:pointer}
+  .handoff-tabs button:hover{background:var(--cream)}
+  .handoff-tabs button.on{background:var(--green);color:#fff;border-color:var(--green)}
+  .handoff-tabs button.sections-tab.on{background:linear-gradient(135deg,#054241,#1f7a4d);border-color:#1f7a4d}
+  .handoff-panel{display:none}
+  .handoff-panel.is-active{display:block}
+  .sections-page{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .sections-page .sp-hero{background:linear-gradient(135deg,#054241 0%,#0d6b5c 50%,#1f7a4d 100%);color:#fff;padding:1rem 1.2rem}
+  .sections-page .sp-hero h2{font-size:1.05rem;font-weight:800;margin-bottom:.25rem}
+  .sections-page .sp-hero p{font-size:.74rem;font-weight:700;opacity:.9;line-height:1.6}
+  .sections-page .sp-hero .sp-meta{margin-top:.6rem;font-size:.68rem;font-weight:800;background:rgba(255,255,255,.15);display:inline-block;border-radius:999px;padding:.25rem .65rem}
+  .sections-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;padding:1rem}
+  @media(max-width:640px){.sections-grid{grid-template-columns:1fr}}
+  .section-card{background:var(--cream);border:1px solid var(--line);border-radius:14px;padding:.85rem 1rem;border-top:4px solid #1f7a4d}
+  .section-card.is-new{border-top-color:#6abfb8;box-shadow:0 0 0 1px rgba(106,191,184,.35)}
+  .section-card .sc-head{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:.5rem}
+  .section-card .sc-title{font-size:.88rem;font-weight:800;color:var(--green);line-height:1.45}
+  .section-card .sc-badge{font-size:.62rem;font-weight:800;background:#eafaf0;color:#1f7a4d;border-radius:6px;padding:.15rem .45rem;flex-shrink:0}
+  .section-card .sc-folder{font-size:.65rem;color:var(--muted);font-weight:700;margin-bottom:.45rem;direction:ltr;text-align:right}
+  .section-card .sc-places{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:.55rem}
+  .section-card .sc-place{font-size:.62rem;font-weight:700;background:#fff;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:.12rem .4rem}
+  .section-card .sc-count{font-size:.7rem;font-weight:800;color:#1f7a4d;margin-bottom:.5rem}
+  .section-card .sc-list{list-style:none;display:flex;flex-direction:column;gap:6px;max-height:220px;overflow-y:auto}
+  .section-card .sc-list a{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;font-size:.76rem;font-weight:700;color:var(--green);text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:9px;padding:.45rem .55rem;line-height:1.45}
+  .section-card .sc-list a:hover{border-color:var(--teal);color:#0a6b63}
+  .section-card .sc-list .sc-date{font-size:.62rem;color:var(--muted);font-weight:700;flex-shrink:0}
+  .section-card .sc-empty{font-size:.74rem;color:var(--muted);font-weight:700;padding:.4rem 0}
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1436107577087160" crossorigin="anonymous"></script></head>
 <body>
@@ -157,13 +185,20 @@
     <div id="view-handoff" class="view-panel">
       <div class="handoff-head">
         <h1>لوحة التسليم — المرحلة 1</h1>
-        <div class="sub">عامر = مدير تحريري. Hema = 5 سكيلات (الكتابة·التحليل·التصميم·البرمجة·النمو). Cursor = بناء. كورسر ٢ = LIVE منتظر صور. تحت جوست: أقسام الموقع.</div>
+        <div class="sub">عامر = مدير تحريري. Hema = 5 سكيلات. Cursor = بناء. كورسر ٢ = LIVE منتظر صور.</div>
       </div>
-      <div class="handoff-stack">
+      <div class="handoff-tabs">
+        <button type="button" class="on" data-handoff-tab="trello">🔀 التسليم (Trello)</button>
+        <button type="button" class="sections-tab" data-handoff-tab="sections">🗂️ أقسام الموقع</button>
+      </div>
+      <div id="handoffPanelTrello" class="handoff-panel is-active">
         <div class="handoff-board" id="handoffBoard"><div class="loading">جارٍ التحميل…</div></div>
-        <div id="handoffSectionsMap" class="site-sections-map" hidden></div>
+        <div class="docnote">المصدر: <code>operating-system/handoff-tickets.json</code> · السحب يحفظ على جهازك · Cursor يثبّت في Git</div>
       </div>
-      <div class="docnote">المصدر: <code>operating-system/handoff-tickets.json</code> + <code>site-sections.json</code> · السحب يحفظ على جهازك · Cursor يثبّت في Git</div>
+      <div id="handoffPanelSections" class="handoff-panel">
+        <div id="sectionsPage" class="sections-page"><div class="loading">جارٍ التحميل…</div></div>
+        <div class="docnote">المصدر: <code>operating-system/site-sections.json</code> · يتحدّث تلقائياً عند مزامنة التذاكر LIVE</div>
+      </div>
     </div>
     <div id="view-gsystem" class="view-panel is-active">
       <div class="gs-head">
@@ -261,7 +296,7 @@ function setSideActive(s){
   document.querySelectorAll('.side button[data-s]').forEach(x=>x.classList.remove('active'));
   const b=document.querySelector('.side button[data-s="'+s+'"]');if(b)b.classList.add('active');
 }
-let vgInit=false,gsInit=false,gsActive=0,ghostInit=false,ghostReports=[],handoffInit=false,HANDOFF=null;
+let vgInit=false,gsInit=false,gsActive=0,ghostInit=false,ghostReports=[],handoffInit=false,sectionsInit=false,HANDOFF=null;
 const HANDOFF_LS='dfl_handoff_cols';
 const HANDOFF_REV_LS='dfl_handoff_rev';
 const handoffOv=()=>JSON.parse(localStorage.getItem(HANDOFF_LS)||'{}');
@@ -296,7 +331,23 @@ function resolveHandoffCol(card,ov){
   return col;
 }
 function handoffToast(msg){const t=$('#handoffToast');if(!t)return;t.textContent=msg;t.style.display='block';clearTimeout(handoffToast._t);handoffToast._t=setTimeout(()=>{t.style.display='none'},4200)}
-function openHandoff(){setSideActive('handoff');switchView('handoff');HANDOFF=null;renderHandoff()}
+function switchHandoffTab(tab){
+  document.querySelectorAll('.handoff-tabs button').forEach(b=>b.classList.toggle('on',b.dataset.handoffTab===tab));
+  $('#handoffPanelTrello')?.classList.toggle('is-active',tab==='trello');
+  $('#handoffPanelSections')?.classList.toggle('is-active',tab==='sections');
+  sessionStorage.setItem('dfl_handoff_tab',tab);
+  if(tab==='sections')renderSectionsPage();
+  else if(!handoffInit)renderHandoff();
+}
+function openHandoff(){
+  setSideActive('handoff');switchView('handoff');
+  document.querySelectorAll('.handoff-tabs button').forEach(b=>{
+    b.onclick=()=>switchHandoffTab(b.dataset.handoffTab);
+  });
+  const saved=sessionStorage.getItem('dfl_handoff_tab')||'trello';
+  switchHandoffTab(saved);
+  if(saved==='trello'){HANDOFF=null;renderHandoff()}
+}
 function show(){document.getElementById('gate').style.display='none';document.getElementById('app').style.display='block';openGSystem()}
 function openGSystem(){setSideActive('gsystem');switchView('gsystem');renderGS()}
 document.querySelector('.side').addEventListener('click',e=>{
@@ -383,22 +434,25 @@ async function renderHealth(){$('#vgdoc').innerHTML='جارٍ تحميل لوح�
       <div class="docnote">تُحدَّث الأرقام تلقائياً عند تعديل ملف البيانات و git push.</div>`;
   }catch(e){$('#vgdoc').innerHTML='تعذّر تحميل لوحة الصحة (governance-metrics.json).'}}
 
-async function renderSiteSections(){
-  const el=$('#handoffSectionsMap');
+async function renderSectionsPage(){
+  const el=$('#sectionsPage');
   if(!el)return;
+  if(sectionsInit&&el.dataset.rev)return;
+  el.innerHTML='<div class="loading">جارٍ التحميل…</div>';
   try{
     const data=await (await fetch(GD+'site-sections.json?_='+Date.now())).json();
     const sections=data.sections||[];
-    const cells=sections.map(sec=>{
-      const arts=(sec.articles||[]).slice(0,6);
-      const artList=arts.length?`<ul class="ss-articles">${arts.map(a=>`<li><a href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.title)}</a>${a.live?`<span class="ss-live"> · ${esc(a.live)}</span>`:''}</li>`).join('')}</ul>`:`<div class="ss-empty">— بانتظار مقال LIVE —</div>`;
-      const places=(sec.placement_labels||sec.placements||[]).map(p=>`<span class="ss-place">${esc(typeof p==='string'?p:(data.placement_labels||{})[p]||p)}</span>`).join('');
-      const badge=sec.is_new?'<span class="ss-badge">جديد</span>':'';
-      return `<div class="site-section-cell${sec.is_new?' is-new':''}"><div class="ss-title">${badge}<span>${esc(sec.title)}</span></div><div class="ss-places">${places}</div><div class="ss-count">${sec.count||0} LIVE</div>${artList}</div>`;
+    const cards=sections.map(sec=>{
+      const arts=sec.articles||[];
+      const artList=arts.length?`<ul class="sc-list">${arts.map(a=>`<li><a href="${esc(a.url)}" target="_blank" rel="noopener"><span>${esc(a.title)}</span>${a.live?`<span class="sc-date">${esc(a.live)}</span>`:''}</a></li>`).join('')}</ul>`:`<div class="sc-empty">لا مقالات LIVE بعد — يظهر هنا بعد النشر</div>`;
+      const places=(sec.placement_labels||[]).map(p=>`<span class="sc-place">${esc(p)}</span>`).join('');
+      const badge=sec.is_new?'<span class="sc-badge">جديد</span>':'';
+      return `<article class="section-card${sec.is_new?' is-new':''}"><div class="sc-head"><h3 class="sc-title">${esc(sec.title)}</h3>${badge}</div>${sec.folder?`<div class="sc-folder">${esc(sec.folder)}</div>`:''}<div class="sc-places">${places}</div><div class="sc-count">${sec.count||0} مقال LIVE</div>${artList}</article>`;
     }).join('');
-    el.innerHTML=`<div class="ss-head"><div><h2>🗂️ ${esc(data.title||'أقسام الموقع')}</h2><small>${esc(data.subtitle||'خريطة النشر بعد LIVE — هوم · أدوات · مدونة')}</small></div><span class="ss-meta">${data.live_total||0} مقال · ${sections.length} قسم</span></div><div class="site-sections-scroll"><div class="site-sections-table">${cells}</div></div>`;
-    el.hidden=false;
-  }catch(e){el.hidden=true}
+    el.innerHTML=`<div class="sp-hero"><h2>🗂️ ${esc(data.title||'أقسام الموقع')}</h2><p>${esc(data.subtitle||'خريطة النشر — كل قسم ومقالاته LIVE ومواضعها في الموقع (هوم · أدوات · مدونة)')}</p><span class="sp-meta">${data.live_total||0} مقال منشور · ${sections.length} قسم</span></div><div class="sections-grid">${cards}</div>`;
+    el.dataset.rev=data.updated||'';
+    sectionsInit=true;
+  }catch(e){el.innerHTML='<p style="color:#c0392b;padding:1rem">تعذّر تحميل أقسام الموقع.</p>'}
 }
 
 async function renderHandoff(){
@@ -409,7 +463,8 @@ async function renderHandoff(){
     try{HANDOFF=await (await fetch(GD+'handoff-tickets.json?_='+Date.now())).json()}
     catch(e){el.innerHTML='<p style="color:#c0392b">تعذّر تحميل التذاكر.</p>';return}
   }
-  await renderSiteSections();
+  sectionsInit=false;
+  delete $('#sectionsPage')?.dataset.rev;
   handoffInit=true;
   const ov=syncHandoffOverrides(HANDOFF);
   const cards=(HANDOFF.cards||[]).map(c=>({...c,col:resolveHandoffCol(c,ov)}));
