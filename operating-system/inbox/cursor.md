@@ -1,11 +1,16 @@
-# 📬 Cursor — أوتوبايلوت · 2026-06-24 13:59
+# 📬 Cursor — أوتوبايلوت · 2026-06-24
 
-- **الحالة الآن:** `operating-system/team-board.md` (تم · جاري · لسه)
-- آخر تشغيل: 2026-06-24T13:36:26
-- صفحات بُنيت: **11**
-- push: 3af72f3
-- القاعدة: `approved` + ملف → بناء فوري بدون سؤال جوست
+## 🆕 DEEPEN Batch 10 — ١٠ مقالات
 
-## Batch 03 — جاهز للبناء
-- راقب `image-manifest.json` — عند `approved` + WebP في `approved/` → Autopilot يبني فوراً
-- تذاكر البناء: `B3-01C` … `B3-07C` على عمود Cursor
+**التقرير:** `operating-system/reports/deepen-batch-10.md`  
+**التذاكر:** `D10-01C` … `D10-10C` على عمود Cursor
+
+### المسار
+1. هيما `D10-XXN` → عامر `D10-XXA` (amer-mandate PASS)
+2. عند `approved` + ملف HTML → **TECH_BUILD** فوراً + `git push` بدون سؤال جوست
+
+### أول BUILD متوقّع
+- بعد اعتماد عامر على `D10-01A` → `D10-01C` best-family-destinations-gulf
+
+### قاعدة
+- الناشر الوحيد لـ GitHub — commit + push كل دورة

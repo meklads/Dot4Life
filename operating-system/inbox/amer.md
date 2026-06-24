@@ -1,20 +1,26 @@
-# 📬 عامر — COMMANDER · Batch 03 · 2026-06-24 13:59
+# 📬 عامر — بوابة الجودة · 2026-06-24
 
-- **الحالة الآن:** `operating-system/team-board.md` (تم · جاري · لسه)
-- **أمر جوست:** ابدأ العمل · شغّل الفريق · توليد الصور
+## 🆕 DEEPEN Batch 10 — ١٠ مقالات (أمر جوست)
 
-## ✅ Batch 03 — الصور منجزة (7/7)
+**التقرير:** `operating-system/reports/deepen-batch-10.md`
 
-- التقرير: `operating-system/reports/amer-batch03-kickoff.md`
-- **الآن:** BUILD VERIFY لكل slug بعد حقن Cursor
+### أولاً — بوابة digital-minimalism (ع+en)
+- راجعي `blog/digital-minimalism-families.html` + `-en.html`
+- اعتماد أو رفض في TEAM-BUS
 
-## ✅ BUILD VERIFY بعد بناء Cursor (7)
-- `arab-mother-startup` — hero + alt + G5
-- `evening-rituals` — hero + alt + G5
-- `gulf-father-money-lessons` — hero + alt + G5
-- `government-vs-private-school-gulf` — hero + alt + G5
-- `digital-minimalism-families` — hero + alt + G5
-- `pregnancy-nutrition-first-trimester` — hero + alt + G5
-- `daily-islamic-habits-guide` — hero + alt + G5
+### ثانياً — بعد كل `D10-XXN` من هيما
+| تذكرة | slug |
+|--------|------|
+| D10-01A | best-family-destinations-gulf |
+| D10-02A | featured-story-arab-father-teens |
+| D10-03A | featured-story-gulf-family-home |
+| D10-04A | featured-story-saudi-mother |
+| D10-05A | body-fat-vs-weight-guide |
+| D10-06A | peace-at-home-5-steps |
+| D10-07A | comparisons-public-vs-private-education |
+| D10-08A | comparisons-ready-vs-build-home |
+| D10-09A | ramadan-preparation-guide-families |
+| D10-10A | house-affordability-single-income-guide |
 
-- جودة: `python3 scripts/quality-audit.py`
+**amer-mandate:** ≥1600w ع · FAQ≥4 · Schema · 0 شرطات · مصادر https  
+بعد PASS → انقلي `D10-XXA` إلى member_done وافتحي `D10-XXC` لكورسر.

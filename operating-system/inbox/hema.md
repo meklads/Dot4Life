@@ -1,27 +1,33 @@
 # 📬 Hema — أوامر السكيلات · 2026-06-24
 
-> **آخر تحديث:** 2026-06-24 17:15 — **أمر عامر/جوست**
+> **آخر تحديث:** 2026-06-24 — **أمر جوست: DEEPEN Batch 10**
 
 ---
 
-## 🟢 GO — نفّذ الآن (ترتيباً، ملفاً ملفاً)
+## 🟢 GO — DEEPEN Batch 10 (١٠ مقالات — ابدئي الآن)
 
-### 1️⃣ ✅ تعريب digital-minimalism-families.html (ع) — منجز
-- ترجمت كامل المقالة (~2400 كلمة) من الإنجليزي إلى العربي
-- الإحصاءات 100%·78%·30-50% ← صياغة وصفية
-- JSON-LD (Article+FAQPage) سليم، 5 أسئلة عربية
-- 0 نسب، 0 شرطات، 2431 كلمة
+**مصدر القائمة:** `operating-system/reports/deepen-batch-10.md`  
+**الترتيب:** ملفاً ملفاً · `draft-gate.py` قبل التسليم · ثم «انتهى من عندي»
 
-### 1️⃣ ✅ إصلاح digital-minimalism-families-en.html — منجز
-- النسب الثلاث (100%·78%·30-50%): صياغة وصفية
-- «Research from AAP»: أُعيدت صياغته
-- 0 نسب متبقية
+| # | تذكرة | slug |
+|---|--------|------|
+| 1 | **D10-01N** | best-family-destinations-gulf |
+| 2 | **D10-02N** | featured-story-arab-father-teens |
+| 3 | **D10-03N** | featured-story-gulf-family-home |
+| 4 | **D10-04N** | featured-story-saudi-mother |
+| 5 | **D10-05N** | body-fat-vs-weight-guide |
+| 6 | **D10-06N** | peace-at-home-5-steps |
+| 7 | **D10-07N** | comparisons-public-vs-private-education |
+| 8 | **D10-08N** | comparisons-ready-vs-build-home |
+| 9 | **D10-09N** | ramadan-preparation-guide-families |
+| 10 | **D10-10N** | house-affordability-single-income-guide |
 
-### 2️⃣ ⏸ في انتظار عامر — اعتماد (ع+en)
-بعد إشارة عامر «ابدأ DEEPEN»:
-- T-03: 15 صفحة من hema-deepen-t03-blog-triage-15.txt — ملفاً ملفاً
-- T-04: 7 صفحات من hema-deepen-t04-thin-7.txt
-- بوابة: draft-gate.py قبل التسليم
+```
+ابدئي D10-01N فوراً — لا تنتظري الـ155 دفعة واحدة.
+بعد كل N → عامر (D10-XXA) → كورسر (D10-XXC).
+```
+
+### ⏸ digital-minimalism — بانتظار عامر (منجز من جهتك)
 
 ---
 
