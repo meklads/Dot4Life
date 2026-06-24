@@ -140,9 +140,9 @@
   .sections-page .sp-hero h2{font-size:1.05rem;font-weight:800;margin-bottom:.25rem}
   .sections-page .sp-hero p{font-size:.74rem;font-weight:700;opacity:.9;line-height:1.6}
   .sections-page .sp-hero .sp-meta{margin-top:.6rem;font-size:.68rem;font-weight:800;background:rgba(255,255,255,.15);display:inline-block;border-radius:999px;padding:.25rem .65rem}
-  .sections-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;padding:1rem}
-  @media(max-width:640px){.sections-grid{grid-template-columns:1fr}}
-  .section-card{background:var(--cream);border:1px solid var(--line);border-radius:14px;padding:.85rem 1rem;border-top:4px solid #1f7a4d}
+  .sections-scroll{overflow-x:auto;padding:1rem 1rem 1.1rem;-webkit-overflow-scrolling:touch}
+  .sections-row{display:flex;gap:12px;min-width:min-content;align-items:stretch}
+  .section-card{flex:0 0 min(260px,78vw);background:var(--cream);border:1px solid var(--line);border-radius:14px;padding:.85rem 1rem;border-top:4px solid #1f7a4d;max-height:72vh;display:flex;flex-direction:column}
   .section-card.is-new{border-top-color:#6abfb8;box-shadow:0 0 0 1px rgba(106,191,184,.35)}
   .section-card .sc-head{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:.5rem}
   .section-card .sc-title{font-size:.88rem;font-weight:800;color:var(--green);line-height:1.45}
@@ -151,7 +151,7 @@
   .section-card .sc-places{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:.55rem}
   .section-card .sc-place{font-size:.62rem;font-weight:700;background:#fff;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:.12rem .4rem}
   .section-card .sc-count{font-size:.7rem;font-weight:800;color:#1f7a4d;margin-bottom:.5rem}
-  .section-card .sc-list{list-style:none;display:flex;flex-direction:column;gap:6px;max-height:220px;overflow-y:auto}
+  .section-card .sc-list{list-style:none;display:flex;flex-direction:column;gap:6px;flex:1;min-height:0;overflow-y:auto}
   .section-card .sc-list a{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;font-size:.76rem;font-weight:700;color:var(--green);text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:9px;padding:.45rem .55rem;line-height:1.45}
   .section-card .sc-list a:hover{border-color:var(--teal);color:#0a6b63}
   .section-card .sc-list .sc-date{font-size:.62rem;color:var(--muted);font-weight:700;flex-shrink:0}
@@ -445,7 +445,7 @@ async function renderSectionsPage(){
       const badge=sec.is_new?'<span class="sc-badge">جديد</span>':'';
       return `<article class="section-card${sec.is_new?' is-new':''}"><div class="sc-head"><h3 class="sc-title">${esc(sec.title)}</h3>${badge}</div>${sec.folder?`<div class="sc-folder">${esc(sec.folder)}</div>`:''}<div class="sc-places">${places}</div><div class="sc-count">${sec.count||0} مقال LIVE</div>${artList}</article>`;
     }).join('');
-    el.innerHTML=`<div class="sp-hero"><h2>🗂️ ${esc(data.title||'أقسام الموقع')}</h2><p>${esc(data.subtitle||'خريطة النشر — كل قسم ومقالاته LIVE ومواضعها في الموقع (هوم · أدوات · مدونة)')}</p><span class="sp-meta">${data.live_total||0} مقال منشور · ${sections.length} قسم</span></div><div class="sections-grid">${cards}</div>`;
+    el.innerHTML=`<div class="sp-hero"><h2>🗂️ ${esc(data.title||'أقسام الموقع')}</h2><p>${esc(data.subtitle||'خريطة النشر — كل قسم ومقالاته LIVE ومواضعها في الموقع (هوم · أدوات · مدونة)')}</p><span class="sp-meta">${data.live_total||0} مقال منشور · ${sections.length} قسم · اسحب أفقياً ←</span></div><div class="sections-scroll"><div class="sections-row">${cards}</div></div>`;
     el.dataset.rev=data.updated||'';
     sectionsInit=true;
   }catch(e){el.innerHTML='<p style="color:#c0392b;padding:1rem">تعذّر تحميل أقسام الموقع.</p>'}
