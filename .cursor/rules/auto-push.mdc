@@ -1,16 +1,36 @@
 ---
-description: Always commit and push to GitHub after completing work — no need to wait for Joost
+description: قانون الرفع — commit + push تلقائياً بعد كل عمل دون انتظار طلب جوست
 alwaysApply: true
 ---
 
-# Auto push — Dot4Life
+# قانون الرفع — Dot4Life (ثابت)
 
-After completing any meaningful change in this repo:
+**جوست لا يحتاج أن يقول «ارفع».** بعد أي عمل مفيد في الريبو، Cursor يرفع مباشرة.
 
-1. **Commit** with a clear message (why, not just what).
-2. **`git push origin main`** immediately — Joost does not need to ask.
-3. Run `python3 scripts/sync_gsystem_web.py` before push if `operating-system/` or `team-board.md` changed (board.html reads JSON).
-4. Do **not** push secrets (`.env`, credentials).
-5. If push fails, fix and retry; tell Joost only if blocked.
+## متى ترفع
 
-Exception: do not push if Joost explicitly says «لا ترفع» in that turn.
+ارفع **في نهاية كل مهمة** إذا غيّرت ملفات (كود، لوحة، operating-system، صور، HTML، JSON…).
+
+لا تنتظر سؤالاً. لا تسأل «هل أرفع؟». نفّذ الرفع ثم أخبر جوست باختصار أن الدفع تم.
+
+## الخطوات (إلزامية)
+
+1. إن لمسّت `operating-system/` أو `handoff-tickets` أو اللوحة:
+   ```bash
+   python3 scripts/handoff_sync.py
+   python3 scripts/sync_gsystem_web.py
+   ```
+2. `git status` + `git diff` — لا ترفع أسرار (`.env`, credentials, `__pycache__`).
+3. `git add` الملفات ذات الصلة فقط.
+4. `git commit` برسالة واضحة (لماذا، ليس فقط ماذا).
+5. إن كان الفرع متأخراً: `git pull --rebase origin main` (أزل `index.lock` العالق إن لزم).
+6. **`git push origin main`** فوراً.
+7. إن فشل الدفع: أصلح وأعد المحاولة؛ أبلغ جوست فقط إن بقيت عالقاً.
+
+## استثناء وحيد
+
+**لا ترفع** في نفس الرسالة التي يقول فيها جوست صراحة: «لا ترفع» أو «لا تدفع».
+
+## بعد الدفع
+
+اذكر في الرد: آخر commit (hash قصير) + أن `main` متزامن مع GitHub.
