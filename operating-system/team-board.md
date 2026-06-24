@@ -50,14 +50,14 @@
 <!-- TEAM-BOARD-LIVE-START -->
 ## 🕐 الحالة الآن — محدّث تلقائياً
 
-**آخر تحديث:** 2026-06-24 **13:38** · مصدر: autopilot + manifest + git
+**آخر تحديث:** 2026-06-24 **13:59** · مصدر: autopilot + manifest + git
 
 > **اقرأ هنا أولاً** — ثلاث حالات: **✅ تم** · **🔄 جاري** · **⏳ لسه**
 
 | المقياس | القيمة |
 |---------|--------|
 | صور `approved` | **32** |
-| تنتظر بناء HTML | **3** |
+| تنتظر بناء HTML | **2** |
 | DEEPEN (قصير) | **155** |
 | جودة الموقع | **0/275 (0%)** |
 | آخر autopilot | `2026-06-24 **13:36**` |
@@ -69,15 +69,16 @@
 | 2026-06-24 **13:36** | بُنيت صور: `arab-mother-startup`, `evening-rituals`, `gulf-father-money-lessons`, `government-vs-private-school-gulf`, `digital-minimalism-families`, `pregnancy-nutrition-first-trimester`, `daily-islamic-habits-guide` | Cursor | autopilot |
 | 2026-06-24 **13:36** | built 7 slug(s) · 3af72f3 · يحتاج بناء | Cursor | autopilot |
 | 2026-06-24 **13:36** | رفع GitHub `3af72f3` | Cursor | origin/main |
+| 2026-06-24 **13:45** | آخر commit `65cbcaa` | Cursor | Freeze new content after Batch 03 until DEEPEN backlog is cleared. |
 
 ### 🔄 جاري العمل — الآن
 
 | الوقت | ماذا | من | التالي |
 |-------|------|-----|--------|
-| 2026-06-24 **13:36** | حقن صور في HTML: `arab-mother-startup`, `evening-rituals`, `gulf-father-money-lessons` | Cursor | BUILD_MAP / APPLY |
+| 2026-06-24 **13:36** | حقن صور في HTML: `arab-mother-startup`, `evening-rituals` | Cursor | BUILD_MAP / APPLY |
 | — | A-09 REVISE — `drafts/task09/` | Hema | تسليم لعامر بعد draft-gate |
-| 2026-06-24 **13:38** | **Batch 03** — BUILD VERIFY 7 صور | عامر | `amer-batch03-kickoff.md` |
-| 2026-06-24 **13:38** | Batch 03 — SEO Briefs + كتابة | Hema | AN-00 → B3-XXQ → B3-XXN |
+| 2026-06-24 **13:59** | **Batch 03** — BUILD VERIFY 7 صور | عامر | `amer-batch03-kickoff.md` |
+| 2026-06-24 **13:59** | Batch 03 — SEO Briefs + كتابة | Hema | AN-00 → B3-XXQ → B3-XXN |
 
 ### ⏳ لسه — منتظر / مفتوح
 
@@ -107,8 +108,8 @@
 
 | # | المهمة | المالك | الهدف | منذ |
 |---|--------|--------|-------|-----|
-| T-07 | **Batch 03** — إكمال المسار | Hema · عامر · Cursor | 7 مقالات فقط | **24 يونيو** |
-| T-08 | **DEEPEN — 155 صفحة** | Hema · كتابة | ≥1600w · WRITING-LAW | **24 يونيو** |
+| T-07 | ~~Batch 03~~ | — | ✅ **مكتمل** 2026-06-24 | `batch-03-complete.md` |
+| T-08 | **DEEPEN — 155 صفحة** | Hema · كتابة | ≥1600w · **الآن** | **24 يونيو** |
 | T-09 | AN-00 تحليل ترافيك | Hema · تحليل | مضاعفة الرابح | **24 يونيو** |
 | T-02 | A-09 — إنهاء REVISE | Hema → عامر | مسودة PASS | ٢١ يونيو |
 | T-04 | BUILD VERIFY | عامر | hero + alt + G5 | ٢٢ يونيو |

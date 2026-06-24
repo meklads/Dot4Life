@@ -6,6 +6,7 @@ import json
 import re
 import shutil
 import sys
+import html as html_lib
 from datetime import date
 from pathlib import Path
 
@@ -31,6 +32,8 @@ SECTIONS = [
     "health",
     "islamic-hajj-umrah",
     "real-estate",
+    "featured-stories",
+    "peace-capsules",
 ]
 
 
@@ -89,17 +92,35 @@ def patch_schema_image(html: str, abs_url: str) -> str:
     )
 
 
+def patch_banner(page: str, web: str, alt: str) -> str:
+    if "article-banner-img" not in page:
+        return page
+    esc = html_lib.escape(alt, quote=True)
+
+    def repl(m: re.Match) -> str:
+        tag = m.group(0)
+        tag = re.sub(r'src="[^"]*"', f'src="{web}"', tag, count=1)
+        if re.search(r'\balt="', tag):
+            tag = re.sub(r'alt="[^"]*"', f'alt="{esc}"', tag, count=1)
+        else:
+            tag = tag.replace("<img ", f'<img alt="{esc}" ', 1)
+        return tag
+
+    return re.sub(r'<img[^>]*class="article-banner-img"[^>]*>', repl, page, count=1)
+
+
 def apply_path(path: Path, entry: dict) -> bool:
     lang = page_lang(path)
-    figure, web, _ = hero_block(entry, lang, eager=True)
-    html = path.read_text(encoding="utf-8")
+    figure, web, alt = hero_block(entry, lang, eager=True)
+    text = path.read_text(encoding="utf-8")
     slug = article_slug_from_path(path)
     if slug != entry["article_slug"]:
         return False
-    new = inject_hero(html, figure)
+    new = patch_banner(text, web, alt)
+    new = inject_hero(new, figure)
     new = set_og_image(new, web)
     new = patch_schema_image(new, f"{SITE}{web}")
-    if new == html:
+    if new == text:
         return False
     BACKUP.mkdir(parents=True, exist_ok=True)
     shutil.copy2(path, BACKUP / path.name)
