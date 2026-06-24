@@ -16,18 +16,9 @@ from handoff_sync import load, move_card, save, sync_all  # noqa: E402
 ALIASES = {
     "جوست": "ghost",
     "ghost": "ghost",
-    "عمر": "hema_omar",
-    "omar": "hema_omar",
     "عامر": "amer",
     "amer": "amer",
     "كلود": "amer",
-    "moni": "hema_moni",
-    "hema_moni": "hema_moni",
-    "ruwaq": "hema_ruwaq",
-    "hema_ruwaq": "hema_ruwaq",
-    "hema_omar": "hema_omar",
-    "hema": "hema_moni",
-    "رواق": "hema_ruwaq",
     "cursor": "cursor",
     "cursor2": "cursor2",
     "كورسر2": "cursor2",
@@ -40,6 +31,30 @@ ALIASES = {
     "انتهى": "member_done",
     "انتهيت": "member_done",
     "منتهى": "member_done",
+    # Hema 5 skills
+    "writing": "hema_writing",
+    "كتابة": "hema_writing",
+    "hema_writing": "hema_writing",
+    "analysis": "hema_analysis",
+    "تحليل": "hema_analysis",
+    "seo": "hema_analysis",
+    "hema_analysis": "hema_analysis",
+    "design": "hema_design",
+    "تصميم": "hema_design",
+    "hema_design": "hema_design",
+    "dev": "hema_dev",
+    "برمجة": "hema_dev",
+    "hema_dev": "hema_dev",
+    "growth": "hema_growth",
+    "نمو": "hema_growth",
+    "hema_growth": "hema_growth",
+    # legacy
+    "moni": "hema_writing",
+    "ruwaq": "hema_writing",
+    "omar": "hema_design",
+    "hema": "hema_writing",
+    "رواق": "hema_writing",
+    "عمر": "hema_design",
 }
 
 
@@ -63,12 +78,15 @@ def norm_id(raw: str) -> str:
     m = re.match(r"^W-?(\d+)$", raw, re.I)
     if m:
         return f"W-{int(m.group(1)):02d}"
+    m = re.match(r"^B-?(\d+)-?(\w+)$", raw, re.I)
+    if m:
+        return f"B{m.group(1)}-{m.group(2).upper()}"
     return raw
 
 
 def main() -> int:
     if len(sys.argv) < 3:
-        print("Usage: python3 scripts/handoff_move.py H-07 omar", file=sys.stderr)
+        print("Usage: python3 scripts/handoff_move.py B3-01N writing", file=sys.stderr)
         return 1
     card_id = norm_id(sys.argv[1])
     col = ALIASES.get(sys.argv[2].lower(), sys.argv[2].lower())
@@ -79,7 +97,7 @@ def main() -> int:
         return 1
     save(data)
     result = sync_all()
-    subprocess.run(["python3", str(ROOT / "scripts/sync_gsystem_web.py")], cwd=ROOT, check=False)
+    subprocess.run([sys.executable, str(ROOT / "scripts/sync_gsystem_web.py")], cwd=ROOT, check=False)
     print(
         json.dumps(
             {"moved": card_id, "col": col, "command": card.get("command", ""), **result},

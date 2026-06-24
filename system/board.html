@@ -89,9 +89,7 @@
   .handoff-col{flex:0 0 min(260px,78vw);background:#e4ebe8;border-radius:14px;padding:.6rem;min-height:200px;max-height:72vh;overflow-y:auto}
   .handoff-col.col-cursor2{flex:0 0 min(240px,72vw);background:#e8eaf6}
   .handoff-col.col-amer{flex:0 0 min(260px,78vw);background:#faf3e8;border-left:4px solid #c17817}
-  .handoff-col.col-hema-moni{flex:0 0 min(250px,76vw);background:#ede8f4}
-  .handoff-col.col-hema-ruwaq{flex:0 0 min(250px,76vw);background:#e8e4f2}
-  .handoff-col.col-hema-omar{flex:0 0 min(250px,76vw);background:#f0eaf8;border-left:4px solid #8f6bb8}
+  .handoff-col.col-hema{flex:0 0 min(250px,76vw);background:#eafaf0;border-left:4px solid #1f7a4d}
   .handoff-col h2{font-size:.82rem;font-weight:800;padding:.35rem .45rem .5rem;display:flex;justify-content:space-between;align-items:flex-start;gap:6px;line-height:1.4}
   .handoff-col h2 small{display:block;font-size:.65rem;font-weight:700;color:var(--muted);margin-top:2px}
   .handoff-col h2 .count{background:#cfdbd6;border-radius:999px;padding:0 .45rem;font-size:.7rem;flex-shrink:0}
@@ -167,7 +165,7 @@
   <nav class="side">
     <div class="brand">DOT<span class="dot">.</span>FORLIFE</div>
     <button data-s="gsystem" class="gs-tab active">🔄 GSystem ← ابدأ هنا</button>
-    <button data-s="handoff" class="handoff-tab">🔀 التسليم (Trello)</button>
+    <button data-s="handoff" class="handoff-tab">🔀 التسليم</button>
     <button data-s="ghost" class="ghost-tab">👑 جوست</button>
     <button data-s="visual">🎨 الحوكمة البصرية</button>
     <button data-s="development">🔬 التطوير</button>
@@ -188,10 +186,10 @@
         <div class="sub">عامر = مدير تحريري. Hema = 5 سكيلات. Cursor = بناء. كورسر ٢ = LIVE منتظر صور.</div>
       </div>
       <div class="handoff-tabs">
-        <button type="button" class="on" data-handoff-tab="trello">🔀 التسليم (Trello)</button>
+        <button type="button" class="on" data-handoff-tab="board">🔀 التسليم</button>
         <button type="button" class="sections-tab" data-handoff-tab="sections">🗂️ أقسام الموقع</button>
       </div>
-      <div id="handoffPanelTrello" class="handoff-panel is-active">
+      <div id="handoffPanelBoard" class="handoff-panel is-active">
         <div class="handoff-board" id="handoffBoard"><div class="loading">جارٍ التحميل…</div></div>
         <div class="docnote">المصدر: <code>operating-system/handoff-tickets.json</code> · السحب يحفظ على جهازك · Cursor يثبّت في Git</div>
       </div>
@@ -265,7 +263,7 @@ const VG=[
 const GSB='../operating-system/';
 const GD='/system/gsystem-data/';
 const GS=[
- {k:'🔀 Trello (سحب وإفلات)',id:'handoff-trello',handoff:true},
+ {k:'🔀 التسليم (سحب وإفلات)',id:'handoff-trello',handoff:true},
  {k:'🕐 الحالة الآن (تم·جاري·لسه)',id:'team-board',team:true},
  {k:'📄 التسليم (نص)',id:'handoff-board',team:true},
  {k:'🧭 اللوحة الموحّدة',id:'track-board'},
@@ -333,7 +331,7 @@ function resolveHandoffCol(card,ov){
 function handoffToast(msg){const t=$('#handoffToast');if(!t)return;t.textContent=msg;t.style.display='block';clearTimeout(handoffToast._t);handoffToast._t=setTimeout(()=>{t.style.display='none'},4200)}
 function switchHandoffTab(tab){
   document.querySelectorAll('.handoff-tabs button').forEach(b=>b.classList.toggle('on',b.dataset.handoffTab===tab));
-  $('#handoffPanelTrello')?.classList.toggle('is-active',tab==='trello');
+  $('#handoffPanelBoard')?.classList.toggle('is-active',tab==='board');
   $('#handoffPanelSections')?.classList.toggle('is-active',tab==='sections');
   sessionStorage.setItem('dfl_handoff_tab',tab);
   if(tab==='sections')renderSectionsPage();
@@ -344,9 +342,10 @@ function openHandoff(){
   document.querySelectorAll('.handoff-tabs button').forEach(b=>{
     b.onclick=()=>switchHandoffTab(b.dataset.handoffTab);
   });
-  const saved=sessionStorage.getItem('dfl_handoff_tab')||'trello';
-  switchHandoffTab(saved);
-  if(saved==='trello'){HANDOFF=null;renderHandoff()}
+  const saved=sessionStorage.getItem('dfl_handoff_tab')||'board';
+  if(saved==='trello')sessionStorage.setItem('dfl_handoff_tab','board');
+  switchHandoffTab(saved==='trello'?'board':saved);
+  if(saved!=='sections'){HANDOFF=null;renderHandoff()}
 }
 function show(){document.getElementById('gate').style.display='none';document.getElementById('app').style.display='block';openGSystem()}
 function openGSystem(){setSideActive('gsystem');switchView('gsystem');renderGS()}
@@ -471,7 +470,7 @@ async function renderHandoff(){
   const cols=HANDOFF.columns||[];
   el.innerHTML=cols.map(col=>{
     const list=cards.filter(c=>c.col===col.id);
-    const colCls='handoff-col'+(col.id==='cursor2'?' col-cursor2':col.id==='amer'?' col-amer':String(col.id).startsWith('hema_')?' col-hema-moni':'');
+    const colCls='handoff-col'+(col.id==='cursor2'?' col-cursor2':col.id==='amer'?' col-amer':String(col.id).startsWith('hema_')?' col-hema':'');
     const body=list.map(hcardHTML).join('');
     return `<div class="${colCls}" data-col="${col.id}" style="border-top:4px solid ${col.color||'#054241'}"><h2><span>${col.title}<small>${col.subtitle||''}</small></span><span class="count">${list.length}</span></h2>${body}</div>`}).join('');
   wireHandoff(cards,cols);
