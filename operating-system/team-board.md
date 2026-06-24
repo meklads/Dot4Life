@@ -50,14 +50,14 @@
 <!-- TEAM-BOARD-LIVE-START -->
 ## 🕐 الحالة الآن — محدّث تلقائياً
 
-**آخر تحديث:** 2026-06-24 **12:30** · مصدر: autopilot + manifest + git
+**آخر تحديث:** 2026-06-24 **13:35** · مصدر: autopilot + manifest + git
 
 > **اقرأ هنا أولاً** — ثلاث حالات: **✅ تم** · **🔄 جاري** · **⏳ لسه**
 
 | المقياس | القيمة |
 |---------|--------|
-| صور `approved` | **27** |
-| تنتظر بناء HTML | **2** |
+| صور `approved` | **32** |
+| تنتظر بناء HTML | **7** |
 | DEEPEN (قصير) | **155** |
 | جودة الموقع | **0/275 (0%)** |
 | آخر autopilot | `2026-06-24 **12:30**` |
@@ -68,20 +68,22 @@
 |-------|------|-----|--------|
 | 2026-06-24 **12:30** | بُنيت صور: `arab-mother-startup`, `evening-rituals` | Cursor | autopilot |
 | 2026-06-24 **12:30** | built 2 slug(s) · يحتاج بناء | Cursor | autopilot |
-| 2026-06-24 **12:30** | آخر commit `c8f10bb` | Cursor | GSystem autopilot: apply manifest-approved heroes. |
+| 2026-06-24 **10:35** | آخر commit `36ccbb3` | Cursor | amer: Batch 03 — 5 hero images generated+approved (B3-A done) |
 
 ### 🔄 جاري العمل — الآن
 
 | الوقت | ماذا | من | التالي |
 |-------|------|-----|--------|
-| 2026-06-24 **12:30** | حقن صور في HTML: `arab-mother-startup`, `evening-rituals` | Cursor | BUILD_MAP / APPLY |
+| 2026-06-24 **12:30** | حقن صور في HTML: `arab-mother-startup`, `evening-rituals`, `gulf-father-money-lessons`, `government-vs-private-school-gulf`, `digital-minimalism-families`, `pregnancy-nutrition-first-trimester`, `daily-islamic-habits-guide` | Cursor | BUILD_MAP / APPLY |
 | — | A-09 REVISE — `drafts/task09/` | Hema | تسليم لعامر بعد draft-gate |
+| 2026-06-24 **13:35** | **Batch 03** — توليد 7 صور Higgsfield | عامر | `amer-batch03-kickoff.md` |
+| 2026-06-24 **13:35** | Batch 03 — SEO Briefs + كتابة | Hema | AN-00 → B3-XXQ → B3-XXN |
 
 ### ⏳ لسه — منتظر / مفتوح
 
 | من | ماذا | ملاحظة |
 |-----|------|--------|
-| عمر + كلود | صور Tier 1 دفعة 2 — **0** slug بلا اعتماد | منذ ٢٢ يونيو |
+| Hema | Batch 03 — تحليل/نمو/كتابة (7 مقالات) | `inbox/hema-batch03.md` |
 | Hema | DEEPEN — **155** صفحة قصيرة | `hema-deepen-priority.md` |
 | Cursor | وضع النشر المستمر | بانتظار «فعّل» من جوست |
 
@@ -93,6 +95,7 @@
 - `[2026-06-24T12:30:43] AUDIT FAIL (summary)`
 - `[2026-06-24T12:30:52] git: push failed`
 - `[2026-06-24T12:30:52] inboxes: operating-system/inbox/omar.md, operating-system/inbox/claude.md, operating-system/inbox/hema.md, operating-system/inbox/amer.md, operating-system/inbox/cursor.md, operating-system/inbox/ghost.md`
+- `[2026-06-24T12:30:56] team-board refreshed`
 
 <!-- TEAM-BOARD-LIVE-END -->
 ---

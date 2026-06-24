@@ -232,3 +232,14 @@ def notify_new_tasks(autopilot_result: dict) -> None:
 
     for title, msg, sub in alerts:
         desktop_notify(f"{sub} — {title}", msg)
+
+
+if __name__ == "__main__":
+    import sys
+
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    state = load_state()
+    ap = state.get("last_autopilot") or {}
+    paths = write_inboxes(ap)
+    for p in paths:
+        print(p)
