@@ -254,7 +254,7 @@ def normalize_col(col: str, card: dict) -> str:
 
 def task_for(card: dict) -> str:
     col, stage, cid = card.get("col", "ghost"), card.get("stage", "backlog"), card.get("id", "")
-    if card.get("kind") == "batch2" and card.get("task"):
+    if card.get("kind") in ("batch2", "batch3", "analysis", "growth") and card.get("task"):
         return card["task"]
     if col == "done":
         return "منتهي — على الموقع"
@@ -275,6 +275,10 @@ def task_for(card: dict) -> str:
             return "جهّز برومبت الصورة وضعه pending — ثم «انتهى من عندي»"
         if sk == "generate":
             return "ولّد WebP 1200×750 (Higgsfield/صور/) — ثم «انتهى من عندي»"
+        if sk == "analysis":
+            return HEMA_TASKS.get(cid, "SEO Brief + SERP + on-page — ثم «انتهى من عندي»")
+        if sk == "growth":
+            return HEMA_TASKS.get(cid, "ربط داخلي + عناقيد + توزيع — ثم «انتهى من عندي»")
         return HEMA_TASKS.get(cid, "DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي»")
     if col == "amer":
         if cid in AMER_REJECT_TASKS:
