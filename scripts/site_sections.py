@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 from datetime import datetime
 from pathlib import Path
+from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT_OS = ROOT / "operating-system/site-sections.json"
@@ -182,7 +183,46 @@ def is_live_card(card: dict) -> bool:
     return card.get("col") == "done" or card.get("stage") == "done"
 
 
+SEARCH_FOLDERS = (
+    "featured-stories",
+    "comparisons",
+    "peace-capsules",
+    "blog",
+    "health",
+    "health-pregnancy",
+    "travel",
+    "guides",
+    "finance-wealth",
+    "islamic-hajj-umrah",
+    "real-estate",
+)
+
+
+def resolve_article_file(card: dict) -> Path | None:
+    """Return on-disk HTML path for a LIVE card, or None if not a public article."""
+    slug = card.get("slug") or ""
+    if not slug:
+        return None
+    if card.get("url"):
+        p = ROOT / urlparse(card["url"]).path.lstrip("/")
+        if p.is_file():
+            return p
+    path = card.get("url_path") or ""
+    if path:
+        p = ROOT / path.lstrip("/")
+        if p.is_file():
+            return p
+    for folder in SEARCH_FOLDERS:
+        p = ROOT / folder / f"{slug}.html"
+        if p.is_file():
+            return p
+    return None
+
+
 def article_url(card: dict) -> str:
+    resolved = resolve_article_file(card)
+    if resolved:
+        return "https://dotforlife.com/" + resolved.relative_to(ROOT).as_posix()
     if card.get("url"):
         return card["url"]
     path = card.get("url_path") or ""
@@ -202,6 +242,8 @@ def pick_live_articles(cards: list[dict]) -> list[dict]:
             continue
         slug = card.get("slug") or card.get("id", "")
         if not slug:
+            continue
+        if resolve_article_file(card) is None:
             continue
         url = article_url(card)
         if not url:

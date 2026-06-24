@@ -51,16 +51,19 @@ def page_lang(path: Path) -> str:
 
 def inject_hero(html: str, figure: str) -> str:
     if re.search(r'<figure class="hero">', html):
-        return re.sub(r'<figure class="hero">.*?</figure>', figure, html, count=1, flags=re.S)
-    for marker in (
-        '<article class="article-body">',
-        "<h1",
-        "<main",
-    ):
-        if marker in html:
-            if marker == "<h1":
-                return re.sub(r"(<h1[^>]*>)", figure + "\n\\1", html, count=1)
-            return html.replace(marker, figure + "\n" + marker, 1)
+        html = re.sub(r'<figure class="hero">.*?</figure>\s*', '', html, count=1, flags=re.S)
+    if '<article class="article-body">' in html:
+        return html.replace(
+            '<article class="article-body">',
+            '<article class="article-body">\n' + figure + '\n',
+            1,
+        )
+    if '<main class="article-main">' in html:
+        return html.replace(
+            '<main class="article-main">',
+            '<main class="article-main">\n' + figure + '\n',
+            1,
+        )
     return html.replace("<body>", "<body>\n" + figure, 1)
 
 

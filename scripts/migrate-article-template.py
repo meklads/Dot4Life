@@ -17,10 +17,22 @@ from datetime import datetime
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_MARKER = 'data-template="article"'
-CACHE_BUSTER = "v=20260625"
+CACHE_BUSTER = "v=20260625p"
 LANG_REDIRECT_SNIPPET = '<script src="/scripts/lang-redirect.js?v=20260625"></script>'
 
-DIRS = ['featured-stories']
+DIRS = [
+    'featured-stories',
+    'comparisons',
+    'peace-capsules',
+    'blog',
+    'health',
+    'health-pregnancy',
+    'travel',
+    'guides',
+    'finance-wealth',
+    'islamic-hajj-umrah',
+    'real-estate',
+]
 
 # ── Category → tools mapping ──────────────────────────────
 CATEGORY_TOOLS = {
@@ -662,10 +674,54 @@ def structure_valid(full_page):
     return False, f"sidebar nested under <{p.tagName.lower()} .{pc}> (source body likely has unbalanced tags)"
 
 
+def needs_repair(content):
+    """True when a templated page is missing layout pieces or has hero misplaced."""
+    if 'data-template="article"' not in content:
+        return True
+    if 'article-sidebar' not in content:
+        return True
+    if 'site-footer' not in content and 'UNIFIED FOOTER' not in content:
+        return True
+    if re.search(r'</section>\s*\n\s*<figure[^>]*class="hero"', content):
+        return True
+    if re.search(r'<main[^>]*class="article-main"[^>]*>\s*<figure[^>]*class="hero"', content):
+        return True
+    if 'article-banner' not in content:
+        return True
+    return False
+
+
+def section_article_paths():
+    """Paths from site-sections.json (جدول الأقسام) + EN pairs when present."""
+    paths = []
+    seen = set()
+    for name in ('operating-system/site-sections.json', 'system/gsystem-data/site-sections.json'):
+        p = os.path.join(BASE, name)
+        if not os.path.isfile(p):
+            continue
+        with open(p, encoding='utf-8') as f:
+            data = json.load(f)
+        for sec in data.get('sections', []):
+            for art in sec.get('articles', []):
+                url = art.get('url', '')
+                if not url:
+                    continue
+                rel = url.replace('https://dotforlife.com/', '').lstrip('/')
+                for candidate in (rel, rel.replace('.html', '-en.html')):
+                    if candidate in seen:
+                        continue
+                    fp = os.path.join(BASE, candidate)
+                    if os.path.isfile(fp):
+                        seen.add(candidate)
+                        paths.append(fp)
+        break
+    return sorted(paths)
+
+
 # ── MAIN: build_new_page ──────────────────────────────────────
-def build_new_page(filename, content):
+def build_new_page(filename, content, force=False):
     """Transform an existing article into the complete unified template."""
-    if has_template(content):
+    if has_template(content) and not force:
         return None  # Already migrated, idempotent
 
     lang, dir_, data_lang = get_html_attrs(content)
@@ -835,54 +891,84 @@ def build_new_page(filename, content):
     return new_page
 
 
+def process_file(fpath, force=False):
+    fname = os.path.basename(fpath)
+    content = read_file(fpath)
+    do_force = force or needs_repair(content)
+    if has_template(content) and not do_force:
+        return 'skipped'
+    result = build_new_page(fname, content, force=do_force)
+    if not result:
+        return 'skipped'
+    ok, why = structure_valid(result)
+    if not ok:
+        return f'error: {why}'
+    write_file(fpath, result)
+    verify = read_file(fpath)
+    if has_template(verify) and len(verify) > 500:
+        return 'migrated'
+    return 'error: verification failed'
+
+
 def main():
+    import argparse
+    parser = argparse.ArgumentParser(description='Migrate articles to unified template')
+    parser.add_argument('--repair-sections', action='store_true',
+                        help='Repair all articles listed in site-sections.json')
+    parser.add_argument('--force', action='store_true', help='Force rebuild even if templated')
+    args = parser.parse_args()
+
     base = BASE
     migrated = 0
     skipped = 0
     errors = 0
     total = 0
 
-    for d in DIRS:
-        dir_path = os.path.join(base, d)
-        if not os.path.isdir(dir_path):
-            print(f"⚠️  Directory not found: {d}")
-            continue
-
-        files = sorted([f for f in os.listdir(dir_path) if f.endswith('.html')])
-        total += len(files)
-        print(f"\n📁 {d}/ ({len(files)} files)")
-
-        for fname in files:
-            fpath = os.path.join(dir_path, fname)
+    if args.repair_sections:
+        targets = section_article_paths()
+        total = len(targets)
+        print(f"\n📋 site-sections repair ({total} files)")
+        for fpath in targets:
+            rel = os.path.relpath(fpath, base)
             try:
-                content = read_file(fpath)
-
-                if has_template(content):
+                status = process_file(fpath, force=args.force)
+                if status == 'migrated':
+                    migrated += 1
+                    print(f"  ✅ {rel}")
+                elif status == 'skipped':
                     skipped += 1
-                    continue
-
-                result = build_new_page(fname, content)
-                if result:
-                    ok, why = structure_valid(result)
-                    if not ok:
-                        errors += 1
-                        print(f"  ❌ {fname} — STRUCTURE CHECK FAILED: {why} (NOT written)")
-                        continue
-                    write_file(fpath, result)
-                    verify = read_file(fpath)
-                    if has_template(verify) and len(verify) > 500:
-                        migrated += 1
-                        print(f"  ✅ {fname}")
-                    else:
-                        errors += 1
-                        print(f"  ❌ {fname} — verification failed")
                 else:
-                    skipped += 1
-                    print(f"  ⏭️  {fname} (skipped)")
-
+                    errors += 1
+                    print(f"  ❌ {rel} — {status}")
             except Exception as e:
                 errors += 1
-                print(f"  ❌ {fname} — {type(e).__name__}: {e}")
+                print(f"  ❌ {rel} — {type(e).__name__}: {e}")
+    else:
+        for d in DIRS:
+            dir_path = os.path.join(base, d)
+            if not os.path.isdir(dir_path):
+                print(f"⚠️  Directory not found: {d}")
+                continue
+
+            files = sorted([f for f in os.listdir(dir_path) if f.endswith('.html')])
+            total += len(files)
+            print(f"\n📁 {d}/ ({len(files)} files)")
+
+            for fname in files:
+                fpath = os.path.join(dir_path, fname)
+                try:
+                    status = process_file(fpath, force=args.force)
+                    if status == 'migrated':
+                        migrated += 1
+                        print(f"  ✅ {fname}")
+                    elif status == 'skipped':
+                        skipped += 1
+                    else:
+                        errors += 1
+                        print(f"  ❌ {fname} — {status}")
+                except Exception as e:
+                    errors += 1
+                    print(f"  ❌ {fname} — {type(e).__name__}: {e}")
 
     print(f"\n{'='*55}")
     print(f"Total article files: {total}")
