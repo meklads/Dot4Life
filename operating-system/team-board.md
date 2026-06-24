@@ -50,7 +50,7 @@
 <!-- TEAM-BOARD-LIVE-START -->
 ## 🕐 الحالة الآن — محدّث تلقائياً
 
-**آخر تحديث:** 2026-06-24 **13:59** · مصدر: autopilot + manifest + git
+**آخر تحديث:** 2026-06-24 **17:00** · مصدر: Hema (يدوي بعد تعريب digital-minimalism)
 
 > **اقرأ هنا أولاً** — ثلاث حالات: **✅ تم** · **🔄 جاري** · **⏳ لسه**
 
@@ -66,6 +66,10 @@
 
 | الوقت | ماذا | من | الدليل |
 |-------|------|-----|--------|
+| 2026-06-24 **16:15** | **Batch 02 — مصداقية 14/14** — كل النسب ≤3، روابط عميقة لكل ملف | Hema (Writing) | فحص آلي 14/14 pass |
+| 2026-06-24 **16:15** | **B3-01 daily-islamic-habits AR** — عمّق 1600 كلمة + Article+FAQPage | Hema (Writing) | كان 773 كلمة ولا schema |
+| 2026-06-24 **16:15** | **B3-02 digital-minimalism AR** — FAQPage مكرّر محذوف، عربت الأسئلة | Hema (Writing) | 5 أسئلة عربية نظيفة |
+| 2026-06-24 **16:15** | **B3-03 gulf-father AR** — عمّق 1315 كلمة (كان 910) | Hema (Writing) | توسيع القصة والدروس |
 | 2026-06-24 **13:36** | بُنيت صور: `arab-mother-startup`, `evening-rituals`, `gulf-father-money-lessons`, `government-vs-private-school-gulf`, `digital-minimalism-families`, `pregnancy-nutrition-first-trimester`, `daily-islamic-habits-guide` | Cursor | autopilot |
 | 2026-06-24 **13:36** | built 7 slug(s) · 3af72f3 · يحتاج بناء | Cursor | autopilot |
 | 2026-06-24 **13:36** | رفع GitHub `3af72f3` | Cursor | origin/main |
@@ -75,17 +79,15 @@
 
 | الوقت | ماذا | من | التالي |
 |-------|------|-----|--------|
-| 2026-06-24 **13:36** | حقن صور في HTML: `arab-mother-startup`, `evening-rituals` | Cursor | BUILD_MAP / APPLY |
+| 2026-06-24 **16:30** | **digital-minimalism-families AR** — تعريب كامل (الصفحة العربية مليئة بالإنجليزي) | Hema (Writing) | تعريب + إصلاح النسب + تسليم لعامر |
 | — | A-09 REVISE — `drafts/task09/` | Hema | تسليم لعامر بعد draft-gate |
-| 2026-06-24 **13:59** | **Batch 03** — BUILD VERIFY 7 صور | عامر | `amer-batch03-kickoff.md` |
-| 2026-06-24 **13:59** | Batch 03 — SEO Briefs + كتابة | Hema | AN-00 → B3-XXQ → B3-XXN |
+| — | DEEPEN 155 — أولوية بعد تعريب digital-minimalism | Hema | T-03 → T-04 |
 
 ### ⏳ لسه — منتظر / مفتوح
 
 | من | ماذا | ملاحظة |
 |-----|------|--------|
-| Hema | Batch 03 — تحليل/نمو/كتابة (7 مقالات) | `inbox/hema-batch03.md` |
-| Hema | DEEPEN — **155** صفحة قصيرة | `hema-deepen-priority.md` |
+| Hema | DEEPEN — **155** صفحة قصيرة | `hema-deepen-priority.md` (بعد digital-minimalism) |
 | Cursor | وضع النشر المستمر | بانتظار «فعّل» من جوست |
 
 ### 📎 آخر سطور الأوتوبايلوت
