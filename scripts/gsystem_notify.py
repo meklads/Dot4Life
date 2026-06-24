@@ -89,9 +89,15 @@ def build_inboxes(autopilot_result: dict | None = None) -> dict[str, str]:
         f"- **اللوحة:** `system/board.html` · **القانون:** `operating-system/HEMA-CHARTER.md`",
         f"- **الحالة الآن:** {TEAM_BOARD} (تم · جاري · لسه)",
         "",
-        f"## DEEPEN · **{deepen_count()}** صفحة قصيرة",
+        f"## DEEPEN · **{deepen_count()}** صفحة قصيرة — أولوية قصوى",
         "- طابور: `hema-deepen-priority.md`",
         "- بوابة: `scripts/draft-gate.py` قبل التسليم لعامر",
+    ]
+    hema_lines += [
+        "",
+        "## ⛔ تجميد مواد جديدة (جوست)",
+        f"- **لا Batch 04+** حتى معالجة DEEPEN · `QUALITY-FIRST-POLICY.md`",
+        "- بعد Batch 03: سكيل الكتابة → تعميق الموجود فقط",
     ]
     a09 = ROOT / "operating-system/reports/drafts/task09"
     if a09.exists():
@@ -167,13 +173,18 @@ def build_inboxes(autopilot_result: dict | None = None) -> dict[str, str]:
     ghost_lines = [
         f"# 📬 جوست — ملخص · {now}",
         "",
-        f"- **لوحة التسليم (Trello):** `operating-system/handoff-board.md` ← انقل البطاقات + أوامر جاهزة",
+        f"- **لوحة التسليم:** `system/board.html` · `handoff-board.md`",
         f"- **الحالة الآن (تم/جاري/لسه):** {TEAM_BOARD}",
         f"- صور معتمدة في الفهرس: **{sum(1 for e in by.values() if is_approved(e))}**",
         f"- DEEPEN (قصير): **{deepen_count()}**",
         f"- آخر autopilot: {autopilot_result.get('summary', 'لم يُشغَّل')}",
-        "- تقارير تفصيلية: `operating-system/reports/ghost/`",
-        "- سجل الأوتوبايلوت: `outputs/logs/gsystem-autopilot.log`",
+        "- تقارير: `operating-system/reports/ghost/`",
+    ]
+    ghost_lines += [
+        "",
+        "## ⛔ تجميد مواد جديدة",
+        f"- **لا Batch 04+** حتى معالجة DEEPEN · `QUALITY-FIRST-POLICY.md`",
+        "- Batch 03 يكمل فقط",
     ]
 
     boxes = {

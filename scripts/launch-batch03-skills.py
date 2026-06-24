@@ -147,6 +147,14 @@ def cards_for_batch(articles: list[dict]) -> list[dict]:
 
 
 def main() -> int:
+    sys.path.insert(0, str(ROOT / "scripts"))
+    from deepen_gate import check_new_batch
+
+    ok, msg = check_new_batch("batch-03")
+    if not ok:
+        print(f"BLOCKED: {msg}", file=sys.stderr)
+        return 1
+
     batch = json.loads(BATCH.read_text(encoding="utf-8"))
     articles = batch["articles"]
     data = json.loads(TICKETS.read_text(encoding="utf-8"))

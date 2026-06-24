@@ -1,14 +1,23 @@
-# 📬 Hema — أوامر السكيلات · 2026-06-24 13:38
+# 📬 Hema — أوامر السكيلات · 2026-06-24 13:44
 
 - **اللوحة:** `system/board.html` · **القانون:** `operating-system/HEMA-CHARTER.md`
 - **الحالة الآن:** `operating-system/team-board.md` (تم · جاري · لسه)
 
-## DEEPEN · **155** صفحة قصيرة
+## DEEPEN · **155** صفحة قصيرة — أولوية قصوى
 - طابور: `hema-deepen-priority.md`
 - بوابة: `scripts/draft-gate.py` قبل التسليم لعامر
+
+## ⛔ تجميد مواد جديدة (جوست)
+- **لا Batch 04+** حتى معالجة DEEPEN · `QUALITY-FIRST-POLICY.md`
+- بعد Batch 03: سكيل الكتابة → تعميق الموجود فقط
 - **A-09** REVISE — راجع `drafts/task09/`
 
 ---
+
+## ⛔ تجميد مواد جديدة (جوست · 2026-06-24)
+
+**بعد انتهاء Batch 03:** لا تذاكر كتابة لمقالات جديدة — **DEEPEN فقط** للـ155 صفحة القصيرة.
+المرجع: `operating-system/QUALITY-FIRST-POLICY.md` · الطابور: `hema-deepen-priority.md`
 
 ## 🔍 سكيل التحليل — ابدأ هنا (الترتيب مهم)
 

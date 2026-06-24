@@ -29,6 +29,17 @@
 ## Principle
 **One deep article worth publishing > ten thin pages.** Text APPROVED ≠ LIVE.
 
+## ⛔ Quality-first freeze (Ghost · 2026-06-24)
+**155 DEEPEN pages = quality debt.** After **Batch 03** completes: **no new content batches or new-article tickets** until existing site deficiencies are processed.
+
+| Priority | Action |
+|----------|--------|
+| 1 | Finish Batch 03 pipeline |
+| 2 | Hema Writing skill — reduce DEEPEN per `WRITING-LAW.md` (≥1600w) |
+| 3 | After AN-00 — double down on traffic winners |
+
+**Policy:** `operating-system/QUALITY-FIRST-POLICY.md` · **Gate:** `scripts/deepen_gate.py` · **Unlock:** deepen ≤25 + quality ≥60% + Ghost explicit OK.
+
 ## Loop (mandatory)
 ```
 Hema drafts → Self-QA → Amer APPROVED|REVISE|REJECT
