@@ -157,7 +157,7 @@
     <div id="view-handoff" class="view-panel">
       <div class="handoff-head">
         <h1>لوحة التسليم — المرحلة 1</h1>
-        <div class="sub">عامر = مدير تحريري. Hema = سكيلز (عمر·Moni·رواق). Cursor = بناء. كورسر ٢ = LIVE منتظر صور. تحت جوست: أقسام الموقع.</div>
+        <div class="sub">عامر = مدير تحريري. Hema = 5 سكيلات (الكتابة·التحليل·التصميم·البرمجة·النمو). Cursor = بناء. كورسر ٢ = LIVE منتظر صور. تحت جوست: أقسام الموقع.</div>
       </div>
       <div class="handoff-stack">
         <div class="handoff-board" id="handoffBoard"><div class="loading">جارٍ التحميل…</div></div>
@@ -289,8 +289,9 @@ function resolveHandoffCol(card,ov){
   if(card.col==='done'||card.stage==='done')return 'done';
   let col=ov[card.id]||card.col;
   if(col==='hema'||col==='omar'){
-    const sk=card.skill||(col==='omar'?'omar':'moni');
-    col=sk==='omar'?'hema_omar':sk==='ruwaq'?'hema_ruwaq':'hema_moni';
+    const map={writing:'hema_writing',analysis:'hema_analysis',design:'hema_design',dev:'hema_dev',growth:'hema_growth',moni:'hema_writing',ruwaq:'hema_writing',omar:'hema_design',generate:'hema_design'};
+    const sk=card.skill||(col==='omar'?'design':'writing');
+    col=map[sk]||'hema_writing';
   }
   return col;
 }
@@ -415,7 +416,7 @@ async function renderHandoff(){
   const cols=HANDOFF.columns||[];
   el.innerHTML=cols.map(col=>{
     const list=cards.filter(c=>c.col===col.id);
-    const colCls='handoff-col'+(col.id==='cursor2'?' col-cursor2':col.id==='amer'?' col-amer':col.id==='hema_moni'?' col-hema-moni':col.id==='hema_ruwaq'?' col-hema-ruwaq':col.id==='hema_omar'?' col-hema-omar':'');
+    const colCls='handoff-col'+(col.id==='cursor2'?' col-cursor2':col.id==='amer'?' col-amer':String(col.id).startsWith('hema_')?' col-hema-moni':'');
     const body=list.map(hcardHTML).join('');
     return `<div class="${colCls}" data-col="${col.id}" style="border-top:4px solid ${col.color||'#054241'}"><h2><span>${col.title}<small>${col.subtitle||''}</small></span><span class="count">${list.length}</span></h2>${body}</div>`}).join('');
   wireHandoff(cards,cols);
@@ -431,7 +432,8 @@ function hcardHTML(c){
   const copyText=['التذكرة: '+(c.id||''),'المقال: '+(c.article||c.title||c.slug||''),'موجه لـ: '+(c.assignee||'—'),'المطلوب: '+(c.task||'')].join('\n');
   const cmd=c.task?`<pre class="hcopy" hidden>${esc(copyText)}</pre><button type="button" class="copybtn">نسخ للعضو</button>`:'';
   const step=c.step_ar?`<div class="hrow"><span class="hlbl">الخطوة</span><span class="hval">${esc(c.step_ar)}</span></div>`:'';
-  const skill=c.skill?`<div class="hrow"><span class="hlbl">السكيل</span><span class="hval">${esc(c.skill==='moni'?'Moni':c.skill==='omar'?'عمر':c.skill==='amer'?'عامر':c.skill||'')}</span></div>`:'';
+  const SKN={writing:'سكيل الكتابة',analysis:'سكيل التحليل',design:'سكيل التصميم',dev:'سكيل البرمجة',growth:'سكيل النمو',moni:'سكيل الكتابة',ruwaq:'سكيل الكتابة',omar:'سكيل التصميم',generate:'سكيل التصميم',amer:'عامر'};
+  const skill=c.skill?`<div class="hrow"><span class="hlbl">السكيل</span><span class="hval">${esc(SKN[c.skill]||c.skill)}</span></div>`:'';
   const task=c.task?`<div class="hrow"><span class="hlbl">المطلوب</span><span class="hval task">${esc(c.task)}</span></div>`:'';
   const pageUrl=handoffPageUrl(c);
   const link=pageUrl?`<a class="rlink" href="${esc(pageUrl)}" target="_blank" rel="noopener">معاينة الصفحة ↗</a>`:'';

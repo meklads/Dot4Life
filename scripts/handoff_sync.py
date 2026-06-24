@@ -30,9 +30,11 @@ STAGE_LABEL = {
 
 ASSIGNEE = {
     "ghost": "جوست",
-    "hema_moni": "Hema · سكيل Moni",
-    "hema_ruwaq": "Hema · سكيل رواق",
-    "hema_omar": "Hema · سكيل عمر",
+    "hema_writing": "Hema · سكيل الكتابة",
+    "hema_analysis": "Hema · سكيل التحليل",
+    "hema_design": "Hema · سكيل التصميم",
+    "hema_dev": "Hema · سكيل البرمجة",
+    "hema_growth": "Hema · سكيل النمو",
     "amer": "عامر",
     "cursor": "Cursor",
     "cursor2": "كورسر ٢",
@@ -41,21 +43,25 @@ ASSIGNEE = {
 }
 
 SKILL_LABELS = {
-    "omar": "Hema · سكيل عمر",
-    "moni": "Hema · سكيل Moni",
-    "ruwaq": "Hema · سكيل رواق",
-    "generate": "Hema · توليد صور",
+    "writing": "Hema · سكيل الكتابة",
+    "analysis": "Hema · سكيل التحليل",
+    "design": "Hema · سكيل التصميم",
+    "dev": "Hema · سكيل البرمجة",
+    "growth": "Hema · سكيل النمو",
 }
 
 HEMA_SKILL_TO_COL = {
-    "omar": "hema_omar",
-    "moni": "hema_moni",
-    "ruwaq": "hema_ruwaq",
+    "writing": "hema_writing",
+    "analysis": "hema_analysis",
+    "design": "hema_design",
+    "dev": "hema_dev",
+    "growth": "hema_growth",
+    "moni": "hema_writing", "ruwaq": "hema_writing", "omar": "hema_design", "generate": "hema_design",
 }
 HEMA_COL_TO_SKILL = {v: k for k, v in HEMA_SKILL_TO_COL.items()}
 HEMA_COLS = frozenset(HEMA_SKILL_TO_COL.values())
 
-SKILL_ALIASES = {"omar", "moni", "ruwaq", "generate", *HEMA_COLS, "hema"}
+SKILL_ALIASES = {"writing", "analysis", "design", "dev", "growth", "omar", "moni", "ruwaq", "generate", *HEMA_COLS, "hema"}
 
 AGENT = "Hema"
 AMER = "عامر"
@@ -163,10 +169,15 @@ AMER_REJECT_TASKS = {
 }
 
 GHOST_POOL = {
-    "omar": "Hema · سكيل عمر",
-    "generate": "Hema · توليد صور",
-    "hema": "Hema · سكيل Moni",
-    "moni": "Hema · سكيل Moni",
+    "writing": "Hema · سكيل الكتابة",
+    "analysis": "Hema · سكيل التحليل",
+    "design": "Hema · سكيل التصميم",
+    "dev": "Hema · سكيل البرمجة",
+    "growth": "Hema · سكيل النمو",
+    "omar": "Hema · سكيل التصميم",
+    "generate": "Hema · سكيل التصميم",
+    "hema": "Hema · سكيل الكتابة",
+    "moni": "Hema · سكيل الكتابة",
     "cursor": "Cursor · بناء",
     "wait_images": "كورسر ٢ · بانتظار صور",
 }
@@ -177,7 +188,7 @@ def is_hema_col(col: str) -> bool:
 
 
 def hema_col_for(skill: str) -> str:
-    return HEMA_SKILL_TO_COL.get(skill, "hema_moni")
+    return HEMA_SKILL_TO_COL.get(skill, "hema_writing")
 
 
 def hema_skill_from_col(col: str, card: dict) -> str:
