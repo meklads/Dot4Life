@@ -85,21 +85,24 @@
   .handoff-head{margin-bottom:1rem}
   .handoff-head h1{font-size:1.2rem;font-weight:800;color:var(--green)}
   .handoff-head .sub{font-size:.74rem;color:var(--muted);font-weight:700;line-height:1.6}
-  .handoff-board{display:flex;gap:12px;overflow-x:auto;padding-bottom:1rem;align-items:flex-start}
-  .handoff-col{flex:0 0 min(260px,78vw);background:#e4ebe8;border-radius:14px;padding:.6rem;min-height:200px;max-height:72vh;overflow-y:auto}
-  .handoff-col.col-cursor2{flex:0 0 min(240px,72vw);background:#e8eaf6}
-  .handoff-col.col-amer{flex:0 0 min(260px,78vw);background:#faf3e8;border-left:4px solid #c17817}
-  .handoff-col.col-hema{flex:0 0 min(250px,76vw);background:#eafaf0;border-left:4px solid #1f7a4d}
+  .handoff-board{display:flex;gap:14px;overflow-x:auto;padding-bottom:1rem;align-items:flex-start;-webkit-overflow-scrolling:touch;scroll-padding-inline:1rem}
+  .handoff-col{flex:0 0 360px;width:360px;min-width:360px;background:#e4ebe8;border-radius:14px;padding:.65rem .7rem;min-height:200px;max-height:72vh;overflow-y:auto;overflow-x:hidden}
+  .handoff-col.col-cursor2{flex:0 0 320px;width:320px;min-width:320px;background:#e8eaf6}
+  .handoff-col.col-amer{flex:0 0 360px;width:360px;min-width:360px;background:#faf3e8;border-left:4px solid #c17817}
+  .handoff-col.col-hema{flex:0 0 380px;width:380px;min-width:380px;background:#eafaf0;border-left:4px solid #1f7a4d}
   .handoff-col h2{font-size:.82rem;font-weight:800;padding:.35rem .45rem .5rem;display:flex;justify-content:space-between;align-items:flex-start;gap:6px;line-height:1.4}
   .handoff-col h2 small{display:block;font-size:.65rem;font-weight:700;color:var(--muted);margin-top:2px}
   .handoff-col h2 .count{background:#cfdbd6;border-radius:999px;padding:0 .45rem;font-size:.7rem;flex-shrink:0}
   .handoff-col.drag{outline:2px dashed var(--teal);outline-offset:-3px}
-  .hcard{background:#fff;border:1px solid var(--line);border-left:4px solid var(--green);border-radius:11px;padding:.65rem .75rem;margin-bottom:.5rem;cursor:grab;box-shadow:0 1px 2px rgba(5,66,65,.05)}
+  .hcard{background:#fff;border:1px solid var(--line);border-left:4px solid var(--green);border-radius:11px;padding:.75rem .85rem;margin-bottom:.55rem;cursor:grab;box-shadow:0 1px 2px rgba(5,66,65,.05);min-width:0;max-width:100%}
   .hcard .hid{font-size:.68rem;font-weight:800;color:var(--muted)}
-  .hcard .hrow{display:flex;gap:8px;font-size:.76rem;line-height:1.5;margin-bottom:.4rem;align-items:flex-start}
-  .hcard .hlbl{font-weight:800;color:var(--muted);flex:0 0 4.2rem}
-  .hcard .hval{flex:1;font-weight:700;color:var(--green)}
-  .hcard .hval.task{font-weight:600}
+  .hcard .hrow{display:flex;gap:8px;font-size:.76rem;line-height:1.5;margin-bottom:.4rem;align-items:flex-start;min-width:0}
+  .hcard .hlbl{font-weight:800;color:var(--muted);flex:0 0 4.8rem;min-width:4.8rem}
+  .hcard .hval{flex:1;min-width:0;font-weight:700;color:var(--green);overflow-wrap:break-word;word-break:break-word}
+  .hcard .hval.task{font-weight:600;font-size:.75rem;line-height:1.65;white-space:pre-wrap}
+  .hcard .hrow--task{flex-direction:column;gap:.3rem;background:var(--cream);border:1px solid var(--line);border-radius:9px;padding:.55rem .6rem;margin-bottom:.5rem}
+  .hcard .hrow--task .hlbl{flex:none;min-width:0;font-size:.7rem}
+  .hcard .hrow--task .hval.task{color:#2d4a47}
   .hcard .hcmd{margin-top:.45rem}
   .hcard .hcmd summary{font-size:.72rem;font-weight:700;cursor:pointer;color:var(--orange)}
   .hcard .hcmd pre{font-size:.68rem;white-space:pre-wrap;background:var(--cream);border:1px solid var(--line);border-radius:8px;padding:.45rem .5rem;margin-top:.35rem;line-height:1.5}
@@ -154,6 +157,10 @@
   .section-card .sc-list a:hover{border-color:var(--teal);color:#0a6b63}
   .section-card .sc-list .sc-date{font-size:.62rem;color:var(--muted);font-weight:700;flex-shrink:0}
   .section-card .sc-empty{font-size:.74rem;color:var(--muted);font-weight:700;padding:.4rem 0}
+  @media(max-width:720px){
+    .handoff-col,.handoff-col.col-amer,.handoff-col.col-hema{flex:0 0 min(300px,88vw);width:min(300px,88vw);min-width:min(300px,88vw)}
+    .handoff-col.col-cursor2{flex:0 0 min(280px,85vw);width:min(280px,85vw);min-width:min(280px,85vw)}
+  }
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1436107577087160" crossorigin="anonymous"></script></head>
 <body>
@@ -183,7 +190,7 @@
     <div id="view-handoff" class="view-panel">
       <div class="handoff-head">
         <h1>لوحة التسليم — المرحلة 1</h1>
-        <div class="sub">عامر = مدير تحريري. Hema = 5 سكيلات. Cursor = بناء. كورسر ٢ = LIVE منتظر صور.</div>
+        <div class="sub">عامر = مدير تحريري. Hema = 5 سكيلات. Cursor = بناء. كورسر ٢ = LIVE منتظر صور. · اسحب أفقياً ← لرؤية كل الأعمدة</div>
       </div>
       <div class="handoff-tabs">
         <button type="button" class="on" data-handoff-tab="board">🔀 التسليم</button>
@@ -488,7 +495,7 @@ function hcardHTML(c){
   const step=c.step_ar?`<div class="hrow"><span class="hlbl">الخطوة</span><span class="hval">${esc(c.step_ar)}</span></div>`:'';
   const SKN={writing:'سكيل الكتابة',analysis:'سكيل التحليل',design:'سكيل التصميم',dev:'سكيل البرمجة',growth:'سكيل النمو',moni:'سكيل الكتابة',ruwaq:'سكيل الكتابة',omar:'سكيل التصميم',generate:'سكيل التصميم',amer:'عامر'};
   const skill=c.skill?`<div class="hrow"><span class="hlbl">السكيل</span><span class="hval">${esc(SKN[c.skill]||c.skill)}</span></div>`:'';
-  const task=c.task?`<div class="hrow"><span class="hlbl">المطلوب</span><span class="hval task">${esc(c.task)}</span></div>`:'';
+  const task=c.task?`<div class="hrow hrow--task"><span class="hlbl">المطلوب</span><span class="hval task">${esc(c.task)}</span></div>`:'';
   const pageUrl=handoffPageUrl(c);
   const link=pageUrl?`<a class="rlink" href="${esc(pageUrl)}" target="_blank" rel="noopener">معاينة الصفحة ↗</a>`:'';
   const ts=c.ts?`<div class="hts" style="margin-top:.5rem;font-size:.7rem;color:#6C757D;font-weight:700">🕐 ${esc(c.ts)}</div>`:'';
