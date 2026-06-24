@@ -323,11 +323,7 @@ function syncHandoffOverrides(handoff){
 function resolveHandoffCol(card,ov){
   if(card.col==='done'||card.stage==='done')return 'done';
   let col=ov[card.id]||card.col;
-  if(col==='hema'||col==='omar'){
-    const map={writing:'hema_writing',analysis:'hema_analysis',design:'hema_design',dev:'hema_dev',growth:'hema_growth',moni:'hema_writing',ruwaq:'hema_writing',omar:'hema_design',generate:'hema_design'};
-    const sk=card.skill||(col==='omar'?'design':'writing');
-    col=map[sk]||'hema_writing';
-  }
+  if(col==='omar'||String(col).startsWith('hema_'))col='hema';
   return col;
 }
 function handoffToast(msg){const t=$('#handoffToast');if(!t)return;t.textContent=msg;t.style.display='block';clearTimeout(handoffToast._t);handoffToast._t=setTimeout(()=>{t.style.display='none'},4200)}
