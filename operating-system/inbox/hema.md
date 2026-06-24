@@ -1,11 +1,48 @@
-# 📬 Hema — أوامر السكيلات · 2026-06-24 13:59
+# 📬 Hema — أوامر السكيلات · 2026-06-24
+
+> **آخر تحديث:** 2026-06-24 — **أمر تنفيذ من جوست (عبر كورسر)**
+
+---
+
+## 🟢 GO — نفّذ الآن (أمر جوست الصريح)
+
+**لا تنتظري إشارة إضافية. ابدئي فوراً بالترتيب:**
+
+### 1️⃣ بوابة عامر — `digital-minimalism-families` (ع+en) — **الأول**
+```
+المطلوب:
+- عرّب الصفحة العربية بالكامل (لا متن إنجليزي في /blog/digital-minimalism-families.html)
+- الإحصاءات 100%·78%·30-50% → مصدر https عميق أو صياغة وصفية (ع+en)
+- املأ أو احذف الجذع digital-minimalism-families-ar.html إن كان stub
+- draft-gate.py → سلّمي لعامر → انقلي التذكرة «انتهى من عندي»
+```
+> **هذه مهمة كتابة/مراجعة — ليست لكورسر.** كورسر أصلح الهيرو والسايدبار — منتهي.
+
+### 2️⃣ بعد اعتماد عامر على (1) — DEEPEN T-03 ثم T-04
+```
+- T-03: 15 صفحة من hema-deepen-t03-blog-triage-15.txt
+- T-04: 7 صفحات من hema-deepen-t04-thin-7.txt
+- بوابة: scripts/draft-gate.py قبل التسليم
+- انقلي كل تذكرة إلى «انتهى من عندي» عند الانتهاء
+```
+
+### 3️⃣ سكيل التحليل — AN-00 (بعد إغلاق 1 أو بالتوازي إن لم يعطّل عامر)
+```
+AN-00 → operating-system/reports/hema-analysis-traffic-baseline-2026-06-24.md
+ثم B3-01Q…07Q إن وُجد وقت
+```
+
+### ⏸️ ما زال مؤجّلاً (بقرار جوست — لا تهرجي ولا تتوقفي عن 1 و2)
+| المهمة | الحالة |
+|--------|--------|
+| سكيل النمو GR-00 / B3-XXL | مؤجّل حتى يقل DEEPEN — **ليس معطّلاً بالخطأ** |
+| Batch 04+ | ممنوع — QUALITY-FIRST |
+| إصلاحات بصرية HTML | **كورسر** — منتهية |
+
+---
 
 - **اللوحة:** `system/board.html` · **القانون:** `operating-system/HEMA-CHARTER.md`
-- **الحالة الآن:** `operating-system/team-board.md` (تم · جاري · لسه)
-
-## DEEPEN · **155** صفحة قصيرة — أولوية قصوى
-- طابور: `hema-deepen-priority.md`
-- بوابة: `scripts/draft-gate.py` قبل التسليم لعامر
+- **طابور DEEPEN:** `operating-system/reports/hema-deepen-priority.md`
 
 ## ⛔ تجميد مواد جديدة (جوست)
 - **لا Batch 04+** حتى معالجة DEEPEN · `QUALITY-FIRST-POLICY.md`
@@ -14,59 +51,29 @@
 
 ---
 
-## ⛔ تجميد مواد جديدة (جوست · 2026-06-24)
+## 🔍 سكيل التحليل — تفاصيل (بعد GO أعلاه)
 
-**بعد انتهاء Batch 03:** لا تذاكر كتابة لمقالات جديدة — **DEEPEN فقط** للـ155 صفحة القصيرة.
-المرجع: `operating-system/QUALITY-FIRST-POLICY.md` · الطابور: `hema-deepen-priority.md`
-
-## 🔍 سكيل التحليل — ابدأ هنا (الترتيب مهم)
-
-### AN-00 — تدقيق المنصة (أولاً)
+### AN-00 — تدقيق المنصة
 ```
 AN-00: سكيل التحليل — تدقيق GA4 G-3G1XPV4F0G + Google Search Console + خط أساس ترافيك 90 يوم.
 التقرير: operating-system/reports/hema-analysis-traffic-baseline-2026-06-24.md
 ثم انقل التذكرة إلى «انتهى من عندي».
 ```
 
-### B3-01Q … B3-07Q — SEO Brief لكل مقال (بعد AN-00)
+### B3-01Q … B3-07Q — SEO Brief (ثانوي — بعد AN-00)
 ```
-B3-01Q: SEO Brief — gulf-father-money-lessons — نية + كلمات + SERP + Title/Meta → batch-03-seo/B3-01-gulf-father-money-lessons.md
-B3-02Q: SEO Brief — government-vs-private-school-gulf
-B3-03Q: SEO Brief — digital-minimalism-families
-B3-04Q: SEO Brief — pregnancy-nutrition-first-trimester
-B3-05Q: SEO Brief — daily-islamic-habits-guide
-B3-06Q: SEO Brief — umrah-with-kids
-B3-07Q: SEO Brief — rent-vs-buy-gulf-family
-```
-> أرفق ملخصاً في تذكرة **B3-XXN** قبل أن يبدأ سكيل الكتابة.
-
----
-
-## 📣 سكيل النمو — بعد SEO Brief
-
-### GR-00 — خريطة العناقيد (يمكن بالتوازي مع Q)
-```
-GR-00: خريطة عناقيد 7 أقسام Batch 03 → operating-system/reports/batch-03-growth/site-clusters-7sections.md
-```
-
-### B3-01L … B3-07L — ربط داخلي (بعد B3-XXQ)
-```
-B3-01L: 5 روابط صادرة + 3 واردة — gulf-father-money-lessons → batch-03-growth/B3-01-gulf-father-money-lessons.md
-B3-02L: government-vs-private-school-gulf
-B3-03L: digital-minimalism-families
-B3-04L: pregnancy-nutrition-first-trimester
-B3-05L: daily-islamic-habits-guide
-B3-06L: umrah-with-kids
-B3-07L: rent-vs-buy-gulf-family
+B3-01Q: SEO Brief — gulf-father-money-lessons
+… (انظري اللوحة)
 ```
 
 ---
 
-## ✍️ سكيل الكتابة — بعد B3-XXQ
-- طابور DEEPEN: `hema-deepen-priority.md` · بوابة `scripts/draft-gate.py`
-- **B3-01N … B3-07N** على عمود سكيل الكتابة — راجع `WRITING-LAW.md` (≥1600w)
+## 📣 سكيل النمو — مؤجّل (لا تبدئي حتى أمر لاحق)
+
+### GR-00 / B3-01L…07L
+مؤجّل — ركّزي على 1 و2 أعلاه.
 
 ---
 
 ## 🎨 سكيل التصميم — ✅ منجز
-- برومبتات B3-01P…07P جاهزة في `operating-system/reports/batch-03-prompts.md` — **عامر يولّد الآن**
+- برومبتات B3 في `batch-03-prompts.md` — عامر أنهى الصور
