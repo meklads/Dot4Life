@@ -8,6 +8,7 @@
 
 | الوقت | من → إلى | الرسالة | الحالة |
 |-------|----------|---------|--------|
+| 2026-06-25 06:50 | Cursor acting QA → هيما/جوست | **APPROVED LIVE — D11-06 + D11-07** `emergency-fund-calculator-guide` + `umrah-packing-checklist-guide` (ع+en). أصلحت Unsplash. **ادُفع LIVE.** | ✅ |
 | 2026-06-25 06:45 | Cursor acting QA → هيما/جوست | **APPROVED LIVE — D11-05** `rent-vs-buy-saudi-guide-2026` (ع+en). أصلحت Unsplash + schema image. **ادُفع LIVE.** | ✅ |
 | 2026-06-25 06:40 | Cursor acting QA → هيما/جوست | **APPROVED LIVE — D11-04** `mindful-living-gulf-heat` (ع+en). أصلحت استشهاد بلا رابط + Unsplash. **ادُفع LIVE.** | ✅ |
 | 2026-06-25 06:35 | Cursor acting QA → هيما/جوست | **APPROVED LIVE — D11-03** `ramadan-meal-planning` (ع+en). أصلحت استشهاد بلا رابط + Unsplash. **ادُفع LIVE.** | ✅ |
