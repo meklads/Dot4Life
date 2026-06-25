@@ -257,6 +257,8 @@ def task_for(card: dict) -> str:
     if card.get("kind") in ("batch2", "batch3", "analysis", "growth") and card.get("task"):
         return card["task"]
     if col == "done":
+        if card.get("status") == "archived_policy_freeze":
+            return "مؤرشف — لا توجد مهمة نشطة الآن"
         return "منتهي — على الموقع"
     if col == "member_done":
         if card.get("kind") == "review" or cid.startswith("A-"):

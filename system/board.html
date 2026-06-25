@@ -482,7 +482,7 @@ async function renderHandoff(){
   handoffInit=true;
   const ov=syncHandoffOverrides(HANDOFF);
   const cards=(HANDOFF.cards||[]).map(c=>({...c,col:resolveHandoffCol(c,ov)}));
-  const cols=HANDOFF.columns||[];
+  const cols=(HANDOFF.columns||[]).filter(col=>col.id!=='done');
   el.innerHTML=cols.map(col=>{
     const list=cards.filter(c=>c.col===col.id);
     const colCls='handoff-col'+(col.id==='cursor2'?' col-cursor2':col.id==='amer'?' col-amer':String(col.id).startsWith('hema_')?' col-hema':'');
