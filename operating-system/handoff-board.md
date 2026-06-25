@@ -1,7 +1,7 @@
 # لوحة التسليم — المرحلة 1
-> 🔧 D16 نشطة: 25 صفحة إصلاح/DEEPEN موجودة فقط. لا مواد جديدة. هيما يكتب، Cursor acting QA يغطي عامر، Cursor يبني ويختار الصور.
+> 🔧 D17-FIX نشطة: 30 صفحة إصلاح/DEEPEN موجودة فقط. لا مواد جديدة. هيما يكتب مع راحة 5 دقائق بعد كل 5، Cursor acting QA يغطي عامر، Cursor يبني ويختار الصور.
 > الواجهة: `system/board.html` → التسليم (Trello)
-> آخر مزامنة: 2026-06-25
+> آخر مزامنة: 2026-06-26
 
 ---
 
@@ -17,31 +17,36 @@
 
 | التذكرة | المقال | موجه لـ | المطلوب |
 |---------|--------|---------|----------|
-| D16-01A | QA D16 — family time management | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D16-02A | QA D16 — family time management | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D16-03A | QA D16 — calorie calculator saudi | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D16-04A | QA D16 — ramadan calorie calculator | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D16-05A | QA D16 — fitness for women saudi | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D16-06A | QA D16 — body fat vs weight guide ar | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D16-07A | QA D16 — peaceful road trip kids guide | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D16-08A | QA D16 — end of service saudi | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D16-09A | QA D16 — saving for education gulf | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D16-10A | QA D16 — rent vs buy gulf family | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D16-11A | QA D16 — ashura family traditions gulf | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D16-12A | QA D16 — riyadh rental yield | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D16-13A | QA D16 — investment basics beginners | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D16-14A | QA D16 — pregnancy nutrition first trimester | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D16-15A | QA D16 — government vs private school gulf | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D16-16A | QA D16 — jeddah mortgage calculator | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D16-17A | QA D16 — hydration guide | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D16-18A | QA D16 — pregnancy and umrah guide | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D16-19A | QA D16 — umrah with kids guide | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D16-20A | QA D16 — daily islamic habits guide | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D16-21A | QA D16 — oman property roi | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D16-22A | QA D16 — medina hotels near masjid nabawi | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D16-23A | QA D16 — family nutrition on budget | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D16-24A | QA D16 — gcc family budget 2025 | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D16-25A | QA D16 — saving vs investing gulf family | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D17-01A | QA D17-FIX — saudi tourism | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D17-02A | QA D17-FIX — managing screen time children | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D17-03A | QA D17-FIX — mecca medina | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D17-04A | QA D17-FIX — teaching children allah names | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D17-05A | QA D17-FIX — preconception checkups | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D17-06A | QA D17-FIX — hijri new year children | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D17-07A | QA D17-FIX — end of service benefits expats | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D17-08A | QA D17-FIX — umrah budget guide families | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D17-09A | QA D17-FIX — hotel near haram vs budget umrah | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D17-10A | QA D17-FIX — walking vs running comparison | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D17-11A | QA D17-FIX — house affordability single income guide | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D17-12A | QA D17-FIX — notification cost productivity | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D17-13A | QA D17-FIX — children education savings guide | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D17-14A | QA D17-FIX — ramadan meal planning | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D17-15A | QA D17-FIX — rental property vs reits comparison | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D17-16A | QA D17-FIX — visceral fat gulf | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D17-17A | QA D17-FIX — islamic inheritance basics | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D17-18A | QA D17-FIX — rent vs buy comparison guide | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D17-19A | QA D17-FIX — pistachios vs almonds comparison | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D17-20A | QA D17-FIX — stress management working parents | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D17-21A | QA D17-FIX — managing healthcare costs families | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D17-22A | QA D17-FIX — choosing right school child gulf | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D17-23A | QA D17-FIX — life insurance gulf families | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D17-24A | QA D17-FIX — preparing for pregnancy guide | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D17-25A | QA D17-FIX — family budget plan | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D17-26A | QA D17-FIX — hotel vs apartment family vacation guide | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D17-27A | QA D17-FIX — natural birth vs c section comparison | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D17-28A | QA D17-FIX — saudi mortgage guide 2025 | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D17-29A | QA D17-FIX — zakat calculator modern investments guide | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D17-30A | QA D17-FIX — expat vs national finance | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
 
 ---
 
@@ -49,31 +54,36 @@
 
 | التذكرة | المقال | موجه لـ | المطلوب |
 |---------|--------|---------|----------|
-| D16-01C | TECH_BUILD D16 — family time management | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D16-02C | TECH_BUILD D16 — family time management | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D16-03C | TECH_BUILD D16 — calorie calculator saudi | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D16-04C | TECH_BUILD D16 — ramadan calorie calculator | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D16-05C | TECH_BUILD D16 — fitness for women saudi | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D16-06C | TECH_BUILD D16 — body fat vs weight guide ar | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D16-07C | TECH_BUILD D16 — peaceful road trip kids guide | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D16-08C | TECH_BUILD D16 — end of service saudi | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D16-09C | TECH_BUILD D16 — saving for education gulf | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D16-10C | TECH_BUILD D16 — rent vs buy gulf family | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D16-11C | TECH_BUILD D16 — ashura family traditions gulf | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D16-12C | TECH_BUILD D16 — riyadh rental yield | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D16-13C | TECH_BUILD D16 — investment basics beginners | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D16-14C | TECH_BUILD D16 — pregnancy nutrition first trimester | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D16-15C | TECH_BUILD D16 — government vs private school gulf | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D16-16C | TECH_BUILD D16 — jeddah mortgage calculator | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D16-17C | TECH_BUILD D16 — hydration guide | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D16-18C | TECH_BUILD D16 — pregnancy and umrah guide | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D16-19C | TECH_BUILD D16 — umrah with kids guide | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D16-20C | TECH_BUILD D16 — daily islamic habits guide | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D16-21C | TECH_BUILD D16 — oman property roi | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D16-22C | TECH_BUILD D16 — medina hotels near masjid nabawi | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D16-23C | TECH_BUILD D16 — family nutrition on budget | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D16-24C | TECH_BUILD D16 — gcc family budget 2025 | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D16-25C | TECH_BUILD D16 — saving vs investing gulf family | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D17-01C | TECH_BUILD D17-FIX — saudi tourism | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D17-02C | TECH_BUILD D17-FIX — managing screen time children | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D17-03C | TECH_BUILD D17-FIX — mecca medina | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D17-04C | TECH_BUILD D17-FIX — teaching children allah names | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D17-05C | TECH_BUILD D17-FIX — preconception checkups | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D17-06C | TECH_BUILD D17-FIX — hijri new year children | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D17-07C | TECH_BUILD D17-FIX — end of service benefits expats | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D17-08C | TECH_BUILD D17-FIX — umrah budget guide families | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D17-09C | TECH_BUILD D17-FIX — hotel near haram vs budget umrah | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D17-10C | TECH_BUILD D17-FIX — walking vs running comparison | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D17-11C | TECH_BUILD D17-FIX — house affordability single income guide | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D17-12C | TECH_BUILD D17-FIX — notification cost productivity | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D17-13C | TECH_BUILD D17-FIX — children education savings guide | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D17-14C | TECH_BUILD D17-FIX — ramadan meal planning | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D17-15C | TECH_BUILD D17-FIX — rental property vs reits comparison | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D17-16C | TECH_BUILD D17-FIX — visceral fat gulf | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D17-17C | TECH_BUILD D17-FIX — islamic inheritance basics | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D17-18C | TECH_BUILD D17-FIX — rent vs buy comparison guide | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D17-19C | TECH_BUILD D17-FIX — pistachios vs almonds comparison | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D17-20C | TECH_BUILD D17-FIX — stress management working parents | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D17-21C | TECH_BUILD D17-FIX — managing healthcare costs families | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D17-22C | TECH_BUILD D17-FIX — choosing right school child gulf | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D17-23C | TECH_BUILD D17-FIX — life insurance gulf families | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D17-24C | TECH_BUILD D17-FIX — preparing for pregnancy guide | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D17-25C | TECH_BUILD D17-FIX — family budget plan | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D17-26C | TECH_BUILD D17-FIX — hotel vs apartment family vacation guide | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D17-27C | TECH_BUILD D17-FIX — natural birth vs c section comparison | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D17-28C | TECH_BUILD D17-FIX — saudi mortgage guide 2025 | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D17-29C | TECH_BUILD D17-FIX — zakat calculator modern investments guide | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D17-30C | TECH_BUILD D17-FIX — expat vs national finance | Cursor | بناء ونشر — ثم «انتهى من عندي» |
 
 ---
 
@@ -89,31 +99,36 @@
 
 | التذكرة | المقال | موجه لـ | المطلوب |
 |---------|--------|---------|----------|
-| D16-01N | DEEPEN D16 — family time management | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D16-02N | DEEPEN D16 — family time management | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D16-03N | DEEPEN D16 — calorie calculator saudi | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D16-04N | DEEPEN D16 — ramadan calorie calculator | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D16-05N | DEEPEN D16 — fitness for women saudi | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D16-06N | DEEPEN D16 — body fat vs weight guide ar | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D16-07N | DEEPEN D16 — peaceful road trip kids guide | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D16-08N | DEEPEN D16 — end of service saudi | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D16-09N | DEEPEN D16 — saving for education gulf | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D16-10N | DEEPEN D16 — rent vs buy gulf family | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D16-11N | DEEPEN D16 — ashura family traditions gulf | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D16-12N | DEEPEN D16 — riyadh rental yield | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D16-13N | DEEPEN D16 — investment basics beginners | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D16-14N | DEEPEN D16 — pregnancy nutrition first trimester | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D16-15N | DEEPEN D16 — government vs private school gulf | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D16-16N | DEEPEN D16 — jeddah mortgage calculator | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D16-17N | DEEPEN D16 — hydration guide | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D16-18N | DEEPEN D16 — pregnancy and umrah guide | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D16-19N | DEEPEN D16 — umrah with kids guide | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D16-20N | DEEPEN D16 — daily islamic habits guide | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D16-21N | DEEPEN D16 — oman property roi | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D16-22N | DEEPEN D16 — medina hotels near masjid nabawi | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D16-23N | DEEPEN D16 — family nutrition on budget | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D16-24N | DEEPEN D16 — gcc family budget 2025 | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D16-25N | DEEPEN D16 — saving vs investing gulf family | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D17-01N | DEEPEN D17-FIX — saudi tourism | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D17-02N | DEEPEN D17-FIX — managing screen time children | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D17-03N | DEEPEN D17-FIX — mecca medina | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D17-04N | DEEPEN D17-FIX — teaching children allah names | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D17-05N | DEEPEN D17-FIX — preconception checkups | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D17-06N | DEEPEN D17-FIX — hijri new year children | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D17-07N | DEEPEN D17-FIX — end of service benefits expats | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D17-08N | DEEPEN D17-FIX — umrah budget guide families | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D17-09N | DEEPEN D17-FIX — hotel near haram vs budget umrah | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D17-10N | DEEPEN D17-FIX — walking vs running comparison | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D17-11N | DEEPEN D17-FIX — house affordability single income guide | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D17-12N | DEEPEN D17-FIX — notification cost productivity | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D17-13N | DEEPEN D17-FIX — children education savings guide | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D17-14N | DEEPEN D17-FIX — ramadan meal planning | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D17-15N | DEEPEN D17-FIX — rental property vs reits comparison | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D17-16N | DEEPEN D17-FIX — visceral fat gulf | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D17-17N | DEEPEN D17-FIX — islamic inheritance basics | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D17-18N | DEEPEN D17-FIX — rent vs buy comparison guide | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D17-19N | DEEPEN D17-FIX — pistachios vs almonds comparison | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D17-20N | DEEPEN D17-FIX — stress management working parents | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D17-21N | DEEPEN D17-FIX — managing healthcare costs families | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D17-22N | DEEPEN D17-FIX — choosing right school child gulf | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D17-23N | DEEPEN D17-FIX — life insurance gulf families | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D17-24N | DEEPEN D17-FIX — preparing for pregnancy guide | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D17-25N | DEEPEN D17-FIX — family budget plan | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D17-26N | DEEPEN D17-FIX — hotel vs apartment family vacation guide | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D17-27N | DEEPEN D17-FIX — natural birth vs c section comparison | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D17-28N | DEEPEN D17-FIX — saudi mortgage guide 2025 | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D17-29N | DEEPEN D17-FIX — zakat calculator modern investments guide | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D17-30N | DEEPEN D17-FIX — expat vs national finance | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
 
 ---
 
@@ -496,6 +511,81 @@
 | D15-20N | DEEPEN D15 — daily adhkar family guide | 2026-06-25 16:35 |
 | D15-20A | QA D15 — daily adhkar family guide | — |
 | D15-20C | TECH_BUILD D15 — daily adhkar family guide | 2026-06-25 16:35 |
+| D16-01N | DEEPEN D16 — family time management | 2026-06-25 22:15 |
+| D16-01A | QA D16 — family time management | 2026-06-25 22:15 |
+| D16-01C | TECH_BUILD D16 — family time management | 2026-06-25 22:15 |
+| D16-02N | DEEPEN D16 — family time management | 2026-06-25 22:15 |
+| D16-02A | QA D16 — family time management | 2026-06-25 22:15 |
+| D16-02C | TECH_BUILD D16 — family time management | 2026-06-25 22:15 |
+| D16-03N | DEEPEN D16 — calorie calculator saudi | 2026-06-25 22:15 |
+| D16-03A | QA D16 — calorie calculator saudi | 2026-06-25 22:15 |
+| D16-03C | TECH_BUILD D16 — calorie calculator saudi | 2026-06-25 22:15 |
+| D16-04N | DEEPEN D16 — ramadan calorie calculator | 2026-06-25 22:15 |
+| D16-04A | QA D16 — ramadan calorie calculator | 2026-06-25 22:15 |
+| D16-04C | TECH_BUILD D16 — ramadan calorie calculator | 2026-06-25 22:15 |
+| D16-05N | DEEPEN D16 — fitness for women saudi | 2026-06-25 22:15 |
+| D16-05A | QA D16 — fitness for women saudi | 2026-06-25 22:15 |
+| D16-05C | TECH_BUILD D16 — fitness for women saudi | 2026-06-25 22:15 |
+| D16-06N | DEEPEN D16 — body fat vs weight guide ar | 2026-06-25 22:15 |
+| D16-06A | QA D16 — body fat vs weight guide ar | 2026-06-25 22:15 |
+| D16-06C | TECH_BUILD D16 — body fat vs weight guide ar | 2026-06-25 22:15 |
+| D16-07N | DEEPEN D16 — peaceful road trip kids guide | 2026-06-25 22:15 |
+| D16-07A | QA D16 — peaceful road trip kids guide | 2026-06-25 22:15 |
+| D16-07C | TECH_BUILD D16 — peaceful road trip kids guide | 2026-06-25 22:15 |
+| D16-08N | DEEPEN D16 — end of service saudi | 2026-06-25 22:15 |
+| D16-08A | QA D16 — end of service saudi | 2026-06-25 22:15 |
+| D16-08C | TECH_BUILD D16 — end of service saudi | 2026-06-25 22:15 |
+| D16-09N | DEEPEN D16 — saving for education gulf | 2026-06-25 22:15 |
+| D16-09A | QA D16 — saving for education gulf | 2026-06-25 22:15 |
+| D16-09C | TECH_BUILD D16 — saving for education gulf | 2026-06-25 22:15 |
+| D16-10N | DEEPEN D16 — rent vs buy gulf family | 2026-06-25 22:15 |
+| D16-10A | QA D16 — rent vs buy gulf family | 2026-06-25 22:15 |
+| D16-10C | TECH_BUILD D16 — rent vs buy gulf family | 2026-06-25 22:15 |
+| D16-11N | DEEPEN D16 — ashura family traditions gulf | 2026-06-25 22:15 |
+| D16-11A | QA D16 — ashura family traditions gulf | 2026-06-25 22:15 |
+| D16-11C | TECH_BUILD D16 — ashura family traditions gulf | 2026-06-25 22:15 |
+| D16-12N | DEEPEN D16 — riyadh rental yield | 2026-06-25 22:15 |
+| D16-12A | QA D16 — riyadh rental yield | 2026-06-25 22:15 |
+| D16-12C | TECH_BUILD D16 — riyadh rental yield | 2026-06-25 22:15 |
+| D16-13N | DEEPEN D16 — investment basics beginners | 2026-06-25 22:15 |
+| D16-13A | QA D16 — investment basics beginners | 2026-06-25 22:15 |
+| D16-13C | TECH_BUILD D16 — investment basics beginners | 2026-06-25 22:15 |
+| D16-14N | DEEPEN D16 — pregnancy nutrition first trimester | 2026-06-25 22:15 |
+| D16-14A | QA D16 — pregnancy nutrition first trimester | 2026-06-25 22:15 |
+| D16-14C | TECH_BUILD D16 — pregnancy nutrition first trimester | 2026-06-25 22:15 |
+| D16-15N | DEEPEN D16 — government vs private school gulf | 2026-06-25 22:15 |
+| D16-15A | QA D16 — government vs private school gulf | 2026-06-25 22:15 |
+| D16-15C | TECH_BUILD D16 — government vs private school gulf | 2026-06-25 22:15 |
+| D16-16N | DEEPEN D16 — jeddah mortgage calculator | 2026-06-25 22:15 |
+| D16-16A | QA D16 — jeddah mortgage calculator | 2026-06-25 22:15 |
+| D16-16C | TECH_BUILD D16 — jeddah mortgage calculator | 2026-06-25 22:15 |
+| D16-17N | DEEPEN D16 — hydration guide | 2026-06-25 22:15 |
+| D16-17A | QA D16 — hydration guide | 2026-06-25 22:15 |
+| D16-17C | TECH_BUILD D16 — hydration guide | 2026-06-25 22:15 |
+| D16-18N | DEEPEN D16 — pregnancy and umrah guide | 2026-06-25 22:15 |
+| D16-18A | QA D16 — pregnancy and umrah guide | 2026-06-25 22:15 |
+| D16-18C | TECH_BUILD D16 — pregnancy and umrah guide | 2026-06-25 22:15 |
+| D16-19N | DEEPEN D16 — umrah with kids guide | 2026-06-25 22:15 |
+| D16-19A | QA D16 — umrah with kids guide | 2026-06-25 22:15 |
+| D16-19C | TECH_BUILD D16 — umrah with kids guide | 2026-06-25 22:15 |
+| D16-20N | DEEPEN D16 — daily islamic habits guide | 2026-06-25 22:15 |
+| D16-20A | QA D16 — daily islamic habits guide | 2026-06-25 22:15 |
+| D16-20C | TECH_BUILD D16 — daily islamic habits guide | 2026-06-25 22:15 |
+| D16-21N | DEEPEN D16 — oman property roi | 2026-06-25 22:15 |
+| D16-21A | QA D16 — oman property roi | 2026-06-25 22:15 |
+| D16-21C | TECH_BUILD D16 — oman property roi | 2026-06-25 22:15 |
+| D16-22N | DEEPEN D16 — medina hotels near masjid nabawi | 2026-06-25 22:15 |
+| D16-22A | QA D16 — medina hotels near masjid nabawi | 2026-06-25 22:15 |
+| D16-22C | TECH_BUILD D16 — medina hotels near masjid nabawi | 2026-06-25 22:15 |
+| D16-23N | DEEPEN D16 — family nutrition on budget | 2026-06-25 22:15 |
+| D16-23A | QA D16 — family nutrition on budget | 2026-06-25 22:15 |
+| D16-23C | TECH_BUILD D16 — family nutrition on budget | 2026-06-25 22:15 |
+| D16-24N | DEEPEN D16 — gcc family budget 2025 | 2026-06-25 22:15 |
+| D16-24A | QA D16 — gcc family budget 2025 | 2026-06-25 22:15 |
+| D16-24C | TECH_BUILD D16 — gcc family budget 2025 | 2026-06-25 22:15 |
+| D16-25N | DEEPEN D16 — saving vs investing gulf family | 2026-06-25 22:15 |
+| D16-25A | QA D16 — saving vs investing gulf family | 2026-06-25 22:15 |
+| D16-25C | TECH_BUILD D16 — saving vs investing gulf family | 2026-06-25 22:15 |
 
 ---
 

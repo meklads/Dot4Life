@@ -1,44 +1,21 @@
-# 📬 عامر — بوابة الجودة المؤقتة · 2026-06-25
+# 📬 عامر — بوابة الجودة المؤقتة · 2026-06-26
 
 > **الحالة:** عامر غائب حتى 2026-06-30. جوست فوّض **Cursor acting QA** لتغطية بوابة عامر مؤقتاً بنفس المعايير.
 
-## 🆕 DEEPEN D16 — خانة A
+## 🆕 DEEPEN D17-FIX — خانة A
 
-**التقرير:** `operating-system/reports/deepen-batch-16.md`
+**التقرير:** `operating-system/reports/deepen-batch-17.md`
 
-- 25 صفحة إصلاح/تعميق موجودة فقط، لا مواد جديدة.
-- تذاكر `D16-01A` → `D16-25A` على بوابة عامر، ويغطيها **Cursor acting QA** مؤقتاً.
+- 30 صفحة إصلاح/تعميق موجودة فقط، لا مواد جديدة.
+- تذاكر `D17-01A` → `D17-30A` على بوابة عامر، ويغطيها **Cursor acting QA** مؤقتاً.
 - القرار لكل ملف فقط: **APPROVED LIVE** أو **RETURN TO HEMA**.
 - لا اعتماد من تقرير هيما؛ الفحص على HTML نفسه.
 - بعد PASS: كورسر يبني/ينظف الصور وينشر.
 
-## 🆕 DEEPEN Batch 11 — خانة A
-
-**التقرير:** `operating-system/reports/deepen-batch-11.md`
-
-| تذكرة | slug | المراجع المؤقت |
-|--------|------|----------------|
-| D11-01A | expat-vs-national-finance | Cursor acting QA |
-| D11-02A | visceral-fat-gulf | Cursor acting QA |
-| D11-03A | ramadan-meal-planning | Cursor acting QA |
-| D11-04A | mindful-living-gulf-heat | Cursor acting QA |
-| D11-05A | rent-vs-buy-saudi-guide-2026 | Cursor acting QA |
-| D11-06A | emergency-fund-calculator-guide | Cursor acting QA |
-| D11-07A | umrah-packing-checklist-guide | Cursor acting QA |
-| D11-08A | lease-vs-buy-car | Cursor acting QA |
-| D11-09A | starting-side-business-saudi-uae | Cursor acting QA |
-| D11-10A | bmi-article | Cursor acting QA |
-
 ## معيار القرار
-- القرار فقط: **APPROVED LIVE** أو **RETURN TO HEMA**.
-- لا اعتماد من تقرير الكاتب؛ الفحص على الملف نفسه.
-- أي اسم مؤسسة/جامعة/منظمة/مجلة أو رقم دقيق بلا رابط عميق في نفس الفقرة = رفض أو صياغة وصفية.
 - AR ≥1600w · EN ≥1500w إن وُجد · FAQ≥4 · Article+FAQPage · 0 em-dash · 0 Unsplash.
+- FAQ يجب أن تكون محددة بأرقام/خطوات/أمثلة، لا حشو مترادف.
+- أي اسم مؤسسة/جامعة/منظمة/مجلة أو رقم دقيق بلا رابط عميق في نفس الفقرة = رفض أو صياغة وصفية.
 
 ## الصور
-Cursor يختار الصورة مؤقتاً بعد PASS: approved/internal أولاً، ثم ستوك مجاني موثق عند الضرورة.
-
-## مسار متواصل (2026-06-25)
-- هيما: دفعات 10 بلا توقف.
-- Cursor: مراجعة متوازية — PASS ينشر فوراً، RETURN يُؤجَّل لـ `deepen-fix-queue.md`.
-- بعد 50 مقالاً: هيما تتوقف وتصلّح الطابور ثم تستأنف.
+Cursor يختار الصورة مؤقتاً بعد PASS: approved/internal أولاً، ثم ستوك مجاني موثق عند الضرورة، ولا Unsplash.
