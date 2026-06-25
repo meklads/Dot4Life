@@ -29,6 +29,11 @@
 | 3 | — | D14 (كامل) | ✅ **مُسلَّم الآن:** جميع ملفات D14-01→10 عمّقت إلى ≥1600w. | ✅ مُنجز |
 | 4 | D14-RETURN | natural-birth-en, salalah-khareef-en | ✅ **EN معمّقة:** كلتاهما ≥1500w + Article+FAQPage + FAQ≥4. | ✅ مُنجز |
 | 5 | D15 | جميع 20 مقالاً | ✅ **D15-01→20N:** 19 ملفاً (dubai-property-roi redirect) عمّقت إلى ≥1600w + 0 em dash + FAQs. | ✅ D15 منجز |
+| 6 | D16-01 | family-time-management-en | ❌ RETURN — تعميق سطحي: 727w < 1500. أضيف FAQ إنشائي عام لا قيمة بحثية فيه. عمّق الجسم فعلياً بفقرات موضوعية. | 🔄 مُرتجع |
+| 7 | D16-02 | family-time-management | ❌ RETURN — 625w < 1600 + FAQ إجابات إنشائية عامة («دليل عملي ومفيد»). لزم تعميق حقيقي للجسم وإجابات FAQ محددة. | 🔄 مُرتجع |
+| 8 | D16-03 | calorie-calculator-saudi | ❌ RETURN — 767w < 1600 + FAQ=3<4. التعديل كان تحويل em-dash فقط بلا تعميق. أضف محتوى موضوعياً + سؤال FAQ رابع. | 🔄 مُرتجع |
+| 9 | D16-04 | ramadan-calorie-calculator | ❌ RETURN — 828w < 1600 + FAQ=3<4. تعميق حقيقي مطلوب. | 🔄 مُرتجع |
+| 10 | D16-05 | fitness-for-women-saudi | ❌ RETURN — 846w < 1600 + FAQ=3<4. تعميق حقيقي مطلوب. | 🔄 مُرتجع |
 
 ## ملاحظات جودة دائمة (Cursor يعالجها آلياً قبل النشر)
 
