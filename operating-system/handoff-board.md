@@ -33,6 +33,26 @@
 | D11-08A | QA D11 — تأجير سيارة أم شراء بالتقسيط | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
 | D11-09A | QA D11 — بدء مشروع جانبي في السعودية والإمارات | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
 | D11-10A | QA D11 — مشكلة مؤشر كتلة الجسم والبديل | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D12-01A | QA D12 — مكافأة نهاية الخدمة للوافدين | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D12-02A | QA D12 — دليل ميزانية العمرة للعائلات | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D12-03A | QA D12 — مقارنة الإيجار والشراء | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D12-04A | QA D12 — تكلفة الإشعارات على الإنتاجية | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D12-05A | QA D12 — فندق قرب الحرم أم عمرة اقتصادية | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D12-06A | QA D12 — إدارة التوتر للآباء العاملين | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D12-07A | QA D12 — زكاة المحافظ الاستثمارية | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D12-08A | QA D12 — المشي مقابل الجري | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D12-09A | QA D12 — عقار إيجاري مقابل صناديق الريت | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D12-10A | QA D12 — أساسيات الميراث الإسلامي | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D13-01A | QA D13 — managing healthcare costs families | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D13-02A | QA D13 — natural birth vs c section comparison | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D13-03A | QA D13 — الفستق مقابل اللوز | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D13-04A | QA D13 — family friendly activities gulf cities | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D13-05A | QA D13 — salalah khareef | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D13-06A | QA D13 — children education savings guide | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D13-07A | QA D13 — zakat calculator modern investments guide | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D13-08A | QA D13 — التأمين على الحياة للعائلات | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D13-09A | QA D13 — preparing for pregnancy guide | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D13-10A | QA D13 — choosing right school child gulf | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
 
 ---
 
@@ -50,6 +70,26 @@
 | D11-08C | TECH_BUILD D11 — تأجير سيارة أم شراء بالتقسيط | Cursor | بناء ونشر — ثم «انتهى من عندي» |
 | D11-09C | TECH_BUILD D11 — بدء مشروع جانبي في السعودية والإمارات | Cursor | بناء ونشر — ثم «انتهى من عندي» |
 | D11-10C | TECH_BUILD D11 — مشكلة مؤشر كتلة الجسم والبديل | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D12-01C | TECH_BUILD D12 — مكافأة نهاية الخدمة للوافدين | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D12-02C | TECH_BUILD D12 — دليل ميزانية العمرة للعائلات | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D12-03C | TECH_BUILD D12 — مقارنة الإيجار والشراء | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D12-04C | TECH_BUILD D12 — تكلفة الإشعارات على الإنتاجية | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D12-05C | TECH_BUILD D12 — فندق قرب الحرم أم عمرة اقتصادية | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D12-06C | TECH_BUILD D12 — إدارة التوتر للآباء العاملين | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D12-07C | TECH_BUILD D12 — زكاة المحافظ الاستثمارية | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D12-08C | TECH_BUILD D12 — المشي مقابل الجري | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D12-09C | TECH_BUILD D12 — عقار إيجاري مقابل صناديق الريت | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D12-10C | TECH_BUILD D12 — أساسيات الميراث الإسلامي | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D13-01C | TECH_BUILD D13 — managing healthcare costs families | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D13-02C | TECH_BUILD D13 — natural birth vs c section comparison | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D13-03C | TECH_BUILD D13 — الفستق مقابل اللوز | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D13-04C | TECH_BUILD D13 — family friendly activities gulf cities | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D13-05C | TECH_BUILD D13 — salalah khareef | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D13-06C | TECH_BUILD D13 — children education savings guide | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D13-07C | TECH_BUILD D13 — zakat calculator modern investments guide | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D13-08C | TECH_BUILD D13 — التأمين على الحياة للعائلات | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D13-09C | TECH_BUILD D13 — preparing for pregnancy guide | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D13-10C | TECH_BUILD D13 — choosing right school child gulf | Cursor | بناء ونشر — ثم «انتهى من عندي» |
 
 ---
 
@@ -75,6 +115,26 @@
 | D11-08N | DEEPEN D11 — تأجير سيارة أم شراء بالتقسيط | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
 | D11-09N | DEEPEN D11 — بدء مشروع جانبي في السعودية والإمارات | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
 | D11-10N | DEEPEN D11 — مشكلة مؤشر كتلة الجسم والبديل | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D12-01N | DEEPEN D12 — مكافأة نهاية الخدمة للوافدين | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D12-02N | DEEPEN D12 — دليل ميزانية العمرة للعائلات | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D12-03N | DEEPEN D12 — مقارنة الإيجار والشراء | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D12-04N | DEEPEN D12 — تكلفة الإشعارات على الإنتاجية | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D12-05N | DEEPEN D12 — فندق قرب الحرم أم عمرة اقتصادية | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D12-06N | DEEPEN D12 — إدارة التوتر للآباء العاملين | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D12-07N | DEEPEN D12 — زكاة المحافظ الاستثمارية | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D12-08N | DEEPEN D12 — المشي مقابل الجري | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D12-09N | DEEPEN D12 — عقار إيجاري مقابل صناديق الريت | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D12-10N | DEEPEN D12 — أساسيات الميراث الإسلامي | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D13-01N | DEEPEN D13 — managing healthcare costs families | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D13-02N | DEEPEN D13 — natural birth vs c section comparison | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D13-03N | DEEPEN D13 — الفستق مقابل اللوز | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D13-04N | DEEPEN D13 — family friendly activities gulf cities | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D13-05N | DEEPEN D13 — salalah khareef | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D13-06N | DEEPEN D13 — children education savings guide | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D13-07N | DEEPEN D13 — zakat calculator modern investments guide | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D13-08N | DEEPEN D13 — التأمين على الحياة للعائلات | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D13-09N | DEEPEN D13 — preparing for pregnancy guide | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D13-10N | DEEPEN D13 — choosing right school child gulf | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
 
 ---
 
