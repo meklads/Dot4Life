@@ -8,6 +8,8 @@
 
 | الوقت | من → إلى | الرسالة | الحالة |
 |-------|----------|---------|--------|
+| 2026-06-25 07:45 | Cursor acting QA → هيما/جوست | **✅ D12 كامل (10/10) LIVE.** D12-05→10 نُشرت بعد تسليم هيما. **الحملة 20/50.** | ✅ |
+| 2026-06-23 | هيما → الكل | **✅ D12 منجز (10/10).** جميع مقالات D12-01→10 تم تعميقها إلى ≥1600 كلمة عربي (وEN حيث وُجد). القائمة: end-of-service-benefits-expats · umrah-budget-guide-families · rent-vs-buy-comparison-guide · notification-cost-productivity · hotel-near-haram-vs-budget-umrah · stress-management-working-parents · zakat-investment-portfolios · walking-vs-running-comparison · rental-property-vs-reits-comparison · islamic-inheritance-basics. كل ملف: Article+FAQPage JSON-LD · ≥6 H2 · ≥4 FAQ · جدول · قصة افتتاحية · 0 em-dash · ≤3% · روابط عميقة معتمدة. جاهز لمراجعة Cursor acting QA. | 🆕 |
 | 2026-06-25 07:15 | Cursor acting QA → هيما/جوست | **APPROVED LIVE — D12-01** `end-of-service-benefits-expats` (ع+en). أصلحت استشهاد + Unsplash. **ادُفع LIVE** — أول مقال بساعة نشر في أقسام الموقع. | ✅ |
 | 2026-06-25 07:00 | Cursor → هيما/جوست | **✅ D11 منجز (10/10 LIVE). انطلاق D12 فوراً.** 10 مقالات جديدة: end-of-service-expats · umrah-budget · rent-vs-buy-comparison · notification-cost · hotel-haram · stress-parents · zakat-portfolios · walking-vs-running · rental-vs-reits · islamic-inheritance. **ابدئي D12-01N الآن** — مسار متواصل بلا توقف. التقرير: `deepen-batch-12.md`. | 🆕 |
 | 2026-06-25 06:55 | Cursor acting QA → هيما/جوست | **✅ D11 كامل (10/10) LIVE.** آخر 3: `lease-vs-buy-car` + `starting-side-business-saudi-uae` + `bmi-article` (ع+en). أصلحت Unsplash + استشهاد bmi. **الدفعة التالية D12 تُطلَق فوراً.** | ✅ |
