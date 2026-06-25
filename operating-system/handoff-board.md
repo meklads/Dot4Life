@@ -63,6 +63,26 @@
 | D14-08A | QA D14 — makkah hotels guide | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
 | D14-09A | QA D14 — family volunteering summer | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
 | D14-10A | QA D14 — bmi middle eastern adults | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D15-01A | QA D15 — pregnancy week by week | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D15-02A | QA D15 — teaching children financial literacy | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D15-03A | QA D15 — hajj umrah guide 2025 | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D15-04A | QA D15 — organize life daily systems | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D15-05A | QA D15 — summer camps vs home | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D15-06A | QA D15 — pregnancy weeks guide | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D15-07A | QA D15 — children sleep summer | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D15-08A | QA D15 — saudi mortgage guide 2025 | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D15-09A | QA D15 — calm corner small space | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D15-10A | QA D15 — gulf father money lessons | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D15-11A | QA D15 — teaching children prayer with love | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D15-12A | QA D15 — managing screen time children | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D15-13A | QA D15 — emirati grandmother cooking traditions | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D15-14A | QA D15 — calm morning routine family | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D15-15A | QA D15 — daily walking benefits | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D15-16A | QA D15 — dubai property roi | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D15-17A | QA D15 — umrah with kids | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D15-18A | QA D15 — family budget plan | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D15-19A | QA D15 — gold vs savings account comparison | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D15-20A | QA D15 — daily adhkar family guide | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
 
 ---
 
@@ -110,6 +130,26 @@
 | D14-08C | TECH_BUILD D14 — makkah hotels guide | Cursor | بناء ونشر — ثم «انتهى من عندي» |
 | D14-09C | TECH_BUILD D14 — family volunteering summer | Cursor | بناء ونشر — ثم «انتهى من عندي» |
 | D14-10C | TECH_BUILD D14 — bmi middle eastern adults | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D15-01C | TECH_BUILD D15 — pregnancy week by week | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D15-02C | TECH_BUILD D15 — teaching children financial literacy | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D15-03C | TECH_BUILD D15 — hajj umrah guide 2025 | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D15-04C | TECH_BUILD D15 — organize life daily systems | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D15-05C | TECH_BUILD D15 — summer camps vs home | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D15-06C | TECH_BUILD D15 — pregnancy weeks guide | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D15-07C | TECH_BUILD D15 — children sleep summer | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D15-08C | TECH_BUILD D15 — saudi mortgage guide 2025 | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D15-09C | TECH_BUILD D15 — calm corner small space | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D15-10C | TECH_BUILD D15 — gulf father money lessons | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D15-11C | TECH_BUILD D15 — teaching children prayer with love | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D15-12C | TECH_BUILD D15 — managing screen time children | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D15-13C | TECH_BUILD D15 — emirati grandmother cooking traditions | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D15-14C | TECH_BUILD D15 — calm morning routine family | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D15-15C | TECH_BUILD D15 — daily walking benefits | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D15-16C | TECH_BUILD D15 — dubai property roi | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D15-17C | TECH_BUILD D15 — umrah with kids | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D15-18C | TECH_BUILD D15 — family budget plan | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D15-19C | TECH_BUILD D15 — gold vs savings account comparison | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D15-20C | TECH_BUILD D15 — daily adhkar family guide | Cursor | بناء ونشر — ثم «انتهى من عندي» |
 
 ---
 
@@ -165,6 +205,26 @@
 | D14-08N | DEEPEN D14 — makkah hotels guide | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
 | D14-09N | DEEPEN D14 — family volunteering summer | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
 | D14-10N | DEEPEN D14 — bmi middle eastern adults | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D15-01N | DEEPEN D15 — pregnancy week by week | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D15-02N | DEEPEN D15 — teaching children financial literacy | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D15-03N | DEEPEN D15 — hajj umrah guide 2025 | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D15-04N | DEEPEN D15 — organize life daily systems | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D15-05N | DEEPEN D15 — summer camps vs home | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D15-06N | DEEPEN D15 — pregnancy weeks guide | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D15-07N | DEEPEN D15 — children sleep summer | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D15-08N | DEEPEN D15 — saudi mortgage guide 2025 | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D15-09N | DEEPEN D15 — calm corner small space | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D15-10N | DEEPEN D15 — gulf father money lessons | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D15-11N | DEEPEN D15 — teaching children prayer with love | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D15-12N | DEEPEN D15 — managing screen time children | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D15-13N | DEEPEN D15 — emirati grandmother cooking traditions | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D15-14N | DEEPEN D15 — calm morning routine family | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D15-15N | DEEPEN D15 — daily walking benefits | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D15-16N | DEEPEN D15 — dubai property roi | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D15-17N | DEEPEN D15 — umrah with kids | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D15-18N | DEEPEN D15 — family budget plan | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D15-19N | DEEPEN D15 — gold vs savings account comparison | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D15-20N | DEEPEN D15 — daily adhkar family guide | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
 
 ---
 
