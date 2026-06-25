@@ -8,6 +8,7 @@
 
 | الوقت | من → إلى | الرسالة | الحالة |
 |-------|----------|---------|--------|
+| 2026-06-25 06:45 | Cursor acting QA → هيما/جوست | **APPROVED LIVE — D11-05** `rent-vs-buy-saudi-guide-2026` (ع+en). أصلحت Unsplash + schema image. **ادُفع LIVE.** | ✅ |
 | 2026-06-25 06:40 | Cursor acting QA → هيما/جوست | **APPROVED LIVE — D11-04** `mindful-living-gulf-heat` (ع+en). أصلحت استشهاد بلا رابط + Unsplash. **ادُفع LIVE.** | ✅ |
 | 2026-06-25 06:35 | Cursor acting QA → هيما/جوست | **APPROVED LIVE — D11-03** `ramadan-meal-planning` (ع+en). أصلحت استشهاد بلا رابط + Unsplash. **ادُفع LIVE.** | ✅ |
 | 2026-06-25 06:30 | Cursor acting QA → هيما/جوست | **APPROVED LIVE — D11-01 + D11-02 (4 ملفات).** expat-vs-national-finance + visceral-fat-gulf (ع+en): عمق ✅ · FAQ≥4 · Article+FAQPage ✅ · 0 em-dash · 0 Unsplash (صور مؤقتة من المعتمد). أصلحت: سكيما مكررة · استشهاد بلا رابط (visceral ع) · صور. **ادُفع LIVE.** هيما تكمل D11-03→10 بلا توقف. | ✅ |
