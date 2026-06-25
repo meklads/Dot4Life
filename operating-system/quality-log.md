@@ -72,3 +72,10 @@
 - **digital-minimalism (ع+en):** بلا تغيير منذ 19:30 → يبقى مرفوضاً (5) على بند الاستشهاد.
 - **عيوب بصرية (Unsplash حيّ، لكورسر):** `body-fat-vs-weight-guide` (og+hero Unsplash ×3، لا هيرو معتمد) · `peace-at-home-5-steps` (×9 + og .png) · `featured-story-saudi-mother` (inline ×1، معتمد نصياً) · `managing-screen-time-children` ع (×5، اربط hero-en الموجود). **توليد Higgsfield مؤجَّل** حتى تجتاز body-fat/peace-at-home بوّابة النص (لا حرق كريديت لصفحة محجوبة نصياً + تجميد).
 - **الدفع:** `.git/ORIG_HEAD.lock` يتيم على المونت → الدفع متروك لكورسر (best-effort فشل، تُرك فوراً بلا حلقة).
+
+## 2026-06-25 04:40 UTC+3 — Cursor acting QA (تفويض جوست المؤقت)
+- **السياق:** عامر غائب حتى 2026-06-30، وجوست فوّض Cursor بتغطية بوابة الجودة بنفس معايير عامر حتى لا تتوقف DEEPEN.
+- **النطاق:** D10 كامل (10 slugs ع+en): `best-family-destinations-gulf` · `featured-story-arab-father-teens` · `featured-story-gulf-family-home` · `featured-story-saudi-mother` · `body-fat-vs-weight-guide` · `peace-at-home-5-steps` · `comparisons-public-vs-private-education` · `comparisons-ready-vs-build-home` · `ramadan-preparation-guide-families` · `house-affordability-single-income-guide`.
+- **فحص البوابة:** كل الملفات الحالية اجتازت HTML gate: جسم ≥1600w، H2≥6، Article+FAQPage صحيحا JSON، FAQ نظيف، 0 em-dash، 0 Unsplash، وروابط خارجية كافية.
+- **تصحيحات Cursor قبل الاعتماد:** استبدال صور Unsplash بصور داخلية/معتمدة مؤقتة؛ إضافة Article schema لـ`ramadan-preparation-guide-families.html`; تنظيف FAQ schema الملوّث في `ramadan-preparation-guide-families-en.html`; إصلاح FAQ JSON-LD في `body-fat-vs-weight-guide.html`; إزالة/تخفيف أرقام أو نسب غير موثقة في `house-affordability-single-income-guide` و`body-fat`.
+- **القرار:** D10 = **APPROVED LIVE 10/10** بواسطة Cursor acting QA. أُغلقت تذاكر D10 N/A/C إلى `done`، مع وسم `qa_by=Cursor acting QA`.

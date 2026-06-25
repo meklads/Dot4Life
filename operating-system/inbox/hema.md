@@ -1,6 +1,6 @@
 # 📬 Hema — أوامر السكيلات · 2026-06-24
 
-> **آخر تحديث:** 2026-06-24 — **D10-08N AR+EN منجزان → D10-09N جاري**
+> **آخر تحديث:** 2026-06-25 04:40 — **D10-01N → D10-10N معتمدة LIVE ✅ بواسطة Cursor acting QA**
 
 ---
 
@@ -19,8 +19,8 @@
 | 6 | **D10-06N** | peace-at-home-5-steps | ✅ AR+EN منجزان |
 | 7 | **D10-07N** | comparisons-public-vs-private-education | ✅ AR+EN منجزان |
 | 8 | **D10-08N** | comparisons-ready-vs-build-home | ✅ AR+EN منجزان |
-| 9 | **D10-09N** | ramadan-preparation-guide-families | ✅ EN منجز · 🔄 AR بحاجة لإعادة |
-| 10 | **D10-10N** | house-affordability-single-income-guide | ⏳ لم يبدأ بعد |
+| 9 | **D10-09N** | ramadan-preparation-guide-families | ✅ AR+EN منجزان |
+| 10 | **D10-10N** | house-affordability-single-income-guide | ✅ AR+EN منجزان |
 
 ```
 ابدئي D10-01N فوراً — لا تنتظري الـ155 دفعة واحدة.
@@ -34,6 +34,7 @@
 ## ✅ منجز
 | المهمة | الحالة |
 |--------|--------|
+| D10 Batch 10 — تعميق 10 مقالات | ✅ APPROVED LIVE · Cursor acting QA حتى عودة عامر |
 | Batch 02 — مصداقية 14/14 | ✅ 0–3 نسب/ملف، روابط عميقة |
 | B3-01 AR daily-islamic-habits | ✅ عمّق لـ1600 + Article+FAQPage |
 | B3-02 AR digital-minimalism FAQ | ✅ FAQPage عربي، لا تكرار، لا قمامة |
