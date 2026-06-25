@@ -406,7 +406,7 @@ def move_card(data: dict, card_id: str, col: str) -> dict | None:
                 card["command"] = command_for(card, col)
             if col in ("done", "member_done"):
                 if col == "done":
-                    card["finished"] = datetime.now().strftime("%Y-%m-%d")
+                    card["finished"] = datetime.now().strftime("%Y-%m-%d %H:%M")
                 card["command"] = ""
             card.pop("_prev_col", None)
             enrich_card(card)

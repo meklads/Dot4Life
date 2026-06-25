@@ -445,12 +445,20 @@ async function renderSectionsPage(){
   if(!el)return;
   if(sectionsInit&&el.dataset.rev)return;
   el.innerHTML='<div class="loading">جارٍ التحميل…</div>';
+  const fmtLive=s=>{
+    if(!s)return'';
+    if(s.length>10&&s.includes(' ')){
+      const p=s.split(' ');
+      return p[0]+' · '+p[1];
+    }
+    return s;
+  };
   try{
     const data=await (await fetch(GD+'site-sections.json?_='+Date.now())).json();
     const sections=data.sections||[];
     const cards=sections.map(sec=>{
       const arts=sec.articles||[];
-      const artList=arts.length?`<ul class="sc-list">${arts.map(a=>`<li><a href="${esc(a.url)}" target="_blank" rel="noopener"><span>${esc(a.title)}</span>${a.live?`<span class="sc-date">${esc(a.live)}</span>`:''}</a></li>`).join('')}</ul>`:`<div class="sc-empty">لا مقالات LIVE بعد — يظهر هنا بعد النشر</div>`;
+      const artList=arts.length?`<ul class="sc-list">${arts.map(a=>`<li><a href="${esc(a.url)}" target="_blank" rel="noopener"><span>${esc(a.title)}</span>${a.live?`<span class="sc-date">${esc(fmtLive(a.live))}</span>`:''}</a></li>`).join('')}</ul>`:`<div class="sc-empty">لا مقالات LIVE بعد — يظهر هنا بعد النشر</div>`;
       const places=(sec.placement_labels||[]).map(p=>`<span class="sc-place">${esc(p)}</span>`).join('');
       const badge=sec.is_new?'<span class="sc-badge">جديد</span>':'';
       return `<article class="section-card${sec.is_new?' is-new':''}"><div class="sc-head"><h3 class="sc-title">${esc(sec.title)}</h3>${badge}</div>${sec.folder?`<div class="sc-folder">${esc(sec.folder)}</div>`:''}<div class="sc-places">${places}</div><div class="sc-count">${sec.count||0} مقال LIVE</div>${artList}</article>`;

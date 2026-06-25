@@ -261,15 +261,31 @@ def pick_live_articles(cards: list[dict]) -> list[dict]:
     return list(by_slug.values())
 
 
+def live_stamp(card: dict) -> str:
+    """Publish stamp for site-sections: prefer datetime (YYYY-MM-DD HH:MM)."""
+    for key in ("finished", "qa_ts", "ts"):
+        v = (card.get(key) or "").strip()
+        if not v:
+            continue
+        if len(v) >= 16 and " " in v:
+            return v[:16]
+        if len(v) >= 10:
+            return v[:10]
+    return ""
+
+
 def article_entry(card: dict, section: dict) -> dict:
     placements = card.get("site_placements") or section.get("placements", [])
+    stamp = live_stamp(card)
     return {
         "ticket": card.get("id", ""),
         "batch": card.get("batch_article", ""),
         "title": card.get("article") or card.get("title") or card.get("slug", ""),
         "slug": card.get("slug", ""),
         "url": article_url(card),
-        "live": card.get("finished") or card.get("ts", "")[:10] or "",
+        "live": stamp,
+        "live_date": stamp[:10] if stamp else "",
+        "live_time": stamp[11:16] if len(stamp) > 11 else "",
         "placements": placements,
     }
 
