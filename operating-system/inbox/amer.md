@@ -2,6 +2,16 @@
 
 > **الحالة:** عامر غائب حتى 2026-06-30. جوست فوّض **Cursor acting QA** لتغطية بوابة عامر مؤقتاً بنفس المعايير.
 
+## 🆕 DEEPEN D16 — خانة A
+
+**التقرير:** `operating-system/reports/deepen-batch-16.md`
+
+- 25 صفحة إصلاح/تعميق موجودة فقط، لا مواد جديدة.
+- تذاكر `D16-01A` → `D16-25A` على بوابة عامر، ويغطيها **Cursor acting QA** مؤقتاً.
+- القرار لكل ملف فقط: **APPROVED LIVE** أو **RETURN TO HEMA**.
+- لا اعتماد من تقرير هيما؛ الفحص على HTML نفسه.
+- بعد PASS: كورسر يبني/ينظف الصور وينشر.
+
 ## 🆕 DEEPEN Batch 11 — خانة A
 
 **التقرير:** `operating-system/reports/deepen-batch-11.md`
