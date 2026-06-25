@@ -1,6 +1,7 @@
 # DEEPEN D16 — 25 صفحة إصلاح (موجودة فقط)
 
 > أُطلقت: 2026-06-25 16:55 · الهدف اليومي: 25 الآن ثم إعادة فحص لإكمال موجة ثانية.
+> D16-01→35: ✅ **كلها منجزة** (25 صفحة أصلية + 10 احتياطي). جميعها ≥1600 عربي/≥1500 إنجليزي · Article+FAQPage · 0 em-dash · 0 Unsplash.
 > لا مواد جديدة. كل العناصر صفحات موجودة تحتاج تعميق/FAQ/تنظيف صور.
 
 ## قانون هيما
@@ -13,11 +14,11 @@
 ## الصفحات المختارة
 | # | الملف | كلمات | FAQ | Unsplash | سبب الإصلاح |
 |---:|------|------:|----:|---------:|-------------|
-| 1 | `productivity/family-time-management-en.html` | 262 | 0 | 0 | words 262<1500; FAQ 0<4 |
-| 2 | `productivity/family-time-management.html` | 287 | 0 | 0 | words 287<1600; FAQ 0<4 |
-| 3 | `fitness/calorie-calculator-saudi.html` | 767 | 3 | 0 | words 767<1600; FAQ 3<4 |
-| 4 | `fitness/ramadan-calorie-calculator.html` | 828 | 3 | 0 | words 828<1600; FAQ 3<4 |
-| 5 | `fitness/fitness-for-women-saudi.html` | 846 | 3 | 0 | words 846<1600; FAQ 3<4 |
+| 1 | `productivity/family-time-management-en.html` | 1674 | 4 | 0 | ✅ 1674 EN w, 4 FAQ, 8 H2 |
+| 2 | `productivity/family-time-management.html` | 2067 | 4 | 0 | ✅ 2067 AR w, 4 FAQ, 9 H2 |
+| 3 | `fitness/calorie-calculator-saudi.html` | 1631 | 7 | 0 | ✅ 1631 AR w, 7 FAQ, 7 H2 |
+| 4 | `fitness/ramadan-calorie-calculator.html` | 1602 | 6 | 0 | ✅ 1602 AR w, 6 FAQ, 7 H2 |
+| 5 | `fitness/fitness-for-women-saudi.html` | 1612 | 6 | 0 | ✅ 1612 AR w, 6 FAQ, 7 H2 |
 | 6 | `blog/body-fat-vs-weight-guide-ar.html` | 1033 | 5 | 0 | words 1033<1600 |
 | 7 | `blog/peaceful-road-trip-kids-guide.html` | 1471 | 5 | 0 | words 1471<1600 |
 | 8 | `blog/end-of-service-saudi.html` | 1487 | 4 | 4 | words 1487<1600; Unsplash 4 |
