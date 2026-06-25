@@ -1,16 +1,20 @@
-# 📬 Cursor — أوتوبايلوت · 2026-06-24
+# 📬 Cursor — أوتوبايلوت + Acting QA · 2026-06-25
 
-## 🆕 DEEPEN Batch 10 — ١٠ مقالات
+## 🆕 DEEPEN Batch 11 — 10 مقالات
 
-**التقرير:** `operating-system/reports/deepen-batch-10.md`  
-**التذاكر:** `D10-01C` … `D10-10C` على عمود Cursor
+**التقرير:** `operating-system/reports/deepen-batch-11.md`  
+**التذاكر:** `D11-01C` … `D11-10C`
 
-### المسار
-1. هيما `D10-XXN` → عامر `D10-XXA` (amer-mandate PASS)
-2. عند `approved` + ملف HTML → **TECH_BUILD** فوراً + `git push` بدون سؤال جوست
+## دور Cursor المؤقت
+1. تغطية بوابة عامر على تذاكر `D11-XXA` حتى 2026-06-30.
+2. بعد PASS: تنفيذ `D11-XXC`.
+3. اختيار صورة مؤقتة:
+   - من `assets/images/approved/` أولاً.
+   - إعادة استخدام داخلية مناسبة إن لم توجد صورة مخصصة.
+   - ستوك مجاني موثق فقط عند الضرورة.
+4. تحديث hero + og:image + Article image + image-manifest.
+5. commit + push فوراً.
 
-### أول BUILD متوقّع
-- بعد اعتماد عامر على `D10-01A` → `D10-01C` best-family-destinations-gulf
-
-### قاعدة
-- الناشر الوحيد لـ GitHub — commit + push كل دورة
+## أول موجة متوقعة
+- بعد هيما: `D11-01N` + `D11-02N` فقط.
+- لا تنتظر عامر؛ Cursor acting QA يقرر.
