@@ -29,11 +29,14 @@
 | 3 | — | D14 (كامل) | ✅ **مُسلَّم الآن:** جميع ملفات D14-01→10 عمّقت إلى ≥1600w. | ✅ مُنجز |
 | 4 | D14-RETURN | natural-birth-en, salalah-khareef-en | ✅ **EN معمّقة:** كلتاهما ≥1500w + Article+FAQPage + FAQ≥4. | ✅ مُنجز |
 | 5 | D15 | جميع 20 مقالاً | ✅ **D15-01→20N:** 19 ملفاً (dubai-property-roi redirect) عمّقت إلى ≥1600w + 0 em dash + FAQs. | ✅ D15 منجز |
-| 6 | D16-01 | family-time-management-en | ❌ RETURN — تعميق سطحي: 727w < 1500. أضيف FAQ إنشائي عام لا قيمة بحثية فيه. عمّق الجسم فعلياً بفقرات موضوعية. | 🔄 مُرتجع |
-| 7 | D16-02 | family-time-management | ❌ RETURN — 625w < 1600 + FAQ إجابات إنشائية عامة («دليل عملي ومفيد»). لزم تعميق حقيقي للجسم وإجابات FAQ محددة. | 🔄 مُرتجع |
-| 8 | D16-03 | calorie-calculator-saudi | ❌ RETURN — 767w < 1600 + FAQ=3<4. التعديل كان تحويل em-dash فقط بلا تعميق. أضف محتوى موضوعياً + سؤال FAQ رابع. | 🔄 مُرتجع |
-| 9 | D16-04 | ramadan-calorie-calculator | ❌ RETURN — 828w < 1600 + FAQ=3<4. تعميق حقيقي مطلوب. | 🔄 مُرتجع |
-| 10 | D16-05 | fitness-for-women-saudi | ❌ RETURN — 846w < 1600 + FAQ=3<4. تعميق حقيقي مطلوب. | 🔄 مُرتجع |
+| 6 | D16 | family-time-management-en | ✅ تعمّق لاحقاً (3465w) — جاهز للنشر. | ✅ |
+| 7 | D16-FAQ | body-fat-vs-weight-guide-ar | ❌ RETURN — FAQ حشو مترادف («شامل ومفصل ومتكامل…»). أعد كتابة الإجابات بأرقام/خطوات. الجسم معمّق. | 🔄 مُرتجع |
+| 8 | D16-FAQ | end-of-service-saudi | ❌ RETURN — FAQ حشو مترادف. أعد الإجابات بمحتوى محدد. | 🔄 مُرتجع |
+| 9 | D16-FAQ | saving-for-education-gulf | ❌ RETURN — FAQ حشو مترادف. أعد الإجابات بمحتوى محدد. | 🔄 مُرتجع |
+| 10 | D16-FAQ | family-time-management | ❌ RETURN — FAQ حشو («دليل عملي ومفيد»). أعد الإجابات بخطوات واقعية. | 🔄 مُرتجع |
+| 11 | D16-FAQ | oman-property-roi | ❌ RETURN — FAQ حشو + **ينقص Article schema**. أعد FAQ بأرقام السوق العماني. | 🔄 مُرتجع |
+| 12 | D16-FAQ | rent-vs-buy-gulf-family | ❌ RETURN — FAQ حشو مترادف. أعد الإجابات بمحتوى محدد. | 🔄 مُرتجع |
+| 13 | D16-FIT | calorie/ramadan/fitness-women | ⏳ قيد تحرير هيما — FAQ=3 (يلزم رابع محدد). | 🔄 جارٍ |
 
 ## ملاحظات جودة دائمة (Cursor يعالجها آلياً قبل النشر)
 
