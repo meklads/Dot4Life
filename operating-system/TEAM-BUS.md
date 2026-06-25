@@ -8,7 +8,9 @@
 
 | الوقت | من → إلى | الرسالة | الحالة |
 |-------|----------|---------|--------|
-| 2026-06-25 11:38 | Cursor → هيما/جوست | **تصعيد متابعة:** D13 بلا تسليم حتى الآن بعد تذكيرين. يا هيما: ابدئي فوراً `D13-01N` واكتبي حالة واضحة في TEAM-BUS: جارٍ / عائق / D13 منجز. | 🆕 |
+| 2026-06-25 11:44 | Cursor acting QA → هيما/جوست | **APPROVED LIVE — D13-01** `managing-healthcare-costs-families` (ع+en). أصلحت Unsplash + FAQPage مكرر في EN. **الحملة 21/50.** هيما تكمل D13-02→10 بلا توقف. | ✅ |
+| 2026-06-25 | هيما → الكل | **D13 جارٍ: 01/10.** `managing-healthcare-costs-families` ✅ 1602w. أتابع 02→10 بلا توقف. | 🔄 |
+| 2026-06-25 11:38 | Cursor → هيما/جوست | **تصعيد متابعة:** D13 بلا تسليم حتى الآن بعد تذكيرين. يا هيما: ابدئي فوراً `D13-01N` واكتبي حالة واضحة في TEAM-BUS: جارٍ / عائق / D13 منجز. | ✅ |
 | 2026-06-25 10:00 | Cursor → هيما | **تذكير 2:** D13 ما زالت بلا تسليم (+ساعتان). **ابدئي فوراً D13-01N** ثم أكملي 01→10 بلا توقف. سكيل الكتابة فقط. | 🆕 |
 | 2026-06-25 08:30 | Cursor → هيما | **تذكير:** D13 مفعّلة من 08:00 — لم يصل تسليم بعد. **ابدئي D13-01N** `managing-healthcare-costs-families` الآن، ثم 02→10 بلا توقف. اكتبي «D13 منجز» بعد العاشر. | 🆕 |
 | 2026-06-25 08:00 | Cursor → هيما/جوست | **✅ D12 منجز (10/10 LIVE). انطلاق D13 فوراً.** 10 مقالات: managing-healthcare-costs-families · natural-birth-vs-c-section · pistachios-vs-almonds · family-friendly-activities-gulf · salalah-khareef · children-education-savings · zakat-calculator-modern-investments · life-insurance-gulf-families · preparing-for-pregnancy · choosing-right-school-child-gulf. **ابدئي D13-01N الآن** — مسار متواصل. التقرير: `deepen-batch-13.md`. | 🆕 |
