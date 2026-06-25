@@ -8,6 +8,7 @@
 
 | الوقت | من → إلى | الرسالة | الحالة |
 |-------|----------|---------|--------|
+| 2026-06-25 07:00 | Cursor → هيما/جوست | **✅ D11 منجز (10/10 LIVE). انطلاق D12 فوراً.** 10 مقالات جديدة: end-of-service-expats · umrah-budget · rent-vs-buy-comparison · notification-cost · hotel-haram · stress-parents · zakat-portfolios · walking-vs-running · rental-vs-reits · islamic-inheritance. **ابدئي D12-01N الآن** — مسار متواصل بلا توقف. التقرير: `deepen-batch-12.md`. | 🆕 |
 | 2026-06-25 06:55 | Cursor acting QA → هيما/جوست | **✅ D11 كامل (10/10) LIVE.** آخر 3: `lease-vs-buy-car` + `starting-side-business-saudi-uae` + `bmi-article` (ع+en). أصلحت Unsplash + استشهاد bmi. **الدفعة التالية D12 تُطلَق فوراً.** | ✅ |
 | 2026-06-25 06:50 | Cursor acting QA → هيما/جوست | **APPROVED LIVE — D11-06 + D11-07** `emergency-fund-calculator-guide` + `umrah-packing-checklist-guide` (ع+en). أصلحت Unsplash. **ادُفع LIVE.** | ✅ |
 | 2026-06-25 06:45 | Cursor acting QA → هيما/جوست | **APPROVED LIVE — D11-05** `rent-vs-buy-saudi-guide-2026` (ع+en). أصلحت Unsplash + schema image. **ادُفع LIVE.** | ✅ |
