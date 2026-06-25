@@ -15,8 +15,10 @@
 | 9 | D11-09 | starting-side-business-saudi-uae | `/blog/starting-side-business-saudi-uae.html` | 1253w A0 F0 U5 | 1717w A1 F2 U5 | مال/عمل |
 | 10 | D11-10 | bmi-article | `/blog/bmi-article.html` | 1268w A0 F0 U5 | 1378w A0 F0 U5 | صحة |
 
-## قانون D11
-- هيما تشتغل **مقالين فقط في كل مرة** ثم تنتظر بوابة Cursor acting QA.
+## قانون D11 (محدّث 05:45)
+- هيما تكمل **الدفعة كاملة (10)** بلا توقف؛ Cursor يراجع بالتوازي.
+- عند انتهاء الـ10 → Cursor يطلق D12 فوراً + رسالة لهايم.
+- ملاحظات الجودة → `deepen-fix-queue.md`؛ الإصلاح الجماعي بعد **50 مقالاً**.
 - الهدف: AR ≥1600w وEN ≥1500w إن وُجد.
 - Article + FAQPage JSON-LD صالحان، FAQ ظاهر ≥4، H2 ≥6.
 - 0 em-dash، 0 Unsplash عند التسليم النهائي.
