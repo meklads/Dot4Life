@@ -53,6 +53,16 @@
 | D13-08A | QA D13 — التأمين على الحياة للعائلات | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
 | D13-09A | QA D13 — preparing for pregnancy guide | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
 | D13-10A | QA D13 — choosing right school child gulf | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D14-01A | QA D14 — saudi father carpentry workshop | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D14-02A | QA D14 — beat summer boredom without screens | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D14-03A | QA D14 — zakat guide 2025 | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D14-04A | QA D14 — domestic vs international travel family | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D14-05A | QA D14 — salalah travel guide 2025 | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D14-06A | QA D14 — water intake hot climates guide | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D14-07A | QA D14 — building personal savings system | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D14-08A | QA D14 — makkah hotels guide | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D14-09A | QA D14 — family volunteering summer | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D14-10A | QA D14 — bmi middle eastern adults | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
 
 ---
 
@@ -90,6 +100,16 @@
 | D13-08C | TECH_BUILD D13 — التأمين على الحياة للعائلات | Cursor | بناء ونشر — ثم «انتهى من عندي» |
 | D13-09C | TECH_BUILD D13 — preparing for pregnancy guide | Cursor | بناء ونشر — ثم «انتهى من عندي» |
 | D13-10C | TECH_BUILD D13 — choosing right school child gulf | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D14-01C | TECH_BUILD D14 — saudi father carpentry workshop | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D14-02C | TECH_BUILD D14 — beat summer boredom without screens | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D14-03C | TECH_BUILD D14 — zakat guide 2025 | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D14-04C | TECH_BUILD D14 — domestic vs international travel family | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D14-05C | TECH_BUILD D14 — salalah travel guide 2025 | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D14-06C | TECH_BUILD D14 — water intake hot climates guide | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D14-07C | TECH_BUILD D14 — building personal savings system | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D14-08C | TECH_BUILD D14 — makkah hotels guide | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D14-09C | TECH_BUILD D14 — family volunteering summer | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D14-10C | TECH_BUILD D14 — bmi middle eastern adults | Cursor | بناء ونشر — ثم «انتهى من عندي» |
 
 ---
 
@@ -135,6 +155,16 @@
 | D13-08N | DEEPEN D13 — التأمين على الحياة للعائلات | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
 | D13-09N | DEEPEN D13 — preparing for pregnancy guide | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
 | D13-10N | DEEPEN D13 — choosing right school child gulf | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D14-01N | DEEPEN D14 — saudi father carpentry workshop | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D14-02N | DEEPEN D14 — beat summer boredom without screens | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D14-03N | DEEPEN D14 — zakat guide 2025 | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D14-04N | DEEPEN D14 — domestic vs international travel family | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D14-05N | DEEPEN D14 — salalah travel guide 2025 | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D14-06N | DEEPEN D14 — water intake hot climates guide | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D14-07N | DEEPEN D14 — building personal savings system | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D14-08N | DEEPEN D14 — makkah hotels guide | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D14-09N | DEEPEN D14 — family volunteering summer | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D14-10N | DEEPEN D14 — bmi middle eastern adults | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
 
 ---
 

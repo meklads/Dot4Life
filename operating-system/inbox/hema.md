@@ -1,43 +1,55 @@
 # 📬 Hema — أوامر السكيلات · 2026-06-25
 
-> **آخر تحديث:** 2026-06-25 08:00 — **🟢 D12 منجز — ابدئي D13 فوراً (01→10)**
+> **آخر تحديث:** 2026-06-25 12:15 — **🟢 D13 منجز (8 LIVE) — أولاً صلّح إنجليزيتين، ثم ابدأ D14**
 
 ---
 
-## 🟢 GO — DEEPEN Batch 13 (١٠ مقالات — لا توقف)
+## 🔴 أولاً — RETURN (إنجليزي فقط، عاجل)
 
-**مصدر القائمة:** `operating-system/reports/deepen-batch-13.md`  
+نسختان إنجليزيتان لم تُعمَّقا (العربي LIVE):
+
+| # | slug | المطلوب |
+|---|------|---------|
+| 1 | **natural-birth-vs-c-section-comparison-en** | عمّق EN ≥1500w + قسم FAQ≥4 + Article+FAQPage |
+| 2 | **salalah-khareef-en** | عمّق EN ≥1500w + قسم FAQ≥4 + Article+FAQPage |
+
+التفاصيل: `operating-system/deepen-fix-queue.md`
+
+---
+
+## 🟢 ثم GO — DEEPEN Batch 14 (١٠ مقالات — لا توقف)
+
+**مصدر القائمة:** `operating-system/reports/deepen-batch-14.md`  
 **المسار:** `operating-system/DEEPEN-CONTINUOUS-WORKFLOW.md`
 
 **القانون:**
 - سكيل الكتابة فقط — لا تحليل · لا نمو.
-- أكملي **D13 كاملة (01→10)** بلا توقف — Cursor يراجع بالتوازي.
-- عند انتهاء الـ10: اكتبي `D13 منجز` في TEAM-BUS.
-- بعد **50 مقالاً** في الحملة (20 منجزة + 30 قادمة): توقفي وارجعي لـ `deepen-fix-queue.md`.
+- أكمل **D14 كاملة (01→10)** بلا توقف — Cursor يراجع بالتوازي.
+- عند انتهاء الـ10: اكتب `D14 منجز` في TEAM-BUS.
+- بعد **50 مقالاً** في الحملة (28 منجزة + المتبقي): توقّف للمراجعة.
 
 | # | تذكرة | slug |
 |---|--------|------|
-| 1 | **D13-01N** | managing-healthcare-costs-families |
-| 2 | **D13-02N** | natural-birth-vs-c-section-comparison |
-| 3 | **D13-03N** | pistachios-vs-almonds-comparison |
-| 4 | **D13-04N** | family-friendly-activities-gulf-cities |
-| 5 | **D13-05N** | salalah-khareef |
-| 6 | **D13-06N** | children-education-savings-guide |
-| 7 | **D13-07N** | zakat-calculator-modern-investments-guide |
-| 8 | **D13-08N** | life-insurance-gulf-families |
-| 9 | **D13-09N** | preparing-for-pregnancy-guide |
-| 10 | **D13-10N** | choosing-right-school-child-gulf |
+| 1 | **D14-01N** | saudi-father-carpentry-workshop |
+| 2 | **D14-02N** | beat-summer-boredom-without-screens |
+| 3 | **D14-03N** | zakat-guide-2025 |
+| 4 | **D14-04N** | domestic-vs-international-travel-family |
+| 5 | **D14-05N** | salalah-travel-guide-2025 |
+| 6 | **D14-06N** | water-intake-hot-climates-guide |
+| 7 | **D14-07N** | building-personal-savings-system |
+| 8 | **D14-08N** | makkah-hotels-guide |
+| 9 | **D14-09N** | family-volunteering-summer |
+| 10 | **D14-10N** | bmi-middle-eastern-adults |
 
 ```
-ابدئي الآن — D13-01N:
-managing-healthcare-costs-families
-
-ثم 02→10 بالترتيب. لا تنتظري QA. اكتبي "D13 منجز" بعد العاشر.
+الترتيب: أولاً الإنجليزيتان (RETURN) ثم D14-01N → D14-10N.
+لا تنتظر QA. اكتب "D14 منجز" بعد العاشر.
 ```
 
 ## معيار التسليم
-- AR ≥1600w · EN ≥1500w إن وُجد · FAQ≥4 · Article+FAQPage · H2≥6 · 0 em-dash · 0 Unsplash
+- AR ≥1600w (متن) · EN ≥1500w · FAQ≥4 · Article+FAQPage · H2≥6 · 0 em-dash · 0 Unsplash
 - أي مؤسسة/رقم بلا رابط عميق → صياغة وصفية
+- **النسخة الإنجليزية:** سايدبار «Contents» إنجليزي وروابطه تطابق عناوين H2 الإنجليزية — لا تنسخ سايدبار العربية.
 
 ## ممنوع
 - Batch جديد خارج DEEPEN · تحليل · نمو · توقف لانتظار QA
