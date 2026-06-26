@@ -50,25 +50,19 @@
 | D17-01C | TECH_BUILD D17-FIX — saudi tourism | Cursor | بناء ونشر — ثم «انتهى من عندي» |
 | D17-03C | TECH_BUILD D17-FIX — mecca medina | Cursor | بناء ونشر — ثم «انتهى من عندي» |
 | D17-22C | TECH_BUILD D17-FIX — choosing right school child gulf | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D18-01C | TECH_BUILD D18-FIX — hydration guide | Cursor | بناء ونشر — ثم «انتهى من عندي» |
 | D18-02C | TECH_BUILD D18-FIX — makkah hotels guide | Cursor | بناء ونشر — ثم «انتهى من عندي» |
 | D18-03C | TECH_BUILD D18-FIX — body fat vs weight guide ar | Cursor | بناء ونشر — ثم «انتهى من عندي» |
 | D18-04C | TECH_BUILD D18-FIX — salalah khareef | Cursor | بناء ونشر — ثم «انتهى من عندي» |
 | D18-05C | TECH_BUILD D18-FIX — family nutrition on budget | Cursor | بناء ونشر — ثم «انتهى من عندي» |
 | D18-06C | TECH_BUILD D18-FIX — mindful living gulf heat | Cursor | بناء ونشر — ثم «انتهى من عندي» |
 | D18-07C | TECH_BUILD D18-FIX — building personal savings system | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D18-08C | TECH_BUILD D18-FIX — zakat guide 2025 | Cursor | بناء ونشر — ثم «انتهى من عندي» |
 | D18-09C | TECH_BUILD D18-FIX — salalah travel guide 2025 | Cursor | بناء ونشر — ثم «انتهى من عندي» |
 | D18-10C | TECH_BUILD D18-FIX — hajj umrah guide 2025 | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D18-11C | TECH_BUILD D18-FIX — gcc family budget 2025 | Cursor | بناء ونشر — ثم «انتهى من عندي» |
 | D18-12C | TECH_BUILD D18-FIX — comparisons ready vs build home | Cursor | بناء ونشر — ثم «انتهى من عندي» |
 | D18-13C | TECH_BUILD D18-FIX — comparisons public vs private education | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D18-14C | TECH_BUILD D18-FIX — featured story gulf family home | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D18-15C | TECH_BUILD D18-FIX — arab mother startup | Cursor | بناء ونشر — ثم «انتهى من عندي» |
 | D18-16C | TECH_BUILD D18-FIX — featured story arab father teens | Cursor | بناء ونشر — ثم «انتهى من عندي» |
 | D18-17C | TECH_BUILD D18-FIX — peace at home 5 steps | Cursor | بناء ونشر — ثم «انتهى من عندي» |
 | D18-18C | TECH_BUILD D18-FIX — summer camps vs home | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D18-19C | TECH_BUILD D18-FIX — evening rituals | Cursor | بناء ونشر — ثم «انتهى من عندي» |
 | D18-20C | TECH_BUILD D18-FIX — best family destinations gulf | Cursor | بناء ونشر — ثم «انتهى من عندي» |
 | D18-21C | TECH_BUILD D18-FIX — organize life daily systems | Cursor | بناء ونشر — ثم «انتهى من عندي» |
 | D18-22C | TECH_BUILD D18-FIX — teaching children financial literacy | Cursor | بناء ونشر — ثم «انتهى من عندي» |
@@ -652,18 +646,24 @@
 | D17-30N | DEEPEN D17-FIX — expat vs national finance | 2026-06-26 11:59 |
 | D17-30A | QA D17-FIX — expat vs national finance | 2026-06-26 11:59 |
 | D17-30C | TECH_BUILD D17-FIX — expat vs national finance | 2026-06-26 11:59 |
-| D18-01N | DEEPEN D18-FIX — hydration guide | 2026-06-26 13:50 |
-| D18-01A | QA D18-FIX — hydration guide | 2026-06-26 13:50 |
-| D18-08N | DEEPEN D18-FIX — zakat guide 2025 | 2026-06-26 13:50 |
-| D18-08A | QA D18-FIX — zakat guide 2025 | 2026-06-26 13:50 |
-| D18-11N | DEEPEN D18-FIX — gcc family budget 2025 | 2026-06-26 13:50 |
-| D18-11A | QA D18-FIX — gcc family budget 2025 | 2026-06-26 13:50 |
-| D18-14N | DEEPEN D18-FIX — featured story gulf family home | 2026-06-26 13:50 |
-| D18-14A | QA D18-FIX — featured story gulf family home | 2026-06-26 13:50 |
-| D18-15N | DEEPEN D18-FIX — arab mother startup | 2026-06-26 13:50 |
-| D18-15A | QA D18-FIX — arab mother startup | 2026-06-26 13:50 |
-| D18-19N | DEEPEN D18-FIX — evening rituals | 2026-06-26 13:50 |
-| D18-19A | QA D18-FIX — evening rituals | 2026-06-26 13:50 |
+| D18-01N | DEEPEN D18-FIX — hydration guide | 2026-06-26 13:57 |
+| D18-01A | QA D18-FIX — hydration guide | 2026-06-26 13:57 |
+| D18-01C | TECH_BUILD D18-FIX — hydration guide | 2026-06-26 13:57 |
+| D18-08N | DEEPEN D18-FIX — zakat guide 2025 | 2026-06-26 13:57 |
+| D18-08A | QA D18-FIX — zakat guide 2025 | 2026-06-26 13:57 |
+| D18-08C | TECH_BUILD D18-FIX — zakat guide 2025 | 2026-06-26 13:57 |
+| D18-11N | DEEPEN D18-FIX — gcc family budget 2025 | 2026-06-26 13:57 |
+| D18-11A | QA D18-FIX — gcc family budget 2025 | 2026-06-26 13:57 |
+| D18-11C | TECH_BUILD D18-FIX — gcc family budget 2025 | 2026-06-26 13:57 |
+| D18-14N | DEEPEN D18-FIX — featured story gulf family home | 2026-06-26 13:57 |
+| D18-14A | QA D18-FIX — featured story gulf family home | 2026-06-26 13:57 |
+| D18-14C | TECH_BUILD D18-FIX — featured story gulf family home | 2026-06-26 13:57 |
+| D18-15N | DEEPEN D18-FIX — arab mother startup | 2026-06-26 13:57 |
+| D18-15A | QA D18-FIX — arab mother startup | 2026-06-26 13:57 |
+| D18-15C | TECH_BUILD D18-FIX — arab mother startup | 2026-06-26 13:57 |
+| D18-19N | DEEPEN D18-FIX — evening rituals | 2026-06-26 13:57 |
+| D18-19A | QA D18-FIX — evening rituals | 2026-06-26 13:57 |
+| D18-19C | TECH_BUILD D18-FIX — evening rituals | 2026-06-26 13:57 |
 
 ---
 

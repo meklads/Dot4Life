@@ -13,6 +13,16 @@
 **فحص الموقع الشامل (2026-06-26):** 108 صفحة عربية. **49 صفحة تحتاج إصلاح** = 41 ضحلة (3 شديدة <1200 · 3 متوسطة 1200-1499 · 35 على الحد 1500-1599) + 8 بلا Article schema + 7 بلا FAQPage + 5 em-dash + 5 Unsplash (بتداخل). **0 محتوى مختلط** (اكتمل تعريبها).
 
 
+## D18 Cursor Tech — مُنجز · 2026-06-26 13:57
+
+**✅ الستة التقنية على Cursor صارت PASS ونُشرت:**
+`hydration-guide` · `zakat-guide-2025` · `gcc-family-budget-2025` · `featured-story-gulf-family-home` · `arab-mother-startup` · `evening-rituals`.
+
+**↩️ الثلاثة RETURN باقية عند هيما:**
+- `guides/saudi-tourism` — 6 فقرات bilingual.
+- `guides/mecca-medina` — 13 فقرة/بطاقة bilingual.
+- `blog/choosing-right-school-child-gulf` — FAQ filler + صورة مفقودة.
+
 ## D18-FIX — تقسيم مسؤوليات · 2026-06-26 13:50
 
 **بعد 3 RETURN الحالية:**
