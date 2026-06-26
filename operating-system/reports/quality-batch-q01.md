@@ -31,5 +31,33 @@
 ## بعد كل 5 صفحات
 اكتب في TEAM-BUS: `Q-01 05/15 جاهز للبوابة` (ثم 10/15، 15/15).
 
+## بوابة Cursor acting QA — 2026-06-26 21:00
+
+فحص مستقلّ على الـ15 ملفاً (`scripts/q01_qa.py`): JSON-LD صالح · FAQPage = FAQ المرئي · 0 em-dash · 0 Unsplash · استشهادات بروابط أو وصفية · 0 FAQ يتيمة.
+
+**النتيجة: 13/15 LIVE (PASS) + 2 RETURN.**
+
+| # | الملف | القرار | إصلاح Cursor |
+|---:|------|--------|---------------|
+| 01 | umrah-with-kids | ✅ LIVE | حذف FAQPage مكسورة+مكررة (`<a href>` كسر JSON) |
+| 02 | hijri-new-year-children | ✅ LIVE | — |
+| 03 | daily-adhkar-family-guide | ✅ LIVE | — |
+| 04 | featured-story-gulf-family-home | ✅ LIVE | — |
+| 05 | family-friendly-activities-gulf-cities | ✅ LIVE | — |
+| 06 | daily-islamic-habits-guide | ✅ LIVE | — |
+| 07 | teaching-children-allah-names | ✅ LIVE | — |
+| 08 | hydration-guide | ✅ LIVE | إزالة استشهاد «الملك سعود 60%» الملفّق (نص+سكيما) |
+| 09 | beat-summer-boredom-without-screens | ↩️ RETURN | أصلحت 3 استشهادات ملفّقة؛ الجسم: 4×H2 مكررة ×5 + FAQ يتيمة |
+| 10 | investment-basics-beginners | ✅ LIVE | إزالة استشهاد «الملك سعود» الملفّق |
+| 11 | saudi-father-carpentry-workshop | ✅ LIVE | — |
+| 12 | featured-story-saudi-mother | ✅ LIVE | — |
+| 13 | gold-vs-real-estate-gulf-family | ✅ LIVE | — |
+| 14 | domestic-vs-international-travel | ↩️ RETURN | أصلحت استشهاد «عبدالعزيز 80%»؛ الجسم: نصائح-عملية ×5 + قسم-إضافي ×4 + FAQ يتيمة |
+| 15 | umrah-with-kids-guide | ✅ LIVE | حذف FAQ يتيمة بسلاسل مترادفات + `id="faq"` مكرّر |
+
+**RETURN لهيما (جسم لا FAQ):** أزيلي الأقسام (H2) المكرّرة وادمجي FAQ اليتيمة ضمن قسم واحد، ثم عمّقي بمحتوى **فريد** حتى ≥1600 كلمة. الـFAQ والسكيما فيهما نظيفة الآن.
+
+**⚠️ نمط site-wide:** نفس تعفّن «قسم إضافي مفصل»/H2 مكررة في 10+ صفحات خارج Q-01 (water-intake · bmi-middle-eastern-adults · salalah-travel-guide · building-personal-savings · zakat-guide-2025 · makkah-hotels · family-volunteering) — يُقترح تذكرة `dedup` مستقلة.
+
 ## الأسبوع 2 (مُجدول — لا تبدأ قبل إغلاق Q-01)
 D-01 تعميق قيمة +200–400w — انظر `quality-phase-2-plan.md`.
