@@ -1,14 +1,14 @@
-# DEEPEN D18-FIX — 20 صفحة إصلاح متبقية (موجودة فقط)
+# DEEPEN D18-FIX — 26 صفحة إصلاح متبقية (موجودة فقط)
 
 > أُطلقت: 2026-06-26 11:59 · بعد مراجعة D17-FIX · لا مواد جديدة · المرحلة 1 مستمرة حتى تصفير الإصلاح.
 > بالإضافة إلى هذه الدفعة، توجد 3 RETURN من D17 يجب على هيما إغلاقها أولاً/بالتوازي: saudi-tourism · mecca-medina · choosing-right-school-child-gulf.
 
 ## قانون هيما
 - سكيل الكتابة فقط.
-- ابدأ `D18-01N` ثم أكمل حتى `D18-20N` دون انتظار تكليف جديد.
+- ابدأ `D18-01N` ثم أكمل حتى `D18-26N` دون انتظار تكليف جديد.
 - راحة 5 دقائق بعد كل 5 صفحات فقط: بعد D18-05، D18-10، D18-15.
 - بعد كل 5 صفحات اكتب في TEAM-BUS: `D18 05/20 جاهز للبوابة` ثم خذ الراحة وأكمل.
-- عند النهاية اكتب: `D18-FIX منجز 20/20`.
+- عند النهاية اكتب: `D18-FIX منجز 26/26`.
 
 ## قانون القبول
 - العربي ≥1600 كلمة. الإنجليزي إن وُجد ≥1500 كلمة.
@@ -40,4 +40,10 @@
 | 17 | `D18-17N` | `peace-capsules/peace-at-home-5-steps.html` | words 1593<1600 |
 | 18 | `D18-18N` | `peace-capsules/summer-camps-vs-home.html` | words 1597<1600 |
 | 19 | `D18-19N` | `peace-capsules/evening-rituals.html` | em-dash |
-| 20 | `D18-20N` | `travel/best-family-destinations-gulf.html` | words 1597<1600 |
+| 20 | `D18-26N` | `travel/best-family-destinations-gulf.html` | words 1597<1600 |
+| 21 | `D18-21N` | `blog/organize-life-daily-systems.html` | FAQ/content filler |
+| 22 | `D18-22N` | `blog/teaching-children-financial-literacy.html` | FAQ/content filler |
+| 23 | `D18-23N` | `health/children-sleep-summer.html` | FAQ/content filler |
+| 24 | `D18-24N` | `peace-capsules/calm-corner-small-space.html` | FAQ/content filler |
+| 25 | `D18-25N` | `islamic-hajj-umrah/teaching-children-prayer-with-love.html` | FAQ/content filler |
+| 26 | `D18-26N` | `productivity/family-time-management.html` | FAQ/content filler |

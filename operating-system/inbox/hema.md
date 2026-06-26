@@ -1,10 +1,10 @@
 # 📬 Hema — D18-FIX إصلاح المتبقي · 2026-06-26
 
-> **آخر تحديث:** 2026-06-26 11:59 — D18-FIX نشطة (20 صفحة موجودة فقط) + 3 RETURN من D17.
+> **آخر تحديث:** 2026-06-26 11:59 — D18-FIX نشطة (26 صفحة موجودة فقط) + 3 RETURN من D17.
 
 ## ابدأ هكذا
 1. أغلق أولاً RETURN D17: `saudi-tourism` · `mecca-medina` · `choosing-right-school-child-gulf`.
-2. ثم ابدأ `D18-01N` → `D18-20N` بسكيل الكتابة فقط.
+2. ثم ابدأ `D18-01N` → `D18-26N` بسكيل الكتابة فقط.
 3. راحة 5 دقائق بعد كل 5 صفحات: D18-05 · D18-10 · D18-15.
 
 ## قانون القبول
@@ -34,3 +34,9 @@
 18. `peace-capsules/summer-camps-vs-home.html` — words 1597<1600
 19. `peace-capsules/evening-rituals.html` — em-dash
 20. `travel/best-family-destinations-gulf.html` — words 1597<1600
+21. `blog/organize-life-daily-systems.html` — FAQ/content filler
+22. `blog/teaching-children-financial-literacy.html` — FAQ/content filler
+23. `health/children-sleep-summer.html` — FAQ/content filler
+24. `peace-capsules/calm-corner-small-space.html` — FAQ/content filler
+25. `islamic-hajj-umrah/teaching-children-prayer-with-love.html` — FAQ/content filler
+26. `productivity/family-time-management.html` — FAQ/content filler

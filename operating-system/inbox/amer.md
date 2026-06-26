@@ -6,7 +6,7 @@
 
 **التقرير:** `operating-system/reports/deepen-batch-18.md`
 
-- 20 صفحة إصلاح موجودة فقط + 3 RETURN من D17.
+- 26 صفحة إصلاح موجودة فقط + 3 RETURN من D17.
 - القرار لكل ملف: APPROVED LIVE أو RETURN TO HEMA.
 - لا اعتماد من تقرير هيما؛ الفحص على HTML نفسه.
 - بعد PASS: Cursor ينظف الصور/السكيمة وينشر.

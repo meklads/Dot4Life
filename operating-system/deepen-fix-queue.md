@@ -23,9 +23,9 @@
 | `guides/mecca-medina` | ↩️ RETURN | 13 فقرة/بطاقة bilingual تبدأ بالإنجليزية |
 | `blog/choosing-right-school-child-gulf` | ↩️ RETURN | FAQ حشو واحد يحتاج رقم/خطوة/مثال |
 
-**المتبقي العام:** 23 مهمة إصلاح نشطة = 3 RETURN D17 + 20 صفحة D18-FIX.
+**المتبقي العام:** 29 مهمة إصلاح نشطة = 3 RETURN D17 + 26 صفحة D18-FIX.
 
-**D18-FIX أُطلقت:** `operating-system/reports/deepen-batch-18.md` — 20 صفحة موجودة فقط، لا محتوى جديد.
+**D18-FIX أُطلقت ثم وُسّعت بعد فحص FAQ filler:** `operating-system/reports/deepen-batch-18.md` — 20 صفحة موجودة فقط، لا محتوى جديد.
 
 ## D17-FIX — مراجعة الموجة الأولى (01→10) · 2026-06-26 06:52
 

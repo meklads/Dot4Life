@@ -1,5 +1,5 @@
 # لوحة التسليم — المرحلة 1
-> 🔧 D18-FIX نشطة: 20 صفحة إصلاح موجودة فقط + 3 RETURN من D17. لا مواد جديدة. هيما يكتب مع راحة 5 دقائق بعد كل 5، Cursor acting QA يراجع وينشر الناجح.
+> 🔧 D18-FIX نشطة: 26 صفحة إصلاح موجودة فقط + 3 RETURN من D17 = 29 مهمة إصلاح نشطة. لا مواد جديدة.
 > الواجهة: `system/board.html` → التسليم (Trello)
 > آخر مزامنة: 2026-06-26
 
@@ -40,6 +40,12 @@
 | D18-18A | QA D18-FIX — summer camps vs home | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
 | D18-19A | QA D18-FIX — evening rituals | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
 | D18-20A | QA D18-FIX — best family destinations gulf | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D18-21A | QA D18-FIX — organize life daily systems | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D18-22A | QA D18-FIX — teaching children financial literacy | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D18-23A | QA D18-FIX — children sleep summer | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D18-24A | QA D18-FIX — calm corner small space | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D18-25A | QA D18-FIX — teaching children prayer with love | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| D18-26A | QA D18-FIX — family time management | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
 
 ---
 
@@ -70,6 +76,12 @@
 | D18-18C | TECH_BUILD D18-FIX — summer camps vs home | Cursor | بناء ونشر — ثم «انتهى من عندي» |
 | D18-19C | TECH_BUILD D18-FIX — evening rituals | Cursor | بناء ونشر — ثم «انتهى من عندي» |
 | D18-20C | TECH_BUILD D18-FIX — best family destinations gulf | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D18-21C | TECH_BUILD D18-FIX — organize life daily systems | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D18-22C | TECH_BUILD D18-FIX — teaching children financial literacy | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D18-23C | TECH_BUILD D18-FIX — children sleep summer | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D18-24C | TECH_BUILD D18-FIX — calm corner small space | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D18-25C | TECH_BUILD D18-FIX — teaching children prayer with love | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| D18-26C | TECH_BUILD D18-FIX — family time management | Cursor | بناء ونشر — ثم «انتهى من عندي» |
 
 ---
 
@@ -108,6 +120,12 @@
 | D18-18N | DEEPEN D18-FIX — summer camps vs home | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
 | D18-19N | DEEPEN D18-FIX — evening rituals | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
 | D18-20N | DEEPEN D18-FIX — best family destinations gulf | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D18-21N | DEEPEN D18-FIX — organize life daily systems | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D18-22N | DEEPEN D18-FIX — teaching children financial literacy | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D18-23N | DEEPEN D18-FIX — children sleep summer | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D18-24N | DEEPEN D18-FIX — calm corner small space | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D18-25N | DEEPEN D18-FIX — teaching children prayer with love | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| D18-26N | DEEPEN D18-FIX — family time management | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
 
 ---
 
