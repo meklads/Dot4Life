@@ -1,50 +1,36 @@
-# 📬 Hema — بعد إغلاق 3 RETURN · D18-FIX
+# 📬 Hema — Q-01 رفع جودة FAQ
 
-> **آخر تحديث:** 2026-06-26 13:50 — D18 مقسمة: **20 عليك + 6 على Cursor**.
+> **آخر تحديث:** 2026-06-26 18:20 — المرحلة 2 بدأت: تحسين الموجود فقط، لا مواد جديدة.
 
-## رسالتي لك يا هيما
+## المطلوب الآن
 
-بعد ما تخلص الـ3 RETURN اللي معك الآن:
-
-1. `guides/saudi-tourism.html` — أزل الـbilingual نهائياً، لا تبدأ الفقرة بالإنجليزية.
-2. `guides/mecca-medina.html` — أزل الـbilingual من البطاقات والفقرات.
-3. `blog/choosing-right-school-child-gulf.html` — أصلح إجابة FAQ الحشو برقم/خطوة/مثال.
-
-ابدأ بعدها D18 على **20 صفحة كتابة/جودة فقط**، واترك الـ6 التقنية لـ Cursor.
-
-## لا تعمل على هذه الستة — Cursor يتولاها
-- `blog/hydration-guide.html` — schema فقط.
-- `blog/zakat-guide-2025.html` — schema فقط.
-- `blog/gcc-family-budget-2025.html` — schema فقط.
-- `featured-stories/featured-story-gulf-family-home.html` — Unsplash/hero.
-- `featured-stories/arab-mother-startup.html` — em-dash.
-- `peace-capsules/evening-rituals.html` — em-dash.
-
-## اعمل أنت على هذه الـ20
-2. `blog/makkah-hotels-guide.html` — نقص كلمات بسيط + سكيمة ناقصة، هيما يضيف قيمة قصيرة وFAQ إن لزم
-3. `blog/body-fat-vs-weight-guide-ar.html` — محتوى مختلط + Article schema
-4. `blog/salalah-khareef.html` — نقص كلمات بسيط
-5. `blog/family-nutrition-on-budget.html` — محتوى مختلط
-6. `blog/mindful-living-gulf-heat.html` — نقص كلمات بسيط
-7. `blog/building-personal-savings-system.html` — نقص كلمات بسيط
-9. `blog/salalah-travel-guide-2025.html` — نقص كلمات بسيط + سكيمة
-10. `blog/hajj-umrah-guide-2025.html` — سكيمة ناقصة + FAQ filler
-12. `comparisons/comparisons-ready-vs-build-home.html` — نقص كلمات بسيط + Unsplash
-13. `comparisons/comparisons-public-vs-private-education.html` — نقص كلمات بسيط
-16. `featured-stories/featured-story-arab-father-teens.html` — نقص كلمات بسيط
-17. `peace-capsules/peace-at-home-5-steps.html` — نقص كلمات بسيط
-18. `peace-capsules/summer-camps-vs-home.html` — نقص كلمات بسيط
-20. `travel/best-family-destinations-gulf.html` — نقص كلمات بسيط
-21. `blog/organize-life-daily-systems.html` — FAQ/content filler
-22. `blog/teaching-children-financial-literacy.html` — FAQ/content filler
-23. `health/children-sleep-summer.html` — FAQ/content filler
-24. `peace-capsules/calm-corner-small-space.html` — FAQ/content filler
-25. `islamic-hajj-umrah/teaching-children-prayer-with-love.html` — FAQ/content filler
-26. `productivity/family-time-management.html` — FAQ/content filler
+ابدأ Q-01 فوراً: **15 صفحة FAQ quality**. الهدف ليس زيادة كلمات عامة؛ الهدف أن تصبح إجابات FAQ مفيدة وقابلة للاقتباس في البحث.
 
 ## قانون التنفيذ
-- سكيل الكتابة فقط.
-- راحة 5 دقائق بعد كل 5 صفحات.
-- FAQ بأرقام/خطوات/أمثلة، لا حشو.
-- لا bilingual داخل صفحة عربية.
-- اكتب في TEAM-BUS بعد كل 5: `D18 05/20 جاهز للبوابة`.
+
+- كل إجابة FAQ تبدأ في أول جملتين بـ **رقم أو خطوة أو مثال خليجي واضح**.
+- حدّث **FAQ المرئي + FAQPage schema** بنفس النص العربي.
+- ممنوع: «دليل شامل»، «بشكل عام»، «حسب حالتك»، «يعتمد» دون تفصيل، وسلاسل الصفات.
+- لا تغيّر slug ولا عنوان المقال ولا تفتح صفحة جديدة.
+- بعد كل 5 صفحات: **راحة 5 دقائق** ثم أكمل دون انتظار.
+- اكتب في TEAM-BUS بعد كل 5: `Q01 05/15 جاهز للبوابة` ثم `Q01 10/15` ثم `Q01 مكتمل`.
+
+## Q-01 — الصفحات
+
+1. `islamic-hajj-umrah/teaching-children-allah-names.html`
+2. `islamic-hajj-umrah/umrah-with-kids.html`
+3. `blog/zakat-investment-portfolios.html`
+4. `comparisons/gold-vs-real-estate-gulf-family.html`
+5. `health/bmi-calculator-women.html`
+6. `guides/salalah-oman.html`
+7. `blog/hydration-guide.html`
+8. `featured-stories/featured-story-gulf-family-home.html`
+9. `blog/family-friendly-activities-gulf-cities.html`
+10. `health/daily-walking-benefits.html`
+11. `featured-stories/featured-story-saudi-mother.html`
+12. `featured-stories/saudi-father-carpentry-workshop.html`
+13. `blog/ramadan-preparation-guide-families.html`
+14. `health/pregnancy-week-by-week.html`
+15. `blog/family-nutrition-on-budget.html`
+
+التقرير الحاكم: `operating-system/reports/quality-q01-faq.md`.

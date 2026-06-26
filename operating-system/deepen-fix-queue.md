@@ -22,6 +22,14 @@
 
 **→ المرحلة 2:** `operating-system/reports/quality-phase-2-plan.md`
 
+## Q-01 — رفع جودة FAQ · بدأ 2026-06-26 18:20
+
+**الهدف:** 15 صفحة LIVE، تحسين FAQ من مقبول تقنياً إلى 8+/10.
+
+**القائمة:** `teaching-children-allah-names` · `umrah-with-kids` · `zakat-investment-portfolios` · `gold-vs-real-estate-gulf-family` · `bmi-calculator-women` · `salalah-oman` · `hydration-guide` · `featured-story-gulf-family-home` · `family-friendly-activities-gulf-cities` · `daily-walking-benefits` · `featured-story-saudi-mother` · `saudi-father-carpentry-workshop` · `ramadan-preparation-guide-families` · `pregnancy-week-by-week` · `family-nutrition-on-budget`.
+
+**التقرير:** `operating-system/reports/quality-q01-faq.md`.
+
 ## D18-Hema — مكتمل 20/20 LIVE · 2026-06-26 18:10
 
 **الموجة الأولى (7):** `makkah-hotels-guide` · `salalah-khareef` · `family-nutrition-on-budget` · `mindful-living-gulf-heat` · `building-personal-savings-system` · `comparisons-ready-vs-build-home` · `comparisons-public-vs-private-education`.
