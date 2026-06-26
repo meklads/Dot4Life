@@ -851,12 +851,7 @@ body.health-hub-page .hl-h2 {
 }
 [data-lang="ar"] body.health-hub-page .hl-h2 { line-height: 1.3; }
 
-/* ── Intro — designed lead with accent rule ─────────────────── */
-body.health-hub-page .hl-section--cream .hl-intro-text {
-  position: relative;
-  padding-inline-start: 1.25rem;
-  border-inline-start: 3px solid var(--hh-mint);
-}
+/* ── Intro — lead typography (aligned with cards below) ─────── */
 body.health-hub-page .hl-intro-text p {
   font-size: clamp(1.02rem, 1.25vw, 1.15rem);
   color: var(--hv-ink-soft);
@@ -996,4 +991,89 @@ body.health-hub-page .hl-guide-strip-icon {
 
 @media (prefers-reduced-motion: reduce) {
   body.health-hub-page .hl-card--tool::before { transition: none; }
+}
+
+/* ════════════════════════════════════════════════════════════
+   HEALTH HUB — FOUNDATION FIXES v4 (2026-06-27)
+   Fixes: dark body bg bleeding behind body sections, full-bleed
+   teal guide band, dark gap above footer. Contrast + rhythm.
+   ════════════════════════════════════════════════════════════ */
+
+/* (1) Page surface — sections must sit on paper, never the dark
+   hero body colour. Fixes black-on-teal tools heading.         */
+body.health-hub-page #page {
+  background: #ffffff;
+}
+[data-theme="dark"] body.health-hub-page #page {
+  background: var(--bg, #12100E);
+}
+
+/* Non-cream body sections explicitly on paper for safety */
+body.health-hub-page #page > .hl-section:not(.hl-section--cream) {
+  background: #ffffff;
+}
+[data-theme="dark"] body.health-hub-page #page > .hl-section:not(.hl-section--cream) {
+  background: var(--bg, #12100E);
+}
+
+/* (3) Remove dark teal gap above the footer */
+body.health-hub-page .site-footer {
+  margin-top: 0 !important;
+}
+body.health-hub-page .hl-topic-authority {
+  padding-bottom: clamp(3rem, 5vw, 4.5rem);
+}
+
+/* (2) Guide strip — from full-bleed teal band → contained,
+   calm card that matches the editorial system.                 */
+body.health-hub-page .hl-guide-strip {
+  background: #ffffff !important;
+  border: none !important;
+  padding-block: clamp(.5rem, 2vw, 1.25rem) clamp(2.5rem, 5vw, 4rem);
+  box-shadow: none;
+}
+[data-theme="dark"] body.health-hub-page .hl-guide-strip {
+  background: var(--bg, #12100E) !important;
+}
+body.health-hub-page .hl-guide-strip-inner {
+  background: linear-gradient(135deg, var(--hh-cream-warm) 0%, #ffffff 100%);
+  border: 1px solid rgba(106, 191, 184, .28);
+  border-radius: 20px;
+  padding: 1.35rem 1.6rem;
+  box-shadow: 0 4px 24px rgba(10, 107, 99, .07);
+  color: var(--hv-ink);
+}
+[data-theme="dark"] body.health-hub-page .hl-guide-strip-inner {
+  background: linear-gradient(135deg, #1e2428 0%, #1a2a27 100%);
+  border-color: rgba(106, 191, 184, .18);
+}
+body.health-hub-page .hl-guide-strip-icon {
+  background: linear-gradient(135deg, var(--hh-teal), var(--hh-teal-deep));
+  color: #fff;
+  width: 44px;
+  height: 44px;
+  border-radius: 13px;
+  box-shadow: 0 4px 14px rgba(10, 107, 99, .18);
+}
+body.health-hub-page .hl-guide-strip-label {
+  color: var(--hh-teal);
+}
+body.health-hub-page .hl-guide-strip-title {
+  color: var(--hv-ink);
+}
+body.health-hub-page .hl-guide-strip-link {
+  border: 1.5px solid var(--hh-teal);
+  color: var(--hh-teal);
+  background: transparent;
+}
+body.health-hub-page .hl-guide-strip-link:hover {
+  background: var(--hh-teal);
+  color: #fff;
+  border-color: var(--hh-teal);
+}
+
+/* (4) Intro block — keep prose width but align lead + cards to
+   the same edges (no inset). Pillars already share container.  */
+body.health-hub-page .hl-section--cream .hl-prose .hh-pillars {
+  margin-inline: 0;
 }
