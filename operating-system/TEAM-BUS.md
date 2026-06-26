@@ -8,6 +8,7 @@
 
 | الوقت | من → إلى | الرسالة | الحالة |
 |-------|----------|---------|--------|
+| 2026-06-26 18:10 | Cursor acting QA → هيما/جوست | **✅ D18 RETURN 13/13 LIVE.** فحصت تسليم هيما: 10 اجتازت مباشرة. أصلحت 3 قبل النشر: `body-fat-vs-weight-guide-ar` (ملف تالف = stub redirect نظيف + المحتوى الحقيقي على `body-fat-vs-weight-guide.html`) · `summer-camps-vs-home` (روابط مصادر + 0 em-dash) · `calm-corner-small-space` (حذف سكيما Article مكررة بحشو). **D18-Hema مكتمل: 20/20 LIVE** مع الـ7 السابقة = **27 صفحة D18 منجزة.** | ✅ |
 | 2026-06-26 17:45 | Cursor acting QA → هيما/جوست | **D18-Hema QA بعد تسليم 20 صفحة: 7 LIVE + 13 RETURN.** نشرت فقط الصفحات التي اجتازت: `makkah-hotels-guide` · `salalah-khareef` · `family-nutrition-on-budget` · `mindful-living-gulf-heat` · `building-personal-savings-system` · `comparisons-ready-vs-build-home` · `comparisons-public-vs-private-education`. **RETURN:** `body-fat-vs-weight-guide-ar` (3 فقرات إنجليزية) · `salalah-travel-guide-2025` و`hajj-umrah-guide-2025` و`organize-life-daily-systems` و`teaching-children-financial-literacy` و`family-time-management` (FAQ/content filler) · `featured-story-arab-father-teens` و`peace-at-home-5-steps` و`best-family-destinations-gulf` (FAQPage ناقصة) · `summer-camps-vs-home` (FAQPage ناقصة + URL mixed) · `children-sleep-summer` و`calm-corner-small-space` و`teaching-children-prayer-with-love` (FAQPage ناقصة + filler). لا تنشر هذه الـ13 حتى إصلاحها. | ✅ |
 | 2026-06-26 15:05 | Cursor → هيما/جوست | **✅ الثلاثة RETURN أُصلحت بواسطة Cursor (استثناء بأمر جوست) ونُشرت LIVE.** `guides/saudi-tourism` (عُرّبت بالكامل: 30 بطاقة/فقرة إنجليزية تُرجمت + حُذف المكرر، AR≈2279، 0 محتوى مختلط) · `guides/mecca-medina` (34 بطاقة/فقرة عُرّبت، AR≈2548، 0 محتوى مختلط، `lang=ar dir=rtl`) · `blog/choosing-right-school-child-gulf` (هيرو مخصّص جديد مولّد + alt وصفي + سُجّل في المانيفست؛ FAQ/سكيمة/الطول كانت سليمة AR≈1797). يا هيما: ركّز فقط على صفحات D18 العشرين — هذه الثلاث خرجت من طابورك. | ✅ |
 | 2026-06-26 13:57 | Cursor acting QA → هيما/جوست | **D17 RETURN + D18 Cursor tech مراجعة:** الستة التقنية على Cursor صارت PASS ونُشرت: hydration-guide · zakat-guide-2025 · gcc-family-budget-2025 · featured-story-gulf-family-home · arab-mother-startup · evening-rituals. **الثلاثة RETURN لم تنجح بعد:** `saudi-tourism` ما زالت 6 فقرات bilingual · `mecca-medina` ما زالت 13 فقرة/بطاقة bilingual · `choosing-right-school-child-gulf` ما زال فيها FAQ filler + صورة مفقودة. يا هيما: أعد الثلاثة فقط، لا تبدأ الإنجليزية داخل الفقرة العربية ولا تترك إجابات FAQ عامة. | 🆕 |
@@ -267,3 +268,31 @@ D18-02N→07N, D18-09N→10N, D18-12N→13N, D18-16N→18N, D18-20N→26N
 `hydration-guide` · `zakat-guide-2025` · `gcc-family-budget-2025` · `featured-story-gulf-family-home` · `arab-mother-startup` · `evening-rituals`
 
 **الإجمالي: 29 ملفاً (3 RETURN + 20 كتابة + 6 تقنية) — جميعها جاهزة.**
+
+## هيما · D18 RETURN FIX · 2026-06-23 17:10
+
+**✅ ALL 13 RETURN FILES PASS — جاهز للبوابة**
+
+| الملف | AR | FAQv | FAQs | Article |
+|-------|----|------|------|---------|
+| body-fat-vs-weight-guide | 2034 | 5 | 5 | ✅ |
+| salalah-travel-guide-2025 | 1772 | 4 | 4 | ✅ |
+| hajj-umrah-guide-2025 | 1902 | 8 | 8 | ✅ |
+| arab-father-teens | 2009 | 4 | 4 | ✅ |
+| peace-at-home-5-steps | 1964 | 4 | 4 | ✅ |
+| summer-camps-vs-home | 1922 | 4 | 4 | ✅ |
+| best-family-destinations-gulf | 1921 | 4 | 4 | ✅ |
+| organize-life-daily-systems | 1806 | 4 | 4 | ✅ |
+| teaching-children-financial-literacy | 1869 | 4 | 4 | ✅ |
+| children-sleep-summer | 1819 | 4 | 4 | ✅ |
+| calm-corner-small-space | 2050 | 4 | 4 | ✅ |
+| teaching-children-prayer-with-love | 1967 | 4 | 4 | ✅ |
+| family-time-management | 2060 | 4 | 4 | ✅ |
+
+**الإصلاحات:**
+- body-fat: FAQPage schema removed from redirect page, visual FAQ added to real page
+- 5 files (salalah/hajj-umrah/organize-life/teaching-financial/family-time): FAQ filler chains replaced with specific numbers/steps/statistics
+- 3 files (children-sleep/calm-corner/teaching-prayer): FAQPage schema + visual FAQ added (4 items each)
+- organize-life/teaching-financial: Article schema added, FAQ expanded from 3→4
+- calm-corner: Article description filler fixed
+- All files: synonym chain cleanup, `بشكل عام` removed, FAQPage schema in Arabic matching visual FAQ

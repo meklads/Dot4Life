@@ -13,7 +13,16 @@
 **فحص الموقع الشامل (2026-06-26):** 108 صفحة عربية. **49 صفحة تحتاج إصلاح** = 41 ضحلة (3 شديدة <1200 · 3 متوسطة 1200-1499 · 35 على الحد 1500-1599) + 8 بلا Article schema + 7 بلا FAQPage + 5 em-dash + 5 Unsplash (بتداخل). **0 محتوى مختلط** (اكتمل تعريبها).
 
 
-## D18-Hema QA — 7 LIVE + 13 RETURN · 2026-06-26 17:45
+## D18-Hema — مكتمل 20/20 LIVE · 2026-06-26 18:10
+
+**الموجة الأولى (7):** `makkah-hotels-guide` · `salalah-khareef` · `family-nutrition-on-budget` · `mindful-living-gulf-heat` · `building-personal-savings-system` · `comparisons-ready-vs-build-home` · `comparisons-public-vs-private-education`.
+
+**الموجة الثانية (13 RETURN → LIVE):** بعد إصلاح هيما + 3 لمسات Cursor قبل النشر:
+`body-fat-vs-weight-guide` (+ stub `-ar`) · `salalah-travel-guide-2025` · `hajj-umrah-guide-2025` · `featured-story-arab-father-teens` · `peace-at-home-5-steps` · `summer-camps-vs-home` · `best-family-destinations-gulf` · `organize-life-daily-systems` · `teaching-children-financial-literacy` · `children-sleep-summer` · `calm-corner-small-space` · `teaching-children-prayer-with-love` · `family-time-management`.
+
+**D18 الكامل:** 20 هيما + 6 Cursor تقنية = **26/26 LIVE.**
+
+## D18-Hema QA — 7 LIVE + 13 RETURN · 2026-06-26 17:45 (مُغلق)
 
 **✅ نُشرت LIVE بعد PASS كامل:**
 `makkah-hotels-guide` · `salalah-khareef` · `family-nutrition-on-budget` · `mindful-living-gulf-heat` · `building-personal-savings-system` · `comparisons-ready-vs-build-home` · `comparisons-public-vs-private-education`.

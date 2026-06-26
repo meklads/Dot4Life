@@ -17,19 +17,7 @@
 
 | التذكرة | المقال | موجه لـ | المطلوب |
 |---------|--------|---------|----------|
-| D18-03A | QA D18-FIX — body fat vs weight guide ar | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D18-09A | QA D18-FIX — salalah travel guide 2025 | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D18-10A | QA D18-FIX — hajj umrah guide 2025 | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D18-16A | QA D18-FIX — featured story arab father teens | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D18-17A | QA D18-FIX — peace at home 5 steps | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D18-18A | QA D18-FIX — summer camps vs home | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D18-20A | QA D18-FIX — best family destinations gulf | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D18-21A | QA D18-FIX — organize life daily systems | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D18-22A | QA D18-FIX — teaching children financial literacy | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D18-23A | QA D18-FIX — children sleep summer | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D18-24A | QA D18-FIX — calm corner small space | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D18-25A | QA D18-FIX — teaching children prayer with love | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D18-26A | QA D18-FIX — family time management | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
+| — | — | — | — |
 
 ---
 
@@ -37,19 +25,7 @@
 
 | التذكرة | المقال | موجه لـ | المطلوب |
 |---------|--------|---------|----------|
-| D18-03C | TECH_BUILD D18-FIX — body fat vs weight guide ar | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D18-09C | TECH_BUILD D18-FIX — salalah travel guide 2025 | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D18-10C | TECH_BUILD D18-FIX — hajj umrah guide 2025 | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D18-16C | TECH_BUILD D18-FIX — featured story arab father teens | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D18-17C | TECH_BUILD D18-FIX — peace at home 5 steps | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D18-18C | TECH_BUILD D18-FIX — summer camps vs home | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D18-20C | TECH_BUILD D18-FIX — best family destinations gulf | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D18-21C | TECH_BUILD D18-FIX — organize life daily systems | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D18-22C | TECH_BUILD D18-FIX — teaching children financial literacy | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D18-23C | TECH_BUILD D18-FIX — children sleep summer | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D18-24C | TECH_BUILD D18-FIX — calm corner small space | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D18-25C | TECH_BUILD D18-FIX — teaching children prayer with love | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D18-26C | TECH_BUILD D18-FIX — family time management | Cursor | بناء ونشر — ثم «انتهى من عندي» |
+| — | — | — | — |
 
 ---
 
@@ -65,19 +41,7 @@
 
 | التذكرة | المقال | موجه لـ | المطلوب |
 |---------|--------|---------|----------|
-| D18-03N | DEEPEN D18-FIX — body fat vs weight guide ar | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D18-09N | DEEPEN D18-FIX — salalah travel guide 2025 | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D18-10N | DEEPEN D18-FIX — hajj umrah guide 2025 | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D18-16N | DEEPEN D18-FIX — featured story arab father teens | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D18-17N | DEEPEN D18-FIX — peace at home 5 steps | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D18-18N | DEEPEN D18-FIX — summer camps vs home | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D18-20N | DEEPEN D18-FIX — best family destinations gulf | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D18-21N | DEEPEN D18-FIX — organize life daily systems | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D18-22N | DEEPEN D18-FIX — teaching children financial literacy | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D18-23N | DEEPEN D18-FIX — children sleep summer | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D18-24N | DEEPEN D18-FIX — calm corner small space | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D18-25N | DEEPEN D18-FIX — teaching children prayer with love | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D18-26N | DEEPEN D18-FIX — family time management | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
+| — | — | — | — |
 
 ---
 
@@ -631,6 +595,9 @@
 | D18-02N | DEEPEN D18-FIX — makkah hotels guide | — |
 | D18-02A | QA D18-FIX — makkah hotels guide | — |
 | D18-02C | TECH_BUILD D18-FIX — makkah hotels guide | — |
+| D18-03N | DEEPEN D18-FIX — body fat vs weight guide ar | — |
+| D18-03A | QA D18-FIX — body fat vs weight guide ar | — |
+| D18-03C | TECH_BUILD D18-FIX — body fat vs weight guide ar | — |
 | D18-04N | DEEPEN D18-FIX — salalah khareef | — |
 | D18-04A | QA D18-FIX — salalah khareef | — |
 | D18-04C | TECH_BUILD D18-FIX — salalah khareef | — |
@@ -646,6 +613,12 @@
 | D18-08N | DEEPEN D18-FIX — zakat guide 2025 | 2026-06-26 13:57 |
 | D18-08A | QA D18-FIX — zakat guide 2025 | 2026-06-26 13:57 |
 | D18-08C | TECH_BUILD D18-FIX — zakat guide 2025 | 2026-06-26 13:57 |
+| D18-09N | DEEPEN D18-FIX — salalah travel guide 2025 | — |
+| D18-09A | QA D18-FIX — salalah travel guide 2025 | — |
+| D18-09C | TECH_BUILD D18-FIX — salalah travel guide 2025 | — |
+| D18-10N | DEEPEN D18-FIX — hajj umrah guide 2025 | — |
+| D18-10A | QA D18-FIX — hajj umrah guide 2025 | — |
+| D18-10C | TECH_BUILD D18-FIX — hajj umrah guide 2025 | — |
 | D18-11N | DEEPEN D18-FIX — gcc family budget 2025 | 2026-06-26 13:57 |
 | D18-11A | QA D18-FIX — gcc family budget 2025 | 2026-06-26 13:57 |
 | D18-11C | TECH_BUILD D18-FIX — gcc family budget 2025 | 2026-06-26 13:57 |
@@ -661,9 +634,39 @@
 | D18-15N | DEEPEN D18-FIX — arab mother startup | 2026-06-26 13:57 |
 | D18-15A | QA D18-FIX — arab mother startup | 2026-06-26 13:57 |
 | D18-15C | TECH_BUILD D18-FIX — arab mother startup | 2026-06-26 13:57 |
+| D18-16N | DEEPEN D18-FIX — featured story arab father teens | — |
+| D18-16A | QA D18-FIX — featured story arab father teens | — |
+| D18-16C | TECH_BUILD D18-FIX — featured story arab father teens | — |
+| D18-17N | DEEPEN D18-FIX — peace at home 5 steps | — |
+| D18-17A | QA D18-FIX — peace at home 5 steps | — |
+| D18-17C | TECH_BUILD D18-FIX — peace at home 5 steps | — |
+| D18-18N | DEEPEN D18-FIX — summer camps vs home | — |
+| D18-18A | QA D18-FIX — summer camps vs home | — |
+| D18-18C | TECH_BUILD D18-FIX — summer camps vs home | — |
 | D18-19N | DEEPEN D18-FIX — evening rituals | 2026-06-26 13:57 |
 | D18-19A | QA D18-FIX — evening rituals | 2026-06-26 13:57 |
 | D18-19C | TECH_BUILD D18-FIX — evening rituals | 2026-06-26 13:57 |
+| D18-20N | DEEPEN D18-FIX — best family destinations gulf | — |
+| D18-20A | QA D18-FIX — best family destinations gulf | — |
+| D18-20C | TECH_BUILD D18-FIX — best family destinations gulf | — |
+| D18-21N | DEEPEN D18-FIX — organize life daily systems | — |
+| D18-21A | QA D18-FIX — organize life daily systems | — |
+| D18-21C | TECH_BUILD D18-FIX — organize life daily systems | — |
+| D18-22N | DEEPEN D18-FIX — teaching children financial literacy | — |
+| D18-22A | QA D18-FIX — teaching children financial literacy | — |
+| D18-22C | TECH_BUILD D18-FIX — teaching children financial literacy | — |
+| D18-23N | DEEPEN D18-FIX — children sleep summer | — |
+| D18-23A | QA D18-FIX — children sleep summer | — |
+| D18-23C | TECH_BUILD D18-FIX — children sleep summer | — |
+| D18-24N | DEEPEN D18-FIX — calm corner small space | — |
+| D18-24A | QA D18-FIX — calm corner small space | — |
+| D18-24C | TECH_BUILD D18-FIX — calm corner small space | — |
+| D18-25N | DEEPEN D18-FIX — teaching children prayer with love | — |
+| D18-25A | QA D18-FIX — teaching children prayer with love | — |
+| D18-25C | TECH_BUILD D18-FIX — teaching children prayer with love | — |
+| D18-26N | DEEPEN D18-FIX — family time management | — |
+| D18-26A | QA D18-FIX — family time management | — |
+| D18-26C | TECH_BUILD D18-FIX — family time management | — |
 
 ---
 
