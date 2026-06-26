@@ -816,3 +816,184 @@ body.health-hub-page #latest-articles .hl-article-grid { margin-top: .25rem; }
     transform: none;
   }
 }
+
+/* ════════════════════════════════════════════════════════════
+   HEALTH HUB — ELEVATION v3 (2026-06-27)
+   Bolder, clearly-visible premium polish · still calm.
+   Adds per-tool accent colour, premium featured cards,
+   pill eyebrows, larger headings, designed intro & pillars.
+   ════════════════════════════════════════════════════════════ */
+
+/* ── Eyebrow → soft pill (clear "designed" signal) ──────────── */
+body.health-hub-page .hl-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .42rem .9rem;
+  border-radius: 999px;
+  background: rgba(106, 191, 184, .12);
+  border: 1px solid rgba(106, 191, 184, .24);
+  color: var(--hh-teal);
+  margin-bottom: 1.15rem;
+}
+body.health-hub-page .hl-eyebrow::before { display: none; }
+body.health-hub-page .hl-eyebrow svg { stroke: var(--hh-teal); opacity: .9; }
+[data-theme="dark"] body.health-hub-page .hl-eyebrow {
+  background: rgba(106, 191, 184, .14);
+  border-color: rgba(106, 191, 184, .26);
+  color: var(--hh-mint-soft);
+}
+
+/* ── Larger, more designed section headings ─────────────────── */
+body.health-hub-page .hl-h2 {
+  font-size: clamp(1.55rem, 2.9vw, 2.2rem);
+  line-height: 1.18;
+}
+[data-lang="ar"] body.health-hub-page .hl-h2 { line-height: 1.3; }
+
+/* ── Intro — designed lead with accent rule ─────────────────── */
+body.health-hub-page .hl-section--cream .hl-intro-text {
+  position: relative;
+  padding-inline-start: 1.25rem;
+  border-inline-start: 3px solid var(--hh-mint);
+}
+body.health-hub-page .hl-intro-text p {
+  font-size: clamp(1.02rem, 1.25vw, 1.15rem);
+  color: var(--hv-ink-soft);
+}
+
+/* ── Wellness pillars — richer, premium ─────────────────────── */
+body.health-hub-page .hh-pillar {
+  padding: 1.75rem 1.5rem 1.6rem;
+  border-radius: 22px;
+  background: linear-gradient(180deg, #fff 0%, #fafdfc 100%);
+  box-shadow: 0 4px 22px rgba(10, 107, 99, .06);
+}
+body.health-hub-page .hh-pillar::after {
+  height: 3px;
+  background: linear-gradient(90deg, var(--hh-teal), var(--hh-mint));
+}
+body.health-hub-page .hh-pillar:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 38px rgba(10, 107, 99, .13);
+}
+body.health-hub-page .hh-pillar-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(106, 191, 184, .22), rgba(106, 191, 184, .08));
+  box-shadow: 0 4px 14px rgba(10, 107, 99, .1);
+  margin-bottom: 1.1rem;
+}
+body.health-hub-page .hh-pillar-icon svg { width: 23px; height: 23px; }
+body.health-hub-page .hh-pillar-title { font-size: 1.02rem; }
+
+/* ── Featured trio — premium tier ───────────────────────────── */
+body.health-hub-page .hh-featured-card {
+  padding: 1.85rem 1.65rem;
+  border-radius: 24px;
+  background: linear-gradient(158deg, #ffffff 0%, #f2faf8 55%, #e9f6f3 100%);
+  border-color: rgba(106, 191, 184, .3);
+  box-shadow: 0 6px 30px rgba(10, 107, 99, .1);
+}
+body.health-hub-page .hh-featured-card::before {
+  height: 4px;
+  background: linear-gradient(90deg, var(--hh-teal-deep), var(--hh-mint));
+}
+body.health-hub-page .hh-featured-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 22px 52px rgba(10, 107, 99, .2);
+}
+body.health-hub-page .hh-featured-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 17px;
+  box-shadow: 0 6px 18px rgba(10, 107, 99, .14);
+  margin-bottom: 1.15rem;
+}
+body.health-hub-page .hh-featured-icon svg { width: 25px; height: 25px; }
+body.health-hub-page .hh-featured-title { font-size: 1.2rem; }
+[data-theme="dark"] body.health-hub-page .hh-featured-card {
+  background: linear-gradient(158deg, #1e2428 0%, #1a2a27 100%);
+  border-color: rgba(106, 191, 184, .2);
+}
+
+/* ── Tool cards — per-card accent identity ──────────────────── */
+body.health-hub-page .hl-card--tool {
+  position: relative;
+  overflow: hidden;
+  padding: 1.65rem 1.45rem;
+  border-radius: 22px;
+  background: linear-gradient(180deg, #fff 0%, #fcfdfc 100%);
+}
+body.health-hub-page .hl-card--tool::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  inset-inline: 0;
+  height: 3px;
+  background: linear-gradient(90deg,
+    var(--hl-accent, var(--hh-teal)),
+    color-mix(in srgb, var(--hl-accent, #6abfb8) 30%, transparent) 70%,
+    transparent);
+  transform: scaleX(.4);
+  transform-origin: left;
+  opacity: .55;
+  transition: transform .35s var(--hh-ease), opacity .35s var(--hh-ease);
+}
+[data-lang="ar"] body.health-hub-page .hl-card--tool::before { transform-origin: right; }
+body.health-hub-page .hl-card--tool:hover::before {
+  transform: scaleX(1);
+  opacity: 1;
+}
+body.health-hub-page .hl-card--tool .hl-card-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 15px;
+  background: linear-gradient(135deg,
+    color-mix(in srgb, var(--hl-accent, #6abfb8) 20%, transparent),
+    color-mix(in srgb, var(--hl-accent, #6abfb8) 7%, transparent));
+  border: 1px solid color-mix(in srgb, var(--hl-accent, #6abfb8) 22%, transparent);
+  color: var(--hl-accent, var(--hh-teal));
+}
+body.health-hub-page .hl-card--tool .hl-card-icon--emoji {
+  color: inherit;
+}
+body.health-hub-page .hl-card--tool .hl-card-arrow {
+  color: var(--hl-accent, var(--hh-teal));
+}
+body.health-hub-page .hl-card--tool:hover {
+  border-color: color-mix(in srgb, var(--hl-accent, #6abfb8) 38%, transparent);
+  box-shadow: 0 14px 38px color-mix(in srgb, var(--hl-accent, #0a6b63) 14%, transparent);
+}
+
+/* ── Topic authority cards — subtle top accent ──────────────── */
+body.health-hub-page .hl-card--topic {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, #fff 0%, #fafdfc 100%);
+  box-shadow: 0 4px 22px rgba(10, 107, 99, .06);
+}
+body.health-hub-page .hl-card--topic::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  inset-inline: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--hh-mint), transparent 80%);
+}
+
+/* ── Guide strip — deeper, more premium band ────────────────── */
+body.health-hub-page .hl-guide-strip {
+  padding-block: 1.6rem;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .08);
+}
+body.health-hub-page .hl-guide-strip-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.health-hub-page .hl-card--tool::before { transition: none; }
+}
