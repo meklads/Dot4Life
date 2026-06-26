@@ -10,7 +10,7 @@
 (function() {
   'use strict';
 
-  var FEED_VERSION = 18;  // v18: approved heroes — pregnancy AR + children-sleep fix
+  var FEED_VERSION = 19;  // v19: re-read lang at render + re-render on language toggle
 
   var CONFIG = {
     jsonUrl: '/articles.json',
@@ -728,6 +728,9 @@
   /* ═══ Main Render ═══ */
 
   function render() {
+    // Re-read active language at render time: the page may boot as `en` and
+    // switch to the stored `ar` preference after this module first loaded.
+    isAr = document.documentElement.getAttribute('data-lang') === 'ar';
     var pageType = getPageType();
     var filtered = getFilteredArticles(pageType);
     if (!articles || !articles.length) {
@@ -836,6 +839,23 @@
       }, 1000);
     }
   }
+
+  /* Re-render feed-driven cards when the user toggles language, so the
+     single-language cards (#latest-articles grid, blog, archive) follow the
+     active language instead of staying in the boot-time language. */
+  var langRenderScheduled = false;
+  document.addEventListener('dfl:langchange', function (e) {
+    // Only react to genuine user toggles (CustomEvent w/ detail.lang). render()
+    // itself fires a plain Event('dfl:langchange') to refresh slot links — that
+    // one must NOT trigger a re-render, or we'd loop forever.
+    if (!e || !e.detail || !e.detail.lang) return;
+    if (langRenderScheduled || !articles || !articles.length) return;
+    langRenderScheduled = true;
+    setTimeout(function () {
+      langRenderScheduled = false;
+      try { render(); } catch (e) { console.warn('feed.js: re-render on langchange failed', e); }
+    }, 0);
+  });
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', boot);
