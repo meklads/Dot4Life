@@ -82,3 +82,26 @@ D-01 يرفع **القيمة التحريرية داخل الجسم** للصفح
 ## رسالة الإطلاق
 
 > **🚀 D-01 مفعّلة — تعميق قيمة 15 صفحة موجودة فقط.** يا هيما: ابدئي `D-01-01N` من `quality-d01-prep.md`. المطلوب +200-400 كلمة فريدة داخل الجسم، جدول/سيناريو/أخطاء شائعة، لا حشو ولا slugs جديدة. راحة 5 دقائق بعد كل 5 صفحات. Cursor acting QA ينشر فقط PASS.
+
+## إغلاق Cursor QA — 2026-06-26 22:55
+
+**D-01 مغلقة: 15/15 PASS.**
+
+فحص Cursor بعد تسليم هيما:
+
+- كل الصفحات ≥1800 كلمة تقريباً بعد التعميق.
+- FAQ المرئي = FAQPage بالعدد.
+- Article JSON-LD صالح.
+- 0 em-dash.
+- 0 Unsplash.
+- 0 H2 مكرر أو `id` مكرر.
+- 0 حشو من نوع `قسم إضافي مفصل` أو سلاسل مترادفات.
+- 0 ادعاء مؤسسة/جامعة/رقم بلا رابط عميق أو صياغة وصفية.
+
+إصلاحات Cursor قبل النشر:
+
+- إزالة/تحويل ادعاءات بلا روابط في `bmi-article`، `ramadan-calorie-calculator`، `calorie-calculator-saudi`، `fitness-for-women-saudi`، `emirati-grandmother-cooking-traditions`، `ramadan-preparation-guide-families`.
+- تنظيف FAQ المرئي القديم في `guides/salalah-oman.html` ليطابق السكيما النظيفة.
+- إضافة فقرتين قصيرتين ذوات قيمة في `fitness/calorie-calculator-saudi.html` و`guides/salalah-oman.html` بعد أن خفّض تنظيف الحشو عدد الكلمات.
+
+**القرار:** APPROVED LIVE.
