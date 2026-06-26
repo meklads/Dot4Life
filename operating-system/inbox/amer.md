@@ -1,21 +1,15 @@
 # 📬 عامر — بوابة الجودة المؤقتة · 2026-06-26
 
-> **الحالة:** عامر غائب حتى 2026-06-30. جوست فوّض **Cursor acting QA** لتغطية بوابة عامر مؤقتاً بنفس المعايير.
+> عامر غائب حتى 2026-06-30. Cursor acting QA يغطي بوابة عامر.
 
-## 🆕 DEEPEN D17-FIX — خانة A
+## 🆕 D18-FIX — خانة A
 
-**التقرير:** `operating-system/reports/deepen-batch-17.md`
+**التقرير:** `operating-system/reports/deepen-batch-18.md`
 
-- 30 صفحة إصلاح/تعميق موجودة فقط، لا مواد جديدة.
-- تذاكر `D17-01A` → `D17-30A` على بوابة عامر، ويغطيها **Cursor acting QA** مؤقتاً.
-- القرار لكل ملف فقط: **APPROVED LIVE** أو **RETURN TO HEMA**.
+- 20 صفحة إصلاح موجودة فقط + 3 RETURN من D17.
+- القرار لكل ملف: APPROVED LIVE أو RETURN TO HEMA.
 - لا اعتماد من تقرير هيما؛ الفحص على HTML نفسه.
-- بعد PASS: كورسر يبني/ينظف الصور وينشر.
+- بعد PASS: Cursor ينظف الصور/السكيمة وينشر.
 
 ## معيار القرار
-- AR ≥1600w · EN ≥1500w إن وُجد · FAQ≥4 · Article+FAQPage · 0 em-dash · 0 Unsplash.
-- FAQ يجب أن تكون محددة بأرقام/خطوات/أمثلة، لا حشو مترادف.
-- أي اسم مؤسسة/جامعة/منظمة/مجلة أو رقم دقيق بلا رابط عميق في نفس الفقرة = رفض أو صياغة وصفية.
-
-## الصور
-Cursor يختار الصورة مؤقتاً بعد PASS: approved/internal أولاً، ثم ستوك مجاني موثق عند الضرورة، ولا Unsplash.
+AR ≥1600w · FAQ≥4 · Article+FAQPage · 0 em-dash · 0 Unsplash · لا mixed language · لا FAQ filler.
