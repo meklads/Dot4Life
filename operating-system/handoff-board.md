@@ -1,5 +1,5 @@
 # لوحة التسليم — المرحلة 1
-> 🔧 D18-FIX نشطة: 26 صفحة إصلاح موجودة فقط + 3 RETURN من D17 = 29 مهمة إصلاح نشطة. لا مواد جديدة.
+> 🔧 D18-FIX مقسمة: 20 صفحة كتابة/جودة على هيما + 6 إصلاحات تقنية على Cursor + 3 RETURN D17 عند هيما. لا مواد جديدة.
 > الواجهة: `system/board.html` → التسليم (Trello)
 > آخر مزامنة: 2026-06-26
 
@@ -20,25 +20,19 @@
 | D17-01A | QA D17-FIX — saudi tourism | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
 | D17-03A | QA D17-FIX — mecca medina | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
 | D17-22A | QA D17-FIX — choosing right school child gulf | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D18-01A | QA D18-FIX — hydration guide | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
 | D18-02A | QA D18-FIX — makkah hotels guide | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
 | D18-03A | QA D18-FIX — body fat vs weight guide ar | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
 | D18-04A | QA D18-FIX — salalah khareef | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
 | D18-05A | QA D18-FIX — family nutrition on budget | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
 | D18-06A | QA D18-FIX — mindful living gulf heat | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
 | D18-07A | QA D18-FIX — building personal savings system | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D18-08A | QA D18-FIX — zakat guide 2025 | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
 | D18-09A | QA D18-FIX — salalah travel guide 2025 | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
 | D18-10A | QA D18-FIX — hajj umrah guide 2025 | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D18-11A | QA D18-FIX — gcc family budget 2025 | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
 | D18-12A | QA D18-FIX — comparisons ready vs build home | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
 | D18-13A | QA D18-FIX — comparisons public vs private education | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D18-14A | QA D18-FIX — featured story gulf family home | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D18-15A | QA D18-FIX — arab mother startup | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
 | D18-16A | QA D18-FIX — featured story arab father teens | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
 | D18-17A | QA D18-FIX — peace at home 5 steps | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
 | D18-18A | QA D18-FIX — summer camps vs home | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D18-19A | QA D18-FIX — evening rituals | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
 | D18-20A | QA D18-FIX — best family destinations gulf | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
 | D18-21A | QA D18-FIX — organize life daily systems | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
 | D18-22A | QA D18-FIX — teaching children financial literacy | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
@@ -100,25 +94,19 @@
 | D17-01N | DEEPEN D17-FIX — saudi tourism | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
 | D17-03N | DEEPEN D17-FIX — mecca medina | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
 | D17-22N | DEEPEN D17-FIX — choosing right school child gulf | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D18-01N | DEEPEN D18-FIX — hydration guide | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
 | D18-02N | DEEPEN D18-FIX — makkah hotels guide | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
 | D18-03N | DEEPEN D18-FIX — body fat vs weight guide ar | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
 | D18-04N | DEEPEN D18-FIX — salalah khareef | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
 | D18-05N | DEEPEN D18-FIX — family nutrition on budget | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
 | D18-06N | DEEPEN D18-FIX — mindful living gulf heat | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
 | D18-07N | DEEPEN D18-FIX — building personal savings system | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D18-08N | DEEPEN D18-FIX — zakat guide 2025 | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
 | D18-09N | DEEPEN D18-FIX — salalah travel guide 2025 | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
 | D18-10N | DEEPEN D18-FIX — hajj umrah guide 2025 | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D18-11N | DEEPEN D18-FIX — gcc family budget 2025 | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
 | D18-12N | DEEPEN D18-FIX — comparisons ready vs build home | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
 | D18-13N | DEEPEN D18-FIX — comparisons public vs private education | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D18-14N | DEEPEN D18-FIX — featured story gulf family home | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D18-15N | DEEPEN D18-FIX — arab mother startup | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
 | D18-16N | DEEPEN D18-FIX — featured story arab father teens | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
 | D18-17N | DEEPEN D18-FIX — peace at home 5 steps | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
 | D18-18N | DEEPEN D18-FIX — summer camps vs home | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D18-19N | DEEPEN D18-FIX — evening rituals | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
 | D18-20N | DEEPEN D18-FIX — best family destinations gulf | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
 | D18-21N | DEEPEN D18-FIX — organize life daily systems | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
 | D18-22N | DEEPEN D18-FIX — teaching children financial literacy | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
@@ -664,6 +652,18 @@
 | D17-30N | DEEPEN D17-FIX — expat vs national finance | 2026-06-26 11:59 |
 | D17-30A | QA D17-FIX — expat vs national finance | 2026-06-26 11:59 |
 | D17-30C | TECH_BUILD D17-FIX — expat vs national finance | 2026-06-26 11:59 |
+| D18-01N | DEEPEN D18-FIX — hydration guide | 2026-06-26 13:50 |
+| D18-01A | QA D18-FIX — hydration guide | 2026-06-26 13:50 |
+| D18-08N | DEEPEN D18-FIX — zakat guide 2025 | 2026-06-26 13:50 |
+| D18-08A | QA D18-FIX — zakat guide 2025 | 2026-06-26 13:50 |
+| D18-11N | DEEPEN D18-FIX — gcc family budget 2025 | 2026-06-26 13:50 |
+| D18-11A | QA D18-FIX — gcc family budget 2025 | 2026-06-26 13:50 |
+| D18-14N | DEEPEN D18-FIX — featured story gulf family home | 2026-06-26 13:50 |
+| D18-14A | QA D18-FIX — featured story gulf family home | 2026-06-26 13:50 |
+| D18-15N | DEEPEN D18-FIX — arab mother startup | 2026-06-26 13:50 |
+| D18-15A | QA D18-FIX — arab mother startup | 2026-06-26 13:50 |
+| D18-19N | DEEPEN D18-FIX — evening rituals | 2026-06-26 13:50 |
+| D18-19A | QA D18-FIX — evening rituals | 2026-06-26 13:50 |
 
 ---
 

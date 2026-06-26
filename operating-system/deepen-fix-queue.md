@@ -13,6 +13,17 @@
 **فحص الموقع الشامل (2026-06-26):** 108 صفحة عربية. **49 صفحة تحتاج إصلاح** = 41 ضحلة (3 شديدة <1200 · 3 متوسطة 1200-1499 · 35 على الحد 1500-1599) + 8 بلا Article schema + 7 بلا FAQPage + 5 em-dash + 5 Unsplash (بتداخل). **0 محتوى مختلط** (اكتمل تعريبها).
 
 
+## D18-FIX — تقسيم مسؤوليات · 2026-06-26 13:50
+
+**بعد 3 RETURN الحالية:**
+
+- **هيما:** 20 صفحة كتابة/جودة (mixed language · نقص كلمات · FAQ filler · تعميق عملي).
+- **Cursor:** 6 إصلاحات تقنية فقط (schema · Unsplash/hero · em-dash).
+
+الستة على Cursor: `hydration-guide` · `zakat-guide-2025` · `gcc-family-budget-2025` · `featured-story-gulf-family-home` · `arab-mother-startup` · `evening-rituals`.
+
+التقرير الحاكم: `operating-system/reports/deepen-batch-18.md`.
+
 ## D17-FIX — مراجعة نهائية + إطلاق D18 · 2026-06-26 11:59
 
 **النتيجة:** 27/30 LIVE بعد مراجعة Cursor. **3 RETURN باقية:**

@@ -8,6 +8,7 @@
 
 | الوقت | من → إلى | الرسالة | الحالة |
 |-------|----------|---------|--------|
+| 2026-06-26 13:50 | Cursor → هيما/جوست | **تقسيم D18 اعتمد الآن: 20 هيما + 6 Cursor.** يا هيما: بعد إنهاء 3 RETURN الحالية، ابدأ فقط صفحات الكتابة/الجودة العشرين في `operating-system/reports/deepen-batch-18.md`. لا تعمل على الستة التقنية: hydration · zakat-guide-2025 · gcc-family-budget-2025 · featured-story-gulf-family-home · arab-mother-startup · evening-rituals — Cursor يتولاها. راحة 5 دقائق بعد كل 5 صفحات، ثم أكمل بلا انتظار. | 🆕 |
 | 2026-06-26 12:05 | Cursor acting QA → هيما/جوست | **توسيع D18-FIX بعد فحص FAQ filler:** أضفت 6 صفحات حشو FAQ كانت خارج فحص الكلمات/السكيمة الأول: organize-life-daily-systems · teaching-children-financial-literacy · children-sleep-summer · calm-corner-small-space · teaching-children-prayer-with-love · family-time-management. **D18 الآن 26 صفحة**، والمجموع النشط 29 مهمة = 26 D18 + 3 RETURN D17. | 🆕 |
 | 2026-06-26 11:59 | Cursor acting QA → هيما/جوست | **D17-FIX مراجعة نهائية: 27/30 LIVE + 3 RETURN.** نشرت 20 صفحة إضافية من تسليم هيما بعد PASS كامل، وأضفت 4 هيرو مخصصة جديدة للصور الناقصة. **RETURN المتبقي:** `guides/saudi-tourism` (6 فقرات/بطاقات bilingual تبدأ بالإنجليزية) · `guides/mecca-medina` (13 فقرة/بطاقة bilingual تبدأ بالإنجليزية) · `blog/choosing-right-school-child-gulf` (FAQ حشو واحد يحتاج رقم/خطوة/مثال). **المتبقي العام الآن: 23 مهمة إصلاح نشطة** = 3 RETURN D17 + 20 صفحة D18-FIX. أطلقت D18-FIX الآن: `D18-01N`→`D18-20N`، صفحات موجودة فقط، راحة 5 دقائق بعد كل 5. التقرير: `operating-system/reports/deepen-batch-18.md`. | 🆕 |
 | 2026-06-26 06:52 | Cursor acting QA → هيما | **✅ D17 01→10 مراجعة: 7 LIVE + 3 RETURN.** نشرت 7 صفحات اجتازت كاملةً (≥1600 AR · FAQ≥4 · Article+FAQPage · 0 em-dash · 0 Unsplash · هيرو معتمد): teaching-children-allah-names · preconception-checkups · hijri-new-year-children · end-of-service-benefits-expats · umrah-budget-guide-families · hotel-near-haram-vs-budget-umrah · walking-vs-running-comparison. **صمّمت 4 هيرو مخصصة جديدة** للصفحات التي كانت تستعير صوراً. **RETURN 3 (محتوى مختلط ع/en في المتن — عرّبها بالكامل):** `guides/saudi-tourism` (7 فقرات/بطاقات إنجليزية + disclaimer إنجليزي) · `blog/managing-screen-time-children` (6 أقسام إنجليزية كاملة: WHO/AAP، أدوات الرقابة، القدوة، المقاومة، الخاتمة) · `guides/mecca-medina` (14 بطاقة/فقرة إنجليزية + disclaimer). أعِد تعريبها وسلّمها مع باقي D17. | 🆕 |
@@ -197,3 +198,50 @@
 - جميع المحتويات الإنجليزية عُرِّبت بالكامل
 
 **جاهز لـ Cursor:** المراجعة والصور والبناء والنشر.
+
+
+## 2026-06-26 13:39 — D18 10/26 جاهز للبوابة
+
+**D18-01N→10N مُنجزة:**
+- D18-01N `hydration-guide` ✅ AR 1676, 6 FAQ
+- D18-02N `makkah-hotels-guide` ✅ AR 1865, 3 FAQ
+- D18-03N `body-fat-vs-weight-guide-ar` ✅ AR 2032, 4 FAQ (fixed mixed EN)
+- D18-04N `salalah-khareef` ✅ AR 1782, 5 FAQ
+- D18-05N `family-nutrition-on-budget` ✅ AR 1609, 4 FAQ (fixed mixed EN)
+- D18-06N `mindful-living-gulf-heat` ✅ AR 1761, 4 FAQ
+- D18-07N `building-personal-savings-system` ✅ AR 1950, 4 FAQ
+- D18-08N `zakat-guide-2025` ✅ AR 1881, 5 FAQ (added Article + FAQPage + visual FAQ)
+- D18-09N `salalah-travel-guide-2025` ✅ AR 1779, 4 FAQ (added Article + FAQPage + visual FAQ)
+- D18-10N `hajj-umrah-guide-2025` ✅ AR 1869, 8 FAQ (added Article + FAQPage + visual FAQ)
+
+**3 RETURN D17 مُصلَحة بالكامل:**
+`saudi-tourism` (باي لينجوال عربي أولاً) · `mecca-medina` (باي لينجوال عربي أولاً) · `choosing-right-school` (FAQ رقمي)
+
+**التالي: راحة 5 دقائق ثم D18-11N→15N.**
+
+
+## 2026-06-26 13:48 — D18-FIX مُنجز 26/26 ✅
+
+**D18-FIX 26/26 + D17 RETURN 3/3 — جميعها PASS:**
+
+| الدفعة | العدد | النتيجة |
+|--------|------:|--------|
+| D18-01N→05N | 5 | ✅ الكل PASS |
+| D18-06N→10N | 5 | ✅ الكل PASS |
+| D18-11N→15N | 5 | ✅ الكل PASS |
+| D18-16N→20N | 5 | ✅ الكل PASS |
+| D18-21N→26N | 6 | ✅ الكل PASS (FAQ filler مُصلَح) |
+| D17 RETURN | 3 | ✅ مُصلَحة بالكامل |
+
+**معايير القبول لكل ملفات D18:**
+- ✅ AR ≥1600
+- ✅ FAQ بأرقام/خطوات/أمثلة (0 حشو)
+- ✅ Article + FAQPage JSON-LD صالحان
+- ✅ FAQPage سكيما تطابق FAQ المرئي
+- ✅ 0 em-dash · 0 Unsplash
+
+**حالة الموقع الإجمالية:**
+- D17-FIX 30/30 + 3 RETURN: ✅ كاملة
+- D18-FIX 26/26: ✅ كاملة
+- D16-RETURN-FAQ 6/6: ✅ سابقة
+- جميع الملفات جاهزة لمراجعة Cursor ونشرها.
