@@ -17,9 +17,6 @@
 
 | التذكرة | المقال | موجه لـ | المطلوب |
 |---------|--------|---------|----------|
-| D17-01A | QA D17-FIX — saudi tourism | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D17-03A | QA D17-FIX — mecca medina | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D17-22A | QA D17-FIX — choosing right school child gulf | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
 | D18-02A | QA D18-FIX — makkah hotels guide | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
 | D18-03A | QA D18-FIX — body fat vs weight guide ar | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
 | D18-04A | QA D18-FIX — salalah khareef | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
@@ -47,9 +44,6 @@
 
 | التذكرة | المقال | موجه لـ | المطلوب |
 |---------|--------|---------|----------|
-| D17-01C | TECH_BUILD D17-FIX — saudi tourism | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D17-03C | TECH_BUILD D17-FIX — mecca medina | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D17-22C | TECH_BUILD D17-FIX — choosing right school child gulf | Cursor | بناء ونشر — ثم «انتهى من عندي» |
 | D18-02C | TECH_BUILD D18-FIX — makkah hotels guide | Cursor | بناء ونشر — ثم «انتهى من عندي» |
 | D18-03C | TECH_BUILD D18-FIX — body fat vs weight guide ar | Cursor | بناء ونشر — ثم «انتهى من عندي» |
 | D18-04C | TECH_BUILD D18-FIX — salalah khareef | Cursor | بناء ونشر — ثم «انتهى من عندي» |
@@ -85,9 +79,6 @@
 
 | التذكرة | المقال | موجه لـ | المطلوب |
 |---------|--------|---------|----------|
-| D17-01N | DEEPEN D17-FIX — saudi tourism | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D17-03N | DEEPEN D17-FIX — mecca medina | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D17-22N | DEEPEN D17-FIX — choosing right school child gulf | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
 | D18-02N | DEEPEN D18-FIX — makkah hotels guide | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
 | D18-03N | DEEPEN D18-FIX — body fat vs weight guide ar | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
 | D18-04N | DEEPEN D18-FIX — salalah khareef | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
@@ -565,9 +556,15 @@
 | D16-25N | DEEPEN D16 — saving vs investing gulf family | 2026-06-25 22:15 |
 | D16-25A | QA D16 — saving vs investing gulf family | 2026-06-25 22:15 |
 | D16-25C | TECH_BUILD D16 — saving vs investing gulf family | 2026-06-25 22:15 |
+| D17-01N | DEEPEN D17-FIX — saudi tourism | — |
+| D17-01A | QA D17-FIX — saudi tourism | — |
+| D17-01C | TECH_BUILD D17-FIX — saudi tourism | — |
 | D17-02N | DEEPEN D17-FIX — managing screen time children | 2026-06-26 11:59 |
 | D17-02A | QA D17-FIX — managing screen time children | 2026-06-26 11:59 |
 | D17-02C | TECH_BUILD D17-FIX — managing screen time children | 2026-06-26 11:59 |
+| D17-03N | DEEPEN D17-FIX — mecca medina | — |
+| D17-03A | QA D17-FIX — mecca medina | — |
+| D17-03C | TECH_BUILD D17-FIX — mecca medina | — |
 | D17-04N | DEEPEN D17-FIX — teaching children allah names | 2026-06-26 06:52 |
 | D17-04A | QA D17-FIX — teaching children allah names | 2026-06-26 06:52 |
 | D17-04C | TECH_BUILD D17-FIX — teaching children allah names | 2026-06-26 06:52 |
@@ -622,6 +619,9 @@
 | D17-21N | DEEPEN D17-FIX — managing healthcare costs families | 2026-06-26 11:59 |
 | D17-21A | QA D17-FIX — managing healthcare costs families | 2026-06-26 11:59 |
 | D17-21C | TECH_BUILD D17-FIX — managing healthcare costs families | 2026-06-26 11:59 |
+| D17-22N | DEEPEN D17-FIX — choosing right school child gulf | — |
+| D17-22A | QA D17-FIX — choosing right school child gulf | — |
+| D17-22C | TECH_BUILD D17-FIX — choosing right school child gulf | — |
 | D17-23N | DEEPEN D17-FIX — life insurance gulf families | 2026-06-26 11:59 |
 | D17-23A | QA D17-FIX — life insurance gulf families | 2026-06-26 11:59 |
 | D17-23C | TECH_BUILD D17-FIX — life insurance gulf families | 2026-06-26 11:59 |
