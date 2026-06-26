@@ -22,6 +22,31 @@
 
 **→ المرحلة 2:** `operating-system/reports/quality-phase-2-plan.md`
 
+## Q-01 — FAQ 8+/10 · مفعّلة 2026-06-26 19:00
+
+**الأسبوع 1 · 15 صفحة · هيما:** إعادة FAQ بأرقام/خطوات/أمثلة خليجية.
+التقرير: `operating-system/reports/quality-batch-q01.md` · تذاكر `Q-01-01N`→`15N`.
+
+| # | الملف |
+|---:|------|
+| 01 | `islamic-hajj-umrah/umrah-with-kids.html` |
+| 02 | `islamic-hajj-umrah/hijri-new-year-children.html` |
+| 03 | `islamic-hajj-umrah/daily-adhkar-family-guide.html` |
+| 04 | `featured-stories/featured-story-gulf-family-home.html` |
+| 05 | `blog/family-friendly-activities-gulf-cities.html` |
+| 06 | `blog/daily-islamic-habits-guide.html` |
+| 07 | `islamic-hajj-umrah/teaching-children-allah-names.html` |
+| 08 | `blog/hydration-guide.html` |
+| 09 | `peace-capsules/beat-summer-boredom-without-screens.html` |
+| 10 | `finance-wealth/investment-basics-beginners.html` |
+| 11 | `featured-stories/saudi-father-carpentry-workshop.html` |
+| 12 | `featured-stories/featured-story-saudi-mother.html` |
+| 13 | `comparisons/gold-vs-real-estate-gulf-family.html` |
+| 14 | `comparisons/domestic-vs-international-travel-family.html` |
+| 15 | `blog/umrah-with-kids-guide.html` |
+
+**الأسبوع 2 (مُجدول):** D-01 تعميق قيمة — لا يُطلَق قبل إغلاق Q-01.
+
 ## Q-01 — رفع جودة FAQ · بدأ 2026-06-26 18:20
 
 **الهدف:** 15 صفحة LIVE، تحسين FAQ من مقبول تقنياً إلى 8+/10.

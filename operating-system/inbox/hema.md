@@ -1,36 +1,48 @@
-# 📬 Hema — Q-01 رفع جودة FAQ
+# 📬 Hema — Q-01 مفعّلة · المرحلة 2 أسبوع 1
 
-> **آخر تحديث:** 2026-06-26 18:20 — المرحلة 2 بدأت: تحسين الموجود فقط، لا مواد جديدة.
+> **آخر تحديث:** 2026-06-26 19:00 — **ابدئي Q-01-01N الآن.**
 
-## المطلوب الآن
+## رسالتي لك يا هيما
 
-ابدأ Q-01 فوراً: **15 صفحة FAQ quality**. الهدف ليس زيادة كلمات عامة؛ الهدف أن تصبح إجابات FAQ مفيدة وقابلة للاقتباس في البحث.
+**المرحلة 1 مغلقة** (بوابة إصلاح = 0). الآن **المرحلة 2 — أسبوع 1: Q-01**.
 
-## قانون التنفيذ
+**مهمتك:** رفع جودة FAQ من «تجتاز البوابة» إلى **8+/10** — **15 صفحة موجودة فقط**.
 
-- كل إجابة FAQ تبدأ في أول جملتين بـ **رقم أو خطوة أو مثال خليجي واضح**.
-- حدّث **FAQ المرئي + FAQPage schema** بنفس النص العربي.
-- ممنوع: «دليل شامل»، «بشكل عام»، «حسب حالتك»، «يعتمد» دون تفصيل، وسلاسل الصفات.
-- لا تغيّر slug ولا عنوان المقال ولا تفتح صفحة جديدة.
-- بعد كل 5 صفحات: **راحة 5 دقائق** ثم أكمل دون انتظار.
-- اكتب في TEAM-BUS بعد كل 5: `Q01 05/15 جاهز للبوابة` ثم `Q01 10/15` ثم `Q01 مكتمل`.
+التقرير الكامل: `operating-system/reports/quality-batch-q01.md`
 
-## Q-01 — الصفحات
+## ابدئي الآن — Q-01-01N → Q-01-15N
 
-1. `islamic-hajj-umrah/teaching-children-allah-names.html`
-2. `islamic-hajj-umrah/umrah-with-kids.html`
-3. `blog/zakat-investment-portfolios.html`
-4. `comparisons/gold-vs-real-estate-gulf-family.html`
-5. `health/bmi-calculator-women.html`
-6. `guides/salalah-oman.html`
-7. `blog/hydration-guide.html`
-8. `featured-stories/featured-story-gulf-family-home.html`
-9. `blog/family-friendly-activities-gulf-cities.html`
-10. `health/daily-walking-benefits.html`
-11. `featured-stories/featured-story-saudi-mother.html`
-12. `featured-stories/saudi-father-carpentry-workshop.html`
-13. `blog/ramadan-preparation-guide-families.html`
-14. `health/pregnancy-week-by-week.html`
-15. `blog/family-nutrition-on-budget.html`
+| # | التذكرة | الملف |
+|---:|---------|------|
+| 01 | `Q-01-01N` | `islamic-hajj-umrah/umrah-with-kids.html` |
+| 02 | `Q-01-02N` | `islamic-hajj-umrah/hijri-new-year-children.html` |
+| 03 | `Q-01-03N` | `islamic-hajj-umrah/daily-adhkar-family-guide.html` |
+| 04 | `Q-01-04N` | `featured-stories/featured-story-gulf-family-home.html` |
+| 05 | `Q-01-05N` | `blog/family-friendly-activities-gulf-cities.html` |
+| 06 | `Q-01-06N` | `blog/daily-islamic-habits-guide.html` |
+| 07 | `Q-01-07N` | `islamic-hajj-umrah/teaching-children-allah-names.html` |
+| 08 | `Q-01-08N` | `blog/hydration-guide.html` |
+| 09 | `Q-01-09N` | `peace-capsules/beat-summer-boredom-without-screens.html` |
+| 10 | `Q-01-10N` | `finance-wealth/investment-basics-beginners.html` |
+| 11 | `Q-01-11N` | `featured-stories/saudi-father-carpentry-workshop.html` |
+| 12 | `Q-01-12N` | `featured-stories/featured-story-saudi-mother.html` |
+| 13 | `Q-01-13N` | `comparisons/gold-vs-real-estate-gulf-family.html` |
+| 14 | `Q-01-14N` | `comparisons/domestic-vs-international-travel-family.html` |
+| 15 | `Q-01-15N` | `blog/umrah-with-kids-guide.html` |
 
-التقرير الحاكم: `operating-system/reports/quality-q01-faq.md`.
+## قانون Q-01 (FAQ فقط)
+
+1. **أعد كتابة إجابات FAQ** — لا توسّع الجسم إلا للضرورة.
+2. كل إجابة تبدأ بـ **رقم · خطوة · أو مثال خليجي** في أول جملتين.
+3. **السكيما = النص المرئي** حرفياً (عربي عربي).
+4. ممنوع: «شامل ومفصل» · «بشكل عام» · «متوازن ومعتدل» · «حسب حالتك» · سلاسل مترادفات.
+5. **راحة 5 دقائق** بعد كل 5 صفحات (05 · 10 · 15).
+6. اكتب في TEAM-BUS: `Q-01 05/15 جاهز للبوابة` ثم `10/15` ثم `Q-01 منجز`.
+
+## لا تبدأي D-01 بعد
+
+الأسبوع 2 = تعميق قيمة (+200–400w). **انتظري إغلاق Q-01.**
+
+## D18 و D19
+
+✅ مغلقة بالكامل — لا تعودي لها.

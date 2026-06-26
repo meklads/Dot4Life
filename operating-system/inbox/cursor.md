@@ -1,38 +1,23 @@
-# 📬 Cursor — Acting QA + مدير الدفعات · 2026-06-25
+# 📬 Cursor — Acting QA + مدير المرحلة 2 · 2026-06-26
 
-## مسار متواصل (جوست)
+## المرحلة 2 — جدول 4 أسابيع
 
-**المرجع:** `operating-system/DEEPEN-CONTINUOUS-WORKFLOW.md` · **طابور الإصلاح:** `deepen-fix-queue.md`
+| أسبوع | المهمة | المالك | حالة |
+|-------|--------|--------|------|
+| 1 | **Q-01** FAQ 8+/10 (15 صفحة) | Hema | 🔄 مفعّلة |
+| 2 | **D-01** تعميق قيمة (+200–400w) | Hema | ⏳ بعد Q-01 |
+| 3 | روابط عميقة + داخلية (20 صفحة) | Hema + Cursor QA | ⏳ |
+| 4 | هيرو/alt + EN parity (10 صفحات) | Cursor | ⏳ |
 
-| الدور | المهمة |
-|-------|--------|
-| **QA (A)** | راجع فور تسليم كل ملف — PASS أو RETURN (سجّل في fix-queue) |
-| **بناء (C)** | صور مؤقتة + `finished` بساعة النشر + manifest + commit + push |
-| **مدير** | عند اكتمال دفعة 10 من هيما → أطلق D12 فوراً + رسالة inbox/TEAM-BUS |
-| **عتبة 50** | أوقف دفعات جديدة لهيما؛ أرسل طابور الإصلاح |
+**التقرير Q-01:** `operating-system/reports/quality-batch-q01.md`  
+**الخطة:** `operating-system/reports/quality-phase-2-plan.md`
 
-## DEEPEN Batch 12 — جاري
+## دور Cursor الآن
 
-**التقرير:** `operating-system/reports/deepen-batch-12.md`  
-**التذاكر:** `D12-01N`…`D12-10N` · `D12-XXA` · `D12-XXC`
+1. **QA (Q-01-XXA):** FAQ 8+/10 + بوابة إصلاح = 0 → APPROVED LIVE أو RETURN.
+2. **نشر (Q-01-XXC):** بعد PASS فقط → commit + push.
+3. **لا slugs جديدة** — تجميد الجودة أولاً ساري.
 
-## D11 — منجز ✅ 10/10 LIVE
+## المرحلة 1
 
-## دور Cursor المؤقت (عامر حتى 30/6)
-
-1. بوابة `D12-XXA` بنفس معايير عامر.
-2. PASS → `D11-XXC` + صورة (approved → reuse → ستوك موثق).
-3. RETURN → `deepen-fix-queue.md` — **لا توقف هيما**.
-4. PASS → `DXX-XXC` + صورة + **`finished`: `YYYY-MM-DD HH:MM`** (يظهر في أقسام الموقع) → commit + push.
-
-## الصور
-
-- `assets/images/approved/` أولاً
-- إعادة استخدام داخلي مناسب
-- ستوك مجاني موثق عند الضرورة
-
-## بعد D11
-
-1. `scripts/launch-deepen-10.py` أو سكربت D12 — 10 مقالات تالية من طابور DEEPEN.
-2. تحديث inbox/hema + TEAM-BUS برسالة «D12 — ابدئي الآن».
-3. تكرار الحلقة.
+✅ D16–D19 مغلقة · بوابة إصلاح **0 مخالفة** · RETURN **صفر**.
