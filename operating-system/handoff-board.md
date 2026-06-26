@@ -20,13 +20,6 @@
 | D17-01A | QA D17-FIX — saudi tourism | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
 | D17-02A | QA D17-FIX — managing screen time children | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
 | D17-03A | QA D17-FIX — mecca medina | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D17-04A | QA D17-FIX — teaching children allah names | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D17-05A | QA D17-FIX — preconception checkups | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D17-06A | QA D17-FIX — hijri new year children | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D17-07A | QA D17-FIX — end of service benefits expats | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D17-08A | QA D17-FIX — umrah budget guide families | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D17-09A | QA D17-FIX — hotel near haram vs budget umrah | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D17-10A | QA D17-FIX — walking vs running comparison | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
 | D17-11A | QA D17-FIX — house affordability single income guide | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
 | D17-12A | QA D17-FIX — notification cost productivity | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
 | D17-13A | QA D17-FIX — children education savings guide | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
@@ -57,13 +50,6 @@
 | D17-01C | TECH_BUILD D17-FIX — saudi tourism | Cursor | بناء ونشر — ثم «انتهى من عندي» |
 | D17-02C | TECH_BUILD D17-FIX — managing screen time children | Cursor | بناء ونشر — ثم «انتهى من عندي» |
 | D17-03C | TECH_BUILD D17-FIX — mecca medina | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D17-04C | TECH_BUILD D17-FIX — teaching children allah names | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D17-05C | TECH_BUILD D17-FIX — preconception checkups | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D17-06C | TECH_BUILD D17-FIX — hijri new year children | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D17-07C | TECH_BUILD D17-FIX — end of service benefits expats | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D17-08C | TECH_BUILD D17-FIX — umrah budget guide families | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D17-09C | TECH_BUILD D17-FIX — hotel near haram vs budget umrah | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D17-10C | TECH_BUILD D17-FIX — walking vs running comparison | Cursor | بناء ونشر — ثم «انتهى من عندي» |
 | D17-11C | TECH_BUILD D17-FIX — house affordability single income guide | Cursor | بناء ونشر — ثم «انتهى من عندي» |
 | D17-12C | TECH_BUILD D17-FIX — notification cost productivity | Cursor | بناء ونشر — ثم «انتهى من عندي» |
 | D17-13C | TECH_BUILD D17-FIX — children education savings guide | Cursor | بناء ونشر — ثم «انتهى من عندي» |
@@ -102,13 +88,6 @@
 | D17-01N | DEEPEN D17-FIX — saudi tourism | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
 | D17-02N | DEEPEN D17-FIX — managing screen time children | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
 | D17-03N | DEEPEN D17-FIX — mecca medina | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D17-04N | DEEPEN D17-FIX — teaching children allah names | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D17-05N | DEEPEN D17-FIX — preconception checkups | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D17-06N | DEEPEN D17-FIX — hijri new year children | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D17-07N | DEEPEN D17-FIX — end of service benefits expats | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D17-08N | DEEPEN D17-FIX — umrah budget guide families | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D17-09N | DEEPEN D17-FIX — hotel near haram vs budget umrah | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D17-10N | DEEPEN D17-FIX — walking vs running comparison | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
 | D17-11N | DEEPEN D17-FIX — house affordability single income guide | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
 | D17-12N | DEEPEN D17-FIX — notification cost productivity | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
 | D17-13N | DEEPEN D17-FIX — children education savings guide | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
@@ -586,6 +565,27 @@
 | D16-25N | DEEPEN D16 — saving vs investing gulf family | 2026-06-25 22:15 |
 | D16-25A | QA D16 — saving vs investing gulf family | 2026-06-25 22:15 |
 | D16-25C | TECH_BUILD D16 — saving vs investing gulf family | 2026-06-25 22:15 |
+| D17-04N | DEEPEN D17-FIX — teaching children allah names | 2026-06-26 06:52 |
+| D17-04A | QA D17-FIX — teaching children allah names | 2026-06-26 06:52 |
+| D17-04C | TECH_BUILD D17-FIX — teaching children allah names | 2026-06-26 06:52 |
+| D17-05N | DEEPEN D17-FIX — preconception checkups | 2026-06-26 06:52 |
+| D17-05A | QA D17-FIX — preconception checkups | 2026-06-26 06:52 |
+| D17-05C | TECH_BUILD D17-FIX — preconception checkups | 2026-06-26 06:52 |
+| D17-06N | DEEPEN D17-FIX — hijri new year children | 2026-06-26 06:52 |
+| D17-06A | QA D17-FIX — hijri new year children | 2026-06-26 06:52 |
+| D17-06C | TECH_BUILD D17-FIX — hijri new year children | 2026-06-26 06:52 |
+| D17-07N | DEEPEN D17-FIX — end of service benefits expats | 2026-06-26 06:52 |
+| D17-07A | QA D17-FIX — end of service benefits expats | 2026-06-26 06:52 |
+| D17-07C | TECH_BUILD D17-FIX — end of service benefits expats | 2026-06-26 06:52 |
+| D17-08N | DEEPEN D17-FIX — umrah budget guide families | 2026-06-26 06:52 |
+| D17-08A | QA D17-FIX — umrah budget guide families | 2026-06-26 06:52 |
+| D17-08C | TECH_BUILD D17-FIX — umrah budget guide families | 2026-06-26 06:52 |
+| D17-09N | DEEPEN D17-FIX — hotel near haram vs budget umrah | 2026-06-26 06:52 |
+| D17-09A | QA D17-FIX — hotel near haram vs budget umrah | 2026-06-26 06:52 |
+| D17-09C | TECH_BUILD D17-FIX — hotel near haram vs budget umrah | 2026-06-26 06:52 |
+| D17-10N | DEEPEN D17-FIX — walking vs running comparison | 2026-06-26 06:52 |
+| D17-10A | QA D17-FIX — walking vs running comparison | 2026-06-26 06:52 |
+| D17-10C | TECH_BUILD D17-FIX — walking vs running comparison | 2026-06-26 06:52 |
 
 ---
 
