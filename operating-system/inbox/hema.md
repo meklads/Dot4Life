@@ -1,55 +1,50 @@
-# 📬 Hema — Q-01 مفعّلة · المرحلة 2 أسبوع 1
+# 📬 Hema — D-01 مفعّلة · تعميق قيمة
 
-> **آخر تحديث:** 2026-06-26 19:00 — **ابدئي Q-01-01N الآن.**
+> **آخر تحديث:** 2026-06-26 21:55 — **ابدئي D-01-01N الآن.**
 
 ## رسالتي لك يا هيما
 
-**المرحلة 1 مغلقة** (بوابة إصلاح = 0). الآن **المرحلة 2 — أسبوع 1: Q-01**.
+**Q-01 مغلقة 15/15 PASS.** الآن نبدأ D-01: تعميق قيمة 15 صفحة موجودة فقط.
 
-**مهمتك:** رفع جودة FAQ من «تجتاز البوابة» إلى **8+/10** — **15 صفحة موجودة فقط**.
+**مهمتك:** إضافة +200-400 كلمة قيمة داخل جسم كل صفحة، لا محتوى جديد ولا slugs جديدة.
 
-التقرير الكامل: `operating-system/reports/quality-batch-q01.md`
+التقرير الكامل: `operating-system/reports/quality-d01-prep.md`
 
-## ابدئي الآن — Q-01-01N → Q-01-15N
+## ابدئي الآن — D-01-01N → D-01-15N
 
 | # | التذكرة | الملف |
 |---:|---------|------|
-| 01 | `Q-01-01N` | `islamic-hajj-umrah/umrah-with-kids.html` |
-| 02 | `Q-01-02N` | `islamic-hajj-umrah/hijri-new-year-children.html` |
-| 03 | `Q-01-03N` | `islamic-hajj-umrah/daily-adhkar-family-guide.html` |
-| 04 | `Q-01-04N` | `featured-stories/featured-story-gulf-family-home.html` |
-| 05 | `Q-01-05N` | `blog/family-friendly-activities-gulf-cities.html` |
-| 06 | `Q-01-06N` | `blog/daily-islamic-habits-guide.html` |
-| 07 | `Q-01-07N` | `islamic-hajj-umrah/teaching-children-allah-names.html` |
-| 08 | `Q-01-08N` | `blog/hydration-guide.html` |
-| 09 | `Q-01-09N` | `peace-capsules/beat-summer-boredom-without-screens.html` |
-| 10 | `Q-01-10N` | `finance-wealth/investment-basics-beginners.html` |
-| 11 | `Q-01-11N` | `featured-stories/saudi-father-carpentry-workshop.html` |
-| 12 | `Q-01-12N` | `featured-stories/featured-story-saudi-mother.html` |
-| 13 | `Q-01-13N` | `comparisons/gold-vs-real-estate-gulf-family.html` |
-| 14 | `Q-01-14N` | `comparisons/domestic-vs-international-travel-family.html` |
-| 15 | `Q-01-15N` | `blog/umrah-with-kids-guide.html` |
+| 01 | `D-01-01N` | `blog/bmi-article.html` |
+| 02 | `D-01-02N` | `fitness/ramadan-calorie-calculator.html` |
+| 03 | `D-01-03N` | `fitness/calorie-calculator-saudi.html` |
+| 04 | `D-01-04N` | `guides/salalah-oman.html` |
+| 05 | `D-01-05N` | `fitness/fitness-for-women-saudi.html` |
+| 06 | `D-01-06N` | `blog/rent-vs-buy-saudi-guide-2026.html` |
+| 07 | `D-01-07N` | `blog/starting-side-business-saudi-uae.html` |
+| 08 | `D-01-08N` | `blog/emergency-fund-calculator-guide.html` |
+| 09 | `D-01-09N` | `blog/gold-vs-savings-account-comparison.html` |
+| 10 | `D-01-10N` | `featured-stories/emirati-grandmother-cooking-traditions.html` |
+| 11 | `D-01-11N` | `blog/ramadan-preparation-guide-families.html` |
+| 12 | `D-01-12N` | `comparisons/lease-vs-buy-car.html` |
+| 13 | `D-01-13N` | `blog/family-budget-planning-guide.html` |
+| 14 | `D-01-14N` | `blog/visceral-fat-gulf.html` |
+| 15 | `D-01-15N` | `blog/zakat-investment-portfolios.html` |
 
-## قانون Q-01 (FAQ فقط)
+## قانون D-01
 
-1. **أعد كتابة إجابات FAQ** — لا توسّع الجسم إلا للضرورة.
-2. كل إجابة تبدأ بـ **رقم · خطوة · أو مثال خليجي** في أول جملتين.
-3. **السكيما = النص المرئي** حرفياً (عربي عربي).
-4. ممنوع: «شامل ومفصل» · «بشكل عام» · «متوازن ومعتدل» · «حسب حالتك» · سلاسل مترادفات.
-5. **راحة 5 دقائق** بعد كل 5 صفحات (05 · 10 · 15).
-6. اكتب في TEAM-BUS: `Q-01 05/15 جاهز للبوابة` ثم `10/15` ثم `Q-01 منجز`.
+1. أضيفي **200-400 كلمة فريدة** داخل `<article>` فقط.
+2. أضيفي قيمة واحدة على الأقل: جدول صغير، سيناريو عائلة خليجية بأرقام، أخطاء شائعة، أو متى تستشير مختصاً.
+3. لا حشو، لا سلاسل مترادفات، لا `قسم إضافي مفصل`.
+4. لا H2 مكرر ولا `id` مكرر.
+5. أي مؤسسة/جامعة/هيئة + رقم محدد = رابط عميق أو صياغة وصفية بلا اسم/رقم.
+6. حافظي على Article + FAQPage صالحين وFAQ مطابق للمرئي.
+7. 0 em-dash، 0 Unsplash.
+8. **راحة 5 دقائق** بعد كل 5 صفحات (05 · 10 · 15).
+9. اكتبي في TEAM-BUS: `D-01 05/15 جاهز للبوابة` ثم `10/15` ثم `D-01 منجز`.
 
-## D-01 جاهزة — انتظري رسالة الإطلاق
+## بوابة Cursor
 
-الأسبوع 2 = تعميق قيمة (+200–400w). **Q-01 أُغلقت 15/15 PASS، لكن D-01 ليست ACTIVE حتى تصلك رسالة إطلاق صريحة.**
-
-### D-01 جاهزة كتحضير فقط
-
-جهز Cursor تقرير D-01 هنا: `operating-system/reports/quality-d01-prep.md`.
-
-**لا تبدئيه الآن.** انتظري رسالة إطلاق رسمية من Cursor: `🚀 D-01 مفعّلة`.
-
-بعد الإطلاق فقط: D-01 = +200-400 كلمة قيمة في 15 صفحة موجودة، لا slugs جديدة، لا حشو، لا Batch 04.
+Cursor acting QA ينشر فقط PASS. أي صفحة فيها حشو/تكرار/ادعاء بلا رابط ترجع RETURN.
 
 ## ↩️ Q-01 بوابة Cursor: 13/15 LIVE — RETURN 2 (2026-06-26 21:00)
 
