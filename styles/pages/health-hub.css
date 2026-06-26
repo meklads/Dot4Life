@@ -582,3 +582,237 @@ body.health-hub-page .hl-card--topic {
 body.health-hub-page .hl-card--topic .hl-topic-list a:hover {
   color: var(--hh-teal);
 }
+
+/* ════════════════════════════════════════════════════════════
+   BODY REFINEMENT — calm editorial polish (2026-06-27 · v2)
+   Scope: body.health-hub-page only. Header/hero untouched.
+   Goals: quiet rhythm · clearer hierarchy · refined cards
+   ════════════════════════════════════════════════════════════ */
+
+/* ── Vertical rhythm — more breathing room ──────────────────── */
+body.health-hub-page #page > .hl-section {
+  padding-block: clamp(3.25rem, 6vw, 5.5rem);
+  position: relative;
+}
+
+/* Hairline divider between consecutive body sections */
+body.health-hub-page #page > .hl-section + .hl-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(90%, 1160px);
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(10, 107, 99, .12) 20%,
+    rgba(10, 107, 99, .12) 80%,
+    transparent);
+}
+
+[data-theme="dark"] body.health-hub-page #page > .hl-section + .hl-section::before {
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(106, 191, 184, .16) 20%,
+    rgba(106, 191, 184, .16) 80%,
+    transparent);
+}
+
+/* ── Section headers — calmer measure ───────────────────────── */
+body.health-hub-page .hl-eyebrow { margin-bottom: .85rem; }
+body.health-hub-page .hl-h2 { letter-spacing: -.018em; }
+body.health-hub-page .hl-sub {
+  max-width: 54ch;
+  margin-bottom: clamp(2rem, 3.5vw, 2.85rem);
+}
+[data-lang="ar"] body.health-hub-page .hl-sub { max-width: 60ch; }
+
+/* Minor tertiary subhead used between featured + full grid */
+body.health-hub-page .hh-subhead {
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  margin: clamp(1.75rem, 3vw, 2.5rem) 0 1.15rem;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--hh-teal);
+}
+[data-lang="ar"] body.health-hub-page .hh-subhead {
+  letter-spacing: 0;
+  text-transform: none;
+  font-size: .82rem;
+}
+body.health-hub-page .hh-subhead::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(106, 191, 184, .35), transparent);
+}
+[data-lang="ar"] body.health-hub-page .hh-subhead::after {
+  background: linear-gradient(270deg, rgba(106, 191, 184, .35), transparent);
+}
+
+/* ── Intro — lead paragraph treatment ───────────────────────── */
+body.health-hub-page .hl-intro-text p {
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
+  line-height: 1.9;
+  color: var(--hv-ink-soft);
+  max-width: 68ch;
+}
+[data-lang="ar"] body.health-hub-page .hl-intro-text p {
+  max-width: 72ch;
+  line-height: 2.05;
+}
+
+/* ── Wellness pillars — top accent reveal ───────────────────── */
+body.health-hub-page .hh-pillar {
+  position: relative;
+  padding: 1.6rem 1.4rem 1.5rem;
+  border-radius: 20px;
+  overflow: hidden;
+}
+body.health-hub-page .hh-pillar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  inset-inline: 1.4rem;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--hh-mint), transparent);
+  opacity: 0;
+  transition: opacity .35s var(--hh-ease);
+}
+body.health-hub-page .hh-pillar:hover::after { opacity: 1; }
+body.health-hub-page .hh-pillar-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 13px;
+  margin-bottom: .95rem;
+}
+body.health-hub-page .hh-pillar-icon svg { width: 20px; height: 20px; }
+body.health-hub-page .hh-pillar-title { font-size: .95rem; margin-bottom: .45rem; }
+body.health-hub-page .hh-pillar-desc { font-size: .8rem; line-height: 1.65; }
+
+/* ── Featured trio — icon medallion + calmer body ───────────── */
+body.health-hub-page .hh-featured-card { padding: 1.65rem 1.5rem; }
+body.health-hub-page .hh-featured-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(106, 191, 184, .2), rgba(106, 191, 184, .07));
+  border: 1px solid rgba(106, 191, 184, .22);
+  color: var(--hh-teal);
+  margin-bottom: 1.05rem;
+}
+body.health-hub-page .hh-featured-icon svg { width: 22px; height: 22px; }
+body.health-hub-page .hh-featured-kicker { margin-bottom: .5rem; }
+body.health-hub-page .hh-featured-title { font-size: 1.12rem; margin-bottom: .55rem; }
+body.health-hub-page .hh-featured-desc { margin-bottom: 1.1rem; line-height: 1.65; }
+[data-theme="dark"] body.health-hub-page .hh-featured-icon {
+  background: linear-gradient(135deg, rgba(106, 191, 184, .16), rgba(106, 191, 184, .05));
+  border-color: rgba(106, 191, 184, .2);
+}
+
+/* ── Tool cards — refined calm ──────────────────────────────── */
+body.health-hub-page .hl-grid--tools { gap: clamp(1rem, 1.6vw, 1.35rem); }
+body.health-hub-page .hl-card--tool { padding: 1.5rem 1.4rem; }
+body.health-hub-page .hl-card--tool .hl-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  margin-bottom: 1rem;
+}
+body.health-hub-page .hl-card--tool .hl-card-icon svg { width: 20px; height: 20px; }
+body.health-hub-page .hl-card--tool .hl-card-title { font-size: .96rem; margin-bottom: .5rem; }
+body.health-hub-page .hl-card--tool .hl-card-desc { font-size: .8rem; line-height: 1.62; margin-bottom: 1rem; }
+body.health-hub-page .hl-card--tool .hl-card-arrow { font-size: .76rem; }
+body.health-hub-page .hl-card--tool:hover .hl-card-icon { transform: scale(1.06) rotate(-2deg); }
+
+/* ── Topic authority — refined linked rows ──────────────────── */
+body.health-hub-page .hl-card--topic {
+  padding: 1.6rem 1.55rem 1.35rem;
+  border-radius: 20px;
+}
+body.health-hub-page .hl-topic-head {
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+  margin-bottom: .9rem;
+  padding-bottom: .9rem;
+  border-bottom: 1px solid rgba(10, 107, 99, .1);
+}
+[data-theme="dark"] body.health-hub-page .hl-topic-head {
+  border-bottom-color: rgba(106, 191, 184, .14);
+}
+body.health-hub-page .hl-topic-head-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(106, 191, 184, .16), rgba(106, 191, 184, .06));
+  color: var(--hh-teal);
+  flex-shrink: 0;
+}
+body.health-hub-page .hl-topic-head-icon svg { width: 17px; height: 17px; }
+body.health-hub-page .hl-card--topic .hl-topic-title { margin: 0; font-size: .95rem; }
+
+body.health-hub-page .hl-card--topic .hl-topic-list li {
+  margin: 0;
+  border-bottom: 1px solid rgba(10, 107, 99, .06);
+}
+[data-theme="dark"] body.health-hub-page .hl-card--topic .hl-topic-list li {
+  border-bottom-color: rgba(255, 255, 255, .05);
+}
+body.health-hub-page .hl-card--topic .hl-topic-list li:last-child { border-bottom: none; }
+body.health-hub-page .hl-card--topic .hl-topic-list a {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  padding: .62rem .15rem;
+  font-size: .82rem;
+  line-height: 1.4;
+  color: var(--hv-ink-soft);
+  transition: color .2s, gap .2s;
+}
+body.health-hub-page .hl-card--topic .hl-topic-list a::before {
+  content: '→';
+  color: var(--hh-mint);
+  font-weight: 700;
+  flex-shrink: 0;
+  transition: transform .2s var(--hh-ease);
+}
+[data-lang="ar"] body.health-hub-page .hl-card--topic .hl-topic-list a {
+  flex-direction: row;
+}
+[data-lang="ar"] body.health-hub-page .hl-card--topic .hl-topic-list a::before { content: '←'; }
+body.health-hub-page .hl-card--topic .hl-topic-list a:hover {
+  color: var(--hh-teal);
+  gap: .75rem;
+}
+body.health-hub-page .hl-card--topic .hl-topic-list a:hover::before {
+  transform: translateX(2px);
+}
+[data-lang="ar"] body.health-hub-page .hl-card--topic .hl-topic-list a:hover::before {
+  transform: translateX(-2px);
+}
+
+/* ── Latest-articles spacing harmony ────────────────────────── */
+body.health-hub-page #latest-articles .hl-article-grid { margin-top: .25rem; }
+
+/* ── Reduced-motion safety ──────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  body.health-hub-page .hh-pillar::after,
+  body.health-hub-page .hl-card--tool:hover .hl-card-icon,
+  body.health-hub-page .hl-card--topic .hl-topic-list a:hover::before {
+    transition: none;
+    transform: none;
+  }
+}
