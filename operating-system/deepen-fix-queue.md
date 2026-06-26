@@ -13,6 +13,29 @@
 **فحص الموقع الشامل (2026-06-26):** 108 صفحة عربية. **49 صفحة تحتاج إصلاح** = 41 ضحلة (3 شديدة <1200 · 3 متوسطة 1200-1499 · 35 على الحد 1500-1599) + 8 بلا Article schema + 7 بلا FAQPage + 5 em-dash + 5 Unsplash (بتداخل). **0 محتوى مختلط** (اكتمل تعريبها).
 
 
+## D18-Hema QA — 7 LIVE + 13 RETURN · 2026-06-26 17:45
+
+**✅ نُشرت LIVE بعد PASS كامل:**
+`makkah-hotels-guide` · `salalah-khareef` · `family-nutrition-on-budget` · `mindful-living-gulf-heat` · `building-personal-savings-system` · `comparisons-ready-vs-build-home` · `comparisons-public-vs-private-education`.
+
+**↩️ RETURN إلى هيما (13):**
+
+| الصفحة | سبب الرفض |
+|--------|-----------|
+| `blog/body-fat-vs-weight-guide-ar.html` | 3 فقرات English داخل الصفحة العربية |
+| `blog/salalah-travel-guide-2025.html` | FAQ/content filler: «بشكل عام» داخل سلسلة مترادفات طويلة |
+| `blog/hajj-umrah-guide-2025.html` | FAQ/content filler: «بشكل عام» + «متوازن ومعتدل» وسلاسل مترادفات |
+| `featured-stories/featured-story-arab-father-teens.html` | FAQPage ناقصة وFAQ=0 في السكيما |
+| `peace-capsules/peace-at-home-5-steps.html` | FAQPage ناقصة وFAQ=0 في السكيما |
+| `peace-capsules/summer-camps-vs-home.html` | FAQPage ناقصة + URL إنجليزي التقطه فحص mixed |
+| `travel/best-family-destinations-gulf.html` | FAQPage ناقصة وFAQ=0 في السكيما |
+| `blog/organize-life-daily-systems.html` | FAQ=3 فقط + FAQ/content filler |
+| `blog/teaching-children-financial-literacy.html` | FAQ=3 فقط + FAQ/content filler |
+| `health/children-sleep-summer.html` | FAQPage ناقصة + FAQ/content filler |
+| `peace-capsules/calm-corner-small-space.html` | FAQPage ناقصة + FAQ/content filler + Article description حشو |
+| `islamic-hajj-umrah/teaching-children-prayer-with-love.html` | FAQPage ناقصة + FAQ/content filler |
+| `productivity/family-time-management.html` | FAQ/content filler: «متوازن ومعتدل» وسلاسل مترادفات |
+
 ## D17 RETURN — أصلحها Cursor (استثناء) ونُشرت LIVE · 2026-06-26 15:05
 
 بأمر جوست، أصلح Cursor الثلاثة استثناءً (هيما مشغول بـ20 صفحة D18):
@@ -30,10 +53,7 @@
 **✅ الستة التقنية على Cursor صارت PASS ونُشرت:**
 `hydration-guide` · `zakat-guide-2025` · `gcc-family-budget-2025` · `featured-story-gulf-family-home` · `arab-mother-startup` · `evening-rituals`.
 
-**↩️ الثلاثة RETURN باقية عند هيما:**
-- `guides/saudi-tourism` — 6 فقرات bilingual.
-- `guides/mecca-medina` — 13 فقرة/بطاقة bilingual.
-- `blog/choosing-right-school-child-gulf` — FAQ filler + صورة مفقودة.
+**ملاحظة:** الثلاثة RETURN المذكورة سابقاً أُغلقت لاحقاً بواسطة Cursor استثناءً في سجل 15:05.
 
 ## D18-FIX — تقسيم مسؤوليات · 2026-06-26 13:50
 

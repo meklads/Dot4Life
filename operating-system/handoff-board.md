@@ -17,16 +17,9 @@
 
 | التذكرة | المقال | موجه لـ | المطلوب |
 |---------|--------|---------|----------|
-| D18-02A | QA D18-FIX — makkah hotels guide | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
 | D18-03A | QA D18-FIX — body fat vs weight guide ar | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D18-04A | QA D18-FIX — salalah khareef | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D18-05A | QA D18-FIX — family nutrition on budget | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D18-06A | QA D18-FIX — mindful living gulf heat | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D18-07A | QA D18-FIX — building personal savings system | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
 | D18-09A | QA D18-FIX — salalah travel guide 2025 | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
 | D18-10A | QA D18-FIX — hajj umrah guide 2025 | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D18-12A | QA D18-FIX — comparisons ready vs build home | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
-| D18-13A | QA D18-FIX — comparisons public vs private education | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
 | D18-16A | QA D18-FIX — featured story arab father teens | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
 | D18-17A | QA D18-FIX — peace at home 5 steps | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
 | D18-18A | QA D18-FIX — summer camps vs home | عامر | مراجعة واعتماد — amer-mandate — ثم «انتهى من عندي» |
@@ -44,16 +37,9 @@
 
 | التذكرة | المقال | موجه لـ | المطلوب |
 |---------|--------|---------|----------|
-| D18-02C | TECH_BUILD D18-FIX — makkah hotels guide | Cursor | بناء ونشر — ثم «انتهى من عندي» |
 | D18-03C | TECH_BUILD D18-FIX — body fat vs weight guide ar | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D18-04C | TECH_BUILD D18-FIX — salalah khareef | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D18-05C | TECH_BUILD D18-FIX — family nutrition on budget | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D18-06C | TECH_BUILD D18-FIX — mindful living gulf heat | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D18-07C | TECH_BUILD D18-FIX — building personal savings system | Cursor | بناء ونشر — ثم «انتهى من عندي» |
 | D18-09C | TECH_BUILD D18-FIX — salalah travel guide 2025 | Cursor | بناء ونشر — ثم «انتهى من عندي» |
 | D18-10C | TECH_BUILD D18-FIX — hajj umrah guide 2025 | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D18-12C | TECH_BUILD D18-FIX — comparisons ready vs build home | Cursor | بناء ونشر — ثم «انتهى من عندي» |
-| D18-13C | TECH_BUILD D18-FIX — comparisons public vs private education | Cursor | بناء ونشر — ثم «انتهى من عندي» |
 | D18-16C | TECH_BUILD D18-FIX — featured story arab father teens | Cursor | بناء ونشر — ثم «انتهى من عندي» |
 | D18-17C | TECH_BUILD D18-FIX — peace at home 5 steps | Cursor | بناء ونشر — ثم «انتهى من عندي» |
 | D18-18C | TECH_BUILD D18-FIX — summer camps vs home | Cursor | بناء ونشر — ثم «انتهى من عندي» |
@@ -79,16 +65,9 @@
 
 | التذكرة | المقال | موجه لـ | المطلوب |
 |---------|--------|---------|----------|
-| D18-02N | DEEPEN D18-FIX — makkah hotels guide | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
 | D18-03N | DEEPEN D18-FIX — body fat vs weight guide ar | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D18-04N | DEEPEN D18-FIX — salalah khareef | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D18-05N | DEEPEN D18-FIX — family nutrition on budget | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D18-06N | DEEPEN D18-FIX — mindful living gulf heat | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D18-07N | DEEPEN D18-FIX — building personal savings system | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
 | D18-09N | DEEPEN D18-FIX — salalah travel guide 2025 | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
 | D18-10N | DEEPEN D18-FIX — hajj umrah guide 2025 | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D18-12N | DEEPEN D18-FIX — comparisons ready vs build home | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
-| D18-13N | DEEPEN D18-FIX — comparisons public vs private education | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
 | D18-16N | DEEPEN D18-FIX — featured story arab father teens | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
 | D18-17N | DEEPEN D18-FIX — peace at home 5 steps | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
 | D18-18N | DEEPEN D18-FIX — summer camps vs home | Hema · سكيل الكتابة | DEEPEN/كتابة — draft-gate — ثم «انتهى من عندي» |
@@ -649,12 +628,33 @@
 | D18-01N | DEEPEN D18-FIX — hydration guide | 2026-06-26 13:57 |
 | D18-01A | QA D18-FIX — hydration guide | 2026-06-26 13:57 |
 | D18-01C | TECH_BUILD D18-FIX — hydration guide | 2026-06-26 13:57 |
+| D18-02N | DEEPEN D18-FIX — makkah hotels guide | — |
+| D18-02A | QA D18-FIX — makkah hotels guide | — |
+| D18-02C | TECH_BUILD D18-FIX — makkah hotels guide | — |
+| D18-04N | DEEPEN D18-FIX — salalah khareef | — |
+| D18-04A | QA D18-FIX — salalah khareef | — |
+| D18-04C | TECH_BUILD D18-FIX — salalah khareef | — |
+| D18-05N | DEEPEN D18-FIX — family nutrition on budget | — |
+| D18-05A | QA D18-FIX — family nutrition on budget | — |
+| D18-05C | TECH_BUILD D18-FIX — family nutrition on budget | — |
+| D18-06N | DEEPEN D18-FIX — mindful living gulf heat | — |
+| D18-06A | QA D18-FIX — mindful living gulf heat | — |
+| D18-06C | TECH_BUILD D18-FIX — mindful living gulf heat | — |
+| D18-07N | DEEPEN D18-FIX — building personal savings system | — |
+| D18-07A | QA D18-FIX — building personal savings system | — |
+| D18-07C | TECH_BUILD D18-FIX — building personal savings system | — |
 | D18-08N | DEEPEN D18-FIX — zakat guide 2025 | 2026-06-26 13:57 |
 | D18-08A | QA D18-FIX — zakat guide 2025 | 2026-06-26 13:57 |
 | D18-08C | TECH_BUILD D18-FIX — zakat guide 2025 | 2026-06-26 13:57 |
 | D18-11N | DEEPEN D18-FIX — gcc family budget 2025 | 2026-06-26 13:57 |
 | D18-11A | QA D18-FIX — gcc family budget 2025 | 2026-06-26 13:57 |
 | D18-11C | TECH_BUILD D18-FIX — gcc family budget 2025 | 2026-06-26 13:57 |
+| D18-12N | DEEPEN D18-FIX — comparisons ready vs build home | — |
+| D18-12A | QA D18-FIX — comparisons ready vs build home | — |
+| D18-12C | TECH_BUILD D18-FIX — comparisons ready vs build home | — |
+| D18-13N | DEEPEN D18-FIX — comparisons public vs private education | — |
+| D18-13A | QA D18-FIX — comparisons public vs private education | — |
+| D18-13C | TECH_BUILD D18-FIX — comparisons public vs private education | — |
 | D18-14N | DEEPEN D18-FIX — featured story gulf family home | 2026-06-26 13:57 |
 | D18-14A | QA D18-FIX — featured story gulf family home | 2026-06-26 13:57 |
 | D18-14C | TECH_BUILD D18-FIX — featured story gulf family home | 2026-06-26 13:57 |

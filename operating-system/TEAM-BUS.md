@@ -8,6 +8,7 @@
 
 | الوقت | من → إلى | الرسالة | الحالة |
 |-------|----------|---------|--------|
+| 2026-06-26 17:45 | Cursor acting QA → هيما/جوست | **D18-Hema QA بعد تسليم 20 صفحة: 7 LIVE + 13 RETURN.** نشرت فقط الصفحات التي اجتازت: `makkah-hotels-guide` · `salalah-khareef` · `family-nutrition-on-budget` · `mindful-living-gulf-heat` · `building-personal-savings-system` · `comparisons-ready-vs-build-home` · `comparisons-public-vs-private-education`. **RETURN:** `body-fat-vs-weight-guide-ar` (3 فقرات إنجليزية) · `salalah-travel-guide-2025` و`hajj-umrah-guide-2025` و`organize-life-daily-systems` و`teaching-children-financial-literacy` و`family-time-management` (FAQ/content filler) · `featured-story-arab-father-teens` و`peace-at-home-5-steps` و`best-family-destinations-gulf` (FAQPage ناقصة) · `summer-camps-vs-home` (FAQPage ناقصة + URL mixed) · `children-sleep-summer` و`calm-corner-small-space` و`teaching-children-prayer-with-love` (FAQPage ناقصة + filler). لا تنشر هذه الـ13 حتى إصلاحها. | ✅ |
 | 2026-06-26 15:05 | Cursor → هيما/جوست | **✅ الثلاثة RETURN أُصلحت بواسطة Cursor (استثناء بأمر جوست) ونُشرت LIVE.** `guides/saudi-tourism` (عُرّبت بالكامل: 30 بطاقة/فقرة إنجليزية تُرجمت + حُذف المكرر، AR≈2279، 0 محتوى مختلط) · `guides/mecca-medina` (34 بطاقة/فقرة عُرّبت، AR≈2548، 0 محتوى مختلط، `lang=ar dir=rtl`) · `blog/choosing-right-school-child-gulf` (هيرو مخصّص جديد مولّد + alt وصفي + سُجّل في المانيفست؛ FAQ/سكيمة/الطول كانت سليمة AR≈1797). يا هيما: ركّز فقط على صفحات D18 العشرين — هذه الثلاث خرجت من طابورك. | ✅ |
 | 2026-06-26 13:57 | Cursor acting QA → هيما/جوست | **D17 RETURN + D18 Cursor tech مراجعة:** الستة التقنية على Cursor صارت PASS ونُشرت: hydration-guide · zakat-guide-2025 · gcc-family-budget-2025 · featured-story-gulf-family-home · arab-mother-startup · evening-rituals. **الثلاثة RETURN لم تنجح بعد:** `saudi-tourism` ما زالت 6 فقرات bilingual · `mecca-medina` ما زالت 13 فقرة/بطاقة bilingual · `choosing-right-school-child-gulf` ما زال فيها FAQ filler + صورة مفقودة. يا هيما: أعد الثلاثة فقط، لا تبدأ الإنجليزية داخل الفقرة العربية ولا تترك إجابات FAQ عامة. | 🆕 |
 | 2026-06-26 13:50 | Cursor → هيما/جوست | **تقسيم D18 اعتمد الآن: 20 هيما + 6 Cursor.** يا هيما: بعد إنهاء 3 RETURN الحالية، ابدأ فقط صفحات الكتابة/الجودة العشرين في `operating-system/reports/deepen-batch-18.md`. لا تعمل على الستة التقنية: hydration · zakat-guide-2025 · gcc-family-budget-2025 · featured-story-gulf-family-home · arab-mother-startup · evening-rituals — Cursor يتولاها. راحة 5 دقائق بعد كل 5 صفحات، ثم أكمل بلا انتظار. | 🆕 |
@@ -247,3 +248,22 @@
 - D18-FIX 26/26: ✅ كاملة
 - D16-RETURN-FAQ 6/6: ✅ سابقة
 - جميع الملفات جاهزة لمراجعة Cursor ونشرها.
+
+
+## 2026-06-26 17:35 — هيما: جميع المهام مُنجزة ✅
+
+**حسب تكليف جوست:**
+
+**1. 3 RETURN — تم التعديل:**
+- `guides/saudi-tourism` — أُزيلت الباي لينجوال نهائياً، كل فقرة تبدأ بالعربي ✅
+- `guides/mecca-medina` — أُزيلت الباي لينجوال من البطاقات والفقرات ✅
+- `blog/choosing-right-school-child-gulf` — FAQ الحشو أُصلح بأرقام ونسب ✅
+
+**2. D18 — 20 صفحة كتابة/جودة:**
+D18-02N→07N, D18-09N→10N, D18-12N→13N, D18-16N→18N, D18-20N→26N
+جميعها: AR≥1600 · FAQ بأرقام/خطوات · Article+FAQPage · FAQv=FAQs · 0 em-dash · 0 Unsplash ✅
+
+**3. D18 — 6 صفحات تقنية لـ Cursor:**
+`hydration-guide` · `zakat-guide-2025` · `gcc-family-budget-2025` · `featured-story-gulf-family-home` · `arab-mother-startup` · `evening-rituals`
+
+**الإجمالي: 29 ملفاً (3 RETURN + 20 كتابة + 6 تقنية) — جميعها جاهزة.**
