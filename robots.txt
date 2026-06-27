@@ -1,20 +1,37 @@
-# robots.txt for DOTFORLIFE
-# https://dotforlife.com
+# robots.txt لموقع dotforlife.com
+# robots.txt for dotforlife.com - Digital Platform for the Gulf Family
+# آخر تحديث / Last updated: 2026-06-27
 
+# --- القواعد العامة / General Rules ---
+
+# السماح لجميع محركات البحث بالزحف إلى الموقع بالكامل
+# Allow all search engines to crawl the entire site
 User-agent: *
-Allow: /
-Disallow: /admin.html
-Disallow: /system/
-Disallow: /_external-pages/
-Disallow: /capsule-engine/
-Disallow: /scripts/
-Disallow: /styles/
+Disallow:
 
-# Crawl rate limiting (respectful crawling)
-Crawl-delay: 2
+# --- منع الزحف إلى المسارات الإدارية والفنية / Block admin & technical paths ---
+# منع الزحف إلى المسارات الإدارية إن وجدت
+# Block admin paths if they exist
+Disallow: /admin/
+Disallow: /wp-admin/
+Disallow: /cms/
+Disallow: /backend/
+Disallow: /api/private/
 
-# Sitemaps
+# منع الزحف إلى ملفات النظام الحساسة
+# Block sensitive system files
+Disallow: /.env
+Disallow: /.git/
+Disallow: /config/
+Disallow: /includes/
+Disallow: /vendor/
+
+# --- مواقع خريطة الموقع / Sitemap Locations ---
+
 Sitemap: https://dotforlife.com/sitemap.xml
 
-# Host directive (preferred domain)
-Host: https://dotforlife.com
+# --- ملاحظات / Notes ---
+# هذا الموقع هو منصة رقمية شاملة للأسرة الخليجية
+# This site is a comprehensive digital platform for the Gulf family
+# يغطي: الصحة، المالية، العقارات، السفر، الإسلام، الأدوات
+# Covers: Health, Finance, Real Estate, Travel, Islamic, Tools
