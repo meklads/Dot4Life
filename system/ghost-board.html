@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>جوست بورد — DotForLife</title>
+<link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Almarai',sans-serif}
+:root{--green:#054241;--teal:#6abfb8;--orange:#fd781c;--cream:#FAF8F4;--bg:#e8efec;--line:#c2d0cb;--muted:#6b7a76}
+body{background:var(--bg);color:var(--green);min-height:100vh;padding:0}
+#gate{position:fixed;inset:0;background:linear-gradient(160deg,#054241,#0a6b63);display:flex;align-items:center;justify-content:center;z-index:50}
+#gate .box{background:#fff;border-radius:18px;padding:2.2rem;width:min(360px,90vw);text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+#gate h1{font-size:1.2rem;margin-bottom:.4rem}#gate p{font-size:.8rem;color:var(--muted);margin-bottom:1.2rem}
+#gate input{width:100%;padding:.8rem 1rem;border:1.5px solid var(--line);border-radius:10px;font-size:1rem;text-align:center;margin-bottom:.8rem}
+#gate button{width:100%;padding:.8rem;border:0;border-radius:10px;background:var(--green);color:#fff;font-size:1rem;font-weight:700;cursor:pointer}
+#gate .err{color:#c0392b;font-size:.82rem;min-height:1.1em}
+#app{display:none}
+.layout{display:flex;min-height:100vh}
+.side{width:200px;flex:0 0 200px;background:#fff;border-left:1px solid var(--line);padding:1rem .7rem}
+.side .brand{font-size:1rem;font-weight:800;padding:.4rem .6rem 1rem;color:var(--green)}
+.side .brand .dot{color:var(--teal)}
+.side button{display:flex;align-items:center;gap:.5rem;width:100%;text-align:right;background:transparent;border:0;border-radius:10px;padding:.7rem .8rem;font-size:.85rem;font-weight:700;color:var(--green);cursor:pointer;margin-bottom:.2rem}
+.side button:hover{background:var(--cream)}
+.side button.active{background:var(--green);color:#fff}
+.side .lock{margin-top:1rem;color:var(--muted);font-weight:400;font-size:.75rem}
+.main{flex:1;padding:1.2rem clamp(1rem,2vw,1.8rem);overflow-x:auto}
+.page{display:none}.page.active{display:block}
+.grid-4{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:1.2rem}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:.8rem 1rem}
+.card .num{font-size:1.5rem;font-weight:800}
+.card .lbl{font-size:.7rem;color:var(--muted);font-weight:700;margin-top:.15rem}
+.card.align{background:linear-gradient(135deg,#fff8e1,#fff);border-right:4px solid var(--orange)}
+.card.alert{background:linear-gradient(135deg,#fff5f5,#fff);border-right:4px solid #c0392b}
+.card.done{background:linear-gradient(135deg,#eafaf0,#fff);border-right:4px solid #1f7a4d}
+.card.info{background:linear-gradient(135deg,#e8f4fd,#fff);border-right:4px solid #2980b9}
+.card.purple{background:linear-gradient(135deg,#f3eafc,#fff);border-right:4px solid #8f6bb8}
+.section-title{font-size:.9rem;font-weight:800;margin-bottom:.7rem;color:var(--green);display:flex;align-items:center;gap:.4rem}
+.task-list{display:flex;flex-direction:column;gap:8px}
+.task{background:#fff;border:1px solid var(--line);border-radius:10px;padding:.7rem .85rem;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.task .info{flex:1}
+.task .title{font-size:.82rem;font-weight:700}
+.task .meta{font-size:.68rem;color:var(--muted);font-weight:700;margin-top:.2rem}
+.task .badge{font-size:.65rem;font-weight:700;color:#fff;border-radius:999px;padding:.15rem .5rem;flex-shrink:0}
+.bar{height:4px;border-radius:2px;margin-top:.3rem;background:var(--line);overflow:hidden;max-width:120px}
+.bar .fill{height:100%;border-radius:2px;transition:width .3s}
+.suggestions{display:flex;flex-direction:column;gap:8px}
+.sug{background:#fff;border:1px solid var(--line);border-radius:10px;padding:.7rem .85rem;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.sug .title{font-size:.82rem;font-weight:700}
+.sug .meta{font-size:.65rem;color:var(--muted);font-weight:700}
+.sug .priority{font-size:.6rem;font-weight:800;padding:.1rem .5rem;border-radius:999px}
+.p-high{background:#fd781c;color:#fff}
+.p-mid{background:#e0a400;color:#fff}
+.p-low{background:var(--teal);color:#fff}
+.hermes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-bottom:1.2rem}
+.hermes-col{background:#fff;border:1px solid var(--line);border-radius:12px;padding:.7rem .9rem .8rem;border-top:4px solid var(--green);min-height:100px}
+.hermes-col h3{font-size:.75rem;font-weight:800;margin-bottom:.5rem;display:flex;justify-content:space-between;align-items:center}
+.hermes-col h3 small{font-size:.65rem;color:var(--muted);font-weight:700}
+.hcard{font-size:.72rem;padding:.35rem .45rem;background:var(--cream);border-radius:8px;margin-bottom:.4rem;border:1px solid var(--line);font-weight:700;line-height:1.6}
+.hcard .status{font-size:.62rem;color:var(--muted)}
+.sections-scroll{overflow-x:auto;padding-bottom:.35rem}
+.sections-row{display:flex;gap:10px;min-width:min-content;padding:.15rem}
+.section-card{flex:0 0 200px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:.65rem .75rem;border-top:4px solid #1f7a4d}
+.section-card .sc-title{font-size:.78rem;font-weight:800;margin-bottom:.3rem}
+.section-card .sc-count{font-size:.6rem;color:var(--muted);font-weight:700}
+.section-card .sc-folder{font-size:.58rem;color:var(--muted);direction:ltr;text-align:right;margin-bottom:.2rem}
+</style>
+</head>
+<body>
+<div id="gate"><div class="box"><h1>👑 جوست بورد</h1><p>دوت فور لايف — للمتابعة فقط</p>
+<input id="pw" type="password" placeholder="كلمة المرور" autocomplete="off" autofocus>
+<div class="err" id="err"></div><button id="enter">دخول</button></div></div>
+
+<div id="app"><div class="layout">
+  <nav class="side">
+    <div class="brand">DOT<span class="dot">.</span>FORLIFE</div>
+    <button data-p="summary" class="active">📅 الملخص</button>
+    <button data-p="tasks">📋 كل المهام</button>
+    <button data-p="hermes">🤖 Hermes</button>
+    <button data-p="sections">🗂️ الأقسام</button>
+    <button data-p="amer">🛡️ اقتراحات عامر</button>
+    <button class="lock" id="lock">🔓 قفل وخروج</button>
+  </nav>
+  <main class="main">
+    <!-- صفحة الملخص -->
+    <div id="p-summary" class="page active"></div>
+    <!-- صفحة كل المهام -->
+    <div id="p-tasks" class="page"></div>
+    <!-- صفحة Hermes -->
+    <div id="p-hermes" class="page"></div>
+    <!-- صفحة الأقسام -->
+    <div id="p-sections" class="page"></div>
+    <!-- صفحة اقتراحات عامر -->
+    <div id="p-amer" class="page"></div>
+  </main>
+</div></div>
+
+<script>
+const PW_HASH="8248c7ae40e0134d712024986fb17eefb0d7eed11a779554158e5bbd12c391eb";
+const GD='/system/ghost-data/';
+const $=s=>document.querySelector(s);
+
+async function sha256(t){
+  const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(t));
+  return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('');
+}
+async function tryEnter(){
+  const h=await sha256($('#pw').value);
+  if(h===PW_HASH){sessionStorage.setItem('ghost_board_ok','1');show()}
+  else $('#err').textContent='كلمة المرور غير صحيحة';
+}
+$('#enter').onclick=tryEnter;
+$('#pw').addEventListener('keydown',e=>{if(e.key==='Enter')tryEnter()});
+$('#lock').onclick=()=>{sessionStorage.removeItem('ghost_board_ok');location.reload()};
+
+function show(){
+  document.getElementById('gate').style.display='none';
+  document.getElementById('app').style.display='block';
+  loadSummary();
+}
+document.querySelector('.side').addEventListener('click',e=>{
+  const b=e.target.closest('button[data-p]'); if(!b) return;
+  document.querySelectorAll('.side button[data-p]').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');
+  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+  document.getElementById('p-'+b.dataset.p).classList.add('active');
+  if(b.dataset.p==='summary') loadSummary();
+  if(b.dataset.p==='tasks') loadTasks();
+  if(b.dataset.p==='hermes') loadHermes();
+  if(b.dataset.p==='sections') loadSections();
+  if(b.dataset.p==='amer') loadAmer();
+});
+
+if(sessionStorage.getItem('ghost_board_ok')==='1') show();
+
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+
+async function loadSummary(){
+  const el=document.getElementById('p-summary');
+  el.innerHTML='<div style="color:var(--muted);padding:1rem">جارٍ التحميل…</div>';
+  try{
+    const d=await(await fetch(GD+'daily-summary.json?_='+Date.now())).json();
+    const s=d.summary||{};
+    html=`
+      <h1 style="font-size:1.1rem;font-weight:800;margin-bottom:.5rem">📅 ${esc(d.today)}</h1>
+      <p style="font-size:.72rem;color:var(--muted);margin-bottom:1rem;font-weight:700">آخر تحديث: ${esc(d.updated)}</p>
+      <div class="grid-4">
+        <div class="card done"><div class="num">${s.completed_today||0}</div><div class="lbl">✅ تم اليوم</div></div>
+        <div class="card" style="border-right:4px solid #054241"><div class="num">${s.in_progress||0}</div><div class="lbl">🔄 قيد العمل</div></div>
+        <div class="card align"><div class="num">${s.pending_review||0}</div><div class="lbl">⏳ بانتظارك</div></div>
+        <div class="card" style="border-right:4px solid #6abfb8"><div class="num">${s.articles_published_this_week||0}</div><div class="lbl">📊 هذا الأسبوع</div></div>
+      </div>
+      <div class="grid-4">
+        <div class="card info"><div class="num">${s.total_articles||0}</div><div class="lbl">📝 إجمالي المقالات</div></div>
+        <div class="card purple"><div class="num">${s.total_tools||0}</div><div class="lbl">🛠️ الأدوات</div></div>
+      </div>`;
+    const alerts=(d.alerts||[]); const review=(d.pending_review||[]); const prog=(d.in_progress||[]);
+    if(review.length){
+      html+=`<div class="section-title">⏳ بانتظار مراجعتك</div><div class="task-list">`;
+      review.forEach(r=>{
+        html+=`<div class="task"><div class="info"><div class="title">${esc(r.title)}</div><div class="meta">${esc(r.assignee||'')} · ${esc(r.note||'')}</div></div></div>`;
+      });
+      html+=`</div>`;
+    }
+    if(alerts.length){
+      html+=`<div class="section-title" style="margin-top:.8rem">⚠️ تنبيهات</div><div class="task-list">`;
+      alerts.forEach(a=>{html+=`<div class="task" style="border-right:4px solid #c0392b"><div class="info"><div class="title">${esc(a)}</div></div></div>`;});
+      html+=`</div>`;
+    }
+    if(prog.length){
+      html+=`<div class="section-title" style="margin-top:.8rem">🔄 قيد التنفيذ</div><div class="task-list">`;
+      prog.forEach(p=>{
+        const color=p.progress>=70?'#1f7a4d':p.progress>=40?'#e0a400':'#c0392b';
+        html+=`<div class="task"><div class="info"><div class="title">${esc(p.title)}</div><div class="meta">${esc(p.assignee)}</div><div class="bar"><div class="fill" style="width:${p.progress}%;background:${color}"></div></div></div><span style="font-size:.7rem;font-weight:800;color:${color}">${p.progress}%</span></div>`;
+      });
+      html+=`</div>`;
+    }
+    el.innerHTML=html;
+  }catch(e){el.innerHTML='<p style="color:#c0392b">تعذّر التحميل. تأكد من git push.</p>'}
+}
+async function loadTasks(){
+  const el=document.getElementById('p-tasks');
+  el.innerHTML='<div style="color:var(--muted);padding:1rem">جارٍ التحميل…</div>';
+  try{
+    const d=await(await fetch('/operating-system/handoff-tickets.json?_='+Date.now())).json();
+    const cards=d.cards||[];
+    const done=cards.filter(c=>c.stage==='done'||c.col==='done');
+    const active=cards.filter(c=>c.col!=='done'&&c.stage!=='done');
+    let html=`<div class="section-title">📋 كل المهام</div>`;
+    if(active.length){
+      html+=`<div class="task-list">`;
+      active.forEach(c=>{
+        const col=d.columns.find(x=>x.id===c.col);
+        html+=`<div class="task" style="border-right:4px solid ${col?col.color:'#054241'}"><div class="info"><div class="title">${esc(c.title||c.article)}</div><div class="meta">📌 ${esc(c.assignee||'')} · 🎯 ${esc(c.task||'').substring(0,60)}</div></div></div>`;
+      });
+      html+=`</div>`;
+    }else{html+=`<p style="color:var(--muted);font-weight:700;font-size:.8rem">لا مهام نشطة حالياً ✅</p>`;}
+    if(done.length){
+      html+=`<div class="section-title" style="margin-top:1rem">✅ تم الإنجاز</div><div class="task-list">`;
+      done.slice(0,10).forEach(c=>{
+        html+=`<div class="task" style="border-right:4px solid #1f7a4d;opacity:.7"><div class="info"><div class="title">${esc(c.title||c.article)}</div><div class="meta">${esc(c.assignee||'')} · ${c.ts||''}</div></div></div>`;
+      });
+      html+=`</div>`;
+    }
+    el.innerHTML=html;
+  }catch(e){el.innerHTML='<p style="color:#c0392b">تعذّر التحميل</p>'}
+}
+async function loadHermes(){
+  const el=document.getElementById('p-hermes');
+  el.innerHTML='<div style="color:var(--muted);padding:1rem">جارٍ التحميل…</div>';
+  try{
+    const d=await(await fetch('/operating-system/handoff-tickets.json?_='+Date.now())).json();
+    const cols=d.columns||[];
+    const hermesCols=cols.filter(c=>c.id.startsWith('hermes_'));
+    const cards=d.cards||[];
+    let html=`<div class="section-title">🤖 Hermes — 6 وظائف</div><div class="hermes-grid">`;
+    hermesCols.forEach(col=>{
+      const list=cards.filter(c=>c.col===col.id);
+      const done=cards.filter(c=>c.col==='done'&&c.owner===col.id);
+      html+=`<div class="hermes-col" style="border-top-color:${col.color}"><h3>${col.title}<small>${list.length}</small></h3>`;
+      if(!list.length){html+=`<div style="font-size:.7rem;color:var(--muted);font-weight:700">— لا مهام</div>`;}
+      else{list.forEach(c=>{
+        html+=`<div class="hcard">${esc(c.title||c.article)}<div class="status">${c.ts||''}</div></div>`;
+      });}
+      html+=`</div>`;
+    });
+    html+=`</div>`;
+    el.innerHTML=html;
+  }catch(e){el.innerHTML='<p style="color:#c0392b">تعذّر التحميل</p>'}
+}
+async function loadSections(){
+  const el=document.getElementById('p-sections');
+  el.innerHTML='<div style="color:var(--muted);padding:1rem">جارٍ التحميل…</div>';
+  try{
+    const d=await(await fetch('/system/gsystem-data/site-sections.json?_='+Date.now())).json();
+    const secs=d.sections||[];
+    let html=`<div class="section-title">🗂️ أقسام الموقع — ${d.live_total} مقال منشور · ${secs.length} قسم</div><div class="sections-scroll"><div class="sections-row">`;
+    secs.forEach(s=>{
+      const count=s.count||s.articles?.length||0;
+      const folder=s.folder||'';
+      html+=`<div class="section-card"><div class="sc-title">${esc(s.title)}</div><div class="sc-folder">${esc(folder)}</div><div class="sc-count">${count} مقال LIVE · ${s.update_freq||''}</div></div>`;
+    });
+    html+=`</div></div>`;
+    el.innerHTML=html;
+  }catch(e){el.innerHTML='<p style="color:#c0392b">تعذّر التحميل</p>'}
+}
+async function loadAmer(){
+  const el=document.getElementById('p-amer');
+  el.innerHTML='<div style="color:var(--muted);padding:1rem">جارٍ التحميل…</div>';
+  try{
+    const d=await(await fetch(GD+'daily-summary.json?_='+Date.now())).json();
+    const sugs=d.amer_suggestions||[];
+    let html=`<div class="section-title">🛡️ اقتراحات عامر (مراقبة · تحسين · أفكار)</div>`;
+    if(!sugs.length){html+=`<p style="color:var(--muted);font-weight:700;font-size:.8rem">لا اقتراحات جديدة</p>`;}
+    else{
+      html+=`<div class="suggestions">`;
+      sugs.forEach(s=>{
+        const pc=s.priority==='عالية'?'p-high':s.priority==='متوسطة'?'p-mid':'p-low';
+        html+=`<div class="sug"><div class="info"><div class="title">${esc(s.title)}</div><div class="meta">${esc(s.category||'')} · ${s.date||''}</div></div><span class="priority ${pc}">${esc(s.priority)}</span></div>`;
+      });
+      html+=`</div>`;
+    }
+    el.innerHTML=html;
+  }catch(e){el.innerHTML='<p style="color:#c0392b">تعذّر التحميل</p>'}
+}
+</script>
+</body>
+</html>
