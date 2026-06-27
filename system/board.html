@@ -190,7 +190,7 @@
     <div id="view-handoff" class="view-panel">
       <div class="handoff-head">
         <h1>لوحة التسليم — المرحلة 1</h1>
-        <div class="sub">👑 جوست = المالك · 🛡️ عامر = بوابة الجودة · 🤖 Hermes = تنسيق · بناء · برمجة · كتابة · تحليل · اسحب أفقياً ← لرؤية كل الأعمدة</div>
+        <div class="sub">👑 جوست = المالك · 🛡️ عامر = الجودة · 🤖 Hermes = 5 موظفين (بناء · برمجة · كتابة · تنسيق · تحليل) · اسحب أفقياً ← لرؤية كل الأعمدة</div>
       </div>
       <div class="handoff-tabs">
         <button type="button" class="on" data-handoff-tab="board">🔀 التسليم</button>
@@ -501,7 +501,7 @@ function hcardHTML(c){
   const copyText=['التذكرة: '+(c.id||''),'المقال: '+(c.article||c.title||c.slug||''),'موجه لـ: '+(c.assignee||'—'),'المطلوب: '+(c.task||'')].join('\n');
   const cmd=c.task?`<pre class="hcopy" hidden>${esc(copyText)}</pre><button type="button" class="copybtn">نسخ للعضو</button>`:'';
   const step=c.step_ar?`<div class="hrow"><span class="hlbl">الخطوة</span><span class="hval">${esc(c.step_ar)}</span></div>`:'';
-  const SKN={writing:'سكيل الكتابة',analysis:'سكيل التحليل',design:'سكيل التصميم',dev:'سكيل البرمجة',growth:'سكيل النمو',moni:'سكيل الكتابة',ruwaq:'سكيل الكتابة',omar:'سكيل التصميم',generate:'سكيل التصميم',amer:'عامر',hermes:'🤖 Hermes',claude_code:'⚡ Claude Code',cursor:'🔧 Cursor',manus:'🧠 Manus',ghost:'👑 جوست'};
+  const SKN={writing:'سكيل الكتابة',analysis:'سكيل التحليل',design:'سكيل التصميم',dev:'سكيل البرمجة',growth:'سكيل النمو',moni:'سكيل الكتابة',ruwaq:'سكيل الكتابة',omar:'سكيل التصميم',generate:'سكيل التصميم',amer:'عامر',ghost:'👑 جوست',hermes_build:'بناء',hermes_code:'برمجة',hermes_write:'كتابة',hermes_manage:'تنسيق',hermes_analyze:'تحليل'};
   const skill=c.skill?`<div class="hrow"><span class="hlbl">السكيل</span><span class="hval">${esc(SKN[c.skill]||c.skill)}</span></div>`:'';
   const task=c.task?`<div class="hrow hrow--task"><span class="hlbl">المطلوب</span><span class="hval task">${esc(c.task)}</span></div>`:'';
   const pageUrl=handoffPageUrl(c);

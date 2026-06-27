@@ -1,25 +1,49 @@
 {
   "updated": "2026-06-27",
   "phase": 1,
-  "rules": "🎯 فريق العمل: جوست (مالك) · عامر (جودة) · Hermes (تنسيق، بناء، برمجة، كتابة، تحليل)",
+  "rules": "🎯 فريق العمل: جوست (مالك) · عامر (جودة) · Hermes (5 موظفين: بناء · برمجة · كتابة · تنسيق · تحليل)",
   "columns": [
     {
       "id": "ghost",
-      "title": "👑 جوست · المخزن والتوجيه",
-      "subtitle": "الأفكار · الملاحظات · التوجيهات",
+      "title": "👑 جوست · المالك",
+      "subtitle": "التوجيه · القرارات النهائية",
       "color": "#fd781c"
     },
     {
       "id": "amer",
-      "title": "🛡️ عامر · بوابة الجودة",
-      "subtitle": "المراجعة · الاعتماد · السياسات",
+      "title": "🛡️ عامر · الجودة",
+      "subtitle": "مراجعة · اعتماد · سياسات",
       "color": "#c17817"
     },
     {
-      "id": "hermes",
-      "title": "🤖 Hermes · التنسيق والبناء",
-      "subtitle": "تنسيق · بناء · برمجة · كتابة · تحليل",
+      "id": "hermes_build",
+      "title": "🤖 Hermes · بناء",
+      "subtitle": "تطوير الصفحات · التحديثات",
       "color": "#054241"
+    },
+    {
+      "id": "hermes_code",
+      "title": "🤖 Hermes · برمجة",
+      "subtitle": "أدوات · تحسينات تقنية",
+      "color": "#2a9a98"
+    },
+    {
+      "id": "hermes_write",
+      "title": "🤖 Hermes · كتابة",
+      "subtitle": "محتوى · مقالات · أدلة",
+      "color": "#6abfb8"
+    },
+    {
+      "id": "hermes_manage",
+      "title": "🤖 Hermes · تنسيق",
+      "subtitle": "git · cron · JSON",
+      "color": "#1f7a4d"
+    },
+    {
+      "id": "hermes_analyze",
+      "title": "🤖 Hermes · تحليل",
+      "subtitle": "SEO · سوق · أبحاث",
+      "color": "#2980b9"
     },
     {
       "id": "member_done",
@@ -30,7 +54,7 @@
     {
       "id": "done",
       "title": "منتهي LIVE",
-      "subtitle": "منشور على الموقع",
+      "subtitle": "منشور",
       "color": "#1f7a4d"
     }
   ],
@@ -40,13 +64,13 @@
       "kind": "system",
       "col": "done",
       "stage": "done",
-      "owner": "Hermes",
+      "owner": "hermes_manage",
       "assignee": "Hermes",
       "title": "تحديث لوحة الفريق",
-      "article": "إعداد board.html وأعضاء الفريق",
-      "task": "تحديث files + board.html",
+      "article": "إعداد board.html + JSON",
+      "task": "تنسيق ملفات الفريق",
       "ts": "2026-06-27",
-      "result": "✅ تم — ملفات JSON و board.html",
+      "result": "✅ تم",
       "url_path": "/system/board.html"
     },
     {
@@ -54,13 +78,13 @@
       "kind": "system",
       "col": "done",
       "stage": "done",
-      "owner": "Hermes",
+      "owner": "hermes_code",
       "assignee": "Hermes",
       "title": "إصلاح أداة الصلاة (NaN)",
-      "article": "إصلاح خلل JavaScript",
-      "task": "Clamp cosH + تصحيح زاوية الشروق",
+      "article": "prayer-times.html",
+      "task": "إصلاح حساب الزوايا",
       "ts": "2026-06-27",
-      "result": "✅ 69/69 عملية — 0 NaN",
+      "result": "✅ 69/69 — 0 NaN",
       "url_path": "/tools/prayer-times.html"
     },
     {
@@ -68,13 +92,13 @@
       "kind": "system",
       "col": "done",
       "stage": "done",
-      "owner": "Hermes",
+      "owner": "hermes_build",
       "assignee": "Hermes",
-      "title": "إصلاح 404 + sitemap",
-      "article": "islamic.html + sitemap.xml + robots.txt",
+      "title": "إنشاء islamic.html + sitemap",
+      "article": "صفحات مفقودة",
       "task": "إنشاء الملفات",
       "ts": "2026-06-27",
-      "result": "✅ كل الصفحات 200 — sitemap 226 URL",
+      "result": "✅ كل الصفحات 200",
       "url_path": "/islamic.html"
     },
     {
@@ -82,13 +106,13 @@
       "kind": "system",
       "col": "done",
       "stage": "done",
-      "owner": "Hermes",
+      "owner": "hermes_analyze",
       "assignee": "Hermes",
       "title": "تحسين SEO",
       "article": "OG images + meta",
-      "task": "إصلاح og:image للصفحات المفقودة",
+      "task": "تحليل وتحسين الصفحات",
       "ts": "2026-06-27",
-      "result": "✅ OG images + meta محسّنة"
+      "result": "✅ OG images فريدة"
     },
     {
       "id": "ADSENSE-01",
@@ -97,8 +121,8 @@
       "owner": "عامر",
       "assignee": "عامر",
       "title": "مراجعة جاهزية AdSense",
-      "article": "تجهيز الموقع للتقديم",
-      "task": "1) أداة الصلاة (تم ✅) 2) sitemap (تم ✅) 3) صفحات قانونية (موجودة ✅) 4) تقديم الطلب",
+      "article": "تجهيز الطلب",
+      "task": "التحقق من كل شيء ثم التقديم",
       "ts": "2026-06-27"
     },
     {
@@ -109,7 +133,7 @@
       "assignee": "جوست",
       "title": "جدول التحديث الأسبوعي",
       "article": "خطة المحتوى",
-      "task": "السبت: الصحة | الأحد: المالية | الاثنين: العقار | الثلاثاء: السياحة الدينية | الأربعاء: قصص مميزة | الخميس: مقارنات | الجمعة: مدونة | 1/16: كبسولات",
+      "task": "تحديد أولويات كل قسم",
       "ts": "2026-06-27"
     },
     {
@@ -120,7 +144,7 @@
       "assignee": "جوست",
       "title": "الكبسولة القادمة",
       "article": "السلام يبدأ من البيت",
-      "task": "توليد آلي كل 15 يوم",
+      "task": "توليد كل 15 يوم",
       "ts": "2026-06-27"
     }
   ]
