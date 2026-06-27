@@ -25,13 +25,6 @@
     var h=document.documentElement,t=h.getAttribute("data-theme")==="dark"?"light":"dark";
     h.setAttribute("data-theme",t);localStorage.setItem("dfl-theme",t);
   });
-  /* lang */
-  var lb=document.getElementById("lang-toggle");
-  if(lb)lb.addEventListener("click",function(){
-    var h=document.documentElement,l=h.getAttribute("data-lang")==="ar"?"en":"ar";
-    h.setAttribute("data-lang",l);h.setAttribute("lang",l);
-    h.setAttribute("dir",l==="ar"?"rtl":"ltr");localStorage.setItem("dfl-lang",l);
-  });
   /* scroll shadow */
   var nb=document.getElementById("navbar");
   if(nb)window.addEventListener("scroll",function(){nb.classList.toggle("scrolled",window.scrollY>10);},{passive:true});
