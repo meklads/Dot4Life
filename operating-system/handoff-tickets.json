@@ -1,17 +1,38 @@
 {
   "updated": "2026-06-27",
   "phase": 1,
-  "rules": "🎯 نظام التحديث المستمر — كل قسم بمقالة يومياً. الكبسولات كل 15 يوماً.",
-  "ghost": "👑 جوست = المالك — البوابة النهائية. أتركه كما هو.",
+  "rules": "🎯 فريق العمل: جوست (مالك) · عامر (جودة) · Hermes (تنسيق، بناء، برمجة، كتابة، تحليل)",
   "columns": [
-    { "id": "ghost", "title": "👑 جوست · المخزن · التوجيه", "subtitle": "الأفكار · الملاحظات · التوجيهات", "color": "#fd781c" },
-    { "id": "amer", "title": "🛡️ عامر · بوابة الجودة", "subtitle": "المراجعة · الاعتماد · السياسات", "color": "#c17817" },
-    { "id": "hermes", "title": "🤖 Hermes · التنسيق والبناء", "subtitle": "تحديث JSON · cron · git push", "color": "#054241" },
-    { "id": "claude_code", "title": "⚡ Claude Code · بناء · برمجة", "subtitle": "صفحات · أدوات · تحسينات", "color": "#8f6bb8" },
-    { "id": "cursor", "title": "🔧 Cursor · كتابة · تطوير", "subtitle": "محتوى · مقالات · تحديثات", "color": "#1f7a4d" },
-    { "id": "manus", "title": "🧠 Manus · تحليل · بحث", "subtitle": "SEO · سوق · منافسين", "color": "#2980b9" },
-    { "id": "member_done", "title": "انتهى من عندي", "subtitle": "بانتظار المراجعة", "color": "#6b7a76" },
-    { "id": "done", "title": "منتهي LIVE", "subtitle": "منشور على الموقع", "color": "#1f7a4d" }
+    {
+      "id": "ghost",
+      "title": "👑 جوست · المخزن والتوجيه",
+      "subtitle": "الأفكار · الملاحظات · التوجيهات",
+      "color": "#fd781c"
+    },
+    {
+      "id": "amer",
+      "title": "🛡️ عامر · بوابة الجودة",
+      "subtitle": "المراجعة · الاعتماد · السياسات",
+      "color": "#c17817"
+    },
+    {
+      "id": "hermes",
+      "title": "🤖 Hermes · التنسيق والبناء",
+      "subtitle": "تنسيق · بناء · برمجة · كتابة · تحليل",
+      "color": "#054241"
+    },
+    {
+      "id": "member_done",
+      "title": "انتهى من عندي",
+      "subtitle": "بانتظار المراجعة",
+      "color": "#6b7a76"
+    },
+    {
+      "id": "done",
+      "title": "منتهي LIVE",
+      "subtitle": "منشور على الموقع",
+      "color": "#1f7a4d"
+    }
   ],
   "cards": [
     {
@@ -22,10 +43,10 @@
       "owner": "Hermes",
       "assignee": "Hermes",
       "title": "تحديث لوحة الفريق",
-      "article": "إعداد board.html وأعضاء الفريق الجدد",
-      "task": "تحديث system/tasks.json + operating-system/handoff-tickets.json + system/gsystem-data/team-board.json + system/gsystem-data/handoff-tickets.json",
+      "article": "إعداد board.html وأعضاء الفريق",
+      "task": "تحديث files + board.html",
       "ts": "2026-06-27",
-      "result": "✅ ملفات JSON وأعضاء الفريق محدثة. الملفات الكبيرة (handoff-tickets.json) مصغرة",
+      "result": "✅ تم — ملفات JSON و board.html",
       "url_path": "/system/board.html"
     },
     {
@@ -36,10 +57,10 @@
       "owner": "Hermes",
       "assignee": "Hermes",
       "title": "إصلاح أداة الصلاة (NaN)",
-      "article": "إصلاح خلل JavaScript في prayer-times.html",
-      "task": "Clamp cosH بدلاً من return NaN + تصحيح زاوية الشروق",
+      "article": "إصلاح خلل JavaScript",
+      "task": "Clamp cosH + تصحيح زاوية الشروق",
       "ts": "2026-06-27",
-      "result": "✅ 69/69 عملية حسابية — 0 NaN — Node.js test pass",
+      "result": "✅ 69/69 عملية — 0 NaN",
       "url_path": "/tools/prayer-times.html"
     },
     {
@@ -49,11 +70,12 @@
       "stage": "done",
       "owner": "Hermes",
       "assignee": "Hermes",
-      "title": "إصلاح صفحات 404 + sitemap",
-      "article": "islamic.html (كان 404) + sitemap.xml + robots.txt",
-      "task": "إنشاء islamic.html + sitemap.xml (38 URL رئيسية) + robots.txt مع إشارة لـ sitemap-content.xml",
+      "title": "إصلاح 404 + sitemap",
+      "article": "islamic.html + sitemap.xml + robots.txt",
+      "task": "إنشاء الملفات",
       "ts": "2026-06-27",
-      "result": "✅ كل الصفحات 200 — sitemap مزدوج: sitemap.xml + sitemap-content.xml (226 URL)"
+      "result": "✅ كل الصفحات 200 — sitemap 226 URL",
+      "url_path": "/islamic.html"
     },
     {
       "id": "SYS-04",
@@ -62,11 +84,11 @@
       "stage": "done",
       "owner": "Hermes",
       "assignee": "Hermes",
-      "title": "تحسين SEO (OG images + meta)",
-      "article": "صفحات about, blog, archive, library, real-estate",
-      "task": "إضافة og:image + إصلاح og:title/description لـ 5 صفحات",
+      "title": "تحسين SEO",
+      "article": "OG images + meta",
+      "task": "إصلاح og:image للصفحات المفقودة",
       "ts": "2026-06-27",
-      "result": "✅ كل الصفحات عندها OG images فريدة + hreflang صحيح"
+      "result": "✅ OG images + meta محسّنة"
     },
     {
       "id": "ADSENSE-01",
@@ -75,8 +97,8 @@
       "owner": "عامر",
       "assignee": "عامر",
       "title": "مراجعة جاهزية AdSense",
-      "article": "التأكد من كل شيء قبل التقديم",
-      "task": "1) أداة الصلاة — لا NaN (تم ✅) 2) sitemap محدث (تم ✅) 3) صفحات قانونية (موجودة ✅) 4) تحقق من أن السيرفر محدث من GitHub 5) تقديم الطلب",
+      "article": "تجهيز الموقع للتقديم",
+      "task": "1) أداة الصلاة (تم ✅) 2) sitemap (تم ✅) 3) صفحات قانونية (موجودة ✅) 4) تقديم الطلب",
       "ts": "2026-06-27"
     },
     {
@@ -86,8 +108,8 @@
       "owner": "جوست",
       "assignee": "جوست",
       "title": "جدول التحديث الأسبوعي",
-      "article": "خطة المحتوى للأسابيع القادمة",
-      "task": "السبت: الصحة | الأحد: المالية | الاثنين: العقار | الثلاثاء: السياحة الدينية | الأربعاء: قصص مميزة | الخميس: مقارنات وقرارات | الجمعة: مدونة حرة | 1 و 16 كل شهر: كبسولات السلام",
+      "article": "خطة المحتوى",
+      "task": "السبت: الصحة | الأحد: المالية | الاثنين: العقار | الثلاثاء: السياحة الدينية | الأربعاء: قصص مميزة | الخميس: مقارنات | الجمعة: مدونة | 1/16: كبسولات",
       "ts": "2026-06-27"
     },
     {
@@ -96,9 +118,9 @@
       "col": "ghost",
       "owner": "جوست",
       "assignee": "جوست",
-      "title": "الكبسولة القادمة — السلام يبدأ من البيت",
-      "article": "كبسولة جديدة — تُولّد كل 15 يوم",
-      "task": "توليد آلي لكبسولة تربية أسرية هادئة — مجدولة في cron كل 15 يوماً",
+      "title": "الكبسولة القادمة",
+      "article": "السلام يبدأ من البيت",
+      "task": "توليد آلي كل 15 يوم",
       "ts": "2026-06-27"
     }
   ]
