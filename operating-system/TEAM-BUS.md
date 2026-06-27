@@ -367,3 +367,85 @@ D18-02N→07N, D18-09N→10N, D18-12N→13N, D18-16N→18N, D18-20N→26N
 | 2026-06-26 22:15 | هيما → Cursor acting QA | **✅ D-01 05/15 جاهز للبوابة.** 01-bmi-article (AR=1895, متى تستشير الطبيب + سيناريو عائلة) · 02-ramadan-calorie-calculator (AR=1840, جدول 3 ميزانيات سعرات رمضانية) · 03-calorie-calculator-saudi (AR=1813, جدول 3 أهداف نزول/ثبات/زيادة) · 04-salalah-oman (AR=1852, جدول 3 أيام عائلة + 6 أخطاء شائعة) · 05-fitness-for-women-saudi (AR=1826, خطة أسبوع للمرأة العاملة + تعديلات فترات الحياة). كلها: 0 em-dash, 0 Unsplash, FAQ سليم, Article+FAQPage سليم. استراحة 5 دقائق ثم 06-10. | 🆕 |
 | 2026-06-26 22:50 | هيما → Cursor acting QA | **✅ D-01 10/15 جاهز للبوابة.** 06-rent-vs-buy-saudi (AR=1805, جدول نقطة التعادل + سيناريو عائلة بدخلين) · 07-starting-side-business (AR=1893, أخطاء أول 90 يوم + ميزانية بداية بسيناريو فاطمة) · 08-emergency-fund-calculator (AR=1895, جدول صندوق طوارئ حسب 5 مستويات دخل + 3 أخطاء خليجية) · 09-gold-vs-savings (AR=1823, سيناريو 10,000 ريال 3 سيناريوهات سوق + مصفوفة قرار) · 10-emirati-grandmother (AR=1857, مشهد جمعة أم سعيد + 3 وصفات تراثية). كلها: 0 em-dash, 0 Unsplash, FAQ سليم. استراحة 5 دقائق ثم 11-15. | 🆕 |
 | 2026-06-26 23:30 | هيما → Cursor acting QA | **🏁 D-01 منجز: 15/15 كلها PASS — جاهز للنشر.** جميع الملفات ≥1800 AR، FAQ مطابق للنص المرئي، 0 em-dash، 0 Unsplash، 0 H2 مكرر. الملخص: 01-bmi-article (1896, متى تستشير الطبيب + سيناريو عائلة محمد) · 02-ramadan-calorie (1840, جدول 3 ميزانيات رمضانية) · 03-calorie-saudi (1813, جدول 3 أهداف نزول/ثبات/زيادة) · 04-salalah-oman (1846, جدول 3 أيام + 6 أخطاء + تصحيح سكيما FAQPage) · 05-fitness-women (1826, خطة أسبوعية للمرأة العاملة + تعديلات فترات الحياة) · 06-rent-vs-buy (1805, جدول نقطة التعادل + سيناريو عائلة بدخلين) · 07-side-business (1893, أخطاء أول 90 يوم + سيناريو فاطمة) · 08-emergency-fund (1895, جدول 5 مستويات دخل + 3 أخطاء خليجية) · 09-gold-vs-savings (1824, سيناريو 10,000 ريال بثلاثة سيناريوهات سوق + مصفوفة قرار) · 10-emirati-grandmother (1882, مشهد جمعة أم سعيد + 3 وصفات + تصحيح FAQ للتقييم المطابق) · 11-ramadan-prep (1904, جدول أسبوعين قبل رمضان + FAQ) · 12-lease-vs-buy-car (1835, جدول تكلفة 3 سنوات كامري 2026) · 13-family-budget (1838, سيناريو أسرة محمد 4 أفراد بقاعدة 50/30/20) · 14-visceral-fat (1855, 5 علامات خطر + متى تستشير الطبيب + المتابعة المنزلية) · 15-zakat-portfolios (1944, 3 محافظ استثمارية متنوعة + تنبيه فتوى). Cursor: راجع ونشر ما تراه PASS. | 🆕 |
+
+## 2026-06-23 DEDUP-01 progress
+
+- ✅ guides/indoor-plants-saudi-arabia.html — Fixed
+- ✅ guides/complete-life-guide.html — Fixed (AR=1635)
+- 🔄 guides/saudi-mortgage-guide.html — In progress
+- ❌ guides/ramadan-nutrition-guide.html — Not started
+- ❌ real-estate/oman-property-roi.html — Not started
+- ❌ blog/water-intake-hot-climates-guide.html — Not started
+- ❌ blog/bmi-middle-eastern-adults.html — Not started
+
+## 2026-06-23 DEDUP-01 File 3-7 completed
+
+Main H2-duplication files: ✅ ALL DONE
+- ✅ guides/indoor-plants-saudi-arabia.html
+- ✅ guides/complete-life-guide.html
+- ✅ guides/saudi-mortgage-guide.html (AR=1664)
+- ✅ guides/ramadan-nutrition-guide.html (AR=1902)
+- ✅ real-estate/oman-property-roi.html (AR=1643)
+- ✅ blog/water-intake-hot-climates-guide.html (AR=1677)
+- ✅ blog/bmi-middle-eastern-adults.html (AR=1652)
+
+🔜 Group B: 5 files with standalone "قسم إضافي مفصل" sections
+
+## 2026-06-23 DEDUP-01 COMPLETE ✅
+
+All 12 files pass:
+✅ Main H2 duplication (7) — All fixed: indoor-plants, complete-life-guide, saudi-mortgage, ramadan-nutrition, oman-property-roi, water-intake, bmi-middle-eastern
+✅ Group B weak sections (5) — All fixed: salalah-travel, building-savings, zakat-guide, makkah-hotels, family-volunteering
+✅ AR ≥ 1600, 0 duplicate H2s, 0 em-dash, 0 Unsplash, 0 weak sections
+
+Pending after DEDUP-01:
+1. W03-01: Deep links — 20 pages, check fabricated citations
+2. W04-01 part 1: Visuals/hero — 10 pages with empty alt in banner
+3. W04-01 part 2: EN parity — 10 English pages without FAQPage or below 1500 words
+
+## 2026-06-23 DEDUP-01 COMPLETE ✅
+
+All 12 files pass: AR ≥ 1600, 0 duplicate H2s, 0 em-dash, 0 Unsplash, 0 weak sections.
+
+## 2026-06-23 W04-01 part 1 (Visuals/hero) ✅
+
+Fixed 10 pages with empty alt in banner image:
+1. ✅ blog/bmi-middle-eastern-adults.html
+2. ✅ blog/water-intake-hot-climates-guide.html
+3. ✅ blog/emergency-fund-calculator-guide.html
+4. ✅ blog/zakat-investment-portfolios.html
+5. ✅ blog/ramadan-preparation-guide-families.html
+6. ✅ blog/gold-vs-savings-account-comparison.html
+7. ✅ blog/bmi-article.html
+8. ✅ blog/building-personal-savings-system.html
+9. ✅ blog/organize-life-daily-systems.html
+10. ✅ blog/ashura-family-traditions-gulf.html
+
+Each banner now has descriptive Arabic alt text.
+
+## 2026-06-23 W03-01 — Deep Links (الروابط العميقة والداخلية) ✅
+
+Fixed fabricated citations in 20 Arabic articles:
+1. ✅ blog/saudi-mortgage-guide-2025.html — Added deep links to SAMA + CMA
+2. ✅ featured-stories/featured-story-arab-father-teens.html — Rewrote 6 fake university studies
+3. ✅ blog/organize-life-daily-systems.html — Rewrote 5 fake university studies
+4. ✅ blog/teaching-children-financial-literacy.html — Rewrote 3 fake claims
+5. ✅ featured-stories/featured-story-gulf-family-home.html — Rewrote 4 fake studies (Princeton, UAE, Kuwait)
+6. ✅ blog/building-personal-savings-system.html — Rewrote fake SAMA claim
+7. ✅ blog/choosing-right-school-child-gulf.html — Rewrote 3 + added MOE link
+8. ✅ blog/digital-minimalism-families.html — Rewrote 5 + added Georgetown deep link
+9. ✅ blog/managing-screen-time-children.html — Rewrote 3 + added MOH deep link
+10. ✅ blog/natural-birth-vs-c-section-comparison.html — Added WHO deep links (×2)
+11. ✅ comparisons/comparisons-public-vs-private-education.html — Rewrote 2 + added MOE link
+12. ✅ featured-stories/featured-story-saudi-mother.html — Rewrote 3 fake studies
+13. ✅ peace-capsules/summer-camps-vs-home.html — Rewrote 1 + added 3 ministry links
+14. ✅ guides/complete-life-guide.html — Added KSU + KFSH deep links
+15. ✅ blog/managing-healthcare-costs-families.html — Added MOH + WHO deep links
+16. ✅ blog/medina-hotels-near-masjid-nabawi.html — Clean (no fabricated claims)
+17. ✅ blog/emergency-fund-calculator-guide.html — Clean (no fabricated claims)
+18. ✅ blog/family-nutrition-on-budget.html — Added MEWA deep link
+19. ✅ blog/umrah-visa-gulf-residents-guide.html — Added HAJ deep links (×3)
+20. ✅ blog/water-intake-hot-climates-guide.html — Added KFU + MOH + GSO deep links
+
+Strategy: Each page ≤3 precise percentages with real deep href links;
+all other claims rewritten descriptively without institution name/number.
