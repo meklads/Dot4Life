@@ -104,12 +104,20 @@
   function hasSplitLangPages() {
     var enHref = getAlternateHref('en');
     var arHref = getAlternateHref('ar');
-    if (!enHref || !arHref) return false;
+    if (enHref && arHref) {
+      try {
+        var enPath = new URL(enHref, location.origin).pathname;
+        var arPath = new URL(arHref, location.origin).pathname;
+        return enPath !== arPath;
+      } catch (e) { return false; }
+    }
+    // Fallback: only one hreflang exists but points to a different page
+    var path = window.location.pathname;
     try {
-      var enPath = new URL(enHref, location.origin).pathname;
-      var arPath = new URL(arHref, location.origin).pathname;
-      return enPath !== arPath;
-    } catch (e) { return false; }
+      if (enHref) { var ep = new URL(enHref, location.origin).pathname; if (ep !== path) return true; }
+      if (arHref) { var ap = new URL(arHref, location.origin).pathname; if (ap !== path) return true; }
+    } catch (e) {}
+    return false;
   }
 
   var ARTICLE_PATH_PREFIX = /^\/(?:health(?:-pregnancy)?|finance-wealth|real-estate|islamic-hajj-umrah|peace-capsules|blog|featured-stories|comparisons|guides)\//;
