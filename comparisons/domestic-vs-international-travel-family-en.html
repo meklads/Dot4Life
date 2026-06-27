@@ -37,7 +37,6 @@ img{max-width:100%;height:auto}
 .article-banner-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(5,66,65,.7),rgba(5,66,65,.3));display:flex;flex-direction:column;justify-content:flex-end;padding:2rem}
 .article-banner-title{font-size:clamp(1.3rem,3vw,1.9rem);line-height:1.4;font-weight:800;color:#fff;text-shadow:0 2px 20px rgba(0,0,0,.3);margin:0;max-width:700px}
 .article-banner-meta{color:rgba(255,255,255,.8);margin-top:.5rem;font-size:.78rem;display:flex;gap:.6rem;flex-wrap:wrap}
-.article-body{max-width:760px;margin:0 auto;padding:1rem 0 2rem}
 .article-body h1{font-size:1.4rem;color:var(--green);margin-bottom:.5rem;line-height:1.5;display:none}
 .article-body h2{font-size:1.15rem;color:var(--green);margin:2rem 0 .8rem;border-left:4px solid var(--teal);padding-left:12px}
 .article-body h3{font-size:1rem;color:#054241;margin:1.2rem 0 .5rem}
@@ -89,13 +88,13 @@ img{max-width:100%;height:auto}
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3G1XPV4F0G"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3G1XPV4F0G');</script>
 </head>
-<body data-template="article" data-template="article">
-
+<body data-template="article">
+<!-- ═══ READING PROGRESS BAR ══════════════════════════════════ -->
 <div id="reading-progress" role="progressbar" aria-label="Reading progress"></div>
-
+<!-- ═══ END READING PROGRESS ══════════════════════════════════ -->
 
 <!-- ═══ ENGLISH HEADER ══════════════════════════════════════ -->
-<nav id="navbar"><div class="nav-inner"><a href="/" class="nav-logo"><img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" width="100" height="100" style="height:100px;width:auto;object-fit:contain;" loading="lazy"></a><ul class="nav-links"><li><a href="/health.html">Health</a></li><li><a href="/finance.html">Finance</a></li><li><a href="/real-estate.html">Real Estate</a></li><li><a href="/travel.html">Travel</a></li><li><a href="/islamic.html">Islamic</a></li><li><a href="/about.html">About</a></li><li><a href="/archive.html">Archive</a></li><li><a href="/blog.html">Blog</a></li><li><a href="/library.html">Library</a></li></ul><div class="nav-controls"><button class="nav-btn" id="lang-toggle">عربي</button><button class="nav-btn" id="theme-toggle">
+<nav id="navbar"><div class="nav-inner"><a href="/" class="nav-logo"><img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" width="100" height="100" style="height:100px;width:auto;object-fit:contain;" loading="lazy"></a><ul class="nav-links"><li><a href="/health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li><li><a href="/finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li><li><a href="/real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li><li><a href="/travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li><li><a href="/islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li><li><a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a></li><li><a href="/archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a></li><li><a href="/blog.html"><span class="en">Blog</span><span class="ar">المدونة</span></a></li><li><a href="/library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a></li></ul><div class="nav-controls"><button class="nav-btn" id="lang-toggle"><span class="en">عربي</span><span class="ar">English</span></button><button class="nav-btn" id="theme-toggle">
  <svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
  <svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
  </button></div></div></nav>
@@ -116,7 +115,7 @@ img{max-width:100%;height:auto}
  </div>
 </section>
 
-<div class="article-layout">
+<div class="article-layout" style="display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:2.5rem">
 
 <main class="article-main">
 <article class="article-body">
