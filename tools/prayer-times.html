@@ -556,11 +556,12 @@ function solarNoon(jd, lng) {
 }
 
 function hourAngle(lat, dec, alt) {
-  var num = Math.cos(toRad(alt + 0.833)) - Math.sin(toRad(lat)) * Math.sin(dec);
+  var num = Math.sin(toRad(alt)) - Math.sin(toRad(lat)) * Math.sin(dec);
   var den = Math.cos(toRad(lat)) * Math.cos(dec);
   if (Math.abs(den) < 1e-10) return NaN;
   var cosH = num / den;
-  if (cosH > 1 || cosH < -1) return NaN;
+  if (cosH > 1) cosH = 1;
+  if (cosH < -1) cosH = -1;
   return toDeg(Math.acos(cosH)) / 15;
 }
 
@@ -570,7 +571,8 @@ function asrHourAngle(lat, dec, shadowRatio) {
   var den = Math.cos(toRad(lat)) * Math.cos(dec);
   if (den === 0) return NaN;
   var cosH = num / den;
-  if (cosH > 1 || cosH < -1) return NaN;
+  if (cosH > 1) cosH = 1;
+  if (cosH < -1) cosH = -1;
   return toDeg(Math.acos(cosH)) / 15;
 }
 
@@ -581,7 +583,7 @@ function calcTimes(date, lat, lng, tz, methodKey) {
   var noon = solarNoon(jd, lng);
   var m = METHODS[methodKey];
 
-  var sunriseAngle = hourAngle(lat, dec, 0);
+  var sunriseAngle = hourAngle(lat, dec, -0.833);
   var sunrise = noon - sunriseAngle;
   var sunset  = noon + sunriseAngle;
   var fajrHA  = hourAngle(lat, dec, -m.fajr);
