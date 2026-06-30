@@ -153,3 +153,34 @@
 - `real-estate/first-home-buyer-saudi-arabia.html`: شرطات طويلة=6 · محتوى حسّاس بلا إخلاء مسؤولية · نِسَب=29 بلا أي رابط عميق واحد · فقرات لاتينية في صفحة عربية=4
 - `real-estate/property-roi-comparison-saudi-uae-en.html`: شرطات طويلة=17 · نِسَب=50 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (1): Rental yield is the annual rent you collect divided by the purchase price. It is the close · فقرات لاتينية في صفحة عربية=24
 - `real-estate/property-roi-comparison-saudi-uae.html`: كلمات=745 <1300 · شرطات طويلة=4 · محتوى حسّاس بلا إخلاء مسؤولية · نِسَب=27 بلا أي رابط عميق واحد · فقرات لاتينية في صفحة عربية=1
+
+## 2026-06-30 20:34 UTC — 🤖 بوابة CI الآلية رفضت 16 ملف عند push
+تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
+- `blog/end-of-service-benefits-expats.html`: فقرات لاتينية في صفحة عربية=1
+- `blog/salalah-khareef-2026-family-guide.html`: فقرات لاتينية في صفحة عربية=1
+- `blog/teaching-children-gratitude-faith-en.html`: كلمات=68 <1300 · نِسَب=2 بلا أي رابط عميق واحد · فقرات لاتينية في صفحة عربية=4
+- `blog/umrah-visa-gulf-residents-guide.html`: فقرات لاتينية في صفحة عربية=1
+- `comparisons/outdoor-vs-indoor-family-activities-en.html`: كلمات=62 <1300 · نِسَب=2 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (1): guides
+      Daily Walking Benefits for Families
+      
+        Jun 21, 2026
+        10 mi · فقرات لاتينية في صفحة عربية=3
+- `featured-stories/engineer-simplified-family-life-en.html`: كلمات=89 <1300 · شرطات طويلة=1 · نِسَب=1 بلا أي رابط عميق واحد · فقرات لاتينية في صفحة عربية=3
+- `finance-wealth/digital-minimalism-faith-families-en.html`: كلمات=980 <1300 · شرطات طويلة=12 · نِسَب=4 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (3): A 2023 study from the Pew Research Center found that 72% of parents say they are "sometime | Notifications are the primary tool of digital distraction. A 2022 study from Carnegie Mell | Designate physical spaces and times where screens are not allowed. The dinner table is the · فقرات لاتينية في صفحة عربية=20
+- `finance-wealth/digital-minimalism-faith-families.html`: كلمات=352 <1300 · شرطات طويلة=8 · محتوى حسّاس بلا إخلاء مسؤولية · نِسَب=2 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (2): دراسة من مركز بيو (٢٠٢٣) وجدت أن ٧٢٪ من الآباء يقولون إنهم "غالباً أو أحياناً" مشتتون بهوا | ١. القصد قبل الافتراضي: الوضع الافتراضي للحياة العصرية هو الاتصال الدائم. التقليل الرقمي ي · صورة Unsplash placeholder (يلزم hero معتمد) · فقرات لاتينية في صفحة عربية=1
+- `health/mindful-family-meal-nutrition-faith-en.html`: كلمات=772 <1300 · شرطات طويلة=7 · نِسَب=8 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (3): A landmark study from the University of Montreal (2022) followed 8,500 children over 10 ye | Another study from the American Heart Association found that families who cook and eat tog | 3. Eliminate distractions. No phones, no television, no tablets at the table. Research fro · فقرات لاتينية في صفحة عربية=18
+- `islamic-hajj-umrah/spiritual-preparation-umrah-family-en.html`: كلمات=104 <1300 · شرطات طويلة=1 · فقرات لاتينية في صفحة عربية=5
+- `islamic-hajj-umrah/umrah-off-peak-seasons-guide-en.html`: شرطات طويلة=3 · نِسَب=11 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (1): Data from Saudi's Ministry of Hajj and Umrah shows that over 60% of Umrah visas are issued · فقرات لاتينية في صفحة عربية=28
+- `islamic-hajj-umrah/umrah-off-peak-seasons-guide.html`: كلمات=800 <1300 · شرطات طويلة=2 · محتوى حسّاس بلا إخلاء مسؤولية · نِسَب=9 بلا أي رابط عميق واحد · فقرات لاتينية في صفحة عربية=1
+- `peace-capsules/power-of-i-was-wrong-en.html`: كلمات=71 <1300 · شرطات طويلة=2 · ادّعاء سلطة بلا رابط مجاور (1): guides
+      Daily Walking Benefits for Families
+      
+        Jun 21, 2026
+        10 mi · فقرات لاتينية في صفحة عربية=4
+- `real-estate/home-as-sanctuary-family-wellbeing-en.html`: كلمات=176 <1300 · شرطات طويلة=1 · نِسَب=3 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (1): guides
+      Daily Walking Benefits for Families
+      
+        Jun 21, 2026
+        10 mi · فقرات لاتينية في صفحة عربية=5
+- `real-estate/property-roi-comparison-saudi-uae-en.html`: شرطات طويلة=17 · نِسَب=50 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (1): Rental yield is the annual rent you collect divided by the purchase price. It is the close · فقرات لاتينية في صفحة عربية=24
+- `real-estate/property-roi-comparison-saudi-uae.html`: كلمات=452 <1300 · شرطات طويلة=4 · محتوى حسّاس بلا إخلاء مسؤولية · نِسَب=27 بلا أي رابط عميق واحد · فقرات لاتينية في صفحة عربية=1
