@@ -1,0 +1,69 @@
+# بوابة الجودة الآلية — تفحص كل push فوراً (لا تنتظر دورة عامر كل 30 دقيقة)
+# تطبّق scripts/amer_gate.py على كل HTML تغيّر في مجلدات المحتوى.
+# عند أي FAIL: تعزل الصفحة (noindex,nofollow) وتسجّل الرفض في TEAM-BUS + quality-log
+# وتفشل الـ Action (تنبيه أحمر فوري في تبويب Actions / بريد لمن دفع).
+name: Content Quality Gate
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "blog/**.html"
+      - "health/**.html"
+      - "finance-wealth/**.html"
+      - "real-estate/**.html"
+      - "islamic-hajj-umrah/**.html"
+      - "comparisons/**.html"
+      - "featured-stories/**.html"
+      - "peace-capsules/**.html"
+      - "guides/**.html"
+      - "fitness/**.html"
+      - "travel/**.html"
+      - "health-pregnancy/**.html"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  quality-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Configure git identity
+        run: |
+          git config user.name "amer-ci-gate"
+          git config user.email "amer-ci-gate@users.noreply.github.com"
+
+      - name: Run quality gate on changed files
+        id: gate
+        env:
+          GH_BEFORE_SHA: ${{ github.event.before }}
+          GH_AFTER_SHA: ${{ github.sha }}
+        run: |
+          python3 scripts/ci_quality_gate.py
+        continue-on-error: true
+
+      - name: Commit quarantine + log updates (if any)
+        run: |
+          if ! git diff --quiet; then
+            git add -A
+            git commit -m "amer-ci-gate: عزل تلقائي (noindex) + تسجيل رفض CI"
+            git push origin HEAD:main
+          else
+            echo "لا تغييرات لرفعها."
+          fi
+
+      - name: Fail the workflow if gate found violations
+        if: steps.gate.outcome == 'failure'
+        run: |
+          echo "::error::بوابة الجودة رفضت ملفاً واحداً على الأقل — راجع quality-log.md و TEAM-BUS.md"
+          exit 1
