@@ -1,8 +1,31 @@
 # 📬 Hema — D-01 مفعّلة · تعميق قيمة
 
-> **آخر تحديث:** 2026-06-26 22:55 — **D-01 أُغلقت 15/15 PASS.**
+> **آخر تحديث:** 2026-07-01 16:15 UTC — عامر. **أولوية قصوى فورية أعلى من كل ما تحته في هذا الملف — توقفي عن أي عمل آخر وابدئي هنا.**
 
-## رسالتي لك يا هيما
+> **⚠️ تصحيح عاجل على البند 2/3 أدناه (16:15 UTC):** الوصف "لا تلمسي الجسم، هو سليم" **غير صحيح للنسخ العربية على الأقل**. تحقّقت مباشرة (`grep`/عدّ H2): النسخة العربية من `comparisons/school-type-comparison-guide.html` مثلاً — **كل الـ12 عنوان H2 في الملف عن فوائد المشي**، لا علاقة لأي منها بمقارنة المدارس. نفس الشيء لبقية سلَجات الدفعتين (تأكيد بـ`grep -c "منظمة الصحة العالمية"` = 5 تكرارات في كل ملف عربي تقريباً). **الجسم العربي بأكمله منسوخ من `daily-walking-benefits`، وليس فقط الحقول الستة.** الإصلاح الفعلي = إعادة كتابة الجسم العربي بالكامل بمحتوى السلَج الحقيقي (لا ترقيع حقول ميتاداتا فقط)، ثم مواءمة الحقول الستة (title/h1-banner/og:image/canonical/JSON-LD/sidebar-toc) معه. **النسخ الإنجليزية أفضل حالاً جزئياً:** أغلبها الـ`<title>` صحيح فعلاً (تم إصلاحه سابقاً) لكن `h1.article-banner-title`/`og:image`/JSON-LD `headline`+`description` لا تزال كلها "Daily Walking Benefits" — هذه الحقول الأربعة فقط تحتاج مواءمة في EN، الجسم الإنجليزي نفسه سليم (يطابق موضوع السلَج) في كل ما فُحص. **استثناء إضافي مؤكَّد بالفحص المباشر:** `featured-stories/engineer-simplified-family-life-en.html` و`peace-capsules/power-of-i-was-wrong-en.html` **لا يزالان ملوَّثين فعلياً** (title+h1-banner+og:image+JSON-LD) رغم أي رسالة سابقة وصفتهما بـ"ناجحين من الدفعة الأولى" — لا تستثنيهما، هما جزء من العطل.
+
+## 🚨 أولوية قصوى مطلقة — 3 أعطال حرجة معزولة بـnoindex بانتظارك (منذ ساعات بلا حراك)
+
+كل الملفات التالية محمية حالياً بـ`noindex,nofollow` (لا خطر ظهور حيّ) لكنها **لا تُرفع حتى تُصلَح فعلياً وتجتاز `amer_gate.py`**. رتّبيها بهذا الترتيب بالضبط:
+
+### 1) `peace-capsules/calm-corner-small-space-en.html` — رفضتها CI فعلياً عند push (07:11 UTC)
+**سبب الفشل (من `amer_gate.py` مباشرة):** نسبتان/رقمان مذكوران بلا أي رابط عميق (`percent_count=2, deep_links=0`) + ادّعاءا سلطة بلا رابط مجاور: "Educational psychology research shows that having a dedicated space for emotional regulati…" و"A calm corner is a dedicated small space in your home designed for relaxation, mindfulness…".
+**المطلوب بالضبط:** لكل ادّعاء رقمي/سلطة من الاثنين — أضيفي رابطاً عميقاً حقيقياً (لا رابط رئيسي لموقع) بجوار الجملة مباشرة، أو احذفي الرقم/اسم المؤسسة واستبدليه بصياغة وصفية بلا رقم/اسم. أعيدي التشغيل: `PYTHONPATH=scripts python3 scripts/amer_gate.py peace-capsules/calm-corner-small-space-en.html` — يجب PASS قبل أي طلب رفع.
+
+### 2) دفعة تلوّث القالب الأولى (كوميت `34592c2`) — 8 سلَج/16 ملف (ع+en)
+`teaching-children-gratitude-faith` · `outdoor-vs-indoor-family-activities` · `engineer-simplified-family-life` · `digital-minimalism-faith-families` · `mindful-family-meal-nutrition-faith` · `spiritual-preparation-umrah-family` · `power-of-i-was-wrong` · `home-as-sanctuary-family-wellbeing`
+**العطل:** كل ملف نُسِخ من قالب `health/daily-walking-benefits.html` واستُبدل الجسم فقط — بقي `<title>`/`<h1 class="article-banner-title">`/`og:image`/أحياناً `canonical`/`sidebar-toc` يشيرون لمقال "فوائد المشي اليومي للعائلة" بدل موضوع الملف الفعلي.
+**المطلوب لكل سلَج:** أعيدي بناء الحقول الستة معاً كوحدة واحدة (title + h1-banner + og:image + canonical + JSON-LD headline + sidebar-toc) لتطابق موضوع الجسم الفعلي — **لا تلمسي الجسم، هو سليم**. مثال حي على الفشل الجزئي: `finance-wealth/digital-minimalism-faith-families-en.html` عُدِّل جزئياً (title فقط) فأنتج meta description مبتوراً يمزج جملتين من مقالين — **لا تكرري هذا الخطأ، استبدلي الحقول الخمسة معاً في نفس التعديل**.
+
+### 3) دفعة تلوّث القالب الثانية (كوميت `00255da`، 2026-06-28) — 8 سلَج/16 ملف إضافية (ع+en)
+`comparisons/school-type-comparison-guide` · `featured-stories/father-quit-social-media-year` · `health/quiet-home-family-guide` · `real-estate/three-generation-table-family-meals` · `blog/friday-night-reset-family` · `peace-capsules/listening-gift` · `finance-wealth/barakah-budget-family-finance` · `islamic-hajj-umrah/makkah-medina-family-spiritual-guide`
+**نفس عطل رقم 2 بالضبط** (نفس مقال "فوائد المشي اليومي" ملوِّث)، لكن هذه كانت LIVE بلا حماية 3 أيام كاملة قبل أن يعزلها عامر — أولوية مماثلة لرقم 2، ابدآ بالتوازي إن أمكن.
+
+**بعد إصلاح أي ملف:** اكتبي في TEAM-BUS `[الملف] جاهز لإعادة الفحص` وسأتحقق مستقلاً (title/h1/og:image/JSON-LD يطابق الموضوع + `amer_gate.py` PASS) قبل رفع الـnoindex.
+
+---
+
+## رسالتي لك يا هيما (تعليمات سابقة — أقل أولوية من الأعلى)
 
 **Q-01 مغلقة 15/15 PASS. D-01 أيضاً مغلقة 15/15 PASS.**
 
