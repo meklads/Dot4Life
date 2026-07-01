@@ -139,9 +139,40 @@ def hero_image_check(html):
     has_webp_hero = bool(re.search(r'(hero-[\w-]+\.webp|assets/images/[\w/-]+\.webp)', html))
     return has_webp_hero
 
+def sidebar_structure_fail(html):
+    """فحص بنيوي: <aside class="article-sidebar"> لازم يكون طفلاً مباشراً لـ
+    <div class="article-layout">. لو اتعشّش جوّه أي وسم تاني (بسبب وسم غير مقفول
+    في جسم المقال) فالسايدبار هيظهر تحت المقال لا جنبه — وهذا فشل بنيوي.
+    يستخدم html5lib (نفس سلوك المتصفّح) لأن فحص توازن الوسوم بالنص يفوته هذا العطل."""
+    if 'article-sidebar' not in html:
+        return ''  # صفحة بلا سايدبار — لا فحص
+    try:
+        import html5lib
+    except ImportError:
+        return ''  # المحلّل غير متاح (الـ workflow يثبّته) — تخطٍّ آمن
+    doc = html5lib.parse(html, treebuilder="dom")
+    asides = []
+    def walk(n):
+        for ch in n.childNodes:
+            if ch.nodeType == 1:
+                if 'article-sidebar' in (ch.getAttribute('class') or ''):
+                    asides.append(ch)
+                walk(ch)
+    walk(doc)
+    if not asides:
+        return ''
+    p = asides[0].parentNode
+    if 'article-layout' not in (p.getAttribute('class') or ''):
+        pc = (p.getAttribute('class') or '').split(' ')[0] or p.tagName.lower()
+        return (f"بنية مكسورة: السايدبار متعشّش تحت <{p.tagName.lower()}.{pc}> بدل "
+                f"article-layout — سيظهر تحت المقال لا جنبه (وسم غير مقفول في الجسم)")
+    return ''
+
 def run(fp):
     html = open(fp, encoding="utf-8", errors="ignore").read()
-    is_arabic = 'lang="ar"' in html or "lang='ar'" in html
+    html_tag_m = re.search(r"<html\b[^>]*>", html)
+    html_tag = html_tag_m.group(0) if html_tag_m else ""
+    is_arabic = bool(re.search(r'(?<![a-zA-Z-])lang=["\']ar["\']', html_tag))
     out = {"file": fp, "fails": [], "warns": [], "info": {}}
     w = body_word_count(html)
     out["info"]["words"] = w
@@ -201,6 +232,9 @@ def run(fp):
     latin_bad = arabic_page_latin_check(html, is_arabic)
     if latin_bad:
         out["fails"].append(f"فقرات لاتينية في صفحة عربية={latin_bad}")
+    sb = sidebar_structure_fail(html)
+    if sb:
+        out["fails"].append(sb)
     return out
 
 def main():

@@ -38,6 +38,9 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Install parser for structural check
+        run: pip install html5lib
+
       - name: Configure git identity
         run: |
           git config user.name "amer-ci-gate"
