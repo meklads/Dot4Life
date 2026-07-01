@@ -1,4 +1,13 @@
-# 🛡️ أوامر عامر النشطة (المصدر الثابت) — 2026-06-24 (آخر دورة 2026-07-01 20:39 UTC)
+# 🛡️ أوامر عامر النشطة (المصدر الثابت) — 2026-06-24 (آخر دورة 2026-07-01 21:14 UTC)
+
+## 🔧 دورة 21:14 UTC: تشخيص جذري لسايدبار مكسور (4 ملفات) + ثغرة سلبي-كاذب في amer_freeze_watch.py + gsystem_autopilot.py معلَّق
+**(1) السايدبار:** السبب الموحّد للأربعة = `<main>`/`<div class="container">` غير مُغلَقين إطلاقاً قبل `<aside class="article-sidebar">` (0 `</main>` في الملفات). الإصلاح الحرفي: أدرج `</div>\n</main>\n` قبل وسم الـaside — قارنته ببنية ملف سليم (`mindful-family-meal-nutrition-faith-en`). أُرسل لكورسر عبر TEAM-BUS للتنفيذ المباشر (خارج ولاية عامر التعديل المباشر). معلَّق بلا حل منذ 18:07 (>3 ساعات، 4 تكرارات تنبيه).
+**(2) ثغرة أداة:** `amer_freeze_watch.py` يعتمد فقط على ملفات غير متتبَّعة (`git status --porcelain` بادئة `??`) — أي دفعة تُدفَع (مثل الدفعة الثالثة عبر `5db0086`) تختفي من رصده فوراً رغم بقاء اعتراض التجميد بلا حسم فعلي. **لا تُفسَّر نتيجة "لا مخالفات" الحالية على أنها حسم للاعتراض** — الاعتراض الأصلي (06:35) وتصعيد (20:45) لا يزالان بلا رد جوست. يحتاج تطوير الأداة لمقارنة سجل الكوميتات من خط أساس، لا الشجرة فقط.
+**(3) عطل جديد:** `gsystem_autopilot.py` (بلا --push) عُلِّق بلا إخراج (RC=124، مهلة 38 ثانية، محاولتان منفصلتان) — أول ظهور لهذا العطل. السكربت الفرعي `build-from-approved-draft.py --audit` معطوب فعلياً (`NameError: audit_live` غير مُعرَّفة) لكنه يفشل بسرعة <1 ثانية فلا يفسّر التعليق — مصدر التعليق على الأرجح قبل استدعاء `--audit` (خطوات git/بناء الصور). `handoff_sync.py` سليم (25 بطاقة).
+**بلا تغيير:** og:image/تلوّث "مشي" صفر تقدّم (تأكيد رابع) على الدفعتين المعروفتين. لا انتكاسة noindex جديدة هذه الدورة. لم أعتمد أي ملف LIVE جديد.
+
+## 🚨🚨 حاكم — إضافة 20:45 UTC: best-effort push هذه الدورة نشر فعلياً دفعة التجميد الثالثة على origin/main (noindex سليم، حسم جوست مطلوب فوراً)
+مفتاح SSH صحّ هذه الدورة (خلافاً لمعظم الدورات السابقة) فنجح `git push` فعلياً — كوميت `5db0086` (يشمل التعديلات + دفعة التجميد الثالثة عبر `git add -A` القياسي) وصل `origin/main` (مؤكَّد `git ls-remote`). البروتوكول القياسي المكتوب في تعليمات المهمة لا يستثني الملفات المجمَّدة. **noindex,nofollow سليم على الـ16 ملف على القرص وعلى الريموت — لا خطر فهرسة فوري**, لكن القرار على *مصدر ومصير* هذه المادة لم يعد نظرياً. طلب حسم عاجل من جوست في `TEAM-BUS.md` (20:45 UTC). محاولة دفع ثانية لتوثيق هذا بالذات فشلت (index.lock + الريموت تقدّم لكوميت آخر `b573de9`، على الأرجح دفع من كورسر) — تُركت فوراً، التوثيق قائم على القرص بانتظار الدورة القادمة.
 
 ## 🚨 حاكم — دورة عامر 2026-07-01 20:39 UTC: "إصلاح" alt/H1 بلا استبدال صورة فعلية = تلوّث بصري متجدّد + ثغرة noindex جديدة مُغلَقة
 **اكتشاف حاكم جديد يُضاف لقاعدة 17:10 (PASS لا يعني نظافة):** كوميت الدورة السابقة (`6473617`) زعم "استبدال hero images alt+h1" لـ3 ملفات AR (`digital-minimalism-faith-families`·`mindful-family-meal-nutrition-faith`·`home-as-sanctuary-family-wellbeing`) — **الفحص المباشر أثبت أن الصورة الفعلية (`article-banner-img` src + `figure.hero` src) لم تُستبدَل في أي من الثلاثة، فقط نص alt وH1**، أي أن الزوّار يرون فعلياً صورة "المشي" بينما الوصف النصي (alt) يصف موضوعاً مختلفاً تماماً — **تناقض alt/صورة جديد، أسوأ للوصول (accessibility) من الوضع السابق.** الاستثناء الوحيد الحقيقي: `spiritual-preparation-umrah-family.html` (AR) حصل على استبدال src صحيح (`hero-black.webp`) لكنه فقد وسم `og:image` بالكامل من الرأس (نقص ميتاداتا بدل التلوّث). `og:image` (meta) لا يزال `hero-daily-walking-benefits.webp` على الثلاثة الأخرى دون تغيير. **تشديد حاكم جديد:** أي تقرير "إصلاح صورة" يجب أن يُتحقَّق منه بمقارنة `src=` الفعلي (لا فقط `alt=`) على كل من `article-banner-img` و`figure.hero` و`og:image` معاً كوحدة واحدة — الثلاثة يجب أن تشير لنفس الملف المعتمد الصحيح، لا يكفي تصحيح واحد منها.
@@ -377,3 +386,62 @@
 - **دفعة تجميد ثالثة (8 سلَج/16 ملف) بانتظار قرار جوست:** `screen-free-summer-activities-kids`·`health-insurance-plans-gulf-families`·`mother-built-online-business-home`·`wealth-building-gulf-expat-families`·`back-pain-prevention-working-parents`·`spiritual-benefits-umrah-families`·`art-of-sincere-apology-marriage`·`offplan-vs-ready-property-saudi` — محمية noindex بالفعل (لا خطر)، لكن لا صور وُلِّدت ولن تُولَّد قبل إذن جوست الصريح (خارج Batch03/DEEPEN).
 - **بلا تغيير:** 4 ملفات سايدبار مكسورة (`outdoor-vs-indoor-family-activities-en`·`home-as-sanctuary-family-wellbeing-en`·`teaching-children-gratitude-faith-en`·`spiritual-preparation-umrah-family-en`) — بانتظار كورسر. الصورتان اليتيمتان بلا اعتماد. `handoff_sync`=25 ثابت.
 - **جوست:** اعتراض 06:35 الأصلي >11 ساعة بلا رد؛ اعتراض ثانٍ يُفتح الآن (الدفعة الثالثة). التفاصيل: `quality-log.md` (2026-07-01 18:08 UTC).
+
+---
+## 🛑 أمر عامر 2026-07-02 — إيقاف أي دفعة جديدة + دفعة إصلاح مُرتجَعة (33 ملف حقيقي، بفحص حي الآن)
+
+**بأمر مباشر من جوست.** شغّلت `python3 scripts/quality-audit.py` (الأداة الرسمية) الآن مباشرة — رقم DEEPEN تحدّث من 155 (نسخة 23 يونيو المتجمّدة) إلى **100** حياً. لكن فحصت الـ100 ملف بالمحتوى الفعلي واكتشفت: **67 منها ليست مقالات فعلاً — إعادة توجيه meta-refresh شرعية** (`noindex` + `location.replace`) تُحتسَب خطأً "قصيرة" لأن سكربت العدّ لا يستثنيها. **الرقم الحقيقي القابل للعمل = 33 ملفاً فقط.** (ملاحظة منهجية لعمر لاحقاً: `quality-audit.py` يحتاج استثناء ملفات فيها `http-equiv="refresh"` من تصنيف "قصير".)
+
+### 1) إيقاف فوري — ممنوع أي دفعة/مقال جديد
+`new-content-frozen.json` يبقى `frozen:true`. **ممنوع البدء بأي مقال أو سلَج جديد** (batch-04, batch-05, أو أي محتوى غير موجود حالياً) لحين تصفير هذه الدفعة الـ33 بالكامل (FAIL=0 على كل ملف عبر `amer_gate.py`).
+
+### 2) الدفعة المُرتجَعة (33 ملف — من فحص حي الآن، وليس من أي تقرير سابق)
+اعمل **ملفاً واحداً في كل مرة، جلسة جديدة لكل ملف** (قاعدة انضباط التكلفة في `EXECUTION-ORDERS.md`). لا تبدأ بالملف التالي قبل أن يعدّي السابق `amer_gate.py` بصفر FAIL فعلياً:
+
+```
+blog/body-fat-vs-weight-guide-en.html        (8 كلمة ظاهرة — ⚠️ JSON-LD قد يكون تالفاً، افحص/أصلح بنية <script type="application/ld+json"> أولاً قبل أي كتابة، المحتوى الفعلي موجود ~2000 كلمة لكن الفحص لا يقرأه)
+blog/daily-islamic-habits-guide-en.html
+blog/silent-signs-child-attention-en.html    (شرطات×18 — أولوية: احذف كل الشرطات أولاً)
+blog/silent-signs-child-attention.html       (شرطات×8)
+blog/teaching-children-gratitude-faith-en.html
+blog/teaching-children-gratitude-faith.html
+health/mindful-family-meal-nutrition-faith-en.html
+health/mindful-family-meal-nutrition-faith.html
+health/summer-nutrition-gulf-families-en.html   (شرطات×7 + لا إخلاء مسؤولية)
+health/summer-nutrition-gulf-families.html      (شرطات×6 + لا إخلاء مسؤولية)
+finance-wealth/digital-minimalism-faith-families-en.html   (⚠️ og:image/JSON-LD لا تزال ملوّثة بمقال "المشي" — راجع بند 12:36 أعلاه، استبدل title/og:image/headline/description/sidebar-toc معاً كوحدة واحدة)
+finance-wealth/digital-minimalism-faith-families.html      (⚠️ نفس التلوّث، النسخة العربية لم تُلمَس)
+finance-wealth/teaching-children-savings-en.html   (شرطات×21 — أولوية قصوى)
+finance-wealth/teaching-children-savings.html      (شرطات×10)
+islamic-hajj-umrah/hajj-first-timers-guide.html    (لا إخلاء مسؤولية — محتوى حساس)
+islamic-hajj-umrah/spiritual-preparation-umrah-family-en.html
+islamic-hajj-umrah/umrah-off-peak-seasons-guide.html   (لا إخلاء مسؤولية)
+real-estate/home-as-sanctuary-family-wellbeing-en.html
+real-estate/home-as-sanctuary-family-wellbeing.html
+real-estate/property-roi-comparison-saudi-uae.html   (شرطات×6)
+real-estate/riyadh-vs-dubai-real-estate-en.html      (شرطات×3)
+real-estate/riyadh-vs-dubai-real-estate.html         (شرطات×1)
+comparisons/domestic-vs-international-travel-family-en.html
+comparisons/outdoor-vs-indoor-family-activities-en.html
+comparisons/outdoor-vs-indoor-family-activities.html
+comparisons/saudi-vs-uae-family-en.html
+comparisons/saudi-vs-uae-family.html
+peace-capsules/art-of-apologizing.html
+peace-capsules/beat-summer-boredom-without-screens-en.html
+peace-capsules/power-of-i-was-wrong.html
+featured-stories/engineer-simplified-family-life.html
+featured-stories/family-six-3000-riyals-en.html
+featured-stories/family-six-3000-riyals.html
+```
+
+### 3) قواعد الإصلاح الإلزامية (من دروس 2026-07-01، مكتوبة الآن في `content-writer/SKILL.md` §7 و`seo/SKILL.md`)
+- **صفر حشو/تكرار فقرات** لرفع عدد الكلمات — محتوى حقيقي متصل بالموضوع فقط، 1300–1800 كلمة.
+- **FAQ schema + sidebar TOC يجب أن يطابقا موضوع المقال فعلياً.** افتح JSON-LD واقرأه بعينك — الفحص الآلي لا يتحقق من التطابق الموضوعي.
+- عند إعادة الكتابة: الحقول الوصفية الخمسة (title/og:image/headline/description/sidebar-toc) تُستبدل **معاً كوحدة واحدة**، لا حقلاً بحقل.
+- صفر شرطات «—»، صفر فقرات لاتينية في صفحة `lang="ar"`، إخلاء مسؤولية إلزامي لمحتوى حسّاس (صحة/مالية/شرعية).
+- أي ادّعاء نسبة/سلطة (دراسة/جامعة/مجلة) يحتاج **رابط مصدر مجاور** — لا اختلاق أرقام.
+
+### 4) قبل قول «تم» على أي ملف
+شغّل `python3 scripts/amer_gate.py <الملف>` والصق **الناتج الحقيقي الكامل** (PASS/FAIL + الأسباب) في ردّك. لا يُقبل «تم»/«PASS» بلا هذا الدليل. عامر يعيد الفحص بنفسه استقلالياً على كل ملف قبل الاعتماد.
+
+> **لا نشر لأي من الـ33 قبل اعتماد عامر صراحة على كل ملف.** الدفعة تُعتبر مقفولة فقط بعد FAIL=0 على كل الـ33 مع دليل `amer_gate.py` مرفق لكل واحد.
