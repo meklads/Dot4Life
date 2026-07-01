@@ -1,4 +1,16 @@
-# 🛡️ أوامر عامر النشطة (المصدر الثابت) — 2026-06-24 (آخر دورة 2026-07-01 16:15 UTC)
+# 🛡️ أوامر عامر النشطة (المصدر الثابت) — 2026-06-24 (آخر دورة 2026-07-01 20:08 UTC)
+
+## 🚨 حاكم — دورة عامر 2026-07-01 20:08 UTC: أول اختراق فعلي للبوابة — كوميت مدفوع أزال noindex بلا إذن (og:image لا يزال يمنع LIVE)
+**كوميت `64079e0` (مدفوع لـ`origin/main`) أزال `noindex` من `islamic-hajj-umrah/spiritual-preparation-umrah-family.html` (AR) بلا إذني.** الجسم إصلاح حقيقي (1301 كلمة PASS، 0 ذكر "مشي") لكن EN المقابل لا يزال ملوَّثاً بالكامل (og:image+29 walk) فالزوج غير جاهز. **أعدت noindex فوراً على القرص.** كوميت مواز (`3c219fa`) على `digital-minimalism-faith-families` (AR): noindex أُضيف بشكل صحيح هذه المرة، الجسم PASS (1309ك) لكن og:image لا يزال ملوَّثاً — **لا اعتماد LIVE لأي من الاثنين حتى og:image يطابق الموضوع.** **قاعدة حاكمة جديدة تُضاف:** أي كوميت (حتى بهوية `amer-bot`) يزيل `noindex` من ملف لم يصدر له عامر إذن LIVE صريح = مخالفة تُصحَّح فوراً على القرص، بصرف النظر عن جودة الجسم. بقية الحالة بلا تغيير جوهري: دفعة `00255da` صفر تقدّم، `structural_audit`=نفس 4 مكسورة، دفعة التجميد الثالثة محمية 16/16 (لا انحراف)، اعتراض 06:35 الآن >13س30د بلا رد جوست. التفاصيل: `quality-log.md`/`TEAM-BUS.md` (2026-07-01 20:08 UTC).
+
+## 🚨 حاكم — دورة عامر 2026-07-01 17:10 UTC: PASS على `amer_gate.py` لا يعني نظافة موضوعية — دليل ملموس على 7+16 ملف
+**تحديث حاكم:** أي ملف اجتاز `amer_gate.py` من دفعتَي `34592c2`/`00255da` **لا يُعتبر جاهزاً للاعتماد تلقائياً** حتى يُتحقَّق يدوياً من (أ) `og:image` يطابق موضوع السلَج الحالي لا مقال "فوائد المشي اليومي"، و(ب) لا بقايا فقرات عن "المشي/walk" في الجسم. **الدليل:** فحصت 7 ملفات PASS من `34592c2` (`digital-minimalism-faith-families` ع+en، `mindful-family-meal-nutrition-faith` ع، `engineer-simplified-family-life-en`، `power-of-i-was-wrong-en`، `spiritual-preparation-umrah-family` ع، `home-as-sanctuary-family-wellbeing` ع) — **7/7 لا تزال og:image=hero-daily-walking-benefits.webp + 29-52 ذكر "مشي/walk"**. ودفعة `00255da`: **8/8 نسخ عربية متطابقة حرفياً (1680 كلمة، صفر تقدّم منذ 13:15)**، 8/8 نسخ إنجليزية اجتازت الفحص الشكلي لكن og:image ملوَّث + ~90 ذكر "walk"/ملف. **لا اعتماد LIVE لأي ملف من الدفعتين حتى إزالة يدوية مؤكَّدة لهذه البقايا، بصرف النظر عن نتيجة `amer_gate.py`.**
+**إجراء أمان:** أعدتُ `noindex,nofollow` لـ4 ملفات EN من `34592c2` فقدتها أثناء التعديل الجاري (`teaching-children-gratitude-faith-en`·`outdoor-vs-indoor-family-activities-en`·`spiritual-preparation-umrah-family-en`·`home-as-sanctuary-family-wellbeing-en`).
+**بقية الحالة بلا تغيير:** `structural_audit`=نفس 4 ملفات مكسورة، اعتراض التجميد 06:35 الآن ~10س35د بلا رد جوست، `handoff_sync`=25، `gsystem_autopilot` نظيف exit0. التفاصيل: `quality-log.md`/`TEAM-BUS.md` (2026-07-01 17:10 UTC).
+
+## 🟢 حاكم — دورة عامر 2026-07-01 16:48 UTC: أول تقدّم فعلي مرصود على دفعة 34592c2 (working tree، غير ملتزَم بعد)
+**تحديث بنود 20/21/23/24 أدناه:** لم تعد "لم تبدأ" — رصدتُ عبر `git diff --stat` إعادة بناء نشطة (غير ملتزَمة) لجسم AR كامل لـ`teaching-children-gratitude-faith`·`outdoor-vs-indoor-family-activities`·`engineer-simplified-family-life`(بند غير مرقّم هنا لكن من نفس الدفعة)·`power-of-i-was-wrong`·`spiritual-preparation-umrah-family` + مواءمة حقول EN للأربعة 20/21/23/24. `real-estate/home-as-sanctuary-family-wellbeing.html` (بند 24، AR) **مُلتزَم فعلياً** (كوميت `9251e44`, `amer_gate.py` PASS). هذا يطابق موافقتي في `message-to-cursor-agent.md`. **لم يكتمل بعد:** فحصت بنية السايدبار في working tree الحالي مباشرة (ليس فقط تصديق تقرير التدقيق الأسبوعي 16:10) وأكّدت أنها **لا تزال معطوبة فعلياً** (`<main>`/`<article>` غير مُغلقين، `sidebar-toc` لا يزال يشير لفهرس "المشي") — أي أن الإصلاح جارٍ لكن غير مُنجَز. **لا اعتماد LIVE حتى اجتياز `amer_gate.py` + فحص سايدبار يدوي على النسخة المُلتزَمة.** تنبيه أمان: EN الستة بلا `noindex` حالياً في working tree — آمن طالما غير مُلتزَم؛ وجّهت في TEAM-BUS بعدم الالتزام قبل الاعتماد أو إضافة noindex فوراً إن التزم جزئياً.
+**بقية الفحص بلا تغيير:** `calm-corner-small-space-en` FAIL ثابت، `digital-minimalism-faith-families`/`school-type-comparison-guide` معطوبان كالمعتاد (noindex سليم)، اعتراض التجميد 06:35 الآن **~10س13د بلا رد جوست**، `amer_freeze_watch.py`=16 ملف/8 سلَج بلا تغيير، `handoff_sync`=25 ثابت. `gsystem_autopilot.py` لم يكتمل ضمن حد 45ث لأداة bash (معروف، لا خطر push). التفاصيل: `quality-log.md` (2026-07-01 16:48 UTC).
 
 ## 🟡 حاكم — دورة عامر 2026-07-01 16:15 UTC: لا تغيير في الأعطال، تصحيح توصيف + إصلاح خلل git ذاتي + git يعمل هذه الدورة
 **تصحيح توصيف مهم لـ`inbox/hema.md`:** الوصف السابق "الجسم سليم، فقط 6 حقول ميتاداتا" غير دقيق للنسخ **العربية**. تحقّق مباشر: `comparisons/school-type-comparison-guide.html` (AR) — كل الـ12 عنوان H2 عن فوائد المشي، الجسم العربي بأكمله منسوخ من `daily-walking-benefits`. الإصلاح الفعلي المطلوب لـ AR = إعادة كتابة جسم كامل، ثم مواءمة الحقول. لـ EN = الجسم سليم فعلاً في كل عيّنة فُحصت، فقط 4 حقول (h1-banner/og:image/JSON-LD headline+description) تحتاج مواءمة (title أُصلح مسبقاً لمعظمها). أكِّد أيضاً: `engineer-simplified-family-life-en`/`power-of-i-was-wrong-en` **لا يزالان ملوَّثين فعلياً** (title+h1-banner+og:image+JSON-LD) رغم وصف سابق كـ"ناجحين من الدفعة الأولى" — لا يُستثنيان من الإصلاح.
@@ -122,12 +134,13 @@
 19. `health/screen-time-eye-health-children.html` + `-en.html` — **عطل تاريخي متكرر (6+ جولات تشديد سابقة)**: 34 شرطة + 4 ادّعاءات سلطة (WHO/AAP) بلا رابط + 50 فقرة لاتينية دخيلة كل نسخة. يحتاج فحصاً يدوياً دقيقاً للتأكد أن الجسم العربي عربي فعلاً هذه المرة (لا نسخة لاتينية بثوب عربي كما وقع مرتين سابقاً).
 
 **⚫ المستوى 4 — إعادة كتابة كاملة من الصفر (مسودات شبه فارغة حالياً، en فقط ناقصة، ع موجودة/سليمة على الأرجح):**
-20. `blog/teaching-children-gratitude-faith-en.html` (68 كلمة فقط)
-21. `comparisons/outdoor-vs-indoor-family-activities-en.html` (62 كلمة)
-22. `featured-stories/engineer-simplified-family-life-en.html` (89 كلمة)
-23. `islamic-hajj-umrah/spiritual-preparation-umrah-family-en.html` (104 كلمة)
-24. `real-estate/home-as-sanctuary-family-wellbeing-en.html` (176 كلمة)
-25. `peace-capsules/power-of-i-was-wrong-en.html` (71 كلمة)
+**🔄 تحديث 16:48 UTC: البنود 20/21/23/24/25 (+22 الجسم AR) قيد إصلاح فعلي نشط في working tree (غير ملتزَم، سايدبار لا يزال معطوباً حالياً) — انظر دورة 16:48 أعلاه. 24 (AR) مُلتزَم فعلاً (`9251e44`). لا اعتماد PASS حتى `amer_gate.py` + فحص سايدبار على نسخة مُلتزَمة.**
+20. `blog/teaching-children-gratitude-faith-en.html` (68 كلمة فقط) — 🔄 قيد الإصلاح
+21. `comparisons/outdoor-vs-indoor-family-activities-en.html` (62 كلمة) — 🔄 قيد الإصلاح
+22. `featured-stories/engineer-simplified-family-life-en.html` (89 كلمة) — 🔄 الجسم AR قيد الإصلاح، EN لم يُلمس بعد
+23. `islamic-hajj-umrah/spiritual-preparation-umrah-family-en.html` (104 كلمة) — 🔄 قيد الإصلاح
+24. `real-estate/home-as-sanctuary-family-wellbeing-en.html` (176 كلمة) — 🔄 EN قيد الإصلاح، AR مُلتزَم PASS (`9251e44`)
+25. `peace-capsules/power-of-i-was-wrong-en.html` (71 كلمة) — 🔄 الجسم AR قيد الإصلاح، EN لم يُلمس بعد
 26. `blog/salalah-khareef-2026-family-guide.html` — فقرة لاتينية دخيلة واحدة فقط (فحص سريع)
 27. `blog/umrah-visa-gulf-residents-guide.html` — فقرة لاتينية دخيلة واحدة فقط (فحص سريع)
 
@@ -349,3 +362,11 @@
 - **الصور المعلّقة:** `01-savings.png.png`/`02-health.png.png`/`hero-managing-screen-time-children.webp` — بلا اعتماد.
 - **البوابة/handoff_sync/autopilot:** ثابتة (تفاصيل في `quality-log.md`).
 - **git:** نفس أقفال المونت — best-effort واحدة آخر الدورة.
+
+---
+## 🟡 دورة عامر 2026-07-01 18:08 UTC — انتكاسة noindex مُصلَحة (7 ملفات) + دفعة تجميد ثالثة (8 سلَج/16 ملف، محمية بالفعل)
+- **إصلاح فوري نُفِّذ:** أُعيد `noindex,nofollow` لـ7 نسخ عربية من دفعة `34592c2` فقدتها أثناء تحرير حيّ (`.fuse_hidden*` مرصودة): `teaching-children-gratitude-faith`·`outdoor-vs-indoor-family-activities`·`engineer-simplified-family-life`·`mindful-family-meal-nutrition-faith`·`spiritual-preparation-umrah-family`·`power-of-i-was-wrong`·`home-as-sanctuary-family-wellbeing` (AR). لا تُزيلي `noindex` من أي ملف قيد التحرير حتى اجتياز `amer_gate.py` + فحص سايدبار + استبدال og:image الكامل.
+- **أمر لهيما/Hermes (أولوية قصوى مستمرة):** استبدال `og:image` (لا يزال `hero-daily-walking-benefits.webp` على كل الـ16 ملف من `34592c2` وكل الـ16 من `00255da`) + حذف بقايا فقرات "مشي/walk" في الجسم — هذا لم يبدأ فعلياً بعد رغم التحرير الجاري (لا تغيير في og:image لأي ملف هذه الدورة).
+- **دفعة تجميد ثالثة (8 سلَج/16 ملف) بانتظار قرار جوست:** `screen-free-summer-activities-kids`·`health-insurance-plans-gulf-families`·`mother-built-online-business-home`·`wealth-building-gulf-expat-families`·`back-pain-prevention-working-parents`·`spiritual-benefits-umrah-families`·`art-of-sincere-apology-marriage`·`offplan-vs-ready-property-saudi` — محمية noindex بالفعل (لا خطر)، لكن لا صور وُلِّدت ولن تُولَّد قبل إذن جوست الصريح (خارج Batch03/DEEPEN).
+- **بلا تغيير:** 4 ملفات سايدبار مكسورة (`outdoor-vs-indoor-family-activities-en`·`home-as-sanctuary-family-wellbeing-en`·`teaching-children-gratitude-faith-en`·`spiritual-preparation-umrah-family-en`) — بانتظار كورسر. الصورتان اليتيمتان بلا اعتماد. `handoff_sync`=25 ثابت.
+- **جوست:** اعتراض 06:35 الأصلي >11 ساعة بلا رد؛ اعتراض ثانٍ يُفتح الآن (الدفعة الثالثة). التفاصيل: `quality-log.md` (2026-07-01 18:08 UTC).
