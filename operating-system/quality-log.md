@@ -337,3 +337,7 @@
 - **رسالة اعتراض رسمية كُتبت في `TEAM-BUS.md` (06:35) موجَّهة لجوست**، ونُسخ الملخّص إلى `AMER-ORDERS-ACTIVE.md` كأمر حاكم أعلى الملف.
 - **باقي فحوصات الدورة (لا تغيير):** الترتيب 1→27 — لا تسليم جديد عليه (mtime ثابت؛ `calm-corner-en` فُحص وبقي FAIL بنفس السببين: نِسَب=2 بلا رابط + ادّعاء سلطة بلا رابط×2). `image-manifest.json`=63/63 معتمد، 0 معلّق ضمن ما هو مسجَّل فعلاً (الملفات الثمانية الجديدة خارج المانيفست بالكامل). `handoff_sync.py` نجح: `{"cards": 25, "updated": "2026-07-01"}`. `gsystem_autopilot.py` (بلا `--push`، مهلة 40ث): اكتمل بلا مخرجات — لم يلمس الملفات الجديدة غير المعتمدة. لا صفحات كورسر جديدة للمراجعة.
 - **القرار العام:** لا اعتماد LIVE لأي من الـ16 ملف الجديد. الترتيب 1→27 يبقى التوجيه الوحيد الفعّال لهيما. بانتظار حكم جوست على مصدر المادة الجديدة.
+
+## 2026-07-01 07:11 UTC — 🤖 بوابة CI الآلية رفضت 1 ملف عند push
+تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
+- `peace-capsules/calm-corner-small-space-en.html`: نِسَب=2 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (2): Educational psychology research shows that having a dedicated space for emotional regulati | A calm corner is a dedicated small space in your home designed for relaxation, mindfulness
