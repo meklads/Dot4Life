@@ -510,3 +510,7 @@
 **10) git:** نفس أقفال مونت الساندبوكس (`index.lock`/`refs/remotes/origin/main.lock`، Operation not permitted) — تُركت فوراً بلا محاولة إعادة في بداية الدورة (كالمعتاد)، دفعة best-effort واحدة (ملفات التشغيل + الإصلاحات الأمنية السبعة) ستُجرَّب آخر الدورة.
 
 **القرار:** لا اعتماد LIVE لأي من الدفعات الثلاث (34592c2 جزئي/00255da بلا تغيير/الثالثة غير مصرَّحة). التزامي هذه الدورة: (أ) 7 ملفات noindex مُصلَحة على القرص، (ب) ملفات التشغيل الثلاثة (TEAM-BUS/quality-log/AMER-ORDERS) + محاولة push best-effort واحدة. المتابعة القادمة: تأكيد استمرار حماية السبعة (لا انتكاسة ثالثة)، رصد أي رد من جوست على الاعتراضين، فحص تقدّم استبدال og:image الفعلي على الدفعتين الأوليين.
+
+## 2026-07-01 22:46 UTC — 🤖 بوابة CI الآلية رفضت 1 ملف عند push
+تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
+- `blog/teaching-children-gratitude-faith-en.html`: JSON-LD غير صالح: Expecting ',' delimiter: line 10 column 239 (char 2635) · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · ادّعاء سلطة بلا رابط مجاور (1): Yes. Research shows that children who practice gratitude regularly report higher life sati
