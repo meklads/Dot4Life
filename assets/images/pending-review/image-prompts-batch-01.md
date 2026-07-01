@@ -1,134 +1,151 @@
-# 🎨 برومبتات Ideogram — بنك الأبطال الكامل (40 صورة)
+# 🎨 برومبتات Ideogram — بنك الأبطال (40 صورة) · مفهوم «الحياة»
 
-> اضبط في Ideogram: **Aspect ratio = 3:2**. الزق البرومبت كما هو (إنجليزي — Ideogram أدق بالإنجليزية).
-> احفظ كل صورة بالاسم المكتوب تحت كل برومبت. 34 بلا أشخاص + 6 بأشخاص محتشمين (حجاب كامل) — نسبة ~5:1 حسب الدليل.
-> اشتغل عليهم على راحتك؛ مش لازم مرة واحدة. خلّصت كلهم أو دفعة؟ قوللي وأبدأ المراجعة.
+> **الفكرة:** مش صور منتجات ستديو — **مشاهد حياة حقيقية** والرسالة مدموجة جوّاها (أسرة سعيدة، بحر، بيت، مطار، مول، حيوان أليف، مسجد…).
+> **الاحتشام:** نساء بحجاب/خمار (شعر + صدر مستور، ملابس فضفاضة) — **بلا نقاب**، الوجوه ظاهرة ومرحّبة. تنوّع: عرب + مسلمون أوروبيون، حياة شرقية وغربية.
+> **الإعداد:** Aspect ratio = **3:2**. الزق البرومبت كما هو. احفظ كل صورة بالاسم تحتها.
+> **الملاحظة على أول صورتين:** اللي ولّدتهم كانوا بالنمط القديم (منتجات) — استبدلهم بالنسخة الجديدة دي.
 
-اللاحقة الثابتة في كل برومبت (منسوخة بالفعل داخلها):
-`editorial photography, warm natural light, deep teal #054241 and cream #FAF8F4 with warm gold #b8893c accents, soft depth of field, elegant and calm mood, high quality — no text, no letters, no logo, no watermark, no alcohol, no pork`
-
----
-
-## 1 — الادخار / المالية → احفظها: `01-savings.png`
-A cozy still life on a warm wooden desk: a small ceramic jar filled with coins, a closed leather notebook, a tiny green potted plant, soft morning window light. No people. editorial photography, warm natural light, deep teal #054241 and cream #FAF8F4 with warm gold #b8893c accents, soft depth of field, elegant and calm mood, high quality — no text, no letters, no logo, no watermark, no alcohol, no pork
-
-## 2 — الصحة / العافية → احفظها: `02-health.png`
-A serene still life by a sunny window: fresh fruits in a bowl, a glass of water, a neatly rolled exercise mat, a small towel. Clean and healthy mood. No people. editorial photography, warm natural light, deep teal #054241 and cream #FAF8F4 with warm gold #b8893c accents, soft depth of field, elegant and calm mood, high quality — no text, no letters, no logo, no watermark, no alcohol, no pork
-
-## 3 — الأسرة / البيت الدافئ → احفظها: `03-family-home.png`
-A warm Gulf-style family living room (majlis): floor cushions, a soft glowing lamp, a small stack of children's books on a rug, gentle evening atmosphere. No people. editorial photography, warm natural light, deep teal #054241 and cream #FAF8F4 with warm gold #b8893c accents, soft depth of field, elegant and calm mood, high quality — no text, no letters, no logo, no watermark, no alcohol, no pork
-
-## 4 — إسلامي / عمرة وحج → احفظها: `04-islamic-umrah.png`
-A peaceful mosque courtyard at golden hour, elegant Islamic geometric patterns on the walls, a folded prayer rug, soft warm light and long shadows. No people. editorial photography, warm natural light, deep teal #054241 and cream #FAF8F4 with warm gold #b8893c accents, soft depth of field, elegant and calm mood, high quality — no text, no letters, no logo, no watermark, no alcohol, no pork
-
-## 5 — السفر → احفظها: `05-travel.png`
-An open suitcase neatly packed on a bed: modestly folded clothes, a sun hat, a passport-sized travel pouch, a small camera, soft daylight from a window. No people. editorial photography, warm natural light, deep teal #054241 and cream #FAF8F4 with warm gold #b8893c accents, soft depth of field, elegant and calm mood, high quality — no text, no letters, no logo, no watermark, no alcohol, no pork
-
-## 6 — العقار / السكن → احفظها: `06-real-estate.png`
-A modern Gulf villa exterior at dusk, warm glowing interior lights, tall palm trees, a calm teal-blue sky, clean architecture. No people. editorial photography, warm natural light, deep teal #054241 and cream #FAF8F4 with warm gold #b8893c accents, soft depth of field, elegant and calm mood, high quality — no text, no letters, no logo, no watermark, no alcohol, no pork
-
-## 7 — التغذية / الطعام → احفظها: `07-nutrition.png`
-A top-down healthy Middle Eastern family meal on a warm wooden table: dates, mixed nuts, a fresh green salad, a jug of laban, olives, on cream and teal linen. No people. No alcohol, no pork. editorial photography, warm natural light, deep teal #054241 and cream #FAF8F4 with warm gold #b8893c accents, soft depth of field, elegant and calm mood, high quality — no text, no letters, no logo, no watermark, no alcohol, no pork
-
-## 8 — الإنتاجية / التنظيم → احفظها: `08-productivity.png`
-A tidy desk still life: an open weekly planner, an Arabic coffee dallah with a small finjan cup, a minimalist clock, a pen, soft morning light. No people. editorial photography, warm natural light, deep teal #054241 and cream #FAF8F4 with warm gold #b8893c accents, soft depth of field, elegant and calm mood, high quality — no text, no letters, no logo, no watermark, no alcohol, no pork
-
-## 9 — الأمومة / التعليم (بأشخاص محتشمين) → احفظها: `09-mother-children.png`
-An Arab mother wearing a full hijab (hair, neck and chest fully covered, loose modest clothing) reading a picture book with her two young children on a cozy couch in a warm home, gentle happy mood, tasteful and respectful. editorial photography, warm natural light, deep teal #054241 and cream #FAF8F4 with warm gold #b8893c accents, soft depth of field, elegant and calm mood, high quality — no text, no letters, no logo, no watermark, no alcohol, no pork
-
-## 10 — الأب والأبناء / القيم (بأشخاص محتشمين) → احفظها: `10-father-children.png`
-An Arab father in modest clothing walking with his young son through a green Gulf city park at golden hour, seen from behind, warm and happy, gentle bonding moment, faces not emphasized. editorial photography, warm natural light, deep teal #054241 and cream #FAF8F4 with warm gold #b8893c accents, soft depth of field, elegant and calm mood, high quality — no text, no letters, no logo, no watermark, no alcohol, no pork
-
-## 11 — صندوق الطوارئ المالي → احفظها: `11-emergency-fund.png`
-A still life: a small wooden lockbox with a brass key, neatly stacked coins beside it, a calm neutral background, soft light, a sense of security and safety. No people. editorial photography, warm natural light, deep teal #054241 and cream #FAF8F4 with warm gold #b8893c accents, soft depth of field, elegant and calm mood, high quality — no text, no letters, no logo, no watermark, no alcohol, no pork
-
-## 12 — الاستثمار / نمو المال → احفظها: `12-investing.png`
-A still life symbolizing growth: a small brass balance scale, a few gold coins, and a healthy green sprout growing from a tiny pot, soft directional light. No people. editorial photography, warm natural light, deep teal #054241 and cream #FAF8F4 with warm gold #b8893c accents, soft depth of field, elegant and calm mood, high quality — no text, no letters, no logo, no watermark, no alcohol, no pork
-
-## 13 — الزكاة / العطاء → احفظها: `13-zakat-charity.png`
-A warm still life of giving: golden coins and fresh dates arranged in a simple ceramic bowl on a wooden table, soft warm light, generous and serene mood. No people. editorial photography, warm natural light, deep teal #054241 and cream #FAF8F4 with warm gold #b8893c accents, soft depth of field, elegant and calm mood, high quality — no text, no letters, no logo, no watermark, no alcohol, no pork
-
-## 14 — الحمل / المولود الجديد → احفظها: `14-pregnancy-baby.png`
-A soft tender still life: tiny knitted baby booties, a neatly folded pastel blanket, and a small plush toy on a cream surface, gentle warm light, calm and hopeful. No people. editorial photography, warm natural light, deep teal #054241 and cream #FAF8F4 with warm gold #b8893c accents, soft depth of field, elegant and calm mood, high quality — no text, no letters, no logo, no watermark, no alcohol, no pork
-
-## 15 — تعليم الأطفال / المدرسة → احفظها: `15-education.png`
-A tidy children's study nook: a stack of books, colored pencils in a cup, a small globe, and a school backpack on a chair, bright cheerful morning light. No people. editorial photography, warm natural light, deep teal #054241 and cream #FAF8F4 with warm gold #b8893c accents, soft depth of field, elegant and calm mood, high quality — no text, no letters, no logo, no watermark, no alcohol, no pork
-
-## 16 — اللياقة / الرياضة → احفظها: `16-fitness.png`
-A clean motivating still life: a pair of dumbbells, a rolled towel, a water bottle, and running shoes by a sunlit window. No people. editorial photography, warm natural light, deep teal #054241 and cream #FAF8F4 with warm gold #b8893c accents, soft depth of field, elegant and calm mood, high quality — no text, no letters, no logo, no watermark, no alcohol, no pork
-
-## 17 — النوم / الراحة → احفظها: `17-rest-sleep.png`
-A cozy bedroom corner: a neatly made bed with soft layered linens, a warm bedside lamp, and a closed book, calm restful evening mood. No people. editorial photography, warm natural light, deep teal #054241 and cream #FAF8F4 with warm gold #b8893c accents, soft depth of field, elegant and calm mood, high quality — no text, no letters, no logo, no watermark, no alcohol, no pork
-
-## 18 — رمضان / إفطار → احفظها: `18-ramadan.png`
-A warm iftar table setup: fresh dates on a plate, a glass of water, and a glowing traditional lantern (fanoos), soft candlelight glow, spiritual and cozy. No people. No alcohol. editorial photography, warm natural light, deep teal #054241 and cream #FAF8F4 with warm gold #b8893c accents, soft depth of field, elegant and calm mood, high quality — no text, no letters, no logo, no watermark, no alcohol, no pork
-
-## 19 — تجهيز الحج / الإحرام → احفظها: `19-hajj-prep.png`
-A respectful still life for Hajj preparation: neatly folded white ihram cloth, a string of prayer beads, and a small water bottle, warm soft light, serene. No people. editorial photography, warm natural light, deep teal #054241 and cream #FAF8F4 with warm gold #b8893c accents, soft depth of field, elegant and calm mood, high quality — no text, no letters, no logo, no watermark, no alcohol, no pork
-
-## 20 — الصلاة / العبادة → احفظها: `20-prayer-worship.png`
-A serene still life: a string of prayer beads (misbaha) resting on a folded prayer rug beside an open Quran on a carved wooden stand, warm golden light, peaceful and reverent. No people. editorial photography, warm natural light, deep teal #054241 and cream #FAF8F4 with warm gold #b8893c accents, soft depth of field, elegant and calm mood, high quality — no text, no letters, no logo, no watermark, no alcohol, no pork
-
-## 21 — الشاطئ / الصيف العائلي → احفظها: `21-beach-summer.png`
-A calm modest beach still life: a large sun umbrella, a woven picnic basket, and sandals on the sand, gentle waves in the distance, warm afternoon light. No people. editorial photography, warm natural light, deep teal #054241 and cream #FAF8F4 with warm gold #b8893c accents, soft depth of field, elegant and calm mood, high quality — no text, no letters, no logo, no watermark, no alcohol, no pork
-
-## 22 — الحديقة المنزلية → احفظها: `22-gardening.png`
-A home garden corner: potted herbs and flowers, a metal watering can, gardening gloves, and a small trowel on a wooden bench, warm daylight, fresh and peaceful. No people. editorial photography, warm natural light, deep teal #054241 and cream #FAF8F4 with warm gold #b8893c accents, soft depth of field, elegant and calm mood, high quality — no text, no letters, no logo, no watermark, no alcohol, no pork
-
-## 23 — القراءة / المكتبة → احفظها: `23-reading-nook.png`
-A warm reading nook: a comfortable armchair with a soft blanket, a stack of books, a steaming mug on a side table, and a glowing floor lamp, inviting and calm. No people. editorial photography, warm natural light, deep teal #054241 and cream #FAF8F4 with warm gold #b8893c accents, soft depth of field, elegant and calm mood, high quality — no text, no letters, no logo, no watermark, no alcohol, no pork
-
-## 24 — الضيافة العربية → احفظها: `24-arabic-hospitality.png`
-An Arabic hospitality still life: a golden dallah coffee pot with small finjan cups on a tray and dates, in a warm elegant majlis setting, generous and welcoming. No people. editorial photography, warm natural light, deep teal #054241 and cream #FAF8F4 with warm gold #b8893c accents, soft depth of field, elegant and calm mood, high quality — no text, no letters, no logo, no watermark, no alcohol, no pork
-
-## 25 — ميزانية البيت → احفظها: `25-household-budget.png`
-A kitchen table still life: an open blank notebook (no readable text), a calculator, a small stack of coins, and fresh produce in a basket, warm practical light. No people. editorial photography, warm natural light, deep teal #054241 and cream #FAF8F4 with warm gold #b8893c accents, soft depth of field, elegant and calm mood, high quality — no text, no letters, no logo, no watermark, no alcohol, no pork
-
-## 26 — التقليل الرقمي / ديتوكس → احفظها: `26-digital-detox.png`
-A minimalist calm desk: a smartphone lying face-down and switched off, a paper notebook, a pen, and a small green plant, soft daylight, peaceful unplugged mood. No people. editorial photography, warm natural light, deep teal #054241 and cream #FAF8F4 with warm gold #b8893c accents, soft depth of field, elegant and calm mood, high quality — no text, no letters, no logo, no watermark, no alcohol, no pork
-
-## 27 — ركن السكينة / الهدوء → احفظها: `27-calm-corner.png`
-A serene peace corner at home: a floor cushion, a small side table with a plant and a softly lit lamp, sheer curtains, gentle calming atmosphere. No people. editorial photography, warm natural light, deep teal #054241 and cream #FAF8F4 with warm gold #b8893c accents, soft depth of field, elegant and calm mood, high quality — no text, no letters, no logo, no watermark, no alcohol, no pork
-
-## 28 — الخريف / الطبيعة (صلالة) → احفظها: `28-nature-khareef.png`
-A lush green misty mountain landscape during the Khareef season, soft fog, rolling green hills, gentle diffused light, fresh and peaceful. No people. editorial photography, warm natural light, deep teal #054241 and cream #FAF8F4 with warm gold #b8893c accents, soft depth of field, elegant and calm mood, high quality — no text, no letters, no logo, no watermark, no alcohol, no pork
-
-## 29 — المدينة الخليجية → احفظها: `29-gulf-city.png`
-A modern Gulf city skyline at golden hour, elegant towers, a calm sky, warm reflected light, a sense of calm prosperity. No people. editorial photography, warm natural light, deep teal #054241 and cream #FAF8F4 with warm gold #b8893c accents, soft depth of field, elegant and calm mood, high quality — no text, no letters, no logo, no watermark, no alcohol, no pork
-
-## 30 — السوق الشعبي → احفظها: `30-souq-market.png`
-A traditional Gulf souq alley: colorful spices in open sacks, hanging textiles, and warm glowing lanterns, rich textures and inviting warmth. No people. editorial photography, warm natural light, deep teal #054241 and cream #FAF8F4 with warm gold #b8893c accents, soft depth of field, elegant and calm mood, high quality — no text, no letters, no logo, no watermark, no alcohol, no pork
-
-## 31 — القطط / حيوانات أليفة → احفظها: `31-cat-cozy.png`
-A cozy home scene: a fluffy cat curled up asleep on a soft cushion by a sunny window, warm inviting light, peaceful and homely. No people. editorial photography, warm natural light, deep teal #054241 and cream #FAF8F4 with warm gold #b8893c accents, soft depth of field, elegant and calm mood, high quality — no text, no letters, no logo, no watermark, no alcohol, no pork
-
-## 32 — السفر العائلي (بأشخاص محتشمين) → احفظها: `32-family-airport.png`
-A modest Arab family — mother in a full hijab (hair, neck and chest fully covered, loose clothing), father, and two children — walking through a bright airport with luggage, seen from behind, warm happy travel moment. editorial photography, warm natural light, deep teal #054241 and cream #FAF8F4 with warm gold #b8893c accents, soft depth of field, elegant and calm mood, high quality — no text, no letters, no logo, no watermark, no alcohol, no pork
-
-## 33 — الطائر / الطبيعة → احفظها: `33-bird-nature.png`
-A small colorful bird perched on a blossoming branch, soft green garden bokeh behind, gentle morning light, delicate and fresh. No people. editorial photography, warm natural light, deep teal #054241 and cream #FAF8F4 with warm gold #b8893c accents, soft depth of field, elegant and calm mood, high quality — no text, no letters, no logo, no watermark, no alcohol, no pork
-
-## 34 — ترتيب البيت / التنظيم → احفظها: `34-home-organizing.png`
-A tidy linen shelf: neatly folded towels and blankets with woven storage baskets, clean and calm, soft natural light. No people. editorial photography, warm natural light, deep teal #054241 and cream #FAF8F4 with warm gold #b8893c accents, soft depth of field, elegant and calm mood, high quality — no text, no letters, no logo, no watermark, no alcohol, no pork
-
-## 35 — الترطيب / الماء → احفظها: `35-hydration.png`
-A refreshing still life: a glass pitcher of water with mint leaves and lemon slices, water droplets on the glass, bright clean light, healthy and crisp. No people. editorial photography, warm natural light, deep teal #054241 and cream #FAF8F4 with warm gold #b8893c accents, soft depth of field, elegant and calm mood, high quality — no text, no letters, no logo, no watermark, no alcohol, no pork
-
-## 36 — القهوة / الصباح → احفظها: `36-morning-coffee.png`
-A calm morning still life: a cup of Arabic coffee, a small plate of dates, and an open blank notebook, soft sunrise light through a window. No people. editorial photography, warm natural light, deep teal #054241 and cream #FAF8F4 with warm gold #b8893c accents, soft depth of field, elegant and calm mood, high quality — no text, no letters, no logo, no watermark, no alcohol, no pork
-
-## 37 — الأجداد / رعاية كبار السن (بأشخاص محتشمين) → احفظها: `37-grandparent-child.png`
-An elderly Arab grandfather in traditional modest dress sitting warmly with his young grandchild in a cozy home, gentle bonding, respectful and tender mood. editorial photography, warm natural light, deep teal #054241 and cream #FAF8F4 with warm gold #b8893c accents, soft depth of field, elegant and calm mood, high quality — no text, no letters, no logo, no watermark, no alcohol, no pork
-
-## 38 — التطوع / العمل الخيري (بأشخاص محتشمين) → احفظها: `38-volunteering.png`
-Modestly dressed volunteers — women in full hijab and men in modest clothing — packing boxes of food donations together, warm cooperative mood, faces not emphasized. editorial photography, warm natural light, deep teal #054241 and cream #FAF8F4 with warm gold #b8893c accents, soft depth of field, elegant and calm mood, high quality — no text, no letters, no logo, no watermark, no alcohol, no pork
-
-## 39 — احتفال عائلي / مناسبة → احفظها: `39-family-celebration.png`
-A festive family celebration table with warm decorations, glowing lanterns, flowers, and elegant tableware, joyful cozy atmosphere. No people. No alcohol. editorial photography, warm natural light, deep teal #054241 and cream #FAF8F4 with warm gold #b8893c accents, soft depth of field, elegant and calm mood, high quality — no text, no letters, no logo, no watermark, no alcohol, no pork
-
-## 40 — النجاح / ريادة الأعمال (بأشخاص محتشمين) → احفظها: `40-woman-entrepreneur.png`
-A young Arab woman in a full hijab (loose modest clothing) working confidently at a warm, tidy home office with a laptop and notebook, small-business setting, calm and inspiring. editorial photography, warm natural light, deep teal #054241 and cream #FAF8F4 with warm gold #b8893c accents, soft depth of field, elegant and calm mood, high quality — no text, no letters, no logo, no watermark, no alcohol, no pork
+اللاحقة داخل كل برومبت بالفعل:
+`warm cinematic lifestyle photography, candid authentic real-life moment, natural light, gentle deep-teal / cream / warm-gold tones woven into the scene, joyful and full of life, high quality — women in modest hijab or khimar (hair and chest covered, loose clothing, NEVER niqab or face-veil), no text, no logo, no watermark, no alcohol, no pork`
 
 ---
 
-> خلّصت الـ40 (أو أي دفعة منهم) وحفظتهم هنا بالأسماء دي؟ قوللي «الصور جاهزة» وأبدأ المراجعة والاعتماد.
+## 💰 المال والادخار
+
+### 1 — الادخار العائلي → `01-savings.png`
+A warm kitchen scene: an Arab father and his young son happily dropping coins together into a teal ceramic jar at a sunlit table, the mother in a soft hijab smiling in the background. warm cinematic lifestyle photography, candid authentic real-life moment, natural light, gentle deep-teal / cream / warm-gold tones woven into the scene, joyful and full of life, high quality — women in modest hijab or khimar (hair and chest covered, loose clothing, NEVER niqab or face-veil), no text, no logo, no watermark, no alcohol, no pork
+
+### 2 — التخطيط المالي / الاستثمار → `02-investing.png`
+A young Arab couple (the woman in a soft hijab) sitting together at a cozy home desk, reviewing a notebook beside a laptop and a small growing plant, hopeful and warm planning moment. warm cinematic lifestyle photography, candid authentic real-life moment, natural light, gentle deep-teal / cream / warm-gold tones woven into the scene, joyful and full of life, high quality — women in modest hijab or khimar (hair and chest covered, loose clothing, NEVER niqab or face-veil), no text, no logo, no watermark, no alcohol, no pork
+
+### 3 — الزكاة والعطاء → `03-zakat-charity.png`
+A family (mother in a khimar, father, and children) joyfully packing a box of dates and food to give to those in need, in a warm bright home, generous and heartwarming mood. warm cinematic lifestyle photography, candid authentic real-life moment, natural light, gentle deep-teal / cream / warm-gold tones woven into the scene, joyful and full of life, high quality — women in modest hijab or khimar (hair and chest covered, loose clothing, NEVER niqab or face-veil), no text, no logo, no watermark, no alcohol, no pork
+
+### 4 — ميزانية البيت → `04-household-budget.png`
+A mother in a hijab and her teenage daughter sitting at a kitchen table with a grocery basket, a notebook, and a jar of coins, planning the week's budget together, warm and practical. warm cinematic lifestyle photography, candid authentic real-life moment, natural light, gentle deep-teal / cream / warm-gold tones woven into the scene, joyful and full of life, high quality — women in modest hijab or khimar (hair and chest covered, loose clothing, NEVER niqab or face-veil), no text, no logo, no watermark, no alcohol, no pork
+
+### 5 — الأمان المالي / صندوق الطوارئ → `05-financial-security.png`
+Parents (the woman in a soft hijab) sitting calmly together on a sofa in a warm living room, reviewing family papers with a small lockbox on the coffee table, a sense of security and togetherness. warm cinematic lifestyle photography, candid authentic real-life moment, natural light, gentle deep-teal / cream / warm-gold tones woven into the scene, joyful and full of life, high quality — women in modest hijab or khimar (hair and chest covered, loose clothing, NEVER niqab or face-veil), no text, no logo, no watermark, no alcohol, no pork
+
+## 🏠 العقار والسكن
+
+### 6 — منزل جديد → `06-new-home.png`
+A happy Gulf family (mother in a hijab, father, two children) standing in front of their modern new villa at golden hour, the father holding the keys, palm trees and warm light, excited and joyful. warm cinematic lifestyle photography, candid authentic real-life moment, natural light, gentle deep-teal / cream / warm-gold tones woven into the scene, joyful and full of life, high quality — women in modest hijab or khimar (hair and chest covered, loose clothing, NEVER niqab or face-veil), no text, no logo, no watermark, no alcohol, no pork
+
+### 7 — البيت كملاذ → `07-home-sanctuary.png`
+A cozy family evening inside a warm Gulf living room (majlis): the family relaxing together on floor cushions, a mother in a soft hijab, children, soft lamp glow, plants, peaceful and homely. warm cinematic lifestyle photography, candid authentic real-life moment, natural light, gentle deep-teal / cream / warm-gold tones woven into the scene, joyful and full of life, high quality — women in modest hijab or khimar (hair and chest covered, loose clothing, NEVER niqab or face-veil), no text, no logo, no watermark, no alcohol, no pork
+
+### 8 — مسلمو أوروبا / الانتقال لبيت جديد → `08-european-muslim-home.png`
+A young European Muslim family (the woman in a stylish modest hijab) cheerfully unpacking boxes in a bright new city apartment, large windows with soft daylight, warm new-beginning mood. warm cinematic lifestyle photography, candid authentic real-life moment, natural light, gentle deep-teal / cream / warm-gold tones woven into the scene, joyful and full of life, high quality — women in modest hijab or khimar (hair and chest covered, loose clothing, NEVER niqab or face-veil), no text, no logo, no watermark, no alcohol, no pork
+
+### 9 — إيجار أم شراء → `09-renting-buying.png`
+A couple (the woman in a hijab) touring a bright airy apartment with an agent, looking around thoughtfully at the sunlit rooms, a real lived-in decision moment. warm cinematic lifestyle photography, candid authentic real-life moment, natural light, gentle deep-teal / cream / warm-gold tones woven into the scene, joyful and full of life, high quality — women in modest hijab or khimar (hair and chest covered, loose clothing, NEVER niqab or face-veil), no text, no logo, no watermark, no alcohol, no pork
+
+## 🩺 الصحة والعافية
+
+### 10 — فطور صحي عائلي → `10-healthy-family-meal.png`
+A mother in a hijab and her two children joyfully preparing a colorful healthy breakfast in a bright kitchen — fresh fruits, laban, dates — laughter and warmth. warm cinematic lifestyle photography, candid authentic real-life moment, natural light, gentle deep-teal / cream / warm-gold tones woven into the scene, joyful and full of life, high quality — women in modest hijab or khimar (hair and chest covered, loose clothing, NEVER niqab or face-veil), no text, no logo, no watermark, no alcohol, no pork
+
+### 11 — الرياضة واللياقة → `11-fitness-active.png`
+A woman in modest athletic hijab wear walking briskly and smiling in a lush green city park at morning, active healthy lifestyle, loose comfortable sportswear, fresh and energetic. warm cinematic lifestyle photography, candid authentic real-life moment, natural light, gentle deep-teal / cream / warm-gold tones woven into the scene, joyful and full of life, high quality — women in modest hijab or khimar (hair and chest covered, loose clothing, NEVER niqab or face-veil), no text, no logo, no watermark, no alcohol, no pork
+
+### 12 — التغذية العائلية → `12-nutrition-family.png`
+An extended family (women in hijab, men, children) sharing a healthy Middle Eastern spread around a warm table — salads, dates, laban, fruits — joyful togetherness and abundance. warm cinematic lifestyle photography, candid authentic real-life moment, natural light, gentle deep-teal / cream / warm-gold tones woven into the scene, joyful and full of life, high quality — women in modest hijab or khimar (hair and chest covered, loose clothing, NEVER niqab or face-veil), no text, no logo, no watermark, no alcohol, no pork
+
+### 13 — الترطيب والعادات الصحية → `13-hydration.png`
+A cheerful young girl drinking a glass of water with lemon at a sunny kitchen counter, her mother in a hijab smiling nearby, fresh, healthy, warm home moment. warm cinematic lifestyle photography, candid authentic real-life moment, natural light, gentle deep-teal / cream / warm-gold tones woven into the scene, joyful and full of life, high quality — women in modest hijab or khimar (hair and chest covered, loose clothing, NEVER niqab or face-veil), no text, no logo, no watermark, no alcohol, no pork
+
+### 14 — النوم والراحة → `14-rest-bedtime.png`
+A tender bedtime scene: a mother in a soft hijab reading a story to her sleepy child in a cozy warmly-lit bedroom, calm and loving. warm cinematic lifestyle photography, candid authentic real-life moment, natural light, gentle deep-teal / cream / warm-gold tones woven into the scene, joyful and full of life, high quality — women in modest hijab or khimar (hair and chest covered, loose clothing, NEVER niqab or face-veil), no text, no logo, no watermark, no alcohol, no pork
+
+## 👨‍👩‍👧 الأسرة والتربية
+
+### 15 — القراءة مع الأطفال → `15-parenting-reading.png`
+A mother in a hijab reading a colorful picture book with her two young children snuggled on a cozy couch in a warm home, engaged and happy. warm cinematic lifestyle photography, candid authentic real-life moment, natural light, gentle deep-teal / cream / warm-gold tones woven into the scene, joyful and full of life, high quality — women in modest hijab or khimar (hair and chest covered, loose clothing, NEVER niqab or face-veil), no text, no logo, no watermark, no alcohol, no pork
+
+### 16 — الأب والأبناء → `16-father-kids-park.png`
+An Arab father walking hand-in-hand with his two happy children through a green Gulf park at golden hour, warm bonding, laughter, gentle light. warm cinematic lifestyle photography, candid authentic real-life moment, natural light, gentle deep-teal / cream / warm-gold tones woven into the scene, joyful and full of life, high quality — women in modest hijab or khimar (hair and chest covered, loose clothing, NEVER niqab or face-veil), no text, no logo, no watermark, no alcohol, no pork
+
+### 17 — الأطفال والحيوانات الأليفة → `17-child-pet.png`
+A little girl joyfully cuddling a fluffy cat on the floor of a sunlit living room, her family warm in the soft background, innocent happy home life. warm cinematic lifestyle photography, candid authentic real-life moment, natural light, gentle deep-teal / cream / warm-gold tones woven into the scene, joyful and full of life, high quality — women in modest hijab or khimar (hair and chest covered, loose clothing, NEVER niqab or face-veil), no text, no logo, no watermark, no alcohol, no pork
+
+### 18 — التعليم والمذاكرة → `18-study-help.png`
+A child doing homework at a tidy desk while a mother in a hijab gently helps, bright encouraging morning light, warm supportive home learning. warm cinematic lifestyle photography, candid authentic real-life moment, natural light, gentle deep-teal / cream / warm-gold tones woven into the scene, joyful and full of life, high quality — women in modest hijab or khimar (hair and chest covered, loose clothing, NEVER niqab or face-veil), no text, no logo, no watermark, no alcohol, no pork
+
+### 19 — الأجداد والأجيال → `19-grandparents.png`
+A warm multi-generational moment: an elderly grandfather in traditional dress and grandmother in a khimar sitting with their grandchildren in a cozy home, tender and joyful. warm cinematic lifestyle photography, candid authentic real-life moment, natural light, gentle deep-teal / cream / warm-gold tones woven into the scene, joyful and full of life, high quality — women in modest hijab or khimar (hair and chest covered, loose clothing, NEVER niqab or face-veil), no text, no logo, no watermark, no alcohol, no pork
+
+### 20 — أنشطة بلا شاشات → `20-screen-free-play.png`
+A family (mother in a hijab, father, children) laughing together over a board game on the living-room floor, phones set aside, cozy warm evening full of connection. warm cinematic lifestyle photography, candid authentic real-life moment, natural light, gentle deep-teal / cream / warm-gold tones woven into the scene, joyful and full of life, high quality — women in modest hijab or khimar (hair and chest covered, loose clothing, NEVER niqab or face-veil), no text, no logo, no watermark, no alcohol, no pork
+
+## 🕌 السياحة الدينية والعبادة
+
+### 21 — العمرة / مكة → `21-umrah-makkah.png`
+A Muslim family walking together toward a grand mosque with tall minarets in Makkah at golden hour, women in modest white and soft hijab, serene and spiritual pilgrimage atmosphere, respectful. warm cinematic lifestyle photography, candid authentic real-life moment, natural light, gentle deep-teal / cream / warm-gold tones woven into the scene, joyful and full of life, high quality — women in modest hijab or khimar (hair and chest covered, loose clothing, NEVER niqab or face-veil), no text, no logo, no watermark, no alcohol, no pork
+
+### 22 — زيارة المدينة المنورة → `22-madinah.png`
+A calm family moment near the Prophet's Mosque in Madinah, its elegant minarets glowing in the warm background at dusk, modestly dressed pilgrims, peaceful and reverent. warm cinematic lifestyle photography, candid authentic real-life moment, natural light, gentle deep-teal / cream / warm-gold tones woven into the scene, joyful and full of life, high quality — women in modest hijab or khimar (hair and chest covered, loose clothing, NEVER niqab or face-veil), no text, no logo, no watermark, no alcohol, no pork
+
+### 23 — الصلاة في البيت → `23-family-prayer.png`
+A serene home prayer moment: a father and his young son standing in prayer on a rug in a softly lit room, calm and reverent family faith. warm cinematic lifestyle photography, candid authentic real-life moment, natural light, gentle deep-teal / cream / warm-gold tones woven into the scene, joyful and full of life, high quality — women in modest hijab or khimar (hair and chest covered, loose clothing, NEVER niqab or face-veil), no text, no logo, no watermark, no alcohol, no pork
+
+### 24 — رمضان والإفطار → `24-ramadan-iftar.png`
+A joyful family iftar gathering at dusk: parents (women in hijab), grandparents, and children around a warm table with dates, water, and glowing lanterns, togetherness and gratitude. warm cinematic lifestyle photography, candid authentic real-life moment, natural light, gentle deep-teal / cream / warm-gold tones woven into the scene, joyful and full of life, high quality — women in modest hijab or khimar (hair and chest covered, loose clothing, NEVER niqab or face-veil), no text, no logo, no watermark, no alcohol, no pork
+
+### 25 — تعليم القرآن → `25-quran-learning.png`
+A mother in a soft hijab lovingly teaching her child to read the Quran on a wooden stand at a cozy home nook, warm golden light, tender and peaceful. warm cinematic lifestyle photography, candid authentic real-life moment, natural light, gentle deep-teal / cream / warm-gold tones woven into the scene, joyful and full of life, high quality — women in modest hijab or khimar (hair and chest covered, loose clothing, NEVER niqab or face-veil), no text, no logo, no watermark, no alcohol, no pork
+
+### 26 — التجهيز للحج/العمرة → `26-hajj-prep-family.png`
+A family preparing for umrah at home — a folded white ihram, a small suitcase, prayer beads on the table — parents (woman in hijab) organizing together, hopeful and warm. warm cinematic lifestyle photography, candid authentic real-life moment, natural light, gentle deep-teal / cream / warm-gold tones woven into the scene, joyful and full of life, high quality — women in modest hijab or khimar (hair and chest covered, loose clothing, NEVER niqab or face-veil), no text, no logo, no watermark, no alcohol, no pork
+
+## ✈️ السفر والأماكن
+
+### 27 — سفر عائلي / المطار → `27-airport-family.png`
+A modest Arab family (mother in a hijab, father, two children) walking happily through a bright modern airport with luggage, excited holiday travel energy, natural candid moment. warm cinematic lifestyle photography, candid authentic real-life moment, natural light, gentle deep-teal / cream / warm-gold tones woven into the scene, joyful and full of life, high quality — women in modest hijab or khimar (hair and chest covered, loose clothing, NEVER niqab or face-veil), no text, no logo, no watermark, no alcohol, no pork
+
+### 28 — يوم عائلي على البحر → `28-beach-family.png`
+A family enjoying a modest day by the sea at golden hour: a mother in a hijab and modest clothing, children building sandcastles, a picnic basket, gentle waves, warm and happy (no revealing swimwear). warm cinematic lifestyle photography, candid authentic real-life moment, natural light, gentle deep-teal / cream / warm-gold tones woven into the scene, joyful and full of life, high quality — women in modest hijab or khimar (hair and chest covered, loose clothing, NEVER niqab or face-veil), no text, no logo, no watermark, no alcohol, no pork
+
+### 29 — السوق الشعبي الخليجي → `29-souq-family.png`
+A family exploring a lively traditional Gulf souq together — colorful spices, hanging textiles, warm lanterns — a mother in a hijab and children delighted, rich vibrant life. warm cinematic lifestyle photography, candid authentic real-life moment, natural light, gentle deep-teal / cream / warm-gold tones woven into the scene, joyful and full of life, high quality — women in modest hijab or khimar (hair and chest covered, loose clothing, NEVER niqab or face-veil), no text, no logo, no watermark, no alcohol, no pork
+
+### 30 — مسلمو أوروبا يسافرون → `30-european-muslim-travel.png`
+A European Muslim family (the woman in a stylish modest hijab) happily sightseeing along a charming old European city street with warm afternoon light, candid joyful travel moment. warm cinematic lifestyle photography, candid authentic real-life moment, natural light, gentle deep-teal / cream / warm-gold tones woven into the scene, joyful and full of life, high quality — women in modest hijab or khimar (hair and chest covered, loose clothing, NEVER niqab or face-veil), no text, no logo, no watermark, no alcohol, no pork
+
+## 🧘 الإنتاجية والسلام النفسي
+
+### 31 — العمل من البيت / الإنتاجية → `31-productivity-home.png`
+A woman in a hijab working focused and content at a warm tidy home office, an Arabic coffee and a planner beside her laptop, calm capable morning energy. warm cinematic lifestyle photography, candid authentic real-life moment, natural light, gentle deep-teal / cream / warm-gold tones woven into the scene, joyful and full of life, high quality — women in modest hijab or khimar (hair and chest covered, loose clothing, NEVER niqab or face-veil), no text, no logo, no watermark, no alcohol, no pork
+
+### 32 — التقليل الرقمي → `32-digital-detox-family.png`
+A family enjoying present, connected time together in a sunny garden — phones nowhere in sight — a mother in a hijab, father, and children laughing, warm and unplugged. warm cinematic lifestyle photography, candid authentic real-life moment, natural light, gentle deep-teal / cream / warm-gold tones woven into the scene, joyful and full of life, high quality — women in modest hijab or khimar (hair and chest covered, loose clothing, NEVER niqab or face-veil), no text, no logo, no watermark, no alcohol, no pork
+
+### 33 — ركن السكينة → `33-calm-corner.png`
+A woman in a soft hijab sitting peacefully in a cozy home reading nook with tea and plants, warm soft light through sheer curtains, tranquil and restful. warm cinematic lifestyle photography, candid authentic real-life moment, natural light, gentle deep-teal / cream / warm-gold tones woven into the scene, joyful and full of life, high quality — women in modest hijab or khimar (hair and chest covered, loose clothing, NEVER niqab or face-veil), no text, no logo, no watermark, no alcohol, no pork
+
+### 34 — الحياة الزوجية / الصلح → `34-marriage-reconcile.png`
+A warm tender moment between a married couple (the woman in a hijab) sitting together over tea at a cozy home table, gentle understanding and affection, respectful and calm. warm cinematic lifestyle photography, candid authentic real-life moment, natural light, gentle deep-teal / cream / warm-gold tones woven into the scene, joyful and full of life, high quality — women in modest hijab or khimar (hair and chest covered, loose clothing, NEVER niqab or face-veil), no text, no logo, no watermark, no alcohol, no pork
+
+### 35 — الضيافة العربية → `35-hospitality.png`
+An Arab family warmly welcoming guests into a beautiful majlis, serving dallah coffee and dates, women in elegant hijab, generous and joyful gathering. warm cinematic lifestyle photography, candid authentic real-life moment, natural light, gentle deep-teal / cream / warm-gold tones woven into the scene, joyful and full of life, high quality — women in modest hijab or khimar (hair and chest covered, loose clothing, NEVER niqab or face-veil), no text, no logo, no watermark, no alcohol, no pork
+
+## 🌿 أسلوب الحياة والتنوّع
+
+### 36 — نزهة في المول → `36-mall-outing.png`
+A cheerful family (mother in a stylish hijab, father, children) enjoying a bright modern shopping mall, lively family outing, warm friendly atmosphere. warm cinematic lifestyle photography, candid authentic real-life moment, natural light, gentle deep-teal / cream / warm-gold tones woven into the scene, joyful and full of life, high quality — women in modest hijab or khimar (hair and chest covered, loose clothing, NEVER niqab or face-veil), no text, no logo, no watermark, no alcohol, no pork
+
+### 37 — البستنة المنزلية → `37-gardening-family.png`
+A mother in a hijab and her child happily planting herbs together in a sunny home garden, hands in soil, a watering can nearby, fresh green joyful bonding. warm cinematic lifestyle photography, candid authentic real-life moment, natural light, gentle deep-teal / cream / warm-gold tones woven into the scene, joyful and full of life, high quality — women in modest hijab or khimar (hair and chest covered, loose clothing, NEVER niqab or face-veil), no text, no logo, no watermark, no alcohol, no pork
+
+### 38 — لحظة هدوء مع حيوان أليف → `38-cozy-pet.png`
+A serene evening: a young woman in a soft hijab reading on a couch with a fluffy cat curled beside her by a warm window, cozy and peaceful home life. warm cinematic lifestyle photography, candid authentic real-life moment, natural light, gentle deep-teal / cream / warm-gold tones woven into the scene, joyful and full of life, high quality — women in modest hijab or khimar (hair and chest covered, loose clothing, NEVER niqab or face-veil), no text, no logo, no watermark, no alcohol, no pork
+
+### 39 — احتفال العيد → `39-eid-celebration.png`
+A joyful Eid family celebration at home: warm decorations and lanterns, women in beautiful hijab, children opening gifts, laughter and festive warmth. warm cinematic lifestyle photography, candid authentic real-life moment, natural light, gentle deep-teal / cream / warm-gold tones woven into the scene, joyful and full of life, high quality — women in modest hijab or khimar (hair and chest covered, loose clothing, NEVER niqab or face-veil), no text, no logo, no watermark, no alcohol, no pork
+
+### 40 — التطوع وخدمة المجتمع → `40-volunteering.png`
+Modestly dressed volunteers — women in hijab and men — happily distributing food donations together in a community hall, warm cooperative spirit, kind visible faces. warm cinematic lifestyle photography, candid authentic real-life moment, natural light, gentle deep-teal / cream / warm-gold tones woven into the scene, joyful and full of life, high quality — women in modest hijab or khimar (hair and chest covered, loose clothing, NEVER niqab or face-veil), no text, no logo, no watermark, no alcohol, no pork
+
+---
+
+> خلّصت أي دفعة وحفظتهم بالأسماء دي؟ قوللي «الصور جاهزة» وأبدأ المراجعة (احتشام/هوية/جودة) والاعتماد والحقن.
