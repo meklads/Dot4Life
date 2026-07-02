@@ -1,4 +1,9 @@
-# 🛡️ أوامر عامر النشطة (المصدر الثابت) — 2026-06-24 (آخر دورة 2026-07-02 16:08 UTC)
+# 🛡️ أوامر عامر النشطة (المصدر الثابت) — 2026-06-24 (آخر دورة 2026-07-02 19:07 UTC)
+
+## 🟡 دورة عامر 2026-07-02 19:07 UTC — صفر تقدّم إضافي، كل الأوامر أدناه سارية بلا تعديل
+**تأكيد:** لا كوميتات جديدة منذ `74f5ff59` (17:57 UTC). أهم بندين معلَّقين 9+ دورات (~7 ساعات): `power-of-i-was-wrong-en.html` (تلوّث headline/og:image "daily walking" كامل) و`digital-minimalism-faith-families.html` (FAQ مرئي≠schema). إصلاح `renting-vs-buying`(ع+en) noindex من 18:09 لا يزال على القرص غير مُلتزَم (~1 ساعة انتظار كوميت). لا اعتماد LIVE جديد. التفاصيل: `quality-log.md` (2026-07-02 19:07 UTC).
+
+---
 
 ## 🚨🚨 حاكم — دورة عامر 2026-07-02 16:08 UTC: تلوّث "Daily Walking" مؤكَّد في 21 ملفاً (لا ملفين) — عيب قالب واسع النطاق
 **اكتشاف موسَّع:** تنفيذاً لتوصية دورة 15:37 (فحص أوسع)، فحصت `article-banner-title` الظاهر + `Article.headline` schema لكل الـ61 ملفاً في الموقع التي تشير لـ`assets/images/approved/hero-daily-walking-benefits.webp`. **25 ملفاً يحملان حرفياً "Daily Walking Benefits for Families" / "The Benefits of Daily Walking for Your Family..." كبانر وheadline ظاهرَين، رغم أن 21 منها مواضيعها مختلفة تماماً (4 فقط فعلاً عن المشي، وLIVE بشكل سليم).**
@@ -652,3 +657,46 @@ title/H1/og:image/Article.headline أُصلحت فعلاً (شكراً)، **لك
 **الدرس المؤسسي:** `amer_gate.py` لا يفحص تطابق title/H1/og:image/Article.headline/FAQPage مع موضوع المقال الفعلي — فقط عدد كلمات/شرطات/عدد أسئلة. رسالة commit "pass amer_gate" لا تعني إصلاح تلوّث القالب. **أي إصلاح لملف من قائمة daily-walking (16:08) يجب أن يشمل الثلاثية معاً (title+og:image+Article.headline+FAQPage.mainEntity) دفعة واحدة، ويُتحقَّق منها بعد الحفظ مباشرة (grep عن "walking"/"المشي" في الملف = صفر نتائج) قبل تسجيل commit "pass".**
 
 **لا اعتماد LIVE جديد. لا تراجع على الملفين LIVE الحاليين.** التفاصيل الكاملة: `quality-log.md` (2026-07-02 17:40 UTC).
+
+## 🚨 دورة عامر 2026-07-02 18:09 UTC — اكتشاف جديد: renting-vs-buying (ع+en) بلا noindex، أُصلح فوراً
+
+**فجوة استعادة noindex إضافية مكتشَفة** (نفس نمط 13:39 UTC، ملفان إضافيان لم يُوثَّقا سابقاً): `comparisons/renting-vs-buying-property-saudi-families.html` و`-en.html` كانا بلا وسم `robots` إطلاقاً منذ كوميت `b37333af` (13:21). **أضفتُ `noindex,nofollow` لكلا الملفين على القرص فوراً — تحقّقتُ.** غير مُدرَجين في `sitemap.xml` (لا خطر فهرسة فعلي عبر GSC) لكن كانا مكشوفين للزحف المباشر.
+
+**لهيما — عند إكمال "batch 32-33":**
+- AR (`renting-vs-buying-property-saudi-families.html`): 1294 كلمة (دون 1600) + 18 شرطة طويلة → يحتاج توسعة + إزالة الشرطات.
+- EN (`-en.html`): 2588 كلمة (كافية) لكن 34 شرطة طويلة + لا يزال يستخدم صور Unsplash placeholder (لم يُحدَّث لصورة `hero-gold-vs-real-estate-gulf-family.webp` كما فعلت نسخة AR) → إزالة الشرطات + تحديث الصور.
+- كلا الملفين: `noindex` **لا يُزال إلا بعد اجتياز `amer_gate.py` واعتماد عامر صراحة.**
+
+**أمر إجرائي متكرر (تشديد):** أي كوميت يدّعي "noindex preserved" على ملف لمسته يجب أن يُرفَق بتحقق `grep -i robots <file>` فعلي قبل التسجيل — الاعتماد على النية وحدها أدى لفجوتين حتى الآن (13:39 + 18:09).
+
+باقي الأوامر النشطة (property-roi ع+en، umrah-off-peak-en، power-of-i-was-wrong-en، digital-minimalism-faith-families، mindful-family-meal ع+en، outdoor-vs-indoor ع+en، saudi-vs-uae-family FAQ/schema) **تبقى سارية بلا تعديل** — لا كوميتات جديدة عليها منذ 17:40 (مؤكَّد via `git log`). **لا اعتماد LIVE جديد.**
+
+---
+## 🚨 دورة عامر 2026-07-02 18:39 UTC — أمر جديد: property-roi-en وumrah-off-peak-en تحتاجان أيضاً استبدال FAQPage (ثلاث مشاكل لا واحدة)
+
+**🆕 أمر عاجل لهيما:**
+`real-estate/property-roi-comparison-saudi-uae-en.html` و`islamic-hajj-umrah/umrah-off-peak-seasons-guide-en.html` — بالإضافة للمعروف سابقاً (شرطات طويلة + نِسَب بلا روابط عميقة)، **الـFAQPage JSON-LD في كلا الملفين لا يزال 100% حرفياً قالب "daily walking"** (نفس 5 أسئلة عن المشي اليومي، غير متعلقة إطلاقاً بموضوع العقار/العمرة). استبدلي `mainEntity` بالكامل في كليهما بأسئلة تطابق موضوع كل صفحة، بالتوازي مع إزالة الشرطات وإضافة روابط عميقة حقيقية للنِسَب المذكورة. تحقّقي بعد الحفظ: `grep -i "walking" <file>` = صفر نتائج قبل تسجيل أي "pass".
+
+**بلا تغيير (كل الأوامر التالية من دورات 17:40/18:09 تبقى سارية بلا تعديل):**
+- `comparisons/outdoor-vs-indoor-family-activities.html`(ع): title/og:image/Article.headline لا تزال عن "المشي"، H1 مكرَّر لم يُحذَف.
+- `comparisons/outdoor-vs-indoor-family-activities-en.html`: FAQPage لا يزال walking template، الملف بلا `<article>`/`<aside>` (بانتظار كورسر لإعادة البناء بالقالب القياسي).
+- `comparisons/saudi-vs-uae-family.html`(ع): سؤال خامس مفقود من schema. `-en.html`: مزامنة FAQ/schema كاملة مطلوبة.
+- `power-of-i-was-wrong-en.html`: تلوّث كامل (schema+og:image+Article) + نقص ~270 كلمة.
+- `digital-minimalism-faith-families.html`: FAQ مرئي (3) ≠ schema (4).
+- `property-roi-comparison-saudi-uae.html`(ع): schema حشو عام غير عقاري + hero مفقود من القرص.
+- `mindful-family-meal-nutrition-faith`(ع+en): دون 1600 كلمة.
+- `renting-vs-buying-property-saudi-families`(ع+en): `noindex` مُضاف (18:09)، بانتظار توسعة/تصحيح شرطات قبل رفعه للبوابة.
+
+**لا صور جديدة، لا اعتماد LIVE جديد، لا تراجع.** التفاصيل الكاملة: `quality-log.md` (2026-07-02 18:39 UTC).
+
+---
+## 🛑🛑🛑 أمر إيقاف تام — 2026-07-02 — بقرار مباشر من جوست، يُلغي كل الأوامر أعلاه فوراً
+
+**توقّف عن أي عمل الآن. لا تفتح ملفاً جديداً. لا تكمل ملفاً قيد التحرير. لا تعمل commit ولا push جديد.**
+
+1. لو عندك ملف مفتوح حالياً قيد التعديل: احفظ الحالة كما هي، **لا تحاول "تنظيفه" أو "إنهاءه بسرعة"** قبل التوقف.
+2. لا تبدأ أي دفعة جديدة، لا تلمس noindex، لا تتخذ أي قرار نشر مهما بدا واضحاً.
+3. هذا الإيقاف يبقى سارياً حتى يصدر أمر جديد صريح من عامر يفتح العمل مجدداً بالاسم.
+4. أي عمل تم إنجازه فعلاً وملتزَم (committed) قبل هذا الأمر يبقى كما هو — لا يُطلب التراجع عنه. المطلوب فقط التوقف عن أي عمل إضافي من الآن.
+
+> السبب: استهلاك تكلفة غير متناسب مع جودة/سرعة الإنجاز المُتحقَّق منها اليوم + مخالفة حوكمة (نزع noindex عن 187 ملف بقرار منفرد). القرار قيد المراجعة من جوست وعامر.
