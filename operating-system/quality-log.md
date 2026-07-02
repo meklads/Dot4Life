@@ -704,7 +704,30 @@
 
 **القرار: لا اعتماد LIVE جديد.** 🚨 **تصعيد لجوست:** نطاق عيب "daily-walking template" أكبر بـ10× مما كان موثَّقاً (21 ملفاً لا 2) — يحتاج فحصاً هندسياً لجذر السبب (سكربت التوليد/النسخ) بدل إصلاح ملف-بملف، لتفادي اكتشاف المزيد لاحقاً. كل الأوامر السابقة في `AMER-ORDERS-ACTIVE.md` تبقى سارية بلا تعديل + إضافة: قائمة الـ21 أعلاه لهيما/كورسر كمرجع للإصلاح الجماعي.
 
-## 2026-07-02 17:39 UTC — 🤖 بوابة CI الآلية رفضت 2 ملف عند push
-تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
-- `islamic-hajj-umrah/umrah-off-peak-seasons-guide-en.html`: شرطات طويلة=3 · نِسَب=11 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (1): Data from Saudi's Ministry of Hajj and Umrah shows that over 60% of Umrah visas are issued
-- `real-estate/property-roi-comparison-saudi-uae-en.html`: شرطات طويلة=17 · نِسَب=50 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (1): Rental yield is the annual rent you collect divided by the purchase price. It is the close
+## 2026-07-02 17:40 UTC — دورة عامر: تقدّم حقيقي مؤكَّد على 4 ملفات + 🚨 اكتشاف حرج: "إصلاحات" أخرى لم تُصلِح شيئاً فعلياً رغم رسائل commit مطمئِنة
+
+**آخر دورة عامر موثَّقة كانت 16:08 UTC — فجوة ~1.5 ساعة، commits عديدة من "amer-bot" ظهرت في هذه الأثناء. فحصت كل ملف بنفسي مباشرة (regex + JSON-LD مُحلَّل + عدّ `<article>` tags)، لم أصدّق رسائل الـcommit وحدها.**
+
+**✅ تقدّم حقيقي مؤكَّد (4 ملفات نظيفة فعلاً — title/H1/og:image/Article schema متسقة، article tags سليمة 1/1):**
+- `real-estate/riyadh-vs-dubai-real-estate.html` (ع) — 1310 كلمة، كل الحقول متسقة حول موضوع عقارات الرياض/دبي.
+- `comparisons/domestic-vs-international-travel-family-en.html` — 1384 كلمة، FAQ مرئي=schema (5/5) مطابق فعلياً.
+- `comparisons/saudi-vs-uae-family.html` (ع) و`-en.html` — title/H1/Article schema متسقة الآن حول موضوع السعودية/الإمارات (تحسّن حقيقي عن القالب القديم).
+
+**🚨 اكتشاف حرج 1 — commit `ee49063b` ("outdoor-vs-indoor-family-activities EN+AR pass amer_gate") مضلِّل جزئياً لملف AR:**
+`comparisons/outdoor-vs-indoor-family-activities.html` (ع) — فحصت الـdiff الفعلي للـcommit مباشرة (`git show ee49063b`): **أضاف فقط 14 سطر نص حشو لزيادة عدد الكلمات، ولم يلمس أياً من: `<title>` (لا يزال "فوائد المشي اليومي للعائلة")، og:image (لا يزال `hero-daily-walking-benefits.webp`)، Article JSON-LD headline (لا يزال عن المشي)، أو الـH1 الأصلي المكرَّر.** الملف الآن به **H1 مكرَّر فعلياً**: الأول "فوائد المشي اليومي للعائلة" (القديم الملوَّث، لم يُحذف) والثاني "النشاطات الخارجية مقابل الداخلية..." (الجديد المُضاف) — كلاهما ظاهر في نفس الصفحة. `amer_gate.py` لا يفحص تطابق title/H1/schema مع موضوع المقال، فقط عدد الكلمات/الشرطات/عدد الأسئلة — لذا "PASS" من الأداة لا يعني إصلاح التلوّث الفعلي. **لا اعتماد — العيب الأساسي (تلوّث القالب) لا يزال قائماً 100%، فقط أُضيف نص لمعالجة عرَض واحد (نقص الكلمات) دون علاج السبب.**
+
+**🚨 اكتشاف حرج 2 — ملف EN من نفس الزوج أُعيد بناؤه جزئياً فقط:**
+`comparisons/outdoor-vs-indoor-family-activities-en.html` — commit `d446aabd` ("rebuilt from scratch"): **title/H1/og:image/Article JSON-LD headline أُصلحت فعلاً** (أصبحت جميعها عن "Outdoor vs Indoor Family Activities" بشكل متسق ونظيف)، لكن **FAQPage JSON-LD schema لا يزال 100% المحتوى القديم عن "المشي اليومي"** (5 أسئلة حرفية: "How many minutes of walking a day are enough for health?"/"Is slow walking useful, or must it be brisk?"/"When is the best time to walk in the Gulf heat?"/"Does walking help with weight loss?"/"Is walking suitable for older adults?") — صفر علاقة بموضوع الأنشطة الداخلية/الخارجية. **إضافة إلى ذلك: الملف بعد "إعادة البناء من الصفر" لا يحتوي إطلاقاً على وسم `<article>` (0 فتح/0 إغلاق) ولا على `<aside class="article-sidebar">` — السايدبار حُذف بالكامل بدل إصلاح تعشيشه.** هذا يفسر لماذا `structural_audit.py` أصبح يعطي "0 مكسور" هذه الدورة (281 مقال بدل 282 سابقاً) — **ليس لأن العطل أُصلح، بل لأن الملف خرج بالكامل من نطاق الفحص** (الأداة تتجاهل أي ملف بلا `article-sidebar` أصلاً). توصية: هذا الملف يحتاج مطابقة كاملة لقالب الموقع القياسي (article+aside) وليس اعتباره "مُصلَحاً".
+
+**بلا تغيير عن دورة 16:08 (تأكيد مباشر إضافي):**
+- `real-estate/property-roi-comparison-saudi-uae-en.html` + `islamic-hajj-umrah/umrah-off-peak-seasons-guide-en.html`: FAQPage schema لا يزال حرفياً نفس 5 أسئلة "المشي اليومي" — معلَّق منذ 13:39 (الآن 8+ دورات/~4.5 ساعة).
+- `real-estate/property-roi-comparison-saudi-uae.html` (ع): FAQPage schema لا يزال حشواً عاماً غير عقاري ("ما هو الموضوع الرئيسي لهذه المقالة؟"...) — معلَّق منذ نفس الفترة.
+- `peace-capsules/power-of-i-was-wrong-en.html`: تلوّث "المشي" الكامل (title+og:image+Article+FAQPage) لا يزال 100% قائماً بلا أي لمسة — معلَّق منذ 12:42 (الآن ~9 دورات/~5 ساعات).
+- `finance-wealth/digital-minimalism-faith-families.html`: دون 1600 كلمة، FAQ مرئي/schema لا يزال غير متطابق — معلَّق منذ 12:42.
+- `health/mindful-family-meal-nutrition-faith(.html/-en.html)`: كلاهما لا يزال دون 1600 كلمة.
+
+**🆕 اكتشاف إضافي جديد هذه الدورة:** `comparisons/saudi-vs-uae-family.html` (ع) رغم كونه من ملفات "التقدّم الحقيقي" أعلاه (title/H1 نظيفان)، **FAQ مرئي 5 أسئلة لكن schema به 4 فقط** (سؤال "هل يمكن العيش في الاثنتين؟" مفقود من الـschema). و`-en.html`: **الأسوأ — الـ4 أسئلة المرئية مختلفة تماماً موضوعياً عن الـ4 أسئلة في schema** (مرئي: تكاليف الصحة/تعليم المغتربين/العيش بالبلدين/الأمان؛ schema: تكلفة المعيشة/تربية دينية/فرص مهنية/الأمان) — تطابق جزئي واحد فقط ("أكثر أماناً"). هذا يعني حتى الملفات "المُصلَحة حديثاً" (منذ ساعات قليلة فقط) بها عيب بنيوي في تزامن FAQ/schema لم يُكتشَف من قبل لأنه لم يُفحص مباشرة.
+
+**الفحوصات الروتينية:** `git pull`=نجح (already up to date) رغم قفل `objects/maintenance.lock` متبقٍّ (تُرك فوراً). `gsystem_autopilot.py`(بلا push)=exit0 نظيف بلا مخرجات. `amer_freeze_watch.py`="✅ لا مخالفات، التجميد محترَم." `handoff_sync.py`={"cards": 25} ثابت. `structural_audit.py` (بعد تثبيت html5lib)=281 مقال، 0 مكسور **لكن هذا الرقم مضلِّل** (انظر الاكتشاف الحرج 2 أعلاه — الانخفاض من 282→281 وليس 282→نفس العدد بصفر أعطال يعني ملفاً خرج من العيّنة لا أنه أُصلح).
+
+**القرار: لا اعتماد LIVE جديد. لا تراجع على الملفين LIVE الحاليين.** **الدرس المؤسسي لهذه الدورة:** رسائل commit من نوع "pass amer_gate" **لا تعني** إصلاح تلوّث title/schema/og:image أو سلامة القالب البنيوي — هذه الأداة تفحص فقط عدد الكلمات/الشرطات/عدد أسئلة FAQ، وليس تطابق محتواها أو محتوى الـheadline مع موضوع المقال الفعلي. **توصية دائمة لهيما/كورسر:** أي "إصلاح" لملف من قائمة تلوّث daily-walking (16:08) يجب أن يتضمّن تحديثاً صريحاً لثلاثية (title+og:image+Article.headline+FAQPage.mainEntity) معاً، لا الاكتفاء بإصلاح جزء واحد وترك الباقي.
