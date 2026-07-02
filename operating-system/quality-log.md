@@ -577,3 +577,8 @@
 
 **القرار النهائي:** ✅ **أول اعتمادين LIVE من الدفعة الـ33 منذ بدء التجميد:** `blog/body-fat-vs-weight-guide-en.html` و`blog/daily-islamic-habits-guide-en.html` — كلاهما اجتاز الثلاثية الكاملة (نص+صورة+بنية) بفحص مستقل. **الإجراء المطلوب من هيما/كورسر:** إزالة `noindex,nofollow` من هذين الملفين فقط (الشرط الثلاثي مكتمل: `amer_gate.py` PASS + سايدبار سليم + og:image صحيح موجود) ثم دفعهما LIVE. **باقي الـ31 ملفاً تبقى noindex بلا تغيير.** git: محاولة push best-effort واحدة آخر الدورة، لا إعادة محاولة إن فشلت.
 - `real-estate/three-generation-table-family-meals.html`: ادّعاء سلطة بلا رابط مجاور (2): ليست الفائدة جسدية فقط. أشارت إرشادات منظمة الصحة العالمية إلى أن النشاط البدني يقلّل أعرا | توصي منظمة الصحة العالمية بـ150 إلى 300 دقيقة نشاط معتدل أسبوعياً، أي نحو نصف ساعة مشي معظ · فقرات لاتينية في صفحة عربية=4
+
+## 2026-07-02 13:16 UTC — 🤖 بوابة CI الآلية رفضت 2 ملف عند push
+تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
+- `blog/zakat-investment-portfolios-en.html`: كليشيهات AI: in conclusion · نِسَب=16 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (1): The answer requires understanding both the foundational principles of Zakat and how contem
+- `blog/zakat-investment-portfolios.html`: فقرات لاتينية في صفحة عربية=1
