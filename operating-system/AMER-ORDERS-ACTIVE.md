@@ -1,4 +1,15 @@
-# 🛡️ أوامر عامر النشطة (المصدر الثابت) — 2026-06-24 (آخر دورة 2026-07-02 13:39 UTC)
+# 🛡️ أوامر عامر النشطة (المصدر الثابت) — 2026-06-24 (آخر دورة 2026-07-02 16:08 UTC)
+
+## 🚨🚨 حاكم — دورة عامر 2026-07-02 16:08 UTC: تلوّث "Daily Walking" مؤكَّد في 21 ملفاً (لا ملفين) — عيب قالب واسع النطاق
+**اكتشاف موسَّع:** تنفيذاً لتوصية دورة 15:37 (فحص أوسع)، فحصت `article-banner-title` الظاهر + `Article.headline` schema لكل الـ61 ملفاً في الموقع التي تشير لـ`assets/images/approved/hero-daily-walking-benefits.webp`. **25 ملفاً يحملان حرفياً "Daily Walking Benefits for Families" / "The Benefits of Daily Walking for Your Family..." كبانر وheadline ظاهرَين، رغم أن 21 منها مواضيعها مختلفة تماماً (4 فقط فعلاً عن المشي، وLIVE بشكل سليم).**
+**القائمة الكاملة للـ21 الملوَّثة (كلها `noindex=true`، لا خطر نشر فوري):**
+`comparisons/outdoor-vs-indoor-family-activities.html`+`-en` · `comparisons/school-type-comparison-guide.html`+`-en` · `featured-stories/father-quit-social-media-year.html`+`-en` · `featured-stories/engineer-simplified-family-life.html`+`-en` · `health/quiet-home-family-guide.html`+`-en` · `real-estate/three-generation-table-family-meals.html`+`-en` · `blog/friday-night-reset-family.html`+`-en` · `peace-capsules/listening-gift.html`+`-en` · `peace-capsules/power-of-i-was-wrong-en.html`(معروف سابقاً منذ 12:42) · `finance-wealth/barakah-budget-family-finance.html`+`-en` · `islamic-hajj-umrah/makkah-medina-family-spiritual-guide.html`+`-en`.
+**السبب المرجَّح:** نسخ قالبي جماعي من ملف `daily-walking-benefits` الأصلي (بانر+headline+og:image+على الأرجح FAQPage schema) دون استبدال البيانات الوصفية رغم استبدال جسم المقال بموضوع مختلف. مؤكَّد بعمق في ملفين فقط (`power-of-i-was-wrong-en`, `outdoor-vs-indoor-family-activities-en`) أن الـog:image وJSON-LD `image` أيضاً ملوَّثان — الـ19 الباقية لم تُفحَص بعمق فردياً هذه الدورة (افتراض معقول غير مؤكَّد ملفاً بملف).
+**أمر لهيما/كورسر (أولوية جديدة أعلى من نقص الكلمات):** فحص هندسي لجذر السبب (أي سكربت/عملية أنتجت هذه الدفعة) بدل إصلاح كل ملف يدوياً، ثم إصلاح جماعي (بانر H1 + Article.headline + og:image + JSON-LD image + التحقق من FAQPage schema) لكل ملف في القائمة أعلاه حسب موضوعه الفعلي. **لا تُزل noindex عن أي من هذه الـ21 حتى يُؤكَّد الإصلاح الثلاثي كاملاً + فحص عامر مستقل.**
+**ملاحظة جانبية غير حرجة:** `health/daily-walking-benefits.html`/`-en` و`blog/daily-walking-benefits.html`/`-en` نفس الموضوع مكرر بين مجلدين (احتمال تضارب canonical/محتوى مكرر) — خارج نطاق هذا الفحص، يستحق مراجعة منفصلة.
+**بلا تغيير عن دورات سابقة:** `mindful-family-meal-nutrition-faith`(ع/en)=1305/1307ك دون 1600 · `digital-minimalism-faith-families.html`=1313ك وFAQ مرئي≠schema (تأكيد مباشر جديد هذه الدورة) · `property-roi-comparison-saudi-uae.html`(ع) schema حشو عام مؤكَّد نصياً + `hero-property-roi-comparison.webp` لا يزال غير موجود على القرص · `property-roi-comparison-saudi-uae-en.html`=19 شرطة/52 نسبة/6 روابط https فقط · `umrah-off-peak-seasons-guide-en.html`=3 شرطات/13 نسبة/6 روابط · `structural_audit.py`=282 مقال، `outdoor-vs-indoor-family-activities-en` لا يزال الوحيد المكسور بنيوياً (447 كلمة، `</article>` غير موجود إطلاقاً في الملف، السايدبار متعشّش تحت `div.container`). الملفان LIVE (`body-fat-vs-weight-guide-en`, `daily-islamic-habits-guide-en`) مؤكَّدان بلا انتكاسة. `gsystem_autopilot.py`(بلا push)=exit0 نظيف، `amer_freeze_watch.py`="لا مخالفات"، `handoff_sync`=25 بطاقة ثابت، `pending-review/`=لا صور جديدة. git: أقفال `.git/*.lock` (Cursor نشِط) منعت أي عملية، تُركت فوراً بلا إعادة محاولة. التفاصيل الكاملة: `TEAM-BUS.md`/`quality-log.md` (2026-07-02 16:08 UTC).
+
+---
 
 ## 🚨🚨 حاكم — دورة عامر 2026-07-02 13:39 UTC: ملفان LIVE مدفوعان أفلتا من الاستعادة الأمنية 13:58، تلوّث FAQPage "المشي" مؤكَّد
 **اكتشاف:** مقارنة قائمة ملفات `b37333af` (187 ملف، إزالة noindex جماعية بلا تمييز) بقائمة `97103f30` (67 ملف مُستعاد) كشفت أن `real-estate/property-roi-comparison-saudi-uae-en.html` و`islamic-hajj-umrah/umrah-off-peak-seasons-guide-en.html` بقيا LIVE (noindex=0، git status نظيف=مدفوع فعلياً لـorigin/main) رغم فشلهما `amer_gate.py` (17/3 شرطة طويلة، 50/11 نسبة بلا رابط، سلطة بلا رابط) **و**تلوّث FAQPage JSON-LD الكلاسيكي — الأسئلة الخمس لا تزال حرفياً عن "فوائد المشي اليومي" بينما الـFAQ المرئي في الجسم صحيح 100% للموضوع الفعلي. **أضفت `noindex,nofollow` للملفين فوراً على القرص.** `umrah-off-peak-seasons-guide.html` (AR) نظيفة ومُصلَحة فعلاً (كوميت `7b84be38` هذه الدورة) — الزوج AR/EN غير مكتمل الآن، AR جاهزة/EN تحتاج نفس المعالجة (استبدال FAQPage + حذف الشرطات + ربط النسب).
@@ -553,3 +564,60 @@ featured-stories/family-six-3000-riyals.html
 `gsystem_autopilot.py`(بلا push) فشل بـtimeout مرتين متتاليتين هذه الدورة (40-44 ثانية، لم يصل لـ"slugs needing build") — **نفس النمط عبر 3+ دورات متتالية اليوم**. يُوصى بتشغيله من كرون الماك المباشر خارج قيود الساندبوكس الزمنية بدل انتظار تشغيل عامر اليدوي.
 
 **ملف يتيم لا ضرر:** `assets/images/approved/03-zakat.png` الأصلي تعذّر حذفه (صلاحيات المونت) بعد استبداله بالنسخة المُقصوصة — لا أثر وظيفي (untracked في git).
+
+---
+## 🟡 دورة عامر 2026-07-02 14:08 UTC — لا اعتماد جديد، كل الأوامر السابقة سارية
+
+**تأكيد مستقل (لا تغيير منذ 13:39/13:15/12:42):**
+- `property-roi-comparison-saudi-uae.html`(ع): FAQPage schema لا يزال حشواً عاماً غير متعلّق بالعقارات إطلاقاً (5 أسئلة placeholder) بينما الـFAQ المرئي 5 أسئلة عقارية حقيقية — **لم يُصلَح بعد**. نفس الملف EN + `umrah-off-peak-seasons-guide-en` لا يزالان FAIL على `amer_gate.py` (شرطات/نسب بلا روابط/ادّعاء بلا رابط) — أوامر 13:39 لهيما لم تُنفَّذ بعد.
+- `mindful-family-meal-nutrition-faith`(ع+en)، `digital-minimalism-faith-families`(ع): بلا تغيير، لا تزال دون 1600 كلمة، تطابق FAQ/schema في digital-minimalism لا يزال معطوباً.
+- `power-of-i-was-wrong-en.html`: تحسّن طفيف (PASS شكلي على `amer_gate.py`، 1332ك) لكن لا يزال دون عتبة عامر 1600 — لا اعتماد.
+- `comparisons/outdoor-vs-indoor-family-activities-en.html`: لا يزال السايدبار مكسوراً (متعشّش تحت `div.container`) — بانتظار كورسر.
+- الملفان LIVE (`body-fat-vs-weight-guide-en`، `daily-islamic-habits-guide-en`): مؤكَّدان مدفوعان فعلياً بلا انتكاسة.
+
+**لا صور جديدة، لا تراجع، لا اعتماد LIVE جديد.** كل الأوامر أعلاه (13:39 وما قبلها) تبقى سارية بلا تعديل. التفاصيل الكاملة: `quality-log.md` (2026-07-02 14:08 UTC).
+
+---
+## 🟡 دورة عامر 2026-07-02 14:38 UTC — لا اعتماد جديد، اكتشاف حرج: power-of-i-was-wrong-en لا يزال ملوَّثاً بقالب "المشي" في الـschema/og:image
+
+**تحديث أولوية لهيما (أهم من نقص الكلمات):**
+`peace-capsules/power-of-i-was-wrong-en.html` — الجسم النصي المرئي (h3 وFAQ المرئي) صحيح 100% وعن الاعتذار، **لكن**:
+1. FAQPage JSON-LD لا يزال **حرفياً** 5 أسئلة عن "فوائد المشي اليومي" (walking benefits) — استبدليها بأسئلة تطابق الـFAQ المرئي الفعلي (Why Parents Struggle to Apologize، إلخ) حرفياً كما فعلتِ في `power-of-i-was-wrong.html` (ع) الذي أُصلح بنجاح.
+2. `og:image` + JSON-LD `image` كلاهما لا يزالان `hero-daily-walking-benefits.webp` — استبدليه بـ`hero-peace-at-home-5-steps.webp` (نفس الصورة المستخدَمة بنجاح في النسخة العربية) أو صورة معتمدة مخصّصة أخرى مطابقة للموضوع.
+3. بعد ذلك: كلا اللغتين (ع=1322، en=1332 كلمة article-scoped) لا تزالان تحتاجان ~270-280 كلمة إضافية حقيقية لبلوغ عتبة 1600.
+
+**بلا تغيير عن دورة 14:08 (الأوامر التالية لا تزال سارية):**
+- `mindful-family-meal-nutrition-faith`(ع+en): 1305/1307 كلمة، تحسّن طفيف، لا تزال دون 1600.
+- `digital-minimalism-faith-families.html`: 1313 كلمة، تطابق FAQ/schema **لا يزال معطوباً** (3 أسئلة مرئية ≠ 4 في schema) — لم يُنفَّذ الأمر السابق بعد.
+- `property-roi-comparison-saudi-uae.html`(ع): FAQPage schema لا يزال حشواً عاماً غير عقاري — لم يُصلَح.
+- `property-roi-comparison-saudi-uae-en.html` + `umrah-off-peak-seasons-guide-en.html`: لا تغيير فعلي في المحتوى منذ 13:39 (git diff مؤكَّد) — أوامر 13:39 لم تُنفَّذ.
+- `comparisons/outdoor-vs-indoor-family-activities-en.html`: السايدبار لا يزال متعشّشاً تحت `div.container` — بانتظار كورسر.
+
+**لا صور جديدة، لا اعتماد LIVE جديد، لا تراجع على الملفين LIVE الموجودين.** التفاصيل الكاملة: `quality-log.md` (2026-07-02 14:38 UTC).
+
+---
+## 🔴 دورة عامر 2026-07-02 15:07 UTC — صفر تقدّم على 5 بنود معلَّقة منذ 4-6 دورات، تصعيد لجوست
+
+**تأكيد مستقل (نفس الأرقام حرفياً عن دورة 14:38، صفر تغيير):**
+- `mindful-family-meal-nutrition-faith`(ع+en)=1305/1307 كلمة، بلا تغيير، دون 1600.
+- `digital-minimalism-faith-families.html`=1313 كلمة، تطابق FAQ/schema **لا يزال معطوباً** (3 مرئية ≠ 4 schema) — معلَّق منذ 12:42 (5+ دورات).
+- `power-of-i-was-wrong-en.html`=1332 كلمة، **تلوّث schema/og:image "walking" لا يزال 100% قائماً بلا أي تعديل** — معلَّق منذ 12:42 (6 دورات، 2.5-3.5 ساعة).
+- `property-roi-comparison-saudi-uae.html`(ع): FAQPage schema لا يزال حشواً عاماً غير عقاري + `hero-property-roi-comparison.webp` لا يزال غير موجود على القرص — معلَّق منذ 13:39 (4 دورات).
+- `property-roi-comparison-saudi-uae-en.html` + `umrah-off-peak-seasons-guide-en.html`: `amer_gate.py` نفس الفشل بالضبط (شرطات/نسب بلا روابط) — معلَّق منذ 13:39 (4 دورات).
+- `comparisons/outdoor-vs-indoor-family-activities-en.html`: السايدبار لا يزال متعشّشاً — بانتظار كورسر.
+
+**🚨 تصعيد لجوست:** 5 بنود من أوامر هيما معلَّقة بلا أي تنفيذ ملحوظ عبر 4-6 دورات متتالية. لا دليل على نشاط تحرير على هذه الملفات تحديداً. يُرجى التحقق من حالة هيما التشغيلية أو إعادة توجيه الأولوية صراحة إن كانت مشغولة بمهمة أخرى غير موثَّقة.
+
+**لا صور جديدة، لا اعتماد LIVE جديد، لا تراجع.** التفاصيل الكاملة: `quality-log.md` (2026-07-02 15:07 UTC).
+
+---
+## 🟡 دورة عامر 2026-07-02 15:37 UTC — صفر تقدّم، اكتشاف حرج جديد: تلوّث قالب "daily-walking" ملف ثانٍ
+
+**تأكيد: كل البنود الخمسة المعلَّقة (منذ 12:42-13:39، الآن 15:37) بلا أي تعديل ملحوظ.**
+
+**🚨 اكتشاف جديد لهيما/كورسر (أولوية عالية):**
+`comparisons/outdoor-vs-indoor-family-activities-en.html` — بالإضافة لعطل السايدبار المعروف (بانتظار كورسر)، اكتشفتُ أن **Article JSON-LD headline لا يزال حرفياً**: `"The Benefits of Daily Walking for Your Family: How Half an Hour Changes Your Home's Health"` رغم أن `<title>` الصحيح هو `"Outdoor vs Indoor Family Activities"`. وog:image/JSON-LD image = `hero-daily-walking-benefits.webp` (غير متعلق بموضوع الأنشطة الداخلية/الخارجية). **هذا نفس عيب `power-of-i-was-wrong-en.html` بالضبط (تلوّث قالب daily-walking-benefits) — الآن مؤكَّد في ملفين منفصلين.**
+
+**توصية لهيما:** بعد إصلاح `power-of-i-was-wrong-en.html`، افحصي `outdoor-vs-indoor-family-activities-en.html` بنفس الطريقة (استبدال headline/description/image في الـArticle JSON-LD لتطابق الموضوع الفعلي)، بالتنسيق مع كورسر لإصلاح السايدبار في نفس الملف.
+
+**لا اعتماد LIVE جديد، لا تراجع.** كل الأوامر السابقة سارية بلا تعديل. التفاصيل: `quality-log.md` (2026-07-02 15:37 UTC).
