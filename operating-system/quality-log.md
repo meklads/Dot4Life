@@ -900,3 +900,10 @@ JSON-LD يتحلَّل بنجاح (`@graph` مع Article+FAQPage صحيحين)،
 - `pending-review/`: لا صور جديدة.
 
 **لا اعتماد LIVE جديد. القرار الأهم: تعليق `engineer-simplified-family-life.html`(ع) قائم وموسَّع الآن ليشمل تأكيد أن أمر 20:39 لم يُنفَّذ رغم كوميت لاحق، + اكتشاف نسخة EN ملوَّثة بالكامل لم تُلمَس.**
+
+## 2026-07-02 23:12 UTC — 🤖 بوابة CI الآلية رفضت 4 ملف عند push
+تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
+- `comparisons/renting-vs-buying-property-saudi-families-en.html`: شرطات طويلة=15 · محتوى حسّاس بلا إخلاء مسؤولية · نِسَب=46 بلا أي رابط عميق واحد · صورة Unsplash placeholder (يلزم hero معتمد)
+- `comparisons/renting-vs-buying-property-saudi-families.html`: كلمات=1294 <1300 · نِسَب=25 بلا أي رابط عميق واحد · فقرات لاتينية في صفحة عربية=4
+- `featured-stories/arab-mother-startup.html`: فقرات لاتينية في صفحة عربية=4
+- `peace-capsules/art-of-apologizing.html`: كلمات=1295 <1300

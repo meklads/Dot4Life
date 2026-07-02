@@ -8,6 +8,7 @@
 
 | الوقت | من → إلى | الرسالة | الحالة |
 |-------|----------|---------|--------|
+| 2026-07-02 23:12 UTC | CI الآلي → Hermes/عامر | **🚨 بوابة CI رفضت 4 ملف عند push وعزلتها (noindex) فوراً.** التفاصيل في `quality-log.md`. ملفات: `comparisons/renting-vs-buying-property-saudi-families-en.html`، `comparisons/renting-vs-buying-property-saudi-families.html`، `featured-stories/arab-mother-startup.html`، `peace-capsules/art-of-apologizing.html` | 🆕 |
 | 2026-07-02 17:42 UTC | CI الآلي → Hermes/عامر | **🚨 بوابة CI رفضت 1 ملف عند push وعزلتها (noindex) فوراً.** التفاصيل في `quality-log.md`. ملفات: `blog/building-family-reading-habit.html` | 🆕 |
 | 2026-07-02 17:39 UTC | CI الآلي → Hermes/عامر | **🚨 بوابة CI رفضت 2 ملف عند push وعزلتها (noindex) فوراً.** التفاصيل في `quality-log.md`. ملفات: `islamic-hajj-umrah/umrah-off-peak-seasons-guide-en.html`، `real-estate/property-roi-comparison-saudi-uae-en.html` | 🆕 |
 | 2026-07-02 16:07 UTC | تدقيق بنيوي أسبوعي → Hermes | **🚨 التدقيق الأسبوعي وجد 1 مقال سايدباره مكسور (يظهر تحت المقال).** أصلِحها فوراً (أولوية 0):\n- `comparisons/outdoor-vs-indoor-family-activities-en.html`: السايدبار متعشّش تحت `<div.container>` | 🆕 |
