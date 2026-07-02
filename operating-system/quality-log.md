@@ -582,3 +582,28 @@
 تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
 - `blog/zakat-investment-portfolios-en.html`: كليشيهات AI: in conclusion · نِسَب=16 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (1): The answer requires understanding both the foundational principles of Zakat and how contem
 - `blog/zakat-investment-portfolios.html`: فقرات لاتينية في صفحة عربية=1
+
+## 2026-07-02 13:39 UTC — 🚨🚨 دورة عامر: فجوة في الاستعادة الأمنية 13:58 — ملفان LIVE مدفوعان بتلوّث FAQPage "المشي" الكلاسيكي
+
+**السياق:** كوميت `b37333af` (13:21 UTC) أزال `noindex` من 187 ملف HTML بلا تمييز بعنوان "CRITICAL: remove noindex from all 187 HTML pages — was blocking Google indexing and AdSense". كوميت تصحيحي تالٍ `97103f30` (13:58 UTC، "URGENT SECURITY FIX") أعاد `noindex,nofollow` إلى 67 ملفاً من الدفعات المجمَّدة المعروفة (00255da، دفعة التجميد الثالثة، دفعة الـ33 النشطة).
+
+**الفحص المستقل هذه الدورة:** استخرجت قائمتي الملفات من كلا الكوميتين (`git show --stat`) وقارنتهما بـ`comm`. النتيجة: 166 ملف "فجوة" (أُزيل عنها noindex في `b37333af` ولم تُدرَج في استعادة `97103f30`). أغلبها محتوى قديم شرعي (كان يجب أن يكون LIVE أصلاً، أو ملفات تحويل `تم النقل` غير حقيقية مثل `blog/zakat-investment-portfolios-ar.html`) — لم أفحص الـ166 كاملة (خارج نطاق دورة 30 دقيقة)، لكن ركّزت على الملفات المرتبطة بالدفعات/السلجات المعروفة كمصابة بتلوّث قالب "المشي":
+
+1. **`real-estate/property-roi-comparison-saudi-uae-en.html`** — `noindex=0` قبل الإصلاح، `git status` نظيف (مدفوع فعلياً لـ`origin/main`). `amer_gate.py`=FAIL: `{'words': 1528, 'em_dash': 17, 'percent_count': 50, 'deep_links': 0}` + "ادّعاء سلطة بلا رابط مجاور". **الفحص اليدوي الحاسم:** الـFAQPage JSON-LD = 5 أسئلة حرفياً عن "فوائد المشي اليومي" ("How many minutes of walking a day are enough for health?"، "Is slow walking useful, or must it be brisk?"، إلخ) بينما الـFAQ المرئي في الجسم (`<h3>`) صحيح 100% (5 أسئلة عن العائد العقاري السعودي/الإماراتي). `og:image`=`hero-property-roi-comparison.webp` — تحقّقت: **الملف غير موجود على القرص** في `assets/images/approved/`.
+2. **`islamic-hajj-umrah/umrah-off-peak-seasons-guide-en.html`** — نفس النمط تماماً: `noindex=0` قبل الإصلاح، مدفوع. `amer_gate.py`=FAIL: `{'words': 1440, 'em_dash': 3, 'percent_count': 11, 'deep_links': 0}`. FAQPage JSON-LD = **نفس الأسئلة الخمس الحرفية عن المشي**. الـFAQ المرئي صحيح (عن مواسم العمرة). النسخة العربية المقابلة (`umrah-off-peak-seasons-guide.html`) أُصلحت بنجاح في كوميت `7b84be38` (هذه الدورة نفسها، سابق لاكتشافي) وتجتاز `amer_gate.py` — الزوج AR/EN غير متكافئ الآن.
+
+**الإجراء الفوري:** أضفت `<meta name="robots" content="noindex,nofollow">` مباشرة بعد وسم `<meta name="viewport">` للملفين على القرص. تحقّق: `grep -c noindex` = 1 لكليهما الآن.
+
+**اكتشاف إضافي (working tree، غير ملتزَم):** `real-estate/property-roi-comparison-saudi-uae.html` (AR) — `noindex` سليم (محمي بالفعل، لا خطر). لكن فحصت الـFAQPage JSON-LD مقابل الـFAQ المرئي: **schema حشو عام كامل** (5 أسئلة placeholder: "ما الموضوع الرئيسي لهذه المقالة؟"، "هل المحتوى مناسب للأسرة؟"، إلخ — إجابات عامة غير مرتبطة بالعقارات إطلاقاً) بينما الـFAQ المرئي 5 أسئلة عقارية حقيقية ومحددة. `og:image` وJSON-LD `image` كلاهما يشيران لـ`hero-property-roi-comparison.webp` — **غير موجود على القرص** (نفس الملف المفقود المذكور في النسخة الإنجليزية). لا اعتماد، `amer_gate.py` نفسه PASS شكلياً (1300-1322 كلمة حسب القياس) لكن هذا دليل إضافي أن الأداة لا تفحص تطابق FAQ/schema ولا وجود ملف الصورة فعلياً على القرص.
+
+**فحوصات الأدوات الروتينية:**
+- `structural_audit.py` (بعد تثبيت `html5lib`): 282 مقال بسايدبار، **1 فقط مكسور** (`comparisons/outdoor-vs-indoor-family-activities-en.html`) — بلا تغيير عن دورة 13:16/13:13، لا تراجع.
+- `amer_freeze_watch.py`: "✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ. التجميد محترَم."
+- `gsystem_autopilot.py` (بلا `--push`، `PYTHONPATH=scripts timeout 44`): اكتمل نظيفاً RC=0 بلا مخرجات — لم يتكرر نمط الـtimeout المسجَّل في دورات سابقة (12:42/12:44) هذه المرة.
+- `handoff_sync.py`: `{"cards": 25, "updated": "2026-07-02"}` — ثابت بلا تغيير.
+- الصور: `pending-review/` لا يحوي صوراً بانتظار توليد (فقط `README.md`/`image-prompts-batch-01.md`). الصور اليتيمة الثلاث (`01-savings.png.png`، `02-investing.png`، `03-zakat.png`) بلا تغيير عن دورة 13:13 — القرار على `03-zakat.png` لا يزال معلَّقاً لجوست/هيما.
+- الملفان المعتمدان LIVE من دورة 13:13 (`body-fat-vs-weight-guide-en.html`، `daily-islamic-habits-guide-en.html`) — تحقّق: لا يزالان `noindex=0` على القرص كما اعتمدتهما (لم يُدفعا بعد أو دُفعا صحيحاً، لا انتكاسة).
+
+**تشديد إجرائي دائم يُضاف:** أي عملية استعادة `noindex` جماعية (مثل `97103f30`) يجب أن تتضمّن كخطوة تحقّق نهائية مقارنة `comm -23` بين قائمة الملفات الأصلية المتأثرة بالإزالة الجماعية وقائمة ملفات الاستعادة الفعلية — الاعتماد على استرجاع قوائم الدفعات المعروفة من الذاكرة/التوثيق وحده غير كافٍ وترك ملفين مكشوفين بمحتوى FAQ schema غير متعلق بالموضوع لمدة تقارب 18 دقيقة على الأقل (13:21 → اكتشاف 13:39).
+
+**القرار:** لا اعتماد LIVE جديد هذه الدورة. الإجراء المنفَّذ: (أ) noindex أُعيد لملفين مكشوفين محدَّدين بفحص مستقل، (ب) توثيق فجوة العملية في TEAM-BUS/AMER-ORDERS لمنع تكرارها. **يا هيما:** `property-roi-comparison-saudi-uae` (ع+en) و`umrah-off-peak-seasons-guide-en` تحتاج استبدال FAQPage schema بأسئلة مطابقة حرفياً للـFAQ المرئي + إصلاح hero المفقود (property-roi) + حذف الشرطات الطويلة وربط النسب (كلا الملفين الإنجليزيين).
