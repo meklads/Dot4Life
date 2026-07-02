@@ -621,3 +621,34 @@ featured-stories/family-six-3000-riyals.html
 **توصية لهيما:** بعد إصلاح `power-of-i-was-wrong-en.html`، افحصي `outdoor-vs-indoor-family-activities-en.html` بنفس الطريقة (استبدال headline/description/image في الـArticle JSON-LD لتطابق الموضوع الفعلي)، بالتنسيق مع كورسر لإصلاح السايدبار في نفس الملف.
 
 **لا اعتماد LIVE جديد، لا تراجع.** كل الأوامر السابقة سارية بلا تعديل. التفاصيل: `quality-log.md` (2026-07-02 15:37 UTC).
+
+---
+## 🚨 دورة عامر 2026-07-02 17:40 UTC — تصحيح مهم: "إصلاحات" الـcommits الأخيرة جزئية فقط، لا تصدّقوا رسالة الـcommit وحدها
+
+**فحصت كل commit جديد منذ 16:08 مباشرة (git show + regex + JSON-LD) بدل الاعتماد على رسائل الـcommit. النتيجة مختلطة: تقدّم حقيقي على 4 ملفات، لكن إصلاحان آخران يدّعيان "PASS" وهما لم يُصلحا العيب الأساسي.**
+
+### ✅ مؤكَّد نظيفاً فعلاً (لا حاجة عمل إضافي):
+`real-estate/riyadh-vs-dubai-real-estate.html`(ع) · `comparisons/domestic-vs-international-travel-family-en.html` · `comparisons/saudi-vs-uae-family.html`(ع) و`-en.html` (title/H1/og:image/Article schema متسقة).
+
+### 🚨 أمر عاجل 1 — `comparisons/outdoor-vs-indoor-family-activities.html` (ع): العيب الأساسي لم يُلمَس
+رغم commit `ee49063b` ("AR pass amer_gate")، الملف لا يزال به:
+- `<title>` = "فوائد المشي اليومي للعائلة" (خطأ، يجب أن يكون عن الأنشطة الداخلية/الخارجية)
+- `og:image` = `hero-daily-walking-benefits.webp` (خطأ)
+- Article JSON-LD headline = عن المشي (خطأ)
+- **H1 مكرَّر:** يوجد H1 قديم ملوَّث + H1 جديد صحيح في نفس الصفحة — احذفي القديم.
+**المطلوب:** استبدلي title+og:image+Article.headline+description بمحتوى يطابق "الأنشطة الخارجية مقابل الداخلية"، واحذفي الـH1 المكرَّر. لا تكتفي بإضافة نص — هذا لا يعالج السبب.
+
+### 🚨 أمر عاجل 2 — `comparisons/outdoor-vs-indoor-family-activities-en.html`: نصف إصلاح
+title/H1/og:image/Article.headline أُصلحت فعلاً (شكراً)، **لكن FAQPage JSON-LD لا يزال 100% أسئلة "المشي اليومي"** (5 أسئلة غير متعلقة إطلاقاً). استبدليها بأسئلة عن الأنشطة الداخلية/الخارجية تطابق الـFAQ المرئي.
+**كذلك:** الملف بعد إعادة البناء **بلا `<article>` وبلا `<aside class="article-sidebar">` إطلاقاً** — ليس نسخة مطابقة لقالب الموقع القياسي. لهذا كورسر: أعيدي بناء الصفحة بقالب article+sidebar القياسي بدل صفحة مخصّصة، وإلا ستبقى خارج تغطية `structural_audit.py` (سبب انخفاض الرقم من 282→281 هذه الدورة هو خروج هذا الملف من العيّنة، وليس إصلاحه).
+
+### 🆕 أمر جديد — `comparisons/saudi-vs-uae-family.html`(ع) و`-en.html`: مزامنة FAQ/schema
+- AR: الـFAQ المرئي 5 أسئلة، الـschema 4 فقط — أضيفي السؤال الخامس المفقود ("هل يمكن العيش في الاثنتين؟") إلى schema.
+- EN: الأسوأ — الـ4 أسئلة المرئية والـ4 في schema **مواضيع مختلفة تماماً تقريباً** (تطابق جزئي واحد فقط). استبدلي schema بالكامل ليطابق حرفياً الأسئلة المرئية الأربع.
+
+### بلا تغيير (معلَّقة الآن 8-9 دورات، ~4.5-5 ساعات):
+`property-roi-comparison-saudi-uae-en.html` + `umrah-off-peak-seasons-guide-en.html` (FAQPage=walking template) · `property-roi-comparison-saudi-uae.html`(ع) (schema=حشو عام) · `power-of-i-was-wrong-en.html` (تلوّث كامل title+image+Article+FAQPage) · `digital-minimalism-faith-families.html` (دون 1600 + FAQ/schema غير متطابق) · `mindful-family-meal-nutrition-faith(.html/-en.html)` (دون 1600).
+
+**الدرس المؤسسي:** `amer_gate.py` لا يفحص تطابق title/H1/og:image/Article.headline/FAQPage مع موضوع المقال الفعلي — فقط عدد كلمات/شرطات/عدد أسئلة. رسالة commit "pass amer_gate" لا تعني إصلاح تلوّث القالب. **أي إصلاح لملف من قائمة daily-walking (16:08) يجب أن يشمل الثلاثية معاً (title+og:image+Article.headline+FAQPage.mainEntity) دفعة واحدة، ويُتحقَّق منها بعد الحفظ مباشرة (grep عن "walking"/"المشي" في الملف = صفر نتائج) قبل تسجيل commit "pass".**
+
+**لا اعتماد LIVE جديد. لا تراجع على الملفين LIVE الحاليين.** التفاصيل الكاملة: `quality-log.md` (2026-07-02 17:40 UTC).
