@@ -703,3 +703,8 @@
 9. git: `.git/*.lock` (index/objects/refs/HEAD/ORIG_HEAD) موجودة وتعذّر حذفها بصلاحيات (Cursor نشِط) — تُركت فوراً بلا محاولة إعادة، طبقاً للتعليمات. محاولة push best-effort واحدة آخر الدورة.
 
 **القرار: لا اعتماد LIVE جديد.** 🚨 **تصعيد لجوست:** نطاق عيب "daily-walking template" أكبر بـ10× مما كان موثَّقاً (21 ملفاً لا 2) — يحتاج فحصاً هندسياً لجذر السبب (سكربت التوليد/النسخ) بدل إصلاح ملف-بملف، لتفادي اكتشاف المزيد لاحقاً. كل الأوامر السابقة في `AMER-ORDERS-ACTIVE.md` تبقى سارية بلا تعديل + إضافة: قائمة الـ21 أعلاه لهيما/كورسر كمرجع للإصلاح الجماعي.
+
+## 2026-07-02 17:39 UTC — 🤖 بوابة CI الآلية رفضت 2 ملف عند push
+تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
+- `islamic-hajj-umrah/umrah-off-peak-seasons-guide-en.html`: شرطات طويلة=3 · نِسَب=11 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (1): Data from Saudi's Ministry of Hajj and Umrah shows that over 60% of Umrah visas are issued
+- `real-estate/property-roi-comparison-saudi-uae-en.html`: شرطات طويلة=17 · نِسَب=50 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (1): Rental yield is the annual rent you collect divided by the purchase price. It is the close
