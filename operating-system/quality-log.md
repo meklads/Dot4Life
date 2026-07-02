@@ -708,3 +708,7 @@
 تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
 - `islamic-hajj-umrah/umrah-off-peak-seasons-guide-en.html`: شرطات طويلة=3 · نِسَب=11 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (1): Data from Saudi's Ministry of Hajj and Umrah shows that over 60% of Umrah visas are issued
 - `real-estate/property-roi-comparison-saudi-uae-en.html`: شرطات طويلة=17 · نِسَب=50 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (1): Rental yield is the annual rent you collect divided by the purchase price. It is the close
+
+## 2026-07-02 17:42 UTC — 🤖 بوابة CI الآلية رفضت 1 ملف عند push
+تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
+- `blog/building-family-reading-habit.html`: فقرات لاتينية في صفحة عربية=3
