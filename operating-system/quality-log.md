@@ -1447,3 +1447,132 @@ Q: Is walking suitable for older adults?
 ## 2026-07-08 18:30 UTC — 🤖 بوابة CI الآلية رفضت 1 ملف عند push
 تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
 - `blog/body-fat-vs-weight-guide-ar.html`: كلمات=11 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema
+
+## 2026-07-08 18:51 UTC — 🤖 بوابة CI الآلية رفضت 105 ملف عند push
+تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
+- `blog/bmi-middle-eastern-adults-en.html`: Article schema مفقود · كليشيهات AI: in conclusion · نِسَب=1 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (1): More dangerous for Gulf Arabs: Research shows that Arab and Saudi populations tend to accu
+- `blog/building-family-reading-habit-en.html`: شرطات طويلة=31 · محتوى حسّاس بلا إخلاء مسؤولية · ادّعاء سلطة بلا رابط مجاور (1): The case for reading has never been stronger, and the threats to it have never been more a
+- `blog/children-education-savings-guide.html`: ادّعاء سلطة بلا رابط مجاور (2): الادخار لتعليم الأطفال أحد أهم الأهداف المالية للأسرة. في السعودية، متوسط تكلفة التعليم ال | استراتيجيات ادخار ذكية: افتح حساب توفير تعليمي لكل طفل عند ولادته بمبلغ 500-1,000 ريال شهر
+- `blog/choosing-right-school-child-gulf.html`: ادّعاء سلطة بلا رابط مجاور (1): فهم واستيعاب خيارات المناهج الدراسية المتنوعة المتاحة هو الخطوة الأولى والأهم والأساسية في
+- `blog/digital-minimalism-modern-families-en.html`: شرطات طويلة=33 · محتوى حسّاس بلا إخلاء مسؤولية · نِسَب=3 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (2): These numbers carry real consequences. A 2024 study published in the Journal of Gulf Medic | The American Academy of Pediatrics recommends no more than one hour of screen time per day · صورة Unsplash placeholder (يلزم hero معتمد)
+- `blog/digital-minimalism-modern-families.html`: كلمات=1262 <1300 · شرطات طويلة=13 · محتوى حسّاس بلا إخلاء مسؤولية · نِسَب=3 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (1): توصي الأكاديمية الأمريكية لطب الأطفال بما لا يزيد عن ساعة شاشة يومياً للأطفال من عمر 2 إلى · صورة Unsplash placeholder (يلزم hero معتمد)
+- `blog/expat-vs-national-finance.html`: محتوى حسّاس بلا إخلاء مسؤولية
+- `blog/friday-night-reset-family-en.html`: كلمات=151 <1300 · شرطات طويلة=2 · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية
+- `blog/friday-night-reset-family.html`: كلمات=106 <1300 · شرطات طويلة=2 · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية
+- `blog/gcc-family-budget-2025-en.html`: محتوى حسّاس بلا إخلاء مسؤولية · نِسَب=46 بلا أي رابط عميق واحد
+- `blog/hajj-umrah-guide-2025-en.html`: كليشيهات AI: in conclusion · محتوى حسّاس بلا إخلاء مسؤولية · نِسَب=1 بلا أي رابط عميق واحد
+- `blog/house-affordability-single-income-guide-en.html`: كليشيهات AI: in conclusion
+- `blog/house-affordability-single-income-guide.html`: محتوى حسّاس بلا إخلاء مسؤولية · ادّعاء سلطة بلا رابط مجاور (1): شراء منزل بدخل واحد يتطلب تخطيطاً مالياً دقيقاً ووعياً بالتزامات التمويل العقاري. في السعو
+- `blog/hydration-guide-en.html`: نِسَب=4 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (2): The human body loses water through sweat, breath, urine, and stool. In the GCC's extreme h | One glass of water 30 minutes before eating improves digestion and helps regulate appetite
+- `blog/makkah-hotels-guide-en.html`: كليشيهات AI: in conclusion · محتوى حسّاس بلا إخلاء مسؤولية · نِسَب=1 بلا أي رابط عميق واحد
+- `blog/managing-healthcare-costs-families.html`: ادّعاء سلطة بلا رابط مجاور (2): الفرق بين زيارة الطوارئ وزيارة العيادة قد يصل إلى 10 أضعاف في التكلفة، ومع ذلك كثير من الع | استراتيجيات خفض تكاليف الرعاية الصحية تشمل: الاستفادة من برامج الفحص الدوري المجاني التي ت
+- `blog/mindful-living-gulf-heat-en.html`: كليشيهات AI: in conclusion · ادّعاء سلطة بلا رابط مجاور (3): The effect of high heat on the human body is not limited to sweating and dehydration; it e | The human body needs to drop its core temperature by one to two degrees Celsius to initiat | Heat is not only a physical challenge but directly affects mental and emotional health. A 
+- `blog/natural-birth-vs-c-section-comparison.html`: ادّعاء سلطة بلا رابط مجاور (1): الولادة الطبيعية مقابل القيصرية: متى يُنصح بكل خيار؟
+ 
+ 2026-06-08
+ 8 دقائق قراءة
+ 
+ 
+ 
+
+
+
+- `blog/notification-cost-productivity-en.html`: ادّعاء سلطة بلا رابط مجاور (2): The Cost of Notifications on Productivity2026-06-088 min read
+
+
+
+Salman's Story: 70 Notifi | Figures based on studies from University of California Irvine and Harvard University on di
+- `blog/notification-cost-productivity.html`: ادّعاء سلطة بلا رابط مجاور (3): تكلفة الإشعارات على الإنتاجية2026-06-08٨ دقائق
+
+
+
+قصة سلمان: 70 إشعاراً في الساعة
+"كنت أظن | الأرقام مبنية على دراسات من جامعة كاليفورنيا إرفاين وجامعة هارفارد حول تأثير المشتتات الرق | الإشعارات المستمرة من التطبيقات ومواقع التواصل الاجتماعي تشتت الانتباه وتقلل الإنتاجية بشك
+- `blog/peaceful-road-trip-kids-guide.html`: محتوى حسّاس بلا إخلاء مسؤولية
+- `blog/preparing-for-pregnancy-guide.html`: ادّعاء سلطة بلا رابط مجاور (1): التحضير للحمل خطوة مهمة لضمان صحة الأم والطفل وتقليل مخاطر المضاعفات. الفترة المثالية للتح
+- `blog/ramadan-meal-planning.html`: ادّعاء سلطة بلا رابط مجاور (1): لتطبيق تخطيط الوجبات بفعالية: أعد قائمة بالأطباق المفضلة للأسرة لكل يوم من أيام رمضان (30 
+- `blog/ramadan-preparation-guide-families.html`: محتوى حسّاس بلا إخلاء مسؤولية · ادّعاء سلطة بلا رابط مجاور (1): في المملكة العربية السعودية ودول الخليج، ساعات العمل الرسمية تقل خلال رمضان (عادة ٦ ساعات)
+- `blog/rental-property-vs-reits-comparison-en.html`: نِسَب=18 بلا أي رابط عميق واحد
+- `blog/saudi-mortgage-guide-2025-en.html`: محتوى حسّاس بلا إخلاء مسؤولية · نِسَب=27 بلا أي رابط عميق واحد
+- `blog/saudi-mortgage-guide-2025.html`: FAQPage مكرّرة (2 كتلة) · محتوى حسّاس بلا إخلاء مسؤولية · ادّعاء سلطة بلا رابط مجاور (1): يوجد في المملكة العربية السعودية عدة أنواع من الرهن العقاري التي تقدمها البنوك والمؤسسات ا
+- `blog/stress-management-working-parents.html`: ادّعاء سلطة بلا رابط مجاور (3): المفتاح هو وضع حدود واضحة بين وقت العمل ووقت الأسرة. حدد أوقاتاً محددة للعمل وأوقاتاً مخصص | الصراحة والوضوح هما المفتاح. اشرح لأطفالك بطريقة تناسب أعمارهم أن لديك عملاً يجب إنجازه، و | استراتيجيات إدارة التوتر للآباء العاملين تشمل: تحديد أولويات واضحة بين العمل والأسرة، تخصي
+- `blog/visceral-fat-gulf-en.html`: ادّعاء سلطة بلا رابط مجاور (3): 2. Strength-train twice a week. Building muscle does more than burn calories. It improves  | 4. Protect your sleep. Sleeping fewer than six hours per night raises cortisol, the stress | The link between visceral fat and non-alcoholic fatty liver disease (NAFLD) is extremely s
+- `blog/walking-vs-running-comparison-en.html`: FAQPage schema مفقود · FAQ=0 في schema
+- `blog/walking-vs-running-comparison.html`: FAQPage schema مفقود · FAQ=0 في schema · ادّعاء سلطة بلا رابط مجاور (2): المشي والجري هما أكثر أنواع التمارين الهوائية شيوعاً في العالم، وكلاهما يحسن صحة القلب وال | لبدء روتين الجري أو المشي بأمان اتبع هذه النصائح: (1) ابدأ بالمشي السريع لمدة أسبوعين لتهي
+- `comparisons/domestic-vs-international-travel-family.html`: نِسَب=19 بلا أي رابط عميق واحد
+- `comparisons/government-vs-private-school-gulf-en.html`: نِسَب=3 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (1): More importantly, not every private school offers better education. A study from the Natio
+- `comparisons/government-vs-private-school-gulf.html`: نِسَب=3 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (1): الأهم من ذلك، ليست كل مدرسة خاصة تقدم تعليماً أفضل. وجدت دراسة من المركز الوطني للتعليم (2 · فقرات لاتينية في صفحة عربية=1
+- `comparisons/lease-vs-buy-car.html`: فقرات لاتينية في صفحة عربية=2
+- `comparisons/renting-vs-buying-property-saudi-families-en.html`: شرطات طويلة=15 · محتوى حسّاس بلا إخلاء مسؤولية · نِسَب=46 بلا أي رابط عميق واحد · صورة Unsplash placeholder (يلزم hero معتمد)
+- `comparisons/renting-vs-buying-property-saudi-families.html`: كلمات=1294 <1300 · نِسَب=25 بلا أي رابط عميق واحد · فقرات لاتينية في صفحة عربية=1
+- `comparisons/saving-vs-investing-families-en.html`: شرطات طويلة=23 · نِسَب=49 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (1): A 2023 survey by KPMG in the UAE found that over 40% of expatriate and Emirati families ha
+- `comparisons/saving-vs-investing-families.html`: شرطات طويلة=23 · محتوى حسّاس بلا إخلاء مسؤولية · نِسَب=40 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (2): استثمر عندما: هدفك 5 سنوات أو أكثر (جامعة الأطفال، التقاعد، إرث) — بنيت صندوق الطوارئ بالف | مرحلة حياتك تغير بشكل كبير مقدار المخاطرة التي يجب أن تتحملها. زوجان في العشرينيات بدون أط
+- `comparisons/saving-vs-investing-gulf-family.html`: ادّعاء سلطة بلا رابط مجاور (1): أفضل طريقة للاستفادة هي قراءة الدليل كاملاً بتركيز وانتباه وتدبر وتفكر وتأمل وتمعن وتبصر و · فقرات لاتينية في صفحة عربية=1
+- `comparisons/school-type-comparison-guide-en.html`: كلمات=174 <1300 · شرطات طويلة=3 · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية
+- `comparisons/school-type-comparison-guide.html`: كلمات=775 <1300 · شرطات طويلة=33 · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية · ادّعاء سلطة بلا رابط مجاور (1): أهم اكتشاف: دراسة من جامعة هارفارد (٢٠٢١) تابعت ٤,٥٠٠ طالب من خلفيات تعليمية مختلفة ووجدت 
+- `featured-stories/emirati-grandmother-cooking-traditions-en.html`: JSON-LD غير صالح: Expecting ',' delimiter: line 4 column 15 (char 64) · Article schema مفقود · نِسَب=4 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (1): This tradition is not just a fun activity. Studies show that cooking with children improve
+- `featured-stories/emirati-grandmother-cooking-traditions.html`: كليشيهات AI: علاوة على ذلك · ادّعاء سلطة بلا رابط مجاور (1): هناك أيضاً فوائد أكاديمية غير متوقعة. الطبخ يعلم الأطفال الرياضيات بشكل تطبيقي: قياس المكو
+- `featured-stories/expat-built-life-saudi-arabia-en.html`: شرطات طويلة=31 · محتوى حسّاس بلا إخلاء مسؤولية · نِسَب=4 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (1): Research supports what Ahmed and Fatima observed. A 2021 study published in the Journal of · صورة Unsplash placeholder (يلزم hero معتمد)
+- `featured-stories/expat-built-life-saudi-arabia.html`: شرطات طويلة=32 · محتوى حسّاس بلا إخلاء مسؤولية · نِسَب=2 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (3): بدأ أحمد حضور صلاة العشاء في المسجد المحلي، وهو مبنى متواضع على بعد خمس دقائق سيراً من مجم | النظام التعليمي السعودي، خاصة في المدارس الدولية، يقدم برنامجاً غنياً للأنشطة اللامنهجية.  | لكن القرار ليس مالياً فقط. "سألنا أنفسنا: أين تتاح لأطفالنا فرص أفضل؟" يتأمل أحمد. "في مصر · صورة Unsplash placeholder (يلزم hero معتمد) · فقرات لاتينية في صفحة عربية=1
+- `featured-stories/father-quit-social-media-year-en.html`: كلمات=262 <1300 · شرطات طويلة=5 · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية
+- `featured-stories/father-quit-social-media-year.html`: كلمات=164 <1300 · شرطات طويلة=4 · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية
+- `featured-stories/featured-story-arab-father-teens-en.html`: JSON-LD غير صالح: Expecting ',' delimiter: line 4 column 15 (char 64) · Article schema مفقود
+- `featured-stories/gulf-father-money-lessons-en.html`: كليشيهات AI: in conclusion
+- `featured-stories/gulf-father-money-lessons.html`: نِسَب=1 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (1): هناك العديد من الدروس العملية والتطبيقية التي يمكن للأب الخليجي أن يعلمها لأبنائه وبناته ف · فقرات لاتينية في صفحة عربية=1
+- `featured-stories/mother-homeschooled-five-children-en.html`: شرطات طويلة=24 · FAQPage schema مفقود · FAQ=0 في schema
+- `featured-stories/mother-homeschooled-five-children.html`: شرطات طويلة=24 · محتوى حسّاس بلا إخلاء مسؤولية · ادّعاء سلطة بلا رابط مجاور (3): الضغط المالي. زوج أم خالد كان يعمل مهندساً. راتبه كان يكفي لاحتياجاتهم، لكن شراء مواد المن | خالد، الآن ٢٢ عاماً، في سنته الأخيرة من الهندسة في جامعة سعودية مرموقة. تخرّج من التعليم ا | مريم، ٢٠ عاماً، تدرس الدراسات الإسلامية في الجامعة وتخطط لتصبح معلمة — أماً تعلّم في المنز
+- `featured-stories/saudi-father-carpentry-workshop-en.html`: كليشيهات AI: in conclusion · نِسَب=5 بلا أي رابط عميق واحد
+- `featured-stories/saudi-father-carpentry-workshop.html`: نِسَب=1 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (1): توسعت مشاريع العائلة تدريجياً مع الوقت. بعد الطاولة الجانبية الصغيرة، انتقلوا بثقة إلى مشا
+- `finance-wealth/barakah-budget-family-finance-en.html`: كلمات=309 <1300 · شرطات طويلة=2 · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية
+- `finance-wealth/barakah-budget-family-finance.html`: كلمات=225 <1300 · شرطات طويلة=2 · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية
+- `finance-wealth/emergency-fund-guide-gulf-families-en.html`: شرطات طويلة=16 · محتوى حسّاس بلا إخلاء مسؤولية · نِسَب=9 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (2): Money is emotional, especially for a family's primary breadwinner. The weight of knowing t | A 2023 study published in the Journal of Financial Therapy found that individuals with at  · صورة Unsplash placeholder (يلزم hero معتمد)
+- `finance-wealth/emergency-fund-guide-gulf-families.html`: شرطات طويلة=11 · محتوى حسّاس بلا إخلاء مسؤولية · نِسَب=5 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (1): دراسة نشرت عام 2023 في Journal of Financial Therapy وجدت أن الأفراد الذين لديهم مدخرات طوا · صورة Unsplash placeholder (يلزم hero معتمد) · فقرات لاتينية في صفحة عربية=1
+- `finance-wealth/family-budget-plan.html`: ادّعاء سلطة بلا رابط مجاور (2): أدوات وتطبيقات إعداد الميزانية المتاحة في الخليج: تطبيق ميزانيتي من البنك المركزي السعودي  | إعداد خطة ميزانية أسرية ناجحة وفعالة ومنضبطة ومنظمة ومنسقة ومرتبة ومرتّبة ومتناسقة ومتناغم · فقرات لاتينية في صفحة عربية=1
+- `finance-wealth/halal-investment-gulf-families-en.html`: شرطات طويلة=25 · نِسَب=8 بلا أي رابط عميق واحد
+- `finance-wealth/halal-investment-gulf-families.html`: شرطات طويلة=22 · محتوى حسّاس بلا إخلاء مسؤولية · نِسَب=8 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (1): الخليج هو أحد أكبر أسواق الصكوك في العالم. برنامج الصكوك السيادية السعودي، الذي يديره المر · فقرات لاتينية في صفحة عربية=1
+- `fitness/ramadan-calorie-calculator.html`: محتوى حسّاس بلا إخلاء مسؤولية · نِسَب=21 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (3): السحور المثالي يجب أن يحتوي على: كربوهيدرات معقدة مثل الشوفان أو خبز القمح الكامل (تمد بال | نعم، يمكن إنقاص الوزن في رمضان بطريقة صحية بشرط اتباع نظام غذائي متوازن. للحصول على أفضل ا | نعم، يؤثر النوم بشكل مباشر على عملية الأيض وحرق السعرات الحرارية. أظهرت دراسة من المركز ال
+- `guides/bmi-guide-arabs-gcc.html`: شرطات طويلة=2 · اقتباس سلطة داخلي مختلَق محتمل · ادّعاء سلطة بلا رابط مجاور (6): مؤشر كتلة الجسم (BMI) هو أحد أكثر أدوات الفحص الصحي استخداماً على مستوى العالم، لكن معايير | مهم: تُظهر دراسات عديدة، بما فيها تحليل شامل عام 2020 في مجلة Obesity Reviews, أن العرب وس | تستخدم حاسبة BMI لدينا معادلات منظمة الصحة العالمية القياسية مع نطاقات تفسير خاصة بالعرب. 
+- `guides/indoor-plants-saudi-arabia.html`: نِسَب=13 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (1): تستند توصيات العناية بالنباتات إلى علم البستنة المراجَع من الأقران ومكيّفة لمناخ الخليج. ب
+- `guides/ramadan-nutrition-guide.html`: اقتباس سلطة داخلي مختلَق محتمل · نِسَب=21 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (2): وجبة السحور المثالية للعائلة الخليجية: السحور الصحي يبدأ بشرب 2-3 أكواب ماء + تمرة واحدة،  | تستند التوصيات الغذائية إلى إرشادات منظمة الصحة العالمية وإرشادات التحالف الدولي للسكري ور
+- `guides/saudi-real-estate-investing.html`: محتوى حسّاس بلا إخلاء مسؤولية · نِسَب=49 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (1): المنطقة الشرقية من المملكة العربية السعودية تمثل سوقاً عقارياً مهماً ومتنامياً ومتطوراً وم
+- `guides/zakat-complete-guide.html`: كليشيهات AI: في عصرنا الحالي · نِسَب=9 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (1): في عصرنا الحالي، تتنوع مصادر الأموال التي تجب فيها الزكاة وتتعدد وتختلف وتتنوع وتتعدد وتخت
+- `health-pregnancy/preconception-checkups-en.html`: شرطات طويلة=2 · صورة Unsplash placeholder (يلزم hero معتمد)
+- `health-pregnancy/preconception-checkups.html`: ادّعاء سلطة بلا رابط مجاور (2): تختلف التكلفة بحسب الدولة والمركز ونوع التأمين الصحي، لذا يُفضّل السؤال في مركزكِ الصحي عن | نعم بنسبة 40-50%. تحليل السائل المنوي يقيس العدد (طبيعي 15 مليون/مل فأكثر)، الحركة (40% فأ · فقرات لاتينية في صفحة عربية=1
+- `health/bmi-calculator-women.html`: ادّعاء سلطة بلا رابط مجاور (1): تستخدم منظمة الصحة العالمية 4 فئات رئيسية للبالغين. الجدول التالي يلخصها:
+- `health/hydration-guide-hot-climates-families-en.html`: شرطات طويلة=18 · محتوى حسّاس بلا إخلاء مسؤولية · نِسَب=13 بلا أي رابط عميق واحد · صورة Unsplash placeholder (يلزم hero معتمد)
+- `health/hydration-guide-hot-climates-families.html`: شرطات طويلة=17 · محتوى حسّاس بلا إخلاء مسؤولية · نِسَب=13 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (1): الهيئة الأوروبية لسلامة الأغذية (EFSA) ومنظمة الصحة العالمية تقدم إرشادات واضحة لإجمالي كم · صورة Unsplash placeholder (يلزم hero معتمد) · فقرات لاتينية في صفحة عربية=1
+- `health/pregnancy-week-by-week-en.html`: كليشيهات AI: in conclusion
+- `health/pregnancy-week-by-week.html`: فقرات لاتينية في صفحة عربية=1
+- `health/quiet-home-family-guide-en.html`: كلمات=716 <1300 · شرطات طويلة=5 · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية · ادّعاء سلطة بلا رابط مجاور (2): A 2023 study from the University of California found that the average American household i | For parents, the cost is equally high. Chronic noise exposure elevates cortisol levels, di
+- `health/quiet-home-family-guide.html`: كلمات=844 <1300 · شرطات طويلة=16 · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية · ادّعاء سلطة بلا رابط مجاور (5): ثمن الضوضاء: دراسة من جامعة كاليفورنيا (٢٠٢٣) وجدت أن الأسرة العادية تتعرض لـ ٤٧ دقيقة من  | دراسة من Journal of Environmental Psychology (٢٠٢١) وجدت أن الآباء والأمهات في بيوت ذات ضو | للأطفال، التأثير أعمق. دراسة من كلية لندن الجامعية (٢٠٢٢) تابعت ١,٨٠٠ طفل على مدى ٣ سنوات 
+- `health/screen-time-eye-health-children-en.html`: شرطات طويلة=34 · ادّعاء سلطة بلا رابط مجاور (4): This guide gathers the latest evidence from the World Health Organization, the American Ac | The World Health Organization and the American Academy of Pediatrics have issued clear gui | Current evidence does not show that typical screen blue light causes permanent eye damage 
+- `health/screen-time-eye-health-children.html`: شرطات طويلة=34 · ادّعاء سلطة بلا رابط مجاور (4): This guide gathers the latest evidence from the World Health Organization, the American Ac | The World Health Organization and the American Academy of Pediatrics have issued clear gui | Current evidence does not show that typical screen blue light causes permanent eye damage  · فقرات لاتينية في صفحة عربية=47
+- `islamic-hajj-umrah/hajj-first-timers-guide-en.html`: شرطات طويلة=17 · صورة Unsplash placeholder (يلزم hero معتمد)
+- `islamic-hajj-umrah/makkah-medina-family-spiritual-guide-en.html`: كلمات=379 <1300 · شرطات طويلة=5 · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية
+- `islamic-hajj-umrah/makkah-medina-family-spiritual-guide.html`: كلمات=158 <1300 · شرطات طويلة=3 · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية · ادّعاء سلطة بلا رابط مجاور (1): بينما الحرم هو المركز الروحي، تقدم مكة مواقع أخرى ذات معنى: غار حراء حيث نزل الوحي، وجبل ا
+- `islamic-hajj-umrah/umrah-with-elderly-parents-en.html`: شرطات طويلة=15
+- `islamic-hajj-umrah/umrah-with-elderly-parents.html`: شرطات طويلة=15
+- `peace-capsules/calm-corner-small-space-en.html`: نِسَب=2 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (2): Educational psychology research shows that having a dedicated space for emotional regulati | A calm corner is a dedicated small space in your home designed for relaxation, mindfulness
+- `peace-capsules/calm-morning-routine-family-en.html`: كليشيهات AI: in conclusion
+- `peace-capsules/calm-morning-routine-family.html`: نِسَب=2 بلا أي رابط عميق واحد · فقرات لاتينية في صفحة عربية=1
+- `peace-capsules/evening-rituals-en.html`: ادّعاء سلطة بلا رابط مجاور (1): The hardest habit, but the most impactful. Blue light from phones tricks your brain into t
+- `peace-capsules/family-volunteering-summer-en.html`: محتوى حسّاس بلا إخلاء مسؤولية
+- `peace-capsules/family-volunteering-summer.html`: كليشيهات AI: في الختام · محتوى حسّاس بلا إخلاء مسؤولية · ادّعاء سلطة بلا رابط مجاور (3): تجهيز سلال الطعام يناسب الأطفال من ٥ إلى ١٢ سنة. ترتيب المكتبة يناسب المراهقين. زيارة كبار | الأطفال لا يتعلّمون القيم من الكلمات، بل من التجارب. عندما يشارك طفل في توزيع طعام على أسر | نصيحة: ابدأ بفرصة تطوعية واحدة لمدة ساعتين في الشهر، ثم زد تدريجياً. التطوع القصير المستدا · فقرات لاتينية في صفحة عربية=1
+- `peace-capsules/listening-gift-en.html`: كلمات=101 <1300 · شرطات طويلة=1 · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية
+- `peace-capsules/listening-gift.html`: كلمات=86 <1300 · شرطات طويلة=1 · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية
+- `peace-capsules/power-of-i-love-you-arab-families-en.html`: شرطات طويلة=23 · محتوى حسّاس بلا إخلاء مسؤولية
+- `peace-capsules/power-of-i-love-you-arab-families.html`: شرطات طويلة=22 · محتوى حسّاس بلا إخلاء مسؤولية
+- `peace-capsules/power-of-patience-marriage-en.html`: شرطات طويلة=38 · ادّعاء سلطة بلا رابط مجاور (2): Research from the Gottman Institute, which has studied thousands of couples over four deca | A 2018 study published in the Journal of Positive Psychology found that patience is positi · صورة Unsplash placeholder (يلزم hero معتمد)
+- `peace-capsules/power-of-patience-marriage.html`: شرطات طويلة=24 · محتوى حسّاس بلا إخلاء مسؤولية · ادّعاء سلطة بلا رابط مجاور (3): أبحاث معهد جوتمان، التي درست آلاف الأزواج على أربعة عقود، تحدد الصبر كأحد أهم مؤشرات الرضا | أبحاث معهد جوتمان متوافقة بشكل ملحوظ مع الحكمة الإسلامية. بعد دراسة أكثر من 3,000 زوج، حدد | دراسة عام 2018 في مجلة علم النفس الإيجابي وجدت أن الصبر مرتبط إيجابياً بارتفاع الرضا الزوج · صورة Unsplash placeholder (يلزم hero معتمد)
+- `peace-capsules/summer-camps-vs-home-en.html`: كليشيهات AI: in conclusion · محتوى حسّاس بلا إخلاء مسؤولية · نِسَب=1 بلا أي رابط عميق واحد
+- `real-estate/dubai-property-roi.html`: كلمات=174 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية
+- `real-estate/first-home-buyer-saudi-arabia-en.html`: شرطات طويلة=14 · محتوى حسّاس بلا إخلاء مسؤولية · نِسَب=39 بلا أي رابط عميق واحد
+- `real-estate/first-home-buyer-saudi-arabia.html`: شرطات طويلة=6 · محتوى حسّاس بلا إخلاء مسؤولية · نِسَب=29 بلا أي رابط عميق واحد · فقرات لاتينية في صفحة عربية=1
+- `real-estate/jeddah-mortgage-calculator.html`: JSON-LD غير صالح: Expecting value: line 1 column 1 (char 0) · فقرات لاتينية في صفحة عربية=1
+- `real-estate/rent-vs-buy-gulf-family.html`: فقرات لاتينية في صفحة عربية=1
+- `real-estate/riyadh-rental-yield.html`: JSON-LD غير صالح: Expecting value: line 1 column 1 (char 0) · فقرات لاتينية في صفحة عربية=1
+- `real-estate/three-generation-table-family-meals-en.html`: كلمات=342 <1300 · شرطات طويلة=3 · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية · ادّعاء سلطة بلا رابط مجاور (3): guides
+      The Three-Generation Table: How Shared Meals Are Saving Families
+      
+      | A 2022 study published in the Journal of Adolescent Health followed 15,000 teenagers and f | The most powerful form of family meal is the intergenerational one — where grandparents, p
+- `real-estate/three-generation-table-family-meals.html`: كلمات=155 <1300 · شرطات طويلة=1 · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية · ادّعاء سلطة بلا رابط مجاور (1): دراسة نشرت في Journal of Adolescent Health (٢٠٢٢) تابعت ١٥,٠٠٠ مراهق ووجدت أن الذين يتناول
