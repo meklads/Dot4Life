@@ -1437,3 +1437,6 @@ Q: Is walking suitable for older adults?
 ## 2026-07-08 13:53 UTC — Cursor موجة 3 T-04
 - عزل noindex ثم إصلاح 7 ملفات thin-live: pregnancy-nutrition (ع/en)، end-of-service (ع/en)، saving-for-education (ع/en)، visceral-fat-gulf.
 - كلها PASS amer_gate؛ بانتظار اعتماد عامر قبل LIVE.
+
+## 2026-07-08 14:34 UTC — Cursor موجة 4أ T-03
+- عزل 13 صفحة T-03 بـ noindex؛ إصلاح 7 ملفات لـ PASS مع الحفاظ على الهيدر/الفوتر الموحّدين.
