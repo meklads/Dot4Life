@@ -1443,3 +1443,7 @@ Q: Is walking suitable for older adults?
 
 ## 2026-07-08 14:37 UTC — Cursor موجة 4ب T-03
 - إكمال طابور T-03: الميزانية/الذهب/الأدلة — PASS/WARN فقط، noindex + كروم موحّد.
+
+## 2026-07-08 18:30 UTC — 🤖 بوابة CI الآلية رفضت 1 ملف عند push
+تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
+- `blog/body-fat-vs-weight-guide-ar.html`: كلمات=11 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema
