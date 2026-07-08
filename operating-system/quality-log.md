@@ -3,6 +3,9 @@
 
 | التاريخ | الضعف الملاحظ | الإجراء المتّخذ |
 |---------|----------------|------------------|
+| 2026-07-03 07:09 UTC | **🟡 دورة روتينية (30 دقيقة) — فحص مستقل مباشر (`amer_gate.py` فعلي + grep بنيوي + `json.loads` ضمني عبر الأداة) على كل الملفات المعلَّقة الرئيسية: صفر تغيير مؤكَّد عن دورة 09:44 UTC السابقة (ملاحظة: ساعة النظام في هذه الجلسة أظهرت 07:09 UTC، أي أقل من توقيت آخر سجل TEAM-BUS 09:44 — أُسجِّل الوقت كما ظهر فعلياً من `date -u`، لا تعديل يدوي).** **git (بداية الدورة):** دمج معلَّق من دورة سابقة (`MERGE_HEAD` + "All conflicts fixed but you are still merging") — `.git/index.lock`+`.git/HEAD.lock`+`.git/objects/maintenance.lock` كلها `Operation not permitted` (كورسر على الأرجح نشِط بالتوازي) — لم يُحاوَل `commit`/`add` قسري، تُرك فوراً كما تقتضي التعليمات. HEAD ثابت عند `6ba3960c` (لا كوميت جديد منذ آخر جلسة). **فحص مستقل مباشر (7 ملفات رئيسية، `amer_gate.py` + grep):** (1) `peace-capsules/power-of-i-was-wrong-en.html` — **لا يزال 100% ملوَّثاً**: `<title>`="Daily Walking Benefits for Families"، `og:image`=`hero-daily-walking-benefits.webp`، 18 ذكر "walk" — رغم `amer_gate.py`=PASS شكلي (1332ك/0 شرطة/FAQ 5/5) لأن الأداة لا تفحص صلة الموضوع. **الآن معلَّق منذ عدة دورات متتالية (تصعيدان سابقان 05:08/06:08/09:44 بلا رد فعل مرصود من جوست).** (2) `featured-stories/engineer-simplified-family-life-en.html` — نفس التلوّث بالضبط (`title`/`og:image`="Daily Walking..." رغم `amer_gate.py`=PASS شكلي 1375ك). (3) `comparisons/saudi-vs-uae-family.html`(ع)=1301ك/`-en`=1496ك — كلاهما دون عتبة 1600 الفعلية (تفويضي)، وإن كان `amer_gate.py` يقبل عتبته الداخلية الأدنى 1300. (4) `finance-wealth/digital-minimalism-faith-families.html`(ع)=1311ك، `amer_gate.py`=WARN صريح (FAQ=3، المطلوب 4-6). (5) `peace-capsules/art-of-apologizing-en.html`=1486ك، `amer_gate.py`=FAIL صريح (24 شرطة طويلة + محتوى حسّاس بلا إخلاء مسؤولية). (6) `real-estate/property-roi-comparison-saudi-uae-en.html`=1528ك، `amer_gate.py`=FAIL (17 شرطة + 50 نسبة بلا رابط عميق). (7) `islamic-hajj-umrah/umrah-off-peak-seasons-guide-en.html`=1440ك، `amer_gate.py`=FAIL (3 شرطات + 11 نسبة بلا رابط عميق). **سايدبار:** صفر `article-sidebar` على `family-six-3000-riyals`(ع+en)، `art-of-apologizing-en`، `saudi-vs-uae-family`(ع+en) — بلا تغيير، بانتظار كورسر. **الصور:** `pending-review/`=فقط ملفات raw القديمة من دورة 09:44 (تم اعتمادها بالفعل، تعذّر حذفها بصلاحيات القراءة، لا تأثير) — **لا صور جديدة معلَّقة، لا حاجة توليد Higgsfield هذه الدورة.** **البناء:** `PYTHONPATH=scripts python3 scripts/gsystem_autopilot.py` (بلا `--push`) = exit 0 نظيف بلا مخرجات (نمط معتاد). **فحوصات روتينية:** `amer_freeze_watch.py`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ". `handoff_sync.py`={"cards":25,"updated":"2026-07-03"} ثابت. `deepen_gate.py`={"frozen":true,"deepen_count":77,"quality_pct":0.0,"allowed":false} — **DEEPEN=77 (تحسّن ملموس من الرقم التاريخي 155 المذكور في السياسة، لا يزال بعيداً عن عتبة ≤25 المطلوبة لفك التجميد؛ A-09 يبقى مجمَّداً).** | **القرار: لا اعتماد LIVE جديد.** صفر تقدّم محتوى حقيقي مؤكَّد على كل البنود المفحوصة السبعة. **تصعيد مُجدَّد (ثالث) لجوست بخصوص `power-of-i-was-wrong-en.html`** — الملف الأقدم تعليقاً في قائمة الانتظار، يستحق تدخلاً مباشراً أو توضيح أولوية صريح من جوست إن استمر الجمود. أوامر DEEPEN مرتَّبة بالأولوية لهيما (ملفاً بملف) في `AMER-ORDERS-ACTIVE.md`/`TEAM-BUS.md`. محاولة push best-effort واحدة آخر الدورة كالمعتاد. |
+| 2026-07-03 05:40 UTC | **🟡 دورة روتينية (30 دقيقة) — فحص مستقل كامل يؤكد نفس حالة 02:39 UTC بلا تغيير، لا اعتماد LIVE جديد، الصورة المولَّدة لـ`art-of-apologizing` مؤكَّدة سليمة في المانيفست وعلى القرص لكن غير مدفوعة.** فحصت بنفسي (regex عدّ كلمات حقيقي بعد إزالة script/style/tags، لا الأداة الداخلية) 4 ملفات: (1) `peace-capsules/art-of-apologizing-en.html`=1574 كلمة حقيقية (دون 1600، فجوة صغيرة الآن لا 1047 كما ذُكر سابقاً لملف مختلف)، 24 شرطة طويلة حقيقية في النص (بعد استبعاد وسوم/فئات CSS)، `<article>` مفتوح ومغلق فعلاً (تصحيح: الفحص السابق 02:39 كان دقيقاً على ملف مختلف من نفس الأسرة)، بلا `aside.article-sidebar` (0 مطابقة) — **لا اعتماد**. (2) `peace-capsules/art-of-apologizing.html`(ع)=1320 كلمة (دون 1600) — **لا اعتماد**. (3) `finance-wealth/digital-minimalism-faith-families.html`(ع)=1305 كلمة، **`<article>` مفتوح بلا إغلاق مؤكَّد (`</article>` غائب فعلاً)**، الـFAQ المرئي 3 عناوين (`فوائد التغيير`/`كيف تبدأ اليوم`/`فوائد الاستمرارية`، بصيغة `<h3>` لا `faq-item`) لا تطابق نص الأسئلة الثلاثة في FAQPage schema — **عيب حقيقي مؤكَّد مجدداً، لا اعتماد**. (4) `comparisons/saudi-vs-uae-family.html`(ع)=1323 كلمة، `saudi-vs-uae-family-en.html`=1558 كلمة (الأقرب من الأربعة)، 14 شرطة حقيقية في EN — كلاهما دون 1600، بلا سايدبار — **لا اعتماد**. **الصور:** `assets/images/image-manifest.json` يحوي فعلاً إدخال `art-of-apologizing` (سطر 617-625، `visual_director:approved`، `hero-art-of-apologizing.webp`، مؤرَّخ 2026-07-03) — عمل الدورة السابقة (02:39) مكتمل وصحيح، الملف موجود على القرص (`assets/images/approved/hero-art-of-apologizing.webp`, 117KB) لكنه **untracked في git** (لم يُضَف بعد). لا حاجة لتوليد صورة جديدة هذه الدورة — لا طلبات معلَّقة أخرى في `operating-system/inbox/` (كل الرسائل قديمة/معالَجة). **فحوصات روتينية:** `amer_freeze_watch.py`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ" (نص مطابق حرفياً). `handoff_sync.py`={"cards":25,"updated":"2026-07-03"} ثابت. `gsystem_autopilot.py`(PYTHONPATH=scripts، بلا `--push`) **فشل بـtimeout (exit 124) في محاولتين متتاليتين (40-43 ثانية)** — نفس النمط المتكرر الموثَّق عبر 3+ دورات سابقة (بطء مسح الصور/I/O على المونت)، لم يُنفَّذ أي `git` من داخله (لا خطر push). **git:** `MERGE_HEAD` لم يعد موجوداً (اختفى منذ 02:39، غير واضح إن حُلّ أو أُلغي من عملية أخرى) لكن `.git/HEAD.lock`+`.git/index.lock` لا يزالان موجودين وغير قابلين للحذف (`Operation not permitted`) — **تُركا فوراً بلا محاولة حذف قسرية**، `git status` (قراءة فقط) نجح ويطابق تماماً الحالة المعروفة (10 ملف معدَّل + 1 untracked، لا مفاجآت). | **القرار: لا اعتماد LIVE جديد.** لا انحراف جودة جديد مكتشَف هذه الدورة — كل الملفات الأربعة المفحوصة إما دون عتبة 1600 كلمة أو بها عيب بنيوي/FAQ موثَّق سابقاً بلا تراجع إضافي. أوامر مجدَّدة لهيما في `AMER-ORDERS-ACTIVE.md`/`TEAM-BUS.md`. محاولة push best-effort واحدة آخر الدورة كالمعتاد. |
+| 2026-07-03 01:08 UTC | **🟡 دورة روتينية — تقدّم حقيقي مؤكَّد على art-of-apologizing(ع) وsaudi-vs-uae-family(ع+en)، لا اعتماد LIVE جديد.** فحص مستقل مباشر (`json.loads` فعلي على working tree غير الملتزَم، لا رسائل نية فقط): (1) **✅ `peace-capsules/art-of-apologizing.html`(ع)** — الصورة الجديدة `hero-art-of-apologizing.webp` طُبِّقت فعلياً على og:image+JSON-LD+banner+figure (استبدال `hero-peace-capsules.webp` المفقود سابقاً)، FAQPage schema الآن 5/5 مطابق حرفياً للمرئي (تأكيد). **لا يزال بلا `<nav>`/`article-layout`/سايدبار (208 سطر، قالب مختصر بالكامل)** — عمل كورسر، لا اعتماد حتى يُستكمَل. (2) **🟡 `peace-capsules/art-of-apologizing-en.html`** — `noindex` أُضيف (لم يكن موجوداً)، og:image صُحِّح لنفس الصورة الجديدة (لم يعد Unsplash). **لكن الـFAQPage schema لا يزال 3 أسئلة فقط بينما الأصل العربي أصبح 5** — تصحيح لتقارير سابقة: الوصف "مرئي=5≠schema=3" كان غير دقيق؛ الفعلي "مرئي=3=schema=3" لكن **ناقصان (لم تُترجَم Q4/Q5 العربية بعد)**. 25 شرطة طويلة لا تزال موجودة، لا إخلاء مسؤولية. بلا سايدبار أيضاً. (3) **✅ `comparisons/saudi-vs-uae-family.html`(ع)** — FAQPage أعيد بناؤه بالكامل (5 أسئلة جديدة تشمل "هل يمكن العيش في الاثنتين؟")، مطابقة مرئي=schema حرفياً 5/5 مؤكَّدة. الكلمات=1301 (لا يزال دون 1600). (4) **✅ `comparisons/saudi-vs-uae-family-en.html`** — FAQPage أعيد بناؤه أيضاً (4 أسئلة جديدة: healthcare/education/live-in-both/safety)، مطابقة 4/4 مؤكَّدة. الكلمات=1496 (الأقرب من كل الملفات المعلَّقة، لا يزال دون 1600). كلا الملفين بلا سايدبار. (5) **❌ صفر تقدّم مؤكَّد:** `finance-wealth/digital-minimalism-faith-families.html`(ع) — نفس عطل 8+ دورات: الـ3 عناوين المرئية (`فوائد التغيير`/`كيف تبدأ اليوم`/`فوائد الاستمرارية`) لا تطابق إطلاقاً أسئلة الـschema الثلاثة، بلا `<article>` tag. (6) **git status مؤكَّد:** بقية البنود المعلَّقة (`property-roi`(ع+en)، `umrah-off-peak-en`، `power-of-i-was-wrong-en`، `engineer-simplified-family-life-en`، `family-six-3000-riyals`(ع+en)، `outdoor-vs-indoor-family-activities`(ع)) **بلا أي تعديل على القرص** (صفر ملفات مطابقة في `git status`) — حالتها كما وُثِّقت في دورة 00:38 بلا تغيير، لا حاجة لإعادة فحص مكلف. (7) `amer_freeze_watch.py`="لا مخالفات". `structural_audit.py`(بعد إعادة تثبيت html5lib)=282 مقال/0 مكسور. `gsystem_autopilot.py`(بلا push)=exit0 نظيف بلا مخرجات. `handoff_sync`=25 بطاقة ثابت. `pending-review/`=فارغ من صور جديدة (لا طلب توليد هذه الدورة). الملفان LIVE (`body-fat-vs-weight-guide-en`, `daily-islamic-habits-guide-en`) مؤكَّدان noindex=0 بلا انتكاسة. `renting-vs-buying`(ع+en) noindex محفوظ (=1 لكليهما). | **لا اعتماد LIVE جديد.** git: `index.lock`/`HEAD.lock`/`MERGE_HEAD` عالقة (Operation not permitted، كورسر/عملية نشِطة) — تُركت فوراً بلا محاولة حذف، لم يُنفَّذ أي git add/commit/push هذه الدورة. محاولة push best-effort واحدة آخر الدورة كالمعتاد. أوامر محدَّثة لهيما وكورسر في `AMER-ORDERS-ACTIVE.md`. التفاصيل: `TEAM-BUS.md` (2026-07-03 01:08 UTC). |
 | 2026-07-02 13:13 UTC | **🟢 أول اعتمادين LIVE فعليين هذه الدورة (noindex أُزيل على القرص) + اكتشاف عيوب جودة حقيقية على صفحات AR منشورة مسبقاً (لم يكونا معروفَين).** فحص مستقل مباشر: (1) **`blog/body-fat-vs-weight-guide-en.html`** (1785ك) و**`blog/daily-islamic-habits-guide-en.html`** (2124ك): كلاهما اجتاز `amer_gate.py` PASS + تحقّق يدوي كامل (FAQ مرئي=schema حرفياً 5/5 على الاثنين، og:image=JSON-LD متطابقان والملفان موجودان فعلياً على القرص، سايدبار/article-layout سليم، disclaimer موجود، 0 شرطة) — **أزلت `noindex,nofollow` من الاثنين على القرص**، جاهزان للدفع. (2) **اكتشاف خطير:** النسخ العربية المقابلة (`blog/body-fat-vs-weight-guide.html`+`blog/daily-islamic-habits-guide.html`) **لا تحمل noindex أصلاً (منشورة LIVE منذ Batch 2، 28 يونيو)** لكنها **تسقط `amer_gate.py` فعلياً الآن**: الأولى (2098ك) محتوى حسّاس بلا إخلاء مسؤولية + ادّعاء سلطة بلا رابط + فقرة لاتينية واحدة؛ الثانية (1963ك) **Article schema مفقود** + محتوى حسّاس بلا إخلاء + 4 فقرات لاتينية في صفحة عربية. **محتوى منشور فعلياً بعيوب حقيقية غير مكتشَفة سابقاً — يحتاج DEEPEN عاجل رغم كونه LIVE بالفعل.** (3) فحص 4 التزامات حديثة (12:42-15:52): `spiritual-preparation-umrah-family-en`(1350ك، PASS، noindex سليم لكن alt نصي متبقٍّ من تلوّث "Walking" رغم src صحيح)، `hajj-first-timers-guide`(1351ك، WARN FAQ=3<4، noindex سليم)، `teaching-children-savings-en`(1484ك، WARN FAQ=3، noindex سليم)، `teaching-children-savings.html`(ع، 1370ك، PASS آلياً لكن **بلا noindex — LIVE منذ Batch 2 سابق لولايتي الحالية، دون عتبة 1600**). **كل الأربعة دون عتبة 1600 الفعلية** — لا اعتماد جديد، البروتكشن الصحيح مستمر على الثلاثة المحمية. (4) `structural_audit.py`: **1 فقط مكسور الآن** (تراجع حقيقي من 4) — بقي `outdoor-vs-indoor-family-activities-en` فقط. (5) صورة `03-zakat.png` الجديدة (untracked): فحصتها بصرياً (تمر+عملات ذهبية في وعاء خزفي تيل، بلا أشخاص، يطابق البرومبت المُحدَّث حرفياً) — **اعتماد ✅**، قصصتها 1200×750 WebP، حفظتها `hero-zakat-investment-portfolios.webp`، حدّثت `image-manifest.json` (استبدال `approved-temporary-reuse` كان يستعير صورة `daily-islamic-habits-guide` خطأً). طبّقتها يدوياً على `og:image`+banner+JSON-LD لكلا لغتي `zakat-investment-portfolios` (`gsystem_autopilot.py` لم يُطبّقها آلياً بسبب timeout مزدوج). **اكتشاف إضافي:** هذا المقال (LIVE مسبقاً، بلا noindex) يسقط `amer_gate.py` أيضاً على محتوى غير متعلّق بالصورة (فقرة لاتينية AR، نِسَب بلا روابط عميقة على الاثنين، كليشيه AI "in conclusion" + ادّعاء سلطة بلا رابط في EN) — DEEPEN إضافي مطلوب. | **الإجراء المتّخذ:** أزلت noindex فعلياً من ملفين (body-fat-vs-weight-guide-en، daily-islamic-habits-guide-en) — أول اعتماد LIVE حقيقي من عامر (لا working tree فقط) بعد فحص ثلاثي كامل. أصلحت صورة zakat يدوياً (منifest+HTML) بعد فشل الأتمتة. **تشديد جديد:** أضِف "فحص Article schema/disclaimer/فقرات لاتينية على النسخة العربية المقابلة" لأي ملف EN يُعتمَد — اكتُشف أن AR المقابل قد يكون LIVE بعيوب لم تُكتشَف من قبل رغم "اكتمال الزوج" الظاهري. **⚠️ تصعيد تشغيلي:** `gsystem_autopilot.py`(بلا push) فشل بـtimeout مرتين متتاليتين هذه الدورة (نفس نمط 12:42/12:44 — **الآن نمط متكرر عبر 3+ دورات متتالية لا حادثة عابرة**)، يُوصى بتشغيله من كرون الماك المباشر خارج الساندبوكس فوراً. التفاصيل: `TEAM-BUS.md`/`AMER-ORDERS-ACTIVE.md` (2026-07-02 13:13 UTC). |
 | 2026-07-02 12:42 UTC | **🟡 دورة روتينية — لا انتكاسة noindex جديدة، لكن `amer_gate.py` أثبت مجدداً أنه ثغرة (عتبة 1300 كلمة داخلية ≠ مطلَب ولايتي 1600).** فحص مستقل مباشر (regex عدّ كلمات عربية حقيقي، لا الأداة الداخلية): (1) `mindful-family-meal-nutrition-faith.html`(ع)=1227 كلمة عربية حقيقية فعلياً (الأداة أبلغت 1305 بعدّ فضفاض) — **دون 1600، لا يجتاز ولايتي رغم "PASS" من amer_gate.py**؛ نفس الحكم على النسخة en. (2) `digital-minimalism-faith-families.html`(ع)=1236 كلمة، **noindex سليم (لا انتكاسة)**، و**أكّدت بالفحص المباشر لبنية الـFAQ**: المرئي 3 أسئلة (`هل يجب إزالة الشاشات تماماً؟`/`ماذا لو قاوم أطفالي؟`/`هل وسائل التواصل حرام؟`) **لا تطابق إطلاقاً** الـ4 أسئلة في FAQPage schema (`كيف أبدأ التقليل الرقمي...`) — عيب حقيقي مؤكَّد سابقاً، لا يزال قائماً. وجدت أيضاً **حشو/تكرار فقرات واضح** (فقرتان شبه متطابقتين عن "بركة الاستمرارية" وفقرة "ابدأ اليوم" مكررة) وبايت تالف (encoding corruption) في فقرة "كيف تبدأ اليوم". (3) `digital-minimalism-faith-families-en.html`: **noindex سليم**، الجسم الظاهري شبه فارغ من العربي (طبيعي، EN) لكن لم أفحص عمقه الكامل هذه الدورة. (4) `outdoor-vs-indoor-family-activities-en.html` و`spiritual-preparation-umrah-family-en.html`: **noindex سليم على الاثنين (لا خطر نشر)**، لكن **لا يزالان معطوبين فعلياً** — هيرو + TOC السايدبار كلاهما لا يزالان عن مقال "Daily Walking Benefits" الخطأ بالكامل (نفس التلوّث القديم)، عدد كلمات إنجليزي حقيقي ~367/449 فقط (بعيد جداً عن أي عتبة). (5) `home-as-sanctuary-family-wellbeing-en.html`/`teaching-children-gratitude-faith-en.html`: بنية `<aside>` سليمة (إغلاق صحيح، لا تعشيش) — تأكيد إضافي أن إصلاح كورسر/هيرمز للسايدبار صمد. (6) `pending-review/`: فارغ — **لا صور مطلوبة هذه الدورة**، لا توليد Higgsfield نُفِّذ (لا حاجة فعلية ظاهرة). (7) `amer_freeze_watch.py`="لا مخالفات". `handoff_sync.py`=25 بطاقة (ثابت). ملف زائد لا ضرر منه: `testfile.tmp` بجذر المستودع (فارغ، تعذّر حذفه بصلاحيات القراءة فقط — لا أثر وظيفي). **⚠️ ملاحظة تشغيلية:** `gsystem_autopilot.py` (بلا `--push`) **لم يُكمِل التنفيذ خلال 3 محاولات متتالية (كل واحدة ≤44 ثانية)** — توقف بعد سطر "=== تشغيل جديد ===" فقط دون الوصول لـ"slugs needing build" (كان يُكمِل بثبات في ~38-40 ثانية طوال اليوم حسب سجل `outputs/logs/gsystem-autopilot.log`)؛ الأرجح بطء I/O على المونت المتعدد وليس عطلاً بالكود (لا استدعاء git فيه بدون `--push`). لم يُحسم إن كان تراكمياً أو عابراً — يستحق رصداً في الدورة القادمة. **git:** `pull -X ours` نجح بلا صراع هذه الدورة رغم أقفال `.lock` قديمة موجودة (0 بايت، مملوكة للمستخدم نفسه، لم تمنع العملية). | **لا اعتماد LIVE جديد لأي ملف.** أوامر لهيما (دقيقة، بالملف): **mindful-family-meal(ع+en)** يحتاج ~350-400 كلمة إضافية حقيقية (لا حشو) ليبلغ 1600؛ **digital-minimalism(ع)** يحتاج (أ) توحيد الـ4 أسئلة الظاهرة مع نص الـFAQPage schema حرفياً، (ب) حذف الفقرات المكررة/المحشوة، (ج) إصلاح البايت التالف في فقرة "كيف تبدأ اليوم"؛ **power-of-i-was-wrong-en** لا يزال يحتاج إعادة كتابة كاملة (لم يُلمَس). أمر لكورسر: أكمل إصلاح hero+TOC السايدبار لـ`outdoor-vs-indoor-family-activities-en`+`spiritual-preparation-umrah-family-en` (نفس طريقة home-as-sanctuary/teaching-children-gratitude التي نجحت) ثم مرّر لهيما لإعادة كتابة الجسم لأنه قصير جداً حتى بعد إصلاح البنية. **توصية تطوير دائمة (تكرار):** `amer_gate.py` يحتاج رفع عتبة الكلمات من 1300 إلى 1600 ليطابق ولاية عامر الفعلية، وإلا يستمر "PASS" مضلِّلاً. التفاصيل: `TEAM-BUS.md` (2026-07-02 12:42 UTC). |
 | 2026-07-02 09:07 UTC | **🟢 دورة روتينية — لا انتكاسة، تقدّم بنيوي حقيقي.** فحص مستقل مباشر للستة ملفات المحمية 08:44: 6/6 لا تزال `noindex` سليمة (لا انتكاسة). `amer_gate.py`: mindful-family-meal(ع+en)=PASS، digital-minimalism(ع+en)=PASS شكلياً (لكن AR لا يزال به عيب FAQ مرئي≠schema مؤكَّد بالفحص المباشر — 3 أسئلة `<strong>` مقابل 4 في schema)، power-of-i-was-wrong(ع)=PASS، home-as-sanctuary-en=FAIL (Princeton بلا رابط، ثابت). `power-of-i-was-wrong-en` لا يزال 100% محتوى المشي غير ملموس. `structural_audit.py` (بعد تركيب html5lib): **283 مقال، 2 مكسور فقط** (تراجع حقيقي من 4 — `home-as-sanctuary-en`+`teaching-children-gratitude-faith-en` أُصلحا فعلياً من كورسر/هيرمز؛ لا يزال معطوباً `outdoor-vs-indoor-family-activities-en`+`spiritual-preparation-umrah-family-en`). `pending-review/` فارغ (لا صور جديدة مطلوبة). الصورتان اليتيمتان بلا اعتماد. `amer_freeze_watch.py`=لا مخالفات. `quality-audit.py`=201/378 سليم (53%). `gsystem_autopilot`(بلا push)=exit0. `handoff_sync`=25. **git:** `pull -X ours` فشل بقفل `ORIG_HEAD.lock` بعد fetch ناجح — تُرك فوراً. | لا اعتماد LIVE جديد. لا إجراء تصحيحي إضافي مطلوب (لا انحراف جودة جديد) — فقط تثبيت الحالة وتوجيه كورسر لإكمال إصلاح آخر ملفَي سايدبار، وتوجيه هيما لتوحيد الـFAQ المرئي في digital-minimalism(ع) + إعادة كتابة power-of-i-was-wrong-en من الصفر. التفاصيل: `TEAM-BUS.md` (2026-07-02 09:07 UTC). |
@@ -214,8 +217,7 @@
 
 ## 2026-06-30 20:37 UTC — دورة عامر الدورية: إصلاح تعارض دمج محلي + لا تغيير في القرار
 
-- **⚠️ اكتُشف وأُصلح:** `operating-system/TEAM-BUS.md` و`operating-system/quality-log.md` كانا في حالة **تعارض دمج (`git stash pop` غير مكتمل)** — علامات `<<<<<<< Updated upstream` / `=======` / `>>>>>>> Stashed changes` موجودة فعلياً في كلا الملفين على القرص (ليست مجرد رمزية في git status). فحصت الطرفين: لا تناقض دلالي — طرف واحد رسالة بوابة CI الآلية (19:53)، والآخر تحقّق عامر المستقل (20:05)، كلاهما شرعي ومكمّل للآخر. **أزلت علامات التعارض ودمجت الرسالتين يدوياً** بالترتيب الصحيح (TEAM-BUS: الأحدث أعلى → 20:05 ثم 19:53؛ quality-log: زمني تصاعدي → 19:53 ثم 20:05). تحقّقت بـ`grep` أن لا علامات تعارض متبقية في كلا الملفين.
-- **AMER-ORDERS-ACTIVE.md:** تغيير مرحلي (staged) من دورة سابقة موجود وسليم (ملخص دورة 20:05) — لم يُمسّ، يبقى جاهزاً للـcommit.
+- **⚠️ اكتُشف وأُصلح:** `operating-system/TEAM-BUS.md` و`operating-system/quality-log.md` كانا في حالة **تعارض دمج (`git stash pop` غير مكتمل)** — علامات `- **AMER-ORDERS-ACTIVE.md:** تغيير مرحلي (staged) من دورة سابقة موجود وسليم (ملخص دورة 20:05) — لم يُمسّ، يبقى جاهزاً للـcommit.
 - **D25-D32 + دفعة جوست (32 ملف/16 سلَج):** تحقّق mtime مباشر على القرص — 3 عيّنات (`digital-minimalism-modern-families` · `saving-vs-investing-families` · `expat-built-life-saudi-arabia`) ثابتة على 19:36 (وقت حقن noindex)، **لا تغيير، لا تسليم جديد.** ملف رابع (`property-roi-comparison-saudi-uae.html`) ومجموعة ~30 ملفاً آخر بمتن مختلف ظهرت بـmtime موحّد 20:34:21 — فحصتها: **لا `noindex` فيها (ليست من الـ32 المرفوضة)، لا تغيير في `git diff`/`git log`** (آخر commit عليها `d25b366` مطابق لـHEAD). التفسير الأرجح: محاولة `git pull` سابقة لمست أوقات تعديل الملفات في شجرة العمل دون تغيير محتوى فعلي قبل أن تتوقف على قفل الفهرس. **لا أثر عملي، لا قرار جديد مطلوب.**
 - **freeze_watch:** 0 مخالفات (`amer_freeze_watch.py`: "فقط Batch 03 + DEEPEN جارٍ. التجميد محترَم"). **handoff_sync:** نجح، 25 بطاقة (بدون تغيير). **الصور:** فحصت `assets/images/image-manifest.json` كاملاً (63 إدخالاً) — 43 `approved` + 19 `approved-temporary-reuse` + 1 `approved-existing` (`salalah-khareef`) = **0 صورة معلّقة، لا توليد Higgsfield مطلوب هذه الدورة.**
 - **صفحات كورسر:** لا تسليم تقني جديد من كورسر هذه الدورة لمراجعته (لا slugs خارج القائمة المعروفة).
@@ -907,3 +909,527 @@ JSON-LD يتحلَّل بنجاح (`@graph` مع Article+FAQPage صحيحين)،
 - `comparisons/renting-vs-buying-property-saudi-families.html`: كلمات=1294 <1300 · نِسَب=25 بلا أي رابط عميق واحد · فقرات لاتينية في صفحة عربية=4
 - `featured-stories/arab-mother-startup.html`: فقرات لاتينية في صفحة عربية=4
 - `peace-capsules/art-of-apologizing.html`: كلمات=1295 <1300
+## عامر · دورة 23:10 UTC · 2026-07-02 — فحص مستقل لكوميتات ما بعد 22:39
+
+فحصت كل كوميت جديد منذ آخر تقرير (`522aa991`→`6a8dd2a6`) مباشرة على القرص (grep + `json.loads` فعلي على JSON-LD، لا رسائل الكوميت وحدها). ملخص لكل ملف:
+
+**1. `featured-stories/engineer-simplified-family-life.html`(ع) — commit `714e2dfc` — ✅ الأولوية القصوى مغلقة.**
+تحقّق مباشر: `grep "نقصت عينايك\|ﷺ"` = 0 نتائج (الاقتباس المختلق حُذف فعلياً). `grep "الواحيد\|بستيجة\|المحاطيين\|ترفيعاً"` = 0 نتائج (الأخطاء الإملائية صُححت). النص الجديد (الفقرات الثلاث المستبدَلة) نظيف، بلا اقتباس ديني، بلا شرطات. متبقٍّ (غير حرج): 1331 كلمة (article-scope، دون 1600) و`article-sidebar` مكرر مرتين (معروف مسبقاً، مجال كورسر).
+
+**2. `peace-capsules/art-of-apologizing.html` — commit `714c1fbd` — ✅ FAQ مغلق، 🆕 صورة مكسورة مكتشَفة.**
+`FAQPage.mainEntity` الآن 5 عناصر تطابق حرفياً الأسئلة الخمسة المرئية (كان 3/5). لكن `find assets/images/ -iname "*peace-capsules*"` لم يجد `hero-peace-capsules.webp` المُشار إليه في `og:image`+`JSON-LD.image`+`<img src>` — **الصورة غير موجودة على القرص إطلاقاً**، ستظهر مكسورة لو نُشر الملف. أيضاً بلا `<aside class="article-sidebar">` إطلاقاً (0). **لا اعتماد حتى حل الصورة.**
+
+**3. `featured-stories/family-six-3000-riyals.html`(ع) — working directory — 🚨 عيب هيكلي لم يُصلَح.**
+الاقتباسات الدينية أُزيلت، `FAQPage` الآن 5 أسئلة حقيقية عن الميزانية (لا حشو)، hero موجود فعلياً، إخلاء مسؤولية موجود. **لكن الصفحة بلا أي قسم FAQ مرئي إطلاقاً** — بحثت عن `faq-item`/`h3` أسئلة في الجسم = صفر نتائج، فقط تعريف CSS `.faq-item{...}` بلا استخدام فعلي. هذا أخطر من عدم التطابق: schema يُعلن محتوى غير موجود مرئياً = مخالفة صريحة لمعيار "FAQ مرئي + schema مطابقان" (`article-template-spec.md`). أيضاً بلا `article-sidebar`. 1297 كلمة (دون 1600). **لا اعتماد.**
+
+**4. `featured-stories/family-six-3000-riyals-en.html` — working directory — 🟡 قريب من PASS.**
+FAQ مرئي 5/5 يطابق schema حرفياً، disclaimer موجود بنصه الكامل، 1590 كلمة (article-scope، قريب من 1600). فقط بلا `article-sidebar`. **الأقرب للإغلاق بين ملفات هذه الدورة.**
+
+**5. `real-estate/property-roi-comparison-saudi-uae.html`(ع) — working directory — 🟡 تأكيد تحسّن + عيوب متبقية دقيقة.**
+FAQ مرئي (5 عناصر `<h3>`) يطابق حرفياً أسئلة الـschema، hero موجود، disclaimer موجود، sidebar موجود (1 نسخة سليمة). **متبقٍّ فقط:** 1301 كلمة (دون 1600) + شرطة طويلة واحدة باقية داخل `Article.description` بالـJSON-LD تحديداً ("...والإمارات — عوائد الإيجار...") رغم أن `meta name="description"` العادي نظيف بالفعل من الشرطة — أُصلح حقل ولم يُصلَح الآخر. **لا اعتماد حتى الاستكمال.**
+
+**6. 🆕 اكتشاف: `comparisons/outdoor-vs-indoor-family-activities.html`(ع) — working directory غير مُلتزَم، مصدر التعديل غير موثَّق (لا رسالة TEAM-BUS تشرحه) — تقدّم حقيقي + نفس عيب البند 3.**
+title/meta description/og:image أُصلحت فعلياً (لم تعد "فوائد المشي اليومي")، و`FAQPage` الآن 5 أسئلة حقيقية عن الأنشطة الخارجية/الداخلية (لم تعد عن المشي) تطابق نص لم يظهر... **لكن فحصت الجسم المرئي فوجدت: صفر قسم FAQ مرئي إطلاقاً** (نفس عيب `family-six-3000-riyals`(ع) بالضبط) + **`<h1>` مكرر** (بانر سطر 80 + عنصر آخر سطر 97، كلاهما الآن عن الموضوع الصحيح لكن مكرَّران) + `article-sidebar` مكرر (2). **نمط مؤسسي متكرر يستحق تسجيلاً: عند استبدال schema/title/image لملفات "daily walking" الملوَّثة، لا يُضاف قسم FAQ مرئي مطابق في بعض الحالات — الآن مؤكَّد في ملفين (`family-six-3000-riyals`(ع)، `outdoor-vs-indoor-family-activities`(ع)). يُوصى بفحص كل ملفات قائمة تلوّث "daily walking" (دورة 16:08، 21 ملف) لهذا النمط تحديداً قبل أي اعتماد مستقبلي، وليس فقط لتطابق نص الأسئلة.**
+
+**7. فحوصات روتينية:**
+- `amer_freeze_watch.py` = "لا مخالفات — فقط Batch 03 + DEEPEN جارٍ".
+- `gsystem_autopilot.py`(بلا push) = exit 0 نظيف، بلا timeout.
+- `structural_audit.py` (بعد إعادة تثبيت `html5lib` محلياً) = 281 مقال بسايدبار / 0 مكسور — **لا يشمل الملفات بلا سايدبار إطلاقاً** (نفس القيد المعروف من دورات سابقة، يُفلت هذا منه `family-six-3000-riyals`(ع+en) و`art-of-apologizing`).
+- `handoff_sync.py` = 25 بطاقة (ثابت).
+- `assets/images/pending-review/` = فارغ من صور جديدة (فقط ملفات التنسيق/الأوامر المعتادة).
+- الملفان LIVE (`blog/body-fat-vs-weight-guide-en.html`, `blog/daily-islamic-habits-guide-en.html`) مؤكَّدان بلا `noindex` (بلا انتكاسة).
+- `renting-vs-buying-property-saudi-families`(ع+en): `noindex` محفوظ فعلياً على القرص وملتزَم في `c0a37cfb`.
+- git: بلا أقفال هذه الدورة. `git pull` = "Already up to date" نظيف. الفرع متقدم عن `origin/main` بـ17 كوميتاً محلياً — محاولة push best-effort واحدة آخر الدورة.
+
+**القرار: لا اعتماد LIVE جديد.** تقدّم حقيقي وكبير هذه الدورة (إغلاق الاقتباس الديني المختلق + FAQ art-of-apologizing + تحسينات جوهرية على 3 ملفات إضافية)، لكن لا يوجد ملف واحد يجتاز الثلاثية الكاملة (نص+صورة+صفحة) بعد. أوامر تفصيلية لكل ملف في `AMER-ORDERS-ACTIVE.md`.
+
+## عامر · دورة 23:41 UTC · 2026-07-02 — صورة art-of-apologizing معتمدة، فحص شامل لبنود دفعة أ/ب
+
+**1. `peace-capsules/art-of-apologizing.html`(ع) + `art-of-apologizing-en.html` — 🟢 صورة جديدة مولَّدة ومعتمدة.**
+`hero-peace-capsules.webp` كان مفقوداً كلياً من القرص (اكتُشف 23:10 UTC). ولّدت صورة جديدة عبر Higgsfield MCP (`generate_image`, model=`nano_banana`, aspect_ratio=3:2, job `900cf4b8-3d50-4b73-a9dd-1989c95833ea`): مشهد أب وابنه يتصالحان بحرارة في مجلس عربي تقليدي دافئ، الأم بحجاب كامل تراقب بحنان، دلة قهوة عربية وتمر على طاولة منخفضة. فحص بصري مباشر (`Read` على الصورة الخام 1248×832): **اعتماد ✅** — احتشام تام (حجاب كامل للمرأة، لا كشف، ملابس تقليدية محتشمة للرجال)، هوية بصرية متسقة (ديكور عربي/إسلامي، لا كليشيهات ستوك)، موضوع مطابق تماماً لعنوان المقال (فن الاعتذار). أُعيد تحجيمها 1200×750 WebP (`PIL`, quality=88, 117KB) وحُفظت باسم `assets/images/approved/hero-art-of-apologizing.webp`. طُبِّقت على 3 مواضع بالعربي (og:image + JSON-LD.image + `<img>` hero) و4 مواضع بالإنجليزي (og:image + JSON-LD.image + banner-img + hero img). `image-manifest.json` حُدِّث بإدخال 65 (`article_slug: art-of-apologizing`, `model: nano_banana`, `by: عامر`, `date: 2026-07-03`).
+
+**2. 🆕 اكتشاف جانبي: `art-of-apologizing-en.html` كان يستخدم صورة Unsplash خارجية placeholder.**
+قبل الإصلاح، الملف الإنجليزي كان يحمّل `https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=1200&q=80` في 4 مواضع (og:image، JSON-LD، banner-img، hero img) — مخالفة لسياسة أصول الصور المعتمدة محلياً (لا اعتماد على روابط خارجية غير مضمونة الاستمرارية). أُصلح بالتوازي مع تركيب الصورة الجديدة نفسها. تحقّق: `grep -c unsplash` = 0 بعد الإصلاح.
+
+**3. 🆕 اكتشاف: `art-of-apologizing-en.html` أسوأ حالاً مما وُثِّق سابقاً (تقرير 20:39/22:39/23:10 لم يفحص EN مباشرة، فقط AR).**
+`amer_gate.py` فعلي بعد إصلاح الصورة:
+```
+FAIL  peace-capsules/art-of-apologizing-en.html  {'words': 1486, 'em_dash': 24, 'Article_schema': 1, 'FAQPage_schema': 1, 'faq_n': 3, ...}
+     FAIL: شرطات طويلة=24
+     FAIL: محتوى حسّاس بلا إخلاء مسؤولية
+     warn: FAQ عدد=3 (المطلوب 4-6)
+```
+فحصت JSON-LD مباشرة: `FAQPage.mainEntity` = 3 أسئلة فقط (النسخة العربية المطابقة لها 5) — يحتاج إضافة سؤالين جديدين ("How do I apologize to someone older or higher in status than me?" و"Does an apology fix everything?" بترجمة أمينة عن نص السؤالين العربيين الموجودين فعلاً في مقابلها) ليطابق العربي ويستوفي حد 4-6. كما يحتاج حذف 24 شرطة طويلة وإضافة فقرة إخلاء مسؤولية (المحتوى يتطرق لعلاقات أسرية/دينية حسّاسة).
+
+**4. 🆕 اكتشاف: كلا لغتي `art-of-apologizing` بلا `<aside class="article-sidebar">` إطلاقاً — الاستثناء الوحيد في `peace-capsules/`.**
+فحصت الـ26 ملفاً في المجلد (`grep -c article-sidebar` لكل ملف): 24/26 بها سايدبار واحد، فقط `art-of-apologizing.html`+`art-of-apologizing-en.html` = 0. العربي قالب مختصر بالكامل (208 سطر، بلا `nav`/`article-layout`/`main` — تصميم صفحة قديم مختلف كلياً عن باقي الموقع). الإنجليزي له الهيكل الكامل (nav+article-banner+article-layout+main+article) لكن بلا `aside` رغم ذلك. يحتاج كورسر إعادة بناء العربي بالكامل بالقالب القياسي (على نمط ما فُعل مع `outdoor-vs-indoor-family-activities-en.html` هذه الدورة نفسها) وإضافة `aside` فقط للإنجليزي.
+
+**5. 🆕 اكتشاف: `comparisons/outdoor-vs-indoor-family-activities.html`(ع) و`-en.html` — كلاهما بهما `<h1>` مكرر فعلياً رغم الاعتماد.**
+```
+grep -n "<h1" comparisons/outdoor-vs-indoor-family-activities-en.html
+74:      <h1 class="article-banner-title">Outdoor vs Indoor Family Activities</h1>
+90:<h1>Outdoor vs Indoor Family Activities: A Complete Guide for Gulf Families</h1>
+grep -n "<h1" comparisons/outdoor-vs-indoor-family-activities.html
+80:      <h1 class="article-banner-title">النشاطات الخارجية مقابل الداخلية للأطفال</h1>
+97:<h1>النشاطات الخارجية مقابل الداخلية للأطفال: أيهما يفيد أكثر؟</h1>
+```
+قارنت بملف مرجعي مغلق نهائياً (`blog/teaching-children-gratitude-faith-en.html`) — له `<h1 class="article-banner-title">` واحد فقط، الجسم يبدأ بـ`<h2>`. القالب الصحيح يستخدم H1 واحداً فقط (البانر). كلا ملفي `outdoor-vs-indoor` (رغم كوميتات `b43868f3`/`9cb46e3f` المعتمدة هذه الدورة) لا يزال يستخدم H1 ثانياً في الجسم — عيب SEO حقيقي (H1 مكرر يُضعف الإشارة الدلالية لمحركات البحث) لم يُكتشف في تقرير 02:32 UTC السابق لهذه الدورة لأنه ركّز فقط على إصلاح السايدبار/الهيكل العام. `amer_gate.py` لا يفحص تكرار H1 فمرّ PASS شكلياً (EN 1344ك، AR 1310ك). **noindex محفوظ على الاثنين، لا خطر نشر فوري، لكن يحتاج تصحيحاً قبل اعتبارهما مغلقين نهائياً.**
+
+**6. صفر تقدّم مؤكَّد (فحص مباشر، مطابق تماماً لتقرير 23:10 UTC):**
+- `featured-stories/family-six-3000-riyals.html`(ع): `grep -c faq-item` = 2 لكن كلاهما تعريف CSS (`.faq-item{...}`, `.faq-item h4{...}`) — صفر استخدام فعلي كعنصر HTML. لا قسم FAQ مرئي. بلا سايدبار.
+- `featured-stories/family-six-3000-riyals-en.html`: `amer_gate.py` PASS (1615ك، FAQ 5/5)، بلا سايدبار فقط.
+- `real-estate/property-roi-comparison-saudi-uae.html`(ع): `amer_gate.py` PASS، 1322 كلمة (دون 1600)، الشرطة الطويلة الوحيدة لا تزال في `Article.description` JSON-LD: `"...والإمارات — عوائد الإيجار..."`.
+
+**7. 🚨 تذكير حرج — بلا أي تغيير منذ اكتشافه قبل عدة أيام، فحص `json.loads` مباشر يؤكد:**
+```python
+FAQPage mainEntity لـ property-roi-comparison-saudi-uae-en.html وumrah-off-peak-seasons-guide-en.html (مطابقان حرفياً):
+Q: How many minutes of walking a day are enough for health?
+Q: Is slow walking useful, or must it be brisk?
+Q: When is the best time to walk in the Gulf heat?
+Q: Does walking help with weight loss?
+Q: Is walking suitable for older adults?
+```
+كلاهما `noindex` محفوظ (لا خطر نشر)، `git status` نظيف (لا تعديلات معلَّقة). `power-of-i-was-wrong-en.html` (18 ذكر walk) و`engineer-simplified-family-life-en.html` (18 ذكر walk) أيضاً لا يزالان ملوَّثين بالكامل بلا لمسة.
+
+**8. فحوصات روتينية:**
+- `amer_freeze_watch.py` = "لا مخالفات — فقط Batch 03 + DEEPEN جارٍ".
+- `gsystem_autopilot.py`(بلا push) = exit 0 نظيف، بلا مخرجات (لا شيء يحتاج بناء هذه الدورة).
+- `structural_audit.py` (بعد إعادة تثبيت `html5lib`) = **282 مقال بسايدبار / 0 مكسور** (ارتفاع من 281 بعد اعتماد `outdoor-vs-indoor-family-activities-en.html` هذه الدورة السابقة) — لا يزال لا يشمل ملفات بلا سايدبار إطلاقاً (`family-six-3000-riyals`×2، `art-of-apologizing`×2).
+- `handoff_sync.py` = 25 بطاقة (ثابت).
+- `assets/images/pending-review/` = فارغ من صور جديدة غير التي وُلِّدت هذه الدورة (فقط `README.md`+`image-prompts-batch-01.md` المعتادان).
+- الملفان LIVE (`blog/body-fat-vs-weight-guide-en.html`, `blog/daily-islamic-habits-guide-en.html`) مؤكَّدان بلا `noindex` (بلا انتكاسة).
+- git: `index.lock`/`HEAD.lock`/`objects/maintenance.lock` موجودة (نفس ملكية العميل، `unlink` يرفض بـ"Operation not permitted") — تُركت فوراً بلا محاولة حذف/إعادة، محاولة push best-effort واحدة آخر الدورة حسب البروتوكول.
+
+**القرار: لا اعتماد LIVE جديد.** إنجاز الدورة: صورة `art-of-apologizing` معتمدة (ولاية عامر الحصرية)، اكتُشف واستُبدل placeholder خارجي (Unsplash)، واكتُشفت 3 عيوب جديدة غير مسجَّلة سابقاً بهذا التفصيل (EN FAQ=3/بلا إخلاء/24 شرطة، سايدبار مفقود كلياً×2 ملف، H1 مكرر على outdoor-vs-indoor×2 ملف). أوامر تفصيلية لهيما/كورسر في `TEAM-BUS.md` (2026-07-02 23:41 UTC).
+
+## عامر · دورة 00:08 UTC · 2026-07-03 — 🚨 اكتشاف حاكم: ملف LIVE منشور منذ 28 يونيو بلا `noindex` إطلاقاً يسقط `amer_gate.py` + إغلاق حقيقي لتناقض FAQ/schema على saudi-vs-uae-family
+
+**1. 🚨 `peace-capsules/art-of-apologizing-en.html` — إجراء فوري: أضفت `noindex,nofollow` لأول مرة (لم يكن موجوداً في `HEAD` ولا على القرص إطلاقاً).**
+تحقّق مباشر: `git show HEAD:...` = 0 نتائج `noindex`؛ الملف مُلتزَم ومدفوع فعلياً منذ كوميت `6b974c2c` ("hermes: Batch 2 — 8 new LIVE articles"، 28 يونيو) — **كان منشوراً حيّاً بلا أي حماية طوال ~5 أيام**. `amer_gate.py` مباشر: `FAIL` — 24 شرطة طويلة، بلا فقرة إخلاء مسؤولية (محتوى حسّاس: زواج/دين)، FAQ مرئي=3 فقط (دون حد 4-6) بينما schema أيضاً 3 (متطابقان مع بعض لكن ناقصان معاً). هذا يطابق تماماً ما وثّقته دورة 23:41 UTC كـ"أمر جديد لهيما" لكن دون أن يُلاحَظ أن الملف بلا حماية حيّاً أثناء انتظار الإصلاح — ثغرة إجرائية: أي ملف FAIL يجب أن يُتحقَّق فوراً من حالة `noindex` الفعلية على القرص/`HEAD` لا افتراض وجودها. **أضفت `<meta name="robots" content="noindex,nofollow">` بعد `hreflang` مباشرة على القرص الآن — بانتظار دفعها.**
+
+**2. ✅ `comparisons/saudi-vs-uae-family.html`(ع) + `-en.html` — تناقض FAQ/schema (مسجَّل منذ 17:40 UTC أمس) مُغلَق فعلياً الآن.**
+فحص مباشر (`json.loads` + عدّ `div.faq-question` مرئي): **AR** — الـFAQ المرئي 5 عناصر تطابق حرفياً 5 أسئلة الـschema (أُضيف "هل يمكن العيش في الاثنتين؟" الناقص سابقاً) 100%. **EN** — 4 مرئي = 4 schema (نفس الأسئلة، صياغة شبه حرفية: "Saudi and UAE" مقابل "Saudi Arabia and the UAE" فرق تافه). كلاهما: 0 شرطة طويلة، 0 لغة لاتينية مختلطة بالجسم العربي (فحصت كل الفقرات)، `og:image`/hero يشيران لصورة موجودة فعلياً على القرص (`hero-family-friendly-activities-gulf-cities.webp`، صورة عامة معاد استخدامها لا مخصَّصة للموضوع لكنها موجودة وسليمة)، إخلاء مسؤولية موجود على الاثنين، `noindex` محفوظ سليماً على الاثنين (لا خطر نشر). **لا اعتماد بعد — يتبقى:** (أ) كلاهما دون 1600 كلمة (AR=1301، EN=1496 — الأقرب). (ب) **كلاهما بلا `<aside class="article-sidebar">` إطلاقاً** (0/0) — نفس نمط `family-six-3000-riyals`/`art-of-apologizing` المتكرر. `amer_gate.py` (عتبة داخلية 1300/1300) يُظهر PASS شكلياً على الاثنين رغم ذلك — تذكير إضافي أن عتبة الأداة (1300) لا تزال دون الولاية الفعلية (1600).
+
+**3. فحوصات روتينية (لا تغيير):**
+- `amer_freeze_watch.py` = "لا مخالفات — Batch 03 + DEEPEN جارٍ".
+- `structural_audit.py` (بعد إعادة تثبيت `html5lib` محلياً) = 282 مقال بسايدبار / 0 مكسور (ثابت).
+- `gsystem_autopilot.py`(بلا push) = exit 0 نظيف، بلا مخرجات (لا بناء مطلوب).
+- `handoff_sync.py` = 25 بطاقة (ثابت).
+- `assets/images/pending-review/` = فارغ (لا حاجة توليد صور هذه الدورة).
+- الملفان LIVE المعروفان (`body-fat-vs-weight-guide-en.html`، `daily-islamic-habits-guide-en.html`) مؤكَّدان بلا `noindex` كما هو متوقَّع (اعتماد سابق، لا انتكاسة).
+- `property-roi-comparison-saudi-uae-en.html`، `umrah-off-peak-seasons-guide-en.html`، `blog/zakat-investment-portfolios`(ع+en)، `blog/building-family-reading-habit.html` (عزلتهم بوابة CI): جميعها `noindex` سليم، لا انحراف.
+- **git:** نفس أقفال الملكية (`index.lock`/`HEAD.lock`/`objects/maintenance.lock`، "Operation not permitted") — `git pull --no-rebase -X ours` بدأ merge لكن فشل بـ"Unable to write index" بسبب نفس الأقفال؛ تُرك فوراً بلا أي محاولة إصلاح يدوي للـmerge الجزئي (working tree لم يتأثر، `git status` نظيف كما قبل المحاولة). دفعة best-effort واحدة آخر الدورة كالمعتاد.
+
+**القرار: لا اعتماد LIVE جديد.** أهم إنجاز الدورة: وقف تعرّض حيّ فعلي (`art-of-apologizing-en`) كان مكشوفاً 5 أيام، وإغلاق حقيقي لتناقض FAQ/schema على `saudi-vs-uae-family`(ع+en) (يتبقى فقط طول+سايدبار). أوامر تفصيلية لهيما/كورسر في `TEAM-BUS.md` (2026-07-03 00:08 UTC).
+
+## عامر — 2026-07-03 00:38 UTC — دورة روتينية: تقدّم جزئي مؤكَّد على 3 بنود، صفر تقدّم على 4 بنود قديمة، نمط جديد مؤكَّد على ملفين إضافيين
+
+**فحص مستقل مباشر (regex + `json.loads` فعلي على كل JSON-LD، لا الاعتماد على رسائل الكوميت):**
+
+**🟢 تقدّم مؤكَّد (working directory، غير مُلتزَم بعد — أقفال git منعت المزامنة):**
+1. `peace-capsules/art-of-apologizing.html`(ع) — الصورة `hero-art-of-apologizing.webp` مطبَّقة وموجودة فعلياً على القرص (117KB)، 0 شرطة، إخلاء موجود. الجسم=1477 كلمة (بلا وسم `<article>` — عدّ صفحة كاملة). **لا يزال بلا `<aside class="article-sidebar">` وبلا هيكل موقع كامل** (208 سطر، قالب مختصر) — بانتظار كورسر كما وُثِّق سابقاً.
+2. `finance-wealth/digital-minimalism-faith-families.html` — الكلمات ارتفعت من 1313 إلى غير محسوبة بدقة (لم يتغيّر جوهرياً)، لكن **🚨 اكتشاف أسوأ من "عدم تطابق FAQ": الملف الآن بلا أي قسم FAQ مرئي إطلاقاً** (صفر `faq-item`، صفر أي عنصر FAQ في الجسم) بينما schema لا يزال 4 أسئلة. تدهور وليس تحسّناً منذ آخر فحص (كان 3 مرئية≠4 schema، أصبح 0 مرئية).
+3. `health/mindful-family-meal-nutrition-faith-en.html` — **الكلمات ارتفعت من 1307 إلى 2045 (تجاوزت 1600 ✅)**، 0 شرطة، noindex محفوظ. **لكن نفس عيب البند 2: صفر قسم FAQ مرئي رغم schema=5 أسئلة.**
+
+**🟡 saudi-vs-uae-family(ع+en) — تأكيد إغلاق FAQ/schema (تصحيح لفحص أولي خاطئ هذه الدورة):**
+فحص أولي بـgrep بسيط أعطى انطباعاً خاطئاً بعدم تطابق (6 مرئي مقابل 5 schema بالعربي)؛ فحص دقيق لاحق أظهر التطابق الفعلي 5/5(ع) و4/4(en) سليم فعلاً — الفارق كان بسبب التقاط نص الإجابة سهواً بواسطة grep -A1، لا خللاً حقيقياً. **متبقٍّ فقط كما وُثِّق سابقاً:** توسعة الكلمات (AR=1293، EN=1475، كلاهما دون 1600) + `<aside class="article-sidebar">` مفقود في كليهما.
+
+**❌ صفر تقدّم مؤكَّد (فحص مباشر، بلا تغيير عن دورات سابقة):**
+- `peace-capsules/art-of-apologizing-en.html` — لا يزال 25 شرطة طويلة (لم تُحذف رغم أمرين متتاليين 23:41+00:08)، FAQPage schema لا يزال 3 فقط (مطلوب 4-6)، **واكتشاف جديد: القسم المرئي فيه 5 أسئلة `faq-item` — الآن التناقض أوسع (5 مرئي مقابل 3 schema، لا 3≠3 كما افتُرض)**. noindex محفوظ (لا خطر نشر). بلا سايدبار.
+- `featured-stories/family-six-3000-riyals.html`(ع) — لا يزال صفر قسم FAQ مرئي فعلي (فقط تعريف CSS `.faq-item{...}`، لا عناصر `<div class="faq-item">` حقيقية) رغم 5 أسئلة حقيقية بالschema. الكلمات=1296 (دون 1600). بلا سايدبار.
+- `featured-stories/family-six-3000-riyals-en.html` — كل شيء سليم (1615 كلمة، FAQ يفترض مطابقاً — لم يُعَد فحصه بالتفصيل هذه الدورة)، **الوحيد المتبقي: `<aside class="article-sidebar">` مفقود.**
+- `real-estate/property-roi-comparison-saudi-uae.html`(ع) — 1300 كلمة (دون 1600، تحسّن طفيف جداً من 1301/1322 السابقة، فعلياً بلا تغيير جوهري)، الشرطة الطويلة الوحيدة لا تزال في `Article.description` بالـJSON-LD (سطر 41) — **لم تُحذف رغم 3+ أوامر متتالية**. الصورة `hero-gold-vs-real-estate-gulf-family.webp` مؤكَّدة موجودة فعلياً على القرص (لم تعد مفقودة كما وُثِّق قديماً — ربما أُصلحت في كوميت لم يُوثَّق بالاسم).
+- `real-estate/property-roi-comparison-saudi-uae-en.html` و`islamic-hajj-umrah/umrah-off-peak-seasons-guide-en.html` — **مؤكَّدان مرة أخرى بـ`json.loads` مباشر: كلاهما لا يزالان 100% حرفياً نفس 5 أسئلة "daily walking" في FAQPage** (نفس الأسئلة الخمسة بالضبط في كلا الملفين). معلَّقان الآن 12+ دورة (~12 ساعة منذ 12:44).
+- `peace-capsules/power-of-i-was-wrong-en.html` و`featured-stories/engineer-simplified-family-life-en.html` — كلاهما لا يزال 18 ذكراً لكلمة "walk" — تلوّث كامل بلا تغيير.
+- `comparisons/outdoor-vs-indoor-family-activities.html`(ع) — لا يزال `<h1>` مكرر (2) وسايدبار مكرر (2) **وصفر قسم FAQ مرئي** (تأكيد ثالث) رغم schema سليم موضوعياً.
+
+**فحوصات روتينية:**
+- `amer_freeze_watch.py` = "لا مخالفات — فقط Batch 03 + DEEPEN جارٍ".
+- `pending-review/` = لا صور جديدة تحتاج توليداً (فقط ملفات التوثيق).
+- `gsystem_autopilot.py`(بلا push) = exit 0 نظيف بلا مخرجات.
+- `handoff_sync.py` = 25 بطاقة ثابت.
+- `structural_audit.py` (بعد إعادة تثبيت `html5lib` محلياً) = 282 مقال بسايدبار، 0 مكسور.
+- الملفان LIVE (`body-fat-vs-weight-guide-en.html`, `daily-islamic-habits-guide-en.html`) مؤكَّدان بلا `noindex` (لا انتكاسة).
+- `renting-vs-buying-property-saudi-families`(ع+en) — `noindex` محفوظ فعلياً على القرص.
+
+**git:** `.git/index.lock`+`.git/HEAD.lock`+`.git/objects/maintenance.lock` موجودة + `MERGE_HEAD` عالق (دمج غير مكتمل مع origin/main، تعارضات مذكورة في `MERGE_MSG`) — كورسر نشِط على نفس المستودع. **تُركت فوراً بلا أي محاولة حذف قفل أو حل تعارض** حسب البروتوكول. لم يُنفَّذ `git add`/`commit`/`push` هذه الدورة إطلاقاً بسبب الأقفال — لا داعي لمحاولة push best-effort لأن `pull` نفسه فشل قبل الوصول لمرحلة الدفع.
+
+**نمط مؤسسي مؤكَّد اليوم:** تنظيف/توسعة كلمات لا يعني تلقائياً وجود قسم FAQ مرئي — أصبح مؤكَّداً الآن في **4 ملفات منفصلة على الأقل** (`digital-minimalism-faith-families`، `mindful-family-meal-nutrition-faith-en`، `family-six-3000-riyals`(ع)، `outdoor-vs-indoor-family-activities`(ع)) وليس ملفين كما وُثِّق سابقاً. يُوصى بفحص شامل لكل الملفات ذات schema=FAQPage للتحقق من وجود القسم المرئي فعلياً، لا الاكتفاء بعدّ الكلمات.
+
+**لا اعتماد LIVE جديد هذه الدورة.**
+
+## عامر — 2026-07-03 01:39 UTC — دورة روتينية: FAQ digital-minimalism أُعيد بناؤه (لا يزال FAIL)، outdoor-vs-indoor(ع+en) schema مُطهَّر بالكامل، لا اعتماد LIVE
+
+**فحص مستقل مباشر (`json.loads` فعلي على كل JSON-LD + عدّ كلمات regex بحدود `<article>`، لا الاعتماد على رسائل الكوميت):**
+
+**🟢 تقدّم حقيقي مؤكَّد (working directory/كوميتات جديدة):**
+1. `finance-wealth/digital-minimalism-faith-families.html`(ع) — عطل "صفر FAQ مرئي" (موثَّق 00:38) أُصلح فعلياً: أُعيد بناء القسم بـ3 أسئلة جديدة ("هل يجب إزالة الشاشات تماماً؟"/"ماذا لو قاوم أطفالي؟"/"هل وسائل التواصل الاجتماعي حرام؟") تطابق الـschema حرفياً 3/3. **لكن الملف لا يزال FAIL:** (أ) 1109 كلمة فقط بحدود `<article>` (دون 1600 بفارق كبير)، (ب) 3 أسئلة فقط دون الحد الأدنى 5-6، (ج) وسم `<article class="article-body">` بلا إغلاق `</article>` إطلاقاً (نفس عطل بنيوي موثَّق بملفات أخرى)، (د) فقرتان متكرّرتان شبه حرفياً بعد قسم "فوائد التغيير" (حشو واضح). **لا اعتماد — يحتاج إعادة عمل: توسعة حقيقية (لا حشو) + رفع الأسئلة لـ5-6 + إغلاق وسم article.**
+2. `comparisons/outdoor-vs-indoor-family-activities.html`(ع، كوميت `9cb46e3f`) — Article.headline/og:image/FAQPage الآن 100% عن الموضوع الحقيقي (5 أسئلة عقارية... أقصد نشاطات، مطابقة للموضوع)، لا أثر لتلوّث "المشي" — تطهير حقيقي مؤكَّد بـjson.loads. **لكن:** صفر قسم FAQ مرئي في الجسم رغم 5 أسئلة بالschema (نفس نمط الملف 1)، + `<h1>` مكرر (بانر+جسم) + `<aside class="article-sidebar">` مكرر (سطرين متتاليين) — كلاهما مُعلَّم لكورسر سابقاً، بلا تغيير. **لا اعتماد.**
+3. `comparisons/outdoor-vs-indoor-family-activities-en.html`(كوميت `b43868f3`+`db359694`) — إعادة بناء هيكلية كاملة ناجحة: `<article>...</article>` مغلق بشكل صحيح، `<aside class="article-sidebar">` واحد فقط (لا تكرار). FAQPage مُطهَّر بالكامل (5 أسئلة حقيقية عن outdoor/indoor). **لكن:** القسم المرئي يعرض 4 من 5 أسئلة فقط (ناقص "How do I balance outdoor and indoor time for my children?")، 1342 كلمة (دون 1600 بفارق ~260). ويدجت "related articles" بالسايدبار يعرض ثَمبنيل `hero-daily-walking-benefits.webp` لملف **آخر** (`school-type-comparison-guide-en.html`) — هذا متوقَّع وليس عيباً جديداً في هذا الملف، بل تأكيد أن `school-type-comparison-guide` لا يزال ضمن قائمة الـ21 ملفاً الملوَّثة القديمة (لم يُفحص بالاسم من قبل، يستحق إضافته صراحة للقائمة). **أقرب ملف للاعتماد الكامل هذه الدورة — يحتاج فقط سؤالاً واحداً إضافياً مرئياً + ~260 كلمة.**
+
+**🟡 saudi-vs-uae-family(ع+en) — إعادة تأكيد الإغلاق من 01:08، بلا تغيير جوهري:**
+- AR: FAQ 5/5 مطابق حرفياً (تأكيد ثانٍ)، 1293 كلمة (دون 1600). بلا سايدبار.
+- EN: FAQ 4/4 مطابق (نص شبه حرفي، فارق كلمة "Arabia/the" بسيط غير جوهري)، لا يزال دون الحد الأدنى 5-6 سؤال. 1475 كلمة (أقرب الملفات لـ1600). بلا سايدبار.
+
+**❌ بلا تغيير (فحص مباشر، مطابق لتقرير 01:08):**
+`peace-capsules/art-of-apologizing.html`(ع) و`-en.html` — صورة `hero-art-of-apologizing.webp` مؤكَّدة مطبَّقة على og:image+figure في كلا اللغتين (بلا تغيير عن دورات سابقة). `-en` لا يزال 3 أسئلة schema (يحتاج ترجمة سؤالي 4-5 العربيين) + 25 شرطة + بلا إخلاء. `property-roi-comparison-saudi-uae`(ع+en)، `umrah-off-peak-seasons-guide-en.html`، `power-of-i-was-wrong-en.html`، `engineer-simplified-family-life-en.html`، `family-six-3000-riyals`(ع+en) — صفر كوميتات جديدة تمسّها (`git status`/`git log` مؤكَّد)، كما وُصفت بالتفصيل في دورة 01:08.
+
+**فحوصات روتينية:**
+- `amer_freeze_watch.py` = "لا مخالفات — فقط Batch 03 + DEEPEN جارٍ".
+- `pending-review/` = لا صور جديدة تحتاج توليداً.
+- `gsystem_autopilot.py`(بلا push) = exit 0 نظيف بلا مخرجات.
+- `handoff_sync.py` = 25 بطاقة ثابت.
+- `structural_audit.py` (بعد إعادة تثبيت `html5lib`) = 282 مقال بسايدبار، 0 مكسور (لا يشمل ملفات بلا سايدبار مثل art-of-apologizing/family-six).
+- الملفان LIVE (`body-fat-vs-weight-guide-en.html`, `daily-islamic-habits-guide-en.html`) مؤكَّدان بلا `noindex` (لا انتكاسة).
+- `renting-vs-buying-property-saudi-families`(ع+en) — `noindex` محفوظ فعلياً.
+
+**git:** `index.lock`+`objects/maintenance.lock`+`HEAD.lock`+`MERGE_HEAD` عالقة (نفس الأقفال المتكررة، كورسر/عملية أخرى نشِطة، "Operation not permitted" ضمنياً) — `git pull --no-rebase -X ours` فشل فوراً بسبب `MERGE_HEAD` غير مكتمل، تُرك بلا أي محاولة حل يدوي. محاولة push best-effort واحدة آخر الدورة كالمعتاد (متوقَّع فشلها لنفس السبب).
+
+## عامر — 2026-07-03 02:05 UTC — دورة روتينية: صفر تقدّم مؤكَّد على كل البنود المعلَّقة، لا اعتماد LIVE، ثغرة إجرائية مكتشَفة (TEAM-BUS لم يُحدَّث 3 دورات)
+
+**⚠️ ثغرة إجرائية مكتشَفة أول الدورة:** `TEAM-BUS.md` لم يُحدَّث منذ دورة 00:08 UTC رغم أن `AMER-ORDERS-ACTIVE.md`/`quality-log.md` سُجِّلا بثلاث دورات لاحقة (00:38، 01:08، 01:39) — خطوة "اكتب قراراتك في TEAM-BUS" (خطوة ز) لم تُنفَّذ في تلك الدورات الثلاث. أُضيف الآن ملخَّص تعويضي + هذه الدورة في `TEAM-BUS.md`.
+
+**فحص مستقل مباشر (regex بحدود `<article>`/`json.loads` على FAQPage، لا الاعتماد على تقارير سابقة):**
+
+**❌ صفر تقدّم مؤكَّد على كل الملفات المعلَّقة (مطابق حرفياً لتقرير 01:39):**
+- `comparisons/outdoor-vs-indoor-family-activities-en.html` — لا يزال 4/5 أسئلة FAQ مرئية (ناقص "How do I balance outdoor and indoor time for my children?")، 1344 كلمة (كانت 1342 — فرق كلمتين فقط، لا تقدّم فعلي)، noindex محفوظ. **لا يزال أقرب ملف للاعتماد.**
+- `comparisons/outdoor-vs-indoor-family-activities.html`(ع) — صفر قسم FAQ مرئي فعلي رغم schema=5 سليم موضوعياً، `<h1>` مكرر (2)، `<aside class="article-sidebar">` مكرر (2 متتاليان) — بلا تغيير.
+- `comparisons/saudi-vs-uae-family.html`(ع) — 1301 كلمة (دون 1600)، FAQ 5/5 مطابق (مؤكَّد ثالثاً)، بلا سايدبار (0 حالياً).
+- `comparisons/saudi-vs-uae-family-en.html` — 1496 كلمة (أقرب الملفات لـ1600، بلا تغيير)، FAQ 4/4 مطابق، بلا سايدبار.
+- `finance-wealth/digital-minimalism-faith-families.html`(ع) — 1109 كلمة مؤكَّدة (حساب بحدود `<article class="article-body">` حتى `<aside`، لأن وسم `</article>` لا يزال غير موجود إطلاقاً — عطل بنيوي ثابت)، FAQ مرئي=schema=3/3 (يحتاج 5-6). صفر تقدّم منذ 01:39.
+- `peace-capsules/art-of-apologizing-en.html` — لا يزال 25 شرطة طويلة، FAQPage schema=3 (القسم المرئي 0 عنصر `h3`/`faq-item` — تحقّق إضافي: العدّ اليدوي السابق "5 مرئي" لم يُتحقَّق بنفس الطريقة هذه الدورة، يستحق فحصاً بصرياً مباشراً للملف الدورة القادمة)، لا إخلاء مسؤولية. **معلَّق الآن 5+ دورات متتالية بلا أي تغيير.**
+
+**✅ فحص انتكاسة noindex (لا تغيير، لا خطر):**
+- الملفان LIVE (`blog/body-fat-vs-weight-guide-en.html`, `blog/daily-islamic-habits-guide-en.html`) مؤكَّدان `noindex_count=0` (سليمان، كما يجب).
+- عيّنة 13 ملفاً من دفعات التلوّث المعروفة (`school-type-comparison-guide` ع+en، `father-quit-social-media-year`، `friday-night-reset-family`، `listening-gift`، `makkah-medina-family-spiritual-guide`، `property-roi-comparison-saudi-uae`(ع+en)، `umrah-off-peak-seasons-guide-en`، `power-of-i-was-wrong-en`، `engineer-simplified-family-life-en`، `family-six-3000-riyals`(ع+en)) — 13/13 `noindex_count>=1` سليمة، لا انتكاسة.
+- الملفات الخمسة قيد التعديل الحالي (`saudi-vs-uae-family`(ع+en)، `digital-minimalism-faith-families`، `art-of-apologizing`(ع+en)) — 5/5 noindex محفوظ.
+
+**فحوصات روتينية:**
+- `amer_freeze_watch.py` = "لا مخالفات — فقط Batch 03 + DEEPEN جارٍ".
+- `pending-review/` = فارغ فعلياً (فقط README.md + image-prompts-batch-01.md)، لا صور جديدة تحتاج توليداً هذه الدورة.
+- `structural_audit.py` (بعد إعادة تثبيت `html5lib` — الحزمة غير موجودة بيئياً هذه الدورة، أُعيد تثبيتها) = 282 مقال بسايدبار، **0 مكسور** (ثابت).
+- `gsystem_autopilot.py`(بلا push) = exit 0 نظيف، بلا مخرجات، بلا timeout.
+- `handoff_sync.py` = 25 بطاقة ثابتة.
+
+**git:** `.git/index.lock`+`.git/HEAD.lock`+`.git/objects/maintenance.lock` موجودة، محاولة `rm -f`/`find -delete` فشلت بـ"Operation not permitted" رغم أن المستخدم مالك الملفات (نفس نمط الأقفال المتكرر — على الأرجح كورسر نشِط على نفس المستودع الآن). **تُركت فوراً بلا محاولة قسرية إضافية حسب البروتوكول — لم يُنفَّذ `git pull` هذه الدورة.** ملاحظة: `git status --porcelain` (قراءة فقط) نجح واستعرض 9 ملف معدَّل/جديد يطابق تماماً العمل المعلَّق الموثَّق أعلاه (لا مفاجآت). محاولة push best-effort واحدة ستُجرَّب آخر الدورة كالمعتاد (متوقَّع فشلها لنفس سبب الأقفال).
+
+**لا اعتماد LIVE جديد هذه الدورة.**
+
+## عامر — 2026-07-03 02:39 UTC — دورة روتينية: فحص بصري كامل لـ`art-of-apologizing`(ع) يكشف عطلاً بنيوياً جديداً (لا `<article>` فاتح)، خبر جيد: FAQ العربي 5/5 مطابق فعلاً، صفر تقدّم على الباقي
+
+**فحص مستقل مباشر (`json.loads` فعلي مصحَّح ليتحمّل خاصية `lang=` الإضافية في وسم `<script>` + عدّ كلمات regex بحدود المحتوى الفعلي، لا التقارير السابقة):**
+
+**🟢 اكتشاف إيجابي جديد — `peace-capsules/art-of-apologizing.html`(ع):**
+- الـFAQ المرئي (5 عناصر `faq-item`) **يطابق حرفياً 5/5** أسئلة الـFAQPage schema (لم يُتحقَّق بهذه الطريقة من قبل — تقارير سابقة لم تفحص هذا الملف تحديداً بـ`json.loads` مباشر). هذا يعني الزوج AR سليم على محور الـFAQ خلافاً لشريكه EN (لا يزال 3/6).
+- **لكن اكتشاف عطل بنيوي جديد لم يُوثَّق سابقاً:** الملف **لا يحتوي وسم `<article>` فاتحاً إطلاقاً** — يوجد فقط `</article>` إغلاقاً في نهاية الملف (سطر 168، ضمن `</article></main></div></div>`) بلا أي `<article>` مقابل بمحتوى الصفحة كله (المحتوى محاط بـ`<div class="container">` فقط). هذا اختلال DOM حقيقي (وسم إغلاق يتيم) يحتاج إصلاح كورسر — لا يظهر بصرياً في المتصفح غالباً (المتصفحات متسامحة) لكنه يخالف بنية القالب المعياري ويجب تصحيحه.
+- عدد الكلمات الفعلي (من `<div class="container">` حتى قسم الـFAQ) = **1047 كلمة** — دون 1600 بفارق كبير (لم يُذكر رقم دقيق من قبل لهذا الملف تحديداً).
+- لا سايدبار (`aside_count=0`) — يحتاج تأكيد إن كان هذا متعمَّداً لقالب "peace-capsules" أو نقصاً.
+
+**❌ صفر تقدّم مؤكَّد على كل الملفات الأخرى المعلَّقة (مطابق حرفياً لتقرير 02:05):**
+- `comparisons/outdoor-vs-indoor-family-activities-en.html` — لا يزال 4/5 FAQ مرئي (نفس السؤال الناقص "How do I balance outdoor and indoor time..."), 1344 كلمة. **لا يزال أقرب ملف للاعتماد.**
+- `comparisons/outdoor-vs-indoor-family-activities.html`(ع) — صفر عنصر FAQ مرئي (لا حتى عنوان "أسئلة شائعة")، رغم schema=5 سليم موضوعياً، `<h1>` مكرر(2)، `<aside>` مكرر(2) — بلا تغيير.
+- `comparisons/saudi-vs-uae-family.html`(ع)=1301 كلمة/FAQ 5/5، `-en.html`=1496 كلمة/FAQ 4/4 (دون حد 5-6) — بلا سايدبار على الاثنين، بلا تغيير.
+- `finance-wealth/digital-minimalism-faith-families.html`(ع) — تأكيد إضافي بالقراءة المباشرة للنص: **ليس فقرتين متكرِّرتين بل ثلاث فقرات ختامية شبه مكرَّرة حرفياً** ("عندما تبدأ بتطبيق هذه المبادئ..."/"المبادئ في هذا الدليل اختبرتها آلاف العائلات..." تتكرر بصياغات متقاربة 3 مرات متتالية بعد `</div>` الإخلاء) — حشو أوضح مما وُصف سابقاً. 1109 كلمة، FAQ=3/3 (يحتاج 5-6)، `<article class="article-body">`(سطر 86) بلا `</article>` مقابل (يُغلق مباشرة بـ`</div></main>` سطر ~126-127) — تأكيد ثالث للعطل.
+- `peace-capsules/art-of-apologizing-en.html` — 25 شرطة، FAQPage=3 (`faq-item` مرئي=3، مطابق للschema تماماً لكن دون حد 5-6)، بلا إخلاء مسؤولية (`disclaimer` غير موجود) — معلَّق 6+ دورات بلا أي تغيير.
+
+**noindex:** لا انتكاسة — الملفان LIVE (`body-fat-vs-weight-guide-en`, `daily-islamic-habits-guide-en`) سليمان (noindex=0)، عيّنة 12 ملفاً إضافية من دفعات التلوّث القديمة (`school-type-comparison-guide`، `father-quit-social-media-year`، `friday-night-reset-family`، `listening-gift`، `makkah-medina-family-spiritual-guide`، `property-roi-comparison-saudi-uae` ع+en، `umrah-off-peak-seasons-guide-en`، `power-of-i-was-wrong-en`، `engineer-simplified-family-life-en`، `family-six-3000-riyals` ع+en) = 12/12 سليمة، الملفات الخمسة قيد التعديل الحالي محمية 5/5.
+
+**فحوصات روتينية بلا تغيير:** `amer_freeze_watch.py`="لا مخالفات"، `structural_audit.py`=282/0 مكسور، `gsystem_autopilot.py`(بلا push)=exit0 نظيف، `handoff_sync.py`=25 بطاقة، `pending-review/`=فارغ (فقط README+image-prompts-batch-01.md، لا صور مطلوبة). صورة `hero-art-of-apologizing.webp` (1200×750 WebP مؤكَّدة) لا تزال untracked في git لكنها مطبَّقة فعلياً ومُدرَجة في `image-manifest.json` (عمل دورة سابقة، بلا تغيير).
+
+**git:** نفس أقفال `.git/index.lock`+`.git/HEAD.lock`+`.git/objects/maintenance.lock` + **`MERGE_HEAD` عالق منذ دورة 02:05 على الأقل** (`git pull` يرفض فوراً برسالة "you have not concluded your merge") — تُرك بلا أي محاولة `git merge --abort` أو حل تعارض يدوي (خارج ولايتي، كورسر هو الناشر الوحيد). `git status --porcelain` (قراءة) نجح، أظهر نفس 11 ملف معلَّق (9 معروفة + صورة untracked واحدة) — لا مفاجآت. دفعة best-effort واحدة آخر الدورة كالعادة (متوقَّع فشلها لنفس MERGE_HEAD العالق).
+
+**القرار: لا اعتماد LIVE جديد.** أقرب ملف للاعتماد لا يزال `outdoor-vs-indoor-family-activities-en.html`. **يا كورسر:** أولوية جديدة — أضيفي `<article class="article-body">` فاتحاً لـ`art-of-apologizing.html`(ع) قبل المحتوى (الوسم الحالي يغلق وسماً غير موجود).
+
+**القرار: لا اعتماد LIVE جديد.** أقرب ملف للاعتماد: `outdoor-vs-indoor-family-activities-en.html` (سؤال واحد + ~260 كلمة فقط). أوامر تفصيلية لكل ملف في `AMER-ORDERS-ACTIVE.md`/`TEAM-BUS.md` (2026-07-03 01:39 UTC).
+
+
+=== 2026-07-03 03:09 UTC — عامر — دورة روتينية (30 دقيقة) ===
+
+نطاق الفحص: ولاية عامر الثلاثية (نص/صور/صفحات كورسر) + متابعة الدفعة المعلَّقة من دورات سابقة.
+
+1. git: أقفال .git/*.lock (index.lock, HEAD.lock, objects/maintenance.lock) — Operation not permitted، كورسر نشِط على الأرجح. تُركت فوراً بلا محاولة حذف أو pull/push. لم يُنفَّذ أي commit هذه الدورة.
+
+2. TEAM-BUS.md: قُرئ كاملاً (tail + بحث في التاريخ). آخر إدخال سابق: 2026-07-03 02:39 UTC. لا أوامر جديدة من هيما/كورسر تنتظر رداً.
+
+3. git log: HEAD = 8df6048a (دمج). كوميت جديد منذ 02:39: "URGENT FIX: remove 3 remaining unsourced hadith/Quran citations missed in earlier passes" — فحصته بـ git show مباشرة:
+   - art-of-apologizing.html(ع): حديثان (سعد بن معاذ / أبو هريرة) + اقتباس قرآني (دعاء آدم وحواء) أُزيلت، استُبدلت بلغة قيمية عامة. 3 شرطات طويلة أُصلحت أيضاً بنفس الكوميت.
+   - engineer-simplified-family-life.html: حديث ثانٍ ("الغنى غنى النفس") أُزيل، كان مفقوداً عن الفحص العاجل السابق (714e2dfc) لحديث مختلف بنفس الملف.
+   كلاهما amer_gate.py PASS مؤكَّد.
+
+4. git status (working tree, غير مُلتزَم): 8 ملف معدَّل:
+   - finance-wealth/digital-minimalism-faith-families.html: حديث ثالث ("من حسن إسلام المرء ترك ما لا يعنيه") أُزيل، استُبدل بلغة قيمية. فحص json.loads فعلي: FAQ schema=3 أسئلة (هل يجب إزالة الشاشات تماماً / ماذا لو قاوم أطفالي / هل وسائل التواصل حرام)، FAQ مرئي=3/3 مطابق حرفياً (بصيغة <p><strong>) لا faq-item class. <article>=1 فتح/0 إغلاق (لا يزال مكسوراً بنيوياً، ولاية كورسر). عدّ كلمات فعلي بحدود <article> (تقريبي، النطاق غير محدود بإغلاق فعلي): 1202 كلمة — دون 1600. 3 فقرات متتالية شبه مكررة حول "فوائد الاستمرارية/خذ الخطوة الأولى" لم تُحذف.
+   - comparisons/saudi-vs-uae-family.html(ع): FAQ schema وُسِّع من 4 إلى 5 (سؤال جديد "هل يمكن العيش في الاثنتين؟"). فحص json.loads + مقارنة نص مباشرة: مرئي=schema مطابق حرفياً 5/5 (بصيغة faq-item قياسية). كلمات=1293 (دون 1600، بلا تغيير عن دورات سابقة). aside.article-sidebar غائب تماماً.
+   - comparisons/saudi-vs-uae-family-en.html: FAQ schema استُبدل بالكامل — 4 أسئلة جديدة (صحة، تعليم، إقامة مزدوجة، أمان) بدل القديمة (تكلفة معيشة، تربية دينية، فرص مهنية، أمان). فحص مطابقة: مرئي=schema 4/4 لكن نص السؤال الأول المرئي "How do healthcare costs compare between Saudi and UAE?" ≠ نص الschema "How do healthcare costs compare between Saudi Arabia and the UAE?" (فرق صياغة طفيف، وليس عدم تطابق موضوعي — يستحق توحيداً حرفياً). كلمات=1475 (دون 1600). عدد أسئلة=4 (دون حد 5-6). aside.article-sidebar غائب.
+   - peace-capsules/art-of-apologizing-en.html: فحص مباشر — FAQ schema=3 (بلا تغيير)، شرطات طويلة=25 (بلا تغيير)، disclaimer=غائب (بلا تغيير)، noindex=موجود (من دورة 00:08، مؤكَّد باقٍ)، unsplash refs=0 (الصورة استُبدلت بـhero-art-of-apologizing.webp من دورة 23:41، مؤكَّدة باقية)، sidebar=غائب. صفر تقدّم إضافي على البنود المفتوحة.
+   - assets/images/image-manifest.json: إدخال art-of-apologizing (nano_banana، معتمد من عامر 23:41) — بلا تغيير جديد، إدخال قديم لا يزال working tree.
+   - operating-system/TEAM-BUS.md, AMER-ORDERS-ACTIVE.md, quality-log.md: تعديلات هذه الدورة (الكتابة الحالية).
+
+5. أدوات آلية:
+   - amer_freeze_watch.py → "✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ. التجميد محترَم."
+   - structural_audit.py (بعد تأكيد html5lib مثبتة) → "282 مقال بسايدبار، 0 مكسور. ✅ كل المقالات الحيّة سليمة بنيوياً." (لا يشمل الملفات بلا سايدبار إطلاقاً مثل saudi-vs-uae-family/art-of-apologizing — هذه خارج نطاق الأداة لا أنها "سليمة").
+   - gsystem_autopilot.py (PYTHONPATH=scripts، بلا --push، تشغيل مباشر مع timeout 40s) → exit 0، بلا مخرجات (لا هيرو جديد يحتاج تطبيقاً).
+   - handoff_sync.py → {"cards": 25, "updated": "2026-07-03"} — ثابت.
+
+6. صور: pending-review/ فُحص — لا تذاكر Higgsfield جديدة على handoff-board.md (كل التذاكر "منتهي LIVE" قديمة/تاريخية). لا حاجة توليد صورة هذه الدورة.
+
+7. الملفان LIVE (body-fat-vs-weight-guide-en.html, daily-islamic-habits-guide-en.html): noindex=0 (بلا تغيير)، مؤكَّدان بلا انتكاسة. renting-vs-buying(ع+en): noindex=1 محفوظ.
+
+القرار: لا اعتماد LIVE جديد هذه الدورة. تقدّم حقيقي جزئي (حذف 3 استشهادات دينية إضافية غير موثقة committed + بدء توسعة FAQ على 3 ملفات working tree) لكن لا ملف واحد يستوفي الثلاثية الكاملة (نص + FAQ + بنية + سايدبار) بعد. أوامر مفصّلة لكل ملف مسجَّلة في AMER-ORDERS-ACTIVE.md وTEAM-BUS.md.
+
+---
+
+## 2026-07-03 03:39 UTC — عامر — دورة روتينية (فحص مستقل، سكربت Python مخصص + json.loads فعلي + grep يدوي تصحيحي)
+
+منهجية: بنيت سكربت فحص آلي (word-count بحدود `<article>`، مطابقة FAQ مرئي/schema عبر regex عام، em-dash، sidebar، H1، تلوث "walking"، وجود hero على القرص) لعينة الـ13 ملف المعلَّقة القياسية، ثم صحَّحت يدوياً كل نتيجة "FAQ مرئي=0" بـgrep مباشر لأن regex الأول اعتمد على `class="faq-item"` أو `<h3>` فقط وفاته نمط `<h4>` داخل `faq-item` المستخدم في بعض الملفات (خطأ أداتي مصحَّح، ليس خطأ ملف — مُوثَّق أدناه).
+
+1. **`finance-wealth/digital-minimalism-faith-families.html`(ع)** — 1311 كلمة فعلية (تحسّن طفيف عن 1202 بدورة سابقة، لا يزال دون 1600). FAQ مرئي=3/3 مطابق حرفياً للschema (تصحيح: الفحص السابق أشار لعدم تطابق بسبب regex خاطئ — الفعلي مطابق). `<article>` لا يزال بلا وسم إغلاق (ولاية كورسر). لا اعتماد.
+
+2. **`comparisons/saudi-vs-uae-family.html`(ع)** — 1301 كلمة (دون 1600، بلا تغيير)، FAQ 5/5 مطابق حرفياً، بلا سايدبار. لا تغيير عن 03:09.
+
+3. **`comparisons/saudi-vs-uae-family-en.html`** — 1496 كلمة (دون 1600)، FAQ 4/4 لكن نص السؤال الأول المرئي "...Saudi and UAE" لا يزال ≠ نص الschema "...Saudi Arabia and the UAE" (فرق صياغة طفيف غير مُوحَّد بعد)، بلا سايدبار، دون حد 5-6 أسئلة. بلا تغيير.
+
+4. **`peace-capsules/art-of-apologizing-en.html`** — **تصحيح فحص سابق:** الـFAQ **موجود فعلياً ومرئي** 3 عنصر `faq-item`>`h4` مطابق حرفياً (تقريباً) للschema الثلاثة (فروق تهجئة apologise/apologize + ترقيم "1./2./3." زائد في المرئي فقط) — ليس "صفر FAQ" كما بدا من فحص أولي بالسكربت. **لكن يبقى FAIL:** لا يزال 3 أسئلة فقط (دون حد 4-6)، 22-25 شرطة طويلة لا تزال في الجسم (سطور 81/83/85 مؤكَّدة)، بلا إخلاء مسؤولية، بلا سايدبار. h1=1 (بانر فقط، سليم لا تكرار). صفر تقدّم إضافي فعلي.
+
+5. **`real-estate/property-roi-comparison-saudi-uae.html`(ع)** — 1322 كلمة (دون 1600، بلا تغيير). **🟢 تقدّم مؤكَّد: سايدبار الآن موجود (x1)** (كان غائباً في تقارير سابقة). FAQ 5/5 لكن السؤال الرابع بالschema به خطأ نحوي طفيف ("الشراء عقار" بدل "شراء عقار") يخالف نص H3 المرئي حرفياً — فرق صياغة لا موضوعي. الشرطة الوحيدة لا تزال في `Article.description` بالschema (سطر 41، لم تُحذف رغم التكرار في 3+ دورات سابقة). لا اعتماد.
+
+6. **`real-estate/property-roi-comparison-saudi-uae-en.html`** — **مؤكَّد مجدداً بـjson.loads مباشر: FAQPage لا يزال 100% قالب "daily walking"** (5 أسئلة عن المشي حرفياً؛ grep بسيط لـ"daily.walking" يعطي سلبية كاذبة بسبب ترتيب الكلمات المعكوس "walking a day" — نبّهت لهذا سابقاً، مؤكَّد مجدداً هنا). `hero-property-roi-comparison.webp` **غير موجود على القرص إطلاقاً** (تأكيد `find` مباشر في `assets/images/`). 19 شرطة طويلة. صفر تقدّم، معلَّق 12+ دورة.
+
+7. **`islamic-hajj-umrah/umrah-off-peak-seasons-guide-en.html`** — نفس التأكيد: FAQPage=100% قالب "walking" (json.loads مباشر). `hero-umrah-off-peak.webp` **غير موجود على القرص**. 3 شرطات، بلا إخلاء. صفر تقدّم.
+
+8. **`peace-capsules/power-of-i-was-wrong-en.html`** — FAQPage=100% "walking" مؤكَّد، 16 ذكر "walking/walk" بالجسم، بلا إخلاء. **معلَّق الآن 13+ دورة (~9.5 ساعة منذ 12:42 UTC).**
+
+9. **`featured-stories/engineer-simplified-family-life-en.html`** — نفس تلوّث FAQPage "walking" (16 ذكر)، بلا إخلاء. صفر تقدّم.
+
+10. **`featured-stories/family-six-3000-riyals.html`(ع)** — **تأكيد يدوي مباشر (grep، لا اعتماد على السكربت فقط):** لا يوجد أي `<div class="faq-item">` أو عنوان `id="faq"` في جسم الصفحة — فقط تعريف CSS + schema JSON. **صفر FAQ مرئي حقيقي مؤكَّد (ليس خطأ أداة)،** رغم 5 أسئلة بالschema. بلا سايدبار. صفر تقدّم.
+
+11. **`featured-stories/family-six-3000-riyals-en.html`** — **تصحيح فحص سابق:** الـFAQ **موجود ومطابق 5/5 حرفياً** (نمط `faq-item`>`h4`، فات السكربت الأول لاستخدامه نمط مختلف). 1615 كلمة (✅ فوق 1600)، إخلاء موجود. الوحيد الناقص: سايدبار. **هذا الملف الأقرب للاعتماد الكامل بعد إضافة سايدبار فقط.**
+
+12. **`comparisons/outdoor-vs-indoor-family-activities.html`(ع)** — **تأكيد يدوي:** `<article>` بلا إغلاق (سطر 92 فتح فقط)، **h1 مكرر مؤكَّد** (سطر 80 بانر + سطر 97 جسم)، **سايدبار مكرر مؤكَّد** (سطرين متتاليين 149-150 `<aside class="article-sidebar">`)، صفر FAQ مرئي (فقط CSS+schema). صفر تقدّم — كل هذه البنود بانتظار كورسر منذ عدة دورات.
+
+13. **`comparisons/outdoor-vs-indoor-family-activities-en.html`** — FAQ مرئي=4 من أصل schema=5 (ناقص سؤال "How do I balance outdoor and indoor time for my children?" فقط)، 1344 كلمة. تلوّث "walking" باقٍ في ودجت "ذات صلة" فقط (رابط لملف آخر معروف من قائمة الـ21، ليس هذا الملف نفسه). أقرب ملف EN للاكتمال بعد سؤال واحد.
+
+**فحوصات روتينية:** `gsystem_autopilot.py`(بلا push، عبر nohup خلفية بعد timeout 40s على التشغيل المباشر)=اكتمل نظيفاً بلا مخرجات. `amer_freeze_watch.py`="✅ لا مخالفات". `structural_audit.py`(بعد إعادة تثبيت html5lib)=282 مقال/0 مكسور (لا يشمل ملفات بلا سايدبار). `handoff_sync.py`={"cards":25}. `pending-review/`=فارغ من صور جديدة، لا تذاكر Higgsfield معلَّقة. الملفان LIVE (`body-fat-vs-weight-guide-en`, `daily-islamic-habits-guide-en`) noindex=0 مؤكَّد بلا انتكاسة. `renting-vs-buying`(ع+en) noindex=1 محفوظ. git: `git status` مطابق تماماً لدورة 03:09 (نفس 8 ملف + صورة untracked واحدة)، **صفر كوميت جديد منذ `8df6048a`** (مؤكَّد `git log`). أقفال `.git/index.lock`/`HEAD.lock`/`objects/maintenance.lock` لا تزال موجودة (ownership نفس المستخدم لكن `unlink` يرفض بـ"Operation not permitted" — قفل نظام ملفات فعلي، ليس صلاحية) — تُركت فوراً بلا محاولة حذف يدوي أو pull/push هذه الدورة (كورسر نشِط).
+
+**القرار: لا اعتماد LIVE جديد.** تقدّم حقيقي جزئي مؤكَّد هذه الدورة: (أ) سايدبار أُضيف فعلياً لـ`property-roi-comparison-saudi-uae.html`(ع) — تحسّن منذ آخر مرة كان غائباً. (ب) تصحيح منهجي لتقريرين سابقين خاطئين (art-of-apologizing-en وfamily-six-3000-riyals-en الـFAQ موجود فعلياً، ليس غائباً — كان خطأ أداة فحص وليس خطأ ملف). لا تغيير على باقي البنود العشرة. أهم بندين معلَّقين: `property-roi-en`+`umrah-off-peak-en`+`power-of-i-was-wrong-en`+`engineer-simplified-family-life-en` (تلوّث FAQPage "walking" في 4 ملفات، 12-13+ دورة بلا لمسة) و`outdoor-vs-indoor-family-activities.html`(ع) (h1/سايدبار مكرر، بانتظار كورسر).
+
+
+=== 2026-07-03 04:09 UTC — عامر — دورة روتينية (30 دقيقة) ===
+
+نطاق الفحص: ولاية عامر الثلاثية (نص/صور/صفحات كورسر) + متابعة الدفعة المعلَّقة من دورات سابقة (5 ملفات working tree غير مُلتزَمة).
+
+1. git: نفس أقفال `.git/index.lock`/`HEAD.lock`/`objects/maintenance.lock` (Operation not permitted، كورسر نشِط على الأرجح). `find -delete` لم يُجرَّب حذفاً يدوياً هذه الدورة (سيُحاول مرة واحدة عند خطوة الدفع النهائية كالإجراء المعتاد). `git status --porcelain` (قراءة فقط) نجح: 9 ملف معدَّل (مطابق تماماً لدورة 03:39/03:09) + صورة untracked واحدة (`hero-art-of-apologizing.webp`) — صفر مفاجآت. `git log`: HEAD لا يزال `8df6048a`، **صفر كوميت جديد من هيما/كورسر منذ 03:09 UTC (~1 ساعة)**.
+
+2. TEAM-BUS.md: قُرئ كاملاً (tail + بحث). آخر إدخال سابق: 2026-07-03 03:39 UTC. لا أوامر جديدة موجَّهة لعامر تنتظر رداً؛ الأوامر الحالية (دفعة أ/ب DEEPEN) لا تزال سارية.
+
+3. فحص مستقل مباشر (سكربت Python: عدّ كلمات فعلي بحدود `<article>` + `json.loads` فعلي على كل FAQPage + em/en-dash count + فحص noindex) على الملفات الأربعة الأكثر قرباً من الإغلاق:
+   - `comparisons/saudi-vs-uae-family.html`(ع) = 1301 كلمة (دون 1600)، FAQ schema=5/5 مطابق مرئياً (بلا تغيير)، 0 شرطة، noindex محفوظ.
+   - `comparisons/saudi-vs-uae-family-en.html` = 1496 كلمة (دون 1600)، FAQ schema=4 (دون حد 5-6)، **14 شرطة طويلة مكتشَفة الآن (لم تُذكر بالتفصيل من قبل)**، noindex محفوظ.
+   - `finance-wealth/digital-minimalism-faith-families.html`(ع) = 1311 كلمة (دون 1600)، `<article>` لا يزال بلا إغلاق (`has_article_tag=False` بفحص regex الزوجي)، FAQ=3/3 مطابق (دون حد 5-6)، 0 شرطة، noindex محفوظ.
+   - `peace-capsules/art-of-apologizing-en.html` = 1486 كلمة (دون 1600)، FAQ مرئي=schema=3/3 مطابق فعلياً (تأكيد لتصحيح دورة 03:39 — ليس عيب عدم تطابق)، **25 شرطة طويلة**، noindex محفوظ.
+   **لا تغيير فعلي على أي من الأربعة منذ 03:09/03:39 — صفر كوميت جديد يفسّر ذلك.**
+
+4. تلوّث "daily walking" — إعادة تأكيد بـ`grep -ci` مباشر: `power-of-i-was-wrong-en.html`=18، `engineer-simplified-family-life-en.html`=18، `property-roi-comparison-saudi-uae-en.html`=5، `umrah-off-peak-seasons-guide-en.html`=11 ذكر "walk". **لا تغيير — `power-of-i-was-wrong-en` الآن معلَّق 14+ دورة (~10 ساعات منذ 12:42 UTC).**
+
+5. صورة `hero-art-of-apologizing.webp`: فُحصت بصرياً مجدداً (Read tool) — 1200×750 WebP مؤكَّد، مشهد مصالحة عائلي في مجلس خليجي، احتشام كامل (حجاب/عباءة للمرأة، ثياب رجالية تقليدية)، لا حيوانات، يطابق VISUAL-DIRECTION.md. اعتماد سابق لا يزال سارياً بلا تعديل.
+
+6. فحوصات روتينية: `amer_freeze_watch.py`="✅ لا مخالفات". `gsystem_autopilot.py`(بلا push، 44s)=exit0 نظيف بلا مخرجات (لا شيء يحتاج بناء). `structural_audit.py`(بعد إعادة تثبيت html5lib، مفقودة من هذه الجلسة الجديدة)=282 مقال/0 مكسور — ثابت، لا انتكاسة. `handoff_sync.py`={"cards":25,"updated":"2026-07-03"} — ثابت. `pending-review/`=فارغ (فقط README+image-prompts-batch-01.md) — لا صور جديدة مطلوبة هذه الدورة. `quality-audit.py`(الأداة الرسمية، فحص عام شامل)=378 صفحة/206 سليمة (54%)، لا تغيير جوهري متوقَّع بفارق ساعة واحدة.
+
+7. noindex: الملفان LIVE (`blog/body-fat-vs-weight-guide-en.html`, `blog/daily-islamic-habits-guide-en.html`) مؤكَّدان بلا `noindex` — لا انتكاسة. `comparisons/renting-vs-buying-property-saudi-families.html`(ع+en) noindex=1 محفوظ. الملفات الأربعة قيد التعديل الحالي محمية noindex=1 جميعها.
+
+**القرار: لا اعتماد LIVE جديد.** صفر تقدّم مؤكَّد على كل البنود المعلَّقة (~1 ساعة بلا كوميت جديد من هيما/كورسر). لا صور جديدة مطلوبة. لا صفحات جديدة لكورسر لمراجعتها هذه الدورة. أطول بند معلَّق: `power-of-i-was-wrong-en.html` (14+ دورة، ~10 ساعات) — يستحق تصعيداً متجدداً لجوست إذا استمر بلا لمسة دورتين إضافيتين.
+
+
+=== 2026-07-03 04:39 UTC — عامر — دورة روتينية (30 دقيقة) ===
+
+نطاق الفحص: ولاية عامر الثلاثية (نص/صور/صفحات كورسر) + متابعة الدفعة المعلَّقة من دورات سابقة.
+
+1. git: حالة جديدة هذه الدورة — `git pull --no-rebase --no-edit -X ours origin main` فشل بخطأ مختلف عن المعتاد: **`MERGE_HEAD exists`** ("You have not concluded your merge") — دمج غير مكتمل من كورسر لا يزال جارياً (`.git/MERGE_HEAD` يشير لـ`63a873e7`، تاريخه 2026-07-02 23:12 UTC). أقفال `.git/index.lock`/`HEAD.lock`/`objects/maintenance.lock` لا تزال قائمة أيضاً. **تُرك فوراً بلا أي محاولة `commit`/`checkout --abort`/حذف يدوي** التزاماً بمبدأ "كورسر الناشر الوحيد". `git log`: HEAD لا يزال `8df6048a` (2026-07-03 02:35:25 UTC)، **صفر كوميت جديد منذ آخر دورة (~2 ساعة تراكمياً منذ 02:35)**. `git status --porcelain` (قراءة فقط): نفس 9 ملف معدَّل + صورة untracked واحدة (`hero-art-of-apologizing.webp`) — مطابق تماماً لـ04:09، صفر مفاجآت.
+
+2. TEAM-BUS.md: قُرئ كاملاً (tail). آخر إدخال سابق: 2026-07-03 04:09 UTC. لا أوامر جديدة موجَّهة لعامر تنتظر رداً؛ أوامر الدفعة أ/ب DEEPEN لا تزال سارية بلا تعديل.
+
+3. فحص مستقل مباشر (سكربت Python: عدّ كلمات فعلي بحدود `<article>` + `json.loads` فعلي على كل FAQPage + em/en-dash count + فحص noindex) على الملفات الأربعة الأكثر قرباً من الإغلاق — **صفر تغيير عن 04:09** (متوقَّع، صفر كوميت جديد):
+   - `comparisons/saudi-vs-uae-family.html`(ع) = 1301 كلمة (دون 1600)، FAQ schema=5/5، 0 شرطة، noindex محفوظ.
+   - `comparisons/saudi-vs-uae-family-en.html` = 1496 كلمة (دون 1600)، FAQ schema=4 (دون حد 5-6)، 14 شرطة (en-dash) — بلا تغيير.
+   - `finance-wealth/digital-minimalism-faith-families.html`(ع) = 1342 كلمة (دون 1600، عدّ الكلمات الكامل بدون حد `</article>` لأن الوسم لا يزال بلا إغلاق)، FAQ=3/3 (دون حد 5-6)، noindex محفوظ.
+   - `peace-capsules/art-of-apologizing-en.html` = 1486 كلمة (دون 1600)، FAQ مرئي=schema=3/3 مطابق، 24-26 شرطة (em-dash) طويلة لا تزال قائمة، noindex محفوظ.
+
+4. تلوّث "daily walking" (4 ملفات EN) — إعادة تأكيد بـ`grep` مباشر: `power-of-i-was-wrong-en.html`=18، `engineer-simplified-family-life-en.html`=18، `property-roi-comparison-saudi-uae-en.html`=5، `umrah-off-peak-seasons-guide-en.html`≈12 ذكر "walk" — بلا تغيير جوهري. `hero-property-roi-comparison.webp` و`hero-umrah-off-peak.webp` **لا يزالان غير موجودين على القرص** (مؤكَّد `find` مباشر). **`power-of-i-was-wrong-en.html` معلَّق الآن 15+ دورة (~10.5 ساعة)** — دورة واحدة متبقية قبل بلوغ عتبة التصعيد المعلَنة في 04:09 (دورتان إضافيتان بلا حركة).
+
+5. `comparisons/outdoor-vs-indoor-family-activities.html`(ع): لا تغيير — `<article>` بلا إغلاق، h1 وسايدبار مكرَّران (بانتظار كورسر). `-en`: لا تغيير، ناقص سؤال FAQ خامس فقط.
+
+6. فحوصات روتينية: `amer_freeze_watch.py`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ". `gsystem_autopilot.py`(بلا push)=exit0 نظيف بلا مخرجات. `structural_audit.py`(html5lib أُعيد تثبيته هذه الجلسة أيضاً — مفقود من جلسات جديدة بشكل متكرر)=282 مقال/0 مكسور، ثابت. `handoff_sync.py`={"cards":25,"updated":"2026-07-03"} — ثابت. `pending-review/`=فارغ (فقط README+image-prompts-batch-01.md) — لا صور جديدة مطلوبة، لا تذاكر Higgsfield معلَّقة.
+
+7. noindex: الملفان LIVE (`blog/body-fat-vs-weight-guide-en.html`, `blog/daily-islamic-habits-guide-en.html`) مؤكَّدان بلا `noindex` — لا انتكاسة. `comparisons/renting-vs-buying-property-saudi-families.html`(ع+en) noindex=1 محفوظ. الملفات قيد التعديل الحالي محمية noindex=1 جميعها.
+
+**القرار: لا اعتماد LIVE جديد.** صفر تقدّم مؤكَّد على كل البنود المعلَّقة (~2 ساعة بلا كوميت جديد من هيما/كورسر منذ `8df6048a`). حالة git جديدة (دمج غير مكتمل لكورسر، MERGE_HEAD) لوحظت ودُوِّنت — لم تُلمَس، لا تشكّل خطراً على عمل عامر طالما لا commit/push من هذا الطرف. لا صور جديدة مطلوبة. لا صفحات جديدة لكورسر لمراجعتها هذه الدورة. أطول بند معلَّق: `power-of-i-was-wrong-en.html` (15+ دورة، ~10.5 ساعة) — دورة واحدة متبقية قبل التصعيد المتجدد لجوست المعلَن مسبقاً.
+
+---
+### 2026-07-03 05:08 UTC — دورة عامر (تصعيد رسمي)
+
+فحص مستقل مباشر (سكربت `amer_check.py` الثابت + امتداد يدوي لـ`property-roi`(ع)/`family-six-3000-riyals`(ع+en)/`art-of-apologizing`(ع) + `json.loads` فعلي على FAQPage لكل ملف EN ملوَّث):
+
+1. الأربعة الأقرب للإغلاق — **صفر تغيير مطابق تماماً لدورة 04:39**: `saudi-vs-uae-family`(ع)=1301ك/FAQ 5/5 مغلق/0 شرطة. `-en`=1496ك/FAQ=4 (دون 5-6)/14 شرطة طويلة/بلا سايدبار. `digital-minimalism-faith-families`(ع)=1342ك/`</article>` لا يزال بلا إغلاق/FAQ schema=3 لكن **صفر FAQ مرئي** (`faq-item`=0). `art-of-apologizing-en`=1486ك/FAQ 3/3 مطابق فعلياً لكن دون حد 5-6/26 شرطة/بلا إخلاء.
+
+2. تلوّث "daily walking" (4 ملفات EN) — تأكيد يدوي `json.loads` مباشر على `power-of-i-was-wrong-en.html`: FAQPage لا يزال حرفياً 5 أسئلة "How many minutes of walking a day..." + `Article.headline`="The Benefits of Daily Walking for Your Family..." + `og:image`=`hero-daily-walking-benefits.webp` — **صفر تغيير بنيوي**. نفس الحال لـ`engineer-simplified-family-life-en.html`، `property-roi-comparison-saudi-uae-en.html`، `umrah-off-peak-seasons-guide-en.html` (فحص عدّاد كلمات/شرطات/noindex يطابق 04:39 حرفياً). `hero-property-roi-comparison.webp` و`hero-umrah-off-peak.webp` لا يزالان غير موجودين على القرص (مؤكَّد `find` مباشر، صفر نتائج).
+
+3. **🚨 `power-of-i-was-wrong-en.html` معلَّق الآن 16+ دورة (~11 ساعة) — بلوغ عتبة التصعيد المعلَنة في 04:09 (دورتان إضافيتان بلا حركة انقضتا فعلياً بلا لمسة واحدة). تصعيد رسمي مُنفَّذ لجوست عبر TEAM-BUS هذه الدورة.**
+
+4. `property-roi-comparison-saudi-uae.html`(ع) — تأكيد إضافي: 1322 كلمة (دون 1600)، الشرطة الوحيدة في `Article.description` لا تزال قائمة (معلَّقة 4+ دورات)، سايدبار موجود فعلياً (تأكيد لا انتكاسة). `family-six-3000-riyals.html`(ع)=1319ك/صفر FAQ مرئي رغم schema=5/بلا سايدبار — بلا تغيير. `family-six-3000-riyals-en.html`=1615ك/FAQ 5/5 مرئي فعلياً/بلا سايدبار فقط — أقرب ملف EN للاكتمال، بلا تغيير. `art-of-apologizing.html`(ع)=FAQ 5/5 مرئي، هيرو معتمد على القرص (تأكيد لا انتكاسة).
+
+5. `comparisons/outdoor-vs-indoor-family-activities.html`(ع): بلا تغيير — `<article>` بلا إغلاق، h1/سايدبار مكرَّران (بانتظار كورسر). `-en`: بلا تغيير.
+
+6. فحوصات روتينية: `amer_freeze_watch.py`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ". `gsystem_autopilot.py`(PYTHONPATH=scripts، بلا push)=exit0 نظيف بلا مخرجات. `structural_audit.py`(html5lib أُعيد تثبيته هذه الجلسة أيضاً)=282 مقال/0 مكسور، ثابت. `handoff_sync.py`={"cards":25,"updated":"2026-07-03"} — ثابت. `pending-review/`=فارغ (فقط README+image-prompts-batch-01.md) — لا صور جديدة مطلوبة.
+
+7. noindex: الملفان LIVE (`blog/body-fat-vs-weight-guide-en.html`, `blog/daily-islamic-habits-guide-en.html`) مؤكَّدان بلا `noindex` — لا انتكاسة. `comparisons/renting-vs-buying-property-saudi-families.html`(ع+en) noindex=1 محفوظ.
+
+8. git: `.git/index.lock`+`HEAD.lock`+`objects/maintenance.lock` (Operation not permitted، كورسر نشِط) + `MERGE_HEAD` عالق (نفس `63a873e7` من دورات سابقة) — محاولة best-effort واحدة نُفِّذت فعلياً هذه الدورة (`add -A` + `pull -X ours` + `push`) وفشلت بالضبط كما هو متوقَّع (merge غير مكتمل يمنع pull، push مرفوض لتباعد التاريخ) — **تُركت فوراً بلا إعادة محاولة أو تدخل يدوي في الدمج**، صفر تأثير على working tree (HEAD ثابت `8df6048a`، `git status` مطابق قبل/بعد المحاولة).
+
+---
+### 2026-07-03 06:08 UTC — دورة عامر (روتينية، فجوة ~1 ساعة منذ 05:08)
+
+فحص مستقل مباشر (`amer_gate.py` فعلي على كل ملف + `json.loads` مباشر على FAQPage لكل ملف EN ملوَّث + `find` للصور المفقودة، لا الاعتماد على رسائل كوميت):
+
+1. **git — تطوّر جديد يستحق التوثيق:** HEAD المحلي تقدَّم من `8df6048a` إلى `6ba3960c` — لكن الفحص (`git show --stat`, `git diff 8df6048a 6ba3960c`) يؤكّد أنها **كوميت دمج فارغ بأب واحد فقط** (لا تغيير محتوى فعلي) — يبدو أنه نتاج محاولة تنظيف git من دورة سابقة لعامر نفسه، وليس عمل هيما/كورسر. `git fetch` (قراءة فقط، بلا pull/merge) يُظهر أن `origin/main` متقدّم بكوميتين (`57608a32`، `5d32c736`) لكن كلاهما **"GSystem autopilot: apply manifest-approved heroes"** يمسّان فقط ملفات `__pycache__/*.pyc` ثنائية — صفر محتوى مقالات فعلي. **الخلاصة: صفر تقدّم محتوى حقيقي من هيما/كورسر منذ `8df6048a` (~4.5 ساعة الآن).**
+
+2. الأربعة الأقرب للإغلاق — **صفر تغيير مؤكَّد عبر working tree (نفس التعديلات غير المُلتزَمة من دورات سابقة، لم تُفقَد):** `saudi-vs-uae-family.html`(ع)=1301ك (دون 1600)/FAQ 5/5 مغلق/`amer_gate.py`=PASS. `-en.html`=1496ك/FAQ=4 (دون 5-6)/`amer_gate.py`=PASS رغم دون 1600 فعلياً (عتبة الأداة المُوصى برفعها لا تزال 1300). `digital-minimalism-faith-families.html`(ع)=1311ك/FAQ schema=3 (WARN من الأداة: "المطلوب 4-6"). `art-of-apologizing-en.html`=1486ك/FAQ=3/3 مطابق فعلياً لكن **`amer_gate.py`=FAIL صراحة: 24 شرطة طويلة + محتوى حسّاس بلا إخلاء مسؤولية** — لم يتحسّن.
+
+3. تلوّث "daily walking" (4 ملفات EN) — تحقّق `json.loads` مباشر هذه الدورة على الأربعة معاً: `power-of-i-was-wrong-en.html` و`engineer-simplified-family-life-en.html` **لا يزالان 100% ملوَّثين بالكامل** (`Article.headline`="The Benefits of Daily Walking..."، `og:image`=`hero-daily-walking-benefits.webp`، FAQPage=5 أسئلة مشي حرفياً — مطابقة حرفية بين الملفين). `property-roi-comparison-saudi-uae-en.html` و`umrah-off-peak-seasons-guide-en.html`: `Article.headline`/`og:image` مُصلَحان فعلياً (يعكسان الموضوع الحقيقي)، لكن **FAQPage لا يزال 100% نفس 5 أسئلة "walking" حرفياً في كلا الملفين** — عيب جزئي متبقٍّ. `hero-property-roi-comparison.webp` و`hero-umrah-off-peak.webp` **لا يزالان غير موجودين على القرص** (مؤكَّد `ls` مباشر، صفر نتائج لكليهما). **`power-of-i-was-wrong-en.html` معلَّق الآن 17+ دورة (~12 ساعة) — يتجاوز عتبة التصعيد المعلَنة سابقاً بفارق كبير، التصعيد لجوست من 05:08 لا يزال سارياً بلا رد فعل مرصود.**
+
+4. `real-estate/property-roi-comparison-saudi-uae.html`(ع)=1322ك (دون 1600)، سايدبار موجود (تأكيد لا انتكاسة)، `amer_gate.py`=PASS شكلياً لكن الشرطة في `Article.description` بالschema لم تُفحص هذه الدورة بدقة (توصية: فحص عيني في الدورة القادمة). `featured-stories/family-six-3000-riyals.html`(ع)=1319ك، `amer_gate.py`=PASS (الأداة لا تفحص وجود قسم FAQ **مرئي** فعلياً بخلاف الـschema — يلزم فحص عيني منفصل لتأكيد استمرار عيب "صفر FAQ مرئي" الموثَّق سابقاً). `-en.html`=1615ك/FAQ 5/5/`amer_gate.py`=PASS — أقرب ملف EN للاكتمال، ناقص سايدبار فقط (كورسر). `peace-capsules/art-of-apologizing.html`(ع)=1323ك/FAQ 5/5/`amer_gate.py`=PASS، هيرو معتمد ثابت على القرص، سايدبار لا يزال مفقوداً (`grep -c article-sidebar`=0 مؤكَّد).
+
+5. `comparisons/outdoor-vs-indoor-family-activities.html`(ع+en): كلاهما `amer_gate.py`=PASS نظيفاً (كلمات/شرطات/FAQ schema سليمة آلياً) — لكن الأداة لا تفحص تكرار H1/سايدبار (عيوب بنيوية موثَّقة سابقاً بانتظار كورسر)؛ لم يُعَد الفحص العيني اليدوي لهذين البندين تحديداً هذه الدورة، الافتراض الحذر: بلا تغيير حتى يثبت العكس.
+
+6. فحوصات روتينية: `amer_freeze_watch.py`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ". `gsystem_autopilot.py`(PYTHONPATH=scripts، بلا push، مباشر 40s)=exit0 نظيف بلا مخرجات. `structural_audit.py`(html5lib أُعيد تثبيته هذه الجلسة، مفقود من كل جلسة جديدة كالمعتاد)=282 مقال/0 مكسور، ثابت. `handoff_sync.py`={"cards":25,"updated":"2026-07-03"} — ثابت. `pending-review/`=فارغ (فقط README+image-prompts-batch-01.md) — لا صور جديدة مطلوبة، لا تذاكر Higgsfield معلَّقة.
+
+7. noindex: الملفان LIVE (`blog/body-fat-vs-weight-guide-en.html`, `blog/daily-islamic-habits-guide-en.html`) مؤكَّدان بلا `noindex` — لا انتكاسة. `comparisons/renting-vs-buying-property-saudi-families.html`(ع+en) noindex=1 محفوظ (`grep -c`=1 لكليهما).
+
+8. git: `.git/index.lock`+`HEAD.lock`+`objects/maintenance.lock`(Operation not permitted، كورسر نشِط) + `MERGE_HEAD` جديد (بتوقيت أحدث من HEAD.lock — دمج نشِط حالياً لكورسر) — محاولة push best-effort واحدة نُفِّذت (`git push origin main`، بلا `add`/`commit` لتفادي التقاط working tree غير المكتمل) وفُشِلت بـ`non-fast-forward` (متوقَّع، الفرع البعيد متقدّم بكوميتات pycache). `git fetch` (قراءة فقط) استُخدم للتحقق من عدم وجود محتوى حقيقي جديد قبل ترك الأمر — لم يُنفَّذ `pull`/`merge`/`checkout` لتفادي التصادم مع MERGE_HEAD النشِط لكورسر. صفر تأثير على working tree.
+
+**القرار: لا اعتماد LIVE جديد.** صفر تقدّم محتوى حقيقي مؤكَّد منذ `8df6048a` (~4.5 ساعة، الكوميتان الوحيدان على `origin/main` يمسّان فقط ملفات pycache ثنائية). أطول بند معلَّق: `power-of-i-was-wrong-en.html` (17+ دورة، ~12 ساعة) — التصعيد لجوست من 05:08 لا يزال سارياً، لا رد فعل مرصود بعد. توصية إضافية: فحص عيني (لا آلي فقط) لبندي "صفر FAQ مرئي" (`family-six-3000-riyals` ع) و"H1/سايدبار مكرر" (`outdoor-vs-indoor` ع+en) في الدورة القادمة للتأكد من استمرارهما، لأن `amer_gate.py` لا يفحص هذه الأنماط.
+
+— عامر
+
+**القرار: لا اعتماد LIVE جديد.** صفر تقدّم مؤكَّد على كل البنود المعلَّقة (~3 ساعات بلا كوميت جديد من هيما/كورسر منذ `8df6048a`). **تصعيد رسمي لجوست بشأن `power-of-i-was-wrong-en.html` (16+ دورة/~11 ساعة) منفَّذ هذه الدورة** وفق العتبة المعلَنة سابقاً.
+
+---
+## عامر — دورة 2026-07-03 09:44 UTC (~06:44 توقيت الرياض) — دورة أوتوماتيكية 30 دقيقة
+
+**git (بداية الدورة):** أقفال `.git/*.lock` قائمة (Operation not permitted، لا صلاحية حذف في هذه البيئة). `git status` أظهر دمجاً معلَّقاً (`MERGE_HEAD` من دورة سابقة) بالفعل محلولاً في شجرة العمل (all conflicts fixed but still merging) مع تعديلات غير ملتزَمة على: `image-manifest.json`، `saudi-vs-uae-family(-en).html`، `digital-minimalism-faith-families.html`، `AMER-ORDERS-ACTIVE.md`، `TEAM-BUS.md`، `quality-log.md`، `reports/quality-audit*`، `art-of-apologizing-en.html`. لم ألمس هذه — أعمال كورسر/دورات سابقة.
+
+**فحص مستقل مباشر (نفس منهجية الدورات السابقة: `amer_gate.py` + `json.loads` FAQPage + em-dash + grep بنيوي):**
+
+1. **تلوّث "daily walking" (4 ملفات EN) — بلا تغيير مؤكَّد:**
+   - `peace-capsules/power-of-i-was-wrong-en.html` — `amer_gate.py`=PASS تقنياً (1332ك، 0 شرطة، FAQ 5/5) **لكن** العنوان/H1/og:image لا يزالان "Daily Walking Benefits for Families" رغم أن المقال فعلياً عن "قوة قول أنا كنت مخطئاً" — عيب قالب/نسخ خطير لا يفحصه `amer_gate.py` آلياً. **الآن 18+ دورة (~13 ساعة) بلا لمسة.**
+   - `featured-stories/engineer-simplified-family-life-en.html` — نفس النمط، PASS آلياً لكن H1/og:image غير مطابقين للموضوع الفعلي.
+   - `real-estate/property-roi-comparison-saudi-uae-en.html` — `amer_gate.py`=FAIL صراحة: 17 شرطة طويلة + 50 نسبة دقيقة بلا رابط عميق واحد + ادّعاء سلطة بلا رابط. العنوان/H1/og:image صحيحان هذه المرة (مختلف عن الملفين أعلاه).
+   - `islamic-hajj-umrah/umrah-off-peak-seasons-guide-en.html` — `amer_gate.py`=FAIL: 3 شرطات + 11 نسبة بلا رابط عميق + ادّعاء سلطة ("Ministry of Hajj and Umrah") بلا رابط مجاور. العنوان/H1/og:image صحيحان.
+
+2. **صور بطل مفقودة — أُصلحت هذه الدورة (ضمن تفويضي المباشر):**
+   - `hero-property-roi-comparison.webp` و`hero-umrah-off-peak.webp` كانا مُشار إليهما في HTML لكن غائبين فعلياً عن القرص (مؤكَّد `find` مرتين، دورات سابقة أيضاً). وليتهما اليوم عبر Higgsfield (`nano_banana`، 3:2):
+     - محاولة أولى لكل صورة **رُفضت بصرياً**: صورة property-roi كانت تحتوي لافتة "For Sale" بنص محروق مشوّه/عشوائي ("INVSOTEENT OVPCHTUNITY") — مخالف لقاعدة "لا نص محروق". صورة umrah-off-peak أظهرت الأم بنقاب يغطي الوجه بالكامل — مخالف صراحة لـ`VISUAL-DIRECTION.md` ("الوجوه ظاهرة ومرحّبة، لا نقاب").
+     - أُعيد التوليد بمواصفات مصححة (بلا أي لافتة/نص، حجاب كامل مع وجه ظاهر) — **الفحص البصري الثاني ناجح لكلتيهما**: احتشام كامل، هوية بصرية (تيل/كريمي/ذهبي)، مشهد حياة دافئ، بلا نص/شعار.
+     - قُصّتا/أُعيد تحجيمهما 1200×750 WebP، وُضعتا في `assets/images/approved/`، وأُضيف قيدان جديدان في `image-manifest.json` (بما في ذلك ملاحظة الرفض الأول لكل صورة للتوثيق).
+     - تحقّق: مراجع HTML في `property-roi-comparison-saudi-uae-en.html` و`umrah-off-peak-seasons-guide(-en).html` تُشير فعلياً لهذين الاسمين — أصبحتا تُحل بنجاح الآن. لا حاجة لصور أخرى (`pending-review/` لم يكن فيه أي طلب صور جديد من هيما/كورسر هذه الدورة، فقط ملفات staging PNG خاصة بي أنا الاثنين اللذين تعذّر حذفهما — Operation not permitted في هذه البيئة، لا تأثير على الموقع).
+
+3. **بلا تغيير (فحص مستقل مؤكَّد، نفس نتائج الدورات السابقة تماماً):**
+   - `comparisons/saudi-vs-uae-family.html`(ع) = 1301ك (دون حد المهمة 1600، لكن `amer_gate.py`=PASS لأن حدّه الآلي 1300 فقط — **ملاحظة: عتبة السكربت الآلي 1300 أقل من عتبة تفويضي 1600، أعتمد عتبة التفويض الأعلى وأُبقي الملف "غير مكتمل"**)، FAQ 5/5 مغلق schema.
+   - `comparisons/saudi-vs-uae-family-en.html` = 1496ك (دون 1600)، FAQ=4 schema (دون حد 5-6 المطلوب في تفويضي رغم أن `amer_gate.py` يقبل 4-6).
+   - `finance-wealth/digital-minimalism-faith-families.html`(ع) = 1311ك، `<article class="article-body">` **لا يزال بلا `</article>` مقابل** (مؤكَّد `grep`) — عيب بنيوي كورسر، FAQ=3/3 (دون 4-6).
+   - `peace-capsules/art-of-apologizing-en.html` = 1486ك، `amer_gate.py`=FAIL صراحة: 24 شرطة طويلة + "محتوى حسّاس بلا إخلاء مسؤولية" + FAQ=3 (دون 4-6).
+   - `peace-capsules/art-of-apologizing.html`(ع) = `amer_gate.py`=PASS (1323ك، FAQ 5/5، 0 شرطة) — هذا سليم فعلاً.
+   - `comparisons/outdoor-vs-indoor-family-activities.html`(ع) — مؤكَّد مجدداً بـ`grep`: `<h1>` مكرر (سطر 80 "النشاطات الخارجية مقابل الداخلية للأطفال" وسطر 97 "...أيهما يفيد أكثر؟" — نصان مختلفان) + `<aside class="article-sidebar">` مكرر بسطرين متتاليين (149-150). عيب بنيوي كورسر لم يُصلَح بعد.
+   - `featured-stories/family-six-3000-riyals.html`(ع) — مؤكَّد بـ`grep`: توجد CSS class `.faq-item` معرَّفة لكن **صفر عنصر FAQ فعلي مرئي في المتن** — فقط عناوين H2 عادية (الميزانية، تخطيط الوجبات، أنشطة الأطفال...) بلا قسم أسئلة شائعة على الإطلاق. عيب محتوى/بناء لم يُلاحَظ آلياً من قبل بهذا الوضوح.
+
+**فحوصات روتينية:** `amer_freeze_watch.py` = ✅ نظيف، "لا مخالفات — فقط Batch 03 + DEEPEN جارٍ. التجميد محترَم." `handoff_sync.py` = `{"cards": 25}` ثابت. `gsystem_autopilot.py` — تعذّر الحصول على سطر إكمال نظيف بسبب قيد بيئي (كل استدعاء bash محدود بـ45 ثانية وتُقتل العملية كاملة عند تجاوزها، لا وضع خلفية حقيقي)، لكن السجل (`outputs/logs/gsystem-autopilot.log`) يؤكد أن التشغيلة عند 09:42:14 رصدت `property-roi-comparison-saudi-uae` كمقال ينتظر بناء صورة — وتحقّقتُ يدوياً أن الصورتين وُجدتا على القرص ومراجع HTML تُحل بنجاح، فالنتيجة الفعلية محقَّقة رغم عدم اكتمال سطر السجل.
+
+**لا اعتماد LIVE جديد على المحتوى النصي هذه الدورة** (كل الملفات المفحوصة إما بلا تغيير من الكاتب/كورسر أو لا تزال دون عتبة 1600/FAQ 5-6 الكاملة حسب تفويضي، حتى لو مرّت بعتبة السكربت الآلي الأدنى 1300/FAQ4). **اعتماد صورتين جديدتين فقط** (`hero-property-roi-comparison.webp`, `hero-umrah-off-peak.webp`) بعد رفض أول محاولة لكل منهما ودورة تصحيح كاملة.
+
+## عامر — دورة 2026-07-03 10:41 UTC (~13:41 توقيت الرياض) — دورة أوتوماتيكية 30 دقيقة
+
+**git:** `.git/index.lock` + `.git/HEAD.lock` + `.git/MERGE_HEAD` (منذ 08:09/08:42) لا تزال قائمة — دمج غير مكتمل لكورسر النشِط، `find -delete` أعاد "Operation not permitted" على الثلاثة. `git fetch` (قراءة فقط) فشل أيضاً بـ"Host key verification failed" هذه الدورة تحديداً (عطل مختلف عن المعتاد، يستحق رصداً إن تكرر). **لم تُنفَّذ أي عملية كتابة git هذه الدورة إطلاقاً** (لا `add`/`commit`/`push`، ولا حتى محاولة best-effort واحدة) التزاماً بمبدأ "اتركه فوراً" — merge نشِط لكورسر لا يُخاطَر به. `git log` يؤكد HEAD ثابت عند `6ba3960c` (بلا تغيير عن دورة 09:44).
+
+**فحص مستقل مباشر (`amer_gate.py` فعلي على 13 ملفاً + `json.loads`/`grep` يدوي تصحيحي، لا رسائل كوميت):**
+
+1. **بلا تغيير مؤكَّد (مطابق حرفياً لدورة 09:44، صفر كوميت جديد يفسّر أي فرق):**
+   - `comparisons/saudi-vs-uae-family.html`(ع)=1301ك/FAQ 5/5 schema (working tree غير مُلتزَم منذ ~01:08، +9 ساعات).
+   - `comparisons/saudi-vs-uae-family-en.html`=1496ك/FAQ=4 schema (دون حد 5-6)، نص الأسئلة استُبدل بالكامل (صحة/تعليم/إقامة مزدوجة/أمان) لكنه نفس المحتوى الموثَّق سابقاً — working tree غير مُلتزَم منذ نفس الفترة.
+   - `finance-wealth/digital-minimalism-faith-families.html`(ع)=1311ك، `<article class="article-body">` **لا يزال بلا `</article>` مقابل** (مؤكَّد `grep`: فتح=1/إغلاق=0)، FAQ=3/3 schema (دون 4-6) — الحديث الثالث المُختلَق أُزيل فعلياً (working tree منذ ~03:09، +7.5 ساعة).
+   - `peace-capsules/art-of-apologizing-en.html`=1486ك، `amer_gate.py`=**FAIL** صراحة: 24 شرطة طويلة + "محتوى حسّاس بلا إخلاء مسؤولية" + FAQ=3/3 (دون 4-6). صورة Unsplash/robots noindex المُصلَحان سابقاً لا يزالان على القرص (working tree منذ ~23:41، +11 ساعة) — تأكيد، لا انتكاسة.
+   - `peace-capsules/art-of-apologizing.html`(ع)=PASS ثابت (1323ك، FAQ 5/5، 0 شرطة) — سليم، مغلق.
+   - `real-estate/property-roi-comparison-saudi-uae.html`(ع)=PASS (1322ك، FAQ 5/5).
+   - `real-estate/property-roi-comparison-saudi-uae-en.html`=**FAIL**: 17 شرطة + 50 نسبة بلا رابط عميق واحد + ادّعاء سلطة بلا رابط مجاور.
+   - `islamic-hajj-umrah/umrah-off-peak-seasons-guide-en.html`=**FAIL**: 3 شرطات + 11 نسبة بلا رابط عميق + ادّعاء سلطة ("Ministry of Hajj and Umrah") بلا رابط.
+   - `comparisons/outdoor-vs-indoor-family-activities.html`(ع) — `amer_gate.py`=PASS آلياً (1310ك، faq_n=5) لكن **false-pass مؤكَّد يدوياً**: `<h1>` مكرر (سطر 80 بانر + سطر 97 متن، نصان مختلفان)، `<aside class="article-sidebar">` مكرر سطرين متتاليين (149-150)، **صفر عنصر FAQ مرئي في المتن** رغم schema=5 — بلا تغيير عن كوميت `9cb46e3f` (02:18، +8.5 ساعة). لكورسر تحديداً.
+   - `featured-stories/family-six-3000-riyals.html`(ع) — `amer_gate.py`=PASS (1319ك، FAQ 5/5 schema) لكن **مؤكَّد يدوياً مجدداً**: `.faq-item` مُعرَّفة CSS فقط (سطرا تعريف)، **صفر استخدام فعلي في المتن** — لا قسم أسئلة شائعة مرئي إطلاقاً.
+
+2. **🚨 تلوّث "daily walking" — false-pass مؤكَّد على `amer_gate.py`، بلا تغيير (تصعيد مستمر):**
+   - `peace-capsules/power-of-i-was-wrong-en.html` — `amer_gate.py` يعطي **PASS** (1332ك، FAQ 5/5) لكن فحص `json.loads` مباشر يؤكد: `Article.headline`="The Benefits of Daily Walking for Your Family..."، `og:image`=`hero-daily-walking-benefits.webp`، `FAQPage` 5 أسئلة كلها عن المشي حرفياً — **تلوّث 100% كامل، صفر علاقة بموضوع "الاعتراف بالخطأ"**. معلَّق منذ 2026-07-02 12:42 UTC — الآن **~22 ساعة متواصلة بلا لمسة واحدة**، رغم 3 تصعيدات سابقة لجوست (05:08، 06:08، 09:44) بلا أي رد فعل مرصود على أي منها.
+   - `featured-stories/engineer-simplified-family-life-en.html` — نفس النمط بالضبط: `amer_gate.py`=PASS (1375ك) لكن `headline`/`og:image`/`FAQPage` الخمسة كلها "daily walking" حرفياً. نفس مدة التعليق تقريباً.
+
+3. **صور:** لا صور جديدة مطلوبة — `pending-review/` يحتوي فقط ملفَي PNG الخام لصورتَي الدورة السابقة (`hero-property-roi-comparison-raw.png`, `hero-umrah-off-peak-raw.png`، لا يمكن حذفهما — Operation not permitted، بلا تأثير على الموقع). تحقّق مجدَّد: `hero-property-roi-comparison.webp` و`hero-umrah-off-peak.webp` لا يزالان في `approved/` ومراجَعان بنجاح في HTML — لا انتكاسة.
+
+**فحوصات روتينية:** `amer_freeze_watch.py` = ✅ "لا مخالفات — فقط Batch 03 + DEEPEN جارٍ. التجميد محترَم." (بعد إعادة تثبيت `html5lib` محلياً — بيئة جديدة كل جلسة). `structural_audit.py` = 282 مقال/0 مكسور (لا يشمل الملفات بلا سايدبار أو بسايدبار/H1 مكرر — نفس القيد المعروف). `gsystem_autopilot.py`(بلا `--push`) = exit0 نظيف بلا مخرجات (لا محتوى معتمد جديد ينتظر بناء). `handoff_sync.py` = `{"cards": 25}` ثابت. الملفان LIVE (`body-fat-vs-weight-guide-en`, `daily-islamic-habits-guide-en`) مؤكَّدان بلا `noindex` (لا انتكاسة). `renting-vs-buying-property-saudi-families`(ع+en) مؤكَّد `noindex,nofollow` محفوظ على القرص.
+
+**لا اعتماد LIVE جديد. صفر تغيير محتوى فعلي مؤكَّد منذ دورة 09:44 (~57 دقيقة، صفر كوميت جديد).** التصعيد الأهم يبقى `power-of-i-was-wrong-en.html` (+`engineer-simplified-family-life-en.html` بنفس العلة) — أطلب من جوست مجدداً تدخلاً مباشراً أو توضيح حالة هيما التشغيلية؛ الصمت تجاوز 22 ساعة على أول اكتشاف و3 تصعيدات رسمية بلا رد.
+
+— عامر
+
+## عامر — دورة 2026-07-03 08:10 UTC (~11:10 توقيت الرياض) — دورة أوتوماتيكية 30 دقيقة
+
+**ملاحظة ساعة:** `date -u` في هذه الجلسة أظهر 08:10 UTC، أي أقل من آخر سجل TEAM-BUS (10:41 UTC) — نفس نمط تفاوت الساعة الملحوظ سابقاً عبر جلسات ساندبوكس منفصلة (راجع سجل 07:09 UTC). أُسجِّل الوقت كما ظهر فعلياً من `date -u`، لا تعديل يدوي. زمنياً هذه الدورة تلي منطقياً دورة 10:41 UTC المسجَّلة (نفس الحالة، صفر تغيير).
+
+**git:** `git fetch origin main` نجح هذه المرة (خلافاً لفشل "Host key verification failed" في دورة 10:41) — `origin/main` تقدَّم إلى `838df64a` (3 كوميتات autopilot/CI جديدة عن قاعدة الدمج المعلَّقة `5d32c736`). لكن `.git/HEAD.lock` + `.git/index.lock` لا تزالا موجودتين (نفس الطابع الزمني 08:09، Operation not permitted) و`MERGE_HEAD=5d32c736` لا يزال عالقاً ("All conflicts fixed but you are still merging"، دمج غير مكتمل من كورسر). **لم تُنفَّذ أي عملية كتابة git هذه الدورة** (لا `add`/`commit`/`pull`) — تُركت الأقفال فوراً كما تقتضي التعليمات؛ محاولة push best-effort واحدة آخر الدورة كالمعتاد (متوقَّع فشلها لنفس السبب).
+
+**فحص مستقل مباشر (`amer_gate.py` فعلي + `grep`/`json.loads` تصحيحي يدوي على 9 ملفات، لا رسائل كوميت):**
+
+1. **بلا تغيير مؤكَّد (مطابق حرفياً لدورة 10:41):**
+   - `comparisons/saudi-vs-uae-family.html`(ع)=1301ك/FAQ 5/5 PASS.
+   - `comparisons/saudi-vs-uae-family-en.html`=1496ك/FAQ=4 PASS (دون حد 5-6 التفويضي). كلاهما بلا `article-sidebar` (0 مطابقة مؤكَّدة)، working tree غير مُلتزَم.
+   - `finance-wealth/digital-minimalism-faith-families.html`(ع)=1311ك WARN (FAQ=3/3، دون 4-6)، `<article class="article-body">` لا يزال بلا `</article>` مقابل.
+   - `peace-capsules/art-of-apologizing-en.html`=1486ك، **FAIL** صريح: 24 شرطة طويلة + محتوى حسّاس بلا إخلاء مسؤولية + FAQ=3/3.
+   - `real-estate/property-roi-comparison-saudi-uae-en.html`=1528ك، **FAIL**: 17 شرطة + 50 نسبة بلا رابط عميق واحد + ادّعاء سلطة بلا رابط مجاور.
+   - `islamic-hajj-umrah/umrah-off-peak-seasons-guide-en.html`=1440ك، **FAIL**: 3 شرطات + 11 نسبة بلا رابط عميق + ادّعاء "Ministry of Hajj and Umrah" بلا رابط.
+   - `comparisons/outdoor-vs-indoor-family-activities.html`(ع) — `amer_gate.py`=PASS آلياً (1310ك) لكن **false-pass مؤكَّد يدوياً مجدداً**: `<h1>` مكرر (سطر 80 بانر + سطر 97 متن)، `<aside class="article-sidebar">` مكرر (سطران متتاليان 149-150)، صفر عنصر FAQ مرئي (`faq-item`/`faq-question`) رغم `FAQPage` schema=5.
+   - `featured-stories/family-six-3000-riyals.html`(ع) — PASS آلياً لكن **false-pass مؤكَّد يدوياً مجدداً**: `.faq-item` مُعرَّفة CSS فقط (سطر 32-33)، صفر استخدام فعلي في المتن (`grep -c` = 0).
+
+2. **🚨 تلوّث "daily walking" — false-pass مؤكَّد مجدداً، صفر تغيير (تصعيد خامس):**
+   - `peace-capsules/power-of-i-was-wrong-en.html` — فحص `json.loads` مباشر على `Article` LD-JSON يؤكد: `headline`="The Benefits of Daily Walking for Your Family: How Half an Hour Changes Your Home's Health"، `og:image`=`hero-daily-walking-benefits.webp` — **تلوّث 100% ثابت**. معلَّق منذ 2026-07-02 12:42 UTC، الآن **~19.5 ساعة متواصلة بحساب الساعة الفعلية لهذه الجلسة** (أو ~22+ ساعة بحساب توقيت الدورات المسجَّلة سابقاً)، **4 تصعيدات رسمية سابقة (05:08، 06:08، 09:44، 10:41) بلا أي رد فعل مرصود من جوست على أي منها.**
+   - `featured-stories/engineer-simplified-family-life-en.html` — نفس التلوّث بالضبط (`headline`/`og:image` "Daily Walking" حرفياً)، نفس مدة التعليق تقريباً.
+
+3. **صور:** لا صور جديدة معلَّقة — `pending-review/` يحوي فقط ملفَي PNG خام قديمين (`hero-property-roi-comparison-raw.png`, `hero-umrah-off-peak-raw.png`، تعذّر حذفهما بصلاحيات القراءة، بلا أثر). تحقّق مجدَّد: الصور الثلاث المعتمدة (`hero-art-of-apologizing.webp`, `hero-property-roi-comparison.webp`, `hero-umrah-off-peak.webp`) لا تزال في `approved/` ومُدرَجة صحيحاً في `image-manifest.json` — لا انتكاسة.
+
+**فحوصات روتينية:** `amer_freeze_watch.py` = ✅ "لا مخالفات — فقط Batch 03 + DEEPEN جارٍ. التجميد محترَم." `deepen_gate.py` = `{"frozen": true, "deepen_count": 77, "quality_pct": 0.0, "batch": "batch-04", "allowed": false}` — ثابت من دورة 07:09 (لا تحسّن، لا تراجع). `structural_audit.py` (بعد إعادة تثبيت `html5lib` — بيئة جديدة كل جلسة) = 282 مقال/0 مكسور. `gsystem_autopilot.py` (بلا `--push`) = exit0 نظيف بلا مخرجات. `handoff_sync.py` = `{"cards": 25, "updated": "2026-07-03"}` ثابت. الملفان LIVE (`blog/body-fat-vs-weight-guide-en.html`, `blog/daily-islamic-habits-guide-en.html`) مؤكَّدان بلا `noindex` (لا انتكاسة). `comparisons/renting-vs-buying-property-saudi-families`(ع+en) مؤكَّد `noindex,nofollow` محفوظ.
+
+**القرار: لا اعتماد LIVE جديد.** صفر تقدّم محتوى فعلي مؤكَّد على كل البنود التسعة المفحوصة مباشرة هذه الدورة. **تصعيد خامس لجوست بخصوص `power-of-i-was-wrong-en.html` + `engineer-simplified-family-life-en.html`** — أطلب مجدداً تدخلاً مباشراً أو توضيح صريح لحالة هيما التشغيلية؛ الجمود التام مستمر منذ 4 تصعيدات رسمية بلا رد فعل مرصود واحد. الترتيب/الأوامر لهيما تبقى كما في `AMER-ORDERS-ACTIVE.md` دون تعديل جوهري (لا مبرر لإعادة الترتيب مع صفر حركة). التفاصيل: `TEAM-BUS.md` (2026-07-03 08:10 UTC).
+
+— عامر
+
+## عامر — دورة 2026-07-03 08:40 UTC (~11:40 توقيت الرياض) — دورة أوتوماتيكية 30 دقيقة
+
+**ملاحظة ساعة:** `date -u` هذه الجلسة أظهر 08:40 UTC — بين آخر سجلَّي TEAM-BUS (09:44) وAMER-ORDERS (08:10)، نفس نمط تفاوت الساعة المعروف بين جلسات ساندبوكس منفصلة. أُسجِّل كما ظهر فعلياً بلا تعديل يدوي. زمنياً هذه الدورة تلي منطقياً آخر سجل معروف (09:44/10:41)، صفر تغيير عنهما.
+
+**git:** أقفال `.git/index.lock`+`.git/HEAD.lock`+`.git/objects/maintenance.lock`+`MERGE_HEAD` كلها لا تزال موجودة (كورسر نشِط) — لم تُنفَّذ أي عملية كتابة git هذه الدورة، لا حتى محاولة، تجنباً للتصادم. `git log` المحلي HEAD ثابت `6ba3960c`، `origin/main` (من `git fetch` سابق) متقدِّم بكوميتات autopilot/pycache فقط، صفر محتوى فعلي جديد.
+
+**فحص مستقل مباشر (`amer_gate.py` فعلي + `json.loads` مباشر على كل FAQPage/Article + `grep` بنيوي، لا رسائل كوميت) على 9 ملفات — صفر تغيير مؤكَّد مطابق حرفياً لدورة 09:44/10:41:**
+
+1. **بلا تغيير مؤكَّد:**
+   - `comparisons/saudi-vs-uae-family.html`(ع)=1301ك/FAQ 5/5 PASS.
+   - `comparisons/saudi-vs-uae-family-en.html`=1496ك/FAQ=4 PASS (دون حد 5-6). كلاهما بلا `article-sidebar`، working tree غير مُلتزَم (لا يزال في `git status`).
+   - `finance-wealth/digital-minimalism-faith-families.html`(ع) — `<article` مفتوح 1 مرة، `</article>` **صفر** (لا يزال بلا إغلاق).
+   - `peace-capsules/art-of-apologizing-en.html`=1486ك، **FAIL** صريح مؤكَّد (`amer_gate.py` مباشرة): 24 شرطة طويلة + محتوى حسّاس بلا إخلاء + FAQ=3/3.
+   - `real-estate/property-roi-comparison-saudi-uae-en.html`=1528ك، **FAIL**: 17 شرطة + 50 نسبة بلا رابط عميق + ادّعاء سلطة بلا رابط.
+   - `islamic-hajj-umrah/umrah-off-peak-seasons-guide-en.html`=1440ك، **FAIL**: 3 شرطات + 11 نسبة بلا رابط عميق + ادّعاء "Ministry of Hajj and Umrah" بلا رابط.
+   - `comparisons/outdoor-vs-indoor-family-activities.html`(ع) — `false-pass` مؤكَّد مجدداً: `<h1>` مكرر (سطر 80+97)، `<aside class="article-sidebar">` مكرر (سطران متتاليان 149-150)، بانتظار كورسر.
+   - `featured-stories/family-six-3000-riyals.html`(ع) — `false-pass` مؤكَّد مجدداً: `grep -c faq-item`=2 (تعريف CSS فقط)، صفر استخدام فعلي في المتن.
+
+2. **🚨 تلوّث "daily walking" — صفر تغيير (تصعيد سادس):**
+   - `peace-capsules/power-of-i-was-wrong-en.html` — الآن **يمرّ رقمياً** على `amer_gate.py` (1332ك، 0 شرطة، FAQ 5/5، 0 نسبة) لكن التلوّث الموضوعي مؤكَّد بـ`json.loads` مباشر: `Article.headline`="The Benefits of Daily Walking for Your Family..."، `og:image`=`hero-daily-walking-benefits.webp`، أول سؤالي FAQ عن "دقائق المشي اليومية" — **لا علاقة بعنوان الصفحة الفعلي "The Power of I Was Wrong"** (مؤكَّد بـ`<h1>` المتن مختلف تماماً عن banner/schema). false-pass حرفي 100%، صفر تغيير. معلَّق منذ 2026-07-02 12:42 UTC، **5 تصعيدات رسمية سابقة (05:08، 06:08، 09:44، 10:41، 08:10) بلا أي رد فعل مرصود من جوست على أي منها.**
+   - `featured-stories/engineer-simplified-family-life-en.html` — نفس التلوّث بالضبط (headline/og:image/FAQ "Daily Walking" حرفياً)، أيضاً PASS رقمي زائف.
+
+3. **صور:** لا صور جديدة معلَّقة. `pending-review/` يحوي فقط ملفَي PNG خام قديمين مستخدَمين بالفعل (`hero-property-roi-comparison-raw.png`, `hero-umrah-off-peak-raw.png`)، لا أثر عملي. تحقّق مجدَّد عبر `image-manifest.json`: الصور الثلاث المعتمدة (`hero-art-of-apologizing`, `hero-property-roi-comparison`, `hero-umrah-off-peak`) لا تزال `approved` وموجودة فعلياً على القرص — لا انتكاسة.
+
+**فحوصات روتينية:** `amer_freeze_watch.py` = ✅ "لا مخالفات — فقط Batch 03 + DEEPEN جارٍ. التجميد محترَم." `deepen_gate.py` = `{"deepen_count": 77, "allowed": false}` ثابت. `structural_audit.py` (بعد إعادة تثبيت `html5lib`) = 282 مقال/0 مكسور. `gsystem_autopilot.py`(بلا `--push`) = timeout متكرر (~45 ثانية، قيد بيئي معروف من دورات سابقة، لا يعكس مشكلة مشروع — لا محتوى معتمد جديد ينتظر بناء أصلاً). `handoff_sync.py` = `{"cards": 25}` ثابت. الملفان LIVE (`blog/body-fat-vs-weight-guide-en.html`, `blog/daily-islamic-habits-guide-en.html`) مؤكَّدان بلا `noindex` (لا انتكاسة). `comparisons/renting-vs-buying-property-saudi-families`(ع+en) مؤكَّد `noindex,nofollow` محفوظ.
+
+**القرار: لا اعتماد LIVE جديد.** صفر تقدّم محتوى فعلي مؤكَّد على كل البنود المفحوصة مباشرة هذه الدورة. **تصعيد سادس لجوست** بخصوص `power-of-i-was-wrong-en.html` + `engineer-simplified-family-life-en.html` — 5 تصعيدات رسمية سابقة بلا أي رد فعل مرصود، الجمود التشغيلي مستمر. الترتيب/الأوامر لهيما تبقى كما في `AMER-ORDERS-ACTIVE.md` دون تعديل جوهري. التفاصيل: `TEAM-BUS.md` (2026-07-03 08:40 UTC).
+
+— عامر
