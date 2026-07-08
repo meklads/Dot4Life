@@ -8,6 +8,7 @@
 
 | الوقت | من → إلى | الرسالة | الحالة |
 |-------|----------|---------|--------|
+| 2026-07-08 13:57 UTC | كورسر → عامر/جوست | **✅ استعادة الهيدر/الفوتر الموحّدين** على صفحات موجة 3 (7 ملفات) من `partials/footer.html` + navbar ثنائي اللغة. تعديل `amer_gate` ليفحص اللاتينية داخل `<article>` فقط حتى لا يُكسر الكروم الثابت. | ✅ |
 | 2026-07-08 13:53 UTC | كورسر → عامر/جوست | **✅ موجة 3 مكتملة — 7/7 PASS `amer_gate.py`.** عُزلت أولاً بـ noindex (كانت LIVE وفاشلة)، ثم أُصلحت: pregnancy-nutrition ع/en · end-of-service ع/en · saving-for-education ع/en · visceral-fat-gulf. إزالة حشو AI · نسب→نثر + روابط WHO/MOH/HRSD/CMA/SAMA/IDF · FAQ 4-5 · تذييل عربي صفّي. **لا LIVE حتى اعتماد عامر.** | ✅ |
 | 2026-07-08 13:46 UTC | كورسر → عامر/جوست | **✅ موجة 3 مكتملة — T-04 thin live.** اكتشاف: 7 ملفات LIVE بلا noindex وتفشل `amer_gate`. **إجراء فوري:** عزل noindex ثم إصلاح ملفاً بملف: نسب بلا روابط · فقرات لاتينية · FAQ 4-6 · كليشيهات AI · روابط سلطة. الملفات: pregnancy-nutrition ع/en · end-of-service ع/en · saving-for-education ع/en · visceral-fat-gulf. **لا LIVE ذاتي بعد الإصلاح حتى اعتماد عامر.** | 🔄 |
 | 2026-07-08 12:41 UTC | كورسر → عامر/جوست | **✅ موجة 2 مكتملة — 4/4 PASS `amer_gate.py`، noindex محفوظ.** `outdoor-vs-indoor`(ع): FAQ مرئي=schema 5/5 + `</article>` + aside واحد + تعميق؛ `outdoor-vs-indoor-en`: FAQ مرئي=schema 5/5 + تعميق ≥1600؛ `art-of-apologizing`(ع): تعميق + `<article>` + سايدبار داخل `article-layout`؛ `family-six-3000-riyals`(ع): FAQ مرئي مطابق schema 5/5 + تعميق. **بانتظار مراجعة عامر قبل أي LIVE.** | ✅ |

@@ -108,10 +108,16 @@ def internal_links(html):
     return len(set(internal))
 
 def arabic_page_latin_check(html, is_arabic):
+    """فحص فقرات لاتينية داخل جسم المقال فقط — لا nav/footer الموحّدين ثنائيي اللغة."""
     if not is_arabic:
         return 0
     t = text_only(html)
-    paras = re.findall(r"<p[^>]*>(.*?)</p>", t, re.S)
+    # استبعد الكروم الثابت حتى لا يُكسر الهيدر/الفوتر الموحّدان من partials
+    t = re.sub(r"<nav\b[^>]*>.*?</nav>", " ", t, flags=re.S | re.I)
+    t = re.sub(r"<footer\b[^>]*>.*?</footer>", " ", t, flags=re.S | re.I)
+    m = re.search(r"<article\b[^>]*>(.*?)</article>", t, re.S | re.I)
+    chunk = m.group(1) if m else t
+    paras = re.findall(r"<p[^>]*>(.*?)</p>", chunk, re.S)
     bad = 0
     for p in paras:
         p2 = re.sub(r"<[^>]+>", "", p).strip()
