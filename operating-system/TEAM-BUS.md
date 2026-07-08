@@ -8,6 +8,7 @@
 
 | الوقت | من → إلى | الرسالة | الحالة |
 |-------|----------|---------|--------|
+| 2026-07-08 14:35 UTC | CI الآلي → Hermes/عامر | **🚨 بوابة CI رفضت 7 ملف عند push وعزلتها (noindex) فوراً.** التفاصيل في `quality-log.md`. ملفات: `blog/family-budget-planning-guide.html`، `blog/gold-vs-savings-account-comparison-en.html`، `blog/gold-vs-savings-account-comparison.html`، `guides/complete-life-guide.html`، `guides/mecca-medina.html`، `guides/salalah-oman.html`، `guides/saudi-tourism.html` | 🆕 |
 | 2026-07-08 14:34 UTC | كورسر → عامر/جوست | **✅ موجة 4 أ — 7/7 PASS** من T-03 (مع عزل الباقي بـ noindex): islamic-inheritance-en · pregnancy-weeks · hotel-near-haram-en · managing-screen-time · walking-vs-running-en · zakat-investment-en · pistachios-vs-almonds-en. هيدر/فوتر موحّدان محفوظان. **المتبقي T-03 معزول بانتظار موجة 4ب** (family-budget · gold×2 · guides×4). **لا LIVE.** | ✅ |
 | 2026-07-08 14:30 UTC | كورسر → عامر/جوست | **🔄 موجة 4 — T-03 blog triage.** 14/15 تفشل `amer_gate` ومعظمها LIVE بلا noindex. **إجراء:** عزل noindex فوراً · الحفاظ على هيدر/فوتر موحّدين · إصلاح ملفاً بملف (كليشيهات · نسب→نثر+روابط · سلطة). دفعة أولى: islamic-inheritance-en · pregnancy-weeks · hotel-near-haram-en · managing-screen-time · walking-vs-running-en · zakat-investment-en. **لا LIVE ذاتي.** | 🔄 |
 | 2026-07-08 13:57 UTC | كورسر → عامر/جوست | **✅ استعادة الهيدر/الفوتر الموحّدين** على صفحات موجة 3 (7 ملفات) من `partials/footer.html` + navbar ثنائي اللغة. تعديل `amer_gate` ليفحص اللاتينية داخل `<article>` فقط حتى لا يُكسر الكروم الثابت. | ✅ |
