@@ -1576,3 +1576,7 @@ Salman's Story: 70 Notifi | Figures based on studies from University of Californ
       
       | A 2022 study published in the Journal of Adolescent Health followed 15,000 teenagers and f | The most powerful form of family meal is the intergenerational one — where grandparents, p
 - `real-estate/three-generation-table-family-meals.html`: كلمات=155 <1300 · شرطات طويلة=1 · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية · ادّعاء سلطة بلا رابط مجاور (1): دراسة نشرت في Journal of Adolescent Health (٢٠٢٢) تابعت ١٥,٠٠٠ مراهق ووجدت أن الذين يتناول
+
+## 2026-07-08 23:39 UTC — 🤖 بوابة CI الآلية رفضت 1 ملف عند push
+تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
+- `fitness/ramadan-calorie-calculator.html`: محتوى حسّاس بلا إخلاء مسؤولية · نِسَب=21 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (3): السحور المثالي يجب أن يحتوي على: كربوهيدرات معقدة مثل الشوفان أو خبز القمح الكامل (تمد بال | نعم، يمكن إنقاص الوزن في رمضان بطريقة صحية بشرط اتباع نظام غذائي متوازن. للحصول على أفضل ا | نعم، يؤثر النوم بشكل مباشر على عملية الأيض وحرق السعرات الحرارية. أظهرت دراسة من المركز ال
