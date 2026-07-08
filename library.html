@@ -22,7 +22,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Almarai:wght@400;700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="/styles/global.css?v=20260624n"/>
-<link rel="stylesheet" href="/styles/pages/library.css?v=20260708a"/>
+<link rel="stylesheet" href="/styles/pages/library.css?v=20260708b"/>
 <link rel="stylesheet" href="/styles/pages/recipes.css?v=20260708a"/>
 <script src="/scripts/global.js?v=20260625" defer></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1436107577087160" crossorigin="anonymous"></script></head>
@@ -50,37 +50,56 @@
   </div>
 </nav>
 
-<header class="lib-hero">
+<header class="lib-hero" id="lib-hero">
   <div class="lib-hero-inner">
     <p class="lib-eyebrow"><span class="en">Library</span><span class="ar">المكتبة</span></p>
-    <h1 class="lib-title"><span class="en">All Free Tools &amp; Calculators</span><span class="ar">جميع الأدوات والحاسبات المجانية</span></h1>
-    <p class="lib-sub"><span class="en">Every tool runs locally in your browser. No data stored or shared.</span><span class="ar">جميع الأدوات تعمل محلياً في متصفحك. لا تُخزَّن بيانات ولا تُشارَك.</span></p>
-    <ul class="lib-trust">
+    <h1 class="lib-title" id="lib-hero-title">
+      <span class="lib-hero-tools"><span class="en">All Free Tools &amp; Calculators</span><span class="ar">جميع الأدوات والحاسبات المجانية</span></span>
+      <span class="lib-hero-recipes is-hidden"><span class="en">Featured Recipes</span><span class="ar">وصفات مميزة</span></span>
+    </h1>
+    <p class="lib-sub" id="lib-hero-sub">
+      <span class="lib-hero-tools"><span class="en">Every tool runs locally in your browser. No data stored or shared.</span><span class="ar">جميع الأدوات تعمل محلياً في متصفحك. لا تُخزَّن بيانات ولا تُشارَك.</span></span>
+      <span class="lib-hero-recipes is-hidden"><span class="en">Practical meals for pregnancy, budget, speed, and family tables.</span><span class="ar">وجبات عملية للحمل والميزانية والسرعة والعائلة.</span></span>
+    </p>
+    <ul class="lib-trust lib-hero-tools" id="lib-hero-trust">
       <li><span class="en">Free forever</span><span class="ar">مجاني دائماً</span></li>
       <li><span class="en">Arabic &amp; English</span><span class="ar">عربي وإنجليزي</span></li>
       <li><span class="en">Private by design</span><span class="ar">خصوصيتك محفوظة</span></li>
     </ul>
+    <p class="rcp-disclaimer lib-hero-recipes is-hidden" id="lib-hero-recipes-note"><span class="en">General guidance only — not medical advice.</span><span class="ar">إرشاد عام فقط — ليس نصيحة طبية.</span></p>
   </div>
 </header>
 
-<div class="lib-tabs-wrap" role="navigation" aria-label="Tool categories">
+<div class="lib-mode-wrap" role="navigation" aria-label="Library sections">
+  <div class="lib-mode-inner">
+    <button type="button" class="lib-mode is-active" data-mode="tools" aria-pressed="true"><span class="en">Free Tools</span><span class="ar">الأدوات المجانية</span></button>
+    <button type="button" class="lib-mode" data-mode="recipes" aria-pressed="false"><span class="en">Featured Recipes</span><span class="ar">وصفات مميزة</span></button>
+  </div>
+</div>
+
+<div class="lib-tabs-wrap lib-subtabs-wrap" id="lib-subtabs-tools" role="navigation" aria-label="Tool categories">
   <div class="lib-tabs-inner">
-    <button type="button" class="lib-tab is-active" data-filter="all"><span class="en">All</span><span class="ar">الكل</span></button>
-    <button type="button" class="lib-tab" data-filter="health"><span class="en">Health</span><span class="ar">الصحة</span></button>
-    <button type="button" class="lib-tab" data-filter="finance"><span class="en">Finance</span><span class="ar">المالية</span></button>
-    <button type="button" class="lib-tab" data-filter="islamic"><span class="en">Islamic</span><span class="ar">الإسلامية</span></button>
-    <button type="button" class="lib-tab" data-filter="travel"><span class="en">Travel</span><span class="ar">السفر</span></button>
-    <a href="/library/recipes/" class="lib-tab lib-tab--link"><span class="en">Recipes</span><span class="ar">وصفات</span></a>
+    <button type="button" class="lib-tab lib-subtab is-active" data-filter="all"><span class="en">All</span><span class="ar">الكل</span></button>
+    <button type="button" class="lib-tab lib-subtab" data-filter="health"><span class="en">Health</span><span class="ar">الصحة</span></button>
+    <button type="button" class="lib-tab lib-subtab" data-filter="finance"><span class="en">Finance</span><span class="ar">المالية</span></button>
+    <button type="button" class="lib-tab lib-subtab" data-filter="islamic"><span class="en">Islamic</span><span class="ar">الإسلامية</span></button>
+    <button type="button" class="lib-tab lib-subtab" data-filter="travel"><span class="en">Travel</span><span class="ar">السفر</span></button>
+  </div>
+</div>
+
+<div class="lib-tabs-wrap lib-subtabs-wrap is-hidden" id="lib-subtabs-recipes" role="navigation" aria-label="Recipe categories">
+  <div class="lib-tabs-inner">
+    <button type="button" class="lib-tab lib-subtab rcp-subtab is-active" data-rcp-filter="all"><span class="en">All</span><span class="ar">الكل</span></button>
+    <button type="button" class="lib-tab lib-subtab rcp-subtab" data-rcp-filter="pregnancy"><span class="en">Pregnancy</span><span class="ar">للحامل</span></button>
+    <button type="button" class="lib-tab lib-subtab rcp-subtab" data-rcp-filter="budget"><span class="en">Budget</span><span class="ar">اقتصادية</span></button>
+    <button type="button" class="lib-tab lib-subtab rcp-subtab" data-rcp-filter="quick"><span class="en">Quick</span><span class="ar">سريعة</span></button>
+    <button type="button" class="lib-tab lib-subtab rcp-subtab" data-rcp-filter="family"><span class="en">Family</span><span class="ar">للعائلة</span></button>
   </div>
 </div>
 
 <main class="lib-main" id="lib-main">
 
-  <a href="/library/recipes/" class="lib-recipes-banner" id="lib-recipes-banner">
-    <p class="lib-recipes-banner-kicker"><span class="en">New in Library</span><span class="ar">جديد في المكتبة</span></p>
-    <h2 class="lib-recipes-banner-title"><span class="en">Featured Recipes</span><span class="ar">وصفات مميزة</span></h2>
-    <p class="lib-recipes-banner-desc"><span class="en">Practical meals for pregnancy, budget, speed, and family tables — not a recipe blog.</span><span class="ar">وجبات عملية للحمل والميزانية والسرعة والعائلة — ليست مدونة وصفات.</span></p>
-  </a>
+  <div id="lib-tools-panel">
 
   <section class="lib-section" id="cat-health" data-category="health">
     <div class="lib-section-head">
@@ -250,28 +269,165 @@
     </div>
   </section>
 
+  </div><!-- /lib-tools-panel -->
+
+  <div id="lib-recipes-panel" class="is-hidden" aria-hidden="true">
+    <div id="lib-recipes-sections" class="lib-recipes-loading">
+      <p class="lib-recipes-status"><span class="en">Loading recipes…</span><span class="ar">جاري تحميل الوصفات…</span></p>
+    </div>
+  </div>
+
 </main>
 
 <script>
 (function(){
-  var tabs = document.querySelectorAll('.lib-tab');
-  var sections = document.querySelectorAll('.lib-section');
-  function applyFilter(cat) {
-    tabs.forEach(function(t){ t.classList.toggle('is-active', t.getAttribute('data-filter') === cat); });
-    sections.forEach(function(s){
-      var show = cat === 'all' || s.getAttribute('data-category') === cat;
+  var BUDGET = {
+    low: { en: 'Low budget', ar: 'ميزانية منخفضة' },
+    medium: { en: 'Medium budget', ar: 'ميزانية متوسطة' },
+    high: { en: 'High budget', ar: 'ميزانية مرتفعة' }
+  };
+
+  var modeBtns = document.querySelectorAll('.lib-mode');
+  var toolsPanel = document.getElementById('lib-tools-panel');
+  var recipesPanel = document.getElementById('lib-recipes-panel');
+  var subtabsTools = document.getElementById('lib-subtabs-tools');
+  var subtabsRecipes = document.getElementById('lib-subtabs-recipes');
+  var recipesRoot = document.getElementById('lib-recipes-sections');
+  var recipesLoaded = false;
+  var currentMode = 'tools';
+  var currentRcpFilter = 'all';
+
+  function toggleHero(mode) {
+    document.querySelectorAll('.lib-hero-tools').forEach(function(el){
+      el.classList.toggle('is-hidden', mode !== 'tools');
+    });
+    document.querySelectorAll('.lib-hero-recipes').forEach(function(el){
+      el.classList.toggle('is-hidden', mode !== 'recipes');
+    });
+  }
+
+  function setMode(mode) {
+    currentMode = mode;
+    modeBtns.forEach(function(btn){
+      var on = btn.getAttribute('data-mode') === mode;
+      btn.classList.toggle('is-active', on);
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    toolsPanel.classList.toggle('is-hidden', mode !== 'tools');
+    recipesPanel.classList.toggle('is-hidden', mode !== 'recipes');
+    recipesPanel.setAttribute('aria-hidden', mode !== 'recipes' ? 'true' : 'false');
+    subtabsTools.classList.toggle('is-hidden', mode !== 'tools');
+    subtabsRecipes.classList.toggle('is-hidden', mode !== 'recipes');
+    toggleHero(mode);
+    if (mode === 'recipes') loadRecipes();
+    location.hash = mode === 'recipes' ? 'recipes' : 'tools';
+  }
+
+  function bi(en, ar) {
+    return '<span class="en">' + en + '</span><span class="ar">' + ar + '</span>';
+  }
+
+  function recipeMeta(r) {
+    var total = r.prepMinutes + r.cookMinutes;
+    var budget = BUDGET[r.budget] || BUDGET.low;
+    return '<div class="rcp-meta">' +
+      '<span class="rcp-chip">' + bi(total + ' min', total + ' د') + '</span>' +
+      '<span class="rcp-chip">' + bi(r.servings + ' servings', r.servings + ' حصص') + '</span>' +
+      '<span class="rcp-chip">' + bi(r.difficulty.en, r.difficulty.ar) + '</span>' +
+      '<span class="rcp-chip rcp-chip--budget">' + bi(budget.en, budget.ar) + '</span>' +
+      '</div>';
+  }
+
+  function renderRecipes(data) {
+    var catsById = {};
+    data.categories.forEach(function(c){ catsById[c.id] = c; });
+    var html = '';
+    data.categories.forEach(function(cat){
+      var items = data.recipes.filter(function(r){ return r.category === cat.id; });
+      html += '<section class="lib-section lib-rcp-section" id="rcp-cat-' + cat.slug + '" data-rcp-category="' + cat.id + '">';
+      html += '<div class="lib-section-head"><h2 class="lib-section-title">' + bi(cat.title.en, cat.title.ar) + '</h2>';
+      html += '<span class="lib-section-count">' + items.length + '</span></div>';
+      html += '<p class="rcp-related-link">' + bi('Related: ', 'مرتبط: ') + '<a href="' + cat.relatedLink + '">' + bi(cat.relatedLabel.en, cat.relatedLabel.ar) + '</a></p>';
+      html += '<div class="lib-grid">';
+      items.forEach(function(r){
+        html += '<a href="/library/recipes/' + r.slug + '.html" class="lib-card lib-card--recipe" data-rcp-cat="' + cat.id + '">';
+        html += '<p class="lib-card-kicker">' + bi(cat.title.en, cat.title.ar) + '</p>';
+        html += '<h3 class="lib-card-title">' + bi(r.title.en, r.title.ar) + '</h3>';
+        html += '<p class="lib-card-desc">' + bi(r.desc.en, r.desc.ar) + '</p>';
+        html += '<p class="rcp-benefit">' + bi(r.benefit.en, r.benefit.ar) + '</p>';
+        html += recipeMeta(r);
+        html += '<span class="lib-card-arrow">' + bi('Open →', '← افتح') + '</span></a>';
+      });
+      html += '</div></section>';
+    });
+    recipesRoot.innerHTML = html;
+    recipesRoot.classList.remove('lib-recipes-loading');
+    applyRcpFilter(currentRcpFilter);
+  }
+
+  function loadRecipes() {
+    if (recipesLoaded) return;
+    fetch('/library/recipes/recipes.json')
+      .then(function(res){ return res.json(); })
+      .then(function(data){ recipesLoaded = true; renderRecipes(data); })
+      .catch(function(){
+        recipesRoot.innerHTML = '<p class="lib-recipes-status"><span class="en">Could not load recipes. <a href="/library/recipes/">Open recipes hub</a></span><span class="ar">تعذّر التحميل. <a href="/library/recipes/">افتح صفحة الوصفات</a></span></p>';
+      });
+  }
+
+  function applyRcpFilter(cat) {
+    currentRcpFilter = cat;
+    document.querySelectorAll('.rcp-subtab').forEach(function(t){
+      t.classList.toggle('is-active', t.getAttribute('data-rcp-filter') === cat);
+    });
+    document.querySelectorAll('.lib-rcp-section').forEach(function(s){
+      var show = cat === 'all' || s.getAttribute('data-rcp-category') === cat;
       s.classList.toggle('is-hidden', !show);
     });
     if (cat !== 'all') {
-      var el = document.getElementById('cat-' + cat);
+      var el = document.getElementById('rcp-cat-' + cat);
       if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
-  tabs.forEach(function(tab){
-    tab.addEventListener('click', function(){ applyFilter(tab.getAttribute('data-filter')); });
+
+  modeBtns.forEach(function(btn){
+    btn.addEventListener('click', function(){ setMode(btn.getAttribute('data-mode')); });
   });
+
+  document.querySelectorAll('#lib-subtabs-tools .lib-subtab').forEach(function(tab){
+    tab.addEventListener('click', function(){
+      var cat = tab.getAttribute('data-filter');
+      document.querySelectorAll('#lib-subtabs-tools .lib-subtab').forEach(function(t){
+        t.classList.toggle('is-active', t.getAttribute('data-filter') === cat);
+      });
+      document.querySelectorAll('#lib-tools-panel .lib-section').forEach(function(s){
+        var show = cat === 'all' || s.getAttribute('data-category') === cat;
+        s.classList.toggle('is-hidden', !show);
+      });
+      if (cat !== 'all') {
+        var el = document.getElementById('cat-' + cat);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  document.querySelectorAll('.rcp-subtab').forEach(function(tab){
+    tab.addEventListener('click', function(){ applyRcpFilter(tab.getAttribute('data-rcp-filter')); });
+  });
+
   var hash = (location.hash || '').replace('#','');
-  if (hash && document.getElementById('cat-' + hash)) applyFilter(hash);
+  if (hash === 'recipes' || hash.indexOf('recipes-') === 0) {
+    setMode('recipes');
+    if (hash.indexOf('recipes-') === 0) {
+      currentRcpFilter = hash.replace('recipes-','');
+      if (recipesLoaded) applyRcpFilter(currentRcpFilter);
+    }
+  } else if (hash && document.getElementById('cat-' + hash)) {
+    setMode('tools');
+    document.querySelectorAll('#lib-subtabs-tools .lib-subtab').forEach(function(t){
+      if (t.getAttribute('data-filter') === hash) t.click();
+    });
+  }
 })();
 </script>
 

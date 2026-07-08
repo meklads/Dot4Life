@@ -107,7 +107,7 @@ body.library-page {
 /* ── Category tabs ───────────────────────────────────────── */
 .lib-tabs-wrap {
   position: sticky;
-  top: 110px;
+  top: 168px;
   z-index: 50;
   width: 100%;
   background: rgba(255, 255, 255, .92);
@@ -117,7 +117,7 @@ body.library-page {
 }
 
 @media (max-width: 768px) {
-  .lib-tabs-wrap { top: 90px; }
+  .lib-tabs-wrap { top: 148px; }
 }
 
 .lib-tabs-inner {
@@ -153,6 +153,89 @@ body.library-page {
 .lib-tab.is-active {
   color: var(--lib-teal-dark);
   border-bottom-color: var(--lib-teal);
+}
+
+/* ── Library mode switch (Tools | Recipes) ─────────────── */
+.lib-mode-wrap {
+  position: sticky;
+  top: 110px;
+  z-index: 51;
+  width: 100%;
+  background: rgba(255, 255, 255, .96);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--lib-border);
+}
+
+@media (max-width: 768px) {
+  .lib-mode-wrap { top: 90px; }
+}
+
+.lib-mode-inner {
+  max-width: var(--lib-max);
+  margin: 0 auto;
+  padding: .65rem var(--lib-gutter) .5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .5rem;
+}
+
+.lib-mode {
+  padding: .75rem 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--lib-border);
+  background: #FAFAFA;
+  font-family: inherit;
+  font-size: clamp(.74rem, 1.4vw, .84rem);
+  font-weight: 700;
+  color: var(--lib-muted);
+  cursor: pointer;
+  transition: background .2s, border-color .2s, color .2s, box-shadow .2s;
+}
+
+.lib-mode:hover {
+  color: var(--lib-ink);
+  border-color: rgba(43, 168, 162, .22);
+}
+
+.lib-mode.is-active {
+  color: var(--lib-teal-dark);
+  background: #fff;
+  border-color: rgba(43, 168, 162, .35);
+  box-shadow: 0 2px 12px rgba(43, 168, 162, .1);
+}
+
+.lib-subtabs-wrap {
+  top: 168px;
+}
+
+@media (max-width: 768px) {
+  .lib-subtabs-wrap { top: 148px; }
+}
+
+.lib-hero-tools.is-hidden,
+.lib-hero-recipes.is-hidden,
+#lib-tools-panel.is-hidden,
+#lib-recipes-panel.is-hidden,
+.lib-subtabs-wrap.is-hidden {
+  display: none !important;
+}
+
+#lib-hero-recipes-note {
+  margin-top: 1rem;
+  max-width: none;
+}
+
+.lib-recipes-status {
+  margin: 0;
+  font-size: .85rem;
+  color: var(--lib-muted);
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.lib-recipes-status a {
+  color: var(--lib-teal-dark);
+  font-weight: 700;
 }
 
 /* ── Main content ────────────────────────────────────────── */
