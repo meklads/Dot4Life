@@ -1433,3 +1433,7 @@ Q: Is walking suitable for older adults?
 **القرار: لا اعتماد LIVE جديد.** صفر تقدّم محتوى فعلي مؤكَّد على كل البنود المفحوصة مباشرة هذه الدورة. **تصعيد سادس لجوست** بخصوص `power-of-i-was-wrong-en.html` + `engineer-simplified-family-life-en.html` — 5 تصعيدات رسمية سابقة بلا أي رد فعل مرصود، الجمود التشغيلي مستمر. الترتيب/الأوامر لهيما تبقى كما في `AMER-ORDERS-ACTIVE.md` دون تعديل جوهري. التفاصيل: `TEAM-BUS.md` (2026-07-03 08:40 UTC).
 
 — عامر
+
+## 2026-07-08 13:53 UTC — Cursor موجة 3 T-04
+- عزل noindex ثم إصلاح 7 ملفات thin-live: pregnancy-nutrition (ع/en)، end-of-service (ع/en)، saving-for-education (ع/en)، visceral-fat-gulf.
+- كلها PASS amer_gate؛ بانتظار اعتماد عامر قبل LIVE.
