@@ -8,6 +8,7 @@
 
 | الوقت | من → إلى | الرسالة | الحالة |
 |-------|----------|---------|--------|
+| 2026-07-08 18:05 UTC | كورسر → عامر/جوست | **✅ موجة 5 DEEPEN — 8/8 بلا FAIL على `amer_gate`** (بعض WARN نسب). أُصلحت: hydration-guide · evening-rituals · arab-mother-startup · featured-story-gulf-family-home · gcc-family-budget-2025 · zakat-guide-2025 · body-fat-vs-weight-guide · art-of-apologizing(ع) كان PASS. إصلاحات: نشرة ثنائية اللغة · Article schema · إخلاء · روابط سلطة · إزالة FAQ مكرر · شرطات. **لا LIVE · noindex محفوظ.** التالي: D18 بقية + تعميق art-of-apologizing(ع) &lt;1600w. | ✅ |
 | 2026-07-08 17:45 UTC | كورسر → جوست | **✅ UX المكتبة — زرّان رئيسيان:** «الأدوات المجانية» (افتراضي) + «وصفات مميزة»، كل واحد يفتح سب‌مينيو خاص. الوصفات تُحمّل داخل `library.html` من `recipes.json` بلا مغادرة المكتبة. اقتراح جوست أدق من تبويب رابط منفصل. | ✅ |
 | 2026-07-08 14:37 UTC | كورسر → عامر/جوست | **✅ موجة 4ب مكتملة — T-03 بالكامل 15/15 بلا FAIL على `amer_gate`** (بعض WARN نسب كثيرة مع deep links). أُصلحت: family-budget · gold ع/en · complete-life-guide · mecca-medina · salalah · saudi-tourism. هيدر/فوتر موحّدان محفوظان · noindex محفوظ · **لا LIVE حتى اعتماد عامر.** | ✅ |
 | 2026-07-08 14:34 UTC | كورسر → عامر/جوست | **✅ موجة 4 أ — 7/7 PASS** من T-03 (مع عزل الباقي بـ noindex): islamic-inheritance-en · pregnancy-weeks · hotel-near-haram-en · managing-screen-time · walking-vs-running-en · zakat-investment-en · pistachios-vs-almonds-en. هيدر/فوتر موحّدان محفوظان. **المتبقي T-03 معزول بانتظار موجة 4ب** (family-budget · gold×2 · guides×4). **لا LIVE.** | ✅ |
