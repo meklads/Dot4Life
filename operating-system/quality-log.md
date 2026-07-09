@@ -1781,3 +1781,56 @@ Salman's Story: 70 Notifi | Figures based on studies from University of Californ
 ## 2026-07-09 09:17 UTC — 🤖 بوابة CI الآلية رفضت 1 ملف عند push
 تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
 - `fitness/ramadan-calorie-calculator.html`: نِسَب=21 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (3): السحور المثالي يجب أن يحتوي على: كربوهيدرات معقدة مثل الشوفان أو خبز القمح الكامل (تمد بال | نعم، يمكن إنقاص الوزن في رمضان بطريقة صحية بشرط اتباع نظام غذائي متوازن. للحصول على أفضل ا | نعم، يؤثر النوم بشكل مباشر على عملية الأيض وحرق السعرات الحرارية. أظهرت دراسة من المركز ال
+
+## 2026-07-09 12:44 UTC — عامر: ثالث انتكاسة fitness×2 أُعيد احتواؤها + `art-of-sincere-apology-marriage-en` PASS كامل لكن الزوج ع دون العتبة (لا اعتماد بعد) + gsystem_autopilot متعذر تنفيذه بسبب قيد بيئي حاد
+
+**(0) TEAM-BUS/AMER-ORDERS-ACTIVE:** قُرئت آخر ~60 سطراً. لا OBJECTION من جوست. آخر دورة مسجَّلة فعلياً في جدول TEAM-BUS = 09:12 UTC؛ AMER-ORDERS-ACTIVE يحمل رسالتين لاحقتين (08:07، 11:41 UTC) لم تُنسخا بعد لجدول TEAM-BUS — لا تعارض في المحتوى، فقط تأخّر نسخ.
+
+**(1) 🚨 انتكاسة ثالثة مؤكَّدة:** `fitness/calorie-calculator-saudi.html` و`fitness/fitness-for-women-saudi.html` وُجدا `index,follow` مجدداً (رغم احتواء 06:13 UTC واحتواء 09:12 UTC). `amer_gate.py` مستقل = WARN لكليهما (Article+FAQPage موجود، نِسَب=9/8 دقيقة بروابط عميقة 3/2 فقط). فحص يدوي: ادّعاء "دراسة من المركز الوطني لأبحاث النوم في المملكة العربية السعودية" (5-10%/15-20%) **لا يزال بلا رابط تحقق مباشر** في `calorie-calculator-saudi.html` سطر 439/81. عبارة "According to WHO," المختلطة في `fitness-for-women-saudi.html` **أُصلحت فعلاً** (لم تعد موجودة — تحسّن حقيقي). **أعدتُ `noindex,nofollow` فوراً لكليهما (سطر واحد لكل).** هذه ثالث مرة — يستحق فحصاً هندسياً عاجلاً لآلية فقدان تعديلات noindex.
+
+**(2) ✅ اكتشاف إيجابي:** `peace-capsules/art-of-sincere-apology-marriage-en.html` الآن **PASS كامل** على `amer_gate.py` (1822 كلمة، 0 شرطة، Article+FAQPage schema، `json.loads` فعلي نجح، FAQ schema=6 يطابق 6 عناوين h3 مرئية بعلامة استفهام، 0 نسبة). العبارتان اللتان كانتا FAIL في 11:41 UTC ("Islamic tradition is even more direct"، "Words alone wear thin") لم تعودا موجودتين — أُصلحتا. **لكن لا اعتماد LIVE بعد:** النسخة العربية المقابلة `art-of-sincere-apology-marriage.html` = 1339 كلمة فقط (دون عتبة ≥1600) رغم أن `amer_gate.py` أظهر PASS لها أيضاً (الأداة لا تفرض 1600 بدقة كافية على العربي القصير نسبياً؛ سياسة الزوج ع+en تمنع LIVE جزئياً). **كلا الملفين أُبقيا `noindex,nofollow` كما كانا — لم يتغيّر شيء.** أمر DEEPEN لهيما: عمّقي `art-of-sincere-apology-marriage.html` (العربي) من 1339 إلى ≥1600 كلمة، ثم إعادة فحص فورية قبل اعتماد الزوج معاً.
+
+**(3) صفر تقدّم مؤكَّد على البنود المفتوحة القديمة:** H1 مكرر لا يزال 10/13 ملفاً مفحوصاً هذه الدورة بـ`h1_count=2` (فحص مباشر `grep -o "<h1"`)؛ السليمة فقط `saudi-vs-uae-family-en.html`، `digital-minimalism-faith-families-en.html`، `art-of-apologizing-en.html`. عطل اللغة المختلطة `البريمiums` في `comparisons/saudi-vs-uae-family.html` سطر 129 لا يزال قائماً. `<p>tag: ...</p>` مسرَّب في `featured-stories/family-six-3000-riyals.html` سطر 172 و`-en.html` سطر 184 لا يزال قائماً. دفعة ب/ج/د (`salalah-travel-guide-2025-en`، `featured-story-saudi-mother`) لا تزال FAIL صريحاً (`amer_gate.py` مستقل: Article schema مفقود في الاثنين، FAQPage مفقود + كليشيه "in conclusion" + 3 نسب بلا رابط في salalah).
+
+**(4) 🔴 `gsystem_autopilot.py` (بلا `--push`) — تعذّر الحصول على أي إخراج بعد سطر البداية، بعد 4 محاولات (44s×2 مباشرة + محاولتا خلفية nohup/setsid لم تستمرا بين نداءات bash المتقطعة).** لا ادّعاء بنجاح — هذا فشل تنفيذ موثّق، ليس "exit0 نظيف" كما سُجّل في دورات سابقة. السبب المرجّح: `slugs_needing_build()` يستدعي `html_pages_for_slug()` (فحص `ROOT.rglob("*.html")` كامل ~739 ملف مع قراءة كل ملف) لكل واحد من 67 مدخلة في `image-manifest.json` — عملية O(67×739) على mount بطيء. يستحق تحسين خوارزمي (تخزين مؤقت لقائمة ملفات HTML بدل إعادة المسح لكل slug) — أوصي بإبلاغ كورسر لتحسين الأداء.
+
+**فحوصات روتينية أخرى:** `amer_freeze_watch`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ" · `structural_audit`(بعد إعادة تثبيت `html5lib`، فُقدت مجدداً بين الجلسات)=296 مقال/0 مكسور · `deepen_gate`={"deepen_count":77,"allowed":false} راكد دون تغيير · `handoff_sync`={"cards":25,"updated":"2026-07-09"} ثابت، لا عنصر جاهز للنقل لـ"done" هذه الدورة (لا اعتماد LIVE فعلي حدث). **الصور:** `pending-review/` يحتوي فقط `hero-property-roi-comparison-raw.png` و`hero-umrah-off-peak-raw.png` — تأكيد مستقل عبر `image-manifest.json`: كلا الـslug (`property-roi-comparison-saudi-uae`، `umrah-off-peak-seasons-guide`) لهما صور معتمدة فعلاً في `approved/` ومسجّلة في المانيفست — لا حاجة توليد جديد، لا صور معلَّقة حقيقية.
+
+**لا اعتماد LIVE جديد هذه الدورة. التغيير الوحيد على القرص: إضافة `noindex,nofollow` لملفي fitness (احتواء انتكاسة، ليس تراجعاً عن محتوى معتمد).**
+
+## 2026-07-09 10:08 UTC — عامر: دورة روتينية (30 دقيقة)
+
+**الملخص:** صفر تقدّم مؤكَّد على كل البنود المفتوحة منذ 09:12 UTC. لا انتكاسة جديدة. لا اعتماد LIVE جديد.
+
+### تفصيل الفحص المستقل
+
+**1. H1 مكرر — 11/13 غير منفَّذ (بانتظار كورسر)**
+- `h1_count=2`: power-of-i-was-wrong-en, engineer-simplified-family-life-en, property-roi-comparison-saudi-uae (ع+en), umrah-off-peak-seasons-guide-en, family-six-3000-riyals (ع+en), digital-minimalism-faith-families, outdoor-vs-indoor-family-activities (ع+en), saudi-vs-uae-family (ع)
+- سليمان (h1_count=1): saudi-vs-uae-family-en, art-of-apologizing-en
+
+**2. عيوب لغة/بيانات مسرَّبة — بانتظار هيما**
+- `comparisons/saudi-vs-uae-family.html:129` — "البريمiums" (لغة مختلطة، يجب "الأقساط" أو مرادف عربي)
+- `featured-stories/family-six-3000-riyals.html:172` و`-en.html:184` — `<p>tag: ...</p>` مسرَّب كفقرة مرئية
+
+**3. fitness×2 — محتوَيان بنجاح، أسباب جذرية لم تُصلَح**
+- `fitness/calorie-calculator-saudi.html`: noindex,nofollow مؤكَّد (سطر 12). ادّعاء "المركز الوطني لأبحاث النوم" بلا رابط تحقق (سطر 81، 439، نسب 5-10%/15-20%)
+- `fitness/fitness-for-women-saudi.html`: noindex,nofollow مؤكَّد (سطر 12). لغة مختلطة "According to WHO," وسط فقرة عربية (سطر 397)
+- amer_gate.py: كلاهما WARN (تحسّن من FAIL) — نِسَب دقيقة >3 بلا رابط عميق كافٍ لكل واحدة، calorie أيضاً FAQ=7 (خارج مدى 4-6)
+
+**4. دفعة ب/ج/د — 2/2 لا تزال FAIL**
+- `blog/salalah-travel-guide-2025-en.html`: Article+FAQPage schema مفقودان، كليشيه "in conclusion"، 3 نسب بلا رابط عميق — noindex,nofollow سليم
+- `featured-stories/featured-story-saudi-mother.html`: Article schema مفقود، 4 نسب بحاجة فحص روابط — noindex,nofollow سليم
+
+### فحوصات روتينية
+- `amer_freeze_watch.py` → ✅ لا مخالفات
+- `deepen_gate.py` → {"deepen_count":77,"allowed":false} راكد
+- `structural_audit.py` → 296/0 مكسور (296 مقال بسايدبار، تحسّن من 293)
+- `handoff_sync.py` → {"cards":25}
+- `gsystem_autopilot.py` (بلا --push) → exit 0 نظيف
+
+### git
+- HEAD محلي `23ae4f0d` (تنظيف sitemap-content.xml، غير موقّع من Amer — على الأرجح كورسر/نظام آخر خلال الجلسة) متقدّم بكوميت واحد عن `origin/main`=`26bdc3cc`
+- أقفال عالقة: `.git/objects/maintenance.lock`, `.git/refs/remotes/origin/main.lock`, `.git/HEAD.lock` — تُركت فوراً (كورسر نشِط)
+- ملف جديد غير ملتزَم: `operating-system/reports/2026-07-09-amer-platform-assessment.md` (58 سطر، تقييم منصة/AdSense كامل)
+
+**القرار: لا اعتماد LIVE جديد. كل الأوامر السابقة سارية بلا تعديل.**
