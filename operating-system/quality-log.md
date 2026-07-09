@@ -1695,3 +1695,11 @@ Salman's Story: 70 Notifi | Figures based on studies from University of Californ
 - `islamic-hajj-umrah/daily-adhkar-family-guide.html`: نِسَب=3 بلا أي رابط عميق واحد · فقرات لاتينية في صفحة عربية=1
 - `islamic-hajj-umrah/teaching-children-allah-names.html`: نِسَب=1 بلا أي رابط عميق واحد · فقرات لاتينية في صفحة عربية=1
 - `real-estate/oman-property-roi.html`: محتوى حسّاس بلا إخلاء مسؤولية
+
+## 2026-07-09 00:57 UTC — 🤖 بوابة CI الآلية رفضت 4 ملف عند push
+تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
+- `blog/salalah-travel-guide-2025-en.html`: Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · كليشيهات AI: in conclusion · نِسَب=3 بلا أي رابط عميق واحد
+- `featured-stories/featured-story-saudi-mother.html`: Article schema مفقود
+- `fitness/calorie-calculator-saudi.html`: نِسَب=9 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (2): أخيراً، تذكر أن حاسبة السعرات الحرارية هي أداة تقديرية وليست بديلاً عن الاستشارة الطبية ال | هل يؤثر النوم على حرق السعرات الحرارية؟
+نعم، يؤثر النوم بشكل مباشر على عملية الأيض وحرق ال
+- `fitness/fitness-for-women-saudi.html`: نِسَب=8 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (1): نعم، يؤثر النوم بشكل مباشر على عملية الأيض وحرق السعرات الحرارية. أظهرت دراسة من المركز ال
