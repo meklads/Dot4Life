@@ -21,7 +21,7 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Almarai:wght@400;700;800&display=swap"/></noscript>
 <link rel="stylesheet" href="/styles/global.css?v=20260624n"/>
 <link rel="stylesheet" href="/styles/tools-shared.css?v=20260608a">
-<link rel="stylesheet" href="/styles/tools-flagship.css?v=20260709c">
+<link rel="stylesheet" href="/styles/tools-flagship.css?v=20260709e">
 <link rel="stylesheet" href="/styles/tools-accents.css?v=20260625a">
 <link rel="stylesheet" href="/styles/pages/tools_pregnancy-calculator.css?v=20260625a">
 <meta property="og:type" content="website">
@@ -112,7 +112,14 @@
             <div class="t-metric"><div class="t-metric-val" id="res-days"> - </div><div class="t-metric-lbl"><span class="en">Days left</span><span class="ar">أيام متبقية</span></div><div id="res-days-sub" style="font-size:.65rem;color:var(--tool-muted)"></div></div>
           </div>
           <div class="pc-baby"><div class="pc-baby-emoji" id="res-emoji"></div><div><div class="pc-baby-lbl"><span class="en">Baby is the size of a</span><span class="ar">الجنين بحجم</span></div><div class="pc-baby-fruit" id="res-fruit"></div><div class="pc-baby-meta"><span class="en"><strong id="res-len"></strong> · <strong id="res-wt"></strong></span><span class="ar"><strong id="res-len-ar"></strong> · <strong id="res-wt-ar"></strong></span></div></div></div>
-          <div class="t-timeline"><div class="t-timeline-labels"><span><span class="en">Week </span><span class="ar">أسبوع </span><span id="tl-wk-label">0</span><span class="en"> of 40</span><span class="ar"> من 40</span></span><span>40</span></div><div class="t-timeline-bar pc-timeline-wrap"><div class="t-timeline-fill" id="tl-fill" style="width:0%"></div><div class="pc-timeline-thumb" id="tl-thumb" style="left:0%"></div></div></div>
+          <div class="tool-gauge tool-gauge--pregnancy" id="preg-gauge" data-min="0" data-max="40" hidden role="meter" aria-label="Pregnancy week progress">
+            <div class="tool-gauge-track">
+              <div class="tool-gauge-fill" id="preg-gauge-fill" aria-hidden="true"></div>
+              <div class="tool-gauge-marker" aria-hidden="true"></div>
+            </div>
+            <p class="tool-gauge-label" id="preg-gauge-label"></p>
+            <div class="tool-gauge-ticks"><span>0</span><span>13</span><span>27</span><span>40</span></div>
+          </div>
           <a class="t-journey-link" id="journey-banner" href="/pregnancy-journey.html"><span class="en">Follow Week <span id="banner-week">1</span> in detail →</span><span class="ar">← تابعي الأسبوع <span id="banner-week-ar">١</span> بالتفصيل</span></a>
         </div>
       </div>
@@ -233,6 +240,7 @@
 </div>
 
 <script src="/scripts/global.js?v=20260619e" defer></script>
+<script src="/scripts/tool-gauge.js?v=20260709e"></script>
 <script>
 const BD=[
   {w:1,e:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 2 8 0 5.5-4.78 10-10 10Z"/></svg>',n:'Poppy seed',na:'بذرة خشخاش',l:'<1mm',wt:'<1g',dv:'Fertilization may occur',dva:'قد يحدث الإخصاب',sx:'No symptoms yet',sxa:'لا أعراض بعد',nu:'Start folic acid 400mcg',nua:'ابدئي بحمض الفوليك 400 ميكروغرام'},
@@ -351,14 +359,18 @@ function displayResults(edd,lmpEquiv){
     document.getElementById('res-len-ar').textContent=bd.l;
     document.getElementById('res-wt-ar').textContent=bd.wt;
 
-    // Timeline
-    const pct=Math.min(100,(wk/40)*100);
-    document.getElementById('tl-wk-label').textContent=wk;
-    document.getElementById('tl-wk-label-ar').textContent=wk;
-    setTimeout(()=>{
-      document.getElementById('tl-fill').style.width=pct+'%';
-      document.getElementById('tl-thumb').style.left=pct+'%';
-    },100);
+    // Week progress gauge
+    const pct=Math.min(100,(w/40)*100);
+    const lang=document.documentElement.getAttribute('data-lang')||'en';
+    if(window.dflSetToolGauge){
+      dflSetToolGauge('preg-gauge',{
+        value:w,
+        min:0,
+        max:40,
+        fillPercent:pct,
+        label:lang==='ar'?`الأسبوع ${w} من 40 · ${tria}`:`Week ${w} of 40 · ${tri}`
+      });
+    }
 
     // Journey banner, update week number and link
     const banner = document.getElementById('journey-banner');

@@ -1678,3 +1678,200 @@ body.tool-flagship-page .dfl-mnav-item svg {
   color: #7DD3C0;
 }
 
+/* ── Range gauge (shared: BMI · body fat · water · pregnancy) ── */
+body.tool-flagship-page {
+  --gauge-zone-a: rgba(6, 182, 212, .5);
+  --gauge-zone-b: rgba(16, 185, 129, .52);
+  --gauge-zone-c: rgba(245, 158, 11, .52);
+  --gauge-zone-d: rgba(239, 68, 68, .52);
+  --gauge-zone-e: rgba(37, 99, 235, .45);
+  --gauge-zone-f: rgba(5, 150, 105, .48);
+  --gauge-zone-g: rgba(89, 121, 49, .42);
+  --gauge-zone-h: rgba(234, 88, 12, .45);
+}
+
+.tool-gauge {
+  margin-top: 1rem;
+  display: none;
+}
+
+.tool-gauge.is-active {
+  display: block;
+}
+
+.tool-gauge[hidden] {
+  display: none !important;
+}
+
+.tool-gauge-track {
+  position: relative;
+  height: 10px;
+  border-radius: 999px;
+  overflow: visible;
+  background: var(--tool-border);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, .06);
+}
+
+.tool-gauge-fill {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  width: 0;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--tool-accent) 28%, transparent);
+  pointer-events: none;
+  transition: width .35s var(--tool-ease);
+}
+
+.tool-gauge-marker {
+  position: absolute;
+  top: 50%;
+  inset-inline-start: 0;
+  width: 0;
+  height: 0;
+  transform: translate(-50%, -100%);
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 9px solid var(--tool-accent-dark);
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, .15));
+  transition: inset-inline-start .35s var(--tool-ease);
+  z-index: 2;
+}
+
+[dir="rtl"] .tool-gauge-marker {
+  transform: translate(50%, -100%);
+}
+
+.tool-gauge-label {
+  margin: .5rem 0 0;
+  font-size: .78rem;
+  font-weight: 700;
+  line-height: 1.4;
+  text-align: center;
+  color: var(--tool-accent-dark);
+}
+
+.tool-gauge-ticks {
+  display: flex;
+  justify-content: space-between;
+  margin-top: .35rem;
+  font-size: .62rem;
+  font-weight: 600;
+  color: var(--tool-muted);
+}
+
+/* WHO BMI: 15–40 (under · normal · overweight · obese) */
+.tool-gauge--bmi .tool-gauge-track {
+  background: linear-gradient(
+    to right,
+    var(--gauge-zone-a) 0%,
+    var(--gauge-zone-a) 14%,
+    var(--gauge-zone-b) 14%,
+    var(--gauge-zone-b) 39.6%,
+    var(--gauge-zone-c) 39.6%,
+    var(--gauge-zone-c) 60%,
+    var(--gauge-zone-d) 60%,
+    var(--gauge-zone-d) 100%
+  );
+}
+
+[dir="rtl"] .tool-gauge--bmi .tool-gauge-track {
+  background: linear-gradient(
+    to left,
+    var(--gauge-zone-a) 0%,
+    var(--gauge-zone-a) 14%,
+    var(--gauge-zone-b) 14%,
+    var(--gauge-zone-b) 39.6%,
+    var(--gauge-zone-c) 39.6%,
+    var(--gauge-zone-c) 60%,
+    var(--gauge-zone-d) 60%,
+    var(--gauge-zone-d) 100%
+  );
+}
+
+/* Body fat — male 0–40% */
+.tool-gauge--bodyfat-m .tool-gauge-track {
+  background: linear-gradient(
+    to right,
+    var(--gauge-zone-e) 0%,
+    var(--gauge-zone-e) 15%,
+    var(--gauge-zone-f) 15%,
+    var(--gauge-zone-f) 35%,
+    var(--gauge-zone-g) 35%,
+    var(--gauge-zone-g) 45%,
+    var(--gauge-zone-h) 45%,
+    var(--gauge-zone-h) 62.5%,
+    var(--gauge-zone-d) 62.5%,
+    var(--gauge-zone-d) 100%
+  );
+}
+
+/* Body fat — female 0–40% */
+.tool-gauge--bodyfat-f .tool-gauge-track {
+  background: linear-gradient(
+    to right,
+    var(--gauge-zone-e) 0%,
+    var(--gauge-zone-e) 35%,
+    var(--gauge-zone-f) 35%,
+    var(--gauge-zone-f) 52.5%,
+    var(--gauge-zone-g) 52.5%,
+    var(--gauge-zone-g) 62.5%,
+    var(--gauge-zone-h) 62.5%,
+    var(--gauge-zone-h) 80%,
+    var(--gauge-zone-d) 80%,
+    var(--gauge-zone-d) 100%
+  );
+}
+
+[dir="rtl"] .tool-gauge--bodyfat-m .tool-gauge-track,
+[dir="rtl"] .tool-gauge--bodyfat-f .tool-gauge-track {
+  transform: scaleX(-1);
+}
+
+[dir="rtl"] .tool-gauge--bodyfat-m .tool-gauge-marker,
+[dir="rtl"] .tool-gauge--bodyfat-f .tool-gauge-marker {
+  transform: translate(50%, -100%) scaleX(-1);
+}
+
+/* Water — hydration spectrum 1.5–5 L (not medical categories) */
+.tool-gauge--water .tool-gauge-track {
+  background: linear-gradient(
+    to right,
+    color-mix(in srgb, var(--tool-accent) 12%, #fff) 0%,
+    color-mix(in srgb, var(--tool-accent) 35%, #fff) 45%,
+    var(--gauge-zone-b) 45%,
+    var(--gauge-zone-b) 75%,
+    var(--gauge-zone-c) 75%,
+    var(--gauge-zone-c) 100%
+  );
+}
+
+/* Pregnancy — 40 weeks / 3 trimesters */
+.tool-gauge--pregnancy .tool-gauge-track {
+  background: linear-gradient(
+    to right,
+    var(--gauge-zone-a) 0%,
+    var(--gauge-zone-a) 32.5%,
+    var(--gauge-zone-b) 32.5%,
+    var(--gauge-zone-b) 67.5%,
+    var(--gauge-zone-c) 67.5%,
+    var(--gauge-zone-c) 100%
+  );
+}
+
+[dir="rtl"] .tool-gauge--pregnancy .tool-gauge-track {
+  background: linear-gradient(
+    to left,
+    var(--gauge-zone-a) 0%,
+    var(--gauge-zone-a) 32.5%,
+    var(--gauge-zone-b) 32.5%,
+    var(--gauge-zone-b) 67.5%,
+    var(--gauge-zone-c) 67.5%,
+    var(--gauge-zone-c) 100%
+  );
+}
+
+[data-theme="dark"] .tool-gauge-track {
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, .25);
+}
+

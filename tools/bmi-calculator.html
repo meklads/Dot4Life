@@ -20,7 +20,7 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Almarai:wght@400;700;800&display=swap"/></noscript>
 <link rel="stylesheet" href="/styles/global.css?v=20260624n"/>
 <link rel="stylesheet" href="/styles/tools-shared.css?v=20260608a">
-<link rel="stylesheet" href="/styles/tools-flagship.css?v=20260709c">
+<link rel="stylesheet" href="/styles/tools-flagship.css?v=20260709e">
 <link rel="stylesheet" href="/styles/tools-accents.css?v=20260624a">
 <link rel="stylesheet" href="/styles/pages/tools_bmi-calculator.css?v=20260624a">
 <meta property="og:type" content="website">
@@ -231,6 +231,13 @@ window.dflTrack=function(event,params){
             <p><span class="en">BMI is a screening tool, not a medical diagnosis. Consult a healthcare professional for a complete assessment.</span>
             <span class="ar">مؤشر كتلة الجسم أداة فحص وليس تشخيصاً طبياً. استشر مختصاً صحياً لتقييم كامل.</span></p>
           </div>
+        </div>
+        <div class="tool-gauge tool-gauge--bmi" id="bmi-gauge" data-min="15" data-max="40" hidden role="meter" aria-label="BMI range">
+          <div class="tool-gauge-track">
+            <div class="tool-gauge-marker" aria-hidden="true"></div>
+          </div>
+          <p class="tool-gauge-label" id="bmi-gauge-label"></p>
+          <div class="tool-gauge-ticks"><span>15</span><span>18.5</span><span>25</span><span>30</span><span>40</span></div>
         </div>
       </div>
     </div>
@@ -468,6 +475,7 @@ window.dflTrack=function(event,params){
 </div>
 
 <script src="/scripts/global.js?v=20260619e" defer></script>
+<script src="/scripts/tool-gauge.js?v=20260709e"></script>
 <script>
 var isMetric = true;
 var lastCat = '';
@@ -544,6 +552,15 @@ function calculate(){
 
   var rc = document.getElementById('result-card');
   if (rc) rc.classList.add('visible');
+
+  if (window.dflSetToolGauge) {
+    dflSetToolGauge('bmi-gauge', {
+      value: bmi,
+      min: 15,
+      max: 40,
+      label: bmi.toFixed(1) + ' · ' + catLabels[cat][lang]
+    });
+  }
 }
 
 function toggleFAQ(el){
@@ -564,6 +581,15 @@ document.addEventListener('dfl:langchange', function(){
   if (lastCat) {
     var lang = getLang();
     document.getElementById('res-cat').textContent = catLabels[lastCat][lang];
+    var bmiText = document.getElementById('res-bmi').textContent;
+    if (bmiText && bmiText !== '—' && window.dflSetToolGauge) {
+      dflSetToolGauge('bmi-gauge', {
+        value: parseFloat(bmiText),
+        min: 15,
+        max: 40,
+        label: bmiText + ' · ' + catLabels[lastCat][lang]
+      });
+    }
   }
 });
 </script>

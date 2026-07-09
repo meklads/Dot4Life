@@ -20,7 +20,7 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Almarai:wght@400;700;800&display=swap"/></noscript>
 <link rel="stylesheet" href="/styles/global.css?v=20260624n"/>
 <link rel="stylesheet" href="/styles/tools-shared.css?v=20260608a">
-<link rel="stylesheet" href="/styles/tools-flagship.css?v=20260709c">
+<link rel="stylesheet" href="/styles/tools-flagship.css?v=20260709e">
 <link rel="stylesheet" href="/styles/tools-accents.css?v=20260624a">
 <link rel="stylesheet" href="/styles/pages/tools_body-fat-calculator.css?v=20260625a">
 <meta property="og:type" content="website">
@@ -254,18 +254,12 @@ window.dflTrack=function(event,params){
           </div>
         </div>
 
-        <div class="bfc-scale">
-          <div class="bfc-scale-bar">
-            <div class="bfc-scale-marker" id="bf-marker" style="left:40%"></div>
+        <div class="tool-gauge tool-gauge--bodyfat-m" id="bf-gauge" data-min="0" data-max="40" hidden role="meter" aria-label="Body fat range">
+          <div class="tool-gauge-track">
+            <div class="tool-gauge-marker" aria-hidden="true"></div>
           </div>
-          <div class="bfc-scale-ticks"><span>0%</span><span>10%</span><span>20%</span><span>30%</span><span>40%+</span></div>
-          <div class="bfc-cats">
-            <div class="bfc-cat bfc-cat--essential"><span class="en">Essential</span><span class="ar">أساسي</span></div>
-            <div class="bfc-cat bfc-cat--athlete"><span class="en">Athlete</span><span class="ar">رياضي</span></div>
-            <div class="bfc-cat bfc-cat--fitness"><span class="en">Fitness</span><span class="ar">لياقة</span></div>
-            <div class="bfc-cat bfc-cat--average"><span class="en">Average</span><span class="ar">متوسط</span></div>
-            <div class="bfc-cat bfc-cat--obese"><span class="en">Obese</span><span class="ar">سمنة</span></div>
-          </div>
+          <p class="tool-gauge-label" id="bf-gauge-label"></p>
+          <div class="tool-gauge-ticks"><span>0%</span><span>10%</span><span>20%</span><span>30%</span><span>40%+</span></div>
         </div>
 
         <div class="bfc-ref-title" id="ref-title"><span class="en">Reference chart (men)</span><span class="ar">جدول مرجعي (رجال)</span></div>
@@ -488,6 +482,7 @@ window.dflTrack=function(event,params){
 </div>
 
 <script src="/scripts/global.js?v=20260619e" defer></script>
+<script src="/scripts/tool-gauge.js?v=20260709e"></script>
 <script>
 var currentUnit = 'metric';
 var currentGender = 'male';
@@ -549,6 +544,22 @@ function setUnit(u, btn) {
   });
   document.getElementById('w-unit').textContent = isMetric ? 'kg' : 'lb';
   calculateBodyFat(true);
+}
+
+function syncBfGauge(bfRound, catKey) {
+  var gauge = document.getElementById('bf-gauge');
+  if (!gauge) return;
+  gauge.classList.remove('tool-gauge--bodyfat-m', 'tool-gauge--bodyfat-f');
+  gauge.classList.add(currentGender === 'female' ? 'tool-gauge--bodyfat-f' : 'tool-gauge--bodyfat-m');
+  if (window.dflSetToolGauge) {
+    var lang = getLang();
+    dflSetToolGauge(gauge, {
+      value: bfRound,
+      min: 0,
+      max: 40,
+      label: bfRound + '% · ' + catLabels[catKey][lang]
+    });
+  }
 }
 
 function setGender(g) {
@@ -641,8 +652,7 @@ function calculateBodyFat(silent) {
   document.getElementById('r-ideal').textContent = idealRange;
   document.getElementById('r-cat').textContent = catLabels[catKey][getLang()];
 
-  var pct = Math.min(100, Math.max(0, (bf / 40) * 100));
-  document.getElementById('bf-marker').style.left = pct + '%';
+  syncBfGauge(bfRound, catKey);
 
   if (window.dflTrack && !silent) dflTrack('body_fat_calculated', { gender: currentGender, unit: currentUnit });
 }
@@ -673,6 +683,10 @@ document.addEventListener('dfl:langchange', function() {
   renderRefTable();
   if (lastCatKey) {
     document.getElementById('r-cat').textContent = catLabels[lastCatKey][getLang()];
+    var bfText = document.getElementById('r-bf').textContent;
+    if (bfText && bfText !== '—') {
+      syncBfGauge(parseFloat(bfText), lastCatKey);
+    }
   }
 });
 </script>
