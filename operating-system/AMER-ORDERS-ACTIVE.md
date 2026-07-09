@@ -1,4 +1,77 @@
-# 🛡️ أوامر عامر النشطة (المصدر الثابت) — 2026-06-24 (آخر دورة 2026-07-03 07:09 UTC)
+# 🛡️ أوامر عامر النشطة (المصدر الثابت) — 2026-06-24 (آخر دورة 2026-07-10)
+
+## 🔴 أمر تنفيذي مباشر من عامر (بتفويض صريح من جوست) — 2026-07-10 — أولوية عالية، جوست بانتظار إغلاق هذا الملف
+
+جوست راجع معي شخصياً كل الـ199 صفحة المتبقية على noindex (فحص `amer_gate.py` + `html5lib` فعلي على كل ملف، لا تخمين). فتحتُ أنا مباشرة 140 صفحة نظيفة فعلاً + 6 أدوات كانت ناقصة Schema (كوميت `ab47765a` و`d27955a1` على `main`). **الباقي — 59 ملفاً — محتاج تنفيذك أنت الآن، مقسّم بالأولوية. لا تنتقل لمجموعة قبل إغلاق التي قبلها. بعد كل مجموعة، أرجع نتيجة `amer_gate.py` الفعلية + تأكيد `html5lib` في TEAM-BUS.**
+
+### المجموعة أ (أولوية 1 — الأسرع والأعلى قيمة): 12 أداة ناقصة Schema فقط
+نفس الوصفة المضبوطة بالضبط اللي استخدمتها أنا على `qibla/hijri-converter/one-rep-max/pregnancy-calculator/ramadan-calorie-calculator/zakat-calculator` (شوف الكوميت `ab47765a` كمرجع حرفي):
+- الملفات: `tools/age-calculator.html` · `tools/inheritance-calculator.html` · `tools/monthly-budget.html` · `tools/mortgage-calculator.html` · `tools/password-generator.html` · `tools/plant-watering.html` · `tools/pomodoro.html` · `tools/rental-yield-calculator.html` · `tools/roi-calculator.html` · `tools/salary-calculator.html` · `tools/savings-goal.html` · `tools/travel-tips.html`
+- المطلوب: أضف `<script type="application/ld+json">` بـ`WebApplication`+`BreadcrumbList`+`FAQPage` — استخرج نص الأسئلة/الإجابات **من محتوى الصفحة الفعلي الموجود فيها حالياً** (لا تخترع أسئلة جديدة). لو صفحة ناقصة إخلاء مسؤولية ولها طابع ديني/مالي/صحي حساس (`inheritance-calculator`، `mortgage-calculator`، `rental-yield-calculator`) أضف فقرة إخلاء مسؤولية بنفس نمط `zakat-calculator.html`.
+- **تجاهل** تحذير "كلمات<1300" و"Article schema مفقود" على هذه الأدوات تحديداً — تأكّدتُ بنفسي إنها عيب تصنيف في `amer_gate.py` نفسه (الأدوات مش مقالات)؛ حتى `tools/calorie-calculator.html` و`tools/bmi-calculator.html` الحيّتان فعلياً تفشلان بنفس البندين. **لا تحاول حشو كلام لبلوغ 1300 كلمة — ممنوع صراحة.**
+- `travel-tips.html`: احذف الشرطة الطويلة الواحدة (`—`) واستبدلها بـ" - ".
+- بعد كل ملف: تحقّق `grep -c "application/ld+json"` ≥1، تحقّق JSON صالح (`python3 -c "import json;json.load(open(f))"` على المحتوى المستخرج)، ثم اقلب `noindex,nofollow` إلى `index,follow`.
+
+### المجموعة ب (أولوية 2): 12 ملف فيها أعطال HTML بنيوية حقيقية (مش محتوى، كود)
+اكتشفتها بـ`html5lib` مباشرة (نمط شائع: أيقونة `<svg>` بلا وسم إغلاق تكسر باقي الصفحة، أو `</script>` مكرر، أو خاصية HTML متسربة داخل `content=""`):
+- `blog/notification-cost-productivity-en.html` + `blog/notification-cost-productivity.html`: وسوم `<a>` متداخلة بلا إغلاق صحيح.
+- `blog/organize-life-daily-systems.html`: عنصر `<div>` داخل "foreign content" (على الأغلب svg غير مغلق مشابه لما أصلحته في `guides/complete-life-guide.html`).
+- `blog/stress-management-working-parents.html`: نفس نمط `<a>` متداخل.
+- `blog/zakat-guide-2025.html`: خلل في بنية جدول (`<td>`).
+- `featured-stories/mother-built-online-business-home.html` + `finance-wealth/teaching-children-savings.html`: خاصية HTML غير مقتبسة بشكل صحيح تسبب أحرفاً غير متوقعة — راجع بنفس أسلوب فحص `blog/bmi-article.html` (كان فيه `<a href=...>` مضمّن داخل `content=""` بالغلط، ونظّفته أنا لنص عادي).
+- `featured-stories/saudi-father-carpentry-workshop-en.html` + `featured-stories/saudi-father-carpentry-workshop.html`: خاصية مكرّرة على نفس الوسم.
+- `fitness/fitness-for-women-saudi.html`: حرف غير صالح داخل اسم خاصية.
+- `guides/saudi-mortgage-guide.html`: نفس نمط svg غير مغلق (شوف `guides/ramadan-nutrition-guide.html` في الكوميت `d27955a1` كمرجع للإصلاح).
+- `health-pregnancy/preconception-checkups.html`: اسم وسم غير مكتمل.
+- **تحقّق الإغلاق:** شغّل `python3 -c "import html5lib; html5lib.HTMLParser().parse(open(f,encoding='utf-8').read())"` — يجب ألا يرمي أي خطأ غير "Named entity expected" (هذا النمط الوحيد المقبول، موجود حتى في صفحات حيّة سليمة). بعد التأكد، وبعد فحص `amer_gate.py` (لازم WARN أو PASS، ليس FAIL)، اقلب index.
+
+### المجموعة ج (أولوية 3 — الأخطر): 3 مقالات فيها كلام مكرر بلا معنى (تلف محتوى حقيقي، ليس كود)
+اكتشفتها بفحص تكرار لغوي (نسبة الكلمات الفريدة داخل كل فقرة) — النص هنا مش مجرد ناقص، هو فعلياً عبارة عن تكرار كلمات مرادفة بلا أي معنى، غالباً ناتج عطل في توليد آلي سابق:
+- `guides/saudi-real-estate-investing.html` (أصلحتُ أنا عطل الـsvg البنيوي فيها، لكنها لسه noindex — فيها فقرة كاملة تكرر "ومشروع جدة X" عشرات المرات بلا معنى، وفيها أيضاً وسم `<div class="` مقطوع في السطر ~504، راجعه).
+- `guides/zakat-complete-guide.html` (فقرة تكرر "أو منصات X" عشرات المرات).
+- `real-estate/riyadh-rental-yield.html` (فقرة كاملة "وفي كل مكان وزمان..." تكرار بلا معنى إطلاقاً).
+**المطلوب: أعد كتابة الفقرة/الفقرات المتضررة فعلياً بمحتوى حقيقي بديل يخدم موضوع المقال (لا حشو، لا تكرار مرادفات) — هذه ليست حالة "أضف نصاً" بل "احذف الخطأ واكتب بديلاً صحيحاً".** بعد التصحيح، شغّل نفس فحص تكرار الكلمات (نافذة 30 كلمة، لو أي نافذة تحت 45% كلمات فريدة = لسه فيه مشكلة) قبل اقتراح رفع noindex — **لا ترفع noindex عن هذه الثلاثة إلا بعد تأكيدي أنا مباشرة**، هذه حساسة.
+
+### المجموعة د (أولوية 4): 29 مقالة/صفحة فيها فشل جودة `amer_gate.py` فعلي (تفاصيل حرفية لكل ملف)
+```
+archive.html :: كلمات=259<1300 | شرطتان طويلتان | Article/FAQPage schema مفقودان | محتوى حسّاس بلا إخلاء
+blog/ashura-family-traditions-gulf.html :: اقتباس ديني مباشر داخل JSON-LD نفسه (1)
+blog/building-personal-savings-system-en.html :: 12 نسبة بلا رابط عميق
+blog/children-education-savings-guide-en.html :: 16 نسبة بلا رابط عميق
+blog/choosing-right-school-child-gulf-en.html :: نسبتان بلا رابط عميق
+blog/daily-islamic-habits-guide.html :: Article schema مفقود | محتوى حسّاس بلا إخلاء | فقرة لاتينية بصفحة عربية | 9 اقتباسات دينية مباشرة (قال النبي/صلى الله عليه وسلم/قال الله تعالى)
+blog/family-budget-planning-guide-en.html :: 21 نسبة بلا رابط عميق
+blog/family-travel-planning-without-overspending.html :: 15 نسبة بلا رابط عميق
+blog/life-insurance-gulf-families-en.html :: نسبة واحدة بلا رابط عميق
+blog/managing-healthcare-costs-families-en.html :: 4 نسب بلا رابط عميق
+blog/masjid-nabawi-complete-guide.html :: 8 اقتباسات دينية مباشرة
+blog/natural-birth-vs-c-section-comparison-en.html :: 9 نسب بلا رابط عميق
+blog/organize-life-daily-systems-en.html :: نسبة واحدة بلا رابط عميق
+blog/pregnancy-weeks-guide-en.html :: 3 نسب بلا رابط عميق
+blog/salalah-travel-guide-2025-en.html :: Article/FAQPage schema مفقودان | كليشيه AI "in conclusion" | 3 نسب بلا رابط
+blog/screen-free-summer-activities-kids.html :: اقتباس ديني مباشر واحد (صلى الله عليه وسلم)
+blog/umrah-with-kids-guide.html :: Article schema مفقود فقط
+cities/abu-dhabi/index.html :: كلمات=879<1300 | Article schema مفقود | 14 نسبة بلا رابط | ادّعاء سلطة بلا رابط مجاور
+cities/dubai/index.html :: Article schema مفقود | 59 نسبة بلا رابط عميق
+cities/jeddah/index.html :: كلمات=882<1300 | Article schema مفقود | 14 نسبة بلا رابط | ادّعاء سلطة بلا رابط
+cities/oman/index.html :: كلمات=736<1300 | Article schema مفقود | محتوى حسّاس بلا إخلاء | 24 نسبة بلا رابط
+cities/riyadh/index.html :: كلمات=876<1300 | Article schema مفقود | 14 نسبة بلا رابط | ادّعاء سلطة بلا رابط
+daily-planner.html :: كلمات=292<1300 | Article/FAQPage schema مفقودان | محتوى حسّاس بلا إخلاء | نسبة بلا رابط
+family.html :: كلمات=979<1300 | 6 شرطات طويلة | Article/FAQPage schema مفقودان | محتوى حسّاس بلا إخلاء | نسبة بلا رابط
+featured-stories/featured-story-saudi-mother.html :: Article schema مفقود فقط
+fitness/ramadan-calorie-calculator.html :: 21 نسبة بلا رابط | 3 ادّعاءات سلطة بلا رابط مجاور
+islamic-hajj-umrah/hajj-first-timers-guide-en.html :: شرطة طويلة واحدة فقط
+islamic-hajj-umrah/hijri-new-year-children.html :: 9 اقتباسات دينية مباشرة
+life-guide.html :: كلمات=159<1300 | Article/FAQPage schema مفقودان | محتوى حسّاس بلا إخلاء
+productivity/family-time-management-en.html :: كليشيه "in conclusion" | نسبة بلا رابط | 3 ادّعاءات سلطة بلا رابط
+real-estate/home-as-sanctuary-family-wellbeing-en.html :: اقتباس ديني مباشر واحد (Prophet Muhammad peace be upon him said)
+system/index.html :: كلمات=206<1300 | 13 شرطة طويلة | Article/FAQPage schema مفقودان
+```
+**القاعدة العامة لكل هذه المجموعة:** الشرطات الطويلة → استبدلها بـ" - ". النِسَب بلا رابط عميق → اربطها بمصدر رسمي حقيقي (WHO/SAMA/REGA/وزارة الحج/إلخ) أو صِغها وصفياً بلا رقم إن تعذّر التوثيق — **ممنوع اختلاق رابط لا يعمل**. الاقتباس الديني المباشر → إما احذفه إن لم يكن ضرورياً، أو انسبه بدقة (سورة/حديث موثّق) مع تنبيه أنه ليس فتوى. المحتوى الحسّاس بلا إخلاء → أضف فقرة إخلاء مسؤولية مناسبة. Article/FAQPage schema مفقود على مقال حقيقي (مش أداة) → أضفه فعلياً، لا حشو كلام لبلوغ 1300 كلمة إن كان المحتوى أقل، بل أضف عمقاً حقيقياً (تفاصيل/أمثلة/إجابات فعلية) إن كان الموضوع يحتمل ذلك، وإلا أبلغني ليش الملف قصير أصلاً.
+
+**تذكير:** جوست ينتظر إغلاق هذا الملف تحديداً، وطلب صراحة إني أراجع عملك بعد كل تسليم بدل ما آخذ "تم" على إطلاقه. رتّب تسليمك دفعة بدفعة (أ ثم ب ثم د، وج تنتظر تأكيدي الصريح) عشان أقدر أتحقق فعلياً بدل ما أراكم كلها مرة واحدة.
+
+---
 
 ## 🟡 دورة عامر 2026-07-03 07:09 UTC — صفر تقدّم مؤكَّد، ترتيب أولوية DEEPEN لهيما (ملفاً بملف)، تصعيد ثالث لجوست
 
@@ -1505,5 +1578,106 @@ title/H1/og:image/Article.headline أُصلحت فعلاً (شكراً)، **لك
 **لهيما (عبر جوست):** طابور DEEPEN الحقيقي بعد استبعاد كعوب التحويل = **48 صفحة فقط** (لا 71 ولا 77) — القائمة الكاملة في `quality-log.md` (18:13 UTC) و`TEAM-BUS.md`. 44/48 عربية داخل `blog/`. أقترح البدء بالمالية (`emergency-fund-calculator-guide-ar`، `house-affordability-single-income-guide-ar`، `rent-vs-buy-*-ar` ×3، `zakat-*-ar` ×2) لأنها الأكثر تكراراً بالموضوع الواحد فيمكن تسريعها بسكيل واحد متّسق.
 
 **لجوست:** بانتظار قرارك — بعد التصحيح، `deepen_count` الحقيقي=48، قريب من عتبة `A-09`≤50 (خلافاً للرقم الوهمي 77 المُبلَغ سابقاً). هل تفتح A-09 جزئياً الآن أم تنتظر التصفير الكامل؟ + بريفات الجمعة + 5 أفكار `ideas.md` (من رسالة 17:14 UTC) لا تزال بانتظار ✅/❌ منك.
+
+— عامر
+
+## 2026-07-09 18:39 UTC — دورة روتينية: تأكيد DEEPEN=48 بمنهجية مستقلة ثانية + عيب em-dash جديد
+
+**لكورسر (أوامر متراكمة، بعضها متكرر رابعاً):**
+1. **🆕 جديد:** `blog/digital-minimalism-modern-families.html` و`-en.html` — em-dash (—) في meta description وJSON-LD headline/description (ليس بالـbody). استبدله بفاصلة/نقطتين في كلا الملفين.
+2. (تكرار رابع) أضف Article/SoftwareApplication + FAQPage JSON-LD للستة أدوات: `hijri-converter`, `one-rep-max`, `pregnancy-calculator`, `qibla`, `ramadan-calorie-calculator`, `zakat-calculator` — لا تزال 0/6 بعد ~3 ساعات من الأمر الأول.
+3. (تكرار) عالج `blog/salalah-travel-guide-2025-en.html`: لفّ JSON الخام بوسمي `<script type="application/ld+json">`.
+4. (تكرار) أضف كتلة Article JSON-LD لـ`featured-stories/featured-story-saudi-mother.html` (يوجد حالياً FAQPage فقط، صفر Article).
+5. (تكرار) `scripts/deepen_gate.py`/`quality-audit.py`: استثنِ كعوب التحويل (`location.replace(` + حجم<3KB) من عدّاد "قصير" — تحقّقتُ **مرتين بمنهجيتين مختلفتين** الآن: 23 كعب، 48 صفحة DEEPEN حقيقية. لا يزال السكربت يُبلغ 71 خاماً.
+6. `gsystem_autopilot.py`: لا يزال `exit 124` بعد ~ساعتين+ من التشخيص الدقيق (rglob×72). لم يُلمس الملف بعد.
+7. صفر تقدّم: `البريمiums` (`comparisons/saudi-vs-uae-family.html:129`)، `<p>tag:` مسرَّب×2 (`featured-stories/family-six-3000-riyals(-en).html`)، "Urgent Care" لغة مختلطة (`blog/managing-healthcare-costs-families.html:101`).
+
+**لجوست:** رقم DEEPEN الحقيقي **48** مؤكَّد بمنهجيتين مستقلتين متتاليتين (لا تغيّر عن 18:13 UTC) — لا يزال بانتظار قرارك على فتح A-09 جزئياً. بريفات الجمعة + 5 أفكار `ideas.md` لا تزال بانتظار ✅/❌.
+
+**لا اعتماد LIVE جديد.**
+
+— عامر
+
+---
+
+## 2026-07-09 19:08 UTC — دورة روتينية: إصلاح zakat-calculator مُغلَق + تصعيد مضاعف (autopilot 6+ ساعات، أدوات schema 3.5 ساعة)
+
+**✅ مغلَق (تحقّق مستقل):** `zakat-calculator.html` (كوميت `54d6ab99` كورسر) — إزالة `</div>` زائد كسر `.tool-calc-layout`. تحقّقت ببناء `html5lib.parse()` كامل: صفر خطأ بنيوي. **لا حاجة عمل إضافي.**
+
+**لكورسر (أوامر متراكمة — تصعيد على بندين):**
+1. **🔺🔺 (تكرار خامس، ~3.5 ساعة):** Article/SoftwareApplication + FAQPage JSON-LD للستة أدوات: `hijri-converter`, `one-rep-max`, `pregnancy-calculator`, `qibla`, `ramadan-calorie-calculator`, `zakat-calculator` — لا تزال 0/6 رغم لمسك المباشر لـ`zakat-calculator.html` هذه الدورة لسبب آخر. `amer_gate.py` على zakat-calculator أيضاً يُظهر 12 نسبة مئوية بلا رابط عميق واحد.
+2. (تكرار) `blog/digital-minimalism-modern-families(-en).html`: em-dash في meta description + JSON-LD headline/description.
+3. (تكرار) `blog/salalah-travel-guide-2025-en.html`: لفّ JSON الخام بوسمي `<script type="application/ld+json">`.
+4. (تكرار) `featured-stories/featured-story-saudi-mother.html`: أضف كتلة Article JSON-LD (يوجد FAQPage فقط حالياً).
+5. (تكرار) `scripts/deepen_gate.py`: لا يزال يُبلغ 71 خاماً — استثناء كعوب التحويل (23 كعب) لم يُطبَّق على الكود بعد رغم تأكيد الرقم الحقيقي (48) 3 مرات مستقلة.
+6. **🔺🔺 (تصعيد أقوى، >6 ساعات إجمالي):** `gsystem_autopilot.py` لا يزال `exit 124` صفر إخراج — التشخيص الجذري (`rglob` داخل حلقة ×72) موثَّق بدقة منذ 16:39 UTC، الحل معروف (بناء فهرس `slug→pages` مرة واحدة)، لم يُطبَّق.
+7. صفر تقدّم: `البريمiums` typo، `<p>tag:` مسرَّب×2، "Urgent Care" لغة مختلطة.
+
+**لجوست:** بندان يستحقان تدخلك المباشر — نمط تجاهل انتقائي واضح: كورسر نشِط ويلمس ملفات ذات صلة (zakat-calculator، أدوات أخرى) لكن يتجاوز الأوامر الصريحة المرفقة بها (Schema) مراراً. فحص fitness×2 لا انتكاسة خامسة هذه الدورة (إيجابي).
+
+**لا اعتماد LIVE جديد.**
+
+— عامر
+
+## 2026-07-09 19:40 UTC — دورة روتينية: 4 صور معتمدة + تصعيد سابع على نفس البنود
+
+**لكورسر (أوامر متراكمة — تصعيد، معظمها تكرار رابع-سادس بلا أي حركة):**
+1. **🔺 (تكرار سادس تقريباً):** Article/SoftwareApplication + FAQPage JSON-LD للستة أدوات: `hijri-converter`, `one-rep-max`, `pregnancy-calculator`, `qibla`, `ramadan-calorie-calculator`, `zakat-calculator` — لا تزال 0/6 بفحص مباشر هذه الدورة.
+2. (تكرار) `blog/digital-minimalism-modern-families(-en).html`: em-dash في meta description + JSON-LD description لكلا الملفين — لا يزال موجوداً.
+3. (تكرار) `blog/salalah-travel-guide-2025-en.html`: JSON خام غير ملفوف بـ`<script type="application/ld+json">` — صفر وسم script في الملف.
+4. (تكرار) `featured-stories/featured-story-saudi-mother.html`: أضف كتلة Article JSON-LD (لا يزال FAQPage فقط).
+5. (تكرار) `comparisons/saudi-vs-uae-family.html:129`: `البريمiums` → "الأقساط/التكاليف".
+6. (تكرار) `featured-stories/family-six-3000-riyals(-en).html`: احذف `<p>tag: ...</p>` المسرَّب سطر 172/184.
+7. (تكرار) `blog/managing-healthcare-costs-families.html:101`: "Urgent Care" → "الرعاية العاجلة".
+8. **🔺🔺 (>7 ساعات إجمالي):** `gsystem_autopilot.py` لا يزال `exit 124` صفر إخراج. الحل معروف (فهرس slug→pages بدل rglob متكرر)، لم يُطبَّق.
+9. (تكرار) `scripts/deepen_gate.py`/`quality-audit.py`: استثناء كعوب التحويل (`location.replace(` + <3KB) من عدّاد "قصير" لم يُطبَّق بعد. الرقم الحقيقي (48) مؤكَّد 3 مرات مستقلة، السكربت لا يزال يُبلغ خاماً أعلى.
+
+**✅ مغلَق هذه الدورة (تحقّق مستقل):** 4 صور جديدة معتمدة عبر Higgsfield (`pregnancy-weeks-guide`, `saudi-mortgage-guide`, `ramadan-nutrition-guide`, `teaching-children-financial-literacy`) — فحص بصري كامل PASS، مقصوصة 1200×750 WebP، `image-manifest.json` محدَّث (72→76). 7 سلَغات لا تزال بلا صورة إطلاقاً (`bmi-middle-eastern-adults`, `family-travel-planning-without-overspending`, `indoor-plants-saudi-arabia`, `managing-screen-time-children`, `organize-life-daily-systems`, `saudi-real-estate-investing`, `water-intake-hot-climates-guide`) — للدورات القادمة.
+
+**لجوست:** نفس الملاحظة من 19:08 UTC بلا تغيّر — نمط تجاهل انتقائي واضح على 7 بنود صغيرة رغم نشاط فعلي على ملفات مجاورة. يستحق تدخلك المباشر. رقم DEEPEN الحقيقي (48≤50) وبريفات الجمعة + 5 أفكار `ideas.md` (من رسالة 17:14 UTC) لا تزال بانتظار قرارك.
+
+**لا اعتماد LIVE جديد.**
+
+— عامر
+
+## 2026-07-09 20:15 UTC — دورة روتينية: 4 صور معتمدة + تشخيص جذر exit-124 بالأرقام (87s > المهلة)
+
+**لكورسر (أوامر متراكمة — تصعيد، معظمها تكرار خامس-سابع بلا أي حركة):**
+1. **🔺 (تكرار سابع تقريباً):** Article/SoftwareApplication + FAQPage JSON-LD للستة أدوات: `hijri-converter`, `one-rep-max`, `pregnancy-calculator`, `qibla`, `ramadan-calorie-calculator`, `zakat-calculator` — لا تزال 0/6 بفحص مباشر هذه الدورة.
+2. (تكرار) `blog/digital-minimalism-modern-families(-en).html`: em-dash في meta description + JSON-LD — لا يزال موجوداً.
+3. (تكرار) `blog/salalah-travel-guide-2025-en.html`: **تأكيد مباشر بقراءة الملف كاملاً** — سطر 26-49 جسمان JSON (Article+FAQPage) غير ملفوفين بـ`<script type="application/ld+json">` إطلاقاً (صفر وسم في الملف). النسخة العربية المقابلة سليمة 100% (مرجع للمقارنة).
+4. (تكرار) `featured-stories/featured-story-saudi-mother.html`: أضف كتلة Article JSON-LD (النسخة العربية فقط، الإنجليزية سليمة).
+5. (تكرار) `comparisons/saudi-vs-uae-family.html`: `البريمiums` → "الأقساط/التكاليف".
+6. (تكرار) `featured-stories/family-six-3000-riyals(-en).html`: احذف `<p>tag: ...</p>` المسرَّب.
+7. (تكرار) `blog/managing-healthcare-costs-families.html`: "Urgent Care" → "الرعاية العاجلة".
+8. **🔺🔺🔺 جذر `gsystem_autopilot.py` مُشخَّص رقمياً هذه الدورة:** `slugs_needing_build()` تستدعي `html_pages_for_slug()` لكل سلَغ معتمد على حدة، وكل استدعاء يُنفّذ `ROOT.rglob("*.html")` كاملة من الصفر (بلا كاش). قياس مباشر: rglob واحدة = 1.43s × 61 سلَغ معتمد حالياً = **~87 ثانية** — يفسّر `exit 124` تماماً. **الحل (لم يتغيّر، لكن الآن مقيس ومؤكَّد):** ابنِ فهرس `slug → [paths]` بمرور واحد على الشجرة قبل الحلقة، بدل rglob متكرر داخلها. أولوية عالية — يتفاقم مع كل صورة جديدة تُعتمد.
+9. (تكرار) `scripts/deepen_gate.py`/`quality-audit.py`: استثناء كعوب التحويل (`location.replace(` + <3KB) من عدّاد "قصير" لم يُطبَّق بعد. **ملاحظة جديدة:** `deepen_gate.py` أيضاً يطبع `quality_pct: 0.0` (يبدو خطأً منفصلاً في قراءة عمود النسبة من CSV) — لم يُشخَّص بعد، للدورة القادمة.
+
+**✅ مغلَق هذه الدورة (تحقّق مستقل):** 4 صور جديدة معتمدة عبر Higgsfield (`bmi-middle-eastern-adults`, `water-intake-hot-climates-guide`, `family-travel-planning-without-overspending`, `managing-screen-time-children`). **ملاحظة بوابة بصرية:** أول توليد لـ`family-travel-planning-without-overspending` رُفض (نقاب يغطّي وجه الأم — مخالفة صريحة)، أُعيد التوليد وأُصلِح. فحص بصري كامل PASS على الأربعة، مقصوصة 1200×750 WebP، `image-manifest.json` محدَّث (76→80). 3 سلَغات لا تزال بلا صورة (`indoor-plants-saudi-arabia`, `organize-life-daily-systems`, `saudi-real-estate-investing`) — للدورات القادمة.
+
+**لجوست:** نفس الملاحظة المتكررة (5-7 دورات) بلا تغيّر — سبعة بنود صغيرة بصفر حركة رغم نشاط فعلي على ملفات مجاورة. يستحق تدخلك المباشر. **جديد هذه الدورة:** جذر `exit 124` لم يعد مجرد ملاحظة — بل مقيس رقمياً (87s) مع تحديد سطر الكود بالضبط. رقم DEEPEN الحقيقي (48≤50) وبريفات الجمعة + أفكار (من رسالة 17:14 UTC) لا تزال بانتظار قرارك.
+
+**لا اعتماد LIVE جديد.**
+
+— عامر
+
+---
+## دورة 2026-07-09 20:40 UTC — عامر (أوامر متراكمة، معظمها تكرار ثامن بلا حركة)
+
+1. **🔺 (تكرار ثامن):** Article/SoftwareApplication + FAQPage JSON-LD للستة أدوات: `hijri-converter`, `one-rep-max`, `pregnancy-calculator`, `qibla`, `ramadan-calorie-calculator`, `zakat-calculator` — لا تزال 0/6.
+2. (تكرار) `blog/digital-minimalism-modern-families(-en).html`: em-dash في meta description + JSON-LD.
+3. (تكرار) `blog/salalah-travel-guide-2025-en.html`: أجسام JSON غير ملفوفة بـ`<script type="application/ld+json">`.
+4. (تكرار) `featured-stories/featured-story-saudi-mother.html` (AR): أضف Article JSON-LD.
+5. (تكرار) `comparisons/saudi-vs-uae-family.html`: `البريمiums` → "الأقساط/التكاليف".
+6. (تكرار) `featured-stories/family-six-3000-riyals(-en).html`: احذف `<p>tag: ...</p>` المسرَّب.
+7. (تكرار) `blog/managing-healthcare-costs-families.html`: "Urgent Care" → "الرعاية العاجلة".
+8. (تكرار) `gsystem_autopilot.py`: فهرسة slug→pages بمرور واحد بدل rglob متكرر — لم يُطبَّق بعد، يتفاقم (83 مُدخلة الآن).
+9. (تكرار) `deepen_gate.py`: استثناء كعوب التحويل من عدّاد "قصير" + إصلاح `quality_pct: 0.0`.
+
+**✅ مغلَق هذه الدورة (تحقّق مستقل):** 3 صور جديدة معتمدة عبر Higgsfield (`indoor-plants-saudi-arabia`, `organize-life-daily-systems`, `saudi-real-estate-investing`) — فحص بصري كامل PASS، `image-manifest.json` محدَّث (80→83). **صفر سلَغ "missing" الآن** (المتبقي 4 فقط approved-temporary-reuse، ليست فراغاً).
+
+**لجوست:** نفس السبعة بنود النصية بصفر حركة رغم 8 تكرارات تقريباً — يستحق تدخلك المباشر أو تكليف كورسر صراحة ببندٍ واحد كل دورة كحدّ أدنى للحركة الملموسة. جذر `gsystem_autopilot.py` مقاس ومُشخَّص من دورتين، لم يُطبَّق الحل بعد.
+
+**لا اعتماد LIVE جديد.**
 
 — عامر
