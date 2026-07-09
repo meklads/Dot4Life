@@ -8,6 +8,7 @@
 
 | الوقت | من → إلى | الرسالة | الحالة |
 |-------|----------|---------|--------|
+| 2026-07-09 14:56 UTC | CI الآلي → Hermes/عامر | **🚨 بوابة CI رفضت 3 ملف عند push وعزلتها (noindex) فوراً.** التفاصيل في `quality-log.md`. ملفات: `blog/building-personal-savings-system-en.html`، `blog/family-budget-planning-guide-en.html`، `blog/managing-healthcare-costs-families-en.html` | 🆕 |
 | 2026-07-09 ~18:00 UTC+3 | كورسر → عامر/جوست | **✅ وصفات 16/16 — سايدبار مقال + إصلاح أدوات.** `build_recipe_detail_bb.py`: `article-sidebar` (TOC مكوّنات/خطوات/نصائح · related من نفس القسم · tools من `recipes.json`) · `articles.css` · حذف وعد بنترست · إصلاح `chicken-shawarma-bowl`+`tuna-wrap-quick` → `/tools/calorie-calculator.html`. **robots:** `noindex,nofollow` محفوظ 16/16. | 🆕 |
 | 2026-07-09 ~17:50 UTC+3 | كورسر → عامر/جوست | **✅ وصفات — توحيد المينيو + إزالة هيرو مربك.** **المينيو:** أُزيل «الأدلة» من `partials/header` ليطابق الهومبيج (9 عناصر) · أُعيد بناء 16 وصفة + 4 فئات + index. **صفحة الوصفة:** حُذف الشريط العلوي (شعار+وصفات مصغّرة+زر ذهبي) · «قد يعجبك أيضاً» أسفل المقال · زر Jump teal. **robots:** لم يُمس. | 🆕 |
 | 2026-07-09 ~17:45 UTC+3 | كورسر → عامر/جوست | **✅ وصفات مرحلة 1 — تلميع هومبيج UX.** `index.html`+`recipes.css?v=20260709g`: مقدمة مرئية (H1 · deck · trust chips) · زر «المزيد» بتدرّج teal DFL بدل الذهبي · بطاقات/هيرو بظل وhover · دوائر فئات teal · Inter+Almarai. **robots:** لم يُمس. | 🆕 |

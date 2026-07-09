@@ -1954,3 +1954,9 @@ Salman's Story: 70 Notifi | Figures based on studies from University of Californ
 - محاولة push best-effort واحدة آخر الدورة.
 
 **القرار: لا اعتماد LIVE جديد لأي محتوى نصي. لا اعتماد صور جديدة هذه الدورة (فحص فقط). إغلاق قسم الوصفات مؤكَّد. عيب نص جديد على صورة الزكاة (noindex، لا خطر نشر) موثَّق لتصحيح لاحق.**
+
+## 2026-07-09 14:56 UTC — 🤖 بوابة CI الآلية رفضت 3 ملف عند push
+تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
+- `blog/building-personal-savings-system-en.html`: نِسَب=12 بلا أي رابط عميق واحد
+- `blog/family-budget-planning-guide-en.html`: نِسَب=21 بلا أي رابط عميق واحد
+- `blog/managing-healthcare-costs-families-en.html`: نِسَب=4 بلا أي رابط عميق واحد
