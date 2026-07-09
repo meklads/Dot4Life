@@ -2053,3 +2053,10 @@ Salman's Story: 70 Notifi | Figures based on studies from University of Californ
 - `islamic-hajj-umrah/hijri-new-year-children.html`: اقتباس ديني مباشر (9): صلى الله عليه وسلم | رضي الله عن | قال النبي
 - `real-estate/dubai-property-roi.html`: كلمات=176 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية
 - `real-estate/home-as-sanctuary-family-wellbeing-en.html`: اقتباس ديني مباشر (1): Prophet Muhammad peace be upon him said
+
+## 2026-07-09 16:41 UTC — 🤖 بوابة CI الآلية رفضت 4 ملف عند push
+تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
+- `blog/daily-islamic-habits-guide.html`: Article schema مفقود · محتوى حسّاس بلا إخلاء مسؤولية · فقرات لاتينية في صفحة عربية=1 · اقتباس ديني مباشر (9): قال النبي | صلى الله عليه وسلم | قال الله تعالى
+- `islamic-hajj-umrah/hajj-first-timers-guide-en.html`: شرطات طويلة=1
+- `islamic-hajj-umrah/hijri-new-year-children.html`: اقتباس ديني مباشر (9): صلى الله عليه وسلم | رضي الله عن | قال النبي
+- `real-estate/home-as-sanctuary-family-wellbeing-en.html`: اقتباس ديني مباشر (1): Prophet Muhammad peace be upon him said
