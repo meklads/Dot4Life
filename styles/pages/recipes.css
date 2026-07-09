@@ -937,6 +937,135 @@ body.rcp-bb-home {
    Recipe detail — article layout (Phase 3)
    ═══════════════════════════════════════════════════════════ */
 
+body.recipes-page.rcp-bb-recipe {
+  background: #fff;
+  color: #1a1a1a;
+}
+
+.rcp-bb-recipe-topbar {
+  border-bottom: 1px solid #eee;
+  background: #fafafa;
+}
+
+.rcp-bb-recipe-topbar-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: .85rem clamp(1rem, 3vw, 1.5rem);
+  display: grid;
+  grid-template-columns: minmax(180px, 220px) 1fr minmax(160px, 200px);
+  gap: 1rem;
+  align-items: start;
+}
+
+.rcp-bb-topbar-module h4 {
+  margin: 0 0 .5rem;
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: #888;
+}
+
+[data-lang="ar"] .rcp-bb-topbar-module h4 {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.rcp-bb-topbar-team {
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+}
+
+.rcp-bb-topbar-team img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.rcp-bb-topbar-team-text {
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+  font-size: .78rem;
+  line-height: 1.35;
+}
+
+.rcp-bb-topbar-team-text strong {
+  font-weight: 800;
+  color: #1a1a1a;
+}
+
+.rcp-bb-topbar-team-text a {
+  color: #1E8C86;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.rcp-bb-topbar-team-text a:hover {
+  text-decoration: underline;
+}
+
+.rcp-bb-topbar-scroll {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
+}
+
+.rcp-bb-top-recipe {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  padding: .35rem .5rem;
+  border: 1px solid #e8e8e8;
+  border-radius: 6px;
+  background: #fff;
+  text-decoration: none;
+  color: #1a1a1a;
+  max-width: 100%;
+}
+
+.rcp-bb-top-recipe img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.rcp-bb-top-recipe span {
+  font-size: .72rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.rcp-bb-top-recipe:hover {
+  border-color: #F5C518;
+}
+
+.rcp-bb-topbar-tool-btn {
+  display: inline-block;
+  padding: .45rem .75rem;
+  border-radius: 4px;
+  background: #F5C518;
+  color: #1a1a1a;
+  font-size: .72rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.rcp-bb-topbar-tool-btn:hover {
+  background: #e6b600;
+}
+
+@media (max-width: 900px) {
+  .rcp-bb-recipe-topbar-inner {
+    grid-template-columns: 1fr;
+    gap: .75rem;
+  }
+}
+
 .rcp-bb-recipe-wrap {
   padding-bottom: 2.5rem;
 }
@@ -1059,7 +1188,7 @@ body.rcp-bb-home {
 }
 
 .rcp-bb-recipe-hero {
-  margin: 0 0 2rem;
+  margin: 0 auto 2rem;
   max-width: 720px;
 }
 
@@ -1081,11 +1210,9 @@ body.rcp-bb-home {
   text-align: center;
 }
 
-.rcp-bb-recipe-layout.article-layout {
-  align-items: start;
-}
-
 .rcp-bb-recipe-article {
+  max-width: 720px;
+  margin: 0 auto;
   padding: 0;
 }
 
@@ -1126,51 +1253,6 @@ body.rcp-bb-home {
   font-size: .68rem;
 }
 
-.rcp-bb-side-related h4 {
-  margin: 0 0 .75rem;
-  font-size: .72rem;
-  font-weight: 800;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-}
-
-[data-lang="ar"] .rcp-bb-side-related h4 {
-  letter-spacing: 0;
-  text-transform: none;
-}
-
-.rcp-bb-side-recipe {
-  display: flex;
-  align-items: center;
-  gap: .65rem;
-  padding: .45rem 0;
-  text-decoration: none;
-  color: #1a1a1a;
-  border-bottom: 1px solid #eee;
-}
-
-.rcp-bb-side-recipe:last-child {
-  border-bottom: none;
-}
-
-.rcp-bb-side-recipe img {
-  width: 56px;
-  height: 56px;
-  object-fit: cover;
-  border-radius: 4px;
-  flex-shrink: 0;
-}
-
-.rcp-bb-side-recipe span {
-  font-size: .78rem;
-  font-weight: 700;
-  line-height: 1.35;
-}
-
-.rcp-bb-side-recipe:hover span {
-  text-decoration: underline;
-}
-
 [data-theme="dark"] .rcp-bb-recipe-title,
 [data-theme="dark"] .rcp-bb-recipe-deck,
 [data-theme="dark"] .rcp-bb-recipe-intro,
@@ -1186,6 +1268,17 @@ body.rcp-bb-home {
   color: #EDE8E0;
 }
 
-[data-theme="dark"] .rcp-bb-side-recipe {
+[data-theme="dark"] .rcp-bb-recipe-topbar {
+  background: #1e1b18;
   border-bottom-color: #302820;
+}
+
+[data-theme="dark"] .rcp-bb-top-recipe {
+  background: #2A2520;
+  border-color: #3a3530;
+  color: #EDE8E0;
+}
+
+[data-theme="dark"] .rcp-bb-topbar-team-text strong {
+  color: #EDE8E0;
 }
