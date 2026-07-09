@@ -799,3 +799,136 @@ body.rcp-bb-home {
 [data-theme="dark"] .rcp-bb-cats {
   border-bottom-color: #302820;
 }
+
+/* Category page banner (Phase 2) */
+.rcp-bb-cat-banner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1.5rem;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  background: linear-gradient(135deg, #F5C518 0%, #f9d84a 55%, #f5c518 100%);
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+}
+
+.rcp-bb-cat-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: .07;
+  background-image: radial-gradient(circle at 20% 30%, #fff 1px, transparent 1px);
+  background-size: 18px 18px;
+  pointer-events: none;
+}
+
+@media (max-width: 720px) {
+  .rcp-bb-cat-banner {
+    grid-template-columns: 1fr;
+  }
+  .rcp-bb-cat-banner-img {
+    order: -1;
+    justify-self: center;
+  }
+}
+
+.rcp-bb-cat-banner-text {
+  position: relative;
+  z-index: 1;
+}
+
+.rcp-bb-cat-banner-kicker {
+  margin: 0 0 .5rem;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: rgba(26, 26, 26, .75);
+}
+
+[data-lang="ar"] .rcp-bb-cat-banner-kicker {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.rcp-bb-cat-banner-title {
+  margin: 0;
+  font-size: clamp(1.35rem, 3vw, 2rem);
+  font-weight: 800;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+  color: #1a1a1a;
+  line-height: 1.15;
+}
+
+[data-lang="ar"] .rcp-bb-cat-banner-title {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.rcp-bb-cat-banner-desc {
+  margin: .75rem 0 0;
+  max-width: 42ch;
+  font-size: .88rem;
+  line-height: 1.55;
+  color: rgba(26, 26, 26, .85);
+}
+
+.rcp-bb-cat-banner-img {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+.rcp-bb-cat-banner-img img {
+  display: block;
+  width: clamp(140px, 18vw, 220px);
+  height: clamp(140px, 18vw, 220px);
+  object-fit: cover;
+  border-radius: 4px;
+  border: 3px solid rgba(255, 255, 255, .65);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .12);
+}
+
+.rcp-bb-disclaimer--banner {
+  margin-top: .85rem;
+  max-width: 48ch;
+  background: rgba(255, 255, 255, .55);
+  border-color: rgba(0, 0, 0, .08);
+  color: rgba(26, 26, 26, .8);
+}
+
+.rcp-bb-cats--compact {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+}
+
+.rcp-bb-cat.is-active .rcp-bb-cat-img {
+  border-color: #1a1a1a;
+  box-shadow: 0 0 0 3px #F5C518;
+}
+
+.rcp-bb-related {
+  margin: -.5rem 0 1.1rem;
+  font-size: .78rem;
+  color: #666;
+}
+
+.rcp-bb-related a {
+  color: #1a1a1a;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+[data-theme="dark"] .rcp-bb-cat-banner {
+  background: linear-gradient(135deg, #c9a012 0%, #a88610 100%);
+}
+
+[data-theme="dark"] .rcp-bb-cat-banner-title,
+[data-theme="dark"] .rcp-bb-cat-banner-kicker,
+[data-theme="dark"] .rcp-bb-cat-banner-desc {
+  color: #12100E;
+}
