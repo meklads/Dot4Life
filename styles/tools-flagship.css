@@ -1517,6 +1517,8 @@ body.tool-flagship-page .dfl-mnav-item svg {
   gap: var(--tool-space);
   align-items: start;
   margin-bottom: var(--tool-space);
+  container-type: inline-size;
+  container-name: tool-calc;
 }
 
 [dir="rtl"] .tool-calc-layout {
@@ -1525,6 +1527,53 @@ body.tool-flagship-page .dfl-mnav-item svg {
 
 .tool-calc-layout > .tool-workspace {
   margin-bottom: 0;
+  min-width: 0;
+  /* Sidebar steals ~220px — inner 2-col grid breaks inside ~1100px max-width */
+  grid-template-columns: 1fr !important;
+}
+
+/* Info/stat rows span full workspace width when 2-col is allowed */
+.tool-calc-layout > .tool-workspace > :is(
+  .cc-grid,
+  .mo-grid,
+  .sc-grid,
+  .sg-grid,
+  .bm-grid,
+  .rc-goal-grid
+) {
+  grid-column: 1 / -1;
+}
+
+/* Future-wide layouts only: restore input|results columns if container is very wide */
+@container tool-calc (min-width: 1140px) {
+  .tool-calc-layout > .tool-workspace {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+/* Nested 2-col tool layouts: respond to workspace width, not viewport */
+@container tool-calc (max-width: 1139px) {
+  .tool-calc-layout .calc-grid,
+  .tool-calc-layout .tool-grid,
+  .tool-calc-layout .checklist-layout,
+  .tool-calc-layout .qibla-layout,
+  .tool-calc-layout .zc-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  body.tool-flagship-page .tool-calc-layout > .tool-workspace .tool-panel:last-child {
+    position: static;
+    top: auto;
+  }
+}
+
+@container tool-calc (max-width: 720px) {
+  .tool-calc-layout .cc-grid,
+  .tool-calc-layout .mo-grid,
+  .tool-calc-layout .sc-grid,
+  .tool-calc-layout .sg-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
 }
 
 .tool-related-aside {

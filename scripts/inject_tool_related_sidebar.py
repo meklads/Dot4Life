@@ -10,7 +10,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 CATALOG = ROOT / "scripts" / "tools_catalog.json"
-FLAGSHIP_VER = "20260709a"
+FLAGSHIP_VER = "20260709b"
 MAX_RELATED = 6
 
 
