@@ -1,76 +1,56 @@
-# Ideogram prompts — Featured Recipes (10 per category)
+# Ideogram prompts — Recipe hero images (v2, rewritten by Amer 2026-07-09)
 
-Use after approving MVP pages. Export as **16:9 WebP**, soft natural light, Gulf-home kitchen feel, no text in image, no faces required.
+## لماذا أُعيدت الكتابة
 
-Global style suffix for all prompts:
-> Soft natural daylight, clean modern Gulf family kitchen, warm teal and cream tones, appetizing food photography, shallow depth of field, minimal props, no text, no watermark, 16:9
+الملف السابق كان منظّماً كـ"40 برومبت" (10 لكل فئة × 4 فئات: حمل/اقتصادي/سريع/عائلي). هذا خاطئ بنيوياً:
 
----
-
-## 1. وصفات للحامل / Pregnancy (10)
-
-1. Warm bowl of oatmeal with chopped dates, walnuts, and chia seeds on a white ceramic bowl, wooden spoon, morning light
-2. Creamy red lentil and spinach soup in a deep bowl, lemon wedge on side, rustic table, comforting steam
-3. Date and nut smoothie in tall glass, banana slice garnish, yogurt swirl, bright breakfast scene
-4. Baked salmon fillet with roasted zucchini and carrot on sheet pan, lemon slices, healthy dinner
-5. Whole grain toast with mashed avocado and soft boiled egg, sprinkled chili flakes, simple plate
-6. Small plate of iron-rich foods: lentils, spinach, dates, nuts arranged neatly, educational flat lay
-7. Gentle pregnancy breakfast tray: oats, fruit, milk glass, soft pastel napkin, calm mood
-8. Light vegetable soup with lentils in white bowl, fresh parsley, family kitchen background blur
-9. Yogurt parfait with berries and granola in glass cup, layered texture visible, fresh morning
-10. Sheet-pan salmon dinner with colorful vegetables, olive oil sheen, wholesome family meal
+1. **كل وصفة صورتها واحدة تُستخدم أينما ظهرت.** الوصفة الواحدة (مثل `avocado-egg-toast`) تظهر في أكثر من فئة (حمل + سريع مثلاً) عبر حقل `image` في `recipes.json` — فلا داعي لتوليد صورتين مختلفتين لنفس الطبق. العدد الحقيقي المطلوب = **16 صورة فقط** (عدد ملفات الوصفات الفعلية)، وليس 40. هذا يوفّر أكثر من النصف من تكلفة/وقت التوليد، ويضمن تناسق بصري (نفس الطبق = نفس الصورة في كل مكان يظهر فيه).
+2. **الصورة الواحدة يجب أن تكون لقطة واحدة كبيرة، لا شبكة لقطات.** لقطة الشاشة التي أرسلتها (10 صور صغيرة في شبكة) هي على الأرجح **معاينة دفعة (contact sheet)** يعرضها أداة التوليد قبل الاختيار — وليست الملف النهائي. الملف النهائي حسب قاعدة التسمية أدناه هو صورة واحدة كاملة الإطار لكل وصفة، لقطة مغرية للطبق نفسه، بلا تجميع.
+3. **التسمية يجب أن تُطابق slug الملف مباشرة** حتى لا يحدث خلط — كل صف في الجدول أدناه يحدد الاسم الدقيق للملف الناتج.
 
 ---
 
-## 2. وصفات اقتصادية / Budget (10)
+## القاعدة العامة (Global style — تُضاف تلقائياً لكل برومبت)
 
-1. Chickpea rice bowl with sautéed onions and tomatoes, parsley garnish, economical home-cooked meal
-2. Skillet eggs with tomatoes and onions in cast iron pan, Arabic bread on side, budget breakfast
-3. Simplified koshari-style bowl with rice lentils pasta, caramelized onions, tangy sauce drizzle
-4. Budget vegetable pasta with frozen mixed vegetables, simple white plate, family portions
-5. Rice and lentils plated together with pickles, humble Gulf kitchen table setting
-6. Egg tomato shakshuka style in pan, steam rising, warm affordable dinner
-7. Pasta with tomato sauce and hidden blended carrots, kid-friendly budget meal
-8. Chickpea and rice meal prep containers, four portions, practical weekly cooking
-9. Simple lentil soup with bread, low-cost nutritious dinner, clean composition
-10. One-pot economical grain bowl with herbs, lemon, minimalist styling, cost-conscious home cooking
+> Soft natural daylight, appetizing food photography, shallow depth of field, warm teal and cream tones, clean modern Gulf family kitchen setting, minimal props, single dish as the hero subject filling most of the frame, 16:9, high detail.
+
+**سلبيات إلزامية (negative / exclude) على كل صورة:**
+> No text, no watermark, no logos, no human faces or hands, no alcohol, no pork or pork-derived ingredients, no wine glasses or bar-style props, no collage/grid/multi-panel layout — single full-frame photo only.
+
+**الزاوية الافتراضية:** تصوير علوي (flat-lay) للأطباق المسطحة/الصحون/الأوعية، وزاوية 45° للأطباق ذات العمق (يخنات، أوعية عالية، مقالٍ). محدَّدة لكل صف أدناه.
 
 ---
 
-## 3. وصفات سريعة / Quick (10)
+## جدول الصور — 16 وصفة (تطابق 1:1 مع ملفات `library/recipes/*.html`)
 
-1. Avocado egg toast on whole grain bread, crispy edges, quick 15-minute breakfast
-2. Tuna wrap rolled in flatbread with lettuce and cucumber, cut in half, lunch on the go
-3. Yogurt fruit parfait layers in glass with granola and honey drizzle, fast snack
-4. Home chicken shawarma bowl with rice, pickles, tahini sauce, vibrant weeknight dinner
-5. Quick flatbread wrap with greens and protein filling, handheld meal, busy weekday vibe
-6. Five-minute no-cook tuna salad wrap ingredients laid out, assembly-ready
-7. Fast breakfast toast with avocado and fried egg, morning rush friendly
-8. Chicken strips with shawarma spices on rice bowl, colorful pickles, speedy dinner
-9. Yogurt and mixed fruit snack cups for family, bright and fresh, under 10 minutes prep
-10. Quick skillet meal with eggs and vegetables, one-pan efficiency, modern busy parent kitchen
-
----
-
-## 4. وصفات للعائلة / Family (10)
-
-1. One-pot chicken and rice in large pot, golden chicken thighs on spiced rice, Friday family dinner
-2. Mild family vegetable stew with potatoes carrots zucchini, large serving bowl, kid-friendly
-3. Grilled chicken family salad platter with lettuce cucumber tomatoes, shared table style
-4. Friday family pasta with tomato carrot sauce, large serving dish, everyone eats together mood
-5. Big family table with one-pot rice dish center, bread and yogurt sides, warm gathering
-6. Colorful vegetable stew in deep bowl with fresh herbs, gentle spices, children-friendly presentation
-7. Shared salad platter with sliced grilled chicken, lemon dressing, outdoor family evening
-8. Large pasta bowl with hidden vegetable sauce, grated cheese topping, family-style serving
-9. Chicken rice pot dish with cardamom notes, traditional Gulf family comfort food
-10. Family dinner spread: stew, rice, salad, simple balanced table for five people
+| # | Slug (اسم الملف) | العنوان | الزاوية | البرومبت |
+|---|---|---|---|---|
+| 1 | `avocado-egg-toast` | Avocado Egg Toast | علوي 45° | Whole-grain toast topped with mashed avocado and a soft boiled egg halved on top, sprinkled chili flakes and sesame, small ceramic plate |
+| 2 | `baked-salmon-veg` | Baked Salmon with Vegetables | علوي (sheet-pan) | Baked salmon fillet fresh from the oven on a sheet pan with roasted zucchini, carrot rounds, and lemon slices, glossy skin, steam visible |
+| 3 | `chicken-shawarma-bowl` | Home Chicken Shawarma Bowl | 45° | Sliced spiced chicken shawarma over rice in a wide bowl, pickles, tomato, and tahini drizzle on top, vibrant colors |
+| 4 | `chickpea-rice-bowl` | Chickpea Rice Bowl | علوي | Chickpea and rice bowl with sautéed onions and tomatoes, fresh parsley garnish, rustic wooden table |
+| 5 | `date-nut-smoothie` | Date Nut Smoothie | مستوى العين (glass) | Date and nut smoothie in a tall glass with a light yogurt swirl on top, banana slice garnish, condensation on glass, bright morning light |
+| 6 | `egg-tomato-skillet` | Egg Tomato Skillet | 45° | Eggs poached in a rustic tomato and pepper sauce in a cast iron skillet, fresh parsley on top, gentle steam rising |
+| 7 | `family-vegetable-stew` | Family Vegetable Stew | 45° | Mild vegetable stew with potatoes, carrots, and zucchini in a large deep serving bowl, fresh herbs on top, gentle warm color |
+| 8 | `friday-family-pasta` | Friday Family Pasta | علوي (large dish) | Large family-size serving dish of pasta in tomato-carrot sauce, grated cheese dusted on top, wooden table, shared-meal framing |
+| 9 | `grilled-chicken-salad` | Grilled Chicken Family Salad | علوي | Grilled chicken slices fanned over a large salad platter with lettuce, cucumber, and tomato, lemon wedge, light dressing sheen |
+| 10 | `iron-oats-breakfast` | Iron-Rich Oats Breakfast | علوي | Warm bowl of oatmeal topped with chopped dates, walnuts, and chia seeds, wooden spoon resting beside the bowl, soft morning light |
+| 11 | `lentil-koshari-bowl` | Lentil Koshari Bowl | علوي | Koshari-style bowl with rice, lentils, and pasta topped with deeply caramelized onions and tangy tomato sauce drizzle |
+| 12 | `lentil-spinach-soup` | Lentil & Spinach Soup | علوي (bowl) | Creamy red lentil and spinach soup in a deep bowl, lemon wedge on the side, visible steam, rustic linen napkin |
+| 13 | `one-pot-chicken-rice` | One-Pot Chicken Rice | 45° (large pot) | Golden roasted chicken thighs over spiced rice in a large family pot, cardamom pods visible, Friday-dinner mood |
+| 14 | `tuna-wrap-quick` | 5-Minute Tuna Wrap | 45° | Tuna wrap rolled tightly in flatbread with lettuce and cucumber, cut in half showing the filling, quick lunch styling |
+| 15 | `veg-pasta-budget` | Budget Vegetable Pasta | علوي | Simple vegetable pasta with frozen mixed vegetables in tomato sauce on a plain white plate, everyday family-portion styling |
+| 16 | `yogurt-fruit-parfait` | Yogurt Fruit Parfait | مستوى العين (glass) | Yogurt parfait layered in a clear glass cup with mixed berries and granola, visible distinct layers, fresh natural light |
 
 ---
 
-## File naming convention
+## سير العمل بعد التوليد
 
-Save approved images to `assets/images/recipes/` as:
+1. لكل صف: ولّد صورة واحدة فقط (وليس دفعة/شبكة) — إن أعادت الأداة معاينة شبكية، اختر أفضل لقطة واحدة منها وصدّرها فرداً.
+2. صدّر بصيغة **WebP، نسبة 16:9**.
+3. احفظ في `assets/images/recipes/` باسم: `hero-{slug}.webp` (مثال: `hero-iron-oats-breakfast.webp`).
+4. حدّث حقل `image` في `library/recipes/recipes.json` لكل وصفة (استبدال `placeholder.svg`).
+5. شغّل: `python3 scripts/build_recipes.py`
+6. تحقق: لا نص/علامة مائية داخل الصورة، لا شبكة/تجميع، الطبق يملأ معظم الإطار.
 
-- `hero-{recipe-slug}.webp` (e.g. `hero-iron-oats-breakfast.webp`)
-- Update `image` field in `library/recipes/recipes.json`
-- Re-run: `python3 scripts/build_recipes.py`
+**ملاحظة:** `tuna-wrap-quick` و`veg-pasta-budget` وصفتان قديمتان لم تُشملا بعد بدفعة Recipe schema (JSON-LD) — هذا خارج نطاق مهمة الصور، سيُعالَج في دفعة منفصلة لاحقاً إن أردت.
