@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="/styles/home.css?v=20260617b">
 
   <link rel="preload" as="image" href="/assets/images/banner-pregnancy.webp" fetchpriority="high"/>
-  <link rel="stylesheet" href="/styles/pages/pregnancy-journey.css?v=20260620a">
+  <link rel="stylesheet" href="/styles/pages/pregnancy-journey.css?v=20260710a">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://dotforlife.com/pregnancy-journey.html">
   <meta property="og:title" content="Pregnancy Journey Week by Week | Dot4Life">
@@ -280,6 +280,52 @@
         </button>
         <div id="reg-msg" class="pj-reg-msg" style="display:none"></div>
       </form>
+    </div>
+
+    <!-- Below form: program intro + light suggestions -->
+    <div class="pj-below" id="pj-below">
+      <p class="pj-below-lead">
+        <span class="en">Enter your due date or last period above — your current week appears instantly here, stored only on this device. Register if you want a short weekly email; browsing needs no account.</span>
+        <span class="ar">أدخلي تاريخ الولادة أو آخر دورة في النموذج أعلاه — يظهر أسبوعك الحالي فوراً هنا ويُحفظ على جهازك فقط. التسجيل اختياري لملخص أسبوعي بالبريد؛ التصفح لا يحتاج حساباً.</span>
+      </p>
+      <ul class="pj-below-list">
+        <li>
+          <span class="en">Baby size, development &amp; fruit comparison each week</span>
+          <span class="ar">حجم الجنين وتطوره ومقارنة أسبوعية</span>
+        </li>
+        <li>
+          <span class="en">Mama tips, milestones &amp; gentle reminders</span>
+          <span class="ar">نصائح للأم، معالم الحمل، وتذكيرات لطيفة</span>
+        </li>
+        <li>
+          <span class="en">Jump between all 40 weeks anytime</span>
+          <span class="ar">تنقّلي بين الأسابيع الأربعين في أي وقت</span>
+        </li>
+      </ul>
+      <div class="pj-below-suggest">
+        <span class="pj-below-suggest-label">
+          <span class="en">You may also like</span>
+          <span class="ar">قد يفيدك أيضاً</span>
+        </span>
+        <div class="pj-below-chips">
+          <a class="pj-below-chip" href="/tools/pregnancy-calculator.html">
+            <span class="en">Due-date calculator</span>
+            <span class="ar">حاسبة موعد الولادة</span>
+          </a>
+          <a class="pj-below-chip" href="/health/pregnancy-week-by-week.html">
+            <span class="en">Week-by-week guide</span>
+            <span class="ar">دليل أسبوع بأسبوع</span>
+          </a>
+          <a class="pj-below-chip" href="/library.html">
+            <span class="en">Free health tools</span>
+            <span class="ar">أدوات صحية مجانية</span>
+          </a>
+        </div>
+      </div>
+      <p class="pj-below-note">
+        <span class="en">For general education only — not medical advice. Consult your doctor for personal care.</span>
+        <span class="ar">للتثقيف العام فقط — ليس تشخيصاً طبياً. راجعي طبيبتك لرعاية شخصية.</span>
+      </p>
     </div>
   </div>
 </section>
@@ -641,6 +687,8 @@ function calculateWeek() {
 
 function showMain(week) {
   currentWeek = week;
+  const below = document.getElementById('pj-below');
+  if (below) below.style.display = 'none';
   const main = document.getElementById('pj-main');
   main.style.display = 'block';
   buildWeekSelect();
