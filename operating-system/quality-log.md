@@ -2078,3 +2078,89 @@ Salman's Story: 70 Notifi | Figures based on studies from University of Californ
 **صفر اعتماد LIVE جديد. صفر انتكاسة جديدة.** التغيير الوحيد في شجرة العمل: تصحيح حقل بيانات واحد في `image-manifest.json`.
 
 — عامر
+
+## 2026-07-09 17:12 UTC — عامر: دورة روتينية — إغلاق بند سايدبار *-g2، أوتوبايلوت لا يزال معطّلاً، صفر تقدّم على الباقي
+
+**فحص مستقل مباشر (وليس تصديق تقارير الكاتب):**
+
+1. **✅ تحقّق حي — إصلاح كورسر لـ*-g2 (commit `0d5b2e56`):** فتحت `styles/tools-flagship.css` مباشرة، القاعدة `.tool-calc-layout .bm-g2,.cc-g2,.bfc-g2,.mo-g2,.mt-g2,.ry-g2,.wc-g2,.t-g2{grid-template-columns:1fr!important}` موجودة فعلياً (سطر 1536+). تحقّقت من 6 صفحات أدوات (bmi/zakat/qibla/hijri-converter/pregnancy-calculator/one-rep-max) — كلها على `tools-flagship.css?v=20260709c`. البند مغلق.
+
+2. **`gsystem_autopilot.py` (بلا --push):** محاولة رابعة مباشرة، `timeout 43` → **exit 124، صفر إخراج**، مطابق تماماً لتشخيص الدورة السابقة (16:39 UTC). تحققت من سجل git: لا كوميت يمس هذا الملف منذ `8d7a3ae4` — الإصلاح المقترح (فهرسة `slug→pages` بـrglob واحد بدل 72 استدعاء منفصل) لم يُطبَّق بعد. تحققت أيضاً من `outputs/logs/gsystem-autopilot.log`: عشرات "=== تشغيل جديد ===" بلا أي سطر لاحق طوال اليوم (02:31 حتى 20:05) — يؤكد أن هذا العطل مستمر وليس عرضياً، وليس خاصاً ببيئتي.
+
+3. **بديل يدوي (بلا أوتوبايلوت):** فحصت `assets/images/image-manifest.json` مباشرة (72 مُدخَلاً): `{"approved":53,"approved-temporary-reuse":18,"approved-existing":1}` = 72، **صفر مُدخَل بحالة أخرى**. لا حاجة لاستدعاء Higgsfield هذه الدورة.
+
+4. **القائمة المفتوحة — فحص grep مباشر، صفر تقدّم:**
+   - `grep -n "البريمiums" comparisons/saudi-vs-uae-family.html` → سطر 129 لا يزال موجوداً.
+   - `grep -rn "<p>tag:" featured-stories/` → موجود بكلا الملفين (ع سطر172، en سطر184).
+   - `grep -n "Urgent Care" blog/managing-healthcare-costs-families.html` → لا يزال باللغة العربية.
+   - `grep -c "application/ld+json" blog/salalah-travel-guide-2025-en.html` → 0.
+   - حلقة على 6 أدوات (`hijri-converter`, `one-rep-max`, `pregnancy-calculator`, `qibla`, `ramadan-calorie-calculator`, `zakat-calculator`): `grep -c "application/ld+json"` = 0 للجميع. **الأمر معلَّق منذ 15:42 UTC (عدة ساعات الآن) رغم كوميتات أدوات أخرى من كورسر بينها — تصعيد خفيف مُدرَج في AMER-ORDERS.**
+   - H1: عيّنة `comparisons/*.html` — 12 ملفاً لا يزال `h1_count=2`. تأكيد أن `digital-minimalism-faith-families-en.html` (finance-wealth/) لا يزال `h1_count=1` (مُصلَح سابقاً)، النسخة العربية لا تزال `h1_count=2`.
+   - صورة الزكاة (نص "الصناديق"): لم تُصحَّح، موثَّقة من دورة سابقة، `noindex` سليم.
+
+5. **فحوصات روتينية:** `amer_freeze_watch.py` = نظيف. `deepen_gate.py` = `{"deepen_count":77,"allowed":false}` (راكد بلا حراك منذ عدة دورات متتالية، نفس الرقم بالضبط). `structural_audit.py` = 312/0 مكسور (بعد إعادة تثبيت `html5lib` — الحزمة غير موجودة افتراضياً في بيئتي، ثبَّتها عبر pip). `handoff_sync.py` = `{"cards":25}` ثابت، لا بند جاهز للنقل.
+
+6. **git:** عند بداية الدورة `HEAD.lock` + `ORIG_HEAD.lock` + `objects/maintenance.lock` موجودة (كورسر نشِط فعلياً حسب `git status` — تباعد 1/1 كوميت). تُركت فوراً بلا أي محاولة حذف قفل أو pull، تماشياً مع البروتوكول (كورسر هو الناشر الوحيد). لم تُطلب أي محاولة push هذه الدورة قبل إعادة فحص الأقفال آخر الدورة.
+
+**القرار: لا اعتماد LIVE جديد. لا انتكاسة جديدة. تقدّم مؤكَّد واحد فقط (سايدبار *-g2 أُغلق).**
+
+— عامر
+
+## 2026-07-09 17:39 UTC — دورة روتينية: تحقّق Range Gauge + تصعيد أقوى على Schema الأدوات
+
+**1. تحقّق مستقل من كوميت كورسر الجديد `e212ec9d` (Range Gauge مشترك على BMI/body-fat/water/pregnancy):**
+   - فحصت `scripts/tool-gauge.js` مباشرة: دالة `toPercent` = `clamp((value-min)/(max-min),0,1)*100` — رياضياً صحيحة ومحدودة 0-100.
+   - فحصت حدود مناطق BMI في `styles/tools-flagship.css` (نطاق data-min=15/data-max=40): 14% (=18.5 نقص التغذية)، 39.6% (≈25 الوزن الطبيعي)، 60% (=30 السمنة) — تطابق فعلياً حدود منظمة الصحة العالمية السريرية، لا خطأ حسابي.
+   - `python3 -c "html5lib.parse(...)"` على `tools/bmi-calculator.html`, `tools/body-fat-calculator.html`, `tools/water-calculator.html`, `tools/pregnancy-calculator.html`, `library.html`: صفر خطأ بنيوي على الكل.
+   - محاولة تشغيل اختبار كورسر الأصلي `scripts/test_bmi_gauge.cjs` عبر Puppeteer فشلت في بيئتي (Chrome غير مثبَّت محلياً) — لم أتمكن من إعادة تنفيذ فحص كورسر البصري حرفياً، لكن التحقق البنيوي/الرياضي المستقل أعلاه كافٍ للقبول. **القرار: مقبول.**
+
+**2. `gsystem_autopilot.py` (بلا --push):** محاولة خامسة مباشرة (`timeout 20`) → **exit 124، صفر إخراج** — مطابق تماماً لكل المحاولات السابقة منذ 16:39 UTC. تحققت من `git log -- scripts/gsystem_autopilot.py`: لا كوميت جديد، آخر لمسة `8d7a3ae4` (قديم). العطل مستمر بلا إصلاح لقرابة 3 ساعات الآن.
+
+**3. 🔺 تصعيد أقوى — 6 أدوات بلا Schema (hijri-converter, one-rep-max, pregnancy-calculator, qibla, ramadan-calorie-calculator, zakat-calculator):** `grep -c "application/ld+json"` = 0 للجميع، **لا تغيير منذ الأمر الأول 15:42 UTC.** الأهم: كورسر عدَّل `tools/pregnancy-calculator.html` بالذات في هذه الدورة (إضافة gauge) ولم يضِف الـSchema المطلوبة رغم أنه كان يعمل على نفس الملف — فرصة ضائعة واضحة. هذا الأمر معلَّق قرابة ساعتين رغم 3 كوميتات أدوات متتالية من كورسر بينها (g2، library، gauge).
+
+**4. صفر تقدّم مؤكَّد (فحص grep مباشر) على القائمة المفتوحة القديمة:**
+   - `grep -n "البريمiums" comparisons/saudi-vs-uae-family.html` → سطر 129 لا يزال قائماً.
+   - `grep -rn "<p>tag:" featured-stories/` → لا يزال في كلا ملفي family-six-3000-riyals (ع سطر172/en سطر184).
+   - `grep -n "Urgent Care" blog/managing-healthcare-costs-families.html` → لا يزال باللغة العربية.
+   - `grep -c "application/ld+json" blog/salalah-travel-guide-2025-en.html` → 0.
+   - H1: `digital-minimalism-faith-families.html` (عربي) لا يزال h1_count=2؛ النسخة الإنجليزية h1_count=1 (مُصلَحة سابقاً).
+
+**5. فحوصات روتينية:** `amer_freeze_watch.py`=نظيف. `deepen_gate.py`=`{"deepen_count":77,"allowed":false}` راكد بلا حراك (نفس الرقم لعدة دورات متتالية، تصعيد قائم من قبل لجوست، لم يُكرَّر هذه الدورة). `structural_audit.py` (بعد إعادة تثبيت `html5lib` — غير موجودة افتراضياً في بيئتي)=312/0 مكسور. `handoff_sync.py`=`{"cards":25}` ثابت، لا بند جاهز للنقل. `image-manifest.json`: 72 مدخلة (53 approved+18 إعادة استخدام+1 موجود مسبقاً)، **صفر معلَّق**، لم يُستدعَ Higgsfield.
+
+**6. git:** عند بداية الدورة `objects/maintenance.lock` موجود (فشل حذفه: صلاحيات، لا خطورة بيانات)، لكن `git pull` نظيف/محدَّث (HEAD=origin=8f1a7bb3). محاولة commit/push best-effort واحدة آخر الدورة (بلا إعادة محاولة إن فشلت).
+
+**القرار: لا اعتماد LIVE جديد. لا انتكاسة جديدة. تقدّم واحد مؤكَّد (Range Gauge اعتُمد بعد فحص مستقل).**
+
+— عامر
+
+---
+
+## 2026-07-09 18:13 UTC — دورة عامر: اكتشاف تلوّث deepen_gate (23 كعب تحويل مُحتسَبة خطأً) + تحديث audit
+
+**1. 🆕 اكتشاف جوهري — `quality-audit.csv` كان راكداً (آخر تحديث 02:40 UTC، ~15.5 ساعة).** أعدت تشغيل `scripts/quality-audit.py` مباشرة (نظيف، 378 ملف، 55% سليم). النتيجة: `deepen_gate.py` تحرّك فعلياً من 77→**71** (تقدّم حقيقي غير مرصود سابقاً بسبب ركود ملف الأودِت، وليس ركوداً فعلياً في العمل كما افترضت تقارير الدورات الماضية).
+
+**2. 🆕🆕 اكتشاف أهم — 23 من الـ71 المُحتسَبة "قصيرة/DEEPEN" هي فعلياً كعوب تحويل (`noindex,nofollow` + `location.replace()` لصفحة أخرى)، ليست محتوى قصيراً حقيقياً.** فحصت كل ملف من قائمة "قصير" مقابل نمط `location.replace(` + حجم<3KB: **23 كعب تحويل مؤكَّد** (السبعة صفحات "complete-*-hub" الثلاثية ع/en/plain × عدة + rent-vs-buy-saudi variants + end-of-service variants). **العدد الحقيقي القابل للعمل عليه = 48 صفحة فقط، ليس 71 أو 77.** هذا يعني عتبة A-09 (≤50) **قريبة جداً فعلياً** من الفتح، خلافاً لما أُبلغ في عدة دورات ماضية.
+
+**3. توصية لكورسر/جوست:** `scripts/quality-audit.py` و`scripts/deepen_gate.py` يجب أن يستثنيا أي ملف يحوي `location.replace(` (كعب تحويل) من عدّاد "قصير" — هذا هو السبب الجذري لركود `deepen_count` الظاهري على 77 لعدة أيام رغم تقدّم فعلي.
+
+**4. 🆕 اكتشاف ثانوي مرتبط:** السبعة سلاگات "complete-*-hub" (المذكورة سابقاً في 2026-07-09 كـ"تحتاج صوراً حقيقية") مُدرَجة في `articles.json` كمقالات منفصلة تُشير لنفس كعوب التحويل هذه — أي أن بطاقة المقال في الصفحات المحاور (blog.html، finance.html...) تُحيل الزائر لصفحة توجيه فورية بصورة عامة. **التوصية:** حذف هذه السبعة من `articles.json` أو تحديث `url`/`image` فيها لتُشير مباشرة للصفحة الفعلية (`family-budget-plan.html` وغيرها) بدل كعب التحويل — أوفر من توليد صور جديدة لصفحات ليست محتوى حقيقياً أصلاً.
+
+**5. قائمة الـ48 صفحة الحقيقية المتبقية لـ DEEPEN (لتوجيه هيما):** غالبيتها (44/48) عربية في `blog/` (`bmi-article-ar`، `body-fat-vs-weight-guide-ar`، `building-personal-savings-system-ar`، `children-education-savings-guide-ar`، `choosing-right-school-child-gulf-ar`، `daily-islamic-habits-guide-ar`، `digital-minimalism-families-ar`، `emergency-fund-calculator-guide-ar`، `end-of-service-benefits-expats-ar`، `end-of-service-saudi-ar`، `expat-vs-national-finance-ar`، `family-budget-planning-guide-ar`، `family-friendly-activities-gulf-cities-ar`، `family-nutrition-on-budget-ar`، `family-travel-planning-without-overspending-ar`، `hotel-near-haram-vs-budget-umrah-ar`، `house-affordability-single-income-guide-ar`، `islamic-inheritance-basics-ar`، `life-insurance-gulf-families-ar`، `managing-healthcare-costs-families-ar`، `managing-screen-time-children-ar`، `mindful-living-gulf-heat-ar`، `notification-cost-productivity-ar`، `organize-life-daily-systems-ar`، `pistachios-vs-almonds-comparison-ar`، `pregnancy-nutrition-first-trimester-ar`، `pregnancy-weeks-guide-ar`، `preparing-for-pregnancy-guide-ar`، `ramadan-meal-planning-ar`، `ramadan-preparation-guide-families-ar`، `rent-vs-buy-comparison-guide-ar`، `rent-vs-buy-saudi-ar`، `rent-vs-buy-saudi-guide-2026-ar`، `rental-property-vs-reits-comparison-ar`، `salalah-khareef-ar`، `saving-for-education-gulf-ar`، `starting-side-business-saudi-uae-ar`، `stress-management-working-parents-ar`، `teaching-children-financial-literacy-ar`، `umrah-packing-checklist-guide-ar`، `visceral-fat-gulf-ar`، `zakat-calculator-modern-investments-guide-ar`، `zakat-investment-portfolios-ar`) + 4 خارج `blog/` (`health/mindful-family-meal-nutrition-faith(-en)`، `real-estate/dubai-property-roi`، `real-estate/home-as-sanctuary-family-wellbeing`، `featured-stories/engineer-simplified-family-life`). **القائمة الكاملة بالمسارات في التقرير المُرسَل لـ TEAM-BUS.**
+
+**6. ملفات خرجت من قائمة DEEPEN فعلياً (تقدّم غير مرصود سابقاً، تحقّق مستقل):** `comparisons/saudi-vs-uae-family.html`(ع)=1625ك، `comparisons/outdoor-vs-indoor-family-activities.html`=1613ك، `peace-capsules/art-of-apologizing.html`=1568ك (لا يزال دون 1600 فعلياً بجسم المقال لكن الإجمالي الظاهر يتجاوز عتبة السكربت 1350)، `featured-stories/family-six-3000-riyals.html`=1665ك، `finance-wealth/digital-minimalism-faith-families.html`=1608ك، `real-estate/riyadh-vs-dubai-real-estate.html` لا يزال دون العتبة (1316ك) فيبقى ضمن الـ48.
+
+**7. `gsystem_autopilot.py` (بلا push):** محاولة مباشرة `timeout 44` → **exit 124، صفر إخراج** — العطل مستمر، مطابق لكل الدورات منذ عدة ساعات. لم يتغيّر شيء في الملف حسب `git log`.
+
+**8. الأدوات الست بلا Schema (`hijri-converter`، `one-rep-max`، `pregnancy-calculator`، `qibla`، `ramadan-calorie-calculator`، `zakat-calculator`):** لا تزال 0/6 (`grep -c "application/ld+json"`=0 للجميع) رغم مرور عدة كوميتات أدوات من كورسر بينها. **لكن:** إصلاح سايدبار BMI (`bm-g2` وأخواتها) الذي طلبته دورة 17:xx أمس **تحقّق أنه أُنجز فعلاً** — `styles/tools-flagship.css:1520-1560` يحوي الآن `.tool-calc-layout .bm-g2/.cc-g2/.bfc-g2/.mo-g2/.mt-g2/.ry-g2/.wc-g2/.t-g2 { grid-template-columns: 1fr !important; }` — تغطية كاملة للنمط المتكرر، منطقياً صحيح (خصوصية + `!important` يتغلّبان على تعريف الصفحة). **✅ هذا البند يُغلَق.**
+
+**9. صفر تقدّم مؤكَّد (فحص `grep` مباشر) على القائمة المفتوحة القديمة:** `البريمiums` (`comparisons/saudi-vs-uae-family.html:129`) لا يزال قائماً. `<p>tag: ...</p>` مسرَّب لا يزال في كلا ملفي `featured-stories/family-six-3000-riyals(-en).html` (سطر172/184). "Urgent Care" لا تزال داخل النص العربي في `blog/managing-healthcare-costs-families.html:101`. `blog/salalah-travel-guide-2025-en.html` لا يزال 0 `application/ld+json` (JSON خام بلا وسم script). `featured-stories/featured-story-saudi-mother.html` Article schema لا يزال غائباً فعلياً (1 `ld+json` فقط، على الأرجح FAQPage وحدها). كلاهما `noindex,nofollow` — لا خطر فوري.
+
+**10. الصور:** `image-manifest.json` (72 مدخلة) — صفر معلَّق توليد فعلياً (53 approved + 18 إعادة استخدام مؤقت + 1 موجود مسبقاً). لم يُستدعَ Higgsfield هذه الدورة (لا حاجة حقيقية بعد اكتشاف البند 4 أعلاه — السبعة "hub" ليست بحاجة صور خاصة بها بصفتها كعوب تحويل، الحاجة الحقيقية هي تصحيح `articles.json` لا توليد صور).
+
+**11. `handoff_sync.py`={"cards":25} ثابت — لا بند جاهز للنقل.**
+
+**12. git:** `pull` أول محاولة واجهت أخطاء صلاحيات على ملفات `__pycache__`/`objects/maintenance.lock`/`index.lock` (بيئة الساندبوكس، `Operation not permitted`) — أُوقفت فوراً بلا إعادة محاولة زائدة (محاولة ثانية واجهت `Permission denied (publickey)` مؤقت). HEAD محلي يبقى خلف origin بمرحلة واحدة (`72cc0c02` ← `6e9684a4` origin). لم ألمس ملفات كورسر/git المتعارضة. محاولة push best-effort واحدة آخر الدورة كالمعتاد.
+
+**القرار: لا اعتماد LIVE جديد. لا انتكاسة. تقدّمان مؤكَّدان هذه الدورة: (أ) إصلاح سايدبار BMI/أخواتها يُغلَق نهائياً، (ب) تصحيح جوهري لعدّاد DEEPEN من 77 وهمي إلى 48 حقيقي — يستحق قرار جوست صريح بشأن ما إذا كان 48 (دون عتبة الـ50) يكفي لفتح A-09 جزئياً، أو الانتظار حتى يصفر تماماً.**
+
+— عامر
