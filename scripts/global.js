@@ -79,6 +79,15 @@
   }
 
   /* ── 4. Language toggle (legacy + new ID) ───────────────── */
+  function applyPageTitle() {
+    var meta = document.getElementById('dfl-page-title');
+    if (!meta) return;
+    var lang = document.documentElement.getAttribute('data-lang') || 'en';
+    var title = meta.getAttribute('data-' + lang) || meta.getAttribute('data-en') || '';
+    var suffix = meta.getAttribute('data-suffix') || 'DOTFORLIFE';
+    if (title) document.title = title + ' | ' + suffix;
+  }
+
   function applyLanguage(targetLang) {
     var h = document.documentElement;
     h.setAttribute('data-lang', targetLang);
@@ -90,8 +99,11 @@
       url.searchParams.set('lang', targetLang);
       history.replaceState(null, '', url);
     } catch (e) { /* ignore */ }
+    applyPageTitle();
     document.dispatchEvent(new CustomEvent('dfl:langchange', { detail: { lang: targetLang } }));
   }
+
+  applyPageTitle();
 
   function getAlternateHref(targetLang) {
     var altLink = document.querySelector('link[rel="alternate"][hreflang="' + targetLang + '"]');

@@ -179,7 +179,8 @@ body.library-page {
   gap: .5rem;
 }
 
-.lib-mode {
+.lib-mode,
+a.lib-mode {
   padding: .75rem 1rem;
   border-radius: 12px;
   border: 1px solid var(--lib-border);
@@ -192,9 +193,25 @@ body.library-page {
   transition: background .2s, border-color .2s, color .2s, box-shadow .2s;
 }
 
+a.lib-mode {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+}
+
+a.lib-mode:hover {
+  color: var(--lib-teal-dark);
+  border-color: rgba(43, 168, 162, .35);
+}
+
 .lib-mode:hover {
   color: var(--lib-ink);
   border-color: rgba(43, 168, 162, .22);
+}
+
+span.lib-mode {
+  display: block;
+  text-align: center;
 }
 
 .lib-mode.is-active {

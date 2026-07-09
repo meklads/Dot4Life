@@ -8,6 +8,13 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 RECIPES = ROOT / "library" / "recipes"
 
+LANG_BOOT = """<script>(function(){var p=new URLSearchParams(location.search),gd=(function(){try{var z=(Intl.DateTimeFormat().resolvedOptions().timeZone||"");return /Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test(z)?"ar":"en";}catch(e){return "ar";}})(),l=p.get("lang")||localStorage.getItem("dfl-lang")||gd,t=p.get("theme")||localStorage.getItem("dfl-theme")||"light",h=document.documentElement;h.setAttribute("data-theme",t);h.setAttribute("data-lang",l);h.setAttribute("lang",l);h.setAttribute("dir",l==="ar"?"rtl":"ltr");if(p.get("lang"))localStorage.setItem("dfl-lang",l);if(p.get("theme"))localStorage.setItem("dfl-theme",t);var pt=document.getElementById("dfl-page-title");if(pt){var tl=l==="ar"?(pt.getAttribute("data-ar")||pt.getAttribute("data-en")):(pt.getAttribute("data-en")||pt.getAttribute("data-ar"));if(tl)document.title=tl+" | DOTFORLIFE";}})()</script>"""
+
+
+def esc_attr(s: str) -> str:
+    return s.replace("&", "&amp;").replace('"', "&quot;")
+
+
 CATS = {
     "pregnancy": {
         "en": "Pregnancy Recipes",
@@ -166,9 +173,10 @@ def build_page(cat_id: str, cfg: dict) -> str:
 <head>
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <meta charset="UTF-8"/>
-<script>(function(){{var p=new URLSearchParams(location.search),gd=(function(){{try{{var z=(Intl.DateTimeFormat().resolvedOptions().timeZone||"");return /Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test(z)?"ar":"en";}}catch(e){{return "ar";}}}})(),l=p.get("lang")||localStorage.getItem("dfl-lang")||gd,t=p.get("theme")||localStorage.getItem("dfl-theme")||"light",h=document.documentElement;h.setAttribute("data-theme",t);h.setAttribute("data-lang",l);h.setAttribute("lang",l);h.setAttribute("dir",l==="ar"?"rtl":"ltr");if(p.get("lang"))localStorage.setItem("dfl-lang",l);if(p.get("theme"))localStorage.setItem("dfl-theme",t);}})()</script>
+{LANG_BOOT}
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>{cfg['en']} | {cfg['ar']} | DOTFORLIFE</title>
+<meta id="dfl-page-title" data-en="{esc_attr(cfg['en'])}" data-ar="{esc_attr(cfg['ar'])}"/>
+<title>{cfg['en']} | DOTFORLIFE</title>
 <meta name="description" content="{cfg['desc_en']}"/>
 <meta name="robots" content="noindex,nofollow"/>
 <link rel="canonical" href="https://dotforlife.com/library/recipes/{cat_id}.html"/>
