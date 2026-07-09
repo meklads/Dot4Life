@@ -1953,6 +1953,33 @@ Salman's Story: 70 Notifi | Figures based on studies from University of Californ
 - عمل عامر غير المُلتزَم من دورات سابقة لا يزال على القرص (4 صور hero + إصلاح bmi + صورة زكاة) — تُرك للدفعة القادمة من كورسر كالمعتاد.
 - محاولة push best-effort واحدة آخر الدورة.
 
+## عامر — دورة 2026-07-09 15:14 UTC
+
+### 1. 🆕 اكتشاف جديد — تشخيص أدق لعطل `salalah-travel-guide-2025-en.html` (فحص مباشر لمحتوى الملف، ليس فقط `amer_gate.py`)
+التقارير السابقة وصفت العطل بأن schema "Article+FAQPage مفقودان بالكامل". الفحص المباشر لمصدر الصفحة (أسطر 27-77) يُظهر أن **محتوى JSON صحيح لكليهما موجود فعلياً** (`"@type":"Article"` و`"@type":"FAQPage"` مع 5 أسئلة) **لكنه غير مُغلَّف بوسم `<script type="application/ld+json">` إطلاقاً** — الكائنان JSON يقعان كنص خام مباشرة داخل `<head>` بلا أي وسم script، لذا لا يُقرآن كبيانات structured data صالحة من أي محرك بحث/فاحص schema (وهذا سبب ظهور `Article_schema:0, FAQPage_schema:0` في `amer_gate.py` رغم وجود المحتوى نصياً). **هذا تشخيص مختلف وأدق من "محتوى مفقود"** — الإصلاح المطلوب من كورسر بسيط نسبياً: تغليف كل كائن JSON بوسمي `<script type="application/ld+json">...</script>` منفصلين (كما هو مطبَّق بشكل صحيح في `featured-story-saudi-mother.html` لبيانات FAQPage الخاصة به). **يبقى FAIL في `amer_gate.py`** أيضاً بسبب: كليشيه "in conclusion"، 3 نِسَب بلا رابط عميق واحد. `noindex,nofollow` سليم — لا خطر نشر.
+- `featured-stories/featured-story-saudi-mother.html`: تأكيد مستقل — `FAQPage` schema موجود ومُغلَّف بشكل صحيح، لكن **`Article` schema لا يزال غائباً فعلياً** (لا يوجد أي `"@type":"Article"` بالملف كله) — هذا عطل محتوى حقيقي وليس مشكلة تغليف. `noindex,nofollow` سليم.
+
+### 2. صفر تقدّم مؤكَّد على البنود المعلَّقة (فحص مباشر، لا تغيير عن دورة 15:14 السابقة)
+- `البريمiums` (`comparisons/saudi-vs-uae-family.html` سطر 129): لا تزال قائمة حرفياً.
+- `<p>tag: ...</p>` مسرَّب (`featured-stories/family-six-3000-riyals.html` سطر 172، `-en.html` سطر 184): لا يزال قائماً.
+- `"عيادة العلاج العاجل (Urgent Care)"` (`blog/managing-healthcare-costs-families.html` سطر 99): لا يزال قائماً.
+- H1 مكرر: `grep -c "<h1"` مباشر على 11 ملفاً معروفاً — **كلها لا تزال `h1_count=2` بلا استثناء هذه المرة** (`peace-capsules/power-of-i-was-wrong-en`, `featured-stories/engineer-simplified-family-life-en`, `real-estate/property-roi-comparison-saudi-uae`ع+en, `islamic-hajj-umrah/umrah-off-peak-seasons-guide-en`, `featured-stories/family-six-3000-riyals`ع+en, `finance-wealth/digital-minimalism-faith-families`, `comparisons/outdoor-vs-indoor-family-activities`ع+en, `comparisons/saudi-vs-uae-family`ع).
+- `fitness/calorie-calculator-saudi.html`+`fitness-for-women-saudi.html`: `noindex,nofollow` مؤكَّد على كليهما — لا انتكاسة إضافية.
+- `deepen_gate.py` → `{"deepen_count":77,"allowed":false}` **راكد تماماً منذ عدة دورات متتالية دون أي حراك** — يستحق قراراً صريحاً من جوست، ليس مجرد رصد متكرر.
+- `assets/images/approved/hero-zakat-complete-guide.webp` (نص "الصناديق" الخاطئ): لم يُصحَّح بعد — موثَّق سابقاً، `noindex` سليم.
+
+### فحوصات روتينية
+- `amer_freeze_watch.py` → ✅ لا مخالفات
+- `structural_audit.py` (بعد إعادة تثبيت `html5lib` مجدداً — فُقدت من البيئة مرة أخرى) → 312/0 مكسور
+- `handoff_sync.py` → `{"cards":25}` ثابت — لا بند جاهز للنقل لـ"done" هذه الدورة
+- `gsystem_autopilot.py` (بلا `--push`، عبر `nohup` بالخلفية) → **لم يُكمل تسجيل أي سطر بعد "=== تشغيل جديد ===" رغم انتهاء العملية (exit، لا أخطاء بالمخرجات)** — يبدو أنه لم يُنجز فحص `slugs_needing_build()` أو انتهى بصمت؛ `outputs/logs/gsystem-autopilot.log` يُظهر عشرات المحاولات المماثلة طوال اليوم بلا اكتمال (`team-board.md`/`.gsystem-state.json` لا يزالان بتاريخ 2026-06-24 رغم عشرات التشغيلات المسجَّلة اليوم) — **مشكلة صحة أداة قائمة تستحق تصعيداً لكورسر لتشخيصها**، لكن عوَّضتُ عنها بفحص مستقل مباشر لـ`image-manifest.json`: **صفر صور معلَّقة فعلياً** — كل الملفات الخام في `pending-review/` (بما فيها `cycle-tmp/`, `cycle-tmp2/`) لها نظائر معتمَدة موجودة فعلاً في `approved/`+المانيفست (`umrah-off-peak`, `property-roi-comparison`, `family-budget-planning-guide`, `zakat-complete-guide`, `bmi-guide-arabs-gcc`, `managing-healthcare-costs-families`, `building-personal-savings-system`) — لا حاجة عمل صور هذه الدورة.
+
+### git
+- بداية الدورة: `git pull --no-rebase -X ours` واجه أخطاء `Operation not permitted` عند unlink عشرات الملفات (قيود صلاحيات نظام الملفات على القرص المُوصَّل) — رغم ذلك **الدمج اكتمل فعلياً** (`HEAD`=`origin/main`=`f7e3b183` كوميت دمج). تبقّى ~19 ملف "deleted" غير قابل للتسوية محلياً في `outputs/backups/approved-heroes/` بسبب نفس القيد (مشكلة بيئة متكرّرة، ليست بياناً حقيقياً مفقوداً). ملفات `system/gsystem-data/*.json` معدَّلة بشكل متوقَّع (نتيجة تشغيل `deepen_gate.py`/`amer_freeze_watch.py`/`handoff_sync.py` هذه الدورة).
+- محاولة `git add -A && git commit` باءت بالفشل فوراً: `.git/index.lock` قائم (كورسر نشِط الآن) — تُركت فوراً بلا إعادة محاولة، طبقاً للتعليمات.
+
+**القرار: لا اعتماد LIVE جديد (نص أو صورة) هذه الدورة. لا حاجة عمل صور. دفعة كورسر القادمة تشمل تشخيص salalah الجديد + كل البنود السارية أعلاه.**
+
 **القرار: لا اعتماد LIVE جديد لأي محتوى نصي. لا اعتماد صور جديدة هذه الدورة (فحص فقط). إغلاق قسم الوصفات مؤكَّد. عيب نص جديد على صورة الزكاة (noindex، لا خطر نشر) موثَّق لتصحيح لاحق.**
 
 ## 2026-07-09 14:56 UTC — 🤖 بوابة CI الآلية رفضت 3 ملف عند push
@@ -1960,3 +1987,44 @@ Salman's Story: 70 Notifi | Figures based on studies from University of Californ
 - `blog/building-personal-savings-system-en.html`: نِسَب=12 بلا أي رابط عميق واحد
 - `blog/family-budget-planning-guide-en.html`: نِسَب=21 بلا أي رابط عميق واحد
 - `blog/managing-healthcare-costs-families-en.html`: نِسَب=4 بلا أي رابط عميق واحد
+
+## 2026-07-09 15:42 UTC — دورة عامر الروتينية (فحص مستقل مباشر)
+
+### 1. TEAM-BUS
+لا رسائل جديدة من هيما أو كورسر بعد إدخالي الأخير (15:14 UTC) عند بدء الدورة (السجل توقف عند نفس السطر). كوميتات كورسر الجديدة على القرص (`ce1211f0`، `1284b23b`) لم تُصاحَب برسالة TEAM-BUS مستقلة — رُصدت عبر `git log` مباشرة.
+
+### 2. سايدبار الأدوات الجديد (كورسر) — فحص هيكلي مستقل
+كوميتان جديدان: `ce1211f0` (إضافة سايدبار "أدوات ذات صلة" على 25 صفحة حاسبة) و`1284b23b` (تعديل تخطيط الشبكة الداخلية). فحص `styles/tools-flagship.css`:
+- بنية سليمة: `.tool-related-aside{position:sticky}`، ينهار لعمود واحد `order:3` عند `max-width:980px` (لا تمرير أفقي متوقَّع)، دعم `[data-theme="dark"]` كامل.
+- **عطل مكتشَف أثناء الفحص (قائم مسبقاً، ليس من هذا الكوميت):** 6/25 صفحة أداة بلا أي `<script type="application/ld+json">` إطلاقاً: `hijri-converter.html`، `one-rep-max.html`، `pregnancy-calculator.html`، `qibla.html`، `ramadan-calorie-calculator.html`، `zakat-calculator.html`. يخالف `HEMA-CHARTER.md`§3 (Schema إلزامي: Article+FAQPage+Breadcrumb).
+- em-dash `—` الملحوظ في عدة صفحات أدوات (`bmi-calculator.html` إلخ) تحقق منه: هو placeholder عرض نتيجة الحاسبة (`id="res-bmi">—<`) وليس متن نص مقروء — **لا يُعامَل كمخالفة WRITING-LAW** (يتفق مع رسالة كوميت `9372d196` "keep calculator placeholders"). En-dash داخل نطاقات أرقام schema ("18.5–24.9") ملحوظ أيضاً، أقل أهمية.
+- ألوان تيل الأدوات (`--tool-teal:#2BA8A2`) مختلفة عن تيل الهوية الرسمية (`#054241` في `VISUAL-DIRECTION.md`/`HEMA-CHARTER.md`) — نمط قائم في كامل الملف مسبقاً، ليس تغييراً جديداً، مذكور كملاحظة هوية ثانوية لا حاجبة.
+
+### 3. البناء
+`PYTHONPATH=scripts python3 scripts/gsystem_autopilot.py` (بلا push) — **محاولتان مباشرتان (44 ثانية لكل واحدة)، كلاهما Timeout مؤكَّد (`exit 124`)، صفر سطر إخراج.** يتطابق مع تشخيص الدورة السابقة (O(67×739) بطء الخوارزمية على mount بطيء) — لا يمكن تأكيد اكتمال البناء هذه الدورة، يستحق تصعيداً هندسياً عاجلاً لكورسر (متكرر منذ عدة دورات).
+
+### 4. فحص النصوص المستقل (`amer_gate.py` فعلي + `grep`/قراءة يدوية)
+| الملف | النتيجة |
+|---|---|
+| `comparisons/saudi-vs-uae-family.html` | `amer_gate`=PASS آلياً (1625ك) لكن **"البريمiums" لا تزال قائمة سطر129 (لغة مختلطة)** — يُبقى الاعتماد الكامل معلَّقاً حتى الإصلاح |
+| `featured-stories/family-six-3000-riyals.html`(ع+en) | `amer_gate`=PASS آلياً لكن **`<p>tag: ...</p>` مسرَّب لا يزال ظاهراً كفقرة متن** (ع سطر172، en سطر184) |
+| `blog/managing-healthcare-costs-families.html` | `amer_gate`=PASS لكن **"Urgent Care" إنجليزية مقحمة داخل فقرة عربية** — لغة مختلطة طفيفة |
+| `blog/salalah-travel-guide-2025-en.html` | FAIL مؤكَّد (كليشيه + 3 نِسَب بلا رابط + JSON-LD غير مغلَّف بوسم script)، noindex سليم |
+| `featured-stories/featured-story-saudi-mother.html` | FAIL مؤكَّد (Article schema غائب فعلياً)، noindex سليم |
+| `fitness/calorie-calculator-saudi.html` + `fitness-for-women-saudi.html` | noindex,nofollow مؤكَّد على كليهما — لا انتكاسة سابعة |
+| `blog/building-personal-savings-system-en.html`، `family-budget-planning-guide-en.html`، `managing-healthcare-costs-families-en.html` | عُزلت آلياً عبر CI (14:56 UTC) — noindex مؤكَّد يدوياً هذه الدورة، لم تُصلَح بعد |
+
+**H1 مكرر:** أعيد فحص القائمة كاملة بمسارات صحيحة (تصحيح أخطاء مسار سابقة في فحوصاتي الخاصة) — 10/11 ملفاً لا يزال `h1_count=2`. **تحسّن وحيد:** `finance-wealth/digital-minimalism-faith-families-en.html` أصبح `h1_count=1` سليم (كان 2). البقية بلا تغيير.
+
+### 5. الصور
+`assets/images/image-manifest.json` (72 مدخلة) فُحص بالكامل برمجياً: 52 `approved`، 18 `approved-temporary-reuse`، 1 `approved-existing`، 1 `rejected` — **صفر مدخلة تحتاج توليداً جديداً فعلياً هذه الدورة.** لم يُستدعَ Higgsfield (لا طلب توليد حقيقي موجود، تفادياً للاختلاق).
+
+### 6. التجميد/DEEPEN
+`amer_freeze_watch.py`=نظيف (لا مخالفات). `deepen_gate.py`: `{"deepen_count":77,"allowed":false}` — **راكد بلا حراك عدة دورات متتالية**، الهدف ≤25 لفتح Batch 04، أو ≤50 لفتح A-09. `structural_audit.py`(بعد تثبيت `html5lib`)=312 مقالاً بسايدبار/0 مكسور. `handoff_sync.py`={"cards":25} ثابت — لا بند مؤكَّد الإنجاز هذه الدورة، تخطّيت إعادة المزامنة.
+
+### git
+لا أقفال git نشطة عند بداية الفحص (`objects/maintenance.lock`/`ORIG_HEAD.lock` من دورات سابقة لا تزال موجودة كملفات لكن غير نشطة حالياً). `git pull --no-rebase --no-edit` نظيف (`Already up to date`). عدلت `TEAM-BUS.md`/`AMER-ORDERS-ACTIVE.md`/`quality-log.md` محلياً هذه الدورة — محاولة `push` best-effort واحدة في نهاية الدورة دون إعادة محاولة عند الفشل.
+
+**القرار: لا اعتماد LIVE جديد. لا انتكاسة. أمر جديد لكورسر: أضف Article/SoftwareApplication+FAQPage JSON-LD للستة أدوات بلا schema (`hijri-converter`، `one-rep-max`، `pregnancy-calculator`، `qibla`، `ramadan-calorie-calculator`، `zakat-calculator`). تصعيد متجدد: `gsystem_autopilot.py` عاجز عن إكمال تشغيلة (Timeout مؤكَّد)، و`deepen_gate` راكد على 77 — كلاهما يستحق قراراً هندسياً/تخصيص وقت صريح من جوست، لا مجرد رصد متكرر.**
+
+— عامر

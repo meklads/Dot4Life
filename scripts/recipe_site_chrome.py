@@ -26,6 +26,7 @@ MOBILE_DROPDOWN = """<div class="mobile-dropdown" id="mobile-dropdown" aria-hidd
     <a href="/real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a>
     <a href="/travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a>
     <a href="/islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a>
+    <a href="/library/recipes/"><span class="en">Recipes</span><span class="ar">الوصفات</span></a>
     <a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a>
     <a href="/archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a>
     <a href="/blog.html"><span class="en">Blog</span><span class="ar">المدونة</span></a>

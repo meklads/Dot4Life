@@ -1373,3 +1373,54 @@ title/H1/og:image/Article.headline أُصلحت فعلاً (شكراً)، **لك
 **لا اعتماد LIVE جديد (نص أو صورة) هذه الدورة.**
 
 — عامر
+
+---
+## عامر — دورة 2026-07-09 15:14 UTC — تشخيص أدق لعطل salalah + صفر تقدّم على الباقي + مشكلة صحة gsystem_autopilot
+
+**🆕 لكورسر — تصحيح تشخيص `salalah-travel-guide-2025-en.html`:** ليس "schema مفقود" كما ذُكر سابقاً — **المحتوى موجود فعلياً (Article+FAQPage صحيحان) لكن غير مُغلَّف بوسم `<script type="application/ld+json">`** (يقع كنص JSON خام داخل `<head>`). الإصلاح: غلّف كل كائن بوسم `<script>` منفصل (كما في `featured-story-saudi-mother.html` القائم). يبقى FAIL أيضاً بسبب كليشيه "in conclusion" + 3 نِسَب بلا رابط. `noindex` سليم.
+
+**تأكيد: `featured-stories/featured-story-saudi-mother.html` — `Article` schema غائب فعلياً** (عطل محتوى حقيقي، ليس تغليف) — يحتاج إضافة كاملة.
+
+**سارٍ بلا تغيير (صفر تنفيذ):**
+- `البريمiums` (`comparisons/saudi-vs-uae-family.html` سطر 129).
+- `<p>tag: ...</p>` مسرَّب (`featured-stories/family-six-3000-riyals.html` سطر 172، `-en.html` سطر 184).
+- `"عيادة العلاج العاجل (Urgent Care)"` (`blog/managing-healthcare-costs-families.html` سطر 99).
+- H1 مكرر: **11/11 ملفاً معروفاً لا تزال `h1_count=2` بلا استثناء** — القائمة الكاملة في `quality-log.md`.
+- `fitness/calorie-calculator-saudi.html`+`fitness-for-women-saudi.html`: `noindex` مؤكَّد، لا انتكاسة.
+- صورة الزكاة (نص "الصناديق" الخاطئ): لم تُصحَّح بعد.
+
+**🔺 تصعيد متجدد — `deepen_gate` لا يزال 77 راكداً.**
+
+**🆕 ملاحظة صحة أداة — `gsystem_autopilot.py` (بلا `--push`) لم يُكمل أي تشغيلة اليوم لما بعد سطر `=== تشغيل جديد ===` رغم عشرات المحاولات (`outputs/logs/gsystem-autopilot.log`)؛ `.gsystem-state.json`+`team-board.md` لا يزالان بتاريخ 2026-06-24. لا خطر فوري — عوَّضت بفحص مباشر لـ`image-manifest.json` يؤكد صفر صور معلَّقة — لكن يستحق تشخيص كورسر لاحقاً لأنه فقد وظيفته الفعلية (تحديث لوحة الفريق/صناديق المهام) منذ أسبوعين تقريباً.
+
+**git:** `pull` واجه أخطاء صلاحيات (`Operation not permitted`) على ~19 ملف في `outputs/backups/approved-heroes/` لكن الدمج اكتمل (`HEAD=origin=f7e3b183`). محاولة commit/push فشلت فوراً بسبب `index.lock` (كورسر نشِط) — تُركت بلا إعادة محاولة.
+
+**لا اعتماد LIVE جديد (نص أو صورة) هذه الدورة. لا حاجة عمل صور.**
+
+---
+
+## 2026-07-09 15:42 UTC — أمر جديد لكورسر + تصعيدان متجدّدان
+
+**🆕 أمر جديد (سايدبار الأدوات فُحص هيكلياً، سليم — لكن كشف عطلاً قائماً):** أضف Article/SoftwareApplication+FAQPage JSON-LD (`<script type="application/ld+json">`) للستة صفحات أدوات التالية التي لا تحتوي **أي** schema إطلاقاً حالياً (مخالفة `HEMA-CHARTER.md`§3):
+- `tools/hijri-converter.html`
+- `tools/one-rep-max.html`
+- `tools/pregnancy-calculator.html`
+- `tools/qibla.html`
+- `tools/ramadan-calorie-calculator.html`
+- `tools/zakat-calculator.html`
+
+(سايدبار "أدوات ذات صلة" الجديد `ce1211f0`/`1284b23b` نفسه سليم بنيوياً: sticky، ينهار عمود واحد عند 980px، dark-mode مدعوم — لا حاجة عمل عليه.)
+
+**صفر تقدّم مؤكَّد (بلا تغيير عن 15:14 UTC) على القائمة المفتوحة السابقة** (`البريمiums`، `<p>tag:` مسرَّب×2، Urgent Care، H1 مكرر 10/11 — تحسّن وحيد: `digital-minimalism-faith-families-en` أصبح سليم h1_count=1 — salalah+featured-story-saudi-mother FAIL، 3 ملفات CI الجديدة (building-personal-savings-system-en، family-budget-planning-guide-en، managing-healthcare-costs-families-en) لا تزال noindex بلا إصلاح).
+
+**🔺 تصعيد متجدد 1 — `deepen_gate` لا يزال 77 راكداً** عدة دورات متتالية بلا أي حراك — يحتاج قراراً صريحاً من جوست أو تخصيص وقت هيما فعلي، لا رصداً متكرراً فقط.
+
+**🔺 تصعيد متجدد 2 — `gsystem_autopilot.py` (بلا `--push`) لم يُكمل تشغيلة كاملة هذه الدورة (محاولتان مباشرتان 44 ثانية، كلاهما `exit 124` Timeout مؤكَّد، صفر إخراج).** هذه مشكلة صحة أداة متكررة منذ عدة دورات (تشخيص سابق: بطء خوارزمي O(67×739) في `slugs_needing_build()`) — يستحق إصلاحاً هندسياً من كورسر، ليس مجرد رصد.
+
+**الصور:** `image-manifest.json` (72 مدخلة) فُحص بالكامل — صفر مدخلة تحتاج توليداً جديداً هذه الدورة. لم يُستدعَ Higgsfield.
+
+**لا اعتماد LIVE جديد. لا انتكاسة جديدة.**
+
+— عامر
+
+— عامر
