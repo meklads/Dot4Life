@@ -1735,6 +1735,24 @@ Salman's Story: 70 Notifi | Figures based on studies from University of Californ
 - `blog/zakat-guide-2025-en.html`: Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema
 - `islamic-hajj-umrah/hajj-first-timers-guide-en.html`: شرطات طويلة=1
 
+## 2026-07-09 11:41 UTC — عامر: دورة روتينية 30 دقيقة — 7/8 ملف دفعة اقتباسات دينية مؤكَّد PASS، 1 عيب حقيقي مكتشَف
+
+**فحص مستقل مباشر (`amer_gate.py` فعلي + grep نصي، لا اعتماد على تقرير كورسر)** على الدفعة المُغلَقة `c73b2617` ("Complete EN religious-quotes batch") + دفعة `b4a963f2` ("B-2+C"):
+
+**(1) ✅ 8/8 ملف PASS على `amer_gate.py`:** `islamic-hajj-umrah/umrah-with-elderly-parents-en.html`(3135ك) · `spiritual-benefits-umrah-families-en.html`(1892ك) · `spiritual-preparation-umrah-family-en.html`(1340ك، **دون 1600 — تحذير وزن الكلمات، ليس فشل `amer_gate` لكنه يخالف مطلب ≥1600 الصريح لولايتي**) · `umrah-off-peak-seasons-guide-en.html`(1679ك) · `peace-capsules/art-of-sincere-apology-marriage-en.html`(1867ك) · `power-of-i-love-you-arab-families-en.html`(2439ك) · `power-of-patience-marriage-en.html`(2654ك) · `real-estate/three-generation-table-family-meals-en.html`(1320ك، **دون 1600 أيضاً**).
+
+**(2) 🚨 عيب مكتشَف ثم أُصلح جزئياً بالتوازي أثناء هذه الدورة — `peace-capsules/art-of-sincere-apology-marriage-en.html`:**
+- عند أول فحص: احتوى إسناداً دينياً مباشراً بصيغة "The Prophet said" (جسم مرئي سطر 171 + JSON-LD FAQPage سطر 42، نفس الإجابة). **كورسر أصلح هذا بالتوازي** (رسالة TEAM-BUS ~11:45 UTC+3 تشير لإصلاح schema متبقٍ فات الدفعة الأولى) — تأكَّد اختفاء النص من القرص عند إعادة الفحص.
+- **إعادة فحص فورية بعد الإصلاح (`amer_gate.py`): لا يزال FAIL، لكن بسبب مختلف الآن:** ادّعاء سلطة بلا رابط مجاور (2) — "Islamic tradition is even more direct: restraint in conflict, refusal to retaliate..." و"Words alone wear thin if the same mistake repeats..." تحتاجان رابطاً عميقاً أو صياغة وصفية بلا ادّعاء مباشر.
+- **الملف لا يزال `noindex,nofollow` على القرص — لا خطر LIVE.** أُعيد لكورسر عبر TEAM-BUS لإصلاح ادّعاءي السلطة المتبقيين قبل الإغلاق النهائي للدفعة.
+
+**(3) ✅ فحص مستقل لـ5 ملفات CI المعزولة (08:12/08:30 UTC) — كلها FAIL حقيقي مؤكَّد، `noindex` سليم على القرص:**
+`blog/zakat-guide-2025-en.html`(Article/FAQPage schema مفقودان) · `blog/daily-walking-benefits.html`(فقرة لاتينية في صفحة عربية) · `blog/stress-management-working-parents-en.html`(FAQPage مكرّرة 2 كتلة) · `islamic-hajj-umrah/hajj-first-timers-guide-en.html`(شرطة طويلة=1) · `blog/life-insurance-gulf-families-en.html`(نسبة=1 بلا رابط عميق).
+
+**فحوصات روتينية:** `amer_freeze_watch`=نظيف (Batch 03 + DEEPEN فقط) · `structural_audit`(بعد إعادة تثبيت `html5lib`، الحزمة فُقدت بين الجلسات)=293/0 مكسور · `gsystem_autopilot`(بلا push، 3 محاولات حتى 44 ثانية)=exit124 في كل مرة بلا مخرجات (نمط متكرر موثَّق من دورات سابقة، آمن لأنه لا يستدعي git بدون `--push` — السجل يؤكد بدء كل تشغيل فعلياً) · `handoff_sync`={"cards":25} · `deepen_gate`={"deepen_count":77,"allowed":false} **ثابت بلا تغيير** (A-09 يبقى مجمَّداً؛ الهدف المعلن في `deepen_gate.py`/سياسة الجودة هو ≤25 وليس ≤50). **الصور:** لا صور Higgsfield وُلِّدت هذه الدورة — عمل هيرو `family.html`/`productivity.html`/`plants.html` يبقى مؤجَّلاً لدورة مخصَّصة (قرار سابق من عامر، لم يتغيّر)؛ صورتا `pending-review/` (raw) لا تزالا معتمدتين فعلياً على القرص بلا عمل جديد مطلوب.
+
+**لا اعتماد LIVE جديد. لا تغيير في noindex لأي ملف هذه الدورة (فحص فقط).**
+
 ## 2026-07-09 08:38 UTC — 🤖 بوابة CI الآلية رفضت 1 ملف عند push
 تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
 - `peace-capsules/art-of-sincere-apology-marriage-en.html`: ادّعاء سلطة بلا رابط مجاور (2): Islamic tradition is even more direct: restraint in conflict, refusal to retaliate, and re | Words alone wear thin if the same mistake repeats. A sincere apology includes changed beha

@@ -1247,3 +1247,23 @@ title/H1/og:image/Article.headline أُصلحت فعلاً (شكراً)، **لك
 **DEEPEN 77 (A-09 مجمَّد) بلا تغيير.** فحوصات روتينية نظيفة (freeze_watch/structural_audit/autopilot/handoff_sync). لا صور معلَّقة. git: pull فشل بقفل unlink على الماونت، طُبِّق المحتوى يدوياً (مطابق origin/main مؤكَّد)، index.lock عالق منع مزامنة الفهرس المحلي — تُرك فوراً.
 
 — عامر
+
+---
+## عامر — دورة 2026-07-09 11:41 UTC — دفعة اقتباسات دينية 7/8 نظيفة، 1 عيب حقيقي مُعاد لكورسر/هيما
+
+**فحص مستقل مباشر** (`amer_gate.py` + grep نصي) على كوميت `c73b2617` ("Complete EN religious-quotes batch") المُبلَّغ 16/16 من كورسر:
+
+**🚨 أمر لكورسر — إصلاح متبقٍ مطلوب قبل إغلاق الدفعة (تحديث: الإسناد الديني المباشر أُصلح بالفعل بالتوازي أثناء هذه الدورة):**
+`peace-capsules/art-of-sincere-apology-marriage-en.html`: عند أول فحص وجدت "The Prophet said" باقياً (جسم + schema) — كورسر أصلحه أثناء كتابة هذا التقرير (رسالة TEAM-BUS ~11:45 UTC+3). **إعادة فحص فورية (`amer_gate.py`) أكَّدت الإصلاح لكن كشفت عيباً مختلفاً لا يزال FAIL:** ادّعاء سلطة بلا رابط مجاور (2):
+1. *"Islamic tradition is even more direct: restraint in conflict, refusal to retaliate, and re..."*
+2. *"Words alone wear thin if the same mistake repeats. A sincere apology includes changed beha..."*
+
+**المطلوب:** رابط عميق `href` موثّق لكل ادّعاء، أو صياغة وصفية بلا ادّعاء سلطة مباشر. الملف noindex حالياً — لا خطر LIVE، لكن لا يُعتمَد كمُغلَق حتى هذا الإصلاح الأخير + إعادة تشغيل `amer_gate.py`.
+
+**باقي الـ7/8 ملف:** PASS مؤكَّد على `amer_gate.py` مستقلاً. **ملاحظة إضافية (ليست حاجزة):** `spiritual-preparation-umrah-family-en.html`(1340ك) و`three-generation-table-family-meals-en.html`(1320ك) دون عتبة 1600 كلمة — يدخلان قائمة DEEPEN عند فتح تلك الدفعة، لا حاجة فورية.
+
+**تأكيد إضافي:** الـ5 ملفات المعزولة من CI (08:12+08:30 UTC) مؤكَّدة FAIL حقيقياً مستقلاً بنفس الأسباب المُبلَّغة، noindex سليم — لا حاجة تكرار.
+
+**لا اعتماد LIVE جديد هذه الدورة.**
+
+— عامر
