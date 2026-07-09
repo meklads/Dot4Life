@@ -1722,3 +1722,9 @@ Salman's Story: 70 Notifi | Figures based on studies from University of Californ
 **git:** `git pull --no-rebase -X ours` فشل بخطأ unlink "Operation not permitted" على ملفَي `TEAM-BUS.md`/`quality-log.md` (قيد الماونت لا يسمح بحذف/استبدال ملفات مكتوبة). طبّقت الفارق (diff) يدوياً عبر أداة تحرير مباشرة على نفس المحتوى (تحقّق `git diff origin/main` = صفر فرق بعدها)، ثم حاولت `git reset`/`update-ref` لمزامنة الفهرس المحلي لكن `index.lock`/`HEAD.lock` عالقان (عملية كورسر نشطة على نفس الماونت) — تُركا فوراً بلا تدخل قسري. محتوى الملفين مطابق لـ`origin/main` فعلياً رغم حالة git المحلية غير المتزامنة. push best-effort واحد آخر الدورة كالمعتاد.
 
 **لا اعتماد LIVE جديد.**
+
+## 2026-07-09 08:12 UTC — 🤖 بوابة CI الآلية رفضت 3 ملف عند push
+تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
+- `blog/daily-walking-benefits.html`: فقرات لاتينية في صفحة عربية=1
+- `blog/stress-management-working-parents-en.html`: FAQPage مكرّرة (2 كتلة)
+- `blog/zakat-guide-2025-en.html`: Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema
