@@ -6,11 +6,20 @@ from __future__ import annotations
 
 import json
 import re
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "scripts"))
+from recipe_site_chrome import (  # noqa: E402
+    LANG_BOOT,
+    MOBILE_DROPDOWN,
+    RECIPE_HEAD_ASSETS,
+    site_footer,
+    site_header,
+)
+
 RECIPES_DIR = ROOT / "library" / "recipes"
-PARTIALS = ROOT / "partials"
 DATA = json.loads((RECIPES_DIR / "recipes.json").read_text(encoding="utf-8"))
 
 KCAL: dict[str, int] = {
@@ -64,48 +73,6 @@ def clean(text: str) -> str:
 
 def esc_attr(s: str) -> str:
     return s.replace("&", "&amp;").replace('"', "&quot;")
-
-
-LANG_BOOT = """<script>(function(){var p=new URLSearchParams(location.search),gd=(function(){try{var z=(Intl.DateTimeFormat().resolvedOptions().timeZone||"");return /Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test(z)?"ar":"en";}catch(e){return "ar";}})(),l=p.get("lang")||localStorage.getItem("dfl-lang")||gd,t=p.get("theme")||localStorage.getItem("dfl-theme")||"light",h=document.documentElement;h.setAttribute("data-theme",t);h.setAttribute("data-lang",l);h.setAttribute("lang",l);h.setAttribute("dir",l==="ar"?"rtl":"ltr");if(p.get("lang"))localStorage.setItem("dfl-lang",l);if(p.get("theme"))localStorage.setItem("dfl-theme",t);var pt=document.getElementById("dfl-page-title");if(pt){var tl=l==="ar"?(pt.getAttribute("data-ar")||pt.getAttribute("data-en")):(pt.getAttribute("data-en")||pt.getAttribute("data-ar"));if(tl)document.title=tl+" | DOTFORLIFE";}})()</script>"""
-
-MOBILE_DROPDOWN = """<div class="mobile-dropdown" id="mobile-dropdown" aria-hidden="true">
-  <div class="md-links">
-    <a href="/health.html"><span class="en">Health</span><span class="ar">الصحة</span></a>
-    <a href="/finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a>
-    <a href="/real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a>
-    <a href="/travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a>
-    <a href="/islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a>
-    <a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a>
-    <a href="/archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a>
-    <a href="/blog.html"><span class="en">Blog</span><span class="ar">المدونة</span></a>
-    <a href="/library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a>
-    <a href="/life-guide.html"><span class="en">Guides</span><span class="ar">الأدلة</span></a>
-  </div>
-  <div class="md-controls">
-    <button class="nav-btn" id="lang-toggle-mobile"><span class="en">عربي</span><span class="ar">English</span></button>
-    <button class="nav-btn" id="theme-toggle-mobile">
-      <svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      <svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-    </button>
-  </div>
-</div>"""
-
-HAMBURGER = """<button class="hamburger" id="hamburger-btn" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>"""
-
-
-def site_header() -> str:
-    raw = (PARTIALS / "header.html").read_text(encoding="utf-8").strip()
-    if "hamburger-btn" in raw:
-        return raw
-    return raw.replace(
-        "</button></div></div></nav>",
-        f"</button>{HAMBURGER}</div></div></nav>",
-        1,
-    )
-
-
-def site_footer() -> str:
-    return (PARTIALS / "footer.html").read_text(encoding="utf-8").strip()
 
 
 def extract_ldjson(path: Path) -> str:
@@ -248,14 +215,13 @@ def build_page(recipe: dict) -> str:
 <link rel="alternate" hreflang="ar" href="https://dotforlife.com/library/recipes/{slug}.html?lang=ar" />
 <link rel="alternate" hreflang="en" href="https://dotforlife.com/library/recipes/{slug}.html?lang=en" />
 <script src="/scripts/lang-redirect.js?v=20260625"></script>
-<link rel="stylesheet" href="/styles/global.css?v=20260624n"/>
-<link rel="stylesheet" href="/styles/pages/recipes.css?v=20260709e"/>
+{RECIPE_HEAD_ASSETS}
 <script src="/scripts/global.js?v=20260625" defer></script>
 <script type="application/ld+json">
 {ld}
 </script>
 </head>
-<body class="recipes-page rcp-bb-recipe no-subnav">
+<body class="index-page recipes-page rcp-bb-recipe no-subnav">
 
 {header_html}
 {MOBILE_DROPDOWN}

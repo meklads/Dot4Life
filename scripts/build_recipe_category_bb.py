@@ -3,12 +3,20 @@
 """Generate Budget Bytes-style recipe category pages (phase 2)."""
 import json
 import re
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-RECIPES = ROOT / "library" / "recipes"
+sys.path.insert(0, str(ROOT / "scripts"))
+from recipe_site_chrome import (  # noqa: E402
+    LANG_BOOT,
+    MOBILE_DROPDOWN,
+    RECIPE_HEAD_ASSETS,
+    site_footer,
+    site_header,
+)
 
-LANG_BOOT = """<script>(function(){var p=new URLSearchParams(location.search),gd=(function(){try{var z=(Intl.DateTimeFormat().resolvedOptions().timeZone||"");return /Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test(z)?"ar":"en";}catch(e){return "ar";}})(),l=p.get("lang")||localStorage.getItem("dfl-lang")||gd,t=p.get("theme")||localStorage.getItem("dfl-theme")||"light",h=document.documentElement;h.setAttribute("data-theme",t);h.setAttribute("data-lang",l);h.setAttribute("lang",l);h.setAttribute("dir",l==="ar"?"rtl":"ltr");if(p.get("lang"))localStorage.setItem("dfl-lang",l);if(p.get("theme"))localStorage.setItem("dfl-theme",t);var pt=document.getElementById("dfl-page-title");if(pt){var tl=l==="ar"?(pt.getAttribute("data-ar")||pt.getAttribute("data-en")):(pt.getAttribute("data-en")||pt.getAttribute("data-ar"));if(tl)document.title=tl+" | DOTFORLIFE";}})()</script>"""
+RECIPES = ROOT / "library" / "recipes"
 
 
 def esc_attr(s: str) -> str:
@@ -168,6 +176,9 @@ def build_page(cat_id: str, cfg: dict) -> str:
         disclaimer = """    <p class="rcp-disclaimer rcp-bb-disclaimer rcp-bb-disclaimer--banner"><span class="en">General guidance only, not medical advice. Consult your clinician for pregnancy diets.</span><span class="ar">إرشاد عام فقط وليس نصيحة طبية. استشيري طبيبك لأنظمة الحمل.</span></p>
 """
 
+    header_html = site_header()
+    footer_html = site_footer()
+
     return f"""<!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="light" data-lang="en">
 <head>
@@ -183,38 +194,16 @@ def build_page(cat_id: str, cfg: dict) -> str:
 <link rel="alternate" hreflang="ar" href="https://dotforlife.com/library/recipes/{cat_id}.html?lang=ar" />
 <link rel="alternate" hreflang="en" href="https://dotforlife.com/library/recipes/{cat_id}.html?lang=en" />
 <script src="/scripts/lang-redirect.js?v=20260625"></script>
-<link rel="stylesheet" href="/styles/global.css?v=20260624n"/>
-<link rel="stylesheet" href="/styles/pages/library.css?v=20260708a"/>
-<link rel="stylesheet" href="/styles/pages/recipes.css?v=20260709c"/>
+{RECIPE_HEAD_ASSETS}
 <script src="/scripts/global.js?v=20260625" defer></script>
 <script type="application/ld+json">
 {ld}
 </script>
 </head>
-<body class="library-page recipes-page rcp-bb-home rcp-bb-category rcp-{cat_id}">
+<body class="index-page recipes-page rcp-bb-home rcp-bb-category rcp-{cat_id} no-subnav">
 
-<nav id="navbar" role="navigation" aria-label="Main navigation">
-  <div class="nav-inner">
-    <a href="/index.html" class="nav-logo" aria-label="DOTFORLIFE Home">
-      <img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" width="100" height="100" style="height:100px;width:auto;object-fit:contain;" loading="lazy">
-    </a>
-    <ul class="nav-links">
-      <li><a href="/health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
-      <li><a href="/finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li>
-      <li><a href="/real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li>
-      <li><a href="/travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li>
-      <li><a href="/islamic.html"><span class="en">Islamic</span><span class="ar">الإسلامية</span></a></li>
-      <li><a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a></li>
-      <li><a href="/archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a></li>
-      <li><a href="/blog.html"><span class="en">Blog</span><span class="ar">المدونة</span></a></li>
-      <li><a href="/library.html" aria-current="page"><span class="en">Library</span><span class="ar">المكتبة</span></a></li>
-    </ul>
-    <div class="nav-controls">
-      <button class="nav-btn" id="lang-toggle" aria-label="Switch language"><span class="en">عربي</span><span class="ar">English</span></button>
-      <button class="nav-btn" id="theme-toggle" aria-label="Toggle theme"><svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
-    </div>
-  </div>
-</nav>
+{header_html}
+{MOBILE_DROPDOWN}
 
 <div class="rcp-bb-wrap">
   <nav class="rcp-crumb rcp-bb-crumb" aria-label="Breadcrumb">
@@ -257,43 +246,7 @@ def build_page(cat_id: str, cfg: dict) -> str:
   </main>
 </div>
 
-<footer class="site-footer" role="contentinfo">
-  <div class="footer-accent" aria-hidden="true"></div>
-  <div class="footer-inner">
-    <div class="footer-main">
-      <div class="footer-brand">
-        <a href="/" class="footer-logo" aria-label="DOTFORLIFE">
-          <img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" width="auto" loading="lazy">
-        </a>
-        <p class="footer-tagline"><span class="en">One calm place for your family's everyday decisions. Free, always.</span><span class="ar">مكان هادئ واحد لقرارات عائلتك اليومية. مجاني دائماً.</span></p>
-      </div>
-      <div class="footer-links-grid">
-        <div class="footer-col">
-          <h4><span class="en">Life</span><span class="ar">الحياة</span></h4>
-          <ul>
-            <li><a href="/health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li>
-            <li><a href="/finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li>
-            <li><a href="/library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4><span class="en">Recipes</span><span class="ar">الوصفات</span></h4>
-          <ul>
-            <li><a href="/library/recipes/"><span class="en">Featured Recipes</span><span class="ar">وصفات مميزة</span></a></li>
-            <li><a href="/library/recipes/pregnancy.html"><span class="en">Pregnancy</span><span class="ar">للحامل</span></a></li>
-            <li><a href="/library/recipes/budget.html"><span class="en">Budget</span><span class="ar">اقتصادية</span></a></li>
-            <li><a href="/library/recipes/quick.html"><span class="en">Quick</span><span class="ar">سريعة</span></a></li>
-            <li><a href="/library/recipes/family.html"><span class="en">Family</span><span class="ar">للعائلة</span></a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span class="footer-copy">© 2026 DOTFORLIFE · <span class="en">Free for families, always.</span><span class="ar">مجاني للعائلات، دائماً.</span></span>
-    </div>
-  </div>
-</footer>
-<script src="/scripts/global.js?v=20260625" defer></script>
+{footer_html}
 
 </body>
 </html>

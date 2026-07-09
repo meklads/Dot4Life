@@ -1,14 +1,60 @@
 /*
- * DOTFORLIFE — Featured Recipes (library extension)
- * Extends library.css card system
+ * DOTFORLIFE — Featured Recipes (Budget Bytes layout)
+ * White canvas, gold #F5C518, bilingual AR/EN
  */
 
-body.recipes-page {
+body.index-page.recipes-page {
+  --lib-max: 1100px;
+  --lib-gutter: clamp(1.25rem, 4vw, 2rem);
+  --lib-teal: #2BA8A2;
+  --lib-teal-dark: #1E8C86;
+  --lib-ink: #1A1612;
+  --lib-muted: #7A7A7A;
+  --lib-border: rgba(0, 0, 0, .07);
+  --lib-ease: cubic-bezier(.22, 1, .36, 1);
+  font-family: var(--font-ar, 'Almarai', sans-serif);
+}
+
+[data-lang="en"] body.index-page.recipes-page {
+  font-family: var(--font-en, 'Inter', system-ui, sans-serif);
+}
+
+body.index-page.recipes-page #navbar,
+body.index-page.recipes-page #navbar.scrolled {
+  background: linear-gradient(180deg, #003300 0%, #223634 100%) !important;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: none;
+}
+
+body.index-page.recipes-page .nav-links a,
+body.index-page.recipes-page .nav-btn {
+  color: rgba(255, 255, 255, .9) !important;
+}
+
+body.index-page.recipes-page .nav-btn {
+  border-color: rgba(255, 255, 255, .28) !important;
+}
+
+body.index-page.recipes-page .hamburger span {
+  background: rgba(255, 255, 255, .88);
+}
+
+body.recipes-page.no-subnav {
+  padding-top: 110px;
+}
+
+@media (max-width: 768px) {
+  body.recipes-page.no-subnav { padding-top: 90px; }
+}
+
+/* legacy selector — keep for any page without no-subnav */
+body.recipes-page:not(.no-subnav) {
   padding-top: 158px;
 }
 
 @media (max-width: 768px) {
-  body.recipes-page { padding-top: 138px; padding-bottom: 64px; }
+  body.recipes-page:not(.no-subnav) { padding-top: 138px; padding-bottom: 64px; }
 }
 
 /* ── Breadcrumb & disclaimer ─────────────────────────────── */
