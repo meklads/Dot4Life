@@ -159,6 +159,79 @@ REPLACEMENTS: list[tuple[str, str]] = [
         "The rewards of sabr are immense. Allah promises: 'Indeed, the patient will be given their reward without account' (Az-Zumar 39:10) ,  meaning the reward is limitless. Patience is a means of receiving Allah's companionship: 'Indeed, Allah is with the patient' (Al-Baqarah 2:153). It is a path to paradise: 'Peace be upon you for what you patiently endured. And excellent is the final home' (Ar-Rad 13:24). The Prophet (peace be upon him) said: 'Whoever remains patient, Allah will make him patient. No one is given a better and more abundant gift than patience' (Bukhari and Muslim).",
         "The rewards of sabr are immense. Islamic teaching promises immense reward for patience, divine support in difficulty, and peace for those who endure with faith. Islamic tradition ranks patience among the greatest spiritual gifts.",
     ),
+    # Single-quote schema variants + remaining batch2 misses
+    (
+        "the Prophet (peace be upon him) said 'This religion is ease.'",
+        "Islamic teaching reminds us that worship should remain within your parent's capacity.",
+    ),
+    (
+        "The Prophet (peace be upon him) never responded to a mistake with harshness.",
+        "Islamic teaching encourages responding gently to mistakes, not with harshness.",
+    ),
+    (
+        "The Prophet advised the one who wronged to stay patient and keep showing good conduct.",
+        "Islamic teaching advises the one who wronged to stay patient and keep showing good conduct.",
+    ),
+    (
+        "The Prophet's sunnah shows that action completes words.",
+        "Islamic tradition shows that action completes words.",
+    ),
+    (
+        "The Prophet was always the first to initiate reconciliation.",
+        "Islamic tradition encourages being the first to initiate reconciliation.",
+    ),
+    (
+        "The Prophet said that whoever humbles themselves before Allah for His sake, Allah raises their rank.",
+        "Islamic teaching holds that humbling oneself before Allah leads to being raised in rank.",
+    ),
+    (
+        "a sunnah of the Prophet (peace be upon him),",
+        "a practice rooted in Islamic tradition,",
+    ),
+    (
+        'The sunnah of the Prophet is even more direct. <a href="https://sunnah.com/bukhari/78/113" target="_blank" rel="noopener">Aisha (may Allah be pleased with her) reported that the Prophet never struck a servant or a woman with his hand</a>. When he was wronged, he did not retaliate. He forgave.',
+        "Islamic tradition is even more direct: restraint in conflict, refusal to retaliate, and readiness to forgive.",
+    ),
+    (
+        "The Prophet was patient even when people wronged him repeatedly.",
+        "Islamic tradition models patience even when people wrong us repeatedly.",
+    ),
+    (
+        '<a href="https://sunnah.com/tirmidhi/27/77" target="_blank" rel="noopener">The Prophet\'s sunnah shows that action completes words</a>.',
+        "Islamic tradition shows that action completes words.",
+    ),
+    (
+        "drawing from the Quran, the Sunnah, the example of the Prophet Muhammad (peace be upon him) and Khadija (may Allah be pleased with her), and modern relationship science.",
+        "drawing from the Quran, Islamic tradition, the example of Khadija (may Allah be pleased with her), and modern relationship science.",
+    ),
+    (
+        "Consider the example of the Prophet Muhammad (peace be upon him). When his wife Aisha (may Allah be pleased with her) was slandered by hypocrites, he did not react impulsively. He waited, he prayed, he consulted. And then, when the revelation came clearing her name, he acted with justice and compassion. His patience was not weakness ,  it was strategic trust in Allah.",
+        "Islamic tradition offers examples of couples facing public slander and hardship with prayer, consultation, and restraint until the right moment to act with justice and compassion. Such patience is not weakness ,  it is strategic trust in Allah.",
+    ),
+    (
+        "The Prophet (peace be upon him) demonstrated extraordinary patience as a father. He carried his grandchildren on his back during prayer. He let them climb on him while he was speaking. He waited while his grandson Hasan climbed onto his shoulders.",
+        "Islamic tradition models extraordinary patience as parents and grandparents ,  making room for children's needs even during prayer or conversation.",
+    ),
+    (
+        "The Prophet (peace be upon him) set the example. He never asked any of his wives to tolerate injustice from his family. When relatives spoke harshly, he addressed it. When his daughter Fatima faced difficulty, he supported her.",
+        "Islamic teaching sets a clear example: spouses should not be asked to tolerate injustice from in-laws. When relatives speak harshly, address it; when a daughter or son faces difficulty, offer support.",
+    ),
+    (
+        "The Prophet (peace be upon him) taught this as the first line of defence against anger.",
+        "Islamic teaching recommends this as a first line of defence against anger.",
+    ),
+    (
+        "The Prophet (peace be upon him) advised patience during trials but never instructed anyone to remain in a situation that harms their faith or well-being.",
+        "Islamic teaching advises patience during trials but not remaining in situations that harm faith or well-being.",
+    ),
+    (
+        "Islamic teaching does not require anyone to endure abuse silently without seeking help ,  he took action, supported them, and in some cases approved separation.",
+        "Islamic teaching does not require anyone to endure abuse silently without seeking help; settlement, mediation, and lawful separation are permitted when harm persists.",
+    ),
+    (
+        "<p>The Prophet Muhammad ﷺ was the most loving of fathers and husbands. He did not simply feel love; he spoke it freely. He told his daughter Fatimah (may Allah be pleased with her) that he loved her, and he told his wife Aishah (may Allah be pleased with her) plainly that he loved her. His love was not hidden behind formality or shyness.</p>",
+        "<p>Islamic tradition models expressing love openly within the family ,  not only through acts of service but through warm words between parents, spouses, and children. Love that is spoken removes doubt and strengthens bonds that actions alone cannot fully reach.</p>",
+    ),
 ]
 
 
