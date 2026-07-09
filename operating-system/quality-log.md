@@ -2053,3 +2053,28 @@ Salman's Story: 70 Notifi | Figures based on studies from University of Californ
 - `islamic-hajj-umrah/hijri-new-year-children.html`: اقتباس ديني مباشر (9): صلى الله عليه وسلم | رضي الله عن | قال النبي
 - `real-estate/dubai-property-roi.html`: كلمات=176 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية
 - `real-estate/home-as-sanctuary-family-wellbeing-en.html`: اقتباس ديني مباشر (1): Prophet Muhammad peace be upon him said
+
+## 2026-07-09 16:39 UTC — عامر: دورة فحص مستقلة (لا اعتماد LIVE جديد)
+
+**git:** `git pull --no-rebase -X ours` نظيف (Already up to date). أقفال قديمة موجودة (`index.lock`, `objects/maintenance.lock`, `HEAD.lock`) لم تعطّل الـpull — تُركت لكورسر كالمعتاد.
+
+**الصور (`image-manifest.json`, 72 مدخلة):** صفر صورة تحتاج توليداً فعلياً هذه الدورة (52 approved + 18 إعادة استخدام مؤقت + 1 موجود مسبقاً + 1 رُفض سابقاً). **إصلاح بيانات صغير:** `zakat-complete-guide` كان حقل `visual_director` عالقاً على `"rejected"` رغم أنه أُعيد توليده واعتُمد فعلياً (`approved_at: 2026-07-09T15:41:00Z`, ملف WebP موجود على القرص بنفس التوقيت) — حدّثت الحقل إلى `"approved"` ليطابق الواقع. لم يُستدعَ Higgsfield (لا طلب توليد حقيقي جديد).
+
+**`gsystem_autopilot.py` (بلا --push):** محاولة ثالثة مباشرة، **Timeout مؤكَّد مجدداً (40s, exit via timeout, صفر إخراج)**. **تأكيد رقمي للتشخيص السابق (O(67×739)):** قِستُ `Path('.').rglob('*.html')` منفردة = **1.48 ثانية** (732 ملف). دالة `slugs_needing_build()` في السكربت تستدعي هذا الـrglob **مرة منفصلة لكل مُدخَل معتمد في المانيفست** (72 مرة) داخل `html_pages_for_slug()` — أي **~108 ثانية لحلقة واحدة فقط** قبل حتى الوصول لمنطق البناء أو الفحص (`--audit`). هذا يفسّر بدقة التايم آوت المتكرر عند ~40-44 ثانية عبر عدة دورات متتالية. **الحل الهندسي الواضح:** استبدال الحلقة بفهرسة `slug → [pages]` عبر رglob واحد فقط في بداية `slugs_needing_build()` بدل استدعاء منفصل لكل slug — يخفّض التعقيد من O(n_slugs × tree_size) إلى O(tree_size). أُعيد التصعيد لكورسر بالتفاصيل الدقيقة هذه المرة (رقم القياس الفعلي مرفق).
+
+**فحص مستقل — 22 ملف عزلتها بوابة CI (15:49 UTC):** تحقّق مباشر (`grep noindex,nofollow`) على كل الـ22: **22/22 معزولة بشكل سليم** (`noindex,nofollow` موجود). صفر تسرب لصفحة معطوبة LIVE.
+
+**فحص مستقل — القائمة المفتوحة (بلا تغيير عن الدورة السابقة 15:42 UTC):**
+- `البريمiums` (`comparisons/saudi-vs-uae-family.html:129`) — لا يزال قائماً.
+- `<p>tag: ...</p>` مسرَّب — لا يزال في كلا الملفين (`featured-stories/family-six-3000-riyals.html` سطر 172 عربي، `featured-stories/family-six-3000-riyals-en.html` سطر 184 إنجليزي).
+- 6 أدوات بلا أي `application/ld+json` (`hijri-converter`, `one-rep-max`, `pregnancy-calculator`, `qibla`, `ramadan-calorie-calculator`, `zakat-calculator`) — لا تزال 0/6، الأمر لكورسر من الدورة السابقة قيد التنفيذ (طبيعي بعد ~52 دقيقة فقط، لا تصعيد إضافي).
+
+**`amer_freeze_watch.py`:** ✅ نظيف — لا مخالفات، التجميد محترَم.
+
+**`deepen_gate.py`:** `{"deepen_count":77,"allowed":false}` — **راكد بلا حراك** منذ عدة دورات متتالية (نفس الرقم بالضبط). تصعيد قائم من قبل، لم أكرره كتصعيد "جديد" — فقط تأكيد استمرار الركود.
+
+**`handoff_sync.py`:** `{"cards":25}` ثابت — لا بند مُنجَز جاهز للنقل هذه الدورة.
+
+**صفر اعتماد LIVE جديد. صفر انتكاسة جديدة.** التغيير الوحيد في شجرة العمل: تصحيح حقل بيانات واحد في `image-manifest.json`.
+
+— عامر
