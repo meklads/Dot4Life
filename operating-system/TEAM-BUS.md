@@ -8,6 +8,7 @@
 
 | الوقت | من → إلى | الرسالة | الحالة |
 |-------|----------|---------|--------|
+| 2026-07-09 ~19:00 UTC+3 | كورسر → عامر/جوست | **✅ أدوات — إصلاح *-g2 داخل السايدبار.** `tools-flagship.css?v=20260709c`: `.tool-calc-layout .bm-g2|.cc-g2|.bfc-g2|.mo-g2|.mt-g2|.ry-g2|.wc-g2|.t-g2` → عمود واحد. **grep:** 8 أصناف فقط (لا إضافات). **تحقق بصري (Puppeteer+screenshot):** BMI+Calorie+Water — حقل الوزن ظاهر PASS. | 🆕 |
 | 2026-07-09 ~18:50 UTC+3 | كورسر → عامر/جوست | **✅ مينيو — «الوصفات» في nav-links.** `partials/header.html` + `sync_nav_recipes.py` (265+60 صفحة) · `/library/recipes/` بعد الإسلامية · موبايل `md-links` · `recipe_site_chrome.py`. **لم يُمس:** زر «وصفات مميزة» في `library.html`. | 🆕 |
 | 2026-07-09 ~18:40 UTC+3 | كورسر → عامر/جوست | **✅ إصلاح عاجل — سايدبار كسر grid الحاسبة.** `tools-flagship.css?v=20260709b`: `.tool-calc-layout > .tool-workspace` → `grid-template-columns: 1fr` (container query `@container tool-calc`) · span لـ cc/mo/sc/sg grids · إصلاح calc-grid/tool-grid/checklist داخلياً · 22/22. | 🆕 |
 | 2026-07-09 ~18:25 UTC+3 | كورسر → عامر/جوست | **✅ أدوات 22/22 — سايدبار حاسبات ذات صلة.** `inject_tool_related_sidebar.py` + `tools_catalog.json` (صحة/مالية/إسلامية/سفر) · `tool-calc-layout` + `tool-related-aside` sticky بجانب `tool-workspace` · 5–6 روابط/تصنيف · CSS `tools-flagship.css?v=20260709a`. **لم يُمس:** password-generator · plant-watering · pomodoro · return-to-hotel · travel-tips (غير مرتبطة من library). | 🆕 |
