@@ -19,6 +19,17 @@ AUTHORITY_PATTERN = re.compile(
     r"|[Uu]niversity of \w+|[Ii]nstitute of \w+|[Cc]enter for \w+|[Jj]ournal of [\w ]+|[Aa]cademy of \w+"
     r"|[Ss]tudies? (?:from|by|published in)|[Rr]esearch (?:from|by)|found that|shows that)"
 )
+# قاعدة عامر 2026-07-02: صفر تسامح مع أي اقتباس ديني مباشر (حديث أو آية)، بأي صياغة،
+# منسوب أو غير منسوب. يشمل مؤشرات عربية وإنجليزية بعد اكتشاف أن الفحص العربي وحده
+# فوّت اقتباسات إنجليزية مباشرة (zakat-guide-2025-en، masjid-nabawi-complete-guide، إلخ).
+RELIGIOUS_QUOTE_PATTERN = re.compile(
+    r"(قال\s+النبي|صلى\s+الله\s+عليه\s+وسلم|رسول\s+الله\s+ﷺ|حديث\s+شريف|قال\s+رسول\s+الله"
+    r"|قال\s+الله\s+تعالى|قال\s+تعالى|رضي\s+الله\s+عن|﴿[^﴾]{3,}﴾"
+    r"|Allah\s+says|Prophet\s+Muhammad.{0,20}said|the\s+Prophet\s+said|Prophet\s+\(peace\s+be\s+upon\s+him\)\s+said"
+    r"|Qur'?an\s+\d{1,3}\s*:\s*\d{1,3}|Surah\s+[A-Z][a-z]+\s*\(?\d{1,3}\s*:\s*\d{1,3}"
+    r"|\bBukhari\b|\bTirmidhi\b|\bIbn\s+Majah\b|narrated\s+that\s+the\s+Prophet|it\s+was\s+narrated)",
+    re.I
+)
 
 def text_only(html):
     t = re.sub(r"<script[^>]*application/ld\+json[^>]*>.*?</script>", " ", html, flags=re.S)
@@ -141,6 +152,22 @@ def authority_no_link(html):
             flags.append(snippet)
     return flags
 
+def religious_quote_check(html):
+    """قاعدة عامر المطلقة: صفر اقتباس ديني مباشر (حديث/آية)، عربي أو إنجليزي،
+    منسوب أو غير منسوب. يفحص جسم المقال فقط + كتل JSON-LD (FAQ schema يمكن أن
+    يحمل الاقتباس أيضاً كما حدث في عدة ملفات هذا الأسبوع)."""
+    t = text_only(html)
+    m = re.search(r"<article\b[^>]*>(.*?)</article>", t, re.S | re.I)
+    body = m.group(1) if m else t
+    body = re.sub(r"<[^>]+>", " ", body)
+    hits = [s.strip()[:90] for s in RELIGIOUS_QUOTE_PATTERN.findall(body) if s]
+    # فحص منفصل داخل نصوص FAQ schema (raw JSON نص، بلا وسوم HTML)
+    raw_ld = re.findall(r'<script[^>]*application/ld\+json[^>]*>(.*?)</script>', html, re.S)
+    for block in raw_ld:
+        if RELIGIOUS_QUOTE_PATTERN.search(block):
+            hits.append("داخل JSON-LD schema")
+    return hits
+
 def hero_image_check(html):
     has_webp_hero = bool(re.search(r'(hero-[\w-]+\.webp|assets/images/[\w/-]+\.webp)', html))
     return has_webp_hero
@@ -241,6 +268,9 @@ def run(fp):
     sb = sidebar_structure_fail(html)
     if sb:
         out["fails"].append(sb)
+    rq = religious_quote_check(html)
+    if rq:
+        out["fails"].append(f"اقتباس ديني مباشر ({len(rq)}): " + " | ".join(rq[:3]))
     return out
 
 def main():
