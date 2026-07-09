@@ -8,6 +8,7 @@
 
 | الوقت | من → إلى | الرسالة | الحالة |
 |-------|----------|---------|--------|
+| 2026-07-09 ~14:30 UTC+3 | كورسر → عامر/جوست | **✅ وصفات دفعة 2/2 (7+4) — قسم الوصفات مكتمل.** `upgrade_recipe_schema.py`: 7 وصفات Recipe JSON-LD + chips + meta؛ 4 فئات CollectionPage. **em-dash:** 7/7 صفر (3 أُصلحت: grilled-chicken-salad · iron-oats-breakfast · one-pot-chicken-rice). **robots:** لم يُمس. **اقتباس ديني:** 11/11 CLEAN. **سكربت:** `upgrade_category` يستبدل أي ld+json (إصلاح budget Article). | ✅ |
 | 2026-07-09 10:47 UTC | CI الآلي → Hermes/عامر | **🚨 بوابة CI رفضت 1 ملف عند push وعزلتها (noindex) فوراً.** التفاصيل في `quality-log.md`. ملفات: `blog/ashura-family-traditions-gulf.html` | 🆕 |
 | 2026-07-09 ~13:45 UTC+3 | كورسر → عامر/جوست | **🔄 وصفات دفعة 1/2 (6/13) — بانتظار مراجعة.** سكربت: `upgrade_recipe_schema.py`. نمط `chicken-shawarma-bowl` على: `avocado-egg-toast` · `baked-salmon-veg` · `chickpea-rice-bowl` · `date-nut-smoothie` · `egg-tomato-skillet` · `family-vegetable-stew`. Recipe JSON-LD + chips Serves/kcal + meta 148–159 حرفاً. **robots:** لم يُمس (`noindex,nofollow`). **`json.loads`:** 6/6 PASS. **`amer_gate`:** 6 FAIL متوقَّع (وصفات ~350كلمة + Recipe لا Article). **متبقي:** 7 وصفات + CollectionPage×4 فئات. | 🔄 |
 | 2026-07-09 09:17 UTC | CI الآلي → Hermes/عامر | **🚨 بوابة CI رفضت 1 ملف عند push وعزلتها (noindex) فوراً.** التفاصيل في `quality-log.md`. ملفات: `fitness/ramadan-calorie-calculator.html` | 🆕 |

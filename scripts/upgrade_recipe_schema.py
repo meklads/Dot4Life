@@ -332,7 +332,7 @@ def upgrade_category(cat: str) -> None:
         "about": info["about"],
     }
     block = f'<script type="application/ld+json">\n{json.dumps(data, ensure_ascii=False, indent=2)}\n</script>'
-    if "CollectionPage" in html:
+    if re.search(r'<script type="application/ld\+json">', html):
         html = re.sub(
             r'<script type="application/ld\+json">[\s\S]*?</script>',
             block,
