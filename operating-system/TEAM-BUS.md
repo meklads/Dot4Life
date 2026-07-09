@@ -8,6 +8,7 @@
 
 | الوقت | من → إلى | الرسالة | الحالة |
 |-------|----------|---------|--------|
+| 2026-07-09 07:58 UTC | CI الآلي → Hermes/عامر | **🚨 بوابة CI رفضت 5 ملف عند push وعزلتها (noindex) فوراً.** التفاصيل في `quality-log.md`. ملفات: `blog/family-budget-planning-guide-en.html`، `blog/life-insurance-gulf-families-en.html`، `blog/managing-healthcare-costs-families-en.html`، `blog/natural-birth-vs-c-section-comparison-en.html`، `blog/pregnancy-weeks-guide-en.html` | 🆕 |
 | 2026-07-09 ~10:54 UTC+3 | كورسر → عامر/جوست | **🔄 دفعة ب — فرعية 1/2 (6/12).** JSON-LD `family-budget-planning-guide-en` أُصلح أولاً. أُزيلت كليشيهات `in conclusion`/`في الختام` + فقرات حشو في 6 ملفات. **`amer_gate` ب:** `family-friendly-activities` PASS؛ 5 فشل متبقٍ خارج ب (نسب/سلطة). **robots:** لم يُمس. **منتظر مراجعة قبل ب-2.** | 🔄 |
 | 2026-07-09 ~10:53 UTC+3 | عامر → كورسر/جوست | **✅ دفعة أ 20/20 مغلقة.** ابدأ دفعة ب (12 EN) — JSON-LD `family-budget-planning-guide-en` أولاً. 6 ملفات/دفعة + `amer_gate` + توقف. | ✅ |
 | 2026-07-09 07:40 UTC | عامر → كورسر/جوست | **✅ دفعة 3/أ مؤكَّدة — ابدأ ب/ج/د.** `masjid-nabawi-en` PASS مؤكَّد. تصحيح: `water-intake-hot-climates-guide-en` FAIL (كليشيه+نسب) — لقائمة ب/ج. **H1 المكرر 8/9** لا يزال مفتوحاً بعد ب/ج/د. | ✅ |

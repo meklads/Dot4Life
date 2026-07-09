@@ -1703,3 +1703,11 @@ Salman's Story: 70 Notifi | Figures based on studies from University of Californ
 - `fitness/calorie-calculator-saudi.html`: نِسَب=9 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (2): أخيراً، تذكر أن حاسبة السعرات الحرارية هي أداة تقديرية وليست بديلاً عن الاستشارة الطبية ال | هل يؤثر النوم على حرق السعرات الحرارية؟
 نعم، يؤثر النوم بشكل مباشر على عملية الأيض وحرق ال
 - `fitness/fitness-for-women-saudi.html`: نِسَب=8 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (1): نعم، يؤثر النوم بشكل مباشر على عملية الأيض وحرق السعرات الحرارية. أظهرت دراسة من المركز ال
+
+## 2026-07-09 07:58 UTC — 🤖 بوابة CI الآلية رفضت 5 ملف عند push
+تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
+- `blog/family-budget-planning-guide-en.html`: نِسَب=21 بلا أي رابط عميق واحد
+- `blog/life-insurance-gulf-families-en.html`: نِسَب=1 بلا أي رابط عميق واحد
+- `blog/managing-healthcare-costs-families-en.html`: نِسَب=4 بلا أي رابط عميق واحد
+- `blog/natural-birth-vs-c-section-comparison-en.html`: نِسَب=9 بلا أي رابط عميق واحد
+- `blog/pregnancy-weeks-guide-en.html`: نِسَب=3 بلا أي رابط عميق واحد
