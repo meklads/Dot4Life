@@ -1734,3 +1734,7 @@ Salman's Story: 70 Notifi | Figures based on studies from University of Californ
 - `blog/life-insurance-gulf-families-en.html`: نِسَب=1 بلا أي رابط عميق واحد
 - `blog/zakat-guide-2025-en.html`: Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema
 - `islamic-hajj-umrah/hajj-first-timers-guide-en.html`: شرطات طويلة=1
+
+## 2026-07-09 08:38 UTC — 🤖 بوابة CI الآلية رفضت 1 ملف عند push
+تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
+- `peace-capsules/art-of-sincere-apology-marriage-en.html`: ادّعاء سلطة بلا رابط مجاور (2): Islamic tradition is even more direct: restraint in conflict, refusal to retaliate, and re | Words alone wear thin if the same mistake repeats. A sincere apology includes changed beha
