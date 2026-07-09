@@ -104,6 +104,29 @@ def count_pattern(text: str, pattern: str) -> int:
     return len(re.findall(pattern, text, flags=re.IGNORECASE))
 
 
+def get_robots_meta(html: str) -> str | None:
+    """
+    Return the exact robots content (e.g. 'noindex,nofollow') if present.
+    Do not normalize; we want to detect any change.
+    """
+    m = re.search(
+        r'<meta\s+name=["\']robots["\']\s+content=["\']([^"\']+)["\']\s*/?>',
+        html,
+        flags=re.IGNORECASE,
+    )
+    return m.group(1) if m else None
+
+
+def assert_robots_unchanged(before: str, after: str, rel: str) -> None:
+    b = get_robots_meta(before)
+    a = get_robots_meta(after)
+    if b != a:
+        raise RuntimeError(
+            f'{rel}: robots changed (before={b!r}, after={a!r}). '
+            "This batch forbids robots edits."
+        )
+
+
 def remove_dfl_footer(html: str) -> str:
     html = re.sub(
         r"<!--\s*DFL CANONICAL FOOTER\s*-->[\s\S]*?<footer\s+id=[\"']dfl-footer[\"'][\s\S]*?</footer>",
@@ -317,6 +340,7 @@ def validate(path: Path, html: str) -> list[str]:
 def process_file(rel: str) -> str:
     path = ROOT / rel
     html = path.read_text(encoding="utf-8")
+    original_html = html
     action = "unchanged"
 
     if rel in REBUILD:
@@ -337,6 +361,7 @@ def process_file(rel: str) -> str:
     if issues:
         raise RuntimeError(f"{rel}: validation failed — {', '.join(issues)}")
 
+    assert_robots_unchanged(original_html, html, rel)
     path.write_text(html, encoding="utf-8")
     return action
 
