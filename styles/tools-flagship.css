@@ -1509,3 +1509,111 @@ body.tool-flagship-page .dfl-mnav-item svg {
 [data-theme="dark"] body.tool-flagship-page .dfl-mobile-nav {
   background: #032a28;
 }
+
+/* ── Related tools sidebar (beside calculator) ─────────────── */
+.tool-calc-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 220px;
+  gap: var(--tool-space);
+  align-items: start;
+  margin-bottom: var(--tool-space);
+}
+
+[dir="rtl"] .tool-calc-layout {
+  grid-template-columns: 220px minmax(0, 1fr);
+}
+
+.tool-calc-layout > .tool-workspace {
+  margin-bottom: 0;
+}
+
+.tool-related-aside {
+  position: sticky;
+  top: calc(var(--tool-nav-h, 120px) + 12px);
+}
+
+.tool-related-module {
+  background: #FFFFFF;
+  border: 1px solid var(--tool-border);
+  border-radius: 14px;
+  padding: 1rem 1.1rem;
+}
+
+.tool-related-h {
+  margin: 0 0 .75rem;
+  font-size: .72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: var(--tool-muted);
+  line-height: 1.4;
+}
+
+.tool-related-links {
+  display: flex;
+  flex-direction: column;
+  gap: .15rem;
+}
+
+.tool-related-link {
+  display: block;
+  padding: .45rem .5rem;
+  margin: 0 -.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: .82rem;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--tool-ink);
+  transition: background .2s ease, color .2s ease;
+}
+
+.tool-related-link:hover {
+  background: var(--tool-teal-light, #E8F6F5);
+  color: var(--tool-teal-dark, #1E8C86);
+}
+
+.tool-related-all {
+  display: block;
+  margin-top: .85rem;
+  padding-top: .75rem;
+  border-top: 1px solid var(--tool-border);
+  font-size: .75rem;
+  font-weight: 600;
+  color: var(--tool-teal-dark, #1E8C86);
+  text-decoration: none;
+}
+
+.tool-related-all:hover {
+  color: var(--tool-teal, #2BA8A2);
+}
+
+@media (max-width: 980px) {
+  .tool-calc-layout {
+    grid-template-columns: 1fr;
+  }
+
+  [dir="rtl"] .tool-calc-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .tool-related-aside {
+    position: static;
+    order: 3;
+  }
+}
+
+[data-theme="dark"] .tool-related-module {
+  background: #162032;
+  border-color: rgba(255, 255, 255, .08);
+}
+
+[data-theme="dark"] .tool-related-link:hover {
+  background: #1a3835;
+  color: #7DD3C0;
+}
+
+[data-theme="dark"] .tool-related-all {
+  color: #7DD3C0;
+}
+
