@@ -2028,3 +2028,28 @@ Salman's Story: 70 Notifi | Figures based on studies from University of Californ
 **القرار: لا اعتماد LIVE جديد. لا انتكاسة. أمر جديد لكورسر: أضف Article/SoftwareApplication+FAQPage JSON-LD للستة أدوات بلا schema (`hijri-converter`، `one-rep-max`، `pregnancy-calculator`، `qibla`، `ramadan-calorie-calculator`، `zakat-calculator`). تصعيد متجدد: `gsystem_autopilot.py` عاجز عن إكمال تشغيلة (Timeout مؤكَّد)، و`deepen_gate` راكد على 77 — كلاهما يستحق قراراً هندسياً/تخصيص وقت صريح من جوست، لا مجرد رصد متكرر.**
 
 — عامر
+
+## 2026-07-09 15:49 UTC — 🤖 بوابة CI الآلية رفضت 22 ملف عند push
+تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
+- `blog/ashura-family-traditions-gulf.html`: اقتباس ديني مباشر (1): داخل JSON-LD schema
+- `blog/building-personal-savings-system-en.html`: نِسَب=12 بلا أي رابط عميق واحد
+- `blog/children-education-savings-guide-en.html`: نِسَب=16 بلا أي رابط عميق واحد
+- `blog/choosing-right-school-child-gulf-en.html`: نِسَب=2 بلا أي رابط عميق واحد
+- `blog/daily-islamic-habits-guide.html`: Article schema مفقود · محتوى حسّاس بلا إخلاء مسؤولية · فقرات لاتينية في صفحة عربية=1 · اقتباس ديني مباشر (9): قال النبي | صلى الله عليه وسلم | قال الله تعالى
+- `blog/family-budget-planning-guide-en.html`: نِسَب=21 بلا أي رابط عميق واحد
+- `blog/family-travel-planning-without-overspending.html`: نِسَب=15 بلا أي رابط عميق واحد
+- `blog/life-insurance-gulf-families-en.html`: نِسَب=1 بلا أي رابط عميق واحد
+- `blog/managing-healthcare-costs-families-en.html`: نِسَب=4 بلا أي رابط عميق واحد
+- `blog/masjid-nabawi-complete-guide.html`: اقتباس ديني مباشر (8): صلى الله عليه وسلم | قال النبي | رضي الله عن
+- `blog/natural-birth-vs-c-section-comparison-en.html`: نِسَب=9 بلا أي رابط عميق واحد
+- `blog/organize-life-daily-systems-en.html`: نِسَب=1 بلا أي رابط عميق واحد
+- `blog/pregnancy-weeks-guide-en.html`: نِسَب=3 بلا أي رابط عميق واحد
+- `blog/salalah-travel-guide-2025-en.html`: Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · كليشيهات AI: in conclusion · نِسَب=3 بلا أي رابط عميق واحد
+- `blog/screen-free-summer-activities-kids.html`: اقتباس ديني مباشر (1): صلى الله عليه وسلم
+- `blog/umrah-with-kids-guide.html`: Article schema مفقود
+- `featured-stories/featured-story-saudi-mother.html`: Article schema مفقود
+- `fitness/ramadan-calorie-calculator.html`: نِسَب=21 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (3): السحور المثالي يجب أن يحتوي على: كربوهيدرات معقدة مثل الشوفان أو خبز القمح الكامل (تمد بال | نعم، يمكن إنقاص الوزن في رمضان بطريقة صحية بشرط اتباع نظام غذائي متوازن. للحصول على أفضل ا | نعم، يؤثر النوم بشكل مباشر على عملية الأيض وحرق السعرات الحرارية. أظهرت دراسة من المركز ال
+- `islamic-hajj-umrah/hajj-first-timers-guide-en.html`: شرطات طويلة=1
+- `islamic-hajj-umrah/hijri-new-year-children.html`: اقتباس ديني مباشر (9): صلى الله عليه وسلم | رضي الله عن | قال النبي
+- `real-estate/dubai-property-roi.html`: كلمات=176 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية
+- `real-estate/home-as-sanctuary-family-wellbeing-en.html`: اقتباس ديني مباشر (1): Prophet Muhammad peace be upon him said
