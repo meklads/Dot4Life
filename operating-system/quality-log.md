@@ -1728,3 +1728,9 @@ Salman's Story: 70 Notifi | Figures based on studies from University of Californ
 - `blog/daily-walking-benefits.html`: فقرات لاتينية في صفحة عربية=1
 - `blog/stress-management-working-parents-en.html`: FAQPage مكرّرة (2 كتلة)
 - `blog/zakat-guide-2025-en.html`: Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema
+
+## 2026-07-09 08:30 UTC — 🤖 بوابة CI الآلية رفضت 3 ملف عند push
+تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
+- `blog/life-insurance-gulf-families-en.html`: نِسَب=1 بلا أي رابط عميق واحد
+- `blog/zakat-guide-2025-en.html`: Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema
+- `islamic-hajj-umrah/hajj-first-timers-guide-en.html`: شرطات طويلة=1
