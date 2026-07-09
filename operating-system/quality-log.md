@@ -1763,3 +1763,17 @@ Salman's Story: 70 Notifi | Figures based on studies from University of Californ
 - `blog/teaching-children-financial-literacy-en.html`: نِسَب=11 بلا أي رابط عميق واحد
 - `islamic-hajj-umrah/daily-adhkar-family-guide.html`: نِسَب=3 بلا أي رابط عميق واحد
 - `islamic-hajj-umrah/teaching-children-allah-names.html`: نِسَب=1 بلا أي رابط عميق واحد
+
+## 2026-07-09 09:12 UTC — 🚨 انتكاسة LIVE مؤكَّدة (fitness×2) أُعيد الاحتواء + صفر تقدّم على H1/لغة مختلطة
+
+**فحص مستقل مباشر** (`amer_gate.py` فعلي + `grep`/قراءة يدوية للنص، لا اعتماد على تقارير سابقة):
+
+**(1) 🚨 انتكاسة حقيقية:** `fitness/calorie-calculator-saudi.html` و`fitness/fitness-for-women-saudi.html` — كانا أُعيد احتواؤهما (`noindex,nofollow`) يدوياً في دورة 06:13 UTC بسبب FAIL صريح، لكن وُجدا هذه الدورة **`index,follow` مجدداً** (على الأرجح فُقد التعديل بسبب قفل git وقتها + تعديل لاحق من كورسر (`b4a963f2`) أعاد كتابة الملف من نسخة لم تتضمن noindex). فحص `amer_gate.py` يُظهر تحسّناً حقيقياً (Article+FAQPage schema أُضيفا، WARN بدل FAIL) لكن **مراجعتي اليدوية للنِسَب المتبقية (8-9 نسبة، رابطان-3 روابط عميقة فقط) كشفت ادّعاءً بمصدر مؤسَّسي محدَّد بلا رابط تحقّق** ("المركز الوطني لأبحاث النوم في المملكة العربية السعودية" نسبة 5-10%/15-20%) — يشبه نمط الاقتباسات المختلَقة السابق. **كما اكتشفت عيب لغة مختلطة جديداً** في `fitness-for-women-saudi.html`: عبارة إنجليزية "According to WHO," مُقحَمة في منتصف فقرة عربية (FAQ). **أعدت `noindex,nofollow` للملفين فوراً هذه الدورة (سطر واحد لكل، بلا لمس محتوى).** هذه ثاني مرة يتكرر فيها هذا الانتكاس على نفس الملفين — يستحق فحصاً هندسياً لسبب فقدان تعديلات noindex غير المُلتزَمة (git) عند تعارضها مع سكربتات كورسر اللاحقة.
+
+**(2) صفر تقدّم:** أمر H1 المكرر (00:10 UTC) لا يزال **11 ملف** h1_count=2 (تحديث العدّ الدقيق هذه الدورة: أضيف `real-estate/property-roi-comparison-saudi-uae.html`(ع) لم يُذكر صراحة سابقاً) — الاستثناءان السليمان: `saudi-vs-uae-family-en.html`، `art-of-apologizing-en.html`. **عطلا اللغة المختلطة/البيانات المسرَّبة (07:34 UTC) لم يُصلَحا أيضاً:** `comparisons/saudi-vs-uae-family.html` سطر 131 لا تزال "البريمiums"؛ `featured-stories/family-six-3000-riyals.html` سطر 172 و`-en.html` سطر 184 لا يزال `<p>tag: ...</p>` بيانات وصفية مسرَّبة كفقرة مرئية.
+
+**(3) دفعة ب/ج/د:** `featured-story-saudi-mother`+`salalah-travel-guide-2025-en` لا تزالان FAIL صريحاً (Article/FAQPage schema مفقود + كليشيه AI بـsalalah)، noindex سليم، صفر تغيير.
+
+**فحوصات روتينية:** `amer_freeze_watch`=نظيف · `structural_audit`(بعد إعادة تثبيت `html5lib`، فُقدت مجدداً بين الجلسات كالعادة)=293/0 مكسور · `deepen_gate`={"deepen_count":77,"allowed":false} **راكد تماماً منذ عدة دورات** (الهدف ≤25) · `handoff_sync`={"cards":25} ثابت · `gsystem_autopilot`(بلا push)=exit0 نظيف بلا مخرجات. **الصور:** لا صور Higgsfield جديدة هذه الدورة — صورتا `pending-review/` (raw) مؤكَّدتان مكرَّرتان لصور معتمدة فعلياً في `approved/` (`hero-property-roi-comparison.webp`, `hero-umrah-off-peak.webp`)، لا عمل مطلوب. **20 slug بلا صورة معتمدة** (من `list-image-pending.py`، دفعة المدونة triage) تبقى backlog معروف، مؤجَّل لدورة مخصَّصة (لم يُلمس، يتّسق مع قرار الدورات السابقة بتفضيل إغلاق DEEPEN/H1/لغة أولاً). git: لا أقفال هذه الدورة، `fetch`+`pull` نظيفان (HEAD=`c9a8da86`، متطابق مع `origin/main`)، محاولة push best-effort آخر الدورة.
+
+**لا اعتماد LIVE جديد. تغيّر noindex هذه الدورة: أُضيف (احتواء) لملفين (fitness×2) فقط — لا رفع noindex عن أي ملف.**

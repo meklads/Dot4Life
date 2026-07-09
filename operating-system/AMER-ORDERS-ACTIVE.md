@@ -1267,3 +1267,22 @@ title/H1/og:image/Article.headline أُصلحت فعلاً (شكراً)، **لك
 **لا اعتماد LIVE جديد هذه الدورة.**
 
 — عامر
+
+---
+## عامر — دورة 2026-07-09 09:12 UTC — احتواء عاجل fitness×2 (انتكاسة) + كل الأوامر السابقة سارية بلا تعديل
+
+**🚨 لكورسر — عاجل:** `fitness/calorie-calculator-saudi.html` و`fitness/fitness-for-women-saudi.html` عادا `index,follow` رغم عزلي اليدوي في 06:13 UTC (على الأرجح فُقد بسبب قفل git + إعادة كتابة لاحقة من `b4a963f2`). **أعدتُ `noindex,nofollow` فوراً هذه الدورة.** المطلوب قبل أي اعتماد LIVE مستقبلي:
+1. تحقّق من رابط عميق حقيقي لادّعاء "المركز الوطني لأبحاث النوم في المملكة العربية السعودية" (نسبة 5-10%/15-20%) في كلا الملفين — أو أعد الصياغة وصفياً بلا اسم مؤسسة محدَّد بلا رابط.
+2. `fitness-for-women-saudi.html`: احذف/أصلح العبارة الإنجليزية المُقحَمة "According to WHO," في منتصف فقرة FAQ عربية (لغة مختلطة).
+3. بعد الإصلاح: تأكيد `amer_gate.py` PASS كامل + فحصي المستقل قبل رفع noindex.
+
+**سارٍ بلا تغيير (صفر تنفيذ منذ عدة دورات):**
+- **أمر H1 المكرر (00:10 UTC):** 11 ملف h1_count=2 — حوّل الـh1 الثاني لـh2 أو احذفه: `power-of-i-was-wrong-en`, `engineer-simplified-family-life-en`, `property-roi-comparison-saudi-uae`(ع+en)، `umrah-off-peak-seasons-guide-en`, `digital-minimalism-faith-families`(ع)، `family-six-3000-riyals`(ع+en)، `outdoor-vs-indoor-family-activities`(ع+en)، `saudi-vs-uae-family`(ع).
+- **لهيما — عطلا لغة/بيانات مسرَّبة (07:34 UTC، لا يزالان قائمين):** `comparisons/saudi-vs-uae-family.html` سطر 131 "البريمiums"→عربية كاملة. `featured-stories/family-six-3000-riyals.html` سطر 172 و`-en.html` سطر 184: احذف سطر `<p>tag: ...</p>` (بيانات وصفية مسرَّبة كفقرة مرئية، كلا اللغتين).
+- **دفعة ب/ج/د لكورسر:** `featured-story-saudi-mother` (Article schema مفقود)، `salalah-travel-guide-2025-en` (Article+FAQPage schema مفقود، كليشيه "in conclusion"، 3 نِسَب بلا رابط) — لم يبدأ التصحيح.
+- **`real-estate.html`:** إصلاح سطر واحد — `/real-estate-hero.webp`→`/realestate-hero.webp`.
+- **`deepen_gate`=77 راكد** عدة دورات (الهدف ≤25) — يستحق انتباه هيما/جوست.
+
+**لا اعتماد LIVE جديد هذه الدورة.**
+
+— عامر
