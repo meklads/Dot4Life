@@ -1756,3 +1756,10 @@ Salman's Story: 70 Notifi | Figures based on studies from University of Californ
 ## 2026-07-09 08:38 UTC — 🤖 بوابة CI الآلية رفضت 1 ملف عند push
 تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
 - `peace-capsules/art-of-sincere-apology-marriage-en.html`: ادّعاء سلطة بلا رابط مجاور (2): Islamic tradition is even more direct: restraint in conflict, refusal to retaliate, and re | Words alone wear thin if the same mistake repeats. A sincere apology includes changed beha
+
+## 2026-07-09 08:54 UTC — 🤖 بوابة CI الآلية رفضت 4 ملف عند push
+تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
+- `blog/family-travel-planning-without-overspending-en.html`: نِسَب=14 بلا أي رابط عميق واحد
+- `blog/teaching-children-financial-literacy-en.html`: نِسَب=11 بلا أي رابط عميق واحد
+- `islamic-hajj-umrah/daily-adhkar-family-guide.html`: نِسَب=3 بلا أي رابط عميق واحد
+- `islamic-hajj-umrah/teaching-children-allah-names.html`: نِسَب=1 بلا أي رابط عميق واحد
