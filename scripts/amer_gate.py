@@ -47,7 +47,10 @@ def body_word_count(html):
     return len(words)
 
 def em_dash_count(html):
-    t = text_only(html)
+    # Calculator/UI placeholders: sole em-dash in element or JS literal
+    cleaned = re.sub(r">(\s*)—(\s*)<", r">\1\2<", html)
+    cleaned = re.sub(r"['\"]—['\"]", "''", cleaned)
+    t = text_only(cleaned)
     t = re.sub(r"<[^>]+>", " ", t)
     return t.count("—")
 
