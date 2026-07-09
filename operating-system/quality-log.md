@@ -2164,3 +2164,7 @@ Salman's Story: 70 Notifi | Figures based on studies from University of Californ
 **القرار: لا اعتماد LIVE جديد. لا انتكاسة. تقدّمان مؤكَّدان هذه الدورة: (أ) إصلاح سايدبار BMI/أخواتها يُغلَق نهائياً، (ب) تصحيح جوهري لعدّاد DEEPEN من 77 وهمي إلى 48 حقيقي — يستحق قرار جوست صريح بشأن ما إذا كان 48 (دون عتبة الـ50) يكفي لفتح A-09 جزئياً، أو الانتظار حتى يصفر تماماً.**
 
 — عامر
+
+## 2026-07-09 21:25 UTC — 🤖 بوابة CI الآلية رفضت 1 ملف عند push
+تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
+- `blog/saudi-mortgage-guide.html`: كلمات=15 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema
