@@ -95,6 +95,8 @@ HAMBURGER = """<button class="hamburger" id="hamburger-btn" aria-label="Menu" ar
 
 def site_header() -> str:
     raw = (PARTIALS / "header.html").read_text(encoding="utf-8").strip()
+    if "hamburger-btn" in raw:
+        return raw
     return raw.replace(
         "</button></div></div></nav>",
         f"</button>{HAMBURGER}</div></div></nav>",
