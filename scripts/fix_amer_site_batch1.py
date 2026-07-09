@@ -71,6 +71,39 @@ BATCH2 = [
     ("tools/roi-calculator.html", "finance"),
 ]
 
+DISCLAIMER_AR_STD = (
+    '<div class="tip"><p><strong>إخلاء مسؤولية:</strong> معلومات عامة فقط وليست استشارة '
+    "طبية أو مالية أو فتوى شرعية. راجع مختصاً مرخصاً عند الحاجة.</p></div>\n"
+)
+DISCLAIMER_AR_FAMILY = (
+    '<div class="tip"><p><strong>إخلاء مسؤولية:</strong> هذه قصة شخصية وتوجيه عام للعائلات '
+    "وليست استشارة نفسية أو تربوية أو مهنية. راجعي مختصاً مرخصاً عند الحاجة.</p></div>\n"
+)
+DISCLAIMER_EN_STD = (
+    '<div class="tip"><p><strong>Disclaimer:</strong> General information only, not medical, '
+    "financial, or religious advice. Consult a licensed professional when needed.</p></div>\n"
+)
+DISCLAIMER_EN_TRAVEL = (
+    '<div class="tip"><p><strong>Disclaimer:</strong> Travel information for general education '
+    "only; verify permits, prices, and schedules with official sources before you book.</p></div>\n"
+)
+DISCLAIMER_EN_ISLAMIC_GUIDE = (
+    '<div class="tip"><p><strong>Disclaimer:</strong> This guide is general travel and historical '
+    "information for education only; it is not a religious ruling (fatwa). For worship, permits, "
+    "and spiritual matters, follow official Saudi sources and qualified scholars.</p></div>\n"
+)
+
+BATCH3 = [
+    ("tools/savings-goal.html", "finance", "main"),
+    ("featured-stories/featured-story-saudi-mother.html", "family_ar", "article"),
+    ("fitness/calorie-calculator-saudi.html", "health_ar", "article"),
+    ("fitness/fitness-for-women-saudi.html", "health_ar", "article"),
+    ("blog/masjid-nabawi-complete-guide-en.html", "islamic_en", "article"),
+    ("blog/salalah-travel-guide-2025-en.html", "travel_en", "article"),
+    ("blog/water-intake-hot-climates-guide.html", "health_ar", "article"),
+    ("real-estate/oman-property-roi.html", "finance_en", "article"),
+]
+
 BATCHES = {"1": BATCH1, "2": BATCH2}
 
 
@@ -80,25 +113,84 @@ def has_disclaimer(html: str) -> bool:
     )
 
 
-def fix_file(rel: str, category: str) -> None:
+def disclaimer_block(category: str) -> str:
+    return {
+        "health": DISCLAIMERS["health"],
+        "finance": DISCLAIMERS["finance"],
+        "islamic": DISCLAIMERS["islamic"],
+        "security": DISCLAIMERS["security"],
+        "general": DISCLAIMERS["general"],
+        "health_ar": DISCLAIMER_AR_STD,
+        "finance_ar": DISCLAIMER_AR_STD,
+        "family_ar": DISCLAIMER_AR_FAMILY,
+        "islamic_en": DISCLAIMER_EN_ISLAMIC_GUIDE,
+        "travel_en": DISCLAIMER_EN_TRAVEL,
+        "finance_en": (
+            '<div class="tip"><p><strong>Disclaimer:</strong> Real-estate figures are general '
+            "estimates for education only; not financial, tax, or legal advice. Consult licensed "
+            "advisors and official Oman property regulators before investing.</p></div>\n"
+        ),
+    }[category]
+
+
+def patch_masjid_en(html: str) -> str:
+    gph = (
+        '<a href="https://www.gph.gov.sa/en/Pages/default.aspx" target="_blank" '
+        'rel="noopener">General Presidency for the Affairs of the Two Holy Mosques</a>'
+    )
+    haj = (
+        '<a href="https://www.haj.gov.sa/en/About/TheTwoHolyMosques" target="_blank" '
+        'rel="noopener">Ministry of Hajj and Umrah</a>'
+    )
+    html = html.replace(
+        "Today, Masjid an-Nabawi covers approximately 400,500 square meters and can "
+        "accommodate over 1.6 million worshippers during peak times.",
+        "Today, Masjid an-Nabawi covers approximately 400,500 square meters and can "
+        f"accommodate over 1.6 million worshippers during peak times (capacity figures "
+        f"published by the {haj} and {gph}).",
+    )
+    html = html.replace(
+        "increased its capacity to over 1.6 million worshippers.",
+        f"increased its capacity to over 1.6 million worshippers (per {gph} expansion data).",
+    )
+    html = html.replace(
+        "The Rawdah covers approximately 330 square meters and is distinguished",
+        f"The Rawdah covers approximately 330 square meters (per {haj} visitor guides) and is distinguished",
+    )
+    return html
+
+
+def insert_disclaimer(html: str, category: str, target: str) -> str:
+    if has_disclaimer(html):
+        return html
+    block = disclaimer_block(category)
+    close = "</main>" if target == "main" else "</article>"
+    if close not in html:
+        raise SystemExit(f"missing {close}")
+    return html.replace(close, block + close, 1)
+
+
+def fix_file(rel: str, category: str, target: str = "main") -> None:
     path = ROOT / rel
     html = path.read_text(encoding="utf-8")
-    if not has_disclaimer(html):
-        block = DISCLAIMERS[category]
-        if "</main>" not in html:
-            raise SystemExit(f"no </main> in {rel}")
-        html = html.replace("</main>", block + "</main>", 1)
+    html = insert_disclaimer(html, category, target)
     html = html.replace("—", " - ")
+    if rel == "blog/masjid-nabawi-complete-guide-en.html":
+        html = patch_masjid_en(html)
     path.write_text(html, encoding="utf-8")
     print(f"fixed {rel}")
 
 
 def run_batch(batch_id: str) -> None:
+    if batch_id == "3":
+        for rel, cat, target in BATCH3:
+            fix_file(rel, cat, target)
+        return
     files = BATCHES.get(batch_id)
     if not files:
         raise SystemExit(f"unknown batch {batch_id!r}")
     for rel, cat in files:
-        fix_file(rel, cat)
+        fix_file(rel, cat, "main")
 
 
 def main() -> None:
