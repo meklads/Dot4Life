@@ -16,7 +16,8 @@ RECIPE_HEAD_ASSETS = """<link rel="preconnect" href="https://fonts.googleapis.co
 <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="/styles/global.css?v=20260624t"/>
 <link rel="stylesheet" href="/styles/home.css?v=20260624g"/>
-<link rel="stylesheet" href="/styles/pages/recipes.css?v=20260709h"/>"""
+<link rel="stylesheet" href="/styles/pages/articles.css?v=20260608u"/>
+<link rel="stylesheet" href="/styles/pages/recipes.css?v=20260709i"/>"""
 
 MOBILE_DROPDOWN = """<div class="mobile-dropdown" id="mobile-dropdown" aria-hidden="true">
   <div class="md-links">

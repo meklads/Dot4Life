@@ -144,40 +144,59 @@ def list_block(recipe: dict, field: str) -> str:
     return f'<div class="rcp-lang-block"><span class="en"><ul>{en}</ul></span><span class="ar"><ul>{ar}</ul></span></div>'
 
 
-def related_cards(recipe: dict) -> str:
-    rows = []
-    for slug in recipe.get("related", []):
-        rel = RECIPES_BY_SLUG.get(slug)
-        if not rel:
-            continue
-        img = f"/assets/images/recipes/hero-{slug}.webp"
-        rows.append(
-            f"""        <a href="/library/recipes/{slug}.html" class="rcp-bb-recipe-more-card">
-          <div class="rcp-bb-recipe-more-img"><img src="{img}" alt="" width="400" height="300" loading="lazy"/></div>
-          <span class="rcp-bb-recipe-more-title"><span class="en">{clean(rel['title']['en'])}</span><span class="ar">{clean(rel['title']['ar'])}</span></span>
-        </a>"""
-        )
-    return "\n".join(rows)
+def category_peers(recipe: dict, limit: int = 3) -> list[dict]:
+    cat = recipe["category"]
+    slug = recipe["slug"]
+    peers = [r for r in DATA["recipes"] if r["category"] == cat and r["slug"] != slug]
+    ordered: list[dict] = []
+    for s in recipe.get("related", []):
+        for p in peers:
+            if p["slug"] == s and p not in ordered:
+                ordered.append(p)
+    for p in peers:
+        if p not in ordered:
+            ordered.append(p)
+    return ordered[:limit]
 
 
-def related_footer(recipe: dict) -> str:
-    cards = related_cards(recipe)
-    if not cards:
-        return ""
+def build_sidebar(recipe: dict) -> str:
     tool_href = recipe["relatedArticle"]
-    tool_en = recipe["relatedArticleLabel"]["en"]
-    tool_ar = recipe["relatedArticleLabel"]["ar"]
-    return f"""
-  <section class="rcp-bb-recipe-more" aria-labelledby="rcp-more-heading">
-    <h2 id="rcp-more-heading" class="rcp-bb-recipe-more-heading"><span class="en">You may also like</span><span class="ar">قد يعجبك أيضاً</span></h2>
-    <div class="rcp-bb-recipe-more-grid">
-{cards}
-    </div>
-    <p class="rcp-bb-recipe-tool">
-      <span class="en">Related tool:</span><span class="ar">أداة مرتبطة:</span>
-      <a href="{tool_href}"><span class="en">{tool_en}</span><span class="ar">{tool_ar}</span></a>
-    </p>
-  </section>"""
+    tool_en = clean(recipe["relatedArticleLabel"]["en"])
+    tool_ar = clean(recipe["relatedArticleLabel"]["ar"])
+
+    related_rows = []
+    for rel in category_peers(recipe):
+        img = f"/assets/images/recipes/hero-{rel['slug']}.webp"
+        title_en = clean(rel["title"]["en"])
+        title_ar = clean(rel["title"]["ar"])
+        related_rows.append(
+            f""" <div class="sidebar-related-item">
+ <img src="{img}" alt="" width="64" height="48" loading="lazy">
+ <div>
+ <div class="related-title"><a href="/library/recipes/{rel['slug']}.html"><span class="en">{title_en}</span><span class="ar">{title_ar}</span></a></div>
+ </div>
+ </div>"""
+        )
+    related_html = "\n".join(related_rows)
+
+    return f"""<aside class="article-sidebar">
+<div class="sidebar-module sidebar-toc">
+ <h4><span class="en">📑 Contents</span><span class="ar">📑 المحتويات</span></h4>
+ <a href="#rcp-ingredients" class="toc-item"><span class="en">Ingredients</span><span class="ar">المكوّنات</span></a>
+ <a href="#rcp-steps" class="toc-item"><span class="en">Steps</span><span class="ar">الخطوات</span></a>
+ <a href="#rcp-tips" class="toc-item"><span class="en">Tips &amp; variations</span><span class="ar">نصائح وتنويعات</span></a>
+</div>
+
+<div class="sidebar-module sidebar-related">
+ <h4><span class="en">Related recipes</span><span class="ar">وصفات ذات صلة</span></h4>
+{related_html}
+</div>
+
+<div class="sidebar-module sidebar-tools">
+ <h4><span class="en">🛠 Tools</span><span class="ar">🛠 أدوات</span></h4>
+ <a href="{tool_href}" class="tool-btn"><span class="en">{tool_en}</span><span class="ar">{tool_ar}</span></a>
+</div>
+</aside>"""
 
 
 def build_page(recipe: dict) -> str:
@@ -214,7 +233,7 @@ def build_page(recipe: dict) -> str:
 
     header_html = site_header()
     footer_html = site_footer()
-    related_html = related_footer(recipe)
+    sidebar_html = build_sidebar(recipe)
 
     return f"""<!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="light" data-lang="en">
@@ -242,7 +261,7 @@ def build_page(recipe: dict) -> str:
 {header_html}
 {MOBILE_DROPDOWN}
 
-<div class="rcp-bb-wrap rcp-bb-recipe-wrap">
+<div class="rcp-bb-wrap rcp-bb-recipe-wrap article-wrap">
   <nav class="rcp-crumb rcp-bb-crumb" aria-label="Breadcrumb">
     <a href="/library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a>
     <span aria-hidden="true">/</span>
@@ -252,6 +271,9 @@ def build_page(recipe: dict) -> str:
     <span aria-hidden="true">/</span>
     <span><span class="en">{title_en}</span><span class="ar">{title_ar}</span></span>
   </nav>
+
+  <div class="article-layout rcp-bb-recipe-layout">
+  <main class="article-main">
 
   <header class="rcp-bb-recipe-header">
     <p class="rcp-bb-recipe-kicker"><span class="en">{cat['title']['en']}</span><span class="ar">{cat['title']['ar']}</span></p>
@@ -269,32 +291,36 @@ def build_page(recipe: dict) -> str:
     <p class="rcp-bb-recipe-benefit"><span class="en">{benefit_en}</span><span class="ar">{benefit_ar}</span></p>
     <p class="rcp-bb-recipe-intro"><span class="en">{intro_en}</span><span class="ar">{intro_ar}</span></p>
     <p class="rcp-bb-jump-row">
-      <a href="#recipe-card" class="rcp-bb-jump-btn"><span class="en">Jump to recipe</span><span class="ar">انتقل إلى الوصفة</span></a>
+      <a href="#rcp-ingredients" class="rcp-bb-jump-btn"><span class="en">Jump to recipe</span><span class="ar">انتقل إلى الوصفة</span></a>
     </p>
   </header>
 
   <figure class="rcp-bb-recipe-hero">
     <img src="{img}" alt="{esc_attr(title_en)}" width="1200" height="675" loading="eager" fetchpriority="high" class="rcp-bb-recipe-hero-img"/>
-    <figcaption class="rcp-bb-recipe-hero-cap"><span class="en">Pin-friendly hero image. Vertical Pinterest crop coming soon.</span><span class="ar">صورة هيرو مناسبة للحفظ. نسخة عمودية لبنترست قريباً.</span></figcaption>
   </figure>
 
-  <article class="rcp-bb-recipe-article" id="recipe-card">
-    <section class="rcp-bb-recipe-block">
+  <article class="rcp-bb-recipe-article article-body" id="recipe-card">
+    <section class="rcp-bb-recipe-block" id="rcp-ingredients">
       <h2><span class="en">Ingredients</span><span class="ar">المكوّنات</span></h2>
       {list_block(recipe, "ingredients")}
     </section>
-    <section class="rcp-bb-recipe-block">
+    <section class="rcp-bb-recipe-block" id="rcp-steps">
       <h2><span class="en">Steps</span><span class="ar">الخطوات</span></h2>
       {list_block(recipe, "steps")}
     </section>
-    <section class="rcp-bb-recipe-block">
+    <section class="rcp-bb-recipe-block" id="rcp-tips">
       <h2><span class="en">Tips &amp; variations</span><span class="ar">نصائح وتنويعات</span></h2>
       {list_block(recipe, "tips")}
     </section>
 {disclaimer}
     <p class="rcp-disclaimer rcp-bb-disclaimer rcp-bb-disclaimer--small"><span class="en">Estimated nutrition and costs are general guides only.</span><span class="ar">التغذية والتكاليف تقديرات إرشادية فقط.</span></p>
   </article>
-{related_html}
+
+  </main>
+
+{sidebar_html}
+
+  </div>
 </div>
 
 {footer_html}

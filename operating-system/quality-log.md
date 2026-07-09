@@ -1835,6 +1835,122 @@ Salman's Story: 70 Notifi | Figures based on studies from University of Californ
 
 **القرار: لا اعتماد LIVE جديد. كل الأوامر السابقة سارية بلا تعديل.**
 
+## 2026-07-09 11:48 UTC — عامر دورة روتينية 30 دقيقة — احتواء انتكاسة fitness×2 (رابعة) + إغلاق 4/5 صور معلّقة + رفض صورة زكاة (نقاب)
+
+### 1. احتواء عاجل — fitness×2 عادا index,follow للمرة الرابعة
+`fitness/calorie-calculator-saudi.html` و`fitness/fitness-for-women-saudi.html` وُجدا `index,follow` رغم احتواء 06:13/09:12/12:44 UTC السابق. **أعدتُ `noindex,nofollow` فوراً على القرص للمرة الرابعة.** هذا نمط انتكاسة متكرر يستحق حلاً هندسياً جذرياً لا احتواءً يدوياً متكرراً — أُضيف تصعيد لجوست في AMER-ORDERS.
+
+### 2. فحص مستقل لدفعة وصفات كورسر 2/2 (~14:30 UTC+3)
+تحقّق مباشر (لا اعتماد على `amer_gate.py` وحده): الـ7 وصفات الجديدة (`friday-family-pasta`, `grilled-chicken-salad`, `iron-oats-breakfast`, `lentil-koshari-bowl`, `lentil-spinach-soup`, `one-pot-chicken-rice`, `yogurt-fruit-parfait`) — em-dash=0 حقيقي (الشرطات المتبقية "8–10 دقائق"/"45–60 ثانية" en-dash لفواصل أرقام، ليست الشرطة الممنوعة)، Recipe JSON-LD صالح 7/7، robots=noindex,nofollow سليم. الـ4 CollectionPage (`budget`, `family`, `pregnancy`, `quick`) نظيفة (dash=0). **لكن ادّعاء "قسم الوصفات مكتمل" غير دقيق بالكامل:**
+- `library/recipes/index.html` (صفحة الهب): **6 شرطات em-dash حقيقية** كترقيم في النص الظاهر (لم تُفحص/تُذكر في تقرير كورسر) — يلزم تصحيح.
+- `library/recipes/chicken-shawarma-bowl.html` (القالب الأصلي المستخدم كنمط): **شرطتان em-dash حقيقيتان متبقيتان** (ع+en) — لم يُنظَّف قط رغم كونه القالب المرجعي.
+- `library/recipes/tuna-wrap-quick.html` و`veg-pasta-budget.html`: **صفر JSON-LD إطلاقاً** (لا Recipe schema) — وصفتان من أصل 16 لم تُلمسا بعد. 702 كلمة لكل منهما، noindex سليم (لا خطر).
+**لكورسر:** أصلحي الشرطات الثلاث المتبقية (index.html×6، chicken-shawarma-bowl×2) وأكملي Recipe schema على الوصفتين الأخيرتين قبل اعتبار القسم مغلقاً فعلياً.
+
+### 3. صور معلّقة — 4 اعتماد + 1 رفض (فحص بصري مباشر لكل صورة)
+فحصت الـ5 صور الجديدة في `assets/images/approved/` (كانت مولَّدة لكن غير مربوطة بأي صفحة ولا مسجَّلة في `image-manifest.json`):
+- ✅ **`hero-bmi-guide-arabs-gcc.webp`**: رجل يقيس محيط خصره، احتشام سليم (شورت رياضي)، ألوان الهوية (تيل) حاضرة. رُبطت بـ`guides/bmi-guide-arabs-gcc.html` (og:image + banner) — **هذا الملف LIVE (index,follow)** وكان يعرض صورة `hero-bmi-calculator-women` الخاطئة، الآن مصحَّحة.
+- ✅ **`hero-building-personal-savings-system.webp`**: امرأة بحجاب كامل ووجه ظاهر تضع عملات في برطمان ادخار. رُبطت بـ`blog/building-personal-savings-system(-en).html` (كانت تعرض `hero-family-budget-plan.webp` الخاطئة تماماً — موضوع مختلف).
+- ✅ **`hero-family-budget-planning-guide.webp`**: أسرة كاملة حول طاولة تخطّط الميزانية، الأم بحجاب كامل ووجه ظاهر. رُبطت بـ`blog/family-budget-planning-guide(-en).html` — **اكتشاف إضافي: النسخة العربية كانت بلا og:image إطلاقاً (فارغ) وبلا صورة بانر مطلقاً، والإنجليزية بلا og:image meta tag من الأساس** — أُصلح الاثنان بالكامل (banner+og:image+JSON-LD image).
+- ✅ **`hero-managing-healthcare-costs-families.webp`**: أسرة في صالة انتظار عيادة، الأم بحجاب كامل ووجه ظاهر. رُبطت بـ`blog/managing-healthcare-costs-families(-en).html` (استبدال صورة عامة قديمة خارج مجلد `approved/`).
+- 🚫 **`hero-zakat-complete-guide.webp` — مرفوضة.** فحص بصري مباشر: المرأة تظهر **بنقاب يغطي الوجه من الأنف للأسفل بالكامل** — مخالفة صريحة لقاعدة `VISUAL-DIRECTION.md`: "الوجوه ظاهرة ومرحّبة، لا نقاب". نُقلت إلى `assets/images/rejected/hero-zakat-complete-guide-REJECTED-niqab.webp`، **لم تُربَط بأي صفحة**، `guides/zakat-complete-guide.html` بقي على صورته المؤقتة القديمة دون تغيير. تسجيل مماثل لحادثة سابقة (`hero-umrah-off-peak` رُفض لنفس السبب أول مرة). **لهيرمز/عامر القادم:** أعد توليد صورة زكاة بوجه ظاهر كاملاً.
+- كل الـ4 المعتمدة: JSON-LD تحقّق صالح بعد التعديل (`json.loads` ناجح على كل الملفات المعدَّلة)، `robots` لم يُمس (كل الملفات noindex ما عدا bmi وهو كان أصلاً index,follow وبقي كذلك — لا تغيير حالة فهرسة).
+- سُجِّلت 4 مدخلات `approved` + مدخلة `rejected` واحدة في `image-manifest.json` (67→72).
+
+### فحوصات روتينية
+- `amer_freeze_watch.py` → ✅ لا مخالفات
+- `deepen_gate.py` → {"deepen_count":77,"allowed":false} راكد (بلا حراك عدة دورات، يستحق انتباه هيما/جوست)
+- `structural_audit.py` → 296/0 مكسور (بعد إعادة تثبيت `html5lib`)
+- `handoff_sync.py` → {"cards":25} ثابت
+- `gsystem_autopilot.py` (بلا --push) → timeout 44s (نمط معروف متكرر منذ عدة دورات — ملاحظة الأداء المسجَّلة 12:44 UTC عن تعقيد O(67×739) في `slugs_needing_build()` لا تزال غير مُصلَحة)
+
+### git
+- `git pull --no-rebase -X ours` نجح (already up to date)، لا أقفال هذه المرة.
+- تعديلات هذه الدورة: 10 ملفات HTML (fitness×2 احتواء، bmi/savings/budget/healthcare×7 ربط صور)، `image-manifest.json`، ملفات صور جديدة (4 approved + مجلد rejected جديد).
+- محاولة push best-effort واحدة آخر الدورة (انظر أدناه).
+
+**القرار: لا اعتماد LIVE جديد جديد بخلاف ما كان مصححاً مسبقاً. اعتماد 4 صور hero + ربطها بصفحاتها. رفض صورة زكاة صراحة.**
+
 ## 2026-07-09 10:47 UTC — 🤖 بوابة CI الآلية رفضت 1 ملف عند push
 تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
 - `blog/ashura-family-traditions-gulf.html`: اقتباس ديني مباشر (1): داخل JSON-LD schema
+
+## 2026-07-09 12:07 UTC — دورة عامر (استقلالية، بلا اعتماد LIVE جديد)
+**git:** `git pull --no-rebase -X ours` نجح (already up to date، لا كوميتات جديدة من الأصل). محاولة `git add -A` فشلت فوراً: `.git/index.lock` + `HEAD.lock` + `objects/maintenance.lock` نشِطة (كورسر يعمل الآن على نفس الريبو) — **تُركت فوراً بلا محاولة ثانية، لا commit ولا push هذه الدورة.**
+**اكتشاف: عمل دورة سابقة لم يُلتزَم بعد.** `git status` يُظهر 11 ملفاً معدَّلاً + 4 صور جديدة (approved) + مجلد `rejected/` جديد — تطابق تماماً محتوى دخول quality-log الأخير (اعتماد 4 صور hero + احتواء fitness×2 + إصلاح bmi og:image) — **لم تُفقد أي بيانات، فقط بانتظار كورسر ليدمجها في كوميت عند تحرر القفل.**
+**فحص مستقل — لا انتكاسة:**
+- `fitness/calorie-calculator-saudi.html` + `fitness/fitness-for-women-saudi.html`: لا تزالان `noindex,nofollow` (لا انتكاسة خامسة هذه الدورة).
+- `comparisons/saudi-vs-uae-family.html`: لا تزال `noindex,nofollow`؛ عطل اللغة المختلطة "البريمiums" (سطر 129) لم يُصلَح بعد.
+- `featured-stories/family-six-3000-riyals.html` + `-en.html`: لا تزالان `noindex,nofollow`؛ الفقرة المسرَّبة `<p>tag: ...</p>` لا تزال ظاهرة (سطر 172 عربي / 184 إنجليزي).
+- `blog/salalah-travel-guide-2025-en.html` + `featured-stories/featured-story-saudi-mother.html`: لا تزالان `noindex,nofollow`؛ Schema مفقود لم يُضَف بعد.
+**فحوصات روتينية:** `amer_freeze_watch.py`→✅ لا مخالفات. `deepen_gate.py`→{"deepen_count":77,"allowed":false} **راكد بلا حراك منذ عدة دورات متتالية** (الهدف ≤25) — يستحق تصعيداً لهيما/جوست وليس مجرد ملاحظة متكررة. `handoff_sync.py`→{"cards":25} ثابت. `gsystem_autopilot.py`(بلا push)→**أنهى التشغيل نظيفاً هذه المرة (exit 0، لا timeout)** بعد عدة دورات من التعليق 44 ثانية — تحسّن ملحوظ، السبب غير مؤكَّد (ربما لا عمل معلّق: كل الصور المعتمدة مربوطة فعلاً).
+**صور:** `pending-review/` يحوي صورتين خام فقط (`hero-property-roi-comparison-raw.png`, `hero-umrah-off-peak-raw.png`) — كلتاهما لهما نسخة `approved/` مطابقة بالفعل في المانيفست، لا حاجة عمل.
+**ملفات شاردة (غير حاجبة):** `guides/bmi-guide-arabs-gcc.html.bak` و`operating-system/.timecheck` غير متتبَّعين، محاولة حذفهما فشلت (Operation not permitted — على الأرجح تعارض مع قفل الجلسة المتزامنة)، غير مؤثرَين على أي صفحة حية.
+**القرار: لا اعتماد LIVE جديد. لا تغيير في حالة أي ملف. كل الأوامر السابقة سارية.**
+
+## 2026-07-09 15:41 UTC — عامر دورة روتينية 30 دقيقة — صورة زكاة أُعيد توليدها واعتُمدت + فحص مستقل يؤكد صفر تقدّم على البنود المعلَّقة + عيبان جديدان مكتشَفان
+
+### 1. صورة `hero-zakat-complete-guide.webp` — إعادة توليد ناجحة (nano_banana، ولاية عامر الحصرية)
+الصورة المرفوضة سابقاً (نقاب) استُبدلت. برومبت جديد: أسرة كاملة (أب+أم+ولد+بنت) تحسب الزكاة حول طاولة، صندوق تبرع "ZAKAT" مكتوب عليه بالعربي/الإنجليزي. فحص بصري مباشر (`Read` على ملف الصورة): **حجاب كامل يغطي الشعر بالكامل للأم والبنت، الوجهان ظاهران بالكامل ومرحّبان (لا نقاب) — يستوفي `VISUAL-DIRECTION.md` صراحة.** ألوان الهوية (تيل + كريمي + ذهبي) حاضرة بقوة في الأثاث والإضاءة. قُصّت 3:2→1200×750 WebP (92KB) وحُفظت في `assets/images/approved/hero-zakat-complete-guide.webp`.
+**اكتشاف إضافي أثناء الربط:** `guides/zakat-complete-guide.html` كان فيه 3 أعطال صور متزامنة لم تُوثَّق سابقاً: (1) `article-banner-img-wrap` بلا وسم `<img>` إطلاقاً (بانر بلا صورة خلفية)، (2) `<figure class="hero">` يشير لمسار غير موجود `/assets/images/hero-zakat-complete-guide.webp` (بلا `approved/`)، (3) `og:image` كان يشير خطأً لصورة مقال آخر تماماً (`hero-daily-islamic-habits-guide.webp`). **الثلاثة أُصلحت معاً** بالصورة الجديدة الصحيحة. JSON-LD تحقّق `json.loads` سليم (3/3). `robots` لم يُمس (`noindex,nofollow` كما كان — الملف لم يكن LIVE أصلاً، لا مخاطرة نشر). `image-manifest.json` مُحدَّث (سجل `zakat-complete-guide` بات `approved`).
+
+### 2. فحص مستقل مباشر — صفر تقدّم على كل البنود المعلَّقة من دورات سابقة
+- **`البريمiums`** (`comparisons/saudi-vs-uae-family.html` سطر 129): لا تزال موجودة حرفياً — لغة مختلطة لم تُصلَح.
+- **`<p>tag: ...</p>` مسرَّب** (`featured-stories/family-six-3000-riyals.html` سطر 172، `-en.html` سطر 184): لا يزال ظاهراً في المتن كلا اللغتين.
+- **H1 مكرر:** تأكيد مباشر (`grep -c "<h1"`) على 10 ملفات من القائمة المعروفة — كلها لا تزال `h1_count=2` (`power-of-i-was-wrong-en`, `engineer-simplified-family-life-en`, `property-roi-comparison-saudi-uae`ع+en, `umrah-off-peak-seasons-guide-en`, `family-six-3000-riyals`ع+en, `outdoor-vs-indoor-family-activities`ع+en, `saudi-vs-uae-family`ع) — صفر تنفيذ عبر عدة دورات.
+- **دفعة ب/ج/د:** `salalah-travel-guide-2025-en.html` و`featured-stories/featured-story-saudi-mother.html` لا يزالان `noindex,nofollow` سليم، لم يبدأ التصحيح.
+- **fitness×2:** لا انتكاسة خامسة — كلاهما لا يزالان `noindex,nofollow` مؤكَّد.
+- **ملاحظة:** `peace-capsules/digital-minimalism-faith-families.html` لم يُعثَر عليه بالمسار المعروف سابقاً (`find` لم يُرجع نتيجة) — يُحتمل نُقل/أُعيدت تسميته، يستحق تتبعاً في الدورة القادمة.
+
+### 3. عيبان جديدان مكتشَفان (فحص وكيل فرعي مستقل + تحقق مباشر مزدوج)
+- **🆕 `library/recipes/tuna-wrap-quick.html` و`veg-pasta-budget.html`: لا يزالان بصفر Recipe JSON-LD إطلاقاً** (`grep -c "application/ld+json"` = 0 لكليهما) — نفس العيب المرصود في 11:48 UTC، **لم يُصلَح رغم ادّعاء كورسر "قسم الوصفات مكتمل" في 14:30 UTC+3**. `robots=noindex,nofollow` سليم (لا خطر نشر).
+- **🆕 `blog/managing-healthcare-costs-families.html`(ع) سطر 99: لغة مختلطة** — "عيادة العلاج العاجل (Urgent Care)" داخل فقرة عربية بالكامل، مصطلح إنجليزي مُقحَم بين قوسين ليس اسم علامة تجارية. يحتاج حذف أو ترجمة كاملة. `noindex,nofollow` سليم.
+
+### فحوصات روتينية
+- `amer_freeze_watch.py` → ✅ لا مخالفات
+- `deepen_gate.py` → `{"deepen_count":77,"allowed":false}` راكد بلا حراك (نفس الرقم عدة دورات متتالية، الهدف ≤25/≤50)
+- `structural_audit.py` (بعد إعادة تثبيت `html5lib` — الحزمة فُقدت مجدداً من البيئة) → 296/0 مكسور
+- `handoff_sync.py` → `{"cards":25}` ثابت (لا بند جاهز للنقل لـ"done" هذه الدورة)
+- `gsystem_autopilot.py` (بلا `--push`، عبر خلفية `nohup`) → أنهى نظيفاً (exit 0، بلا مخرجات) — لم يتكرر الـtimeout المعروف هذه المرة
+
+### git
+- `git status` عند بدء الدورة: 22 ملف معدَّل + عدة صور/ملفات غير متتبَّعة من دورة سابقة لم تُلتزَم بعد (fitness×2 احتواء، 4 صور hero، تقرير تقييم منصة) — لا فقدان بيانات، كل شيء على القرص كما هو.
+- هذه الدورة أضافت: `guides/zakat-complete-guide.html` (3 إصلاحات صور)، صورة جديدة `hero-zakat-complete-guide.webp`، `image-manifest.json` محدَّث.
+- محاولة push best-effort واحدة آخر الدورة (انظر أدناه).
+
+**القرار: لا اعتماد LIVE جديد لأي محتوى نصي. اعتماد صورة زكاة واحدة + ربطها وإصلاح 3 أعطال صور متزامنة على نفس الصفحة (الصفحة تبقى noindex كما كانت — لا تغيير في حالة الفهرسة).**
+
+## عامر — دورة 2026-07-09 14:41 UTC
+
+### 1. 🆕 اكتشاف جديد — عيب نص في صورة الزكاة المعتمَدة سابقاً (فحص بصري مكبَّر مباشر)
+`assets/images/approved/hero-zakat-complete-guide.webp` (اعتُمدت دورة سابقة): تكبير 3x لمنطقة صندوق التبرع يُظهر أن النص العربي المطبوع على الصندوق يقرأ **"الصناديق"** (جمع "صندوق") وليس "زكاة" أو أي نص متسق مع كلمة "ZAKAT" الإنجليزية المجاورة — نص عربي مولَّد بالذكاء الاصطناعي غير صحيح دلالياً، نفس فئة العيوب التي رفضنا صوراً سابقة بسببها (نص محروق/غير مقروء). **لا مخاطرة نشر حالياً** (`guides/zakat-complete-guide.html` لا يزال `noindex,nofollow`) لكن يجب تصحيحه قبل أي رفع فهرسة مستقبلي — إما إعادة توليد بلا نص عربي على الصندوق، أو استبدال بنص "زكاة" صحيح، أو إزالة النص كلياً بالتحرير.
+
+### 2. ✅ تقدّم حقيقي مؤكَّد — قسم الوصفات مغلق فعلياً (تحقق مباشر، ليس اعتماداً على ادّعاء كورسر)
+الثلاثة بنود من أمر 11:48 UTC نُفِّذت فعلاً هذه الدورة (فحص مباشر لا اعتماد على رسالة كوميت):
+- `library/recipes/index.html`: 0 شرطة em-dash (كان 6).
+- `library/recipes/chicken-shawarma-bowl.html`: 0 شرطة (كان 2).
+- `library/recipes/tuna-wrap-quick.html` و`veg-pasta-budget.html`: كلاهما الآن يحتوي `Recipe` JSON-LD صالح (`json.loads` نجح، `@type":"Recipe"` مؤكَّد) — كان صفر schema.
+**قسم الوصفات (16 وصفة + 5 فئات) يُعتبر مغلقاً الآن من ناحية البنود المرصودة.**
+
+### 3. صفر تقدّم مؤكَّد على البنود المعلَّقة (فحص مباشر، لا تغيير عن دورة 15:41 السابقة)
+- `البريمiums` (`comparisons/saudi-vs-uae-family.html` سطر 129): لا تزال قائمة حرفياً.
+- `<p>tag: ...</p>` مسرَّب (`featured-stories/family-six-3000-riyals.html` سطر 172، `-en.html` سطر 184): لا يزال قائماً.
+- `"عيادة العلاج العاجل (Urgent Care)"` (`blog/managing-healthcare-costs-families.html` سطر 99): لا يزال قائماً (عيب 15:41 UTC الجديد، لم يُصلَح بعد).
+- H1 مكرر: `grep -c "<h1"` مباشر على 12 ملفاً معروفاً — **11 لا تزال `h1_count=2`** (`power-of-i-was-wrong-en`, `engineer-simplified-family-life-en`, `property-roi-comparison-saudi-uae`ع+en, `umrah-off-peak-seasons-guide-en`, `family-six-3000-riyals`ع+en, `digital-minimalism-faith-families`, `outdoor-vs-indoor-family-activities`ع+en, `saudi-vs-uae-family`ع). استثناءان سليمان: `saudi-vs-uae-family-en`، `art-of-apologizing-en`.
+- دفعة ب/ج/د: `amer_gate.py` مباشر — `salalah-travel-guide-2025-en.html` FAIL صريح (Article+FAQPage schema مفقودان، كليشيه "in conclusion"، 3 نسب بلا رابط عميق)؛ `featured-story-saudi-mother.html` FAIL (Article schema مفقود). `noindex` سليم على كليهما.
+- `fitness/calorie-calculator-saudi.html`+`fitness-for-women-saudi.html`: `noindex,nofollow` مؤكَّد على كليهما — **لا انتكاسة سادسة هذه الدورة.** ادّعاء "المركز الوطني لأبحاث النوم" (سطر 81+439) لا يزال بلا رابط تحقّق مباشر لذات الادّعاء (رغم وجود رابط PMC عام بالفقرة).
+- `deepen_gate.py` → `{"deepen_count":77,"allowed":false}` **راكد تماماً بلا أي حراك عبر عدة دورات متتالية** — يستحق قراراً صريحاً من جوست/تخصيص وقت هيما، ليس مجرد رصد متكرر.
+
+### فحوصات روتينية
+- `amer_freeze_watch.py` → ✅ لا مخالفات
+- `structural_audit.py` (بعد إعادة تثبيت `html5lib` مجدداً — فُقدت من البيئة مرة أخرى) → 296/0 مكسور (ارتفع من 293 بسبب صفحات الوصفات الجديدة، صفر كسر)
+- `handoff_sync.py` → `{"cards":25}` ثابت
+- `gsystem_autopilot.py` (بلا `--push`) → **exit 0 نظيف، ثاني دورة متتالية بلا timeout** — يبدو أن التحسين المقترح سابقاً (أو تخفيف حمل البيئة) أثمر، يستحق مراقبة إضافية للتأكيد
+
+### git
+- بداية الدورة: `git pull --no-rebase -X ours` نظيف (`Already up to date`، لا أقفال عالقة هذه المرة).
+- عمل كورسر منذ آخر مزامنة: 6 كوميتات جديدة (وصفات — تصميم صفحة رئيسية، توحيد هوية، حماية القائمة، تفاصيل الوصفات، إصلاح تعارض عناوين).
+- عمل عامر غير المُلتزَم من دورات سابقة لا يزال على القرص (4 صور hero + إصلاح bmi + صورة زكاة) — تُرك للدفعة القادمة من كورسر كالمعتاد.
+- محاولة push best-effort واحدة آخر الدورة.
+
+**القرار: لا اعتماد LIVE جديد لأي محتوى نصي. لا اعتماد صور جديدة هذه الدورة (فحص فقط). إغلاق قسم الوصفات مؤكَّد. عيب نص جديد على صورة الزكاة (noindex، لا خطر نشر) موثَّق لتصحيح لاحق.**
