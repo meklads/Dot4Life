@@ -1834,3 +1834,7 @@ Salman's Story: 70 Notifi | Figures based on studies from University of Californ
 - ملف جديد غير ملتزَم: `operating-system/reports/2026-07-09-amer-platform-assessment.md` (58 سطر، تقييم منصة/AdSense كامل)
 
 **القرار: لا اعتماد LIVE جديد. كل الأوامر السابقة سارية بلا تعديل.**
+
+## 2026-07-09 10:47 UTC — 🤖 بوابة CI الآلية رفضت 1 ملف عند push
+تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
+- `blog/ashura-family-traditions-gulf.html`: اقتباس ديني مباشر (1): داخل JSON-LD schema
