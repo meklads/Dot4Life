@@ -1591,3 +1591,107 @@ Salman's Story: 70 Notifi | Figures based on studies from University of Californ
 - `blog/masjid-nabawi-complete-guide-en.html`: محتوى حسّاس بلا إخلاء مسؤولية
 - `blog/masjid-nabawi-complete-guide.html`: ادّعاء سلطة بلا رابط مجاور (1): المصادر: (1) الهيئة العامة للعناية بشؤون المسجد الحرام والمسجد النبوي (البيانات الرسمية لل
 - `islamic-hajj-umrah/hijri-new-year-children.html`: فقرات لاتينية في صفحة عربية=1
+
+## 2026-07-09 00:04 UTC — 🤖 بوابة CI الآلية رفضت 101 ملف عند push
+تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
+- `blog/bmi-article-ar.html`: كلمات=8 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema
+- `blog/bmi-article.html`: ادّعاء سلطة بلا رابط مجاور (1): مؤشر كتلة الجسم (Body Mass Index) هو عملية حسابية بسيطة تقسم وزنك بالكيلوغرام على مربع طول
+- `blog/building-personal-savings-system-ar.html`: كلمات=8 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية · فقرات لاتينية في صفحة عربية=1
+- `blog/building-personal-savings-system-en.html`: نِسَب=12 بلا أي رابط عميق واحد
+- `blog/children-education-savings-guide-ar.html`: كلمات=8 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية · فقرات لاتينية في صفحة عربية=1
+- `blog/children-education-savings-guide-en.html`: نِسَب=16 بلا أي رابط عميق واحد
+- `blog/choosing-right-school-child-gulf-ar.html`: كلمات=8 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · فقرات لاتينية في صفحة عربية=1
+- `blog/choosing-right-school-child-gulf-en.html`: نِسَب=2 بلا أي رابط عميق واحد
+- `blog/complete-family-financial-planning-ar.html`: كلمات=3 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية
+- `blog/complete-family-financial-planning-en.html`: كلمات=2 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية
+- `blog/complete-family-financial-planning.html`: كلمات=3 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية
+- `blog/complete-family-systems-productivity-hub-ar.html`: كلمات=3 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema
+- `blog/complete-family-systems-productivity-hub-en.html`: كلمات=2 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema
+- `blog/complete-family-systems-productivity-hub.html`: كلمات=3 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema
+- `blog/complete-family-travel-activities-hub-ar.html`: كلمات=3 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema
+- `blog/complete-family-travel-activities-hub-en.html`: كلمات=2 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema
+- `blog/complete-family-travel-activities-hub.html`: كلمات=3 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema
+- `blog/complete-gulf-family-financial-life-hub-ar.html`: كلمات=3 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية
+- `blog/complete-gulf-family-financial-life-hub-en.html`: كلمات=2 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية
+- `blog/complete-gulf-family-financial-life-hub.html`: كلمات=3 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية
+- `blog/complete-gulf-family-health-wellness-ar.html`: كلمات=3 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية
+- `blog/complete-gulf-family-health-wellness-en.html`: كلمات=2 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية
+- `blog/complete-gulf-family-health-wellness.html`: كلمات=3 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية
+- `blog/complete-household-budget-system-ar.html`: كلمات=3 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية
+- `blog/complete-household-budget-system-en.html`: كلمات=2 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية
+- `blog/complete-household-budget-system.html`: كلمات=3 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية
+- `blog/complete-islamic-lifestyle-guide-ar.html`: كلمات=3 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية
+- `blog/complete-islamic-lifestyle-guide-en.html`: كلمات=2 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية
+- `blog/complete-islamic-lifestyle-guide.html`: كلمات=3 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية
+- `blog/daily-islamic-habits-guide-ar.html`: كلمات=8 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية · فقرات لاتينية في صفحة عربية=1
+- `blog/daily-walking-benefits.html`: ادّعاء سلطة بلا رابط مجاور (2): ليست الفائدة جسدية فقط. أشارت إرشادات منظمة الصحة العالمية إلى أن النشاط البدني يقلّل أعرا | توصي منظمة الصحة العالمية بـ150 إلى 300 دقيقة نشاط معتدل أسبوعياً، أي نحو نصف ساعة مشي معظ · فقرات لاتينية في صفحة عربية=1
+- `blog/digital-minimalism-families-ar.html`: كلمات=8 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · فقرات لاتينية في صفحة عربية=1
+- `blog/digital-minimalism-families-en.html`: ادّعاء سلطة بلا رابط مجاور (1): Attention research shows that returning fully to a task after a single interruption can ta
+- `blog/digital-minimalism-families.html`: ادّعاء سلطة بلا رابط مجاور (4): ربما التكلفة الأكثر إيلاماً هي ما يفعله تشتيت الشاشات بالعلاقات الأسرية. مصطلح "التقنية ال | منظمة الصحة العالمية توصي بصفر وقت شاشة للأطفال تحت سن سنتين. الاستثناء الوحيد هو مكالمات  | اعتمد هذا الدليل على مصادر موثوقة: (1) كتاب "الحد الأدنى الرقمي" للبروفيسور كال نيوبورت (د
+- `blog/emergency-fund-calculator-guide-ar.html`: كلمات=8 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · فقرات لاتينية في صفحة عربية=1
+- `blog/end-of-service-benefits-expats-ar.html`: كلمات=8 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · فقرات لاتينية في صفحة عربية=1
+- `blog/end-of-service-saudi-ar.html`: كلمات=8 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema
+- `blog/expat-vs-national-finance-ar.html`: كلمات=8 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية · فقرات لاتينية في صفحة عربية=1
+- `blog/family-budget-planning-guide-ar.html`: كلمات=8 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية · فقرات لاتينية في صفحة عربية=1
+- `blog/family-budget-planning-guide-en.html`: JSON-LD غير صالح: Expecting ',' delimiter: line 4 column 15 (char 64) · Article schema مفقود · كليشيهات AI: in conclusion · نِسَب=21 بلا أي رابط عميق واحد
+- `blog/family-friendly-activities-gulf-cities-ar.html`: كلمات=8 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · فقرات لاتينية في صفحة عربية=1
+- `blog/family-friendly-activities-gulf-cities-en.html`: كليشيهات AI: in conclusion
+- `blog/family-nutrition-on-budget-ar.html`: كلمات=8 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية · فقرات لاتينية في صفحة عربية=1
+- `blog/family-travel-planning-without-overspending-ar.html`: كلمات=8 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · فقرات لاتينية في صفحة عربية=1
+- `blog/family-travel-planning-without-overspending-en.html`: FAQPage مكرّرة (2 كتلة) · نِسَب=14 بلا أي رابط عميق واحد
+- `blog/family-travel-planning-without-overspending.html`: نِسَب=15 بلا أي رابط عميق واحد
+- `blog/hotel-near-haram-vs-budget-umrah-ar.html`: كلمات=8 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية · فقرات لاتينية في صفحة عربية=1
+- `blog/house-affordability-single-income-guide-ar.html`: كلمات=8 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · فقرات لاتينية في صفحة عربية=1
+- `blog/islamic-inheritance-basics-ar.html`: كلمات=8 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية · فقرات لاتينية في صفحة عربية=1
+- `blog/life-insurance-gulf-families-ar.html`: كلمات=8 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية · فقرات لاتينية في صفحة عربية=1
+- `blog/life-insurance-gulf-families-en.html`: كليشيهات AI: in conclusion · نِسَب=1 بلا أي رابط عميق واحد
+- `blog/managing-healthcare-costs-families-ar.html`: كلمات=8 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية · فقرات لاتينية في صفحة عربية=1
+- `blog/managing-healthcare-costs-families-en.html`: كليشيهات AI: in conclusion · نِسَب=4 بلا أي رابط عميق واحد
+- `blog/managing-screen-time-children-ar.html`: كلمات=8 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · فقرات لاتينية في صفحة عربية=1
+- `blog/managing-screen-time-children-en.html`: ادّعاء سلطة بلا رابط مجاور (1): The World Health Organization and the American Academy of Pediatrics provide evidence-base
+- `blog/medina-hotels-near-masjid-nabawi.html`: ادّعاء سلطة بلا رابط مجاور (2): فندق شيراتون المدينة هو أحد أقدم وأشهر الفنادق في المنطقة المركزية. يبعد دقيقة واحدة فقط ع | أفضل طريقة للاستفادة هي قراءة الدليل كاملاً بتركيز وانتباه وتدبر وتفكر وتأمل وتمعن وتبصر و
+- `blog/mindful-living-gulf-heat-ar.html`: كلمات=8 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · فقرات لاتينية في صفحة عربية=1
+- `blog/natural-birth-vs-c-section-comparison-en.html`: كليشيهات AI: في الختام · نِسَب=9 بلا أي رابط عميق واحد
+- `blog/notification-cost-productivity-ar.html`: كلمات=8 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · فقرات لاتينية في صفحة عربية=1
+- `blog/organize-life-daily-systems-ar.html`: كلمات=8 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · فقرات لاتينية في صفحة عربية=1
+- `blog/organize-life-daily-systems-en.html`: نِسَب=1 بلا أي رابط عميق واحد
+- `blog/pistachios-vs-almonds-comparison-ar.html`: كلمات=8 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · فقرات لاتينية في صفحة عربية=1
+- `blog/pregnancy-and-umrah-guide.html`: ادّعاء سلطة بلا رابط مجاور (1): إذا شعرتِ بأي من الأعراض التالية، توقفي فوراً عن المناسك واذهبي إلى أقرب مركز صحي أو مستشف
+- `blog/pregnancy-nutrition-first-trimester-ar.html`: كلمات=8 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية · فقرات لاتينية في صفحة عربية=1
+- `blog/pregnancy-weeks-guide-ar.html`: كلمات=8 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية
+- `blog/pregnancy-weeks-guide-en.html`: كليشيهات AI: in conclusion · نِسَب=3 بلا أي رابط عميق واحد
+- `blog/preparing-for-pregnancy-guide-ar.html`: كلمات=8 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية · فقرات لاتينية في صفحة عربية=1
+- `blog/preparing-for-pregnancy-guide-en.html`: نِسَب=2 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (1): Medical research shows that egg maturation takes approximately 90 days. This means the hea
+- `blog/ramadan-meal-planning-ar.html`: كلمات=8 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema
+- `blog/ramadan-preparation-guide-families-ar.html`: كلمات=14 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema
+- `blog/rent-vs-buy-comparison-guide-ar.html`: كلمات=8 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · فقرات لاتينية في صفحة عربية=1
+- `blog/rent-vs-buy-saudi-ar.html`: كلمات=12 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema
+- `blog/rent-vs-buy-saudi-en.html`: كلمات=2 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema
+- `blog/rent-vs-buy-saudi-guide-2026-ar.html`: كلمات=16 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema
+- `blog/rent-vs-buy-saudi.html`: كلمات=2 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema
+- `blog/rental-property-vs-reits-comparison-ar.html`: كلمات=8 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · فقرات لاتينية في صفحة عربية=1
+- `blog/salalah-khareef-ar.html`: كلمات=8 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema
+- `blog/salalah-khareef-en.html`: كليشيهات AI: في الختام · محتوى حسّاس بلا إخلاء مسؤولية · نِسَب=1 بلا أي رابط عميق واحد
+- `blog/salalah-travel-guide-2025-en.html`: Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · كليشيهات AI: in conclusion · محتوى حسّاس بلا إخلاء مسؤولية · نِسَب=3 بلا أي رابط عميق واحد
+- `blog/saving-for-education-gulf-ar.html`: كلمات=8 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية · فقرات لاتينية في صفحة عربية=1
+- `blog/starting-side-business-saudi-uae-ar.html`: كلمات=8 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · فقرات لاتينية في صفحة عربية=1
+- `blog/starting-side-business-saudi-uae-en.html`: FAQPage مكرّرة (2 كتلة)
+- `blog/stress-management-working-parents-ar.html`: كلمات=8 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · فقرات لاتينية في صفحة عربية=1
+- `blog/stress-management-working-parents-en.html`: FAQPage مكرّرة (2 كتلة) · كليشيهات AI: in conclusion · نِسَب=1 بلا أي رابط عميق واحد · ادّعاء سلطة بلا رابط مجاور (1): Divide your day into blocks dedicated to specific types of work: deep work (focused, unint
+- `blog/teaching-children-financial-literacy-ar.html`: كلمات=8 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية · فقرات لاتينية في صفحة عربية=1
+- `blog/teaching-children-financial-literacy-en.html`: FAQPage مكرّرة (2 كتلة) · نِسَب=11 بلا أي رابط عميق واحد
+- `blog/umrah-packing-checklist-guide-ar.html`: كلمات=8 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية · فقرات لاتينية في صفحة عربية=1
+- `blog/umrah-with-kids-guide-en.html`: كليشيهات AI: in conclusion
+- `blog/umrah-with-kids-guide.html`: Article schema مفقود
+- `blog/visceral-fat-gulf-ar.html`: كلمات=8 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema
+- `blog/water-intake-hot-climates-guide-en.html`: كليشيهات AI: in conclusion · نِسَب=5 بلا أي رابط عميق واحد
+- `blog/water-intake-hot-climates-guide.html`: محتوى حسّاس بلا إخلاء مسؤولية
+- `blog/zakat-calculator-modern-investments-guide-ar.html`: كلمات=8 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية · فقرات لاتينية في صفحة عربية=1
+- `blog/zakat-calculator-modern-investments-guide-en.html`: كليشيهات AI: in conclusion · نِسَب=13 بلا أي رابط عميق واحد
+- `blog/zakat-guide-2025-en.html`: Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · كليشيهات AI: in conclusion · نِسَب=13 بلا أي رابط عميق واحد
+- `blog/zakat-investment-portfolios-ar.html`: كلمات=8 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية · فقرات لاتينية في صفحة عربية=1
+- `featured-stories/featured-story-saudi-mother.html`: Article schema مفقود · محتوى حسّاس بلا إخلاء مسؤولية
+- `health/daily-walking-benefits.html`: ادّعاء سلطة بلا رابط مجاور (2): ليست الفائدة جسدية فقط. أشارت إرشادات منظمة الصحة العالمية إلى أن النشاط البدني يقلّل أعرا | توصي منظمة الصحة العالمية بـ150 إلى 300 دقيقة نشاط معتدل أسبوعياً، أي نحو نصف ساعة مشي معظ
+- `islamic-hajj-umrah/daily-adhkar-family-guide.html`: نِسَب=3 بلا أي رابط عميق واحد · فقرات لاتينية في صفحة عربية=1
+- `islamic-hajj-umrah/teaching-children-allah-names.html`: نِسَب=1 بلا أي رابط عميق واحد · فقرات لاتينية في صفحة عربية=1
+- `real-estate/oman-property-roi.html`: محتوى حسّاس بلا إخلاء مسؤولية
