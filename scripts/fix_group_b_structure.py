@@ -156,31 +156,63 @@ def fix_fitness_faq(html: str) -> str:
 
 
 def fix_preconception_table(html: str) -> str:
-    if "<thead>" in html and "جدول الفحوصات قبل الحمل" in html:
-        return html
-    old = """<div class="table-wrap"><table>
+    if "<thead>" not in html or "جدول الفحوصات قبل الحمل" not in html:
+        old = """<div class="table-wrap"><table>
 <tr><th>الفحص</th><th>لماذا يهمّ</th><th>متى يُجرى</th></tr>
 <tr><td>تحليل الدم الكامل (CBC)</td>"""
-    new = """<div class="table-wrap"><table>
+        new = """<div class="table-wrap"><table>
 <thead><tr><th>الفحص</th><th>لماذا يهمّ</th><th>متى يُجرى</th></tr></thead>
 <tbody>
 <tr><td>تحليل الدم الكامل (CBC)</td>"""
-    html = html.replace(old, new)
+        html = html.replace(old, new)
+        html = html.replace(
+            "<tr><td>فحوص الأمراض المنقولة جنسياً</td><td>كشف ومعالجة أي عدوى قبل الحمل</td>"
+            "<td>بحسب توصية الطبيب</td></tr>\n</table></div>",
+            "<tr><td>فحوص الأمراض المنقولة جنسياً</td><td>كشف ومعالجة أي عدوى قبل الحمل</td>"
+            "<td>بحسب توصية الطبيب</td></tr>\n</tbody>\n</table></div>",
+        )
+    html = re.sub(
+        r"\n مثل فصيلة الدم، وبعضها قد يُعاد مع كل حمل أو حسب تغيّر حالتكِ الصحية، "
+        r"ويحدد الطبيب ذلك\.</p>\n",
+        "\n",
+        html,
+    )
     html = html.replace(
-        "<tr><td>فحوص الأمراض المنقولة جنسياً</td><td>كشف ومعالجة أي عدوى قبل الحمل</td>"
-        "<td>بحسب توصية الطبيب</td></tr>\n</table></div>",
-        "<tr><td>فحوص الأمراض المنقولة جنسياً</td><td>كشف ومعالجة أي عدوى قبل الحمل</td>"
-        "<td>بحسب توصية الطبيب</td></tr>\n</tbody>\n</table></div>",
+        "<p>\n<h2 class=\"section-title\">الأسئلة الشائعة عن فحوصات ما قبل الحمل</h2>",
+        "<h2 class=\"section-title\">الأسئلة الشائعة عن فحوصات ما قبل الحمل</h2>",
     )
-    dup = (
-        "<h3 id=\"هل-أحتاج-تكرار-الفحوصات-في-كل-حمل\">هل أحتاج تكرار الفحوصات في كل حمل؟</h3>"
-        "<p>بعضها يُجرى مرة واحدة مثل فصيلة الدم، وبعضها قد يُعاد مع كل حمل أو حسب تغيّر "
-        "حالتكِ الصحية، ويحدد الطبيب ذلك.</p>\n"
-        "<p>بعضها يُجرى مرة واحدة مثل فصيلة الدم، وبعضها قد يُعاد مع كل حمل أو حسب تغيّر "
-        "حالتكِ الصحية، ويحدد الطبيب ذلك.</p>"
+    html = html.replace(
+        "اقرأ أيضاً: <a href=\"/health/pregnancy-week-by-week.html\">الحمل أسبوعاً بأسبوع</a> · "
+        "<a href=\"/pregnancy-journey.html\">رحلة الحمل</a> · "
+        "<a href=\"/health.html\">قسم الصحة</a></p>",
+        "<p>اقرأ أيضاً: <a href=\"/health/pregnancy-week-by-week.html\">الحمل أسبوعاً بأسبوع</a> · "
+        "<a href=\"/pregnancy-journey.html\">رحلة الحمل</a> · "
+        "<a href=\"/health.html\">قسم الصحة</a></p>",
     )
-    fixed = dup.replace("\n<p>بعضها يُجرى مرة واحدة", "\n", 1)
-    html = html.replace(dup, fixed.replace("\n\n", "\n"))
+    return html
+
+
+def fix_amer_round2(html: str, rel: str) -> str:
+    html = html.replace(
+        '<h2 id="organize-life-daily-systems-faq">أسئلة شائعة حول h2>\n',
+        "",
+    )
+    html = html.replace(
+        'إرشادات شاملة للصحة النفسية وإدارة التوتر. كما تقدم منظمة الصحة العالمية',
+        'إرشادات شاملة للصحة النفسية وإدارة التوتر</a>. كما تقدم منظمة الصحة العالمية',
+    )
+    html = re.sub(
+        r'<body data-template="article" data-template="article">',
+        '<body data-template="article">',
+        html,
+    )
+    html = re.sub(r"\n<h2\s*\n<h2 ", "\n<h2 ", html)
+    html = html.replace(
+        "</div>\n<p>\n<h2 id=\"common-mistakes\">",
+        "</div>\n<h2 id=\"common-mistakes\">",
+    )
+    if rel == "health-pregnancy/preconception-checkups.html":
+        html = fix_preconception_table(html)
     return html
 
 
@@ -200,6 +232,7 @@ def process_file(rel: str) -> bool:
         html = fix_fitness_faq(html)
     if rel == "health-pregnancy/preconception-checkups.html":
         html = fix_preconception_table(html)
+    html = fix_amer_round2(html, rel)
     html = flip_index(html)
     if html != original:
         path.write_text(html, encoding="utf-8")
