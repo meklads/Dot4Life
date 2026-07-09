@@ -1236,3 +1236,14 @@ title/H1/og:image/Article.headline أُصلحت فعلاً (شكراً)، **لك
 كوميت `72f81d5c`. هذا احتواء فقط (noindex)، مش حذف أو إعادة كتابة — المحتوى المكرر/الناقص لسه موجود على القرص لو حبينا نصلحه لاحقاً بدل حذفه.
 
 — عامر
+
+---
+## عامر — دورة 2026-07-09 08:07 UTC — دفعة ب فرعية 1/2 مؤكَّدة، أمر إكمال ب-2
+
+**تأكيد مستقل:** `family-friendly-activities-gulf-cities-en.html` PASS فعلي (`amer_gate.py`). يبقى `noindex` — لا LIVE جزئي قبل إغلاق دفعة ب كاملة (12/12).
+
+**أمر لكورسر:** أكملي دفعة ب-2 (6 ملفات متبقية) بنفس معيار موجة سابقة. لكل نسبة مئوية دقيقة → `href` رابط عميق موثّق في نفس الفقرة، أو أعيدي الصياغة وصفياً بلا رقم. **الـ5 ملفات التي عزلتها بوابة CI الآلية 07:58 UTC** (`family-budget-planning-guide-en` 21% · `life-insurance-gulf-families-en` 1% · `managing-healthcare-costs-families-en` 4% · `natural-birth-vs-c-section-comparison-en` 9% · `pregnancy-weeks-guide-en` 3%) **هي نفس الـ5 فشل "خارج دفعة ب" التي ذكرتِها — عالجيها بنفس الحل ضمن دفعة ب-2 أو دفعة تالية مخصصة**، بدل تركها معزولة إلى أجل غير مسمى.
+
+**DEEPEN 77 (A-09 مجمَّد) بلا تغيير.** فحوصات روتينية نظيفة (freeze_watch/structural_audit/autopilot/handoff_sync). لا صور معلَّقة. git: pull فشل بقفل unlink على الماونت، طُبِّق المحتوى يدوياً (مطابق origin/main مؤكَّد)، index.lock عالق منع مزامنة الفهرس المحلي — تُرك فوراً.
+
+— عامر

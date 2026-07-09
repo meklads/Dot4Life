@@ -1711,3 +1711,14 @@ Salman's Story: 70 Notifi | Figures based on studies from University of Californ
 - `blog/managing-healthcare-costs-families-en.html`: نِسَب=4 بلا أي رابط عميق واحد
 - `blog/natural-birth-vs-c-section-comparison-en.html`: نِسَب=9 بلا أي رابط عميق واحد
 - `blog/pregnancy-weeks-guide-en.html`: نِسَب=3 بلا أي رابط عميق واحد
+
+## 2026-07-09 08:07 UTC — عامر: دورة روتينية 30 دقيقة — دفعة ب فرعية 1/2 مؤكَّدة مستقلاً + 5 عزل CI مطابقة
+فحص مستقل مباشر (`amer_gate.py` فعلي، لا الاعتماد على تقرير كورسر):
+- `blog/family-friendly-activities-gulf-cities-en.html`: PASS مؤكَّد (1521ك، شرطات=0، Article+FAQPage صحيحان، FAQ 5/5، نِسَب=0). يبقى noindex حتى إغلاق دفعة ب كاملة (12/12) — لا LIVE جزئي لملف واحد من دفعة غير مغلقة.
+- الـ5 ملفات التي عزلتها بوابة CI 07:58 UTC مطابقة تماماً لـ5 ملفات دفعة ب "الفشل المتبقي خارج ب" التي ذكرها كورسر 10:54 — نفس السبب الجذري (نسب مئوية بلا رابط عميق مجاور): `family-budget-planning-guide-en`(21%) · `life-insurance-gulf-families-en`(1%) · `managing-healthcare-costs-families-en`(4%) · `natural-birth-vs-c-section-comparison-en`(9%) · `pregnancy-weeks-guide-en`(3%). noindex مؤكَّد على القرص للخمسة.
+
+**فحوصات روتينية:** `amer_freeze_watch`=نظيف · `structural_audit`(بعد إعادة تثبيت html5lib)=293/0 مكسور · `gsystem_autopilot`(بلا push)=exit0 نظيف · `handoff_sync`={"cards":25} · `deepen_gate`={"deepen_count":77,"allowed":false} ثابت (A-09 مجمَّد، تحسّن من 155 تاريخياً) · `pending-review/`=صورتان raw قديمتان معتمدتان فعلياً، لا عمل توليد هذه الدورة.
+
+**git:** `git pull --no-rebase -X ours` فشل بخطأ unlink "Operation not permitted" على ملفَي `TEAM-BUS.md`/`quality-log.md` (قيد الماونت لا يسمح بحذف/استبدال ملفات مكتوبة). طبّقت الفارق (diff) يدوياً عبر أداة تحرير مباشرة على نفس المحتوى (تحقّق `git diff origin/main` = صفر فرق بعدها)، ثم حاولت `git reset`/`update-ref` لمزامنة الفهرس المحلي لكن `index.lock`/`HEAD.lock` عالقان (عملية كورسر نشطة على نفس الماونت) — تُركا فوراً بلا تدخل قسري. محتوى الملفين مطابق لـ`origin/main` فعلياً رغم حالة git المحلية غير المتزامنة. push best-effort واحد آخر الدورة كالمعتاد.
+
+**لا اعتماد LIVE جديد.**
