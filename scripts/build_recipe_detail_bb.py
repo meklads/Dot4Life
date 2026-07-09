@@ -144,7 +144,7 @@ def list_block(recipe: dict, field: str) -> str:
     return f'<div class="rcp-lang-block"><span class="en"><ul>{en}</ul></span><span class="ar"><ul>{ar}</ul></span></div>'
 
 
-def related_sidebar(recipe: dict) -> str:
+def related_cards(recipe: dict) -> str:
     rows = []
     for slug in recipe.get("related", []):
         rel = RECIPES_BY_SLUG.get(slug)
@@ -152,12 +152,32 @@ def related_sidebar(recipe: dict) -> str:
             continue
         img = f"/assets/images/recipes/hero-{slug}.webp"
         rows.append(
-            f"""      <a href="/library/recipes/{slug}.html" class="rcp-bb-top-recipe">
-        <img src="{img}" alt="" width="64" height="64" loading="lazy"/>
-        <span><span class="en">{clean(rel['title']['en'])}</span><span class="ar">{clean(rel['title']['ar'])}</span></span>
-      </a>"""
+            f"""        <a href="/library/recipes/{slug}.html" class="rcp-bb-recipe-more-card">
+          <div class="rcp-bb-recipe-more-img"><img src="{img}" alt="" width="400" height="300" loading="lazy"/></div>
+          <span class="rcp-bb-recipe-more-title"><span class="en">{clean(rel['title']['en'])}</span><span class="ar">{clean(rel['title']['ar'])}</span></span>
+        </a>"""
         )
     return "\n".join(rows)
+
+
+def related_footer(recipe: dict) -> str:
+    cards = related_cards(recipe)
+    if not cards:
+        return ""
+    tool_href = recipe["relatedArticle"]
+    tool_en = recipe["relatedArticleLabel"]["en"]
+    tool_ar = recipe["relatedArticleLabel"]["ar"]
+    return f"""
+  <section class="rcp-bb-recipe-more" aria-labelledby="rcp-more-heading">
+    <h2 id="rcp-more-heading" class="rcp-bb-recipe-more-heading"><span class="en">You may also like</span><span class="ar">قد يعجبك أيضاً</span></h2>
+    <div class="rcp-bb-recipe-more-grid">
+{cards}
+    </div>
+    <p class="rcp-bb-recipe-tool">
+      <span class="en">Related tool:</span><span class="ar">أداة مرتبطة:</span>
+      <a href="{tool_href}"><span class="en">{tool_en}</span><span class="ar">{tool_ar}</span></a>
+    </p>
+  </section>"""
 
 
 def build_page(recipe: dict) -> str:
@@ -192,13 +212,9 @@ def build_page(recipe: dict) -> str:
       <span class="ar">إرشاد عام فقط وليس نصيحة طبية. استشيري طبيبك لأنظمة الحمل.</span>
     </div>"""
 
-    tool_href = recipe["relatedArticle"]
-    tool_en = recipe["relatedArticleLabel"]["en"]
-    tool_ar = recipe["relatedArticleLabel"]["ar"]
-
     header_html = site_header()
     footer_html = site_footer()
-    related_html = related_sidebar(recipe)
+    related_html = related_footer(recipe)
 
     return f"""<!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="light" data-lang="en">
@@ -225,28 +241,6 @@ def build_page(recipe: dict) -> str:
 
 {header_html}
 {MOBILE_DROPDOWN}
-
-<div class="rcp-bb-recipe-topbar" aria-label="Recipe shortcuts">
-  <div class="rcp-bb-recipe-topbar-inner">
-    <div class="rcp-bb-topbar-module rcp-bb-topbar-team">
-      <img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" width="48" height="48" loading="lazy"/>
-      <div class="rcp-bb-topbar-team-text">
-        <strong><span class="en">Dot4Life Recipes</span><span class="ar">وصفات دوت فور لايف</span></strong>
-        <a href="/library/recipes/"><span class="en">All recipes</span><span class="ar">كل الوصفات</span></a>
-      </div>
-    </div>
-    <div class="rcp-bb-topbar-module rcp-bb-topbar-related">
-      <h4><span class="en">Related recipes</span><span class="ar">وصفات ذات صلة</span></h4>
-      <div class="rcp-bb-topbar-scroll">
-{related_html}
-      </div>
-    </div>
-    <div class="rcp-bb-topbar-module rcp-bb-topbar-tool">
-      <h4><span class="en">Related tool</span><span class="ar">أداة مرتبطة</span></h4>
-      <a href="{tool_href}" class="rcp-bb-topbar-tool-btn"><span class="en">{tool_en}</span><span class="ar">{tool_ar}</span></a>
-    </div>
-  </div>
-</div>
 
 <div class="rcp-bb-wrap rcp-bb-recipe-wrap">
   <nav class="rcp-crumb rcp-bb-crumb" aria-label="Breadcrumb">
@@ -300,6 +294,7 @@ def build_page(recipe: dict) -> str:
 {disclaimer}
     <p class="rcp-disclaimer rcp-bb-disclaimer rcp-bb-disclaimer--small"><span class="en">Estimated nutrition and costs are general guides only.</span><span class="ar">التغذية والتكاليف تقديرات إرشادية فقط.</span></p>
   </article>
+{related_html}
 </div>
 
 {footer_html}

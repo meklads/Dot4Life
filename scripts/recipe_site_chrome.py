@@ -13,10 +13,10 @@ LANG_BOOT = """<script>(function(){var p=new URLSearchParams(location.search),gd
 
 RECIPE_HEAD_ASSETS = """<link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="/styles/global.css?v=20260624t"/>
 <link rel="stylesheet" href="/styles/home.css?v=20260624g"/>
-<link rel="stylesheet" href="/styles/pages/recipes.css?v=20260709f"/>"""
+<link rel="stylesheet" href="/styles/pages/recipes.css?v=20260709h"/>"""
 
 MOBILE_DROPDOWN = """<div class="mobile-dropdown" id="mobile-dropdown" aria-hidden="true">
   <div class="md-links">
@@ -29,7 +29,6 @@ MOBILE_DROPDOWN = """<div class="mobile-dropdown" id="mobile-dropdown" aria-hidd
     <a href="/archive.html"><span class="en">Archive</span><span class="ar">الأرشيف</span></a>
     <a href="/blog.html"><span class="en">Blog</span><span class="ar">المدونة</span></a>
     <a href="/library.html"><span class="en">Library</span><span class="ar">المكتبة</span></a>
-    <a href="/life-guide.html"><span class="en">Guides</span><span class="ar">الأدلة</span></a>
   </div>
   <div class="md-controls">
     <button class="nav-btn" id="lang-toggle-mobile"><span class="en">عربي</span><span class="ar">English</span></button>
