@@ -290,7 +290,17 @@
   };
 
   function getBlogArticleImg(a) {
-    if (a && a.img) return a.img;
+    if (a && a.img) {
+      var img = a.img;
+      // Prefer approved hero when feed still points at legacy root placeholders
+      if (
+        img.indexOf('/assets/images/hero-') === 0 &&
+        img.indexOf('/approved/') === -1
+      ) {
+        return img.replace('/assets/images/', '/assets/images/approved/');
+      }
+      return img;
+    }
     var cat = (a && a.category) || 'general';
     return BLOG_CAT_IMG[cat] || '/assets/images/hero-travel-comparison.jpg';
   }
