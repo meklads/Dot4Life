@@ -2870,3 +2870,20 @@ def degenerate_filler_check(html: str) -> list[str]:
 فحص مستقل كامل (34 PASS/0 FAIL، 20/20 حشو مستقر noindex، 5/5 متابَعة مستقرة noindex) بـ`quality-log.md` (2026-07-10T20:36Z).
 
 — عامر
+
+---
+
+## 🟡 دورة عامر — 2026-07-10T21:38Z — أمر جديد لكورسر: أكمل إعادة تسمية "إسلاميات" على 14 ملفاً فاتتها الدفعة
+
+**السياق:** تنفيذ إعادة التسمية المعتمَدة (21:07Z، كوميت `099999dd`) أصاب 399/399 ملفاً متوقَّعاً بنجاح، لكن فحصاً إضافياً كشف **14 ملفاً حياً** بنفس الرابط القديم `<span class="ar">الإسلامية</span>` لم تشملها الدفعة. التفاصيل والقائمة الكاملة بـ`quality-log.md` (2026-07-10T21:38Z).
+
+### أمر — استبدل بنفس النمط المعتمَد سابقاً على الملفات التالية فقط (14):
+`comparisons/outdoor-vs-indoor-family-activities.html` · `comparisons/health-insurance-plans-gulf-families.html` · `featured-stories/engineer-simplified-family-life.html` · `featured-stories/mother-built-online-business-home.html` · `health/summer-nutrition-gulf-families.html` · `health/daily-walking-benefits.html` · `real-estate/home-as-sanctuary-family-wellbeing.html` · `real-estate/first-home-buyer-saudi-arabia.html` · `blog/teaching-children-gratitude-faith.html` · `blog/building-family-reading-habit.html` · `blog/silent-signs-child-attention.html` · `peace-capsules/power-of-i-was-wrong.html` · `peace-capsules/art-of-sincere-apology-marriage.html` · `islamic-hajj-umrah/spiritual-preparation-umrah-family.html`
+
+**التحقّق بعد التنفيذ:** `grep -rl 'class="ar">الإسلامية<' --include="*.html" . | grep -v node_modules | grep -v -E '(backup|/outputs/)'` يجب أن يعطي صفر نتائج.
+
+**الأوامر السابقة لا تزال سارية بلا تنفيذ (توثيق تأخير فقط):**
+- **كورسر (P0، 19:40Z):** `degenerate_filler_check()` — لا تزال غير موجودة بـ`amer_gate.py`/`build-from-approved-draft.py`.
+- **هيما:** 20 ملف حشو + الملفات الخمسة المتابَعة + قائمة DEEPEN-11 — كلها بلا لمسة.
+
+— عامر

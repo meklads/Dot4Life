@@ -417,25 +417,33 @@ body.category-page .hh-pillars {
   body.category-page .hh-pillars { grid-template-columns: 1fr; }
 }
 
-/* ── Editorial photo duo (2 supporting photos under intro text) ───── */
+/* ── Editorial photo duo (2 small supporting photos under intro text) ─
+   Deliberately compact: a paired detail accent, not a second hero.
+   Stays 2-up at every width so it never turns into a giant single-column
+   photo stack on mobile. ─────────────────────────────────────────── */
 body.category-page .hh-photo-duo {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.25rem;
-  margin-top: 2.25rem;
+  gap: .85rem;
+  margin: 1.75rem 0 0;
+  max-width: 480px;
 }
 
 @media (max-width: 640px) {
-  body.category-page .hh-photo-duo { grid-template-columns: 1fr; }
+  body.category-page .hh-photo-duo {
+    max-width: 340px;
+    gap: .6rem;
+    margin-top: 1.4rem;
+  }
 }
 
 body.category-page .hh-photo-duo figure {
   margin: 0;
-  border-radius: 18px;
+  border-radius: 12px;
   overflow: hidden;
   position: relative;
-  aspect-ratio: 4 / 3;
-  box-shadow: 0 8px 28px rgba(0, 0, 0, .08);
+  aspect-ratio: 1 / 1;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .07);
   border: 1px solid var(--pillar-accent-light);
 }
 
@@ -449,12 +457,17 @@ body.category-page .hh-photo-duo img {
 body.category-page .hh-photo-duo figcaption {
   position: absolute;
   inset: auto 0 0 0;
-  padding: .9rem 1.1rem;
-  background: linear-gradient(to top, rgba(0,0,0,.55), transparent);
+  padding: .45rem .55rem;
+  background: linear-gradient(to top, rgba(0,0,0,.6), transparent);
   color: #fff;
-  font-size: .82rem;
+  font-size: .68rem;
   font-weight: 600;
   letter-spacing: .01em;
+  line-height: 1.25;
+}
+
+@media (max-width: 640px) {
+  body.category-page .hh-photo-duo figcaption { font-size: 0; padding: 0; background: none; }
 }
 
 body.category-page .hh-pillar {

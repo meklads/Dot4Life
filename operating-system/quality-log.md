@@ -2586,3 +2586,31 @@ NameError: name 'audit_live' is not defined
 **لا اعتماد LIVE جديد. لا انتكاسة. تصحيح جوهري واحد على أمر سابق (guide-strip→hh-reading) + دورة تحقّق نظيفة بلا مفاجآت جديدة.**
 
 — عامر
+
+---
+
+## 🟡 دورة عامر — 2026-07-10T21:38Z — فجوة جديدة في تنفيذ إعادة تسمية "إسلاميات": 14 ملف حي فاتت الدفعة
+
+**git:** `pull --no-rebase -X ours` نجح هذه الدورة بلا أقفال نشطة (`Updating 099999dd..3eb72b19`) — الفرق الوحيد بين HEAD والـcommit المسحوب كان ملفَي `__pycache__` (كوميت `3eb72b19` من gsystem-bot، لا محتوى فعلي). لا فقدان بيانات.
+
+**🟡 اكتشاف:** تحقّق مستقل من تنفيذ إعادة تسمية `<span class="ar">الإسلامية</span>`→`<span class="ar">إسلاميات</span>` المعتمَدة سابقاً (21:07Z، كوميت `099999dd`، 399 ملف/1234 ظهور). **العدّ الحالي: 399 ملف/1234 ظهور بالنمط الجديد (مطابق تماماً لما اعتمدتُه)** — لكن بحث النمط القديم `class="ar">الإسلامية<` كشف **350 ظهوراً متبقياً**، منها **336 داخل `outputs/backups/` (أرشيف غير حيّ، غير ذي أثر)** لكن **14 ملفاً حياً** فاتتها الدفعة (ظهور واحد بكل ملف، كلها روابط نافبار/فوتر قياسية):
+
+`comparisons/outdoor-vs-indoor-family-activities.html` · `comparisons/health-insurance-plans-gulf-families.html` · `featured-stories/engineer-simplified-family-life.html` · `featured-stories/mother-built-online-business-home.html` · `health/summer-nutrition-gulf-families.html` · `health/daily-walking-benefits.html` · `real-estate/home-as-sanctuary-family-wellbeing.html` · `real-estate/first-home-buyer-saudi-arabia.html` · `blog/teaching-children-gratitude-faith.html` · `blog/building-family-reading-habit.html` · `blog/silent-signs-child-attention.html` · `peace-capsules/power-of-i-was-wrong.html` · `peace-capsules/art-of-sincere-apology-marriage.html` · `islamic-hajj-umrah/spiritual-preparation-umrah-family.html`
+
+**أمر لكورسر:** أكمل نفس نمط الاستبدال (`<span class="en">Islamic</span><span class="ar">الإسلامية</span>` → `...<span class="ar">إسلاميات</span>`) على الـ14 ملفاً أعلاه فقط. بعد التنفيذ يجب أن يكون عدّ النمط القديم على الملفات الحيّة (خارج backups) = صفر تماماً.
+
+**روتيني (فحص مستقل، لا تصديق):** `freeze_watch`=نظيف لا OBJECTION · صور `list-image-pending.py`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `gsystem_autopilot.py` بلا push=نظيف، 0 slug جديد (لاحظتُ تعديل cache-bust تلقائي `?v=20260711a` على 5 صفحات hub: `finance/health/islamic/real-estate/travel.html` — سلوك طبيعي للأداة، لا فعل مني) · `build-from-approved-draft.py --audit`=**34 PASS/0 FAIL** ثابت · `deepen_gate.py`=**70 خام** (لا تغيّر)، `frozen=true`/`allowed=false` batch-04 · `handoff_sync.py`={"cards":25} ثابت.
+
+**فحص مستقل للملفات المتابَعة الخمسة:** `family-time-management-en`/`gulf-father-money-lessons`/`government-vs-private-school-gulf`/`preconception-checkups` (1540w، لا تغيّر) — كلها لا تزال `noindex,nofollow` بلا لمسة من هيما. `dubai-property-roi.html` يبقى صفحة تحويل `noindex,nofollow` بصواب.
+
+**فحص مستقل للعشرين ملف حشو (19:40Z):** أعدت التحقّق من `robots` على العشرين كاملة — **كلها لا تزال `noindex,nofollow`، صفر انتكاسة، صفر إصلاح بعد (0/20).**
+
+**فحص مستقل لقائمة DEEPEN-11 (16:08Z+16:43Z):** أعدت قياس `body_word_count()` بـ`amer_gate.py` مباشرة على الأحد عشر ملفاً (بما فيها `rent-vs-buy-gulf-family.html`) — **كلها بلا تغيير حرفياً** (1300-1366w)، لا لمسة من هيما.
+
+**أمر P0 لكورسر لا يزال معلَّقاً بلا تنفيذ:** `degenerate_filler_check()` (19:40Z) — تحقّقت بـ`grep` مباشر في `amer_gate.py` و`build-from-approved-draft.py`: **غير موجودة بعد في أي منهما.**
+
+**صيانة ذاتية بسيطة:** أضفت `.fuse_hidden*` إلى `.gitignore` (ملفات مقبض-ملف يتيمة من نظام mount الرملي ظهرت بعد تشغيل autopilot — لا علاقة بالمحتوى، تُستبعد لمنع تلويث الكوميتات).
+
+**لا اعتماد LIVE جديد. لا انتكاسة. فجوة تنفيذ صغيرة واحدة مكتشَفة (14 ملف) + توثيق تأخّر مستمر على P0/DEEPEN/العشرين.** التفاصيل أعلاه كاملة.
+
+— عامر
