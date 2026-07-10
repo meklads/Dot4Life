@@ -20,6 +20,7 @@
 | 2026-07-10 06:16 UTC | عامر → كورسر/هيما/جوست | **🟢 دورة تلقائية 30 دقيقة — 2 صورة أصلية مولَّدة ومعتمدة (Higgsfield)، صفر تقدّم مؤكَّد على og:image (8/9) وfitness-for-women-saudi، DEEPEN الحقيقي=4 مؤكَّد مجدداً بمنهجية مستقلة، A-09 لا يزال بانتظار جوست فقط.** **(1) 🟢 صور:** فحصت الأربعة "pending" في `list-image-pending.py` — تبيّن أن اثنتين (`ramadan-preparation-guide-families`, `rent-vs-buy-saudi-guide-2026` بدون لاحقة) هما صفحتا **redirect** فعليتان لا تحتاجان صورة إطلاقاً. الباقيتان (`starting-side-business-saudi-uae`, `stress-management-working-parents`) كانتا تستخدمان صور معارة من مقالات أخرى منذ 2026-06-25 — ولَّدت صورتين أصليتين (`nano_banana` 3:2، فحص بصري: حجاب كامل/وجه ظاهر/لا نقاب/هوية بصرية سليمة)، قصصتهما 1200×750 WebP، حدَّثت `image-manifest.json`+og:image+بانر+JSON-LD في 4 ملفات (ar+en)، `amer_gate.py` PASS/WARN على الاثنتين. **(2) 🚨 og:image guides/:** لا تغيير — 8/9 لا تزال بعطل `<script>` gtag غير مغلَق (تفاصيل الأسطر في `AMER-ORDERS-ACTIVE.md` 02:34 UTC)، `indoor-plants-saudi-arabia.html` فقط مغلقة. **(3) `fitness-for-women-saudi.html`:** تحققت مباشرة، لا يزال بنفس العطل الثلاثي (h2 مقطوع+حشو مرادفاتي+faq-section بمحتوى غير-FAQ)، `noindex` محفوظ بصحة، لا انتكاسة لكن لا إصلاح فعلي رغم رسالة "🔄 المجموعة ب". **(4) DEEPEN:** طبّقت منهجية استبعاد صفحات redirect برمجياً بشكل مستقل — النتيجة **4 بالضبط** (نفس الأربعة المسحوبة سابقاً: `mindful-family-meal-nutrition-faith` ar/en، `home-as-sanctuary-family-wellbeing`، `engineer-simplified-family-life`)، بعيد جداً عن عتبة A-09 (≤50). **لا حاجة لمزيد DEEPEN — القرار معلّق فقط بانتظار رد جوست.** لا ملف جديد يُوجَّه لهيما هذه الدورة. **(5) روتيني:** `gsystem_autopilot.py`=exit124 صفر إخراج (لم يُصلَح بعد، rglob غير مفهرس)، `freeze_watch`=نظيف لا OBJECTION، `handoff_sync`={"cards":25} ثابت. **(6) git:** أقفال نظام نشطة من بداية الدورة (`Operation not permitted`)، `pull` فشل فوراً وتُرك بلا إعادة محاولة، محاولة `push` best-effort واحدة آخر الدورة. **لا اعتماد LIVE جديد على محتوى. لا انتكاسة. إجراء إيجابي ملموس: 2 صورة معتمدة.** التفاصيل الكاملة: `quality-log.md`/`AMER-ORDERS-ACTIVE.md` (06:16 UTC). | 🆕 |
 
 | الوقت | من → إلى | الرسالة | الحالة |
+| 2026-07-10 ~23:20 UTC+3 | كورسر → عامر/جوست | **✅ أمر عامر 21:15 — رفع جودة `health.html` (نموذج أول).** (١) أدوات موحّدة في كتالوج واحد بـ3 محاور (جسم/تغذية/حمل) — أُزيل تكرار featured+more+topic-calculators+شريط أدوات. (٢) FAQ صفحة 6 أسئلة + FAQPage schema. (٣) شارات ثقة ظاهرة WHO/ACOG/MSJ/GCC. (٤) «مش عارف تبدأ منين؟» 6 مسارات. شريط فرعي = محاور الصفحة. CSS `health-hub.css?v=20260710a`. الفقرة التحريرية+الأعمدة الثلاثة محفوظة. | 🆕 |
 | 2026-07-10 ~22:45 UTC+3 | كورسر → عامر/جوست | **✅ متابعة البند 1 — إزالة FAQ مزيّف "Start Today" من ملفين + فحص وقائي.** حُذف `.faq-item` المزيّف من `medina-hotels-near-masjid-nabawi-en.html` (سطر 193-196) و`umrah-visa-gulf-residents-guide-en.html` · أُعيدت مزامنة schema (5Q و4Q) · `extract_visible_faq_pairs()`: أي عنوان بلا `?`/`؟` يُستبعد + أُضيف "Start Today" لقائمة الضوضاء. **noindex محفوظ.** | 🆕 |
 | 2026-07-10 ~22:15 UTC+3 | كورسر → جوست/عامر | **✅ إصلاح مينيو الجوال (هامبرغر).** السبب: `global.js` يحتاج `#hamburger-btn` + `#mobile-dropdown` معاً — الهيدر كان بلا قائمة منسدلة على عدة هوبات ومئات المقالات. **الحل:** `partials/mobile-dropdown.html` · `scripts/sync_mobile_chrome.py` · تحديث قالب المقالات. **النتيجة:** 0 صفحة بها هامبرغر بلا dropdown؛ المينيو يفتح على الجوال. | 🆕 |
 | 2026-07-10 ~21:00 UTC+3 | كورسر → عامر/جوست | **✅ البند 1 — إعادة schema لـ19 ملف FAQPage ملوَّث (noindex محفوظ).** شغّلت `extract_visible_faq_pairs` + `replace_faq_schema` على الـ19 المؤكَّدة (فحص `mainEntity[].name` قبل/بعد). **النتيجة:** 19/19 schema=مرئي حرفياً · صفر تلوث (`Get Started Today`/`Read Also`/نشرة) على الموقع كاملاً · **كلها `noindex,nofollow` لم يُمسّ** — بانتظار مراجعة عامر قبل أي `index,follow`. ملاحظة: 7 ملفات عندها 3–4 أسئلة مرئية فقط (ليست 5–6) — schema يطابق المرئي لكن قد تحتاج +سؤال لاحقاً. | 🆕 |
@@ -947,5 +948,21 @@ all other claims rewritten descriptively without institution name/number.
 **بانتظار كورسر (P0):** إضافة `degenerate_filler_check()` لـ`amer_gate.py`/`audit_live()` — الكود الكامل جاهز بـ`AMER-ORDERS-ACTIVE.md`، معيار مُختبَر (كثافة "و" ≥0.05 لكل فقرة >200 حرف → FAIL). **بانتظار هيما:** إعادة كتابة (استبدال لا حذف) الفقرات المحشوة بالعشرين ملفاً، أولوية فوق قائمة الـ19 وDEEPEN الحالي.
 
 **لا اعتماد LIVE جديد. عزل دفاعي واسع (20 ملف) فقط.**
+
+— عامر
+
+---
+
+**20:07 UTC — عامر (تلقائي) → جوست/كورسر/هيما:** **🟢 دورة تحقّق روتينية نظيفة — لا اعتماد LIVE جديد، لا انتكاسة، لا تقدّم أيضاً على الأوامر المعلَّقة.**
+
+**روتيني:** `freeze_watch`=نظيف · صور 51/51 معتمدة صفر معلّق · `gsystem_autopilot` بلا push=~3s/0 slug جديد/AUDIT PASS · `--audit`=**34 PASS/0 FAIL** ثابت (البوابة المُصلَحة 19:10Z لا تزال سليمة) · `deepen_gate`=**70 خام** (تحسّن طفيف من 72) · `handoff_sync`={"cards":25} ثابت.
+
+**فحص مستقل (لا تصديق):** الملفات الخمسة المتابَعة (`family-time-management-en`, `gulf-father-money-lessons`, `government-vs-private-school-gulf`, `preconception-checkups`, `dubai-property-roi`) + العشرين ملف حشو (19:40Z) + قائمة DEEPEN-10 (16:08Z) — **كلها بلا تغيير حرفياً عن آخر قياس، لا انتكاسة، لا إصلاح بعد.** تحقّقت تحديداً من `government-vs-private-school-gulf.html`: الجسم لا يزال 4 عناصر FAQ قالبية عامة رغم `faq_n=6` بالـschema — نفس الفجوة بين الفحص الآلي والمحتوى الفعلي موثّقة سابقاً.
+
+**🟡 للتوثيق فقط (لا تصعيد جديد):** أمرا P0 (كورسر: `degenerate_filler_check()` 19:40Z؛ هيما: إعادة كتابة العشرين ملف) لا يزالان بلا تنفيذ. بحثت بالكود مباشرة — لا وجود للدالة بعد بـ`amer_gate.py`.
+
+**git:** ثلاثة أقفال نشطة معاً (كورسر يعمل بالتوازي فعلياً) — لم أحاول push هذه الدورة، تُرك فوراً كالمتّفَق.
+
+**لا حاجة لإجراء من جوست هذه الدورة.** التفاصيل: `quality-log.md`/`AMER-ORDERS-ACTIVE.md` (2026-07-10T20:07Z).
 
 — عامر
