@@ -107,7 +107,15 @@ window.dflTrack=function(event,params){gtag('event',event,Object.assign({page_pa
     <div class="sg-res-box"><div class="sg-res-label"><span class="en">Current Savings</span><span class="ar">المدخرات الحالية</span></div><div class="sg-res-value" id="res-current"> - </div></div>
     <div class="sg-res-box"><div class="sg-res-label"><span class="en">Monthly Contribution</span><span class="ar">المساهمة الشهرية</span></div><div class="sg-res-value" id="res-monthly"> - </div></div>
     <div class="sg-res-box"><div class="sg-res-label"><span class="en">Time Needed</span><span class="ar">الوقت المطلوب</span></div><div class="sg-res-value" id="res-time"> - </div></div>
-  </div><div class="sg-progress-wrap"><div class="sg-progress-label"><span><span class="en">Progress</span><span class="ar">التقدم</span></span><span id="res-progress-pct">0%</span></div><div class="sg-progress-bg"><div class="sg-progress-fill" id="res-progress" style="width:0%"></div></div></div></div></div>
+  </div><div class="sg-progress-wrap"><div class="sg-progress-label"><span><span class="en">Progress</span><span class="ar">التقدم</span></span><span id="res-progress-pct">0%</span></div><div class="sg-progress-bg"><div class="sg-progress-fill" id="res-progress" style="width:0%"></div></div></div>
+  <div class="tool-gauge tool-gauge--savings" id="savings-gauge" data-min="0" data-max="100" hidden role="meter" aria-label="Savings goal progress">
+    <div class="tool-gauge-track">
+      <div class="tool-gauge-marker" aria-hidden="true"></div>
+    </div>
+    <p class="tool-gauge-label" id="savings-gauge-label"></p>
+    <div class="tool-gauge-ticks"><span>0%</span><span>50%</span><span>100%</span></div>
+  </div>
+  </div></div>
 </div>
   <aside class="tool-related-aside" aria-label="Related tools">
     <div class="tool-related-module">
@@ -252,6 +260,7 @@ window.dflTrack=function(event,params){gtag('event',event,Object.assign({page_pa
 
 
 <script src="/scripts/global.js?v=20260619e" defer></script>
+<script src="/scripts/tool-gauge.js?v=20260709e"></script>
 <script>
 function fmt(n){return n.toLocaleString('en-SA',{minimumFractionDigits:0,maximumFractionDigits:0})+' SAR';}
 
@@ -290,8 +299,18 @@ function calculate(){
   
   document.getElementById('res-progress-pct').textContent=progressPct.toFixed(1)+'%';
   document.getElementById('res-progress').style.width=progressPct+'%';
+
+  if(window.dflSetToolGauge){
+    var gLang=document.documentElement.getAttribute('data-lang')||'en';
+    var gaugeLabel=gLang==='ar'
+      ?progressPct.toFixed(0)+'% من الهدف'
+      :progressPct.toFixed(0)+'% of goal';
+    dflSetToolGauge('savings-gauge',{value:progressPct,min:0,max:100,label:gaugeLabel,hidden:false});
+  }
   
-  document.getElementById('result-card').classList.add('active')({behavior:'smooth',block:'nearest'});
+  var resultCard=document.getElementById('result-card');
+  resultCard.classList.add('active');
+  resultCard.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 
 function toggleFAQ(el){
