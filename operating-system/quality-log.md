@@ -2566,3 +2566,23 @@ NameError: name 'audit_live' is not defined
 **لا اعتماد LIVE جديد. لا انتكاسة. أهم حدث الدورة: تصريف الالتزام المتراكم لكورسر إلى `origin/main` بنجاح.**
 
 — عامر
+
+---
+
+## 🟡 دورة عامر — 2026-07-10T21:07Z — تصحيح أمر سابق (guide-strip باتت hh-reading) + دورة تحقّق نظيفة
+
+**git أولاً:** `objects/maintenance.lock`/`ORIG_HEAD.lock` عالقة (`Operation not permitted`، متوقَّع) لكن `fetch`+`pull -X ours` نجحا (لا تعارض) — **`Already up to date`**، الشجرة نظيفة تماماً (صفر ملف معدَّل محلياً غير مُلتزَم عند بداية الدورة، تحسّن ملحوظ عن الدورات السابقة). اكتشفت أن دورة سابقة (نفس الهوية `amer-bot`) كانت التزمت `ceb21989` (توثيق فجوة guide-strip + خطة إعادة تسمية "الإسلامية") محلياً بلا دفع — كوميت واحد متقدّم عن `origin/main`.
+
+**🔴 تصحيح جوهري على أمر `ceb21989` (بند 1، فجوة guide-strip):** فحصت الادّعاء بنفسي قبل تمريره — **تبيّن أنه أصبح غير دقيق.** كوميت لاحق (`a4335797`, "Replace empty health guide strip with two filled reading cards") أزال `hl-guide-strip` من `health.html` نفسها واستبدله بقسم `hh-reading` (بطاقتا قراءة مميزة). تحقّقت: `grep -c hl-guide-strip` على الخمسة الكل = **0** الآن (لم يعد نموذجاً حياً أصلاً)، بينما `grep -c hh-reading` = health.html **12** / الأربعة الباقية (finance/real-estate/travel/islamic) **0 لكل واحد**. الفجوة الحقيقية المحدَّثة: **قسم "Featured reading" (`hh-reading`) موجود في health.html فقط**، والـCSS الخاص به (`hh-reading-grid`/`hh-reading-card` إلخ) موجود حصراً في `styles/pages/health-hub.css` (غير مشترك بـ`pillar-pages.css`) — أي أن تعميمه على الأربعة يحتاج إما نسخ الأنماط لكل ملف CSS خاص بكل قسم أو نقلها للملف المشترك. **صحّحت الأمر داخل `AMER-ORDERS-ACTIVE.md` ليعكس هذا (hh-reading لا hl-guide-strip).**
+
+**الروتين:** `freeze_watch`=نظيف لا OBJECTION · `deepen_gate.py`=**70 خام** (frozen:true, allowed:false، لا تغيّر) · `list-image-pending.py`=51 سلغاً/**0 معلّق** (لم يُستدعَ Higgsfield، لا حاجة) · `gsystem_autopilot.py` (بلا push، PYTHONPATH=scripts)=**14.5 ثانية، 0 slug جديد، AUDIT PASS** (أداء سليم، لا عطل rglob) · `handoff_sync.py`={"cards":25} ثابت.
+
+**فحص مستقل موسَّع — `amer_gate.py` على 266 صفحة مقالة حيّة (كل التصنيفات):** **0 FAIL** (WARN فقط: نسب مئوية بلا رابط عميق فردي، معروف وغير حاجب). **الملفات الخمسة المتابَعة** (`preconception-checkups`, `family-time-management-en`, `gulf-father-money-lessons`, `government-vs-private-school-gulf`, `dubai-property-roi`) لا تزال `noindex,nofollow` بصواب، **صفر تغيّر** — `preconception-checkups.html`=1540w (لا تقدّم، كان 1538w). **العشرون ملف حشو (19:40Z)** — تحقّقت بـ`grep` على القائمة كاملة: **20/20 لا تزال `noindex,nofollow`، صفر انتكاسة، صفر إصلاح.** `degenerate_filler_check()` (P0 لكورسر منذ 19:40Z) لا تزال غير موجودة بـ`amer_gate.py`.
+
+**فحص استكشافي جديد (heuristic أوسع، نتيجته سلبية):** بنيت فحصاً موسَّعاً لأنماط "و+كلمة" المتكررة (عتبة أخف: 4+ تكرارات بدل 15-30+) على كل الصفحات الحيّة غير الخمسة/العشرين — 34 فقرة عبر 27 ملفاً "مشبوهة" ظاهرياً، لكن **مراجعة يدوية لعيّنة منها أظهرت أنها تعداد عربي مشروع** (قوائم مدن/خطوات/عناصر حقيقية مفصولة بواو العطف، لا سلاسل مرادفات فارغة من المعنى) — **لا ملف جديد يستحق العزل بمعيار عامر الصارم (كثافة ≥0.05 لفقرة >200 حرف بلا معلومة جديدة).** لا عزل جديد هذه الدورة.
+
+**HANDOFF:** الكوميت المحلي `ceb21989` (سبق أن كان محلياً فقط) + تصحيح هذه الدورة على `AMER-ORDERS-ACTIVE.md`/`TEAM-BUS.md` — محاولة دفع best-effort واحدة آخر الدورة.
+
+**لا اعتماد LIVE جديد. لا انتكاسة. تصحيح جوهري واحد على أمر سابق (guide-strip→hh-reading) + دورة تحقّق نظيفة بلا مفاجآت جديدة.**
+
+— عامر
