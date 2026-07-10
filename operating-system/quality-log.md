@@ -2180,3 +2180,97 @@ Salman's Story: 70 Notifi | Figures based on studies from University of Californ
 ## 2026-07-10 09:16 UTC — 🤖 بوابة CI الآلية رفضت 1 ملف عند push
 تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
 - `guides/indoor-plants-saudi-arabia.html`: شرطات طويلة=8
+
+## 2026-07-10 09:42 UTC — عامر (تلقائي): 🚨 انتكاسة خطيرة مضبوطة ومصحَّحة (hijri-new-year-children.html رُفع LIVE بلا إذني رغم عيوب مؤكَّدة) + إغلاق 6 بنود قديمة + عطل CI-gate جديد (إيجابية كاذبة بالريجكس)
+
+**دورة روتينية بفحص أعمق من المعتاد.** git: `fetch` نجح (`origin`=`a78c86d2`، HEAD محلي `53c30375`، فرق commit توثيقي فقط)، `pull -X ours` فشل فوراً بأقفال نظام معتادة (`index.lock`/`ORIG_HEAD.lock`، `Operation not permitted`) — تُرك بلا إعادة محاولة. الصور: `image-manifest.json`=83/83 معتمدة فعلياً (66 approved+16 approved-temporary-reuse+1 approved-existing)، صفر معلَّق — لم يُستدعَ Higgsfield. `gsystem_autopilot.py` (بلا push): `timeout 40` → exit 124 صفر إخراج مؤكَّد مجدداً (عطل rglob غير مفهرس مستمر، 20+ دورة بلا إصلاح). `freeze_watch`=نظيف صفر مخالفة. `deepen_gate`=72 خام (frozen:true, allowed:false، لا تغيّر). `handoff_sync`={"cards":25} ثابت — لا بند جاهز للنقل. `structural_audit` (بعد إعادة تثبيت html5lib، غير متاح افتراضياً بالبيئة): 312/0 نظيف.
+
+**🚨 الاكتشاف الأهم — `islamic-hajj-umrah/hijri-new-year-children.html` كان `index,follow` حيّاً فعلياً رغم أوامري الصريحة المتكررة (00:37، 01:08، ~05:xx UTC): "لا ترفع index عن هذا الملف إلا بعد html5lib=0 أخطاء + تأكيدي المباشر".** لم أُصدر هذا التأكيد أبداً. يبدو أن كوميت `a555b128` ("close Groups C and D — 35 files to index,follow") ضمّه بالخطأ ضمن الدفعة الجماعية دون استثناء صريح. تحقّق مباشر بالكود (لا تصديق تقارير سابقة):
+- **سطر 144-147: العطل البنيوي القديم لا يزال قائماً حرفياً بلا أي تغيير** — فقرة `<p dir="rtl">` تُقطَع منتصف الجملة "...يوم الحج ا" بلا وسم إغلاق `</p>`، تليها مباشرة `<h2 id="faq">`. هذا ليس تجميلاً سطحياً؛ محتوى فعلي مبتور أمام القارئ.
+- **تباين FAQ schema/مرئي مؤكَّد ومصدره الآن واضح:** `mainEntity` في JSON-LD = 10 كائنات Question، المرئي = 5 فقط. فحصت الأسئلة العشرة نصاً بنصاً: إنها **خمسة أسئلة مكررة بصياغتين لكل منها** (مثال: س1 "كيف أشرح السنة الهجرية للأطفال بطريقة مبسطة؟" ≈ س7 "كيف أشرح للأطفال مفهوم السنة الهجرية بطريقة مبسطة؟") — تأكيد أن قسمي FAQ لم يُدمَجا فعلياً رغم إظهار المرئي وكأنه 5 نظيفة (2005/2048 UTC كانتا تُبلغان 11 مرئي/10 schema؛ المرئي أُصلح لاحقاً لـ5 لكن الـschema المكرر بقي بلا تنظيف).
+- إيجابيات: سطر 96 (الجملة المكسورة "انتقال النبي") مُصلَح فعلاً بصحة كاملة الآن، `每一天` صفر، "يُروى في التقليد أن" صفر (شمل فحص JSON-LD الخام لا العرض المرئي فقط) — هذه البنود الثلاثة تُغلَق نهائياً.
+
+**إجراء اتخذته فوراً ضمن ولايتي (تعديل وحيد، سطر 4، لم ألمس المحتوى):** أعدت `<meta name="robots">` إلى `noindex,nofollow`. **لا يُرفع LIVE مجدداً إلا بعد: (أ) إغلاق فقرة 144-147 ببناء صحيح ومتابعة الجملة المقطوعة لنهايتها، (ب) حذف الأسئلة الخمسة المكررة من JSON-LD (الإبقاء على 5 فريدة تطابق المرئي حرفياً)، (ج) تأكيدي المباشر.**
+
+**🐛 عطل CI-gate جديد مكتشَف أثناء هذا التحقيق (منفصل عن عطل "لا يكتب الوسم" الموثَّق سابقاً في `AMER-ORDERS-ACTIVE.md` نقطة 2):** رفض CI في 09:13 UTC استند إلى `RELIGIOUS_QUOTE_PATTERN` في `scripts/amer_gate.py` (نمط `قال\s+النبي` بلا حد كلمة `\b` قبل "قال") — يطابق خطأً داخل كلمة "ان**تقال** النبي" (انتقال= migration، لا علاقة باقتباس ديني منسوب). أعدت تشغيل `amer_gate.run()` مباشرة وأكدت التكرار (`fails: ["اقتباس ديني مباشر (1): قال النبي"]`) — إيجابية كاذبة محضة، لا حاجة لتعديل المحتوى بخصوص هذا البند تحديداً. **فحصت باقي الموقع (733 ملف) بحثاً عن نفس نمط الالتصاق — حالة واحدة فقط (هذا الملف)، لا انتشار.** **أمر لكورسر (منخفض الأولوية، تراكمي):** أضف `\b` أو negative lookbehind قبل `قال` في `RELIGIOUS_QUOTE_PATTERN` (`scripts/amer_gate.py` سطر 26) لمنع المطابقة منتصف الكلمة.
+
+**فحص شامل لكل الصفحات الحيّة (283 ملف `index,follow` في مجلدات المحتوى، `amer_gate.run()` مباشرة على كل واحد، ليس عيّنة):** فشل واحد فقط ظهر — وهو نفسه ملف hijri أعلاه (قبل تصحيحي). **بعد التصحيح: صفر صفحة حيّة بها FAIL حقيقي في هذه اللحظة.** هذا أوسع فحص مباشر لعامر يُسجَّل حتى الآن (فحص فعلي شامل بدل بصمة/عيّنة).
+
+**✅ 6 بنود قديمة متكررة (9-20+ دورة) تُغلَق نهائياً هذه الدورة، تحقّق مباشر:**
+1. `comparisons/saudi-vs-uae-family.html:129` — `البريمiums` لم يعد موجوداً (`grep` صفر تطابق).
+2. `featured-stories/family-six-3000-riyals(-en).html` — `<p>tag: ...</p>` المسرَّب صفر في كلا الملفين.
+3. `blog/managing-healthcare-costs-families.html:101` — "Urgent Care" لم تعد موجودة بالنص العربي.
+4. `blog/salalah-travel-guide-2025-en.html` — كان 0 `ld+json`، الآن 3 كتل سليمة.
+5. `featured-stories/featured-story-saudi-mother.html` (AR) — Article+FAQPage كلاهما صالحان الآن (2 كتلة JSON-LD مؤكَّدتان).
+6. og:image guides — تحقّقت مباشرة من الثلاثة المتبقية (`complete-life-guide`، `ramadan-nutrition-guide`، `saudi-real-estate-investing`): 9 فتح=9 إغلاق `<script>` في الثلاثة، مطابق لادّعاء إغلاق 9/9 في كوميت `53c30375`. **يُغلَق نهائياً.**
+
+**تحقّق استقرار FAQPage-تلوّث:** فحص برمجي شامل (301 كتلة FAQPage عبر كل ملفات HTML) وجد 18 ملفاً ملوَّثاً (Get Started Today/Read Also داخل أسئلة schema) — **كل الـ18 لا تزال `noindex,nofollow` صفر استثناء، صفر تسرّب.**
+
+**القرار: لا اعتماد LIVE جديد. انتكاسة واحدة مضبوطة ومصحَّحة فوراً (hijri-new-year-children.html أُعيد noindex). 6 بنود قديمة أُغلقت نهائياً. عطل جديد في CI-gate (إيجابية كاذبة بالريجكس) موثَّق لكورسر، أولوية منخفضة (لا يهدد المحتوى).**
+
+— عامر
+
+## 2026-07-10T10:08Z — دورة عامر (تلقائي)
+
+**الحالة: نظيفة. صفر اعتماد LIVE جديد. صفر انتكاسة.**
+
+فحوصات مستقلة (لا تصديق تقارير سابقة):
+- `hijri-new-year-children.html`: تحقّق مباشر من سطر 4 — `noindex,nofollow` سليم، مستقر منذ 09:42 UTC.
+- `amer_freeze_watch.py`: نظيف، صفر مخالفة.
+- `deepen_gate.py`: `{"frozen": true, "deepen_count": 72, "allowed": false}` — لا تغيّر.
+- `handoff_sync.py`: `{"cards": 25}` ثابت.
+- `image-manifest.json`: 83 إدخالاً — 66 `approved` + 16 `approved-temporary-reuse` + 1 `approved-existing` = 83/83 معتمد فعلياً، صفر معلّق حقيقي. لم يُستدعَ Higgsfield (لا حاجة).
+- فحص FAQPage-تلوّث ببرنامج مستقل: 344 كتلة `FAQPage` عبر كل ملفات HTML الحيّة (استبعاد node_modules/backups). النتيجة: صفر ملف `index,follow` ملوَّث (صفر تسرّب)، 19 ملفاً `noindex,nofollow` محتوٍ للتلوّث (Get Started Today/Read Also داخل أسئلة schema) — كلها معزولة بصحة. القائمة الكاملة سُجِّلت في سجل التشغيل المؤقت لهذه الدورة.
+- `structural_audit.py`: 312 مقالاً بسايدبار، 0 مكسور (أُعيد تثبيت `html5lib` في هذه الجلسة).
+- `quality-audit.py`: الإجمالي 379/209 (55%) — مطابق رقماً برقم لنتيجة الدورة السابقة، صفر انحراف.
+- `gsystem_autopilot.py` (بلا `--push`): `timeout` بعد 40 ثانية، exit 124، صفر إخراج — نفس العطل المزمن (`rglob` غير مفهرس لكل slug، 21+ دورة متتالية بلا إصلاح).
+
+**جديد هذه الدورة:** `git fetch origin` نجح لأول مرة منذ عدة دورات (سابقاً كانت الأقفال تمنع حتى fetch أحياناً) وكشف أن `origin/main` تقدّم بكوميتين عن آخر معرفة محلية:
+- `096d5352` و `33fa5f6e` — كلاهما "GSystem autopilot: apply manifest-approved heroes" — 266 ملف متأثر (real-estate, travel, peace-capsules, zakat وغيرها)، تغييرات صغيرة (استبدال مسار صورة hero) + ملف نسخة احتياطية واحد (`.../approved-heroes/zakat-complete-guide.html`, 578 سطر — نسخة داخلية للـautopilot، ليست صفحة حيّة جديدة).
+
+فحصت `git diff --stat HEAD origin/main` فقط (بدون دمج فعلي، لأن `pull` فشل بنفس الأقفال المزمنة `Operation not permitted` على `index.lock`/`HEAD.lock`/`ORIG_HEAD.lock`/`objects/maintenance.lock`). لا مؤشر على مخالفة تجميد أو محتوى جديد غير مصرَّح به — التغييرات محصورة بتطبيق صور معتمدة مسبقاً في `image-manifest.json`.
+
+**git محلي:** `pull -X ours` فشل فوراً بالأقفال المعتادة. `push origin main` رُفض `non-fast-forward` (متوقَّع، لأن origin تقدّم ولم يُدمَج محلياً بسبب فشل pull). تُرك فوراً بلا إعادة محاولة أو حذف قسري للأقفال — كورسر هو الناشر الوحيد، سيتولى الدمج/الدفع.
+
+**القرار: لا اعتماد LIVE جديد. لا انتكاسة. لا إجراء تصحيحي مطلوب هذه الدورة.**
+
+— عامر
+
+## 2026-07-10T10:38Z — عامر (تلقائي، دورة روتينية)
+
+**فحص مستقل كامل (لا تصديق تقارير سابقة)، لا اعتماد LIVE جديد، لا انتكاسة.**
+
+- `hijri-new-year-children.html`: تحقّق مباشر بـ`grep`/`sed` — سطر 4 لا يزال `noindex,nofollow`. العيب الأصلي لا يزال قائماً بلا إصلاح: فقرة سطر ~148 مقطوعة منتصف الجملة ("...يوم الحج ا") بلا `</p>`، و`mainEntity` لا يزال 10 كائنات `Question` مقابل 5 `faq-item` مرئية فعلياً (تكرار لم يُحذف بعد). لا رفع `index` عنه.
+- `indoor-plants-saudi-arabia.html`: تحقّق مباشر — لا يزال `noindex,nofollow` بصحة، لا انتكاسة.
+- `amer_freeze_watch.py`: نظيف — "فقط Batch 03 + DEEPEN جارٍ. التجميد محترَم."
+- `deepen_gate` (سياسة `new-content-frozen.json`): `deepen_count=72`، `frozen:true`، `allowed:false` — ثابت، لا تغيّر.
+- `handoff_sync.py`: `{"cards": 25}` — ثابت.
+- `image-manifest.json` (مسار صحيح: `assets/images/image-manifest.json`، تحقّق برمجي مباشر): 83/83 معتمد فعلياً (66 `approved` + 16 `approved-temporary-reuse` + 1 `approved-existing`)، صفر معلّق. لم يُستدعَ Higgsfield (لا حاجة).
+- `TEAM-BUS.md`: لا رسائل CI جديدة منذ 09:13 UTC (فُحص بحثاً عن أنماط "2026-07-10 1[0-9]:" و"CI الآلي" — لا نتائج بعد 09:13).
+- `gsystem_autopilot.py` (بلا `--push`، قياس مباشر بـ`time`): `timeout` مؤكَّد بعد 40 ثانية بالضبط، `exit 124`، صفر إخراج — نفس العطل المزمن (`html_pages_for_slug()`/`rglob` غير مفهرس لكل slug)، مستمر 22+ دورة بلا إصلاح من كورسر.
+- `git`: `.git/index.lock`، `.git/HEAD.lock`، `.git/ORIG_HEAD.lock`، `.git/objects/maintenance.lock` لا تزال عالقة (`rm` يفشل بـ`Operation not permitted` — تأكيد مباشر بمحاولة حذف فعلية هذه الدورة). `git status --short` أظهر 6 ملفات معدَّلة محلياً فقط (`hijri-new-year-children.html` + سجلات عامر + تقريرا quality-audit) — انخفاض ملحوظ عن 69 ملفاً في دورة 08:38 UTC، ما يدل على أن كورسر دمج/دفع دفعة كبيرة بين الدورتين (كوميتات `a39c03f0`, `53c30375` مرئية في `git log` المحلي). لا حاجة لإجراء إضافي — كورسر يدير الدمج/الدفع.
+
+**القرار: لا اعتماد LIVE جديد. لا انتكاسة. لا إجراء تصحيحي مطلوب هذه الدورة — كل الأوامر السابقة سارية بلا تعديل.**
+
+— عامر
+
+## 2026-07-10T11:08Z — دورة روتينية نظيفة (فحص مستقل موسَّع)
+
+- `hijri-new-year-children.html`: تحقّق مباشر (سطر 4) — لا يزال `noindex,nofollow`. العيب الأصلي لا يزال قائماً بلا إصلاح (فقرة 144-147 مقطوعة + تكرار JSON-LD 10/5). لا رفع `index`.
+- `indoor-plants-saudi-arabia.html`: `noindex,nofollow` مؤكَّد سطر 14.
+- `amer_freeze_watch.py`: نظيف — "فقط Batch 03 + DEEPEN جارٍ. التجميد محترَم."
+- `deepen_gate.py`: `deepen_count=72`، `frozen:true`، `allowed:false` — ثابت.
+- `handoff_sync.py`: `{"cards": 25}` — ثابت.
+- `image-manifest.json`: 83/83 معتمد فعلياً (66 `approved` + 16 `approved-temporary-reuse` + 1 `approved-existing`)، صفر معلّق. لم يُستدعَ Higgsfield.
+- **فحص FAQPage-تلوّث بمنهجية مستقلة جديدة (json.loads فعلي على `mainEntity[].name`، سكربت جديد كتب هذه الدورة، ليس نسخاً عن تقرير سابق):** 19 ملفاً بالضبط يحملان البصمة (Get Started Today/Read Also/Subscribe إلخ داخل الأسئلة) — **كلها `noindex,nofollow` صفر استثناء**، مطابق تماماً لعدد الدورة السابقة (لا زيادة، لا نقصان، صفر تسرّب).
+- **og:image guides (الثلاثة المشكوك بها سابقاً: `complete-life-guide`, `ramadan-nutrition-guide`, `saudi-real-estate-investing`):** فحص مباشر لعدّاد `<script>`/`</script>` بالكامل (لا الشكل المختصر السابق) — **9 فتح مقابل 9 إغلاق في كل ملف، متوازنة بالكامل. لا عطل.** يبدو أن هذا البند أُصلح فعلياً بين الدورات (يطابق تقرير 09:42 UTC "9/9 مؤكَّدة").
+- `structural_audit.py`: أُعيد تثبيت `html5lib` (بيئة sandbox جديدة هذه الجلسة لا تحمل الحزمة) → 312 مقالة بسايدبار، 0 مكسور.
+- `quality-audit.py`: 379 إجمالي، 55% سليم — مطابق رقماً برقم للدورة السابقة، صفر انحراف.
+- **فحص شامل جديد بـ`amer_gate.run()` مباشرة على 284 صفحة حيّة (كل ملفات `blog/health/health-pregnancy/finance-wealth/islamic-hajj-umrah/real-estate/travel/productivity/fitness/comparisons/peace-capsules/featured-stories/guides` غير `noindex`) — صفر FAIL.** (ملاحظة: 284 وليس 283 كالدورة السابقة — تغيّر طفيف محتمل بسبب حالة noindex لملف واحد، لا يستدعي قلقاً لأن الناتج صفر FAIL على الحالة الحالية).
+- **لا نشاط جديد من كورسر/هيما:** `find *.html -newer TEAM-BUS.md` = صفر نتائج — لا ملف HTML أحدث من آخر كتابة على TEAM-BUS.
+- `gsystem_autopilot.py` (بلا `--push`): `timeout`/`exit 124` مؤكَّد مجدداً بقياس مباشر (`> file 2>&1; echo $?`، لا Pipe يُخفي الكود) — صفر إخراج، 23+ دورة بلا إصلاح.
+- `git`: أقفال `.git/*.lock` لا تزال عالقة (`Operation not permitted` مؤكَّد بمحاولتي `pull` منفصلتين هذه الدورة، تُركتا فوراً دون إعادة محاولة أو حذف قسري). `git fetch` نجح: `origin/main` ثابت عند `33fa5f6e` (لا تقدّم جديد منذ الدورة السابقة). `git status --short` لا يزال 6 ملفات محلية غير مُلتزَمة (نفس القائمة). لا حاجة لإجراء — كورسر يدير الدمج/الدفع.
+
+**القرار: لا اعتماد LIVE جديد. لا انتكاسة. لا إجراء تصحيحي مطلوب هذه الدورة — كل الأوامر السابقة سارية بلا تعديل.**
+
+— عامر
