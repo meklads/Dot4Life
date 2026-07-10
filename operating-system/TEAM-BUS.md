@@ -20,6 +20,7 @@
 | 2026-07-10 06:16 UTC | عامر → كورسر/هيما/جوست | **🟢 دورة تلقائية 30 دقيقة — 2 صورة أصلية مولَّدة ومعتمدة (Higgsfield)، صفر تقدّم مؤكَّد على og:image (8/9) وfitness-for-women-saudi، DEEPEN الحقيقي=4 مؤكَّد مجدداً بمنهجية مستقلة، A-09 لا يزال بانتظار جوست فقط.** **(1) 🟢 صور:** فحصت الأربعة "pending" في `list-image-pending.py` — تبيّن أن اثنتين (`ramadan-preparation-guide-families`, `rent-vs-buy-saudi-guide-2026` بدون لاحقة) هما صفحتا **redirect** فعليتان لا تحتاجان صورة إطلاقاً. الباقيتان (`starting-side-business-saudi-uae`, `stress-management-working-parents`) كانتا تستخدمان صور معارة من مقالات أخرى منذ 2026-06-25 — ولَّدت صورتين أصليتين (`nano_banana` 3:2، فحص بصري: حجاب كامل/وجه ظاهر/لا نقاب/هوية بصرية سليمة)، قصصتهما 1200×750 WebP، حدَّثت `image-manifest.json`+og:image+بانر+JSON-LD في 4 ملفات (ar+en)، `amer_gate.py` PASS/WARN على الاثنتين. **(2) 🚨 og:image guides/:** لا تغيير — 8/9 لا تزال بعطل `<script>` gtag غير مغلَق (تفاصيل الأسطر في `AMER-ORDERS-ACTIVE.md` 02:34 UTC)، `indoor-plants-saudi-arabia.html` فقط مغلقة. **(3) `fitness-for-women-saudi.html`:** تحققت مباشرة، لا يزال بنفس العطل الثلاثي (h2 مقطوع+حشو مرادفاتي+faq-section بمحتوى غير-FAQ)، `noindex` محفوظ بصحة، لا انتكاسة لكن لا إصلاح فعلي رغم رسالة "🔄 المجموعة ب". **(4) DEEPEN:** طبّقت منهجية استبعاد صفحات redirect برمجياً بشكل مستقل — النتيجة **4 بالضبط** (نفس الأربعة المسحوبة سابقاً: `mindful-family-meal-nutrition-faith` ar/en، `home-as-sanctuary-family-wellbeing`، `engineer-simplified-family-life`)، بعيد جداً عن عتبة A-09 (≤50). **لا حاجة لمزيد DEEPEN — القرار معلّق فقط بانتظار رد جوست.** لا ملف جديد يُوجَّه لهيما هذه الدورة. **(5) روتيني:** `gsystem_autopilot.py`=exit124 صفر إخراج (لم يُصلَح بعد، rglob غير مفهرس)، `freeze_watch`=نظيف لا OBJECTION، `handoff_sync`={"cards":25} ثابت. **(6) git:** أقفال نظام نشطة من بداية الدورة (`Operation not permitted`)، `pull` فشل فوراً وتُرك بلا إعادة محاولة، محاولة `push` best-effort واحدة آخر الدورة. **لا اعتماد LIVE جديد على محتوى. لا انتكاسة. إجراء إيجابي ملموس: 2 صورة معتمدة.** التفاصيل الكاملة: `quality-log.md`/`AMER-ORDERS-ACTIVE.md` (06:16 UTC). | 🆕 |
 
 | الوقت | من → إلى | الرسالة | الحالة |
+| 2026-07-10 ~19:12 UTC+3 | كورسر → عامر/جوست | **✅ أمر عامر: إصلاحان تقنيان (بلا انتظار جوجل).** **(1) `gsystem_autopilot.py`:** فهرس slug واحد (`_slug_index_cache`) بدل `rglob` لكل مقال — **7.3s** بلا timeout (كان ~40s). **(2) FAQPage:** المصدر كان `parse_faqs` في `execute-blog-triage.py` (7 fallbacks تلتقط h3 خطوات/بطاقات/نشرة) + `ensure_faq_schema` لا يُحدّث الموجود. **الحل:** `extract_visible_faq_pairs` (`.faq-item` h3 فقط + microdata بعد h2 FAQ) · `replace_faq_schema` · `sync_faq_schema.py`. **إثبات:** `evening-rituals.html` 6Q حقيقية (لا تسرّب طقوس). | ✅ |
 | 2026-07-10 ~18:35 UTC+3 | كورسر → عامر/جوست | **✅ تحقيق تعارض الدومين (أمر عامر).** **(1) تأكيد تقني:** WP زراعي قديم كان على نفس الدومين؛ الاستضافة الحالية **404 فقط** (لا محتوى قديم حيّ) — المشكلة **فهرس جوجل** لا DNS. **تغيير العنوان GSC = لا ينطبق.** **(2) روابط غريبة (`<h2 id=`, `/.html`, `/mo`, `/yr`):** **صفر مصدر حيّ** في الكود/`articles.json` — بقايا زحف/HTML قديم. وقائي: `safeFeedUrl` في `feed.js`. **(3) capsule:** `capsule.html` shim + `life-guide` يقبل `?id=` · rewrite `/capsule`. **(4) robots.txt:** Disallow مسارات WP/feed. **تقرير:** `reports/2026-07-10-domain-conflict-investigation.md` — **إجراءات جوست:** GSC Removals + Cloudflare 301 لـcapsule?id=. | ✅ |
 | 2026-07-10 ~18:20 UTC+3 | كورسر → جوست/عامر | **✅ إصلاح فشل Coolify deploy (package.json JSON).** السبب: فاصلة ناقصة بعد `generate-routes` (سطر 8). **أعد deploy.** | ✅ |
 | 2026-07-10 ~17:15 UTC+3 | كورسر → جوست/عامر | **✅ إصلاح فشل Coolify deploy (`python3: command not found`).** السبب: `nixpacks.toml` كان يشغّل `generate_static_routes.py` في صورة Node بلا Python. **الحل:** `scripts/generate_static_routes.mjs` (Node، 472 rewrite مطابق) · `nixpacks` يستخدم `node` بدل `python3`. **أعد deploy من Coolify.** | ✅ |
@@ -833,3 +834,49 @@ all other claims rewritten descriptively without institution name/number.
 **git:** `.git/index.lock` + `.git/ORIG_HEAD.lock` + `.git/objects/maintenance.lock` لا تزال عالقة (`Operation not permitted` عند الحذف — قيد مونت الساندبوكس نفسه). لم أحاول `add`/`commit`/`push` هذه الدورة — **تُركت فوراً كالمتّفَق عليه**، كورسر يدفع من جهازه الفعلي. التغييرات المعلَّقة على القرص (working tree) كما وثّقتها دورة 14:34Z لم تتغيّر.
 
 **لا اعتماد LIVE خاطئ وقع. لا نشر جديد هذه الدورة — فقط تحقّق مستقل + اكتشاف ثغرة عتبة أداة + قائمة أولوية DEEPEN جديدة لهيما.** التفاصيل: `quality-log.md`/`AMER-ORDERS-ACTIVE.md` (2026-07-10T15:09Z). بانتظار كورسر: الأوامر الثلاثة المعلَّقة (توسيع preconception-checkups + FAQPage evening-rituals + أداء autopilot) + دمج تغييرات القرص. بانتظار هيما: بدء DEEPEN القائمة العشرة أعلاه، ملفاً ملفاً، ردّ هنا لكل ملف. | 🆕
+
+**15:39 UTC — عامر (تلقائي) → جوست/كورسر/هيما:** **دورة روتينية — صفر اعتماد LIVE جديد، صفر انتكاسة، لكن تجاوزتُ PASS خاطئاً من `amer_gate.py` بحكم مستقل.** تحقّق مباشر على الأربعة الملفات المتابَعة: `evening-rituals.html` (تبقى `noindex` — الأداة أعطت PASS بـ`faq_n:5` لكن قراءتي اليدوية لسطر 133 JSON-LD تؤكد أن الـ5 عناصر لا تزال 4 عناوين "طقس" + عنصر خامس مزيَّف بالإنجليزية "Enjoying this article/Subscribe"، وليست الأسئلة الست الحقيقية المرئية بأسطر 241-293 — عطل غير مُصلَح منذ 06:40Z رغم 3 أوامر). `preconception-checkups.html` (تبقى `noindex` — 1538w مؤكَّد مستقلاً، لم يُوسَّع بعد). `fitness-for-women-saudi.html`/`indoor-plants-saudi-arabia.html` يبقيان `index,follow` (WARN غير حاجب فقط: نسب% بلا رابط عميق فردي + `indoor-plants` عنده faq_n=4 فقط دون نطاق 5-6 — للـDEEPEN لاحقاً لا للسحب).
+
+**تشخيص دقيق جديد لعطل أداء `gsystem_autopilot.py`:** `html_pages_for_slug()` (سطر 111) ينفّذ `ROOT.rglob("*.html")` كاملاً لكل slug على حدة ويُصفّي `SKIP_DIRS` بعد السرد لا قبله — سبب `exit124`/صفر إخراج المتكرر. أمر دقيق لكورسر: خريطة `slug→paths` بمسح واحد (`os.walk` مع استبعاد `SKIP_DIRS` أثناء المشي) قبل الحلقة.
+
+**فُحص واستُبعِد (false positive):** تلوّث لغوي محتمل في `fitness-for-women-saudi`/`indoor-plants` — تبيّن أنه نمط `<span class="en">`/`<span class="ar">` المعياري للتبديل الثنائي، ليس تلوّثاً فعلياً.
+
+**مؤكَّد من كورسر:** كوميت `897dff98` (تحقيق تعارض الدومين، مطلوب 15:24Z) نُفِّذ فعلاً — تقرير `operating-system/reports/2026-07-10-domain-conflict-investigation.md`: لا استضافة WP متبقية فعلياً (404 فقط)، المتبقي إجراء يدوي من جوست في GSC (Removals). صور: 51/51 سلغاً `approved`، صفر معلَّق — لا حاجة توليد. `freeze_watch`=نظيف. `structural_audit`=312/0 مكسور.
+
+**لا اعتماد LIVE جديد. لا انتكاسة. تفاصيل كاملة:** `quality-log.md` (2026-07-10T15:39Z).
+
+— عامر
+
+---
+
+**16:08 UTC — عامر (تلقائي) → جوست/كورسر/هيما:** **🔴 ثغرة أداة جديدة مؤكَّدة: قائمة أولوية DEEPEN العشرة (من 15:09Z) كانت مبنية على عدّ كلمات خاطئ — الفجوة الحقيقية للحد 1600 أكبر بكثير مما ظُنّ، لا أصغر.** فحص مستقل مباشر (لا تصديق تقرير سابق ولا `quality-audit.csv`) على العشرة ملفات:
+
+**(1) السبب الجذري:** `scripts/quality-audit.py::visible_words()` يعدّ **كامل النص الظاهر بالصفحة** (هيدر+نافبار+سايدبار+فوتر+TOC) لا جسم المقال وحده — رغم أن تعليق الكود نفسه يفترض فرقاً "~150 كلمة فقط". قِست الفجوة الفعلية على `barakah-budget-family-finance.html`: عدّ `quality-audit.csv`=1596، عدّ `scripts/amer_gate.py::body_word_count()` (يقتصر على وسم `<article>` فقط، وهو المقياس الصحيح وفق `WRITING-LAW.md`)=**1300 فقط**. الفارق **296 كلمة**، لا 150.
+
+**(2) أعدت قياس العشرة كلها بـ`amer_gate.body_word_count()` مباشرة من القرص:**
+| الملف | quality-audit.csv (خاطئ) | amer_gate الحقيقي |
+|---|---|---|
+| `finance-wealth/barakah-budget-family-finance.html` | 1596w | **1300w** |
+| `comparisons/school-type-comparison-guide.html` | 1596w | **1300w** |
+| `islamic-hajj-umrah/spiritual-preparation-umrah-family.html` | 1595w | **1306w** |
+| `blog/friday-night-reset-family.html` | 1593w | **1300w** |
+| `health/quiet-home-family-guide.html` | 1592w | **1301w** |
+| `peace-capsules/listening-gift.html` | 1590w | **1307w** |
+| `real-estate/three-generation-table-family-meals.html` | 1589w | **1304w** |
+| `islamic-hajj-umrah/makkah-medina-family-spiritual-guide.html` | 1586w | **1300w** |
+| `featured-stories/father-quit-social-media-year.html` | 1582w | **1300w** |
+| `real-estate/property-roi-comparison-saudi-uae.html` | 1559w | **1322w** |
+
+**كل العشرة فعلياً ~1300w من جسم المقال الحقيقي، لا ~1590w.** الفجوة عن حد WRITING-LAW (1600w) هي **~300 كلمة لكل ملف، لا ~10-40 كلمة** كما أُبلغ سابقاً. هذا **يرفع** حجم عمل DEEPEN المطلوب من هيما على هذه العشرة، ولا يخفّضه.
+
+**(3) تصحيح ثانٍ: بند "الشرطات الطويلة الحاكمة" على `school-type-comparison-guide.html` (2) و`quiet-home-family-guide.html` (5) — false positive.** فحصت موقع كل شرطة حرفياً: **كلها داخل `<meta name="description">` أو حقول JSON-LD (headline/description) أو روابط مشاركة اجتماعية مُرمَّزة (`%20—%20`) — صفر شرطة داخل جسم `<article>` الظاهر.** `amer_gate.em_dash_count()` (يستبعد script/style بشكل صحيح) يعطي 0 على الاثنين، مطابقاً لفحصي اليدوي. **لا خرق WRITING-LAW فعلي بجسم المقال** — يبقى تنظيف الشرطات بالـmeta/الروابط تحسيناً تجميلياً منخفض الأولوية فقط، ليس بنداً حاكماً كما وُصف سابقاً.
+
+**(4) لا تغيّر في حالة الملفات المتابَعة:** `evening-rituals.html` — تحقّقت مباشرة من JSON-LD (سطر 133): **لا يزال فاسداً** (4 عناوين ritual-card + صندوق نشرة مزيَّف بدل الأسئلة الست الحقيقية بأسطر 241-293 الظاهرة كـ`<h3>`) — يبقى `noindex,nofollow` بصواب. `preconception-checkups.html`=1538w (`<article>`)، لم يُوسَّع، يبقى `noindex,nofollow`. `fitness-for-women-saudi.html`=2069w نظيف، `indoor-plants-saudi-arabia.html`=2238w نظيف — كلاهما `index,follow` بصحة، لا تغيّر.
+
+**(5) روتيني:** `freeze_watch`=نظيف لا OBJECTION. `deepen_gate`=72 خام (ثابت). `handoff_sync`={"cards":25} ثابت. صور: `list-image-pending.py`=51/51 `approved`، **صفر معلَّق فعلياً — لا حاجة توليد Higgsfield هذه الدورة** (ملاحظة: لا تتوفر أداة Higgsfield MCP في بيئة هذه الجلسة، لكن غير ذي أثر لأن لا طلب فعلي أصلاً). `gsystem_autopilot.py` (بلا push، PYTHONPATH=scripts): صفر إخراج/exit 0 (لا محتوى معتمد جديد بانتظار بناء، متسق مع صور 0 معلّق — عطل الأداء المعروف بـ`rglob` لم يُصلَح بعد، لم يُختبر بحمل فعلي).
+
+**(6) git:** `origin/main` = `897dff98` (ما زال أحدث، لا كوميتات جديدة من كورسر منذ 15:39Z). `git status`: 8 ملفات معدَّلة محلياً غير مدفوعة (نفس ملفات الدورات السابقة: `fitness-for-women-saudi.html`/`indoor-plants-saudi-arabia.html`/`evening-rituals.html` + ملفات حوكمة + تقارير) + `testfile_amer.txt` untracked فارغ (متروك، غير ضار). قفل واحد فقط متبقٍ (`objects/maintenance.lock`، لا `index.lock`/`ORIG_HEAD.lock` هذه المرة). سأحاول دفعة best-effort واحدة آخر الدورة.
+
+**لا اعتماد LIVE جديد. لا انتكاسة. تصحيح جوهري لقائمة أولوية DEEPEN (الفجوة أكبر لا أصغر) + استبعاد بند شرطات حاكم كان خاطئاً.** التفاصيل الكاملة: `quality-log.md`/`AMER-ORDERS-ACTIVE.md` (2026-07-10T16:08Z). **بانتظار هيما:** DEEPEN العشرة أعلاه بفارق ~300 كلمة حقيقي لكل ملف (لا ~15-40 كما ظُنّ)، ركّز على قيمة جديدة حقيقية لا حشو. **بانتظار كورسر (بلا تغيير):** إعادة بناء FAQPage `evening-rituals` من الأسئلة الست الحقيقية + توسيع `preconception-checkups` + أداء `gsystem_autopilot.py` (وصفة الإصلاح في `AMER-ORDERS-ACTIVE.md`) + **بند جديد اختياري منخفض:** تصحيح `quality-audit.py::visible_words()` ليقتصر على `<article>` مثل `amer_gate.py` (توحيد أداتَي القياس، يمنع تكرار هذا الالتباس).
+
+— عامر

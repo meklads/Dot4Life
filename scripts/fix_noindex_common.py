@@ -181,37 +181,121 @@ def ensure_article_schema(html: str) -> str:
     return html.replace("</head>", script + "</head>", 1)
 
 
-def extract_faq_pairs(html: str) -> list[tuple[str, str]]:
+FAQ_NOISE_MARKERS = (
+    "Enjoying this article",
+    "Friday Family",
+    "Read Also",
+    "اقرأ أيضاً",
+    "Subscribe",
+    "اشترك",
+    "Get Started Today",
+    "ابدأ اليوم",
+    "Get weekly",
+    "نصائح الجمعة",
+    "📬",
+    "📖",
+)
+
+NOISE_BLOCK_CLASSES = (
+    "in-content-subscribe",
+    "article-friday-cta",
+    "article-read-also",
+    "article-tool-cta",
+    "sidebar-friday",
+)
+
+
+def _clean_faq_text(text: str) -> str:
+    text = re.sub(r"<[^>]+>", "", text)
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def _is_noise_faq_question(question: str) -> bool:
+    return any(marker in question for marker in FAQ_NOISE_MARKERS)
+
+
+def _strip_faq_noise_blocks(html: str) -> str:
+    for cls in NOISE_BLOCK_CLASSES:
+        html = re.sub(
+            rf'<div class="{cls}"[^>]*>[\s\S]*?</div>\s*',
+            "",
+            html,
+            flags=re.I,
+        )
+    return html
+
+
+def extract_visible_faq_pairs(
+    html: str,
+    *,
+    min_pairs: int = 1,
+    max_pairs: int = 8,
+) -> list[tuple[str, str]]:
+    """Extract FAQ Q/A only from visible FAQ blocks — never newsletters/read-also."""
+    body = _strip_faq_noise_blocks(html)
     pairs: list[tuple[str, str]] = []
+    seen: set[str] = set()
+
+    def add(question: str, answer: str) -> None:
+        q = _clean_faq_text(question)
+        a = _clean_faq_text(answer)
+        if not q or not a or len(a) < 15:
+            return
+        if _is_noise_faq_question(q):
+            return
+        if q in seen:
+            return
+        seen.add(q)
+        pairs.append((q, a))
+
     for m in re.finditer(
-        r'<div class="faq-item">\s*<h3[^>]*>(.*?)</h3>\s*<p[^>]*>(.*?)</p>',
-        html,
-        re.S,
+        r'<div class="faq-item"[^>]*>([\s\S]*?)</div>',
+        body,
+        re.I,
     ):
-        q = re.sub(r"<[^>]+>", "", m.group(1)).strip()
-        a = re.sub(r"<[^>]+>", "", m.group(2)).strip()
-        if q and a:
-            pairs.append((q, a))
-    if len(pairs) >= 4:
-        return pairs[:6]
+        chunk = m.group(1)
+        hm = re.search(r"<h3[^>]*>(.*?)</h3>", chunk, re.S | re.I)
+        if not hm:
+            continue
+        pm = re.search(r"<p[^>]*>(.*?)</p>", chunk, re.S | re.I)
+        if not pm:
+            pm = re.search(r'<div class="faq-a"[^>]*>([\s\S]*?)</div>', chunk, re.S | re.I)
+        if pm:
+            add(hm.group(1), pm.group(1))
+
+    if len(pairs) >= min_pairs:
+        return pairs[:max_pairs]
+
+    sec = re.search(
+        r'<h2[^>]*id="[^"]*faq[^"]*"[^>]*>[\s\S]*?</h2>|'
+        r'<h2[^>]*>[^<]*(?:أسئلة شائعة|Frequently Asked Questions|FAQ)[^<]*</h2>',
+        body,
+        re.I,
+    )
+    if not sec:
+        return pairs[:max_pairs]
+
+    chunk = body[sec.end() : sec.end() + 15000]
+    if "</article>" in chunk:
+        chunk = chunk.split("</article>", 1)[0]
+
     for m in re.finditer(
-        r'itemtype="https://schema.org/Question"[^>]*>\s*<h3[^>]*>(.*?)</h3>.*?itemprop="text"[^>]*>\s*<p[^>]*>(.*?)</p>',
-        html,
-        re.S,
+        r'itemtype="https://schema.org/Question"[\s\S]*?<h3[^>]*>(.*?)</h3>'
+        r'[\s\S]*?itemprop="text"[\s\S]*?<p[^>]*>(.*?)</p>',
+        chunk,
+        re.I,
     ):
-        q = re.sub(r"<[^>]+>", "", m.group(1)).strip()
-        a = re.sub(r"<[^>]+>", "", m.group(2)).strip()
-        if q and a:
-            pairs.append((q, a))
-    return pairs[:6]
+        add(m.group(1), m.group(2))
+
+    return pairs[:max_pairs]
 
 
-def ensure_faq_schema(html: str) -> str:
-    if re.search(r'"@type"\s*:\s*"FAQPage"', html):
-        return html
-    pairs = extract_faq_pairs(html)
-    if len(pairs) < 4:
-        return html
+def extract_faq_pairs(html: str) -> list[tuple[str, str]]:
+    """Backward-compatible alias — strict visible FAQ extraction only."""
+    return extract_visible_faq_pairs(html, min_pairs=1, max_pairs=6)
+
+
+def _faq_schema_script(pairs: list[tuple[str, str]]) -> str:
     entities = [
         {
             "@type": "Question",
@@ -221,8 +305,65 @@ def ensure_faq_schema(html: str) -> str:
         for q, a in pairs
     ]
     block = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": entities}
-    script = f'<script type="application/ld+json">{json.dumps(block, ensure_ascii=False)}</script>\n'
-    return html.replace("</head>", script + "</head>", 1)
+    return f'<script type="application/ld+json">{json.dumps(block, ensure_ascii=False)}</script>'
+
+
+def replace_faq_schema(html: str, pairs: list[tuple[str, str]]) -> str:
+    if not pairs:
+        return html
+    script = _faq_schema_script(pairs)
+    entities = [
+        {
+            "@type": "Question",
+            "name": q,
+            "acceptedAnswer": {"@type": "Answer", "text": a},
+        }
+        for q, a in pairs
+    ]
+
+    for m in re.finditer(
+        r'<script[^>]*type="application/ld\+json"[^>]*>(.*?)</script>',
+        html,
+        re.S,
+    ):
+        raw = m.group(1).strip()
+        try:
+            data = json.loads(raw)
+        except json.JSONDecodeError:
+            continue
+        if data.get("@type") == "FAQPage":
+            return html[: m.start()] + script + html[m.end() :]
+        graph = data.get("@graph")
+        if isinstance(graph, list):
+            new_graph = []
+            replaced = False
+            for node in graph:
+                if isinstance(node, dict) and node.get("@type") == "FAQPage":
+                    new_graph.append({"@type": "FAQPage", "mainEntity": entities})
+                    replaced = True
+                else:
+                    new_graph.append(node)
+            if replaced:
+                data["@graph"] = new_graph
+                patched = (
+                    f'<script type="application/ld+json">'
+                    f'{json.dumps(data, ensure_ascii=False)}</script>'
+                )
+                return html[: m.start()] + patched + html[m.end() :]
+
+    return html.replace("</head>", script + "\n</head>", 1)
+
+
+def ensure_faq_schema(html: str) -> str:
+    has_faq = bool(re.search(r'"@type"\s*:\s*"FAQPage"', html))
+    pairs = extract_visible_faq_pairs(html)
+    if not pairs:
+        return html
+    if has_faq:
+        return replace_faq_schema(html, pairs)
+    if len(pairs) >= 4:
+        return replace_faq_schema(html, pairs)
+    return html
 
 
 def repair_invalid_ld_json(html: str) -> str:

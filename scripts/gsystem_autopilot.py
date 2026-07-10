@@ -23,7 +23,7 @@ STATE = ROOT / "operating-system/.gsystem-state.json"
 LOG = ROOT / "outputs/logs/gsystem-autopilot.log"
 LEGEND_MARKER = "<!-- gsystem-autopilot-legend -->"
 
-SKIP_DIRS = {"outputs", "node_modules", ".git", "scripts"}
+SKIP_DIRS = {"outputs", "node_modules", ".git", "scripts", "legacy", "operating-system", "capsule-engine", "system", ".tmp_amer"}
 
 LOG_LEGEND = """\
 # سجل الأوتوبايلوت — كيف تقرأه
@@ -108,16 +108,26 @@ def slug_to_build_id() -> dict[str, str]:
     return out
 
 
-def html_pages_for_slug(slug: str) -> list[Path]:
+_slug_index_cache: dict[str, list[Path]] | None = None
+
+
+def _build_slug_index() -> dict[str, list[Path]]:
     from image_manifest import article_slug_from_path
 
-    found: list[Path] = []
+    index: dict[str, list[Path]] = {}
     for p in ROOT.rglob("*.html"):
         if any(part in SKIP_DIRS for part in p.parts):
             continue
-        if article_slug_from_path(p) == slug:
-            found.append(p)
-    return sorted(set(found))
+        slug = article_slug_from_path(p)
+        index.setdefault(slug, []).append(p)
+    return index
+
+
+def html_pages_for_slug(slug: str) -> list[Path]:
+    global _slug_index_cache
+    if _slug_index_cache is None:
+        _slug_index_cache = _build_slug_index()
+    return sorted(set(_slug_index_cache.get(slug, [])))
 
 
 def page_has_approved_hero(path: Path, web_path: str) -> bool:
