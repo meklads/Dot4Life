@@ -6,22 +6,7 @@
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-(function(){
-  /* theme */
-  var tb=document.getElementById("theme-toggle");
-  if(tb)tb.addEventListener("click",function(){
-    var h=document.documentElement,t=h.getAttribute("data-theme")==="dark"?"light":"dark";
-    h.setAttribute("data-theme",t);localStorage.setItem("dfl-theme",t);
-  });
-  /* scroll shadow */
-  var nb=document.getElementById("navbar");
-  if(nb)window.addEventListener("scroll",function(){nb.classList.toggle("scrolled",window.scrollY>10);},{passive:true});
-  /* reveal */
-  if("IntersectionObserver" in window){
-    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add("visible");});},{threshold:0.1});
-    document.querySelectorAll(".reveal").forEach(function(el){io.observe(el);});
-  } else document.querySelectorAll(".reveal").forEach(function(el){el.classList.add("visible");});
-})(); <meta name="description" content="Salalah & Oman travel guide, Khareef season, Wadi Darbat, Mughsail Beach, Muscat highlights, frankincense, and practical tips for GCC travelers."/>
+ <meta name="description" content="Salalah & Oman travel guide, Khareef season, Wadi Darbat, Mughsail Beach, Muscat highlights, frankincense, and practical tips for GCC travelers."/>
   <link rel="canonical" href="https://dotforlife.com/guides/salalah-oman.html"/>
   <meta property="og:site_name" content="DOTFORLIFE" />
   <meta property="og:title" content="Salalah & Oman Guide, DOTFORLIFE | دليل صلالة وعُمان"
@@ -32,12 +17,44 @@
 <link rel="stylesheet" href="/styles/pages/guides_salalah-oman.css?v=821e658">
 
   <!-- DFL CANONICAL SYSTEM CSS -->
-  <style id="dfl-sys">
-    
-    
-    nav
-    
-    nav
+  <!-- DFL Analytics v1 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3G1XPV4F0G"></script>
+<script>
+function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','G-3G1XPV4F0G',{
+  page_title:document.title,
+  page_location:window.location.href,
+  send_page_view:true,
+  cookie_flags:'SameSite=None;Secure'
+});
+window.dflTrack=function(event,params){
+  gtag('event',event,Object.assign({
+    page_path:location.pathname,
+    language:document.documentElement.getAttribute('data-lang')||'en'
+  },params||{}));
+};
+</script>
+
+
+<script>
+function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','G-3G1XPV4F0G',{
+  page_title:document.title,
+  page_location:window.location.href,
+  send_page_view:true,
+  cookie_flags:'SameSite=None;Secure'
+});
+window.dflTrack=function(event,params){
+  gtag('event',event,Object.assign({
+    page_path:location.pathname,
+    language:document.documentElement.getAttribute('data-lang')||'en'
+  },params||{}));
+};
+</script>
+
+<style id="dfl-sys">
     /* Flash-safe tokens */
     :root {
       --gold: #6abfb8; --gold-l: #8fd4cc; --gold-d: #4a8a82;
@@ -178,9 +195,9 @@ body{padding-top:110px!important;}
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-3G1XPV4F0G'); <meta property="og:image" content="https://dotforlife.com/assets/images/approved/hero-best-family-destinations-gulf.webp"/>
-  <meta name="twitter:image" content="https://dotforlife.com/og/travel.jpg"/>
-  <meta name="twitter:card" content="summary_large_image"/>
+  gtag('config', 'G-3G1XPV4F0G');
+</script>
+<meta name="twitter:card" content="summary_large_image"/>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -189,10 +206,18 @@ body{padding-top:110px!important;}
   <link rel="stylesheet" href="/styles/home.css?v=20260608u">
   <link rel="stylesheet" href="/styles/pages/articles.css?v=20260608u">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1436107577087160" crossorigin="anonymous"></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3G1XPV4F0G"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3G1XPV4F0G');</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Salalah & Oman Guide, DOTFORLIFE | دليل صلالة وسلطنة عُمان", "description": "Salalah & Oman travel guide, Khareef season, Wadi Darbat, Mughsail Beach, Muscat highlights, frankincense, and practical tips for GCC travelers.", "author": {"@type": "Organization", "name": "DOTFORLIFE"}, "datePublished": "2026-06-22", "dateModified": "2026-06-22", "image": "https://dotforlife.com/assets/images/hero-salalah-oman.webp", "mainEntityOfPage": "https://dotforlife.com/guides/salalah-oman.html"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "ما هو أفضل وقت لزيارة صلالة مع العائلة؟", "acceptedAnswer": {"@type": "Answer", "text": "أفضل وقت لزيارة صلالة مع العائلة هو موسم الخريف من يونيو إلى سبتمبر حيث الأجواء معتدلة والخضرة في أبهى صورها. درجة الحرارة تتراوح بين 25-30 درجة مئوية والأمطار خفيفة ومنعشة. يوليو وأغسطس هما ذروة الموسم وتكون الفنادق مكتملة الحجز."}}, {"@type": "Question", "name": "كم تكلفة السفر إلى صلالة من دول الخليج؟", "acceptedAnswer": {"@type": "Answer", "text": "تكلفة السفر إلى صلالة لأسرة مكونة من 5 أفراد تتراوح بين 2,500 و4,000 ريال سعودي للأسبوع شاملة الطيران والإقامة والطعام. تذاكر الطيران من الرياض إلى صلالة 250-400 ريال للفرد ذهاباً وإياباً. الفنادق تبدأ من 280 ريالاً لليلة."}}, {"@type": "Question", "name": "هل تحتاج تأشيرة لدخول عمان؟", "acceptedAnswer": {"@type": "Answer", "text": "مواطنو دول مجلس التعاون الخليجي لا يحتاجون تأشيرة لدخول سلطنة عمان، فقط بطاقة الهوية الوطنية. المقيمون في الخليج من جنسيات أخرى يحتاجون تأشيرة إلكترونية (20 ريالاً عمانياً) يمكن الحصول عليها عبر موقع الشرطة العمانية قبل السفر."}}, {"@type": "Question", "name": "ما هي أفضل المطاعم العائلية في صلالة؟", "acceptedAnswer": {"@type": "Answer", "text": "أفضل المطاعم العائلية في صلالة تشمل: مطعم المندي الملكي (مندي دجاج 45 ريالاً للعائلة)، مطعم أمواج للمشويات البحرية (60 ريالاً للعائلة)، مطعم الشاطئ (برغر وبطاطس 40 ريالاً). جميعها توفر جلسات عائلية ومناسبة للأطفال."}}]}</script>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:card" content="summary_large_image"/>
+  <meta property="og:image" content="https://dotforlife.com/assets/images/hero-salalah-oman.webp"/>
+  <meta name="twitter:image" content="https://dotforlife.com/assets/images/hero-salalah-oman.webp"/>
+  <meta name="twitter:card" content="summary_large_image"/>
 </head>
 <body data-template="article">
 

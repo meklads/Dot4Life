@@ -6,22 +6,7 @@
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-(function(){
-  /* theme */
-  var tb=document.getElementById("theme-toggle");
-  if(tb)tb.addEventListener("click",function(){
-    var h=document.documentElement,t=h.getAttribute("data-theme")==="dark"?"light":"dark";
-    h.setAttribute("data-theme",t);localStorage.setItem("dfl-theme",t);
-  });
-  /* scroll shadow */
-  var nb=document.getElementById("navbar");
-  if(nb)window.addEventListener("scroll",function(){nb.classList.toggle("scrolled",window.scrollY>10);},{passive:true});
-  /* reveal */
-  if("IntersectionObserver" in window){
-    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add("visible");});},{threshold:0.1});
-    document.querySelectorAll(".reveal").forEach(function(el){io.observe(el);});
-  } else document.querySelectorAll(".reveal").forEach(function(el){el.classList.add("visible");});
-})(); <meta name="description" content="Complete guide to religious tourism in Mecca & Medina, Umrah steps, holy sites, best seasons, packing tips, and practical advice for GCC pilgrims."/>
+ <meta name="description" content="Complete guide to religious tourism in Mecca & Medina, Umrah steps, holy sites, best seasons, packing tips, and practical advice for GCC pilgrims."/>
   <link rel="canonical" href="https://dotforlife.com/guides/mecca-medina.html"/>
   <meta property="og:site_name" content="DOTFORLIFE" />
   <meta property="og:title" content="Mecca & Medina Travel Guide, DOTFORLIFE | دليل مكة والمدينة"/>
@@ -32,12 +17,44 @@
 <link rel="stylesheet" href="/styles/pages/guides_mecca-medina.css?v=821e658">
 
   <!-- DFL CANONICAL SYSTEM CSS -->
-  <style id="dfl-sys">
-    
-    
-    nav
-    
-    nav
+  <!-- DFL Analytics v1 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3G1XPV4F0G"></script>
+<script>
+function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','G-3G1XPV4F0G',{
+  page_title:document.title,
+  page_location:window.location.href,
+  send_page_view:true,
+  cookie_flags:'SameSite=None;Secure'
+});
+window.dflTrack=function(event,params){
+  gtag('event',event,Object.assign({
+    page_path:location.pathname,
+    language:document.documentElement.getAttribute('data-lang')||'en'
+  },params||{}));
+};
+</script>
+
+
+<script>
+function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','G-3G1XPV4F0G',{
+  page_title:document.title,
+  page_location:window.location.href,
+  send_page_view:true,
+  cookie_flags:'SameSite=None;Secure'
+});
+window.dflTrack=function(event,params){
+  gtag('event',event,Object.assign({
+    page_path:location.pathname,
+    language:document.documentElement.getAttribute('data-lang')||'en'
+  },params||{}));
+};
+</script>
+
+<style id="dfl-sys">
     /* Flash-safe tokens */
     :root {
       --gold: #6abfb8; --gold-l: #8fd4cc; --gold-d: #4a8a82;
@@ -178,9 +195,9 @@ body{padding-top:110px!important;}
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-3G1XPV4F0G'); <meta property="og:image" content="https://dotforlife.com/og/islamic.jpg"/>
-  <meta name="twitter:image" content="https://dotforlife.com/og/islamic.jpg"/>
-  <meta name="twitter:card" content="summary_large_image"/>
+  gtag('config', 'G-3G1XPV4F0G');
+</script>
+<meta name="twitter:card" content="summary_large_image"/>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"Mecca & Medina Religious Tourism Guide","description":"Comprehensive guide for religious tourism in Mecca and Medina for GCC travelers.","url":"https://dotforlife.com/guides/mecca-medina","touristType":"Religious tourism"}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -189,10 +206,18 @@ body{padding-top:110px!important;}
   <link rel="stylesheet" href="/styles/home.css?v=20260608u">
   <link rel="stylesheet" href="/styles/pages/articles.css?v=20260608u">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1436107577087160" crossorigin="anonymous"></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3G1XPV4F0G"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3G1XPV4F0G');</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Mecca & Medina Guide, DOTFORLIFE | دليل مكة والمدينة المنورة", "description": "Complete guide to religious tourism in Mecca & Medina, Umrah steps, holy sites, best seasons, packing tips, and practical advice for GCC pilgrims.", "author": {"@type": "Organization", "name": "DOTFORLIFE"}, "datePublished": "2026-06-22", "dateModified": "2026-06-22", "image": "https://dotforlife.com/assets/images/hero-mecca-medina.webp", "mainEntityOfPage": "https://dotforlife.com/guides/mecca-medina.html"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "ما هي أفضل طريقة للوصول إلى مكة المكرمة؟", "acceptedAnswer": {"@type": "Answer", "text": "الوصول عبر مطار الملك عبدالعزيز بجدة (80 كم، ساعة ونصف بالسيارة)، قطار الحرمين السريع (30 دقيقة من جدة)، أو مطار الطائف الإقليمي (75 كم). داخل مكة: قطار المشاعر المقدسة مجاني للحجاج، سيارات الأجرة 30-50 ريالاً، وتطبيقات كريم وأوبر. تطبيقا اعتمرنا وتوكلنا ضروريان لتصاريح الصلاة."}}, {"@type": "Question", "name": "ما هي أفضل الفنادق القريبة من الحرم في مكة والمدينة؟", "acceptedAnswer": {"@type": "Answer", "text": "في مكة: 5 نجوم فيرمونت من 1,200 ريال، هيلتون من 800 ريال، إيوان من 500 ريال. 4 نجوم ليڤانت من 350 ريال. اقتصادي في أجياد من 150 ريال. في المدينة: ماريوت من 700 ريال، موفنبيك من 500 ريال، دار الإيمان من 600 ريال. احجز قبل 4-6 أسابيع في غير الذروة و3 أشهر في رمضان."}}, {"@type": "Question", "name": "كم تكلفة رحلة العمرة لأسرة مكونة من 4 أفراد؟", "acceptedAnswer": {"@type": "Answer", "text": "في غير الذروة (شوال-شعبان): 8,000-12,000 ريال لـ7 أيام (تذاكر 3,000-4,000، فندق 3,500-5,000، تأشيرة 1,200-1,600، طعام ونقل 1,500-2,000). في الذروة (رمضان): ارتفاع 50-70% إلى 15,000-22,000 ريال. باقات العمرة تبدأ من 3,500 ريال للفرد. عدد المعتمرين 1446هـ تجاوز 8.5 مليون."}}, {"@type": "Question", "name": "ما هي آداب وتعاليم زيارة المسجد النبوي؟", "acceptedAnswer": {"@type": "Answer", "text": "السلام على النبي عند القبر الشريف (بعد الفجر أو العشاء)، الصلاة في الروضة الشريفة تحتاج حجزاً عبر اعتمرنا (30 دقيقة). زيارة البقيع بعد الفجر والعصر، مسجد قباء (15 دقيقة سيراً، صلاة ركعتين تعدل عمرة)، جبل أحد (5 كم شمالاً). الهيئة العامة توفر مرشدين متطوعين."}}, {"@type": "Question", "name": "كيف أستعد لرحلة العمرة مع العائلة؟", "acceptedAnswer": {"@type": "Answer", "text": "صحياً: تطعيم التهاب السحائي قبل 10 أيام، حقيبة إسعافات أولية. المستندات: جواز صالح 6 أشهر، تأشيرة، حجوزات، تأمين صحي. التطبيقات: اعتمرنا، توكلنا، نسك، خرائط Google للتحميل المسبق. الملابس: إحرام نظيف، أحذية مريحة للمشي (8-12 كم يومياً). وزارة الحج تقدم خدمة دليلك 800-111-0000."}}, {"@type": "Question", "name": "What is Al-Hajar Al-Aswad (Black Stone)?", "acceptedAnswer": {"@type": "Answer", "text": "The sacred stone embedded in the eastern corner of the Kaaba. Pilgrims kiss or gesture toward it at the start of each Tawaf circuit."}}]}</script>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:card" content="summary_large_image"/>
+  <meta property="og:image" content="https://dotforlife.com/assets/images/hero-mecca-medina.webp"/>
+  <meta name="twitter:image" content="https://dotforlife.com/assets/images/hero-mecca-medina.webp"/>
+  <meta name="twitter:card" content="summary_large_image"/>
 </head>
 <body data-template="article">
 
