@@ -2364,3 +2364,70 @@ title/H1/og:image/Article.headline أُصلحت فعلاً (شكراً)، **لك
 **ملاحظة أولوية:** هذا البند **أهم حالياً** من أي تلميع محتوى إضافي — لأنه يؤثر على ثقة جوجل بالموقع كله (السبب المرجّح وراء الرقم الكبير "180 اكتُشفت لم تُزر بعد").
 
 — عامر
+
+## 🟢 دورة عامر — 2026-07-10T15:39Z — تجاوز PASS خاطئ من amer_gate.py + تشخيص دقيق لعطل autopilot
+
+**قرار حاكم:** `evening-rituals.html` **يبقى `noindex,nofollow`** رغم أن `amer_gate.py` أعطى PASS (`faq_n: 5`). التحقّق اليدوي المباشر لسطر 133 (JSON-LD) يؤكد أن الـ5 عناصر ليست الأسئلة الست الحقيقية المرئية (أسطر 241-293) بل 4 عناوين "طقس" + عنصر خامس مزيَّف إنجليزي "Enjoying this article/Subscribe". **حكم عامر يعلو على PASS الأداة عند التعارض — هذا مثال حي على لماذا.**
+
+**أمر متبقٍّ لكورسر (تراكمي من 06:40Z/13:12Z/14:04Z/15:09Z، لم يُنفَّذ بعد):**
+1. استبدال `mainEntity` في FAQPage `evening-rituals.html` (سطر 133) بالأسئلة الست الحقيقية من أسطر 241-293 (اسم السؤال=`h3`، نص الجواب=أول `<p>` داخل `itemprop="text"`).
+2. توسيع `preconception-checkups.html` +100-150 كلمة حقيقية (لا حشو) لتجاوز 1600w (حالياً 1538w مؤكَّد).
+3. **تشخيص دقيق جديد لعطل autopilot:** `scripts/gsystem_autopilot.py` سطر 111، دالة `html_pages_for_slug()` — تُنفّذ `ROOT.rglob("*.html")` كاملة الشجرة لكل slug على حدة، وتُصفّي `SKIP_DIRS` بعد السرد. الإصلاح: بناء خريطة `slug→[paths]` بمسح واحد فقط (`os.walk` مع استبعاد `SKIP_DIRS` من `dirnames` أثناء المشي، لا بعده) قبل حلقة الـslugs.
+
+**تأكيد إيجابي:** `fitness-for-women-saudi.html`/`indoor-plants-saudi-arabia.html` يبقيان `index,follow` بصواب (WARN غير حاجب فقط). صور 51/51 `approved` صفر معلَّق. `structural_audit`=312/0 مكسور. `freeze_watch`=نظيف. تحقيق تعارض الدومين (`897dff98`) منفَّذ من كورسر — الباقي إجراء GSC يدوي من جوست (خارج نطاقنا).
+
+**لا اعتماد LIVE جديد. لا انتكاسة.**
+
+— عامر
+
+## 🔧 أمر عامر — 2026-07-10T16:04Z — بندان متبقيان لا يحتاجان انتظار جوجل (تحقّقت أنهما لا يزالان بلا إصلاح)
+
+المستخدم طلب استمرار العمل بدل الانتظار السلبي لأسبوع بيانات Search Console. فحصت الكود مباشرة الآن وأكدت أن هذين البندين (معلقان منذ 06:40 UTC و25+ دورة على التوالي) لا يزالان بلا أي إصلاح:
+
+### 1) أداء `scripts/gsystem_autopilot.py` — `rglob` غير مفهرس (سطر 111-120)
+
+الكود الحالي:
+```python
+def html_pages_for_slug(slug: str) -> list[Path]:
+    from image_manifest import article_slug_from_path
+    found: list[Path] = []
+    for p in ROOT.rglob("*.html"):
+        if any(part in SKIP_DIRS for part in p.parts):
+            continue
+        if article_slug_from_path(p) == slug:
+            found.append(p)
+    return sorted(set(found))
+```
+هذه الدالة تُستدعى مرة لكل slug داخل حلقة (`slugs_needing_build()`)، فتُعيد مسح شجرة المشروع بالكامل (`rglob`) من جديد لكل slug — تعقيد O(عدد الـslugs × عدد ملفات HTML)، وهذا هو سبب التعليق المتكرر (exit124/timeout، مؤكَّد 25+ مرة).
+
+**الإصلاح المطلوب بالضبط:** ابنِ فهرساً واحداً (slug → مسارات) بمسح واحد لشجرة المشروع قبل أي حلقة، ثم استخدم بحث قاموس O(1) بدل `rglob` من جديد كل مرة. مثال:
+```python
+_slug_index_cache = None
+
+def _build_slug_index() -> dict[str, list[Path]]:
+    from image_manifest import article_slug_from_path
+    index: dict[str, list[Path]] = {}
+    for p in ROOT.rglob("*.html"):
+        if any(part in SKIP_DIRS for part in p.parts):
+            continue
+        slug = article_slug_from_path(p)
+        index.setdefault(slug, []).append(p)
+    return index
+
+def html_pages_for_slug(slug: str) -> list[Path]:
+    global _slug_index_cache
+    if _slug_index_cache is None:
+        _slug_index_cache = _build_slug_index()
+    return sorted(set(_slug_index_cache.get(slug, [])))
+```
+**تأكيد الإغلاق المطلوب:** تشغيل `gsystem_autopilot.py` (بلا push) يُنهي بدون `timeout`/`exit124`، خلال ثوانٍ معدودة بدل التعليق.
+
+### 2) عطل مولّد الأسئلة الشائعة (FAQPage) — لا يزال يستخرج من مصدر غير `.faq-item h3`
+
+هذا العطل هو السبب المباشر وراء عدة حوادث تلوّث مؤكَّدة هذه الجلسة وحدها (`evening-rituals.html` — صندوق نشرة بريدية دخل كسؤال FAQ خامس، وملفات أخرى سابقة). **لم أجد أي سكربت مولّد FAQPage في المشروع حالياً** (بحثت بـ`find -iname "*faq*generat*"` وما شابه، صفر نتائج) — يعني الأرجح أن التوليد يحدث في مكان لا أراه من هنا (ربما جزء من أداة/سكربت خارج هذا الـrepo، أو يتم يدوياً من هيما بمساعدة AI بلا سكربت مخصص).
+
+**المطلوب من كورسر:** حدد بالضبط أين/كيف تُبنى كتلة `FAQPage` JSON-LD حالياً (سكربت؟ عملية يدوية؟)، وإن كان سكربتاً، عدّله ليستخرج **حصراً** من عناصر `.faq-item h3` (أو المكافئ الحالي) الظاهرة فعلياً في الصفحة — لا التقاط أي عنصر آخر (صناديق نشرة، أزرار "اقرأ أيضاً"، إلخ). إن كانت العملية يدوية، وثّق تحذيراً واضحاً في `content-standards.md` (إن لم يكن موجوداً) يمنع نسخ أي محتوى غير سؤال/جواب فعلي إلى `mainEntity`.
+
+**لا حاجة لانتظار Google لأي من البندين — كلاهما قابل للتنفيذ والتأكد منه الآن.**
+
+— عامر
