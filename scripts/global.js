@@ -405,6 +405,19 @@
     });
   })();
 
+  // ── 8b. Hub FAQ accordion — one open at a time ───────────
+  (function() {
+    document.querySelectorAll('.hh-faq').forEach(function(faq) {
+      faq.addEventListener('toggle', function(e) {
+        var t = e.target;
+        if (!t || t.tagName !== 'DETAILS' || !t.open) return;
+        faq.querySelectorAll('details.hh-faq-item[open]').forEach(function(d) {
+          if (d !== t) d.open = false;
+        });
+      }, true);
+    });
+  })();
+
   // ── 9. Broadcast custom event for other scripts ──────────
   // Let other scripts know GA4 events are ready
   document.dispatchEvent(new CustomEvent('dfl:analytics-ready', { detail: { id: 'G-3G1XPV4F0G' } }));

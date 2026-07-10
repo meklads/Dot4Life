@@ -252,12 +252,16 @@ def extract_visible_faq_pairs(
         pairs.append((q, a))
 
     for m in re.finditer(
-        r'<div class="faq-item"[^>]*>([\s\S]*?)</div>',
+        r'<(?:div|details)\s+class="[^"]*faq-item[^"]*"[^>]*>([\s\S]*?)</(?:div|details)>',
         body,
         re.I,
     ):
         chunk = m.group(1)
-        hm = re.search(r"<h3[^>]*>(.*?)</h3>", chunk, re.S | re.I)
+        hm = re.search(
+            r"<(?:h3|summary)[^>]*>(.*?)</(?:h3|summary)>",
+            chunk,
+            re.S | re.I,
+        )
         if not hm:
             continue
         pm = re.search(r"<p[^>]*>(.*?)</p>", chunk, re.S | re.I)

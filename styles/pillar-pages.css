@@ -381,6 +381,80 @@ body.category-page .hh-faq {
   width: 100%;
   margin-inline: 0;
 }
+
+/* Hub FAQ accordion — questions only until opened */
+body.category-page .hh-faq {
+  display: flex;
+  flex-direction: column;
+  gap: .85rem;
+  margin-top: 1.5rem;
+}
+
+body.category-page details.hh-faq-item {
+  background: #fff;
+  border: 1px solid rgba(106, 191, 184, .25);
+  border-radius: 16px;
+  padding: 0;
+  box-shadow: 0 3px 16px rgba(10, 107, 99, .05);
+  overflow: hidden;
+}
+
+body.category-page details.hh-faq-item > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0;
+  padding: 1.15rem 1.25rem;
+  font-size: 1.02rem;
+  font-weight: 800;
+  color: var(--pillar-accent-dark, #054241);
+  line-height: 1.4;
+  user-select: none;
+}
+
+body.category-page details.hh-faq-item > summary::-webkit-details-marker {
+  display: none;
+}
+
+body.category-page details.hh-faq-item > summary::after {
+  content: '';
+  flex-shrink: 0;
+  width: .55rem;
+  height: .55rem;
+  border-inline-end: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  opacity: .55;
+  transition: transform .2s ease, opacity .2s ease;
+  margin-top: -.2rem;
+}
+
+body.category-page details.hh-faq-item[open] > summary::after {
+  transform: rotate(225deg);
+  margin-top: .15rem;
+  opacity: .85;
+}
+
+body.category-page details.hh-faq-item[open] > summary {
+  padding-bottom: .55rem;
+}
+
+body.category-page details.hh-faq-item > p {
+  margin: 0;
+  padding: 0 1.25rem 1.15rem;
+  font-size: .92rem;
+  line-height: 1.7;
+  color: var(--text-2, #4a5560);
+}
+
+[data-theme="dark"] body.category-page details.hh-faq-item {
+  background: #1a2422;
+  border-color: rgba(106, 191, 184, .16);
+}
+
 body.category-page .hh-trust {
   padding-block: clamp(3.25rem, 6vw, 5.5rem);
 }
@@ -422,7 +496,7 @@ body.category-page .hh-pillars {
    Pillars stay full-width below. ─────────────────────────────── */
 body.category-page .hh-intro-row {
   display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(220px, 400px);
+  grid-template-columns: minmax(0, 1.1fr) minmax(275px, 500px);
   gap: clamp(1.35rem, 3vw, 2.5rem);
   align-items: start;
   margin-bottom: clamp(1.75rem, 3vw, 2.5rem);
@@ -447,7 +521,7 @@ body.category-page .hh-intro-copy .hh-intro-split {
 body.category-page .hh-photo-duo {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: .85rem;
+  gap: 1.05rem;
   margin: .15rem 0 0;
   max-width: none;
   width: 100%;
@@ -460,7 +534,7 @@ body.category-page .hh-photo-duo {
     gap: 1.35rem;
   }
   body.category-page .hh-photo-duo {
-    max-width: 420px;
+    max-width: 525px;
     width: 100%;
     justify-self: start;
   }
@@ -468,8 +542,8 @@ body.category-page .hh-photo-duo {
 
 @media (max-width: 640px) {
   body.category-page .hh-photo-duo {
-    max-width: 340px;
-    gap: .6rem;
+    max-width: 425px;
+    gap: .75rem;
   }
 }
 

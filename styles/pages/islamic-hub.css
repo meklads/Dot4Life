@@ -902,33 +902,45 @@ body.islamic-hub-page .hh-card--featured {
   box-shadow: 0 6px 24px rgba(184, 134, 26, .1);
 }
 
-/* Hub FAQ */
+/* Hub FAQ accordion */
 body.islamic-hub-page .hh-faq {
   display: flex;
   flex-direction: column;
   gap: .85rem;
   margin-top: 1.5rem;
-  }
+}
 body.islamic-hub-page .hh-faq-item {
   background: #fff;
   border: 1px solid rgba(106, 191, 184, .25);
   border-radius: 16px;
-  padding: 1.15rem 1.25rem;
+  padding: 0;
   box-shadow: 0 3px 16px rgba(10, 107, 99, .05);
+  overflow: hidden;
 }
 [data-theme="dark"] body.islamic-hub-page .hh-faq-item {
   background: #1a2422;
   border-color: rgba(106, 191, 184, .16);
 }
-body.islamic-hub-page .hh-faq-item h3 {
-  margin: 0 0 .55rem;
+body.islamic-hub-page .hh-faq-item summary {
+  margin: 0;
+  padding: 1.15rem 1.25rem;
   font-size: 1.02rem;
   font-weight: 800;
-  color: var(--hh-teal-deep);
+  color: var(--ih-teal-deep, #054241);
   line-height: 1.4;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  user-select: none;
 }
+body.islamic-hub-page .hh-faq-item summary::-webkit-details-marker { display: none; }
+body.islamic-hub-page .hh-faq-item[open] summary { padding-bottom: .55rem; }
 body.islamic-hub-page .hh-faq-item p {
   margin: 0;
+  padding: 0 1.25rem 1.15rem;
   font-size: .92rem;
   line-height: 1.7;
   color: var(--text-2, #4a5560);
