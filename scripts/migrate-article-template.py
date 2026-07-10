@@ -64,9 +64,16 @@ CATEGORY_TAGS = {
 
 # ── Load partials ─────────────────────────────────────────────
 with open(os.path.join(BASE, 'partials', 'header.html')) as f:
-    HEADER_HTML = f.read()
+    HEADER_HTML = f.read().strip()
+with open(os.path.join(BASE, 'partials', 'mobile-dropdown.html')) as f:
+    MOBILE_DROPDOWN_HTML = f.read().strip()
 with open(os.path.join(BASE, 'partials', 'footer.html')) as f:
     FOOTER_HTML = f.read()
+
+SITE_CHROME_HTML = (
+    HEADER_HTML + '\n' + MOBILE_DROPDOWN_HTML
+    + '\n<!-- ═══ END HEADER ══════════════════════════════════════ -->'
+)
 
 # ── Load articles.json for metadata ───────────────────────────
 def load_articles_meta():
@@ -855,7 +862,7 @@ def build_new_page(filename, content, force=False):
 
 <div id="reading-progress" role="progressbar" aria-label="Reading progress"></div>
 
-{HEADER_HTML}
+{SITE_CHROME_HTML}
 
 <div class="article-wrap">
 
