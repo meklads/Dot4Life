@@ -1024,53 +1024,73 @@ body.health-hub-page .hl-topic-authority {
   padding-bottom: clamp(3rem, 5vw, 4.5rem);
 }
 
-/* (2) Guide strip — from full-bleed teal band → contained,
-   calm card that matches the editorial system.                 */
-body.health-hub-page .hl-guide-strip {
-  background: #ffffff !important;
-  border: none !important;
-  padding-block: clamp(.5rem, 2vw, 1.25rem) clamp(2.5rem, 5vw, 4rem);
-  box-shadow: none;
+/* Featured reading — replaces empty full-width guide strip */
+body.health-hub-page .hh-reading-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.25rem;
 }
-[data-theme="dark"] body.health-hub-page .hl-guide-strip {
-  background: var(--bg, #12100E) !important;
+@media (max-width: 720px) {
+  body.health-hub-page .hh-reading-grid {
+    grid-template-columns: 1fr;
+  }
 }
-body.health-hub-page .hl-guide-strip-inner {
-  background: linear-gradient(135deg, var(--hh-cream-warm) 0%, #ffffff 100%);
+body.health-hub-page .hh-reading-card {
+  display: flex;
+  flex-direction: column;
+  gap: .55rem;
+  padding: 1.35rem 1.4rem;
+  border-radius: 18px;
   border: 1px solid rgba(106, 191, 184, .28);
-  border-radius: 20px;
-  padding: 1.35rem 1.6rem;
-  box-shadow: 0 4px 24px rgba(10, 107, 99, .07);
-  color: var(--hv-ink);
+  background: #fff;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 4px 20px rgba(10, 107, 99, .06);
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  min-height: 100%;
 }
-[data-theme="dark"] body.health-hub-page .hl-guide-strip-inner {
-  background: linear-gradient(135deg, #1e2428 0%, #1a2a27 100%);
+[data-theme="dark"] body.health-hub-page .hh-reading-card {
+  background: #1a2422;
   border-color: rgba(106, 191, 184, .18);
 }
-body.health-hub-page .hl-guide-strip-icon {
-  background: linear-gradient(135deg, var(--hh-teal), var(--hh-teal-deep));
-  color: #fff;
-  width: 44px;
-  height: 44px;
-  border-radius: 13px;
-  box-shadow: 0 4px 14px rgba(10, 107, 99, .18);
+body.health-hub-page .hh-reading-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--hh-mint);
+  box-shadow: 0 10px 28px rgba(10, 107, 99, .12);
 }
-body.health-hub-page .hl-guide-strip-label {
+body.health-hub-page .hh-reading-kicker {
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
   color: var(--hh-teal);
 }
-body.health-hub-page .hl-guide-strip-title {
-  color: var(--hv-ink);
+[data-lang="ar"] body.health-hub-page .hh-reading-kicker {
+  letter-spacing: 0;
+  text-transform: none;
 }
-body.health-hub-page .hl-guide-strip-link {
-  border: 1.5px solid var(--hh-teal);
+body.health-hub-page .hh-reading-title {
+  font-size: 1.08rem;
+  font-weight: 800;
+  line-height: 1.4;
+  color: var(--hv-ink, #1a1d23);
+}
+body.health-hub-page .hh-reading-desc {
+  font-size: .92rem;
+  line-height: 1.65;
+  color: var(--hv-ink-soft, #3d4542);
+  flex: 1;
+}
+body.health-hub-page .hh-reading-go {
+  margin-top: .35rem;
+  font-size: .88rem;
+  font-weight: 700;
   color: var(--hh-teal);
-  background: transparent;
 }
-body.health-hub-page .hl-guide-strip-link:hover {
-  background: var(--hh-teal);
-  color: #fff;
-  border-color: var(--hh-teal);
-}
+
+/* Hide legacy empty strip if any remain */
+body.health-hub-page .hl-guide-strip { display: none !important; }
 
 /* (4) Intro block — keep prose width but align lead + cards to
    the same edges (no inset). Pillars already share container.  */
