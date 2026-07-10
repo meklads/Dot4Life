@@ -2176,3 +2176,7 @@ Salman's Story: 70 Notifi | Figures based on studies from University of Californ
 ## 2026-07-10 09:13 UTC — 🤖 بوابة CI الآلية رفضت 1 ملف عند push
 تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
 - `islamic-hajj-umrah/hijri-new-year-children.html`: اقتباس ديني مباشر (1): قال النبي
+
+## 2026-07-10 09:16 UTC — 🤖 بوابة CI الآلية رفضت 1 ملف عند push
+تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
+- `guides/indoor-plants-saudi-arabia.html`: شرطات طويلة=8

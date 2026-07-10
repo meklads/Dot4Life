@@ -777,3 +777,5 @@ all other claims rewritten descriptively without institution name/number.
 | 2026-07-10 09:01 UTC | CI الآلي → Hermes/عامر | **🚨 بوابة CI رفضت 1 ملف عند push وعزلتها (noindex) فوراً.** التفاصيل في `quality-log.md`. ملفات: `guides/indoor-plants-saudi-arabia.html` | 🆕 |
 
 | 2026-07-10 09:13 UTC | CI الآلي → Hermes/عامر | **🚨 بوابة CI رفضت 1 ملف عند push وعزلتها (noindex) فوراً.** التفاصيل في `quality-log.md`. ملفات: `islamic-hajj-umrah/hijri-new-year-children.html` | 🆕 |
+
+| 2026-07-10 09:16 UTC | CI الآلي → Hermes/عامر | **🚨 بوابة CI رفضت 1 ملف عند push وعزلتها (noindex) فوراً.** التفاصيل في `quality-log.md`. ملفات: `guides/indoor-plants-saudi-arabia.html` | 🆕 |
