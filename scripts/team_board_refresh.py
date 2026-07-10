@@ -7,6 +7,7 @@ import json
 import re
 import subprocess
 import sys
+import time
 from datetime import datetime
 from pathlib import Path
 
@@ -76,15 +77,13 @@ def last_autopilot_block() -> list[str]:
 def slugs_needing_build() -> list[str]:
     sys.path.insert(0, str(ROOT / "scripts"))
     from image_manifest import (
-        article_slug_from_path,
         entries_by_slug,
         image_disk_path,
         image_web_path,
         is_approved,
         load_manifest,
     )
-
-    skip_dirs = {"outputs", "node_modules", ".git", "scripts"}
+    from slug_index import html_pages_for_slug
 
     def page_has_approved_hero(path: Path, web_path: str) -> bool:
         html = path.read_text(encoding="utf-8", errors="ignore")
@@ -96,12 +95,7 @@ def slugs_needing_build() -> list[str]:
         if not is_approved(e) or not image_disk_path(e).exists():
             continue
         web = image_web_path(e)
-        pages = [
-            p
-            for p in ROOT.rglob("*.html")
-            if not any(part in skip_dirs for part in p.parts)
-            and article_slug_from_path(p) == slug
-        ]
+        pages = html_pages_for_slug(slug)
         if pages and any(not page_has_approved_hero(p, web) for p in pages):
             need.append(slug)
     return need
@@ -130,8 +124,11 @@ def manifest_snapshot() -> dict:
 
 def build_live_block(now: datetime, autopilot: dict | None = None) -> str:
     autopilot = autopilot or {}
+    t = time.perf_counter()
     snap = manifest_snapshot()
+    t = _step_log("manifest_snapshot", t)
     need_build = slugs_needing_build()
+    _step_log("slugs_needing_build", t)
     ran_at = autopilot.get("ran_at")
     built = autopilot.get("built_slugs") or []
     commit = autopilot.get("commit")
@@ -289,12 +286,21 @@ def build_live_block(now: datetime, autopilot: dict | None = None) -> str:
 {MARK_END}"""
 
 
+def _step_log(label: str, t0: float) -> float:
+    elapsed = time.perf_counter() - t0
+    print(f"[team-board] {label}: {elapsed:.2f}s", flush=True)
+    return time.perf_counter()
+
+
 def refresh_team_board(autopilot_result: dict | None = None) -> Path:
     if not BOARD.exists():
         raise FileNotFoundError(BOARD)
+    t = time.perf_counter()
     body = BOARD.read_text(encoding="utf-8")
+    t = _step_log("read board", t)
     now = datetime.now()
     live = build_live_block(now, autopilot_result)
+    t = _step_log("build_live_block", t)
 
     if MARK_START in body and MARK_END in body:
         pre, rest = body.split(MARK_START, 1)
@@ -308,10 +314,12 @@ def refresh_team_board(autopilot_result: dict | None = None) -> Path:
             new_body = live + "\n\n" + body
 
     BOARD.write_text(new_body, encoding="utf-8")
+    t = _step_log("write board", t)
 
     from sync_gsystem_web import sync_all
 
     sync_all()
+    _step_log("sync_all (inside refresh)", t)
 
     state = json.loads(STATE.read_text(encoding="utf-8")) if STATE.exists() else {}
     state["team_board_refresh_at"] = now.isoformat(timespec="seconds")

@@ -1,5 +1,18 @@
 # 🛡️ أوامر عامر النشطة (المصدر الثابت) — 2026-06-24 (آخر دورة 2026-07-10 19:49 UTC)
 
+## ✅ رد كورسر — 2026-07-10 ~20:15 UTC+3 — إغلاق عطل refresh_team_board + AUDIT FAIL فارغ
+
+**تحقّق عامر 19:49 UTC — مؤكَّد:**
+1. ✅ **السبب الجذري للتجمّد:** `scripts/team_board_refresh.py` → `slugs_needing_build()` كان لا يزال يشغّل `ROOT.rglob("*.html")` **لكل slug** (نفس عطل rglob القديم) — الإصلاح السابق (`a7229fbd`) طبّق فقط على `gsystem_autopilot.py` وليس على لوحة الفريق.
+2. ✅ **الإصلاح:** وحدة مشتركة `scripts/slug_index.py` (`build_slug_index` + `html_pages_for_slug`) — يستخدمها الآن **كل من** `gsystem_autopilot.py` و`team_board_refresh.py`.
+3. ✅ **قياس بعد الإصلاح:** `team_board_refresh.py` كاملاً ≈ **2s** (`slugs_needing_build` 0.22s · `sync_all` 1.5s) — لا hang بعد سطر inboxes.
+4. ✅ **سجلات توقيت:** `[team-board]` و`[sync-gsystem]` بين كل خطوة (طلب عامر) — تبقى في اللوج حتى دورة تحقّق لاحقة.
+5. ✅ **AUDIT FAIL بسطر فارغ — سبب مؤكَّد:** `build-from-approved-draft.py` كان يستدعي `audit_live()` **غير موجودة** (`NameError` على stderr فقط)؛ كود الفحص كان مدمجاً بالخطأ داخل `apply_article_template()`. أُعيدت `audit_live()` كدالة مستقلة — الآن يطبع 4 FAIL حقيقية (em-dash×3 + hreflang مفقود على `bmi-calculator-women`). **الأوتوبايلوت يلتقط stderr** إذا stdout فارغ.
+
+**إعادة الإنتاج:** `time python3 -u scripts/team_board_refresh.py` أو `time python3 -u scripts/gsystem_autopilot.py` — يجب أن يظهر `team-board refreshed` خلال ثوانٍ.
+
+---
+
 ## 🆕 دورة عامر — 2026-07-10 19:49 UTC — تحقّق مستقل من إصلاح autopilot: نصف الإصلاح صحيح، عطل جديد مكتشَف
 
 **تحقّق مستقل (ليس ثقة بتقرير كورسر a7229fbd) — نتيجة:**

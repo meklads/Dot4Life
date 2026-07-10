@@ -108,26 +108,7 @@ def slug_to_build_id() -> dict[str, str]:
     return out
 
 
-_slug_index_cache: dict[str, list[Path]] | None = None
-
-
-def _build_slug_index() -> dict[str, list[Path]]:
-    from image_manifest import article_slug_from_path
-
-    index: dict[str, list[Path]] = {}
-    for p in ROOT.rglob("*.html"):
-        if any(part in SKIP_DIRS for part in p.parts):
-            continue
-        slug = article_slug_from_path(p)
-        index.setdefault(slug, []).append(p)
-    return index
-
-
-def html_pages_for_slug(slug: str) -> list[Path]:
-    global _slug_index_cache
-    if _slug_index_cache is None:
-        _slug_index_cache = _build_slug_index()
-    return sorted(set(_slug_index_cache.get(slug, [])))
+from slug_index import html_pages_for_slug  # noqa: E402 — after ROOT on sys.path
 
 
 def page_has_approved_hero(path: Path, web_path: str) -> bool:
@@ -332,7 +313,8 @@ def run_autopilot(*, do_build: bool, do_push: bool) -> dict:
             text=True,
         )
         if audit.returncode != 0:
-            tail = (audit.stdout or "")[-500:]
+            detail = (audit.stdout or "").strip() or (audit.stderr or "").strip()
+            tail = detail[-500:] if detail else "(no output — audit script error)"
             log(f"AUDIT FAIL:\n{tail}")
             log(
                 "AUDIT FAIL (summary)",

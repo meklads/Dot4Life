@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import re
 import shutil
+import time
 from datetime import datetime
 from pathlib import Path
 
@@ -124,15 +125,26 @@ def sync_ghost() -> int:
     return len(reports)
 
 
+def _step_log(label: str, t0: float) -> float:
+    elapsed = time.perf_counter() - t0
+    print(f"[sync-gsystem] {label}: {elapsed:.2f}s", flush=True)
+    return time.perf_counter()
+
+
 def sync_all() -> dict:
+    t = time.perf_counter()
     synced: list[str] = []
     missing: list[str] = []
     for doc_id, rel in GS_DOCS.items():
+        t_doc = time.perf_counter()
         if sync_doc(doc_id, rel):
             synced.append(doc_id)
         else:
             missing.append(rel)
+        _step_log(f"sync_doc {doc_id}", t_doc)
+    t = _step_log("all GS_DOCS", t)
     n_ghost = sync_ghost()
+    t = _step_log(f"sync_ghost ({n_ghost} reports)", t)
     handoff = False
     ht = ROOT / "operating-system/handoff-tickets.json"
     if ht.is_file():
@@ -143,6 +155,7 @@ def sync_all() -> dict:
     if ss.is_file():
         OUT.mkdir(parents=True, exist_ok=True)
         shutil.copy2(ss, OUT / "site-sections.json")
+    _step_log("handoff + site-sections", t)
     return {"synced": synced, "missing": missing, "ghost_reports": n_ghost, "handoff_tickets": handoff}
 
 

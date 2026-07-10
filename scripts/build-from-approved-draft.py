@@ -1147,6 +1147,9 @@ def apply_article_template(out_path: Path) -> None:
         raise SystemExit(f"Template structure invalid {out_path.relative_to(ROOT)}: {why}")
     mig.write_file(str(out_path), result)
     print(f"  🎨 TEMPLATE {out_path.relative_to(ROOT)}")
+
+
+def audit_live() -> int:
     """Audit LIVE HTML from BUILD_MAP — no rebuild unless FAIL."""
     print("=== LIVE GATE AUDIT (G1–G11 + parity) ===\n")
     fails: list[str] = []
