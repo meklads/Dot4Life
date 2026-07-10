@@ -189,6 +189,7 @@ FAQ_NOISE_MARKERS = (
     "Subscribe",
     "اشترك",
     "Get Started Today",
+    "Start Today",
     "ابدأ اليوم",
     "Get weekly",
     "نصائح الجمعة",
@@ -211,6 +212,8 @@ def _clean_faq_text(text: str) -> str:
 
 
 def _is_noise_faq_question(question: str) -> bool:
+    if "?" not in question and "؟" not in question:
+        return True
     return any(marker in question for marker in FAQ_NOISE_MARKERS)
 
 
