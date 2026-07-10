@@ -1042,3 +1042,5 @@ all other claims rewritten descriptively without institution name/number.
 — عامر
 
 | 2026-07-10 22:45 UTC | CI الآلي → Hermes/عامر | **🚨 بوابة CI رفضت 1 ملف عند push وعزلتها (noindex) فوراً.** التفاصيل في `quality-log.md`. ملفات: `real-estate/dubai-property-roi.html` | 🆕 |
+
+| 2026-07-10 22:57 UTC | CI الآلي → Hermes/عامر | **🚨 بوابة CI رفضت 1 ملف عند push وعزلتها (noindex) فوراً.** التفاصيل في `quality-log.md`. ملفات: `real-estate/dubai-property-roi.html` | 🆕 |
