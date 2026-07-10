@@ -50,56 +50,50 @@
 <!-- TEAM-BOARD-LIVE-START -->
 ## 🕐 الحالة الآن — محدّث تلقائياً
 
-**آخر تحديث:** 2026-06-24 **17:00** · مصدر: Hema (يدوي بعد تعريب digital-minimalism)
+**آخر تحديث:** 2026-07-10 **19:10** · مصدر: autopilot + manifest + git
 
 > **اقرأ هنا أولاً** — ثلاث حالات: **✅ تم** · **🔄 جاري** · **⏳ لسه**
 
 | المقياس | القيمة |
 |---------|--------|
-| صور `approved` | **32** |
-| تنتظر بناء HTML | **2** |
-| DEEPEN (قصير) | **155** |
-| جودة الموقع | **0/275 (0%)** |
-| آخر autopilot | `2026-06-24 **13:36**` |
+| صور `approved` | **68** |
+| تنتظر بناء HTML | **0** |
+| DEEPEN (قصير) | **72** |
+| جودة الموقع | **0/379 (0%)** |
+| آخر autopilot | `2026-07-10 **19:10**` |
 
 ### ✅ تم — آخر ما اكتمل
 
 | الوقت | ماذا | من | الدليل |
 |-------|------|-----|--------|
-| 2026-06-24 **16:15** | **Batch 02 — مصداقية 14/14** — كل النسب ≤3، روابط عميقة لكل ملف | Hema (Writing) | فحص آلي 14/14 pass |
-| 2026-06-24 **16:15** | **B3-01 daily-islamic-habits AR** — عمّق 1600 كلمة + Article+FAQPage | Hema (Writing) | كان 773 كلمة ولا schema |
-| 2026-06-24 **16:15** | **B3-02 digital-minimalism AR** — FAQPage مكرّر محذوف، عربت الأسئلة | Hema (Writing) | 5 أسئلة عربية نظيفة |
-| 2026-06-24 **16:15** | **B3-03 gulf-father AR** — عمّق 1315 كلمة (كان 910) | Hema (Writing) | توسيع القصة والدروس |
-| 2026-06-24 **13:36** | بُنيت صور: `arab-mother-startup`, `evening-rituals`, `gulf-father-money-lessons`, `government-vs-private-school-gulf`, `digital-minimalism-families`, `pregnancy-nutrition-first-trimester`, `daily-islamic-habits-guide` | Cursor | autopilot |
-| 2026-06-24 **13:36** | built 7 slug(s) · 3af72f3 · يحتاج بناء | Cursor | autopilot |
-| 2026-06-24 **13:36** | رفع GitHub `3af72f3` | Cursor | origin/main |
-| 2026-06-24 **13:45** | آخر commit `65cbcaa` | Cursor | Freeze new content after Batch 03 until DEEPEN backlog is cleared. |
+| 2026-07-10 **19:10** | فحص autopilot — كل الصور المعتمدة على الموقع | Cursor | log `[]` |
+| 2026-07-10 **19:10** | built 0 slug(s) · AUDIT PASS | Cursor | autopilot |
+| 2026-07-10 **19:05** | آخر commit `1c742b25` | Cursor | docs(orders): dispatch the 2 remaining non-Google-blocked fixes (autopilot rglob |
 
 ### 🔄 جاري العمل — الآن
 
 | الوقت | ماذا | من | التالي |
 |-------|------|-----|--------|
-| 2026-06-24 **16:30** | **digital-minimalism-families AR** — تعريب كامل (الصفحة العربية مليئة بالإنجليزي) | Hema (Writing) | تعريب + إصلاح النسب + تسليم لعامر |
 | — | A-09 REVISE — `drafts/task09/` | Hema | تسليم لعامر بعد draft-gate |
-| — | DEEPEN 155 — أولوية بعد تعريب digital-minimalism | Hema | T-03 → T-04 |
+| 2026-07-10 **19:10** | **Batch 03** — BUILD VERIFY 7 صور | عامر | `amer-batch03-kickoff.md` |
+| 2026-07-10 **19:10** | Batch 03 — SEO Briefs + كتابة | Hema | AN-00 → B3-XXQ → B3-XXN |
+| 2026-07-10 **19:10** | BUILD VERIFY — **68** صور LIVE | عامر | hero + alt + G5 |
 
 ### ⏳ لسه — منتظر / مفتوح
 
 | من | ماذا | ملاحظة |
 |-----|------|--------|
-| Hema | DEEPEN — **155** صفحة قصيرة | `hema-deepen-priority.md` (بعد digital-minimalism) |
+| Hema | Batch 03 — تحليل/نمو/كتابة (7 مقالات) | `inbox/hema-batch03.md` |
+| Hema | DEEPEN — **72** صفحة قصيرة | `hema-deepen-priority.md` |
 | Cursor | وضع النشر المستمر | بانتظار «فعّل» من جوست |
 
 ### 📎 آخر سطور الأوتوبايلوت
 
-- `[2026-06-24T13:36:29] APPLY comparisons/government-vs-private-school-gulf-en.html`
-- `[2026-06-24T13:36:29] APPLY comparisons/government-vs-private-school-gulf.html`
-- `[2026-06-24T13:36:29] AUDIT FAIL:`
-- `[2026-06-24T13:36:29] AUDIT FAIL (summary)`
-- `[2026-06-24T10:36:39] slugs needing build: ['arab-mother-startup', 'evening-rituals', 'gulf-father-money-lessons']`
-- `[2026-06-24T13:36:40] git: pushed 3af72f3`
-- `[2026-06-24T13:36:40] inboxes: operating-system/inbox/omar.md, operating-system/inbox/claude.md, operating-system/inbox/hema.md, operating-system/inbox/amer.md, operating-system/inbox/cursor.md, operating-system/inbox/ghost.md`
-- `[2026-06-24T13:36:47] team-board refreshed`
+- `[2026-07-10T19:10:28] === تشغيل جديد / new run ===`
+- `[2026-07-10T19:10:28] slugs needing build: []`
+- `[2026-07-10T19:10:28] AUDIT FAIL:`
+- `[2026-07-10T19:10:28] AUDIT FAIL (summary)`
+- `[2026-07-10T19:10:28] inboxes: operating-system/inbox/omar.md, operating-system/inbox/claude.md, operating-system/inbox/hema.md, operating-system/inbox/amer.md, operating-system/inbox/cursor.md, operating-system/inbox/ghost.md`
 
 <!-- TEAM-BOARD-LIVE-END -->
 ---

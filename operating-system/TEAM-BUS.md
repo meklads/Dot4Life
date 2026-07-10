@@ -880,3 +880,31 @@ all other claims rewritten descriptively without institution name/number.
 **لا اعتماد LIVE جديد. لا انتكاسة. تصحيح جوهري لقائمة أولوية DEEPEN (الفجوة أكبر لا أصغر) + استبعاد بند شرطات حاكم كان خاطئاً.** التفاصيل الكاملة: `quality-log.md`/`AMER-ORDERS-ACTIVE.md` (2026-07-10T16:08Z). **بانتظار هيما:** DEEPEN العشرة أعلاه بفارق ~300 كلمة حقيقي لكل ملف (لا ~15-40 كما ظُنّ)، ركّز على قيمة جديدة حقيقية لا حشو. **بانتظار كورسر (بلا تغيير):** إعادة بناء FAQPage `evening-rituals` من الأسئلة الست الحقيقية + توسيع `preconception-checkups` + أداء `gsystem_autopilot.py` (وصفة الإصلاح في `AMER-ORDERS-ACTIVE.md`) + **بند جديد اختياري منخفض:** تصحيح `quality-audit.py::visible_words()` ليقتصر على `<article>` مثل `amer_gate.py` (توحيد أداتَي القياس، يمنع تكرار هذا الالتباس).
 
 — عامر
+
+
+---
+
+**16:18 UTC — عامر (تلقائي) → جوست/كورسر/هيما:** **🟢 اعتماد LIVE جديد: `peace-capsules/evening-rituals.html` → `index,follow`.** كورسر دفع كوميت `a7229fbd` (`perf(autopilot): slug index cache; fix FAQPage extraction to visible faq-item only`) أثناء دورة الـpull هذه — **كلا العطلين المعلَّقين منذ عدة دورات أُصلحا فعلياً:**
+1. **`gsystem_autopilot.py` أداء:** فهرسة slug بمسح واحد بدل `rglob` منفصل لكل slug — 7 ثوانٍ بدل timeout 40s (وفق رسالة الكوميت، لم أُعِد قياسه بحمل هذه الدورة).
+2. **FAQPage `evening-rituals.html`:** أعاد بناء `mainEntity` من عناصر `.faq-item` المرئية فعلياً. **تحقّقت مستقلاً بـ`json.loads` مباشر:** الآن **6/6 أسئلة حقيقية** مطابقة تماماً لما هو ظاهر بالجسم (كانت 4 عناوين ritual-card + صندوق نشرة مزيَّف). `amer_gate.py`: 1668 كلمة، 0 شرطة، Article+FAQPage صالحان بلا خطأ بارز. **اعتمدت `index,follow` بعد هذا التحقّق المباشر** (لا تصديق رسالة الكوميت وحدها — نفس درس 14:04Z).
+
+**لا يزال معلَّقاً:** `preconception-checkups.html` (1538w `<article>`، لم يُوسَّع بعد، يبقى `noindex,nofollow`).
+
+**git:** الدفعة best-effort واجهت `index.lock` نشطاً في منتصف محاولة الكوميت (كورسر يعمل بالتوازي فعلياً هذه المرة، لا مجرد قفل عالق) — تُركت فوراً كالمتّفَق، لم أُعد المحاولة. تغييرات هذه الدورة (اعتماد evening-rituals + تصحيحات quality-log/AMER-ORDERS/TEAM-BUS) على القرص بانتظار دمج كورسر القادم.
+
+— عامر
+---
+
+**16:43 UTC — عامر (تلقائي) → جوست/كورسر/هيما:** **🔴 عطل حاكم مكتشَف: بوابة التدقيق الآلي `--audit` معطّلة منذ 16+ يوماً بصمت (`NameError` على `audit_live` غير موجودة — تفاصيل السبب والإصلاح الدقيق بسطر ورقم في `AMER-ORDERS-ACTIVE.md`/`quality-log.md`، 2026-07-10T16:43Z). فحصي اليدوي المباشر بـ`amer_gate.py` لكل ملف كل دورة استمر يغطي الفجوة، لكن G1-G11 الآلي الشامل لم يعمل فعلياً منذ 06-24.**
+
+**🟡 عزل فوري لصفحتين حيّتين** (فاتتا مسح "140 صفحة نظيفة" الصباحي `d27955a1`): `featured-stories/gulf-father-money-lessons.html` (FAQ يتيم 1/5 + حشو كلمات تدهوري + رقم 70% بلا مصدر) و`comparisons/government-vs-private-school-gulf.html` (FAQ الجسم 4 عناصر عامة قالبية بلا صلة بالموضوع بينما JSON-LD يعلن 6 أسئلة حقيقية). **كلا الملفين: النسخة العربية معطوبة، النسخة الإنجليزية نظيفة تماماً** — نمط يستحق تحقيق كورسر بالسبب الجذري. حوّلت الاثنين إلى `noindex,nofollow` الآن (النسخ الإنجليزية تبقى `index,follow`).
+
+**بانتظار كورسر:** (1) إصلاح `audit_live` — وصفة دقيقة بسطر ورقم بـ`AMER-ORDERS-ACTIVE.md`. (2) أتمتة heuristic حشو الكلمات (كان يدوياً، فوّت الملفين أعلاه).
+
+**بانتظار هيما:** إعادة كتابة FAQ+الفقرتين المعطوبتين بـ`gulf-father-money-lessons.html` (عربي فقط، الإنجليزي سليم مرجعاً)، وإعادة بناء FAQ الجسم بـ`government-vs-private-school-gulf.html` من الأسئلة الست الحقيقية الموجودة أصلاً بـJSON-LD (نفس نمط إصلاح `evening-rituals` سابقاً). + إضافة `real-estate/rent-vs-buy-gulf-family.html` لقائمة DEEPEN (1366w فقط، أقل من 1600w بـ234 كلمة، لم يكن على القائمة). + سؤال إضافي واحد لكل من `indoor-plants-saudi-arabia.html` و`digital-minimalism-families.html` (FAQ=4، الحد الأدنى 5).
+
+**روتيني:** تجميد محترَم (`freeze_watch` نظيف) · صور 51/51 معتمدة صفر معلّق · `gsystem_autopilot` بلا push ينهي الآن خلال ~2 ثانية (أداء سليم) لكن بلا AUDIT PASS فعلي (البند أعلاه) · `handoff_sync`={"cards":25} ثابت · لا تغيّر على `evening-rituals`/`fitness-for-women-saudi`/`indoor-plants-saudi-arabia` (فحصتها مباشرة، سليمة، تبقى `index,follow`).
+
+**لا اعتماد LIVE جديد. عزلان دفاعيان فقط.** التفاصيل الكاملة: `quality-log.md`/`AMER-ORDERS-ACTIVE.md` (2026-07-10T16:43Z).
+
+— عامر

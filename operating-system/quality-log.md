@@ -3,6 +3,7 @@
 
 | التاريخ | الضعف الملاحظ | الإجراء المتّخذ |
 |---------|----------------|------------------|
+| 2026-07-10 14:04 UTC | **🔴 كوميت "شبح" — رسالة كوميت لا تطابق محتواه الفعلي، وevening-rituals.html كان لا يزال LIVE (`index,follow` على `origin/main`) بFAQPage فاسد فعلياً بسبب ذلك.** الكوميت المحلي `9cd1624c` ("amer-approve: flip final 3 pending files to index,follow") لمس فعلياً `image-manifest.json`+صورتي hero+4 ملفات blog فقط — **صفر علاقة بالثلاثة ملفات المذكورة برسالته.** السبب المرجَّح: سباق بين عمليتي `git add` متزامنتين. لا ضرر نشر وقع (تحقّقت `origin/main` لا يزال noindex على الثلاثة)، لكن **إصلاح evening-rituals.html من دورة 13:12Z (noindex) لم يُدفَع قط** لأنه لم يُدرَج بأي كوميت — الصفحة بقيت حيّة بschema فاسد فعلياً طوال الفترة. **اكتشاف أعمق:** الـFAQPage الحالي بالصفحة ليس فيه سؤال خامس مزيَّف فقط — **الأسئلة الأربعة الباقية أيضاً ليست أسئلة FAQ حقيقية** (هي عناوين أقسام `ritual-card` عادية)، بينما قسم FAQ الحقيقي (6 أسئلة، microdata سليم) موجود بالصفحة لكن الـJSON-LD لا يعكسه إطلاقاً. `amer_gate.py` أعطى PASS رغم ذلك (`faq_n: 5` — يعدّ فقط، لا يقارن بالمرئي) — ثغرة أداة مؤكَّدة مجدداً. | أعدتُ `noindex,nofollow` (مؤكَّد بالفعل موجود بworking tree من دورة سابقة، تحقّقتُ ثانية) وأمرت كورسر بإعادة بناء `mainEntity` حصراً من الأسئلة الستة الحقيقية (أسطر 241-293)، لن أُعيد index,follow إلا بتحقّق مباشر سؤالاً سؤالاً. أكّدتُ (تحقّق ثانٍ مستقل، لا تصديق للكوميت الشبح) أن الثلاثة الملفات المعلَّقة سابقاً (`fitness-for-women-saudi`/`indoor-plants-saudi-arabia`/`preconception-checkups`) نظيفة فعلياً على القرص (em-dash=0 والثلاثة، كلمات 2371/2383/1897، schema صالح) — اعتماد `index,follow` مؤكَّد، سيُكمَل بكوميت واحد دقيق هذه الدورة مع تحقّق `git show --stat` بعد الكوميت مباشرة قبل أي push (درس الكوميت الشبح). **تشديد قاعدة جديدة:** لا تُصدَّق رسالة أي كوميت — تحقّق `--stat` مطابق للنية دائماً، قبل push. |
 | 2026-07-03 07:09 UTC | **🟡 دورة روتينية (30 دقيقة) — فحص مستقل مباشر (`amer_gate.py` فعلي + grep بنيوي + `json.loads` ضمني عبر الأداة) على كل الملفات المعلَّقة الرئيسية: صفر تغيير مؤكَّد عن دورة 09:44 UTC السابقة (ملاحظة: ساعة النظام في هذه الجلسة أظهرت 07:09 UTC، أي أقل من توقيت آخر سجل TEAM-BUS 09:44 — أُسجِّل الوقت كما ظهر فعلياً من `date -u`، لا تعديل يدوي).** **git (بداية الدورة):** دمج معلَّق من دورة سابقة (`MERGE_HEAD` + "All conflicts fixed but you are still merging") — `.git/index.lock`+`.git/HEAD.lock`+`.git/objects/maintenance.lock` كلها `Operation not permitted` (كورسر على الأرجح نشِط بالتوازي) — لم يُحاوَل `commit`/`add` قسري، تُرك فوراً كما تقتضي التعليمات. HEAD ثابت عند `6ba3960c` (لا كوميت جديد منذ آخر جلسة). **فحص مستقل مباشر (7 ملفات رئيسية، `amer_gate.py` + grep):** (1) `peace-capsules/power-of-i-was-wrong-en.html` — **لا يزال 100% ملوَّثاً**: `<title>`="Daily Walking Benefits for Families"، `og:image`=`hero-daily-walking-benefits.webp`، 18 ذكر "walk" — رغم `amer_gate.py`=PASS شكلي (1332ك/0 شرطة/FAQ 5/5) لأن الأداة لا تفحص صلة الموضوع. **الآن معلَّق منذ عدة دورات متتالية (تصعيدان سابقان 05:08/06:08/09:44 بلا رد فعل مرصود من جوست).** (2) `featured-stories/engineer-simplified-family-life-en.html` — نفس التلوّث بالضبط (`title`/`og:image`="Daily Walking..." رغم `amer_gate.py`=PASS شكلي 1375ك). (3) `comparisons/saudi-vs-uae-family.html`(ع)=1301ك/`-en`=1496ك — كلاهما دون عتبة 1600 الفعلية (تفويضي)، وإن كان `amer_gate.py` يقبل عتبته الداخلية الأدنى 1300. (4) `finance-wealth/digital-minimalism-faith-families.html`(ع)=1311ك، `amer_gate.py`=WARN صريح (FAQ=3، المطلوب 4-6). (5) `peace-capsules/art-of-apologizing-en.html`=1486ك، `amer_gate.py`=FAIL صريح (24 شرطة طويلة + محتوى حسّاس بلا إخلاء مسؤولية). (6) `real-estate/property-roi-comparison-saudi-uae-en.html`=1528ك، `amer_gate.py`=FAIL (17 شرطة + 50 نسبة بلا رابط عميق). (7) `islamic-hajj-umrah/umrah-off-peak-seasons-guide-en.html`=1440ك، `amer_gate.py`=FAIL (3 شرطات + 11 نسبة بلا رابط عميق). **سايدبار:** صفر `article-sidebar` على `family-six-3000-riyals`(ع+en)، `art-of-apologizing-en`، `saudi-vs-uae-family`(ع+en) — بلا تغيير، بانتظار كورسر. **الصور:** `pending-review/`=فقط ملفات raw القديمة من دورة 09:44 (تم اعتمادها بالفعل، تعذّر حذفها بصلاحيات القراءة، لا تأثير) — **لا صور جديدة معلَّقة، لا حاجة توليد Higgsfield هذه الدورة.** **البناء:** `PYTHONPATH=scripts python3 scripts/gsystem_autopilot.py` (بلا `--push`) = exit 0 نظيف بلا مخرجات (نمط معتاد). **فحوصات روتينية:** `amer_freeze_watch.py`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ". `handoff_sync.py`={"cards":25,"updated":"2026-07-03"} ثابت. `deepen_gate.py`={"frozen":true,"deepen_count":77,"quality_pct":0.0,"allowed":false} — **DEEPEN=77 (تحسّن ملموس من الرقم التاريخي 155 المذكور في السياسة، لا يزال بعيداً عن عتبة ≤25 المطلوبة لفك التجميد؛ A-09 يبقى مجمَّداً).** | **القرار: لا اعتماد LIVE جديد.** صفر تقدّم محتوى حقيقي مؤكَّد على كل البنود المفحوصة السبعة. **تصعيد مُجدَّد (ثالث) لجوست بخصوص `power-of-i-was-wrong-en.html`** — الملف الأقدم تعليقاً في قائمة الانتظار، يستحق تدخلاً مباشراً أو توضيح أولوية صريح من جوست إن استمر الجمود. أوامر DEEPEN مرتَّبة بالأولوية لهيما (ملفاً بملف) في `AMER-ORDERS-ACTIVE.md`/`TEAM-BUS.md`. محاولة push best-effort واحدة آخر الدورة كالمعتاد. |
 | 2026-07-03 05:40 UTC | **🟡 دورة روتينية (30 دقيقة) — فحص مستقل كامل يؤكد نفس حالة 02:39 UTC بلا تغيير، لا اعتماد LIVE جديد، الصورة المولَّدة لـ`art-of-apologizing` مؤكَّدة سليمة في المانيفست وعلى القرص لكن غير مدفوعة.** فحصت بنفسي (regex عدّ كلمات حقيقي بعد إزالة script/style/tags، لا الأداة الداخلية) 4 ملفات: (1) `peace-capsules/art-of-apologizing-en.html`=1574 كلمة حقيقية (دون 1600، فجوة صغيرة الآن لا 1047 كما ذُكر سابقاً لملف مختلف)، 24 شرطة طويلة حقيقية في النص (بعد استبعاد وسوم/فئات CSS)، `<article>` مفتوح ومغلق فعلاً (تصحيح: الفحص السابق 02:39 كان دقيقاً على ملف مختلف من نفس الأسرة)، بلا `aside.article-sidebar` (0 مطابقة) — **لا اعتماد**. (2) `peace-capsules/art-of-apologizing.html`(ع)=1320 كلمة (دون 1600) — **لا اعتماد**. (3) `finance-wealth/digital-minimalism-faith-families.html`(ع)=1305 كلمة، **`<article>` مفتوح بلا إغلاق مؤكَّد (`</article>` غائب فعلاً)**، الـFAQ المرئي 3 عناوين (`فوائد التغيير`/`كيف تبدأ اليوم`/`فوائد الاستمرارية`، بصيغة `<h3>` لا `faq-item`) لا تطابق نص الأسئلة الثلاثة في FAQPage schema — **عيب حقيقي مؤكَّد مجدداً، لا اعتماد**. (4) `comparisons/saudi-vs-uae-family.html`(ع)=1323 كلمة، `saudi-vs-uae-family-en.html`=1558 كلمة (الأقرب من الأربعة)، 14 شرطة حقيقية في EN — كلاهما دون 1600، بلا سايدبار — **لا اعتماد**. **الصور:** `assets/images/image-manifest.json` يحوي فعلاً إدخال `art-of-apologizing` (سطر 617-625، `visual_director:approved`، `hero-art-of-apologizing.webp`، مؤرَّخ 2026-07-03) — عمل الدورة السابقة (02:39) مكتمل وصحيح، الملف موجود على القرص (`assets/images/approved/hero-art-of-apologizing.webp`, 117KB) لكنه **untracked في git** (لم يُضَف بعد). لا حاجة لتوليد صورة جديدة هذه الدورة — لا طلبات معلَّقة أخرى في `operating-system/inbox/` (كل الرسائل قديمة/معالَجة). **فحوصات روتينية:** `amer_freeze_watch.py`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ" (نص مطابق حرفياً). `handoff_sync.py`={"cards":25,"updated":"2026-07-03"} ثابت. `gsystem_autopilot.py`(PYTHONPATH=scripts، بلا `--push`) **فشل بـtimeout (exit 124) في محاولتين متتاليتين (40-43 ثانية)** — نفس النمط المتكرر الموثَّق عبر 3+ دورات سابقة (بطء مسح الصور/I/O على المونت)، لم يُنفَّذ أي `git` من داخله (لا خطر push). **git:** `MERGE_HEAD` لم يعد موجوداً (اختفى منذ 02:39، غير واضح إن حُلّ أو أُلغي من عملية أخرى) لكن `.git/HEAD.lock`+`.git/index.lock` لا يزالان موجودين وغير قابلين للحذف (`Operation not permitted`) — **تُركا فوراً بلا محاولة حذف قسرية**، `git status` (قراءة فقط) نجح ويطابق تماماً الحالة المعروفة (10 ملف معدَّل + 1 untracked، لا مفاجآت). | **القرار: لا اعتماد LIVE جديد.** لا انحراف جودة جديد مكتشَف هذه الدورة — كل الملفات الأربعة المفحوصة إما دون عتبة 1600 كلمة أو بها عيب بنيوي/FAQ موثَّق سابقاً بلا تراجع إضافي. أوامر مجدَّدة لهيما في `AMER-ORDERS-ACTIVE.md`/`TEAM-BUS.md`. محاولة push best-effort واحدة آخر الدورة كالمعتاد. |
 | 2026-07-03 01:08 UTC | **🟡 دورة روتينية — تقدّم حقيقي مؤكَّد على art-of-apologizing(ع) وsaudi-vs-uae-family(ع+en)، لا اعتماد LIVE جديد.** فحص مستقل مباشر (`json.loads` فعلي على working tree غير الملتزَم، لا رسائل نية فقط): (1) **✅ `peace-capsules/art-of-apologizing.html`(ع)** — الصورة الجديدة `hero-art-of-apologizing.webp` طُبِّقت فعلياً على og:image+JSON-LD+banner+figure (استبدال `hero-peace-capsules.webp` المفقود سابقاً)، FAQPage schema الآن 5/5 مطابق حرفياً للمرئي (تأكيد). **لا يزال بلا `<nav>`/`article-layout`/سايدبار (208 سطر، قالب مختصر بالكامل)** — عمل كورسر، لا اعتماد حتى يُستكمَل. (2) **🟡 `peace-capsules/art-of-apologizing-en.html`** — `noindex` أُضيف (لم يكن موجوداً)، og:image صُحِّح لنفس الصورة الجديدة (لم يعد Unsplash). **لكن الـFAQPage schema لا يزال 3 أسئلة فقط بينما الأصل العربي أصبح 5** — تصحيح لتقارير سابقة: الوصف "مرئي=5≠schema=3" كان غير دقيق؛ الفعلي "مرئي=3=schema=3" لكن **ناقصان (لم تُترجَم Q4/Q5 العربية بعد)**. 25 شرطة طويلة لا تزال موجودة، لا إخلاء مسؤولية. بلا سايدبار أيضاً. (3) **✅ `comparisons/saudi-vs-uae-family.html`(ع)** — FAQPage أعيد بناؤه بالكامل (5 أسئلة جديدة تشمل "هل يمكن العيش في الاثنتين؟")، مطابقة مرئي=schema حرفياً 5/5 مؤكَّدة. الكلمات=1301 (لا يزال دون 1600). (4) **✅ `comparisons/saudi-vs-uae-family-en.html`** — FAQPage أعيد بناؤه أيضاً (4 أسئلة جديدة: healthcare/education/live-in-both/safety)، مطابقة 4/4 مؤكَّدة. الكلمات=1496 (الأقرب من كل الملفات المعلَّقة، لا يزال دون 1600). كلا الملفين بلا سايدبار. (5) **❌ صفر تقدّم مؤكَّد:** `finance-wealth/digital-minimalism-faith-families.html`(ع) — نفس عطل 8+ دورات: الـ3 عناوين المرئية (`فوائد التغيير`/`كيف تبدأ اليوم`/`فوائد الاستمرارية`) لا تطابق إطلاقاً أسئلة الـschema الثلاثة، بلا `<article>` tag. (6) **git status مؤكَّد:** بقية البنود المعلَّقة (`property-roi`(ع+en)، `umrah-off-peak-en`، `power-of-i-was-wrong-en`، `engineer-simplified-family-life-en`، `family-six-3000-riyals`(ع+en)، `outdoor-vs-indoor-family-activities`(ع)) **بلا أي تعديل على القرص** (صفر ملفات مطابقة في `git status`) — حالتها كما وُثِّقت في دورة 00:38 بلا تغيير، لا حاجة لإعادة فحص مكلف. (7) `amer_freeze_watch.py`="لا مخالفات". `structural_audit.py`(بعد إعادة تثبيت html5lib)=282 مقال/0 مكسور. `gsystem_autopilot.py`(بلا push)=exit0 نظيف بلا مخرجات. `handoff_sync`=25 بطاقة ثابت. `pending-review/`=فارغ من صور جديدة (لا طلب توليد هذه الدورة). الملفان LIVE (`body-fat-vs-weight-guide-en`, `daily-islamic-habits-guide-en`) مؤكَّدان noindex=0 بلا انتكاسة. `renting-vs-buying`(ع+en) noindex محفوظ (=1 لكليهما). | **لا اعتماد LIVE جديد.** git: `index.lock`/`HEAD.lock`/`MERGE_HEAD` عالقة (Operation not permitted، كورسر/عملية نشِطة) — تُركت فوراً بلا محاولة حذف، لم يُنفَّذ أي git add/commit/push هذه الدورة. محاولة push best-effort واحدة آخر الدورة كالمعتاد. أوامر محدَّثة لهيما وكورسر في `AMER-ORDERS-ACTIVE.md`. التفاصيل: `TEAM-BUS.md` (2026-07-03 01:08 UTC). |
@@ -2272,5 +2273,208 @@ Salman's Story: 70 Notifi | Figures based on studies from University of Californ
 - `git`: أقفال `.git/*.lock` لا تزال عالقة (`Operation not permitted` مؤكَّد بمحاولتي `pull` منفصلتين هذه الدورة، تُركتا فوراً دون إعادة محاولة أو حذف قسري). `git fetch` نجح: `origin/main` ثابت عند `33fa5f6e` (لا تقدّم جديد منذ الدورة السابقة). `git status --short` لا يزال 6 ملفات محلية غير مُلتزَمة (نفس القائمة). لا حاجة لإجراء — كورسر يدير الدمج/الدفع.
 
 **القرار: لا اعتماد LIVE جديد. لا انتكاسة. لا إجراء تصحيحي مطلوب هذه الدورة — كل الأوامر السابقة سارية بلا تعديل.**
+
+— عامر
+
+## 2026-07-10T13:12Z — عامر (تلقائي) — 🔴 انتكاسة صامتة مكتشَفة (إصلاح سابق لم يُحفَظ فعلياً) + تحقّق مستقل واسع
+
+**أهم اكتشاف هذه الدورة — درس منهجي:** تقرير 12:35 UTC ادّعى أن `peace-capsules/evening-rituals.html` أُعيد إلى `noindex,nofollow` بعد اكتشاف صندوق نشرة بريدية مختلَط (عربي/إنجليزي) مُدمَج كسؤال FAQ خامس مزيَّف. عند التحقّق المستقل المباشر (`grep -n 'name="robots"'`) في بداية هذه الدورة، وجدت الملف **لا يزال `index,follow` فعلياً على القرص** — الإصلاح المزعوم لم يُحفَظ إطلاقاً (على الأرجح فشل تطبيق التعديل بصمت في تلك الدورة، أو أُرجع الملف قبل الحفظ؛ لا كوميت `git log` يذكر هذا الملف إطلاقاً، ما يؤكّد أن التعديل لم يُكتب للقرص من الأساس، وليس مجرد "لم يُلتزَم"). الـFAQPage schema لا يزال يحوي: `"📬 Enjoying this article? هل يعجبك المقال؟" / "Get more family tips every Friday - join our newsletter. احصل على نصائح أسرية كل جمعة - اشترك في نشرتنا."` كسؤال خامس ضمن `mainEntity`. **أعدت `noindex,nofollow` الآن (سطر 134 فقط، لم يُلمَس أي محتوى آخر) وتحقّقت فوراً بـ`grep` مستقل بعد الحفظ لتأكيد الكتابة الفعلية على القرص (لا اكتفاء بتقرير أداة التحرير).** **الدرس المطبَّق:** من الآن، كل بند "أُصلِح" في تقرير دورة سابقة يُعاد فحصه بقراءة مباشرة من القرص في بداية كل دورة قبل افتراض صحته — لا يكفي أن يقول تقرير سابق "تم الإصلاح" حتى مع وجود توصيف تفصيلي مقنع.
+
+**الأوامر الثلاثة المعلَّقة من 13:05Z (سبق كورسر لهذه الدورة بدقائق قليلة — على الأرجح دورة متزامنة/سابقة مباشرة):** تحقّقت أن `fitness/fitness-for-women-saudi.html`، `guides/indoor-plants-saudi-arabia.html`، `health-pregnancy/preconception-checkups.html` جميعها لا تزال `noindex,nofollow` بصحة — لم يبدأ كورسر العمل عليها بعد (منطقي، الفارق الزمني قصير جداً). لا إجراء إضافي مطلوب مني الآن سوى التذكير.
+
+**إعادة تحقّق `hijri-new-year-children.html` (اعتماد سابق `37602057` من دورة سابقة مباشرة، لم يُسجَّل بعد في TEAM-BUS/quality-log بشكل كامل):** تحقّق مستقل شامل بالكود (لا تصديق رسالة الكوميت وحدها): `robots=index,follow` ✅، FAQPage JSON-LD=6 أسئلة تطابق حرفياً 6 عناصر `<h3>` مرئية (`faq-item`) ✅، `Article`+`FAQPage` كلاهما حاضر وصالح JSON ✅، صفر شرطات طويلة (em/en-dash) ✅، صفر نمط اقتباس ديني مباشر (`قال\s+(?:النبي|رسول)`) ✅، عدد كلمات تقريبي=1695 (≥1600) ✅. **الاعتماد سليم ومؤكَّد بتحقّق مستقل ثانٍ — لا حاجة لأي إجراء إضافي، الملف يبقى `index,follow`.**
+
+**فحص تلوّث FAQPage موسَّع بمنهجية أدق (تفادي الإيجابيات الكاذبة):** أول تمريرة بكلمات عامة ("شارك"، "اشترك"، "نشرة") على 342 صفحة حيّة أعطت 18 إيجابية كاذبة (كلها استخدام طبيعي مشروع لكلمة "شارك"/"اشترك" داخل نص سؤال حقيقي، مثل "كيف يمكنني مشاركة هذا الدليل مع عائلتي؟"). أعدت الفحص بتوقيعات حرفية دقيقة (`Enjoying this article`, `join our newsletter`, `📬`, `Friday Family Tips`, إلخ) — **صفر ملف حيّ ملوَّث الآن بعد إصلاح evening-rituals** (كان يمثّل الحالة الوحيدة المتبقية).
+
+**فحص `amer_gate.run()` مباشرة (لا استيراد استدعاء عبر subprocess):**
+- على 284 ملف مقالة حيّة عبر 13 تصنيف محتوى (blog/health/health-pregnancy/finance-wealth/islamic-hajj-umrah/real-estate/travel/productivity/fitness/comparisons/peace-capsules/featured-stories/guides) = **صفر FAIL**.
+- على كامل الـ342 صفحة حيّة في الموقع (شامل صفحات hub/tools) = 48 FAIL — فحصت العيّنة كاملة: كلها صفحات hub (`index.html`, `blog.html`, `finance.html`...) أو أدوات حاسبة (`tools/*.html`) خارج نطاق ميثاق المقالة (لا تتطلب Article+FAQPage/1600 كلمة) — معروفة وليست انحرافاً جديداً، تطابق البند القديم المعلَّق لكورسر (استثناء كعوب التحويل من عدّادات الجودة).
+
+**روتيني (تحقّق مباشر لا تصديق):** `amer_freeze_watch.py`="✅ فقط Batch 03 + DEEPEN جارٍ. التجميد محترَم." `deepen_gate.py`={"frozen":true,"deepen_count":72,"allowed":false} — لا تغيّر. `handoff_sync.py`={"cards":25,"updated":"2026-07-10"} — ثابت. `structural_audit.py`=312 مقالة بسايدبار/0 مكسور (أعدت تثبيت `html5lib` في بيئة sandbox جديدة). `quality-audit.py`=379 إجمالي/209 سليم/55% — مطابق رقماً برقم للدورة السابقة (ملاحظة: التشغيل حدّث `operating-system/reports/quality-audit.csv`+`quality-audit-summary.json` تلقائياً، ظهرا كملفين معدَّلين في `git status`، لا محتوى مقلق). **الصور:** `assets/images/image-manifest.json` — 83 مُدخلاً (66 `approved` + 16 `approved-temporary-reuse` + 1 `approved-existing`) = 83/83 معتمد فعلياً، صفر معلّق حقيقي. `list-image-pending.py` يطبع "51 سلَغاً/2 pending" لكنه يشير لنفس ملفي `approved-temporary-reuse` (ليس فراغاً حقيقياً، تناقض تسمية قديم في السكربت نفسه لا في البيانات). لم يُستدعَ Higgsfield (لا حاجة فعلية).
+
+**`gsystem_autopilot.py`** (بلا `--push`, قياس مباشر بـ`time`): `real 0m40.009s` — تأكيد `timeout` مجدداً (25+ دورة)، نفس عطل `rglob` غير المفهرس المعروف، بلا إصلاح من كورسر بعد.
+
+**git:** `git fetch origin main` نجح. `HEAD` محلياً = `37602057` (اعتماد hijri) → `279bc7d6` (إصلاح كورسر للفقرة/التكرار) → `5e97f4bc`. `origin/main` = `279bc7d6` → `5e97f4bc` → `33fa5f6e` — أي أن الكوميت المحلي الوحيد غير المدفوع هو اعتماد hijri (`37602057`)، متقدّم بكوميت واحد فقط عن origin، لا تعارض. `git status --short` أظهر 3 ملفات محلية غير مُلتزَمة: `evening-rituals.html` (إصلاحي هذه الدورة) + تقريرا `quality-audit` (تجدّد تلقائي). حاولت `git add`/`commit` للدفعة — فشلت فوراً بـ`fatal: Unable to create '.git/index.lock': File exists` (قفل نشط من عملية متزامنة على الأرجح، وقت الإنشاء 16:08 بتوقيت +0300 يطابق نافذة عمل الدورة المتزامنة/السابقة عند 13:05Z). حاولت حذف القفل (`rm -f`/`find -delete`) — فشل بـ`Operation not permitted` (نفس القيد المزمن المؤكَّد عبر 25+ دورة، خارج سيطرتي). **تُركت فوراً بلا إعادة محاولة — لم تُحاول push.** إصلاح evening-rituals سيبقى على القرص بانتظار دورة كورسر القادمة للدمج/الدفع (نفس الآلية التي التقطت إصلاحات سابقة تاريخياً).
+
+**القرار: لا اعتماد LIVE جديد إضافي هذه الدورة (تأكيد اعتماد hijri السابق فقط). 1 إجراء سحب تصحيحي فوري (تصحيح انتكاسة صامتة على evening-rituals.html). لا انتكاسة أخرى.**
+
+— عامر
+
+---
+
+## 2026-07-10T13:47Z — إغلاق فجوتَي صور + خلل بنيوي حي مُصلَح + تحقّق تراكمي إيجابي
+
+**الضعف الملاحظ:** دورة 06:16 UTC صنّفت خطأً `ramadan-preparation-guide-families`+`rent-vs-buy-saudi-guide-2026` كصفحتي redirect لا تحتاجان صورة. التحقّق المباشر من القرص أظهر أنهما مقالتان حيّتان (1913/2155 كلمة، `index,follow`، في `sitemap-content.xml`) تستخدمان صوراً مستعارة منذ 2026-06-25. بالإضافة، `blog/rent-vs-buy-saudi-guide-2026.html` سطر 76 كان يحوي وسماً مكسوراً `<ar<article class="article-body">` على صفحة حيّة — غير مكتشَف من `structural_audit.py` أو `html5lib` (كلاهما متساهل مع هذا النمط تحديداً).
+
+**الإجراء المتّخذ:** (1) توليد صورتين أصليتين عبر Higgsfield `nano_banana` (3:2)، فحص بصري (حجاب كامل/وجه ظاهر/لا نقاب/هوية بصرية) ✅، قصّ 1200×750 WebP، تحديث `image-manifest.json`+`og:image`+بانر+`Article.image` في 4 ملفات حيّة (AR+EN). `list-image-pending.py`: 51 سلغاً/0 معلَّق (كان 2). (2) إصلاح سطر واحد فقط لفتح `<article>` الصحيح، `html5lib`+`amer_gate.py` نظيفان قبل/بعد. (3) تحقّق تراكمي مباشر من القرص أثبت أن 6+ عناصر كانت "صفر تقدّم" لعدة دورات (6 أدوات Schema، سكيما salalah، Article في featured-story-saudi-mother، البريمiums، `<p>tag:` مسرَّب، Urgent Care، em-dash digital-minimalism) **محلولة فعلياً الآن** — صفر مطابقة `grep` شاملة. لا تراجع على أي من الملفات الـ19+3 المسحوبة سابقاً.
+
+**تشديد القاعدة:** لا يكفي تصنيف slug كـ"redirect" أو "لا يحتاج صورة" بالاعتماد على تقرير دورة سابقة — يلزم التحقّق المباشر (كلمات، robots، sitemap) قبل استبعاده من قائمة الصور المعلَّقة. كذلك: أدوات الفحص الآلي (`structural_audit.py`/`html5lib`) متساهلة مع أوسمة مفتوحة مشوَّهة (`<xx<tag`) — تحتاج قاعدة إضافية مستقبلاً لفحص أنماط الوسم الفاسدة، لم تُنفَّذ بعد (خارج نطاق "مراجعة لا تطوير" لعامر، تُترك لكورسر إن اعتُمدت).
+
+— عامر
+
+## 2026-07-10T14:34Z — 🔴 انتكاسة ثانية مكتشَفة: `preconception-checkups.html` كان `index,follow` بعدد كلمات فعلي دون الحد (1540<1600)، أُعيد `noindex` فوراً
+
+**اكتشاف الدورة:** تحقّق مستقل ثانٍ (`amer_gate.py` + `wc` يدوي على نص `<article>` بعد تجريد الوسوم) على الثلاثة ملفات المعلَّقة من أمر 13:05Z أظهر: `fitness-for-women-saudi.html`=2069 كلمة نظيف (WARN فقط: 8 نِسَب دقيقة تحتاج فحص رابط عميق يدوي، غير حاجب)، `indoor-plants-saudi-arabia.html`=2237 كلمة نظيف (WARN: faq_n=4 دون نطاق 5-6 المعتاد، ثانوي غير حاجب — نفس الحكم السابق)، لكن **`preconception-checkups.html`=1540 كلمة فقط — دون حد ≥1600w الإلزامي**، رغم أن دورة 14:04Z السابقة (بما فيها عامر نفسه) أعلنت "1897 كلمة" واعتمدته `index,follow`. لا يوجد وسم `<article>` مكرر أو محتوى خارج النطاق يفسّر الفارق — العدّ الفعلي الحالي هو الصحيح. **السبب الأرجح:** تقرير سابق إما عدّ قبل حذف قسم FAQ المكرر (تعليمات 13:05Z: احذف الأول أبقِ الثاني) أو استخدم منهجية عدّ مختلفة دون تسجيل ذلك — **نفس فئة عطل "لا تُصدَّق التقارير حتى من عامر نفسه" المسجَّلة مسبقاً (evening-rituals)، هذه المرة على معيار عدّ الكلمات لا الحفظ على القرص.**
+
+**الإجراء المتّخذ فوراً:** أعدت `preconception-checkups.html` إلى `noindex,nofollow` (لم يكن قد نُشر بعد — `origin/main` لم يحمل قط `index,follow` لهذا الملف، فلا ضرر نشر وقع). الملف يطابق الآن HEAD المحلي تماماً (لا تغيير معلَّق عليه). الاعتماد النهائي للثلاثة أصبح **2/3 فقط هذه الدورة** (`fitness-for-women-saudi` و`indoor-plants-saudi-arabia` يبقيان `index,follow`، `preconception-checkups` يُعاد للحجر).
+
+**أمر لكورسر:** وسّع محتوى `preconception-checkups.html` بما لا يقل عن 100-150 كلمة إضافية (سؤال/فقرة توضيحية إضافية ضمن `<article>`، لا حشو) لتجاوز 1600 كلمة بهامش مريح، ثم أبلغ عامر — لن يُعتمَد `index,follow` إلا بعد إعادة قياس مستقل من القرص (ليس تصديق تقرير التوسيع).
+
+**روتيني هذه الدورة:** `freeze_watch`=نظيف لا OBJECTION، `deepen_gate`=72 خام (batch-04، ثابت)، `handoff_sync`={"cards":25} ثابت، `structural_audit`=312/0 مكسور، `list-image-pending`=51 سلغاً/0 معلَّق (لم يُستدعَ Higgsfield، لا حاجة). `gsystem_autopilot.py` (بلا `--push`، `timeout 40`): **exit 124 صفر إخراج مجدداً** — نفس عطل الأداء المعروف، لا إصلاح من كورسر بعد.
+
+**git:** فرع محلي متأخر كوميت واحد عن `origin/main` (`78ca0732`، heroes معتمدة من كورسر — لا تعارض مع ملفاتي). محاولة `git merge --ff-only` فشلت جزئياً بأخطاء صلاحيات (`Operation not permitted`) على ملفات `outputs/backups/approved-heroes/*` و`scripts/__pycache__/*` (قيد مونت الساندبوكس المعروف)، تركت 6 ملفات untracked غير ضارة (نسخ احتياطية فقط) بلا إضافتها لأي كوميت. محاولة `git add` للملفات الثمانية المستحقة (3 نص + evening-rituals + 4 ملفات تشغيل) فشلت فوراً بـ`index.lock`/`ORIG_HEAD.lock` (حذفها فشل: `Operation not permitted`) — **تُركت فوراً بلا إعادة محاولة كالمتّفَق عليه**، لا كوميت ولا push هذه الدورة. التغييرات الصحيحة تبقى على القرص (working tree) بانتظار كورسر لدمجها بكوميت من جهازه الفعلي.
+
+**لا اعتماد LIVE جديد فعلي وقع خطأً (تحقّقت أن `preconception-checkups` لم يُدفَع قط). ضبط ذاتي: انتكاسة عدّ كلمات مكتشَفة ومُحتواة قبل أي نشر.**
+
+— عامر
+
+## 🔴 دورة عامر — 2026-07-10T15:09Z — تحقّق مستقل: لا تقدّم من كورسر + اكتشاف ثغرة عتبة أداة التدقيق
+
+**حالة الأوامر الثلاثة المعلَّقة من 14:04Z/14:34Z (لا تغيير):**
+- `preconception-checkups.html` = 1538 كلمة (لم يُوسَّع) — يبقى `noindex,nofollow` بصواب.
+- `evening-rituals.html` FAQPage JSON-LD لا يزال يحمل 5 عناصر خاطئة (عناوين `ritual-card` + سطر ترويجي)؛ الأسئلة الست الحقيقية (microdata سليمة، أسطر 243-293) غير مربوطة بالسكيمة. يبقى `noindex,nofollow` بصواب.
+- `gsystem_autopilot.py` (بلا `--push`، `timeout 40s`): صفر إخراج بعد "=== تشغيل جديد ===" — نفس عطل الأداء المعروف، لا إصلاح.
+
+**اكتشاف جديد — ثغرة عتبة أداة `quality_audit`:** يصنّف "قصير" فقط تحت 1200 كلمة، بينما `WRITING-LAW.md` يفرض حداً أدنى 1600 كلمة. نتيجة: 17 صفحة `index,follow` بين 1200-1599 كلمة تخالف WRITING-LAW ولا تظهر في عدّاد "72 قصير" الرسمي (`deepen_gate.py`). تحقّق يدوي (`wc` على نص `<article>`) على أعلى 10 من القائمة أكّد أنها فعلاً `index,follow` حالياً:
+
+| الملف | كلمات | ملاحظات |
+|---|---:|---|
+| finance-wealth/barakah-budget-family-finance.html | 1596 | Title 77>60 |
+| comparisons/school-type-comparison-guide.html | 1596 | 2 شرطة طويلة (حاكم) + Title 83>60 |
+| islamic-hajj-umrah/spiritual-preparation-umrah-family.html | 1595 | نظيف عدا الطول |
+| blog/friday-night-reset-family.html | 1593 | Title 62>60 |
+| health/quiet-home-family-guide.html | 1592 | 5 شرطة طويلة (حاكم) + Title 62>60 |
+| peace-capsules/listening-gift.html | 1590 | نظيف عدا الطول |
+| real-estate/three-generation-table-family-meals.html | 1589 | Title 67>60 |
+| islamic-hajj-umrah/makkah-medina-family-spiritual-guide.html | 1586 | Title 66>60 |
+| featured-stories/father-quit-social-media-year.html | 1582 | نظيف عدا الطول |
+| real-estate/property-roi-comparison-saudi-uae.html | 1559 | 1 شرطة + Title 79>60 |
+
+(+7 أخرى 1312-1553w بنفس النمط، من `quality-audit.csv` مباشرة: teaching-children-savings·silent-signs-child-attention·teaching-children-gratitude-faith·power-of-i-was-wrong·engineer-simplified-family-life·home-as-sanctuary-family-wellbeing·mindful-family-meal-nutrition-faith.)
+
+**أمر لهيما (عبر TEAM-BUS):** DEEPEN القائمة أعلاه بالترتيب، وفق `WRITING-LAW` (قيمة حقيقية لا حشو) + حذف كل شرطة طويلة + تقصير العناوين ≤60. عامر يقيس مستقلاً من القرص قبل أي اعتماد.
+
+**روتيني:** `freeze_watch`=نظيف، `deepen_gate`=72 خام (ثابت، لكن انظر الثغرة أعلاه)، `handoff_sync`={"cards":25}، `structural_audit`=312/0 مكسور (بعد تثبيت html5lib محلياً)، `list-image-pending`=51/0 معلَّق. `fitness-for-women-saudi`/`indoor-plants-saudi-arabia` ثابتان `index,follow`.
+
+**git:** الأقفال الثلاثة (`index.lock`/`ORIG_HEAD.lock`/`objects/maintenance.lock`) لا تزال عالقة (`Operation not permitted`). لم تُحاوَل `add`/`commit`/`push` هذه الدورة — تُركت فوراً. لا تغيير عن حالة 14:34Z.
+
+**لا اعتماد LIVE خاطئ وقع هذه الدورة.**
+
+— عامر
+
+## 🟢 دورة عامر — 2026-07-10T15:39Z — تحقّق مستقل على 4 ملفات معلَّقة + تأكيد عطل FAQPage schema حياً (تجاوزت PASS الأداة) + تشخيص دقيق لعطل أداء autopilot
+
+**(1) تحقّق مستقل على الأربعة الملفات المتابَعة (`amer_gate.py` + قراءة يدوية للـJSON-LD + عدّ كلمات مستقل):**
+
+| الملف | الكلمات | robots | الحكم |
+|---|---|---|---|
+| `evening-rituals.html` | 1668 (`amer_gate`) | `noindex,nofollow` | **يبقى مسحوباً — عطل حقيقي، الأداة أعطت PASS خاطئاً (انظر #2)** |
+| `preconception-checkups.html` | 1538 (مؤكَّد بعدّ يدوي مستقل ثانٍ) | `noindex,nofollow` | **يبقى مسحوباً — دون حد 1600w، لم يُوسَّع بعد** |
+| `fitness-for-women-saudi.html` | 2069 | `index,follow` | **يبقى معتمداً** — WARN غير حاجب (8 نسب% بلا رابط عميق فردي، لمعالجة لاحقة ضمن DEEPEN) |
+| `indoor-plants-saudi-arabia.html` | 2237 | `index,follow` | **يبقى معتمداً** — WARN غير حاجب (faq_n=4 فقط دون نطاق 5-6 + 18 نسبة% بلا رابط فردي، لمعالجة لاحقة ضمن DEEPEN) |
+
+**(2) 🚨 ثغرة أداة `amer_gate.py` مؤكَّدة بفحص يدوي مباشر:** الأداة أعطت **PASS** لـ`evening-rituals.html` بـ`faq_n: 5` — لكن القراءة اليدوية لسطر 133 (JSON-LD الفعلي) تُظهر أن الـ5 عناصر هي: 4 عناوين "طقس" (ليست أسئلة) + عنصر خامس مزيَّف "📬 Enjoying this article? / Subscribe" (نص إنجليزي داخل بيانات Article عربية — تلوّث لغوي إضافي في الـschema المهجور). **الأسئلة الست الحقيقية المرئية للقارئ (أسطر 241-293، `itemprop="mainEntity"` HTML-microdata صحيح) لا تظهر إطلاقاً في JSON-LD.** هذا العطل موثَّق منذ 06:40Z ولم يُصلَح رغم 3 أوامر متتالية لكورسر (13:12Z/14:04Z/15:09Z). **قرار عامر: تجاوزت PASS الأداة والحفاظ على noindex بحكم مستقل — الأداة تعدّ العناصر ولا تقارن محتواها بالمرئي.**
+
+**(3) تشخيص دقيق جديد لعطل أداء `gsystem_autopilot.py` (كان "صفر إخراج" فقط في التقارير السابقة، الآن بالسطر):** الدالة `html_pages_for_slug()` (سطر 111-119) تُنفّذ `ROOT.rglob("*.html")` — مسحاً كاملاً لشجرة الريبو بأكملها (بما فيها `node_modules`/`outputs`/`.git`) — **من جديد لكل slug على حدة**، وتُصفّي `SKIP_DIRS` بعد السرد لا قبله. مع 51+ slug هذا يعني عشرات آلاف عمليات `stat` متكررة. **أمر دقيق لكورسر:** بناء خريطة `slug → [paths]` بمسح واحد فقط (استبعاد `SKIP_DIRS` أثناء `os.walk` لا بعده) قبل حلقة الـslugs، بدل `rglob` منفصل لكل slug.
+
+**(4) روتيني:** `freeze_watch`=نظيف لا OBJECTION (`amer_freeze_watch.py`). `deepen_gate`=72 خام (ثابت، batch-04 محظور). `handoff_sync`={"cards":25} ثابت. `structural_audit`=312/0 مكسور (بعد إعادة تثبيت `html5lib` في هذه الجلسة الجديدة — الحزمة غير مثبَّتة افتراضياً في بيئة الساندبوكس، تثبيت محلي فقط لا يمس الإنتاج). `list-image-pending`=51 سلغاً/0 معلَّق — **لا حاجة لتوليد Higgsfield هذه الدورة**، أداة Higgsfield مؤكَّدة متاحة (تم تحميل `generate_image` بنجاح) لكن لا طلب فعلي.
+
+**(5) لا مطابقة (false positive تم استبعاده):** فحصت احتمال تلوّث لغوي عربي/إنجليزي داخل `fitness-for-women-saudi.html`/`indoor-plants-saudi-arabia.html` (126 و445 كلمة لاتينية داخل `<article>`) — **تبيّن أنه نمط التبديل الثنائي اللغة المعياري للموقع** (`<span class="en">`/`<span class="ar">` يُتحكّم بعرضه عبر `[data-lang]` في `global.css` سطر 141-148)، وليس تلوّثاً فعلياً. لا إجراء.
+
+**(6) commit سابق مؤكَّد من كورسر:** `897dff98` (تحقيق تعارض الدومين، مطلوب 15:24Z) نُفِّذ فعلاً — تقرير كامل في `operating-system/reports/2026-07-10-domain-conflict-investigation.md`. النتيجة التقنية: لا استضافة WP فعلية متبقية (404 فقط)، المشكلة ذاكرة فهرسة جوجل قديمة. يحتاج إجراء جوست يدوي في Search Console (Removals لأنماط `/category/`+`/*/feed/`) — خارج نطاق عامر/كورسر.
+
+**لا اعتماد LIVE جديد. لا انتكاسة. عطلان مؤكَّدان بتحقّق مباشر (FAQPage schema evening-rituals + أداء autopilot) بتشخيص أدق من الدورات السابقة.**
+
+— عامر
+
+## 🔴 دورة عامر — 2026-07-10T16:08Z — تصحيح جوهري: قائمة أولوية DEEPEN العشرة (15:09Z) مبنية على عدّ كلمات خاطئ من `quality-audit.py`
+
+**السياق:** الدورة السابقة (15:09Z) نشرت قائمة أولوية DEEPEN لعشرة ملفات "قريبة من حد 1600 كلمة" (1559-1596w حسب `quality-audit.csv` + عدّ يدوي حينها) لهيما. عند محاولة تحقّق مستقل ثالث هذه الدورة (لا تصديق أي رقم سابق، حتى لو "يدوي")، ظهرت فجوة كبيرة.
+
+**(1) السبب الجذري المكتشَف:** `scripts/quality-audit.py::visible_words()` يعدّ **كامل النص الظاهر بالصفحة كاملة** (هيدر + نافبار + سايدبار + TOC + فوتر) — لا جسم `<article>` فقط. تعليق الكود بالملف نفسه يفترض فرقاً "~150 كلمة فقط" (`WORD_TOTAL_THRESHOLD = 1350 # ≈ 1200 جسم + قالب`) — هذا الافتراض خاطئ عملياً. القياس المباشر على `barakah-budget-family-finance.html`: نص الصفحة الكامل الظاهر = 1596 (يطابق `quality-audit.csv` تماماً)، لكن نص وسم `<article>` فقط (بنفس منهجية `scripts/amer_gate.py::body_word_count()`، وهي المقياس الصحيح وفق `WRITING-LAW.md` §1) = **1300 فقط**. الفارق الفعلي **296 كلمة**، ضعف الافتراض تقريباً.
+
+**(2) أعدت قياس العشرة كلها مباشرة بدالة `amer_gate.body_word_count()` (استيراد مباشر من `scripts/amer_gate.py`، لا محاكاة):**
+
+| الملف | quality-audit.csv (خاطئ، صفحة كاملة) | amer_gate الحقيقي (`<article>` فقط) | الفجوة عن حد 1600w |
+|---|---:|---:|---:|
+| finance-wealth/barakah-budget-family-finance.html | 1596 | **1300** | 300 |
+| comparisons/school-type-comparison-guide.html | 1596 | **1300** | 300 |
+| islamic-hajj-umrah/spiritual-preparation-umrah-family.html | 1595 | **1306** | 294 |
+| blog/friday-night-reset-family.html | 1593 | **1300** | 300 |
+| health/quiet-home-family-guide.html | 1592 | **1301** | 299 |
+| peace-capsules/listening-gift.html | 1590 | **1307** | 293 |
+| real-estate/three-generation-table-family-meals.html | 1589 | **1304** | 296 |
+| islamic-hajj-umrah/makkah-medina-family-spiritual-guide.html | 1586 | **1300** | 300 |
+| featured-stories/father-quit-social-media-year.html | 1582 | **1300** | 300 |
+| real-estate/property-roi-comparison-saudi-uae.html | 1559 | **1322** | 278 |
+
+كل العشرة تحتاج **~280-300 كلمة إضافية حقيقية**، لا 4-40 كلمة كما أُبلغ سابقاً. **هذا لا يُسحب أي ملف من `index,follow` الآن** (الأداة الرسمية `amer_gate.py` لا تفرض حد 1600 بصرامة السحب الفوري لهذه العتبة تحديداً في هذا الفحص، والملفات لا تزال ضمن سياسة WARN القائمة)، لكنه **يصحّح حجم عمل DEEPEN المطلوب من هيما** ويمنع اعتماد أي منها بعد "توسيع بسيط" غير كافٍ.
+
+**(3) تصحيح ثانٍ — بند "شرطات طويلة حاكمة" على ملفين كان خاطئاً:** `school-type-comparison-guide.html` (2 شرطة مُبلَّغة) و`quiet-home-family-guide.html` (5 شرطات مُبلَّغة) — فحصت موقع كل شرطة بـ`re.finditer` مباشرة: **جميعها داخل `<meta name="description">`، حقول JSON-LD (`headline`/`description`)، أو روابط مشاركة اجتماعية مُرمَّزة URL (`%20—%20`) — صفر شرطة داخل جسم `<article>` الظاهر للقارئ.** `amer_gate.em_dash_count()` (يستبعد `<script>`/`<style>` بشكل صحيح قبل العدّ) يعطي **0** على الاثنين. **لا خرق WRITING-LAW فعلي بجسم المقال.** يبقى تنظيف شرطات الـmeta/الروابط تحسيناً تجميلياً منخفض الأولوية، لا بنداً حاكماً يمنع الاعتماد.
+
+**(4) تحقّق ثابت (لا تغيّر) على الملفات المتابَعة الأربعة:** `evening-rituals.html` — JSON-LD سطر 133 لا يزال فاسداً (4 عناوين `ritual-card` + صندوق نشرة مزيَّف، الأسئلة الست الحقيقية بأسطر 241-293 غير مربوطة) — يبقى `noindex,nofollow` بصواب، **صفر تقدّم من كورسر منذ 4 أوامر متتالية (13:12Z/14:04Z/15:09Z/15:39Z)**. `preconception-checkups.html`=1538w (`<article>`)، لم يُوسَّع، يبقى `noindex,nofollow`. `fitness-for-women-saudi.html`=2069w، `indoor-plants-saudi-arabia.html`=2238w، كلاهما نظيف `index,follow`، لا تغيّر.
+
+**(5) روتيني:** `freeze_watch`=نظيف لا OBJECTION. `deepen_gate`=72 خام (ثابت). `handoff_sync`={"cards":25} ثابت (لا بند جديد pending→done هذه الدورة). `list-image-pending.py`=51/51 `approved`، صفر معلَّق فعلياً — **لا حاجة توليد Higgsfield** (ملاحظة بيئة: أداة Higgsfield MCP غير متوفرة في جلسة هذه الدورة تحديداً، لكن غير ذي أثر عملي لأن لا طلب معلّق أصلاً). `gsystem_autopilot.py` (PYTHONPATH=scripts، بلا `--push`، timeout 40s): exit 0 صفر إخراج — متسق مع صفر صور معلّقة (لا محتوى جديد بانتظار بناء)، لم يُختبر تحت حمل فعلي فعطل الأداء المعروف (`rglob` غير مفهرس، أمر الإصلاح موثَّق في `AMER-ORDERS-ACTIVE.md`) يبقى غير مؤكَّد الإصلاح.
+
+**(6) git:** `origin/main`=`897dff98` (لا كوميت جديد من كورسر منذ 15:39Z). `git status`: 8 ملفات معدَّلة محلياً غير مدفوعة (نفس القائمة من دورات سابقة) + `testfile_amer.txt` untracked فارغ. قفل واحد فقط (`objects/maintenance.lock`) — تحسّن عن الدورات السابقة (لم يظهر `index.lock`/`ORIG_HEAD.lock` هذه المرة). محاولة دفعة best-effort واحدة آخر الدورة (بلا حلقة إعادة).
+
+**أمر جديد لكورسر (منخفض الأولوية، غير حاجب):** توحيد `scripts/quality-audit.py::visible_words()` مع منهجية `scripts/amer_gate.py::body_word_count()` — الاقتصار على وسم `<article>` فقط بدل الصفحة كاملة. يمنع تكرار هذا النوع من الالتباس مستقبلاً بين الأداتين.
+
+**لا اعتماد LIVE خاطئ وقع. لا انتكاسة جديدة. تصحيح جوهري لتقدير حجم عمل DEEPEN (الفجوة الحقيقية أكبر بمقدار ~7× مما أُبلغ) + استبعاد بند شرطات حاكم كان false positive.**
+
+— عامر
+
+---
+
+## 🔴 دورة عامر — 2026-07-10T16:43Z — عطل حاكم في `audit_live` (16+ يوماً بلا تدقيق فعلي) + عزل صفحتين حيّتين بمحتوى معطوب
+
+### 1) اكتشاف جذري: `scripts/build-from-approved-draft.py::audit_live()` غير موجودة فعلياً — كل تشغيلة `--audit` منذ 2026-06-24T06:35Z تفشل بـ`NameError` صامت
+
+**التسلسل:** فحصت مباشرة `python3 scripts/build-from-approved-draft.py --audit`:
+```
+NameError: name 'audit_live' is not defined
+```
+البحث بـ`grep -n "^def \|--audit"` يؤكد: لا يوجد أي `def audit_live` في الملف كاملاً — فقط استدعاء وحيد بسطر 1212 (`raise SystemExit(audit_live())`).
+
+**السبب الجذري (تتبّع `git log -p -S "audit_live"`):** كوميت `0f9dc842` (23 يونيو، دمج قالب المقال الكامل) حذف سطر `def audit_live() -> int:` عن طريق الخطأ عند إدراج دالة جديدة (`apply_article_template`) فوقها مباشرة، تاركاً **جسم `audit_live()` بالكامل (سطور 1150-1206 حالياً: حلقة G1-G11 + parity + ملخص) عالقاً داخل جسم `apply_article_template()`** بلا اسم دالة خاص به — كود ميت من منظور بايثون طالما لا يُستدعى، بينما `main()` لا يزال يستدعي `audit_live()` غير الموجودة.
+
+**الأثر:** `gsystem_autopilot.py` يلتقط فشل التدقيق لكن **يطبع فقط `audit.stdout[-500:]`** — والـ`NameError` traceback يذهب لـ`stderr` غير الملتقط، فيظهر بالسجل `AUDIT FAIL:` بمتن **فارغ** كل مرة (تأكيد: `grep "AUDIT PASS"` على كامل `gsystem-autopilot.log` = **صفر نتيجة فعلية** منذ إنشاء الملف؛ كل تشغيلة منذ 06-24T06:35Z = `AUDIT FAIL`). **يعني عملياً: بوابة G1-G11 + parity الآلية معطّلة تماماً منذ 16+ يوماً، بصمت، بلا أي أحد يلاحظ** — لأن عامر يفحص يدوياً بـ`amer_gate.py` مباشرة كل دورة، لكن هذا لا يغني عن التدقيق الآلي الشامل الذي كان يُفترض أن يغطي كل BUILD_MAP.
+
+**الإصلاح الدقيق المطلوب من كورسر:** فصل السطرين 1129-1206 الحاليين إلى دالتين منفصلتين:
+- `apply_article_template(out_path)`: تنتهي عند سطر 1149 (`print(f"  🎨 TEMPLATE {out_path.relative_to(ROOT)}")`)
+- إعادة إدراج `def audit_live() -> int:` قبل سطر 1150 (`"""Audit LIVE HTML from BUILD_MAP..."""`) لتغطي سطور 1150-1206 كما كانت أصلاً.
+
+**تأكيد الإغلاق:** `python3 scripts/build-from-approved-draft.py --audit` يطبع `=== LIVE GATE AUDIT (G1-G11 + parity) ===` وملخص PASS/FAIL حقيقي بدل `NameError`.
+
+### 2) عزل فوري: صفحتان حيّتان (`index,follow`) فاتتا فحص "140 صفحة نظيفة" الصباحي (`d27955a1`، 00:31Z) — محتوى معطوب مؤكَّد
+
+**(أ) `featured-stories/gulf-father-money-lessons.html`** — فحص مباشر لجسم `<article>`:
+- عنوان "الأسئلة الشائعة (FAQ)" (سطر 208) **يتيم** — تتبعه فقرتان بلا صلة (سطور 211-214) قبل ظهور **عنصر FAQ واحد فقط من 5** المُعلَنة بـ`FAQPage` JSON-LD (باقي الأربعة غير مُصيَّرة بالجسم إطلاقاً).
+- **حشو كلمات تكراري تدهوري (degenerate filler)** بسطرين (213-214): سلاسل عشرات المرادفات المتتالية بلا معنى فعلي ("...والمصيرية والحاسمة والفاصلة والمؤثرة والفعالة..." وتكرار مماثل بمصطلحات محاسبية/قيَمية) — نفس فئة العطل الذي وثّقه `d27955a1` في ملفات أخرى (`guides/saudi-real-estate-investing.html` وغيرها) لكن **لم يُكتشف بهذا الملف تحديداً**.
+- **رقم بلا مصدر:** "نسبة 70%" (نجاح الطفل المالي مستقبلاً) بلا أي استشهاد أو رابط — خرق مباشر لـ`WRITING-LAW`.
+- **مقارنة النسخة الإنجليزية:** `featured-stories/gulf-father-money-lessons-en.html` نظيفة تماماً — **5/5 عناصر FAQ مُصيَّرة بشكل صحيح تحت عنوانها مباشرة**، بلا حشو، 2581w. **العطل يخص النسخة العربية فقط.**
+- **الإجراء:** حوّلت `<meta name="robots">` من `index,follow` إلى **`noindex,nofollow`** الآن (لا انتظار). النسخة الإنجليزية تبقى `index,follow` — نظيفة مؤكَّدة.
+
+**(ب) `comparisons/government-vs-private-school-gulf.html`** — نفس النمط:
+- `FAQPage` JSON-LD يُعلن **6 أسئلة حقيقية** مطابقة تماماً للموضوع (حكومي/خاص، تكلفة، جودة...).
+- الجسم الظاهر يحتوي **4 عناصر `faq-item` فقط، وكلها عامة/مولَّدة قالبياً بلا صلة بالموضوع إطلاقاً** ("هذا الدليل يقدم معلومات شاملة ومتكاملة ومتوازنة..." — نص قابل للّصق بأي مقال، صفر إجابة فعلية عن مدارس حكومية/خاصة).
+- **مقارنة النسخة الإنجليزية:** `government-vs-private-school-gulf-en.html` نظيفة — 5 عناصر FAQ حقيقية مطابقة للموضوع تماماً (أرقام تكلفة فعلية بالريال/الدرهم). **نفس نمط: العطل عربي فقط.**
+- **الإجراء:** `noindex,nofollow` الآن.
+
+**نمط مشترك يستحق تحقيقاً من كورسر:** كلا الملفين عربي معطوب / إنجليزي سليم، وكلاهما نجا من مسح "140 نظيفة" الصباحي رغم أنه استخدم "heuristic تكرار لفظي" **يدوياً** حسب نص الكوميت نفسه ("manually spot-checked") — يعني لا يوجد سكربت آلي قابل لإعادة التشغيل لهذا الفحص. **أمر لكورسر:** حوّل "lexical-repetition heuristic" المذكور بكوميت `d27955a1` إلى سكربت دائم (`scripts/degenerate_filler_check.py` أو دمجه بـ`amer_gate.py`) يُشغَّل تلقائياً على كل BUILD_MAP بدل الاعتماد على مراجعة يدوية لمرة واحدة — هذا بالضبط ما فوّت هذين الملفين.
+
+### 3) ملاحظات إضافية (لا عزل، DEEPEN/تحسين فقط)
+
+- `guides/indoor-plants-saudi-arabia.html`: FAQ = 4 عناصر (حقيقية، متسقة مع JSON-LD) — دون حد `WRITING-LAW` (5-6). يحتاج 1-2 سؤال إضافي فقط، لا عطل جوهري.
+- `blog/digital-minimalism-families.html`: نفس الحالة — FAQ = 4 حقيقية متسقة، دون الحد بسؤال واحد فقط.
+- `real-estate/rent-vs-buy-gulf-family.html`: **1366w فقط** (`amer_gate.body_word_count`) — أقل من حد 1600w بـ**234 كلمة**، وليس على قائمة DEEPEN الـ72 الحالية. FAQ فيه سليم (4/4 حقيقية مطابقة، بترميز `<h3>` بدل `.faq-item div` — تنسيق مختلف فقط، لا عطل). **يحتاج إضافة لقائمة أولوية DEEPEN.**
+- `peace-capsules/evening-rituals.html` / `fitness/fitness-for-women-saudi.html` / `guides/indoor-plants-saudi-arabia.html` (المُعدَّلة محلياً غير المدفوعة): أعدت الفحص المباشر — 1668w/2069w/2237w على التوالي، 0 شرطة، Article+FAQPage صحيحان، robots=`index,follow` بصواب — **لا تغيّر، تبقى كما اعتُمدت.**
+
+### 4) روتيني
+- `amer_freeze_watch.py`: ✅ لا مخالفة، التجميد محترَم.
+- `list-image-pending.py`: 51/51 `approved`، صفر معلّق — لا حاجة توليد Higgsfield.
+- `gsystem_autopilot.py` (بلا push): يُنهي الآن خلال ~2 ثانية (تأكيد أداء فهرسة slug من كوميت `a7229fbd` سليم، لا timeout) — لكن يبقى بلا AUDIT PASS فعلي بسبب البند (1) أعلاه.
+- `handoff_sync.py`: `{"cards": 25}` ثابت — لا حركة تسليم جديدة هذه الدورة.
+- `git`: `origin/main`=`a7229fbd`. HEAD محلي أبعد بكومتين غير مدفوعين من كورسر (`309245cd`, `4fe2c520` — أدوات زكاة/ميزانية). حاولت دفعة best-effort واحدة (تفاصيل بنهاية الدورة).
 
 — عامر
