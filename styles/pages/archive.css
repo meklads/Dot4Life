@@ -15,7 +15,7 @@ body.archive-page {
   --arc-teal-m:  #0a6b63;
   --arc-mint:    #6abfb8;
   --arc-ease:    cubic-bezier(.22, 1, .36, 1);
-  --arc-nav-h:   110px;
+  --arc-nav-h:   120px;
   padding-top: 0 !important;
   background: #032a28;
   color: var(--arc-ink);
@@ -26,14 +26,32 @@ html:has(body.archive-page) {
 }
 
 @media (max-width: 768px) {
-  body.archive-page { --arc-nav-h: 90px; }
+  body.archive-page { --arc-nav-h: 96px; }
 }
 
-/* Nav */
+/* Nav — lock bar height + constrain logo (override home.css 140px) */
+body.archive-page #navbar,
 body.archive-page #navbar.index-nav {
   background: transparent !important;
   border-bottom: none !important;
   box-shadow: none !important;
+  height: var(--arc-nav-h) !important;
+  min-height: var(--arc-nav-h) !important;
+}
+
+body.archive-page #navbar .nav-inner {
+  height: var(--arc-nav-h) !important;
+  min-height: var(--arc-nav-h) !important;
+  align-items: center;
+  gap: .75rem;
+}
+
+body.archive-page #navbar .nav-logo {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  flex-shrink: 0;
+  z-index: 3;
 }
 
 body.archive-page #navbar.index-nav::before {
@@ -57,13 +75,25 @@ body.archive-page #navbar.index-nav.scrolled {
 }
 
 body.archive-page #navbar .nav-logo img {
-  height: 115px !important;
+  height: 100px !important;
+  max-height: calc(var(--arc-nav-h) - 8px) !important;
   width: auto !important;
   object-fit: contain !important;
+  display: block !important;
 }
 
 @media (max-width: 768px) {
-  body.archive-page #navbar .nav-logo img { height: 75px !important; }
+  body.archive-page #navbar .nav-logo img {
+    height: 72px !important;
+    max-height: calc(var(--arc-nav-h) - 8px) !important;
+  }
+}
+
+[data-lang="ar"] body.archive-page #navbar .nav-links a {
+  font-size: .72rem;
+  padding: 4px 8px;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 body.archive-page #navbar .nav-links a[aria-current="page"] {
@@ -71,10 +101,13 @@ body.archive-page #navbar .nav-links a[aria-current="page"] {
   background: rgba(106, 191, 184, .15) !important;
 }
 
-/* Hero */
+/* Hero — full-bleed under fixed nav; 2× nav-h clears logo (was overlapping eyebrow) */
 .arc-hero {
   margin-top: calc(-1 * var(--arc-nav-h));
-  padding: calc(var(--arc-nav-h) + clamp(2.5rem, 5vw, 3.5rem)) var(--arc-gutter) clamp(2rem, 4vw, 2.75rem);
+  padding:
+    calc(var(--arc-nav-h) * 2 + clamp(1.25rem, 3vw, 2.25rem))
+    var(--arc-gutter)
+    clamp(2rem, 4vw, 2.75rem);
   background: linear-gradient(
     165deg,
     #032a28 0%,
@@ -100,6 +133,8 @@ body.archive-page #navbar .nav-links a[aria-current="page"] {
   margin: 0 auto;
   position: relative;
   z-index: 1;
+  /* Keep title clear of oversized logo on the start edge */
+  padding-inline-start: clamp(0px, 2vw, .5rem);
 }
 
 .arc-eyebrow {
@@ -111,13 +146,13 @@ body.archive-page #navbar .nav-links a[aria-current="page"] {
   letter-spacing: .12em;
   text-transform: uppercase;
   color: rgba(255,255,255,.72);
-  margin-bottom: .75rem;
+  margin: 0 0 .85rem;
 }
 
 [data-lang="ar"] .arc-eyebrow {
   letter-spacing: 0;
   text-transform: none;
-  font-size: .68rem;
+  font-size: .72rem;
 }
 
 .arc-title {
@@ -126,7 +161,7 @@ body.archive-page #navbar .nav-links a[aria-current="page"] {
   line-height: 1.15;
   color: #fff;
   margin: 0 0 .85rem;
-  max-width: 16ch;
+  max-width: 18ch;
 }
 
 [data-lang="en"] .arc-title {
