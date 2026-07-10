@@ -979,3 +979,67 @@ body.category-page .hl-card--topic { padding: 1.35rem; }
   body.category-page .hl-card-icon { transition: none; }
   body.category-page .hl-card:hover { transform: none; }
 }
+
+/* Featured reading cards (health model) */
+body.category-page .hh-reading-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+@media (max-width: 720px) {
+  body.category-page .hh-reading-grid { grid-template-columns: 1fr; }
+}
+body.category-page .hh-reading-card {
+  display: flex;
+  flex-direction: column;
+  gap: .55rem;
+  padding: 1.35rem 1.4rem;
+  border-radius: 18px;
+  border: 1px solid rgba(106, 191, 184, .28);
+  background: #fff;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 4px 20px rgba(10, 107, 99, .06);
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  min-height: 100%;
+}
+[data-theme="dark"] body.category-page .hh-reading-card {
+  background: #1a2422;
+  border-color: rgba(106, 191, 184, .18);
+}
+body.category-page .hh-reading-card:hover {
+  transform: translateY(-3px);
+  border-color: #6abfb8;
+  box-shadow: 0 10px 28px rgba(10, 107, 99, .12);
+}
+body.category-page .hh-reading-kicker {
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--pillar-accent-dark, #054241);
+}
+[data-lang="ar"] body.category-page .hh-reading-kicker {
+  letter-spacing: 0;
+  text-transform: none;
+}
+body.category-page .hh-reading-title {
+  font-size: 1.08rem;
+  font-weight: 800;
+  line-height: 1.4;
+  color: var(--hv-ink, #1a1d23);
+}
+body.category-page .hh-reading-desc {
+  font-size: .92rem;
+  line-height: 1.65;
+  color: var(--hv-ink-soft, #3d4542);
+  flex: 1;
+}
+body.category-page .hh-reading-go {
+  margin-top: .35rem;
+  font-size: .88rem;
+  font-weight: 700;
+  color: var(--pillar-accent-dark, #054241);
+}
+body.category-page .hl-guide-strip { display: none !important; }
