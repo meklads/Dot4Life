@@ -10,7 +10,7 @@
 (function() {
   'use strict';
 
-  var FEED_VERSION = 19;  // v19: re-read lang at render + re-render on language toggle
+  var FEED_VERSION = 20;  // v20: detect /archive clean URL (was stuck on Loading forever)
 
   var CONFIG = {
     jsonUrl: '/articles.json',
@@ -48,7 +48,7 @@
     if (page.endsWith('fitness.html')) return 'fitness';
     if (page.endsWith('productivity.html')) return 'productivity';
     if (page.endsWith('plants.html')) return 'plants';
-    if (page.endsWith('archive.html')) return 'archive';
+    if (page.endsWith('archive.html') || page.endsWith('/archive')) return 'archive';
     return 'other';
   }
 
@@ -495,12 +495,16 @@
     var loading = document.querySelector('#archive-loading');
     if (!grid) return;
 
-    if (loading) loading.hidden = true;
+    if (loading) {
+      loading.hidden = true;
+      loading.setAttribute('aria-hidden', 'true');
+      if (loading.parentNode) loading.remove();
+    }
 
     if (!items.length) {
       grid.innerHTML = '';
       if (empty) empty.hidden = false;
-      setArticleCounts(0);
+      setArticleCounts(archiveArticles.length || 0);
       updateArchiveResultMeta(0, archiveArticles.length);
       return;
     }
@@ -814,7 +818,19 @@
   function handleFeedFailure() {
     var pageType = getPageType();
     if (pageType === 'archive' || document.querySelector('#archive-grid')) {
-      renderArchiveGrid([]);
+      var loading = document.querySelector('#archive-loading');
+      if (loading) loading.remove();
+      var grid = document.querySelector('#archive-grid');
+      if (grid && !grid.querySelector('.arc-card')) {
+        grid.innerHTML = '<p class="arc-empty-inline"><span class="en">Unable to load articles. Please refresh.</span><span class="ar">تعذّر تحميل المقالات. يرجى تحديث الصفحة.</span></p>';
+      }
+      var meta = document.querySelector('#arc-result-meta');
+      if (meta) {
+        var enF = meta.querySelector('.en');
+        var arF = meta.querySelector('.ar');
+        if (enF) enF.textContent = 'Showing static preview — refresh to load the full archive.';
+        if (arF) arF.textContent = 'معاينة ثابتة — حدّث الصفحة لتحميل الأرشيف كاملاً.';
+      }
     }
     // Blog hub: clear spinner; keep any static fallback cards already in the DOM
     if (pageType === 'blog' || document.querySelector('#blog-grid')) {
@@ -828,7 +844,7 @@
       if (loadBtn) loadBtn.hidden = true;
     }
     var meta = document.querySelector('#arc-result-meta');
-    if (meta) {
+    if (meta && pageType !== 'archive' && !document.querySelector('#archive-grid')) {
       var en = meta.querySelector('.en');
       var ar = meta.querySelector('.ar');
       if (en) en.textContent = 'Unable to load articles. Please refresh.';
