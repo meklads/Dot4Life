@@ -785,6 +785,13 @@
             listHtml += buildListItemHTML(filtered[j]);
           }
           legacyList.innerHTML = listHtml;
+        } else if (document.querySelector('#blog-grid')) {
+          var blogLoading = document.querySelector('#blog-loading');
+          if (blogLoading) blogLoading.remove();
+          var blogGrid = document.querySelector('#blog-grid');
+          if (blogGrid && !blogGrid.querySelector('.bl-card')) {
+            blogGrid.innerHTML = '<p class="bl-empty"><span class="en">No articles found.</span><span class="ar">لا توجد مقالات.</span></p>';
+          }
         }
         setArticleCounts(filtered.length);
       }
@@ -808,6 +815,17 @@
     var pageType = getPageType();
     if (pageType === 'archive' || document.querySelector('#archive-grid')) {
       renderArchiveGrid([]);
+    }
+    // Blog hub: clear spinner; keep any static fallback cards already in the DOM
+    if (pageType === 'blog' || document.querySelector('#blog-grid')) {
+      var loading = document.querySelector('#blog-loading');
+      if (loading) loading.remove();
+      var grid = document.querySelector('#blog-grid');
+      if (grid && !grid.querySelector('.bl-card')) {
+        grid.innerHTML = '<p class="bl-empty"><span class="en">Unable to load articles. Please refresh.</span><span class="ar">تعذّر تحميل المقالات. يرجى تحديث الصفحة.</span></p>';
+      }
+      var loadBtn = document.getElementById('blog-load-more');
+      if (loadBtn) loadBtn.hidden = true;
     }
     var meta = document.querySelector('#arc-result-meta');
     if (meta) {
