@@ -1,114 +1,150 @@
-# BMI Calculator for Women 2025: A Practical Guide for Saudi Arabia and the GCC
+# حاسبة BMI للنساء 2025: دليل عملي للسعودية والخليج
 
-You step on the scale, see a number, and still have no idea what it means for your health. That is exactly the gap a BMI calculator fills. Here is the short answer: Body Mass Index is a quick screening tool that uses your height and weight to estimate whether you fall into the underweight, normal, overweight, or obese range, giving you a starting point for a conversation about your health. The World Health Organization classifies adults as underweight below 18.5, normal from 18.5 to 24.9, overweight from 25 to 29.9, and obese at 30 or above ([WHO/StatPearls](https://www.ncbi.nlm.nih.gov/books/NBK535456/)). These ranges apply to women just as they do to men.
+قد تقفين على الميزان وترين رقماً واضحاً، ومع ذلك لا تعرفين ماذا يعني لصحتك. هنا يأتي دور مؤشر كتلة الجسم، أو BMI. هو أداة فحص سريعة تستخدم الطول والوزن لتقدير ما إذا كان الوزن ضمن نطاق نقص الوزن، الوزن الطبيعي، زيادة الوزن، أو السمنة. وفق تصنيف منظمة الصحة العالمية، يكون البالغ أقل من الوزن الطبيعي إذا كان BMI أقل من 18.5، وضمن النطاق الطبيعي بين 18.5 و24.9، وضمن زيادة الوزن بين 25 و29.9، وضمن السمنة عند 30 فأكثر ([WHO/StatPearls](https://www.ncbi.nlm.nih.gov/books/NBK535456/)).
 
-This guide explains how to read your BMI result, what it can and cannot tell you, and why it is only one piece of a much bigger health picture, especially for women in Saudi Arabia and across the GCC.
+هذا الدليل يشرح كيف تقرئين نتيجة BMI بهدوء، وما الذي يمكن أن تخبرك به، وما الذي لا تستطيع قياسه، ولماذا هو مجرد بداية لحوار صحي أوسع، خصوصاً للنساء في السعودية ودول الخليج.
 
-## What Is BMI and How Is It Calculated?
+## ما هو BMI وكيف يُحسب؟
 
-BMI is a simple ratio of your weight to your height. You take your weight in kilograms and divide it by your height in metres squared. For example, a woman who weighs 65 kg and stands 1.65 m tall has a BMI of about 23.9, which falls in the normal range. The calculation is identical for women and men, because the standard adult categories are not split by sex ([Wikipedia/BMI](https://en.wikipedia.org/wiki/Body_mass_index)).
+مؤشر كتلة الجسم هو نسبة بسيطة بين الوزن والطول. المعادلة هي: الوزن بالكيلوغرام ÷ مربع الطول بالمتر. مثلاً: امرأة وزنها 65 كجم وطولها 1.65 م يكون BMI لديها تقريباً 23.9، وهذا يقع ضمن النطاق الطبيعي. المعادلة نفسها تُستخدم للنساء والرجال لأن التصنيفات القياسية للبالغين لا تُقسم حسب الجنس ([Body Mass Index](https://en.wikipedia.org/wiki/Body_mass_index)).
 
-Our calculator does the maths for you. You enter your height and weight, and it returns your number and the category it falls into. The value is in the interpretation, not the arithmetic, so the rest of this guide focuses on what the result actually means.
+الحاسبة تنجز العملية الحسابية تلقائياً. أنت تدخلين الطول والوزن، فتحصلين على الرقم والفئة. لكن القيمة الحقيقية ليست في الرقم وحده، بل في تفسيره مع العمر، نمط الحياة، التاريخ الصحي، ومؤشرات أخرى مثل قياس الخصر والطاقة اليومية.
 
-## The Standard BMI Categories
+## تصنيفات BMI القياسية
 
-The WHO uses four main adult categories. The table below lays them out clearly:
+وفق [منظمة الصحة العالمية](https://www.who.int/ar/news-room/fact-sheets/detail/obesity-and-overweight)، تستخدم منظمة الصحة العالمية 4 فئات رئيسية للبالغين. الجدول التالي يلخصها:
 
-| Category | BMI range | What it broadly suggests |
-|---|---|---|
-| Underweight | below 18.5 | possible undernutrition; worth a check-up |
-| Normal weight | 18.5 to 24.9 | weight in a generally healthy range |
-| Overweight | 25 to 29.9 | raised risk; lifestyle review helpful |
-| Obese | 30 and above | higher health risk; medical guidance advised |
+| الفئة | نطاق BMI | المعنى العام |
+| --- | --- | --- |
 
-These cut-offs come directly from WHO classifications ([WHO/StatPearls](https://www.ncbi.nlm.nih.gov/books/NBK535456/)). One important note: research has identified additional cut-off points for people of Asian descent, who may face health risks at lower BMI values than the standard thresholds suggest. If this applies to you, your doctor can interpret your number in that context.
+| نقص وزن | أقل من 18.5 | قد يشير إلى نقص تغذية أو حاجة لفحص طبي |
 
-> **Disclaimer:** This is general health information for educational purposes, not medical advice or a diagnosis. BMI is a screening tool only. For an assessment of your individual health, consult a qualified healthcare professional.
+| وزن طبيعي | 18.5 إلى 24.9 | وزن ضمن نطاق صحي عام |
 
-## Why BMI Matters for Women Specifically
+| زيادة وزن | 25 إلى 29.9 | احتمال أعلى للمخاطر، ومراجعة العادات مفيدة |
 
-BMI does not differ in formula between women and men, but the conversation around it often does. Women's bodies change across distinct life stages, pregnancy, the postpartum months, and menopause, and weight naturally shifts during each. A single BMI reading taken during or shortly after pregnancy, for instance, will not tell the full story, and it should never be a source of pressure during that period.
+| سمنة | 30 فأكثر | مخاطر أعلى، ويفضل استشارة مختص |
 
-Women also tend to carry a different proportion of body fat than men at the same BMI, which is one reason BMI alone is an incomplete measure. It is best treated as a rough first signal, a prompt to look closer with your doctor, rather than a verdict on your health or your body.
+هذه الحدود مفيدة كبداية، لكنها ليست حكماً نهائياً. بعض الأبحاث تشير إلى أن أشخاصاً من أصول آسيوية قد يواجهون مخاطر صحية عند قيم BMI أقل من الحدود القياسية. لذلك، إذا كان هذا ينطبق عليك، فالأفضل تفسير النتيجة مع طبيب أو أخصائية تغذية.
 
-## The Limits of BMI: What the Number Misses
+**تنبيه طبي:** هذه معلومات تثقيفية عامة وليست تشخيصاً أو بديلاً عن الطبيب. BMI أداة فحص أولية فقط.
 
-BMI is popular because it is fast and free, but it has real blind spots. It cannot tell the difference between muscle and fat. A physically strong, athletic woman with high muscle mass may register as "overweight" by BMI while being perfectly healthy. The reverse is also true: someone within the normal range can still carry unhealthy levels of fat around the waist.
+## لماذا يهم BMI النساء تحديداً؟
 
-That is why clinicians look beyond BMI. Waist circumference, blood pressure, blood sugar, cholesterol, activity levels, and family history all add context the number on its own cannot provide. Treat your BMI as the opening line of a health conversation, not the conclusion.
+المعادلة لا تختلف بين النساء والرجال، لكن طريقة قراءة النتيجة قد تختلف. جسم المرأة يمر بمراحل لها أثر مباشر على الوزن وتوزيع الدهون: الدورة الشهرية، الحمل، ما بعد الولادة، الرضاعة، وانقطاع الطمث. لذلك قراءة BMI خلال الحمل أو بعد الولادة مباشرة لا تعطي صورة عادلة، ولا ينبغي أن تتحول إلى ضغط نفسي.
 
-## How to Use Your BMI Result Wisely
+كما أن نسبة الدهون عند النساء قد تكون أعلى طبيعياً من الرجال عند نفس قيمة BMI. لهذا لا يجوز استخدام الرقم وحده للحكم على الصحة أو شكل الجسم. الأفضل اعتباره مؤشراً سريعاً يدفعك للنظر في الصورة الكاملة: الحركة، النوم، قياس الخصر، نتائج التحاليل، والتاريخ العائلي.
 
-Once you have your number, the goal is action, not anxiety. Here is a sensible way to respond:
+## حدود BMI: ما الذي لا يراه الرقم؟
 
-1. **Note your category** without judging yourself harshly. It is a data point, not a label.
-2. **Look at the trend, not one reading.** Whether your weight is rising, falling, or stable over months matters more than a single snapshot.
-3. **Pair it with other signals:** how you feel, your energy, your sleep, your waist measurement.
-4. **Set one small, realistic goal**, such as a daily walk or one healthier meal swap, rather than a drastic overhaul.
-5. **Bring the number to your next check-up** so a professional can interpret it in your full context.
+BMI شائع لأنه سريع ومجاني، لكنه لا يفرق بين العضلات والدهون. امرأة رياضية ذات كتلة عضلية عالية قد تظهر في فئة زيادة الوزن رغم أن لياقتها ممتازة. وفي المقابل، قد تكون امرأة ضمن الوزن الطبيعي لكنها تحمل دهوناً عالية حول البطن، وهذا أكثر ارتباطاً بالمخاطر الأيضية.
 
-Small, steady changes beat dramatic ones that never last. A BMI result is most useful when it nudges you toward a single sustainable habit.
+لهذا ينظر المختصون إلى أكثر من رقم: محيط الخصر، ضغط الدم، السكر، الكوليسترول، مستوى النشاط، وجود أمراض في العائلة، ونمط النوم. كل هذه العناصر تضيف سياقاً لا يستطيع BMI وحده تقديمه.
 
-## BMI and Healthy Habits in the GCC
+## كيف تستخدمين نتيجة BMI بحكمة؟
 
-For women in Saudi Arabia and the wider GCC, the practical challenge is often the climate. Outdoor activity can be tough for much of the year, which makes indoor and early-morning options valuable: mall walking, home workouts, or a covered track. Pairing regular movement with balanced, home-cooked meals tends to do more for long-term health than any single number on a chart.
+بعد الحصول على الرقم، الهدف هو التصرف بهدوء لا القلق. اتبعي هذه الخطوات:
 
-The point of checking your BMI is not to chase a perfect figure. It is to stay aware, to notice changes early, and to make small choices that add up. Awareness, not anxiety, is the goal.
+- **سجلي الفئة** بدون جلد ذات. الرقم معلومة وليس وصفاً لشخصك.
 
-## Measurements That Complement Your BMI
+- **راقبي الاتجاه** لا قراءة واحدة فقط. ثبات الوزن أو ارتفاعه أو انخفاضه خلال أشهر أهم من يوم واحد.
 
-Because BMI alone misses so much, it helps to track a few simple measures alongside it. Together they paint a far clearer picture than any single number:
+- **قارنيه بمؤشرات أخرى:** قياس الخصر، الطاقة، النوم، النشاط الأسبوعي، ونتائج التحاليل.
 
-- **Waist circumference:** fat carried around the middle is more strongly linked to health risk than fat elsewhere. A measuring tape at the navel is a cheap, telling check.
-- **Resting energy and sleep:** how you feel day to day reflects your health in ways a scale cannot capture.
-- **Activity level:** how many days a week you move matters as much as your weight.
-- **Family and medical history:** conditions that run in the family shape your individual risk and how your doctor reads your numbers.
+- **اختاري هدفاً صغيراً:** مثل مشي 20 دقيقة 4 أيام أسبوعياً، أو تقليل المشروبات السكرية، أو إضافة وجبة منزلية صحية.
 
-You do not need a clinic to start. A tape measure and an honest look at your weekly habits already add useful context to your BMI. When you visit a healthcare professional, these details help them give you advice tailored to you rather than to a chart.
+- **اعرضي الرقم على مختص** إذا كان خارج النطاق الطبيعي أو إذا لديك حمل، أمراض مزمنة، أو تاريخ عائلي قوي.
 
-## Common Myths About BMI
+التغيير الصغير المستمر أفضل من خطة قاسية لا تستمر. أفضل استخدام لـ BMI هو أن يدفعك إلى عادة صحية واحدة قابلة للتطبيق.
 
-A few misunderstandings cause needless worry, so it is worth clearing them up:
+## BMI والعادات الصحية في الخليج
 
-- **"A higher BMI always means poor health."** Not necessarily. A muscular, active woman can sit above the normal range and be perfectly healthy. Context matters.
-- **"A normal BMI means I am definitely healthy."** Also untrue. Someone in the normal range can still carry unhealthy fat or have poor metabolic markers.
-- **"BMI is a precise diagnosis."** It is a screening tool, a rough first signal, never a diagnosis on its own.
-- **"I should chase a specific number at any cost."** Crash diets to hit a figure often backfire. Steady, sustainable habits serve your health far better.
+في السعودية ودول الخليج، التحدي العملي غالباً هو المناخ. الحرارة تجعل المشي الخارجي صعباً في أشهر كثيرة، لذلك تصبح الخيارات الداخلية مهمة: المشي في المولات، تمارين منزلية قصيرة، نوادٍ نسائية، أو مسارات مغطاة. الجمع بين حركة منتظمة ووجبات منزلية متوازنة يفيد الصحة أكثر من مطاردة رقم مثالي.
 
-Understanding what BMI is and is not frees you to use it calmly, as one helpful signal among several, rather than a verdict to fear.
+الغرض من قياس BMI ليس القلق من الرقم، بل الانتباه المبكر. إذا لاحظتِ ارتفاعاً تدريجياً خلال 6 أشهر، فهذه فرصة لتعديل العادات قبل أن يصبح التغيير أصعب. وإذا كانت النتيجة طبيعية، فهذا لا يعني تجاهل النوم والحركة والتغذية.
 
-## The Takeaway and Your Next Step
+## قياسات تكمل BMI
 
-BMI is a quick, useful screening tool, but it is only a first step. It opens a conversation about your health rather than ending one. Read your result calmly, place it alongside how you feel and other health signals, and use it to guide one realistic habit at a time.
+لأن BMI لا يكفي وحده، أضيفي له 4 مؤشرات بسيطة:
 
-Your move now: calculate your number with our **BMI Calculator** above, note your category, then pick one small habit to start this week. If your result raises any concern, bring it to your doctor.
+- **محيط الخصر:** الدهون حول البطن ترتبط بالمخاطر أكثر من الدهون في مناطق أخرى.
 
-**Suggested internal links:**
-- The Benefits of Daily Walking for Your Family
-- Fitness for Women in Saudi Arabia: A GCC Exercise Guide
-- Calorie Calculator for Saudi Arabia: TDEE and Weight Goals
+- **الطاقة والنوم:** التعب المستمر أو النوم السيئ علامة تحتاج انتباهاً حتى لو كان الوزن طبيعياً.
 
-## Frequently Asked Questions
+- **مستوى النشاط:** عدد أيام الحركة الأسبوعية مؤشر مهم للصحة.
 
-**Is the BMI formula different for women?**
-No. The calculation and the standard adult categories are the same for women and men. The difference lies in how the result is interpreted alongside life stage and body composition.
+- **التاريخ العائلي:** السكري، الضغط، وأمراض القلب في العائلة تغير طريقة قراءة الأرقام.
 
-**Is BMI accurate for athletic or muscular women?**
-Not always. BMI cannot separate muscle from fat, so a muscular woman may read as "overweight" while being healthy. Other measures give a fuller picture.
+لا تحتاجين إلى عيادة للبدء. شريط قياس، سجل وزن شهري، وملاحظة العادات الأسبوعية تعطي صورة أوضح. وعند زيارة الطبيب، تساعد هذه البيانات على نصيحة مخصصة بدلاً من نصيحة عامة.
 
-**What is a healthy BMI range for women?**
-The WHO normal range is 18.5 to 24.9 for adults. That said, a healthy weight depends on your whole health profile, not the number alone.
+## أخطاء شائعة حول BMI
 
-**Should I check my BMI during pregnancy?**
-BMI is not a reliable measure during or shortly after pregnancy, since weight naturally changes. Follow your doctor's guidance on healthy weight during this period instead.
+- **"كل BMI مرتفع يعني صحة سيئة":** غير صحيح دائماً. العضلات قد ترفع الرقم.
 
-**Does BMI work the same for people of Asian descent?**
-Research has identified additional, lower cut-off points for people of Asian descent, who may face risk at a lower BMI. Your doctor can interpret your number in that context.
+- **"BMI طبيعي يعني أنني سليمة تماماً":** غير كافٍ. قد توجد مشاكل في السكر أو الدهون أو محيط الخصر.
 
----
-Sources:
-- https://www.ncbi.nlm.nih.gov/books/NBK535456/
-- https://en.wikipedia.org/wiki/Body_mass_index
-- https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5735219/
+- **"BMI تشخيص دقيق":** هو فحص أولي، وليس تشخيصاً.
 
-WordCount: ~1380
+- **"يجب أن أصل إلى رقم محدد بأي طريقة":** الحميات القاسية غالباً تفشل. العادات المستدامة أفضل.
+
+فهم حدود BMI يجعلك تستخدمينه كأداة مفيدة لا كمصدر خوف.
+
+## الخلاصة والخطوة التالية
+
+BMI أداة سريعة ومفيدة، لكنها مجرد خطوة أولى. اقرئي نتيجتك بهدوء، ضعيها بجانب قياسات أخرى، ثم اختاري عادة صغيرة لهذا الأسبوع. إذا كانت النتيجة أقل من 18.5 أو أعلى من 30، أو إذا كنتِ حاملاً أو بعد الولادة، فالأفضل مراجعة مختص.
+
+ابدئي الآن بحساب الرقم، ثم اكتبي 3 أشياء: فئتك الحالية، عادة واحدة ستبدئينها، وموعد مراجعة بعد أسبوعين. احتفظي بهذه الملاحظات في تطبيق صحي أو دفتر بسيط لتري التغير بهدوء.
+
+## كيف تقرئين كل فئة من فئات BMI؟
+
+إذا كانت النتيجة أقل من 18.5، لا يعني ذلك دائماً وجود مشكلة خطيرة، لكنه مؤشر يستحق الانتباه. اسألي نفسك: هل نقص الوزن جديد؟ هل يوجد فقدان شهية، تعب، اضطراب دورة، أو نقص في الحديد؟ إذا كان النزول سريعاً خلال 3 أشهر أو مصحوباً بأعراض، فالأفضل مراجعة طبيبة أو أخصائية تغذية بدل محاولة زيادة الوزن عشوائياً.
+
+إذا كانت النتيجة بين 18.5 و24.9، فهذا نطاق طبيعي عام، لكنه لا يعني أن كل المؤشرات الأخرى مثالية. امرأة ضمن هذا النطاق قد تحتاج تحسين النوم أو تقليل السكر أو زيادة الحركة. اعتبري النتيجة نقطة اطمئنان مبدئية، ثم راقبي محيط الخصر والطاقة والتحاليل السنوية.
+
+إذا كانت النتيجة بين 25 و29.9، فابدئي من عادات صغيرة لا من حمية قاسية. هدف عملي: 150 دقيقة حركة أسبوعياً، تقليل مشروبين سكريين أسبوعياً، وإضافة مصدر بروتين وخضار في وجبة رئيسية واحدة يومياً. بعد 8 إلى 12 أسبوعاً، أعيدي القياس وانظري للاتجاه.
+
+إذا كانت النتيجة 30 أو أعلى، فالأفضل التعامل معها كإشارة لمتابعة صحية، لا كوصمة. راجعي قياسات الضغط والسكر والدهون، واسألي عن خطة مناسبة لحالتك. النزول التدريجي بنسبة 5 إلى 10% من الوزن خلال عدة أشهر قد يحسن مؤشرات صحية كثيرة، حتى لو لم تصلي فوراً إلى النطاق الطبيعي.
+
+## متى تحتاجين مراجعة مختص؟
+
+راجعي طبيبة أو أخصائية تغذية إذا كان BMI أقل من 18.5 مع تعب أو دوخة أو اضطراب دورة، أو إذا كان 30 فأكثر، أو إذا كان لديك سكري، ضغط، تكيس مبايض، حمل، رضاعة، أو تاريخ عائلي قوي لأمراض القلب. كذلك لا تؤجلي الاستشارة إذا كان الوزن يتغير بسرعة بدون سبب واضح.
+
+الاستشارة لا تعني بالضرورة أدوية أو خطة صعبة. أحياناً يكفي فحص دم بسيط، تقييم غذائي، وهدف حركة مناسب للوقت والبيئة. في الخليج، يمكن البدء بخيارات واقعية مثل المشي داخل المول، تمارين مقاومة منزلية مرتين أسبوعياً، تجهيز وجبات بسيطة، وتحديد موعد نوم ثابت.
+
+## خطة 14 يوماً بعد معرفة النتيجة
+
+اليوم 1: سجلي BMI، الوزن، محيط الخصر، وساعات النوم. اليوم 2 إلى 4: أضيفي 20 دقيقة مشي أو حركة خفيفة. اليوم 5: استبدلي مشروباً سكرياً بالماء أو القهوة بدون سكر. اليوم 6 و7: جهزي وجبة منزلية واحدة بدلاً من طلب خارجي. الأسبوع الثاني: كرري العادات نفسها، ثم أضيفي تمرين مقاومة بسيطاً مثل القرفصاء على كرسي أو تمارين مطاطية لمدة 15 دقيقة مرتين في الأسبوع.
+
+بعد 14 يوماً، لا تحكمي على النجاح من الوزن فقط. اسألي: هل النوم أفضل؟ هل الحركة أسهل؟ هل قل طلب الطعام السريع؟ هل أصبح القياس عادة هادئة؟ هذه المؤشرات الصغيرة هي التي تصنع فرقاً طويل المدى. BMI يعطيك البداية، لكن العادات هي التي تغيّر المسار.
+
+## كيف تستخدمين BMI بدون قلق؟
+
+من المهم ألا يتحول القياس إلى عادة يومية مرهقة. يكفي قياس الوزن وBMI مرة كل أسبوعين أو مرة شهرياً، وفي نفس الظروف تقريباً: صباحاً، بعد دخول الحمام، وقبل الإفطار. القياس اليومي يتأثر بالسوائل، الملح، الدورة الشهرية، النوم، والتوتر، وقد يعطي انطباعاً مضللاً عن التقدم.
+
+إذا كان الهدف تحسين الصحة، فاختاري مؤشرات نجاح لا تعتمد على الوزن فقط: القدرة على صعود الدرج بدون تعب شديد، نوم أعمق، انتظام الوجبات، انخفاض محيط الخصر، أو المشي 4 أيام في الأسبوع. هذه المؤشرات تجعل الرحلة صحية ونفسية في الوقت نفسه، وتمنع تحويل BMI إلى رقم يحدد الثقة بالنفس.
+
+للفتيات المراهقات، يجب التعامل مع BMI بحذر أكبر. الأفضل أن يقرأه ولي الأمر والطبيبة ضمن النمو والعمر والبلوغ، لا كمقارنة مع البالغات. أما للنساء بعد الأربعين، فالأولوية تكون للحفاظ على العضلات عبر تمارين مقاومة خفيفة، لأن الكتلة العضلية تساعد في الحركة والحرق وصحة العظام.
+
+## أسئلة شائعة
+
+### هل تختلف معادلة BMI للنساء؟
+
+لا. المعادلة واحدة للنساء والرجال: الوزن بالكيلوغرام مقسوماً على مربع الطول بالمتر. الاختلاف يكون في تفسير النتيجة حسب المرحلة الصحية وتكوين الجسم.
+
+### هل BMI دقيق للنساء الرياضيات أو ذوات الكتلة العضلية العالية؟
+
+ليس دائماً. BMI لا يفرق بين العضلات والدهون، لذلك قد تظهر امرأة رياضية ضمن فئة زيادة الوزن رغم أن صحتها جيدة. أضيفي قياس الخصر والنشاط الأسبوعي ونتائج التحاليل.
+
+### ما النطاق الصحي لمؤشر كتلة الجسم للنساء؟
+
+النطاق الطبيعي للبالغين هو 18.5 إلى 24.9. أقل من ذلك نقص وزن، ومن 25 إلى 29.9 زيادة وزن، و30 فأكثر سمنة. لكن الصحة لا تُقرأ من هذا الرقم وحده.
+
+### هل أستخدم BMI أثناء الحمل؟
+
+لا يُفسر BMI أثناء الحمل أو بعد الولادة مباشرة بالطريقة المعتادة، لأن الوزن يتغير طبيعياً. اتبعي إرشادات الطبيبة حول الزيادة الصحية في الوزن.
+
+### ماذا أفعل إذا كانت نتيجة BMI خارج النطاق الطبيعي؟
+
+سجلي الرقم، قارنيه بمحيط الخصر والطاقة والنوم، وابدئي عادة صغيرة لمدة أسبوعين. إذا كانت النتيجة مرتفعة جداً أو منخفضة جداً، راجعي مختصاً.
+
+اقرئي أيضاً: [فوائد المشي اليومي](/health/daily-walking-benefits.html) · [حاسبة دهون الجسم](/tools/body-fat-calculator.html) · [محور الصحة](/health.html)

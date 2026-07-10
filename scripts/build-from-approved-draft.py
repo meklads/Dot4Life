@@ -134,20 +134,20 @@ BUILD_MAP = [
     },
     {
         "id": "A-02-2",
-        "lang_only": "en",
-        "draft_en": DRAFTS / "task02/bmi-calculator-women.md",
-        "out_en": ROOT / "health/bmi-calculator-women.html",
-        "section_en": "🏥 Health",
-        "tool_cta_en": "/tools/bmi-calculator.html",
-        "tool_label_en": "BMI Calculator",
-        "internal_links_en": [
-            ("/health/daily-walking-benefits-en.html", "Daily Walking Benefits"),
-            ("/tools/body-fat-calculator.html", "Body Fat Calculator"),
-            ("/health.html", "Health Hub"),
+        "lang_only": "ar",
+        "draft_ar": DRAFTS / "task02/bmi-calculator-women.md",
+        "out_ar": ROOT / "health/bmi-calculator-women.html",
+        "section_ar": "🏥 صحة",
+        "tool_cta_ar": "/tools/bmi-calculator.html",
+        "tool_label_ar": "حاسبة مؤشر كتلة الجسم",
+        "internal_links_ar": [
+            ("/health/daily-walking-benefits.html", "فوائد المشي اليومي"),
+            ("/tools/body-fat-calculator.html", "حاسبة دهون الجسم"),
+            ("/health.html", "قسم الصحة"),
         ],
         "hero_webp": "/assets/images/hero-bmi-calculator-women.webp",
-        "hero_alt_en": "Bathroom scale and measuring tape, women's health screening",
-        "title_seo_en": "BMI Calculator for Women Guide",
+        "hero_alt_ar": "امرأة بحجاب كامل تجهّز فاكهة طازجة وكوب ماء في مطبخ مشرق، رمز للحياة الصحية",
+        "title_seo_ar": "حاسبة BMI للنساء: دليل عملي للسعودية والخليج",
     },
     {
         "id": "A-03-1",
@@ -504,7 +504,7 @@ MAX_META_LEN = 155
 MIN_DRAFT_WORDS = 1200
 MIN_FAQ_Q = 4
 MIN_INTERNAL_LINKS = 3
-DISCLAIMER_KEYS = ("Disclaimer:", "إخلاء مسؤولية", "Sharia Disclaimer", "إخلاء مالي")
+DISCLAIMER_KEYS = ("Disclaimer:", "إخلاء مسؤولية", "تنبيه طبي", "Sharia Disclaimer", "إخلاء مالي")
 
 DISCLAIMER_BY_ID: dict[str, str] = {
     "A-01-1": "financial", "A-01-2": "financial", "A-07-1": "financial",
@@ -515,7 +515,7 @@ DISCLAIMER_BY_ID: dict[str, str] = {
 
 DISCLAIMER_PATTERNS: dict[str, re.Pattern[str] | None] = {
     "medical": re.compile(
-        r"Disclaimer|إخلاء مسؤولية|medical advice|not medical|استشارة طبية|ليست استشارة",
+        r"Disclaimer|إخلاء مسؤولية|تنبيه طبي|medical advice|not medical|استشارة طبية|ليست استشارة",
         re.I,
     ),
     "financial": re.compile(

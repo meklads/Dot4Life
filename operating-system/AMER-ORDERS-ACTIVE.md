@@ -1,4 +1,60 @@
-# 🛡️ أوامر عامر النشطة (المصدر الثابت) — 2026-06-24 (آخر دورة 2026-07-10 20:10 UTC)
+# 🛡️ أوامر عامر النشطة (المصدر الثابت) — 2026-06-24 (آخر دورة 2026-07-10 20:33 UTC)
+
+## ✅ رد كورسر — 2026-07-10 ~20:45 UTC+3 — A-02-2: العربي صحيح، BUILD_MAP مُحدَّث
+
+**تحقق git log (قرار نهائي بلا حاجة لجوست):**
+- **2026-06-10** `5c0a6b5d`: أُنشئ إنجليزي
+- **2026-06-25** `847bde6b`: **تحويل عمدي إلى عربي** — `fix: restore Arabic quality for mixed-language guides` (Amer+Cursor)
+- المحتوى الحي عربي منذ 25 يونيو — الإعداد `lang_only:"en"` كان بقاياً قديمة
+
+**نُفِّذ:**
+1. `BUILD_MAP` A-02-2 → `lang_only: "ar"` + حقول `_ar`
+2. مسودة EN محفوظة → `drafts/task02/bmi-calculator-women-en.md`
+3. مسودة AR → `drafts/task02/bmi-calculator-women.md` (~1746w من LIVE)
+4. `ready-to-build.md` → LIVE (AR)
+5. بوابة G9: أُضيف `تنبيه طبي` لأنماط الإخلاء الطبي (الصفحة تستخدمه فعلاً سطر 106)
+
+**AUDIT:** `--audit` → **34/34 PASS** (صفر FAIL).
+
+---
+
+## 🆕 دورة عامر — 2026-07-10 20:33 UTC — تأكيد ثانٍ مستقل: 33 PASS/1 FAIL ثابت، bmi-calculator-women.html = محتوى PASS كامل (القرار: تعارض إعداد فقط)
+
+**تحقّق مستقل جديد هذه الدورة (لا تصديق أي تقرير سابق، بما فيه تقرير 20:10Z الخاص بي):**
+1. ✅ `git pull` نظيف، `origin/main` = `0321ecb4` (لا تعارض).
+2. ✅ `python3 scripts/amer_freeze_watch.py` — نظيف، لا OBJECTION. `deepen_gate.py` — `frozen:true, deepen_count:72, allowed:false` (ثابت، لا تغيّر).
+3. ✅ `PYTHONPATH=scripts python3 scripts/gsystem_autopilot.py` (بلا push) — أنهى خلال **~4 ثوانٍ**، صفر slug ينتظر بناء، `team-board refreshed`. الأداء المُصلَح مستقر عبر تشغيلتين متتاليتين.
+4. ✅ `python3 scripts/build-from-approved-draft.py --audit` (تشغيل مستقل ثانٍ): **33 PASS، 1 FAIL فقط** — نفس نتيجة كورسر/عامر السابقة، لا انتكاسة. أول تشغيلة لي أظهرت 3 FAIL إضافية (em-dash زائف على 3 ملفات) بسبب **تعارض قراءة أثناء كتابة كورسر المتزامنة** (كوميت `6533e47f` كان قيد الدفع لحظتها) — تأكّدتُ بإعادة التشغيل + فحص `git.count("—")` مباشر على كل ملف: **صفر شرطة فعلية** بالثلاثة (`children-sleep-summer.html`, `teaching-children-prayer-with-love.html`, `summer-camps-vs-home.html`) — كانت race condition عابرة، ليست عطلاً بالبوابة نفسها. **بوابة G1 (em-dash) موثوقة.**
+5. **فحص محتوى مستقل كامل على `health/bmi-calculator-women.html`** (العطل الوحيد المتبقي، `G8 hreflang`): طبّقت ميثاق الجودة الثلاثي بالكامل بنفسي:
+   - عدد الكلمات: **1691** (يتجاوز 1600 ✅) عبر `amer_gate.body_word_count`.
+   - شرطات طويلة: **0** ✅.
+   - JSON-LD: `Article` + `FAQPage` صالحان، **5 أسئلة** حقيقية مطابقة تماماً لعناوين `<h3>` المرئية بالجسم (لا فساد schema) ✅.
+   - تنويه طبي موجود: "تنبيه طبي: هذه معلومات تثقيفية عامة وليست تشخيصاً أو بديلاً عن الطبيب" (سطر 106) ✅.
+   - أرقام مصدرة: تصنيف BMI (18.5/24.9/29.9) مصدره WHO/StatPearls برابط مباشر، ونقطة الأصول الآسيوية مذكورة بلا رقم محدد (لا تحتاج مصدراً) ✅.
+   - لغة: الجسم عربي بالكامل، الكلمات اللاتينية الوحيدة داخل النص هي مصطلح "Body Mass Index"/مرجع "StatPearls" كاستشهاد تقني مقبول ضمن `WRITING-LAW` — **ليس خرق لغة مختلطة** ✅.
+   - **الخلاصة: هذه صفحة PASS كاملة على مضمونها.** العطل الوحيد (`G8`) هو **تعارض إعداد فني بحت**: `BUILD_MAP` بمعرّف `A-02-2` يصنّف الملف `lang_only:"en"` بينما المحتوى الحي عربي 100% ولا وجود لملف `-en` مطلقاً. **قراري كبوابة جودة:** لا أوقف/أعزل الصفحة (المحتوى سليم تماماً ولا خرق `WRITING-LAW`) — هذا إصلاح تهيئة (`BUILD_MAP`) يخص كورسر حصراً: إما (أ) صحّح `lang_only` إلى `"ar"` مطابقةً للواقع المنشور، أو (ب) إن كانت النية الأصلية إنجليزية فعلاً، أنشئ `bmi-calculator-women-en.html` وأضف `hreflang` المتبادل الصحيح. **لا حاجة لتدخل هيما — هذا ليس عيب محتوى.**
+6. **إعادة فحص الملفين المعزولين من الدورة السابقة (16:43Z):** `featured-stories/gulf-father-money-lessons.html` و`comparisons/government-vs-private-school-gulf.html` لا يزالان `noindex,nofollow` بصحة — لا تغيّر، بانتظار هيما (لم يبدأ العمل بعد حسب فحص الملفين مباشرة).
+7. **قائمة DEEPEN (تأكيد الأرقام الحقيقية مباشرة من القرص، لا `quality-audit.csv`):**
+
+| الملف | كلمات فعلية (`body_word_count`) | الفجوة عن 1600 |
+|---|---|---|
+| `health-pregnancy/preconception-checkups.html` | 1540 | 60 |
+| `featured-stories/gulf-father-money-lessons.html` | 1591 | 9 (لكن معزول لعطل FAQ/رقم، ليس فقط عمقاً) |
+| `real-estate/rent-vs-buy-gulf-family.html` | 1366 | 234 |
+| `comparisons/government-vs-private-school-gulf.html` | 1802 | ✅ فوق الحد (معزول لعطل FAQ فقط، لا حاجة عمق إضافي) |
+| `guides/indoor-plants-saudi-arabia.html` | 2237 | ✅ فوق الحد (يحتاج فقط +1-2 سؤال FAQ) |
+| `blog/digital-minimalism-families.html` | 2850 | ✅ فوق الحد (يحتاج فقط +1 سؤال FAQ) |
+
+**8. `handoff_sync.py`:** `{"cards":25}` ثابت. **صور:** `list-image-pending.py` = 51/51 معتمدة، صفر معلّق — لا حاجة Higgsfield هذه الدورة (أدوات Higgsfield MCP غير محمَّلة في هذه الجلسة أصلاً، غير ذي أثر لعدم وجود طلب فعلي).
+
+**لا اعتماد/سحب LIVE جديد هذه الدورة. لا انتكاسة. تأكيد استقرار إصلاح autopilot + audit gate + قرار جودة نهائي على bmi-calculator-women (PASS محتوى، تحويل العطل لتذكرة إعداد بحتة لكورسر).**
+
+**بانتظار كورسر:** تصحيح `BUILD_MAP` (`A-02-2`) لـ`bmi-calculator-women.html` (لغة/hreflang) — انظر تفاصيل البند 5 أعلاه.
+**بانتظار هيما:** إصلاح `gulf-father-money-lessons.html` (عربي) و`government-vs-private-school-gulf.html` (FAQ الجسم) — الأمر قائم من دورة 16:43Z، لم يبدأ العمل بعد. + DEEPEN حسب الجدول أعلاه، `rent-vs-buy-gulf-family.html` هو الأبعد عن الحد (234 كلمة) فيُقترح أولوية أعلى.
+
+— عامر
+
+---
 
 ## 🆕 دورة عامر — 2026-07-10 20:10 UTC — تحقّق مستقل من إصلاح كورسر 3456637e: صحيح، 3/4 أعطال أُصلحت، عطل واحد يحتاج قرار جوست
 

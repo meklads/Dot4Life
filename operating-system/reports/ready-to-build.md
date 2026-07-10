@@ -14,7 +14,7 @@
 | 3 | A-07 | drafts/task07/rent-vs-buy-gulf-family(-en) | real-estate/rent-vs-buy-gulf-family(-en).html | 1353/1775 | 🟢 **LIVE** 2026-06-21 |
 | 4 | A-07 | drafts/task07/oman-property-roi | real-estate/oman-property-roi.html | —/1347 | 🟢 **LIVE** 2026-06-21 (حقن جراحي) |
 | 5 | A-02 | drafts/task02/daily-walking-benefits(-en) | health/daily-walking-benefits(-en).html | 1261/1532 | 🟢 **LIVE** 2026-06-21 |
-| 6 | A-02 | drafts/task02/bmi-calculator-women | health/bmi-calculator-women.html | —/1498 | 🟢 **LIVE** (EN) |
+| 6 | A-02 | drafts/task02/bmi-calculator-women | health/bmi-calculator-women.html | 1746/— | 🟢 **LIVE** (AR) |
 | 7 | A-03 | drafts/task03/children-sleep-summer(-en) | health/children-sleep-summer(-en).html | 1242/1492 | 🟢 **LIVE** 2026-06-21 |
 | 8 | A-03 | drafts/task03/pregnancy-week-by-week | health/pregnancy-week-by-week.html | —/1224 | 🟢 **LIVE** (EN) |
 | 9 | A-04 | drafts/task04/preconception-checkups(-en) | health-pregnancy/preconception-checkups(-en).html | 1245/1537 | 🟢 **LIVE** 2026-06-21 |
