@@ -5,7 +5,7 @@
 
 /* ── Shared tokens (homepage vision) ─────────────────────── */
 body.category-page {
-  --hp-max:    1100px;
+  --hp-max:    1280px;
   --hp-gutter: clamp(1.25rem, 4vw, 2rem);
   --hv-ink:        #1A1612;
   --hv-ink-soft:   #3D4542;
@@ -362,7 +362,35 @@ body.category-page .hl-container.hl-wide {
 }
 
 body.category-page .hl-container.hl-prose {
-  max-width: 900px;
+  /* Same outer rail as .hl-wide so section edges align */
+  max-width: 1280px;
+}
+
+/* Readable measure for lead copy only — start-aligned to the rail edge */
+body.category-page .hl-intro-text {
+  max-width: 72ch;
+}
+[data-lang="ar"] body.category-page .hl-intro-text {
+  max-width: 78ch;
+}
+
+/* Trust / FAQ grids share the full rail (no nested shrink) */
+body.category-page .hh-trust-row,
+body.category-page .hh-faq {
+  max-width: none;
+  width: 100%;
+  margin-inline: 0;
+}
+body.category-page .hh-trust {
+  padding-block: clamp(3.25rem, 6vw, 5.5rem);
+}
+body.category-page .hh-trust-label {
+  text-align: start;
+}
+body.category-page .hh-trust-note {
+  text-align: start;
+  max-width: none;
+  margin-inline: 0;
 }
 
 body.category-page .hl-intro-text .en,
