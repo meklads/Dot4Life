@@ -159,6 +159,13 @@ window.dflTrack=function(event,params){gtag('event',event,Object.assign({page_pa
           <div class="t-metric"><div class="t-metric-val" id="res-annual">—</div><div class="t-metric-lbl"><span class="en">Annual Gross</span><span class="ar">الإجمالي السنوي</span></div></div>
           <div class="t-metric"><div class="t-metric-val" id="res-annual-net">—</div><div class="t-metric-lbl"><span class="en">Annual Net</span><span class="ar">الصافي السنوي</span></div></div>
         </div>
+        <div class="tool-gauge tool-gauge--salary" id="salary-gauge" data-min="0" data-max="15" hidden role="meter" aria-label="Deduction rate">
+          <div class="tool-gauge-track">
+            <div class="tool-gauge-marker" aria-hidden="true"></div>
+          </div>
+          <p class="tool-gauge-label" id="salary-gauge-label"></p>
+          <div class="tool-gauge-ticks"><span>0%</span><span>7.5%</span><span>15%</span></div>
+        </div>
         <p class="t-disclaimer"><span class="en">Saudi employees in private sector pay 9.75% GOSI on basic salary. Expats are not subject to GOSI. Government sector rates may vary.</span><span class="ar">يدفع الموظفون السعوديون في القطاع الخاص 9.75% تأمينات من الراتب الأساسي. المغتربون غير خاضعين للتأمينات.</span></p>
       </div>
     </div>
@@ -262,6 +269,7 @@ window.dflTrack=function(event,params){gtag('event',event,Object.assign({page_pa
 </div>
 
 <script src="/scripts/global.js?v=20260619e" defer></script>
+<script src="/scripts/tool-gauge.js?v=20260709e"></script>
 <script>
 function fmt(n){return n.toLocaleString('en-SA',{minimumFractionDigits:0,maximumFractionDigits:0})+' SAR';}
 function getLang(){return document.documentElement.getAttribute('data-lang')||'en';}
@@ -279,6 +287,14 @@ function calculate(silent){
   document.getElementById('res-net').textContent=fmt(net);
   document.getElementById('res-annual').textContent=fmt(gross*12);
   document.getElementById('res-annual-net').textContent=fmt(net*12);
+  if(window.dflSetToolGauge){
+    var deductPct=gross>0?(gosi/gross)*100:0;
+    var lang=getLang();
+    var gaugeLabel=lang==='ar'
+      ?deductPct.toFixed(1)+'% خصم من الإجمالي'
+      :deductPct.toFixed(1)+'% deducted from gross';
+    dflSetToolGauge('salary-gauge',{value:deductPct,min:0,max:15,label:gaugeLabel,hidden:gross<=0});
+  }
   if(!silent&&window.dflTrack)dflTrack('salary_calculated',{nationality:nat});
 }
 function toggleFAQ(el){
