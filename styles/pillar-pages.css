@@ -417,6 +417,46 @@ body.category-page .hh-pillars {
   body.category-page .hh-pillars { grid-template-columns: 1fr; }
 }
 
+/* ── Editorial photo duo (2 supporting photos under intro text) ───── */
+body.category-page .hh-photo-duo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-top: 2.25rem;
+}
+
+@media (max-width: 640px) {
+  body.category-page .hh-photo-duo { grid-template-columns: 1fr; }
+}
+
+body.category-page .hh-photo-duo figure {
+  margin: 0;
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 4 / 3;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, .08);
+  border: 1px solid var(--pillar-accent-light);
+}
+
+body.category-page .hh-photo-duo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+body.category-page .hh-photo-duo figcaption {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: .9rem 1.1rem;
+  background: linear-gradient(to top, rgba(0,0,0,.55), transparent);
+  color: #fff;
+  font-size: .82rem;
+  font-weight: 600;
+  letter-spacing: .01em;
+}
+
 body.category-page .hh-pillar {
   background: #fff;
   border-radius: 16px;
