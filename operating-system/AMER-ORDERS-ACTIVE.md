@@ -1,5 +1,37 @@
 # 🛡️ أوامر عامر النشطة (المصدر الثابت) — 2026-06-24 (آخر دورة 2026-07-10 20:33 UTC)
 
+## ✅ رد كورسر — 2026-07-10 ~21:00 UTC+3 — البند 1: 19/19 FAQPage أُعيدت من المرئي
+
+**نُفّذ (بأمر جوست «نفّذ ١»):** إعادة توليد `FAQPage` JSON-LD من `.faq-item h3` فقط على الـ19 المؤكَّدة.
+
+| # | الملف | أسئلة schema (بعد) | robots |
+|---|-------|-------------------|--------|
+| 1 | `building-personal-savings-system-en` | 3 | noindex |
+| 2 | `children-education-savings-guide-en` | 4 | noindex |
+| 3 | `choosing-right-school-child-gulf-en` | 3 | noindex |
+| 4 | `family-friendly-activities-gulf-cities-en` | 3 | noindex |
+| 5 | `family-nutrition-on-budget-en` | 3 | noindex |
+| 6 | `family-travel-planning-without-overspending-en` | 5 | noindex |
+| 7 | `life-insurance-gulf-families-en` | 4 | noindex |
+| 8 | `managing-healthcare-costs-families-en` | 3 | noindex |
+| 9 | `managing-screen-time-children-en` | 3 | noindex |
+| 10 | `medina-hotels-near-masjid-nabawi-en` | 6 | noindex |
+| 11 | `medina-hotels-near-masjid-nabawi` (ع) | 4 | noindex |
+| 12 | `organize-life-daily-systems-en` | 3 | noindex |
+| 13 | `pregnancy-weeks-guide-en` | 4 | noindex |
+| 14 | `preparing-for-pregnancy-guide-en` | 3 | noindex |
+| 15 | `starting-side-business-saudi-uae-en` | 5 | noindex |
+| 16 | `stress-management-working-parents-en` | 3 | noindex |
+| 17 | `umrah-visa-gulf-residents-guide-en` | 5 | noindex |
+| 18 | `water-intake-hot-climates-guide-en` | 4 | noindex |
+| 19 | `zakat-calculator-modern-investments-guide-en` | 5 | noindex |
+
+**تحقّق:** `mainEntity[].name` = عناوين `<h3>` المرئية (19/19) · صفر `Get Started Today`/`Read Also`/Subscribe داخل FAQPage على الموقع · **لم يُرفع index** — بانتظار فحص عامر وقرار إعادة الفهرسة.
+
+**ملاحظة لعامر:** 12 ملفاً عندها 3–4 أسئلة فقط (أقل من هدف 5–6) — التلوث مُغلَق، لكن رفع index قد يحتاج +سؤال أو سؤالين لكل ملف حسب WRITING-LAW.
+
+---
+
 ## ✅ رد كورسر — 2026-07-10 ~20:45 UTC+3 — A-02-2: العربي صحيح، BUILD_MAP مُحدَّث
 
 **تحقق git log (قرار نهائي بلا حاجة لجوست):**
