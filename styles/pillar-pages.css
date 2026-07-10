@@ -417,23 +417,59 @@ body.category-page .hh-pillars {
   body.category-page .hh-pillars { grid-template-columns: 1fr; }
 }
 
-/* ── Editorial photo duo (2 small supporting photos under intro text) ─
-   Deliberately compact: a paired detail accent, not a second hero.
-   Stays 2-up at every width so it never turns into a giant single-column
-   photo stack on mobile. ─────────────────────────────────────────── */
+/* ── Intro row: copy + photo duo side-by-side ─────────────────
+   Photos sit in the empty rail beside the intro text (RTL: left).
+   Pillars stay full-width below. ─────────────────────────────── */
+body.category-page .hh-intro-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(220px, 400px);
+  gap: clamp(1.35rem, 3vw, 2.5rem);
+  align-items: start;
+  margin-bottom: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+body.category-page .hh-intro-copy .hl-eyebrow {
+  margin-bottom: .65rem;
+}
+
+body.category-page .hh-intro-copy .hl-h2 {
+  margin-bottom: 1rem;
+}
+
+body.category-page .hh-intro-copy .hl-intro-text,
+body.category-page .hh-intro-copy .hh-intro-split {
+  margin-bottom: 0;
+  max-width: none;
+}
+
+/* ── Editorial photo duo (paired accent beside intro) ─────────
+   Compact 2-up; never stacks into a full-width photo slab. ─── */
 body.category-page .hh-photo-duo {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: .85rem;
-  margin: 1.75rem 0 0;
-  max-width: 480px;
+  margin: .15rem 0 0;
+  max-width: none;
+  width: 100%;
+  align-self: center;
+}
+
+@media (max-width: 900px) {
+  body.category-page .hh-intro-row {
+    grid-template-columns: 1fr;
+    gap: 1.35rem;
+  }
+  body.category-page .hh-photo-duo {
+    max-width: 420px;
+    width: 100%;
+    justify-self: start;
+  }
 }
 
 @media (max-width: 640px) {
   body.category-page .hh-photo-duo {
     max-width: 340px;
     gap: .6rem;
-    margin-top: 1.4rem;
   }
 }
 
