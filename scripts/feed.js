@@ -222,7 +222,7 @@
   function buildCardHTML(a) {
     var title = isAr && a.title_ar ? a.title_ar : a.title_en;
     var excerpt = isAr && a.excerpt_ar ? a.excerpt_ar : a.excerpt_en;
-    var url = a.url || '#';
+    var url = safeFeedUrl(a.url || '#');
     var section = isAr && a.section_ar ? a.section_ar : a.section;
     var img = a.img || '/assets/images/hero.webp';
 
@@ -238,7 +238,7 @@
 
   function buildListItemHTML(a) {
     var title = isAr && a.title_ar ? a.title_ar : a.title_en;
-    var url = isAr ? (a.url || '#') : (a.url_en || a.url || '#');
+    var url = safeFeedUrl(isAr ? (a.url || '#') : (a.url_en || a.url || '#'));
     var section = isAr && a.section_ar ? a.section_ar : a.section;
     var img = a.img || '/assets/images/hero.webp';
 
@@ -255,7 +255,7 @@
   function buildArchiveCardHTML(a) {
     var title = isAr && a.title_ar ? a.title_ar : a.title_en;
     var excerpt = isAr && a.excerpt_ar ? a.excerpt_ar : a.excerpt_en;
-    var url = isAr ? (a.url || '#') : (a.url_en || a.url || '#');
+    var url = safeFeedUrl(isAr ? (a.url || '#') : (a.url_en || a.url || '#'));
     var section = isAr && a.section_ar ? a.section_ar : (a.section || a.category || '');
     var cat = a.category || 'general';
     var readLabel = isAr ? '← اقرأ' : 'Read →';
@@ -299,7 +299,7 @@
   function buildBlogCardHTML(a) {
     var title = isAr && a.title_ar ? a.title_ar : a.title_en;
     var excerpt = isAr && a.excerpt_ar ? a.excerpt_ar : a.excerpt_en;
-    var url = isAr ? (a.url || '#') : (a.url_en || a.url || '#');
+    var url = safeFeedUrl(isAr ? (a.url || '#') : (a.url_en || a.url || '#'));
     var section = isAr && a.section_ar ? a.section_ar : (a.section || a.category || '');
     var cat = a.category || 'general';
     var readLabel = isAr ? '← اقرأ' : 'Read →';
@@ -328,7 +328,7 @@
     if (!el || !a) return;
     var title = isAr && a.title_ar ? a.title_ar : a.title_en;
     var excerpt = isAr && a.excerpt_ar ? a.excerpt_ar : a.excerpt_en;
-    var url = isAr ? (a.url || '#') : (a.url_en || a.url || '#');
+    var url = safeFeedUrl(isAr ? (a.url || '#') : (a.url_en || a.url || '#'));
     var section = isAr && a.section_ar ? a.section_ar : (a.section || a.category || '');
     var cat = a.category || '';
     var readLabel = isAr ? '← اقرأ المقال' : 'Read article →';
@@ -569,6 +569,15 @@
 
   /* ═══ Utilities ═══ */
 
+  function safeFeedUrl(url) {
+    if (!url || typeof url !== 'string') return '#';
+    url = url.trim();
+    if (url === '#' || url === '.html' || url === '/.html') return '#';
+    if (url.indexOf('<') >= 0 || url.toLowerCase().indexOf('h2 id') >= 0) return '#';
+    if (/^\/[a-z]{1,3}$/.test(url)) return '#';
+    return url;
+  }
+
   function esc(s) {
     if (!s) return '';
     return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
@@ -597,7 +606,7 @@
     var title_ar = a.title_ar || title_en;
     var sect_en = a.section || 'Featured';
     var sect_ar = a.section_ar || sect_en;
-    var href = isAr && a.url ? a.url : (a.url_en || a.url || '#');
+    var href = safeFeedUrl(isAr && a.url ? a.url : (a.url_en || a.url || '#'));
     var img = a.img || '';
 
     var imgEl = container.querySelector('.sl-featured-img img');
@@ -634,8 +643,8 @@
     for (var i = 0; i < items.length && i < children.length; i++) {
       var el = children[i];
       var a = items[i];
-      var url = a.url || '#';
-      var url_en = a.url_en || a.url || '#';
+      var url = safeFeedUrl(a.url || '#');
+      var url_en = safeFeedUrl(a.url_en || a.url || '#');
       var href = isAr ? url : url_en;
       var byline_ar = (a.section_ar || a.category || '') + ' · دوت فور لايف';
       var byline_en = (a.section || a.category || '') + ' · Dot4Life';
@@ -666,8 +675,8 @@
       var title_ar = a.title_ar || title_en;
       var cat_en = a.section || a.category || '';
       var cat_ar = a.section_ar || a.section || cat_en;
-      var url = a.url || '#';
-      var url_en = a.url_en || a.url || '#';
+      var url = safeFeedUrl(a.url || '#');
+      var url_en = safeFeedUrl(a.url_en || a.url || '#');
       var href = isAr ? url : url_en;
       var img = a.img || '';
 

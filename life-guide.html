@@ -843,7 +843,7 @@ function renderGuide(id, g) {
 
 (function(){
   var params = new URLSearchParams(window.location.search);
-  var capsuleId = params.get('c');
+  var capsuleId = params.get('c') || params.get('id');
   var id = params.get('g') || 'quick-dinner';
   if (!capsuleId && /^cap_/.test(id)) capsuleId = id;
 
