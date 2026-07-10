@@ -1969,6 +1969,35 @@ body.tool-flagship-page {
   );
 }
 
+/* Rental yield — net yield rating (0-12%: below market / fair / good / excellent), matches getRating() thresholds */
+.tool-gauge--rentalyield .tool-gauge-track {
+  background: linear-gradient(
+    to right,
+    var(--gauge-zone-d) 0%,
+    var(--gauge-zone-d) 25%,
+    var(--gauge-zone-c) 25%,
+    var(--gauge-zone-c) 41.7%,
+    var(--gauge-zone-a) 41.7%,
+    var(--gauge-zone-a) 66.7%,
+    var(--gauge-zone-b) 66.7%,
+    var(--gauge-zone-b) 100%
+  );
+}
+
+[dir="rtl"] .tool-gauge--rentalyield .tool-gauge-track {
+  background: linear-gradient(
+    to left,
+    var(--gauge-zone-d) 0%,
+    var(--gauge-zone-d) 25%,
+    var(--gauge-zone-c) 25%,
+    var(--gauge-zone-c) 41.7%,
+    var(--gauge-zone-a) 41.7%,
+    var(--gauge-zone-a) 66.7%,
+    var(--gauge-zone-b) 66.7%,
+    var(--gauge-zone-b) 100%
+  );
+}
+
 [data-theme="dark"] .tool-gauge-track {
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, .25);
 }

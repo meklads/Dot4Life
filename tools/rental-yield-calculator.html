@@ -257,6 +257,14 @@ window.dflTrack=function(event,params){gtag('event',event,Object.assign({page_pa
       </div>
     </div>
 
+    <div class="tool-gauge tool-gauge--rentalyield" id="rentalyield-gauge" data-min="0" data-max="12" hidden role="meter" aria-label="Net rental yield rating">
+      <div class="tool-gauge-track">
+        <div class="tool-gauge-marker" aria-hidden="true"></div>
+      </div>
+      <p class="tool-gauge-label" id="rentalyield-gauge-label"></p>
+      <div class="tool-gauge-ticks"><span>0%</span><span>3%</span><span>5%</span><span>8%</span><span>12%</span></div>
+    </div>
+
     <!-- Summary -->
     <div class="rr-summary">
       <div class="rr-summary-item">
@@ -449,6 +457,7 @@ window.dflTrack=function(event,params){gtag('event',event,Object.assign({page_pa
 
 
 <script src="/scripts/global.js?v=20260619e" defer></script>
+<script src="/scripts/tool-gauge.js?v=20260709e"></script>
 <script>
 function fmt(n){ return Math.round(n).toLocaleString(); }
 
@@ -519,6 +528,14 @@ function calculateYield(){
   })();
   document.getElementById('gross-rating').textContent=getRating(grossYield);
   document.getElementById('net-rating').textContent=getRating(netYield);
+  if(window.dflSetToolGauge){
+    const gLang=document.documentElement.getAttribute('data-lang')||'en';
+    const clampedNet=Math.max(0,netYield);
+    const gaugeLabel=gLang==='ar'
+      ?clampedNet.toFixed(1)+'% عائد صافي'
+      :clampedNet.toFixed(1)+'% net yield';
+    dflSetToolGauge('rentalyield-gauge',{value:clampedNet,min:0,max:12,label:gaugeLabel,hidden:false});
+  }
   document.getElementById('s-gross-income').textContent='SAR '+fmt(annualRent);
   document.getElementById('s-vacancy').textContent='−SAR '+fmt(vacancyLoss);
   document.getElementById('s-egi').textContent='SAR '+fmt(egi);
