@@ -7,7 +7,10 @@ PUPPETEER_SKIP_CHROMIUM_DOWNLOAD = "true"
 NIXPACKS_PATH = "/app/node_modules/.bin"
 
 [phases.install]
-cmds = ["npm install --omit=dev --ignore-scripts"]
+cmds = [
+  "npm install --omit=dev --ignore-scripts",
+  "python3 scripts/generate_static_routes.py"
+]
 
 [start]
-cmd = "npx --yes serve -s . -l ${PORT:-3000}"
+cmd = "npx --yes serve . -l ${PORT:-3000}"
