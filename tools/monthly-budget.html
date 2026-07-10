@@ -236,6 +236,14 @@ window.dflTrack=function(event,params){gtag('event',event,Object.assign({page_pa
             </div>
           </div>
 
+          <div class="tool-gauge tool-gauge--budget" id="budget-gauge" data-min="0" data-max="150" hidden role="meter" aria-label="Spending vs income">
+            <div class="tool-gauge-track">
+              <div class="tool-gauge-marker" aria-hidden="true"></div>
+            </div>
+            <p class="tool-gauge-label" id="budget-gauge-label"></p>
+            <div class="tool-gauge-ticks"><span>0%</span><span>80%</span><span>100%</span><span>150%</span></div>
+          </div>
+
           <!-- Category breakdown bars -->
           <div class="breakdown-section">
             <div class="breakdown-title"><span class="en">Where the money goes</span><span class="ar">أين يذهب المال</span></div>
@@ -519,6 +527,19 @@ function calculate() {
   document.getElementById('totalIncome').textContent = income > 0 ? fmtFull(income) : ', ';
   document.getElementById('totalExpenses').textContent = totalExp > 0 ? fmtFull(totalExp) : ', ';
   document.getElementById('totalSaved').textContent = savingsAmt > 0 ? fmtFull(savingsAmt) : (diff > 0 ? fmtFull(diff) : ', ');
+
+  /* spending-vs-income gauge */
+  if(window.dflSetToolGauge){
+    if(income > 0){
+      var spendPct = Math.min(150, (totalExp/income)*100);
+      var gaugeLabel = lang==='ar'
+        ? 'النفقات '+spendPct.toFixed(0)+'% من الدخل'
+        : 'Expenses '+spendPct.toFixed(0)+'% of income';
+      dflSetToolGauge('budget-gauge', {value: spendPct, min: 0, max: 150, label: gaugeLabel, hidden: false});
+    } else {
+      dflSetToolGauge('budget-gauge', {value: 0, min: 0, max: 150, hidden: true});
+    }
+  }
 
   /* breakdown bars */
   var bkd = document.getElementById('breakdownList');

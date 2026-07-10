@@ -556,6 +556,13 @@ window.dflTrack=function(event,params){
       <span class="zr-cur en">SAR</span>
     </div>
     <div class="zr-sub" id="zakatSub"></div>
+    <div class="tool-gauge tool-gauge--zakat" id="zakat-gauge" data-min="0" data-max="100" hidden role="meter" aria-label="Zakat nisab position">
+      <div class="tool-gauge-track">
+        <div class="tool-gauge-marker" aria-hidden="true"></div>
+      </div>
+      <p class="tool-gauge-label" id="zakat-gauge-label"></p>
+      <div class="tool-gauge-ticks"><span>0</span><span><span class="ar">النصاب</span><span class="en">Nisab</span></span><span>×2</span></div>
+    </div>
     <div class="zr-grid" id="resultsGrid"></div>
     <table class="zr-tbl" id="breakdownTable">
       <thead><tr>
@@ -850,6 +857,12 @@ function calculateZakat(){
   document.getElementById('zakatSub').textContent=lang==='ar'
     ?'وعاء الزكاة: '+totalBase.toLocaleString('ar-SA',{maximumFractionDigits:0})+' ريال | النصاب: '+nisabSAR.toLocaleString()+' ريال'
     :'Zakat base: SAR '+totalBase.toLocaleString(undefined,{maximumFractionDigits:0})+' | Nisab: SAR '+nisabSAR.toLocaleString();
+  if(window.dflSetToolGauge){
+    var gaugeLabel=lang==='ar'
+      ?totalBase.toLocaleString('ar-SA',{maximumFractionDigits:0})+' ريال · '+(nisabReached?'بلغ النصاب':'دون النصاب')
+      :'SAR '+totalBase.toLocaleString(undefined,{maximumFractionDigits:0})+' · '+(nisabReached?'Nisab reached':'Below nisab');
+    dflSetToolGauge('zakat-gauge',{value:totalBase,min:0,max:nisabSAR*2,label:gaugeLabel});
+  }
   var rows=[];
   if(cashBase>0) rows.push({ar:'نقود وبنوك',en:'Cash & Banks',base:Math.max(0,cashBase),z:Math.max(0,cashBase)*0.025});
   if(goldBase>0) rows.push({ar:'ذهب',en:'Gold',base:goldBase,z:goldBase*0.025});
