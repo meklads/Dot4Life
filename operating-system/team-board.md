@@ -50,7 +50,7 @@
 <!-- TEAM-BOARD-LIVE-START -->
 ## 🕐 الحالة الآن — محدّث تلقائياً
 
-**آخر تحديث:** 2026-07-10 **20:15** · مصدر: autopilot + manifest + git
+**آخر تحديث:** 2026-07-10 **22:35** · مصدر: autopilot + manifest + git
 
 > **اقرأ هنا أولاً** — ثلاث حالات: **✅ تم** · **🔄 جاري** · **⏳ لسه**
 
@@ -60,24 +60,24 @@
 | تنتظر بناء HTML | **0** |
 | DEEPEN (قصير) | **72** |
 | جودة الموقع | **0/379 (0%)** |
-| آخر autopilot | `2026-07-10 **20:15**` |
+| آخر autopilot | `2026-07-10 **22:35**` |
 
 ### ✅ تم — آخر ما اكتمل
 
 | الوقت | ماذا | من | الدليل |
 |-------|------|-----|--------|
-| 2026-07-10 **20:15** | فحص autopilot — كل الصور المعتمدة على الموقع | Cursor | log `[]` |
-| 2026-07-10 **20:15** | built 0 slug(s) · AUDIT PASS | Cursor | autopilot |
-| 2026-07-10 **20:10** | آخر commit `bef68c7a` | Cursor | fix(build-map): A-02-2 bmi-calculator-women is Arabic-only (audit 34/34) |
+| 2026-07-10 **22:35** | فحص autopilot — كل الصور المعتمدة على الموقع | Cursor | log `[]` |
+| 2026-07-10 **22:35** | built 0 slug(s) · AUDIT PASS | Cursor | autopilot |
+| 2026-07-10 **22:22** | آخر commit `f6ac6ef3` | Cursor | approve(index): flip 2 EN FAQ-fixed articles to index,follow |
 
 ### 🔄 جاري العمل — الآن
 
 | الوقت | ماذا | من | التالي |
 |-------|------|-----|--------|
 | — | A-09 REVISE — `drafts/task09/` | Hema | تسليم لعامر بعد draft-gate |
-| 2026-07-10 **20:15** | **Batch 03** — BUILD VERIFY 7 صور | عامر | `amer-batch03-kickoff.md` |
-| 2026-07-10 **20:15** | Batch 03 — SEO Briefs + كتابة | Hema | AN-00 → B3-XXQ → B3-XXN |
-| 2026-07-10 **20:15** | BUILD VERIFY — **68** صور LIVE | عامر | hero + alt + G5 |
+| 2026-07-10 **22:35** | **Batch 03** — BUILD VERIFY 7 صور | عامر | `amer-batch03-kickoff.md` |
+| 2026-07-10 **22:35** | Batch 03 — SEO Briefs + كتابة | Hema | AN-00 → B3-XXQ → B3-XXN |
+| 2026-07-10 **22:35** | BUILD VERIFY — **68** صور LIVE | عامر | hero + alt + G5 |
 
 ### ⏳ لسه — منتظر / مفتوح
 
@@ -89,10 +89,10 @@
 
 ### 📎 آخر سطور الأوتوبايلوت
 
-- `[2026-07-10T20:15:44] === تشغيل جديد / new run ===`
-- `[2026-07-10T20:15:44] slugs needing build: []`
-- `[2026-07-10T20:15:44] AUDIT PASS`
-- `[2026-07-10T20:15:44] inboxes: operating-system/inbox/omar.md, operating-system/inbox/claude.md, operating-system/inbox/hema.md, operating-system/inbox/amer.md, operating-system/inbox/cursor.md, operating-system/inbox/ghost.md`
+- `[2026-07-10T22:35:33] === تشغيل جديد / new run ===`
+- `[2026-07-10T22:35:34] slugs needing build: []`
+- `[2026-07-10T22:35:34] AUDIT PASS`
+- `[2026-07-10T22:35:34] inboxes: operating-system/inbox/omar.md, operating-system/inbox/claude.md, operating-system/inbox/hema.md, operating-system/inbox/amer.md, operating-system/inbox/cursor.md, operating-system/inbox/ghost.md`
 
 <!-- TEAM-BOARD-LIVE-END -->
 ---
