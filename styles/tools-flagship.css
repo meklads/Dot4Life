@@ -1944,6 +1944,31 @@ body.tool-flagship-page {
   );
 }
 
+/* ROI — net yield vs common alternatives (0-12%: below bank deposit / between deposit & stocks / above stocks avg) */
+.tool-gauge--roi .tool-gauge-track {
+  background: linear-gradient(
+    to right,
+    var(--gauge-zone-d) 0%,
+    var(--gauge-zone-d) 37.5%,
+    var(--gauge-zone-c) 37.5%,
+    var(--gauge-zone-c) 66.7%,
+    var(--gauge-zone-b) 66.7%,
+    var(--gauge-zone-b) 100%
+  );
+}
+
+[dir="rtl"] .tool-gauge--roi .tool-gauge-track {
+  background: linear-gradient(
+    to left,
+    var(--gauge-zone-d) 0%,
+    var(--gauge-zone-d) 37.5%,
+    var(--gauge-zone-c) 37.5%,
+    var(--gauge-zone-c) 66.7%,
+    var(--gauge-zone-b) 66.7%,
+    var(--gauge-zone-b) 100%
+  );
+}
+
 [data-theme="dark"] .tool-gauge-track {
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, .25);
 }

@@ -155,6 +155,13 @@ window.dflTrack=function(event,params){gtag('event',event,Object.assign({page_pa
 </div></div><!-- RESULTS -->
 <div class="results-wrap" id="resultsWrap">
   <div class="kpi-grid" id="kpiGrid"></div>
+  <div class="tool-gauge tool-gauge--roi" id="roi-gauge" data-min="0" data-max="12" hidden role="meter" aria-label="Net yield vs alternatives">
+    <div class="tool-gauge-track">
+      <div class="tool-gauge-marker" aria-hidden="true"></div>
+    </div>
+    <p class="tool-gauge-label" id="roi-gauge-label"></p>
+    <div class="tool-gauge-ticks"><span>0%</span><span>4.5%</span><span>8%</span><span>12%</span></div>
+  </div>
   <div class="breakdown-card reveal">
     <div class="breakdown-title ar">تفصيل الإيرادات والتكاليف السنوية</div>
     <div class="breakdown-title en">Annual Revenue & Cost Breakdown</div>
@@ -304,6 +311,7 @@ window.dflTrack=function(event,params){gtag('event',event,Object.assign({page_pa
 
 
 <script src="/scripts/global.js?v=20260619e" defer></script>
+<script src="/scripts/tool-gauge.js?v=20260709e"></script>
 <script>
 function v(id){return parseFloat(document.getElementById(id)?.value)||0}
 const SAR=n=>n.toLocaleString('ar-SA',{maximumFractionDigits:0})+' <span class="ar">ر</span><span class="en">SAR</span>';
@@ -342,6 +350,14 @@ function calcROI(){
     {label_ar:'إجمالي العائد 10 سنوات',label_en:'Total 10yr Return',val:SAR(totalReturn10),sub_ar:PCT(totalROI10)+' من الاستثمار',sub_en:PCT(totalROI10)+' of investment',hl:false},
   ];
   document.getElementById('kpiGrid').innerHTML=kpiData.map(k=>`<div class="kpi${k.hl?' highlight':''}"><div class="kpi-label">${lang==='ar'?k.label_ar:k.label_en}</div><div class="kpi-val">${k.val}</div>${k.sub_ar?`<div class="kpi-sub">${lang==='ar'?k.sub_ar:k.sub_en}</div>`:''}</div>`).join('');
+
+  if(window.dflSetToolGauge){
+    const clampedYield=Math.max(0,netYield);
+    const gaugeLabel=lang==='ar'
+      ?PCT(clampedYield)+' عائد صافي'
+      :PCT(clampedYield)+' net yield';
+    dflSetToolGauge('roi-gauge',{value:clampedYield,min:0,max:12,label:gaugeLabel,hidden:false});
+  }
 
   // Breakdown
   const rows=[
