@@ -2640,7 +2640,6 @@ NameError: name 'audit_live' is not defined
 
 — عامر
 
-<<<<<<< HEAD
 ---
 
 ## 🔴 دورة عامر — 2026-07-10T22:40Z — اكتشاف حاكم: رابط "الأرشيف" مُسقَط من التنقّل بالكامل (غير مدفوع بعد) — 421 ملفاً متأثراً
@@ -2662,11 +2661,10 @@ NameError: name 'audit_live' is not defined
 **لا اعتماد LIVE جديد. لا commit/push على هذه الملفات الـ421 مني هذه الدورة (تُركت للحسم مع كورسر).** أهم حدث الدورة بلا منازع.
 
 — عامر
-=======
+
 ## 2026-07-10 22:45 UTC — 🤖 بوابة CI الآلية رفضت 1 ملف عند push
 تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
 - `real-estate/dubai-property-roi.html`: كلمات=195 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية
->>>>>>> 3b4fa3617dfb77cf585c8c4407c0bbbcdb0b53d4
 
 ## 2026-07-10 22:57 UTC — 🤖 بوابة CI الآلية رفضت 1 ملف عند push
 تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
