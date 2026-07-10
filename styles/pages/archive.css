@@ -196,7 +196,7 @@ body.archive-page #navbar .nav-links a[aria-current="page"] {
 .arc-main {
   max-width: var(--arc-max);
   margin: 0 auto;
-  padding: clamp(2rem, 4vw, 3rem) var(--arc-gutter) clamp(3rem, 6vw, 4.5rem);
+  padding: clamp(2rem, 4vw, 3rem) var(--arc-gutter) clamp(2rem, 4vw, 3rem);
   background: var(--arc-paper);
   border-radius: 24px 24px 0 0;
   margin-top: -1px;
@@ -450,6 +450,67 @@ body.archive-page #navbar .nav-links a[aria-current="page"] {
 
 .arc-empty[hidden],
 .arc-loading[hidden] { display: none; }
+
+/* SEO / FAQ block sits outside .arc-main on the dark page chrome —
+   keep paper background + ink text so it stays readable (was black-on-teal). */
+body.archive-page .hub-seo-content {
+  max-width: var(--arc-max);
+  margin: 0 auto 2.5rem;
+  padding: 0.25rem var(--arc-gutter) clamp(2.5rem, 5vw, 3.5rem);
+  background: var(--arc-paper);
+  color: var(--arc-ink);
+  border-radius: 0 0 24px 24px;
+  box-sizing: border-box;
+}
+
+body.archive-page .hub-seo-content h2,
+body.archive-page .hub-seo-content h3 {
+  color: var(--arc-teal);
+}
+
+body.archive-page .hub-seo-content p,
+body.archive-page .hub-seo-content li {
+  color: rgba(26, 22, 18, .88);
+  line-height: 1.75;
+}
+
+body.archive-page .hub-seo-content a {
+  color: var(--arc-teal-m);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+body.archive-page .hub-seo-content .faq-section {
+  margin: 1.5rem 0;
+  display: grid;
+  gap: 1rem;
+}
+
+body.archive-page .hub-seo-content .faq-item {
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--arc-border);
+  border-radius: 14px;
+  background: #fff;
+}
+
+body.archive-page .hub-seo-content .faq-item h3 {
+  margin: 0 0 .45rem;
+  font-size: 1.02rem;
+}
+
+body.archive-page .hub-seo-content .faq-item p {
+  margin: 0;
+  font-size: .95rem;
+}
+
+body.archive-page .hub-seo-content .tip {
+  margin-top: 1.5rem;
+  padding: 1rem 1.15rem;
+  border-radius: 14px;
+  background: rgba(106, 191, 184, .12);
+  border: 1px solid rgba(10, 107, 99, .18);
+  color: var(--arc-ink);
+}
 
 @media (max-width: 640px) {
   .arc-grid { grid-template-columns: 1fr; }
