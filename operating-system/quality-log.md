@@ -2478,3 +2478,7 @@ NameError: name 'audit_live' is not defined
 - `git`: `origin/main`=`a7229fbd`. HEAD محلي أبعد بكومتين غير مدفوعين من كورسر (`309245cd`, `4fe2c520` — أدوات زكاة/ميزانية). حاولت دفعة best-effort واحدة (تفاصيل بنهاية الدورة).
 
 — عامر
+
+## 2026-07-10 18:35 UTC — 🤖 بوابة CI الآلية رفضت 1 ملف عند push
+تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
+- `real-estate/dubai-property-roi.html`: كلمات=201 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية
