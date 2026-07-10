@@ -1,0 +1,13 @@
+# Coolify/Nixpacks — static Dot4Life site (HTML/CSS/JS at repo root).
+# Root package.json devDeps (puppeteer/jsdom) are for local QA scripts only.
+
+[variables]
+PUPPETEER_SKIP_DOWNLOAD = "true"
+PUPPETEER_SKIP_CHROMIUM_DOWNLOAD = "true"
+NIXPACKS_PATH = "/app/node_modules/.bin"
+
+[phases.install]
+cmds = ["npm install --omit=dev --ignore-scripts"]
+
+[start]
+cmd = "npx --yes serve -s . -l ${PORT:-3000}"
