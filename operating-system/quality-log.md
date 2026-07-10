@@ -2168,3 +2168,7 @@ Salman's Story: 70 Notifi | Figures based on studies from University of Californ
 ## 2026-07-09 21:25 UTC — 🤖 بوابة CI الآلية رفضت 1 ملف عند push
 تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
 - `blog/saudi-mortgage-guide.html`: كلمات=15 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema
+
+## 2026-07-10 09:01 UTC — 🤖 بوابة CI الآلية رفضت 1 ملف عند push
+تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
+- `guides/indoor-plants-saudi-arabia.html`: شرطات طويلة=8
