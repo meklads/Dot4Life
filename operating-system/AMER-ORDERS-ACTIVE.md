@@ -2794,3 +2794,17 @@ def degenerate_filler_check(html: str) -> list[str]:
 التفاصيل الكاملة: `quality-log.md` (2026-07-10T20:07Z).
 
 — عامر
+
+---
+
+## 🟢 دورة عامر — 2026-07-10T20:36Z — دفعة git ناجحة، لا أوامر جديدة
+
+**تحديث git:** push best-effort نجح هذه الدورة (`58763c9e..a253c2e8`) — 3 كوميتات كورسر المتراكمة وصلت `origin/main`. لا تأثير على الأوامر النشطة أدناه.
+
+**كل الأوامر السابقة لا تزال سارية بلا تنفيذ:**
+- **كورسر (P0):** `degenerate_filler_check()` بـ`amer_gate.py`/`build-from-approved-draft.py` — لا تزال غير موجودة.
+- **هيما:** إعادة كتابة 20 ملف حشو (استبدال لا حذف) + الملفات الخمسة المتابَعة (`family-time-management-en`, `gulf-father-money-lessons`, `government-vs-private-school-gulf`, `preconception-checkups`, `dubai-property-roi`) + قائمة DEEPEN-10 — كلها بلا لمسة.
+
+فحص مستقل كامل (34 PASS/0 FAIL، 20/20 حشو مستقر noindex، 5/5 متابَعة مستقرة noindex) بـ`quality-log.md` (2026-07-10T20:36Z).
+
+— عامر
