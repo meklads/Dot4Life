@@ -1157,11 +1157,11 @@ font-size: .8rem;
 /* Start-here chooser */
 body.health-hub-page .hh-chooser {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1rem;
   margin-top: 1.5rem;
 }
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   body.health-hub-page .hh-chooser {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1237,6 +1237,57 @@ body.health-hub-page .hh-tool-group-title {
 [data-lang="ar"] body.health-hub-page .hh-tool-group-title {
   font-family: var(--font-ar, 'Almarai', sans-serif);
 }
+body.health-hub-page .hl-grid--tools.hh-grid-4,
+body.health-hub-page .hh-grid-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+@media (max-width: 1100px) {
+  body.health-hub-page .hl-grid--tools.hh-grid-4,
+  body.health-hub-page .hh-grid-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 560px) {
+  body.health-hub-page .hl-grid--tools.hh-grid-4,
+  body.health-hub-page .hh-grid-4 {
+    grid-template-columns: 1fr;
+  }
+}
+/* Last tools row with only 2 cards sits on the first two columns of the 4-col rail */
+body.health-hub-page .hh-grid-4--tail-2 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+@media (max-width: 1100px) {
+  body.health-hub-page .hh-grid-4--tail-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 560px) {
+  body.health-hub-page .hh-grid-4--tail-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Intro: short paragraphs, clearer rhythm */
+body.health-hub-page .hh-intro-split {
+  display: flex;
+  flex-direction: column;
+  gap: .85rem;
+  margin-bottom: clamp(1.75rem, 3vw, 2.5rem);
+  max-width: 68ch;
+}
+[data-lang="ar"] body.health-hub-page .hh-intro-split {
+  max-width: 74ch;
+}
+body.health-hub-page .hh-intro-split p {
+  margin: 0;
+  font-size: clamp(1rem, 1.15vw, 1.08rem);
+  line-height: 1.85;
+}
+[data-lang="ar"] body.health-hub-page .hh-intro-split p {
+  line-height: 2;
+}
+
 body.health-hub-page .hl-card--tool {
   position: relative;
 }
