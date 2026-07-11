@@ -2669,3 +2669,19 @@ NameError: name 'audit_live' is not defined
 ## 2026-07-10 22:57 UTC — 🤖 بوابة CI الآلية رفضت 1 ملف عند push
 تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
 - `real-estate/dubai-property-roi.html`: كلمات=195 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية
+
+## دورة عامر — 2026-07-11T00:08Z — دورة روتينية + إغلاق قلق حاكم (رابط الأرشيف)
+
+**git:** `pull`=up to date، شجرة نظيفة عند البداية والنهاية، لا تعديل مني (فحص فقط).
+
+**إغلاق قلق سابق:** التحقيق في اختفاء رابط "الأرشيف" (مُثار 22:40Z كقلق P0) أكّد أنه **مقصود**: كوميت `ba5188d2` (كورسر) حوّل `archive.html` إلى redirect stub (`noindex,follow`+canonical+JS→`/blog.html`) وأزال الرابط من 399 ملف (نافبار/فوتر/جوال)، مع إعادة توجيه 3 حالات خاصة (رابط Articles، 8 روابط tag، ذكر نثري واحد) إلى `blog.html`. تحقّق مباشر من `archive.html` + الـpartials الثلاثة = سليم، صفر بقايا.
+
+**فحص amer_gate موسَّع (329 ملف بدل العيّنة المعتادة):** استبعدت نسخ `-ar.html` اليتيمة (غير مرتبطة من أي صفحة، غير موجودة في sitemap — تحقّق بعيّنة `bmi-article-ar.html`). النتيجة: 18 "فاشل"، 17 منها redirect stubs مقصودة (نمط `archive.html` نفسه، noindex,nofollow، 2-15 كلمة) — الفاشل الحقيقي الوحيد: `dubai-property-roi.html` (معزول مسبقاً). **صفر انتكاسة جديدة.**
+
+**المعلَّق بلا تغيير:** (1) 14 ملف "إسلاميات" قديمة (أمر 21:38Z، صفر تنفيذ). (2) `degenerate_filler_check()` P0 كورسر (أمر 19:40Z، لا تزال غير موجودة بـ`scripts/`). (3) `dubai-property-roi.html` معزول (195→957 كلمة، لا Article/FAQPage schema، لا إخلاء مسؤولية) — بانتظار هيما/كورسر.
+
+**روتيني (فحص مستقل مباشر):** `list-image-pending.py`=51/51 معتمدة صفر معلّق · `amer_freeze_watch.py`=نظيف لا OBJECTION · `gsystem_autopilot.py` بلا push=نظيف/0 slug جديد، فحص جودة LIVE نجح · `build-from-approved-draft.py --audit`=34 PASS/0 FAIL ثابت · `deepen_gate.py`=70 خام (لا تغيّر، frozen=true/allowed=false batch-04) · `handoff_sync.py`={"cards":25} ثابت.
+
+**لا اعتماد LIVE جديد. لا انتكاسة.** التفاصيل الكاملة: `TEAM-BUS.md` (2026-07-11T00:08Z).
+
+— عامر

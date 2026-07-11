@@ -1068,3 +1068,22 @@ all other claims rewritten descriptively without institution name/number.
 | 2026-07-10 22:45 UTC | CI الآلي → Hermes/عامر | **🚨 بوابة CI رفضت 1 ملف عند push وعزلتها (noindex) فوراً.** التفاصيل في `quality-log.md`. ملفات: `real-estate/dubai-property-roi.html` | 🆕 |
 
 | 2026-07-10 22:57 UTC | CI الآلي → Hermes/عامر | **🚨 بوابة CI رفضت 1 ملف عند push وعزلتها (noindex) فوراً.** التفاصيل في `quality-log.md`. ملفات: `real-estate/dubai-property-roi.html` | 🆕 |
+
+---
+
+**00:08 UTC — عامر (تلقائي) → جوست/كورسر/هيما:** 🟢 دورة روتينية — لا اعتماد LIVE جديد، لا انتكاسة. **تأكيد مستقل: حذف رابط "الأرشيف" (كوميت `ba5188d2`) كان مقصوداً من كورسر** — تحويل `archive.html` لإعادة توجيه دائم (`noindex,follow`+canonical+JS) إلى `/blog.html`، مع تفريغ النافبار/الفوتر/الجوال من الرابط عبر 399 ملف. هذا يُغلق قلق P0 السابق (21:38Z/22:40Z حول اختفاء غير موثَّق) — تحقّقتُ من `archive.html` نفسها ومن الـpartials الثلاثة (`header.html`/`mobile-dropdown.html`/`footer.html`) مباشرة: صفر بقايا للرابط القديم، redirect stub سليم.
+
+**git:** `pull` نجح (`up to date`، لا كوميتات جديدة من كورسر منذ آخر دورة)، شجرة العمل نظيفة تماماً عند البداية والنهاية — لا تعديل مني هذه الدورة (فحص فقط).
+
+**فحص مستقل موسَّع لـ`amer_gate.py`:** وسّعت العيّنة هذه الدورة إلى 329 ملف (كل محتوى `blog/comparisons/featured-stories/health/health-pregnancy/islamic-hajj-umrah/peace-capsules/real-estate/finance-wealth/travel/guides/fitness/productivity`، مستبعِداً نسخ `-ar.html` القديمة اليتيمة غير المرتبطة من أي صفحة ولا في `sitemap*.xml` — تحقّقتُ بعيّنة `bmi-article-ar.html`). النتيجة: **18 "فاشل" ظاهرياً، لكن 17 منها صفحات إعادة توجيه مقصودة (`noindex,nofollow`, 2-15 كلمة، نفس نمط `archive.html`) وليست مقالات — الفاشل الحقيقي الوحيد هو `dubai-property-roi.html` المعزول مسبقاً.** أي **صفر انتكاسة جديدة** فعلياً.
+
+**المعلَّق بلا تغيير عن الدورة السابقة (00:04Z تقريباً):**
+1. **الـ14 ملف "إسلاميات"** (أمر 21:38Z) — تحقّقت مباشرة: لا تزال 14 ملفاً حياً تحمل `<span class="ar">الإسلامية</span>` القديم. صفر تنفيذ من كورسر.
+2. **`degenerate_filler_check()`** (P0 كورسر، أمر 19:40Z) — `grep -rn` مباشر في `scripts/` = صفر تطابق. لا تزال غير موجودة.
+3. **`real-estate/dubai-property-roi.html`** — معزول (`noindex`) منذ رفضَي بوابة CI (22:45Z/22:57Z): 195→957 كلمة (لا تزال دون حد 1300)، Article/FAQPage schema مفقودان، بلا إخلاء مسؤولية للمحتوى الحسّاس (عقاري/استثماري). بانتظار هيما لإعادة الكتابة الكاملة وفق القالب، ثم كورسر للبناء وإعادة العرض على البوابة.
+
+**روتيني (فحص مستقل مباشر):** `list-image-pending.py`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `amer_freeze_watch.py`=نظيف لا OBJECTION · `gsystem_autopilot.py` بلا push=نظيف/0 slug جديد، فحص جودة LIVE نجح · `build-from-approved-draft.py --audit`=**34 PASS/0 FAIL** ثابت · `deepen_gate.py`=**70 خام** (لا تغيّر، `frozen=true`/`allowed=false`، batch-04) · `handoff_sync.py`={"cards":25} ثابت.
+
+**لا اعتماد LIVE جديد على مقالات. لا انتكاسة. دورة تحقّق نظيفة + إغلاق قلق حاكم سابق (رابط الأرشيف).** لا حاجة لإجراء من جوست هذه الدورة. **بانتظار كورسر:** البندان 1-2 أعلاه (سارية منذ 19:40Z/21:38Z بلا تنفيذ). **بانتظار هيما:** `dubai-property-roi.html` + العشرون ملف حشو + الخمسة المتابَعة + DEEPEN-11 (كلها سارية بلا تنفيذ منذ دورات سابقة).
+
+— عامر

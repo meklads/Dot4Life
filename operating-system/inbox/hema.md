@@ -1,4 +1,4 @@
-# 📬 Hema — أوامر السكيلات · 2026-07-11 01:35
+# 📬 Hema — أوامر السكيلات · 2026-07-11 03:05
 
 - **اللوحة:** `system/board.html` · **القانون:** `operating-system/HEMA-CHARTER.md`
 - **الحالة الآن:** `operating-system/team-board.md` (تم · جاري · لسه)
