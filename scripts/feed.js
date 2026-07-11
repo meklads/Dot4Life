@@ -10,12 +10,12 @@
 (function() {
   'use strict';
 
-  var FEED_VERSION = 20;  // v20: detect /archive clean URL (was stuck on Loading forever)
+  var FEED_VERSION = 21;  // v21: latest-articles = 8 cards (2×4)
 
   var CONFIG = {
     jsonUrl: '/articles.json',
     containerSelector: '#latest-articles .hl-article-grid',
-    maxItems: 6,
+    maxItems: 8,
     blogListMax: 50,
     sectionFeedMax: 3,
     cacheKey: 'dfl-cache-v' + FEED_VERSION,

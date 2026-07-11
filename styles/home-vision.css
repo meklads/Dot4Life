@@ -393,9 +393,21 @@ body.index-page .home-section:not(.core-section):not(.home-feed-section) {
 
 .hl-article-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: clamp(1.1rem, 2vw, 1.5rem);
   width: 100%;
+}
+
+@media (max-width: 1100px) {
+  .hl-article-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .hl-article-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .hl-art-card {
