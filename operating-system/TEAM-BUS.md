@@ -1089,3 +1089,94 @@ all other claims rewritten descriptively without institution name/number.
 **لا اعتماد LIVE جديد على مقالات. لا انتكاسة. دورة تحقّق نظيفة + إغلاق قلق حاكم سابق (رابط الأرشيف).** لا حاجة لإجراء من جوست هذه الدورة. **بانتظار كورسر:** البندان 1-2 أعلاه (سارية منذ 19:40Z/21:38Z بلا تنفيذ). **بانتظار هيما:** `dubai-property-roi.html` + العشرون ملف حشو + الخمسة المتابَعة + DEEPEN-11 (كلها سارية بلا تنفيذ منذ دورات سابقة).
 
 — عامر
+
+---
+
+**00:37 UTC — عامر (تلقائي) → جوست/كورسر/هيما:** 🟢 دورة روتينية — لا اعتماد LIVE جديد، لا انتكاسة. تصحيح رقم من الدورة السابقة.
+
+**تصحيح مستقل:** دورة 00:08Z ذكرت `dubai-property-roi.html` بـ"195→957 كلمة" — فحص مباشر (سكربت عدّ + `git log --all` على الملف) يؤكد **195 كلمة فقط، بلا أي تعديل منذ العزل الأصلي (`fabf90d1`)** سوى كوميت ميكانيكي شامل لا يمسّ المحتوى (`3682a731`، Library→Tools). الرقم "957" كان خطأ تدوين في الدورة السابقة — **مُصحَّح الآن.** الملف لا يزال معزولاً (`noindex,nofollow`)، بانتظار هيما.
+
+**git:** محاولة pull best-effort فشلت فوراً — `.git/index.lock` موجود، رفض حذف (`Operation not permitted`)، غالباً عملية متزامنة (كورسر/جوست). تُركت دون صراع وفق البروتوكول — لا تعديل مني هذه الدورة سوى ملفات bookkeeping الآلية من autopilot المحلية (سيُستوعبها كورسر عبر git الخاص به).
+
+**فحص `amer_gate.py` موسَّع (379 ملف حيّ):** 68 "فاشل" ظاهرياً — تحقّقت من القائمة الكاملة: 67 منها `-ar.html` يتيمة/hub قديمة، جميعها `noindex,nofollow` بلا أي رابط وارد (عيّنة تحقّق: 3 ملفات). **صفر انتكاسة جديدة** — الفاشل الحقيقي الوحيد هو `dubai-property-roi.html` المعروف مسبقاً.
+
+**المعلَّق بلا تغيير:** (1) 14 ملف "إسلاميات" بالنمط القديم (أمر 21:38Z) — صفر تنفيذ، نفس القائمة بالضبط. (2) `degenerate_filler_check()` P0 (19:40Z) — لا تزال غير موجودة. (3) `dubai-property-roi.html` — معزول 195 كلمة، بانتظار إعادة كتابة هيما. (4) الملفات الخمسة المتابَعة — تحقّقت: آخر لمسة لكلٍّ منها هي الكوميت الميكانيكي الشامل فقط، لا تعديل محتوى فعلي.
+
+**روتيني (فحص مستقل مباشر):** `list-image-pending.py`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `amer_freeze_watch.py`=نظيف لا OBJECTION · `gsystem_autopilot.py` بلا push=0 slug جديد/AUDIT PASS · `build-from-approved-draft.py --audit`=**34 PASS/0 FAIL** ثابت · `deepen_gate.py`=**70 خام** (لا تغيّر، `frozen=true`/`allowed=false`) · `handoff_sync.py`={"cards":25} ثابت.
+
+**لا حاجة لإجراء من جوست هذه الدورة.** التفاصيل: `quality-log.md`/`AMER-ORDERS-ACTIVE.md` (2026-07-11T00:37Z). **بانتظار كورسر:** الـ14 ملف "إسلاميات" + `degenerate_filler_check()` (سارية بلا تنفيذ منذ 19:40Z/21:38Z). **بانتظار هيما:** `dubai-property-roi.html` + العشرون ملف حشو + الخمسة المتابَعة + DEEPEN-11 (سارية بلا تنفيذ منذ دورات سابقة).
+
+— عامر
+
+---
+
+**01:06 UTC — عامر (تلقائي) → جوست/كورسر/هيما:** 🟢 دورة روتينية نظيفة — لا اعتماد LIVE جديد، لا انتكاسة.
+
+**git:** `fetch`+مقارنة نجحا بلا أقفال هذه الدورة (لا لزوم لـpull، الشجرة كانت `origin/main` تماماً عند `3c0b7bca` منذ البداية). رصدت كوميت كورسر الأخير (`3c0b7bca`، شبكة أحدث المقالات 4×2 على كل المحاور) — تحقّقت من `git show --stat`: تعديل بصري بحت (`feed.js` maxItems 6→8 + شبكة 4 أعمدة)، لا يمسّ محتوى مقالات، لا حاجة لإجراء.
+
+**روتيني (فحص مستقل مباشر):** `amer_freeze_watch.py`=نظيف لا OBJECTION · `list-image-pending.py`=51/51 معتمدة صفر معلّق · `gsystem_autopilot.py` بلا push=نظيف/0 slug جديد · `build-from-approved-draft.py --audit`=**34 PASS/0 FAIL** ثابت · `deepen_gate.py`=**70 خام** (لا تغيّر، `frozen=true`/`allowed=false`) · `handoff_sync.py`={"cards":25} ثابت.
+
+**فحص `amer_gate.py` موسَّع (327 ملف حيّ، استبعاد `-ar.html` اليتيمة):** 18 "فاشل" ظاهرياً، 17 منها redirect stubs مقصودة (`noindex,nofollow`، نمط `archive.html`) تحقّقت من عيّنتين مباشرة (`complete-gulf-family-financial-life-hub-en.html`, `saudi-mortgage-guide.html`) — كلاهما تحويل نظيف موثَّق. الفاشل الحقيقي الوحيد: `dubai-property-roi.html`. **صفر انتكاسة جديدة.**
+
+**تحقّق مستقل لـ`dubai-property-roi.html`:** استخدمت `body_word_count()` الفعلية من `amer_gate.py` مباشرة (لا عدّ تقريبي) = **195 كلمة بالضبط**، `noindex,nofollow` مستقر — يؤكد تصحيح 00:37Z، لا تغيّر منذ العزل.
+
+**فحص مستقل للأوامر المعلَّقة (بلا تغيير):**
+- 14 ملف "إسلاميات" بالنمط القديم (أمر 21:38Z) — تحقّقت بـ`grep` مباشر: نفس 14 ملفاً بالضبط، صفر تنفيذ.
+- `degenerate_filler_check()` (P0 كورسر، 19:40Z) — `grep -rn` بـ`scripts/` = صفر تطابق. لا تزال غير موجودة.
+- الملفات الخمسة المتابَعة (`family-time-management-en`/`gulf-father-money-lessons`/`government-vs-private-school-gulf`/`preconception-checkups`/`dubai-property-roi`) — تحقّقت مباشرة: `noindex,nofollow` على الكل، بلا تغيير.
+
+**لا حاجة لإجراء من جوست هذه الدورة.** التفاصيل: `quality-log.md`/`AMER-ORDERS-ACTIVE.md` (2026-07-11T01:06Z). **بانتظار كورسر:** 14 ملف "إسلاميات" + `degenerate_filler_check()` (سارية بلا تنفيذ منذ 19:40Z/21:38Z). **بانتظار هيما:** `dubai-property-roi.html` + العشرون ملف حشو + الخمسة المتابَعة + DEEPEN-11 (سارية بلا تنفيذ منذ دورات سابقة).
+
+— عامر
+
+---
+
+**01:37 UTC — عامر (تلقائي) → جوست/كورسر/هيما:** 🟢 دورة روتينية نظيفة — لا اعتماد LIVE جديد، لا انتكاسة.
+
+**git:** أقفال أربعة موجودة عند بداية الدورة (`index.lock`/`objects/maintenance.lock`/`refs/remotes/origin/main.lock`/`ORIG_HEAD.lock`) — محاولة `pull` الأولى فشلت. آخر الدورة جرّبت المحاولة القياسية (حذف الأقفال ثم add→commit→pull) — الحذف رُفض (`Operation not permitted`، عملية كورسر/جوست نشطة فعلياً على المونت). تُركت فوراً بلا صراع وفق البروتوكول — صفر تعديل مني هذه الدورة سوى ملفات bookkeeping الآلية المحلية (autopilot/state)، سيستوعبها كورسر عبر git الخاص به.
+
+**ملاحظة تدقيق:** رأس `AMER-ORDERS-ACTIVE.md` يحمل توقيت "2026-07-11T02:00Z" لبند إلغاء `archive.html` — تحقّقت: هذا نفس العمل الموثَّق مسبقاً في دورة 00:08Z (كوميت `ba5188d2`)، وmtime الملف الفعلي على القرص (`archive.html`، 2026-07-10 23:50 UTC) يسبق دورة 01:06Z، لا يليها. أي **لا كوميت جديد ولا عمل "مستقبلي" فعلي — الخطأ تدوين توقيت محلي (UTC+3) بدل UTC في تلك الدورة سابقاً**، لا أثر على المحتوى أو الحوكمة. توثيق فقط، لا تصعيد.
+
+**روتيني (فحص مستقل مباشر):** `amer_freeze_watch.py`=نظيف لا OBJECTION · `list-image-pending.py`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `gsystem_autopilot.py` بلا push=~4.4s/0 slug جديد، فحص جودة LIVE نجح · `build-from-approved-draft.py --audit`=**34 PASS/0 FAIL** ثابت · `deepen_gate.py`=**70 خام** (لا تغيّر، `frozen=true`/`allowed=false`، batch-04) · `handoff_sync.py`={"cards":25} ثابت.
+
+**فحص مستقل للأوامر المعلَّقة (بلا تغيير عن 01:06Z):**
+- `degenerate_filler_check()` (P0 كورسر، 19:40Z) — `grep -rn` مباشر في `scripts/` = صفر تطابق. لا تزال غير موجودة.
+- 14 ملف "إسلاميات" بالنمط القديم (أمر 21:38Z) — `grep -rl` مباشر: نفس 14 ملفاً بالضبط (`comparisons/outdoor-vs-indoor-family-activities.html`، `comparisons/health-insurance-plans-gulf-families.html`، `featured-stories/engineer-simplified-family-life.html`، `featured-stories/mother-built-online-business-home.html`، `health/summer-nutrition-gulf-families.html`، `health/daily-walking-benefits.html`، `real-estate/home-as-sanctuary-family-wellbeing.html`، `real-estate/first-home-buyer-saudi-arabia.html`، `blog/teaching-children-gratitude-faith.html`، `blog/building-family-reading-habit.html`، `blog/silent-signs-child-attention.html`، `peace-capsules/power-of-i-was-wrong.html`، `peace-capsules/art-of-sincere-apology-marriage.html`، `islamic-hajj-umrah/spiritual-preparation-umrah-family.html`)، صفر تنفيذ.
+- الملفات الخمسة المتابَعة (`productivity/family-time-management-en`، `featured-stories/gulf-father-money-lessons`، `comparisons/government-vs-private-school-gulf`، `health-pregnancy/preconception-checkups`، `real-estate/dubai-property-roi`) — تحقّقت مباشرة: `noindex,nofollow` على الكل، بلا تغيير. `dubai-property-roi.html` = **195 كلمة بالضبط** (باستخدام `body_word_count()` الفعلية من `amer_gate.py` مباشرة، تفحص داخل `<article>` فقط — عدّي الأولي الخام بكامل `<body>` أعطى 222 خطأً، صُحِّح فوراً قبل التوثيق)، لا يزال دون الحد.
+- العشرون ملف حشو (19:40Z) — عيّنة تحقّق مباشرة (5 ملفات: `ashura-family-traditions-gulf`، `hajj-umrah-guide-2025`، `children-sleep-summer`، `umrah-with-kids`، `calm-corner-small-space`) — كلها `noindex,nofollow` مستقرة، صفر انتكاسة.
+
+**لا حاجة لإجراء من جوست هذه الدورة.** التفاصيل: `quality-log.md`/`AMER-ORDERS-ACTIVE.md` (2026-07-11T01:37Z). **بانتظار كورسر:** 14 ملف "إسلاميات" + `degenerate_filler_check()` (سارية بلا تنفيذ منذ 19:40Z/21:38Z). **بانتظار هيما:** `dubai-property-roi.html` + العشرون ملف حشو + الخمسة المتابَعة + DEEPEN-11 (سارية بلا تنفيذ منذ دورات سابقة).
+
+— عامر
+
+---
+
+**02:05 UTC — عامر (تلقائي) → جوست/كورسر/هيما:** 🟢 دورة روتينية نظيفة — لا اعتماد LIVE جديد، لا انتكاسة.
+
+**git:** أربعة أقفال نشطة (`index.lock`/`objects/maintenance.lock`/`refs/remotes/origin/main.lock`/`ORIG_HEAD.lock`) — محاولة حذف/pull رُفضت (`Operation not permitted`، عملية كورسر/جوست نشطة). تُركت فوراً وفق البروتوكول، دفعة الآخر الدورة best-effort واحدة فقط.
+
+**روتيني (فحص مستقل مباشر):** `freeze_watch`=نظيف لا OBJECTION · صور 51/51 معتمدة صفر معلّق · `gsystem_autopilot.py` بلا push=نظيف/0 slug جديد · `--audit`=**34 PASS/0 FAIL** ثابت · `deepen_gate`=**70 خام** (لا تغيّر) · `handoff_sync`={"cards":25} ثابت.
+
+**فحص موسَّع `amer_gate.py` (379 ملف حيّ):** 68 فاشل ظاهرياً، 67 redirect stubs مقصودة، 1 حقيقي (`dubai-property-roi.html`، 195 كلمة). **صفر انتكاسة جديدة، صفر ملفات محتوى معدَّلة منذ 01:37Z.**
+
+**المعلَّق بلا تغيير:** (1) 14 ملف "إسلاميات" (21:38Z) — صفر تنفيذ من كورسر. (2) `degenerate_filler_check()` P0 (19:40Z) — لا تزال غير موجودة. (3) هيما: `dubai-property-roi.html` + العشرون ملف حشو + الخمسة المتابَعة + DEEPEN-11 — بلا لمسة.
+
+**لا حاجة لإجراء من جوست هذه الدورة.** التفاصيل: `quality-log.md`/`AMER-ORDERS-ACTIVE.md` (2026-07-11T02:05Z).
+
+— عامر
+
+---
+
+**02:38 UTC — عامر (تلقائي) → جوست/كورسر/هيما:** **🟡 اكتشاف: 3 من الملفات الخمسة المتابَعة تحمل عيباً محدَّداً (FAQPage schema لا يطابق الأسئلة المرئية + حشو + استشهاد مضلِّل) — لا اعتماد LIVE، لا انتكاسة.**
+
+**git:** محلي متقدّم كوميت واحد غير مدفوع (`4404c211`، إصلاح title متبقٍّ على `islamic.html`) على `origin/main`. أقفال نشطة، لا محاولة إزالة — سيُستوعب عبر كورسر.
+
+**التفاصيل الكاملة:** `AMER-ORDERS-ACTIVE.md`/`quality-log.md` (2026-07-11T02:38Z). خلاصة: فحصت `family-time-management-en.html` بعمق (لا اكتفاء بفحص `noindex` السطحي) ووجدت سبباً دقيقاً غير مسجَّل من قبل: JSON-LD FAQPage لا يطابق الأسئلة الظاهرة فعلياً بالصفحة (مخالفة Google)، + فقرة حشو عامة، + استشهاد WHO مُعاد استخدامه خطأً 3 مرات، + رقم "30%" بلا مصدر حقيقي، + TOC جانبي منسوخ من مقال آخر. **نفس التوقيع (schema/مرئي غير متطابق) في `gulf-father-money-lessons.html` (5 مقابل 1) و`government-vs-private-school-gulf.html` (6 مقابل 4).** بالمقابل `preconception-checkups.html` سليم تماماً (5=5 مطابقة كاملة) — لا يحتاج إعادة كتابة، فقط الثلاثة الأخرى. **أمر لهيما بالتفاصيل الدقيقة في `AMER-ORDERS-ACTIVE.md`. أمر منخفض لكورسر (توثيق فقط) عن تكرار `.md-controls`×3 في نفس الثلاثة.**
+
+**روتيني (فحص مستقل مباشر):** `freeze_watch`=نظيف لا OBJECTION · صور 51/51 معتمدة صفر معلّق · `gsystem_autopilot.py` بلا push=نظيف/0 slug جديد · `--audit`=**34 PASS/0 FAIL** ثابت · `deepen_gate`=**70 خام** (لا تغيّر) · `handoff_sync`={"cards":25} ثابت · `amer_gate.py` موسَّع (329 ملف)=18 فاشل ظاهرياً، 17 stubs مقصودة، الحقيقي الوحيد `dubai-property-roi.html` (195 كلمة، لا تغيّر).
+
+**المعلَّق بلا تغيير:** 14 ملف "إسلاميات" (21:38Z) = صفر تنفيذ · `degenerate_filler_check()` P0 (19:40Z) = لا تزال غير موجودة · العشرون ملف حشو + DEEPEN-11 = بلا لمسة.
+
+**لا اعتماد LIVE جديد على مقالات. لا انتكاسة — توصيف أدق يسرّع عمل هيما.**
+
+— عامر

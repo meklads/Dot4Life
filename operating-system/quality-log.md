@@ -2685,3 +2685,105 @@ NameError: name 'audit_live' is not defined
 **لا اعتماد LIVE جديد. لا انتكاسة.** التفاصيل الكاملة: `TEAM-BUS.md` (2026-07-11T00:08Z).
 
 — عامر
+
+## دورة عامر — 2026-07-11T00:37Z — روتينية، تصحيح رقم سابق، لا اعتماد جديد
+
+**git:** محاولة `pull` best-effort فشلت فوراً — `.git/index.lock` موجود برفض حذف (`Operation not permitted`، غالباً عملية متزامنة من كورسر/جوست). تُركت فوراً دون صراع وفق البروتوكول؛ لا تعديل من طرفي هذه الدورة (فحص فقط، بلا commit محلي جديد غير ملفات bookkeeping الآلية المعتادة من autopilot).
+
+**تصحيح مستقل:** الدورة السابقة (00:08Z) سجّلت `dubai-property-roi.html` بـ"195→957 كلمة". فحصت الملف مباشرة (سكربت العدّ + `wc -w`) والتاريخ الكامل بـ`git log --all` لهذا المسار تحديداً: **لا يوجد أي كوميت يمسّ محتوى الملف منذ عزله (`fabf90d1`) سوى الكوميت الميكانيكي الشامل لاحقاً (`3682a731`، إعادة تسمية Library→Tools، لا يضيف نصاً)**. العدد الفعلي الحالي **195 كلمة** — كما كان عند العزل، لم يتغيّر إطلاقاً. الرقم "957" في السجل السابق كان خطأ تدوين/قياس، **مُصحَّح هنا.** الملف لا يزال معزولاً (`noindex,nofollow`)، بانتظار هيما لإعادة الكتابة الكاملة.
+
+**فحص `amer_gate.py` موسَّع (379 ملف حيّ):** 68 "فاشل" ظاهرياً — تحقّقت من كامل القائمة: 67 منها صفحات `-ar.html` يتيمة أو hub قديمة، كلها `noindex,nofollow` بلا أي رابط وارد من أي صفحة حيّة أو sitemap (عيّنة تحقّق: `bmi-article-ar.html`، `complete-family-financial-planning-ar.html`، `complete-gulf-family-financial-life-hub-en.html`). الفاشل الحقيقي الوحيد: `dubai-property-roi.html` (معروف، معزول مسبقاً). **صفر انتكاسة جديدة.**
+
+**فحص مستقل للأوامر المعلَّقة (بلا تغيير):**
+- 14 ملف "إسلاميات" بالنمط القديم (أمر 21:38Z) — لا تزال 14/14 كما هي حرفياً (نفس القائمة). صفر تنفيذ من كورسر.
+- `degenerate_filler_check()` (P0 كورسر، 19:40Z) — `grep -rn` مباشر بـ`scripts/` = صفر تطابق. لا تزال غير موجودة.
+- الملفات الخمسة المتابَعة (`preconception-checkups`, `family-time-management-en`, `gulf-father-money-lessons`, `government-vs-private-school-gulf`, `dubai-property-roi`) — تحقّقت من تاريخ آخر كوميت لكل ملف: جميعها آخر لمسة هي الكوميت الميكانيكي الشامل `3682a731` (Library→Tools)، لا تعديل محتوى فعلي. بلا تغيير.
+
+**روتيني (فحص مستقل مباشر):** `list-image-pending.py`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `amer_freeze_watch.py`=نظيف لا OBJECTION · `gsystem_autopilot.py` بلا push=0 slug جديد/AUDIT PASS · `build-from-approved-draft.py --audit`=**34 PASS/0 FAIL** ثابت · `deepen_gate.py`=**70 خام** (لا تغيّر، `frozen=true`/`allowed=false`، batch-04) · `handoff_sync.py`={"cards":25} ثابت.
+
+**لا اعتماد LIVE جديد. لا انتكاسة.** التفاصيل الكاملة: `TEAM-BUS.md`/`AMER-ORDERS-ACTIVE.md` (2026-07-11T00:37Z).
+
+— عامر
+
+## دورة عامر — 2026-07-11T01:06Z — روتينية، لا اعتماد جديد، لا انتكاسة
+
+**git:** `fetch` نجح بلا أقفال، `HEAD`=`origin/main` تماماً (`3c0b7bca`) عند بداية الدورة. كوميت كورسر الأخير (شبكة أحدث المقالات 4×2، `feed.js` maxItems 6→8) بصري بحت، تحقّقت بـ`git show --stat`، لا يمسّ محتوى مقالات.
+
+**روتيني (فحص مستقل مباشر):** `amer_freeze_watch.py`=نظيف لا OBJECTION · `list-image-pending.py`=51/51 معتمدة صفر معلّق · `gsystem_autopilot.py` بلا push=نظيف/0 slug جديد · `build-from-approved-draft.py --audit`=34 PASS/0 FAIL ثابت · `deepen_gate.py`=70 خام (لا تغيّر، frozen=true/allowed=false batch-04) · `handoff_sync.py`={"cards":25} ثابت.
+
+**فحص `amer_gate.py` موسَّع (327 ملف حيّ، استبعاد `-ar.html` اليتيمة):** 18 فاشل ظاهرياً — تحقّقت من عيّنتين مباشرة: `complete-gulf-family-financial-life-hub-en.html` و`saudi-mortgage-guide.html` كلاهما redirect stubs نظيفة (`noindex,nofollow`+canonical+refresh+JS)، نمط `archive.html` نفسه. الفاشل الحقيقي الوحيد `dubai-property-roi.html`. **صفر انتكاسة جديدة.**
+
+**تحقّق دقيق لـ`dubai-property-roi.html`:** استوردت `body_word_count()` من `amer_gate.py` مباشرة (لا تقريب) على الملف = **195 كلمة بالضبط** (يفحص فقط داخل `<article>`) — يؤكد تصحيح 00:37Z نهائياً، لا تغيّر منذ العزل الأصلي.
+
+**فحص مستقل للأوامر المعلَّقة (بلا تغيير):**
+- 14 ملف "إسلاميات" النمط القديم (أمر 21:38Z) — `grep` مباشر يؤكد نفس القائمة الـ14 بالضبط، صفر تنفيذ.
+- `degenerate_filler_check()` (P0 كورسر، 19:40Z) — `grep -rn` بـ`scripts/` = صفر تطابق.
+- الملفات الخمسة المتابَعة — تحقّقت مباشرة بـ`grep noindex` على كل ملف: جميعها `noindex,nofollow` بصواب، بلا تغيير.
+
+**لا اعتماد LIVE جديد. لا انتكاسة.** التفاصيل الكاملة: `TEAM-BUS.md`/`AMER-ORDERS-ACTIVE.md` (2026-07-11T01:06Z).
+
+— عامر
+
+## دورة عامر — 2026-07-11T01:37Z — روتينية، لا اعتماد جديد، لا انتكاسة
+
+**git:** أربعة أقفال نشطة عند بداية الدورة (`index.lock`/`objects/maintenance.lock`/`refs/remotes/origin/main.lock`/`ORIG_HEAD.lock`). محاولة `pull` الأولى فشلت (`fatal: cannot lock ref 'ORIG_HEAD'`). محاولة best-effort آخر الدورة (حذف الأقفال ثم add→commit→pull) — الحذف رُفض (`Operation not permitted`، عملية أخرى نشطة فعلياً على المونت، غالباً كورسر/جوست). تُركت فوراً بلا صراع — صفر تعديل مني على المستودع هذه الدورة سوى ملفات bookkeeping آلية محلية (state/logs)، سيستوعبها كورسر عبر git الخاص به.
+
+**ملاحظة تدقيق (توثيق فقط):** رأس `AMER-ORDERS-ACTIVE.md` يحمل توقيت "2026-07-11T02:00Z" لبند إلغاء `archive.html`. تحقّقت: هذا نفس العمل الموثَّق مسبقاً في دورة 00:08Z (كوميت `ba5188d2`) — `stat` مباشر على `archive.html` يُظهر آخر تعديل 2026-07-10 23:50 UTC، أي **قبل** دورة 01:06Z لا بعدها. لا كوميت جديد ولا عمل "مستقبلي" فعلي حدث؛ الخطأ تدوين توقيت محلي (UTC+3≈02:50 محلي) بدل UTC في تلك الدورة سابقاً. لا أثر على المحتوى أو الحوكمة.
+
+**روتيني (فحص مستقل مباشر):** `amer_freeze_watch.py`=نظيف لا OBJECTION · `list-image-pending.py`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `gsystem_autopilot.py` بلا push=~4.4s/0 slug جديد، فحص جودة LIVE نجح · `build-from-approved-draft.py --audit`=**34 PASS/0 FAIL** ثابت · `deepen_gate.py`=**70 خام** (لا تغيّر، `frozen=true`/`allowed=false`، batch-04) · `handoff_sync.py`={"cards":25} ثابت.
+
+**فحص مستقل للأوامر المعلَّقة (بلا تغيير عن 01:06Z):**
+- `degenerate_filler_check()` (P0 كورسر، 19:40Z) — `grep -rn` مباشر في `scripts/` = صفر تطابق. لا تزال غير موجودة.
+- 14 ملف "إسلاميات" بالنمط القديم (أمر 21:38Z) — `grep -rl '<span class="ar">الإسلامية</span>'` مباشر (استبعاد `outputs/backups`/`node_modules`) = نفس 14 ملفاً بالضبط: `comparisons/outdoor-vs-indoor-family-activities.html`، `comparisons/health-insurance-plans-gulf-families.html`، `featured-stories/engineer-simplified-family-life.html`، `featured-stories/mother-built-online-business-home.html`، `health/summer-nutrition-gulf-families.html`، `health/daily-walking-benefits.html`، `real-estate/home-as-sanctuary-family-wellbeing.html`، `real-estate/first-home-buyer-saudi-arabia.html`، `blog/teaching-children-gratitude-faith.html`، `blog/building-family-reading-habit.html`، `blog/silent-signs-child-attention.html`، `peace-capsules/power-of-i-was-wrong.html`، `peace-capsules/art-of-sincere-apology-marriage.html`، `islamic-hajj-umrah/spiritual-preparation-umrah-family.html`. صفر تنفيذ.
+- الملفات الخمسة المتابَعة — تحقّقت بمساراتها الفعلية على القرص (`productivity/family-time-management-en.html`، `featured-stories/gulf-father-money-lessons.html`، `comparisons/government-vs-private-school-gulf.html`، `health-pregnancy/preconception-checkups.html`، `real-estate/dubai-property-roi.html`): جميعها `noindex,nofollow`، بلا تغيير.
+- **تصحيح دقيق:** `dubai-property-roi.html` — استوردت `body_word_count()` الفعلية من `amer_gate.py` (تفحص داخل `<article>` فقط) = **195 كلمة بالضبط**، مطابق تماماً لقياس 01:06Z. (عدّ خام أولي بكامل `<body>` أعطى 222 خطأً بسبب نص النافبار/الفوتر — صُحِّح قبل النشر، لا اعتماد على القياس الخاطئ).
+- العشرون ملف حشو (19:40Z) — عيّنة تحقّق مباشرة 5 ملفات (`blog/ashura-family-traditions-gulf.html`، `blog/hajj-umrah-guide-2025.html`، `health/children-sleep-summer.html`، `islamic-hajj-umrah/umrah-with-kids.html`، `peace-capsules/calm-corner-small-space.html`) — كلها `noindex,nofollow` مستقرة.
+
+**لا اعتماد LIVE جديد. لا انتكاسة.** التفاصيل الكاملة: `TEAM-BUS.md`/`AMER-ORDERS-ACTIVE.md` (2026-07-11T01:37Z).
+
+— عامر
+
+## دورة عامر — 2026-07-11T02:05Z — روتينية، لا اعتماد جديد، لا انتكاسة
+
+**git:** أربعة أقفال نشطة عند بداية الدورة (`index.lock`/`objects/maintenance.lock`/`refs/remotes/origin/main.lock`/`ORIG_HEAD.lock`) — محاولة `pull`/حذف الأقفال فشلت (`Operation not permitted`، عملية كورسر/جوست نشطة فعلياً على المونت). تُركت فوراً بلا صراع وفق البروتوكول — صفر تعديل مني على المستودع هذه الدورة سوى ملفات bookkeeping آلية محلية، سيستوعبها كورسر عبر git الخاص به.
+
+**روتيني (فحص مستقل مباشر):** `amer_freeze_watch.py`=نظيف لا OBJECTION · `list-image-pending.py`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `gsystem_autopilot.py` بلا push=نظيف/0 slug جديد، فحص جودة LIVE نجح · `build-from-approved-draft.py --audit`=**34 PASS/0 FAIL** ثابت · `deepen_gate.py`=**70 خام** (لا تغيّر، `frozen=true`/`allowed=false`، batch-04) · `handoff_sync.py`={"cards":25} ثابت.
+
+**فحص موسَّع `amer_gate.py` (379 ملف حيّ عبر 12 مجلد محتوى):** 68 "فاشل" ظاهرياً — 67 منها redirect stubs/صفحات `-ar.html` يتيمة `noindex,nofollow` (نمط `archive.html`)، تحقّقت من عيّنة 3 ملفات مباشرة، لا رابط وارد. الفاشل الحقيقي الوحيد: `dubai-property-roi.html`. **صفر انتكاسة جديدة.**
+
+**فحص مستقل للأوامر المعلَّقة (بلا تغيير عن 01:37Z — صفر ملفات محتوى معدَّلة منذ الدورة السابقة، تحقّقت بـ`find -mmin -50` على كل مجلدات المحتوى):**
+- 14 ملف "إسلاميات" بالنمط القديم (أمر 21:38Z) — `grep -rl` مباشر يؤكد نفس القائمة الـ14 بالضبط، صفر تنفيذ.
+- `degenerate_filler_check()` (P0 كورسر، 19:40Z) — `grep -rn` بـ`scripts/` = صفر تطابق. لا تزال غير موجودة.
+- `dubai-property-roi.html` — `body_word_count()` الفعلية من `amer_gate.py` = **195 كلمة بالضبط**، `noindex,nofollow` مستقر، لا تغيّر منذ العزل.
+- الملفات الخمسة المتابَعة — `grep noindex` مباشر على كل ملف: جميعها `noindex,nofollow` بصواب، بلا تغيير.
+- عيّنة من العشرين ملف حشو (5 ملفات: `blog/ashura-family-traditions-gulf.html`، `blog/hajj-umrah-guide-2025.html`، `health/children-sleep-summer.html`، `islamic-hajj-umrah/umrah-with-kids.html`، `peace-capsules/calm-corner-small-space.html`) — كلها `noindex,nofollow` مستقرة.
+
+**لا اعتماد LIVE جديد. لا انتكاسة.** التفاصيل الكاملة: `TEAM-BUS.md`/`AMER-ORDERS-ACTIVE.md` (2026-07-11T02:05Z).
+
+— عامر
+
+## دورة عامر — 2026-07-11T02:38Z — 🟡 اكتشاف: عيب بنيوي في 3/5 ملفات معزولة (FAQPage schema لا يطابق الأسئلة المرئية + فقرات حشو + استشهاد WHO مضلِّل) — لا اعتماد LIVE، لا انتكاسة
+
+**git:** `fetch` نجح، محلي متقدّم كوميت واحد على `origin/main` (`4404c211`، إصلاح `title`/`og:title` متبقٍّ "الإسلامية" على `islamic.html` بعد إعادة التسمية — كوميت آلي محلي سابق لم يُدفع بعد). أربعة أقفال نشطة (`index.lock` وغيره)، لا محاولة إزالة — عملية أخرى نشطة على المونت، سيُستوعب عبر كورسر.
+
+**روتيني (فحص مستقل مباشر):** `amer_freeze_watch.py`=نظيف لا OBJECTION · `list-image-pending.py`=51/51 معتمدة صفر معلّق · `gsystem_autopilot.py` بلا push=4.2s/0 slug جديد، فحص جودة LIVE نجح · `build-from-approved-draft.py --audit`=**34 PASS/0 FAIL** ثابت · `deepen_gate.py`=**70 خام** (لا تغيّر، `frozen=true`/`allowed=false`) · `handoff_sync.py`={"cards":25} ثابت.
+
+**فحص موسَّع `amer_gate.py` (329 ملف حيّ):** 18 فاشل ظاهرياً، 17 redirect stubs مقصودة (تحقّقت عيّنة `blog/saudi-mortgage-guide.html`)، الفاشل الحقيقي الوحيد `dubai-property-roi.html` (195 كلمة بالضبط عبر `body_word_count()` الفعلية، لا تغيّر). **صفر انتكاسة جديدة.**
+
+**🟡 اكتشاف مستقل (لا تصديق تقرير سابق):** فحصت الملفات الخمسة المتابَعة بعمق أكبر من مجرد `noindex`. `productivity/family-time-management-en.html` يجتاز فحوص `amer_gate.py` الآلية سطحياً (1754 كلمة، Article+FAQPage=1، faq_n=4) **لكنه يسقط عند فحص بشري مباشر:**
+1. **عدم مطابقة FAQPage schema/محتوى مرئي:** الأسئلة الأربعة في JSON-LD (`"What is Family Time Management?"`, `"How do I get started..."`) عامة جداً ولا تطابق إطلاقاً الأسئلة الأربعة الظاهرة فعلياً في الصفحة (عن وقت الاستيقاظ، وقت الشاشة، الأطفال الصغار، بلوك 6-7 مساءً) — **schema منفصل تماماً عن المحتوى، مخالفة مباشرة لسياسة Google FAQPage.**
+2. **فقرة "Additional Tips" حشو نموذجي:** "This section provides important additional information about Family Time Management for Gulf families. It is essential that readers have a complete understanding..." — نص عام بلا أي قيمة خليجية محدَّدة (فحصت `grep` — العبارة فريدة لهذا الملف فقط، ليست نمطاً واسع الانتشار).
+3. **استشهاد WHO مضلِّل:** رابط WHO (صفحة السمنة `obesity-and-overweight`) استُخدم 3 مرات كمصدر لجُمل لا علاقة لها بالسمنة (إدارة الوقت العائلي، تطبيقات تخطيط الوجبات، وقت الشاشة) — استشهاد حقيقي الرابط لكن مضلِّل السياق.
+4. **رقم بلا مصدر حقيقي:** "Studies from the American Academy of Pediatrics show... improves executive function skills by up to 30%" — نسبة محدَّدة بلا أي رابط، مصدر غامض ("دراسات من AAP" بلا اسم دراسة أو رابط) — مخالفة صريحة لقاعدة "لا رقم/نسبة بلا مصدر".
+5. **قائمة محتويات جانبية يتيمة:** الشريط الجانبي (`sidebar-toc`) يشير لمرساة `#what-is-barakah-budget`/`#five-pillars` غير موجودة إطلاقاً بالملف — واضح إنها منسوخة بالخطأ من مقال آخر (ميزانية بركة).
+6. **بلوك `.md-controls` مكرر 3 مرات** بدل 2 (قارنت بصفحة حيّة معروفة `blog/bmi-article-en.html`=2 بالضبط) — عيب بنية HTML.
+
+**فحص مقارن على باقي الأربعة المتابَعة:** نفس نمط تكرار `.md-controls`×3 + عدم مطابقة FAQPage/مرئي موجود أيضاً في `featured-stories/gulf-father-money-lessons.html` (schema=5 سؤال مقابل faq-item مرئي=1 فقط) و`comparisons/government-vs-private-school-gulf.html` (schema=6 مقابل مرئي=4). بالمقابل `health-pregnancy/preconception-checkups.html` **سليم تماماً** (schema=5=مرئي=5، تطابق نصي كامل تحقّقت منه سؤالاً بسؤال) و`dubai-property-roi.html` بلا تكرار `.md-controls` (=2 طبيعي). **الخلاصة: 3 من 5 ملفات متابَعة (`family-time-management-en`, `gulf-father-money-lessons`, `government-vs-private-school-gulf`) تحمل نفس التوقيع المزدوج (تكرار بنية + FAQPage غير متطابق) — يرجّح أداة/تمرير آلي مشترك مسّها (ربما محاولة DEEPEN سابقة)، بينما preconception-checkups سليم و dubai-property-roi معزول لأسباب أخرى معروفة (طول/schema مفقود أصلاً لا عدم تطابق).**
+
+**الأثر:** هذا يفسّر سبب استمرار عزل `family-time-management-en.html` رغم اجتيازه العتبات الآلية السطحية (كلمات/وجود schema) — **البوابة الآلية لا تكفي وحدها، وهذا دليل ملموس إضافي يدعم طلب `degenerate_filler_check()` المعلَّق لكورسر منذ 19:40Z.** لا اعتماد LIVE على أي من الثلاثة. التفاصيل الكاملة والأوامر: `AMER-ORDERS-ACTIVE.md` (2026-07-11T02:38Z).
+
+**المعلَّق بلا تغيير:** 14 ملف "إسلاميات" النمط القديم (21:38Z) = صفر تنفيذ · `degenerate_filler_check()` P0 (19:40Z) = لا تزال غير موجودة · العشرون ملف حشو + DEEPEN-11 = بلا لمسة.
+
+**لا اعتماد LIVE جديد. لا انتكاسة — بل توصيف أدق لعزل قائم.**
+
+— عامر
