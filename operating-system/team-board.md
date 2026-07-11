@@ -50,7 +50,7 @@
 <!-- TEAM-BOARD-LIVE-START -->
 ## 🕐 الحالة الآن — محدّث تلقائياً
 
-**آخر تحديث:** 2026-07-11 **05:35** · مصدر: autopilot + manifest + git
+**آخر تحديث:** 2026-07-11 **06:04** · مصدر: autopilot + manifest + git
 
 > **اقرأ هنا أولاً** — ثلاث حالات: **✅ تم** · **🔄 جاري** · **⏳ لسه**
 
@@ -60,24 +60,24 @@
 | تنتظر بناء HTML | **0** |
 | DEEPEN (قصير) | **70** |
 | جودة الموقع | **0/379 (0%)** |
-| آخر autopilot | `2026-07-11 **05:35**` |
+| آخر autopilot | `2026-07-11 **06:04**` |
 
 ### ✅ تم — آخر ما اكتمل
 
 | الوقت | ماذا | من | الدليل |
 |-------|------|-----|--------|
-| 2026-07-11 **05:35** | فحص autopilot — كل الصور المعتمدة على الموقع | Cursor | log `[]` |
-| 2026-07-11 **05:35** | built 0 slug(s) · AUDIT PASS | Cursor | autopilot |
-| 2026-07-11 **05:32** | آخر commit `4404c211` | Cursor | Fix leftover title/og:title still saying الإسلامية after nav rename to إسلاميات |
+| 2026-07-11 **06:04** | فحص autopilot — كل الصور المعتمدة على الموقع | Cursor | log `[]` |
+| 2026-07-11 **06:04** | built 0 slug(s) · AUDIT PASS | Cursor | autopilot |
+| 2026-07-11 **05:45** | آخر commit `974f5698` | Cursor | Fix 28 broken hero image references (files never existed) across ~29 article pag |
 
 ### 🔄 جاري العمل — الآن
 
 | الوقت | ماذا | من | التالي |
 |-------|------|-----|--------|
 | — | A-09 REVISE — `drafts/task09/` | Hema | تسليم لعامر بعد draft-gate |
-| 2026-07-11 **05:35** | **Batch 03** — BUILD VERIFY 7 صور | عامر | `amer-batch03-kickoff.md` |
-| 2026-07-11 **05:35** | Batch 03 — SEO Briefs + كتابة | Hema | AN-00 → B3-XXQ → B3-XXN |
-| 2026-07-11 **05:35** | BUILD VERIFY — **68** صور LIVE | عامر | hero + alt + G5 |
+| 2026-07-11 **06:04** | **Batch 03** — BUILD VERIFY 7 صور | عامر | `amer-batch03-kickoff.md` |
+| 2026-07-11 **06:04** | Batch 03 — SEO Briefs + كتابة | Hema | AN-00 → B3-XXQ → B3-XXN |
+| 2026-07-11 **06:04** | BUILD VERIFY — **68** صور LIVE | عامر | hero + alt + G5 |
 
 ### ⏳ لسه — منتظر / مفتوح
 
@@ -89,10 +89,10 @@
 
 ### 📎 آخر سطور الأوتوبايلوت
 
-- `[2026-07-11T05:35:27] === تشغيل جديد / new run ===`
-- `[2026-07-11T05:35:29] slugs needing build: []`
-- `[2026-07-11T05:35:29] AUDIT PASS`
-- `[2026-07-11T05:35:29] inboxes: operating-system/inbox/omar.md, operating-system/inbox/claude.md, operating-system/inbox/hema.md, operating-system/inbox/amer.md, operating-system/inbox/cursor.md, operating-system/inbox/ghost.md`
+- `[2026-07-11T06:04:25] === تشغيل جديد / new run ===`
+- `[2026-07-11T06:04:26] slugs needing build: []`
+- `[2026-07-11T06:04:26] AUDIT PASS`
+- `[2026-07-11T06:04:26] inboxes: operating-system/inbox/omar.md, operating-system/inbox/claude.md, operating-system/inbox/hema.md, operating-system/inbox/amer.md, operating-system/inbox/cursor.md, operating-system/inbox/ghost.md`
 
 <!-- TEAM-BOARD-LIVE-END -->
 ---
