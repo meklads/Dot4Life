@@ -2993,3 +2993,7 @@ NameError: name 'audit_live' is not defined
 **لا اعتماد LIVE جديد. لا تحرير مباشر. لا رفض جديد. لا انتكاسة.** التفاصيل الكاملة: `AMER-ORDERS-ACTIVE.md`/`TEAM-BUS.md`.
 
 — عامر
+
+## 2026-07-12 02:55 UTC — 🤖 بوابة CI الآلية رفضت 1 ملف عند push
+تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
+- `peace-capsules/beat-summer-boredom-without-screens-en.html`: بنية مكسورة: السايدبار متعشّش تحت <body.body> بدل article-layout — سيظهر تحت المقال لا جنبه (وسم غير مقفول في الجسم)
