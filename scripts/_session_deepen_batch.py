@@ -160,16 +160,112 @@ def scrub_scripture(html: str) -> str:
     return html
 
 def rebuild_faq(html: str, faqs: list[tuple[str, str]], lang: str) -> str:
-    html = re.sub(r'<div class="faq-item">[\s\S]*?</div>\s*', "", html)
-    html = re.sub(
-        r'<h2[^>]*>[^<]*(أسئلة شائعة|الأسئلة الشائعة|Frequently Asked Questions|\bFAQ\b)[^<]*</h2>\s*',
-        "",
-        html,
-        flags=re.I,
-    )
-    html = re.sub(r'<div class="faq-answer">[\s\S]*?</div>\s*', "", html)
-    if "</article>" in html:
-        html = html.replace("</article>", faq_html(faqs, lang) + "\n</article>", 1)
+    """Replace visible FAQ block + schema. Prefer replacing faq-list wholesale."""
+
+    def _is_faq_h2(inner: str) -> bool:
+        title = re.sub(r"<[^>]+>", " ", inner)
+        return bool(
+            re.search(
+                r"أسئلة\s*شائعة|الأسئلة\s*الشائعة|Frequently\s+Asked\s+Questions|\bFAQ\b",
+                title,
+                re.I,
+            )
+        )
+
+    # 1) Prefer: FAQ heading + optional faq-list wrapper → replace with clean block
+    replaced = False
+    for m in re.finditer(r"<h2\b([^>]*)>([\s\S]*?)</h2>", html, re.I):
+        attrs, inner = m.group(1), m.group(2)
+        id_m = re.search(r'id="([^"]*)"', attrs, re.I)
+        id_val = id_m.group(1) if id_m else ""
+        if not (_is_faq_h2(inner) or re.search(r"faq|أسئلة", id_val, re.I)):
+            continue
+        start = m.start()
+        rest = html[m.end() :]
+        list_m = re.match(r"\s*<div class=\"faq-list\"[^>]*>", rest, re.I)
+        if list_m:
+            pos = list_m.end()
+            depth = 1
+            while pos < len(rest) and depth:
+                if re.match(r"<div\b[^>]*>", rest[pos:], re.I):
+                    depth += 1
+                    pos += re.match(r"<div\b[^>]*>", rest[pos:], re.I).end()
+                elif re.match(r"</div\s*>", rest[pos:], re.I):
+                    depth -= 1
+                    pos += re.match(r"</div\s*>", rest[pos:], re.I).end()
+                else:
+                    pos += 1
+            end = m.end() + pos
+            html = html[:start] + faq_html(faqs, lang) + "\n" + html[end:]
+            replaced = True
+            break
+        else:
+            # No faq-list: remove heading + following simple faq-items
+            pos = 0
+            chunk = rest
+            while True:
+                im = re.match(
+                    r'\s*<div class="faq-item\b[^>]*>',
+                    chunk[pos:],
+                    re.I,
+                )
+                if not im:
+                    break
+                pos += im.end()
+                depth = 1
+                while pos < len(chunk) and depth:
+                    if re.match(r"<div\b[^>]*>", chunk[pos:], re.I):
+                        depth += 1
+                        pos += re.match(r"<div\b[^>]*>", chunk[pos:], re.I).end()
+                    elif re.match(r"</div\s*>", chunk[pos:], re.I):
+                        depth -= 1
+                        pos += re.match(r"</div\s*>", chunk[pos:], re.I).end()
+                    else:
+                        pos += 1
+            html = html[:start] + faq_html(faqs, lang) + "\n" + html[m.end() + pos :]
+            replaced = True
+            break
+
+    if not replaced:
+        # Strip leftover faq-items depth-aware, then append before </article>
+        out = []
+        i = 0
+        while True:
+            m = re.search(r'<div class="faq-item\b[^>]*>', html[i:], re.I)
+            if not m:
+                out.append(html[i:])
+                break
+            start = i + m.start()
+            out.append(html[i:start])
+            pos = i + m.end()
+            depth = 1
+            while pos < len(html) and depth:
+                if re.match(r"<div\b[^>]*>", html[pos:], re.I):
+                    depth += 1
+                    pos += re.match(r"<div\b[^>]*>", html[pos:], re.I).end()
+                elif re.match(r"</div\s*>", html[pos:], re.I):
+                    depth -= 1
+                    pos += re.match(r"</div\s*>", html[pos:], re.I).end()
+                else:
+                    pos += 1
+            i = pos
+        html = "".join(out)
+        # remove leftover FAQ headings
+        parts = []
+        i = 0
+        for m in re.finditer(r"<h2\b([^>]*)>([\s\S]*?)</h2>", html, re.I):
+            attrs, inner = m.group(1), m.group(2)
+            parts.append(html[i : m.start()])
+            id_m = re.search(r'id="([^"]*)"', attrs, re.I)
+            id_val = id_m.group(1) if id_m else ""
+            if not (_is_faq_h2(inner) or re.search(r"faq|أسئلة", id_val, re.I)):
+                parts.append(m.group(0))
+            i = m.end()
+        parts.append(html[i:])
+        html = "".join(parts)
+        if "</article>" in html:
+            html = html.replace("</article>", faq_html(faqs, lang) + "\n</article>", 1)
+
     return set_faq_schema(html, faqs)
 
 def insert_before_faq(html: str, block: str) -> str:
