@@ -557,8 +557,9 @@ function notify(msg) {
 /* ─── LANGUAGE / THEME ───────────────────────────────────────────── */
 function applyLangVisibility() {
   var lang = document.documentElement.getAttribute('data-lang') || 'en';
-  document.querySelectorAll('.en').forEach(function(el){ el.style.display = lang==='ar' ? 'none' : ''; });
-  document.querySelectorAll('.ar').forEach(function(el){ el.style.display = lang==='en' ? 'none' : ''; });
+  document.querySelectorAll('.en, .ar').forEach(function(el){ el.style.removeProperty('display'); });
+  document.querySelectorAll('.en').forEach(function(el){ if (lang === 'ar') el.style.display = 'none'; });
+  document.querySelectorAll('.ar').forEach(function(el){ if (lang === 'en') el.style.display = 'none'; });
 }
 
 

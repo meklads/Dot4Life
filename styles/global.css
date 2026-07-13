@@ -1643,12 +1643,13 @@ html[data-lang="ar"] .site-footer .footer-bottom-links a span.ar {
 /* Category pages: hero starts from the very top (override page-specific body top padding) */
 body.category-page { padding-top: 0 !important; }
 /* Only offset when a sub-nav bar actually exists in the DOM */
-body.category-page:has(#sub-nav):not(.health-hub-page):not(.editorial-standards-page) { padding-top: 158px !important; }
+body.category-page:has(#sub-nav):not(.health-hub-page):not(.editorial-standards-page):not(.company-chrome-page) { padding-top: 158px !important; }
 @media (max-width: 768px) {
-  body.category-page:has(#sub-nav):not(.health-hub-page):not(.editorial-standards-page) { padding-top: 138px !important; }
+  body.category-page:has(#sub-nav):not(.health-hub-page):not(.editorial-standards-page):not(.company-chrome-page) { padding-top: 138px !important; }
 }
-/* Editorial standards: full-bleed hero (same as health hub) — no white strip under nav */
-body.editorial-standards-page { padding-top: 0 !important; }
+/* Editorial / company chrome: full-bleed hero — no white strip under nav */
+body.editorial-standards-page,
+body.company-chrome-page { padding-top: 0 !important; }
 
 /* Internal pages: hero-stats (metrics + "start your day" bar) only on homepage, hidden on category-class pages */
 .category-page .hero-stats { display: none !important; }

@@ -30,8 +30,30 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Inter:wght@400;500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Inter:wght@400;500;600;700;800&display=swap"/></noscript>
-<link rel="stylesheet" href="/styles/global.css?v=20260711j"/>
-  <link rel="stylesheet" href="/styles/home.css?v=20260711j">
+<link rel="stylesheet" href="/styles/global.css?v=20260713c"/>
+  <link rel="stylesheet" href="/styles/home.css?v=20260713c">
+<style>
+/* Company chrome: full-bleed hero, no white gap under fixed nav */
+body.company-chrome-page { padding-top: 0 !important; }
+body.company-chrome-page #navbar,
+body.company-chrome-page #navbar.index-nav {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+body.company-chrome-page #navbar.scrolled,
+body.company-chrome-page #navbar.index-nav.scrolled {
+  background: #054241 !important;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, .08) !important;
+}
+html[data-lang="en"] body.company-chrome-page .en { display: inline !important; }
+html[data-lang="en"] body.company-chrome-page .ar { display: none !important; }
+html[data-lang="ar"] body.company-chrome-page .en { display: none !important; }
+html[data-lang="ar"] body.company-chrome-page .ar { display: inline !important; }
+</style>
+
 <link rel="stylesheet" href="/styles/pages/about.css?v=821e658">
 
   <!-- DFL CANONICAL SYSTEM CSS -->
@@ -53,10 +75,10 @@
   <meta name="twitter:image" content="https://dotforlife.com/og/og-default.png"/>
   <meta name="twitter:card" content="summary_large_image"/>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1436107577087160" crossorigin="anonymous"></script></head>
-<body class="index-page category-page">
+<body class="index-page category-page company-chrome-page">
   <!-- ═══ UNIFIED HEADER ══════════════════════════════════════ -->
 <!-- ═══ UNIFIED HEADER ══════════════════════════════════════ -->
-<nav id="navbar"><div class="nav-inner"><a href="/" class="nav-logo"><img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" width="100" height="100" style="height:100px;width:auto;object-fit:contain;" loading="lazy"></a><ul class="nav-links"><li><a href="/health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li><li><a href="/finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li><li><a href="/real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li><li><a href="/travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li><li><a href="/islamic.html"><span class="en">Islamic</span><span class="ar">إسلاميات</span></a></li><li><a href="/library/recipes/"><span class="en">Recipes</span><span class="ar">الوصفات</span></a></li><li><a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a></li><li><a href="/blog.html"><span class="en">Blog</span><span class="ar">المدونة</span></a></li><li><a href="/library.html"><span class="en">Tools</span><span class="ar">الأدوات</span></a></li></ul><div class="nav-controls"><button class="nav-btn" id="lang-toggle"><span class="en">عربي</span><span class="ar">English</span></button><button class="nav-btn" id="theme-toggle">
+<nav id="navbar" class="index-nav" role="navigation" aria-label="Main navigation"><div class="nav-inner"><a href="/" class="nav-logo"><img src="/assets/images/logo1-footer.webp" alt="DOTFORLIFE" width="100" height="100" style="height:100px;width:auto;object-fit:contain;" loading="lazy"></a><ul class="nav-links"><li><a href="/health.html"><span class="en">Health</span><span class="ar">الصحة</span></a></li><li><a href="/finance.html"><span class="en">Finance</span><span class="ar">المالية</span></a></li><li><a href="/real-estate.html"><span class="en">Real Estate</span><span class="ar">العقار</span></a></li><li><a href="/travel.html"><span class="en">Travel</span><span class="ar">السفر</span></a></li><li><a href="/islamic.html"><span class="en">Islamic</span><span class="ar">إسلاميات</span></a></li><li><a href="/library/recipes/"><span class="en">Recipes</span><span class="ar">الوصفات</span></a></li><li><a href="/about.html"><span class="en">About</span><span class="ar">عنّا</span></a></li><li><a href="/blog.html"><span class="en">Blog</span><span class="ar">المدونة</span></a></li><li><a href="/library.html"><span class="en">Tools</span><span class="ar">الأدوات</span></a></li></ul><div class="nav-controls"><button class="nav-btn" id="lang-toggle"><span class="en">عربي</span><span class="ar">English</span></button><button class="nav-btn" id="theme-toggle">
   <svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
   <svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
 </button><button class="hamburger" id="hamburger-btn" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button></div></div></nav>
@@ -84,15 +106,7 @@
 </div>
 <!-- ═══ END HEADER ══════════════════════════════════════ -->
 
-  <div class="md-controls">
-    <button class="nav-btn" id="lang-toggle-mobile"><span class="en">عربي</span><span class="ar">English</span></button>
-    <button class="nav-btn" id="theme-toggle-mobile">
-      <svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      <svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-    </button>
-  </div>
-</div>
-<!-- ═══ END HEADER ══════════════════════════════════════ -->
+  
   <!-- ═══════════════════════════════════════
        HERO
   ═══════════════════════════════════════ -->
@@ -340,44 +354,16 @@
 
 <!-- FOOTER -->
 
-<script>
-function applyLangVisibility() {
-  var lang = document.documentElement.getAttribute('data-lang') || 'en';
-  document.querySelectorAll('.en').forEach(function(el){ el.style.display = lang === 'ar' ? 'none' : ''; });
-  document.querySelectorAll('.ar').forEach(function(el){ el.style.display = lang === 'en' ? 'none' : ''; });
-}
-function toggleLang() {
-  var h = document.documentElement;
-  var next = h.getAttribute('data-lang') === 'en' ? 'ar' : 'en';
-  h.setAttribute('data-lang', next);
-  h.setAttribute('lang', next);
-  h.setAttribute('dir', next === 'ar' ? 'rtl' : 'ltr');
-  localStorage.setItem('dfl-lang', next);
-  applyLangVisibility();
-}
-function toggleTheme() {
-  var h = document.documentElement;
-  var next = h.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-  h.setAttribute('data-theme', next);
-  localStorage.setItem('dfl-theme', next);
-}
 
-/* Scroll reveal */
+<!-- Lang/theme: scripts/global.js only — clear sticky inline display on .en/.ar -->
+<script>
 document.addEventListener('DOMContentLoaded', function() {
-  applyLangVisibility();
-  var revealEls = document.querySelectorAll('.reveal');
-  if('IntersectionObserver' in window) {
-    var obs = new IntersectionObserver(function(entries) {
-      entries.forEach(function(e) {
-        if(e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
-      });
-    }, { threshold: 0.12 });
-    revealEls.forEach(function(el){ obs.observe(el); });
-  } else {
-    revealEls.forEach(function(el){ el.classList.add('visible'); });
-  }
+  document.querySelectorAll('.en, .ar').forEach(function(el) {
+    if (el.style.display) el.style.removeProperty('display');
+  });
 });
 </script>
+
 
   <!-- DFL CANONICAL FOOTER -->
   <!-- ═══ UNIFIED FOOTER ══════════════════════════════════════ -->

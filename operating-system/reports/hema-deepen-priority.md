@@ -10,6 +10,12 @@
 
 **الأولوية:** (1) إكمال B3 · (2) تقليص الـ155 بـ WRITING-LAW ≥1600w · (3) بعد AN-00 مضاعفة الرابح.
 
+## ✅ تحديث كورسر 2026-07-13
+- **Wave5:** كل مقالات LIVE ذات جسم `<article>` تحت 1600 كلمة رُفعت إلى ≥1600 (54 صفحة) — `operating-system/reports/cursor-wave5-to1600-review.json`
+- **متبقي LIVE&lt;1600 = 0** (باستثناء HARD_SKIP إن وُجد)
+- رقم `deepen_gate` الخام (~68) = stubs `*-ar.html` + redirects `complete-*` — ليس طابور كتابة حي
+- **AN-00:** مسودة أساس في `operating-system/reports/an00-traffic-baseline-2026-07-13.md` — بانتظار CSV أداء GSC من جوست
+
 ## ⚠️ تصحيح 2026-06-23
 `hema-deepen-priority-top25.txt` **قديم وخاطئ** — كان يعدّ صفحات `complete-*` redirects (C-F2) بلا محتوى.  
 **لا تستخدمه.** القوائم النشطة:
