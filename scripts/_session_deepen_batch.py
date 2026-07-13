@@ -10,18 +10,30 @@ from _session_double_audit import double_audit, SCRIPTURE
 def strip_orphans(html: str) -> str:
     aw = html.find('<div class="article-wrap">')
     if aw < 0:
-        aw = html.find('<main')
+        aw = html.find("<main")
     if aw < 0:
         return html
     head, rest = html[:aw], html[aw:]
-    m = re.search(r'id="mobile-dropdown"[\s\S]*?</div>\s*<!-- ═══ END HEADER ═+ -->\s*', head)
-    if not m:
-        return html
-    suffix = head[m.end():]
-    suffix = re.sub(r'<div class="md-controls">[\s\S]*?</div>\s*', '', suffix)
-    suffix = re.sub(r'</div>\s*<!-- ═══ END HEADER ═+ -->\s*', '', suffix)
-    suffix = re.sub(r'<!-- ═══ END HEADER ═+ -->\s*', '', suffix)
-    return head[: m.end()] + suffix + rest
+    # Keep only through the first END HEADER after mobile-dropdown (or first END HEADER).
+    m = re.search(
+        r'id="mobile-dropdown"[\s\S]*?</div>\s*<!-- ═══ END HEADER ═+ -->\s*',
+        head,
+    )
+    if m:
+        keep = head[: m.end()]
+        suffix = head[m.end() :]
+    else:
+        m2 = re.search(r"<!-- ═══ END HEADER ═+ -->\s*", head)
+        if not m2:
+            return html
+        keep = head[: m2.end()]
+        suffix = head[m2.end() :]
+    # Drop any duplicated mobile chrome / stray closes before article-wrap
+    suffix = re.sub(r'<div class="md-controls">[\s\S]*?</div>\s*', "", suffix)
+    suffix = re.sub(r"</div>\s*<!-- ═══ END HEADER ═+ -->\s*", "", suffix)
+    suffix = re.sub(r"<!-- ═══ END HEADER ═+ -->\s*", "", suffix)
+    suffix = re.sub(r"(?:</div>\s*){1,6}$", "", suffix)
+    return keep + suffix + rest
 
 def dedupe_h1(html: str) -> str:
     hs = list(re.finditer(r"<h1[^>]*>.*?</h1>", html, re.S))
