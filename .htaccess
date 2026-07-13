@@ -1,0 +1,18 @@
+# DOTFORLIFE — Hostinger / Apache
+# Canonical host = https://dotforlife.com  (NO www)
+# Upload this file to the site document root (usually public_html).
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # 1) Force HTTPS
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # 2) www → non-www (keeps path + query)
+  RewriteCond %{HTTP_HOST} ^www\.dotforlife\.com$ [NC]
+  RewriteRule ^ https://dotforlife.com%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# Optional hardening (safe defaults)
+Options -Indexes
