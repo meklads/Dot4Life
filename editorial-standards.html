@@ -29,9 +29,42 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Inter:wght@400;500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Inter:wght@400;500;600;700;800&display=swap"/></noscript>
-<link rel="stylesheet" href="/styles/global.css?v=20260713a"/>
-    <link rel="stylesheet" href="/styles/home.css?v=20260713a">
-<link rel="stylesheet" href="/styles/pages/about.css?v=20260713a">
+<link rel="stylesheet" href="/styles/global.css?v=20260713b"/>
+    <link rel="stylesheet" href="/styles/home.css?v=20260713b">
+<style>
+/* Full-bleed hero under transparent nav — kill white gap from category+sub-nav padding */
+body.editorial-standards-page {
+  padding-top: 0 !important;
+}
+body.editorial-standards-page #navbar,
+body.editorial-standards-page #navbar.index-nav {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+body.editorial-standards-page #navbar.scrolled,
+body.editorial-standards-page #navbar.index-nav.scrolled {
+  background: #054241 !important;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, .08) !important;
+}
+/* Ensure EN/AR visibility is CSS-driven only (never sticky inline display:none) */
+body.editorial-standards-page .en,
+body.editorial-standards-page .ar {
+  display: revert;
+}
+html[data-lang="en"] body.editorial-standards-page .en { display: inline !important; }
+html[data-lang="en"] body.editorial-standards-page .ar { display: none !important; }
+html[data-lang="ar"] body.editorial-standards-page .en { display: none !important; }
+html[data-lang="ar"] body.editorial-standards-page .ar { display: inline !important; }
+html[data-lang="en"] body.editorial-standards-page h1 .en,
+html[data-lang="ar"] body.editorial-standards-page h1 .ar,
+html[data-lang="en"] body.editorial-standards-page .hero-sub .en,
+html[data-lang="ar"] body.editorial-standards-page .hero-sub .ar {
+  display: inline !important;
+}
+</style>
 
   <!-- DFL CANONICAL SYSTEM CSS -->
   
@@ -53,7 +86,7 @@
   <meta name="twitter:card" content="summary_large_image"/>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1436107577087160" crossorigin="anonymous"></script><meta name="robots" content="index,follow">
 </head>
-<body class="index-page category-page has-subnav">
+<body class="index-page category-page editorial-standards-page">
   <!-- ═══ UNIFIED HEADER ══════════════════════════════════════ -->
 <nav id="navbar" class="index-nav" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
@@ -238,36 +271,19 @@
 <!-- FOOTER -->
 
 
+<!-- Lang/theme: scripts/global.js only — do not set inline display on .en/.ar -->
 <script>
-function applyLangVisibility() {
-  var lang = document.documentElement.getAttribute('data-lang') || 'en';
-  document.querySelectorAll('.en').forEach(function(el){ el.style.display = lang === 'ar' ? 'none' : ''; });
-  document.querySelectorAll('.ar').forEach(function(el){ el.style.display = lang === 'en' ? 'none' : ''; });
-}
-function toggleLang() {
-  var h = document.documentElement;
-  var next = h.getAttribute('data-lang') === 'en' ? 'ar' : 'en';
-  h.setAttribute('data-lang', next);
-  h.setAttribute('lang', next);
-  h.setAttribute('dir', next === 'ar' ? 'rtl' : 'ltr');
-  localStorage.setItem('dfl-lang', next);
-  applyLangVisibility();
-}
-function toggleTheme() {
-  var h = document.documentElement;
-  var next = h.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-  h.setAttribute('data-theme', next);
-  localStorage.setItem('dfl-theme', next);
-}
-
-/* Scroll reveal */
 document.addEventListener('DOMContentLoaded', function() {
-  applyLangVisibility();
+  /* Clear any stale inline display from older page scripts */
+  document.querySelectorAll('.en, .ar').forEach(function(el) {
+    if (el.style.display) el.style.removeProperty('display');
+  });
   var revealEls = document.querySelectorAll('.reveal');
-  if('IntersectionObserver' in window) {
+  if (!revealEls.length) return;
+  if ('IntersectionObserver' in window) {
     var obs = new IntersectionObserver(function(entries) {
       entries.forEach(function(e) {
-        if(e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
       });
     }, { threshold: 0.12 });
     revealEls.forEach(function(el){ obs.observe(el); });
