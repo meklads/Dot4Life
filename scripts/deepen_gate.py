@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -12,20 +13,66 @@ ROOT = Path(__file__).resolve().parents[1]
 FROZEN = ROOT / "operating-system/new-content-frozen.json"
 AUDIT = ROOT / "operating-system/reports/quality-audit.csv"
 
+CONTENT_ROOTS = [
+    "blog", "peace-capsules", "finance-wealth", "health", "fitness",
+    "productivity", "islamic-hajj-umrah", "real-estate", "featured-stories",
+    "comparisons", "guides", "travel", "health-pregnancy",
+]
+HARD_SKIP = {
+    "islamic-hajj-umrah/hijri-new-year-children.html",
+    "finance-wealth/family-budget-plan-en.html",
+    "real-estate/first-home-buyer-saudi-arabia.html",
+}
+
+
+def _audit_rows():
+    if not AUDIT.exists():
+        return []
+    return list(csv.DictReader(AUDIT.open(encoding="utf-8-sig")))
+
+
+def _is_ok(problems: str) -> bool:
+    p = (problems or "").strip()
+    return (not p) or p.startswith("✅")
+
 
 def deepen_count() -> int:
-    if not AUDIT.exists():
-        return 0
-    return sum(1 for r in csv.DictReader(AUDIT.open(encoding="utf-8-sig")) if "قصير" in r.get("المشاكل", ""))
+    """Raw CSV flag count (includes stubs/redirects marked قصير)."""
+    return sum(1 for r in _audit_rows() if "قصير" in r.get("المشاكل", ""))
+
+
+def real_live_deepen_count() -> int:
+    """LIVE indexed articles with <article> body under 1600 words (WRITING-LAW)."""
+    n = 0
+    for root in CONTENT_ROOTS:
+        folder = ROOT / root
+        if not folder.exists():
+            continue
+        for p in folder.glob("*.html"):
+            rel = str(p.relative_to(ROOT)).replace("\\", "/")
+            if rel in HARD_SKIP or "complete-" in rel:
+                continue
+            html = p.read_text(encoding="utf-8", errors="ignore")
+            if re.search(r'name="robots"[^>]*noindex', html[:2000], re.I):
+                continue
+            if re.search(r'http-equiv=["\']refresh', html[:2000], re.I):
+                continue
+            m = re.search(r"<article[^>]*>(.*?)</article>", html, re.S | re.I)
+            if not m:
+                continue
+            words = len(
+                [w for w in re.split(r"\s+", re.sub(r"<[^>]+>", " ", m.group(1))) if w.strip()]
+            )
+            if 200 <= words < 1600:
+                n += 1
+    return n
 
 
 def quality_pct() -> float:
-    if not AUDIT.exists():
-        return 0.0
-    rows = list(csv.DictReader(AUDIT.open(encoding="utf-8-sig")))
+    rows = _audit_rows()
     if not rows:
         return 0.0
-    ok = sum(1 for r in rows if not r.get("المشاكل", "").strip())
+    ok = sum(1 for r in rows if _is_ok(r.get("المشاكل", "")))
     return round(100 * ok / len(rows), 1)
 
 
@@ -45,7 +92,9 @@ def check_new_batch(batch_id: str, ghost_override: bool = False) -> tuple[bool, 
     if batch_id in allowed:
         return True, f"allowed batch: {batch_id}"
     deepen = deepen_count()
+    real = real_live_deepen_count()
     unlock = policy.get("unlock_when", {})
+    # Unlock still uses CSV deepen for conservatism + quality_pct; real count is reported.
     if (
         deepen <= unlock.get("deepen_count_max", 25)
         and quality_pct() >= unlock.get("quality_pct_min", 60)
@@ -53,7 +102,8 @@ def check_new_batch(batch_id: str, ghost_override: bool = False) -> tuple[bool, 
     ):
         return True, "unlock thresholds met"
     return False, (
-        f"NEW CONTENT FROZEN — {deepen} DEEPEN pages (target ≤{unlock.get('deepen_count_max', 25)}). "
+        f"NEW CONTENT FROZEN — CSV قصير={deepen} · LIVE<article><1600={real} "
+        f"(target ≤{unlock.get('deepen_count_max', 25)}). "
         f"See operating-system/QUALITY-FIRST-POLICY.md · Batch 03 only until backlog cleared."
     )
 
@@ -67,12 +117,14 @@ def main() -> int:
 
     policy = load_policy()
     deepen = deepen_count()
+    real = real_live_deepen_count()
     qp = quality_pct()
     ok, msg = check_new_batch(args.batch, args.ghost_override)
 
     print(json.dumps({
         "frozen": policy.get("frozen", False),
         "deepen_count": deepen,
+        "real_live_deepen": real,
         "quality_pct": qp,
         "batch": args.batch,
         "allowed": ok,
