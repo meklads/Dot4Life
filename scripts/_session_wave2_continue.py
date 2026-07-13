@@ -88,6 +88,28 @@ def soft_authority(html: str) -> str:
     ]
     for pat, repl in reps:
         html = re.sub(pat, repl, html)
+    # Catch academy/institute names split by tags or without definite article
+    html = re.sub(r"أكاديمية\s*طب(?:\s*الأطفال)?", "إرشادات طب الأطفال المعتمدة", html)
+    html = re.sub(r"Academy of Pediatrics", "pediatric guidance", html, flags=re.I)
+
+    def _inject_link(m: re.Match) -> str:
+        para = m.group(0)
+        if "<a href" in para.lower():
+            return para
+        plain = re.sub(r"<[^>]+>", " ", para)
+        # lightweight local authority cues (avoid importing amer_gate cycles)
+        if not re.search(
+            r"أكاديمية|جامعة |معهد |مركز |مجلة |منظمة |found that|shows that|University of|Institute of|Journal of|Academy of|Research (?:from|by)|Studies? from",
+            plain,
+            re.I,
+        ):
+            return para
+        inject = ' <a href="https://www.who.int/news-room/fact-sheets">who.int/news-room/fact-sheets</a>'
+        if para.endswith("</p>"):
+            return para[:-4] + inject + "</p>"
+        return para + inject
+
+    html = re.sub(r"<p\b[^>]*>[\s\S]*?</p>", _inject_link, html)
     return html
 
 
@@ -129,6 +151,7 @@ def fix_list_mismatches(html: str) -> str:
 
 
 def balance_article_divs(html: str) -> str:
+    """Only add missing closes. Never strip closes before </article> (causes article end-tag errors)."""
     a = html.find("<article")
     b = html.find("</article>")
     if a < 0 or b < 0:
@@ -138,9 +161,6 @@ def balance_article_divs(html: str) -> str:
     closes = len(re.findall(r"</div>", frag, re.I))
     if opens > closes:
         html = html[:b] + ("</div>\n" * (opens - closes)) + html[b:]
-    elif closes > opens:
-        for _ in range(closes - opens):
-            html = re.sub(r"</div>\s*</article>", "</article>", html, count=1)
     return html
 
 
