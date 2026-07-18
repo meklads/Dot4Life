@@ -1,9 +1,9 @@
-# 📬 جوست — ملخص · 2026-07-11 10:34
+# 📬 جوست — ملخص · 2026-07-18 15:34
 
 - **لوحة التسليم:** `system/board.html` · `handoff-board.md`
 - **الحالة الآن (تم/جاري/لسه):** `operating-system/team-board.md`
 - صور معتمدة في الفهرس: **68**
-- DEEPEN (قصير): **70**
+- DEEPEN (قصير): **68**
 - آخر autopilot: built 0 slug(s)
 - تقارير: `operating-system/reports/ghost/`
 

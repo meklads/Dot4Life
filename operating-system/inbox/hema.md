@@ -1,9 +1,9 @@
-# 📬 Hema — أوامر السكيلات · 2026-07-11 10:34
+# 📬 Hema — أوامر السكيلات · 2026-07-18 15:34
 
 - **اللوحة:** `system/board.html` · **القانون:** `operating-system/HEMA-CHARTER.md`
 - **الحالة الآن:** `operating-system/team-board.md` (تم · جاري · لسه)
 
-## DEEPEN · **70** صفحة قصيرة — أولوية قصوى
+## DEEPEN · **68** صفحة قصيرة — أولوية قصوى
 - طابور: `hema-deepen-priority.md`
 - بوابة: `scripts/draft-gate.py` قبل التسليم لعامر
 
