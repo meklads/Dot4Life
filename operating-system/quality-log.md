@@ -3001,3 +3001,10 @@ NameError: name 'audit_live' is not defined
 ## 2026-07-13 17:57 UTC — 🤖 بوابة CI الآلية رفضت 1 ملف عند push
 تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
 - `blog/saudi-mortgage-guide.html`: كلمات=20 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema
+
+## 2026-07-18 11:11 UTC — 🤖 بوابة CI الآلية رفضت 4 ملف عند push
+تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
+- `featured-stories/featured-story-saudi-mother.html`: كلمات=1291 <1300
+- `guides/indoor-plants-saudi-arabia.html`: كلمات=1260 <1300
+- `guides/ramadan-nutrition-guide.html`: كلمات=1281 <1300
+- `guides/zakat-complete-guide.html`: كلمات=943 <1300
