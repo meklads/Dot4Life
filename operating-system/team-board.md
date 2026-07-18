@@ -50,7 +50,7 @@
 <!-- TEAM-BOARD-LIVE-START -->
 ## 🕐 الحالة الآن — محدّث تلقائياً
 
-**آخر تحديث:** 2026-07-18 **15:34** · مصدر: autopilot + manifest + git
+**آخر تحديث:** 2026-07-18 **16:04** · مصدر: autopilot + manifest + git
 
 > **اقرأ هنا أولاً** — ثلاث حالات: **✅ تم** · **🔄 جاري** · **⏳ لسه**
 
@@ -60,24 +60,24 @@
 | تنتظر بناء HTML | **0** |
 | DEEPEN (قصير) | **68** |
 | جودة الموقع | **0/379 (0%)** |
-| آخر autopilot | `2026-07-18 **15:34**` |
+| آخر autopilot | `2026-07-18 **16:04**` |
 
 ### ✅ تم — آخر ما اكتمل
 
 | الوقت | ماذا | من | الدليل |
 |-------|------|-----|--------|
-| 2026-07-18 **15:34** | فحص autopilot — كل الصور المعتمدة على الموقع | Cursor | log `[]` |
-| 2026-07-18 **15:34** | built 0 slug(s) · AUDIT PASS | Cursor | autopilot |
-| 2026-07-18 **15:28** | آخر commit `064bbf0d` | Cursor | Log P1 order: strip AdSense from noindex pages, audit+promote 39 ready articles, |
+| 2026-07-18 **16:04** | فحص autopilot — كل الصور المعتمدة على الموقع | Cursor | log `[]` |
+| 2026-07-18 **16:04** | built 0 slug(s) · AUDIT PASS | Cursor | autopilot |
+| 2026-07-18 **15:36** | آخر commit `c2787dd5` | Cursor | Merge branch 'main' of github.com:meklads/Dot4Life |
 
 ### 🔄 جاري العمل — الآن
 
 | الوقت | ماذا | من | التالي |
 |-------|------|-----|--------|
 | — | A-09 REVISE — `drafts/task09/` | Hema | تسليم لعامر بعد draft-gate |
-| 2026-07-18 **15:34** | **Batch 03** — BUILD VERIFY 7 صور | عامر | `amer-batch03-kickoff.md` |
-| 2026-07-18 **15:34** | Batch 03 — SEO Briefs + كتابة | Hema | AN-00 → B3-XXQ → B3-XXN |
-| 2026-07-18 **15:34** | BUILD VERIFY — **68** صور LIVE | عامر | hero + alt + G5 |
+| 2026-07-18 **16:04** | **Batch 03** — BUILD VERIFY 7 صور | عامر | `amer-batch03-kickoff.md` |
+| 2026-07-18 **16:04** | Batch 03 — SEO Briefs + كتابة | Hema | AN-00 → B3-XXQ → B3-XXN |
+| 2026-07-18 **16:04** | BUILD VERIFY — **68** صور LIVE | عامر | hero + alt + G5 |
 
 ### ⏳ لسه — منتظر / مفتوح
 
@@ -89,10 +89,10 @@
 
 ### 📎 آخر سطور الأوتوبايلوت
 
-- `[2026-07-18T15:34:09] === تشغيل جديد / new run ===`
-- `[2026-07-18T15:34:10] slugs needing build: []`
-- `[2026-07-18T15:34:10] AUDIT PASS`
-- `[2026-07-18T15:34:10] inboxes: operating-system/inbox/omar.md, operating-system/inbox/claude.md, operating-system/inbox/hema.md, operating-system/inbox/amer.md, operating-system/inbox/cursor.md, operating-system/inbox/ghost.md`
+- `[2026-07-18T16:04:44] === تشغيل جديد / new run ===`
+- `[2026-07-18T16:04:45] slugs needing build: []`
+- `[2026-07-18T16:04:45] AUDIT PASS`
+- `[2026-07-18T16:04:45] inboxes: operating-system/inbox/omar.md, operating-system/inbox/claude.md, operating-system/inbox/hema.md, operating-system/inbox/amer.md, operating-system/inbox/cursor.md, operating-system/inbox/ghost.md`
 
 <!-- TEAM-BOARD-LIVE-END -->
 ---
