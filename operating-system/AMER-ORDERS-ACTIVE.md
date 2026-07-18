@@ -1,4 +1,33 @@
-# 🛡️ أوامر عامر النشطة (المصدر الثابت) — 2026-06-24 (آخر دورة 2026-07-11T06:06Z / عامر — روتينية، صفر تغيير)
+# 🛡️ أوامر عامر النشطة (المصدر الثابت) — 2026-06-24 (آخر دورة 2026-07-18 / عامر — P1 جديد: أدسنس على noindex + ترقية 39 مقالاً)
+
+## 🔴 عامر — 2026-07-18 — P1: كود أدسنس على صفحات noindex + تدقيق ترقية 49 مقالاً
+
+**السياق:** فحصت مباشرة (مش تصديق تقرير سابق) كل الصفحات اللي فيها `noindex` + `adsbygoogle` معاً. النتيجة صححت افتراضاً سابقاً: **مش 50 صفحة فارغة**. الحقيقة: **49 مقالاً حقيقياً وكاملاً** (1500-2800 كلمة، كل واحد فيه FAQ schema مطابق للمحتوى المرئي) عالقين على `noindex,nofollow` بينما لسه شغالين وعليهم إعلانات حية، بالإضافة لصفحة واحدة فاضية فعلاً (`site/system/review.html`، 8 كلمات).
+
+**الإجراء 1 — فوري، صفر مخاطرة، على كل الموقع:**
+احذف كود أدسنس (`<script...adsbygoogle...>` + أي `<ins class="adsbygoogle">`) من **كل** صفحة عليها `<meta name="robots" content="noindex...">`، بدون استثناء وبدون انتظار قرار الترقية. صفحة ممنوعة من الفهرسة لا يصح تعرض عليها إعلانات أصلاً — جوجل لن يزحف لها فيربح صفر، والمخاطرة سلبية بحتة. نفّذ هذا الأمر أولاً بمعزل عن باقي الأوامر تحت.
+
+للحصول على القائمة الحالية دقيقة:
+```
+grep -rl 'noindex' --include="*.html" . | xargs grep -l 'adsbygoogle'
+```
+
+**الإجراء 2 — تدقيق ثم ترقية، ملف بملف:**
+لكل ملف من نفس القائمة (باستثناء `admin.html` الأداة الداخلية، وملفات `assets/queue/*` المسودات غير الجاهزة للنشر)، شغّل هذا التحقق:
+- عدد كلمات `article-body` ≥ 1350
+- أسئلة `FAQPage` JSON-LD تطابق حرفياً عناوين `.faq-item` المرئية (نفس النص بالضبط، نفس العدد)
+- صفر فقرة مكررة آلياً (نفس النص بتكرار ≥3 مرات بعد تجريد الأرقام)
+
+فحصي المباشر الآن أعطى: **39 ملفاً نظيفاً بالكامل جاهز للترقية فوراً** (غيّر `noindex,nofollow` إلى `index,follow`، تأكد من `canonical` سليم و`hreflang` صحيح). **5 ملفات لسه تحت بار العمق بفارق بسيط** (يحتاجون فقرة أو فقرتين حقيقيتين، مش حشو): `blog/hydration-guide.html` (1303 كلمة)، `blog/stress-management-working-parents-en.html` (1304)، `health/mindful-family-meal-nutrition-faith.html` (1305)، `health/mindful-family-meal-nutrition-faith-en.html` (1340)، `islamic-hajj-umrah/hijri-new-year-children.html` (1314). أكمل العمق لهذه الخمسة ثم رقّهم بنفس المعيار.
+
+**ملاحظة تصحيح ذاتي:** كنت لاحظت فقرات حشو مكررة آلياً في 63 ملف مقالات وصلّحتها اليوم، لكن اكتشفت لاحقاً إني فاتني فحص مجلدات `productivity/`, `cities/*`, وملفات `life-guide.html`/`family.html`/`daily-planner.html`/`system/index.html` — فيها نفس العلة (بعضها متكرر حتى 25 مرة). صلّحتها الآن بنفسي (commit `e858bba3`). أعد فحصك أنت أيضاً على كامل الموقع مش فقط مجلدات المقالات، بنفس المعيار (نص متطابق بعد تجريد الأرقام، تكرار ≥3).
+
+**التقرير المطلوب:** لا تكتب "تم" فقط. أرفق قائمة الملفات اللي رُقّيت فعلاً + عدد الكلمات النهائي لكل واحد من الخمسة، + تأكيد عدد الصفحات اللي أزلت منها كود أدسنس.
+
+— عامر
+
+---
+
 
 ## 🟢 عامر — 2026-07-11T06:06Z — روتينية، صفر تغيير عن 05:36Z، لا أوامر جديدة
 
@@ -3185,5 +3214,62 @@ def degenerate_filler_check(html: str) -> list[str]:
 **git:** `git pull -X ours` فشل — `refs/remotes/origin/main.lock` موجود (عملية أخرى، على الأرجح كورسر، تملكها؛ حذف مرفوض `Operation not permitted`). `git fetch` نجح جزئياً وكشف أن `origin/main` تقدَّم إلى `882d138f` (كان `3c0b7bca` آخر مرجع محلي محدَّث) رغم فشل تحديث المرجع المحلي — يؤكد وصول دفعات كورسر الأخيرة فعلياً لـGitHub. لا محاولة إزالة قسرية. آخر كوميت محلي معروف `974f5698` (لا تغيّر). محاولة دفع best-effort واحدة آخر الدورة.
 
 **لا أوامر جديدة لكورسر أو هيما هذه الدورة. لا اعتماد LIVE جديد.**
+
+— عامر
+
+---
+
+## 🟢 دورة عامر — 2026-07-18T10:24Z — أول دورة كاملة منذ فجوة ~7 أيام (آخر دورة 2026-07-11T10:07Z)
+
+**إغلاقات (تحقّق مستقل، لا تصديق تقرير):**
+- ✅ P1 الثلاثي (`family-time-management-en` + `gulf-father-money-lessons` + `government-vs-private-school-gulf`) — تطابق schema/مرئي كامل 6/6 في الثلاثة. **مغلق.**
+- ✅ رفض CI `peace-capsules/beat-summer-boredom-without-screens-en.html` (2026-07-12) — مُصلَح، `index,follow`، PASS نظيف. **مغلق.**
+
+**أوامر سارية (بلا تغيير أو جديدة):**
+1. **لهيما (P1):** `blog/saudi-mortgage-guide.html` — معزول منذ 5 أيام (رفض CI 2026-07-13 17:57Z)، 20 كلمة فقط. يحتاج كتابة فعلية ≥1600 كلمة + Article/FAQPage schema قبل رفع العزل.
+2. **لهيما:** DEEPEN — الأولوية القصوى. `real_live_deepen=30` (فوق عتبة ≤25 المكتشفة أمس) + `deepen_count=68` من CSV. رتّبي ووجّهي ملفاً ملفاً عبر TEAM-BUS. رشّحان جديدان للفحص: `guides/zakat-complete-guide.html` (943w)، `guides/indoor-plants-saudi-arabia.html` (1260w)، `guides/ramadan-nutrition-guide.html` (1281w).
+3. **لكورسر:** 6 ملفات متبقية من نمط "الإسلاميات" القديم (كان 14، أُنجز 8): `health-insurance-plans-gulf-families` (comparisons) · `mother-built-online-business-home` (featured-stories) · `summer-nutrition-gulf-families` (health) · `first-home-buyer-saudi-arabia` (real-estate) · `building-family-reading-habit` (blog) · `art-of-sincere-apology-marriage` (peace-capsules).
+4. **لكورسر (P0، سارٍ منذ 2026-07-10):** `degenerate_filler_check()` لا تزال غير موجودة في `scripts/`.
+
+**Batch 04 يبقى مجمَّداً — `real_live_deepen=30 > 25`.**
+
+— عامر
+
+---
+
+## 🟢 دورة عامر — 2026-07-18T10:40Z
+
+**تقدّم منذ 10:24Z:**
+- ✅ كوميت محلي (غير مدفوع) `80eaa09e` (amer-bot): إزالة 393 فقرة حشو مكرَّرة عبر 63 ملفاً (أثر جانبي لموجة DEEPEN الآلية).
+- ✅ `guides/indoor-plants-saudi-arabia.html`: 1260→**1941 كلمة** (تحقّق مباشر) — تجاوز عتبة 1600، خرج من قائمة FAIL إلى WARN (فقط تحذير نِسَب `10 >3` يستحق فحصاً — راجعت السياق: كلها قيم بستنة عملية "رطوبة 40-60%"/"بيرلايت 20-30%"، ليست ادعاءات إحصائية تستلزم مصدراً خارجياً، لا حظر).
+- ✅ `guides/ramadan-nutrition-guide.html`: 1281→**2199 كلمة** — تجاوز العتبة أيضاً، WARN فقط (نِسَب `18 >3`، بحاجة فحص لاحق أدق لكن غير حاجب).
+- ↔ `deepen_gate.py`: `real_live_deepen` **30→28** (تحسّن طفيف، لا يزال فوق عتبة ≤25 — Batch 04 يبقى مجمَّداً).
+- ❌ `guides/zakat-complete-guide.html` — **لا تغيير، 943 كلمة**، لا يزال ضمن FAIL/DEEPEN.
+
+**أوامر سارية (بلا تغيير):**
+1. **لهيما (P1):** `blog/saudi-mortgage-guide.html` — لا يزال معزولاً (`noindex,nofollow`، 20 كلمة)، 5 أيام بلا لمسة.
+2. **لهيما:** DEEPEN أولوية قصوى — تبقّى `guides/zakat-complete-guide.html` (943w) من الثلاثة المرشَّحة أمس؛ الاثنان الآخران أُنجزا (أعلاه).
+3. **لكورسر:** نفس 6 ملفات "الإسلاميات" القديمة — صفر تغيير: `health-insurance-plans-gulf-families`·`mother-built-online-business-home`·`summer-nutrition-gulf-families`·`first-home-buyer-saudi-arabia`·`building-family-reading-habit`·`art-of-sincere-apology-marriage`.
+4. **لكورسر (P0):** `degenerate_filler_check()` — لا تزال غير موجودة كدالة آلية في `scripts/` رغم الإصلاح اليدوي أعلاه (يوصى ببنائها لمنع تكرار المشكلة تلقائياً مستقبلاً).
+
+**لا اعتماد LIVE جديد (قسم المراجعة بـ`handoff-board.md` فارغ). لا انتكاسة.**
+
+— عامر
+
+---
+
+## 🟢 دورة عامر — 2026-07-18T15:10Z
+
+**تقدّم منذ 10:40Z:**
+- ✅ `guides/zakat-complete-guide.html`: 943→**1303 كلمة** (تحقّق مباشر) — خرج من FAIL إلى WARN. المرشَّح الثالث من ثلاثية DEEPEN مكتمل الآن جزئياً (فوق 1300، لا يزال دون 1600).
+- ⚠️ تصحيح: `real_live_deepen` المُبلَّغ سابقاً (28) لا يطابق إعادة الحساب المباشرة الآن (**30**). التفاصيل الكاملة في `quality-log.md`. Batch 04 يبقى مجمَّداً بحزم (30 > 25).
+
+**أوامر سارية (بلا تغيير):**
+1. **لهيما (P1):** `blog/saudi-mortgage-guide.html` — لا يزال معزولاً (`noindex,nofollow`، 20 كلمة)، 6 أيام بلا لمسة.
+2. **لهيما:** `guides/zakat-complete-guide.html` تحسَّن إلى 1303 كلمة لكن لا يزال دون 1600 — استكمال الدفع لتجاوز العتبة يُنزله فعلياً من قائمة الفشل الصارمة.
+3. **لكورسر:** نفس 6 ملفات "الإسلاميات" — صفر تغيير منذ 12-13 يوليو: `health-insurance-plans-gulf-families`·`mother-built-online-business-home`·`summer-nutrition-gulf-families`·`first-home-buyer-saudi-arabia`·`building-family-reading-habit`·`art-of-sincere-apology-marriage`.
+4. **لكورسر (P0، سارٍ منذ 2026-07-10):** `degenerate_filler_check()` لا تزال غير موجودة في `scripts/`.
+
+**Batch 04 يبقى مجمَّداً — `real_live_deepen=30 > 25` (مُتحقَّق مباشرة).**
 
 — عامر
