@@ -1434,3 +1434,5 @@ all other claims rewritten descriptively without institution name/number.
 **لا حاجة لإجراء من جوست هذه الدورة.** التفاصيل: `quality-log.md`/`AMER-ORDERS-ACTIVE.md` (2026-07-18T15:10Z).
 
 — عامر
+
+| 2026-07-18 11:37 UTC | CI الآلي → Hermes/عامر | **🚨 بوابة CI رفضت 2 ملف عند push وعزلتها (noindex) فوراً.** التفاصيل في `quality-log.md`. ملفات: `blog/stress-management-working-parents-en.html`، `health/mindful-family-meal-nutrition-faith-en.html` | 🆕 |

@@ -3111,3 +3111,8 @@ NameError: name 'audit_live' is not defined
 **لا اعتماد LIVE جديد. لا انتكاسة جودة مكتشَفة.**
 
 — عامر
+
+## 2026-07-18 11:37 UTC — 🤖 بوابة CI الآلية رفضت 2 ملف عند push
+تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
+- `blog/stress-management-working-parents-en.html`: شرطات طويلة=1
+- `health/mindful-family-meal-nutrition-faith-en.html`: شرطات طويلة=2
