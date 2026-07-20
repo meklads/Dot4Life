@@ -5,7 +5,7 @@
 <meta charset="UTF-8"/>
   <script>(function(){var p=new URLSearchParams(location.search),gd=(function(){try{var z=(Intl.DateTimeFormat().resolvedOptions().timeZone||"");return /Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Baghdad|Amman|Beirut|Damascus|Aden|Cairo|Khartoum/i.test(z)?"ar":"en";}catch(e){return "ar";}})(),l=p.get("lang")||localStorage.getItem("dfl-lang")||gd,t=p.get("theme")||localStorage.getItem("dfl-theme")||"light",h=document.documentElement;h.setAttribute("data-theme",t);h.setAttribute("data-lang",l);h.setAttribute("lang",l);h.setAttribute("dir",l==="ar"?"rtl":"ltr");if(p.get("lang"))localStorage.setItem("dfl-lang",l);if(p.get("theme"))localStorage.setItem("dfl-theme",t);})()</script>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Dot4Life — Capsule Admin</title>
+<title>Dot4Life, Capsule Admin</title>
 <link rel="icon" href="/favicon.ico"/>
 <link rel="stylesheet" href="/styles/pages/admin.css?v=20260618">
 <style>
@@ -95,7 +95,7 @@
 
 <script>
 // ═══════════════════════════════════════
-//  CONFIG — Static-first (no Railway)
+//  CONFIG, Static-first (no Railway)
 // ═══════════════════════════════════════
 const STATIC_MODE = true;
 let API   = ''; // unused in static mode
@@ -114,18 +114,18 @@ function setLocalCapsules(arr) { saveLocalDb({ capsules: arr }); }
 function uid() { return 'cap-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 8); }
 
 const OFFLINE_TEMPLATES = [
-  { category:'wellness', emoji:'🌅', title_en:'Wake Up Without Your Phone', title_ar:'استيقظ بلا هاتف', subtitle_en:'The first 15 minutes set everything', subtitle_ar:'أول 15 دقيقة تحدد كل شيء', body_en:'Keep the first 15 minutes screen-free — drink water, stretch, be still.', body_ar:'اجعل أول 15 دقيقة بلا شاشة — اشرب ماء، تمدد، كن هادئاً.', tip_en:'Put your phone on airplane mode before bed.', tip_ar:'اجعل هاتفك على وضع الطيران قبل النوم.' },
+  { category:'wellness', emoji:'🌅', title_en:'Wake Up Without Your Phone', title_ar:'استيقظ بلا هاتف', subtitle_en:'The first 15 minutes set everything', subtitle_ar:'أول 15 دقيقة تحدد كل شيء', body_en:'Keep the first 15 minutes screen-free, drink water, stretch, be still.', body_ar:'اجعل أول 15 دقيقة بلا شاشة, اشرب ماء، تمدد، كن هادئاً.', tip_en:'Put your phone on airplane mode before bed.', tip_ar:'اجعل هاتفك على وضع الطيران قبل النوم.' },
   { category:'family', emoji:'👨‍👩‍👧', title_en:'The Dinner Question', title_ar:'سؤال العشاء', subtitle_en:'Better than "how was your day?"', subtitle_ar:'أفضل من "كيف كان يومك؟"', body_en:'Ask: "What made you laugh today?" Specific questions get real answers.', body_ar:'اسأل: "ما الذي أضحكك اليوم؟" الأسئلة المحددة تجيب إجابات حقيقية.', tip_en:'Let each person answer before anyone comments.', tip_ar:'دع كل شخص يجيب قبل أن يعلق أحد.' },
   { category:'faith', emoji:'🕌', title_en:'The Fajr Gift', title_ar:'هدية الفجر', subtitle_en:'Starting the day in peace', subtitle_ar:'ابدأ اليوم بسلام', body_en:'That quiet walk to prayer sets a completely different tone for the day.', body_ar:'تلك المشية الهادئة للصلاة تضع نغمة مختلفة تماماً لليوم.', tip_en:'Sleep with the intention and ask your family to wake you.', tip_ar:'نم بنية النية واطلب من عائلتك إيقاظك.' },
   { category:'money', emoji:'💰', title_en:'The 24-Hour Rule', title_ar:'قاعدة الـ24 ساعة', subtitle_en:'Stop impulse buying', subtitle_ar:'أوقف الشراء الاندفاعي', body_en:'For any non-essential purchase over 200 SAR, wait 24 hours.', body_ar:'لأي شراء غير ضروري فوق 200 ريال، انتظر 24 ساعة.', tip_en:'Unsave your credit card from online stores.', tip_ar:'احذف معلومات بطاقتك من المتاجر الإلكترونية.' },
-  { category:'living', emoji:'🏠', title_en:'The Clutter-Free Corner', title_ar:'الزاوية الخالية من الفوضى', subtitle_en:'Start small — one corner at a time', subtitle_ar:'ابدأ صغيراً — زاوية واحدة', body_en:'Spend 10 minutes clearing one visible corner. That feeling of control motivates tomorrow.', body_ar:'اقضِ 10 دقائق في ترتيب زاوية واحدة. ذلك الشعور بالسيطرة يحفزك للغد.', tip_en:'Before and after photos are incredibly motivating.', tip_ar:'صور قبل وبعد تحفّز بشكل لا يصدق.' },
-  { category:'meals', emoji:'🍳', title_en:'Eggs Three Ways', title_ar:'البيض بثلاث طرق', subtitle_en:'Quick family dinner', subtitle_ar:'عشاء عائلي سريع', body_en:'Scrambled, shakshuka, or egg curry — a family dinner solved with eggs is a win.', body_ar:'مخفوق، شكشوكة، أو كاري — عشاء عائلي بالبيض هو فوز.', tip_en:'Add vegetables to eggs — bell peppers, spinach, tomatoes.', tip_ar:'أضف خضروات للبيض — فلفل، سبانخ، طماطم.' },
+  { category:'living', emoji:'🏠', title_en:'The Clutter-Free Corner', title_ar:'الزاوية الخالية من الفوضى', subtitle_en:'Start small, one corner at a time', subtitle_ar:'ابدأ صغيراً, زاوية واحدة', body_en:'Spend 10 minutes clearing one visible corner. That feeling of control motivates tomorrow.', body_ar:'اقضِ 10 دقائق في ترتيب زاوية واحدة. ذلك الشعور بالسيطرة يحفزك للغد.', tip_en:'Before and after photos are incredibly motivating.', tip_ar:'صور قبل وبعد تحفّز بشكل لا يصدق.' },
+  { category:'meals', emoji:'🍳', title_en:'Eggs Three Ways', title_ar:'البيض بثلاث طرق', subtitle_en:'Quick family dinner', subtitle_ar:'عشاء عائلي سريع', body_en:'Scrambled, shakshuka, or egg curry, a family dinner solved with eggs is a win.', body_ar:'مخفوق، شكشوكة، أو كاري, عشاء عائلي بالبيض هو فوز.', tip_en:'Add vegetables to eggs, bell peppers, spinach, tomatoes.', tip_ar:'أضف خضروات للبيض, فلفل، سبانخ، طماطم.' },
   { category:'meals', emoji:'🥘', title_en:'One-Pot Kabsa', title_ar:'الكبسة بإناء واحد', subtitle_en:'The ultimate GCC family meal', subtitle_ar:'الوجبة العائلية الخليجية', body_en:'Made in one pot, it brings the family together. Simple, filling, deeply satisfying.', body_ar:'تُصنع في إناء واحد، تجمع العائلة. بسيطة ومشبعة.', tip_en:'Use boneless chicken thighs for faster cooking.', tip_ar:'استخدم أفخاذ دجاج بدون عظم لطهي أسرع.' },
-  { category:'wellness', emoji:'💧', title_en:'Hydrate Before Everything', title_ar:'الترطيب قبل كل شيء', subtitle_en:'Your brain works better with water', subtitle_ar:'دماغك يعمل أفضل بالماء', body_en:'Keep a 1L bottle on your desk and finish it by lunch.', body_ar:'احتفظ بقنينة 1 لتر على مكتبك وأنهِها قبل الغداء.', tip_en:'Add mint or lemon — it makes a difference.', tip_ar:'أضف نعناعاً أو ليموناً — الفرق كبير.' },
+  { category:'wellness', emoji:'💧', title_en:'Hydrate Before Everything', title_ar:'الترطيب قبل كل شيء', subtitle_en:'Your brain works better with water', subtitle_ar:'دماغك يعمل أفضل بالماء', body_en:'Keep a 1L bottle on your desk and finish it by lunch.', body_ar:'احتفظ بقنينة 1 لتر على مكتبك وأنهِها قبل الغداء.', tip_en:'Add mint or lemon, it makes a difference.', tip_ar:'أضف نعناعاً أو ليموناً, الفرق كبير.' },
   { category:'family', emoji:'📵', title_en:'Friday Without Screens', title_ar:'جمعة بلا شاشات', subtitle_en:'One day a week, disconnect to reconnect', subtitle_ar:'يوماً واحداً، انفصل لتتصل', body_en:'No phones at the table. Board games, outdoor time, real conversations.', body_ar:'لا هواتف على المائدة. ألعاب، وقت خارجي، محادثات حقيقية.', tip_en:'Start with just 3 hours, not the whole day.', tip_ar:'ابدأ بـ 3 ساعات فقط.' },
   { category:'faith', emoji:'📖', title_en:'One Verse a Day', title_ar:'آية واحدة يومياً', subtitle_en:'Read gradually', subtitle_ar:'اقرأ تدريجياً', body_en:'One verse with understanding is better than a whole page without.', body_ar:'آية واحدة بفهم أفضل من صفحة كاملة بدون.', tip_en:'Use an app with tafsir for deeper understanding.', tip_ar:'استخدم تطبيقاً مع تفسير.' },
   { category:'money', emoji:'🕌', title_en:'Zakat Calculated Today', title_ar:'احسب زكاتك اليوم', subtitle_en:'Purify your wealth on time', subtitle_ar:'طهّر مالك في وقته', body_en:'If savings are above Nisab for a lunar year, Zakat is due.', body_ar:'إذا كانت المدخرات فوق النصاب لسنة هجرية، فالزكاة واجبة.', tip_en:'Use dotforlife.com/tools/zakat-calculator.html', tip_ar:'استخدم حاسبة الزكاة على الموقع.' },
-  { category:'living', emoji:'🌡️', title_en:'Adjust Your AC', title_ar:'اضبط مكيفك', subtitle_en:'24°C saves money', subtitle_ar:'24°C يوفر المال', body_en:'Each degree below 24°C increases consumption by 6-8%.', body_ar:'كل درجة تحت 24°C تزيد الاستهلاك 6-8%.', tip_en:'Use ceiling fans — they make 24°C feel like 22°C.', tip_ar:'استخدم مراوح السقف.' }
+  { category:'living', emoji:'🌡️', title_en:'Adjust Your AC', title_ar:'اضبط مكيفك', subtitle_en:'24°C saves money', subtitle_ar:'24°C يوفر المال', body_en:'Each degree below 24°C increases consumption by 6-8%.', body_ar:'كل درجة تحت 24°C تزيد الاستهلاك 6-8%.', tip_en:'Use ceiling fans, they make 24°C feel like 22°C.', tip_ar:'استخدم مراوح السقف.' }
 ];
 
 function setOfflineBanner(on) {
@@ -135,7 +135,7 @@ function setOfflineBanner(on) {
   if (!el) return;
   if (on) {
     el.style.display = 'block';
-    el.innerHTML = '<strong>🤖 Autopilot</strong> — <span class="en">Capsules auto-generate weekly via GitHub Actions. The site publishes by date — no daily action needed. Use this panel to <strong>review</strong>, edit, or override.</span><span class="ar">الكبسولات تُولَّد أسبوعياً تلقائياً. الموقع ينشر حسب التاريخ — لا حاجة لإجراء يومي. استخدم اللوحة لل<strong>مراجعة</strong> أو التعديل.</span>';
+    el.innerHTML = '<strong>🤖 Autopilot</strong>, <span class="en">Capsules auto-generate weekly via GitHub Actions. The site publishes by date, no daily action needed. Use this panel to <strong>review</strong>, edit, or override.</span><span class="ar">الكبسولات تُولَّد أسبوعياً تلقائياً. الموقع ينشر حسب التاريخ, لا حاجة لإجراء يومي. استخدم اللوحة لل<strong>مراجعة</strong> أو التعديل.</span>';
     if (ex) ex.style.display = 'inline-flex';
     if (sync) sync.style.display = 'inline-flex';
     loadAutopilotInfo();
@@ -159,7 +159,7 @@ async function loadAutopilotInfo() {
     const ahead = dates.filter(d => d >= today).length;
     box.style.display = 'block';
     box.innerHTML = '<strong>📋 <span class="en">Autopilot status</span><span class="ar">حالة التشغيل التلقائي</span></strong><br>'
-      + '<span class="en">Buffer: <strong>' + ahead + '</strong> days · Occasions: Islamic + GCC seasons · Pool: ' + (ap.templatePool || '—') + '</span>'
+      + '<span class="en">Buffer: <strong>' + ahead + '</strong> days · Occasions: Islamic + GCC seasons · Pool: ' + (ap.templatePool || ', ') + '</span>'
       + '<span class="ar">المخزون: <strong>' + ahead + '</strong> يوم · المناسبات: إسلامية + مواسم خليجية</span><br>'
       + '<span class="en" style="opacity:.85">Override flow: edit → Export JSON → commit <code>data/capsules-published.json</code></span>'
       + '<span class="ar" style="opacity:.85">للتعديل: عدّل → صدّر JSON → احفظ في <code>data/capsules-published.json</code></span>';
@@ -225,7 +225,7 @@ function exportPublished() {
   a.href = URL.createObjectURL(blob);
   a.download = 'capsules-published.json';
   a.click();
-  toast('Exported — commit to data/capsules-published.json', 'ok');
+  toast('Exported, commit to data/capsules-published.json', 'ok');
 }
 
 async function importFromPublishedJson(replace = false) {
@@ -421,7 +421,7 @@ async function load() {
     useOffline = true;
     setOfflineBanner(true);
     allCapsules = getLocalCapsules();
-    if (allCapsules.length) { render(allCapsules); toast('API offline — using local queue', 'inf'); return; }
+    if (allCapsules.length) { render(allCapsules); toast('API offline, using local queue', 'inf'); return; }
     list.innerHTML = `<div class="state-empty"><div class="ico">⚠️</div><div class="ttl">API offline</div><div class="sub">${r.data?.error || 'Railway unreachable. Log in with local password to use Offline Mode.'}</div></div>`;
     return;
   }
@@ -667,7 +667,7 @@ async function confirmPublish(id) {
   const r = await call('POST', `/admin/capsules/${id}/publish`, { date });
   if (r.ok) { toast('Published 🚀', 'ok'); load(); }
   else {
-    // Date already taken — try next day automatically
+    // Date already taken, try next day automatically
     const nextDate = new Date(date);
     nextDate.setDate(nextDate.getDate() + 1);
     const nextStr = nextDate.toISOString().slice(0,10);
@@ -732,7 +732,7 @@ async function call(method, path, body) {
     const data = await r.json();
     return { ok: r.ok, status: r.status, data };
   } catch {
-    return { ok: false, status: 0, data: { error: 'Network error — is the server running?' } };
+    return { ok: false, status: 0, data: { error: 'Network error, is the server running?' } };
   }
 }
 
@@ -766,7 +766,7 @@ async function generateWeek() {
     useOffline = true;
     setOfflineBanner(true);
     const n = generateWeekLocal();
-    toast(n ? `API failed — ${n} generated offline` : (r.data?.error || 'Generation failed'), n ? 'ok' : 'err');
+    toast(n ? `API failed, ${n} generated offline` : (r.data?.error || 'Generation failed'), n ? 'ok' : 'err');
     load();
   }
 }

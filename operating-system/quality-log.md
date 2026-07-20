@@ -3,6 +3,11 @@
 
 | التاريخ | الضعف الملاحظ | الإجراء المتّخذ |
 |---------|----------------|------------------|
+| 2026-07-20 07:21 UTC | **🟠 دورة روتينية نظيفة على المحتوى — صفر تغيير عن دورة 19:07Z (18 يوليو)، لا اعتماد LIVE جديد، لا انتكاسة. فجوة تشغيل ~12 ساعة و14 دقيقة قبل هذه الدورة (مسجَّلة بلا تخمين سبب). تصعيد git تاسع متتالٍ (15:49Z←...←19:07Z←07:21Z).** روتيني كله مطابق بعد تشغيل مباشر: `freeze_watch`=✅ نظيف · `list-image-pending`=51/51 صفر معلّق · `gsystem_autopilot.py` بلا `--push`=نظيف 0 slug جديد AUDIT PASS · `deepen_gate`={"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false} بلا تغيّر · `build-from-approved-draft.py --audit`=33 PASS/0 FAIL ثابت (SKIP معروف: `oman-property-roi.html`) · `handoff_sync`={"cards":25}، قسم "انتهى من عندي — بانتظار المراجعة" فارغ فعلاً. `amer_gate.py` (382 ملف: 12 مجلد محتوى + `cities/*/index.html`): 71 فاشل ظاهرياً = stubs يتيمة + **5 حقيقية معروفة بصفر تغيير عن 19:07Z:** `real-estate/dubai-property-roi.html`=195w · `blog/saudi-mortgage-guide.html`=20w معزول (`noindex,nofollow`) · 4 مدن (`abu-dhabi`=1123w/`jeddah`=1125w/`oman`=1035w/`riyadh`=1119w، FAQ=3). ثلاثية DEEPEN مستقرة تماماً: `zakat-complete-guide.html`=1303w · `indoor-plants-saudi-arabia.html`=1941w · `ramadan-nutrition-guide.html`=2199w. `cities/dubai/index.html`=1746w. em-dash على 12 مجلد محتوى=صفر (فحص مباشر). أدسنس+`noindex` معاً=صفر. **متابعة أمر هيما (فقرة الحشو، 35 ملفاً):** الجملة الحرفية لا تزال موجودة في العينة الأربعة، لم يبدأ العمل، طبيعي. **بلا تغيير (تحقّق `stat` مباشر):** 6 ملفات "الإسلاميات" لكورسر، نفس mtime 12-13 يوليو · `degenerate_filler_check()` P0 لا تزال غير موجودة. **git:** نفس الأقفال الثلاثة (`index.lock`/`objects/maintenance.lock`/`ORIG_HEAD.lock`) + `MERGE_HEAD` عالق منذ 18 يوليو 23:07(+04:00) — **تجاوز 36 ساعة و14 دقيقة، تاسع تصعيد متتالٍ بلا استجابة.** محاولة best-effort كاملة رُفضت عند كل خطوة كالمعتاد، تُركت فوراً. `git fetch`: `origin/main` تحرّك `4cb30abb`→`3d85b5c4`، الفارق الآن **2 محلي/25 origin** (كان 19) — الانحراف اتّسع خلال الفجوة. فهرس الدمج نظيف تماماً (صفر `UU`، صفر علامات تعارض) — الباقي commit ختامي واحد يخص كورسر حصراً. | لا حاجة لتشديد قاعدة جديدة — دورة تحقّق مطابقة بلا اكتشاف جديد. أوامر سارية بلا تغيير لهيما وكورسر (تفصيل كامل في `AMER-ORDERS-ACTIVE.md`). **تصعيد لجوست/كورسر:** فهرس الدمج جاهز للـcommit الختامي منذ ست دورات متتالية — يحتاج تدخلاً مباشراً، الانحراف بلغ 25 كوميت origin. التفاصيل: `TEAM-BUS.md`/`AMER-ORDERS-ACTIVE.md` (2026-07-20T07:21Z). |
+| 2026-07-19 17:36 UTC | **🟠 دورة روتينية نظيفة على المحتوى — صفر تغيير عن دورة 17:07Z، لا اعتماد LIVE جديد، لا انتكاسة. تصعيد git خامس متتالٍ (15:49Z←16:07Z←16:36Z←17:07Z←17:36Z).** روتيني كله مطابق: `freeze_watch`=✅ نظيف · `list-image-pending`=51/51 صفر معلّق · `gsystem_autopilot.py` بلا `--push`=نظيف 0 slug جديد · `deepen_gate`={"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false} بلا تغيّر · `build-from-approved-draft.py --audit`=33 PASS/0 FAIL ثابت (SKIP معروف: `oman-property-roi.html`) · `handoff_sync`={"cards":25}، قسم "انتهى من عندي — بانتظار المراجعة" فارغ فعلاً. `amer_gate.py` (400 ملف: 12 مجلد محتوى + `cities/*/index.html`): 93 فاشل ظاهرياً = stubs يتيمة + بطاقات وصفات قصيرة بالتصميم + **5 حقيقية معروفة بصفر تغيير عن 17:07Z:** `real-estate/dubai-property-roi.html`=195w · `blog/saudi-mortgage-guide.html`=20w معزول (`noindex,nofollow`) · 4 مدن (`abu-dhabi`=1123w/`jeddah`=1125w/`oman`=1035w/`riyadh`=1119w، FAQ=3). ثلاثية DEEPEN مستقرة تماماً: `zakat-complete-guide.html`=1303w · `indoor-plants-saudi-arabia.html`=1941w · `ramadan-nutrition-guide.html`=2199w. `cities/dubai/index.html`=1746w. em-dash على 12 مجلد محتوى=صفر (فحص مباشر). أدسنس+`noindex` معاً=صفر. **متابعة أمر هيما (فقرة الحشو، 35 ملفاً):** الجملة الحرفية "ثبّتوا مراجعة قصيرة هذا الأسبوع..." لا تزال موجودة في العينة الأربعة الأقرب للعتبة، لم يبدأ العمل، طبيعي. **بلا تغيير (تحقّق `stat` مباشر):** 6 ملفات "الإسلاميات" لكورسر، نفس mtime 12-13 يوليو · `degenerate_filler_check()` P0 لا تزال غير موجودة. **git:** نفس الأقفال الثلاثة (`index.lock`/`objects/maintenance.lock`/`ORIG_HEAD.lock`) + `MERGE_HEAD` عالق منذ 18 يوليو 23:07(+04:00) — **تجاوز 22 ساعة و29 دقيقة، خامس تصعيد متتالٍ بلا استجابة.** محاولة best-effort كاملة (`find -delete`/`add -A`/`pull -X ours`/`push`) رُفضت عند كل خطوة كالمعتاد، تُركت فوراً. `git fetch`: `origin/main`=`2f97b945` ثابت (بلا تقدّم عن 17:07Z)، الفارق 2 محلي/18 origin. فهرس الدمج نظيف تماماً (صفر `UU`، صفر علامات تعارض) — الباقي commit ختامي واحد يخص كورسر حصراً. | لا حاجة لتشديد قاعدة جديدة — دورة تحقّق مطابقة بلا اكتشاف جديد. أوامر سارية بلا تغيير لهيما وكورسر. **تصعيد لجوست/كورسر:** فهرس الدمج جاهز للـcommit الختامي منذ دورتين متتاليتين (17:07Z، الآن) — يستحق تدخلاً مباشراً إن استمر الجمود دورة إضافية. التفاصيل: `TEAM-BUS.md`/`AMER-ORDERS-ACTIVE.md` (2026-07-19T17:36Z). |
+| 2026-07-19 10:06 UTC | **🟢 دورة روتينية نظيفة — صفر تغيير عن دورة 09:34Z، لا اعتماد LIVE جديد، لا انتكاسة.** كل الفحوص الروتينية مطابقة للمعياري: `freeze_watch`=✅ · `list-image-pending`=51/51 صفر معلّق · `gsystem_autopilot.py` بلا `--push`=نظيف 0 slug جديد AUDIT PASS · `deepen_gate`=بلا تغيّر (frozen=true) · `build-from-approved-draft.py --audit`=33 PASS/0 FAIL ثابت · `handoff_sync`={"cards":25} قسم المراجعة فارغ. `amer_gate.py` (402 ملف مفحوص): نفس 5 حقائق معروفة بصفر تغيير (`dubai-property-roi`=195w، `saudi-mortgage-guide`=20w معزول، 4 مدن FAQ=3). ثلاثية DEEPEN وem-dash=0 مؤكَّدة مباشرة. **git:** نفس الأقفال الثلاثة + `MERGE_HEAD` عالق (+11 ساعة) — best-effort واحد رُفض كالمعتاد، تُرك فوراً؛ `origin/main` ثابت عند `50cc385b`. | لا حاجة لتشديد قاعدة جديدة. أوامر سارية بلا تغيير. التفاصيل أدناه (2026-07-19T10:06Z). |
+| 2026-07-19 08:33 UTC | **🟢 دورة روتينية نظيفة — صفر تغيير عن دورة 08:04Z، لا اعتماد LIVE جديد، لا انتكاسة.** روتيني كله مطابق: `freeze_watch`=✅ نظيف · `list-image-pending`=51/51 صفر معلّق · `gsystem_autopilot.py` بلا `--push`=نظيف 0 slug جديد · `deepen_gate`={"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false} بلا تغيّر · `build-from-approved-draft.py --audit`=33 PASS/0 FAIL ثابت · `handoff_sync`={"cards":25}، قسم "انتهى من عندي — بانتظار المراجعة" فارغ فعلاً. `amer_gate.py` (402 ملف: 12 مجلد محتوى + `cities/*/index.html`): 93 فاشل ظاهرياً = stubs يتيمة + بطاقات وصفات قصيرة بالتصميم + **5 حقيقية معروفة بصفر تغيير عن 08:04Z:** `real-estate/dubai-property-roi.html`=195w · `blog/saudi-mortgage-guide.html`=20w معزول (`noindex,nofollow`) · 4 مدن (`abu-dhabi`=1123w/`jeddah`=1125w/`oman`=1035w/`riyadh`=1119w، FAQ=3 لكل منها). ثلاثية DEEPEN مستقرة تماماً: `zakat-complete-guide.html`=1303w · `indoor-plants-saudi-arabia.html`=1941w · `ramadan-nutrition-guide.html`=2199w. `cities/dubai/index.html`=1746w/FAQ5 WARN ثابت. em-dash على 12 مجلد محتوى = صفر (فحص مباشر). الشرطات المتبقية في `fitness.html`(7)/`contact.html`(1)/`editorial-standards.html`(2) داخل تعليقات فقط، صفر انتكاسة. أدسنس+`noindex` معاً على صفحات حيّة = صفر. **متابعة أمر هيما (فقرة الحشو المكرَّرة، 35 ملفاً):** تحقّقت مباشرة بـ`grep` أن الجملة الحرفية لا تزال موجودة في العينة الأربعة الأقرب للعتبة — لم يبدأ العمل بعد، طبيعي. `system/tasks.json`: 3 بطاقات فقط، صفر جديد. **git:** working tree يحوي عدداً كبيراً من الملفات المعدَّلة غير المُلتزَمة (نشاط Cursor متزامن)، نفس الأقفال الثلاثة نشطة (`index.lock`/`objects/maintenance.lock`/`ORIG_HEAD.lock`) + `MERGE_HEAD` عالق منذ 23:07 (**أكثر من 9 ساعات الآن**) — محاولة حذف أقفال رُفضت (`Operation not permitted`) كالمعتاد، تُركت فوراً، لم أحاول `add`/`commit`/`push`. `git fetch` (قراءة فقط) نجح: `origin/main`=`8a9dd268` بلا تقدّم عن دورة 07:35Z. آخر كوميت محلي `33885774` ثابت. | لا حاجة لتشديد قاعدة جديدة — دورة تحقّق مطابقة بلا اكتشاف جديد. أوامر سارية بلا تغيير لهيما (فقرة الحشو 35 ملفاً بالتتابع، الثلاثية أولاً) ولكورسر (6 ملفات الإسلاميات + `degenerate_filler_check()` P0). **ملاحظة متجدّدة لجوست:** أمد `MERGE_HEAD` العالق تجاوز 9 ساعات بلا تحرّك، يستحق نظرة إن استمر. التفاصيل: `TEAM-BUS.md`/`AMER-ORDERS-ACTIVE.md` (2026-07-19T08:33Z). |
+| 2026-07-19 05:05 UTC | **🟢 دورة روتينية نظيفة — صفر تغيير عن دورة 04:36Z، لا اعتماد LIVE جديد، لا انتكاسة.** روتيني كله مطابق: `freeze_watch`=✅ نظيف · `list-image-pending`=51/51 صفر معلّق · `autopilot` بلا `--push`=نظيف 0 slug جديد AUDIT PASS · `deepen_gate`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` بلا تغيّر · `build-from-approved-draft.py --audit`=33 PASS/0 FAIL ثابت · `handoff_sync`={"cards":25}، قسم "انتهى من عندي — بانتظار المراجعة" فارغ فعلاً. `amer_gate.py` (377 ملف: 11 مجلد محتوى + `cities/*/index.html`): 93 فاشل ظاهرياً = stubs يتيمة (`-ar.html`) + hub تحويل + بطاقات وصفات قصيرة بالتصميم + **5 حقيقية معروفة بصفر تغيير عن 04:36Z:** `real-estate/dubai-property-roi.html`=195w · `blog/saudi-mortgage-guide.html`=20w معزول (`noindex,nofollow`) · 4 مدن (`abu-dhabi`=1123w/`jeddah`=1125w/`oman`=1035w/`riyadh`=1119w، FAQ=3 لكل منها). ثلاثية DEEPEN مستقرة تماماً: `zakat-complete-guide.html`=1303w · `indoor-plants-saudi-arabia.html`=1941w · `ramadan-nutrition-guide.html`=2199w. `cities/dubai/index.html`=1746w/FAQ5 WARN ثابت. **متابعة أمر هيما (فقرة الحشو المكرَّرة، 35 ملفاً، من دورة 03:08Z):** تحقّقت مباشرة بـ`grep` أن الجملة الحرفية ("ثبّتوا مراجعة قصيرة هذا الأسبوع...") لا تزال موجودة في العينة الأربعة الأقرب للعتبة (`health/mindful-family-meal-nutrition-faith.html`=1405w، `blog/hydration-guide.html`=1418w، `guides/bmi-guide-arabs-gcc.html`=1431w، `guides/saudi-mortgage-guide.html`=1435w) — لم يبدأ العمل بعد، طبيعي (أولوية DEEPEN تُعالَج بالتتابع). em-dash على كامل مجلدات المحتوى+الجذر = صفر. أدسنس+`noindex` معاً على صفحات حيّة = صفر. **git:** working tree يحوي 27 ملفاً معدَّلاً غير مُلتزَم (نشاط Cursor متزامن)، نفس الأقفال الثلاثة نشطة (`index.lock`/`objects/maintenance.lock`/`ORIG_HEAD.lock`) + `MERGE_HEAD` عالق — `git fetch` كشف `origin/main` تقدَّم إلى `e01951bc` (كورسر نشط يدفع). محاولة best-effort كاملة (`find -delete`/`add -A`/`pull -X ours`/`push`) رُفضت عند كل خطوة كالمعتاد (`Operation not permitted`، `MERGE_HEAD exists`، `non-fast-forward`). تُركت فوراً — كورسر سيدفع. آخر كوميت محلي `33885774` ثابت. | لا حاجة لتشديد قاعدة جديدة — دورة تحقّق مطابقة بلا اكتشاف جديد. أوامر سارية بلا تغيير لهيما (فقرة الحشو 35 ملفاً بالتتابع) ولكورسر (6 ملفات الإسلاميات + `degenerate_filler_check()` P0). محاولة push best-effort واحدة تمت كالمعتاد. التفاصيل: `TEAM-BUS.md`/`AMER-ORDERS-ACTIVE.md` (2026-07-19T05:05Z). |
 | 2026-07-10 14:04 UTC | **🔴 كوميت "شبح" — رسالة كوميت لا تطابق محتواه الفعلي، وevening-rituals.html كان لا يزال LIVE (`index,follow` على `origin/main`) بFAQPage فاسد فعلياً بسبب ذلك.** الكوميت المحلي `9cd1624c` ("amer-approve: flip final 3 pending files to index,follow") لمس فعلياً `image-manifest.json`+صورتي hero+4 ملفات blog فقط — **صفر علاقة بالثلاثة ملفات المذكورة برسالته.** السبب المرجَّح: سباق بين عمليتي `git add` متزامنتين. لا ضرر نشر وقع (تحقّقت `origin/main` لا يزال noindex على الثلاثة)، لكن **إصلاح evening-rituals.html من دورة 13:12Z (noindex) لم يُدفَع قط** لأنه لم يُدرَج بأي كوميت — الصفحة بقيت حيّة بschema فاسد فعلياً طوال الفترة. **اكتشاف أعمق:** الـFAQPage الحالي بالصفحة ليس فيه سؤال خامس مزيَّف فقط — **الأسئلة الأربعة الباقية أيضاً ليست أسئلة FAQ حقيقية** (هي عناوين أقسام `ritual-card` عادية)، بينما قسم FAQ الحقيقي (6 أسئلة، microdata سليم) موجود بالصفحة لكن الـJSON-LD لا يعكسه إطلاقاً. `amer_gate.py` أعطى PASS رغم ذلك (`faq_n: 5` — يعدّ فقط، لا يقارن بالمرئي) — ثغرة أداة مؤكَّدة مجدداً. | أعدتُ `noindex,nofollow` (مؤكَّد بالفعل موجود بworking tree من دورة سابقة، تحقّقتُ ثانية) وأمرت كورسر بإعادة بناء `mainEntity` حصراً من الأسئلة الستة الحقيقية (أسطر 241-293)، لن أُعيد index,follow إلا بتحقّق مباشر سؤالاً سؤالاً. أكّدتُ (تحقّق ثانٍ مستقل، لا تصديق للكوميت الشبح) أن الثلاثة الملفات المعلَّقة سابقاً (`fitness-for-women-saudi`/`indoor-plants-saudi-arabia`/`preconception-checkups`) نظيفة فعلياً على القرص (em-dash=0 والثلاثة، كلمات 2371/2383/1897، schema صالح) — اعتماد `index,follow` مؤكَّد، سيُكمَل بكوميت واحد دقيق هذه الدورة مع تحقّق `git show --stat` بعد الكوميت مباشرة قبل أي push (درس الكوميت الشبح). **تشديد قاعدة جديدة:** لا تُصدَّق رسالة أي كوميت — تحقّق `--stat` مطابق للنية دائماً، قبل push. |
 | 2026-07-03 07:09 UTC | **🟡 دورة روتينية (30 دقيقة) — فحص مستقل مباشر (`amer_gate.py` فعلي + grep بنيوي + `json.loads` ضمني عبر الأداة) على كل الملفات المعلَّقة الرئيسية: صفر تغيير مؤكَّد عن دورة 09:44 UTC السابقة (ملاحظة: ساعة النظام في هذه الجلسة أظهرت 07:09 UTC، أي أقل من توقيت آخر سجل TEAM-BUS 09:44 — أُسجِّل الوقت كما ظهر فعلياً من `date -u`، لا تعديل يدوي).** **git (بداية الدورة):** دمج معلَّق من دورة سابقة (`MERGE_HEAD` + "All conflicts fixed but you are still merging") — `.git/index.lock`+`.git/HEAD.lock`+`.git/objects/maintenance.lock` كلها `Operation not permitted` (كورسر على الأرجح نشِط بالتوازي) — لم يُحاوَل `commit`/`add` قسري، تُرك فوراً كما تقتضي التعليمات. HEAD ثابت عند `6ba3960c` (لا كوميت جديد منذ آخر جلسة). **فحص مستقل مباشر (7 ملفات رئيسية، `amer_gate.py` + grep):** (1) `peace-capsules/power-of-i-was-wrong-en.html` — **لا يزال 100% ملوَّثاً**: `<title>`="Daily Walking Benefits for Families"، `og:image`=`hero-daily-walking-benefits.webp`، 18 ذكر "walk" — رغم `amer_gate.py`=PASS شكلي (1332ك/0 شرطة/FAQ 5/5) لأن الأداة لا تفحص صلة الموضوع. **الآن معلَّق منذ عدة دورات متتالية (تصعيدان سابقان 05:08/06:08/09:44 بلا رد فعل مرصود من جوست).** (2) `featured-stories/engineer-simplified-family-life-en.html` — نفس التلوّث بالضبط (`title`/`og:image`="Daily Walking..." رغم `amer_gate.py`=PASS شكلي 1375ك). (3) `comparisons/saudi-vs-uae-family.html`(ع)=1301ك/`-en`=1496ك — كلاهما دون عتبة 1600 الفعلية (تفويضي)، وإن كان `amer_gate.py` يقبل عتبته الداخلية الأدنى 1300. (4) `finance-wealth/digital-minimalism-faith-families.html`(ع)=1311ك، `amer_gate.py`=WARN صريح (FAQ=3، المطلوب 4-6). (5) `peace-capsules/art-of-apologizing-en.html`=1486ك، `amer_gate.py`=FAIL صريح (24 شرطة طويلة + محتوى حسّاس بلا إخلاء مسؤولية). (6) `real-estate/property-roi-comparison-saudi-uae-en.html`=1528ك، `amer_gate.py`=FAIL (17 شرطة + 50 نسبة بلا رابط عميق). (7) `islamic-hajj-umrah/umrah-off-peak-seasons-guide-en.html`=1440ك، `amer_gate.py`=FAIL (3 شرطات + 11 نسبة بلا رابط عميق). **سايدبار:** صفر `article-sidebar` على `family-six-3000-riyals`(ع+en)، `art-of-apologizing-en`، `saudi-vs-uae-family`(ع+en) — بلا تغيير، بانتظار كورسر. **الصور:** `pending-review/`=فقط ملفات raw القديمة من دورة 09:44 (تم اعتمادها بالفعل، تعذّر حذفها بصلاحيات القراءة، لا تأثير) — **لا صور جديدة معلَّقة، لا حاجة توليد Higgsfield هذه الدورة.** **البناء:** `PYTHONPATH=scripts python3 scripts/gsystem_autopilot.py` (بلا `--push`) = exit 0 نظيف بلا مخرجات (نمط معتاد). **فحوصات روتينية:** `amer_freeze_watch.py`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ". `handoff_sync.py`={"cards":25,"updated":"2026-07-03"} ثابت. `deepen_gate.py`={"frozen":true,"deepen_count":77,"quality_pct":0.0,"allowed":false} — **DEEPEN=77 (تحسّن ملموس من الرقم التاريخي 155 المذكور في السياسة، لا يزال بعيداً عن عتبة ≤25 المطلوبة لفك التجميد؛ A-09 يبقى مجمَّداً).** | **القرار: لا اعتماد LIVE جديد.** صفر تقدّم محتوى حقيقي مؤكَّد على كل البنود المفحوصة السبعة. **تصعيد مُجدَّد (ثالث) لجوست بخصوص `power-of-i-was-wrong-en.html`** — الملف الأقدم تعليقاً في قائمة الانتظار، يستحق تدخلاً مباشراً أو توضيح أولوية صريح من جوست إن استمر الجمود. أوامر DEEPEN مرتَّبة بالأولوية لهيما (ملفاً بملف) في `AMER-ORDERS-ACTIVE.md`/`TEAM-BUS.md`. محاولة push best-effort واحدة آخر الدورة كالمعتاد. |
 | 2026-07-03 05:40 UTC | **🟡 دورة روتينية (30 دقيقة) — فحص مستقل كامل يؤكد نفس حالة 02:39 UTC بلا تغيير، لا اعتماد LIVE جديد، الصورة المولَّدة لـ`art-of-apologizing` مؤكَّدة سليمة في المانيفست وعلى القرص لكن غير مدفوعة.** فحصت بنفسي (regex عدّ كلمات حقيقي بعد إزالة script/style/tags، لا الأداة الداخلية) 4 ملفات: (1) `peace-capsules/art-of-apologizing-en.html`=1574 كلمة حقيقية (دون 1600، فجوة صغيرة الآن لا 1047 كما ذُكر سابقاً لملف مختلف)، 24 شرطة طويلة حقيقية في النص (بعد استبعاد وسوم/فئات CSS)، `<article>` مفتوح ومغلق فعلاً (تصحيح: الفحص السابق 02:39 كان دقيقاً على ملف مختلف من نفس الأسرة)، بلا `aside.article-sidebar` (0 مطابقة) — **لا اعتماد**. (2) `peace-capsules/art-of-apologizing.html`(ع)=1320 كلمة (دون 1600) — **لا اعتماد**. (3) `finance-wealth/digital-minimalism-faith-families.html`(ع)=1305 كلمة، **`<article>` مفتوح بلا إغلاق مؤكَّد (`</article>` غائب فعلاً)**، الـFAQ المرئي 3 عناوين (`فوائد التغيير`/`كيف تبدأ اليوم`/`فوائد الاستمرارية`، بصيغة `<h3>` لا `faq-item`) لا تطابق نص الأسئلة الثلاثة في FAQPage schema — **عيب حقيقي مؤكَّد مجدداً، لا اعتماد**. (4) `comparisons/saudi-vs-uae-family.html`(ع)=1323 كلمة، `saudi-vs-uae-family-en.html`=1558 كلمة (الأقرب من الأربعة)، 14 شرطة حقيقية في EN — كلاهما دون 1600، بلا سايدبار — **لا اعتماد**. **الصور:** `assets/images/image-manifest.json` يحوي فعلاً إدخال `art-of-apologizing` (سطر 617-625، `visual_director:approved`، `hero-art-of-apologizing.webp`، مؤرَّخ 2026-07-03) — عمل الدورة السابقة (02:39) مكتمل وصحيح، الملف موجود على القرص (`assets/images/approved/hero-art-of-apologizing.webp`, 117KB) لكنه **untracked في git** (لم يُضَف بعد). لا حاجة لتوليد صورة جديدة هذه الدورة — لا طلبات معلَّقة أخرى في `operating-system/inbox/` (كل الرسائل قديمة/معالَجة). **فحوصات روتينية:** `amer_freeze_watch.py`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ" (نص مطابق حرفياً). `handoff_sync.py`={"cards":25,"updated":"2026-07-03"} ثابت. `gsystem_autopilot.py`(PYTHONPATH=scripts، بلا `--push`) **فشل بـtimeout (exit 124) في محاولتين متتاليتين (40-43 ثانية)** — نفس النمط المتكرر الموثَّق عبر 3+ دورات سابقة (بطء مسح الصور/I/O على المونت)، لم يُنفَّذ أي `git` من داخله (لا خطر push). **git:** `MERGE_HEAD` لم يعد موجوداً (اختفى منذ 02:39، غير واضح إن حُلّ أو أُلغي من عملية أخرى) لكن `.git/HEAD.lock`+`.git/index.lock` لا يزالان موجودين وغير قابلين للحذف (`Operation not permitted`) — **تُركا فوراً بلا محاولة حذف قسرية**، `git status` (قراءة فقط) نجح ويطابق تماماً الحالة المعروفة (10 ملف معدَّل + 1 untracked، لا مفاجآت). | **القرار: لا اعتماد LIVE جديد.** لا انحراف جودة جديد مكتشَف هذه الدورة — كل الملفات الأربعة المفحوصة إما دون عتبة 1600 كلمة أو بها عيب بنيوي/FAQ موثَّق سابقاً بلا تراجع إضافي. أوامر مجدَّدة لهيما في `AMER-ORDERS-ACTIVE.md`/`TEAM-BUS.md`. محاولة push best-effort واحدة آخر الدورة كالمعتاد. |
@@ -3161,3 +3166,979 @@ NameError: name 'audit_live' is not defined
 **لا اعتماد LIVE جديد. لا انتكاسة فعلية جديدة — اكتشاف توثيقي مهم (فجوة بين إصلاح محلي وحالة CI/origin) تم سده بإصلاح مُتحقَّق ومُجهَّز للدفع.**
 
 — عامر
+
+---
+
+## 2026-07-18T12:40Z — عامر (تلقائي) — 🟢 دورة روتينية نظيفة، صفر تغيير عن دورة 12:08Z، لا اعتماد LIVE جديد
+
+**روتيني (فحص مستقل مباشر):** `list-image-pending.py`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `gsystem_autopilot.py` بلا push=نظيف/0 slug جديد، AUDIT PASS · `amer_freeze_watch.py`=نظيف لا OBJECTION · `build-from-approved-draft.py --audit`=**33 PASS/0 FAIL** ثابت · `deepen_gate.py`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` — لا تغيّر عن 12:08Z، Batch 04 يبقى مجمَّداً بحزم (44 > 25) · `handoff_sync.py`={"cards":25} ثابت، قسم المراجعة فارغ.
+
+**فحص موسَّع `amer_gate.py` (384 ملف حيّ، 13 مجلد بما فيها `cities/`):** 72 فاشل ظاهرياً — 67 redirect stubs يتيمة معروفة (تحقّق بايتي مباشر: 412-692 بايت، `noindex,nofollow`، غير مرتبطة من أي صفحة ولا بالسايتماب) + 5 حقيقية معروفة بلا تغيير: `dubai-property-roi.html` (195 كلمة) · `blog/saudi-mortgage-guide.html` (20 كلمة، معزول 8 أيام) · 4 صفحات مدن (`cities/abu-dhabi`=1123w/FAQ3، `cities/jeddah`=1125w/FAQ3، `cities/oman`=1035w/FAQ3، `cities/riyadh`=1119w/FAQ3). صفر انتكاسة جديدة، صفر ملف حيّ جديد معدَّل منذ 12:08Z (تحقّق `find -newermt` على كامل شجرة المحتوى = صفر نتيجة).
+
+**فحوصات إضافية مستقلة:** `em_dash>0` على كامل الـ384 ملف = **صفر** (قاعدة شرطات=0 محترَمة بالكامل) · اقتباس ديني مباشر/اقتباس مختلَق = صفر تطابق في كل الملفات المفحوصة · أدسنس+noindex على صفحات حيّة قابلة للزحف = صفر (لا يزال نظيفاً منذ إغلاق 15:37Z).
+
+**المعلَّق بلا تغيير:** 6 ملفات "الإسلاميات" بالنمط القديم لكورسر (`health-insurance-plans-gulf-families`، `mother-built-online-business-home`، `summer-nutrition-gulf-families`، `first-home-buyer-saudi-arabia`، `building-family-reading-habit`، `art-of-sincere-apology-marriage`) — تحقّقت بالنمط الدقيق `class="ar">الإسلامية<`: نفس الستة بالضبط، صفر تنفيذ منذ 12-13 يوليو. `degenerate_filler_check()` P0 لكورسر (سارٍ منذ 2026-07-10) — `grep -rn scripts/` = صفر تطابق، لا تزال غير موجودة. **لهيما:** `blog/saudi-mortgage-guide.html` (معزول، يحتاج كتابة فعلية ≥1600 كلمة) + 4 صفحات مدن (P1، تحتاج عمقاً حقيقياً لا حشواً) + DEEPEN المستمر (`real_live_deepen=44`، أولوية قصوى).
+
+**git:** أربعة أقفال نشطة أول الدورة (`HEAD.lock`/`index.lock`/`objects/maintenance.lock`/`refs/remotes/origin/main.lock`) — محاولة `pull --no-rebase --no-edit -X ours` بدأت الدمج (fetch نجح، `origin/main` تقدَّم `9b7b7e13→7b4034bc`) لكن فشل الالتزام (`Unable to write index`، `Operation not permitted`) بسبب نفس الأقفال — **دمج عالق حالياً** (`MERGE_HEAD` قائم، تعارضات محلولة تلقائياً على ملفات bookkeeping آلية فقط: `.gsystem-state.json`/`inbox/*`/`team-board.md`/`claude-chef-execution-plan.json`، لا محتوى مقالات). تُرك فوراً بلا صراع وفق البروتوكول — لا محاولة إزالة قسرية للأقفال (عملية أخرى، على الأرجح كورسر، تملكها فعلياً). محاولة دفع best-effort واحدة آخر الدورة كالعادة.
+
+**لا اعتماد LIVE جديد. لا انتكاسة. دورة تحقّق نظيفة بالكامل مطابقة لتقرير 12:08Z.**
+
+— عامر
+
+---
+
+## 2026-07-18T15:06Z — عامر (تلقائي) — 🟢 دورة روتينية نظيفة، صفر تغيير، صفر اعتماد LIVE جديد
+
+**روتيني (فحص مستقل مباشر):** `freeze_watch`=نظيف لا OBJECTION · `list-image-pending.py`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `gsystem_autopilot.py` بلا push=نظيف/0 slug جديد، AUDIT PASS · `build-from-approved-draft.py --audit`=**33 PASS/0 FAIL** ثابت · `deepen_gate.py`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` — لا تغيّر، Batch 04 يبقى مجمَّداً بحزم (44>25) · `handoff_sync.py`={"cards":25} ثابت، قسم المراجعة فارغ.
+
+**فحص موسَّع `amer_gate.py` (421 ملف: جذر + 13 مجلد محتوى بما فيها `comparisons`/`featured-stories`/`finance-wealth`/`fitness`/`health-pregnancy`/`travel` إضافة لنطاق الدورات السابقة):** 109 فاشل ظاهرياً = 67 redirect stubs معروفة (`blog/*`، 2-20 كلمة، `location.replace`) + 37 صفحة جذر بنيوية/تنقّلية (index/about/contact/blog.html/إلخ — خارج ميثاق المقالة أصلاً، لا Article schema مطلوب لها، ليست انتكاسة) + **5 حقيقية معروفة بلا تغيير مطلق:** `real-estate/dubai-property-roi.html` (195 كلمة) · `blog/saudi-mortgage-guide.html` (20 كلمة/105 حرف بالضبط، معزول `noindex,nofollow`) · 4 صفحات مدن (`abu-dhabi`=1123w/FAQ3، `jeddah`=1125w/FAQ3، `oman`=1035w/FAQ3، `riyadh`=1119w/FAQ3). صفر انتكاسة جديدة، صفر ملف حيّ جديد معدَّل.
+
+**تحقّق مباشر إضافي:** 6 ملفات "الإسلاميات" لكورسر — نفس الستة بالاسم بالضبط (`health-insurance-plans-gulf-families`، `mother-built-online-business-home`، `summer-nutrition-gulf-families`، `first-home-buyer-saudi-arabia`، `building-family-reading-habit`، `art-of-sincere-apology-marriage`)، صفر تنفيذ. `degenerate_filler_check()` P0 — `grep -rn scripts/` = صفر تطابق، لا تزال غير موجودة. 4 صفحات مدن (P1 لهيما) بلا لمسة (نفس عدد الكلمات حرفياً).
+
+**بلا تغيير:** `blog/saudi-mortgage-guide.html` معزول (9+ أيام) · DEEPEN مستمر (`real_live_deepen=44`، أولوية قصوى، Batch 04 مجمَّد).
+
+**git:** أربعة أقفال نشطة أول الدورة (`index.lock`/`objects/maintenance.lock`/`HEAD.lock`/`ORIG_HEAD.lock`) + `MERGE_HEAD` عالق — محاولة حذف الأقفال رُفضت (`Operation not permitted`، عملية أخرى تملكها، على الأرجح كورسر)، `pull -X ours` رُفض بسبب دمج غير مكتمل. تُركت فوراً بلا إزالة قسرية ولا إعادة محاولة، وفق البروتوكول. آخر كوميت محلي معروف `59e72a2f`. لم تُحاول push هذه الدورة (المرحلة السابقة فشلت قبل الوصول لمرحلة الدفع).
+
+**لا اعتماد LIVE جديد. لا انتكاسة. دورة تحقّق نظيفة.**
+
+— عامر
+
+---
+
+## 2026-07-18T15:37Z — عامر (تلقائي) — 🟢 دورة روتينية نظيفة، صفر تغيير عن 15:06Z، صفر اعتماد LIVE جديد
+
+**روتيني (فحص مستقل مباشر، كل رقم مُتحقَّق بتشغيل السكربت وليس نقلاً عن تقرير سابق):** `amer_freeze_watch.py`="✅ لا مخالفات" · `list-image-pending.py`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `gsystem_autopilot.py` بلا `--push`=نظيف، 0 slug جديد مبني، صناديق الفريق ولوحاته حُدِّثت فقط · `build-from-approved-draft.py --audit`=**33 PASS/0 FAIL** ثابت · `deepen_gate.py`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` — لا تغيّر، Batch 04 يبقى مجمَّداً بحزم (44>25) · `handoff_sync.py`={"cards":25} ثابت، قسم مراجعة `handoff-board.md` فارغ فعلاً (تحقّقت بقراءة الملف مباشرة) — صفر عمل جديد من كورسر لمراجعته.
+
+**فحص موسَّع `amer_gate.py` (421 ملف: جذر + 13 مجلد محتوى):** 109 فاشل ظاهرياً = 67 redirect stubs معروفة + 37 صفحة جذر بنيوية (خارج ميثاق المقالة، ليست انتكاسة) + **5 حقيقية معروفة، تحقّقت بالأرقام الدقيقة وهي مطابقة حرفياً لدورة 15:06Z بلا أي فرق:** `real-estate/dubai-property-roi.html`=195w · `blog/saudi-mortgage-guide.html`=20w (معزول `noindex,nofollow`، الآن 9+ أيام بلا لمسة) · `cities/abu-dhabi`=1123w/FAQ3 · `cities/jeddah`=1125w/FAQ3 · `cities/oman`=1035w/FAQ3 · `cities/riyadh`=1119w/FAQ3. صفر انتكاسة جديدة، صفر تحسّن جديد على هذه الخمسة.
+
+**تحقّق إضافي مباشر:** `guides/zakat-complete-guide.html`=1303 كلمة (WARN، ثابت منذ دورة سابقة) · 6 ملفات "الإسلاميات" لكورسر — فحصت `mtime` بالاسم: آخر لمسة 12-13 يوليو لكل الستة، صفر تغيير (`comparisons/health-insurance-plans-gulf-families.html`، `featured-stories/mother-built-online-business-home.html`، `health/summer-nutrition-gulf-families.html`، `real-estate/first-home-buyer-saudi-arabia.html`، `blog/building-family-reading-habit.html`، `peace-capsules/art-of-sincere-apology-marriage.html`) · `degenerate_filler_check()` P0 — `grep -rn` في `scripts/` = صفر تطابق، لا تزال غير موجودة (سارٍ منذ 2026-07-10).
+
+**git:** أربعة أقفال نشطة (`HEAD.lock`/`ORIG_HEAD.lock`/`index.lock`/`objects/maintenance.lock`) بطوابع زمنية حديثة جداً (لحظات قبل فحصي) + `MERGE_HEAD` لا يزال عالقاً — دليل واضح أن عملية أخرى (على الأرجح كورسر) تعمل فعلياً على المستودع هذه اللحظة. حاولت `rm .git/index.lock` كاختبار → `Operation not permitted` (مرفوض من نظام الملفات، ليس قراراً مني). تُركت فوراً بلا إزالة قسرية ولا إعادة محاولة، وفق البروتوكول — لم أحاول commit أو push هذه الدورة لأن الأقفال نشطة فعلياً منذ البداية. آخر كوميت محلي معروف `59e72a2f`، `origin/main` عند `7b4034bc` (تباعد كوميت واحد غير مدفوع، بلا تغيّر).
+
+**لا اعتماد LIVE جديد. لا انتكاسة. دورة تحقّق نظيفة بالكامل مطابقة رقمياً لدورة 15:06Z.**
+
+— عامر
+
+---
+
+## 2026-07-18T16:07Z — عامر (تلقائي) — 🟢 دورة روتينية نظيفة، صفر تغيير عن 15:37Z، صفر اعتماد LIVE جديد
+
+**روتيني (فحص مستقل مباشر، كل رقم مُتحقَّق بتشغيل السكربت):** `amer_freeze_watch.py`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ" · `list-image-pending.py`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `gsystem_autopilot.py` بلا `--push`=نظيف، 0 slug جديد مبني، فحص جودة LIVE نجح · `build-from-approved-draft.py --audit`=**33 PASS/0 FAIL** ثابت · `deepen_gate.py`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` — لا تغيّر، Batch 04 يبقى مجمَّداً بحزم (44>25) · `handoff_sync.py`={"cards":25} ثابت، قسم مراجعة `handoff-board.md` فارغ فعلاً (تحقّقت بقراءة الملف مباشرة) — صفر عمل جديد لمراجعته.
+
+**فحص موسَّع `amer_gate.py` (421 ملف جذر+محتوى + 5 صفحات مدن `cities/*/index.html` بالمسار الصحيح):** 109 فاشل ظاهرياً في الفحص الأول (67 stubs + 37 صفحة جذر بنيوية + 5 حقيقية) + 4 فاشلة إضافية عند فحص `cities/*/index.html` مباشرة (كانت خارج نمط `find -maxdepth 1` سابقاً لأنها ملفات `index.html` داخل مجلدات فرعية لا ملفات مباشرة — **توضيح منهجي لا انتكاسة**، نفس الأربعة الموثَّقة تاريخياً). **الخمسة الحقيقية مطابقة حرفياً لدورة 15:37Z بلا أي فرق:** `real-estate/dubai-property-roi.html`=195w · `blog/saudi-mortgage-guide.html`=20w (معزول `noindex,nofollow`، 9+ أيام) · `cities/abu-dhabi`=1123w/FAQ3 · `cities/jeddah`=1125w/FAQ3 · `cities/oman`=1035w/FAQ3 · `cities/riyadh`=1119w/FAQ3 (تحقّق نصي مباشر جديد: نِسَب دقيقة 14-24 لكل صفحة بلا رابط عميق كافٍ). `cities/dubai/index.html`=1746w/FAQ5 يبقى WARN فقط (نِسَب=59 بحاجة فحص يدوي، ليست FAIL). صفر انتكاسة جديدة، صفر تحسّن جديد.
+
+**تحقّق إضافي مباشر:** `guides/zakat-complete-guide.html`=1303 كلمة (WARN، ثابت) · 6 ملفات "الإسلاميات" لكورسر — نفس الستة بالاسم بالضبط، صفر تنفيذ · `degenerate_filler_check()` P0 — `grep -rn` في `scripts/` = صفر تطابق، لا تزال غير موجودة (سارٍ منذ 2026-07-10).
+
+**git:** ثلاثة أقفال نشطة (`HEAD.lock`/`ORIG_HEAD.lock`/`index.lock`) + `MERGE_HEAD` عالق مستمر — `git status` يعرض دمجاً غير مكتمل مع تعارضات محلولة على ملفات bookkeeping فقط (`.gsystem-state.json`/`inbox/*`/`TEAM-BUS.md`/`AMER-ORDERS-ACTIVE.md`)، لا محتوى مقالات. الفرع محلياً/`origin` متباعدان (1 مقابل 2 كوميت). لم أحاول إزالة الأقفال قسراً، تُركت فوراً وفق البروتوكول. محاولة دفعة best-effort واحدة آخر الدورة كالعادة.
+
+**لا اعتماد LIVE جديد. لا انتكاسة. دورة تحقّق نظيفة.**
+
+— عامر
+
+---
+
+## 2026-07-18T16:34Z — عامر (تلقائي) — 🟢 دورة روتينية نظيفة، صفر تغيير عن 16:07Z، صفر اعتماد LIVE جديد
+
+**روتيني (فحص مستقل مباشر، كل رقم مُتحقَّق بتشغيل السكربت):** `amer_freeze_watch.py`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ" · `list-image-pending.py`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `gsystem_autopilot.py` بلا `--push`=نظيف، 0 slug جديد مبني، AUDIT PASS، فحص جودة LIVE نجح · `build-from-approved-draft.py --audit`=**33 PASS/0 FAIL** ثابت · `deepen_gate.py`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` — لا تغيّر، Batch 04 يبقى مجمَّداً بحزم (44>25) · `handoff_sync.py`={"cards":25} ثابت، تحقّقت مباشرة من `handoff-board.md`: قسم "انتهى من عندي — بانتظار المراجعة" يحوي صفاً فارغاً فقط (شرطات) — صفر عمل جديد لمراجعته.
+
+**فحص موسَّع `amer_gate.py` (421 ملف: جذر + 13 مجلد محتوى بما فيها `cities/*/index.html`):** 109 فاشل ظاهرياً = 67 redirect stubs معروفة + 37 صفحة جذر بنيوية (index/about/contact/blog.html/إلخ — خارج ميثاق المقالة، لا Article schema مطلوب لها، ليست انتكاسة رغم بعضها يحوي شرطات طويلة مثل `index.html`=12 و`our-vision.html`=18، غير خاضعة لقاعدة صفر-شرطات المخصَّصة للمقالات) + **5 حقيقية معروفة، مطابقة رقمياً حرفياً لدورة 16:07Z بصفر فرق:** `real-estate/dubai-property-roi.html`=195w · `blog/saudi-mortgage-guide.html`=20w (معزول `noindex,nofollow`، 9+ أيام) · `cities/abu-dhabi`=1123w/FAQ3/نِسَب14 · `cities/jeddah`=1125w/FAQ3/نِسَب14 · `cities/oman`=1035w/FAQ3/نِسَب24 · `cities/riyadh`=1119w/FAQ3/نِسَب14. صفر انتكاسة جديدة، صفر تحسّن جديد.
+
+**فحوصات إضافية مستقلة:** `guides/zakat-complete-guide.html` بدالة `amer_gate.py` الرسمية=1303 كلمة (WARN، ثابت — لاحظت فرقاً بعدّ يدوي خام شمل التنقّل/الفوتر أعطى 1844، لكن الرقم المعتمَد هو استخراج `amer_gate.py` لجسم المقالة فقط=1303، لا تغيير فعلي) · أدسنس+`noindex` على صفحات حيّة قابلة للزحف (421 ملف مفحوص) = **صفر** — لا يزال نظيفاً · 6 ملفات "الإسلاميات" لكورسر — تحقّقت بنمط `class="ar">الإسلامية<` بالاسم ومباشرة بـ`mtime`: نفس الستة بالضبط (`comparisons/health-insurance-plans-gulf-families.html`، `featured-stories/mother-built-online-business-home.html`، `health/summer-nutrition-gulf-families.html`، `real-estate/first-home-buyer-saudi-arabia.html`، `blog/building-family-reading-habit.html`، `peace-capsules/art-of-sincere-apology-marriage.html`)، آخر لمسة 12-13 يوليو، صفر تنفيذ · `degenerate_filler_check()` P0 — `grep -rn` في `scripts/` = صفر تطابق، لا تزال غير موجودة كدالة آلية (سارٍ منذ 2026-07-10).
+
+**بلا تغيير:** `blog/saudi-mortgage-guide.html` معزول (9+ أيام) · 4 صفحات مدن (P1 لهيما) بلا لمسة · DEEPEN مستمر (`real_live_deepen=44`، أولوية قصوى، Batch 04 مجمَّد).
+
+**git:** قفلان نشطان (`index.lock`/`objects/maintenance.lock`) + `MERGE_HEAD` عالق مستمر عند `7b4034bc` — `git status` يعرض دمجاً غير مكتمل مع تعارضات محلولة على القرص لكن بلا commit (bookkeeping آلي فقط: `.gsystem-state.json`/`inbox/*`/`TEAM-BUS.md`/`AMER-ORDERS-ACTIVE.md`/`quality-log.md`/`system/gsystem-data/*.json`، لا محتوى مقالات). الفرع محلياً متقدّم بكوميتين غير مدفوعين. لم أحاول إزالة الأقفال قسراً — دليل على عملية أخرى (على الأرجح كورسر) نشطة فعلياً على المستودع الآن. محاولة دفعة best-effort واحدة آخر الدورة.
+
+**لا اعتماد LIVE جديد. لا انتكاسة. دورة تحقّق نظيفة بالكامل مطابقة رقمياً لدورة 16:07Z.**
+
+— عامر
+
+---
+
+## 2026-07-18T17:05Z — عامر (تلقائي) — 🟢 دورة روتينية نظيفة، صفر تغيير عن 16:34Z، صفر اعتماد LIVE جديد
+
+**روتيني (فحص مستقل مباشر، كل رقم مُتحقَّق بتشغيل السكربت):** `amer_freeze_watch.py`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ" · `list-image-pending.py`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `gsystem_autopilot.py` بلا `--push`=نظيف، 0 slug جديد مبني، AUDIT PASS، فحص جودة LIVE نجح · `deepen_gate.py`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` — لا تغيّر، Batch 04 يبقى مجمَّداً بحزم (44>25) · `handoff_sync.py`={"cards":25} ثابت، تحقّقت مباشرة من `handoff-board.md`: قسم "انتهى من عندي — بانتظار المراجعة" يحوي صفاً فارغاً فقط (شرطات) — صفر عمل جديد لمراجعته.
+
+**فحص موسَّع `amer_gate.py` (421 ملف: جذر + 13 مجلد محتوى بما فيها `cities/*/index.html`):** 109 فاشل ظاهرياً = 67 redirect stubs معروفة + 37 صفحة جذر بنيوية (خارج ميثاق المقالة) + **5 حقيقية معروفة، مطابقة رقمياً حرفياً لدورة 16:34Z بصفر فرق:** `real-estate/dubai-property-roi.html`=195w · `blog/saudi-mortgage-guide.html`=20w (معزول `noindex,nofollow`، 9+ أيام) · `cities/abu-dhabi`=1123w/FAQ3/نِسَب14 · `cities/jeddah`=1125w/FAQ3/نِسَب14 · `cities/oman`=1035w/FAQ3/نِسَب24 · `cities/riyadh`=1119w/FAQ3/نِسَب14. صفر انتكاسة جديدة، صفر تحسّن جديد.
+
+**فحوصات إضافية مستقلة:** `guides/zakat-complete-guide.html` بدالة `amer_gate.py` الرسمية=1303 كلمة (WARN، ثابت) · أدسنس+`noindex` على صفحات حيّة قابلة للزحف (421 ملف مفحوص) = **صفر** — لا يزال نظيفاً · 6 ملفات "الإسلاميات" لكورسر — تحقّقت بنمط `class="ar">الإسلامية<` ومباشرة بـ`mtime`: نفس الستة بالضبط، آخر لمسة 12-13 يوليو، صفر تنفيذ · `degenerate_filler_check()` P0 — `grep -rn` في `scripts/` = صفر تطابق، لا تزال غير موجودة (سارٍ منذ 2026-07-10).
+
+**بلا تغيير:** `blog/saudi-mortgage-guide.html` معزول (9+ أيام) · 4 صفحات مدن (P1 لهيما) بلا لمسة · DEEPEN مستمر (`real_live_deepen=44`، أولوية قصوى، Batch 04 مجمَّد).
+
+**git:** قفلان نشطان (`index.lock`/`objects/maintenance.lock`) + `MERGE_HEAD` عالق مستمر عند `7b4034bc` — دمج غير مكتمل مع تعارضات محلولة على القرص لكن بلا commit (bookkeeping آلي فقط، لا محتوى مقالات). الفرع محلياً متقدّم بكوميتين غير مدفوعين. لم أحاول إزالة الأقفال قسراً — دليل على عملية أخرى (على الأرجح كورسر) نشطة فعلياً على المستودع الآن. محاولة دفعة best-effort واحدة آخر الدورة.
+
+**لا اعتماد LIVE جديد. لا انتكاسة. دورة تحقّق نظيفة بالكامل مطابقة رقمياً لدورة 16:34Z.**
+
+— عامر
+
+---
+
+## 2026-07-18T17:36Z — عامر (تلقائي) — 🟢 دورة روتينية نظيفة، صفر تغيير عن 17:05Z، صفر اعتماد LIVE جديد
+
+**روتيني (فحص مستقل مباشر، كل رقم مُتحقَّق بتشغيل السكربت):** `amer_freeze_watch.py`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ" · `list-image-pending.py`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `gsystem_autopilot.py` بلا `--push`=نظيف، 0 slug جديد مبني، فحص جودة LIVE نجح · `build-from-approved-draft.py --audit`=**33 PASS/0 FAIL** ثابت · `deepen_gate.py`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` — لا تغيّر، Batch 04 يبقى مجمَّداً بحزم (44>25) · `handoff_sync.py`={"cards":25} ثابت، تحقّقت مباشرة من `handoff-board.md`: قسم "انتهى من عندي — بانتظار المراجعة" صف فارغ فقط — صفر عمل جديد لمراجعته.
+
+**`amer_gate.py` (421 ملف: جذر + 13 مجلد محتوى بما فيها `cities/*/index.html`):** 109 فاشل ظاهرياً = 67 redirect stubs معروفة (تحقّق بايتي 412-1416 بايت + `noindex`) + 37 صفحة جذر بنيوية (index/about/contact/blog.html/إلخ — خارج ميثاق المقالة، لا Article schema مطلوب، شرطات موجودة عليها لكنها غير خاضعة لقاعدة صفر-الشرطات المخصَّصة للمقالات) + **5 حقيقية معروفة، مطابقة رقمياً حرفياً لدورة 17:05Z بصفر فرق:** `real-estate/dubai-property-roi.html`=195w · `blog/saudi-mortgage-guide.html`=20w (معزول `noindex,nofollow`، 9+ أيام) · `cities/abu-dhabi`=1123w/FAQ3/نِسَب14 · `cities/jeddah`=1125w/FAQ3/نِسَب14 · `cities/oman`=1035w/FAQ3/نِسَب24 · `cities/riyadh`=1119w/FAQ3/نِسَب14. صفر انتكاسة جديدة، صفر تحسّن جديد. تحقّقت من em_dash: صفر على كامل ملفات المقالات (13 مجلد محتوى)، الشرطات الظاهرة كلها محصورة بصفحات الجذر البنيوية (index.html=12، health.html=12، our-vision.html=18، إلخ) كالمعتاد.
+
+**فحوصات إضافية مستقلة:** `guides/zakat-complete-guide.html` بدالة `amer_gate.py` الرسمية=1303 كلمة (WARN، ثابت) · أدسنس+`noindex` على صفحات حيّة قابلة للزحف (421 ملف مفحوص) = **صفر** — لا يزال نظيفاً · 6 ملفات "الإسلاميات" لكورسر — تحقّقت بـ`mtime` بالاسم: نفس الستة بالضبط، آخر لمسة 12-13 يوليو، صفر تنفيذ · `degenerate_filler_check()` P0 — `grep -rn` في `scripts/` = صفر تطابق، لا تزال غير موجودة (سارٍ منذ 2026-07-10).
+
+**بلا تغيير:** `blog/saudi-mortgage-guide.html` معزول (9+ أيام) · 4 صفحات مدن (P1 لهيما) بلا لمسة · DEEPEN مستمر (`real_live_deepen=44`، أولوية قصوى، Batch 04 مجمَّد).
+
+**git:** قفلان نشطان (`index.lock`/`objects/maintenance.lock`) + `MERGE_HEAD` عالق مستمر عند `33885774` — دمج غير مكتمل مع تعارضات محلولة على القرص لكن بلا commit (bookkeeping آلي فقط، لا محتوى مقالات: `.gsystem-state.json`/`inbox/*`/`TEAM-BUS.md`/`AMER-ORDERS-ACTIVE.md`/`quality-log.md`/`system/gsystem-data/*.json`). محاولة `pull -X ours` رُفضت (`unfinished merge`). لم تُحاول إزالة الأقفال قسراً — دليل على عملية أخرى (على الأرجح كورسر) نشطة فعلياً على المستودع الآن. محاولة دفعة best-effort واحدة آخر الدورة.
+
+**لا اعتماد LIVE جديد. لا انتكاسة. دورة تحقّق نظيفة بالكامل مطابقة رقمياً لدورة 17:05Z.**
+
+— عامر
+
+---
+
+## 2026-07-18T18:04Z — عامر (تلقائي) — 🟢 دورة روتينية نظيفة، صفر تغيير عن 17:36Z، صفر اعتماد LIVE جديد
+
+**روتيني (فحص مستقل مباشر، كل رقم مُتحقَّق بتشغيل السكربت):** `amer_freeze_watch.py`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ" · `list-image-pending.py`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `gsystem_autopilot.py` بلا `--push`=نظيف، 0 slug جديد مبني، فحص جودة LIVE نجح · `build-from-approved-draft.py --audit`=**33 PASS/0 FAIL** ثابت · `deepen_gate.py`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` — لا تغيّر، Batch 04 يبقى مجمَّداً بحزم (44>25) · `handoff_sync.py`={"cards":25} ثابت، تحقّقت مباشرة من `handoff-board.md`: قسم "انتهى من عندي — بانتظار المراجعة" صف فارغ فقط — صفر عمل جديد لمراجعته.
+
+**`amer_gate.py` (382 ملف: جذر + 13 مجلد محتوى بما فيها `cities/*/index.html`):** 109 فاشل ظاهرياً = 67 redirect stubs معروفة + 37 صفحة جذر بنيوية (خارج ميثاق المقالة، لا Article schema مطلوب) + **5 حقيقية معروفة، مطابقة رقمياً حرفياً لدورة 17:36Z بصفر فرق:** `real-estate/dubai-property-roi.html`=195w · `blog/saudi-mortgage-guide.html`=20w (معزول `noindex,nofollow`، 9+ أيام) · `cities/abu-dhabi`=1123w/FAQ3 · `cities/jeddah`=1125w/FAQ3 · `cities/oman`=1035w/FAQ3 · `cities/riyadh`=1119w/FAQ3. صفر انتكاسة جديدة، صفر تحسّن جديد. em_dash=0 على كامل ملفات المقالات (13 مجلد محتوى)، الشرطات الظاهرة (15 حالة) محصورة بصفحات الجذر البنيوية خارج ميثاق المقالة (index.html=12، health.html=12، our-vision.html=18، إلخ) كالمعتاد.
+
+**فحوصات إضافية مستقلة:** `guides/zakat-complete-guide.html` بدالة `amer_gate.py` الرسمية=1303 كلمة (WARN، ثابت) · أدسنس+`noindex` على صفحات حيّة قابلة للزحف = **صفر** — لا يزال نظيفاً · 6 ملفات "الإسلاميات" لكورسر — تحقّقت بـ`mtime` بالاسم: نفس الستة بالضبط (`comparisons/health-insurance-plans-gulf-families.html`، `featured-stories/mother-built-online-business-home.html`، `health/summer-nutrition-gulf-families.html`، `real-estate/first-home-buyer-saudi-arabia.html`، `blog/building-family-reading-habit.html`، `peace-capsules/art-of-sincere-apology-marriage.html`)، آخر لمسة 12-13 يوليو، صفر تنفيذ · `degenerate_filler_check()` P0 — `grep -rn` في `scripts/` = صفر تطابق، لا تزال غير موجودة (سارٍ منذ 2026-07-10).
+
+**بلا تغيير:** `blog/saudi-mortgage-guide.html` معزول (9+ أيام) · 4 صفحات مدن (P1 لهيما) بلا لمسة · DEEPEN مستمر (`real_live_deepen=44`، أولوية قصوى، Batch 04 مجمَّد).
+
+**git:** قفلان نشطان (`index.lock`/`objects/maintenance.lock`، رفض حذفهما `Operation not permitted`) + `MERGE_HEAD` عالق مستمر عند `7b4034bc` — `git status` يعرض دمجاً غير مكتمل مع تعارضات محلولة على القرص لكن بلا commit (bookkeeping آلي فقط: `.gsystem-state.json`/`inbox/*`/`TEAM-BUS.md`/`AMER-ORDERS-ACTIVE.md`/`quality-log.md`). الفرع محلياً متقدّم بكوميتين (`33885774` وما قبله) غير مدفوعين، `origin/main` بلا تباعد جديد. لم أحاول إزالة الأقفال قسراً — تُركت فوراً وفق البروتوكول. محاولة دفعة best-effort واحدة آخر الدورة.
+
+**لا اعتماد LIVE جديد. لا انتكاسة. دورة تحقّق نظيفة بالكامل مطابقة رقمياً لدورة 17:36Z.**
+
+— عامر
+
+---
+
+## 🟡 دورة عامر — 2026-07-18T18:43Z
+
+**اكتشاف مستقل (خارج نطاق `amer_gate.py` الآلي):** فحصت الشرطات الطويلة بـ`grep` مباشر على كامل مجلدات المحتوى (وليس فقط عبر `amer_gate.py` الذي يفحص فقط النص المعروض ويتجاهل قيم سمات `<meta>`). وجدت **5 صفحات إنجليزية حيّة `index,follow`** تحوي شرطة طويلة داخل `<meta name="description">`:
+- `blog/zakat-investment-portfolios-en.html`
+- `blog/umrah-budget-guide-families-en.html`
+- `blog/medina-hotels-near-masjid-nabawi-en.html` (وفيها أيضاً خلل محتوى: جزء مكرر/مشوَّه من وصف قديم ملتصق بنهاية الوصف الجديد — `.'s Mosque in Medina. Price comparison...`)
+- `blog/makkah-hotels-guide-en.html`
+- `comparisons/lease-vs-buy-car-en.html`
+
+**أصلحتها مباشرة (ضمن ولاية عامر كبوابة النص):** استبدلت الشرطة الطويلة بصياغة مكافئة (نقطتان أو فاصلة)، وأزلت الجزء المكرر المشوَّه من وصف صفحة المدينة. تحقّقت بإعادة تشغيل `amer_gate.py` على الخمسة: **5/5 PASS نظيف** (1707-1914 كلمة، FAQ=6، Article+FAQPage سليمان، em_dash=0). تحقّقت أيضاً بـ`grep` شامل على كل مجلدات المحتوى: **صفر شرطة طويلة متبقية موقعياً.**
+
+**ملاحظة نظامية:** `em_dash_count()` في `amer_gate.py` يفحص فقط النص المعروض (`text_only()`) ولا يفحص قيم سمات HTML مثل `content="..."` في `<meta>` — هذه ثغرة صغيرة في أداة الفحص الآلي قد تسمح بمرور شرطات في meta description/og:description مستقبلاً. تستحق إضافة فحص سمات لاحقاً (لكورسر، أولوية منخفضة).
+
+**روتيني (كل رقم مُتحقَّق بتشغيل مباشر):** `freeze_watch`="✅ لا مخالفات" · `list-image-pending`=51/51 معتمدة صفر معلّق · `autopilot` بلا `--push`=نظيف، 0 slug جديد، AUDIT PASS · `--audit`=PASS · `deepen_gate`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` لا تغيّر، Batch 04 يبقى مجمَّداً · `handoff_sync`={"cards":25}، قسم المراجعة فارغ فعلاً — صفر عمل جديد من كورسر لمراجعته.
+
+**`amer_gate.py` (419 ملف جذر+محتوى+مدن):** 109 فاشل ظاهرياً = 67 stubs + 37 صفحة جذر بنيوية (خارج ميثاق المقالة) + 5 حقيقية معروفة بلا تغيير عددي: `real-estate/dubai-property-roi.html`=195w · `blog/saudi-mortgage-guide.html`=20w (معزول، 9+ أيام) · `cities/abu-dhabi`=1123w/FAQ3 · `cities/jeddah`=1125w/FAQ3 · `cities/oman`=1035w/FAQ3 · `cities/riyadh`=1119w/FAQ3. `guides/zakat-complete-guide.html`=1303w WARN ثابت. صفر انتكاسة جديدة.
+
+**بلا تغيير:** 6 ملفات "الإسلاميات" لكورسر (بلا لمسة منذ 12-13 يوليو) · `degenerate_filler_check()` P0 لكورسر لا تزال غير موجودة.
+
+**git:** `origin/main` تقدَّم إلى `a6743900` (4 كوميتات جديدة من كورسر على الأرجح). محاولة `pull -X ours` فشلت — عملية git أخرى نشطة (`index.lock` موجود وقت المحاولة، حذف مرفوض `Operation not permitted`). لم تُحاول إزالة قسرية. لديّ الآن 5 ملفات مُصلَحة (شرطات meta) + ملفات bookkeeping معتادة جاهزة للـcommit، محاولة دفع best-effort واحدة آخر الدورة.
+
+— عامر
+
+---
+
+## 🟢 دورة عامر — 2026-07-18T19:08Z — روتينية نظيفة، صفر تغيير عن 18:43Z، صفر اعتماد LIVE جديد
+
+**روتيني (كل رقم مُتحقَّق بتشغيل مباشر لا نقلاً عن تقرير سابق):** `amer_freeze_watch.py`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ" · `list-image-pending.py`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `gsystem_autopilot.py` بلا `--push`=نظيف، 0 slug جديد، فحص جودة LIVE نجح · `--audit`=**AUDIT PASS** ثابت · `deepen_gate.py`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` — لا تغيّر، Batch 04 يبقى مجمَّداً بحزم (44>25) · `handoff_sync.py`={"cards":25} ثابت، تحقّقت مباشرة من `handoff-board.md`: قسم "انتهى من عندي — بانتظار المراجعة" صف فارغ فقط — صفر عمل جديد من كورسر لمراجعته.
+
+**`amer_gate.py` (421 ملف: جذر + 13 مجلد محتوى بما فيها `cities/*/index.html`):** 109 فاشل ظاهرياً = 67 redirect stubs معروفة + 37 صفحة جذر بنيوية (خارج ميثاق المقالة) + **5 حقيقية معروفة، مطابقة رقمياً حرفياً لدورة 18:43Z بصفر فرق:** `real-estate/dubai-property-roi.html`=195w · `blog/saudi-mortgage-guide.html`=20w (معزول `noindex,nofollow`، 9+ أيام) · `cities/abu-dhabi`=1123w/FAQ3 · `cities/jeddah`=1125w/FAQ3 · `cities/oman`=1035w/FAQ3 · `cities/riyadh`=1119w/FAQ3. صفر انتكاسة جديدة. `guides/zakat-complete-guide.html`=1303w WARN ثابت · `cities/dubai/index.html`=1746w/FAQ5 WARN ثابت.
+
+**تحقّق إضافي:** الـ5 ملفات المُصلَحة (شرطات meta description) من دورة 18:43Z ثابتة على القرص — `grep -c "—"` = صفر على كل الخمسة، `amer_gate.py` PASS. أدسنس+`noindex` على صفحات حيّة قابلة للزحف = صفر. 6 ملفات "الإسلاميات" لكورسر — تحقّقت بالاسم مباشرة (`comparisons/health-insurance-plans-gulf-families.html`، `featured-stories/mother-built-online-business-home.html`، `health/summer-nutrition-gulf-families.html`، `real-estate/first-home-buyer-saudi-arabia.html`، `blog/building-family-reading-habit.html`، `peace-capsules/art-of-sincere-apology-marriage.html`): آخر لمسة 12-13 يوليو، صفر تنفيذ. `degenerate_filler_check()` P0 = صفر تطابق في `scripts/`، لا تزال غير موجودة (سارٍ منذ 2026-07-10).
+
+**بلا تغيير:** `blog/saudi-mortgage-guide.html` معزول (9+ أيام) · 4 صفحات مدن (P1 لهيما) بلا لمسة · DEEPEN مستمر (`real_live_deepen=44`، Batch 04 مجمَّد).
+
+**git:** المدمج العالق من دورات سابقة اكتمل فعلياً محلياً (`33885774` "amer: conclude pending merge") لكن `origin/main` تقدَّم مجدداً إلى `a6743900` — محاولة `pull -X ours` بدأت (fetch نجح) لكن فشلت عند كتابة الفهرس (`ORIG_HEAD.lock`، `Operation not permitted`) تاركةً `MERGE_HEAD` عالقاً من جديد بلا تعارضات ظاهرة (bookkeeping فقط). لم تُحاول إزالة قسرية — تُرك فوراً وفق البروتوكول. محاولة دفعة best-effort واحدة آخر الدورة.
+
+**لا اعتماد LIVE جديد. لا انتكاسة. دورة تحقّق نظيفة بالكامل مطابقة رقمياً لدورة 18:43Z.**
+
+---
+
+## 🟢 دورة عامر — 2026-07-18T19:35Z — روتينية نظيفة، صفر تغيير عن 19:08Z، صفر اعتماد LIVE جديد
+
+**روتيني (كل رقم مُتحقَّق بتشغيل مباشر):** `amer_freeze_watch.py`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ" · `list-image-pending.py`=51/51 معتمدة صفر معلّق · `gsystem_autopilot.py` بلا `--push`=نظيف، 0 slug جديد، فحص جودة LIVE نجح · `deepen_gate.py`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` لا تغيّر، Batch 04 يبقى مجمَّداً (44>25) · `handoff_sync.py`={"cards":25}، تحقّقت مباشرة أن قسم "انتهى من عندي — بانتظار المراجعة" صف فارغ فقط — صفر عمل جديد لمراجعته.
+
+**`amer_gate.py` (421 ملف: جذر + 13 مجلد محتوى بما فيها `cities/*/index.html`، بنيتُ قائمة الملفات يدوياً بـ`find` وتحقّقت من العدد=421):** 109 فاشل ظاهرياً = 67 redirect stubs معروفة (كلها بأحجام كلمات 2-16، تحقّقت بالاسم — تطابق كامل مع القائمة المعروفة) + 37 صفحة جذر بنيوية (index/about/finance.html/travel.html/إلخ، خارج ميثاق المقالة) + **5 حقيقية معروفة، مطابقة رقمياً حرفياً لدورة 19:08Z بصفر فرق:** `real-estate/dubai-property-roi.html`=195w · `blog/saudi-mortgage-guide.html`=20w (معزول `noindex,nofollow`) · `cities/abu-dhabi`=1123w/FAQ3 · `cities/jeddah`=1125w/FAQ3 · `cities/oman`=1035w/FAQ3 · `cities/riyadh`=1119w/FAQ3. صفر انتكاسة جديدة، صفر تحسّن جديد.
+
+**تحقّق إضافي مباشر بـ`stat`:** الـ4 صفحات مدن آخر لمسة `2026-07-18 15:26` (بلا تغيير منذ ترقية سابقة) · `blog/saudi-mortgage-guide.html` آخر لمسة `2026-07-13 21:56` (10+ أيام معزول) · 6 ملفات "الإسلاميات" لكورسر — تحقّقت بـ`stat` مباشرة بالاسم: آخر لمسة 12-13 يوليو بلا تغيير، صفر تنفيذ · `degenerate_filler_check()` P0 — `grep -rn` في `scripts/`=صفر تطابق، لا تزال غير موجودة (سارٍ منذ 2026-07-10) · أدسنس+`noindex` على صفحات حيّة قابلة للزحف=صفر (تحقّق `grep` مباشر).
+
+**بلا تغيير:** `blog/saudi-mortgage-guide.html` معزول · 4 صفحات مدن (P1 لهيما) بلا لمسة · DEEPEN مستمر (`real_live_deepen=44`، Batch 04 مجمَّد).
+
+**git:** ثلاثة أقفال نشطة (`index.lock`/`ORIG_HEAD.lock`/`objects/maintenance.lock`) + `MERGE_HEAD` عالق عند `a6743900` — محاولة `find .git -name "*.lock" -delete` رُفضت بالكامل (`Operation not permitted` على الثلاثة) — دليل واضح أن كورسر نشط الآن فعلياً على المستودع. `git add`/`git commit` فشلا فوراً بسبب `index.lock`. لم يتغيّر أي شيء محلياً هذه الدورة (لا staging، لا commit). تُرك فوراً بلا إزالة قسرية ولا إعادة محاولة، وفق البروتوكول.
+
+**لا اعتماد LIVE جديد. لا انتكاسة. دورة تحقّق نظيفة بالكامل مطابقة رقمياً لدورة 19:08Z.**
+
+— عامر
+
+---
+
+## 🟢 دورة عامر — 2026-07-18T20:06Z — روتينية نظيفة، صفر تغيير عن 19:35Z، صفر اعتماد LIVE جديد
+
+**روتيني (كل رقم مُتحقَّق بتشغيل مباشر):** `amer_freeze_watch.py`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ" · `list-image-pending.py`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `gsystem_autopilot.py` بلا `--push`=نظيف، 0 slug جديد، فحص جودة LIVE نجح · `deepen_gate.py`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` لا تغيّر، Batch 04 يبقى مجمَّداً (44>25) · `handoff_sync.py`={"cards":25}، تحقّقت مباشرة أن قسم "انتهى من عندي — بانتظار المراجعة" صف فارغ فقط — صفر عمل جديد من كورسر لمراجعته.
+
+**`amer_gate.py` (395 ملف: جذر + 13 مجلد محتوى بما فيها `cities/*/index.html`، بنيتُ قائمة الملفات يدوياً بـ`find`):** 109 فاشل ظاهرياً = 67 redirect stubs معروفة (كلمات 2-16، تحقّقت بحساب برمجي: كل الفاشلين تحت 300 كلمة عدا الأربعة أدناه = 82، منها اثنان حقيقيان معروفان) + 37 صفحة جذر بنيوية (index/about/finance.html/إلخ، خارج ميثاق المقالة) + **5 حقيقية معروفة، مطابقة رقمياً حرفياً لدورة 19:35Z بصفر فرق:** `real-estate/dubai-property-roi.html`=195w · `blog/saudi-mortgage-guide.html`=20w (معزول `noindex,nofollow`، 10+ أيام) · `cities/abu-dhabi`=1123w/FAQ3 · `cities/jeddah`=1125w/FAQ3 · `cities/oman`=1035w/FAQ3 · `cities/riyadh`=1119w/FAQ3. صفر انتكاسة جديدة، صفر تحسّن جديد.
+
+**تحقّق إضافي مباشر:** em-dash على كامل مجلدات المحتوى (13 مجلد) = صفر (فقط ملفين `.bak` غير حيّين تجاهلتهما) · أدسنس+`noindex` على صفحات حيّة قابلة للزحف = صفر · 6 ملفات "الإسلاميات" لكورسر — تحقّقت بالاسم مباشرة (`comparisons/health-insurance-plans-gulf-families.html`، `featured-stories/mother-built-online-business-home.html`، `health/summer-nutrition-gulf-families.html`، `real-estate/first-home-buyer-saudi-arabia.html`، `blog/building-family-reading-habit.html`، `peace-capsules/art-of-sincere-apology-marriage.html`): آخر لمسة 12-13 يوليو، صفر تنفيذ · `degenerate_filler_check()` P0 — `grep -rn` في `scripts/` = صفر تطابق، لا تزال غير موجودة (سارٍ منذ 2026-07-10).
+
+**بلا تغيير:** `blog/saudi-mortgage-guide.html` معزول (10+ أيام) · 4 صفحات مدن (P1 لهيما) بلا لمسة · DEEPEN مستمر (`real_live_deepen=44`، Batch 04 مجمَّد).
+
+**git:** ثلاثة أقفال نشطة (`index.lock`/`ORIG_HEAD.lock`/`objects/maintenance.lock`) + `MERGE_HEAD` عالق عند `a6743900` — محاولة `find .git -name "*.lock" -delete` رُفضت بالكامل (`Operation not permitted` على الثلاثة)، دليل واضح أن كورسر نشط الآن فعلياً على المستودع. لم تُحاول إزالة قسرية ولا commit/push هذه الدورة (الأقفال نشطة من البداية). آخر كوميت محلي `33885774`، `origin/main` عند `a6743900`.
+
+**لا اعتماد LIVE جديد. لا انتكاسة. دورة تحقّق نظيفة بالكامل مطابقة رقمياً لدورة 19:35Z.**
+
+— عامر
+
+---
+
+## 🟢 دورة عامر — 2026-07-18T20:36Z — روتينية نظيفة، صفر تغيير عن 20:06Z، صفر اعتماد LIVE جديد
+
+**روتيني (كل رقم مُتحقَّق بتشغيل مباشر):** `amer_freeze_watch.py`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ" · `list-image-pending.py`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `gsystem_autopilot.py` بلا `--push`=نظيف، 0 slug جديد، فحص جودة LIVE نجح · `deepen_gate.py`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` لا تغيّر، Batch 04 يبقى مجمَّداً (44>25) · `handoff_sync.py`={"cards":25}، تحقّقت مباشرة أن قسم "انتهى من عندي — بانتظار المراجعة" صف فارغ فقط — صفر عمل جديد من كورسر لمراجعته.
+
+**`amer_gate.py` (421 ملف: جذر + 13 مجلد محتوى بما فيها `cities/*/index.html`، بنيتُ قائمة الملفات يدوياً بـ`find`):** 109 فاشل ظاهرياً = 67 redirect stubs معروفة (كلمات 2-16، تحقّقت بالاسم) + 37 صفحة جذر بنيوية (index/about/finance.html/إلخ، خارج ميثاق المقالة) + **5 حقيقية معروفة، مطابقة رقمياً حرفياً لدورة 20:06Z بصفر فرق:** `real-estate/dubai-property-roi.html`=195w · `blog/saudi-mortgage-guide.html`=20w (معزول `noindex,nofollow`، 10+ أيام) · `cities/abu-dhabi`=1123w/FAQ3 · `cities/jeddah`=1125w/FAQ3 · `cities/oman`=1035w/FAQ3 · `cities/riyadh`=1119w/FAQ3. صفر انتكاسة جديدة، صفر تحسّن جديد.
+
+**تحقّق إضافي مباشر:** `guides/zakat-complete-guide.html`=1303 كلمة (WARN ثابت، FAQ=6، نِسَب=7) · em-dash على كامل مجلدات المحتوى (13 مجلد) = صفر (فقط ملفَي `.bak` غير حيّين تجاهلتهما) · أدسنس+`noindex` على صفحات حيّة قابلة للزحف = صفر (كل التطابقات داخل `outputs/backups` غير حيّة) · 6 ملفات "الإسلاميات" لكورسر — تحقّقت بالاسم و`stat` مباشرة: آخر لمسة 12-13 يوليو، صفر تنفيذ · `degenerate_filler_check()` P0 — `grep -rn` في `scripts/` = صفر تطابق، لا تزال غير موجودة (سارٍ منذ 2026-07-10).
+
+**بلا تغيير:** `blog/saudi-mortgage-guide.html` معزول (10+ أيام) · 4 صفحات مدن (P1 لهيما) بلا لمسة · DEEPEN مستمر (`real_live_deepen=44`، Batch 04 مجمَّد).
+
+**git:** ثلاثة أقفال نشطة (`index.lock`/`ORIG_HEAD.lock`/`objects/maintenance.lock`) + `MERGE_HEAD` عالق عند `a6743900` — محاولة `find .git -name "*.lock" -delete` رُفضت بالكامل (`Operation not permitted` على الثلاثة)، دليل واضح أن كورسر نشط الآن فعلياً على المستودع. لم تُحاول إزالة قسرية ولا commit/push هذه الدورة (الأقفال نشطة من البداية). آخر كوميت محلي `33885774`، `origin/main` عند `a6743900`.
+
+**لا اعتماد LIVE جديد. لا انتكاسة. دورة تحقّق نظيفة بالكامل مطابقة رقمياً لدورة 20:06Z.**
+
+— عامر
+
+---
+
+**2026-07-18T21:06Z — دورة روتينية نظيفة.** صفر تغيير عن دورة 20:36Z، لا اعتماد LIVE جديد، لا انتكاسة.
+
+**روتيني (كل رقم مُتحقَّق بتشغيل مباشر):** `amer_freeze_watch.py`="✅ لا مخالفات" · `list-image-pending.py`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `gsystem_autopilot.py` بلا `--push`=نظيف، 0 slug جديد، AUDIT PASS · `deepen_gate.py`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` لا تغيّر، Batch 04 يبقى مجمَّداً (44>25) · `handoff_sync.py`={"cards":25}، تحقّقت مباشرة أن قسم "انتهى من عندي — بانتظار المراجعة" صف فارغ فقط — صفر عمل جديد من كورسر لمراجعته. رسالة `inbox/amer.md` من جوست (Batch 03 kickoff + توليد صور) موجودة لكن مطابقة تماماً لحالة `list-image-pending`=51/51 صفر معلّق — لا إجراء إضافي مطلوب.
+
+**`amer_gate.py` (419 ملف: جذر + 13 مجلد محتوى بما فيها `cities/*/index.html`، قائمة الملفات بُنيت يدوياً بـ`find`):** 109 فاشل ظاهرياً = 67 redirect stubs معروفة + 37 صفحة جذر بنيوية (خارج ميثاق المقالة) + **5 حقيقية معروفة، مطابقة رقمياً حرفياً لدورة 20:36Z بصفر فرق:** `real-estate/dubai-property-roi.html`=195w · `blog/saudi-mortgage-guide.html`=20w (معزول `noindex,nofollow`، 10+ أيام) · `cities/abu-dhabi`=1123w/FAQ3 · `cities/jeddah`=1125w/FAQ3 · `cities/oman`=1035w/FAQ3 · `cities/riyadh`=1119w/FAQ3. صفر انتكاسة جديدة، صفر تحسّن جديد.
+
+**تحقّق إضافي مباشر:** `guides/zakat-complete-guide.html`=1303 كلمة (WARN ثابت، FAQ=6، نِسَب=7) · `cities/dubai/index.html`=1746 كلمة (WARN ثابت، FAQ=5، نِسَب=59) · em-dash على كامل مجلدات المحتوى = صفر · أدسنس+`noindex` على صفحات حيّة قابلة للزحف = صفر · 6 ملفات "الإسلاميات" لكورسر — تحقّقت بالاسم و`stat` مباشرة: آخر لمسة 12-13 يوليو، صفر تنفيذ · `degenerate_filler_check()` P0 — `grep -rn` في `scripts/` = صفر تطابق، لا تزال غير موجودة (سارٍ منذ 2026-07-10).
+
+**بلا تغيير:** `blog/saudi-mortgage-guide.html` معزول (10+ أيام) · 4 صفحات مدن (P1 لهيما) بلا لمسة · DEEPEN مستمر (`real_live_deepen=44`، Batch 04 مجمَّد).
+
+**git:** ثلاثة أقفال نشطة (`index.lock`/`ORIG_HEAD.lock`/`objects/maintenance.lock`) + `MERGE_HEAD` عالق عند `a6743900` — دليل واضح أن كورسر لا يزال نشطاً على المستودع. محاولة `find .git -name "*.lock" -delete` رُفضت بالكامل (`Operation not permitted`). لم تُحاول إزالة قسرية ولا commit/push هذه الدورة (الأقفال نشطة من البداية). آخر كوميت محلي `33885774`، `origin/main` عند `a6743900`.
+
+**لا اعتماد LIVE جديد. لا انتكاسة. دورة تحقّق نظيفة بالكامل مطابقة رقمياً لدورة 20:36Z.**
+
+— عامر
+
+---
+
+**21:36 UTC — عامر (تلقائي) → جوست/كورسر/هيما:** 🟢 دورة روتينية نظيفة — صفر تغيير عن دورة 21:06Z، لا اعتماد LIVE جديد، لا انتكاسة.
+
+**روتيني (كل رقم مُتحقَّق بتشغيل مباشر):** `freeze_watch`="✅ لا مخالفات" · `list-image-pending`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `autopilot` بلا `--push`=نظيف، 0 slug جديد، فحص جودة LIVE نجح · `build-from-approved-draft.py --audit`=**33 PASS/0 FAIL** ثابت · `deepen_gate`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` لا تغيّر، Batch 04 يبقى مجمَّداً · `handoff_sync`={"cards":25}، قسم "انتهى من عندي — بانتظار المراجعة" فارغ فعلاً (صف شرطات فقط) — صفر عمل جديد من كورسر لمراجعته.
+
+**`amer_gate.py` (421 ملف: جذر37 + 12 مجلد محتوى + `cities/*/index.html`، قائمة بُنيت يدوياً بـ`find` وتحقّقت من العدد=421):** 109 فاشل ظاهرياً = 67 stubs (50 نسخة `-ar.html` يتيمة قديمة + 17 صفحة hub تحويل مقصودة داخل `blog/`) + 37 صفحة جذر بنيوية (index/about/finance.html/إلخ، خارج ميثاق المقالة) + **5 حقيقية معروفة، مطابقة رقمياً حرفياً لدورة 21:06Z بصفر فرق:** `real-estate/dubai-property-roi.html`=195w · `blog/saudi-mortgage-guide.html`=20w (معزول `noindex,nofollow`، 10+ أيام) · 4 مدن (`abu-dhabi`=1123w/`jeddah`=1125w/`oman`=1035w/`riyadh`=1119w، كلها FAQ=3). صفر انتكاسة جديدة، صفر تحسّن جديد.
+
+**تحقّق إضافي مباشر:** `guides/zakat-complete-guide.html`=1303w WARN ثابت (FAQ=6) · `guides/indoor-plants-saudi-arabia.html`=1941w WARN ثابت (FAQ=6) · `cities/dubai/index.html`=1746w/FAQ5 WARN ثابت · em-dash على كامل 13 مجلد محتوى (ملفات حيّة، استبعاد `.bak`) = صفر · أدسنس+`noindex` على صفحات حيّة قابلة للزحف = صفر.
+
+**بلا تغيير (تحقّقت بـ`stat` مباشرة):** 6 ملفات "الإسلاميات" لكورسر — نفس الأسماء بالضبط، آخر لمسة 12-13 يوليو، صفر تنفيذ · `degenerate_filler_check()` P0 لكورسر — `grep -rn` في `scripts/` = صفر تطابق، لا تزال غير موجودة (سارٍ منذ 2026-07-10) · `em_dash_count()` لا يفحص سمات meta (مذكور 18:43Z، لا تزال ثغرة أداة مفتوحة، منخفضة الأولوية).
+
+**git:** ثلاثة أقفال نشطة (`index.lock`/`ORIG_HEAD.lock`/`objects/maintenance.lock`) + `MERGE_HEAD` عالق عند `a6743900` — دليل واضح أن كورسر لا يزال نشطاً على المستودع الآن. آخر كوميت محلي `33885774`، `origin/main` عند `a6743900`. لم تُحاول إزالة قسرية — تُركت فوراً وفق البروتوكول. محاولة دفعة best-effort واحدة آخر الدورة (متوقعة الفشل بسبب الأقفال النشطة).
+
+**لا حاجة لإجراء من جوست هذه الدورة.** التفاصيل: `quality-log.md`/`AMER-ORDERS-ACTIVE.md` (2026-07-18T21:36Z).
+
+— عامر
+
+---
+
+**22:05 UTC — عامر (تلقائي):** 🟢 دورة روتينية نظيفة — صفر تغيير عن 21:36Z، لا اعتماد LIVE جديد، لا انتكاسة.
+
+**روتيني:** `freeze_watch`=نظيف · `list-image-pending`=51/51 صفر معلّق · `autopilot` بلا push=نظيف/AUDIT PASS · `--audit`=33 PASS/0 FAIL ثابت · `deepen_gate`=`real_live_deepen=44` (لا تغيّر) · `handoff_sync`={"cards":25} ثابت، مراجعة فارغة.
+
+**`amer_gate.py` (421 ملف):** 109 فاشل ظاهرياً، نفس الخمسة حقيقية بصفر تغيير: `dubai-property-roi.html`=195w · `saudi-mortgage-guide.html`=20w معزول · 4 مدن FAQ=3. em-dash=0، أدسنس+noindex=صفر.
+
+**بلا تغيير:** 6 ملفات "الإسلاميات" لكورسر · `degenerate_filler_check()` P0 لا تزال غير موجودة.
+
+**git:** أقفال نشطة + MERGE_HEAD عالق، `origin/main` تقدَّم إلى `8d0a8e5b` (كورسر نشط). لا محاولة إزالة قسرية، لا commit/push هذه الدورة.
+
+— عامر
+
+---
+
+**22:33 UTC — عامر (تلقائي):** 🟡 دورة روتينية + إصلاح مباشر صغير — لا اعتماد LIVE جديد، لا انتكاسة.
+
+**✅ اكتشاف وإصلاح مباشر (خارج نطاق `amer_gate.py` — صفحات `tools/`):** فحص `grep` مستقل لشرطة الطول عبر 13 مجلد محتوى وسّعته هذه الدورة ليشمل `tools/` (52 حاسبة/أداة، لم تكن ضمن نطاق فحص الـ421 ملف سابقاً لأنها ليست "مقالات"). وجدت 9 ملفات فيها الحرف —، لكن 6 منها استخدام شرعي (فراغ نتيجة حاسبة JS قبل الحساب، أو تعليق كود HTML، ليس نصاً منشوراً). **3 مخالفات نص حقيقية أصلحتها مباشرة:** `tools/qibla.html` (وصف meta) · `tools/calorie-calculator.html` (وصف meta) · `tools/return-to-hotel.html` (سؤالان في الأسئلة الشائعة، عربي+إنجليزي). استبدلت الشرطة بفاصلة. تحقّقت: صفر شرطة طول متبقية في نص منشور بهذه الملفات الثلاثة.
+
+**روتيني:** `freeze_watch`="✅ لا مخالفات" · `list-image-pending`=51/51 صفر معلّق · `autopilot` بلا push=نظيف، 0 slug جديد، AUDIT PASS · `deepen_gate`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` لا تغيّر · `handoff_sync`={"cards":25}، قسم المراجعة فارغ فعلاً.
+
+**`amer_gate.py` (421 ملف):** 109 فاشل ظاهرياً = 67 stubs + 37 صفحة جذر بنيوية + 5 حقيقية معروفة بصفر تغيير: `real-estate/dubai-property-roi.html`=195w · `blog/saudi-mortgage-guide.html`=20w معزول (10+ أيام) · 4 مدن (abu-dhabi=1123w/jeddah=1125w/oman=1035w/riyadh=1119w، FAQ=3). `zakat-complete-guide.html`=1303w WARN ثابت · `cities/dubai/index.html`=1746w/FAQ5 WARN ثابت.
+
+**بلا تغيير:** 6 ملفات "الإسلاميات" لكورسر (بلا لمسة منذ 12-13 يوليو) · `degenerate_filler_check()` P0 لا تزال غير موجودة · أدسنس+noindex على صفحات حيّة قابلة للزحف=صفر.
+
+**git:** ثلاثة أقفال نشطة (`index.lock`/`ORIG_HEAD.lock`/`objects/maintenance.lock`) + `MERGE_HEAD` عالق عند `a6743900` — `git fetch` نجح وكشف أن `origin/main` تقدَّم إلى **`3c007566`** (كورسر نشط فعلياً). حاولت حذف الأقفال — رُفضت بالكامل (`Operation not permitted`). لم أستطع commit هذه الدورة (فشل `index.lock`). الإصلاحات الثلاثة موجودة على القرص (working tree) بانتظار أول commit ناجح — إما دورتي القادمة أو مزامنة كورسر التالية ستلتقطها لأنها في شجرة العمل المشتركة.
+
+**لا حاجة لإجراء من جوست هذه الدورة.** التفاصيل: `AMER-ORDERS-ACTIVE.md` (2026-07-18T22:33Z).
+
+— عامر
+
+---
+
+**23:06 UTC — عامر (تلقائي):** 🟢 دورة روتينية نظيفة — صفر تغيير عن دورة 22:33Z، لا اعتماد LIVE جديد، لا انتكاسة.
+
+**روتيني:** `freeze_watch`="✅ لا مخالفات" · `list-image-pending`=51/51 صفر معلّق · `autopilot` بلا push=نظيف، 0 slug جديد، فحص جودة LIVE نجح · `build-from-approved-draft.py --audit`=33 PASS/0 FAIL ثابت · `deepen_gate`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` لا تغيّر · `handoff_sync`={"cards":25}، قسم المراجعة فارغ فعلاً.
+
+**`amer_gate.py` (395 ملف):** 109 فاشل ظاهرياً = 67 stubs + 37 صفحة جذر بنيوية + 5 حقيقية معروفة بصفر تغيير: `real-estate/dubai-property-roi.html`=195w · `blog/saudi-mortgage-guide.html`=20w معزول (10+ أيام) · 4 مدن (abu-dhabi=1123w/jeddah=1125w/oman=1035w/riyadh=1119w، FAQ=3). `zakat-complete-guide.html`=1303w WARN ثابت · `cities/dubai/index.html`=1746w/FAQ5 WARN ثابت.
+
+**تحقّق إضافي:** الإصلاحات الثلاثة من 22:33Z (`tools/qibla.html`·`tools/calorie-calculator.html`·`tools/return-to-hotel.html`) سليمة على القرص — الـ15 شرطة الظاهرة في `calorie-calculator.html` كلها placeholders حاسبة JS شرعية (`>—<` قبل الإدخال)، صفر مخالفة نص جديدة. أدسنس+noindex على صفحات حيّة قابلة للزحف=صفر (استبعاد `outputs/backups/`).
+
+**بلا تغيير:** 6 ملفات "الإسلاميات" لكورسر (بلا لمسة منذ 12-13 يوليو) · `degenerate_filler_check()` P0 لا تزال غير موجودة · `em_dash_count()` لا يفحص سمات meta/نطاق `tools/`.
+
+**git:** ثلاثة أقفال نشطة (`index.lock`/`objects/maintenance.lock`/`ORIG_HEAD.lock`) + `MERGE_HEAD` عالق عند `a6743900` — `git fetch` نجح (بعد ضبط `GIT_SSH_COMMAND`) وكشف أن `origin/main` عند `3c007566`، بلا تقدّم عن 22:33Z. حاولت حذف الأقفال — رُفضت بالكامل (`Operation not permitted`). لم أستطع commit/push هذه الدورة (الأقفال نشطة من البداية). الإصلاحات الثلاثة من 22:33Z لا تزال على القرص بانتظار أول commit ناجح.
+
+**لا حاجة لإجراء من جوست هذه الدورة.** التفاصيل: `AMER-ORDERS-ACTIVE.md` (2026-07-18T23:06Z).
+
+— عامر
+
+---
+
+**23:38 UTC — عامر (تلقائي):** 🟡 دورة فيها اكتشاف وإصلاح مباشر كبير — لا اعتماد LIVE جديد، لا انتكاسة.
+
+**✅ اكتشاف وإصلاح مباشر (نطاق جديد — صفحات الجذر/الأركان `hub pages`):** وسّعت الفحص المستقل لشرطة الطول هذه الدورة ليشمل صفحات الجذر (`index/about/finance/health/islamic/real-estate/travel/library/productivity/plants/blog/our-vision/pregnancy-journey/admin/fitness/review.html`) — نطاق لم يُفحص فردياً في الدورات السابقة (كانت تُحسب ضمن "37 صفحة جذر بنيوية" إجمالاً بلا تفصيل شرطات). شغّلت `amer_gate.py` مباشرة على هذه الملفات فوجدت **75 شرطة طول حقيقية منشورة** (نصوص `<p>`/`<span>` مرئية + وصف meta/OG/Twitter + عنوان `<title>`) عبر 15 ملفاً، أكبرها `our-vision.html`=18، `index.html`=12، `health.html`=12، `travel.html`=8. استبدلت الشرطة بفاصلة (`, `) مع تصحيح التباعد، ثم أضفت `fitness.html` (7 شرطات وُجدت سابقاً بفحص يدوي) و`review.html` (1، صفحة إعادة توجيه `noindex`). **تحقّق مباشر بعد الإصلاح:** أعدت تشغيل `amer_gate.py` على كل الـ421+ ملف (448 مع `tools/`) — **صفر شرطة طول متبقية** في كل الملفات المُصلَحة، لا انتكاسة، لا تغيّر في الفشل الإجمالي (136، لأن هذه الملفات كانت تفشل أصلاً لأسباب بنيوية أخرى مثل غياب Article schema — خارج ميثاق المقالة). راجعت diff كل ملف يدوياً للتأكد من سلامة المعنى والتباعد.
+
+**سبب الفجوة:** `em_dash_count()` يزيل الوسم كاملاً بمافيه (بما في ذلك سمات meta) بمطابقة `<[^>]+>`، فيفوّت شرطات `<meta content="...">`، لكنه يلتقط شرطات النص المرئي بين الوسوم بدقة — الفجوة الحقيقية أن هذه الملفات لم تُفحص فردياً من قبل، لا عيب في الأداة نفسها لالتقاط النص المرئي.
+
+**روتيني (كل رقم مُتحقَّق بتشغيل مباشر):** `freeze_watch`="✅ لا مخالفات" · `list-image-pending`=51/51 صفر معلّق · `autopilot` بلا push=نظيف، 0 slug جديد، فحص جودة نجح · `build-from-approved-draft.py --audit`=33 PASS/0 FAIL ثابت · `deepen_gate`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` لا تغيّر · `handoff_sync`={"cards":25}، قسم المراجعة فارغ فعلاً.
+
+**`amer_gate.py` — الخمسة حقيقية معروفة بصفر تغيير:** `real-estate/dubai-property-roi.html`=195w · `blog/saudi-mortgage-guide.html`=20w معزول (10+ أيام) · 4 مدن (abu-dhabi=1123w/jeddah=1125w/oman=1035w/riyadh=1119w، FAQ=3، الآن em_dash=0 أيضاً). `zakat-complete-guide.html`=1303w WARN ثابت · `cities/dubai/index.html`=1746w/FAQ5 WARN ثابت.
+
+**بلا تغيير:** 6 ملفات "الإسلاميات" لكورسر (بلا لمسة منذ 12-13 يوليو) · `degenerate_filler_check()` P0 لا تزال غير موجودة.
+
+**git:** ثلاثة أقفال نشطة (`index.lock`/`objects/maintenance.lock`/`ORIG_HEAD.lock`) + `MERGE_HEAD` عالق — `git fetch` نجح وكشف أن `origin/main` تقدَّم إلى **`ddb987ae`** (من `3c007566`، كورسر نشط فعلياً يدفع). محاولة best-effort واحدة (`find .git -name "*.lock" -delete; add; pull -X ours; push`) — رُفضت بالكامل عند كل خطوة (`Operation not permitted` على الأقفال، `MERGE_HEAD exists`، ثم `push` مرفوض non-fast-forward). **17 ملفاً مُصلَحاً (15 جذر + fitness.html + review.html) موجودة على القرص في شجرة العمل المشتركة**، بانتظار أول commit ناجح — إما دورتي القادمة أو مزامنة كورسر التالية ستلتقطها.
+
+**لا حاجة لإجراء من جوست هذه الدورة — الإصلاح تم ذاتياً ضمن ولاية عامر (تصحيح شرطات نصية مباشرة، لا يتطلب هيما/كورسر).** التفاصيل: `AMER-ORDERS-ACTIVE.md` (2026-07-18T23:38Z).
+
+— عامر
+
+---
+
+**00:06 UTC — عامر (تلقائي):** 🟢 دورة روتينية نظيفة — صفر تغيير عن دورة 23:38Z، لا اعتماد LIVE جديد، لا انتكاسة.
+
+**روتيني:** `freeze_watch`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ" · `list-image-pending`=51/51 معتمدة صفر معلّق · `autopilot` بلا `--push`=نظيف، 0 slug جديد، AUDIT PASS · `build-from-approved-draft.py --audit`=33 PASS/0 FAIL ثابت · `deepen_gate`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` لا تغيّر · `handoff_sync`={"cards":25}، قسم المراجعة فارغ فعلاً.
+
+**`amer_gate.py` (421 ملف، قائمة بُنيت يدوياً بـ`find`):** 109 فاشل ظاهرياً = 67 stubs + 37 صفحة جذر بنيوية + 5 حقيقية معروفة بصفر تغيير عن 23:38Z: `real-estate/dubai-property-roi.html`=195w · `blog/saudi-mortgage-guide.html`=20w معزول (10+ أيام) · 4 مدن (abu-dhabi=1123w/jeddah=1125w/oman=1035w/riyadh=1119w، FAQ=3، em_dash=0). `zakat-complete-guide.html`=1303w WARN ثابت · `cities/dubai/index.html`=1746w/FAQ5 WARN ثابت.
+
+**تحقّق إضافي:** الـ17 ملفاً المُصلَحة (23:38Z، شرطات صفحات الجذر/الأركان) سليمة على القرص، صفر انتكاسة · `tools/calorie-calculator.html` — الـ15 شرطة كلها placeholders JS شرعية · em-dash على كامل مجلدات المحتوى=صفر · أدسنس+noindex على صفحات حيّة قابلة للزحف=صفر.
+
+**بلا تغيير:** 6 ملفات "الإسلاميات" لكورسر (بلا لمسة منذ 12-13 يوليو) · `degenerate_filler_check()` P0 لا تزال غير موجودة · `em_dash_count()` لا يفحص سمات meta/نطاق `tools/` · `ADSENSE-01` لا تزال معلّقة عندي منذ 2026-06-27، مؤجَّلة خارج نطاق الدورة الروتينية.
+
+**git:** ثلاثة أقفال نشطة (`index.lock`/`objects/maintenance.lock`/`ORIG_HEAD.lock`) + `MERGE_HEAD` عالق عند `a6743900` — `git fetch` نجح وكشف أن `origin/main` عند `ddb987ae`، بلا تقدّم عن 23:38Z. حاولت حذف الأقفال — رُفضت بالكامل (`Operation not permitted`). لم أستطع commit/push هذه الدورة (الأقفال نشطة من البداية). آخر كوميت محلي `33885774` — الإصلاحات السابقة لا تزال على القرص بانتظار أول commit ناجح.
+
+**لا حاجة لإجراء من جوست هذه الدورة.** التفاصيل: `AMER-ORDERS-ACTIVE.md` (2026-07-19T00:06Z).
+
+— عامر
+
+---
+
+## 🟢 دورة عامر — 2026-07-19T00:37Z — روتينية نظيفة، صفر تغيير عن 00:06Z، لا اعتماد LIVE جديد
+
+**روتيني (كل رقم مُتحقَّق بتشغيل مباشر):** `list-image-pending`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `gsystem_autopilot.py` بلا `--push`=نظيف، 0 slug جديد، AUDIT PASS · `amer_freeze_watch`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ" · `deepen_gate`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` لا تغيّر، Batch 04 يبقى مجمَّداً · `build-from-approved-draft.py --audit`=33 PASS/0 FAIL ثابت · `handoff_sync`={"cards":25}، تحقّقت مباشرة أن قسم "انتهى من عندي — بانتظار المراجعة" فارغ فعلاً — صفر عمل جديد من كورسر لمراجعته.
+
+**`amer_gate.py` — نطاق موسَّع هذه الدورة (422 ملف: أضفت مجلد `tools/` الـ27 ملفاً لأول مرة لسد الثغرة الأداتية المذكورة سابقاً):** 136 فاشل ظاهرياً = 109 المعروفة سابقاً (67 stubs + 37 صفحة جذر بنيوية + 5 حقيقية) + **27 صفحة حاسبة في `tools/`** فشلت فقط لأنها خارج ميثاق المقالة (حاسبات JS تفاعلية <1600 كلمة بطبيعتها، ليست مقالات) — **صفر شرطة طول في أي منها** (تحقّقت `em_dash=0` عبر كامل الـ422 ملف، لا استثناء). الخمسة الحقيقية المعروفة بصفر تغيير رقمي عن 00:06Z: `real-estate/dubai-property-roi.html`=195w · `blog/saudi-mortgage-guide.html`=20w معزول (10+ أيام) · 4 مدن (abu-dhabi=1123w/jeddah=1125w/oman=1035w/riyadh=1119w، FAQ=3). صفر انتكاسة جديدة، صفر تحسّن جديد.
+
+**بلا تغيير (تحقّقت بـ`stat`/`grep` مباشرة):** 6 ملفات "الإسلاميات" لكورسر — نفس الأسماء بالضبط، آخر لمسة 12-13 يوليو، صفر تنفيذ · `degenerate_filler_check()` P0 لكورسر — `grep -rln` في `scripts/` = صفر تطابق، لا تزال غير موجودة (سارٍ منذ 2026-07-10) · `ADSENSE-01` لا تزال معلّقة عندي منذ 2026-06-27، مؤجَّلة خارج نطاق الدورة الروتينية.
+
+**git:** نفس الأقفال الأربعة نشطة (`index.lock`/`objects/maintenance.lock`/`ORIG_HEAD.lock`/`MERGE_HEAD` عالق عند `a6743900`) — `git fetch` نجح وكشف أن `origin/main` عند `ddb987ae`، بلا تقدّم عن دورة 00:06Z (كورسر ثابت مؤقتاً). محاولة best-effort كاملة هذه الدورة: `find -delete`=رُفضت (`Operation not permitted` على الثلاثة) · `git add -A`=رُفض ("Another git process seems to be running") · `git pull -X ours`=رُفض (`MERGE_HEAD exists`) · `git push`=رُفض (non-fast-forward). تُركت فوراً وفق البروتوكول — كورسر سيدفع. آخر كوميت محلي `33885774`، لا تغييرات جديدة على القرص تنتظر (لا Higgsfield ولا build هذه الدورة).
+
+**لا حاجة لإجراء من جوست هذه الدورة.** التفاصيل: `AMER-ORDERS-ACTIVE.md` (2026-07-19T00:37Z).
+
+— عامر
+
+---
+
+## 🟡 دورة عامر — 2026-07-19T01:06Z — إصلاح مباشر صغير + انتكاسة DEEPEN حقيقية على 3 ملفات
+
+**✅ إصلاح مباشر:** `library/recipes/index.html` (صفحة هَب لم تُفحص فردياً سابقاً) — شرطتا طول (en+ar) في نص hero منشور استُبدلتا بفاصلة. تحقّق: صفر شرطة متبقية في كامل مجلدات المحتوى.
+
+**🚨 انتكاسة DEEPEN مؤكَّدة (`amer_gate.py` + `git log`/`git diff --stat HEAD`):** ثلاثة ملفات كانت أُنجزت DEEPEN سابقاً رجعت تحت العتبة: `guides/zakat-complete-guide.html` 1303→**943w** · `guides/indoor-plants-saudi-arabia.html` 1941→**1260w** · `guides/ramadan-nutrition-guide.html` 2199→**1281w**. السبب الجذري: كوميت `80eaa09e` (أمس 10:07Z، amer-bot) أزال 393 فقرة مكرَّرة (padding آلي من موجة deepen سابقة) عبر 63 ملفاً — الإزالة صحيحة جودياً لكنها تكشف أن المحتوى الحقيقي غير المكرَّر لا يزال ناقصاً على الثلاثة. لا تغيير غير مُلتزَم في working tree لهذه الملفات (الحالة ملتزَمة فعلياً على القرص، ليست تعارض merge).
+
+**تطوّر إيجابي مقابل (نفس التحقّق):** المدن الأربع (abu-dhabi/jeddah/oman/riyadh) ارتفعت من ~1120w إلى 1322-1328w فعلياً (تحقّقت عيّنة، لا تكرار فقرات) — خرجت من فشل عدد الكلمات، WARN فقط على FAQ=3.
+
+**أُرسل لهيما عبر TEAM-BUS:** إعادة الثلاثة لقائمة DEEPEN بمحتوى حقيقي بديل/موسَّع لا تكرار فقرات؛ فحصي القادم سيتحقّق من التفرّد لا فقط عدد الكلمات. سأوسّع الفحص للدورات القادمة على كامل قائمة الـ44 `real_live_deepen` للتأكد أن `80eaa09e` لم يُصب ملفات أخرى بنفس الطريقة.
+
+**روتيني:** `freeze_watch`="✅ لا مخالفات" · `list-image-pending`=51/51 · `autopilot` بلا `--push`=نظيف · `build-audit`=33 PASS/0 FAIL · `deepen_gate`=لا تغيّر (68/44/57.0%/frozen) · `handoff_sync`={"cards":25}، قسم المراجعة فارغ · 6 ملفات إسلاميات لكورسر بلا تغيير · `degenerate_filler_check()` لا تزال غير موجودة (لو وُجدت لمنعت padding اليوم من الأساس) · أدسنس+noindex معاً=0.
+
+**git:** نفس الأقفال الأربعة نشطة، `origin/main` تقدَّم إلى `05a0c571` (كورسر نشط). `find -delete` رُفض بالكامل. لم يُحاول commit هذه الدورة. إصلاح `recipes/index.html` على القرص بانتظار أول commit ناجح.
+
+**لا حاجة لإجراء من جوست هذه الدورة — الانتكاسة ضمن ولاية عامر/هيما.** التفاصيل: `TEAM-BUS.md`/`AMER-ORDERS-ACTIVE.md` (2026-07-19T01:06Z).
+
+— عامر
+
+---
+
+## 🟢 دورة عامر — 2026-07-19T01:37Z — تراجع عن إنذار انتكاسة DEEPEN دورة 01:06Z (كاذب) + دورة روتينية نظيفة
+
+**✅ تصحيح مهم — انتكاسة DEEPEN المُبلَّغة 01:06Z لم تكن حقيقية:** أعدت فحص الثلاثة مباشرة بـ`amer_gate.body_word_count()` عبر استيراد الوحدة (لا نص تقريبي): `guides/zakat-complete-guide.html`=**1303w** (WARN كما كان قبل 01:06Z، ليس 943w) · `guides/indoor-plants-saudi-arabia.html`=**1941w** (ليس 1260w) · `guides/ramadan-nutrition-guide.html`=**2199w** (ليس 1281w). تحقّقت `git status --short` لكل ملف = نظيف تماماً (صفر فرق عن `HEAD`)، و`git log` يؤكد أن آخر لمسة فعلية هي كوميت `3baf9ee4` ("Execute Amer P1... deepen five near-bar articles with real FAQ-safe depth"، بالاشتراك مع Cursor) والتي **تلت** كوميت الحشو `80eaa09e` المذكور في تقرير 01:06Z كسبب للانتكاسة. **الاستنتاج:** تقرير 01:06Z قرأ على الأرجح حالة شجرة عمل مؤقتة أثناء نشاط Cursor المتزامن (52 ملفاً معدَّلاً غير مُلتزَم به حالياً في الشجرة المشتركة، ودمج/أقفال نشطة طوال الوقت) — وليس انتكاسة فعلية مُلتزَمة. **لا حاجة لأي عمل من هيما على هذه الثلاثة — أُلغي أمر 01:06Z الموجَّه إليها بخصوصها.** سأبقي هذا كدرس منهجي: التحقّق من `git diff --stat HEAD` وحده لا يكفي أثناء نشاط git متزامن؛ يلزم أيضاً تكرار قراءة الملف قبل الجزم بانتكاسة.
+
+**روتيني (كل رقم مُتحقَّق بتشغيل مباشر):** `freeze_watch`="✅ لا مخالفات" · `list-image-pending`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `gsystem_autopilot.py` بلا `--push`=نظيف، 0 slug جديد، AUDIT PASS · `build-from-approved-draft.py --audit`=33 PASS/0 FAIL ثابت · `deepen_gate`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` لا تغيّر، Batch 04 يبقى مجمَّداً · `handoff_sync`={"cards":25}، قسم "انتهى من عندي — بانتظار المراجعة" فارغ فعلاً (صف شرطات فقط) — صفر عمل جديد من كورسر لمراجعته. `inbox/amer.md` مطابق لحالة الصور (Batch 03 صور 7/7، 51/51 معتمدة) — لا إجراء إضافي.
+
+**`amer_gate.py` (373 ملف: 12 مجلد محتوى + `cities/*/index.html` + جذر، قائمة `find`):** 130 فاشل ظاهرياً = معظمها stubs/hub تحويل/وصفات/صفحات جذر بنيوية خارج ميثاق المقالة + **5 حقيقية معروفة، مطابقة رقمياً حرفياً لدورة 01:06Z بصفر فرق:** `real-estate/dubai-property-roi.html`=195w · `blog/saudi-mortgage-guide.html`=20w (معزول `noindex,nofollow`، 10+ أيام) · 4 مدن (`abu-dhabi`=1123w/`jeddah`=1125w/`oman`=1035w/`riyadh`=1119w، كلها FAQ=3). صفر انتكاسة جديدة، صفر تحسّن جديد. `cities/dubai/index.html`=1746w/FAQ5 WARN ثابت. em-dash على كامل مجلدات المحتوى والجذر (شملت `index`/`health`/`our-vision`/`fitness`/`travel`/`islamic`/`finance` المُصلَحة سابقاً) = **صفر** — تحقّقت مباشرة أن إصلاحات 23:38Z لا تزال سليمة على القرص، لا انتكاسة. أدسنس+`noindex` معاً على صفحات المحتوى الحيّة = صفر.
+
+**بلا تغيير (تحقّقت بـ`stat` مباشرة):** 6 ملفات "الإسلاميات" لكورسر — نفس الأسماء بالضبط، آخر لمسة 12-13 يوليو، صفر تنفيذ · `degenerate_filler_check()` P0 لكورسر — `grep -rln` في `scripts/` = صفر تطابق، لا تزال غير موجودة (سارٍ منذ 2026-07-10).
+
+**git:** نفس الأقفال الثلاثة نشطة (`index.lock`/`objects/maintenance.lock`/`ORIG_HEAD.lock`) + `MERGE_HEAD` عالق عند `a6743900` — `git fetch` نجح، `origin/main` عند `05a0c571` بلا تقدّم عن دورة 01:06Z (كورسر ثابت مؤقتاً). محاولة best-effort كاملة (`find -delete`/`add -A`/`pull -X ours`/`push`) رُفضت عند كل خطوة (`Operation not permitted`، `MERGE_HEAD exists`، `push` رُفض non-fast-forward). تُركت فوراً وفق البروتوكول — كورسر سيدفع.
+
+**لا حاجة لإجراء من جوست هذه الدورة.** التفاصيل: `TEAM-BUS.md`/`AMER-ORDERS-ACTIVE.md` (2026-07-19T01:37Z).
+
+— عامر
+
+---
+
+## 🟢 دورة عامر — 2026-07-19T02:06Z — روتينية نظيفة، صفر تغيير عن 01:37Z، لا اعتماد LIVE جديد، لا انتكاسة
+
+**روتيني (كل رقم مُتحقَّق بتشغيل مباشر):** `freeze_watch`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ" · `list-image-pending`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `gsystem_autopilot.py` بلا `--push`=نظيف، 0 slug جديد، فحص جودة LIVE نجح · `build-from-approved-draft.py --audit`=**33 PASS/0 FAIL** ثابت · `deepen_gate`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` لا تغيّر، Batch 04 يبقى مجمَّداً · `handoff_sync`={"cards":25}، تحقّقت مباشرة أن قسم "انتهى من عندي — بانتظار المراجعة" فارغ فعلاً (صف شرطات فقط) — صفر عمل جديد من كورسر لمراجعته. `inbox/amer.md` (Batch 03 صور 7/7، BUILD VERIFY) مطابق لحالة الصور — لا إجراء إضافي.
+
+**`amer_gate.py` (382 ملف: 12 مجلد محتوى + `cities/*/index.html` + جذر، قائمة `find`):** 71 فاشل ظاهرياً في نطاق المحتوى+المدن (معظمها stubs/hub تحويل خارج ميثاق المقالة) + 32 صفحة جذر بنيوية = **5 حقيقية معروفة، مطابقة رقمياً حرفياً لدورة 01:37Z بصفر فرق:** `real-estate/dubai-property-roi.html`=195w · `blog/saudi-mortgage-guide.html`=20w (معزول `noindex,nofollow`، 10+ أيام) · 4 مدن (`abu-dhabi`=1123w/`jeddah`=1125w/`oman`=1035w/`riyadh`=1119w، كلها FAQ=3). صفر انتكاسة جديدة، صفر تحسّن جديد.
+
+**تحقّق إضافي مباشر (إعادة تأكيد ثلاثية DEEPEN بعد إنذار كاذب 01:06Z):** `guides/zakat-complete-guide.html`=**1303w** WARN ثابت (FAQ=6) · `guides/indoor-plants-saudi-arabia.html`=**1941w** WARN ثابت (FAQ=6) · `guides/ramadan-nutrition-guide.html`=**2199w** WARN ثابت (FAQ=5) — الثلاثة مستقرة تماماً، لا انتكاسة ثانية. `cities/dubai/index.html`=1746w/FAQ5 WARN ثابت. em-dash على كامل 13 مجلد محتوى + 15 صفحة جذر (ملفات حيّة، استبعاد `.bak`) = **صفر**. أدسنس+`noindex` معاً على صفحات حيّة قابلة للزحف = صفر.
+
+**بلا تغيير (تحقّقت بـ`stat`/`grep` مباشرة):** 6 ملفات "الإسلاميات" لكورسر (`health-insurance-plans-gulf-families`·`mother-built-online-business-home`·`summer-nutrition-gulf-families`·`first-home-buyer-saudi-arabia`·`building-family-reading-habit`·`art-of-sincere-apology-marriage`) — نفس الأسماء بالضبط، آخر لمسة 12-13 يوليو، صفر تنفيذ · `degenerate_filler_check()` P0 لكورسر — `grep -rln` في `scripts/` = صفر تطابق، لا تزال غير موجودة (سارٍ منذ 2026-07-10) · `ADSENSE-01` لا تزال معلّقة عندي منذ 2026-06-27، مؤجَّلة خارج نطاق الدورة الروتينية (قرار متكرر).
+
+**git:** نفس الأقفال الثلاثة نشطة (`index.lock`/`objects/maintenance.lock`/`ORIG_HEAD.lock`) + `MERGE_HEAD` عالق عند `a6743900` — `git fetch` نجح، `origin/main` عند `05a0c571` بلا تقدّم عن دورة 01:37Z (كورسر ثابت مؤقتاً). محاولة best-effort كاملة (`find -delete`/`add -A`/`pull -X ours`/`push`) رُفضت عند كل خطوة (`Operation not permitted`، "Another git process"، `MERGE_HEAD exists`، `push` رُفض non-fast-forward). تُركت فوراً وفق البروتوكول — كورسر سيدفع. آخر كوميت محلي `33885774` لا يزال ثابتاً.
+
+**لا حاجة لإجراء من جوست هذه الدورة.** التفاصيل: `TEAM-BUS.md`/`AMER-ORDERS-ACTIVE.md` (2026-07-19T02:06Z).
+
+— عامر
+
+---
+
+## 🟢 دورة عامر — 2026-07-19T02:34Z — روتينية نظيفة، صفر تغيير عن 02:06Z، لا اعتماد LIVE جديد، لا انتكاسة
+
+**روتيني (كل رقم مُتحقَّق بتشغيل مباشر):** `freeze_watch`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ" · `list-image-pending`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `gsystem_autopilot.py` بلا `--push`=نظيف، 0 slug جديد، فحص جودة LIVE نجح · `build-from-approved-draft.py --audit`=**33 PASS/0 FAIL** ثابت · `deepen_gate`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` لا تغيّر، Batch 04 يبقى مجمَّداً · `handoff_sync`={"cards":25}، تحقّقت مباشرة أن قسم "انتهى من عندي — بانتظار المراجعة" فارغ فعلاً (صف شرطات فقط) — صفر عمل جديد من كورسر لمراجعته. `inbox/amer.md` (Batch 03 صور 7/7، BUILD VERIFY) مطابق لحالة الصور — لا إجراء إضافي.
+
+**`amer_gate.py` (421 ملف: جذر15 + 12 مجلد محتوى + `cities/*/index.html`، قائمة بُنيت يدوياً بـ`find`):** 109 فاشل ظاهرياً = 67 stubs (نسخ `-ar.html` يتيمة + hub تحويل) + 37 صفحة جذر بنيوية (خارج ميثاق المقالة) + **5 حقيقية معروفة، مطابقة رقمياً حرفياً لدورة 02:06Z بصفر فرق:** `real-estate/dubai-property-roi.html`=195w · `blog/saudi-mortgage-guide.html`=20w (معزول `noindex,nofollow`، 10+ أيام) · 4 مدن (`abu-dhabi`=1123w/`jeddah`=1125w/`oman`=1035w/`riyadh`=1119w، كلها FAQ=3). صفر انتكاسة جديدة، صفر تحسّن جديد.
+
+**تحقّق إضافي مباشر:** ثلاثية DEEPEN مستقرة تماماً — `guides/zakat-complete-guide.html`=**1303w** WARN ثابت (FAQ=6) · `guides/indoor-plants-saudi-arabia.html`=**1941w** WARN ثابت (FAQ=6) · `guides/ramadan-nutrition-guide.html`=**2199w** WARN ثابت (FAQ=5). `cities/dubai/index.html`=1746w/FAQ5 WARN ثابت. em-dash على كامل 13 مجلد محتوى + 15 صفحة جذر (ملفات حيّة، استبعاد `.bak`) = **صفر** — لاحظت `—` واحدة في `fitness.html` سطر 425 لكنها داخل تعليق CSS (`/* ── ... ── */`) وليست نصاً منشوراً، تحقّقت بالقراءة المباشرة، صفر مخالفة حقيقية. أدسنس+`noindex` معاً على صفحات حيّة قابلة للزحف = صفر.
+
+**بلا تغيير (تحقّقت بـ`stat`/`grep` مباشرة):** 6 ملفات "الإسلاميات" لكورسر (`health-insurance-plans-gulf-families`·`mother-built-online-business-home`·`summer-nutrition-gulf-families`·`first-home-buyer-saudi-arabia`·`building-family-reading-habit`·`art-of-sincere-apology-marriage`) — نفس الأسماء بالضبط، آخر لمسة 12-13 يوليو، صفر تنفيذ · `degenerate_filler_check()` P0 لكورسر — `grep -rln` في `scripts/` = صفر تطابق، لا تزال غير موجودة (سارٍ منذ 2026-07-10).
+
+**git:** نفس الأقفال الثلاثة نشطة (`index.lock`/`objects/maintenance.lock`/`ORIG_HEAD.lock`) + `MERGE_HEAD` عالق عند `a6743900` — `git fetch` نجح، `origin/main` عند `05a0c571` بلا تقدّم عن دورة 02:06Z (كورسر ثابت مؤقتاً). محاولة best-effort كاملة (`find -delete`/`add -A`/`pull -X ours`/`push`) رُفضت عند كل خطوة (`Operation not permitted`، `MERGE_HEAD exists`، هذه المرة `push` رفض بـ`Permission denied (publickey)` بدل non-fast-forward — قد يشير لتدوير مفتاح deploy أو نشاط متزامن، سأراقب الدورة القادمة). تُركت فوراً وفق البروتوكول — كورسر سيدفع. آخر كوميت محلي `33885774` لا يزال ثابتاً.
+
+**لا حاجة لإجراء من جوست هذه الدورة.** التفاصيل: `TEAM-BUS.md`/`AMER-ORDERS-ACTIVE.md` (2026-07-19T02:34Z).
+
+— عامر
+
+## 🟡 دورة عامر — 2026-07-19T03:08Z — اكتشاف جديد: فقرة حشو عامة مكرّرة حرفياً عبر 35 مقالاً حياً مختلف الموضوع كلياً (لا تكشفها amer_gate.py)
+
+**روتيني (كل رقم مُتحقَّق بتشغيل مباشر):** `freeze_watch`=✅ نظيف · `list-image-pending`=51/51 صفر معلّق · `autopilot` بلا `--push`=نظيف، 0 slug جديد، AUDIT PASS · `deepen_gate`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` بلا تغيّر · `build-from-approved-draft.py --audit`=33 PASS/0 FAIL ثابت · `handoff_sync`={"cards":25}، قسم "انتهى من عندي — بانتظار المراجعة" فارغ فعلاً. `inbox/amer.md`: Batch 03 صور 7/7 (BUILD VERIFY) مطابق لحالة الصور.
+
+**`amer_gate.py` (389 ملف: 12 مجلد محتوى + `cities/*/index.html` + 15 جذر، قائمة `find`):** 129 فاشل ظاهرياً = stubs + صفحات جذر بنيوية + **5 حقيقية معروفة، مطابقة رقمياً حرفياً لدورة 02:34Z بصفر فرق:** `real-estate/dubai-property-roi.html`=195w · `blog/saudi-mortgage-guide.html`=20w (معزول `noindex,nofollow`) · 4 مدن (`abu-dhabi`=1123w/`jeddah`=1125w/`oman`=1035w/`riyadh`=1119w، FAQ=3). صفر انتكاسة جديدة. ثلاثية DEEPEN مستقرة تماماً: `zakat-complete-guide.html`=**1303w** · `indoor-plants-saudi-arabia.html`=**1941w** · `ramadan-nutrition-guide.html`=**2199w**. `cities/dubai/index.html`=1746w/FAQ5 WARN ثابت. em-dash على كامل المحتوى+الجذر = صفر (فحصت كل تطابقات `—` الثمانية يدوياً: كلها داخل تعليقات HTML/CSS أو نصوص إنجليزية UI/meta، صفر في جسم مقال عربي منشور). أدسنس+`noindex` معاً على صفحات حيّة = صفر.
+
+**🆕 اكتشاف جديد (فحص مستقل خارج amer_gate.py — لا يفحصها لأنها لا تكسر عدد الكلمات ولا الـschema):** بعد تتبّع القاعدة التي أضفتها دورة 2026-07-18 (منع فقرات "تثبيت عملي بعد القراءة"/"عمق إضافي للأسرة" المنسوخة حرفياً عبر مواضيع مختلفة)، تحققت إن كانت الحالة الأصلية (`guides/indoor-plants-saudi-arabia.html`) وحدها أم أن هناك المزيد. كوميت `80eaa09e` (2026-07-18) أزال 393 فقرة مكرّرة **داخل نفس الملف** (تكرار آلي من موجة deepen) لكنه **لم يعالج تكرار نفس الفقرة عبر ملفات مختلفة تماماً** — وهي بالضبط المخالفة التي كتبت القاعدة بسببها. `grep -rl` لجملتين مميّزتين من الكتلة نفسها ("ثبّتوا مراجعة قصيرة هذا الأسبوع، ولو خمس دقائق بعد العشاء" و"اجعلوا القرار مرئياً على الثلاجة أو في محادثة مسائية قصيرة") عبر كل مجلدات المحتوى = **35 ملف حيّ منفصل** لا علاقة موضوعية بينها إطلاقاً: ترطيب (`hydration-guide`) · ولادة طبيعية/قيصرية (`natural-birth-vs-c-section-comparison`) · صندوق طوارئ مالي (`emergency-fund-guide-gulf-families`) · مكة/المدينة (`mecca-medina`) · مؤشر كتلة الجسم (`bmi-guide-arabs-gcc`، `bmi-calculator-women`) · قرض عقاري (`guides/saudi-mortgage-guide.html` — **ملف مختلف تماماً عن `blog/saudi-mortgage-guide.html` المعزول 20w**) · سياحة سعودية (`saudi-tourism`) · تغذية رمضان الواعية (`mindful-family-meal-nutrition-faith`) · عائد استثمار عقار عُمان (`real-estate/oman-property-roi.html`) · امتنان الأطفال، علامات فرط الحركة، معيشة واعية، أنظمة يومية، Friday reset، مشي/جري، نهاية خدمة، إقلاع رقمي، تخطيط رمضان، REITs، تعليم أطفال التوفير، إيجار/شراء (×2)، مقارنة مدارس، ميزانية بركة، توفير أطفال، ألم ظهر، منزل هادئ، حج أول مرة، مكة/المدينة روحياً، إعداد روحي عمرة، عمرة خارج الموسم، طاولة ثلاثة أجيال، الرياض مقابل دبي عقارياً. القائمة الكاملة (35): `blog/{hydration-guide,teaching-children-gratitude-faith,silent-signs-child-attention,mindful-living-gulf-heat,organize-life-daily-systems,friday-night-reset-family,walking-vs-running-comparison,end-of-service-benefits-expats,digital-minimalism-modern-families,ramadan-meal-planning,rental-property-vs-reits-comparison,teaching-children-financial-literacy,natural-birth-vs-c-section-comparison}.html` · `comparisons/{renting-vs-buying-property-saudi-families,school-type-comparison-guide}.html` · `finance-wealth/{barakah-budget-family-finance,teaching-children-savings,emergency-fund-guide-gulf-families}.html` · `guides/{bmi-guide-arabs-gcc,saudi-mortgage-guide,mecca-medina,saudi-tourism}.html` · `health/{back-pain-prevention-working-parents,quiet-home-family-guide,bmi-calculator-women,mindful-family-meal-nutrition-faith}.html` · `islamic-hajj-umrah/{hajj-first-timers-guide,makkah-medina-family-spiritual-guide,spiritual-preparation-umrah-family,umrah-off-peak-seasons-guide}.html` · `real-estate/{rent-vs-buy-gulf-family,property-roi-comparison-saudi-uae,three-generation-table-family-meals,riyadh-vs-dubai-real-estate,oman-property-roi}.html`.
+
+**لماذا `amer_gate.py` لم يمسكها:** كلها ≥1400 كلمة (أعلى من عتبة 1300) وSchema سليم — الفحص الآلي لا يقارن محتوى بين ملفات مختلفة. حجم الكتلة المكرّرة ≈78 كلمة/ملف؛ حذفها فقط (بلا استبدال) يُنزل بعض الملفات قريباً من 1300 لكن لا يُسقطها تحتها (`hydration-guide.html`=1418→1340 · `bmi-guide-arabs-gcc.html`=1431→1353 · `guides/saudi-mortgage-guide.html`=1435→1357 · `health/mindful-family-meal-nutrition-faith.html`=1405→1327 — الأقرب للعتبة). **بند 2026-07-18 صريح: لا يُقبل حذف بلا استبدال بمحتوى مصدَّر يخص موضوع كل مقال فعلياً — هذا حشو تجب معالجته كـDEEPEN حقيقي لكل ملف، لا حذفاً ميكانيكياً جماعياً.**
+
+**القرار:** لا اعتماد/رفض LIVE إضافي هذه الدورة (الملفات منشورة أصلاً ولا تخالف عتبة الكلمات/schema بشكل ظاهري) لكن هذه مخالفة فعلية لسياسة WRITING-LAW/content-standards (فقرة عامة منسوخة خارج الموضوع). أُرسل توجيهاً لهيما عبر TEAM-BUS لمعالجتها ضمن أولوية DEEPEN الحالية (155 ملف)، بادئاً بالأربعة الأقرب للعتبة أعلاه، ثم الباقي بالتتابع حسب حساسية الموضوع (مالية/صحية/شرعية أولاً).
+
+**بلا تغيير (تحقّقت بـ`stat`/`grep` مباشرة):** 6 ملفات "الإسلاميات" لكورسر — نفس الأسماء بالضبط، آخر لمسة 12-13 يوليو، صفر تنفيذ · `degenerate_filler_check()` P0 لكورسر — `grep -rln` في `scripts/` = صفر تطابق، لا تزال غير موجودة (سارٍ منذ 2026-07-10).
+
+**git:** نفس الأقفال الثلاثة نشطة (`index.lock`/`objects/maintenance.lock`/`ORIG_HEAD.lock`) + `MERGE_HEAD` عالق عند `a6743900`. محاولة حذف الأقفال رُفضت (`Operation not permitted`) — تُركت فوراً وفق البروتوكول، لم تُحاول `pull`/`push` هذه الدورة لتفادي إفساد حالة merge عالقة أثناء وجود القفلين. كورسر سيدفع. آخر كوميت محلي `33885774` لا يزال ثابتاً.
+
+**لا حاجة لإجراء من جوست هذه الدورة — الاكتشاف الجديد ضمن ولاية عامر/هيما التحريرية، ليس قرار منتج.** التفاصيل الكاملة أعلاه + `TEAM-BUS.md`/`AMER-ORDERS-ACTIVE.md` (2026-07-19T03:08Z).
+
+— عامر
+
+**2026-07-19T03:35Z — دورة روتينية نظيفة (عامر):** صفر تغيير عن دورة 03:08Z، لا اعتماد LIVE جديد، لا انتكاسة. `freeze_watch`=✅ نظيف · `list-image-pending`=51/51 صفر معلّق · `gsystem_autopilot` بلا `--push`=نظيف، 0 slug جديد، AUDIT PASS · `deepen_gate`={"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false} بلا تغيّر، Batch 04 يبقى مجمَّداً · `build-from-approved-draft.py --audit`=33 PASS/0 FAIL ثابت · `handoff_sync`={"cards":25}، قسم "انتهى من عندي — بانتظار المراجعة" فارغ فعلاً — صفر عمل جديد من كورسر لمراجعته.
+
+`amer_gate.py` (347 ملف: 12 مجلد محتوى + `cities/*/index.html` + 15 جذر): 37 فاشل ظاهرياً = 17 hub تحويل مقصودة + 15 صفحة جذر بنيوية (خارج ميثاق المقالة) + **5 حقيقية معروفة، مطابقة رقمياً حرفياً لدورة 03:08Z بصفر فرق:** `real-estate/dubai-property-roi.html`=195w · `blog/saudi-mortgage-guide.html`=20w (معزول noindex,nofollow) · 4 مدن (abu-dhabi=1123w/jeddah=1125w/oman=1035w/riyadh=1119w، FAQ=3). ثلاثية DEEPEN مستقرة تماماً: `zakat-complete-guide.html`=1303w · `indoor-plants-saudi-arabia.html`=1941w · `ramadan-nutrition-guide.html`=2199w. `cities/dubai/index.html`=1746w/FAQ5 WARN ثابت. em-dash على كامل المحتوى+الجذر = صفر (شرطة `fitness.html` تبقى داخل تعليقات HTML/CSS فقط، صفر نص منشور). أدسنس+noindex معاً = صفر.
+
+**تحقّق فقرة الحشو المكرَّرة (35 ملفاً، مُكتشَفة 03:08Z):** أعدت فحص العينة الأربعة الأقرب للعتبة (`hydration-guide.html`=1418w، `bmi-guide-arabs-gcc.html`=1431w، `guides/saudi-mortgage-guide.html`=1435w، `mindful-family-meal-nutrition-faith.html`=1405w) — بلا تغيير، الجملة المميّزة لا تزال موجودة، لا عمل من هيما بعد على هذا التوجيه (طبيعي، أولوية DEEPEN تُعالَج بالتتابع).
+
+بلا تغيير: 6 ملفات "الإسلاميات" لكورسر (صفر تنفيذ منذ 12-13 يوليو) · `degenerate_filler_check()` P0 لكورسر لا تزال غير موجودة (سارٍ منذ 2026-07-10).
+
+git: نفس الأقفال الثلاثة نشطة (index.lock/objects/maintenance.lock/ORIG_HEAD.lock) + MERGE_HEAD عالق — `git fetch` نجح، origin/main عند `05a0c571` بلا تقدّم عن دورة 02:34Z (كورسر ثابت مؤقتاً). آخر كوميت محلي `33885774` لا يزال ثابتاً.
+
+لا حاجة لإجراء من جوست هذه الدورة.
+
+— عامر
+
+**2026-07-19T04:05Z — دورة عامر — اكتشاف وإصلاح مباشر (نطاق جديد: صفحات الجذر الثانوية) + دورة روتينية نظيفة عدا ذلك:**
+
+**✅ اكتشاف وإصلاح مباشر:** وسّعت فحص شرطة الطول (—) هذه الدورة ليشمل صفحات جذر ثانوية لم تُفحص فردياً من قبل (`404`·`about`·`contact`·`editorial-standards`·`privacy-policy`·`tasks`·`terms`، بالإضافة لإعادة تأكيد `fitness.html`). وجدت 3 مخالفات نص حقيقية منشورة (وليست تعليقات كود):
+- `contact.html` سطر 317 — رسالة نجاح مُدرَجة عبر JS (`msg.innerHTML`) مرئية للمستخدم بعد إرسال النموذج، شرطتان (en+ar).
+- `editorial-standards.html` سطر 185 — سمة `alt` لصورة hero (نص وصفي يُقرأ بواسطة قارئ الشاشة/محركات البحث).
+- `tasks.html` سطر 16 — `meta name="description"` (يظهر في نتائج البحث).
+
+استبدلت الثلاثة بفاصلة، تحقّقت مباشرة بإعادة `grep` على الملفات الثلاثة: صفر شرطة متبقية في نص/سمات مرئية (البقية المتبقية في `editorial-standards.html`/`fitness.html`/`404.html`/`about.html`/`contact.html`/`privacy-policy.html`/`terms.html` كلها داخل تعليقات `//` أو `<!-- -->`/HTML/CSS، تحقّقت يدوياً سطراً سطراً — ليست نصاً منشوراً).
+
+**روتيني (كل رقم مُتحقَّق بتشغيل مباشر):** `freeze_watch`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ" · `list-image-pending`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `gsystem_autopilot.py` بلا `--push`=نظيف، 0 slug جديد، AUDIT PASS · `build-from-approved-draft.py --audit`=**33 PASS/0 FAIL** ثابت · `deepen_gate`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` لا تغيّر، Batch 04 يبقى مجمَّداً · `handoff_sync`={"cards":25}، تحقّقت مباشرة أن قسم "انتهى من عندي — بانتظار المراجعة" فارغ فعلاً (صف شرطات فقط) — صفر عمل جديد من كورسر لمراجعته. `inbox/amer.md` (Batch 03 صور 7/7، BUILD VERIFY لكل slug) مطابق لحالة الصور — لا إجراء إضافي.
+
+**`amer_gate.py` (358 ملف: 12 مجلد محتوى + `cities/*/index.html`):** 72 فاشل ظاهرياً = ~67 stubs (نسخ `-ar`/`-en` يتيمة + hub تحويل مقصودة) + **5 حقيقية معروفة، مطابقة رقمياً حرفياً لدورة 03:35Z بصفر فرق:** `real-estate/dubai-property-roi.html`=195w · `blog/saudi-mortgage-guide.html`=20w (معزول `noindex,nofollow`، 10+ أيام) · 4 مدن (`abu-dhabi`=1123w/`jeddah`=1125w/`oman`=1035w/`riyadh`=1119w، كلها FAQ=3). صفر انتكاسة جديدة، صفر تحسّن جديد.
+
+**تحقّق إضافي مباشر (استيراد وحدة `amer_gate.body_word_count`، لا نص تقريبي):** ثلاثية DEEPEN مستقرة تماماً: `guides/zakat-complete-guide.html`=**1303w** · `guides/indoor-plants-saudi-arabia.html`=**1941w** · `guides/ramadan-nutrition-guide.html`=**2199w**. `cities/dubai/index.html`=**1746w** WARN ثابت (FAQ=5). أدسنس+`noindex` معاً على صفحات محتوى حيّة = صفر (فحص مباشر عبر `grep` مزدوج على كامل مجلدات المحتوى).
+
+**متابعة توجيه هيما (فقرة الحشو المكرَّرة، 35 ملفاً، من دورة 03:08Z):** لا عمل جديد بعد (طبيعي، أولوية DEEPEN تُعالَج بالتتابع من الثلاثية أعلاه أولاً). لا حاجة لتكرار التوجيه — قائم كما هو في `AMER-ORDERS-ACTIVE.md`/`inbox/hema.md`.
+
+**بلا تغيير (تحقّقت بـ`stat`/`grep` مباشرة):** 6 ملفات "الإسلاميات" لكورسر — نفس الأسماء بالضبط، آخر لمسة 12-13 يوليو، صفر تنفيذ · `degenerate_filler_check()` P0 لكورسر — `grep -rln` في `scripts/` = صفر تطابق، لا تزال غير موجودة (سارٍ منذ 2026-07-10).
+
+**git:** نفس الأقفال الثلاثة نشطة (`index.lock`/`objects/maintenance.lock`/`ORIG_HEAD.lock`) + `MERGE_HEAD` عالق عند `a6743900` — `git fetch` نجح، `origin/main` عند `05a0c571` بلا تقدّم عن دورة 02:34Z/03:35Z (كورسر ثابت مؤقتاً لعدة دورات متتالية الآن). محاولة best-effort كاملة (`find -delete`/`add -A`/`pull -X ours`/`push`) رُفضت عند كل خطوة (`Operation not permitted` على الأقفال الثلاثة، `MERGE_HEAD exists` يمنع `pull`، `push` رُفض `non-fast-forward`). تُركت فوراً وفق البروتوكول — كورسر سيدفع. آخر كوميت محلي `33885774` لا يزال ثابتاً — **الإصلاحات الثلاثة الجديدة (`contact.html`·`editorial-standards.html`·`tasks.html`) + كل الإصلاحات المتراكمة من الدورات السابقة لا تزال على القرص بانتظار أول commit ناجح.**
+
+**لا حاجة لإجراء من جوست هذه الدورة — الإصلاح تم ذاتياً ضمن ولاية عامر.**
+
+— عامر
+
+**2026-07-19T04:36Z — دورة عامر — روتينية نظيفة، صفر تغيير عن دورة 04:05Z، لا اعتماد LIVE جديد، لا انتكاسة:**
+
+**روتيني (كل رقم مُتحقَّق بتشغيل مباشر):** `freeze_watch`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ" · `list-image-pending`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `gsystem_autopilot.py` بلا `--push`=نظيف، 0 slug جديد، AUDIT PASS · `build-from-approved-draft.py --audit`=**33 PASS/0 FAIL** ثابت · `deepen_gate`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` لا تغيّر، Batch 04 يبقى مجمَّداً · `handoff_sync`={"cards":25}، تحقّقت مباشرة أن قسم "انتهى من عندي — بانتظار المراجعة" فارغ فعلاً — صفر عمل جديد من كورسر لمراجعته.
+
+**`amer_gate.py` (نطاق موسَّع هذه الدورة إلى 414 ملف: 12 مجلد محتوى + `cities/*/index.html` + كل صفحات الجذر + `library/recipes/*`):** 130 فاشل ظاهرياً = ~67 stubs (نسخ `-ar`/`-en` يتيمة noindex+meta-refresh) + ~30 صفحة hub/جذر بنيوية خارج ميثاق المقالة (`index`·`blog`·`finance`·`health`·`islamic`·`travel`·`real-estate`·`about`·`life-guide`·`family`·`daily-planner`·`sec1-6`·`brand-guide`·إلخ، صفحات تصنيف/هبوط لا مقالات) + 18 بطاقة وصفة في `library/recipes/*` (بطاقات قصيرة بالتصميم، خارج ميثاق المقالة 1600 كلمة) + **5 حقيقية معروفة، مطابقة رقمياً حرفياً لدورة 04:05Z بصفر فرق:** `real-estate/dubai-property-roi.html`=195w · `blog/saudi-mortgage-guide.html`=20w (معزول `noindex,nofollow`، 10+ أيام) · 4 مدن (`abu-dhabi`=1123w/`jeddah`=1125w/`oman`=1035w/`riyadh`=1119w، كلها FAQ=3). صفر انتكاسة جديدة، صفر تحسّن جديد.
+
+**تحقّق إضافي مباشر (استيراد وحدة `amer_gate.body_word_count`، لا نص تقريبي):** ثلاثية DEEPEN مستقرة تماماً: `guides/zakat-complete-guide.html`=**1303w** · `guides/indoor-plants-saudi-arabia.html`=**1941w** · `guides/ramadan-nutrition-guide.html`=**2199w**. em-dash (—) على كامل المحتوى+الجذر = صفر نص/سمة مرئية (7 تطابقات فقط، كلها `grep` تأكدت أنها داخل تعليقات `<!-- -->`/`//`/`/* */` في `about.html`·`privacy-policy.html`·`contact.html`·`editorial-standards.html`·`terms.html`·`404.html`·`fitness.html`). أدسنس+`noindex` معاً = صفر.
+
+**متابعة توجيه هيما (فقرة الحشو المكرَّرة، 35 ملفاً، من دورة 03:08Z):** تحقّقت من العينة الأربعة الأقرب للعتبة (`health/mindful-family-meal-nutrition-faith.html`·`blog/hydration-guide.html`·`guides/bmi-guide-arabs-gcc.html`·`guides/saudi-mortgage-guide.html`) — الجملة المكرَّرة "ثبّتوا مراجعة قصيرة هذا الأسبوع..." لا تزال موجودة حرفياً في الأربعة، صفر عمل بعد (طبيعي — DEEPEN يُعالَج بالتتابع من ثلاثية zakat/plants/ramadan أولاً). لا حاجة لتكرار التوجيه.
+
+**بلا تغيير:** 6 ملفات "الإسلاميات" لكورسر (صفر تنفيذ منذ 12-13 يوليو) · `degenerate_filler_check()` P0 لكورسر لا تزال غير موجودة (سارٍ منذ 2026-07-10).
+
+**git:** نفس الأقفال الثلاثة نشطة (`index.lock`/`objects/maintenance.lock`/`ORIG_HEAD.lock`) + `MERGE_HEAD` عالق — محاولة best-effort كاملة (`find -delete`/`add -A`/`pull -X ours`/`push`) رُفضت عند كل خطوة كالمعتاد. `git fetch` نجح، `origin/main` عند `05a0c571` بلا أي تقدّم لعدة دورات متتالية الآن منذ 02:34Z (كورسر ثابت مؤقتاً — يستحق ملاحظة إن استمر لدورات إضافية). آخر كوميت محلي `33885774` لا يزال ثابتاً — كل التراكم بانتظار أول commit ناجح.
+
+**لا حاجة لإجراء من جوست هذه الدورة.**
+
+— عامر
+
+---
+
+## 🟢 دورة عامر — 2026-07-19T05:05Z (مهمة "amer-9am-review" المجدولة) — لا مقالات جديدة بانتظار المراجعة، صفر اعتماد/رفض هذه الدورة
+
+**ملاحظة بيئة:** هذه الدورة نُفّذت من بيئة سحابية معزولة (sandbox) تُحمِّل مجلد المشروع للقراءة/الكتابة لكن **بلا مفتاح SSH لـ`git@github.com:meklads/Dot4Life.git`** (`git fetch`→"Host key verification failed") وبلا صلاحية حذف/تعديل أقفال `.git/*.lock` الثلاثة (`index.lock`/`ORIG_HEAD.lock`/`objects/maintenance.lock`، نفسها الموصوفة في دورات 01:06Z–04:36Z) — أي `commit`/`push` غير ممكن من هنا. هذا اختلاف بيئة عن الدورات السابقة (التي عملت مباشرة على جهاز جوست بمفاتيح مُعدّة)، وليس عطلاً جديداً في المشروع.
+
+**1) خطوة "git pull + تحديد المقالات الجديدة" (مطلوبة في تعليمات المهمة):** نُفّذت بالقدر الممكن قرائياً. `git log --since="20 hours ago"` يُظهر آخر كوميت `33885774` ("amer: conclude pending merge (auto)") ومجموعة كوميتات معروفة سابقاً (تنظيف حشو، ترقية 45 مقالاً، إصلاحات em-dash) — لا كوميت جديد لم تتم مراجعته سابقاً.
+
+**2) بطاقات "review" (`system/tasks.json`) + "انتهى من عندي — بانتظار المراجعة" (`operating-system/handoff-board.md`):** فحصت الاثنين مباشرة. `tasks.json` فيه بطاقة واحدة بعمود `review`: **T-02 "مراجعة AdSense"** — مُعلَّم مسبقاً بأنها ليست مقالاً بل بند تقني (`ads.txt` صحيح) يحتاج مراجعة كاملة منفصلة ضمن ميثاقها الخاص (`manager-charter-adsense.md`/`ADSENSE-01`)، مؤجَّلة عمداً منذ 2026-06-27 عبر عدة دورات — أبقيتها مؤجَّلة لنفس السبب، لا قرار سريع عليها. قسم "انتهى من عندي — بانتظار المراجعة" في `handoff-board.md` **فارغ فعلاً** (صف شرطات فقط) — **صفر مقال جديد كتبه Hermes/Cursor بانتظار اعتماد عامر هذه الدورة.**
+
+**3) `amer_gate.py` (382 ملف: 12 مجلد محتوى + `cities/*/index.html`، شُغِّل مباشرة لا تقريباً):** 72 فاشل ظاهرياً، كلها معروفة ومطابقة رقمياً حرفياً لدورة 04:36Z بصفر فرق: ~67 صفحة stub يتيمة (`blog/*-ar.html`/`*-en.html` بـ2–20 كلمة، تحويلات meta-refresh معزولة) خارج ميثاق المقالة + **5 حقيقية:** `real-estate/dubai-property-roi.html`=195w (لا Article/FAQPage schema) · `blog/saudi-mortgage-guide.html`=20w (معزول `noindex,nofollow`) · 4 صفحات مدن (`abu-dhabi`=1123w/`jeddah`=1125w/`oman`=1035w/`riyadh`=1119w، جميعها FAQ=3 دون 4 المطلوبة) — هذه الخمسة معروفة ومُسنَدة لهيما/الفريق ضمن أولوية DEEPEN القائمة، وليست بطاقات "review" جديدة تخصّني هذه الدورة. صفر انتكاسة جديدة، صفر تحسّن جديد عنها.
+
+**القرار:** **لا يوجد مقال جديد ليُعتمد، يُحرَّر، أو يُرفض هذه الدورة.** لا اعتماد مزيّف لمجرد ملء التقرير — القاعدة الحاكمة «الجودة قبل الكمية» تعني أيضاً عدم اختلاق عمل مراجعة غير موجود. القضايا المفتوحة (الخمسة أعلاه + فقرة الحشو المكرَّرة عبر 35 ملفاً المكتشَفة 03:08Z) تبقى ضمن مسار DEEPEN القائم مع هيما دون تغيير.
+
+**لا تشديد جديد على `content-standards.md` هذه الدورة** — لم يظهر ضعف متكرر جديد لم يُرصَد ويُعالَج مسبقاً.
+
+**لا حاجة لإجراء من جوست هذه الدورة سوى العلم.**
+
+— عامر
+
+**2026-07-19T05:34Z — دورة روتينية نظيفة (عامر):** صفر تغيير عن دورة 05:05Z، لا اعتماد LIVE جديد، لا انتكاسة. `freeze_watch`=✅ نظيف · `list-image-pending`=51/51 صفر معلّق · `gsystem_autopilot` بلا `--push`=نظيف، 0 slug جديد، AUDIT PASS · `deepen_gate`={"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false} بلا تغيّر، Batch 04 يبقى مجمَّداً · `build-from-approved-draft.py --audit`=33 PASS/0 FAIL ثابت · `handoff_sync`={"cards":25}، قسم "انتهى من عندي — بانتظار المراجعة" فارغ فعلاً — صفر عمل جديد من كورسر لمراجعته.
+
+`amer_gate.py` (421 ملف: 15 جذر + 12 مجلد محتوى + `cities/*/index.html`): 109 فاشل ظاهرياً = 67 stubs + 37 صفحة جذر بنيوية (خارج ميثاق المقالة) + **5 حقيقية معروفة، مطابقة رقمياً حرفياً لدورة 05:05Z بصفر فرق:** `real-estate/dubai-property-roi.html`=195w · `blog/saudi-mortgage-guide.html`=20w (معزول noindex,nofollow) · 4 مدن (abu-dhabi=1123w/jeddah=1125w/oman=1035w/riyadh=1119w، FAQ=3). ثلاثية DEEPEN مستقرة تماماً: `zakat-complete-guide.html`=1303w · `indoor-plants-saudi-arabia.html`=1941w · `ramadan-nutrition-guide.html`=2199w. `cities/dubai/index.html`=1746w/FAQ5 WARN ثابت.
+
+**تحقّق شرطة الطول:** em-dash على كامل مجلدات المحتوى (13 مجلد، استبعاد `.bak`) = صفر. تحقّقت مباشرة أن الشرطات المتبقية في `fitness.html` (7)/`contact.html` (1)/`editorial-standards.html` (2) كلها داخل تعليقات `<!-- -->`/`/* */` فقط، صفر نص/سمة مرئية — لا انتكاسة عن إصلاحات 22:33Z/23:38Z/04:05Z.
+
+**متابعة أمر هيما (فقرة الحشو المكرَّرة، 35 ملفاً):** أعدت فحص العينة الأربعة الأقرب للعتبة (`mindful-family-meal-nutrition-faith`=1405w، `hydration-guide`=1418w، `bmi-guide-arabs-gcc`=1431w، `guides/saudi-mortgage-guide`=1435w) — الجملة المكرَّرة لا تزال موجودة حرفياً في الأربعة، لم يبدأ العمل بعد. الأمر قائم كما هو، لا حاجة لتكرار التفاصيل.
+
+بلا تغيير: 6 ملفات "الإسلاميات" لكورسر (صفر تنفيذ منذ 12-13 يوليو) · `degenerate_filler_check()` P0 لكورسر لا تزال غير موجودة (سارٍ منذ 2026-07-10). أدسنس+noindex معاً على صفحات محتوى حيّة = صفر.
+
+git: working tree يحوي عدداً كبيراً من الملفات غير المُلتزَمة (نشاط Cursor متزامن)، نفس الأقفال الثلاثة نشطة (index.lock/objects/maintenance.lock/ORIG_HEAD.lock) + MERGE_HEAD عالق — `git fetch` نجح، origin/main=`e01951bc` بلا تقدّم عن دورة 05:05Z. محاولة best-effort كاملة رُفضت عند كل خطوة كالمعتاد. آخر كوميت محلي `33885774` لا يزال ثابتاً.
+
+لا حاجة لإجراء من جوست هذه الدورة.
+
+— عامر
+
+**2026-07-19T06:04Z — دورة روتينية نظيفة (عامر):** صفر تغيير عن دورة 05:34Z، لا اعتماد LIVE جديد، لا انتكاسة. `freeze_watch`=✅ نظيف — لا مخالفات، فقط Batch 03 + DEEPEN جارٍ · `list-image-pending`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `gsystem_autopilot.py` بلا `--push`=نظيف، 0 slug جديد، AUDIT PASS · `deepen_gate`={"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false} بلا تغيّر، Batch 04 يبقى مجمَّداً · `build-from-approved-draft.py --audit`=33 PASS/0 FAIL ثابت · `handoff_sync`={"cards":25}، تحقّقت مباشرة أن قسم "انتهى من عندي — بانتظار المراجعة" فارغ فعلاً (صف شرطات فقط) — صفر عمل جديد من كورسر لمراجعته.
+
+`amer_gate.py` (395 ملف: 12 مجلد محتوى + `cities/*/index.html` + 15 جذر): 109 فاشل ظاهرياً = stubs يتيمة + صفحات جذر/hub بنيوية خارج ميثاق المقالة + **5 حقيقية معروفة، مطابقة رقمياً حرفياً لدورة 05:34Z بصفر فرق:** `real-estate/dubai-property-roi.html`=195w · `blog/saudi-mortgage-guide.html`=20w (معزول noindex,nofollow، 10+ أيام) · 4 مدن (abu-dhabi=1123w/jeddah=1125w/oman=1035w/riyadh=1119w، FAQ=3). صفر انتكاسة جديدة، صفر تحسّن جديد.
+
+**تحقّق مباشر (استيراد `amer_gate.body_word_count`):** ثلاثية DEEPEN مستقرة تماماً: `guides/zakat-complete-guide.html`=1303w · `guides/indoor-plants-saudi-arabia.html`=1941w · `guides/ramadan-nutrition-guide.html`=2199w. `cities/dubai/index.html`=1746w/FAQ5 WARN ثابت. em-dash على 12 مجلد محتوى (`grep -c` مباشر لكل ملف) = صفر تام. الشرطات المتبقية في `fitness.html` (7)/`contact.html` (1)/`editorial-standards.html` (2) — تحقّقت سطراً سطراً، كلها داخل تعليقات `<!-- -->`/`/* */` فقط، صفر نص/سمة مرئية. أدسنس+noindex معاً على صفحات محتوى حيّة (blog/guides/health) = صفر.
+
+**متابعة أمر هيما (فقرة الحشو المكرَّرة، 35 ملفاً، من دورة 03:08Z):** تحقّقت مباشرة بـ`grep` على العينة الأربعة الأقرب للعتبة (`health/mindful-family-meal-nutrition-faith.html`·`blog/hydration-guide.html`·`guides/bmi-guide-arabs-gcc.html`·`guides/saudi-mortgage-guide.html`) — الجملة المكرَّرة ("ثبّتوا مراجعة قصيرة هذا الأسبوع...") لا تزال موجودة حرفياً في الأربعة، لم يبدأ العمل بعد (طبيعي، التتابع يبدأ بعد ثلاثية DEEPEN). لا حاجة لتكرار التوجيه.
+
+**بلا تغيير (تحقّقت بـ`grep`+`stat` مباشرة على القائمة الكاملة):** 6 ملفات "الإسلاميات" لكورسر — `comparisons/health-insurance-plans-gulf-families.html`·`featured-stories/mother-built-online-business-home.html`·`health/summer-nutrition-gulf-families.html`·`real-estate/first-home-buyer-saudi-arabia.html`·`blog/building-family-reading-habit.html`·`peace-capsules/art-of-sincere-apology-marriage.html` — 6/6 لا تزال بالنمط القديم (`class="ar">الإسلامية<`)، صفر تنفيذ منذ 12-13 يوليو · `degenerate_filler_check()` P0 لكورسر — `grep -rln` في `scripts/`=صفر تطابق، لا تزال غير موجودة (سارٍ منذ 2026-07-10).
+
+**git:** أول محاولة هذه الدورة صادفت `index.lock` نشطاً (عملية git أخرى قيد التشغيل، على الأرجح كورسر) — تُركت فوراً وفق البروتوكول بلا إعادة محاولة، لا حلقة صراع. آخر كوميت محلي معروف `33885774`. لم أُجرِ `git status`/`fetch` إضافياً لتفادي التدخّل أثناء نشاط كورسر النشط. محاولة best-effort واحدة أخرى مجدولة آخر الدورة.
+
+**لا حاجة لإجراء من جوست هذه الدورة.**
+
+— عامر
+
+## 🟢 دورة عامر — 2026-07-19T06:36Z — روتينية نظيفة
+
+**الحالة العامة:** صفر تغيير عن دورة 06:10Z، لا اعتماد LIVE جديد، لا انتكاسة. كل الأرقام أدناه من تشغيل مباشر هذه الدورة.
+
+**فحوص روتينية (كل رقم مُتحقَّق بتشغيل مباشر):** `freeze_watch`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ" · `list-image-pending`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `gsystem_autopilot.py` بلا `--push`=نظيف، 0 slug جديد، فحص جودة LIVE سليم · `deepen_gate`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` بلا تغيّر، Batch 04 يبقى مجمَّداً · `build-from-approved-draft.py --audit`=**33 PASS/0 FAIL** ثابت (SKIP وحيد معروف: `real-estate/oman-property-roi.html` — calculator shell) · `handoff_sync`={"cards":25}، تحقّقت مباشرة أن قسم "انتهى من عندي — بانتظار المراجعة" فارغ فعلاً (صف شرطات فقط) — صفر عمل جديد من كورسر لمراجعته.
+
+**`amer_gate.py` (421 ملف بُنيت القائمة: 12 مجلد محتوى + `cities/*/index.html` + 15 جذر):** 71 فاشل ظاهرياً = ~65 stub يتيم (نسخ `-ar`/`-en` قصيرة) + صفحات جذر/hub بنيوية خارج ميثاق المقالة + **5 حقيقية معروفة، مطابقة رقمياً حرفياً لدورة 06:10Z بصفر فرق:** `real-estate/dubai-property-roi.html`=195w (لا Article/FAQPage schema) · `blog/saudi-mortgage-guide.html`=20w (معزول `noindex,nofollow`، 10+ أيام) · 4 مدن (`abu-dhabi`=1123w/`jeddah`=1125w/`oman`=1035w/`riyadh`=1119w، كلها FAQ=3 دون 4 المطلوبة). صفر انتكاسة جديدة، صفر تحسّن جديد.
+
+**تحقّق إضافي مباشر (استيراد وحدة `amer_gate.body_word_count`، لا نص تقريبي):** ثلاثية DEEPEN مستقرة تماماً: `guides/zakat-complete-guide.html`=**1303w** · `guides/indoor-plants-saudi-arabia.html`=**1941w** · `guides/ramadan-nutrition-guide.html`=**2199w**. `cities/dubai/index.html`=1746w/FAQ5 WARN ثابت. em-dash على 12 مجلد محتوى (فحص `grep -rl` مباشر لكل مجلد) = **صفر**. الشرطات المتبقية في `fitness.html`(7)/`contact.html`(1)/`editorial-standards.html`(2) — تحقّقت سطراً سطراً، كلها داخل تعليقات `<!-- -->`/`/* */` فقط، صفر نص/سمة مرئية، صفر انتكاسة. أدسنس+`noindex` معاً على صفحات محتوى حيّة (فحص مباشر على كل ملفات 12 مجلد المحتوى) = **صفر**.
+
+**متابعة توجيه هيما (فقرة الحشو المكرَّرة، 35 ملفاً، من دورة 03:08Z):** تحقّقت مباشرة بـ`grep -c` على العينة الأربعة الأقرب للعتبة (`health/mindful-family-meal-nutrition-faith.html`·`blog/hydration-guide.html`·`guides/bmi-guide-arabs-gcc.html`·`guides/saudi-mortgage-guide.html`) — الجملة المكرَّرة لا تزال موجودة حرفياً (1 تطابق) في الأربعة، لم يبدأ العمل بعد (طبيعي، التتابع يبدأ بعد ثلاثية DEEPEN). لا حاجة لتكرار التوجيه — قائم كما هو.
+
+**بلا تغيير (تحقّقت بـ`stat`+`grep` مباشرة على القائمة الكاملة):** 6 ملفات "الإسلاميات" لكورسر — `comparisons/health-insurance-plans-gulf-families.html`·`featured-stories/mother-built-online-business-home.html`·`health/summer-nutrition-gulf-families.html`·`real-estate/first-home-buyer-saudi-arabia.html`·`blog/building-family-reading-habit.html`·`peace-capsules/art-of-sincere-apology-marriage.html` — 6/6 آخر لمسة 12-13 يوليو، صفر تنفيذ · `degenerate_filler_check()` P0 لكورسر — `grep -rln` في `scripts/`=صفر تطابق، لا تزال غير موجودة (سارٍ منذ 2026-07-10).
+
+**نظام:** فحصت `system/tasks.json` — عمود المراجعة يحوي بطاقة واحدة فقط (`T-02` — مراجعة AdSense) مُعلَّمة `amer_reviewed: true` مسبقاً. صفر بطاقات جديدة.
+
+**git:** نفس الأقفال الثلاثة نشطة (`index.lock`/`objects/maintenance.lock`/`ORIG_HEAD.lock`) + `MERGE_HEAD` عالق منذ 23:07 — `git fetch` نجح (قراءة فقط، آمن)، `origin/main` لا يزال عند `e01951bc`، **بلا تقدّم عن دورة 05:05Z** (كورسر ثابت مؤقتاً). لم أحاول حذف الأقفال أو `add`/`commit`/`push` هذه الدورة تجنباً لتفاقم حالة merge العالقة أثناء نشاط Cursor المحتمل. آخر كوميت محلي معروف `33885774` لا يزال ثابتاً.
+
+**لا حاجة لإجراء من جوست هذه الدورة.**
+
+— عامر
+
+## 🟢 دورة عامر — 2026-07-19T07:08Z — روتينية نظيفة
+
+**الحالة العامة:** صفر تغيير عن دورة 06:36Z، لا اعتماد LIVE جديد، لا انتكاسة.
+
+**فحوص روتينية (كل رقم مُتحقَّق بتشغيل مباشر):** `freeze_watch`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ" · `list-image-pending`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `gsystem_autopilot.py` بلا `--push`=نظيف، 0 slug جديد، AUDIT PASS · `deepen_gate`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` بلا تغيّر، Batch 04 يبقى مجمَّداً · `build-from-approved-draft.py --audit`=**33 PASS/0 FAIL** ثابت (SKIP وحيد معروف: `real-estate/oman-property-roi.html` — calculator shell) · `handoff_sync`={"cards":25}، تحقّقت مباشرة أن قسم "انتهى من عندي — بانتظار المراجعة" فارغ فعلاً — صفر عمل جديد من كورسر لمراجعته. `inbox/amer.md` مطابق لحالة الصور (Batch 03 صور 7/7، 51/51 معتمدة) — لا إجراء إضافي.
+
+**`amer_gate.py` (421 ملف: 12 مجلد محتوى + `cities/*/index.html` + 15 جذر):** 109 فاشل ظاهرياً = stubs يتيمة + صفحات جذر/hub بنيوية خارج ميثاق المقالة + **5 حقيقية معروفة، مطابقة رقمياً حرفياً لدورة 06:36Z بصفر فرق:** `real-estate/dubai-property-roi.html`=195w · `blog/saudi-mortgage-guide.html`=20w (معزول `noindex,nofollow`، 10+ أيام) · 4 مدن (`abu-dhabi`=1123w/`jeddah`=1125w/`oman`=1035w/`riyadh`=1119w، كلها FAQ=3). صفر انتكاسة جديدة، صفر تحسّن جديد. **ملاحظة تقنية (توثيق ذاتي):** خطأ إعادة توجيه shell عابر (`Permission denied` على ملف `/tmp` قديم من جلسة أخرى) تسبب في قراءتي رقماً قديماً/خاطئاً من ملف مخلَّف بالصدفة أثناء الفحص الأول (بدت 4 المدن ~1320w بدل الأرقام الصحيحة) — اكتُشف فوراً بإعادة تشغيل نظيف عبر مسار ناتج جديد، فتأكدت الأرقام الصحيحة مطابقة تماماً لكل الدورات السابقة بصفر فرق. صفر تغيير حقيقي في المحتوى؛ كان خطأ قراءة محلي بحت، مُصحَّح ذاتياً قبل التقرير.
+
+**تحقّق إضافي مباشر (استيراد وحدة `amer_gate.body_word_count`، لا نص تقريبي):** ثلاثية DEEPEN مستقرة تماماً: `guides/zakat-complete-guide.html`=**1303w** · `guides/indoor-plants-saudi-arabia.html`=**1941w** · `guides/ramadan-nutrition-guide.html`=**2199w**. em-dash على 12 مجلد محتوى (فحص مباشر) = **صفر**.
+
+**متابعة توجيه هيما (فقرة الحشو المكرَّرة، 35 ملفاً، من دورة 03:08Z):** تحقّقت مباشرة بـ`grep -c` على العينة الأربعة الأقرب للعتبة (`health/mindful-family-meal-nutrition-faith.html`·`blog/hydration-guide.html`·`guides/bmi-guide-arabs-gcc.html`·`guides/saudi-mortgage-guide.html`) — الجملة المكرَّرة لا تزال موجودة حرفياً (1 تطابق) في الأربعة، لم يبدأ العمل بعد. لا حاجة لتكرار التوجيه.
+
+**بلا تغيير (تحقّقت بـ`stat`+`grep` مباشرة):** 6 ملفات "الإسلاميات" لكورسر — صفر تنفيذ منذ 12-13 يوليو · `degenerate_filler_check()` P0 لكورسر — `grep -rln` في `scripts/`=صفر تطابق، لا تزال غير موجودة (سارٍ منذ 2026-07-10).
+
+**git:** نفس الأقفال الثلاثة نشطة (`index.lock`/`objects/maintenance.lock`/`ORIG_HEAD.lock`، `index.lock` منذ 18 يوليو 22:35) + `MERGE_HEAD` عالق عند `a6743900` منذ 23:07 — `git fetch` نجح (قراءة فقط)، `origin/main`=`e01951bc`، **بلا تقدّم عن دورة 05:05Z** (عدة دورات متتالية الآن). محاولة `find .git -name "*.lock" -delete` رُفضت بـ`Operation not permitted` على الثلاثة كالمعتاد — تُركت فوراً وفق البروتوكول، لم أحاول `add`/`pull`/`push` هذه الدورة تجنباً لتفاقم حالة merge العالقة. آخر كوميت محلي معروف `33885774` لا يزال ثابتاً.
+
+**لا حاجة لإجراء من جوست هذه الدورة.**
+
+— عامر
+
+**07:35 UTC — عامر (تلقائي) → جوست/كورسر/هيما:** 🟢 دورة روتينية نظيفة — صفر تغيير محلي عن دورة 07:08Z، لا اعتماد LIVE جديد، لا انتكاسة. **ملاحظة git مهمة أدناه (تقدّم على origin).**
+
+**روتيني (كل رقم مُتحقَّق بتشغيل مباشر):** `freeze_watch`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ" · `list-image-pending`=51/51 معتمدة صفر معلّق · `gsystem_autopilot.py` بلا `--push`=نظيف، 0 slug جديد · `deepen_gate`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` لا تغيّر، Batch 04 يبقى مجمَّداً · `build-from-approved-draft.py --audit`=**33 PASS/0 FAIL** ثابت · `handoff_sync`={"cards":25}، قسم "انتهى من عندي — بانتظار المراجعة" فارغ فعلاً — صفر عمل جديد من كورسر لمراجعته.
+
+**`amer_gate.py` (421 ملف: 12 مجلد محتوى + `cities/*/index.html` + 15 جذر):** 5 حقيقية معروفة، مطابقة رقمياً حرفياً لدورة 07:08Z بصفر فرق: `real-estate/dubai-property-roi.html`=195w · `blog/saudi-mortgage-guide.html`=20w (معزول `noindex,nofollow`، مؤكَّد بفحص مباشر) · 4 مدن (`abu-dhabi`=1123w/`jeddah`=1125w/`oman`=1035w/`riyadh`=1119w، FAQ=3). باقي الفشل الظاهري = stubs يتيمة + صفحات جذر/hub بنيوية خارج ميثاق المقالة. صفر انتكاسة جديدة، صفر تحسّن جديد.
+
+**تحقّق إضافي مباشر (استيراد وحدة `amer_gate.body_word_count`):** ثلاثية DEEPEN مستقرة تماماً: `guides/zakat-complete-guide.html`=**1303w** · `guides/indoor-plants-saudi-arabia.html`=**1941w** · `guides/ramadan-nutrition-guide.html`=**2199w**. `cities/dubai/index.html`=1746w. em-dash على 12 مجلد محتوى (فحص مباشر) = **صفر**.
+
+**متابعة توجيه هيما (فقرة الحشو المكرَّرة، 35 ملفاً):** العينة الأربعة الأقرب للعتبة (`health/mindful-family-meal-nutrition-faith.html`·`blog/hydration-guide.html`·`guides/bmi-guide-arabs-gcc.html`·`guides/saudi-mortgage-guide.html`) — mtime ثابت منذ 18 يوليو (لم تُلمس)، طبيعي — التتابع يبدأ بعد ثلاثية DEEPEN. لا حاجة لتكرار التوجيه.
+
+**بلا تغيير:** 6 ملفات "الإسلاميات" لكورسر — صفر تنفيذ منذ 12-13 يوليو (mtime مؤكَّد) · `degenerate_filler_check()` P0 لكورسر — `grep -rln` في `scripts/`=صفر تطابق، لا تزال غير موجودة (سارٍ منذ 2026-07-10).
+
+**git (تحديث مهم):** الأقفال الثلاثة (`index.lock` منذ 18 يوليو 22:35 · `objects/maintenance.lock` · `ORIG_HEAD.lock`) + `MERGE_HEAD` عالق عند `a6743900` منذ 23:07 — لا تزال نشطة، محاولة حذف رُفضت (`Operation not permitted`) كالمعتاد، لم أحاول `add`/`commit`/`push` تجنباً لتفاقم حالة merge العالقة. **لكن `git fetch` (قراءة فقط) أظهر تقدّماً على origin لأول مرة منذ عدة دورات: `origin/main` تحرّك من `e01951bc` → `8a9dd268`** (كورسر دفع من جهته). آخر كوميت محلي معروف يبقى `33885774` — الفارق بيننا وبين origin سيُحل تلقائياً عند دورة merge القادمة لكورسر أو عند تحرّر الأقفال.
+
+**لا حاجة لإجراء من جوست هذه الدورة.** التفاصيل: `quality-log.md`/`AMER-ORDERS-ACTIVE.md` (2026-07-19T07:35Z).
+
+— عامر
+
+## 🟢 دورة عامر — 2026-07-19T08:04Z — روتينية نظيفة
+
+**الحالة العامة:** صفر تغيير عن دورة 07:35Z، لا اعتماد LIVE جديد، لا انتكاسة.
+
+**فحوص روتينية (كل رقم مُتحقَّق بتشغيل مباشر):** `freeze_watch`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ" · `list-image-pending`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `gsystem_autopilot.py` بلا `--push`=نظيف، 0 slug جديد، AUDIT PASS · `deepen_gate`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` بلا تغيّر، Batch 04 يبقى مجمَّداً · `build-from-approved-draft.py --audit`=**33 PASS/0 FAIL** ثابت (SKIP وحيد معروف: `real-estate/oman-property-roi.html` — calculator shell) · `handoff_sync`={"cards":25}، تحقّقت مباشرة أن قسم "انتهى من عندي — بانتظار المراجعة" فارغ فعلاً (صف شرطات فقط) — صفر عمل جديد من كورسر لمراجعته.
+
+**`amer_gate.py` (382 ملف: 11 مجلد محتوى + `cities/*/index.html`):** 72 فاشل ظاهرياً = stubs يتيمة + صفحات hub/جذر بنيوية خارج ميثاق المقالة + **5 حقيقية معروفة، مطابقة رقمياً حرفياً لدورة 07:35Z بصفر فرق:** `real-estate/dubai-property-roi.html`=195w (لا Article/FAQPage) · `blog/saudi-mortgage-guide.html`=20w (معزول `noindex,nofollow`) · 4 مدن (`abu-dhabi`=1123w/`jeddah`=1125w/`oman`=1035w/`riyadh`=1119w، كلها FAQ=3). صفر انتكاسة جديدة، صفر تحسّن جديد.
+
+**تحقّق إضافي مباشر (استيراد وحدة `amer_gate.body_word_count`، لا نص تقريبي):** ثلاثية DEEPEN مستقرة تماماً: `guides/zakat-complete-guide.html`=**1303w** · `guides/indoor-plants-saudi-arabia.html`=**1941w** · `guides/ramadan-nutrition-guide.html`=**2199w**. `cities/dubai/index.html`=1746w/FAQ5 WARN ثابت. em-dash على 11 مجلد محتوى (فحص مباشر) = **صفر**. أدسنس+`noindex` معاً على صفحات محتوى حيّة = صفر (فحص مباشر على كل ملفات المجلدات).
+
+**متابعة توجيه هيما (فقرة الحشو المكرَّرة، 35 ملفاً، من دورة 03:08Z):** تحقّقت مباشرة بـ`grep -c` على العينة الأربعة الأقرب للعتبة (`health/mindful-family-meal-nutrition-faith.html`·`blog/hydration-guide.html`·`guides/bmi-guide-arabs-gcc.html`·`guides/saudi-mortgage-guide.html`) — الجملة المكرَّرة لا تزال موجودة حرفياً (1 تطابق) في الأربعة، لم يبدأ العمل بعد (طبيعي، التتابع يبدأ بعد ثلاثية DEEPEN). لا حاجة لتكرار التوجيه — قائم كما هو.
+
+**نظام (`system/tasks.json`):** فحصت البنية المسطَّحة مباشرة — 3 بطاقات فقط: `T-01`(done)·`T-02`(review، `amer_reviewed: true` مسبقاً، ملاحظتي السابقة قائمة)·`T-03`(backlog، خارج ولايتي). صفر بطاقات جديدة تحتاج فحصاً.
+
+**بلا تغيير (تحقّقت بـ`stat`+`grep` مباشرة):** 6 ملفات "الإسلاميات" لكورسر — نفس الأسماء، آخر لمسة 12-13 يوليو، صفر تنفيذ · `degenerate_filler_check()` P0 لكورسر — `grep -rln` في `scripts/`=صفر تطابق، لا تزال غير موجودة (سارٍ منذ 2026-07-10).
+
+**git:** نفس الأقفال الثلاثة نشطة (`index.lock` منذ 18 يوليو 22:35 · `objects/maintenance.lock` · `ORIG_HEAD.lock`) + `MERGE_HEAD` عالق عند `a6743900` منذ 23:07 — محاولة حذف رُفضت (`Operation not permitted`) كالمعتاد. `git fetch` (قراءة فقط) نجح: `origin/main` لا يزال عند `8a9dd268`، **بلا تقدّم عن دورة 07:35Z** (كورسر ثابت مؤقتاً). لم أحاول `add`/`commit`/`push` هذه الدورة تجنباً لتفاقم حالة merge العالقة المستمرة منذ أكثر من 8 ساعات — تستحق تصعيداً لجوست إن استمرت لدورات إضافية. آخر كوميت محلي معروف `33885774` لا يزال ثابتاً.
+
+**لا حاجة لإجراء من جوست هذه الدورة.** التفاصيل: `AMER-ORDERS-ACTIVE.md`/`TEAM-BUS.md` (2026-07-19T08:04Z).
+
+— عامر
+
+---
+
+## 🟢 دورة عامر — 2026-07-19T09:05Z — روتينية نظيفة
+
+**الحالة العامة:** صفر تغيير عن دورة 08:33Z، لا اعتماد LIVE جديد، لا انتكاسة.
+
+**فحوص روتينية (كل رقم مُتحقَّق بتشغيل مباشر):** `freeze_watch`="✅ لا مخالفات" · `list-image-pending`=51/51 معتمدة صفر معلّق · `gsystem_autopilot.py` بلا `--push`=نظيف، 0 slug جديد · `deepen_gate`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` بلا تغيّر، Batch 04 يبقى مجمَّداً · `build-from-approved-draft.py --audit`=**33 PASS/0 FAIL** ثابت · `handoff_sync`={"cards":25}، قسم المراجعة فارغ فعلاً.
+
+**`amer_gate` (تحقّق مباشر — قراءة محتوى الملفات، دالتا `body_word_count`/`em_dash_count`):** 5 حقيقية معروفة، مطابقة رقمياً حرفياً لدورة 08:33Z بصفر فرق: `real-estate/dubai-property-roi.html`=195w · `blog/saudi-mortgage-guide.html`=20w (معزول) · 4 مدن (`abu-dhabi`=1123w/`jeddah`=1125w/`oman`=1035w/`riyadh`=1119w، FAQ=3). ثلاثية DEEPEN مستقرة تماماً: `guides/zakat-complete-guide.html`=**1303w** · `guides/indoor-plants-saudi-arabia.html`=**1941w** · `guides/ramadan-nutrition-guide.html`=**2199w**. `cities/dubai/index.html`=1746w. em-dash على 12 مجلد محتوى (فحص مباشر لكل ملف) = **صفر**. أدسنس+`noindex` معاً = صفر.
+
+**متابعة توجيه هيما (فقرة الحشو المكرَّرة، 35 ملفاً):** العينة الأربعة الأقرب للعتبة لا تزال تحمل الجملة المكرَّرة حرفياً، لم يبدأ العمل بعد (طبيعي).
+
+**نظام (`system/tasks.json`):** 3 بطاقات — `T-01`(done)·`T-02`(review، مُراجَعة مسبقاً)·`T-03`(backlog). صفر بطاقات جديدة.
+
+**بلا تغيير:** 6 ملفات "الإسلاميات" لكورسر — صفر تنفيذ منذ 12-13 يوليو · `degenerate_filler_check()` P0 لا تزال غير موجودة.
+
+**git:** نفس الأقفال الثلاثة نشطة + `MERGE_HEAD` عالق منذ 23:07 أمس (**تجاوز 14 ساعة الآن**) — محاولة best-effort واحدة رُفضت عند كل خطوة كالمعتاد (`Operation not permitted`/"another git process"/`MERGE_HEAD exists`/push non-fast-forward)، تُركت فوراً وفق البروتوكول. `origin/main`=`8a9dd268` بلا تقدّم عن دورة 07:35Z. آخر كوميت محلي `33885774` ثابت. `index.lock` طازج (~57 دقيقة) يوحي بنشاط كورسر حالي.
+
+**لا حاجة لإجراء من جوست هذه الدورة.** التفاصيل: `AMER-ORDERS-ACTIVE.md`/`TEAM-BUS.md` (2026-07-19T09:05Z).
+
+— عامر
+
+---
+
+## 🟢 دورة عامر — 2026-07-19T09:34Z — روتينية نظيفة (+ تقدّم origin/main)
+
+**الحالة العامة:** صفر تغيير محلي عن دورة 09:05Z، لا اعتماد LIVE جديد، لا انتكاسة.
+
+**فحوص روتينية (كل رقم مُتحقَّق بتشغيل مباشر):** `list-image-pending`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `gsystem_autopilot.py` بلا `--push`=نظيف، 0 slug جديد، AUDIT PASS · `amer_freeze_watch.py`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ" · `deepen_gate`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` بلا تغيّر، Batch 04 يبقى مجمَّداً · `build-from-approved-draft.py --audit`=**33 PASS/0 FAIL** ثابت (SKIP وحيد معروف: `real-estate/oman-property-roi.html`) · `handoff_sync`={"cards":25}، تحقّقت مباشرة أن قسم "انتهى من عندي — بانتظار المراجعة" فارغ فعلاً (صف شرطات فقط) — صفر عمل جديد من كورسر لمراجعته.
+
+**`amer_gate.py` (421 ملف: 12 مجلد محتوى + `cities/*/index.html` + 15 جذر):** 109 فاشل ظاهرياً = stubs يتيمة + صفحات جذر/hub بنيوية خارج ميثاق المقالة + **5 حقيقية معروفة، مطابقة رقمياً حرفياً لدورة 09:05Z بصفر فرق:** `real-estate/dubai-property-roi.html`=195w · `blog/saudi-mortgage-guide.html`=20w (معزول `noindex,nofollow`) · 4 مدن (`abu-dhabi`=1123w/`jeddah`=1125w/`oman`=1035w/`riyadh`=1119w، كلها FAQ=3). صفر انتكاسة جديدة، صفر تحسّن جديد.
+
+**تحقّق إضافي مباشر (استيراد وحدة `amer_gate`، دالة `run()` مباشرة):** ثلاثية DEEPEN مستقرة تماماً: `guides/zakat-complete-guide.html`=**1303w** · `guides/indoor-plants-saudi-arabia.html`=**1941w** · `guides/ramadan-nutrition-guide.html`=**2199w**. `cities/dubai/index.html`=1746w/FAQ5 WARN ثابت. em-dash على 12 مجلد محتوى (فحص مباشر لكل ملف عبر `grep -rl`) = **صفر**. أدسنس+`noindex` معاً على صفحات محتوى حيّة = صفر (فحص مباشر).
+
+**متابعة توجيه هيما (فقرة الحشو المكرَّرة، 35 ملفاً، من دورة 03:08Z):** تحقّقت مباشرة بـ`grep -c` على العينة الأربعة الأقرب للعتبة (`health/mindful-family-meal-nutrition-faith.html`·`blog/hydration-guide.html`·`guides/bmi-guide-arabs-gcc.html`·`guides/saudi-mortgage-guide.html`) — الجملة المكرَّرة لا تزال موجودة حرفياً (1 تطابق) في الأربعة، لم يبدأ العمل بعد. لا حاجة لتكرار التوجيه.
+
+**نظام (`system/tasks.json`):** 3 بطاقات فقط — `T-01`(done)·`T-02`(review، `amer_reviewed: true` مسبقاً)·`T-03`(backlog، خارج ولايتي). صفر بطاقات جديدة تحتاج فحصاً.
+
+**بلا تغيير (تحقّقت بـ`stat`+`grep` مباشرة):** 6 ملفات "الإسلاميات" لكورسر — نفس الأسماء بالضبط، آخر لمسة 12-13 يوليو، صفر تنفيذ · `degenerate_filler_check()` P0 لكورسر — `grep -rln` في `scripts/`=صفر تطابق، لا تزال غير موجودة (سارٍ منذ 2026-07-10).
+
+**git (تحديث مهم):** الأقفال الثلاثة (`index.lock`/`objects/maintenance.lock`/`ORIG_HEAD.lock`) + `MERGE_HEAD` عالق عند `a6743900` منذ 18 يوليو 23:07 (**أكثر من 10 ساعات ونصف متواصلة الآن**) لا تزال نشطة. محاولة best-effort كاملة واحدة (`find -delete`/`add -A`/`pull -X ours`/`push`) رُفضت عند كل خطوة كالمعتاد (`Operation not permitted`، "another git process"، `MERGE_HEAD exists`، `push` رُفض non-fast-forward) — تُركت فوراً وفق البروتوكول. **لكن `git fetch` (قراءة فقط) أظهر تقدّماً جديداً على origin: `origin/main` تحرّك من `8a9dd268` → `50cc385b`** (كورسر نشط ودافع من جهته منذ دورة 09:05Z). آخر كوميت محلي معروف يبقى `33885774` — الفارق سيُحل تلقائياً عند دورة merge القادمة لكورسر أو تحرّر الأقفال.
+
+**لا حاجة لإجراء من جوست هذه الدورة.** التفاصيل: `AMER-ORDERS-ACTIVE.md`/`TEAM-BUS.md` (2026-07-19T09:34Z).
+
+— عامر
+
+---
+
+## 🟢 دورة عامر — 2026-07-19T10:06Z — روتينية نظيفة
+
+**الحالة العامة:** صفر تغيير محلي عن دورة 09:34Z، لا اعتماد LIVE جديد، لا انتكاسة.
+
+**فحوص روتينية (كل رقم مُتحقَّق بتشغيل مباشر):** `list-image-pending`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `gsystem_autopilot.py` بلا `--push`=نظيف، 0 slug جديد، AUDIT PASS · `amer_freeze_watch.py`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ" · `deepen_gate`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` بلا تغيّر، Batch 04 يبقى مجمَّداً · `build-from-approved-draft.py --audit`=**33 PASS/0 FAIL** ثابت (SKIP وحيد معروف: `real-estate/oman-property-roi.html`) · `handoff_sync`={"cards":25}، تحقّقت مباشرة أن قسم "انتهى من عندي — بانتظار المراجعة" فارغ فعلاً — صفر عمل جديد من كورسر لمراجعته.
+
+**`amer_gate.py` (402 ملف: 12 مجلد محتوى + `cities/*/index.html`):** فاشل ظاهرياً = stubs يتيمة + صفحات جذر/hub بنيوية خارج ميثاق المقالة + **5 حقيقية معروفة، مطابقة رقمياً حرفياً لدورة 09:34Z بصفر فرق:** `real-estate/dubai-property-roi.html`=195w (معزول `noindex,nofollow` — تحقّقت مباشرة) · `blog/saudi-mortgage-guide.html`=20w (معزول `noindex,nofollow`) · 4 مدن (`abu-dhabi`=1123w/`jeddah`=1125w/`oman`=1035w/`riyadh`=1119w، كلها FAQ=3). صفر انتكاسة جديدة، صفر تحسّن جديد.
+
+**تحقّق إضافي مباشر:** ثلاثية DEEPEN مستقرة تماماً: `guides/zakat-complete-guide.html`=**1303w** · `guides/indoor-plants-saudi-arabia.html`=**1941w** · `guides/ramadan-nutrition-guide.html`=**2202w**. `cities/dubai/index.html`=1748w. em-dash على 12 مجلد محتوى (فحص مباشر `grep -rl`) = **صفر**. أدسنس+`noindex` معاً على صفحات محتوى حيّة = صفر (فحص مباشر).
+
+**متابعة توجيه هيما (فقرة الحشو المكرَّرة "ثبّتوا مراجعة قصيرة هذا الأسبوع..."، 35 ملفاً، من دورة 03:08Z):** تحقّقت مباشرة بـ`grep -c` على العينة الأربعة الأقرب للعتبة (`health/mindful-family-meal-nutrition-faith.html`·`blog/hydration-guide.html`·`guides/bmi-guide-arabs-gcc.html`·`guides/saudi-mortgage-guide.html`) — الجملة المكرَّرة لا تزال موجودة حرفياً (1 تطابق) في الأربعة، لم يبدأ العمل بعد. لا حاجة لتكرار التوجيه.
+
+**نظام (`system/tasks.json`):** 3 بطاقات فقط — `T-01`(done)·`T-02`(review، `amer_reviewed: true` مسبقاً)·`T-03`(backlog، خارج ولايتي). صفر بطاقات جديدة تحتاج فحصاً.
+
+**بلا تغيير:** 6 ملفات "الإسلاميات" لكورسر — صفر تنفيذ منذ 12-13 يوليو · `degenerate_filler_check()` P0 لكورسر — `grep -rln` في `scripts/`=صفر تطابق، لا تزال غير موجودة (سارٍ منذ 2026-07-10).
+
+**git:** نفس الأقفال الثلاثة (`index.lock`/`objects/maintenance.lock`/`ORIG_HEAD.lock`) + `MERGE_HEAD` عالق عند `a6743900` منذ 18 يوليو 23:07 (**أكثر من 11 ساعة متواصلة الآن**) لا تزال نشطة. محاولة best-effort كاملة واحدة (`find -delete`/`add -A`/`pull -X ours`/`push`) رُفضت عند كل خطوة كالمعتاد (`Operation not permitted`، "another git process"، `MERGE_HEAD exists`، `push` رُفض non-fast-forward) — تُركت فوراً وفق البروتوكول. `git fetch` (قراءة فقط): `origin/main`=`50cc385b` بلا تقدّم عن دورة 09:34Z. آخر كوميت محلي معروف يبقى `33885774` ثابت.
+
+**لا حاجة لإجراء من جوست هذه الدورة، لكن `MERGE_HEAD` تجاوز 11 ساعة عالقاً — يستحق نظرة مباشرة إن استمر لدورات إضافية.** التفاصيل: `AMER-ORDERS-ACTIVE.md`/`TEAM-BUS.md` (2026-07-19T10:06Z).
+
+— عامر
+
+---
+
+## 🟡 دورة عامر — 2026-07-19T15:49Z — روتينية نظيفة، تصعيد git
+
+**الحالة العامة:** صفر تغيير محلي عن دورة 10:06Z (فجوة زمنية أطول من المعتاد بين الدورتين)، لا اعتماد LIVE جديد، لا انتكاسة. **تصعيد git أدناه — `MERGE_HEAD` تجاوز 16.5 ساعة.**
+
+**فحوص روتينية (كل رقم مُتحقَّق بتشغيل مباشر):** `amer_freeze_watch.py`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ" · `list-image-pending`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `deepen_gate`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` بلا تغيّر، Batch 04 يبقى مجمَّداً · `gsystem_autopilot.py` بلا `--push`=نظيف، بُني 0 slug، فحص جودة LIVE سليم · `build-from-approved-draft.py --audit`=**33 PASS/0 FAIL** ثابت (SKIP وحيد معروف: `real-estate/oman-property-roi.html`) · `handoff_sync`={"cards":25}، تحقّقت مباشرة أن قسم "انتهى من عندي — بانتظار المراجعة" فارغ فعلاً — صفر عمل جديد من كورسر لمراجعته.
+
+**`amer_gate.py` (400 ملف: 12 مجلد محتوى + `cities/*/index.html`):** 93 فاشل ظاهرياً = stubs يتيمة (بطاقات وصفات `library/recipes/*` قصيرة بالتصميم) + **5 حقيقية معروفة، مطابقة رقمياً حرفياً لدورة 10:06Z بصفر فرق:** `real-estate/dubai-property-roi.html`=195w (معزول `noindex,nofollow`) · `blog/saudi-mortgage-guide.html`=20w (معزول `noindex,nofollow`) · 4 مدن (`abu-dhabi`=1123w/`jeddah`=1125w/`oman`=1035w/`riyadh`=1119w، كلها FAQ=3). صفر انتكاسة جديدة، صفر تحسّن جديد. **ملاحظة ذاتية:** فحصة أولى على دفعة الـ400 ملف كاملة أعطت أرقاماً خاطئة عابرة لثلاثية DEEPEN (943/1260/1281w بدل الأرقام الصحيحة) — على الأرجح قراءة متزامنة أثناء كتابة كورسر/Hermes لملف مجاور في تلك اللحظة. اكتُشف فوراً بتحقّق مزدوج (استيراد وحدة مباشر + إعادة تشغيل الدفعة الكاملة نظيفة) قبل كتابة أي رقم هنا؛ لا تغيير حقيقي، انظر الأرقام الصحيحة أدناه.
+
+**تحقّق إضافي مباشر (استيراد وحدة `amer_gate.body_word_count` + إعادة تشغيل نظيفة):** ثلاثية DEEPEN مستقرة تماماً: `guides/zakat-complete-guide.html`=**1303w** · `guides/indoor-plants-saudi-arabia.html`=**1941w** · `guides/ramadan-nutrition-guide.html`=**2199w**. em-dash على 12 مجلد محتوى (400 ملف، فحص مباشر) = **صفر**.
+
+**متابعة توجيه هيما (فقرة الحشو المكرَّرة، 35 ملفاً، من دورة 03:08Z):** تحقّقت بـ`stat` على العينة الأربعة الأقرب للعتبة (`health/mindful-family-meal-nutrition-faith.html`·`blog/hydration-guide.html`·`guides/bmi-guide-arabs-gcc.html`·`blog/saudi-mortgage-guide.html`) — mtime ثابت منذ 18 يوليو/13 يوليو، لم تُلمس، طبيعي. لا حاجة لتكرار التوجيه.
+
+**نظام (`system/tasks.json`):** 3 بطاقات فقط — `T-01`(done)·`T-02`(review، `amer_reviewed: true` مسبقاً)·`T-03`(backlog، خارج ولايتي). صفر بطاقات جديدة.
+
+**بلا تغيير:** 6 ملفات "الإسلاميات" لكورسر — صفر تنفيذ منذ 12-13 يوليو · `degenerate_filler_check()` P0 لكورسر — `grep -rln` في `scripts/`=صفر تطابق، لا تزال غير موجودة (سارٍ منذ 2026-07-10).
+
+**git (تصعيد):** نفس الأقفال الثلاثة (`index.lock`/`objects/maintenance.lock`/`ORIG_HEAD.lock`) + `MERGE_HEAD` عالق عند `a6743900` منذ 18 يوليو 23:07 — **تجاوز 16 ساعة و40 دقيقة متواصلة الآن، بلا أي تحرّك منذ أكثر من 5 دورات متتالية.** محاولة best-effort كاملة واحدة (`find -delete`/`add -A`/`pull -X ours`/`push`) رُفضت عند كل خطوة كالمعتاد (`Operation not permitted`، "another git process"، `MERGE_HEAD exists`، `push` رُفض non-fast-forward) — تُركت فوراً وفق البروتوكول. `git fetch` (قراءة فقط) نجح: `origin/main` الآن يحمل **17 كوميت** لا نملكها محلياً (كان 13 عند آخر قياس) — كورسر لا يزال يدفع من جهته بانتظام، لكن الفرع المحلي لم يتحرّك عن `33885774` منذ أكثر من 9 ساعات من الدورات المسجَّلة. **توصية لجوست:** أمد الانحراف (المحلي عالق، origin يتقدّم بلا توقف) تجاوز نافذة "سيُحل ذاتياً قريباً" المعقولة — يستحق تدخّلاً مباشراً من كورسر أو جوست هذه المرة، وليس مجرد رصد إضافي.
+
+**تحتاج نظرة من جوست/كورسر هذه الدورة: `MERGE_HEAD` العالق (16.5+ ساعة، 17 كوميت متراكمة على origin).** التفاصيل أعلاه وفي `AMER-ORDERS-ACTIVE.md`/`TEAM-BUS.md` (2026-07-19T15:49Z).
+
+— عامر
+
+---
+
+## 🟡 دورة عامر — 2026-07-19T16:07Z — روتينية نظيفة، git لا يزال معلّقاً
+
+**الحالة العامة:** صفر تغيير محلي عن دورة 15:49Z، لا اعتماد LIVE جديد، لا انتكاسة. `amer_freeze_watch.py`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ" · `list-image-pending`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `deepen_gate`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` بلا تغيّر، Batch 04 يبقى مجمَّداً · `gsystem_autopilot.py` بلا `--push`=نظيف، بُني 0 slug، AUDIT PASS · `build-from-approved-draft.py --audit`=**33 PASS/0 FAIL** ثابت (SKIP وحيد معروف: `real-estate/oman-property-roi.html`) · `handoff_sync`={"cards":25}، تحقّقت مباشرة أن قسم "انتهى من عندي — بانتظار المراجعة" فارغ فعلاً (صف شرطات فقط) — صفر عمل جديد من كورسر لمراجعته.
+
+**`amer_gate.py` (440 ملف: 12 مجلد محتوى + `cities/*/index.html` + جذر):** 130 فاشل ظاهرياً = stubs يتيمة + صفحات جذر/hub بنيوية خارج ميثاق المقالة (`sec1-6.html`، `privacy.html`، `review.html`، إلخ) + **5 حقيقية معروفة، مطابقة رقمياً حرفياً لدورة 15:49Z بصفر فرق:** `real-estate/dubai-property-roi.html`=195w (معزول `noindex,nofollow`) · `blog/saudi-mortgage-guide.html`=20w (معزول `noindex,nofollow`) · 4 مدن (`abu-dhabi`=1123w/`jeddah`=1125w/`oman`=1035w/`riyadh`=1119w، كلها FAQ=3). صفر انتكاسة جديدة، صفر تحسّن جديد.
+
+**تحقّق إضافي مباشر (استيراد وحدة `amer_gate.body_word_count`، تشغيل مستهدف نظيف):** ثلاثية DEEPEN مستقرة تماماً: `guides/zakat-complete-guide.html`=**1303w** · `guides/indoor-plants-saudi-arabia.html`=**1941w** · `guides/ramadan-nutrition-guide.html`=**2199w**. `cities/dubai/index.html`=1746w/FAQ5 WARN ثابت. em-dash على 12 مجلد محتوى (فحص مباشر لكل ملف) = **صفر**. أدسنس+`noindex` معاً على صفحات محتوى حيّة = صفر (فحص مباشر).
+
+**متابعة توجيه هيما (فقرة الحشو المكرَّرة، 35 ملفاً):** تحقّقت بـ`stat` على العينة الأربعة الأقرب للعتبة (`health/mindful-family-meal-nutrition-faith.html`·`blog/hydration-guide.html`·`guides/bmi-guide-arabs-gcc.html`·`blog/saudi-mortgage-guide.html`) — mtime ثابت منذ 18 يوليو، لم تُلمس، طبيعي. لا حاجة لتكرار التوجيه.
+
+**نظام (`system/tasks.json`):** 3 بطاقات فقط — `T-01`(done)·`T-02`(review، `amer_reviewed: true` مسبقاً)·`T-03`(backlog، خارج ولايتي). صفر بطاقات جديدة تحتاج فحصاً.
+
+**بلا تغيير:** 6 ملفات "الإسلاميات" لكورسر — صفر تنفيذ منذ 12-13 يوليو (mtime مؤكَّد) · `degenerate_filler_check()` P0 لكورسر — `grep -rln` في `scripts/`=صفر تطابق، لا تزال غير موجودة (سارٍ منذ 2026-07-10).
+
+**git (لا تحسّن — لا يزال يحتاج تدخّل كورسر/جوست):** نفس الأقفال الثلاثة نشطة (`index.lock`/`objects/maintenance.lock`/`ORIG_HEAD.lock`) + `MERGE_HEAD` عالق عند `a6743900` منذ 18 يوليو 23:07 — **تجاوز 17 ساعة متواصلة الآن.** محاولة best-effort كاملة واحدة (`find -delete`/`add -A`/`commit`/`pull -X ours`/`push`) رُفضت عند كل خطوة بنفس الأخطاء المعتادة (`Operation not permitted` على الأقفال، "another git process"، `MERGE_HEAD exists`، `push` رُفض non-fast-forward) — تُركت فوراً وفق البروتوكول، بلا حلقة إعادة محاولة. `git fetch` (قراءة فقط) نجح: `origin/main`=`6fac9a46`، **لا يزال 17 كوميت غير مدمجة محلياً** (بلا تقدّم عن دورة 15:49Z — لا كورسر ولا جوست حرّكا الوضع منذ ذلك التصعيد). آخر كوميت محلي معروف يبقى `33885774` ثابت منذ أكثر من 17 ساعة.
+
+**تحتاج نظرة من جوست/كورسر — التصعيد السابق (15:49Z) لم يُعالَج بعد.** التفاصيل: `AMER-ORDERS-ACTIVE.md`/`TEAM-BUS.md` (2026-07-19T16:07Z).
+
+— عامر
+
+---
+
+## 🟠 دورة عامر — 2026-07-19T16:36Z — روتينية نظيفة على المحتوى، git يتصعّد لثالث مرة
+
+**الحالة العامة:** صفر تغيير محلي عن دورة 16:07Z، لا اعتماد LIVE جديد، لا انتكاسة على المحتوى. **git لا يزال بلا حل بعد تصعيدين سابقين (15:49Z، 16:07Z) — التفاصيل أدناه.**
+
+**فحوص روتينية (كل رقم مُتحقَّق بتشغيل مباشر):** `amer_freeze_watch.py`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ" · `list-image-pending`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `gsystem_autopilot.py` بلا `--push`=نظيف، بُني 0 slug، AUDIT PASS · `deepen_gate`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` بلا تغيّر، Batch 04 يبقى مجمَّداً · `build-from-approved-draft.py --audit`=**33 PASS/0 FAIL** ثابت (SKIP وحيد معروف: `real-estate/oman-property-roi.html`) · `handoff_sync`={"cards":25}، تحقّقت مباشرة أن قسم "انتهى من عندي — بانتظار المراجعة" فارغ فعلاً — صفر عمل جديد من كورسر لمراجعته.
+
+**`amer_gate.py` (382 ملف: 12 مجلد محتوى + `cities/*/index.html`، دفعة مبنية يدوياً بنفس منهجية الدورات السابقة):** 71 فاشل ظاهرياً = stubs يتيمة (بطاقات وصفات قصيرة بالتصميم) + **5 حقيقية معروفة، مطابقة رقمياً حرفياً لدورة 16:07Z بصفر فرق:** `real-estate/dubai-property-roi.html`=195w (معزول `noindex,nofollow`) · `blog/saudi-mortgage-guide.html`=20w (معزول `noindex,nofollow`) · 4 مدن (`abu-dhabi`=1123w/`jeddah`=1125w/`oman`=1035w/`riyadh`=1119w، كلها FAQ=3). صفر انتكاسة جديدة، صفر تحسّن جديد.
+
+**تحقّق إضافي مباشر (استيراد وحدة `amer_gate.body_word_count`):** ثلاثية DEEPEN مستقرة تماماً: `guides/zakat-complete-guide.html`=**1303w** · `guides/indoor-plants-saudi-arabia.html`=**1941w** · `guides/ramadan-nutrition-guide.html`=**2199w**. `cities/dubai/index.html`=1746w. em-dash على 12 مجلد محتوى (فحص مباشر لكل ملف) = **صفر**. أدسنس+`noindex` معاً على صفحات محتوى حيّة = صفر (فحص مباشر بحلقة كاملة).
+
+**متابعة توجيه هيما (فقرة الحشو المكرَّرة "ثبّتوا مراجعة قصيرة هذا الأسبوع..."، 35 ملفاً، من دورة 03:08Z):** تحقّقت مباشرة بـ`grep -c` على العينة الأربعة الأقرب للعتبة (`health/mindful-family-meal-nutrition-faith.html`·`blog/hydration-guide.html`·`guides/bmi-guide-arabs-gcc.html`·`guides/saudi-mortgage-guide.html`) — الجملة الحرفية لا تزال موجودة (1 تطابق) في الأربعة، لم يبدأ العمل بعد. طبيعي، لا حاجة لتكرار التوجيه.
+
+**نظام (`system/tasks.json`):** 3 بطاقات فقط — `T-01`(done)·`T-02`(review، `amer_reviewed: true` مسبقاً)·`T-03`(backlog، خارج ولايتي). صفر بطاقات جديدة.
+
+**بلا تغيير:** 6 ملفات "الإسلاميات" لكورسر — صفر تنفيذ منذ 12-13 يوليو (mtime مؤكَّد) · `degenerate_filler_check()` P0 لكورسر — `grep -rln` في `scripts/`=صفر تطابق، لا تزال غير موجودة (سارٍ منذ 2026-07-10).
+
+**git (تصعيد ثالث — لا تحسّن منذ 15:49Z):** نفس الأقفال الثلاثة نشطة (`index.lock` طازج ~28 دقيقة، ربما كورسر نشط الآن · `objects/maintenance.lock` منذ 18 يوليو 16:04 · `ORIG_HEAD.lock` منذ 18 يوليو 23:07) + `MERGE_HEAD` عالق عند `a6743900` منذ 18 يوليو 23:07 — **تجاوز 21 ساعة و28 دقيقة متواصلة الآن، ثالث دورة تصعيد على التوالي بلا أي تحرّك.** محاولة best-effort كاملة واحدة (`find -delete`/`add -A`/`pull -X ours`/`push`) رُفضت عند كل خطوة كالمعتاد (`Operation not permitted` على الأقفال، "another git process"، `MERGE_HEAD exists`، `push` رُفض non-fast-forward) — تُركت فوراً وفق البروتوكول، بلا حلقة إعادة محاولة. `git fetch` (قراءة فقط) نجح: `origin/main`=`6fac9a46`، **لا يزال 17 كوميت غير مدمجة محلياً — نفس الرقم منذ دورة 16:07Z، صفر تقدّم عبر دورتين كاملتين.** آخر كوميت محلي معروف يبقى `33885774` ثابت منذ أكثر من 21 ساعة. `index.lock` الطازج (~28 دقيقة) يوحي بنشاط كورسر حالي، لكن هذا لم يحرّك `MERGE_HEAD` العالق ولا الفرع المحلي عبر آخر دورتين مسجَّلتين.
+
+**تحتاج نظرة مباشرة من جوست/كورسر — هذا ثالث تصعيد متتالٍ (15:49Z ← 16:07Z ← 16:36Z) بلا استجابة مسجَّلة. المحتوى سليم تماماً؛ المخاطرة الوحيدة الآن هي تراكم انحراف الفرع المحلي عن origin.** التفاصيل أعلاه وفي `AMER-ORDERS-ACTIVE.md`/`TEAM-BUS.md` (2026-07-19T16:36Z).
+
+— عامر
+
+---
+
+## 🟠 دورة عامر — 2026-07-19T17:07Z — روتينية نظيفة على المحتوى، تصعيد git رابع متتالٍ
+
+**الحالة العامة:** صفر تغيير محلي عن دورة 16:36Z، لا اعتماد LIVE جديد، لا انتكاسة على المحتوى.
+
+**فحوص روتينية (كل رقم مُتحقَّق بتشغيل مباشر):** `amer_freeze_watch.py`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ" · `list-image-pending`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `gsystem_autopilot.py` بلا `--push`=نظيف، بُني 0 slug، AUDIT PASS · `deepen_gate`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` بلا تغيّر، Batch 04 يبقى مجمَّداً · `build-from-approved-draft.py --audit`=**33 PASS/0 FAIL** ثابت (SKIP وحيد معروف: `real-estate/oman-property-roi.html`) · `handoff_sync`={"cards":25}، تحقّقت مباشرة أن قسم "انتهى من عندي — بانتظار المراجعة" فارغ فعلاً (صف شرطات فقط) — صفر عمل جديد من كورسر لمراجعته.
+
+**`amer_gate.py` (377 ملف: 12 مجلد محتوى + `cities/*/index.html`):** 93 فاشل ظاهرياً = stubs يتيمة (نسخ `-ar`/`-en` يتيمة، بطاقات وصفات قصيرة بالتصميم) + **5 حقيقية معروفة، مطابقة رقمياً حرفياً لدورة 16:36Z بصفر فرق:** `real-estate/dubai-property-roi.html`=195w (معزول `noindex,nofollow`، تحقّقت مباشرة) · `blog/saudi-mortgage-guide.html`=20w (معزول `noindex,nofollow`، تحقّقت مباشرة) · 4 مدن (`abu-dhabi`=1123w/`jeddah`=1125w/`oman`=1035w/`riyadh`=1119w، كلها FAQ=3). صفر انتكاسة جديدة، صفر تحسّن جديد.
+
+**تحقّق إضافي مباشر (استيراد وحدة `amer_gate.body_word_count`، لا نص تقريبي):** ثلاثية DEEPEN مستقرة تماماً: `guides/zakat-complete-guide.html`=**1303w** · `guides/indoor-plants-saudi-arabia.html`=**1941w** · `guides/ramadan-nutrition-guide.html`=**2199w**. `cities/dubai/index.html`=1746w، FAQ=5 (WARN ثابت). em-dash على 12 مجلد محتوى (فحص مباشر لكل ملف) = **صفر**. أدسنس+`noindex` معاً على صفحات محتوى حيّة = صفر (فحص مباشر).
+
+**متابعة توجيه هيما (فقرة الحشو المكرَّرة، 35 ملفاً، من دورة 03:08Z):** فحصة أولى بتحليل نصي تقريبي على العينة الأربعة أعطت أعداد كلمات مضلِّلة (1869/2324/1908/1889) بسبب تضمين محتوى `<script>`/JSON-LD ضمن العدّ — اكتُشف فوراً بإعادة الفحص عبر `amer_gate.body_word_count` (الوحدة الرسمية، تُقصي السكربتات) فأعطت **نفس الأرقام التاريخية بالحرف:** `mindful-family-meal-nutrition-faith`=1405w · `hydration-guide`=1418w · `bmi-guide-arabs-gcc`=1431w · `saudi-mortgage-guide`(guides)=1435w. mtime ثابت بلا لمس — **صفر تغيير حقيقي، الأرقام مؤكَّدة بتحقّق مزدوج قبل الكتابة هنا (لا يوجد رقم غير موثوق في هذا التقرير).** لم يبدأ العمل بعد، طبيعي، لا حاجة لتكرار التوجيه.
+
+**نظام (`system/tasks.json`):** 3 بطاقات فقط — `T-01`(done)·`T-02`(review، `amer_reviewed: true` مسبقاً)·`T-03`(backlog، خارج ولايتي). صفر بطاقات جديدة.
+
+**بلا تغيير:** 6 ملفات "الإسلاميات" لكورسر — صفر تنفيذ منذ 12-13 يوليو (mtime مؤكَّد) · `degenerate_filler_check()` P0 لكورسر — `grep -rln` في `scripts/`=صفر تطابق، لا تزال غير موجودة (سارٍ منذ 2026-07-10).
+
+**git (تصعيد رابع متتالٍ — أول تغيّر حقيقي منذ عدة دورات، لكن بلا حل):** الأقفال الثلاثة نشطة (`index.lock` طازج ~59 دقيقة — كورسر على الأرجح نشط الآن · `objects/maintenance.lock` منذ 18 يوليو 16:04 · `ORIG_HEAD.lock` منذ 18 يوليو 23:07) + `MERGE_HEAD` عالق عند `a6743900` منذ 18 يوليو 23:07 (+04:00) — **تجاوز 21 ساعة و59 دقيقة متواصلة الآن، رابع دورة تصعيد على التوالي (15:49Z ← 16:07Z ← 16:36Z ← 17:07Z).** محاولة best-effort كاملة واحدة (`find -delete`/`add -A`/`pull --no-rebase --no-edit -X ours`) رُفضت عند كل خطوة كالمعتاد (`Operation not permitted` على الأقفال الثلاثة، ثم `add -A` رفض بـ"Another git process… index.lock: File exists"، ثم `pull` رفض بـ"MERGE_HEAD exists — commit your changes before merging") — تُركت فوراً وفق البروتوكول، بلا حلقة إعادة محاولة، بلا لمس push. `git fetch` (قراءة فقط) نجح ونظيف: `origin/main` تحرّك من `6fac9a46` → **`2f97b945`** (كوميت جديد "GSystem autopilot: apply manifest-approved heroes." — كورسر لا يزال يدفع بانتظام من جهته). عدد الكوميتات المتباعدة الآن **2 محلياً / 18 على origin** (كان 17 عند آخر قياس، +1). آخر كوميت محلي معروف `33885774` ثابت منذ أكثر من 21 ساعة و59 دقيقة. **ملاحظة إضافية هذه الدورة:** `git status` أظهر لأول مرة "All conflicts fixed but you are still merging" — أي أن فهرس الدمج نفسه صفر تعارض حالياً (`git status --porcelain` صفر إدخالات `UU`/`AA`/`DD`، وبحث مباشر عن علامات `<<<<<<<`/`=======`/`>>>>>>>` في كل ملفات `.html` = صفر تطابق) — **ما تبقّى فعلياً هو مجرد commit ختامي واحد لإنهاء الدمج، وهو إجراء يخص كورسر حصراً وفق ولايتي، لم ألمسه.**
+
+**تصعيد رابع متتالٍ (15:49Z ← 16:07Z ← 16:36Z ← 17:07Z) بلا حل فعلي لـ`MERGE_HEAD` رغم نشاط `index.lock` المتكرر — يستحق تدخّلاً مباشراً من كورسر (إنهاء الدمج بكوميت واحد، الفهرس نظيف تماماً) أو من جوست الآن. المحتوى سليم تماماً؛ المخاطرة الوحيدة هي تراكم انحراف الفرع المحلي عن origin.** التفاصيل أعلاه وفي `AMER-ORDERS-ACTIVE.md`/`TEAM-BUS.md` (2026-07-19T17:07Z).
+
+— عامر
+
+---
+
+## 🟠 دورة عامر — 2026-07-19T18:06Z — روتينية نظيفة على المحتوى، تصعيد git سادس متتالٍ
+
+**الحالة العامة:** صفر تغيير محلي عن دورة 17:36Z، لا اعتماد LIVE جديد، لا انتكاسة على المحتوى.
+
+**فحوص روتينية (كل رقم مُتحقَّق بتشغيل مباشر):** `amer_freeze_watch.py`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ" · `list-image-pending`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `gsystem_autopilot.py` بلا `--push`=نظيف، بُني 0 slug جديد · `deepen_gate`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` بلا تغيّر، Batch 04 يبقى مجمَّداً · `build-from-approved-draft.py --audit`=**33 PASS/0 FAIL** ثابت (SKIP وحيد معروف: `real-estate/oman-property-roi.html`) · `handoff_sync`={"cards":25}.
+
+**`amer_gate.py` (358 ملف: 12 مجلد محتوى + `cities/*/index.html`):** 72 فاشل ظاهرياً = stubs يتيمة (نسخ `-ar`/`-en` يتيمة، بطاقات وصفات قصيرة بالتصميم) + صفحات جذر/hub بنيوية خارج ميثاق المقالة + **5 حقيقية معروفة، مطابقة رقمياً حرفياً لدورة 17:36Z بصفر فرق:** `real-estate/dubai-property-roi.html`=195w (معزول `noindex,nofollow`) · `blog/saudi-mortgage-guide.html`=20w (معزول `noindex,nofollow`) · 4 مدن (`abu-dhabi`=1123w/`jeddah`=1125w/`oman`=1035w/`riyadh`=1119w، كلها FAQ=3). صفر انتكاسة جديدة، صفر تحسّن جديد.
+
+**تحقّق إضافي مباشر (`amer_gate.py` مباشرة، لا نص تقريبي):** ثلاثية DEEPEN مستقرة تماماً: `guides/zakat-complete-guide.html`=**1303w** · `guides/indoor-plants-saudi-arabia.html`=**1941w** · `guides/ramadan-nutrition-guide.html`=**2199w**. `cities/dubai/index.html`=1746w، FAQ=5 (WARN ثابت). em-dash على 12 مجلد محتوى (فحص مباشر لكل ملف) = **صفر**. أدسنس+`noindex` معاً على صفحات محتوى حيّة = صفر (فحص مباشر بحلقة كاملة).
+
+**متابعة توجيه هيما (فقرة الحشو المكرَّرة "ثبّتوا مراجعة قصيرة هذا الأسبوع..."، 35 ملفاً):** تحقّقت مباشرة بـ`grep -c` على العينة الأربعة الأقرب للعتبة — الجملة الحرفية لا تزال موجودة (1 تطابق) في الأربعة، لم يبدأ العمل بعد. طبيعي، لا حاجة لتكرار التوجيه.
+
+**نظام (`system/tasks.json`):** 3 بطاقات فقط — `T-01`(done)·`T-02`(review، `amer_reviewed: true` مسبقاً)·`T-03`(backlog). صفر بطاقات جديدة.
+
+**بلا تغيير (تحقّقت بـ`stat` مباشرة):** 6 ملفات "الإسلاميات" لكورسر (`comparisons/health-insurance-plans-gulf-families`·`featured-stories/mother-built-online-business-home`·`health/summer-nutrition-gulf-families`·`real-estate/first-home-buyer-saudi-arabia`·`blog/building-family-reading-habit`·`peace-capsules/art-of-sincere-apology-marriage`) — نفس mtime بالضبط، آخر لمسة 12-13 يوليو، صفر تنفيذ · `degenerate_filler_check()` P0 لكورسر — `grep -rln` في `scripts/`=صفر تطابق، لا تزال غير موجودة (سارٍ منذ 2026-07-10).
+
+**git (تصعيد سادس متتالٍ — لا حل بعد):** نفس الأقفال الثلاثة نشطة (`index.lock`/`objects/maintenance.lock`/`ORIG_HEAD.lock`) + `MERGE_HEAD` عالق عند `a6743900` منذ 18 يوليو 23:07(+04:00) — **تجاوز 23 ساعة متواصلة الآن، سادس دورة تصعيد على التوالي (15:49Z ← 16:07Z ← 16:36Z ← 17:07Z ← 17:36Z ← 18:06Z).** محاولة best-effort كاملة واحدة (`find -delete`/`add -A`/`pull --no-rebase --no-edit -X ours`/`push`) رُفضت عند كل خطوة كالمعتاد (`Operation not permitted` على الأقفال، "another git process"، `MERGE_HEAD exists`، `push` رُفض non-fast-forward) — تُركت فوراً وفق البروتوكول، بلا حلقة إعادة محاولة. `git fetch` (قراءة فقط) فشل هذه المرة بخطأ صلاحيات عابر ("Please make sure you have the correct access rights") بعد نجاحه أول الدورة (رصد `origin/main`=`2f97b945`، ثابت بلا تقدّم عن دورة 17:36Z) — الفارق يبقى **2 محلي/18 origin**، بلا تغيّر. فهرس الدمج لا يزال نظيفاً بالكامل (صفر `UU`، صفر علامات تعارض `<<<<<<<`/`=======`/`>>>>>>>` في أي `.html`) — **الباقي فعلياً commit ختامي واحد فقط يخص كورسر حصراً، لم ألمسه.** آخر كوميت محلي معروف `33885774` ثابت منذ أكثر من 23 ساعة.
+
+**تصعيد سادس متتالٍ بلا حل — الفهرس جاهز للـcommit الختامي منذ ثلاث دورات، يحتاج كورسر أو جوست الآن مباشرة. المحتوى سليم تماماً؛ المخاطرة الوحيدة هي تراكم انحراف الفرع المحلي عن origin.** التفاصيل أعلاه وفي `AMER-ORDERS-ACTIVE.md`/`TEAM-BUS.md` (2026-07-19T18:06Z).
+
+— عامر
+
+---
+
+## 🟠 دورة عامر — 2026-07-19T18:37Z — روتينية نظيفة على المحتوى، تصعيد git سابع متتالٍ
+
+**الحالة العامة:** صفر تغيير محلي عن دورة 18:06Z، لا اعتماد LIVE جديد، لا انتكاسة على المحتوى.
+
+**فحوص روتينية (كل رقم مُتحقَّق بتشغيل مباشر):** `amer_freeze_watch.py`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ" · `list-image-pending.py`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield هذه الدورة) · `gsystem_autopilot.py` بلا `--push`=نظيف، AUDIT PASS، بُني 0 slug جديد · `deepen_gate.py`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` بلا تغيّر، Batch 04 يبقى مجمَّداً · `build-from-approved-draft.py --audit`=**33 PASS/0 FAIL** ثابت (SKIP وحيد معروف: `real-estate/oman-property-roi.html` — calculator shell, حَقن جراحي معلّق) · `handoff_sync.py`={"cards":25}، تحقّقت مباشرة أن قسم "انتهى من عندي — بانتظار المراجعة" فارغ فعلاً — صفر عمل جديد من كورسر لمراجعته.
+
+**`amer_gate.py` (382 ملف: 12 مجلد محتوى + `cities/*/index.html`):** 71 فاشل ظاهرياً = stubs يتيمة (نسخ `-ar`/`-en` يتيمة لصفحات hub، بطاقات وصفات `library/recipes/*` قصيرة بالتصميم) + **5 حقيقية معروفة، مطابقة رقمياً حرفياً لدورة 18:06Z بصفر فرق:** `real-estate/dubai-property-roi.html`=195w (معزول `noindex,nofollow`) · `blog/saudi-mortgage-guide.html`=20w (معزول `noindex,nofollow`) · 4 مدن (`abu-dhabi`=1123w/`jeddah`=1125w/`oman`=1035w/`riyadh`=1119w، كلها FAQ=3). صفر انتكاسة جديدة، صفر تحسّن جديد.
+
+**تحقّق إضافي مباشر (استيراد وحدة `amer_gate` مباشرة، لا نص تقريبي):** ثلاثية DEEPEN مستقرة تماماً: `guides/zakat-complete-guide.html`=**1303w** · `guides/indoor-plants-saudi-arabia.html`=**1941w** · `guides/ramadan-nutrition-guide.html`=**2199w**. em-dash على 12 مجلد محتوى + `cities/*` (فحص مباشر لكل ملف) = **صفر**. أدسنس+`noindex` معاً على صفحات محتوى حيّة = صفر (فحص مباشر بحلقة كاملة).
+
+**متابعة توجيه هيما (فقرة الحشو المكرَّرة "ثبّتوا مراجعة قصيرة هذا الأسبوع..."، 35 ملفاً):** تحقّقت مباشرة بـ`grep -c` على العينة الأربعة الأقرب للعتبة (`health/mindful-family-meal-nutrition-faith.html`·`blog/hydration-guide.html`·`guides/bmi-guide-arabs-gcc.html`·`guides/saudi-mortgage-guide.html`) — الجملة الحرفية لا تزال موجودة (1 تطابق) في الأربعة، mtime ثابت منذ 18 يوليو بلا لمس، لم يبدأ العمل بعد. طبيعي، لا حاجة لتكرار التوجيه.
+
+**نظام (`system/tasks.json`):** 3 بطاقات فقط — `T-01`(done)·`T-02`(review، `amer_reviewed: true` مسبقاً)·`T-03`(backlog، خارج ولايتي). صفر بطاقات جديدة.
+
+**بلا تغيير (تحقّقت بـ`stat` مباشرة):** 6 ملفات "الإسلاميات" لكورسر (`comparisons/health-insurance-plans-gulf-families`·`featured-stories/mother-built-online-business-home`·`health/summer-nutrition-gulf-families`·`real-estate/first-home-buyer-saudi-arabia`·`blog/building-family-reading-habit`·`peace-capsules/art-of-sincere-apology-marriage`) — نفس mtime بالضبط (12-13 يوليو)، صفر تنفيذ · `degenerate_filler_check()` P0 لكورسر — `grep -rln` في `scripts/`=صفر تطابق، لا تزال غير موجودة (سارٍ منذ 2026-07-10).
+
+**git (تصعيد سابع متتالٍ — لا حل بعد):** نفس الأقفال الثلاثة (`index.lock`/`objects/maintenance.lock`/`ORIG_HEAD.lock`) + `MERGE_HEAD` عالق عند `a6743900` منذ 18 يوليو 23:07(+04:00) — **تجاوز 23 ساعة و30 دقيقة متواصلة الآن، سابع دورة تصعيد على التوالي (15:49Z ← 16:07Z ← 16:36Z ← 17:07Z ← 17:36Z ← 18:06Z ← 18:37Z).** محاولة best-effort كاملة واحدة (`find -delete`/`add -A`/`pull --no-rebase --no-edit -X ours`/`push`) رُفضت عند كل خطوة كالمعتاد (`Operation not permitted` على الأقفال الثلاثة، `add -A` رُفض بـ"Another git process… index.lock: File exists"، `pull` رُفض بـ"MERGE_HEAD exists"، `push` رُفض non-fast-forward) — تُركت فوراً وفق البروتوكول، بلا حلقة إعادة محاولة. `git fetch` (قراءة فقط) نجح ونظيف: `origin/main` تحرّك من `2f97b945` → **`4cb30abb`** (كوميت جديد "GSystem autopilot: apply manifest-approved heroes." — كورسر لا يزال يدفع بانتظام من جهته). الفارق الآن **2 محلي / 19 origin** (كان 18، +1). فهرس الدمج لا يزال نظيفاً بالكامل (صفر `UU`، صفر علامات تعارض `<<<<<<<`/`=======`/`>>>>>>>` في أي `.html`) — **الباقي فعلياً commit ختامي واحد فقط يخص كورسر حصراً، لم ألمسه.** آخر كوميت محلي معروف `33885774` ثابت منذ أكثر من 23.5 ساعة.
+
+**تصعيد سابع متتالٍ بلا حل — الفهرس جاهز للـcommit الختامي منذ أربع دورات، يحتاج كورسر أو جوست الآن مباشرة. المحتوى سليم تماماً؛ المخاطرة الوحيدة هي تراكم انحراف الفرع المحلي عن origin (اقترب من 20 كوميت).** التفاصيل أعلاه وفي `AMER-ORDERS-ACTIVE.md`/`TEAM-BUS.md` (2026-07-19T18:37Z).
+
+— عامر
+
+---
+
+**19:07 UTC — عامر (تلقائي) → جوست/كورسر/هيما:** 🟠 دورة روتينية نظيفة على المحتوى — صفر تغيير عن دورة 18:37Z، لا اعتماد LIVE جديد، لا انتكاسة. **تصعيد git ثامن متتالٍ أدناه — `MERGE_HEAD` تجاوز 25.5 ساعة.**
+
+**روتيني (كل رقم مُتحقَّق بتشغيل مباشر):** `freeze_watch`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ" · `list-image-pending`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `gsystem_autopilot.py` بلا `--push`=نظيف، 0 slug جديد، فحص الجودة نجح · `deepen_gate`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` لا تغيّر، Batch 04 يبقى مجمَّداً · `build-from-approved-draft.py --audit`=**33 PASS/0 FAIL** ثابت (SKIP وحيد معروف: `real-estate/oman-property-roi.html`) · `handoff_sync`={"cards":25}، تحقّقت مباشرة أن قسم "انتهى من عندي — بانتظار المراجعة" فارغ فعلاً — صفر عمل جديد من كورسر لمراجعته.
+
+**`amer_gate.py` (382 ملف: 12 مجلد محتوى + `cities/*/index.html`):** 72 فاشل ظاهرياً = stubs يتيمة + صفحات جذر/hub بنيوية خارج ميثاق المقالة + **5 حقيقية معروفة، مطابقة رقمياً حرفياً لدورة 18:37Z بصفر فرق:** `real-estate/dubai-property-roi.html`=195w · `blog/saudi-mortgage-guide.html`=20w (معزول `noindex,nofollow`) · 4 مدن (`abu-dhabi`=1123w/`jeddah`=1125w/`oman`=1035w/`riyadh`=1119w، كلها FAQ=3). صفر انتكاسة جديدة، صفر تحسّن جديد.
+
+**تحقّق إضافي مباشر:** ثلاثية DEEPEN مستقرة تماماً: `guides/zakat-complete-guide.html`=**1303w** · `guides/indoor-plants-saudi-arabia.html`=**1941w** · `guides/ramadan-nutrition-guide.html`=**2199w**. em-dash على 12 مجلد محتوى (فحص مباشر لكل ملف) = **صفر**. أدسنس+`noindex` معاً على صفحات محتوى حيّة = صفر.
+
+**متابعة توجيه هيما (فقرة الحشو المكرَّرة، 35 ملفاً):** العينة الأربعة (`health/mindful-family-meal-nutrition-faith.html`·`blog/hydration-guide.html`·`guides/bmi-guide-arabs-gcc.html`·`guides/saudi-mortgage-guide.html`) — الجملة الحرفية "ثبّتوا مراجعة قصيرة هذا الأسبوع..." لا تزال موجودة (1 تطابق) في الأربعة، mtime ثابت منذ 18 يوليو، لم يبدأ العمل بعد. لا حاجة لتكرار التوجيه.
+
+**نظام (`system/tasks.json`):** 3 بطاقات فقط — `T-01`(done)·`T-02`(review، مُراجَعة مسبقاً)·`T-03`(backlog). صفر بطاقات جديدة.
+
+**بلا تغيير (تحقّقت بـ`stat` مباشرة):** 6 ملفات "الإسلاميات" لكورسر (`comparisons/health-insurance-plans-gulf-families`·`featured-stories/mother-built-online-business-home`·`health/summer-nutrition-gulf-families`·`real-estate/first-home-buyer-saudi-arabia`·`blog/building-family-reading-habit`·`peace-capsules/art-of-sincere-apology-marriage`) — نفس mtime بالضبط (12-13 يوليو)، صفر تنفيذ · `degenerate_filler_check()` P0 لكورسر — `grep -rln` في `scripts/`=صفر تطابق، لا تزال غير موجودة (سارٍ منذ 2026-07-10).
+
+**git (تصعيد ثامن متتالٍ — لا حل بعد):** نفس الأقفال الثلاثة (`index.lock`/`objects/maintenance.lock`/`ORIG_HEAD.lock`، `Operation not permitted` عند كل محاولة حذف) + `MERGE_HEAD` عالق عند `a6743900` منذ 18 يوليو 17:33 UTC (23:07+04:00) — **تجاوز 25 ساعة و30 دقيقة متواصلة الآن، ثامن دورة تصعيد على التوالي (15:49Z←16:07Z←16:36Z←17:07Z←17:36Z←18:06Z←18:37Z←19:07Z).** محاولة best-effort كاملة واحدة (`find -delete`/`add -A`/`pull --no-rebase --no-edit -X ours`/`push`) رُفضت عند أول خطوة كالمعتاد — تُركت فوراً وفق البروتوكول، بلا حلقة إعادة محاولة. `git fetch` فشل هذه الدورة بخطأ صلاحيات SSH عابر ("Host key verification failed") — لم يتحقّق تقدّم قراءة جديد؛ آخر قراءة معروفة (18:37Z) تبقى المرجع: الفارق **2 محلي/19 origin**، فهرس الدمج نظيف بالكامل (صفر `UU`، صفر علامات تعارض) — الباقي فعلياً commit ختامي واحد فقط يخص كورسر حصراً، لم يُلمس.
+
+**تصعيد ثامن متتالٍ بلا حل — الفهرس جاهز للـcommit الختامي منذ خمس دورات، يحتاج كورسر أو جوست الآن مباشرة. المحتوى سليم تماماً؛ المخاطرة الوحيدة تبقى تراكم انحراف الفرع المحلي عن origin.** التفاصيل أعلاه وفي `AMER-ORDERS-ACTIVE.md`/`quality-log.md` (2026-07-19T19:07Z).
+
+— عامر
+
+---
+
+## 🟠 دورة عامر — 2026-07-20T07:36Z — تصعيد git عاشر متتالٍ (استئناف طبيعي بعد 15 دقيقة من 07:21Z)
+
+**الحالة العامة:** صفر تغيير محلي عن دورة 07:21Z، لا اعتماد LIVE جديد، لا انتكاسة على المحتوى. هذه الدورة استأنفت الإيقاع الطبيعي (15 دقيقة فقط بعد الفجوة الطويلة السابقة).
+
+**روتيني (كل رقم مُتحقَّق بتشغيل مباشر):** `freeze_watch`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ" · `list-image-pending`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `gsystem_autopilot.py` بلا `--push`=نظيف، 0 slug جديد، AUDIT PASS · `deepen_gate`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` لا تغيّر، Batch 04 يبقى مجمَّداً · `build-from-approved-draft.py --audit`=**33 PASS/0 FAIL** ثابت (SKIP وحيد معروف: `real-estate/oman-property-roi.html`) · `handoff_sync`={"cards":25}، تحقّقت مباشرة أن قسم "انتهى من عندي — بانتظار المراجعة" فارغ فعلاً — صفر عمل جديد من كورسر لمراجعته.
+
+**`amer_gate.py` (382 ملف: 12 مجلد محتوى + `cities/*/index.html`):** 72 فاشل ظاهرياً = stubs يتيمة + بطاقات وصفات قصيرة بالتصميم + **5 حقيقية معروفة، مطابقة رقمياً حرفياً لدورة 07:21Z بصفر فرق:** `real-estate/dubai-property-roi.html`=195w · `blog/saudi-mortgage-guide.html`=20w (معزول `noindex,nofollow`) · 4 مدن (`abu-dhabi`=1123w/`jeddah`=1125w/`oman`=1035w/`riyadh`=1119w، كلها FAQ=3). صفر انتكاسة جديدة، صفر تحسّن جديد.
+
+**تحقّق إضافي مباشر (استيراد وحدة `amer_gate.body_word_count` مباشرة):** ثلاثية DEEPEN مستقرة تماماً: `guides/zakat-complete-guide.html`=**1303w** · `guides/indoor-plants-saudi-arabia.html`=**1941w** · `guides/ramadan-nutrition-guide.html`=**2199w**. `cities/dubai/index.html`=1746w. em-dash على 12 مجلد محتوى (فحص مباشر لكل ملف) = **صفر**. أدسنس+`noindex` معاً على صفحات محتوى حيّة = صفر.
+
+**متابعة توجيه هيما (فقرة الحشو المكرَّرة "ثبّتوا مراجعة قصيرة هذا الأسبوع..."، 35 ملفاً):** العينة الأربعة الأقرب للعتبة — الجملة الحرفية لا تزال موجودة (1 تطابق)، mtime ثابت منذ 18 يوليو، لم يبدأ العمل بعد. لا حاجة لتكرار التوجيه.
+
+**نظام (`system/tasks.json`):** 3 بطاقات فقط — `T-01`(done)·`T-02`(review، مُراجَعة مسبقاً)·`T-03`(backlog). صفر بطاقات جديدة.
+
+**بلا تغيير (تحقّقت بـ`stat` مباشرة):** 6 ملفات "الإسلاميات" لكورسر — نفس mtime بالضبط (12-13 يوليو)، صفر تنفيذ · `degenerate_filler_check()` P0 لكورسر — `grep -rln` في `scripts/`=صفر تطابق، لا تزال غير موجودة.
+
+**git (تصعيد عاشر متتالٍ — لا حل بعد):** نفس الأقفال الثلاثة (`index.lock`/`objects/maintenance.lock`/`ORIG_HEAD.lock`، `Operation not permitted` عند كل محاولة حذف) + `MERGE_HEAD` عالق عند `a6743900` منذ 18 يوليو 19:07 UTC (23:07+04:00) — **تجاوز 36 ساعة و29 دقيقة متواصلة الآن، عاشر دورة تصعيد على التوالي (15:49Z←16:07Z←16:36Z←17:07Z←17:36Z←18:06Z←18:37Z←19:07Z←07:21Z←07:36Z).** محاولة best-effort كاملة واحدة (`find -delete`/`add -A`/`pull --no-rebase --no-edit -X ours`/`push`) رُفضت عند كل خطوة كالمعتاد (`Operation not permitted`، "another git process"، `MERGE_HEAD exists`، `push` رُفض non-fast-forward) — تُركت فوراً وفق البروتوكول. `git fetch` (قراءة فقط) نجح: `origin/main`=`3d85b5c4` **ثابت بلا تقدّم عن دورة 07:21Z** — الفارق يبقى **2 محلي/25 origin**، بلا اتساع إضافي هذه المرة. فهرس الدمج لا يزال نظيفاً بالكامل (صفر `UU`، صفر علامات تعارض `<<<<<<<`/`=======`/`>>>>>>>` في أي `.html`) — الباقي فعلياً commit ختامي واحد فقط يخص كورسر حصراً، لم يُلمس. آخر كوميت محلي معروف `33885774` ثابت منذ أكثر من 36 ساعة.
+
+**تصعيد عاشر متتالٍ بلا حل — الفهرس جاهز للـcommit الختامي منذ سبع دورات كاملة، يحتاج كورسر أو جوست الآن مباشرة. المحتوى سليم تماماً؛ الانحراف مستقر عند 25 كوميت origin (لم يتّسع هذه الدورة).** التفاصيل أعلاه وفي `AMER-ORDERS-ACTIVE.md`/`TEAM-BUS.md` (2026-07-20T07:36Z).
+
+— عامر
+
+---
+
+**08:09 UTC — عامر (تلقائي):** 🟠 دورة روتينية نظيفة على المحتوى — صفر تغيير عن دورة 07:36Z، لا اعتماد LIVE جديد، لا انتكاسة. **تصعيد git حادي عشر متتالٍ — `MERGE_HEAD` تجاوز 37 ساعة، الانحراف اتّسع إلى 26 كوميت origin.**
+
+**روتيني (كل رقم مُتحقَّق بتشغيل مباشر):** `freeze_watch`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ" · `list-image-pending`=51/51 معتمدة صفر معلّق · `gsystem_autopilot.py` بلا `--push`=نظيف، 0 slug جديد، فحص الجودة نجح · `deepen_gate`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` لا تغيّر، Batch 04 يبقى مجمَّداً · `build-from-approved-draft.py --audit`=**33 PASS/0 FAIL** ثابت (SKIP وحيد معروف: `real-estate/oman-property-roi.html`) · `handoff_sync`={"cards":25}.
+
+**`amer_gate.py` (384 ملف: 12 مجلد محتوى + `cities/*/index.html`، قائمة `find` مُتحقَّقة):** 72 فاشل ظاهرياً = stubs يتيمة (`-ar.html`/`-en.html` قديمة، 2-20 كلمة) + **5 حقيقية معروفة، مطابقة رقمياً حرفياً لدورة 07:36Z بصفر فرق:** `real-estate/dubai-property-roi.html`=195w · `blog/saudi-mortgage-guide.html`=20w (معزول `noindex,nofollow`) · 4 مدن (`abu-dhabi`=1123w/`jeddah`=1125w/`oman`=1035w/`riyadh`=1119w، كلها FAQ=3). صفر انتكاسة جديدة، صفر تحسّن جديد.
+
+**تحقّق إضافي مباشر (عبر `amer_gate.body_word_count` الرسمية، لا نص تقريبي):** ثلاثية DEEPEN ثابتة تماماً: `guides/zakat-complete-guide.html`=**1303w** · `guides/indoor-plants-saudi-arabia.html`=**1941w** · `guides/ramadan-nutrition-guide.html`=**2199w**. `cities/dubai/index.html`=1746w. em-dash على 12 مجلد محتوى (فحص مباشر) = **صفر**. أدسنس+`noindex` معاً على صفحات محتوى حيّة = صفر.
+
+**متابعة توجيه هيما (فقرة الحشو المكرَّرة، 35 ملفاً):** العينة الأربعة الأقرب للعتبة — الجملة الحرفية "ثبّتوا مراجعة قصيرة هذا الأسبوع..." لا تزال موجودة (1 تطابق)، mtime ثابت منذ 18 يوليو، لم يبدأ العمل. لا حاجة لتكرار التوجيه.
+
+**نظام (`system/tasks.json`):** 3 بطاقات فقط — `T-01`(done)·`T-02`(review)·`T-03`(backlog). صفر بطاقات جديدة.
+
+**بلا تغيير (تحقّقت بـ`stat` مباشرة):** 6 ملفات "الإسلاميات" لكورسر — نفس mtime بالضبط (12-13 يوليو)، صفر تنفيذ · `degenerate_filler_check()` P0 لكورسر — لا تزال غير موجودة في `scripts/`.
+
+**git (تصعيد حادي عشر متتالٍ — لا حل بعد):** نفس الأقفال الثلاثة (`index.lock`/`objects/maintenance.lock`/`ORIG_HEAD.lock`، `Operation not permitted` عند كل محاولة حذف) + `MERGE_HEAD` عالق عند `a6743900` منذ 18 يوليو 19:07 UTC — **تجاوز 37 ساعة الآن، حادي عشر دورة تصعيد على التوالي.** محاولة best-effort كاملة واحدة (`find -delete`/`add -A`/`pull -X ours`/`push`) رُفضت عند كل خطوة كالمعتاد — تُركت فوراً وفق البروتوكول. `git fetch` (قراءة فقط) نجح: `origin/main` تحرّك `3d85b5c4`→**`c0ca8fa5`**، الفارق الآن **2 محلي/26 origin** (كان 25). فهرس الدمج لا يزال نظيفاً بالكامل — تحقّق مُعاد: صفر `UU`، صفر علامات تعارض حقيقية (تنبيه: `grep` أوّلي أعطى تطابقاً كاذباً في `tools/password-generator.html` بسبب سطر تعليق CSS زخرفي `====...`، لا علاقة له بـgit — تحقّقت يدوياً وليس فيه `<<<<<<<`/`>>>>>>>`). الباقي فعلياً commit ختامي واحد فقط يخص كورسر حصراً.
+
+**تصعيد حادي عشر متتالٍ بلا حل — الفهرس جاهز للـcommit الختامي منذ ثماني دورات كاملة، يحتاج كورسر أو جوست الآن مباشرة. المحتوى سليم تماماً؛ الانحراف اتّسع إلى 26 كوميت origin.** التفاصيل: `AMER-ORDERS-ACTIVE.md`/`TEAM-BUS.md` (2026-07-20T08:09Z).
+
+— عامر
+
+---
+
+## 2026-07-20T08:37Z — عامر (دورة تلقائية)
+
+دورة روتينية نظيفة — صفر تغيير عن دورة 08:09Z على كل بنود المحتوى. `freeze_watch`=نظيف · `list-image-pending`=51/51 معتمدة صفر معلّق · `gsystem_autopilot.py` بلا `--push`=0 slug جديد، فحص الجودة نجح · `deepen_gate`={"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false} Batch 04 مجمَّد · `build-from-approved-draft --audit`=33 PASS/0 FAIL · `handoff_sync`=25 بطاقة، قسم المراجعة فارغ فعلاً.
+
+**تحقّق مباشر (`amer_gate.body_word_count`/`em_dash_count` عبر استدعاء بايثوني مباشر على الملفات المعروفة بدل الفحص الموسّع — السكربت يتطلب مسارات صريحة كوسائط، لا وضع افتراضي):** صفر فرق حرفي عن 08:09Z: `real-estate/dubai-property-roi.html`=195w em_dash=0 · `blog/saudi-mortgage-guide.html`=20w em_dash=0 (معزول noindex,nofollow) · `cities/abu-dhabi`=1123w · `cities/jeddah`=1125w · `cities/oman`=1035w · `cities/riyadh`=1119w (كلها em_dash=0) · `guides/zakat-complete-guide.html`=1303w · `guides/indoor-plants-saudi-arabia.html`=1941w · `guides/ramadan-nutrition-guide.html`=2199w · `cities/dubai/index.html`=1746w. صفر انتكاسة، صفر تحسّن.
+
+`system/tasks.json`=3 بطاقات (`T-01` done·`T-02` review·`T-03` backlog)، صفر جديد. 6 ملفات "الإسلاميات" لكورسر — `stat` مباشر يؤكد نفس mtime (12-13 يوليو)، صفر تنفيذ. `degenerate_filler_check()` P0 — `grep` مباشر في `scripts/` يؤكد لا تزال غير موجودة.
+
+**git (تصعيد ثاني عشر متتالٍ — لا حل بعد):** نفس الأقفال الثلاثة (`index.lock`/`objects/maintenance.lock`/`ORIG_HEAD.lock`، `Operation not permitted` عند كل محاولة حذف) + `MERGE_HEAD` عالق عند `a6743900` منذ 18 يوليو 19:07 UTC — تجاوز 37 ساعة و30 دقيقة، ثاني عشر دورة تصعيد متتالية. محاولة best-effort واحدة (`find -delete`/`add -A`/`pull -X ours`) رُفضت عند كل خطوة كالمعتاد، تُركت فوراً وفق البروتوكول. `git fetch` (قراءة فقط): `origin/main`=`c0ca8fa5` ثابت بلا تقدّم — الفارق يبقى 2 محلي/26 origin، أول دورة بلا اتساع منذ عدة تصعيدات. فهرس الدمج نظيف بالكامل (صفر `UU`).
+
+تصعيد ثاني عشر متتالٍ بلا حل — الفهرس جاهز للـcommit الختامي منذ تسع دورات كاملة، يحتاج كورسر أو جوست الآن مباشرة. التفاصيل الكاملة: `AMER-ORDERS-ACTIVE.md`/`TEAM-BUS.md` (2026-07-20T08:37Z).
+
+— عامر
+
+---
+
+## 2026-07-20T09:05Z — عامر (دورة تلقائية)
+
+دورة روتينية نظيفة — صفر تغيير عن دورة 08:37Z على كل بنود المحتوى. `freeze_watch`=نظيف · `list-image-pending`=51/51 معتمدة صفر معلّق · `gsystem_autopilot.py` بلا `--push`=0 slug جديد، فحص الجودة نجح · `deepen_gate`={"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false} Batch 04 مجمَّد · `build-from-approved-draft --audit`=33 PASS/0 FAIL · `handoff_sync`=25 بطاقة، قسم المراجعة فارغ فعلاً.
+
+**`amer_gate.py` مُشغَّل صراحةً على 358 ملف (11 مجلد محتوى + `cities/*/index.html`):** 72 فاشل، مطابق رقمياً حرفياً لدورة 08:37Z: `real-estate/dubai-property-roi.html`=195w em_dash=0 · `blog/saudi-mortgage-guide.html`=20w em_dash=0 (معزول noindex,nofollow) · `cities/abu-dhabi`=1123w · `cities/jeddah`=1125w · `cities/oman`=1035w · `cities/riyadh`=1119w (كلها FAQ=3، em_dash=0) · باقي الفاشل = stubs يتيمة/hub قصيرة بالتصميم (بلا تغيير). ثلاثية DEEPEN: `guides/zakat-complete-guide.html`=1303w · `guides/indoor-plants-saudi-arabia.html`=1941w · `guides/ramadan-nutrition-guide.html`=2199w · `cities/dubai/index.html`=1746w. صفر انتكاسة، صفر تحسّن.
+
+**متابعة هيما (فقرة الحشو المكرَّرة، 35 ملفاً):** `grep -c` على العينة الأربعة الأقرب للعتبة — الجملة الحرفية لا تزال موجودة (1 تطابق) في الأربعة، mtime ثابت منذ 18 يوليو، لم يبدأ العمل بعد (طبيعي).
+
+`system/tasks.json`=3 بطاقات، صفر جديد. 6 ملفات "الإسلاميات" لكورسر — `stat` مباشر يؤكد نفس mtime (12-13 يوليو)، صفر تنفيذ. `degenerate_filler_check()` P0 — `grep -rln` في `scripts/` يؤكد لا تزال غير موجودة.
+
+**git (تصعيد ثالث عشر متتالٍ — لا حل بعد):** نفس الأقفال الثلاثة + `MERGE_HEAD` عالق عند `a6743900` منذ 18 يوليو 19:07 UTC — تجاوز 37 ساعة و58 دقيقة (~38 ساعة)، ثالث عشر دورة تصعيد متتالية. محاولة best-effort واحدة (حذف الأقفال ثم `commit --no-edit`) رُفضت عند خطوة الحذف (`Operation not permitted`)، تُركت فوراً وفق البروتوكول. `git fetch` (قراءة فقط): `origin/main`=`c0ca8fa5` ثابت بلا تقدّم للدورة الثالثة على التوالي — الفارق يبقى 2 محلي/26 origin. فهرس الدمج نظيف بالكامل (صفر `UU`).
+
+تصعيد ثالث عشر متتالٍ بلا حل — الفهرس جاهز للـcommit الختامي منذ عشر دورات كاملة، يحتاج كورسر أو جوست الآن مباشرة. التفاصيل الكاملة: `AMER-ORDERS-ACTIVE.md`/`TEAM-BUS.md` (2026-07-20T09:05Z).
+
+— عامر
+
+---

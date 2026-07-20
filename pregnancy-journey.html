@@ -132,7 +132,7 @@
           <div class="hero-circle">
             <img
               src="/assets/images/banner-pregnancy.webp"
-              alt="Illustration of an expectant mother — pregnancy journey"
+              alt="Illustration of an expectant mother, pregnancy journey"
               width="900" height="900"
               loading="eager"
               fetchpriority="high"
@@ -301,8 +301,8 @@
     <!-- Below form: program intro + light suggestions -->
     <div class="pj-below" id="pj-below">
       <p class="pj-below-lead">
-        <span class="en">Enter your due date or last period above — your current week appears instantly here, stored only on this device. Register if you want a short weekly email; browsing needs no account.</span>
-        <span class="ar">أدخلي تاريخ الولادة أو آخر دورة في النموذج أعلاه — يظهر أسبوعك الحالي فوراً هنا ويُحفظ على جهازك فقط. التسجيل اختياري لملخص أسبوعي بالبريد؛ التصفح لا يحتاج حساباً.</span>
+        <span class="en">Enter your due date or last period above, your current week appears instantly here, stored only on this device. Register if you want a short weekly email; browsing needs no account.</span>
+        <span class="ar">أدخلي تاريخ الولادة أو آخر دورة في النموذج أعلاه, يظهر أسبوعك الحالي فوراً هنا ويُحفظ على جهازك فقط. التسجيل اختياري لملخص أسبوعي بالبريد؛ التصفح لا يحتاج حساباً.</span>
       </p>
       <ul class="pj-below-list">
         <li>
@@ -339,8 +339,8 @@
         </div>
       </div>
       <p class="pj-below-note">
-        <span class="en">For general education only — not medical advice. Consult your doctor for personal care.</span>
-        <span class="ar">للتثقيف العام فقط — ليس تشخيصاً طبياً. راجعي طبيبتك لرعاية شخصية.</span>
+        <span class="en">For general education only, not medical advice. Consult your doctor for personal care.</span>
+        <span class="ar">للتثقيف العام فقط, ليس تشخيصاً طبياً. راجعي طبيبتك لرعاية شخصية.</span>
       </p>
     </div>
   </div>
@@ -886,7 +886,7 @@ function switchTab(which) {
 }
 
 // ═══════════════════════════════════════════════════════════════
-// REGISTER (static — localStorage, no backend)
+// REGISTER (static, localStorage, no backend)
 // ═══════════════════════════════════════════════════════════════
 async function sha256Hex(msg) {
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(msg));
@@ -942,11 +942,11 @@ async function registerJourney() {
       ? `✓ تم حفظ رحلتك على هذا الجهاز.<br/>
          <strong>رابطك الشخصي:</strong><br/>
          <a href="${personalUrl}" style="color:#2a9a98;word-break:break-all">${personalUrl}</a><br/>
-         <small style="color:#5C534A">احفظي هذا الرابط — البريد الأسبوعي يُفعّل لاحقاً عبر Brevo</small>`
+         <small style="color:#5C534A">احفظي هذا الرابط, البريد الأسبوعي يُفعّل لاحقاً عبر Brevo</small>`
       : `✓ Journey saved on this device.<br/>
          <strong>Your personal link:</strong><br/>
          <a href="${personalUrl}" style="color:#2a9a98;word-break:break-all">${personalUrl}</a><br/>
-         <small style="color:#5C534A">Bookmark this link — weekly email activates when Brevo list is wired</small>`;
+         <small style="color:#5C534A">Bookmark this link, weekly email activates when Brevo list is wired</small>`;
     msg.style.display = 'block';
 
     setTimeout(() => showMain(currentWeek), 1500);
