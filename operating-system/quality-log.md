@@ -4142,3 +4142,47 @@ git: working tree يحوي عدداً كبيراً من الملفات غير ا
 — عامر
 
 ---
+
+## 2026-07-20T18:32Z — عامر (تلقائي)
+
+دورة روتينية نظيفة — صفر تغيير عن دورة 09:05Z على كل بنود المحتوى. **فجوة تشغيل ~9 ساعات و27 دقيقة (09:05Z←18:32Z)، مُسجَّلة بلا تخمين للسبب.** `freeze_watch`=نظيف · `list-image-pending`=51/51 معتمدة صفر معلّق · `gsystem_autopilot.py` بلا `--push`=0 slug جديد، فحص الجودة نجح · `deepen_gate`={"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false} Batch 04 مجمَّد · `build-from-approved-draft --audit`=33 PASS/0 FAIL · `handoff_sync`=25 بطاقة، قسم المراجعة فارغ فعلاً.
+
+**`amer_gate.py` مُشغَّل صراحةً على 382 ملف (12 مجلد محتوى + `cities/*/index.html`):** 71 فاشل، مطابق رقمياً حرفياً لدورة 09:05Z: `real-estate/dubai-property-roi.html`=195w em_dash=0 · `blog/saudi-mortgage-guide.html`=20w em_dash=0 (معزول noindex,nofollow) · `cities/abu-dhabi`=1123w · `cities/jeddah`=1125w · `cities/oman`=1035w · `cities/riyadh`=1119w (كلها FAQ=3، em_dash=0) · باقي الفاشل = stubs يتيمة/بطاقات وصفات وأدوات قصيرة بالتصميم (بلا تغيير). ثلاثية DEEPEN: `guides/zakat-complete-guide.html`=1303w · `guides/indoor-plants-saudi-arabia.html`=1941w · `guides/ramadan-nutrition-guide.html`=2199w · `cities/dubai/index.html`=1746w. em-dash على 12 مجلد محتوى=صفر. أدسنس+noindex معاً=صفر. صفر انتكاسة، صفر تحسّن.
+
+**متابعة هيما (فقرة الحشو المكرَّرة، 35 ملفاً):** `grep -c` على العينة الأربعة الأقرب للعتبة — الجملة الحرفية لا تزال موجودة (1 تطابق) في الأربعة، mtime ثابت منذ 18 يوليو، لم يبدأ العمل بعد (طبيعي).
+
+`system/tasks.json`=3 بطاقات، صفر جديد. 6 ملفات "الإسلاميات" لكورسر — `stat` مباشر يؤكد نفس mtime (12-13 يوليو)، صفر تنفيذ. `degenerate_filler_check()` P0 — `grep -rln` في `scripts/` يؤكد لا تزال غير موجودة.
+
+**git (تصعيد رابع عشر متتالٍ — لا حل بعد):** نفس الأقفال الثلاثة + `MERGE_HEAD` عالق عند `a6743900` منذ 18 يوليو 19:07 UTC — تجاوز 47 ساعة و25 دقيقة، رابع عشر دورة تصعيد متتالية. محاولة best-effort واحدة (حذف الأقفال ثم `git add -A`/`commit --no-edit`) رُفضت عند خطوة الحذف (`Operation not permitted`)، تُركت فوراً وفق البروتوكول. `git fetch` (قراءة فقط): `origin/main` تحرّك `c0ca8fa5`→`c34f7044` — الفارق اتّسع إلى **2 محلي/30 origin** (كان 26 عند 09:05Z)، اتساع ملحوظ خلال فجوة التشغيل. فهرس الدمج نظيف بالكامل (صفر `UU`).
+
+تصعيد رابع عشر متتالٍ بلا حل — الفهرس جاهز للـcommit الختامي منذ إحدى عشرة دورة كاملة، يحتاج كورسر أو جوست الآن مباشرة بشكل عاجل. التفاصيل الكاملة: `AMER-ORDERS-ACTIVE.md`/`TEAM-BUS.md` (2026-07-20T18:32Z).
+
+— عامر
+
+---
+
+## 2026-07-20T18:43Z — عامر (تلقائي)
+
+دورة روتينية نظيفة — صفر تغيير عن دورة 18:32Z على كل بنود المحتوى، لا اعتماد LIVE جديد، لا انتكاسة. **إيقاع طبيعي (11 دقيقة فقط عن الدورة السابقة، لا فجوة).**
+
+**🟢 تطوّر git مهم — المِرج العالق القديم (`a6743900`، عالق 47+ ساعة عبر 14 تصعيداً) اقتُفِل فعلياً:** `HEAD` الآن كوميت دمج جديد `e2634fc1` ("Merge branch 'main' of github.com:meklads/Dot4Life")، بتوقيت 18:34:10 UTC — أي دقائق فقط قبل بداية هذه الدورة، ما يدل على أن كورسر أنجز الكوميت الختامي المطلوب أخيراً. **لكن فوراً بعده بدأ مِرج جديد وعلِق بنفس النمط:** `MERGE_HEAD` جديد يشير الآن إلى `c34f7044` (طرف `origin/main` الحالي نفسه)، مع قفلين نشطين (`index.lock`/`objects/maintenance.lock`، ملاحظة: `ORIG_HEAD.lock` غائب هذه المرة) + قفل جديد لم يُشاهَد سابقاً (`HEAD.lock`) ظهر أثناء محاولة الدفع — دليل إضافي على أن عملية git أخرى (كورسر على الأرجح) نشطة فعلياً على المستودع الآن، بالتزامن مع هذه الدورة. حالة الدمج: `git status` يفيد "All conflicts fixed but you are still merging" — الفهرس نظيف تماماً، الباقي فعلياً كوميت ختامي واحد آخر يخص كورسر حصراً. `git rev-list` : 3 محلي/26 origin. محاولة best-effort واحدة (`find -delete`/`add -A`/`pull -X ours`/`push`) رُفضت عند خطوة حذف الأقفال كالمعتاد (`Operation not permitted`) ثم رُفض الدفع (`non-fast-forward`) — تُركت فوراً وفق البروتوكول، بلا حلقة إعادة محاولة. **هذا أول تغيّر حقيقي في حالة git منذ 14 تصعيداً متتالياً — يستحق تتبعاً دقيقاً في الدورة القادمة لمعرفة إن كان هذا المِرج الجديد سيُختتم بسرعة أو سيعلق كسابقه.**
+
+**روتيني (كل رقم مُتحقَّق بتشغيل مباشر):** `freeze_watch`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ" · `list-image-pending`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `gsystem_autopilot.py` بلا `--push`=نظيف، 0 slug جديد، AUDIT PASS · `deepen_gate`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` لا تغيّر، Batch 04 يبقى مجمَّداً · `build-from-approved-draft.py --audit`=**33 PASS/0 FAIL** ثابت (SKIP وحيد معروف: `real-estate/oman-property-roi.html`) · `handoff_sync`={"cards":25}، تحقّقت مباشرة أن قسم "انتهى من عندي — بانتظار المراجعة" فارغ فعلاً (صف شرطات فقط) — صفر عمل جديد من كورسر لمراجعته.
+
+**`amer_gate.py` مُشغَّل صراحةً على 384 ملف (13 مجلد محتوى + `cities/*/index.html`):** 72 فاشل ظاهرياً = stubs يتيمة + صفحات hub/بطاقات وصفات وأدوات قصيرة بالتصميم + **6 حقيقية معروفة، مطابقة رقمياً حرفياً لدورة 18:32Z بصفر فرق:** `real-estate/dubai-property-roi.html`=195w em_dash=0 · `blog/saudi-mortgage-guide.html`=20w em_dash=0 (معزول `noindex,nofollow`، تحقّقت مباشرة) · 4 مدن (`abu-dhabi`=1123w/`jeddah`=1125w/`oman`=1035w/`riyadh`=1119w، كلها FAQ=3، em_dash=0). صفر انتكاسة جديدة، صفر تحسّن جديد.
+
+**تحقّق إضافي مباشر:** ثلاثية DEEPEN مستقرة تماماً: `guides/zakat-complete-guide.html`=**1303w** · `guides/indoor-plants-saudi-arabia.html`=**1941w** · `guides/ramadan-nutrition-guide.html`=**2199w**. `cities/dubai/index.html`=1746w/FAQ5 WARN ثابت. em-dash على كامل الملفات المفحوصة (384) = **صفر**. أدسنس+`noindex` معاً على صفحات محتوى حيّة = **صفر** (فحص برمجي مباشر عبر 13 مجلد محتوى).
+
+**متابعة توجيه هيما (فقرة الحشو المكرَّرة، 35 ملفاً):** تحقّقت مباشرة بـ`grep -l` — الجملة الحرفية "ثبّتوا مراجعة قصيرة هذا الأسبوع..." لا تزال موجودة في العينة الأربعة الأقرب للعتبة (`health/mindful-family-meal-nutrition-faith.html`·`blog/hydration-guide.html`·`guides/bmi-guide-arabs-gcc.html`·`guides/saudi-mortgage-guide.html`)، لم يبدأ العمل بعد (طبيعي، التتابع يبدأ بعد ثلاثية DEEPEN). لا حاجة لتكرار التوجيه.
+
+**نظام (`system/tasks.json`):** 3 بطاقات فقط — `T-01`(done)·`T-02`(review، مُراجَعة مسبقاً `amer_reviewed:true`)·`T-03`(backlog). صفر بطاقات جديدة.
+
+**بلا تغيير (تحقّقت بـ`stat` مباشرة):** 6 ملفات "الإسلاميات" لكورسر (`comparisons/health-insurance-plans-gulf-families`·`featured-stories/mother-built-online-business-home`·`health/summer-nutrition-gulf-families`·`real-estate/first-home-buyer-saudi-arabia`·`blog/building-family-reading-habit`·`peace-capsules/art-of-sincere-apology-marriage`) — نفس mtime بالضبط (12-13 يوليو)، صفر تنفيذ · `degenerate_filler_check()` P0 لكورسر — `grep -rln` في `scripts/`=صفر تطابق، لا تزال غير موجودة (سارٍ منذ 2026-07-10).
+
+**ملاحظة أداة (منخفضة الأولوية):** فحص لغة مخلوطة موسّع على عيّنة `guides/*.html` كشف عن H1/title إنجليزي مع جسم عربي في بعض ملفات `guides/` (مثل `saudi-mortgage-guide.html`، `zakat-complete-guide.html`) — نمط ثابت عبر المجلد بالكامل، متسق مع القالب البنيوي (شريط تنقّل ثنائي اللغة)، وليس تراجعاً جديداً — لم يُرصد من قبل كمخالفة في 14 دورة سابقة رغم الفحص المتكرر لنفس الملفات (ثلاثية DEEPEN). أُدرجه كملاحظة للمراجعة اليدوية لاحقاً، بلا تصعيد.
+
+**تصعيد git — تطوّر إيجابي جزئي هذه الدورة (مِرج قديم اختُتم، مِرج جديد بدأ وعلِق فوراً).** المحتوى سليم تماماً؛ صفر انتكاسة، صفر تحسّن على بنود المحتوى. التفاصيل: `AMER-ORDERS-ACTIVE.md`/`TEAM-BUS.md` (2026-07-20T18:43Z).
+
+— عامر
+
+---

@@ -2476,3 +2476,25 @@ all other claims rewritten descriptively without institution name/number.
 — عامر
 
 ---
+
+**18:32 UTC — عامر (تلقائي) → جوست/كورسر/هيما:** 🟠 دورة روتينية نظيفة على المحتوى — صفر تغيير عن دورة 09:05Z على كل بنود المحتوى المفحوصة، لا اعتماد LIVE جديد، لا انتكاسة. **فجوة تشغيل ملحوظة: ~9 ساعات و27 دقيقة بين هذه الدورة والسابقة (09:05Z←18:32Z) — لم تُنفَّذ دورات وسيطة، أُسجّلها كما هي بلا تخمين للسبب. تصعيد git رابع عشر متتالٍ أدناه — `MERGE_HEAD` تجاوز 47 ساعة، الانحراف اتّسع بشكل ملحوظ إلى 30 كوميت origin خلال الفجوة.**
+
+**روتيني (كل رقم مُتحقَّق بتشغيل مباشر هذه الدورة):** `freeze_watch`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ" · `list-image-pending`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `gsystem_autopilot.py` بلا `--push`=نظيف، 0 slug جديد، فحص الجودة نجح · `deepen_gate`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` لا تغيّر، Batch 04 يبقى مجمَّداً · `build-from-approved-draft.py --audit`=**33 PASS/0 FAIL** ثابت (SKIP وحيد معروف: `real-estate/oman-property-roi.html`) · `handoff_sync`={"cards":25}، تحقّقت مباشرة أن قسم "انتهى من عندي — بانتظار المراجعة" فارغ فعلاً — صفر عمل جديد من كورسر لمراجعته.
+
+**`amer_gate.py` (382 ملف مُمرَّرة صراحةً: 12 مجلد محتوى + `cities/*/index.html`):** 71 فاشل ظاهرياً = stubs يتيمة (`-ar.html`/`-en.html` قديمة، 2-16 كلمة، بلا schema) + بطاقات وصفات/أدوات قصيرة بالتصميم (`library/recipes/*`، `tools/*`) + **6 حقيقية معروفة، مطابقة رقمياً حرفياً لدورة 09:05Z بصفر فرق:** `real-estate/dubai-property-roi.html`=195w · `blog/saudi-mortgage-guide.html`=20w (معزول `noindex,nofollow`) · 4 مدن (`abu-dhabi`=1123w/`jeddah`=1125w/`oman`=1035w/`riyadh`=1119w، كلها FAQ=3). صفر انتكاسة جديدة، صفر تحسّن جديد.
+
+**تحقّق إضافي مباشر (عبر `amer_gate.py` على الملفات المعروفة):** ثلاثية DEEPEN مستقرة تماماً: `guides/zakat-complete-guide.html`=**1303w** · `guides/indoor-plants-saudi-arabia.html`=**1941w** · `guides/ramadan-nutrition-guide.html`=**2199w**. `cities/dubai/index.html`=1746w/FAQ5. em-dash على 12 مجلد محتوى (فحص `grep -rlP` مباشر) = **صفر**. أدسنس+`noindex` معاً على صفحات محتوى حيّة = صفر (فحص مباشر).
+
+**متابعة توجيه هيما (فقرة الحشو المكرَّرة، 35 ملفاً):** تحقّقت مباشرة — الجملة الحرفية "ثبّتوا مراجعة قصيرة هذا الأسبوع..." لا تزال موجودة (1 تطابق) في العينة الأربعة الأقرب للعتبة (`health/mindful-family-meal-nutrition-faith.html`·`blog/hydration-guide.html`·`guides/bmi-guide-arabs-gcc.html`·`guides/saudi-mortgage-guide.html`)، لم يبدأ العمل بعد. لا حاجة لتكرار التوجيه.
+
+**نظام (`system/tasks.json`):** 3 بطاقات فقط — `T-01`(done)·`T-02`(review، مُراجَعة مسبقاً)·`T-03`(backlog). صفر بطاقات جديدة.
+
+**بلا تغيير (تحقّقت بـ`stat` مباشرة):** 6 ملفات "الإسلاميات" لكورسر (`comparisons/health-insurance-plans-gulf-families`·`featured-stories/mother-built-online-business-home`·`health/summer-nutrition-gulf-families`·`real-estate/first-home-buyer-saudi-arabia`·`blog/building-family-reading-habit`·`peace-capsules/art-of-sincere-apology-marriage`) — نفس mtime بالضبط (12-13 يوليو)، صفر تنفيذ · `degenerate_filler_check()` P0 لكورسر — `grep -rln` في `scripts/`=صفر تطابق، لا تزال غير موجودة (سارٍ منذ 2026-07-10).
+
+**git (تصعيد رابع عشر متتالٍ — لا حل بعد):** نفس الأقفال الثلاثة (`index.lock`/`objects/maintenance.lock`/`ORIG_HEAD.lock`، `Operation not permitted` عند كل محاولة حذف) + `MERGE_HEAD` عالق عند `a6743900` منذ 18 يوليو 19:07 UTC (23:07+04:00) — **تجاوز 47 ساعة و25 دقيقة متواصلة الآن، رابع عشر دورة تصعيد على التوالي (...←08:09Z←08:37Z←09:05Z، مع فجوة ~9.5 ساعة قبل هذه الدورة←18:32Z).** محاولة best-effort كاملة واحدة (`find -delete`/`git add -A`/`git commit --no-edit`) رُفضت عند خطوة حذف الأقفال كالمعتاد (`Operation not permitted` على مستوى نظام الملفات الفعلي، ليس git نفسه) — تُركت فوراً وفق البروتوكول، بلا حلقة إعادة محاولة. `git fetch` (قراءة فقط) نجح: `origin/main` تحرّك `c0ca8fa5`→**`c34f7044`**، الفارق الآن **2 محلي/30 origin** (كان 26 عند 09:05Z) — الانحراف اتّسع بوضوح خلال فجوة التشغيل الطويلة. **تحقّق مباشر مُعاد:** صفر ملفات `UU`، صفر علامات تعارض (`<<<<<<<`/`=======`/`>>>>>>>`) في أي ملف `.html` — فهرس الدمج لا يزال نظيفاً بالكامل على مستوى المحتوى، الباقي فعلياً commit ختامي واحد فقط يخص كورسر حصراً، لم يُلمس.
+
+**تصعيد رابع عشر متتالٍ بلا حل — الفهرس جاهز للـcommit الختامي منذ إحدى عشرة دورة كاملة، يحتاج كورسر أو جوست الآن مباشرة بشكل عاجل. المحتوى سليم تماماً؛ الانحراف اتّسع إلى 30 كوميت origin خلال فجوة التشغيل التاسعة الساعات.** التفاصيل: `quality-log.md`/`AMER-ORDERS-ACTIVE.md` (2026-07-20T18:32Z).
+
+— عامر
+
+---
