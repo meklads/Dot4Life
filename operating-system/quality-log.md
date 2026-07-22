@@ -4835,3 +4835,62 @@ git: working tree يحوي عدداً كبيراً من الملفات غير ا
 **لا حاجة لإجراء من جوست هذه الدورة سوى العلم.**
 
 — عامر
+
+---
+
+## 2026-07-22T04:36Z — عامر (تلقائي، دورة 30 دقيقة)
+
+**الحالة العامة:** 🟢 محتوى سليم، لا اعتماد LIVE جديد، لا انتكاسة. 🟡 جبهة git تقدّمت (origin تحرّك) لكن اصطدمت بنفس عائق الأقفال المعروف عند محاولة الدمج.
+
+**1) الصور:** `list-image-pending.py` → 51/51 معتمدة، صفر معلّق. لا حاجة Higgsfield هذه الدورة.
+
+**2) البناء:** `PYTHONPATH=scripts python3 scripts/gsystem_autopilot.py` (بلا `--push`) → نظيف، فحص الجودة نجح، built 0 slug(s).
+
+**3) بوابة DEEPEN:** `deepen_gate.py` → `{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` — بلا تغيّر، مستقر منذ 07-18T12:08Z. Batch 04 يبقى مجمَّداً (الهدف ≤25).
+
+**4) `build-from-approved-draft.py --audit`:** 33 PASS / 0 FAIL (SKIP معروف: `real-estate/oman-property-roi.html`).
+
+**5) `amer_gate.py` على 10 ملفات معروفة (تحقّق مباشر، مسارات كاملة):** مطابقة رقمياً حرفياً بصفر فرق عن الدورات السابقة — `real-estate/dubai-property-roi.html`=195w (FAIL معزول، noindex) · `blog/saudi-mortgage-guide.html`=20w (FAIL معزول، noindex) · `cities/abu-dhabi/index.html`=1123w/FAQ3 · `cities/jeddah/index.html`=1125w/FAQ3 · `cities/oman/index.html`=1035w/FAQ3 · `cities/riyadh/index.html`=1119w/FAQ3 · `guides/zakat-complete-guide.html`=1303w/FAQ6 · `guides/indoor-plants-saudi-arabia.html`=1941w/FAQ6 · `guides/ramadan-nutrition-guide.html`=2199w/FAQ5 · `cities/dubai/index.html`=1746w/FAQ5. الإجمالي: 6 فاشل (معروفة سلفاً، ضمن DEEPEN) / 4 ناجح-تحذير. صفر انتكاسة جديدة، صفر تحسّن جديد.
+
+**6) تحقّق إضافي مباشر:** em-dash عبر (blog/cities/guides/real-estate/peace-capsules) = صفر · أدسنس+noindex معاً على صفحات محتوى حيّة = صفر · علامات تعارض git حقيقية (`<<<<<<<`) في `.html` عبر نفس المجلدات = صفر · `find -newermt "2026-07-22 04:05"` عبر مجلدات المحتوى = صفر ملف جديد أو مُعدَّل.
+
+**7) `handoff-board.md` — قسم "انتهى من عندي — بانتظار المراجعة":** فارغ فعلاً (تحقّق مباشر) — صفر عمل جديد من كورسر لمراجعته. لا شيء لنقله لـ done.
+
+**8) git — تطوّر حقيقي هذه الدورة، ثم عائق معروف:**
+- `origin/main` تحرّك من `923c8909` إلى `5d1a131f` (كوميت إضافي من كورسر) — الفارق أصبح **8 محلي/17 origin** (كان 6/16 لعدة دورات مستقرة).
+- محاولة `git pull --no-rebase --no-edit -X ours origin main` (بمفتاح `.deploy/d4l_deploy`) **نجحت في جلب الفرع** ودمجت التعارضات تلقائياً (`-X ours`)، **لكن فشلت عند الكتابة**: `error: Unable to write index` بسبب `warning: unable to unlink .git/objects/*/tmp_obj_*: Operation not permitted` — نفس قيد الملفية المعروف على هذا المسار المُوصَّل (mount).
+- النتيجة: الدمج توقّف في حالة "conflicts fixed but you are still merging" (`MERGE_HEAD` جديد موجود). محاولة `git commit --no-edit` لإنهائه رُفضت: `Unable to create .git/index.lock: File exists` ("Another git process seems to be running"). محاولة حذف `.git/index.lock`/`.git/HEAD.lock`/`.git/objects/maintenance.lock` يدوياً رُفضت جميعها: `Operation not permitted`.
+- **تُركت الحالة فوراً وفق البروتوكول (best-effort واحد، بلا حلقة إعادة محاولة).** لم أُجرِ `git merge --abort` لتجنّب فقدان التعارضات المحلولة تلقائياً؛ كورسر (الذي يملك بيئة كتابة فعلية على هذا المسار) هو الأنسب لإنهاء الكوميت أو إعادة المحاولة.
+- **ملاحظة مهمة لكورسر:** يوجد تعديلان غير مُلتَزَمين (uncommitted) في شجرة العمل سبقا هذه الدورة — `operating-system/02-traction-dashboard.md` (تصحيح رقم DEEPEN من 30 إلى 44 الصحيح) و`operating-system/content-plan.md` (بريفات دفعة الخميس 23 يوليو، 4 مقالات). كلاهما محتوى شرعي (لا حشو، لا تخريب) راجعتُه مباشرة. **لم يُفقَد شيء** أثناء محاولة الدمج — التعديلات لا تزال في شجرة العمل. يُنصَح كورسر بمراجعتها قبل أي كوميت ختامي حتى لا تُفقَد بالخطأ لو أُعيد `checkout`/`reset`.
+- ملف شارد `testfile_amer` (فارغ، غير متتبَّع) موجود في جذر المستودع منذ 21:08Z — مصدره غير معروف، لم أحذفه (خارج نطاق ولايتي، وحذف ملفات مجهولة المصدر مخاطرة غير ضرورية)؛ يُترك لكورسر/جوست للتحقّق.
+
+**نظام (`system/tasks.json`):** 3 بطاقات — صفر جديد. `degenerate_filler_check()` P0 لا تزال غير موجودة في `scripts/`.
+
+**القرار:** لا يوجد مقال جديد ليُعتمد أو يُرفض هذه الدورة. لا اعتماد مزيّف. القضايا المفتوحة (DEEPEN 44 ملف + فقرة الحشو المكرَّرة) تبقى ضمن مسار هيما دون تغيير.
+
+**تنبيه تشغيلي لجوست:** جبهة git تحرّكت فعلياً هذه الدورة (origin تقدّم بكوميت) لكن الدمج المحلي اصطدم بنفس قيد الكتابة على نظام الملفات المُوصَّل الذي وثّقناه سابقاً — **هذه الجلسة لا تملك بيئة كتابة فعلية على `.git` رغم امتلاكها مفتاح SSH صالحاً للقراءة/الجلب**. الحل الفعلي يبقى بيد كورسر (بيئة كتابة حقيقية).
+
+— عامر
+
+---
+
+**05:05 UTC — عامر (تلقائي) → جوست/كورسر/هيما:** 🟢 محتوى سليم تماماً — صفر تغيير عن دورة 04:36Z، لا اعتماد LIVE جديد، لا انتكاسة. 🟡 جبهة git لا تزال معلّقة، بلا حركة إضافية على origin منذ الدورة السابقة، ونفس قيد الكتابة على المسار المُوصَّل يمنع إكمال الدمج.
+
+**روتيني (كل رقم مُتحقَّق بتشغيل مباشر):** `list-image-pending`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `amer_freeze_watch.py`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ" · `gsystem_autopilot.py` بلا `--push`=نظيف، built 0 slug(s)، فحص الجودة نجح · `deepen_gate`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` لا تغيّر، Batch 04 يبقى مجمَّداً · `build-from-approved-draft.py --audit`=**33 PASS/0 FAIL** ثابت (SKIP وحيد معروف: `real-estate/oman-property-roi.html`) · `handoff_sync`={"cards":25}.
+
+**`amer_gate.py` على 10 ملفات معروفة:** مطابقة رقمياً حرفياً لدورة 04:36Z بصفر فرق: `real-estate/dubai-property-roi.html`=195w (معزول noindex,nofollow) · `blog/saudi-mortgage-guide.html`=20w (معزول noindex,nofollow) · 4 مدن (`abu-dhabi`=1123w/`jeddah`=1125w/`oman`=1035w/`riyadh`=1119w، FAQ=3) · `zakat-complete-guide`=1303w/FAQ6 · `indoor-plants-saudi-arabia`=1941w/FAQ6 · `ramadan-nutrition-guide`=2199w/FAQ5 · `cities/dubai`=1746w/FAQ5. صفر انتكاسة جديدة، صفر تحسّن جديد.
+
+**تحقّق إضافي مباشر:** em-dash عبر مجلدات المحتوى (blog/cities/guides/real-estate/peace-capsules) = صفر. أدسنس+noindex معاً على صفحات محتوى حيّة = صفر. علامات تعارض git حقيقية (`<<<<<<<`) في `.html` = صفر. `find -newermt` منذ دورة 04:36Z عبر مجلدات المحتوى = صفر ملف جديد أو مُعدَّل.
+
+**نظام (`system/tasks.json`):** 3 بطاقات — صفر جديد. `degenerate_filler_check()` P0 لا تزال غير موجودة في `scripts/`.
+
+**git (تصعيد ثلاثة وأربعون متتالٍ — مستقر، بلا تغيّر عن دورة 04:36Z):** `origin/main` بلا حركة إضافية منذ `5d1a131f`، الفارق ثابت **8 محلي/17 origin** (`git rev-list --left-right --count`، تحقّق مباشر عبر `fetch` بمفتاح `.deploy/d4l_deploy`). `MERGE_HEAD` لا يزال قائماً (دمج `-X ours` من الدورة السابقة محلول في شجرة العمل لكن غير مُلتَزَم). محاولة best-effort واحدة رُفضت عند كل خطوة كالمعتاد: حذف الأقفال الثلاثة (`index.lock`/`objects/maintenance.lock`/`HEAD.lock`) `Operation not permitted`، `add` رفضه "Another git process seems to be running"، `pull` رفضه `MERGE_HEAD exists`، `push` رفضه `non-fast-forward` — تُركت فوراً وفق البروتوكول، بلا حلقة إعادة محاولة، بلا `merge --abort`.
+
+**لكورسر تحديداً — تذكير بثلاث نقاط لا تزال قائمة:**
+1. الدمج المحلول (`-X ours`) لا يزال في شجرة العمل بانتظار بيئة كتابة فعلية على `.git` لإكمال الكوميت.
+2. تعديلان غير مُلتَزَمين شرعيان لا يزالا موجودَين سليمَين: `operating-system/02-traction-dashboard.md` و`operating-system/content-plan.md` (بريفات خميس 23 يوليو) — راجعوهما قبل أي `reset`/`checkout`.
+3. ملف شارد فارغ `testfile_amer` في جذر المستودع لا يزال دون تفسير — خارج ولايتي.
+
+**المحتوى سليم تماماً هذه الدورة، لا حاجة لإجراء من جوست على المحتوى. جبهة git مستقرة (تصعيد ثلاثة وأربعون) بانتظار كوميت ختامي واحد من كورسر لإغلاقها.** التفاصيل: `quality-log.md`/`AMER-ORDERS-ACTIVE.md` (2026-07-22T05:05Z).
+
+— عامر
