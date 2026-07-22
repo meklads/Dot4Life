@@ -1683,19 +1683,51 @@ body.recipes-page.rcp-bb-recipe {
   width: 100%;
   border-collapse: collapse;
   font-size: .88rem;
+  margin: 0;
 }
 
-.rcp-bb-nutrition th,
+/* Override .article-body th (dark bg + white text) — do not set dark text on th */
+.article-body .rcp-bb-nutrition th,
+.rcp-bb-nutrition th {
+  background: #054241;
+  color: #fff;
+  font-weight: 700;
+  width: 42%;
+  padding: .55rem .75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, .12);
+  text-align: start;
+}
+
+.article-body .rcp-bb-nutrition td,
 .rcp-bb-nutrition td {
   padding: .55rem .75rem;
   border-bottom: 1px solid #eee;
   text-align: start;
+  color: var(--text-2, #3d4f4d);
+  background: #fff;
 }
 
-.rcp-bb-nutrition th {
-  font-weight: 700;
-  color: #1a1a1a;
-  width: 42%;
+.article-body .rcp-bb-nutrition tr:nth-child(even) td,
+.rcp-bb-nutrition tr:nth-child(even) td {
+  background: #f3f8f6;
+}
+
+[data-theme="dark"] .article-body .rcp-bb-nutrition th,
+[data-theme="dark"] .rcp-bb-nutrition th {
+  background: #0a5a58;
+  color: #fff;
+}
+
+[data-theme="dark"] .article-body .rcp-bb-nutrition td,
+[data-theme="dark"] .rcp-bb-nutrition td {
+  color: var(--text, #e8f0ee);
+  background: var(--body-bg, #0f1a19);
+  border-bottom-color: rgba(255, 255, 255, .08);
+}
+
+[data-theme="dark"] .article-body .rcp-bb-nutrition tr:nth-child(even) td,
+[data-theme="dark"] .rcp-bb-nutrition tr:nth-child(even) td {
+  background: rgba(255, 255, 255, .04);
 }
 
 .rcp-bb-nutrition-note {

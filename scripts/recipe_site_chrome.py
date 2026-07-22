@@ -17,7 +17,7 @@ RECIPE_HEAD_ASSETS = """<link rel="preconnect" href="https://fonts.googleapis.co
 <link rel="stylesheet" href="/styles/global.css?v=20260624t"/>
 <link rel="stylesheet" href="/styles/home.css?v=20260624g"/>
 <link rel="stylesheet" href="/styles/pages/articles.css?v=20260608u"/>
-<link rel="stylesheet" href="/styles/pages/recipes.css?v=20260722a"/>"""
+<link rel="stylesheet" href="/styles/pages/recipes.css?v=20260722b"/>"""
 
 def mobile_dropdown() -> str:
     return (PARTIALS / "mobile-dropdown.html").read_text(encoding="utf-8").strip()
