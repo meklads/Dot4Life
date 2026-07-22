@@ -8,7 +8,24 @@
    ═══════════════════════════════════════════════════════ */
 
 /* ── Design Tokens ──────────────────────────── */
+body.tool-flagship-page[data-tool="zakat-calculator"] {
+  --z-gold: var(--tool-accent, #C89B3C);
+  --z-gold-d: var(--tool-accent-dark, #A67C2E);
+  --z-gold-l: var(--tool-accent-light, rgba(200, 155, 60, .15));
+  --z-green: #059669;
+  --z-amber: #D97706;
+  --z-card-bg: var(--card-bg, #fff);
+  --z-bd: var(--border-l, #E8ECF0);
+  --z-trans: cubic-bezier(.22, 1, .36, 1);
+  --z-shadow: 0 4px 24px rgba(0, 0, 0, .06);
+  --z-shadow-h: 0 12px 40px rgba(200, 155, 60, .12);
+}
 
+[data-theme="dark"] body.tool-flagship-page[data-tool="zakat-calculator"] {
+  --z-card-bg: var(--card-bg, #141a19);
+  --z-bd: rgba(255, 255, 255, .1);
+  --z-gold-l: rgba(200, 155, 60, .2);
+}
 
 /* ══════════════════════════════════════════════
    INFO GRID — 3 Premium Cards
@@ -242,10 +259,11 @@
 .zn-s-btn:hover { border-color: var(--z-gold); transform: translateY(-1px); }
 .zn-s-btn.active {
   border-color: var(--z-gold);
+  background: linear-gradient(135deg, var(--z-gold), var(--z-gold-d));
   color: #fff;
   box-shadow: 0 4px 20px rgba(200,155,60,.25);
 }
-.zn-s-btn.active::before { opacity: 1; }
+.zn-s-btn.active::before { opacity: 0; }
 .zn-s-btn.active svg, .zn-s-btn.active span { color: #fff; }
 .zn-s-badge {
   font-size: .6rem;
@@ -309,6 +327,7 @@
   color: #fff;
   box-shadow: 0 2px 8px rgba(200,155,60,.2);
 }
+.zt-tab.active svg { color: #fff; stroke: #fff; }
 @media (max-width: 600px) {
   .zt-tabs { gap: 3px; padding: 3px; }
   .zt-tab { padding: 7px 12px; font-size: .68rem; gap: 3px; }
