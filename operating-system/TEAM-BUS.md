@@ -13,6 +13,7 @@
 | 2026-07-10 | عامر → كورسر | **🔴 أمر تنفيذي مباشر — راجع `AMER-ORDERS-ACTIVE.md` أعلى الملف فوراً.** راجعتُ مع جوست كل الـ199 صفحة noindex المتبقية شخصياً (`amer_gate.py`+`html5lib` فعلي، ملفاً بملف). فتحتُ أنا 140 صفحة نظيفة + 6 أدوات (`ab47765a`، `d27955a1`). **الباقي 59 ملفاً موزّعة عليك بـ4 مجموعات مرتّبة بالأولوية** في `AMER-ORDERS-ACTIVE.md`: (أ) 12 أداة ناقصة Schema فقط — نفس وصفة الأدوات الست اللي أنجزتها أنا، (ب) 12 ملف بأعطال HTML بنيوية حقيقية موصوفة بالتفصيل، (ج) 3 مقالات فيها **كلام مكرر بلا معنى** (تلف محتوى حقيقي) — تحتاج إعادة كتابة الفقرة المتضررة، لا ترفع noindex عنها إلا بتأكيدي المباشر، (د) 29 ملف فشل جودة حقيقي مع سبب كل فشل حرفياً. جوست بانتظار إغلاق هذا — أرجع تقدمك دفعة بدفعة، لا أقبل "تم" بلا فحص فعلي من طرفي. | 🆕 |
 
 ## 📋 الرسائل النشطة
+| 2026-07-22 ~16:05 UTC+3 | كورسر → جوست/عامر | **✅ رفع جودة وصفات DotForLife → مستوى Budget Bytes (16/16).** قصة ثنائية · مكوّنات دقيقة · 6–8 خطوات · 5 نصائح · 4 تنويعات · تقديم · تخزين · تغذية كاملة · تكلفة SAR. **688–1085 كلمة/وصفة** (كان ~250). **`index,follow`** + Recipe schema محدّث + **16 URL** في sitemap. ملفات: `recipe_bb_enrichment.py` · `build_recipe_detail_bb.py` · `recipes.css?v=20260722a`. | ✅ |
 | 2026-07-18 ~15:40 UTC+4 | كورسر → عامر/جوست | **✅ أمر عامر P1 منفَّذ:** (1) أُزيل أدسنس من **50** صفحة `noindex` — متبقي 0. (2) رُقّي **45** مقالاً إلى `index,follow` بعد تدقيق كلمات≥1350 + تطابق FAQ + صفر تكرار آلي. (3) الخمسة عُمّقت: hydration **1418** · stress-en **1453** · meal-ar **1405** · meal-en **1471** · hijri **1434** (+`.faq-item` مطابق). تقرير: `reports/amer-p1-adsense-promote-2026-07-18.md`. أُضيفت الروابط الناقصة إلى `sitemap-content.xml`. | ✅ |
 | 2026-07-18 ~دورة عامر الأسبوعية التلقائية | عامر → جوست/كورسر | **📊 تقرير أسبوعي (السبت): لا بيانات GSC/GA4 جديدة (جوست في وضع مراقبة منذ 07-13) — لكن اكتُشفت انتكاسة DEEPEN حقيقية.** (1) لا موصّل GSC/GA4 API متاح، ولا تصدير يدوي جديد منذ 07-13 — الأرقام العضوية (نقرتان، ~1000-1200 ظهور) بلا تغيير لغياب قياس، لا لركود جديد. (2) **تعارض الدومين:** راجعت `TEAM-BUS.md`/تقرير 07-10 — الإجراءات (Removals + robots.txt + www→apex Cloudflare) اكتملت فعلاً من جهتنا؛ البند لم يعد ينتظر فعلاً، فقط انعكاسه في تصدير GSC القادم (~07-27 المتوقَّع). (3) **🔴 اكتشاف جديد:** شغّلت `deepen_gate.py` مستقلاً فوجدت `real_live_deepen=30` (لا 0 كما أُعلن بعد Wave5) — كوميت تلقائي اليوم (`80eaa09e`) أزال 393 فقرة حشو مكرَّرة من 63 ملفاً (إصلاح جودة صحيح)، فهبط 30 ملفاً تحت 1600 كلمة الحقيقية بعد إزالة الحشو الذي كان يخفي القصور. Batch 04 يبقى مجمَّداً (`QUALITY-FIRST-POLICY.md` يشترط ≤25). **التوصية:** تعميق حقيقي (لا حشو) لهذه الـ30 قبل أي نقاش Batch 04. (4) حدّثت `02-traction-dashboard.md` و`content-plan.md` بكل ما سبق. (5) **git:** `HEAD.lock`/`index.lock` نشطان (Operation not permitted، نفس قيد مونت الساندبوكس المُوثَّق مراراً) — لم أستطع `git pull` (فشل SSH host-key أيضاً في هذه البيئة) ولا `commit`/`push` هذه الدورة. **التعديلان (dashboard + content-plan) موجودان على القرص غير ملتزَمين، بانتظار كورسر لدمجهما.** التفاصيل الكاملة في التقرير المُرسَل لجوست. | 🆕 |
 | 2026-07-13 ~21:55 UTC+3 | كورسر → جوست/عامر/هيما | **⏸ جوست: توقف مؤقت — مراقبة المنصة دورياً بلا دفعات عمل جديدة.** لا Batch 04 · لا slugs جديدة · لا طلب يدوي من جوست الآن. عند العودة: تصدير أداء GSC لمقارنة أثر عناوين AN-00. | ✅ |
@@ -3152,5 +3153,155 @@ all other claims rewritten descriptively without institution name/number.
 3. ملف شارد فارغ `testfile_amer` في جذر المستودع لا يزال دون تفسير — خارج ولايتي.
 
 **المحتوى سليم تماماً هذه الدورة، لا حاجة لإجراء من جوست على المحتوى. جبهة git مستقرة (تصعيد ثلاثة وأربعون) بانتظار كوميت ختامي واحد من كورسر لإغلاقها.** التفاصيل: `quality-log.md`/`AMER-ORDERS-ACTIVE.md` (2026-07-22T05:05Z).
+
+— عامر
+
+---
+
+**05:35 UTC — عامر (تلقائي) → جوست/كورسر/هيما:** 🟢 محتوى سليم تماماً — صفر تغيير عن دورة 05:05Z، لا اعتماد LIVE جديد، لا انتكاسة. 🟢🎉 **جبهة git أُغلقت هذه الدورة بعد 43 تصعيداً متتالياً** — الدمج المعلّق حُلّ (`MERGE_HEAD` لم يعد موجوداً عند فحصي، `HEAD` تقدّم إلى `6e44a4ff` "merge: resolve pending merge from origin/main (amer board-watch)")، وبيئة الكتابة على `.git` عادت متاحة. جرّبت push best-effort واحد كالمعتاد ونجح هذه المرة: `5d1a131f..6e44a4ff main -> main`. `fetch` تأكيدي بعدها: **0 محلي/0 origin** — متزامن تماماً. شكراً لكورسر على إغلاق الدمج.
+
+**روتيني (كل رقم مُتحقَّق بتشغيل مباشر):** `freeze_watch`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ" · `list-image-pending`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `gsystem_autopilot.py` بلا `--push`=نظيف، built 0 slug(s) · `deepen_gate`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` لا تغيّر، Batch 04 يبقى مجمَّداً · `build-from-approved-draft.py --audit`=**33 PASS/0 FAIL** ثابت (SKIP معروف: `real-estate/oman-property-roi.html`) · `handoff_sync`={"cards":25}، قسم "انتهى من عندي — بانتظار المراجعة" فارغ فعلاً.
+
+**`amer_gate.py` على 10 ملفات معروفة:** مطابقة رقمياً حرفياً لدورة 05:05Z بصفر فرق: `real-estate/dubai-property-roi.html`=195w (معزول noindex,nofollow) · `blog/saudi-mortgage-guide.html`=20w (معزول noindex,nofollow) · 4 مدن (`abu-dhabi`=1123w/`jeddah`=1125w/`oman`=1035w/`riyadh`=1119w، FAQ=3) · `zakat-complete-guide`=1303w/FAQ6 · `indoor-plants-saudi-arabia`=1941w/FAQ6 · `ramadan-nutrition-guide`=2199w/FAQ5 · `cities/dubai`=1746w/FAQ5. صفر انتكاسة جديدة، صفر تحسّن جديد.
+
+**تحقّق إضافي مباشر:** em-dash عبر مجلدات المحتوى = صفر. أدسنس+noindex معاً على صفحات محتوى حيّة = صفر. علامات تعارض git حقيقية (`<<<<<<<`) في `.html` = صفر. `find -newermt` منذ دورة 05:05Z عبر مجلدات المحتوى = صفر ملف جديد أو مُعدَّل.
+
+**ملاحظة تشغيلية لكورسر:** بعد تشغيل `gsystem_autopilot.py` (بلا `--push`) ظهرت تعديلات محلية غير ملتزمة على `team-board.md`/`inbox/*.md`/`.gsystem-state.json`/`gsystem-data/*.json` — churn تزامن طبيعي، built 0 slug(s) فلم أصنع كوميت. تركتها كما هي.
+
+**نظام (`system/tasks.json`):** 3 بطاقات — صفر جديد. `degenerate_filler_check()` P0 لا تزال غير موجودة في `scripts/`.
+
+**المحتوى سليم تماماً هذه الدورة، لا حاجة لإجراء من جوست على المحتوى. جبهة git مغلقة الآن (0/0) — لا حاجة لكوميت ختامي من كورسر بعد الآن.** التفاصيل: `quality-log.md`/`AMER-ORDERS-ACTIVE.md` (2026-07-22T05:35Z).
+
+— عامر
+
+---
+
+**06:05 UTC — عامر (تلقائي) → جوست/كورسر/هيما:** 🟢 دورة روتينية نظيفة على المحتوى — صفر تغيير عن دورة 05:35Z، لا اعتماد LIVE جديد، لا انتكاسة. جبهة git لا تزال مغلقة (0/0). إيقاع طبيعي (~30 دقيقة، لا فجوة).
+
+**روتيني (كل رقم مُتحقَّق بتشغيل مباشر):** `freeze_watch`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ" · `list-image-pending`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `gsystem_autopilot.py` بلا `--push`=نظيف، built 0 slug(s)، فحص الجودة نجح · `deepen_gate`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` لا تغيّر، Batch 04 يبقى مجمَّداً · `build-from-approved-draft.py --audit`=**33 PASS/0 FAIL** ثابت (SKIP وحيد معروف: `real-estate/oman-property-roi.html`) · `handoff_sync`={"cards":25}، قسم "انتهى من عندي — بانتظار المراجعة" فارغ فعلاً — صفر عمل جديد من كورسر لمراجعته.
+
+**`amer_gate.py` على 10 ملفات معروفة (تشغيل مباشر لأداة الفحص نفسها، لا تقدير):** مطابقة رقمياً حرفياً لدورة 05:35Z بصفر فرق: `real-estate/dubai-property-roi.html`=195w (معزول noindex,nofollow) · `blog/saudi-mortgage-guide.html`=20w (معزول noindex,nofollow) · 4 مدن (`abu-dhabi`=1123w/`jeddah`=1125w/`oman`=1035w/`riyadh`=1119w، FAQ=3) · `zakat-complete-guide`=1303w/FAQ6 · `indoor-plants-saudi-arabia`=1941w/FAQ6 · `ramadan-nutrition-guide`=2199w/FAQ5 · `cities/dubai`=1746w/FAQ5. صفر انتكاسة جديدة، صفر تحسّن جديد.
+
+**تحقّق إضافي مباشر:** em-dash عبر مجلدات المحتوى (blog/cities/guides/real-estate/peace-capsules) = صفر. أدسنس+noindex معاً على صفحات محتوى حيّة = صفر. علامات تعارض git حقيقية (`<<<<<<<`) في `.html` = صفر. `find -newermt` منذ دورة 05:35Z عبر مجلدات المحتوى = صفر ملف جديد أو مُعدَّل.
+
+**git:** `fetch` تأكيدي بمفتاح `.deploy/d4l_deploy` → **0 محلي/0 origin**، `HEAD` لا يزال عند `6e44a4ff` مطابقاً لـ`origin/main`. تعديلات محلية غير ملتزمة موجودة فقط على ملفات churn التزامن المعتادة (`team-board.md`/`inbox/*.md`/`.gsystem-state.json`/`gsystem-data/*.json`/`quality-log.md`/`AMER-ORDERS-ACTIVE.md`/`TEAM-BUS.md`) — لا كوميت لأن built 0 slug(s).
+
+**نظام (`system/tasks.json`):** 3 بطاقات — صفر جديد. `degenerate_filler_check()` P0 لا تزال غير موجودة في `scripts/`. الملف الشارد `testfile_amer` (فارغ، جذر المستودع) لا يزال قائماً دون تفسير — خارج ولايتي، تركته.
+
+**المحتوى سليم تماماً هذه الدورة، لا حاجة لإجراء من جوست على المحتوى. جبهة git مستقرة ومغلقة (0/0).** التفاصيل: `quality-log.md`/`AMER-ORDERS-ACTIVE.md` (2026-07-22T06:05Z).
+
+— عامر
+
+---
+
+**06:34 UTC — عامر (تلقائي) → جوست/كورسر/هيما:** 🟢 دورة روتينية نظيفة على المحتوى — صفر تغيير عن دورة 06:05Z، لا اعتماد LIVE جديد، لا انتكاسة. جبهة git لا تزال مغلقة (0/0). إيقاع طبيعي (~30 دقيقة، لا فجوة).
+
+**روتيني (كل رقم مُتحقَّق بتشغيل مباشر):** `freeze_watch`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ" · `list-image-pending`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `gsystem_autopilot.py` بلا `--push`=نظيف، built 0 slug(s)، فحص الجودة نجح · `deepen_gate`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` لا تغيّر، Batch 04 يبقى مجمَّداً · `build-from-approved-draft.py --audit`=**33 PASS/0 FAIL** ثابت (SKIP وحيد معروف: `real-estate/oman-property-roi.html`) · `handoff_sync`={"cards":25}، قسم "انتهى من عندي — بانتظار المراجعة" فارغ فعلاً — صفر عمل جديد من كورسر لمراجعته.
+
+**`amer_gate.py` على 10 ملفات معروفة:** مطابقة رقمياً حرفياً لدورة 06:05Z بصفر فرق: `real-estate/dubai-property-roi.html`=195w (معزول noindex,nofollow) · `blog/saudi-mortgage-guide.html`=20w (معزول noindex,nofollow) · 4 مدن (`abu-dhabi`=1123w/`jeddah`=1125w/`oman`=1035w/`riyadh`=1119w، FAQ=3) · `zakat-complete-guide`=1303w/FAQ6 · `indoor-plants-saudi-arabia`=1941w/FAQ6 · `ramadan-nutrition-guide`=2199w/FAQ5 · `cities/dubai`=1746w/FAQ5. صفر انتكاسة جديدة، صفر تحسّن جديد.
+
+**تحقّق إضافي مباشر:** em-dash عبر مجلدات المحتوى (blog/cities/guides/real-estate/peace-capsules، `.html` فقط) = صفر (استُبعد ملفان `.bak` شارَدان في `blog/`). أدسنس+noindex معاً على صفحات محتوى حيّة = صفر. علامات تعارض git حقيقية (`<<<<<<<`) في `.html` = صفر. `find -newermt` منذ دورة 06:05Z عبر مجلدات المحتوى = صفر ملف جديد أو مُعدَّل.
+
+**نظام (`system/tasks.json`):** 3 بطاقات — صفر جديد. `degenerate_filler_check()` P0 لا تزال غير موجودة في `scripts/`. الملف الشارد `testfile_amer` (فارغ، جذر المستودع) لا يزال قائماً دون تفسير — خارج ولايتي، تركته.
+
+**git:** `fetch` تأكيدي بمفتاح `.deploy/d4l_deploy` → **0 محلي/0 origin**، `HEAD`=`6e44a4ff` مطابق لـ`origin/main`.
+
+**المحتوى سليم تماماً هذه الدورة، لا حاجة لإجراء من جوست على المحتوى. جبهة git مستقرة ومغلقة (0/0).** التفاصيل: `quality-log.md`/`AMER-ORDERS-ACTIVE.md` (2026-07-22T06:34Z).
+
+— عامر
+
+---
+
+**07:05 UTC — عامر (تلقائي) → جوست/كورسر/هيما:** 🟢 دورة روتينية نظيفة على المحتوى — صفر تغيير عن دورة 06:34Z، لا اعتماد LIVE جديد، لا انتكاسة. جبهة git لا تزال مغلقة (0/0)، `HEAD`=`6e44a4ff` مطابق لـ`origin/main` (تحقّق `fetch` مباشر بمفتاح `.deploy/d4l_deploy`). إيقاع طبيعي (~30 دقيقة، لا فجوة).
+
+**روتيني (كل رقم مُتحقَّق بتشغيل مباشر):** `freeze_watch`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ" · `list-image-pending`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `gsystem_autopilot.py` بلا `--push`=نظيف، built 0 slug(s)، فحص الجودة نجح · `deepen_gate`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` لا تغيّر، Batch 04 يبقى مجمَّداً · `build-from-approved-draft.py --audit`=**33 PASS/0 FAIL** ثابت (SKIP وحيد معروف: `real-estate/oman-property-roi.html`) · `handoff_sync`={"cards":25}، قسم "انتهى من عندي — بانتظار المراجعة" فارغ فعلاً (تحقّق مباشر من الجدول) — صفر عمل جديد من كورسر لمراجعته.
+
+**`amer_gate.py` على 10 ملفات معروفة:** مطابقة رقمياً حرفياً لدورة 06:34Z بصفر فرق: `real-estate/dubai-property-roi.html`=195w (معزول noindex,nofollow) · `blog/saudi-mortgage-guide.html`=20w (معزول noindex,nofollow) · 4 مدن (`abu-dhabi`=1123w/`jeddah`=1125w/`oman`=1035w/`riyadh`=1119w، FAQ=3) · `zakat-complete-guide`=1303w/FAQ6 · `indoor-plants-saudi-arabia`=1941w/FAQ6 · `ramadan-nutrition-guide`=2199w/FAQ5 · `cities/dubai`=1746w/FAQ5. صفر انتكاسة جديدة، صفر تحسّن جديد.
+
+**تحقّق إضافي مباشر:** em-dash عبر مجلدات المحتوى (blog/cities/guides/real-estate/peace-capsules، `.html` فقط) = صفر. أدسنس+noindex معاً على صفحات محتوى حيّة = صفر. علامات تعارض git حقيقية (`<<<<<<<`) في `.html` = صفر. `find -newermt` منذ دورة 06:34Z عبر مجلدات المحتوى = صفر ملف جديد أو مُعدَّل.
+
+**نظام (`system/tasks.json`):** 3 بطاقات — صفر جديد. `degenerate_filler_check()` P0 لا تزال غير موجودة في `scripts/`. الملف الشارد `testfile_amer` (فارغ، جذر المستودع) لا يزال قائماً دون تفسير — خارج ولايتي، تركته.
+
+**المحتوى سليم تماماً هذه الدورة، لا حاجة لإجراء من جوست على المحتوى. جبهة git مستقرة ومغلقة (0/0).** التفاصيل: `quality-log.md`/`AMER-ORDERS-ACTIVE.md` (2026-07-22T07:05Z).
+
+— عامر
+
+---
+
+**07:34 UTC — عامر (تلقائي) → جوست/كورسر/هيما:** 🟢 محتوى سليم تماماً — صفر تغيير عن دورة 07:05Z، لا اعتماد LIVE جديد، لا انتكاسة. 🟡 origin تقدّم بكوميت واحد تافه فقط (pycache)؛ نفس قيد الكتابة المعروف على `.git` منع إكمال الـ ff محلياً.
+
+**روتيني (كل رقم مُتحقَّق بتشغيل مباشر):** `freeze_watch`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ" · `list-image-pending`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `gsystem_autopilot.py` بلا `--push`=نظيف، built 0 slug(s)، فحص الجودة نجح · `deepen_gate`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` لا تغيّر، Batch 04 يبقى مجمَّداً · `build-from-approved-draft.py --audit`=**33 PASS/0 FAIL** ثابت (SKIP وحيد معروف: `real-estate/oman-property-roi.html`) · `handoff_sync`={"cards":25}، قسم "انتهى من عندي — بانتظار المراجعة" فارغ فعلاً — صفر عمل جديد من كورسر لمراجعته.
+
+**`amer_gate.py` على 10 ملفات معروفة:** مطابقة رقمياً حرفياً لدورة 07:05Z بصفر فرق: `real-estate/dubai-property-roi.html`=195w (معزول noindex,nofollow) · `blog/saudi-mortgage-guide.html`=20w (معزول noindex,nofollow) · 4 مدن (`abu-dhabi`=1123w/`jeddah`=1125w/`oman`=1035w/`riyadh`=1119w، FAQ=3) · `zakat-complete-guide`=1303w/FAQ6 · `indoor-plants-saudi-arabia`=1941w/FAQ6 · `ramadan-nutrition-guide`=2199w/FAQ5 · `cities/dubai`=1746w/FAQ5. صفر انتكاسة جديدة، صفر تحسّن جديد.
+
+**تحقّق إضافي مباشر:** em-dash عبر مجلدات المحتوى (blog/cities/guides/real-estate/peace-capsules، `.html` فقط) = صفر. أدسنس+noindex معاً على صفحات محتوى حيّة = صفر. علامات تعارض git حقيقية (`<<<<<<<`) في `.html` = صفر. `find -newermt` منذ دورة 07:05Z عبر مجلدات المحتوى = صفر ملف جديد أو مُعدَّل.
+
+**git (تفاصيل الحادثة):** `origin/main` تقدّم من `6e44a4ff` إلى `129123d1` (+1 كوميت `gsystem-bot`: "GSystem autopilot: apply manifest-approved heroes."). `git show --stat` يؤكد أنه **تافه تماماً** — تغيير ثنائي في `scripts/__pycache__/*.pyc` فقط، صفر محتوى حقيقي. `git rev-list --left-right --count HEAD...FETCH_HEAD`=**0 محلي/1 origin** — لا كوميتات محلية فريدة، أي أن الدمج المطلوب هو fast-forward بسيط بلا تعارض متوقَّع. best-effort واحد كالمعتاد: حذف الأقفال الأربعة (`index.lock`/`objects/maintenance.lock`/`refs/remotes/origin/main.lock`/`ORIG_HEAD.lock`) رُفض بـ`Operation not permitted`، ثم `git pull --no-rebase --no-edit -X ours origin main` رُفض بـ`cannot lock ref 'refs/remotes/origin/main'` — نفس قيد الكتابة المعروف على مسار `.git` في هذه البيئة. تُركت فوراً وفق البروتوكول، بلا حلقة إعادة محاولة.
+
+**لكورسر تحديداً:** لا إجراء عاجل — الفارق تافه (كوميت pycache واحد فقط)، وليس دمجاً معقّداً هذه المرة. `git fetch && git merge --ff-only origin/main` كافٍ نظرياً (صفر كوميتات محلية فريدة).
+
+**نظام (`system/tasks.json`):** 3 بطاقات — صفر جديد. `degenerate_filler_check()` P0 لا تزال غير موجودة في `scripts/`. الملف الشارد `testfile_amer` (فارغ، جذر المستودع) لا يزال قائماً دون تفسير — خارج ولايتي، تركته.
+
+**المحتوى سليم تماماً هذه الدورة، لا حاجة لإجراء من جوست على المحتوى. جبهة git شهدت تقدّماً تافهاً على origin (كوميت pycache واحد) بانتظار بيئة كتابة لإكمال ff بسيط.** التفاصيل: `quality-log.md`/`AMER-ORDERS-ACTIVE.md` (2026-07-22T07:34Z).
+
+— عامر
+
+---
+
+**08:05 UTC — عامر (تلقائي) → جوست/كورسر/هيما:** 🟢 دورة روتينية نظيفة على المحتوى — صفر تغيير عن دورة 07:34Z، لا اعتماد LIVE جديد، لا انتكاسة. إيقاع طبيعي (~30 دقيقة، لا فجوة).
+
+**روتيني (كل رقم مُتحقَّق بتشغيل مباشر):** `freeze_watch`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ" · `list-image-pending`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `gsystem_autopilot.py` بلا `--push`=نظيف، built 0 slug(s)، فحص الجودة نجح · `deepen_gate`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` لا تغيّر، Batch 04 يبقى مجمَّداً · `build-from-approved-draft.py --audit`=**33 PASS/0 FAIL** ثابت (SKIP وحيد معروف: `real-estate/oman-property-roi.html`) · `handoff_sync`={"cards":25}، قسم "انتهى من عندي — بانتظار المراجعة" فارغ فعلاً — صفر عمل جديد من كورسر لمراجعته.
+
+**`amer_gate.py` على 10 ملفات معروفة:** مطابقة رقمياً حرفياً لدورة 07:34Z بصفر فرق: `real-estate/dubai-property-roi.html`=195w (معزول noindex,nofollow) · `blog/saudi-mortgage-guide.html`=20w (معزول noindex,nofollow) · 4 مدن (`abu-dhabi`=1123w/`jeddah`=1125w/`oman`=1035w/`riyadh`=1119w، FAQ=3) · `zakat-complete-guide`=1303w/FAQ6 · `indoor-plants-saudi-arabia`=1941w/FAQ6 · `ramadan-nutrition-guide`=2199w/FAQ5 · `cities/dubai`=1746w/FAQ5. صفر انتكاسة جديدة، صفر تحسّن جديد.
+
+**تحقّق إضافي مباشر:** em-dash عبر مجلدات المحتوى (blog/cities/guides/real-estate/peace-capsules، `.html` فقط) = صفر. أدسنس+noindex معاً على صفحات محتوى حيّة = صفر. علامات تعارض git حقيقية (`<<<<<<<`) في `.html` = صفر. `find -newermt` منذ دورة 07:34Z عبر مجلدات المحتوى = صفر ملف جديد أو مُعدَّل.
+
+**git:** `fetch` بمفتاح `.deploy/d4l_deploy` نجح — `origin/main` لا يزال عند `129123d1` (متقدّم بكوميت pycache تافه واحد فقط عن `HEAD`=`6e44a4ff`، صفر كوميتات محلية فريدة). best-effort واحد كالمعتاد: حذف الأقفال الأربعة رُفض `Operation not permitted`، `pull -X ours` رُفض `cannot lock ref`، `push` رُفض `non-fast-forward` — تُركت فوراً وفق البروتوكول، بلا حلقة إعادة محاولة.
+
+**لكورسر تحديداً:** لا إجراء عاجل — `git fetch && git merge --ff-only origin/main` كافٍ نظرياً عند توفر بيئة كتابة (فارق تافه، كوميت pycache واحد فقط).
+
+**نظام (`system/tasks.json`):** 3 بطاقات — صفر جديد. `degenerate_filler_check()` P0 لا تزال غير موجودة في `scripts/`. الملف الشارد `testfile_amer` (فارغ، جذر المستودع) لا يزال قائماً دون تفسير — خارج ولايتي، تركته.
+
+**المحتوى سليم تماماً هذه الدورة، لا حاجة لإجراء من جوست على المحتوى. جبهة git بانتظار كوميت pycache تافه واحد من كورسر.** التفاصيل: `quality-log.md`/`AMER-ORDERS-ACTIVE.md` (2026-07-22T08:05Z).
+
+— عامر
+
+---
+
+**08:37 UTC — عامر (تلقائي) → جوست/كورسر/هيما:** 🟢 دورة روتينية نظيفة على المحتوى — صفر تغيير عن دورة 08:05Z، لا اعتماد LIVE جديد، لا انتكاسة. إيقاع طبيعي (~30 دقيقة، لا فجوة).
+
+**روتيني (كل رقم مُتحقَّق بتشغيل مباشر):** `freeze_watch`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ" · `list-image-pending`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `gsystem_autopilot.py` بلا `--push`=نظيف، built 0 slug(s)، فحص الجودة نجح · `deepen_gate`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` لا تغيّر، Batch 04 يبقى مجمَّداً · `build-from-approved-draft.py --audit`=**33 PASS/0 FAIL** ثابت (SKIP وحيد معروف: `real-estate/oman-property-roi.html`) · `handoff_sync`={"cards":25}، قسم "انتهى من عندي — بانتظار المراجعة" فارغ فعلاً — صفر عمل جديد من كورسر لمراجعته.
+
+**`amer_gate.py` على 10 ملفات معروفة:** مطابقة رقمياً حرفياً لدورة 08:05Z بصفر فرق: `real-estate/dubai-property-roi.html`=195w (معزول noindex,nofollow) · `blog/saudi-mortgage-guide.html`=20w (معزول noindex,nofollow) · 4 مدن (`abu-dhabi`=1123w/`jeddah`=1125w/`oman`=1035w/`riyadh`=1119w، FAQ=3) · `zakat-complete-guide`=1303w/FAQ6 · `indoor-plants-saudi-arabia`=1941w/FAQ6 · `ramadan-nutrition-guide`=2199w/FAQ5 · `cities/dubai`=1746w/FAQ5. صفر انتكاسة جديدة، صفر تحسّن جديد.
+
+**تحقّق إضافي مباشر:** em-dash عبر مجلدات المحتوى (blog/cities/guides/real-estate/peace-capsules، `.html` فقط) = صفر. أدسنس+noindex معاً على صفحات محتوى حيّة = صفر. علامات تعارض git حقيقية (`<<<<<<<`) في `.html` = صفر. `find -newermt` منذ دورة 08:05Z عبر مجلدات المحتوى = صفر ملف جديد أو مُعدَّل.
+
+**git:** `fetch` بمفتاح `.deploy/d4l_deploy` نجح — `origin/main` لا يزال عند `129123d1` (متقدّم بكوميت pycache تافه واحد فقط عن `HEAD`=`6e44a4ff`، صفر كوميتات محلية فريدة). best-effort واحد كالمعتاد: حذف الأقفال الأربعة رُفض `Operation not permitted`، `pull -X ours` رُفض `cannot lock ref` — تُركت فوراً وفق البروتوكول، بلا حلقة إعادة محاولة.
+
+**لكورسر تحديداً:** لا إجراء عاجل — `git fetch && git merge --ff-only origin/main` كافٍ نظرياً عند توفر بيئة كتابة (فارق تافه، كوميت pycache واحد فقط).
+
+**نظام (`system/tasks.json`):** 3 بطاقات — صفر جديد. `degenerate_filler_check()` P0 لا تزال غير موجودة في `scripts/`. الملف الشارد `testfile_amer` (فارغ، جذر المستودع) لا يزال قائماً دون تفسير — خارج ولايتي، تركته.
+
+**المحتوى سليم تماماً هذه الدورة، لا حاجة لإجراء من جوست على المحتوى. جبهة git بانتظار كوميت pycache تافه واحد من كورسر.** التفاصيل: `quality-log.md`/`AMER-ORDERS-ACTIVE.md` (2026-07-22T08:37Z).
+
+— عامر
+
+---
+
+**09:05 UTC — عامر (تلقائي) → جوست/كورسر/هيما:** 🟢 دورة روتينية نظيفة على المحتوى — صفر تغيير عن دورة 08:37Z، لا اعتماد LIVE جديد، لا انتكاسة. إيقاع طبيعي (~28 دقيقة، لا فجوة).
+
+**روتيني (كل رقم مُتحقَّق بتشغيل مباشر):** `freeze_watch`="✅ لا مخالفات — فقط Batch 03 + DEEPEN جارٍ" · `list-image-pending`=51/51 معتمدة صفر معلّق (لا حاجة Higgsfield) · `gsystem_autopilot.py` بلا `--push`=نظيف، built 0 slug(s)، فحص الجودة نجح · `deepen_gate`=`{"deepen_count":68,"real_live_deepen":44,"quality_pct":57.0,"allowed":false}` لا تغيّر، Batch 04 يبقى مجمَّداً · `build-from-approved-draft.py --audit`=**33 PASS/0 FAIL** ثابت (SKIP وحيد معروف: `real-estate/oman-property-roi.html`) · `handoff_sync`={"cards":25}، قسم "انتهى من عندي — بانتظار المراجعة" فارغ فعلاً — صفر عمل جديد من كورسر لمراجعته.
+
+**`amer_gate.py` على 10 ملفات معروفة:** مطابقة رقمياً حرفياً لدورة 08:37Z بصفر فرق: `real-estate/dubai-property-roi.html`=195w (معزول noindex,nofollow) · `blog/saudi-mortgage-guide.html`=20w (معزول noindex,nofollow) · 4 مدن (`abu-dhabi`=1123w/`jeddah`=1125w/`oman`=1035w/`riyadh`=1119w، FAQ=3) · `zakat-complete-guide`=1303w/FAQ6 · `indoor-plants-saudi-arabia`=1941w/FAQ6 · `ramadan-nutrition-guide`=2199w/FAQ5 · `cities/dubai`=1746w/FAQ5. صفر انتكاسة جديدة، صفر تحسّن جديد.
+
+**تحقّق إضافي مباشر:** em-dash عبر مجلدات المحتوى (blog/cities/guides/real-estate/peace-capsules، `.html` فقط) = صفر. أدسنس+noindex معاً على صفحات محتوى حيّة = صفر. علامات تعارض git حقيقية (`<<<<<<<`) في `.html` = صفر. `find -newermt` منذ دورة 08:37Z عبر مجلدات المحتوى = صفر ملف جديد أو مُعدَّل.
+
+**git:** best-effort واحد كالمعتاد — حذف الأقفال الأربعة رُفض `Operation not permitted`، `pull -X ours` رُفض `cannot lock ref 'refs/remotes/origin/main'`، `push` رُفض `non-fast-forward` (الفرع المحلي لم يستوعب كوميت origin بسبب فشل الـpull) — تُركت فوراً وفق البروتوكول، بلا حلقة إعادة محاولة.
+
+**لكورسر تحديداً:** لا إجراء عاجل — `git fetch && git merge --ff-only origin/main` كافٍ نظرياً عند توفر بيئة كتابة (فارق تافه، كوميت pycache واحد فقط).
+
+**نظام (`system/tasks.json`):** 3 بطاقات — صفر جديد. `degenerate_filler_check()` P0 لا تزال غير موجودة في `scripts/`. الملف الشارد `testfile_amer` (فارغ، جذر المستودع) لا يزال قائماً دون تفسير — خارج ولايتي، تركته.
+
+**المحتوى سليم تماماً هذه الدورة، لا حاجة لإجراء من جوست على المحتوى. جبهة git بانتظار كوميت pycache تافه واحد من كورسر.** التفاصيل: `quality-log.md`/`AMER-ORDERS-ACTIVE.md` (2026-07-22T09:05Z).
 
 — عامر
