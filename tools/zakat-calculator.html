@@ -102,7 +102,15 @@ window.dflTrack=function(event,params){
     }
   ]
 }</script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1436107577087160" crossorigin="anonymous"></script></head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1436107577087160" crossorigin="anonymous"></script>
+<style media="print">
+@media print{
+  body.zakat-print *{visibility:hidden!important;}
+  body.zakat-print #resultsCard, body.zakat-print #resultsCard *{visibility:visible!important;}
+  body.zakat-print #resultsCard{position:absolute;inset-inline-start:0;top:0;width:100%;box-shadow:none!important;border:2px solid #054241!important;}
+}
+</style>
+</head>
 <body class="tool-flagship-page no-subnav" data-tool="zakat-calculator">
 <nav id="navbar" class="index-nav" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
@@ -885,11 +893,10 @@ function copyResult(){
   var amt=document.getElementById('zakatAmount').textContent;
   navigator.clipboard.writeText(lang==='ar'?'الزكاة المستحقة: '+amt+' ريال':'Zakat due: SAR '+amt);
 }
-function shareResult(){
-  var lang=getLang(), amt=document.getElementById('zakatAmount').textContent;
-  if(navigator.share) navigator.share({title:lang==='ar'?'حاسبة الزكاة':'Zakat Calculator',text:amt,url:location.href});
-}
-function printResult(){window.print();}
+function shareResult(){var lang=getLang(),amt=document.getElementById('zakatAmount').textContent;var badge=document.getElementById('nisabStatusBadge');var reached=badge&&badge.textContent.indexOf('\u2713')>-1;var msg=(lang==='ar'?'الزكاة الواجبة: '+amt+' ريال\n'+(reached?'✓ بلغت النصاب\n':'⚠ لم تبلغ النصاب بعد\n')+'النصاب المعتمد: '+(nisabMethod==='gold'?'ذهب':'فضة')+'\n'+'حاسبة زكاة مجانية ← dotforlife.com':'Zakat due: SAR '+amt+'\n'+(reached?'✓ Nisab reached\n':'⚠ Below nisab\n')+'Nisab: '+(nisabMethod==='gold'?'Gold':'Silver')+'\n'+'Free Zakat Calculator ← dotforlife.com');msg+='\n'+location.href;if(navigator.share){navigator.share({title:lang==='ar'?'حاسبة الزكاة':'Zakat Calculator',text:msg}).catch(function(){});}else{window.open('https://wa.me/?text='+encodeURIComponent(msg),'_blank');}}
+
+function printResult(){document.body.classList.add('zakat-print');window.print();setTimeout(function(){document.body.classList.remove('zakat-print');},800);}
+
 function toggleFaq(el){
   var open=el.classList.contains('open');
   document.querySelectorAll('.t-faq-q').forEach(function(q){q.classList.remove('open');q.nextElementSibling.classList.remove('active');});
