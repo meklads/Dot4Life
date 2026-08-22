@@ -22,7 +22,13 @@
 <link rel="stylesheet" href="/styles/tools-shared.css?v=20260608a">
 <link rel="stylesheet" href="/styles/tools-flagship.css?v=20260626a">
 <link rel="stylesheet" href="/styles/tools-accents.css?v=20260625a">
-<link rel="stylesheet" href="/styles/pages/tools_return-to-hotel.css?v=20260626a">
+<link rel="stylesheet" href="/styles/pages/tools_return-to-hotel.css?v=20260822a">
+<link rel="manifest" href="/tools/return-to-hotel.webmanifest">
+<meta name="theme-color" content="#054241">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Hotel Card">
+<link rel="apple-touch-icon" href="/assets/icons/hotel-card-192.png">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://dotforlife.com/tools/return-to-hotel.html">
 <meta property="og:title" content="Return to Hotel | Dot4Life">
@@ -66,6 +72,22 @@ window.dflTrack=function(event,params){
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Hotel details are saved in your browser. Maps navigation needs internet, screenshot your hotel card for offline reference. تفاصيل الفندق تُحفظ في متصفحك. الملاحة تحتاج إنترنت، التقط صورة للبطاقة للرجوع بدون شبكة."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I show this to a taxi driver? كيف أظهرها لسائق التاكسي؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Open Driver Card. It fills the screen with the hotel name, Arabic and English address, and phone so the driver can read it without talking. افتح بطاقة السائق. تملأ الشاشة باسم الفندق والعنوان بالعربي والإنجليزي ورقم الهاتف ليقرأها السائق بلا كلام."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I install this on my phone? هل أثبّتها على الجوال؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Use Add to Home Screen. The page works offline after the first visit. Your hotel stays on this device only. نعم. استخدم التثبيت على الشاشة الرئيسية. الصفحة تعمل دون نت بعد أول زيارة. فندقك يبقى على هذا الجهاز فقط."
       }
     }
   ]
@@ -201,6 +223,11 @@ window.dflTrack=function(event,params){
             <input type="text" class="field-input" id="f-address" placeholder="Taskisla Caddesi No. 1, Taksim, Istanbul, Turkey" />
             <span class="field-hint"><span class="en">Copy from Google Maps or your booking confirmation email</span><span class="ar">انسخ من خرائط جوجل أو بريد تأكيد الحجز</span></span>
           </div>
+          <div class="field-group full">
+            <label class="field-label"><span class="en">Address in Arabic (for the driver)</span><span class="ar">العنوان بالعربي (للسائق)</span></label>
+            <input type="text" class="field-input" id="f-addressAr" placeholder="حي العزيزية، شارع إبراهيم الخليل، مكة" />
+            <span class="field-hint"><span class="en">Optional. Show this to a Saudi driver if the English address is hard to read.</span><span class="ar">اختياري. أظهره للسائق إن كان العنوان الإنجليزي صعب القراءة.</span></span>
+          </div>
           <div class="field-group">
             <label class="field-label"><span class="en">Hotel Phone</span><span class="ar">هاتف الفندق</span></label>
             <input type="tel" class="field-input" id="f-phone" placeholder="+90 212 368 1234" />
@@ -210,6 +237,7 @@ window.dflTrack=function(event,params){
             <select class="field-select" id="f-country">
               <option value="" data-en="Select country" data-ar="اختر الدولة">Select country</option>
               <optgroup label="Popular destinations">
+                <option value="SA" data-en="Saudi Arabia" data-ar="السعودية">Saudi Arabia</option>
                 <option value="TR"> Turkey</option>
                 <option value="TH"> Thailand</option>
                 <option value="MA"> Morocco / France</option>
@@ -310,6 +338,14 @@ window.dflTrack=function(event,params){
         </div>
       </div>
 
+      <div class="rth-rescue-row">
+        <button type="button" class="rth-rescue-btn rth-rescue-btn--driver" onclick="openDriverCard()">
+          <span class="en">Show to driver</span><span class="ar">أظهر للسائق</span>
+        </button>
+        <button type="button" class="rth-rescue-btn rth-rescue-btn--install" id="btn-install" hidden onclick="installApp()">
+          <span class="en">Add to Home Screen</span><span class="ar">ثبّت على الشاشة</span>
+        </button>
+      </div>
       <!-- Taxi shortcut -->
       <button onclick="goStep(3)" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:13px;border-radius:var(--r-xl);background:var(--gold-soft);border:2px solid rgba(245,158,11,.4);color:var(--gold-d);font-weight:700;font-size:.9rem;cursor:pointer;font-family:inherit;transition:all .2s;margin-bottom:20px;">
         🚕 <span class="en">Show Taxi Card, speak to driver in their language</span><span class="ar">أظهر بطاقة التاكسي، تحدث للسائق بلغته</span>
@@ -330,6 +366,7 @@ window.dflTrack=function(event,params){
     <div class="panel" id="panel-3">
       <div class="action-row">
         <button class="btn-sec" onclick="goStep(2)">← <span class="en">Back</span><span class="ar">رجوع</span></button>
+        <button class="btn-sec" onclick="openDriverCard()"><span class="en">Driver screen</span><span class="ar">شاشة السائق</span></button>
         <button class="btn-sec" onclick="window.print()">🖨️ <span class="en">Print / PDF</span><span class="ar">طباعة</span></button>
       </div>
 
@@ -337,6 +374,7 @@ window.dflTrack=function(event,params){
       <div class="section-sub"><span class="en">Select the country language first, then show the card to any taxi driver. No words needed.</span><span class="ar">اختر لغة البلد أولاً، ثم أظهر البطاقة لأي سائق تاكسي. لا حاجة لكلام.</span></div>
 
       <div class="lang-pills">
+        <button class="lang-pill" data-key="SA" onclick="setTaxiLang(this)"> Arabic</button>
         <button class="lang-pill" data-key="TR" onclick="setTaxiLang(this)"> Turkish</button>
         <button class="lang-pill" data-key="TH" onclick="setTaxiLang(this)"> Thai</button>
         <button class="lang-pill" data-key="MA" onclick="setTaxiLang(this)"> French</button>
@@ -367,6 +405,28 @@ window.dflTrack=function(event,params){
 <div class="toast" id="toast"></div>
   </div>
 
+<div class="driver-overlay" id="driver-overlay" role="dialog" aria-modal="true" aria-labelledby="drv-name">
+  <div class="driver-overlay-kicker"><span class="en">Please take me to this hotel</span><span class="ar">أوصلني لهذا الفندق من فضلك</span></div>
+  <h2 class="driver-overlay-name" id="drv-name"></h2>
+  <div class="driver-overlay-block" id="drv-ar-wrap">
+    <span class="driver-overlay-label">العنوان</span>
+    <div class="driver-overlay-text" id="drv-ar" dir="rtl"></div>
+  </div>
+  <div class="driver-overlay-block">
+    <span class="driver-overlay-label">Address</span>
+    <div class="driver-overlay-text" id="drv-en" dir="ltr"></div>
+  </div>
+  <div class="driver-overlay-block" id="drv-phone-wrap">
+    <span class="driver-overlay-label"><span class="en">Hotel phone</span><span class="ar">هاتف الفندق</span></span>
+    <a class="driver-overlay-phone" id="drv-phone" href="#"></a>
+  </div>
+  <div class="driver-overlay-actions">
+    <button type="button" class="driver-btn-save" onclick="saveDriverImage()"><span class="en">Save image</span><span class="ar">حفظ صورة</span></button>
+    <button type="button" class="driver-btn-wa" onclick="shareDriverCard()"><span class="en">WhatsApp family</span><span class="ar">واتساب للعائلة</span></button>
+    <button type="button" class="driver-btn-close" onclick="closeDriverCard()"><span class="en">Close</span><span class="ar">إغلاق</span></button>
+  </div>
+</div>
+
   <div class="tool-below">
     <div class="t-section">
       <div class="t-section-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg> <span class="en">Why save your hotel?</span><span class="ar">لماذا تحفظ فندقك؟</span></div>
@@ -383,6 +443,14 @@ window.dflTrack=function(event,params){
       <div class="t-faq-item">
         <div class="t-faq-q" onclick="toggleFAQ(this)"><span><span class="en">Does this work offline?</span><span class="ar">هل تعمل بدون إنترنت؟</span></span><span class="t-faq-arrow">▼</span></div>
         <div class="t-faq-a"><p><span class="en">Hotel details are saved in your browser. Maps navigation needs internet, screenshot your hotel card for offline reference.</span><span class="ar">تفاصيل الفندق تُحفظ في متصفحك. الملاحة تحتاج إنترنت، التقط صورة للبطاقة للرجوع بدون شبكة.</span></p></div>
+      </div>
+      <div class="t-faq-item">
+        <div class="t-faq-q" onclick="toggleFAQ(this)"><span><span class="en">How do I show this to a taxi driver?</span><span class="ar">كيف أظهرها لسائق التاكسي؟</span></span><span class="t-faq-arrow">▼</span></div>
+        <div class="t-faq-a"><p><span class="en">Open Driver Card. It fills the screen with the hotel name, Arabic and English address, and phone so the driver can read it without talking.</span><span class="ar">افتح بطاقة السائق. تملأ الشاشة باسم الفندق والعنوان بالعربي والإنجليزي ورقم الهاتف ليقرأها السائق بلا كلام.</span></p></div>
+      </div>
+      <div class="t-faq-item">
+        <div class="t-faq-q" onclick="toggleFAQ(this)"><span><span class="en">Can I install this on my phone?</span><span class="ar">هل أثبّتها على الجوال؟</span></span><span class="t-faq-arrow">▼</span></div>
+        <div class="t-faq-a"><p><span class="en">Yes. Use Add to Home Screen. The page works offline after the first visit. Your hotel stays on this device only.</span><span class="ar">نعم. استخدم التثبيت على الشاشة الرئيسية. الصفحة تعمل دون نت بعد أول زيارة. فندقك يبقى على هذا الجهاز فقط.</span></p></div>
       </div>
     </div>
   </div>
@@ -626,6 +694,8 @@ window.dflTrack=function(event,params){
 <script src="/scripts/global.js?v=20260619e" defer></script>
 <script>
 var LANGS={
+  SA:{phrase:'من فضلك أوصلني لهذا الفندق.',phraseEn:'Please take me to this hotel:',
+      emergency:[{en:'Help!',lo:'النجدة!',ph:'an-NAJ-dah'},{en:"I'm lost",lo:'أنا تائه',ph:'ana TAA-ih'},{en:'Call police',lo:'اتصل بالشرطة',ph:'ittasil bish-SHUR-ta'},{en:'How much?',lo:'بكم؟',ph:'bi-KAM?'},{en:'Stop here',lo:'قف هنا',ph:'qif HU-na'},{en:'Thank you',lo:'شكراً',ph:'SHUK-ran'}]},
   TR:{phrase:'Bu otele gitmek istiyorum, lütfen.',phraseEn:'Please take me to this hotel:',
       emergency:[{en:'Help!',lo:'İmdat!',ph:'Im-DAT!'},{en:"I'm lost",lo:'Kayboldum',ph:'KAY-bol-doom'},{en:'Call police',lo:'Polis çağırın',ph:'Poh-LEES cha-EE-run'},{en:'How much?',lo:'Ne kadar?',ph:'Neh KAH-dar?'},{en:'Stop here',lo:'Burada durun',ph:'Boo-RAH-dah DOO-roon'},{en:'Thank you',lo:'Teşekkürler',ph:'Tesh-ek-EUR-ler'}]},
   TH:{phrase:'กรุณาพาฉันไปโรงแรมนี้',phraseEn:'Please take me to this hotel:',
@@ -648,13 +718,14 @@ var LANGS={
       emergency:[{en:'Help!',lo:'Βοήθεια!',ph:'Vo-EE-thia!'},{en:"I'm lost",lo:'Έχω χαθεί',ph:'E-kho kha-THEE'},{en:'Call police',lo:'Αστυνομία!',ph:'As-ti-no-MI-a!'},{en:'How much?',lo:'Πόσο κάνει;',ph:'PO-so KA-ni?'},{en:'Stop here',lo:'Σταματήστε εδώ',ph:'Sta-ma-TIS-te e-DO'},{en:'Thank you',lo:'Ευχαριστώ',ph:'Ef-kha-ri-STO'}]}
 };
 
-var hotel=null, curStep=1, taxiKey='TR';
+var hotel=null, curStep=1, taxiKey='SA', deferredInstall=null;
 
 function saveHotel(){
   var n=document.getElementById('f-name').value.trim();
   var a=document.getElementById('f-address').value.trim();
   if(!n||!a){showToast(document.documentElement.getAttribute('data-lang')==='ar'?'⚠️ الاسم والعنوان مطلوبان':'⚠️ Name and address required');return;}
   hotel={name:n,area:document.getElementById('f-area').value.trim(),address:a,
+    addressAr:document.getElementById('f-addressAr').value.trim(),
     phone:document.getElementById('f-phone').value.trim(),country:document.getElementById('f-country').value,
     checkin:document.getElementById('f-checkin').value,checkout:document.getElementById('f-checkout').value,
     room:document.getElementById('f-room').value.trim(),notes:document.getElementById('f-notes').value.trim(),
@@ -698,7 +769,7 @@ function renderCard(){
 }
 
 function renderTaxiCard(key){
-  var lang=LANGS[key]||LANGS['TR']; taxiKey=key;
+  var lang=LANGS[key]||LANGS['SA']; taxiKey=key;
   document.querySelectorAll('.lang-pill').forEach(function(p){p.classList.toggle('active',p.getAttribute('data-key')===key);});
   document.getElementById('t-phrase-en').textContent=lang.phraseEn;
   document.getElementById('t-phrase-local').textContent=lang.phrase;
@@ -734,12 +805,140 @@ function copyAddress(){
 
 function shareWhatsApp(){
   if(!hotel)return;
-  var l=document.documentElement.getAttribute('data-lang');
-  var msg=l==='ar'
-    ? '🏨 أنا نازل في:\n'+hotel.name+'\n📍 '+hotel.address+(hotel.phone?'\n📞 '+hotel.phone:'')
-    : '🏨 I\'m staying at:\n'+hotel.name+'\n📍 '+hotel.address+(hotel.phone?'\n📞 '+hotel.phone:'');
-  window.open('https://wa.me/?text='+encodeURIComponent(msg),'_blank');
+  window.open('https://wa.me/?text='+encodeURIComponent(hotelShareText()),'_blank');
 }
+
+function hotelShareText(){
+  var l=document.documentElement.getAttribute('data-lang');
+  var map=hotel.mapslink||('https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(hotel.name+' '+hotel.address));
+  if(l==='ar'){
+    return 'أنا نازل في:\n'+hotel.name+'\n'+hotel.address+(hotel.addressAr?'\n'+hotel.addressAr:'')+(hotel.phone?'\n'+hotel.phone:'')+'\n'+map;
+  }
+  return 'I am staying at:\n'+hotel.name+'\n'+hotel.address+(hotel.addressAr?'\n'+hotel.addressAr:'')+(hotel.phone?'\n'+hotel.phone:'')+'\n'+map;
+}
+
+function openDriverCard(){
+  if(!hotel){showToast(document.documentElement.getAttribute('data-lang')==='ar'?'احفظ الفندق أولاً':'Save your hotel first');return;}
+  document.getElementById('drv-name').textContent=hotel.name;
+  var ar=hotel.addressAr||(hotel.country==='SA'?hotel.address:'');
+  document.getElementById('drv-ar').textContent=ar||hotel.address;
+  document.getElementById('drv-en').textContent=hotel.address;
+  var pw=document.getElementById('drv-phone-wrap');
+  if(hotel.phone){
+    pw.style.display='block';
+    var pe=document.getElementById('drv-phone');
+    pe.textContent=hotel.phone;
+    pe.href='tel:'+hotel.phone.replace(/\s/g,'');
+  }else pw.style.display='none';
+  document.getElementById('driver-overlay').classList.add('is-open');
+  document.body.style.overflow='hidden';
+  if(window.dflTrack) dflTrack('driver_card_open');
+}
+
+function closeDriverCard(){
+  document.getElementById('driver-overlay').classList.remove('is-open');
+  document.body.style.overflow='';
+}
+
+function drawHotelCard(){
+  var w=1080,h=1350,c=document.createElement('canvas');
+  c.width=w;c.height=h;
+  var x=c.getContext('2d');
+  x.fillStyle='#054241';x.fillRect(0,0,w,h);
+  x.fillStyle='#6abfb8';x.font='700 36px sans-serif';
+  x.fillText('DOTFORLIFE',80,90);
+  x.fillStyle='#fff';x.font='800 28px sans-serif';
+  x.fillText('Please take me to this hotel',80,180);
+  x.font='900 72px sans-serif';
+  wrapText(x,hotel.name,80,280,920,82);
+  x.fillStyle='#9aa0ab';x.font='700 28px sans-serif';
+  x.fillText('Address',80,520);
+  x.fillStyle='#fff';x.font='700 40px sans-serif';
+  var y=580;
+  y=wrapText(x,hotel.address,80,y,920,50);
+  if(hotel.addressAr){
+    y+=40;
+    x.fillStyle='#9aa0ab';x.font='700 28px sans-serif';
+    x.fillText('العنوان',80,y);
+    y+=60;
+    x.fillStyle='#fff';x.font='700 40px sans-serif';
+    y=wrapText(x,hotel.addressAr,80,y,920,50);
+  }
+  if(hotel.phone){
+    y+=50;
+    x.fillStyle='#ffd54f';x.font='800 44px sans-serif';
+    x.fillText(hotel.phone,80,y);
+  }
+  x.fillStyle='#6abfb8';x.font='600 26px sans-serif';
+  x.fillText('dotforlife.com/tools/return-to-hotel',80,h-70);
+  return c;
+}
+
+function wrapText(ctx,text,x,y,maxW,lineH){
+  var words=String(text||'').split(/\s+/),line='',i;
+  for(i=0;i<words.length;i++){
+    var test=line?line+' '+words[i]:words[i];
+    if(ctx.measureText(test).width>maxW && line){
+      ctx.fillText(line,x,y);y+=lineH;line=words[i];
+    }else line=test;
+  }
+  if(line){ctx.fillText(line,x,y);y+=lineH;}
+  return y;
+}
+
+function saveDriverImage(){
+  if(!hotel)return;
+  var c=drawHotelCard();
+  var a=document.createElement('a');
+  a.download=(hotel.name||'hotel-card').replace(/[^\w\u0600-\u06FF-]+/g,'-')+'.png';
+  a.href=c.toDataURL('image/png');
+  a.click();
+  if(window.dflTrack) dflTrack('driver_card_save');
+}
+
+function shareDriverCard(){
+  if(!hotel)return;
+  var text=hotelShareText();
+  var c=drawHotelCard();
+  c.toBlob(function(blob){
+    if(!blob){window.open('https://wa.me/?text='+encodeURIComponent(text),'_blank');return;}
+    var file=new File([blob],'hotel-card.png',{type:'image/png'});
+    if(navigator.share && navigator.canShare && navigator.canShare({files:[file]})){
+      navigator.share({title:hotel.name,text:text,files:[file]}).catch(function(){
+        window.open('https://wa.me/?text='+encodeURIComponent(text),'_blank');
+      });
+    }else{
+      window.open('https://wa.me/?text='+encodeURIComponent(text),'_blank');
+    }
+    if(window.dflTrack) dflTrack('driver_card_share');
+  },'image/png');
+}
+
+function installApp(){
+  if(deferredInstall){
+    deferredInstall.prompt();
+    deferredInstall.userChoice.then(function(){ deferredInstall=null; hideInstall(); });
+    return;
+  }
+  var ar=document.documentElement.getAttribute('data-lang')==='ar';
+  showToast(ar?'من قائمة المتصفح: إضافة إلى الشاشة الرئيسية':'Use the browser menu: Add to Home Screen');
+}
+
+function hideInstall(){
+  var b=document.getElementById('btn-install');
+  if(b) b.hidden=true;
+}
+
+window.addEventListener('beforeinstallprompt',function(e){
+  e.preventDefault();
+  deferredInstall=e;
+  var b=document.getElementById('btn-install');
+  if(b) b.hidden=false;
+});
+window.addEventListener('appinstalled',hideInstall);
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape') closeDriverCard();
+});
 
 function showToast(msg){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2500);}
 function toggleFAQ(el){
@@ -764,9 +963,15 @@ function toggleFAQ(el){
   var today=new Date(); var fmt=function(d){return d.toISOString().split('T')[0];};
   document.getElementById('f-checkin').value=fmt(today);
   var co=new Date(today);co.setDate(co.getDate()+3);document.getElementById('f-checkout').value=fmt(co);
+  if(!window.matchMedia('(display-mode: standalone)').matches && !window.navigator.standalone){
+    if(/iphone|ipad|ipod/i.test(navigator.userAgent)){
+      var ib=document.getElementById('btn-install');
+      if(ib) ib.hidden=false;
+    }
+  }
   loadSaved();
   if(hotel){
-    ['name','area','address','phone','country','checkin','checkout','room','notes','mapslink'].forEach(function(k){
+    ['name','area','address','addressAr','phone','country','checkin','checkout','room','notes','mapslink'].forEach(function(k){
       var el=document.getElementById('f-'+k); if(el&&hotel[k])el.value=hotel[k];
     });
     renderCard(); goStep(2);

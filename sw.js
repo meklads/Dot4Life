@@ -5,15 +5,17 @@
  *  - HTML: network-first with cache fallback (so updates flow, offline works).
  *  - Assets (?v= versioned): cache-first (they are immutable by design).
  */
-const CACHE = 'dfl-rth-v1';
+const CACHE = 'dfl-rth-v2';
 const TOOL_PAGE = '/tools/return-to-hotel.html';
 const PRECACHE = [
   TOOL_PAGE,
+  '/tools/return-to-hotel.webmanifest',
   '/styles/global.css?v=20260624n',
   '/styles/tools-shared.css?v=20260608a',
   '/styles/tools-flagship.css?v=20260626a',
   '/styles/tools-accents.css?v=20260625a',
-  '/styles/pages/tools_return-to-hotel.css?v=20260626a',
+  '/styles/pages/tools_return-to-hotel.css?v=20260822a',
+  '/assets/icons/hotel-card-192.png',
   '/favicon.svg',
 ];
 
@@ -41,7 +43,8 @@ self.addEventListener('fetch', (event) => {
   const isAsset = url.pathname.startsWith('/styles/') ||
                   url.pathname.startsWith('/scripts/') ||
                   url.pathname.startsWith('/assets/') ||
-                  url.pathname === '/favicon.svg';
+                  url.pathname === '/favicon.svg' ||
+                  url.pathname.endsWith('.webmanifest');
 
   if (!isToolPage && !isAsset) return; // pass through — never touch other pages
 

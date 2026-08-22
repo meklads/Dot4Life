@@ -288,7 +288,121 @@
 [data-theme="dark"] .toast { background: #F1F5F9; color: #0F172A; }
 .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
+.rth-rescue-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 0 0 16px;
+}
+@media (max-width: 540px) { .rth-rescue-row { grid-template-columns: 1fr; } }
+
+.rth-rescue-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px 12px;
+  border-radius: var(--r-xl, 16px);
+  border: none;
+  font-weight: 800;
+  font-size: .92rem;
+  cursor: pointer;
+  font-family: inherit;
+}
+.rth-rescue-btn--driver {
+  background: #054241;
+  color: #fff;
+}
+.rth-rescue-btn--install {
+  background: var(--gold-soft, #fef3c7);
+  border: 2px solid rgba(245,158,11,.4);
+  color: var(--gold-d, #92400e);
+}
+.rth-rescue-btn[hidden] { display: none !important; }
+
+.driver-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 4000;
+  background: #054241;
+  color: #fff;
+  display: none;
+  flex-direction: column;
+  padding: max(16px, env(safe-area-inset-top)) 20px max(16px, env(safe-area-inset-bottom));
+  overflow: auto;
+}
+.driver-overlay.is-open { display: flex; }
+.driver-overlay-kicker {
+  font-size: .78rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #6abfb8;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+.driver-overlay-name {
+  font-size: clamp(1.8rem, 7vw, 2.8rem);
+  font-weight: 900;
+  line-height: 1.2;
+  margin: 0 0 16px;
+}
+.driver-overlay-block {
+  margin: 0 0 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255,255,255,.12);
+}
+.driver-overlay-label {
+  display: block;
+  font-size: .72rem;
+  color: #9aa0ab;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.driver-overlay-text {
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.45;
+}
+.driver-overlay-text[dir="ltr"] { font-family: Inter, sans-serif; }
+.driver-overlay-phone {
+  color: #ffd54f;
+  font-weight: 800;
+  font-size: 1.2rem;
+  text-decoration: none;
+  direction: ltr;
+  display: inline-block;
+}
+.driver-overlay-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 18px;
+}
+.driver-overlay-actions button,
+.driver-overlay-actions a {
+  text-align: center;
+  padding: 14px 10px;
+  border-radius: 14px;
+  font-weight: 800;
+  font-size: .9rem;
+  font-family: inherit;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+}
+.driver-btn-save { background: #6abfb8; color: #054241; }
+.driver-btn-wa { background: #22c15e; color: #fff; }
+.driver-btn-close {
+  grid-column: 1 / -1;
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,.25) !important;
+}
+
 @media print {
-  .steps-bar, .action-row, .nav-buttons, .print-tip, .lang-pills { display: none !important; }
+  .steps-bar, .action-row, .nav-buttons, .print-tip, .lang-pills,
+  .rth-rescue-row, .driver-overlay, .pilgrim-companion { display: none !important; }
   .hotel-card-main { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
