@@ -1164,6 +1164,14 @@ def audit_live() -> int:
             md = draft_path.read_text(encoding="utf-8") if draft_path.exists() else ""
             try:
                 assert_build_gates(page, lang, out_path, cfg, md or None, strict_image=False)
+                # G12 — degenerate-filler gate (P0 order 2026-07-10T19:40Z):
+                # lexical-repetition + FAQ-parity via degenerate_filler_check.
+                from degenerate_filler_check import check_file as _dfc_check
+                filler = [f for f in _dfc_check(out_path)
+                          if not f.startswith("FILLER-REVIEW")]
+                if filler:
+                    raise BuildGateError(
+                        "G12-FILLER", out_path, filler[0])
                 built[lang] = (page, out_path, md)
                 passed += 1
                 print(f"  PASS {out_path.relative_to(ROOT)}")
