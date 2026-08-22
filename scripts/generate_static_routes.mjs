@@ -47,6 +47,51 @@ function extensionlessRoute(relPosix) {
   return `/${relPosix.slice(0, -5)}`;
 }
 
+// Legacy WordPress (old dotforlife.com gardening site) → closest section.
+// Keeps link equity and stops 404s for indexed /YYYY/MM/slug/ permalinks.
+const LEGACY_REDIRECTS = [
+  { source: "/wp-login.php", destination: "/" },
+  { source: "/wp-admin", destination: "/" },
+  { source: "/wp-admin/:path*", destination: "/" },
+  { source: "/wp-content/:path*", destination: "/" },
+  { source: "/wp-includes/:path*", destination: "/" },
+  { source: "/category/:path*", destination: "/blog" },
+  { source: "/tag/:path*", destination: "/blog" },
+  { source: "/feed", destination: "/blog" },
+  { source: "/comments/feed", destination: "/blog" },
+];
+for (let year = 2016; year <= 2025; year++) {
+  LEGACY_REDIRECTS.push({ source: `/${year}/:path*`, destination: "/blog" });
+}
+
+// Static assets are referenced with ?v=<hash> query strings (cache-busting),
+// so they can be cached immutably for a year.
+const HEADERS = [
+  {
+    source: "/styles/**",
+    headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
+  },
+  {
+    source: "/scripts/**",
+    headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
+  },
+  {
+    source: "/assets/**",
+    headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
+  },
+  {
+    source: "/og/**",
+    headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
+  },
+  {
+    source: "/**",
+    headers: [
+      { key: "X-Content-Type-Options", value: "nosniff" },
+      { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+    ],
+  },
+];
+
 function main() {
   const rewrites = [];
   const redirectLines = [];
@@ -60,7 +105,11 @@ function main() {
     redirectLines.push(`${route} ${dest} 200`);
   }
 
-  const serveCfg = { trailingSlash: false, rewrites };
+  for (const r of LEGACY_REDIRECTS) {
+    redirectLines.push(`${r.source} ${r.destination} 301`);
+  }
+
+  const serveCfg = { trailingSlash: false, redirects: LEGACY_REDIRECTS, headers: HEADERS, rewrites };
   fs.writeFileSync(
     path.join(ROOT, "serve.json"),
     `${JSON.stringify(serveCfg, null, 2)}\n`,
@@ -71,8 +120,16 @@ function main() {
     `${redirectLines.join("\n")}\n`,
     "utf8",
   );
+  // Cloudflare Pages / Netlify style caching + security headers
+  const headerLines = [];
+  for (const h of HEADERS) {
+    headerLines.push(h.source);
+    for (const kv of h.headers) headerLines.push(`  ${kv.key}: ${kv.value}`);
+    headerLines.push("");
+  }
+  fs.writeFileSync(path.join(ROOT, "_headers"), headerLines.join("\n"), "utf8");
   console.log(
-    `static routes: ${rewrites.length} rewrites → serve.json + _redirects`,
+    `static routes: ${rewrites.length} rewrites + ${LEGACY_REDIRECTS.length} legacy redirects → serve.json + _redirects + _headers`,
   );
 }
 
