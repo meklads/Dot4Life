@@ -23,7 +23,13 @@
 <link rel="stylesheet" href="/styles/tools-shared.css?v=20260608a">
 <link rel="stylesheet" href="/styles/tools-flagship.css?v=20260709f">
 <link rel="stylesheet" href="/styles/tools-accents.css?v=20260625a">
-<link rel="stylesheet" href="/styles/pages/tools_zakat-calculator.css?v=20260722c">
+<link rel="stylesheet" href="/styles/pages/tools_zakat-calculator.css?v=20260823a">
+<link rel="manifest" href="/tools/zakat-calculator.webmanifest">
+<meta name="theme-color" content="#054241">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Zakat">
+<link rel="apple-touch-icon" href="/assets/icons/zakat-192.png">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://dotforlife.com/tools/zakat-calculator.html">
 <meta property="og:title" content="Zakat Calculator | حاسبة الزكاة - 2.5% Nisab | Dot For Life">
@@ -60,7 +66,7 @@ window.dflTrack=function(event,params){
       "operatingSystem": "Any",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "SAR" },
       "inLanguage": ["en", "ar"],
-      "featureList": ["Cash & receivables Zakat","Gold & silver nisab","Stocks & trade goods","2.5% calculation","Bilingual"]
+      "featureList": ["Cash & receivables Zakat","Gold & silver nisab","Stocks & trade goods","2.5% calculation","Bilingual","Save last calculation on this device","Yearly reminder card","Install on home screen"]
     },
     {
       "@type": "BreadcrumbList",
@@ -97,6 +103,11 @@ window.dflTrack=function(event,params){
           "@type": "Question",
           "name": "Can I deduct debts from Zakat?",
           "acceptedAnswer": { "@type": "Answer", "text": "Yes, most scholars permit deducting short-term/current debts from your Zakat base. Long-term debts (e.g. mortgage) aren't typically deducted. Consult a trusted scholar for complex cases." }
+        },
+        {
+          "@type": "Question",
+          "name": "Are my numbers saved?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes, only on this device. The last calculation stays in your browser so you can return next year. Nothing is sent to our servers. You can clear it anytime." }
         }
       ]
     }
@@ -108,6 +119,7 @@ window.dflTrack=function(event,params){
   body.zakat-print *{visibility:hidden!important;}
   body.zakat-print #resultsCard, body.zakat-print #resultsCard *{visibility:visible!important;}
   body.zakat-print #resultsCard{position:absolute;inset-inline-start:0;top:0;width:100%;box-shadow:none!important;border:2px solid #054241!important;}
+  .zc-year-overlay, .zc-toast, .zc-saved, #btn-install { display:none !important; }
 }
 </style>
 </head>
@@ -152,7 +164,7 @@ window.dflTrack=function(event,params){
     </p>
     <h1 id="tool-title"><span class="en">Zakat Calculator</span><span class="ar">حاسبة الزكاة</span></h1>
     <p class="tool-hero-desc"><span class="en">Calculate your annual Zakat on all asset types with updated 1447 AH gold and silver nisab prices.</span><span class="ar">احسب زكاتك السنوية على جميع أنواع الأموال بأسعار نصاب الذهب والفضة 1447هـ.</span></p>
-    <ul class="tool-trust"><li><span class="en">2.5% rate</span><span class="ar">نسبة 2.5%</span></li><li><span class="en">Gold & silver nisab</span><span class="ar">نصاب الذهب والفضة</span></li><li><span class="en">Free & private</span><span class="ar">مجاني وخاص</span></li></ul>
+    <ul class="tool-trust"><li><span class="en">2.5% rate</span><span class="ar">نسبة 2.5%</span></li><li><span class="en">Gold & silver nisab</span><span class="ar">نصاب الذهب والفضة</span></li><li><span class="en">Saved on your device</span><span class="ar">يُحفظ على جهازك</span></li></ul>
   </div>
 </div>
 <div class="tool-tabs-wrap" role="navigation" aria-label="Islamic tools">
@@ -544,12 +556,30 @@ window.dflTrack=function(event,params){
       </div>
     </div>
 
+    <div class="zf-grp zc-hawl">
+      <label class="zf-lbl ar" for="hawlDate">يوم حولك <span class="zf-unit-sm">(اختياري)</span></label>
+      <label class="zf-lbl en" for="hawlDate">Your Zakat day <span class="zf-unit-sm">(optional)</span></label>
+      <div class="zf-inp">
+        <input type="date" id="hawlDate" autocomplete="off"/>
+      </div>
+      <p class="zc-hawl-note"><span class="ar">إن تركته فارغاً نذكّرك بعد سنة قمرية تقريباً من هذا الحساب. ليس فتوى.</span><span class="en">If empty, we remind you about one lunar year after this calculation. Not a fatwa.</span></p>
+    </div>
+
     <!-- ═══ CALCULATE BUTTON ═══ -->
     <button class="zc-btn" onclick="calculateZakat()">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
       <span class="ar">احسب زكاتي الآن</span>
       <span class="en">Calculate My Zakat</span>
     </button>
+  </div>
+
+  <div class="zc-saved" id="savedBanner">
+    <p class="zc-saved-line" id="savedBannerText" hidden></p>
+    <div class="zc-saved-acts">
+      <button type="button" class="zc-saved-btn" id="btn-year-card" hidden onclick="openYearCard()"><span class="ar">بطاقة السنة</span><span class="en">Year card</span></button>
+      <button type="button" class="zc-saved-btn" id="btn-install" hidden onclick="installApp()"><span class="ar">ثبّت على الشاشة</span><span class="en">Add to Home Screen</span></button>
+      <button type="button" class="zc-saved-btn zc-saved-btn--ghost" id="btn-clear-saved" hidden onclick="clearSaved()"><span class="ar">مسح</span><span class="en">Clear</span></button>
+    </div>
   </div>
 
   <!-- ═══ RESULTS — GOLDEN REVEAL ═══ -->
@@ -592,6 +622,10 @@ window.dflTrack=function(event,params){
       <button class="zr-act" onclick="printResult()">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
         <span class="ar">طباعة</span><span class="en">Print</span>
+      </button>
+      <button class="zr-act" onclick="openYearCard()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span class="ar">بطاقة السنة</span><span class="en">Year card</span>
       </button>
     </div>
   </div>
@@ -638,6 +672,10 @@ window.dflTrack=function(event,params){
     <div class="t-faq-item" onclick="toggleFaq(this)">
       <div class="t-faq-q" onclick="toggleFaq(this)"><span class="ar">هل أستطيع خصم الديون من الزكاة؟</span><span class="en">Can I deduct debts from Zakat?</span><span class="t-faq-arrow">▼</span></div>
       <div class="t-faq-a"><div><span class="ar">نعم، الجمهور يجيز خصم الديون الحالّة (المستحقة خلال العام) من وعاء الزكاة. الديون طويلة الأجل (كالقرض العقاري) لا تُخصم عادة. للحالات المعقدة، يُستحسن استشارة عالم موثوق.</span><span class="en">Yes, most scholars permit deducting short-term/current debts from your Zakat base. Long-term debts (e.g. mortgage) aren't typically deducted. Consult a trusted scholar for complex cases.</span></div></div>
+    </div>
+    <div class="t-faq-item" onclick="toggleFaq(this)">
+      <div class="t-faq-q" onclick="toggleFaq(this)"><span class="ar">هل تُحفظ أرقامي؟</span><span class="en">Are my numbers saved?</span><span class="t-faq-arrow">▼</span></div>
+      <div class="t-faq-a"><div><span class="ar">نعم، على هذا الجهاز فقط. آخر حساب يبقى في متصفحك لتعود إليه السنة القادمة. لا يُرسل شيء إلى خوادمنا. يمكنك مسحه في أي وقت.</span><span class="en">Yes, only on this device. The last calculation stays in your browser so you can return next year. Nothing is sent to our servers. You can clear it anytime.</span></div></div>
     </div>
   </div>
   </div>
@@ -799,6 +837,30 @@ window.dflTrack=function(event,params){
     </button>
   </div>
 </div>
+<div class="zc-year-overlay" id="yearOverlay">
+  <p class="zc-year-kicker">DOTFORLIFE</p>
+  <p class="zc-year-title"><span class="ar">بطاقة زكاة السنة</span><span class="en">This year's Zakat card</span></p>
+  <p class="zc-year-amount" id="yearAmount">—</p>
+  <div class="zc-year-block">
+    <span class="zc-year-lbl"><span class="ar">تاريخ الحساب</span><span class="en">Calculated</span></span>
+    <span class="zc-year-val" id="yearSaved"></span>
+  </div>
+  <div class="zc-year-block">
+    <span class="zc-year-lbl"><span class="ar">تذكير السنة القادمة</span><span class="en">Next reminder</span></span>
+    <span class="zc-year-val" id="yearNext"></span>
+  </div>
+  <div class="zc-year-block">
+    <span class="zc-year-lbl"><span class="ar">النصاب</span><span class="en">Nisab</span></span>
+    <span class="zc-year-val" id="yearNisab"></span>
+  </div>
+  <p class="zc-year-note"><span class="ar">تقدير على هذا الجهاز. ليست فتوى. استشر عالماً لحالتك.</span><span class="en">An estimate on this device. Not a fatwa. Ask a scholar for your case.</span></p>
+  <div class="zc-year-acts">
+    <button type="button" class="zc-year-btn zc-year-btn--save" onclick="saveYearImage()"><span class="ar">حفظ صورة</span><span class="en">Save image</span></button>
+    <button type="button" class="zc-year-btn zc-year-btn--wa" onclick="shareYearCard()"><span class="ar">واتساب</span><span class="en">WhatsApp</span></button>
+    <button type="button" class="zc-year-btn zc-year-btn--close" onclick="closeYearCard()"><span class="ar">إغلاق</span><span class="en">Close</span></button>
+  </div>
+</div>
+<div class="zc-toast" id="toast" role="status" aria-live="polite"></div>
 <script src="/scripts/global.js?v=20260619e" defer></script>
 <script src="/scripts/tool-gauge.js?v=20260709e"></script>
 <script>
@@ -837,7 +899,70 @@ function switchSection(id,btn){
 
 function v(id){return parseFloat(document.getElementById(id)?.value)||0;}
 
-function calculateZakat(){
+const FIELD_IDS=['bankBalance','cashHome','deposits','liabilities','goldGrams','silverGrams','goldKarat','stocksInvest','stocksTrade','funds','rentalIncome','inventory','receivables','bizLiabilities','bizCash','recoverableDebts','doubtfulDebts','hawlDate'];
+const LUNAR_MS=354*24*60*60*1000;
+let lastSave=null;
+let deferredInstall=null;
+
+function collectFields(){
+  var o={};
+  FIELD_IDS.forEach(function(id){
+    var el=document.getElementById(id);
+    if(el) o[id]=el.value;
+  });
+  return o;
+}
+function applyFields(fields){
+  if(!fields) return;
+  FIELD_IDS.forEach(function(id){
+    var el=document.getElementById(id);
+    if(el && fields[id]!=null && fields[id]!=='') el.value=fields[id];
+  });
+}
+function fmtDate(ts){
+  if(!ts) return '—';
+  return new Date(ts).toLocaleDateString(getLang()==='ar'?'ar-SA':'en-GB',{day:'numeric',month:'short',year:'numeric'});
+}
+function nextDueTs(hawlValue, savedAt){
+  var start=hawlValue?new Date(hawlValue+'T00:00:00'):new Date(savedAt||Date.now());
+  if(isNaN(start.getTime())) start=new Date();
+  var next=new Date(start.getTime()+LUNAR_MS);
+  while(next.getTime()<Date.now()) next=new Date(next.getTime()+LUNAR_MS);
+  return next.getTime();
+}
+function loadSaved(){
+  try{ return JSON.parse(localStorage.getItem('dfl_zakat')||''); }
+  catch(e){ return null; }
+}
+function persist(extra){
+  lastSave=Object.assign({
+    nisabMethod:nisabMethod,
+    savedAt:Date.now(),
+    fields:collectFields()
+  }, extra||{}, {nisabMethod:nisabMethod, fields:collectFields()});
+  lastSave.nextDue=nextDueTs(lastSave.fields.hawlDate, lastSave.savedAt);
+  localStorage.setItem('dfl_zakat', JSON.stringify(lastSave));
+  renderSavedBanner();
+}
+function renderSavedBanner(){
+  var text=document.getElementById('savedBannerText');
+  var yearBtn=document.getElementById('btn-year-card');
+  var clearBtn=document.getElementById('btn-clear-saved');
+  var has=lastSave && lastSave.zakatDue!=null;
+  if(yearBtn) yearBtn.hidden=!has;
+  if(clearBtn) clearBtn.hidden=!has;
+  if(!text) return;
+  if(!has){ text.hidden=true; return; }
+  var lang=getLang();
+  var amt=Number(lastSave.zakatDue).toLocaleString(lang==='ar'?'ar-SA':'en',{maximumFractionDigits:2});
+  text.hidden=false;
+  text.textContent=lang==='ar'
+    ?'آخر حساب: '+fmtDate(lastSave.savedAt)+' · '+amt+' ريال · التذكير: '+fmtDate(lastSave.nextDue)
+    :'Last saved: '+fmtDate(lastSave.savedAt)+' · SAR '+amt+' · Next: '+fmtDate(lastSave.nextDue);
+}
+
+function calculateZakat(opts){
+  opts=opts||{};
   var nisabSAR=nisabMethod==='gold'?goldNisabSAR:silverNisabSAR;
   var cashBase=v('bankBalance')+v('cashHome')+v('deposits')-v('liabilities');
   var karat=parseFloat(document.getElementById('goldKarat').value)||1;
@@ -851,7 +976,7 @@ function calculateZakat(){
   var zakatDue=nisabReached?(totalBase*0.025):0;
   var card=document.getElementById('resultsCard');
   card.classList.add('show');
-  card.scrollIntoView({behavior:'smooth',block:'nearest'});
+  if(!opts.restore) card.scrollIntoView({behavior:'smooth',block:'nearest'});
   document.getElementById('zakatAmount').textContent=zakatDue.toLocaleString(getLang()==='ar'?'ar-SA':'en',{maximumFractionDigits:2});
   var lang=getLang();
   var badge=document.getElementById('nisabStatusBadge');
@@ -885,7 +1010,12 @@ function calculateZakat(){
     '<div class="t-metric"><div class="t-metric-val">'+totalBase.toLocaleString(undefined,{maximumFractionDigits:0})+'</div><div class="t-metric-lbl"><span class="en">Total Base</span><span class="ar">الوعاء الكلي</span></div></div>'+
     '<div class="t-metric"><div class="t-metric-val">2.5%</div><div class="t-metric-lbl"><span class="en">Zakat Rate</span><span class="ar">نسبة الزكاة</span></div></div>'+
     '<div class="t-metric"><div class="t-metric-val">'+(zakatDue/12).toLocaleString(undefined,{maximumFractionDigits:0})+'</div><div class="t-metric-lbl"><span class="en">Monthly (approx)</span><span class="ar">شهرياً تقريباً</span></div></div>';
-  if(window.dflTrack) dflTrack('zakat_calculated',{nisab:nisabMethod,total:Math.round(totalBase)});
+  if(!opts.restore){
+    persist({zakatDue:zakatDue,totalBase:totalBase,nisabReached:nisabReached});
+    if(window.dflTrack) dflTrack('zakat_calculated',{nisab:nisabMethod,total:Math.round(totalBase)});
+  }else{
+    renderSavedBanner();
+  }
 }
 
 function copyResult(){
@@ -897,15 +1027,159 @@ function shareResult(){var lang=getLang(),amt=document.getElementById('zakatAmou
 
 function printResult(){document.body.classList.add('zakat-print');window.print();setTimeout(function(){document.body.classList.remove('zakat-print');},800);}
 
+function fillYearCard(){
+  if(!lastSave) return;
+  var lang=getLang();
+  var amt=Number(lastSave.zakatDue||0).toLocaleString(lang==='ar'?'ar-SA':'en',{maximumFractionDigits:2});
+  document.getElementById('yearAmount').textContent=lang==='ar'?amt+' ريال':'SAR '+amt;
+  document.getElementById('yearSaved').textContent=fmtDate(lastSave.savedAt);
+  document.getElementById('yearNext').textContent=fmtDate(lastSave.nextDue);
+  document.getElementById('yearNisab').textContent=lastSave.nisabMethod==='gold'?(lang==='ar'?'ذهب':'Gold'):(lang==='ar'?'فضة':'Silver');
+}
+function yearShareText(){
+  var lang=getLang();
+  var amt=Number(lastSave&&lastSave.zakatDue||0).toLocaleString(lang==='ar'?'ar-SA':'en',{maximumFractionDigits:2});
+  return lang==='ar'
+    ?'زكاة هذه السنة: '+amt+' ريال\nالحساب: '+fmtDate(lastSave.savedAt)+'\nالتذكير: '+fmtDate(lastSave.nextDue)+'\ndotforlife.com/tools/zakat-calculator'
+    :'This year\'s Zakat: SAR '+amt+'\nCalculated: '+fmtDate(lastSave.savedAt)+'\nNext reminder: '+fmtDate(lastSave.nextDue)+'\ndotforlife.com/tools/zakat-calculator';
+}
+function openYearCard(){
+  if(!lastSave || lastSave.zakatDue==null){
+    showToast(getLang()==='ar'?'احسب زكاتك أولاً':'Calculate Zakat first');
+    return;
+  }
+  fillYearCard();
+  document.getElementById('yearOverlay').classList.add('is-open');
+}
+function closeYearCard(){
+  document.getElementById('yearOverlay').classList.remove('is-open');
+}
+function drawYearCard(){
+  var c=document.createElement('canvas');
+  var w=1080,h=1350; c.width=w; c.height=h;
+  var x=c.getContext('2d');
+  x.fillStyle='#054241'; x.fillRect(0,0,w,h);
+  x.fillStyle='#6abfb8'; x.font='800 28px sans-serif';
+  x.fillText('DOTFORLIFE',80,90);
+  x.fillStyle='#fff'; x.font='800 36px sans-serif';
+  x.fillText(getLang()==='ar'?'بطاقة زكاة السنة':'This year\'s Zakat card',80,170);
+  x.fillStyle='#ffd54f'; x.font='900 72px sans-serif';
+  var amt=Number(lastSave.zakatDue||0).toLocaleString(getLang()==='ar'?'ar-SA':'en',{maximumFractionDigits:2});
+  x.fillText(getLang()==='ar'?amt+' SAR':'SAR '+amt,80,320);
+  x.fillStyle='#9aa0ab'; x.font='700 28px sans-serif';
+  x.fillText(getLang()==='ar'?'تاريخ الحساب':'Calculated',80,430);
+  x.fillStyle='#fff'; x.font='700 40px sans-serif';
+  x.fillText(fmtDate(lastSave.savedAt),80,490);
+  x.fillStyle='#9aa0ab'; x.font='700 28px sans-serif';
+  x.fillText(getLang()==='ar'?'تذكير السنة القادمة':'Next reminder',80,590);
+  x.fillStyle='#fff'; x.font='700 40px sans-serif';
+  x.fillText(fmtDate(lastSave.nextDue),80,650);
+  x.fillStyle='#9aa0ab'; x.font='700 28px sans-serif';
+  x.fillText(getLang()==='ar'?'النصاب':'Nisab',80,750);
+  x.fillStyle='#fff'; x.font='700 40px sans-serif';
+  x.fillText(lastSave.nisabMethod==='gold'?(getLang()==='ar'?'ذهب':'Gold'):(getLang()==='ar'?'فضة':'Silver'),80,810);
+  x.fillStyle='#6abfb8'; x.font='600 26px sans-serif';
+  x.fillText('dotforlife.com/tools/zakat-calculator',80,h-70);
+  return c;
+}
+function saveYearImage(){
+  if(!lastSave) return;
+  var a=document.createElement('a');
+  a.download='zakat-'+new Date(lastSave.savedAt).toISOString().slice(0,10)+'.png';
+  a.href=drawYearCard().toDataURL('image/png');
+  a.click();
+  if(window.dflTrack) dflTrack('zakat_year_save');
+}
+function shareYearCard(){
+  if(!lastSave) return;
+  var text=yearShareText();
+  drawYearCard().toBlob(function(blob){
+    if(!blob){window.open('https://wa.me/?text='+encodeURIComponent(text),'_blank');return;}
+    var file=new File([blob],'zakat-card.png',{type:'image/png'});
+    if(navigator.share && navigator.canShare && navigator.canShare({files:[file]})){
+      navigator.share({title:getLang()==='ar'?'بطاقة الزكاة':'Zakat card',text:text,files:[file]}).catch(function(){
+        window.open('https://wa.me/?text='+encodeURIComponent(text),'_blank');
+      });
+    }else{
+      window.open('https://wa.me/?text='+encodeURIComponent(text),'_blank');
+    }
+    if(window.dflTrack) dflTrack('zakat_year_share');
+  },'image/png');
+}
+function clearSaved(){
+  localStorage.removeItem('dfl_zakat');
+  lastSave=null;
+  renderSavedBanner();
+  document.getElementById('resultsCard').classList.remove('show');
+  FIELD_IDS.forEach(function(id){
+    var el=document.getElementById(id);
+    if(!el) return;
+    if(el.tagName==='SELECT') el.selectedIndex=0;
+    else el.value='';
+  });
+  showToast(getLang()==='ar'?'مُسح الحساب المحفوظ':'Saved calculation cleared');
+}
+function installApp(){
+  if(deferredInstall){
+    deferredInstall.prompt();
+    deferredInstall.userChoice.then(function(){ deferredInstall=null; hideInstall(); });
+    return;
+  }
+  showToast(getLang()==='ar'?'من قائمة المتصفح: إضافة إلى الشاشة الرئيسية':'Use the browser menu: Add to Home Screen');
+}
+function hideInstall(){
+  var b=document.getElementById('btn-install');
+  if(b) b.hidden=true;
+}
+function showToast(msg){
+  var t=document.getElementById('toast');
+  if(!t) return;
+  t.textContent=msg;
+  t.classList.add('show');
+  setTimeout(function(){t.classList.remove('show');},2500);
+}
+
 function toggleFaq(el){
   var open=el.classList.contains('open');
   document.querySelectorAll('.t-faq-q').forEach(function(q){q.classList.remove('open');q.nextElementSibling.classList.remove('active');});
   if(!open){el.classList.add('open');el.nextElementSibling.classList.add('active');}
 }
 
-document.addEventListener('DOMContentLoaded',function(){initNisabDisplay();});
-document.addEventListener('dfl:langchange',function(){initNisabDisplay();});
+document.addEventListener('DOMContentLoaded',function(){
+  initNisabDisplay();
+  lastSave=loadSaved();
+  if(lastSave){
+    if(lastSave.nisabMethod) setNisab(lastSave.nisabMethod);
+    applyFields(lastSave.fields);
+    if(lastSave.zakatDue!=null) calculateZakat({restore:true});
+  }
+  renderSavedBanner();
+  if(!window.matchMedia('(display-mode: standalone)').matches && !window.navigator.standalone){
+    if(/iphone|ipad|ipod/i.test(navigator.userAgent)){
+      var ib=document.getElementById('btn-install');
+      if(ib) ib.hidden=false;
+    }
+  }
+});
+document.addEventListener('dfl:langchange',function(){
+  initNisabDisplay();
+  renderSavedBanner();
+  if(lastSave && document.getElementById('yearOverlay').classList.contains('is-open')) fillYearCard();
+});
+window.addEventListener('beforeinstallprompt',function(e){
+  e.preventDefault();
+  deferredInstall=e;
+  var b=document.getElementById('btn-install');
+  if(b) b.hidden=false;
+});
+window.addEventListener('appinstalled',hideInstall);
+document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeYearCard(); });
 
+</script>
+<script>
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('/sw.js').catch(function(){});
+}
 </script>
 </body>
 </html>

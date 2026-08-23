@@ -1,23 +1,40 @@
-/* DotForLife service worker — scoped companion for the Return-to-Hotel
- * pilgrim tool. Deliberately minimal and conservative:
- *  - Only the tool page itself and static, versioned assets are handled.
- *  - Everything else passes straight through to the browser (no caching).
- *  - HTML: network-first with cache fallback (so updates flow, offline works).
- *  - Assets (?v= versioned): cache-first (they are immutable by design).
+/* DotForLife service worker — companion cache for habit tools.
+ * Conservative:
+ *  - Only the hotel + zakat tool pages and static versioned assets.
+ *  - Everything else passes through (no caching).
+ *  - HTML: network-first with cache fallback.
+ *  - Assets (?v= versioned): cache-first.
  */
-const CACHE = 'dfl-rth-v2';
-const TOOL_PAGE = '/tools/return-to-hotel.html';
+const CACHE = 'dfl-tools-v3';
+const TOOL_PAGES = [
+  '/tools/return-to-hotel.html',
+  '/tools/zakat-calculator.html',
+];
+const TOOL_ALIASES = {
+  '/tools/return-to-hotel': '/tools/return-to-hotel.html',
+  '/tools/zakat-calculator': '/tools/zakat-calculator.html',
+};
 const PRECACHE = [
-  TOOL_PAGE,
+  '/tools/return-to-hotel.html',
   '/tools/return-to-hotel.webmanifest',
+  '/tools/zakat-calculator.html',
+  '/tools/zakat-calculator.webmanifest',
   '/styles/global.css?v=20260624n',
   '/styles/tools-shared.css?v=20260608a',
   '/styles/tools-flagship.css?v=20260626a',
+  '/styles/tools-flagship.css?v=20260709f',
   '/styles/tools-accents.css?v=20260625a',
   '/styles/pages/tools_return-to-hotel.css?v=20260822a',
+  '/styles/pages/tools_zakat-calculator.css?v=20260823a',
   '/assets/icons/hotel-card-192.png',
+  '/assets/icons/zakat-192.png',
   '/favicon.svg',
 ];
+
+function canonicalTool(pathname) {
+  if (TOOL_PAGES.indexOf(pathname) > -1) return pathname;
+  return TOOL_ALIASES[pathname] || null;
+}
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
@@ -39,35 +56,33 @@ self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
   if (event.request.method !== 'GET' || url.origin !== self.location.origin) return;
 
-  const isToolPage = url.pathname === TOOL_PAGE || url.pathname === '/tools/return-to-hotel';
+  const toolPage = canonicalTool(url.pathname);
   const isAsset = url.pathname.startsWith('/styles/') ||
                   url.pathname.startsWith('/scripts/') ||
                   url.pathname.startsWith('/assets/') ||
                   url.pathname === '/favicon.svg' ||
                   url.pathname.endsWith('.webmanifest');
 
-  if (!isToolPage && !isAsset) return; // pass through — never touch other pages
+  if (!toolPage && !isAsset) return;
 
-  if (isToolPage) {
-    // network-first, cache fallback → page updates normally, works offline
+  if (toolPage) {
     event.respondWith(
       fetch(event.request)
         .then((res) => {
           const copy = res.clone();
-          caches.open(CACHE).then((c) => c.put(TOOL_PAGE, copy));
+          caches.open(CACHE).then((c) => c.put(toolPage, copy));
           return res;
         })
-        .catch(() => caches.match(TOOL_PAGE))
+        .catch(() => caches.match(toolPage))
     );
     return;
   }
 
-  // assets: cache-first (versioned URLs are immutable)
   event.respondWith(
     caches.match(event.request).then((hit) => hit || fetch(event.request).then((res) => {
       const copy = res.clone();
       caches.open(CACHE).then((c) => c.put(event.request, copy));
       return res;
-    }).catch(() => caches.match(TOOL_PAGE)))
+    }).catch(() => caches.match('/tools/zakat-calculator.html')))
   );
 });

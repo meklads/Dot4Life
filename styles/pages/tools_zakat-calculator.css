@@ -1154,3 +1154,89 @@ body.tool-flagship-page[data-tool="zakat-calculator"] {
   transition: all .3s cubic-bezier(.22,1,.36,1);
 }
 .zk-sponsor-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(200,155,60,.15); background: var(--z-gold); color: #fff; }
+
+/* Yearly habit chrome — keep calculator look, add save/remind/install */
+.zc-hawl { margin: 18px 0 8px; }
+.zc-hawl-note { margin: 8px 0 0; font-size: .78rem; color: var(--text-2); line-height: 1.5; }
+.zc-saved {
+  margin: 0 0 16px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(5,66,65,.12);
+  background: #fff;
+}
+.zc-saved-line { margin: 0 0 10px; font-size: .88rem; font-weight: 700; color: #054241; line-height: 1.5; }
+.zc-saved-acts { display: flex; flex-wrap: wrap; gap: 8px; }
+.zc-saved-btn {
+  font-family: inherit;
+  font-weight: 700;
+  font-size: .78rem;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: none;
+  background: #054241;
+  color: #fff;
+  cursor: pointer;
+}
+.zc-saved-btn--ghost { background: transparent; color: #054241; border: 1px solid rgba(5,66,65,.25); }
+.zc-saved-btn[hidden] { display: none !important; }
+.zc-year-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 4000;
+  background: #054241;
+  color: #fff;
+  display: none;
+  flex-direction: column;
+  padding: max(16px, env(safe-area-inset-top)) 20px max(16px, env(safe-area-inset-bottom));
+  overflow: auto;
+}
+.zc-year-overlay.is-open { display: flex; }
+.zc-year-kicker {
+  font-size: .78rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #6abfb8;
+  font-weight: 800;
+  margin: 0 0 10px;
+}
+.zc-year-title { font-size: 1.15rem; font-weight: 800; margin: 0 0 8px; }
+.zc-year-amount { font-size: clamp(2rem, 8vw, 3rem); font-weight: 900; color: #ffd54f; margin: 0 0 18px; }
+.zc-year-block { margin: 0 0 14px; padding-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,.12); }
+.zc-year-lbl { display: block; font-size: .72rem; color: #9aa0ab; font-weight: 700; margin-bottom: 4px; }
+.zc-year-val { font-size: 1.15rem; font-weight: 700; }
+.zc-year-note { margin: 8px 0 0; font-size: .8rem; color: #9aa0ab; line-height: 1.5; }
+.zc-year-acts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: auto; padding-top: 18px; }
+.zc-year-btn {
+  text-align: center;
+  padding: 14px 10px;
+  border-radius: 14px;
+  font-weight: 800;
+  font-size: .9rem;
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+}
+.zc-year-btn--save { background: #6abfb8; color: #054241; }
+.zc-year-btn--wa { background: #22c15e; color: #fff; }
+.zc-year-btn--close { grid-column: 1 / -1; background: transparent; color: #fff; border: 1px solid rgba(255,255,255,.25); }
+.zc-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%) translateY(20px);
+  background: #054241;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-size: .85rem;
+  font-weight: 700;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 4500;
+  transition: opacity .2s, transform .2s;
+}
+.zc-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+@media print {
+  .zc-year-overlay, .zc-toast, .zc-saved, .zc-hawl { display: none !important; }
+}
