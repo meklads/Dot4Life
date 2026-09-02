@@ -512,3 +512,88 @@ body.tool-flagship-page .tool-below .wc-faq {
 body.tool-flagship-page .tool-below .wc-faq {
   grid-column: 1 / -1;
 }
+
+/* Family habit — house water card */
+.wc-habit {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0 6px;
+}
+.wc-habit-btn {
+  font-family: inherit;
+  font-size: .82rem;
+  font-weight: 800;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  background: #054241;
+  color: #fff;
+}
+.wc-habit-btn--ghost {
+  background: transparent;
+  color: #054241;
+  border: 1px solid rgba(5,66,65,.25);
+}
+.wc-water {
+  position: fixed;
+  inset: 0;
+  z-index: 4000;
+  background: #054241;
+  color: #fff;
+  display: none;
+  flex-direction: column;
+  padding: max(16px, env(safe-area-inset-top)) 20px max(16px, env(safe-area-inset-bottom));
+  overflow: auto;
+}
+.wc-water.is-open { display: flex; }
+.wc-water-kicker {
+  font-size: .78rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #6abfb8;
+  font-weight: 800;
+  margin: 0 0 10px;
+}
+[data-lang="ar"] .wc-water-kicker { letter-spacing: 0; text-transform: none; }
+.wc-water-title { font-size: 1.15rem; font-weight: 800; margin: 0 0 8px; }
+.wc-water-amount { font-size: clamp(2rem, 8vw, 3rem); font-weight: 900; color: #ffd54f; margin: 0 0 18px; }
+.wc-water-block { margin: 0 0 14px; padding-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,.12); }
+.wc-water-lbl { display: block; font-size: .72rem; color: #9aa0ab; font-weight: 700; margin-bottom: 4px; }
+.wc-water-val { font-size: 1.15rem; font-weight: 700; }
+.wc-water-note { margin: 8px 0 0; font-size: .8rem; color: #9aa0ab; line-height: 1.5; }
+.wc-water-acts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: auto; padding-top: 18px; }
+.wc-dec-btn {
+  text-align: center;
+  padding: 14px 10px;
+  border-radius: 14px;
+  font-weight: 800;
+  font-size: .9rem;
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+}
+.wc-dec-btn--save { background: #6abfb8; color: #054241; }
+.wc-dec-btn--wa { background: #22c15e; color: #fff; }
+.wc-dec-btn--close { grid-column: 1 / -1; background: transparent; color: #fff; border: 1px solid rgba(255,255,255,.25); }
+.wc-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%) translateY(20px);
+  background: #054241;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-size: .85rem;
+  font-weight: 700;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 4500;
+  transition: opacity .2s, transform .2s;
+}
+.wc-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+@media print {
+  .wc-water, .wc-toast, .wc-habit { display: none !important; }
+}
