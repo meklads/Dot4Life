@@ -24,12 +24,12 @@
 <link rel="stylesheet" href="/styles/tools-flagship.css?v=20260709f">
 <link rel="stylesheet" href="/styles/tools-accents.css?v=20260625a">
 <link rel="stylesheet" href="/styles/pages/tools_zakat-calculator.css?v=20260823a">
-<link rel="manifest" href="/tools/zakat-calculator.webmanifest">
+<link rel="manifest" href="/tools/family-kit.webmanifest">
 <meta name="theme-color" content="#054241">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Zakat">
-<link rel="apple-touch-icon" href="/assets/icons/zakat-192.png">
+<meta name="apple-mobile-web-app-title" content="Family Kit">
+<link rel="apple-touch-icon" href="/assets/icons/family-kit-192.png">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://dotforlife.com/tools/zakat-calculator.html">
 <meta property="og:title" content="Zakat Calculator | حاسبة الزكاة - 2.5% Nisab | Dot For Life">
@@ -577,7 +577,7 @@ window.dflTrack=function(event,params){
     <p class="zc-saved-line" id="savedBannerText" hidden></p>
     <div class="zc-saved-acts">
       <button type="button" class="zc-saved-btn" id="btn-year-card" hidden onclick="openYearCard()"><span class="ar">بطاقة السنة</span><span class="en">Year card</span></button>
-      <button type="button" class="zc-saved-btn" id="btn-install" hidden onclick="installApp()"><span class="ar">ثبّت على الشاشة</span><span class="en">Add to Home Screen</span></button>
+      <button type="button" class="zc-saved-btn" id="btn-install" hidden onclick="installApp()"><span class="ar">ثبّتوا عدة الأسرة</span><span class="en">Install Family Kit</span></button>
       <button type="button" class="zc-saved-btn zc-saved-btn--ghost" id="btn-clear-saved" hidden onclick="clearSaved()"><span class="ar">مسح</span><span class="en">Clear</span></button>
     </div>
   </div>
@@ -1125,7 +1125,7 @@ function installApp(){
     deferredInstall.userChoice.then(function(){ deferredInstall=null; hideInstall(); });
     return;
   }
-  showToast(getLang()==='ar'?'من قائمة المتصفح: إضافة إلى الشاشة الرئيسية':'Use the browser menu: Add to Home Screen');
+  showToast(getLang()==='ar'?'من قائمة المتصفح: إضافة عدة الأسرة إلى الشاشة الرئيسية':'Use the browser menu: Add the Family Kit to Home Screen');
 }
 function hideInstall(){
   var b=document.getElementById('btn-install');

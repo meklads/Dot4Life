@@ -23,7 +23,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Almarai:wght@400;700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="/styles/global.css?v=20260624n"/>
-<link rel="stylesheet" href="/styles/pages/library.css?v=20260823b"/>
+<link rel="stylesheet" href="/styles/pages/library.css?v=20260902a"/>
+<link rel="manifest" href="/tools/family-kit.webmanifest">
+<meta name="theme-color" content="#054241">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Family Kit">
+<link rel="apple-touch-icon" href="/assets/icons/family-kit-192.png">
 <script src="/scripts/global.js?v=20260625" defer></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1436107577087160" crossorigin="anonymous"></script><meta name="robots" content="index,follow">
 </head>
@@ -136,11 +142,15 @@
       <p class="lib-kit-kicker"><span class="en">Start here</span><span class="ar">ابدأ من هنا</span></p>
       <h2 class="lib-kit-title" id="lib-kit-title"><span class="en">The Family Kit</span><span class="ar">عدة الأسرة</span></h2>
       <p class="lib-kit-sub"><span class="en">Seven tools for the moments that matter. The rest of the library stays below.</span><span class="ar">سبع أدوات للحظات التي تهم. بقية المكتبة تحتها.</span></p>
+      <button type="button" class="lib-kit-install" id="btn-install" hidden onclick="installFamilyKit()">
+        <span class="en">Install on this phone</span><span class="ar">ثبّتوا على هذا الجوال</span>
+      </button>
+      <p class="lib-kit-install-hint" id="install-hint" hidden></p>
     </div>
     <div class="lib-kit-grid">
       <a href="/tools/return-to-hotel.html" class="lib-kit-card">
         <span class="lib-kit-q"><span class="en">If we get lost</span><span class="ar">إن تِهنا</span></span>
-        <span class="lib-kit-name"><span class="en">Hotel card</span><span class="ar">بطاقة الفندق</span></span>
+        <span class="lib-kit-name"><span class="en">Hotel cards</span><span class="ar">بطاقتا الفندق</span></span>
         <span class="lib-kit-go"><span class="en">Open →</span><span class="ar">افتح ←</span></span>
       </a>
       <a href="/tools/zakat-calculator.html" class="lib-kit-card">
@@ -403,7 +413,10 @@
   applyFilters();
 
   var hash = (location.hash || '').replace('#','');
-  if (hash && document.getElementById('cat-' + hash)) {
+  if (hash === 'family-kit') {
+    var kitEl = document.getElementById('family-kit');
+    if (kitEl) setTimeout(function(){ kitEl.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 80);
+  } else if (hash && document.getElementById('cat-' + hash)) {
     document.querySelectorAll('#lib-subtabs-tools .lib-subtab').forEach(function(t){
       if (t.getAttribute('data-filter') === hash) t.click();
     });
@@ -497,5 +510,43 @@
     <span class="en">Travel</span><span class="ar">السفر</span>
   </a>
 </nav>
+<script>
+(function(){
+  var deferredInstall=null;
+  function hideInstall(){
+    var b=document.getElementById('btn-install');
+    if(b) b.hidden=true;
+  }
+  window.installFamilyKit=function(){
+    if(deferredInstall){
+      deferredInstall.prompt();
+      deferredInstall.userChoice.then(function(){ deferredInstall=null; hideInstall(); });
+      return;
+    }
+    var ar=document.documentElement.getAttribute('data-lang')==='ar';
+    var h=document.getElementById('install-hint');
+    if(h){
+      h.hidden=false;
+      h.textContent=ar?'من قائمة المتصفح: إضافة عدة الأسرة إلى الشاشة الرئيسية.':'Use the browser menu: Add the Family Kit to Home Screen.';
+    }
+  };
+  window.addEventListener('beforeinstallprompt',function(e){
+    e.preventDefault();
+    deferredInstall=e;
+    var b=document.getElementById('btn-install');
+    if(b) b.hidden=false;
+  });
+  window.addEventListener('appinstalled',hideInstall);
+  if(!window.matchMedia('(display-mode: standalone)').matches && !window.navigator.standalone){
+    if(/iphone|ipad|ipod/i.test(navigator.userAgent)){
+      var ib=document.getElementById('btn-install');
+      if(ib) ib.hidden=false;
+    }
+  }
+  if('serviceWorker' in navigator){
+    navigator.serviceWorker.register('/sw.js').catch(function(){});
+  }
+})();
+</script>
 </body>
 </html>
