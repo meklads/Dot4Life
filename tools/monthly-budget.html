@@ -23,7 +23,7 @@
 <link rel="stylesheet" href="/styles/tools-shared.css?v=20260608a">
 <link rel="stylesheet" href="/styles/tools-flagship.css?v=20260709f">
 <link rel="stylesheet" href="/styles/tools-accents.css?v=20260625a">
-<link rel="stylesheet" href="/styles/pages/tools_monthly-budget.css?v=20260902a">
+<link rel="stylesheet" href="/styles/pages/tools_monthly-budget.css?v=20260902c">
 <link rel="manifest" href="/tools/family-kit.webmanifest">
 <meta name="theme-color" content="#054241">
 <meta name="mobile-web-app-capable" content="yes">
@@ -104,6 +104,14 @@
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Your monthly net income — what actually lands in your account after all deductions — alongside category totals. صافي دخلك الشهري الفعلي الذي يصل حسابك بعد كل الخصومات، مع إجماليات كل فئة."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can this month go to a home? هل يذهب هذا الشهر إلى بيت؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. After you calculate, a quiet door puts what stays into Can we afford the home? On this device only. You tap; nothing jumps by itself. نعم. بعد الحساب، باب هادئ يضع المتبقي في هل نقدر على البيت؟ على هذا الجهاز فقط. أنتم تضغطون؛ لا شيء يقفز وحده."
           }
         },
         {
@@ -308,6 +316,7 @@ window.dflTrack=function(event,params){gtag('event',event,Object.assign({page_pa
           </div>
           <div class="mb-habit">
             <button type="button" class="mb-habit-btn" onclick="openMonthCard()"><span class="en">Family month card</span><span class="ar">بطاقة شهر الأسرة</span></button>
+            <button type="button" class="mb-habit-btn" onclick="sendLeftoverToHome()"><span class="en">Can we afford a home with what stays?</span><span class="ar">هل نقدر على البيت بهذا المتبقي؟</span></button>
             <button type="button" class="mb-habit-btn mb-habit-btn--ghost" onclick="clearBudget()"><span class="en">Clear saved</span><span class="ar">مسح المحفوظ</span></button>
           </div>
 
@@ -396,6 +405,10 @@ window.dflTrack=function(event,params){gtag('event',event,Object.assign({page_pa
 <div class="t-faq-item">
 <div class="t-faq-q" onclick="toggleFAQ(this)"><span><span class="en">What does the budget planner show?</span><span class="ar">ماذا يعرض مخطط الميزانية؟</span></span><span class="t-faq-arrow">▼</span></div>
 <div class="t-faq-a"><p><span class="en">Your monthly net income — what actually lands in your account after all deductions — alongside category totals.</span><span class="ar">صافي دخلك الشهري الفعلي الذي يصل حسابك بعد كل الخصومات، مع إجماليات كل فئة.</span></p></div>
+</div>
+<div class="t-faq-item">
+<div class="t-faq-q" onclick="toggleFAQ(this)"><span><span class="en">Can this month go to a home?</span><span class="ar">هل يذهب هذا الشهر إلى بيت؟</span></span><span class="t-faq-arrow">▼</span></div>
+<div class="t-faq-a"><p><span class="en">Yes. After you calculate, a quiet door puts what stays into Can we afford the home? On this device only. You tap; nothing jumps by itself.</span><span class="ar">نعم. بعد الحساب، باب هادئ يضع المتبقي في هل نقدر على البيت؟ على هذا الجهاز فقط. أنتم تضغطون؛ لا شيء يقفز وحده.</span></p></div>
 </div>
 <div class="t-faq-item">
 <div class="t-faq-q" onclick="toggleFAQ(this)"><span><span class="en">Are our numbers saved?</span><span class="ar">هل تُحفظ أرقامنا؟</span></span><span class="t-faq-arrow">▼</span></div>
@@ -850,12 +863,45 @@ function clearBudget(){
   var t=document.getElementById('mb-toast');
   if(t){ t.textContent=getLang()==='ar'?'مُسح المحفوظ':'Saved numbers cleared'; t.classList.add('show'); setTimeout(function(){t.classList.remove('show');},2200); }
 }
+function sendLeftoverToHome(){
+  if(!lastBudget){ calculate(); if(!lastBudget) return; }
+  var leftover=lastBudget.diff;
+  var income=leftover>0?leftover:lastBudget.incomeN;
+  try{
+    localStorage.setItem('dfl_chain',JSON.stringify({
+      income:lastBudget.incomeN,
+      leftover:leftover,
+      source:'budget',
+      at:Date.now()
+    }));
+  }catch(e){}
+  location.href='/tools/mortgage-calculator.html?from=budget';
+}
+function applySalaryChain(){
+  var from='';
+  try{ from=new URLSearchParams(location.search).get('from')||''; }catch(e){}
+  var ch=null;
+  try{ ch=JSON.parse(localStorage.getItem('dfl_chain')||'null'); }catch(e){}
+  if(from!=='salary' && !(ch&&ch.source==='salary')) return;
+  if(!ch||!(ch.income>0)) return;
+  var inc=document.getElementById('incomeInput');
+  if(inc) inc.value=Math.round(ch.income);
+  var t=document.getElementById('mb-toast');
+  if(t){
+    t.textContent=getLang()==='ar'?'وُضع صافي الراتب في شهر الأسرة':'Take-home pay is in the family month';
+    t.classList.add('show');
+    setTimeout(function(){t.classList.remove('show');},2200);
+  }
+}
 document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeMonthCard(); });
 document.addEventListener('DOMContentLoaded',function(){
   buildCatList();
   try { lastBudget = JSON.parse(localStorage.getItem('dfl_budget')||'null'); } catch(e){ lastBudget=null; }
   if(lastBudget && lastBudget.cats){
     applyBudgetFields(lastBudget);
+  }
+  applySalaryChain();
+  if((lastBudget && lastBudget.cats) || (document.getElementById('incomeInput')&&document.getElementById('incomeInput').value)){
     calculate();
   }
 });

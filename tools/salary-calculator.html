@@ -23,7 +23,7 @@
 <link rel="stylesheet" href="/styles/tools-shared.css?v=20260608a">
 <link rel="stylesheet" href="/styles/tools-flagship.css?v=20260709f">
 <link rel="stylesheet" href="/styles/tools-accents.css?v=20260625a">
-<link rel="stylesheet" href="/styles/pages/tools_salary-calculator.css?v=20260902a">
+<link rel="stylesheet" href="/styles/pages/tools_salary-calculator.css?v=20260902c">
 <link rel="manifest" href="/tools/family-kit.webmanifest">
 <meta name="theme-color" content="#054241">
 <meta name="mobile-web-app-capable" content="yes">
@@ -96,6 +96,14 @@
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Saudi nationals and GCC citizens do not pay personal income tax. This calculator focuses on GOSI deductions. السعوديون ومواطنو الخليج لا يدفعون ضريبة دخل شخصية. هذه الحاسبة تركز على التأمينات."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can we compare two offers? هل نقارن عرضين؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Offer A and Offer B on this page, on this device. The card shows what lands in the account from each. No verdict which is better. نعم. عرض أ وعرض ب في هذه الصفحة، على هذا الجهاز. البطاقة تُظهر ما يصل الحساب من كلٍّ. بلا حكم أيهما أفضل."
           }
         },
         {
@@ -183,9 +191,19 @@ window.dflTrack=function(event,params){gtag('event',event,Object.assign({page_pa
     <div class="tool-panel sc-card">
       <div class="tool-panel-hdr">
         <h2><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> <span class="en">Your Salary Package</span><span class="ar">باقة راتبك</span></h2>
-        <p><span class="en">Enter salary components, results update as you type.</span><span class="ar">أدخل مكونات الراتب, النتائج تتحدث أثناء الكتابة.</span></p>
+        <p><span class="en">Two offers, this device only. Same 9.75% GOSI math. No verdict which is better.</span><span class="ar">عرضان، على هذا الجهاز فقط. نفس حساب 9.75%. بلا حكم أيهما أفضل.</span></p>
       </div>
       <div class="tool-panel-body t-body">
+        <div class="kit-pills" role="tablist" aria-label="Salary offer">
+          <button type="button" class="kit-pill active" id="pill-offer-a" data-offer="a" onclick="switchOffer('a')">
+            <span class="en">Offer A</span><span class="ar">عرض أ</span>
+            <span class="kit-pill-mark" id="mark-offer-a" hidden></span>
+          </button>
+          <button type="button" class="kit-pill" id="pill-offer-b" data-offer="b" onclick="switchOffer('b')">
+            <span class="en">Offer B</span><span class="ar">عرض ب</span>
+            <span class="kit-pill-mark" id="mark-offer-b" hidden></span>
+          </button>
+        </div>
         <div class="t-step"><span class="en">Salary Components</span><span class="ar">مكونات الراتب</span></div>
         <div class="t-g2">
           <div class="t-fl">
@@ -230,7 +248,17 @@ window.dflTrack=function(event,params){gtag('event',event,Object.assign({page_pa
       <div class="tool-panel-body t-body">
         <div class="t-hero-result">
           <div class="t-hero-val" id="res-net">—</div>
-          <div class="t-hero-lbl"><span class="en">Net Monthly Salary</span><span class="ar">صافي الراتب الشهري</span></div>
+          <div class="t-hero-lbl" id="net-lbl"><span class="en">Net Monthly Salary</span><span class="ar">صافي الراتب الشهري</span></div>
+        </div>
+        <div class="kit-compare" id="sc-two" hidden>
+          <div class="kit-compare-cell">
+            <div class="kit-compare-lbl"><span class="en">Offer A lands</span><span class="ar">عرض أ يصل</span></div>
+            <div class="kit-compare-val" id="cmp-a">—</div>
+          </div>
+          <div class="kit-compare-cell">
+            <div class="kit-compare-lbl"><span class="en">Offer B lands</span><span class="ar">عرض ب يصل</span></div>
+            <div class="kit-compare-val" id="cmp-b">—</div>
+          </div>
         </div>
         <div class="t-metrics">
           <div class="t-metric"><div class="t-metric-val" id="res-gross">—</div><div class="t-metric-lbl"><span class="en">Gross Salary</span><span class="ar">الإجمالي</span></div></div>
@@ -248,6 +276,7 @@ window.dflTrack=function(event,params){gtag('event',event,Object.assign({page_pa
         <p class="t-disclaimer"><span class="en">Saudi employees in private sector pay 9.75% GOSI on basic salary. Expats are not subject to GOSI. Government sector rates may vary.</span><span class="ar">يدفع الموظفون السعوديون في القطاع الخاص 9.75% تأمينات من الراتب الأساسي. المغتربون غير خاضعين للتأمينات.</span></p>
         <div class="sc-habit">
           <button type="button" class="sc-habit-btn" onclick="openSalaryCard()"><span class="en">Take-home card</span><span class="ar">بطاقة الصافي</span></button>
+          <button type="button" class="sc-habit-btn" onclick="sendNetToMonth()"><span class="en">Put this in the family month</span><span class="ar">ضعوا هذا في شهر الأسرة</span></button>
           <button type="button" class="sc-habit-btn sc-habit-btn--ghost" onclick="clearSalary()"><span class="en">Clear saved</span><span class="ar">مسح المحفوظ</span></button>
         </div>
       </div>
@@ -284,6 +313,10 @@ window.dflTrack=function(event,params){gtag('event',event,Object.assign({page_pa
       <div class="t-faq-item">
         <div class="t-faq-q" onclick="toggleFAQ(this)"><span><span class="en">Is income tax deducted in Saudi Arabia?</span><span class="ar">هل تُخصم ضريبة الدخل؟</span></span><span class="t-faq-arrow">▼</span></div>
         <div class="t-faq-a"><p><span class="en">Saudi nationals and GCC citizens do not pay personal income tax. This calculator focuses on GOSI deductions.</span><span class="ar">السعوديون ومواطنو الخليج لا يدفعون ضريبة دخل شخصية. هذه الحاسبة تركز على التأمينات.</span></p></div>
+      </div>
+      <div class="t-faq-item">
+        <div class="t-faq-q" onclick="toggleFAQ(this)"><span><span class="en">Can we compare two offers?</span><span class="ar">هل نقارن عرضين؟</span></span><span class="t-faq-arrow">▼</span></div>
+        <div class="t-faq-a"><p><span class="en">Yes. Offer A and Offer B on this page, on this device. The card shows what lands in the account from each. No verdict which is better.</span><span class="ar">نعم. عرض أ وعرض ب في هذه الصفحة، على هذا الجهاز. البطاقة تُظهر ما يصل الحساب من كلٍّ. بلا حكم أيهما أفضل.</span></p></div>
       </div>
       <div class="t-faq-item">
         <div class="t-faq-q" onclick="toggleFAQ(this)"><span><span class="en">Are our numbers saved?</span><span class="ar">هل تُحفظ أرقامنا؟</span></span><span class="t-faq-arrow">▼</span></div>
@@ -358,6 +391,10 @@ window.dflTrack=function(event,params){gtag('event',event,Object.assign({page_pa
   <p class="sc-pay-kicker">DOTFORLIFE · <span class="en">Family Kit</span><span class="ar">عدة الأسرة</span></p>
   <p class="sc-pay-title"><span class="en">Take-home pay</span><span class="ar">صافي الراتب</span></p>
   <p class="sc-pay-amount" id="payNet">—</p>
+  <div class="sc-pay-block" id="payTwoWrap" hidden>
+    <span class="sc-pay-lbl"><span class="en">The other offer</span><span class="ar">العرض الآخر</span></span>
+    <span class="sc-pay-val" id="payTwo"></span>
+  </div>
   <div class="sc-pay-block">
     <span class="sc-pay-lbl"><span class="en">Gross</span><span class="ar">الإجمالي</span></span>
     <span class="sc-pay-val" id="payGross"></span>
@@ -377,15 +414,91 @@ function fmt(n){return n.toLocaleString('en-SA',{minimumFractionDigits:0,maximum
 function getLang(){return document.documentElement.getAttribute('data-lang')||'en';}
 var lastSalary=null;
 var S_FIELDS=['basic','housing','transport','other','nationality','sector'];
-function calculate(silent){
-  var basic=parseFloat(document.getElementById('basic').value)||0;
-  var housing=parseFloat(document.getElementById('housing').value)||0;
-  var transport=parseFloat(document.getElementById('transport').value)||0;
-  var other=parseFloat(document.getElementById('other').value)||0;
-  var nat=document.getElementById('nationality').value;
+var salaryPack={active:'a',a:null,b:null};
+function readOffer(){
+  var o={};
+  S_FIELDS.forEach(function(id){var el=document.getElementById(id);if(el)o[id]=el.value;});
+  return o;
+}
+function offerComplete(o){
+  if(!o)return false;
+  return ((parseFloat(o.basic)||0)+(parseFloat(o.housing)||0)+(parseFloat(o.transport)||0)+(parseFloat(o.other)||0))>0;
+}
+function computeOffer(o){
+  var basic=parseFloat(o.basic)||0;
+  var housing=parseFloat(o.housing)||0;
+  var transport=parseFloat(o.transport)||0;
+  var other=parseFloat(o.other)||0;
+  var nat=o.nationality||'saudi';
   var gross=basic+housing+transport+other;
   var gosi=nat==='saudi'?basic*0.0975:0;
-  var net=gross-gosi;
+  return Object.assign({},o,{net:gross-gosi,gross:gross,gosi:gosi,sector:o.sector||'private'});
+}
+function applyOffer(o){
+  if(!o)return;
+  S_FIELDS.forEach(function(id){var el=document.getElementById(id);if(el&&o[id]!=null)el.value=o[id];});
+}
+function persistSalary(){
+  var active=salaryPack[salaryPack.active]||lastSalary;
+  var out=Object.assign({},active||{},{active:salaryPack.active,a:salaryPack.a,b:salaryPack.b});
+  try{localStorage.setItem('dfl_salary',JSON.stringify(out));}catch(e){}
+}
+function loadSalaryPack(){
+  var parsed=null;
+  try{parsed=JSON.parse(localStorage.getItem('dfl_salary')||'null');}catch(e){parsed=null;}
+  if(!parsed)return;
+  if(parsed.a||parsed.b||parsed.active==='a'||parsed.active==='b'){
+    salaryPack.active=parsed.active==='b'?'b':'a';
+    salaryPack.a=parsed.a||null;
+    salaryPack.b=parsed.b||null;
+  }else if(parsed.net!=null||offerComplete(parsed)){
+    salaryPack.active='a';
+    salaryPack.a=computeOffer(parsed);
+    salaryPack.b=null;
+  }
+}
+function syncOfferPills(){
+  ['a','b'].forEach(function(k){
+    var pill=document.getElementById('pill-offer-'+k);
+    if(pill)pill.classList.toggle('active',k===salaryPack.active);
+    var mark=document.getElementById('mark-offer-'+k);
+    if(mark)mark.hidden=!offerComplete(salaryPack[k]);
+  });
+}
+function renderOfferCompare(){
+  var box=document.getElementById('sc-two');
+  var a=salaryPack.a,b=salaryPack.b;
+  var both=a&&a.net!=null&&b&&b.net!=null;
+  if(box)box.hidden=!both;
+  if(!both)return;
+  var lang=getLang();
+  document.getElementById('cmp-a').textContent=lang==='ar'
+    ?Math.round(a.net).toLocaleString('ar-SA')+' ريال'
+    :'SAR '+Math.round(a.net).toLocaleString();
+  document.getElementById('cmp-b').textContent=lang==='ar'
+    ?Math.round(b.net).toLocaleString('ar-SA')+' ريال'
+    :'SAR '+Math.round(b.net).toLocaleString();
+}
+function otherOffer(){
+  var k=salaryPack.active==='a'?'b':'a';
+  return salaryPack[k];
+}
+function switchOffer(slot){
+  if(slot!=='a'&&slot!=='b')return;
+  if(slot===salaryPack.active)return;
+  var draft=readOffer();
+  if(offerComplete(draft))salaryPack[salaryPack.active]=computeOffer(draft);
+  salaryPack.active=slot;
+  var next=salaryPack[slot];
+  if(!next&&salaryPack[slot==='a'?'b':'a'])next=salaryPack[slot==='a'?'b':'a'];
+  if(next)applyOffer(next);
+  persistSalary();
+  syncOfferPills();
+  calculate(true);
+}
+function calculate(silent){
+  var computed=computeOffer(readOffer());
+  var net=computed.net,gross=computed.gross,gosi=computed.gosi,nat=computed.nationality;
   document.getElementById('res-gross').textContent=fmt(gross);
   document.getElementById('res-gosi').textContent=fmt(gosi);
   document.getElementById('res-net').textContent=fmt(net);
@@ -400,16 +513,11 @@ function calculate(silent){
     dflSetToolGauge('salary-gauge',{value:deductPct,min:0,max:15,label:gaugeLabel,hidden:gross<=0});
   }
   if(!silent&&window.dflTrack)dflTrack('salary_calculated',{nationality:nat});
-  lastSalary={
-    basic:document.getElementById('basic').value,
-    housing:document.getElementById('housing').value,
-    transport:document.getElementById('transport').value,
-    other:document.getElementById('other').value,
-    nationality:nat,
-    sector:document.getElementById('sector').value,
-    net:net,gross:gross,gosi:gosi
-  };
-  try{localStorage.setItem('dfl_salary',JSON.stringify(lastSalary));}catch(e){}
+  lastSalary=computed;
+  if(offerComplete(computed))salaryPack[salaryPack.active]=computed;
+  persistSalary();
+  syncOfferPills();
+  renderOfferCompare();
 }
 function toggleFAQ(el){
   var answer=el.nextElementSibling;var isOpen=el.classList.contains('open');
@@ -421,10 +529,10 @@ document.addEventListener('DOMContentLoaded',function(){
     var el=document.getElementById(id);if(el)el.addEventListener('input',function(){calculate(true);});
     if(el&&el.tagName==='SELECT')el.addEventListener('change',function(){calculate(true);});
   });
-  try{lastSalary=JSON.parse(localStorage.getItem('dfl_salary')||'null');}catch(e){lastSalary=null;}
-  if(lastSalary){
-    S_FIELDS.forEach(function(id){var el=document.getElementById(id);if(el&&lastSalary[id]!=null)el.value=lastSalary[id];});
-  }
+  loadSalaryPack();
+  lastSalary=salaryPack[salaryPack.active]||null;
+  if(lastSalary)applyOffer(lastSalary);
+  syncOfferPills();
   calculate(true);
 });
 document.addEventListener('dfl:langchange',function(){
@@ -432,24 +540,41 @@ document.addEventListener('dfl:langchange',function(){
   if(document.getElementById('salaryOverlay')&&document.getElementById('salaryOverlay').classList.contains('is-open'))openSalaryCard();
 });
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeSalaryCard();});
+function fmtPay(n,lang){
+  return lang==='ar'?Math.round(n).toLocaleString('ar-SA')+' ريال':'SAR '+Math.round(n).toLocaleString();
+}
 function openSalaryCard(){
   if(!lastSalary){calculate();if(!lastSalary)return;}
   var lang=getLang();
   document.getElementById('payNet').textContent=lang==='ar'
-    ?Math.round(lastSalary.net).toLocaleString('ar-SA')+' ريال / شهر'
-    :'SAR '+Math.round(lastSalary.net).toLocaleString()+' / month';
-  document.getElementById('payGross').textContent=lang==='ar'
-    ?Math.round(lastSalary.gross).toLocaleString('ar-SA')+' ريال'
-    :'SAR '+Math.round(lastSalary.gross).toLocaleString();
+    ?fmtPay(lastSalary.net,lang)+' / شهر'
+    :fmtPay(lastSalary.net,lang)+' / month';
+  document.getElementById('payGross').textContent=fmtPay(lastSalary.gross,lang);
+  var other=otherOffer();
+  var wrap=document.getElementById('payTwoWrap');
+  if(wrap){
+    wrap.hidden=!(other&&other.net!=null);
+    if(other&&other.net!=null){
+      var otherLbl=salaryPack.active==='a'?(lang==='ar'?'عرض ب يصل ':'Offer B lands '):(lang==='ar'?'عرض أ يصل ':'Offer A lands ');
+      document.getElementById('payTwo').textContent=otherLbl+fmtPay(other.net,lang);
+    }
+  }
   document.getElementById('salaryOverlay').classList.add('is-open');
 }
 function closeSalaryCard(){document.getElementById('salaryOverlay').classList.remove('is-open');}
 function salaryText(){
   var lang=getLang();
   var n=Math.round(lastSalary.net).toLocaleString(lang==='ar'?'ar-SA':'en');
+  var other=otherOffer();
+  var extra='';
+  if(other&&other.net!=null){
+    extra=lang==='ar'
+      ?'\nالعرض الآخر: '+Math.round(other.net).toLocaleString('ar-SA')+' ريال'
+      :'\nThe other offer: SAR '+Math.round(other.net).toLocaleString();
+  }
   return lang==='ar'
-    ?'صافي الراتب\n'+n+' ريال شهرياً\nتقدير من دوت فور لايف، ليست استشارة ضريبية.\ndotforlife.com/tools/salary-calculator'
-    :'Take-home pay\nSAR '+n+' / month\nAn estimate from Dot4Life, not tax advice.\ndotforlife.com/tools/salary-calculator';
+    ?'صافي الراتب\n'+n+' ريال شهرياً'+extra+'\nتقدير من دوت فور لايف، ليست استشارة ضريبية.\ndotforlife.com/tools/salary-calculator'
+    :'Take-home pay\nSAR '+n+' / month'+extra+'\nAn estimate from Dot4Life, not tax advice.\ndotforlife.com/tools/salary-calculator';
 }
 function drawSalaryCard(){
   var c=document.createElement('canvas');var w=1080,h=1350;c.width=w;c.height=h;
@@ -463,6 +588,13 @@ function drawSalaryCard(){
   x.fillStyle='#9aa0ab';x.font='700 28px sans-serif';x.fillText(getLang()==='ar'?'الإجمالي':'Gross',80,430);
   x.fillStyle='#fff';x.font='700 40px sans-serif';
   x.fillText('SAR '+Math.round(lastSalary.gross).toLocaleString(),80,490);
+  var other=otherOffer();
+  if(other&&other.net!=null){
+    x.fillStyle='#9aa0ab';x.font='700 28px sans-serif';
+    x.fillText(getLang()==='ar'?'العرض الآخر':'The other offer',80,600);
+    x.fillStyle='#fff';x.font='700 40px sans-serif';
+    x.fillText('SAR '+Math.round(other.net).toLocaleString(),80,660);
+  }
   x.fillStyle='#6abfb8';x.font='600 26px sans-serif';
   x.fillText('dotforlife.com/tools/salary-calculator',80,h-70);
   return c;
@@ -487,9 +619,19 @@ function shareSalary(){
     }else window.open('https://wa.me/?text='+encodeURIComponent(text),'_blank');
   },'image/png');
 }
+function sendNetToMonth(){
+  if(!lastSalary){calculate();if(!lastSalary)return;}
+  try{
+    localStorage.setItem('dfl_chain',JSON.stringify({income:lastSalary.net,leftover:null,source:'salary',at:Date.now()}));
+  }catch(e){}
+  location.href='/tools/monthly-budget.html?from=salary';
+}
 function clearSalary(){
   localStorage.removeItem('dfl_salary');
   lastSalary=null;
+  salaryPack={active:'a',a:null,b:null};
+  syncOfferPills();
+  renderOfferCompare();
   var t=document.getElementById('sc-toast');
   if(t){t.textContent=getLang()==='ar'?'مُسح المحفوظ':'Saved numbers cleared';t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2200);}
 }

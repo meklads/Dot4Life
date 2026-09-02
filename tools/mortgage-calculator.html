@@ -23,7 +23,7 @@
 <link rel="stylesheet" href="/styles/tools-shared.css?v=20260608a">
 <link rel="stylesheet" href="/styles/tools-flagship.css?v=20260709f">
 <link rel="stylesheet" href="/styles/tools-accents.css?v=20260625a">
-<link rel="stylesheet" href="/styles/pages/tools_mortgage-calculator.css?v=20260823a">
+<link rel="stylesheet" href="/styles/pages/tools_mortgage-calculator.css?v=20260902c">
 <link rel="manifest" href="/tools/family-kit.webmanifest">
 <meta name="theme-color" content="#054241">
 <meta name="mobile-web-app-capable" content="yes">
@@ -36,7 +36,7 @@
 <meta property="og:description" content="Monthly payments, amortization, REDF support, Saudi bank presets.">
 <meta property="og:image" content="https://dotforlife.com/d4l1.webp">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Saudi Mortgage Calculator","url":"https://dotforlife.com/tools/mortgage-calculator.html","description":"Calculate monthly mortgage payments, total interest, amortization schedule, and REDF support. Saudi bank rate presets.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"SAR"},"inLanguage":["en","ar"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://dotforlife.com"},{"@type":"ListItem","position":2,"name":"Library","item":"https://dotforlife.com/library.html"},{"@type":"ListItem","position":3,"name":"Saudi Mortgage Calculator","item":"https://dotforlife.com/tools/mortgage-calculator.html"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is the monthly mortgage payment calculated?","acceptedAnswer":{"@type":"Answer","text":"Monthly payment uses the standard PMT formula: P × [r(1+r)^n] / [(1+r)^n − 1]."}},{"@type":"Question","name":"What is REDF and who is eligible?","acceptedAnswer":{"@type":"Answer","text":"REDF offers interest-free loans up to SAR 500,000 for eligible Saudi first-time buyers."}},{"@type":"Question","name":"What is the maximum mortgage term?","acceptedAnswer":{"@type":"Answer","text":"Most Saudi banks offer 25–30 year terms."}},{"@type":"Question","name":"What is the minimum down payment?","acceptedAnswer":{"@type":"Answer","text":"SAMA requires 10% minimum for first-time buyers, 20% for subsequent purchases."}},{"@type":"Question","name":"Are our numbers saved?","acceptedAnswer":{"@type":"Answer","text":"Yes, only on this device. You can share a family card or clear it anytime. This is not a bank application."}}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Saudi Mortgage Calculator","url":"https://dotforlife.com/tools/mortgage-calculator.html","description":"Calculate monthly mortgage payments, total interest, amortization schedule, and REDF support. Saudi bank rate presets.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"SAR"},"inLanguage":["en","ar"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://dotforlife.com"},{"@type":"ListItem","position":2,"name":"Library","item":"https://dotforlife.com/library.html"},{"@type":"ListItem","position":3,"name":"Saudi Mortgage Calculator","item":"https://dotforlife.com/tools/mortgage-calculator.html"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is the monthly mortgage payment calculated?","acceptedAnswer":{"@type":"Answer","text":"Monthly payment uses the standard PMT formula: P × [r(1+r)^n] / [(1+r)^n − 1]."}},{"@type":"Question","name":"What is REDF and who is eligible?","acceptedAnswer":{"@type":"Answer","text":"REDF offers interest-free loans up to SAR 500,000 for eligible Saudi first-time buyers."}},{"@type":"Question","name":"What is the maximum mortgage term?","acceptedAnswer":{"@type":"Answer","text":"Most Saudi banks offer 25–30 year terms."}},{"@type":"Question","name":"What is the minimum down payment?","acceptedAnswer":{"@type":"Answer","text":"SAMA requires 10% minimum for first-time buyers, 20% for subsequent purchases."}},{"@type":"Question","name":"Can we compare two homes?","acceptedAnswer":{"@type":"Answer","text":"Yes. Home 1 and Home 2 on this page, on this device. Family income is shared. Talking numbers, not a SAMA ruling."}},{"@type":"Question","name":"Are our numbers saved?","acceptedAnswer":{"@type":"Answer","text":"Yes, only on this device. You can share a family card or clear it anytime. This is not a bank application."}}]}]}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3G1XPV4F0G"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
@@ -141,6 +141,16 @@ window.dflTrack=function(event,params){gtag('event',event,Object.assign({page_pa
       <p><span class="en">Enter the home price and your monthly income if you want to see the payment as a share of the family month.</span><span class="ar">أدخلوا سعر البيت ودخل الأسرة الشهري إن أردتم رؤية القسط من شهر الأسرة.</span></p>
     </div>
     <div class="mc-body">
+      <div class="kit-pills" role="tablist" aria-label="Home">
+        <button type="button" class="kit-pill active" id="pill-home-1" data-home="1" onclick="switchHome('1')">
+          <span class="en">Home 1</span><span class="ar">البيت ١</span>
+          <span class="kit-pill-mark" id="mark-home-1" hidden></span>
+        </button>
+        <button type="button" class="kit-pill" id="pill-home-2" data-home="2" onclick="switchHome('2')">
+          <span class="en">Home 2</span><span class="ar">البيت ٢</span>
+          <span class="kit-pill-mark" id="mark-home-2" hidden></span>
+        </button>
+      </div>
 
       <!-- Form Grid -->
       <div class="mo-g2">
@@ -262,7 +272,7 @@ window.dflTrack=function(event,params){gtag('event',event,Object.assign({page_pa
           <input type="number" id="family-income" min="0" placeholder="0" autocomplete="off">
           <span class="tool-fl-u">SAR</span>
         </div>
-        <p class="mo-income-note"><span class="en">Used only to show the payment as a share of your month. Not a bank rule.</span><span class="ar">فقط لرؤية القسط من شهركم. ليست قاعدة بنك.</span></p>
+        <p class="mo-income-note" id="mo-income-note"><span class="en">Used only to show the payment as a share of your month. Not a bank rule. Shared by both homes.</span><span class="ar">فقط لرؤية القسط من شهركم. ليست قاعدة بنك. مشترك للبيتين.</span></p>
       </div>
 
       <!-- Calculate Button -->
@@ -302,6 +312,16 @@ window.dflTrack=function(event,params){gtag('event',event,Object.assign({page_pa
       </div>
     </div>
     <p class="mo-afford" id="affordLine" hidden></p>
+    <div class="kit-compare" id="mo-two" hidden>
+      <div class="kit-compare-cell">
+        <div class="kit-compare-lbl"><span class="en">Home 1 of the month</span><span class="ar">البيت ١ من الشهر</span></div>
+        <div class="kit-compare-val" id="cmp-home-1">—</div>
+      </div>
+      <div class="kit-compare-cell">
+        <div class="kit-compare-lbl"><span class="en">Home 2 of the month</span><span class="ar">البيت ٢ من الشهر</span></div>
+        <div class="kit-compare-val" id="cmp-home-2">—</div>
+      </div>
+    </div>
     <div class="mo-habit">
       <button type="button" class="mo-habit-btn" onclick="openDecisionCard()"><span class="en">Family decision card</span><span class="ar">بطاقة قرار الأسرة</span></button>
       <button type="button" class="mo-habit-btn mo-habit-btn--ghost" onclick="clearMortgage()"><span class="en">Clear saved</span><span class="ar">مسح المحفوظ</span></button>
@@ -395,6 +415,7 @@ window.dflTrack=function(event,params){gtag('event',event,Object.assign({page_pa
 <div class="t-faq-item"><div class="t-faq-q" onclick="toggleFAQ(this)"><span><span class="en">What is REDF and who is eligible?</span><span class="ar">ما هو صندوق التنمية العقاري؟</span></span><span class="t-faq-arrow">▼</span></div><div class="t-faq-a"><p><span class="en">REDF offers interest-free loans up to SAR 500,000 for eligible Saudi first-time buyers.</span><span class="ar">يقدم الصندوق قروضاً بدون فائدة حتى 500,000 ريال للمواطنين المؤهلين.</span></p></div></div>
 <div class="t-faq-item"><div class="t-faq-q" onclick="toggleFAQ(this)"><span><span class="en">What is the maximum mortgage term?</span><span class="ar">ما أقصى مدة للتمويل؟</span></span><span class="t-faq-arrow">▼</span></div><div class="t-faq-a"><p><span class="en">Most Saudi banks offer 25–30 year terms.</span><span class="ar">معظم البنوك تقدم 25-30 سنة.</span></p></div></div>
 <div class="t-faq-item"><div class="t-faq-q" onclick="toggleFAQ(this)"><span><span class="en">What is the minimum down payment?</span><span class="ar">ما الدفعة الأولى الدنيا؟</span></span><span class="t-faq-arrow">▼</span></div><div class="t-faq-a"><p><span class="en">SAMA requires 10% minimum for first-time buyers, 20% for subsequent purchases.</span><span class="ar">تشترط ساما 10% للمشتري لأول مرة و20% للاحق.</span></p></div></div>
+<div class="t-faq-item"><div class="t-faq-q" onclick="toggleFAQ(this)"><span><span class="en">Can we compare two homes?</span><span class="ar">هل نقارن بيتين؟</span></span><span class="t-faq-arrow">▼</span></div><div class="t-faq-a"><p><span class="en">Yes. Home 1 and Home 2 on this page, on this device. Family income is shared. Talking numbers, not a SAMA ruling.</span><span class="ar">نعم. البيت ١ والبيت ٢ في هذه الصفحة، على هذا الجهاز. دخل الأسرة مشترك. أرقام للنقاش، ليست حكم ساما.</span></p></div></div>
 <div class="t-faq-item"><div class="t-faq-q" onclick="toggleFAQ(this)"><span><span class="en">Are our numbers saved?</span><span class="ar">هل تُحفظ أرقامنا؟</span></span><span class="t-faq-arrow">▼</span></div><div class="t-faq-a"><p><span class="en">Yes, only on this device. You can share a family card or clear it anytime. This is not a bank application.</span><span class="ar">نعم، على هذا الجهاز فقط. يمكنكم مشاركة بطاقة الأسرة أو مسحها في أي وقت. هذه ليست طلب تمويل.</span></p></div></div>
 </div></div>
 
@@ -528,6 +549,10 @@ window.dflTrack=function(event,params){gtag('event',event,Object.assign({page_pa
   <div class="mo-decision-block">
     <span class="mo-decision-lbl"><span class="en">Of the family month</span><span class="ar">من شهر الأسرة</span></span>
     <span class="mo-decision-val" id="decShare"></span>
+  </div>
+  <div class="mo-decision-block" id="decTwoWrap" hidden>
+    <span class="mo-decision-lbl"><span class="en">The other home</span><span class="ar">البيت الآخر</span></span>
+    <span class="mo-decision-val" id="decTwo"></span>
   </div>
   <p class="mo-decision-note"><span class="en">An estimate on this device. Not a bank offer and not financial advice.</span><span class="ar">تقدير على هذا الجهاز. ليس عرض بنك ولا استشارة مالية.</span></p>
   <div class="mo-decision-acts">
@@ -665,10 +690,13 @@ function calculateMortgage(opts){
     price:parseFloat(document.getElementById('property-price').value)||0,
     fields:collectMortgageFields()
   };
+  mortgagePack[mortgagePack.active]=lastMortgage;
   if(!opts.restore){
-    try{ localStorage.setItem('dfl_mortgage', JSON.stringify(lastMortgage)); }catch(e){}
+    persistMortgage();
   }
   renderAfford();
+  syncHomePills();
+  renderHomeCompare();
 }
 
 function renderAmortTable(all){
@@ -716,7 +744,9 @@ function toggleFAQ(el){
   if(!isOpen){ el.classList.add('open'); answer.classList.add('active'); }
 }
 const M_FIELDS=['property-price','down-pct','loan-amount','interest-rate','loan-term','redf-amount','redf-term','family-income'];
+const HOME_IDS=['property-price','down-pct','loan-amount','interest-rate','loan-term','redf-amount','redf-term'];
 let lastMortgage=null;
+var mortgagePack={active:'1','1':null,'2':null};
 function getLang(){return document.documentElement.getAttribute('data-lang')||'en';}
 function collectMortgageFields(){
   var o={};
@@ -725,10 +755,131 @@ function collectMortgageFields(){
   o.redf=t?t.checked:false;
   return o;
 }
+function computeMonthly(fields){
+  if(!fields) return null;
+  var P=parseFloat(fields['loan-amount'])||0;
+  var annualRate=parseFloat(fields['interest-rate'])||0;
+  var years=parseInt(fields['loan-term'])||0;
+  if(!P||!years) return null;
+  var r=annualRate/100/12;
+  var n=years*12;
+  var monthly= r===0 ? P/n : P*(r*Math.pow(1+r,n))/(Math.pow(1+r,n)-1);
+  var income=parseFloat(document.getElementById('family-income').value)||0;
+  var pct=income>0?Math.round((monthly/income)*100):null;
+  return {monthly:monthly,income:income,pct:pct,price:parseFloat(fields['property-price'])||0,fields:fields};
+}
+function homeComplete(h){
+  if(!h||!h.fields) return false;
+  return (parseFloat(h.fields['property-price'])||0)>0 && (parseFloat(h.fields['loan-amount'])||0)>0;
+}
+function persistMortgage(){
+  var active=mortgagePack[mortgagePack.active]||lastMortgage;
+  var out=Object.assign({},active||{},{active:mortgagePack.active,'1':mortgagePack['1'],'2':mortgagePack['2']});
+  try{ localStorage.setItem('dfl_mortgage', JSON.stringify(out)); }catch(e){}
+}
+function applyHomeFields(f){
+  if(!f) return;
+  HOME_IDS.forEach(function(id){
+    var el=document.getElementById(id);
+    if(el && f[id]!=null) el.value=f[id];
+  });
+  var tog=document.getElementById('redf-toggle');
+  if(tog){
+    tog.checked=!!f.redf;
+    if(typeof toggleREDF==='function') toggleREDF();
+  }
+  if(typeof syncSlider==='function'){
+    try{ syncSlider('property-price','slider-price'); syncSlider('down-pct','slider-down'); syncSlider('loan-amount','slider-loan'); syncSlider('interest-rate','slider-rate'); syncSlider('loan-term','slider-term'); }catch(e){}
+  }
+}
+function loadMortgagePack(){
+  var parsed=null;
+  try{ parsed=JSON.parse(localStorage.getItem('dfl_mortgage')||'null'); }catch(e){ parsed=null; }
+  if(!parsed) return;
+  if(parsed['1']||parsed['2']||parsed.active==='1'||parsed.active==='2'){
+    mortgagePack.active=parsed.active==='2'?'2':'1';
+    mortgagePack['1']=parsed['1']||null;
+    mortgagePack['2']=parsed['2']||null;
+  }else if(parsed.fields){
+    mortgagePack.active='1';
+    mortgagePack['1']=parsed;
+    mortgagePack['2']=null;
+  }
+}
+function syncHomePills(){
+  ['1','2'].forEach(function(k){
+    var pill=document.getElementById('pill-home-'+k);
+    if(pill) pill.classList.toggle('active',k===mortgagePack.active);
+    var mark=document.getElementById('mark-home-'+k);
+    if(mark) mark.hidden=!homeComplete(mortgagePack[k]);
+  });
+}
+function pctLabel(h,lang){
+  if(!h) return '—';
+  if(h.pct!=null) return lang==='ar'?h.pct+'٪':h.pct+'%';
+  return lang==='ar'?Math.round(h.monthly).toLocaleString('ar-SA')+' ريال':'SAR '+Math.round(h.monthly).toLocaleString();
+}
+function renderHomeCompare(){
+  var box=document.getElementById('mo-two');
+  var h1=mortgagePack['1'], h2=mortgagePack['2'];
+  var both=homeComplete(h1)&&homeComplete(h2);
+  if(box) box.hidden=!both;
+  if(!both) return;
+  var income=parseFloat(document.getElementById('family-income').value)||0;
+  if(income>0){
+    h1=Object.assign({},h1,{pct:Math.round((h1.monthly/income)*100)});
+    h2=Object.assign({},h2,{pct:Math.round((h2.monthly/income)*100)});
+  }
+  var lang=getLang();
+  document.getElementById('cmp-home-1').textContent=pctLabel(h1,lang);
+  document.getElementById('cmp-home-2').textContent=pctLabel(h2,lang);
+}
+function otherHome(){
+  return mortgagePack[mortgagePack.active==='1'?'2':'1'];
+}
+function switchHome(slot){
+  if(slot!=='1'&&slot!=='2') return;
+  if(slot===mortgagePack.active) return;
+  var snap=computeMonthly(collectMortgageFields());
+  if(snap&&homeComplete(snap)) mortgagePack[mortgagePack.active]=Object.assign({},lastMortgage||{},snap);
+  mortgagePack.active=slot;
+  var next=mortgagePack[slot];
+  if(!next&&mortgagePack[slot==='1'?'2':'1']) next=mortgagePack[slot==='1'?'2':'1'];
+  if(next&&next.fields) applyHomeFields(next.fields);
+  persistMortgage();
+  syncHomePills();
+  if(typeof calculateMortgage==='function') calculateMortgage({restore:true});
+}
+function applyBudgetChain(){
+  var from='';
+  try{ from=new URLSearchParams(location.search).get('from')||''; }catch(e){}
+  var ch=null;
+  try{ ch=JSON.parse(localStorage.getItem('dfl_chain')||'null'); }catch(e){}
+  if(from!=='budget' && !(ch&&ch.source==='budget')) return;
+  if(!ch) return;
+  var fill=(ch.leftover!=null && ch.leftover>0)?ch.leftover:ch.income;
+  if(!(fill>0)) return;
+  var el=document.getElementById('family-income');
+  if(el) el.value=Math.round(fill);
+  var note=document.getElementById('mo-income-note');
+  var lang=getLang();
+  if(note) note.textContent=lang==='ar'?'وُضع متبقي شهر الأسرة هنا. مشترك للبيتين.':'What stays from the family month is here. Shared by both homes.';
+}
 function renderAfford(){
   var line=document.getElementById('affordLine');
   if(!line||!lastMortgage) return;
   var lang=getLang();
+  var h1=mortgagePack['1'], h2=mortgagePack['2'];
+  var income=parseFloat(document.getElementById('family-income').value)||0;
+  if(homeComplete(h1)&&homeComplete(h2)&&income>0){
+    var p1=Math.round((h1.monthly/income)*100);
+    var p2=Math.round((h2.monthly/income)*100);
+    line.hidden=false;
+    line.textContent=lang==='ar'
+      ?'البيت الأول يأخذ '+p1+'٪ من الشهر، الثاني '+p2+'٪. أرقام للنقاش، ليست حكم ساما.'
+      :'Home 1 takes '+p1+'% of the month, home 2 takes '+p2+'%. Talking numbers, not a SAMA ruling.';
+    return;
+  }
   if(lastMortgage.pct==null){
     line.hidden=false;
     line.textContent=lang==='ar'?'أدخلوا دخل الأسرة لرؤية القسط من شهركم.':'Add family income to see this payment as a share of your month.';
@@ -751,15 +902,34 @@ function openDecisionCard(){
   document.getElementById('decShare').textContent=lastMortgage.pct==null
     ?(lang==='ar'?'لم يُدخل الدخل':'Income not entered')
     :(lang==='ar'?lastMortgage.pct+'٪ من الشهر':lastMortgage.pct+'% of the month');
+  var other=otherHome();
+  var wrap=document.getElementById('decTwoWrap');
+  if(wrap){
+    wrap.hidden=!homeComplete(other);
+    if(homeComplete(other)){
+      var income=parseFloat(document.getElementById('family-income').value)||0;
+      var op=income>0?Math.round((other.monthly/income)*100):null;
+      document.getElementById('decTwo').textContent=op!=null
+        ?(lang==='ar'?op+'٪ · '+Math.round(other.monthly).toLocaleString('ar-SA')+' ريال':op+'% · SAR '+Math.round(other.monthly).toLocaleString())
+        :(lang==='ar'?Math.round(other.monthly).toLocaleString('ar-SA')+' ريال':'SAR '+Math.round(other.monthly).toLocaleString());
+    }
+  }
   document.getElementById('decisionOverlay').classList.add('is-open');
 }
 function closeDecisionCard(){ document.getElementById('decisionOverlay').classList.remove('is-open'); }
 function decisionText(){
   var lang=getLang();
   var m=Math.round(lastMortgage.monthly).toLocaleString(lang==='ar'?'ar-SA':'en');
+  var other=otherHome();
+  var extra='';
+  if(homeComplete(other)){
+    extra=lang==='ar'
+      ?'\nالبيت الآخر ≈ '+Math.round(other.monthly).toLocaleString('ar-SA')+' ريال'
+      :'\nThe other home ≈ SAR '+Math.round(other.monthly).toLocaleString();
+  }
   return lang==='ar'
-    ?'هل نقدر على البيت؟\nالقسط ≈ '+m+' ريال شهرياً\n'+(lastMortgage.pct!=null?'من الشهر: '+lastMortgage.pct+'٪\n':'')+'تقدير من دوت فور لايف، ليس عرض بنك.\ndotforlife.com/tools/mortgage-calculator'
-    :'Can we afford this home?\nAbout SAR '+m+' / month\n'+(lastMortgage.pct!=null?'Share of month: '+lastMortgage.pct+'%\n':'')+'An estimate from Dot4Life, not a bank offer.\ndotforlife.com/tools/mortgage-calculator';
+    ?'هل نقدر على البيت؟\nالقسط ≈ '+m+' ريال شهرياً\n'+(lastMortgage.pct!=null?'من الشهر: '+lastMortgage.pct+'٪\n':'')+extra+'\nتقدير من دوت فور لايف، ليس عرض بنك.\ndotforlife.com/tools/mortgage-calculator'
+    :'Can we afford this home?\nAbout SAR '+m+' / month\n'+(lastMortgage.pct!=null?'Share of month: '+lastMortgage.pct+'%\n':'')+extra+'\nAn estimate from Dot4Life, not a bank offer.\ndotforlife.com/tools/mortgage-calculator';
 }
 function drawDecisionCard(){
   var c=document.createElement('canvas'); var w=1080,h=1350; c.width=w; c.height=h;
@@ -772,6 +942,13 @@ function drawDecisionCard(){
   x.fillText('SAR '+Math.round(lastMortgage.monthly).toLocaleString(),80,320);
   x.fillStyle='#9aa0ab'; x.font='700 28px sans-serif'; x.fillText(getLang()==='ar'?'سعر البيت':'Home price',80,430);
   x.fillStyle='#fff'; x.font='700 40px sans-serif'; x.fillText('SAR '+Math.round(lastMortgage.price).toLocaleString(),80,490);
+  var other=otherHome();
+  if(homeComplete(other)){
+    x.fillStyle='#9aa0ab'; x.font='700 28px sans-serif';
+    x.fillText(getLang()==='ar'?'البيت الآخر':'The other home',80,600);
+    x.fillStyle='#fff'; x.font='700 40px sans-serif';
+    x.fillText('SAR '+Math.round(other.monthly).toLocaleString(),80,660);
+  }
   x.fillStyle='#6abfb8'; x.font='600 26px sans-serif';
   x.fillText('dotforlife.com/tools/mortgage-calculator',80,h-70);
   return c;
@@ -799,20 +976,29 @@ function shareDecision(){
 function clearMortgage(){
   localStorage.removeItem('dfl_mortgage');
   lastMortgage=null;
+  mortgagePack={active:'1','1':null,'2':null};
   var line=document.getElementById('affordLine'); if(line) line.hidden=true;
+  var two=document.getElementById('mo-two'); if(two) two.hidden=true;
+  syncHomePills();
   var t=document.getElementById('mo-toast');
   if(t){ t.textContent=getLang()==='ar'?'مُسح المحفوظ':'Saved numbers cleared'; t.classList.add('show'); setTimeout(function(){t.classList.remove('show');},2200); }
 }
 document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeDecisionCard(); });
 document.addEventListener('DOMContentLoaded',function(){
   ['property-price','down-pct','loan-amount','interest-rate','loan-term','redf-amount','redf-term'].forEach(function(id){var el=document.getElementById(id);if(el)el.addEventListener('input',function(){if(typeof syncDownPayment==='function'&&(id==='property-price'||id==='down-pct'))syncDownPayment();});});
-  try{ lastMortgage=JSON.parse(localStorage.getItem('dfl_mortgage')||'null'); }catch(e){ lastMortgage=null; }
+  loadMortgagePack();
+  applyBudgetChain();
+  lastMortgage=mortgagePack[mortgagePack.active]||null;
   if(lastMortgage && lastMortgage.fields){
-    M_FIELDS.forEach(function(id){ var el=document.getElementById(id); if(el && lastMortgage.fields[id]!=null) el.value=lastMortgage.fields[id]; });
-    var tog=document.getElementById('redf-toggle');
-    if(tog && lastMortgage.fields.redf){ tog.checked=true; if(typeof toggleREDF==='function') toggleREDF(); }
+    applyHomeFields(lastMortgage.fields);
+    var fromQ='';
+    try{ fromQ=new URLSearchParams(location.search).get('from')||''; }catch(e){}
+    var inc=document.getElementById('family-income');
+    if(inc && fromQ!=='budget' && lastMortgage.fields['family-income']!=null) inc.value=lastMortgage.fields['family-income'];
     calculateMortgage({restore:true});
   }
+  syncHomePills();
+  renderHomeCompare();
 });
 document.addEventListener('dfl:langchange',function(){
   if(typeof calcROI==='function'&&document.getElementById('resultsWrap')&&document.getElementById('resultsWrap').classList.contains('show'))calcROI();

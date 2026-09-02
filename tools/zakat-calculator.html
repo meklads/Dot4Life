@@ -108,6 +108,11 @@ window.dflTrack=function(event,params){
           "@type": "Question",
           "name": "Are my numbers saved?",
           "acceptedAnswer": { "@type": "Answer", "text": "Yes, only on this device. The last calculation stays in your browser so you can return next year. Nothing is sent to our servers. You can clear it anytime." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can this phone remind us?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes, if you allow notifications. If you decline, the date stays on the page only. Not a fatwa and not an athan." }
         }
       ]
     }
@@ -577,6 +582,7 @@ window.dflTrack=function(event,params){
     <p class="zc-saved-line" id="savedBannerText" hidden></p>
     <div class="zc-saved-acts">
       <button type="button" class="zc-saved-btn" id="btn-year-card" hidden onclick="openYearCard()"><span class="ar">بطاقة السنة</span><span class="en">Year card</span></button>
+      <button type="button" class="zc-saved-btn" id="btn-remind" hidden onclick="requestZakatRemind()"><span class="ar">ذكّرونا على هذا الهاتف</span><span class="en">Remind us on this phone</span></button>
       <button type="button" class="zc-saved-btn" id="btn-install" hidden onclick="installApp()"><span class="ar">ثبّتوا عدة الأسرة</span><span class="en">Install Family Kit</span></button>
       <button type="button" class="zc-saved-btn zc-saved-btn--ghost" id="btn-clear-saved" hidden onclick="clearSaved()"><span class="ar">مسح</span><span class="en">Clear</span></button>
     </div>
@@ -676,6 +682,10 @@ window.dflTrack=function(event,params){
     <div class="t-faq-item" onclick="toggleFaq(this)">
       <div class="t-faq-q" onclick="toggleFaq(this)"><span class="ar">هل تُحفظ أرقامي؟</span><span class="en">Are my numbers saved?</span><span class="t-faq-arrow">▼</span></div>
       <div class="t-faq-a"><div><span class="ar">نعم، على هذا الجهاز فقط. آخر حساب يبقى في متصفحك لتعود إليه السنة القادمة. لا يُرسل شيء إلى خوادمنا. يمكنك مسحه في أي وقت.</span><span class="en">Yes, only on this device. The last calculation stays in your browser so you can return next year. Nothing is sent to our servers. You can clear it anytime.</span></div></div>
+    </div>
+    <div class="t-faq-item" onclick="toggleFaq(this)">
+      <div class="t-faq-q" onclick="toggleFaq(this)"><span class="ar">هل يذكّرنا هذا الهاتف؟</span><span class="en">Can this phone remind us?</span><span class="t-faq-arrow">▼</span></div>
+      <div class="t-faq-a"><div><span class="ar">نعم، إن سمحتم للتنبيهات. إن رفضتم، يبقى التاريخ في الصفحة فقط. ليست فتوى ولا أذان.</span><span class="en">Yes, if you allow notifications. If you decline, the date stays on the page only. Not a fatwa and not an athan.</span></div></div>
     </div>
   </div>
   </div>
@@ -948,17 +958,56 @@ function renderSavedBanner(){
   var text=document.getElementById('savedBannerText');
   var yearBtn=document.getElementById('btn-year-card');
   var clearBtn=document.getElementById('btn-clear-saved');
+  var remindBtn=document.getElementById('btn-remind');
   var has=lastSave && lastSave.zakatDue!=null;
   if(yearBtn) yearBtn.hidden=!has;
   if(clearBtn) clearBtn.hidden=!has;
+  var canAsk=has && typeof Notification!=='undefined' && Notification.permission==='default';
+  if(remindBtn) remindBtn.hidden=!canAsk;
   if(!text) return;
   if(!has){ text.hidden=true; return; }
   var lang=getLang();
   var amt=Number(lastSave.zakatDue).toLocaleString(lang==='ar'?'ar-SA':'en',{maximumFractionDigits:2});
+  var due=lastSave.nextDue && lastSave.nextDue<=Date.now();
   text.hidden=false;
-  text.textContent=lang==='ar'
-    ?'آخر حساب: '+fmtDate(lastSave.savedAt)+' · '+amt+' ريال · التذكير: '+fmtDate(lastSave.nextDue)
-    :'Last saved: '+fmtDate(lastSave.savedAt)+' · SAR '+amt+' · Next: '+fmtDate(lastSave.nextDue);
+  if(due){
+    text.textContent=lang==='ar'
+      ?'يوم الزكاة حان · '+amt+' ريال · '+fmtDate(lastSave.nextDue)
+      :'Zakat day is due · SAR '+amt+' · '+fmtDate(lastSave.nextDue);
+  }else{
+    text.textContent=lang==='ar'
+      ?'آخر حساب: '+fmtDate(lastSave.savedAt)+' · '+amt+' ريال · التذكير: '+fmtDate(lastSave.nextDue)
+      :'Last saved: '+fmtDate(lastSave.savedAt)+' · SAR '+amt+' · Next: '+fmtDate(lastSave.nextDue);
+  }
+}
+function maybeNotifyZakat(){
+  if(!lastSave || lastSave.zakatDue==null || !lastSave.nextDue) return;
+  if(typeof Notification==='undefined' || Notification.permission!=='granted') return;
+  if(lastSave.nextDue > Date.now() + 14*24*60*60*1000) return;
+  if(lastSave.notifiedFor===lastSave.nextDue) return;
+  var lang=getLang();
+  var title=lang==='ar'?'زكاة هذه السنة':'This year\'s Zakat';
+  var body=lang==='ar'?'التذكير: '+fmtDate(lastSave.nextDue):'Reminder: '+fmtDate(lastSave.nextDue);
+  try{
+    new Notification(title,{body:body,icon:'/assets/icons/family-kit-192.png',tag:'dfl-zakat-year'});
+    lastSave.notifiedFor=lastSave.nextDue;
+    localStorage.setItem('dfl_zakat', JSON.stringify(lastSave));
+  }catch(e){}
+}
+function requestZakatRemind(){
+  if(typeof Notification==='undefined'){
+    showToast(getLang()==='ar'?'هذا المتصفح لا يدعم التنبيهات. يبقى التاريخ في الصفحة.':'This browser has no notifications. The date stays on the page.');
+    return;
+  }
+  Notification.requestPermission().then(function(p){
+    if(p==='granted'){
+      showToast(getLang()==='ar'?'سنذكّركم على هذا الهاتف إن حان الموعد وأنتم تفتحون الأداة.':'We will remind you on this phone if the date is due when you open the tool.');
+      maybeNotifyZakat();
+    }else{
+      showToast(getLang()==='ar'?'يبقى التذكير في الصفحة فقط.':'The reminder stays on the page only.');
+    }
+    renderSavedBanner();
+  });
 }
 
 function calculateZakat(opts){
@@ -1154,6 +1203,8 @@ document.addEventListener('DOMContentLoaded',function(){
     if(lastSave.zakatDue!=null) calculateZakat({restore:true});
   }
   renderSavedBanner();
+  maybeNotifyZakat();
+  if(location.hash==='#year' && lastSave && lastSave.zakatDue!=null && typeof openYearCard==='function') openYearCard();
   if(!window.matchMedia('(display-mode: standalone)').matches && !window.navigator.standalone){
     if(/iphone|ipad|ipod/i.test(navigator.userAgent)){
       var ib=document.getElementById('btn-install');
