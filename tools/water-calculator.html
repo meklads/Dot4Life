@@ -22,7 +22,7 @@
 <link rel="stylesheet" href="/styles/tools-shared.css?v=20260608a">
 <link rel="stylesheet" href="/styles/tools-flagship.css?v=20260709f">
 <link rel="stylesheet" href="/styles/tools-accents.css?v=20260624a">
-<link rel="stylesheet" href="/styles/pages/tools_water-calculator.css?v=20260902a">
+<link rel="stylesheet" href="/styles/pages/tools_water-calculator.css?v=20260902b">
 <link rel="manifest" href="/tools/family-kit.webmanifest">
 <meta name="theme-color" content="#054241">
 <meta name="mobile-web-app-capable" content="yes">
@@ -63,6 +63,7 @@
         "35ml/kg baseline",
         "Gulf climate adjustment",
         "Activity add-ons",
+        "Optional house people count",
         "Glass-by-glass targets",
         "Hydration schedule"
       ]
@@ -115,6 +116,14 @@
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Thirst, dark urine, dry mouth, headache, dizziness, fatigue. Aim for pale straw-yellow urine. Dark amber means drink water immediately. عطش، بول داكن، جفاف الفم، صداع، دوخة، تعب. استهدف بولاً أصفر فاتحاً. العنبري الداكن يعني اشرب فوراً."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this for one body or the house? هل هذا لجسد واحد أم للبيت؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Enter how many people are home today. We repeat the same adult estimate for each person. A pregnancy or breastfeeding add-on is counted once. Children usually drink less. Not medical advice. اكتبوا كم نفساً في البيت اليوم. نكرر تقدير البالغ لكل شخص. إضافة الحمل أو الرضاعة تُحتسب مرة. الأطفال يشربون عادة أقل. ليست استشارة طبية."
           }
         },
         {
@@ -212,7 +221,7 @@ window.dflTrack=function(event,params){
     <div class="tool-panel wc-card">
       <div class="tool-panel-hdr">
         <h2><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg> <span class="en">Your Profile</span><span class="ar">ملفك</span></h2>
-        <p><span class="en">Adjust weight, activity, and climate, results update instantly.</span><span class="ar">عدّل الوزن والنشاط والمناخ, النتائج تتحدث فوراً.</span></p>
+        <p><span class="en">Adjust weight, climate, and how many people are home today. Results update instantly.</span><span class="ar">عدّلوا الوزن والمناخ وكم نفساً في البيت اليوم. النتائج تتحدث فوراً.</span></p>
       </div>
       <div class="tool-panel-body wc-body">
 
@@ -261,9 +270,17 @@ window.dflTrack=function(event,params){
         <div class="wc-step"><span class="en">Optional</span><span class="ar">اختياري</span></div>
         <div class="wc-g2">
           <div class="wc-fl">
-            <label class="wc-fl-l" for="water-logged"><span class="en">Consumed today</span><span class="ar">ما شربته اليوم</span></label>
+            <label class="wc-fl-l" for="house-people"><span class="en">People home today</span><span class="ar">كم نفساً في البيت اليوم</span></label>
             <div class="wc-fl-r">
-              <input type="number" id="water-logged" value="0" min="0" max="10" step="0.1">
+              <input type="number" id="house-people" value="1" min="1" max="15" step="1">
+              <span class="wc-fl-u"><span class="en">souls</span><span class="ar">أنفس</span></span>
+            </div>
+            <span class="wc-fl-hint"><span class="en">Optional. Same adult estimate, repeated for each person.</span><span class="ar">اختياري. نفس تقدير البالغ، يُكرر لكل نفس.</span></span>
+          </div>
+          <div class="wc-fl">
+            <label class="wc-fl-l" for="water-logged"><span class="en">Drunk today</span><span class="ar">ما شُرب اليوم</span></label>
+            <div class="wc-fl-r">
+              <input type="number" id="water-logged" value="0" min="0" max="80" step="0.1">
               <span class="wc-fl-u"><span class="en">L</span><span class="ar">لتر</span></span>
             </div>
           </div>
@@ -301,8 +318,9 @@ window.dflTrack=function(event,params){
         <div class="wc-hero-result">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
           <div class="wc-hero-val" id="r-liters">—</div>
-          <div class="wc-hero-unit"><span class="en">Liters per day</span><span class="ar">لتر يومياً</span></div>
+          <div class="wc-hero-unit" id="r-unit"><span class="en">Liters per day</span><span class="ar">لتر يومياً</span></div>
           <div class="wc-hero-sub"><span id="r-glasses">—</span> <span class="en">glasses (250 ml)</span><span class="ar">كوب (250 مل)</span></div>
+          <div class="wc-hero-sub" id="r-house-line" hidden></div>
         </div>
 
         <div class="tool-gauge tool-gauge--water" id="water-gauge" data-min="0" data-max="5" hidden role="meter" aria-label="Daily hydration progress">
@@ -319,6 +337,7 @@ window.dflTrack=function(event,params){
           <div class="wc-bd-row"><span><span class="en">Climate</span><span class="ar">المناخ</span></span><span id="b-climate">—</span></div>
           <div class="wc-bd-row"><span><span class="en">Exercise</span><span class="ar">التمرين</span></span><span id="b-exercise">—</span></div>
           <div class="wc-bd-row"><span><span class="en">Special</span><span class="ar">حالة خاصة</span></span><span id="b-special">—</span></div>
+          <div class="wc-bd-row" id="b-house-row" hidden><span><span class="en">House</span><span class="ar">البيت</span></span><span id="b-house">—</span></div>
         </div>
 
         <div class="wc-cups-title"><span class="en">Daily glasses</span><span class="ar">أكوابك اليومية</span></div>
@@ -354,8 +373,8 @@ window.dflTrack=function(event,params){
   <div class="tool-below">
     <div class="wc-section">
       <div class="wc-section-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> <span class="en">How this is calculated</span><span class="ar">طريقة الحساب</span></div>
-      <p class="en">Base intake: 35 ml per kg body weight (EFSA guideline). Activity adds 0–1.5 L. Climate adds 0–0.7 L for heat and humidity. Exercise adds 500 ml per 30 minutes. Pregnancy +300 ml; breastfeeding +700 ml.</p>
-      <p class="ar">الاحتياج الأساسي: 35 مل لكل كغ (EFSA). النشاط يضيف 0–1.5 لتر. المناخ يضيف 0–0.7 لتر للحرارة. التمرين يضيف 500 مل لكل 30 دقيقة. الحمل +300 مل؛ الرضاعة +700 مل.</p>
+      <p class="en">Base intake: 35 ml per kg body weight (EFSA guideline). Activity adds 0–1.5 L. Climate adds 0–0.7 L for heat and humidity. Exercise adds 500 ml per 30 minutes. Pregnancy +300 ml; breastfeeding +700 ml. If you enter how many people are home, that adult estimate is repeated for each person. The special add-on is counted once. Children usually drink less.</p>
+      <p class="ar">الاحتياج الأساسي: 35 مل لكل كغ (EFSA). النشاط يضيف 0–1.5 لتر. المناخ يضيف 0–0.7 لتر للحرارة. التمرين يضيف 500 مل لكل 30 دقيقة. الحمل +300 مل؛ الرضاعة +700 مل. إن أدخلتم عدد الأنفس في البيت، يُكرر تقدير البالغ لكل شخص. الإضافة الخاصة تُحتسب مرة. الأطفال يشربون عادة أقل.</p>
     </div>
 
     <div class="wc-faq">
@@ -372,6 +391,10 @@ window.dflTrack=function(event,params){
       <div class="wc-faq-item">
         <div class="wc-faq-q" onclick="toggleFAQ(this)"><span><span class="en">Signs of dehydration?</span><span class="ar">علامات الجفاف؟</span></span><span class="wc-faq-arrow">▼</span></div>
         <div class="wc-faq-a"><p><span class="en">Thirst, dark urine, dry mouth, headache, dizziness, fatigue. Aim for pale straw-yellow urine. Dark amber means drink water immediately.</span><span class="ar">عطش، بول داكن، جفاف الفم، صداع، دوخة، تعب. استهدف بولاً أصفر فاتحاً. العنبري الداكن يعني اشرب فوراً.</span></p></div>
+      </div>
+      <div class="wc-faq-item">
+        <div class="wc-faq-q" onclick="toggleFAQ(this)"><span><span class="en">Is this for one body or the house?</span><span class="ar">هل هذا لجسد واحد أم للبيت؟</span></span><span class="wc-faq-arrow">▼</span></div>
+        <div class="wc-faq-a"><p><span class="en">Enter how many people are home today. We repeat the same adult estimate for each person. A pregnancy or breastfeeding add-on is counted once. Children usually drink less. Not medical advice.</span><span class="ar">اكتبوا كم نفساً في البيت اليوم. نكرر تقدير البالغ لكل شخص. إضافة الحمل أو الرضاعة تُحتسب مرة. الأطفال يشربون عادة أقل. ليست استشارة طبية.</span></p></div>
       </div>
       <div class="wc-faq-item">
         <div class="wc-faq-q" onclick="toggleFAQ(this)"><span><span class="en">Are our numbers saved?</span><span class="ar">هل تُحفظ أرقامنا؟</span></span><span class="wc-faq-arrow">▼</span></div>
@@ -547,6 +570,10 @@ window.dflTrack=function(event,params){
   <p class="wc-water-kicker">DOTFORLIFE · <span class="en">Family Kit</span><span class="ar">عدة الأسرة</span></p>
   <p class="wc-water-title"><span class="en">House water</span><span class="ar">ماء البيت</span></p>
   <p class="wc-water-amount" id="watLiters">—</p>
+  <div class="wc-water-block" id="watPeopleWrap" hidden>
+    <span class="wc-water-lbl"><span class="en">People home today</span><span class="ar">أنفس البيت اليوم</span></span>
+    <span class="wc-water-val" id="watPeople"></span>
+  </div>
   <div class="wc-water-block">
     <span class="wc-water-lbl"><span class="en">Glasses today</span><span class="ar">أكواب اليوم</span></span>
     <span class="wc-water-val" id="watGlasses"></span>
@@ -621,6 +648,13 @@ function animateVal(id, target, decimals) {
   requestAnimationFrame(step);
 }
 
+function housePeople() {
+  var n = parseInt(document.getElementById('house-people').value, 10);
+  if (!n || n < 1) return 1;
+  if (n > 15) return 15;
+  return n;
+}
+
 function calculateWater(silent) {
   var weight = parseFloat(document.getElementById('weight').value) || 0;
   if (weight < 30) {
@@ -630,24 +664,53 @@ function calculateWater(silent) {
 
   var exerciseMins = parseFloat(document.getElementById('exercise-mins').value) || 0;
   var specialAddon = parseFloat(document.getElementById('special').value) || 0;
+  var people = housePeople();
 
   var base = weight * 0.035;
   var activityExtra = activityAddon;
   var climateExtra = climateAddon;
   var exerciseExtra = (exerciseMins / 30) * 0.5;
   var specialExtra = specialAddon;
-  var total = base + activityExtra + climateExtra + exerciseExtra + specialExtra;
-  var totalRound = Math.round(total * 10) / 10;
-  var glasses = Math.ceil(total / 0.25);
+  var personCore = base + activityExtra + climateExtra + exerciseExtra;
+  var personTotal = personCore + specialExtra;
+  var houseTotal = (personCore * people) + specialExtra;
+  var totalRound = Math.round(houseTotal * 10) / 10;
+  var personRound = Math.round(personTotal * 10) / 10;
+  var glasses = Math.ceil(totalRound / 0.25);
 
   animateVal('r-liters', totalRound, 1);
   animateVal('r-glasses', glasses, 0);
+
+  var unit = document.getElementById('r-unit');
+  if (unit) {
+    unit.innerHTML = people > 1
+      ? '<span class="en">Liters for the house</span><span class="ar">لتر للبيت</span>'
+      : '<span class="en">Liters per day</span><span class="ar">لتر يومياً</span>';
+  }
+  var houseLine = document.getElementById('r-house-line');
+  if (houseLine) {
+    if (people > 1) {
+      houseLine.hidden = false;
+      houseLine.textContent = getLang() === 'ar'
+        ? people + ' أنفس · ' + personRound.toFixed(1) + ' لتر للبالغ'
+        : people + ' people · ' + personRound.toFixed(1) + ' L per adult';
+    } else {
+      houseLine.hidden = true;
+      houseLine.textContent = '';
+    }
+  }
 
   document.getElementById('b-base').textContent = base.toFixed(1) + ' L';
   document.getElementById('b-activity').textContent = '+' + activityExtra.toFixed(1) + ' L';
   document.getElementById('b-climate').textContent = '+' + climateExtra.toFixed(1) + ' L';
   document.getElementById('b-exercise').textContent = '+' + exerciseExtra.toFixed(1) + ' L';
   document.getElementById('b-special').textContent = '+' + specialExtra.toFixed(1) + ' L';
+  var houseRow = document.getElementById('b-house-row');
+  if (houseRow) {
+    houseRow.hidden = people <= 1;
+    var houseCell = document.getElementById('b-house');
+    if (houseCell) houseCell.textContent = totalRound.toFixed(1) + ' L';
+  }
 
   var cupsGrid = document.getElementById('cups-grid');
   cupsGrid.innerHTML = '';
@@ -696,7 +759,9 @@ function calculateWater(silent) {
     logged: document.getElementById('water-logged').value,
     exercise: document.getElementById('exercise-mins').value,
     special: document.getElementById('special').value,
+    people: people,
     liters: totalRound,
+    personLiters: personRound,
     glasses: glasses
   };
   try { localStorage.setItem('dfl_water', JSON.stringify(lastWater)); } catch (e) {}
@@ -732,6 +797,7 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('exercise-mins').addEventListener('input', function() { calculateWater(true); });
   document.getElementById('special').addEventListener('change', function() { calculateWater(true); });
   document.getElementById('water-logged').addEventListener('input', function() { calculateWater(true); });
+  document.getElementById('house-people').addEventListener('input', function() { calculateWater(true); });
   try { lastWater = JSON.parse(localStorage.getItem('dfl_water') || 'null'); } catch (e) { lastWater = null; }
   if (lastWater) applyWaterFields(lastWater);
   calculateWater(true);
@@ -766,13 +832,23 @@ function applyWaterFields(d) {
   if (ex && d.exercise != null) ex.value = d.exercise;
   var sp = document.getElementById('special');
   if (sp && d.special != null) sp.value = d.special;
+  var pe = document.getElementById('house-people');
+  if (pe && d.people != null) pe.value = d.people;
 }
 function openWaterCard() {
   if (!lastWater) { calculateWater(); if (!lastWater) return; }
   var lang = getLang();
+  var people = lastWater.people || 1;
   document.getElementById('watLiters').textContent = lang === 'ar'
     ? lastWater.liters + ' لتر / يوم'
     : lastWater.liters + ' L / day';
+  var wrap = document.getElementById('watPeopleWrap');
+  if (wrap) {
+    wrap.hidden = people <= 1;
+    document.getElementById('watPeople').textContent = lang === 'ar'
+      ? people + ' أنفس'
+      : people + ' people';
+  }
   document.getElementById('watGlasses').textContent = lang === 'ar'
     ? lastWater.glasses + ' كوب (250 مل)'
     : lastWater.glasses + ' glasses (250 ml)';
@@ -781,13 +857,18 @@ function openWaterCard() {
 function closeWaterCard() { document.getElementById('waterOverlay').classList.remove('is-open'); }
 function waterText() {
   var lang = getLang();
+  var people = lastWater.people || 1;
+  var who = people > 1
+    ? (lang === 'ar' ? people + ' أنفس · ' : people + ' people · ')
+    : '';
   return lang === 'ar'
-    ? 'ماء البيت\n' + lastWater.liters + ' لتر اليوم · ' + lastWater.glasses + ' كوب\nتقدير من دوت فور لايف، ليست استشارة طبية.\ndotforlife.com/tools/water-calculator'
-    : 'House water\n' + lastWater.liters + ' L today · ' + lastWater.glasses + ' glasses\nAn estimate from Dot4Life, not medical advice.\ndotforlife.com/tools/water-calculator';
+    ? 'ماء البيت\n' + who + lastWater.liters + ' لتر اليوم · ' + lastWater.glasses + ' كوب\nتقدير من دوت فور لايف، ليست استشارة طبية.\ndotforlife.com/tools/water-calculator'
+    : 'House water\n' + who + lastWater.liters + ' L today · ' + lastWater.glasses + ' glasses\nAn estimate from Dot4Life, not medical advice.\ndotforlife.com/tools/water-calculator';
 }
 function drawWaterCard() {
   var c = document.createElement('canvas'); var w = 1080, h = 1350; c.width = w; c.height = h;
   var x = c.getContext('2d');
+  var people = lastWater.people || 1;
   x.fillStyle = '#054241'; x.fillRect(0, 0, w, h);
   x.fillStyle = '#6abfb8'; x.font = '800 28px sans-serif'; x.fillText('DOTFORLIFE', 80, 90);
   x.fillStyle = '#fff'; x.font = '800 40px sans-serif';
@@ -795,9 +876,17 @@ function drawWaterCard() {
   x.fillStyle = '#ffd54f'; x.font = '900 64px sans-serif';
   x.fillText(lastWater.liters + ' L', 80, 320);
   x.fillStyle = '#9aa0ab'; x.font = '700 28px sans-serif';
-  x.fillText(getLang() === 'ar' ? 'أكواب اليوم' : 'Glasses today', 80, 430);
+  var y = 400;
+  if (people > 1) {
+    x.fillText(getLang() === 'ar' ? 'أنفس البيت اليوم' : 'People home today', 80, y);
+    x.fillStyle = '#fff'; x.font = '700 40px sans-serif';
+    x.fillText(String(people), 80, y + 60);
+    y += 140;
+    x.fillStyle = '#9aa0ab'; x.font = '700 28px sans-serif';
+  }
+  x.fillText(getLang() === 'ar' ? 'أكواب اليوم' : 'Glasses today', 80, y);
   x.fillStyle = '#fff'; x.font = '700 40px sans-serif';
-  x.fillText(String(lastWater.glasses), 80, 490);
+  x.fillText(String(lastWater.glasses), 80, y + 60);
   x.fillStyle = '#6abfb8'; x.font = '600 26px sans-serif';
   x.fillText('dotforlife.com/tools/water-calculator', 80, h - 70);
   return c;
