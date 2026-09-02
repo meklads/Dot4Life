@@ -323,13 +323,45 @@ body[data-tool="monthly-budget"] .kit-shot--a img { object-position: 22% 55%; }
 body[data-tool="monthly-budget"] .kit-shot--b img { object-position: 60% 40%; }
 body[data-tool="water-calculator"] .kit-shot--a img { object-position: 50% 60%; }
 body[data-tool="water-calculator"] .kit-shot--b img { object-position: 80% 55%; }
-body[data-tool="inheritance-calculator"] .kit-shot--a img {
-  object-fit: contain;
-  object-position: center;
-  padding: 14%;
-  background: #EEF0FF;
+body[data-tool="inheritance-calculator"] .kit-studio {
+  align-items: stretch;
+  grid-template-columns: minmax(168px, .95fr) minmax(0, 2.05fr);
 }
-body[data-tool="inheritance-calculator"] .kit-shot--b img { object-position: 82% 50%; }
+body[data-tool="inheritance-calculator"] .kit-gallery {
+  grid-template-rows: 1.45fr 1fr;
+  min-height: min(760px, calc(100vh - var(--tool-nav-h, 120px) - 32px));
+}
+body[data-tool="inheritance-calculator"] .kit-shot--a,
+body[data-tool="inheritance-calculator"] .kit-shot--b {
+  height: auto;
+}
+body[data-tool="inheritance-calculator"] .kit-shot--a img {
+  object-fit: cover;
+  object-position: center top;
+  padding: 0;
+  background: #E8EAF8;
+}
+body[data-tool="inheritance-calculator"] .kit-shot--b img { object-position: 22% 55%; }
+
+@media (max-width: 860px) {
+  body[data-tool="inheritance-calculator"] .kit-gallery {
+    min-height: 0;
+    grid-template-rows: none;
+  }
+  body[data-tool="inheritance-calculator"] .kit-shot--a,
+  body[data-tool="inheritance-calculator"] .kit-shot--b {
+    height: 168px;
+  }
+}
+
+@media (max-width: 1200px) {
+  body.tool-flagship-page[data-tool] .tool-calc-layout:has(.kit-studio) {
+    grid-template-columns: 1fr !important;
+  }
+  body.tool-flagship-page[data-tool] .tool-calc-layout:has(.kit-studio) .tool-related-aside {
+    position: static;
+  }
+}
 
 @media print {
   .kit-gallery { display: none !important; }
