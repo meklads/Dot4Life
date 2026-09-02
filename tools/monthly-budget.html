@@ -23,7 +23,7 @@
 <link rel="stylesheet" href="/styles/tools-shared.css?v=20260608a">
 <link rel="stylesheet" href="/styles/tools-flagship.css?v=20260709f">
 <link rel="stylesheet" href="/styles/tools-accents.css?v=20260625a">
-<link rel="stylesheet" href="/styles/pages/tools_monthly-budget.css?v=20260625a">
+<link rel="stylesheet" href="/styles/pages/tools_monthly-budget.css?v=20260902a">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://dotforlife.com/tools/monthly-budget.html">
 <meta property="og:title" content="Monthly Budget Planner | Dot4Life">
@@ -99,6 +99,14 @@
             "@type": "Answer",
             "text": "Your monthly net income — what actually lands in your account after all deductions — alongside category totals. صافي دخلك الشهري الفعلي الذي يصل حسابك بعد كل الخصومات، مع إجماليات كل فئة."
           }
+        },
+        {
+          "@type": "Question",
+          "name": "Are our numbers saved?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, only on this device. You can share a family month card or clear it anytime. This is not financial advice."
+          }
         }
       ]
     }
@@ -145,11 +153,11 @@ window.dflTrack=function(event,params){gtag('event',event,Object.assign({page_pa
     </nav>
     <p class="tool-eyebrow">
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-      <span class="en">Finance Tool · Planning</span><span class="ar">أداة مالية · التخطيط</span>
+      <span class="en">Family Kit · The family month</span><span class="ar">عدة الأسرة · شهر الأسرة</span>
     </p>
-    <h1 id="tool-title"><span class="en">Monthly Budget Planner</span><span class="ar">مخطط الميزانية الشهرية</span></h1>
-    <p class="tool-hero-desc"><span class="en">Enter income and expenses by category. Instant surplus or deficit with 50/30/20 or halal finance guidance.</span><span class="ar">أدخل الدخل والنفقات حسب الفئة. فائض أو عجز فوري مع إرشادات 50/30/20 أو التمويل الحلال.</span></p>
-    <ul class="tool-trust"><li><span class="en">9 categories</span><span class="ar">9 فئات</span></li><li><span class="en">Halal mode</span><span class="ar">وضع حلال</span></li><li><span class="en">Free &amp; private</span><span class="ar">مجاني وخاص</span></li></ul>
+    <h1 id="tool-title"><span class="en">Family month</span><span class="ar">شهر الأسرة</span></h1>
+    <p class="tool-hero-desc"><span class="en">Put this month on the table: income, what leaves, what stays. Saved on this device, shareable with the family.</span><span class="ar">ضعوا هذا الشهر على الطاولة: الدخل، ما يخرج، ما يبقى. يُحفظ على الجهاز ويُشارك مع الأسرة.</span></p>
+    <ul class="tool-trust"><li><span class="en">Saved on your device</span><span class="ar">يُحفظ على جهازكم</span></li><li><span class="en">Share with family</span><span class="ar">مشاركة مع الأسرة</span></li><li><span class="en">Not financial advice</span><span class="ar">ليست استشارة مالية</span></li></ul>
   </div>
 </div>
 <div class="tool-tabs-wrap" role="navigation" aria-label="Finance tools">
@@ -211,8 +219,8 @@ window.dflTrack=function(event,params){gtag('event',event,Object.assign({page_pa
           </div>
 
           <button class="calc-btn" onclick="calculate()">
-            <span class="en">Calculate My Budget</span>
-            <span class="ar">احسب ميزانيتي</span>
+            <span class="en">See this month</span>
+            <span class="ar">كيف شهرنا؟</span>
           </button>
         </div>
 
@@ -292,6 +300,10 @@ window.dflTrack=function(event,params){gtag('event',event,Object.assign({page_pa
             <div class="status-amount" id="statusAmount"></div>
             <div class="status-desc" id="statusDesc"></div>
           </div>
+          <div class="mb-habit">
+            <button type="button" class="mb-habit-btn" onclick="openMonthCard()"><span class="en">Family month card</span><span class="ar">بطاقة شهر الأسرة</span></button>
+            <button type="button" class="mb-habit-btn mb-habit-btn--ghost" onclick="clearBudget()"><span class="en">Clear saved</span><span class="ar">مسح المحفوظ</span></button>
+          </div>
 
           <!-- Totals -->
           <div class="totals-row">
@@ -349,7 +361,7 @@ window.dflTrack=function(event,params){gtag('event',event,Object.assign({page_pa
       <a href="/tools/roi-calculator.html" class="tool-related-link"><span class="en">ROI Calculator</span><span class="ar">حاسبة العائد على الاستثمار</span></a>
       <a href="/tools/rental-yield-calculator.html" class="tool-related-link"><span class="en">Rental Yield Calculator</span><span class="ar">حاسبة العائد الإيجاري</span></a>
       </nav>
-      <a href="/library.html#cat-finance" class="tool-related-all"><span class="en">All tools →</span><span class="ar">← كل الأدوات</span></a>
+      <a href="/library.html#family-kit" class="tool-related-all"><span class="en">The Family Kit →</span><span class="ar">← عدة الأسرة</span></a>
     </div>
   </aside>
 </div>
@@ -378,6 +390,10 @@ window.dflTrack=function(event,params){gtag('event',event,Object.assign({page_pa
 <div class="t-faq-item">
 <div class="t-faq-q" onclick="toggleFAQ(this)"><span><span class="en">What does the budget planner show?</span><span class="ar">ماذا يعرض مخطط الميزانية؟</span></span><span class="t-faq-arrow">▼</span></div>
 <div class="t-faq-a"><p><span class="en">Your monthly net income — what actually lands in your account after all deductions — alongside category totals.</span><span class="ar">صافي دخلك الشهري الفعلي الذي يصل حسابك بعد كل الخصومات، مع إجماليات كل فئة.</span></p></div>
+</div>
+<div class="t-faq-item">
+<div class="t-faq-q" onclick="toggleFAQ(this)"><span><span class="en">Are our numbers saved?</span><span class="ar">هل تُحفظ أرقامنا؟</span></span><span class="t-faq-arrow">▼</span></div>
+<div class="t-faq-a"><p><span class="en">Yes, only on this device. You can share a family month card or clear it anytime. This is not financial advice.</span><span class="ar">نعم، على هذا الجهاز فقط. يمكنكم مشاركة بطاقة شهر الأسرة أو مسحها في أي وقت. هذه ليست استشارة مالية.</span></p></div>
 </div>
 </div>
 <script>
@@ -494,6 +510,26 @@ function toggleFAQ(el){var a=el.nextElementSibling,o=el.classList.contains("open
 </div>
 
 
+<div class="mb-month" id="monthOverlay">
+  <p class="mb-month-kicker">DOTFORLIFE · <span class="en">Family Kit</span><span class="ar">عدة الأسرة</span></p>
+  <p class="mb-month-title"><span class="en">Family month</span><span class="ar">شهر الأسرة</span></p>
+  <p class="mb-month-amount" id="monthDiff">—</p>
+  <div class="mb-month-block">
+    <span class="mb-month-lbl"><span class="en">Income</span><span class="ar">الدخل</span></span>
+    <span class="mb-month-val" id="monthIncome"></span>
+  </div>
+  <div class="mb-month-block">
+    <span class="mb-month-lbl"><span class="en">Leaves the house</span><span class="ar">ما يخرج</span></span>
+    <span class="mb-month-val" id="monthExp"></span>
+  </div>
+  <p class="mb-month-note"><span class="en">Saved on this device. Not financial advice.</span><span class="ar">محفوظ على هذا الجهاز. ليست استشارة مالية.</span></p>
+  <div class="mb-month-acts">
+    <button type="button" class="mb-dec-btn mb-dec-btn--save" onclick="saveMonthImage()"><span class="en">Save image</span><span class="ar">حفظ صورة</span></button>
+    <button type="button" class="mb-dec-btn mb-dec-btn--wa" onclick="shareMonth()"><span class="en">WhatsApp</span><span class="ar">واتساب</span></button>
+    <button type="button" class="mb-dec-btn mb-dec-btn--close" onclick="closeMonthCard()"><span class="en">Close</span><span class="ar">إغلاق</span></button>
+  </div>
+</div>
+<div class="mb-toast" id="mb-toast" role="status"></div>
 <script src="/scripts/global.js?v=20260619e" defer></script>
 <script src="/scripts/tool-gauge.js?v=20260709e"></script>
 <script>
@@ -693,6 +729,8 @@ function calculate() {
   document.getElementById('resultEmpty').style.display = 'none';
   document.getElementById('resultFilled').style.display = 'block';
   applyLangVisibility();
+  lastBudget = Object.assign(collectBudgetFields(), { incomeN: income, totalExp: totalExp, diff: diff });
+  try { localStorage.setItem('dfl_budget', JSON.stringify(lastBudget)); } catch (e) {}
 }
 
 /* ─── LANGUAGE ─────────────────────────────────────────────────── */
@@ -707,15 +745,120 @@ function toggleFAQ(el){
   document.querySelectorAll('.t-faq-q').forEach(function(q){q.classList.remove('open');q.nextElementSibling.classList.remove('active');});
   if(!isOpen){el.classList.add('open');answer.classList.add('active');}
 }
-document.addEventListener('DOMContentLoaded',function(){buildCatList();});
+let lastBudget = null;
+function getLang(){ return document.documentElement.getAttribute('data-lang') || 'en'; }
+function collectBudgetFields(){
+  var cats = {};
+  CATS.forEach(function(c){ var el = document.getElementById('cat-'+c.id); cats[c.id] = el ? el.value : ''; });
+  return {
+    income: document.getElementById('incomeInput').value,
+    cats: cats,
+    currency: currCode,
+    sym: currSym,
+    halal: document.getElementById('halalToggle').checked
+  };
+}
+function applyBudgetFields(d){
+  if(!d) return;
+  currCode = d.currency || 'SAR';
+  currSym = d.sym || '﷼';
+  ['SAR','USD','AED','KWD'].forEach(function(c){
+    var b = document.getElementById('btn-'+c);
+    if(b) b.classList.toggle('active', c === currCode);
+  });
+  var incSym = document.getElementById('incomeSym');
+  if(incSym) incSym.textContent = currSym;
+  CATS.forEach(function(c){ var s = document.getElementById('sym-'+c.id); if(s) s.textContent = currSym; });
+  var inc = document.getElementById('incomeInput');
+  if(inc && d.income != null) inc.value = d.income;
+  CATS.forEach(function(c){
+    var el = document.getElementById('cat-'+c.id);
+    if(el && d.cats && d.cats[c.id] != null) el.value = d.cats[c.id];
+  });
+  var tog = document.getElementById('halalToggle');
+  if(tog){
+    tog.checked = !!d.halal;
+    halalMode = tog.checked;
+    var tip = document.getElementById('halalTip');
+    if(tip) tip.style.display = halalMode ? 'block' : 'none';
+  }
+}
+function openMonthCard(){
+  if(!lastBudget){ calculate(); if(!lastBudget) return; }
+  var lang = getLang();
+  var d = lastBudget.diff || 0;
+  document.getElementById('monthDiff').textContent = d > 0
+    ? (lang==='ar' ? 'فائض '+fmtFull(d) : 'Surplus '+fmtFull(d))
+    : (d < 0 ? (lang==='ar' ? 'عجز '+fmtFull(d) : 'Deficit '+fmtFull(d)) : (lang==='ar' ? 'متوازن' : 'Balanced'));
+  document.getElementById('monthIncome').textContent = fmtFull(lastBudget.incomeN || 0);
+  document.getElementById('monthExp').textContent = fmtFull(lastBudget.totalExp || 0);
+  document.getElementById('monthOverlay').classList.add('is-open');
+}
+function closeMonthCard(){ document.getElementById('monthOverlay').classList.remove('is-open'); }
+function monthText(){
+  var lang = getLang();
+  var d = lastBudget.diff || 0;
+  var line = d > 0 ? (lang==='ar'?'فائض ':'Surplus ') : (d < 0 ? (lang==='ar'?'عجز ':'Deficit ') : '');
+  return lang==='ar'
+    ? 'شهر الأسرة\nالدخل: '+fmtFull(lastBudget.incomeN||0)+'\nما يخرج: '+fmtFull(lastBudget.totalExp||0)+'\n'+line+fmtFull(d)+'\nتقدير من دوت فور لايف، ليست استشارة مالية.\ndotforlife.com/tools/monthly-budget'
+    : 'Family month\nIncome: '+fmtFull(lastBudget.incomeN||0)+'\nLeaves: '+fmtFull(lastBudget.totalExp||0)+'\n'+line+fmtFull(d)+'\nAn estimate from Dot4Life, not financial advice.\ndotforlife.com/tools/monthly-budget';
+}
+function drawMonthCard(){
+  var c = document.createElement('canvas'); var w=1080,h=1350; c.width=w; c.height=h;
+  var x = c.getContext('2d');
+  x.fillStyle='#054241'; x.fillRect(0,0,w,h);
+  x.fillStyle='#6abfb8'; x.font='800 28px sans-serif'; x.fillText('DOTFORLIFE',80,90);
+  x.fillStyle='#fff'; x.font='800 40px sans-serif';
+  x.fillText(getLang()==='ar'?'شهر الأسرة':'Family month',80,180);
+  x.fillStyle='#ffd54f'; x.font='900 56px sans-serif';
+  x.fillText(fmtFull(lastBudget.diff||0),80,320);
+  x.fillStyle='#9aa0ab'; x.font='700 28px sans-serif'; x.fillText(getLang()==='ar'?'الدخل':'Income',80,430);
+  x.fillStyle='#fff'; x.font='700 40px sans-serif'; x.fillText(fmtFull(lastBudget.incomeN||0),80,490);
+  x.fillStyle='#6abfb8'; x.font='600 26px sans-serif';
+  x.fillText('dotforlife.com/tools/monthly-budget',80,h-70);
+  return c;
+}
+function saveMonthImage(){
+  if(!lastBudget) return;
+  var a=document.createElement('a');
+  a.download='family-month.png';
+  a.href=drawMonthCard().toDataURL('image/png');
+  a.click();
+}
+function shareMonth(){
+  if(!lastBudget) return;
+  var text=monthText();
+  drawMonthCard().toBlob(function(blob){
+    if(!blob){ window.open('https://wa.me/?text='+encodeURIComponent(text),'_blank'); return; }
+    var file=new File([blob],'family-month.png',{type:'image/png'});
+    if(navigator.share && navigator.canShare && navigator.canShare({files:[file]})){
+      navigator.share({title:getLang()==='ar'?'شهر الأسرة':'Family month',text:text,files:[file]}).catch(function(){
+        window.open('https://wa.me/?text='+encodeURIComponent(text),'_blank');
+      });
+    } else window.open('https://wa.me/?text='+encodeURIComponent(text),'_blank');
+  },'image/png');
+}
+function clearBudget(){
+  localStorage.removeItem('dfl_budget');
+  lastBudget=null;
+  var t=document.getElementById('mb-toast');
+  if(t){ t.textContent=getLang()==='ar'?'مُسح المحفوظ':'Saved numbers cleared'; t.classList.add('show'); setTimeout(function(){t.classList.remove('show');},2200); }
+}
+document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeMonthCard(); });
+document.addEventListener('DOMContentLoaded',function(){
+  buildCatList();
+  try { lastBudget = JSON.parse(localStorage.getItem('dfl_budget')||'null'); } catch(e){ lastBudget=null; }
+  if(lastBudget && lastBudget.cats){
+    applyBudgetFields(lastBudget);
+    calculate();
+  }
+});
 document.addEventListener('dfl:langchange',function(){
-  if(typeof calcROI==='function'&&document.getElementById('resultsWrap')&&document.getElementById('resultsWrap').classList.contains('show'))calcROI();
-  if(typeof calculateYield==='function'&&document.getElementById('results-section')&&document.getElementById('results-section').classList.contains('active'))calculateYield();
-  if(typeof calculateMortgage==='function'&&document.getElementById('results-section')&&document.getElementById('results-section').classList.contains('active')){if(typeof renderAmortTable==='function'&&typeof fullAmortData!=='undefined'&&fullAmortData&&fullAmortData.length)renderAmortTable(typeof showingAll!=='undefined'&&showingAll);}
-  if(typeof calculate==='function'&&document.getElementById('result-card'))calculate(true);
-  if(typeof calculate==='function'&&document.getElementById('results-body')&&document.getElementById('results-body').querySelector('.heir-result'))calculate();
-  if(typeof autoCalculate==='function'&&document.getElementById('resultFilled')&&document.getElementById('resultFilled').style.display!=='none')calculate();
-  if(typeof buildCatList==='function')buildCatList();
+  var saved = (typeof collectBudgetFields==='function') ? collectBudgetFields() : null;
+  if(typeof buildCatList==='function') buildCatList();
+  if(saved) applyBudgetFields(saved);
+  if(typeof calculate==='function'&&document.getElementById('resultFilled')&&document.getElementById('resultFilled').style.display!=='none') calculate();
+  if(document.getElementById('monthOverlay')&&document.getElementById('monthOverlay').classList.contains('is-open')&&typeof openMonthCard==='function') openMonthCard();
 });
 </script>
 </body></html>
