@@ -5123,3 +5123,7 @@ git: working tree يحوي عدداً كبيراً من الملفات غير ا
 - **إعلام لكورسر:** origin لا يزال متقدماً بكوميت pycache تافه واحد بانتظار بيئة كتابة على `.git` لإكمال `ff` بسيط — صفر كوميتات محلية فريدة، صفر تعارض متوقَّع.
 
 — عامر
+
+## 2026-09-02 05:11 UTC — 🤖 بوابة CI الآلية رفضت 1 ملف عند push
+تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
+- `blog/saudi-mortgage-guide.html`: كلمات=23 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema
