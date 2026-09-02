@@ -163,15 +163,7 @@ body.tool-flagship-page[data-tool] .t-btn,
 body.tool-flagship-page[data-tool] .tool-btn,
 body.tool-flagship-page[data-tool] .zc-btn,
 body.tool-flagship-page[data-tool] .wc-btn,
-body.tool-flagship-page[data-tool] .calc-btn {
-  padding: 12px 18px;
-  font-size: .9rem;
-  font-weight: 700;
-  border-radius: 12px;
-  max-width: 100%;
-  margin-top: 14px;
-  letter-spacing: 0;
-}
+body.tool-flagship-page[data-tool] .calc-btn,
 body.tool-flagship-page[data-tool="return-to-hotel"] .btn-save {
   width: auto;
   display: inline-flex;
@@ -260,4 +252,86 @@ body.tool-flagship-page[data-tool="return-to-hotel"] .hotel-card-main {
   object-position: center;
   padding: 0;
   background: #E8F4F2;
+}
+
+/* Studio: 1/3 cropped still-life, 2/3 the habit — same pattern as the hotel room */
+.kit-studio {
+  display: grid;
+  grid-template-columns: minmax(132px, 1fr) minmax(0, 2fr);
+  gap: 18px;
+  align-items: start;
+  min-width: 0;
+}
+.kit-gallery {
+  position: sticky;
+  top: calc(var(--tool-nav-h, 120px) + 12px);
+  display: grid;
+  gap: 10px;
+}
+.kit-shot {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 18px;
+  background: var(--tool-accent-light, #E8F4F2);
+  min-height: 0;
+}
+.kit-shot img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.kit-shot--a { height: 280px; }
+.kit-shot--b { height: 200px; }
+.kit-shot figcaption {
+  position: absolute;
+  inset-inline-start: 10px;
+  bottom: 10px;
+  margin: 0;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(5, 66, 65, .78);
+  color: #fff;
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .02em;
+}
+.kit-studio > .tool-workspace {
+  min-width: 0;
+  margin-bottom: 0;
+  grid-template-columns: 1fr !important;
+}
+@media (max-width: 860px) {
+  .kit-studio { grid-template-columns: 1fr; }
+  .kit-gallery {
+    position: static;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .kit-shot--a,
+  .kit-shot--b { height: 118px; }
+}
+
+body[data-tool="zakat-calculator"] .kit-shot--a img { object-position: 48% 50%; }
+body[data-tool="zakat-calculator"] .kit-shot--b img { object-position: 40% 42%; }
+body[data-tool="mortgage-calculator"] .kit-shot--a img { object-position: 16% 55%; }
+body[data-tool="mortgage-calculator"] .kit-shot--b img { object-position: 70% 45%; }
+body[data-tool="salary-calculator"] .kit-shot--a img { object-position: 28% 70%; }
+body[data-tool="salary-calculator"] .kit-shot--b img { object-position: 50% 50%; }
+body[data-tool="monthly-budget"] .kit-shot--a img { object-position: 22% 55%; }
+body[data-tool="monthly-budget"] .kit-shot--b img { object-position: 60% 40%; }
+body[data-tool="water-calculator"] .kit-shot--a img { object-position: 50% 60%; }
+body[data-tool="water-calculator"] .kit-shot--b img { object-position: 80% 55%; }
+body[data-tool="inheritance-calculator"] .kit-shot--a img {
+  object-fit: contain;
+  object-position: center;
+  padding: 14%;
+  background: #EEF0FF;
+}
+body[data-tool="inheritance-calculator"] .kit-shot--b img { object-position: 82% 50%; }
+
+@media print {
+  .kit-gallery { display: none !important; }
+  .kit-studio { display: block; }
 }
