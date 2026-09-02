@@ -1,0 +1,253 @@
+/* Family Kit visual layer — topic tints, one type scale, small hero art.
+   Does not restyle the site nav. Does not change overlay cards. */
+
+body.tool-flagship-page[data-tool],
+body.library-page {
+  --kit-house: #054241;
+  --kit-gold: #ffd54f;
+  --kit-ink: #1A1612;
+  --kit-muted: #5C6564;
+}
+
+body.tool-flagship-page[data-tool] .tool-hero h1,
+body.library-page .lib-kit-title,
+body.library-page .lib-title {
+  font-weight: 700;
+}
+[data-lang="en"] body.tool-flagship-page[data-tool] .tool-hero h1,
+[data-lang="en"] .lib-kit-title,
+[data-lang="en"] .lib-title {
+  font-family: var(--font-ui, Inter, sans-serif);
+}
+[data-lang="ar"] body.tool-flagship-page[data-tool] .tool-hero h1,
+[data-lang="ar"] body.library-page .lib-kit-title,
+[data-lang="ar"] body.library-page .lib-title {
+  font-family: var(--font-ar, Almarai, sans-serif);
+}
+
+body.tool-flagship-page[data-tool] .tool-hero-desc,
+body.tool-flagship-page[data-tool] .tool-trust li,
+body.tool-flagship-page[data-tool] .t-btn,
+body.tool-flagship-page[data-tool] .tool-btn,
+body.tool-flagship-page[data-tool] .sc-habit-btn,
+body.tool-flagship-page[data-tool] .mo-habit-btn,
+body.tool-flagship-page[data-tool] .mb-habit-btn,
+body.tool-flagship-page[data-tool] .wc-habit-btn,
+body.tool-flagship-page[data-tool] .ic-habit-btn,
+body.tool-flagship-page[data-tool] .zc-saved-btn,
+body.tool-flagship-page[data-tool] .zc-btn,
+body.tool-flagship-page[data-tool] .wc-btn,
+body.tool-flagship-page[data-tool] .calc-btn,
+body.tool-flagship-page[data-tool] .btn-save,
+body.tool-flagship-page[data-tool] .btn-sec {
+  font-family: inherit;
+}
+
+body.tool-flagship-page[data-tool] .t-hero-val,
+body.tool-flagship-page[data-tool] .mr-val,
+body.tool-flagship-page[data-tool] .zr-num {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Topic identity — same house, different room */
+body.tool-flagship-page[data-tool="return-to-hotel"] {
+  --tool-accent: #B8956A;
+  --tool-accent-dark: #8C6A3E;
+  --tool-accent-light: #F7F0E6;
+}
+body.tool-flagship-page[data-tool="return-to-hotel"] .tool-hero {
+  background: linear-gradient(180deg, #F7F0E6 0%, #fff 72%);
+}
+
+body.tool-flagship-page[data-tool="zakat-calculator"] {
+  --tool-accent: #C89B3C;
+  --tool-accent-dark: #9A7420;
+  --tool-accent-light: #FBF3DC;
+}
+body.tool-flagship-page[data-tool="zakat-calculator"] .tool-hero {
+  background: linear-gradient(180deg, #FBF3DC 0%, #fff 72%);
+}
+
+body.tool-flagship-page[data-tool="mortgage-calculator"] {
+  --tool-accent: #1B6B68;
+  --tool-accent-dark: #054241;
+  --tool-accent-light: #EAF3F1;
+}
+body.tool-flagship-page[data-tool="mortgage-calculator"] .tool-hero {
+  background: linear-gradient(180deg, #EAF3F1 0%, #fff 72%);
+}
+
+body.tool-flagship-page[data-tool="salary-calculator"] {
+  --tool-accent: #0D7377;
+  --tool-accent-dark: #064749;
+  --tool-accent-light: #E8F4F4;
+}
+body.tool-flagship-page[data-tool="salary-calculator"] .tool-hero {
+  background: linear-gradient(180deg, #E8F4F4 0%, #fff 72%);
+}
+
+body.tool-flagship-page[data-tool="monthly-budget"] {
+  --tool-accent: #2B6A6E;
+  --tool-accent-dark: #054241;
+  --tool-accent-light: #EEF4F3;
+  --accent: #2B6A6E;
+  padding-top: var(--tool-nav-h) !important;
+}
+body.tool-flagship-page[data-tool="monthly-budget"] .tool-hero {
+  background: linear-gradient(180deg, #EEF4F3 0%, #fff 72%) !important;
+  padding: var(--tool-nav-gap) 0 var(--tool-space) !important;
+  border-bottom: 1px solid var(--tool-border) !important;
+}
+
+body.tool-flagship-page[data-tool="water-calculator"] {
+  --tool-accent: #2A9B9A;
+  --tool-accent-dark: #1E7372;
+  --tool-accent-light: #E4F6F5;
+}
+body.tool-flagship-page[data-tool="water-calculator"] .tool-hero {
+  background: linear-gradient(180deg, #E4F6F5 0%, #fff 72%);
+}
+
+body.tool-flagship-page[data-tool="inheritance-calculator"] {
+  --tool-accent: #4F46E5;
+  --tool-accent-dark: #3730A3;
+  --tool-accent-light: #EEF0FF;
+}
+body.tool-flagship-page[data-tool="inheritance-calculator"] .tool-hero {
+  background: linear-gradient(180deg, #EEF0FF 0%, #fff 72%);
+}
+
+[data-theme="dark"] body.tool-flagship-page[data-tool] .tool-hero {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--tool-accent) 22%, #0F172A) 0%, transparent 78%) !important;
+}
+
+/* Hero: copy + small corner art (inline-end) */
+.tool-hero-inner.kit-hero-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: .75rem 1.1rem;
+  align-items: center;
+}
+.kit-hero-copy { min-width: 0; }
+.kit-hero-art {
+  width: 88px;
+  height: 88px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 24px rgba(5, 66, 65, .12);
+  flex-shrink: 0;
+  background: var(--tool-accent-light, #E8F4F2);
+}
+.kit-hero-art img {
+  display: block;
+  width: 88px;
+  height: 88px;
+}
+@media (max-width: 560px) {
+  .kit-hero-art,
+  .kit-hero-art img { width: 68px; height: 68px; }
+  .kit-hero-art { border-radius: 16px; }
+}
+
+body.tool-flagship-page[data-tool] .tool-hero {
+  border-bottom-color: color-mix(in srgb, var(--tool-accent) 18%, transparent);
+}
+body.tool-flagship-page[data-tool] .tool-eyebrow svg {
+  width: 14px;
+  height: 14px;
+  stroke-width: 2;
+}
+
+/* Buttons: one size, not billboard. Overlay cards stay house teal. */
+body.tool-flagship-page[data-tool] .t-btn,
+body.tool-flagship-page[data-tool] .tool-btn,
+body.tool-flagship-page[data-tool] .zc-btn,
+body.tool-flagship-page[data-tool] .wc-btn,
+body.tool-flagship-page[data-tool] .calc-btn,
+body.tool-flagship-page[data-tool] .btn-save {
+  padding: 12px 18px;
+  font-size: .9rem;
+  font-weight: 700;
+  border-radius: 12px;
+  max-width: 100%;
+  margin-top: 14px;
+  letter-spacing: 0;
+}
+body.tool-flagship-page[data-tool] .t-btn svg,
+body.tool-flagship-page[data-tool] .tool-btn svg,
+body.tool-flagship-page[data-tool] .zc-btn svg,
+body.tool-flagship-page[data-tool] .wc-btn svg,
+body.tool-flagship-page[data-tool] .btn-save svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+body.tool-flagship-page[data-tool] .tool-btn {
+  background: linear-gradient(135deg, var(--tool-accent), var(--tool-accent-dark));
+}
+body.tool-flagship-page[data-tool] .sc-habit-btn,
+body.tool-flagship-page[data-tool] .mo-habit-btn,
+body.tool-flagship-page[data-tool] .mb-habit-btn,
+body.tool-flagship-page[data-tool] .wc-habit-btn,
+body.tool-flagship-page[data-tool] .ic-habit-btn,
+body.tool-flagship-page[data-tool] .zc-saved-btn {
+  font-size: .8rem;
+  padding: 9px 13px;
+  border-radius: 11px;
+  line-height: 1.3;
+}
+body.tool-flagship-page[data-tool] .kit-pill,
+body.tool-flagship-page[data-tool] .city-pill {
+  font-size: .74rem;
+  padding: 6px 12px;
+  border-radius: 999px;
+}
+body.tool-flagship-page[data-tool] .btn-sec {
+  padding: 10px 14px;
+  font-size: .84rem;
+  border-radius: 12px;
+}
+
+/* Hotel rescue card stays the house, even if the room tint is sand */
+body.tool-flagship-page[data-tool="return-to-hotel"] .hotel-card-main {
+  background: linear-gradient(135deg, #007B8D 0%, #00cc99 35%, #00a67a 70%, #26C6DA 100%);
+}
+
+/* Library kit cards */
+.lib-kit-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: .75rem 1rem;
+  align-items: start;
+  margin-bottom: .35rem;
+}
+.lib-kit-head .kit-hero-art {
+  margin-top: .15rem;
+  background: #E8F4F2;
+}
+.lib-kit-card {
+  position: relative;
+  padding-inline-end: 3.1rem;
+}
+.lib-kit-ico {
+  position: absolute;
+  top: .7rem;
+  inset-inline-end: .7rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: block;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, .18);
+}
+.lib-kit-sub { margin-bottom: .85rem; }
+
+.library-page .lib-hero-circle {
+  background: #E8F4F2;
+}
+.library-page .lib-hero-circle img {
+  object-fit: cover;
+  object-position: center;
+  padding: 0;
+  background: #E8F4F2;
+}
