@@ -379,9 +379,9 @@ body.library-page .site-footer {
 .lib-tabs-inner {
   max-width: var(--lib-max);
   margin: 0 auto;
-  padding: 0 var(--lib-gutter);
+  padding: .55rem var(--lib-gutter);
   display: flex;
-  gap: .25rem;
+  gap: .4rem;
   overflow-x: auto;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
@@ -391,25 +391,52 @@ body.library-page .site-footer {
 
 .lib-tab {
   flex-shrink: 0;
-  padding: .85rem 1rem;
-  border: none;
-  border-bottom: 2px solid transparent;
-  background: none;
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .42rem .95rem;
+  border: 1px solid rgba(0, 0, 0, .08);
+  border-radius: 999px;
+  background: #fff;
   font-family: inherit;
-  font-size: .78rem;
-  font-weight: 600;
+  font-size: .76rem;
+  font-weight: 700;
   color: var(--lib-muted);
   cursor: pointer;
-  transition: color .2s, border-color .2s;
+  transition: color .2s, background .2s, border-color .2s, box-shadow .2s;
   white-space: nowrap;
 }
 
-.lib-tab:hover { color: var(--lib-ink); }
+.lib-tab::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: .45;
+}
+
+.lib-tab[data-filter="all"]::before { background: #054241; opacity: 1; }
+.lib-tab[data-filter="health"]::before { background: #3D7A5A; opacity: 1; }
+.lib-tab[data-filter="finance"]::before { background: #C89B3C; opacity: 1; }
+.lib-tab[data-filter="islamic"]::before { background: #4F46E5; opacity: 1; }
+.lib-tab[data-filter="travel"]::before { background: #B8956A; opacity: 1; }
+
+.lib-tab:hover { color: var(--lib-ink); border-color: rgba(0, 0, 0, .14); }
 
 .lib-tab.is-active {
-  color: var(--lib-teal-dark);
-  border-bottom-color: var(--lib-teal);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 6px 16px rgba(5, 66, 65, .12);
 }
+
+.lib-tab[data-filter="all"].is-active { background: #054241; }
+.lib-tab[data-filter="health"].is-active { background: #1F4D38; }
+.lib-tab[data-filter="finance"].is-active { background: #8C6A20; }
+.lib-tab[data-filter="islamic"].is-active { background: #3730A3; }
+.lib-tab[data-filter="travel"].is-active { background: #8C6A3E; }
+
+.lib-tab.is-active::before { background: #fff; }
 
 .lib-hero-tools.is-hidden,
 .lib-hero-recipes.is-hidden,
@@ -721,3 +748,228 @@ body.library-page .site-footer {
   color: rgba(255,255,255,.72);
 }
 .lib-kit-install-hint[hidden] { display: none !important; }
+
+/* Category rooms — same kit grammar, different color */
+.lib-room {
+  --room-accent: #054241;
+  --room-accent-dark: #03302f;
+  --room-soft: #F6F8F7;
+  --room-ink: #1A1612;
+  --room-muted: #5C6564;
+  overflow: hidden;
+  border-radius: 22px;
+  border: 1px solid rgba(5, 66, 65, .08);
+  background: #fff;
+  margin-bottom: clamp(1.35rem, 2.6vw, 1.85rem);
+  scroll-margin-top: 150px;
+}
+
+.lib-room-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: .75rem 1rem;
+  align-items: start;
+  padding: 1.2rem 1.2rem 1.1rem;
+  color: #fff;
+}
+
+.lib-room-kicker {
+  margin: 0 0 .3rem;
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .72);
+}
+
+[data-lang="ar"] .lib-room-kicker {
+  letter-spacing: 0;
+  text-transform: none;
+  font-size: .76rem;
+}
+
+.lib-room-title {
+  margin: 0 0 .35rem;
+  font-family: var(--font-ar, 'Almarai', sans-serif);
+  font-size: clamp(1.2rem, 2.4vw, 1.45rem);
+  font-weight: 800;
+  line-height: 1.25;
+  color: #fff;
+}
+
+[data-lang="en"] .lib-room-title {
+  font-family: var(--font-ui, Inter, sans-serif);
+}
+
+.lib-room-sub {
+  margin: 0;
+  max-width: 38rem;
+  font-size: .86rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, .78);
+}
+
+.lib-room-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: .55rem;
+}
+
+.lib-room-art {
+  width: 72px;
+  height: 72px;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, .18);
+  background: #fff;
+}
+
+.lib-room-art img {
+  display: block;
+  width: 72px;
+  height: 72px;
+}
+
+.lib-room-count {
+  font-size: .68rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, .78);
+  white-space: nowrap;
+}
+
+.lib-room-body {
+  padding: .95rem 1.05rem 1.1rem;
+  background: var(--room-soft);
+}
+
+.lib-room .lib-grid {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr));
+  gap: .65rem;
+}
+
+.lib-room .lib-card {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  align-items: start;
+  gap: .7rem;
+  height: auto;
+  min-height: 86px;
+  padding: .85rem .9rem;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid color-mix(in srgb, var(--room-accent) 16%, transparent);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .6);
+  transition: background .2s, border-color .2s, box-shadow .2s var(--lib-ease), transform .2s var(--lib-ease);
+}
+
+.lib-room .lib-card:hover {
+  background: #fff;
+  border-color: color-mix(in srgb, var(--room-accent) 34%, transparent);
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--room-accent) 14%, transparent);
+  transform: translateY(-1px);
+}
+
+.lib-card-ico {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: color-mix(in srgb, var(--room-accent) 12%, #fff);
+  color: var(--room-accent-dark);
+  flex-shrink: 0;
+}
+
+.lib-card-ico svg {
+  width: 20px;
+  height: 20px;
+}
+
+.lib-card-copy { min-width: 0; }
+
+.lib-room .lib-card-title {
+  font-size: .86rem;
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--room-ink);
+}
+
+.lib-card-tip {
+  margin: .28rem 0 0;
+  font-size: .72rem;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--room-muted);
+}
+
+.lib-room--health {
+  --room-accent: #3D7A5A;
+  --room-accent-dark: #1F4D38;
+  --room-soft: #F3F8F4;
+  --room-ink: #14261C;
+  --room-muted: #4F6B5C;
+}
+.lib-room--health .lib-room-head {
+  background: linear-gradient(135deg, #163828 0%, #2F6B4F 58%, #5A9A76 100%);
+}
+
+.lib-room--finance {
+  --room-accent: #C89B3C;
+  --room-accent-dark: #8C6A20;
+  --room-soft: #FBF6EC;
+  --room-ink: #2A2416;
+  --room-muted: #7A6A42;
+}
+.lib-room--finance .lib-room-head {
+  background: linear-gradient(135deg, #3A2E14 0%, #8C6A20 52%, #C89B3C 100%);
+}
+
+.lib-room--islamic {
+  --room-accent: #4F46E5;
+  --room-accent-dark: #3730A3;
+  --room-soft: #F3F3FA;
+  --room-ink: #1B1840;
+  --room-muted: #5C5A78;
+}
+.lib-room--islamic .lib-room-head {
+  background: linear-gradient(135deg, #1E1B4B 0%, #3730A3 55%, #6366F1 100%);
+}
+
+.lib-room--travel {
+  --room-accent: #B8956A;
+  --room-accent-dark: #8C6A3E;
+  --room-soft: #F7F1E8;
+  --room-ink: #2C241A;
+  --room-muted: #7A6B56;
+}
+.lib-room--travel .lib-room-head {
+  background: linear-gradient(135deg, #3A2C1E 0%, #8C6A3E 55%, #C4A27A 100%);
+}
+
+@media (max-width: 560px) {
+  .lib-room-art,
+  .lib-room-art img { width: 56px; height: 56px; }
+  .lib-room-art { border-radius: 14px; }
+  .lib-room-head { padding: 1.05rem 1rem 1rem; }
+  .lib-room-body { padding: .8rem .8rem .95rem; }
+}
+
+[data-theme="dark"] .lib-room {
+  border-color: rgba(255, 255, 255, .08);
+}
+[data-theme="dark"] .lib-room .lib-card {
+  background: #1E1A16;
+}
+[data-theme="dark"] .lib-card-ico {
+  background: color-mix(in srgb, var(--room-accent) 22%, #1E1A16);
+}
+[data-theme="dark"] .lib-tab {
+  background: #1E1A16;
+  border-color: rgba(255, 255, 255, .1);
+  color: #9A9288;
+}
+[data-theme="dark"] .lib-room--health { --room-soft: #141C18; }
+[data-theme="dark"] .lib-room--finance { --room-soft: #1C1912; }
+[data-theme="dark"] .lib-room--islamic { --room-soft: #16141F; }
+[data-theme="dark"] .lib-room--travel { --room-soft: #1C1813; }
