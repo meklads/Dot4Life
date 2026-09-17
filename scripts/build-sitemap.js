@@ -10,7 +10,7 @@ const path = require('path');
 
 const JSON_PATH = path.join(__dirname, '..', 'articles.json');
 const OUTPUT_PATH = path.join(__dirname, '..', 'sitemap-content.xml');
-const BASE_URL = 'https://www.dotforlife.com';
+const BASE_URL = 'https://dotforlife.com';
 
 // Static pages to include in sitemap
 const STATIC_PAGES = [

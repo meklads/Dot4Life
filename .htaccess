@@ -12,7 +12,22 @@
   # 2) www → non-www (keeps path + query)
   RewriteCond %{HTTP_HOST} ^www\.dotforlife\.com$ [NC]
   RewriteRule ^ https://dotforlife.com%{REQUEST_URI} [L,R=301]
+
+  # 3) Legacy GSC 404 aliases → canonical paths
+  RewriteRule ^home/?$ / [L,R=301]
+  RewriteRule ^riyadh/?$ /cities/riyadh [L,R=301]
+  RewriteRule ^jeddah/?$ /cities/jeddah [L,R=301]
+  RewriteRule ^dubai/?$ /cities/dubai [L,R=301]
+  RewriteRule ^abu-dhabi/?$ /cities/abu-dhabi [L,R=301]
+  RewriteRule ^oman/?$ /cities/oman [L,R=301]
+  RewriteRule ^realestate\.html?$ /real-estate [L,R=301]
+  RewriteRule ^realestate/?$ /real-estate [L,R=301]
+  RewriteRule ^tools/emergency-fund-calculator\.html?$ /finance-wealth/emergency-fund-guide-gulf-families [L,R=301]
+  RewriteRule ^tools/emergency-fund-calculator/?$ /finance-wealth/emergency-fund-guide-gulf-families [L,R=301]
+  RewriteRule ^blog/gcc-family-budget\.html?$ /blog/gcc-family-budget-2025 [L,R=301]
+  RewriteRule ^blog/gcc-family-budget/?$ /blog/gcc-family-budget-2025 [L,R=301]
+  RewriteRule ^blog/gcc-family-budget-en\.html?$ /blog/gcc-family-budget-2025-en [L,R=301]
+  RewriteRule ^blog/gcc-family-budget-en/?$ /blog/gcc-family-budget-2025-en [L,R=301]
 </IfModule>
 
-# Optional hardening (safe defaults)
 Options -Indexes

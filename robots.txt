@@ -1,17 +1,13 @@
 # robots.txt لموقع dotforlife.com
 # robots.txt for dotforlife.com - Digital Platform for the Gulf Family
-# آخر تحديث / Last updated: 2026-06-27
+# آخر تحديث / Last updated: 2026-09-17
 
 # --- القواعد العامة / General Rules ---
 
-# السماح لجميع محركات البحث بالزحف إلى الموقع بالكامل
-# Allow all search engines to crawl the entire site
 User-agent: *
 Disallow:
 
-# --- منع الزحف إلى المسارات الإدارية والفنية / Block admin & technical paths ---
-# منع الزحف إلى المسارات الإدارية إن وجدت
-# Block admin paths if they exist
+# --- منع الزحف إلى المسارات الإدارية والفنية ---
 Disallow: /admin/
 Disallow: /wp-admin/
 Disallow: /wp-content/
@@ -25,30 +21,22 @@ Disallow: /cms/
 Disallow: /backend/
 Disallow: /api/private/
 
-# منع الزحف إلى ملفات النظام الحساسة
-# Block sensitive system files
 Disallow: /.env
 Disallow: /.git/
 Disallow: /config/
 Disallow: /includes/
 Disallow: /vendor/
 
-# منع الزحف إلى مجلدات المسودات والنسخ الاحتياطية (ليست محتوى نهائياً)
-# Block draft/backup/staging folders (not final content)
 Disallow: /outputs/
 Disallow: /assets/queue/
 Disallow: /tools/_finance_backup/
 Disallow: /system/
+Disallow: /operating-system/
 
-# --- مواقع خريطة الموقع / Sitemap Locations ---
-
-Sitemap: https://dotforlife.com/sitemap.xml
+# --- مواقع خريطة الموقع ---
+# Primary: index covering main + content + tools (LIVE indexable only)
+Sitemap: https://dotforlife.com/sitemap-index.xml
 Sitemap: https://dotforlife.com/sitemap-content.xml
 Sitemap: https://dotforlife.com/sitemap-main.xml
 Sitemap: https://dotforlife.com/sitemap-tools.xml
-
-# --- ملاحظات / Notes ---
-# هذا الموقع هو منصة رقمية شاملة للأسرة الخليجية
-# This site is a comprehensive digital platform for the Gulf family
-# يغطي: الصحة، المالية، العقارات، السفر، الإسلام، الأدوات
-# Covers: Health, Finance, Real Estate, Travel, Islamic, Tools
+Sitemap: https://dotforlife.com/sitemap.xml
