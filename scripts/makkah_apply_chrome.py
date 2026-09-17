@@ -44,7 +44,7 @@ def with_active(subnav: str, key: str) -> str:
 def ensure_css(html: str) -> str:
     html = re.sub(
         r'makkah-hub\.css\?v=[^"\']+',
-        'makkah-hub.css?v=20260917d',
+        'makkah-hub.css?v=20260917e',
         html,
     )
     # Never inject home.css — its index-nav rules make links white on light pages.
