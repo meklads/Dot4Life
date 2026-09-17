@@ -231,7 +231,8 @@
   function planAsText() {
     var plan = state.plan;
     if (!plan) return '';
-    var lines = ['Makkah Trip Plan / خطة مكة', txt(plan.summary.daysLabel), txt(plan.summary.group), txt(plan.summary.pace), ''];
+    var ar = S.lang() === 'ar';
+    var lines = [ar ? 'خطة رحلة مكة' : 'Makkah Trip Plan', txt(plan.summary.daysLabel), txt(plan.summary.group), txt(plan.summary.pace), ''];
     plan.days.forEach(function (day) {
       lines.push(txt(day.title));
       day.blocks.forEach(function (b) {
@@ -305,6 +306,11 @@
     bindOptionCards();
     readForm();
     syncProgress();
+    if (S.onLangChange) {
+      S.onLangChange(function () {
+        if (state.plan) renderPlan();
+      });
+    }
 
     // Ensure dflTrack exists
     if (!window.dflTrack && window.gtag) {

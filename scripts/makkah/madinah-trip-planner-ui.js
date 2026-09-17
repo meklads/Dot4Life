@@ -227,7 +227,8 @@
   function planAsText() {
     var plan = state.plan;
     if (!plan) return '';
-    var lines = ['Madinah Trip Plan / خطة المدينة', txt(plan.summary.daysLabel), txt(plan.summary.group), txt(plan.summary.pace), ''];
+    var ar = S.lang() === 'ar';
+    var lines = [ar ? 'خطة رحلة المدينة' : 'Madinah Trip Plan', txt(plan.summary.daysLabel), txt(plan.summary.group), txt(plan.summary.pace), ''];
     plan.days.forEach(function (day) {
       lines.push(txt(day.title));
       day.blocks.forEach(function (b) {
@@ -295,6 +296,11 @@
     root.addEventListener('change', function () { readForm(); });
     readForm();
     syncProgress();
+    if (S.onLangChange) {
+      S.onLangChange(function () {
+        if (state.plan) renderPlan();
+      });
+    }
 
     if (!window.dflTrack && window.gtag) {
       window.dflTrack = function (event, params) {

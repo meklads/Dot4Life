@@ -126,7 +126,7 @@
     if (inputs.children <= 0 && !hasInterest(inputs, 'family')) return [];
     return [item(
       'Family reset: quiet room time or gentle outdoor air. Let children recover before the next move.',
-      'إعادة ضبط أسرية: هدوء في الغرفة أو هواء لطيف. دعوا الأطفال يستعيدون طاقتهم قبل أي تنقّل.',
+      'استراحة أسرية: هدوء في الغرفة أو هواء لطيف. دعوا الأطفال يستعيدون طاقتهم قبل أي تنقّل.',
       'flexible'
     )];
   }
@@ -151,7 +151,7 @@
     if (!hasInterest(inputs, 'shopping')) return [];
     return [item(
       'Light shopping window with a time limit — do not let it crowd rest.',
-      'نافذة تسوق خفيفة بحد زمني — لا تدعوها تزاحم الراحة.',
+      'وقت تسوق خفيف بحد زمني — لا تدعوه يزاحم الراحة.',
       'optional'
     )];
   }
@@ -175,7 +175,7 @@
       ].concat(movementNote(inputs))),
       block('Midday', 'الظهيرة', restBlock(inputs, 'strong')),
       block('Afternoon', 'العصر', friction(inputs) >= 4
-        ? [item('Optional short priority near your base only if everyone feels steady.', 'أولوية قصيرة اختيارية قرب المقر فقط إن كان الجميع ثابتاً.', 'optional')]
+        ? [item('Optional short priority near your base only if everyone feels steady.', 'أولوية قصيرة اختيارية قرب المقر فقط إن كان الجميع مرتاحاً.', 'optional')]
         : worshipBlock(inputs, 'light')),
       block('Evening', 'المساء', [
         item('Flexible family evening. Early night if possible.', 'مساء أسري مرن. نوم مبكر إن أمكن.', 'flexible')
@@ -229,7 +229,7 @@
     } else {
       afternoon.push(item(
         'Flexible afternoon: rest, short walk nearby, or quiet time. Empty blocks are intentional.',
-        'عصر مرن: راحة، مشي قصير بالقرب، أو وقت هادئ. الفراغ متعمَّد.',
+        'عصر مرن: راحة، مشي قصير بالقرب، أو وقت هادئ. الفراغ مقصود.',
         'flexible'
       ));
     }
@@ -256,7 +256,7 @@
     if (inputs.keepTogether === 'yes') {
       evening.push(item(
         'Agree tomorrow’s meeting point before sleep so the group starts aligned.',
-        'اتفقوا على نقطة لقاء الغد قبل النوم حتى تبدأ المجموعة متوافقة.',
+        'اتفقوا على نقطة لقاء الغد قبل النوم حتى تبدأ المجموعة على وفاق.',
         'priority'
       ));
     }
@@ -295,7 +295,7 @@
       var title;
       if (kind === 'arrival') title = bi('Day ' + (offset + i) + ' — ' + cityLabel.en + ' arrival & settling', 'اليوم ' + (offset + i) + ' — وصول واستقرار في ' + cityLabel.ar);
       else if (kind === 'departure') title = bi('Day ' + (offset + i) + ' — ' + cityLabel.en + ' prepare to leave', 'اليوم ' + (offset + i) + ' — استعداد لمغادرة ' + cityLabel.ar);
-      else if (kind === 'single') title = bi('Your day in ' + cityLabel.en + ' — keep it light', 'يومكم في ' + cityLabel.ar + ' — أبقوه خفيفاً');
+      else if (kind === 'single') title = bi('Your day in ' + cityLabel.en + ' — keep it light', 'يومكم في ' + cityLabel.ar + ' — اجعلوه خفيفاً');
       else title = bi('Day ' + (offset + i) + ' — ' + cityLabel.en + ' steady family day', 'اليوم ' + (offset + i) + ' — يوم أسري متوازن في ' + cityLabel.ar);
 
       days.push({ index: offset + i, kind: kind, city: city, title: title, blocks: blocks });
@@ -316,7 +316,7 @@
         title: bi('Transition — Makkah → Madinah', 'الانتقال — مكة → المدينة'),
         blocks: [
           block('Plan the move', 'خطّطوا الانتقال', [
-            item('Keep this transfer day lighter for the family. Use the dedicated planner for door-to-door structure.', 'اجعلوا يوم الانتقال أخف للأسرة. استخدموا المخطط المخصّص لهيكل الباب-للباب.', 'priority'),
+            item('Keep this transfer day lighter for the family. Use the dedicated planner for door-to-door structure.', 'اجعلوا يوم الانتقال أخف للأسرة. استخدموا المخطط المخصّص لترتيب الرحلة من الباب إلى الباب.', 'priority'),
             item('Open Makkah → Madinah Planner for luggage, buffers, and journey organization.', 'افتحوا مخطط مكة → المدينة للحقائب والهوامش وتنظيم الرحلة.', 'priority')
           ])
         ],
@@ -332,7 +332,7 @@
     var list = [
       item('Keep movement simple', 'أبقوا التنقّل بسيطاً'),
       item('Protect rest periods', 'احموا فترات الراحة'),
-      item('Leave flexible time — empty blocks are intentional', 'اتركوا وقتاً مرناً — الفراغ متعمَّد'),
+      item('Leave flexible time — empty blocks are intentional', 'اتركوا وقتاً مرناً — الفراغ مقصود'),
       item('Keep essentials accessible', 'أبقوا الأساسيات في المتناول')
     ];
     if (inputs.children > 0) list.push(item('Allow meal and break flexibility for children', 'اسمحوا بمرونة الوجبات والاستراحات للأطفال'));

@@ -310,10 +310,11 @@
   function planAsText() {
     var plan = state.plan;
     if (!plan) return '';
-    var lines = ['Makkah Hotel Profile / ملف فندق مكة', txt(plan.category.title), ''];
-    lines.push('Prioritize / الأولويات:');
+    var ar = S.lang() === 'ar';
+    var lines = [ar ? 'ملف قرار فندق مكة' : 'Makkah Hotel Profile', txt(plan.category.title), ''];
+    lines.push(ar ? 'الأولويات:' : 'Prioritize:');
     plan.prioritize.forEach(function (x) { lines.push('- ' + txt(x)); });
-    lines.push('', 'Checklist / تحققوا قبل الحجز:');
+    lines.push('', ar ? 'تحققوا قبل الحجز:' : 'Checklist before booking:');
     plan.checklist.forEach(function (x) { lines.push('- ' + txt(x)); });
     lines.push('', txt(plan.disclaimer));
     lines.push('https://dotforlife.com/makkah/tools/hotel-decision/');
@@ -379,6 +380,11 @@
     root.addEventListener('change', function () { readForm(); });
     readForm();
     syncProgress();
+    if (S.onLangChange) {
+      S.onLangChange(function () {
+        if (state.plan) renderPlan();
+      });
+    }
   }
 
   if (document.readyState === 'loading') {

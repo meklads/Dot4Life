@@ -106,29 +106,29 @@
     var map = {
       train: {
         id: 'train',
-        title: bi('Train-oriented journey', 'رحلة مبنية على القطار'),
+        title: bi('Train-oriented journey', 'رحلة تعتمد على القطار'),
         short: bi('Train', 'القطار'),
         blurb: bi(
           'Organize around a scheduled rail link, then plan first- and last-mile connections separately.',
-          'نظّموا حول رحلة قطار مجدولة، ثم خطّطوا الوصول من وإلى المحطة بشكل منفصل.'
+          'رتّبوا اليوم حول رحلة قطار مجدولة، ثم خطّطوا الوصول من وإلى المحطة على حدة.'
         )
       },
       car: {
         id: 'car',
-        title: bi('Private-car-oriented journey', 'رحلة مبنية على سيارة خاصة'),
+        title: bi('Private-car-oriented journey', 'رحلة تعتمد على سيارة خاصة'),
         short: bi('Private car', 'سيارة خاصة'),
         blurb: bi(
           'Fewer mid-journey transfers and more control over stops, luggage, and timing.',
-          'انتقالات أقل أثناء الرحلة وتحكم أكبر في التوقفات والحقائب والتوقيت.'
+          'انتقالات أقل في الطريق، وتحكم أوضح في التوقفات والحقائب والتوقيت.'
         )
       },
       bus: {
         id: 'bus',
-        title: bi('Bus / shared-transport journey', 'رحلة حافلة / نقل مشترك'),
-        short: bi('Bus / shared', 'حافلة / مشترك'),
+        title: bi('Bus / shared-transport journey', 'رحلة حافلة أو نقل مشترك'),
+        short: bi('Bus / shared', 'حافلة أو مشترك'),
         blurb: bi(
           'Plan carefully around departure points, luggage access, and group coordination.',
-          'خطّطوا بعناية حول نقاط الانطلاق والوصول للحقائب وتنسيق المجموعة.'
+          'خطّطوا بعناية حول نقطة الانطلاق والحقائب وتنسيق المجموعة.'
         )
       }
     };
@@ -371,14 +371,14 @@
             ? 'Useful when first/last mile are planned; heavy luggage needs careful station handling.'
             : 'Often predictable once booked; still needs station connections planned separately.',
           inputs.luggage === 'heavy'
-            ? 'مفيد عند تخطيط الميل الأول/الأخير؛ الحقائب الثقيلة تحتاج تعاملاً حذراً في المحطة.'
-            : 'غالباً يمكن التنبؤ به بعد الحجز؛ ما زال يحتاج تخطيط وصلات المحطة بشكل منفصل.'
+            ? 'مفيد إن خطّطتم الوصول من وإلى المحطة؛ الحقائب الثقيلة تحتاج تعاملاً حذراً هناك.'
+            : 'غالباً أوضح بعد الحجز؛ ما زال يحتاج تخطيط وصلات المحطة على حدة.'
         );
       }
       if (mode === 'car') {
         return bi(
           'Strong on door-to-door simplicity and luggage control; confirm provider details in advance.',
-          'قوي في بساطة الباب-للباب والتحكم بالحقائب؛ أكّدوا تفاصيل المزوّد مسبقاً.'
+          'أقوى في البساطة من الباب إلى الباب والتحكم بالحقائب؛ أكّدوا تفاصيل المزوّد مسبقاً.'
         );
       }
       return bi(

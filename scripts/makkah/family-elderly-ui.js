@@ -293,8 +293,15 @@
   function planAsText() {
     var plan = state.plan;
     if (!plan) return '';
-    var lines = ['Family Journey Plan / خطة رحلة العائلة', txt(plan.profile.family), txt(plan.profile.destination), txt(plan.profile.pace), ''];
-    lines.push('Principles / المبادئ:');
+    var ar = S.lang() === 'ar';
+    var kindLabel = {
+      priority: ar ? 'أساسي' : 'priority',
+      optional: ar ? 'اختياري' : 'optional',
+      rest: ar ? 'راحة' : 'rest',
+      flexible: ar ? 'مرن' : 'flexible'
+    };
+    var lines = [ar ? 'خطة رحلة العائلة' : 'Family Journey Plan', txt(plan.profile.family), txt(plan.profile.destination), txt(plan.profile.pace), ''];
+    lines.push(ar ? 'المبادئ:' : 'Principles:');
     plan.principles.forEach(function (x) { lines.push('- ' + txt(x)); });
     lines.push('');
     plan.days.forEach(function (day) {
@@ -302,13 +309,13 @@
       day.blocks.forEach(function (b) {
         lines.push('  ' + txt(b.slot) + ':');
         (b.items || []).forEach(function (it) {
-          var k = it.kind ? '[' + it.kind + '] ' : '';
+          var k = it.kind ? '[' + (kindLabel[it.kind] || it.kind) + '] ' : '';
           lines.push('   - ' + k + txt(it));
         });
       });
       lines.push('');
     });
-    lines.push('Checklist / القائمة:');
+    lines.push(ar ? 'القائمة:' : 'Checklist:');
     plan.checklist.forEach(function (x) { lines.push('- ' + txt(x)); });
     lines.push('', txt(plan.disclaimer));
     lines.push('https://dotforlife.com/makkah/tools/family-elderly-planner/');
@@ -365,6 +372,11 @@
     });
     readForm();
     syncProgress();
+    if (S.onLangChange) {
+      S.onLangChange(function () {
+        if (state.plan) renderPlan();
+      });
+    }
   }
 
   if (document.readyState === 'loading') {

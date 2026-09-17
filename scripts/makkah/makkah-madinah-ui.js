@@ -221,7 +221,7 @@
     html += '</article>';
 
     html += '<p class="mtp-disclaimer">' + esc(txt(plan.disclaimer)) + '</p>';
-    html += '<p class="mtp-hint"><a href="https://www.sar.com.sa/" rel="noopener noreferrer" target="_blank">' + esc(txt(plan.officialNote)) + '</a> · SAR / official providers</p>';
+    html += '<p class="mtp-hint"><a href="https://www.sar.com.sa/" rel="noopener noreferrer" target="_blank">' + esc(txt(plan.officialNote)) + '</a> · <span class="en">via SAR and official providers</span><span class="ar">عبر سار والمزودين الرسميين</span></p>';
 
     html += '<div class="mtp-adjust" role="group" aria-label="Adjust plan">';
     html += '<p class="mtp-adjust-label"><span class="en">Adjust</span><span class="ar">عدّل</span></p>';
@@ -255,12 +255,13 @@
   function planAsText() {
     var plan = state.plan;
     if (!plan) return '';
-    var lines = ['Makkah → Madinah Plan / خطة مكة → المدينة', txt(plan.primary.title), ''];
-    lines.push('Why / لماذا:');
+    var ar = S.lang() === 'ar';
+    var lines = [ar ? 'خطة مكة → المدينة' : 'Makkah → Madinah Plan', txt(plan.primary.title), ''];
+    lines.push(ar ? 'لماذا يناسبكم:' : 'Why this fits:');
     plan.why.forEach(function (w) { lines.push('- ' + txt(w)); });
-    lines.push('', 'Before leaving / قبل المغادرة:');
+    lines.push('', ar ? 'قبل المغادرة:' : 'Before leaving:');
     plan.before.forEach(function (w) { lines.push('- ' + txt(w)); });
-    lines.push('', 'Arrival / الوصول:');
+    lines.push('', ar ? 'الوصول:' : 'Arrival:');
     plan.arrival.forEach(function (w) { lines.push('- ' + txt(w)); });
     lines.push('', txt(plan.disclaimer));
     lines.push('https://dotforlife.com/makkah/tools/makkah-to-madinah-planner/');
@@ -314,6 +315,11 @@
     root.addEventListener('change', function () { readForm(); });
     readForm();
     syncProgress();
+    if (S.onLangChange) {
+      S.onLangChange(function () {
+        if (state.plan) renderPlan();
+      });
+    }
   }
 
   if (document.readyState === 'loading') {

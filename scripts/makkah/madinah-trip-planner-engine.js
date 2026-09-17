@@ -115,7 +115,7 @@
     if (!hasInterest(inputs, 'family') && !(inputs.children > 0)) return [];
     return [item(
       'Family reset in Madinah: quiet room time or gentle outdoor air. Let children recover before the next move.',
-      'إعادة ضبط أسرية في المدينة: هدوء في الغرفة أو هواء لطيف. دعوا الأطفال يستعيدون طاقتهم قبل أي تنقّل.'
+      'استراحة أسرية في المدينة: هدوء في الغرفة أو هواء لطيف. دعوا الأطفال يستعيدون طاقتهم قبل أي تنقّل.'
     )];
   }
 
@@ -152,7 +152,7 @@
   function flexibleItems() {
     return [item(
       'Flexible time — rest, short walk nearby, or quiet reading. Empty blocks are intentional.',
-      'وقت مرن — راحة، مشي قصير بالقرب، أو قراءة هادئة. الفراغ متعمَّد.'
+      'وقت مرن — راحة، مشي قصير بالقرب، أو قراءة هادئة. الفراغ مقصود.'
     )];
   }
 
@@ -180,7 +180,7 @@
     } else {
       afternoon.push(item(
         'Optional short visit near your base only if everyone feels steady.',
-        'زيارة قصيرة اختيارية قرب المقر فقط إن كان الجميع ثابتاً.'
+        'زيارة قصيرة اختيارية قرب المقر فقط إن كان الجميع مرتاحاً.'
       ));
       afternoon = afternoon.concat(quietItems(inputs));
     }
@@ -353,7 +353,7 @@
           days.push({
             index: i,
             kind: 'single',
-            title: bi('Your day in Madinah — keep it light', 'يومكم في المدينة — أبقوه خفيفاً'),
+            title: bi('Your day in Madinah — keep it light', 'يومكم في المدينة — اجعلوه خفيفاً'),
             blocks: (function () {
               var a = arrivalBlocks(inputs);
               var d = departureBlocks(inputs);

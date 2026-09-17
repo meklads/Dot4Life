@@ -87,33 +87,33 @@
     var map = {
       convenience: {
         id: 'convenience',
-        title: bi('Convenience-focused stay', 'إقامة تركّز على الراحة العملية'),
-        fit: bi('Strong fit for your stated priorities', 'ملاءمة قوية لأولوياتكم المعلنة')
+        title: bi('Convenience-focused stay', 'إقامة أقرب للسهولة اليومية'),
+        fit: bi('Strong fit for your stated priorities', 'تناسب أولوياتكم بوضوح')
       },
       family: {
         id: 'family',
-        title: bi('Family-oriented stay', 'إقامة موجّهة للأسرة'),
-        fit: bi('Strong fit for your stated priorities', 'ملاءمة قوية لأولوياتكم المعلنة')
+        title: bi('Family-oriented stay', 'إقامة تناسب الأسرة'),
+        fit: bi('Strong fit for your stated priorities', 'تناسب أولوياتكم بوضوح')
       },
       value: {
         id: 'value',
-        title: bi('Value-oriented stay', 'إقامة موجّهة للقيمة'),
-        fit: bi('Strong fit for your stated priorities', 'ملاءمة قوية لأولوياتكم المعلنة')
+        title: bi('Value-oriented stay', 'إقامة تركّز على القيمة'),
+        fit: bi('Strong fit for your stated priorities', 'تناسب أولوياتكم بوضوح')
       },
       comfort: {
         id: 'comfort',
-        title: bi('Comfort-oriented stay', 'إقامة موجّهة للراحة'),
-        fit: bi('Strong fit for your stated priorities', 'ملاءمة قوية لأولوياتكم المعلنة')
+        title: bi('Comfort-oriented stay', 'إقامة تركّز على الراحة'),
+        fit: bi('Strong fit for your stated priorities', 'تناسب أولوياتكم بوضوح')
       },
       proximity: {
         id: 'proximity',
         title: bi('Access-priority stay', 'إقامة بأولوية سهولة الوصول'),
-        fit: bi('Strong fit for your stated priorities', 'ملاءمة قوية لأولوياتكم المعلنة')
+        fit: bi('Strong fit for your stated priorities', 'تناسب أولوياتكم بوضوح')
       },
       balance: {
         id: 'balance',
         title: bi('Balanced stay', 'إقامة متوازنة'),
-        fit: bi('Strong fit for your stated priorities', 'ملاءمة قوية لأولوياتكم المعلنة')
+        fit: bi('Strong fit for your stated priorities', 'تناسب أولوياتكم بوضوح')
       }
     };
     var ranked = Object.keys(sc).sort(function (a, b) {
@@ -133,7 +133,7 @@
       list.push(item('Practical family movement — fewer tight transfers each day', 'تنقّل أسري عملي — وصلات ضيقة أقل كل يوم'));
     }
     if (categoryId === 'value' || inputs.budget === 'value') {
-      list.push(item('Balance stay value against daily transport friction', 'وازنوا قيمة الإقامة مع احتكاك التنقّل اليومي'));
+      list.push(item('Balance stay value against daily transport friction', 'وازنوا قيمة الإقامة مع عناء التنقّل اليومي'));
     }
     if (categoryId === 'comfort' || dayCount(inputs) >= 6 || inputs.pace === 'relaxed') {
       list.push(item('Comfort for a longer or calmer stay — room rest matters', 'راحة لإقامة أطول أو أهدأ — راحة الغرفة مهمة'));
@@ -186,7 +186,7 @@
     if (inputs.priority === 'cost' || inputs.budget === 'value') {
       reasons.push(item(
         'Value orientation is valid — still check transport friction so a cheaper room does not create costly daily hassle.',
-        'التوجّه للقيمة مشروع — تحققوا مع ذلك من احتكاك النقل حتى لا تخلق غرفة أرخص إزعاجاً يومياً مكلفاً.'
+        'التوجّه للقيمة مشروع — راقبوا مع ذلك عناء النقل حتى لا تخلق غرفة أرخص إزعاجاً يومياً مكلفاً.'
       ));
     }
     if (inputs.priority === 'proximity') {

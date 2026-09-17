@@ -108,7 +108,7 @@
     if (!hasInterest(inputs, 'family') && !(inputs.children > 0)) return [];
     return [item(
       'Family reset: short outdoor air or quiet room time. Let children recover before the next move.',
-      'إعادة ضبط أسرية: هواء قصير أو هدوء في الغرفة. دعوا الأطفال يستعيدون طاقتهم قبل أي تنقّل.'
+      'استراحة أسرية: هواء قصير أو هدوء في الغرفة. دعوا الأطفال يستعيدون طاقتهم قبل أي تنقّل.'
     )];
   }
 
@@ -153,7 +153,7 @@
     } else {
       afternoon.push(item(
         'Optional short visit near your base only if everyone feels steady.',
-        'زيارة قصيرة اختيارية قرب المقر فقط إن كان الجميع ثابتاً.'
+        'زيارة قصيرة اختيارية قرب المقر فقط إن كان الجميع مرتاحاً.'
       ));
     }
     var evening = mealItems(inputs).concat([
@@ -300,7 +300,7 @@
           days.push({
             index: i,
             kind: 'single',
-            title: bi('Your day in Makkah — keep it light', 'يومكم في مكة — أبقوه خفيفاً'),
+            title: bi('Your day in Makkah — keep it light', 'يومكم في مكة — اجعلوه خفيفاً'),
             blocks: (function () {
               var a = arrivalBlocks(inputs);
               var d = departureBlocks(inputs);

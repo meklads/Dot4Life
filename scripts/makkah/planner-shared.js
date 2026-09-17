@@ -80,6 +80,14 @@
     });
   }
 
+  /** Re-render planner results when the site language toggles. */
+  function onLangChange(cb) {
+    if (typeof cb !== 'function') return;
+    document.addEventListener('dfl:langchange', function () {
+      try { cb(); } catch (e) { /* ignore */ }
+    });
+  }
+
   global.DFLPlannerShared = {
     track: track,
     lang: lang,
@@ -87,6 +95,7 @@
     clamp: clamp,
     encodeState: encodeState,
     decodeState: decodeState,
-    copyText: copyText
+    copyText: copyText,
+    onLangChange: onLangChange
   };
 })(window);
