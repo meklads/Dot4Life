@@ -44,7 +44,7 @@ def with_active(subnav: str, key: str) -> str:
 def ensure_css(html: str) -> str:
     html = re.sub(
         r'makkah-hub\.css\?v=[^"\']+',
-        'makkah-hub.css?v=20260917e',
+        'makkah-hub.css?v=20260917g',
         html,
     )
     # Never inject home.css — its index-nav rules make links white on light pages.
@@ -168,9 +168,9 @@ def inject_breadcrumb(html: str, rel: str) -> str:
     crumb = f'''
 <nav class="mk-breadcrumb" aria-label="Breadcrumb">
   <a href="/"><span class="en">Home</span><span class="ar">الرئيسية</span></a>
-  <span class="mk-breadcrumb-sep" aria-hidden="true">→</span>
+  <span class="mk-breadcrumb-sep" aria-hidden="true">/</span>
   <a href="/makkah/"><span class="en">Makkah &amp; Madinah</span><span class="ar">مكة والمدينة</span></a>
-  <span class="mk-breadcrumb-sep" aria-hidden="true">→</span>
+  <span class="mk-breadcrumb-sep" aria-hidden="true">/</span>
   <span><span class="en">{en}</span><span class="ar">{ar}</span></span>
 </nav>
 '''

@@ -88,10 +88,9 @@ body.makkah-dest #navbar .nav-logo img {
 /* Legacy topbar hidden if leftover markup exists */
 .mk-topbar { display: none !important; }
 
-/* Subnav under global DotForLife header */
+/* Subnav under DotForLife header — stays below sticky nav, does not cover it */
 .mk-subnav {
-  position: sticky;
-  top: 0;
+  position: relative;
   z-index: 40;
   background: color-mix(in srgb, var(--mk-card) 92%, transparent);
   backdrop-filter: blur(10px);
@@ -149,7 +148,7 @@ body.makkah-dest #navbar .nav-logo img {
   text-decoration: none;
 }
 .mk-breadcrumb a:hover { text-decoration: underline; }
-.mk-breadcrumb-sep { margin: 0 0.35rem; opacity: 0.5; }
+.mk-breadcrumb-sep { margin: 0 0.4rem; opacity: 0.45; font-weight: 600; }
 
 /* Destination hero */
 .mk-hero-dest {
@@ -430,8 +429,21 @@ body.makkah-dest #navbar .nav-logo img {
   color: var(--mk-muted);
 }
 .mk-prose p { margin: 0 0 0.85rem; }
+/* Never show both languages at once (was forcing hybrid EN+AR) */
 .mk-prose .en,
-.mk-prose .ar { display: block; }
+.mk-prose .ar { display: none !important; }
+[data-lang="en"] .mk-prose .en { display: block !important; }
+[data-lang="ar"] .mk-prose .ar { display: block !important; }
+
+/* Feature / need cards: block copy follows active language only */
+.mk-feature > .en,
+.mk-feature > .ar,
+.mk-need > .en,
+.mk-need > .ar { display: none !important; }
+[data-lang="en"] .mk-feature > .en,
+[data-lang="en"] .mk-need > .en { display: block !important; }
+[data-lang="ar"] .mk-feature > .ar,
+[data-lang="ar"] .mk-need > .ar { display: block !important; }
 
 .mk-guide-cats {
   display: grid;
