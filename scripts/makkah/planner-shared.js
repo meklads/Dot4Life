@@ -1,5 +1,7 @@
 /**
- * Shared planner helpers for Makkah vertical tools (Tool 01+).
+ * Shared planner helpers for Makkah vertical tools (Tool 01–05).
+ * Reuse this layer for every planner — do not fork a second shared copy.
+ * Destination-specific rules live in each tool's *-engine.js only.
  * No framework — vanilla ES5-compatible browser JS.
  */
 (function (global) {
