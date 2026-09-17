@@ -38,6 +38,8 @@ body.makkah-vertical {
   font-family: Almarai, "Segoe UI", Tahoma, sans-serif;
   background: linear-gradient(180deg, var(--mk-sand) 0%, var(--mk-sand-2) 100%);
   min-height: 100vh;
+  /* Sticky nav is in-flow — do NOT use global fixed-nav body offset (was white gap above header) */
+  padding-top: 0 !important;
 }
 
 /* Solid DotForLife nav — never inherit homepage transparent/white-link rules */
@@ -46,7 +48,11 @@ body.makkah-dest #navbar {
   border-bottom: none;
   position: sticky;
   top: 0;
-  z-index: 50;
+  left: auto;
+  right: auto;
+  width: 100%;
+  height: auto;
+  z-index: 9000;
 }
 body.makkah-dest #navbar .nav-links a,
 body.makkah-dest #navbar .nav-logo,
