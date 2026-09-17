@@ -5141,3 +5141,8 @@ git: working tree يحوي عدداً كبيراً من الملفات غير ا
 ## 2026-09-17 04:36 UTC — 🤖 بوابة CI الآلية رفضت 1 ملف عند push
 تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
 - `islamic-hajj-umrah/hajj-first-timers-guide.html`: ادّعاء سلطة بلا رابط مجاور (1): خطأ شائع: محاولة «إنجاز كل شيء» في أول حج كما لو كانت فرصة لن تتكرر. الحج عبادة منظمة ضمن 
+
+## 2026-09-17 04:47 UTC — 🤖 بوابة CI الآلية رفضت 2 ملف عند push
+تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
+- `blog/gcc-family-budget-en.html`: كلمات=8 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية
+- `blog/gcc-family-budget.html`: كلمات=8 <1300 · Article schema مفقود · FAQPage schema مفقود · FAQ=0 في schema · محتوى حسّاس بلا إخلاء مسؤولية

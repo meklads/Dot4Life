@@ -3314,3 +3314,5 @@ all other claims rewritten descriptively without institution name/number.
 | 2026-09-02 05:11 UTC | CI الآلي → Hermes/عامر | **🚨 بوابة CI رفضت 1 ملف عند push وعزلتها (noindex) فوراً.** التفاصيل في `quality-log.md`. ملفات: `blog/saudi-mortgage-guide.html` | 🆕 |
 
 | 2026-09-17 04:36 UTC | CI الآلي → Hermes/عامر | **🚨 بوابة CI رفضت 1 ملف عند push وعزلتها (noindex) فوراً.** التفاصيل في `quality-log.md`. ملفات: `islamic-hajj-umrah/hajj-first-timers-guide.html` | 🆕 |
+
+| 2026-09-17 04:47 UTC | CI الآلي → Hermes/عامر | **🚨 بوابة CI رفضت 2 ملف عند push وعزلتها (noindex) فوراً.** التفاصيل في `quality-log.md`. ملفات: `blog/gcc-family-budget-en.html`، `blog/gcc-family-budget.html` | 🆕 |
