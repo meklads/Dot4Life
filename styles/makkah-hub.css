@@ -40,6 +40,39 @@ body.makkah-vertical {
   min-height: 100vh;
 }
 
+/* Solid DotForLife nav — never inherit homepage transparent/white-link rules */
+body.makkah-dest #navbar {
+  background: #054241;
+  border-bottom: none;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+body.makkah-dest #navbar .nav-links a,
+body.makkah-dest #navbar .nav-logo,
+body.makkah-dest #navbar .nav-btn {
+  color: rgba(255, 255, 255, 0.9);
+}
+body.makkah-dest #navbar .nav-links a:hover,
+body.makkah-dest #navbar .nav-btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+body.makkah-dest #navbar .nav-links a[aria-current="page"] {
+  color: #fff;
+  font-weight: 700;
+}
+body.makkah-dest #navbar .hamburger span {
+  background: rgba(255, 255, 255, 0.9);
+}
+body.makkah-dest #navbar .nav-logo img {
+  height: 88px;
+  width: auto;
+}
+@media (max-width: 768px) {
+  body.makkah-dest #navbar .nav-logo img { height: 72px; }
+}
+
 .mk-skip {
   position: absolute;
   left: -999px;
@@ -124,7 +157,7 @@ body.makkah-vertical {
   border-radius: calc(var(--mk-radius) + 4px);
   overflow: hidden;
   margin: 1rem 0 2rem;
-  min-height: clamp(280px, 48vw, 420px);
+  min-height: clamp(320px, 52vw, 460px);
   display: grid;
   align-items: end;
   background: #0a4542;
@@ -138,21 +171,33 @@ body.makkah-vertical {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 40%;
+  object-position: center 45%;
   display: block;
 }
 .mk-hero-dest-media::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(8, 30, 28, 0.25) 0%, rgba(8, 30, 28, 0.72) 70%, rgba(8, 30, 28, 0.88) 100%);
+  background:
+    linear-gradient(105deg, rgba(6, 28, 26, 0.18) 0%, rgba(6, 28, 26, 0.55) 48%, rgba(6, 28, 26, 0.82) 100%),
+    linear-gradient(180deg, rgba(6, 28, 26, 0.15) 0%, rgba(6, 28, 26, 0.78) 100%);
+}
+[dir="rtl"] .mk-hero-dest-media::after {
+  background:
+    linear-gradient(255deg, rgba(6, 28, 26, 0.18) 0%, rgba(6, 28, 26, 0.55) 48%, rgba(6, 28, 26, 0.82) 100%),
+    linear-gradient(180deg, rgba(6, 28, 26, 0.15) 0%, rgba(6, 28, 26, 0.78) 100%);
 }
 .mk-hero-dest-copy {
   position: relative;
   z-index: 1;
-  padding: clamp(1.4rem, 4vw, 2.6rem);
+  padding: clamp(1.5rem, 4.5vw, 2.8rem);
   color: #f7f4ec;
-  max-width: 40rem;
+  max-width: min(36rem, 92%);
+  margin-inline-start: auto;
+}
+[dir="ltr"] .mk-hero-dest-copy {
+  margin-inline-start: 0;
+  margin-inline-end: auto;
 }
 .mk-hero-dest .mk-eyebrow {
   color: rgba(247, 244, 236, 0.78);

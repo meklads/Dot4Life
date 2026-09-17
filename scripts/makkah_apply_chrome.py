@@ -42,22 +42,17 @@ def with_active(subnav: str, key: str) -> str:
 
 
 def ensure_css(html: str) -> str:
-    if 'makkah-hub.css?v=20260917c' not in html:
-        html = html.replace(
-            "makkah-hub.css?v=20260917b",
-            "makkah-hub.css?v=20260917c",
-        )
-        html = html.replace(
-            "makkah-hub.css?v=20260917a",
-            "makkah-hub.css?v=20260917c",
-        )
-    if 'href="/styles/home.css' not in html and "makkah-hub.css" in html:
-        html = html.replace(
-            '<link rel="stylesheet" href="/styles/makkah-hub.css',
-            '<link rel="stylesheet" href="/styles/home.css?v=20260711j"/>\n<link rel="stylesheet" href="/styles/makkah-hub.css',
-            1,
-        )
-    # Drop Cormorant if present — stick to Almarai for brand alignment
+    html = re.sub(
+        r'makkah-hub\.css\?v=[^"\']+',
+        'makkah-hub.css?v=20260917d',
+        html,
+    )
+    # Never inject home.css — its index-nav rules make links white on light pages.
+    html = re.sub(
+        r'<link rel="stylesheet" href="/styles/home\.css\?v=[^"]+"/>\s*',
+        '',
+        html,
+    )
     html = re.sub(
         r'<link href="https://fonts\.googleapis\.com/css2\?family=Almarai:[^"]+Cormorant[^"]+" rel="stylesheet"/>',
         '<link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&display=swap" rel="stylesheet"/>',
@@ -69,7 +64,7 @@ def ensure_css(html: str) -> str:
 def set_body(html: str) -> str:
     html = re.sub(
         r'<body class="[^"]*">',
-        '<body class="index-page makkah-dest has-subnav">',
+        '<body class="makkah-dest has-subnav">',
         html,
         count=1,
     )
