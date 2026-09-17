@@ -3,6 +3,11 @@
 - **اللوحة:** `system/board.html` · **القانون:** `operating-system/HEMA-CHARTER.md`
 - **الحالة الآن:** `operating-system/team-board.md` (تم · جاري · لسه)
 
+## ✅ DEEPEN Wave A — CLOSED 10/10 (2026-09-17)
+- التقرير: `operating-system/reports/deepen-wave-a-2026-09-17.md`
+- `real_live_deepen` 44→34 · كورسر أنجز التعميق والنشر
+- التالي عند أمر جوست: موجة B (أقرب المتبقي نحو ≤25) · لا Batch 04 · لا `/makkah/` بعد
+
 ## DEEPEN · **68** صفحة قصيرة — أولوية قصوى
 - طابور: `hema-deepen-priority.md`
 - بوابة: `scripts/draft-gate.py` قبل التسليم لعامر
