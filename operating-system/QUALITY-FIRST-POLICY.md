@@ -38,6 +38,16 @@
 
 الملف الآلي: `operating-system/new-content-frozen.json`
 
+### استثناء استراتيجي صريح (جوست · 2026-09-17)
+
+**مُجمَّد للجميع ما عدا:** بناء Vertical داخل `dotforlife.com/makkah/` فقط.
+
+- QUALITY-FIRST **تبقى سارية** على بقية DotForLife (لا Batch 04 · لا أقسام أخرى · لا مخزون مقالات جديد).
+- لا عبث بالهوم بيج أو إعادة تصميم الموقع.
+- لا نقل/حذف URL قائم دون Audit (انظر `reports/makkah-vertical-audit-2026-09-17.md`).
+- الأدوات الخمس مخططات لاحقاً ببرومبت مستقل؛ لا منطق في أمر التأسيس.
+- المرجع: `reports/makkah-vertical-audit-2026-09-17.md`
+
 ## 5. تنفيذ تقني (Cursor)
 
 ```bash

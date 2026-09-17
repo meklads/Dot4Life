@@ -31,6 +31,7 @@ CONTENT_DIRS = [
     "health-pregnancy",
     "cities",
     "library/recipes",
+    "makkah",
 ]
 
 HUB_FILES = [

@@ -86,6 +86,10 @@ def check_new_batch(batch_id: str, ghost_override: bool = False) -> tuple[bool, 
     policy = load_policy()
     if ghost_override:
         return True, "ghost-override"
+    # Narrow exception: Makkah vertical only (Ghost 2026-09-17)
+    ex = (policy.get("exceptions") or {}).get("makkah_vertical") or {}
+    if ex.get("active") and batch_id in {"makkah", "makkah-vertical", "/makkah/"}:
+        return True, "makkah_vertical exception (scope /makkah/ only)"
     if not policy.get("frozen"):
         return True, "not frozen"
     allowed = policy.get("allowed_batches", [])
