@@ -192,7 +192,7 @@
     if (inputs.priority === 'proximity') {
       reasons.push(item(
         'You prioritized access — still verify current hotel access and routes; closer is not automatically better for every group.',
-        'أولويتم الوصول — تحققوا مع ذلك من مسارات الوصول الحالية؛ الأقرب ليس أفضل تلقائياً لكل مجموعة.'
+        'أولويّتكم الوصول — تحققوا مع ذلك من مسارات الوصول الحالية؛ الأقرب ليس أفضل تلقائياً لكل مجموعة.'
       ));
     }
     if (inputs.roomNeed === 'critical' || inputs.roomNeed === 'family') {

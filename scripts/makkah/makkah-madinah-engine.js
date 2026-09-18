@@ -188,7 +188,7 @@
     if (inputs.priority === 'speed' && primaryId === 'train') {
       reasons.push(item(
         'You prioritized speed — a train-oriented structure can work when first- and last-mile pieces are planned early.',
-        'أولويتم السرعة — هيكل القطار قد يناسبكم إن خُطّطت قطع الوصول الأولى والأخيرة مبكراً.'
+        'أولويّتكم السرعة — هيكل القطار قد يناسبكم إن خُطّطت قطع الوصول الأولى والأخيرة مبكراً.'
       ));
     }
     if (inputs.priority === 'simplicity' || inputs.priority === 'comfort') {
