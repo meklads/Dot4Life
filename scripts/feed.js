@@ -227,7 +227,7 @@
     var img = a.img || '/assets/images/hero.webp';
 
     return '<a href="' + url + '" class="hl-art-card">' +
-      '<img class="hl-art-card-img" src="' + img + '" alt="" width="600" height="400" loading="lazy">' +
+      '<img class="hl-art-card-img" src="' + img + '" alt="" width="600" height="400" loading="eager" decoding="async">' +
       '<div class="hl-art-card-body">' +
       '<span class="hl-art-card-kicker">' + esc(section) + '</span>' +
       '<span class="hl-art-card-title">' + esc(title) + '</span>' +
@@ -317,7 +317,7 @@
 
     return '<a href="' + url + '" class="bl-card" data-cat="' + esc(cat) + '">' +
       '<span class="bl-card-media">' +
-      '<img class="bl-card-img" src="' + img + '" alt="' + esc(title) + '" width="600" height="400" loading="lazy" decoding="async">' +
+      '<img class="bl-card-img" src="' + img + '" alt="' + esc(title) + '" width="600" height="400" loading="eager" decoding="async">' +
       '</span>' +
       '<span class="bl-card-body">' +
       '<span class="bl-card-kicker">' + esc(section) + '</span>' +
