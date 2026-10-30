@@ -1,4 +1,6 @@
 # Coolify/Nixpacks — static Dot4Life site (HTML/CSS/JS at repo root).
+# Only the public folder _site (built by scripts/build_public.mjs) is served,
+# so internal docs and scripts in the repo are never exposed.
 # Root package.json devDeps (puppeteer/jsdom) are for local QA scripts only.
 
 [variables]
@@ -9,8 +11,9 @@ NIXPACKS_PATH = "/app/node_modules/.bin"
 [phases.install]
 cmds = [
   "npm install --omit=dev --ignore-scripts",
-  "node scripts/generate_static_routes.mjs"
+  "node scripts/generate_static_routes.mjs",
+  "node scripts/build_public.mjs"
 ]
 
 [start]
-cmd = "npx --yes serve . -l ${PORT:-3000}"
+cmd = "npx --yes serve _site -l ${PORT:-3000}"
