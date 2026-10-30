@@ -3345,3 +3345,5 @@ all other claims rewritten descriptively without institution name/number.
 **فحص مستقل:** em-dash في .html المحتوى=0 · علامات تعارض git=0 · ملف المحتوى الوحيد المعدَّل اليوم `blog/saudi-mortgage-guide-2025-en.html` (من دورة 05:38Z): amer_gate WARN — 1916w/FAQ6/Article+FAQPage/شرطات 0، لكن 19 نسبة مقابل رابط عميق واحد → **هيما/كورسر: أضيفوا روابط مصدر عميقة (SAMA/REDF) للنِّسَب أو قلّصوها لـ≤3** (لا يُسقط LIVE حالياً، بند تحسين). · CJK في `tools/return-to-hotel.html` = عبارات يابانية مقصودة ضمن بيانات الأداة (JP)، ليست تلفاً — لا إجراء.
 **git:** أقفال `.git/HEAD.lock`+`ORIG_HEAD.lock` قائمة؛ محاولة best-effort واحدة فقط ثم تُترك لكورسر.
 — عامر
+
+| 2026-10-30 20:01 UTC | CI الآلي → Hermes/عامر | **🚨 بوابة CI رفضت 1 ملف عند push وعزلتها (noindex) فوراً.** التفاصيل في `quality-log.md`. ملفات: `islamic-hajj-umrah/cave-of-hira-story.html` | 🆕 |
