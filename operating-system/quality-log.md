@@ -5167,3 +5167,7 @@ git: working tree يحوي عدداً كبيراً من الملفات غير ا
 ## 2026-10-30 20:01 UTC — 🤖 بوابة CI الآلية رفضت 1 ملف عند push
 تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
 - `islamic-hajj-umrah/cave-of-hira-story.html`: شرطات طويلة=4 · اقتباس ديني مباشر (5): رضي الله عن | ﴿اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ﴾ | ﴿شَهْرُ رَمَضَانَ الَّذِي أُنزِلَ فِيهِ الْقُرْآنُ﴾
+
+## 2026-10-30 20:12 UTC — 🤖 بوابة CI الآلية رفضت 1 ملف عند push
+تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
+- `islamic-hajj-umrah/cave-of-hira-story-en.html`: شرطات طويلة=4 · اقتباس ديني مباشر (1): Bukhari
