@@ -530,3 +530,10 @@
 [data-theme="dark"] .rth-kid{background:#1f1312;border-color:#5b2a26}
 .rth-kid .rth-meet-lead{opacity:.85}
 .rth-kid-note{font-size:.8rem;opacity:.7;margin:4px 0 0;text-align:center}
+
+/* 2026-11-10: layout fix — tool-below grid: meeting point + child card share a row, the rest full width */
+.tool-below{align-items:start}
+.tool-below > .t-section,.tool-below > .rth-partner,.tool-below > .t-faq{grid-column:1/-1}
+.tool-below > .rth-meet,.tool-below > .rth-kid{margin:0}
+@media (max-width:900px){.tool-below > .rth-meet,.tool-below > .rth-kid{grid-column:1/-1}}
+.rth-partner-out[hidden],#meet-saved[hidden],#meet-empty[hidden]{display:none !important}
