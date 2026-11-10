@@ -27,10 +27,10 @@ if(ui==='ur'||ui==='id'){h.setAttribute('data-ui',ui);h.setAttribute('lang',ui);
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Almarai:wght@400;700;800&display=swap"/></noscript>
 <link rel="stylesheet" href="/styles/global.css?v=20260624n"/>
 <link rel="stylesheet" href="/styles/tools-flagship.css?v=20260626a">
-<link rel="stylesheet" href="/styles/pages/rth-v2.css?v=20261110e">
+<link rel="stylesheet" href="/styles/pages/rth-v2.css?v=20261110f">
 <link rel="manifest" href="/tools/return-to-hotel.webmanifest">
 <meta name="theme-color" content="#054241">
-<link rel="preload" as="script" href="/scripts/rth-app.js?v=20261110c">
+<link rel="preload" as="script" href="/scripts/rth-app.js?v=20261110d">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="العودة للفندق">
@@ -105,7 +105,15 @@ window.dflTrack=function(event,params){
       <li><a href="/library.html" aria-current="page"><span class="en">Tools</span><span class="ar">الأدوات</span></a></li>
     </ul>
     <div class="nav-controls">
-      <button class="nav-btn" id="lang-toggle" aria-label="Switch language"><span class="en">عربي</span><span class="ar">English</span></button>
+      <div class="rh-langsel" data-langsel>
+        <button type="button" class="nav-btn rh-langsel-btn" id="rh-lang-btn" aria-haspopup="true" aria-expanded="false" aria-controls="rh-lang-menu" aria-label="Language · اللغة · زبان · Bahasa"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10 15 15 0 0 1 4-10z"/></svg><span class="rh-langsel-cur" data-langcur>العربية</span><svg class="rh-langsel-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="rh-langmenu" id="rh-lang-menu" role="menu" hidden>
+          <button type="button" role="menuitemradio" data-ui="ar" lang="ar"><b>العربية</b><small>Arabic</small></button>
+          <button type="button" role="menuitemradio" data-ui="en" lang="en"><b>English</b><small>الإنجليزية</small></button>
+          <button type="button" role="menuitemradio" data-ui="ur" lang="ur"><b>اردو</b><small>Urdu · الأوردية</small></button>
+          <button type="button" role="menuitemradio" data-ui="id" lang="id"><b>Bahasa Indonesia</b><small>Indonesian · الإندونيسية</small></button>
+        </div>
+      </div>
       <button class="nav-btn" id="theme-toggle" aria-label="Toggle theme"><svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
       <button class="hamburger" id="hamburger-btn" aria-label="Menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -119,9 +127,6 @@ window.dflTrack=function(event,params){
 <!-- ═══ HERO: empty state ═══ -->
 <section class="rh-hero" aria-labelledby="rh-title">
   <div class="rh-wrap">
-    <div class="rh-uilang" role="group" aria-label="Language · اللغة · زبان · Bahasa">
-      <button type="button" data-ui="ar" lang="ar">العربية</button><button type="button" data-ui="en" lang="en">English</button><button type="button" data-ui="ur" lang="ur">اردو</button><button type="button" data-ui="id" lang="id">Indonesia</button>
-    </div>
     <div class="rh-hero-grid" id="rh-empty">
       <div>
         <nav class="rh-crumb" aria-label="Breadcrumb">
@@ -500,7 +505,15 @@ window.dflTrack=function(event,params){
     <a href="/library.html"><span class="en">Tools</span><span class="ar">الأدوات</span></a>
   </div>
   <div class="md-controls">
-    <button class="nav-btn" id="lang-toggle-mobile"><span class="en">عربي</span><span class="ar">English</span></button>
+    <div class="rh-langsel" data-langsel>
+        <button type="button" class="nav-btn rh-langsel-btn" id="rh-lang-m-btn" aria-haspopup="true" aria-expanded="false" aria-controls="rh-lang-m-menu" aria-label="Language · اللغة · زبان · Bahasa"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10 15 15 0 0 1 4-10z"/></svg><span class="rh-langsel-cur" data-langcur>العربية</span><svg class="rh-langsel-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="rh-langmenu" id="rh-lang-m-menu" role="menu" hidden>
+          <button type="button" role="menuitemradio" data-ui="ar" lang="ar"><b>العربية</b><small>Arabic</small></button>
+          <button type="button" role="menuitemradio" data-ui="en" lang="en"><b>English</b><small>الإنجليزية</small></button>
+          <button type="button" role="menuitemradio" data-ui="ur" lang="ur"><b>اردو</b><small>Urdu · الأوردية</small></button>
+          <button type="button" role="menuitemradio" data-ui="id" lang="id"><b>Bahasa Indonesia</b><small>Indonesian · الإندونيسية</small></button>
+        </div>
+      </div>
     <button class="nav-btn" id="theme-toggle-mobile">
       <svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
       <svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -509,6 +522,6 @@ window.dflTrack=function(event,params){
 </div>
 
 <script src="/scripts/global.js?v=20260619e" defer></script>
-<script src="/scripts/rth-app.js?v=20261110c" defer></script>
+<script src="/scripts/rth-app.js?v=20261110d" defer></script>
 </body>
 </html>

@@ -316,14 +316,31 @@ function setUI(u){
   document.dispatchEvent(new CustomEvent('dfl:langchange',{detail:{lang:h.getAttribute('data-lang'),src:'rth'}}));
   track('ui_language',{ui:u});
 }
-function renderUIButtons(){ var u=UI(); document.querySelectorAll('[data-ui]').forEach(function(b){ if(b.tagName==='BUTTON') b.setAttribute('aria-pressed',b.getAttribute('data-ui')===u?'true':'false'); }); }
+var UINAMES={ar:'العربية',en:'English',ur:'اردو',id:'Indonesia'};
+function renderUIButtons(){ var u=UI();
+  document.querySelectorAll('.rh-langmenu [data-ui]').forEach(function(b){ b.setAttribute('aria-checked',b.getAttribute('data-ui')===u?'true':'false'); });
+  document.querySelectorAll('[data-langcur]').forEach(function(el){ el.textContent=UINAMES[u]; });
+}
+function closeLangMenus(except){ document.querySelectorAll('[data-langsel]').forEach(function(w){ if(w===except) return; var m=w.querySelector('.rh-langmenu'), b=w.querySelector('.rh-langsel-btn'); if(m) m.hidden=true; if(b) b.setAttribute('aria-expanded','false'); }); }
+function initLangMenus(){
+  document.querySelectorAll('[data-langsel]').forEach(function(w){
+    var b=w.querySelector('.rh-langsel-btn'), m=w.querySelector('.rh-langmenu');
+    b.addEventListener('click',function(e){ e.stopPropagation(); var open=m.hidden; closeLangMenus(w); m.hidden=!open; b.setAttribute('aria-expanded',open?'true':'false'); if(open){ var c=m.querySelector('[aria-checked="true"]')||m.querySelector('button'); c.focus(); } });
+    m.addEventListener('keydown',function(e){ var items=[].slice.call(m.querySelectorAll('button')), i=items.indexOf(document.activeElement);
+      if(e.key==='ArrowDown'){ e.preventDefault(); items[(i+1)%items.length].focus(); }
+      else if(e.key==='ArrowUp'){ e.preventDefault(); items[(i-1+items.length)%items.length].focus(); }
+      else if(e.key==='Escape'){ closeLangMenus(); b.focus(); } });
+    m.querySelectorAll('[data-ui]').forEach(function(it){ it.addEventListener('click',function(e){ e.stopPropagation(); closeLangMenus(); setUI(it.getAttribute('data-ui')); b.focus({preventScroll:true}); }); });
+  });
+  document.addEventListener('click',function(){ closeLangMenus(); });
+}
 function relang(){ renderUIButtons(); placeholders(); if(hotel) renderCard(); else renderTaxi(taxiKey); renderMeet(); if(!$('rh-form').hidden) renderGpsRow(); }
 
 /* ---------- wire up ---------- */
 function on(id,ev,fn){ var el=$(id); if(el) el.addEventListener(ev,fn); }
 document.addEventListener('DOMContentLoaded',function(){
   load(); applyPrefill(); placeholders(); renderUIButtons(); show(); renderTaxi(UI()==='ur'?'UR':UI()==='id'?'ID':'SA'); renderMeet();
-  document.querySelectorAll('button[data-ui]').forEach(function(b){ b.addEventListener('click',function(){ setUI(b.getAttribute('data-ui')); }); });
+  initLangMenus();
   on('b-here','click',function(){ openForm(true); });
   on('b-manual','click',function(){ openForm(false); });
   on('rh-form-x','click',closeForm);
