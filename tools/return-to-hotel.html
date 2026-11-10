@@ -22,14 +22,14 @@
 <link rel="stylesheet" href="/styles/tools-shared.css?v=20260608a">
 <link rel="stylesheet" href="/styles/tools-flagship.css?v=20260626a">
 <link rel="stylesheet" href="/styles/tools-accents.css?v=20260625a">
-<link rel="stylesheet" href="/styles/pages/tools_return-to-hotel.css?v=20260902c">
+<link rel="stylesheet" href="/styles/pages/tools_return-to-hotel.css?v=20261110a">
 <link rel="stylesheet" href="/styles/pages/family-kit-visual.css?v=20260902e">
-<link rel="manifest" href="/tools/family-kit.webmanifest">
+<link rel="manifest" href="/tools/return-to-hotel.webmanifest">
 <meta name="theme-color" content="#054241">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Family Kit">
-<link rel="apple-touch-icon" href="/assets/icons/family-kit-192.png">
+<meta name="apple-mobile-web-app-title" content="العودة للفندق">
+<link rel="apple-touch-icon" href="/assets/icons/hotel-card-192.png">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://dotforlife.com/tools/return-to-hotel.html">
 <meta property="og:title" content="Return to Hotel | Dot4Life">
@@ -306,7 +306,10 @@ window.dflTrack=function(event,params){
           </div>
           <div class="field-group full">
             <label class="field-label"><span class="en">Google Maps Link</span><span class="ar">رابط خرائط جوجل</span></label>
+            <button type="button" class="rth-gps-btn" id="btn-gps" onclick="saveGpsLocation()">📍 <span class="en">I'm at the hotel now: save its exact location</span><span class="ar">أنا في الفندق الآن: احفظ موقعه بدقة</span></button>
+            <input type="hidden" id="f-lat" /><input type="hidden" id="f-lng" />
             <input type="url" class="field-input" id="f-mapslink" placeholder="https://maps.google.com/..." />
+            <span class="rth-gps-ok" id="gps-ok" hidden><span class="en">✓ Exact location saved. Navigation will walk you back to the door.</span><span class="ar">✓ تم حفظ الموقع الدقيق. الملاحة ستعيدك لباب الفندق.</span></span>
             <span class="field-hint"><span class="en">Paste the Share link from Google Maps for precise one-tap navigation</span><span class="ar">الصق رابط المشاركة من خرائط جوجل للملاحة الدقيقة</span></span>
           </div>
           <div class="field-group full">
@@ -409,11 +412,13 @@ window.dflTrack=function(event,params){
 
       <div class="lang-pills">
         <button class="lang-pill" data-key="SA" onclick="setTaxiLang(this)"> Arabic</button>
+        <button class="lang-pill" data-key="UR" onclick="setTaxiLang(this)"> Urdu اردو</button>
+        <button class="lang-pill" data-key="BN" onclick="setTaxiLang(this)"> Bengali বাংলা</button>
+        <button class="lang-pill" data-key="ID" onclick="setTaxiLang(this)"> Indonesian</button>
         <button class="lang-pill" data-key="TR" onclick="setTaxiLang(this)"> Turkish</button>
         <button class="lang-pill" data-key="TH" onclick="setTaxiLang(this)"> Thai</button>
         <button class="lang-pill" data-key="MA" onclick="setTaxiLang(this)"> French</button>
         <button class="lang-pill" data-key="JP" onclick="setTaxiLang(this)"> Japanese</button>
-        <button class="lang-pill" data-key="ID" onclick="setTaxiLang(this)"> Indonesian</button>
         <button class="lang-pill" data-key="DE" onclick="setTaxiLang(this)"> German</button>
         <button class="lang-pill" data-key="ES" onclick="setTaxiLang(this)"> Spanish</button>
         <button class="lang-pill" data-key="GE" onclick="setTaxiLang(this)"> Georgian</button>
@@ -734,6 +739,10 @@ window.dflTrack=function(event,params){
 var LANGS={
   SA:{phrase:'من فضلك أوصلني لهذا الفندق.',phraseEn:'Please take me to this hotel:',
       emergency:[{en:'Help!',lo:'النجدة!',ph:'an-NAJ-dah'},{en:"I'm lost",lo:'أنا تائه',ph:'ana TAA-ih'},{en:'Call police',lo:'اتصل بالشرطة',ph:'ittasil bish-SHUR-ta'},{en:'How much?',lo:'بكم؟',ph:'bi-KAM?'},{en:'Stop here',lo:'قف هنا',ph:'qif HU-na'},{en:'Thank you',lo:'شكراً',ph:'SHUK-ran'}]},
+  UR:{phrase:'براہ کرم مجھے اس ہوٹل لے چلیں۔',phraseEn:'Please take me to this hotel:',
+      emergency:[{en:'Help!',lo:'مدد!',ph:'MA-dad!'},{en:"I'm lost",lo:'میں راستہ بھول گیا ہوں',ph:'main RAAS-ta bhool ga-ya hoon'},{en:'Call police',lo:'پولیس کو بلائیں',ph:'police ko bu-LAA-ein'},{en:'How much?',lo:'کتنے پیسے؟',ph:'KIT-ne PAI-se?'},{en:'Stop here',lo:'یہاں روکیں',ph:'ya-HAAN RO-kein'},{en:'Thank you',lo:'شکریہ',ph:'SHUK-ri-ya'}]},
+  BN:{phrase:'অনুগ্রহ করে আমাকে এই হোটেলে নিয়ে চলুন।',phraseEn:'Please take me to this hotel:',
+      emergency:[{en:'Help!',lo:'সাহায্য করুন!',ph:'sha-HAJ-jo KO-run!'},{en:"I'm lost",lo:'আমি পথ হারিয়ে ফেলেছি',ph:'A-mi poth HA-ri-ye fe-le-chi'},{en:'Call police',lo:'পুলিশ ডাকুন',ph:'PU-lish DA-kun'},{en:'How much?',lo:'কত?',ph:'KO-to?'},{en:'Stop here',lo:'এখানে থামুন',ph:'E-kha-ne THA-mun'},{en:'Thank you',lo:'ধন্যবাদ',ph:'DHON-no-bad'}]},
   TR:{phrase:'Bu otele gitmek istiyorum, lütfen.',phraseEn:'Please take me to this hotel:',
       emergency:[{en:'Help!',lo:'İmdat!',ph:'Im-DAT!'},{en:"I'm lost",lo:'Kayboldum',ph:'KAY-bol-doom'},{en:'Call police',lo:'Polis çağırın',ph:'Poh-LEES cha-EE-run'},{en:'How much?',lo:'Ne kadar?',ph:'Neh KAH-dar?'},{en:'Stop here',lo:'Burada durun',ph:'Boo-RAH-dah DOO-roon'},{en:'Thank you',lo:'Teşekkürler',ph:'Tesh-ek-EUR-ler'}]},
   TH:{phrase:'กรุณาพาฉันไปโรงแรมนี้',phraseEn:'Please take me to this hotel:',
@@ -758,7 +767,7 @@ var LANGS={
 
 var hotel=null, curStep=1, taxiKey='SA', deferredInstall=null;
 var pack={active:'makkah',makkah:null,madinah:null};
-var HOTEL_FIELDS=['name','area','address','addressAr','phone','country','checkin','checkout','room','notes','mapslink'];
+var HOTEL_FIELDS=['name','area','address','addressAr','phone','country','checkin','checkout','room','notes','mapslink','lat','lng'];
 
 function isAr(){ return document.documentElement.getAttribute('data-lang')==='ar'; }
 function cityName(c){
@@ -789,7 +798,8 @@ function readForm(){
     country:document.getElementById('f-country').value||'SA',
     checkin:document.getElementById('f-checkin').value,checkout:document.getElementById('f-checkout').value,
     room:document.getElementById('f-room').value.trim(),notes:document.getElementById('f-notes').value.trim(),
-    mapslink:document.getElementById('f-mapslink').value.trim()};
+    mapslink:document.getElementById('f-mapslink').value.trim(),
+    lat:document.getElementById('f-lat').value,lng:document.getElementById('f-lng').value};
 }
 function defaultDates(){
   var today=new Date(); var fmt=function(d){return d.toISOString().split('T')[0];};
@@ -804,6 +814,7 @@ function writeForm(h){
     else el.value='';
   });
   if(!h || !h.checkin) defaultDates();
+  var ok=document.getElementById('gps-ok'); if(ok) ok.hidden=!(h&&h.lat);
 }
 function persistPack(){
   localStorage.setItem('dfl_hotels',JSON.stringify({active:pack.active,makkah:pack.makkah,madinah:pack.madinah}));
@@ -837,6 +848,7 @@ function saveHotel(){
   renderCard();
   syncCityPills();
   goStep(2);
+  if(window.dflTrack) dflTrack('hotel_saved',{city:pack.active,has_gps:draft.lat?'yes':'no'});
 }
 
 function loadSaved(){
@@ -895,13 +907,13 @@ function renderCard(){
   document.getElementById('nd-wrap').style.display='none';
   document.getElementById('nn-wrap').style.display='none';
   if(hotel.phone){document.getElementById('disp-phone-wrap').style.display='flex';var pe=document.getElementById('disp-phone');pe.textContent=hotel.phone;pe.href='tel:'+hotel.phone.replace(/\s/g,'');}
-  if(hotel.checkin&&hotel.checkout)document.getElementById('disp-dates').textContent='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> '+hotel.checkin+' → '+hotel.checkout;
+  if(hotel.checkin&&hotel.checkout)document.getElementById('disp-dates').textContent='📅 '+hotel.checkin+' → '+hotel.checkout;
   var q=encodeURIComponent(hotel.name+' '+hotel.address);
-  var gm=hotel.mapslink||('https://www.google.com/maps/search/?api=1&query='+q);
-  document.getElementById('btn-gmaps').href=gm;
-  document.getElementById('btn-waze').href='https://waze.com/ul?q='+encodeURIComponent(hotel.address);
-  document.getElementById('btn-apple').href='http://maps.apple.com/?q='+q;
-  document.getElementById('btn-uber').href='https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[formatted_address]='+encodeURIComponent(hotel.address);
+  var ll=(hotel.lat&&hotel.lng)?(hotel.lat+','+hotel.lng):'';
+  document.getElementById('btn-gmaps').href=ll?('https://www.google.com/maps/dir/?api=1&destination='+ll+'&travelmode=walking'):(hotel.mapslink||('https://www.google.com/maps/search/?api=1&query='+q));
+  document.getElementById('btn-waze').href=ll?('https://waze.com/ul?ll='+ll+'&navigate=yes'):('https://waze.com/ul?q='+encodeURIComponent(hotel.address));
+  document.getElementById('btn-apple').href=ll?('https://maps.apple.com/?daddr='+ll+'&dirflg=w'):('https://maps.apple.com/?q='+q);
+  document.getElementById('btn-uber').href='https://m.uber.com/ul/?action=setPickup&pickup=my_location'+(ll?('&dropoff[latitude]='+hotel.lat+'&dropoff[longitude]='+hotel.lng):'')+'&dropoff[nickname]='+encodeURIComponent(hotel.name)+'&dropoff[formatted_address]='+encodeURIComponent(hotel.address);
   var nc=document.getElementById('notes-card');
   var hasN=hotel.room||(hotel.checkin&&hotel.checkout)||hotel.notes;
   nc.style.display=hasN?'block':'none';
@@ -944,21 +956,24 @@ function goStep(n){
 function copyAddress(){
   if(!hotel)return;
   var t=hotel.name+'\n'+hotel.address+(hotel.phone?'\n'+hotel.phone:'');
-  navigator.clipboard.writeText(t).then(function(){showToast(document.documentElement.getAttribute('data-lang')==='ar'?'✓ تم النسخ':'✓ Copied!');});
+  var done=function(){showToast(isAr()?'✓ تم النسخ':'✓ Copied!');};
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,function(){prompt('',t);});}else{prompt('',t);}
+  if(window.dflTrack) dflTrack('copy_address');
 }
 
 function shareWhatsApp(){
   if(!hotel)return;
   window.open('https://wa.me/?text='+encodeURIComponent(hotelShareText()),'_blank');
+  if(window.dflTrack) dflTrack('whatsapp_share');
 }
 
 function hotelShareText(){
   var l=document.documentElement.getAttribute('data-lang');
-  var map=hotel.mapslink||('https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(hotel.name+' '+hotel.address));
+  var map=(hotel.lat&&hotel.lng)?('https://www.google.com/maps/search/?api=1&query='+hotel.lat+','+hotel.lng):(hotel.mapslink||('https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(hotel.name+' '+hotel.address)));
   if(l==='ar'){
-    return 'أنا نازل في:\n'+hotel.name+'\n'+hotel.address+(hotel.addressAr?'\n'+hotel.addressAr:'')+(hotel.phone?'\n'+hotel.phone:'')+'\n'+map;
+    return 'أنا نازل في:\n'+hotel.name+'\n'+hotel.address+(hotel.addressAr?'\n'+hotel.addressAr:'')+(hotel.phone?'\n'+hotel.phone:'')+'\n'+map+'\n\nاحفظ بطاقة فندقك مجاناً: https://dotforlife.com/hotel';
   }
-  return 'I am staying at:\n'+hotel.name+'\n'+hotel.address+(hotel.addressAr?'\n'+hotel.addressAr:'')+(hotel.phone?'\n'+hotel.phone:'')+'\n'+map;
+  return 'I am staying at:\n'+hotel.name+'\n'+hotel.address+(hotel.addressAr?'\n'+hotel.addressAr:'')+(hotel.phone?'\n'+hotel.phone:'')+'\n'+map+'\n\nSave your hotel card free: https://dotforlife.com/hotel';
 }
 
 function openDriverCard(){
@@ -980,7 +995,8 @@ function openDriverCard(){
     pe.textContent=hotel.phone;
     pe.href='tel:'+hotel.phone.replace(/\s/g,'');
   }else pw.style.display='none';
-  document.getElementById('driver-overlay').classList.add('is-open');
+  var ov=document.getElementById('driver-overlay'); if(ov.parentNode!==document.body) document.body.appendChild(ov);
+  ov.classList.add('is-open'); ov.scrollTop=0;
   document.body.style.overflow='hidden';
   if(window.dflTrack) dflTrack('driver_card_open');
 }
@@ -1001,8 +1017,10 @@ function drawHotelCard(){
   x.fillText(pack.active==='madinah'?'MADINAH':'MAKKAH',80,140);
   x.fillStyle='#fff';x.font='800 28px sans-serif';
   x.fillText('Please take me to this hotel',80,200);
-  x.font='900 72px sans-serif';
-  wrapText(x,hotel.name,80,300,920,82);
+  x.font='800 34px sans-serif';
+  wrapText(x,'من فضلك أوصلني لهذا الفندق',80,250,920,40);
+  x.fillStyle='#fff';x.font='900 72px sans-serif';
+  wrapText(x,hotel.name,80,350,920,82);
   x.fillStyle='#9aa0ab';x.font='700 28px sans-serif';
   x.fillText('Address',80,520);
   x.fillStyle='#fff';x.font='700 40px sans-serif';
@@ -1011,7 +1029,7 @@ function drawHotelCard(){
   if(hotel.addressAr){
     y+=40;
     x.fillStyle='#9aa0ab';x.font='700 28px sans-serif';
-    x.fillText('العنوان',80,y);
+    wrapText(x,'العنوان',80,y,920,0);
     y+=60;
     x.fillStyle='#fff';x.font='700 40px sans-serif';
     y=wrapText(x,hotel.addressAr,80,y,920,50);
@@ -1022,11 +1040,13 @@ function drawHotelCard(){
     x.fillText(hotel.phone,80,y);
   }
   x.fillStyle='#6abfb8';x.font='600 26px sans-serif';
-  x.fillText('dotforlife.com/tools/return-to-hotel',80,h-70);
+  x.fillText('dotforlife.com/hotel',80,h-70);
   return c;
 }
 
 function wrapText(ctx,text,x,y,maxW,lineH){
+  var rtl=/[\u0590-\u08FF]/.test(String(text||''));
+  ctx.save(); if(rtl){ctx.direction='rtl';ctx.textAlign='right';x=x+maxW;}
   var words=String(text||'').split(/\s+/),line='',i;
   for(i=0;i<words.length;i++){
     var test=line?line+' '+words[i]:words[i];
@@ -1035,6 +1055,7 @@ function wrapText(ctx,text,x,y,maxW,lineH){
     }else line=test;
   }
   if(line){ctx.fillText(line,x,y);y+=lineH;}
+  ctx.restore();
   return y;
 }
 
@@ -1067,13 +1088,14 @@ function shareDriverCard(){
 }
 
 function installApp(){
+  if(window.dflTrack) dflTrack('install_click');
   if(deferredInstall){
     deferredInstall.prompt();
     deferredInstall.userChoice.then(function(){ deferredInstall=null; hideInstall(); });
     return;
   }
   var ar=document.documentElement.getAttribute('data-lang')==='ar';
-  showToast(ar?'من قائمة المتصفح: إضافة عدة الأسرة إلى الشاشة الرئيسية':'Use the browser menu: Add the Family Kit to Home Screen');
+  showToast(ar?'من قائمة المتصفح أو زر المشاركة: «إضافة إلى الشاشة الرئيسية»':'Browser menu or Share: "Add to Home Screen"');
 }
 
 function hideInstall(){
@@ -1092,6 +1114,29 @@ document.addEventListener('keydown',function(e){
   if(e.key==='Escape') closeDriverCard();
 });
 
+
+function saveGpsLocation(){
+  var b=document.getElementById('btn-gps');
+  if(!navigator.geolocation){showToast(isAr()?'المتصفح لا يدعم تحديد الموقع':'Location not supported');return;}
+  b.disabled=true;
+  navigator.geolocation.getCurrentPosition(function(p){
+    b.disabled=false;
+    var lat=p.coords.latitude.toFixed(6), lng=p.coords.longitude.toFixed(6);
+    document.getElementById('f-lat').value=lat; document.getElementById('f-lng').value=lng;
+    var ml=document.getElementById('f-mapslink'); if(!ml.value) ml.value='https://www.google.com/maps/search/?api=1&query='+lat+','+lng;
+    document.getElementById('gps-ok').hidden=false;
+    showToast(isAr()?'✓ تم حفظ موقع الفندق (دقة '+Math.round(p.coords.accuracy)+' م)':'✓ Hotel location saved (±'+Math.round(p.coords.accuracy)+' m)');
+    if(hotel){ var d=readForm(); if(d){ pack[pack.active]=d; hotel=d; persistPack(); renderCard(); } }
+    if(window.dflTrack) dflTrack('hotel_gps_saved');
+  },function(e){
+    b.disabled=false;
+    showToast(isAr()?(e.code===1?'اسمح للموقع بالوصول لموقعك من إعدادات المتصفح':'تعذر تحديد الموقع، حاول مرة أخرى'):(e.code===1?'Allow location access in browser settings':'Could not get location, try again'));
+  },{enableHighAccuracy:true,timeout:20000,maximumAge:0});
+}
+document.addEventListener('click',function(e){
+  var a=e.target.closest&&e.target.closest('.nav-buttons a.nav-btn');
+  if(a&&window.dflTrack) dflTrack('nav_open',{app:(a.id||'').replace('btn-','')});
+});
 function showToast(msg){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2500);}
 function toggleFAQ(el){
   var answer=el.nextElementSibling;

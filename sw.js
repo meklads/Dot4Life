@@ -5,7 +5,7 @@
  *  - HTML: network-first with cache fallback.
  *  - Assets (?v= versioned): cache-first.
  */
-const CACHE = 'dfl-kit-v6';
+const CACHE = 'dfl-kit-v7';
 const TOOL_PAGES = [
   '/library.html',
   '/tools/return-to-hotel.html',
@@ -19,6 +19,7 @@ const TOOL_PAGES = [
 const TOOL_ALIASES = {
   '/library': '/library.html',
   '/tools/return-to-hotel': '/tools/return-to-hotel.html',
+  '/hotel': '/tools/return-to-hotel.html',
   '/tools/zakat-calculator': '/tools/zakat-calculator.html',
   '/tools/mortgage-calculator': '/tools/mortgage-calculator.html',
   '/tools/salary-calculator': '/tools/salary-calculator.html',
@@ -50,7 +51,7 @@ const PRECACHE = [
   '/assets/images/kit/cat-travel.svg',
   '/styles/pages/family-kit-visual.css?v=20260902e',
   '/assets/images/kit/inherit-poster.svg',
-  '/styles/pages/tools_return-to-hotel.css?v=20260902c',
+  '/styles/pages/tools_return-to-hotel.css?v=20261110a',
   '/styles/pages/tools_zakat-calculator.css?v=20260823a',
   '/assets/images/kit/house.svg',
   '/assets/images/kit/house-hero.svg',
@@ -63,6 +64,7 @@ const PRECACHE = [
   '/assets/images/kit/inherit.svg',
   '/assets/icons/family-kit-192.png',
   '/assets/icons/hotel-card-192.png',
+  '/assets/icons/hotel-card-512.png',
   '/assets/icons/zakat-192.png',
   '/favicon.svg',
 ];

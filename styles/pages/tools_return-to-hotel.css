@@ -200,7 +200,7 @@
 
 @media (max-width: 480px) { .nav-buttons { grid-template-columns: 1fr 1fr; } }
 
-.nav-btn {
+.nav-buttons .nav-btn {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -218,7 +218,7 @@
   font-family: inherit;
 }
 
-[data-theme="dark"] .nav-btn { background: #0F172A; }
+[data-theme="dark"] .nav-buttons .nav-btn { background: #0F172A; }
 
 .nav-btn-gmaps { border-color: color-mix(in srgb, #4285F4 35%, var(--tool-border)); }
 .nav-btn-waze { border-color: color-mix(in srgb, #33CCFF 35%, var(--tool-border)); }
@@ -407,7 +407,7 @@
 .driver-overlay {
   position: fixed;
   inset: 0;
-  z-index: 4000;
+  z-index: 2147483000;
   background: #054241;
   color: #fff;
   display: none;
@@ -489,3 +489,8 @@
   .rth-rescue-row, .rth-gallery, .rth-taxi-jump, .driver-overlay, .pilgrim-companion { display: none !important; }
   .hotel-card-main { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
+
+/* 2026-11-10: GPS save button */
+.rth-gps-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin:0 0 10px;padding:14px 16px;border-radius:14px;border:0;background:#054241;color:#fff;font:inherit;font-weight:800;font-size:.95rem;cursor:pointer;min-height:48px}
+.rth-gps-btn[disabled]{opacity:.6;cursor:wait}
+.rth-gps-ok{display:block;margin-top:6px;font-size:.8rem;color:#0f7a4f;font-weight:700}
