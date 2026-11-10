@@ -5,7 +5,7 @@
  *  - HTML: network-first with cache fallback.
  *  - Assets (?v= versioned): cache-first.
  */
-const CACHE = 'dfl-kit-v8';
+const CACHE = 'dfl-kit-v9';
 const TOOL_PAGES = [
   '/library.html',
   '/tools/return-to-hotel.html',
@@ -20,6 +20,7 @@ const TOOL_ALIASES = {
   '/library': '/library.html',
   '/tools/return-to-hotel': '/tools/return-to-hotel.html',
   '/hotel': '/tools/return-to-hotel.html',
+  '/h': '/tools/return-to-hotel.html',
   '/tools/zakat-calculator': '/tools/zakat-calculator.html',
   '/tools/mortgage-calculator': '/tools/mortgage-calculator.html',
   '/tools/salary-calculator': '/tools/salary-calculator.html',

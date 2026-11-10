@@ -96,8 +96,9 @@ const HEADERS = [
 ];
 
 function main() {
-  const rewrites = [];
-  const redirectLines = [];
+  // Short share path for QR codes: keeps the query string (rewrite, not redirect).
+  const rewrites = [{ source: "/h", destination: "/tools/return-to-hotel.html" }];
+  const redirectLines = ["/h /tools/return-to-hotel.html 200"];
 
   for (const full of collectHtmlFiles()) {
     const rel = path.relative(ROOT, full).split(path.sep).join("/");
