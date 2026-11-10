@@ -5,7 +5,7 @@
  *  - HTML: network-first with cache fallback.
  *  - Assets (?v= versioned): cache-first.
  */
-const CACHE = 'dfl-kit-v18';
+const CACHE = 'dfl-kit-v19';
 const TOOL_PAGES = [
   '/library.html',
   '/tools/return-to-hotel.html',
@@ -40,7 +40,7 @@ const PRECACHE = [
   '/tools/monthly-budget.html',
   '/tools/water-calculator.html',
   '/tools/inheritance-calculator.html',
-  '/styles/global.css?v=20260624n',
+  '/styles/global.css?v=20261110a',
   '/styles/tools-shared.css?v=20260608a',
   '/styles/tools-flagship.css?v=20260626a',
   '/styles/tools-flagship.css?v=20260709f',
