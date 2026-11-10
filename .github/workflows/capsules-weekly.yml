@@ -54,10 +54,5 @@ jobs:
             exit 0
           fi
           git add data/capsules-published.json scripts/dfl-config.js
-          git commit -m "$(cat <<'EOF'
-chore(capsules): autopilot weekly buffer refill
-
-Automated schedule extension via scripts/auto_capsules_weekly.py (Dot4Life rules).
-EOF
-)"
+          git commit -m "chore(capsules): autopilot weekly buffer refill" -m "Automated schedule extension via scripts/auto_capsules_weekly.py (Dot4Life rules)."
           git push
