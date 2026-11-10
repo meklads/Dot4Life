@@ -22,7 +22,7 @@
 <link rel="stylesheet" href="/styles/tools-shared.css?v=20260608a">
 <link rel="stylesheet" href="/styles/tools-flagship.css?v=20260626a">
 <link rel="stylesheet" href="/styles/tools-accents.css?v=20260625a">
-<link rel="stylesheet" href="/styles/pages/tools_return-to-hotel.css?v=20261110b">
+<link rel="stylesheet" href="/styles/pages/tools_return-to-hotel.css?v=20261110c">
 <link rel="stylesheet" href="/styles/pages/family-kit-visual.css?v=20260902e">
 <link rel="manifest" href="/tools/return-to-hotel.webmanifest">
 <meta name="theme-color" content="#054241">
@@ -472,6 +472,23 @@ window.dflTrack=function(event,params){
       <p class="en">Lost in a foreign city after a long day? One tap opens Google Maps, Waze, or Apple Maps back to your hotel. The taxi card speaks to drivers in their language.</p>
       <p class="ar">ضعت في مدينة أجنبية؟ نقرة واحدة تفتح الخرائط للعودة لفندقك. بطاقة التاكسي تتحدث بلغة السائق.</p>
     </div>
+    <section class="rth-meet" id="meet" aria-labelledby="meet-title">
+      <h2 class="rth-meet-title" id="meet-title">👨‍👩‍👧 <span class="en">Family meeting point</span><span class="ar">نقطة لقاء العائلة</span></h2>
+      <p class="rth-meet-lead"><span class="en">Before you split up in the Haram, save where you are now and send it to your family. Anyone who gets separated walks straight back to it.</span><span class="ar">قبل أن تتفرقوا في الحرم، احفظ مكانك الآن وأرسله لعائلتك. من يضيع منكم يمشي إليه مباشرة.</span></p>
+      <div id="meet-empty">
+        <input class="field-input" id="meet-gate" maxlength="60" placeholder="رقم الباب أو علامة مميزة · Gate no. or landmark">
+        <button type="button" class="rth-gps-btn" id="meet-save" onclick="saveMeetPoint()">📍 <span class="en">Save my spot as our meeting point</span><span class="ar">احفظ مكاني كنقطة لقاء</span></button>
+      </div>
+      <div id="meet-saved" hidden>
+        <div class="rth-meet-info"><strong id="meet-gate-val"></strong><span id="meet-time"></span></div>
+        <div class="rth-meet-actions">
+          <a class="rth-meet-go" id="meet-go" href="#" target="_blank" rel="noopener" onclick="if(window.dflTrack)dflTrack('meet_nav')">🧭 <span class="en">Walk me there</span><span class="ar">خذني إليها</span></a>
+          <button type="button" class="rth-meet-wa" onclick="shareMeetPoint()"><span class="en">Send to family</span><span class="ar">أرسلها للعائلة</span></button>
+          <button type="button" class="rth-meet-clear" onclick="clearMeetPoint()"><span class="en">New point</span><span class="ar">نقطة جديدة</span></button>
+        </div>
+      </div>
+    </section>
+
     <details class="rth-partner" id="partner">
       <summary><span class="en">🏨 For hotels &amp; Umrah companies: a free link and QR for your hotel</span><span class="ar">🏨 للفنادق وشركات العمرة: رابط وQR مجاني لفندقك</span></summary>
       <p class="rth-partner-lead"><span class="en">Your guest scans once and your hotel card is saved on their phone, with the exact location, ready for the driver. Print it on room cards, the lobby, or send it in your pilgrims' WhatsApp group.</span><span class="ar">ضيفك يمسح الرمز مرة واحدة فتُحفظ بطاقة فندقك على جواله بالموقع الدقيق، جاهزة للسائق. اطبعه على بطاقة الغرفة أو في الاستقبال، أو أرسله في قروب واتساب المعتمرين.</span></p>
@@ -1293,6 +1310,43 @@ function partnerWhatsApp(){
   window.open('https://wa.me/?text='+encodeURIComponent(msg),'_blank');
   if(window.dflTrack) dflTrack('partner_kit_whatsapp');
 }
+
+var MEET_KEY='dfl_meet';
+function getMeet(){ try{ return JSON.parse(localStorage.getItem(MEET_KEY)||'null'); }catch(e){ return null; } }
+function meetMapUrl(m){ return 'https://www.google.com/maps/search/?api=1&query='+m.lat+','+m.lng; }
+function renderMeet(){
+  var m=getMeet(), e=document.getElementById('meet-empty'), s=document.getElementById('meet-saved'); if(!e) return;
+  e.hidden=!!m; s.hidden=!m; if(!m) return;
+  document.getElementById('meet-gate-val').textContent=m.gate||(isAr()?'نقطة اللقاء':'Meeting point');
+  var d=new Date(m.t), hh=d.toLocaleTimeString(isAr()?'ar-SA':'en-GB',{hour:'2-digit',minute:'2-digit'});
+  document.getElementById('meet-time').textContent=(isAr()?'حُفظت الساعة ':'Saved at ')+hh+(m.acc?(isAr()?' · دقة ':' · ±')+m.acc+(isAr()?' م':' m'):'');
+  document.getElementById('meet-go').href='https://www.google.com/maps/dir/?api=1&destination='+m.lat+','+m.lng+'&travelmode=walking';
+}
+function saveMeetPoint(){
+  if(!navigator.geolocation){showToast(isAr()?'المتصفح لا يدعم تحديد الموقع':'Location not supported');return;}
+  var b=document.getElementById('meet-save'); b.disabled=true;
+  navigator.geolocation.getCurrentPosition(function(p){
+    b.disabled=false;
+    var m={lat:p.coords.latitude.toFixed(6),lng:p.coords.longitude.toFixed(6),acc:Math.round(p.coords.accuracy),gate:document.getElementById('meet-gate').value.trim().slice(0,60),t:Date.now()};
+    localStorage.setItem(MEET_KEY,JSON.stringify(m)); renderMeet();
+    showToast(isAr()?'✓ حُفظت نقطة اللقاء، أرسلها لعائلتك الآن':'✓ Meeting point saved. Send it to your family');
+    if(window.dflTrack) dflTrack('meet_saved',{has_gate:m.gate?'yes':'no'});
+  },function(e){
+    b.disabled=false;
+    showToast(isAr()?(e.code===1?'اسمح للموقع بالوصول لموقعك من إعدادات المتصفح':'تعذر تحديد الموقع، حاول مرة أخرى'):(e.code===1?'Allow location access in browser settings':'Could not get location, try again'));
+  },{enableHighAccuracy:true,timeout:20000,maximumAge:0});
+}
+function shareMeetPoint(){
+  var m=getMeet(); if(!m) return;
+  var d=new Date(m.t), hh=d.toLocaleTimeString(isAr()?'ar-SA':'en-GB',{hour:'2-digit',minute:'2-digit'});
+  var msg=isAr()
+    ? ('📍 نقطة لقائنا'+(m.gate?(': '+m.gate):'')+'\nإذا ضعت أو تفرقنا، تعال هنا (حُفظت الساعة '+hh+'):\n'+meetMapUrl(m)+'\n\nاحفظ فندقك ونقطة لقائك مجاناً: https://dotforlife.com/hotel')
+    : ('📍 Our meeting point'+(m.gate?(': '+m.gate):'')+'\nIf we get separated, come here (saved '+hh+'):\n'+meetMapUrl(m)+'\n\nSave your hotel and meeting point free: https://dotforlife.com/hotel');
+  window.open('https://wa.me/?text='+encodeURIComponent(msg),'_blank');
+  if(window.dflTrack) dflTrack('meet_shared');
+}
+function clearMeetPoint(){ localStorage.removeItem(MEET_KEY); document.getElementById('meet-gate').value=''; renderMeet(); }
+document.addEventListener('dfl:langchange',renderMeet);
 function showToast(msg){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2500);}
 function toggleFAQ(el){
   var answer=el.nextElementSibling;
@@ -1315,6 +1369,7 @@ function toggleFAQ(el){
 
   loadSaved();
   applyPrefill();
+  renderMeet();
   writeForm(hotel);
   syncCityPills();
   if(!window.matchMedia('(display-mode: standalone)').matches && !window.navigator.standalone){
