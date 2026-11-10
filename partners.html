@@ -15,6 +15,11 @@
 <link rel="alternate" hreflang="ar" href="https://dotforlife.com/partners?lang=ar" />
 <link rel="alternate" hreflang="en" href="https://dotforlife.com/partners?lang=en" />
 <script src="/scripts/lang-redirect.js?v=20260620"></script>
+<script>(function(){try{var h=document.documentElement,p=new URLSearchParams(location.search).get('lang'),ui=null;
+if(p==='ur'||p==='id'){ui=p;}else if(p==='ar'||p==='en'){localStorage.removeItem('rth-ui');}
+else{ui=localStorage.getItem('rth-ui');if(!ui&&!localStorage.getItem('dfl-lang')){var n=(navigator.language||'').toLowerCase();if(/^ur/.test(n))ui='ur';else if(/^(id|ms)/.test(n))ui='id';}}
+var dl=localStorage.getItem('dfl-lang');if(dl==='ur'||dl==='id')localStorage.setItem('dfl-lang',dl==='ur'?'ar':'en');
+if(ui==='ur'||ui==='id'){h.setAttribute('data-ui',ui);h.setAttribute('lang',ui);h.setAttribute('data-lang',ui==='ur'?'ar':'en');h.setAttribute('dir',ui==='ur'?'rtl':'ltr');localStorage.setItem('rth-ui',ui);if(ui==='ur'){var l=document.createElement('link');l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;700&display=swap';document.head.appendChild(l);}}}catch(e){}})()</script>
 <link rel="alternate" hreflang="x-default" href="https://dotforlife.com/partners" />
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Almarai:wght@400;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Almarai:wght@400;700;800&display=swap"/></noscript>
@@ -51,6 +56,8 @@ window.dflTrack=function(event,params){
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "QR مجاني للفنادق وشركات العمرة", "url": "https://dotforlife.com/partners", "inLanguage": ["ar", "en"]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://dotforlife.com"}, {"@type": "ListItem", "position": 2, "name": "Umrah", "item": "https://dotforlife.com/makkah"}, {"@type": "ListItem", "position": 3, "name": "Hotels & Umrah companies", "item": "https://dotforlife.com/partners"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "هل هو مجاني فعلاً؟ | Is it really free?", "acceptedAnswer": {"@type": "Answer", "text": "نعم. إنشاء الرمز وطباعته واستخدام ضيوفك للبطاقة كلها مجانية وبلا حساب. Yes. Creating the QR, printing it and your guests using the card are all free, with no account."}}, {"@type": "Question", "name": "هل يحتاج الضيف لتثبيت تطبيق؟ | Do guests need to install an app?", "acceptedAnswer": {"@type": "Answer", "text": "لا. الرمز يفتح صفحة ويب تحفظ البطاقة على الجوال، ويمكن للضيف إضافتها للشاشة الرئيسية إن أراد. No. The QR opens a web page that saves the card on the phone. Guests can add it to the home screen if they like."}}, {"@type": "Question", "name": "هل تجمعون بيانات الضيوف؟ | Do you collect guest data?", "acceptedAnswer": {"@type": "Answer", "text": "لا. البطاقة تُحفظ على جوال الضيف فقط، ونحن نحصي الزيارات دون هوية لتحسين الخدمة. No. The card is saved on the guest's phone only. We only count anonymous visits to improve the service."}}, {"@type": "Question", "name": "هل نستطيع تعديل البيانات لاحقاً؟ | Can we change the details later?", "acceptedAnswer": {"@type": "Answer", "text": "البيانات محفوظة داخل الرمز نفسه، فأنشئ رمزاً جديداً إذا تغيّر الهاتف أو العنوان. The details live inside the QR, so create a new QR if your phone number or address changes."}}]}</script>
+<link rel="alternate" hreflang="ur" href="https://dotforlife.com/partners?lang=ur" />
+<link rel="alternate" hreflang="id" href="https://dotforlife.com/partners?lang=id" />
 </head>
 <body class="tool-flagship-page no-subnav" data-tool="partners">
 <nav id="navbar" class="index-nav" role="navigation" aria-label="Main navigation">
@@ -70,7 +77,15 @@ window.dflTrack=function(event,params){
       <li><a href="/library.html" aria-current="page"><span class="en">Tools</span><span class="ar">الأدوات</span></a></li>
     </ul>
     <div class="nav-controls">
-      <button class="nav-btn" id="lang-toggle" aria-label="Switch language"><span class="en">عربي</span><span class="ar">English</span></button>
+      <div class="rh-langsel" data-langsel>
+        <button type="button" class="nav-btn rh-langsel-btn" id="rh-lang-btn" aria-haspopup="true" aria-expanded="false" aria-controls="rh-lang-menu" aria-label="Language · اللغة · زبان · Bahasa"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10 15 15 0 0 1 4-10z"/></svg><span class="rh-langsel-cur" data-langcur>العربية</span><svg class="rh-langsel-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="rh-langmenu" id="rh-lang-menu" role="menu" hidden>
+          <button type="button" role="menuitemradio" data-ui="ar" lang="ar"><b>العربية</b><small>Arabic</small></button>
+          <button type="button" role="menuitemradio" data-ui="en" lang="en"><b>English</b><small>الإنجليزية</small></button>
+          <button type="button" role="menuitemradio" data-ui="ur" lang="ur"><b>اردو</b><small>Urdu · الأوردية</small></button>
+          <button type="button" role="menuitemradio" data-ui="id" lang="id"><b>Bahasa Indonesia</b><small>Indonesian · الإندونيسية</small></button>
+        </div>
+      </div>
       <button class="nav-btn" id="theme-toggle" aria-label="Toggle theme"><svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
       <button class="hamburger" id="hamburger-btn" aria-label="Menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -85,21 +100,21 @@ window.dflTrack=function(event,params){
     <div class="rh-hero-grid">
       <div>
         <nav class="rh-crumb" aria-label="Breadcrumb">
-          <a href="/"><span class="en">Home</span><span class="ar">الرئيسية</span></a><span aria-hidden="true">/</span>
-          <a href="/makkah"><span class="en">Umrah</span><span class="ar">العمرة</span></a><span aria-hidden="true">/</span>
-          <span><span class="en">For hotels &amp; Umrah companies</span><span class="ar">للفنادق وشركات العمرة</span></span>
+          <a href="/"><span class="en">Home</span><span class="ar">الرئيسية</span><span class="ur" lang="ur">ہوم</span><span class="id" lang="id">Beranda</span></a><span aria-hidden="true">/</span>
+          <a href="/makkah"><span class="en">Umrah</span><span class="ar">العمرة</span><span class="ur" lang="ur">عمرہ</span><span class="id" lang="id">Umrah</span></a><span aria-hidden="true">/</span>
+          <span><span class="en">For hotels &amp; Umrah companies</span><span class="ar">للفنادق وشركات العمرة</span><span class="ur" lang="ur">ہوٹلوں اور عمرہ کمپنیوں کے لیے</span><span class="id" lang="id">Untuk hotel &amp; biro Umrah</span></span>
         </nav>
-        <span class="rh-eyebrow">🏨 <span class="en">For hotels &amp; Umrah companies · Free</span><span class="ar">للفنادق وشركات العمرة · مجاناً</span></span>
-        <h1 class="rh-h1" id="pt-title"><span class="en">Your guests will <em>always find their way back</em></span><span class="ar">ضيوفك <em>لن يضيعوا طريق العودة</em> لفندقك</span></h1>
-        <p class="rh-lead"><span class="en">Create a QR for your hotel in a minute. A guest scans it once and your hotel card is saved on their phone with the exact location, ready to walk back or show any driver. No app, no sign-up, no cost.</span><span class="ar">أنشئ QR لفندقك في دقيقة. يمسحه الضيف مرة واحدة فتُحفظ بطاقة فندقك على جواله بالموقع الدقيق، جاهزة للعودة مشياً أو لإظهارها لأي سائق. بلا تطبيق ولا تسجيل ولا تكلفة.</span></p>
+        <span class="rh-eyebrow">🏨 <span class="en">For hotels &amp; Umrah companies · Free</span><span class="ar">للفنادق وشركات العمرة · مجاناً</span><span class="ur" lang="ur">ہوٹلوں اور عمرہ کمپنیوں کے لیے · مفت</span><span class="id" lang="id">Untuk hotel &amp; biro Umrah · Gratis</span></span>
+        <h1 class="rh-h1" id="pt-title"><span class="en">Your guests will <em>always find their way back</em></span><span class="ar">ضيوفك <em>لن يضيعوا طريق العودة</em> لفندقك</span><span class="ur" lang="ur">آپ کے مہمان <em>ہمیشہ واپسی کا راستہ پائیں گے</em></span><span class="id" lang="id">Tamu Anda <em>selalu menemukan jalan kembali</em></span></h1>
+        <p class="rh-lead"><span class="en">Create a QR for your hotel in a minute. A guest scans it once and your hotel card is saved on their phone with the exact location, ready to walk back or show any driver. No app, no sign-up, no cost.</span><span class="ar">أنشئ QR لفندقك في دقيقة. يمسحه الضيف مرة واحدة فتُحفظ بطاقة فندقك على جواله بالموقع الدقيق، جاهزة للعودة مشياً أو لإظهارها لأي سائق. بلا تطبيق ولا تسجيل ولا تكلفة.</span><span class="ur" lang="ur">ایک منٹ میں اپنے ہوٹل کا QR بنائیں۔ مہمان ایک بار اسکین کرے اور آپ کا ہوٹل کارڈ درست مقام کے ساتھ اس کے فون پر محفوظ ہو جائے، پیدل واپسی یا ڈرائیور کو دکھانے کے لیے تیار۔ نہ ایپ، نہ رجسٹریشن، نہ خرچ۔</span><span class="id" lang="id">Buat QR hotel Anda dalam semenit. Tamu memindai sekali dan kartu hotel tersimpan di ponselnya dengan lokasi tepat, siap untuk jalan kembali atau ditunjukkan ke sopir. Tanpa aplikasi, tanpa daftar, tanpa biaya.</span></p>
         <div class="rh-cta">
-          <a class="rh-btn rh-btn-gold" href="#kit">✨ <span class="en">Create your QR now</span><span class="ar">أنشئ QR فندقك الآن</span></a>
-          <a class="rh-btn rh-btn-ghost" href="/tools/return-to-hotel">👀 <span class="en">See what guests get</span><span class="ar">شاهد ما يحصل عليه الضيف</span></a>
+          <a class="rh-btn rh-btn-gold" href="#kit">✨ <span class="en">Create your QR now</span><span class="ar">أنشئ QR فندقك الآن</span><span class="ur" lang="ur">ابھی اپنا QR بنائیں</span><span class="id" lang="id">Buat QR Anda sekarang</span></a>
+          <a class="rh-btn rh-btn-ghost" href="/tools/return-to-hotel">👀 <span class="en">See what guests get</span><span class="ar">شاهد ما يحصل عليه الضيف</span><span class="ur" lang="ur">دیکھیں مہمان کو کیا ملتا ہے</span><span class="id" lang="id">Lihat yang didapat tamu</span></a>
         </div>
         <ul class="rh-trust">
-          <li><span class="en">Free forever</span><span class="ar">مجاني دائماً</span></li>
-          <li><span class="en">Your hotel name in the QR</span><span class="ar">اسم فندقك داخل الـQR</span></li>
-          <li><span class="en">Arabic, English, Urdu</span><span class="ar">عربي وإنجليزي وأوردو</span></li>
+          <li><span class="en">Free forever</span><span class="ar">مجاني دائماً</span><span class="ur" lang="ur">ہمیشہ مفت</span><span class="id" lang="id">Gratis selamanya</span></li>
+          <li><span class="en">Your hotel name in the QR</span><span class="ar">اسم فندقك داخل الـQR</span><span class="ur" lang="ur">QR میں آپ کے ہوٹل کا نام</span><span class="id" lang="id">Nama hotel Anda di QR</span></li>
+          <li><span class="en">Arabic, English, Urdu</span><span class="ar">عربي وإنجليزي وأوردو</span><span class="ur" lang="ur">عربی، انگریزی، اردو</span><span class="id" lang="id">Arab, Inggris, Urdu</span></li>
         </ul>
       </div>
       <div class="rh-phone" aria-hidden="true">
@@ -117,46 +132,46 @@ window.dflTrack=function(event,params){
 
 <section class="rh-sec" aria-labelledby="why-t">
   <div class="rh-wrap">
-    <span class="rh-kicker"><span class="en">Why it matters</span><span class="ar">لماذا يهمك</span></span>
-    <h2 class="rh-h2" id="why-t"><span class="en">Fewer lost guests, fewer calls to reception</span><span class="ar">ضيوف أقل ضياعاً، واتصالات أقل على الاستقبال</span></h2>
+    <span class="rh-kicker"><span class="en">Why it matters</span><span class="ar">لماذا يهمك</span><span class="ur" lang="ur">یہ کیوں اہم ہے</span><span class="id" lang="id">Mengapa penting</span></span>
+    <h2 class="rh-h2" id="why-t"><span class="en">Fewer lost guests, fewer calls to reception</span><span class="ar">ضيوف أقل ضياعاً، واتصالات أقل على الاستقبال</span><span class="ur" lang="ur">کم بھٹکنے والے مہمان، استقبالیہ پر کم کالیں</span><span class="id" lang="id">Lebih sedikit tamu tersesat, lebih sedikit telepon ke resepsionis</span></h2>
     <div class="rh-steps">
-      <div class="rh-step"><div class="ic">🧭</div><h3><span class="en">Walk back to your door</span><span class="ar">العودة لبابك مشياً</span></h3><p><span class="en">Your exact entrance is saved, so walking directions end at your hotel, not a similar name nearby.</span><span class="ar">يُحفظ مدخلك الدقيق، فتنتهي اتجاهات المشي عند فندقك لا عند فندق باسم مشابه قريب منك.</span></p></div>
-      <div class="rh-step"><div class="ic">🚕</div><h3><span class="en">Any driver can read it</span><span class="ar">أي سائق يقرؤها</span></h3><p><span class="en">A full-screen card with your name, Arabic address and phone, plus phrases in Urdu and Bengali.</span><span class="ar">بطاقة بملء الشاشة باسمك وعنوانك بالعربي وهاتفك، مع عبارات بالأوردية والبنغالية.</span></p></div>
-      <div class="rh-step"><div class="ic">⭐</div><h3><span class="en">Care your guests remember</span><span class="ar">لمسة يتذكرها ضيفك</span></h3><p><span class="en">A small service that shows you think about their safety, with your name on it.</span><span class="ar">خدمة صغيرة تُظهر اهتمامك بسلامة ضيوفك، وتحمل اسمك.</span></p></div>
+      <div class="rh-step"><div class="ic">🧭</div><h3><span class="en">Walk back to your door</span><span class="ar">العودة لبابك مشياً</span><span class="ur" lang="ur">آپ کے دروازے تک پیدل واپسی</span><span class="id" lang="id">Jalan kembali ke pintu Anda</span></h3><p><span class="en">Your exact entrance is saved, so walking directions end at your hotel, not a similar name nearby.</span><span class="ar">يُحفظ مدخلك الدقيق، فتنتهي اتجاهات المشي عند فندقك لا عند فندق باسم مشابه قريب منك.</span><span class="ur" lang="ur">آپ کا درست داخلہ محفوظ ہوتا ہے، اس لیے پیدل راستہ آپ کے ہوٹل پر ختم ہوتا ہے، قریب کے ملتے جلتے نام پر نہیں۔</span><span class="id" lang="id">Pintu masuk Anda tersimpan tepat, jadi petunjuk jalan berakhir di hotel Anda, bukan hotel bernama mirip di dekatnya.</span></p></div>
+      <div class="rh-step"><div class="ic">🚕</div><h3><span class="en">Any driver can read it</span><span class="ar">أي سائق يقرؤها</span><span class="ur" lang="ur">ہر ڈرائیور پڑھ سکتا ہے</span><span class="id" lang="id">Bisa dibaca sopir mana pun</span></h3><p><span class="en">A full-screen card with your name, Arabic address and phone, plus phrases in Urdu and Bengali.</span><span class="ar">بطاقة بملء الشاشة باسمك وعنوانك بالعربي وهاتفك، مع عبارات بالأوردية والبنغالية.</span><span class="ur" lang="ur">پوری اسکرین کا کارڈ جس میں آپ کا نام، عربی پتہ اور فون ہو، ساتھ اردو اور بنگالی جملے۔</span><span class="id" lang="id">Kartu layar penuh dengan nama, alamat Arab, dan telepon Anda, plus kalimat dalam bahasa Urdu dan Bengali.</span></p></div>
+      <div class="rh-step"><div class="ic">⭐</div><h3><span class="en">Care your guests remember</span><span class="ar">لمسة يتذكرها ضيفك</span><span class="ur" lang="ur">ایسی خدمت جو مہمان یاد رکھیں</span><span class="id" lang="id">Perhatian yang diingat tamu</span></h3><p><span class="en">A small service that shows you think about their safety, with your name on it.</span><span class="ar">خدمة صغيرة تُظهر اهتمامك بسلامة ضيوفك، وتحمل اسمك.</span><span class="ur" lang="ur">ایک چھوٹی خدمت جو بتاتی ہے کہ آپ ان کی حفاظت کا خیال رکھتے ہیں، آپ کے نام کے ساتھ۔</span><span class="id" lang="id">Layanan kecil yang menunjukkan Anda peduli keselamatan mereka, dengan nama Anda di atasnya.</span></p></div>
     </div>
   </div>
 </section>
 
 <section class="rh-sec" id="kit" aria-labelledby="kit-t">
   <div class="rh-wrap">
-    <span class="rh-kicker"><span class="en">Create your kit</span><span class="ar">أنشئ ملصقك</span></span>
-    <h2 class="rh-h2" id="kit-t"><span class="en">Your hotel QR in one minute</span><span class="ar">QR فندقك في دقيقة واحدة</span></h2>
-    <p class="rh-sub"><span class="en">Stand at the hotel entrance with your phone for the most accurate location.</span><span class="ar">قف عند مدخل الفندق بجوالك للحصول على أدق موقع.</span></p>
+    <span class="rh-kicker"><span class="en">Create your kit</span><span class="ar">أنشئ ملصقك</span><span class="ur" lang="ur">اپنا کٹ بنائیں</span><span class="id" lang="id">Buat paket Anda</span></span>
+    <h2 class="rh-h2" id="kit-t"><span class="en">Your hotel QR in one minute</span><span class="ar">QR فندقك في دقيقة واحدة</span><span class="ur" lang="ur">ایک منٹ میں آپ کے ہوٹل کا QR</span><span class="id" lang="id">QR hotel Anda dalam satu menit</span></h2>
+    <p class="rh-sub"><span class="en">Stand at the hotel entrance with your phone for the most accurate location.</span><span class="ar">قف عند مدخل الفندق بجوالك للحصول على أدق موقع.</span><span class="ur" lang="ur">سب سے درست مقام کے لیے فون کے ساتھ ہوٹل کے داخلے پر کھڑے ہوں۔</span><span class="id" lang="id">Berdirilah di pintu masuk hotel dengan ponsel untuk lokasi paling akurat.</span></p>
     <div class="rh-panel">
       <div class="rh-gps" id="pt-gps-row">
-        <div class="t"><b><span class="en">Step 1: the exact entrance</span><span class="ar">الخطوة 1: المدخل الدقيق</span></b><span class="en">Tap while standing at the hotel door.</span><span class="ar">اضغط وأنت واقف عند باب الفندق.</span><span class="rh-hint" id="pt-gps-ok" hidden style="display:block;color:#065f46;font-weight:800">✓ <span class="en">Location added</span><span class="ar">تمت إضافة الموقع</span></span></div>
-        <button type="button" id="pt-gps" onclick="partnerGps()">📍 <span class="en">Use my location</span><span class="ar">استخدم موقعي</span></button>
+        <div class="t"><b><span class="en">Step 1: the exact entrance</span><span class="ar">الخطوة 1: المدخل الدقيق</span><span class="ur" lang="ur">مرحلہ 1: درست داخلہ</span><span class="id" lang="id">Langkah 1: pintu masuk yang tepat</span></b><span class="en">Tap while standing at the hotel door.</span><span class="ar">اضغط وأنت واقف عند باب الفندق.</span><span class="ur" lang="ur">ہوٹل کے دروازے پر کھڑے ہو کر ٹیپ کریں۔</span><span class="id" lang="id">Ketuk saat berdiri di pintu hotel.</span><span class="rh-hint" id="pt-gps-ok" hidden style="display:block;color:#065f46;font-weight:800">✓ <span class="en">Location added</span><span class="ar">تمت إضافة الموقع</span><span class="ur" lang="ur">مقام شامل ہو گیا</span><span class="id" lang="id">Lokasi ditambahkan</span></span></div>
+        <button type="button" id="pt-gps" onclick="partnerGps()">📍 <span class="en">Use my location</span><span class="ar">استخدم موقعي</span><span class="ur" lang="ur">میرا مقام استعمال کریں</span><span class="id" lang="id">Gunakan lokasi saya</span></button>
       </div>
       <div class="rh-fields">
-        <div class="rh-field"><label for="pt-name"><span class="en">Hotel name</span><span class="ar">اسم الفندق</span> <i>*</i></label><input class="rh-in" id="pt-name" maxlength="120"></div>
-        <div class="rh-field"><label for="pt-city"><span class="en">City</span><span class="ar">المدينة</span></label><select class="rh-in" id="pt-city"><option value="makkah">مكة · Makkah</option><option value="madinah">المدينة · Madinah</option></select></div>
-        <div class="rh-field"><label for="pt-addressAr"><span class="en">Address in Arabic</span><span class="ar">العنوان بالعربي</span></label><input class="rh-in" id="pt-addressAr" maxlength="200" dir="rtl"></div>
-        <div class="rh-field"><label for="pt-address"><span class="en">Address in English</span><span class="ar">العنوان بالإنجليزي</span></label><input class="rh-in" id="pt-address" maxlength="200" dir="ltr"></div>
-        <div class="rh-field"><label for="pt-phone"><span class="en">Hotel phone</span><span class="ar">هاتف الفندق</span></label><input class="rh-in" id="pt-phone" maxlength="30" inputmode="tel" dir="ltr"></div>
-        <div class="rh-field"><label for="pt-src"><span class="en">Your company (optional)</span><span class="ar">اسم شركتك (اختياري)</span></label><input class="rh-in" id="pt-src" maxlength="40"></div>
-        <div class="rh-field full"><label for="pt-center"><span class="en">Text in the middle of the QR</span><span class="ar">النص في منتصف الـQR</span></label><select class="rh-in" id="pt-center"><option value="auto">تلقائي: الشركة إن وُجدت، وإلا الفندق · Auto</option><option value="hotel">اسم الفندق · Hotel name</option><option value="company">اسم الشركة · Company name</option><option value="none">بدون نص · None</option></select></div>
+        <div class="rh-field"><label for="pt-name"><span class="en">Hotel name</span><span class="ar">اسم الفندق</span><span class="ur" lang="ur">ہوٹل کا نام</span><span class="id" lang="id">Nama hotel</span> <i>*</i></label><input class="rh-in" id="pt-name" maxlength="120"></div>
+        <div class="rh-field"><label for="pt-city"><span class="en">City</span><span class="ar">المدينة</span><span class="ur" lang="ur">شہر</span><span class="id" lang="id">Kota</span></label><select class="rh-in" id="pt-city"><option value="makkah">مكة · Makkah</option><option value="madinah">المدينة · Madinah</option></select></div>
+        <div class="rh-field"><label for="pt-addressAr"><span class="en">Address in Arabic</span><span class="ar">العنوان بالعربي</span><span class="ur" lang="ur">عربی میں پتہ</span><span class="id" lang="id">Alamat dalam bahasa Arab</span></label><input class="rh-in" id="pt-addressAr" maxlength="200" dir="rtl"></div>
+        <div class="rh-field"><label for="pt-address"><span class="en">Address in English</span><span class="ar">العنوان بالإنجليزي</span><span class="ur" lang="ur">انگریزی میں پتہ</span><span class="id" lang="id">Alamat dalam bahasa Inggris</span></label><input class="rh-in" id="pt-address" maxlength="200" dir="ltr"></div>
+        <div class="rh-field"><label for="pt-phone"><span class="en">Hotel phone</span><span class="ar">هاتف الفندق</span><span class="ur" lang="ur">ہوٹل کا فون</span><span class="id" lang="id">Telepon hotel</span></label><input class="rh-in" id="pt-phone" maxlength="30" inputmode="tel" dir="ltr"></div>
+        <div class="rh-field"><label for="pt-src"><span class="en">Your company (optional)</span><span class="ar">اسم شركتك (اختياري)</span><span class="ur" lang="ur">آپ کی کمپنی (اختیاری)</span><span class="id" lang="id">Perusahaan Anda (opsional)</span></label><input class="rh-in" id="pt-src" maxlength="40"></div>
+        <div class="rh-field full"><label for="pt-center"><span class="en">Text in the middle of the QR</span><span class="ar">النص في منتصف الـQR</span><span class="ur" lang="ur">QR کے درمیان متن</span><span class="id" lang="id">Teks di tengah QR</span></label><select class="rh-in" id="pt-center"><option value="auto">تلقائي: الشركة إن وُجدت، وإلا الفندق · Auto</option><option value="hotel">اسم الفندق · Hotel name</option><option value="company">اسم الشركة · Company name</option><option value="none">بدون نص · None</option></select></div>
       </div>
       <input type="hidden" id="pt-lat"><input type="hidden" id="pt-lng">
-      <button type="button" class="rh-btn rh-btn-gold rh-save" onclick="buildPartnerKit()">✨ <span class="en">Create link &amp; QR poster</span><span class="ar">أنشئ الرابط وملصق الـQR</span></button>
+      <button type="button" class="rh-btn rh-btn-gold rh-save" onclick="buildPartnerKit()">✨ <span class="en">Create link &amp; QR poster</span><span class="ar">أنشئ الرابط وملصق الـQR</span><span class="ur" lang="ur">لنک اور QR پوسٹر بنائیں</span><span class="id" lang="id">Buat tautan &amp; poster QR</span></button>
       <div id="pt-out" hidden>
         <canvas class="rh-canvas" id="pt-poster" width="1080" height="1350" style="max-width:420px"></canvas>
         <input class="rh-in" id="pt-link" readonly dir="ltr" aria-label="Link">
         <div class="rh-row" style="margin-top:10px">
-          <button type="button" class="rh-act teal" onclick="partnerDownload()">⬇️ <span class="en">Download poster</span><span class="ar">تحميل الملصق</span></button>
-          <button type="button" class="rh-act" onclick="partnerCopy()">📋 <span class="en">Copy link</span><span class="ar">نسخ الرابط</span></button>
+          <button type="button" class="rh-act teal" onclick="partnerDownload()">⬇️ <span class="en">Download poster</span><span class="ar">تحميل الملصق</span><span class="ur" lang="ur">پوسٹر ڈاؤن لوڈ کریں</span><span class="id" lang="id">Unduh poster</span></button>
+          <button type="button" class="rh-act" onclick="partnerCopy()">📋 <span class="en">Copy link</span><span class="ar">نسخ الرابط</span><span class="ur" lang="ur">لنک کاپی کریں</span><span class="id" lang="id">Salin tautan</span></button>
           <button type="button" class="rh-act wa" onclick="partnerWhatsApp()">💬 WhatsApp</button>
         </div>
-        <p class="rh-hint" style="text-align:center;margin-top:10px"><span class="en">Print the QR at least 6 cm wide. Test it once with your own phone before printing many.</span><span class="ar">اطبع الرمز بعرض 6 سم على الأقل، وجرّبه بجوالك مرة قبل طباعة كمية كبيرة.</span></p>
+        <p class="rh-hint" style="text-align:center;margin-top:10px"><span class="en">Print the QR at least 6 cm wide. Test it once with your own phone before printing many.</span><span class="ar">اطبع الرمز بعرض 6 سم على الأقل، وجرّبه بجوالك مرة قبل طباعة كمية كبيرة.</span><span class="ur" lang="ur">QR کم از کم 6 سینٹی میٹر چوڑا پرنٹ کریں۔ زیادہ پرنٹ کرنے سے پہلے اپنے فون سے ایک بار آزمائیں۔</span><span class="id" lang="id">Cetak QR minimal lebar 6 cm. Uji sekali dengan ponsel Anda sebelum mencetak banyak.</span></p>
       </div>
     </div>
   </div>
@@ -164,24 +179,24 @@ window.dflTrack=function(event,params){
 
 <section class="rh-sec" aria-labelledby="where-t">
   <div class="rh-wrap">
-    <span class="rh-kicker"><span class="en">Where to place it</span><span class="ar">أين تضعه</span></span>
-    <h2 class="rh-h2" id="where-t"><span class="en">Put it where guests already look</span><span class="ar">ضعه حيث ينظر الضيف أصلاً</span></h2>
+    <span class="rh-kicker"><span class="en">Where to place it</span><span class="ar">أين تضعه</span><span class="ur" lang="ur">اسے کہاں لگائیں</span><span class="id" lang="id">Di mana memasangnya</span></span>
+    <h2 class="rh-h2" id="where-t"><span class="en">Put it where guests already look</span><span class="ar">ضعه حيث ينظر الضيف أصلاً</span><span class="ur" lang="ur">وہاں لگائیں جہاں مہمان پہلے سے دیکھتے ہیں</span><span class="id" lang="id">Pasang di tempat yang sudah dilihat tamu</span></h2>
     <div class="rh-guides">
-      <div class="rh-g"><span class="ic">🛎</span><b><span class="en">Reception desk</span><span class="ar">مكتب الاستقبال</span></b><span><span class="en">A small stand at check-in, when guests are still at the hotel.</span><span class="ar">حامل صغير عند تسجيل الدخول، والضيف ما زال في الفندق.</span></span></div>
-      <div class="rh-g"><span class="ic">🔑</span><b><span class="en">Room key card</span><span class="ar">بطاقة مفتاح الغرفة</span></b><span><span class="en">On the key sleeve guests carry with them to the Haram.</span><span class="ar">على غلاف المفتاح الذي يحمله الضيف معه للحرم.</span></span></div>
-      <div class="rh-g"><span class="ic">💬</span><b><span class="en">Group WhatsApp</span><span class="ar">قروب واتساب المعتمرين</span></b><span><span class="en">Umrah companies send the link to each group on arrival day.</span><span class="ar">شركات العمرة ترسل الرابط لكل مجموعة يوم الوصول.</span></span></div>
+      <div class="rh-g"><span class="ic">🛎</span><b><span class="en">Reception desk</span><span class="ar">مكتب الاستقبال</span><span class="ur" lang="ur">استقبالیہ کاؤنٹر</span><span class="id" lang="id">Meja resepsionis</span></b><span><span class="en">A small stand at check-in, when guests are still at the hotel.</span><span class="ar">حامل صغير عند تسجيل الدخول، والضيف ما زال في الفندق.</span><span class="ur" lang="ur">چیک ان پر ایک چھوٹا اسٹینڈ، جب مہمان ابھی ہوٹل میں ہوں۔</span><span class="id" lang="id">Papan kecil saat check-in, ketika tamu masih di hotel.</span></span></div>
+      <div class="rh-g"><span class="ic">🔑</span><b><span class="en">Room key card</span><span class="ar">بطاقة مفتاح الغرفة</span><span class="ur" lang="ur">کمرے کا کی کارڈ</span><span class="id" lang="id">Kartu kunci kamar</span></b><span><span class="en">On the key sleeve guests carry with them to the Haram.</span><span class="ar">على غلاف المفتاح الذي يحمله الضيف معه للحرم.</span><span class="ur" lang="ur">کی کارڈ کے کور پر جو مہمان حرم ساتھ لے جاتے ہیں۔</span><span class="id" lang="id">Di sampul kartu kunci yang dibawa tamu ke Masjidil Haram.</span></span></div>
+      <div class="rh-g"><span class="ic">💬</span><b><span class="en">Group WhatsApp</span><span class="ar">قروب واتساب المعتمرين</span><span class="ur" lang="ur">گروپ واٹس ایپ</span><span class="id" lang="id">Grup WhatsApp</span></b><span><span class="en">Umrah companies send the link to each group on arrival day.</span><span class="ar">شركات العمرة ترسل الرابط لكل مجموعة يوم الوصول.</span><span class="ur" lang="ur">عمرہ کمپنیاں آمد کے دن ہر گروپ کو لنک بھیجتی ہیں۔</span><span class="id" lang="id">Biro Umrah mengirim tautan ke setiap rombongan pada hari kedatangan.</span></span></div>
     </div>
   </div>
 </section>
 
 <section class="rh-sec rh-faq" aria-labelledby="pfaq-t">
   <div class="rh-wrap">
-    <span class="rh-kicker"><span class="en">FAQ</span><span class="ar">أسئلة شائعة</span></span>
-    <h2 class="rh-h2" id="pfaq-t"><span class="en">Questions from hotels</span><span class="ar">أسئلة من الفنادق</span></h2>
-    <details><summary><span class="en">Is it really free?</span><span class="ar">هل هو مجاني فعلاً؟</span></summary><p><span class="en">Yes. Creating the QR, printing it and your guests using the card are all free, with no account.</span><span class="ar">نعم. إنشاء الرمز وطباعته واستخدام ضيوفك للبطاقة كلها مجانية وبلا حساب.</span></p></details>
-    <details><summary><span class="en">Do guests need to install an app?</span><span class="ar">هل يحتاج الضيف لتثبيت تطبيق؟</span></summary><p><span class="en">No. The QR opens a web page that saves the card on the phone. Guests can add it to the home screen if they like.</span><span class="ar">لا. الرمز يفتح صفحة ويب تحفظ البطاقة على الجوال، ويمكن للضيف إضافتها للشاشة الرئيسية إن أراد.</span></p></details>
-    <details><summary><span class="en">Do you collect guest data?</span><span class="ar">هل تجمعون بيانات الضيوف؟</span></summary><p><span class="en">No. The card is saved on the guest's phone only. We only count anonymous visits to improve the service.</span><span class="ar">لا. البطاقة تُحفظ على جوال الضيف فقط، ونحن نحصي الزيارات دون هوية لتحسين الخدمة.</span></p></details>
-    <details><summary><span class="en">Can we change the details later?</span><span class="ar">هل نستطيع تعديل البيانات لاحقاً؟</span></summary><p><span class="en">The details live inside the QR, so create a new QR if your phone number or address changes.</span><span class="ar">البيانات محفوظة داخل الرمز نفسه، فأنشئ رمزاً جديداً إذا تغيّر الهاتف أو العنوان.</span></p></details>
+    <span class="rh-kicker"><span class="en">FAQ</span><span class="ar">أسئلة شائعة</span><span class="ur" lang="ur">عام سوالات</span><span class="id" lang="id">Tanya jawab</span></span>
+    <h2 class="rh-h2" id="pfaq-t"><span class="en">Questions from hotels</span><span class="ar">أسئلة من الفنادق</span><span class="ur" lang="ur">ہوٹلوں کے سوالات</span><span class="id" lang="id">Pertanyaan dari hotel</span></h2>
+    <details><summary><span class="en">Is it really free?</span><span class="ar">هل هو مجاني فعلاً؟</span><span class="ur" lang="ur">کیا یہ واقعی مفت ہے؟</span><span class="id" lang="id">Benar-benar gratis?</span></summary><p><span class="en">Yes. Creating the QR, printing it and your guests using the card are all free, with no account.</span><span class="ar">نعم. إنشاء الرمز وطباعته واستخدام ضيوفك للبطاقة كلها مجانية وبلا حساب.</span><span class="ur" lang="ur">جی ہاں۔ QR بنانا، پرنٹ کرنا اور مہمانوں کا کارڈ استعمال کرنا سب مفت ہے، کسی اکاؤنٹ کے بغیر۔</span><span class="id" lang="id">Ya. Membuat QR, mencetaknya, dan tamu memakai kartunya semuanya gratis, tanpa akun.</span></p></details>
+    <details><summary><span class="en">Do guests need to install an app?</span><span class="ar">هل يحتاج الضيف لتثبيت تطبيق؟</span><span class="ur" lang="ur">کیا مہمانوں کو ایپ انسٹال کرنی ہوگی؟</span><span class="id" lang="id">Apakah tamu perlu memasang aplikasi?</span></summary><p><span class="en">No. The QR opens a web page that saves the card on the phone. Guests can add it to the home screen if they like.</span><span class="ar">لا. الرمز يفتح صفحة ويب تحفظ البطاقة على الجوال، ويمكن للضيف إضافتها للشاشة الرئيسية إن أراد.</span><span class="ur" lang="ur">نہیں۔ QR ایک ویب صفحہ کھولتا ہے جو کارڈ فون پر محفوظ کرتا ہے۔ مہمان چاہیں تو اسے ہوم اسکرین پر شامل کر سکتے ہیں۔</span><span class="id" lang="id">Tidak. QR membuka halaman web yang menyimpan kartu di ponsel. Tamu bisa menambahkannya ke layar utama bila mau.</span></p></details>
+    <details><summary><span class="en">Do you collect guest data?</span><span class="ar">هل تجمعون بيانات الضيوف؟</span><span class="ur" lang="ur">کیا آپ مہمانوں کا ڈیٹا جمع کرتے ہیں؟</span><span class="id" lang="id">Apakah Anda mengumpulkan data tamu?</span></summary><p><span class="en">No. The card is saved on the guest's phone only. We only count anonymous visits to improve the service.</span><span class="ar">لا. البطاقة تُحفظ على جوال الضيف فقط، ونحن نحصي الزيارات دون هوية لتحسين الخدمة.</span><span class="ur" lang="ur">نہیں۔ کارڈ صرف مہمان کے فون پر محفوظ ہوتا ہے۔ ہم خدمت بہتر بنانے کے لیے صرف گمنام وزٹس گنتے ہیں۔</span><span class="id" lang="id">Tidak. Kartu hanya tersimpan di ponsel tamu. Kami hanya menghitung kunjungan anonim untuk meningkatkan layanan.</span></p></details>
+    <details><summary><span class="en">Can we change the details later?</span><span class="ar">هل نستطيع تعديل البيانات لاحقاً؟</span><span class="ur" lang="ur">کیا ہم بعد میں تفصیلات بدل سکتے ہیں؟</span><span class="id" lang="id">Bisakah detail diubah nanti?</span></summary><p><span class="en">The details live inside the QR, so create a new QR if your phone number or address changes.</span><span class="ar">البيانات محفوظة داخل الرمز نفسه، فأنشئ رمزاً جديداً إذا تغيّر الهاتف أو العنوان.</span><span class="ur" lang="ur">تفصیلات QR کے اندر ہوتی ہیں، اس لیے فون یا پتہ بدلنے پر نیا QR بنائیں۔</span><span class="id" lang="id">Detail tersimpan di dalam QR, jadi buat QR baru jika nomor telepon atau alamat berubah.</span></p></details>
   </div>
 </section>
 <div class="rh-end"></div>
@@ -290,7 +305,15 @@ window.dflTrack=function(event,params){
     <a href="/library.html"><span class="en">Tools</span><span class="ar">الأدوات</span></a>
   </div>
   <div class="md-controls">
-    <button class="nav-btn" id="lang-toggle-mobile"><span class="en">عربي</span><span class="ar">English</span></button>
+    <div class="rh-langsel" data-langsel>
+        <button type="button" class="nav-btn rh-langsel-btn" id="rh-lang-m-btn" aria-haspopup="true" aria-expanded="false" aria-controls="rh-lang-m-menu" aria-label="Language · اللغة · زبان · Bahasa"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10 15 15 0 0 1 4-10z"/></svg><span class="rh-langsel-cur" data-langcur>العربية</span><svg class="rh-langsel-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="rh-langmenu" id="rh-lang-m-menu" role="menu" hidden>
+          <button type="button" role="menuitemradio" data-ui="ar" lang="ar"><b>العربية</b><small>Arabic</small></button>
+          <button type="button" role="menuitemradio" data-ui="en" lang="en"><b>English</b><small>الإنجليزية</small></button>
+          <button type="button" role="menuitemradio" data-ui="ur" lang="ur"><b>اردو</b><small>Urdu · الأوردية</small></button>
+          <button type="button" role="menuitemradio" data-ui="id" lang="id"><b>Bahasa Indonesia</b><small>Indonesian · الإندونيسية</small></button>
+        </div>
+      </div>
     <button class="nav-btn" id="theme-toggle-mobile" aria-label="Toggle dark mode">
       <svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
       <svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -299,6 +322,7 @@ window.dflTrack=function(event,params){
 </div>
 
 <script src="/scripts/global.js?v=20260619e" defer></script>
+<script src="/scripts/rth-ui.js?v=20261110a" defer></script>
 <script src="/scripts/partner-kit.js?v=20261110a" defer></script>
 </body>
 </html>
