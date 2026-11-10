@@ -22,7 +22,7 @@
 <link rel="stylesheet" href="/styles/tools-shared.css?v=20260608a">
 <link rel="stylesheet" href="/styles/tools-flagship.css?v=20260626a">
 <link rel="stylesheet" href="/styles/tools-accents.css?v=20260625a">
-<link rel="stylesheet" href="/styles/pages/tools_return-to-hotel.css?v=20261110c">
+<link rel="stylesheet" href="/styles/pages/tools_return-to-hotel.css?v=20261110d">
 <link rel="stylesheet" href="/styles/pages/family-kit-visual.css?v=20260902e">
 <link rel="manifest" href="/tools/return-to-hotel.webmanifest">
 <meta name="theme-color" content="#054241">
@@ -486,6 +486,25 @@ window.dflTrack=function(event,params){
           <button type="button" class="rth-meet-wa" onclick="shareMeetPoint()"><span class="en">Send to family</span><span class="ar">أرسلها للعائلة</span></button>
           <button type="button" class="rth-meet-clear" onclick="clearMeetPoint()"><span class="en">New point</span><span class="ar">نقطة جديدة</span></button>
         </div>
+      </div>
+    </section>
+
+    <section class="rth-kid" id="kid" aria-labelledby="kid-title">
+      <h2 class="rth-meet-title" id="kid-title">🧒 <span class="en">Child safety card</span><span class="ar">بطاقة الطفل</span></h2>
+      <p class="rth-meet-lead"><span class="en">If your child gets lost, whoever finds them can call you. Print it for a wristband or pocket, or set it as the phone wallpaper of an older child.</span><span class="ar">إن ضاع طفلك، يستطيع من يجده أن يتصل بك. اطبعها لسوار المعصم أو الجيب، أو اجعلها خلفية جوال الطفل الأكبر.</span></p>
+      <div class="rth-partner-grid">
+        <label class="field-label"><span class="en">Child's name</span><span class="ar">اسم الطفل</span><input class="field-input" id="kid-name" maxlength="40" autocomplete="off"></label>
+        <label class="field-label"><span class="en">Parent's phone *</span><span class="ar">جوال الأب أو الأم *</span><input class="field-input" id="kid-phone" maxlength="20" inputmode="tel" dir="ltr" placeholder="+966 5x xxx xxxx"></label>
+        <label class="field-label"><span class="en">Second phone (optional)</span><span class="ar">جوال ثانٍ (اختياري)</span><input class="field-input" id="kid-phone2" maxlength="20" inputmode="tel" dir="ltr"></label>
+      </div>
+      <button type="button" class="rth-partner-make" onclick="buildKidCard()"><span class="en">Create the card</span><span class="ar">أنشئ البطاقة</span></button>
+      <div class="rth-partner-out" id="kid-out" hidden>
+        <canvas id="kid-canvas" width="1080" height="1350"></canvas>
+        <div class="rth-partner-actions" style="grid-template-columns:1fr 1fr">
+          <button type="button" onclick="kidDownload()"><span class="en">Download image</span><span class="ar">تحميل الصورة</span></button>
+          <button type="button" onclick="kidPrint()"><span class="en">Print</span><span class="ar">طباعة</span></button>
+        </div>
+        <p class="rth-kid-note"><span class="en">Stays on your phone only. Nothing is uploaded.</span><span class="ar">تبقى على جوالك فقط، لا يُرفع أي شيء.</span></p>
       </div>
     </section>
 
@@ -1347,6 +1366,47 @@ function shareMeetPoint(){
 }
 function clearMeetPoint(){ localStorage.removeItem(MEET_KEY); document.getElementById('meet-gate').value=''; renderMeet(); }
 document.addEventListener('dfl:langchange',renderMeet);
+
+function buildKidCard(){
+  var nm=document.getElementById('kid-name').value.trim(), p1=document.getElementById('kid-phone').value.trim(), p2=document.getElementById('kid-phone2').value.trim();
+  if(!p1){showToast(isAr()?'اكتب رقم جوال الأب أو الأم':'Enter a parent phone number');return;}
+  var cv=document.getElementById('kid-canvas'),x=cv.getContext('2d'),W=1080,H=1350;
+  x.fillStyle='#fff';x.fillRect(0,0,W,H);
+  x.fillStyle='#C9A227';x.fillRect(0,0,W,22);x.fillRect(0,H-22,W,22);
+  x.textAlign='center';
+  x.direction='rtl';x.fillStyle='#b42318';x.font='900 66px sans-serif';x.fillText('إذا وجدتني ضائعاً، اتصل بأهلي',W/2,140);
+  x.direction='ltr';x.font='800 44px sans-serif';x.fillText('If I am lost, please call my family',W/2,205);
+  x.direction='rtl';x.fillStyle='#4b5563';x.font='700 34px sans-serif';x.fillText('میں گم ہو گیا ہوں، میرے گھر والوں کو فون کریں',W/2,264);
+  if(nm){ x.direction='rtl';x.fillStyle='#054241';x.font='900 88px sans-serif';x.fillText(nm.slice(0,30),W/2,400); }
+  var y=nm?540:440;
+  x.fillStyle='#054241';x.beginPath();x.roundRect?x.roundRect(80,y-90,W-160,p2?300:170,28):x.rect(80,y-90,W-160,p2?300:170);x.fill();
+  x.direction='ltr';x.fillStyle='#fff';x.font='900 92px sans-serif';x.fillText(p1,W/2,y+20);
+  if(p2){x.font='800 70px sans-serif';x.fillStyle='#ffd54f';x.fillText(p2,W/2,y+150);}
+  y+= p2?300:170;
+  var ht=hotel||pack.makkah||pack.madinah;
+  if(ht&&ht.name){
+    y+=60; x.fillStyle='#6b7280';x.font='700 34px sans-serif';x.direction='rtl';x.fillText('فندقنا · Our hotel',W/2,y);
+    y+=70; x.fillStyle='#111827';x.font='900 56px sans-serif';x.fillText(String(ht.name).slice(0,34),W/2,y);
+    var ad=ht.addressAr||ht.address||''; if(ad){ y+=60; x.font='700 34px sans-serif';x.fillStyle='#374151';x.direction=/[؀-ۿ]/.test(ad)?'rtl':'ltr';x.fillText(String(ad).slice(0,55),W/2,y); }
+    if(ht.phone){ y+=60; x.direction='ltr';x.font='800 40px sans-serif';x.fillStyle='#054241';x.fillText(ht.phone,W/2,y); }
+  }
+  x.direction='rtl';x.fillStyle='#6b7280';x.font='700 30px sans-serif';
+  x.fillText('أو سلّمني لأقرب رجل أمن · Or take me to the nearest security officer',W/2,H-90);
+  x.direction='ltr';x.fillStyle='#9ca3af';x.font='600 24px sans-serif';x.fillText('dotforlife.com/hotel',W/2,H-45);
+  document.getElementById('kid-out').hidden=false;
+  if(window.dflTrack) dflTrack('kid_card_created');
+}
+function kidDownload(){
+  var a=document.createElement('a');a.download='child-card.png';a.href=document.getElementById('kid-canvas').toDataURL('image/png');a.click();
+  if(window.dflTrack) dflTrack('kid_card_download');
+}
+function kidPrint(){
+  var u=document.getElementById('kid-canvas').toDataURL('image/png'), w=window.open('','_blank');
+  if(!w){kidDownload();return;}
+  w.document.write('<html><head><title>Child card</title><style>@page{margin:10mm}body{margin:0;display:flex;flex-wrap:wrap;gap:6mm}img{width:62mm;height:auto;border:1px dashed #999}</style></head><body>'+'<img src="'+u+'">'.repeat(6)+'<script>onload=function(){print()}<\/script></body></html>');
+  w.document.close();
+  if(window.dflTrack) dflTrack('kid_card_print');
+}
 function showToast(msg){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2500);}
 function toggleFAQ(el){
   var answer=el.nextElementSibling;
