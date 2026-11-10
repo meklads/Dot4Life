@@ -5,7 +5,7 @@
  *  - HTML: network-first with cache fallback.
  *  - Assets (?v= versioned): cache-first.
  */
-const CACHE = 'dfl-kit-v14';
+const CACHE = 'dfl-kit-v15';
 const TOOL_PAGES = [
   '/library.html',
   '/tools/return-to-hotel.html',
@@ -52,7 +52,7 @@ const PRECACHE = [
   '/assets/images/kit/cat-travel.svg',
   '/styles/pages/family-kit-visual.css?v=20260902e',
   '/assets/images/kit/inherit-poster.svg',
-  '/styles/pages/rth-v2.css?v=20261110b',
+  '/styles/pages/rth-v2.css?v=20261110c',
   '/scripts/rth-app.js?v=20261110a',
   '/scripts/global.js?v=20260619e',
   '/styles/pages/tools_zakat-calculator.css?v=20260823a',
