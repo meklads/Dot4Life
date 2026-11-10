@@ -9,8 +9,8 @@
 <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<title>Return to Hotel | العودة للفندق | Dot For Life</title>
-<meta name="description" content="Save Makkah and Madinah hotel cards for the driver. Works offline. Private, on this device."/>
+<title>العودة للفندق في مكة والمدينة: بطاقة فندقك للسائق | Return to Hotel</title>
+<meta name="description" content="احفظ موقع فندقك في مكة والمدينة بضغطة، وارجع لبابه مشياً أو أظهر البطاقة للسائق بالعربية والأوردية والبنغالية. مجاني ويعمل بدون إنترنت. Save your Makkah and Madinah hotel, walk back to the door, show the driver."/>
 <link rel="canonical" href="https://dotforlife.com/tools/return-to-hotel.html"/>
 <link rel="alternate" hreflang="ar" href="https://dotforlife.com/tools/return-to-hotel.html?lang=ar" />
 <link rel="alternate" hreflang="en" href="https://dotforlife.com/tools/return-to-hotel.html?lang=en" />
@@ -22,7 +22,7 @@
 <link rel="stylesheet" href="/styles/tools-shared.css?v=20260608a">
 <link rel="stylesheet" href="/styles/tools-flagship.css?v=20260626a">
 <link rel="stylesheet" href="/styles/tools-accents.css?v=20260625a">
-<link rel="stylesheet" href="/styles/pages/tools_return-to-hotel.css?v=20261110a">
+<link rel="stylesheet" href="/styles/pages/tools_return-to-hotel.css?v=20261110b">
 <link rel="stylesheet" href="/styles/pages/family-kit-visual.css?v=20260902e">
 <link rel="manifest" href="/tools/return-to-hotel.webmanifest">
 <meta name="theme-color" content="#054241">
@@ -80,7 +80,7 @@ window.dflTrack=function(event,params){
       "name": "Does this work offline? هل تعمل بدون إنترنت؟",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Hotel details are saved in your browser. Maps navigation needs internet, screenshot your hotel card for offline reference. تفاصيل الفندق تُحفظ في متصفحك. الملاحة تحتاج إنترنت، التقط صورة للبطاقة للرجوع بدون شبكة."
+        "text": "Yes. Your card and the driver screen open without internet once the page has loaded once. Walking directions need a connection. نعم. البطاقة وشاشة السائق تفتح بدون إنترنت بعد فتح الصفحة مرة واحدة. أما الاتجاهات على الخريطة فتحتاج اتصالاً."
       }
     },
     {
@@ -96,7 +96,7 @@ window.dflTrack=function(event,params){
       "name": "Can I install this on my phone? هل أثبّتها على الجوال؟",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Install The Family Kit. One icon opens the seven tools. Your hotels stay on this device only. نعم. ثبّتوا عدة الأسرة. أيقونة واحدة تفتح السبع أدوات. الفنادق تبقى على هذا الجهاز فقط."
+        "text": "Yes. Tap Install, or Add to Home Screen from the browser menu. The icon opens your hotel card directly. نعم. اضغط تثبيت أو إضافة إلى الشاشة الرئيسية. الأيقونة تفتح بطاقة فندقك مباشرة."
       }
     }
   ]
@@ -472,6 +472,32 @@ window.dflTrack=function(event,params){
       <p class="en">Lost in a foreign city after a long day? One tap opens Google Maps, Waze, or Apple Maps back to your hotel. The taxi card speaks to drivers in their language.</p>
       <p class="ar">ضعت في مدينة أجنبية؟ نقرة واحدة تفتح الخرائط للعودة لفندقك. بطاقة التاكسي تتحدث بلغة السائق.</p>
     </div>
+    <details class="rth-partner" id="partner">
+      <summary><span class="en">🏨 For hotels &amp; Umrah companies: a free link and QR for your hotel</span><span class="ar">🏨 للفنادق وشركات العمرة: رابط وQR مجاني لفندقك</span></summary>
+      <p class="rth-partner-lead"><span class="en">Your guest scans once and your hotel card is saved on their phone, with the exact location, ready for the driver. Print it on room cards, the lobby, or send it in your pilgrims' WhatsApp group.</span><span class="ar">ضيفك يمسح الرمز مرة واحدة فتُحفظ بطاقة فندقك على جواله بالموقع الدقيق، جاهزة للسائق. اطبعه على بطاقة الغرفة أو في الاستقبال، أو أرسله في قروب واتساب المعتمرين.</span></p>
+      <div class="rth-partner-grid">
+        <label class="field-label"><span class="en">Hotel name *</span><span class="ar">اسم الفندق *</span><input class="field-input" id="pt-name" maxlength="120"></label>
+        <label class="field-label"><span class="en">City</span><span class="ar">المدينة</span><select class="field-select" id="pt-city"><option value="makkah">مكة · Makkah</option><option value="madinah">المدينة · Madinah</option></select></label>
+        <label class="field-label"><span class="en">Address (English)</span><span class="ar">العنوان بالإنجليزية</span><input class="field-input" id="pt-address" maxlength="200"></label>
+        <label class="field-label"><span class="en">Address (Arabic)</span><span class="ar">العنوان بالعربية</span><input class="field-input" id="pt-addressAr" maxlength="200"></label>
+        <label class="field-label"><span class="en">Hotel phone</span><span class="ar">هاتف الفندق</span><input class="field-input" id="pt-phone" maxlength="30" inputmode="tel"></label>
+        <label class="field-label"><span class="en">Your company (optional)</span><span class="ar">اسم شركتك (اختياري)</span><input class="field-input" id="pt-src" maxlength="40"></label>
+      </div>
+      <input type="hidden" id="pt-lat"><input type="hidden" id="pt-lng">
+      <button type="button" class="rth-gps-btn" id="pt-gps" onclick="partnerGps()">📍 <span class="en">I'm at the hotel entrance: use this location</span><span class="ar">أنا عند مدخل الفندق: استخدم هذا الموقع</span></button>
+      <span class="rth-gps-ok" id="pt-gps-ok" hidden>✓ <span class="en">Location added</span><span class="ar">تمت إضافة الموقع</span></span>
+      <button type="button" class="rth-partner-make" onclick="buildPartnerKit()"><span class="en">Create link &amp; QR</span><span class="ar">أنشئ الرابط والـQR</span></button>
+      <div class="rth-partner-out" id="pt-out" hidden>
+        <canvas id="pt-poster" width="1080" height="1350"></canvas>
+        <input class="field-input" id="pt-link" readonly dir="ltr">
+        <div class="rth-partner-actions">
+          <button type="button" onclick="partnerDownload()"><span class="en">Download poster</span><span class="ar">تحميل الملصق</span></button>
+          <button type="button" onclick="partnerCopy()"><span class="en">Copy link</span><span class="ar">نسخ الرابط</span></button>
+          <button type="button" onclick="partnerWhatsApp()">WhatsApp</button>
+        </div>
+      </div>
+    </details>
+
     <div class="t-faq">
       <div class="t-faq-label"><span class="en">FAQ</span><span class="ar">أسئلة شائعة</span></div>
       <div class="t-faq-title"><span class="en">Frequently Asked Questions</span><span class="ar">الأسئلة المتكررة</span></div>
@@ -485,7 +511,7 @@ window.dflTrack=function(event,params){
       </div>
       <div class="t-faq-item">
         <div class="t-faq-q" onclick="toggleFAQ(this)"><span><span class="en">Does this work offline?</span><span class="ar">هل تعمل بدون إنترنت؟</span></span><span class="t-faq-arrow">▼</span></div>
-        <div class="t-faq-a"><p><span class="en">Hotel details are saved in your browser. Maps navigation needs internet, screenshot your hotel card for offline reference.</span><span class="ar">تفاصيل الفندق تُحفظ في متصفحك. الملاحة تحتاج إنترنت، التقط صورة للبطاقة للرجوع بدون شبكة.</span></p></div>
+        <div class="t-faq-a"><p><span class="en">Yes. Your card and the driver screen open without internet once the page has loaded once. Walking directions need a connection.</span><span class="ar">نعم. البطاقة وشاشة السائق تفتح بدون إنترنت بعد فتح الصفحة مرة واحدة. أما الاتجاهات على الخريطة فتحتاج اتصالاً.</span></p></div>
       </div>
       <div class="t-faq-item">
         <div class="t-faq-q" onclick="toggleFAQ(this)"><span><span class="en">How do I show this to a taxi driver?</span><span class="ar">كيف أظهرها لسائق التاكسي؟</span></span><span class="t-faq-arrow">▼</span></div>
@@ -493,7 +519,7 @@ window.dflTrack=function(event,params){
       </div>
       <div class="t-faq-item">
         <div class="t-faq-q" onclick="toggleFAQ(this)"><span><span class="en">Can I install this on my phone?</span><span class="ar">هل أثبّتها على الجوال؟</span></span><span class="t-faq-arrow">▼</span></div>
-        <div class="t-faq-a"><p><span class="en">Yes. Install The Family Kit. One icon opens the seven tools. Your hotels stay on this device only.</span><span class="ar">نعم. ثبّتوا عدة الأسرة. أيقونة واحدة تفتح السبع أدوات. الفنادق تبقى على هذا الجهاز فقط.</span></p></div>
+        <div class="t-faq-a"><p><span class="en">Yes. Tap Install, or Add to Home Screen from the browser menu. The icon opens your hotel card directly. Your data stays on this device only.</span><span class="ar">نعم. اضغط «تثبيت» أو «إضافة إلى الشاشة الرئيسية» من قائمة المتصفح. الأيقونة تفتح بطاقة فندقك مباشرة، وبياناتك تبقى على جهازك فقط.</span></p></div>
       </div>
     </div>
   </div>
@@ -1137,6 +1163,95 @@ document.addEventListener('click',function(e){
   var a=e.target.closest&&e.target.closest('.nav-buttons a.nav-btn');
   if(a&&window.dflTrack) dflTrack('nav_open',{app:(a.id||'').replace('btn-','')});
 });
+
+function applyPrefill(){
+  var p=new URLSearchParams(location.search); var n=(p.get('h')||'').trim(); if(!n) return false;
+  var clean=function(){ try{ history.replaceState(null,'',location.pathname); }catch(e){} };
+  var d={name:n.slice(0,120),area:'',address:(p.get('a')||'').trim().slice(0,200),addressAr:(p.get('ar')||'').trim().slice(0,200),
+    phone:(p.get('ph')||'').trim().slice(0,30),country:'SA',checkin:'',checkout:'',room:'',notes:'',mapslink:'',lat:'',lng:''};
+  var lat=parseFloat(p.get('lat')),lng=parseFloat(p.get('lng'));
+  if(isFinite(lat)&&isFinite(lng)&&Math.abs(lat)<=90&&Math.abs(lng)<=180){d.lat=lat.toFixed(6);d.lng=lng.toFixed(6);d.mapslink='https://www.google.com/maps/search/?api=1&query='+d.lat+','+d.lng;}
+  if(!d.address) d.address=d.addressAr||d.name;
+  var c=p.get('c'); c=(c==='madinah'||c==='makkah')?c:guessCity(d);
+  var cur=pack[c];
+  if(cur&&cur.name&&cur.name!==d.name){
+    if(!confirm(isAr()?('استبدال بطاقة «'+cur.name+'» ببطاقة «'+d.name+'»؟'):('Replace "'+cur.name+'" with "'+d.name+'"?'))){clean();return false;}
+  }
+  var t=new Date(),f=function(x){return x.toISOString().split('T')[0];}; d.checkin=f(t); t.setDate(t.getDate()+3); d.checkout=f(t);
+  pack.active=c; pack[c]=d; hotel=d; persistPack(); clean();
+  if(window.dflTrack) dflTrack('prefill_saved',{city:c,partner:(p.get('src')||'link').slice(0,40)});
+  setTimeout(function(){showToast(isAr()?('✓ تم حفظ بطاقة '+d.name):('✓ Saved: '+d.name));},600);
+  return true;
+}
+function partnerGps(){
+  if(!navigator.geolocation){showToast(isAr()?'المتصفح لا يدعم تحديد الموقع':'Location not supported');return;}
+  var b=document.getElementById('pt-gps'); b.disabled=true;
+  navigator.geolocation.getCurrentPosition(function(pos){
+    b.disabled=false;
+    document.getElementById('pt-lat').value=pos.coords.latitude.toFixed(6);
+    document.getElementById('pt-lng').value=pos.coords.longitude.toFixed(6);
+    document.getElementById('pt-gps-ok').hidden=false;
+  },function(){b.disabled=false;showToast(isAr()?'تعذر تحديد الموقع':'Could not get location');},{enableHighAccuracy:true,timeout:20000,maximumAge:0});
+}
+function partnerLink(){
+  var v=function(id){return document.getElementById(id).value.trim();};
+  if(!v('pt-name')) return null;
+  var q=new URLSearchParams(); q.set('h',v('pt-name'));
+  if(v('pt-address')) q.set('a',v('pt-address'));
+  if(v('pt-addressAr')) q.set('ar',v('pt-addressAr'));
+  if(v('pt-phone')) q.set('ph',v('pt-phone'));
+  if(v('pt-lat')&&v('pt-lng')){q.set('lat',v('pt-lat'));q.set('lng',v('pt-lng'));}
+  q.set('c',document.getElementById('pt-city').value);
+  q.set('src',v('pt-src')||'qr');
+  return 'https://dotforlife.com/tools/return-to-hotel?'+q.toString();
+}
+function loadQrLib(cb){
+  if(window.qrcode) return cb();
+  var s=document.createElement('script'); s.src='/scripts/vendor/qrcode-generator-1.4.4.js'; s.onload=cb;
+  s.onerror=function(){showToast(isAr()?'تعذر تحميل مولد QR، تأكد من الاتصال':'Could not load QR generator');}; document.head.appendChild(s);
+}
+function buildPartnerKit(){
+  var url=partnerLink();
+  if(!url){showToast(isAr()?'اكتب اسم الفندق أولاً':'Enter the hotel name first');return;}
+  loadQrLib(function(){
+    var qr=qrcode(0,'L'); qr.addData(url,'Byte'); qr.make();
+    var cv=document.getElementById('pt-poster'),x=cv.getContext('2d'),W=1080,Hh=1350;
+    x.fillStyle='#054241';x.fillRect(0,0,W,Hh);
+    x.textAlign='center';x.direction='rtl';x.fillStyle='#ffd54f';x.font='900 64px sans-serif';
+    x.fillText('لا تضيع طريق العودة',W/2,120);
+    x.fillStyle='#fff';x.font='700 34px sans-serif';
+    x.fillText('امسح الرمز لحفظ بطاقة فندقك على جوالك',W/2,180);
+    x.direction='ltr';x.font='700 30px sans-serif';x.fillStyle='#bfe3df';
+    x.fillText('Scan to save your hotel card · Return to Hotel',W/2,228);
+    var n=qr.getModuleCount(),size=700,cell=Math.floor(size/n),q=cell*n,ox=(W-q)/2,oy=290,pad=28;
+    x.fillStyle='#fff';x.fillRect(ox-pad,oy-pad,q+pad*2,q+pad*2);
+    x.fillStyle='#054241';
+    for(var r=0;r<n;r++)for(var cc=0;cc<n;cc++)if(qr.isDark(r,cc))x.fillRect(ox+cc*cell,oy+r*cell,cell,cell);
+    var ny=oy+q+pad+90; x.direction='rtl';x.fillStyle='#fff';x.font='900 52px sans-serif';
+    x.fillText(document.getElementById('pt-name').value.trim().slice(0,40),W/2,ny);
+    x.direction='ltr';x.font='600 28px sans-serif';x.fillStyle='#6abfb8';
+    x.fillText('dotforlife.com/hotel  ·  مجاني · Free · بدون تسجيل',W/2,Hh-60);
+    document.getElementById('pt-link').value=url;
+    document.getElementById('pt-out').hidden=false;
+    if(window.dflTrack) dflTrack('partner_kit_created',{city:document.getElementById('pt-city').value});
+  });
+}
+function partnerDownload(){
+  var a=document.createElement('a'); a.download='hotel-qr-'+(document.getElementById('pt-name').value.trim().replace(/[^\w؀-ۿ-]+/g,'-')||'dotforlife')+'.png';
+  a.href=document.getElementById('pt-poster').toDataURL('image/png'); a.click();
+  if(window.dflTrack) dflTrack('partner_kit_download');
+}
+function partnerCopy(){
+  var t=document.getElementById('pt-link').value;
+  if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(function(){showToast(isAr()?'✓ تم النسخ':'✓ Copied');});
+  else { document.getElementById('pt-link').select(); document.execCommand('copy'); }
+}
+function partnerWhatsApp(){
+  var name=document.getElementById('pt-name').value.trim();
+  var msg=(isAr()?('احفظ بطاقة فندق '+name+' على جوالك بضغطة، وارجع لباب الفندق بسهولة أو أظهرها للسائق:\n'):('Save the '+name+' hotel card on your phone in one tap:\n'))+document.getElementById('pt-link').value;
+  window.open('https://wa.me/?text='+encodeURIComponent(msg),'_blank');
+  if(window.dflTrack) dflTrack('partner_kit_whatsapp');
+}
 function showToast(msg){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2500);}
 function toggleFAQ(el){
   var answer=el.nextElementSibling;
@@ -1158,6 +1273,7 @@ function toggleFAQ(el){
   document.addEventListener('dfl:langchange', updateSelectLabels);
 
   loadSaved();
+  applyPrefill();
   writeForm(hotel);
   syncCityPills();
   if(!window.matchMedia('(display-mode: standalone)').matches && !window.navigator.standalone){
