@@ -14,16 +14,23 @@
 <link rel="canonical" href="https://dotforlife.com/tools/return-to-hotel.html"/>
 <link rel="alternate" hreflang="ar" href="https://dotforlife.com/tools/return-to-hotel.html?lang=ar" />
 <link rel="alternate" hreflang="en" href="https://dotforlife.com/tools/return-to-hotel.html?lang=en" />
+<link rel="alternate" hreflang="ur" href="https://dotforlife.com/tools/return-to-hotel.html?lang=ur" />
+<link rel="alternate" hreflang="id" href="https://dotforlife.com/tools/return-to-hotel.html?lang=id" />
 <script src="/scripts/lang-redirect.js?v=20260620"></script>
+<script>(function(){try{var h=document.documentElement,p=new URLSearchParams(location.search).get('lang'),ui=null;
+if(p==='ur'||p==='id'){ui=p;}else if(p==='ar'||p==='en'){localStorage.removeItem('rth-ui');}
+else{ui=localStorage.getItem('rth-ui');if(!ui&&!localStorage.getItem('dfl-lang')){var n=(navigator.language||'').toLowerCase();if(/^ur/.test(n))ui='ur';else if(/^(id|ms)/.test(n))ui='id';}}
+var dl=localStorage.getItem('dfl-lang');if(dl==='ur'||dl==='id')localStorage.setItem('dfl-lang',dl==='ur'?'ar':'en');
+if(ui==='ur'||ui==='id'){h.setAttribute('data-ui',ui);h.setAttribute('lang',ui);h.setAttribute('data-lang',ui==='ur'?'ar':'en');h.setAttribute('dir',ui==='ur'?'rtl':'ltr');localStorage.setItem('rth-ui',ui);if(ui==='ur'){var l=document.createElement('link');l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;700&display=swap';document.head.appendChild(l);}}}catch(e){}})()</script>
 <link rel="alternate" hreflang="x-default" href="https://dotforlife.com/tools/return-to-hotel.html" />
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Almarai:wght@400;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Almarai:wght@400;700;800&display=swap"/></noscript>
 <link rel="stylesheet" href="/styles/global.css?v=20260624n"/>
 <link rel="stylesheet" href="/styles/tools-flagship.css?v=20260626a">
-<link rel="stylesheet" href="/styles/pages/rth-v2.css?v=20261110c">
+<link rel="stylesheet" href="/styles/pages/rth-v2.css?v=20261110e">
 <link rel="manifest" href="/tools/return-to-hotel.webmanifest">
 <meta name="theme-color" content="#054241">
-<link rel="preload" as="script" href="/scripts/rth-app.js?v=20261110a">
+<link rel="preload" as="script" href="/scripts/rth-app.js?v=20261110c">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="العودة للفندق">
@@ -112,24 +119,27 @@ window.dflTrack=function(event,params){
 <!-- ═══ HERO: empty state ═══ -->
 <section class="rh-hero" aria-labelledby="rh-title">
   <div class="rh-wrap">
+    <div class="rh-uilang" role="group" aria-label="Language · اللغة · زبان · Bahasa">
+      <button type="button" data-ui="ar" lang="ar">العربية</button><button type="button" data-ui="en" lang="en">English</button><button type="button" data-ui="ur" lang="ur">اردو</button><button type="button" data-ui="id" lang="id">Indonesia</button>
+    </div>
     <div class="rh-hero-grid" id="rh-empty">
       <div>
         <nav class="rh-crumb" aria-label="Breadcrumb">
-          <a href="/"><span class="en">Home</span><span class="ar">الرئيسية</span></a><span aria-hidden="true">/</span>
-          <a href="/makkah"><span class="en">Umrah</span><span class="ar">العمرة</span></a><span aria-hidden="true">/</span>
-          <span><span class="en">Return to Hotel</span><span class="ar">العودة للفندق</span></span>
+          <a href="/"><span class="en">Home</span><span class="ar">الرئيسية</span><span class="ur" lang="ur">ہوم</span><span class="id" lang="id">Beranda</span></a><span aria-hidden="true">/</span>
+          <a href="/makkah"><span class="en">Umrah</span><span class="ar">العمرة</span><span class="ur" lang="ur">عمرہ</span><span class="id" lang="id">Umrah</span></a><span aria-hidden="true">/</span>
+          <span><span class="en">Return to Hotel</span><span class="ar">العودة للفندق</span><span class="ur" lang="ur">ہوٹل واپسی</span><span class="id" lang="id">Kembali ke Hotel</span></span>
         </nav>
-        <span class="rh-eyebrow">🕋 <span class="en">Your companion in Makkah &amp; Madinah · Free</span><span class="ar">رفيقك في مكة والمدينة · مجاني</span></span>
-        <h1 class="rh-h1" id="rh-title"><span class="en">Never lose your way <em>back to your hotel</em></span><span class="ar">لا تضيع طريق <em>العودة لفندقك</em></span></h1>
-        <p class="rh-lead"><span class="en">Save your hotel in one tap, walk back to its door, or show its card to any driver. Plus a family meeting point and a child safety card. Works without internet.</span><span class="ar">احفظ فندقك بضغطة واحدة، وارجع إلى بابه مشياً، أو أظهر بطاقته لأي سائق. ومعها نقطة لقاء للعائلة وبطاقة أمان للطفل. تعمل بدون إنترنت.</span></p>
+        <span class="rh-eyebrow">🕋 <span class="en">Your companion in Makkah &amp; Madinah · Free</span><span class="ar">رفيقك في مكة والمدينة · مجاني</span><span class="ur" lang="ur">مکہ اور مدینہ میں آپ کا ساتھی · مفت</span><span class="id" lang="id">Teman Anda di Makkah &amp; Madinah · Gratis</span></span>
+        <h1 class="rh-h1" id="rh-title"><span class="en">Never lose your way <em>back to your hotel</em></span><span class="ar">لا تضيع طريق <em>العودة لفندقك</em></span><span class="ur" lang="ur">ہوٹل <em>واپسی کا راستہ</em> کبھی نہ بھولیں</span><span class="id" lang="id">Jangan pernah tersesat <em>kembali ke hotel</em></span></h1>
+        <p class="rh-lead"><span class="en">Save your hotel in one tap, walk back to its door, or show its card to any driver. Plus a family meeting point and a child safety card. Works without internet.</span><span class="ar">احفظ فندقك بضغطة واحدة، وارجع إلى بابه مشياً، أو أظهر بطاقته لأي سائق. ومعها نقطة لقاء للعائلة وبطاقة أمان للطفل. تعمل بدون إنترنت.</span><span class="ur" lang="ur">ایک ٹیپ میں اپنا ہوٹل محفوظ کریں، پیدل اس کے دروازے تک واپس آئیں، یا اس کا کارڈ کسی بھی ڈرائیور کو دکھائیں۔ ساتھ میں خاندان کے ملنے کی جگہ اور بچے کا حفاظتی کارڈ۔ انٹرنیٹ کے بغیر بھی کام کرتا ہے۔</span><span class="id" lang="id">Simpan hotel Anda dengan satu ketukan, jalan kaki kembali ke pintunya, atau tunjukkan kartunya ke sopir mana pun. Ditambah titik kumpul keluarga dan kartu keamanan anak. Berfungsi tanpa internet.</span></p>
         <div class="rh-cta">
-          <button type="button" class="rh-btn rh-btn-gold" id="b-here">📍 <span class="en">I'm at my hotel now: save it</span><span class="ar">أنا في الفندق الآن: احفظه</span></button>
-          <button type="button" class="rh-btn rh-btn-ghost" id="b-manual">✍️ <span class="en">Enter hotel manually</span><span class="ar">أدخل الفندق يدوياً</span></button>
+          <button type="button" class="rh-btn rh-btn-gold" id="b-here">📍 <span class="en">I'm at my hotel now: save it</span><span class="ar">أنا في الفندق الآن: احفظه</span><span class="ur" lang="ur">میں ابھی ہوٹل میں ہوں: محفوظ کریں</span><span class="id" lang="id">Saya di hotel sekarang: simpan</span></button>
+          <button type="button" class="rh-btn rh-btn-ghost" id="b-manual">✍️ <span class="en">Enter hotel manually</span><span class="ar">أدخل الفندق يدوياً</span><span class="ur" lang="ur">ہوٹل خود درج کریں</span><span class="id" lang="id">Masukkan hotel secara manual</span></button>
         </div>
         <ul class="rh-trust">
-          <li><span class="en">No sign-up</span><span class="ar">بدون تسجيل</span></li>
-          <li><span class="en">Stays on your phone</span><span class="ar">بياناتك على جوالك فقط</span></li>
-          <li><span class="en">Works offline</span><span class="ar">يعمل بدون إنترنت</span></li>
+          <li><span class="en">No sign-up</span><span class="ar">بدون تسجيل</span><span class="ur" lang="ur">رجسٹریشن کی ضرورت نہیں</span><span class="id" lang="id">Tanpa daftar</span></li>
+          <li><span class="en">Stays on your phone</span><span class="ar">بياناتك على جوالك فقط</span><span class="ur" lang="ur">صرف آپ کے فون پر</span><span class="id" lang="id">Tersimpan di ponsel Anda</span></li>
+          <li><span class="en">Works offline</span><span class="ar">يعمل بدون إنترنت</span><span class="ur" lang="ur">انٹرنیٹ کے بغیر</span><span class="id" lang="id">Bisa tanpa internet</span></li>
         </ul>
       </div>
       <div class="rh-phone" aria-hidden="true">
@@ -146,8 +156,8 @@ window.dflTrack=function(event,params){
     <!-- ═══ HERO: saved card state ═══ -->
     <div class="rh-mycard" id="rh-mycard" hidden>
       <div class="rh-cities" role="group" aria-label="City">
-        <button type="button" data-city="makkah">🕋 <span class="en">Makkah</span><span class="ar">مكة</span><span class="dot" hidden></span></button>
-        <button type="button" data-city="madinah">🕌 <span class="en">Madinah</span><span class="ar">المدينة</span><span class="dot" hidden></span></button>
+        <button type="button" data-city="makkah">🕋 <span class="en">Makkah</span><span class="ar">مكة</span><span class="ur" lang="ur">مکہ</span><span class="id" lang="id">Makkah</span><span class="dot" hidden></span></button>
+        <button type="button" data-city="madinah">🕌 <span class="en">Madinah</span><span class="ar">المدينة</span><span class="ur" lang="ur">مدینہ</span><span class="id" lang="id">Madinah</span><span class="dot" hidden></span></button>
       </div>
       <div class="rh-card">
         <div class="rh-card-top">
@@ -157,25 +167,25 @@ window.dflTrack=function(event,params){
           </div>
         </div>
         <div class="rh-card-meta">
-          <span class="rh-chip ok" id="c-gps-ok">✓ <span class="en">Exact location saved</span><span class="ar">الموقع محفوظ بدقة</span></span>
-          <button type="button" class="rh-chip warn" id="c-gps-no">⚠️ <span class="en">Add exact location</span><span class="ar">أضف الموقع الدقيق</span></button>
+          <span class="rh-chip ok" id="c-gps-ok">✓ <span class="en">Exact location saved</span><span class="ar">الموقع محفوظ بدقة</span><span class="ur" lang="ur">درست مقام محفوظ ہے</span><span class="id" lang="id">Lokasi tepat tersimpan</span></span>
+          <button type="button" class="rh-chip warn" id="c-gps-no">⚠️ <span class="en">Add exact location</span><span class="ar">أضف الموقع الدقيق</span><span class="ur" lang="ur">درست مقام شامل کریں</span><span class="id" lang="id">Tambahkan lokasi tepat</span></button>
           <a class="rh-chip" id="c-phone" href="#">☎ <b dir="ltr"></b></a>
-          <span class="rh-chip" id="c-room">🚪 <span class="en">Room</span><span class="ar">غرفة</span> <b></b></span>
+          <span class="rh-chip" id="c-room">🚪 <span class="en">Room</span><span class="ar">غرفة</span><span class="ur" lang="ur">کمرہ</span><span class="id" lang="id">Kamar</span> <b></b></span>
         </div>
         <div class="rh-big3">
-          <a class="rh-big walk" id="c-walk" href="#" target="_blank" rel="noopener"><span class="ic">🚶</span><span class="en">Walk back</span><span class="ar">ارجع مشياً</span><small><span class="en">to the door</span><span class="ar">حتى الباب</span></small></a>
-          <button type="button" class="rh-big driver" id="c-driver"><span class="ic">🚕</span><span class="en">Show driver</span><span class="ar">أظهر للسائق</span><small><span class="en">full screen</span><span class="ar">بملء الشاشة</span></small></button>
-          <button type="button" class="rh-big family" id="c-family"><span class="ic">💬</span><span class="en">Send family</span><span class="ar">أرسل للعائلة</span><small>WhatsApp</small></button>
+          <a class="rh-big walk" id="c-walk" href="#" target="_blank" rel="noopener"><span class="ic">🚶</span><span class="en">Walk back</span><span class="ar">ارجع مشياً</span><span class="ur" lang="ur">پیدل واپس جائیں</span><span class="id" lang="id">Jalan kembali</span><small><span class="en">to the door</span><span class="ar">حتى الباب</span><span class="ur" lang="ur">دروازے تک</span><span class="id" lang="id">sampai pintu</span></small></a>
+          <button type="button" class="rh-big driver" id="c-driver"><span class="ic">🚕</span><span class="en">Show driver</span><span class="ar">أظهر للسائق</span><span class="ur" lang="ur">ڈرائیور کو دکھائیں</span><span class="id" lang="id">Tunjukkan sopir</span><small><span class="en">full screen</span><span class="ar">بملء الشاشة</span><span class="ur" lang="ur">پوری اسکرین</span><span class="id" lang="id">layar penuh</span></small></button>
+          <button type="button" class="rh-big family" id="c-family"><span class="ic">💬</span><span class="en">Send family</span><span class="ar">أرسل للعائلة</span><span class="ur" lang="ur">گھر والوں کو بھیجیں</span><span class="id" lang="id">Kirim ke keluarga</span><small>WhatsApp</small></button>
         </div>
         <div class="rh-more">
           <a id="c-waze" href="#" target="_blank" rel="noopener">Waze</a>
           <a id="c-apple" href="#" target="_blank" rel="noopener">Apple Maps</a>
           <a id="c-uber" href="#" target="_blank" rel="noopener">Uber</a>
-          <button type="button" id="c-image">🖼 <span class="en">Save image</span><span class="ar">احفظ صورة</span></button>
-          <button type="button" id="c-copy">📋 <span class="en">Copy</span><span class="ar">نسخ</span></button>
-          <button type="button" id="c-install">📲 <span class="en">Install app</span><span class="ar">ثبّت التطبيق</span></button>
-          <button type="button" id="c-edit">✏️ <span class="en">Edit</span><span class="ar">تعديل</span></button>
-          <button type="button" id="c-clear">🗑 <span class="en">Clear</span><span class="ar">مسح</span></button>
+          <button type="button" id="c-image">🖼 <span class="en">Save image</span><span class="ar">احفظ صورة</span><span class="ur" lang="ur">تصویر محفوظ کریں</span><span class="id" lang="id">Simpan gambar</span></button>
+          <button type="button" id="c-copy">📋 <span class="en">Copy</span><span class="ar">نسخ</span><span class="ur" lang="ur">کاپی</span><span class="id" lang="id">Salin</span></button>
+          <button type="button" id="c-install">📲 <span class="en">Install app</span><span class="ar">ثبّت التطبيق</span><span class="ur" lang="ur">ایپ انسٹال کریں</span><span class="id" lang="id">Pasang aplikasi</span></button>
+          <button type="button" id="c-edit">✏️ <span class="en">Edit</span><span class="ar">تعديل</span><span class="ur" lang="ur">ترمیم</span><span class="id" lang="id">Ubah</span></button>
+          <button type="button" id="c-clear">🗑 <span class="en">Clear</span><span class="ar">مسح</span><span class="ur" lang="ur">مٹائیں</span><span class="id" lang="id">Hapus</span></button>
         </div>
       </div>
     </div>
@@ -195,43 +205,43 @@ window.dflTrack=function(event,params){
     </div>
     <div class="rh-fields">
       <div class="rh-field full">
-        <label for="f-name"><span class="en">Hotel name</span><span class="ar">اسم الفندق</span> <i>*</i></label>
-        <input class="rh-in" id="f-name" autocomplete="off" maxlength="120" data-ph-ar="مثال: فندق سويس أوتيل مكة" data-ph-en="e.g. Swissôtel Makkah" required>
+        <label for="f-name"><span class="en">Hotel name</span><span class="ar">اسم الفندق</span><span class="ur" lang="ur">ہوٹل کا نام</span><span class="id" lang="id">Nama hotel</span> <i>*</i></label>
+        <input class="rh-in" id="f-name" autocomplete="off" maxlength="120" data-ph-ar="مثال: فندق سويس أوتيل مكة" data-ph-en="e.g. Swissôtel Makkah" data-ph-ur="مثال: سوئس اوٹیل مکہ" data-ph-id="contoh: Swissôtel Makkah" required>
       </div>
       <div class="rh-field">
-        <label for="f-addressAr"><span class="en">Address in Arabic (for the driver)</span><span class="ar">العنوان بالعربي (للسائق)</span></label>
+        <label for="f-addressAr"><span class="en">Address in Arabic (for the driver)</span><span class="ar">العنوان بالعربي (للسائق)</span><span class="ur" lang="ur">عربی میں پتہ (ڈرائیور کے لیے)</span><span class="id" lang="id">Alamat dalam bahasa Arab (untuk sopir)</span></label>
         <input class="rh-in" id="f-addressAr" maxlength="200" dir="rtl" data-ph-ar="شارع إبراهيم الخليل، أجياد" data-ph-en="شارع إبراهيم الخليل، أجياد">
       </div>
       <div class="rh-field">
-        <label for="f-phone"><span class="en">Hotel phone</span><span class="ar">هاتف الفندق</span></label>
+        <label for="f-phone"><span class="en">Hotel phone</span><span class="ar">هاتف الفندق</span><span class="ur" lang="ur">ہوٹل کا فون</span><span class="id" lang="id">Telepon hotel</span></label>
         <input class="rh-in" id="f-phone" type="tel" inputmode="tel" dir="ltr" maxlength="30" data-ph-ar="+966 12 000 0000" data-ph-en="+966 12 000 0000">
       </div>
     </div>
     <details class="rh-extra">
-      <summary><span class="en">More details (optional)</span><span class="ar">تفاصيل إضافية (اختياري)</span></summary>
+      <summary><span class="en">More details (optional)</span><span class="ar">تفاصيل إضافية (اختياري)</span><span class="ur" lang="ur">مزید تفصیلات (اختیاری)</span><span class="id" lang="id">Detail lain (opsional)</span></summary>
       <div class="rh-fields">
-        <div class="rh-field"><label for="f-address"><span class="en">Address in English</span><span class="ar">العنوان بالإنجليزي</span></label><input class="rh-in" id="f-address" dir="ltr" maxlength="200" data-ph-ar="Ibrahim Al Khalil St, Ajyad, Makkah" data-ph-en="Ibrahim Al Khalil St, Ajyad, Makkah"></div>
-        <div class="rh-field"><label for="f-room"><span class="en">Room number</span><span class="ar">رقم الغرفة</span></label><input class="rh-in" id="f-room" maxlength="12" inputmode="numeric" data-ph-ar="1204" data-ph-en="1204"></div>
-        <div class="rh-field"><label for="f-checkin"><span class="en">Check-in</span><span class="ar">تاريخ الوصول</span></label><input class="rh-in" id="f-checkin" type="date"></div>
-        <div class="rh-field"><label for="f-checkout"><span class="en">Check-out</span><span class="ar">تاريخ المغادرة</span></label><input class="rh-in" id="f-checkout" type="date"></div>
-        <div class="rh-field full"><label for="f-notes"><span class="en">Landmarks</span><span class="ar">علامات مميزة للطريق</span></label><textarea class="rh-in" id="f-notes" maxlength="300" data-ph-ar="مثال: مقابل برج الساعة، اخرج من باب الملك فهد ثم يميناً" data-ph-en="e.g. Opposite the Clock Tower, exit King Fahd Gate then right"></textarea></div>
-        <div class="rh-field full"><label for="f-mapslink"><span class="en">Google Maps link</span><span class="ar">رابط خرائط جوجل</span></label><input class="rh-in" id="f-mapslink" type="url" dir="ltr" data-ph-ar="https://maps.app.goo.gl/..." data-ph-en="https://maps.app.goo.gl/..."><span class="rh-hint"><span class="en">Not needed if you saved the exact location above.</span><span class="ar">لا تحتاجه إن حفظت الموقع الدقيق في الأعلى.</span></span></div>
+        <div class="rh-field"><label for="f-address"><span class="en">Address in English</span><span class="ar">العنوان بالإنجليزي</span><span class="ur" lang="ur">انگریزی میں پتہ</span><span class="id" lang="id">Alamat dalam bahasa Inggris</span></label><input class="rh-in" id="f-address" dir="ltr" maxlength="200" data-ph-ar="Ibrahim Al Khalil St, Ajyad, Makkah" data-ph-en="Ibrahim Al Khalil St, Ajyad, Makkah"></div>
+        <div class="rh-field"><label for="f-room"><span class="en">Room number</span><span class="ar">رقم الغرفة</span><span class="ur" lang="ur">کمرہ نمبر</span><span class="id" lang="id">Nomor kamar</span></label><input class="rh-in" id="f-room" maxlength="12" inputmode="numeric" data-ph-ar="1204" data-ph-en="1204"></div>
+        <div class="rh-field"><label for="f-checkin"><span class="en">Check-in</span><span class="ar">تاريخ الوصول</span><span class="ur" lang="ur">آمد</span><span class="id" lang="id">Check-in</span></label><input class="rh-in" id="f-checkin" type="date"></div>
+        <div class="rh-field"><label for="f-checkout"><span class="en">Check-out</span><span class="ar">تاريخ المغادرة</span><span class="ur" lang="ur">روانگی</span><span class="id" lang="id">Check-out</span></label><input class="rh-in" id="f-checkout" type="date"></div>
+        <div class="rh-field full"><label for="f-notes"><span class="en">Landmarks</span><span class="ar">علامات مميزة للطريق</span><span class="ur" lang="ur">نشانیاں</span><span class="id" lang="id">Penanda jalan</span></label><textarea class="rh-in" id="f-notes" maxlength="300" data-ph-ar="مثال: مقابل برج الساعة، اخرج من باب الملك فهد ثم يميناً" data-ph-en="e.g. Opposite the Clock Tower, exit King Fahd Gate then right" data-ph-ur="مثال: کلاک ٹاور کے سامنے، شاہ فہد دروازے سے نکل کر دائیں" data-ph-id="contoh: Di depan Menara Jam, keluar Pintu Raja Fahd lalu ke kanan"></textarea></div>
+        <div class="rh-field full"><label for="f-mapslink"><span class="en">Google Maps link</span><span class="ar">رابط خرائط جوجل</span><span class="ur" lang="ur">گوگل میپس لنک</span><span class="id" lang="id">Tautan Google Maps</span></label><input class="rh-in" id="f-mapslink" type="url" dir="ltr" data-ph-ar="https://maps.app.goo.gl/..." data-ph-en="https://maps.app.goo.gl/..."><span class="rh-hint"><span class="en">Not needed if you saved the exact location above.</span><span class="ar">لا تحتاجه إن حفظت الموقع الدقيق في الأعلى.</span><span class="ur" lang="ur">اگر آپ نے اوپر درست مقام محفوظ کر لیا ہے تو اس کی ضرورت نہیں۔</span><span class="id" lang="id">Tidak perlu jika Anda sudah menyimpan lokasi tepat di atas.</span></span></div>
       </div>
       <input type="hidden" id="f-area"><input type="hidden" id="f-lat"><input type="hidden" id="f-lng">
     </details>
-    <button type="submit" class="rh-btn rh-btn-gold rh-save">✓ <span class="en">Save my hotel card</span><span class="ar">احفظ بطاقة فندقي</span></button>
+    <button type="submit" class="rh-btn rh-btn-gold rh-save">✓ <span class="en">Save my hotel card</span><span class="ar">احفظ بطاقة فندقي</span><span class="ur" lang="ur">میرا ہوٹل کارڈ محفوظ کریں</span><span class="id" lang="id">Simpan kartu hotel saya</span></button>
   </form>
 </div>
 
 <!-- ═══ HOW IT WORKS ═══ -->
 <section class="rh-sec" aria-labelledby="how-t">
   <div class="rh-wrap">
-    <span class="rh-kicker"><span class="en">How it works</span><span class="ar">كيف تعمل</span></span>
-    <h2 class="rh-h2" id="how-t"><span class="en">Three seconds that save you an hour of wandering</span><span class="ar">ثلاث ثوانٍ توفر عليك ساعة من التيه</span></h2>
+    <span class="rh-kicker"><span class="en">How it works</span><span class="ar">كيف تعمل</span><span class="ur" lang="ur">یہ کیسے کام کرتا ہے</span><span class="id" lang="id">Cara kerjanya</span></span>
+    <h2 class="rh-h2" id="how-t"><span class="en">Three seconds that save you an hour of wandering</span><span class="ar">ثلاث ثوانٍ توفر عليك ساعة من التيه</span><span class="ur" lang="ur">تین سیکنڈ جو آپ کو گھنٹہ بھر بھٹکنے سے بچاتے ہیں</span><span class="id" lang="id">Tiga detik yang menyelamatkan Anda dari satu jam tersesat</span></h2>
     <div class="rh-steps">
-      <div class="rh-step"><div class="ic">🏨</div><h3><span class="en">Save it at the hotel</span><span class="ar">احفظه وأنت في الفندق</span></h3><p><span class="en">One tap saves its exact location. Add the name, and the Arabic address for the driver.</span><span class="ar">ضغطة واحدة تحفظ موقعه الدقيق. أضف الاسم، والعنوان بالعربي للسائق.</span></p></div>
-      <div class="rh-step"><div class="ic">🕋</div><h3><span class="en">Go to the Haram with peace of mind</span><span class="ar">اذهب للحرم مطمئناً</span></h3><p><span class="en">Save a family meeting point before you split up, and give your child a safety card.</span><span class="ar">احفظ نقطة لقاء للعائلة قبل أن تتفرقوا، وأعطِ طفلك بطاقة الأمان.</span></p></div>
-      <div class="rh-step"><div class="ic">🚶</div><h3><span class="en">Come back in one tap</span><span class="ar">ارجع بضغطة واحدة</span></h3><p><span class="en">Walking directions to the door, or a full-screen card any driver can read.</span><span class="ar">اتجاهات المشي حتى الباب، أو بطاقة بملء الشاشة يقرؤها أي سائق.</span></p></div>
+      <div class="rh-step"><div class="ic">🏨</div><h3><span class="en">Save it at the hotel</span><span class="ar">احفظه وأنت في الفندق</span><span class="ur" lang="ur">ہوٹل میں ہوتے ہوئے محفوظ کریں</span><span class="id" lang="id">Simpan saat di hotel</span></h3><p><span class="en">One tap saves its exact location. Add the name, and the Arabic address for the driver.</span><span class="ar">ضغطة واحدة تحفظ موقعه الدقيق. أضف الاسم، والعنوان بالعربي للسائق.</span><span class="ur" lang="ur">ایک ٹیپ اس کا درست مقام محفوظ کرتا ہے۔ نام اور ڈرائیور کے لیے عربی پتہ شامل کریں۔</span><span class="id" lang="id">Satu ketukan menyimpan lokasi tepatnya. Tambahkan nama dan alamat bahasa Arab untuk sopir.</span></p></div>
+      <div class="rh-step"><div class="ic">🕋</div><h3><span class="en">Go to the Haram with peace of mind</span><span class="ar">اذهب للحرم مطمئناً</span><span class="ur" lang="ur">اطمینان سے حرم جائیں</span><span class="id" lang="id">Pergi ke Masjidil Haram dengan tenang</span></h3><p><span class="en">Save a family meeting point before you split up, and give your child a safety card.</span><span class="ar">احفظ نقطة لقاء للعائلة قبل أن تتفرقوا، وأعطِ طفلك بطاقة الأمان.</span><span class="ur" lang="ur">بچھڑنے سے پہلے خاندان کے ملنے کی جگہ محفوظ کریں، اور بچے کو حفاظتی کارڈ دیں۔</span><span class="id" lang="id">Simpan titik kumpul keluarga sebelum berpisah, dan beri anak Anda kartu keamanan.</span></p></div>
+      <div class="rh-step"><div class="ic">🚶</div><h3><span class="en">Come back in one tap</span><span class="ar">ارجع بضغطة واحدة</span><span class="ur" lang="ur">ایک ٹیپ میں واپس آئیں</span><span class="id" lang="id">Kembali dengan satu ketukan</span></h3><p><span class="en">Walking directions to the door, or a full-screen card any driver can read.</span><span class="ar">اتجاهات المشي حتى الباب، أو بطاقة بملء الشاشة يقرؤها أي سائق.</span><span class="ur" lang="ur">دروازے تک پیدل راستہ، یا پوری اسکرین پر کارڈ جو ہر ڈرائیور پڑھ سکے۔</span><span class="id" lang="id">Petunjuk jalan kaki sampai pintu, atau kartu layar penuh yang bisa dibaca sopir mana pun.</span></p></div>
     </div>
   </div>
 </section>
@@ -239,57 +249,57 @@ window.dflTrack=function(event,params){
 <!-- ═══ SAFETY KIT ═══ -->
 <section class="rh-sec" id="kit" aria-labelledby="kit-t">
   <div class="rh-wrap">
-    <span class="rh-kicker"><span class="en">Safety kit</span><span class="ar">حقيبة الأمان</span></span>
-    <h2 class="rh-h2" id="kit-t"><span class="en">Everything your family needs in the crowd</span><span class="ar">كل ما تحتاجه عائلتك وسط الزحام</span></h2>
+    <span class="rh-kicker"><span class="en">Safety kit</span><span class="ar">حقيبة الأمان</span><span class="ur" lang="ur">حفاظتی کٹ</span><span class="id" lang="id">Paket keamanan</span></span>
+    <h2 class="rh-h2" id="kit-t"><span class="en">Everything your family needs in the crowd</span><span class="ar">كل ما تحتاجه عائلتك وسط الزحام</span><span class="ur" lang="ur">ہجوم میں آپ کے خاندان کی ہر ضرورت</span><span class="id" lang="id">Semua yang dibutuhkan keluarga Anda di tengah keramaian</span></h2>
     <div class="rh-kit">
       <div class="rh-tabs" role="tablist" aria-label="Safety kit">
-        <button type="button" class="rh-tab" role="tab" id="t-meet" aria-controls="p-meet" aria-selected="true">👨‍👩‍👧 <span class="en">Meeting point</span><span class="ar">نقطة اللقاء</span></button>
-        <button type="button" class="rh-tab" role="tab" id="t-kid" aria-controls="p-kid" aria-selected="false" tabindex="-1">🧒 <span class="en">Child card</span><span class="ar">بطاقة الطفل</span></button>
-        <button type="button" class="rh-tab" role="tab" id="t-taxi" aria-controls="p-taxi" aria-selected="false" tabindex="-1">🚕 <span class="en">Taxi phrases</span><span class="ar">عبارات التاكسي</span></button>
-        <button type="button" class="rh-tab" role="tab" id="t-sos" aria-controls="p-sos" aria-selected="false" tabindex="-1">☎️ <span class="en">Emergency</span><span class="ar">الطوارئ</span></button>
+        <button type="button" class="rh-tab" role="tab" id="t-meet" aria-controls="p-meet" aria-selected="true">👨‍👩‍👧 <span class="en">Meeting point</span><span class="ar">نقطة اللقاء</span><span class="ur" lang="ur">ملنے کی جگہ</span><span class="id" lang="id">Titik kumpul</span></button>
+        <button type="button" class="rh-tab" role="tab" id="t-kid" aria-controls="p-kid" aria-selected="false" tabindex="-1">🧒 <span class="en">Child card</span><span class="ar">بطاقة الطفل</span><span class="ur" lang="ur">بچے کا کارڈ</span><span class="id" lang="id">Kartu anak</span></button>
+        <button type="button" class="rh-tab" role="tab" id="t-taxi" aria-controls="p-taxi" aria-selected="false" tabindex="-1">🚕 <span class="en">Taxi phrases</span><span class="ar">عبارات التاكسي</span><span class="ur" lang="ur">ٹیکسی کے جملے</span><span class="id" lang="id">Kalimat taksi</span></button>
+        <button type="button" class="rh-tab" role="tab" id="t-sos" aria-controls="p-sos" aria-selected="false" tabindex="-1">☎️ <span class="en">Emergency</span><span class="ar">الطوارئ</span><span class="ur" lang="ur">ایمرجنسی</span><span class="id" lang="id">Darurat</span></button>
       </div>
 
       <div class="rh-pane" role="tabpanel" id="p-meet" aria-labelledby="t-meet">
-        <h3><span class="en">Family meeting point</span><span class="ar">نقطة لقاء العائلة</span></h3>
-        <p><span class="en">Before you split up in the Haram, save where you are and send it to your family. Anyone separated walks straight back to it.</span><span class="ar">قبل أن تتفرقوا في الحرم، احفظ مكانك الآن وأرسله لعائلتك. من يضيع منكم يمشي إليه مباشرة.</span></p>
+        <h3><span class="en">Family meeting point</span><span class="ar">نقطة لقاء العائلة</span><span class="ur" lang="ur">خاندان کے ملنے کی جگہ</span><span class="id" lang="id">Titik kumpul keluarga</span></h3>
+        <p><span class="en">Before you split up in the Haram, save where you are and send it to your family. Anyone separated walks straight back to it.</span><span class="ar">قبل أن تتفرقوا في الحرم، احفظ مكانك الآن وأرسله لعائلتك. من يضيع منكم يمشي إليه مباشرة.</span><span class="ur" lang="ur">حرم میں بچھڑنے سے پہلے اپنی جگہ محفوظ کریں اور گھر والوں کو بھیج دیں۔ جو بچھڑ جائے وہ سیدھا یہیں واپس آئے۔</span><span class="id" lang="id">Sebelum berpisah di Masjidil Haram, simpan posisi Anda dan kirim ke keluarga. Siapa pun yang terpisah langsung berjalan kembali ke sana.</span></p>
         <div id="m-empty">
           <div class="rh-row">
-            <input class="rh-in" id="m-gate" maxlength="60" aria-label="Gate or landmark" data-ph-ar="رقم الباب أو علامة مميزة (اختياري)" data-ph-en="Gate number or landmark (optional)">
-            <button type="button" class="rh-act gold" id="m-save">📍 <span class="en">Save my spot</span><span class="ar">احفظ مكاني</span></button>
+            <input class="rh-in" id="m-gate" maxlength="60" aria-label="Gate or landmark" data-ph-ar="رقم الباب أو علامة مميزة (اختياري)" data-ph-en="Gate number or landmark (optional)" data-ph-ur="دروازہ نمبر یا کوئی نشانی (اختیاری)" data-ph-id="Nomor pintu atau penanda (opsional)">
+            <button type="button" class="rh-act gold" id="m-save">📍 <span class="en">Save my spot</span><span class="ar">احفظ مكاني</span><span class="ur" lang="ur">میری جگہ محفوظ کریں</span><span class="id" lang="id">Simpan posisi saya</span></button>
           </div>
         </div>
         <div class="rh-meet-saved" id="m-saved" hidden>
           <div class="rh-meet-box"><b id="m-label"></b><span id="m-time"></span></div>
           <div class="rh-row">
-            <a class="rh-act teal" id="m-go" href="#" target="_blank" rel="noopener">🧭 <span class="en">Walk me there</span><span class="ar">خذني إليها</span></a>
-            <button type="button" class="rh-act wa" id="m-share">💬 <span class="en">Send to family</span><span class="ar">أرسلها للعائلة</span></button>
-            <button type="button" class="rh-act" id="m-clear"><span class="en">New point</span><span class="ar">نقطة جديدة</span></button>
+            <a class="rh-act teal" id="m-go" href="#" target="_blank" rel="noopener">🧭 <span class="en">Walk me there</span><span class="ar">خذني إليها</span><span class="ur" lang="ur">مجھے وہاں لے چلیں</span><span class="id" lang="id">Antar saya ke sana</span></a>
+            <button type="button" class="rh-act wa" id="m-share">💬 <span class="en">Send to family</span><span class="ar">أرسلها للعائلة</span><span class="ur" lang="ur">گھر والوں کو بھیجیں</span><span class="id" lang="id">Kirim ke keluarga</span></button>
+            <button type="button" class="rh-act" id="m-clear"><span class="en">New point</span><span class="ar">نقطة جديدة</span><span class="ur" lang="ur">نئی جگہ</span><span class="id" lang="id">Titik baru</span></button>
           </div>
         </div>
       </div>
 
       <div class="rh-pane" role="tabpanel" id="p-kid" aria-labelledby="t-kid" hidden>
-        <h3><span class="en">Child safety card</span><span class="ar">بطاقة أمان الطفل</span></h3>
-        <p><span class="en">Whoever finds your child can call you. Print it for a wristband or pocket, or set it as an older child's phone wallpaper. In Arabic, English and Urdu.</span><span class="ar">من يجد طفلك يستطيع الاتصال بك. اطبعها لسوار المعصم أو الجيب، أو اجعلها خلفية جوال الطفل الأكبر. بالعربية والإنجليزية والأوردية.</span></p>
+        <h3><span class="en">Child safety card</span><span class="ar">بطاقة أمان الطفل</span><span class="ur" lang="ur">بچے کا حفاظتی کارڈ</span><span class="id" lang="id">Kartu keamanan anak</span></h3>
+        <p><span class="en">Whoever finds your child can call you. Print it for a wristband or pocket, or set it as an older child's phone wallpaper. In Arabic, English and Urdu.</span><span class="ar">من يجد طفلك يستطيع الاتصال بك. اطبعها لسوار المعصم أو الجيب، أو اجعلها خلفية جوال الطفل الأكبر. بالعربية والإنجليزية والأوردية.</span><span class="ur" lang="ur">جو آپ کے بچے کو پائے وہ آپ کو فون کر سکے۔ کلائی بند یا جیب کے لیے پرنٹ کریں، یا بڑے بچے کے فون کا وال پیپر بنائیں۔ عربی، انگریزی اور اردو میں۔</span><span class="id" lang="id">Siapa pun yang menemukan anak Anda bisa menelepon Anda. Cetak untuk gelang atau saku, atau jadikan wallpaper ponsel anak yang lebih besar. Dalam bahasa Arab, Inggris, dan Urdu.</span></p>
         <div class="rh-fields">
-          <div class="rh-field"><label for="k-name"><span class="en">Child's name</span><span class="ar">اسم الطفل</span></label><input class="rh-in" id="k-name" maxlength="40" autocomplete="off"></div>
-          <div class="rh-field"><label for="k-p1"><span class="en">Parent phone</span><span class="ar">جوال الأب أو الأم</span> <i>*</i></label><input class="rh-in" id="k-p1" type="tel" inputmode="tel" dir="ltr" maxlength="20" data-ph-ar="+966 5x xxx xxxx" data-ph-en="+966 5x xxx xxxx"></div>
-          <div class="rh-field"><label for="k-p2"><span class="en">Second phone (optional)</span><span class="ar">جوال ثانٍ (اختياري)</span></label><input class="rh-in" id="k-p2" type="tel" inputmode="tel" dir="ltr" maxlength="20"></div>
-          <div class="rh-field" style="justify-content:flex-end"><button type="button" class="rh-act gold" id="k-make">🧒 <span class="en">Create card</span><span class="ar">أنشئ البطاقة</span></button></div>
+          <div class="rh-field"><label for="k-name"><span class="en">Child's name</span><span class="ar">اسم الطفل</span><span class="ur" lang="ur">بچے کا نام</span><span class="id" lang="id">Nama anak</span></label><input class="rh-in" id="k-name" maxlength="40" autocomplete="off"></div>
+          <div class="rh-field"><label for="k-p1"><span class="en">Parent phone</span><span class="ar">جوال الأب أو الأم</span><span class="ur" lang="ur">والدین کا فون</span><span class="id" lang="id">Telepon orang tua</span> <i>*</i></label><input class="rh-in" id="k-p1" type="tel" inputmode="tel" dir="ltr" maxlength="20" data-ph-ar="+966 5x xxx xxxx" data-ph-en="+966 5x xxx xxxx"></div>
+          <div class="rh-field"><label for="k-p2"><span class="en">Second phone (optional)</span><span class="ar">جوال ثانٍ (اختياري)</span><span class="ur" lang="ur">دوسرا فون (اختیاری)</span><span class="id" lang="id">Telepon kedua (opsional)</span></label><input class="rh-in" id="k-p2" type="tel" inputmode="tel" dir="ltr" maxlength="20"></div>
+          <div class="rh-field" style="justify-content:flex-end"><button type="button" class="rh-act gold" id="k-make">🧒 <span class="en">Create card</span><span class="ar">أنشئ البطاقة</span><span class="ur" lang="ur">کارڈ بنائیں</span><span class="id" lang="id">Buat kartu</span></button></div>
         </div>
         <div id="k-out" hidden>
           <canvas class="rh-canvas" id="k-canvas" width="1080" height="1350"></canvas>
           <div class="rh-row">
-            <button type="button" class="rh-act teal" id="k-dl">⬇️ <span class="en">Download</span><span class="ar">تحميل</span></button>
-            <button type="button" class="rh-act" id="k-print">🖨 <span class="en">Print 6 cards</span><span class="ar">اطبع 6 بطاقات</span></button>
+            <button type="button" class="rh-act teal" id="k-dl">⬇️ <span class="en">Download</span><span class="ar">تحميل</span><span class="ur" lang="ur">ڈاؤن لوڈ</span><span class="id" lang="id">Unduh</span></button>
+            <button type="button" class="rh-act" id="k-print">🖨 <span class="en">Print 6 cards</span><span class="ar">اطبع 6 بطاقات</span><span class="ur" lang="ur">6 کارڈ پرنٹ کریں</span><span class="id" lang="id">Cetak 6 kartu</span></button>
           </div>
-          <p class="rh-hint" style="text-align:center;margin-top:10px"><span class="en">Created on your phone. Nothing is uploaded.</span><span class="ar">تُنشأ على جوالك، ولا يُرفع أي شيء.</span></p>
+          <p class="rh-hint" style="text-align:center;margin-top:10px"><span class="en">Created on your phone. Nothing is uploaded.</span><span class="ar">تُنشأ على جوالك، ولا يُرفع أي شيء.</span><span class="ur" lang="ur">آپ کے فون پر بنتا ہے۔ کچھ بھی اپ لوڈ نہیں ہوتا۔</span><span class="id" lang="id">Dibuat di ponsel Anda. Tidak ada yang diunggah.</span></p>
         </div>
       </div>
 
       <div class="rh-pane" role="tabpanel" id="p-taxi" aria-labelledby="t-taxi" hidden>
-        <h3><span class="en">Talk to the driver in his language</span><span class="ar">كلّم السائق بلغته</span></h3>
-        <p><span class="en">Many drivers in Makkah speak Urdu or Bengali. Pick a language and show the screen.</span><span class="ar">كثير من السائقين في مكة يتحدثون الأوردية أو البنغالية. اختر اللغة وأظهر الشاشة.</span></p>
+        <h3><span class="en">Talk to the driver in his language</span><span class="ar">كلّم السائق بلغته</span><span class="ur" lang="ur">ڈرائیور سے اس کی زبان میں بات کریں</span><span class="id" lang="id">Bicara dengan sopir dalam bahasanya</span></h3>
+        <p><span class="en">Many drivers in Makkah speak Urdu or Bengali. Pick a language and show the screen.</span><span class="ar">كثير من السائقين في مكة يتحدثون الأوردية أو البنغالية. اختر اللغة وأظهر الشاشة.</span><span class="ur" lang="ur">مکہ میں بہت سے ڈرائیور اردو یا بنگالی بولتے ہیں۔ زبان چنیں اور اسکرین دکھائیں۔</span><span class="id" lang="id">Banyak sopir di Makkah berbahasa Urdu atau Bengali. Pilih bahasa dan tunjukkan layarnya.</span></p>
         <div class="rh-langs">
           <button type="button" data-taxi="SA">العربية</button><button type="button" data-taxi="UR">اردو</button><button type="button" data-taxi="BN">বাংলা</button><button type="button" data-taxi="ID">Indonesia</button><button type="button" data-taxi="TR">Türkçe</button><button type="button" data-taxi="FR">Français</button>
         </div>
@@ -303,25 +313,25 @@ window.dflTrack=function(event,params){
       </div>
 
       <div class="rh-pane" role="tabpanel" id="p-sos" aria-labelledby="t-sos" hidden>
-        <h3><span class="en">Emergency numbers in Saudi Arabia</span><span class="ar">أرقام الطوارئ في السعودية</span></h3>
-        <p><span class="en">Tap to call. These work from any phone.</span><span class="ar">اضغط للاتصال مباشرة، تعمل من أي جوال.</span></p>
+        <h3><span class="en">Emergency numbers in Saudi Arabia</span><span class="ar">أرقام الطوارئ في السعودية</span><span class="ur" lang="ur">سعودی عرب میں ایمرجنسی نمبر</span><span class="id" lang="id">Nomor darurat di Arab Saudi</span></h3>
+        <p><span class="en">Tap to call. These work from any phone.</span><span class="ar">اضغط للاتصال مباشرة، تعمل من أي جوال.</span><span class="ur" lang="ur">کال کے لیے ٹیپ کریں۔ یہ کسی بھی فون سے کام کرتے ہیں۔</span><span class="id" lang="id">Ketuk untuk menelepon. Berfungsi dari ponsel mana pun.</span></p>
         <div class="rh-sos">
-          <a class="red" href="tel:911"><b>911</b><span><span class="en">Unified emergency</span><span class="ar">الطوارئ الموحد</span></span></a>
-          <a href="tel:997"><b>997</b><span><span class="en">Ambulance</span><span class="ar">الإسعاف</span></span></a>
-          <a href="tel:998"><b>998</b><span><span class="en">Civil Defense</span><span class="ar">الدفاع المدني</span></span></a>
-          <a href="tel:937"><b>937</b><span><span class="en">Health line</span><span class="ar">الاستشارات الصحية</span></span></a>
+          <a class="red" href="tel:911"><b>911</b><span><span class="en">Unified emergency</span><span class="ar">الطوارئ الموحد</span><span class="ur" lang="ur">متحدہ ایمرجنسی</span><span class="id" lang="id">Darurat terpadu</span></span></a>
+          <a href="tel:997"><b>997</b><span><span class="en">Ambulance</span><span class="ar">الإسعاف</span><span class="ur" lang="ur">ایمبولینس</span><span class="id" lang="id">Ambulans</span></span></a>
+          <a href="tel:998"><b>998</b><span><span class="en">Civil Defense</span><span class="ar">الدفاع المدني</span><span class="ur" lang="ur">سول ڈیفنس</span><span class="id" lang="id">Pertahanan Sipil</span></span></a>
+          <a href="tel:937"><b>937</b><span><span class="en">Health line</span><span class="ar">الاستشارات الصحية</span><span class="ur" lang="ur">ہیلتھ لائن</span><span class="id" lang="id">Layanan kesehatan</span></span></a>
         </div>
         <div class="rh-links">
-          <a href="https://umrah.nusuk.sa" target="_blank" rel="noopener"><b><span class="en">Nusuk</span><span class="ar">نسك</span></b><span><span class="en">Official Umrah permits and Rawdah booking</span><span class="ar">تصاريح العمرة وحجز الروضة رسمياً</span></span></a>
-          <a href="https://www.moh.gov.sa" target="_blank" rel="noopener"><b><span class="en">Ministry of Health</span><span class="ar">وزارة الصحة</span></b><span><span class="en">Pilgrim health guidance</span><span class="ar">إرشادات صحة المعتمرين</span></span></a>
-          <a href="https://www.hhr.sa" target="_blank" rel="noopener"><b><span class="en">Haramain Railway</span><span class="ar">قطار الحرمين</span></b><span><span class="en">Makkah ↔ Madinah tickets</span><span class="ar">تذاكر مكة ↔ المدينة</span></span></a>
+          <a href="https://umrah.nusuk.sa" target="_blank" rel="noopener"><b><span class="en">Nusuk</span><span class="ar">نسك</span><span class="ur" lang="ur">نسک</span><span class="id" lang="id">Nusuk</span></b><span><span class="en">Official Umrah permits and Rawdah booking</span><span class="ar">تصاريح العمرة وحجز الروضة رسمياً</span><span class="ur" lang="ur">عمرہ پرمٹ اور روضہ کی سرکاری بکنگ</span><span class="id" lang="id">Izin Umrah resmi dan pemesanan Raudhah</span></span></a>
+          <a href="https://www.moh.gov.sa" target="_blank" rel="noopener"><b><span class="en">Ministry of Health</span><span class="ar">وزارة الصحة</span><span class="ur" lang="ur">وزارت صحت</span><span class="id" lang="id">Kementerian Kesehatan</span></b><span><span class="en">Pilgrim health guidance</span><span class="ar">إرشادات صحة المعتمرين</span><span class="ur" lang="ur">زائرین کے لیے صحت کی رہنمائی</span><span class="id" lang="id">Panduan kesehatan jemaah</span></span></a>
+          <a href="https://www.hhr.sa" target="_blank" rel="noopener"><b><span class="en">Haramain Railway</span><span class="ar">قطار الحرمين</span><span class="ur" lang="ur">حرمین ٹرین</span><span class="id" lang="id">Kereta Haramain</span></b><span><span class="en">Makkah ↔ Madinah tickets</span><span class="ar">تذاكر مكة ↔ المدينة</span><span class="ur" lang="ur">مکہ ↔ مدینہ ٹکٹ</span><span class="id" lang="id">Tiket Makkah ↔ Madinah</span></span></a>
         </div>
         <div class="rh-tips">
-          <b><span class="en">If someone gets lost</span><span class="ar">إذا تاه أحد أفراد العائلة</span></b>
+          <b><span class="en">If someone gets lost</span><span class="ar">إذا تاه أحد أفراد العائلة</span><span class="ur" lang="ur">اگر کوئی بچھڑ جائے</span><span class="id" lang="id">Jika ada yang tersesat</span></b>
           <ul>
-            <li><span class="en">Go to the meeting point you saved, and stay there.</span><span class="ar">اذهبوا إلى نقطة اللقاء المحفوظة وانتظروا فيها.</span></li>
-            <li><span class="en">Ask the nearest security officer. They are posted around the Haram at all hours.</span><span class="ar">اسألوا أقرب رجل أمن، فهم منتشرون حول الحرم على مدار الساعة.</span></li>
-            <li><span class="en">Photograph your family each morning. A recent photo speeds up any search.</span><span class="ar">صوّروا أفراد العائلة كل صباح، فالصورة الحديثة تسرّع البحث.</span></li>
+            <li><span class="en">Go to the meeting point you saved, and stay there.</span><span class="ar">اذهبوا إلى نقطة اللقاء المحفوظة وانتظروا فيها.</span><span class="ur" lang="ur">محفوظ کی ہوئی ملنے کی جگہ پر جائیں اور وہیں رکیں۔</span><span class="id" lang="id">Pergi ke titik kumpul yang tersimpan dan tunggu di sana.</span></li>
+            <li><span class="en">Ask the nearest security officer. They are posted around the Haram at all hours.</span><span class="ar">اسألوا أقرب رجل أمن، فهم منتشرون حول الحرم على مدار الساعة.</span><span class="ur" lang="ur">قریبی سیکیورٹی اہلکار سے پوچھیں۔ وہ حرم کے اردگرد ہر وقت موجود ہوتے ہیں۔</span><span class="id" lang="id">Tanyakan petugas keamanan terdekat. Mereka berjaga di sekitar Masjidil Haram setiap saat.</span></li>
+            <li><span class="en">Photograph your family each morning. A recent photo speeds up any search.</span><span class="ar">صوّروا أفراد العائلة كل صباح، فالصورة الحديثة تسرّع البحث.</span><span class="ur" lang="ur">ہر صبح اپنے گھر والوں کی تصویر لیں۔ تازہ تصویر تلاش کو تیز کرتی ہے۔</span><span class="id" lang="id">Foto keluarga Anda setiap pagi. Foto terbaru mempercepat pencarian.</span></li>
           </ul>
         </div>
       </div>
@@ -332,15 +342,15 @@ window.dflTrack=function(event,params){
 <!-- ═══ UMRAH GUIDES ═══ -->
 <section class="rh-sec" aria-labelledby="g-t">
   <div class="rh-wrap">
-    <span class="rh-kicker"><span class="en">Plan your Umrah</span><span class="ar">خطّط لعمرتك</span></span>
-    <h2 class="rh-h2" id="g-t"><span class="en">Practical Umrah guides for families</span><span class="ar">أدلة عمرة عملية للعائلات</span></h2>
+    <span class="rh-kicker"><span class="en">Plan your Umrah</span><span class="ar">خطّط لعمرتك</span><span class="ur" lang="ur">اپنے عمرے کی منصوبہ بندی کریں</span><span class="id" lang="id">Rencanakan Umrah Anda</span></span>
+    <h2 class="rh-h2" id="g-t"><span class="en">Practical Umrah guides for families</span><span class="ar">أدلة عمرة عملية للعائلات</span><span class="ur" lang="ur">خاندانوں کے لیے عملی عمرہ گائیڈز</span><span class="id" lang="id">Panduan Umrah praktis untuk keluarga</span></h2>
     <div class="rh-guides">
-      <a class="rh-g hub" href="/makkah"><span class="ic">🕋</span><b><span class="en">The complete Umrah guide</span><span class="ar">دليل العمرة الكامل</span></b><span><span class="en">Before you travel, the rites, and your days in Makkah and Madinah.</span><span class="ar">قبل السفر، والمناسك، وأيامك في مكة والمدينة.</span></span></a>
-      <a class="rh-g" href="/blog/hajj-umrah-guide-2025"><span class="ic">📿</span><b><span class="en">Umrah step by step</span><span class="ar">مناسك العمرة خطوة بخطوة</span></b><span><span class="en">Ihram, tawaf, sa'i and halq, in order.</span><span class="ar">الإحرام والطواف والسعي والحلق بالترتيب.</span></span></a>
-      <a class="rh-g" href="/islamic-hajj-umrah/umrah-with-kids"><span class="ic">👨‍👩‍👧</span><b><span class="en">Umrah with children</span><span class="ar">العمرة مع الأطفال</span></b><span><span class="en">Planning, crowds, and keeping little ones safe.</span><span class="ar">التخطيط والزحام وسلامة الصغار.</span></span></a>
-      <a class="rh-g" href="/blog/makkah-hotels-guide"><span class="ic">🏨</span><b><span class="en">Hotels near the Haram</span><span class="ar">فنادق قرب الحرم</span></b><span><span class="en">Distance, budget and how to choose.</span><span class="ar">المسافة والميزانية وكيف تختار.</span></span></a>
-      <a class="rh-g" href="/blog/umrah-packing-checklist-guide"><span class="ic">🧳</span><b><span class="en">Umrah packing list</span><span class="ar">حقيبة العمرة</span></b><span><span class="en">What to take, and what to leave home.</span><span class="ar">ما تأخذه وما تتركه في البيت.</span></span></a>
-      <a class="rh-g" href="/islamic-hajj-umrah/umrah-with-elderly-parents"><span class="ic">🤲</span><b><span class="en">Umrah with elderly parents</span><span class="ar">العمرة مع الوالدين</span></b><span><span class="en">Wheelchairs, timing, and rest.</span><span class="ar">الكراسي المتحركة والتوقيت والراحة.</span></span></a>
+      <a class="rh-g hub" href="/makkah"><span class="ic">🕋</span><b><span class="en">The complete Umrah guide</span><span class="ar">دليل العمرة الكامل</span><span class="ur" lang="ur">مکمل عمرہ گائیڈ</span><span class="id" lang="id">Panduan Umrah lengkap</span></b><span><span class="en">Before you travel, the rites, and your days in Makkah and Madinah.</span><span class="ar">قبل السفر، والمناسك، وأيامك في مكة والمدينة.</span><span class="ur" lang="ur">سفر سے پہلے، مناسک، اور مکہ و مدینہ میں آپ کے دن۔</span><span class="id" lang="id">Sebelum berangkat, manasik, dan hari-hari Anda di Makkah dan Madinah.</span></span></a>
+      <a class="rh-g" href="/blog/hajj-umrah-guide-2025"><span class="ic">📿</span><b><span class="en">Umrah step by step</span><span class="ar">مناسك العمرة خطوة بخطوة</span><span class="ur" lang="ur">عمرہ قدم بہ قدم</span><span class="id" lang="id">Umrah langkah demi langkah</span></b><span><span class="en">Ihram, tawaf, sa'i and halq, in order.</span><span class="ar">الإحرام والطواف والسعي والحلق بالترتيب.</span><span class="ur" lang="ur">احرام، طواف، سعی اور حلق، ترتیب سے۔</span><span class="id" lang="id">Ihram, tawaf, sa'i, dan tahallul, berurutan.</span></span></a>
+      <a class="rh-g" href="/islamic-hajj-umrah/umrah-with-kids"><span class="ic">👨‍👩‍👧</span><b><span class="en">Umrah with children</span><span class="ar">العمرة مع الأطفال</span><span class="ur" lang="ur">بچوں کے ساتھ عمرہ</span><span class="id" lang="id">Umrah bersama anak</span></b><span><span class="en">Planning, crowds, and keeping little ones safe.</span><span class="ar">التخطيط والزحام وسلامة الصغار.</span><span class="ur" lang="ur">منصوبہ بندی، ہجوم، اور ننھوں کی حفاظت۔</span><span class="id" lang="id">Perencanaan, keramaian, dan keamanan si kecil.</span></span></a>
+      <a class="rh-g" href="/blog/makkah-hotels-guide"><span class="ic">🏨</span><b><span class="en">Hotels near the Haram</span><span class="ar">فنادق قرب الحرم</span><span class="ur" lang="ur">حرم کے قریب ہوٹل</span><span class="id" lang="id">Hotel dekat Masjidil Haram</span></b><span><span class="en">Distance, budget and how to choose.</span><span class="ar">المسافة والميزانية وكيف تختار.</span><span class="ur" lang="ur">فاصلہ، بجٹ اور انتخاب کیسے کریں۔</span><span class="id" lang="id">Jarak, anggaran, dan cara memilih.</span></span></a>
+      <a class="rh-g" href="/blog/umrah-packing-checklist-guide"><span class="ic">🧳</span><b><span class="en">Umrah packing list</span><span class="ar">حقيبة العمرة</span><span class="ur" lang="ur">عمرہ پیکنگ لسٹ</span><span class="id" lang="id">Daftar bawaan Umrah</span></b><span><span class="en">What to take, and what to leave home.</span><span class="ar">ما تأخذه وما تتركه في البيت.</span><span class="ur" lang="ur">کیا ساتھ لیں اور کیا گھر چھوڑیں۔</span><span class="id" lang="id">Apa yang dibawa dan apa yang ditinggal.</span></span></a>
+      <a class="rh-g" href="/islamic-hajj-umrah/umrah-with-elderly-parents"><span class="ic">🤲</span><b><span class="en">Umrah with elderly parents</span><span class="ar">العمرة مع الوالدين</span><span class="ur" lang="ur">بزرگ والدین کے ساتھ عمرہ</span><span class="id" lang="id">Umrah bersama orang tua lansia</span></b><span><span class="en">Wheelchairs, timing, and rest.</span><span class="ar">الكراسي المتحركة والتوقيت والراحة.</span><span class="ur" lang="ur">وہیل چیئر، وقت اور آرام۔</span><span class="id" lang="id">Kursi roda, waktu, dan istirahat.</span></span></a>
     </div>
   </div>
 </section>
@@ -349,8 +359,8 @@ window.dflTrack=function(event,params){
 <section class="rh-sec" aria-label="Hotels and Umrah companies">
   <div class="rh-wrap">
     <div class="rh-partner">
-      <div><b><span class="en">Run a hotel or an Umrah company?</span><span class="ar">لديك فندق أو شركة عمرة؟</span></b><span><span class="en">Print a free QR: your guests save your hotel card in one scan.</span><span class="ar">اطبع QR مجاني: ضيوفك يحفظون بطاقة فندقك بمسحة واحدة.</span></span></div>
-      <a class="rh-btn rh-btn-gold" href="/partners"><span class="en">Create your free QR</span><span class="ar">أنشئ QR مجاني</span></a>
+      <div><b><span class="en">Run a hotel or an Umrah company?</span><span class="ar">لديك فندق أو شركة عمرة؟</span><span class="ur" lang="ur">ہوٹل یا عمرہ کمپنی چلاتے ہیں؟</span><span class="id" lang="id">Punya hotel atau biro Umrah?</span></b><span><span class="en">Print a free QR: your guests save your hotel card in one scan.</span><span class="ar">اطبع QR مجاني: ضيوفك يحفظون بطاقة فندقك بمسحة واحدة.</span><span class="ur" lang="ur">مفت QR پرنٹ کریں: آپ کے مہمان ایک اسکین میں آپ کا ہوٹل کارڈ محفوظ کر لیں گے۔</span><span class="id" lang="id">Cetak QR gratis: tamu Anda menyimpan kartu hotel Anda dengan sekali pindai.</span></span></div>
+      <a class="rh-btn rh-btn-gold" href="/partners"><span class="en">Create your free QR</span><span class="ar">أنشئ QR مجاني</span><span class="ur" lang="ur">اپنا مفت QR بنائیں</span><span class="id" lang="id">Buat QR gratis Anda</span></a>
     </div>
   </div>
 </section>
@@ -358,15 +368,15 @@ window.dflTrack=function(event,params){
 <!-- ═══ FAQ ═══ -->
 <section class="rh-sec rh-faq" aria-labelledby="faq-t">
   <div class="rh-wrap">
-    <span class="rh-kicker"><span class="en">FAQ</span><span class="ar">أسئلة شائعة</span></span>
-    <h2 class="rh-h2" id="faq-t"><span class="en">Questions pilgrims ask</span><span class="ar">أسئلة يسألها المعتمرون</span></h2>
-    <details><summary><span class="en">How do I find my way back to my hotel in Makkah?</span><span class="ar">كيف أعرف طريق العودة لفندقي في مكة؟</span></summary><p><span class="en">Save the hotel while you are inside it with "I'm at my hotel now". The exact location is stored, and "Walk back" opens walking directions to the door from wherever you are.</span><span class="ar">احفظ الفندق وأنت بداخله بزر «أنا في الفندق الآن». يُحفظ موقعه الدقيق، ثم يفتح زر «ارجع مشياً» اتجاهات المشي حتى بابه من أي مكان تكون فيه.</span></p></details>
-    <details><summary><span class="en">Does it work without internet?</span><span class="ar">هل تعمل بدون إنترنت؟</span></summary><p><span class="en">Yes. After the first visit, your card, the driver screen and the safety kit open without a connection. Walking directions on the map need internet.</span><span class="ar">نعم. بعد أول زيارة تفتح بطاقتك وشاشة السائق وحقيبة الأمان بدون اتصال. أما اتجاهات المشي على الخريطة فتحتاج إنترنت.</span></p></details>
-    <details><summary><span class="en">Can I save both Makkah and Madinah?</span><span class="ar">هل أحفظ فندق مكة وفندق المدينة معاً؟</span></summary><p><span class="en">Yes. Switch between the two cities at the top of your card. Each keeps its own hotel.</span><span class="ar">نعم. بدّل بين المدينتين أعلى البطاقة، ولكل مدينة فندقها.</span></p></details>
-    <details><summary><span class="en">How do I show the hotel to a taxi driver?</span><span class="ar">كيف أُري الفندق لسائق التاكسي؟</span></summary><p><span class="en">Tap "Show driver". The hotel name, Arabic address and phone fill the screen. For drivers who speak Urdu or Bengali, use the taxi phrases tab.</span><span class="ar">اضغط «أظهر للسائق» فيملأ اسم الفندق وعنوانه بالعربي وهاتفه الشاشة. وإن كان السائق يتحدث الأوردية أو البنغالية استخدم تبويب عبارات التاكسي.</span></p></details>
-    <details><summary><span class="en">What should we do if a family member gets lost in the Haram?</span><span class="ar">ماذا نفعل إذا تاه أحد أفراد العائلة في الحرم؟</span></summary><p><span class="en">Agree on a meeting point before you split up and send it to everyone. Give young children the safety card with your number. If someone is lost, go to the meeting point and ask the nearest security officer, or call 911.</span><span class="ar">اتفقوا على نقطة لقاء قبل أن تتفرقوا وأرسلوها للجميع، وأعطوا الصغار بطاقة الأمان برقمكم. وعند الضياع اذهبوا لنقطة اللقاء واسألوا أقرب رجل أمن، أو اتصلوا بـ911.</span></p></details>
-    <details><summary><span class="en">Is my data private?</span><span class="ar">هل بياناتي خاصة؟</span></summary><p><span class="en">Yes. Everything is saved on your phone only. No account, nothing uploaded.</span><span class="ar">نعم. كل شيء يُحفظ على جوالك فقط، بلا حساب ولا رفع لأي بيانات.</span></p></details>
-    <p class="rh-offline" id="rh-offline" hidden>✓ <span class="en">Saved for offline use. This page now works with no internet.</span><span class="ar">حُفظت للعمل بدون إنترنت. هذه الصفحة تعمل الآن بلا اتصال.</span></p>
+    <span class="rh-kicker"><span class="en">FAQ</span><span class="ar">أسئلة شائعة</span><span class="ur" lang="ur">عام سوالات</span><span class="id" lang="id">Tanya jawab</span></span>
+    <h2 class="rh-h2" id="faq-t"><span class="en">Questions pilgrims ask</span><span class="ar">أسئلة يسألها المعتمرون</span><span class="ur" lang="ur">زائرین کے سوالات</span><span class="id" lang="id">Pertanyaan jemaah</span></h2>
+    <details><summary><span class="en">How do I find my way back to my hotel in Makkah?</span><span class="ar">كيف أعرف طريق العودة لفندقي في مكة؟</span><span class="ur" lang="ur">مکہ میں ہوٹل واپسی کا راستہ کیسے تلاش کروں؟</span><span class="id" lang="id">Bagaimana cara menemukan jalan kembali ke hotel di Makkah?</span></summary><p><span class="en">Save the hotel while you are inside it with "I'm at my hotel now". The exact location is stored, and "Walk back" opens walking directions to the door from wherever you are.</span><span class="ar">احفظ الفندق وأنت بداخله بزر «أنا في الفندق الآن». يُحفظ موقعه الدقيق، ثم يفتح زر «ارجع مشياً» اتجاهات المشي حتى بابه من أي مكان تكون فيه.</span><span class="ur" lang="ur">ہوٹل کے اندر رہتے ہوئے "میں ابھی ہوٹل میں ہوں" سے اسے محفوظ کریں۔ درست مقام محفوظ ہو جاتا ہے، اور "پیدل واپس جائیں" آپ جہاں بھی ہوں دروازے تک پیدل راستہ کھول دیتا ہے۔</span><span class="id" lang="id">Simpan hotel saat Anda berada di dalamnya dengan "Saya di hotel sekarang". Lokasi tepat tersimpan, dan "Jalan kembali" membuka petunjuk jalan kaki sampai pintu dari mana pun Anda berada.</span></p></details>
+    <details><summary><span class="en">Does it work without internet?</span><span class="ar">هل تعمل بدون إنترنت؟</span><span class="ur" lang="ur">کیا یہ انٹرنیٹ کے بغیر کام کرتا ہے؟</span><span class="id" lang="id">Apakah berfungsi tanpa internet?</span></summary><p><span class="en">Yes. After the first visit, your card, the driver screen and the safety kit open without a connection. Walking directions on the map need internet.</span><span class="ar">نعم. بعد أول زيارة تفتح بطاقتك وشاشة السائق وحقيبة الأمان بدون اتصال. أما اتجاهات المشي على الخريطة فتحتاج إنترنت.</span><span class="ur" lang="ur">جی ہاں۔ پہلی بار کھولنے کے بعد آپ کا کارڈ، ڈرائیور اسکرین اور حفاظتی کٹ بغیر کنکشن کے کھلتے ہیں۔ نقشے پر پیدل راستے کے لیے انٹرنیٹ چاہیے۔</span><span class="id" lang="id">Ya. Setelah kunjungan pertama, kartu Anda, layar sopir, dan paket keamanan terbuka tanpa koneksi. Petunjuk jalan di peta memerlukan internet.</span></p></details>
+    <details><summary><span class="en">Can I save both Makkah and Madinah?</span><span class="ar">هل أحفظ فندق مكة وفندق المدينة معاً؟</span><span class="ur" lang="ur">کیا میں مکہ اور مدینہ دونوں محفوظ کر سکتا ہوں؟</span><span class="id" lang="id">Bisakah saya menyimpan Makkah dan Madinah?</span></summary><p><span class="en">Yes. Switch between the two cities at the top of your card. Each keeps its own hotel.</span><span class="ar">نعم. بدّل بين المدينتين أعلى البطاقة، ولكل مدينة فندقها.</span><span class="ur" lang="ur">جی ہاں۔ کارڈ کے اوپر دونوں شہروں کے درمیان بدلیں۔ ہر شہر کا اپنا ہوٹل ہے۔</span><span class="id" lang="id">Ya. Ganti kota di bagian atas kartu Anda. Setiap kota menyimpan hotelnya sendiri.</span></p></details>
+    <details><summary><span class="en">How do I show the hotel to a taxi driver?</span><span class="ar">كيف أُري الفندق لسائق التاكسي؟</span><span class="ur" lang="ur">ٹیکسی ڈرائیور کو ہوٹل کیسے دکھاؤں؟</span><span class="id" lang="id">Bagaimana menunjukkan hotel ke sopir taksi?</span></summary><p><span class="en">Tap "Show driver". The hotel name, Arabic address and phone fill the screen. For drivers who speak Urdu or Bengali, use the taxi phrases tab.</span><span class="ar">اضغط «أظهر للسائق» فيملأ اسم الفندق وعنوانه بالعربي وهاتفه الشاشة. وإن كان السائق يتحدث الأوردية أو البنغالية استخدم تبويب عبارات التاكسي.</span><span class="ur" lang="ur">"ڈرائیور کو دکھائیں" دبائیں۔ ہوٹل کا نام، عربی پتہ اور فون پوری اسکرین پر آ جاتے ہیں۔ اردو یا بنگالی بولنے والے ڈرائیوروں کے لیے ٹیکسی کے جملے استعمال کریں۔</span><span class="id" lang="id">Ketuk "Tunjukkan sopir". Nama hotel, alamat Arab, dan telepon memenuhi layar. Untuk sopir berbahasa Urdu atau Bengali, gunakan tab kalimat taksi.</span></p></details>
+    <details><summary><span class="en">What should we do if a family member gets lost in the Haram?</span><span class="ar">ماذا نفعل إذا تاه أحد أفراد العائلة في الحرم؟</span><span class="ur" lang="ur">اگر خاندان کا کوئی فرد حرم میں بچھڑ جائے تو کیا کریں؟</span><span class="id" lang="id">Apa yang harus dilakukan jika anggota keluarga tersesat di Masjidil Haram?</span></summary><p><span class="en">Agree on a meeting point before you split up and send it to everyone. Give young children the safety card with your number. If someone is lost, go to the meeting point and ask the nearest security officer, or call 911.</span><span class="ar">اتفقوا على نقطة لقاء قبل أن تتفرقوا وأرسلوها للجميع، وأعطوا الصغار بطاقة الأمان برقمكم. وعند الضياع اذهبوا لنقطة اللقاء واسألوا أقرب رجل أمن، أو اتصلوا بـ911.</span><span class="ur" lang="ur">بچھڑنے سے پہلے ملنے کی جگہ طے کریں اور سب کو بھیج دیں۔ چھوٹے بچوں کو اپنے نمبر والا حفاظتی کارڈ دیں۔ اگر کوئی بچھڑ جائے تو ملنے کی جگہ پر جائیں اور قریبی سیکیورٹی اہلکار سے پوچھیں، یا 911 پر کال کریں۔</span><span class="id" lang="id">Sepakati titik kumpul sebelum berpisah dan kirim ke semua orang. Beri anak kecil kartu keamanan dengan nomor Anda. Jika ada yang tersesat, pergi ke titik kumpul dan tanyakan petugas keamanan terdekat, atau hubungi 911.</span></p></details>
+    <details><summary><span class="en">Is my data private?</span><span class="ar">هل بياناتي خاصة؟</span><span class="ur" lang="ur">کیا میرا ڈیٹا نجی ہے؟</span><span class="id" lang="id">Apakah data saya pribadi?</span></summary><p><span class="en">Yes. Everything is saved on your phone only. No account, nothing uploaded.</span><span class="ar">نعم. كل شيء يُحفظ على جوالك فقط، بلا حساب ولا رفع لأي بيانات.</span><span class="ur" lang="ur">جی ہاں۔ سب کچھ صرف آپ کے فون پر محفوظ ہوتا ہے۔ نہ اکاؤنٹ، نہ کوئی اپ لوڈ۔</span><span class="id" lang="id">Ya. Semua tersimpan hanya di ponsel Anda. Tanpa akun, tanpa unggahan.</span></p></details>
+    <p class="rh-offline" id="rh-offline" hidden>✓ <span class="en">Saved for offline use. This page now works with no internet.</span><span class="ar">حُفظت للعمل بدون إنترنت. هذه الصفحة تعمل الآن بلا اتصال.</span><span class="ur" lang="ur">آف لائن استعمال کے لیے محفوظ۔ یہ صفحہ اب انٹرنیٹ کے بغیر کام کرتا ہے۔</span><span class="id" lang="id">Tersimpan untuk offline. Halaman ini kini berfungsi tanpa internet.</span></p>
   </div>
 </section>
 <div class="rh-end"></div>
@@ -380,9 +390,9 @@ window.dflTrack=function(event,params){
   <div class="a en" id="d-en" dir="ltr"></div>
   <a class="p" id="d-p" href="#"></a>
   <div class="bar">
-    <button type="button" id="d-call" style="background:#054241;color:#fff">☎ <span class="en">Call hotel</span><span class="ar">اتصل بالفندق</span></button>
-    <button type="button" id="d-img" style="background:#f3ede2;color:#054241">🖼 <span class="en">Image</span><span class="ar">صورة</span></button>
-    <button type="button" id="d-close" style="background:#C9A227;color:#1b1505">✕ <span class="en">Close</span><span class="ar">إغلاق</span></button>
+    <button type="button" id="d-call" style="background:#054241;color:#fff">☎ <span class="en">Call hotel</span><span class="ar">اتصل بالفندق</span><span class="ur" lang="ur">ہوٹل کو کال کریں</span><span class="id" lang="id">Telepon hotel</span></button>
+    <button type="button" id="d-img" style="background:#f3ede2;color:#054241">🖼 <span class="en">Image</span><span class="ar">صورة</span><span class="ur" lang="ur">تصویر</span><span class="id" lang="id">Gambar</span></button>
+    <button type="button" id="d-close" style="background:#C9A227;color:#1b1505">✕ <span class="en">Close</span><span class="ar">إغلاق</span><span class="ur" lang="ur">بند کریں</span><span class="id" lang="id">Tutup</span></button>
   </div>
 </div>
 <div class="rh-toast" id="rh-toast" role="status" aria-live="polite"></div>
@@ -499,6 +509,6 @@ window.dflTrack=function(event,params){
 </div>
 
 <script src="/scripts/global.js?v=20260619e" defer></script>
-<script src="/scripts/rth-app.js?v=20261110a" defer></script>
+<script src="/scripts/rth-app.js?v=20261110c" defer></script>
 </body>
 </html>

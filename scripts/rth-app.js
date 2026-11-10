@@ -2,8 +2,10 @@
 (function(){
 'use strict';
 var $=function(id){return document.getElementById(id);};
-var isAr=function(){return document.documentElement.getAttribute('data-lang')==='ar';};
-var T=function(ar,en){return isAr()?ar:en;};
+var UI=function(){var h=document.documentElement;return h.getAttribute('data-ui')||(h.getAttribute('data-lang')==='ar'?'ar':'en');};
+var isAr=function(){return UI()==='ar';};
+var T=function(ar,en,ur,id){var u=UI();return u==='ar'?ar:u==='ur'?(ur||en):u==='id'?(id||en):en;};
+var LOC=function(){return {ar:'ar-SA',en:'en-GB',ur:'ur-PK',id:'id-ID'}[UI()];};
 var track=function(e,p){ if(window.dflTrack) try{dflTrack(e,p);}catch(_){} };
 var FIELDS=['name','address','addressAr','phone','room','area','checkin','checkout','notes','mapslink','lat','lng'];
 var pack={active:'makkah',makkah:null,madinah:null};
@@ -51,22 +53,22 @@ function applyPrefill(){
   if(!d.address) d.address=d.addressAr||d.name;
   var c=p.get('c'); c=(c==='madinah'||c==='makkah')?c:guessCity(d);
   var cur=pack[c];
-  if(cur&&cur.name&&cur.name!==d.name&&!confirm(T('استبدال بطاقة «'+cur.name+'» ببطاقة «'+d.name+'»؟','Replace "'+cur.name+'" with "'+d.name+'"?'))){clean();return;}
+  if(cur&&cur.name&&cur.name!==d.name&&!confirm(T('استبدال بطاقة «'+cur.name+'» ببطاقة «'+d.name+'»؟','Replace "'+cur.name+'" with "'+d.name+'"?','«'+cur.name+'» کی جگہ «'+d.name+'» محفوظ کریں؟','Ganti "'+cur.name+'" dengan "'+d.name+'"?'))){clean();return;}
   pack.active=c; pack[c]=d; hotel=d; persist(); clean();
   track('prefill_saved',{city:c,partner:(p.get('src')||'link').slice(0,40)});
-  setTimeout(function(){toast(T('✓ تم حفظ بطاقة '+d.name,'✓ Saved: '+d.name));},500);
+  setTimeout(function(){toast(T('✓ تم حفظ بطاقة '+d.name,'✓ Saved: '+d.name,'✓ محفوظ: '+d.name,'✓ Tersimpan: '+d.name));},500);
 }
 
 /* ---------- geolocation ---------- */
 function getPos(btn,ok){
-  if(!navigator.geolocation){toast(T('المتصفح لا يدعم تحديد الموقع','Location is not supported'));return;}
+  if(!navigator.geolocation){toast(T('المتصفح لا يدعم تحديد الموقع','Location is not supported','براؤزر مقام کی سہولت نہیں دیتا','Lokasi tidak didukung'));return;}
   if(btn) btn.disabled=true;
   navigator.geolocation.getCurrentPosition(function(p){
     if(btn) btn.disabled=false;
     ok({lat:p.coords.latitude.toFixed(6),lng:p.coords.longitude.toFixed(6),acc:Math.round(p.coords.accuracy)});
   },function(e){
     if(btn) btn.disabled=false;
-    toast(e.code===1?T('اسمح بالوصول لموقعك من إعدادات المتصفح ثم أعد المحاولة','Allow location access in your browser, then try again'):T('تعذر تحديد الموقع، حاول مرة أخرى','Could not get your location, try again'));
+    toast(e.code===1?T('اسمح بالوصول لموقعك من إعدادات المتصفح ثم أعد المحاولة','Allow location access in your browser, then try again','براؤزر کی ترتیبات میں مقام کی اجازت دیں، پھر دوبارہ کوشش کریں','Izinkan akses lokasi di browser, lalu coba lagi'):T('تعذر تحديد الموقع، حاول مرة أخرى','Could not get your location, try again','مقام معلوم نہیں ہو سکا، دوبارہ کوشش کریں','Lokasi tidak didapat, coba lagi'));
   },{enableHighAccuracy:true,timeout:20000,maximumAge:0});
 }
 
@@ -107,7 +109,7 @@ function renderCard(){
 function openForm(withGps){
   var f=$('rh-form'); f.hidden=false;
   writeForm(hotel);
-  $('rh-form-title').textContent=hotel?T('تعديل بطاقة الفندق','Edit hotel card'):T('بطاقة فندقك','Your hotel card');
+  $('rh-form-title').textContent=hotel?T('تعديل بطاقة الفندق','Edit hotel card','ہوٹل کارڈ میں ترمیم','Ubah kartu hotel'):T('بطاقة فندقك','Your hotel card','آپ کا ہوٹل کارڈ','Kartu hotel Anda');
   setTimeout(function(){ f.scrollIntoView({behavior:'smooth',block:'start'}); },60);
   if(withGps) captureGps(); else setTimeout(function(){ $('f-name').focus({preventScroll:true}); },400);
 }
@@ -119,23 +121,23 @@ function writeForm(h){
 function renderGpsRow(){
   var row=$('f-gps'); row.classList.toggle('ok',!!pendingGps);
   $('f-gps-t').innerHTML=pendingGps
-    ? T('<b>✓ موقع الفندق محفوظ بدقة</b>الملاحة ستعيدك إلى باب الفندق مباشرة.','<b>✓ Exact hotel location saved</b>Navigation will take you to the hotel door.')
-    : T('<b>هل أنت في الفندق الآن؟</b>احفظ موقعه بدقة لتعود إلى بابه مشياً.','<b>Are you at the hotel now?</b>Save its exact spot to walk back to the door.');
-  $('f-gps-b').textContent=pendingGps?T('تحديث الموقع','Update'):T('📍 احفظ موقعي','📍 Save my spot');
+    ? T('<b>✓ موقع الفندق محفوظ بدقة</b>الملاحة ستعيدك إلى باب الفندق مباشرة.','<b>✓ Exact hotel location saved</b>Navigation will take you to the hotel door.','<b>✓ ہوٹل کا درست مقام محفوظ</b>نقشہ آپ کو سیدھا ہوٹل کے دروازے تک لے جائے گا۔','<b>✓ Lokasi tepat hotel tersimpan</b>Navigasi akan membawa Anda sampai pintu hotel.')
+    : T('<b>هل أنت في الفندق الآن؟</b>احفظ موقعه بدقة لتعود إلى بابه مشياً.','<b>Are you at the hotel now?</b>Save its exact spot to walk back to the door.','<b>کیا آپ ابھی ہوٹل میں ہیں؟</b>اس کا درست مقام محفوظ کریں تاکہ پیدل دروازے تک واپس آ سکیں۔','<b>Anda di hotel sekarang?</b>Simpan lokasi tepatnya agar bisa jalan kaki kembali ke pintunya.');
+  $('f-gps-b').textContent=pendingGps?T('تحديث الموقع','Update','اپ ڈیٹ','Perbarui'):T('📍 احفظ موقعي','📍 Save my spot','📍 میری جگہ محفوظ کریں','📍 Simpan posisi saya');
 }
 function captureGps(){
-  getPos($('f-gps-b'),function(p){ pendingGps=p; renderGpsRow(); toast(T('✓ تم تحديد الموقع (دقة '+p.acc+' م)، اكتب اسم الفندق واحفظ','✓ Location captured (±'+p.acc+' m). Add the hotel name and save')); setTimeout(function(){$('f-name').focus();},300); track('hotel_gps_saved'); });
+  getPos($('f-gps-b'),function(p){ pendingGps=p; renderGpsRow(); toast(T('✓ تم تحديد الموقع (دقة '+p.acc+' م)، اكتب اسم الفندق واحفظ','✓ Location captured (±'+p.acc+' m). Add the hotel name and save','✓ مقام مل گیا (±'+p.acc+' میٹر)۔ ہوٹل کا نام لکھیں اور محفوظ کریں','✓ Lokasi didapat (±'+p.acc+' m). Tulis nama hotel lalu simpan')); setTimeout(function(){$('f-name').focus();},300); track('hotel_gps_saved'); });
 }
 function saveForm(e){
   if(e) e.preventDefault();
   var name=$('f-name').value.trim();
-  if(!name){ toast(T('اكتب اسم الفندق','Enter the hotel name')); $('f-name').focus(); return; }
+  if(!name){ toast(T('اكتب اسم الفندق','Enter the hotel name','ہوٹل کا نام لکھیں','Tulis nama hotel')); $('f-name').focus(); return; }
   var d={}; FIELDS.forEach(function(k){ var el=$('f-'+k); d[k]=el?el.value.trim():''; });
   if(pendingGps){ d.lat=pendingGps.lat; d.lng=pendingGps.lng; }
   if(!d.address) d.address=d.addressAr||name;
   pack[pack.active]=d; hotel=d; persist();
   closeForm(); show(); window.scrollTo({top:0,behavior:'smooth'});
-  toast(T('✓ حُفظت بطاقة فندقك. جرّب «ارجع مشياً»','✓ Hotel card saved. Try "Walk back"'));
+  toast(T('✓ حُفظت بطاقة فندقك. جرّب «ارجع مشياً»','✓ Hotel card saved. Try "Walk back"','✓ ہوٹل کارڈ محفوظ ہو گیا۔ «پیدل واپس جائیں» آزمائیں','✓ Kartu hotel tersimpan. Coba "Jalan kembali"'));
   track('hotel_saved',{city:pack.active,has_gps:d.lat?'yes':'no'});
 }
 function switchCity(c){
@@ -143,7 +145,7 @@ function switchCity(c){
 }
 function clearCard(){
   if(!hotel) return;
-  if(!confirm(T('مسح بطاقة '+hotel.name+'؟','Clear the '+hotel.name+' card?'))) return;
+  if(!confirm(T('مسح بطاقة '+hotel.name+'؟','Clear the '+hotel.name+' card?',hotel.name+' کا کارڈ مٹائیں؟','Hapus kartu '+hotel.name+'?'))) return;
   pack[pack.active]=null; hotel=null; persist(); show();
 }
 
@@ -151,12 +153,14 @@ function clearCard(){
 function shareText(){
   var h=hotel;
   return T('🏨 فندقي: '+h.name+(h.addressAr?('\n'+h.addressAr):'')+(h.address&&h.address!==h.name&&h.address!==h.addressAr?('\n'+h.address):'')+(h.phone?('\n☎ '+h.phone):'')+'\n📍 '+mapsPin(h)+'\n\nاحفظ بطاقة فندقك مجاناً: https://dotforlife.com/hotel',
-           '🏨 My hotel: '+h.name+(h.address&&h.address!==h.name&&h.address!==h.addressAr?('\n'+h.address):'')+(h.addressAr?('\n'+h.addressAr):'')+(h.phone?('\n☎ '+h.phone):'')+'\n📍 '+mapsPin(h)+'\n\nSave your hotel card free: https://dotforlife.com/hotel');
+           '🏨 My hotel: '+h.name+(h.address&&h.address!==h.name&&h.address!==h.addressAr?('\n'+h.address):'')+(h.addressAr?('\n'+h.addressAr):'')+(h.phone?('\n☎ '+h.phone):'')+'\n📍 '+mapsPin(h)+'\n\nSave your hotel card free: https://dotforlife.com/hotel',
+           '🏨 میرا ہوٹل: '+h.name+(h.addressAr?('\n'+h.addressAr):'')+(h.phone?('\n☎ '+h.phone):'')+'\n📍 '+mapsPin(h)+'\n\nاپنا ہوٹل کارڈ مفت محفوظ کریں: https://dotforlife.com/hotel',
+           '🏨 Hotel saya: '+h.name+(h.address&&h.address!==h.name&&h.address!==h.addressAr?('\n'+h.address):'')+(h.addressAr?('\n'+h.addressAr):'')+(h.phone?('\n☎ '+h.phone):'')+'\n📍 '+mapsPin(h)+'\n\nSimpan kartu hotel Anda gratis: https://dotforlife.com/hotel');
 }
 function shareFamily(){ window.open('https://wa.me/?text='+encodeURIComponent(shareText()),'_blank'); track('whatsapp_share'); }
 function copyAddr(){
   var t=shareText();
-  if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(function(){toast(T('✓ تم النسخ','✓ Copied'));},function(){prompt('',t);});
+  if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(function(){toast(T('✓ تم النسخ','✓ Copied','✓ کاپی ہو گیا','✓ Tersalin'));},function(){prompt('',t);});
   else prompt('',t);
   track('copy_address');
 }
@@ -207,7 +211,7 @@ function saveImage(){
 function install(){
   track('install_click');
   if(deferredInstall){ deferredInstall.prompt(); deferredInstall.userChoice.then(function(){deferredInstall=null;}); return; }
-  toast(T('من قائمة المتصفح أو زر المشاركة اختر «إضافة إلى الشاشة الرئيسية»','From the browser menu or Share, choose "Add to Home Screen"'));
+  toast(T('من قائمة المتصفح أو زر المشاركة اختر «إضافة إلى الشاشة الرئيسية»','From the browser menu or Share, choose "Add to Home Screen"','براؤزر مینو یا شیئر سے «ہوم اسکرین پر شامل کریں» چنیں','Dari menu browser atau Bagikan, pilih "Tambahkan ke Layar Utama"'));
 }
 
 /* ---------- taxi phrases ---------- */
@@ -223,7 +227,7 @@ function renderTaxi(k){
   taxiKey=LANGS[k]?k:'SA'; var L=LANGS[taxiKey];
   document.querySelectorAll('[data-taxi]').forEach(function(b){ b.classList.toggle('is-on',b.getAttribute('data-taxi')===taxiKey); });
   $('t-ph').textContent=L.p; $('t-ph').dir=(taxiKey==='SA'||taxiKey==='UR')?'rtl':'ltr';
-  $('t-nm').textContent=hotel?hotel.name:T('احفظ فندقك أولاً ليظهر هنا','Save your hotel first to show it here');
+  $('t-nm').textContent=hotel?hotel.name:T('احفظ فندقك أولاً ليظهر هنا','Save your hotel first to show it here','یہاں دکھانے کے لیے پہلے اپنا ہوٹل محفوظ کریں','Simpan hotel Anda dulu agar tampil di sini');
   $('t-ad').textContent=hotel?(hotel.addressAr||hotel.address||''):'';
   var g=$('t-phr'); g.innerHTML='';
   L.e.forEach(function(r){ var d=document.createElement('div'); var b=document.createElement('b'); b.textContent=r[1]; var s=document.createElement('span'); s.textContent=r[0]; var i=document.createElement('i'); i.textContent=' · '+r[2]; d.appendChild(b); d.appendChild(s); d.appendChild(i); g.appendChild(d); });
@@ -233,25 +237,27 @@ function renderTaxi(k){
 function getMeet(){ try{return JSON.parse(localStorage.getItem('dfl_meet')||'null');}catch(e){return null;} }
 function renderMeet(){
   var m=getMeet(); $('m-empty').hidden=!!m; $('m-saved').hidden=!m; if(!m) return;
-  $('m-label').textContent=m.gate||T('نقطة لقائنا','Our meeting point');
-  var hh=new Date(m.t).toLocaleTimeString(isAr()?'ar-SA':'en-GB',{hour:'2-digit',minute:'2-digit'});
-  $('m-time').textContent=T('حُفظت الساعة '+hh+(m.acc?' · دقة '+m.acc+' م':''),'Saved at '+hh+(m.acc?' · ±'+m.acc+' m':''));
+  $('m-label').textContent=m.gate||T('نقطة لقائنا','Our meeting point','ہمارے ملنے کی جگہ','Titik kumpul kami');
+  var hh=new Date(m.t).toLocaleTimeString(LOC(),{hour:'2-digit',minute:'2-digit'});
+  $('m-time').textContent=T('حُفظت الساعة '+hh+(m.acc?' · دقة '+m.acc+' م':''),'Saved at '+hh+(m.acc?' · ±'+m.acc+' m':''),hh+' بجے محفوظ'+(m.acc?' · ±'+m.acc+' میٹر':''),'Disimpan pukul '+hh+(m.acc?' · ±'+m.acc+' m':''));
   $('m-go').href='https://www.google.com/maps/dir/?api=1&destination='+m.lat+','+m.lng+'&travelmode=walking';
 }
 function saveMeet(){
   getPos($('m-save'),function(p){
     var m={lat:p.lat,lng:p.lng,acc:p.acc,gate:$('m-gate').value.trim().slice(0,60),t:Date.now()};
     try{localStorage.setItem('dfl_meet',JSON.stringify(m));}catch(e){}
-    renderMeet(); toast(T('✓ حُفظت نقطة اللقاء، أرسلها لعائلتك الآن','✓ Meeting point saved. Send it to your family'));
+    renderMeet(); toast(T('✓ حُفظت نقطة اللقاء، أرسلها لعائلتك الآن','✓ Meeting point saved. Send it to your family','✓ ملنے کی جگہ محفوظ۔ اب گھر والوں کو بھیجیں','✓ Titik kumpul tersimpan. Kirim ke keluarga Anda'));
     track('meet_saved',{has_gate:m.gate?'yes':'no'});
   });
 }
 function shareMeet(){
   var m=getMeet(); if(!m) return;
-  var hh=new Date(m.t).toLocaleTimeString(isAr()?'ar-SA':'en-GB',{hour:'2-digit',minute:'2-digit'});
+  var hh=new Date(m.t).toLocaleTimeString(LOC(),{hour:'2-digit',minute:'2-digit'});
   var url='https://www.google.com/maps/search/?api=1&query='+m.lat+','+m.lng;
   var msg=T('📍 نقطة لقائنا'+(m.gate?': '+m.gate:'')+'\nإذا تفرقنا، تعالوا هنا (حُفظت الساعة '+hh+'):\n'+url+'\n\nاحفظ فندقك ونقطة لقائك مجاناً: https://dotforlife.com/hotel',
-            '📍 Our meeting point'+(m.gate?': '+m.gate:'')+'\nIf we get separated, come here (saved '+hh+'):\n'+url+'\n\nSave your hotel and meeting point free: https://dotforlife.com/hotel');
+            '📍 Our meeting point'+(m.gate?': '+m.gate:'')+'\nIf we get separated, come here (saved '+hh+'):\n'+url+'\n\nSave your hotel and meeting point free: https://dotforlife.com/hotel',
+            '📍 ہمارے ملنے کی جگہ'+(m.gate?': '+m.gate:'')+'\nاگر ہم بچھڑ جائیں تو یہاں آ جائیں ('+hh+' بجے محفوظ):\n'+url+'\n\nاپنا ہوٹل اور ملنے کی جگہ مفت محفوظ کریں: https://dotforlife.com/hotel',
+            '📍 Titik kumpul kami'+(m.gate?': '+m.gate:'')+'\nJika terpisah, datang ke sini (disimpan '+hh+'):\n'+url+'\n\nSimpan hotel dan titik kumpul Anda gratis: https://dotforlife.com/hotel');
   window.open('https://wa.me/?text='+encodeURIComponent(msg),'_blank'); track('meet_shared');
 }
 function clearMeet(){ try{localStorage.removeItem('dfl_meet');}catch(e){} $('m-gate').value=''; renderMeet(); }
@@ -259,7 +265,7 @@ function clearMeet(){ try{localStorage.removeItem('dfl_meet');}catch(e){} $('m-g
 /* ---------- child card ---------- */
 function kidCard(){
   var nm=$('k-name').value.trim(), p1=$('k-p1').value.trim(), p2=$('k-p2').value.trim();
-  if(!p1){ toast(T('اكتب رقم جوال الأب أو الأم','Enter a parent phone number')); $('k-p1').focus(); return; }
+  if(!p1){ toast(T('اكتب رقم جوال الأب أو الأم','Enter a parent phone number','والدین کا فون نمبر لکھیں','Tulis nomor telepon orang tua')); $('k-p1').focus(); return; }
   var cv=$('k-canvas'), x=cv.getContext('2d'), W=1080, H=1350;
   x.fillStyle='#fff'; x.fillRect(0,0,W,H); x.fillStyle='#C9A227'; x.fillRect(0,0,W,22); x.fillRect(0,H-22,W,22);
   x.textAlign='center';
@@ -299,13 +305,25 @@ function tab(id){
 /* ---------- misc ---------- */
 var tt=null;
 function toast(m){ var t=$('rh-toast'); t.textContent=m; t.classList.add('show'); clearTimeout(tt); tt=setTimeout(function(){t.classList.remove('show');},2800); }
-function placeholders(){ document.querySelectorAll('[data-ph-ar]').forEach(function(el){ el.placeholder=isAr()?el.getAttribute('data-ph-ar'):el.getAttribute('data-ph-en'); }); }
-function relang(){ placeholders(); if(hotel) renderCard(); else renderTaxi(taxiKey); renderMeet(); if(!$('rh-form').hidden) renderGpsRow(); }
+function placeholders(){ var u=UI(); document.querySelectorAll('[data-ph-ar]').forEach(function(el){ el.placeholder=el.getAttribute('data-ph-'+u)||el.getAttribute(u==='ur'?'data-ph-ar':'data-ph-en'); }); }
+function setUI(u){
+  var h=document.documentElement;
+  try{ if(u==='ur'||u==='id'){ localStorage.setItem('rth-ui',u); localStorage.setItem('dfl-lang',u==='ur'?'ar':'en'); } else { localStorage.removeItem('rth-ui'); localStorage.setItem('dfl-lang',u); } }catch(e){}
+  if(u==='ur'&&!document.getElementById('ur-font')){ var l=document.createElement('link'); l.id='ur-font'; l.rel='stylesheet'; l.href='https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;700&display=swap'; document.head.appendChild(l); }
+  if(u==='ur'||u==='id'){ h.setAttribute('data-ui',u); h.setAttribute('data-lang',u==='ur'?'ar':'en'); h.setAttribute('dir',u==='ur'?'rtl':'ltr'); }
+  else { h.removeAttribute('data-ui'); h.setAttribute('data-lang',u); h.setAttribute('dir',u==='ar'?'rtl':'ltr'); }
+  h.setAttribute('lang',u);
+  document.dispatchEvent(new CustomEvent('dfl:langchange',{detail:{lang:h.getAttribute('data-lang'),src:'rth'}}));
+  track('ui_language',{ui:u});
+}
+function renderUIButtons(){ var u=UI(); document.querySelectorAll('[data-ui]').forEach(function(b){ if(b.tagName==='BUTTON') b.setAttribute('aria-pressed',b.getAttribute('data-ui')===u?'true':'false'); }); }
+function relang(){ renderUIButtons(); placeholders(); if(hotel) renderCard(); else renderTaxi(taxiKey); renderMeet(); if(!$('rh-form').hidden) renderGpsRow(); }
 
 /* ---------- wire up ---------- */
 function on(id,ev,fn){ var el=$(id); if(el) el.addEventListener(ev,fn); }
 document.addEventListener('DOMContentLoaded',function(){
-  load(); applyPrefill(); placeholders(); show(); renderTaxi('SA'); renderMeet();
+  load(); applyPrefill(); placeholders(); renderUIButtons(); show(); renderTaxi(UI()==='ur'?'UR':UI()==='id'?'ID':'SA'); renderMeet();
+  document.querySelectorAll('button[data-ui]').forEach(function(b){ b.addEventListener('click',function(){ setUI(b.getAttribute('data-ui')); }); });
   on('b-here','click',function(){ openForm(true); });
   on('b-manual','click',function(){ openForm(false); });
   on('rh-form-x','click',closeForm);
@@ -336,7 +354,10 @@ document.addEventListener('DOMContentLoaded',function(){
   });
   if(location.hash&&/^#(meet|kid|sos|taxi)$/.test(location.hash)){ tab('p-'+location.hash.slice(1)); }
   document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeDriver(); });
-  document.addEventListener('dfl:langchange',relang);
+  document.addEventListener('dfl:langchange',function(e){
+    if(!(e.detail&&e.detail.src==='rth')&&document.documentElement.hasAttribute('data-ui')){ document.documentElement.removeAttribute('data-ui'); try{localStorage.removeItem('rth-ui');}catch(_){} }
+    relang();
+  });
 });
 window.addEventListener('beforeinstallprompt',function(e){ e.preventDefault(); deferredInstall=e; });
 if('serviceWorker' in navigator){ navigator.serviceWorker.register('/sw.js').then(function(){ var n=$('rh-offline'); if(n) n.hidden=false; }).catch(function(){}); }
