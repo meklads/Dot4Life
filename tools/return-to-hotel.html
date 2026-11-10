@@ -194,7 +194,7 @@ window.dflTrack=function(event,params){
 <main class="tool-mn">
 
   <div class="tool-workspace rth-wrap">
-    <div class="city-pills lang-pills" role="tablist" aria-label="Hotel city">
+    <div class="city-pills lang-pills" role="group" aria-label="Hotel city">
       <button type="button" class="lang-pill city-pill active" id="pill-makkah" data-city="makkah" onclick="switchCity('makkah')">
         <span class="en">Makkah</span><span class="ar">مكة</span>
         <span class="city-pill-mark" id="mark-makkah" hidden></span>
@@ -225,11 +225,11 @@ window.dflTrack=function(event,params){
       <div class="rth-studio">
       <aside class="rth-gallery" aria-hidden="true">
         <figure class="rth-shot rth-shot--makkah">
-          <img src="/assets/images/approved/hero-hotel-near-haram-vs-budget-umrah.webp" alt="" width="420" height="280" loading="eager" decoding="async">
+          <img src="/assets/images/approved/hero-hotel-near-haram-vs-budget-umrah-420w.webp" alt="" width="420" height="280" loading="eager" decoding="async">
           <figcaption><span class="en">Makkah</span><span class="ar">مكة</span></figcaption>
         </figure>
         <figure class="rth-shot rth-shot--madinah">
-          <img src="/assets/images/approved/hero-medina-hotels-near-masjid-nabawi.webp" alt="" width="420" height="220" loading="lazy" decoding="async">
+          <img src="/assets/images/approved/hero-medina-hotels-near-masjid-nabawi-420w.webp" alt="" width="420" height="220" loading="lazy" decoding="async">
           <figcaption><span class="en">Madinah</span><span class="ar">المدينة</span></figcaption>
         </figure>
       </aside>
@@ -244,29 +244,29 @@ window.dflTrack=function(event,params){
         </div>
         <div class="form-grid">
           <div class="field-group">
-            <label class="field-label"><span class="en">Hotel Name</span><span class="ar">اسم الفندق</span><span class="req">*</span></label>
-            <input type="text" class="field-input" id="f-name" placeholder="Grand Hyatt Istanbul" />
+            <label class="field-label" for="f-name"><span class="en">Hotel Name</span><span class="ar">اسم الفندق</span><span class="req">*</span></label>
+            <input type="text" class="field-input" id="f-name" placeholder="Swissôtel Makkah" />
           </div>
           <div class="field-group">
-            <label class="field-label"><span class="en">Area / Neighborhood</span><span class="ar">المنطقة / الحي</span></label>
-            <input type="text" class="field-input" id="f-area" placeholder="Taksim, Sultanahmet..." />
+            <label class="field-label" for="f-area"><span class="en">Area / Neighborhood</span><span class="ar">المنطقة / الحي</span></label>
+            <input type="text" class="field-input" id="f-area" placeholder="Ajyad · أجياد" />
           </div>
           <div class="field-group full">
-            <label class="field-label"><span class="en">Full Address</span><span class="ar">العنوان الكامل</span><span class="req">*</span></label>
-            <input type="text" class="field-input" id="f-address" placeholder="Taskisla Caddesi No. 1, Taksim, Istanbul, Turkey" />
+            <label class="field-label" for="f-address"><span class="en">Full Address</span><span class="ar">العنوان الكامل</span><span class="req">*</span></label>
+            <input type="text" class="field-input" id="f-address" placeholder="Ibrahim Al Khalil St, Ajyad, Makkah" />
             <span class="field-hint"><span class="en">Copy from Google Maps or your booking confirmation email</span><span class="ar">انسخ من خرائط جوجل أو بريد تأكيد الحجز</span></span>
           </div>
           <div class="field-group full">
-            <label class="field-label"><span class="en">Address in Arabic (for the driver)</span><span class="ar">العنوان بالعربي (للسائق)</span></label>
+            <label class="field-label" for="f-addressAr"><span class="en">Address in Arabic (for the driver)</span><span class="ar">العنوان بالعربي (للسائق)</span></label>
             <input type="text" class="field-input" id="f-addressAr" placeholder="حي العزيزية، شارع إبراهيم الخليل، مكة" />
             <span class="field-hint"><span class="en">Optional. Show this to a Saudi driver if the English address is hard to read.</span><span class="ar">اختياري. أظهره للسائق إن كان العنوان الإنجليزي صعب القراءة.</span></span>
           </div>
           <div class="field-group">
-            <label class="field-label"><span class="en">Hotel Phone</span><span class="ar">هاتف الفندق</span></label>
-            <input type="tel" class="field-input" id="f-phone" placeholder="+90 212 368 1234" />
+            <label class="field-label" for="f-phone"><span class="en">Hotel Phone</span><span class="ar">هاتف الفندق</span></label>
+            <input type="tel" class="field-input" id="f-phone" placeholder="+966 12 000 0000" />
           </div>
           <div class="field-group">
-            <label class="field-label"><span class="en">Destination Country</span><span class="ar">دولة الوجهة</span></label>
+            <label class="field-label" for="f-country"><span class="en">Destination Country</span><span class="ar">دولة الوجهة</span></label>
             <select class="field-select" id="f-country">
               <option value="" data-en="Select country" data-ar="اختر الدولة">Select country</option>
               <optgroup label="Popular destinations">
@@ -293,19 +293,19 @@ window.dflTrack=function(event,params){
             </select>
           </div>
           <div class="field-group">
-            <label class="field-label"><span class="en">Check-in</span><span class="ar">تاريخ الوصول</span></label>
+            <label class="field-label" for="f-checkin"><span class="en">Check-in</span><span class="ar">تاريخ الوصول</span></label>
             <input type="date" class="field-input" id="f-checkin" />
           </div>
           <div class="field-group">
-            <label class="field-label"><span class="en">Check-out</span><span class="ar">تاريخ المغادرة</span></label>
+            <label class="field-label" for="f-checkout"><span class="en">Check-out</span><span class="ar">تاريخ المغادرة</span></label>
             <input type="date" class="field-input" id="f-checkout" />
           </div>
           <div class="field-group">
-            <label class="field-label"><span class="en">Room Number</span><span class="ar">رقم الغرفة</span></label>
+            <label class="field-label" for="f-room"><span class="en">Room Number</span><span class="ar">رقم الغرفة</span></label>
             <input type="text" class="field-input" id="f-room" placeholder="412" />
           </div>
           <div class="field-group full">
-            <label class="field-label"><span class="en">Google Maps Link</span><span class="ar">رابط خرائط جوجل</span></label>
+            <label class="field-label" for="f-mapslink"><span class="en">Google Maps Link</span><span class="ar">رابط خرائط جوجل</span></label>
             <button type="button" class="rth-gps-btn" id="btn-gps" onclick="saveGpsLocation()">📍 <span class="en">I'm at the hotel now: save its exact location</span><span class="ar">أنا في الفندق الآن: احفظ موقعه بدقة</span></button>
             <input type="hidden" id="f-lat" /><input type="hidden" id="f-lng" />
             <input type="url" class="field-input" id="f-mapslink" placeholder="https://maps.google.com/..." />
@@ -313,8 +313,8 @@ window.dflTrack=function(event,params){
             <span class="field-hint"><span class="en">Paste the Share link from Google Maps for precise one-tap navigation</span><span class="ar">الصق رابط المشاركة من خرائط جوجل للملاحة الدقيقة</span></span>
           </div>
           <div class="field-group full">
-            <label class="field-label"><span class="en">Notes (landmarks, directions)</span><span class="ar">ملاحظات (معالم، اتجاهات)</span></label>
-            <textarea class="field-textarea" id="f-notes" placeholder="Near the blue mosque, opposite fountain..."></textarea>
+            <label class="field-label" for="f-notes"><span class="en">Notes (landmarks, directions)</span><span class="ar">ملاحظات (معالم، اتجاهات)</span></label>
+            <textarea class="field-textarea" id="f-notes" placeholder="قريب من باب الملك فهد، مقابل برج الساعة · Near King Fahd Gate"></textarea>
           </div>
         </div>
         <button class="btn-save" onclick="saveHotel()">
