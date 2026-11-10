@@ -5171,3 +5171,19 @@ git: working tree يحوي عدداً كبيراً من الملفات غير ا
 ## 2026-10-30 20:12 UTC — 🤖 بوابة CI الآلية رفضت 1 ملف عند push
 تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
 - `islamic-hajj-umrah/cave-of-hira-story-en.html`: شرطات طويلة=4 · اقتباس ديني مباشر (1): Bukhari
+
+## 2026-11-10 19:08 UTC — 🤖 بوابة CI الآلية رفضت 13 ملف عند push
+تشغيل تلقائي لـ `scripts/amer_gate.py` على push (`scripts/ci_quality_gate.py`)، قبل أي دورة عامر مجدولة. تمّ عزل الملفات الفاشلة فوراً (`noindex,nofollow`) ريثما تُصلَح وتُعاد للبوابة:
+- `fitness/calorie-calculator-saudi.html`: فقرات لاتينية في صفحة عربية=3
+- `fitness/fitness-for-women-saudi.html`: فقرات لاتينية في صفحة عربية=2
+- `fitness/ramadan-calorie-calculator.html`: فقرات لاتينية في صفحة عربية=2
+- `guides/bmi-guide-arabs-gcc.html`: فقرات لاتينية في صفحة عربية=8
+- `guides/complete-life-guide.html`: فقرات لاتينية في صفحة عربية=1
+- `guides/indoor-plants-saudi-arabia.html`: فقرات لاتينية في صفحة عربية=16
+- `guides/ramadan-nutrition-guide.html`: فقرات لاتينية في صفحة عربية=11
+- `guides/salalah-oman.html`: فقرات لاتينية في صفحة عربية=25
+- `guides/saudi-mortgage-guide.html`: فقرات لاتينية في صفحة عربية=1
+- `guides/saudi-real-estate-investing.html`: فقرات لاتينية في صفحة عربية=3
+- `guides/zakat-complete-guide.html`: فقرات لاتينية في صفحة عربية=3
+- `health/screen-time-eye-health-children.html`: فقرات لاتينية في صفحة عربية=41
+- `real-estate/oman-property-roi.html`: فقرات لاتينية في صفحة عربية=3

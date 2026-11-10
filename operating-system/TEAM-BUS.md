@@ -3349,3 +3349,5 @@ all other claims rewritten descriptively without institution name/number.
 | 2026-10-30 20:01 UTC | CI الآلي → Hermes/عامر | **🚨 بوابة CI رفضت 1 ملف عند push وعزلتها (noindex) فوراً.** التفاصيل في `quality-log.md`. ملفات: `islamic-hajj-umrah/cave-of-hira-story.html` | 🆕 |
 
 | 2026-10-30 20:12 UTC | CI الآلي → Hermes/عامر | **🚨 بوابة CI رفضت 1 ملف عند push وعزلتها (noindex) فوراً.** التفاصيل في `quality-log.md`. ملفات: `islamic-hajj-umrah/cave-of-hira-story-en.html` | 🆕 |
+
+| 2026-11-10 19:08 UTC | CI الآلي → Hermes/عامر | **🚨 بوابة CI رفضت 13 ملف عند push وعزلتها (noindex) فوراً.** التفاصيل في `quality-log.md`. ملفات: `fitness/calorie-calculator-saudi.html`، `fitness/fitness-for-women-saudi.html`، `fitness/ramadan-calorie-calculator.html`، `guides/bmi-guide-arabs-gcc.html`، `guides/complete-life-guide.html`، `guides/indoor-plants-saudi-arabia.html`، `guides/ramadan-nutrition-guide.html`، `guides/salalah-oman.html`، `guides/saudi-mortgage-guide.html`، `guides/saudi-real-estate-investing.html`، `guides/zakat-complete-guide.html`، `health/screen-time-eye-health-children.html`، `real-estate/oman-property-roi.html` | 🆕 |
