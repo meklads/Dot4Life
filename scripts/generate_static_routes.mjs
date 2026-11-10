@@ -50,6 +50,10 @@ function extensionlessRoute(relPosix) {
 
 // Legacy WordPress (old dotforlife.com gardening site) → closest section.
 // Keeps link equity and stops 404s for indexed /YYYY/MM/slug/ permalinks.
+// Retired redirect-stub pages (former meta-refresh/JS redirects) now served as real 301s.
+let RETIRED_REDIRECTS = [];
+try { RETIRED_REDIRECTS = JSON.parse(fs.readFileSync(path.join(ROOT, "scripts", "redirects.json"), "utf8")); } catch (e) { RETIRED_REDIRECTS = []; }
+
 const LEGACY_REDIRECTS = [
   { source: "/hotel", destination: "/tools/return-to-hotel" },
   { source: "/umrah", destination: "/makkah" },
@@ -121,6 +125,8 @@ function main() {
     redirectLines.push(`${route} ${dest} 200`);
   }
 
+  const seen = new Set(LEGACY_REDIRECTS.map((r) => r.source));
+  for (const r of RETIRED_REDIRECTS) { if (!seen.has(r.source)) { LEGACY_REDIRECTS.push(r); seen.add(r.source); } }
   for (const r of LEGACY_REDIRECTS) {
     redirectLines.push(`${r.source} ${r.destination} 301`);
   }
