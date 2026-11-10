@@ -8,6 +8,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
 const SKIP_DIRS = new Set([
   "node_modules",
+  "_site",
   ".git",
   "outputs",
   "legacy",
@@ -50,6 +51,8 @@ function extensionlessRoute(relPosix) {
 // Legacy WordPress (old dotforlife.com gardening site) → closest section.
 // Keeps link equity and stops 404s for indexed /YYYY/MM/slug/ permalinks.
 const LEGACY_REDIRECTS = [
+  { source: "/hotel", destination: "/tools/return-to-hotel" },
+  { source: "/umrah", destination: "/makkah" },
   { source: "/wp-login.php", destination: "/" },
   { source: "/wp-admin", destination: "/" },
   { source: "/wp-admin/:path*", destination: "/" },
