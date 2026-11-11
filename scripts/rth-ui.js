@@ -36,3 +36,11 @@ document.addEventListener('dfl:langchange',function(e){
   render();
 });
 })();
+
+/* Localized links: <a data-href-en="..." data-href-ur="..." data-href-id="..."> follow the chosen UI language. */
+(function(){
+function ui(){ var h=document.documentElement; return h.getAttribute('data-ui')||(h.getAttribute('data-lang')==='ar'?'ar':'en'); }
+function loc(){ var u=ui(); document.querySelectorAll('a[data-href-en]').forEach(function(a){ if(!a.hasAttribute('data-href-ar')) a.setAttribute('data-href-ar',a.getAttribute('href')); a.setAttribute('href',a.getAttribute('data-href-'+u)||a.getAttribute('data-href-ar')); }); }
+if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',loc); else loc();
+document.addEventListener('dfl:langchange',function(){ setTimeout(loc,0); });
+})();
